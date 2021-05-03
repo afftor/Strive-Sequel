@@ -277,6 +277,11 @@ func remove_person(code):
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
+func remove_non_master(code):
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}, {code = 'is_master', check = false}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
+
 func remove_selected(person): 
 	person.remove_from_task()
 	ResourceScripts.game_party.remove_slave(person)
@@ -737,6 +742,8 @@ func handle_scene_options(scene):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
 			if i.has('remove_person'):
 				newbutton.connect("pressed", self, 'remove_person', [i.code])
+			if i.has('remove_non_master'):
+				newbutton.connect("pressed", self, 'remove_non_master', [i.code])
 			elif i.code == 'shrine_option':
 				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 			elif i.code == 'chest_mimic_force_open':

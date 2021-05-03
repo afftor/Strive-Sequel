@@ -322,9 +322,10 @@ var data = {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
 				image = null, tags = ['dialogue_scene'], character = 'elf_priestess', character2 = 'anastasia',
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}], 
+				common_effects = [{code = 'play_sound', value = 'slap'}],
 				options = [ {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
-				}],
+				} ],
 			}, {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
 				image = null, tags = ['dialogue_scene'],
@@ -422,7 +423,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_42", reqs = []}], 
 		options = [ {
 			# *Accept* do sacrifice
-			code = 'looking_for_princess_elven_14', remove_person = true, text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'looking_for_princess_elven_14', remove_non_master = true, text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			# *Refuse*
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_44", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
