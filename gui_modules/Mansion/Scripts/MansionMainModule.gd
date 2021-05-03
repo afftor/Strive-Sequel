@@ -19,7 +19,6 @@ onready var Locations = $MansionLocationsModule
 onready var submodules = []
 
 export var test_mode = false
-export var generate_test_chars = false
 
 
 signal tut_option_selected
@@ -481,7 +480,7 @@ func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
 	#variables.allow_remote_intereaction = false
 	ResourceScripts.game_world.make_world()
-	if generate_test_chars:
+	if true:
 		var character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Human', 'female', 'random')
 		character.unlock_class("master")
@@ -751,7 +750,13 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		
+#		globals.common_effects(
+#			[
+#				{code = "make_loot", pool = [['easy_chest_usable',1]]},
+#				{code = 'open_loot'}
+#			]
+#
+#		)
 		character.mp = 10
 		var tmp = {}
 		tmp.oral = 70
@@ -783,39 +788,6 @@ func test_mode():
 			i.totalreputation += 500
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
-		# character = ResourceScripts.scriptdict.class_slave.new()
-		# character.create('Fairy', 'futa', 'random')
-		# characters_pool.move_to_state(character.id)
 		
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')

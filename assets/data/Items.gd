@@ -332,7 +332,8 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_symbol.png"),
 		price = 1,
 		type = 'quest',
-		tags = [],
+		tier = '',
+		tags = ['no_random'],
 	},
 	blessed_divine_symbol = {
 		code = 'blessed_divine_symbol',
@@ -341,7 +342,8 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_symbol2.png"),
 		price = 1,
 		type = 'quest',
-		tags = [],
+		tier = '',
+		tags = ['no_random'],
 	},
 	
 	princess_bracelet = {
@@ -351,7 +353,8 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_bracelet.png"),
 		price = 0,
 		type = 'quest',
-		tags = [],
+		tier = '',
+		tags = ['no_random'],
 	},
 	mythril = {
 		code = 'mythril',

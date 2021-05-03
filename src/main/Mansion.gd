@@ -33,6 +33,7 @@ func update_turns_label():
 	$TimeNode/turns.text = str(globals.hour_turns_set)
 
 func _ready():
+	
 	input_handler.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
@@ -72,9 +73,7 @@ func _ready():
 	globals.connecttexttooltip($food/TextureRect/Control, tr("TOOLTIPFOOD"))
 
 	globals.log_node = $Log
-	
 	globals.connect("task_added", self, 'build_task_bar')
-	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date) + ", Hour: " + str(ResourceScripts.game_globals.hour) + ":00"
 	if variables.generate_test_chars:
 		ResourceScripts.game_world.make_world()

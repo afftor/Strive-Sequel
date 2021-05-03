@@ -1041,7 +1041,7 @@ var enemies = {
 		status_resists = {stun = 75, bleed = 100, poison = 100},
 		race = 'beast',
 		loot = 'rockthrower_loot',
-		icon = "rres://assets/images/enemies/golem.png",
+		icon = "rres://assets/images/enemies/golem_1.png",
 		body = null,
 		skills = [],
 		traits = [],
