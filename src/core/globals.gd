@@ -1194,7 +1194,7 @@ func common_effects(effects):
 					input_handler.exploration_node = gui_controller.exploration
 				var location
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
-					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+					if a.code.matchn(i.location): # SETTLEMENT_PLAINS1
 						location = a
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
 				input_handler.exploration_node.open_location(location)
@@ -1309,7 +1309,7 @@ func common_effects(effects):
 			'teleport_active_location':
 				var location
 				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
-					if a.classname == i.to_loc.location.to_upper(): # SETTLEMENT_PLAINS1
+					if a.code == i.to_loc.location.to_upper() || a.code == i.to_loc.location: # SETTLEMENT_PLAINS1
 						location = a
 				#location.area = area
 				
@@ -1342,11 +1342,11 @@ func common_effects(effects):
 				var value = i.value
 				var loc
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
-					if a.classname == i.location.to_upper() || a.classname == i.location:
+					if a.code.matchn(i.location):
 						a[param] = value
 						loc = a
 						break
-					elif ResourceScripts.world_gen.get_location_from_code(a.classname) == i.location.to_upper() || a.classname == i.location:
+					elif ResourceScripts.world_gen.get_location_from_code(a.code) == i.location.to_upper() || a.code == i.location:
 						a[param] = value
 						loc = a
 						break
