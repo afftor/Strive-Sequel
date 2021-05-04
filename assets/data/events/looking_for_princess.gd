@@ -325,7 +325,7 @@ var data = {
 				common_effects = [{code = 'play_sound', value = 'slap'}, {code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 				options = [ {
-					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = 'update_location'
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
 				} ],
 			}, {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
