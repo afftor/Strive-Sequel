@@ -329,7 +329,7 @@ var data = {
 				} ],
 			}, {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
-				image = null, tags = ['dialogue_scene'],
+				image = null, tags = ['dialogue_scene'], common_effects = [{code = 'play_sound', value = 'slap'}],
 				text = [{text = "LOOKING_FOR_PRINCESS_32_f", reqs = [], previous_dialogue_option = 2},
 				{text = "LOOKING_FOR_PRINCESS_32", reqs = []}], 
 				options = [ {
