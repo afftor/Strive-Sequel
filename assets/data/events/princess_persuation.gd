@@ -83,7 +83,7 @@ var data = {
 				text = 'DIALOGUECONTINUE',
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'mindbreak_completed'}],
+				bonus_effects = [{code = 'decision', value = 'mindbreak_completed'}, {code = 'complete_quest', value = 'princess_persuasion'}],
 				type = 'next_dialogue'
 			},
 		],
@@ -1285,7 +1285,7 @@ var data = {
 				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				reqs = [],
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}, {code = 'update_city'}],
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}, {code = 'update_city'}, {code = 'complete_quest', value = 'princess_persuasion'}],
 				dialogue_argument = 1,
 			},
 		],
