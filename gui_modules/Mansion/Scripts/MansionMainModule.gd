@@ -775,11 +775,14 @@ func test_mode():
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 		newslave.set_slave_category('servant')
 		ResourceScripts.game_party.add_slave(newslave)
+		#ResourceScripts.game_progress.decisions.append("interrogation_success")
 		
-		input_handler.interactive_message('dungeon_find_chest_easy', '', {})
+		
+		#input_handler.interactive_message('looking_for_princess_mages_2', '', {})
+		
 		#input_handler.interactive_message('looking_for_princess_2', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
-		#ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
+		#ResourceScripts.game_progress.decisions.append("interrogation_success")
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

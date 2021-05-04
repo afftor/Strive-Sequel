@@ -1490,8 +1490,9 @@ func valuecheck(dict):
 		'location_has_specific_slaves': 
 			var counter = 0
 			for i in ResourceScripts.game_party.characters.values():
-				if i.check_location(dict.location) && i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
-					counter += 1
+				if i.check_location(dict.location):
+					if i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
+						counter += 1
 			return counter >= dict.value
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)

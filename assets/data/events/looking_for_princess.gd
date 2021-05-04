@@ -322,12 +322,14 @@ var data = {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
 				image = null, tags = ['dialogue_scene'], character = 'elf_priestess', character2 = 'anastasia',
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}], 
+				common_effects = [{code = 'play_sound', value = 'slap'}, {code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 				options = [ {
-					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
-				}],
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
+				} ],
 			}, {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
-				image = null, tags = ['dialogue_scene'],
+				image = null, tags = ['dialogue_scene'], common_effects = [{code = 'play_sound', value = 'slap'}],
 				text = [{text = "LOOKING_FOR_PRINCESS_32_f", reqs = [], previous_dialogue_option = 2},
 				{text = "LOOKING_FOR_PRINCESS_32", reqs = []}], 
 				options = [ {
@@ -388,20 +390,20 @@ var data = {
 		}, ],
 	},
 	
-	#TODO change location (mansion) to forests
+	#TODO change location (mansion) to elf_capital
 	looking_for_princess_elven_11 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_37", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
 		{text = "LOOKING_FOR_PRINCESS_40", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'forests', reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'elf_capital', reqs = [
 					{code = 'unique', value = 'zephyra'}]}] }], 
 		options = [ {
 			code = 'looking_for_princess_elven_12', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'looking_for_princess_elven_15', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'forests', reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'elf_capital', reqs = [
 					{code = 'unique', value = 'zephyra'}]}], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -422,7 +424,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_42", reqs = []}], 
 		options = [ {
 			# *Accept* do sacrifice
-			code = 'looking_for_princess_elven_14', remove_person = true, text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'looking_for_princess_elven_14', remove_non_master = true, text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			# *Refuse*
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_44", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -435,7 +437,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 	
@@ -483,7 +485,7 @@ var data = {
 		{text = "LOOKING_FOR_PRINCESS_51", reqs = [], previous_dialogue_option = 3}], 
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 	
@@ -494,7 +496,7 @@ var data = {
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage4'}],
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 }
