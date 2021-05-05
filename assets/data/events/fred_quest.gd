@@ -56,7 +56,7 @@ var data = {
 	
 
 	fred_talk_1 = {
-		image = 'fred_mercs',
+		image = null,
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1", reqs = []}
@@ -64,9 +64,20 @@ var data = {
 		options = [
 			{code = "fred_talk_1_answer_1", text = "FINDFRED_TALK1_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "fred_talk_1_if_answer_10", text = "FINDFRED_TALK1_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
-			{code = "fred_got_no_fight", text = "FINDFRED_ROGUE_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'rogue', check = true}]}], dialogue_argument = 5, type = "next_dialogue"},
+			{code = "find_fred_rogue", text = "FIND_FRED_ROGUE_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'rogue', check = true}]}], dialogue_argument = 5, type = "next_dialogue"},
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_QUESTION3", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 			{code = "quest_fight", text = "FINDFRED_TALK1_QUESTION4", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 4},
+		]
+	},
+	
+	find_fred_rogue = {
+		image = 'fred_mercs',
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "FIND_FRED_ROGUE", reqs = []}
+		],
+		options = [
+			{code = "fred_got_no_fight", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
 

@@ -2818,7 +2818,8 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
-	FINDFRED_ROGUE_OPTION = "",
+	FIND_FRED_ROGUE_OPTION = "",
+	FIND_FRED_ROGUE = "",
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
 	
 — Huh, really? Who are you trying to fool here?""",
@@ -3342,6 +3343,7 @@ Kurdan leaves following the demon's path.""",
 Kurdan:— It seems I've been misguided. I'll have to side with [name] here.
 		
 Demon:— Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?""",
+	PRE_FINAL_BOSS_PALADIN_KNIGHT_OPTION = """""",
 	PRE_FINAL_BOSS_PALADIN_KNIGHT = """""",
 	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
 		
