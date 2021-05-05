@@ -103,6 +103,16 @@ var data = {
 	
 	pre_final_boss_refuse = {
 		variations = [ {
+				reqs = [ {type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]}, 
+				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true},
+				{type = 'decision', value = 'KurdanFollowing', check = true}, ],
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
+				text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
+				options = [ {
+				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
+				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
+				} ],
+			}, {
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
 				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
@@ -118,7 +128,7 @@ var data = {
 				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
 				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 				} ],
-			},
+			}, 
 		]
 	},
 	

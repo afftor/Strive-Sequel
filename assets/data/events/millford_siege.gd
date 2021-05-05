@@ -302,7 +302,7 @@ var data = {
 	
 	divine_symbol_13 = {
 		variations = [ {
-			reqs = [{type = 'wits_factor_check', from = 0, to = 100, value = 20, orflag = true}, 
+			reqs = [{type = 'master_factor_check', factor = 'wits_factor', from = 0, to = 100, value = 20, check = true}, 
 			{type = 'local_counter', name = 'search_attempts', operant = 'lt', value = 4, check = true}],
 			common_effects = [{code = 'dialogue_counter', name = 'search_attempts', op = '+'}],
 			image = 'dome', tags = ['dialogue_scene'],

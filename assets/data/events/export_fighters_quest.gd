@@ -149,10 +149,22 @@ var data = {
 		],
 		options = [
 		{code = 'lich_enc_fight', text = "LICHENCINITIATEREPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'lich_ech_fight_scholar', text = "LICH_ENC_SCHOLAR_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'scholar', check = true}]}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'lich_enc_talk1', text = "LICHENCINITIATEREPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 		],
 	},
 
+	lich_ech_fight_scholar = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "LICH_ENC_FIGHT_SCHOLAR", reqs = []}
+		],
+		options = [
+		{code = 'quest_fight', text = tr("DIALOGUEFIGHTOPTION"), reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
+		],
+	},
+	
 	lich_enc_fight = {
 		image = null,
 		tags = ['dialogue_scene'],

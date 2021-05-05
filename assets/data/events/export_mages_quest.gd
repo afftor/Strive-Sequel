@@ -228,6 +228,7 @@ var data = {
 		options = [
 			{code = 'xari_encounter6', text = "XARIENCOUNTER5REPLY1", reqs = [{type = 'dialogue_seen', check = true, value = 'XARIENCOUNTER4_3'}], type = 'next_dialogue', dialogue_argument = 1},
 			{code = 'xari_encounter7', text = "XARIENCOUNTER5REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'xari_ecnounter_apprentice', text = "XARI_ENCOUNTER_APPRENTICE_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'apprentice', check = true}]}], type = 'next_dialogue', dialogue_argument = 2},
 			{code = 'close', text = "XARIENCOUNTER5REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3, bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}]},
 		]
 	},
@@ -241,10 +242,23 @@ var data = {
 		],
 		options = [
 			{code = 'xari_encounter7', text = "XARIENCOUNTER5REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_ecnounter_apprentice', text = "XARI_ENCOUNTER_APPRENTICE_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'apprentice', check = true}]}], type = 'next_dialogue', dialogue_argument = 2},
 			{code = 'close', text = "XARIENCOUNTER5REPLY3", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}]},
 		]
 	},
-
+	
+	xari_ecnounter_apprentice = {
+		image = null,
+		character = 'xari',
+		tags = ['master_translate'],
+		text = [
+			{text = "XARI_ENCOUNTER_APPRENTICE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
+		],
+		options = [
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+		]
+	},
+	
 	xari_encounter7 = {
 		variations = [
 			{image = null,
