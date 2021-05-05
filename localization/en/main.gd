@@ -3435,6 +3435,8 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
 	AFTER_MINES_CONVOY_OPTION_3 = """We can spare you a half of what we have""",
 	AFTER_MINES_CONVOY_OPTION_4 = """It's none of my business""",
+	AFTER_MINES_CONVOY_HUNTER_OPTION = """""",
+	AFTER_MINES_CONVOY_HUNTER = """""",
 	AFTER_MINES_CONVOY_6 = """— We can't thank you enough for this, [Sir]. 
 
 After some time you are left alone with only a tenth of the original provisions. Duncan will surely not like this but there's nothing that can be done now. Perhaps at least your deed will earn you some recognition among the commonfolk...""",
