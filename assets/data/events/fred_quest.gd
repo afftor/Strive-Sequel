@@ -54,9 +54,8 @@ var data = {
 		]
 	},
 	
-
 	fred_talk_1 = {
-		image = null,
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1", reqs = []}
