@@ -1513,10 +1513,14 @@ func valuecheck(dict):
 				if master_char != null:
 					tval += master_char.get_stat(dict.sub_stat)
 			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, tval) == dict.check
-		'wits_factor_check':
+		'master_factor_check':
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
 				return false
 			else:
-				var result = globals.rng.randi_range(dict.from, dict.to) > dict.value * master_char.statlist.statlist.wits_factor
-				return result #returns true on fail and vice versa
+				var r = globals.rng.randi_range(dict.from, dict.to)
+				if !master_char.statlist.statlist.has(dict.factor):
+					return false #wrong factor
+				var stat = dict.value * master_char.statlist.statlist.get(dict.factor)
+				var result = r > stat
+				return result == dict.check
