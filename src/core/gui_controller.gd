@@ -16,6 +16,7 @@ var mansion_tutorial_panel
 var cheat_panel
 var char_creation
 var dialogue
+var travel
 
 
 var current_screen #reference to the current scene visible (Mansion, Exploration, Inventory, etc.).

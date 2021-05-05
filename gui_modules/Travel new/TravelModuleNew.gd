@@ -1,15 +1,17 @@
 extends "res://src/scenes/ClosingPanel.gd"
 
 
-onready var info_text_node = $MarginContainer/area/info_panel/MarginContainer/VBoxContainer/info_text
-onready var info_text_icon = $MarginContainer/area/info_panel/MarginContainer/VBoxContainer/TextureRect
-onready var info_res_panel = $MarginContainer/area/info_panel/resources
-onready var info_res_node = $MarginContainer/area/info_panel/resources/CenterContainer/GridContainer
-onready var from_list = $MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer
-onready var to_list = $MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer
-onready var char_list = $MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer
-onready var selector = $MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer
-onready var selector_list = $MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel/VBoxContainer
+onready var info_text_node = $area/info_panel/VBoxContainer/info_text
+onready var info_text_icon = $area/info_panel/VBoxContainer/TextureRect
+onready var info_res_panel = $area/info_panel/resources
+onready var info_res_node = $area/info_panel/resources/CenterContainer/GridContainer
+onready var from_list = $area/from_panel/ScrollContainer/VBoxContainer
+onready var to_list = $area/to_panel/ScrollContainer/VBoxContainer
+onready var char_list = $area/from_panel/ScrollContainer2/VBoxContainer
+onready var selector = $area/to_panel/HBoxContainer2/HBoxContainer
+onready var selector_list = $area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel/VBoxContainer
+onready var forget_button = $area/info_panel/VBoxContainer/CenterContainer/forgetButton
+
 
 var from_location_selected = null 
 var location_selected = null
@@ -23,19 +25,22 @@ var loc_filter = 'all'
 
 func _ready():
 	add_to_group("pauseprocess")
+	gui_controller.travel = self
 	selector.get_node("SelectorLeft").connect('pressed', self, 'change_filter', [-1])
 	selector.get_node("SelectorRight").connect('pressed', self, 'change_filter', [1])
 	selector.get_node("SelectorMain").connect('pressed', self, 'toggle_selector', [false])
 	selector.get_node("SelectorMain/SelectorPanel/Screen").connect('pressed', self, 'toggle_selector', [true])
-	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.connect("pressed",self,'confirm_travel')
-	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer/CancelButton.connect("pressed",self,'hide')
+	$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.connect("pressed",self,'confirm_travel')
+	$area/to_panel/HBoxContainer/CenterContainer/CancelButton.connect("pressed",self,'hide')
 	update_lists()
 	build_sel_panel(false)
+	forget_button.connect("pressed", self, "forget_location")
 
 
 func show():
 #	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
+	gui_controller.current_screen = self
 	update_lists()
 	selector.get_node("SelectorMain").pressed = false
 	build_sel_panel(false)
@@ -206,7 +211,7 @@ func update_lists():
 
 func update_confirm_button():
 	if (location_selected != null):
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || ((location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || ((location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
 
 
 func update_from_list():
@@ -319,7 +324,7 @@ func make_panel_for_location(panel, loc):
 
 
 func make_panel_for_character(panel, ch):
-	var newbutton = panel.get_node('MarginContainer/HBoxContainer')
+	var newbutton = panel.get_node('HBoxContainer')
 	newbutton.get_node("icon").texture = ch.get_icon()
 	newbutton.get_node("name").text = ch.get_short_name()
 	newbutton.get_node("stats/hp").max_value = ch.get_stat('hpmax')
@@ -382,9 +387,9 @@ func select_from_location(button):
 #	build_location_resources()
 	build_location_info()
 	if location_selected == null or location_selected.id == from_location_selected.id:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
 	else:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
 	update_confirm_button()
 
 
@@ -395,9 +400,9 @@ func select_to_location(button):
 	build_location_info()
 	build_location_resources()
 	if from_location_selected == null or location_selected.id == from_location_selected.id:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
 	else:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
 	update_confirm_button()
 
 
@@ -460,6 +465,10 @@ func build_location_info():
 	else:
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text
+	if location_selected!= null:
+		forget_button.visible = (location_selected.type == 'dungeon') #cant find any other conditions in earlier version
+	else:
+		forget_button.visible = false
 
 
 func build_location_resources():
@@ -513,6 +522,7 @@ func build_location_resources():
 
 
 func hide():
+	gui_controller.current_screen = gui_controller.mansion
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
@@ -543,4 +553,21 @@ func confirm_travel():
 			person.travel.area  = location_selected.area
 	input_handler.PlaySound("ding")
 	characters.clear()
+	update_lists()
+
+
+func forget_location():
+	input_handler.get_spec_node(
+		input_handler.NODE_YESNOPANEL,
+		[
+			self,
+			'clear_dungeon_confirm',
+			tr("FORGETLOCATIONQUESTION")
+		]
+	)
+
+
+func clear_dungeon_confirm():
+	globals.remove_location(location_selected.id)
+	input_handler.SystemMessage("Location has been removed")
 	update_lists()

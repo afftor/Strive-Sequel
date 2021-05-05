@@ -19,14 +19,44 @@ func _ready():
 #	update()
 	$TalkButton.connect("pressed", self, 'talk', [])
 
+var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
+	kurdan = {
+	code = 'kurdan', 
+	scenes = [
+		{code = 'kurdan_dialogue_start', reqs = []}
+		]
+	},
+	
+	zephyra = {
+	code = 'zephyra', 
+	scenes = [
+		{code = 'zephyra_dialogue_start', reqs = []}
+		]
+	},
+	
+	anastasia = {
+	code = 'anastasia', 
+	scenes = [
+		{code = 'anastasia_dialogue_start', reqs = []}
+	]
+	},
+	
+}
+
+
 func talk():
 	input_handler.active_character = active_person
-	if active_person.get_stat("unique") == "kurdan":
+	var unique = active_person.get_stat('unique')
+	if unique_dict.has(unique):
 		gui_controller.close_scene(self)
-		input_handler.interactive_message("kurdan_dialogue_start", '',{})
-	elif active_person.get_stat("unique") == "zephyra":
-		gui_controller.close_scene(self)
-		input_handler.interactive_message("zephyra_dialogue_start", '',{})
+		var scene 
+		for i in unique_dict[unique].scenes:
+			if globals.checkreqs(i.reqs):
+				scene = i.code
+				break
+				
+		if scene != null:
+			input_handler.interactive_message(scene)
 
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
@@ -38,7 +68,7 @@ func update():
 	for button in SummaryModule.get_node("VBoxContainer").get_children():
 		button.disabled = active_person.is_on_quest()
 	SlaveInfo.get_node("DietButton").disabled = active_person.is_on_quest()
-	$TalkButton.visible = active_person.get_stat('unique') in ['kurdan', 'zephyra']
+	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 
 
 func set_state(state):

@@ -1531,7 +1531,7 @@ var dungeons = {
 		bgm = "dungeon",
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
 		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['event_tribal_elves', 0.5],['event_spring_heal', 1]],
+		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['event_tribal_elves', 0.5],['spring', 1]],
 		levels = [2,4],
 		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {number = [2,3], pool = {woodmagic = [15,25], woodiron = [15,30], leatherthick = [20,30], leathermythic = [10,20]}},
@@ -1710,7 +1710,7 @@ var pregen_characters = {
 		personality = 'shy',
 		food_like = 'vege',
 		food_hate = ['fish'],
-		sex_skills = {petting = 0, pussy = 0, oral = 0},
+		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	
 	Kurdan = {
@@ -1749,7 +1749,7 @@ var pregen_characters = {
 		food_hate = ['vege'],
 		classes = ['scholar','shaman'],
 		tags = [],
-		sex_skills = {petting = 2, penetration = 15, oral = 4},
+		sex_skills = {petting = 2, penetration = 15, oral = 4, anal = 0},
 	},
 	Aire = {
 		code = 'aire',
@@ -1794,7 +1794,7 @@ var pregen_characters = {
 		food_hate = ['meat'],
 		skills = ['take_position'],
 		classes = ['ranger'],
-		sex_skills = {petting = 7, pussy = 17, oral = 12},
+		sex_skills = {petting = 7, pussy = 17, oral = 12, anal = 2},
 	},
 	Anastasia = {
 		code = 'anastasia',
@@ -1838,7 +1838,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['renown_royalty'],
-		sex_skills = {petting = 0, pussy = 0, oral = 0},
+		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Zephyra = {
 		code = 'zephyra',
@@ -1883,6 +1883,6 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['fish'],
 		classes = ['alios_champion'],
-		sex_skills = {petting = 0, pussy = 0, oral = 0},
+		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 }

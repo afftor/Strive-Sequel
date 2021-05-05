@@ -112,7 +112,7 @@ var data = {
 		
 		{code = 'princess_search_servants_1', text = "SEARCH_SERVANTS_OPTION_INIT", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
 		
-		{code = "amelia_titjob1", text = "AMELIASCENEOPTION", reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 3000}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_used = true},
+		{code = "amelia_titjob1", text = "AMELIASCENEOPTION", reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 3000}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_used = true, change_dialogue_type = 2},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
