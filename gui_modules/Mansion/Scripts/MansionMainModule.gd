@@ -127,9 +127,7 @@ func _ready():
 	set_active_person(ResourceScripts.game_party.get_master())
 
 func test():
-	input_handler.interactive_message('princess_persuation_2_init', '', {})
-	#print(ResourceScripts.game_progress.decisions)
-	#ResourceScripts.game_progress.seen_dialogues.append('ALIRONCHURCHFIRSTCOME')
+	pass
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -771,14 +769,14 @@ func test_mode():
 				#i.captured = true
 		
 		
-		var newslave = ResourceScripts.scriptdict.class_slave.new()
-		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
-		newslave.set_slave_category('servant')
-		ResourceScripts.game_party.add_slave(newslave)
-		#ResourceScripts.game_progress.decisions.append("interrogation_success")
+#		var newslave = ResourceScripts.scriptdict.class_slave.new()
+#		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
+#		newslave.set_slave_category('servant')
+#		ResourceScripts.game_party.add_slave(newslave)
+		ResourceScripts.game_progress.decisions.append("mindbreak_completed")
 		
 		
-		#input_handler.interactive_message('looking_for_princess_mages_2', '', {})
+		input_handler.interactive_message('final_words_1', '', {})
 		
 		#input_handler.interactive_message('looking_for_princess_2', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
@@ -789,7 +787,7 @@ func test_mode():
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
-			i.totalreputation += 500
+			i.totalreputation += 5000
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 		

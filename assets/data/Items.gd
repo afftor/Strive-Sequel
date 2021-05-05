@@ -2248,8 +2248,8 @@ var itemlist = {
 		price = 500,
 		icon = load("res://assets/images/iconsitems/icon_scroll1.png"),
 		tier = 'hard',
-		reqs = [{code = 'slave_type', operant = 'eq', value = 'slave'}],
-		reqs_fail_message = "Can only be applied to Slaves",
+		reqs = [{code = 'slave_type', operant = 'eq', value = 'slave'}, {code = 'unique', value = null}],
+		reqs_fail_message = "Can only be applied to non-unique slaves",
 		effects = [],
 		tags = ['save_on_use'], #saved on use in case of cancel, consumed during scene
 		mansion_effect = 'writ_of_exemption',

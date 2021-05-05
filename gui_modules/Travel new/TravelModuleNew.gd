@@ -569,4 +569,5 @@ func forget_location():
 
 func clear_dungeon_confirm():
 	globals.remove_location(location_selected.id)
+	input_handler.SystemMessage("Location has been removed")
 	update_lists()

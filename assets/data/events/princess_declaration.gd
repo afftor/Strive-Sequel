@@ -98,6 +98,16 @@ var data = {
 			{text = "", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}], bonus_effects = [
 				{code = 'make_story_character', value = 'Aire'}]
 			},
+			{text = '', reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [
+					{code = 'wits_factor', operant = '=', value = 1},
+					{code = 'wits', operant = '=', value = 3},
+					{code = 'charm', operant = '=', value = 8},
+					{code = 'consent', operant = '=', value = 200},
+					]
+				},
+				]
+			}
 		],
 		options = [
 			{
@@ -491,6 +501,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				change_dialogue_type = 1,
 			}
 		],
 	},
@@ -543,6 +554,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				change_dialogue_type = 1,
 			}
 		],
 	},

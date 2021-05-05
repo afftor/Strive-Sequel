@@ -1,3 +1,11 @@
+0.5.0a
+Writ of exemption and Enslave no longer apply to unique characters
+Certain story character will have their stats adjusted based on player's decisions
+Fixed an issue when sometimes characters didn't get assigned to task correctly
+Fixed final guards at the siege not being fightable
+Fixed elven capital questline not completing properly in some cases
+Fixed wip scenes not having an option to hide foreground
+Fixed lich intimidation check
 0.5.0
 Engine version switched to 3.3
 Added civil war story arc

@@ -1485,7 +1485,7 @@ func valuecheck(dict):
 		'group_size':#not sure about this implementation instead of area - party approach
 			var counter = 0
 			for i in ResourceScripts.game_party.characters.values():
-				if i.location == input_handler.active_location.id:
+				if i.check_location(input_handler.active_location.id):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
 		'location_has_specific_slaves': 
