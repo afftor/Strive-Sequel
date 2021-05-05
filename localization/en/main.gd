@@ -2356,6 +2356,8 @@ var TranslationDict = {
 	LICHENCINITIATE = "You enter the small hideout filled with the stench of death. As you make your way forward you hear sounds of combat. Once in a fairly open room, you find the Lich you are looking for, surrounded by a small group of undead. On the other side of the room you see an elven girl dressed in leather armor. She's losing the battle against them.",
 	LICHENCINITIATEREPLY1 = "Use girl as a distraction to attack at best opportunity",
 	LICHENCINITIATEREPLY2 = "*Call out to Undead*",
+	LICH_ENC_SCHOLAR_OPTION = "",
+	LICH_ENC_FIGHT_SCHOLAR = "",
 	LICHENCFIGHT = "You take your time to set an ambush but as you do so, the elven girl is struck down and does not move anymore.",
 	LICHENCTALK1 = "You make an appearance, preparing to strike and catch the attention of the Lich, who seems to be quite agitated. The elven girl gets subdued by the undead around her, but is still alive.",
 	LICHENCTALK1REPLY1 = "Die, monster! *Attack*",
@@ -2508,6 +2510,8 @@ var TranslationDict = {
 	XARIENCOUNTER9 = "— You are back. Got something for me?",
 	XARIENCOUNTER9REPLY1 = "I've brought the elf you requested",
 	XARIENCOUNTER9REPLY2 = "Not yet, I'll be back",
+	XARI_ENCOUNTER_APPRENTICE_OPTION = "",
+	XARI_ENCOUNTER_APPRENTICE = "",
 	XARIENCOUNTER10 = "— Hmm not bad, I'll take it. Now, if you excuse me... Oh, I guess you can take your books and go. Don't worry, I'll send this lad back right after we are done. \n\n [name] gives you a worried look as they disappear behind the locked door. \n\n After a few hours [name] returns back with an expression of exhausted bliss on [his] face.",
 	MAGESELECTION4_1 = "— You di... You've slept with her!?",
 	MAGESELECTION4_1REPLY1 = "Was my grin too wide?",
@@ -2814,7 +2818,7 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
-
+	FINDFRED_ROGUE_OPTION = "",
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
 	
 — Huh, really? Who are you trying to fool here?""",
@@ -3338,6 +3342,7 @@ Kurdan leaves following the demon's path.""",
 Kurdan:— It seems I've been misguided. I'll have to side with [name] here.
 		
 Demon:— Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?""",
+	PRE_FINAL_BOSS_PALADIN_KNIGHT = """""",
 	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
 		
 Demon:— You should be useful in this dispute. Now, let's see if you are even worth our time, [name].""",

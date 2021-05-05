@@ -200,6 +200,8 @@ var data = {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_3", reqs = [], dialogue_argument = 2,
 			bonus_effects = [{code = 'decision', value = 'SiegeHalfSupplies'}], type = 'next_dialogue'
 		}, {
+			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_HUNTER_OPTION", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+		}, {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_4", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, ],
 	},
@@ -208,7 +210,8 @@ var data = {
 		image = 'refugees', tags = ['dialogue_scene', 'master_translate'],
 		text = [ {text = "AFTER_MINES_CONVOY_6", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
-		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
+		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3},
+		{text = "AFTER_MINES_CONVOY_HUNTER", reqs = [], previous_dialogue_option = 4} ],
 		options = [{
 			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}},
 			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'captured', value = false},
