@@ -257,7 +257,6 @@ var data = {
 			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
 		]
 	},
-	}
 	
 	xari_encounter7 = {
 		variations = [
