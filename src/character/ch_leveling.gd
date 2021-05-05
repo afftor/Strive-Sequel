@@ -235,6 +235,7 @@ func get_selected_work_quest():
 
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
+	remove_from_task(false)
 	is_on_quest = true
 	quest_days_left = int(work_time)
 	quest_id = quest.id

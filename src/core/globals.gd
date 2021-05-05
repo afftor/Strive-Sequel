@@ -1164,6 +1164,7 @@ func common_effects(effects):
 								newcharacter.set_slave_category(k.slave_type)
 							'function':
 								newcharacter = call(k.function, k.args)
+						newcharacter.is_active = false
 						input_handler.active_character = newcharacter
 						input_handler.scene_characters.append(newcharacter)
 

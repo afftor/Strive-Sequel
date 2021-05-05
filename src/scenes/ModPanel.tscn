@@ -47,14 +47,14 @@ margin_right = 1236.0
 margin_bottom = 778.0
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 564.0
+margin_right = 561.0
 margin_bottom = 753.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer2"]
-margin_right = 564.0
+margin_right = 561.0
 margin_bottom = 753.0
 custom_constants/margin_right = 30
 custom_constants/margin_top = 30
@@ -64,74 +64,75 @@ custom_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
 margin_left = 30.0
 margin_top = 30.0
-margin_right = 534.0
+margin_right = 531.0
 margin_bottom = 723.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
-margin_right = 504.0
-margin_bottom = 32.0
+margin_right = 501.0
+margin_bottom = 35.0
 text = "Loaded mods"
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 504.0
-margin_bottom = 103.0
+margin_top = 39.0
+margin_right = 501.0
+margin_bottom = 112.0
 text = "these mods will be applied to game and avaliable in editor at next game start."
 autowrap = true
 
 [node name="ScrollContainer2" type="ItemList" parent="MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
-margin_top = 107.0
-margin_right = 504.0
-margin_bottom = 107.0
+margin_top = 116.0
+margin_right = 501.0
+margin_bottom = 693.0
+size_flags_vertical = 3
 custom_styles/selected_focus = SubResource( 2 )
 custom_styles/bg_focus = SubResource( 3 )
 custom_styles/selected = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 568.0
-margin_right = 643.0
+margin_left = 565.0
+margin_right = 645.0
 margin_bottom = 753.0
 alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 228.0
-margin_right = 75.0
-margin_bottom = 274.251
+margin_top = 219.0
+margin_right = 80.0
+margin_bottom = 268.251
 text = "<"
 
 [node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 278.0
-margin_right = 75.0
-margin_bottom = 324.251
+margin_top = 272.0
+margin_right = 80.0
+margin_bottom = 321.251
 text = ">"
 
 [node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 328.0
-margin_right = 75.0
+margin_top = 325.0
+margin_right = 80.0
 margin_bottom = 374.251
 text = "Up"
 
 [node name="Button4" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 378.0
-margin_right = 75.8375
-margin_bottom = 424.251
+margin_right = 80.8375
+margin_bottom = 427.251
 text = "Down"
 
 [node name="Button5" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 428.0
-margin_right = 75.0
-margin_bottom = 474.251
+margin_top = 431.0
+margin_right = 80.0
+margin_bottom = 480.251
 text = "Ok"
 
 [node name="Button6" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 478.0
-margin_right = 75.0
-margin_bottom = 524.251
+margin_top = 484.0
+margin_right = 80.0
+margin_bottom = 533.251
 text = "Close"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 647.0
+margin_left = 649.0
 margin_right = 1211.0
 margin_bottom = 753.0
 size_flags_horizontal = 3
@@ -139,7 +140,7 @@ size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
-margin_right = 564.0
+margin_right = 562.0
 margin_bottom = 753.0
 custom_constants/margin_right = 30
 custom_constants/margin_top = 30
@@ -149,18 +150,19 @@ custom_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
 margin_left = 30.0
 margin_top = 30.0
-margin_right = 534.0
+margin_right = 532.0
 margin_bottom = 723.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 504.0
-margin_bottom = 32.0
+margin_right = 502.0
+margin_bottom = 35.0
 text = "List of mods avaliable to load"
 
 [node name="ScrollContainer2" type="ItemList" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 504.0
-margin_bottom = 36.0
+margin_top = 39.0
+margin_right = 502.0
+margin_bottom = 693.0
+size_flags_vertical = 3
 custom_styles/selected_focus = SubResource( 2 )
 custom_styles/bg_focus = SubResource( 3 )
 custom_styles/selected = SubResource( 4 )
