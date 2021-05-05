@@ -293,6 +293,7 @@ func return_to_mansion():
 	travel.return_to_mansion()
 
 func recruit(enslave = false):
+	is_active = true
 	travel.location = input_handler.active_location.id
 	travel.area = input_handler.active_area.code
 	if enslave == true:
