@@ -368,7 +368,7 @@ func _input(event):
 						gui_controller.mansion.SlaveListModule.show_location_characters()
 					gui_controller.game_menu:
 						gui_controller.game_menu.hide()
-						gui_controller.current_screen = gui_controller.previous_screen
+#						gui_controller.current_screen = gui_controller.previous_screen
 					gui_controller.slavepanel:
 						gui_controller.slavepanel.hide()
 						# gui_controller.slavepanel.SummaryModule.selected_person = null

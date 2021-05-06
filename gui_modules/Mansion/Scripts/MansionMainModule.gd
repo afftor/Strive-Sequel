@@ -142,6 +142,7 @@ func show_menu():
 	gui_controller.game_menu.show()
 	gui_controller.previous_screen = gui_controller.current_screen
 	gui_controller.current_screen = gui_controller.game_menu
+	gui_controller.update_modules()
 
 
 func set_active_person(person):
@@ -776,9 +777,9 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mindbreak_completed")
 		
 		
-		input_handler.interactive_message('final_words_1', '', {})
+#		input_handler.interactive_message('final_words_1', '', {})
 		
-		#input_handler.interactive_message('looking_for_princess_2', '', {})
+#		input_handler.interactive_message('princess_recriut_intermission_3', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("interrogation_success")
 		
