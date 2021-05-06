@@ -41,6 +41,8 @@ func show():
 #	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
 	gui_controller.current_screen = self
+	if !gui_controller.windows_opened.has(self):
+		gui_controller.windows_opened.append(self)
 	update_lists()
 	selector.get_node("SelectorMain").pressed = false
 	build_sel_panel(false)
@@ -522,6 +524,7 @@ func build_location_resources():
 
 
 func hide():
+	if !visible: return
 	gui_controller.current_screen = gui_controller.mansion
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
