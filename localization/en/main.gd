@@ -573,7 +573,7 @@ var TranslationDict = {
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all allies.",
 	SKILLBLIZZARD = "Blizzard",
-	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
+	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20 with a 30% chance. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
 	SKILLBLESSDESCRIPT = "Increase ATK by 25% for 3 turns.",
 	SKILLBLOOD_MAGIC = "Blood Magic",
@@ -2356,8 +2356,8 @@ var TranslationDict = {
 	LICHENCINITIATE = "You enter the small hideout filled with the stench of death. As you make your way forward you hear sounds of combat. Once in a fairly open room, you find the Lich you are looking for, surrounded by a small group of undead. On the other side of the room you see an elven girl dressed in leather armor. She's losing the battle against them.",
 	LICHENCINITIATEREPLY1 = "Use girl as a distraction to attack at best opportunity",
 	LICHENCINITIATEREPLY2 = "*Call out to Undead*",
-	LICH_ENC_SCHOLAR_OPTION = "",
-	LICH_ENC_FIGHT_SCHOLAR = "",
+	LICH_ENC_SCHOLAR_OPTION = "Launch a light missle (Scholar)",
+	LICH_ENC_FIGHT_SCHOLAR = "You launch a light missle, which shines over the Lich's group and briefly disctracts him, allowing your group to take care of some of the minions who didn't fight back. Now, it's time to finish the weakened undeads.",
 	LICHENCFIGHT = "You take your time to set an ambush but as you do so, the elven girl is struck down and does not move anymore.",
 	LICHENCTALK1 = "You make an appearance, preparing to strike and catch the attention of the Lich, who seems to be quite agitated. The elven girl gets subdued by the undead around her, but is still alive.",
 	LICHENCTALK1REPLY1 = "Die, monster! *Attack*",
@@ -2510,8 +2510,8 @@ var TranslationDict = {
 	XARIENCOUNTER9 = "— You are back. Got something for me?",
 	XARIENCOUNTER9REPLY1 = "I've brought the elf you requested",
 	XARIENCOUNTER9REPLY2 = "Not yet, I'll be back",
-	XARI_ENCOUNTER_APPRENTICE_OPTION = "",
-	XARI_ENCOUNTER_APPRENTICE = "",
+	XARI_ENCOUNTER_APPRENTICE_OPTION = "I don't think Myr or Mages' Guild would like me wasting time for this (Apprentice)",
+	XARI_ENCOUNTER_APPRENTICE = "- Gods, you are no fun at all. Fine, I don't want those geezers anywhere around here, so take your books and leave.",
 	XARIENCOUNTER10 = "— Hmm not bad, I'll take it. Now, if you excuse me... Oh, I guess you can take your books and go. Don't worry, I'll send this lad back right after we are done. \n\n [name] gives you a worried look as they disappear behind the locked door. \n\n After a few hours [name] returns back with an expression of exhausted bliss on [his] face.",
 	MAGESELECTION4_1 = "— You di... You've slept with her!?",
 	MAGESELECTION4_1REPLY1 = "Was my grin too wide?",
@@ -2818,8 +2818,12 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
-	FIND_FRED_ROGUE_OPTION = "",
-	FIND_FRED_ROGUE = "",
+	FINDFRED_ROGUE_OPTION = "You fuckers were sold out, the city militia is already on this way here (Rogue)",
+	FINDFRED_ROGUE = """Merc:- Shit! What did this asshole...
+
+Merc Leader:- Damnit, I knew these bastards could not be trusted. Retreat!
+
+Mercs quickly escape without realizing your bluff, leaving you with their prisoner.""",
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
 	
 — Huh, really? Who are you trying to fool here?""",
@@ -3327,8 +3331,8 @@ Demon's voice shook the air and her underling froze in place.""",
 	PRE_FINAL_BOSS_4 = """— I believe this is a good deal for you. After all, these people are mere peasants, what's the point in risking your life for them? I'm sure your employers will be able to replace them.
 
 The prisoners overhearing your conversation closely observed your reaction in fear.""",
-	PRE_FINAL_BOSS_OPTION_4 = """Agree""",
-	PRE_FINAL_BOSS_OPTION_5 = """Refuse""",
+	PRE_FINAL_BOSS_OPTION_4 = """This is a reasonable offer""",
+	PRE_FINAL_BOSS_OPTION_5 = """No deal, you demon""",
 	PRE_FINAL_BOSS_5 = """— Hah, now that's my kind of hero. A smart choice. We'll be leaving shortly then.
 
 You observe as the demon leaves taking the frightened miners with her.""",

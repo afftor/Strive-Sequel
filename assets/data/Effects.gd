@@ -2597,10 +2597,11 @@ var effect_table = {
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
-	e_s_takeposition = {
+		e_s_takeposition = {
 		type = 'temp_s',
 		duration = 2,
 		stack = 1,
+		target = 'target',
 		name = 'e_s_takeposition',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
@@ -2611,8 +2612,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/takeposition.png",
+			description = "+50 Armor Penetration; +20% Damage Dealt.",
 			args = [],
 			limit = 1,
 			t_name = 'takeposition',
@@ -2623,6 +2624,7 @@ var effect_table = {
 		duration = 4,
 		stack = 1,
 		name = 'e_s_windwall',
+		target = 'target',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		args = [],
@@ -2631,8 +2633,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/windwall.png",
+			description = "Reduces randged damage by 50%",
 			args = [],
 			limit = 1,
 			t_name = 'windwall',

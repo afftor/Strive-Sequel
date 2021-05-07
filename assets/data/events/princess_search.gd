@@ -916,7 +916,7 @@ var data = {
 			{text = "AIRE_AMELIA6", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 1}]}
+			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 1}], change_dialogue_type = 1}
 		]
 	},
 	

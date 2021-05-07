@@ -1,5 +1,13 @@
+0.5.0b
+Blizzard now costs mana
+Blizzard now only slows enemies with 30% chance 
+Fixed some issues with shrines and chests causing errors
+Fixed clock showing in inventory
+Fixed some new skills
+Fixed traps doing damage to negative numbers
 0.5.0a
 Writ of exemption and Enslave no longer apply to unique characters
+Added some additional dialogue options based on master's class
 Certain story character will have their stats adjusted based on player's decisions
 Fixed an issue when sometimes characters didn't get assigned to task correctly
 Fixed final guards at the siege not being fightable
