@@ -772,23 +772,25 @@ func build_location_group():
 	#clear_groups()
 	if active_location == null || !active_location.has("group"):
 		return
+	active_location.group.clear()
 	for ch in ResourceScripts.game_party.characters.values():
 		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
-			active_location.group.erase('pos' + str(ch.combat_position))
-			ch.combat_position = 0
-		if ch.check_location(active_location.id) and ch.combat_position != 0 and !ch.has_status('no_combat'):
+			continue
+		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat'):
 			if !active_location.group.has(['pos' + str(ch.combat_position)]):
 				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:
-		if (active_location.group.has('pos' + str(i)) && ((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))):
-			active_location.group.erase('pos' + str(i))
+#		if (active_location.group.has('pos' + str(i)) && ((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))):
+#			active_location.group.erase('pos' + str(i))
+		if !active_location.group.has('pos' + str(i)):
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
 			get_node(positiondict[i] + "/Image").hide()
 			get_node(positiondict[i]).self_modulate.a = 1
 			get_node(positiondict[i]).character = null
 			continue
-		if (active_location.group.has('pos' + str(i)) && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(active_location.id)):
+#		if (active_location.group.has('pos' + str(i)) && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(active_location.id, true)):
+		else:
 			var character = ResourceScripts.game_party.characters[active_location.group[('pos' + str(i))]]
 			get_node(positiondict[i] + "/Image").texture = character.get_icon()
 			if get_node(positiondict[i] + "/Image").texture == null:
@@ -831,12 +833,12 @@ func build_location_group():
 			get_node(positiondict[i] + "/Image/Label").text = character.get_short_name()
 			# get_node(positiondict[i]).self_modulate.a = 0
 			get_node(positiondict[i]).character = character
-		else:
-			get_node(positiondict[i] + "/Image").dragdata = null
-			get_node(positiondict[i] + "/Image").texture = null
-			get_node(positiondict[i] + "/Image").hide()
-			get_node(positiondict[i]).self_modulate.a = 1
-			get_node(positiondict[i]).character = null
+#		else:
+#			get_node(positiondict[i] + "/Image").dragdata = null
+#			get_node(positiondict[i] + "/Image").texture = null
+#			get_node(positiondict[i] + "/Image").hide()
+#			get_node(positiondict[i]).self_modulate.a = 1
+#			get_node(positiondict[i]).character = null
 		
 	var newbutton
 	var counter = 0
