@@ -69,3 +69,9 @@ func close_scene(scene):
 		gui_controller.previous_screen = null
 	else:
 		submodules.erase(scene)
+
+
+func hide():
+	gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.update_modules()
+	.hide()
