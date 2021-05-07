@@ -549,7 +549,11 @@ func fix_serialization():
 	
 	rebuild_parents()
 	repair_skill_panels()
-	
+
+
+func fix_import():
+	pass
+
 
 func repair_skill_panels():
 	skills.repair_skill_panels()

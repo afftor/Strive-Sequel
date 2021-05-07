@@ -42,6 +42,12 @@ func fix_serialization():
 		babies[p].fix_serialization()
 	pass
 
+
+func fix_import():
+	active_tasks.clear()
+	for p in characters:
+		characters[p].fix_import()
+
 #slaves operations
 func add_slave(person, child = false):
 	if child: characters_pool.move_baby_to_state(person.id) 
