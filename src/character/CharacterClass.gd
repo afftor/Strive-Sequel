@@ -549,7 +549,14 @@ func fix_serialization():
 	
 	rebuild_parents()
 	repair_skill_panels()
-	
+
+
+func fix_import():
+	xp_module.fix_import()
+	travel.fix_import()
+	if statlist.statlist.unique != null:
+		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.statlist.unique)
+
 
 func repair_skill_panels():
 	skills.repair_skill_panels()

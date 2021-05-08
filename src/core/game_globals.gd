@@ -25,6 +25,11 @@ var daily_dates_left = 1
 #var log_node
 #var log_storage = []
 
+
+func fix_import():
+	original_version = globals.gameversion
+
+
 func serialize():
 	return inst2dict(self)
 

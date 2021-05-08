@@ -150,7 +150,9 @@ func calculate_args():
 						args.push_back(par.get_arg(arg.index).get(arg.param))
 				'app_obj':
 					var par = get_applied_obj()
-					if arg.has('param'):
+					if par == null:
+						args.push_back(null)
+					elif arg.has('param'):
 						args.push_back(par.get_stat(arg.param))
 					else:
 						args.push_back(par)
