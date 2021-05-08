@@ -39,6 +39,17 @@ func fix_serialization():
 				print("wrong questnumber for %s - unallocated quests" % [guild.name])
 
 
+func fix_import(data):
+	if !data.has('factions'): return
+	for area in areas.values():
+		for guild in area.factions.values():
+			if !data.factions.has(guild.code): continue
+			var guilddata = data.factions[guild.code]
+			var fulldata = data.areas[guilddata.area].factions[guilddata.code]
+			if fulldata.has('reputation') : guild.reputation = fulldata.reputation
+			if fulldata.has('totalreputation') : guild.reputation = fulldata.totalreputation
+
+
 func make_world():
 	ResourceScripts.world_gen.build_world()
 	areas.plains.unlocked = true

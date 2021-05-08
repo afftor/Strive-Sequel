@@ -192,6 +192,7 @@ func SaveGame():
 
 func LoadGame():
 	globals.LoadGame($LineEdit.text)
+#	globals.ImportGame($LineEdit.text)
 	yield(get_tree(), "idle_frame")
 	if gui_controller.game_menu != null:
 		gui_controller.game_menu.hide()

@@ -552,7 +552,10 @@ func fix_serialization():
 
 
 func fix_import():
-	pass
+	xp_module.fix_import()
+	travel.fix_import()
+	if statlist.statlist.unique != null:
+		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.statlist.unique)
 
 
 func repair_skill_panels():

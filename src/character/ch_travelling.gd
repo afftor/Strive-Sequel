@@ -7,6 +7,14 @@ var travel_target = {area = '', location = ''}
 var travel_time = 0
 var initial_travel_time = 0 setget set_travel_time
 
+
+func fix_import():
+	location = ResourceScripts.game_world.mansion_location
+	area = ResourceScripts.game_world.starting_area
+	travel_target = {area = '', location = ''}
+	travel_time = 0
+	initial_travel_time = 0
+
 func travel_per_tick():
 	var value = 1
 	if ResourceScripts.game_res.upgrades.has('stables'):

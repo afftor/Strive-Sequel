@@ -53,6 +53,17 @@ func _init():
 func serialize():
 	return inst2dict(self)
 
+
+func fix_import():#this is the most questionable fix
+	var tmp = []
+	for i in active_quests:
+		if !scenedata.quests.has(i.code): continue
+		var data = scenedata.quests[i.code]
+		var record = i.duplicate()
+		record.stage = 0
+		tmp.push_back(record)
+	active_quests = tmp
+
 #finders
 func get_active_quest(code):
 	for i in active_quests:

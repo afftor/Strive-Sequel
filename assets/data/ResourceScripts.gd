@@ -43,6 +43,7 @@ var scriptdict = {
 	closingpanel = "res://src/scenes/ClosingPanel.gd",
 	gamestart = "res://src/GameStart.gd",
 	rclickbutton = "res://src/scenes/RightClickReactButton.gd",
+	gallery = "res://src/core/gallery.gd"
 	}
 
 onready var node_data = {
@@ -94,13 +95,14 @@ onready var node_data = {
 }
 
 
-var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text"]
+var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text", "gallery"]
 #singletones
 var descriptions
 var custom_effects
 var core_animations
 var world_gen
 var custom_text
+var gallery
 
 var gamestate = ['game_globals', 'game_party', 'game_progress', 'game_res', 'game_world']
 #gamestate

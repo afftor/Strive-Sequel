@@ -35,6 +35,13 @@ func update_exp(value, is_set):
 		tmp = base_exp - tmp
 		return tmp
 
+
+func fix_import():
+	is_on_quest = false
+	work = ''
+	workproduct = null
+	previous_work = ''
+
 #professions
 func process_chardata(data):
 	if data.has('classes'):

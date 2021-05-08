@@ -511,14 +511,20 @@ func ImportGame(filename):
 	var savedict = parse_json(file.get_as_text())
 	file.close()
 	
-	characters_pool.deserialize(savedict.charpool)
-	ResourceScripts.game_party = dict2inst(savedict['game_party'])
+	effects_pool.deserialize(savedict.effpool)
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
+	ResourceScripts.game_res = dict2inst(savedict.game_res)
 	ResourceScripts.game_res.fix_serialization()
+	ResourceScripts.game_world.make_world()
+	ResourceScripts.game_world.fix_import(savedict.game_world)
+	ResourceScripts.game_party = dict2inst(savedict.game_party)
 	ResourceScripts.game_party.fix_serialization()
 	ResourceScripts.game_party.fix_import()
-	ResourceScripts.game_world.make_world()
-	effects_pool.deserialize(savedict.effpool)
+	ResourceScripts.game_globals = dict2inst(savedict.game_globals)
+	ResourceScripts.game_globals.fix_import()
+	ResourceScripts.game_progress = dict2inst(savedict.game_progress)
+	ResourceScripts.game_progress.fix_import()
+	
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	
@@ -530,10 +536,8 @@ func ImportGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
-	input_handler.SystemMessage("Game Loaded")
+	input_handler.SystemMessage("Game Imported")
 	
-	ResourceScripts.game_globals.newgame = true
-	ResourceScripts.game_globals.original_version = globals.gameversion
 
 
 
