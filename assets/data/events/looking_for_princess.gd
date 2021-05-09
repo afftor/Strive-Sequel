@@ -154,7 +154,6 @@ var data = {
 		},],
 	},
 	
-	#TODO block search for 1 day
 	looking_for_princess_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_11", reqs = [], previous_dialogue_option = 1}, 
