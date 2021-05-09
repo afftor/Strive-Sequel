@@ -198,6 +198,7 @@
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
 						{code = "unlock_class", name = "healer"},
 						{code = 'reset_day_count', quest = "aliron_church"},
+						{code = 'complete_quest', value = 'aliron_church_quest'},
 				]}],	
 			},
 			{
