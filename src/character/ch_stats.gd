@@ -914,6 +914,7 @@ func translate(text):
 	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', 'him', 'her'))
 	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', 'His', 'Her'))
 	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', 'Sir', 'Miss'))
+	text = text.replace("[gentleman]", globals.fastif(statlist.sex == 'male', 'gentleman', 'lady'))
 	text = text.replace("[raceadj]", races.racelist[statlist.race].adjective if statlist.race != "" else "")
 	text = text.replace("[race]", races.racelist[statlist.race].name if statlist.race != "" else "")
 	text = text.replace("[race_short]",input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]) if statlist.race != "" else "")

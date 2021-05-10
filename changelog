@@ -1,3 +1,9 @@
+Reduced time requirement for Assignmenet tasks
+Fixed princess not being findable if you didn't interrogate Aire
+0.5.0c
+Fixed some buff tooltips and misspells
+Fixed a rare bug when timed event was cancelled when it was running with another timed event
+Fixed game becoming slow on the closing until system restart/reinstall
 0.5.0b
 Blizzard now costs mana
 Blizzard now only slows enemies with 30% chance 

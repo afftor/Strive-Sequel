@@ -982,7 +982,7 @@ var enemies = {
 		atk = 80,
 		matk = 20,
 		speed = 40,
-		resists = {earth = 50, water = 100, fire = -25, mind = 50, dark = 50, light = -50},
+		resists = {earth = 50, water = 100, fire = -50, mind = 50, dark = 50, light = -50},
 		status_resists = {stun = 100, bleed = 100, poison = 100},
 		race = 'monster',
 		loot = 'mimic_loot',
