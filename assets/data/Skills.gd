@@ -1659,10 +1659,10 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [
-			Effectdata.rebuild_template({effect = 'e_t_blizz'}),
+			Effectdata.rebuild_template({chance = 0.3, effect = 'e_t_blizz'}),
 			Effectdata.rebuild_template({chance = 0.5, effect = 'e_s_freeze1', duration = 2})
 		], 
-		cost = {},
+		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 2,
 		cooldown = 0,

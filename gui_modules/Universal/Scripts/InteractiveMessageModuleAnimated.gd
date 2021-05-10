@@ -740,10 +740,10 @@ func handle_scene_options(scene):
 			
 			if i.has('select_person'):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
-			if i.has('remove_non_master'):
-				newbutton.connect("pressed", self, 'remove_non_master', [i.code])
-			if i.has('remove_person'):
+			elif i.has('remove_person'):
 				newbutton.connect("pressed", self, 'remove_person', [i.code])
+			elif i.has('remove_non_master'):
+				newbutton.connect("pressed", self, 'remove_non_master', [i.code])
 			elif i.code == 'shrine_option':
 				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 			elif i.code == 'chest_mimic_force_open':

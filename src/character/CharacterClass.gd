@@ -549,7 +549,14 @@ func fix_serialization():
 	
 	rebuild_parents()
 	repair_skill_panels()
-	
+
+
+func fix_import():
+	xp_module.fix_import()
+	travel.fix_import()
+	if statlist.statlist.unique != null:
+		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.statlist.unique)
+
 
 func repair_skill_panels():
 	skills.repair_skill_panels()
@@ -561,8 +568,12 @@ func need_heal():
 #core functions
 func hp_set(value):
 	if npc_reference == 'combat_global': return
-	if hp <= 0 && value <= 0:
-		return
+	if hp <= 0:
+		if value <= hp:
+			return
+		else:
+			hp = value
+			return
 	hp = min(value, get_stat('hpmax'))
 	if displaynode != null:
 		displaynode.update_hp()

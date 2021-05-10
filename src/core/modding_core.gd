@@ -336,7 +336,7 @@ func process_dir(table_name, dir_name, location_dir):
 		var patch = dir[key]
 		if patch == null:
 			location_dir.erase(key)
-		elif typeof(patch) == TYPE_DICTIONARY:
+		elif typeof(patch) == TYPE_DICTIONARY and location_dir.has(key):
 			for k in patch: location_dir[key][k] = patch[k]
 		else:
 			location_dir[key] = patch

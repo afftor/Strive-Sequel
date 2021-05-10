@@ -25,6 +25,10 @@ func serialize():
 	return tmp
 
 
+func deserialize(tmp):
+	.deserialize(tmp)
+	calculate_args()
+
 func recheck():
 	if !is_applied: return
 	var tres = false

@@ -913,7 +913,7 @@ var scenedict = {
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200}, 
-		{code = 'make_story_character', value = 'Daisy'}, #make_story_character takes character data from worldgen.pregen_characters
+		{code = 'make_story_character', value = 'Daisy'}, 
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
@@ -1286,7 +1286,7 @@ var scenedict = {
 	erebus_shrine_approach = {
 		text = tr("DIALOGUESHRINEEREBUS"), 
 		tags = ['shrine','active_character_translate'],
-		shrine = 'celena',
+		shrine = 'erebus',
 		image = null, 
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
@@ -1303,7 +1303,7 @@ var scenedict = {
 	freya_shrine_approach = {
 		text = tr("DIALOGUESHRINEFREYA"), 
 		tags = ['shrine','active_character_translate'],
-		shrine = 'celena',
+		shrine = 'freya',
 		image = null, 
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
