@@ -5021,6 +5021,43 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 — Well, I will not hold you any longer, good luck with your mission. """,
 
 
+
+	# DAISY QUESTLINE
+	DAISY_RECRUITMENT_START = """As you bring Daisy to your mansion she looks at it in awe. It seems she didn't actually expect you to be a land owner. As soon as you make it inside she gives you a deep bow.
+
+- Uhm, thank you, [master]. I-I will do my best to serve you! """,
+	DAISY_RECRUITMENT_OPTION_1 = "You don't have to be so formal",
+	DAISY_RECRUITMENT_OPTION_2 = "I'll not expect less from you",
+	DAISY_RECRUITMENT_OPTION_3 = "I'm sure you will *Fondle her butt*",
+	DAISY_RECRUITMENT_REPLY_1 = "Daisy seems to brighten up a bit at your words. It seems she's happy to have a gentle master.",
+	DAISY_RECRUITMENT_REPLY_2 = "Daisy bows again and proceeds to her newly acquired duties.",
+	DAISY_RECRUITMENT_REPLY_3 = "Daisy's cheeks turn red as she feels your hand on her butt. She's clearly uncomfortable with your move, but does not dare to protest. After a few moments you let her proceed to her duty.",
+	
+	
+	DAISY_CLOTHES_START = """During the morning you are met by Daisy, the recently acquired bunny girl who now belongs to you. It seems she's eager to tell you something.
+
+- Good morning, [master]. I wanted to express my gratitude for your kindness. You've brought me to your home and treated me kindly all this time, but...
+
+You see Daisy is very hesitant to state her request. """,
+	DAISY_CLOTHES_OPTION_1_1 = "What do you want?",
+	DAISY_CLOTHES_OPTION_1_2 = "Just say it",
+	DAISY_CLOTHES_OPTION_1_3 = "Has the cat got your tongue?",
+	DAISY_CLOTHES_REPLY_1 = """- I-I'm sorry, but I feel that I don’t look good enough for your household. I only wear these rags and I might make your estate look worse...""",
+	DAISY_CLOTHES_OPTION_2_1 = "I don't really care",
+	DAISY_CLOTHES_OPTION_2_2 = "Fair enough, you do need better clothes",
+	DAISY_CLOTHES_OPTION_2_3 = "Aren't you a bit too demanding for a slave?",
+	DAISY_CLOTHES_REPLY_2_1 = """- Ah, well, then, as long as [master] is ok with it, I won't mind either...
+
+As she leaves the room you give a second thought and decide if it might be a decent idea to get her new clothes at some point...""",
+	DAISY_CLOTHES_OPTION_2_1_1 = "She's a hard worker and I do care for her after all",
+	DAISY_CLOTHES_OPTION_2_1_2 = "She's not worth the effort",
+	DAISY_CLOTHES_REPLY_2_1_1 = "After all, even if you said you don't mind, it's not a bad idea to get her new clothes. You make a note to get a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant.",
+	DAISY_CLOTHES_REPLY_2_1_2 = "You decide you don't want to put any more money into her. You might get rid of her soon, so there's no point in making any additional investments.",
+	DAISY_CLOTHES_REPLY_2_2 = """- I-I'm very grateful to you for this, [master]! Please, don't let this bother you more than necessary. 
+
+Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant. """,
+	DAISY_CLOTHES_REPLY_2_3 = "- I-I'm very sorry, [master]! I just thought that you would also prefer me to look less messy.",
+	
 	
 	
 	
