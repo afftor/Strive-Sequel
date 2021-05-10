@@ -277,7 +277,7 @@ func quit():
 	globalsettings.window_size = OS.window_size
 	globalsettings.window_pos = OS.window_position
 	settings_save(globalsettings)
-	get_tree().get_root().queue_free()
+	#get_tree().get_root().queue_free()
 	get_tree().quit()
 
 

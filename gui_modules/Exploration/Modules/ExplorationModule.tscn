@@ -1451,7 +1451,7 @@ margin_top = 16.6555
 margin_right = 546.842
 margin_bottom = 58.6555
 custom_fonts/font = ExtResource( 9 )
-text = "There are no quests avalible"
+text = "There are no quests available"
 
 [node name="FactionDetails" type="Panel" parent="."]
 visible = false

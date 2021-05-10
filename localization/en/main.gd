@@ -223,7 +223,7 @@ var TranslationDict = {
 	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug used on bestial races. Inhaling causes a great surge of euphoria and lust in an individual, making them accept just about any treatment they usually would be too shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
 	
-	ITEMSENSITIVITY_POT = "Sensintivity Drug",
+	ITEMSENSITIVITY_POT = "Sensitivity Drug",
 	ITEMSENSITIVITY_POTDESCRIPT = "Increases sensitivity during sexual interactions.",
 	ITEMOBLIVION_POTION = "Oblivion Potion",
 	ITEMOBLIVION_POTIONDESCRIPT = "Remove all learned classes.",
@@ -573,7 +573,7 @@ var TranslationDict = {
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all allies.",
 	SKILLBLIZZARD = "Blizzard",
-	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20 with a 30% chance. 50% chance to Freeze target for 2 turns.",
+	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
 	SKILLBLESSDESCRIPT = "Increase ATK by 25% for 3 turns.",
 	SKILLBLOOD_MAGIC = "Blood Magic",
@@ -1392,6 +1392,7 @@ var TranslationDict = {
 	UPGRADEALCHEMYDESCRIPT = "Allows production of potions and advanced resources",
 	UPGRADEALCHEMYBONUS1 = "Unlocks basic alchemical and healing item recipes.",
 	UPGRADEALCHEMYBONUS2 = "Unlocks advanced alchemical and healing item recipes. Unlocks recipes for Enchanted Wood and Adamantine.",
+	UPGRADEALCHEMYBONUS3 = "Unlocks Advanced Staff and some advanced ink recipes.",
 	UPGRADEMASTER_BEDROOM = "Master's Bedroom",
 	UPGRADEMASTER_BEDROOMDESCRIPT = "Master's Bedroom upgrade",
 	UPGRADERESOURCE_GATHER_LEATHER = "Leather Gathering",
@@ -1412,10 +1413,10 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
 	UPGRADELUXURY_ROOMS = "Luxury Rooms",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will reduce Obedience Drain to its residents. ",
-	UPGRADELUXURY_ROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
-	UPGRADELUXURY_ROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
-	UPGRADELUXURY_ROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
-	UPGRADELUXURY_ROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
+	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
+	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
+	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
+	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
 	
 	
 	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of participants in sex interactions to 3',
@@ -1891,10 +1892,10 @@ var TranslationDict = {
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight you.",
 	DIALOGUEGOBLINS_SKIRMISH_START = "You find the group of goblins which has been reported by locals. It seems they are ready to fight you.",
-	DIALOGUEOGRE_SKIRMISH_START = "",
-	DIALOGUETROLL_SKIRMISH_START = "",
+	DIALOGUEOGRE_SKIRMISH_START = "You find the ogre report by local. It has companions",
+	DIALOGUETROLL_SKIRMISH_START = "You find the troll reported by locals",
 	
-	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather weary, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
+	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather worn, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
 	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",
 	DIALOGUESHRINEFREYA = "You find an unusual wooden structure: a beautiful female figure. What especially stands out, is it seems it wasn't carved but rather has grown into such shape. You can feel a faint power around it. ",
 	
@@ -2043,12 +2044,12 @@ var TranslationDict = {
 	ENEMYMIMIC = "Mimic",
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
-	ENEMYBANDINT_ASSASSIN = "Bandit Asssassin",
+	ENEMYBANDIT_ASSASSIN = "Bandit Assassin",
 	
 	ENEMYDEMONESS = "Demoness",
 	ENEMYGREG = "Greg",
 	ENEMYAIRE = "Aire",
-	ENEMYKURDAN = "kurdan",
+	ENEMYKURDAN = "Kurdan",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -3118,7 +3119,7 @@ The princess notices Aire tensing up in response to the question.
 	MATERIALCRYSTALIZED_ETHERDESCRIPT = "Dull round gems possessing the element of Air. Can be used in craft",
 	MATERIALEARTH_SHARD = "Earth Shard",
 	MATERIALEARTH_SHARDEARTH = "Earth",
-	MATERIALEARTH_SHARDDECRIPT = "A rare gem storing some magic power which can be utilized in craft.",
+	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
 	
 	QUESTREQSCOMPLETE = "Quest subtask complete",
 	
