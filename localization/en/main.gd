@@ -2845,7 +2845,7 @@ Merc Leader:— Look we all want to punch out early, but just to make sure you'r
 	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
 	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
 
-	FINDFRED_TALK1_IF_GREG1 = "Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.",
+	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.}",
 	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",    
 
 	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
@@ -2898,16 +2898,16 @@ You release Fred and let him go on his way then get ready to depart.""",
 
 	FINDFRED_BRIBE_TAKEN = """You pass them the money and they prepare to leave.
 	
-Merc Leader:— Nice working with you. Oh, uh just in case someone else shows up, there's no need to mention our little deal.""",
+{color=aqua|Merc Leader:— Nice working with you. Oh, uh just in case someone else shows up, there's no need to mention our little deal.}""",
 
-	FINDFRED_BRIBE_REFUSED = """Merc Leader:— Well, that's a shame because we can't just let you leave after finding us here.""",
+	FINDFRED_BRIBE_REFUSED = """{color=aqua|Merc Leader:— Well, that's a shame because we can't just let you leave after finding us here.}""",
 
 	FINFRED_BRIBE_OPTION1 = "Agree",
 	FINFRED_BRIBE_OPTION2 = "Refuse",
 
 	FINDFRED_LINE_END_KILL2 = "You cut off further protests by stuffing the gag back in Fred's mouth and lead him out of the cave.",
 
-	FINDFRED_TALK_FAIL = "Merc Leader:— Yea', I don't think so. You'll have to tell us who you are after we beat the shit out of you.",
+	FINDFRED_TALK_FAIL = "{color=aqua|Merc Leader:— Yea', I don't think so. You'll have to tell us who you are after we beat the shit out of you.}",
 
 	# *Intermission scene— starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
@@ -2951,7 +2951,7 @@ This should ease tensions between the guilds, until something new comes up. Here
 	RETURNTODUNCAN1 = "— Just a report, huh? I take it you didn't find the actual culprit then.",
 	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
-	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though...""",
+	RETURNTODUNCAN_ANSWER1 = """{color=aqua|— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though...}""",
 	
 	RETURNTODUNCAN_TOWNCAPTURE = """Before Duncan could finish, a messenger barged in the room with a panic shown on his face.
 	
@@ -3174,61 +3174,61 @@ The princess notices Aire tensing up in response to the question.
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
-Amelia:— Hello darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue. 
+{color=aqua|Amelia:— Hello darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue. }
 
 At her words Aire glanced at the bag imagining all manner of blades and hooks that must be inside and then looked to the cat woman in her revealing attire with confusion. 
 
-Aire:— I won't reveal anything, not to you or anyone else no matter what you do. 
+{color=yellow|Aire:— I won't reveal anything, not to you or anyone else no matter what you do. }
 
-Amelia:— That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things. """,
+{color=aqua|Amelia:— That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things. }""",
 
 	AIRE_AMELIA2 = """
 Amelia retrieved a small flask of honey colored liquid which she upended against a handkerchief for a moment before stoppering it. Aire stood to her feet to struggle as best she could rather than be poisoned, but none of her training was of any use bound as she was. Amelia twisted her by her restraints and collar roughly before wrapping an arm around her and forcing the handkerchief over her nose and mouth.
 
-Amelia:— Just breath in deeply. It won't harm you.""",
+{color=aqua|Amelia:— Just breath in deeply. It won't harm you.}""",
 
 	AIRE_AMELIA3 = """
 Aire held her breath for over a minute. She struggled the whole time as Amelia held her firmly while chatting to her casually as if they were friends, but the burning in her lungs became too much and she desperately gulped breaths laced with the drug. Amelia held her like that until her breathing became steady and her body started to relax.
 
-Amelia:— Now, I understand you've heard some nasty rumors about my colleagues and I, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.
+{color=aqua|Amelia:— Now, I understand you've heard some nasty rumors about my colleagues and I, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.}
 
 Aire's heart had begun pounding and her body grew unbearably sensitive. Amelia idly fondled her trussed breasts and periodically pinched her nipples, eliciting jerks and squeals from the elf that gradually became shudders and moans.
 
-Amelia:— I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond.""",
+{color=aqua|Amelia:— I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond.}""",
 
 	AIRE_AMELIA4 = """
-Aire:— It's not… like… that
+{color=yellow|Aire:— It's not… like… that}
 
 Amelia squeezed her breasts against Aire, leaning against her in such a way that Aire would fall unless she widened her stance and arched her back. Amelia's soft finely furred tail felt like it was made of pins and needles as it slid along Aire's leg slowly upward.
 
-Amelia:— Ah, another innocent elf maiden! I almost miss training the newcomers personally. 
+{color=aqua|Amelia:— Ah, another innocent elf maiden! I almost miss training the newcomers personally. }
 
 Amelia's tail had made its way to Aire's panty clad sex and twitched from side to side, stimulating her now swollen clit through the material. She just couldn't think.
 
-Amelia:— Look at you, all wet and shaking. It's pains me to torture a cute girl like that. And you must be really eager for me to end this.""",
+{color=aqua|Amelia:— Look at you, all wet and shaking. It's pains me to torture a cute girl like that. And you must be really eager for me to end this.}""",
 
 	AIRE_AMELIA5 =  """
-Aire:— Yes…
+{color=yellow|Aire:— Yes…}
 
 Aire's eyes teared up with humiliation as she couldn't fight the overwhelming pleasure anymore.
 
-Amelia:— So we both want the same thing. You know how this can be done, tell me where Anastasia is.
+{color=aqua|Amelia:— So we both want the same thing. You know how this can be done, tell me where Anastasia is.}
 
 Amelia slid a hand down from Aire's chest to pull her panties to the side, and gently traced her fingers up and down her slick slit. Under the influence of the intense aphrodisiac Aire's hips thrusted at the digits without and against her conscious thought. 
 
 She pooled all of her will into one last attempt to twist away, but Amelia held her in place thrusting two fingers inside her and using her pussy as a handhold. Aire melted and began to tremble violently, but Amelia slipped her fingers back out and resumed teasing Aire's slit, keeping her on the edge.
 
-Aire:— Ah, p-please… """,
+{color=yellow|Aire:— Ah, p-please… }""",
 
 	AIRE_AMELIA6 = """
 
-Amelia:— One word and you'll get what you want. 
+{color=aqua|Amelia:— One word and you'll get what you want. }
 
-Aire:— ...F-fine.
+{color=yellow|Aire:— ...F-fine.}
 
 Aire turned her head and whispered. Amelia's ear twitched as the elf breathed heavily into it and she beamed.
 
-Amelia:— Good girl. Now, here's your reward.
+{color=aqua|Amelia:— Good girl. Now, here's your reward.}
 
 Amelia snaked her long tail back up Aire's leg, wriggling it back and forth, finally working it into her drooling honeypot. Aire moaned and bucked futilely against Amelia's hips on pure carnal instinct, but Amelia delivered a slow deliberate pace. Aire inhaled and just as she was about to cum, Amelia began thrusting into her without as much force as a man might have but much faster. 
 
@@ -3236,7 +3236,7 @@ The sudden stimulation was overwhelming in the poor elf's hypersensitive state. 
 
 Amelia lowered the spasming girl to the floor gently and retrieved her satchel after cleaning off. 
 
-Amelia:— See, was that so hard? Hope we'll meet again in better circumstances. 
+{color=aqua|Amelia:— See, was that so hard? Hope we'll meet again in better circumstances. }
 
 She purred to herself and put a little sway into her hips on her way out as she gave orders to the jailers and went to deliver the good news.""",
 
@@ -3324,7 +3324,7 @@ The demon turns to Kurdan who was quietly observing what's been going on so far.
 
 — I presume you've come here to restore the mine's to production, and you've been unfortunate enough to find me here. However, I have an offer for you. I do not wish to fight yet so if you let me take the miners we kept as prisoners I'll leave in peace so you can do with the rest of these rebels however you want. 
 
-Rebel:— Hey, you traitorous bit-..
+{color=aqua|Rebel:— Hey, you traitorous bit-..}
 
 — Silence, putzes. 
 
@@ -3343,16 +3343,16 @@ Kurdan leaves following the demon's path.""",
 	PRE_FINAL_BOSS_7 = """You turn to the remaining rebels but realizing they won't be getting a pardon, they do not show signs of surrender.
 
 — Screw that demon bitch, you won't take us alive!""",
-	PRE_FINAL_BOSS_8 = """Demon:— So trying to play it all the way to the end, eh? And what do you think about it... Kurdan, if I'm correct? Haven't you come here for enlightenment?
+	PRE_FINAL_BOSS_8 = """{color=aqua|Demon:— So trying to play it all the way to the end, eh? And what do you think about it... Kurdan, if I'm correct? Haven't you come here for enlightenment?}
 		
-Kurdan:— It seems I've been misguided. I'll have to side with [name] here.
+{color=yellow|Kurdan:— It seems I've been misguided. I'll have to side with [name] here.}
 		
-Demon:— Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?""",
+{color=aqua|Demon:— Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?}""",
 	PRE_FINAL_BOSS_PALADIN_KNIGHT_OPTION = """""",
 	PRE_FINAL_BOSS_PALADIN_KNIGHT = """""",
 	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
 		
-Demon:— You should be useful in this dispute. Now, let's see if you are even worth our time, [name].""",
+{color=aqua|Demon:— You should be useful in this dispute. Now, let's see if you are even worth our time, [name].}""",
 	PRE_FINAL_BOSS_10 = """— So trying to play it all the way to the end, eh? Fine, let's see if you are even worth considering.""",
 	PRE_FINAL_BOSS_11 = """After you defeat the last rebels there's nothing left at the mines and you can report back to the Workers Guild.""",
 	PRE_FINAL_BOSS_12 = """— Must admit, you aren't half bad. Well, I'm done for today, this place is no fun after all. Let us meet again, hero. 
@@ -3454,87 +3454,85 @@ After some time you are left alone with only a tenth of the original provisions.
 You part ways pondering how you are going to explain this to Duncan...""",
 	AFTER_MINES_CONVOY_8 = """You refuse to give the refugees any supplies. With no other option they miserably see you off.""",
 	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
-	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by the guilds' united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.
-""",
+	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by the guilds' united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.""",
 	AFTER_MINES_CONVOY_10 = """— You've finally arrived, [name]. I've received a report that you're missing a considerable amount of the provisions you've been requested to bring. Explain yourself.""",
 	AFTER_MINES_CONVOY_OPTION_5 = """I met a group of refugees who needed them""",
 	AFTER_MINES_CONVOY_OPTION_6 = """Bandits attacked us and stole it in the confusion (lie)""",
-	AFTER_MINES_CONVOY_11 = """— You had clear instructions, yet deliberately disobeyed. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.
-	""",
+	AFTER_MINES_CONVOY_11 = """— You had clear instructions, yet deliberately disobeyed. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.""",
 	AFTER_MINES_CONVOY_12 = """— A failure is a failure. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.""",
 	AFTER_MINES_CONVOY_13 = """— Greetings, [name]. I see you've completed your mission successfully. I'm pleased to have a capable subordinate for once.""",
 	AFTER_MINES_CONVOY_14 = """Inside the settlement walls, rebels have been fortifying their defence in preparation for the upcoming battle. 
 
-Aire:— The guilds forces are preparing an assault. There's roughly two thousand troops. These are trained soldiers and mages. Even in our current position I doubt we can withstand for long.
+{color=yellow|Aire:— The guilds forces are preparing an assault. There's roughly two thousand troops. These are trained soldiers and mages. Even in our current position I doubt we can withstand for long.}
 
-Greg:— You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards of my own.
+{color=aqua|Greg:— You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards of my own.}
 
-Aire: -... Yes Sir.""",
+{color=yellow|Aire: -... Yes Sir.}""",
 	AFTER_MINES_CONVOY_15 = """A few hundred feet away from town's walls Duncan parlayed with Anastasia as is customary prior to battle. 
 
-Anastasia:— It pains me to see how the people suffer because of our actions, but we won't lay down our arms. 
+{color=aqua|Anastasia:— It pains me to see how the people suffer because of our actions, but we won't lay down our arms. }
 
-Duncan:— I shall thank you after our victory. It's been too long since my last battle.""",
+{color=yellow|Duncan:— I shall thank you after our victory. It's been too long since my last battle.}""",
 	AFTER_MINES_CONVOY_16 = """Anastasia threw an angry glance at Duncan.
 
-Anastasia:— That's all you're gonna say now? After killing my father?
+{color=aqua|Anastasia:— That's all you're gonna say now? After killing my father?}
 
-Duncan:— I have nothing else to say to a juvenile here and now. Let's get this over with.""",
+{color=yellow|Duncan:— I have nothing else to say to a juvenile here and now. Let's get this over with.}""",
 	AFTER_MINES_CONVOY_17 = """Despite her irritation Anastasia managed to collect herself and demonstrate her royal upbringing with a calm answer. 
 
-Anastasia:— Very well. The gods shall find the just. 
+{color=aqua|Anastasia:— Very well. The gods shall find the just. }
 
-Duncan:— The gods shall find the just.""",
+{color=yellow|Duncan:— The gods shall find the just.}""",
 	
 	
 	# betrayal confirmed
 	BETRAYAL_CONFIRMED_ADVANCE = """The battlefield was filled with sounds of clashing blades as numerous arrows whistled through the air. Before long an enemy group has charged at your flank.""",
 	BETRAYAL_CONFIRMED_1 = """After slicing down another enemy knight Duncan surveyed the battlefield. His group had pushed deep as the enemy gave ground, nearly reaching the leading enemy unit and now he could see their commander clearly. He already knew from the reports that Greg was with the rebels, but now he had confirmed it with his own eyes.""",
-	BETRAYAL_CONFIRMED_2 = """Greg:— Long time no see.
+	BETRAYAL_CONFIRMED_2 = """{color=aqua|Greg:— Long time no see.}
 
-Duncan:— I wish it would have stayed that way. 
+{color=yellow|Duncan:— I wish it would have stayed that way. }
 
-Greg:— You look tired, did safe living make you soft?
+{color=aqua|Greg:— You look tired, did safe living make you soft?}
 
-Duncan:— I'm still collected enough to end you and this pitiful revolt.""",
-	BETRAYAL_CONFIRMED_3 = """Greg:— Heh, we'll see about that. I didn't expect you to come to the front lines, but I guess we're in luck.
+{color=yellow|Duncan:— I'm still collected enough to end you and this pitiful revolt.}""",
+	BETRAYAL_CONFIRMED_3 = """{color=aqua|Greg:— Heh, we'll see about that. I didn't expect you to come to the front lines, but I guess we're in luck.}
 
-Duncan:— What are you talking about?
+{color=yellow|Duncan:— What are you talking about?}
 
-Greg:— What do you expect your army to do it if you are taken down? 
+{color=aqua|Greg:— What do you expect your army to do it if you are taken down? }
 
-Duncan: ...
+{color=yellow|Duncan: ...}
 
 Now Duncan realized that there was another group of rebel reinforcements approaching their flank. Their group would be outnumbered by at least two to one. Regardless, he readied his sword.""",
 	BETRAYAL_CONFIRMED_4 = """As you deal with the rebels you are ordered to advance. From your perspective it seems the Guilds' army is slowly coming out on top.""",
 	BETRAYAL_CONFIRMED_5 = """Myr observed the battlefield from the nearby hill a few hundred feet away. Most of the lower mages were drafted to support the fighting forces but she had a different mission. Being the strongest caster in all Aliron or perhaps the whole country, she was reserved for more than simple healing and spellslinging. 
 
 She patiently observed the battlefield, as the guilds troops advanced toward the town. """,
-	BETRAYAL_CONFIRMED_6 = """Duncan:— Strategy was always your strong side. 
+	BETRAYAL_CONFIRMED_6 = """{color=yellow|Duncan:— Strategy was always your strong side. }
 
-Greg:— Hmph.
+{color=aqua|Greg:— Hmph.}
 
 As more groups were approaching Duncan he and his unit dwindled as it grew fatigued.""",
-	BETRAYAL_CONFIRMED_7 = """Greg:— It was your mistake to rush in, even more so to lead the charge personally. 
+	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg:— It was your mistake to rush in, even more so to lead the charge personally. }
 
-Duncan:— Who else would it do? 
+{color=yellow|Duncan:— Who else would it do? }
 
-Greg:— Perhaps it's time for you to surrender. 
+{color=aqua|Greg:— Perhaps it's time for you to surrender. }
 
-Duncan:— Not interested.
+{color=yellow|Duncan:— Not interested.}
 
-Greg:— Hmph, you always were all brawn and no brains. So be it.""",
-	BETRAYAL_CONFIRMED_8 = """Myr:— These damn fools...
+{color=aqua|Greg:— Hmph, you always were all brawn and no brains. So be it.}""",
+	BETRAYAL_CONFIRMED_8 = """{color=aqua|Myr:— These damn fools...}
 
 Without delay Myr started chanting a powerful spell. In a few moments a large earthquake hit the rebel reinforcements approaching Duncan's unit. A few other mages under her command joined in, casting long range magic on the separated rebel groups. """,
 	
 	BETRAYAL_CONFIRMED_9 = """The spell produced a powerful shockwave near Duncan and when he turned to the side he found the approaching enemy formation  crumbled under the magical barrage.
 
-Duncan:— Damn you, Myr. Who asked you to interrupt?
+{color=aqua|Duncan:— Damn you, Myr. Who asked you to interrupt?}
 
 Duncan muttered to himself. However, Greg was far more surprised by this. He realized he just lost his tactical advantage, and quickly withdrew from the fight.
 
-Greg:— Cursed sorcerers. Retreat to the town's walls!
+{color=yellow|Greg:— Cursed sorcerers. Retreat to the town's walls!}
 
 Following the command, the rebel forces withdrew, however the Guilds' army quickly took the initiative and moved in.""",
 	BETRAYAL_CONFIRMED_10 = """However, before the bulk of the guild forces were able to enter the town, a gigantic white dome had enveloped the rebels' refuge. Magic on a scale they'd never seen completely blocked any advance or attack from the guilds' army. 
@@ -3542,25 +3540,25 @@ Following the command, the rebel forces withdrew, however the Guilds' army quick
 Dumbfounded, the guilds' forces were forced to halt and regroup.""",
 	BETRAYAL_CONFIRMED_11 = """The army's leaders gathered together to discuss the situation.
 	
-	Duncan:— What's this thing about? Why can't we pass through?
+{color=aqua|Duncan:— What's this thing about? Why can't we pass through?}
 
-Myr:— Looks like a Divine Influence to me. This is not really our speciality.
+{color=yellow|Myr:— Looks like a Divine Influence to me. This is not really our speciality.}
 
-Duncan:— What are you talking about?
+{color=aqua|Duncan:— What are you talking about?}
 
-Myr:— It's a special kind of magic, the source of which is higher beings. But it's so rare I've only observed it a couple of times. We can't really do anything about it with our relatively marginal power.""",
-	BETRAYAL_CONFIRMED_12 = """Duncan:— Dammit, to think rebels would have something like this...
+{color=yellow|Myr:— It's a special kind of magic, the source of which is higher beings. But it's so rare I've only observed it a couple of times. We can't really do anything about it with our relatively marginal power.}""",
+	BETRAYAL_CONFIRMED_12 = """{color=aqua|Duncan:— Dammit, to think rebels would have something like this...}
 
-Myr:— I would imagine the princess could pull of something unusual, but not on this scale. 
+{color=yellow|Myr:— I would imagine the princess could pull of something unusual, but not on this scale. }
 
-Duncan:— How long will this thing persist?
+{color=aqua|Duncan:— How long will this thing persist?}
 
-Myr:— I'd not expect it to go down on its own. The divine doesn't always follow the same rules as normal magic.
+{color=yellow|Myr:— I'd not expect it to go down on its own. The divine doesn't always follow the same rules as normal magic.}
 
-Duncan:— Damnit...""",
-	BETRAYAL_CONFIRMED_13 = """Duncan:— Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate Millford. 
+{color=aqua|Duncan:— Damnit...}""",
+	BETRAYAL_CONFIRMED_13 = """{color=aqua|Duncan:— Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate Millford. }
 
-Myr:— We will be keeping our forces ready in case they decide the rebels launch a counterattack.""",
+{color=yellow|Myr:— We will be keeping our forces ready in case they decide the rebels launch a counterattack.}""",
 	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either""",
 	BETRAYAL_CONFIRMED_OPTION_2 = """Do you have any suggestions as to where I should start?""",
 	BETRAYAL_CONFIRMED_14 = """Myr:— Hmm, my only idea would be to try asking a religious institution. Those usually are more familiar with Divine Influences and how to deal with them.""",
@@ -3585,22 +3583,22 @@ Myr:— We will be keeping our forces ready in case they decide the rebels launc
 Ginny leaves you for a few minutes, eventually returning to you with the symbol you've passed her, now giving off a barely noticeable light.
 
 — Here, this should let you create a momentary breech in the barrier. Please, be careful out there [Sir] [name].""",
-	DIVINE_SYMBOL_7 = """Duncan:— You are back. What is the news?""",
+	DIVINE_SYMBOL_7 = """{color=aqua|Duncan:— You are back. What is the news?}""",
 	DIVINE_SYMBOL_OPTION_8 = """I've found a way to enter the barrier""",
 	DIVINE_SYMBOL_OPTION_9 = """I'm ready to go""",
-	DIVINE_SYMBOL_8 = """Duncan:— So, with this you will be able to enter the barrier and get rid of that "Champion". Fine, I approve of it. Once you enter it we will get ready for the assault.
+	DIVINE_SYMBOL_8 = """{color=aqua|Duncan:— So, with this you will be able to enter the barrier and get rid of that "Champion". Fine, I approve of it. Once you enter it we will get ready for the assault.}
 
-Myr:— Judging from the looks of it, I'd expect the culprit to be at the center of Dome, likely protected too. 
+{color=yellow|Myr:— Judging from the looks of it, I'd expect the culprit to be at the center of Dome, likely protected too. }
 
-Duncan:— Whoever it is, gather your best followers and prepare for a hard fight. I would prefer to accompany you, but the army can't be left without a commander.""",
-	DIVINE_SYMBOL_9 = """Duncan:— Good, let's not waste time. This battle's outcome is in your hands. 
+{color=aqua|Duncan:— Whoever it is, gather your best followers and prepare for a hard fight. I would prefer to accompany you, but the army can't be left without a commander.}""",
+	DIVINE_SYMBOL_9 = """{color=aqua|Duncan:— Good, let's not waste time. This battle's outcome is in your hands. }
 
-Myr:— There's a spot from which you can enter unnoticed from the hill side, I'll show you.""",
+{color=yellow|Myr:— There's a spot from which you can enter unnoticed from the hill side, I'll show you.}""",
 	DIVINE_SYMBOL_10 = """You finish your preparations and at nightfall you enter the barrier where Myr showed you. As you make your way to the streets you only spot the occasional rebel patrol and  they seem fairly lax. By staying in the shadows you manage to eavesdrop on them.
 
-First Sentry:— Why are we even doing this? It's not like those bastards can get in. 
+{color=aqua|First Sentry:— Why are we even doing this? It's not like those bastards can get in. }
 
-Second Sentry:— Yah, I know. We've been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear. 
+{color=yellow|Second Sentry:— Yah, I know. We've been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear.} 
 
 As they pass you continue to move on.""",
 	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You’re about to be cut off, and won't be able to retreat unnoticed.""",
@@ -3624,28 +3622,28 @@ You've entered the wrong building. A few rebels recognize you as an intruder and
 
 You enter a small hallway with doors guarded by an armed group of rebels. 
 
-First Guard:— Why can't we stay inside?
+{color=yellow|First Guard:— Why can't we stay inside?}
 
-Second Guard:— She requested to be left alone. That's for the better if you ask me.""",
-	DIVINE_SYMBOL_18_1 = """First Guard:— Hmm? Why, you dislike her?
+{color=aqua|Second Guard:— She requested to be left alone. That's for the better if you ask me.}""",
+	DIVINE_SYMBOL_18_1 = """{color=yellow|First Guard:— Hmm? Why, you dislike her?}
 
-Second Guard:— She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.""",
+{color=aqua|Second Guard:— She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.}""",
 
-	DIVINE_SYMBOL_19 = """First Guard:— Yeah, in terms of brains you would find common ground.
+	DIVINE_SYMBOL_19 = """{color=yellow|First Guard:— Yeah, in terms of brains you would find common ground.}
 
-Second Guard:— You shut yo-
+{color=aqua|Second Guard:— You shut yo-}
 
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
 	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor Check)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
-	DIVINE_SYMBOL_20_1 = """Second Guard:— Damnit, what does he want now? 
+	DIVINE_SYMBOL_20_1 = """{color=aqua|Second Guard:— Damnit, what does he want now? }
 
-First Guard:— Probably figured you've been sleeping during the last watch.
+{color=yellow|First Guard:— Probably figured you've been sleeping during the last watch.}
 
-Second Guard:— You didn't tell him that, did you? Fuck, lets go. 
+{color=aqua|Second Guard:— You didn't tell him that, did you? Fuck, lets go. }
 
 They leave the building, leaving the door unguarded.""",
-	DIVINE_SYMBOL_20_2 = "Second Guard:— Bullshit, they're intruders. Get them!",
+	DIVINE_SYMBOL_20_2 = "{color=aqua|Second Guard:— Bullshit, they're intruders. Get them!}",
 	DIVINE_SYMBOL_21 = """Deciding there's no room for negotiation, you prepare for a fight.""",
 	DIVINE_SYMBOL_22 = """As you knock out the guards you are finally able to approach the doors.""",
 	DIVINE_SYMBOL_23 = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you. 
@@ -3712,37 +3710,37 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 
 — Here we go, happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
 	DIVINE_SYMBOL_44 = """As the barrier fell, Duncan ordered an immediate attack. Many of the rebel troops were caught off guard resting and unable to rally a quick response. As the guilds' army slowly advanced into town no one took much notice of your small group, allowing you to escape easily.""",
-	DIVINE_SYMBOL_45 = """Greg:— What the hell... Shit, what happened to the barrier!?
+	DIVINE_SYMBOL_45 = """{color=aqua|Greg:— What the hell... Shit, what happened to the barrier!?}
 
-Aire:— It seems they somehow made it inside. Their main army has been waiting for this. I'm afraid we won't hold for long.
+{color=yellow|Aire:— It seems they somehow made it inside. Their main army has been waiting for this. I'm afraid we won't hold for long.}
 
-Greg:— Goddamnit. Order the retreat. And make sure the princess is safe. Curses on that useless champion, she better not make it out of this alive.""",
-	DIVINE_SYMBOL_46 = """Myr:— Huh, [he] really managed to pull it off. Are you not going to lead the assault?
+{color=aqua|Greg:— Goddamnit. Order the retreat. And make sure the princess is safe. Curses on that useless champion, she better not make it out of this alive.}""",
+	DIVINE_SYMBOL_46 = """{color=aqua|Myr:— Huh, [he] really managed to pull it off. Are you not going to lead the assault?}
 
-Duncan:— No, it's over and there's no challenge. I've set outriders to keep watch out for any potential escape so the princess should be ours shortly. 
+{color=yellow|Duncan:— No, it's over and there's no challenge. I've set outriders to keep watch out for any potential escape so the princess should be ours shortly. }
 
-Myr:— Hmph, she's too smart to get caught by you. 
+{color=aqua|Myr:— Hmph, she's too smart to get caught by you. }
 
 At this moment a messenger approached Duncan.""",
-	DIVINE_SYMBOL_47 = """Messenger:— Sir, [name] has returned and asks for an audience. 
+	DIVINE_SYMBOL_47 = """{color=aqua|Messenger:— Sir, [name] has returned and asks for an audience. }
 
-Duncan:— Bring [him].
+{color=yellow|Duncan:— Bring [him].}
 
 As you come out you notice how Duncan's stoic face shows a hint of respect. 
 
-Duncan:— A splendid job. You are going down in history with what you've pulled out here. Also managed to do what those mages couldn't.
+{color=aqua|Duncan:— A splendid job. You are going down in history with what you've pulled out here. Also managed to do what those mages couldn't.}
 
-Myr:— Screw you.""",
+{color=yellow|Myr:— Screw you.}""",
 	DIVINE_SYMBOL_OPTION_33 = """That wasn't too hard""",
 	DIVINE_SYMBOL_OPTION_34 = """I thought I wasn't gonna make it""",
-	DIVINE_SYMBOL_48 = """Duncan:— Either way the town will be ours by tomorrow morning. You can go and rest until then.""",
+	DIVINE_SYMBOL_48 = """{color=aqua|Duncan:— Either way the town will be ours by tomorrow morning. You can go and rest until then.}""",
 	DIVINE_SYMBOL_49 = """A few hours later
 
-Soldier:— We have captured the town, but there has been no sign of Greg or the princess.
+{color=yellow|Soldier:— We have captured the town, but there has been no sign of Greg or the princess.}
 
-Duncan:— Damnit, they must've had some hidden escape routes we had no idea about. Nevertheless, the town is ours and the rebel forces have been defeated.
+{color=aqua|Duncan:— Damnit, they must've had some hidden escape routes we had no idea about. Nevertheless, the town is ours and the rebel forces have been defeated.
 
-Duncan:— [name], you can return to Aliron now. We shall plan out our next moves.""",
+Duncan:— [name], you can return to Aliron now. We shall plan out our next moves.}""",
 
 
 	FINAL_OPERATON_START = "-Hello [name]. I need to ask for your help in a matter that should stay between us.",
@@ -4201,18 +4199,18 @@ After closer inspection you confirm that it must belong to the royal family so i
 	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
 	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments.
 
-Amelia:— Well, fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.
+{color=yellow|Amelia:— Well, fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
 
-Myr:— Well then, let's get this over with. 
+{color=aqua|Myr:— Well then, let's get this over with. }
 
 Myr takes a small medallion out of her desk. As she chants the spell, the medallion in her hand starts glowing. After about a minute she finishes and turns back to you.""",
-	LOOKING_FOR_PRINCESS_20 = """Myr:— Alright, this will point in the previous owner's direction. Hold it in your hand and you'll feel slight vibrations.
+	LOOKING_FOR_PRINCESS_20 = """{color=aqua|Myr:— Alright, this will point in the previous owner's direction. Hold it in your hand and you'll feel slight vibrations.}
 
-Amelia:— Neat. Now you'll be able to track down our little problem. Heh, I wonder if it will keep vibrating in her presence as well...
+{color=yellow|Amelia:— Neat. Now you'll be able to track down our little problem. Heh, I wonder if it will keep vibrating in her presence as well...}
 
-Myr:— Leave your professional quirks out of this unless you want to be thrown out.
+{color=aqua|Myr:— Leave your professional quirks out of this unless you want to be thrown out.}
 
-Amelia:— Alright, alright, I should be going anyway. Good luck [name], I'm waiting for your success.""",
+{color=yellow|Amelia:— Alright, alright, I should be going anyway. Good luck [name], I'm waiting for your success.}""",
 	LOOKING_FOR_PRINCESS_21 = """After testing the medallion you decide it points toward the Elven forests. Your goal should be visiting them now.""",
 	LOOKING_FOR_PRINCESS_22 = """You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of the elven capital. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.""",
 	LOOKING_FOR_PRINCESS_23 = """The medallion kept pointing at the elven capital so you were left no other option but to meet the High Priestess, who acts as the prime ruler of the elven capital. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.""",
@@ -4233,15 +4231,15 @@ Amelia:— Alright, alright, I should be going anyway. Good luck [name], I'm wai
 The priestess gave orders to the guards to get the princess out.""",
 	LOOKING_FOR_PRINCESS_29 = """As Anastasia saw you, she realized what she was brought for and her face became pale.
 
-Anastasia:— No... What the hell?! You can't do this to me!
+{color=aqua|Anastasia:— No... What the hell?! You can't do this to me!}
 
-Priestess:— Cease your childish behavior, human, if you are truly royalty, act like it.""",
+{color=yellow|Priestess:— Cease your childish behavior, human, if you are truly royalty, act like it.}""",
 	LOOKING_FOR_PRINCESS_OPTION_26 = """An honor to meet you, princess""",
 	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, now, there's no need to make a scene""",
 	LOOKING_FOR_PRINCESS_OPTION_28 = """I've been waiting to get my hands on you""",
 	LOOKING_FOR_PRINCESS_30 = """The princess paid little attention to your words and continued to lash out at the priestess, who seemed to grow more and more irritated.
 
-Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!""",
+{color=aqua|Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!}""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
 	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor check)""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this""",
@@ -4249,13 +4247,13 @@ Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I
 	
 Before she could say any more, you've leapt at Anastasia and delivered a loud slap to her face. Not expecting this she fell in shock to the ground. You seize the moment to subdue her, plugging her mouth and excusing yourself to the priestess.
 
-Priestess:— I'll excuse this unseemly display for now. Now leave and remember our agency in future. 
+{color=aqua|Priestess:— I'll excuse this unseemly display for now. Now leave and remember our agency in future. }
 
 Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound, Anastasia had no option but to let you drag her away. """,
 	LOOKING_FOR_PRINCESS_32_f = """{color=red|Failure}
 
 """,
-	LOOKING_FOR_PRINCESS_32 = """Anastasia:— Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
+	LOOKING_FOR_PRINCESS_32 = """{color=aqua|Anastasia:— Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-}
 
 *Slap*
 
@@ -4263,36 +4261,36 @@ Before you managed to reach Anastasia, the priestess herself gave her a loud sla
 	LOOKING_FOR_PRINCESS_OPTION_32 = """There's no need to get violent""",
 	LOOKING_FOR_PRINCESS_OPTION_33 = """Can't say I wouldn't do the same""",
 	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
-	LOOKING_FOR_PRINCESS_33 = """Priestess:— Silence, [race]!
+	LOOKING_FOR_PRINCESS_33 = """{color=aqua|Priestess:— Silence, [race]!}
 	
 Her sudden outburst made you back off.
 
 """,
 	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her,clearly enraged.
 
-Priestess:— I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have had your tongue cut out already. 
+{color=aqua|Priestess:— I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have had your tongue cut out already. }
 
-Anastasia:— ...""",
-	LOOKING_FOR_PRINCESS_35 = """Priestess:— You, however, will have to answer for your crime with your life. Guards!
+{color=yellow|Anastasia:— ...}""",
+	LOOKING_FOR_PRINCESS_35 = """{color=aqua|Priestess:— You, however, will have to answer for your crime with your life. Guards!}
 
-Anastasia:— What? No...
+{color=yellow|Anastasia:— What? No...}
 
 Following the order, the guards seized Anastasia and also blocked your way from interfering. Still in shock from sudden turn of events, the princess couldn't believe this was happening to her.""",
 	LOOKING_FOR_PRINCESS_OPTION_35 = """*Oppose*""",
 	LOOKING_FOR_PRINCESS_OPTION_36 = """*Let her be executed*""",
 	LOOKING_FOR_PRINCESS_36 = """You tell the priestess that you will need the princess alive no matter what. After observing the shocked princess she seemed to be more calm, yet unbendable. 
 
-Priestess:— She shall be executed regardless of your needs. This is the law and we can't pardon it despite your or her status. Once her spirit is redeemed by the tree you can have her corpse. I presume this should suffice for your masters.""",
+{color=aqua|Priestess:— She shall be executed regardless of your needs. This is the law and we can't pardon it despite your or her status. Once her spirit is redeemed by the tree you can have her corpse. I presume this should suffice for your masters.}""",
 	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
 	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
 	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
-	LOOKING_FOR_PRINCESS_37 = """Priestess:— I'm well aware of what she is, but this is the law and it will not be waived.
+	LOOKING_FOR_PRINCESS_37 = """{color=aqua|Priestess:— I'm well aware of what she is, but this is the law and it will not be waived.}
 	
 """,
-	LOOKING_FOR_PRINCESS_38 = """Priestess:— Watch your tongue [race], or you might join her. The law is final and not debatable.
+	LOOKING_FOR_PRINCESS_38 = """{color=aqua|Priestess:— Watch your tongue [race], or you might join her. The law is final and not debatable.}
 	
 """,
-	LOOKING_FOR_PRINCESS_39 = """Priestess:— We care not for petty threats. The traditional punishment will be delivered as always.
+	LOOKING_FOR_PRINCESS_39 = """{color=aqua|Priestess:— We care not for petty threats. The traditional punishment will be delivered as always.}
 
 """,
 	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
@@ -4301,44 +4299,43 @@ Priestess:— She shall be executed regardless of your needs. This is the law an
 	LOOKING_FOR_PRINCESS_OPTION_42 = """There's no helping it""",
 	LOOKING_FOR_PRINCESS_41 = """Priestess makes a long pause while glaring at you. 
 
-Priestess:— It is true that the guardian can be punished in a minor's stead. Though you must be aware that I can't simply execute the peaceful messenger of a foreign nation. Yet, our tradition demands blood. 
+{color=aqua|Priestess:— It is true that the guardian can be punished in a minor's stead. Though you must be aware that I can't simply execute the peaceful messenger of a foreign nation. Yet, our tradition demands blood. }
 
 The priestess takes another long pause to contemplate the situation and finally answers.""",
-	LOOKING_FOR_PRINCESS_42 = """Priestess:— Very well, I'll allow you to take her punishment by sacrificing one of your followers.""",
+	LOOKING_FOR_PRINCESS_42 = """{color=aqua|Priestess:— Very well, I'll allow you to take her punishment by sacrificing one of your followers.}""",
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
 	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
 	
-Priestess:— Leave now and tell your masters that we still stand by the agreement.
+{color=aqua|Priestess:— Leave now and tell your masters that we still stand by the agreement.}
 	
 Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
-	LOOKING_FOR_PRINCESS_44 = """Priestess:— Then we will proceed as decided.
+	LOOKING_FOR_PRINCESS_44 = """{color=aqua|Priestess:— Then we will proceed as decided.}
 	
 """,
 	LOOKING_FOR_PRINCESS_45 = """With your approval, Zephyra walks forward. The Priestess observes her thoughtfully.
 
-Zephyra:— The ancient traditions are important, but... quite problematic. 
+{color=aqua|Zephyra:— The ancient traditions are important, but... quite problematic. }
 
-Priestess:— What do you dare to suggest?
+{color=yellow|Priestess:— What do you dare to suggest?}
 
-Zephyra:— Once I heard a story about a young elven lass who was fortunate enough to fall in love. It must've been very emboldening for her. But unfortunately she had fallen in love with a human male. A thing which could happen to any of us.
+{color=aqua|Zephyra:— Once I heard a story about a young elven lass who was fortunate enough to fall in love. It must've been very emboldening for her. But unfortunately she had fallen in love with a human male. A thing which could happen to any of us.}
 
-Priestess:— You... You have no idea what you are talking about.
-""",
-	LOOKING_FOR_PRINCESS_46 = """Guard:— (whispering) Huh... What's this about?
+{color=yellow|Priestess:— You... You have no idea what you are talking about.}""",
+	LOOKING_FOR_PRINCESS_46 = """{color=yellow|Guard:— (whispering) Huh... What's this about?}
 	
-Zephyra:— Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
+{color=aqua|Zephyra:— Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.}
 
 You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
 
-Priestess:— Enough. We've reached a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
+{color=yellow|Priestess:— Enough. We've reached a decision. You can take your noble with you. The merciful Freya pardons her misdeed.}""",
 	LOOKING_FOR_PRINCESS_47 = """By this order the princess is handed over to you and you give your thanks to the priestess.
 
-Zephyra:— Isn't Freya's graciousness truly moving? I'm sure this decision will be to the benefit of all in the end.
+{color=aqua|Zephyra:— Isn't Freya's graciousness truly moving? I'm sure this decision will be to the benefit of all in the end.}
 	
-Priestess:— Sure, whatever. Leave and take your foul vixen with you.
+{color=yellow|Priestess:— Sure, whatever. Leave and take your foul vixen with you.}
 	
-Zephyra:— *sniff* Hey, [name], I'm not foul, am I?""",
+{color=aqua|Zephyra:— *sniff* Hey, [name], I'm not foul, am I?}""",
 	LOOKING_FOR_PRINCESS_48 = """Once outside with the now silent princess, you ask Zephyra to explain what happened.
 	
 — Oh, well, a long time ago Alios had turned into a human male named Ansfrid and got up to some mischief. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse yet non-elven men? Ah, please forget I said anything, haha.""",
@@ -4363,107 +4360,105 @@ It's time to return home.""",
 	PRE_ANASTASIA_EXECUTION_4 = """— We shall declare your succession in a week, until then you can rest.""",
 	PRE_ANASTASIA_EXECUTION_5 = """You successfully deliver the princess to a prison cell and make your way to Duncan who seems to be aware of your success.
 
-— You've done what few people dreamed to achieve, not only have you ended the war, but captured the princess herself. You've earned your future position. Once the princess' fate is ealed we will  you the winner. Speaking of which, I've arranged the meeting for tomorrow. You should participate.
-""",
+— You've done what few people dreamed to achieve, not only have you ended the war, but captured the princess herself. You've earned your future position. Once the princess' fate is ealed we will  you the winner. Speaking of which, I've arranged the meeting for tomorrow. You should participate.""",
 	PRE_ANASTASIA_EXECUTION_OPTION_4 = """What is going to happen to her?""",
 	PRE_ANASTASIA_EXECUTION_OPTION_5 = """I'll join for sure""",
 	PRE_ANASTASIA_EXECUTION_OPTION_6 = """More paperwork than actual fighting""",
 	PRE_ANASTASIA_EXECUTION_6 = """— This is what we will decide tomorrow, but I'm positive her head will roll… or perhaps grace the gallows.""",
 	PRE_ANASTASIA_EXECUTION_OPTION_7 = """She deserved it""",
 	PRE_ANASTASIA_EXECUTION_OPTION_8 = """Seems like a waste to kill such a pretty girl""",
-	PRE_ANASTASIA_EXECUTION_7 = """— I on't care what she deserves, she's dangerous and what has happened proves it. We get rid of her and move on.""",
+	PRE_ANASTASIA_EXECUTION_7 = """— I don't care what she deserves, she's dangerous and what has happened proves it. We get rid of her and move on.""",
 	PRE_ANASTASIA_EXECUTION_8 = """— If she was not the Deranged King's daughter, I would agree with you, however she has proven too dangerous to be left alive.""",
 	PRE_ANASTASIA_EXECUTION_9 = """— Until later then.""",
 	PRE_ANASTASIA_EXECUTION_10 = """— Agreed, yet we can't simply finish her off and be done with it. Not on our own at least. Do come.""",
 	PRE_ANASTASIA_EXECUTION_11 = """The guilds and landlords once again have gathered, now mostly to celebrate the upcoming finale of the war now that it has been won. 
 
-Duncan:— As many have already heard, the rebellious princess has finally been captured by [name], who will be taking office as the next city mayor in light of [his] achievements. Today we, the guild leaders, decide the princess's fate. 
+{color=aqua|Duncan:— As many have already heard, the rebellious princess has finally been captured by [name], who will be taking office as the next city mayor in light of [his] achievements. Today we, the guild leaders, decide the princess's fate. }
 
-Myr:— As all know, she instigated the civil war which led to many losses, in lives as well as in property...""",
-	PRE_ANASTASIA_EXECUTION_12 = """Sigmund:— Really care 'bout yar magic toys, huh. Were mages always dat mercantile? 
+{color=yellow|Myr:— As all know, she instigated the civil war which led to many losses, in lives as well as in property...}""",
+	PRE_ANASTASIA_EXECUTION_12 = """{color=aqua|Sigmund:— Really care 'bout yar magic toys, huh. Were mages always dat mercantile? }
 
-Myr:— It's hardly the time, besides you weren't the ones on the frontlines, exhausting your supplies for this pointless war. 
+{color=yellow|Myr:— It's hardly the time, besides you weren't the ones on the frontlines, exhausting your supplies for this pointless war. }
 
-Sigmund:— Hmph.""",
-	PRE_ANASTASIA_EXECUTION_13 = """Duncan:— Her war weakened us, we're lucky the empire didn't make a move.
+{color=aqua|Sigmund:— Hmph.}""",
+	PRE_ANASTASIA_EXECUTION_13 = """{color=aqua|Duncan:— Her war weakened us, we're lucky the empire didn't make a move.}
 
-Amelia:— Hmm, according to my sources she and the rebels were mostly controlled by Gregor. A king's knight.
+{color=yellow|Amelia:— Hmm, according to my sources she and the rebels were mostly controlled by Gregor. A king's knight.}
 
-Duncan:— ...This does not excuse her involvement.
+{color=aqua|Duncan:— ...This does not excuse her involvement.}
 
-Amelia:— She might be not quite as dangerous as you try to present her to be though. Is she not simply misguided?""",
-	PRE_ANASTASIA_EXECUTION_14 = """Duncan:— Nonsense. Without her existence there would be no rebellion. This is why we will sentence her to execution today.
+{color=yellow|Amelia:— She might be not quite as dangerous as you try to present her to be though. Is she not simply misguided?}""",
+	PRE_ANASTASIA_EXECUTION_14 = """{color=aqua|Duncan:— Nonsense. Without her existence there would be no rebellion. This is why we will sentence her to execution today.}
 
-Amelia:— And I presume, you wish her dead?
+{color=yellow|Amelia:— And I presume, you wish her dead?}
 
-Duncan:— Certainly.""",
-	PRE_ANASTASIA_EXECUTION_15 = """Myr:— I agree. The girl is nothing but a liability. The sooner we end this, the better.
+{color=aqua|Duncan:— Certainly.}""",
+	PRE_ANASTASIA_EXECUTION_15 = """{color=aqua|Myr:— I agree. The girl is nothing but a liability. The sooner we end this, the better.}
 
-Sigmund:— I can't say I like dat, but wat are da options we 'ave?
+{color=yellow|Sigmund:— I can't say I like dat, but wat are da options we 'ave?}
 
-Myr:— Indeed, for once your dwarf brain gets it.
+{color=aqua|Myr:— Indeed, for once your dwarf brain gets it.}
 
 Sigmund didn't seem to realize the insult or maybe didn't pay it attention.""",
-	PRE_ANASTASIA_EXECUTION_16 = """Amelia:— Ah, how tragic. Does our vote hold no power?
+	PRE_ANASTASIA_EXECUTION_16 = """{color=aqua|Amelia:— Ah, how tragic. Does our vote hold no power?}
 
-Duncan:— It does not, since three of us already agreed.
+{color=yellow|Duncan:— It does not, since three of us already agreed.}
 
-Amelia:— A grim fate to fall on the young maiden, and there's really nothing that can be done...?
-""",
+{color=aqua|Amelia:— A grim fate to fall on the young maiden, and there's really nothing that can be done...?}""",
 	PRE_ANASTASIA_EXECUTION_OPTION_9 = """I wish her to live""",
 	PRE_ANASTASIA_EXECUTION_OPTION_10 = """*Stay silent*""",
 	PRE_ANASTASIA_EXECUTION_19 = """All guild leaders except for Amelia turn and raise an eyebrow at you. 
 
-Amelia:— Isn't it refreshing that our future mayor is so merciful?
+{color=aqua|Amelia:— Isn't it refreshing that our future mayor is so merciful?}
 
-Duncan:— What are you saying? We can't risk keeping her alive and you know that. What is your goal?""",
+{color=yellow|Duncan:— What are you saying? We can't risk keeping her alive and you know that. What is your goal?}""",
 	PRE_ANASTASIA_EXECUTION_OPTION_11 = """I will make her my wife""",
 	PRE_ANASTASIA_EXECUTION_OPTION_12 = """I want to make her my slave""",
 	PRE_ANASTASIA_EXECUTION_20 = """This outrageous statement even made Amelia look surprised. 
 
-Duncan:— You can't be serious...
+{color=aqua|Duncan:— You can't be serious...}
 
-Myr:— I can't believe this either.""",
-	PRE_ANASTASIA_EXECUTION_21 = """Amelia:— A true man, both a conqueror and a lover. Bards would sing of this and so many women would swoon over the tale. 
+{color=yellow|Myr:— I can't believe this either.}""",
+	PRE_ANASTASIA_EXECUTION_21 = """{color=aqua|Amelia:— A true man, both a conqueror and a lover. Bards would sing of this and so many women would swoon over the tale. }
 
-Duncan:— Enough of your nonsense, you might've earned reputation enough to become mayor, but marrying a former rebel princess is ridiculous. 
+{color=yellow|Duncan:— Enough of your nonsense, you might've earned reputation enough to become mayor, but marrying a former rebel princess is ridiculous. }
 
-Amelia:— I actually don't think so.
+{color=aqua|Amelia:— I actually don't think so.}
 
-Duncan:— What?
+{color=yellow|Duncan:— What?}
 
-Amelia:— Consider the following, what if we have the princess marry our mayor and publicly acknowledge our regime? Won't she be more useful this way than having her executed? Moreover, many rebels would consider her as a legitimate co-ruler, while of course she would have none of the power. 
+{color=aqua|Amelia:— Consider the following, what if we have the princess marry our mayor and publicly acknowledge our regime? Won't she be more useful this way than having her executed? Moreover, many rebels would consider her as a legitimate co-ruler, while of course she would have none of the power. }
 
-Duncan:— That's... Never going to happen.""",
-	PRE_ANASTASIA_EXECUTION_22 = """Amelia:— Well, you never know where a girl's heart might stray. I think it's better than to doom such a young beauty to death.
+{color=yellow|Duncan:— That's... Never going to happen.}""",
+	PRE_ANASTASIA_EXECUTION_22 = """{color=aqua|Amelia:— Well, you never know where a girl's heart might stray. I think it's better than to doom such a young beauty to death.}
 
 The meeting descended into an uproar as people started arguing over the new idea.""",
-	PRE_ANASTASIA_EXECUTION_23 = """Myr:— Hmph, if it's [name], [he] might manage it, I suppose. 
+	PRE_ANASTASIA_EXECUTION_23 = """{color=aqua|Myr:— Hmph, if it's [name], [he] might manage it, I suppose. }
 
-Sigmund:— I say it's okay if ya think so, we trust [name].""",
+{color=yellow|Sigmund:— I say it's okay if ya think so, we trust [name].}""",
 	PRE_ANASTASIA_EXECUTION_24 = """Being left in minority Duncan remained silent for some time, as the room mostly came to the conclusion that your proposal is sound.
 
-Duncan:— Very well. If [name] can indeed convince the princess to publicly acknowledge our regime there's no harm in keeping her around, provided her status will be that of a slave. Even as... [his] wife. 
+{color=aqua|Duncan:— Very well. If [name] can indeed convince the princess to publicly acknowledge our regime there's no harm in keeping her around, provided her status will be that of a slave. Even as... [his] wife. }
 
-Amelia:— I suspect it's not going to be easy at all, [name]. But I'm sure you'll figure something out. 
+{color=yellow|Amelia:— I suspect it's not going to be easy at all, [name]. But I'm sure you'll figure something out. }
 
-Duncan:— If you fail, she will be executed as planned. Until either happens your election will be put on hold. 
+{color=aqua|Duncan:— If you fail, she will be executed as planned. Until either happens your election will be put on hold. 
 
-Duncan:— With this the meeting is over.""",
-	PRE_ANASTASIA_EXECUTION_25 = """Amelia:— A [man] of high standing should also pursue lofty goals, eh? A former princess as a personal slave is not something you see on just any day.
+Duncan:— With this the meeting is over.}""",
+	PRE_ANASTASIA_EXECUTION_25 = """{color=aqua|Amelia:— A [man] of high standing should also pursue lofty goals, eh? A former princess as a personal slave is not something you see on just any day.}
 
-Duncan:— I admire your ambition, but this is too much even for you. If she manages to escape, her status will allow her to lead another rebellion, even more fierce.
+{color=yellow|Duncan:— I admire your ambition, but this is too much even for you. If she manages to escape, her status will allow her to lead another rebellion, even more fierce.}
 
-Amelia:— I see where you are coming from, but think about it, if she's to declare her acceptance of our institution and asks rebels to disband it would be even better for us.
+{color=aqua|Amelia:— I see where you are coming from, but think about it, if she's to declare her acceptance of our institution and asks rebels to disband it would be even better for us.}
 
-Duncan:— She has shown no willingness to cooperate, so I find it hard to believe.
+{color=yellow|Duncan:— She has shown no willingness to cooperate, so I find it hard to believe.}
 
-Amelia:— I believe our future mayor has proven [he]'s capable of great things. So why don't we try it?""",
-	PRE_ANASTASIA_EXECUTION_26 = """Myr:— Hmph, if it's [name], [he] might manage it, I suppose. 
+{color=aqua|Amelia:— I believe our future mayor has proven [he]'s capable of great things. So why don't we try it?}""",
+	PRE_ANASTASIA_EXECUTION_26 = """{color=aqua|Myr:— Hmph, if it's [name], [he] might manage it, I suppose. }
 
-Sigmund:— Yah, I agree. There's no point rushin' either.""",
-	PRE_ANASTASIA_EXECUTION_27 = """Duncan:— ...Very well. You can attempt to persuade her. But if you fail she will be executed as planned. Until either happens your election will be put on hold.""",
-	PRE_ANASTASIA_EXECUTION_28 = """Duncan:— Then, we've decided. The execution will be held next week. After that we will appoint the mayor. Thank you for your work.""",
+{color=yellow|Sigmund:— Yah, I agree. There's no point rushin' either.}""",
+	PRE_ANASTASIA_EXECUTION_27 = """{color=aqua|Duncan:— ...Very well. You can attempt to persuade her. But if you fail she will be executed as planned. Until either happens your election will be put on hold.}""",
+	PRE_ANASTASIA_EXECUTION_28 = """{color=aqua|Duncan:— Then, we've decided. The execution will be held next week. After that we will appoint the mayor. Thank you for your work.}""",
 	
 	MIND_CONTROL_1 = """— Well, who would've thought you would be so ambitious as to get your hands on the princess herself. But I assure you this shall not be easy. Duncan did not lie when he said she's completely unwilling to cooperate as she sees us as nothing but evil.
 
@@ -4536,32 +4531,32 @@ Amelia smiled at you mysteriously.""",
 Oh, look, it's about to begin.""",
 	ANASTASIA_EXECUTION_5 = """As the curtain is taken down from around the platformthe crowds begin to raise their voices. In the center, a fully naked Anastasia is entrapped in a set of wooden stocks. Her face quickly turns an angry red as hundreds of eyes fix on her. A herald next to her declares her crimes at length, going on for a full minute. 
 
-Herald:— ...for these crimes, rebel Princess Anastasia is subjected...
+{color=aqua|Herald:— ...for these crimes, rebel Princess Anastasia is subjected...}
 
 He pauses dramatically for effect..
 
-Herald:— To a prolonged public humiliation. She will pay for her crimes with her body. Everyone should use her as they seem fit as long as she's not grievously harmed. 
+{color=aqua|Herald:— To a prolonged public humiliation. She will pay for her crimes with her body. Everyone should use her as they seem fit as long as she's not grievously harmed. }
 
-Anastasia:— Wha..?
+{color=yellow|Anastasia:— Wha..?}
 
 Princess could not decide if she should be happy to be alive or if  execution would be preferable to her imminent degradation.""",
 	ANASTASIA_EXECUTION_6 = """The crowd grew even more excited as many men shouldered forward quickly forming a line. Anastasia was quickly mounted without warning from behind by the first of them with guards keeping the rest at bay.
 
-Citizen:— Take this, you bitch! My brother died in the war because of you.
+{color=aqua|Citizen:— Take this, you bitch! My brother died in the war because of you.}
 
-Anastasia:— I'm sorry... Please, it hurts... Stop...
+{color=yellow|Anastasia:— I'm sorry... Please, it hurts... Stop...}
 
 However, the princess's pleading fell on deaf ears. Angry and horny citizens alike reveled in their debauchery.""",
-	ANASTASIA_EXECUTION_7 = """Amelia:— He-he, isn't this much nicer than a dead body? I'm actually quite proud of myself. Don't look so surprised, I've managed to convince Duncan and others that after this nobody will ever see her as royalty, so she'll be safe. Physically anyway… can't guarantee what state her mind will be left in.""",
+	ANASTASIA_EXECUTION_7 = """{color=aqua|Amelia:— He-he, isn't this much nicer than a dead body? I'm actually quite proud of myself. Don't look so surprised, I've managed to convince Duncan and others that after this nobody will ever see her as royalty, so she'll be safe. Physically anyway… can't guarantee what state her mind will be left in.}""",
 	ANASTASIA_EXECUTION_OPTION_3 = """Clever move""",
 	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off""",
 	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
-	ANASTASIA_EXECUTION_8 = """Amelia:— I did say I pity her, didn't I? And this is much more fun to watch too.""",
-	ANASTASIA_EXECUTION_9 = """Amelia:— *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.""",
-	ANASTASIA_EXECUTION_10 = """Amelia:— Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.""",
+	ANASTASIA_EXECUTION_8 = """{color=aqua|Amelia:— I did say I pity her, didn't I? And this is much more fun to watch too.}""",
+	ANASTASIA_EXECUTION_9 = """{color=aqua|Amelia:— *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.}""",
+	ANASTASIA_EXECUTION_10 = """{color=aqua|Amelia:— Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.}""",
 	ANASTASIA_EXECUTION_11 = """
 	
-Amelia:— But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
+{color=aqua|Amelia:— But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess.} """,
 	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet the line seemed to have no end. Her pleads and cries gave way entirely to sobs and faint moans. 
 
 The former princess kept being used by the citizenry for the whole of the next week until eventually disappearing from the main square.""",
@@ -4642,37 +4637,37 @@ As you finish, she drops to the ground coughing heavily and clinging to her thro
 	ANASTASIA_PERSUASION_26 = """After my father was killed, I've been forced to live constantly on the run and in fear. What did we do to deserve this?""",
 	ANASTASIA_PERSUASION_27 = """Amelia appeared in the room nearly soundless giving you a sign that she's out to help you.
 
-Amelia:— Allow me, I can explain as long as you are willing to take my word for it. King Alber was ruthless and cruel.
+{color=yellow|Amelia:— Allow me, I can explain as long as you are willing to take my word for it. King Alber was ruthless and cruel.}
 
-Anastasia:— You lie! Father was always kind to me.
+{color=aqua|Anastasia:— You lie! Father was always kind to me.}
 
-Amelia:— I have no reason to lie, he was gone long before I was of an age to be able to benefit from his demise. He might've been kind to his kin, but not to his subjects. 
+{color=yellow|Amelia:— I have no reason to lie, he was gone long before I was of an age to be able to benefit from his demise. He might've been kind to his kin, but not to his subjects. }
 
-Anastasia:— ...""",
-	ANASTASIA_PERSUASION_28 = """Amelia:— Have you heard of the Broderick family? Lee Broderick was a successful merchant, but one day he delivered a book to the king as a gift. Upon reading the book, the king decided that it was meant as a hidden insult, or perhaps even a curse. His family and his children were sentenced to hang one by one. Some managed to flee, but were caught, and their accomplices hanged as well.
+{color=aqua|Anastasia:— ...}""",
+	ANASTASIA_PERSUASION_28 = """{color=yellow|Amelia:— Have you heard of the Broderick family? Lee Broderick was a successful merchant, but one day he delivered a book to the king as a gift. Upon reading the book, the king decided that it was meant as a hidden insult, or perhaps even a curse. His family and his children were sentenced to hang one by one. Some managed to flee, but were caught, and their accomplices hanged as well.}
 
-Anastasia:— ...
+{color=aqua|Anastasia:— ...}
 
-Amelia:— There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let's not forget the unlucky harlots being whipped to death about every few months. That, I've personally seen with my own eyes on two occasions.""",
-	ANASTASIA_PERSUASION_29 = """Anastasia:— Enough...
+{color=yellow|Amelia:— There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let's not forget the unlucky harlots being whipped to death about every few months. That, I've personally seen with my own eyes on two occasions.}""",
+	ANASTASIA_PERSUASION_29 = """{color=aqua|Anastasia:— Enough...}
 
-Amelia:— Didn't "Uncle" Greg tell you about these? 
+{color=yellow|Amelia:— Didn't "Uncle" Greg tell you about these? }
 
-Anastasia:— No.
+{color=aqua|Anastasia:— No.}
 
 Anastasia lowered her eyes emanating an aura of depression.
 
-Amelia:— I don't blame you, every child wants to be proud of their parents, but it shouldn't blind you.
+{color=yellow|Amelia:— I don't blame you, every child wants to be proud of their parents, but it shouldn't blind you.}
 
-Anastasia:— If I was wrong all along... What's the point of this struggle? I've always believed I was doing my best for the people.""",
+{color=aqua|Anastasia:— If I was wrong all along... What's the point of this struggle? I've always believed I was doing my best for the people.}""",
 	ANASTASIA_PERSUASION_OPTION_26 = """You've tried to do what you thought was right""",
 	ANASTASIA_PERSUASION_OPTION_27 = """You were mistaken, and it's time to make up for it""",
 	ANASTASIA_PERSUASION_OPTION_28 = """Stop your useless whining""",
-	ANASTASIA_PERSUASION_30 = """Anastasia:— I don't feel like I have any right to make choices for anyone now.""",
+	ANASTASIA_PERSUASION_30 = """{color=aqua|Anastasia:— I don't feel like I have any right to make choices for anyone now.}""",
 	ANASTASIA_PERSUASION_OPTION_29 = """If anything, you would still be able to help people instead of dying""",
 	ANASTASIA_PERSUASION_OPTION_30 = """It's your fault, but you can redeem yourself by helping us. All you must do is submit and acknowledge our rule""",
 	ANASTASIA_PERSUASION_OPTION_31 = """Your crimes can still be pardoned if you cooperate""",
-	ANASTASIA_PERSUASION_31 = """Anastasia:— .....I'm sorry, please leave me alone for now, I need some time to think.
+	ANASTASIA_PERSUASION_31 = """{color=aqua|Anastasia:— .....I'm sorry, please leave me alone for now, I need some time to think.}
 
 Amelia gives you a sign to comply with this request and you both leave the room.""",
 	ANASTASIA_PERSUASION_32 = """— Her facade is broken, but we will only find out if you managed to persuade her tomorrow.""",
@@ -4710,22 +4705,22 @@ You realize there's nothing you can say to change Anastasia's mind at this point
 	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later""",
 	ANASTASIA_PERSUASION_43 = """Anastasia gives you a puzzled look. A few moments later the guards escort the elven girl to the cell at Amelia's orders. 
 
-Anastasia:— Aire..? You're alive!
+{color=aqua|Anastasia:— Aire..? You're alive!}
 
-Aire:— Ana...
+{color=yellow|Aire:— Ana...}
 
 The two girls hug weeping softly for the next couple of seconds. However both realize their reunion will not last long.
 
-Anastasia:— You look... worn.
+{color=aqua|Anastasia:— You look... worn.}
 
-Aire:— Don't worry, I'm fine. I've been through worse.""",
+{color=yellow|Aire:— Don't worry, I'm fine. I've been through worse.}""",
 	ANASTASIA_PERSUASION_44 = """Aire turns to you and you can still spot the hatred in her eyes.
 
-Aire:— I'm sorry, but this [man] has no honor. You should never fall into [his] hands. 
+{color=yellow|Aire:— I'm sorry, but this [man] has no honor. You should never fall into [his] hands. }
 
-Anastasia:— Wha... why? 
+{color=aqua|Anastasia:— Wha... why? }
 
-Aire:— I'm sorry, but please believe me. [He]'s but a beast. I don't believe [he] will treat you with any sort of respect.
+{color=yellow|Aire:— I'm sorry, but please believe me. [He]'s but a beast. I don't believe [he] will treat you with any sort of respect.}
 
 Anastasia kept silent, analyzing her friend's words. Looks like her trust for you has taken a big hit.
 
@@ -4733,20 +4728,24 @@ After a few more exchanges Aire is taken away by the guards. The princess gather
 	ANASTASIA_PERSUASION_45 = """Anastasia remained silent as Aire left the room.""",
 	ANASTASIA_PERSUASION_46 = """Aire turns to you. Her face displays a mix of confusion and respect for you.
 
-Anastasia:— Aire... I-I've been persuaded. I mean this [man] has proposed that I become [his] property in exchange for my life.
+{color=aqua|Anastasia:— Aire... I-I've been persuaded. I mean this [man] has proposed that I become [his] property in exchange for my life.}
 
-Aire:— So that's how it turned out... 
+{color=yellow|Aire:— So that's how it turned out... }
 
 Aire sighed deeply in contemplation.""",
-	ANASTASIA_PERSUASION_47 = """Aire:— I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I've known. If [he] managed to negotiate for your life I think you should accept the opportunity.
+	ANASTASIA_PERSUASION_47 = """{color=yellow|Aire:— I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I've known. If [he] managed to negotiate for your life I think you should accept the opportunity.}
 
-Anastasia:— It's unusual for you to endorse someone like this.
+{color=aqua|Anastasia:— It's unusual for you to endorse someone like this.}
 
-Aire:— Yes, but... you can't die now. You are the kindest person I've ever known.""",
-	ANASTASIA_PERSUASION_48 = """Aire:— I can't say I vouch for this [man], but [he] has treated me fairly so far. If [he] managed to negotiate for your life I think you should accept the opportunity.""",
-	ANASTASIA_PERSUASION_49 = """Anastasia:— Aire, but you know, I've never… what if I can't be what [he] asks?
+{color=yellow|Aire:— Yes, but... you can't die now. You are the kindest person I've ever known.}""",
+	ANASTASIA_PERSUASION_48 = """
 
-Aire:— I-I think you will be alright, you are very graceful and beautiful after all.
+{color=yellow|Aire:— I can't say I vouch for this [man], but [he] has treated me fairly so far. If [he] managed to negotiate for your life I think you should accept the opportunity.}""",
+	ANASTASIA_PERSUASION_49 = """
+
+{color=aqua|Anastasia:— Aire, but you know, I've never… what if I can't be what [he] asks?}
+
+{color=yellow|Aire:— I-I think you will be alright, you are very graceful and beautiful after all.}
 
 ...After a few more minutes of chatting, Aire is finally taken away.""",
 	ANASTASIA_PERSUASION_50 = """— Thank you for letting me meet with her, that was generous of you.""",
@@ -4765,19 +4764,18 @@ Aire:— I-I think you will be alright, you are very graceful and beautiful afte
 — I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my [master]. Now go, I know what is waiting for me and I am prepared.""",
 	ANASTASIA_PERSUASION_55 = """You leave the jail cell and find Amelia waiting for you.
 
-— Rejected, huh. Too bad. I guess we don't have that many options now. Well, you know where to find me if you need anything.
-""",
+— Rejected, huh. Too bad. I guess we don't have that many options now. Well, you know where to find me if you need anything.""",
 	ANASTASIA_PERSUASION_56 = """— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
 	ANASTASIA_PERSUASION_57 = """— But I have one condition. Could you ask your guild leader girl to come?""",
 	ANASTASIA_PERSUASION_58 = """Soon after she said it, the cell door opens and Amelia walks in. Looks like she had lingered, awaiting the outcome of your discussion.
 
-Amelia:— How may I be of service? 
+{color=aqua|Amelia:— How may I be of service? }
 
-Anastasia:— I want you to promise me Aire's safety. No, wait, I want you to let us meet occasionally as well.
+{color=yellow|Anastasia:— I want you to promise me Aire's safety. No, wait, I want you to let us meet occasionally as well.}
 
-Amelia:— Done, we can move your little elf friend to [name]'s service for that matter. I presume you won't deny another servant, right?
+{color=aqua|Amelia:— Done, we can move your little elf friend to [name]'s service for that matter. I presume you won't deny another servant, right?}
 
-Anastasia:— ...This would be very much to my liking.""",
+{color=yellow|Anastasia:— ...This would be very much to my liking.}""",
 	
 	
 	
@@ -4845,11 +4843,11 @@ Upon hearing this the crowd seemed to beam with enthusiasm, while Anastasia must
 — I'm no longer the rebel leader. I know some of you still believe it is my birth right to rule, but I am no longer eligible. Instead, from now on I will be supporting the newly elected mayor of Aliron, [sir] [name] [surname]. I will be at [his] mercy while doing my best for the sake of the people. 
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia around the waist. The crowd is energized, as the rumors have been spread for some time of your deeds and how you're going to become the next ruler. Spontaneous applause breaks out.""",
-	ANASTASIA_DECLARATION_3 = """Male Citizen 1:— It's finally over.
+	ANASTASIA_DECLARATION_3 = """{color=aqua|Male Citizen 1:— It's finally over.}
 
-Male Citizen 2:— She's really quite a beauty.
+{color=yellow|Male Citizen 2:— She's really quite a beauty.}
 
-Female Citizen:— They make a nice pair""",
+{color=aqua|Female Citizen:— They make a nice pair}""",
 	ANASTASIA_DECLARATION_OPTION_1 = """Wave to the crowd""",
 	ANASTASIA_DECLARATION_OPTION_2 = """Fondle Anastasia's butt""",
 	ANASTASIA_DECLARATION_4 = """You spend some more time greeting the citizens as Anastasia finishes her speech. Soon enough the announcement is declared to be over and you walk back inside the building.""",
@@ -4872,13 +4870,13 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 	
 	
 	
-	FINAL_WORDS_1 = """Duncan:— Congratulations, you finally made it. The rebel forces won't die out just yet, but they should never be able to unite again.
+	FINAL_WORDS_1 = """{color=aqua|Duncan:— Congratulations, you finally made it. The rebel forces won't die out just yet, but they should never be able to unite again.}
 
-Sigmund:— Dis's good ‘nuf, as long as dey won't be takin' towns. 
+{color=yellow|Sigmund:— Dis's good ‘nuf, as long as dey won't be takin' towns.}
 
-Duncan:— So now you're officially mayor. 
+{color=aqua|Duncan:— So now you're officially mayor.}
 
-Sigmund:— Let's get to da feast already.""",
+{color=yellow|Sigmund:— Let's get to da feast already.}""",
 	FINAL_WORDS_OPTION_1 = """Thank you""",
 	FINAL_WORDS_OPTION_2 = """I will miss the thrill""",
 	FINAL_WORDS_2 = """The end of the First Act. Thank you for playing.""",
@@ -5024,6 +5022,43 @@ Sigmund:— Let's get to da feast already.""",
 — Well, I will not hold you any longer, good luck with your mission. """,
 
 
+
+	# DAISY QUESTLINE
+	DAISY_RECRUITMENT_START = """As you bring Daisy to your mansion she looks at it in awe. It seems she didn't actually expect you to be a land owner. As soon as you make it inside she gives you a deep bow.
+
+- Uhm, thank you, [master]. I-I will do my best to serve you! """,
+	DAISY_RECRUITMENT_OPTION_1 = "You don't have to be so formal",
+	DAISY_RECRUITMENT_OPTION_2 = "I'll not expect less from you",
+	DAISY_RECRUITMENT_OPTION_3 = "I'm sure you will *Fondle her butt*",
+	DAISY_RECRUITMENT_REPLY_1 = "Daisy seems to brighten up a bit at your words. It seems she's happy to have a gentle master.",
+	DAISY_RECRUITMENT_REPLY_2 = "Daisy bows again and proceeds to her newly acquired duties.",
+	DAISY_RECRUITMENT_REPLY_3 = "Daisy's cheeks turn red as she feels your hand on her butt. She's clearly uncomfortable with your move, but does not dare to protest. After a few moments you let her proceed to her duty.",
+	
+	
+	DAISY_CLOTHES_START = """During the morning you are met by Daisy, the recently acquired bunny girl who now belongs to you. It seems she's eager to tell you something.
+
+- Good morning, [master]. I wanted to express my gratitude for your kindness. You've brought me to your home and treated me kindly all this time, but...
+
+You see Daisy is very hesitant to state her request. """,
+	DAISY_CLOTHES_OPTION_1_1 = "What do you want?",
+	DAISY_CLOTHES_OPTION_1_2 = "Just say it",
+	DAISY_CLOTHES_OPTION_1_3 = "Has the cat got your tongue?",
+	DAISY_CLOTHES_REPLY_1 = """- I-I'm sorry, but I feel that I don’t look good enough for your household. I only wear these rags and I might make your estate look worse...""",
+	DAISY_CLOTHES_OPTION_2_1 = "I don't really care",
+	DAISY_CLOTHES_OPTION_2_2 = "Fair enough, you do need better clothes",
+	DAISY_CLOTHES_OPTION_2_3 = "Aren't you a bit too demanding for a slave?",
+	DAISY_CLOTHES_REPLY_2_1 = """- Ah, well, then, as long as [master] is ok with it, I won't mind either...
+
+As she leaves the room you give a second thought and decide if it might be a decent idea to get her new clothes at some point...""",
+	DAISY_CLOTHES_OPTION_2_1_1 = "She's a hard worker and I do care for her after all",
+	DAISY_CLOTHES_OPTION_2_1_2 = "She's not worth the effort",
+	DAISY_CLOTHES_REPLY_2_1_1 = "After all, even if you said you don't mind, it's not a bad idea to get her new clothes. You make a note to get a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant.",
+	DAISY_CLOTHES_REPLY_2_1_2 = "You decide you don't want to put any more money into her. You might get rid of her soon, so there's no point in making any additional investments.",
+	DAISY_CLOTHES_REPLY_2_2 = """- I-I'm very grateful to you for this, [master]! Please, don't let this bother you more than necessary. 
+
+Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant. """,
+	DAISY_CLOTHES_REPLY_2_3 = "- I-I'm very sorry, [master]! I just thought that you would also prefer me to look less messy.",
+	
 	
 	
 	

@@ -57,23 +57,42 @@ var data = {
 		}, {
 			code = 'pre_final_boss_refuse',
 			text = "PRE_FINAL_BOSS_OPTION_5", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
-		}, 
-#		{
-#			reqs = [ {type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]}, 
-#				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true}],
-#			code = 'pre_final_boss_paladin_knight', 
-#			text = "PRE_FINAL_BOSS_PALADIN_KNIGHT_OPTION", dialogue_argument = 6, type = 'next_dialogue',
-#		}
+		}, {
+			code = 'pre_final_boss_paladin_knight', 
+			text = "PRE_FINAL_BOSS_PALADIN_KNIGHT_OPTION", reqs = [], dialogue_argument = 6, type = 'next_dialogue',
+		}
 		],
 	},
 	
 	pre_final_boss_paladin_knight = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan", reqs = [],
-		text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
-		options = [ {
-		code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
-		text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
-		} ],
+		variations = [ { # has Kurdan and Paladin = fight demon
+				reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]}, 
+				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true},
+				{type = 'decision', value = 'KurdanFollowing', check = true}],
+				image = null, tags = ['dialogue_scene'], character = "demon_female", character2 = "kurdan",
+				text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
+				options = [ {
+				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
+				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
+				} ],
+			}, { #has Kurdan, NOT paladin = fight demon_kurdan
+				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
+				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
+				options = [ {
+				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}], #We didn't kill nor let demon take rebels
+				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
+				} ],
+			}, { #NO Kurdan = fight demon
+				reqs = [{type = 'decision', value = 'KurdanFollowing', check = false}],
+				image = null, tags = ['dialogue_scene'], character = "demon_female",
+				text = [{text = "PRE_FINAL_BOSS_10", reqs = []}],
+				options = [ {
+				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
+				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
+				} ],
+			}
+		]
 	}, 
 	
 	pre_final_boss_agree = {

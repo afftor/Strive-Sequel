@@ -156,7 +156,10 @@ var sprites = {
 	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	greg = load("res://assets/images/sprites/greg.png"),
 	elf_priestess = load("res://assets/images/sprites/elf_priestess.png"),
-	zephyra = load("res://assets/images/sprites/zephyra.png")
+	zephyra = load("res://assets/images/sprites/zephyra.png"),
+	daisy_default = load("res://assets/images/sprites/daisy_default.png"),
+	daisy_maid = load("res://assets/images/sprites/daisy_maid.png"),
+	daist_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	}
 
 var dynamic_backgrounds = {

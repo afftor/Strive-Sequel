@@ -54,7 +54,6 @@ var data = {
 		]
 	},
 	
-
 	fred_talk_1 = {
 		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],

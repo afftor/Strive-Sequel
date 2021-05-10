@@ -532,16 +532,7 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.0a
-Writ of exemption and Enslave no longer apply to unique characters
-Added some additional dialogue options based on master's class
-Certain story character will have their stats adjusted based on player's decisions
-Fixed an issue when sometimes characters didn't get assigned to task correctly
-Fixed final guards at the siege not being fightable
-Fixed elven capital questline not completing properly in some cases
-Fixed wip scenes not having an option to hide foreground
-Fixed lich intimidation check
-0.5.0
+bbcode_text = "0.5.0
 Added civil war story arc
 Added an option to start from after the prologue
 Characters now can be generated with sexual skills (based on their virginity/classes)
@@ -905,16 +896,7 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.0a
-Writ of exemption and Enslave no longer apply to unique characters
-Added some additional dialogue options based on master's class
-Certain story character will have their stats adjusted based on player's decisions
-Fixed an issue when sometimes characters didn't get assigned to task correctly
-Fixed final guards at the siege not being fightable
-Fixed elven capital questline not completing properly in some cases
-Fixed wip scenes not having an option to hide foreground
-Fixed lich intimidation check
-0.5.0
+text = "0.5.0
 Added civil war story arc
 Added an option to start from after the prologue
 Characters now can be generated with sexual skills (based on their virginity/classes)

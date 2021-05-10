@@ -137,8 +137,8 @@ var data = {
 			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, 
 			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
-		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19'}], 
+		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3}, 
+		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19'}, {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], 
 		dialogue_argument = 6, type = 'next_dialogue', },#bonus_effects = [{code = "screen_black_transition", value = 2}]},
 		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},
 		
