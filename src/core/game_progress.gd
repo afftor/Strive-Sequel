@@ -45,6 +45,7 @@ var cheat_code = "fkfynroh"
 
 var work_quests_finished = []
 
+var dialogue_local_counters = {}
 
 
 func _init():
@@ -126,3 +127,17 @@ func reset_day_count(quest):
 		"aliron_church":
 			days_from_last_church_quest = 0
 
+
+func operate_counter(c_name, c_op):
+	if !dialogue_local_counters.has(c_name): 
+		dialogue_local_counters[c_name] = 0
+	match c_op:
+		'+': dialogue_local_counters[c_name] += 1
+		'-': dialogue_local_counters[c_name] -= 1
+		_: dialogue_local_counters[c_name] = c_op
+
+
+func counter_cond(c_name, c_op, value):
+	if !dialogue_local_counters.has(c_name): 
+		dialogue_local_counters[c_name] = 0
+	return input_handler.operate(c_op, dialogue_local_counters[c_name], value)
