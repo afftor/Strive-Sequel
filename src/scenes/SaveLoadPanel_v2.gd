@@ -2,6 +2,8 @@ extends Panel
 
 
 var saveloadmode
+var loadmode = "load"
+
 
 func _ready():
 #warning-ignore:return_value_discarded
@@ -81,6 +83,7 @@ func update_file_action():
 func SavePanelOpen():
 #	show()
 	saveloadmode = 'save'
+	$ImportMode.visible = false
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = true
 	for i in input_handler.dir_contents(variables.userfolder + 'saves'):
@@ -108,6 +111,8 @@ func SavePanelOpen():
 func LoadPanelOpen():
 #	show()
 	saveloadmode = 'load'
+	loadmode = "load"
+	$ImportMode.visible = true
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = false
 	$LineEdit.text = ''
@@ -150,8 +155,13 @@ func PressLoadGame(savename):
 	gui_controller.close_all_closeable_windows()
 	gui_controller.windows_opened.clear()
 	$LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
+	if loadmode == "load":
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
+	else:
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'ImportGame', tr("LOADCONFIRM")])
 	#input_handler.ShowConfirmPanel(self, 'LoadGame',tr("LOADCONFIRM"))
+
+
 
 func PressSaveGame(savename):
 	if savename == null:
@@ -192,11 +202,19 @@ func SaveGame():
 
 func LoadGame():
 	globals.LoadGame($LineEdit.text)
-#	globals.ImportGame($LineEdit.text)
 	yield(get_tree(), "idle_frame")
 	if gui_controller.game_menu != null:
 		gui_controller.game_menu.hide()
 	gui_controller.close_all_closeable_windows()
+
+
+func ImportGame():
+	globals.ImportGame($LineEdit.text)
+	yield(get_tree(), "idle_frame")
+	if gui_controller.game_menu != null:
+		gui_controller.game_menu.hide()
+	gui_controller.close_all_closeable_windows()
+
 
 func SaveNameTransform(path):
 	return path.replace(variables.userfolder + 'saves/',"").replace('.sav', '').replace('.dat','')
@@ -235,3 +253,11 @@ func get_date_time(save):
 	text += add_zeros(save.time.hour) + ":" + add_zeros(save.time.minute) 
 	text += " - " + str(save.time.month) + "/" + str(save.time.day) + "/" + str(save.time.year).substr(2, 4)
 	return text
+
+
+func _on_ImportMode_pressed():
+#	$ImportMode.flat = true
+	if $ImportMode.pressed:
+		loadmode = "import"
+	else:
+		loadmode = "load"
