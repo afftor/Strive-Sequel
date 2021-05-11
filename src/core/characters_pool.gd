@@ -39,7 +39,7 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.characters[id].clean_effects()
 			ResourceScripts.game_party.characters[id].clean_references()
 			ResourceScripts.game_party.character_order.erase(id)
-			input_handler.slave_list_node.rebuild()
+			if !on_exit: input_handler.slave_list_node.rebuild() #temporal, needs remake
 			remove_id(id)
 
 func remove_id(id):
