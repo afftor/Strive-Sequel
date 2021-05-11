@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionSlaveInfoPanele.tres" type="StyleBox" id=28]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=29]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=30]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -85,11 +86,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="professions" type="GridContainer" parent="TextureRect"]
-margin_left = 6.0
-margin_top = 6.0
-margin_right = 95.0
-margin_bottom = 95.0
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="professions" type="GridContainer" parent="TextureRect/ScrollContainer"]
 mouse_filter = 2
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
@@ -98,7 +107,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=[
+[node name="Button" type="TextureRect" parent="TextureRect/ScrollContainer/professions" groups=[
 "ignore_rightclicks",
 ]]
 visible = false
@@ -112,7 +121,7 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 22 )
 
-[node name="Label" type="Label" parent="TextureRect/professions/Button"]
+[node name="Label" type="Label" parent="TextureRect/ScrollContainer/professions/Button"]
 visible = false
 margin_left = 6.0
 margin_top = 64.0
@@ -125,7 +134,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfIcon" type="TextureRect" parent="TextureRect/professions/Button"]
+[node name="ProfIcon" type="TextureRect" parent="TextureRect/ScrollContainer/professions/Button"]
 show_behind_parent = true
 margin_left = 6.0
 margin_top = 6.0

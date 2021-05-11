@@ -46,22 +46,22 @@ func show_slave_info():
 		$exp.text = str(floor(person.get_stat('base_exp')))
 		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
 		var text = person.get_short_name() + person.translate(" [race] [age]")
-		input_handler.ClearContainer($TextureRect/professions)
+		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
 		if person.xp_module.professions.size() > 5:
-			$TextureRect/professions.columns = 10
-			$TextureRect/professions.set("custom_constants/hseparation", 1)
-			$TextureRect/professions/Button.rect_min_size = Vector2(45,45)
-			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(34,34)
-			$TextureRect/professions/Button/Label.hide()
+			$TextureRect/ScrollContainer/professions.columns = 10 #or 9 - idk what is lesser evil
+			$TextureRect/ScrollContainer/professions.set("custom_constants/hseparation", 1)
+			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(45,45)
+			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(34,34)
+			$TextureRect/ScrollContainer/professions/Button/Label.hide()
 		else:
-			$TextureRect/professions.columns = 5
-			$TextureRect/professions.set("custom_constants/hseparation", 2)
-			$TextureRect/professions/Button.rect_min_size = Vector2(90,90)
-			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78,78)
+			$TextureRect/ScrollContainer/professions.columns = 5
+			$TextureRect/ScrollContainer/professions.set("custom_constants/hseparation", 2)
+			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(90,90)
+			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(78,78)
 #			$TextureRect/professions/Button/Label.show()
 			
 		for i in person.xp_module.professions:
-			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/professions)
+			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/ScrollContainer/professions)
 			var prof = classesdata.professions[i]
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
 			newnode.get_node("Label").text = name
