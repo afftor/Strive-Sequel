@@ -38,20 +38,20 @@ func update(person = null):
 		else:
 			newnode.get_node("Label").hide()
 		globals.connecttexttooltip(newnode, person.translate(i.description))
-	input_handler.ClearContainer($professions)
+	input_handler.ClearContainer($ScrollContainer/professions)
 	if person.xp_module.professions.size() > 6:
-		$professions.columns = 12
-		$professions.set("custom_constants/hseparation", 6)
-		$professions/Button.rect_min_size = Vector2(50, 50)
-		$professions/Button/TextureRect.rect_size = Vector2(34, 34)
-		$professions/Button/Label.hide()
+		$ScrollContainer/professions.columns = 12
+		$ScrollContainer/professions.set("custom_constants/hseparation", 6)
+		$ScrollContainer/professions/Button.rect_min_size = Vector2(50, 50)
+		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(34, 34)
+		$ScrollContainer/professions/Button/Label.hide()
 	else:
-		$professions.columns = 6
-		$professions.set("custom_constants/hseparation", 14)
-		$professions/Button.rect_min_size = Vector2(100, 100)
-		$professions/Button/TextureRect.rect_size = Vector2(84, 84)
+		$ScrollContainer/professions.columns = 6
+		$ScrollContainer/professions.set("custom_constants/hseparation", 14)
+		$ScrollContainer/professions/Button.rect_min_size = Vector2(100, 100)
+		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(84, 84)
 	for i in person.xp_module.professions:
-		var newnode = input_handler.DuplicateContainerTemplate($professions)
+		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/professions)
 		var prof = classesdata.professions[i]
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)
 		newnode.get_node("Label").text = name

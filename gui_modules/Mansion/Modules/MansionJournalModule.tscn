@@ -75,6 +75,9 @@ margin_left = 46.0
 margin_top = 169.0
 margin_right = 338.0
 margin_bottom = 694.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 292.0
@@ -89,15 +92,158 @@ theme = ExtResource( 6 )
 toggle_mode = true
 text = "Text Teateya h hasjh"
 
-[node name="QuestDescript" type="RichTextLabel" parent="."]
-margin_left = 398.0
-margin_top = 40.0
-margin_right = 772.0
-margin_bottom = 311.0
+[node name="RightPanel" type="VBoxContainer" parent="."]
+margin_left = 389.0
+margin_top = 37.0
+margin_right = 786.0
+margin_bottom = 693.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestDescript" type="RichTextLabel" parent="RightPanel"]
+margin_right = 397.0
+margin_bottom = 508.0
+size_flags_vertical = 3
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 13 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RightPanel"]
+margin_top = 512.0
+margin_right = 397.0
+margin_bottom = 547.0
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Requirements"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reqs" type="HBoxContainer" parent="RightPanel"]
+margin_top = 551.0
+margin_right = 397.0
+margin_bottom = 551.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="RightPanel/reqs"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel/reqs/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="RightPanel/reqs/Button"]
+visible = false
+margin_left = 32.5641
+margin_top = 48.7934
+margin_right = 72.5641
+margin_bottom = 72.7934
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="Label2" type="Label" parent="RightPanel"]
+margin_top = 555.0
+margin_right = 397.0
+margin_bottom = 590.0
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rewards"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rewards" type="HBoxContainer" parent="RightPanel"]
+margin_top = 594.0
+margin_right = 397.0
+margin_bottom = 594.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="RightPanel/rewards"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel/rewards/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="RightPanel/rewards/Button"]
+visible = false
+margin_left = 30.6155
+margin_top = 46.5347
+margin_right = 70.6155
+margin_bottom = 70.5347
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="RightPanel"]
+margin_top = 598.0
+margin_right = 397.0
+margin_bottom = 656.0
+
+[node name="Time" type="TextureRect" parent="RightPanel/CenterContainer"]
+margin_left = 182.0
+margin_right = 214.0
+margin_bottom = 58.0
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RightPanel/CenterContainer/Time"]
+margin_left = 45.6711
+margin_top = 17.499
+margin_right = 140.671
+margin_bottom = 41.499
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,129 +290,6 @@ custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Forfeit"
-
-[node name="reqs" type="HBoxContainer" parent="."]
-margin_left = 398.0
-margin_top = 386.0
-margin_right = 772.0
-margin_bottom = 461.0
-
-[node name="Button" type="TextureButton" parent="reqs"]
-visible = false
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-size_flags_horizontal = 0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect" type="TextureRect" parent="reqs/Button"]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 72.0
-margin_bottom = 72.0
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="amount" type="Label" parent="reqs/Button"]
-visible = false
-margin_left = 32.5641
-margin_top = 48.7934
-margin_right = 72.5641
-margin_bottom = 72.7934
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "1"
-align = 2
-
-[node name="rewards" type="HBoxContainer" parent="."]
-margin_left = 398.0
-margin_top = 518.0
-margin_right = 772.0
-margin_bottom = 593.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="rewards"]
-visible = false
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-size_flags_horizontal = 0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect" type="TextureRect" parent="rewards/Button"]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 72.0
-margin_bottom = 72.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="amount" type="Label" parent="rewards/Button"]
-visible = false
-margin_left = 30.6155
-margin_top = 46.5347
-margin_right = 70.6155
-margin_bottom = 70.5347
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "1"
-align = 2
-
-[node name="Label" type="Label" parent="."]
-margin_left = 387.0
-margin_top = 335.0
-margin_right = 788.0
-margin_bottom = 367.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Requirements"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 396.0
-margin_top = 467.0
-margin_right = 772.0
-margin_bottom = 499.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Rewards"
-align = 1
-
-[node name="Time" type="TextureRect" parent="."]
-margin_left = 497.826
-margin_top = 610.948
-margin_right = 537.826
-margin_bottom = 668.948
-texture = ExtResource( 21 )
-
-[node name="Label" type="Label" parent="Time"]
-margin_left = 45.6711
-margin_top = 17.499
-margin_right = 140.671
-margin_bottom = 41.499
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Time"
 
 [node name="Main" type="TextureButton" parent="."]
 margin_left = 188.177

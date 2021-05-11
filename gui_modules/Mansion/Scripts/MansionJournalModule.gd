@@ -17,7 +17,7 @@ func _ready():
 
 
 func change_type(newtype):
-	$QuestDescript.bbcode_text = ""
+	$RightPanel/QuestDescript.bbcode_text = ""
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = false
@@ -27,12 +27,12 @@ func change_type(newtype):
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$SelectCharacter.visible = false
-	$QuestDescript.clear()
-	$rewards.hide()
-	$reqs.hide()
-	$Label.hide()
-	$Label2.hide()
-	$Time.hide()
+	$RightPanel/QuestDescript.clear()
+	$RightPanel/rewards.hide()
+	$RightPanel/reqs.hide()
+	$RightPanel/Label.hide()
+	$RightPanel/Label2.hide()
+	$RightPanel/CenterContainer/Time.hide()
 	hide_item_selection()
 	show_quests()
 
@@ -50,13 +50,13 @@ func open():
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$SelectCharacter.visible = false
-	$QuestDescript.clear()
+	$RightPanel/QuestDescript.clear()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	$rewards.hide()
-	$reqs.hide()
-	$Label.hide()
-	$Label2.hide()
-	$Time.hide()
+	$RightPanel/rewards.hide()
+	$RightPanel/reqs.hide()
+	$RightPanel/Label.hide()
+	$RightPanel/Label2.hide()
+	$RightPanel/CenterContainer/Time.hide()
 	hide_item_selection()
 	for i in ResourceScripts.game_progress.active_quests:
 		make_active_quest_button(i)
@@ -89,15 +89,15 @@ func make_quest_button(quest):
 	newbutton.hide()
 
 func show_quest_info(quest):
-	$rewards.show()
-	$reqs.show()
-	$Label.show()
-	$Label2.show()
-	$Time.show()
+	$RightPanel/rewards.show()
+	$RightPanel/reqs.show()
+	$RightPanel/Label.show()
+	$RightPanel/Label2.show()
+	$RightPanel/CenterContainer/Time.show()
 	$CompleteButton.show()
 	$SelectCharacter.hide()
-	input_handler.ClearContainer($reqs)
-	input_handler.ClearContainer($rewards)
+	input_handler.ClearContainer($RightPanel/reqs)
+	input_handler.ClearContainer($RightPanel/rewards)
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = i.get_meta('quest') == quest
@@ -107,7 +107,7 @@ func show_quest_info(quest):
 		selectedquest = quest
 		input_handler.selectedquest = quest
 		for i in quest.requirements:
-			var newbutton = input_handler.DuplicateContainerTemplate($reqs)
+			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
 			match i.code:
 				'kill_monsters':
 					newbutton.get_node("TextureRect").texture = images.icons.quest_enemy
@@ -182,7 +182,7 @@ func show_quest_info(quest):
 							stats[r.stat] = r.value
 						if r.code == "has_profession" && r.check:
 							prof = r.value
-							var profbutton = input_handler.DuplicateContainerTemplate($reqs)
+							var profbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
 							var prof_icon = classesdata.professions[prof].icon
 							profbutton.get_node("TextureRect").texture = prof_icon
 							var prof_name = "Required Class:\n" + classesdata.professions[prof].name
@@ -200,7 +200,7 @@ func show_quest_info(quest):
 		
 		
 		for i in quest.rewards:
-			var newbutton = input_handler.DuplicateContainerTemplate($rewards)
+			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/rewards)
 			match i.code:
 				'gear':
 					var item = globals.CreateGearItem(i.item, i.itemparts)
@@ -237,21 +237,21 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
 
-		$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
-		$Time/Label.text = str(quest.time_limit) + " days left."
+		$RightPanel/QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
+		$RightPanel/CenterContainer/Time/Label.text = str(quest.time_limit) + " days left."
 		$CancelButton.visible = true
 		$CompleteButton.visible = true
 	else:
-		$rewards.hide()
-		$reqs.hide()
-		$Label.hide()
-		$Label2.hide()
-		$Time.hide()
+		$RightPanel/rewards.hide()
+		$RightPanel/reqs.hide()
+		$RightPanel/Label.hide()
+		$RightPanel/Label2.hide()
+		$RightPanel/CenterContainer/Time.hide()
 		$CancelButton.visible = false
 		$CompleteButton.visible = false
 		$SelectCharacter.visible = false
 		var quest_stage = scenedata.quests[quest.code].stages[quest.stage]
-		$QuestDescript.bbcode_text = globals.TextEncoder('[center]' + tr(quest_stage.name) + '[/center]\n' + tr(scenedata.quests[quest.code].summary) + "\n\n" + tr(quest_stage.descript))
+		$RightPanel/QuestDescript.bbcode_text = globals.TextEncoder('[center]' + tr(quest_stage.name) + '[/center]\n' + tr(scenedata.quests[quest.code].summary) + "\n\n" + tr(quest_stage.descript))
 
 
 var selectedslave
