@@ -787,16 +787,3 @@ func handle_scene_options(scene):
 			newbutton.disabled = disable
 			option_number += 1
 
-
-var counters = {}
-func operate_counter(c_name, c_op):
-	if !counters.has(c_name): counters[c_name] = 0
-	match c_op:
-		'+': counters[c_name] += 1
-		'-': counters[c_name] -= 1
-		_: counters[c_name] = c_op
-
-
-func counter_cond(c_name, c_op, value):
-	if !counters.has(c_name): return false
-	return input_handler.operate(c_op, counters[c_name], value)

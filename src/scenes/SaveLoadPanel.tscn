@@ -27,7 +27,7 @@ __meta__ = {
 margin_left = 17.0
 margin_top = 285.0
 margin_right = 586.0
-margin_bottom = 645.0
+margin_bottom = 631.0
 size_flags_vertical = 3
 theme = ExtResource( 13 )
 scroll_horizontal_enabled = false
@@ -167,9 +167,8 @@ margin_bottom = 741.0
 
 [node name="Button" type="TextureButton" parent="UpdatePanel/VBoxContainer"]
 visible = false
-margin_top = 65.0
 margin_right = 590.0
-margin_bottom = 116.0
+margin_bottom = 51.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
@@ -201,3 +200,18 @@ margin_bottom = 46.2509
 rect_min_size = Vector2( 30, 30 )
 hint_tooltip = "Delete"
 text = "Update"
+
+[node name="ImportMode" type="CheckButton" parent="."]
+margin_left = 49.0
+margin_top = 649.0
+margin_right = 342.0
+margin_bottom = 695.251
+hint_tooltip = "When this mode is on, game will recreate the world and reset all game progress on load, but still will keep all your characters, items and inventory. Use this mode to load outdated saves."
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+shortcut_in_tooltip = false
+text = "Import mode"
+[connection signal="pressed" from="ImportMode" to="." method="_on_ImportMode_pressed"]

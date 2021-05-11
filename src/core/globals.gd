@@ -522,8 +522,9 @@ func ImportGame(filename):
 	ResourceScripts.game_party.fix_import()
 	ResourceScripts.game_globals = dict2inst(savedict.game_globals)
 	ResourceScripts.game_globals.fix_import()
-	ResourceScripts.game_progress = dict2inst(savedict.game_progress)
-	ResourceScripts.game_progress.fix_import()
+	#temporally removed
+#	ResourceScripts.game_progress = dict2inst(savedict.game_progress)
+#	ResourceScripts.game_progress.fix_import()
 	
 	characters_pool.cleanup()
 	effects_pool.cleanup()
@@ -1338,7 +1339,7 @@ func common_effects(effects):
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
 			'dialogue_counter':
-				gui_controller.dialogue.operate_counter(i.name, i.op)
+				ResourceScripts.game_progress.operate_counter(i.name, i.op)
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
@@ -1559,7 +1560,7 @@ func valuecheck(dict):
 				var master_char = ResourceScripts.game_party.get_master()
 				if master_char != null:
 					tval += master_char.get_stat(dict.sub_stat)
-			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, tval) == dict.check
+			return ResourceScripts.game_progress.counter_cond(dict.name, dict.operant, tval) == dict.check
 		'master_factor_check':
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
