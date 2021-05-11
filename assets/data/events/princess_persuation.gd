@@ -676,7 +676,7 @@ var data = {
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_39", reqs = [], previous_dialogue_option = 0},
-					{text = "ANASTASIA_PERSUASION_42", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = 0}], previous_dialogue_option = 0},
+					{text = "ANASTASIA_PERSUASION_42", reqs = [], previous_dialogue_option = 0},
 					{text = "ANASTASIA_PERSUASION_45", reqs = [], previous_dialogue_option = 1},
 					{text = "ANASTASIA_PERSUASION_50", reqs = [], previous_dialogue_option = 2},
 					{text = "ANASTASIA_PERSUASION_51", reqs = [], previous_dialogue_option = 3},
@@ -697,7 +697,12 @@ var data = {
 						dialogue_argument = 3,
 						remove_after_first_use = true,
 						type = 'next_dialogue',
-						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'decision', value = 'bracelet_returned'}, {code = 'material_change', operant = '-', material = 'princess_bracelet', value = 1}]
+						bonus_effects = [
+							{code = 'dialogue_counter', name = 'sympathy2', op = '+'},
+							{code = 'decision', value = 'bracelet_returned'},
+							{code = 'material_change', operant = '-', material = 'princess_bracelet', value = 1},
+							{code = 'remove_decision', value = 'mindbreak_enabled'}
+						]
 					},
 					{
 						code = 'princess_persuation_2_2',
@@ -705,14 +710,16 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						#remove_after_first_use = true
+						remove_after_first_use = true,
+						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = 0}]
 					},
 					{
 						code = 'princess_mindbreak_1',
 						text = "ANASTASIA_PERSUASION_OPTION_2",
 						reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}],
 						dialogue_argument = 1,
-						type = 'next_dialogue'
+						type = 'next_dialogue',
+						remove_after_first_use = true
 					},
 					{
 						code = 'close',
