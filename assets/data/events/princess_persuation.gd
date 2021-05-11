@@ -659,7 +659,10 @@ var data = {
 				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'AnastasiaPersuasionNextday'}, {code = 'update_city'}], #add second persuation trigger here
+				bonus_effects = [
+					{code = 'decision', value = 'AnastasiaPersuasionNextday'}, {code = 'update_city'},
+					{code = 'dialogue_counter', name = 'sympathy2', op = 0}
+				], #add second persuation trigger here
 			},
 		],
 	},
@@ -711,7 +714,6 @@ var data = {
 						dialogue_argument = 1,
 						type = 'next_dialogue',
 						remove_after_first_use = true,
-						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = 0}]
 					},
 					{
 						code = 'princess_mindbreak_1',
