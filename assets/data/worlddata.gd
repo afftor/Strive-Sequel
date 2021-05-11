@@ -83,8 +83,7 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
 		guilds = [],  
-		events = [{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}},
-		{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_21'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
+		events = [{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {

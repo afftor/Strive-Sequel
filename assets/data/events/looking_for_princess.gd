@@ -242,9 +242,9 @@ var data = {
 	looking_for_princess_mages_2 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_21", reqs = []}], 
-		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 		}],
 	},
 	

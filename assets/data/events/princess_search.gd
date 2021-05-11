@@ -754,6 +754,7 @@ var data = {
 				text = "DIALOGUELEAVE",
 				reqs = [],
 				dialogue_argument = 1,
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 			},
 		],
 	},
@@ -942,7 +943,7 @@ var data = {
 			{text = "AIREAMELIAREPORT", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], dialogue_argument = 1}
+			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], dialogue_argument = 1, }
 		]
 	},
 	
