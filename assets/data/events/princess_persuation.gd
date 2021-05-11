@@ -851,25 +851,6 @@ var data = {
 			},
 		]
 	},
-	princess_persuation_2_bracelet = {#actually not used
-		image = null,
-		character = "anastasia",
-		custom_background = "jail",
-		tags = ['dialogue_scene'],
-		text = [
-			{text = "ANASTASIA_PERSUASION_51", reqs = []},
-		],
-		options = [
-			{
-				code = 'princess_persuation_2_init',
-				text = "DIALOGUECONTINUE",
-				reqs = [],
-				dialogue_argument = 3,
-				type = 'next_dialogue',
-				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
-			},
-		],
-	},
 	princess_persuation_2_2 = {
 		image = null,
 		character = "anastasia",
@@ -1173,7 +1154,7 @@ var data = {
 			},
 			{
 				reqs = [
-					{type = 'local_counter', name = 'sympathy2', add_stat = 'charm_factor', operant = 'gte', value = 11, check = true},
+					{type = 'local_counter', name = 'sympathy2', add_stat = 'charm_factor', operant = 'gte', value = 8, check = true},
 					{type = 'decision', value = 'enslave_option', check = true}],
 				image = null,
 				character = "anastasia",

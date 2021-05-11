@@ -119,7 +119,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_19", reqs = []}],
 		options = [ {
-			code = 'guilds_meeting_7', text = "PRE_ANASTASIA_EXECUTION_OPTION_11", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'male'}]}], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'guilds_meeting_7', text = "PRE_ANASTASIA_EXECUTION_OPTION_11", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'neq', value = 'female'}]}], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'decision', value = 'marry_option'}]
 		}, {
 			code = 'guilds_meeting_12', text = "PRE_ANASTASIA_EXECUTION_OPTION_12", reqs = [], dialogue_argument = 2, type = 'next_dialogue',

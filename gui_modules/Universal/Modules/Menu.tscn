@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_pressed.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options_hover.png" type="Texture" id=53]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
+[ext_resource path="res://assets/images/gui/panels/wiki.png" type="Texture" id=55]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -193,7 +194,7 @@ texture_hover = ExtResource( 40 )
 [node name="Panel" type="Panel" parent="."]
 margin_left = 53.0
 margin_top = 785.0
-margin_right = 545.0
+margin_right = 691.0
 margin_bottom = 944.0
 rect_scale = Vector2( 0.8, 0.8 )
 __meta__ = {
@@ -229,6 +230,15 @@ margin_right = 458.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 37 )
+expand = true
+stretch_mode = 5
+
+[node name="Wiki" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 462.0
+margin_right = 612.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 55 )
 expand = true
 stretch_mode = 5
 
@@ -532,7 +542,25 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.0a
+bbcode_text = "0.5.0d
+Reduced time requirement for Assignmenet tasks
+Spoiler enslavement option is now available for futa
+Fixed princess not being findable if you didn't interrogate Aire
+Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8 
+Added wiki link to main menu and fixed itch.io link
+Fixed some scene issues
+0.5.0c
+Fixed some buff tooltips and misspells
+Fixed a rare bug when timed event was cancelled when it was running with another timed event
+Fixed game becoming slow on the closing until system restart/reinstall
+0.5.0b
+Blizzard now costs mana
+Blizzard now only slows enemies with 30% chance 
+Fixed some issues with shrines and chests causing errors
+Fixed clock showing in inventory
+Fixed some new skills
+Fixed traps doing damage to negative numbers
+0.5.0a
 Writ of exemption and Enslave no longer apply to unique characters
 Added some additional dialogue options based on master's class
 Certain story character will have their stats adjusted based on player's decisions
@@ -905,7 +933,25 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.0a
+text = "0.5.0d
+Reduced time requirement for Assignmenet tasks
+Spoiler enslavement option is now available for futa
+Fixed princess not being findable if you didn't interrogate Aire
+Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8 
+Added wiki link to main menu and fixed itch.io link
+Fixed some scene issues
+0.5.0c
+Fixed some buff tooltips and misspells
+Fixed a rare bug when timed event was cancelled when it was running with another timed event
+Fixed game becoming slow on the closing until system restart/reinstall
+0.5.0b
+Blizzard now costs mana
+Blizzard now only slows enemies with 30% chance 
+Fixed some issues with shrines and chests causing errors
+Fixed clock showing in inventory
+Fixed some new skills
+Fixed traps doing damage to negative numbers
+0.5.0a
 Writ of exemption and Enslave no longer apply to unique characters
 Added some additional dialogue options based on master's class
 Certain story character will have their stats adjusted based on player's decisions
