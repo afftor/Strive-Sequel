@@ -656,7 +656,8 @@ func generate_scene_text(scene):
 		if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)) || !globals.checkreqs(i.reqs):
 			continue
 		# if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && is_should_save == false:
-		ResourceScripts.game_progress.seen_dialogues.append(i.text)
+		if input_handler.if_translation_key(i.text):
+			ResourceScripts.game_progress.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
 			globals.common_effects(i.bonus_effects)
 		newtext += tr(i.text)

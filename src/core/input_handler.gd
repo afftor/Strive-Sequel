@@ -1445,3 +1445,8 @@ func get_actual_size_for_container(node):
 			res.y = tnode.rect_size.y
 		if res.x > 0: res.x -= separation
 	return res
+
+
+func if_translation_key(text:String):
+	var ntext = tr(text)
+	return ntext != text

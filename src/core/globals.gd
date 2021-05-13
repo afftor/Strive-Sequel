@@ -479,6 +479,7 @@ func LoadGame(filename):
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
 	ResourceScripts.game_world.fix_serialization()
+	ResourceScripts.game_progress.fix_serialization()
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
