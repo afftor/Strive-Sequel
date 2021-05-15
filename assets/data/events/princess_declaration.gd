@@ -81,6 +81,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				bonus_effects = [{code = 'decision', value = 'anastasia_added'}]
 			},
 		],
 	},
@@ -91,11 +92,14 @@ var data = {
 		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
-			{text = "", reqs = [], bonus_effects = [
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
 				{code = 'make_story_character', value = 'Anastasia'}]
 			},
 			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true}], bonus_effects = [{code = 'add_item', item = 'anastasia_bracelet', number = 1}]},
-			{text = "", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}], bonus_effects = [
+			{text = "", reqs = [
+					{type = 'decision', value = 'AireAnastasiaPersuasion', check = true},
+					{type = 'decision', value = 'persuade_2_completed', check = true},
+				], bonus_effects = [
 				{code = 'make_story_character', value = 'Aire'}]
 			},
 			{text = '', reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
@@ -136,10 +140,18 @@ var data = {
 			{
 				code = 'princess_cutscene_init',
 				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				reqs = [{type = 'decision', value = 'anastasia_added', check = true}], 
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'anastasia_added'}]
+				bonus_effects = []
+			},
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE", 
+				reqs = [{type = 'decision', value = 'anastasia_added', check = false}], 
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				bonus_effects = []
 			},
 		],
 	},

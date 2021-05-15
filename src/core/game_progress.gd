@@ -54,6 +54,13 @@ func _init():
 func serialize():
 	return inst2dict(self)
 
+func fix_serialization():
+	var tmp = []
+	for line in seen_dialogues:
+		if input_handler.if_translation_key(line):
+			tmp.push_back(line)
+	seen_dialogues = tmp
+
 
 func fix_import():#this is the most questionable fix
 	var tmp = []

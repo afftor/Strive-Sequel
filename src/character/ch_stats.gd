@@ -33,6 +33,14 @@ func deserialize(savedict):
 	for stat in statlist:
 		if savedict.statlist.has(stat):
 			statlist[stat] = savedict.statlist[stat]
+#			if stat.ends_with("_factor") or stat in ['physics', 'wits', 'charm']:
+#				if statlist[stat] > 6: statlist[stat] = 6
+#				custom_stats_set(stat, statlist[stat])
+	for stat in ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']:
+		custom_stats_set(stat, statlist[stat])
+	for stat in  ['physics', 'wits', 'charm']:
+		custom_stats_set(stat, statlist[stat])
+
 
 
 func default_stats_get():
@@ -499,7 +507,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics_factor', 'wits_factor']
 		array = array[randi()%array.size()]
-		statlist[array] += 1#initial setup direct access
+		#if statlist[array] < 5: statlist[array] += 1#initial setup direct access
+		add_stat(array, 1)
 		difficulty -= 1
 	difficulty = adjust_difficulty
 	while difficulty > -1:
@@ -520,7 +529,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		if array == 'sexuals':
 			add_random_sex_skill()
 		else:
-			statlist[array] += rand_range(1,15)#initial setup direct access
+			#statlist[array] += rand_range(1,15)#initial setup direct access
+			add_stat(array, rand_range(1,15))
 		difficulty -= 1
 	
 	#assign classes
