@@ -57,7 +57,7 @@ func serialize():
 func fix_serialization():
 	var tmp = []
 	for line in seen_dialogues:
-		if input_handler.is_translation_key(line):
+		if input_handler.if_translation_key(line):
 			tmp.push_back(line)
 	seen_dialogues = tmp
 
