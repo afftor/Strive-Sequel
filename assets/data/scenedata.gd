@@ -1638,7 +1638,6 @@ var quests = {
 		}
 	},
 	
-	#checked
 	civil_war_mines = {
 		code = "civil_war_mines",
 		summary = "As the war progresses, you received a message that Sigmund and the Workers Guild having some issues which can negatively affect the campaign.",
@@ -1650,7 +1649,6 @@ var quests = {
 		},
 	},
 	
-	#checked
 	lead_convoy_quest = {
 		code = 'lead_convoy_quest',
 		summary = "The Guilds prepare to take back a town from the rebels. The large siege is about to break through.",
@@ -1661,7 +1659,6 @@ var quests = {
 		},
 	},
 	
-	# need to enable Ginny in order to test
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
 		summary = "The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.",
@@ -1677,6 +1674,7 @@ var quests = {
 		code = 'final_operation',
 		summary = "While victorious during the siege, you still couldn't get the rebels' leaders. However, it seems Duncan has the plan for it. ",
 		stages = {
+			stage0 = {code = 'stage0', name = 'Rebel Hunting', descript = """Wait for further instructions"""},
 			stage1 = {code ='stage1', name = 'Rebel Hunting', descript = """You should visit Duncan and learn your next goal."""},
 			stage2 = {code = 'stage2', name = 'Rebel Hunting', descript = """Duncan prepared attack on the rebel's hideout. You should join him there."""},
 		},
@@ -1686,7 +1684,6 @@ var quests = {
 		code = 'princess_search',
 		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
 		stages = {
-			stage0 = {code = 'stage0', name = 'Chasing the Princess', descript = """Wait for further instructions"""},
 			stage1 = {code = 'stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
 			stage2 = {code = 'stage2', name = 'Chasing the Princes', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
 			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
@@ -1709,7 +1706,15 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "Thank you for playing", descript = ""}
 		},
-	}
+	},
+	
+	daisy_clothes = {
+		code = 'daisy_clothes',
+		summary = "",
+		stages = {
+			stage1 = {code = 'stage1', name = "", descript = ""}
+		},
+	},
 	
 }
 
