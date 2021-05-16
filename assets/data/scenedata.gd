@@ -1445,13 +1445,6 @@ var dialogue_inits = {
 	servants_init = [
 		{
 			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}],
-			target = 'final_operation_servants_1',
-			target_option = 1,
-		},
-		{
-			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
 			target = 'amelia_dialogue_start',
@@ -1490,13 +1483,6 @@ var dialogue_inits = {
 	workers_init = [
 		{
 			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}],
-			target = 'final_operation_workers_1',
-			target_option = 1,
-		},
-		{
-			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [{type = 'dialogue_seen', check = false, value = 'WORKERSINTRODUCTION1'}], 
 			target = 'workers_introduction1',
@@ -1524,14 +1510,6 @@ var dialogue_inits = {
 			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage1'}], 
 			target = 'mages_after_election',
-			target_option = 1,
-		},
-		
-		{
-			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}],
-			target = 'final_operation_mages_1',
 			target_option = 1,
 		},
 		#fred_return_to_myr_1
