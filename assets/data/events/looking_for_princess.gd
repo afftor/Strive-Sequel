@@ -6,7 +6,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_1", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_2", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_4", reqs = []}],
-			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1},
+			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1}, #TODO add another item
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
