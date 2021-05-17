@@ -5059,6 +5059,78 @@ As she leaves the room you give a second thought and decide if it might be a dec
 Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant. """,
 	DAISY_CLOTHES_REPLY_2_3 = "- I-I'm very sorry, [master]! I just thought that you would also prefer me to look less messy.",
 	
+	DAISY_CLOTHES_SIGMUND_OPTION_1 = "I'm looking for a custom-made dress",
+	DAISY_CLOTHES_SIGMUND_REPLY_1 = """You explain to Sigmund that one of your slaves needs a change of clothes. 
+
+- Aye, we make work clothes, but from what ya described I think servants could suit ya needs betta. We don't really do girly stuff.""",
+	DAISY_CLOTHES_SIGMUND_OPTION_2 = "Thanks for the tip",
+	
+	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom made dress",
+	DAISY_CLOTHES_AMELIA_REPLY_1 = """You explain to Amelia that one of your slaves needs a change of clothes. 
+
+- Why, yes, proper servants’ attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
+	DAISY_CLOTHES_AMELIA_OPTION_2_1 = "I want a normal servant dress",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2 = "I want something lewder",
+	DAISY_CLOTHES_AMELIA_OPTION_2_3 = "I've changed my mind",
+	DAISY_CLOTHES_AMELIA_REPLY_2_1 = """- Fair enough, we can tailor something fitting for a well-to-do land owner’s servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold. """,
+	DAISY_CLOTHES_AMELIA_OPTION_2_1_1 = "Deal (150 gold)",
+	DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE = "Refuse",
+	DAISY_CLOTHES_AMELIA_REPLY_2_2 = """- Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.""",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2_1 = "Deal (250 gold)",
+	DAISY_CLOTHES_AMELIA_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	DAISY_CLOTHES_AMELIA_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
+
+- You've really done it, [master]. I never imagined this dress would be so nice.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "I think you should express your gratitude in a way that fits your position (Sexuals Factor)",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_1 = "Daisy smiles at you and with your approval returns to her tasks. It seems her spirit have risen a bit.",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """- O-ofcourse, I understand. But still, thank you.
+
+Daisy politely smiles at you and, with your approval, returns to her tasks.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1 = """{color=green|Success}
+
+Daisy manages to overcome her shyness to lean toward you and give you a gentle kiss. However, you hug her from the side and seal her lips with passion. As she succumbs to your kiss, you guide her hand between your legs. As she looks down, she notices your erection with concern evident on her face.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """{color=red|Failure}
+
+Daisy manages to overcome her shyness and gives you a little kiss then quickly turns away. You consider taking it further, but are too slow and she's already returned to her duties.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_1 = "What are we gonna do about this?",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2 = "That's your fault, so it's only right for you to correct this",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3 = "*Push her head down*",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2 = """Daisy gulps and kneels before fully preparing herself for the proper servitude. 
+
+Her skills are very poor, but she manages to compensate for it with her eagerness. 
+
+As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face instead. Relieved, you order her to clean herself up and give her some free time from her duty.""",
+	
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush. 
+
+- T-thank you for the gift, [master]. I hope you like my new look.""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it (reveal her body)",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = """Daisy lightly smiles at your words.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2 = """You move closer to Daisy, and pull on the couple of strings, hidden in her dress folds. Her bra drops down, revealing her ample breasts. Her lower skirt drops as well, presenting obscene underwear not quite hiding her private parts from potential observers.
+
+Daisy gasps in shame as you savor her beauty.
+
+- T-this is embarrassing. I don't mind if it's [master] who is looking, but...""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_1 = "Well, you better overcome your embarrassment and properly thank me",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2 = "This emphasizes your body's natural beauty nicely",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3 = "It’s proper apparel for a whore like you",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1 = """As you move closer to Daisy, she quickly notices your bulge. Stimulated by her garment and sudden nudity she almost instinctively kneels before you and prepares to serve. 
+
+Her skills are very poor, but she manages to compensate for it with her eagerness. 
+
+As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face. Relieved, you order her to clean herself and give her some free time from her duty. """,
+
+	
+	
+	
+	
+	
+	
 	
 	
 	
