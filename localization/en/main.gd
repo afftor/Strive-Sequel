@@ -5124,7 +5124,52 @@ Daisy gasps in shame as you savor her beauty.
 Her skills are very poor, but she manages to compensate for it with her eagerness. 
 
 As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face. Relieved, you order her to clean herself and give her some free time from her duty. """,
+	
+	DAISY_TRAINING_REPLY_0 = """While you were holding a small meeting with a couple other land owners, you noticed that Daisy, although pretty and catching a lot of attention, didn’t quite present herself in a manner befitting a trained servant. She messed up a guest’s order and offered a stuttering apology. Perhaps, it might be a good idea to put her through proper training. """,
+	DAISY_TRAINING_OPTION_1 = "I want to have my servant trained...",
+	DAISY_TRAINING_REPLY_1 = """You explain to Amelia how you think Daisy could benefit from training to become more professional.
 
+- Ah, yes, your timid bunny girl. I remember her, she's really suited to being your servant, isn't she? Of course we have training which would improve her performance, depending on what you'd like.""",
+	DAISY_TRAINING_OPTION_2_1 = "I want her to be trained normally (200 gold)",
+	DAISY_TRAINING_OPTION_2_2 = "What other options are there?",
+	DAISY_TRAINING_OPTION_2_3 = "There's something else?",
+	DAISY_TRAINING_OPTION_2_4 = "I want her to be trained normally and sexually (300 gold)",
+	DAISY_TRAINING_OPTION_2_5 = "I want to turn her into a fucktoy (400 gold)",
+	DAISY_TRAINING_OPTION_2_6 = "I'll return later",
+	DAISY_TRAINING_REPLY_2_2 = "- Well, I'd expect you’d want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse. ",
+	DAISY_TRAINING_REPLY_2_3 = "- He-he, since you asked, if you think she'd be better suited for something completely.... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
+	DAISY_TRAINING_REPLY_2_1 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You arrange a time for Daisy's training and leave. """,
+	DAISY_TRAINING_REPLY_2_4 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	DAISY_TRAINING_REPLY_2_5 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	DAISY_TRAINING_INTERMISSION = """In the center of an exquisitely decorated room, Daisy hangs by ropes tied about her naked body. Her eyes are blindfolded and her mouth is filled with cock. Her blindfold is still wet from tears, yet her mouth produces only moans.
+
+Initially she couldn't grasp why [master] did this to her, but after only a couple of days she accepted it. Daisy realized this is the only way she can prove her usefulness and slowly adapted to her new role.
+
+Trainer1: - It didn't take long, she's stopped complaining entirely.
+
+Trainer2: - Yeah, she's a natural sub. Look how wet her cunt is.
+
+Trainer1: - Well, she is a half bunny. Man, I'd buy one if they weren't so useless otherwise.
+
+Daisy felt a new dick being rammed inside her already trained asshole. She had learned that the way to get it over with fastest, was to take it eagerly and make her trainer cum. She responded by forcing her sphincter to provide more stimulation, involuntarily gaining pleasure in the process. 
+
+Her training was going as planned.""",
+	
+	TRAINING_COMPLETE_SERVE_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
+
+- [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
+	TRAINING_COMPLETE_SERVE_OPTION_1_1 = "I’m glad you’re back",
+	TRAINING_COMPLETE_SERVE_OPTION_1_2 = "Finally, get back to work",
+	TRAINING_COMPLETE_SERVE_REPLY_1_1 = "- Thank you. I’m fine, we were treated nicely there… I’m glad I was able to learn how to hold myself better for your sake, [Master].",
+	TRAINING_COMPLETE_SERVE_REPLY_1_2 = """- R-right away, [master]... 
+
+Somewhat disappointed by your response, Daisy returns to her duty.""",
 	
 	
 	

@@ -1716,5 +1716,14 @@ var quests = {
 		},
 	},
 	
+	daisy_training = {
+		code = 'daisy_training',
+		summary = "",
+		stages = {
+			stage1 = {code = 'stage1', name = "", descript = ""}, # send her to training
+			stage2 = {code = 'stage2', name = "", descript = ""} # wait until training finished
+		},
+	},
+	
 }
 

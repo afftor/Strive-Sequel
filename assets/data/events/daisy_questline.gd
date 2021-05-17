@@ -192,6 +192,7 @@ var data = {
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2", reqs = []}],
 			options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
 			} ],
 		} ]
 	}, 
@@ -232,6 +233,7 @@ var data = {
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1", reqs = [], }],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
 		} ],
 	},
 	
@@ -265,5 +267,89 @@ var data = {
 				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
 			}
 		],
+	},
+	
+	daisy_training_message = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], 
+		reqs = [], 
+		text = [{text = "DAISY_TRAINING_REPLY_0", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'progress_quest', value = 'daisy_training', stage = 'stage1'}],
+		}],
+	},
+	
+	daisy_training_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = 'amelia',
+		text = [{text = "DAISY_TRAINING_REPLY_1", reqs = [], previous_dialogue_option = 1},
+		{text = "DAISY_TRAINING_REPLY_2_2", reqs = [], previous_dialogue_option = 2},
+		{text = "DAISY_TRAINING_REPLY_2_3", reqs = [], previous_dialogue_option = 3}],
+		options = [ {
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission", args = [{type = 'add_to_date', date = [3,3], hour = 10}]}]
+		}, {
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_4", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_2'}], dialogue_argument = 4, type = 'next_dialogue', bonus_effects = [{code = 'add_timed_event', value = "training_complete_serve_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		}, {
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_5", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_3'}], dialogue_argument = 5, type = 'next_dialogue', bonus_effects = [{code = 'add_timed_event', value = "training_complete_sex_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		}, {
+			code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_2_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
+		}, {
+			code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_2_3", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_2'}], dialogue_argument = 3, remove_after_first_use = true
+		}, {
+			code = 'close', text = "DAISY_TRAINING_OPTION_2_6", reqs = [], dialogue_argument = 6,
+		} ],
+	},
+	
+	daisy_training_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = 'amelia',
+		text = [{text = "DAISY_TRAINING_REPLY_2_1", reqs = [], previous_dialogue_option = 1},
+		{text = "DAISY_TRAINING_REPLY_2_4", reqs = [], previous_dialogue_option = 4},
+		{text = "DAISY_TRAINING_REPLY_2_5", reqs = [], previous_dialogue_option = 5}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'progress_quest', value = 'daisy_training', stage = 'stage2'}],
+		} ],
+	},
+	
+	daisy_training_intermission = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "DAISY_TRAINING_INTERMISSION", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		}],
+	},
+	
+	training_complete_serve_1 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], character = "daisy_maid", # TODO change sprite?
+		text = [{text = "TRAINING_COMPLETE_REPLY_0", reqs = []}],
+		options = [ {
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_OPTION_1_1", reqs = [], dialogue_argument = 1, 
+		}, {
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_OPTION_1_2", reqs = [], dialogue_argument = 2, 
+		}],
+	},
+	
+	training_complete_serve_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_maid", # TODO change sprite?
+		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
+		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		}  ],
+	},
+	
+	training_complete_sex_1 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], character = "daisy_maid", # TODO change sprite?
+		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_0", reqs = []}],
+		options = [ {
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_1", reqs = [], dialogue_argument = 1, 
+		}, {
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_2", reqs = [], dialogue_argument = 2, 
+		}],
 	},
 }
