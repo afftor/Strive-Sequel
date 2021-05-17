@@ -5065,7 +5065,7 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 - Aye, we make work clothes, but from what ya described I think servants could suit ya needs betta. We don't really do girly stuff.""",
 	DAISY_CLOTHES_SIGMUND_OPTION_2 = "Thanks for the tip",
 	
-	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom made dress",
+	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom-made dress",
 	DAISY_CLOTHES_AMELIA_REPLY_1 = """You explain to Amelia that one of your slaves needs a change of clothes. 
 
 - Why, yes, proper servants’ attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
@@ -5170,7 +5170,58 @@ Her training was going as planned.""",
 	TRAINING_COMPLETE_SERVE_REPLY_1_2 = """- R-right away, [master]... 
 
 Somewhat disappointed by your response, Daisy returns to her duty.""",
-	
+
+	TRAINING_COMPLETE_SEX_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
+
+- [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
+	TRAINING_COMPLETE_SEX_OPTION_1_1 = "Why don't you demonstrate it?",
+	TRAINING_COMPLETE_SEX_OPTION_1_2 = "I'm glad you liked it",
+	TRAINING_COMPLETE_SEX_REPLY_1_1 = """Daisy noticeably blushes but nods in response to your request and drops to her knees before you. As she gently retrieves your cock from your pants, her usual nervousness is barely apparent. Only a little touching is enough to make you hard. 
+
+- I'm glad to be able to repay your kindness, [Master]. 
+
+Daisy takes your cock into her mouth, carefully coiling her tongue around it. As she diligently works on your cock, she closes her eyes and does not forget to also caress your balls. As she moans softly, her proficiency quickly brings you to orgasm, and she makes sure none of your seed escapes her mouth. As she obediently gulps down your seed, she opens her eyes and looks back at you.
+
+- Did I do well, [Master]? 
+
+Her eyes show sincere concern. """,
+	TRAINING_COMPLETE_SEX_OPTION_1_1_1 = "That felt great",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_2 = "You were also trained to swallow?",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_3 = "I guess even you’re good for something",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_1 = """Daisy shines with a big smile in response to your praise. 
+
+- Thank you, [Master]. I will be able to serve you even better now.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_2 = """- Uhm, yes. We were using pumps at the training with a rice jelly and a helper in case we choked on it... It was actually kinda fun. """,
+	TRAINING_COMPLETE_SEX_REPLY_1_1_3 = """- Thank you, [Master]. I will be able to serve you even better now.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_all = """
+
+You send Daisy off, proud of your selection for her training.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_2_1 = "- Uhm... [Master], I believe I should repay your kindness now, if you don't mind.",
+	TRAINING_COMPLETE_SEX_OPTION_1_2_1 = "Very well, go ahead.",
+	TRAINING_COMPLETE_SEX_OPTION_1_2_2 = "Sorry, I'm not in the mood",
+	TRAINING_COMPLETE_SEX_REPLY_1_2_2 = """- Ah, is that so? As you wish, [master].
+
+Daisy looks somewhat disappointed, but still respectfully bows to you before retreating from sight.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_0 = """You meet Daisy as she's brought back to you. Despite your expectations she does not show any signs of a grudge and her demeanor has improved. 
+
+- Hello, [Master]. I'm ready to be of your service. Any service you wish for.
+
+You pause for a moment, considering if you want to test her training out right away or not. """,
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1 = "Let's go for a walk",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_2 = "I don't have any orders for now",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1 = "You order Daisy to strip and she immediately obeys. As you collar her and bring her outside you observe that her shame has nearly completely disappeared. You decide to take a stroll among the suburbs as she obediently walks by your side. Rare bystanders gawp at Daisy which heightens her arousal.",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1 = "Fuck her",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2 = "Find a group of willing strangers",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3 = "A stray dog",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4 = "Return",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1 = """Deciding it's about time, you push her onto her knees and take her from behind like a wild animal. She makes no protest, quickly adjusting herself to give you easier access. Her cunt is incredibly wet and closes tightly around you. As you both move in unison she makes an additional effort to shake her ass and give you more stimulation. A few people observe you from a distance but she pays them no attention. 
+
+Having a great feel for her pussy you decide that it's enough for today and return with her to the mansion. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2 = """After a couple of minutes you find a group of juveniles who are brave enough to approach you. You make a deal and take some of their gold, then allow them to use Daisy as they see fit. Daisy shows no signs of refusing and almost eagerly gets the job done, earning you some cash with her body. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3 = """Since Daisy is showing almost animalistic behavior, you decide that a dog would be a suitable partner for her. With some luck you manage to find a large somewhat hungry mutt. As you instruct Daisy, she only slightly frowns and gets on her knees to incite the dog. After a few sniffs the dog recognizes her as a mate and mounts her with force.
+
+Daisy yelps in surprise at the unusual sensation but quickly it fades as the dog fiercely humps her cunt. The tears roll from her eyes as the dog fills her with his seed. Once the knot has deflated and slipped out, you return to the mansion.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4 = """You decide it's not the right time and return to the mansion.""",
 	
 	
 	

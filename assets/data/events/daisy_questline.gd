@@ -323,7 +323,7 @@ var data = {
 	
 	training_complete_serve_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
-		reqs = [], character = "daisy_maid", # TODO change sprite?
+		reqs = [], character = "daisy_default",
 		text = [{text = "TRAINING_COMPLETE_REPLY_0", reqs = []}],
 		options = [ {
 			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_OPTION_1_1", reqs = [], dialogue_argument = 1, 
@@ -334,7 +334,7 @@ var data = {
 	
 	training_complete_serve_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "daisy_maid", # TODO change sprite?
+		reqs = [], character = "daisy_default",
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -344,12 +344,130 @@ var data = {
 	
 	training_complete_sex_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
-		reqs = [], character = "daisy_maid", # TODO change sprite?
-		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_0", reqs = []}],
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_0", reqs = []}],
 		options = [ {
-			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_1", reqs = [], dialogue_argument = 1, 
+			code = 'training_complete_sex_2', text = "TRAINING_COMPLETE_SEX_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
-			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_2", reqs = [], dialogue_argument = 2, 
+			code = 'training_complete_sex_4', text = "TRAINING_COMPLETE_SEX_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}],
+	},
+	
+	training_complete_sex_2 = {
+		image = null,
+		custom_background = "fire_depths3", # TODO change art
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_1", reqs = []}],
+		options = [
+			{
+				code = 'training_complete_sex_3',
+				text = "TRAINING_COMPLETE_SEX_OPTION_1_1_1",
+				reqs = [],
+				dialogue_argument = 1,
+				change_dialogue_type = 1,
+				type = 'next_dialogue'
+			}, {
+				code = 'training_complete_sex_3',
+				text = "TRAINING_COMPLETE_SEX_OPTION_1_1_2",
+				reqs = [],
+				dialogue_argument = 2,
+				change_dialogue_type = 1,
+				type = 'next_dialogue'
+			}, {
+				code = 'training_complete_sex_3',
+				text = "TRAINING_COMPLETE_SEX_OPTION_1_1_3",
+				reqs = [],
+				dialogue_argument = 3,
+				change_dialogue_type = 1, # TODO -1 sympathy
+				type = 'next_dialogue'
+			}
+		],
+	},
+	
+	training_complete_sex_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_1", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_1'}]},
+		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_2", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_2'}]},
+		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_3", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_3'}]},
+		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_all", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	training_complete_sex_4 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_2_1", reqs = []}],
+		options = [ {
+			code = 'training_complete_sex_2', text = "TRAINING_COMPLETE_SEX_OPTION_1_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, {
+			code = 'training_complete_sex_5', text = "TRAINING_COMPLETE_SEX_OPTION_1_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}],
+	},
+	
+	training_complete_sex_5 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_2_2", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+		}]
+	},
+	
+	training_complete_fucktoy_1 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
+		options = [ {
+			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, {
+			code = 'close', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_2", reqs = [], dialogue_argument = 2
+		}, ]
+	},
+	
+	training_complete_fucktoy_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1", reqs = []}],
+		custom_background = "fire_depths1", # TODO change art
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		options = [ {
+			code = 'training_complete_fucktoy_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'training_complete_fucktoy_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2", reqs = [], dialogue_argument = 2,
+		}, {
+			# TODO -1 symphaty
+			code = 'training_complete_fucktoy_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'training_complete_fucktoy_4', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4", reqs = [], dialogue_argument = 4, change_dialogue_type = 1
+		}]
+	},
+	
+	training_complete_fucktoy_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [],
+		custom_background = "fire_depths1", # TODO change art
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1'}], }, 
+		{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2'}], }, 
+		{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3'}], }, ],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+		}, ]
+	},
+	
+	training_complete_fucktoy_4 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+		}, ]
 	},
 }
