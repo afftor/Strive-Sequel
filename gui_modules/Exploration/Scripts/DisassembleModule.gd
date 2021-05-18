@@ -291,7 +291,7 @@ func gear_detailed_tooltip(data, item = null):
 	if item.description != null:
 		text += item.description
 	if !item.reqs.empty():
-		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_disassemble")
 		text += "\n" + tempslave.decipher_reqs(item.reqs)
 	if item.itemtype == 'usable':
 		text += '\n' + tr("INPOSESSION") + ': ' + str(item.amount)

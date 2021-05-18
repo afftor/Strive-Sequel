@@ -16,7 +16,7 @@ func _ready():
 		if statdata.statdata.has(i.name.replace("label_","")):
 			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
-func open(character = ResourceScripts.scriptdict.class_slave.new()):
+func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stats")):
 	$name.text = character.get_short_name()
 	$Portrait.texture = character.get_icon()
 	if character.is_players_character:

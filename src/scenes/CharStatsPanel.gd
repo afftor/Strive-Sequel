@@ -15,7 +15,7 @@ func _ready():
 		if statdata.statdata.has(i.name.replace("label_","")):
 			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
-func open(character = ResourceScripts.scriptdict.class_slave.new()):
+func open(character = ResourceScripts.scriptdict.class_slave.new("char_stas_old")):
 	$name.text = character.get_short_name()
 	for i in ['hp','mp']:
 		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))

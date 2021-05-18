@@ -233,7 +233,7 @@ func tooltiptext():
 	if description != null:
 		text += description
 	if !reqs.empty():
-		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item")
 		text += "\n" + tempslave.decipher_reqs(reqs)
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n"
@@ -280,7 +280,7 @@ func tooltiptext_1():
 			text += statdata.worktoolnames[i] +", "
 		text = text.substr(0, text.length()-2) 
 	if !reqs.empty():
-		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
 		text += tempslave.decipher_reqs(reqs)
 	
 	text = globals.TextEncoder(text)

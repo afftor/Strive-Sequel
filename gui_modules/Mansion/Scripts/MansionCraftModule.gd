@@ -529,7 +529,7 @@ func multipart_item_text(item):
 	if item.description != null:
 		text += item.description
 	if !item.reqs.empty():
-		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_multipart")
 		text += "\n" + tempslave.decipher_reqs(item.reqs)
 	text = globals.TextEncoder(text)
 	return text	

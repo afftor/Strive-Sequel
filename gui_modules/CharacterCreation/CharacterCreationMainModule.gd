@@ -196,7 +196,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 		$introduction.bbcode_text += " " + str(ResourceScripts.game_party.characters.size())
 	selected_class = ''
 	
-	person = ResourceScripts.scriptdict.class_slave.new()
+	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
 	mode = type
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
@@ -221,7 +221,7 @@ func rebuild_slave():
 	var race = person.get_stat('race')
 	var sex = person.get_stat('sex')
 	var age = person.get_stat('age')
-	person = ResourceScripts.scriptdict.class_slave.new()
+	person = ResourceScripts.scriptdict.class_slave.new("char_creation_rebuild")
 	person.create(race, sex, age)
 	person.is_active = false
 	person.is_known_to_player = true
