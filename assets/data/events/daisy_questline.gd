@@ -410,7 +410,7 @@ var data = {
 		options = [ {
 			code = 'training_complete_sex_2', text = "TRAINING_COMPLETE_SEX_OPTION_1_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
-			code = 'training_complete_sex_5', text = "TRAINING_COMPLETE_SEX_OPTION_1_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			code = 'training_complete_sex_5', text = "TRAINING_COMPLETE_SEX_OPTION_1_2_2", reqs = [], dialogue_argument = 2,
 		}],
 	},
 	
@@ -444,12 +444,12 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		options = [ {
-			code = 'training_complete_fucktoy_3_1', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1", reqs = [], dialogue_argument = 1,
+			code = 'training_complete_fucktoy_3_1', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = 'training_complete_fucktoy_3_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2", reqs = [], dialogue_argument = 2,
+			code = 'training_complete_fucktoy_3_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			# TODO -1 symphaty
-			code = 'training_complete_fucktoy_3_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3", reqs = [], dialogue_argument = 3,
+			code = 'training_complete_fucktoy_3_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, {
 			code = 'training_complete_fucktoy_4', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4", reqs = [], dialogue_argument = 4, change_dialogue_type = 1
 		}]
@@ -463,7 +463,8 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
 		}, ]
 	},
 	
@@ -475,7 +476,8 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
 		}, ]
 	},
 	
@@ -487,7 +489,8 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
 		}, ]
 	},
 	
@@ -502,6 +505,60 @@ var data = {
 	},
 	
 	daisy_admirer_message = {
-		
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "DAISY_ADMIRER_MESSAGE", reqs = []}],
+		options = [ {
+			code = 'daisy_admirer_message_1_1', text = "DAISY_ADMIRER_MESSAGE_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'daisy_admirer_message_1_2', text = "DAISY_ADMIRER_MESSAGE_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'daisy_admirer_message_1_3', text = "DAISY_ADMIRER_MESSAGE_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ]
+	},
+	
+	daisy_admirer_message_1_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_1", reqs = []}],
+		options = [ {
+			code = 'daisy_admirer_message_1_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
+		} ]
+	},
+	
+	daisy_admirer_message_1_1_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_1_1", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		} ]
+	},
+	
+	daisy_admirer_message_1_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_2", reqs = []}],
+		options = [ {
+			code = 'daisy_admirer_message_1_2_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
+		} ]
+	},
+	
+	daisy_admirer_message_1_2_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_2_1", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		} ]
+	},
+	
+	daisy_admirer_message_1_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_3", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		} ]
 	},
 }

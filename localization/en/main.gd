@@ -5223,6 +5223,21 @@ Having a great feel for her pussy you decide that it's enough for today and retu
 Daisy yelps in surprise at the unusual sensation but quickly it fades as the dog fiercely humps her cunt. The tears roll from her eyes as the dog fills her with his seed. Once the knot has deflated and slipped out, you return to the mansion.""",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4 = """You decide it's not the right time and return to the mansion.""",
 	
+	DAISY_ADMIRER_MESSAGE = """In the morning you receive a letter from a person you haven't met previously. After reading through it you discover that a landowner named Ramont is requesting that you sell Daisy to him. Apparently, he finds her to be a valuable sub breed that he wishes to experiment on. 
+
+He offers a generous sum of 2.500 gold which easily covers your expenses to date for her training and labor. Since Daisy is your property you wonder if you favor her over this offer.""",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_1 = "Sell her",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_2 = "Give away",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_3 = "Refuse",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_1 = "You decide that, after all, the money will be more useful than she is. You summon Daisy and inform her of your decision.",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_1_1 = """- I-I see... I understand. Thank you, for taking care of me, [master].
+
+You feel slightly down about dealing with her in this way, but you are sure the gold will fix that.""",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_2 = "You decide that you have no use for Daisy and don't really care about the money. You give her away, waiving the offered payment, much to Ramont's joy.",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_2_1 = """- I-I see... I understand. Thank you, for taking care of me, [master].
+
+As Daisy leaves your care and you feel a bit sad.""",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_3 = "Surely the huge sum would cover Daisy's market price many times over, but for some reason you refuse this proposal on the spot. Perhaps, you've grown too attached to her.",
 	
 	
 	
