@@ -3,9 +3,10 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
 		reqs = [], character = 'daisy_default',
 		text = [{text = "DAISY_RECRUITMENT_START", reqs = [], }],
+		common_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = 0}],
 		options = [ {
-			#TODO add +1 sympathy
 			code = 'daisy_recruitment_2', text = "DAISY_RECRUITMENT_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '+'}]
 		}, {
 			code = 'daisy_recruitment_2', text = "DAISY_RECRUITMENT_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
@@ -155,6 +156,7 @@ var data = {
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
 		options = [ {
 			code = 'daisy_dress_acquired_normal_2', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '+'}]
 		}, {
 			code = 'daisy_dress_acquired_normal_3', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
@@ -167,7 +169,6 @@ var data = {
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3", reqs = [], previous_dialogue_option = 3}],
-		#TODO add +1 sympathy
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 		} ],
@@ -183,8 +184,8 @@ var data = {
 			}, {
 				code = 'daisy_dress_acquired_normal_4', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2", reqs = [], dialogue_argument = 2, change_dialogue_type = 2
 			}, {
-				#TODO add -1 sympathy
-				code = 'daisy_dress_acquired_normal_4', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3", reqs = [], dialogue_argument = 3, change_dialogue_type = 2
+				code = 'daisy_dress_acquired_normal_4', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3", reqs = [], dialogue_argument = 3, change_dialogue_type = 2,
+				bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}] #right
 			}, ],
 		}, {
 			reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 3}],
@@ -246,7 +247,8 @@ var data = {
 		}, {
 			code = 'daisy_dress_acquired_lewd_4', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
-			code = 'daisy_dress_acquired_lewd_4', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'daisy_dress_acquired_lewd_4', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', change_dialogue_type = 2,
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}] #right
 		} ],
 	},
 	
@@ -384,8 +386,9 @@ var data = {
 				text = "TRAINING_COMPLETE_SEX_OPTION_1_1_3",
 				reqs = [],
 				dialogue_argument = 3,
-				change_dialogue_type = 1, # TODO -1 sympathy
-				type = 'next_dialogue'
+				change_dialogue_type = 1,
+				type = 'next_dialogue',
+				bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}] #right
 			}
 		],
 	},
@@ -448,8 +451,8 @@ var data = {
 		}, {
 			code = 'training_complete_fucktoy_3_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
-			# TODO -1 symphaty
-			code = 'training_complete_fucktoy_3_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			code = 'training_complete_fucktoy_3_3', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}] # right
 		}, {
 			code = 'training_complete_fucktoy_4', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4", reqs = [], dialogue_argument = 4, change_dialogue_type = 1
 		}]
@@ -558,6 +561,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_3", reqs = []}],
 		options = [ {
+			# TODO add new event in 7-10 days
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 		} ]
 	},
