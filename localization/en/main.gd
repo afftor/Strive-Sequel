@@ -5239,6 +5239,34 @@ You feel slightly down about dealing with her in this way, but you are sure the 
 As Daisy leaves your care and you feel a bit sad.""",
 	DAISY_ADMIRER_MESSAGE_REPLY_1_3 = "Surely the huge sum would cover Daisy's market price many times over, but for some reason you refuse this proposal on the spot. Perhaps, you've grown too attached to her.",
 	
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_0 = """Today Daisy is serving you. As you observe her toiling about, it occurs to you how much more relaxed she is around you now. She notices your attention and turns to you.
+
+- Am I doing something wrong, [Master]?""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1 = "Not really",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2 = "I was just thinking how much you’ve changed",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3 = "You have a splendid ass",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2 = """- We have been together for a long time, haven’t we, [Master]? I-I know I'm in no position to say this, but I’ve thought about you like a family I never really had since the day you saved me and took care of me. That must seem silly to you...""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_3 = """""", # Not implemented > You have a splendid ass
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_1 = "I admire your efforts",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_2 = "I've been thinking of you as part of my family as well",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_3 = "Indeed, you are a slave and better remember your place",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_1 = """Daisy smiles at hearing that before returning to her task. """,
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_2 = """- T-that's... That's embarrassing. Well, let's look after each other then, okay?
+
+Daisy visibly blushes and looks away.""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3 = """-R-right, I'm sorry, [Master].
+
+Daisy looks away, but you notice how her mood notably darkens.""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_2 = """As Daisy cleans around the mansion, she stumbles into one of the decorative vases, causing it to fall and break. Perhaps it was caused by her exhaustion, yet she looks at you with fear filled eyes. 
+
+- I-I'm deeply sorry, [Master]!""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_1 = """I'm not angry. You must be tired.""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_2 = """\"Sorry\" is not going to save you here *Punish*""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1 = """Daisy looks at you not fully sure if you mean it. It seems she was rather certain you would be angry, but your mercy appears to have improved her opinion of you.
+
+- T-thank you, [Master]. I'll clean this up right away...""",
+	
+	
 	
 	
 	

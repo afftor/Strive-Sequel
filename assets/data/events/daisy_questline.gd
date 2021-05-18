@@ -135,8 +135,8 @@ var data = {
 			text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_150", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '-', value = 150}],
 			options = [ {
-				# TODO add daisy_dress_acquired_normal_1 after 1 day
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1", 
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
 			}],
 		}, {
 			reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_CLOTHES_AMELIA_OPTION_2_2_1'}],
@@ -144,8 +144,8 @@ var data = {
 			text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_250", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '-', value = 250}],
 			options = [ {
-				# TODO add daisy_dress_acquired_lewd_1 after 1 day
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1", 
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
 			}],
 		} ]
 	},
@@ -564,5 +564,83 @@ var data = {
 			# TODO add new event in 7-10 days
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 		} ]
+	},
+	
+	daisy_admirer_first_event_1 = {
+		variations = [
+			{
+				reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}],
+				tags = ['dialogue_scene', 'master_translate'], image = null, character = 'daisy_default',
+				text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_0", reqs = []}],
+				options = [ {
+					code = 'daisy_admirer_first_event_2', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
+				}, {
+					code = 'daisy_admirer_first_event_2', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue' 
+				}, {
+					#blank
+					code = '', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue' 
+				}, ],
+			},
+			{
+				reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}],
+				tags = ['dialogue_scene', 'master_translate'], image = null, character = 'daisy_default',
+				text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2", reqs = []}],
+				options = [ {
+					code = 'daisy_admirer_first_event_4', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
+				}, {
+					code = 'daisy_admirer_first_event_5', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
+				} ],
+			}
+		]
+	},
+	
+	daisy_admirer_first_event_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2", reqs = []}],
+		options = [ {
+			code = 'daisy_admirer_first_event_3', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
+		}, {
+			code = 'daisy_admirer_first_event_3', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue' 
+		}, {
+			code = 'daisy_admirer_first_event_3', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue' 
+		} ]
+	},
+	
+	daisy_admirer_first_event_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_1", reqs = [], previous_dialogue_option = 1}, 
+		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_2", reqs = [], previous_dialogue_option = 2}, 
+		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3", reqs = [], previous_dialogue_option = 3}],
+		options = [ {
+			# TODO add new event in 6-8 days 22h
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+		} ]
+	},
+	
+	daisy_admirer_first_event_4 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1", reqs = []}],
+		options = [ {
+			# TODO add new event in 6-8 days 22h
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "", 
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
+		} ]
+	},
+	
+	daisy_admirer_first_event_5 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [],
+		custom_background = "fire_depths1", # TODO MAYBE CHANGE ART?
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [{text = "", reqs = []}],
+		options = [ {
+			# TODO add new event in 6-8 days 22h
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "", 
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
+		}, ]
 	},
 }
