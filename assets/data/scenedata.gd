@@ -1710,20 +1710,28 @@ var quests = {
 	
 	daisy_clothes = {
 		code = 'daisy_clothes',
-		summary = "",
+		summary = "DAISY_CLOTHES_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "", descript = ""}
+			stage1 = {code = 'stage1', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_1"}
 		},
 	},
 	
 	daisy_training = {
 		code = 'daisy_training',
-		summary = "",
+		summary = "DAISY_TRAINING_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "", descript = ""}, # send her to training
-			stage2 = {code = 'stage2', name = "", descript = ""} # wait until training finished
+			stage1 = {code = 'stage1', name = "DAISY_TRAINING_NAME", descript = "DAISY_TRAINING_STAGE_1"}, # send her to training
+			stage2 = {code = 'stage2', name = "DAISY_TRAINING_NAME", descript = "DAISY_TRAINING_STAGE_2"} # wait until training finished
 		},
 	},
 	
+	daisy_lost = {
+		code = 'daisy_clothes',
+		summary = "DAISY_LOST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_1"}, # you should visit Amelia
+			stage2 = {code = 'stage2', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_2"}, # travel to this guys location
+		},
+	},
 }
 

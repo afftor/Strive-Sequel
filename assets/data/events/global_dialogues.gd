@@ -104,6 +104,7 @@ var data = {
 		{code = 'final_operation_servants_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_1", reqs = [{type = 'dialogue_seen', check = false, value = 'DAISY_CLOTHES_AMELIA_REPLY_1'}, {type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'daisy_lost_amelia_1', text = "DAISY_LOST_AMELIA_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

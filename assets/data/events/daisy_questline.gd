@@ -344,7 +344,7 @@ var data = {
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}  ],
 	},
 	
@@ -402,7 +402,7 @@ var data = {
 		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_all", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}],
 	},
 	
@@ -423,7 +423,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}]
 	},
 	
@@ -435,7 +435,7 @@ var data = {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
 			code = 'close', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_2", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 	
@@ -467,7 +467,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 	
@@ -480,7 +480,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 	
@@ -493,7 +493,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 	
@@ -503,7 +503,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 	
@@ -639,8 +639,40 @@ var data = {
 		text = [{text = "", reqs = []}],
 		options = [ {
 			# TODO add new event in 6-8 days 22h
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "", 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
 		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
 		}, ]
+	},
+	
+	daisy_lost_message = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_MESSAGE", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'progress_quest', value = 'daisy_lost', stage = 'stage1'}]
+		} ]
+	},
+	
+	daisy_lost_amelia_1 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_AMELIA_REPLY_0", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_2', text = "DAISY_LOST_AMELIA_OPTION_1_1", reqs = [], dialogue_argument = 1, 
+		}, {
+			code = 'daisy_lost_amelia_2', text = "DAISY_LOST_AMELIA_OPTION_1_2", reqs = [], dialogue_argument = 2, 
+		}, ]
+	},
+	
+	daisy_lost_amelia_2 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_AMELIA_REPLY_1_1", reqs = [], previous_dialogue_option = 1}, 
+		{text = "DAISY_LOST_AMELIA_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'progress_quest', value = 'daisy_lost', stage = 'stage2'}]
+		} ]
 	},
 }

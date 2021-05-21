@@ -5266,8 +5266,13 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 
 - T-thank you, [Master]. I'll clean this up right away...""",
 	
-	
-	
+	DAISY_LOST_MESSAGE = """This evening you notice that your slave Daisy hasn't returned from her tasks as usual. You’re not sure what, but something is definitely wrong. Daisy is gone and you should start searching for her as soon as possible. Perhaps, the Servants Guild might have ideas on how to find her.""",
+	DAISY_LOST_AMELIA_OPTION_0 = "I've lost someone...",
+	DAISY_LOST_AMELIA_REPLY_0 = """- That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""",
+	DAISY_LOST_AMELIA_OPTION_1_1 = "I might have received a letter from him",
+	DAISY_LOST_AMELIA_OPTION_1_2 = "How could you give him my information like that?",
+	DAISY_LOST_AMELIA_REPLY_1_1 = """- He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	DAISY_LOST_AMELIA_REPLY_1_2 = """- Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
 	
 	
 	
@@ -5291,4 +5296,18 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
 	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
 	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
+	
+	DAISY_CLOTHES_SUMMARY = "",
+	DAISY_CLOTHES_NAME = "",
+	DAISY_CLOTHES_STAGE_1 = "",
+	
+	DAISY_TRAINING_SUMMARY = "",
+	DAISY_TRAINING_NAME = "",
+	DAISY_TRAINING_STAGE_1 = "",
+	DAISY_TRAINING_STAGE_2 = "",
+	
+	DAISY_LOST_SUMMARY = "",
+	DAISY_LOST_NAME = "",
+	DAISY_LOST_STAGE_1 = "",
+	DAISY_LOST_STAGE_2 = "",
 }
