@@ -116,21 +116,20 @@ __meta__ = {
 }
 
 [node name="OptionsBackground" type="Panel" parent="."]
-self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
+self_modulate = Color( 0.223529, 0.0313726, 0.337255, 0.901961 )
 show_behind_parent = true
-margin_left = 5.0
-margin_top = 433.0
-margin_right = 794.0
-margin_bottom = 655.0
+margin_top = 434.0
+margin_right = 800.0
+margin_bottom = 656.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DialogueBG" type="Panel" parent="."]
-self_modulate = Color( 0.203922, 0.0862745, 0.0862745, 0.901961 )
+self_modulate = Color( 0, 0, 0, 0.792157 )
 show_behind_parent = true
-margin_right = 801.0
-margin_bottom = 656.0
+margin_right = 800.0
+margin_bottom = 434.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -624,7 +624,7 @@ func handle_characters_sprites(scene):
 func show_long_text():
 	self.get_stylebox("panel", "").modulate_color.a = 0
 	$LongFrame.show()
-	$DialogueBG.rect_size.y = $LongFrame.rect_size.y
+	$DialogueBG.rect_size.y = $LongFrame.rect_size.y - $OptionsBackground.rect_size.y
 	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
 	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - 249 - 50
 	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46#($ScrollContainer.rect_size.y * 0.5)
@@ -632,7 +632,7 @@ func show_long_text():
 func hide_long_text():
 	self.get_stylebox("panel", "").modulate_color.a = 255
 	$LongFrame.hide()
-	$DialogueBG.rect_size.y = self.rect_size.y
+	$DialogueBG.rect_size.y = self.rect_size.y - $OptionsBackground.rect_size.y
 	$DialogueBG.rect_position.y = 0
 	$RichTextLabel.rect_size = base_text_size
 	$RichTextLabel.rect_position = base_text_position
