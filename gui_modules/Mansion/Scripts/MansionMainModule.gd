@@ -3,6 +3,7 @@ extends Control
 # VARIABLES
 # Modules
 onready var TravelsModule = $MansionTravelsModule
+onready var UpgradesModule_ = $upgrades
 onready var SlaveListModule = $MansionSlaveListModule
 onready var SkillModule = $MansionSkillsModule
 onready var UpgradesModule = $MansionUpgradesModule
@@ -222,17 +223,20 @@ func match_state():
 			else:
 				$TravelsModule.update_lists()
 		"upgrades":
-			$MansionUpgradesModule.show()
-			$MansionUpgradesModule.open()
-			$MansionUpgradesModule.open_queue()
-			$MansionSlaveListModule.set_size(Vector2(1100, 580))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
-			menu_buttons.get_node("UpgradesButton").pressed = true
-			SlaveListModule.rebuild()
+			UpgradesModule_.show()
 			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($MansionUpgradesModule, 0.3)
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation(UpgradesModule_, 0.3)
+#			$MansionUpgradesModule.show()
+#			$MansionUpgradesModule.open()
+#			$MansionUpgradesModule.open_queue()
+#			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+#			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
+#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
+#			menu_buttons.get_node("UpgradesButton").pressed = true
+#			SlaveListModule.rebuild()
+#			if mansion_state != mansion_prev_state:
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionUpgradesModule, 0.3)
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"occupation":
 			$MansionSlaveListModule.rebuild()
 			$MansionJobModule.show()
@@ -703,7 +707,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
+		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))

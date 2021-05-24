@@ -1,0 +1,615 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
+[ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgrades_main.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_36.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonviolet.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=7]
+[ext_resource path="res://dragarraytemplate.gd" type="Script" id=8]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=9]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_activeupgrades.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/bar_upgrades_big.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/BasePanelFlatBlue.tres" type="StyleBox" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18_special.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradescharacters.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradescharacters_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradescharacters_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_notenough.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_enough.png" type="Texture" id=26]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=27]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=29]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/bar_upgrades_small.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_pressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_disabled.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree.png" type="Texture" id=34]
+[ext_resource path="res://gui_modules/upgrades_new/UpgradeItem.gd" type="Script" id=35]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_26.tres" type="DynamicFont" id=36]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
+
+[node name="upgrades" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="frame" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 502.0
+margin_top = 50.0
+margin_right = 674.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrades"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1398.0
+margin_top = 50.0
+margin_right = 1635.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrade info"
+
+[node name="Modes" type="HBoxContainer" parent="."]
+margin_left = 109.0
+margin_top = 157.0
+margin_right = 1065.0
+margin_bottom = 215.0
+custom_constants/separation = 70
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mode1" type="TextureButton" parent="Modes"]
+margin_right = 272.0
+margin_bottom = 58.0
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Modes/Mode1"]
+margin_left = 46.0
+margin_top = 9.0
+margin_right = 225.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrades tree"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mode2" type="TextureButton" parent="Modes"]
+margin_left = 342.0
+margin_right = 614.0
+margin_bottom = 58.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Modes/Mode2"]
+margin_left = 34.0
+margin_top = 9.0
+margin_right = 238.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Active upgrades"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mode3" type="TextureButton" parent="Modes"]
+margin_left = 684.0
+margin_right = 956.0
+margin_bottom = 58.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Modes/Mode3"]
+margin_left = 68.0
+margin_top = 9.0
+margin_right = 203.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Characters"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QueueList" type="Panel" parent="."]
+visible = false
+margin_left = 283.0
+margin_top = 258.0
+margin_right = 883.0
+margin_bottom = 1043.0
+custom_styles/panel = ExtResource( 12 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="QueueList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 44.0
+margin_top = 44.0
+margin_right = -44.0
+margin_bottom = -44.0
+theme = ExtResource( 14 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QueueList/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="QueueList/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 496.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 260, 46 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+script = ExtResource( 8 )
+
+[node name="Icon" type="TextureRect" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 57.0
+margin_bottom = 57.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 70.7993
+margin_top = 10.3454
+margin_right = 303.799
+margin_bottom = 46.3454
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Name"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time" type="Label" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 407.0
+margin_top = 11.0
+margin_right = 488.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "100 h"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = -18.0
+margin_right = -3.0
+margin_bottom = -4.0
+mouse_filter = 2
+value = 100.0
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="QueueList/ScrollContainer/VBoxContainer/Button/progress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -12.0
+margin_right = 23.0
+margin_bottom = 12.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 13 )
+text = "10/10"
+
+[node name="VScrollBar" type="VScrollBar" parent="QueueList"]
+margin_left = 557.278
+margin_top = 78.108
+margin_right = 569.278
+margin_bottom = 749.108
+theme = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharList" type="Panel" parent="."]
+visible = false
+margin_left = 283.0
+margin_top = 258.0
+margin_right = 883.0
+margin_bottom = 1043.0
+custom_styles/panel = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CharList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_top = 80.0
+margin_right = -60.0
+margin_bottom = -44.0
+theme = ExtResource( 14 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharList/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="CharList/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 400.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 260, 46 )
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+
+[node name="Icon" type="TextureRect" parent="CharList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 45.0
+margin_bottom = 45.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="CharList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 55.0
+margin_top = 4.94388
+margin_right = 200.0
+margin_bottom = 44.9439
+custom_fonts/font = ExtResource( 27 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Name"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="job" type="TextureButton" parent="CharList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 205.0
+margin_top = 8.0
+margin_right = 390.0
+margin_bottom = 40.0
+mouse_filter = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CharList/ScrollContainer/VBoxContainer/Button/job"]
+margin_left = 2.0
+margin_right = 184.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 27 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Rest"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CharList"]
+margin_left = 138.698
+margin_top = 20.0
+margin_right = 212.698
+margin_bottom = 59.9243
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Name"
+
+[node name="Label2" type="Label" parent="CharList"]
+margin_left = 280.0
+margin_top = 20.0
+margin_right = 438.773
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Occupation"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 152.0
+margin_top = 290.0
+margin_right = 1023.0
+margin_bottom = 1010.0
+theme = ExtResource( 14 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesList" type="GridContainer" parent="ScrollContainer"]
+custom_constants/vseparation = 64
+custom_constants/hseparation = 64
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/UpgradesList"]
+visible = false
+margin_right = 190.0
+margin_bottom = 211.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 34 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 31 )
+texture_disabled = ExtResource( 33 )
+script = ExtResource( 35 )
+
+[node name="Image" type="TextureRect" parent="ScrollContainer/UpgradesList/Button"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 185.0
+margin_bottom = 185.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Progress" type="TextureProgress" parent="ScrollContainer/UpgradesList/Button"]
+margin_left = 4.78403
+margin_top = 190.364
+margin_right = 184.784
+margin_bottom = 205.364
+value = 100.0
+texture_progress = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/UpgradesList/Button/Progress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -12.0
+margin_right = 23.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 13 )
+text = "10/10"
+align = 1
+
+[node name="name" type="Label" parent="ScrollContainer/UpgradesList/Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 29.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 36 )
+text = "Luxury rooms"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="description"]
+margin_left = 1152.0
+margin_top = 127.0
+margin_right = 1876.0
+margin_bottom = 752.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc_header" type="Label" parent="description/VBoxContainer"]
+margin_right = 724.0
+margin_bottom = 42.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Description Header"
+align = 1
+
+[node name="description" type="Label" parent="description/VBoxContainer"]
+margin_top = 46.0
+margin_right = 724.0
+margin_bottom = 183.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 29 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Description
+Description
+Description
+Description "
+align = 1
+autowrap = true
+
+[node name="resources" type="Label" parent="description/VBoxContainer"]
+margin_top = 187.0
+margin_right = 724.0
+margin_bottom = 229.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Resources"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
+margin_top = 233.0
+margin_right = 724.0
+margin_bottom = 625.0
+size_flags_vertical = 3
+custom_constants/margin_right = 90
+custom_constants/margin_left = 90
+
+[node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer/MarginContainer"]
+margin_left = 90.0
+margin_right = 634.0
+margin_bottom = 392.0
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="description/VBoxContainer/MarginContainer/ScrollContainer"]
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 496.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 26 )
+texture_disabled = ExtResource( 25 )
+
+[node name="Icon" type="TextureRect" parent="description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 57.0
+margin_bottom = 57.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+margin_left = 65.0
+margin_top = 10.0
+margin_right = 336.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Res"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+margin_left = 413.0
+margin_top = 9.0
+margin_right = 488.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "100"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="description"]
+visible = false
+margin_left = 1211.0
+margin_top = 764.0
+margin_right = 1819.0
+margin_bottom = 968.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bonuses" type="Label" parent="description/VBoxContainer2"]
+margin_right = 608.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Bonuses"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer2"]
+margin_top = 46.0
+margin_right = 608.0
+margin_bottom = 204.0
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+scroll_vertical_enabled = false
+
+[node name="VBoxContainer" type="HBoxContainer" parent="description/VBoxContainer2/ScrollContainer"]
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="description/VBoxContainer2/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 70.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 37 )
+
+[node name="Confirm" type="TextureButton" parent="description"]
+margin_left = 1412.0
+margin_top = 980.0
+margin_right = 1622.0
+margin_bottom = 1038.0
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+texture_disabled = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="description/Confirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Confirm"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Modes/Mode1" to="." method="open_tree"]
+[connection signal="pressed" from="Modes/Mode2" to="." method="open_queue"]
+[connection signal="pressed" from="Modes/Mode3" to="." method="open_chars"]
+[connection signal="pressed" from="description/Confirm" to="." method="add_upgrade_to_queue"]

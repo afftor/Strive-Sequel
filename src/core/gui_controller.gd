@@ -17,6 +17,7 @@ var cheat_panel
 var char_creation
 var dialogue
 var travel
+var upgrades
 
 
 var current_screen #reference to the current scene visible (Mansion, Exploration, Inventory, etc.).
