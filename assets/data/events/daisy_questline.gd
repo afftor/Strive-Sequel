@@ -561,7 +561,8 @@ var data = {
 		reqs = [], 
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_3", reqs = []}],
 		options = [ {
-			# TODO add new event in 7-10 days
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_first_event_1", 
+				args = [{type = 'add_to_date', date = [7,10], hour = 8}]}],
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 		} ]
 	},
@@ -614,8 +615,8 @@ var data = {
 		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_2", reqs = [], previous_dialogue_option = 2}, 
 		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
-			# TODO add new event in 6-8 days 22h
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}] 
 		} ]
 	},
 	
@@ -624,8 +625,7 @@ var data = {
 		reqs = [], character = "daisy_default",
 		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1", reqs = []}],
 		options = [ {
-			# TODO add new event in 6-8 days 22h
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "", 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
 		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
 		} ]
 	},
@@ -638,7 +638,6 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "", reqs = []}],
 		options = [ {
-			# TODO add new event in 6-8 days 22h
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
 		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
 		}, ]
@@ -672,7 +671,18 @@ var data = {
 		{text = "DAISY_LOST_AMELIA_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'daisy_lost', stage = 'stage2'}]
+			bonus_effects = [{code = 'make_quest_location', value = 'quest_daisy_admirer_location'},
+			{code = 'progress_quest', value = 'daisy_lost', stage = 'stage2'}]
+		} ]
+	},
+	
+	daisy_lost_amelia_3 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_0_1", reqs = []}],
+		options = [ {
+			code = 'quest_fight', args = 'daisy_lost_amelia_4',
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		} ]
 	},
 }

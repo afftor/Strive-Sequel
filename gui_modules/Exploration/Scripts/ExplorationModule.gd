@@ -1015,7 +1015,7 @@ func open_location_actions():
 	var newbutton
 	if active_location.has("locked"):
 		if active_location.locked:
-			#better do it using actions next time. upd: cations doesn't for for dungeons
+			#better do it using actions next time. upd: actions doesn't for for dungeons
 			if test_stage("lead_convoy_quest", "stage3"):
 				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 				newbutton.toggle_mode = true
@@ -1026,6 +1026,11 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
+			elif test_stage("daisy_lost", "stage2"):
+				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+				newbutton.toggle_mode = true
+				newbutton.text = tr('Approach')
+				newbutton.connect("toggled", self, 'daisy_lost_amelia_3', [newbutton])
 			return
 	if active_location.has('completed'):
 		if active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
@@ -1742,7 +1747,6 @@ func open_shop(pressed, pressed_button, shop):
 
 func local_shop(pressed, button):
 	open_shop(pressed, button, 'location')
-
 
 func selectcategory(button, list):
 	var type = button.name

@@ -5274,6 +5274,53 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 	DAISY_LOST_AMELIA_REPLY_1_1 = """- He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
 	DAISY_LOST_AMELIA_REPLY_1_2 = """- Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
 	
+	DAISY_LOST_APPROACH_REPLY_0_1 = """As you approach the estate of the supposed kidnapper, you see a group of armed mercenaries who notice you and move in for a fight. """,
+	DAISY_LOST_APPROACH_REPLY_0_2 = """After defeating the mercs, you see a man who must be Ramont himself coming out.
+
+Ramont:- Stop this, there’s no need for further violence.""",
+	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take her back.",
+	DAISY_LOST_APPROACH_OPTION_1_2 = "Where's Daisy? What have you done to her?",
+	DAISY_LOST_APPROACH_OPTION_1_3 = "Give my slave back right now.",
+	DAISY_LOST_APPROACH_REPLY_1 = """Ramont:- Don't be so rash, Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love. 
+
+Ramont:- I sent you that message about wanting her for experiments, but it was a lie to cover my true feelings. Regardless, you refused to give her away despite my willingness to pay. I couldn't hold back and now I've expressed my feelings to her and treat her with care.""",
+	DAISY_LOST_APPROACH_REPLY_2 = """Ramont:- I know she still technically belongs to you, but I offer you a bet. I want to give her a chance to decide if she wants to be with me or with you, and if she chooses you out of her free will, I will give up on her. But if she chooses me, she will stay with me and I will treat her like no other.
+
+The chances are, Daisy has tasted the good will of Ramont and the promise of a better life. Making her choose you over him is a risky decision...""",
+	DAISY_LOST_APPROACH_OPTION_FIGHT = "Don't be ridiculous, she's my property and I'll take her by force if I must",
+	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, I accept your wager. Let's see what she thinks",
+	DAISY_LOST_APPROACH_OPTION_3_3 = "I can't oppose this dedication of yours, you can have her",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_1 = "Ramont:- So it comes to this... On guard!",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_2 = "After finally managing to knockout Ramont, you quickly rush through his mansion until finding Daisy behind one of the locked doors. You bash it in, and Daisy looks at you in awe.",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_3 = """- [Master]?! W-What are you doing here? You've come for me? I'm sorry I went missing, I didn't mean to...""",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_1 = "I've been worried senseless about you",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_2 = "It's all good, we can work this out with a bit of discipline later on",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_3 = "Don't give me excuses you worthless slut",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_good = """- M-[Master] [name]... I love you! I've been so scared I wouldn’t see you again.
+
+Daisy rushes and hugs you with all her might. As you share a kiss her face brightens with the happiest smile you've ever seen on her.
+
+As you are done here, you leave Ramont's mansion and return home.""",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad = """- You were...? I'm sorry, this won't happen again.
+
+Daisy looks troubled and unsure how to respond to your remark. Deciding there's no point staying there any longer you leave and return home.""",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_3 = """Hearing your insults Daisy visually shrinks and clutches at her ears in fear.
+
+- I'm sorry, I'm so sorry, [Master], please don't be angry...
+
+As you finish your outburst you grab Daisy and leave Ramont's estate, returning to the mansion.""",
+	DAISY_LOST_APPROACH_REPLY_3_2 = """After a couple of minutes Daisy is brought to you and the situation is explained to her. She seems terribly puzzled and stands in silence, racking her brain to remember the last time she was required or allowed to stand up for herself much less make a meaningful decision concerning her future.""",
+	DAISY_LOST_APPROACH_REPLY_3_2_good = """Daisy:- [Master], for all you've done for me, I could never abandon you. I'm sorry, Sir Ramont, but I belong to my [Master], [name]. I can't return your feelings.
+
+Ramont:- I see... I understand. It was a pleasure to spend at least a bit of time with you. [name], I truly envy you, but I wish you both happiness. 
+
+With that, Ramont turns and leaves.""",
+	DAISY_LOST_APPROACH_REPLY_3_2_bad = """Daisy:- I-I... want to thank you, [master], but I'd prefer to stay with Sir Ramont. I'm sorry... 
+
+It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Accepting your defeat, you leave the estate all alone.""",
+	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect. """,
+	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
+	
 	
 	
 	
