@@ -36,7 +36,7 @@ func make_area(code):
 	for i in areadata.starting_locations:
 		var location = make_location(i, areadata)
 		areadata.locations[location.id] = location
-		ResourceScripts.game_world.location_links[location.id] = {area = code, category = 'locations'} 
+		ResourceScripts.game_world.location_links[location.id] = {area = code, category = 'locations'}
 		input_handler.active_location = location
 	areadata.factions = {}
 	areadata.quests.factions = {}
@@ -164,9 +164,9 @@ func make_guild(code, area):
 	while data.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
 		data.slavenumber -= 1
-	
+
 	ResourceScripts.game_world.factions[guilddatatemplate.code] = {code = guilddatatemplate.code, name = guilddatatemplate.name, area = guilddatatemplate.area}
-	
+
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
 
@@ -195,7 +195,7 @@ func make_slave_for_guild(guild):
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
-	
+
 	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
@@ -223,13 +223,13 @@ func make_settlement(code, area):
 		settlement.erase("background_pool")
 	settlement.events = {}
 	update_area_shop(settlement)
-	
+
 	if settlement.has('gather_resources'):
 		for i in settlement.gather_resources.keys():
 			settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
-	
+
 	area.locations[settlement.id] = settlement
-	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'} 
+	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'}
 
 func make_location(code, area):
 	var location = worlddata.dungeons[code].duplicate(true)
@@ -286,7 +286,7 @@ func make_location(code, area):
 	if location.has('scripteventdata'):
 		for script in location.scripteventdata:
 			location.scriptedevents.append(script)
-	
+
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1
 	location.erase('difficulties')
@@ -295,10 +295,10 @@ func make_location(code, area):
 func fill_faction_quests(faction, area):
 	var areadata = ResourceScripts.game_world.areas[area]
 	var factiondata = areadata.factions[faction]
-	
+
 	#get existing quests data
 	var difficulty = {easy = 0, medium = 0, hard = 0}
-	
+
 	for i in areadata.quests.factions[faction].values():
 		difficulty[i.difficulty] += 1
 	for i in difficulty:
@@ -309,7 +309,7 @@ func fill_faction_quests(faction, area):
 func make_quest(questcode):
 	var template = worlddata.questdata[questcode].duplicate(true)#array[randi()%array.size()]
 	var data = quest_template.duplicate(true)
-	
+
 	data.id = "Q" + str(ResourceScripts.game_progress.questcounter)
 	ResourceScripts.game_progress.questcounter += 1
 	data.code = template.code
@@ -317,11 +317,11 @@ func make_quest(questcode):
 	data.descript = template.descript
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.state = 'free'
-	
+
 	var requirements_number = 1
 	var reqsarray = template.randomconditions.duplicate()
-	
-	
+
+
 	while requirements_number > 0:
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate(true)
 		var reqsarrayposition = reqsarray.find(tempdata)
@@ -344,7 +344,7 @@ func make_quest(questcode):
 					if i.value.has("female") && input_handler.globalsettings.malechance + input_handler.globalsettings.futachance >= 90:
 						i.value.erase("female")
 				if typeof(i.value) == TYPE_ARRAY:
-					i.value = i.value[randi()%i.value.size()] 
+					i.value = i.value[randi()%i.value.size()]
 				tempdata.statreqs.append(i)
 			var statreq = round(rand_range(tempdata.condition_number[0],tempdata.condition_number[1]))
 			while statreq > 0:
@@ -381,13 +381,13 @@ func make_quest(questcode):
 			tempdata.statreqs.append({code = 'is_master', check = false})
 			tempdata.statreqs.append({code = 'is_free', check = true})
 		else:
-			tempdata.type = tempdata.type[randi()%tempdata.type.size()] 
+			tempdata.type = tempdata.type[randi()%tempdata.type.size()]
 		requirements_number -= 1
 	var rewardarray = []
 	for i in template.rewards.duplicate():
 		rewardarray.append([i, i[0]])
 	rewardarray = input_handler.weightedrandom(rewardarray)
-	
+
 	for i in rewardarray:
 		var reward = {}
 		if typeof(i) != TYPE_DICTIONARY: continue #ignoring weight value
@@ -431,7 +431,7 @@ func make_quest(questcode):
 				reward.value = round(rand_range(i.value[0], i.value[1]))
 		if reward.empty() == false:
 			data.rewards.append(reward)
-	
+
 	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
 	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
 	return data
@@ -444,7 +444,7 @@ func make_quest_location(code):
 	locationdata.travel_time = round(rand_range(data.travel_time[0], data.travel_time[1]))
 	var area = ResourceScripts.game_world.areas[data.area]
 	area.questlocations[locationdata.id] = locationdata
-	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'} 
+	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'}
 	input_handler.active_location = locationdata
 
 func make_repeatable_quest_location(quest,area,req):
@@ -484,12 +484,12 @@ func make_chest_loot(chest):
 		data = Enemydata.loot_variants_data[chest]
 	var dict = {materials = {}, items = [], gold = 0, lock = {difficulty = 0, type = 'none'}}
 	var location = input_handler.active_location
-	
+
 	if Enemydata.locks_data.has(chest):
 		dict.lock.type = input_handler.weightedrandom(Enemydata.locks_data[chest].locks)
 		if dict.lock.type != 'none':
 			dict.lock.difficulty = rand_range(Enemydata.locks_data[chest].difficulty[0], Enemydata.locks_data[chest].difficulty[1])
-	
+
 	for i in data:
 		match i.code:
 			'defined':
@@ -508,7 +508,7 @@ func make_chest_loot(chest):
 							else:
 								dict.items.append(globals.CreateGearItem(tempitem, {}))
 			'material':
-				var tempdict 
+				var tempdict
 				if i.grade[0] == 'location':
 					tempdict = {location.resources[randi()%location.resources.size()] : round(rand_range(i.min,i.max))}
 				else:
@@ -519,7 +519,7 @@ func make_chest_loot(chest):
 					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'material_selected':
-				var tempdict 
+				var tempdict
 				var mat = input_handler.weightedrandom(i.options)
 				var value = rand_range(i.value[0], i.value[1])
 				var number = ceil(value/Items.materiallist[mat].price)
@@ -558,7 +558,7 @@ func make_chest_loot(chest):
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
 					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
-					
+
 					dict.items.append(item)
 					number -= 1
 			'weapon':
@@ -576,7 +576,7 @@ func make_chest_loot(chest):
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
 					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
-					
+
 					dict.items.append(item)
 					number -= 1
 			'armor':
@@ -594,7 +594,7 @@ func make_chest_loot(chest):
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
 					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
-					
+
 					dict.items.append(item)
 					number -= 1
 			'gold':
@@ -602,7 +602,7 @@ func make_chest_loot(chest):
 				dict.gold += number
 	return dict
 
-func generate_random_gear(dict):#dict = {item = code, material_grade = 'location', locationmaterials = []/optional/}
+func generate_random_gear(dict):#
 	var itemtemplate = Items.itemlist[dict.item]
 	var itemparts = {}
 	for i_part in itemtemplate.parts:
@@ -617,6 +617,6 @@ func generate_random_gear(dict):#dict = {item = code, material_grade = 'location
 				if i.has('parts') && i.parts.has(i_part) && i.tier == matgrade:
 					material_array.append(i.code)
 		itemparts[i_part] = material_array[randi()%material_array.size()]
-	
+
 	return {code = itemtemplate.code, itemparts = itemparts, bonus = {}}
 

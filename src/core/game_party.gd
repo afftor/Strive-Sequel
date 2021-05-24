@@ -2,7 +2,7 @@ extends Reference
 #extends Node
 
 
-var characters = {} 
+var characters = {}
 var babies = {}
 var active_tasks = []
 var relativesdata = {}
@@ -50,7 +50,7 @@ func fix_import():
 
 #slaves operations
 func add_slave(person, child = false):
-	if child: characters_pool.move_baby_to_state(person.id) 
+	if child: characters_pool.move_baby_to_state(person.id)
 	else: characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true

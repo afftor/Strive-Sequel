@@ -22,7 +22,7 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
-		
+
 func update_purchase_btn():
 	$PurchaseButton/Label.text = gui_controller.exploration.hiremode.capitalize()
 	if gui_controller.exploration.hiremode == "sell":
@@ -54,7 +54,7 @@ func show_summary(person, from_dialogue = null):
 	SummaryModule.get_node("Name/name").text = person.get_short_name()
 	SummaryModule.get_node("VBoxContainer2/TextureRect3/BaseExp").text = str(floor(person.get_stat("base_exp")))
 	SummaryModule.get_node("VBoxContainer2/TextureRect4/NextClassExp").text = str(person.get_next_class_exp())
-	
+
 	for i in SummaryModule.get_node("base_stats").get_children():
 		i.max_value = person.get_stat(i.name+'max')
 		if i.name != 'lust': i.value = person.get_stat(i.name)
@@ -68,25 +68,25 @@ func show_summary(person, from_dialogue = null):
 			continue
 		if input_handler.globalsettings.factors_as_words:
 			i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
-			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))]) 
+			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
-	
-	
-	
+
+
+
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
 			var color = set_color(person.get_stat(i+'_bonus'))
 			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) 
+			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
 			var color = set_color(person.get_stat(i+'_bonus'))
 			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
 			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
-	
+
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
 	# for i in person.xp_module.professions:
 	# 	var newnode = input_handler.DuplicateContainerTemplate(BodyModule.get_node("professions"))
@@ -107,7 +107,7 @@ func show_summary(person, from_dialogue = null):
 func set_color(value):
 	var color = Color(0.98,0.88,0.51,1)
 	if value > 0:
-		color = Color(0.31,0.99,0.51,1)  
+		color = Color(0.31,0.99,0.51,1)
 	elif value < 0:
 		color = Color(0.99,0.31,0.36,1)
 	return color
@@ -117,7 +117,7 @@ func _on_Button_pressed():
 	# var person = get_parent().person_to_hire
 	for i in get_parent().submodules:
 		print(i.name)
-		
+
 
 func hire_character():
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration.selected_location)
@@ -138,17 +138,17 @@ func hire_character():
 	person.travel.location = gui_controller.exploration.selected_location
 	person.remove_from_task()
 	hide()
-	
+
 	if input_handler.scene_characters.has(person):
 		input_handler.scene_characters.erase(person)
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).update_scene_characters()
-	
+
 	if input_handler.active_faction.has('slaves'):
 		input_handler.active_faction.slaves.erase(person.id)
 	if gui_controller.exploration.active_faction.slaves.has(person.id):
 		gui_controller.exploration.active_faction.slaves.erase(person.id)
 
-	
+
 	# if input_handler.exploration_node.get_node("ExploreHireModule").is_visible_in_tree() == true:
 	# 	input_handler.exploration_node.faction_hire()
 

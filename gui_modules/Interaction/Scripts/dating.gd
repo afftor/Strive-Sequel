@@ -2,13 +2,13 @@ extends Control
 
 #mood & fear - dating only stats, they increase and reduce from actions (start at 0)
 #authority & consent - increase directly from some actions (punishments/intimacy)
-#loyalty/submission get buff 
+#loyalty/submission get buff
 
 var location
 var master
 var person
 var public = false
-var mood = 0.0 setget mood_set,mood_get 
+var mood = 0.0 setget mood_set,mood_get
 var fear = 0.0 setget fear_set
 var authStart #authority
 var consStart #consent
@@ -45,7 +45,7 @@ func fear_set(value):
 		ResourceScripts.core_animations.FadeAnimation($fear/Label,0.5)
 	fear = max(0,fear + difference)
 	$fear.value = floor(fear)
-	
+
 
 func mood_set(value):
 	var difference = value - mood
@@ -87,7 +87,7 @@ class dateclass:
 	var name
 	var lust = 0
 	var lube = 0
-	var sens = 0 
+	var sens = 0
 	var horny = 0
 
 
@@ -142,16 +142,16 @@ func initiate(tempperson):
 	$textfield/RichTextLabel.clear()
 	location_changed = false
 	$background.texture = images.backgrounds.mansion
-	
-	
-	
+
+
+
 	actionhistory.clear()
 	dateclassarray.clear()
-	
+
 	person = tempperson
-	
+
 	master = ResourceScripts.game_party.get_master()
-	
+
 	var newclass = dateclass.new()
 	newclass.sex = master.get_stat('sex')
 	newclass.name = master.get_short_name()
@@ -162,9 +162,9 @@ func initiate(tempperson):
 	newclass.sex = person.get_stat('sex')
 	newclass.name = person.get_short_name()
 	dateclassarray.append(newclass)
-	
-	
-	
+
+
+
 	self.fear = 0#person.fear
 	$fullbody.set_texture(null)
 	if person.get_body_image() != null:
@@ -174,7 +174,7 @@ func initiate(tempperson):
 			pass #print(image.get_path())
 		$fullbody.set_texture(image)
 	# $textfield/slaveportrait.texture = null
-	
+
 	if person.get_icon() != null && person.get_icon():
 		$textfield/slaveportrait/TextureRect.set_texture(person.get_icon())
 	else:
@@ -185,7 +185,7 @@ func initiate(tempperson):
 	# 	$textfield/slaveportrait/TextureRect.visible = false
 	# else:
 	# 	$textfield/slaveportrait/TextureRect.visible = true
-	
+
 	# $textfield/masterportrait/TextureRect.texture = null
 #	if globals.player.imageportait != null && globals.loadimage(globals.player.imageportait):
 #		$textfield/masterportrait.set_texture(globals.loadimage(globals.player.imageportait))
@@ -196,9 +196,9 @@ func initiate(tempperson):
 	# 	$textfield/masterportrait/TextureRect.visible = false
 	# else:
 	# 	$textfield/masterportrait/TextureRect.visible = true
-	
-	
-	
+
+
+
 	if jail == true:
 		location = 'dungeon'
 		text = "You visit [name2] in [his2] cell and decide to spend some time with [him2]. "
@@ -219,11 +219,11 @@ func initiate(tempperson):
 			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 		else:
-			
+
 			text += "Without great joy [he2] obeys your order and reluctantly joins you. "
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
-	
-	
+
+
 	self.showntext = globals.TextEncoder(text)
 	updatelist()
 	$panel/categories/Affection.emit_signal("pressed")
@@ -279,8 +279,8 @@ func updatelist():
 			newnode.visible = true
 			newnode.text = i.name
 			newnode.connect("pressed",self,'moveto', [i.code])
-	
-	
+
+
 	for i in actionsdict.values():
 		if i.name == "Stop":
 			continue
@@ -298,10 +298,10 @@ func updatelist():
 			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
 				newnode.disabled = true
-	
+
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
 	var text = "Consent: " + str(floor(person.get_stat("consent")))  #"Authority: " + str(floor(person.get_stat('authority'))) + "("  + str(person.authority_threshold()) + ")" + ",
-	
+
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -315,8 +315,8 @@ func moveto(newloc):
 	$panel/categories/Affection.emit_signal("pressed")
 	$background.texture = images.backgrounds[locationdicts[newloc].background]
 	self.showntext = 'You lead {^[name2]:[race2] [boy2]} to the [color=yellow]' + locationdicts[location].name + '[/color]. '
-	
-	
+
+
 	updatelist()
 
 func actiontooltip(descript):
@@ -400,7 +400,7 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} gives you a stern look. ", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} moves away from you. ", 1],
 	],
-	
+
 	touch_start = [
 		["You {^casually:lightly} touch {^[name2]:[race2] [boy2]}.", 1],
 	],
@@ -419,9 +419,9 @@ var date_lines = {
 	combhair_negative = [
 		["{^[name2]:[race2] [boy2]} looks bored and reacts coldly.", 1],
 	],
-	
-	
-	
+
+
+
 	hug_start_samesize = [
 		["You give {^[name2]:[race2] [boy2]} a friendly hug.", 1],
 		["You hug {^[name2]:[race2] [boy2]} in a friendly manner.", 1],
@@ -449,7 +449,7 @@ var date_lines = {
 	hug_negative = [
 		["{^[name2]:[race2] [boy2]} does not do anything waiting uncomfortably for you to finish.", 1],
 	],
-	
+
 	kiss_start = [
 		["You {^slowly :}{^lean:tilt:bend} to {^[name2]:[race2] [boy2]}'s face.",1],
 	],
@@ -465,8 +465,8 @@ var date_lines = {
 		["[he2] uncomfortably {^turns:looks} away accepting your {^kiss:smooch} on the cheeck.",1],
 		["[he2] {^embarrassingly:awkwardly} moves away preventing your attempt.",1]
 	],
-	
-	
+
+
 	propose_initiate = [
 		["You ask {^[name2]:[race2] [boy2]} if [he2] would like to take your relationship to the next level. ",1]
 		],
@@ -476,12 +476,12 @@ var date_lines = {
 	propose_was_forced_before = [
 		["{^[name2]:[race2] [boy2]:[he2]} looks at you with a sign of {^scorn:contempt}, as you've already {^made:forced} [him2] to have sex against [his2] will before. After a sigh [he2] gives you [his2] verbal agreement. ",1]
 	],
-	
+
 	propose_already_reached_consent = [
 		["{^[name2]:[race2] [boy2]:[he2]} responds without second thought it if already made [his2] mind about this.",1],
 		["{^[name2]:[race2] [boy2]:[he2]} quickly agrees to your propose. It seems [he2] has already set up [his2] mind on this.",1]
 		],
-	
+
 	propose_reject = [
 		["{^[name2]:[race2] [boy2]:[he2]} {^denies:rejects} your proposal{^ with a troubled face:}.",1]
 	],
@@ -489,7 +489,7 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} happily {^agrees:conrurs} to your {^request:proposal}.",1],
 		["After a moment {^[name2]:[race2] [boy2]:[he2]} {^agrees:concurs} to your {^request:proposal}.",1]
 	],
-	
+
 	praise_initiate = [
 		["You praise {^[name2]:[race2] [boy2]:[he2]}'s efforts. ",1],
 		["You {^proclaim:express} your gratitude to {^[name2]:[race2] [boy2]:[he2]}. ",1],
@@ -501,11 +501,11 @@ var date_lines = {
 	praise_resist = [
 		["{^[name2]:[race2] [boy2]:[he2]} does not show any signs of accepting your praise.",1]
 		],
-	
+
 	pathead_initiate = [
 		["You {^casually:lightly} {^pat:stroke} {^[name2]:[race2] [boy2]}'s head.", 1],
 	],
-	
+
 	pathead_accept = [
 		["{^[name2]:[race2] [boy2]:[he2]} smiles back at you.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} embarrassingly {^shies:looks} away.", 1],
@@ -515,7 +515,7 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} gives you a disapproving {^glance:look}.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} seems to be offended by your gesture.", 1],
 	],
-	
+
 	scold_initiate = [
 		["You scold {^[name2]:[race2] [boy2]} for [his2] recent faults. ",1]
 	],
@@ -525,7 +525,7 @@ var date_lines = {
 	scold_resist = [
 		["{^[name2]:[race2] [boy2]:[he2]} give you an annoyed look.", 1],
 	],
-	
+
 	rubears_initiate = [
 		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} behind [his2] [earadj]ears.", 1],
 		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} on [his2] [earadj]ears, moving down to [his2] {^[haircolor]:[hairlength]} hair.", 1],
@@ -575,8 +575,8 @@ var date_lines = {
 	slap_resist = [
 		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:very agited}.", 1],
 	],
-	
-	
+
+
 	food_initiate = [
 		["You offer {^[name2]:[race2] [boy2]:[he2]} a treat of [food].",1],
 	],
@@ -592,9 +592,9 @@ var date_lines = {
 	food_netural = [
 		["{^[name2]:[race2] [boy2]:[he2]} accepts it respectfully, but does not show much of a joy.",1]
 	],
-	
+
 }
- 
+
 var descripts = {
 	hairlength = {func = 'hairlength_descripts', stat = 'hair_length'},
 	earadj = {func = 'ears_descripts', stat = 'ears'},
@@ -604,14 +604,14 @@ var descripts = {
 func character_description(text_input):
 	var text = text_input
 	var temptext = ''
-	
+
 	text = text.replace('[haircolor]', tr(person.get_stat('hair_color'))+" ")
 	for i in descripts:
 		temptext = call(descripts[i].func, person.get_stat(descripts[i].stat))
 		if temptext != '':
 			temptext += " "
 		text = text.replace("["+i+"]", temptext)
-	
+
 	return text
 
 func hairlength_descripts(hairlength):
@@ -629,8 +629,8 @@ func ears_descripts(eartype):
 	elif eartype in ['cat','wolf','fox','tanuki','bunny_standing','bunny_drooping','cow']:
 		array = [['fluffy',1],['animal',1]]
 		match eartype:
-			'cat': 
-				array.append(['cat',1]) 
+			'cat':
+				array.append(['cat',1])
 				array.append(['feline',1])
 			'wolf':
 				array.append(['wolf',1])
@@ -645,7 +645,7 @@ func ears_descripts(eartype):
 				array.append(['bunny',1])
 	elif eartype == 'feathered':
 		array.append(["feathered", 1])
-		
+
 	return input_handler.weightedrandom(array)
 
 func tail_descripts(tailtype):
@@ -655,8 +655,8 @@ func tail_descripts(tailtype):
 	elif tailtype in ['cat','wolf','fox','tanuki','cow']:
 		array = [['fluffy',1],['furry',1]]
 		match tailtype:
-			'cat': 
-				array.append(['cat',1]) 
+			'cat':
+				array.append(['cat',1])
 				array.append(['feline',1])
 			'wolf':
 				array.append(['wolf',1])
@@ -680,20 +680,20 @@ func tail_descripts(tailtype):
 			'lizard':
 				array.append(['lizard',1])
 				array.append(['scaly',1])
-		
+
 	return input_handler.weightedrandom(array)
 
 func compare_heights(char1, char2):
 	var rval = 'same'
 	var height1 = variables.slave_heights.find(char1.get_stat('height'))
 	var height2 = variables.slave_heights.find(char2.get_stat('height'))
-	
+
 	if height1-1 > height2:
 		rval = 'big'
 	if height2-1 > height1:
 		rval = 'small'
-	
-	return rval 
+
+	return rval
 
 
 func is_same_sex():
@@ -709,9 +709,9 @@ func dislike_same_sex():
 	return rval
 
 func chat(person, counter):
-	
+
 	var text = input_handler.weightedrandom(date_lines.chat_start) + "\n\n"
-	
+
 	if 8 - counter*1.5 > 2 :
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.chat_positive)
@@ -722,13 +722,13 @@ func chat(person, counter):
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.chat_negative)
 		text += "}"
-	
+
 	return text
 
 func flirt(person, counter):
 	var text = ''
 	text += input_handler.weightedrandom(date_lines.flirt_start) + "\n\n"
-	
+
 	var min_mood = rand_range(8,14)
 	if dislike_same_sex():
 		min_mood *= 2
@@ -747,7 +747,7 @@ func flirt(person, counter):
 
 func intimate(person, counter):
 	var text = 'You {^cautiously:mindfully} ask [name2] about [his2] preferences in bed.'
-	
+
 	if mood >= 80 - master.get_stat('charm_factor') * 7:
 		var has_unknown_traits = false
 		var trait_array = person.get_all_sex_traits()
@@ -772,10 +772,10 @@ func intimate(person, counter):
 
 
 func touch(person, counter):
-	
+
 	var text = ''
 	text += input_handler.weightedrandom(date_lines.touch_start) + "\n\n"
-	
+
 	if 6 - counter > 1:
 		self.mood += 6 - counter
 		text += "{color=green|"
@@ -802,13 +802,13 @@ func holdhands(person, counter):
 	else:
 		self.mood -= 2
 		text += "[he2] holds your hand, but looks reclusive. "
-	
+
 	return text
 
-func combhair(person, counter): 
+func combhair(person, counter):
 	var text = ''
 	text += input_handler.weightedrandom(date_lines.combhair_start) + "\n\n"
-	
+
 	if 7 - counter > 2:
 		self.mood += 7 - counter
 		text += "{color=green|"
@@ -823,12 +823,12 @@ func combhair(person, counter):
 	return character_description(text)
 
 
-func hug(person, counter): 
+func hug(person, counter):
 	var text = ''
 	var size_difference = compare_heights(master,person)
 	text += input_handler.weightedrandom(date_lines['hug_start_'+size_difference+"size"]) + "\n\n"
-	
-	
+
+
 	if (11 - counter*2 > 2 ) && self.mood >= 20:
 		self.mood += 11 - counter*2
 		text += "{color=green|"
@@ -843,13 +843,13 @@ func hug(person, counter):
 	return character_description(text)
 
 
-func kiss(person, counter): 
+func kiss(person, counter):
 	var text = input_handler.weightedrandom(date_lines.kiss_start) + "\n\n"
-	
+
 	var min_mood = 20
 	if dislike_same_sex():
 		min_mood *= 1.5
-	
+
 	if self.mood < min_mood:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.kiss_negative)
@@ -859,12 +859,12 @@ func kiss(person, counter):
 		self.mood += 20
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.kiss_positive)
-		
+
 		if person.get_stat('personality') in ['shy','kind']:
 			text += " {^[name2]:[race2] [boy2]:[he2]} blushes and looks away. "
 		else:
 			text += " {^[name2]:[race2] [boy2]:[he2]} giggles looking at you. "
-		
+
 		text += "}"
 		if randf() > 0.5:
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
@@ -875,7 +875,7 @@ func kiss(person, counter):
 			text += input_handler.weightedrandom(date_lines.kiss_erotic_puclic)
 		else:
 			text += input_handler.weightedrandom(date_lines.kiss_erotic)
-		
+
 		match person.get_stat('personality'):
 			'serious', 'kind':
 				text += "{^[name2]:[race2] [boy2]:[he2]} smiles and looks at you with bedroom eyes."
@@ -883,17 +883,17 @@ func kiss(person, counter):
 				text += "{^[name2]:[race2] [boy2]:[he2]} looks slightly embarrassed, realizing what [he2] just did and looks away."
 			'bold':
 				text += "{^[name2]:[race2] [boy2]:[he2]} giggles in satisfaction{^:, grabbing your arm}. "
-		
+
 		text += "}"
 		if randf() > 0.5:
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-	
+
 	return text
 
 func rape(person, counter):
 	var text = ''
-	
-	return text 
+
+	return text
 
 
 #func pushdown(person, counter):
@@ -920,11 +920,11 @@ func rape(person, counter):
 
 func propose(person, counter):
 	var text = ''
-	
+
 	var gave_consent = false
-	
+
 	#guaranteed agreement
-	
+
 	if person.get_stat('had_cons_sex_with_mc') == true:
 		gave_consent = true
 		text += "{color=green|"
@@ -937,15 +937,15 @@ func propose(person, counter):
 		text += input_handler.weightedrandom(date_lines.propose_was_forced_before)
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_was_forced')) + "\n"
-		
+
 	if person.get_stat('consent') >= 25:
 		gave_consent = true
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.propose_already_reached_consent)
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_agree')) + "\n"
-	
-	
+
+
 	if gave_consent == false:
 		var difficulty =  self.mood*2 + person.get_stat('loyalty')/2 + drunkness*6
 		if dislike_same_sex():
@@ -957,18 +957,18 @@ func propose(person, counter):
 			text += input_handler.weightedrandom(date_lines.propose_reject)
 			text += "}"
 			self.mood -= 15
-			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_refuse')) 
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_refuse'))
 		else:
 			gave_consent = true
 			text += "{color=green|"
 			text += input_handler.weightedrandom(date_lines.propose_accept)
 			text += "}"
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_agree'))
-		
+
 		if gave_consent == true:
 			person.set_stat('consent', max(25, person.get_stat('consent')))
 			person.set_stat('was_proposed',true)
-		
+
 		return text
 
 var sexmode
@@ -989,14 +989,14 @@ var sexmode
 #		$sexswitch/confirmsex.visible = true
 #		$sexswitch/cancelsex.visible = false
 #
-#	text = decoder(text) 
+#	text = decoder(text)
 #	if $sexswitch/cancelsex.visible == false:
 #		text += calculateresults()
 #	$sexswitch/RichTextLabel.bbcode_text = text
 
 func praise(person, counter):
 	var text = input_handler.weightedrandom(date_lines.praise_initiate) + "\n\n"
-	
+
 	if person.has_temp_effect('resist_state') == false:
 		self.mood += 15
 		person.add_stat('obedience', 10)
@@ -1013,7 +1013,7 @@ func praise(person, counter):
 
 func pathead(person, counter):
 	var text = input_handler.weightedrandom(date_lines.pathead_initiate) + "\n\n"
-	
+
 	if person.has_temp_effect('resist_state') == false && 10-counter*1.5 > 2:
 		self.mood += 10 - counter*1.5
 		text += "{color=green|"
@@ -1029,7 +1029,7 @@ func pathead(person, counter):
 func scold(person, counter):
 	var text = input_handler.weightedrandom(date_lines.scold_initiate) + "\n\n"
 	var value = {mood = -3, fear = 10 - counter, action = 'scold'}
-	
+
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.scold_accept)
@@ -1040,14 +1040,14 @@ func scold(person, counter):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.scold_resist)
 		text += "}"
-	
+
 	text += punish_process(value)
-	
+
 	return character_description(text)
 
 func rubears(person, counter):
 	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
-	
+
 	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 20 && 8 - counter > 3:
 		self.mood += 8 - counter
 		text += "{color=green|"
@@ -1063,7 +1063,7 @@ func rubears(person, counter):
 
 func stroketail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
-	
+
 	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 25 && 11 - counter*1.5 > 2:
 		self.mood += 11 - counter*1.5
 		text += "{color=green|"
@@ -1089,10 +1089,10 @@ func stroketail(person, counter):
 #	return text
 
 func pullear(person, counter):
-	
+
 	var text = input_handler.weightedrandom(date_lines.pullear_initiate) + "\n\n"
 	var value = {mood = -7, fear = 14-counter, action = 'pullear'}
-	
+
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pullear_accept)
@@ -1103,16 +1103,16 @@ func pullear(person, counter):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pullear_resist)
 		text += "}"
-	
+
 	text += punish_process(value)
-	
+
 	return character_description(text)
 
 func pulltail(person, counter):
-	
+
 	var text = input_handler.weightedrandom(date_lines.pulltail_initiate) + "\n\n"
 	var value = {mood = -5, fear = 15-counter, action = 'pulltail'}
-	
+
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pulltail_accept)
@@ -1123,9 +1123,9 @@ func pulltail(person, counter):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pulltail_resist)
 		text += "}"
-	
+
 	text += punish_process(value)
-	
+
 	return character_description(text)
 
 func punish_process(value):
@@ -1133,7 +1133,7 @@ func punish_process(value):
 	if person.check_trait("Masochist") && randf() >= 0.8:
 		text += "[Masochist][name2] seems to take [his2] punishment with an uncommon enthusiasm... "
 		value.mood = -value.mood
-	
+
 	if randf() >= 0.5:
 		match value.action:
 			'scold':
@@ -1142,7 +1142,7 @@ func punish_process(value):
 				text += "\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_punish_light'))
 			'wax','horse','flag','whip':
 				text += "\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_punish_heavy'))
-	
+
 	if observing_slaves.size() > 0:
 		text += "\n\n[color=yellow]"
 		var array = []
@@ -1150,15 +1150,15 @@ func punish_process(value):
 			array.append(i.get_short_name())
 		text += input_handler.text_form_recitation(array)
 		text += "[/color] watch over [name2]'s humiliation in awe. "
-		
-		
+
+
 		value.mood *= 1.2
 		value.fear *= 1.3
-	
-	
+
+
 	self.fear += value.fear
 	self.mood += value.mood
-	
+
 	return text
 
 func build_observing_slaves():
@@ -1170,7 +1170,7 @@ func build_observing_slaves():
 func slap(person, counter):
 	var text = ''
 	text += "You slap [name2] across the face as punishment. [his2] cheek gets red. "
-	
+
 	var value = {mood = -3, fear = 12-counter, action = 'slap'}
 	text += punish_process(value)
 	return text
@@ -1178,17 +1178,17 @@ func slap(person, counter):
 func flag(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, punish it with force. "
-	
+
 	var value = {mood = -5, fear = 16-counter, action = 'flag'}
-	
+
 	text += punish_process(value)
 	return text
 
 func whip(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, whip it with force. "
-	
-	
+
+
 	var value = {mood = -5, fear = 20-counter, action = 'whip'}
 	text += punish_process(value)
 	return text
@@ -1196,30 +1196,30 @@ func whip(person, counter):
 func horse(person, counter):
 	var text = ''
 	text += "You tie [name2] securely to the wooden horse with [his2] legs spread wide. [he2] cries with pain under [his2] own weight. "
-	
-	
+
+
 	var value = {mood = -5, fear = 20-counter, action = 'horse'}
 	text += punish_process(value)
-	
+
 	return text
 
 func wax(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table and after exposing [his2] body you drip hot wax over it making [him2] cry with pain. "
-	
+
 	var value = {mood = -5, fear = 18-counter, action = 'wax'}
-	
+
 	text += punish_process(value)
-	
+
 	return text
 
 func train(person, counter):
 	var text = ''
 	var value = person.get_stat('physics_factor') * (turn/4.0)
 	var value2 = master.get_stat('physics_factor') * (turn/4.0)
-	
-	
-	text += ("You spend some time training with [name2], improving your Physics. \n" 
+
+
+	text += ("You spend some time training with [name2], improving your Physics. \n"
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	person.add_stat('physics', value)
@@ -1227,41 +1227,41 @@ func train(person, counter):
 	self.mood += self.turn
 	self.turn = 0
 	finish_encounter = true
-	
+
 	return text
 
 func study(person, counter):
 	var text = ''
 	var value = person.get_stat('wits_factor') * (turn/4.0)
 	var value2 = master.get_stat('wits_factor') * (turn/4.0)
-	
-	text += ("You spend some time studying with [name2], improving your Wits. \n" 
+
+	text += ("You spend some time studying with [name2], improving your Wits. \n"
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
-	
+
 	person.add_stat('wits', value)
 	master.add_stat('wits', value2)
 	self.mood += self.turn
 	self.turn = 0
 	finish_encounter = true
-	
+
 	return text
 
 func charm(person, counter):
 	var text = ''
 	var value = person.get_stat('charm_factor') * (turn/4.0)
 	var value2 = master.get_stat('charm_factor') * (turn/4.0)
-	
-	text += ("You spend some time practicing with [name2], improving your Charm. \n" 
+
+	text += ("You spend some time practicing with [name2], improving your Charm. \n"
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
-	
+
 	person.add_stat('charm', value)
 	master.add_stat('charm', value2)
 	self.mood += self.turn
 	self.turn = 0
 	finish_encounter = true
-	
+
 	return text
 
 
@@ -1305,7 +1305,7 @@ func public(person, counter):
 				var temptext = i.translate(input_handler.get_random_chat_line(i, 'date_public_observe'))
 				temptext = person.translate(temptext.replace('[2','['))
 				text += "\n{color=yellow|" + i.get_short_name() + "}: " + temptext
-			
+
 		else:
 			text += "\n\nYou wanted to bring everyone available to watch over [name2]'s humiliation, but nobody besides you is aroud."
 	else:
@@ -1373,8 +1373,8 @@ func usefood(food):
 	var text = input_handler.weightedrandom(date_lines.food_initiate).replace("[food]", food.name) + "\n\n"
 	$Items.hide()
 	ResourceScripts.game_res.set_material(food.code, '-', 1)
-	self.turn -=1 
-	
+	self.turn -=1
+
 	if person.has_temp_effect('resist_state'):
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.food_resist)
@@ -1391,7 +1391,7 @@ func usefood(food):
 			for i in food.tags:
 				if person.food.food_hate.has(i):
 					state = 'hate'
-			
+
 		if state == 'like':
 			text += "{color=green|"
 			text += input_handler.weightedrandom(date_lines.food_liked)
@@ -1410,7 +1410,7 @@ func usefood(food):
 			text += "}"
 			self.mood += 5
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_neutral')) + "\n"
-	
+
 	self.showntext = globals.TextEncoder(decoder(text))
 	updatelist()
 
@@ -1450,10 +1450,10 @@ func alcohol(person):
 		self.mood += 15
 		#person.add_stat('authority', 11)
 		#person.add_stat('consent', 2)
-		
+
 		drunkness += 3
 		ResourceScripts.game_res.remove_item('alcohol',1)
-	
+
 	self.showntext = globals.TextEncoder(decoder(text))
 	drunkness()
 	updatelist()
@@ -1468,10 +1468,10 @@ func beer(person):
 		self.mood += 10
 		#person.add_stat('authority', 5)
 		#person.add_stat('consent', 3)
-		
+
 		drunkness += 1
 		ResourceScripts.game_res.remove_item('beer',1)
-	
+
 	self.showntext = globals.TextEncoder(decoder(text))
 	drunkness()
 	updatelist()
@@ -1569,8 +1569,8 @@ func strChange(value):
 func calculateresults():
 	var sex_offer = false
 	var endmood = floor(self.mood)
-	var endfear = floor(self.fear) 
-	
+	var endfear = floor(self.fear)
+
 #	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
 #	eff.set_args('subm_bonus', subm_bonus)
 #	eff.set_args('loyal_bonus', loyal_bonus)
@@ -1584,41 +1584,41 @@ func calculateresults():
 	+ "\nFear: " + str(endfear)
 	)
 #	+ "\nLoyalty Gained: +" + str(loyal_bonus)
-	
+
 #	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
 	#+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
 	if endmood >= endfear:
 		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
 		authority = ceil(endmood/10)
 		consent = master.get_stat("sexuals_factor")*4
-		text += ("\n\n{color=green|Positive Mood}: " 
+		text += ("\n\n{color=green|Positive Mood}: "
 		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
 		+ "\nConsent: +" + str(consent) + " ([Master]'s Sex Factor: " + str(master.get_stat("sexuals_factor"))+")"
 		+ "\nAuthority: +" + str(authority)
 		+ "\n\nSatisfied by the time together, you and [name] grow closer."
 		)
-		
+
 		person.add_stat("loyalty", loyalty)
 		person.add_stat("consent", consent)
 		person.add_stat("authority", authority)
-		
+
 	else:
 		obedience = ceil(endfear/1.75)
-		authority = ceil(endfear/3) + master.get_stat('physics_factor') * 4 
-		text += ("\n\n{color=red|Fearful Mood}: " 
+		authority = ceil(endfear/3) + master.get_stat('physics_factor') * 4
+		text += ("\n\n{color=red|Fearful Mood}: "
 		+ "\nObedience: +" + str(obedience)
 		+ "\nAuthority: +" + str(authority) + " ([Master]'s Physics Factor Bonus: +" + str(master.get_stat("physics_factor")*4)+")"
 		+ "\n\nWhile this was an unpleasant expirience for [name], it will certainly teach [him] to be afraid of your anger."
 		)
 		person.add_stat("obedience", obedience)
 		person.add_stat("authority", authority)
-	
+
 	if person.get_stat('consent') >= 30 || person.get_stat('loyalty') + person.get_stat('consent')*2 > 110:
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n\n{color=green|It seems [name] does not mind to continue this encounter...}"
 		sex_offer = true
-	
+
 	$end/sexbutton.visible = sex_offer && !person.tags.has("no_sex")
-	
+
 	return globals.TextEncoder(person.translate(text))
 
 func start_sex():
@@ -1629,7 +1629,7 @@ func start_sex():
 		gui_controller.sex_panel = input_handler.get_spec_node(input_handler.NODE_SEX)
 	gui_controller.sex_panel.startsequence([master, person])
 	gui_controller.sex_panel.raise()
-	
+
 
 func _on_finishbutton_pressed():
 	gui_controller.windows_opened.clear()
@@ -1761,7 +1761,7 @@ var actionsdict = {
 		location = [],
 		effect = 'stroketail',
 	},
-	
+
 #	frenchkiss = {
 #		group = 'Affection',
 #		name = 'French Kiss',
@@ -1786,7 +1786,7 @@ var actionsdict = {
 		location = ['bedroom'],
 		effect = 'propose',
 	},
-	
+
 	scold = {
 		group = 'Discipline',
 		name = 'Scold',
@@ -1885,7 +1885,7 @@ var actionsdict = {
 #		reqs = "globals.spelldict.sedation.learned == true && globals.resources.mana >= globals.spells.spellcost(globals.spelldict.sedation)",
 #		effect = 'castsedate',
 #	},
-	
+
 	gift = {
 		group = "Items",
 		name = "Make Gift",
@@ -1928,7 +1928,7 @@ var actionsdict = {
 		disablereqs = 'globals.itemdict.supply.amount >= 2',
 		effect = 'wine',
 	},
-	
+
 	train = {
 		group = 'Training',
 		name = 'Train',
@@ -1971,7 +1971,7 @@ var actionsdict = {
 		effect = 'food',
 		#onetime = true,
 	},
-	
+
 	stop = {
 		group = "any",
 		name = "Stop",

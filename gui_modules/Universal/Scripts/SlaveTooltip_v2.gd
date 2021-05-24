@@ -46,7 +46,7 @@ func showup(node, person):
 			$TextureRect/professions/Button.rect_min_size = Vector2(90,90)
 			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78,78)
 #			$TextureRect/professions/Button/Label.show()
-			
+
 		for i in person.xp_module.professions:
 			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/professions)
 			var prof = classesdata.professions[i]
@@ -74,18 +74,18 @@ func showup(node, person):
 			text += "\n"
 			# if state.get_master() != person:
 				# if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
-				# 	text += "{color=green|Obedience: " 
+				# 	text += "{color=green|Obedience: "
 				# else:
-				# 	text += "{color=red|Obedience: " 
+				# 	text += "{color=red|Obedience: "
 				# if person.loyalty < 100 && person.submission < 100:
 				# 	text += str(ceil(person.obedience)) + "}"
 				# else:
 				# 	text += "∞}"
-		$job.bbcode_text = globals.TextEncoder(text) 
+		$job.bbcode_text = globals.TextEncoder(text)
 
 		# for i in ['physics','wits','charm','sexuals']:
 		# 	if i != 'sexuals':
-		# 		get_node(i).text = str(floor(person.get_stat(i))) 
+		# 		get_node(i).text = str(floor(person.get_stat(i)))
 		# 		get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
 		# 	else:
 		# 		get_node(i).text = str(floor(person.get_stat(i)))
@@ -103,7 +103,7 @@ func showup(node, person):
 				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = '100'
 
-		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
+		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))
 		for i in variables.productivity_mods:
 			if person.get_stat(i) > 1:
 				text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name + "}"
@@ -121,7 +121,7 @@ func showup(node, person):
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
-	
+
 		var authority
 		if person.get_stat('authority') < person.authority_threshold()/2:
 			authority = 'low'
@@ -130,9 +130,9 @@ func showup(node, person):
 		else:
 			authority = 'high'
 		authority_text = authority_lines[authority]
-		
+
 		$Panel/authoritylabel.text = 'Authority: ' + authority_text
-	
+
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
@@ -161,13 +161,13 @@ func showup(node, person):
 
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1
-		
+
 		show()
-		
+
 		var pos = node.get_global_rect()
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 		self.set_global_position(pos)
-		
+
 		if get_rect().end.x+100 > screen.size.x:
 			rect_global_position.x -= get_rect().end.x+100 - screen.size.x
 		if get_rect().end.y+125 > screen.size.y:
@@ -188,12 +188,12 @@ func hide_tooltip():
 	set_process(false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
-	
+
 
 func set_color(value):
 	var color = Color(0.87,0.87,0.87,1)
 	if value > 0:
-		color = Color(0.31,0.99,0.51,1)  
+		color = Color(0.31,0.99,0.51,1)
 	elif value < 0:
 		color = Color(0.99,0.31,0.36,1)
 	return color

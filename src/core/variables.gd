@@ -13,7 +13,7 @@ var hour_turn_limit = 8
 
 enum {PANEL_SOC, PANEL_COM}
 
-enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 
+enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6};
 enum {TR_CAST,TR_CAST_TARGET, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_GET, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_POST_TARG, TR_SKILL_FINISH, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN, TR_TAUNT_FAIL, TR_DAY, TR_S_CAST, TR_S_TARGET, TR_SHACKLES_OFF, TR_TICK, TR_RES, TR_SOC_SPEC, TR_MOVE, TR_REMOVE, TR_CUSTOM, TR_CUSTOM1};
 enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, S_FULL = 31}
 
@@ -54,7 +54,7 @@ var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_fact
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
 	no_crafting_item = "MESSAGE_NOCRAFTINGITEM",
-	
+
 }
 var enemy_types = {
 	bandit = "ENEMYTYPEBANDITS",
@@ -114,7 +114,7 @@ const rows = {
 	4:[7,10],
 	5:[8,11],
 	6:[9,12],
-} 
+}
 const lines = {
 	1 : [1,2,3],
 	2 : [4,5,6],

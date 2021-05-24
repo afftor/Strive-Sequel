@@ -2,7 +2,7 @@ extends Node
 
 var predeterminatedgroups = {
 	rats_easy = {group = {1 : 'rat', 4 : 'rat',5 : 'rat'}},
-} 
+}
 
 var encounters = {
 	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
@@ -13,14 +13,14 @@ var encounters = {
 	ogre_skirmish = {unittype = 'randomgroup', unitcode = 'ogre_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	tribal_elves = {unittype = 'randomgroup', unitcode = 'tribal_elves', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
-	
-	
+
+
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
-	
+
 	mimic = {unittype = 'randomgroup', unitcode = 'mimic', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
-	
-	
+
+
 	rebel_group = {unittype = 'randomgroup', unitcode = 'rebel_group_mines', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_group_win', args = []}], lose_effects = [{code = 'start_event', data = 'rebel_group_lose', args = []}]},
 	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_kurdan_lose', args = []}]},
 	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_lose', args = []}]},
@@ -30,12 +30,12 @@ var encounters = {
 	patrol = {unittype = 'randomgroup', unitcode = 'patrol', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'patrol_win', args = []}], lose_effects = [{code = 'start_event', data = 'patrol_lose', args = []}]},
 	wrong_building_rebels = {unittype = 'randomgroup', unitcode = 'wrong_building_rebels', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'wrong_building_rebels_win', args = []}], lose_effects = [{code = 'start_event', data = 'wrong_building_rebels_lose', args = []}]},
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
-	
-	
+
+
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = []},
-	
-	
-	
+
+
+
 	greg_boss_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'greg_combat_on_win_1', args = []}], lose_effects = []},
 	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'aire_combat_on_win_2', args = []}], lose_effects = []},
 }
@@ -46,26 +46,26 @@ var enemygroups = {
 	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}},
 	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}},
 	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},
-	
+
 	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss = [1,1], bandit_melee = [0,2], bandit_archer = [0,2]}},
 	bandits_medium_boss = {maxunits = 6, reqs = [], units = {bandit_boss = [1,1], bandit_melee = [1,2], bandit_archer = [1,2], bandit_mage = [1,1]}},
-	
+
 	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}},
 	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}},
 	bandits_medium = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
 	bandits_medium2 = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [1,2], bandit_mage = [1,2]}},
 	bandits_medium_bear = {reqs = [], units = {trained_bear = [1,2], bandit_archer = [1,2]}},
 	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
-	
+
 	bandits_raptors = {reqs = [], units = {bandit_melee = [1,2], trained_raptor = [1,2]}},
 	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
-	
+
 	goblins_skirmish = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
 	ogre_skirmish = {reqs = [], units = {cave_goblin_melee = [2,2], ogre_melee = [1,1]}},
 	troll_skirmish = {reqs = [], units = {cave_goblin_melee = [1,1], troll = [1,1], cave_goblin_archer = [1,1]}},
-	
+
 	tribal_elves = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
-	
+
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
@@ -74,24 +74,24 @@ var enemygroups = {
 	ogre_med1 = {reqs = [], units = {ogre_melee = [1,1], cave_goblin_melee = [0,1], cave_goblin_archer = [0,1]}},
 	ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
 	troll_boss = {maxunits = 4, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2]}},
-	
+
 	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
-	
+
 	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
 	rebels_small = {reqs = [], units = {rebel_recruit = [2,3]}},
 	spiders = {reqs = [], units = {spider = [2,3]}},
 	spiders_many = {reqs = [], units = {spider = [4,6]}},
-	
+
 	rats = {reqs = [], units = {rat = [3,5]}},
-	
+
 	skeletons_easy = {reqs = [], units = {skeleton_melee = [2,3]}},
 	skeletons_easy2 = {reqs = [], units = {skeleton_melee = [1,2], skeleton_archer = [1,2]}},
 	skeletons_zombies = {reqs = [], units = {skeleton_melee = [1,2], zombie = [1,2]}},
 	skeletons_zombies2 = {reqs = [], units = {skeleton_archer = [1,2], zombie = [2,3]}},
 	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}},
 	skeletons_lich_boss = {maxunits = 6, reqs = [], units = {undead_lich = [1,1], skeleton_archer = [2,2], zombie = [3,3]}},
-	
+
 	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},
 	demon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
@@ -101,21 +101,21 @@ var enemygroups = {
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	
-	
+
+
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
-	
+
 	rebel_group_hideout1 = {reqs = [], units = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]}},
 	rebel_group_hideout2 = {reqs = [], units = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]}},
 	rebel_group_hideout3 = {reqs = [], units = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]}},
 	greg_boss_fight = {reqs = [], units = {greg = [1,1], rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
-	
+
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},
-	
+
 	mimic = {reqs = [], units = {mimic = [1,1]}},
-	
+
 	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
 	jungle_easy2 = {reqs = [], units = {giant_ant = [0,2], centipede = [0,1], maneater_plant = [0,1]}},
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
@@ -123,15 +123,15 @@ var enemygroups = {
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
 	jungle_boss2 = {reqs = [], units = {ogre_melee = [1,1], ogre_alpha = [1,1], ogre_mage = [1,1]}},
 	jungle_boss3 = {reqs = [], units = {maneater_plant = [0,2], gryphon = [1,1]}},
-	
+
 	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}},
 	firedepths_easy2 = {reqs = [], units = {anthropoid = [1,2], ifrit = [0,1]}},
 	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}},
 	firedepths_medium2 = {reqs = [], units = {ifrit = [2,4]}},
 	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
-	
-	
+
+
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -361,7 +361,7 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 25,
 	},
-	
+
 	trained_dog = {
 		code = 'trained_dog',
 		name = '',
@@ -490,7 +490,7 @@ var enemies = {
 		loot = 'ballista_loot',
 		icon = "res://assets/images/enemies/ballista.png",
 		body = null,
-		skills = ['attack'],
+		skills = ['ranged_attack'],
 		traits = [],
 		tags = ['mech'],
 		is_character = false,
@@ -968,7 +968,7 @@ var enemies = {
 		ai_position = ['melee'],
 		xpreward = 100,
 	},
-	
+
 	mimic = {
 		code = 'mimic',
 		name = '',
@@ -997,8 +997,8 @@ var enemies = {
 		ai_position = ['melee'],
 		xpreward = 100,
 	},
-	
-	
+
+
 	salamander = {
 		code = 'salamander',
 		name = '',
@@ -1081,7 +1081,7 @@ var enemies = {
 		ai_position = ['any'],
 		xpreward = 20,
 	},
-	
+
 	giant_ant = {
 		code = 'giant_ant',
 		name = '',
@@ -1331,9 +1331,9 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 80,
 	},
-	
+
 	#quest enemies
-	
+
 	greg = {
 		code = 'greg',
 		name = '',
@@ -1450,75 +1450,75 @@ var enemies = {
 
 var loot_variants_data = {
 	easy_chest_usable = [
-	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']}, 
-	{code = 'material', min = 2, max = 5, grade = ['location']}, 
-	{code = 'usable', min = 2, max = 4, grade = ['easy']}, 
+	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']},
+	{code = 'material', min = 2, max = 5, grade = ['location']},
+	{code = 'usable', min = 2, max = 4, grade = ['easy']},
 	],
 	easy_chest_gear = [
-	{code = 'material', min = 2, max = 3, grade = ['location']}, 
+	{code = 'material', min = 2, max = 3, grade = ['location']},
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3]]},
 	],
 	easy_chest_cosmetics = [
-	{code = 'material', min = 2, max = 4, grade = ['location']}, 
+	{code = 'material', min = 2, max = 4, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
 	],
-	
-	
+
+
 	medium_chest_usable = [
-	{code = 'material', min = 2, max = 3, grade = ['medium','hard']}, 
-	{code = 'material', min = 2, max = 3, grade = ['location']}, 
-	{code = 'usable', min = 2, max = 4, grade = ['easy','medium']}, 
-	{code = 'usable', min = 0, max = 1, grade = ['easy','medium']}, 
+	{code = 'material', min = 2, max = 3, grade = ['medium','hard']},
+	{code = 'material', min = 2, max = 3, grade = ['location']},
+	{code = 'usable', min = 2, max = 4, grade = ['easy','medium']},
+	{code = 'usable', min = 0, max = 1, grade = ['easy','medium']},
 	],
 	medium_chest_gear = [
-	{code = 'material', min = 2, max = 4, grade = ['location']}, 
+	{code = 'material', min = 2, max = 4, grade = ['location']},
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',3], ['medium', 10], ['hard',1]]},
 	],
 	medium_chest_cosmetics = [
-	{code = 'material', min = 2, max = 4, grade = ['location']}, 
+	{code = 'material', min = 2, max = 4, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
 	],
-	
+
 	easy_armory_weapon = [
 		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3], ['hard',1]]},
 	],
 	easy_armory_armor = [
 		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3], ['hard',1]]},
 	],
-	
+
 	medium_armory_weapon = [
 		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',2], ['medium', 10], ['hard',3]]},
 	],
 	medium_armory_armor = [
 		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',2], ['medium', 10], ['hard',3]]},
 	],
-	
+
 	easy_prisoner_reward_item = [
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 5]]},
 	],
 	easy_prisoner_reward_resource = [
-	{code = 'material', min = 5, max = 10, grade = ['easy']}, 
+	{code = 'material', min = 5, max = 10, grade = ['easy']},
 	{code = 'material', min = 3, max = 6, grade = ['location']},
 	],
 	easy_boss_chest = [
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']},
 	{code = 'gear', min = 1, max = 2, grade = ['easy'], material_grade = [['easy',10], ['medium', 4]]},
-	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
+	{code = 'defined', name = 'exp_scroll', min = 1, max = 2},
 	{code = 'gold', min = 150, max = 200}
 	],
 	medium_boss_chest = [
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']},
 	{code = 'gear', min = 1, max = 2, grade = ['easy','medium'], material_grade = [['easy',4], ['medium', 10],['hard',1]]},
-	{code = 'defined', name = 'exp_scroll', min = 1, max = 3}, 
+	{code = 'defined', name = 'exp_scroll', min = 1, max = 3},
 	{code = 'gold', min = 250, max = 400}
 	],
 	hard_boss_chest = [
 	{code = 'static_gear', min = 1, max = 2, grade = ['easy','medium','hard']},
 	{code = 'gear', min = 1, max = 2, grade = ['medium','hard'], material_grade = [['medium', 5],['hard',5]]},
-	{code = 'defined', name = 'exp_scroll', min = 2, max = 4}, 
+	{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
 	{code = 'gold', min = 400, max = 600}
 	],
-	
+
 	grove_wood_reward = [
 		{code = 'material_selected', options = [['wood',1],['woodiron',1],['woodmagic',0.7],['woodancient',0.2]], value = [100,200]}
 	],
@@ -1528,10 +1528,10 @@ var loot_variants_data = {
 	crypt_bone_reward = [
 		{code = 'material_selected', options = [['bone',1],['boneancient',0.5],['bonedragon',0.1]], value = [100,200]}
 	],
-	
-	
+
+
 	test_chest_mimic = [],
-	
+
 	fighters_join_reward = [
 	{code = 'defined', name = 'sword', min = 1, max = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
 	{code = 'defined', name = 'chest_base_leather', min = 1, max = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}},
@@ -1561,12 +1561,12 @@ var loot_variants_data = {
 	aliron_church_bonus = [
 		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
 	],
-	
-	
+
+
 	blessed_divine_symbol = [
 		{code = 'defined', name = 'blessed_divine_symbol', min = 1, max = 1},
 	],
-	
+
 	celena_reward = [
 		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
 	],
@@ -1608,18 +1608,18 @@ var locks_data = { #makes locks to lockpick for related chests
 	easy_chest_gear = {locks = [['normal', 1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
 	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [10,25]},
-	
+
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
 	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
-	
+
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
-	
+
 	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
 	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [20,55]},
-	
+
 	hard_boss_chest = {locks = [['normal', 2],['none',1]], difficulty = [45,80]},
 	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
 	}
@@ -1645,7 +1645,7 @@ var loottables = {
 	lich_loot = [['boneancient', 0.5, 2], ['energygem', 0.5]],
 	zombie_loot = [['cloth', 0.5, 2], ['gold',1, 3]],
 	mimic_loot = [['woodiron', 0.8, 8], ['lifegem', 0.75, 3], ['gold', 20, 30]],
-	
+
 	troll_loot = [['troll_blood', 1, 1],['gold', 10, 15]],
 	ogre_loot = [['ogre_teeth', 0.6, 1], ['gold', 5, 10], ['lifegem', 0.05, 1],['earth_shard', 0.01, 1]],
 	maneater_loot = [['blue_moss', 0.3, 1], ['gold',3,10]],
@@ -1689,7 +1689,7 @@ var shrines = {
 		},
 		bless = 'freya_bless',
 		curse = 'freya_curse',
-	
+
 	},
 }
 
@@ -1698,55 +1698,55 @@ func celena_item(code):
 	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
 	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-	
+
 	if item.type in ['wood','plant','food']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
-		
+
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2], ['celena_reward2',1]]}]
 		dict.tags.append("free_loot")
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func celena_character(person):
-	
+
 	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
+
 	if randf() <= 0.5:
 		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
-		
+
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
 	else:
 		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
-	
+
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func celena_destroy(person):
-	
+
 	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
+
 	if randf() <= 0.33:
 		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
-		
+
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_curse'})
-	
+
 	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['celena_destroy_shrine1',3], ['celena_destroy_shrine2',1]]})
 	dict.tags.append("free_loot")
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func freya_item(code):
 	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
 	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-	
+
 	if item.type in ['cloth']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}"
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
@@ -1755,46 +1755,46 @@ func freya_item(code):
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
-	
+
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func freya_character(person):
-	
+
 	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
-	
-	
+
+
+
 	if person.checkreqs([{code = 'has_wooden_gear'}]):
 		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 	else:
 		if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
 			dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
-			
+
 			dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
 		else:
 			dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
-	
+
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func freya_destroy(person):
-	
+
 	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
+
 	if randf() <= 0.75:
 		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
-		
+
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
-	
+
 	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['freya_destroy_shrine',1]]})
 	dict.tags.append("free_loot")
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 
@@ -1802,42 +1802,42 @@ func erebus_item(code):
 	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
 	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-	
+
 	if item.type in ['stone']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
-		
+
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['erebus_reward',3],['erebus_reward2',1]]}]
 		dict.tags.append("free_loot")
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func erebus_character(person):
-	
+
 	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
+
 	if randf() <= 0.5:
 		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
-		
+
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
 	else:
 		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
-	
+
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func erebus_destroy(person):
-	
+
 	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	
-	
+
+
 	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['erebus_destroy_shrine',3]]})
 	dict.tags.append("free_loot")
-	
-	
+
+
 	input_handler.interactive_message_follow(dict, 'direct', [])
