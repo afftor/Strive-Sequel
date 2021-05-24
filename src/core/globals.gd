@@ -728,7 +728,7 @@ func impregnate(father, mother):
 	if (check == false) && (mother.has_profession('breeder') == false):
 		print("Impregnation check failed")
 		return #incompatible races
-	var baby = ResourceScripts.scriptdict.class_slave.new()
+	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
 func calculate_travel_time(location1, location2):
@@ -829,7 +829,7 @@ func character_stat_change(character, data):
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func make_local_recruit(args):
-	var newchar = ResourceScripts.scriptdict.class_slave.new()
+	var newchar = ResourceScripts.scriptdict.class_slave.new("local_recruit")
 	if args == null:
 		newchar.generate_random_character_from_data(input_handler.weightedrandom(input_handler.active_location.races))
 	else:
@@ -1102,7 +1102,7 @@ func common_effects(effects):
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
 			'make_story_character':
-				var newslave = ResourceScripts.scriptdict.class_slave.new()
+				var newslave = ResourceScripts.scriptdict.class_slave.new("common_story")
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
 				if "recruit_from_location" in i:
 					newslave.travel.location = input_handler.active_location.id
@@ -1204,7 +1204,7 @@ func common_effects(effects):
 					while number > 0:
 						match k.type:
 							'raw':
-								newcharacter = ResourceScripts.scriptdict.class_slave.new()
+								newcharacter = ResourceScripts.scriptdict.class_slave.new("common_scene_raw")
 								newcharacter.is_active = false
 								newcharacter.generate_random_character_from_data(k.race, k.class, k.difficulty)
 								newcharacter.set_slave_category(k.slave_type)

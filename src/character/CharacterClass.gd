@@ -36,8 +36,12 @@ var previous_location
 
 #to delegate!
 
+#debug, 2remove later
+var src = ""
 
-func _init():
+
+func _init(source):
+	src = source
 	rebuild_parents()
 
 

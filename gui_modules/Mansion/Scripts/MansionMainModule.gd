@@ -3,6 +3,7 @@ extends Control
 # VARIABLES
 # Modules
 onready var TravelsModule = $MansionTravelsModule
+onready var UpgradesModule_ = $upgrades
 onready var SlaveListModule = $MansionSlaveListModule
 onready var SkillModule = $MansionSkillsModule
 onready var UpgradesModule = $MansionUpgradesModule
@@ -222,17 +223,20 @@ func match_state():
 			else:
 				$TravelsModule.update_lists()
 		"upgrades":
-			$MansionUpgradesModule.show()
-			$MansionUpgradesModule.open()
-			$MansionUpgradesModule.open_queue()
-			$MansionSlaveListModule.set_size(Vector2(1100, 580))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
-			menu_buttons.get_node("UpgradesButton").pressed = true
-			SlaveListModule.rebuild()
+			UpgradesModule_.show()
 			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($MansionUpgradesModule, 0.3)
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation(UpgradesModule_, 0.3)
+#			$MansionUpgradesModule.show()
+#			$MansionUpgradesModule.open()
+#			$MansionUpgradesModule.open_queue()
+#			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+#			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
+#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
+#			menu_buttons.get_node("UpgradesButton").pressed = true
+#			SlaveListModule.rebuild()
+#			if mansion_state != mansion_prev_state:
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionUpgradesModule, 0.3)
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"occupation":
 			$MansionSlaveListModule.rebuild()
 			$MansionJobModule.show()
@@ -480,7 +484,7 @@ func test_mode():
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
-		var character = ResourceScripts.scriptdict.class_slave.new()
+		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('Human', 'female', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
@@ -504,9 +508,8 @@ func test_mode():
 		character.unlock_class("master")
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
-		character.unlock_class("assassin")
-		# character.unlock_class("druid")
-		# character.unlock_class("assassin")
+#		character.unlock_class("assassin")
+		character.unlock_class("caster")
 		# character.unlock_class("ruler")
 		# character.unlock_class("watchdog")
 		# character.unlock_class("director")
@@ -539,6 +542,7 @@ func test_mode():
 		character.set_stat('consent', 100)
 		character.set_stat('charm_factor', 5)
 		character.set_stat('physics_factor', 5)
+		character.set_stat('sexuals_factor', 5)
 		#character.set_stat('wits_factor', 5)
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
@@ -554,7 +558,7 @@ func test_mode():
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 10
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
-		character = ResourceScripts.scriptdict.class_slave.new()
+		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
@@ -568,7 +572,7 @@ func test_mode():
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
 		character.is_players_character = true
-		character = ResourceScripts.scriptdict.class_slave.new()
+		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 
@@ -586,7 +590,7 @@ func test_mode():
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
 
-		var character2 = ResourceScripts.scriptdict.class_slave.new()
+		var character2 = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
 		character2.create('Elf', 'random', 'random')
@@ -703,7 +707,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
+		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
@@ -777,11 +781,12 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mindbreak_completed")
 		
 		
+
 		input_handler.interactive_message('celena_shrine_find', '', {})
 		input_handler.interactive_message('freya_shrine_find', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
-#		input_handler.interactive_message('princess_recriut_intermission_3', '', {})
+		input_handler.interactive_message('freya_shrine_find', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("interrogation_success")
 		

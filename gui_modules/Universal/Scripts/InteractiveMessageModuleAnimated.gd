@@ -355,7 +355,7 @@ func recruit(capture = false):
 	close()
 
 func create_location_recruit(args):
-	var newchar = ResourceScripts.scriptdict.class_slave.new()
+	var newchar = ResourceScripts.scriptdict.class_slave.new("location_recruit")
 	input_handler.active_character = newchar
 	newchar.generate_random_character_from_data(input_handler.active_location.races)
 	$RichTextLabel.bbcode_text = newchar.translate($RichTextLabel.bbcode_text)
@@ -724,11 +724,12 @@ func handle_scene_options(scene):
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
+			i.text = tr(i.text)
 			if i.has('active_char_translate'):
 				i.text = input_handler.active_character.translate(i.text)
 			elif i.has('master_translate'):
 				i.text = ResourceScripts.game_party.get_master().translate(i.text)
-			newbutton.get_node("Label").bbcode_text = tr(i.text)
+			newbutton.get_node("Label").bbcode_text = i.text
 			newbutton.hotkey = option_number
 			yield(get_tree(), 'idle_frame')
 			#newbutton.get_node("hotkey").text = str(option_number)

@@ -108,7 +108,7 @@ func writ_of_exemption_use():
 		character.add_stat('loyalty', 25)
 	else:
 		input_handler.interactive_message_follow("writ_of_exemption_failure",'char_translate',character)
-		ResourceScripts.game_party.remove_slave(character)
+		ResourceScripts.game_party.remove_slave(character, true)
 	input_handler.rebuild_slave_list()
 
 func oblivionpot(character):

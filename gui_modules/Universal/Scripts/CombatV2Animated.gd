@@ -69,7 +69,7 @@ var eot = true
 
 func _ready():
 	debug = gui_controller.mansion.test_mode
-	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new()
+	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new("combat_dummy")
 	autoskill_dummy.position = 0
 	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()
 	autoskill_dummy.displaynode.animation_node = CombatAnimations
@@ -884,7 +884,7 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		var tchar = ResourceScripts.scriptdict.class_slave.new()
+		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
 		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
@@ -947,7 +947,7 @@ func summon(montype, limit):
 	if pos.size() == 0: return;
 	var sum_pos = pos[randi() % pos.size()];
 	summons.push_back(sum_pos);
-	var tchar = ResourceScripts.scriptdict.class_slave.new();
+	var tchar = ResourceScripts.scriptdict.class_slave.new("combat_summon");
 	tchar.createfromenemy(montype);
 	tchar.combatgroup = 'enemy'
 	enemygroup[sum_pos] = characters_pool.add_char(tchar)

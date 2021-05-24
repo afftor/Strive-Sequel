@@ -24,8 +24,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask_exploration.png" type="Texture" id=22]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=23]
 
-
-
 [node name="ExploreFullSlaveModule" type="Panel" groups=[
 "pauseprocess",
 ]]
@@ -141,11 +139,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="professions" type="GridContainer" parent="SlaveBodyModule"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveBodyModule"]
 margin_left = 17.0
 margin_top = -116.0
 margin_right = 689.0
 margin_bottom = -16.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="professions" type="GridContainer" parent="SlaveBodyModule/ScrollContainer"]
 grow_horizontal = 0
 mouse_filter = 2
 custom_constants/hseparation = 19
@@ -154,7 +156,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="SlaveBodyModule/professions" groups=[
+[node name="Button" type="TextureButton" parent="SlaveBodyModule/ScrollContainer/professions" groups=[
 "ignore_rightclicks",
 ]]
 visible = false
@@ -172,7 +174,7 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 5 )
 
-[node name="TextureRect" type="TextureRect" parent="SlaveBodyModule/professions/Button"]
+[node name="TextureRect" type="TextureRect" parent="SlaveBodyModule/ScrollContainer/professions/Button"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 93.0
@@ -184,7 +186,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="SlaveBodyModule/professions/Button"]
+[node name="Label" type="Label" parent="SlaveBodyModule/ScrollContainer/professions/Button"]
 visible = false
 margin_left = 7.0
 margin_top = 69.0
@@ -269,4 +271,5 @@ margin_bottom = 1043.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
