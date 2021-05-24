@@ -913,7 +913,7 @@ var scenedict = {
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200}, 
-		{code = 'make_story_character', value = 'Daisy'}, #make_story_character takes character data from worldgen.pregen_characters
+		{code = 'make_story_character', value = 'Daisy'}, 
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
@@ -1286,7 +1286,7 @@ var scenedict = {
 	erebus_shrine_approach = {
 		text = tr("DIALOGUESHRINEEREBUS"), 
 		tags = ['shrine','active_character_translate'],
-		shrine = 'celena',
+		shrine = 'erebus',
 		image = null, 
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
@@ -1303,7 +1303,7 @@ var scenedict = {
 	freya_shrine_approach = {
 		text = tr("DIALOGUESHRINEFREYA"), 
 		tags = ['shrine','active_character_translate'],
-		shrine = 'celena',
+		shrine = 'freya',
 		image = null, 
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
@@ -1445,13 +1445,6 @@ var dialogue_inits = {
 	servants_init = [
 		{
 			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}],
-			target = 'final_operation_servants_1',
-			target_option = 1,
-		},
-		{
-			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
 			target = 'amelia_dialogue_start',
@@ -1490,13 +1483,6 @@ var dialogue_inits = {
 	workers_init = [
 		{
 			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}],
-			target = 'final_operation_workers_1',
-			target_option = 1,
-		},
-		{
-			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [{type = 'dialogue_seen', check = false, value = 'WORKERSINTRODUCTION1'}], 
 			target = 'workers_introduction1',
@@ -1524,14 +1510,6 @@ var dialogue_inits = {
 			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage1'}], 
 			target = 'mages_after_election',
-			target_option = 1,
-		},
-		
-		{
-			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}],
-			target = 'final_operation_mages_1',
 			target_option = 1,
 		},
 		#fred_return_to_myr_1

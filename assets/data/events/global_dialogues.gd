@@ -80,7 +80,7 @@ var data = {
 		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage3'}], bonus_effects = [{code = 'complete_quest', value = 'workers_election_quest'}], dialogue_argument = 6, type = 'next_dialogue'},
 		{code = 'help_sigmund_start', text = "HELP_SIGMUND_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage1'}], dialogue_argument = 6},
 		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", type = 'next_dialogue', reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
-		
+		{code = 'final_operation_workers_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -114,6 +114,9 @@ var data = {
 		
 		{code = "amelia_titjob1", text = "AMELIASCENEOPTION", reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 3000}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_used = true, change_dialogue_type = 2},
 		
+		{code = 'final_operation_servants_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		
+		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -137,11 +140,11 @@ var data = {
 			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, 
 			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
-		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19'}], 
+		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3}, 
+		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19'}, {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], 
 		dialogue_argument = 6, type = 'next_dialogue', },#bonus_effects = [{code = "screen_black_transition", value = 2}]},
 		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},
-		
+		{code = 'final_operation_mages_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

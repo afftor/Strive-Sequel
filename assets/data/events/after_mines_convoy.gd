@@ -199,9 +199,9 @@ var data = {
 		}, {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_3", reqs = [], dialogue_argument = 2,
 			bonus_effects = [{code = 'decision', value = 'SiegeHalfSupplies'}], type = 'next_dialogue'
-		}, {
-			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_HUNTER_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'hunter', check = true}]}], dialogue_argument = 4, type = 'next_dialogue'
-		}, {
+		}, 
+		#{code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_HUNTER_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'hunter', check = true}]}], dialogue_argument = 4, type = 'next_dialogue'}, 
+		{
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_4", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, ],
 	},

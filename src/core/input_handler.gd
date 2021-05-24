@@ -277,7 +277,7 @@ func quit():
 	globalsettings.window_size = OS.window_size
 	globalsettings.window_pos = OS.window_position
 	settings_save(globalsettings)
-	get_tree().get_root().queue_free()
+	#get_tree().get_root().queue_free()
 	get_tree().quit()
 
 
@@ -713,11 +713,13 @@ func open_shell(string):
 	var path = string
 	match string:
 		'Itch':
-			path = 'https://strive4power.itch.io/strive-for-power'
+			path = 'https://strive4power.itch.io/strive-conquest'
 		'Patreon':
 			path = 'https://www.patreon.com/maverik'
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
+		'Wiki':
+			path = "https://strive-conquest.fandom.com/wiki/Strive:_Conquest_Wiki"
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):

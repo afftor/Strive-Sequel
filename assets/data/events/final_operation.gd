@@ -100,7 +100,7 @@ var data = {
 			{text = "FINAL_OPERATON_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage2'}]},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage2'}, {code = "update_guild"}]},
 		],
 	},
 }

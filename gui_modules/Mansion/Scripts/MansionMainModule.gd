@@ -781,8 +781,10 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mindbreak_completed")
 		
 		
-#		input_handler.interactive_message('princess_cutscene_good_2_gallery', '', {})
-#		ResourceScripts.gallery.play_scene(0)
+
+		input_handler.interactive_message('celena_shrine_find', '', {})
+		input_handler.interactive_message('freya_shrine_find', '', {})
+		#ResourceScripts.gallery.play_scene(0)
 		
 		input_handler.interactive_message('freya_shrine_find', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])

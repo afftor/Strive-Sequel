@@ -52,7 +52,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_mode = true
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
