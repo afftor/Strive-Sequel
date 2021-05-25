@@ -5288,7 +5288,7 @@ Ramont:- I sent you that message about wanting her for experiments, but it was a
 
 The chances are, Daisy has tasted the good will of Ramont and the promise of a better life. Making her choose you over him is a risky decision...""",
 	DAISY_LOST_APPROACH_OPTION_FIGHT = "Don't be ridiculous, she's my property and I'll take her by force if I must",
-	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, I accept your wager. Let's see what she thinks",
+	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, let's see what she thinks",
 	DAISY_LOST_APPROACH_OPTION_3_3 = "I can't oppose this dedication of yours, you can have her",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_1 = "Ramont:- So it comes to this... On guard!",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_2 = "After finally managing to knockout Ramont, you quickly rush through his mansion until finding Daisy behind one of the locked doors. You bash it in, and Daisy looks at you in awe.",

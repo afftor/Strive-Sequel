@@ -1,4 +1,19 @@
 var data = {
+	
+	help_init_test = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], character = 'daisy_default',
+		text = [{text = "DAISY_RECRUITMENT_START", reqs = [], }],
+		common_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = 0}],
+		options = [ {
+			code = 'close', text = "+", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '+'}]
+		}, {
+			code = 'close', text = "-", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}]
+		}, ],
+	},
+	
 	daisy_recruitment_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
 		reqs = [], character = 'daisy_default',
@@ -722,15 +737,6 @@ var data = {
 		reqs = [], 
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_2", reqs = []}],
 		options = [ {
-			code = 'daisy_lost_amelia_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		} ]
-	},
-	
-	daisy_lost_amelia_7 = {
-		image = null, tags = ['dialogue_scene'], 
-		reqs = [], 
-		text = [{text = "DAISY_LOST_APPROACH_REPLY_0_2", reqs = []}],
-		options = [ {
 			code = 'daisy_lost_amelia_8', text = "DAISY_LOST_APPROACH_OPTION_FIGHT", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'daisy_lost_amelia_13', text = "DAISY_LOST_APPROACH_OPTION_3_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
@@ -778,7 +784,8 @@ var data = {
 		{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}]
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
 	},
 	
@@ -788,7 +795,8 @@ var data = {
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}]
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
 	},
 	
@@ -803,7 +811,8 @@ var data = {
 			code = 'daisy_lost_amelia_11', text = "DIALOGUECONTINUE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}], # TODO (remove daisy, end quest)
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ], # TODO (remove daisy, end quest)
 		},  ]
 	},
 	
@@ -822,7 +831,8 @@ var data = {
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_3_3_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}], # TODO (remove daisy, end quest)
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ], # TODO (remove daisy, end quest)
 		} ]
 	},
 }
