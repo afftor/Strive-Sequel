@@ -572,8 +572,12 @@ func need_heal():
 #core functions
 func hp_set(value):
 	if npc_reference == 'combat_global': return
-	if hp <= 0 && value <= 0:
-		return
+	if hp <= 0:
+		if value <= hp:
+			return
+		else:
+			hp = value
+			return
 	hp = min(value, get_stat('hpmax'))
 	if displaynode != null:
 		displaynode.update_hp()

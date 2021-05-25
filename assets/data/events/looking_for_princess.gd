@@ -6,7 +6,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_1", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_2", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_4", reqs = []}],
-			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1},
+			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1}, #TODO add another item
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
@@ -154,7 +154,6 @@ var data = {
 		},],
 	},
 	
-	#TODO block search for 1 day
 	looking_for_princess_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_11", reqs = [], previous_dialogue_option = 1}, 
@@ -243,9 +242,9 @@ var data = {
 	looking_for_princess_mages_2 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_21", reqs = []}], 
-		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 		}],
 	},
 	

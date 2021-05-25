@@ -176,7 +176,6 @@ var data = {
 			{reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
 			image = null,
 			character = "anastasia",
-			character2 = 'greg',
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_DEAD", reqs = []}],
 			options = [

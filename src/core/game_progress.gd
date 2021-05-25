@@ -80,6 +80,7 @@ func get_active_quest(code):
 	return 
 
 func check_timed_events():
+	var deleting_events = []
 	for i in stored_events.timed_events:
 		if globals.checkreqs(i.reqs):
 			if i.has('action'):
@@ -90,7 +91,8 @@ func check_timed_events():
 					'remove_decision':
 						if ResourceScripts.game_progress.decisions.has(i.code):
 							ResourceScripts.game_progress.decisions.erase(i.code)
-				stored_events.timed_events.erase(i)
+				
+				deleting_events.append(i)
 				return
 			var event = scenedata.scenedict[i.code]
 			if event.has('reqs'):
@@ -103,7 +105,9 @@ func check_timed_events():
 										j.value += 1
 						return
 			input_handler.interactive_message(i.code, 'story_event', {})
-			stored_events.timed_events.erase(i)
+			deleting_events.append(i)
+	for i in deleting_events:
+		stored_events.timed_events.erase(i)
 
 #checks
 func if_quest_stage(name, value, operant):

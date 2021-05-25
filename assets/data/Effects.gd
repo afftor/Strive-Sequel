@@ -2017,7 +2017,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Innervate.png", 
-				description = "Will be reborn at death",
+				description = "Will be reborn on death",
 				t_name = 'reincarnate'
 			}
 		],
@@ -2597,7 +2597,7 @@ var effect_table = {
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
-	e_s_takeposition = {
+		e_s_takeposition = {
 		type = 'temp_s',
 		duration = 2,
 		stack = 1,
@@ -2612,8 +2612,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/takeposition.png",
+			description = "+50 Armor Penetration; +20%% Damage Dealt.",
 			args = [],
 			limit = 1,
 			t_name = 'takeposition',
@@ -2633,8 +2633,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/windwall.png",
+			description = "Reduces randged damage by 50%%",
 			args = [],
 			limit = 1,
 			t_name = 'windwall',
