@@ -916,7 +916,9 @@ var scenedict = {
 		{code = 'make_story_character', value = 'Daisy'}, 
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
+		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]},
 		],
 	},
 	daisy_purchase_confirm_discount = {
@@ -926,7 +928,10 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
+		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]},
+		
 		],
 	},
 	daisy_purchase_leave = {

@@ -208,7 +208,8 @@ var data = {
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2", reqs = []}],
 			options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			} ],
 		} ]
 	}, 
@@ -227,7 +228,8 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			}
 		],
 	},
@@ -249,7 +251,8 @@ var data = {
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1", reqs = [], }],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 		} ],
 	},
 	
@@ -281,7 +284,8 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}],
+				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			}
 		],
 	},
@@ -549,7 +553,7 @@ var data = {
 		reqs = [], character = "daisy_default",
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_1_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, # TODO remove daisy, add gold
 		} ]
 	},
 	
@@ -567,7 +571,7 @@ var data = {
 		reqs = [], character = "daisy_default",
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_2_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, # TODO remove daisy,
 		} ]
 	},
 	
