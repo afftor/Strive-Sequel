@@ -30,7 +30,8 @@ var encounters = {
 	patrol = {unittype = 'randomgroup', unitcode = 'patrol', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'patrol_win', args = []}], lose_effects = [{code = 'start_event', data = 'patrol_lose', args = []}]},
 	wrong_building_rebels = {unittype = 'randomgroup', unitcode = 'wrong_building_rebels', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'wrong_building_rebels_win', args = []}], lose_effects = [{code = 'start_event', data = 'wrong_building_rebels_lose', args = []}]},
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
-	
+	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'daisy_admirer_guards1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_4', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
+	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'daisy_admirer_guards2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_9', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
 	
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = []},
 	
@@ -101,7 +102,8 @@ var enemygroups = {
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	
+	daisy_admirer_guards1 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	daisy_admirer_guards2 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 	

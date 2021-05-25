@@ -681,8 +681,148 @@ var data = {
 		reqs = [], 
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_0_1", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'daisy_lost_amelia_4',
+			code = 'quest_fight', args = 'daisy_admirer_guards1',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_lose = {
+		image = null, tags = [],
+		text = [ {text = "", reqs = []} ],
+		options = [ {
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
+			}
+		]
+	},
+	
+	daisy_lost_amelia_4 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_0_2", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_5', text = "DAISY_LOST_APPROACH_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_5', text = "DAISY_LOST_APPROACH_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_5', text = "DAISY_LOST_APPROACH_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ]
+	},
+	
+	daisy_lost_amelia_5 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_1", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_6 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_2", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_7 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_0_2", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_8', text = "DAISY_LOST_APPROACH_OPTION_FIGHT", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_13', text = "DAISY_LOST_APPROACH_OPTION_3_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_14', text = "DAISY_LOST_APPROACH_OPTION_3_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ]
+	},
+	
+	daisy_lost_amelia_8 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_1", reqs = []}],
+		options = [ {
+			code = 'quest_fight', args = 'daisy_admirer_guards2',
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_9 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_2", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_10 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_3", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_11', text = "DAISY_LOST_APPROACH_OPTION_FIGHT_4_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_11', text = "DAISY_LOST_APPROACH_OPTION_FIGHT_4_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'daisy_lost_amelia_12', text = "DAISY_LOST_APPROACH_OPTION_FIGHT_4_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ]
+	},
+	
+	daisy_lost_amelia_11 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_good", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}]},
+		{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}]}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}]
+		} ]
+	},
+	
+	daisy_lost_amelia_12 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_3", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}]
+		} ]
+	},
+	
+	# =Very well, let's see what she thinks
+	daisy_lost_amelia_13 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_3_2", reqs = []},
+		{text = "DAISY_LOST_APPROACH_REPLY_3_2_good", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}]},
+		{text = "DAISY_LOST_APPROACH_REPLY_3_2_bad", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}]}],
+		options = [ {
+			code = 'daisy_lost_amelia_11', text = "DIALOGUECONTINUE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}], # TODO (remove daisy, end quest)
+		},  ]
+	},
+	
+	daisy_lost_amelia_14 = {
+		image = null, tags = ['dialogue_scene'], 
+		reqs = [], 
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_3_3_1", reqs = []}],
+		options = [ {
+			code = 'daisy_lost_amelia_15', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_lost_amelia_15 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
+		reqs = [], character = "daisy_default",
+		text = [{text = "DAISY_LOST_APPROACH_REPLY_3_3_2", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'}], # TODO (remove daisy, end quest)
 		} ]
 	},
 }

@@ -5310,12 +5310,16 @@ Daisy looks troubled and unsure how to respond to your remark. Deciding there's 
 
 As you finish your outburst you grab Daisy and leave Ramont's estate, returning to the mansion.""",
 	DAISY_LOST_APPROACH_REPLY_3_2 = """After a couple of minutes Daisy is brought to you and the situation is explained to her. She seems terribly puzzled and stands in silence, racking her brain to remember the last time she was required or allowed to stand up for herself much less make a meaningful decision concerning her future.""",
-	DAISY_LOST_APPROACH_REPLY_3_2_good = """Daisy:- [Master], for all you've done for me, I could never abandon you. I'm sorry, Sir Ramont, but I belong to my [Master], [name]. I can't return your feelings.
+	DAISY_LOST_APPROACH_REPLY_3_2_good = """
+
+Daisy:- [Master], for all you've done for me, I could never abandon you. I'm sorry, Sir Ramont, but I belong to my [Master], [name]. I can't return your feelings.
 
 Ramont:- I see... I understand. It was a pleasure to spend at least a bit of time with you. [name], I truly envy you, but I wish you both happiness. 
 
 With that, Ramont turns and leaves.""",
-	DAISY_LOST_APPROACH_REPLY_3_2_bad = """Daisy:- I-I... want to thank you, [master], but I'd prefer to stay with Sir Ramont. I'm sorry... 
+	DAISY_LOST_APPROACH_REPLY_3_2_bad = """
+
+Daisy:- I-I... want to thank you, [master], but I'd prefer to stay with Sir Ramont. I'm sorry... 
 
 It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Accepting your defeat, you leave the estate all alone.""",
 	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect. """,
