@@ -8,6 +8,7 @@ var upgradelist = {
 		positionorder = 3,
 		descript = '',
 		category = 'facilitiy',
+		tree_position = {x = 4, y = 6},#for testing & example
 		levels = {
 			1:{
 				unlockreqs = [],

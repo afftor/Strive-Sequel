@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -29,13 +29,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=27]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=29]
-[ext_resource path="res://assets/Textures_v2/Upgrades 2021/bar_upgrades_small.png" type="Texture" id=30]
-[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_hover.png" type="Texture" id=31]
-[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_pressed.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_disabled.png" type="Texture" id=33]
-[ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree.png" type="Texture" id=34]
-[ext_resource path="res://gui_modules/upgrades_new/UpgradeItem.gd" type="Script" id=35]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_26.tres" type="DynamicFont" id=36]
+[ext_resource path="res://gui_modules/upgrades_new/UpgradesList.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
 
@@ -184,6 +178,18 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 57.0
 margin_bottom = 57.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon2" type="TextureRect" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 57.0
+margin_bottom = 57.0
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -373,73 +379,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpgradesList" type="GridContainer" parent="ScrollContainer"]
-custom_constants/vseparation = 64
-custom_constants/hseparation = 64
-columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="ScrollContainer/UpgradesList"]
-visible = false
-margin_right = 190.0
-margin_bottom = 211.0
-toggle_mode = true
-shortcut_in_tooltip = false
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 32 )
-texture_hover = ExtResource( 31 )
-texture_disabled = ExtResource( 33 )
-script = ExtResource( 35 )
-
-[node name="Image" type="TextureRect" parent="ScrollContainer/UpgradesList/Button"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 185.0
-margin_bottom = 185.0
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Progress" type="TextureProgress" parent="ScrollContainer/UpgradesList/Button"]
-margin_left = 4.78403
-margin_top = 190.364
-margin_right = 184.784
-margin_bottom = 205.364
-value = 100.0
-texture_progress = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ScrollContainer/UpgradesList/Button/Progress"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -23.0
-margin_top = -12.0
-margin_right = 23.0
-margin_bottom = 12.0
-custom_fonts/font = ExtResource( 13 )
-text = "10/10"
-align = 1
-
-[node name="name" type="Label" parent="ScrollContainer/UpgradesList/Button"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 29.0
-grow_horizontal = 2
-custom_fonts/font = ExtResource( 36 )
-text = "Luxury rooms"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UpgradesList" parent="ScrollContainer" instance=ExtResource( 30 )]
 
 [node name="description" type="Control" parent="."]
 margin_right = 40.0
