@@ -17,8 +17,6 @@ var selected_upgrade = null
 func _ready():
 	add_to_group("pauseprocess")
 	gui_controller.upgrades = self
-	sort_upgrades()
-#	update_upgrades_tree()
 
 
 func show():
@@ -42,12 +40,6 @@ func hide():
 	.hide()
 
 
-func update_upgrades_tree():
-	input_handler.ClearContainer(upgradeslist)
-	for code in upgrades_order:
-		var panel = input_handler.DuplicateContainerTemplate(upgradeslist)
-		panel.setup_upgrade(code)
-		panel.connect("pressed", self, "select_upgrade", [code])
 
 
 func select_upgrade(code):
@@ -100,14 +92,21 @@ func build_description(upgrade_id):
 		for res in upgrade_next_state.cost:
 			var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 			var resdata = Items.materiallist[res]
+			panel.set_meta("exploration", true)
+			globals.connectmaterialtooltip(panel, resdata)
 			panel.get_node("Icon").texture = resdata.icon
 			panel.get_node("name").text = resdata.name
 			if ResourceScripts.game_res.materials[res] >= upgrade_next_state.cost[res]:
-				panel.get_node("count").text = str(upgrade_next_state.cost[res])
+				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
 			else:
 				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
 				panel.disabled = true
 				can_upgrade = false
+		#add working res
+		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
+		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
+		panel.get_node("name").text = tr("TASKBUILDING")
+		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	#2add here building bonuses list not existing for now
 
@@ -119,7 +118,8 @@ func build_queue_list():
 	var output = ResourceScripts.game_party.get_output_for_task("building", ResourceScripts.game_world.mansion_location)
 	
 	for upgrade in upgrades:
-		var text = upgradedata.upgradelist[upgrade].name
+		var upgrade_data = upgradedata.upgradelist[upgrade]
+		var text = upgrade_data.name
 		var newbutton = input_handler.DuplicateContainerTemplate(queuelist)
 		newbutton.set_meta('upgrade', upgradedata.upgradelist[upgrade])
 		newbutton.target_node = self
@@ -127,8 +127,21 @@ func build_queue_list():
 		newbutton.arraydata = upgrade
 		newbutton.parentnodearray = ResourceScripts.game_res.upgrades_queue
 		newbutton.get_node("name").text = text
+		if upgrade_data.has('icon'):
+			newbutton.get_node("Icon").texture = images.icons[upgrade_data.icon]
+		else:
+			newbutton.get_node("Icon").texture = null
+#		if upgrade_next_state != null:
+#			if upgrade_next_state.has('icon'):
+#				newbutton.get_node("Icon2").texture = images.icons[upgrade_next_state.icon]
+#			else:
+#				newbutton.get_node("Icon2").texture = null
+#		else:
+#			if upgrade_state.has('icon'):
+#				newbutton.get_node("Icon2").texture = images.icons[upgrade_state.icon]
+#			else:
+#				newbutton.get_node("Icon2").texture = null
 #		newbutton.get_node("Icon").texture = 
-#there is no small icons in upgradedata, so setup here should be specific
 		var currentupgradelevel = ResourceScripts.game_res.findupgradelevel(upgrade)
 
 		remains += update_progresses(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
@@ -212,22 +225,6 @@ func set_to_upgrading(pressed, person):
 	build_characters()
 
 
-func sort_upgrades():#temporal version
-	upgrades_order.clear()
-	upgrades_order = upgradedata.upgradelist.keys().duplicate()
-	upgrades_order.sort_custom(self, "compare_upgrades")
-	for i in range(upgradeslist.columns):
-		upgrades_order.push_back(null)
-
-
-func compare_upgrades(first, second):
-	var tmp1 = upgradedata.upgradelist[first]
-	var tmp2 = upgradedata.upgradelist[second]
-	if tmp1.category != tmp2.category:
-		return tmp1.category < tmp2.category
-	return tmp1.positionorder < tmp2.positionorder
-
-
 
 
 func open_tree():
@@ -238,7 +235,7 @@ func open_tree():
 	chars.visible = false
 	modes.get_node("Mode3").pressed = false
 	
-	update_upgrades_tree()
+	upgradeslist.update_upgrades_tree()
 
 
 func open_queue():
@@ -266,5 +263,5 @@ func open_chars():
 func add_upgrade_to_queue():
 	ResourceScripts.game_res.add_upgrade_to_queue(selected_upgrade)
 	build_description(selected_upgrade)
-	update_upgrades_tree()
+	upgradeslist.update_upgrades_tree()
 	build_queue_list()

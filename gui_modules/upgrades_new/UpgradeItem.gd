@@ -26,10 +26,20 @@ func setup_upgrade(upgrade_id):
 	
 	$name.text = tr(upgrade_data.name)
 	#setup icon
-	if upgrade_next_state != null:
-		$Image.texture = images.icons[upgrade_next_state.icon]
+	if upgrade_data.has('icon'):
+		$Image.texture = images.icons[upgrade_data.icon]
 	else:
-		$Image.texture = images.icons[upgrade_state.icon]
+		$Image.texture = null
+	if upgrade_next_state != null:
+		if upgrade_next_state.has('icon'):
+			$Image2.texture = images.icons[upgrade_next_state.icon]
+		else:
+			$Image2.texture = null
+	else:
+		if upgrade_state.has('icon'):
+			$Image2.texture = images.icons[upgrade_state.icon]
+		else:
+			$Image2.texture = null
 		#2add maximazed decoration
 	#setup state
 	disabled = false
@@ -47,10 +57,10 @@ func setup_upgrade(upgrade_id):
 		$Progress/Label.text = "%d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 		$Progress.max_value = upgrade_next_state.taskprogress
 		$Progress.value = ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress
-	elif upgrade_state != null:
-		$Progress/Label.text = "%d/%d" % [upgrade_state.taskprogress, upgrade_state.taskprogress]
-		$Progress.max_value = upgrade_state.taskprogress
-		$Progress.value = upgrade_state.taskprogress
+#	elif upgrade_state != null:
+#		$Progress/Label.text = "%d/%d" % [upgrade_state.taskprogress, upgrade_state.taskprogress]
+#		$Progress.max_value = upgrade_state.taskprogress
+#		$Progress.value = upgrade_state.taskprogress
 	else:
 		$Progress.visible = false
 
