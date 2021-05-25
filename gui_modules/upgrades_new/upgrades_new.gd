@@ -92,14 +92,21 @@ func build_description(upgrade_id):
 		for res in upgrade_next_state.cost:
 			var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 			var resdata = Items.materiallist[res]
+			panel.set_meta("exploration", true)
+			globals.connectmaterialtooltip(panel, resdata)
 			panel.get_node("Icon").texture = resdata.icon
 			panel.get_node("name").text = resdata.name
 			if ResourceScripts.game_res.materials[res] >= upgrade_next_state.cost[res]:
-				panel.get_node("count").text = str(upgrade_next_state.cost[res])
+				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
 			else:
 				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
 				panel.disabled = true
 				can_upgrade = false
+		#add working res
+		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
+		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
+		panel.get_node("name").text = tr("TASKBUILDING")
+		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	#2add here building bonuses list not existing for now
 
