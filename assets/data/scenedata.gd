@@ -918,7 +918,7 @@ var scenedict = {
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
 		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]},
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
 		],
 	},
 	daisy_purchase_confirm_discount = {
@@ -930,7 +930,7 @@ var scenedict = {
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
 		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]},
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
 		
 		],
 	},

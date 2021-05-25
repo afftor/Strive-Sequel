@@ -596,10 +596,10 @@ var data = {
 					code = 'daisy_admirer_first_event_2', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue' 
 				}, {
 					code = 'daisy_admirer_first_event_2', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue' 
-				}, {
-					#blank
-					code = '', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue' 
-				}, ],
+				}, 
+				#{ #blank
+				#	code = '', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue' },
+					 ],
 			},
 			{
 				reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}],
@@ -635,7 +635,7 @@ var data = {
 		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
-		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}] 
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}], type = 'next_dialogue',
 		} ]
 	},
 	
@@ -645,7 +645,7 @@ var data = {
 		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
-		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}], type = 'next_dialogue',
 		} ]
 	},
 	
@@ -658,7 +658,7 @@ var data = {
 		text = [{text = "", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message", 
-		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}]
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}], type = 'next_dialogue',
 		}, ]
 	},
 	
@@ -667,7 +667,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "DAISY_LOST_MESSAGE", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'daisy_lost', stage = 'stage1'}]
 		} ]
 	},
@@ -689,7 +689,7 @@ var data = {
 		text = [{text = "DAISY_LOST_AMELIA_REPLY_1_1", reqs = [], previous_dialogue_option = 1}, 
 		{text = "DAISY_LOST_AMELIA_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'make_quest_location', value = 'quest_daisy_admirer_location'},
 			{code = 'progress_quest', value = 'daisy_lost', stage = 'stage2'}]
 		} ]
@@ -836,7 +836,8 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
-			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ], # TODO (remove daisy, end quest)
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, 
+			{code = 'remove_slave_by_name', name = "Daisy"}], # TODO (remove daisy, end quest)
 		} ]
 	},
 }
