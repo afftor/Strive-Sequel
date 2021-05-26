@@ -216,7 +216,7 @@ var data = {
 	
 	daisy_dress_acquired_normal_4 = {
 		image = null,
-		custom_background = "fire_depths4", # TODO change art
+		custom_background = "daisy_bj3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
@@ -272,7 +272,7 @@ var data = {
 	
 	daisy_dress_acquired_lewd_4 = {
 		image = null,
-		custom_background = "fire_depths2", # TODO change art
+		custom_background = "daisy_bj6", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
@@ -380,7 +380,7 @@ var data = {
 	
 	training_complete_sex_2 = {
 		image = null,
-		custom_background = "fire_depths3", # TODO change art
+		custom_background = "daisy_bj3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -462,7 +462,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], 
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1", reqs = []}],
-		custom_background = "fire_depths1", # TODO change art
+		custom_background = "daisy_public1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		options = [ {
@@ -480,7 +480,7 @@ var data = {
 	training_complete_fucktoy_3_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		custom_background = "fire_depths1", # TODO change art
+		custom_background = "daisy_public2", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1", reqs = []}],
@@ -493,7 +493,7 @@ var data = {
 	training_complete_fucktoy_3_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		custom_background = "fire_depths2", # TODO change art
+		custom_background = "daisy_public4",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2", reqs = []}],
@@ -506,7 +506,7 @@ var data = {
 	training_complete_fucktoy_3_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		custom_background = "fire_depths3", # TODO change art
+		custom_background = "daisy_public5", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3", reqs = []}],
@@ -655,7 +655,7 @@ var data = {
 	daisy_admirer_first_event_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		custom_background = "fire_depths1", # TODO MAYBE CHANGE ART?
+		custom_background = "daisy_discipline", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "", reqs = []}],
