@@ -9,6 +9,7 @@ onready var charlist = $CharList/ScrollContainer/VBoxContainer
 onready var modes = $Modes
 onready var desc_panel = $description
 onready var res_list = $description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer
+onready var work_cost = $description/VBoxContainer/HBoxContainer/Label
 
 var upgrades_order = []
 var selected_upgrade = null
@@ -75,19 +76,23 @@ func build_description(upgrade_id):
 	desc_panel.get_node("VBoxContainer/description").text = text
 	
 	var can_upgrade = true
-	desc_panel.get_node("VBoxContainer/MarginContainer").visible = true
+	desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = true
 	desc_panel.get_node("VBoxContainer/resources").visible = true
+	work_cost.get_parent().visible = true
 	if upgrade_next_state == null:
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
 	elif !globals.checkreqs(upgrade_next_state.unlockreqs):
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
 	elif ResourceScripts.game_res.upgrade_progresses.has(upgrade_id):
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
 	else:
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
@@ -105,10 +110,12 @@ func build_description(upgrade_id):
 				panel.disabled = true
 				can_upgrade = false
 		#add working res
-		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
-		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
-		panel.get_node("name").text = tr("TASKBUILDING")
-		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
+		work_cost.text = "%d" % [upgrade_next_state.taskprogress]
+#		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
+#		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
+#		panel.get_node("name").text = tr("TASKBUILDING")
+#		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
+	
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	#2add here building bonuses list not existing for now
 

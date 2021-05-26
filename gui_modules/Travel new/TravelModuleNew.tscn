@@ -170,11 +170,16 @@ theme = ExtResource( 8 )
 toggle_mode = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="area/from_panel/ScrollContainer2/VBoxContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 528.0
-margin_bottom = 47.0
+margin_right = -5.0
+margin_bottom = -5.0
 custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="icon" type="TextureRect" parent="area/from_panel/ScrollContainer2/VBoxContainer/Button/HBoxContainer"]
 margin_right = 39.0

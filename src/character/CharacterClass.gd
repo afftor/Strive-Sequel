@@ -40,7 +40,7 @@ var previous_location
 var src = ""
 
 
-func _init(source):
+func _init(source = null):
 	src = source
 	rebuild_parents()
 

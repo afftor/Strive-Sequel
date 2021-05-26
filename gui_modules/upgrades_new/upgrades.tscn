@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=29]
 [ext_resource path="res://gui_modules/upgrades_new/UpgradesList.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
 
@@ -65,6 +66,9 @@ margin_bottom = 101.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Upgrade info"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Modes" type="HBoxContainer" parent="."]
 margin_left = 109.0
@@ -432,7 +436,7 @@ align = 1
 [node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
 margin_top = 233.0
 margin_right = 724.0
-margin_bottom = 625.0
+margin_bottom = 557.0
 size_flags_vertical = 3
 custom_constants/margin_right = 90
 custom_constants/margin_left = 90
@@ -440,7 +444,7 @@ custom_constants/margin_left = 90
 [node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer/MarginContainer"]
 margin_left = 90.0
 margin_right = 634.0
-margin_bottom = 392.0
+margin_bottom = 324.0
 size_flags_vertical = 3
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
@@ -491,6 +495,32 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="description/VBoxContainer"]
+margin_top = 561.0
+margin_right = 724.0
+margin_bottom = 625.0
+alignment = 2
+
+[node name="filler" type="Label" parent="description/VBoxContainer/HBoxContainer"]
+margin_top = 25.0
+margin_right = 611.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="description/VBoxContainer/HBoxContainer"]
+margin_left = 615.0
+margin_right = 679.0
+margin_bottom = 64.0
+texture = ExtResource( 31 )
+
+[node name="Label" type="Label" parent="description/VBoxContainer/HBoxContainer"]
+margin_left = 683.0
+margin_top = 6.0
+margin_right = 724.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 4 )
+text = "10"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="description"]
 visible = false
