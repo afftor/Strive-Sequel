@@ -53,7 +53,7 @@ var statdata = {
 		abb = 'SEX',
 		direct = true
 	},
-	
+
 	magic_factor = {
 		code = 'magic_factor',
 		name = '',
@@ -63,7 +63,7 @@ var statdata = {
 		abb = 'MAG',
 		direct = true
 	},
-	
+
 	tame_factor = {
 		code = 'tame_factor',
 		name = '',
@@ -105,7 +105,7 @@ var statdata = {
 		baseicon = 'stat_df',
 		type = '',
 	},
-	physics = { 
+	physics = {
 		code = 'physics',
 		name = '',
 		descript = '',
@@ -114,7 +114,7 @@ var statdata = {
 		direct = true,
 		custom_get = true
 	},
-	wits = { 
+	wits = {
 		code = 'wits',
 		name = '',
 		descript = '',
@@ -123,7 +123,7 @@ var statdata = {
 		direct = true,
 		custom_get = true
 	},
-	charm = { 
+	charm = {
 		code = 'charm',
 		name = '',
 		descript = '',
@@ -132,7 +132,7 @@ var statdata = {
 		direct = true,
 		custom_get = true
 	},
-	sexuals = { 
+	sexuals = {
 		code = 'sexuals',
 		name = '',
 		descript = '',
@@ -190,7 +190,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
-		
+
 	},
 	lusttick = {
 		code = 'lusttick',
@@ -208,7 +208,7 @@ var statdata = {
 		type = 'misc',
 		direct = true
 	},
-	
+
 	food_hate = {
 		code = 'food_hate',
 		name = '',
@@ -223,7 +223,7 @@ var statdata = {
 		baseicon = 'food_love',
 		type = 'misc',
 	},
-	
+
 	hp = {
 		code = 'hp',
 		name = '',
@@ -379,7 +379,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
-	
+
 	physics_bonus = {
 		code = 'physics_bonus',
 		name = '',
@@ -524,7 +524,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
-	
+
 	damagemod = { #possibly obsolete
 		code = 'damagemod',
 		name = '',
@@ -533,7 +533,7 @@ var statdata = {
 		baseicon = 'food_love',
 		skip_process = true
 	},
-	
+
 	obDrainReduction = {
 		code = 'obDrainReduction',
 		name = '',
@@ -630,7 +630,7 @@ func _ready():
 				code = "damage_mod_"+i,
 				percent = true,
 			}
-	
+
 	for val in statdata.values():
 		if !val.has('percent'): val.percent = false
 		if !val.has('default_bonus'): val.default_bonus = 'add'
@@ -638,7 +638,7 @@ func _ready():
 		if !val.has('custom_get'): val.custom_get = false
 		if !val.has('skip_process'): val.skip_process = false
 		if !val.has('is_negative'): val.is_negative = false
-	
+
 #	for st in statdata:
 #		print("'%s':" % st)
 #		print("\t %s" % statdata[st].default_bonus)

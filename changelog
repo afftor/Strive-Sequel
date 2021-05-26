@@ -1,16 +1,30 @@
+Changed upgrade price for Alchemy level 3
+Fixed loot window sometimes showing 0 as loot number
+Fixed ballista having melee attack instead of ranged
+Fixed easy quest being in hard quest pool in fighter guild
+Fixed some errouneous descriptions
+Fixed offering altars option not translating selected character name
+Fixed tribal elves jungle even actually spawning dark elf instead
+Fixed dryads not being in rare race pool
+Fixed true succubus not receiving bonus exp from sex
+0.5.0d
 Reduced time requirement for Assignmenet tasks
-Spoiler enslavement option is now available for futa
+Spoiler alt-enslavement option is now available for futa
 Fixed princess not being findable if you didn't interrogate Aire
-Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8 
+Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8
 Added wiki link to main menu and fixed itch.io link
+Added dungeon type to travel menu
+Fixed stats going over 6 in rare ocassions
 Fixed some scene issues
+Fixed some quest requirements
+Fixed an issue with power tattoo applying to legs
 0.5.0c
 Fixed some buff tooltips and misspells
 Fixed a rare bug when timed event was cancelled when it was running with another timed event
 Fixed game becoming slow on the closing until system restart/reinstall
 0.5.0b
 Blizzard now costs mana
-Blizzard now only slows enemies with 30% chance 
+Blizzard now only slows enemies with 30% chance
 Fixed some issues with shrines and chests causing errors
 Fixed clock showing in inventory
 Fixed some new skills
@@ -218,7 +232,7 @@ Greater shackles are removed
 Bless: Now only increase ATK by 25%
 Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
 0.2.1
-Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
+Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits.
 Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
 Fixed crafting list not updating correctly in somecases
 Fixed tail plug/pet suit combo not working
@@ -227,7 +241,7 @@ Fixed characters not properly clearning in other areas in some cases
 Fixed same location appearing on the list of possible locations when it was selected
 Fixed default slave bodyparts for non-human races always being the same
 Fixed fighter quest encounter not finishing properly in some cases
-Fixed mage election quest completing right on acquiring 
+Fixed mage election quest completing right on acquiring
 Fixed non-story modes not disabling story event
 Fixed portrait/body selection menu not updating properly
 0.2.0d
@@ -277,14 +291,14 @@ Resting characters regenerate hp/mp 3 times faster
 Made enemy names more readable
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells multiplying damage
-Fixed non-group locations having issues when returning characters 
+Fixed non-group locations having issues when returning characters
 Fixed failed quests with active locations not returning characters from those
 Fixed a number of small visual issues
 Fixed slaves during character creation having wrong type
 Fixed blindfold action causing issues in interaction sequence
 Fixed born slaves not having assigned class correctly
 Fixed some sex traits giving extra XP when they shouldn't
-Fixed game allowing to create more characters on new game after cancelling it 
+Fixed game allowing to create more characters on new game after cancelling it
 Fixed guilds having 2 quests instead of 1 on world generation
 Fixed visual errors when hp gauges weren't initially full
 0.1.6
@@ -301,7 +315,7 @@ Tools no longer have ATK stat
 Added Tool slot
 Corrected character portrait resolution at slave panel
 Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
-Old submissive effect now is called 'Doormat' 
+Old submissive effect now is called 'Doormat'
 Subdue is made easier (now only requires same physics factor as victim)
 Fixed protect skill crashing the game
 Fixed some recruit events softlocking player when your character pool is full
@@ -333,7 +347,7 @@ Fixed multiple event and exploration related crashes
 0.1.1
 Fixed servants dialogue having no exit
 Fxied default start not working correctly
-Fixed interaction menu not working 
+Fixed interaction menu not working
 0.1 Release
 Added daily autosave
 Added starting presets
@@ -363,7 +377,7 @@ Fixed productivity mods not actually affecting productivity
 Fixed 'has_any_profession' requirement not being checked correctly for some classes
 Fixed enemies not droping gold and some loot table crashes
 Fixed materials not showing in the loot after combat
-Fixed monster hunt quest type counting enemy for two 
+Fixed monster hunt quest type counting enemy for two
 0.3a
 Fixed slavers fight win event not clearing properly
 Fixed small console error regarding tooltip on item purchase

@@ -100,7 +100,7 @@ func rotate_sky(gametime = 0):
 		sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	else:
 		sky.rect_rotation = ((ResourceScripts.game_globals.hour - 1) * DEGREES_PER_HOUR) + (DEGREES_PER_HOUR / variables.SecondsPerHour * gametime)
-		
+
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
 	input_handler.PlaySound("button_click")
@@ -130,7 +130,7 @@ func advance_hour():
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
 		pass
-	
+
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")

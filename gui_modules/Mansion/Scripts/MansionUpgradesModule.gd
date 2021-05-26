@@ -57,12 +57,12 @@ func change_state():
 	# open()
 	# open_queue()
 	$StateButton.text = str(state_list[state_id]).capitalize()
-	
+
 
 func show_list():
 	open()
 	open_queue()
-	
+
 
 
 func open_queue():
@@ -72,7 +72,7 @@ func open_queue():
 	$Confirm.disabled = get_parent().chars_for_upgrades.empty()
 	$Cancel.visible = (!$SelectChars.is_visible() && get_parent().select_chars_mode && !ResourceScripts.game_res.upgrades_queue.empty())
 	var upgrades = ResourceScripts.game_res.upgrades_queue
-	# if !upgrades == []: 
+	# if !upgrades == []:
 	# 	for person in ResourceScripts.game_party.characters:
 	# 		if ResourceScripts.game_party.characters[person].get_work() == "building":
 	# 			for task in ResourceScripts.game_party.active_tasks:
@@ -108,7 +108,7 @@ func update_buttons():
 	if !self.is_visible():
 		return
 	var array = []
-	# var upgrade = get_parent().selected_upgrade 
+	# var upgrade = get_parent().selected_upgrade
 	input_handler.ClearContainer(UpgradesContainer)
 	for i in upgradedata.upgradelist.values():
 		array.append(i)
@@ -232,7 +232,7 @@ func selectupgrade(upgrade):
 	$UpgradeDescript/UnlockButton.visible = canpurchase
 	$UpgradeDescript/UnlockButton.disabled = !canpurchase
 	update_buttons()
-	
+
 
 
 func findupgradelevel(upgrade):
@@ -271,7 +271,7 @@ func add_to_upgrades_queue():
 			ResourceScripts.game_res.materials[i] -= int(upgrade.levels[currentupgradelevel].cost[i])
 	if !ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
 		ResourceScripts.game_res.upgrades_queue.append(upgrade.code)
-	
+
 	if ResourceScripts.game_progress.instant_upgrades == false:
 		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}

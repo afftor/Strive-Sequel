@@ -5,7 +5,7 @@ var race_groups = {
 	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
 	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
 	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
-	rare = ['TribalElf','DarkElf','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
+	rare = ['TribalElf','DarkElf','Dryad','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
 }
 
 
@@ -143,8 +143,8 @@ var tasklist = {
 		tags = ['alchemy'],
 		mod = 'mod_build'
 	},
-	
-	travel = { #dummy task for travelling assignment 
+
+	travel = { #dummy task for travelling assignment
 		code = 'travel',
 		reqs = [{type = 'disabled'}],
 		name = '',
@@ -657,7 +657,7 @@ var racelist = {
 			},
 		global_weight = 25,
 	},
-	
+
 	Harpy = {
 		code = "Harpy",
 		name = '',
@@ -844,7 +844,7 @@ var racelist = {
 			},
 		global_weight = 5,
 	},
-	
+
 	BeastkinCat = {
 		code = "BeastkinCat",
 		name = '',
@@ -1192,5 +1192,5 @@ var short_race_names = {
 	HalfkinBunny = ['bunny'],
 	HalfkinTanuki = ['tanuki','raccoon'],
 	HalfkinCat = ['cat','feline'],
-	
+
 }

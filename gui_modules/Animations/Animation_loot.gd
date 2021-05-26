@@ -26,6 +26,8 @@ func open(loot): #, message):
 		globals.connectitemtooltip_v2(newbutton, i)
 		globals.AddItemToInventory(i)
 	for i in loot.materials:
+		if loot.materials[i] <= 0:
+			continue
 		newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 		newbutton.get_node("AnimationPlayer").play("LootButton")

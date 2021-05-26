@@ -19,18 +19,18 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [
 			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {"oneshot": true}},
-			
+
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
-			
+
 			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
-			
+
 			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
-			
+
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
-			
+
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
 			],
@@ -61,7 +61,7 @@ var lands = {
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
-			
+
 			},
 		capital_background = 'aliron',
 		capital_dynamic_background = 'aliron',
@@ -82,7 +82,7 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
-		guilds = [],  
+		guilds = [],
 		events = [{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
@@ -201,7 +201,7 @@ var guild_upgrades = {
 		maxlevel = 4,
 		effects = [],
 	},
-	
+
 }
 
 var factiondata = {
@@ -219,7 +219,7 @@ var factiondata = {
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
 		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium'],
-		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_easy'],
+		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard'],
 		tags = [],
 		slavenumber = [2,2],
 		questnumber = [4,4],
@@ -262,8 +262,8 @@ var factiondata = {
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [
 			{
-				code = 'disassemble', 
-				name = 'Disassemble', 
+				code = 'disassemble',
+				name = 'Disassemble',
 				reqs = [
 					{
 						type = "has_faction_upgrade",
@@ -325,7 +325,7 @@ var factiondata = {
 		preference = [],
 		character_types = [['slave',1]],
 		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
-		
+
 		slave_races = [['rare',3]],
 		tags = [],
 		quests_easy = [],
@@ -343,7 +343,7 @@ var factiondata = {
 		preference = [],
 		character_types = [['slave',1]],
 		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
-		
+
 		slave_races = [['rare',3],['monster',1]],
 		tags = ['unique_slave_races'],
 		quests_easy = [],
@@ -505,7 +505,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
 		bgm = 'exploration',
-		gather_resources = {wood = [2,3], woodmagic = [3,3], meat = [2,3], cloth = [2,2], leather = [2,2]}, 
+		gather_resources = {wood = [2,3], woodmagic = [3,3], meat = [2,3], cloth = [2,2], leather = [2,2]},
 		area_shop_items = {
 			},
 	},
@@ -599,7 +599,7 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [250,400],
 		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.7,1.95]}], 
+		[1,{code = 'gold', item_based = true, range = [1.7,1.95]}],
 		[0.3,{code = 'gear', material_grade = [['easy', 1], ['medium',3],['hard',3]], name = ['axe','pickaxe','sickle','hammer','fishingtools']}],
 		],
 		time_limit = [8,12],
@@ -875,7 +875,7 @@ var questdata = {
 		code = 'mages_craft_potions_hard',
 		name = 'Magic Catalysts',
 		descript = 'The guild needs to resupply their store room.',
-		randomconditions = [{code = 'random_item', type = ['circlet'], range = [1,2]},{code = 'random_item', type = ['ink_mp','lifegem','energygem'], range = [2,4]}],
+		randomconditions = [{code = 'random_item', type = ['circlet'], range = [1,2]},{code = 'random_item', type = ['lifegem','energygem'], range = [2,4]}, {code = 'random_material', type = ['ink_mp'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
 		rewards = [
@@ -893,7 +893,7 @@ var questdata = {
 		rewards = [
 		[1, {code = 'gold', range = [100,150]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff','chest_base_cloth','legs_base_cloth']}],
-		
+
 		],
 		time_limit = [8,12],
 	},
@@ -925,7 +925,7 @@ var questdata = {
 		code = 'servants_craft_items_hard',
 		name = 'Items Request',
 		descript = 'The guild needs a specific crafted items',
-		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_chocker','seethrough_underwear','latex_suit','ink_lust'], range = [1,2]}],
+		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_choker','seethrough_underwear','latex_suit'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [400,550],
 		rewards = [
@@ -937,14 +937,14 @@ var questdata = {
 		code = 'servants_slave_easy',
 		name = 'Slave Request',
 		descript = 'The guild is in need of specific trained individual.',
-		 
+
 		randomconditions = [
-			{code = 'slave_delivery', 
+			{code = 'slave_delivery',
 			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
 			condition_number = [1,1],
 			conditions = [
 			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [3,4]},
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [25,35]}
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [15,25]}
 			],},
 		],
 		unlockreqs = [],
@@ -958,15 +958,15 @@ var questdata = {
 		code = 'servants_slave_medium',
 		name = 'Slave Request',
 		descript = 'The guild is in need of specific trained individual.',
-		 
+
 		randomconditions = [
-			{code = 'slave_delivery', 
+			{code = 'slave_delivery',
 			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
 			condition_number = [2,2],
 			conditions = [
 			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [3,4]},
 			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['wits_factor','charm_factor','sexuals_factor'], range = [3,4]},
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [50,60]}
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [30,45]}
 			],},
 		],
 		unlockreqs = [],
@@ -981,15 +981,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
 			condition_number = [1,2],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','pet','petbeast','thief']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [20,40]},
 			],
 			work_time = [2,4], #days
@@ -1010,15 +1010,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['harlot','maid','dancer','bard','sextoy','succubus']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,4]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [30,60]},
 			],
 			work_time = [3,6], #days
@@ -1028,13 +1028,13 @@ var questdata = {
 		reputation = [200,300],
 		rewards = [
 		[1, {code = 'gold', range = [300,500]}],
-		
+
 			[
-			0.5, 
+			0.5,
 			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt'], value = [1,1]},
 			{code = 'gold', range = [300,400]}
 			],
-		
+
 		],
 		time_limit = [10,15],
 	},
@@ -1043,15 +1043,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [],
 			condition_number = [2,3],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['harlot','maid','geisha','pet','petbeast','dancer','bard','sextoy','succubus']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [4,5]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [50,80]},
 			],
 			work_time = [5,8], #days
@@ -1062,11 +1062,11 @@ var questdata = {
 		rewards = [
 		[1, {code = 'gold', range = [400,650]}],
 			[
-			0.5, 
+			0.5,
 			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt','elegant_choker'], value = [1,1]},
 			{code = 'gold', range = [350,450]}
 			],
-		
+
 		],
 		time_limit = [12,18],
 	},
@@ -1075,15 +1075,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['fighter','archer','rogue']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,3]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [20,40]},
 			],
 			work_time = [2,4], #days
@@ -1101,15 +1101,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['fighter','archer','rogue','sniper','knight']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,4]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [30,60]},
 			],
 			work_time = [3,6], #days
@@ -1128,15 +1128,15 @@ var questdata = {
 		name = 'Assignment',
 		descript = 'The guild is in need of someone performing a task for them.',
 		randomconditions = [
-			{code = 'slave_work', 
+			{code = 'slave_work',
 			mandatory_conditions = [],
 			condition_number = [2,3],
 			conditions = [
-				
+
 				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog','']},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [4,5]},
-			
+
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [50,80]},
 			],
 			work_time = [5,8], #days
@@ -1192,9 +1192,9 @@ var dungeons = {
 		descript = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
@@ -1212,22 +1212,22 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [3,3],
 		events = [],
 		options = [
 			{text = 'Search for Xari', reqs = [
-				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}], 
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}],
 				args = [{code = 'start_event', data = 'xari_encounter1', args = []}]},
 			{text = 'See Xari', reqs = [
-				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}], 
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}],
 				args = [{code = 'start_event', data = 'xari_encounter9', args = []}]},
 			{text = 'Enter', reqs = [
-				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], 
+				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
 				args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]},
 		],
 	},
@@ -1240,20 +1240,20 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background = 'cave_3',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [2,2],
 		events = [],
 		options = [
 			{text = 'Search for Fred', reqs = [
-				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}], 
+				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}],
 				args = [{code = 'start_event', data = 'fred_1', args = []}]},
 		],
 	},
-	
+
 	basic_threat_wolves = {
 		code = 'basic_threat_wolves',
 		type = 'encounter',
@@ -1262,9 +1262,9 @@ var dungeons = {
 		descript = 'Farmers report a pack of wild wolves attacking their flock.',
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		options = [
@@ -1280,9 +1280,9 @@ var dungeons = {
 		descript = "A group of rebels terrorize local villagers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		options = [
@@ -1298,9 +1298,9 @@ var dungeons = {
 		descript = "A group of wild goblins attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
@@ -1316,9 +1316,9 @@ var dungeons = {
 		descript = "An angry ogre attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
@@ -1334,9 +1334,9 @@ var dungeons = {
 		descript = "An angry troll attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [], 
-		eventarray = [], 
-		levels = [1,1], 
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
@@ -1344,8 +1344,8 @@ var dungeons = {
 			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]}
 		],
 	},
-	
-	
+
+
 	dungeon_bandit_den = {
 		code = 'dungeon_bandit_den',
 		type = 'dungeon',
@@ -1354,10 +1354,10 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
-		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-		eventarray = [['dungeon_find_chest_easy', 1],['dungeon_find_armory_easy',1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]], 
-		levels = [2,3], 
+		eventarray = [['dungeon_find_chest_easy', 1],['dungeon_find_armory_easy',1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]],
+		levels = [2,3],
 		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {number = [1,3], pool = {wood = [25,40], stone = [30,50], iron = [20,30]}},
 		gather_mod = [2,2.5],
@@ -1375,10 +1375,10 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
-		enemyarray = [['rebels_small', 1],['spiders', 0.2]], 
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		eventarray = [], 
-		levels = [1,1], 
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
@@ -1389,10 +1389,10 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
-		
+
 		area = 'plains',
 		travel_time = [4,6],
-		
+
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
@@ -1405,10 +1405,10 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		eventarray = [], 
-		levels = [1,1], 
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
@@ -1417,19 +1417,19 @@ var dungeons = {
 		stages_per_level = [10,10],
 		bgm = "dungeon",
 		purchase_price = 0,
-		affiliation = 'local', #defines character races and events 
+		affiliation = 'local', #defines character races and events
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
-		
+
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 3, operant = 'gte'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_1', orflag = true},
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_3', orflag = true}, 
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_4', orflag = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_3', orflag = true},
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_4', orflag = true},
 			{code = 'stage', value = 7, operant = 'gte'}]}]
 	},
 	quest_daisy_admirer_location = {
@@ -1470,10 +1470,10 @@ var dungeons = {
 		descript = '',
 		difficulty = 'medium',
 		background_pool = ['fort1', 'fort2', 'fort3'],
-		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]], 
+		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
 		final_enemy = [['bandits_medium_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-		eventarray = [['dungeon_find_chest_medium', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]], 
-		levels = [3,5], 
+		eventarray = [['dungeon_find_chest_medium', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]],
+		levels = [3,5],
 		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
 		gatherable_resources = {number = [2,3], pool = {wood = [50,80], stone = [50,100], iron = [20,50], woodiron = [20,50]}},
 		gather_mod = [2,2.5],
@@ -1492,10 +1492,10 @@ var dungeons = {
 		difficulty = 'medium',
 		descript = '',
 		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
-		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]], 
+		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1], ['crypt_find_bones',1],['celena_shrine_find',0.5],['erebus_shrine_find',0.5],['freya_shrine_find',0.5]], 
-		levels = [3,5], 
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1], ['crypt_find_bones',1],['celena_shrine_find',0.5],['erebus_shrine_find',0.5],['freya_shrine_find',0.5]],
+		levels = [3,5],
 		resources = ['bone','leather','boneancient','woodmagic','clothsilk','iron','mithril','bonedragon','leathermythic'],
 		gatherable_resources = {number = [2,4], pool = {bone = [50,80], stone = [50,100], boneancient = [20,50]}},
 		gather_mod =  [2,3],
@@ -1515,8 +1515,8 @@ var dungeons = {
 		bgm = "dungeon",
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]], 
-		levels = [2,3], 
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
+		levels = [2,3],
 		resources = ['bone','leather','stone','wood'],
 		gatherable_resources = {number = [1,2], pool = {bone = [10,25], stone = [25,50], leather = [10,30]}},
 		gather_mod = [2,2.5],
@@ -1592,7 +1592,7 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 	},
-	
+
 #	dungeon_frozen_domain = {
 #		code = 'dungeon_frozen_domain',
 #		type = 'dungeon',
@@ -1637,7 +1637,7 @@ var dungeons = {
 #		affiliation = 'local',
 #		events = [],
 #	},
-	
+
 }
 
 #
@@ -1653,7 +1653,7 @@ var dungeons = {
 #}
 
 var eventscrits = {
-	
+
 	bandits_threat_quest = {
 		reqs = [],
 		event_start = [
@@ -1687,12 +1687,12 @@ var eventscrits = {
 					{text = 'Attack', reqs = [], follow_up = 'event_fight'},
 				],
 			}
-		
+
 		],
-		
-		
+
+
 	}
-	
+
 }
 
 var pregen_characters = {
@@ -1740,7 +1740,7 @@ var pregen_characters = {
 		food_hate = ['fish'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
-	
+
 	Kurdan = {
 		code = 'kurdan',
 		name = 'Kurdan',

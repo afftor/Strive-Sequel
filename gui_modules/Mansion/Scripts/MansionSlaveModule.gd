@@ -59,7 +59,7 @@ func show_slave_info():
 			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(90,90)
 			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(78,78)
 #			$TextureRect/professions/Button/Label.show()
-			
+
 		for i in person.xp_module.professions:
 			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/ScrollContainer/professions)
 			var prof = classesdata.professions[i]
@@ -105,14 +105,14 @@ func show_slave_info():
 			text += "\n"
 			# if state.get_master() != person:
 				# if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
-				# 	text += "{color=green|Obedience: " 
+				# 	text += "{color=green|Obedience: "
 				# else:
-				# 	text += "{color=red|Obedience: " 
+				# 	text += "{color=red|Obedience: "
 				# if person.loyalty < 100 && person.submission < 100:
 				# 	text += str(ceil(person.obedience)) + "}"
 				# else:
 				# 	text += "∞}"
-		$job.bbcode_text = globals.TextEncoder(text) 
+		$job.bbcode_text = globals.TextEncoder(text)
 
 		for i in ['physics','wits','charm','sexuals']:
 			if i != 'sexuals':
@@ -126,7 +126,7 @@ func show_slave_info():
 				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = '100'
 
-		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
+		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))
 		for i in variables.productivity_mods:
 			if person.get_stat(i) > 1:
 				text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name + "}"
@@ -144,7 +144,7 @@ func show_slave_info():
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
-	
+
 		var authority
 		if person.get_stat('authority') < person.authority_threshold()/2:
 			authority = 'low'
@@ -157,9 +157,9 @@ func show_slave_info():
 			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
 		else:
 			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
-		
+
 		$Panel/authoritylabel.text = 'Authority: ' + authority_text
-	
+
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
@@ -182,11 +182,11 @@ func show_slave_info():
 func set_color(value):
 	var color = Color(0.87,0.87,0.87,1)
 	if value > 0:
-		color = Color(0.31,0.99,0.51,1)  
+		color = Color(0.31,0.99,0.51,1)
 	elif value < 0:
 		color = Color(0.99,0.31,0.36,1)
 	return color
-	
+
 
 func text_url_hover(meta):
 	match meta:

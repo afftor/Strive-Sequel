@@ -145,3 +145,36 @@ func get_item_id_by_code(itembase):
 		if item.itembase == itembase:
 			return item.id
 	return null
+
+
+func findupgradelevel(upgrade_code):
+	var rval = 0
+	if upgrades.has(upgrade_code):
+		rval = upgrades[upgrade_code]
+	return int(rval)
+
+
+func add_upgrade_to_queue(upgrade_id):
+	var upgrade_data = upgradedata.upgradelist[upgrade_id]
+	var upgrade_lv = findupgradelevel(upgrade_id)
+	var upgrade_next_state = null
+	if upgrade_data.levels.has(upgrade_lv + 1):
+		upgrade_next_state = upgrade_data.levels[upgrade_lv + 1]
+	
+	if upgrades_queue.has(upgrade_id):
+		input_handler.SystemMessage("Upgrade already in the queue.")
+		#something goes wrong for confirm button shoul be disabled in this case
+		return
+	if ResourceScripts.game_progress.free_upgrades == false:
+		for i in upgrade_next_state.cost:
+			materials[i] -= int(upgrade_next_state.cost[i])
+	
+	if ResourceScripts.game_progress.instant_upgrades == false:
+		upgrades_queue.append(upgrade_id)
+		if !upgrade_progresses.has(upgrade_id):
+			upgrade_progresses[upgrade_id] = {level = upgrade_lv + 1, progress = 0}
+	else:
+		if upgrades.has(upgrade_id):
+			upgrades[upgrade_id] += 1
+		else:
+			upgrades[upgrade_id] = 1

@@ -207,7 +207,7 @@ func select_character_for_quest(reqs):
 	input_handler.ShowSlaveSelectPanel(self, 'character_selected', reqs.statreqs)
 
 func character_selected(character):
-	ResourceScripts.game_party.remove_slave(character)
+	ResourceScripts.game_party.remove_slave(character, true)
 	selected_req.completed = true
 	CompleteQuest()
 	input_handler.rebuild_slave_list()

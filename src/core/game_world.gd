@@ -141,7 +141,7 @@ func update_guilds(area):
 			i.slaves.clear()
 			while i.slaves.size() < i.slavenumber:
 				ResourceScripts.world_gen.make_slave_for_guild(i)
-	
+
 	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 0:
 		for faction in area.quests.factions:
 			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
@@ -175,14 +175,14 @@ func get_area_capital(area):
 func find_location_by_data(data):
 	var location = null
 	var area = null
-	if data.has('area'): 
+	if data.has('area'):
 		if areas.has(data.area): area = areas[data.area]
-		else: 
+		else:
 			print("error - no area %s" % data.area)
 			return null
 		if area.has('capital'):
 			location = get_area_capital(area)
-		else: 
+		else:
 			print("error - no capital in area %s" % data.area)
 			return null
 	elif data.has('id'):

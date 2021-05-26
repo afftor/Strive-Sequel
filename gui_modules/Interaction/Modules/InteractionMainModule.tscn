@@ -1170,6 +1170,7 @@ texture_hover = ExtResource( 61 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Panel/stopbutton" to="." method="_on_stopbutton_pressed"]
 [connection signal="pressed" from="Panel/passbutton" to="." method="_on_passbutton_pressed"]
 [connection signal="pressed" from="Panel/blacklist" to="." method="_on_blacklist_pressed"]

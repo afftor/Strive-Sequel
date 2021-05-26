@@ -126,7 +126,7 @@ enum {
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
-var globalsettings = { 
+var globalsettings = {
 	ActiveLocalization = 'en',
 	mastervol = -15,
 	mastermute = false,
@@ -134,21 +134,21 @@ var globalsettings = {
 	musicmute = false,
 	soundvol = -15,
 	soundmute = false,
-	
+
 	#Window settings
 	fullscreen = true,
 	window_size = Vector2(1366,768),
 	window_pos = Vector2(0,0),
-	
+
 	factors_as_words = true,
 	show_full_consent = false,
-	
+
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
 	warnseen = false,
 	disabletips = false,
-	
+
 	futa = true,
 	furry = true,
 	furry_multiple_nipples = true,
@@ -160,15 +160,15 @@ var globalsettings = {
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
-	
+
 	turn_based_time_flow = true,
-	
+
 	guilds_any_race = false, #unused
-	
+
 	autosave = true,
 	autosave_number = 3,
 	autosave_frequency = 24,
-	
+
 } setget settings_save
 
 # Progress data template
@@ -187,7 +187,7 @@ func settings_load():
 	if file.file_exists(variables.userfolder + "Settings.ini") == false:
 		settings_save(globalsettings)
 	config.load(variables.userfolder + "Settings.ini")
-	var settings = config.get_section_keys("settings") 
+	var settings = config.get_section_keys("settings")
 	for i in settings:
 		globalsettings[i] = config.get_value("settings", i, null)
 	#updatevolume
@@ -228,7 +228,7 @@ func save_progress_data(data):
 	text = JSON.print(data)
 	file.store_string(text)
 	file.close()
-	
+
 
 #func update_progress_data(field, value):
 #	if !progress_data.has(field):
@@ -290,7 +290,7 @@ func _init():
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
 #		TranslationData[i.replace(LocalizationFolder + '/', '').replace('.gd','')] = i
-	
+
 	#Applying active translation
 	var activetranslation = Translation.new()
 	var translationscript = load(TranslationData[globalsettings.ActiveLocalization]).new()
@@ -307,7 +307,7 @@ func _ready():
 	load_progress_data()
 
 func _input(event):
-	if event.is_echo() == true && !event.is_action_type(): 
+	if event.is_echo() == true && !event.is_action_type():
 		return
 	if gui_controller.current_screen == null:
 		return
@@ -384,7 +384,7 @@ func _input(event):
 						gui_controller.current_screen = gui_controller.previous_screen
 						gui_controller.update_modules()
 						gui_controller.current_screen.show()
-			
+
 			if gui_controller.current_screen == gui_controller.mansion:
 				gui_controller.clock.raise()
 			if gui_controller.current_screen == gui_controller.exploration:
@@ -410,10 +410,10 @@ func _input(event):
 		&& get_tree().get_root().get_node_or_null("dialogue") \
 		&& get_tree().get_root().get_node("dialogue").is_visible():
 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-		
+
 
 # func _input(event):
-# 	if event.is_echo() == true && !event.is_action_type(): 
+# 	if event.is_echo() == true && !event.is_action_type():
 # 		return
 # 	#print(var2str(event))
 # 	if (event.is_action("ESC") || event.is_action_released("RMB")):
@@ -449,18 +449,18 @@ func _input(event):
 func _process(delta):
 	if OS.window_position.y < 0:
 		OS.window_position.y = 0
-	
+
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
 		if i.is_visible_in_tree() == false:
 			i.hide()
 	soundcooldown -= delta
-	
+
 	for i in MousePositionScripts:
 		if check_mouse_in_nodes(i.nodes) == false:
 			i.targetnode.call(i.script)
 			MousePositionScripts.erase(i)
-	
+
 	if musicfading:
 		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
 		if AudioServer.get_bus_volume_db(1) <= -80:
@@ -476,7 +476,7 @@ func _process(delta):
 
 func LockOpenWindow():
 	CloseableWindowsArray.append('lock')
- 
+
 func UnlockOpenWindow():
 	var node = CloseableWindowsArray.back()
 	if typeof(node) == TYPE_STRING:
@@ -637,9 +637,9 @@ func itemshadeimage(node, item):
 			node.material.set_shader_param(part, color)
 
 
-func operate(operation, value1, value2):	
+func operate(operation, value1, value2):
 	var result
-	
+
 	match operation:
 		'eq':
 			result = value1 == value2
@@ -687,14 +687,14 @@ func math(operation, value1, value2):
 func string_to_math(value = 0, string = ''):
 	var modvalue = float(string.substr(1, string.length()))
 	var operator = string[0]
-	
+
 	match operator:
 		'+':value += modvalue
 		'-':value -= modvalue
 		'*':value *= modvalue
 		'/':value /= modvalue
 	return value
-	
+
 func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
 	var total = 0
 	var counter = 0
@@ -703,7 +703,7 @@ func weightedrandom(array): #uses an array of [value, weight] with value being r
 	var random = rand_range(0,total)
 	for i in array:
 		if counter + i[1] >= random:
-			return i[0] 
+			return i[0]
 		counter += i[1]
 
 func random_from_array(array):
@@ -905,7 +905,7 @@ func start_event(code, type, args):
 					break
 		'location_purchase_event':
 			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
-	
+
 	scene.open(data)
 
 func interactive_message_custom(data):
@@ -942,7 +942,7 @@ func get_combat_node():
 	if node.has_node('combat'):
 		window = node.get_node('combat')
 	else:
-		window = load(ResourceScripts.scenedict.combat).instance() 
+		window = load(ResourceScripts.scenedict.combat).instance()
 		window.name = 'combat'
 		node.add_child(window)
 		#node.call_deferred('add_child',window)
@@ -963,7 +963,7 @@ func get_person_for_chat(array, event, bonus_args = []):
 			continue
 		weight = 1
 		allowed_array.append([person, weight])
-	
+
 	var person = weightedrandom(allowed_array)
 	if person != null:
 		add_random_chat_message(person, event, bonus_args)
@@ -1023,7 +1023,7 @@ func text_form_recitation(string_array):
 					text += ' and ' + i
 			else:
 				text += i + ", "
-	
+
 	return text
 
 func get_spec_node(type, args = null, raise = true, unhide = true):
@@ -1042,10 +1042,10 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 		window.name = ResourceScripts.node_data[type].name
 		node.add_child(window)
 	if raise: window.raise()
-	if ResourceScripts.node_data[type].has('args'): 
+	if ResourceScripts.node_data[type].has('args'):
 		for param in ResourceScripts.node_data[type].args:
 			window.set(param, ResourceScripts.node_data[type].args[param])
-	if ResourceScripts.node_data[type].has('calls'): 
+	if ResourceScripts.node_data[type].has('calls'):
 		if args == null: args = []
 		window.callv(ResourceScripts.node_data[type].calls, args)
 	elif args != null:
@@ -1056,14 +1056,14 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
 	SetMusic("exploration")
-	
+
 	if encounter_win_script != null:
 		globals.common_effects(encounter_win_script)
 		encounter_win_script = null
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
-	
+
 	exploration_node.advance()
 
 func finish_quest_dungeon(args):
@@ -1104,7 +1104,7 @@ func character_boss_defeat():
 	if active_location.has("final_enemy_class"):
 		for i in active_location.final_enemy_class:
 			character_class.append([i, 1])
-	
+
 	character_race = weightedrandom(character_race)
 	character_class = weightedrandom(character_class)
 	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
@@ -1147,7 +1147,7 @@ func load_sound_from_path(path:String): #not sure if works, needs testing
 #	if path.is_rel_path() and path.begins_with("res"):
 #		return load(path)
 	if !File.new().file_exists(path): return null
-	
+
 	if path.to_lower().ends_with(".ogg"):
 		var temp = AudioStreamOGGVorbis.new()
 		temp.load(path)
@@ -1189,7 +1189,7 @@ func get_value_node(node):
 			return res
 	if node is CheckBox: return node.pressed
 	#node has text field
-	if node.name == 'number': 
+	if node.name == 'number':
 		return float(node.text)
 	if node.name == 'index': return int(node.text)
 	if node.name == 'formula': return parse_json(node.text)
@@ -1224,12 +1224,12 @@ func evaluate(input): #used to read strings as conditions when needed
 	var res = ''
 	input = input.replace('  ', ' ')
 	var temp = input.split(' == ')
-	if temp[0].match("active_slave.*"): 
+	if temp[0].match("active_slave.*"):
 		var temp1 = temp[0].split('.')
 		temp[0] = "%s.get_stat('%s')" % [temp1[0], temp1[1]]
 	if temp.size() > 1: res = "%s == %s" % [temp[0], temp[1]]
 	else: res = temp[0]
-	
+
 	var script = GDScript.new()
 	script.set_source_code("var active_slave\nfunc eval():\n\treturn " + res)
 	script.reload()
@@ -1279,7 +1279,7 @@ func MergeDicts(dict1, dict2, overwrite = false):
 			returndict[i] += dict2[i]
 		else:
 			returndict[i] = dict2[i]
-	
+
 	return returndict
 
 func scanfolder(path): #makes an array of all folders in modfolder
@@ -1289,7 +1289,7 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		dir.make_dir(path)
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
-		
+
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir() && !file_name in ['.','..',null]:
@@ -1322,7 +1322,7 @@ func get_location_characters():
 		var i = ResourceScripts.game_party.characters[id]
 		if i.check_location(active_location.id, true):
 			array.append(i)
-	
+
 	return array
 
 

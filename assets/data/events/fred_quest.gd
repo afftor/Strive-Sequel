@@ -12,10 +12,10 @@ var data = {
 					{code = 'make_quest_location', value = 'quest_mages_fred'},
 					{code = 'update_city'},
 					]},
-			
+
 			]
 	},
-	
+
 	fred_bribe_take = {
 		image = null,
 		tags = ["dialogue_scene", "master_translate"],
@@ -29,9 +29,9 @@ var data = {
 			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue", bonus_effects = [{code= 'update_city'}]},
 		]
 	},
-	
-	
-	
+
+
+
 	fred_1 = {
 		image = null,
 		tags = ["dialogue_scene", "master_translate"],
@@ -53,7 +53,7 @@ var data = {
 			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'mercenary_fred_quest', type = 'next_dialogue', dialogue_argument = 1},
 		]
 	},
-	
+
 	fred_talk_1 = {
 		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
@@ -68,7 +68,7 @@ var data = {
 			{code = "quest_fight", text = "FINDFRED_TALK1_QUESTION4", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 4},
 		]
 	},
-	
+
 	find_fred_rogue = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -130,7 +130,7 @@ var data = {
 			{code = "fred_got_no_fight", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_got_no_fight = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -142,7 +142,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_3", text = "FINDFRED_AFTERWIN_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_got_after_fight = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -154,7 +154,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_3", text = "FINDFRED_AFTERWIN_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_2 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -168,7 +168,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_7", text = "FINDFRED_AFTERWIN_QUESTION6", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_3 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -182,7 +182,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_7", text = "FINDFRED_AFTERWIN_QUESTION6", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_4 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -195,7 +195,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_7", text = "FINDFRED_AFTERWIN_QUESTION6", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_5 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -207,7 +207,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_7", text = "FINDFRED_AFTERWIN_QUESTION6", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_6 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -219,7 +219,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_8", text = "FINDFRED_AFTERWIN_QUESTION8", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_7 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -231,7 +231,7 @@ var data = {
 			{code = "fred_talk_1_if_answer_8", text = "FINDFRED_AFTERWIN_QUESTION8", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_8 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -245,7 +245,7 @@ var data = {
 			{code = "fred_talk_line_end_kill", text = "FINDFRED_AFTERWIN_QUESTION13", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
 	},
-	
+
 	fred_talk_1_if_answer_9 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -258,7 +258,7 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
-				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'remove_quest_location', value = 'quest_mages_fred'},
 				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
 				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
 				]
@@ -304,7 +304,7 @@ var data = {
 			{code = "quest_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 1},
 		]
 	},
-	
+
 	fred_talk_line_end = {
 		image = "fred",
 		tags = ["dialogue_scene", "master_translate"],
@@ -317,14 +317,14 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
-				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'remove_quest_location', value = 'quest_mages_fred'},
 				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
 				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
 				],
 			},
 		]
 	},
-	
+
 	fred_talk_line_end_kill = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -335,17 +335,17 @@ var data = {
 			{text = "FINDFRED_LINE_END_KILL", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
-				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'remove_quest_location', value = 'quest_mages_fred'},
 				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
 				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
 				]
 			},
 		]
 	},
-	
-	
+
+
 	intermission_greg_demon1 = {
 		image = null,
 		character = "greg",
@@ -383,9 +383,9 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
 			bonus_effects = [{code = 'screen_black_transition', value = 1}],
-				}, 
-				
+				},
+
 		]
 	},
-	
+
 }

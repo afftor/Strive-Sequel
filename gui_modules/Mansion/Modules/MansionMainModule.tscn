@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTravelsModule.tscn" type="PackedScene" id=34]
+[ext_resource path="res://gui_modules/upgrades_new/upgrades.tscn" type="PackedScene" id=35]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 24 )
@@ -51,6 +52,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = true
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -146,6 +148,9 @@ margin_right = -500.0
 margin_bottom = -12.0
 
 [node name="TravelsModule" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="upgrades" parent="." instance=ExtResource( 35 )]
 visible = false
 
 [node name="MenuButton" type="TextureButton" parent="."]

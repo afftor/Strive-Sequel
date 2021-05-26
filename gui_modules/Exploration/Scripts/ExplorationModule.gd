@@ -111,7 +111,7 @@ func enslave_select():
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
 	sell_slave()
-	
+
 
 
 func open_journal(pressed):
@@ -254,8 +254,8 @@ func build_area_menu(area_actions):
 		# newbutton.get_node("Label").rect_position.x = 0
 		# newbutton.get_node("Label").rect_size.x = 272
 		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
-		
-	
+
+
 
 
 var current_level
@@ -314,7 +314,7 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	
+
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
@@ -335,7 +335,7 @@ func open_location(data):
 		if data.locked:
 			$LocationGui/Resources/Forget.visible = false
 			$LocationGui/Resources/SelectWorkers.visible = false
-			$LocationGui/Resources/Label.visible = true	
+			$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
 	#input_handler.interactive_message("spring", '',{})
 
@@ -526,7 +526,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				text += "%s is hit for %d damage. " % [s_skill2.target.get_stat('name'), rval]  #, s_skill2.value[i]] 
+				text += "%s is hit for %d damage. " % [s_skill2.target.get_stat('name'), rval]  #, s_skill2.value[i]]
 		elif i.damagestat == 'damage_hp' and i.dmgf == 1:  #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(i.value)
@@ -839,7 +839,7 @@ func build_location_group():
 #			get_node(positiondict[i] + "/Image").hide()
 #			get_node(positiondict[i]).self_modulate.a = 1
 #			get_node(positiondict[i]).character = null
-		
+
 	var newbutton
 	var counter = 0
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
@@ -894,7 +894,7 @@ func return_all_to_mansion_confirm():
 		person.remove_from_task()
 		person.return_to_mansion()
 	$NavigationModule.return_to_mansion("default")
-	
+
 
 
 func build_item_panel():
@@ -956,7 +956,7 @@ func build_spell_panel():
 				var disabled = false
 				for st in skill.cost:
 					text += (
-						"\n\n" 
+						"\n\n"
 						+ statdata.statdata[st].name
 						+ " cost: "
 						+ str(skill.cost[st])
@@ -1009,7 +1009,7 @@ func test_stage(quest, stage):
 		return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
 	else:
 		return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
-	
+
 func open_location_actions():
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
@@ -1223,7 +1223,7 @@ func faction_disassemble(pressed, pressed_button, guild):
 		$FactionDetails.hide()
 	gui_controller.win_btn_connections_handler(pressed, $DisassembleModule, pressed_button)
 	self.current_pressed_area_btn = pressed_button
-	
+
 	if pressed && !$DisassembleModule.is_visible():
 		unfade($DisassembleModule, 0.3)
 		$DisassembleModule.open()
@@ -1340,7 +1340,7 @@ func buy_item_confirm(amount):
 		'confirm_buy_item',
 		text
 	])
-		
+
 var item_to_buy
 var items_amount
 
@@ -1406,7 +1406,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 	var check = true
 	for i in worlddata.guild_upgrades.values():
 		if i.reqs != []:
-			for r in i.reqs:		
+			for r in i.reqs:
 				check = globals.valuecheck(r)
 				if !check:
 					break
@@ -1540,7 +1540,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		person = characters_pool.get_char_by_id(person_id)
 		show_slave_info(person)
 	else:
-		current_pressed_area_btn.pressed = false 
+		current_pressed_area_btn.pressed = false
 		$SlaveMarket.hide()
 		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
 		gui_controller.win_btn_connections_handler(false, $SlaveMarket, pressed_button)
@@ -2191,8 +2191,8 @@ func see_quest_info(quest):
 					if req.has("work_time"):
 						time = str(req.work_time)
 				var sex = ''
-				var prof = '' 
-				var stats = {} 
+				var prof = ''
+				var stats = {}
 				for r in reqs:
 					if r.code == "sex":
 						sex = r.value
@@ -2355,7 +2355,7 @@ func update_location_shop_btn(location_name):
 			continue
 		btn.pressed = btn.get_meta("location_name") == location_name
 
-	
+
 var purchasing_location
 
 func purchase_location():

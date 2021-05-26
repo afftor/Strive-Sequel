@@ -102,7 +102,7 @@ func _init():
 			groups = ['active_character_checks'],
 			script = "res://editor tools/panels/char_cond.gd"
 		},
-		
+
 	]
 
 

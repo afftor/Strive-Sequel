@@ -44,7 +44,7 @@ var new_consented_partners = 0
 var orgasm = false
 
 var effects = []
-#i assume that 'tied' and 'captured' effects are handled here. if not - they should have been properly made as status effects and be checked accordingly 
+#i assume that 'tied' and 'captured' effects are handled here. if not - they should have been properly made as status effects and be checked accordingly
 
 var subduedby = []
 var subduing
@@ -163,6 +163,52 @@ func horny_set(value):
 	var change = value - horny
 	horny += change*hornymod
 
+var impregnation_texts = {
+
+	can_be_impregnated = "[name] could certainly get pregnant from it...",
+	cant_be_impregnated = "However, due to racial differences, [name] won't be able to get pregnant from it...",
+	is_breeder = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
+	is_on_contraceptives = "As [name] is on contraceptives, [he] won't be able to get pregnant from it...",
+	already_pregnant_visible = "[name] could certainly get pregnant from it if [he] wasn't already..."
+}
+
+
+func impregnation_text(second_character, mother_is_self = true):
+	var preg_status
+	var return_text = ''
+	match mother_is_self:
+		true:
+			preg_status = globals.impregnate_check(second_character.person, person)
+		false:
+			preg_status = globals.impregnate_check(person, second_character.person)
+	if preg_status.already_preg_visible:
+		return_text = impregnation_texts.already_pregnant_visible
+	elif preg_status.contraceptive:
+		return_text = impregnation_texts.is_on_contraceptives
+	if return_text == '':
+		if preg_status.no_womb || preg_status.preg_disabled:
+			return return_text
+
+		if preg_status.breeder:
+			return_text = impregnation_texts.is_breeder
+		elif preg_status.compatible:
+			return_text = impregnation_texts.can_be_impregnated
+		elif preg_status.compatible == false:
+			return_text = impregnation_texts.cant_be_impregnated
+
+	match mother_is_self:
+		true:
+			return_text = person.translate(return_text)
+		false:
+			return_text = second_character.person.translate(return_text)
+
+
+	return "\n[color=silver]" + return_text + "[/color]"
+
+
+
+
+
 func orgasm(custom_text = null):
 	var text = ''
 	orgasm = true
@@ -178,7 +224,7 @@ func orgasm(custom_text = null):
 				person_sexexp.orgasmpartners[k.id] += 1
 			else:
 				person_sexexp.orgasmpartners[k.id] = 1
-	
+
 	var scene
 	var temptext = ''
 	var penistext = ''
@@ -271,11 +317,12 @@ func orgasm(custom_text = null):
 						temptext = scene.scene.takerpart2.replace('anus', '[anus2]').replace('vagina','[pussy2]')
 					else:
 						temptext = scene.scene.takerpart.replace('anus', '[anus2]').replace('vagina','[pussy2]')
+					penistext += " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] " + temptext + " as [he1] ejaculate[s/1]."
 					if scene.scene.takerpart == 'vagina':
 						for i in scene.takers:
 							if sceneref.impregnationcheck(person,i.person) == true:
 								globals.impregnate(person, i.person)
-					penistext += " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] " + temptext + " as [he1] ejaculate[s/1]."
+								penistext += impregnation_text(i, false)
 				elif scene.scene.takerpart == 'nipples':
 					penistext += " {^semen:seed:cum} fills [names2] hollow nipples. "
 				elif scene.scene.takerpart == 'penis':
@@ -302,6 +349,7 @@ func orgasm(custom_text = null):
 						for i in scene.givers:
 							if sceneref.impregnationcheck(i.person, person) == true:
 								globals.impregnation(i.person, person)
+								penistext += impregnation_text(i, true)
 				penistext = sceneref.decoder(penistext, scene.givers, [self])
 		#orgasm without penis, secondary ejaculation
 		else:
@@ -311,8 +359,19 @@ func orgasm(custom_text = null):
 				penistext = "[name2] {^can't hold back any longer:reach[es/2] [his2] limit} and"
 			penistext += " {^a jet of :a rope of :}{^semen:cum} {^fires:squirts:shoots} from {^the tip of :}[his2] {^neglected :throbbing ::}[penis2]."
 			penistext = sceneref.decoder(penistext, null, [self])
-	if vaginatext != '' || anustext != '' || penistext != '':
-		text  += vaginatext + " " + anustext + " " + penistext
+#	if vaginatext != '' || anustext != '' || penistext != '':
+#		text += vaginatext + " " + anustext + " " + penistext
+	if vaginatext != '':
+		text += vaginatext
+	if anustext != '':
+		if text != "":
+			text += " "
+		text += anustext
+	if penistext != "":
+		if text != "":
+			text += " "
+		text += penistext
+
 	#final default condition
 	else:
 		if randf() < 0.4:
@@ -321,7 +380,7 @@ func orgasm(custom_text = null):
 			temptext = "[names2]"
 		temptext += " {^entire :whole :}body {^twists:quivers:writhes} in {^pleasure:euphoria:ecstacy} as [he2] reach[es/2] {^climax:orgasm}."
 		text += sceneref.decoder(temptext, null, [self])
-	
+
 	if lastaction.scene.code in sceneref.punishcategories && lastaction.takers.has(self):
 		if randf() >= 0.85 || effects.has("entranced"):
 			actionshad.addtraits.append("Masochist")
@@ -335,10 +394,10 @@ func orgasm(custom_text = null):
 		actionshad.samesexorgasms += 1
 	else:
 		actionshad.oppositesexorgasms += 1
-	
+
 	if custom_text != null:
 		text = custom_text
-	#return 
+	#return
 	yield(sceneref.get_tree().create_timer(0.1), "timeout")
 	sceneref.get_node("Panel/sceneeffects").bbcode_text += "[color=#ff5df8]" + text + "[/color]\n"
 
@@ -355,16 +414,16 @@ func actioneffect(values, scenedict):
 		sensinput = values.sens
 	if values.has('horny'):
 		hornyinput = values.horny
-	
+
 	if horny < 100:
 		sens_mod -= 0.5
-	
+
 	if performed_actions.has(scenedict.scene.code):
 		sens_mod -= 0.05*performed_actions[scenedict.scene.code]
 		performed_actions[scenedict.scene.code] += 1
 	else:
 		performed_actions[scenedict.scene.code] = 1
-	
+
 	var position
 	var seek_group
 	var self_group
@@ -395,7 +454,7 @@ func actioneffect(values, scenedict):
 		var difference = min(lowestconsent - scenedict.scene.consent_level, 15)
 		sens_mod += difference * 0.02
 		horny_mod += difference * 0.02
-	
+
 	var partner_skill = 0
 	var partner_skill_counter = 0
 	for i in scenedict[seek_group+'s']:
@@ -409,13 +468,13 @@ func actioneffect(values, scenedict):
 				for j in trait.effects:
 					if j.trigger == 'skill_exp_gain_partner' && j.effect == 'skill_exp':
 						bonus = input_handler.math(j.operant, bonus, j.value)
-			
+
 			for t in i.sex_traits:
 				var trait = Traitdata.sex_traits[t]
 				for j in trait.effects:
 					if j.trigger == 'skill_exp_gain' && j.effect == 'skill_exp':
 						bonus = input_handler.math(j.operant, bonus, j.value)
-			
+
 			i.person_sexskills[k] = min(100,i.person_sexskills[k] + value * bonus)
 #			if i.person.sexuals + i.person.sexuals_bonus > partner_skill:
 #				partner_skill = i.person.sexuals + i.person.sexuals_bonus
@@ -433,9 +492,9 @@ func actioneffect(values, scenedict):
 							sens_mod = input_handler.math(j.operant, sens_mod, j.value)
 						'horny_bonus':
 							horny_mod = input_handler.math(j.operant, horny_mod, j.value)
-	
+
 	sens_mod += (partner_skill/max(partner_skill_counter,0.01))*1.25/100
-	
+
 	if values.has('tags'):
 		if values.tags.has('punish'):
 			if (person.xp_module.predict_obed_time() < 90 || mode == 'forced') && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
@@ -455,12 +514,12 @@ func actioneffect(values, scenedict):
 #						person.stress += values.stress
 		if values.tags.has('group'):
 			actionshad.group += 1
-	
+
 	for i in sex_traits:
 		var trait = Traitdata.sex_traits[i]
 		if checkreqs(trait.reqs, self_group, scenedict) == false:
 			continue
-		
+
 		for k in trait.effects:
 			if k.trigger == 'action_partner':
 				match k.effect:
@@ -468,7 +527,7 @@ func actioneffect(values, scenedict):
 						sens_mod = input_handler.math(k.operant, sens_mod, k.value)
 					'horny_bonus':
 						horny_mod = input_handler.math(k.operant, horny_mod, k.value)
-	
+
 	self.sens += sensinput*max(0.1, sens_mod)
 	self.horny += hornyinput*max(0.1, horny_mod)
 
@@ -497,7 +556,7 @@ func valuecheck(dict, group, scene):
 		'action_type':
 			return scene.scene.code in dict.value
 		'partner_check':
-			var partners 
+			var partners
 			if scene.givers.has(self):
 				partners = scene.takers
 			else:

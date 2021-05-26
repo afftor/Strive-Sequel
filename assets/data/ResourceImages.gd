@@ -8,78 +8,103 @@ var backgrounds = {
 	garden = load("res://assets/images/backgrounds/garden.png"),
 	aliron = load("res://assets/images/backgrounds/Aliron.png"),
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
-	
+
 	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
 	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
 	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
 	cave_4 = load("res://assets/images/backgrounds/cave4.png"),
 	cave_5 = load("res://assets/images/backgrounds/cave5.png"),
-	
+
 	village1 = load("res://assets/images/backgrounds/village.png"),
 	village2 = load("res://assets/images/backgrounds/village1.png"),
 	village3 = load("res://assets/images/backgrounds/village2.png"),
 	village4 = load("res://assets/images/backgrounds/village3.png"),
-	
+
 	forest1 = load("res://assets/images/backgrounds/forest1.png"),
 	forest2 = load("res://assets/images/backgrounds/forest2.png"),
 	forest3 = load("res://assets/images/backgrounds/forest3.png"),
 	forest4 = load("res://assets/images/backgrounds/forest4.png"),
-	
+
 	crypt1 = load("res://assets/images/backgrounds/crypt1.png"),
 	crypt2 = load("res://assets/images/backgrounds/crypt2.png"),
 	crypt3 = load("res://assets/images/backgrounds/crypt3.png"),
 	crypt4 = load("res://assets/images/backgrounds/crypt4.png"),
 	crypt5 = load("res://assets/images/backgrounds/crypt5.png"),
-	
+
 	fort1 = load("res://assets/images/backgrounds/fort1.png"),
 	fort2 = load("res://assets/images/backgrounds/fort2.png"),
 	fort3 = load("res://assets/images/backgrounds/fort3.png"),
-	
+
 	jungle1 = load("res://assets/images/backgrounds/jungle1.png"),
 	jungle2 = load("res://assets/images/backgrounds/jungle2.png"),
 	jungle3 = load("res://assets/images/backgrounds/jungle3.png"),
 	jungle4 = load("res://assets/images/backgrounds/jungle4.png"),
-	
+
 	fire_depths1 = load("res://assets/images/backgrounds/fire_depths1.png"),
 	fire_depths2 = load("res://assets/images/backgrounds/fire_depths2.png"),
 	fire_depths3 = load("res://assets/images/backgrounds/fire_depths3.png"),
 	fire_depths4 = load("res://assets/images/backgrounds/fire_depths4.png"),
-	
-	
+
+
 	fighters_guild = load("res://assets/images/backgrounds/fighters_guild.png"),
 	mages_guild = load("res://assets/images/backgrounds/mage_guild.png"),
 	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
 	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
 	#events
-	anastasia_event_alive = load("res://assets/images/backgrounds/anastasia_event.png"),
-	anastasia_event_dead = load("res://assets/images/backgrounds/anastasia_event2.png"),
-	anastasia_execution1 = load("res://assets/images/backgrounds/AnastasiaCG006.png"),
-	anastasia_execution2 = load("res://assets/images/backgrounds/AnastasiaCG007.png"),
-	anastasia_execution3 = load("res://assets/images/backgrounds/AnastasiaCG008.png"),
+	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
+	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
+	anastasia_execution1 = load("res://assets/images/fullscreen scenes/AnastasiaCG006.png"),
+	anastasia_execution2 = load("res://assets/images/fullscreen scenes/AnastasiaCG007.png"),
+	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
 	jail = load("res://assets/images/backgrounds/dungeon.png"),
-	lich_aire_talk4 = load("res://assets/images/backgrounds/AireCG001.png"),
-	lich_aire_talk7 = load("res://assets/images/backgrounds/AireCG002.png"),
-	xari_encounter8 = load("res://assets/images/backgrounds/XariCG001.png"),
-	daisy_discipline = load("res://assets/images/backgrounds/Daizy7.png"),
+	lich_aire_talk4 = load("res://assets/images/fullscreen scenes/AireCG001.png"),
+	lich_aire_talk7 = load("res://assets/images/fullscreen scenes/AireCG002.png"),
+	xari_encounter8 = load("res://assets/images/fullscreen scenes/XariCG001.png"),
+	daisy_discipline = load("res://assets/images/fullscreen scenes/DaisyCG001.png"),
 
-	anastasia_sex_1 = load("res://assets/images/backgrounds/AnastasiaCG001.png"),
-	anastasia_sex_2 = load("res://assets/images/backgrounds/AnastasiaCG002.png"),
-	anastasia_sex_3 = load("res://assets/images/backgrounds/AnastasiaCG003.png"),
-	anastasia_rape_1 = load("res://assets/images/backgrounds/AnastasiaCG004.png"),
-	anastasia_rape_2 = load("res://assets/images/backgrounds/AnastasiaCG005.png"),
-	aire_amelia1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
-	aire_amelia2 = load("res://assets/images/backgrounds/AireAmeliaCG002.png"),
-	
-	amelia_titjob1 = load("res://assets/images/backgrounds/AmeliaCG001.png"),
-	amelia_titjob2 = load("res://assets/images/backgrounds/AmeliaCG002.png"),
-	amelia_titjob3 = load("res://assets/images/backgrounds/AmeliaCG003.png"),
-	
-	anastasia_aire1 = load("res://assets/images/backgrounds/AnastasiaAireCG001.png"),
-	anastasia_aire2 = load("res://assets/images/backgrounds/AnastasiaAireCG002.png"),
-	anastasia_aire3 = load("res://assets/images/backgrounds/AnastasiaAireCG003.png"),
+	daisy_bj1 = load("res://assets/images/fullscreen scenes/DaisyCG002.png"),
+	daisy_bj2 = load("res://assets/images/fullscreen scenes/DaisyCG003.png"),
+	daisy_bj3 = load("res://assets/images/fullscreen scenes/DaisyCG004.png"),
+	daisy_bj4 = load("res://assets/images/fullscreen scenes/DaisyCG005.png"),
+	daisy_bj5 = load("res://assets/images/fullscreen scenes/DaisyCG006.png"),
+	daisy_bj6 = load("res://assets/images/fullscreen scenes/DaisyCG007.png"),
+
+	daisy_training1 = load("res://assets/images/fullscreen scenes/DaisyCG008.png"),
+	daisy_training2 = load("res://assets/images/fullscreen scenes/DaisyCG009.png"),
+	daisy_training3 = load("res://assets/images/fullscreen scenes/DaisyCG010.png"),
+	daisy_training4 = load("res://assets/images/fullscreen scenes/DaisyCG011.png"),
+	daisy_training5 = load("res://assets/images/fullscreen scenes/DaisyCG012.png"),
+
+	daisy_public1 = load("res://assets/images/fullscreen scenes/DaisyCG013.png"),
+	daisy_public2 = load("res://assets/images/fullscreen scenes/DaisyCG014.png"),
+	daisy_public3 = load("res://assets/images/fullscreen scenes/DaisyCG015.png"),
+	daisy_public4 = load("res://assets/images/fullscreen scenes/DaisyCG016.png"),
+	daisy_public5 = load("res://assets/images/fullscreen scenes/DaisyCG017.png"),
+
+	anastasia_sex_1 = load("res://assets/images/fullscreen scenes/AnastasiaCG001.png"),
+	anastasia_sex_2 = load("res://assets/images/fullscreen scenes/AnastasiaCG002.png"),
+	anastasia_sex_3 = load("res://assets/images/fullscreen scenes/AnastasiaCG003.png"),
+	anastasia_rape_1 = load("res://assets/images/fullscreen scenes/AnastasiaCG004.png"),
+	anastasia_rape_2 = load("res://assets/images/fullscreen scenes/AnastasiaCG005.png"),
+	aire_amelia1 = load("res://assets/images/fullscreen scenes/AireAmeliaCG001.png"),
+	aire_amelia2 = load("res://assets/images/fullscreen scenes/AireAmeliaCG002.png"),
+
+	amelia_titjob1 = load("res://assets/images/fullscreen scenes/AmeliaCG001.png"),
+	amelia_titjob2 = load("res://assets/images/fullscreen scenes/AmeliaCG002.png"),
+	amelia_titjob3 = load("res://assets/images/fullscreen scenes/AmeliaCG003.png"),
+
+	amelia_bondage1 = load("res://assets/images/fullscreen scenes/AmeliaCG004.png"),
+	amelia_bondage2 = load("res://assets/images/fullscreen scenes/AmeliaCG005.png"),
+	amelia_bondage3 = load("res://assets/images/fullscreen scenes/AmeliaCG006.png"),
+
+	anastasia_aire1 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG001.png"),
+	anastasia_aire2 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG002.png"),
+	anastasia_aire3 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG003.png"),
+
+
 	}
 
 var scenes = {
@@ -191,21 +216,21 @@ var icons = {
 	armor = "res://assets/images/gui/inventory/icon_armor1.png",
 	costume = "res://assets/images/gui/inventory/icon_cosm1.png",
 	usable = "res://assets/images/gui/inventory/icon_potion1.png",
-	
+
 	quest_dungeon = load('res://assets/images/gui/quest_dungeon.png'),
 	quest_char = load("res://assets/images/gui/quest_char.png"),
 	quest_encounter = load("res://assets/images/gui/quest_encounter.png"),
 	quest_enemy = load("res://assets/images/gui/quest_enemy.png"),
 	quest_reputation = load("res://assets/images/gui/quest_reputation.png"),
-	
+
 	upgrade_farm = 'res://assets/images/buildings/upgrade_farm.png',
-	
+
 	stat_exp = "res://assets/images/gui/gui icons/base_exp.png",
 	stat_gf = "res://assets/images/gui/gui icons/growth_factor.png",
 	stat_pf = "res://assets/images/gui/gui icons/physics_factor.png",
 	stat_wit = "res://assets/images/gui/gui icons/wit.png",
 	stat_charm = "res://assets/images/gui/gui icons/charm.png",
-	stat_sf = "res://assets/images/gui/gui icons/sex.png", 
+	stat_sf = "res://assets/images/gui/gui icons/sex.png",
 	stat_mf = "res://assets/images/gui/gui icons/magic_factor.png",
 	stat_tf = "res://assets/images/gui/gui icons/tame_factor.png",
 	stat_df = "res://assets/images/gui/gui icons/timid_factor.png",
@@ -216,41 +241,41 @@ var icons = {
 	stat_food = "res://assets/images/gui/gui icons/food.png",
 	obed_good = "res://assets/images/gui/obed_good.png",
 	obed_bad = "res://assets/images/gui/obed_bad.png",
-	
+
 	food_love = "res://assets/images/gui/gui icons/food_love.png",
 	food_hate = "res://assets/images/gui/gui icons/food_hate.png",
 	meat = "res://assets/images/gui/gui icons/icon_meat.png",
 	fish = "res://assets/images/gui/gui icons/icon_fish.png",
 	vege = "res://assets/images/gui/gui icons/icon_veg.png",
 	grain = "res://assets/images/gui/gui icons/icon_grain.png",
-	
+
 	fear1 = "res://assets/images/gui/gui icons/fear1.png",
 	fear2 = "res://assets/images/gui/gui icons/fear2.png",
 	fear3 = "res://assets/images/gui/gui icons/fear3.png",
 	obed1 = "res://assets/images/gui/gui icons/obedience1.png",
 	obed2 = "res://assets/images/gui/gui icons/obedience2.png",
 	obed3 = "res://assets/images/gui/gui icons/obedience3.png",
-	
+
 	class_master = "res://assets/Textures_v2/MANSION/icon_master.png",
 	class_servant = "res://assets/Textures_v2/MANSION/icon_servant.png",
 	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
-	
+
 	quest_slave_delivery = "res://assets/images/gui/slavepanel/charm.png",
 	quest_gold = 'res://assets/images/iconsitems/gold.png',
 	complete_location = "res://assets/images/gui/quest_encounter.png",
 	complete_dungeon = "res://assets/images/gui/quest_dungeon.png",
 	reputation = "res://assets/images/gui/quest_reputation.png",
-	
+
 	craft_time = "res://assets/images/gui/craftgui/Time.png",
-	
+
 	work = 'res://assets/images/gui/gui icons/workicon.png',
 	rest = 'res://assets/images/gui/gui icons/sleepicon.png',
 	joy = 'res://assets/images/gui/gui icons/joyicon.png',
-	
+
 	male = load("res://assets/Textures_v2/Universal/Icons/icon_male.png"),
 	female = load("res://assets/Textures_v2//Universal/Icons/icon_female.png"),
 	futa = load("res://assets/Textures_v2/Universal/Icons/icon_futa.png"),
-	
+
 	alchemy = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"),
 	cooking = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"),
 	smith = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"),
@@ -396,7 +421,7 @@ var shades = {
 	taurus_f = load("res://assets/images/raceshades/Taurus_F.png"),
 	kobold_m = load("res://assets/images/raceshades/Kobold_M.png"),
 	kobold_f = load("res://assets/images/raceshades/Kobold_F.png"),
-	
+
 }
 
 var cursors = {
