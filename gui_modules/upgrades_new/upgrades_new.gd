@@ -35,9 +35,11 @@ func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
-	if get_parent().mansion_state == 'travels':
+	if get_parent().mansion_state == 'upgrades':
 		get_parent().mansion_state = 'default'
 	.hide()
+
+
 
 
 
