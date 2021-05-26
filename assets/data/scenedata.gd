@@ -1738,6 +1738,5 @@ var quests = {
 			stage2 = {code = 'stage2', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_2"}, # travel to this guys location
 		},
 	},
-	}
 }
 

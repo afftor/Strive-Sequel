@@ -552,8 +552,10 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], character = "daisy_default",
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_1_1", reqs = []}],
+		common_effects = [{code = 'money_change', operant = '+', value = 2500},
+		{code = 'remove_slave_by_name', name = "Daisy"}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, # TODO remove daisy, add gold
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 		} ]
 	},
 	
@@ -571,7 +573,8 @@ var data = {
 		reqs = [], character = "daisy_default",
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_2_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, # TODO remove daisy,
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'remove_slave_by_name', name = "Daisy"}]
 		} ]
 	},
 	
@@ -816,7 +819,8 @@ var data = {
 		}, {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
-			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ], # TODO (remove daisy, end quest)
+			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, 
+			{code = 'remove_slave_by_name', name = "Daisy"}], 
 		},  ]
 	},
 	
@@ -837,7 +841,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, 
-			{code = 'remove_slave_by_name', name = "Daisy"}], # TODO (remove daisy, end quest)
+			{code = 'remove_slave_by_name', name = "Daisy"}], 
 		} ]
 	},
 }
