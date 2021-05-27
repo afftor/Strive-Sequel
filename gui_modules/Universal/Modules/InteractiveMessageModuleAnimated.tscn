@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=3]
 [ext_resource path="res://gui_modules/Universal/Modules/TextButton.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower_high.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/frameclass.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower_divider.png" type="Texture" id=9]
@@ -30,7 +30,7 @@ margin_bottom = 64.5747
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 800, 679 )
+region_rect = Rect2( 0, 0, 800, 1027 )
 margin_left = 75.0
 margin_right = 75.0
 margin_top = 75.0
