@@ -54,6 +54,7 @@ func select_upgrade(code):
 
 
 func build_description(upgrade_id):
+	if upgrade_id == null: return
 	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_lv = ResourceScripts.game_res.findupgradelevel(upgrade_id)
 	var upgrade_state = null
@@ -89,7 +90,7 @@ func build_description(upgrade_id):
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
 		can_upgrade = false
-	elif ResourceScripts.game_res.upgrade_progresses.has(upgrade_id):
+	elif ResourceScripts.game_res.upgrades_queue.has(upgrade_id):
 		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
@@ -181,6 +182,7 @@ var removing_upgrade
 func remove_upgrade_confirm():
 	ResourceScripts.game_res.upgrades_queue.erase(removing_upgrade)
 	build_queue_list()
+	build_description(selected_upgrade)
 
 
 func remove_from_upgrades_queue(upgrade):
