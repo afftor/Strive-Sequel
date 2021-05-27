@@ -432,7 +432,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_14 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'elf_priestess',
 		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 		options = [ {

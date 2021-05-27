@@ -284,6 +284,7 @@ func remove_non_master(code):
 
 func remove_selected(person):
 	person.remove_from_task()
+	input_handler.active_character = person
 	ResourceScripts.game_party.remove_slave(person)
 	input_handler.slave_list_node.rebuild()
 
