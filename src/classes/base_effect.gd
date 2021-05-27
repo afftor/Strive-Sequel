@@ -58,7 +58,7 @@ func reapply():
 		pass
 	setup_siblings()
 	rebuild_buffs()
-	
+
 
 func setup_siblings():
 	if sub_effects.size() < 2:

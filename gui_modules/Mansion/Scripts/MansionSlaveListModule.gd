@@ -28,7 +28,7 @@ func rebuild():
 	$BedroomLimit.visible = !LocationsPanel.is_visible()
 	$IterationsLimit.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
-	
+
 	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
 	input_handler.ClearContainer(SlaveContainer)
 	for i in ResourceScripts.game_party.character_order:
@@ -47,7 +47,7 @@ func rebuild():
 		newbutton.target_function = 'rebuild'
 		newbutton.arraydata = i
 		newbutton.parentnodearray = ResourceScripts.game_party.character_order
-		
+
 		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
@@ -74,7 +74,7 @@ func rebuild():
 				build_for_craft(person, newbutton)
 			"sex":
 				build_sex_selection(person, newbutton)
-		
+
 
 	var pos = self.rect_size
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
@@ -92,8 +92,8 @@ func set_hover_area():
 
 ### =========================================================================================================================== ###
 
-	
-	
+
+
 func is_in_area():
 	var in_area = $HoverArea.get_global_rect().has_point(get_global_mouse_position())
 	return in_area
@@ -221,7 +221,7 @@ func build_sex_selection(person, newbutton):
 		if button.get_meta("slave").tags.has("no_sex"):
 			button.hint_tooltip = "Sex Requirements aren't met"
 			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-	
+
 	update_description()
 
 
@@ -268,7 +268,7 @@ func show_location_characters(button = null):
 				if get_parent().mansion_state in ["default", "skills"]:
 					get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
-			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location		
+			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location
 	if visible_persons.size() < 1:
@@ -301,7 +301,7 @@ func build_for_upgrades(person, newbutton):
 		# for i in $ScrollContainer/VBoxContainer.get_children():
 		# 	i.pressed = i.get_meta("slave") == get_parent().active_person
 	newbutton.get_node("job").disabled = person.is_on_quest()
-	
+
 
 
 func build_for_skills(person, newbutton):
@@ -338,7 +338,7 @@ func update_button(newbutton):
 	newbutton.get_node("icon").texture = person.get_icon()
 	newbutton.get_node("name").text = person.get_short_name()
 	newbutton.get_node("sex").texture = images.icons[person.get_stat('sex')]
-	
+
 	newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
 	newbutton.get_node("stats/hp").value = person.hp
 	newbutton.get_node("stats/mp").max_value = person.get_stat('mpmax')
@@ -365,8 +365,8 @@ func update_button(newbutton):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name	
-	
+			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
+
 	if !person.xp_module.check_infinite_obedience():
 		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
 		if person.xp_module.predict_obed_time() <= 0:
@@ -377,16 +377,16 @@ func update_button(newbutton):
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
 	else:
 		newbutton.get_node("obed").text = "∞"
-	
+
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
 	else:
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(1,1,1))
 	# if !person.check_location('Aliron'):
 	if person.check_location('travel'):
-		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
+		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
-		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name	
+		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:
 		### Temporary
 		if person.get_location() == "mansion":
@@ -407,7 +407,7 @@ var obed_textures = {
 }
 var fear_textures = {
 	high = load('res://assets/images/gui/gui icons/fear1.png'),
-	med = load("res://assets/images/gui/gui icons/fear2.png"),	
+	med = load("res://assets/images/gui/gui icons/fear2.png"),
 	low = load("res://assets/images/gui/gui icons/fear3.png")
 }
 

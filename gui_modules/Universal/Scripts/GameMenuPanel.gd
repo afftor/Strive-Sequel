@@ -18,7 +18,7 @@ func _ready():
 
 func open():
 	show()
-	
+
 func SavePanelOpen():
 	$saveloadpanel.SavePanelOpen()
 	$saveloadpanel.show()

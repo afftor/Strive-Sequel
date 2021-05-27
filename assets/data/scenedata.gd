@@ -1261,7 +1261,7 @@ var scenedict = {
 	celena_shrine_find = {
 		text = tr("DIALOGUESHRINECELENA"),
 		tags = [],
-		image = null,
+		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
@@ -1270,7 +1270,7 @@ var scenedict = {
 		text = tr("DIALOGUESHRINECELENA"),
 		tags = ['shrine','active_character_translate'],
 		shrine = 'celena',
-		image = null,
+		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
@@ -1278,7 +1278,7 @@ var scenedict = {
 	erebus_shrine_find = {
 		text = tr("DIALOGUESHRINEEREBUS"),
 		tags = [],
-		image = null,
+		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
@@ -1287,7 +1287,7 @@ var scenedict = {
 		text = tr("DIALOGUESHRINEEREBUS"),
 		tags = ['shrine','active_character_translate'],
 		shrine = 'erebus',
-		image = null,
+		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
@@ -1295,7 +1295,7 @@ var scenedict = {
 	freya_shrine_find = {
 		text = tr("DIALOGUESHRINEFREYA"),
 		tags = [],
-		image = null,
+		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
@@ -1304,7 +1304,7 @@ var scenedict = {
 		text = tr("DIALOGUESHRINEFREYA"),
 		tags = ['shrine','active_character_translate'],
 		shrine = 'freya',
-		image = null,
+		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]

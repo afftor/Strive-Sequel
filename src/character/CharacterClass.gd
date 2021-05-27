@@ -40,7 +40,7 @@ var previous_location
 var src = ""
 
 
-func _init(source):
+func _init(source = null):
 	src = source
 	rebuild_parents()
 
@@ -898,7 +898,6 @@ func check_escape_possibility():
 			#shackles_chance = null
 			input_handler.emit_signal('shackles_off') #stub
 		return
-
 	escape()
 
 func escape():

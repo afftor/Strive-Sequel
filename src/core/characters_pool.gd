@@ -3,7 +3,7 @@ extends Node
 
 var characters: = {}
 # for now for the sake of working of all legacy code only temporal characters are stored directly in pool, all player-controlled characters are still stored in state.characters
-  
+
 func get_new_id():
 	var s := "hid%d"
 	var t = randi()

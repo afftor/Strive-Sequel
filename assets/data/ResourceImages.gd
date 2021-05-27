@@ -166,6 +166,10 @@ var scenes = {
 	letter = load("res://assets/images/scenes/letter.png"),
 	kobold = load("res://assets/images/scenes/kobold.png"),
 	mines_quest = load('res://assets/images/scenes/mines_quest.png'),
+
+	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
+	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
+	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
 }
 
 var sprites = {
@@ -466,6 +470,37 @@ func loadimages():
 		cursors[i] = input_handler.loadimage(cursors[i])
 	for i in GFX:
 		GFX[i] = input_handler.loadimage(GFX[i])
+
+
+var upgrade_icons = {
+	alchemy = load("res://assets/images/gui/upgrades/alchemy.png"),
+	bedroom = load("res://assets/images/gui/upgrades/bedroom.png"),
+	cotton = load("res://assets/images/gui/upgrades/cotton.png"),
+	forge = load("res://assets/images/gui/upgrades/forge.png"),
+	stables = load("res://assets/images/gui/upgrades/stables.png"),
+	tailor = load("res://assets/images/gui/upgrades/tailor.png"),
+	tattoo = load("res://assets/images/gui/upgrades/tattoo.png"),
+	tortureroom = load("res://assets/images/gui/upgrades/tortureroom.png"),
+	veges = load("res://assets/images/gui/upgrades/veges.png"),
+	wheat = load("res://assets/images/gui/upgrades/wheat.png"),
+
+
+}
+
+var upgrade_tiers = {
+	1 : load("res://assets/images/gui/upgrades/upgrade_tier1.png"),
+	2 : load("res://assets/images/gui/upgrades/upgrade_tier2.png"),
+	3 : load("res://assets/images/gui/upgrades/upgrade_tier3.png"),
+	4 : load("res://assets/images/gui/upgrades/upgrade_tier4.png"),
+	5 : load("res://assets/images/gui/upgrades/upgrade_tier5.png"),
+	6 : load("res://assets/images/gui/upgrades/upgrade_tier6.png"),
+	7 : load("res://assets/images/gui/upgrades/upgrade_tier7.png"),
+	8 : load("res://assets/images/gui/upgrades/upgrade_tier8.png"),
+	9 : load("res://assets/images/gui/upgrades/upgrade_tier9.png"),
+	10 : load("res://assets/images/gui/upgrades/upgrade_tier10.png"),
+
+
+}
 
 #var statsicons = {#not used at all O_o
 #lub1 = load("res://assets/images/sexicons/lub1.png"),

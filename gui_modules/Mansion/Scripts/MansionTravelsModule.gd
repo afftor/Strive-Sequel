@@ -54,7 +54,7 @@ func open_character_dislocation():
 			populatedlocations.append(person.travel.location)
 		elif person.travel.location == 'travel':
 			travelers.append(person)
-	
+
 	input_handler.ClearContainer($TravelersContainer/VBoxContainer)
 	for i in travelers:
 		var newlabel = input_handler.DuplicateContainerTemplate($TravelersContainer/VBoxContainer)
@@ -68,7 +68,7 @@ func open_character_dislocation():
 		newlabel.get_node("Progress/Time").text = 'Until arrival: ' + str(ceil(i.travel.travel_time/i.travel_per_tick())) + " hours"
 		# globals.connectslavetooltip(newlabel, i)
 		newlabel.get_node("ReturnButton").connect('pressed',self,'cancel_travel', [i])
-	
+
 	for i in populatedlocations:
 		$HomeButton.add_item(ResourceScripts.world_gen.get_location_from_code(i).name)
 		$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, i)
@@ -194,7 +194,7 @@ func update_character_dislocation():
 			text += "\nTravel Time: " + str(max_time) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
-		# text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
+		# text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]"
 		match location.type:
 			'dungeon':
 				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
@@ -207,16 +207,16 @@ func update_character_dislocation():
 				dislocation_area = "aliron"
 			if dislocation_area == "travel":
 				dislocation_area = selected_travel_characters[0].travel.location
-			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
+			var travel_time = globals.calculate_travel_time(destination, dislocation_area)
 			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
 			text2 += "\nObedience Cost: " + str(obed_cost)
 		else:
 			text += "\nSelect Characters to send"
 
-	
+
 	var can_travel = true
-	
+
 	if selected_travel_characters.size() < 1 || destination == null:
 		can_travel = false
 	else:
@@ -264,7 +264,7 @@ func travel_confirm():
 			person.travel.location = destination
 			person.travel.area  = destination_area
 	get_parent().selected_travel_characters.clear()
-	
+
 	# update_location_list()
 	open_character_dislocation()
 	get_parent().SlaveListModule.rebuild()

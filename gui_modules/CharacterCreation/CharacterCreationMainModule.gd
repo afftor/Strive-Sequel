@@ -106,15 +106,15 @@ func _ready():
 	$VBoxContainer/HBoxContainer/SexVBox/sex.connect("item_selected", self, "select_sex")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 
-	
+
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
 #	$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
-	
+
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
 
-	
+
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	for i in $DietPanel/VBoxContainer.get_children():
 		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
@@ -174,7 +174,7 @@ func select_diet():
 			i.get_node("OptionButton").selected = 0
 
 	finish_diet_selection()
-	
+
 #	$DietPanel/Button.disabled = !(person.get_stat('food_love') != '' && person.get_stat('food_hate').size() > 0)
 
 
@@ -195,7 +195,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	if type == 'slave':
 		$introduction.bbcode_text += " " + str(ResourceScripts.game_party.characters.size())
 	selected_class = ''
-	
+
 	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
 	mode = type
 	person.set_stat('age', 'adult')
@@ -207,7 +207,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 		'slave':
 			person.set_stat('sex', 'female')
 			total_stat_points = variables.slave_starting_stats
-	
+
 #	$bodyparts2/type_label.visible = mode == 'slave'
 #	$bodyparts2/slave_class.visible = mode == 'slave'
 #	$bodyparts2/slave_class.select(0)
@@ -227,7 +227,7 @@ func rebuild_slave():
 	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
-	
+
 	$VBoxContainer/race.text = races.racelist[race].name
 	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
 	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
@@ -319,11 +319,11 @@ func check_confirm_possibility():
 	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'].empty():
 		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
 		return false
-	
+
 	if selected_class == '':
 		input_handler.SystemMessage("You must select a starting Class")
 		return false
-	
+
 	return true
 
 func set_savefilename(text):
@@ -342,7 +342,7 @@ func SaveLoadCharPanel(saveloadmode):
 	if saveloadmode == "save":
 		$SaveLoadCharPanel/SaveLoadButton.text = "Save"
 	else:
-		$SaveLoadCharPanel/SaveLoadButton.text = "Load"	
+		$SaveLoadCharPanel/SaveLoadButton.text = "Load"
 	$SaveLoadCharPanel.show()
 	ResourceScripts.core_animations.UnfadeAnimation($SaveLoadCharPanel, 0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -357,7 +357,7 @@ func SaveLoadCharPanel(saveloadmode):
 
 		newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
 		newbutton.get_node("Label").text = savename
-		newbutton.connect('pressed', self, 'PressSaveLoadCharacter', [savename])	
+		newbutton.connect('pressed', self, 'PressSaveLoadCharacter', [savename])
 
 
 func PressSaveLoadCharacter(savename):
@@ -373,7 +373,7 @@ func PressSaveCharacter(savename = null):
 		savefilename = savename + ".ch"
 	if savefilename == '.ch' or savefilename == '':
 		return
-	
+
 	var file = File.new()
 	if file.file_exists(variables.userfolder + 'savedcharacters/' + savefilename):
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'SaveCharacter', tr("OVERWRITETEMPLATECONFIRM")])
@@ -489,7 +489,7 @@ func LoadCharacter(updated_char_to_load = null):
 					else:
 						i.text = person[i.get_name()].capitalize()
 	RebuildStatsContainer()
-	rebuild_slave()					
+	rebuild_slave()
 	select_diet()
 	finish_diet_selection()
 	hideSaveLoadPanel()
@@ -519,10 +519,10 @@ func RebuildStatsContainer():
 				person.set_stat(i.code, preservedsettings[i.code])
 			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
-			
-	
+
+
 	var counter = total_stat_points
-	
+
 	if person.statlist.sex_traits.size() == 0:
 		$VBoxContainer/SexTraitLabel.text = "Select Sex Trait"
 	else:
@@ -540,10 +540,10 @@ func RebuildStatsContainer():
 		if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
 			text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
 		globals.connecttexttooltip(newnode.get_node("icon"), text)
-	
+
 	unassigned_points = counter
 	$StatsModule/totalstatlabel.text = 'Free points left: ' + str(counter)
-	
+
 	apply_preserved_settings()
 	if selected_class != '' && person.checkreqs(classesdata.professions[selected_class].reqs) == false:
 		selected_class = ''
