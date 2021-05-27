@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue2.png" type="Texture" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/TextButton.gd" type="Script" id=2]
 [ext_resource path="res://gui_modules/Universal/ShowPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide.png" type="Texture" id=5]
@@ -55,11 +55,11 @@ __meta__ = {
 }
 
 [node name="OptionsBackground" type="Panel" parent="."]
-self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
-margin_left = 433.0
+self_modulate = Color( 0.223529, 0.0313726, 0.337255, 0.901961 )
+margin_left = 431.0
 margin_top = 713.0
-margin_right = 1487.0
-margin_bottom = 1047.0
+margin_right = 1489.0
+margin_bottom = 1049.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

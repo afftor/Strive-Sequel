@@ -5068,11 +5068,282 @@ As she leaves the room you give a second thought and decide if it might be a dec
 Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant. """,
 	DAISY_CLOTHES_REPLY_2_3 = "- I-I'm very sorry, [master]! I just thought that you would also prefer me to look less messy.",
 
+	DAISY_CLOTHES_SIGMUND_OPTION_1 = "I'm looking for a custom-made dress",
+	DAISY_CLOTHES_SIGMUND_REPLY_1 = """You explain to Sigmund that one of your slaves needs a change of clothes. 
 
+- Aye, we make work clothes, but from what ya described I think servants could suit ya needs betta. We don't really do girly stuff.""",
+	DAISY_CLOTHES_SIGMUND_OPTION_2 = "Thanks for the tip",
+	
+	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom-made dress",
+	DAISY_CLOTHES_AMELIA_REPLY_1 = """You explain to Amelia that one of your slaves needs a change of clothes. 
 
+- Why, yes, proper servants’ attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
+	DAISY_CLOTHES_AMELIA_OPTION_2_1 = "I want a normal servant dress",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2 = "I want something lewder",
+	DAISY_CLOTHES_AMELIA_OPTION_2_3 = "I've changed my mind",
+	DAISY_CLOTHES_AMELIA_REPLY_2_1 = """- Fair enough, we can tailor something fitting for a well-to-do land owner’s servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold. """,
+	DAISY_CLOTHES_AMELIA_OPTION_2_1_1 = "Deal (150 gold)",
+	DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE = "Refuse",
+	DAISY_CLOTHES_AMELIA_REPLY_2_2 = """- Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.""",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2_1 = "Deal (250 gold)",
+	DAISY_CLOTHES_AMELIA_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	DAISY_CLOTHES_AMELIA_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
+- You've really done it, [master]. I never imagined this dress would be so nice.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "I think you should express your gratitude in a way that fits your position (Sexuals Factor)",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_1 = "Daisy smiles at you and with your approval returns to her tasks. It seems her spirit have risen a bit.",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """- O-ofcourse, I understand. But still, thank you.
 
+Daisy politely smiles at you and, with your approval, returns to her tasks.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1 = """{color=green|Success}
 
+Daisy manages to overcome her shyness to lean toward you and give you a gentle kiss. However, you hug her from the side and seal her lips with passion. As she succumbs to your kiss, you guide her hand between your legs. As she looks down, she notices your erection with concern evident on her face.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """{color=red|Failure}
+
+Daisy manages to overcome her shyness and gives you a little kiss then quickly turns away. You consider taking it further, but are too slow and she's already returned to her duties.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_1 = "What are we gonna do about this?",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2 = "That's your fault, so it's only right for you to correct this",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3 = "*Push her head down*",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2 = """Daisy gulps and kneels before fully preparing herself for the proper servitude. 
+
+Her skills are very poor, but she manages to compensate for it with her eagerness. 
+
+As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face instead. Relieved, you order her to clean herself up and give her some free time from her duty.""",
+	
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush. 
+
+- T-thank you for the gift, [master]. I hope you like my new look.""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it (reveal her body)",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = """Daisy lightly smiles at your words.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2 = """You move closer to Daisy, and pull on the couple of strings, hidden in her dress folds. Her bra drops down, revealing her ample breasts. Her lower skirt drops as well, presenting obscene underwear not quite hiding her private parts from potential observers.
+
+Daisy gasps in shame as you savor her beauty.
+
+- T-this is embarrassing. I don't mind if it's [master] who is looking, but...""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_1 = "Well, you better overcome your embarrassment and properly thank me",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2 = "This emphasizes your body's natural beauty nicely",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3 = "It’s proper apparel for a whore like you",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1 = """As you move closer to Daisy, she quickly notices your bulge. Stimulated by her garment and sudden nudity she almost instinctively kneels before you and prepares to serve. 
+
+Her skills are very poor, but she manages to compensate for it with her eagerness. 
+
+As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face. Relieved, you order her to clean herself and give her some free time from her duty. """,
+	
+	DAISY_TRAINING_REPLY_0 = """While you were holding a small meeting with a couple other land owners, you noticed that Daisy, although pretty and catching a lot of attention, didn’t quite present herself in a manner befitting a trained servant. She messed up a guest’s order and offered a stuttering apology. Perhaps, it might be a good idea to put her through proper training. """,
+	DAISY_TRAINING_OPTION_1 = "I want to have my servant trained...",
+	DAISY_TRAINING_REPLY_1 = """You explain to Amelia how you think Daisy could benefit from training to become more professional.
+
+- Ah, yes, your timid bunny girl. I remember her, she's really suited to being your servant, isn't she? Of course we have training which would improve her performance, depending on what you'd like.""",
+	DAISY_TRAINING_OPTION_2_1 = "I want her to be trained normally (200 gold)",
+	DAISY_TRAINING_OPTION_2_2 = "What other options are there?",
+	DAISY_TRAINING_OPTION_2_3 = "There's something else?",
+	DAISY_TRAINING_OPTION_2_4 = "I want her to be trained normally and sexually (300 gold)",
+	DAISY_TRAINING_OPTION_2_5 = "I want to turn her into a fucktoy (400 gold)",
+	DAISY_TRAINING_OPTION_2_6 = "I'll return later",
+	DAISY_TRAINING_REPLY_2_2 = "- Well, I'd expect you’d want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse. ",
+	DAISY_TRAINING_REPLY_2_3 = "- He-he, since you asked, if you think she'd be better suited for something completely.... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
+	DAISY_TRAINING_REPLY_2_1 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You arrange a time for Daisy's training and leave. """,
+	DAISY_TRAINING_REPLY_2_4 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	DAISY_TRAINING_REPLY_2_5 = """- A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	DAISY_TRAINING_INTERMISSION = """In the center of an exquisitely decorated room, Daisy hangs by ropes tied about her naked body. Her eyes are blindfolded and her mouth is filled with cock. Her blindfold is still wet from tears, yet her mouth produces only moans.
+
+Initially she couldn't grasp why [master] did this to her, but after only a couple of days she accepted it. Daisy realized this is the only way she can prove her usefulness and slowly adapted to her new role.
+
+Trainer1: - It didn't take long, she's stopped complaining entirely.
+
+Trainer2: - Yeah, she's a natural sub. Look how wet her cunt is.
+
+Trainer1: - Well, she is a half bunny. Man, I'd buy one if they weren't so useless otherwise.
+
+Daisy felt a new dick being rammed inside her already trained asshole. She had learned that the way to get it over with fastest, was to take it eagerly and make her trainer cum. She responded by forcing her sphincter to provide more stimulation, involuntarily gaining pleasure in the process. 
+
+Her training was going as planned.""",
+	
+	TRAINING_COMPLETE_SERVE_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
+
+- [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
+	TRAINING_COMPLETE_SERVE_OPTION_1_1 = "I’m glad you’re back",
+	TRAINING_COMPLETE_SERVE_OPTION_1_2 = "Finally, get back to work",
+	TRAINING_COMPLETE_SERVE_REPLY_1_1 = "- Thank you. I’m fine, we were treated nicely there… I’m glad I was able to learn how to hold myself better for your sake, [Master].",
+	TRAINING_COMPLETE_SERVE_REPLY_1_2 = """- R-right away, [master]... 
+
+Somewhat disappointed by your response, Daisy returns to her duty.""",
+
+	TRAINING_COMPLETE_SEX_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
+
+- [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
+	TRAINING_COMPLETE_SEX_OPTION_1_1 = "Why don't you demonstrate it?",
+	TRAINING_COMPLETE_SEX_OPTION_1_2 = "I'm glad you liked it",
+	TRAINING_COMPLETE_SEX_REPLY_1_1 = """Daisy noticeably blushes but nods in response to your request and drops to her knees before you. As she gently retrieves your cock from your pants, her usual nervousness is barely apparent. Only a little touching is enough to make you hard. 
+
+- I'm glad to be able to repay your kindness, [Master]. 
+
+Daisy takes your cock into her mouth, carefully coiling her tongue around it. As she diligently works on your cock, she closes her eyes and does not forget to also caress your balls. As she moans softly, her proficiency quickly brings you to orgasm, and she makes sure none of your seed escapes her mouth. As she obediently gulps down your seed, she opens her eyes and looks back at you.
+
+- Did I do well, [Master]? 
+
+Her eyes show sincere concern. """,
+	TRAINING_COMPLETE_SEX_OPTION_1_1_1 = "That felt great",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_2 = "You were also trained to swallow?",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_3 = "I guess even you’re good for something",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_1 = """Daisy shines with a big smile in response to your praise. 
+
+- Thank you, [Master]. I will be able to serve you even better now.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_2 = """- Uhm, yes. We were using pumps at the training with a rice jelly and a helper in case we choked on it... It was actually kinda fun. """,
+	TRAINING_COMPLETE_SEX_REPLY_1_1_3 = """- Thank you, [Master]. I will be able to serve you even better now.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_1_all = """
+
+You send Daisy off, proud of your selection for her training.""",
+	TRAINING_COMPLETE_SEX_REPLY_1_2_1 = "- Uhm... [Master], I believe I should repay your kindness now, if you don't mind.",
+	TRAINING_COMPLETE_SEX_OPTION_1_2_1 = "Very well, go ahead.",
+	TRAINING_COMPLETE_SEX_OPTION_1_2_2 = "Sorry, I'm not in the mood",
+	TRAINING_COMPLETE_SEX_REPLY_1_2_2 = """- Ah, is that so? As you wish, [master].
+
+Daisy looks somewhat disappointed, but still respectfully bows to you before retreating from sight.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_0 = """You meet Daisy as she's brought back to you. Despite your expectations she does not show any signs of a grudge and her demeanor has improved. 
+
+- Hello, [Master]. I'm ready to be of your service. Any service you wish for.
+
+You pause for a moment, considering if you want to test her training out right away or not. """,
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1 = "Let's go for a walk",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_2 = "I don't have any orders for now",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1 = "You order Daisy to strip and she immediately obeys. As you collar her and bring her outside you observe that her shame has nearly completely disappeared. You decide to take a stroll among the suburbs as she obediently walks by your side. Rare bystanders gawp at Daisy which heightens her arousal.",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1 = "Fuck her",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2 = "Find a group of willing strangers",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3 = "A stray dog",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4 = "Return",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1 = """Deciding it's about time, you push her onto her knees and take her from behind like a wild animal. She makes no protest, quickly adjusting herself to give you easier access. Her cunt is incredibly wet and closes tightly around you. As you both move in unison she makes an additional effort to shake her ass and give you more stimulation. A few people observe you from a distance but she pays them no attention. 
+
+Having a great feel for her pussy you decide that it's enough for today and return with her to the mansion. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2 = """After a couple of minutes you find a group of juveniles who are brave enough to approach you. You make a deal and take some of their gold, then allow them to use Daisy as they see fit. Daisy shows no signs of refusing and almost eagerly gets the job done, earning you some cash with her body. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3 = """Since Daisy is showing almost animalistic behavior, you decide that a dog would be a suitable partner for her. With some luck you manage to find a large somewhat hungry mutt. As you instruct Daisy, she only slightly frowns and gets on her knees to incite the dog. After a few sniffs the dog recognizes her as a mate and mounts her with force.
+
+Daisy yelps in surprise at the unusual sensation but quickly it fades as the dog fiercely humps her cunt. The tears roll from her eyes as the dog fills her with his seed. Once the knot has deflated and slipped out, you return to the mansion.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4 = """You decide it's not the right time and return to the mansion.""",
+	
+	DAISY_ADMIRER_MESSAGE = """In the morning you receive a letter from a person you haven't met previously. After reading through it you discover that a landowner named Ramont is requesting that you sell Daisy to him. Apparently, he finds her to be a valuable sub breed that he wishes to experiment on. 
+
+He offers a generous sum of 2.500 gold which easily covers your expenses to date for her training and labor. Since Daisy is your property you wonder if you favor her over this offer.""",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_1 = "Sell her",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_2 = "Give away",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_3 = "Refuse",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_1 = "You decide that, after all, the money will be more useful than she is. You summon Daisy and inform her of your decision.",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_1_1 = """- I-I see... I understand. Thank you, for taking care of me, [master].
+
+You feel slightly down about dealing with her in this way, but you are sure the gold will fix that.""",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_2 = "You decide that you have no use for Daisy and don't really care about the money. You give her away, waiving the offered payment, much to Ramont's joy.",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_2_1 = """- I-I see... I understand. Thank you, for taking care of me, [master].
+
+As Daisy leaves your care and you feel a bit sad.""",
+	DAISY_ADMIRER_MESSAGE_REPLY_1_3 = "Surely the huge sum would cover Daisy's market price many times over, but for some reason you refuse this proposal on the spot. Perhaps, you've grown too attached to her.",
+	
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_0 = """Today Daisy is serving you. As you observe her toiling about, it occurs to you how much more relaxed she is around you now. She notices your attention and turns to you.
+
+- Am I doing something wrong, [Master]?""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1 = "Not really",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2 = "I was just thinking how much you’ve changed",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3 = "You have a splendid ass",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2 = """- We have been together for a long time, haven’t we, [Master]? I-I know I'm in no position to say this, but I’ve thought about you like a family I never really had since the day you saved me and took care of me. That must seem silly to you...""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_3 = """""", # Not implemented > You have a splendid ass
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_1 = "I admire your efforts",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_2 = "I've been thinking of you as part of my family as well",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_3 = "Indeed, you are a slave and better remember your place",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_1 = """Daisy smiles at hearing that before returning to her task. """,
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_2 = """- T-that's... That's embarrassing. Well, let's look after each other then, okay?
+
+Daisy visibly blushes and looks away.""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3 = """-R-right, I'm sorry, [Master].
+
+Daisy looks away, but you notice how her mood notably darkens.""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_2 = """As Daisy cleans around the mansion, she stumbles into one of the decorative vases, causing it to fall and break. Perhaps it was caused by her exhaustion, yet she looks at you with fear filled eyes. 
+
+- I-I'm deeply sorry, [Master]!""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_1 = """I'm not angry. You must be tired.""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_2 = """\"Sorry\" is not going to save you here *Punish*""",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1 = """Daisy looks at you not fully sure if you mean it. It seems she was rather certain you would be angry, but your mercy appears to have improved her opinion of you.
+
+- T-thank you, [Master]. I'll clean this up right away...""",
+	
+	DAISY_LOST_MESSAGE = """This evening you notice that your slave Daisy hasn't returned from her tasks as usual. You’re not sure what, but something is definitely wrong. Daisy is gone and you should start searching for her as soon as possible. Perhaps, the Servants Guild might have ideas on how to find her.""",
+	DAISY_LOST_AMELIA_OPTION_0 = "I've lost someone...",
+	DAISY_LOST_AMELIA_REPLY_0 = """- That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""",
+	DAISY_LOST_AMELIA_OPTION_1_1 = "I might have received a letter from him",
+	DAISY_LOST_AMELIA_OPTION_1_2 = "How could you give him my information like that?",
+	DAISY_LOST_AMELIA_REPLY_1_1 = """- He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	DAISY_LOST_AMELIA_REPLY_1_2 = """- Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	
+	DAISY_LOST_APPROACH_REPLY_0_1 = """As you approach the estate of the supposed kidnapper, you see a group of armed mercenaries who notice you and move in for a fight. """,
+	DAISY_LOST_APPROACH_REPLY_0_2 = """After defeating the mercs, you see a man who must be Ramont himself coming out.
+
+Ramont:- Stop this, there’s no need for further violence.""",
+	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take her back.",
+	DAISY_LOST_APPROACH_OPTION_1_2 = "Where's Daisy? What have you done to her?",
+	DAISY_LOST_APPROACH_OPTION_1_3 = "Give my slave back right now.",
+	DAISY_LOST_APPROACH_REPLY_1 = """Ramont:- Don't be so rash, Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love. 
+
+Ramont:- I sent you that message about wanting her for experiments, but it was a lie to cover my true feelings. Regardless, you refused to give her away despite my willingness to pay. I couldn't hold back and now I've expressed my feelings to her and treat her with care.""",
+	DAISY_LOST_APPROACH_REPLY_2 = """Ramont:- I know she still technically belongs to you, but I offer you a bet. I want to give her a chance to decide if she wants to be with me or with you, and if she chooses you out of her free will, I will give up on her. But if she chooses me, she will stay with me and I will treat her like no other.
+
+The chances are, Daisy has tasted the good will of Ramont and the promise of a better life. Making her choose you over him is a risky decision...""",
+	DAISY_LOST_APPROACH_OPTION_FIGHT = "Don't be ridiculous, she's my property and I'll take her by force if I must",
+	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, let's see what she thinks",
+	DAISY_LOST_APPROACH_OPTION_3_3 = "I can't oppose this dedication of yours, you can have her",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_1 = "Ramont:- So it comes to this... On guard!",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_2 = "After finally managing to knockout Ramont, you quickly rush through his mansion until finding Daisy behind one of the locked doors. You bash it in, and Daisy looks at you in awe.",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_3 = """- [Master]?! W-What are you doing here? You've come for me? I'm sorry I went missing, I didn't mean to...""",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_1 = "I've been worried senseless about you",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_2 = "It's all good, we can work this out with a bit of discipline later on",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_3 = "Don't give me excuses you worthless slut",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_good = """- M-[Master] [name]... I love you! I've been so scared I wouldn’t see you again.
+
+Daisy rushes and hugs you with all her might. As you share a kiss her face brightens with the happiest smile you've ever seen on her.
+
+As you are done here, you leave Ramont's mansion and return home.""",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad = """- You were...? I'm sorry, this won't happen again.
+
+Daisy looks troubled and unsure how to respond to your remark. Deciding there's no point staying there any longer you leave and return home.""",
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_3 = """Hearing your insults Daisy visually shrinks and clutches at her ears in fear.
+
+- I'm sorry, I'm so sorry, [Master], please don't be angry...
+
+As you finish your outburst you grab Daisy and leave Ramont's estate, returning to the mansion.""",
+	DAISY_LOST_APPROACH_REPLY_3_2 = """After a couple of minutes Daisy is brought to you and the situation is explained to her. She seems terribly puzzled and stands in silence, racking her brain to remember the last time she was required or allowed to stand up for herself much less make a meaningful decision concerning her future.""",
+	DAISY_LOST_APPROACH_REPLY_3_2_good = """
+
+Daisy:- [Master], for all you've done for me, I could never abandon you. I'm sorry, Sir Ramont, but I belong to my [Master], [name]. I can't return your feelings.
+
+Ramont:- I see... I understand. It was a pleasure to spend at least a bit of time with you. [name], I truly envy you, but I wish you both happiness. 
+
+With that, Ramont turns and leaves.""",
+	DAISY_LOST_APPROACH_REPLY_3_2_bad = """
+
+Daisy:- I-I... want to thank you, [master], but I'd prefer to stay with Sir Ramont. I'm sorry... 
+
+It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Accepting your defeat, you leave the estate all alone.""",
+	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect. """,
+	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	#           QUESTS           #
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
@@ -5089,4 +5360,18 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
 	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
 	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
+	
+	DAISY_CLOTHES_SUMMARY = "",
+	DAISY_CLOTHES_NAME = "",
+	DAISY_CLOTHES_STAGE_1 = "",
+	
+	DAISY_TRAINING_SUMMARY = "",
+	DAISY_TRAINING_NAME = "",
+	DAISY_TRAINING_STAGE_1 = "",
+	DAISY_TRAINING_STAGE_2 = "",
+	
+	DAISY_LOST_SUMMARY = "",
+	DAISY_LOST_NAME = "",
+	DAISY_LOST_STAGE_1 = "",
+	DAISY_LOST_STAGE_2 = "",
 }

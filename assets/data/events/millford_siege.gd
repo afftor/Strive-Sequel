@@ -591,7 +591,8 @@ var data = {
 		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'}, {code = 'progress_quest', value = 'final_operation', stage = 'stage0'}]
 		}],
 	},
 }

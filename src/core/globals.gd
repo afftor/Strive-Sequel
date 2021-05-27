@@ -1451,6 +1451,12 @@ func common_effects(effects):
 					while counter > 0:
 						counter -= 1
 						AddItemToInventory(CreateGearItem(item.code, {}))
+			'remove_slave_by_name':
+				for id in ResourceScripts.game_party.characters:
+					var p = characters_pool.get_char_by_id(id)
+					if i.name == p.statlist.statlist.name:
+						ResourceScripts.game_party.remove_slave(p)
+						return
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
