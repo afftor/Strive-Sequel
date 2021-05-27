@@ -169,6 +169,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]}],
 		options = [ {
 			code = 'daisy_dress_acquired_normal_2', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '+'}]
@@ -238,6 +241,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]}],
 		options = [ {
 			code = 'daisy_dress_acquired_lewd_2', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
