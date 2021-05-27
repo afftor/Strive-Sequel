@@ -369,10 +369,10 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Occupation"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 152.0
-margin_top = 290.0
-margin_right = 1023.0
-margin_bottom = 1010.0
+margin_left = 40.0
+margin_top = 257.0
+margin_right = 1134.0
+margin_bottom = 1044.0
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
 __meta__ = {

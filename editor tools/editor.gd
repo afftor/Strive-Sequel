@@ -16,7 +16,7 @@ func _ready():
 		return
 	for t in modding_core.tables:
 		tablesel.add_item(t)
-	
+
 	core_setup()
 	select_table(0)
 
@@ -24,7 +24,7 @@ func show_data(args = null):
 	var tab = inspector.get_current_tab_control()
 	var data = tab.get_selected_data()
 	if data == null: prewnode.text = ""
-	else: 
+	else:
 		prewnode.text = to_json(tab.get_selected_text())
 		prewnode.text += ':'
 		prewnode.text += editor_core.display_res(data)
@@ -33,7 +33,7 @@ func select_table(id):
 	editor_core.current_table = tablesel.get_item_text(id)
 	editor_core.current_mod = modding_core.mod_tables[editor_core.current_table]
 	modname.text = editor_core.current_mod
-	for t in inspector.get_children(): 
+	for t in inspector.get_children():
 		t.setup_tables()
 		t.rebuild_list()
 

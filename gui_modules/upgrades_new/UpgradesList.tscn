@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Upgrades 2021/bar_upgrades_small.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_upgradetree_hover.png" type="Texture" id=2]
@@ -9,23 +9,31 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18_special.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_26.tres" type="DynamicFont" id=8]
 [ext_resource path="res://gui_modules/upgrades_new/UpgradesList.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/gui/upgrades/upgrade_tier1.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/upgrades/alchemy.png" type="Texture" id=11]
 
 [node name="UpgradesList" type="Control"]
 margin_right = 850.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 850, 1000 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureButton" parent="."]
 visible = false
 margin_right = 190.0
 margin_bottom = 211.0
+rect_scale = Vector2( 0.7, 0.7 )
 toggle_mode = true
 shortcut_in_tooltip = false
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 2 )
 texture_disabled = ExtResource( 4 )
+expand = true
+stretch_mode = 5
 script = ExtResource( 6 )
 
 [node name="Image" type="TextureRect" parent="Button"]
@@ -33,17 +41,21 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 185.0
 margin_bottom = 185.0
+texture = ExtResource( 11 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Image2" type="TextureRect" parent="Button"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 185.0
-margin_bottom = 185.0
+modulate = Color( 0.243137, 1, 0.698039, 1 )
+margin_left = 50.1137
+margin_top = 98.3182
+margin_right = 188.114
+margin_bottom = 179.318
+texture = ExtResource( 10 )
 expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

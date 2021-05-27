@@ -1,57 +1,57 @@
 extends Node
 
 var upgradelist = {
-	resource_gather_fish = {
-		code = 'resource_gather_fish',
-		name = '',
-		positionorder = 3,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFISHBONUS"),
-				taskprogress = 100,
-				cost = {wood = 50, fish = 100},
-			},
-			2:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFISHBONUS"),
-				taskprogress = 200,
-				cost = {wood = 100, fish = 250},
-			},
-			3:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFISHBONUS"),
-				taskprogress = 300,
-				cost = {wood = 200, fish = 350},
-			},
-			4:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFISHBONUS"),
-				taskprogress = 400,
-				cost = {woodmagic = 100, fish = 500},
-			},
-			5:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFISHBONUS"),
-				taskprogress = 500,
-				cost = {woodiron = 200, fish = 500},
-			}
-		}
-	},
+#	resource_gather_fish = {
+#		code = 'resource_gather_fish',
+#		name = '',
+#		positionorder = 3,
+#		descript = '',
+#		category = 'facilitiy',
+#		levels = {
+#			1:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFISHBONUS"),
+#				taskprogress = 100,
+#				cost = {wood = 50, fish = 100},
+#			},
+#			2:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFISHBONUS"),
+#				taskprogress = 200,
+#				cost = {wood = 100, fish = 250},
+#			},
+#			3:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFISHBONUS"),
+#				taskprogress = 300,
+#				cost = {wood = 200, fish = 350},
+#			},
+#			4:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFISHBONUS"),
+#				taskprogress = 400,
+#				cost = {woodmagic = 100, fish = 500},
+#			},
+#			5:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFISHBONUS"),
+#				taskprogress = 500,
+#				cost = {woodiron = 200, fish = 500},
+#			}
+#		}
+#	},
 	resource_gather_veges = {
 		code = 'resource_gather_veges',
 		name = '',
-		positionorder = 3,
 		descript = '',
 		category = 'facilitiy',
-		tree_position = {x = 4, y = 6},#for testing & example
+		icon = "veges",
+		tree_position = {x = 1, y = 5},#for testing & example
 		levels = {
 			1:{
 				unlockreqs = [],
@@ -60,34 +60,34 @@ var upgradelist = {
 				taskprogress = 100,
 				cost = {wood = 50, vegetables = 100},
 			},
-			2:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-				taskprogress = 200,
-				cost = {wood = 100, vegetables = 250},
-			},
-			3:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-				taskprogress = 300,
-				cost = {wood = 200, vegetables = 350},
-			},
-			4:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-				taskprogress = 400,
-				cost = {woodmagic = 100, vegetables = 500},
-			},
-			5:{
-				unlockreqs = [],
-				icon = 'upgrade_farm',
-				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-				taskprogress = 500,
-				cost = {woodiron = 200, vegetables = 500},
-			}
+#			2:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
+#				taskprogress = 200,
+#				cost = {wood = 100, vegetables = 250},
+#			},
+#			3:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
+#				taskprogress = 300,
+#				cost = {wood = 200, vegetables = 350},
+#			},
+#			4:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
+#				taskprogress = 400,
+#				cost = {woodmagic = 100, vegetables = 500},
+#			},
+#			5:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm',
+#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
+#				taskprogress = 500,
+#				cost = {woodiron = 200, vegetables = 500},
+#			}
 		}
 	},
 	resource_gather_grains = {
@@ -95,6 +95,8 @@ var upgradelist = {
 		name = '',
 		positionorder = 4,
 		descript = '',
+		tree_position = {x = 1, y = 1},
+		icon = "wheat",
 		category = 'facilitiy',
 		levels = {
 			1:{
@@ -111,6 +113,8 @@ var upgradelist = {
 		name = '',
 		positionorder = 5,
 		descript = '',
+		tree_position = {x = 5, y = 1},
+		icon = "cotton",
 		category = 'facilitiy',
 		levels = {
 			1:{
@@ -127,6 +131,7 @@ var upgradelist = {
 		name = '',
 		positionorder = 1,
 		descript = '',
+		icon = "tailor",
 		category = 'facilitiy',
 		levels = {
 			1:{
@@ -156,6 +161,7 @@ var upgradelist = {
 		code = 'forge',
 		name = '',
 		positionorder = 2,
+		icon = "forge",
 		descript = '',
 		category = 'facilitiy',
 		levels = {
@@ -186,6 +192,7 @@ var upgradelist = {
 		code = 'alchemy',
 		name = '',
 		positionorder = 2,
+		icon = "alchemy",
 		descript = '',
 		category = 'facilitiy',
 		levels = {
@@ -216,6 +223,7 @@ var upgradelist = {
 		code = 'master_bedroom',
 		name = '',
 		positionorder = 6,
+		icon = "alchemy",
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -248,6 +256,7 @@ var upgradelist = {
 		name = '',
 		positionorder = 5,
 		descript = '',
+		icon = "stables",
 		category = 'upgrade',
 		levels = {
 			1:{
@@ -279,6 +288,7 @@ var upgradelist = {
 		name = '',
 		positionorder = 4,
 		descript = '',
+		icon = "forge",
 		category = 'upgrade',
 		levels = {
 			1:{
@@ -303,6 +313,7 @@ var upgradelist = {
 		name = '',
 		positionorder = 5,
 		descript = '',
+		icon = "tortureroom",
 		category = 'upgrade',
 		levels = {
 			1:{
@@ -319,6 +330,7 @@ var upgradelist = {
 		code = 'rooms',
 		name = '',
 		positionorder = 4,
+		icon = "alchemy",
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -364,6 +376,7 @@ var upgradelist = {
 		code = 'luxury_rooms',
 		name = '',
 		positionorder = 3,
+		icon = "alchemy",
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -394,7 +407,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS4"),
 				taskprogress = 400,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
-			},\
+			},
 		}
 	},
 
@@ -402,6 +415,7 @@ var upgradelist = {
 		code = 'tattoo_set',
 		name = '',
 		positionorder = 8,
+		icon = "tattoo",
 		descript = '',
 		category = 'upgrade',
 		levels = {

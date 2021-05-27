@@ -96,6 +96,7 @@ func start_game_confirm():
 
 func gameplay_setting(button):
 	input_handler.globalsettings[button.name] = button.pressed
+	print(button.name, input_handler.globalsettings[button.name])
 
 func CloseDemoWarn():
 	input_handler.globalsettings.warnseen = true

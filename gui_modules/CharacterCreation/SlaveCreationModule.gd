@@ -5,13 +5,13 @@ func _ready():
 	$descript.connect("meta_hover_ended", self, "text_url_hover_hide")
 	for i in get_parent().bodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).connect("item_selected", self, "select_bodypart", [i, $ScrollContainer/HBoxContainer/bodyparts.get_node(i)])
-	
+
 	for i in get_parent().sexbodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).connect("item_selected", self, "select_sexbodypart", [i, $ScrollContainer/HBoxContainer/bodyparts2.get_node(i)])
-	
+
 	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).connect("pressed", self, "select_checkbox", [i, $ScrollContainer/HBoxContainer/bodyparts2.get_node(i)])
-	
+
 	$ScrollContainer/HBoxContainer/bodyparts2/diet.connect("pressed", self, 'select_diet')
 	for i in variables.personality_array:
 		$ScrollContainer/HBoxContainer/bodyparts2/personality.add_item(i.capitalize())
@@ -45,8 +45,8 @@ func build_bodyparts():
 		# 	get_parent().person.set_stat(i, "")
 		# else:
 		# 	if get_parent().preservedsettings.has(i):
-		# 		get_parent().preservedsettings[i] = ''		
-		
+		# 		get_parent().preservedsettings[i] = ''
+
 		var workarray = []
 		if racedata.has(i):
 			workarray = racedata[i]
@@ -58,36 +58,36 @@ func build_bodyparts():
 			if get_parent().preservedsettings.has(i) and get_parent().preservedsettings[i] == k:
 				preserved_option_exists = true
 				$ScrollContainer/HBoxContainer/bodyparts.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count()-1)
-		
+
 		if preserved_option_exists == false:
 			# get_parent().preservedsettings.erase(i)
 			get_parent().preservedsettings[i] = person.get_stat(i)
 			#preservedsettings[i] = person.get(i)
 			#print(i, person.get(i))
-		
+
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).disabled = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() == 1
-		
+
 		if $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() == 0:
 			get_parent().preservedsettings.erase(i)
-		
+
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).visible = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() != 0
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i+'_label').visible = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).visible
 	for i in get_parent().sexbodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).clear()
 		var current_bodypart = person.get_stat(i)
-		
+
 		if get_parent().preservedsettings.has(i) == false && current_bodypart != '':
 			get_parent().preservedsettings[i] = current_bodypart
-		
-		
+
+
 		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(get_parent().preservedsettings[i]):
 			person.set_stat(i, racedata[i][randi()%racedata[i].size()])
 			get_parent().preservedsettings[i] = person.get_stat(i)
 		elif i == 'penis_type' && racedata.has(i) == false && get_parent().preservedsettings[i] != 'human':
 			person.set_stat(i, 'human')
 			get_parent().preservedsettings[i] = person.get_stat(i)
-		
-		
+
+
 		match person.get_stat('sex'):
 			'male':
 				$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).visible = true
@@ -110,7 +110,7 @@ func build_bodyparts():
 				elif i in ['penis_size', 'penis_type']:
 					$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).visible = true
 					$ScrollContainer/HBoxContainer/bodyparts2.get_node(i + "_label").visible = true
-		
+
 		if person.get_stat('sex') == 'male':
 			match i:
 				'penis_size', 'balls_size':
@@ -130,21 +130,21 @@ func build_bodyparts():
 						$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(k)
 						if get_parent().preservedsettings.has(i) && get_parent().preservedsettings[i] == k:
 							$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count()-1)
-							
+
 				'tits_size', 'ass_size':
 					for k in get_parent().sizes:
 						$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(k)
 						if get_parent().preservedsettings.has(i) && get_parent().preservedsettings[i] == k:
 							$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count()-1)
-		
+
 		if i == 'penis_type':
 			$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(person.get_stat('penis_type'))
-		
+
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).disabled = $ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count() == 1
-	
+
 	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).pressed = person.get_stat(i)
-	
+
 	match person.get_stat('sex'):
 		'male':
 			$ScrollContainer/HBoxContainer/bodyparts2/penis_virgin.visible = true
@@ -160,14 +160,14 @@ func build_bodyparts():
 func select_bodypart(value, bodypart, node):
 	var person = get_parent().person
 	get_parent().preservedsettings[bodypart] = node.get_item_text(value)
-	
+
 	get_parent().apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
 
 func select_sexbodypart(value, bodypart, node):
 	var person = get_parent().person
 	get_parent().preservedsettings[bodypart] = node.get_item_text(value)
-	
+
 	get_parent().apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
 
@@ -178,7 +178,7 @@ func select_type(value, node):
 func select_checkbox(bodypart, node):
 	var person = get_parent().person
 	get_parent().preservedsettings[bodypart] = node.pressed
-	
+
 	get_parent().apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
 
