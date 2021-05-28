@@ -850,12 +850,12 @@ var scenedict = {
 	},
 	daisy_claim_kinship = {
 		text = tr("SCENEDAISY_CLAIM_KINSHIPTEXT"),
-		tags = [],
+		tags = ['dialogue_scene'],
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'make_story_character', value = 'Daisy'},{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1},
 		],
 	},
 	daisy_purchase = {
@@ -909,23 +909,23 @@ var scenedict = {
 	},
 	daisy_purchase_confirm = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
-		tags = [],
+		tags = ['dialogue_scene'],
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200},
 		{code = 'make_story_character', value = 'Daisy'},
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []}],
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},
 	daisy_purchase_confirm_discount = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
-		tags = [],
+		tags = ['dialogue_scene'],
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []}],
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},
 	daisy_purchase_leave = {
 		text = tr("SCENEDAISY_PURCHASE_LEAVE_TEXT"),
