@@ -489,13 +489,13 @@ func test_mode():
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
-		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
-		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
-		ResourceScripts.game_res.upgrades.alchemy = 3
-		ResourceScripts.game_res.upgrades.tailor = 3
-		ResourceScripts.game_res.upgrades.luxury_rooms = 1
-		ResourceScripts.game_res.upgrades.forge = 3
-		ResourceScripts.game_res.upgrades.tattoo_set = 1
+#		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
+#		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
+#		ResourceScripts.game_res.upgrades.alchemy = 3
+#		ResourceScripts.game_res.upgrades.tailor = 3
+#		ResourceScripts.game_res.upgrades.luxury_rooms = 1
+#		ResourceScripts.game_res.upgrades.forge = 3
+#		ResourceScripts.game_res.upgrades.tattoo_set = 1
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
 		character.equip(item)
@@ -572,39 +572,39 @@ func test_mode():
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
 		character.is_players_character = true
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
 
 		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
@@ -813,7 +813,7 @@ func test_mode():
 
 
 		#input_handler.interactive_message('servants_election_finish6', '', {})
-		input_handler.interactive_message('freya_shrine_find', '', {})
+		#input_handler.interactive_message('after_mines_duncan_start', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
 #		input_handler.interactive_message('princess_recriut_intermission_3', '', {})

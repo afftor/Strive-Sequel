@@ -1,5 +1,10 @@
+0.5.1
+Added upgrade to increase exotic trader slave quality
+Added upgrade to increase number of sex interactions per day
 Changed upgrade price for Alchemy level 3
 Shrine events now have images
+Life and energy shard drop rates reduced
+Fixed multiturn skip taking too much time to calculate
 Fixed loot window sometimes showing 0 as loot number
 Fixed ballista having melee attack instead of ranged
 Fixed easy quest being in hard quest pool in fighter guild

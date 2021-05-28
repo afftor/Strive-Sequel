@@ -91,7 +91,8 @@ margin_right = 225.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Upgrades tree"
+text = "Upgrades"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,13 +106,13 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Modes/Mode2"]
-margin_left = 34.0
-margin_top = 9.0
-margin_right = 238.0
-margin_bottom = 49.0
+margin_left = 19.8419
+margin_top = 8.05614
+margin_right = 252.842
+margin_bottom = 48.0561
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Active upgrades"
+text = "Upgrade Schedule"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -549,6 +550,9 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Modes/Mode1" to="." method="open_tree"]
 [connection signal="pressed" from="Modes/Mode2" to="." method="open_queue"]

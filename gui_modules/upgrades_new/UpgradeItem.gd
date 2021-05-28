@@ -31,7 +31,7 @@ func setup_upgrade(upgrade_id):
 		$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
 	else:
 		$Image2.texture = images.upgrade_tiers[upgrade_lv]
-		$Image.modulate = Color(0,1,0)
+		$bg.modulate = Color("66b138")
 
 
 #	if upgrade_next_state != null:
@@ -61,12 +61,18 @@ func setup_upgrade(upgrade_id):
 		$Progress/Label.text = "%d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 		$Progress.max_value = upgrade_next_state.taskprogress
 		$Progress.value = ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress
+		$bg.modulate = Color("b13899")
 #	elif upgrade_state != null:
 #		$Progress/Label.text = "%d/%d" % [upgrade_state.taskprogress, upgrade_state.taskprogress]
 #		$Progress.max_value = upgrade_state.taskprogress
 #		$Progress.value = upgrade_state.taskprogress
 	else:
-		$Progress.visible = false
+		if upgrade_next_state == null:
+			$Progress.visible = true
+			$Progress.value = $Progress.max_value
+			$Progress/Label.hide()
+		else:
+			$Progress.visible = false
 
 
 func set_selected():

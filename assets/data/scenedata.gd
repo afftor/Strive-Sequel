@@ -917,7 +917,7 @@ var scenedict = {
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
-		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
+		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1",
 		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
 		],
 	},
@@ -929,9 +929,9 @@ var scenedict = {
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
 		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
-		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1", 
+		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1",
 		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
-		
+
 		],
 	},
 	daisy_purchase_leave = {
@@ -1712,7 +1712,7 @@ var quests = {
 			stage1 = {code = 'stage1', name = "Thank you for playing", descript = ""}
 		},
 	},
-	
+
 	daisy_clothes = {
 		code = 'daisy_clothes',
 		summary = "DAISY_CLOTHES_SUMMARY",
@@ -1720,7 +1720,7 @@ var quests = {
 			stage1 = {code = 'stage1', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_1"}
 		},
 	},
-	
+
 	daisy_training = {
 		code = 'daisy_training',
 		summary = "DAISY_TRAINING_SUMMARY",
@@ -1729,7 +1729,7 @@ var quests = {
 			stage2 = {code = 'stage2', name = "DAISY_TRAINING_NAME", descript = "DAISY_TRAINING_STAGE_2"} # wait until training finished
 		},
 	},
-	
+
 	daisy_lost = {
 		code = 'daisy_clothes',
 		summary = "DAISY_LOST_SUMMARY",

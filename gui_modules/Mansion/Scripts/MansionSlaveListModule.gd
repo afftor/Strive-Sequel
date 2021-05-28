@@ -228,7 +228,7 @@ func build_sex_selection(person, newbutton):
 func update_description():
 	var sex_participants = get_parent().sex_participants
 	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
-	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_sex_left) + "/1"
+	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_sex_left) + "/" + str(1 + ResourceScripts.game_res.upgrades.sex_times)
 
 
 func calculate_sex_limits():

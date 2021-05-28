@@ -1440,10 +1440,10 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		eventarray = [], 
-		levels = [1,1], 
+		eventarray = [],
+		levels = [1,1],
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
@@ -1452,12 +1452,12 @@ var dungeons = {
 		stages_per_level = [10,10],
 		bgm = "dungeon",
 		purchase_price = 0,
-		affiliation = 'local', #defines character races and events 
+		affiliation = 'local', #defines character races and events
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
 		locked = true,
-		
+
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = []
@@ -1734,7 +1734,7 @@ var pregen_characters = {
 		ass_size = 'small',
 		tits_size = 'average',
 		sex_traits = ['pushover','dislike_group'],
-		tags = ['no_sex'],
+		tags = [],
 		personality = 'shy',
 		food_like = 'vege',
 		food_hate = ['fish'],
