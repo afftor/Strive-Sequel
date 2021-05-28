@@ -1717,7 +1717,9 @@ var quests = {
 		code = 'daisy_clothes',
 		summary = "DAISY_CLOTHES_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_1"}
+			stage1 = {code = 'stage1', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_1"},
+			stage2 = {code = 'stage2', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_2"},
+			stage3 = {code = 'stage3', name = "DAISY_CLOTHES_NAME", descript = "DAISY_CLOTHES_STAGE_3"}
 		},
 	},
 
