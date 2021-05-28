@@ -188,7 +188,7 @@ var sprites = {
 	zephyra = load("res://assets/images/sprites/zephyra.png"),
 	daisy_default = load("res://assets/images/sprites/daisy_default.png"),
 	daisy_maid = load("res://assets/images/sprites/daisy_maid.png"),
-	daist_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
+	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	}
 
 var dynamic_backgrounds = {
@@ -483,6 +483,14 @@ var upgrade_icons = {
 	tortureroom = load("res://assets/images/gui/upgrades/tortureroom.png"),
 	veges = load("res://assets/images/gui/upgrades/veges.png"),
 	wheat = load("res://assets/images/gui/upgrades/wheat.png"),
+	exotic_trader = load("res://assets/images/gui/upgrades/exotic_trader.png"),
+	fishing = load("res://assets/images/gui/upgrades/fishing.png"),
+	hunting = load("res://assets/images/gui/upgrades/hunting.png"),
+	mining = load("res://assets/images/gui/upgrades/mining.png"),
+	rooms = load("res://assets/images/gui/upgrades/rooms.png"),
+	rooms_lux = load("res://assets/images/gui/upgrades/rooms_lux.png"),
+	woodcutting = load("res://assets/images/gui/upgrades/woodcutting.png"),
+
 
 
 }

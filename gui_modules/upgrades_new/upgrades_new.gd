@@ -62,15 +62,17 @@ func build_description(upgrade_id):
 
 	desc_panel.visible = true
 
-	var text = tr(upgrade_data.name)
+	var text = tr(upgrade_data.name) + " Level "
 	if upgrade_next_state == null:
-		text += " (max lvl)"
-	desc_panel.get_node("VBoxContainer/desc_header").text = text + " description"
-	if upgrade_next_state != null:
-		text = upgrade_next_state.bonusdescript
+		text +=  str(upgrade_lv)
 	else:
-		text = upgrade_state.bonusdescript
-	desc_panel.get_node("VBoxContainer/description").text = text
+		text += str(upgrade_lv + 1)
+	desc_panel.get_node("VBoxContainer/desc_header").text = text #+ " description"
+	text = tr(upgrade_data.descript) + "\n"
+	if upgrade_next_state != null:
+		text += tr(upgrade_next_state.bonusdescript)
+	else:
+		text += tr(upgrade_state.bonusdescript)
 
 	var can_upgrade = true
 	desc_panel.get_node("VBoxContainer/MarginContainer").visible = true
@@ -87,6 +89,7 @@ func build_description(upgrade_id):
 		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		can_upgrade = false
+		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	else:
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
@@ -108,6 +111,7 @@ func build_description(upgrade_id):
 		panel.get_node("name").text = tr("TASKBUILDING")
 		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
+	desc_panel.get_node("VBoxContainer/description").text = text
 	#2add here building bonuses list not existing for now
 
 
@@ -265,3 +269,4 @@ func add_upgrade_to_queue():
 	build_description(selected_upgrade)
 	upgradeslist.update_upgrades_tree()
 	build_queue_list()
+	input_handler.SystemMessage("New upgrade added to queue: " + upgradedata.upgradelist[selected_upgrade].name)

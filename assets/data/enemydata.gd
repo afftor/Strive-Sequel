@@ -105,7 +105,7 @@ var enemygroups = {
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	daisy_admirer_guards1 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	daisy_admirer_guards2 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	
+
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
 	rebel_group_hideout1 = {reqs = [], units = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]}},
@@ -1629,9 +1629,9 @@ var locks_data = { #makes locks to lockpick for related chests
 
 
 var loottables = {
-	rat_loot = [['leather', 0.1], ['lifeshard', 0.1]],
-	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.2],['insect_chitin',0.1,1]],
-	bandit_loot = [['cloth', 0.4, 2], ['lifeshard', 0.2], ['energyshard', 0.05], ['gold', 1, 3]],
+	rat_loot = [['leather', 0.1], ['lifeshard', 0.05]],
+	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.1],['insect_chitin',0.1,1]],
+	bandit_loot = [['cloth', 0.4, 2], ['lifeshard', 0.1], ['energyshard', 0.03], ['gold', 1, 3]],
 	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 15, 30]],
 	wolf_loot = [['leather', 0.2, 2], ['bone', 0.2]],
 	gryphon_loot = [['leathermythic', 1, 5], ['leathermythic', 0.5, 3]],
@@ -1639,10 +1639,10 @@ var loottables = {
 	bear_loot = [['leatherthick', 0.5, 3]],
 	dog_loot = [['leather', 0.1, 2]],
 	ballista_loot = [['woodiron', 0.5, 3], ['wood', 0.25, 5]],
-	assassin_loot = [['gold', 5, 10],['energyshard', 0.5]],
+	assassin_loot = [['gold', 5, 10],['energyshard', 0.2]],
 	guardian_golem_loot = [['stone',0.9,5]],
 	raptor_loot = [['leatherthick', 0.5, 2]],
-	skeleton_melee_loot = [['bone', 0.5, 3],['lifeshard', 0.2]],
+	skeleton_melee_loot = [['bone', 0.5, 3],['lifeshard', 0.1]],
 	skeleton_archer_loot = [['bone', 0.5, 2]],
 	quest_lich_loot = [['boneancient', 0.5, 2], ['lich_skull', 1], ['energygem', 0.5]],
 	lich_loot = [['boneancient', 0.5, 2], ['energygem', 0.5]],

@@ -306,6 +306,8 @@ func _ready():
 	settings_load()
 	load_progress_data()
 
+	connect("UpgradeUnlocked", self, "upgrade_unlocked")
+
 func _input(event):
 	if event.is_echo() == true && !event.is_action_type():
 		return
@@ -821,8 +823,8 @@ func dialogue_option_selected(option):
 		gui_controller.dialogue.previous_text = active_character.translate(tr(option.text))
 	else:
 		gui_controller.dialogue.previous_text = tr(option.text)
-	if !ResourceScripts.game_progress.selected_dialogues.has(option.text):
-		ResourceScripts.game_progress.selected_dialogues.append(option.text)
+	if !ResourceScripts.game_progress.selected_dialogues.has(option.text_key):
+		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
 
 var dialogue_array = []
 var event_is_active = false
@@ -1452,3 +1454,10 @@ func get_actual_size_for_container(node):
 func if_translation_key(text:String):
 	var ntext = tr(text)
 	return ntext != text
+
+
+func upgrade_unlocked(upgrade):
+	if upgrade.code == 'exotic_trader':
+		ResourceScripts.game_world.areas.plains.factions.exotic_slave_trader.slavelevel = ResourceScripts.game_res.upgrades.exotic_trader*2+1
+
+

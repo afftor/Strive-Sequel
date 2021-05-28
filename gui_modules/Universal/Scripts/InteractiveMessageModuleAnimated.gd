@@ -725,6 +725,7 @@ func handle_scene_options(scene):
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
+			i.text_key = i.text
 			i.text = tr(i.text)
 			if i.has('active_char_translate'):
 				i.text = input_handler.active_character.translate(tr(i.text))
@@ -774,7 +775,7 @@ func handle_scene_options(scene):
 				else:
 					newbutton.connect("pressed", self, i.code)
 
-			if ResourceScripts.game_progress.selected_dialogues.has(i.text):
+			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
 				newbutton.status = 'seen'
 			if i.has('type'):
 				match i.type:

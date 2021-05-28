@@ -14,7 +14,7 @@ func _button_clicked(state, button):
 		get_parent().mansion_state = state
 	else:
 		get_parent().mansion_state = "default"
-	
+
 func open_inventory():
 	if get_parent().active_person == null:
 		var person = ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]]
@@ -28,7 +28,7 @@ func open_inventory():
 	get_parent().mansion_state_set("default")
 	gui_controller.emit_signal("screen_changed")
 	yield(get_tree().create_timer(0.3), "timeout")
-	
+
 func open_interaction():
 	get_parent().InteractSelection.show()
 	get_parent().InteractSelection.open()

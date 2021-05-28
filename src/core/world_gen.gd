@@ -620,3 +620,4 @@ func generate_random_gear(dict):#
 
 	return {code = itemtemplate.code, itemparts = itemparts, bonus = {}}
 
+
