@@ -105,6 +105,7 @@ var data = {
 		text = [{text = "DAISY_CLOTHES_SIGMUND_REPLY_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DAISY_CLOTHES_SIGMUND_OPTION_2", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage2'}, {code = "update_guild"}]
 		}],
 	},
 	
@@ -126,7 +127,7 @@ var data = {
 		reqs = [], character = 'amelia',
 		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_2_1", reqs = []}],
 		options = [ {
-			code = 'daisy_clothes_amelia_3', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1_1", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_CLOTHES_AMELIA_OPTION_2_1'}], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'daisy_clothes_amelia_3_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
 			code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE", reqs = [], dialogue_argument = 3, 
 		}],
@@ -137,33 +138,33 @@ var data = {
 		reqs = [], character = 'amelia',
 		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_2_2", reqs = []}],
 		options = [ {
-			code = 'daisy_clothes_amelia_3', text = "DAISY_CLOTHES_AMELIA_OPTION_2_2_1", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_CLOTHES_AMELIA_OPTION_2_2'}], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'daisy_clothes_amelia_3_2', text = "DAISY_CLOTHES_AMELIA_OPTION_2_2_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
 			code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE", reqs = [], dialogue_argument = 3, 
 		}],
 	},
-	
-	daisy_clothes_amelia_3 = {
-		variations = [ {
-			reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_CLOTHES_AMELIA_OPTION_2_1_1'}],
-			tags = ['dialogue_scene'], image = null,
-			text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_150", reqs = []}],
-			common_effects = [{code = 'money_change', operant = '-', value = 150}],
-			options = [ {
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1", 
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
-			}],
-		}, {
-			reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_CLOTHES_AMELIA_OPTION_2_2_1'}],
-			tags = ['dialogue_scene'], image = null,
-			text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_250", reqs = []}],
-			common_effects = [{code = 'money_change', operant = '-', value = 250}],
-			options = [ {
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1", 
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
-			}],
-		} ]
-	},
+	daisy_clothes_amelia_3_1 = {
+		reqs = [],
+		tags = ['dialogue_scene'], image = null,
+		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_150", reqs = []}],
+		common_effects = [{code = 'money_change', operant = '-', value = 150},
+		{code = 'decision', value = 'DaisyDressNormal'}], # dress decision normal
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1", 
+			args = [{type = 'add_to_date', date = [1,1], hour = 8}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+		}],
+	}, 
+	daisy_clothes_amelia_3_2 = {
+		reqs = [],
+		tags = ['dialogue_scene'], image = null,
+		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_3_250", reqs = []}],
+		common_effects = [{code = 'money_change', operant = '-', value = 250},
+		{code = 'decision', value = 'DaisyDressLewd'}], # dress decision lewd
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1", 
+			args = [{type = 'add_to_date', date = [1,1], hour = 8}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+		}],
+	}, 
 	
 	daisy_dress_acquired_normal_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
@@ -421,9 +422,9 @@ var data = {
 	training_complete_sex_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], character = "daisy_default",
-		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_1", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_1'}]},
-		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_2", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_2'}]},
-		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_3", reqs = [{type = 'dialogue_selected', check = true, value = 'TRAINING_COMPLETE_SEX_OPTION_1_1_3'}]},
+		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_1", reqs = [], previous_dialogue_option = 1},
+		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_2", reqs = [], previous_dialogue_option = 2},
+		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_3", reqs = [], previous_dialogue_option = 3},
 		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_all", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message", 

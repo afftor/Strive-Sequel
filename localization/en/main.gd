@@ -5363,7 +5363,9 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	
 	DAISY_CLOTHES_SUMMARY = "",
 	DAISY_CLOTHES_NAME = "",
-	DAISY_CLOTHES_STAGE_1 = "",
+	DAISY_CLOTHES_STAGE_1 = "", # talk to sigmund
+	DAISY_CLOTHES_STAGE_2 = "", # talk to Amelia
+	DAISY_CLOTHES_STAGE_3 = "", # wait for dress to be finished
 	
 	DAISY_TRAINING_SUMMARY = "",
 	DAISY_TRAINING_NAME = "",
