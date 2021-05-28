@@ -1396,6 +1396,42 @@ var itemlist = {
 		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
 	},
 
+	daisy_dress = {
+		code = 'daisy_dress',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['chest','legs'],
+		price = 250,
+		icon = load("res://assets/images/iconsitems/maiduniform.png"),
+		tier = 'medium',
+		reqs = [{code = 'unique', value = 'daisy'}],
+		effects = [],#'e_maid_dress_effect'],
+		tags = ['no_random'],
+		basestats = {charm_bonus = 15, obDrainReduction = 0.6, loyalty_gain_mod = 0.25},
+	},
+	daisy_dress_lewd = {
+		code = 'daisy_dress_lewd',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['chest','legs'],
+		price = 250,
+		icon = load("res://assets/images/iconsitems/maiduniform.png"),
+		tier = 'medium',
+		reqs = [{code = 'unique', value = 'daisy'}],
+		effects = [],#'e_maid_dress_effect'],
+		tags = ['no_random'],
+		basestats = {lusttick = 0.35, sexuals_bonus = 20},
+	},
+
+
 	#gear
 	axe = {
 		name = tr("WEAPONAXENAME"),

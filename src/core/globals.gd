@@ -1131,7 +1131,7 @@ func common_effects(effects):
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
 			'make_story_character':
-				if ResourceScripts.game_party.get_unique_slave(i.value) != null:
+				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:
 					continue
 				var newslave = ResourceScripts.scriptdict.class_slave.new("common_story")
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
