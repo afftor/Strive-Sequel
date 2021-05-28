@@ -240,7 +240,6 @@ func get_quest_work_time():
 func get_selected_work_quest():
 	return selected_work_quest
 
-
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	remove_from_task(false)
 	is_on_quest = true

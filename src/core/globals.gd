@@ -1191,6 +1191,8 @@ func common_effects(effects):
 									text_log_add('char', text)
 								character.tags.erase(k.value)
 								#character.stats.tags.erase(k.value)
+					elif k.code == 'assign_to_quest_and_make_unavalible':
+						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
 					else:
 						character_stat_change(character, k)
 			'start_event':
