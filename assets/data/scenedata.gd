@@ -855,7 +855,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [{code = 'make_story_character', value = 'Daisy'},{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_purchase = {
@@ -916,10 +916,7 @@ var scenedict = {
 		{code = 'make_story_character', value = 'Daisy'},
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
-		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
-		],
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []}],
 	},
 	daisy_purchase_confirm_discount = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
@@ -928,11 +925,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [],
-		bonus_effects = [{code = 'add_timed_event', value = "daisy_recruitment_1",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]},
-
-		],
+		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []}],
 	},
 	daisy_purchase_leave = {
 		text = tr("SCENEDAISY_PURCHASE_LEAVE_TEXT"),
