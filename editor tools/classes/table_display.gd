@@ -7,7 +7,7 @@ var editors_arr = [editor_core.land_scene, editor_core.location_scene, editor_co
 enum Tables {Lands, Locations, FactionData, QuestData, Dundeons, Races, Professions, Character, Skills, Effects, AtomicEffects, EffectsVisuals}
 export(Tables) var type
 
-var table 
+var table
 var table_mod
 
 func _ready():
@@ -26,9 +26,9 @@ func rebuild_list():
 	for key in table: add_item(key)
 	for i in range(get_item_count()):
 		var tmp = get_item_text(i)
-		if table_mod.has(tmp): 
+		if table_mod.has(tmp):
 			set_item_custom_fg_color(i, Color(1, 1, 0, 1))
-		else: 
+		else:
 			set_item_custom_fg_color(i, Color(0, 1, 0, 1))
 
 func get_selected():

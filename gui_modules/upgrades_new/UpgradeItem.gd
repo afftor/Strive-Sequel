@@ -3,7 +3,7 @@ extends TextureButton
 
 func _ready():
 	connect("mouse_entered", self, "set_selected")
-	connect("mouse_exited", self, "set_normal") 
+	connect("mouse_exited", self, "set_normal")
 
 
 func setup_upgrade(upgrade_id):
@@ -23,23 +23,27 @@ func setup_upgrade(upgrade_id):
 	var upgrade_next_state = null
 	if upgrade_data.levels.has(upgrade_lv + 1):
 		upgrade_next_state = upgrade_data.levels[upgrade_lv + 1]
-	
+
 	$name.text = tr(upgrade_data.name)
 	#setup icon
-	if upgrade_data.has('icon'):
-		$Image.texture = images.icons[upgrade_data.icon]
-	else:
-		$Image.texture = null
+	$Image.texture = images.upgrade_icons[upgrade_data.icon]
 	if upgrade_next_state != null:
-		if upgrade_next_state.has('icon'):
-			$Image2.texture = images.icons[upgrade_next_state.icon]
-		else:
-			$Image2.texture = null
+		$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
 	else:
-		if upgrade_state.has('icon'):
-			$Image2.texture = images.icons[upgrade_state.icon]
-		else:
-			$Image2.texture = null
+		$Image2.texture = images.upgrade_tiers[upgrade_lv]
+		$bg.modulate = Color("66b138")
+
+
+#	if upgrade_next_state != null:
+#		if upgrade_next_state.has('icon'):
+#			$Image2.texture = images.upgrade_icons[upgrade_data.icon]
+#		else:
+#			$Image2.texture = null
+#	else:
+#		if upgrade_state.has('icon'):
+#			$Image2.texture = images.upgrade_icons[upgrade_data.icon]
+#		else:
+#			$Image2.texture = null
 		#2add maximazed decoration
 	#setup state
 	disabled = false
@@ -57,12 +61,18 @@ func setup_upgrade(upgrade_id):
 		$Progress/Label.text = "%d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 		$Progress.max_value = upgrade_next_state.taskprogress
 		$Progress.value = ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress
+		$bg.modulate = Color("b13899")
 #	elif upgrade_state != null:
 #		$Progress/Label.text = "%d/%d" % [upgrade_state.taskprogress, upgrade_state.taskprogress]
 #		$Progress.max_value = upgrade_state.taskprogress
 #		$Progress.value = upgrade_state.taskprogress
 	else:
-		$Progress.visible = false
+		if upgrade_next_state == null:
+			$Progress.visible = true
+			$Progress.value = $Progress.max_value
+			$Progress/Label.hide()
+		else:
+			$Progress.visible = false
 
 
 func set_selected():

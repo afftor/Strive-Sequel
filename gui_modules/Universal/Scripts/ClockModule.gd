@@ -68,6 +68,7 @@ func _process(delta):
 			if gametime >= variables.SecondsPerHour:
 				gametime -= variables.SecondsPerHour
 				advance_hour()
+				gui_controller.mansion.SlaveListModule.rebuild()
 
 
 func timeflowhotkey(hotkey):
@@ -87,6 +88,7 @@ func advance_turn():
 		advance_hour()
 		number -= 1
 	rotate_sky()
+	gui_controller.mansion.SlaveListModule.rebuild()
 
 
 func update_labels():
@@ -100,7 +102,7 @@ func rotate_sky(gametime = 0):
 		sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	else:
 		sky.rect_rotation = ((ResourceScripts.game_globals.hour - 1) * DEGREES_PER_HOUR) + (DEGREES_PER_HOUR / variables.SecondsPerHour * gametime)
-		
+
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
 	input_handler.PlaySound("button_click")
@@ -130,11 +132,10 @@ func advance_hour():
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
 		pass
-	
+
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
-	gui_controller.mansion.SlaveListModule.rebuild()
 
 
 func advance_day():
@@ -142,7 +143,7 @@ func advance_day():
 	ResourceScripts.game_globals.hour = 0
 	ResourceScripts.game_globals.date += 1
 	ResourceScripts.game_progress.days_from_last_church_quest += 1
-	ResourceScripts.game_globals.daily_sex_left = 1
+	ResourceScripts.game_globals.daily_sex_left = 1 + ResourceScripts.game_res.upgrades.sex_times
 	ResourceScripts.game_globals.daily_dates_left = 1
 	for i in ResourceScripts.game_party.characters.values():
 		i.cooldown_tick()

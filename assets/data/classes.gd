@@ -107,7 +107,7 @@ var professions = {
 		statchanges = {wits_bonus = 5, physics_bonus = 5},
 		traits = [],
 		skills = ['discipline','publichumiliation','publicsexhumiliation'],
-		combatskills = ["command"], 
+		combatskills = ["command"],
 		conflict_classes = [],
 	},
 	worker = {
@@ -152,7 +152,7 @@ var professions = {
 		statchanges = {hpmax = 15},
 		traits = ['hunter', 'ranged_weapon_mastery'],
 		skills = [],
-		combatskills = ['huntersmark'], 
+		combatskills = ['huntersmark'],
 		conflict_classes = [],
 	},
 	smith = {
@@ -225,7 +225,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [],
 		statchanges = {hpmax = 15},
-		traits = ['farmer'], 
+		traits = ['farmer'],
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
@@ -240,7 +240,7 @@ var professions = {
 #		showupreqs = [],
 #		reqs = [{code = 'stat', type = 'brave_factor', operant = 'lte', value = 3}],
 #		statchanges = {tame_factor = 1, brave_factor = -1},
-#		traits = ['cattle'], 
+#		traits = ['cattle'],
 #		skills = [],
 #		combatskills = [],
 #	},
@@ -269,9 +269,9 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 2}],
 		statchanges = {sexuals_bonus = 10},
-		traits = ['harlot'], 
+		traits = ['harlot'],
 		skills = ['rewardsex'],
-		combatskills = ['distract'], 
+		combatskills = ['distract'],
 		conflict_classes = [],
 	},
 	geisha = {
@@ -365,7 +365,7 @@ var professions = {
 		statchanges = {sexuals_bonus = 15, sexuals_factor = 1, timid_factor = 1},
 		traits = ['sextoy'],
 		skills = ['sharedtoy'],
-		combatskills = ['endure'], 
+		combatskills = ['endure'],
 		conflict_classes = [],
 	},
 	dancer = {
@@ -380,7 +380,7 @@ var professions = {
 		statchanges = {charm_bonus = 10, charm_factor = 1},
 		traits = [],
 		skills = ['allure','performance'],
-		combatskills = ['distract'], 
+		combatskills = ['distract'],
 		conflict_classes = [],
 	},
 	maid = {
@@ -412,7 +412,7 @@ var professions = {
 		statchanges = {physics_bonus = 5, hpmax = 15, speed = 5},
 		traits = ['weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['earth_atk'], 
+		combatskills = ['earth_atk'],
 		conflict_classes = [],
 	},
 	knight = {
@@ -650,7 +650,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 2}],
 		statchanges = {critchance = 3, speed = 10},
-		traits = ['medium_armor','weapon_mastery', 'autohide'], 
+		traits = ['medium_armor','weapon_mastery', 'autohide'],
 		skills = [],
 		combatskills = ['water_atk','hide'],
 		conflict_classes = [],
@@ -682,7 +682,7 @@ var professions = {
 		statchanges = {speed = 10, evasion = 25, hpmax = 10, critmod = 0.25},
 		traits = ['witcrit'],
 		skills = [],
-		combatskills = ['shadowstrike','assassinate'], 
+		combatskills = ['shadowstrike','assassinate'],
 		conflict_classes = [],
 	},
 	engineer = {
@@ -697,10 +697,10 @@ var professions = {
 		statchanges = {wits_bonus = 5, hpmax = 5, hitrate = 10},
 		traits = ['engineer','trap_analyze'],
 		skills = [],
-		combatskills = [], 
+		combatskills = [],
 		conflict_classes = [],
 	},
-	
+
 	templar = {
 		code = 'templar',
 		name = '',
@@ -713,7 +713,7 @@ var professions = {
 		statchanges = {wits_bonus = 5, hpmax = 10, resist_mind = 15},
 		traits = [],
 		skills = [],
-		combatskills = ['purge','righteous_fire'], 
+		combatskills = ['purge','righteous_fire'],
 		conflict_classes = [],
 	},
 	paladin = {
@@ -728,7 +728,7 @@ var professions = {
 		statchanges = {armor = 8, hpmax = 20, resist_dark = 10, resist_light = 10},
 		traits = ['heavy_armor'],
 		skills = [],
-		combatskills = ['holy_atk','taunt'], 
+		combatskills = ['holy_atk','taunt'],
 		conflict_classes = ['knight'],
 	},
 	shaman = {
@@ -743,7 +743,7 @@ var professions = {
 		statchanges = {hpmax = 10, wits_bonus = 5, mpmax = 12},
 		traits = [],
 		skills = [],
-		combatskills = ['reincarnate','spirit1','spirit2','spirit3'], 
+		combatskills = ['reincarnate','spirit1','spirit2','spirit3'],
 		conflict_classes = [],
 	},
 	ranger = {
@@ -758,7 +758,7 @@ var professions = {
 		statchanges = {hpmax = 10, physics_factor = 1},
 		traits = ['ranged_weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['trap','camouflage'], 
+		combatskills = ['trap','camouflage'],
 		conflict_classes = [],
 	},
 	bard = {
@@ -773,7 +773,7 @@ var professions = {
 		statchanges = {charm_bonus = 15, speed = 3},
 		traits = [],
 		skills = [],
-		combatskills = ['bard1','bard2','bard3'], 
+		combatskills = ['bard1','bard2','bard3'],
 		conflict_classes = [],
 	},
 	archmage = {
@@ -788,7 +788,7 @@ var professions = {
 		statchanges = {wits_bonus = 10, mdef = 5},
 		traits = [],
 		skills = [],
-		combatskills = ['earthquake','l_orb'], 
+		combatskills = ['earthquake','l_orb'],
 		conflict_classes = [],
 	},
 	battlesmith = {
@@ -803,7 +803,7 @@ var professions = {
 		statchanges = {hpmax = 20, physics_factor = 1, physics_bonus = 10},
 		traits = [],
 		skills = [],
-		combatskills = ['protective_shell','hammerfall'], 
+		combatskills = ['protective_shell','hammerfall'],
 		conflict_classes = [],
 	},
 	technomancer = {
@@ -818,10 +818,10 @@ var professions = {
 		statchanges = {mpmax = 10, resist_air = 10, wits_bonus = 10},
 		traits = [],
 		skills = [],
-		combatskills = ['mirror_image','energy_field'], 
+		combatskills = ['mirror_image','energy_field'],
 		conflict_classes = [],
 	},
-	
+
 	renown_royalty = {
 		code = 'renown_royalty',
 		name = '',
@@ -834,10 +834,10 @@ var professions = {
 		statchanges = {charm_bonus = 15},
 		traits = ['renown'],
 		skills = ['praise','allure'],
-		combatskills = ['command'], 
+		combatskills = ['command'],
 		conflict_classes = [],
 	},
-	
+
 	alios_champion = {
 		code = 'alios_champion',
 		name = '',
@@ -850,7 +850,7 @@ var professions = {
 		statchanges = {mpmax = 20, wits_bonus = 15},
 		traits = [],
 		skills = [],
-		combatskills = ['wind_atk','windwall'], 
+		combatskills = ['wind_atk','windwall'],
 		conflict_classes = [],
 	},
 }

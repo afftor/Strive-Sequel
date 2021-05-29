@@ -103,8 +103,8 @@ func _ready():
 			ResourceScripts.game_progress.unlocked_classes.append('healer')
 		else:
 			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
-		
-		
+
+
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
@@ -214,7 +214,7 @@ func match_state():
 #			$MansionTravelsModule.show()
 #			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 #			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360)) 
+#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
 #			travels_manager(travels_defaults)
 #			menu_buttons.get_node("TravelsButton").pressed = true
 			if mansion_state != mansion_prev_state:
@@ -243,7 +243,7 @@ func match_state():
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
-			# $MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size()) 
+			# $MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size())
 			$MansionJobModule.cancel_job_choice()
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionJobModule, 0.3)
@@ -361,7 +361,7 @@ func travels_manager(params):
 			is_travel_selected = true
 			selected_travel_characters.clear()
 			selected_destination = params.destination
-			TravelsModule.update_character_dislocation() 
+			TravelsModule.update_character_dislocation()
 			SlaveListModule.rebuild()
 #			TravelsModule.update_buttons()
 
@@ -444,19 +444,19 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
 		SexSelect.get_node("SexButton").disabled = true
-	
+
 	for i in sex_participants:
 		if i.tags.has("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
 	for i in sex_participants:
 		if i.tags.has("no_date"):
 			SexSelect.get_node("DateButton").disabled = true
-	
+
 	SexSelect.get_node("DateButton").disabled = (
-		sex_participants.size() > 1 
-		|| sex_participants.size() == 0 
-		|| sex_participants.has(ResourceScripts.game_party.get_master()) 
-		|| ResourceScripts.game_globals.daily_dates_left <= 0 
+		sex_participants.size() > 1
+		|| sex_participants.size() == 0
+		|| sex_participants.has(ResourceScripts.game_party.get_master())
+		|| ResourceScripts.game_globals.daily_dates_left <= 0
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
 
@@ -489,13 +489,13 @@ func test_mode():
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
-		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
-		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
-		ResourceScripts.game_res.upgrades.alchemy = 3
-		ResourceScripts.game_res.upgrades.tailor = 3
-		ResourceScripts.game_res.upgrades.luxury_rooms = 1
-		ResourceScripts.game_res.upgrades.forge = 3
-		ResourceScripts.game_res.upgrades.tattoo_set = 1
+#		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
+#		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
+#		ResourceScripts.game_res.upgrades.alchemy = 3
+#		ResourceScripts.game_res.upgrades.tailor = 3
+#		ResourceScripts.game_res.upgrades.luxury_rooms = 1
+#		ResourceScripts.game_res.upgrades.forge = 3
+#		ResourceScripts.game_res.upgrades.tattoo_set = 1
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
 		character.equip(item)
@@ -572,9 +572,39 @@ func test_mode():
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
 		character.is_players_character = true
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
 
 		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
@@ -653,7 +683,7 @@ func test_mode():
 		character.set_slave_category('slave')
 		character.add_stat('lust', 100)
 		character.set_stat("tame_factor", 1)
-		character.unlock_class("dancer")
+		#character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
 		# character.assign_to_quest_and_make_unavalible()
@@ -674,7 +704,23 @@ func test_mode():
 				}
 			]
 		)
-		
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Daisy'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'sexuals_factor', value = 1, operant = "+"},
+						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
+						{code = 'submission', operant = '+', value = 50},
+						{code = 'obedience', operant = '+', value = 0},
+						#{code = 'tag', operant = 'remove', value = 'no_sex'},
+					]
+				}
+			]
+		)
+
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Aire'},
@@ -690,11 +736,12 @@ func test_mode():
 				{code = 'make_story_character', value = 'Zephyra'},
 			]
 		)
-		
+
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 1899
 		globals.AddItemToInventory(globals.CreateGearItem("anastasia_bracelet", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
@@ -731,11 +778,11 @@ func test_mode():
 		globals.AddItemToInventory(
 			globals.CreateGearItem("club", {WeaponMace = 'stone'})
 		)
-		
+
 		globals.AddItemToInventory(
 			globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
 		)
-		
+
 		globals.AddItemToInventory(
 			globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
@@ -760,7 +807,7 @@ func test_mode():
 #				{code = 'open_loot'}
 #			]
 #		)
-		
+
 		character.mp = 10
 		var tmp = {}
 		tmp.oral = 70
@@ -772,33 +819,33 @@ func test_mode():
 		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
 				#i.captured = true
-		
-		
+
+
 #		var newslave = ResourceScripts.scriptdict.class_slave.new()
 #		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 #		newslave.set_slave_category('servant')
 #		ResourceScripts.game_party.add_slave(newslave)
-		ResourceScripts.game_progress.decisions.append("mindbreak_completed")
-		
-		
 
-		input_handler.interactive_message('celena_shrine_find', '', {})
-		input_handler.interactive_message('freya_shrine_find', '', {})
+
+
+
+		#input_handler.interactive_message('servants_election_finish6', '', {})
+		input_handler.interactive_message('daisy_lost_message', '', {})
 		#ResourceScripts.gallery.play_scene(0)
-		
-		input_handler.interactive_message('freya_shrine_find', '', {})
+
+#		input_handler.interactive_message('princess_recriut_intermission_3', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("interrogation_success")
-		
+
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
-		
+
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 			i.totalreputation += 5000
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
-		
+
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')

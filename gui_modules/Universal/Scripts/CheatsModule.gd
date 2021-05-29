@@ -62,8 +62,8 @@ func list_cheats():
 			newbutton.get_node("Label").text = "Unlock All Upgrades"
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
-		
-		
+
+
 func set_cheat(cheat = null, btn = null):
 	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]:
 		ResourceScripts.game_progress[cheat] = btn.is_pressed()
@@ -103,7 +103,7 @@ func list_character_cheats(person, button):
 		var target_func = cheat
 		var newbutton = input_handler.DuplicateContainerTemplate(RightSide)
 		newbutton.get_node("Name").text = cheat_dict[cheat]
-		newbutton.connect("pressed", self, target_func)		
+		newbutton.connect("pressed", self, target_func)
 		var font = input_handler.font_size_calculator(newbutton.get_node("Name"))
 		newbutton.get_node("Name").set("custom_fonts/font", font)
 	for btn in CharList.get_children():
@@ -139,7 +139,7 @@ func max_stats():
 	input_handler.SystemMessage("All stats set to maximum")
 	gui_controller.mansion.SlaveModule.show_slave_info()
 
-		
+
 func max_sex_skills():
 	for skill in selected_person.statlist.statlist.sex_skills:
 		selected_person.statlist.statlist.sex_skills[skill] = 100

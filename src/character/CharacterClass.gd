@@ -212,7 +212,7 @@ func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	statlist.process_chardata(data, true)
 	food.process_chardata(data)
-	xp_module.process_chardata(data) #for testing 
+	xp_module.process_chardata(data) #for testing
 	tags = data.tags.duplicate()
 	skills.setup_skills(data)
 
@@ -550,7 +550,7 @@ func fix_serialization():
 	travel = dict2inst(travel)
 	effects = dict2inst(effects)
 	food = dict2inst(food)
-	
+
 	rebuild_parents()
 	repair_skill_panels()
 
@@ -566,7 +566,7 @@ func repair_skill_panels():
 	skills.repair_skill_panels()
 
 #some AI-related functions
-func need_heal(): 
+func need_heal():
 	return statlist.need_heal()
 
 #core functions
@@ -582,7 +582,7 @@ func hp_set(value):
 	if displaynode != null:
 		displaynode.update_hp()
 	if hp <= 0:
-		if has_status('reincarnate'): 
+		if has_status('reincarnate'):
 			hp = get_stat('hpmax')
 			remove_temp_effect_tag('reincarnate')
 #            play_sfx('reborn')
@@ -592,7 +592,7 @@ func hp_set(value):
 		else:
 			death()
 	else:
-		defeated = false 
+		defeated = false
 
 func mp_set(value):
 	if npc_reference == 'combat_global': return
@@ -624,7 +624,7 @@ func killed():
 	equipment.clear_eqip()
 #	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
-	is_active = false 
+	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
@@ -663,7 +663,7 @@ func teleport(data):
 
 
 func process_check(check): #compatibility stub
-	return checkreqs(check) 
+	return checkreqs(check)
 
 func checkreqs(arg, ignore_npc_stats_gear = false): #additional flag is never used
 	if typeof(arg) == TYPE_ARRAY:
@@ -758,7 +758,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return equipment.check_wooden_gear_equipped()
 		'unique':
 			return get_stat('unique') == i.value
-			
+
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -873,11 +873,11 @@ func show_race_description():
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	if temprace.has("combat_skills"):
-		text += "\nCombat Abilitites: " 
+		text += "\nCombat Abilitites: "
 		for i in temprace.combat_skills:
 			text += Skilldata.Skilllist[i].name + "; "
 		text = text.substr(0, text.length() - 2) + "."
-	
+
 	return text
 
 func check_escape_chance():
@@ -898,7 +898,6 @@ func check_escape_possibility():
 			#shackles_chance = null
 			input_handler.emit_signal('shackles_off') #stub
 		return
-	
 	escape()
 
 func escape():
@@ -934,9 +933,9 @@ func tick():
 		#fatigue -= 1
 		travel.tick()
 		return
-	
+
 	xp_module.work_tick()
-	
+
 	if last_escape_day_check != ResourceScripts.game_globals.date && randf() <= 0.2:
 		check_escape_possibility()
 		if ResourceScripts.game_party.characters.has(self.id):
@@ -1158,7 +1157,7 @@ func resurrect(hp_per):
 	hp = int(get_stat('hpmax') * hp_per /100)
 
 func pay_cost(cost):
-	for st in cost: 
+	for st in cost:
 		if st == 'money': ResourceScripts.game_party.money -= cost.money
 		else: add_stat(st, -cost[st])
 
@@ -1169,10 +1168,10 @@ func check_cost(cost):
 
 func check_skill_availability(s_code, target):
 	var check = true
-	
+
 	var template = Skilldata.Skilllist[s_code]
 	var descript = ''
-	
+
 	if !check_cost(template.cost):
 		descript = get_short_name() + ": Can't pay costs'"
 		check = false
@@ -1182,15 +1181,15 @@ func check_skill_availability(s_code, target):
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:
 		descript = get_short_name() + ": Can't use this skill today anymore."
 		check = false
-	
+
 	if !checkreqs(template.reqs):
 		check = false
 		descript = get_short_name() + ": Requirements aren't met."
-	
+
 	if !target.checkreqs(template.targetreqs):
 		check = false
 		descript = target.get_short_name() + ": Target requirements aren't met."
-	
+
 	return {check = check, descript = descript}
 
 
@@ -1211,7 +1210,7 @@ func lockpick_chance(): #used for chest opening
 	var secondary_chance = get_stat('wits')/5 #0-24
 	if check_trait('lockpicking'):
 		secondary_chance = secondary_chance*4 + (randf()*5+5) #max 101-106
-	
+
 	return base_chance + secondary_chance
 
 func fill_ai(data):

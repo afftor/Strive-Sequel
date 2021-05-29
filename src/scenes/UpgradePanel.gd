@@ -6,13 +6,13 @@ var selectedupgrade
 func _ready():
 	input_handler.AddPanelOpenCloseAnimation($UpgradeDescript)
 	$UpgradeDescript/UnlockButton.connect("pressed", self, "unlockupgrade")
-	
+
 	yield(get_tree().create_timer(0.3), "timeout")
 	if ResourceScripts.game_progress.unlock_all_upgrades == true:
 		for i in upgradedata.upgradelist.values():
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	hide()
-	
+
 
 func open():
 	show()
@@ -21,12 +21,12 @@ func open():
 	var array = []
 	for i in upgradedata.upgradelist.values():
 		array.append(i)
-	
+
 	array.sort_custom(self, 'sortupgrades')
-	
+
 	for i in array:
 		var currentupgradelevel = findupgradelevel(i)
-		
+
 		var check = true
 		if i.levels.has(currentupgradelevel+1):
 			for k in i.levels[currentupgradelevel+1].unlockreqs:
@@ -34,13 +34,13 @@ func open():
 					check = false
 		if check == false:
 			continue
-		
+
 		var text = i.name
-		
+
 		if currentupgradelevel > 0 && i.levels.has(currentupgradelevel+1):
 			text += ": " + str(currentupgradelevel+1)
-		
-		
+
+
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		if i.levels.has(currentupgradelevel+1) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
@@ -57,7 +57,7 @@ func open():
 		newbutton.get_node("name").text = text
 		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
-	
+
 	if ResourceScripts.game_res.selected_upgrade.code != '':
 		var tempupgrade = upgradedata.upgradelist[ResourceScripts.game_res.selected_upgrade.code]
 		var tempupgradelevel = ResourceScripts.game_res.selected_upgrade.level
@@ -86,25 +86,25 @@ func selectupgrade(upgrade):
 	selectedupgrade = upgrade
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
-	
+
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
 			continue
 		i.pressed = i.get_meta("upgrade") == selectedupgrade
-	
+
 	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
-	
+
 	var currentupgradelevel = findupgradelevel(upgrade)+1
-	
-	
+
+
 	if currentupgradelevel > 1:
 		text += '\n\n' + tr("UPGRADEPREVBONUS") + ': ' + upgrade.levels[currentupgradelevel-1].bonusdescript
-	
+
 	var canpurchase = true
-	
+
 	if upgrade.levels.has(currentupgradelevel):
 		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + upgrade.levels[currentupgradelevel].bonusdescript
-		
+
 		$UpgradeDescript/Time.show()
 		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
 		for i in upgrade.levels[currentupgradelevel].cost:
@@ -124,13 +124,13 @@ func selectupgrade(upgrade):
 	else:
 		$UpgradeDescript/Time.hide()
 		canpurchase = false
-	
+
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code) && ResourceScripts.game_res.selected_upgrade.code == upgrade.code:
 		canpurchase = false
 	if ResourceScripts.game_progress.free_upgrades == true || ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		canpurchase = true
-	
-	
+
+
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
 
@@ -144,7 +144,7 @@ func findupgradelevel(upgrade):
 func unlockupgrade():
 	var upgrade = selectedupgrade
 	var currentupgradelevel = findupgradelevel(upgrade) + 1
-	
+
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		ResourceScripts.game_res.selected_upgrade = {code = upgrade.code, level = currentupgradelevel}
 	else:
@@ -152,7 +152,7 @@ func unlockupgrade():
 			for i in upgrade.levels[currentupgradelevel].cost:
 				ResourceScripts.game_res.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
 		var upgradecode = upgrade.code
-		
+
 		if ResourceScripts.game_progress.instant_upgrades == false:
 			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
 			ResourceScripts.game_res.selected_upgrade = {code = upgradecode, level = currentupgradelevel}

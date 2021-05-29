@@ -51,7 +51,7 @@ func hide():
 
 
 func select_upgrade(code):
-	if selected_upgrade != code: 
+	if selected_upgrade != code:
 		selected_upgrade = code
 	for panel in upgradeslist.get_children():
 		panel.match_selected(code)
@@ -68,19 +68,21 @@ func build_description(upgrade_id):
 	var upgrade_next_state = null
 	if upgrade_data.levels.has(upgrade_lv + 1):
 		upgrade_next_state = upgrade_data.levels[upgrade_lv + 1]
-	
+
 	desc_panel.visible = true
-	
-	var text = tr(upgrade_data.name)
+
+	var text = tr(upgrade_data.name) + " Level "
 	if upgrade_next_state == null:
-		text += " (max lvl)"
-	desc_panel.get_node("VBoxContainer/desc_header").text = text + " description"
-	if upgrade_next_state != null:
-		text = upgrade_next_state.bonusdescript
+		text +=  str(upgrade_lv)
 	else:
-		text = upgrade_state.bonusdescript
-	desc_panel.get_node("VBoxContainer/description").text = text
-	
+		text += str(upgrade_lv + 1)
+	desc_panel.get_node("VBoxContainer/desc_header").text = text #+ " description"
+	text = tr(upgrade_data.descript) + "\n"
+	if upgrade_next_state != null:
+		text += tr(upgrade_next_state.bonusdescript)
+	else:
+		text += tr(upgrade_state.bonusdescript)
+
 	var can_upgrade = true
 	desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = true
 	desc_panel.get_node("VBoxContainer/resources").visible = true
@@ -100,6 +102,7 @@ func build_description(upgrade_id):
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
 		can_upgrade = false
+		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	else:
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
@@ -123,6 +126,7 @@ func build_description(upgrade_id):
 #		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
 	
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
+	desc_panel.get_node("VBoxContainer/description").text = text
 	#2add here building bonuses list not existing for now
 
 
@@ -131,7 +135,7 @@ func build_queue_list():
 	input_handler.ClearContainer(queuelist)
 	var remains = 0
 	var output = ResourceScripts.game_party.get_output_for_task("building", ResourceScripts.game_world.mansion_location)
-	
+
 	for upgrade in upgrades:
 		var upgrade_data = upgradedata.upgradelist[upgrade]
 		var text = upgrade_data.name
@@ -143,7 +147,7 @@ func build_queue_list():
 		newbutton.parentnodearray = ResourceScripts.game_res.upgrades_queue
 		newbutton.get_node("name").text = text
 		if upgrade_data.has('icon'):
-			newbutton.get_node("Icon").texture = images.icons[upgrade_data.icon]
+			newbutton.get_node("Icon").texture = images.upgrade_icons[upgrade_data.icon]
 		else:
 			newbutton.get_node("Icon").texture = null
 #		if upgrade_next_state != null:
@@ -156,11 +160,11 @@ func build_queue_list():
 #				newbutton.get_node("Icon2").texture = images.icons[upgrade_state.icon]
 #			else:
 #				newbutton.get_node("Icon2").texture = null
-#		newbutton.get_node("Icon").texture = 
+#		newbutton.get_node("Icon").texture =
 		var currentupgradelevel = ResourceScripts.game_res.findupgradelevel(upgrade)
 
 		remains += update_progresses(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
-		
+
 		globals.connecttexttooltip(newbutton, "Drag and drop to change order. Click to remove from queue.")
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgrade])
 		if output > 0:
@@ -250,7 +254,7 @@ func open_tree():
 	modes.get_node("Mode2").pressed = false
 	chars.visible = false
 	modes.get_node("Mode3").pressed = false
-	
+
 	upgradeslist.update_upgrades_tree()
 
 
@@ -261,7 +265,7 @@ func open_queue():
 	modes.get_node("Mode2").pressed = true
 	chars.visible = false
 	modes.get_node("Mode3").pressed = false
-	
+
 	build_queue_list()
 
 
@@ -272,7 +276,7 @@ func open_chars():
 	modes.get_node("Mode2").pressed = false
 	chars.visible = true
 	modes.get_node("Mode3").pressed = true
-	
+
 	build_characters()
 
 
@@ -281,3 +285,4 @@ func add_upgrade_to_queue():
 	build_description(selected_upgrade)
 	upgradeslist.update_upgrades_tree()
 	build_queue_list()
+	input_handler.SystemMessage("New upgrade added to queue: " + upgradedata.upgradelist[selected_upgrade].name)

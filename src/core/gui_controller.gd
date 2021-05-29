@@ -34,7 +34,7 @@ signal screen_changed # You can call this if you need to force mudules update
 # Visibility of submodules of main scenes with a lot of submodules (Mansion, Inventory, etc.) is handled by corresponding main modules.
 # Basically, it is a set of switch statements in main modules that checks whether or not some modules should be updated or visible based on certain conditions.
 
-# Ex. 
+# Ex.
 # CharInfoMainModule.gd
 
 # func match_state():
@@ -230,15 +230,15 @@ func submodules_handler(submodules):
 
 
 
-# There are the toggle buttons are used in some places where the logic of rendering is quite complicated. 
+# There are the toggle buttons are used in some places where the logic of rendering is quite complicated.
 # Because there no easy way to handle the "pressed" state of regular buttons, the Toggle buttons used.
-# When the toggle button pressed, “Window_button_connections” dictionary saves the opened scene as a key and button as a value. 
-# This dictionary is used by methods in other scenes to handle opening and closing windows. (Ex. ExplorationModule.gd set_area_btn_pressed()). 
-# The idea is to check if the just pressed button is the same which was pressed before that. If so, the state of the button sets as “not pressed” which automatically changes the toggle state. 
+# When the toggle button pressed, “Window_button_connections” dictionary saves the opened scene as a key and button as a value.
+# This dictionary is used by methods in other scenes to handle opening and closing windows. (Ex. ExplorationModule.gd set_area_btn_pressed()).
+# The idea is to check if the just pressed button is the same which was pressed before that. If so, the state of the button sets as “not pressed” which automatically changes the toggle state.
 # Any “toggle” signal of these buttons connected to corresponding methods that set the visibility of a scene depending on the “pressed” state (pressed = visible, unpressed = not visible)
 
 
-	
+
 func win_btn_connections_handler(pressed, window, button = null):
 	if pressed:
 		window_button_connections[window] = button

@@ -64,7 +64,7 @@ var individual_lines = {
 	hire_line23 = {text = "Pleased to meet you. I hope I don't get in your way, [Master]...", events = ['hire'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	hire_line24 = {text = "W-wow... You look really strong, [Master]... Please look after me.", events = ['hire'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	hire_line25 = {text = "Y-you're not going to take advantage of me... Are you [Master]?", events = ['hire'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	slavery_line1 = {text = "You... made me into a slave? No... *sob*", events = ['enslave'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	slavery_line2 = {text = "Why have you done this!?", events = ['enslave'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
 	slavery_line3 = {text = "Why...? *sob*", events = ['enslave'], personalities = ['shy','kind','serious'], reqs = [], weight = 1, tags = []},
@@ -90,7 +90,7 @@ var individual_lines = {
 	slavery_line23 = {text = "I don't like this, or you!", events = ['enslave'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	slavery_line24 = {text = "You think you're so tough now huh!?", events = ['enslave'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	slavery_line25 = {text = "So cruel! I won't do anything for you!", events = ['enslave'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	experience_line1 = {text = "I've learned so much recently... I think I'm ready for bigger things!", events = ['exp_for_level'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	experience_line2 = {text = "My skills have grown. ", events = ['exp_for_level'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	experience_line3 = {text = "I feel like I've learned a lot... what do you think, [Master]?", events = ['exp_for_level'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
@@ -116,7 +116,7 @@ var individual_lines = {
 	experience_line23 = {text = "[Master]. I think my skills are improving...", events = ['exp_for_level'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	experience_line24 = {text = "So that's how it's done... I think I get it now...", events = ['exp_for_level'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	experience_line25 = {text = "Right... maybe I am getting better?", events = ['exp_for_level'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	item_created_line1 = {text = "That's finally done...", events = ['item_created'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	item_created_line2 = {text = "I've done it, [Master].", events = ['item_created'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	item_created_line3 = {text = "That thing you asked to make, [Master]...", events = ['item_created'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
@@ -141,7 +141,7 @@ var individual_lines = {
 	item_created_line22 = {text = "Oh... That was really hard to make.", events = ['item_created'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	item_created_line23 = {text = "H-how did I manage it...?", events = ['item_created'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	item_created_line24 = {text = "All done...", events = ['item_created'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	combat_win_line1 = {text = "Phew, we did it, [Master]...", events = ['combat_won'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	combat_win_line2 = {text = "Hah, piece of cake. Who's next?", events = ['combat_won'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	combat_win_line3 = {text = "Well fought. Lets move on, [Master]. ", events = ['combat_won'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -167,7 +167,7 @@ var individual_lines = {
 	combat_win_line23 = {text = "Why did we have to fight?", events = ['combat_won'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	combat_win_line24 = {text = "We couldn't talk this out...?", events = ['combat_won'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	combat_win_line25 = {text = "Let's hope we don't have to fight again...", events = ['combat_won'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	sex_start_line1 = {text = "Um... you really want me to do this? I'm not sure I'm ready...", events = ['sex_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_start_line2 = {text = "You want me for lewd things, [Master]...", events = ['sex_start'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	sex_start_line3 = {text = "I'm not too eager for this, but if you insist.", events = ['sex_start'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -194,7 +194,7 @@ var individual_lines = {
 	sex_start_line24 = {text = "O-oh? You want me for your... needs?", events = ['sex_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_start_line25 = {text = "I-I'll do my best to serve you...", events = ['sex_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_start_line26 = {text = "M-my body is yours... Please be gentle...", events = ['sex_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	sex_finish_line1 = {text = "...I-I'm not against doing it again.", events = ['sex_finish'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_finish_line3 = {text = "Ahh, it feels like a waste to work after this.", events = ['sex_finish'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	sex_finish_line4 = {text = "Uh, my body is all sweaty now... Can I take a bath, [Master]?", events = ['sex_finish'], personalities = ['serious','shy','kind'], reqs = [], weight = 1, tags = []},
@@ -218,7 +218,7 @@ var individual_lines = {
 	sex_finish_line22 = {text = "That felt... really good.", events = ['sex_finish'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_finish_line23 = {text = "O-oh... it's over?", events = ['sex_finish'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_finish_line24 = {text = "I-I hope that I was okay...", events = ['sex_finish'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	master_praise_line1 = {text = "I've got praised by [Master]... It makes me happy", events = ['master_praise'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	master_praise_line2 = {text = "I've earned it, haven't I, [Master]?", events = ['master_praise'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	master_praise_line3 = {text = "O-oh! Thank you, [Master]. I'm glad I could make you happy...", events = ['master_praise'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
@@ -241,7 +241,7 @@ var individual_lines = {
 	master_praise_line20 = {text = "Stop it , [Master]. You're making me blush.", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	master_praise_line21 = {text = "Wow! I didn't think you thought so highly of me!", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	master_praise_line22 = {text = "I'll make sure to keep this up! Just for you, [Master].", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	master_punish_line1 = {text = "Sorry, I'll be good, [Master]...", events = ['master_punish','date_punish_light','date_punish_heavy'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	master_punish_line2 = {text = "Ugh... it really hurts, [Master].", events = ['master_punish','date_punish_light','date_punish_heavy'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	master_punish_line3 = {text = "I understand... this is for the order.", events = ['master_punish'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -267,7 +267,7 @@ var individual_lines = {
 	master_punish_line23 = {text = "I suppose this is the right course for my failures...", events = ['master_punish'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_punish_line24 = {text = "[Master]? Ahh I see... It will be a lesson not soon forgotten...", events = ['master_punish'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_punish_line25 = {text = "I'll feel that sting for quite awhile...", events = ['master_punish'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
+
 	master_abuse_line1 = {text = "Why... *sob*", events = ['abuse','date_punish_light'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	master_abuse_line2 = {text = "This is horrible... You are horrible!", events = ['abuse'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	master_abuse_line3 = {text = "Ah! Please, not the ears!", events = ['abuse'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
@@ -292,7 +292,7 @@ var individual_lines = {
 	master_abuse_line22 = {text = "How dare you do this to me?", events = ['abuse'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_abuse_line23 = {text = "Ow... I'll be feeling that for weeks...", events = ['abuse'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_abuse_line24 = {text = "I should have known you have a temper...", events = ['abuse','date_punish_light'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
+
 	sex_reward_line1 = {text = "Such reward? There's no... Ah...", events = ['sexreward'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	sex_reward_line2 = {text = "[Master]? *gulp* I haven't really asked for this...", events = ['sexreward'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	sex_reward_line3 = {text = "A lewd reward?.. Huh, fine, I could use a break.", events = ['sexreward'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
@@ -316,7 +316,7 @@ var individual_lines = {
 	sex_reward_line21 = {text = "P-please don't tell anyone...", events = ['sexreward'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_reward_line22 = {text = "Haaaa... I can't resist you...", events = ['sexreward'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	sex_reward_line23 = {text = "O-oh... D-do I have to beg?", events = ['sexreward'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	loyalty_line1 = {text = "I... could I pledge my loyalty to [Master]? For all good you've done to me...", events = ['loyalty'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_line2 = {text = "My body and soul both belong to you, [Master].", events = ['loyalty'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_line3 = {text = "[Master]...? P-please, let me stay by your side... ", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
@@ -341,7 +341,7 @@ var individual_lines = {
 	loyalty_line22 = {text = "O-oh... I just feel so safe around you, [Master]...", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	loyalty_line23 = {text = "Hmm? Why do I feel so... compelled to serve [Master]?", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	loyalty_line24 = {text = "Ahh... I j-just want to say that I'm here for you, [Master]", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	submission_line1 = {text = "I yield, [Master]. Please, I'll do anything...", events = ['submission'], personalities = ['shy','bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	submission_line2 = {text = "N-no, please, no more punishments... *sob*", events = ['submission'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	submission_line3 = {text = "I give up... You win... [Master]...", events = ['submission'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
@@ -365,7 +365,7 @@ var individual_lines = {
 	submission_line21 = {text = "M-maybe this is better? Just to follow my [Master]'s orders...", events = ['submission'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	submission_line22 = {text = "O-oh... I guess this is better than nothing...", events = ['submission'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	submission_line23 = {text = "O-odly enough. This is... comforting? ", events = ['submission'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	loyalty_submission_line1 = {text = "[Master]... I understand, I will do as you want.", events = ['submission_loyalty'], personalities = ['shy','bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line2 = {text = "This feels crazy, but I'm ready to do anything for you.", events = ['submission_loyalty'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line3 = {text = "...I-I understand, I will do everything for you.", events = ['submission_loyalty'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
@@ -389,7 +389,7 @@ var individual_lines = {
 	loyalty_submission_line21 = {text = "Leave it to me, [Master]! I won't let you down.", events = ['submission_loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line22 = {text = "Surprisingly enough... I'm okay with you being my [Master].", events = ['submission_loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line23 = {text = "Gah! Fine! I'll do anything you want, [Master].", events = ['submission_loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	writ_success1 = {text = "...This is very kind of you, [Master], but please allow me to stay by your side.", events = ['writ_success'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	writ_success2 = {text = "Wow, are you serious about this? But I can't leave you alone, can I. ", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	writ_success3 = {text = "I appreciate this gesture, but my place is at your side, [Master]. ", events = ['writ_success'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -413,7 +413,7 @@ var individual_lines = {
 	writ_success21 = {text = "What!? Freeing me? What's the big idea!? I'm staying put!", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	writ_success22 = {text = "Just don't think I owe you anything, but I'll stay with you", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	writ_success23 = {text = "If this is some sort of trick... I'm keeping a close eye on you...", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	writ_fail1 = {text = "I... Thank you, but I must go.", events = ['writ_failure'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	writ_fail2 = {text = "Thanks, I guess... I must go now.", events = ['writ_failure'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	writ_fail3 = {text = "This is unexpected... You have my gratitude, but I'm afraid, it won't include my service.", events = ['writ_failure'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -438,7 +438,7 @@ var individual_lines = {
 	writ_fail22 = {text = "I'm so greatful! I'll miss you greatly!", events = ['writ_failure'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	writ_fail23 = {text = "How wonderful! Please understand that I have to leave your side...", events = ['writ_failure'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	writ_fail24 = {text = "Ahh! I'm so happy! I'll be sure to write you once in awhile!", events = ['writ_failure'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	recruit_success5 = {text = "I-if you would have me....", events = ['recruit_success'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	recruit_success6 = {text = "R-really? Me? are you sure? Okay...", events = ['recruit_success'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	recruit_success7 = {text = "I don't know how much help I'll be, but... I'll join you.", events = ['recruit_success'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
@@ -458,9 +458,9 @@ var individual_lines = {
 	recruit_success21 = {text = "I hope you exceed my expectations.", events = ['recruit_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	recruit_success22 = {text = "Just don't think I owe you anything, but I'll join you.", events = ['recruit_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	recruit_success23 = {text = "Ha! I knew you would need someone like me!", events = ['recruit_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
-	
-	
+
+
+
 	recruit_fail5 = {text = "Though I do appreciate the offer. I must respectfully decline... Do take care of yourself.", events = ['recruit_fail'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	recruit_fail6 = {text = "I don't think I'm quite ready to make such a commitment.", events = ['recruit_fail'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	recruit_fail7 = {text = "Sorry. I don't think I can join you at this time.", events = ['recruit_fail'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
@@ -481,7 +481,7 @@ var individual_lines = {
 	recruit_fail22 = {text = "A tempting offer, but I just can't.", events = ['recruit_fail'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	recruit_fail23 = {text = "I wish you luck on your travels, but I can't come with you.", events = ['recruit_fail'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	recruit_fail24 = {text = "Maybe if we meet again, but not right now.", events = ['recruit_fail'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	aphrodisiac1 = {text = "Ah... What's going on... It feels so hot...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	aphrodisiac2 = {text = "My body... is getting hotter...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	aphrodisiac3 = {text = "AAhhh... What is this... Feeling...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
@@ -505,7 +505,7 @@ var individual_lines = {
 	aphrodisiac21 = {text = "Are we about to have some fun?", events = ['aphrodisiac'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	aphrodisiac22 = {text = "Does this mean I can please you?", events = ['aphrodisiac'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	aphrodisiac23 = {text = "I'm getting so excited!", events = ['aphrodisiac'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	lockpick_success1 = {text = "I did it, [Master]. Let's see what's inside.", events = ['lockpick_success'], personalities = ['bold','serious','kind','shy'], reqs = [], weight = 1, tags = []},
 	lockpick_success2 = {text = "Hmph, piece of cake.", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	lockpick_success3 = {text = "I-I did it.", events = ['lockpick_success'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
@@ -531,7 +531,7 @@ var individual_lines = {
 	lockpick_success23 = {text = "Ugh. Really? That was too easy!", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	lockpick_success24 = {text = "We could have just smashed it you know, but I got it.", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	lockpick_success25 = {text = "This is why you need someone like me!", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	lockpick_failure1 = {text = "Oh, uh... I'm sorry.", events = ['lockpick_failure'], personalities = ['bold','serious','kind','shy'], reqs = [], weight = 1, tags = []},
 	lockpick_failure2 = {text = "T-this can't be my fault.", events = ['lockpick_failure'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	lockpick_failure3 = {text = "I'm sorry!", events = ['lockpick_failure'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
@@ -557,24 +557,24 @@ var individual_lines = {
 	lockpick_failure23 = {text = "O-oh. I guess I'm not good enough...", events = ['lockpick_failure'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	lockpick_failure24 = {text = "P-please forgive me. I failed...", events = ['lockpick_failure'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	lockpick_failure25 = {text = "T-this is too much... I can't handle it.", events = ['lockpick_failure'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
-	
+
+
 	greeting_line_positive1 = {text = "[Master] would like to spend time {^together:with me}...?", events = ['date_greet_positive'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	greeting_line_positive2 = {text = "It's my pleasure to accompany you, [Master].", events = ['date_greet_positive'], personalities = ['kind', 'serious'], reqs = [], weight = 1, tags = []},
 	greeting_line_positive3 = {text = "Let's have some fun together, [Master]!", events = ['date_greet_positive'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	greeting_line_cautious1 = {text = "Yes, [Master], what do you want me for?", events = ['date_greet_cautious'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
 	greeting_line_cautious2 = {text = "I still have a work today, can we get over it quickly?", events = ['date_greet_cautious'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
 	greeting_line_cautious3 = {text = "What do you want of me? *grumble*", events = ['date_greet_cautious'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
 	greeting_line_cautious4 = {text = "Y-yes, [Master]. What can I do for you?", events = ['date_greet_cautious'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
-	
+
 	punish_line_light1 = {text = "Ouch! It hurts!", events = ['date_punish_light'], personalities = ['bold','kind','serious','shy'], reqs = [], weight = 100, tags = []},
 	punish_line_light2 = {text = "What was that for!?", events = ['date_punish_light'], personalities = ['bold','kind','serious'], reqs = [], weight = 1, tags = []},
 	punish_line_light3 = {text = "Ugh!... You...", events = ['date_punish_light'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	punish_line_light4 = {text = "No! Stop...", events = ['date_punish_light'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
-	
+
 	punish_line_heavy1 = {text = "Ouch! Please stop!", events = ['date_punish_heavy'], personalities = ['bold','kind','serious'], reqs = [], weight = 1, tags = []},
-	
+
 	public_line1 = {text = "N-no way, please don't do this in front of everyone...", events = ['date_public'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
 	public_line2 = {text = "Wha... Why you brought everyone here!?", events = ['date_public'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	public_line3 = {text = "This... is going to be humiliating.", events = ['date_public'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
@@ -582,7 +582,7 @@ var individual_lines = {
 	public_line5 = {text = "P-please, [Master], I don't like being watched.", events = ['date_public'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	public_line6 = {text = "W-why everyone is here? I don't...", events = ['date_public'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	public_line7 = {text = "N-no... No! please...", events = ['date_public'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
-	
+
 	#[2* in next cases will automatically translate from dated person
 	public_observe_line1 = {text = "[Master] is going to punish you, [2name]...?", events = ['date_public_observe'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	public_observe_line2 = {text = "Hmph, serves you right.", events = ['date_public_observe'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
@@ -591,37 +591,37 @@ var individual_lines = {
 	public_observe_line5 = {text = "......", events = ['date_public_observe'], personalities = ['shy','kind','serious'], reqs = [], weight = 1, tags = []},
 	public_observe_line6 = {text = "If [he] dies, I call dibs on [his] stuff.", events = ['date_public_observe'], personalities = ['bold'], reqs = [], weight = 1, tags = ['second_character_translation']},
 	public_observe_line7 = {text = "Looks like you will be getting a good lesson, [2name]. ", events = ['date_public_observe'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
+
 	date_propose_agree1 = {text = "I-I would like to get closer with you, [Master]. ", events = ['date_proposal_agree'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	date_propose_agree2 = {text = "Well, your charm worked this time on me. ", events = ['date_proposal_agree'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_agree3 = {text = "Okay, why not be naughty?", events = ['date_proposal_agree'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_propose_agree4 = {text = "This is to help our bodily needs, correct?", events = ['date_proposal_agree'], personalities = ['serious','kind'], reqs = [], weight = 1, tags = []},
 	date_propose_agree5 = {text = "W-well, if you don't mind someone like me...", events = ['date_proposal_agree'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	date_propose_agree6 = {text = "It's a pleasure you feel the same way.", events = ['date_proposal_agree'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	
+
 	date_propose_refuse1 = {text = "Sorry, I don't feel about you in same way.", events = ['date_proposal_refuse'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	date_propose_refuse2 = {text = "P-please, maybe some other time...", events = ['date_proposal_refuse'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
 	date_propose_refuse3 = {text = "I'd rather not.", events = ['date_proposal_refuse'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	date_propose_refuse4 = {text = "Uh, no. This is awkward.", events = ['date_proposal_refuse'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_propose_refuse5 = {text = "I'm sure there's someone better than me.", events = ['date_proposal_refuse'], personalities = ['kind','shy','serious'], reqs = [], weight = 1, tags = []},
-	
-	
+
+
 	date_propose_had_sex1 = {text = "Don't be silly, didn't we do it already?", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_had_sex2 = {text = "Sure, if you want me to confirm it officially...", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_had_sex3 = {text = "...But didn't we already do that?", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	
+
 	date_propose_was_forced1 = {text = "You didn't really give me much of a choice last time, why bother now?", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_was_forced2 = {text = "Why didn't you ask me before? What's the point now...", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_was_forced3 = {text = "Do as you wish. You've already did, though. ", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_was_forced4 = {text = "Just getting this out of the way now? Fine. ", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	
+
 	date_sex_offer1 = {text = "...[Master]? I'd like to continue this affair.", events = ['date_sex_offer'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	date_sex_offer2 = {text = "Uhm, [Master], we could do, you know, lewd stuff... If you don't mind.", events = ['date_sex_offer'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	date_sex_offer3 = {text = "Hey, you are not going to leave me just now?", events = ['date_sex_offer'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_sex_offer4 = {text = "Hey, would you mind keeping me company for little longer?", events = ['date_sex_offer'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	date_sex_offer5 = {text = "My body feels like... It could use some more attention.", events = ['date_sex_offer'], personalities = ['bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	date_sex_offer6 = {text = "Uhm, can we continue this? I don't want to leave you. ", events = ['date_sex_offer'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	
+
 	date_affection1 = {text = "This... Feels nice.", events = ['date_affection'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	date_affection2 = {text = "I might get used to it.", events = ['date_affection'], personalities = ['kind','serious','bold'], reqs = [], weight = 1, tags = []},
 	date_affection3 = {text = "You will spoil me like this, [Master].", events = ['date_affection'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
@@ -629,39 +629,39 @@ var individual_lines = {
 	date_affection5 = {text = "You are being too nice to me.", events = ['date_affection'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	date_affection6 = {text = "I don't mind you praising me some more.", events = ['date_affection'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_affection7 = {text = "Your affection is appreciated, [Master].", events = ['date_affection'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
+
 	date_scold1 = {text = "I'm sorry [Master]. ", events = ['date_scold'], personalities = ['kind','serious','shy'], reqs = [], weight = 1, tags = []},
 	date_scold2 = {text = "You don't have to yell at me. ", events = ['date_scold'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_scold3 = {text = "I'm sorry, please don't be angry. ", events = ['date_scold'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
 	date_scold4 = {text = "Stop, I didn't deserve this! ", events = ['date_scold'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_scold5 = {text = "I'm sorry you feel this way.", events = ['date_scold'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
-	
+
 	mimic_eat1 = {text = "Oh no! It's alive!", events = ['mimic_eat'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_eat2 = {text = "Noo! It's got me! Help!", events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_eat3 = {text = "Ugh, I can't get out!", events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	
-	
+
+
 	mimic_molest1 = {text = "Agh... It's touching me all over!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_molest2 = {text = "What's the... Ah! Stop!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_molest3 = {text = "N-no, stop! No there!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	
+
 	mimic_leave1 = {text = "N-no, stop! You can't leave me!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_leave2 = {text = "Please, wait! Help me!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_leave3 = {text = "No! *sob* Please, I beg...", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_leave4 = {text = "Wait, I don't wanna die!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	
+
 	mimic_erotic_leave1 = {text = "Y-you gonna leave me- Ah!.. Like this?", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_erotic_leave2 = {text = "No, I hate it! Please help!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
 	mimic_erotic_leave3 = {text = "Noooo! This feels gross!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
 	mimic_erotic_leave4 = {text = "Agh, why you don't help me?!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
-	
+
 	mimic_erotic_leave5 = {text = "Ooh! I starting to... Like this...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
 	mimic_erotic_leave6 = {text = "Ah.. This... Is not too bad...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
-	
+
 	praise_reject1 = {text = "You think you can tame me like this!?", events = ['praise_reject'], personalities = ['kind','serious','bold'], reqs = [], weight = 1, tags = []},
 	praise_reject2 = {text = "Please, stop this farce.", events = ['praise_reject'], personalities = ['serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	praise_reject3 = {text = "You've got to be kidding. ", events = ['praise_reject'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
-	
+
 	date_start1 = {text = "I'm glad to accompany you, [Master]. ", events = ['date_start'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
 	date_start2 = {text = "What do you want me for, [Master]? ", events = ['date_start'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
 	date_start3 = {text = "[Master], this... Makes me a bit nervous. ", events = ['date_start'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
@@ -671,7 +671,7 @@ var individual_lines = {
 	date_start7 = {text = "Uhm... I'm sorry for not being a very good company for [Master].", events = ['date_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	date_start8 = {text = "You called for me, [Master]?", events = ['date_start'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	date_start9 = {text = "I'll accompany you to my best capability, [Master].", events = ['date_start'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
+
 	date_start_happy1 = {text = "Finally, I was thinking you'd never ask!", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_start_happy2 = {text = "Hey, how were you doing, [Master]?", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_start_happy3 = {text = "Hehe, want me to tell you how I spent my day?", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
@@ -683,7 +683,7 @@ var individual_lines = {
 	date_start_happy9 = {text = "It's a honor to be your chosen, [Master].", events = ['date_start_happy'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	date_start_happy10 = {text = "It makes me happy you've called me, [Master].", events = ['date_start_happy'], personalities = ['serious','kind'], reqs = [], weight = 1, tags = []},
 	date_start_happy11 = {text = "He-he, only you and me now, [Master].", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	
+
 	date_start_angry1 = {text = "Don't think you can make me like you now!", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_start_angry2 = {text = "Hmph, you think you can talk your way out of what you've done to me?", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_start_angry3 = {text = "Just make it quick, you bastard.", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
@@ -696,12 +696,12 @@ var individual_lines = {
 	date_start_angry10 = {text = "Your efforts are futile.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	date_start_angry11 = {text = "What's this? Are you trying to make me like you..?", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	date_start_angry12 = {text = "Do what you want, this will change nothing.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-	
-	treat_food_resist1 = {text = "You trying to buy my disposition with something like that? Pathetic.", events = ['treat_food_resist'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []}, 
+
+	treat_food_resist1 = {text = "You trying to buy my disposition with something like that? Pathetic.", events = ['treat_food_resist'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
 	treat_food_like1 = {text = "Wow, how did you know this is my favorite?", events = ['treat_food_like'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
 	treat_food_hate1 = {text = "Sorry, I can't stomach this.", events = ['treat_food_hate'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
 	treat_food_neutral1 = {text = "Thank you, [master], I'll accept this.", events = ['treat_food_neutral'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
-	
+
 }
 
 func build_lines():
@@ -733,7 +733,7 @@ func return_chat_line(character, event):
 						'partner_is_master':
 							if gui_controller.sex_panel.has_master():
 								check = true
-							
+
 				if check == false:
 					continue
 			array.append([i.text, i.weight])
@@ -759,19 +759,19 @@ func rebuild_text(words):
 
 func process_stutter(text:String, num = 1, mlen = 3, esc_list = []):
 	var words = text.split(' ')
-	
+
 	var buf = []
 	for i in range(words.size()):
 		var w = words[i]
 		if w in esc_list: continue
 		if w.length() < mlen: continue
 		buf.push_back(i)
-	
+
 	for i in range(num):
 		if buf.empty(): break
 		var tmp = randi() % buf.size()
 		words[tmp] = words[tmp][0] + '-' + words[tmp]
-	
+
 	return rebuild_text(words)
 
 var meowing_replacements = {
@@ -781,7 +781,7 @@ var meowing_replacements = {
 	na = ['nya'],
 	no = ['nyo'],
 	ni = ['neow'],
-	
+
 }
 
 func process_drunk(text: String, insert:Array, num = 1):
@@ -800,7 +800,7 @@ func process_drunk(text: String, insert:Array, num = 1):
 
 func process_meowing(text: String, num = 1):
 	var words = text.split(' ')
-	
+
 	var buf = []
 	for i in range(words.size()):
 		var w = words[i]
@@ -811,10 +811,10 @@ func process_meowing(text: String, num = 1):
 				var word = w.substr(pos, pos + k.length())
 				var replace_word = meowing_replacements[k][randi()%meowing_replacements[k].size()]
 				replace_word = case_compare(word, replace_word)
-				w = w.insert(w.findn(k), '#').replacen('#' + k, replace_word) 
+				w = w.insert(w.findn(k), '#').replacen('#' + k, replace_word)
 				words[i] = w
 				break
-	
+
 	return rebuild_text(words)
 
 func case_compare(word1, word2):

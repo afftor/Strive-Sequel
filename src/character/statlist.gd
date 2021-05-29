@@ -26,14 +26,14 @@ var template = {
 	submission = 0.0, #obsolete
 	submission_gain_mod = 1.0,#obsolete
 	loyalty_gain_mod = 1.0,
-	lust = 0.0, 
+	lust = 0.0,
 	lustmax = 50,
 	loyalty_degrade_mod = 1.0,
 	submission_degrade_mod = 1.0,#obsolete
 	obDrainIncrease = 0.0,
 	obDrainReduction = 1.0,
 	lusttick = variables.basic_lust_per_tick,
-	hpmax = 100, 
+	hpmax = 100,
 	mpmax = 50,
 	exp_mod = 1,
 	hp_reg_mod = 1.0,
@@ -41,7 +41,7 @@ var template = {
 	#enemy combat/reward data
 	xpreward = 10,
 	loottable = "",
-	productivity = 100.0, 
+	productivity = 100.0,
 	#productivity mods
 	mod_build = 1.0,
 	mod_collect = 1.0,
@@ -53,10 +53,10 @@ var template = {
 	mod_alchemy = 1.0,
 	mod_farm = 1.0,
 	mod_pros = 1.0,
-	
+
 	atk = variables.basic_character_atk,
 	matk = variables.basic_character_matk,
-	
+
 	hitrate = 100,
 	evasion = 0,
 	resists = {},
@@ -92,7 +92,7 @@ var template = {
 	sexuals_factor = 1,
 #	#food
 	food_consumption = 1,
-	
+
 	piercing = {earlobes = null, eyebrow = null, nose = null, lips = null, tongue = null, navel = null, nipples = null, clit = null, labia = null, penis = null},
 	tattoo = {chest = 'none', face = 'none', ass = 'none', arms = 'none', legs = 'none', waist = 'none'},
 	tattooshow = {chest = true, face = true, ass = true, arms = true, legs = true, waist = true},
@@ -129,17 +129,17 @@ var template = {
 	has_womb = false,
 	pregnancy = { "fertility": 0, "duration": 0, "baby": null },
 	lactation = false,
-	
+
 	was_proposed = false,
 	had_cons_sex_with_mc = false,
 	had_forced_sex_with_mc = false,
-	
+
 	penis_virgin = true,
 	vaginal_virgin = true,
 	anal_virgin = true,
 	mouth_virgin = true,
 	#tasks
-	
+
 	shackles_chance = null,
 	last_escape_day_check = 0,
 	#communications
@@ -150,8 +150,8 @@ var template = {
 	relations = {},
 	metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0},
 	lastsexday = 0,
-	
+
 	asser = 0,
-	
+
 	masternoun = 'Master',
 }

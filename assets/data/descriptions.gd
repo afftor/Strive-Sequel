@@ -22,7 +22,7 @@ func create_character_description(character):
 #	text += getdescription('hair_length') + getdescription('hair_style') + getdescription("eye_color") + getdescription("eye_shape") + getdescription('horns') + getdescription('ears')
 #
 #	if !person.skin_coverage.find('fur') >= 0:
-#		text += getdescription('skin') 
+#		text += getdescription('skin')
 #
 #	text += getdescription("skin_coverage") + getdescription("wings") + getdescription("tail") + getdescription("height")
 #
@@ -39,10 +39,10 @@ var descriptionorder = [
 
 func new_charcter_description(character):
 	var text = ''
-	
+
 	var check_allowed_sex = false
 	var add_no_sex_descript = false
-	
+
 	for i in descriptionorder:
 		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo']:
 			var temptext = call(i)
@@ -81,7 +81,7 @@ func new_charcter_description(character):
 				newtext = bodypartsdata[i].default.chardescript
 			if !newtext in ["", " "]:
 				text += newtext + " "
-	
+
 	text = input_handler.text_cut_excessive_lines(text)
 	return text
 
@@ -128,12 +128,12 @@ func pregnancy():
 	if person.get_stat('pregnancy').duration > 0 :
 		if variables.pregduration/3 > person.get_stat('pregnancy').duration:
 			text += tr("BODYPARTPREGLINELATE")
-			
+
 		elif variables.pregduration/1.5 > person.get_stat('pregnancy').duration:
 			text += tr("BODYPARTPREGLINEEARLY")
-			
-	
-	
+
+
+
 	return text
 
 func piercing():
@@ -203,7 +203,7 @@ var tattoo_descripts = {
 	crotch_lust = "[His] crotch is tattooed with a lewd crest.",
 	legs_hp = "[His] legs are decorated with a elegant plant tattoos.",
 	legs_mp = "[His] legs feature glowing energy lines.",
-	legs_tribalr = "[His] legs are painted with tribal markings.",
+	legs_tribal = "[His] legs are painted with tribal markings.",
 }
 
 func tattoo():
@@ -213,8 +213,8 @@ func tattoo():
 		if person.statlist.tattoo[slot] != null:
 			text += tattoo_descripts[slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')] + " "
 			#print(person.statlist.tattoo[slot])
-	
-	
+
+
 	return "{color=magenta|" + text + "}"
 	#Fix later
 #	var tmp = person.get_stat('tattoo')
@@ -241,7 +241,7 @@ func tattoo():
 #			text += tattoosdescript.ass.start + '[color=yellow]' + tattoooptions[tmp.ass].name + '[/color]' + tattoosdescript.ass.end + tattoooptions[tmp.ass].descript + '. '
 #	if text != '':
 #		#possible bug
-#		if globals.state.descriptsettings.tattoo == true || showmode != 'default': 
+#		if globals.state.descriptsettings.tattoo == true || showmode != 'default':
 #			text = "\n\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] " + text
 #		else:
 #			text = "\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] Omitted."
@@ -277,7 +277,7 @@ var tattoosdescript = { #this goes like : start + tattoo theme + end + tattoo de
 	legs = {start = "[His] ankle holds a piece of ", end = " art, representing"},
 	ass = {start = "[His] butt has a large ", end = " themed image showing "},
 	}
-	
+
 var tattoooptions = {
 	none = {name = 'none', descript = "", applydescript = "Select a tattoo theme."},
 	nature = {name = 'nature', descript = " flowers and vines", function = "naturetattoo", applydescript = "A nature themed tattoo will increase [name]'s beauty. "},
@@ -335,7 +335,7 @@ var bodypartsdata = {
 #			{code = 'tits_size', value = [['flat', 2],['small',1]], reqs = [{code = 'stat', type = 'sex', operant = 'neq', value = 'male'}]},
 #		]
 #		},
-		
+
 		teen = {code = 'teen', name = '', chardescript = '', bodychanges = []},
 		adult = {code = 'adult', name = '', chardescript = '', bodychanges = []},
 		mature = {code = 'mature', name = '', chardescript = '', bodychanges = []},
@@ -353,8 +353,8 @@ var bodypartsdata = {
 		halfsquid = {code = 'halfsquid', name = '', chardescript = '', bodychanges = []},
 	},
 	hair_length = {
-		bald = {code = 'bald', name = '', chardescript = '', bodychanges = []}, 
-		ear = {code = 'ear', name = '', chardescript = '', bodychanges = []}, 
+		bald = {code = 'bald', name = '', chardescript = '', bodychanges = []},
+		ear = {code = 'ear', name = '', chardescript = '', bodychanges = []},
 		neck = {code = 'neck', name = '', chardescript = '', bodychanges = []},
 		shoulder = {code = 'shoulder', name = '', chardescript = '', bodychanges = []},
 		waist = {code = 'waist', name = '', chardescript = '', bodychanges = []},
@@ -497,12 +497,12 @@ var bodypartsdata = {
 		equine_small = {code = 'equine_small', name = '', chardescript = '', bodychanges = []},
 		equine_average = {code = 'equine_average', name = '', chardescript = '', bodychanges = []},
 		equine_big = {code = 'equine_big', name = '', chardescript = '', bodychanges = []},
-		
+
 	},
 	has_pussy = {
 		true : {code = 'true', combine = "vaginal_virgin", bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
-		
+
 	},
 	vaginal_virgin = {
 		True_True = {code = 'true_true', name = '', chardescript = '', bodychanges = []},
@@ -533,8 +533,8 @@ func get_class_name(prof, newperson):
 func get_class_details(newperson, classdata, showreqs = true, showskills = false):
 	person = newperson
 	var text = '[center]'+get_class_name(classdata, person)+'[/center]\n'
-	
-	
+
+
 	if showreqs == true:
 		text += 'Requirements: '
 		if classdata.reqs.size() > 0:
@@ -544,12 +544,12 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 	if classdata.statchanges.size() > 0:
 		text += '\n\n' + tr("CLASSBONUS") + ":\n"
 		text += get_class_bonuses(person,classdata)
-	
+
 	text += "\n" + get_class_traits(person,classdata)
-	
-	
-	#text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' + 
-	
+
+
+	#text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' +
+
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
 		if classdata.skills.size() > 0:
 			text += "\n{color=yellow|Skills: "
@@ -561,7 +561,7 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
-	
+
 	return globals.TextEncoder(text)
 
 func get_class_reqs(newperson, classdata, colorcode = true):

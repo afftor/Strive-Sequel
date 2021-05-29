@@ -1,7 +1,7 @@
 extends Control
 
 var arraydata
-var parentnodearray 
+var parentnodearray
 var target_node
 var target_function
 
@@ -18,7 +18,7 @@ func drop_data(position, data):
 		return
 	var order1 = parentnodearray.find(data)
 	var order2 = parentnodearray.find(arraydata)
-	
+
 	parentnodearray.erase(data)
 	parentnodearray.insert(order2, data)
 	target_node.call(target_function)

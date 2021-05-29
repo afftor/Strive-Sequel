@@ -9,13 +9,14 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/buttongallery_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery_hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery_pressed.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/backgrounds/XariCG001.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/fullscreen scenes/XariCG001.png" type="Texture" id=10]
 [ext_resource path="res://gui_modules/Universal/Scripts/Gallery.gd" type="Script" id=11]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=14]
 [ext_resource path="res://gui_modules/Universal/Scripts/CloseButton.gd" type="Script" id=15]
 [ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery.png" type="Texture" id=16]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 60

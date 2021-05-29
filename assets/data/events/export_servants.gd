@@ -7,7 +7,7 @@ var data = {
 		{text = "SERVANTSJOIN", reqs = []},
 		],
 		common_effects = [{code = 'reputation', name = 'servants', operant = '+', value = 100},
-		{code = 'make_loot', pool = [['servants_join_reward',1]]}, 
+		{code = 'make_loot', pool = [['servants_join_reward',1]]},
 		{code = 'open_loot'}
 		],
 		options = [
@@ -42,7 +42,7 @@ var data = {
 		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
 		{code = 'servants_introduction', text = "SERVANTSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 4},
 		],
-		
+
 	},
 	servants_election = {
 		image = null,
@@ -151,7 +151,7 @@ var data = {
 		]
 	},
 
-	servants_election_finish2 = { 
+	servants_election_finish2 = {
 		image = null,
 		character = 'amelia',
 		tags = ['dialogue_scene'],
@@ -166,7 +166,7 @@ var data = {
 		],
 	},
 
-	servants_election_finish3 = { 
+	servants_election_finish3 = {
 		image = null,
 		character = 'amelia',
 		tags = ['dialogue_scene','master_translate'],
@@ -179,7 +179,7 @@ var data = {
 		],
 	},
 
-	servants_election_finish4 = { 
+	servants_election_finish4 = {
 		image = null,
 		character = 'amelia',
 		tags = ['dialogue_scene'],
@@ -193,7 +193,7 @@ var data = {
 		],
 	},
 
-	servants_election_finish5 = { 
+	servants_election_finish5 = {
 		image = null,
 		character = 'amelia',
 		tags = ['dialogue_scene'],
@@ -231,7 +231,7 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH7_ANY", reqs = []},
 		],
 		options = [
-			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', 
+			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue',
 			dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5},
 		],
 	},
@@ -265,11 +265,11 @@ var data = {
 		options = [
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
 		]},
-		
+
 		]
 	},
-	
-	
+
+
 	servants_election_finish9 = {
 		image = null,
 		# character = 'anastasia',
@@ -278,12 +278,12 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH9", reqs = []}
 		],
 		options = [
-			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', 
+			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue',
 			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1}
 		]
 	},
-	
-	
+
+
 
 	start_finale = {
 		image = null,

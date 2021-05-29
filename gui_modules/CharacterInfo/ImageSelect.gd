@@ -39,7 +39,7 @@ func _on_reloadlist_pressed():
 	buildimagelist(mode)
 	_on_scroll(0)
 
-var currentpath 
+var currentpath
 
 func buildimagelist(type = mode):
 	var dir = Directory.new()
@@ -108,7 +108,7 @@ func resort():
 			continue
 		if strictsearch == true:
 			if i.get_meta('type').findn(race) < 0:
-				continue 
+				continue
 		if strictsearch == false && IconBlock.get_node("search").get_text() != '' && i.get_node("Label").get_text().findn(IconBlock.get_node("search").get_text()) < 0:
 			continue
 		i.show()
@@ -156,7 +156,7 @@ func _on_removeportrait_pressed():
 	updatepage()
 
 func _on_reverseportrait_pressed():
-	var tmp = person.get_stat('unique') 
+	var tmp = person.get_stat('unique')
 	if tmp != null and !(tmp in ['dog', 'horse']): #not working for thjere is no imageportait attribute
 		person.imageportait = globals.characters.characters[tmp].imageportait
 #		if person.unique == 'Cali':
@@ -223,7 +223,7 @@ func _on_chooseportraitolder_pressed():
 		get_node("folderdialogue").set_current_path(OS.get_user_data_dir() + '/' +portraitspath.replace("user://", ''))
 	else:
 		get_node("folderdialogue").set_current_path(portraitspath)
-	
+
 
 func _on_choosebodyfolder_pressed():
 	get_node("folderdialogue").set_meta('meta', "body")

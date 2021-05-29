@@ -13,7 +13,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		tags = ['dialogue_scene'],
-		
+
 		text = [
 			{text = "SEARCH_FIGHTERS_1", reqs = [], previous_dialogue_option = 0},
 			{text = "SEARCH_FIGHTERS_1_1", reqs = [], previous_dialogue_option = 1},
@@ -29,10 +29,10 @@ var data = {
 			},
 			{
 				code = 'princess_search_fighters_3',
-				text = "SEARCH_FIGHTERS_OPTION_4", 
-				reqs = [{type = 'decision', value = 'aire_is_dead', check = false}], 
+				text = "SEARCH_FIGHTERS_OPTION_4",
+				reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 				dialogue_argument = 1,
-				remove_after_first_use = true, 
+				remove_after_first_use = true,
 				type = 'next_dialogue'
 			},
 			{
@@ -59,7 +59,7 @@ var data = {
 		options = [
 			{
 				code = 'princess_search_fighters_4',
-				text = "SEARCH_FIGHTERS_OPTION_5", 
+				text = "SEARCH_FIGHTERS_OPTION_5",
 				reqs = [{type = 'decision', value = 'aire_is_saved', check = true}], #not sure about this
 				dialogue_argument = 1,
 			},
@@ -79,8 +79,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_search_fighters_main',
-				text = "SEARCH_FIGHTERS_OPTION_7", 
-				reqs = [], 
+				text = "SEARCH_FIGHTERS_OPTION_7",
+				reqs = [],
 				dialogue_argument = 2,
 			},
 			{
@@ -88,7 +88,7 @@ var data = {
 				text = "SEARCH_FIGHTERS_OPTION_8",
 				reqs = [],
 				dialogue_argument = 3,
-				
+
 			},
 		],
 	},
@@ -133,8 +133,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_search_fighters_3',
-				text = "SEARCH_FIGHTERS_OPTION_4", 
-				reqs = [], 
+				text = "SEARCH_FIGHTERS_OPTION_4",
+				reqs = [],
 				dialogue_argument = 1,
 			},
 			{
@@ -152,8 +152,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_search_fighters_8',
-				text = "SEARCH_FIGHTERS_OPTION_9", 
-				reqs = [], 
+				text = "SEARCH_FIGHTERS_OPTION_9",
+				reqs = [],
 				dialogue_argument = 1,
 			},
 		],
@@ -186,7 +186,7 @@ var data = {
 					{
 						code = 'close',
 						bonus_effects = [],
-						text = "SEARCH_SERVANTS_OPTION", 
+						text = "SEARCH_SERVANTS_OPTION",
 						reqs = [],
 					},
 				],
@@ -201,7 +201,7 @@ var data = {
 					{
 						code = 'close',
 						bonus_effects = [],
-						text = "SEARCH_SERVANTS_OPTION", 
+						text = "SEARCH_SERVANTS_OPTION",
 						reqs = [],
 					},
 				],
@@ -248,7 +248,7 @@ var data = {
 			{text = "SEARCH_DUNGEON_2_1", reqs = [{type = 'decision', value = 'search_advice_2', check = true}]},
 			{text = "SEARCH_DUNGEON_2_2", reqs = [{type = 'decision', value = 'search_advice_2', check = false}]},
 			{text = "SEARCH_DUNGEON_2_3", reqs = []},
-		], 
+		],
 		options = [
 			{
 				code = 'princess_search_dungeon_3',
@@ -747,7 +747,7 @@ var data = {
 		character = "aire",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
-		text = [{text = "SEARCH_DUNGEON_15", reqs = [], bonus_effects = [{code = 'decision', value = 'interrogation_success'}]}], 
+		text = [{text = "SEARCH_DUNGEON_15", reqs = [], bonus_effects = [{code = 'decision', value = 'interrogation_success'}]}],
 		options = [
 			{
 				code = 'princess_search_dungeon_16',
@@ -763,7 +763,7 @@ var data = {
 		character = "amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
-		text = [{text = "SEARCH_DUNGEON_16", reqs = []}], 
+		text = [{text = "SEARCH_DUNGEON_16", reqs = []}],
 		options = [
 			{
 				code = 'princess_search_dungeon_17',
@@ -804,7 +804,7 @@ var data = {
 		character = "amelia",
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
-		text = [{text = "SEARCH_DUNGEON_18", reqs = []}], 
+		text = [{text = "SEARCH_DUNGEON_18", reqs = []}],
 		options = [
 			{
 				code = 'princess_search_dungeon_19',
@@ -816,7 +816,7 @@ var data = {
 			{
 				code = 'princess_search_dungeon_19',
 				text = "SEARCH_DUNGEON_OPTION_46",
-				reqs = [{type = 'decision', value = 'bracelet_found', check = false}], 
+				reqs = [{type = 'decision', value = 'bracelet_found', check = false}],
 				dialogue_argument = 2,
 				bonus_effects = [{code = 'decision', value = 'search_advice_4'}]
 			},
@@ -920,7 +920,7 @@ var data = {
 			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 1}], change_dialogue_type = 1}
 		]
 	},
-	
+
 	aire_amelia_report = {
 		image = null,
 		tags = [],
@@ -933,9 +933,9 @@ var data = {
 				reqs = [],
 			},
 		],
-		
+
 	},
-	
+
 	amelia_interrogation_report = {
 		image = null,
 		tags = [],
@@ -946,7 +946,7 @@ var data = {
 			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], dialogue_argument = 1, }
 		]
 	},
-	
+
 	amelia_ask_location = {
 		character = 'amelia',
 		image = null,
@@ -981,7 +981,7 @@ var data = {
 			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
 		]
 	},
-	
+
 	amelia_princess_advice = {
 		character = 'amelia',
 		image = null,
@@ -1009,6 +1009,6 @@ var data = {
 			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
 		]
 	},
-	
+
 }
 
