@@ -1191,6 +1191,10 @@ func common_effects(effects):
 									text_log_add('char', text)
 								character.tags.erase(k.value)
 								#character.stats.tags.erase(k.value)
+					elif k.code == 'assign_to_quest_and_make_unavalible':
+						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
+					elif k.code == 'remove_character':
+						ResourceScripts.game_party.remove_slave(character)
 					else:
 						character_stat_change(character, k)
 			'start_event':
@@ -1453,12 +1457,6 @@ func common_effects(effects):
 						AddItemToInventory(CreateGearItem(item.code, {}))
 			'unlock_asset':
 				input_handler.update_progress_data(i.dir, i.key)
-			'remove_slave_by_name':
-				for id in ResourceScripts.game_party.characters:
-					var p = characters_pool.get_char_by_id(id)
-					if i.name == p.statlist.statlist.name:
-						ResourceScripts.game_party.remove_slave(p)
-						return
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

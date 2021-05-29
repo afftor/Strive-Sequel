@@ -72,8 +72,8 @@ var data = {
 		{code = 'help_sigmund_start', text = "HELP_SIGMUND_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage1'}], dialogue_argument = 6},
 		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", type = 'next_dialogue', reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
 		{code = 'final_operation_workers_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
-		{code = 'daisy_clothes_sigmund_1', text = "DAISY_CLOTHES_SIGMUND_OPTION_1", reqs = [{type = 'dialogue_seen', check = false, value = 'DAISY_CLOTHES_SIGMUND_REPLY_1'}, {type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
-
+		{code = 'daisy_clothes_sigmund_1', text = "DAISY_CLOTHES_SIGMUND_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -102,7 +102,7 @@ var data = {
 		{code = 'princess_search_servants_1', text = "SEARCH_SERVANTS_OPTION_INIT", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
 		{code = "amelia_titjob1", text = "AMELIASCENEOPTION", reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 3000}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_used = true, change_dialogue_type = 2},
 		{code = 'final_operation_servants_1', text = "Ask for Help", reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
-		{code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_1", reqs = [{type = 'dialogue_seen', check = false, value = 'DAISY_CLOTHES_AMELIA_REPLY_1'}, {type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_lost_amelia_1', text = "DAISY_LOST_AMELIA_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 
