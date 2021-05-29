@@ -1434,27 +1434,21 @@ var dungeons = {
 	},
 	quest_daisy_admirer_location = {
 		code = 'quest_daisy_admirer_location',
-		type = 'dungeon',
+		type = 'encounter',
 		name = "quest daisy admirer location",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
-		background_pool = ['cave_1'],
+		background_pool = ['village1'],
 		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
-		#gatherable_resources = {},
-		#gather_mod = [],
-		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
-		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",
 		purchase_price = 0,
-		affiliation = 'local', #defines character races and events
-		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
-		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
+		affiliation = 'local',
 		events = [],
 		locked = true,
 
