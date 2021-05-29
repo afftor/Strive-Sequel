@@ -18,6 +18,11 @@ var selected_upgrade = null
 func _ready():
 	add_to_group("pauseprocess")
 	gui_controller.upgrades = self
+	$Modes/Mode1.connect("pressed", self, "open_tree", [])
+	$Modes/Mode2.connect("pressed", self, "open_queue", [])
+	$Modes/Mode3.connect("pressed", self, "open_chars", [])
+	$description/CancelButton.connect("pressed", self, "hide", [])
+	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 
 
 func show():

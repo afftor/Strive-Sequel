@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -31,6 +31,10 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=29]
 [ext_resource path="res://gui_modules/upgrades_new/UpgradesList.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=34]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
 
@@ -559,10 +563,10 @@ margin_bottom = 70.0
 texture_normal = ExtResource( 37 )
 
 [node name="Confirm" type="TextureButton" parent="description"]
-margin_left = 1412.0
-margin_top = 980.0
-margin_right = 1622.0
-margin_bottom = 1038.0
+margin_left = 1231.44
+margin_top = 977.218
+margin_right = 1441.44
+margin_bottom = 1035.22
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 24 )
@@ -579,8 +583,30 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="Modes/Mode1" to="." method="open_tree"]
-[connection signal="pressed" from="Modes/Mode2" to="." method="open_queue"]
-[connection signal="pressed" from="Modes/Mode3" to="." method="open_chars"]
-[connection signal="pressed" from="description/Confirm" to="." method="add_upgrade_to_queue"]
+[node name="CancelButton" type="TextureButton" parent="description"]
+margin_left = 1599.44
+margin_top = 977.218
+margin_right = 1793.44
+margin_bottom = 1035.22
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="description/CancelButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 35 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
