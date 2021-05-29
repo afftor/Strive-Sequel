@@ -1455,6 +1455,8 @@ func common_effects(effects):
 					while counter > 0:
 						counter -= 1
 						AddItemToInventory(CreateGearItem(item.code, {}))
+			'unlock_asset':
+				input_handler.update_progress_data(i.dir, i.key)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
