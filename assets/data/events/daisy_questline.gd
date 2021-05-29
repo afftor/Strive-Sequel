@@ -91,7 +91,7 @@ var data = {
 
 	daisy_clothes_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'daisy_default',
+		reqs = [], character = 'daisy_default_happy',
 		text = [{text = "DAISY_CLOTHES_REPLY_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
@@ -317,14 +317,17 @@ var data = {
 		{text = "DAISY_TRAINING_REPLY_2_2", reqs = [], previous_dialogue_option = 2},
 		{text = "DAISY_TRAINING_REPLY_2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
-			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "training_complete_serve_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_1", reqs = [{type = "has_money", value = 200}], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'add_timed_event', value = "training_complete_serve_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
+			{code = 'money_change', operant = '-', value = 200}],
 		}, {
-			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_4", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_2'}], dialogue_argument = 4, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "training_complete_sex_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_4", reqs = [{type = "has_money", value = 300}, {type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_2'}], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [{code = 'add_timed_event', value = "training_complete_sex_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
+			{code = 'money_change', operant = '-', value = 300}]
 		}, {
-			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_5", reqs = [{type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_3'}], dialogue_argument = 5, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission", args = [{type = 'add_to_date', date = [3,3], hour = 10}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]}]
+			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_5", reqs = [{type = "has_money", value = 400}, {type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_3'}], dialogue_argument = 5, type = 'next_dialogue',
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission", args = [{type = 'add_to_date', date = [3,3], hour = 10}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
+			{code = 'money_change', operant = '-', value = 400}]
 		}, {
 			code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_2_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		}, {
@@ -565,7 +568,7 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_1_1", reqs = []}],
 		common_effects = [{code = 'money_change', operant = '+', value = 2500},
-		{code = 'remove_slave_by_name', name = "Daisy"}],
+		{code = 'unique_character_changes', value = 'daisy', args = [{code = 'remove_character'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 		} ]
