@@ -1752,10 +1752,10 @@ func freya_item(code):
 
 	if item.type in ['cloth']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}"
-		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
+		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless'}]
 	elif item.type in ['wood']:
 		dict.text += "\n\n{color=red|The offering disappers from sight but an eerie glow erupts from the altar. It seems [name] as been cursed...}"
-		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
+		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_curse'}]
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
 

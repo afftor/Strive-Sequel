@@ -1,7 +1,12 @@
 extends Node
-var scenes = [
-	["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4"], #sample
-]
+var scenes = {
+	test_scene = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4"], #sample
+}
+#was forced to add a id to scene lists for inlock purpose
+var scenes_order = ['test_scene']
+var story_scenes = ['church_event']
+var ero_scenes = ['anastasia_sex_1', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2']
+#so these arrays are needed for storing order 
 
 var close_template = {
 	code = 'close',
@@ -19,7 +24,7 @@ var continue_template = {
 }
 
 func _ready():
-	for list in scenes:
+	for list in scenes.values():
 		process_scene_seq(list)
 
 
@@ -89,3 +94,21 @@ func play_scene(index):
 		sname = sname.scene
 	sname = sname + "_gallery"
 	input_handler.interactive_message(sname, '', {})
+
+
+func get_image_for_seq(id):
+	#stub
+	var res = null
+	for scene in scenes[id]:
+		var scname
+		var data
+		if typeof(scene) == TYPE_STRING:
+			scname = scene
+			data = scenedata.scenedict[scname + "_gallery"].duplicate(true)
+		elif typeof(scene) == TYPE_DICTIONARY:
+			scname = scene.scene
+			data = scenedata.scenedict[scname + "_gallery"].duplicate(true)
+		else: continue
+		if data.has("custom_background"):
+			return data.custom_background
+	return res

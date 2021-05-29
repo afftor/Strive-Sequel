@@ -175,6 +175,7 @@ var globalsettings = {
 var progress_data = {
 	story_scenes = [],
 	ero_scenes = [],
+	gallery_seq = [],
 	characters = ['amelia','duncan','sigmund','myr'],
 } setget save_progress_data
 
@@ -214,8 +215,11 @@ func load_progress_data():
 	if file.file_exists(variables.userfolder + 'progress_data'):
 		file.open(variables.userfolder + 'progress_data', file.READ)
 		text = file.get_as_text()
-		parse_result = JSON.parse(text)
-		progress_data = parse_result.result
+#		parse_result = parse_json(text)
+		parse_result = JSON.parse(text).result
+		for key in parse_result:
+			progress_data[key] = parse_result[key]
+#		progress_data = parse_result.result
 	else:
 		save_progress_data(progress_data)
 	file.close()
@@ -230,10 +234,14 @@ func save_progress_data(data):
 	file.close()
 
 
-#func update_progress_data(field, value):
-#	if !progress_data.has(field):
-#		print("Warning: progress data has no '", str(field), "' field.")
-#		return
+func update_progress_data(field, value):
+	if !progress_data.has(field):
+		print("Warning: progress data has no '", str(field), "' field.")
+		return
+	if typeof(value) == TYPE_STRING:
+		if progress_data[field].has(value):
+			return
+		progress_data[field].push_back(value)
 #
 #	var text
 #	var parse_result

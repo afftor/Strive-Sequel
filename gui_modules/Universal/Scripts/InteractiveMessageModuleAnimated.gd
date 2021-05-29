@@ -442,12 +442,17 @@ func quest_fight(code):
 
 
 func save_scene_to_gallery(scene):
-	pass
-#	if scene.has("scene_type"):
-#		if scene.scene_type == "story_scene":
-#			input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
-#		elif scene.scene_type == "ero_scene":
-#			input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
+	if scene.has("unlocked_gallery_seq"):
+		input_handler.update_progress_data("gallery_seq", scene.unlocked_gallery_seq)
+#i was forced to add this field to correctly bound unlock event with gallery object
+#with this new syntax it unlocks a full gallery sequence and so it reqires to make some changes into scenes
+#i still can add an option to unlock a sequences per scene
+#but it will still force us to make a changes into scenes to correctly pass data (scenes ids)
+	if scene.has("scene_type"):
+		if scene.scene_type == "story_scene":
+			input_handler.update_progress_data("story_scenes", scene.custom_background)
+		elif scene.scene_type == "ero_scene":
+			input_handler.update_progress_data("ero_scenes", scene.custom_background)
 
 
 func select_scene_variation_based_on_data(scene):
@@ -674,8 +679,9 @@ func generate_scene_text(scene):
 	if scene.tags.has("master_translate"):
 		if ResourceScripts.game_party.get_master() == null:
 			print("Error: Master not found")
-			return
-		scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
+#			return
+		else:
+			scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
 	if scene.tags.has("active_character_translate"):
 		scenetext = input_handler.active_character.translate(scenetext)
 	if scene.tags.has("scene_character_translate"):

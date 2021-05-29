@@ -9,6 +9,7 @@ onready var charlist = $CharList/ScrollContainer/VBoxContainer
 onready var modes = $Modes
 onready var desc_panel = $description
 onready var res_list = $description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer
+onready var work_cost = $description/VBoxContainer/HBoxContainer/Label
 
 var upgrades_order = []
 var selected_upgrade = null
@@ -17,6 +18,11 @@ var selected_upgrade = null
 func _ready():
 	add_to_group("pauseprocess")
 	gui_controller.upgrades = self
+	$Modes/Mode1.connect("pressed", self, "open_tree", [])
+	$Modes/Mode2.connect("pressed", self, "open_queue", [])
+	$Modes/Mode3.connect("pressed", self, "open_chars", [])
+	$description/CancelButton.connect("pressed", self, "hide", [])
+	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 
 
 func show():
@@ -35,9 +41,11 @@ func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
-	if get_parent().mansion_state == 'travels':
+	if get_parent().mansion_state == 'upgrades':
 		get_parent().mansion_state = 'default'
 	.hide()
+
+
 
 
 
@@ -51,6 +59,7 @@ func select_upgrade(code):
 
 
 func build_description(upgrade_id):
+	if upgrade_id == null: return
 	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_lv = ResourceScripts.game_res.findupgradelevel(upgrade_id)
 	var upgrade_state = null
@@ -75,19 +84,23 @@ func build_description(upgrade_id):
 		text += tr(upgrade_state.bonusdescript)
 
 	var can_upgrade = true
-	desc_panel.get_node("VBoxContainer/MarginContainer").visible = true
+	desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = true
 	desc_panel.get_node("VBoxContainer/resources").visible = true
+	work_cost.get_parent().visible = true
 	if upgrade_next_state == null:
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
 	elif !globals.checkreqs(upgrade_next_state.unlockreqs):
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
-	elif ResourceScripts.game_res.upgrade_progresses.has(upgrade_id):
-		desc_panel.get_node("VBoxContainer/MarginContainer").visible = false
+	elif ResourceScripts.game_res.upgrades_queue.has(upgrade_id):
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
 		can_upgrade = false
 		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	else:
@@ -106,10 +119,12 @@ func build_description(upgrade_id):
 				panel.disabled = true
 				can_upgrade = false
 		#add working res
-		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
-		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
-		panel.get_node("name").text = tr("TASKBUILDING")
-		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
+		work_cost.text = "%d" % [upgrade_next_state.taskprogress]
+#		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
+#		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
+#		panel.get_node("name").text = tr("TASKBUILDING")
+#		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
+	
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	desc_panel.get_node("VBoxContainer/description").text = text
 	#2add here building bonuses list not existing for now
@@ -176,6 +191,7 @@ var removing_upgrade
 func remove_upgrade_confirm():
 	ResourceScripts.game_res.upgrades_queue.erase(removing_upgrade)
 	build_queue_list()
+	build_description(selected_upgrade)
 
 
 func remove_from_upgrades_queue(upgrade):

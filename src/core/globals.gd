@@ -1451,6 +1451,8 @@ func common_effects(effects):
 					while counter > 0:
 						counter -= 1
 						AddItemToInventory(CreateGearItem(item.code, {}))
+			'unlock_asset':
+				input_handler.update_progress_data(i.dir, i.key)
 			'remove_slave_by_name':
 				for id in ResourceScripts.game_party.characters:
 					var p = characters_pool.get_char_by_id(id)
