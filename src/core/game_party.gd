@@ -88,11 +88,13 @@ func get_master():
 	for i in characters.values():
 		if i.has_profession("master"):
 			return i
+	return null
 
 func get_unique_slave(code):
 	for i in characters.values():
 		if i.get_stat('unique') == code:
 			return i
+	return null
 
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null
