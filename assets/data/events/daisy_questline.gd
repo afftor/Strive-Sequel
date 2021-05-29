@@ -326,7 +326,7 @@ var data = {
 			{code = 'money_change', operant = '-', value = 300}]
 		}, {
 			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_5", reqs = [{type = "has_money", value = 400}, {type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_3'}], dialogue_argument = 5, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission", args = [{type = 'add_to_date', date = [3,3], hour = 10}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission_1", args = [{type = 'add_to_date', date = [3,3], hour = 10}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
 			{code = 'money_change', operant = '-', value = 400}]
 		}, {
 			code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_2_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
@@ -350,13 +350,24 @@ var data = {
 			bonus_effects = [{code = 'progress_quest', value = 'daisy_training', stage = 'stage2'}],
 		} ],
 	},
-
-	daisy_training_intermission = {
+	daisy_training_intermission_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
-		reqs = [], # TODO add art
+		reqs = [], 
+		text = [{text = "", reqs = []}],
+		options = [ {
+			code = 'daisy_training_intermission_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2,
+		}],
+	},
+	
+	daisy_training_intermission_2 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		reqs = [], 
+		custom_background = "daisy_training5",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "DAISY_TRAINING_INTERMISSION", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1,
 		}],
 	},
 
