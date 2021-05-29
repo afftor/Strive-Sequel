@@ -131,6 +131,7 @@ margin_left = 7.56122
 margin_top = -53.2246
 margin_right = -7.43878
 margin_bottom = 4.77539
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

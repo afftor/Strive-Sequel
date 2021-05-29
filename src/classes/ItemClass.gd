@@ -291,14 +291,16 @@ func tooltiptext_2():
 	var text = ''
 	if description != null:
 		text += description
-		text += "\n"
+	if text.length() > 0:
+		text += "\n\n"
 
 	if itemtype in ['armor','weapon','tool']:
 		for i in bonusstats:
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				text += '\n' + statdata.statdata[i].name + ': {color='
+#				text += '\n' + statdata.statdata[i].name + ': {color='
+				text += statdata.statdata[i].name + ': {color='
 				match statdata.statdata[i].default_bonus:
 					"add":
 						if statdata.statdata[i].percent:
@@ -333,7 +335,7 @@ func tooltiptext_2():
 							text += 'red|'
 						value = str(value)
 						value = value + '%'
-				text += value + '}'#\n'
+				text += value + '}\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += tr("INPOSESSION") + ': ' + str(amount)

@@ -63,6 +63,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		return
 	
 	iconnode.material = null
+	$LowPanel/HBoxContainer/HoldShift.visible = false
 	match type:
 		'material':
 			material_tooltip(data)
@@ -223,6 +224,7 @@ func gear_detailed_tooltip(data, item = null):
 				text +=  value + '}'
 		text += '\n'
 	textnode2.bbcode_text = globals.TextEncoder(text)
+#	$LowPanel/HBoxContainer/HoldShift.visible = true 
 	
 	$LowPanel.show()
 	$MidPanel.hide()
@@ -298,7 +300,8 @@ func geartemplete_tooltip(data):
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 		
-		text += "\n\n{color=yellow|Hold shift for details}"
+		$LowPanel/HBoxContainer/HoldShift.visible = true
+#		text += "\n\n{color=yellow|Hold shift for details}"
 	
 	build_price(data.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
