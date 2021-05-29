@@ -79,7 +79,7 @@ func _ready():
 	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
-	$LocationGui/Resources/Forget.connect("pressed", gui_controller.mansion.TravelsModule, "forget_location")
+	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
@@ -753,6 +753,16 @@ var active_skill
 
 
 func clear_dungeon():
+	input_handler.get_spec_node(
+		input_handler.NODE_YESNOPANEL,
+		[
+			self,
+			'clear_dungeon_confirm',
+			tr("FORGETLOCATIONQUESTION")
+		]
+	)
+
+func forget_location():
 	input_handler.get_spec_node(
 		input_handler.NODE_YESNOPANEL,
 		[
@@ -2419,3 +2429,5 @@ func search_kobold(pressed, button):
 		input_handler.interactive_message('looking_for_princess_5', '', {}) #already saw him
 	else:
 		input_handler.interactive_message('looking_for_princess_3', '', {}) #first time seeing
+
+
