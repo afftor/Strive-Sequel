@@ -18,7 +18,7 @@ func _ready():
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
-	
+
 
 
 func set_work_rule(rule):
@@ -38,7 +38,7 @@ func set_work_rule(rule):
 		var gatherable = Items.materiallist.has(currentjob.code)
 		show_job_details(currentjob, gatherable)
 
-	
+
 
 func cancel_job_choice():
 	$ConfirmButton.hide()
@@ -60,7 +60,7 @@ func open_jobs_window():
 			luxury_rooms_taken += 1
 	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
-	
+
 	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 	if person != null:
 		for i in $work_rules.get_children():
@@ -93,7 +93,7 @@ func open_jobs_window():
 			else:
 				if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
-					
+
 		else:
 			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
@@ -106,7 +106,7 @@ func open_jobs_window():
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate(tr("INTERACTIONSNOSEXTAG")))
-		
+
 		for resource in gatherable_resources:
 			var text = ""
 			var max_workers_count = 0

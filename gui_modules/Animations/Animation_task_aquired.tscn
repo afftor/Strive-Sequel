@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/dynamicfont_ledger.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/flag_top.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/Task completed example.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/flag_bottom.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/goldstripes.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/mask_goldstripes.png" type="Texture" id=7]
@@ -197,7 +196,6 @@ __meta__ = {
 visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
-texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

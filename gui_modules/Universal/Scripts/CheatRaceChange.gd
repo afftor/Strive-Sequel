@@ -29,7 +29,7 @@ func show_race_info(temprace):
 	var race = races.racelist[temprace]
 	var image
 	var text = race.descript
-	
+
 	text += "\n\n{color=yellow|Race bonuses: "
 	for i in race.race_bonus:
 		if (i as String).begins_with('resist'):
@@ -40,7 +40,7 @@ func show_race_info(temprace):
 		else:
 			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + ".}"
-	
+
 	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	text = race.code.to_lower().replace('halfkin','beastkin')
 	var tmp = selected_person.get_stat('sex')
@@ -49,10 +49,10 @@ func show_race_info(temprace):
 			text += "_m"
 		else:
 			text += "_f"
-		
+
 		if images.shades.has(text):
 			image = images.shades[text]
-	
+
 	$RaceSelection/TextureRect.texture = image
 	update_buttons()
 

@@ -1,16 +1,16 @@
 extends Control
 
 var upgrades_data = {
-	"master_bedroom":{
-		x = 1,
-		y = 1
-	}
+#	"master_bedroom":{
+#		x = 1,
+#		y = 1
+#	}
 }
 
 var unit_size = 50
 
 func _ready():
-	gather_data() 
+	gather_data()
 
 func update_upgrades_tree():
 	input_handler.ClearContainer(self)

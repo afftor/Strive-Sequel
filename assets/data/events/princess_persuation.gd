@@ -644,14 +644,14 @@ var data = {
 			},
 		],
 	},
-	
+
 	princess_recruit_timeout_message = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_NEXTDAY", reqs = []},
 		],
-		
+
 		options = [
 			{
 				code = 'close',
@@ -666,9 +666,9 @@ var data = {
 			},
 		],
 	},
-	
-	
-	
+
+
+
 	princess_persuation_2_init = {
 		variations = [
 			{
@@ -884,7 +884,7 @@ var data = {
 			},
 		],
 	},
-	
+
 	princess_persuation_2_2_1 = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
@@ -926,7 +926,7 @@ var data = {
 				},
 			],
 		},
-		
+
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
@@ -967,11 +967,11 @@ var data = {
 				},
 			],
 		},
-		
+
 		]
-	
+
 	},
-	
+
 	princess_persuation_2_2_2 = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
@@ -1017,7 +1017,7 @@ var data = {
 				},
 			],
 		},
-		
+
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
@@ -1061,11 +1061,11 @@ var data = {
 				},
 			],
 		},
-		
+
 		]
-	
+
 	},
-	
+
 	princess_persuation_2_2_3 = {
 		variations = [{
 			reqs = [{type = 'decision', value = 'marry_option', check = true}],
@@ -1089,7 +1089,7 @@ var data = {
 				},
 			],
 		},
-		
+
 		{
 			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 			image = null,
@@ -1111,13 +1111,13 @@ var data = {
 				},
 			],
 		},
-		
+
 		]
-	
+
 	},
-	
-	
-	
+
+
+
 	princess_persuation_2_3 = {
 		variations = [
 			{
@@ -1280,8 +1280,8 @@ var data = {
 			},
 		],
 	},
-	
-	
+
+
 	#testing scenes
 	princess_recriut_good_setup = {
 		image = null,
@@ -1340,5 +1340,5 @@ var data = {
 			},
 		],
 	},
-	
+
 }

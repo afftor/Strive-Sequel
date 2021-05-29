@@ -16,7 +16,7 @@ var data = {
 				code = 'pre_final_boss_1',
 				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 			} ]
-		}, 
+		},
 			{
 			reqs = [{type = 'decision', value = 'KurdanFollowing', check = false}],
 			image = null, tags = ['dialogue_scene'], character = "demon_female",
@@ -37,7 +37,7 @@ var data = {
 			}
 		]
 	},
-	
+
 	pre_final_boss_1 = {
 		image = null, tags = ['dialogue_scene'], character = "demon_female",
 		text = [{text = "PRE_FINAL_BOSS_3", reqs = [], previous_dialogue_option = 3}],
@@ -47,7 +47,7 @@ var data = {
 		}
 		],
 	},
-	
+
 	pre_final_boss_2 = {
 		image = null, tags = ['dialogue_scene'], character = "demon_female",
 		text = [{text = "PRE_FINAL_BOSS_4", reqs = []}],
@@ -58,15 +58,18 @@ var data = {
 			code = 'pre_final_boss_refuse',
 			text = "PRE_FINAL_BOSS_OPTION_5", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
 		}, {
-			code = 'pre_final_boss_paladin_knight', 
-			text = "PRE_FINAL_BOSS_PALADIN_KNIGHT_OPTION", reqs = [], dialogue_argument = 6, type = 'next_dialogue',
+			code = 'pre_final_boss_paladin_knight',
+			text = "PRE_FINAL_BOSS_KNIGHT_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}]}], dialogue_argument = 6, type = 'next_dialogue',
+		}, {
+			code = 'pre_final_boss_paladin_knight',
+			text = "PRE_FINAL_BOSS_PALADIN_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'Paladin', check = true}]}], dialogue_argument = 6, type = 'next_dialogue',
 		}
 		],
 	},
-	
+
 	pre_final_boss_paladin_knight = {
 		variations = [ { # has Kurdan and Paladin = fight demon
-				reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]}, 
+				reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]},
 				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true},
 				{type = 'decision', value = 'KurdanFollowing', check = true}],
 				image = null, tags = ['dialogue_scene'], character = "demon_female", character2 = "kurdan",
@@ -93,8 +96,8 @@ var data = {
 				} ],
 			}
 		]
-	}, 
-	
+	},
+
 	pre_final_boss_agree = {
 		variations = [ {
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
@@ -115,7 +118,7 @@ var data = {
 			},
 		]
 	},
-	
+
 	pre_final_boss_3 = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "PRE_FINAL_BOSS_7", reqs = []}],
@@ -124,7 +127,7 @@ var data = {
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 		} ],
 	},
-	
+
 	# Kurdan leaves
 	pre_final_boss_4 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene', 'master_translate'],
@@ -134,7 +137,7 @@ var data = {
 			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
 		} ],
 	},
-	
+
 	pre_final_boss_refuse = {
 		variations = [ {
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = true}],
@@ -152,10 +155,10 @@ var data = {
 				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
 				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 				} ],
-			}, 
+			},
 		]
 	},
-	
+
 	#fight demon-kurdan
 	pre_final_boss_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
@@ -165,7 +168,7 @@ var data = {
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 		} ],
 	},
-	
+
 	rebel_group_win = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_11", reqs = []} ],
@@ -174,7 +177,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	demon_win = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
@@ -183,7 +186,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	demon_kurdan_win = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
@@ -192,7 +195,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	demon_kurdan_win_2 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_13", reqs = []} ],
@@ -208,7 +211,7 @@ var data = {
 		}
 		],
 	},
-	
+
 	pre_final_boss_6 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_14", reqs = []} ],
@@ -218,7 +221,7 @@ var data = {
 			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		} ],
 	},
-	
+
 	pre_final_boss_7 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_15", reqs = [], previous_dialogue_option = 7},
@@ -228,7 +231,7 @@ var data = {
 			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		} ],
 	},
-	
+
 	pre_final_boss_8 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		text = [ {text = "PRE_FINAL_BOSS_17", reqs = []} ],
@@ -240,7 +243,7 @@ var data = {
 			text = "PRE_FINAL_BOSS_OPTION_10", reqs = [], dialogue_argument = 10, type = 'next_dialogue'
 		} ],
 	},
-	
+
 	pre_final_boss_fin_1 = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_18", reqs = []} ],
@@ -249,7 +252,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	pre_final_boss_fin_2 = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_19", reqs = []} ],
@@ -259,7 +262,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	demon_kurdan_lose = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],
@@ -268,7 +271,7 @@ var data = {
 			}
 		]
 	},
-	
+
 	rebel_group_lose = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],
@@ -277,7 +280,7 @@ var data = {
 			}
 		]
 	},
-	
+
 	demon_lose = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],

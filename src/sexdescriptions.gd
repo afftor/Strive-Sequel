@@ -4,7 +4,7 @@ var givers
 var takers
 
 
-#For expressions in brackets: 1 refers to givers, 2 refers to takers and checks if groups consist of 1 or more persons to pick up correct references. 
+#For expressions in brackets: 1 refers to givers, 2 refers to takers and checks if groups consist of 1 or more persons to pick up correct references.
 #[name1] and [name2] build name lists of those parties, while [name] refers to specific person from any side (generally used in reactions)
 #expressions without brackets tend to refer only to specific person and build their description or pronounce parts. [body] will try to add some random adjectives depending on character's traits.
 #[his], [he] etc will be replaced with female pronouns if referred character is not male
@@ -16,10 +16,10 @@ func decoder(text, tempgivers = null, temptakers = null):
 	if temptakers != null: takers = temptakers
 	if takers.size() == 0:
 		takers = givers
-	
+
 	#split before parse
 	text = splitrand(text)
-	
+
 	#dictionary of replacements
 	var replacements = {
 		#state verbs
@@ -146,21 +146,21 @@ func decoder(text, tempgivers = null, temptakers = null):
 		'[anus1]' : 'anuses' if givers.size() >= 2 else anus(givers[0]),
 		'[anus2]' : 'anuses' if takers.size() >= 2 else anus(takers[0]),
 	}
-	
+
 	#some tricks to make proper nouns easier
 	if text.find("[name1]") + text.find("[names1]") < -1:
 		replacements['[he1]'] = name(givers)
 	if text.find("[name2]") + text.find("[names2]") < -1:
 		replacements['[he2]'] = name(takers)
-	
+
 	#replace
 	for i in replacements:
 		text = text.replace(i, replacements[i])
-	
+
 	text = splitrand(text)
 	#handle capitalization
 	text = capitallogic(text)
-	
+
 	return text
 
 #choose randomly from str in {^str:str:str}
@@ -294,7 +294,7 @@ func name(group):
 	var text = ''
 	for i in group:
 		#text += "%" + str(i.number) #portraittag
-		
+
 		if group == givers:
 			text += '[color=yellow]'
 			if i.person.has_profession("master"):
@@ -313,9 +313,9 @@ func name(group):
 			else:
 				if globals.getrelativename(givers[0].person, i.person) != null && randf() >= 0.5:
 					if givers[0].person.has_profession("master"):
-						text += givers[0].person.dictionary('your ') 
+						text += givers[0].person.translate('your ')
 					else:
-						text += givers[0].person.dictionary('$his ') 
+						text += givers[0].person.translate('[his] ')
 					text += globals.getrelativename(givers[0].person ,i.person)
 				else:
 					text += i.name
@@ -1186,7 +1186,7 @@ func ass(group):
 		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
 		var mp = i.person.statlist.statlist
 		#size/age descriptors
-		
+
 		if mp.skin_coverage.find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
 		if mp.ass_size == 'flat':

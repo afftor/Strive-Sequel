@@ -77,7 +77,7 @@ func get_active_quest(code):
 	for i in active_quests:
 		if i.code == code:
 			return i
-	return 
+	return
 
 func check_timed_events():
 	var deleting_events = []
@@ -91,7 +91,7 @@ func check_timed_events():
 					'remove_decision':
 						if ResourceScripts.game_progress.decisions.has(i.code):
 							ResourceScripts.game_progress.decisions.erase(i.code)
-				
+
 				deleting_events.append(i)
 				return
 			var event = scenedata.scenedict[i.code]
@@ -140,7 +140,7 @@ func reset_day_count(quest):
 
 
 func operate_counter(c_name, c_op):
-	if !dialogue_local_counters.has(c_name): 
+	if !dialogue_local_counters.has(c_name):
 		dialogue_local_counters[c_name] = 0
 	match c_op:
 		'+': dialogue_local_counters[c_name] += 1
@@ -149,6 +149,6 @@ func operate_counter(c_name, c_op):
 
 
 func counter_cond(c_name, c_op, value):
-	if !dialogue_local_counters.has(c_name): 
+	if !dialogue_local_counters.has(c_name):
 		dialogue_local_counters[c_name] = 0
 	return input_handler.operate(c_op, dialogue_local_counters[c_name], value)

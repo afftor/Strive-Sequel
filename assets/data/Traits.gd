@@ -8,7 +8,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_atkpass'],
-	}, 
+	},
 	absorb_atk_trait = {
 		code = 'absorb_atk_trait',
 		name = '',
@@ -16,7 +16,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_curseatk'],
-	}, 
+	},
 	fireshield_trait = {
 		code = 'fireshield_trait',
 		name = '',
@@ -33,7 +33,7 @@ var traits = {
 		icon = null,
 		effects = ['e_atkpass'],
 	},
-	
+
 	'master' : {#150% effect from social skills
 		code = 'master',
 		name = '',
@@ -41,7 +41,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
-	}, 
+	},
 	'director' : {#150% effect from social skills
 		code = 'director',
 		name = '',
@@ -49,7 +49,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
-	}, 
+	},
 	'slave' : {#slave class trait
 		code = 'slave',
 		name = '',
@@ -75,7 +75,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_worker'],
 		bonusstats = {mod_collect = 0.5}
-	}, 
+	},
 	foreman = {
 		code = 'foreman',
 		name = '',
@@ -84,7 +84,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_foreman'],
 		bonusstats = {mod_collect = 0.33}
-	}, 
+	},
 	hunter= {
 		code = 'hunter',
 		name = '',
@@ -93,7 +93,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_hunter'],
 		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
-	}, 
+	},
 	smith = {
 		code = 'smith',
 		name = '',
@@ -102,7 +102,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_smith'],
 		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
-	}, 
+	},
 	engineer = {
 		code = 'engineer',
 		name = '',
@@ -111,7 +111,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_engi'],
 		bonusstats = {mod_build = 1.0}
-	}, 
+	},
 	chef = {
 		code = 'chef',
 		name = '',
@@ -120,7 +120,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_chef'],
 		bonusstats = {mod_cook = 1.0}
-	}, 
+	},
 	attendant = {#item usage in combat takes no turn
 		code = 'attendant',
 		name = '',
@@ -128,7 +128,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_attendant'],
-	}, 
+	},
 	alchemist = {#+100% alchemy production, potions restore 25% more
 		code = 'alchemist',
 		name = '',
@@ -138,7 +138,7 @@ var traits = {
 		effects = [#'e_tr_alchemist',
 			'e_tr_potion'],
 		bonusstats = {mod_alchemy = 1.0}
-	}, 
+	},
 	witcrit = {#+crit
 		code = 'witcrit',
 		name = '',
@@ -171,7 +171,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_cattle'],
 		bonusstats = {mod_farm = 0.5}
-	}, 
+	},
 	breeder = {#+100% farm production, allows breeding with any race, -30% pregnancy duration
 		code = 'breeder',
 		name = '',
@@ -188,7 +188,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_harlot'],
 		bonusstats = {mod_pros = 0.5}
-	}, 
+	},
 	succubus = {#+100% exp from prostitution
 		code = 'succubus',
 		name = '',
@@ -232,7 +232,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-	}, 
+	},
 	heavy_armor = {#removes penalty from heavy armor
 		code = 'heavy_armor',
 		name = '',
@@ -240,7 +240,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-	}, 
+	},
 	lockpicking = { #allows to pick locks on random events
 		code = 'lockpicking',
 		name = '',
@@ -280,7 +280,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-	}, 
+	},
 	ranged_weapon_mastery = {#allows to equip ranged combat weapons
 		code = 'ranged_weapon_mastery',
 		name = '',
@@ -288,7 +288,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-	}, 
+	},
 	undead = {
 		code = 'undead',
 		name = '',
@@ -429,8 +429,8 @@ var sex_traits = { #only for interaction tab
 		reqs = [{code = "action_type", value = ["tailjob",'earjob','inserttailv','inserttaila']}],
 		effects = [{effect = 'consent', operant = '*', value = 1, trigger = 'consent_check'},{effect = 'horny_bonus', operant = "-", value = 0.33, trigger = 'action_self'}]
 	},
-	
-	
+
+
 	bisexual = {
 		code = "bisexual",
 		name = "",
@@ -1180,6 +1180,6 @@ func get_tat_list_for_slot(slot):
 func get_slot_list_for_tat(code):
 	var res = []
 	for slots in tattoodata[code].effects:
-		for s in slots: 
-			if !res.has(s): res.push_back(s) 
+		for s in slots:
+			if !res.has(s): res.push_back(s)
 	return res

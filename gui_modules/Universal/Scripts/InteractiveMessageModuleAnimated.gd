@@ -46,7 +46,7 @@ func open(scene):
 		select_scene_variation_based_on_data(scene)
 		get_tree().get_root().set_disable_input(false)
 		return
-	
+
 	if scene.has("dialogue_type") && gui_controller.dialogue_window_type != scene.dialogue_type:
 		set_dialogue_window_type(scene)
 		return
@@ -55,22 +55,22 @@ func open(scene):
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
 	hold_selection = true
-	if scene.has("common_effects"): 
+	if scene.has("common_effects"):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
-	
+
 	if wait_for != 0:
-		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN) 
+		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN)
 		wait_for = 0
-	
+
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		#print_debug("waiting")
 		yield(self, "TransitionFinished")
 		#print_debug("finished WAIT")
 		doing_transition = false
-	
+
 	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
@@ -91,7 +91,7 @@ func open(scene):
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
-	
+
 	show()
 
 func show_buttons():
@@ -159,12 +159,12 @@ func add_chest_options(scene):
 		if i.check_trait("trap_analyze"):
 			engineer = i
 			break
-	
+
 	if engineer != null:
 		var lock_read = false
 		if engineer.lockpick_chance() > rand_range(0.5,2)*chest_data.lock.difficulty:
 			lock_read = true
-		
+
 		text += "\n\n[Engineer]: "
 		if lock_read == false:
 			text += "[name] wasn't able to determine chest's lock mechanism and its potential danger."
@@ -182,13 +182,13 @@ func add_chest_options(scene):
 					text += "[name] wasn't able to determine chest's lock mechanism and its potential danger."
 				'alarm':
 					text += "[name] notices a hidden alarm mechanism tied to a lock, which wil llikely cause an uproar if triggered."
-		
+
 		text = globals.TextEncoder(engineer.translate(text))
-		
-	 #= "\n\nChest Lock: " +  str(chest_data.lock.type) 
+
+	 #= "\n\nChest Lock: " +  str(chest_data.lock.type)
 #	if chest_data.lock.type != 'none':
 #		text += "\nDifficulty: " + ResourceScripts.custom_text.lock_difficulty(chest_data.lock.difficulty)
-	
+
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
 
@@ -245,7 +245,7 @@ func lockpick_attempt(person):
 	var open = lockpickskill >= lock
 	if !type in ['none','mimic','mimic_erotic']:
 		person.add_stat('wits', rand_range(2,3))
-	
+
 	if type in ['mimic','mimic_erotic'] && open == true:
 		input_handler.interactive_message_follow("chest_is_mimic_discovered", "story_event", {})
 	elif type in ['mimic']:
@@ -282,11 +282,12 @@ func remove_non_master(code):
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
-func remove_selected(person): 
+func remove_selected(person):
 	person.remove_from_task()
+	input_handler.active_character = person
 	ResourceScripts.game_party.remove_slave(person)
 	input_handler.slave_list_node.rebuild()
-	
+
 	var event_type = 'story_event'
 	if scenedata.scenedict[stored_scene].has('default_event_type'):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
@@ -407,7 +408,7 @@ func good_event():
 	for i in eventlist:
 		if scenedata.scenedict[i[0]].has('tags') && scenedata.scenedict[i[0]].tags.has('good'):
 			array.append(i)
-	
+
 	if array.size() == 0:
 		print("no correct good event: " + input_handler.active_location.events)
 		return
@@ -521,11 +522,11 @@ var ch2_shade = false
 
 func handle_characters_sprites(scene):
 	#--i do not understand conditions and sequencing of most of code in cases of characters do exist
-	#--so i think that there are some logical errors here  
+	#--so i think that there are some logical errors here
 	#reworked with additional functional
 	var scene_char = null
 	var char_shade = false
-	
+
 	if !scene.has("character") and !scene.has("character2"):
 		$ImagePanel.show()
 		if self.name == "dialogue":
@@ -542,7 +543,7 @@ func handle_characters_sprites(scene):
 		$ImagePanel.hide()
 		if self.name == "dialogue":
 			show_long_text()
-	
+
 		if scene.has("character"):
 			if scene.character.ends_with('_shade'):
 				scene_char = scene.character.trim_suffix('_shade')
@@ -556,10 +557,10 @@ func handle_characters_sprites(scene):
 			if ch1 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.texture = images.sprites[scene_char]
-				if char_shade: 
+				if char_shade:
 					$CharacterImage.material.set_shader_param('opacity', 1.0)
 					ch1_shade = true
-				else: 
+				else:
 					$CharacterImage.material.set_shader_param('opacity', 0.0)
 					ch1_shade = false
 				ch1 = scene_char
@@ -582,10 +583,10 @@ func handle_characters_sprites(scene):
 			if ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
 				$CharacterImage2.texture = images.sprites[scene_char]
-				if char_shade: 
+				if char_shade:
 					$CharacterImage2.material.set_shader_param('opacity', 1.0)
 					ch2_shade = true
-				else: 
+				else:
 					$CharacterImage2.material.set_shader_param('opacity', 0.0)
 					ch2_shade = false
 				ch2 = scene_char
@@ -595,7 +596,7 @@ func handle_characters_sprites(scene):
 					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, 0.5)
 					ch2_shade = char_shade
 			$CharacterImage2.show()
-	
+
 #	if !scene.has("character"):
 #		$ImagePanel.show()
 #		$CharacterImage.hide()
@@ -629,7 +630,7 @@ func handle_characters_sprites(scene):
 func show_long_text():
 	self.get_stylebox("panel", "").modulate_color.a = 0
 	$LongFrame.show()
-	$DialogueBG.rect_size.y = $LongFrame.rect_size.y
+	$DialogueBG.rect_size.y = $LongFrame.rect_size.y - $OptionsBackground.rect_size.y
 	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
 	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - 249 - 50
 	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46#($ScrollContainer.rect_size.y * 0.5)
@@ -637,11 +638,11 @@ func show_long_text():
 func hide_long_text():
 	self.get_stylebox("panel", "").modulate_color.a = 255
 	$LongFrame.hide()
-	$DialogueBG.rect_size.y = self.rect_size.y
+	$DialogueBG.rect_size.y = self.rect_size.y - $OptionsBackground.rect_size.y
 	$DialogueBG.rect_position.y = 0
 	$RichTextLabel.rect_size = base_text_size
 	$RichTextLabel.rect_position = base_text_position
-	
+
 
 func handle_loots(scene):
 	if scene.tags.has('locked_chest'):
@@ -670,7 +671,7 @@ func generate_scene_text(scene):
 	scenetext = tr(scenetext)
 	if scene.has('bonus_effects'):
 		globals.common_effects(scene.bonus_effects)
-	
+
 	if scenetext.find("[locationname]") >= 0:
 		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
 		scenetext = scenetext.replace("[areaname]", input_handler.active_area.name)
@@ -686,7 +687,7 @@ func generate_scene_text(scene):
 	if scene.tags.has("scene_character_translate"):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
 	if scene.tags.has("location_resource_info"):
-		scenetext = add_location_resource_info() 
+		scenetext = add_location_resource_info()
 	if gui_controller.is_dialogue_just_started:
 		ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
 		ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
@@ -730,9 +731,10 @@ func handle_scene_options(scene):
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
+			i.text_key = i.text
 			i.text = tr(i.text)
 			if i.has('active_char_translate'):
-				i.text = input_handler.active_character.translate(i.text)
+				i.text = input_handler.active_character.translate(tr(i.text))
 			elif i.has('master_translate'):
 				i.text = ResourceScripts.game_party.get_master().translate(i.text)
 			newbutton.get_node("Label").bbcode_text = i.text
@@ -745,7 +747,7 @@ func handle_scene_options(scene):
 			newbutton.get_node("Label").rect_size.y += 8
 			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
 			newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
-			
+
 			if i.has('select_person'):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
 			elif i.has('remove_person'):
@@ -778,15 +780,15 @@ func handle_scene_options(scene):
 					newbutton.connect("pressed", self, i.code, [args])
 				else:
 					newbutton.connect("pressed", self, i.code)
-			
-			if ResourceScripts.game_progress.selected_dialogues.has(i.text):
+
+			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
 				newbutton.status = 'seen'
 			if i.has('type'):
 				match i.type:
 					'next_dialogue':
 						newbutton.status = 'next_dialogue'
-			
-			
+
+
 			if i.has('disabled') && i.disabled == true:
 				newbutton.status = 'disabled'
 				disable = true

@@ -26,7 +26,7 @@ func base_exp_set(value):
 	base_exp = value
 
 func update_exp(value, is_set):
-	if is_set: 
+	if is_set:
 		self.base_exp = value
 		return value
 	else:
@@ -45,7 +45,7 @@ func fix_import():
 #professions
 func process_chardata(data):
 	if data.has('classes'):
-		for prof in data.classes: 
+		for prof in data.classes:
 			unlock_class(prof)
 
 
@@ -92,19 +92,19 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	for i in prof.skills:
 		if prof_links.has('s_'+i):
 			prof_links['s_'+ i].push_back(prof.code)
-		else: 
+		else:
 			prof_links['s_'+ i] = [prof.code]
 			parent.learn_skill(i)
 	for i in prof.combatskills:
 		if prof_links.has('s_'+i):
 			prof_links['s_'+ i].push_back(prof.code)
-		else: 
+		else:
 			prof_links['s_'+ i] = [prof.code]
 			parent.learn_c_skill(i)
 	for i in prof.traits:
 		if prof_links.has('t_'+i):
 			prof_links['t_'+ i].push_back(prof.code)
-		else: 
+		else:
 			prof_links['t_'+ i] = [prof.code]
 			parent.add_trait(i)
 	parent.recheck_effect_tag('recheck_class')
@@ -178,7 +178,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 			i.workers.append(parent.id)
 			i.workers_count += 1
 			work = i.code
-	
+
 	workproduct = taskproduct
 	if taskexisted:
 		return
@@ -299,12 +299,12 @@ func work_tick():
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.workers.has(parent.id):
 			currenttask = i
-	
+
 	if currenttask == null:
 		work = ''
 		parent.rest_tick()
 		return
-	
+
 	if parent.statlist.is_uncontrollable() && !parent.has_profession('master'):
 		if !messages.has("refusedwork"):
 			globals.text_log_add('work', parent.get_short_name() + ": Refused to work")
@@ -313,7 +313,7 @@ func work_tick():
 	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
 		parent.add_stat('obedience', - get_obed_drain(1))
 		messages.erase("refusedwork")
-	
+
 	if parent.get_static_effect_by_code("work_rule_ration") != null:
 		parent.food.food_consumption_rations = true
 
@@ -324,7 +324,7 @@ func work_tick():
 				currenttask.messages.append('notask')
 			parent.rest_tick()
 			return
-		else:	
+		else:
 			var craftingitem = ResourceScripts.game_res.craftinglists[currenttask.product][0]
 			currenttask.messages.erase("notask")
 			if craftingitem.resources_taken == false:
@@ -340,7 +340,7 @@ func work_tick():
 			work_tick_values(currenttask)
 			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product, true)#
 			make_item_sequence(currenttask, craftingitem)
-	
+
 	elif currenttask.code == 'building':
 		var upgrades_queue = ResourceScripts.game_res.upgrades_queue
 		if upgrades_queue.size() == 0:
@@ -407,7 +407,7 @@ func work_tick_values(currenttask, gatherable = false):
 		workstat = races.tasklist[currenttask.code].workstat
 	else:
 		workstat = Items.materiallist[currenttask.code].workstat
-	if !parent.has_status('no_working_bonuses'): 
+	if !parent.has_status('no_working_bonuses'):
 		parent.add_stat(workstat, 0.06)
 		self.base_exp += 1
 

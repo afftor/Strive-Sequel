@@ -27,11 +27,11 @@ func _ready():
 	if OS.window_fullscreen == false:
 		OS.window_size = input_handler.globalsettings.window_size
 		OS.window_position = input_handler.globalsettings.window_pos
-	
+
 	if OS.window_position.y < 0:
 		OS.window_position.y = 50
-	
-	
+
+
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 	if input_handler.globalsettings.warnseen == true:
@@ -43,7 +43,7 @@ func _ready():
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
-	
+
 	input_handler.ClearContainer($NewGamePanel/Settings)
 	for i in settingarray:
 		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings)
@@ -63,7 +63,7 @@ func _ready():
 
 func check_last_save():
 	lastsave = globals.get_last_save();
-	if lastsave == null: 
+	if lastsave == null:
 		$VBoxContainer/continuebutton.visible = false
 	else:
 		$VBoxContainer/continuebutton.visible = true
@@ -96,6 +96,7 @@ func start_game_confirm():
 
 func gameplay_setting(button):
 	input_handler.globalsettings[button.name] = button.pressed
+	print(button.name, input_handler.globalsettings[button.name])
 
 func CloseDemoWarn():
 	input_handler.globalsettings.warnseen = true
@@ -170,7 +171,7 @@ func start_preset_set(button):
 			newbutton.get_node("Label").text = str(data.materials[i])
 			globals.connectmaterialtooltip(newbutton, item)
 	# text = text.substr(0, text.length()-2)
-	
+
 	$NewGamePanel/RichTextLabel.bbcode_text = text
 	$NewGamePanel/Gold/Label.text = str(data.gold)
 	ResourceScripts.game_globals.starting_preset = data.code

@@ -51,10 +51,10 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 	textnode.text = text
 	textnode.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	textnode.rect_position += positionoffset
-	
+
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
-	
+
 	match type:
 		'damageenemy':
 			DamageTextFly(textnode, false)
@@ -193,19 +193,19 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false,  
 	x.stretch_mode = 6
 	x.mouse_filter = 2
 	node.add_child(x)
-	
+
 	x.rect_size = node.rect_size
-	
+
 	if flip: x.set_flip_h(true)
-	
-	if rotate == true: 
+
+	if rotate == true:
 		x.rect_pivot_offset = images.GFX[effect].get_size()/2
 		x.rect_rotation = rand_range(0,360)
-	
+
 	self.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
-	
+
 	if wr.get_ref(): x.queue_free()
 
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
@@ -215,7 +215,7 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = f
 	if flip == true: x.set_flip_h(true)
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	x.play()
-	
+
 	self.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(delayuntilfade+fadeduration), 'timeout')
@@ -228,7 +228,7 @@ func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	x.position = node.rect_size/2
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	x.emitting = true
-	
+
 	self.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
 	yield(get_tree().create_timer(fadeduration*2), 'timeout')
