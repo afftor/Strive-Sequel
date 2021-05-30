@@ -1450,8 +1450,11 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		locked = true,
-
+		options = [
+			{text = 'Approach', reqs = [
+				{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
+				args = [{code = 'start_event', data = 'daisy_lost_amelia_3', args = []}]}
+			],
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = []

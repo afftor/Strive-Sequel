@@ -1036,11 +1036,6 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
-			elif test_stage("daisy_lost", "stage2"):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Approach')
-				newbutton.connect("toggled", self, 'daisy_lost_fight', [newbutton])
 			return
 	if active_location.has('completed'):
 		if active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
@@ -2433,7 +2428,4 @@ func search_kobold(pressed, button):
 		input_handler.interactive_message('looking_for_princess_5', '', {}) #already saw him
 	else:
 		input_handler.interactive_message('looking_for_princess_3', '', {}) #first time seeing
-
-func daisy_lost_fight(pressed, button):
-	input_handler.interactive_message('daisy_lost_amelia_3', '', {})
 
