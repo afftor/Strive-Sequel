@@ -853,7 +853,7 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		receiver = 'master',
 		image = 'daisystart',
-		common_effects = [{code = 'make_story_character', value = 'Daisy'},{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
+		common_effects = [{code = 'make_story_character', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1},
 		],
@@ -913,8 +913,7 @@ var scenedict = {
 		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200},
-		{code = 'make_story_character', value = 'Daisy'},
-		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
+		{code = 'make_story_character', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},
@@ -923,7 +922,7 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		receiver = 'master',
 		image = 'daisystart',
-		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
+		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},

@@ -187,6 +187,7 @@ var sprites = {
 	elf_priestess = load("res://assets/images/sprites/elf_priestess.png"),
 	zephyra = load("res://assets/images/sprites/zephyra.png"),
 	daisy_default = load("res://assets/images/sprites/daisy_default.png"),
+	daisy_default_happy = load("res://assets/images/sprites/daisy_happy.png"),
 	daisy_maid = load("res://assets/images/sprites/daisy_maid.png"),
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	}
