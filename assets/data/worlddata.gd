@@ -1403,16 +1403,16 @@ var dungeons = {
 		name = "Rebels' Hideout",
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
+		difficulty = 'medium',
 		background_pool = ['cave_1'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
-		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
 		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",

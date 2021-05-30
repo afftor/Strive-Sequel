@@ -2014,7 +2014,8 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_FIRE_DEPTHS = "Fire Depths",
 	LOCATIONNAMEDUNGEON_FROZEN_DOMAIN = "Frozen Domain",
 	LOCATIONNAMEDUNGEON_DRAGON_NEST = "Dragon Nest",
-	LOCATIONNAMEDUNGEON_QUEST_MINES = "quest_mine_type",
+	LOCATIONNAMEDUNGEON_QUEST_MINES = "Mines",
+	LOCATIONNAMEQUEST_FINAL_OPERATION_LOCATION = "Rebels' Hideout",
 
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
@@ -5382,15 +5383,15 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_CLOTHES_NAME = "Daisy: New Outfit",
 	DAISY_CLOTHES_STAGE_1 = "Speak to Sigmund for a new set of clothes for Daisy. ",
 	DAISY_CLOTHES_STAGE_2 = "Speak to Amelia for a new set of clothes for Daisy",
-	DAISY_CLOTHES_STAGE_3 = "Wait, until clothes are finished. ",
+	DAISY_CLOTHES_STAGE_3 = "Wait, until Daisy's new clothes are finished. ",
 
 	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_NAME = "Daisy: Trainiing",
 	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose a training for Daisy.",
-	DAISY_TRAINING_STAGE_2 = "Wait, until training is complete. ",
+	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 
 	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_NAME = "Daisy: Disappearance.",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
-	DAISY_LOST_STAGE_2 = "Find Daisy",
+	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
 }

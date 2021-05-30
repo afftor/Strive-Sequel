@@ -12,15 +12,15 @@ func _ready():
 	$TabContainer/Graphics/factors.pressed = input_handler.globalsettings.factors_as_words
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
-	
+
 	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
-	
+
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'turn_based_time_flow', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
 
 	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
-	
+
 
 	$TabContainer/Cheats/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
 	$TabContainer/Cheats/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
@@ -69,7 +69,7 @@ func open():
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
-	
+
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = input_handler.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = input_handler.globalsettings[i.name+'mute']

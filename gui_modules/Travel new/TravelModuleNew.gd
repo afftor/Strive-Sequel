@@ -370,7 +370,7 @@ func make_panel_for_character(panel, ch):
 			newbutton.get_node("job").text = races.tasklist[ch.get_work()].name
 		else:
 			newbutton.get_node("job").text = "Gathering " + Items.materiallist[ch.get_work()].name
-	
+
 	if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
 		panel.disabled = true
 

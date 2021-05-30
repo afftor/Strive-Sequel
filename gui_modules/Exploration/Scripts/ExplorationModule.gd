@@ -347,7 +347,7 @@ func build_location_description():
 			text = (
 				active_location.name
 				+ " ("
-				+ active_location.classname
+				+ tr(active_location.classname)
 				+ ")\n"
 				+ tr("DUNGEONDIFFICULTY")
 				+ ": "
@@ -369,7 +369,7 @@ func build_location_description():
 		'skirmish':
 			pass
 		'quest_location':
-			text = active_location.name + "\n" + active_location.descript
+			text = active_location.name #+ "\n" + active_location.descript
 	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)
