@@ -349,6 +349,7 @@ func make_panel_for_character(panel, ch):
 	var gatherable = Items.materiallist.has(ch.get_work())
 	if ch.get_work() == '' or  ch.get_work() == "Assignment" or ch.get_work() == 'disabled':
 		if ch.is_on_quest():
+			panel.disabled = true
 			var time_left = int(ch.get_quest_days_left())
 			if time_left > 0:
 				var time_left_string = ''
@@ -369,11 +370,7 @@ func make_panel_for_character(panel, ch):
 			newbutton.get_node("job").text = races.tasklist[ch.get_work()].name
 		else:
 			newbutton.get_node("job").text = "Gathering " + Items.materiallist[ch.get_work()].name
-
-
-#	if ch.travel.location == "travel":
-#		panel.disabled = true
-#	el
+	
 	if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
 		panel.disabled = true
 
