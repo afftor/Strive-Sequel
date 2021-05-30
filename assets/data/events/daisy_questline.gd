@@ -387,9 +387,11 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
+		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}  ],
 	},
 
@@ -476,6 +478,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]}],
 		options = [ {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
@@ -600,7 +603,7 @@ var data = {
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'remove_slave_by_name', name = "Daisy"}]
+			bonus_effects = [{code = 'unique_character_changes', value = 'daisy', args = [{code = 'remove_character'}]}]
 		} ]
 	},
 
@@ -846,7 +849,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'},
-			{code = 'remove_slave_by_name', name = "Daisy"}],
+			{code = 'unique_character_changes', value = 'daisy', args = [{code = 'remove_character'}]}],
 		},  ]
 	},
 
@@ -867,7 +870,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'},
-			{code = 'remove_slave_by_name', name = "Daisy"}],
+			{code = 'unique_character_changes', value = 'daisy', args = [{code = 'remove_character'}]}],
 		} ]
 	},
 }

@@ -1195,6 +1195,8 @@ func common_effects(effects):
 						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
 					elif k.code == 'remove_character':
 						ResourceScripts.game_party.remove_slave(character)
+					elif k.code == 'add_profession':
+						character.xp_module.professions.append(k.profession)
 					else:
 						character_stat_change(character, k)
 			'start_event':
