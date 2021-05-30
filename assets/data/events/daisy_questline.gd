@@ -343,8 +343,7 @@ var data = {
 		text = [{text = "DAISY_TRAINING_REPLY_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "DAISY_TRAINING_REPLY_2_4", reqs = [], previous_dialogue_option = 4},
 		{text = "DAISY_TRAINING_REPLY_2_5", reqs = [], previous_dialogue_option = 5}],
-		#common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
-		#	{code = 'assign_to_quest_and_make_unavalible', quest = {id = '', name = 'training'}, work_time = 7}]}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = false}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'progress_quest', value = 'daisy_training', stage = 'stage2'}],
@@ -374,21 +373,22 @@ var data = {
 	training_complete_serve_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",
-		text = [{text = "TRAINING_COMPLETE_REPLY_0", reqs = []}],
+		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_0", reqs = []}],
 		options = [ {
-			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_OPTION_1_1", reqs = [], dialogue_argument = 1,
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_1", reqs = [], dialogue_argument = 1,
 		}, {
-			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_OPTION_1_2", reqs = [], dialogue_argument = 2,
+			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_2", reqs = [], dialogue_argument = 2,
 		}],
 	},
-
+	
 	training_complete_serve_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}],
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
+		{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
@@ -399,6 +399,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_0", reqs = []}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'training_complete_sex_2', text = "TRAINING_COMPLETE_SEX_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
@@ -479,7 +480,8 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
 		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]},{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]}],
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]},{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]},
+		{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
@@ -694,6 +696,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [],
 		text = [{text = "DAISY_LOST_MESSAGE", reqs = []}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = false}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'daisy_lost', stage = 'stage1'}]
@@ -814,6 +817,7 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_good", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'gte', value = 1, check = true}]},
 		{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}]}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
@@ -825,6 +829,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_3", reqs = []}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
