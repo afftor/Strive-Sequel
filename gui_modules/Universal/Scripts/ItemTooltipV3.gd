@@ -57,11 +57,11 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	parentnode = node
 	currentdata = data
 	currenttype = type
-	
+
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
-	
+
 	iconnode.material = null
 	$LowPanel/HBoxContainer/HoldShift.visible = false
 	match type:
@@ -87,19 +87,19 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
-	
+
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
-	
+
 	show()
-	
+
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
-	
+
 	if get_rect().end.x > screen.size.x:
 		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
@@ -108,7 +108,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
-	
+
 	set_process(true)
 
 
@@ -126,7 +126,7 @@ func material_tooltip(data, workers_data = {}):
 	iconnode.texture = item.icon
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
-	
+
 	$LowPanel.show()
 	$MidPanel.hide()
 	fix_panels()
@@ -158,13 +158,13 @@ func gear_tooltip(data, item = null):
 	var text1 = item.tooltiptext_1()
 	var text2 = item.tooltiptext_2()
 	build_price(data.price)
-	
+
 	$LowPanel/HBoxContainer/HoldShift.visible = item.get('partcolororder') != null
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
-	
+
 	textnode1.bbcode_text = text1
 	textnode2.bbcode_text = text2
 	$MidPanel.show()
@@ -224,8 +224,8 @@ func gear_detailed_tooltip(data, item = null):
 				text +=  value + '}'
 		text += '\n'
 	textnode2.bbcode_text = globals.TextEncoder(text)
-#	$LowPanel/HBoxContainer/HoldShift.visible = true 
-	
+#	$LowPanel/HBoxContainer/HoldShift.visible = true
+
 	$LowPanel.show()
 	$MidPanel.hide()
 	fix_panels()
@@ -234,7 +234,7 @@ func gear_detailed_tooltip(data, item = null):
 func geartemplete_tooltip(data):
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
-	
+
 	if item.has('geartype'):
 		text += 'Type: ' + item.geartype + "\n"
 		if item.slots.size() > 0:
@@ -244,9 +244,9 @@ func geartemplete_tooltip(data):
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	text += item.descript
-	
+
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in item.basestats:
@@ -290,22 +290,22 @@ func geartemplete_tooltip(data):
 						value = value + '%'
 				text +=  value + '}'
 				text += value + '}\n'
-	
-	
+
+
 	for i in item.effects:
 		text += Effectdata.effect_table[i].descript + "\n"
-	
+
 	iconnode.texture = item.icon
-	
+
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-		
+
 		$LowPanel/HBoxContainer/HoldShift.visible = true
 #		text += "\n\n{color=yellow|Hold shift for details}"
-	
+
 	build_price(data.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
-	
+
 	$LowPanel.show()
 	$MidPanel.hide()
 	fix_panels()

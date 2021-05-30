@@ -1196,7 +1196,7 @@ func common_effects(effects):
 					elif k.code == 'remove_character':
 						ResourceScripts.game_party.remove_slave(character)
 					elif k.code == 'add_profession':
-						character.xp_module.professions.append(k.profession)
+						character.unlock_class(k.profession)
 					else:
 						character_stat_change(character, k)
 			'start_event':

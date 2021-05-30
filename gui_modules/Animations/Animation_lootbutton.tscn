@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/glow_loot_square.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "LootButton"
 length = 4.0
 step = 0.0333333
@@ -91,7 +91,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/LootButton = SubResource( 3 )
+anims/LootButton = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

@@ -83,7 +83,7 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
 		guilds = [],
-		events = [{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
+		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -1435,7 +1435,7 @@ var dungeons = {
 	quest_daisy_admirer_location = {
 		code = 'quest_daisy_admirer_location',
 		type = 'encounter',
-		name = "quest daisy admirer location",
+		name = "Ramont's Estate",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',

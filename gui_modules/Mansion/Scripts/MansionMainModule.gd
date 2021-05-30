@@ -606,8 +606,8 @@ func test_mode():
 #		character.create('HalfkinCat', 'random', 'random')
 #		characters_pool.move_to_state(character.id)
 
-		ResourceScripts.game_globals.date = 3
-		ResourceScripts.game_globals.hour = 5
+		ResourceScripts.game_globals.date = 7
+		ResourceScripts.game_globals.hour = 8
 
 		character.set_stat('obedience', 0)
 		#character.fear = 25
@@ -704,22 +704,6 @@ func test_mode():
 				}
 			]
 		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Daisy'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'sexuals_factor', value = 1, operant = "+"},
-						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
-						{code = 'submission', operant = '+', value = 50},
-						{code = 'obedience', operant = '+', value = 0},
-						#{code = 'tag', operant = 'remove', value = 'no_sex'},
-					]
-				}
-			]
-		)
 
 		globals.common_effects(
 			[
@@ -755,7 +739,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("gauntlets", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
@@ -835,7 +819,7 @@ func test_mode():
 
 
 		#input_handler.interactive_message('servants_election_finish6', '', {})
-		input_handler.interactive_message('daisy_lost_message', '', {})
+		input_handler.interactive_message('spring_loot', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
 #		input_handler.interactive_message('princess_recriut_intermission_3', '', {})

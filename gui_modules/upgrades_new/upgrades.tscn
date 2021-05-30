@@ -441,7 +441,7 @@ align = 1
 [node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
 margin_top = 233.0
 margin_right = 724.0
-margin_bottom = 557.0
+margin_bottom = 625.0
 size_flags_vertical = 3
 custom_constants/margin_right = 90
 custom_constants/margin_left = 90
@@ -449,7 +449,7 @@ custom_constants/margin_left = 90
 [node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer/MarginContainer"]
 margin_left = 90.0
 margin_right = 634.0
-margin_bottom = 324.0
+margin_bottom = 392.0
 size_flags_vertical = 3
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
@@ -501,31 +501,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="description/VBoxContainer"]
-margin_top = 561.0
-margin_right = 724.0
-margin_bottom = 625.0
-alignment = 2
-
-[node name="filler" type="Label" parent="description/VBoxContainer/HBoxContainer"]
-margin_top = 25.0
-margin_right = 611.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="description/VBoxContainer/HBoxContainer"]
-margin_left = 615.0
-margin_right = 679.0
-margin_bottom = 64.0
+[node name="workunits" type="TextureRect" parent="description"]
+margin_left = 1738.0
+margin_top = 664.0
+margin_right = 1802.0
+margin_bottom = 728.0
 texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="description/VBoxContainer/HBoxContainer"]
-margin_left = 683.0
+[node name="Label" type="Label" parent="description/workunits"]
+margin_left = 51.0
 margin_top = 6.0
-margin_right = 724.0
+margin_right = 138.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 4 )
-text = "10"
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="description"]
 visible = false
