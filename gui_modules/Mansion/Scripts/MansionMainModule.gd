@@ -819,7 +819,7 @@ func test_mode():
 
 
 		#input_handler.interactive_message('servants_election_finish6', '', {})
-		input_handler.interactive_message('spring_loot', '', {})
+		input_handler.interactive_message('final_operation_start', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
 #		input_handler.interactive_message('princess_recriut_intermission_3', '', {})

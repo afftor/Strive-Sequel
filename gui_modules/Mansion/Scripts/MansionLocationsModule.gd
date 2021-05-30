@@ -36,7 +36,7 @@ func build_area_list():
 			area_list.sort_custom(self, 'sort_lands')
 
 
-var lands_order = ['plains','forests','mountains','steppe','seas']		
+var lands_order = ['plains','forests','mountains','steppe','seas']
 
 
 func sort_lands(first, second):
