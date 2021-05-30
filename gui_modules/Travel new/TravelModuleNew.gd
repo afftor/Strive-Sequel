@@ -347,16 +347,19 @@ func make_panel_for_character(panel, ch):
 		newbutton.get_node("obed").text = "∞"
 
 	var gatherable = Items.materiallist.has(ch.get_work())
-	if ch.get_work() == '' || ch.get_work() == "Assignment":
+	if ch.get_work() == '' or  ch.get_work() == "Assignment" or ch.get_work() == 'disabled':
 		if ch.is_on_quest():
 			var time_left = int(ch.get_quest_days_left())
-			var time_left_string = ''
-			if time_left == 1:
-				time_left = 24 - ResourceScripts.game_globals.hour
-				time_left_string = str(time_left) + " h."
+			if time_left > 0:
+				var time_left_string = ''
+				if time_left == 1:
+					time_left = 24 - ResourceScripts.game_globals.hour
+					time_left_string = str(time_left) + " h."
+				else:
+					time_left_string = str(time_left) + " d."
+				newbutton.get_node("job").text = "On quest - %s" % time_left_string
 			else:
-				time_left_string = str(time_left) + " d."
-			newbutton.get_node("job").text = "On quest - %s" % time_left_string
+				newbutton.get_node("job").text = tr("CHAR_UNAVALIABLE")
 		else:
 			newbutton.get_node("job").text = tr("TASKREST")
 	elif ch.get_work() == 'travel':

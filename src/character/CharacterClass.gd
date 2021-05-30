@@ -464,7 +464,7 @@ func get_work():
 func is_on_quest():
 	return xp_module.is_on_quest()
 
-func assign_to_quest_and_make_unavalible(quest, work_time):
+func assign_to_quest_and_make_unavalible(quest, work_time = -1):
 	xp_module.assign_to_quest_and_make_unavalible(quest, work_time)
 
 func get_quest_days_left():
@@ -646,6 +646,11 @@ func affect_char(i):
 			apply_effect(effects_pool.add_effect(eff))
 		'teleport':
 			teleport(i.value)
+		'set_availability':
+			if i.value:
+				xp_module.make_avaliable()
+			else:
+				xp_module.make_unavaliable()
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)

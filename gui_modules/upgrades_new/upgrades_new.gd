@@ -218,16 +218,19 @@ func update_button(newbutton, person):
 	newbutton.get_node("Icon").texture = person.get_icon()
 	newbutton.get_node("name").text = person.get_short_name()
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' || person.get_work() == "Assignment":
+	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_days_left())
-			var time_left_string = ''
-			if time_left == 1:
-				time_left = 24 - ResourceScripts.game_globals.hour
-				time_left_string = str(time_left) + " h."
+			if time_left > 0:
+				var time_left_string = ''
+				if time_left == 1:
+					time_left = 24 - ResourceScripts.game_globals.hour
+					time_left_string = str(time_left) + " h."
+				else:
+					time_left_string = str(time_left) + " d."
+				newbutton.get_node("job/Label").text = "On quest: " + time_left_string
 			else:
-				time_left_string = str(time_left) + " d."
-			newbutton.get_node("job/Label").text = "On quest: " + time_left_string
+				newbutton.get_node("job/Label").text = tr("CHAR_UNAVALIABLE")
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 	else:
