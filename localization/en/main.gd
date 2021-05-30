@@ -5386,7 +5386,7 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_TRAINING_STAGE_2 = "Wait, until training is complete. ",
 
 	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
-	DAISY_LOST_NAME = "Daisy: Disappearance.",
+	DAISY_LOST_NAME = "Daisy: Disappearance",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy",
 }
