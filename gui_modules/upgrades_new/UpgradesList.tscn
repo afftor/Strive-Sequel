@@ -63,9 +63,10 @@ __meta__ = {
 }
 
 [node name="Image2" type="TextureRect" parent="Button"]
-margin_left = 40.7965
+modulate = Color( 0.992157, 1, 0.180392, 1 )
+margin_left = 28.3239
 margin_top = 66.3326
-margin_right = 152.797
+margin_right = 140.324
 margin_bottom = 127.333
 texture = ExtResource( 10 )
 expand = true

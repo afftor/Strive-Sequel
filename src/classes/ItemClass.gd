@@ -89,24 +89,24 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]
 	var tempname = itemtemplate.name
-	
+
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
 	if itemtemplate.tags.has('tool'):
 		toolcategory = itemtemplate.tool_category
-	
+
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
 			bonusstats[i] += itemtemplate.basestats[i]
 		else:
 			bonusstats[i] = itemtemplate.basestats[i]
-	
+
 	if itemtemplate.has('effects'):
 		for e in itemtemplate.effects:
 			effects.push_back(e)
-	
+
 	reqs = itemtemplate.reqs
 	tags = itemtemplate.tags
 	if itemtemplate.has('multislots'):
@@ -118,7 +118,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		parts = dictparts.duplicate()
 		#durability = itemtemplate.basedurability
 		partcolororder = itemtemplate.partcolororder
-	
+
 		var parteffectdict = {}
 		for i in parts:
 			var material = Items.materiallist[parts[i]]
@@ -144,7 +144,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		for i in itemtemplate.basemods:
 			if bonusstats.has(i):
 				bonusstats[i] *= itemtemplate.basemods[i]
-	
+
 	if itemtemplate.icon != null:
 		if itemtemplate.has("alticons"):
 			var alticon = false
@@ -158,7 +158,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 				icon = itemtemplate.icon.get_path()
 		else:
 			icon = itemtemplate.icon.get_path()
-	
+
 	if mode == 'normal':
 		#durability = round(durability)
 		#maxdurability = round(durability)
@@ -169,18 +169,18 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	if bonusstats.has('atk') && bonusstats.has('damagemod'):
 		bonusstats.atk = ceil(bonusstats.atk + (bonusstats.atk*bonusstats.damagemod))
 		bonusstats.erase('damagemod')
-	
+
 	if mode == 'simple':
 		name = itemtemplate.name
 		description = itemtemplate.descript
 	else:
 		if parts.has(itemtemplate.partmaterialname):
-			
+
 			name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
 		else:
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
-	
+
 
 func substractitemcost():
 	var itemtemplate = Items.itemlist[itembase]
@@ -193,7 +193,7 @@ func set_icon(node):
 #		icon_texture = input_handler.loadimage(icon)
 #	else:
 #		icon_texture = load(icon)
-	
+
 	if node.get_class() == "TextureButton":
 		node.texture_normal = icon_texture
 	else:
@@ -218,18 +218,18 @@ func tooltiptext():
 		text += 'Type: ' + geartype + "\n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	if slots.size() > 0:
 		text += "Slots: "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2) + "\n"
-	
+
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": " 
+		text += tr("TOOLWORKCATEGORY") + ": "
 		for i in toolcategory:
 			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2) 
+		text = text.substr(0, text.length()-2)
 	if description != null:
 		text += description
 	if !reqs.empty():
@@ -256,7 +256,7 @@ func tooltiptext():
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)
-	
+
 	text = globals.TextEncoder(text)
 	return text
 
@@ -267,22 +267,22 @@ func tooltiptext_1():
 		text += 'Type: ' + geartype + "\n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	if slots.size() > 0:
 		text += "Slots: "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2) + "\n"
-	
+
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": " 
+		text += tr("TOOLWORKCATEGORY") + ": "
 		for i in toolcategory:
 			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2) 
+		text = text.substr(0, text.length()-2)
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
 		text += tempslave.decipher_reqs(reqs)
-	
+
 	text = globals.TextEncoder(text)
 	return text
 
@@ -339,7 +339,7 @@ func tooltiptext_2():
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += tr("INPOSESSION") + ': ' + str(amount)
-	
+
 	text = globals.TextEncoder(text)
 	return text
 
@@ -368,7 +368,7 @@ func tooltiptext_light():
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)
-	
+
 	text = globals.TextEncoder(text)
 	return text
 
@@ -398,9 +398,9 @@ func tooltip_v2(targetnode):
 
 func repairwithmaterials():
 	var materialsdict = counterepairmaterials()
-	
+
 	durability = maxdurability
-	
+
 	for i in materialsdict:
 		ResourceScripts.game_res.materials[i] -= materialsdict[i]
 
@@ -408,18 +408,18 @@ func canrepairwithmaterials(): #checks if item can be repaired at present state 
 	var canrepair = true
 	var text = ''
 	var materialsdict = counterepairmaterials()
-	
+
 	for i in materialsdict:
 		if ResourceScripts.game_res.materials[i] < materialsdict[i]:
 			canrepair = false
 			text += tr("NOTENOUGH") + ' [color=yellow]' + Items.materiallist[i].name + '[/color]'
-	
+
 	if effects.has('brittle'):
 		canrepair = false
 		text = tr("CANTREPAIREFFECT")
-	
+
 	var returndict = {canrepair = canrepair, text = text}
-	
+
 	return returndict
 
 func calculatematerials():
@@ -435,8 +435,8 @@ func calculatematerials():
 
 func counterepairmaterials():
 	var requiredmaterialsdict = calculatematerials()
-	var itemtemplate = Items.itemlist[itembase] 
-	
+	var itemtemplate = Items.itemlist[itembase]
+
 	#calculating total resource needs
 	var multiplier = 0
 	match itemtemplate.repairdifficulty: #0.5, 0.65, 0.8
@@ -448,13 +448,13 @@ func counterepairmaterials():
 			multiplier = variables.RepairCostMultiplierHard
 	if effects.has('natural'): #0.15
 		multiplier -= variables.ItemEffectNaturalMultiplier
-	
+
 	var durabilitymultiplier = 1 - durability/maxdurability
-	
+
 	for i in requiredmaterialsdict:
 		requiredmaterialsdict[i] *= multiplier * durabilitymultiplier
 		requiredmaterialsdict[i] = ceil(requiredmaterialsdict[i])
-	
+
 	return requiredmaterialsdict
 
 func calculateprice():

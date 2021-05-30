@@ -1,9 +1,13 @@
 0.5.1
+Redone Daisy's questline
 Added upgrade to increase exotic trader slave quality
 Added upgrade to increase number of sex interactions per day
+Impregnation text now states if character could've been impregnated or not and why
 Changed upgrade price for Alchemy level 3
+Added 3 more levels to luxury room upgrade
 Shrine events now have images
 Life and energy shard drop rates reduced
+Fixed Daisy and Anastasia's sprites being paler than they should be
 Fixed multiturn skip taking too much time to calculate
 Fixed loot window sometimes showing 0 as loot number
 Fixed ballista having melee attack instead of ranged
@@ -13,6 +17,7 @@ Fixed offering altars option not translating selected character name
 Fixed tribal elves jungle even actually spawning dark elf instead
 Fixed dryads not being in rare race pool
 Fixed true succubus not receiving bonus exp from sex
+Fixed gauntlets not having effects
 0.5.0d
 Reduced time requirement for Assignmenet tasks
 Spoiler alt-enslavement option is now available for futa

@@ -300,6 +300,24 @@ var upgradelist = {
 				taskprogress = 400,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
 			},
+			5:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS5"),
+				taskprogress = 500,
+				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
+			},
+			6:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS6"),
+				taskprogress = 600,
+				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
+			},
+			7:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS7"),
+				taskprogress = 700,
+				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
+			},
 		}
 	},
 

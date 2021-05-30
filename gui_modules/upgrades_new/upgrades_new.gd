@@ -9,7 +9,7 @@ onready var charlist = $CharList/ScrollContainer/VBoxContainer
 onready var modes = $Modes
 onready var desc_panel = $description
 onready var res_list = $description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer
-onready var work_cost = $description/VBoxContainer/HBoxContainer/Label
+onready var work_cost = $description/workunits/Label
 
 var upgrades_order = []
 var selected_upgrade = null
@@ -23,6 +23,7 @@ func _ready():
 	$Modes/Mode3.connect("pressed", self, "open_chars", [])
 	$description/CancelButton.connect("pressed", self, "hide", [])
 	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
+	globals.connecttexttooltip($description/workunits, tr("TOOLTIPPROGRESSREQUIRED"))
 
 
 func show():
@@ -112,19 +113,20 @@ func build_description(upgrade_id):
 			globals.connectmaterialtooltip(panel, resdata)
 			panel.get_node("Icon").texture = resdata.icon
 			panel.get_node("name").text = resdata.name
-			if ResourceScripts.game_res.materials[res] >= upgrade_next_state.cost[res]:
-				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
-			else:
-				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
+			panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
+			if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
+				panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.red)
 				panel.disabled = true
 				can_upgrade = false
+			else:
+				panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.green)
 		#add working res
 		work_cost.text = "%d" % [upgrade_next_state.taskprogress]
 #		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 #		panel.get_node("Icon").texture = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png")
 #		panel.get_node("name").text = tr("TASKBUILDING")
 #		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
-	
+
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	desc_panel.get_node("VBoxContainer/description").text = text
 	#2add here building bonuses list not existing for now
@@ -218,16 +220,19 @@ func update_button(newbutton, person):
 	newbutton.get_node("Icon").texture = person.get_icon()
 	newbutton.get_node("name").text = person.get_short_name()
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' || person.get_work() == "Assignment":
+	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_days_left())
-			var time_left_string = ''
-			if time_left == 1:
-				time_left = 24 - ResourceScripts.game_globals.hour
-				time_left_string = str(time_left) + " h."
+			if time_left > 0:
+				var time_left_string = ''
+				if time_left == 1:
+					time_left = 24 - ResourceScripts.game_globals.hour
+					time_left_string = str(time_left) + " h."
+				else:
+					time_left_string = str(time_left) + " d."
+				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
 			else:
-				time_left_string = str(time_left) + " d."
-			newbutton.get_node("job/Label").text = "On quest: " + time_left_string
+				newbutton.get_node("job/Label").text = tr("CHAR_UNAVALIABLE")
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 	else:

@@ -30,8 +30,8 @@ var encounters = {
 	patrol = {unittype = 'randomgroup', unitcode = 'patrol', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'patrol_win', args = []}], lose_effects = [{code = 'start_event', data = 'patrol_lose', args = []}]},
 	wrong_building_rebels = {unittype = 'randomgroup', unitcode = 'wrong_building_rebels', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'wrong_building_rebels_win', args = []}], lose_effects = [{code = 'start_event', data = 'wrong_building_rebels_lose', args = []}]},
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
-	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'daisy_admirer_guards1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_4', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
-	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'daisy_admirer_guards2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_9', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
+	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'bandits_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_4', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
+	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'ramont_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_9', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
 
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = []},
@@ -103,8 +103,6 @@ var enemygroups = {
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	daisy_admirer_guards1 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	daisy_admirer_guards2 = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
@@ -116,6 +114,9 @@ var enemygroups = {
 
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},
+
+
+	ramont_boss_fight = {reqs = [], units = {guardian_golem = [2,2], ramont_boss = [1,1], bandit_assassin = [2,2]}},
 
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 
@@ -1337,6 +1338,7 @@ var enemies = {
 
 	#quest enemies
 
+
 	greg = {
 		code = 'greg',
 		name = '',
@@ -1447,6 +1449,36 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['ranged'],
+		xpreward = 100,
+	},
+
+
+	ramont_boss = {#daisy quest option
+		code = 'ramont_boss',
+		name = '',
+		descript = '',
+		hpmax = 300,
+		armor = 50,
+		mdef = 65,
+		hitrate = 110,
+		evasion = 10,
+		armorpenetration = 35,
+		atk = 90,
+		matk = 5,
+		speed = 45,
+		resists = {fire = 50, water = 50, air = -75, earth = 50, dark = 50, light = -50, mind = -25},
+		status_resists = {stun = 100, freeze = 90},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/bandit_boss.png",
+		body = null,
+		skills = [],
+		traits = [],
+		tags = ['human','boss'],
+		is_character = false,
+		gear = [],
+		ai = [['basic', 66], ['ads', 33]],
+		ai_position = ['melee'],
 		xpreward = 100,
 	},
 }

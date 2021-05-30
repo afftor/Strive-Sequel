@@ -81,7 +81,7 @@ var data = {
 
 	daisy_clothes_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "DAISY_CLOTHES_REPLY_2_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "DAISY_CLOTHES_REPLY_2_1_2", reqs = [], previous_dialogue_option = 2} ],
 		options = [ {
@@ -114,9 +114,9 @@ var data = {
 		reqs = [], character = 'amelia',
 		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_1", reqs = [], previous_dialogue_option = 1}],
 		options = [ {
-			code = 'daisy_clothes_amelia_2_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1", reqs = [], dialogue_argument = 1, 
+			code = 'daisy_clothes_amelia_2_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1", reqs = [], dialogue_argument = 1,
 		}, {
-			code = 'daisy_clothes_amelia_2_2', text = "DAISY_CLOTHES_AMELIA_OPTION_2_2", reqs = [], dialogue_argument = 2, 
+			code = 'daisy_clothes_amelia_2_2', text = "DAISY_CLOTHES_AMELIA_OPTION_2_2", reqs = [], dialogue_argument = 2,
 		}, {
 			code = 'close', text = "DAISY_CLOTHES_AMELIA_OPTION_2_3", reqs = [], dialogue_argument = 3,
 		}],
@@ -174,7 +174,7 @@ var data = {
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]},
-			{code = 'add_item', item = 'daisy_dress', number = 1}], 
+			{code = 'add_item', item = 'daisy_dress', number = 1}],
 		options = [ {
 			code = 'daisy_dress_acquired_normal_2', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '+'}]
@@ -247,7 +247,7 @@ var data = {
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]},
-			{code = 'add_item', item = 'daisy_dress', number = 1}], 
+			{code = 'add_item', item = 'daisy_dress_lewd', number = 1}],
 		options = [ {
 			code = 'daisy_dress_acquired_lewd_2', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -352,16 +352,16 @@ var data = {
 	},
 	daisy_training_intermission_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		text = [{text = "", reqs = []}],
 		options = [ {
 			code = 'daisy_training_intermission_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2,
 		}],
 	},
-	
+
 	daisy_training_intermission_2 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
-		reqs = [], 
+		reqs = [],
 		custom_background = "daisy_training5",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -390,7 +390,7 @@ var data = {
 		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
 		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}  ],
 	},
@@ -478,12 +478,12 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
-		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]}],
+		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]},{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]}],
 		options = [ {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, {
-			code = 'close', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_2", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_2", reqs = [], dialogue_argument = 2, bonus_effects = [ {code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -514,8 +514,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -527,8 +526,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -540,8 +538,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -550,8 +547,7 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}, {code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -709,7 +705,7 @@ var data = {
 		reqs = [], character = 'amelia',
 		text = [{text = "DAISY_LOST_AMELIA_REPLY_0", reqs = []}],
 		options = [ {
-			code = 'daisy_lost_amelia_2', text = "DAISY_LOST_AMELIA_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'daisy_lost_amelia_2', text = "DAISY_LOST_AMELIA_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
 			code = 'daisy_lost_amelia_2', text = "DAISY_LOST_AMELIA_OPTION_1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]

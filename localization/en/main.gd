@@ -455,6 +455,7 @@ var TranslationDict = {
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 	DIALOGUEREPEATACTION = "Repeat",
+	CHAR_UNAVALIABLE = "Unavailable",
 
 	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
 	LOGREPORTPREGNANCYMASTER = "It seems, that you([name]) are pregnant.",
@@ -1417,6 +1418,9 @@ var TranslationDict = {
 	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
 	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
 	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
+	UPGRADELUXURYROOMSBONUS5 = "Increases maximum number of avilable Luxury Rooms to 6.",
+	UPGRADELUXURYROOMSBONUS6 = "Increases maximum number of avilable Luxury Rooms to 7.",
+	UPGRADELUXURYROOMSBONUS7 = "Increases maximum number of avilable Luxury Rooms to 8.",
 
 
 	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of participants in sex interactions to 3',

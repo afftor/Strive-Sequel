@@ -1196,7 +1196,7 @@ func common_effects(effects):
 					elif k.code == 'remove_character':
 						ResourceScripts.game_party.remove_slave(character)
 					elif k.code == 'add_profession':
-						character.xp_module.professions.append(k.profession)
+						character.unlock_class(k.profession)
 					else:
 						character_stat_change(character, k)
 			'start_event':
@@ -1375,6 +1375,10 @@ func common_effects(effects):
 							req.completed = true
 			'affect_active_party':
 				for k in input_handler.get_active_party():
+					k.affect_char(i)
+			'affect_unique_character':
+				var k = ResourceScripts.game_party.get_unique_slave(i.name.to_lower())
+				if k != null:
 					k.affect_char(i)
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
