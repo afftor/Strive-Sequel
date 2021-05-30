@@ -257,7 +257,7 @@ func make_avaliable():
 		quest_days_left = 0
 
 
-func assign_to_quest_and_make_unavalible(quest, work_time = -1):
+func assign_to_quest_and_make_unavalible(quest, work_time):
 	remove_from_task(false)
 	is_on_quest = true
 	quest_days_left = int(work_time)
