@@ -240,6 +240,23 @@ func get_quest_work_time():
 func get_selected_work_quest():
 	return selected_work_quest
 
+
+func make_unavaliable():
+	if  work != "disabled":
+		remove_from_task(false)
+		is_on_quest = true
+		work = "disabled"
+		quest_days_left = -1
+		parent.set_combat_position(0)
+
+
+func make_avaliable():
+	if work == "disabled":
+		is_on_quest = false
+		work = ''
+		quest_days_left = 0
+
+
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	remove_from_task(false)
 	is_on_quest = true
@@ -263,7 +280,7 @@ func get_quest_days_left():
 func quest_day_tick():
 	if quest_days_left > 0:
 		quest_days_left -= 1
-		if quest_days_left <= 0:
+		if quest_days_left <= 0 and work != "disabled":
 			remove_from_work_quest()
 
 

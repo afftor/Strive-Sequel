@@ -736,6 +736,11 @@ func test_mode():
 				{code = 'make_story_character', value = 'Zephyra'},
 			]
 		)
+		globals.common_effects(
+			[
+				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
+			]
+		)
 
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:

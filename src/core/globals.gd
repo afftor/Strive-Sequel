@@ -1376,6 +1376,10 @@ func common_effects(effects):
 			'affect_active_party':
 				for k in input_handler.get_active_party():
 					k.affect_char(i)
+			'affect_unique_character':
+				var k = ResourceScripts.game_party.get_unique_slave(i.name.to_lower())
+				if k != null:
+					k.affect_char(i)
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
 			'dialogue_counter':
