@@ -374,6 +374,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_0", reqs = []}],
+		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'training_complete_serve_2', text = "TRAINING_COMPLETE_SERVE_OPTION_1_1", reqs = [], dialogue_argument = 1,
 		}, {
@@ -387,8 +388,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 8}]},
-		{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
@@ -633,7 +633,7 @@ var data = {
 			},
 			{
 				reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}],
-				tags = ['dialogue_scene', 'master_translate'], image = null, character = 'daisy_maid',
+				tags = ['dialogue_scene', 'master_translate'], image = 'daisyevent', character = 'daisy_maid',
 				text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2", reqs = []}],
 				options = [ {
 					code = 'daisy_admirer_first_event_4', text = "DAISY_ADMIRER_FIRST_EVENT_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -685,10 +685,10 @@ var data = {
 		custom_background = "daisy_discipline",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [{text = "", reqs = []}],
+		text = [{text = "SCENEDAISY_FIRST_EVENT_DISCIPLINE", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
-		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}], type = 'next_dialogue',
+		args = [{type = 'add_to_date', date = [6,8], hour = 22}]}], type = 'next_dialogue', 
 		}, ]
 	},
 
