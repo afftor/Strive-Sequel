@@ -476,7 +476,7 @@ func build_location_info():
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text
 	if location_selected!= null:
-		forget_button.visible = !location_selected.quest
+		forget_button.visible = (!location_selected.quest and location_selected.type == 'dungeon')
 	else:
 		forget_button.visible = false
 
