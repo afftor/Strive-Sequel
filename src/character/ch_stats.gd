@@ -52,6 +52,10 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st.begins_with("sex_stat_"):
+		st = st.trim_prefix("sex_stat_")
+		statlist.sex_skills[st] = value
+		return
 	if st in ['loyalty', 'submission']:
 #			if value.has(st):
 		var delta = value - statlist[st]
@@ -293,6 +297,11 @@ func add_stat(statname, value, revert = false):
 		for ss in statlist.sex_skills:
 			if revert: statlist.sex_skills[ss] -= value
 			else: statlist.sex_skills[ss] += value
+		return
+	if statname.begins_with('sex_skills_'):
+		statname = statname.trim_prefix('sex_skills_')
+		if revert: statlist.sex_skills[statname] -= value
+		else: statlist.sex_skills[statname] += value
 		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
