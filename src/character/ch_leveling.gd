@@ -14,8 +14,8 @@ var messages = []
 
 var is_on_quest = false
 var quest_id
-var quest_days_left = 0
-var quest_work_time = 0
+var quest_time_remains = 0
+var quest_time_init = 0
 var selected_work_quest = null
 
 
@@ -233,8 +233,8 @@ func is_on_quest():
 	return is_on_quest
 
 
-func get_quest_work_time():
-	return quest_work_time
+func get_quest_time_init():
+	return quest_time_init
 
 
 func get_selected_work_quest():
@@ -246,7 +246,7 @@ func make_unavaliable():
 		remove_from_task(false)
 		is_on_quest = true
 		work = "disabled"
-		quest_days_left = -1
+		quest_time_remains = -1
 		parent.set_combat_position(0)
 
 
@@ -254,13 +254,13 @@ func make_avaliable():
 	if work == "disabled":
 		is_on_quest = false
 		work = ''
-		quest_days_left = 0
+		quest_time_remains = 0
 
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	remove_from_task(false)
 	is_on_quest = true
-	quest_days_left = int(work_time)
+	quest_time_remains = int(work_time)
 	quest_id = quest.id
 	selected_work_quest = quest
 	work = quest.name
@@ -268,19 +268,19 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 	# for  req in quest_taken.requirements:
 	# 	if req.has("work_time"):
-	quest_work_time = work_time
+	quest_time_init = work_time
 	gui_controller.mansion.TaskModule.show()
 	gui_controller.mansion.TaskModule.show_resources_info()
 
 
-func get_quest_days_left():
-	return quest_days_left
+func get_quest_time_remains():
+	return quest_time_remains
 
 
 func quest_day_tick():
-	if quest_days_left > 0:
-		quest_days_left -= 1
-		if quest_days_left <= 0 and work != "disabled":
+	if quest_time_remains > 0:
+		quest_time_remains -= 1
+		if quest_time_remains <= 0 and work != "disabled":
 			remove_from_work_quest()
 
 
@@ -290,7 +290,7 @@ func remove_from_work_quest():
 	input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
 	globals.text_log_add("char", parent.translate("[name] has returned from work"))
 	input_handler.PlaySound("ding")
-	quest_work_time = 0
+	quest_time_init = 0
 	ResourceScripts.game_progress.work_quests_finished.append(quest_id)
 	quest_id = ''
 

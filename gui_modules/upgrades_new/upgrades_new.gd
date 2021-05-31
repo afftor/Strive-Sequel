@@ -220,7 +220,7 @@ func update_button(newbutton, person):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if person.is_on_quest():
-			var time_left = int(person.get_quest_days_left())
+			var time_left = int(person.get_quest_time_remains())
 			if time_left > 0:
 				var time_left_string = ''
 				if time_left == 1:

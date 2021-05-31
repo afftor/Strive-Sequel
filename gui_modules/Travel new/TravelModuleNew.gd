@@ -352,7 +352,7 @@ func make_panel_for_character(panel, ch):
 	if ch.get_work() == '' or  ch.get_work() == "Assignment" or ch.get_work() == 'disabled':
 		if ch.is_on_quest():
 			panel.disabled = true
-			var time_left = int(ch.get_quest_days_left())
+			var time_left = int(ch.get_quest_time_remains())
 			if time_left > 0:
 				var time_left_string = ''
 				if time_left == 1:

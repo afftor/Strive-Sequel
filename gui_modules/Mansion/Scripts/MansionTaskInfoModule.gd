@@ -143,21 +143,20 @@ func show_resources_info():
 		globals.connecttexttooltip(newtask, text)
 	for ch in ResourceScripts.game_party.characters.values():
 		if ch.is_on_quest():
-			var work_time = ch.get_quest_work_time()
+			var work_time = ch.get_quest_time_remains()
 			if work_time > 0:
+				var work_time_init = ch.get_quest_time_init()
 				var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
 				newtask.show()
 				newtask.get_node("Task/TaskIcon").texture = ch.get_icon()
 				newtask.get_node("NoResources").hide()
-				newtask.get_node("ProgressBar").max_value = 100
-				var percent = float(work_time) * 24 / 100
-				var hours_passed = ((int(work_time) * 24 - int(ch.get_quest_days_left()) * 24) + ResourceScripts.game_globals.hour) / percent
-				newtask.get_node("ProgressBar").value = hours_passed
+				newtask.get_node("ProgressBar").max_value = work_time_init
+				newtask.get_node("ProgressBar").value = work_time_init - work_time
 				newtask.get_node("Task").text = ch.get_short_name() + " : " + ch.get_work()
-			else:
-				var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
-				newtask.show()
-				newtask.get_node("Task/TaskIcon").hide()
-				newtask.get_node("NoResources").hide()
-				newtask.get_node("ProgressBar").hide()
-				newtask.get_node("Task").text = tr("CHAR_UNAVALIABLE")
+#			else:
+#				var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
+#				newtask.show()
+#				newtask.get_node("Task/TaskIcon").hide()
+#				newtask.get_node("NoResources").hide()
+#				newtask.get_node("ProgressBar").hide()
+#				newtask.get_node("Task").text = tr("CHAR_UNAVALIABLE")
