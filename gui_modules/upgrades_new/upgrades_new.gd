@@ -87,7 +87,19 @@ func build_description(upgrade_id):
 	desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = true
 	desc_panel.get_node("VBoxContainer/resources").visible = true
 	work_cost.get_parent().visible = true
-	if upgrade_next_state == null:
+	
+	if ResourceScripts.game_res.upgrades_queue.has(upgrade_id):
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
+		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
+		can_upgrade = false
+		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
+	elif ResourceScripts.game_res.upgrade_progresses.has(upgrade_id):
+		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
+		desc_panel.get_node("VBoxContainer/resources").visible = false
+		work_cost.get_parent().visible = false
+		text += "\nUpgrade purchased but not queued. \nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
+	elif upgrade_next_state == null:
 		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
@@ -97,12 +109,6 @@ func build_description(upgrade_id):
 		desc_panel.get_node("VBoxContainer/resources").visible = false
 		work_cost.get_parent().visible = false
 		can_upgrade = false
-	elif ResourceScripts.game_res.upgrades_queue.has(upgrade_id):
-		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
-		desc_panel.get_node("VBoxContainer/resources").visible = false
-		work_cost.get_parent().visible = false
-		can_upgrade = false
-		text += "\nUpgrade purchased. Set characters to Upgrading to start working on it.\nCurrent Progress: %d/%d" % [ResourceScripts.game_res.upgrade_progresses[upgrade_id].progress, upgrade_next_state.taskprogress]
 	else:
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
