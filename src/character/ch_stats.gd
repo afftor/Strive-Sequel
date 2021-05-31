@@ -52,8 +52,8 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
-	if st.begins_with("sex_stat_"):
-		st = st.trim_prefix("sex_stat_")
+	if st.begins_with("sex_skills_"):
+		st = st.trim_prefix("sex_skills_")
 		statlist.sex_skills[st] = value
 		return
 	if st in ['loyalty', 'submission']:
