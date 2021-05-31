@@ -1099,7 +1099,7 @@ func remove_location(locationid):
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
 		return
-	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
+	if input_handler.active_location == location and gui_controller.exploration != null and gui_controller.exploration.is_visible_in_tree():
 		gui_controller.nav_panel.select_location('aliron')
 		gui_controller.nav_panel.build_accessible_locations()
 

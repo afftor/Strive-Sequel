@@ -154,7 +154,9 @@ func build_locations_list():
 		if !adata.unlocked: continue
 		var cdata = adata[tdata.category]
 		if !cdata.has(id): continue #should add here currently nonexisted marking location link to delete
-		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = 0}
+		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = 0, quest = false}
+		if tdata.category == "questlocations":
+			temp.quest = true
 		if lands_count.has(temp.area): lands_count[temp.area] += 1
 		else:  lands_count[temp.area] = 1
 		if locs_count.has(temp.type): locs_count[temp.type] += 1
@@ -474,7 +476,7 @@ func build_location_info():
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text
 	if location_selected!= null:
-		forget_button.visible = (location_selected.type == 'dungeon') #cant find any other conditions in earlier version
+		forget_button.visible = !location_selected.quest
 	else:
 		forget_button.visible = false
 

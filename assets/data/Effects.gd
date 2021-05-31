@@ -771,6 +771,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_SKILL_FINISH],
+		stack = 1,
 		atomic = [],
 		name = 'trap_debuff',
 		buffs = ['b_trap'],

@@ -386,7 +386,10 @@ func update_button(newbutton):
 	else:
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(1,1,1))
 	# if !person.check_location('Aliron'):
-	if person.check_location('travel'):
+	if person.get_work() == "disabled":
+		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
+		person_location = null
+	elif person.check_location('travel'):
 		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
@@ -396,9 +399,10 @@ func update_button(newbutton):
 			person_location = "aliron"
 		else:
 			person_location = person.get_location()
+	
 	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
-	newbutton.get_node("job").disabled = person.travel.location == "travel" || 	person.is_on_quest()
+	newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 	newbutton.get_node("state").texture = person.get_class_icon()
 
 
