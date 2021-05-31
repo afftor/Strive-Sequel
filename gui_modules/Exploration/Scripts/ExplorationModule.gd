@@ -265,22 +265,22 @@ var current_stage
 func open_location(data):
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
-	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
+	gui_controller.nav_panel = $LocationGui/NavigationModule
 	selected_location = data.id
 	var gatherable_resources
-	$LocationGui.get_node("Resources/Forget").visible = true
+	$LocationGui/Resources/Forget.visible = true
 	if data.type == "dungeon":
-		$LocationGui.get_node("Resources/SelectWorkers").visible = data.completed
+		$LocationGui/Resources/SelectWorkers.visible = data.completed
 		gui_controller.clock.hide()
 	else:
-		$LocationGui.get_node("Resources/Forget").visible = false
+		$LocationGui/Resources/Forget.visible = false
 		if data.type == "capital":
 			return
 		else:
 			gui_controller.clock.hide()
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
-				$LocationGui.get_node("Resources/SelectWorkers").visible = true
+				$LocationGui/Resources/SelectWorkers.visible = true
 			if gatherable_resources != null:
 				var stop_loop = false
 				for i in gatherable_resources:
@@ -290,19 +290,19 @@ func open_location(data):
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
 					if active_tasks.empty():
-						$LocationGui.get_node("Resources/SelectWorkers").visible = true
+						$LocationGui/Resources/SelectWorkers.visible = true
 						break
 					for task in active_tasks:
 						if (task.code == i) && (task.task_location == selected_location):
 							current_workers_count = task.workers_count
 							if current_workers_count < gatherable_resources[i]:
-								$LocationGui.get_node("Resources/SelectWorkers").visible = true
+								$LocationGui/Resources/SelectWorkers.visible = true
 								stop_loop = true
 								break
 							else:
-								$LocationGui.get_node("Resources/SelectWorkers").visible = false
+								$LocationGui/Resources/SelectWorkers.visible = false
 	$LocationGui.show()
-	$LocationGui.get_node("Resources/Materials").update()
+	$LocationGui/Resources/Materials.update()
 	active_location = data
 	active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 	input_handler.active_area = active_area
@@ -325,10 +325,11 @@ func open_location(data):
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
 	build_location_description()
-	if data.type in ["quest_location", "encounter"]:
+#	if data.type in ["quest_location", "encounter"]:
+	if active_area.questlocations.has(selected_location):#or active_area.encounters.has(selected_location):
 		$LocationGui/Resources/Forget.visible = false
-		$LocationGui/Resources/SelectWorkers.visible = false
-		$LocationGui/Resources/Label.visible = false
+#		$LocationGui/Resources/SelectWorkers.visible = false
+#		$LocationGui/Resources/Label.visible = false
 	else:
 		$LocationGui/Resources/Label.visible = true
 	if data.has("locked"):
