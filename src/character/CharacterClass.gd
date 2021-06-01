@@ -453,7 +453,7 @@ func remove_from_travel():
 	travel.remove_from_travel()
 
 func reset_location():
-	travel.sel_location_to_default()
+	travel.set_location_to_default()
 
 func same_location_with(ch):
 	return travel.same_location_with(ch.travel)

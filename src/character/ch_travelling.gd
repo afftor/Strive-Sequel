@@ -8,7 +8,7 @@ var travel_time = 0
 var initial_travel_time = 0 setget set_travel_time
 
 
-func remove_from_trevel():
+func remove_from_travel():
 	if travel_time > 0:
 		set_travel_time(0)
 		travel_target = {area = '', location = ''}
