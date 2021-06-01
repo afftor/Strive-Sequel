@@ -8,6 +8,15 @@ var travel_time = 0
 var initial_travel_time = 0 setget set_travel_time
 
 
+func remove_from_travel():
+	if travel_time > 0:
+		set_travel_time(0)
+		travel_target = {area = '', location = ''}
+
+func set_location_to_default():
+	location = ResourceScripts.game_world.mansion_location
+	area =  ResourceScripts.game_world.starting_area
+
 func fix_import():
 	location = ResourceScripts.game_world.mansion_location
 	area = ResourceScripts.game_world.starting_area

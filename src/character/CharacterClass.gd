@@ -449,6 +449,12 @@ func check_location(loc, completed = false):
 	if loc == 'mansion': loc = ResourceScripts.game_world.mansion_location
 	return travel.check_location(loc, completed)
 
+func remove_from_travel():
+	travel.remove_from_travel()
+
+func reset_location():
+	travel.set_location_to_default()
+
 func same_location_with(ch):
 	return travel.same_location_with(ch.travel)
 

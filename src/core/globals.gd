@@ -226,9 +226,10 @@ func connecttempitemtooltip(node, item, mode):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
 	node.connect("mouse_entered",self,'tempitemtooltip', [node, item, mode])
+#	node.connect("mouse_entered",item,'tooltip_v2', [node])
 
 func tempitemtooltip(targetnode, item, mode):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	data.text = text

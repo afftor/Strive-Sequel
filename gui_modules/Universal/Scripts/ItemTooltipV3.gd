@@ -289,12 +289,10 @@ func geartemplete_tooltip(data):
 						value = str(value)
 						value = value + '%'
 				text +=  value + '}'
-				text += value + '}\n'
-
-
+	
 	for i in item.effects:
-		text += Effectdata.effect_table[i].descript + "\n"
-
+		text += "\n" + Effectdata.effect_table[i].descript 
+	
 	iconnode.texture = item.icon
 
 	if item.get('partcolororder') != null:
