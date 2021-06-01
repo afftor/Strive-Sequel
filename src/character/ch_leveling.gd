@@ -244,9 +244,13 @@ func get_selected_work_quest():
 func make_unavaliable():
 	if  work != "disabled":
 		remove_from_task(false)
+		
+		parent.remove_from_travel()
+		parent.reset_location()
 		is_on_quest = true
 		work = "disabled"
 		quest_time_remains = -1
+		quest_time_init = -1
 		parent.set_combat_position(0)
 
 

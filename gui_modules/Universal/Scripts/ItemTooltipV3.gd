@@ -61,7 +61,6 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
-	
 	iconnode.material = null
 	$LowPanel/HBoxContainer/HoldShift.visible = false
 	match type:
@@ -90,16 +89,13 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
-	
 	show()
-	
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
-	
 	if get_rect().end.x > screen.size.x:
 		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
@@ -108,7 +104,6 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
-	
 	set_process(true)
 
 
@@ -289,7 +284,6 @@ func geartemplete_tooltip(data):
 						value = str(value)
 						value = value + '%'
 				text +=  value + '}'
-				text += value + '}\n'
 	
 	
 	for i in item.effects:
