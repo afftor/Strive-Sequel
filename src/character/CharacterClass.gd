@@ -316,8 +316,8 @@ func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
 
-func get_quest_work_time():
-	return xp_module.get_quest_work_time()
+func get_quest_time_init():
+	return xp_module.get_quest_time_init()
 
 func get_selected_work_quest():
 	return xp_module.get_selected_work_quest()
@@ -467,8 +467,8 @@ func is_on_quest():
 func assign_to_quest_and_make_unavalible(quest, work_time = -1):
 	xp_module.assign_to_quest_and_make_unavalible(quest, work_time)
 
-func get_quest_days_left():
-	return xp_module.get_quest_days_left()
+func get_quest_time_remains():
+	return xp_module.get_quest_time_remains()
 
 func quest_day_tick():
 	if self.is_on_quest():
