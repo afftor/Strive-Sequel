@@ -219,6 +219,7 @@ func CompleteReqs():
 				ResourceScripts.game_res.update_materials(i.type, '-', i.value)
 	selectedquest.state = 'complete'
 	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
+	ResourceScripts.game_world.complete_quest(selectedquest, 'complete')
 	Reward()
 
 func Reward():
@@ -260,7 +261,7 @@ func CancelQuest():
 	#input_handler.ShowConfirmPanel(self, "cancel_quest_confirm", "Forfeit This Quest?")
 
 func cancel_quest_confirm():
-	ResourceScripts.game_world.fail_quest(selectedquest)
+	ResourceScripts.game_world.complete_quest(selectedquest, 'failed')
 	open()
 
 var selected_items = []

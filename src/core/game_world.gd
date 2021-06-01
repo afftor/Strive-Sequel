@@ -114,7 +114,7 @@ func update_guilds_old(area):
 			if quest.state == 'taken':
 				quest.time_limit -= 1
 				if quest.time_limit < 0:
-					fail_quest(quest)
+					complete_quest(quest, "failed")
 			else:
 				if randf() >= 0.7 || quest.state == 'complete':
 					area.quests.factions[faction].erase(quest.id)
@@ -127,7 +127,7 @@ func update_guilds(area):
 			if quest.state == 'taken':
 				quest.time_limit -= 1
 				if quest.time_limit < 0:
-					fail_quest(quest)
+					complete_quest(quest, "failed")
 			else:
 				if quest.state == 'complete' || int(ResourceScripts.game_globals.date) % 7 == 0:
 					cleararray.append(quest.id)
@@ -199,10 +199,12 @@ func find_location_by_data(data):
 
 
 
-func fail_quest(quest):
-	quest.state = 'failed'
+func complete_quest(quest, state = 'failed'):
+	quest.state = state
 	for i in quest.requirements:
-		if i.code in ['complete_location','complete_dungeon']: globals.remove_location(i.location)
+		if i.code in ['complete_location','complete_dungeon']:
+			#maybe here should be difference (remove or unquest) between quest dungeons and encounters or complete_location and complete_dungeon - its up to you
+			globals.unquest_location(i.location)
 
 func get_quest_by_id(id):
 	for i in ResourceScripts.game_world.areas.values():
@@ -213,3 +215,6 @@ func get_quest_by_id(id):
 		for quest in i.quests.global.values():
 			if quest.id == id:
 				return quest
+#	if scenedata.quests.has(id):
+#		return scenedata.quests[id]
+	return null

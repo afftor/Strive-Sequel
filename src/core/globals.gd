@@ -1063,6 +1063,7 @@ func complete_location(locationid):
 	return_characters_from_location(locationid)
 	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
 
+
 func remove_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
@@ -1079,6 +1080,26 @@ func remove_location(locationid):
 	if input_handler.active_location == location and gui_controller.exploration != null and gui_controller.exploration.is_visible_in_tree():
 		gui_controller.nav_panel.select_location('aliron')
 		gui_controller.nav_panel.build_accessible_locations()
+
+
+func unquest_location(locationid):
+	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
+	if location == null: return
+	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
+	var ldata = ResourceScripts.game_world.location_links[locationid]
+	if ldata.category != "questlocations":
+		print ("warning - location %s is not quest" % locationid)
+		return
+	if !location.has("questid"):
+		print ("error - quest location %s has no associated quest" % locationid)
+		return
+	if ResourceScripts.game_progress.if_quest_active(location.questid):
+		print ("error - quest for location %s is active" % locationid)
+		return
+	ldata.category = "locations"
+	area.questlocations.erase(locationid)
+	area.locations[locationid] = location
+
 
 func return_characters_from_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
