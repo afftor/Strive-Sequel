@@ -95,7 +95,14 @@ var data = {
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
 				{code = 'make_story_character', value = 'Anastasia'}]
 			},
-			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true}], bonus_effects = [{code = 'add_item', item = 'anastasia_bracelet', number = 1}]},
+
+
+			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [{code = 'unique_character_changes',
+					value = 'anastasia',
+					args = [
+						{code = 'create_and_equip', item = "anastasia_bracelet", parts = {}}
+						],
+			},]},
 			{text = "", reqs = [
 					{type = 'decision', value = 'AireAnastasiaPersuasion', check = true},
 					{type = 'decision', value = 'persuade_2_completed', check = true},
@@ -116,15 +123,15 @@ var data = {
 		options = [
 			{
 				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_1", 
-				reqs = [], 
+				text = "FINAL_WORDS_OPTION_1",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
 			{
 				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_2", 
-				reqs = [], 
+				text = "FINAL_WORDS_OPTION_2",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
@@ -139,16 +146,16 @@ var data = {
 		options = [
 			{
 				code = 'princess_cutscene_init',
-				text = "DIALOGUECLOSE", 
-				reqs = [{type = 'decision', value = 'anastasia_added', check = true}], 
+				text = "DIALOGUECLOSE",
+				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 				bonus_effects = []
 			},
 			{
 				code = 'close',
-				text = "DIALOGUECLOSE", 
-				reqs = [{type = 'decision', value = 'anastasia_added', check = false}], 
+				text = "DIALOGUECLOSE",
+				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 				bonus_effects = []
@@ -156,7 +163,7 @@ var data = {
 		],
 	},
 	#somewhere here should be recruit effects
-	#my opinion is those should be at the close options to reflect char status changes (i'm not sure there are different templates for her though) 
+	#my opinion is those should be at the close options to reflect char status changes (i'm not sure there are different templates for her though)
 	princess_cutscene_init = {
 		variations = [
 			{
@@ -172,37 +179,37 @@ var data = {
 				options = [
 					{
 						code = 'princess_cutscene_good_1',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_1", 
-						reqs = [{type = 'decision', value = 'marry_option', check = true}], 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_1",
+						reqs = [{type = 'decision', value = 'marry_option', check = true}],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_exit_1',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_2", 
-						reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_2",
+						reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_bad_1',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_3", 
-						reqs = [{type = 'decision', value = 'marry_option', check = true}], 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_3",
+						reqs = [{type = 'decision', value = 'marry_option', check = true}],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_bad_1',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_4", 
-						reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_4",
+						reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_exit_2',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_5", 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_5",
 						type = 'next_dialogue',
-						reqs = [], 
+						reqs = [],
 						dialogue_argument = 1,
 					},
 				],
@@ -226,9 +233,9 @@ var data = {
 					},
 					{
 						code = 'close',
-						text = "AFTER_ELECTION_PRINCESS_OPTION_9", 
+						text = "AFTER_ELECTION_PRINCESS_OPTION_9",
 						type = 'next_dialogue',
-						reqs = [], 
+						reqs = [],
 						dialogue_argument = 1,
 					},
 				],
@@ -245,16 +252,16 @@ var data = {
 		options = [
 			{
 				code = 'princess_cutscene_good_2',
-				text = "AFTER_ELECTION_PRINCESS_5", 
+				text = "AFTER_ELECTION_PRINCESS_5",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 			{
 				code = 'close',
-				text = "AFTER_ELECTION_PRINCESS_6", 
+				text = "AFTER_ELECTION_PRINCESS_6",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 		],
@@ -285,7 +292,7 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [{text = "AFTER_ELECTION_PRINCESS_8", reqs = []},
-		
+
 			{text = '', reqs = [], bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
 					{code = 'loyalty', operant = '+', value = 25},
@@ -401,16 +408,16 @@ var data = {
 		options = [
 			{
 				code = 'princess_cutscene_bad_2',
-				text = "AFTER_ELECTION_PRINCESS_OPTION_6", 
+				text = "AFTER_ELECTION_PRINCESS_OPTION_6",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 			{
 				code = 'close',
-				text = "AFTER_ELECTION_PRINCESS_OPTION_7", 
+				text = "AFTER_ELECTION_PRINCESS_OPTION_7",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 		],
@@ -450,8 +457,8 @@ var data = {
 				{code = 'decision', value = 'anstasia_rape_scene'},
 				],
 			}
-			
-			
+
+
 		],
 		options = [
 			{
@@ -464,7 +471,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	aire_anastasia1 = {
 		image = null,
 		custom_background = "anastasia_aire1",
@@ -517,7 +524,7 @@ var data = {
 			}
 		],
 	},
-	
+
 	amelia_titjob1 = {
 		image = null,
 		custom_background = "amelia_titjob1",
@@ -570,5 +577,5 @@ var data = {
 			}
 		],
 	},
-	
+
 }

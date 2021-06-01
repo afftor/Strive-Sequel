@@ -406,31 +406,7 @@ func QuickSave():
 	SaveGame('QuickSave')
 
 func autosave():
-#	var maxcounter = globalsettings.autosave_number
-#	var counter = 1
-#	var savegame = File.new()
-#	var dir = Directory.new()
-#	var savesdir = dir_contents(userfolder + 'saves')
-#	var filearray = globals.dir_contents()
-#	var path = 'user://saves/'
-#	if filearray.has(path+"autosave2"):
-#		dir.rename(path+'autosave2',path+'autosave3')
-#		if globals.savelist.has(path + 'autosave2'):
-#			globals.savelist[path+'autosave3'] = globals.savelist[path + 'autosave2']
-#		else:
-#			globals.savelist[path+'autosave3'] = globals.savelistentry(path+'autosave3')
-#	if filearray.has(path+"autosave1"):
-#		dir.rename(path+'autosave1',path+'autosave2')
-#		if globals.savelist.has(path + 'autosave1'):
-#			globals.savelist[path+'autosave2'] = globals.savelist[path + 'autosave1']
-#		else:
-#			globals.savelist[path+'autosave2'] = globals.savelistentry(path+'autosave2')
-	#var thread =
-# warning-ignore:return_value_discarded
 	SaveGame('autosave')
-#	var thread = Thread.new()
-#	thread.start(globals,"SaveGame",'autosave')
-#	thread.wait_to_finish()
 
 func SaveGame(name):
 	var savedict = {}#state.serialize();
@@ -1198,6 +1174,10 @@ func common_effects(effects):
 						ResourceScripts.game_party.remove_slave(character)
 					elif k.code == 'add_profession':
 						character.unlock_class(k.profession)
+					elif k.code == 'create_and_equip':
+						var item = CreateGearItem(k.item, k.parts)
+						AddItemToInventory(item)
+						character.equip(item)
 					else:
 						character_stat_change(character, k)
 			'start_event':

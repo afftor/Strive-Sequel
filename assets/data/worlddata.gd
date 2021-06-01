@@ -1382,7 +1382,7 @@ var dungeons = {
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
-		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
 		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",

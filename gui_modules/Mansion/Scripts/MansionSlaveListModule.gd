@@ -399,7 +399,7 @@ func update_button(newbutton):
 			person_location = "aliron"
 		else:
 			person_location = person.get_location()
-	
+
 	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
 	newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()

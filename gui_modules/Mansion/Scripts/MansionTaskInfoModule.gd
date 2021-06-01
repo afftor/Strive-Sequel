@@ -41,7 +41,7 @@ func ClearContainerCustom(container):
 			continue
 		i.hide()
 		i.queue_free()
- 
+
 func show_upgrades_info():
 	for upgrade in ResourceScripts.game_res.upgrade_progresses.keys():
 		var upgrade_product = upgradedata.upgradelist[upgrade]
@@ -68,7 +68,7 @@ func show_upgrades_info():
 				globals.connecttexttooltip(newupgrade, text)
 			# newupgrade.connect("mouse_entered", self, "show_workers", [task, newupgrade])
 			# newupgrade.connect("mouse_exited", $Tooltip, "hide")
-		
+
 
 
 func show_workers(task, button):

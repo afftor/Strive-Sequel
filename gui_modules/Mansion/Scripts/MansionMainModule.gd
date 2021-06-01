@@ -696,10 +696,8 @@ func test_mode():
 					value = 'daisy',
 					args = [
 						{code = 'sexuals_factor', value = 1, operant = "+"},
-						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
-						{code = 'obedience', operant = '+', value = 0},
-						#{code = 'tag', operant = 'remove', value = 'no_sex'},
+						{code = 'sex_skills_petting', operant = '+', value = 75},
 					]
 				}
 			]
@@ -819,7 +817,7 @@ func test_mode():
 
 
 		#input_handler.interactive_message('servants_election_finish6', '', {})
-		input_handler.interactive_message('final_operation_start', '', {})
+		#input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
 #		input_handler.interactive_message('princess_recriut_intermission_3', '', {})

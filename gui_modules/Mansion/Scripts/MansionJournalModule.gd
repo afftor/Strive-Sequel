@@ -117,7 +117,7 @@ func show_quest_info(quest):
 				'random_item':
 					var itemtemplate = Items.itemlist[i.type]
 					newbutton.get_node("TextureRect").texture = itemtemplate.icon
-					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
+					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
 					if itemtemplate.has('parts'):
@@ -174,7 +174,7 @@ func show_quest_info(quest):
 							work_time_holder = time
 					var sex = ''
 					var prof = ''
-					var stats = {} 
+					var stats = {}
 					for r in reqs:
 						if r.code == "sex":
 							sex = r.value
@@ -197,8 +197,8 @@ func show_quest_info(quest):
 						tooltiptext += stats_text
 					globals.connecttexttooltip(newbutton, tooltiptext)
 					quest_descript += "\nWork duration: " + time + ' days.'
-		
-		
+
+
 		for i in quest.rewards:
 			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/rewards)
 			match i.code:
@@ -262,7 +262,7 @@ func CompleteQuest():
 	if variables.ignore_quest_requirements:
 		CompleteReqs()
 		return
-	
+
 	for i in selectedquest.requirements:
 		if i.code == 'random_item' && i.completed == false:
 			select_items_for_quest(i)
@@ -356,7 +356,7 @@ func Reward():
 				ResourceScripts.game_res.materials[i.item] += i.value
 			'usable':
 				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
-	
+
 	#remake into data system
 	if selectedquest.area == 'plains':
 		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
@@ -431,8 +431,8 @@ func item_selection_update():
 		amount = existing_items[selected_req.type]
 	var text = 'Required Items: ' + Items.itemlist[selected_req.type].name + ": " + str(amount) + "/"+ str(selected_req.value) + '.'
 	$ItemSelectionPanel/RichTextLabel.bbcode_text = text
-	
-	
+
+
 	$ItemSelectionPanel/ConfirmButton.disabled = amount < selected_req.value
 
 
@@ -448,7 +448,7 @@ func turn_in_quest_items():
 			i.amount = 0
 		else:
 			i.amount -= amount
-		
+
 	selected_req.completed = true
 	$ItemSelectionPanel.hide()
 	CompleteQuest()

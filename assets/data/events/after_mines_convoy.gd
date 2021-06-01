@@ -293,7 +293,7 @@ var data = {
 		image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "duncan", character2 = "anastasia",
 		text = [{text = "AFTER_MINES_CONVOY_17", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
-		
+
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage3'},

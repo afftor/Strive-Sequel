@@ -12,7 +12,7 @@ var craft_two_sides_panel = preload("res://assets/Textures_v2/MANSION/Craft/Pane
 
 # func _init():
 # 	yield(Items, "tree_entered")
-	
+
 
 func _ready():
 	# input_handler.AddPanelOpenCloseAnimation($NumberSelect)
@@ -22,10 +22,10 @@ func _ready():
 	$CraftSelect/BackButton.connect("pressed", get_parent(), "mansion_state_set", ["default"])
 	$NumberSelect/BackButton2.connect("pressed", self, "cancel_choise")
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
-	
+
 	for i in [$MaterialSetupPanel/ModularSetup/Part1, $MaterialSetupPanel/ModularSetup/Part2, $MaterialSetupPanel/ModularSetup/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
-	
+
 	for i in $categories.get_children():
 		i.connect("pressed", self, 'select_category', [i.name])
 	for i in $filter.get_children():
@@ -88,7 +88,7 @@ func select_category(category):
 	craft_category = category
 	for i in $categories.get_children():
 		i.pressed = i.name == category
-	
+
 	for i in $filter.get_children():
 		i.pressed = false
 	item_filter = 'all'
@@ -102,12 +102,12 @@ func select_category(category):
 func rebuild_recipe_list():
 	var array = []
 	input_handler.ClearContainer($CraftSelect/ScrollContainer/VBoxContainer)
-	
+
 	for i in $filter.get_children():
 		i.hide()
-	
+
 	$filter/all.show()
-	
+
 	for i in Items.recipes.values():
 		if i.worktype != craft_category || globals.checkreqs(i.unlockreqs) == false:
 			continue
@@ -136,7 +136,7 @@ func rebuild_recipe_list():
 					$filter/costume.show()
 				elif enditem.type == 'gear' && enditem.geartype != 'costume':
 					$filter/gear.show()
-	
+
 	array.sort_custom(self, 'sort_craft_list')
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($CraftSelect/ScrollContainer/VBoxContainer)
@@ -175,8 +175,8 @@ func rebuild_recipe_list():
 				newnode.texture = partdata.icon
 				newnode.hint_tooltip = "Materials required for: " + tr(partdata.name)
 				newnode.get_node("Label").text = str(item.parts[k])
-		
-		
+
+
 		var progressnode = newbutton.get_node("WorkUnits")
 		progressnode.texture = images.icons[i.worktype]
 		progressnode.get_node("Label").text = str(i.workunits)
@@ -189,9 +189,9 @@ func update_buttons(item):
 		button.pressed = item == button.get_meta("item")
 
 func sort_craft_list(first, second):
-	var enditem 
-	var enditem2 
-	
+	var enditem
+	var enditem2
+
 	if first.resultitemtype == 'item':
 		enditem = Items.itemlist[first.resultitem]
 	else:
@@ -225,7 +225,7 @@ func rebuild_scheldue():
 		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
 		newnode.target_node = self
 		newnode.target_function = 'rebuild_scheldue'
-	
+
 
 var repeats = 1
 
@@ -263,7 +263,7 @@ func confirm_craft():
 	ResourceScripts.game_res.craftinglists[list].append(data)
 	if selected_item.crafttype == 'modular':
 		data.partdict = partdict.duplicate()
-	
+
 	select_category(craft_category)
 
 var cancelentry
@@ -280,7 +280,7 @@ func confirm_cancel_craft(entry):
 		if button.name == "Button":
 			continue
 		button.pressed = button.get_meta("selected_craft") == entry
-	
+
 
 
 func cancel_item_craft():
@@ -338,7 +338,7 @@ func selectcraftitem(item):
 		encoded_text += "\n" + str(globals.TextEncoder(baseitem.descript))
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
 		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
-		
+
 		input_handler.ClearContainer(basic_setup_container)
 		###
 		for m in item.materials:
@@ -375,7 +375,7 @@ func selectcraftitem(item):
 			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").texture = placeholder
 			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").show()
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = null
-		
+
 		$MaterialSetupPanel/ModularSetup/Part1.set_meta('part',array[0])
 		$MaterialSetupPanel/ModularSetup/Part1.set_meta('cost',item.parts[array[0]])
 		$MaterialSetupPanel/ModularSetup/Part2.hide()
@@ -405,10 +405,10 @@ func choosematerial(button):
 	chosenpartbutton = button
 	var part = button.get_meta('part')
 	var cost = button.get_meta('cost')
-	
+
 	var text = tr(Items.Parts[part].name) + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
 	$MaterialSelect/PartLabel.text = text
-	
+
 	for i in Items.materiallist.values():
 		var tempmaterial = ResourceScripts.game_res.materials[i.code]
 		if !i.has("parts") || tempmaterial < 1:
@@ -431,7 +431,7 @@ func choosematerial(button):
 			newbutton.get_node("Label").bbcode_text = parttext
 			globals.connecttexttooltip(newbutton.get_node("ButtonOverlay"), '[center]' + i.name + "[/center]\n" + i.descript)
 			newbutton.get_node("ButtonOverlay").connect("pressed",self,'selectmaterial',[i, part, cost])
-			
+
 
 func selectmaterial(material, part, cost):
 	$filter.show()
@@ -485,7 +485,7 @@ func checkcreatingitem(item):
 	for i in baseitem.parts:
 		if !itemparts.has(i):
 			fullrecipe = false
-	
+
 	var temppartdict = {}
 	for i in itemparts:
 		temppartdict[i] = itemparts[i].material
@@ -500,7 +500,7 @@ func checkcreatingitem(item):
 	else:
 		text += '\n'
 		$NumberSelect/NumberConfirm.disabled = false
-	
+
 	globals.TextEncoder(text, $MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
 	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
@@ -514,25 +514,25 @@ func multipart_item_text(item):
 		text += 'Type: ' + item.geartype + "\n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	if item.slots.size() > 0:
 		text += "Slots: "
 		for i in item.slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2)
-	
+
 	if item.toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": " 
+		text += tr("TOOLWORKCATEGORY") + ": "
 		for i in item.toolcategory:
 			text += statdata.worktoolnames[i] +", "
-		text = text.substr(0, text.length()-2) 
+		text = text.substr(0, text.length()-2)
 	if item.description != null:
 		text += item.description
 	if !item.reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_multipart")
 		text += "\n" + tempslave.decipher_reqs(item.reqs)
 	text = globals.TextEncoder(text)
-	return text	
+	return text
 
 
 func CreateItem():

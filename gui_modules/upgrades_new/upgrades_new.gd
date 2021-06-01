@@ -88,7 +88,7 @@ func build_description(upgrade_id):
 	desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = true
 	desc_panel.get_node("VBoxContainer/resources").visible = true
 	work_cost.get_parent().visible = true
-	
+
 	if ResourceScripts.game_res.upgrades_queue.has(upgrade_id):
 		desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer").visible = false
 		desc_panel.get_node("VBoxContainer/resources").visible = false

@@ -454,13 +454,13 @@ var upgradelist = {
 		levels = {
 			1:{
 				unlockreqs = [],
-				bonusdescript = tr("UPGRADEEXOTICBONUS"),
+				bonusdescript = tr("UPGRADESEX_TIMEBONUS1"),
 				taskprogress = 250,
 				cost = {woodmagic = 100, leatherthick = 100, steel = 100},
 			},
 			2:{
 				unlockreqs = [],
-				bonusdescript = tr("UPGRADEEXOTICBONUS"),
+				bonusdescript = tr("UPGRADESEX_TIMEBONUS2"),
 				taskprogress = 500,
 				cost = {woodiron = 100, leathermythic = 100, mithril = 100},
 			},

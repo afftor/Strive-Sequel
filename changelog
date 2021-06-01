@@ -1,3 +1,8 @@
+0.5.1a
+Fixed multiple assignment issues
+Fixed wrong upgrade description
+Fixed mac version
+Fixed some item tooltip inconsistencies
 0.5.1
 Redone Daisy's questline
 Added upgrade to increase exotic trader slave quality
@@ -5,10 +10,11 @@ Added upgrade to increase number of sex interactions per day
 Impregnation text now states if character could've been impregnated or not and why
 Changed upgrade price for Alchemy level 3
 Added 3 more levels to luxury room upgrade
-Shrine events now have images
+Shrine events now have illustrations
 Life and energy shard drop rates reduced
 Rebel's hideout is now much better guarded
 Increased speed for some animations
+Event acquired items for story characters will also be equipped now (bracelet)
 Fixed Daisy and Anastasia's sprites being paler than they should be
 Fixed multiturn skip taking too much time to calculate
 Fixed loot window sometimes showing 0 as loot number
