@@ -47,7 +47,7 @@ func build_skill_panel():
 				if skill.custom_used_charges[0] == 'call':
 					used_charges = person.call(skill.custom_used_charges[1], skill.custom_used_charges[2])
 			text = str(charges - used_charges) + "/" + str(charges)
-			
+
 			if person.checkreqs(skill.reqs) == false:
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -61,7 +61,7 @@ func build_skill_panel():
 			globals.connectskilltooltip(newbutton, skill.code, person)
 		else:
 			newbutton.connect('pressed',self,'select_skill_for_position', [i])
-		
+
 		newbutton.set_script(load("res://src/scenes/RightClickReactButton.gd"))
 		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 		if person.skills.active_panel == variables.PANEL_COM:

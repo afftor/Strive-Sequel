@@ -83,7 +83,7 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
 		guilds = [],
-		events = [{code = 'looking_for_princess_elven_1', text = "Meet priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
+		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -1403,16 +1403,16 @@ var dungeons = {
 		name = "Rebels' Hideout",
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
+		difficulty = 'medium',
 		background_pool = ['cave_1'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
 		#gatherable_resources = {},
 		#gather_mod = [],
-		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
 		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -1435,7 +1435,7 @@ var dungeons = {
 	quest_daisy_admirer_location = {
 		code = 'quest_daisy_admirer_location',
 		type = 'encounter',
-		name = "quest daisy admirer location",
+		name = "Ramont's Estate",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -1450,8 +1450,11 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		locked = true,
-
+		options = [
+			{text = 'Approach', reqs = [
+				{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
+				args = [{code = 'start_event', data = 'daisy_lost_amelia_3', args = []}]}
+			],
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = []

@@ -2469,7 +2469,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {},
+		basestats = {physics_bonus = 10, armor = 3},
 	},
 	circlet = {
 		code = 'circlet',
