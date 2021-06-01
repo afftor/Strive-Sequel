@@ -156,7 +156,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'return_to_mansion'}],
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'return_to_mansion'}], type = 'next_dialogue'
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
 		}, ],
@@ -167,7 +167,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_3", reqs = []}],
 		options = [ {
 			code = 'quest_fight', args = 'rebel_convoy',
-			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		} ],
 	},
 
@@ -176,7 +176,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 
@@ -267,7 +267,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_14", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 
@@ -276,7 +276,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_15", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			code = 'after_mines_convoy_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 
@@ -285,7 +285,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_16", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			code = 'after_mines_convoy_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 
@@ -293,10 +293,11 @@ var data = {
 		image = null, tags = ['dialogue_scene','blackscreen_transition_common'], character = "duncan", character2 = "anastasia",
 		text = [{text = "AFTER_MINES_CONVOY_17", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
-		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage3'},
-		{code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}],
+		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage3'},
+			{code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}],
 		}],
 	},
 }

@@ -39,11 +39,11 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	parentnode = node
 	currentdata = data
 	currenttype = type
-	
+
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
-	
+
 	#$Image/amount.hide()
 	iconnode.material = null
 	#$type.text = ''
@@ -70,29 +70,29 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
-	
+
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
-	
+
 	show()
-	
+
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
-	
+
 	$RichTextLabel.rect_size.y = 125
 	rect_size.y = 362
-	
+
 	yield(get_tree(), 'idle_frame')
-	
+
 	rect_size.y = max(362, $RichTextLabel.get_v_scroll().get_max() + 300)
 	$RichTextLabel.rect_size.y = rect_size.y - 100
 	$RichTextLabel.rect_position.y = 250
-	
-	
+
+
 	if get_rect().end.x > screen.size.x:
 		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
@@ -135,13 +135,13 @@ func gear_tooltip(data, item = null):
 	var text = item.tooltiptext()
 	$Cost/Label.text = str(data.price)
 	$Cost.visible = item.price != 0
-	
+
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 		text += "\n\n[color=yellow]Hold shift for details[/color]"
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
-	
+
 	textnode.bbcode_text = text
 
 func gear_detailed_tooltip(data, item = null):
@@ -176,7 +176,7 @@ func gear_detailed_tooltip(data, item = null):
 func geartemplete_tooltip(data):
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
-	
+
 	if item.has('geartype'):
 		text += 'Type: ' + item.geartype + "\n"
 		if item.slots.size() > 0:
@@ -186,9 +186,9 @@ func geartemplete_tooltip(data):
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	text += item.descript
-	
+
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in item.basestats:
@@ -197,7 +197,7 @@ func geartemplete_tooltip(data):
 				var change = ''
 				if statdata.statdata[i].percent:
 					value = value*100
-				text += statdata.statdata[i].name + ': {color=' # + " " + Items.stats[i] 
+				text += statdata.statdata[i].name + ': {color=' # + " " + Items.stats[i]
 				if value > 0:
 					change = '+'
 					text += 'green|' + change
@@ -207,16 +207,16 @@ func geartemplete_tooltip(data):
 				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
-	
-	
+
+
 	for i in item.effects:
 		text += Effectdata.effect_table[i].descript + "\n"
-	
+
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(data.price)
-	
-	
-	
+
+
+
 #	if data.item.slots.size() == 1:
 #		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
 #	elif data.item.slots.size() > 1:
@@ -225,10 +225,10 @@ func geartemplete_tooltip(data):
 #		$type.text = tr("USABLE")
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-		
+
 		text += "\n\n{color=yellow|Hold shift for details}"
 	textnode.bbcode_text = globals.TextEncoder(text)
-	
+
 
 func cooldown():
 	shutoff = true

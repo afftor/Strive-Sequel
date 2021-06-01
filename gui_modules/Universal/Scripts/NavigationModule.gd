@@ -88,7 +88,7 @@ func select_location(location):
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
 	input_handler.selected_location = location
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(location)
-	
+
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
 		gui_controller.previous_screen = gui_controller.current_screen
@@ -99,7 +99,7 @@ func select_location(location):
 	else:
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
-	
+
 	if location in ResourceScripts.game_world.capitals:
 		gui_controller.exploration.open_city(location)#
 		gui_controller.clock.raise()
@@ -149,6 +149,6 @@ func return_to_mansion(with_state = "default"):
 	update_buttons()
 	gui_controller.exploration.hide()
 	gui_controller.close_all_closeable_windows()
-	
+
 	if gui_controller.dialogue != null:
 		gui_controller.dialogue.raise()

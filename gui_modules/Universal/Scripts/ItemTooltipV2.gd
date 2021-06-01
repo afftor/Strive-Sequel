@@ -39,11 +39,11 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	parentnode = node
 	currentdata = data
 	currenttype = type
-	
+
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
-	
+
 	#$Image/amount.hide()
 	iconnode.material = null
 	#$type.text = ''
@@ -70,28 +70,28 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
-	
+
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
-	
+
 	show()
-	
+
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
-	
+
 	$InfoText.rect_size.y = 125
 	rect_size.y = 630
-	
+
 	yield(get_tree(), 'idle_frame')
-	
+
 	rect_size.y = max(630, $InfoText2.get_v_scroll().get_max() + 500)
 	$InfoText2.rect_size.y = rect_size.y - 100
-	
-	
+
+
 	if get_rect().end.x > screen.size.x:
 		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
@@ -100,7 +100,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
-	
+
 	set_process(true)
 
 func material_tooltip(data, workers_data = {}):
@@ -118,7 +118,7 @@ func material_tooltip(data, workers_data = {}):
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
 	textnode.bbcode_text = globals.TextEncoder(text)
-	#input_handler.RTLabel_height_fix(textnode) #for it is working wrong, we need to think some different approach 
+	#input_handler.RTLabel_height_fix(textnode) #for it is working wrong, we need to think some different approach
 	$InfoText.show() #some materials have their descriptions longer than can be displayed properly - mb need to remake some part of this scene
 	$InfoText2.hide()
 	$InfoText3.hide()
@@ -142,13 +142,13 @@ func gear_tooltip(data, item = null):
 	var text2 = item.tooltiptext_2()
 	$Cost/Label.text = str(data.price)
 	$Cost.visible = item.price != 0
-	
+
 	$HoldShift.visible = item.get('partcolororder') != null
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
-	
+
 	$InfoText.bbcode_text = text1
 	$InfoText2.bbcode_text = text2
 
@@ -219,7 +219,7 @@ func gear_detailed_tooltip(data, item = null):
 func geartemplete_tooltip(data):
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
-	
+
 	if item.has('geartype'):
 		text += 'Type: ' + item.geartype + "\n"
 		if item.slots.size() > 0:
@@ -229,9 +229,9 @@ func geartemplete_tooltip(data):
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
 		text += "Type: Usable\n"
-	
+
 	text += item.descript
-	
+
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in item.basestats:
@@ -281,9 +281,9 @@ func geartemplete_tooltip(data):
 	
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(data.price)
-	
-	
-	
+
+
+
 #	if data.item.slots.size() == 1:
 #		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
 #	elif data.item.slots.size() > 1:
@@ -292,10 +292,10 @@ func geartemplete_tooltip(data):
 #		$type.text = tr("USABLE")
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-		
+
 		text += "\n\n{color=yellow|Hold shift for details}"
 	textnode.bbcode_text = globals.TextEncoder(text)
-	
+
 
 func cooldown():
 	shutoff = true
@@ -307,4 +307,4 @@ func _hide():
 	set_process(false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
-	
+
