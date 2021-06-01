@@ -156,7 +156,8 @@ func build_locations_list():
 		if !cdata.has(id): continue #should add here currently nonexisted marking location link to delete
 		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = 0, quest = false}
 		if tdata.category == "questlocations":
-			temp.quest = true
+			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):
+				temp.quest = true
 		if lands_count.has(temp.area): lands_count[temp.area] += 1
 		else:  lands_count[temp.area] = 1
 		if locs_count.has(temp.type): locs_count[temp.type] += 1
@@ -304,7 +305,8 @@ func make_panel_for_location(panel, loc):
 		panel.text = "Characters on the road"
 	else:
 		var text = ResourceScripts.world_gen.get_location_from_code(loc.id).name
-		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
+#		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
+		if loc.quest:
 			text = "Q:" + text
 		panel.text = text
 		if loc.has('captured'):
@@ -476,7 +478,7 @@ func build_location_info():
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text
 	if location_selected!= null:
-		forget_button.visible = (!location_selected.quest and location_selected.type == 'dungeon')
+		forget_button.visible = (!location_selected.quest and location_selected.type in ['dungeon', 'encounter'])
 	else:
 		forget_button.visible = false
 

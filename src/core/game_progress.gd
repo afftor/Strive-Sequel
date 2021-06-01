@@ -77,7 +77,7 @@ func get_active_quest(code):
 	for i in active_quests:
 		if i.code == code:
 			return i
-	return
+	return null
 
 func check_timed_events():
 	var deleting_events = []
@@ -152,3 +152,14 @@ func counter_cond(c_name, c_op, value):
 	if !dialogue_local_counters.has(c_name):
 		dialogue_local_counters[c_name] = 0
 	return input_handler.operate(c_op, dialogue_local_counters[c_name], value)
+
+
+func if_quest_active(id):
+	if completed_quests.has(id): return false
+	for q in active_quests:
+		if q.code == id:
+			return true
+	var qdata = ResourceScripts.game_world.get_quest_by_id(id)
+	if qdata != null and !(qdata.state in ['complete', 'failed']):
+		return true
+	return false
