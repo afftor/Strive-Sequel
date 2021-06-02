@@ -28,6 +28,16 @@ func fix_serialization():
 		items[i] = dict2inst(items[i])
 	for i in clear_array:
 		items.erase(i)
+	clear_array.clear()
+	for i in materials:
+		if !Items.materiallist.has(i):
+			clear_array.push_back(i)
+	for i in clear_array:
+		materials.erase(i)
+	oldmaterials = materials.duplicate()
+	for i in upgradedata.upgradelist.keys():
+		if !upgrades.has(i):
+			upgrades[i] = 0
 #	fix_items_inventory(false)
 
 func serialize():
