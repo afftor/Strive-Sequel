@@ -488,7 +488,8 @@ func ImportGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
-
+	
+	
 	effects_pool.deserialize(savedict.effpool)
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res = dict2inst(savedict.game_res)
@@ -516,6 +517,17 @@ func ImportGame(filename):
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
 	input_handler.SystemMessage("Game Imported")
+	globals.common_effects([
+			{code = 'add_timed_event', value = "loan_event1",
+				args = [
+					{type = 'fixed_date',
+					date = 14,
+					hour = 8}
+					]
+			},
+			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
+			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
+			])
 
 
 
