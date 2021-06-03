@@ -234,7 +234,7 @@ func is_on_quest():
 
 
 func get_quest_time_init():
-	return quest_time_init
+	return int(quest_time_init)
 
 
 func get_selected_work_quest():
@@ -272,13 +272,13 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 	# for  req in quest_taken.requirements:
 	# 	if req.has("work_time"):
-	quest_time_init = work_time
+	quest_time_init = int(work_time)
 	gui_controller.mansion.TaskModule.show()
 	gui_controller.mansion.TaskModule.show_resources_info()
 
 
 func get_quest_time_remains():
-	return quest_time_remains
+	return int(quest_time_remains)
 
 
 func quest_day_tick():
