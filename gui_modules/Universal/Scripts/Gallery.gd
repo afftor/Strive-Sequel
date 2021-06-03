@@ -7,6 +7,7 @@ var scenes_per_page = 12
 export var test_mode:bool
 
 func test_mode():
+	gui_controller.current_screen = self
 	globals.common_effects([
 		{code = "unlock_asset", dir = "gallery_seq", key = "test_scene"},
 		{code = "unlock_asset", dir = "ero_scenes", key = "anastasia_sex_1"},
@@ -115,11 +116,14 @@ func show_fullscreen(image):
 #	$FullScreenImage.texture = load(image)
 	$FullScreenImage.texture = images.backgrounds[image]
 	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
+	if !gui_controller.windows_opened.has($FullScreenImage):
+		gui_controller.windows_opened.append($FullScreenImage)
 
 
 func open_galery():
 	ResourceScripts.core_animations.UnfadeAnimation(self)
 	yield(get_tree().create_timer(0.3), "timeout")
+	gui_controller.current_screen = self
 	show()
 
 
