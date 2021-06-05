@@ -198,6 +198,7 @@ var data = {
 		{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'}]
 		} ],
 	},
 
