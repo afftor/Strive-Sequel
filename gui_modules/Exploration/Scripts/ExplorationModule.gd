@@ -1255,6 +1255,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			item_ref = Items.materiallist[item]
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = item_ref.name
+		newbutton.get_node("Type").text = "Item"
 		newbutton.get_node("Icon").texture = item_ref.icon
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.items[item][1])
 		newbutton.get_node("Amount").show()
@@ -1270,6 +1271,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = str(cls.capitalize())
+		newbutton.get_node("Type").text = "Class"
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
