@@ -1,8 +1,10 @@
+Fixed halfkin tanuki having no growth factor in its data
 0.5.1a
 Fixed multiple assignment issues
 Fixed wrong upgrade description
 Fixed mac version
 Fixed some item tooltip inconsistencies
+Fixed some locations not being forgettable when they should be
 0.5.1
 Redone Daisy's questline
 Added upgrade to increase exotic trader slave quality

@@ -542,7 +542,13 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.1
+bbcode_text = "0.5.1a
+Fixed multiple assignment issues
+Fixed wrong upgrade description
+Fixed mac version
+Fixed some item tooltip inconsistencies
+Fixed some locations not being forgettable when they should be
+0.5.1
 Redone Daisy's questline
 Added upgrade to increase exotic trader slave quality
 Added upgrade to increase number of sex interactions per day
@@ -956,7 +962,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.1
+text = "0.5.1a
+Fixed multiple assignment issues
+Fixed wrong upgrade description
+Fixed mac version
+Fixed some item tooltip inconsistencies
+Fixed some locations not being forgettable when they should be
+0.5.1
 Redone Daisy's questline
 Added upgrade to increase exotic trader slave quality
 Added upgrade to increase number of sex interactions per day
