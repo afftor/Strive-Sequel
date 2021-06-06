@@ -226,6 +226,12 @@ func create(temp_race, temp_gender, temp_age):
 func setup_baby(mother, father):
 	statlist.setup_baby(mother, father)
 
+func get_baby_or_null():
+	var tmp = get_stat('pregnancy')
+	if tmp == null: return null
+	if !tmp.has('baby'): return null
+	return tmp.baby
+
 func get_short_name():
 	return statlist.get_short_name()
 
