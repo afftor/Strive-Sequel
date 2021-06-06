@@ -647,7 +647,8 @@ func setup_baby(mother, father):
 	pregdata.baby = parent.id
 	pregdata.duration = variables.pregduration
 	mother.set_stat('pregnancy', pregdata.duplicate())
-	ResourceScripts.game_party.babies[parent.id] = parent
+	characters_pool.move_to_baby(parent.id)
+#	ResourceScripts.game_party.babies[parent.id] = parent
 
 func create(temp_race, temp_gender, temp_age):
 	statlist.race = temp_race
