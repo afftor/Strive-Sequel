@@ -10,6 +10,7 @@
 [ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=8]
 
 [node name="tooltip" type="Panel"]
+visible = false
 show_behind_parent = true
 margin_right = 443.0
 margin_bottom = 362.0
