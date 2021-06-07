@@ -30,8 +30,8 @@ var encounters = {
 	patrol = {unittype = 'randomgroup', unitcode = 'patrol', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'patrol_win', args = []}], lose_effects = [{code = 'start_event', data = 'patrol_lose', args = []}]},
 	wrong_building_rebels = {unittype = 'randomgroup', unitcode = 'wrong_building_rebels', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'wrong_building_rebels_win', args = []}], lose_effects = [{code = 'start_event', data = 'wrong_building_rebels_lose', args = []}]},
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
-	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'bandits_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_4', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
-	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'ramont_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_amelia_9', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_amelia_lose', args = []}]},
+	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'bandits_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_4', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_lose', args = []}]},
+	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'ramont_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_9', args = []}], lose_effects = [{code = 'start_event', data = 'daisy_lost_lose', args = []}]},
 
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = []},
