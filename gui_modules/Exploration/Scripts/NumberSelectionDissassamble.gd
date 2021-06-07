@@ -27,11 +27,11 @@ func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, min
 	$HSlider.max_value = maxvalue
 	require_gold = requiregold
 	update()
- 
+
 func update():
 	# if get_parent().name == "AreaShop":
 	# 	if require_gold == false:
-	# 		$Button.disabled = $HSlider.value == 0 
+	# 		$Button.disabled = $HSlider.value == 0
 	# 	else:
 	# 		$Button.disabled = $HSlider.value == 0 || ResourceScripts.game_res.money < $HSlider.value * cost
 	# 	if typeof(icon) == TYPE_STRING:
@@ -41,8 +41,8 @@ func update():
 	# if get_parent().name == "GuildShop":
 	# 	$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - (cost / $HSlider.step) * $HSlider.value) < 0
 	# if get_parent().name in ["AreaShop", "GuildShop"]:
-	# 	$ItemPrice.text = "x " + str($HSlider.value * (cost / $HSlider.step)) 
-	$ItemAmount.text = "x " + str($HSlider.value) 
+	# 	$ItemPrice.text = "x " + str($HSlider.value * (cost / $HSlider.step))
+	$ItemAmount.text = "x " + str($HSlider.value)
 #	$ItemName.text = showntext
 
 func confirm_number_selection():

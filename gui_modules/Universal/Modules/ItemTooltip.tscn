@@ -19,6 +19,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 
 [node name="ItemTooltipV2" type="Panel"]
+visible = false
 margin_right = 550.0
 margin_bottom = 630.0
 mouse_filter = 2

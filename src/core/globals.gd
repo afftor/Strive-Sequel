@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.5.1'
+const gameversion = '0.5.1a'
 
 #time
 signal hour_tick
@@ -490,7 +490,7 @@ func ImportGame(filename):
 	file.close()
 	
 	
-	effects_pool.deserialize(savedict.effpool)
+	
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res = dict2inst(savedict.game_res)
 	ResourceScripts.game_res.fix_serialization()
@@ -504,7 +504,8 @@ func ImportGame(filename):
 	#temporally removed
 #	ResourceScripts.game_progress = dict2inst(savedict.game_progress)
 #	ResourceScripts.game_progress.fix_import()
-
+#	characters_pool.get_babies_from_data(savedict.charpool)
+	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 

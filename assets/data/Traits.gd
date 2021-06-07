@@ -298,7 +298,7 @@ var traits = {
 		effects = [],
 	},
 	stealth = {
-		code = 'staelth',
+		code = 'stealth',
 		name = '',
 		descript = '',
 		icon = null,

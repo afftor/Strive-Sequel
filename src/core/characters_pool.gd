@@ -34,6 +34,8 @@ func cleanup(on_exit = false):
 #				input_handler.slave_list_node.rebuild()
 			characters[id].clean_references()
 			remove_id(id)
+	if ResourceScripts.game_party == null: return
+	if ResourceScripts.game_party.characters == null: return
 	for id in ResourceScripts.game_party.characters.keys():
 		if !ResourceScripts.game_party.characters[id].is_active or on_exit:
 			ResourceScripts.game_party.characters[id].clean_effects()
@@ -53,12 +55,21 @@ func move_to_state(id):
 	ResourceScripts.game_party.characters[id] = tmp
 	ResourceScripts.game_party.character_order.append(id)
 
+
 func move_baby_to_state(id):
 	if !ResourceScripts.game_party.babies.has(id): return
 	var tmp = ResourceScripts.game_party.babies[id]
 	ResourceScripts.game_party.babies.erase(id)
 	ResourceScripts.game_party.characters[id] = tmp
 	ResourceScripts.game_party.character_order.append(id)
+
+
+func move_to_baby(id):
+	if !characters.has(id): return
+	var tmp = characters[id]
+	characters.erase(id)
+	ResourceScripts.game_party.babies[id] = tmp
+
 
 func move_to_pool(id):
 	if !ResourceScripts.game_party.characters.has(id): return
@@ -81,3 +92,8 @@ func deserialize(tmp):
 	for hid in tmp.keys():
 		characters[hid] = dict2inst(tmp[hid])
 		characters[hid].fix_serialization()
+
+
+
+func get_babies_from_data(tmp):
+	pass

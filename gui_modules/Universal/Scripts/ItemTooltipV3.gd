@@ -232,6 +232,7 @@ func gear_detailed_tooltip(data, item = null):
 
 
 func geartemplete_tooltip(data):
+	$TopPanel/Title.text = data.item.name
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
 
