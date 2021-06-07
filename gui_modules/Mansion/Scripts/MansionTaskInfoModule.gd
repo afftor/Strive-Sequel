@@ -108,7 +108,7 @@ func show_resources_info():
 				else:
 					item = Items.materiallist[recipe.resultitem]
 				if recipe.resultitemtype == 'material':
-					newtask.get_node("Task/TaskIcon").texture = Items.materiallist[ResourceScripts.game_res.craftinglists[task_name][0].code].icon
+					newtask.get_node("Task/TaskIcon").texture = Items.materiallist[recipe.resultitem].icon
 					# newtask.get_node("icon/Label").show()
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
 
@@ -116,7 +116,7 @@ func show_resources_info():
 					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
 
 				else:
-					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code].resultitem].icon
+					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 
 		elif task.product in ['prostitutegold']:
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production[task.product].icon
