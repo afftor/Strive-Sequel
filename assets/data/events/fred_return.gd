@@ -38,7 +38,7 @@ var data = {
 	fred_return_to_duncan_1 = {
 		variations = [
 			# Var 1
-			{reqs = [{type = 'decision', value = 'brought_fred', check = true}],
+			{reqs = [{type = 'decision', value = 'capture_fred', check = true}],
 			image = null,
 			character = "duncan",
 			tags = ['dialogue_scene'],
@@ -59,7 +59,7 @@ var data = {
 			],
 			},
 			# Var 3
-			{reqs = [], #{type = 'decision', value = 'bribe_from_fred_taken', check = true}
+			{reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}],
 			image = null,
 			character = "duncan",
 			tags = ['dialogue_scene'],

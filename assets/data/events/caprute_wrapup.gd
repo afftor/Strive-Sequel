@@ -276,9 +276,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_11", reqs = []}],
 		options = [ {
-			code = 'mindcontrol_2', text = "MIND_CONTROL_12_OPTION", reqs = [], dialogue_argument = 1,
+			code = 'mindcontrol_2', text = "MIND_CONTROL_12", reqs = [], dialogue_argument = 1,
 		}, {
-			code = 'close', text = "MIND_CONTROL_13_OPTION", reqs = [], dialogue_argument = 2,
+			code = 'close', text = "MIND_CONTROL_13", reqs = [], dialogue_argument = 2,
 		}],
 	},
 	
