@@ -172,6 +172,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	select_actor()
 
 func FinishCombat(victory = true):
+	HideFighterStats()
 	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
