@@ -94,7 +94,7 @@ func open_jobs_window():
 				if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 
-		else: 
+		else:
 			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
 				if globals.checkreqs(i.reqs) == false:
@@ -157,7 +157,7 @@ func open_jobs_window():
 						if button.get_meta("resource") == resource: button.queue_free()
 					continue
 				text += " " + str(gatherable_resources[resource])
-			
+
 			newbutton.get_child(0).text = text
 			newbutton.set_meta("work", item_dict)
 			newbutton.connect('pressed', self, 'show_job_details', [item_dict, true])
@@ -215,7 +215,7 @@ func show_job_details(job, gatherable = false):
 				worktool = "tool_type"
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
-		
+
 		# Maximum workers info
 		if job.has("base_workers") && job.has("workers_per_upgrade"):
 			var upgrade_level = 0
@@ -227,23 +227,23 @@ func show_job_details(job, gatherable = false):
 				upgrade_level = ResourceScripts.game_res.findupgradelevel("fishing_max_workers")
 				upgrade_name = ResourceScripts.game_res.get_upgrade_field("fishing_max_workers", "name")
 			text += (
-			tr("MAXIMUM_WORKERS") 
+			tr("MAXIMUM_WORKERS")
 			+ ": [color=yellow]"
 			+ String(job.base_workers + job.workers_per_upgrade * upgrade_level)
 			+ "[/color] \n" )
-			
+
 			text += (
 			tr("REQUIRED_UPGRADE_NAME")
 			+ ": [color=green]"
 			+ String(tr(upgrade_name))
 			+ "[/color] \n" )
-			
+
 			text += (
-			tr("WORKERS_PER_UPGRADE") 
+			tr("WORKERS_PER_UPGRADE")
 			+ ": [color=yellow]"
 			+ String(job.workers_per_upgrade)
 			+ "[/color]. \n" )
-		
+
 	$job_details/RichTextLabel.bbcode_text = text
 	# for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 	# 	i.pressed = i.get_child(0).text == job_name

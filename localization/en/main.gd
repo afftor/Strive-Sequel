@@ -1391,7 +1391,7 @@ var TranslationDict = {
 	UPGRADEFISHING_MAX_WORKERS = "Fishing: Maximum workers",
 	UPGRADEFARMING_MAX_WORKERSDESCRIPT = "Farming workers maximum upgrade",
 	UPGRADEFISHING_MAX_WORKERSDESCRIPT = "Fishing workers maximum upgrade",
-	
+
 
 	UPGRADETORTURE_ROOM = "Torture Room",
 	UPGRADETORTURE_ROOMDESCRIPT = "Adds torture options during Meeting activity.",
@@ -1964,7 +1964,7 @@ var TranslationDict = {
 	DIALOGUEEVENTGOBLINKILL = "Kill",
 	DIALOGUEEVENTGOBLINCAPTURE = "Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
-	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructios, [he] quickly disappeared in the way of your mansion.",
+	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructions, [he] quickly disappeared in the way of your mansion.",
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAfter a few minutes of getting through cave maze, you end up before the entrance of the room which seems to lead to the local goblin leader. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
@@ -5394,7 +5394,7 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_CLOTHES_STAGE_3 = "Wait, until Daisy's new clothes are finished. ",
 
 	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
-	DAISY_TRAINING_NAME = "Daisy: Trainiing",
+	DAISY_TRAINING_NAME = "Daisy: Training",
 	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose a training for Daisy.",
 	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 

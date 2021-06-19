@@ -1731,7 +1731,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "REceives more damage",
+				description = "Receives more damage",
 				limit = 1,
 				t_name = 'huntersmark',
 				combat_only = true,

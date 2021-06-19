@@ -430,7 +430,7 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = ['random 15', "+25"]}]}],
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
-			tags = ['active_character_translate','scene_character_translate'],
+			tags = ['scene_character_translate','active_character_translate'],
 			image = 'goblin_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
@@ -441,7 +441,7 @@ var scenedict = {
 			text = "DIALOGUEEVENTGOBLINRECRUITFAILURE",
 			image = 'goblin_encounter',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
-			tags = ['active_character_translate','scene_character_translate'],
+			tags = ['scene_character_translate','active_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
 				],

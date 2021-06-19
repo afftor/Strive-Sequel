@@ -141,7 +141,7 @@ var upgradelist = {
 			}
 		}
 	},
-	
+
 	resource_gather_grains = {
 		code = 'resource_gather_grains',
 		name = '',
