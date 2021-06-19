@@ -266,7 +266,7 @@ var materiallist = {
 		type = 'food',
 		tags = ['meat'],
 	},
-	fish = {
+	fish = { 
 		code = 'fish',
 		name = '',
 		descript = '',

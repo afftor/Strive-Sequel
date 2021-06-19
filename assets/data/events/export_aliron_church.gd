@@ -62,7 +62,7 @@
 		],
 		options = [
 			{code = 'aliron_church_celena', reqs = [], text = "ALIRONCHURCHINTRODUCTIONREPLY1", dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'aliron_church_quest_start', reqs = [], text = "ALIRONCHURCHINTRODUCTIONREPLY2", dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'aliron_church_quest_start', reqs = [{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'stage1', state = false}], text = "ALIRONCHURCHINTRODUCTIONREPLY2", dialogue_argument = 2, type = 'next_dialogue'},
 			{code = 'aliron_church_leave', reqs = [], text = "ALIRONCHURCHINTRODUCTIONREPLY3", dialogue_argument = 3, type = 'next_dialogue'},
 		],
 		
