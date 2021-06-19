@@ -684,6 +684,9 @@ var TranslationDict = {
 	WORKTOOLSICKLE = "Sickle",
 	WORKTOOLHUNT_KNIFE = "Hunting Knife",
 
+	MAXIMUM_WORKERS = "Maximum workers",
+	REQUIRED_UPGRADE_NAME = "Upgrade name",
+	WORKERS_PER_UPGRADE = "Workers per upgrade",
 
 	CORRECTTOOLEQUIPPED = "Correct Tool equipped: its bonus will apply. ",
 
@@ -1384,6 +1387,11 @@ var TranslationDict = {
 	UPGRADEFORGEBONUS1 = "Unlocks basic metal tools and weapon recipes. Unlocks Steel production.",
 	UPGRADEFORGEBONUS2 = "Unlocks advanced metal tools and new gear recipes.",
 	UPGRADEFORGEBONUS3 = "Unlocks advanced weapon and armor recipes",
+	UPGRADEFARMING_MAX_WORKERS = "Farming: Maximum workers",
+	UPGRADEFISHING_MAX_WORKERS = "Fishing: Maximum workers",
+	UPGRADEFARMING_MAX_WORKERSDESCRIPT = "Farming workers maximum upgrade",
+	UPGRADEFISHING_MAX_WORKERSDESCRIPT = "Fishing workers maximum upgrade",
+	
 
 	UPGRADETORTURE_ROOM = "Torture Room",
 	UPGRADETORTURE_ROOMDESCRIPT = "Adds torture options during Meeting activity.",

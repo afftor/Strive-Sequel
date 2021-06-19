@@ -94,7 +94,7 @@ func open_jobs_window():
 				if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 
-		else:
+		else: 
 			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
 				if globals.checkreqs(i.reqs) == false:
@@ -103,6 +103,28 @@ func open_jobs_window():
 				newbutton.get_child(0).text = i.name
 				newbutton.set_meta("work", i)
 				newbutton.connect('pressed', self, 'show_job_details', [i])
+				# start checking maximum persons per work in aliron
+				if i.code == "farming" || i.code == "fishing":
+					var upgrade_level
+					if i.code == "farming":
+						upgrade_level = ResourceScripts.game_res.findupgradelevel("farming_max_workers")
+					elif i.code == "fishing":
+						upgrade_level = ResourceScripts.game_res.findupgradelevel("fishing_max_workers")
+					var max_workers_count = i.base_workers + i.workers_per_upgrade * upgrade_level
+					var text = i.name
+					var current_workers_count = 0
+					var active_tasks = ResourceScripts.game_party.active_tasks
+					for task in active_tasks:
+						if (task.code == i.code) && (task.task_location == person_location):
+							current_workers_count = task.workers_count
+					text += " " + str(current_workers_count) + "/" + str(max_workers_count)
+					newbutton.disabled = current_workers_count == max_workers_count
+					if current_workers_count == max_workers_count:
+						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+					else:
+						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
+					newbutton.get_child(0).text = text
+				# finish
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate(tr("INTERACTIONSNOSEXTAG")))
@@ -135,6 +157,7 @@ func open_jobs_window():
 						if button.get_meta("resource") == resource: button.queue_free()
 					continue
 				text += " " + str(gatherable_resources[resource])
+			
 			newbutton.get_child(0).text = text
 			newbutton.set_meta("work", item_dict)
 			newbutton.connect('pressed', self, 'show_job_details', [item_dict, true])
@@ -180,7 +203,7 @@ func show_job_details(job, gatherable = false):
 			+ tr("WORKTOOL")
 			+ ": [color=aqua]"
 			+ work_tools
-			+ "[/color]. \n"
+			+ "[/color] \n"
 		)
 		## Work tools checking
 		if person.equipment.gear.tool != null:
@@ -192,7 +215,35 @@ func show_job_details(job, gatherable = false):
 				worktool = "tool_type"
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
-
+		
+		# Maximum workers info
+		if job.has("base_workers") && job.has("workers_per_upgrade"):
+			var upgrade_level = 0
+			var upgrade_name
+			if job.code == "farming":
+				upgrade_level = ResourceScripts.game_res.findupgradelevel("farming_max_workers")
+				upgrade_name = ResourceScripts.game_res.get_upgrade_field("farming_max_workers", "name")
+			elif job.code == "fishing":
+				upgrade_level = ResourceScripts.game_res.findupgradelevel("fishing_max_workers")
+				upgrade_name = ResourceScripts.game_res.get_upgrade_field("fishing_max_workers", "name")
+			text += (
+			tr("MAXIMUM_WORKERS") 
+			+ ": [color=yellow]"
+			+ String(job.base_workers + job.workers_per_upgrade * upgrade_level)
+			+ "[/color] \n" )
+			
+			text += (
+			tr("REQUIRED_UPGRADE_NAME")
+			+ ": [color=green]"
+			+ String(tr(upgrade_name))
+			+ "[/color] \n" )
+			
+			text += (
+			tr("WORKERS_PER_UPGRADE") 
+			+ ": [color=yellow]"
+			+ String(job.workers_per_upgrade)
+			+ "[/color]. \n" )
+		
 	$job_details/RichTextLabel.bbcode_text = text
 	# for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 	# 	i.pressed = i.get_child(0).text == job_name

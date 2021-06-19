@@ -85,6 +85,63 @@ var upgradelist = {
 #			}
 		}
 	},
+	farming_max_workers = {
+		code = 'farming_max_workers',
+		name = '',
+		tree_position = {x = 12, y = 6},
+		descript = '',
+		icon = "wheat",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			}
+		}
+	},
+	fishing_max_workers = {
+		code = 'fishing_max_workers',
+		name = '',
+		tree_position = {x = 12, y = 10},
+		descript = '',
+		icon = "wheat",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			}
+		}
+	},
+	
 	resource_gather_grains = {
 		code = 'resource_gather_grains',
 		name = '',

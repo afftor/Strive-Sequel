@@ -806,6 +806,7 @@ func dialogue_option_selected(option):
 		match gui_controller.dialogue_window_type:
 			1:
 				get_spec_node(self.NODE_DIALOGUE).hide()
+				gui_controller.dialogue_txt = ""
 				if option.has("close_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
 					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)

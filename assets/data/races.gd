@@ -25,18 +25,21 @@ var tasklist = {
 #		tags = [],
 #		mod = 'mod_hunt'
 #	},
-#	fishing = {
-#		code = 'fishing',
-#		reqs = [],
-#		name = '',
-#		descript = '',
-#		workstat = 'physics',
-#		worktool = 'rod',
-#		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
-#		icon = null,
-#		tags = [],
-#		mod = 'mod_fish'
-#	},
+	fishing = {
+		code = 'fishing',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'wits',
+		worktool = 'rod',
+		base_workers = 1,
+		upgrade_name = 'UPGRADE_FISHING_MAXIMUM_WORKERS',
+		workers_per_upgrade = 2,
+		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
+		icon = null,
+		tags = [],
+		mod = 'mod_fish'
+	},
 	farming = {
 		code = 'farming',
 		reqs = [{type = 'has_upgrade', name = 'resource_gather_grains', value = 1},{type = "has_upgrade", name = 'resource_gather_veges', value = 1, orflag = true}, {type = "has_upgrade", name = 'resource_gather_cloth', value = 1, orflag = true}],
@@ -44,6 +47,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
+		base_workers = 1,
+		upgrade_name = 'UPGRADE_FARM_MAXIMUM_WORKERS',
+		workers_per_upgrade = 1,
 		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.4, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming_veges'},
 		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming_wheat'},
 		farming_cotton = {code = 'farming_cotton',item = 'cloth', progress_per_item = 4, reqs = [{type = "has_upgrade", name = 'resource_gather_cloth', value = 1}], progress_function = 'farming_cloth'}},
