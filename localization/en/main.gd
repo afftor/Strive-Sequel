@@ -1389,8 +1389,12 @@ var TranslationDict = {
 	UPGRADEFORGEBONUS3 = "Unlocks advanced weapon and armor recipes",
 	UPGRADEFARMING_MAX_WORKERS = "Farming: Maximum workers",
 	UPGRADEFISHING_MAX_WORKERS = "Fishing: Maximum workers",
-	UPGRADEFARMING_MAX_WORKERSDESCRIPT = "Farming workers maximum upgrade",
-	UPGRADEFISHING_MAX_WORKERSDESCRIPT = "Fishing workers maximum upgrade",
+	UPGRADECOOKING_MAX_WORKERS = "Cooking: Maximum workers",
+	UPGRADEPROSTITUTION_MAX_WORKERS = "Prostitution: Maximum workers",
+	UPGRADEFARMING_MAX_WORKERSDESCRIPT = "Farming maximum workers upgrade",
+	UPGRADEFISHING_MAX_WORKERSDESCRIPT = "Fishing maximum workers upgrade",
+	UPGRADECOOKING_MAX_WORKERSDESCRIPT = "Cooking maximum workers upgrade",
+	UPGRADEPROSTITUTION_MAX_WORKERSDESCRIPT = "Prostitution maximum workers upgrade",
 	
 
 	UPGRADETORTURE_ROOM = "Torture Room",

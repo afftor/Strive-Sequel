@@ -162,15 +162,6 @@ func findupgradelevel(upgrade_code):
 	if upgrades.has(upgrade_code):
 		rval = upgrades[upgrade_code]
 	return int(rval)
-	
-func get_upgrade_field(upgrade_code, upgrade_field):
-	var res = null
-	var upgrade
-	if upgradedata.upgradelist.has(upgrade_code):
-		upgrade =  upgradedata.upgradelist[upgrade_code]
-	if upgrade.has(upgrade_field):
-		res = upgrade[upgrade_field]
-	return res
 
 
 func add_upgrade_to_queue(upgrade_id):

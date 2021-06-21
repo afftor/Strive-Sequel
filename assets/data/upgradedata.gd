@@ -88,7 +88,7 @@ var upgradelist = {
 	farming_max_workers = {
 		code = 'farming_max_workers',
 		name = '',
-		tree_position = {x = 12, y = 6},
+		tree_position = {x = 13, y = 6},
 		descript = '',
 		icon = "wheat",
 		category = 'facilitiy',
@@ -116,7 +116,63 @@ var upgradelist = {
 	fishing_max_workers = {
 		code = 'fishing_max_workers',
 		name = '',
-		tree_position = {x = 12, y = 10},
+		tree_position = {x = 13, y = 10},
+		descript = '',
+		icon = "wheat",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			}
+		}
+	},
+	cooking_max_workers = {
+		code = 'cooking_max_workers',
+		name = '',
+		tree_position = {x = 7.8, y = 6},
+		descript = '',
+		icon = "wheat",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 200,
+				cost = {stone = 100, grain = 250},
+			}
+		}
+	},
+	prostitution_max_workers = {
+		code = 'prostitution_max_workers',
+		name = '',
+		tree_position = {x = 7.8, y = 10},
 		descript = '',
 		icon = "wheat",
 		category = 'facilitiy',
@@ -158,6 +214,7 @@ var upgradelist = {
 			}
 		}
 	},
+	
 	resource_gather_cloth = {
 		code = 'resource_gather_cloth',
 		name = '',
@@ -174,6 +231,7 @@ var upgradelist = {
 			},
 		}
 	},
+	
 	tailor = {
 		code = 'tailor',
 		name = '',
@@ -202,6 +260,7 @@ var upgradelist = {
 			}
 		}
 	},
+	
 	alchemy = {
 		code = 'alchemy',
 		name = '',
