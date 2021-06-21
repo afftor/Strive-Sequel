@@ -94,7 +94,7 @@ func open_jobs_window():
 				if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 
-		else: 
+		else:
 			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
 				if globals.checkreqs(i.reqs) == false:
@@ -153,7 +153,7 @@ func open_jobs_window():
 						if button.get_meta("resource") == resource: button.queue_free()
 					continue
 				text += " " + str(gatherable_resources[resource])
-			
+
 			newbutton.get_child(0).text = text
 			newbutton.set_meta("work", item_dict)
 			newbutton.connect('pressed', self, 'show_job_details', [item_dict, true])

@@ -1,4 +1,7 @@
 Fixed halfkin tanuki having no growth factor in its data
+Fixed some scenes not displaying correctly
+Fixed Kurdan having incorrect hair length
+Fixed some issues caused by importing
 0.5.1a
 Fixed multiple assignment issues
 Fixed wrong upgrade description

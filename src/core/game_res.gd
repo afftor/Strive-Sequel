@@ -170,7 +170,7 @@ func add_upgrade_to_queue(upgrade_id):
 	var upgrade_next_state = null
 	if upgrade_data.levels.has(upgrade_lv + 1):
 		upgrade_next_state = upgrade_data.levels[upgrade_lv + 1]
-	
+
 	if upgrades_queue.has(upgrade_id):
 		input_handler.SystemMessage("Upgrade already in the queue.")
 		#something goes wrong for confirm button shoul be disabled in this case
@@ -178,7 +178,7 @@ func add_upgrade_to_queue(upgrade_id):
 	if ResourceScripts.game_progress.free_upgrades == false and !upgrade_progresses.has(upgrade_id):
 		for i in upgrade_next_state.cost:
 			materials[i] -= int(upgrade_next_state.cost[i])
-	
+
 	if ResourceScripts.game_progress.instant_upgrades == false:
 		upgrades_queue.append(upgrade_id)
 		if !upgrade_progresses.has(upgrade_id):
