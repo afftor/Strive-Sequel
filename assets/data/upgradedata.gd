@@ -141,62 +141,6 @@ var upgradelist = {
 			}
 		}
 	},
-	cooking_max_workers = {
-		code = 'cooking_max_workers',
-		name = '',
-		tree_position = {x = 7.8, y = 6},
-		descript = '',
-		icon = "wheat",
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			},
-			2:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			},
-			3:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			}
-		}
-	},
-	prostitution_max_workers = {
-		code = 'prostitution_max_workers',
-		name = '',
-		tree_position = {x = 7.8, y = 10},
-		descript = '',
-		icon = "wheat",
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			},
-			2:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			},
-			3:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			}
-		}
-	},
 
 	resource_gather_grains = {
 		code = 'resource_gather_grains',

@@ -104,22 +104,22 @@ func open_jobs_window():
 				newbutton.set_meta("work", i)
 				newbutton.connect('pressed', self, 'show_job_details', [i])
 				# start checking maximum persons per work in aliron
-				#if i.code == "farming" || i.code == "fishing" || i.code == "tailor" || i.code == "smith" || i.code == "alchemy" || i.code == "cooking" || i.code == "prostitution" || i.code == "building":
-				var upgrade_level = ResourceScripts.game_res.findupgradelevel(i.upgrade_code)
-				var max_workers_count = i.base_workers + i.workers_per_upgrade * upgrade_level
-				var text = i.name
-				var current_workers_count = 0
-				var active_tasks = ResourceScripts.game_party.active_tasks
-				for task in active_tasks:
-					if (task.code == i.code) && (task.task_location == person_location):
-						current_workers_count = task.workers_count
-				text += " " + str(current_workers_count) + "/" + str(max_workers_count)
-				newbutton.disabled = current_workers_count == max_workers_count
-				if current_workers_count >= max_workers_count:
-					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
-				else:
-					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
-				newbutton.get_child(0).text = text
+				if i.has('upgrade_code') && i.has('workers_per_upgrade') && i.has('base_workers'):
+					var upgrade_level = ResourceScripts.game_res.findupgradelevel(i.upgrade_code)
+					var max_workers_count = i.base_workers + i.workers_per_upgrade * upgrade_level
+					var text = i.name
+					var current_workers_count = 0
+					var active_tasks = ResourceScripts.game_party.active_tasks
+					for task in active_tasks:
+						if (task.code == i.code) && (task.task_location == person_location):
+							current_workers_count = task.workers_count
+					text += " " + str(current_workers_count) + "/" + str(max_workers_count)
+					newbutton.disabled = current_workers_count == max_workers_count
+					if current_workers_count >= max_workers_count:
+						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+					else:
+						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
+					newbutton.get_child(0).text = text
 				# finish
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
