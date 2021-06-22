@@ -104,26 +104,22 @@ func open_jobs_window():
 				newbutton.set_meta("work", i)
 				newbutton.connect('pressed', self, 'show_job_details', [i])
 				# start checking maximum persons per work in aliron
-				if i.code == "farming" || i.code == "fishing":
-					var upgrade_level
-					if i.code == "farming":
-						upgrade_level = ResourceScripts.game_res.findupgradelevel("farming_max_workers")
-					elif i.code == "fishing":
-						upgrade_level = ResourceScripts.game_res.findupgradelevel("fishing_max_workers")
-					var max_workers_count = i.base_workers + i.workers_per_upgrade * upgrade_level
-					var text = i.name
-					var current_workers_count = 0
-					var active_tasks = ResourceScripts.game_party.active_tasks
-					for task in active_tasks:
-						if (task.code == i.code) && (task.task_location == person_location):
-							current_workers_count = task.workers_count
-					text += " " + str(current_workers_count) + "/" + str(max_workers_count)
-					newbutton.disabled = current_workers_count == max_workers_count
-					if current_workers_count == max_workers_count:
-						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
-					else:
-						newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
-					newbutton.get_child(0).text = text
+				#if i.code == "farming" || i.code == "fishing" || i.code == "tailor" || i.code == "smith" || i.code == "alchemy" || i.code == "cooking" || i.code == "prostitution" || i.code == "building":
+				var upgrade_level = ResourceScripts.game_res.findupgradelevel(i.upgrade_code)
+				var max_workers_count = i.base_workers + i.workers_per_upgrade * upgrade_level
+				var text = i.name
+				var current_workers_count = 0
+				var active_tasks = ResourceScripts.game_party.active_tasks
+				for task in active_tasks:
+					if (task.code == i.code) && (task.task_location == person_location):
+						current_workers_count = task.workers_count
+				text += " " + str(current_workers_count) + "/" + str(max_workers_count)
+				newbutton.disabled = current_workers_count == max_workers_count
+				if current_workers_count >= max_workers_count:
+					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+				else:
+					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
+				newbutton.get_child(0).text = text
 				# finish
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
@@ -192,6 +188,7 @@ func show_job_details(job, gatherable = false):
 		+ ": [color=yellow]"
 		+ work_stat
 		+ "[/color]"
+		+ "\n"
 	)
 	if ((job.has("tool_type") && job.tool_type != '' ) || job.has("worktool")):# && work_tools != "":
 		if job.has("worktool"):
@@ -199,8 +196,7 @@ func show_job_details(job, gatherable = false):
 		if job.has("tool_type"):
 			work_tools = statdata.worktoolnames[job.tool_type]
 		text += (
-			"\n"
-			+ tr("WORKTOOL")
+			tr("WORKTOOL")
 			+ ": [color=aqua]"
 			+ work_tools
 			+ "[/color] \n"
@@ -215,35 +211,29 @@ func show_job_details(job, gatherable = false):
 				worktool = "tool_type"
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
-
-		# Maximum workers info
-		if job.has("base_workers") && job.has("workers_per_upgrade"):
-			var upgrade_level = 0
-			var upgrade_name
-			if job.code == "farming":
-				upgrade_level = ResourceScripts.game_res.findupgradelevel("farming_max_workers")
-				upgrade_name = ResourceScripts.game_res.get_upgrade_field("farming_max_workers", "name")
-			elif job.code == "fishing":
-				upgrade_level = ResourceScripts.game_res.findupgradelevel("fishing_max_workers")
-				upgrade_name = ResourceScripts.game_res.get_upgrade_field("fishing_max_workers", "name")
-			text += (
-			tr("MAXIMUM_WORKERS")
-			+ ": [color=yellow]"
-			+ String(job.base_workers + job.workers_per_upgrade * upgrade_level)
-			+ "[/color] \n" )
-
-			text += (
-			tr("REQUIRED_UPGRADE_NAME")
-			+ ": [color=green]"
-			+ String(tr(upgrade_name))
-			+ "[/color] \n" )
-
-			text += (
-			tr("WORKERS_PER_UPGRADE")
-			+ ": [color=yellow]"
-			+ String(job.workers_per_upgrade)
-			+ "[/color]. \n" )
-
+	
+	# Maximum workers info
+	if job.has("base_workers") && job.has("workers_per_upgrade"):
+		var upgrade_level = ResourceScripts.game_res.findupgradelevel(job.upgrade_code)
+		var upgrade_name = upgradedata.upgradelist[job.upgrade_code].name
+		text += (
+		tr("MAXIMUM_WORKERS") 
+		+ ": [color=yellow]"
+		+ String(job.base_workers + job.workers_per_upgrade * upgrade_level)
+		+ "[/color] \n" )
+		
+		text += (
+		tr("REQUIRED_UPGRADE_NAME")
+		+ ": [color=green]"
+		+ String(tr(upgrade_name))
+		+ "[/color] \n" )
+		
+		text += (
+		tr("WORKERS_PER_UPGRADE") 
+		+ ": [color=yellow]"
+		+ String(job.workers_per_upgrade)
+		+ "[/color]. \n" )
+	
 	$job_details/RichTextLabel.bbcode_text = text
 	# for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 	# 	i.pressed = i.get_child(0).text == job_name
