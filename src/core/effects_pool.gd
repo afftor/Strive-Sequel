@@ -20,6 +20,7 @@ func add_stored_effect(id, eff):
 	effects[id] = eff
 
 func get_effect_by_id(id):
+	if !effects.has(id): return null
 	return effects[id]
 
 func cleanup():
