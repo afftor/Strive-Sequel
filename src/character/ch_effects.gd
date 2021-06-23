@@ -169,7 +169,7 @@ func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, li
 func clean_effects():#clean effects before deleting character
 	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
+		if eff != null: eff.remove()
 
 func process_event(ev, skill = null):
 	for e in temp_effects.duplicate():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta.png" type="Texture" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=7]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=8]
-[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=9]
 [ext_resource path="res://assets/Textures_v2/Upgrades 2021/panel_activeupgrades.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Upgrades 2021/bar_upgrades_big.png" type="Texture" id=11]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlatBlue.tres" type="StyleBox" id=12]
@@ -152,7 +151,6 @@ margin_top = 258.0
 margin_right = 883.0
 margin_bottom = 1043.0
 custom_styles/panel = ExtResource( 12 )
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -260,6 +258,7 @@ custom_fonts/font = ExtResource( 13 )
 text = "10/10"
 
 [node name="VScrollBar" type="VScrollBar" parent="QueueList"]
+visible = false
 margin_left = 557.278
 margin_top = 78.108
 margin_right = 569.278
