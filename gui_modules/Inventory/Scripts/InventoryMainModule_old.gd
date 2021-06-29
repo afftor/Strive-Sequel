@@ -27,31 +27,14 @@ signal item_sold
 
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
+	$VBoxContainer/InfoButton.connect("pressed", self, "close_inventory", ["default"])
+	$VBoxContainer/ClassButton.connect("pressed", self, "close_inventory", ["class"])
+	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
 	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
 	GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode")
 	GearModule.get_node("TattooButton").visible = true
 	$InventoryListModule.buildinventory()
-	$GridContainer/DetailsButton.connect("pressed", self, "open_details")
-	$GridContainer/SkillsButton.connect("pressed", self, "open_skills")
-	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
-	$GridContainer/GearButton.connect("pressed", self, "close_gear")
 
-func open_details():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("details")
-func open_skills():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("skills")
-func open_siblings():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("siblings")
-func close_gear():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("gear")
 
 func change_list_mode():
 	list_mode = "inventory" if list_mode == "tattoo" else "tattoo"
@@ -74,7 +57,6 @@ func close_inventory(state):
 	gui_controller.slavepanel.show()
 	self.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
 
 
 func update():

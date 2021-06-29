@@ -45,7 +45,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 596.0
-margin_bottom = 37.0
+margin_bottom = 45.0
 theme = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]

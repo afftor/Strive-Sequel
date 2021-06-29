@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
@@ -6,14 +6,25 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/CharacterInfo/food_love.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
+[ext_resource path="res://gui_modules/CharacterInfo/food_hate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui_modules/CharacterInfo/SexSkillsControl_old.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
-[ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
-[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
+[ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule_old.gd" type="Script" id=18]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell_old.tres" type="StyleBox" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=21]
+
+[sub_resource type="StyleBoxTexture" id=1]
+region_rect = Rect2( 863, 93, 163, 8 )
+margin_left = 10.0
+margin_right = 10.0
+margin_bottom = 3.0
+modulate_color = Color( 0, 0, 0, 1 )
 
 [node name="SlaveInfoModule" type="Panel"]
 light_mask = 0
@@ -485,11 +496,117 @@ light_mask = 0
 margin_left = 41.0
 margin_top = 264.0
 margin_right = 937.0
-margin_bottom = 880.0
+margin_bottom = 659.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 20 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DietButton" type="Button" parent="."]
+light_mask = 0
+margin_left = 40.0
+margin_top = 841.0
+margin_right = 266.0
+margin_bottom = 909.0
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+toggle_mode = true
+text = "Diet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_love" parent="." instance=ExtResource( 7 )]
+
+[node name="food_hate" parent="." instance=ExtResource( 9 )]
+
+[node name="SexSkillsControl" parent="." instance=ExtResource( 10 )]
+
+[node name="SexSkilsLabel" type="Label" parent="."]
+light_mask = 0
+margin_left = 304.0
+margin_top = 687.0
+margin_right = 664.0
+margin_bottom = 727.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Skills"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traitslabel" type="Label" parent="."]
+light_mask = 0
+margin_left = 672.0
+margin_top = 687.0
+margin_right = 960.0
+margin_bottom = 727.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Traits"
+align = 1
+
+[node name="ConsentLabel" type="Label" parent="."]
+light_mask = 0
+margin_left = 672.0
+margin_top = 866.353
+margin_right = 960.0
+margin_bottom = 908.353
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Consent"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_consumption" type="Label" parent="."]
+light_mask = 0
+margin_left = 31.0
+margin_top = 738.0
+margin_right = 247.0
+margin_bottom = 773.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Daily Consumption"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="food_consumption"]
+light_mask = 0
+margin_left = 224.941
+margin_right = 250.941
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "25"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FoodLabel" type="Label" parent="."]
+light_mask = 0
+margin_left = 8.0
+margin_top = 687.0
+margin_right = 300.0
+margin_bottom = 727.0
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Food"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -511,3 +628,26 @@ margin_bottom = 42.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Master"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 690.498
+margin_top = 743.034
+margin_right = 942.498
+margin_bottom = 858.034
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traits" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="Button" type="Label" parent="ScrollContainer/traits"]
+visible = false
+margin_right = 250.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 250, 0 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "Trait"
+clip_text = true
