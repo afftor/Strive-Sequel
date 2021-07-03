@@ -6,7 +6,6 @@ var char_module_state
 onready var ClassesModule = $SlaveClassesModule
 onready var DetailsModule = $SlaveDetailsModule
 onready var SummaryModule = $SlaveSummaryModule
-onready var SlaveSiblingsModule = $SlaveSiblingsModule
 onready var DietModule = $SlaveDietModule
 onready var BodyModule = $SlaveBodyModule
 onready var SlaveInfo = $SlaveInfoModule
@@ -62,9 +61,13 @@ func talk():
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
 	active_person = input_handler.interacted_character
+	SlaveInfo.get_node("DietButton").pressed = DietModule.is_visible()
 	SummaryModule.show_summary()
 	SlaveInfo.update()
 	BodyModule.update()
+	for button in SummaryModule.get_node("VBoxContainer").get_children():
+		button.disabled = active_person.is_on_quest()
+	SlaveInfo.get_node("DietButton").disabled = active_person.is_on_quest()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 
 
@@ -74,54 +77,43 @@ func set_state(state):
 		char_module_state = "default"
 	else:
 		char_module_state = state
+	SummaryModule.update_buttons()
 	match_state()
 
 func match_state():
 	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible()
-	for b in SummaryModule.get_node("GridContainer").get_children():
-		b.set_pressed(false)
 	match char_module_state:
 		"default":
-			#gui_controller.inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW)
-			#gui_controller.inventory.hide()
-	
 			DetailsModule.hide()
+			DietModule.hide()
 			ClassesModule.hide()
-			SlaveSiblingsModule.hide()
-			BodyModule.show()
-			SlaveInfo.show()
-		"skills":
+			SummaryModule.update_buttons()
+			DetailsModule.get_node("SexTraitsPanel").hide()
+		"class":
 			DetailsModule.hide()
-			SlaveSiblingsModule.hide()
+			DietModule.hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
-			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
-			#BodyModule.hide()
+			DetailsModule.get_node("SexTraitsPanel").hide()
 		"details":
 			gui_controller.windows_opened.clear()
 			gui_controller.windows_opened.append(DetailsModule)
 			ClassesModule.hide()
-			SlaveSiblingsModule.hide()
+			DietModule.hide()
+			DetailsModule.get_node("SexTraitsPanel").hide()
 			DetailsModule.unpress_buttons()
 			DetailsModule.custom_description_open()
 			DetailsModule.show()
-			SummaryModule.get_node("GridContainer/DetailsButton").set_pressed(true)
+		"diet":
+			ClassesModule.hide()
+			DietModule.hide()
+			DetailsModule.get_node("SexTraitsPanel").hide()
+			DietModule.open_diet_window()
+			DietModule.show()
 		"gear":
-			#char_module_state = "default"
+			char_module_state = "default"
 			gui_controller.windows_opened.clear()
 			open_gear()
-		"siblings":
-			gui_controller.windows_opened.clear()
-			gui_controller.windows_opened.append(SlaveSiblingsModule)
-			SlaveInfo.hide()
-			DetailsModule.hide()
-			ClassesModule.hide()
-			SummaryModule.get_node("GridContainer/SiblingsButton").set_pressed(true)
-			SlaveSiblingsModule.show()
-			SlaveSiblingsModule.DietModule.open_diet_window()
-			SlaveSiblingsModule.update()
-			#BodyModule.hide()
-			
 	update()
 
 
@@ -135,7 +127,6 @@ func open_gear():
 	self.hide()
 	gui_controller.inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW)
 	gui_controller.inventory.show()
-	gui_controller.inventory.get_node("GridContainer/GearButton").set_pressed(true)
 	gui_controller.previous_screen = gui_controller.current_screen
 	gui_controller.current_screen = gui_controller.inventory
 	gui_controller.inventory.set_active_hero(active_person)

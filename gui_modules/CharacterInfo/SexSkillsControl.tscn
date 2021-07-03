@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO new 2021/bar_sexskills.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO new 2021/bar_sexskills_progress.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="SexSkillsControl" type="Control"]
+light_mask = 0
+margin_left = 304.0
+margin_top = 740.0
+margin_right = 664.0
+margin_bottom = 907.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+light_mask = 0
+margin_left = 11.0
+margin_top = -4.0
+margin_right = 331.0
+margin_bottom = 213.0
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+light_mask = 0
+
+[node name="Button" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+visible = false
+light_mask = 0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+light_mask = 0
+margin_left = -6.0
+margin_right = 157.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_as_outline = 1
+text = "Penetration"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
+light_mask = 0
+margin_left = 170.0
+margin_top = 8.0
+margin_right = 298.0
+margin_bottom = 28.0
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ProgressBar"]
+light_mask = 0
+margin_top = -2.0
+margin_right = 128.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_as_outline = 1
+text = "1/100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+visible = false
+light_mask = 0
+margin_left = 6.0
+margin_right = 18.0
+margin_bottom = 168.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

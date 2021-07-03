@@ -18,16 +18,22 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
-	$VBoxContainer/GearButton.connect("pressed", get_parent(), "set_state", ["gear"])
-	$VBoxContainer/GearButton.set_meta("state", "gear")
-	$VBoxContainer/ClassButton.connect("pressed", get_parent(), "set_state", ["class"])
-	$VBoxContainer/ClassButton.set_meta("state", "class")
 	$VBoxContainer2/TextureRect2/Exp.connect("pressed", get_parent(), "set_state", ["class"])
-	$VBoxContainer/DetailsButton.connect("pressed", get_parent(), "set_state", ["details"])
-	$VBoxContainer/DetailsButton.set_meta("state", "details")
 	$ChangeSlaveButtons/Left.connect("pressed", self, "change_slave", ["prev"])
 	$ChangeSlaveButtons/Right.connect("pressed", self, "change_slave", ["next"])
+	$GridContainer/DetailsButton.connect("pressed", self, "open_details")
+	$GridContainer/SkillsButton.connect("pressed", self, "open_skills")
+	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
+	$GridContainer/GearButton.connect("pressed", self, "open_gear")
 
+func open_details():
+	get_parent().set_state("details")
+func open_skills():
+	get_parent().set_state("skills")
+func open_siblings():
+	get_parent().set_state("siblings")
+func open_gear():
+	get_parent().set_state("gear")
 
 func change_slave(param):
 	var chars = ResourceScripts.game_party.character_order
@@ -53,16 +59,11 @@ func change_slave(param):
 	# CharMainModule.DetailsModule.person = selected_person
 	CharMainModule.DetailsModule.custom_description_open()
 
-func update_buttons():
-	for button in $VBoxContainer.get_children():
-		button.pressed = (button.get_meta("state") == get_parent().char_module_state)
-
 func update():
 	if get_parent().char_module_state == "default" && gui_controller.windows_opened.size() == 0:
 		return
 	if gui_controller.windows_opened.size() == 0:
 		get_parent().set_state("default")
-	update_buttons()
 
 func show_summary():
 	# input_handler.PreviousScene = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
