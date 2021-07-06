@@ -15,7 +15,6 @@
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.tscn" type="PackedScene" id=14]
 
 [node name="CharInfoMainModule" type="Panel" groups=[
-"ignore_rightclicks",
 "pauseprocess",
 ]]
 light_mask = 0
@@ -28,52 +27,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SlaveSummaryModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 3 )]
+[node name="SlaveSummaryModule" parent="." instance=ExtResource( 3 )]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 235.0
 margin_bottom = 1065.0
 
-[node name="SlaveBodyModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 2 )]
+[node name="SlaveBodyModule" parent="." instance=ExtResource( 2 )]
 show_behind_parent = false
 margin_left = 1205.0
 margin_top = 145.0
 margin_right = 1905.0
 margin_bottom = 1065.0
 
-[node name="SlaveInfoModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 1 )]
+[node name="SlaveInfoModule" parent="." instance=ExtResource( 1 )]
 margin_left = 235.0
 margin_top = 145.0
 margin_right = 1205.0
 margin_bottom = 1065.0
 
-[node name="SlaveClassesModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 6 )]
+[node name="SlaveClassesModule" parent="." instance=ExtResource( 6 )]
 visible = false
 margin_left = 235.0
 margin_top = 145.0
 margin_right = 1205.0
 margin_bottom = 1065.0
 
-[node name="SlaveDetailsModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 7 )]
+[node name="SlaveDetailsModule" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 235.0
 margin_top = 145.0
 margin_right = 1205.0
 margin_bottom = 1065.0
 
-[node name="SlaveSiblingsModule" parent="." groups=[
-"ignore_rightclicks",
-] instance=ExtResource( 14 )]
+[node name="SlaveSiblingsModule" parent="." instance=ExtResource( 14 )]
 visible = false
 margin_left = 235.0
 margin_top = 145.0

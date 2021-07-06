@@ -54,9 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SlaveDietModule" type="Panel" parent="." groups=[
-"ignore_rightclicks",
-]]
+[node name="SlaveDietModule" type="Panel" parent="."]
 show_behind_parent = true
 margin_left = 307.0
 margin_top = 346.0

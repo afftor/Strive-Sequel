@@ -7,9 +7,9 @@ func _ready():
 	 
 
 func open_diet_window():
-	if !gui_controller.windows_opened.has(self):
-		gui_controller.windows_opened.append(self)
-	self.raise()
+	#if !gui_controller.windows_opened.has(self):
+	#	gui_controller.windows_opened.append(self)
+	#self.raise()
 	self.show()
 	person = input_handler.interacted_character
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
