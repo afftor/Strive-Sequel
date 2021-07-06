@@ -58,6 +58,11 @@ func change_slave(param):
 	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 	# CharMainModule.DetailsModule.person = selected_person
 	CharMainModule.DetailsModule.custom_description_open()
+	
+	$GridContainer/SiblingsButton.visible = selected_person.get_work() != "disabled"
+	$GridContainer/DetailsButton.visible = selected_person.get_work() != "disabled"
+	$GridContainer/SkillsButton.visible = selected_person.get_work() != "disabled"
+	$GridContainer/GearButton.visible = selected_person.get_work() != "disabled"
 
 func update():
 	if get_parent().char_module_state == "default" && gui_controller.windows_opened.size() == 0:

@@ -21,6 +21,9 @@ func _ready():
 func set_work_rule(rule):
 	var setting = get_node("work_rules/"+rule).pressed
 	person.xp_module.work_rules[rule] = setting
+	if rule == "luxury":
+		luxury_room()
+		return
 	match setting:
 		true:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
@@ -28,6 +31,15 @@ func set_work_rule(rule):
 		false:
 			person.remove_static_effect_by_code("work_rule_" + rule)
 
+func luxury_room():
+	person = get_parent().active_person
+	var luxury_rooms_taken = 0
+	for p in ResourceScripts.game_party.characters.values():
+		if p.xp_module.work_rules["luxury"]:
+			luxury_rooms_taken += 1
+	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
+	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
+	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 
 func set_color(value):
 	var color = Color(0.98,0.88,0.51,1)
@@ -124,7 +136,46 @@ func sex_traits_open():
 			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
 			newbutton.connect("toggled", self, 'toggle_trait', [i])
 	#$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
+	
 	update_trait_capacity()
+	rebuild_traits()
+
+
+func rebuild_traits():
+	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
+	for i in person.statlist.traits:
+		var trait = Traitdata.traits[i]
+		if trait.visible == false:
+			continue
+		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+		newnode.text = trait.name
+	
+	var traits = person.get_all_sex_traits()
+	
+	for i in traits:
+		var trait = Traitdata.sex_traits[i]
+		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+		if traits[i] == true:#trait is known
+			newnode.text = trait.name
+			var traittext = person.translate(trait.descript)
+			for j in trait.reqs:
+				if j.has('code') && j.code == 'action_type':
+					traittext += "\n\nDisliked actions:[color=aqua] "
+					for k in j.value:
+						globals.sex_actions_dict[k].givers = []
+						globals.sex_actions_dict[k].takers = []
+						traittext += globals.sex_actions_dict[k].getname() + ", "
+					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+			globals.connecttexttooltip(newnode, traittext)
+			newnode.disabled = true
+			var font = input_handler.font_size_calculator(newnode)
+			newnode.set("custom_fonts/font", font)
+		else:
+			newnode.text = tr("TRAITUNKNOWN")
+			globals.connecttexttooltip(newnode, person.translate(tr("TRAITUNKNOWNTOOLTIP")))
+			newnode.disabled = true
+			var font = input_handler.font_size_calculator(newnode)
+			newnode.set("custom_fonts/font", font)
 
 func update_trait_capacity():
 	person = input_handler.interacted_character
