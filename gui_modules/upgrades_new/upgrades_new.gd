@@ -10,17 +10,22 @@ onready var modes = $Modes
 onready var desc_panel = $description
 onready var res_list = $description/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer
 onready var work_cost = $description/workunits/Label
+onready var upgrade_tabs = $Modes2
 
 var upgrades_order = []
 var selected_upgrade = null
-
+var tree_tab = 1
 
 func _ready():
 	add_to_group("pauseprocess")
 	gui_controller.upgrades = self
-	$Modes/Mode1.connect("pressed", self, "open_tree", [])
+	$Modes/Mode1.connect("pressed", self, "open_tree", [tree_tab])
 	$Modes/Mode2.connect("pressed", self, "open_queue", [])
 	$Modes/Mode3.connect("pressed", self, "open_chars", [])
+	for t in range(1, upgrade_tabs.get_child_count() + 1):
+		var temp = upgrade_tabs.get_child(t - 1)
+		temp.set_meta('tab', t)
+		temp.connect('pressed', self, 'select_tab', [t])
 	$description/CancelButton.connect("pressed", self, "hide", [])
 	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 	globals.connecttexttooltip($description/workunits, tr("TOOLTIPPROGRESSREQUIRED"))
@@ -32,7 +37,7 @@ func show():
 	if !gui_controller.windows_opened.has(self):
 		gui_controller.windows_opened.append(self)
 	.show()
-	open_tree()
+	open_tree(tree_tab)
 	desc_panel.visible = false
 
 
@@ -256,21 +261,29 @@ func set_to_upgrading(pressed, person):
 	build_characters()
 
 
-
-
-func open_tree():
+func open_tree(tab_n):
 	upgrades.visible = true
+	upgrade_tabs.visible = true
 	modes.get_node("Mode1").pressed = true
 	queue.visible = false
 	modes.get_node("Mode2").pressed = false
 	chars.visible = false
 	modes.get_node("Mode3").pressed = false
 
-	upgradeslist.update_upgrades_tree()
+#	upgradeslist.update_upgrades_tree(tab_n)
+	select_tab(tab_n)
+
+
+func select_tab(tab_n):
+	for node in upgrade_tabs.get_children():
+		node.pressed = (node.get_meta('tab') == tab_n)
+	
+	upgradeslist.update_upgrades_tree(tab_n)
 
 
 func open_queue():
 	upgrades.visible = false
+	upgrade_tabs.visible = false
 	modes.get_node("Mode1").pressed = false
 	queue.visible = true
 	modes.get_node("Mode2").pressed = true
@@ -282,6 +295,7 @@ func open_queue():
 
 func open_chars():
 	upgrades.visible = false
+	upgrade_tabs.visible = false
 	modes.get_node("Mode1").pressed = false
 	queue.visible = false
 	modes.get_node("Mode2").pressed = false

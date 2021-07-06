@@ -144,6 +144,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Modes2" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 109.0
+margin_top = 285.289
+margin_right = 1065.0
+margin_bottom = 343.289
+custom_constants/separation = 70
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab1" type="TextureButton" parent="Modes2"]
+margin_right = 272.0
+margin_bottom = 58.0
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Modes2/Tab1"]
+margin_left = 46.0
+margin_top = 9.0
+margin_right = 225.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrades"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab2" type="TextureButton" parent="Modes2"]
+margin_left = 342.0
+margin_right = 614.0
+margin_bottom = 58.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Modes2/Tab2"]
+margin_left = 19.8419
+margin_top = 8.05614
+margin_right = 252.842
+margin_bottom = 48.0561
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrade Schedule"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="QueueList" type="Panel" parent="."]
 visible = false
 margin_left = 283.0
@@ -378,7 +430,7 @@ text = "Occupation"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 40.0
-margin_top = 257.0
+margin_top = 357.0
 margin_right = 1134.0
 margin_bottom = 1044.0
 theme = ExtResource( 14 )
