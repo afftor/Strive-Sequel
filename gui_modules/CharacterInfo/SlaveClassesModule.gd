@@ -57,12 +57,12 @@ func close_tooltip():
 	$Tooltip.hide()
 
 func open(tempperson, tempmode = 'normal'):
-	if !gui_controller.windows_opened.has(self):
-		gui_controller.windows_opened.append(self)
+	#if !gui_controller.windows_opened.has(self):
+	#	gui_controller.windows_opened.append(self)
+	#show()
 	person = tempperson
 	mode = tempmode
 	current_class = null
-	show()
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	
 	var array = []
@@ -112,8 +112,8 @@ func sort_classes(first,second):
 	return first.name <= second.name
 
 func open_class(classcode):
-	if !gui_controller.windows_opened.has($ClassPanel):
-		gui_controller.windows_opened.append($ClassPanel)
+	#if !gui_controller.windows_opened.has($ClassPanel):
+	#	gui_controller.windows_opened.append($ClassPanel)
 	var tempclass = classesdata.professions[classcode]
 	var class_locked = true
 	if !ResourceScripts.game_progress.unlock_all_classes:

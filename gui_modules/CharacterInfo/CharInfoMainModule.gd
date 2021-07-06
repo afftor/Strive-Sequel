@@ -7,7 +7,6 @@ onready var ClassesModule = $SlaveClassesModule
 onready var DetailsModule = $SlaveDetailsModule
 onready var SummaryModule = $SlaveSummaryModule
 onready var SlaveSiblingsModule = $SlaveSiblingsModule
-onready var DietModule = $SlaveDietModule
 onready var BodyModule = $SlaveBodyModule
 onready var SlaveInfo = $SlaveInfoModule
 onready var submodules = []
