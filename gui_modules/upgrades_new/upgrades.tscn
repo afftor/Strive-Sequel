@@ -635,7 +635,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CancelButton" type="TextureButton" parent="description"]
+[node name="CancelButton" type="TextureButton" parent="."]
 margin_left = 1599.44
 margin_top = 977.218
 margin_right = 1793.44
@@ -647,7 +647,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="description/CancelButton"]
+[node name="Label" type="Label" parent="CancelButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 35 )

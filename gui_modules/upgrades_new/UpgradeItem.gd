@@ -29,6 +29,13 @@ func setup_upgrade(upgrade_id):
 	$Image.texture = images.upgrade_icons[upgrade_data.icon]
 	if upgrade_next_state != null:
 		$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
+		var can_upg = true
+		for res in upgrade_next_state.cost:
+			if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
+				can_upg = false
+				break
+		if can_upg:
+			$Image2.modulate = Color(variables.hexcolordict.green)
 	else:
 		$Image2.texture = images.upgrade_tiers[upgrade_lv]
 		$bg.modulate = Color("66b138")
