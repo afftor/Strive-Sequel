@@ -243,6 +243,10 @@ func get_selected_work_quest():
 
 func make_unavaliable():
 	if  work != "disabled":
+		if is_on_quest:
+			input_handler.SystemMessage(tr(parent.get_short_name() + " removed from quest."))
+			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
+			quest_taken.taken = false
 		remove_from_task(false)
 
 		parent.remove_from_travel()
