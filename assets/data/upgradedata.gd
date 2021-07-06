@@ -49,9 +49,9 @@ var upgradelist = {
 		name = '',
 		descript = '',
 		category = 'facilitiy',
-		tree_position = {x = 18, y = 1},
+		tree_position = {tab = 1, x = 18, y = 1},
 		icon = "veges",
-		#tree_position = {x = 1, y = 5},
+		#tree_position = {tab = 1, x = 1, y = 5},
 		levels = {
 			1:{
 				unlockreqs = [],
@@ -145,7 +145,7 @@ var upgradelist = {
 	resource_gather_grains = {
 		code = 'resource_gather_grains',
 		name = '',
-		tree_position = {x = 18, y = 5},
+		tree_position = {tab = 1, x = 18, y = 5},
 		descript = '',
 		icon = "wheat",
 		category = 'facilitiy',
@@ -163,7 +163,7 @@ var upgradelist = {
 		code = 'resource_gather_cloth',
 		name = '',
 		descript = '',
-		tree_position = {x = 18, y = 9},
+		tree_position = {tab = 1, x = 18, y = 9},
 		icon = "cotton",
 		category = 'facilitiy',
 		levels = {
@@ -182,7 +182,7 @@ var upgradelist = {
 		descript = '',
 		icon = "tailor",
 		category = 'facilitiy',
-		tree_position = {x = 1, y = 1},
+		tree_position = {tab = 1, x = 1, y = 1},
 		levels = {
 			1:{
 				unlockreqs = [],
@@ -208,7 +208,7 @@ var upgradelist = {
 	alchemy = {
 		code = 'alchemy',
 		name = '',
-		tree_position = {x = 1, y = 5},
+		tree_position = {tab = 1, x = 1, y = 5},
 		icon = "alchemy",
 		descript = '',
 		category = 'facilitiy',
@@ -239,7 +239,7 @@ var upgradelist = {
 		name = '',
 		descript = '',
 		icon = "forge",
-		tree_position = {x = 4, y = 9},
+		tree_position = {tab = 1, x = 4, y = 9},
 		category = 'upgrade',
 		levels = {
 			1:{
@@ -261,7 +261,7 @@ var upgradelist = {
 	forge = {
 		code = 'forge',
 		name = '',
-		tree_position = {x = 1, y = 9},
+		tree_position = {tab = 1, x = 1, y = 9},
 		icon = "forge",
 		descript = '',
 		category = 'facilitiy',
@@ -291,7 +291,7 @@ var upgradelist = {
 		code = 'rooms',
 		name = '',
 		icon = "rooms",
-		tree_position = {x = 5, y = 2},
+		tree_position = {tab = 1, x = 5, y = 2},
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -331,7 +331,7 @@ var upgradelist = {
 	luxury_rooms = {
 		code = 'luxury_rooms',
 		name = '',
-		tree_position = {x = 9.5, y = 2},
+		tree_position = {tab = 1, x = 9.5, y = 2},
 		icon = "rooms_lux",
 		descript = '',
 		category = 'upgrade',
@@ -385,7 +385,7 @@ var upgradelist = {
 	master_bedroom = {
 		code = 'master_bedroom',
 		name = '',
-		tree_position = {x = 14, y = 2},
+		tree_position = {tab = 1, x = 14, y = 2},
 		icon = "bedroom",
 		descript = '',
 		category = 'upgrade',
@@ -415,7 +415,7 @@ var upgradelist = {
 	stables = {
 		code = 'stables',
 		name = '',
-		tree_position = {x = 2, y = 14},
+		tree_position = {tab = 1, x = 2, y = 14},
 		descript = '',
 		icon = "stables",
 		category = 'upgrade',
@@ -446,7 +446,7 @@ var upgradelist = {
 		code = 'torture_room',
 		name = '',
 		descript = '',
-		tree_position = {x = 6, y = 14},
+		tree_position = {tab = 1, x = 6, y = 14},
 		icon = "tortureroom",
 		category = 'upgrade',
 		levels = {
@@ -462,7 +462,7 @@ var upgradelist = {
 		code = 'tattoo_set',
 		name = '',
 		icon = "tattoo",
-		tree_position = {x = 10, y = 14},
+		tree_position = {tab = 1, x = 10, y = 14},
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -479,7 +479,7 @@ var upgradelist = {
 		code = 'exotic_trader',
 		name = '',
 		icon = "exotic_trader",
-		tree_position = {x = 14, y = 14},
+		tree_position = {tab = 1, x = 14, y = 14},
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -508,7 +508,7 @@ var upgradelist = {
 		code = 'sex_times',
 		name = '',
 		icon = "bedroom",
-		tree_position = {x = 18, y = 14},
+		tree_position = {tab = 1, x = 18, y = 14},
 		descript = '',
 		category = 'upgrade',
 		levels = {
