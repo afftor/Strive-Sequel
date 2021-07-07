@@ -11,20 +11,6 @@ var race_groups = {
 
 #also tried to fix cooking but not sure if all was made
 var tasklist = {
-#	hunting = {
-#		code = 'hunting',
-#		reqs = [],
-#		name = '',
-#		descript = '',
-#		workstat = 'physics',
-#		worktool = 'hunt_knife',
-#		production = {
-#			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
-#			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 5, reqs = [], progress_function = 'hunt_leather'}},
-#		icon = null,
-#		tags = [],
-#		mod = 'mod_hunt'
-#	},
 	fishing = {
 		code = 'fishing',
 		reqs = [],
@@ -34,11 +20,26 @@ var tasklist = {
 		worktool = 'rod',
 		base_workers = 1,
 		workers_per_upgrade = 2,
-		upgrade_code = 'fishing_max_workers',
+		upgrade_code = 'resource_gather_fish',
 		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_fish'
+	},
+	hunting = {
+		code = 'hunting',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		worktool = 'hunt_knife',
+		base_workers = 1,
+		workers_per_upgrade = 2,
+		upgrade_code = 'resource_gather_fish',
+		production = {hunting = {code = 'hunting',item = 'meat', progress_per_item = 1, reqs = [], progress_function = 'fishing'}},
+		icon = null,
+		tags = [],
+		mod = 'mod_hunt'
 	},
 	farming = {
 		code = 'farming',
@@ -49,7 +50,7 @@ var tasklist = {
 		worktool = 'sickle',
 		base_workers = 1,
 		workers_per_upgrade = 1,
-		upgrade_code = 'farming_max_workers',
+		upgrade_code = 'resource_gather_veges',
 		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.4, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming_veges'},
 		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming_wheat'},
 		farming_cotton = {code = 'farming_cotton',item = 'cloth', progress_per_item = 4, reqs = [{type = "has_upgrade", name = 'resource_gather_cloth', value = 1}], progress_function = 'farming_cloth'}},
@@ -57,18 +58,20 @@ var tasklist = {
 		tags = [],
 		mod = 'mod_farm'
 	},
-#	woodcutting = {
-#		code = 'woodcutting',
-#		reqs = [],
-#		name = '',
-#		descript = '',
-#		workstat = 'physics',
-#		worktool = 'axe',
-#		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [], progress_function = 'woodcutting_lumber'}},
-#		icon = null,
-#		tags = [],
-#		mod = 'mod_collect'
-#	},
+	woodcutting = {
+		code = 'woodcutting',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		worktool = 'axe',
+		base_workers = 1,
+		workers_per_upgrade = 1,
+		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [{type = "has_upgrade", name = 'resource_gather_wood', value = 1}], progress_function = 'woodcutting_lumber'}},
+		icon = null,
+		tags = [],
+		mod = 'mod_collect'
+	},
 #	mining = {
 #		code = 'mining',
 #		reqs = [],
@@ -153,9 +156,9 @@ var tasklist = {
 		descript = tr("TASKBUILDINGDESCRIPT"),
 		workstat = 'physics',
 		worktool = 'hammer',
-		base_workers = 1,
+		base_workers = 2,
 		workers_per_upgrade = 1,
-		upgrade_code = 'forgeworkshop',
+		upgrade_code = 'buildertools',
 		production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
 		tags = ['alchemy'],

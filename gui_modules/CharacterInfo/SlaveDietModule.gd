@@ -13,7 +13,7 @@ func open_diet_window():
 	self.show()
 	person = input_handler.interacted_character
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	$RichTextLabel.bbcode_text = tr("INFOFOODFILTER")
+	#$RichTextLabel.bbcode_text = tr("INFOFOODFILTER")
 	var array = []
 	for i in Items.materiallist.values():
 		if i.type == 'food' && i.tags.size() > 0:

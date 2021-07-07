@@ -1,177 +1,459 @@
 extends Node
 
 var upgradelist = {
-#	resource_gather_fish = {
-#		code = 'resource_gather_fish',
-#		name = '',
-#		descript = '',
-#		category = 'facilitiy',
-#		levels = {
-#			1:{
-#				unlockreqs = [],
-#				icon = 'upgrade_farm',
-#				bonusdescript = tr("UPGRADEFISHBONUS"),
-#				taskprogress = 100,
-#				cost = {wood = 50, fish = 100},
-#			},
-#			2:{
-#				unlockreqs = [],
-#				icon = 'upgrade_farm',
-#				bonusdescript = tr("UPGRADEFISHBONUS"),
-#				taskprogress = 200,
-#				cost = {wood = 100, fish = 250},
-#			},
-#			3:{
-#				unlockreqs = [],
-#				icon = 'upgrade_farm',
-#				bonusdescript = tr("UPGRADEFISHBONUS"),
-#				taskprogress = 300,
-#				cost = {wood = 200, fish = 350},
-#			},
-#			4:{
-#				unlockreqs = [],
-#				icon = 'upgrade_farm',
-#				bonusdescript = tr("UPGRADEFISHBONUS"),
-#				taskprogress = 400,
-#				cost = {woodmagic = 100, fish = 500},
-#			},
-#			5:{
-#				unlockreqs = [],
-#				icon = 'upgrade_farm',
-#				bonusdescript = tr("UPGRADEFISHBONUS"),
-#				taskprogress = 500,
-#				cost = {woodiron = 200, fish = 500},
-#			}
-#		}
-#	},
+	resource_gather_fish = {
+		code = 'resource_gather_fish',
+		name = '',
+		descript = '',
+		category = 'facilitiy',
+		tree_position = {tab = 2, x = 1, y = 1},
+		icon = "fishing",
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 50,
+				cost = {wood = 50, fish = 100},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 100,
+				cost = {wood = 100, fish = 250},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 150,
+				cost = {wood = 200, stone = 100, fish = 350},
+			},
+			4:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 200,
+				cost = {woodmagic = 100, stone = 100, fish = 500},
+			},
+			5:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {woodmagic = 100, stone = 100, fish = 500},
+			},
+			6:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 300,
+				cost = {woodiron = 100, stone = 100, fish = 500},
+			},
+			7:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 350,
+				cost = {woodiron = 100, stone = 100, fish = 500},
+			}
+		}
+	},
+	resource_gather_meat = {
+		code = 'resource_gather_meat',
+		name = '',
+		descript = '',
+		category = 'facilitiy',
+		tree_position = {tab = 2, x = 6, y = 1},
+		icon = "hunting",
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 50,
+				cost = {wood = 50, grain = 20},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 100,
+				cost = {wood = 100, grain = 100},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 150,
+				cost = {wood = 200, stone = 100, grain = 250},
+			},
+			4:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 200,
+				cost = {woodmagic = 100, stone = 100, grain = 350},
+			},
+			5:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {woodmagic = 100, stone = 100, grain = 400},
+			},
+			6:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 300,
+				cost = {woodiron = 100, stone = 100, grain = 500},
+			},
+			7:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 350,
+				cost = {woodiron = 100, stone = 100, grain = 500},
+			},
+			8:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 400,
+				cost = {woodiron = 100, stone = 100, grain = 500},
+			}
+		}
+	},
 	resource_gather_veges = {
 		code = 'resource_gather_veges',
 		name = '',
 		descript = '',
 		category = 'facilitiy',
-		tree_position = {tab = 1, x = 18, y = 1},
+		tree_position = {tab = 2, x = 11, y = 1},
 		icon = "veges",
-		#tree_position = {tab = 1, x = 1, y = 5},
 		levels = {
 			1:{
 				unlockreqs = [],
-				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 50,
+				cost = {wood = 50, vegetables = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
 				taskprogress = 100,
-				cost = {wood = 50, vegetables = 100},
-			},
-#			2:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-#				taskprogress = 200,
-#				cost = {wood = 100, vegetables = 250},
-#			},
-#			3:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-#				taskprogress = 300,
-#				cost = {wood = 200, vegetables = 350},
-#			},
-#			4:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-#				taskprogress = 400,
-#				cost = {woodmagic = 100, vegetables = 500},
-#			},
-#			5:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
-#				taskprogress = 500,
-#				cost = {woodiron = 200, vegetables = 500},
-#			}
-		}
-	},
-	farming_max_workers = {
-		code = 'farming_max_workers',
-		name = '',
-		tree_position = {x = 13, y = 6},
-		descript = '',
-		icon = "wheat",
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			},
-			2:{
-				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
+				cost = {wood = 100, vegetables = 150},
 			},
 			3:{
 				unlockreqs = [],
-				bonusdescript = tr(""),
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 150,
+				cost = {wood = 200, stone = 100, vegetables = 250},
+			},
+			4:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
 				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
-			}
+				cost = {woodmagic = 100, stone = 100, vegetables = 350},
+			},
+			5:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {woodmagic = 100, stone = 100, vegetables = 500},
+			},
+			6:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 300,
+				cost = {woodiron = 100, stone = 100, vegetables = 500},
+			},
+			7:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 350,
+				cost = {woodiron = 100, stone = 100, vegetables = 500},
+			},
 		}
 	},
-	fishing_max_workers = {
-		code = 'fishing_max_workers',
+	
+	resource_gather_grain = {
+		code = 'resource_gather_grain',
 		name = '',
-		tree_position = {x = 13, y = 10},
+		tree_position = {tab = 2, x = 16, y = 1},
 		descript = '',
 		icon = "wheat",
 		category = 'facilitiy',
 		levels = {
 			1:{
 				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 50,
+				cost = {wood = 50, grain = 50},
 			},
 			2:{
 				unlockreqs = [],
-				bonusdescript = tr(""),
-				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 100,
+				cost = {wood = 100, grain = 150},
 			},
 			3:{
 				unlockreqs = [],
-				bonusdescript = tr(""),
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 150,
+				cost = {wood = 200, stone = 100, grain = 250},
+			},
+			4:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
 				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
+				cost = {woodmagic = 100, stone = 100, grain = 350},
+			},
+			5:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {woodmagic = 100, stone = 100, grain = 500},
+			},
+			6:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 300,
+				cost = {woodiron = 100, stone = 100, grain = 500},
+			},
+			7:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 350,
+				cost = {woodiron = 100, stone = 100, grain = 500},
+			},
+			8:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 400,
+				cost = {woodiron = 100, stone = 100, grain = 500},
 			}
 		}
 	},
-
-	resource_gather_grains = {
-		code = 'resource_gather_grains',
+	resource_gather_wood = {
+		code = 'resource_gather_wood',
 		name = '',
-		tree_position = {tab = 1, x = 18, y = 5},
+		tree_position = {tab = 2, x = 1, y = 5},
 		descript = '',
-		icon = "wheat",
+		icon = "woodcutting",
 		category = 'facilitiy',
 		levels = {
 			1:{
 				unlockreqs = [],
-				bonusdescript = tr("UPGRADEFARMGRAINSBONUS"),
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 200,
-				cost = {stone = 100, grain = 250},
+				cost = {wood = 200, stone = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 400,
+				cost = {wood = 300, stone = 100},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 600,
+				cost = {wood = 400, stone = 150},
 			}
 		}
 	},
 	
+	resource_gather_wood_magic = {
+		code = 'resource_gather_wood_magic',
+		name = '',
+		tree_position = {tab = 2, x = 6, y = 5},
+		descript = '',
+		icon = "woodcutting",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 200,
+				cost = {wood = 100, woodmagic = 25},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 400,
+				cost = {wood = 200, woodmagic = 50},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 600,
+				cost = {wood = 400, woodmagic = 100},
+			}
+		}
+	},
+	resource_gather_wood_iron = {
+		code = 'resource_gather_wood_iron',
+		name = '',
+		tree_position = {tab = 2, x = 11, y = 5},
+		descript = '',
+		icon = "woodcutting",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {wood = 200, woodiron = 100},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 500,
+				cost = {wood = 400, woodiron = 200},
+			},
+		}
+	},
+	resource_gather_stone = {
+		code = 'resource_gather_stone',
+		name = '',
+		tree_position = {tab = 2, x = 1, y = 9},
+		descript = '',
+		icon = "mining",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 200,
+				cost = {wood = 200, stone = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 400,
+				cost = {wood = 300, stone = 100},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 600,
+				cost = {wood = 400, stone = 150},
+			}
+		}
+	},
+	resource_gather_obsidian = {
+		code = 'resource_gather_obsidian',
+		name = '',
+		tree_position = {tab = 2, x = 6, y = 9},
+		descript = '',
+		icon = "mining",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 250,
+				cost = {stone = 500, mithril = 25, obsidian = 10},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 500,
+				cost = {stone = 500, mithril = 50, obsidian = 25},
+			},
+		}
+	},
 	resource_gather_cloth = {
 		code = 'resource_gather_cloth',
 		name = '',
 		descript = '',
-		tree_position = {tab = 1, x = 18, y = 9},
+		tree_position = {tab = 2, x = 16, y = 5},
 		icon = "cotton",
 		category = 'facilitiy',
 		levels = {
 			1:{
 				unlockreqs = [],
-				bonusdescript = tr("UPGRADEGATHERCLOTHBONUS"),
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 200,
+				cost = {wood = 50, stone = 100},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 400,
+				cost = {wood = 100, woodiron = 50, stone = 200},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 600,
+				cost = {wood = 250, woodiron = 100, stone = 250},
+			},
+		}
+	},
+	resource_gather_cloth_silk = {
+		code = 'resource_gather_cloth_silk',
+		name = '',
+		descript = '',
+		tree_position = {tab = 2, x = 16, y = 9},
+		icon = "cotton",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 200,
+				cost = {wood = 50, stone = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 400,
+				cost = {wood = 100, clothsilk = 50, stone = 100},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 600,
+				cost = {wood = 250, clothsilk = 100, stone = 250},
+			},
+		}
+	},
+	resource_gather_iron = {
+		code = 'resource_gather_iron',
+		name = '',
+		descript = '',
+		tree_position = {tab = 2, x = 1, y = 13},
+		icon = "mining",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 200,
+				cost = {stone = 100, iron = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 400,
+				cost = {stone = 250, steel = 50},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
+				taskprogress = 600,
+				cost = {stone = 500, iron = 250},
+			},
+		}
+	},
+	resource_gather_mithril = {
+		code = 'resource_gather_mithril',
+		name = '',
+		descript = '',
+		tree_position = {tab = 2, x = 6, y = 13},
+		icon = "mining",
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
 				taskprogress = 250,
-				cost = {wood = 100, iron = 30},
+				cost = {mithril = 50, obsidian = 50, clothmagic = 100},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
+				taskprogress = 500,
+				cost = {mithril = 100, obsidian = 50, clothmagic = 100},
 			},
 		}
 	},
@@ -205,63 +487,10 @@ var upgradelist = {
 		}
 	},
 	
-	alchemy = {
-		code = 'alchemy',
-		name = '',
-		tree_position = {tab = 1, x = 1, y = 5},
-		icon = "alchemy",
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADEALCHEMYBONUS1"),
-				taskprogress = 250,
-				cost = {wood = 25, stone = 50, iron = 30},
-			},
-			2:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADEALCHEMYBONUS2"),
-				taskprogress = 500,
-				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
-			},
-			3:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADEALCHEMYBONUS3"),
-				taskprogress = 1000,
-				cost = {leathermythic = 20, woodancient = 10, boneancient = 30},
-			}
-		}
-	},
-
-	forgeworkshop = {
-		code = 'forgeworkshop',
-		name = '',
-		descript = '',
-		icon = "forge",
-		tree_position = {tab = 1, x = 4, y = 9},
-		category = 'upgrade',
-		levels = {
-			1:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADEFORGEWORKBONUS1"),
-				taskprogress = 75,
-				cost = {woodiron = 100, leatherthick = 100, steel = 50},
-			},
-			2:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADEFORGEWORKBONUS2"),
-				taskprogress = 250,
-				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
-			},
-		}
-	},
-
-
 	forge = {
 		code = 'forge',
 		name = '',
-		tree_position = {tab = 1, x = 1, y = 9},
+		tree_position = {tab = 1, x = 6, y = 1},
 		icon = "forge",
 		descript = '',
 		category = 'facilitiy',
@@ -286,12 +515,95 @@ var upgradelist = {
 			},
 		}
 	},
+	
+	alchemy = {
+		code = 'alchemy',
+		name = '',
+		tree_position = {tab = 1, x = 11, y = 1},
+		icon = "alchemy",
+		descript = '',
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEALCHEMYBONUS1"),
+				taskprogress = 250,
+				cost = {wood = 25, stone = 50, iron = 30},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEALCHEMYBONUS2"),
+				taskprogress = 500,
+				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEALCHEMYBONUS3"),
+				taskprogress = 1000,
+				cost = {leathermythic = 20, woodancient = 10, boneancient = 30},
+			}
+		}
+	},
+	
+	forgeworkshop = {
+		code = 'forgeworkshop',
+		name = '',
+		descript = '',
+		icon = "forge",
+		tree_position = {tab = 1, x = 6, y = 5},
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEFORGEWORKBONUS1"),
+				taskprogress = 75,
+				cost = {woodiron = 100, leatherthick = 100, steel = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEFORGEWORKBONUS2"),
+				taskprogress = 250,
+				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
+			},
+		}
+	},
+	
+	buildertools = {
+		code = 'buildertools',
+		name = '',
+		descript = '',
+		icon = "forge",
+		tree_position = {tab = 1, x = 1, y = 5},
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS1"),
+				taskprogress = 75,
+				cost = {woodiron = 100, leatherthick = 100, steel = 50},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS2"),
+				taskprogress = 250,
+				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS3"),
+				taskprogress = 250,
+				cost = {bonedragon = 10, leatherdragon = 15, clothethereal = 30},
+			},
+		}
+	},
+
+
 
 	rooms = {
 		code = 'rooms',
 		name = '',
 		icon = "rooms",
-		tree_position = {tab = 1, x = 5, y = 2},
+		tree_position = {tab = 1, x = 17, y = 1},
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -331,7 +643,7 @@ var upgradelist = {
 	luxury_rooms = {
 		code = 'luxury_rooms',
 		name = '',
-		tree_position = {tab = 1, x = 9.5, y = 2},
+		tree_position = {tab = 1, x = 17, y = 5},
 		icon = "rooms_lux",
 		descript = '',
 		category = 'upgrade',
@@ -385,7 +697,7 @@ var upgradelist = {
 	master_bedroom = {
 		code = 'master_bedroom',
 		name = '',
-		tree_position = {tab = 1, x = 14, y = 2},
+		tree_position = {tab = 1, x = 17, y = 9},
 		icon = "bedroom",
 		descript = '',
 		category = 'upgrade',

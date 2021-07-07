@@ -495,6 +495,7 @@ func test_mode():
 #		ResourceScripts.game_res.upgrades.tailor = 3
 #		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 #		ResourceScripts.game_res.upgrades.forge = 3
+		ResourceScripts.game_res.upgrades.buildertools = 3
 #		ResourceScripts.game_res.upgrades.tattoo_set = 1
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)

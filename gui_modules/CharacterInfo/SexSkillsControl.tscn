@@ -50,15 +50,15 @@ rect_min_size = Vector2( 0, 50 )
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 light_mask = 0
-margin_left = -6.0
-margin_right = 157.0
-margin_bottom = 35.0
+margin_left = 12.4998
+margin_top = 5.88629
+margin_right = 175.5
+margin_bottom = 40.8863
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
 text = "Penetration"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

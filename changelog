@@ -1,3 +1,9 @@
+Resource gathering at Mansion now have limited slots but more options
+Added new upgrades for unlocking new resource gathering from Mansion
+Crafting and upgrading jobs now also have limited slots which increase with upgrade level
+Bone resource collecting now benefit from hunting knife
+Redone some parts of character info
+Redone task assignement menu
 Fixed halfkin tanuki having no growth factor in its data
 Fixed some scenes not displaying correctly
 Fixed Kurdan having incorrect hair length

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.5.1a'
+const gameversion = '0.5.2'
 
 #time
 signal hour_tick

@@ -17,6 +17,13 @@ func _ready():
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
+	
+	globals.connecttexttooltip($SexSkillsTooltip, 'testtext')
+	globals.connecttexttooltip($ConditionsTooltip, 'testtext')
+	globals.connecttexttooltip($FoodFilterTooltip, tr("INFOFOODFILTER"))
+	globals.connecttexttooltip($SexTraitsTooltip, 'testtext')
+	
+	
 
 func set_work_rule(rule):
 	var setting = get_node("work_rules/"+rule).pressed
@@ -68,13 +75,13 @@ func update():
 	
 	if person != null:
 	
-		input_handler.ClearContainer($SexSkillsControl/ScrollContainer/VBoxContainer)
+		input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 		var s_skills = person.get_stat('sex_skills')
 		for i in s_skills:
 			if s_skills[i] == 0 && universal_skills.find(i) < 0:
 				continue
 
-			var newbutton = input_handler.DuplicateContainerTemplate($SexSkillsControl/ScrollContainer/VBoxContainer)
+			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'

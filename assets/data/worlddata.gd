@@ -1133,7 +1133,7 @@ var questdata = {
 			condition_number = [2,3],
 			conditions = [
 
-				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog','']},
+				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog']},
 
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [4,5]},
 
