@@ -26,7 +26,7 @@ func _ready():
 		var temp = upgrade_tabs.get_child(t - 1)
 		temp.set_meta('tab', t)
 		temp.connect('pressed', self, 'select_tab', [t])
-	$description/CancelButton.connect("pressed", self, "hide", [])
+	$CancelButton.connect("pressed", self, "hide", [])
 	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 	globals.connecttexttooltip($description/workunits, tr("TOOLTIPPROGRESSREQUIRED"))
 
@@ -65,7 +65,9 @@ func select_upgrade(code):
 
 
 func build_description(upgrade_id):
-	if upgrade_id == null: return
+	if upgrade_id == null: 
+		desc_panel.visible = false
+		return
 	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_lv = ResourceScripts.game_res.findupgradelevel(upgrade_id)
 	var upgrade_state = null
@@ -278,6 +280,9 @@ func select_tab(tab_n):
 	for node in upgrade_tabs.get_children():
 		node.pressed = (node.get_meta('tab') == tab_n)
 	
+	if tab_n != tree_tab:
+		select_upgrade(null)
+		tree_tab = tab_n
 	upgradeslist.update_upgrades_tree(tab_n)
 
 
