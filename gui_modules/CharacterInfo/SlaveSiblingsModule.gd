@@ -18,10 +18,10 @@ func _ready():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 	
-	globals.connecttexttooltip($SexSkillsTooltip, 'testtext')
-	globals.connecttexttooltip($ConditionsTooltip, 'testtext')
+	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
+	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
 	globals.connecttexttooltip($FoodFilterTooltip, tr("INFOFOODFILTER"))
-	globals.connecttexttooltip($SexTraitsTooltip, 'testtext')
+	globals.connecttexttooltip($SexTraitsTooltip, tr("INFOSEX_TRAITS"))
 	
 	
 

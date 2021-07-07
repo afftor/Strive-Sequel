@@ -25,7 +25,7 @@ margin_left = 8.0
 margin_top = 11.0
 margin_right = 282.0
 margin_bottom = 387.0
-custom_constants/separation = 2
+custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,9 +63,9 @@ __meta__ = {
 }
 
 [node name="UpgradesButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 60.0
+margin_top = 62.0
 margin_right = 274.0
-margin_bottom = 118.0
+margin_bottom = 120.0
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -96,9 +96,9 @@ __meta__ = {
 }
 
 [node name="SexButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 120.0
+margin_top = 124.0
 margin_right = 274.0
-margin_bottom = 178.0
+margin_bottom = 182.0
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -129,10 +129,10 @@ __meta__ = {
 }
 
 [node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 180.0
+margin_top = 186.0
 margin_right = 274.0
 margin_bottom = 244.0
-rect_min_size = Vector2( 0, 64 )
+rect_min_size = Vector2( 0, 58 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
@@ -162,10 +162,10 @@ __meta__ = {
 }
 
 [node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 246.0
+margin_top = 248.0
 margin_right = 274.0
-margin_bottom = 310.0
-rect_min_size = Vector2( 0, 64 )
+margin_bottom = 306.0
+rect_min_size = Vector2( 0, 58 )
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -196,10 +196,10 @@ __meta__ = {
 }
 
 [node name="Journal" type="TextureButton" parent="VBoxContainer"]
-margin_top = 312.0
+margin_top = 310.0
 margin_right = 274.0
-margin_bottom = 376.0
-rect_min_size = Vector2( 0, 64 )
+margin_bottom = 368.0
+rect_min_size = Vector2( 0, 58 )
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
@@ -217,9 +217,9 @@ __meta__ = {
 
 [node name="Label5" type="Label" parent="VBoxContainer/Journal"]
 margin_left = 58.0
-margin_top = -3.0
+margin_top = -3.74915
 margin_right = 271.0
-margin_bottom = 56.0
+margin_bottom = 55.2509
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Journal"
