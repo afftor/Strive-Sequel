@@ -90,6 +90,25 @@ func _ready():
 	$ItemPanel.hide()
 
 
+func _input(event):
+	#simple version based on legacy code and without proper keybinding
+	if !allowaction: return
+	if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+		var skill_index = int(event.as_text().replace("Kp ",''))
+		if activecharacter == null: return
+		var src = activecharacter.skills.combat_skill_panel
+		if !src.has(skill_index): return
+		var skill = src[skill_index]
+		var skill_data = Skilldata.Skilllist[skill]
+		if !activecharacter.can_use_skill(skill_data): return
+		#possible not reqired
+		for i in skill_data.catalysts:
+			if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return
+		if skill_data.charges > 0 and activecharacter.skills.combat_skill_charges.has(skill) and activecharacter.skills.combat_skill_charges[skill] >= skill_data.charges: return
+		SelectSkill(skill)
+
+
+
 func run():
 	defeat(true)
 
@@ -1534,7 +1553,7 @@ func ClearSkillPanel():
 func RebuildSkillPanel():
 	if activecharacter == null: return
 	ClearSkillPanel()
-	var counter = 0
+#	var counter = 0
 	var src = activecharacter.skills.combat_skill_panel
 	for i in range(1,11):
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
