@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -8,15 +8,15 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=6]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.gd" type="Script" id=7]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=8]
-[ext_resource path="res://gui_modules/Mansion/Modules/work_rules.tscn" type="PackedScene" id=9]
-[ext_resource path="res://gui_modules/CharacterInfo/food_hate.tscn" type="PackedScene" id=10]
-[ext_resource path="res://gui_modules/CharacterInfo/food_love.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=11]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO new 2021/bar_sexskills_progress.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=16]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO new 2021/bar_sexskills.png" type="Texture" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
@@ -29,30 +29,37 @@ region_rect = Rect2( 0, 0, 1670, 920 )
 [sub_resource type="StyleBoxTexture" id=2]
 
 [sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 17 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 22
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 15
-use_filter = true
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
 size = 36
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 22
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=5]
+size = 15
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="DynamicFont" id=7]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
@@ -176,7 +183,7 @@ margin_left = 12.4998
 margin_top = 5.88629
 margin_right = 175.5
 margin_bottom = 40.8863
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
@@ -202,7 +209,7 @@ light_mask = 0
 margin_top = -2.0
 margin_right = 128.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -254,7 +261,7 @@ margin_left = 342.0
 margin_top = 20.0
 margin_right = 740.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Rules and Conditions"
 align = 1
@@ -263,23 +270,127 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="work_rules" parent="." instance=ExtResource( 9 )]
+[node name="work_rules" type="GridContainer" parent="."]
 margin_left = 325.0
 margin_top = 90.0
 margin_right = 764.0
 margin_bottom = 309.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="food_love" parent="." instance=ExtResource( 11 )]
+[node name="ration" type="CheckBox" parent="work_rules"]
+margin_right = 215.0
+margin_bottom = 48.0
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Extra rations"
+
+[node name="shifts" type="CheckBox" parent="work_rules"]
+margin_left = 219.0
+margin_right = 420.0
+margin_bottom = 48.0
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Longer shifts"
+
+[node name="constrain" type="CheckBox" parent="work_rules"]
+margin_top = 52.0
+margin_right = 215.0
+margin_bottom = 100.0
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 11 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Coerced Labor"
+
+[node name="luxury" type="CheckBox" parent="work_rules"]
+margin_left = 219.0
+margin_top = 52.0
+margin_right = 420.0
+margin_bottom = 100.0
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 11 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Luxury Room"
+
+[node name="food_love" type="TextureRect" parent="."]
+light_mask = 0
 margin_left = 319.386
 margin_top = 862.997
 margin_right = 354.386
 margin_bottom = 897.997
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="food_hate" parent="." instance=ExtResource( 10 )]
+[node name="Button" type="TextureRect" parent="food_love"]
+visible = false
+light_mask = 0
+margin_left = 48.0
+margin_right = 79.0
+margin_bottom = 30.0
+
+[node name="food_hate" type="TextureRect" parent="."]
+light_mask = 0
 margin_left = 414.876
 margin_top = 863.746
 margin_right = 449.876
 margin_bottom = 898.746
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="food_hate"]
+light_mask = 0
+margin_left = 48.0
+margin_right = 157.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="food_hate/Container"]
+visible = false
+light_mask = 0
+margin_right = 31.0
+margin_bottom = 30.0
 
 [node name="SexTraitsPanel" type="Panel" parent="."]
 light_mask = 0
@@ -364,7 +475,7 @@ margin_left = 542.0
 margin_top = 860.0
 margin_right = 809.0
 margin_bottom = 892.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Daily Consumption"
 __meta__ = {
@@ -375,7 +486,7 @@ __meta__ = {
 margin_left = 231.0
 margin_right = 271.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 align = 1
