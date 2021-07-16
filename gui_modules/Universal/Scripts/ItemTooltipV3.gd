@@ -123,6 +123,8 @@ func material_tooltip(data, workers_data = {}):
 		text += "\nCurrent Workers: " + str(workers_data.current)
 	if workers_data.has("gather_mod"):
 		text += "\nGathering Mod: " + str(workers_data.gather_mod) + "%"
+	if data.has('amount'):
+		text += "\nOwned: " + str(data.amount)
 	iconnode.texture = item.icon
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)

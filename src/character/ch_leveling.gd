@@ -19,6 +19,16 @@ var quest_time_init = 0
 var selected_work_quest = null
 
 
+func _init():
+	fix_rules()
+
+
+func fix_rules():
+	for rule in variables.work_rules:
+		if !work_rules.has(rule):
+			work_rules[rule] = false
+
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
