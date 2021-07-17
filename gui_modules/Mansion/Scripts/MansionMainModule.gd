@@ -492,7 +492,7 @@ func test_mode():
 #		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
 #		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
 #		ResourceScripts.game_res.upgrades.alchemy = 3
-#		ResourceScripts.game_res.upgrades.tailor = 3
+		ResourceScripts.game_res.upgrades.tailor = 3
 #		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 #		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.buildertools = 3

@@ -32,27 +32,27 @@ region_rect = Rect2( 0, 0, 1670, 920 )
 size = 30
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 size = 22
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=5]
 size = 15
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 36
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
@@ -176,7 +176,7 @@ margin_left = 12.4998
 margin_top = 5.88629
 margin_right = 175.5
 margin_bottom = 40.8863
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
@@ -202,7 +202,7 @@ light_mask = 0
 margin_top = -2.0
 margin_right = 128.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -254,7 +254,7 @@ margin_left = 342.0
 margin_top = 20.0
 margin_right = 740.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Rules and Conditions"
 align = 1
@@ -265,9 +265,9 @@ __meta__ = {
 
 [node name="work_rules" parent="." instance=ExtResource( 9 )]
 margin_left = 325.0
-margin_top = 90.0
+margin_top = 86.8252
 margin_right = 764.0
-margin_bottom = 309.0
+margin_bottom = 305.825
 
 [node name="food_love" parent="." instance=ExtResource( 11 )]
 margin_left = 319.386
@@ -364,7 +364,7 @@ margin_left = 542.0
 margin_top = 860.0
 margin_right = 809.0
 margin_bottom = 892.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Daily Consumption"
 __meta__ = {
@@ -375,7 +375,7 @@ __meta__ = {
 margin_left = 231.0
 margin_right = 271.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 align = 1

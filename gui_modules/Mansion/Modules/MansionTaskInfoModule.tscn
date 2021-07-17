@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionTaskInfoModule.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_pressed.png" type="Texture" id=9]
 [ext_resource path="res://MainFont_Small.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=12]
 
 [node name="MansionTaskInfoModule" type="Control"]
 margin_right = 290.0
@@ -100,27 +101,6 @@ margin_right = 262.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
-[node name="Task" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
-margin_right = 262.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Active Task"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TaskIcon" type="TextureRect" parent="TaskList/ScrollContainer/VBoxContainer/Button/Task"]
-margin_left = 229.0
-margin_right = 264.0
-margin_bottom = 35.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ProgressBar" type="ProgressBar" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
 margin_top = 34.0
 margin_right = 262.0
@@ -133,6 +113,37 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Task" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
+margin_right = 262.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Active Task"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskIcon" type="TextureRect" parent="TaskList/ScrollContainer/VBoxContainer/Button/Task"]
+margin_left = 228.0
+margin_right = 263.0
+margin_bottom = 35.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button/Task/TaskIcon"]
+visible = false
+margin_left = 1.0
+margin_top = 19.0
+margin_right = 33.0
+margin_bottom = 33.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
 
 [node name="NoResources" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
 visible = false

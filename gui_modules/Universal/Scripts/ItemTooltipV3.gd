@@ -69,6 +69,8 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			material_tooltip(data)
 		'materialowned':
 			var workers_data = {}
+			$LowPanel/HBoxContainer/HoldShift.visible = true
+			$LowPanel/HBoxContainer/HoldShift.text = 'Owned: ' + str(data.amount)
 			if node.has_meta("max_workers"):
 				workers_data = {
 					max = node.get_meta("max_workers"),
@@ -123,8 +125,8 @@ func material_tooltip(data, workers_data = {}):
 		text += "\nCurrent Workers: " + str(workers_data.current)
 	if workers_data.has("gather_mod"):
 		text += "\nGathering Mod: " + str(workers_data.gather_mod) + "%"
-	if data.has('amount'):
-		text += "\nOwned: " + str(data.amount)
+#	if data.has('amount'):
+#		text += "\nOwned: " + str(data.amount)
 	iconnode.texture = item.icon
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
@@ -300,7 +302,7 @@ func geartemplete_tooltip(data):
 
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-
+		$LowPanel/HBoxContainer/HoldShift.text = tr('INFOHOLDSHIFT')
 		$LowPanel/HBoxContainer/HoldShift.visible = true
 #		text += "\n\n{color=yellow|Hold shift for details}"
 

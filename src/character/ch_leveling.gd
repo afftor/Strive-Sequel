@@ -8,7 +8,7 @@ var sleep = ''
 var work = ''
 var previous_work = ''
 var workproduct = null
-var work_rules = {ration = false, shifts = false, constrain = false, luxury = false}
+var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false}
 var messages = []
 
 
