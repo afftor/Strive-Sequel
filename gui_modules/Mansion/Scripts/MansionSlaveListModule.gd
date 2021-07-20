@@ -20,6 +20,9 @@ func _ready():
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
 
+func SphinxKingStone():
+	get_parent().get_node("MansionJobModule2").show()
+	get_parent().get_node("MansionJobModule2").rebuild()
 
 func rebuild():
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -34,6 +37,10 @@ func rebuild():
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
+		
+		#SphinxKingStone tmp
+		newbutton.connect("pressed", self, 'SphinxKingStone')
+		
 		newbutton.disabled = person.is_on_quest()
 		if !person.is_on_quest():
 			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png")

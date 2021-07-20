@@ -4,132 +4,18 @@ var currentjob
 var person
 var selected_resource
 var selected_job = {}
-var selected_location = "aliron"
-
 
 
 func _ready():
-	#for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
-	#	get_node("job_details/WorkDetailsPanel/" + i).connect(
-	#		"pressed", self, "change_hours", [i])
-	#$ConfirmButton.connect('pressed', self, 'select_job')
-	#$CancelButton.connect('pressed', self, 'cancel_job_choice')
-	#for i in $work_rules.get_children():
-	#	i.connect('pressed', self, 'set_work_rule', [i.name])
-	#	i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
-	$CloseButton.connect("pressed", self, 'close_job_pannel')
-
-func rebuild():
-	gui_controller.clock.hide()
-	input_handler.ClearContainer($CharacterList/GridContainer)
-	build_accessible_locations()
-	update_buttons()
-	
-	for i in ResourceScripts.game_party.character_order: 
-		var person = ResourceScripts.game_party.characters[i]
-		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id:
-			continue
-		
-		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
-		newbutton.get_node("Name").text = person.get_stat("name")
-		newbutton.get_node("Icon").texture = person.get_icon()
-		newbutton.disabled = person.is_on_quest()
-		newbutton.pressed = (get_parent().active_person == person)
-		newbutton.set_meta('slave', person)
-		# globals.connectslavetooltip(newbutton, person)
-		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
-		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
-		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
-
-
-func character_selected(button, person):
-	for i in $CharacterList/GridContainer.get_children():
-		if i.pressed:
-			i.pressed = false
-	button.pressed = true
-
-
-func update_buttons():
-	var nav = $NavigationModule/NavigationContainer/AreaSelection
-	if gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.inventory:
-		for button in nav.get_children():
-			if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
-				continue
-			button.pressed = false
-		nav.get_child(0).pressed = true
-		return
-	for button in nav.get_children():
-		if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
-			continue
-		button.pressed = input_handler.selected_location == button.get_meta("data")
-
-
-func sort_locations(locations_array):
-	var capitals = ["Mansion"]
-	var settlements = []
-	var dungeons = []
-	var quest_locations = []
-	for loca in locations_array:
-		if loca == null:
-			locations_array.erase(null)
-			continue
-		if loca == "mansion" || loca == "travel": continue
-		match ResourceScripts.world_gen.get_location_from_code(loca).type:
-			"capital":
-				capitals.append(loca)
-			"settlement":
-				settlements.append(loca)
-			"dungeon","encounter":
-				dungeons.append(loca)
-			"quest_location":
-				quest_locations.append(loca)
-	return capitals + settlements + dungeons + quest_locations
-
-
-func build_accessible_locations():
-	var nav = $NavigationModule/NavigationContainer/AreaSelection
-	input_handler.ClearContainer(nav)
-	var location_array = ["aliron"]
-	var travelers = []
-	for i in ResourceScripts.game_party.character_order:
-		var person = ResourceScripts.game_party.characters[i]
-		var person_location = person.get_location()
-		if person_location == "mansion":
-			person_location = "aliron"
-		if (!location_array.has(person_location)):
-			location_array.append(person_location)
-	var sorted_locations = sort_locations(location_array)
-	
-	for i in sorted_locations:
-		var newseparator = $NavigationModule/VSeparator.duplicate()
-		var newbutton = input_handler.DuplicateContainerTemplate(nav)
-		nav.add_child(newseparator)
-		if i == "Mansion":
-			newbutton.text = "Mansion"
-			# newbutton.set_meta("data", i)
-			newseparator.visible = true
-			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion
-			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
-			continue
-		if i != sorted_locations[sorted_locations.size() - 1]:
-			newseparator.visible = true
-		else:
-			newseparator.visible = false
-		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
-		newbutton.connect("pressed", self, "select_location", [i])
-		newbutton.set_meta("data", i)
-		update_buttons()
-
-
-func select_location(location):
-	selected_location = location
-	rebuild()
-	
-	#print_debug(ResourceScripts.world_gen.get_location_from_code(location).gatherable_resources)
-	pass
-
-
-
+	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
+		get_node("job_details/WorkDetailsPanel/" + i).connect(
+			"pressed", self, "change_hours", [i]
+		)
+	$ConfirmButton.connect('pressed', self, 'select_job')
+	$CancelButton.connect('pressed', self, 'cancel_job_choice')
+	for i in $work_rules.get_children():
+		i.connect('pressed', self, 'set_work_rule', [i.name])
+		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
 
@@ -163,8 +49,6 @@ func cancel_job_choice():
 
 
 func close_job_pannel():
-	gui_controller.clock.raise()
-	hide()
 	get_parent().mansion_state = "default"
 
 

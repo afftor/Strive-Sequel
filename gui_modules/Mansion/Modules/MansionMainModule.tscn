@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionMainModule.gd" type="Script" id=4]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule_old.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui_modules/Travel new/TravelModuleNew.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
@@ -35,6 +35,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTravelsModule.tscn" type="PackedScene" id=34]
 [ext_resource path="res://gui_modules/upgrades_new/upgrades.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=36]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 24 )
@@ -272,4 +273,6 @@ __meta__ = {
 
 [node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
 
+[node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
+visible = false
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]
