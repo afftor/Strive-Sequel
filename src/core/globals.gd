@@ -229,7 +229,7 @@ func connecttempitemtooltip(node, item, mode):
 #	node.connect("mouse_entered",item,'tooltip_v2', [node])
 
 func tempitemtooltip(targetnode, item, mode):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	data.text = text
@@ -273,7 +273,7 @@ func slavetooltip(targetnode, person):
 
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + material.name + '[/center]\n' + material.descript
 	data.text = text + bonustext
@@ -702,7 +702,7 @@ func getrelativename(person, person2):
 	return result
 
 func impregnate_check(father,mother):
-	var result = {value = true, preg_disabled = false, no_womb = false, contraceptive = false, breeder = false, compatible = true, already_preg_visible = false}
+	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, breeder = false, compatible = true, already_preg_visible = false}
 
 	if variables.pregenabled == false:
 		result.value = false
@@ -713,10 +713,14 @@ func impregnate_check(father,mother):
 		result.value = false
 		result.no_womb = true
 
-	elif false:
-		result.contraceptive = true
+	elif mother.xp_module.work_rules.contraceptive == true:
+		result.female_contraceptive = true
 		result.value = false
-
+	
+	
+	elif father.xp_module.work_rules.contraceptive == true:
+		result.male_contraceptive = true
+		result.value = false
 
 	if father.get_stat('race') != mother.get_stat('race'):
 		for i in [father, mother]:
@@ -739,7 +743,7 @@ func impregnate_check(father,mother):
 		if variables.pregduration/1.5 > mother.get_stat('pregnancy').duration:
 			result.already_preg_visible = true
 
-	if result.no_womb || result.preg_disabled || result.contraceptive:
+	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive:
 		result.value = false
 
 	return result

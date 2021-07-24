@@ -49,7 +49,7 @@ func update_characters():
 				newbutton.get_node("Speed").text = ""
 			else:
 				var number = ""
-				number = person.get_progress_task(selected_job.code, selected_job.progress_function)/selected_job.progress_per_item
+				number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
 				newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
 		#status update
 		var gatherable = Items.materiallist.has(person.get_work())

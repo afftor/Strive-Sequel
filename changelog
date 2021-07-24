@@ -1,7 +1,9 @@
-Resource gathering at Mansion now have limited slots but more options
+Resource gathering at Mansion now has limited slots but more options
 Added new upgrades for unlocking new resource gathering from Mansion
 Crafting and upgrading jobs now also have limited slots which increase with upgrade level
 Bone resource collecting now benefit from hunting knife
+Added hotkey support to combat
+Added contraceptive option which prevents impregnation
 Redone some parts of character info
 Redone task assignement menu
 Fixed halfkin tanuki having no growth factor in its data

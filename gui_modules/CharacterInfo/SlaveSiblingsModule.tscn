@@ -48,18 +48,18 @@ size = 36
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+
 [sub_resource type="StyleBoxTexture" id=9]
 
-[sub_resource type="StyleBoxTexture" id=10]
-
-[sub_resource type="StyleBoxTexture" id=11]
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=10]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=11]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
@@ -272,7 +272,7 @@ __meta__ = {
 
 [node name="work_rules" type="GridContainer" parent="."]
 margin_left = 325.0
-margin_top = 90.0
+margin_top = 86.8252
 margin_right = 764.0
 margin_bottom = 309.0
 columns = 2
@@ -285,7 +285,7 @@ margin_right = 215.0
 margin_bottom = 48.0
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 9 )
+custom_styles/focus = SubResource( 7 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -300,7 +300,7 @@ margin_right = 420.0
 margin_bottom = 48.0
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 10 )
+custom_styles/focus = SubResource( 8 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -315,7 +315,7 @@ margin_right = 215.0
 margin_bottom = 100.0
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 11 )
+custom_styles/focus = SubResource( 9 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -331,7 +331,7 @@ margin_right = 420.0
 margin_bottom = 100.0
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 11 )
+custom_styles/focus = SubResource( 9 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -475,7 +475,7 @@ margin_left = 542.0
 margin_top = 860.0
 margin_right = 809.0
 margin_bottom = 892.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Daily Consumption"
 __meta__ = {
@@ -486,7 +486,7 @@ __meta__ = {
 margin_left = 231.0
 margin_right = 271.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 align = 1

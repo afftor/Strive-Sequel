@@ -8,7 +8,7 @@ var sleep = ''
 var work = ''
 var previous_work = ''
 var workproduct = null
-var work_rules = {ration = false, shifts = false, constrain = false, luxury = false}
+var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false}
 var messages = []
 
 
@@ -17,6 +17,16 @@ var quest_id
 var quest_time_remains = 0
 var quest_time_init = 0
 var selected_work_quest = null
+
+
+func _init():
+	fix_rules()
+
+
+func fix_rules():
+	for rule in variables.work_rules:
+		if !work_rules.has(rule):
+			work_rules[rule] = false
 
 
 func base_exp_set(value):
@@ -406,10 +416,10 @@ func work_tick():
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if !gatherable:
-				if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
+				if races.tasklist[currenttask.code].production_item == 'gold':
 					ResourceScripts.game_res.money += 1
 				else:
-					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
+					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production_item] += 1
 			else:
 				ResourceScripts.game_res.materials[currenttask.code] += 1
 				if person_location != "aliron" && location.type == "dungeon":
@@ -451,11 +461,11 @@ func make_item_sequence(currenttask, craftingitem):
 					globals.text_log_add('crafting', parent.get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 
-func get_progress_task(temptask, progress_function, count_crit = false):
+func get_progress_task(temptask, tempsubtask, count_crit = false):
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
 	var task = races.tasklist[temptask]
-	#var subtask = task.production[tempsubtask]
-	var value = call(progress_function)
+	#var subtask = task.production_code
+	var value = call(task.progress_function)
 	var item
 	if parent.equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.equipment.gear.tool]
