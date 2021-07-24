@@ -188,7 +188,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 		dict = {code = taskcode,
 		product = taskproduct,
 		progress = 0,
-		threshhold = task.production[taskproduct].progress_per_item,
+		threshhold = task.progress_per_item,
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
@@ -451,11 +451,11 @@ func make_item_sequence(currenttask, craftingitem):
 					globals.text_log_add('crafting', parent.get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 
-func get_progress_task(temptask, tempsubtask, count_crit = false):
+func get_progress_task(temptask, progress_function, count_crit = false):
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
 	var task = races.tasklist[temptask]
-	var subtask = task.production[tempsubtask]
-	var value = call(subtask.progress_function)
+	#var subtask = task.production[tempsubtask]
+	var value = call(progress_function)
 	var item
 	if parent.equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.equipment.gear.tool]

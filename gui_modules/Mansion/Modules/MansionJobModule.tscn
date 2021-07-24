@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -23,23 +23,18 @@
 [ext_resource path="res://assets/Textures_v2/Job_module new 2021/button_job_sqr.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/panel_job_image.png" type="Texture" id=22]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=23]
-[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=24]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/icon_job_worktool.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/icon_job_workspeed.png" type="Texture" id=26]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=27]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=28]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=29]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_hover.png" type="Texture" id=28]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=29]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf"
-
-[sub_resource type="DynamicFont" id=3]
-size = 20
-use_filter = true
-font_data = SubResource( 2 )
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
@@ -52,11 +47,6 @@ font_path = "res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf"
 size = 42
 use_filter = true
 font_data = SubResource( 5 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 24
-use_filter = true
-font_data = ExtResource( 24 )
 
 [node name="MansionJobModule" type="Panel"]
 margin_right = 1920.0
@@ -101,13 +91,13 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="Resourses"]
 light_mask = 0
 margin_right = 447.0
-margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
 columns = 3
 
 [node name="Button" type="TextureButton" parent="Resourses/GridContainer"]
+visible = false
 light_mask = 0
 margin_right = 100.0
 margin_bottom = 100.0
@@ -131,14 +121,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Resourses/GridContainer/Button"]
-margin_left = 10.0
+margin_left = 13.0
 margin_top = 64.0
-margin_right = 90.0
-margin_bottom = 94.0
-custom_fonts/font = SubResource( 3 )
-text = "10/5"
+margin_right = 87.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
 align = 2
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -276,7 +267,7 @@ texture_hover = ExtResource( 12 )
 light_mask = 0
 margin_left = 54.0
 margin_top = 8.0
-margin_right = 238.0
+margin_right = 198.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -301,27 +292,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="CharacterList/GridContainer/Button"]
-margin_left = 250.0
-margin_top = 8.0
-margin_right = 432.0
-margin_bottom = 43.0
-texture_normal = ExtResource( 30 )
-texture_pressed = ExtResource( 28 )
-texture_hover = ExtResource( 27 )
-texture_disabled = ExtResource( 29 )
-expand = true
+[node name="Speed" type="Label" parent="CharacterList/GridContainer/Button"]
+margin_left = 186.0
+margin_top = 8.992
+margin_right = 297.0
+margin_bottom = 43.992
+custom_fonts/font = ExtResource( 9 )
+text = "20.76"
+align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CharacterList/GridContainer/Button/TextureButton"]
-margin_right = 182.0
-margin_bottom = 35.0
+[node name="Status" type="Label" parent="CharacterList/GridContainer/Button"]
+margin_left = 292.0
+margin_top = 8.0
+margin_right = 427.0
+margin_bottom = 43.0
 custom_fonts/font = ExtResource( 9 )
 text = "Rest"
 align = 1
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OccupationLabel" type="Label" parent="."]
 margin_left = 564.0
@@ -359,11 +354,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DescriptionLabel2" type="Label" parent="."]
-margin_left = 66.8648
-margin_top = 917.189
-margin_right = 150.865
-margin_bottom = 968.189
+[node name="ToolLabel" type="Label" parent="."]
+margin_left = 155.0
+margin_top = 966.0
+margin_right = 239.0
+margin_bottom = 1017.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sickle"
@@ -371,11 +366,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DescriptionLabel3" type="Label" parent="."]
-margin_left = 165.569
-margin_top = 918.378
-margin_right = 241.569
-margin_bottom = 969.378
+[node name="WorkunitLabel" type="Label" parent="."]
+margin_left = 388.861
+margin_top = 966.426
+margin_right = 464.861
+margin_bottom = 1017.43
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20.67"
@@ -383,15 +378,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 1522.0
 margin_top = 963.0
 margin_right = 1719.0
 margin_bottom = 1022.0
 theme = ExtResource( 23 )
-custom_fonts/font = SubResource( 7 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CloseButton"]
+margin_top = -2.0
+margin_right = 197.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Close"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -406,10 +414,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Workspeed" type="TextureRect" parent="."]
-margin_left = 152.0
+[node name="Workunit" type="TextureRect" parent="."]
+margin_left = 302.0
 margin_top = 960.0
-margin_right = 216.0
+margin_right = 366.0
 margin_bottom = 1024.0
 texture = ExtResource( 26 )
 __meta__ = {

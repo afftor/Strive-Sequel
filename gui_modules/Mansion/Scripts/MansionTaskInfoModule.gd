@@ -126,7 +126,7 @@ func show_resources_info():
 			if Items.materiallist.has(task.code):
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
 			else:
-				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production_item].icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()
