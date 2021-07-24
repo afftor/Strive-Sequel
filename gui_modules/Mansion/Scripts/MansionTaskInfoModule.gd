@@ -119,7 +119,7 @@ func show_resources_info():
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 
 		elif task.product in ['prostitutegold']:
-			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production[task.product].icon
+			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 		else:
@@ -129,9 +129,9 @@ func show_resources_info():
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.code])
 			else:
-				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
-				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[races.tasklist[task_name].production[task.product].item])
-				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[races.tasklist[task_name].production[task.product].item])
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production_item].icon
+				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[races.tasklist[task_name].production_item])
+				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[races.tasklist[task_name].production_item])
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()

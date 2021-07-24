@@ -6,9 +6,9 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=6]
-[ext_resource path="res://gui_modules/CharacterInfo/food_love.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
-[ext_resource path="res://gui_modules/CharacterInfo/food_hate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=9]
 [ext_resource path="res://gui_modules/CharacterInfo/SexSkillsControl_old.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
@@ -521,9 +521,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="food_love" parent="." instance=ExtResource( 7 )]
+[node name="food_love" type="TextureRect" parent="."]
+light_mask = 0
+margin_left = 72.0
+margin_top = 770.593
+margin_right = 107.0
+margin_bottom = 805.593
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="food_hate" parent="." instance=ExtResource( 9 )]
+[node name="Button" type="TextureRect" parent="food_love"]
+visible = false
+light_mask = 0
+margin_left = 48.0
+margin_right = 79.0
+margin_bottom = 30.0
+
+[node name="food_hate" type="TextureRect" parent="."]
+light_mask = 0
+margin_left = 72.0
+margin_top = 806.0
+margin_right = 107.0
+margin_bottom = 841.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="food_hate"]
+light_mask = 0
+margin_left = 48.0
+margin_right = 157.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="food_hate/Container"]
+visible = false
+light_mask = 0
+margin_right = 31.0
+margin_bottom = 30.0
 
 [node name="SexSkillsControl" parent="." instance=ExtResource( 10 )]
 

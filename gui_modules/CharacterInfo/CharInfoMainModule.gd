@@ -66,7 +66,6 @@ func update():
 	BodyModule.update()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 
-
 func set_state(state):
 	if state == char_module_state:
 		gui_controller.windows_opened.clear()

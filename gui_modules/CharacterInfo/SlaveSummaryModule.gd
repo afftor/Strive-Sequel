@@ -18,13 +18,13 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
-	$VBoxContainer2/TextureRect2/Exp.connect("pressed", get_parent(), "set_state", ["class"])
 	$ChangeSlaveButtons/Left.connect("pressed", self, "change_slave", ["prev"])
 	$ChangeSlaveButtons/Right.connect("pressed", self, "change_slave", ["next"])
 	$GridContainer/DetailsButton.connect("pressed", self, "open_details")
 	$GridContainer/SkillsButton.connect("pressed", self, "open_skills")
 	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
 	$GridContainer/GearButton.connect("pressed", self, "open_gear")
+	$VBoxContainer2/TextureRect2/Exp.connect("pressed", self, "open_skills")
 
 func open_details():
 	get_parent().set_state("details")

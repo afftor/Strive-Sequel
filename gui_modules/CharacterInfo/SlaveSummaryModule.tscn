@@ -110,6 +110,9 @@ custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="mp" type="TextureProgress" parent="base_stats"]
 light_mask = 0
@@ -363,6 +366,9 @@ margin_left = 8.0
 margin_top = 352.0
 margin_right = 213.0
 margin_bottom = 519.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect2" type="Control" parent="VBoxContainer2"]
 light_mask = 0
