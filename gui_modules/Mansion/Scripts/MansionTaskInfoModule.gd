@@ -118,7 +118,7 @@ func show_resources_info():
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 
-		elif task.product in ['prostitutegold']:
+		elif task.product in ['gold']:
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress

@@ -361,7 +361,6 @@ margin_right = 239.0
 margin_bottom = 1017.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Sickle"
 __meta__ = {
 "_edit_use_anchors_": false
 }

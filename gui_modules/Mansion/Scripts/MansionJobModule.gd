@@ -18,11 +18,12 @@ func _ready():
 	#	i.connect('pressed', self, 'set_work_rule', [i.name])
 	#	i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
+	gui_controller.add_close_button(self, "add_offset")
 
 func rebuild():
 	gui_controller.clock.hide()
 	build_accessible_locations()
-	update_buttons()
+	#update_buttons()
 	update_characters()
 	update_resources()
 
@@ -86,17 +87,19 @@ func character_selected(button, person):
 
 func update_buttons():
 	var nav = $NavigationModule/NavigationContainer/AreaSelection
-	if gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.inventory:
-		for button in nav.get_children():
-			if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
-				continue
-			button.pressed = false
-		nav.get_child(0).pressed = true
-		return
 	for button in nav.get_children():
 		if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
 			continue
-		button.pressed = input_handler.selected_location == button.get_meta("data")
+		var m = button.get_meta("data")
+		button.pressed = selected_location == m
+	var l = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	if l == null:
+		return
+	if l.has("background"):
+		$Landscape.texture = images.backgrounds[l.background]
+	elif l.has("id"):
+		if l.id == "aliron":
+			$Landscape.texture = images.backgrounds["aliron"]
 
 
 func sort_locations(locations_array):
@@ -154,7 +157,12 @@ func build_accessible_locations():
 func select_location(location):
 	selected_location = location
 	rebuild()
-	
+	var l = ResourceScripts.world_gen.get_location_from_code(location)
+	if l.has("background"):
+		$Landscape.texture = images.backgrounds[l.background]
+	elif l.has("id"):
+		if l.id == "aliron":
+			$Landscape.texture = images.backgrounds["aliron"]
 	#print_debug(ResourceScripts.world_gen.get_location_from_code(location).gatherable_resources)
 	pass
 
@@ -237,8 +245,13 @@ func update_resources():
 		for i in races.tasklist.values():
 			if globals.checkreqs(i.reqs) == false:
 				continue
+			#don't show if res in not unlocked
+			if i.has('upgrade_code') && i.has('workers_per_upgrade') && i.has('base_workers'):
+				if i.base_workers + i.workers_per_upgrade * ResourceScripts.game_res.findupgradelevel(i.upgrade_code) <= 0:
+					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 			#newbutton.get_child(0).text = i.name
+			newbutton.pressed = selected_job == i
 			newbutton.set_meta("work", i)
 			var selected_job = i
 			var selected_res
@@ -275,9 +288,10 @@ func update_resources():
 		var progress_formula = Items.materiallist[resource].progress_formula
 		#text =  "Gather " + item_dict.name.capitalize()
 		var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+		newbutton.pressed = selected_job == item_dict
 		newbutton.set_meta("resource", resource)
 		
-		var selected_job = item_dict
+		selected_job = item_dict
 		var selected_res
 		if item_dict.has("production_item"):
 			selected_res = item_dict.production_item
@@ -305,9 +319,9 @@ func update_resources():
 					if button.get_meta("resource") == resource: button.queue_free()
 				continue
 			text += str(gatherable_resources[resource])
-		newbutton.get_node("Speed").text = text
+		#newbutton.get_node("Speed").text = text
 		newbutton.set_meta("work", item_dict)
-			
+
 
 func show_job_details(job, gatherable = false):
 	#$job_panel/ScrollContainer/VBoxContainer.get_child(0).pressed = false
@@ -315,7 +329,7 @@ func show_job_details(job, gatherable = false):
 	#$ConfirmButton.disabled = !gatherable
 	#$CancelButton.show()
 	currentjob = job
-	#$job_details.show()
+	$ToolLabel.text = ""
 	var job_name
 	var job_descript = job.descript
 	var work_stat = statdata.statdata[job.workstat].name
@@ -350,6 +364,7 @@ func show_job_details(job, gatherable = false):
 			+ work_tools
 			+ "[/color] \n"
 		)
+		$ToolLabel.text = work_tools
 		## Work tools checking
 		if person.equipment.gear.tool != null:
 			var worktool
