@@ -283,8 +283,25 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	data.type = material.type
 	if ResourceScripts.game_res.materials[material.code] > 0:
 		data.amount = ResourceScripts.game_res.materials[material.code]
-
+	else:
+		type = 'material'
+	
 	node.showup(targetnode, data, type)
+
+#func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
+#	var image
+#	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+#	var data = {}
+#	var text = '[center]' + material.name + '[/center]\n' + material.descript
+#	data.text = text + bonustext
+#	data.item = material
+#	data.icon = material.icon
+#	data.price = str(material.price)
+#	data.type = material.type
+#	if ResourceScripts.game_res.materials[material.code] > 0:
+#		data.amount = ResourceScripts.game_res.materials[material.code]
+#
+#	node.showup(targetnode, data, type)
 
 
 func TextEncoder(text, node = null):

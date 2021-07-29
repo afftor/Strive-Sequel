@@ -413,7 +413,7 @@ func slave_list_manager():
 			SlaveListModule.rebuild()
 			UpgradesModule.open_queue()
 		'occupation':
-			$MansionSlaveListModule.rebuild()
+			#$MansionSlaveListModule.rebuild()
 			$MansionJobModule.open_jobs_window()
 		'craft':
 			if active_person == null:
@@ -489,8 +489,16 @@ func test_mode():
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
-#		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
-#		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
+		ResourceScripts.game_res.upgrades.resource_gather_grain = 1
+		ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
+		ResourceScripts.game_res.upgrades.resource_gather_iron = 1
+		ResourceScripts.game_res.upgrades.resource_gather_mithril = 1
+		ResourceScripts.game_res.upgrades.resource_gather_wood = 1
+		ResourceScripts.game_res.upgrades.resource_gather_wood_magic = 1
+		ResourceScripts.game_res.upgrades.resource_gather_wood_iron = 1
+		ResourceScripts.game_res.upgrades.resource_gather_stone = 1
+		ResourceScripts.game_res.upgrades.resource_gather_obsidian = 1
+		ResourceScripts.game_res.upgrades.resource_gather_cloth_silk = 1
 #		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
 #		ResourceScripts.game_res.upgrades.luxury_rooms = 1

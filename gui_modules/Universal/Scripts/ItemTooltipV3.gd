@@ -84,7 +84,10 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'gear':
 			if mode == 'default':
 				gear_tooltip(data)
+				$LowPanel/HBoxContainer/HoldShift.visible = true
+				$LowPanel/HBoxContainer/HoldShift.text = "Hold Shift for details"
 			elif mode == 'advanced':
+				$LowPanel/HBoxContainer/HoldShift.visible = false
 				gear_detailed_tooltip(data)
 		'geartemplate':
 			geartemplete_tooltip(data)

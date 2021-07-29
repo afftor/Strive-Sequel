@@ -275,4 +275,5 @@ __meta__ = {
 
 [node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
 visible = false
+
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

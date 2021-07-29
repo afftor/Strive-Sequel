@@ -12,7 +12,7 @@ func _ready():
 	gui_controller.add_close_button(self, "add_offset")
 
 func rebuild():
-	$DescriptionLabel.text = ""
+	$DescriptionLabel.bbcode_text = ""
 	$ToolLabel.text = ""
 	$WorkunitLabel.text = ""
 	gui_controller.clock.hide()
@@ -37,7 +37,7 @@ func update_characters():
 		# globals.connectslavetooltip(newbutton, person)
 		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
 		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
-		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
+		#newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		#speed update
 		if selected_job != null and selected_resource != null:
 			if selected_resource == "rest":
@@ -72,10 +72,10 @@ func update_characters():
 
 func character_selected(button, person):
 	get_parent().active_person = person
-	for i in $CharacterList/GridContainer.get_children():
-		if i.pressed:
-			i.pressed = false
-	button.pressed = true
+#	for i in $CharacterList/GridContainer.get_children():
+#		if i.pressed:
+#			i.pressed = false
+#	button.pressed = true
 	select_job()
 	
 
@@ -158,7 +158,6 @@ func select_location(location):
 		if l.id == "aliron":
 			$Landscape.texture = images.backgrounds["aliron"]
 	#print_debug(ResourceScripts.world_gen.get_location_from_code(location).gatherable_resources)
-	pass
 
 
 
@@ -187,10 +186,10 @@ func update_resources():
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 	
 	person = get_parent().active_person
-	var luxury_rooms_taken = 0
-	for p in ResourceScripts.game_party.characters.values():
-		if p.xp_module.work_rules["luxury"]:
-			luxury_rooms_taken += 1
+#	var luxury_rooms_taken = 0
+#	for p in ResourceScripts.game_party.characters.values():
+#		if p.xp_module.work_rules["luxury"]:
+#			luxury_rooms_taken += 1
 	#$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	#$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
 	#$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
@@ -332,15 +331,23 @@ func select_resource(job, resource, newbutton):
 		button.pressed = button == newbutton
 	selected_resource = resource
 	selected_job = job
+	$Workunit.hide()
+	$Worktool.hide()
+	$WorkunitLabel.hide()
+	$WorkunitLabel.text = ""
 	if job.code == "rest":
-		$DescriptionLabel.text = ""
-		$WorkunitLabel.text = ""
-	elif job.has("production_descript"):
-		$DescriptionLabel.text = job.descript
-		$WorkunitLabel.text = str(job.progress_per_item)
-	else:
-		$DescriptionLabel.text = "Gather " + job.production_item
-		$WorkunitLabel.text = str(job.progress_per_item)
+		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
+	elif job.has("descript"):
+		if job.has('worktool'):
+			$Worktool.show()
+		if job.progress_per_item != 1:
+			$Workunit.show()
+			$WorkunitLabel.show()
+			$WorkunitLabel.text = str(job.progress_per_item)
+		var text = job.descript
+		if job.has('workstat'):
+			text += "\n" + job.workstat
+		$DescriptionLabel.bbcode_text = text
 	update_characters()
 
 

@@ -1165,11 +1165,13 @@ func pussy(group):
 
 func race(group):
 	for i in group:
-		return i.person.translate('[race_short]')
+		# return i.person.translate('[race_short]')
+		return input_handler.random_from_array(races.short_race_names[races.racelist[i.person.statlist.statlist.race].code]) if i.person.statlist.statlist.race != "" else ""
 
 func boy(group):
 	for i in group:
-		return i.person.translate('[boy]')
+		# return i.person.translate('[boy]')
+		return globals.fastif(i.person.statlist.statlist.sex == 'male', 'boy', 'girl')
 
 func labia(member):
 	var array = ["labia","pussy lips","genitals","folds"]
