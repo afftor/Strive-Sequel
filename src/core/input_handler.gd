@@ -1447,6 +1447,7 @@ func get_actual_size_for_container(node):
 	if separation == null: separation = 4 #don't know how to get default separation value
 	if node is VBoxContainer:
 		for tnode in node.get_children():
+			if !(tnode is CanvasItem): continue
 			if !tnode.visible: continue
 			res.x = tnode.rect_size.x
 			res.y += tnode.rect_size.y + separation

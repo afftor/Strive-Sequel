@@ -11,6 +11,8 @@ var currentdata
 var currenttype
 var mode = 'default'
 
+var full_height = 0
+
 func _process(delta):
 	if weakref(parentnode).get_ref() == null || weakref(parentnode) == null:
 		_hide()
@@ -92,28 +94,35 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
-
+	
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
-
+	
 	show()
-
+	yield(fix_panels(), 'completed')
+	
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
-
-	if get_rect().end.x > screen.size.x:
+	
+	if get_global_rect().end.x > screen.size.x:
 		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
 			self.set_global_position(pos)
 		else:
-			rect_global_position.x -= screen.size.x - get_rect().end.x
-	if get_rect().end.y > screen.size.y:
-		rect_global_position.y -= get_rect().end.y - screen.size.y
-
+			pos = Vector2(pos.x - screen.size.x + get_global_rect().end.x, pos.y)
+			self.set_global_position(pos)
+	
+#	if get_global_rect().end.y > screen.size.y:
+#		pos = Vector2(pos.x, pos.y - get_global_rect().end.y + screen.size.y)
+#		self.set_global_position(pos)
+	if pos.y + full_height > screen.size.y:
+		pos = Vector2(pos.x, screen.size.y - full_height)
+		self.set_global_position(pos)
+		
 	set_process(true)
 
 
@@ -136,7 +145,7 @@ func material_tooltip(data, workers_data = {}):
 
 	$LowPanel.show()
 	$MidPanel.hide()
-	fix_panels()
+#	fix_panels()
 
 
 func build_price(price):
@@ -176,7 +185,7 @@ func gear_tooltip(data, item = null):
 	textnode2.bbcode_text = text2
 	$MidPanel.show()
 	$LowPanel.show()
-	fix_panels()
+#	fix_panels()
 
 
 func gear_detailed_tooltip(data, item = null):
@@ -235,7 +244,7 @@ func gear_detailed_tooltip(data, item = null):
 
 	$LowPanel.show()
 	$MidPanel.hide()
-	fix_panels()
+#	fix_panels()
 
 
 func geartemplete_tooltip(data):
@@ -314,9 +323,14 @@ func geartemplete_tooltip(data):
 
 	$LowPanel.show()
 	$MidPanel.hide()
-	fix_panels()
+#	fix_panels()
 
 func fix_panels():
 	yield(get_tree(), 'idle_frame')
+	full_height = $TopPanel.rect_min_size.y
 	$MidPanel.rect_min_size.y = max(textnode1.get_content_height() + 18, 100)
+	if $MidPanel.visible:
+		full_height += $MidPanel.rect_min_size.y
 	$LowPanel.rect_min_size.y = max(textnode2.get_content_height() + 63, 200)
+	if $LowPanel.visible:
+		full_height += $LowPanel.rect_min_size.y
