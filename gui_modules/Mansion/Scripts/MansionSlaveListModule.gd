@@ -20,9 +20,12 @@ func _ready():
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
 
-func OpenJobModule(person):
+func OpenJobModule(person = null):
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
 	get_parent().get_node("MansionJobModule2").show()
-	get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
+	if person != null:
+		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
 	get_parent().get_node("MansionJobModule2").rebuild()
 
 func rebuild():

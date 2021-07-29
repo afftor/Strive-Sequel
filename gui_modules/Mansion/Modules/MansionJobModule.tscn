@@ -32,21 +32,21 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 42
 use_filter = true
-font_data = SubResource( 5 )
+font_data = SubResource( 4 )
 
 [node name="MansionJobModule" type="Panel"]
 margin_right = 1920.0
@@ -125,7 +125,7 @@ margin_left = 13.0
 margin_top = 64.0
 margin_right = 87.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -204,7 +204,7 @@ custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )
 custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -323,7 +323,7 @@ margin_left = 564.0
 margin_top = 45.0
 margin_right = 802.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Occupation"
 __meta__ = {
@@ -335,7 +335,7 @@ margin_left = 1480.0
 margin_top = 45.0
 margin_right = 1763.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Character list"
 __meta__ = {
@@ -349,15 +349,14 @@ margin_right = 1317.0
 margin_bottom = 922.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Description perscription"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ToolLabel" type="Label" parent="."]
-margin_left = 155.0
+margin_left = 140.0
 margin_top = 966.0
-margin_right = 239.0
+margin_right = 224.0
 margin_bottom = 1017.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -366,13 +365,12 @@ __meta__ = {
 }
 
 [node name="WorkunitLabel" type="Label" parent="."]
-margin_left = 388.861
+margin_left = 427.0
 margin_top = 966.426
-margin_right = 464.861
+margin_right = 503.0
 margin_bottom = 1017.43
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "20.67"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -414,9 +412,9 @@ __meta__ = {
 }
 
 [node name="Workunit" type="TextureRect" parent="."]
-margin_left = 302.0
+margin_left = 350.0
 margin_top = 960.0
-margin_right = 366.0
+margin_right = 414.0
 margin_bottom = 1024.0
 texture = ExtResource( 26 )
 __meta__ = {

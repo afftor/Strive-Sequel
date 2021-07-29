@@ -2418,10 +2418,11 @@ func select_workers():
 	MANSION.SlaveListModule.selected_location = selected_location
 	MANSION.SlaveListModule.show_location_characters()
 	MANSION.active_person = MANSION.SlaveListModule.visible_persons[0].get_meta("slave")
-	MANSION.hovered_person = null
-	MANSION.SlaveModule.show_slave_info()
-	MANSION.set_active_person(MANSION.active_person)
-	$NavigationModule.return_to_mansion("occupation")
+#	MANSION.hovered_person = null
+#	MANSION.SlaveModule.show_slave_info()
+#	MANSION.set_active_person(MANSION.active_person)
+	$NavigationModule.return_to_mansion()
+	MANSION.SlaveListModule.OpenJobModule(MANSION.SlaveListModule.visible_persons[0].get_meta("slave"))
 
 func combat_duncan_greg_event(pressed, button):
 	input_handler.interactive_message('betrayal_confirmed_advance', '', {})

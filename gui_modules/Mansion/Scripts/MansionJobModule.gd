@@ -1,6 +1,5 @@
 extends Control
 
-var currentjob
 var person
 var selected_resource
 var selected_job = {}
@@ -9,18 +8,13 @@ var selected_location = "aliron"
 
 
 func _ready():
-	#for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
-	#	get_node("job_details/WorkDetailsPanel/" + i).connect(
-	#		"pressed", self, "change_hours", [i])
-	#$ConfirmButton.connect('pressed', self, 'select_job')
-	#$CancelButton.connect('pressed', self, 'cancel_job_choice')
-	#for i in $work_rules.get_children():
-	#	i.connect('pressed', self, 'set_work_rule', [i.name])
-	#	i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
 	gui_controller.add_close_button(self, "add_offset")
 
 func rebuild():
+	$DescriptionLabel.text = ""
+	$ToolLabel.text = ""
+	$WorkunitLabel.text = ""
 	gui_controller.clock.hide()
 	build_accessible_locations()
 	#update_buttons()
@@ -170,28 +164,6 @@ func select_location(location):
 
 
 
-
-
-
-#func set_work_rule(rule):
-#	var setting = get_node("work_rules/"+rule).pressed
-#	person.xp_module.work_rules[rule] = setting
-#	if rule == "luxury":
-#		update_resources()
-#		return
-#	match setting:
-#		true:
-#			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
-#			person.apply_effect(effects_pool.add_effect(eff))
-#		false:
-#			person.remove_static_effect_by_code("work_rule_" + rule)
-#
-#	if currentjob != null:
-#		var gatherable = Items.materiallist.has(currentjob.code)
-#		show_job_details(currentjob, gatherable)
-
-
-
 func cancel_job_choice():
 	$ConfirmButton.hide()
 	$CancelButton.hide()
@@ -201,6 +173,8 @@ func cancel_job_choice():
 
 
 func close_job_pannel():
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
 	gui_controller.clock.raise()
 	hide()
 	get_parent().mansion_state = "default"
@@ -219,12 +193,8 @@ func update_resources():
 			luxury_rooms_taken += 1
 	#$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	#$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
-
 	#$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
-	#if person != null: 
-	currentjob = null
-	### Temporary Patch
-	#if person.travel.location == "mansion": person.travel.location = "aliron"
+
 	var gatherable_resources = []
 	var person_location = selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
@@ -262,7 +232,6 @@ func update_resources():
 				newbutton.get_node("TextureRect").texture = i.production_icon
 			elif i.has("production_item"):
 				newbutton.get_node("TextureRect").texture = Items.materiallist[i.production_item].icon
-			newbutton.connect('pressed', self, 'show_job_details', [i])
 			# start checking maximum persons per work in aliron
 			if i.has('upgrade_code') && i.has('workers_per_upgrade') && i.has('base_workers'):
 				var upgrade_level = ResourceScripts.game_res.findupgradelevel(i.upgrade_code)
@@ -280,6 +249,13 @@ func update_resources():
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
 				else:
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
+			elif i.code == "cooking" or i.code == "prostitution":
+				var current_workers_count = 0
+				var active_tasks = ResourceScripts.game_party.active_tasks
+				for task in active_tasks:
+					if (task.code == i.code) && (task.task_location == person_location):
+						current_workers_count = task.workers_count
+				newbutton.get_node("Label").text = str(current_workers_count)
 	for resource in gatherable_resources:
 		var text = ""
 		var max_workers_count = 0
@@ -292,19 +268,22 @@ func update_resources():
 		newbutton.set_meta("resource", resource)
 		
 		selected_job = item_dict
+		for i in races.tasklist.values():
+			if i.has("production_item"):
+				if i.production_item == selected_job.code:
+					selected_job = i
 		var selected_res
-		if item_dict.has("production_item"):
-			selected_res = item_dict.production_item
+		if selected_job.has("production_item"):
+			selected_res = selected_job.production_item
 		newbutton.connect("pressed", self, "select_resource", [selected_job, selected_res, newbutton])
 		
 		newbutton.get_node("TextureRect").texture = item_dict.icon
-		newbutton.connect('pressed', self, 'show_job_details', [item_dict])
 		
 		if person_location != 'aliron' && location_type != "dungeon":
 			max_workers_count = gatherable_resources[resource]
 			var active_tasks = ResourceScripts.game_party.active_tasks
 			for task in active_tasks:
-				if (task.code == resource) && (task.task_location == person_location):
+				if ((task.code == resource) || (task.product == resource)) && (task.task_location == person_location):
 					current_workers_count = task.workers_count
 			text +=  str(current_workers_count) + "/" + str(max_workers_count)
 			newbutton.disabled = current_workers_count == max_workers_count
@@ -319,51 +298,21 @@ func update_resources():
 					if button.get_meta("resource") == resource: button.queue_free()
 				continue
 			text += str(gatherable_resources[resource])
-		#newbutton.get_node("Speed").text = text
+		newbutton.get_node("Label").text = text
 		newbutton.set_meta("work", item_dict)
 
 
-func show_job_details(job, gatherable = false):
-	#$job_panel/ScrollContainer/VBoxContainer.get_child(0).pressed = false
-	#$ConfirmButton.show()
-	#$ConfirmButton.disabled = !gatherable
-	#$CancelButton.show()
-	currentjob = job
+func select_resource(job, resource, newbutton):
+	# part 1
 	$ToolLabel.text = ""
-	var job_name
-	var job_descript = job.descript
-	var work_stat = statdata.statdata[job.workstat].name
 	var work_tools
-	#input_handler.ClearContainer($job_details/ResourceOptions)
-	if gatherable:
-		job_name = "Gather " + job.name.capitalize()
-		job_descript = 'Gather availiable resources from location'
-		if job.has("tool_type") && job.tool_type != "":
-			work_tools = statdata.worktoolnames[job.tool_type]
-	else:
-		job_name = job.name
-		if job.has("worktool"):
-			work_tools = statdata.worktoolnames[job.worktool]
-	#$job_details/JobName.text = job_name
-	var text = (job_descript
-		+ "\n"
-		+ tr("TASKMAINSTAT")
-		+ ": [color=yellow]"
-		+ work_stat
-		+ "[/color]"
-		+ "\n"
-	)
+	if job.has("worktool"):
+		work_tools = statdata.worktoolnames[job.worktool]
 	if ((job.has("tool_type") && job.tool_type != '' ) || job.has("worktool")):# && work_tools != "":
 		if job.has("worktool"):
 			work_tools = statdata.worktoolnames[job.worktool]
 		if job.has("tool_type"):
 			work_tools = statdata.worktoolnames[job.tool_type]
-		text += (
-			tr("WORKTOOL")
-			+ ": [color=aqua]"
-			+ work_tools
-			+ "[/color] \n"
-		)
 		$ToolLabel.text = work_tools
 		## Work tools checking
 		if person.equipment.gear.tool != null:
@@ -373,89 +322,25 @@ func show_job_details(job, gatherable = false):
 				worktool = "worktool"
 			if job.has("tool_type"):
 				worktool = "tool_type"
-			if item.toolcategory.has(job[worktool]):
-				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
-	
-	# Maximum workers info
-	if job.has("base_workers") && job.has("workers_per_upgrade"):
-		var upgrade_level = ResourceScripts.game_res.findupgradelevel(job.upgrade_code)
-		var upgrade_name = upgradedata.upgradelist[job.upgrade_code].name
-		text += (
-		tr("MAXIMUM_WORKERS") 
-		+ ": [color=yellow]"
-		+ String(job.base_workers + job.workers_per_upgrade * upgrade_level)
-		+ "[/color] \n" )
-		
-		text += (
-		tr("REQUIRED_UPGRADE_NAME")
-		+ ": [color=green]"
-		+ String(tr(upgrade_name))
-		+ "[/color] \n" )
-		
-		text += (
-		tr("WORKERS_PER_UPGRADE") 
-		+ ": [color=yellow]"
-		+ String(job.workers_per_upgrade)
-		+ "[/color]. \n" )
-	
-#	$job_details/RichTextLabel.bbcode_text = text
-	# for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
-	# 	i.pressed = i.get_child(0).text == job_name
 	for button in $Resourses/GridContainer.get_children():
-		if !button.has_meta("work"): continue
+		if !button.has_meta("work"): 
+			continue
 		button.pressed = button.get_meta("work") == job
-
-	# 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
-	# 		i.pressed = i.get_child(0).text == job.name
-	# 	$job_details/JobName.text = job.name
-	var selected_res
-	var default_resource
-	if !gatherable:
-		pass
-#		if job.has("production"):
-#			for i in job.production.values():
-#				if globals.checkreqs(i.reqs) == false:
-#					continue
-#				var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
-#				var number
-#				number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-#				newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
-#				if i.has("icon"):
-#					newbutton.get_node("icon").texture = i.icon
-#				else:
-#					var item_icon
-#					if Items.materiallist.has(i.item):
-#						item_icon = Items.materiallist[i.item].icon
-#						newbutton.get_node("icon").texture = item_icon
-#				newbutton.set_meta("resource", i.code)
-#				if i.has("descript"):
-#					globals.connecttexttooltip(newbutton, tr(i.descript) + text)
-#				else:
-#					var item_descript
-#					if Items.materiallist.has(i.item):
-#						item_descript = Items.materiallist[i.item].descript
-#						globals.connecttexttooltip(newbutton, tr(item_descript) + text)
-#				newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
-#				selected_res = i.code
-#				default_resource = newbutton
-	else:
-		var number
-		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
-		text = ("\n[color=yellow]Expected gain per day: " + str(stepify(number * 24, 0.1)) + "[/color]")
-		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
-		newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
-		newbutton.get_node("icon").texture = job.icon
-		newbutton.set_meta("resource", job.code)
-		globals.connectmaterialtooltip(newbutton, job, text)
-		newbutton.connect('pressed', self, 'select_resource', [job, job.code, newbutton])
-		selected_res = job.code
-		default_resource = newbutton
-
-func select_resource(job, resource, newbutton):
+	
+	# part 2
 	for button in $Resourses/GridContainer.get_children():
 		button.pressed = button == newbutton
 	selected_resource = resource
 	selected_job = job
+	if job.code == "rest":
+		$DescriptionLabel.text = ""
+		$WorkunitLabel.text = ""
+	elif job.has("production_descript"):
+		$DescriptionLabel.text = job.descript
+		$WorkunitLabel.text = str(job.progress_per_item)
+	else:
+		$DescriptionLabel.text = "Gather " + job.production_item
+		$WorkunitLabel.text = str(job.progress_per_item)
 	update_characters()
 
 
@@ -464,11 +349,31 @@ func select_job():
 	if selected_job.code == "rest":
 		set_rest()
 		return
+	# disable 
+	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
+	if  person.get_location() != 'aliron' && location.type != "dungeon":
+		pass
+	elif location.type == "dungeon":
+		pass
+	elif selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
+		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
+		var max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
+		var current_workers_count = 0
+		var active_tasks = ResourceScripts.game_party.active_tasks
+		for task in active_tasks:
+			if (task.code == selected_job.code) && (task.task_location == person.get_location()):
+				current_workers_count = task.workers_count
+		if current_workers_count >= max_workers_count:
+			return
+	
 	var gatherable = Items.materiallist.has(selected_job.code)
-	if !gatherable:
-		person.assign_to_task(selected_job.code, selected_resource)
+	if location.type == "dungeon":
+		person.assign_to_task(selected_job.production_item, selected_job.production_item)
 	else:
-		person.assign_to_task(selected_job.code, selected_job.code)
+		if !gatherable:
+			person.assign_to_task(selected_job.code, selected_resource)
+		else:
+			person.assign_to_task(selected_job.code, selected_job.code)
 	get_parent().SlaveListModule.update()
 	if selected_job.code in ["building"]:
 		get_parent().TaskModule.task_index = 0
