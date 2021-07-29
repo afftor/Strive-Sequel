@@ -89,6 +89,8 @@ func match_state():
 			BodyModule.show()
 			SlaveInfo.show()
 		"skills":
+			gui_controller.windows_opened.clear()
+			gui_controller.windows_opened.append(ClassesModule)
 			DetailsModule.hide()
 			SlaveSiblingsModule.hide()
 			ClassesModule.class_category("all")

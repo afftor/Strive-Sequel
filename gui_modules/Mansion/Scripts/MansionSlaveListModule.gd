@@ -20,8 +20,12 @@ func _ready():
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
 
-func SphinxKingStone():
+func OpenJobModule(person = null):
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
 	get_parent().get_node("MansionJobModule2").show()
+	if person != null:
+		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
 	get_parent().get_node("MansionJobModule2").rebuild()
 
 func rebuild():
@@ -38,8 +42,6 @@ func rebuild():
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
 		
-		#SphinxKingStone tmp
-		newbutton.connect("pressed", self, 'SphinxKingStone')
 		
 		newbutton.disabled = person.is_on_quest()
 		if !person.is_on_quest():
@@ -59,7 +61,9 @@ func rebuild():
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
-		newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
+		#newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
+		#tmp
+		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 		newbutton.get_node("job").set_disabled(false)
 		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 		match get_parent().mansion_state:
