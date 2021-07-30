@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gui/inventory/icon_craft64x64.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -362,28 +364,6 @@ margin_bottom = 922.0
 custom_fonts/normal_font = ExtResource( 15 )
 bbcode_enabled = true
 
-[node name="ToolLabel" type="Label" parent="."]
-margin_left = 140.0
-margin_top = 966.0
-margin_right = 224.0
-margin_bottom = 1017.0
-custom_fonts/font = ExtResource( 15 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WorkunitLabel" type="Label" parent="."]
-margin_left = 427.0
-margin_top = 966.426
-margin_right = 503.0
-margin_bottom = 1017.43
-custom_fonts/font = ExtResource( 15 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 1522.0
 margin_top = 963.0
@@ -412,11 +392,10 @@ __meta__ = {
 
 [node name="Worktool" type="TextureRect" parent="."]
 visible = false
-margin_left = 68.0
+margin_left = 164.0
 margin_top = 960.0
-margin_right = 132.0
+margin_right = 228.0
 margin_bottom = 1024.0
-hint_tooltip = "Effective Tool"
 texture = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -424,19 +403,72 @@ __meta__ = {
 
 [node name="Workunit" type="TextureRect" parent="."]
 visible = false
-margin_left = 350.0
+margin_left = 446.0
 margin_top = 960.0
-margin_right = 414.0
+margin_right = 510.0
 margin_bottom = 1024.0
-hint_tooltip = "Progress per Item"
 texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Workstat" type="TextureRect" parent="."]
 visible = false
-margin_left = 60.2652
-margin_top = 948.413
-margin_right = 504.265
-margin_bottom = 1028.41
+modulate = Color( 0.952941, 0.878431, 0.478431, 1 )
+margin_left = 54.9816
+margin_top = 963.125
+margin_right = 118.982
+margin_bottom = 1027.12
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Workmod" type="TextureRect" parent="."]
+visible = false
+margin_left = 657.982
+margin_top = 963.125
+margin_right = 721.982
+margin_bottom = 1027.12
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolLabel" type="Label" parent="."]
+margin_left = 236.0
+margin_top = 966.0
+margin_right = 320.0
+margin_bottom = 1017.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorkunitLabel" type="Label" parent="."]
+margin_left = 523.0
+margin_top = 966.426
+margin_right = 599.0
+margin_bottom = 1017.43
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Modlabel" type="Label" parent="."]
+margin_left = 734.0
+margin_top = 966.426
+margin_right = 810.0
+margin_bottom = 1017.43
+mouse_filter = 0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

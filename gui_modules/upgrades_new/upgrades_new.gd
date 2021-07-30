@@ -313,6 +313,6 @@ func open_chars():
 func add_upgrade_to_queue():
 	ResourceScripts.game_res.add_upgrade_to_queue(selected_upgrade)
 	build_description(selected_upgrade)
-	upgradeslist.update_upgrades_tree()
+	upgradeslist.update_upgrades_tree(tree_tab)
 	build_queue_list()
 	input_handler.SystemMessage("New upgrade added to queue: " + upgradedata.upgradelist[selected_upgrade].name)

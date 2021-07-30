@@ -184,6 +184,7 @@ func update_resources():
 	var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
+	globals.connecttexttooltip(restbutton, "Rest")
 	
 	person = get_parent().active_person
 #	var luxury_rooms_taken = 0
@@ -222,6 +223,11 @@ func update_resources():
 			#newbutton.get_child(0).text = i.name
 			newbutton.pressed = selected_job == i
 			newbutton.set_meta("work", i)
+			
+			if Items.materiallist.has(i.production_item):
+				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.production_item])
+			else:
+				globals.connecttexttooltip(newbutton, i.name)
 			var selected_job = i
 			var selected_res
 			if i.has("production_item"):
@@ -245,7 +251,7 @@ func update_resources():
 				newbutton.get_node("Label").text = text
 				newbutton.disabled = current_workers_count == max_workers_count
 				if current_workers_count >= max_workers_count:
-					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
 				else:
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 			elif i.code == "cooking" or i.code == "prostitution":
@@ -333,23 +339,44 @@ func select_resource(job, resource, newbutton):
 	selected_job = job
 	$Workunit.hide()
 	$Worktool.hide()
+	$Workstat.hide()
+	$Workmod.hide()
 	$WorkunitLabel.hide()
+	$Modlabel.hide()
 	$WorkunitLabel.text = ""
 	if job.code == "rest":
 		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
 	elif job.has("descript"):
 		if job.has('worktool'):
 			$Worktool.show()
+			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
 		if job.progress_per_item != 1:
 			$Workunit.show()
 			$WorkunitLabel.show()
 			$WorkunitLabel.text = str(job.progress_per_item)
+			globals.connecttexttooltip($Workunit, "Progress required per item")
 		var text = job.descript
 		if job.has('workstat'):
-			text += "\n" + job.workstat
+			$Workstat.texture = stat_icons[job.workstat]
+			$Workstat.show()
+			globals.connecttexttooltip($Workstat, "Job Stat: " + tr("STAT"+job.workstat.to_upper()) + "\nThis stat will grow by attending to this job.")
+		if job.has('mod'):
+			$Modlabel.show()
+			$Workmod.show()
+			$Modlabel.text = tr("STAT" + job.mod.to_upper())
+			globals.connecttexttooltip($Workmod, "Task effciency modificator")
+		
 		$DescriptionLabel.bbcode_text = text
 	update_characters()
 
+
+var stat_icons = {
+	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
+	wits = load("res://assets/images/gui/gui icons/icon_wits64.png"),
+	charm = load("res://assets/images/gui/gui icons/icon_charm64.png"),
+	sexuals = load("res://assets/images/gui/gui icons/icon_sex64.png"),
+	
+}
 
 func select_job():
 	person = get_parent().active_person
