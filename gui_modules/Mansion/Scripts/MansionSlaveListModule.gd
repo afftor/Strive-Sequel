@@ -21,14 +21,14 @@ func _ready():
 	globals.connect("hour_tick", self, "update")
 
 func OpenJobModule(person = null):
-	
-#	ResourceScripts.core_animations.BlackScreenTransition()
+	if person != null:
+		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
 	get_parent().get_node("MansionJobModule2").show()
 	get_parent().get_node("MansionJobModule2").rebuild()
 	ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("MansionJobModule2"), 0.3)
-	yield(get_tree().create_timer(0.3), 'timeout')
-	if person != null:
-		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
+	gui_controller.clock.hide()
+	ResourceScripts.core_animations.FadeAnimation(gui_controller.clock, 0.3)
+	#yield(get_tree().create_timer(0.3), 'timeout')
 
 func rebuild():
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")

@@ -9,13 +9,22 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
-	gui_controller.add_close_button(self, "add_offset")
+	gui_controller.add_close_button(self, "add_offset").connect("pressed", self, 'raise_clock')
+
+func raise_clock():
+	gui_controller.clock.raise()
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
 
 func rebuild():
 	$DescriptionLabel.bbcode_text = ""
 	$ToolLabel.text = ""
 	$WorkunitLabel.text = ""
-	gui_controller.clock.hide()
+	$Modlabel.text = ""
+	$Workmod.hide()
+	$Workstat.hide()
+	$Worktool.hide()
+	$Workunit.hide()
+	input_handler.ClearContainer($GridContainer2)
 	build_accessible_locations()
 	#update_buttons()
 	update_characters()
@@ -25,19 +34,20 @@ func update_characters():
 	input_handler.ClearContainer($CharacterList/GridContainer)
 	for i in ResourceScripts.game_party.character_order: 
 		var person = ResourceScripts.game_party.characters[i]
-		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id:
+		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.get_work() == "disabled":
 			continue
 		
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
 		newbutton.get_node("Name").text = person.get_stat("name")
 		newbutton.get_node("Icon").texture = person.get_icon()
 		newbutton.disabled = selected_job == null || selected_resource == null
-		#newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)
-		# globals.connectslavetooltip(newbutton, person)
-		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
 		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
-		#newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
+		newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
+		newbutton.get_node("stats/hp").value = person.hp
+		newbutton.get_node("stats/mp").max_value = person.get_stat('mpmax')
+		newbutton.get_node("stats/mp").value = person.mp
+		newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
 		#speed update
 		if selected_job != null and selected_resource != null:
 			if selected_resource == "rest":
@@ -47,36 +57,26 @@ func update_characters():
 				number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
 				newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
 		#status update
-		var gatherable = Items.materiallist.has(person.get_work())
-		if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
-			if person.is_on_quest():
-				newbutton.disabled = true
-				var time_left = int(person.get_quest_time_remains())
-				if time_left > 0:
-					var time_left_string = ''
-					if time_left == 1:
-						time_left = 24 - ResourceScripts.game_globals.hour
-						time_left_string = str(time_left) + " h."
-					else:
-						time_left_string = str(time_left) + " d."
-					newbutton.get_node("Status").text = "On Quest: " + time_left_string
-				else:
-					newbutton.get_node("Status").text = tr("CHAR_UNAVALIABLE")
-			else:
-				newbutton.get_node("Status").text = tr("TASKREST")
+		update_status(newbutton, person)
+
+func update_status(newbutton, person):
+	var gatherable = Items.materiallist.has(person.get_work())
+	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
+		if !person.is_on_quest():
+			newbutton.get_node("Status").texture = load("res://assets/images/gui/rest_icon.png")
+	else:
+		if !gatherable:
+			var work = races.tasklist[person.get_work()]
+			if work.has("production_icon"):
+				newbutton.get_node("Status").texture = work.production_icon
+			elif work.has("production_item"):
+				newbutton.get_node("Status").texture = Items.materiallist[work.production_item].icon
 		else:
-			if !gatherable:
-				newbutton.get_node("Status").text = races.tasklist[person.get_work()].name
-			else:
-				newbutton.get_node("Status").text = "Gathering " + Items.materiallist[person.get_work()].name
+			newbutton.get_node("Status").texture = Items.materiallist[person.get_work()].icon
 
 func character_selected(button, person):
 	get_parent().active_person = person
-#	for i in $CharacterList/GridContainer.get_children():
-#		if i.pressed:
-#			i.pressed = false
-#	button.pressed = true
-	select_job()
+	select_job(button, person)
 	
 
 func update_buttons():
@@ -149,6 +149,8 @@ func build_accessible_locations():
 
 
 func select_location(location):
+	selected_resource = null
+	selected_job = null
 	selected_location = location
 	rebuild()
 	var l = ResourceScripts.world_gen.get_location_from_code(location)
@@ -157,25 +159,17 @@ func select_location(location):
 	elif l.has("id"):
 		if l.id == "aliron":
 			$Landscape.texture = images.backgrounds["aliron"]
-	#print_debug(ResourceScripts.world_gen.get_location_from_code(location).gatherable_resources)
-
-
-
-
-
-func cancel_job_choice():
-	$ConfirmButton.hide()
-	$CancelButton.hide()
-	$job_details.hide()
-	selected_resource = null
-	selected_job = {}
 
 
 func close_job_pannel():
-	ResourceScripts.core_animations.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), 'timeout')
+	selected_resource = null
+	selected_job = null
+	get_parent().SlaveListModule.update()
+#	ResourceScripts.core_animations.UnfadeAnimation(get_parent(), 0.3)
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
 	gui_controller.clock.raise()
-	hide()
+	ResourceScripts.core_animations.FadeAnimation(self, 0.3)
+	yield(get_tree().create_timer(0.3), 'timeout')
 	get_parent().mansion_state = "default"
 
 
@@ -184,6 +178,7 @@ func update_resources():
 	var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
+	
 	globals.connecttexttooltip(restbutton, "Rest")
 	
 	person = get_parent().active_person
@@ -249,7 +244,7 @@ func update_resources():
 						current_workers_count = task.workers_count
 				text += str(current_workers_count) + "/" + str(max_workers_count)
 				newbutton.get_node("Label").text = text
-				newbutton.disabled = current_workers_count == max_workers_count
+				#newbutton.disabled = current_workers_count == max_workers_count
 				if current_workers_count >= max_workers_count:
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
 				else:
@@ -269,10 +264,12 @@ func update_resources():
 		var progress_formula = Items.materiallist[resource].progress_formula
 		#text =  "Gather " + item_dict.name.capitalize()
 		var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-		newbutton.pressed = selected_job == item_dict
+		if selected_job != null and item_dict != null:
+			if selected_job.has("production_item") and item_dict.has("code"):
+				newbutton.pressed = selected_job.production_item == item_dict.code
 		newbutton.set_meta("resource", resource)
 		
-		selected_job = item_dict
+		var selected_job = item_dict
 		for i in races.tasklist.values():
 			if i.has("production_item"):
 				if i.production_item == selected_job.code:
@@ -291,7 +288,7 @@ func update_resources():
 				if ((task.code == resource) || (task.product == resource)) && (task.task_location == person_location):
 					current_workers_count = task.workers_count
 			text +=  str(current_workers_count) + "/" + str(max_workers_count)
-			newbutton.disabled = current_workers_count == max_workers_count
+			#newbutton.disabled = current_workers_count == max_workers_count
 			if current_workers_count == max_workers_count:
 				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
 			else:
@@ -367,8 +364,27 @@ func select_resource(job, resource, newbutton):
 			globals.connecttexttooltip($Workmod, "Task effciency modificator")
 		
 		$DescriptionLabel.bbcode_text = text
-	update_characters()
+	update_characters() # change for Speed update (and tool check? idk)
+	show_faces()
 
+func show_faces():
+	input_handler.ClearContainer($GridContainer2)
+	var max_workers_count = 0
+	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
+		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
+		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
+	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
+		max_workers_count = 0
+	for p in ResourceScripts.game_party.characters.values():
+		var work = p.get_work()
+		if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
+			var b = input_handler.DuplicateContainerTemplate($GridContainer2)
+			b.get_node("TextureRect").texture = p.get_icon()
+			b.get_node("Label").text = p.get_stat("name")
+			max_workers_count -= 1
+	for i in max_workers_count:
+			input_handler.DuplicateContainerTemplate($GridContainer2)
+	
 
 var stat_icons = {
 	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
@@ -378,10 +394,11 @@ var stat_icons = {
 	
 }
 
-func select_job():
+func select_job(button, person):
 	person = get_parent().active_person
-	if selected_job.code == "rest":
-		set_rest()
+	
+	if selected_job.code == "rest" || selected_job.code == person.get_work():
+		set_rest(button, person)
 		return
 	# disable 
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
@@ -408,22 +425,22 @@ func select_job():
 			person.assign_to_task(selected_job.code, selected_resource)
 		else:
 			person.assign_to_task(selected_job.code, selected_job.code)
-	get_parent().SlaveListModule.update()
 	if selected_job.code in ["building"]:
 		get_parent().TaskModule.task_index = 0
 	else:
 		get_parent().TaskModule.task_index = 1
 	get_parent().TaskModule.change_button()
-	get_parent().rebuild_task_info()
 	update_resources()
-	update_characters()
-	#cancel_job_choice()
+	#update_characters() # change for status update
+	update_status(button, person)
+	show_faces()
 	#get_parent().mansion_state_set("default")
 
 
-func set_rest():
+func set_rest(button, person):
 	person.remove_from_task()
-	get_parent().SlaveListModule.update()
 	get_parent().rebuild_task_info()
 	update_resources()
-	update_characters()
+#	update_characters() # change for status update
+	update_status(button, person)
+	show_faces()

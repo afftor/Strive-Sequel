@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -32,6 +32,12 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/inventory/icon_craft64x64.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_illustration.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_illustration_back.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_illustration_hover.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=38]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -50,6 +56,13 @@ font_path = "res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf"
 size = 42
 use_filter = true
 font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 18
+font_data = SubResource( 6 )
 
 [node name="MansionJobModule" type="Panel"]
 margin_right = 1920.0
@@ -82,9 +95,9 @@ __meta__ = {
 [node name="Resourses" type="ScrollContainer" parent="."]
 light_mask = 0
 margin_left = 923.0
-margin_top = 267.0
+margin_top = 265.0
 margin_right = 1316.0
-margin_bottom = 784.0
+margin_bottom = 725.0
 theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -143,7 +156,6 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "5"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -252,9 +264,9 @@ __meta__ = {
 
 [node name="CharacterList" type="ScrollContainer" parent="."]
 light_mask = 0
-margin_left = 1392.0
+margin_left = 1390.88
 margin_top = 169.0
-margin_right = 1832.0
+margin_right = 1830.88
 margin_bottom = 889.0
 theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
@@ -279,13 +291,12 @@ texture_hover = ExtResource( 12 )
 
 [node name="Name" type="Label" parent="CharacterList/GridContainer/Button"]
 light_mask = 0
-margin_left = 54.0
+margin_left = 104.0
 margin_top = 8.0
-margin_right = 198.0
+margin_right = 248.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Name"
 align = 1
 clip_text = true
 __meta__ = {
@@ -307,30 +318,57 @@ __meta__ = {
 }
 
 [node name="Speed" type="Label" parent="CharacterList/GridContainer/Button"]
-margin_left = 186.0
+margin_left = 236.0
 margin_top = 8.992
-margin_right = 297.0
+margin_right = 347.0
 margin_bottom = 43.992
 custom_fonts/font = ExtResource( 9 )
-text = "20.76"
 align = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Status" type="Label" parent="CharacterList/GridContainer/Button"]
-margin_left = 292.0
-margin_top = 8.0
-margin_right = 427.0
-margin_bottom = 43.0
-custom_fonts/font = ExtResource( 9 )
-text = "Rest"
-align = 1
-clip_text = true
+[node name="stats" type="TextureRect" parent="CharacterList/GridContainer/Button"]
+margin_left = 55.0
+margin_top = 5.0
+margin_right = 95.0
+margin_bottom = 45.0
+texture = ExtResource( 37 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="hp" type="TextureProgress" parent="CharacterList/GridContainer/Button/stats"]
+show_behind_parent = true
+margin_left = 2.44171
+margin_top = 2.07547
+margin_right = 42.4417
+margin_bottom = 42.0755
+value = 100.0
+texture_progress = ExtResource( 36 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="TextureProgress" parent="CharacterList/GridContainer/Button/stats"]
+show_behind_parent = true
+margin_left = 22.4639
+margin_top = 1.83129
+margin_right = 62.4639
+margin_bottom = 41.8313
+value = 100.0
+texture_progress = ExtResource( 38 )
+fill_mode = 3
+
+[node name="Status" type="TextureRect" parent="CharacterList/GridContainer/Button"]
+margin_left = 393.423
+margin_top = 4.92862
+margin_right = 433.423
+margin_bottom = 44.9286
+expand = true
+stretch_mode = 6
 
 [node name="OccupationLabel" type="Label" parent="."]
 margin_left = 564.0
@@ -358,17 +396,70 @@ __meta__ = {
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
 margin_left = 68.0
-margin_top = 821.0
+margin_top = 781.0
 margin_right = 1309.0
-margin_bottom = 922.0
+margin_bottom = 882.0
 custom_fonts/normal_font = ExtResource( 15 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+light_mask = 0
+margin_left = 77.0
+margin_top = 630.0
+margin_right = 877.0
+margin_bottom = 710.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="GridContainer2"]
+visible = false
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 50, 50 )
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource( 33 )
+texture_hover = ExtResource( 35 )
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer2/Button"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 5, 0 )
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GridContainer2/Button"]
+margin_left = 4.05946
+margin_top = 56.7953
+margin_right = 78.0595
+margin_bottom = 78.7953
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 1522.0
-margin_top = 963.0
+margin_top = 973.0
 margin_right = 1719.0
-margin_bottom = 1022.0
+margin_bottom = 1032.0
 theme = ExtResource( 23 )
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 27 )
@@ -393,9 +484,9 @@ __meta__ = {
 [node name="Worktool" type="TextureRect" parent="."]
 visible = false
 margin_left = 164.0
-margin_top = 960.0
+margin_top = 974.0
 margin_right = 228.0
-margin_bottom = 1024.0
+margin_bottom = 1038.0
 texture = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -404,9 +495,9 @@ __meta__ = {
 [node name="Workunit" type="TextureRect" parent="."]
 visible = false
 margin_left = 446.0
-margin_top = 960.0
+margin_top = 974.0
 margin_right = 510.0
-margin_bottom = 1024.0
+margin_bottom = 1038.0
 texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -416,9 +507,9 @@ __meta__ = {
 visible = false
 modulate = Color( 0.952941, 0.878431, 0.478431, 1 )
 margin_left = 54.9816
-margin_top = 963.125
+margin_top = 974.0
 margin_right = 118.982
-margin_bottom = 1027.12
+margin_bottom = 1038.0
 texture = ExtResource( 31 )
 expand = true
 stretch_mode = 6
@@ -429,9 +520,9 @@ __meta__ = {
 [node name="Workmod" type="TextureRect" parent="."]
 visible = false
 margin_left = 657.982
-margin_top = 963.125
+margin_top = 974.0
 margin_right = 721.982
-margin_bottom = 1027.12
+margin_bottom = 1038.0
 texture = ExtResource( 32 )
 expand = true
 stretch_mode = 6
@@ -441,9 +532,9 @@ __meta__ = {
 
 [node name="ToolLabel" type="Label" parent="."]
 margin_left = 236.0
-margin_top = 966.0
+margin_top = 982.0
 margin_right = 320.0
-margin_bottom = 1017.0
+margin_bottom = 1033.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
@@ -452,9 +543,9 @@ __meta__ = {
 
 [node name="WorkunitLabel" type="Label" parent="."]
 margin_left = 523.0
-margin_top = 966.426
+margin_top = 982.0
 margin_right = 599.0
-margin_bottom = 1017.43
+margin_bottom = 1033.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
@@ -463,9 +554,9 @@ __meta__ = {
 
 [node name="Modlabel" type="Label" parent="."]
 margin_left = 734.0
-margin_top = 966.426
+margin_top = 982.0
 margin_right = 810.0
-margin_bottom = 1017.43
+margin_bottom = 1033.0
 mouse_filter = 0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
