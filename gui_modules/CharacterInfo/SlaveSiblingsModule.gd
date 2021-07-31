@@ -31,6 +31,8 @@ func set_work_rule(rule):
 	if rule == "luxury":
 		luxury_room()
 		return
+	elif rule == "contraceptive":
+		return
 	match setting:
 		true:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])

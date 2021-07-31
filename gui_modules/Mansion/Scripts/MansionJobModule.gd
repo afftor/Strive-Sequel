@@ -9,7 +9,7 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
-	gui_controller.add_close_button(self, "add_offset").connect("pressed", self, 'close_job_pannel')
+	gui_controller.add_close_button(self, "add_offset")#.connect("pressed", self, 'close_job_pannel')
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -376,6 +376,7 @@ func show_faces():
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0
+	var any_workers = false
 	for p in ResourceScripts.game_party.characters.values():
 		var work = p.get_work()
 		if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
@@ -384,6 +385,8 @@ func show_faces():
 			b.get_node("TextureRect").texture = p.get_icon()
 			b.get_node("Label").text = p.get_stat("name")
 			max_workers_count -= 1
+			any_workers = true
+	$gridcontainerpanel.visible = any_workers || max_workers_count > 0
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 	
