@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -405,15 +406,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="gridcontainerpanel" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.52549 )
+margin_left = 72.0
+margin_top = 627.0
+margin_right = 868.0
+margin_bottom = 716.0
+texture = ExtResource( 39 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GridContainer2" type="GridContainer" parent="."]
 light_mask = 0
-margin_left = 77.0
-margin_top = 630.0
-margin_right = 877.0
-margin_bottom = 710.0
+margin_left = 84.0
+margin_top = 629.0
+margin_right = 871.0
+margin_bottom = 714.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 0
-custom_constants/hseparation = 0
+custom_constants/hseparation = 18
 columns = 10
 __meta__ = {
 "_edit_use_anchors_": false

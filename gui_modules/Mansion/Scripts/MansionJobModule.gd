@@ -374,6 +374,7 @@ func show_faces():
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0
+	var any_workers = false
 	for p in ResourceScripts.game_party.characters.values():
 		var work = p.get_work()
 		if selected_job.has('code') and selected_job.has('production_item'):
@@ -391,6 +392,8 @@ func show_faces():
 #				b.get_node("Label").text = p.get_stat("name")
 				b.get_node("Label").text = p.get_short_name()
 				max_workers_count -= 1
+				any_workers = true
+		$gridcontainerpanel.visible = any_workers || max_workers_count > 0
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 	

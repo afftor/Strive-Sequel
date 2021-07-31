@@ -456,6 +456,7 @@ var TranslationDict = {
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 	DIALOGUEREPEATACTION = "Repeat",
 	CHAR_UNAVALIABLE = "Unavailable",
+	NO_FREE_SLOTS = "This task has no available slots left",
 
 	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
 	LOGREPORTPREGNANCYMASTER = "It seems, that you([name]) are pregnant.",
@@ -2224,7 +2225,10 @@ var TranslationDict = {
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Obedience Drain is increased by 50%.",
 	WORKRULELUXURY =  "Private Room",
 	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Globally reduce Obedience Drain by 25%. If Loyalty is maxed out, Obedience won't decrease anymore.",
-
+	
+	WORKRULECONTRACEPTIVE = "Contraceptive",
+	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
+	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions.[/color]",
 
