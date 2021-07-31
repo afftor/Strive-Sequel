@@ -21,6 +21,7 @@ func _ready():
 	globals.connect("hour_tick", self, "update")
 
 func OpenJobModule(person = null):
+	get_parent().mansion_state_set("occupation")
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
 	get_parent().get_node("MansionJobModule2").show()

@@ -426,7 +426,6 @@ margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
-button_mask = 0
 texture_normal = ExtResource( 33 )
 texture_hover = ExtResource( 35 )
 

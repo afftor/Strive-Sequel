@@ -200,6 +200,9 @@ func match_state():
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				$MansionJobModule2.close_job_pannel()
+				
+				
 		"skill":
 			$MansionSlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
@@ -209,6 +212,7 @@ func match_state():
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				$MansionJobModule2.close_job_pannel()
 		"travels":
 			$TravelsModule.show()
 #			$MansionTravelsModule.show()

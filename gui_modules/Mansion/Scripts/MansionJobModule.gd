@@ -9,11 +9,11 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
-	gui_controller.add_close_button(self, "add_offset").connect("pressed", self, 'raise_clock')
+	gui_controller.add_close_button(self, "add_offset").connect("pressed", self, 'close_job_pannel')
 
-func raise_clock():
-	gui_controller.clock.raise()
-	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
+#func raise_clock():
+#	gui_controller.clock.raise()
+#	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
 
 func rebuild():
 	$DescriptionLabel.bbcode_text = ""
@@ -166,11 +166,12 @@ func close_job_pannel():
 	selected_job = null
 	get_parent().SlaveListModule.update()
 #	ResourceScripts.core_animations.UnfadeAnimation(get_parent(), 0.3)
-	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
-	gui_controller.clock.raise()
-	ResourceScripts.core_animations.FadeAnimation(self, 0.3)
-	yield(get_tree().create_timer(0.3), 'timeout')
-	get_parent().mansion_state = "default"
+	if gui_controller.clock != null:
+		ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
+		gui_controller.clock.raise()
+#	ResourceScripts.core_animations.FadeAnimation(self, 0.3)
+#	get_parent().mansion_state = "default"
+	get_parent().mansion_state_set("default")
 
 
 func update_resources():
@@ -379,6 +380,7 @@ func show_faces():
 		var work = p.get_work()
 		if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
 			var b = input_handler.DuplicateContainerTemplate($GridContainer2)
+			b.connect('pressed', self, 'set_rest', [null, p])
 			b.get_node("TextureRect").texture = p.get_icon()
 			b.get_node("Label").text = p.get_stat("name")
 			max_workers_count -= 1
@@ -441,6 +443,8 @@ func set_rest(button, person):
 	person.remove_from_task()
 	get_parent().rebuild_task_info()
 	update_resources()
-#	update_characters() # change for status update
-	update_status(button, person)
+	if button == null:
+		update_characters() 
+	else:
+		update_status(button, person)
 	show_faces()
