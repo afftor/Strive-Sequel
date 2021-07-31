@@ -9,7 +9,7 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
-	gui_controller.add_close_button(self, "add_offset").connect("pressed", self, 'close_job_pannel')
+	gui_controller.add_close_button(self, "add_offset")#.connect("pressed", self, 'close_job_pannel')
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -216,6 +216,7 @@ func update_resources():
 				if i.base_workers + i.workers_per_upgrade * ResourceScripts.game_res.findupgradelevel(i.upgrade_code) <= 0:
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+			newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 			#newbutton.get_child(0).text = i.name
 			newbutton.pressed = selected_job == i
 			newbutton.set_meta("work", i)
@@ -248,8 +249,6 @@ func update_resources():
 				#newbutton.disabled = current_workers_count == max_workers_count
 				if current_workers_count >= max_workers_count:
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
-				else:
-					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 			elif i.code == "cooking" or i.code == "prostitution":
 				var current_workers_count = 0
 				var active_tasks = ResourceScripts.game_party.active_tasks
@@ -265,6 +264,7 @@ func update_resources():
 		var progress_formula = Items.materiallist[resource].progress_formula
 		#text =  "Gather " + item_dict.name.capitalize()
 		var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+		newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 		if selected_job != null and item_dict != null:
 			if selected_job.has("production_item") and item_dict.has("code"):
 				newbutton.pressed = selected_job.production_item == item_dict.code
@@ -290,10 +290,8 @@ func update_resources():
 					current_workers_count = task.workers_count
 			text +=  str(current_workers_count) + "/" + str(max_workers_count)
 			#newbutton.disabled = current_workers_count == max_workers_count
-			if current_workers_count == max_workers_count:
+			if current_workers_count >= max_workers_count:
 				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
-			else:
-				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 		elif location_type == "dungeon":
 			if gatherable_resources[resource] == 0:
 				for button in $Resourses/GridContainer.get_children():
@@ -378,12 +376,21 @@ func show_faces():
 		max_workers_count = 0
 	for p in ResourceScripts.game_party.characters.values():
 		var work = p.get_work()
-		if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
-			var b = input_handler.DuplicateContainerTemplate($GridContainer2)
-			b.connect('pressed', self, 'set_rest', [null, p])
-			b.get_node("TextureRect").texture = p.get_icon()
-			b.get_node("Label").text = p.get_stat("name")
-			max_workers_count -= 1
+		if selected_job.has('code') and selected_job.has('production_item'):
+			if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
+				var b = input_handler.DuplicateContainerTemplate($GridContainer2)
+				b.connect('pressed', self, 'set_rest', [null, p])
+				b.get_node("TextureRect").texture = p.get_icon()
+				if b.get_node('TextureRect').texture == null:
+					if p.has_profession('master'):
+						b.get_node('TextureRect').texture = images.icons.class_master
+					elif p.get_stat('slave_class') == 'servant':
+						b.get_node('TextureRect').texture = images.icons.class_servant
+					else:
+						b.get_node('TextureRect').texture = images.icons.class_slave
+#				b.get_node("Label").text = p.get_stat("name")
+				b.get_node("Label").text = p.get_short_name()
+				max_workers_count -= 1
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 	
@@ -417,6 +424,7 @@ func select_job(button, person):
 			if (task.code == selected_job.code) && (task.task_location == person.get_location()):
 				current_workers_count = task.workers_count
 		if current_workers_count >= max_workers_count:
+			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
 			return
 	
 	var gatherable = Items.materiallist.has(selected_job.code)
