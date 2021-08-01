@@ -147,7 +147,7 @@ func sex_traits_open():
 	#$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	
 	update_trait_capacity()
-	rebuild_traits()
+	#rebuild_traits()
 
 
 func rebuild_traits():
