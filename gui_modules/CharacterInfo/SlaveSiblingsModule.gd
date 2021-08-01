@@ -149,11 +149,11 @@ func sex_traits_open():
 	#$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	
 	update_trait_capacity()
-	#rebuild_traits()
+	rebuild_traits()
 
 
 func rebuild_traits():
-	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
+	#input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	for i in person.statlist.traits:
 		var trait = Traitdata.traits[i]
 		if trait.visible == false:
@@ -164,8 +164,11 @@ func rebuild_traits():
 	var traits = person.get_all_sex_traits()
 	
 	for i in traits:
+		if not ("dislike" in i):
+			continue
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+		newnode.set_meta("always_disabled", true)
 		if traits[i] == true:#trait is known
 			newnode.text = trait.name
 			var traittext = person.translate(trait.descript)
@@ -193,6 +196,8 @@ func update_trait_capacity():
 	var text = 'Current Capacity: ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
 	$SexTraitsPanel/TraitCapacity.text = text
 	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
+		if i.get_meta("always_disabled") == true:
+			continue
 		i.disabled = person.get_stat('sexuals_factor')+1 - person.statlist.sex_traits.size() <= 0 && i.pressed == false
 
 
