@@ -165,10 +165,12 @@ func rebuild_traits():
 	
 	for i in traits:
 		if not ("dislike" in i):
-			continue
+			if traits[i]:
+				continue
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
 		newnode.set_meta("always_disabled", true)
+		$SexTraitsPanel/ScrollContainer/VBoxContainer.move_child(newnode, 0)
 		if traits[i] == true:#trait is known
 			newnode.text = trait.name
 			var traittext = person.translate(trait.descript)
