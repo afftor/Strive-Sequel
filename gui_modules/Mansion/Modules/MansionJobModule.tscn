@@ -407,6 +407,7 @@ __meta__ = {
 }
 
 [node name="gridcontainerpanel" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.52549 )
 margin_left = 72.0
 margin_top = 627.0
