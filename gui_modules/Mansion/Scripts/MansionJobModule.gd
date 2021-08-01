@@ -180,6 +180,10 @@ func close_job_pannel():
 func update_resources():
 	input_handler.ClearContainer($Resourses/GridContainer)
 	var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+	if selected_job != null:
+		if selected_job.has("code"):
+			if selected_job.code == "rest":
+				restbutton.pressed = true
 	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 	
@@ -379,6 +383,10 @@ func select_resource(job, resource, newbutton):
 
 func show_faces():
 	input_handler.ClearContainer($GridContainer2)
+	if selected_job.has("code"):
+		if selected_job.code == "rest":
+			$gridcontainerpanel.hide()
+			return
 	var max_workers_count = 0
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
