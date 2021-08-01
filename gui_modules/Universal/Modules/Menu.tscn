@@ -542,7 +542,20 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.1a
+bbcode_text = "0.5.2
+Resource gathering at Mansion now has limited slots but more options
+Added new upgrades for unlocking new resource gathering from Mansion
+Crafting and upgrading jobs now also have limited slots which increase with upgrade level
+Bone resource collecting now benefit from hunting knife
+Added hotkey support to combat
+Added contraceptive option which prevents impregnation
+Redone some parts of character info
+Redone task assignement menu
+Fixed halfkin tanuki having no growth factor in its data
+Fixed some scenes not displaying correctly
+Fixed Kurdan having incorrect hair length
+Fixed some issues caused by importing
+0.5.1a
 Fixed multiple assignment issues
 Fixed wrong upgrade description
 Fixed mac version
@@ -962,7 +975,20 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.1a
+text = "0.5.2
+Resource gathering at Mansion now has limited slots but more options
+Added new upgrades for unlocking new resource gathering from Mansion
+Crafting and upgrading jobs now also have limited slots which increase with upgrade level
+Bone resource collecting now benefit from hunting knife
+Added hotkey support to combat
+Added contraceptive option which prevents impregnation
+Redone some parts of character info
+Redone task assignement menu
+Fixed halfkin tanuki having no growth factor in its data
+Fixed some scenes not displaying correctly
+Fixed Kurdan having incorrect hair length
+Fixed some issues caused by importing
+0.5.1a
 Fixed multiple assignment issues
 Fixed wrong upgrade description
 Fixed mac version

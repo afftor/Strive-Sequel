@@ -1,3 +1,9 @@
+0.5.2a
+Fixed resource gathering at remote locations occassionally not allowing to gather anything
+Fixed sexual traits not being toggleable after being unlocked
+Fixed class unlocking incorrectly in some cases
+
+0.5.2
 Resource gathering at Mansion now has limited slots but more options
 Added new upgrades for unlocking new resource gathering from Mansion
 Crafting and upgrading jobs now also have limited slots which increase with upgrade level

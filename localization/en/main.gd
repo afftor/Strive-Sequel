@@ -960,7 +960,7 @@ var TranslationDict = {
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
 
 	INFOFOODFILTER = "Food filter allows to restrict or prioritize food which character will consume. Higher priority food consumed first. Keep in mind that some food may be hated by a character.",
-	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills. ",
+	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	

@@ -220,6 +220,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ConsentLabel" type="Label" parent="."]
+margin_left = 31.1127
+margin_top = 301.228
+margin_right = 269.113
+margin_bottom = 333.228
+text = "Consent: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SexSkillsControl" type="Control" parent="."]
 visible = false
 light_mask = 0

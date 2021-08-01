@@ -391,10 +391,9 @@ func show_faces():
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
-	elif selected_job.type != "dungeon":
-		if selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
+	if  selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
 			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.code]
-		
+		#selected_job.type != "dungeon" &&
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0
 	var any_workers = false
