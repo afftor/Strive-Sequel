@@ -54,7 +54,10 @@ func update_characters():
 				newbutton.get_node("Speed").text = ""
 			else:
 				var number = ""
-				number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
+				if selected_job.has("production_code"):
+					number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
+				else:
+					number = person.xp_module.get_progress_resource(selected_job.code)/selected_job.progress_per_item
 				newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
 		#status update
 		update_status(newbutton, person)
@@ -278,6 +281,8 @@ func update_resources():
 		var selected_res
 		if selected_job.has("production_item"):
 			selected_res = selected_job.production_item
+		elif selected_job.has("code"):
+			selected_res = selected_job.code
 		newbutton.connect("pressed", self, "select_resource", [selected_job, selected_res, newbutton])
 		
 		newbutton.get_node("TextureRect").texture = item_dict.icon
@@ -343,7 +348,7 @@ func select_resource(job, resource, newbutton):
 	if job.code == "rest":
 		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
 	elif job.has("descript"):
-		if job.has('worktool'):
+		if job.has('worktool') || job.has('tool_type'):
 			$Worktool.show()
 			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
 		if job.progress_per_item != 1:
@@ -361,6 +366,12 @@ func select_resource(job, resource, newbutton):
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.mod.to_upper())
 			globals.connecttexttooltip($Workmod, "Task effciency modificator")
+		elif job.has('workmod'):
+			$Modlabel.show()
+			$Workmod.show()
+			$Modlabel.text = tr("STAT" + job.workmod.to_upper())
+			globals.connecttexttooltip($Workmod, "Task effciency modificator")
+			
 		
 		$DescriptionLabel.bbcode_text = text
 	update_characters() # change for Speed update (and tool check? idk)
@@ -372,13 +383,24 @@ func show_faces():
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
+	elif selected_job.type != "dungeon":
+		if selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
+			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.code]
+		
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0
 	var any_workers = false
 	for p in ResourceScripts.game_party.characters.values():
 		var work = p.get_work()
-		if selected_job.has('code') and selected_job.has('production_item'):
-			if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
+		var ok = false
+		if selected_job.has('code') || selected_job.has('production_item'):
+			if selected_job.has("production_item"):
+				if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
+					ok = true
+			else:
+				if selected_job.code == work and p.get_location() == selected_location:
+					ok = true
+			if ok:
 				var b = input_handler.DuplicateContainerTemplate($GridContainer2)
 				b.connect('pressed', self, 'set_rest', [null, p])
 				b.get_node("TextureRect").texture = p.get_icon()
@@ -393,7 +415,7 @@ func show_faces():
 				b.get_node("Label").text = p.get_short_name()
 				max_workers_count -= 1
 				any_workers = true
-		$gridcontainerpanel.visible = any_workers || max_workers_count > 0
+	$gridcontainerpanel.visible = any_workers || max_workers_count > 0
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 	
@@ -432,7 +454,10 @@ func select_job(button, person):
 	
 	var gatherable = Items.materiallist.has(selected_job.code)
 	if location.type == "dungeon":
-		person.assign_to_task(selected_job.production_item, selected_job.production_item)
+		if selected_job.has("production_item"):
+			person.assign_to_task(selected_job.production_item, selected_job.production_item)
+		elif selected_job.has("code"):
+			person.assign_to_task(selected_job.code, selected_job.code)
 	else:
 		if !gatherable:
 			person.assign_to_task(selected_job.code, selected_resource)
