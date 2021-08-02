@@ -60,6 +60,12 @@ func fix_serialization():
 		if input_handler.if_translation_key(line):
 			tmp.push_back(line)
 	seen_dialogues = tmp
+	
+	#divine_symbol_quest fix
+	var t = get_active_quest('divine_symbol_quest')
+	if t != null:
+#		if tmp.stage in []: # for i deduced that millford should be locked for full duration of quest
+		globals.common_effects([{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true},])
 
 
 func fix_import():#this is the most questionable fix
