@@ -163,6 +163,7 @@ func build_locations_list():
 		if locs_count.has(temp.type): locs_count[temp.type] += 1
 		else:  locs_count[temp.type] = 1
 		if cdata[id].has('captured'): temp.captured = cdata[id].captured
+		if cdata[id].has('locked'): temp.locked = cdata[id].locked
 		if cdata[id].has('background'):
 			temp.icon = cdata[id].background
 		elif temp.type == 'capital' and adata.has('capital_background'):
@@ -215,8 +216,21 @@ func update_lists():
 	update_confirm_button()
 
 func update_confirm_button():
-	if (location_selected != null):
-		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || ((location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
+	if location_selected == null:
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		return
+	if characters.size() == 0:
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		return
+	if location_selected.id == from_location_selected.id:
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		return
+	if location_selected.has('captured') and location_selected.captured == true:
+		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
+		return
+	$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
+#	if (location_selected != null):
+#		$area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || ((location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
 
 
 func update_from_list():
@@ -313,6 +327,11 @@ func make_panel_for_location(panel, loc):
 			if loc.captured:
 				panel.set("custom_colors/font_color", variables.hexcolordict.red)
 #				panel.disabled = true
+#				globals.connecttexttooltip(panel, "Location Unavailable")
+#				globals.return_characters_from_location(loc.id)
+		if loc.has('locked'):
+			if loc.locked:
+				panel.set("custom_colors/font_color", variables.hexcolordict.yellow)
 #				globals.connecttexttooltip(panel, "Location Unavailable")
 #				globals.return_characters_from_location(loc.id)
 		var icon
@@ -494,7 +513,7 @@ func build_location_resources():
 	info_res_panel.show()
 	var location = ResourceScripts.world_gen.get_location_from_code(location_selected.id)
 	var gatherable_resources
-	if location.type in ["capital", "quest_location"]:
+	if (location.type in ["capital", "quest_location"]) or (location.has('locked') and location.locked):
 		info_res_panel.hide()
 		return
 	elif location.type == "dungeon":
