@@ -327,7 +327,7 @@ func geartemplete_tooltip(data):
 
 func fix_panels():
 	yield(get_tree(), 'idle_frame')
-	full_height = $TopPanel.rect_min_size.y
+	full_height = $TopPanel.rect_size.y
 	$MidPanel.rect_min_size.y = max(textnode1.get_content_height() + 18, 100)
 	if $MidPanel.visible:
 		full_height += $MidPanel.rect_min_size.y
