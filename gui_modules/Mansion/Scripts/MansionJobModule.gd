@@ -261,7 +261,7 @@ func update_resources():
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:
 					if (task.code == i.code) && (task.task_location == person_location):
-						current_workers_count = task.workers_count
+						current_workers_count = task.workers.size()
 				newbutton.get_node("Label").text = str(current_workers_count)
 	for resource in gatherable_resources:
 		var text = ""
