@@ -133,7 +133,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan", character2 = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}], #DivineSymbolStart
 		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}, #Adds option in church
-		{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
+#		{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
 		{code = 'update_location'}],
 		options = [ {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}], type = 'next_dialogue'
@@ -190,9 +190,9 @@ var data = {
 		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "ginny",
 		common_effects = [
-		{code = 'material_change', operant = '-', material = 'divine_symbol', value = 1},
-		{code = 'material_change', operant = '+', material = 'blessed_divine_symbol', value = 1},
-		{code = 'make_loot', pool = [['blessed_divine_symbol',5]]}, {code = 'open_loot'},
+			{code = 'material_change', operant = '-', material = 'divine_symbol', value = 1},
+#		{code = 'material_change', operant = '+', material = 'blessed_divine_symbol', value = 1},
+			{code = 'make_loot', pool = [['blessed_divine_symbol',5]]}, {code = 'open_loot'},
 		],
 		text = [{text = "DIVINE_SYMBOL_6", reqs = []}],
 		options = [ {
@@ -586,9 +586,11 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		
-		common_effects = [{code = 'add_timed_event', value = "final_operation_message", 
-		args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
-		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],
+		common_effects = [
+			{code = 'add_timed_event', value = "final_operation_message", args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
+			{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1},
+			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
+		],
 		
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
