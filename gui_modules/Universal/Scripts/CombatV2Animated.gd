@@ -483,6 +483,7 @@ func victory():
 	$Rewards/gold/Label.text = '+0'
 	$Rewards.set_meta("result", 'victory')
 	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
+	ResourceScripts.game_res.money += rewardsdict.gold
 	$Rewards.show()
 	$Rewards.modulate.a = 0
 	$Rewards/AnimationPlayer.play("Victory")
