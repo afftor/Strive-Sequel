@@ -211,9 +211,9 @@ __meta__ = {
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
 margin_left = 15.0
-margin_top = -1.0
+margin_top = -4.0
 margin_right = 1247.0
-margin_bottom = 59.0
+margin_bottom = 56.0
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
