@@ -65,7 +65,7 @@ onready var node_data = {
 	input_handler.NODE_SOUND : {name = 'sound', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	input_handler.NODE_BACKGROUND_SOUND : {name = 'BGSound', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	input_handler.NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/scenes/TextEditField.tscn")},
-	input_handler.NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/SlaveTooltip_v2.tscn")},
+	input_handler.NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/SlaveTooltip.tscn")},
 	input_handler.NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://src/scenes/SkillToolTip.tscn")},
 #	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://src/scenes/Imagetooltip.tscn")},
 #	input_handler.NODE_ITEMTOOLTIP_V2 : {name = 'itemtooltip_v2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltip.tscn")},
