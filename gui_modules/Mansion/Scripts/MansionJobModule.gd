@@ -9,7 +9,7 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
-	gui_controller.add_close_button(self, "add_offset")#.connect("pressed", self, 'close_job_pannel')
+	gui_controller.add_close_button(self, "bigger_offset")#.connect("pressed", self, 'close_job_pannel')
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -392,7 +392,7 @@ func show_faces():
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
 	if  selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
-			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.code]
+			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.production_item]
 		#selected_job.type != "dungeon" &&
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0

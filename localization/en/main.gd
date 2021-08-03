@@ -5418,7 +5418,88 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 
 
 
+	DAISY_EXTRA_STRATUP = "- H-hello, [Master]. How can I serve you?",
+	DAISY_EXTRA_OPTION_1_1 = "Why don't we have you use your dress' better form?",
+	DAISY_EXTRA_OPTION_1_2 = "You can cover yourself ",
+	DAISY_EXTRA_REPLY_1_1_NO = """- I-if you wish so, [master]. 
 
+Daisy looks worried but does not dare to object your request. With a simple move her uniform reveals her private parts to your delight.""",
+	DAISY_EXTRA_REPLY_1_1_YES = """- Please, enjoy the sight of my body, [Master]. 
+
+Daisy unbashedly obeys your request. With a simple move her uniform reveals her private parts to your delight.""",
+	DAISY_EXTRA_REPLY_1_2_NO = """- Thank goodness...
+
+Daisy looks relieved as she fixes her clothes to more concealed shape. """,
+	DAISY_EXTRA_REPLY_1_2_YES = """- As you wish, [Master]. 
+
+Daisy nonchalantly fixes her dress and awaits your further orders.""",
+	
+	AMELIA_SILK_STARTUP = """- I've noticed you were doing quite a lot for us recently. But we are having a minor issue I'd be glad if you could help with. One of our wealthy customers has made a request for special costumes. 
+
+- However, we lack in resources to produce those. If you could get us 50 pieces of Silk we'd be glad to purchase it for 2.000 gold and a spare costume. I'm sure it's no sweat for you.""",
+	AMELIA_SILK_OPTION_START = "I've got the silk you need",
+	AMELIA_SILK_REPLY_START = "- I knew I could rely on you, [name]. Here's the reward I've promised. You know, since you are so resourceful, I'd like to provide you with an additional reward for this. How does a special massage sounds to you?",
+	AMELIA_SILK_OPTION_1_1 = "Sure, why not",
+	AMELIA_SILK_OPTION_1_2 = "I think I gonna refuse",
+	AMELIA_SILK_REPLY_1_2 = """Amelia looks somewhat disappointed at your response.
+
+- That's too bad. Alright then, good luck with your day.""",
+	AMELIA_SILK_REPLY_1_1_1 = """- Sweet, let me show you one of our exquisite private rooms.""",
+	AMELIA_SILK_REPLY_1_1_2 = """Amelia leads you to one of the rooms. A dimly lit space is filled with thin fragrance and features a comfortable table at the center. By instruction you remove your upper clothes and lay down on it with your back wide open.
+
+- At first I thought about letting my best student to take care of it, but then I thought it would be no fun. Aren't you handsome?
+
+You relax as Amelia gently goes over your back, firmly rubbing and hitting it, however after a half minute you feel something isn't so simple. As she further pushes you, you begin to feel an arousement.""",
+	AMELIA_SILK_REPLY_1_1_3 = """- While massage is a technique which helps to relax and relieve stress, it surely would be a waste if we didn't learn to use for more.
+
+Amelia's voice turned softer and quiter as she almost magically aroused you by touching you in the correct places.
+
+- He-he, I can see you are enjoying this as well. It's a honor to be served by the guild's leader herself, you know. """,
+	AMELIA_SILK_REPLY_1_1_4 = """With Amelia's poke you instinctively moved on your back sliding out of your pants, revealing fully erect member.
+
+- Oh, that's one fiesty manhood you have. It's a pleasure to serve you.
+
+She gracefully bared her voluptuous breasts and pushed your cock between them.""",
+	AMELIA_SILK_REPLY_1_1_5 = """As she lustly massaged you, she began using her mouth. Despite her status you can feel her sincere willfullness to serve you as she masterfully gave you one of the best blowjobs you could imagine.""",
+	AMELIA_SILK_REPLY_1_1_6 = """At the moment of orgasm Amelia took off the cock out of her mouth as it rained over her face.
+
+- Wow, you've come a lot. Such a strong smell too. The massage was to your liking, wasn't it?""",
+	AMELIA_SILK_REPLY_1_1_7 = """As you return to the reception Amelia gives you slightly more personal smile.
+
+- I hope this will fortify our business relationship even further.""",
+	AMELIA_SILK_OPTION_2_1 = "Must say, you've blew me away",
+	AMELIA_SILK_OPTION_2_2 = "Pleasure doing \"Business\" with you",
+	AMELIA_SILK_OPTION_2_3 = "Maybe we could meet at some other day?",
+	AMELIA_SILK_REPLY_2_1AND2 = "- Likewise. Now, if you excuse me, there's other things I've pushed away and now have to attend to. Please come again.",
+	AMELIA_SILK_REPLY_2_3 = "- O-ho, aren't you daring? Very well, I promise to think about it. For now, though, I have some other business needed to be taken care of.",
+	
+	AIRE_RECRUITMENT_OPTION_1 = "I want the elf girl",
+	AIRE_RECRUITMENT_REPLY_1 = "- Oh, the princess servant? Fine, we have no further use for her.",
+	AIRE_RECRUITMENT_REPLY_BAD_START = "- You think you can make me serve you after all you've done?",
+	AIRE_RECRUITMENT_OPTION_BAD_1 = "It's never too late to try fix things up",
+	AIRE_RECRUITMENT_OPTION_BAD_2 = "It does not matter what I think, you will submit",
+	AIRE_RECRUITMENT_OPTION_BAD_3 = "Maybe I just want to torture you personally",
+	AIRE_RECRUITMENT_REPLY_BAD_1 = """Aire gives you a look which does not let any hint that she buys it. 
+
+- I'm not a fool you are taking me for. One way or another I'll make you pay""",
+	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """And will rescue Ana from you. """,
+	AIRE_RECRUITMENT_REPLY_BAD_2 = """Aire falls silent upon hearing your dismiss. Without further discussion you take her away.""",
+	AIRE_RECRUITMENT_REPLY_BAD_3 = """- Having you around is a torture on it's own. 
+
+Aire seems unimpressed by your remark and quietly follows your orders.""",
+	AIRE_RECRUITMENT_REPLY_GOOD_START = """- You've really done it... I guess I have no choice but to join you now?""",
+	AIRE_RECRUITMENT_OPTION_GOOD_1 = """I'd not force you against your will""",
+	AIRE_RECRUITMENT_OPTION_GOOD_2 = "You'd prefer to stay at the dungeon instead?",
+	AIRE_RECRUITMENT_OPTION_GOOD_3 = "That's right, you better be obedient like a good dog",
+	AIRE_RECRUITMENT_REPLY_GOOD_1 = "- I appreciate it. Anyway, I'd rather not sit on my ass anymore.",
+	AIRE_RECRUITMENT_REPLY_GOOD_2 = "- Touché. Very well, I can't wait to check on Ana.",
+	AIRE_RECRUITMENT_REPLY_GOOD_3 = "Aire stays quiet and your words but her face shows that she doubts her initial opinion about you.",
+	
+	
+	
+	
+	
+	
 
 
 
@@ -5458,4 +5539,5 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_LOST_NAME = "Daisy: Disappearance",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
+	
 }
