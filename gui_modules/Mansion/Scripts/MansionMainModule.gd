@@ -738,6 +738,7 @@ func test_mode():
 		)
 
 		ResourceScripts.game_res.money = 80000
+		#globals.common_effects("add_money")
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 1899
 		globals.AddItemToInventory(globals.CreateGearItem("anastasia_bracelet", {}))
