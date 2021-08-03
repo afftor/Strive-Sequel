@@ -405,21 +405,38 @@ func _input(event):
 					gui_controller.clock.raise()
 					gui_controller.clock.show()
 		gui_controller.update_modules()
-	if (gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.exploration) \
-		&& str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
-		&& gui_controller.windows_opened.size() == 0 \
-		&& text_field_input == false \
-		&& get_tree().get_root().get_node_or_null("dialogue") \
-		&& !get_tree().get_root().get_node("dialogue").is_visible():
-		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-			if input_handler.globalsettings.turn_based_time_flow == false:
-				gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(event.as_text())-1])
+	if !text_field_input:
+		if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+			var num = event.as_text().replace("Kp ",'')
+			var tnode = get_tree().get_root().get_node_or_null("dialogue")
+			if tnode != null and tnode.visible:
+				tnode.select_option(int(num))
 			else:
-				gui_controller.clock.timeflowhotkey(int(event.as_text()))
-	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
-		&& get_tree().get_root().get_node_or_null("dialogue") \
-		&& get_tree().get_root().get_node("dialogue").is_visible():
-		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
+					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+						if input_handler.globalsettings.turn_based_time_flow == false:
+							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
+						else:
+							gui_controller.clock.timeflowhotkey(int(num))
+	
+	#there was an error in a code below
+	#while during fix it was fully rewritten to reflect some functional change, i choose to keep a fixed old version as a comment
+	#as an example of correct construction of complex negations
+	#if you remember about exitence of similar constructions in a code out there - check if there are the same error  
+	
+#	if (gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.exploration) \
+#		&& str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
+#		&& gui_controller.windows_opened.size() == 0 \
+#		&& text_field_input == false \
+#		&& !(get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible()):
+#		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+#			if input_handler.globalsettings.turn_based_time_flow == false:
+#				gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(event.as_text())-1])
+#			else:
+#				gui_controller.clock.timeflowhotkey(int(event.as_text()))
+#	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
+#		&& get_tree().get_root().get_node_or_null("dialogue") && get_tree().get_root().get_node("dialogue").is_visible():
+#		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
 
 
 # func _input(event):
