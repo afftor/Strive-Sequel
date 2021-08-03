@@ -89,6 +89,8 @@ func add_close_button(scene, position = "snap"):
 	var closebuttonoffset = [0, 0]
 	if position == "add_offset":
 		closebuttonoffset = [15, 15]
+	elif position == "bigger_offset":
+		closebuttonoffset = [30, 30]
 	var pos_in_tree = scene.get_child_count()
 	scene.rect_pivot_offset = Vector2(scene.rect_size.x / 2, scene.rect_size.y / 2)
 	var closebutton = load(ResourceScripts.scenedict.close).instance()

@@ -251,7 +251,7 @@ var data = {
 	daisy_dress_acquired_lewd_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = 'daisy_maid',
-		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
+		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_0", reqs = [], }],
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]},
