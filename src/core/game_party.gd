@@ -151,3 +151,13 @@ func get_output_for_task(tsk, loc_id):
 				var tmp = characters_pool.get_char_by_id(worker_id)
 				res += tmp.get_progress_task(task.code, task.product, true)
 	return res
+
+
+func predict_food():
+	var res = {}
+	for i in characters.values():
+		var tmp = i.predict_food()
+		for food in tmp:
+			if res.has(food): res[food] += tmp[food]
+			else: res[food] = tmp[food]
+	return res

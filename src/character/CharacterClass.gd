@@ -934,6 +934,10 @@ func escape():
 	input_handler.slave_list_node.rebuild()
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
+func predict_food():
+	return food.predict_food()
+
+
 func pretick():
 	process_event(variables.TR_TICK)
 	recheck_effect_tag('recheck_tick')

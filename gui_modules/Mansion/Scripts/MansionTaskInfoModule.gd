@@ -43,7 +43,7 @@ func ClearContainerCustom(container):
 		i.queue_free()
 
 func show_upgrades_info():
-	for upgrade in ResourceScripts.game_res.upgrade_progresses.keys():
+	for upgrade in ResourceScripts.game_res.upgrades_queue:
 		var upgrade_product = upgradedata.upgradelist[upgrade]
 		var upgrade_name = upgrade_product.name
 		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade_product.code):
