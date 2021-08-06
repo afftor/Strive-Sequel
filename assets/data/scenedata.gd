@@ -1457,6 +1457,13 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Meet Leader",
+			reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 1000}, {type = 'active_quest_stage', value = 'amelia_silk_quest', stage = 'stage1', state = false}],
+			target = 'amelia_silk_start',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = "Meet Leader",
 			reqs = [{type = "active_quest_stage", value = "guilds_introduction", stage = "stage0"}],
 			target = 'servants_introduction',
 			target_option = 2,
@@ -1730,6 +1737,14 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_1"}, # you should visit Amelia
 			stage2 = {code = 'stage2', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_2"}, # travel to this guys location
+		},
+	},
+
+	amelia_silk_quest = {
+		code = 'amelia_silk_quest',
+		summary = "AMELIA_SILK_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "AMELIA_SILK_NAME", descript = "AMELIA_SILK_STAGE_1"}, # bring 50 silk
 		},
 	},
 }

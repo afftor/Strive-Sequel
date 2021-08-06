@@ -600,6 +600,7 @@ func handle_characters_sprites(scene):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
 			if person.get_stat("name").to_lower() == scene.unique_character.to_lower():
+				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.show()
 				$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
