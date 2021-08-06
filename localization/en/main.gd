@@ -2091,6 +2091,7 @@ var TranslationDict = {
 	ENEMYBANDIT_ARCHER = "Ranged Bandit",
 	ENEMYBANDIT_MAGE = "Bandit Mage",
 	ENEMYBANDIT_BOSS = "Bandit Boss",
+	ENEMYRAMONT_BOSS = "Ramont",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
 	ENEMYREBEL_KNIGHT = "Rebel Knight",
 	ENEMYREBEL_MAGE = "Rebel Mage",

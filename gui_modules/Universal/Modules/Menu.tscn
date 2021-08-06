@@ -24,7 +24,7 @@
 [ext_resource path="res://gui_modules/Universal/Modules/Gallery.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_NewGameOptions.tres" type="Theme" id=23]
 [ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=24]
-[ext_resource path="res://gui_modules/Universal/Scripts/Menu_v2.gd" type="Script" id=25]
+[ext_resource path="res://gui_modules/Universal/Scripts/Menu.gd" type="Script" id=25]
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_hover.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame_pressed.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load.png" type="Texture" id=28]
@@ -80,7 +80,7 @@ region_rect = Rect2( 0, 0, 210, 58 )
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
-[node name="Menu_v2" type="Control"]
+[node name="Menu" type="Control"]
 script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false

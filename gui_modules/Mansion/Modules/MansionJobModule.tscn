@@ -17,10 +17,10 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=15]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/backgrounds/crypt4.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/Job_module new 2021/button_job_sqr_hover.png" type="Texture" id=18]
-[ext_resource path="res://assets/Textures_v2/Job_module new 2021/button_job_sqr_pressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_sqr.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_sqr_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=20]
-[ext_resource path="res://assets/Textures_v2/Job_module new 2021/button_job_sqr.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/button_job_sqr_hover.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE new 2021/panel_job_image.png" type="Texture" id=22]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=23]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory.png" type="Texture" id=24]
@@ -120,9 +120,9 @@ margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 50, 50 )
 toggle_mode = true
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 18 )
+texture_hover = ExtResource( 21 )
 
 [node name="TextureRect2" type="TextureRect" parent="Resourses/GridContainer/Button"]
 show_behind_parent = true

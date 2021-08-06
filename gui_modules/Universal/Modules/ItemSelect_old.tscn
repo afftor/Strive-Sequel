@@ -11,10 +11,6 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/ItemSelect.gd" type="Script" id=9]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=10]
 
-
-
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 446, 730 )

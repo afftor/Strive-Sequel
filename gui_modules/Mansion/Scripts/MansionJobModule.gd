@@ -369,12 +369,12 @@ func select_resource(job, resource, newbutton):
 			$Modlabel.show()
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.mod.to_upper())
-			globals.connecttexttooltip($Workmod, "Task effciency modificator")
+			globals.connecttexttooltip($Workmod, "Task Efficiency Modifier")
 		elif job.has('workmod'):
 			$Modlabel.show()
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.workmod.to_upper())
-			globals.connecttexttooltip($Workmod, "Task effciency modificator")
+			globals.connecttexttooltip($Workmod, "Task Efficiency Modifier")
 			
 		
 		$DescriptionLabel.bbcode_text = text

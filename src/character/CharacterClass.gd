@@ -476,6 +476,11 @@ func get_work():
 func is_on_quest():
 	return xp_module.is_on_quest()
 
+func is_free():
+	if is_on_quest(): return false
+	return check_location('mansion', true)
+
+
 func assign_to_quest_and_make_unavalible(quest, work_time = -1):
 	xp_module.assign_to_quest_and_make_unavalible(quest, work_time)
 
@@ -729,7 +734,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'one_of_races':
 			check = get_stat('race') in i.value
 		'is_free':
-			check = (check_location('mansion', true)) == i.check
+			check = (is_free() == i.check)
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
 			else: check = check_location(i.value, true) == i.check
@@ -930,6 +935,10 @@ func escape():
 	characters_pool.call_deferred('cleanup')
 	input_handler.slave_list_node.rebuild()
 	#state.text_log_add(get_short_name() + " has escaped. ")
+
+func predict_food():
+	return food.predict_food()
+
 
 func pretick():
 	process_event(variables.TR_TICK)

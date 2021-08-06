@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=5]
-[ext_resource path="res://src/scenes/SaveLoadPanel_v2.gd" type="Script" id=6]
+[ext_resource path="res://src/scenes/SaveLoadPanel.gd" type="Script" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan.png" type="Texture" id=9]
@@ -214,4 +214,5 @@ custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 shortcut_in_tooltip = false
 text = "Import mode"
+
 [connection signal="pressed" from="ImportMode" to="." method="_on_ImportMode_pressed"]

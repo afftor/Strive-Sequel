@@ -1,8 +1,15 @@
+
+Lowered number of classes random characters receive on average on higher difficulty
+0.5.2b
+Fixed instance of a bug in duncan-fred questline
+Fixed main questline not triggering at milford siege
+Fixed item tooltip getting out of the screen
+Fixed gold from combat not adding to player's money
+Fixed removing characters from mansion keeping them at task counters
 0.5.2a
 Fixed resource gathering at remote locations occassionally not allowing to gather anything
 Fixed sexual traits not being toggleable after being unlocked
 Fixed class unlocking incorrectly in some cases
-
 0.5.2
 Resource gathering at Mansion now has limited slots but more options
 Added new upgrades for unlocking new resource gathering from Mansion
