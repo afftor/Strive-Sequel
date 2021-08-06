@@ -111,3 +111,12 @@ func get_food():
 		starvation = true
 		
 		globals.text_log_add('food', parent.get_short_name() + ": not enough food. Authority reduced.")
+
+
+func predict_food():
+	if parent.check_trait('undead'): return {}
+	var food_consumption = parent.get_stat('food_consumption')
+	var food = food_filter.high[0]
+	var res = {}
+	res[food] = food_consumption
+	return res
