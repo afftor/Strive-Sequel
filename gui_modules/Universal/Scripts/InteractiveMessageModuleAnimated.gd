@@ -526,7 +526,7 @@ func handle_characters_sprites(scene):
 	#reworked with additional functional
 	var scene_char = null
 	var char_shade = false
-
+	
 	if !scene.has("character") and !scene.has("character2"):
 		$ImagePanel.show()
 		if self.name == "dialogue":
@@ -596,7 +596,15 @@ func handle_characters_sprites(scene):
 					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, 0.5)
 					ch2_shade = char_shade
 			$CharacterImage2.show()
-
+	if scene.has("unique_character"):
+		for i in ResourceScripts.game_party.characters: 
+			var person = ResourceScripts.game_party.characters[i]
+			if person.get_stat("name").to_lower() == scene.unique_character.to_lower():
+				$CharacterImage.show()
+				$CharacterImage.texture = person.get_body_image()
+				$CharacterImage.material.set_shader_param('opacity', 0.0)
+				ch1_shade = false
+				return
 #	if !scene.has("character"):
 #		$ImagePanel.show()
 #		$CharacterImage.hide()
