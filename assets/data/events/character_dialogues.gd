@@ -143,27 +143,29 @@ var data = {
 	},
 	
 	daisy_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'daisy_maid',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_STRATUP", reqs = []},
-		], 
+		],
 		options = [
 			#check if uses body_image = res://assets/images/sprites/daisy_maid_body.png TODO
 			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
-				{code = 'stat', stat = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_body.png"},
+				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
+				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_body.png", orflag = true},
 				]}], dialogue_argument = 1},
 			#check if uses body_image = res://assets/images/sprites/daisy_maid_nude_body.png TODO
 			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
-				{code = 'stat', stat = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png"},
+				{code = 'stat', stat = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
+				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png", orflag = true},
 				]}], dialogue_argument = 2},
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3},
 		],
 	},
 	
 	daisy_dialogue_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'daisy_maid',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_1_NO", reqs = [{type = 'active_character_checks', value = [
 				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
@@ -172,14 +174,14 @@ var data = {
 			{text = "DAISY_EXTRA_REPLY_1_1_YES", reqs = []},
 		], 
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
-			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_nude_body.png"}]}],
+			{code = 'body_image', operant = '=', value = "daisy_maid_nude_body"}]}],
 		options = [
 			{code = 'close', text = 'DIALOGUELEAVE',reqs = [], dialogue_argument = 1},
 		],
 	},
 	
 	daisy_dialogue_1_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'daisy_maid',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_2_NO", reqs = [{type = 'active_character_checks', value = [
 				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
@@ -188,7 +190,7 @@ var data = {
 			{text = "DAISY_EXTRA_REPLY_1_2_YES", reqs = []},
 		], 
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
-			{code = 'body_image', operant = '=', value = "res://assets/images/sprites/daisy_maid_body.png"}]}],
+			{code = 'body_image', operant = '=', value = "daisy_maid_body"}]}],
 		options = [
 			{code = 'close', text = 'DIALOGUELEAVE',reqs = [], dialogue_argument = 1},
 		],

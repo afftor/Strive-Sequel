@@ -143,6 +143,7 @@ var data = {
 		text = [
 			{text = "FINAL_WORDS_2", reqs = [],},
 		],
+		common_effects = [{code = "decision", value = "mayor_election_finished"}],
 		options = [
 			{
 				code = 'princess_cutscene_init',

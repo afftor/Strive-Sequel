@@ -5481,8 +5481,8 @@ She gracefully bared her voluptuous breasts and pushed your cock between them.""
 	AIRE_RECRUITMENT_OPTION_BAD_3 = "Maybe I just want to torture you personally",
 	AIRE_RECRUITMENT_REPLY_BAD_1 = """Aire gives you a look which does not let any hint that she buys it. 
 
-- I'm not a fool you are taking me for. One way or another I'll make you pay""",
-	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """And will rescue Ana from you. """,
+- I'm not a fool you are taking me for. One way or another I'll make you pay """,
+	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """and will rescue Ana from you. """,
 	AIRE_RECRUITMENT_REPLY_BAD_2 = """Aire falls silent upon hearing your dismiss. Without further discussion you take her away.""",
 	AIRE_RECRUITMENT_REPLY_BAD_3 = """- Having you around is a torture on it's own. 
 
@@ -5539,5 +5539,10 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	DAISY_LOST_NAME = "Daisy: Disappearance",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
+	
+	AMELIA_SILK_SUMMARY = "",
+	AMELIA_SILK_NAME = "",
+	AMELIA_SILK_STAGE_1 = "",
+	
 	
 }

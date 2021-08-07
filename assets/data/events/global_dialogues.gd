@@ -37,6 +37,7 @@ var data = {
 		{code = 'about_princess_start', text = "MIND_CONTROL_OPTION_5", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 11},
 		{code = 'princess_search_fighters_3', text = "SEARCH_FIGHTERS_OPTION_4", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'SEARCH_FIGHTERS_3'}], type = 'next_dialogue', dialogue_argument = 11},
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
+		{code = 'aire_recruiment_start', text = "AIRE_RECRUITMENT_OPTION_1", reqs = [{type = 'decision', value = 'mayor_election_finished', check = true}, {type = 'decision', value = 'aire_is_dead', check = false}], type = 'next_dialogue', dialogue_argument = 0, remove_after_first_use = true},
 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -105,9 +106,10 @@ var data = {
 		{code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_lost_amelia_1', text = "DAISY_LOST_AMELIA_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
-
+		{code = 'amelia_silk_1', text = "AMELIA_SILK_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_silk_quest', stage = 'stage1'}, {type = 'has_material', operant = 'gte', value = 50, material = 'clothsilk'}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true},
+		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
-		],
+		], 
 	},
 
 	mages_introduction3 = {

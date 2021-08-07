@@ -781,6 +781,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return equipment.check_wooden_gear_equipped()
 		'unique':
 			return get_stat('unique') == i.value
+		'body_image':
+			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
 
 	return check
 
