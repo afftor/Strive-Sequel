@@ -200,7 +200,7 @@ func update_trait_capacity():
 	var text = 'Current Capacity: ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
 	$SexTraitsPanel/TraitCapacity.text = text
 	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
-		if i.name == "Button" || i.get_meta("always_disabled") == true:
+		if i.has_meta("always_disabled") && i.get_meta("always_disabled") == true:
 			continue
 		i.disabled = person.get_stat('sexuals_factor')+1 - person.statlist.sex_traits.size() <= 0 && i.pressed == false
 

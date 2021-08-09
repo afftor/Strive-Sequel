@@ -24,7 +24,10 @@ func _ready():
 	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 
 	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
+	
+	
 	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
+	
 	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
@@ -132,7 +135,15 @@ func advance_hour():
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
 		pass
-
+	
+	
+	
+	var text = "\n\nCurrent Preferred Food Consumption:"
+	var resources = ResourceScripts.game_party.calculate_food_consumption()
+	for i in resources.keys():
+		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
+	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD") + text)
+	
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")

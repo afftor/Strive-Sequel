@@ -672,11 +672,11 @@ __meta__ = {
 }
 
 [node name="TattooButton" type="TextureButton" parent="."]
-visible = false
 margin_left = 623.819
 margin_top = 872.451
 margin_right = 677.819
 margin_bottom = 926.451
+hint_tooltip = "Tattoo"
 texture_normal = ExtResource( 16 )
 texture_hover = ExtResource( 14 )
 __meta__ = {
@@ -689,6 +689,7 @@ margin_left = 623.819
 margin_top = 872.451
 margin_right = 677.819
 margin_bottom = 926.451
+hint_tooltip = "Gear"
 texture_normal = ExtResource( 13 )
 texture_hover = ExtResource( 12 )
 __meta__ = {

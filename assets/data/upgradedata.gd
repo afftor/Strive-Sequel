@@ -234,13 +234,13 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 200,
-				cost = {wood = 200, stone = 50},
+				cost = {wood = 100, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 400,
-				cost = {wood = 300, stone = 100},
+				cost = {wood = 200, stone = 100},
 			},
 			3:{
 				unlockreqs = [],
@@ -313,19 +313,19 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 200,
-				cost = {wood = 200, stone = 50},
+				cost = {wood = 100, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 400,
-				cost = {wood = 300, stone = 100},
+				cost = {wood = 200, stone = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 600,
-				cost = {wood = 400, stone = 150},
+				cost = {wood = 400, stone = 200},
 			}
 		}
 	},
@@ -363,7 +363,7 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
 				taskprogress = 200,
-				cost = {wood = 50, stone = 100},
+				cost = {wood = 50, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
@@ -835,6 +835,23 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS2"),
 				taskprogress = 500,
 				cost = {woodiron = 100, leathermythic = 100, mithril = 100},
+			},
+		}
+	},
+	
+	resting = {
+		code = 'resting',
+		name = '',
+		icon = "rooms",
+		tree_position = {tab = 1, x = 13, y = 9},
+		descript = '',
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 120,
+				cost = {wood = 50, leather = 20, cloth = 20},
 			},
 		}
 	},

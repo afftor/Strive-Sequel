@@ -1,5 +1,17 @@
-
+Base work task production is reduced by 15% (makes unskilled workers slightly worse)
+Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
+Stat bonus effect for food production slightly nerfed
+Prostitution income slightly increased
+Added "Resting" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
 Lowered number of classes random characters receive on average on higher difficulty
+Slightly increased Advanced Armor material costs
+Tailor task is now affected by Hunting Knife as crafting tool
+Reduced some early upgrade prices
+Mansion slave tooltip now shows max stat including bonus
+Fixed Aire generating with incorrect age which led to omitted description
+Fixed smith/tailor/alchemy start at 2 workers instead of 1
+Fixed some missing descriptions
 0.5.2b
 Fixed instance of a bug in duncan-fred questline
 Fixed main questline not triggering at milford siege

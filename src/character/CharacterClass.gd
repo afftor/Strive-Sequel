@@ -878,6 +878,7 @@ func make_description():
 	input_handler.text_characters.clear()
 	input_handler.text_characters.append(self)
 	#input_handler.active_character = self
+	#print(ResourceScripts.descriptions.create_character_description(self))
 	return globals.TextEncoder(translate(ResourceScripts.descriptions.create_character_description(self)))
 
 func show_race_description():
@@ -977,6 +978,8 @@ func rest_tick():
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
+	if ResourceScripts.game_res.upgrades.resting > 0 && check_location('mansion', true):
+		add_stat('obedience', 1)
 
 
 func translate(text):

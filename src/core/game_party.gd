@@ -153,7 +153,7 @@ func get_output_for_task(tsk, loc_id):
 	return res
 
 
-func predict_food():
+func calculate_food_consumption():
 	var res = {}
 	for i in characters.values():
 		var tmp = i.predict_food()

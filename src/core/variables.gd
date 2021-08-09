@@ -255,7 +255,8 @@ var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - 
 
 
 
-
+var base_work_increment = 0.85
+var stat_work_increment = 1.4
 
 
 

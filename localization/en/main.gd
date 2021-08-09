@@ -673,7 +673,11 @@ var TranslationDict = {
 	SKILLEARTHQUAKE_GLOB = "Earthquake",
 	SKILLL_ORB = "Lightning Orb",
 	SKILLL_ORBDESCRIPT = "Deals high Air Damage to enemy Target. If Target survives, jumps for another random enemy for half of the damage. ",
-
+	
+	SKILLFLY_EVASION = "Flight",
+	SKILLFLY_EVASIONDESCRIPT = "Flight",
+	
+	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
 
 	WORKTOOL = "Work Tool",
@@ -692,13 +696,13 @@ var TranslationDict = {
 	CORRECTTOOLEQUIPPED = "Correct Tool equipped: its bonus will apply. ",
 
 	
-	TASKHUNTING = "Hunt",
+	TASKHUNTING = "Meat",
 	TASKHUNTINGDESCRIPT = "Track down native wildlife for related resources.",
-	TASKFISHING = "Fishing",
+	TASKFISHING = "Fish",
 	TASKFISHINGDESCRIPT = "Fishing in nearby waters for aquatic resources.",
-	TASKGATHERING_WOOD = "Logging",
+	TASKGATHERING_WOOD = "Wood",
 	TASKGATHERING_WOODDESCRIPT = "Work in forest to gather Wood materials. Wood is widely used in constructions but can also serve as tool material.",
-	TASKMINING_STONE = "Mining",
+	TASKMINING_STONE = "Stone",
 	TASKMINING_STONEDESCRIPT = "Work at mines for gathering Stones. Stones are heavily used in constructions but can also serve as some material parts.",
 	TASKPROSTITUTION = "Prostitution",
 	TASKPROSTITUTIONDESCRIPT = "Providing sexual services to public in order to earn gold.",
@@ -715,29 +719,29 @@ var TranslationDict = {
 	TASKTRAVEL = "Travel",
 	TASKREST = "Rest",
 	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery.",
-	TASKFARMING_VEGES = "Farming",
+	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
-	TASKFARMING_GRAINS = "Farming",
+	TASKFARMING_GRAINS = "Grains",
 	TASKFARMING_GRAINSDESCRIPT = "Work at farm, raising grains. Grains can be cooked into food items.",
-	TASKFARMING_COTTON = "Farming",
+	TASKFARMING_COTTON = "Cotton",
 	TASKFARMING_COTTONDESCRIPT = "Work at farm, raising cotton. Cotton is then processed into cloth and can be used for armor.",
-	TASKFARMING_CLOTH_SILK = "Farming",
+	TASKFARMING_CLOTH_SILK = "Silk",
 	TASKFARMING_CLOTH_SILKDESCRIPT = "Gathering Silk from insect farms. Silk is a sturdy and smooth cloth material which has many uses.",
-	TASKGATHERING_WOOD_MAGIC = "Logging",
+	TASKGATHERING_WOOD_MAGIC = "Magic Wood",
 	TASKGATHERING_WOOD_MAGICDESCRIPT = "Work in forest to gather Magic Wood. Special property wood can be utilized in many ways.",
-	TASKGATHERING_WOOD_IRON = "Logging",
+	TASKGATHERING_WOOD_IRON = "Iron Wood",
 	TASKGATHERING_WOOD_IRONDESCRIPT = "Work in forest to gather Iron Wood. Iron wood is sturdier and heavier than normal.",
-	TASKMINING_IRON = "Mining",
+	TASKMINING_IRON = "Iron",
 	TASKMINING_IRONDESCRIPT = "Work at mines for gathering Iron. Iron is widely used in metal tools, constructions and armor.",
-	TASKMINING_MITHRIL = "Mining",
+	TASKMINING_MITHRIL = "Mythril",
 	TASKMINING_MITHRILDESCRIPT = "Work at mines for gathering Mythril - a potent magic alloy recognized for its outstanding quality.",
-	TASKMINING_OBSIDIAN = "Mining",
+	TASKMINING_OBSIDIAN = "Obsidian",
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
 	
-
+	
+	
 	TASKMAINSTAT = "Main characteristic",
-
-
+	
 	JOBPROSTITUTEGOLDDESCRIPT = "Earn gold by prostitution.",
 	JOBCOOKINGCRAFTDESCRIPT = "Cook food in kitchen.",
 	JOBBUILDINGCRAFTDESCRIPT = "Work on the current upgrade.",
@@ -1515,6 +1519,9 @@ var TranslationDict = {
 	UPGRADESEX_TIMESDESCRIPT = "Increase number of times you can do sex interactions per day.",
 	UPGRADESEX_TIMEBONUS1 = "Increase daily sex interactions to 2",
 	UPGRADESEX_TIMEBONUS2 = "Increase daily sex interactions to 3",
+	UPGRADERESTING = "Resting",
+	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will slowly regain their Obedience",
+	UPGRADERESTINGBONUS1 = "",
 
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
@@ -3167,7 +3174,7 @@ The princess notices Aire tensing up in response to the question.
 	ITEMBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 
 	ARMORENC = "Encrustment",
-	WEAPONECN = "Encrustment",
+	WEAPONENC = "Encrustment",
 
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
@@ -5540,9 +5547,9 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
 	
-	AMELIA_SILK_SUMMARY = "",
-	AMELIA_SILK_NAME = "",
-	AMELIA_SILK_STAGE_1 = "",
+	AMELIA_SILK_SUMMARY = "After proving yourself useful to Servants Guild, Amelia has given you a task.",
+	AMELIA_SILK_NAME = "Amelia's Request",
+	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at Servants Guild.",
 	
 	
 }

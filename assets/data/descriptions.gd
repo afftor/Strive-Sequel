@@ -34,7 +34,7 @@ func create_character_description(character):
 
 var descriptionorder = [
 'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'horns', 'ears', 'skin', 'skin_coverage','wings', 'tail', 'height',
-'[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]', 'piercing','[newline]','tattoo','[newline]','[bonus]'
+'[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
 func new_charcter_description(character):
@@ -44,7 +44,7 @@ func new_charcter_description(character):
 	var add_no_sex_descript = false
 
 	for i in descriptionorder:
-		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo']:
+		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo','slave_status']:
 			var temptext = call(i)
 			if temptext != "":
 				text += temptext
@@ -90,7 +90,7 @@ func entry():
 	text += person.get_full_name() + ". "
 	if person.has_profession('master'):
 		text = "[color=green]Mansion's [Master][/color] - " + text
-	return text
+	return ""
 
 var showmode = 'default'
 
@@ -105,6 +105,21 @@ func multiple_tits():
 		text = ''
 	return text
 
+func slave_status():
+	if person.is_players_character == false:
+		return ''
+	
+	var text = ""
+	match person.get_stat("slave_class"):
+		'slave':
+			text = "[name] is your slave and must obey your orders by law."
+		'peon':
+			text = '[name] is your servant and have to follow your commands .'
+		'merc':
+			text = '[name] was hired by you and costs you gold. '
+	
+	#elif person.
+	return text
 
 #func genitals():
 #	var text = '\n'

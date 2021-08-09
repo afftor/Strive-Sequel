@@ -143,10 +143,8 @@ func update_materials(operant, material, value):
 	match operant:
 		'+':
 			materials[material] += value
-#			globals.text_log_add('money',"Gold get: " + str(value))
 		'-':
 			materials[material] -= value
-#			globals.text_log_add('money',"Gold used: " + str(value))
 		'=':
 			materials[material] = value
 
