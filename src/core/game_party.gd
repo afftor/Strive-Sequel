@@ -161,3 +161,175 @@ func predict_food():
 			if res.has(food): res[food] += tmp[food]
 			else: res[food] = tmp[food]
 	return res
+
+#reworked from globals
+func connectrelatives_old(person1, person2, way):
+	if person1 == null || person2 == null:
+		return
+	if ResourceScripts.game_party.relativesdata.has(person1.id) == false:
+		createrelativesdata(person1)
+	if ResourceScripts.game_party.relativesdata.has(person2.id) == false:
+		createrelativesdata(person2)
+	if way in ['mother','father']:
+		var entry = ResourceScripts.game_party.relativesdata[person1.id]
+		entry.children.append(person2.id)
+		for i in entry.children:
+			if i != person2.id:
+				var entry2 = ResourceScripts.game_party.relativesdata[i]
+				connectrelatives_old(person2, entry2, 'sibling')
+		entry = ResourceScripts.game_party.relativesdata[person2.id]
+		entry[way] = person1.id
+		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
+			globals.addrelations(person1, person2, 200)
+	elif way == 'sibling':
+		var entry = ResourceScripts.game_party.relativesdata[person1.id]
+		var entry2 = ResourceScripts.game_party.relativesdata[person2.id]
+		if entry.siblings.has(entry2.id) == false: entry.siblings.append(entry2.id)
+		if entry2.siblings.has(entry.id) == false: entry2.siblings.append(entry.id)
+		for i in entry.siblings + entry2.siblings:
+			if !ResourceScripts.game_party.relativesdata[i].siblings.has(entry.id) && i != entry.id:
+				ResourceScripts.game_party.relativesdata[i].siblings.append(entry.id)
+			if !ResourceScripts.game_party.relativesdata[i].siblings.has(entry2.id) && i != entry2.id:
+				ResourceScripts.game_party.relativesdata[i].siblings.append(entry2.id)
+			if !entry.siblings.has(i) && i != entry.id:
+				entry.siblings.append(i)
+			if !entry2.siblings.has(i) && i != entry2.id:
+				entry2.siblings.append(i)
+
+		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
+			globals.addrelations(person1, person2, 0)
+
+
+func connectrelatives(id1, id2, way): #id1 - child, 'main' char in this construction
+	if !relativesdata.has(id1):
+		var person = characters_pool.get_char_by_id(id1)
+		if person == null: 
+			print('error - try to connect nonexisting character %s with no relatives record at the correct data state' % id1)
+			return
+		createrelativesdata(person)
+	var data1 = relativesdata[id1]
+	if !relativesdata.has(id2):
+		var person = characters_pool.get_char_by_id(id2)
+		if person == null: 
+			print('error - try to connect nonexisting character %s with no relatives record at the correct data state' % id2)
+			return
+		createrelativesdata(person)
+	var data2 = relativesdata[id2]
+	match way:
+		'mother', 'father':
+			data1[way] = id2
+			connect_parent(id1, id2)
+			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 200)
+		'sibling':
+			data1.siblings.push_back(id2)
+			connect_siblings(id1, id2)
+			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 0)
+
+func connect_parent(id1, id2): #id1 - child, 'main' char in this construction, so data1 should be configured partially properly at the point of callback
+	var data1 = relativesdata[id1]
+	var data2 = relativesdata[id2]
+	if data2.children.has(id1):
+		print('possibly duplicating relatives connection %s to %s' % [id1, id2])
+		return
+	data2.children.push_back(id1)
+	for id in data2.children:
+		if id == id1: continue
+		if data1.siblings.has(id): continue
+		data1.siblings.push_back(id)
+	for id in data1.siblings:
+		connect_siblings(id1, id)
+
+func connect_siblings(id1, id2): #id1 - child, 'main' char in this construction, so data1 should be configured properly at the point of callback
+	var data1 = relativesdata[id1]
+	var data2 = relativesdata[id2]
+	if data2.siblings.has(id1):
+		return #possibly incorrect in case of inconsistent data
+	else:
+		data2.siblings.push_back(id1)
+	#consistensy check
+	for id in data2.siblings:
+		if id == id1: continue
+		if data1.siblings.has(id): continue
+		if check_common_parents(id1, id) > 0:
+			print("warning - %d was lost from its parent's relations" % id) 
+			data1.siblings.push_back(id)
+			connect_siblings(id1, id)
+
+func check_common_parents(id1, id2): #derived relation - for partially correct data state
+	var res = 0
+	if !relativesdata.has(id1):
+		print('warning - relatives data references character %s with no data in unstable state by undirect request' % id1)
+		var person = characters_pool.get_char_by_id(id1)
+		if person == null: 
+			print('warning - relatives data references unexisting character %s with no relatives record ' % id1)
+			return 0
+		createrelativesdata(person)
+	var data1 = relativesdata[id1]
+	if !relativesdata.has(id2):
+		print('warning - relatives data references character %s with no data in unstable state by undirect request' % id2)
+		var person = characters_pool.get_char_by_id(id2)
+		if person == null: 
+			print('warning - relatives data references unexisting character %s with no relatives record ' % id2)
+			return 0
+		createrelativesdata(person)
+	var data2 = relativesdata[id2]
+	for i in ['mother','father']:
+		if data1[i] == null: continue
+		for j in ['mother','father']:
+			if data2[j] == null: continue
+			if data1[i] == data2[j]:
+				res += 1
+	return res
+
+
+func createrelativesdata(person):
+	var newdata = {
+		name = person.get_full_name(), 
+		id = person.id, 
+		race = person.get_stat('race'), 
+		sex = person.get_stat('sex'),
+		mother = null, 
+		father = null, 
+		siblings = [], 
+#		halfsiblings = [], not used 
+		children = []
+	}
+	relativesdata[person.id] = newdata
+
+func clearrelativesdata(id): #not used but mb useful later 
+	var entry
+	if relativesdata.has(id):
+		entry = relativesdata[id]
+		
+		for i in ['mother','father']:
+			if relativesdata.has(entry[i]):
+				var entry2 = relativesdata[entry[i]]
+				entry2.children.erase(id)
+		for i in entry.siblings:
+			if relativesdata.has(i):
+				var entry2 = relativesdata[i]
+				entry2.siblings.erase(id)
+		
+		relativesdata.erase(id)
+
+func checkifrelatives(id1, id2):
+	var data1
+	var data2
+	if !relativesdata.has(id1):
+		var person = characters_pool.get_char_by_id(id1)
+		if person == null: return false
+		createrelativesdata(person)
+	data1 = relativesdata[id1]
+	if !relativesdata.has(id2):
+		var person = characters_pool.get_char_by_id(id2)
+		if person == null: return false
+		createrelativesdata(person)
+	data2 = relativesdata[id2]
+	for i in ['mother','father']:
+		if str(data1[i]) == id2 or str(data2[i]) == id1:
+			return true
+	if data2.siblings.has(id1) or data1.siblings.has(id2): #double-check
+		return true
+	return false
+
+
