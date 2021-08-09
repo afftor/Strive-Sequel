@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -21,6 +21,10 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO new 2021/bar_sexskills.png" type="Texture" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=21]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=22]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=24]
+[ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=25]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -491,6 +495,158 @@ custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "TraitCapacity"
 align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RelativesPanel" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RelativesPanel"]
+margin_left = 824.0
+margin_top = 25.0
+margin_right = 1663.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 22 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Relatives"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Relatives" type="HBoxContainer" parent="RelativesPanel"]
+margin_left = 825.0
+margin_top = 84.0
+margin_right = 1660.0
+margin_bottom = 894.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Parents" type="VBoxContainer" parent="RelativesPanel/Relatives"]
+margin_right = 275.0
+margin_bottom = 810.0
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="RelativesPanel/Relatives/Parents"]
+margin_right = 275.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 23 )
+text = "Parents"
+align = 1
+
+[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Parents"]
+visible = false
+margin_top = 48.0
+margin_right = 275.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/Parents/panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 24 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="RelativesPanel/Relatives/Parents/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 117.0
+text = "FULL NAME"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Siblings" type="VBoxContainer" parent="RelativesPanel/Relatives"]
+margin_left = 279.0
+margin_right = 555.0
+margin_bottom = 810.0
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="RelativesPanel/Relatives/Siblings"]
+margin_right = 276.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 23 )
+text = "Siblings"
+align = 1
+
+[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Siblings"]
+visible = false
+margin_top = 48.0
+margin_right = 276.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/Siblings/panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 24 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="RelativesPanel/Relatives/Siblings/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 117.0
+text = "FULL NAME"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Children" type="VBoxContainer" parent="RelativesPanel/Relatives"]
+margin_left = 559.0
+margin_right = 835.0
+margin_bottom = 810.0
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="RelativesPanel/Relatives/Children"]
+margin_right = 276.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 23 )
+text = "Children"
+align = 1
+
+[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Children"]
+visible = false
+margin_top = 48.0
+margin_right = 276.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/Children/panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 24 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="RelativesPanel/Relatives/Children/panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 117.0
+text = "FULL NAME"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

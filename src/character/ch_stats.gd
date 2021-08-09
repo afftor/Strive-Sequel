@@ -74,6 +74,9 @@ func custom_stats_set(st, value):
 		statlist.lust = clamp(value, 0, get_stat('lustmax'))
 	if st == 'obedience':
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
+	if st == 'name':
+		if ResourceScripts.game_party.relativesdata.has(parent.id):
+			ResourceScripts.game_party.relativesdata[parent.id].name = get_full_name()
 
 
 func custom_stats_get():
@@ -648,6 +651,8 @@ func setup_baby(mother, father):
 	pregdata.duration = variables.pregduration
 	mother.set_stat('pregnancy', pregdata.duplicate())
 	characters_pool.move_to_baby(parent.id)
+	ResourceScripts.game_party.connectrelatives(parent.id, mother.id, "mother")
+	ResourceScripts.game_party.connectrelatives(parent.id, father.id, "father")
 #	ResourceScripts.game_party.babies[parent.id] = parent
 
 func create(temp_race, temp_gender, temp_age):

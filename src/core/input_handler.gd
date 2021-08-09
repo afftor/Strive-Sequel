@@ -1266,23 +1266,23 @@ func evaluate(input): #used to read strings as conditions when needed
 	obj.active_slave = text_characters[0]
 	return obj.eval()
 
-func ClearContainer(container):
+func ClearContainer(container, template = ['Button']):
 	for i in container.get_children():
-		if i.name != 'Button':
+		if !template.has(i.name):
 			i.hide()
 			i.queue_free()
 
-func ClearContainerForced(container):
+func ClearContainerForced(container, template = ['Button']):
 	for i in container.get_children():
-		if i.name != 'Button':
+		if !template.has(i.name):
 			i.hide()
 			i.free()
 
-func DuplicateContainerTemplate(container):
-	var newbutton = container.get_node('Button').duplicate()
+func DuplicateContainerTemplate(container, template = 'Button'):
+	var newbutton = container.get_node(template).duplicate()
 	newbutton.show()
 	container.add_child(newbutton)
-	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
+	container.move_child(container.get_node(template), newbutton.get_position_in_parent()) #this CAN break something in difficult cases
 	emit_signal("ButtonUpdated")
 	return newbutton
 

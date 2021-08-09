@@ -23,7 +23,9 @@ func add_stored_char(id, ch):
 
 func get_char_by_id(id):
 	if ResourceScripts.game_party.characters.has(id): return ResourceScripts.game_party.characters[id]
+	if ResourceScripts.game_party.babies.has(id): return ResourceScripts.game_party.babies[id]
 	if characters.has(id): return characters[id]
+	return null
 
 func cleanup(on_exit = false):
 	for id in characters.keys():
@@ -43,9 +45,16 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.character_order.erase(id)
 			if !on_exit: input_handler.slave_list_node.rebuild() #temporal, needs remake
 			remove_id(id)
+	for id in ResourceScripts.game_party.babies.keys():
+		if !ResourceScripts.game_party.babies[id].is_active or on_exit:
+			ResourceScripts.game_party.babies[id].clean_effects()
+			ResourceScripts.game_party.babies[id].clean_references()
+			ResourceScripts.game_party.babies.erase(id)
+			remove_id(id)
 
 func remove_id(id):
 	if ResourceScripts.game_party.characters.has(id): ResourceScripts.game_party.characters.erase(id)
+	elif ResourceScripts.game_party.babies.has(id): ResourceScripts.game_party.babies.erase(id)
 	else: characters.erase(id)
 
 func move_to_state(id):

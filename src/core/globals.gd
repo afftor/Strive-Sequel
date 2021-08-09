@@ -598,9 +598,9 @@ func addrelations(person, person2, value):
 		rel[person2.id] = 0
 	if rel2.has(person.id) == false:
 		rel2[person.id] = 0
-	if rel[person2.id] > 500 && value > 0 && checkifrelatives(person, person2):
+	if rel[person2.id] > 500 && value > 0 && ResourceScripts.game_party.checkifrelatives(person.id, person2.id):
 		value = value/1.5
-	elif rel[person2.id] < -500 && value < 0 && checkifrelatives(person,person2):
+	elif rel[person2.id] < -500 && value < 0 && ResourceScripts.game_party.checkifrelatives(person.id, person2.id):
 		value = value/1.5
 	rel[person2.id] += value
 	rel[person2.id] = clamp(rel[person2.id], -1000, 1000)
@@ -610,85 +610,6 @@ func addrelations(person, person2, value):
 #		person.stress += rand_range(4,8)
 #		person2.stress += rand_range(4,8)
 
-func connectrelatives(person1, person2, way):
-	if person1 == null || person2 == null:
-		return
-	if ResourceScripts.game_party.relativesdata.has(person1.id) == false:
-		createrelativesdata(person1)
-	if ResourceScripts.game_party.relativesdata.has(person2.id) == false:
-		createrelativesdata(person2)
-	if way in ['mother','father']:
-		var entry = ResourceScripts.game_party.relativesdata[person1.id]
-		entry.children.append(person2.id)
-		for i in entry.children:
-			if i != person2.id:
-				var entry2 = ResourceScripts.game_party.relativesdata[i]
-				connectrelatives(person2, entry2, 'sibling')
-		entry = ResourceScripts.game_party.relativesdata[person2.id]
-		entry[way] = person1.id
-		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			addrelations(person1, person2, 200)
-	elif way == 'sibling':
-		var entry = ResourceScripts.game_party.relativesdata[person1.id]
-		var entry2 = ResourceScripts.game_party.relativesdata[person2.id]
-		if entry.siblings.has(entry2.id) == false: entry.siblings.append(entry2.id)
-		if entry2.siblings.has(entry.id) == false: entry2.siblings.append(entry.id)
-		for i in entry.siblings + entry2.siblings:
-			if !ResourceScripts.game_party.relativesdata[i].siblings.has(entry.id) && i != entry.id:
-				ResourceScripts.game_party.relativesdata[i].siblings.append(entry.id)
-			if !ResourceScripts.game_party.relativesdata[i].siblings.has(entry2.id) && i != entry2.id:
-				ResourceScripts.game_party.relativesdata[i].siblings.append(entry2.id)
-			if !entry.siblings.has(i) && i != entry.id:
-				entry.siblings.append(i)
-			if !entry2.siblings.has(i) && i != entry2.id:
-				entry2.siblings.append(i)
-
-		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			addrelations(person1, person2, 0)
-
-
-func createrelativesdata(person):
-	var newdata = {name = person.get_full_name(), id = person.id, race = person.get_stat('race'), sex = person.get_stat('sex'), mother = -1, father = -1, siblings = [], halfsiblings = [], children = []}
-	ResourceScripts.game_party.relativesdata[person.id] = newdata
-
-func clearrelativesdata(id):
-	var entry
-	if ResourceScripts.game_party.relativesdata.has(id):
-		entry = ResourceScripts.game_party.relativesdata[id]
-
-		for i in ['mother','father']:
-			if ResourceScripts.game_party.relativesdata.has(entry[i]):
-				var entry2 = ResourceScripts.game_party.relativesdata[entry[i]]
-				entry2.children.erase(id)
-		for i in entry.siblings:
-			if ResourceScripts.game_party.relativesdata.has(i):
-				var entry2 = ResourceScripts.game_party.relativesdata[i]
-				entry2.siblings.erase(id)
-
-	ResourceScripts.game_party.relativesdata.erase(id)
-
-func checkifrelatives(person, person2):
-	var result = false
-	var data1
-	var data2
-	if ResourceScripts.game_party.relativesdata.has(person.id):
-		data1 = ResourceScripts.game_party.relativesdata[person.id]
-	else:
-		createrelativesdata(person)
-		data1 = ResourceScripts.game_party.relativesdata[person.id]
-	if ResourceScripts.game_party.relativesdata.has(person2.id):
-		data2 = ResourceScripts.game_party.relativesdata[person2.id]
-	else:
-		createrelativesdata(person2)
-		data2 = ResourceScripts.game_party.relativesdata[person2.id]
-	for i in ['mother','father']:
-		if str(data1[i]) == str(data2.id) || str(data2[i]) == str(data1.id):
-			result = true
-	for i in [data1, data2]:
-		if i.siblings.has(data1.id) || i.siblings.has(data2.id):
-			result = true
-
-	return result
 
 func getrelativename(person, person2):
 	var result = null
@@ -697,14 +618,14 @@ func getrelativename(person, person2):
 	if ResourceScripts.game_party.relativesdata.has(person.id):
 		data1 = ResourceScripts.game_party.relativesdata[person.id]
 	else:
-		createrelativesdata(person)
+		ResourceScripts.game_party.createrelativesdata(person)
 		data1 = ResourceScripts.game_party.relativesdata[person.id]
 	if ResourceScripts.game_party.relativesdata.has(person2.id):
 		data2 = ResourceScripts.game_party.relativesdata[person2.id]
 	else:
-		createrelativesdata(person2)
+		ResourceScripts.game_party.createrelativesdata(person2)
 		data2 = ResourceScripts.game_party.relativesdata[person2.id]
-
+	
 	#print(data1, data2)
 	for i in ['mother','father']:
 		if str(data1[i]) == str(data2.id):
@@ -717,6 +638,7 @@ func getrelativename(person, person2):
 	if result != null:
 		result = person2.translate(result)
 	return result
+
 
 func impregnate_check(father,mother):
 	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, breeder = false, compatible = true, already_preg_visible = false}
