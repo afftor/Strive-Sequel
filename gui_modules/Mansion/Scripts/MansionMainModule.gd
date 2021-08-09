@@ -508,6 +508,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.tailor = 3
 #		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 #		ResourceScripts.game_res.upgrades.forge = 3
+		ResourceScripts.game_res.upgrades.resting = 1
 		ResourceScripts.game_res.upgrades.buildertools = 3
 #		ResourceScripts.game_res.upgrades.tattoo_set = 1
 		var item = globals.CreateGearItem("strapon", {})
@@ -799,6 +800,7 @@ func test_mode():
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
+		print(ResourceScripts.game_party.calculate_food_consumption())
 		# ResourceScripts.game_progress.show_tutorial = true
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
@@ -851,3 +853,4 @@ func test_mode():
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
+		

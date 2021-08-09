@@ -115,15 +115,13 @@ func show_slave_info():
 		$job.bbcode_text = globals.TextEncoder(text)
 
 		for i in ['physics','wits','charm','sexuals']:
+			var color = set_color(person.get_stat(i+"_bonus"))
+			get_node(i).text = str(floor(person.get_stat(i)))
+			get_node(i).set("custom_colors/font_color", color)
 			if i != 'sexuals':
-				var color = set_color(person.get_stat(i+"_bonus"))
-				get_node(i).text = str(floor(person.get_stat(i)))
-				get_node(i).set("custom_colors/font_color", color)
-				get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
+				get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20 + person.get_stat(i+"_bonus"))
+				get_node(i+'2').set("custom_colors/font_color", color)
 			else:
-				var color = set_color(person.get_stat(i+"_bonus"))
-				get_node(i).text = str(floor(person.get_stat(i)))
-				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = '100'
 
 		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))

@@ -131,7 +131,7 @@ var data = {
 		{text = "FIGHTERSELECTION5", reqs = [], 
 		bonus_effects = [
 			{code = 'decision', value = 'fighters_election_support'},
-			{code = 'material_change', operant = '-', material = 'lich_skull', value = 1},
+			{code = 'material_change', operant = '=', material = 'lich_skull', value = 0},
 			{code = 'complete_quest', value = 'fighters_election_quest'}]},
 		],
 		options = [

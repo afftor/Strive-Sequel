@@ -116,7 +116,7 @@ func get_food():
 func predict_food():
 	if parent.check_trait('undead'): return {}
 	var food_consumption = parent.get_stat('food_consumption')
-	var food = food_filter.high[0]
+	var food = food_love
 	var res = {}
 	res[food] = food_consumption
 	return res
