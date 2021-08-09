@@ -92,9 +92,9 @@ var craft_text = {
 }
 
 var job_images = {
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/job_1.png"),
-	1: load("res://assets/Textures_v2/MANSION/Tutorial/job_2.png"),
-	2: load("res://assets/Textures_v2/MANSION/Tutorial/job_3.png"),
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/jobnew_1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/jobnew_2.png"),
+	2: load("res://assets/Textures_v2/MANSION/Tutorial/jobnew_3.png"),
 }
 
 var job_text = {

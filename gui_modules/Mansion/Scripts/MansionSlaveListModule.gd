@@ -21,6 +21,7 @@ func _ready():
 	globals.connect("hour_tick", self, "update")
 
 func OpenJobModule(person = null):
+	input_handler.ActivateTutorial('job')
 	get_parent().mansion_state_set("occupation")
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
@@ -64,8 +65,7 @@ func rebuild():
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
-		#newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
-		#tmp
+		
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 		newbutton.get_node("job").set_disabled(false)
 		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
@@ -464,8 +464,3 @@ func get_state_texture(tempchar):
 
 	rval = stateicons[rval]
 	return rval
-
-func open_job_panel(person):
-	input_handler.ActivateTutorial('job')
-	get_parent().set_active_person(person)
-	get_parent().mansion_state_set("occupation")
