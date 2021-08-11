@@ -394,7 +394,8 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				array.append(i)
 	elif type == 'material':
 		for i in ResourceScripts.game_res.materials:
-			array.append(i)
+			if ResourceScripts.game_res.materials[i] > 0:
+				array.append(i)
 
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))

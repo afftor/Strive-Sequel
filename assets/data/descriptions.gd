@@ -81,7 +81,7 @@ func new_charcter_description(character):
 				newtext = bodypartsdata[i].default.chardescript
 			if !newtext in ["", " "]:
 				text += newtext + " "
-
+	
 	text = input_handler.text_cut_excessive_lines(text)
 	return text
 
@@ -228,9 +228,10 @@ func tattoo():
 		if person.statlist.tattoo[slot] != null:
 			text += tattoo_descripts[slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')] + " "
 			#print(person.statlist.tattoo[slot])
-
-
-	return "{color=magenta|" + text + "}"
+	if text.length()> 0:
+		return "{color=magenta|" + text + "}"
+	else:
+		return text
 	#Fix later
 #	var tmp = person.get_stat('tattoo')
 #	var tmp1 = person.get_stat('tattooshow')
