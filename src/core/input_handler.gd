@@ -535,6 +535,7 @@ func ChangeScene(name):
 func GetTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
 	var tweennode
 	if node.has_node('tween'):
+#	if false:
 		tweennode = node.get_node('tween')
 	else:
 		tweennode = Tween.new()

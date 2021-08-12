@@ -31,7 +31,7 @@ func show():
 #	self.visible = true
 
 func hide():
-	if is_visible_in_tree() && close_played == false:
+	if is_visible_in_tree() && !close_played:
 		#input_handler.PlaySound(close_sound)
 		close_played = true
 	input_handler.Close(self)
