@@ -150,6 +150,7 @@ func OldCloseAnimation(node):
 	BeingAnimated.erase(node)
 
 func FadeAnimation(node, time = 0.3, delay = 0):
+#	var t1 = OS.get_ticks_msec()
 #	if BeingAnimated.has(node) == true:
 #		return
 	#BeingAnimated.append(node)
@@ -159,13 +160,18 @@ func FadeAnimation(node, time = 0.3, delay = 0):
 	#BeingAnimated.erase(node)
 
 func UnfadeAnimation(node, time = 0.3, delay = 0):
-	#if BeingAnimated.has(node) == true:
-	#	return
-	#BeingAnimated.append(node)
+#	var t1 = OS.get_ticks_msec()
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+#	var t2 = OS.get_ticks_msec()
 	tweennode.start()
-	#BeingAnimated.erase(node)
+	yield(tweennode, 'tween_completed')
+#	var t3 = OS.get_ticks_msec()
+	BeingAnimated.erase(node)
+#	print("%d: %d - %d" % [t1, t2, t3])
 
 
 func UnshadeAnimation(node, time = 0.3, delay = 0):

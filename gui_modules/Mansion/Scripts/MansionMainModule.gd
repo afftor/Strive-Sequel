@@ -57,7 +57,7 @@ var hovered_person = null
 var is_entered = false
 
 
-var mansion_state = "default" setget mansion_state_set
+var mansion_state = "" setget mansion_state_set
 var mansion_prev_state
 
 
