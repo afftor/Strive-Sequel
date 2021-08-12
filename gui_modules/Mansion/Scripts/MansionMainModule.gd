@@ -277,7 +277,6 @@ func open_char_info():
 	gui_controller.slavepanel.set_state("default")
 	gui_controller.slavepanel.SummaryModule.show_summary()
 	gui_controller.slavepanel.show()
-	#gui_controller.slavepanel.update()
 	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.previous_screen.hide()
 	gui_controller.current_screen = gui_controller.slavepanel
@@ -800,7 +799,6 @@ func test_mode():
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
-		print(ResourceScripts.game_party.calculate_food_consumption())
 		# ResourceScripts.game_progress.show_tutorial = true
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}

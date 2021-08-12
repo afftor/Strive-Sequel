@@ -1492,9 +1492,9 @@ var TranslationDict = {
 
 	UPGRADESTABLES = "Stables",
 	UPGRADESTABLESDESCRIPT = "Makes traveling faster",
-	UPGRADESTABLESBONUS1 = "Increases character traveling speed by 20%",
-	UPGRADESTABLESBONUS2 = "Increases character traveling speed by 40%",
-	UPGRADESTABLESBONUS3 = "Increases character traveling speed by 60%",
+	UPGRADESTABLESBONUS1 = "Increases character base traveling speed by 30%",
+	UPGRADESTABLESBONUS2 = "Increases character base traveling speed by 60%",
+	UPGRADESTABLESBONUS3 = "Increases character base traveling speed by 90%",
 
 	UPGRADEFORGEWORKSHOP = "Forge Tools",
 	UPGRADEFORGEWORKSHOPDESCRIPT = "Improves the speed of Smithing and Upgrading tasks.",

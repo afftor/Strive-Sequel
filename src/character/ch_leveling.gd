@@ -491,7 +491,7 @@ func get_progress_resource(tempresource, count_crit = false):
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2

@@ -107,7 +107,7 @@ func OpenAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease
 	BeingAnimated.erase(node)
 	node.raise()
 
-func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
+func CloseAnimation(node, speed = 0, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)

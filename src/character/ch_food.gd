@@ -60,11 +60,6 @@ func create():
 				if check == false:
 					food_filter.med.append(i.code)
 
-func tick():
-	food_counter -= 1
-	if food_counter <= 0:
-		food_counter = 24
-		get_food()
 
 func get_food():
 	if parent.check_trait('undead'): return

@@ -952,14 +952,17 @@ func pretick():
 func tick():
 	if is_on_quest():
 		return
-	food.tick()
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
 
 	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
-#	food.tick()
+	
+	
+	if ResourceScripts.game_globals.hour == 12:
+		food.get_food()
+	
 	statlist.tick()
 	if get_work() == 'travel':
 		#fatigue -= 1
@@ -991,8 +994,8 @@ func translate(text):
 
 func calculate_price():
 	var value = 0
-	value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2.5
-	value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*8 + get_stat('growth_factor') * 32 + get_stat('magic_factor') * 15
+	value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2
+	value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*10 + get_stat('growth_factor') * 45 + get_stat('magic_factor') * 15
 	value += xp_module.professions.size()*40
 	if statlist.bonuses.has("price_mul"): value *= statlist.bonuses.price_mul
 	return max(100,round(value))
