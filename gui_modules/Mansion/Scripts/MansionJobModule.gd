@@ -250,7 +250,7 @@ func update_resources():
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:
 					if (task.code == i.code) && (task.task_location == person_location):
-						current_workers_count = task.workers_count
+						current_workers_count = task.workers.size()
 				text += str(current_workers_count) + "/" + str(max_workers_count)
 				newbutton.get_node("Label").text = text
 				#newbutton.disabled = current_workers_count == max_workers_count
@@ -296,7 +296,7 @@ func update_resources():
 			var active_tasks = ResourceScripts.game_party.active_tasks
 			for task in active_tasks:
 				if ((task.code == resource) || (task.product == resource)) && (task.task_location == person_location):
-					current_workers_count = task.workers_count
+					current_workers_count = task.workers.size()
 			text +=  str(current_workers_count) + "/" + str(max_workers_count)
 			#newbutton.disabled = current_workers_count == max_workers_count
 			if current_workers_count >= max_workers_count:
@@ -454,7 +454,7 @@ func select_job(button, person):
 		var active_tasks = ResourceScripts.game_party.active_tasks
 		for task in active_tasks:
 			if (task.code == selected_job.code) && (task.task_location == person.get_location()):
-				current_workers_count = task.workers_count
+				current_workers_count = task.workers.size()
 		if current_workers_count >= max_workers_count:
 			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
 			return

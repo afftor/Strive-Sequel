@@ -2715,10 +2715,10 @@ var TranslationDict = {
 	EXPLORATIONTUTORIAL2 = "Do note, that melee attacks can't be performed by back row while front row is present, and back row also can't be targeted by melee attacks at the same time. On the right of the combat team you can find available items. They can be used by dragging and dropping on active characters.",
 	EXPLORATIONTUTORIAL3 = "You can also use spells to heal while in preparation, but keep an eye at mana levels or catalyst requirements.",
 
-	TRAVELINGTUTORIAL1 = "In the Travel menu, at the top you can see available regions. More distant regions will take longer to travel. ",
-	TRAVELINGTUTORIAL2 = "There are 4 types of locations: Capital, settlements, dungeons and events. Capitals generally will feature events and services. Settlements provide shops and constant resource gathering. Dungeons can be explored for combat and rewards, while also providing some resources to gather on completion. Event locations are usually one and expire once the event is cleared. Refer 'Information' tab for further details.",
-	TRAVELINGTUTORIAL3 = "Once a location is selected, click on the 'Location Select' to hide the Locations window and select the characters to send.",
-	TRAVELINGTUTORIAL4 = "Select characters from the list. You can sort them by locations at the bottom. Once done, confirm it to start travelling. The actual travel will require time progress.",
+	TRAVELINGTUTORIAL1 = "",
+	TRAVELINGTUTORIAL2 = "",
+	TRAVELINGTUTORIAL3 = "",
+
 
 	CRAFTTUTORIAL1 = "While in the Craft Menu, select the crafting category from the top of the screen.",
 	CRAFTTUTORIAL2 = "You need specific materials to craft an item displayed next to it. Modular items are crafted differently from standard items. Instead of specific materials they take material types for each different part of the item.",

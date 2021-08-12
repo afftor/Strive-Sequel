@@ -38,6 +38,7 @@ func _ready():
 
 
 func show():
+	input_handler.ActivateTutorial("traveling")
 #	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
 	gui_controller.current_screen = self
@@ -158,6 +159,9 @@ func build_locations_list():
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):
 				temp.quest = true
+			if adata.questlocations.has(id):
+				if adata.questlocations[id].has("quest"):
+					temp.quest = adata.questlocations[id].quest
 		if lands_count.has(temp.area): lands_count[temp.area] += 1
 		else:  lands_count[temp.area] = 1
 		if locs_count.has(temp.type): locs_count[temp.type] += 1
@@ -560,7 +564,8 @@ func hide():
 #		gui_controller.clock.restoreoldspeed()
 	if get_parent().mansion_state == 'travels':
 		get_parent().mansion_state = 'default'
-	.hide()
+	else:
+		.hide()
 
 
 func confirm_travel():

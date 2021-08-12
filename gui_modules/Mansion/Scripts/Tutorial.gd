@@ -40,19 +40,15 @@ var exploration_text = {
 
 
 var traveling_images = {
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/travel_1.png"),
-	1: load("res://assets/Textures_v2/MANSION/Tutorial/travel_2.png"),
-	2: load("res://assets/Textures_v2/MANSION/Tutorial/travel_3.png"),
-	3: load("res://assets/Textures_v2/MANSION/Tutorial/travel_4.png"),
-	# 4: load("res://assets/Textures_v2/MANSION/Tutorial/travel_5.png"),
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_2.png"),
+	2: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_3.png"),
 }
 
 var traveling_text = {
 	0: tr("TRAVELINGTUTORIAL1"),
 	1: tr("TRAVELINGTUTORIAL2"),
 	2: tr("TRAVELINGTUTORIAL3"),
-	3: tr("TRAVELINGTUTORIAL4"),
-	# 4: "TRAVELINGTUTORIAL4"
 }
 
 var skills_images = {
