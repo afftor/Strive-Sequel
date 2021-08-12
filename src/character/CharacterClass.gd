@@ -783,6 +783,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return get_stat('unique') == i.value
 		'body_image':
 			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
+		'in_combat_party':
+			return (combat_position in range(1, 7)) == i.value
 
 	return check
 
@@ -957,7 +959,7 @@ func tick():
 
 	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
-	food.tick()
+#	food.tick()
 	statlist.tick()
 	if get_work() == 'travel':
 		#fatigue -= 1
