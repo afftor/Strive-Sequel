@@ -1389,6 +1389,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		quest = true,
 
 		area = 'plains',
 		travel_time = [4,6],
@@ -1421,6 +1422,7 @@ var dungeons = {
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
+		quest = true,
 
 		area = 'plains',
 		travel_time = [4,6],
@@ -1450,6 +1452,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
+		quest = true,
 		options = [
 			{text = 'Approach', reqs = [
 				{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],

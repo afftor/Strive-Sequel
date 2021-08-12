@@ -613,7 +613,8 @@ func area_advance(mode):
 		&& ! check_staged_enemies()
 	):
 		rand_event = globals.start_random_event()
-		advance()
+		if rand_event != false:
+			advance()
 	if rand_event == false:
 		StartCombat()
 
