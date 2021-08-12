@@ -49,7 +49,8 @@ func hide():
 #		gui_controller.clock.restoreoldspeed()
 	if get_parent().mansion_state == 'upgrades':
 		get_parent().mansion_state = 'default'
-	.hide()
+	else:
+		.hide()
 
 
 

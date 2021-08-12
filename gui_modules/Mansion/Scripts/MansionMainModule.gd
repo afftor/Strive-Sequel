@@ -154,6 +154,7 @@ func set_active_person(person):
 
 func mansion_state_set(state):
 	# input_handler.CurrentScene = self
+	if state == mansion_state: return
 	mansion_prev_state = mansion_state
 	mansion_state = state
 	match_state()
@@ -832,8 +833,8 @@ func test_mode():
 
 
 
-
-		#input_handler.interactive_message('servants_election_finish6', '', {})
+#		ResourceScripts.game_res.materials.meat = 0
+#		input_handler.interactive_message('celena_shrine_find', '', {})
 		#input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
