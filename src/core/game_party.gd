@@ -40,7 +40,9 @@ func fix_serialization():
 	for p in babies:
 		babies[p] = dict2inst(babies[p])
 		babies[p].fix_serialization()
-	pass
+	for dir in relativesdata.values():
+		if dir.father == -1: dir.father = null
+		if dir.mother == -1: dir.mother = null
 
 
 func fix_import():
