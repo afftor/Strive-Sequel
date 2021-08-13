@@ -257,10 +257,13 @@ func closeskilltooltip():
 #	if node.is_connected("mouse_entered",item,'tooltip'):
 #		node.disconnect("mouse_entered",item,'tooltip')
 
-func connectmaterialtooltip(node, material, bonustext = ''):
+func connectmaterialtooltip(node, material, bonustext = '', type = null):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
 		node.disconnect("mouse_entered",self,'mattooltip')
-	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext])
+	if type == null:
+		node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext])
+	else:
+		node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext, type])
 
 func connectslavetooltip(node, person):
 	if node.is_connected("mouse_entered",self,'slavetooltip'):

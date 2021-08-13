@@ -1870,7 +1870,7 @@ func update_buy_list():
 				(newbutton.get_meta("type") == buy_category)
 				|| buy_category == "all"
 			)
-			globals.connectmaterialtooltip(newbutton, item, 'material')
+			globals.connectmaterialtooltip(newbutton, item, "", 'material')
 			if amount > 0:
 				newbutton.get_node("amount").text = str(amount)
 				newbutton.get_node("amount").show()
