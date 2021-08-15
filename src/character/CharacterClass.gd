@@ -642,6 +642,7 @@ func killed():
 	equipment.clear_eqip()
 #	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
+	ResourceScripts.game_party.add_fate(id, tr("DIED"))
 	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
@@ -933,6 +934,7 @@ func escape():
 	equipment.clear_eqip()
 	input_handler.active_character = self
 	input_handler.interactive_message('slave_escape', '', {})
+	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
 	is_active = false #for now, to replace with corresponding mechanic
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')

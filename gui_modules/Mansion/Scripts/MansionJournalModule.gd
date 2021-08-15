@@ -299,6 +299,7 @@ func select_character_for_quest(reqs):
 	input_handler.ShowSlaveSelectPanel(self, 'character_selected', reqs.statreqs)
 
 func character_selected(character):
+	ResourceScripts.game_party.add_fate(character.id, tr("SOLD")) #or not sold
 	ResourceScripts.game_party.remove_slave(character, true)
 	selected_req.completed = true
 	CompleteQuest()

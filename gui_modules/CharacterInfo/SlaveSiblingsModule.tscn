@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=23]
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=24]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=25]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=26]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -542,7 +543,7 @@ custom_fonts/font = ExtResource( 23 )
 text = "Parents"
 align = 1
 
-[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Parents"]
+[node name="panel" type="Control" parent="RelativesPanel/Relatives/Parents"]
 visible = false
 margin_top = 48.0
 margin_right = 275.0
@@ -560,12 +561,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="RelativesPanel/Relatives/Parents/panel"]
+[node name="name" type="Button" parent="RelativesPanel/Relatives/Parents/panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 117.0
+theme = ExtResource( 26 )
 text = "FULL NAME"
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -583,7 +584,7 @@ custom_fonts/font = ExtResource( 23 )
 text = "Siblings"
 align = 1
 
-[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Siblings"]
+[node name="panel" type="Control" parent="RelativesPanel/Relatives/Siblings"]
 visible = false
 margin_top = 48.0
 margin_right = 276.0
@@ -601,12 +602,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="RelativesPanel/Relatives/Siblings/panel"]
+[node name="name" type="Button" parent="RelativesPanel/Relatives/Siblings/panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 117.0
+theme = ExtResource( 26 )
 text = "FULL NAME"
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -624,7 +625,7 @@ custom_fonts/font = ExtResource( 23 )
 text = "Children"
 align = 1
 
-[node name="panel" type="TextureButton" parent="RelativesPanel/Relatives/Children"]
+[node name="panel" type="Control" parent="RelativesPanel/Relatives/Children"]
 visible = false
 margin_top = 48.0
 margin_right = 276.0
@@ -642,12 +643,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="RelativesPanel/Relatives/Children/panel"]
+[node name="name" type="Button" parent="RelativesPanel/Relatives/Children/panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 117.0
+theme = ExtResource( 26 )
 text = "FULL NAME"
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
