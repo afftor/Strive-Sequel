@@ -1,10 +1,23 @@
+0.5.3a
+Added recipe for gauntlets and worker gloves to crafts
+Added bondages to Aliron and villages shops and fighters guild 
+Nerfed obsidian reputation price from 100 to 60
+Added Energy gem to mages reputation shop
+Slightly changed speed bonuses provided by some classes
+Fixed quest dungeons causing crashes
+Fixed crafting time for maid headband
+Fixed tooltip for shop items
+0.5.3
+Added "Bath" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
+Added an option to switch Daisy's sprite if purchased her alternative clothes
+Added new subquest for Amelia with a scene
+Added Relatives table to character info
 Base work task production is reduced by 15% (makes unskilled workers slightly worse)
 Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
 Stat bonus effect for food production slightly nerfed
 Slightly reduced prostitution gold income
-Added "Resting" Upgrade: characters resting at mansion will slowly regain obedience
-Added more information to food consumption tooltip
-Lowered number of classes random characters receive on average on higher difficulty
+Lowered number of classes random characters receive on average on higher levels
 Slightly increased Advanced Armor material costs
 Tailor task is now affected by Hunting Knife as crafting tool
 Reduced some early upgrade prices
@@ -13,6 +26,7 @@ All food by characters is now consumed at 12 pm
 Stable speed boost per level increased from 20% to 30%
 Fixed food being consumed by characters twice as fast
 Fixed Aire generating with incorrect age which led to omitted description
+Fixed Kurdan generating with random skin
 Fixed smith/tailor/alchemy start at 2 workers instead of 1
 Fixed some missing descriptions
 Fixed autosave not storing the progress of following hour

@@ -167,7 +167,7 @@ func check_skill_prof(skill):
 	return false
 
 #tasks
-func assign_to_task(taskcode, taskproduct, iterations = -1):
+func assign_to_task(taskcode, taskproduct):
 	#remove existing work
 	remove_from_task()
 	if taskcode == '':
@@ -202,7 +202,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
-		iterations = iterations,
 		messages = [],
 		mod = task.mod}
 	else:
@@ -213,7 +212,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
-		iterations = iterations,
 		messages = [],
 		mod = ""}
 	dict.workers.append(parent.id)

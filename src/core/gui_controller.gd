@@ -190,8 +190,8 @@ func close_top_window():
 		return
 	if typeof(node) == TYPE_STRING:
 		return
-	elif ResourceScripts.core_animations.BeingAnimated.has(node):
-		return
+#    elif ResourceScripts.core_animations.BeingAnimated.has(node):
+#        return
 	if node != null:
 		node.hide()
 	windows_opened.erase(node)

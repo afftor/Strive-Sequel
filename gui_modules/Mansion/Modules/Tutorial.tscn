@@ -61,6 +61,9 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Help"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TutorialImage" type="TextureRect" parent="."]
 margin_left = 403.4
@@ -116,9 +119,9 @@ __meta__ = {
 
 [node name="Back" type="TextureButton" parent="."]
 margin_left = 363.519
-margin_top = 914.513
+margin_top = 914.0
 margin_right = 523.519
-margin_bottom = 972.51
+margin_bottom = 971.997
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
@@ -142,9 +145,9 @@ __meta__ = {
 
 [node name="Forward" type="TextureButton" parent="."]
 margin_left = 1173.14
-margin_top = 914.513
+margin_top = 914.0
 margin_right = 1333.14
-margin_bottom = 972.51
+margin_bottom = 971.997
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
@@ -168,9 +171,9 @@ __meta__ = {
 
 [node name="Hide" type="TextureButton" parent="."]
 margin_left = 745.0
-margin_top = 918.0
+margin_top = 914.0
 margin_right = 967.0
-margin_bottom = 976.0
+margin_bottom = 972.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 10 )
@@ -180,10 +183,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Hide"]
-margin_right = 222.0
+margin_left = -6.0
+margin_right = 216.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 2 )
-text = "Hide tutorial"
+text = "CLOSE"
 align = 1
 valign = 1
 __meta__ = {

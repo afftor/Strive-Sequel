@@ -382,7 +382,7 @@ func update_button(newbutton):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
+			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 
 	if !person.xp_module.check_infinite_obedience():
 		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))

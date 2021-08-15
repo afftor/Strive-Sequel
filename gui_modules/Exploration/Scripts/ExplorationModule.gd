@@ -349,9 +349,9 @@ func build_location_description():
 				+ " ("
 				+ tr(active_location.classname)
 				+ ")\n"
-				+ tr("DUNGEONDIFFICULTY")
-				+ ": "
-				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
+#				+ tr("DUNGEONDIFFICULTY")
+#				+ ": "
+#				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			)
 			if active_location.completed == false:
 				text += (

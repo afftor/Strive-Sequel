@@ -734,7 +734,7 @@ var TranslationDict = {
 	TASKMINING_IRON = "Iron",
 	TASKMINING_IRONDESCRIPT = "Work at mines for gathering Iron. Iron is widely used in metal tools, constructions and armor.",
 	TASKMINING_MITHRIL = "Mythril",
-	TASKMINING_MITHRILDESCRIPT = "Work at mines for gathering Mythril - a potent magic alloy recognized for its outstanding quality.",
+	TASKMINING_MITHRILDESCRIPT = "Work at mines for gathering Mythril — a potent magic alloy recognized for its outstanding quality.",
 	TASKMINING_OBSIDIAN = "Obsidian",
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
 	
@@ -1519,7 +1519,7 @@ var TranslationDict = {
 	UPGRADESEX_TIMESDESCRIPT = "Increase number of times you can do sex interactions per day.",
 	UPGRADESEX_TIMEBONUS1 = "Increase daily sex interactions to 2",
 	UPGRADESEX_TIMEBONUS2 = "Increase daily sex interactions to 3",
-	UPGRADERESTING = "Resting",
+	UPGRADERESTING = "Bath",
 	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will slowly regain their Obedience",
 	UPGRADERESTINGBONUS1 = "",
 
@@ -2183,7 +2183,12 @@ var TranslationDict = {
 	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 	TUTORIAL_TATTOO_1 = "Once you've unlocked Beauty Parlor, you can apply tattoos to your characters. Tattoos provide permanent bonuses and require ink crafted at Alchemy tab. To access Tattoo menu use the corresponding button at inventory screen.",
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
-
+	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
+	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
+	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit ‘Confirm’ after selecting the characters you've sent. ",
+	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
+	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
+	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
 
 	ITEMHAIRDYE = "Hair Dye",
 	ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
@@ -2596,7 +2601,7 @@ var TranslationDict = {
 	XARIENCOUNTER9REPLY1 = "I've brought the elf you requested",
 	XARIENCOUNTER9REPLY2 = "Not yet, I'll be back",
 	XARI_ENCOUNTER_APPRENTICE_OPTION = "I don't think Myr or Mages' Guild would like me wasting time for this (Apprentice)",
-	XARI_ENCOUNTER_APPRENTICE = "- Gods, you are no fun at all. Fine, I don't want those geezers anywhere around here, so take your books and leave.",
+	XARI_ENCOUNTER_APPRENTICE = "— Gods, you are no fun at all. Fine, I don't want those geezers anywhere around here, so take your books and leave.",
 	XARIENCOUNTER10 = "— Hmm not bad, I'll take it. Now, if you excuse me... Oh, I guess you can take your books and go. Don't worry, I'll send this lad back right after we are done. \n\n [name] gives you a worried look as they disappear behind the locked door. \n\n After a few hours [name] returns back with an expression of exhausted bliss on [his] face.",
 	MAGESELECTION4_1 = "— You di... You've slept with her!?",
 	MAGESELECTION4_1REPLY1 = "Was my grin too wide?",
@@ -2715,9 +2720,6 @@ var TranslationDict = {
 	EXPLORATIONTUTORIAL2 = "Do note, that melee attacks can't be performed by back row while front row is present, and back row also can't be targeted by melee attacks at the same time. On the right of the combat team you can find available items. They can be used by dragging and dropping on active characters.",
 	EXPLORATIONTUTORIAL3 = "You can also use spells to heal while in preparation, but keep an eye at mana levels or catalyst requirements.",
 
-	TRAVELINGTUTORIAL1 = "",
-	TRAVELINGTUTORIAL2 = "",
-	TRAVELINGTUTORIAL3 = "",
 
 
 	CRAFTTUTORIAL1 = "While in the Craft Menu, select the crafting category from the top of the screen.",
@@ -2728,10 +2730,6 @@ var TranslationDict = {
 	CRAFTTUTORIAL6 = "Each item has its own required production time. To process any craft, you need to assign a character to it. You can do so from their occupation menu, or right from the Craft screen. Only characters at the mansion can craft.",
 	CRAFTTUTORIAL7 = "If you decide to assign crafters from the Craft screen, select characters to be assigned, then click confirm.You can also select them from the occupation menu.",
 	CRAFTTUTORIAL8 = "Once you are done, at the left side of the screen you'll see new progress for the items being worked on.",
-
-	JOBTUTORIAL1 = "",
-	JOBTUTORIAL2 = "",
-	JOBTUTORIAL3 = "",
 
 	NOSLAVESINMARKET = "No Slaves Avaliable.",
 	RESETLOADCHARPROFESSION = "Class doesn't match current guild.\nStarting class will be reseted.",
@@ -2904,9 +2902,9 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
 	FINDFRED_ROGUE_OPTION = "You fuckers were sold out, the city militia is already on this way here (Rogue)",
-	FINDFRED_ROGUE = """Merc:- Shit! What did this asshole...
+	FINDFRED_ROGUE = """Merc:— Shit! What did this asshole...
 
-Merc Leader:- Damnit, I knew these bastards could not be trusted. Retreat!
+Merc Leader:— Damnit, I knew these bastards could not be trusted. Retreat!
 
 Mercs quickly escape without realizing your bluff, leaving you with their prisoner.""",
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
@@ -5425,83 +5423,84 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 
 
 
-	DAISY_EXTRA_STRATUP = "- H-hello, [Master]. How can I serve you?",
+	
+DAISY_EXTRA_STRATUP = "— H-hello, [Master]. How can I serve you?",
 	DAISY_EXTRA_OPTION_1_1 = "Why don't we have you use your dress' better form?",
 	DAISY_EXTRA_OPTION_1_2 = "You can cover yourself ",
-	DAISY_EXTRA_REPLY_1_1_NO = """- I-if you wish so, [master]. 
+	DAISY_EXTRA_REPLY_1_1_NO = """— I-if you wish so, [master]. 
 
-Daisy looks worried but does not dare to object your request. With a simple move her uniform reveals her private parts to your delight.""",
-	DAISY_EXTRA_REPLY_1_1_YES = """- Please, enjoy the sight of my body, [Master]. 
+Daisy looks worried but does not dare to object to your request. With a simple move her uniform reveals her private parts to your delight.""",
+	DAISY_EXTRA_REPLY_1_1_YES = """— Please, enjoy the sight of my body, [Master]. 
 
-Daisy unbashedly obeys your request. With a simple move her uniform reveals her private parts to your delight.""",
-	DAISY_EXTRA_REPLY_1_2_NO = """- Thank goodness...
+Daisy unabashedly obeys your request. With a simple move her uniform reveals her private parts to your delight.""",
+	DAISY_EXTRA_REPLY_1_2_NO = """— Thank goodness...
 
-Daisy looks relieved as she fixes her clothes to more concealed shape. """,
-	DAISY_EXTRA_REPLY_1_2_YES = """- As you wish, [Master]. 
+Daisy looks relieved as she fixes her clothes to a more concealed shape. """,
+	DAISY_EXTRA_REPLY_1_2_YES = """— As you wish, [Master]. 
 
 Daisy nonchalantly fixes her dress and awaits your further orders.""",
 	
-	AMELIA_SILK_STARTUP = """- I've noticed you were doing quite a lot for us recently. But we are having a minor issue I'd be glad if you could help with. One of our wealthy customers has made a request for special costumes. 
+	AMELIA_SILK_STARTUP = """— I've noticed you were doing quite a lot for us recently. But we are having a minor issue I'd be glad if you could help with. One of our wealthy customers has made a request for special costumes. 
 
-- However, we lack in resources to produce those. If you could get us 50 pieces of Silk we'd be glad to purchase it for 2.000 gold and a spare costume. I'm sure it's no sweat for you.""",
+— However, we lack the resources to produce those. If you could get us 50 pieces of Silk we'd be glad to purchase it for 2.000 gold and a spare costume. I'm sure it's no sweat for you.""",
 	AMELIA_SILK_OPTION_START = "I've got the silk you need",
-	AMELIA_SILK_REPLY_START = "- I knew I could rely on you, [name]. Here's the reward I've promised. You know, since you are so resourceful, I'd like to provide you with an additional reward for this. How does a special massage sounds to you?",
+	AMELIA_SILK_REPLY_START = "— I knew I could rely on you, [name]. Here's the reward I've promised. You know, since you are so resourceful, I'd like to provide you with an additional reward for this. How does a special massage sounds to you?",
 	AMELIA_SILK_OPTION_1_1 = "Sure, why not",
 	AMELIA_SILK_OPTION_1_2 = "I think I gonna refuse",
 	AMELIA_SILK_REPLY_1_2 = """Amelia looks somewhat disappointed at your response.
 
-- That's too bad. Alright then, good luck with your day.""",
-	AMELIA_SILK_REPLY_1_1_1 = """- Sweet, let me show you one of our exquisite private rooms.""",
+— That's too bad. Alright then, good luck with your day.""",
+	AMELIA_SILK_REPLY_1_1_1 = """— Sweet, let me show you one of our exquisite private rooms.""",
 	AMELIA_SILK_REPLY_1_1_2 = """Amelia leads you to one of the rooms. A dimly lit space is filled with thin fragrance and features a comfortable table at the center. By instruction you remove your upper clothes and lay down on it with your back wide open.
 
-- At first I thought about letting my best student to take care of it, but then I thought it would be no fun. Aren't you handsome?
+— At first I thought about letting my best student take care of it, but then I thought it would be no fun. Aren't you handsome?
 
 You relax as Amelia gently goes over your back, firmly rubbing and hitting it, however after a half minute you feel something isn't so simple. As she further pushes you, you begin to feel an arousement.""",
-	AMELIA_SILK_REPLY_1_1_3 = """- While massage is a technique which helps to relax and relieve stress, it surely would be a waste if we didn't learn to use for more.
+	AMELIA_SILK_REPLY_1_1_3 = """— While massage is a technique which helps to relax and relieve stress, it surely would be a waste if we didn't learn to use more.
 
-Amelia's voice turned softer and quiter as she almost magically aroused you by touching you in the correct places.
+Amelia's voice turned softer and quieter as she almost magically aroused you by touching you in the correct places.
 
-- He-he, I can see you are enjoying this as well. It's a honor to be served by the guild's leader herself, you know. """,
-	AMELIA_SILK_REPLY_1_1_4 = """With Amelia's poke you instinctively moved on your back sliding out of your pants, revealing fully erect member.
+— He-he, I can see you are enjoying this as well. It's an honor to be served by the guild's leader herself, you know. """,
+	AMELIA_SILK_REPLY_1_1_4 = """With Amelia's poke you instinctively moved on your back sliding out of your pants, revealing a fully erect member.
 
-- Oh, that's one fiesty manhood you have. It's a pleasure to serve you.
+— Oh, that's one feisty manhood you have. It's a pleasure to serve you.
 
 She gracefully bared her voluptuous breasts and pushed your cock between them.""",
-	AMELIA_SILK_REPLY_1_1_5 = """As she lustly massaged you, she began using her mouth. Despite her status you can feel her sincere willfullness to serve you as she masterfully gave you one of the best blowjobs you could imagine.""",
+	AMELIA_SILK_REPLY_1_1_5 = """As she lustly massaged you, she began using her mouth. Despite her status you can feel her sincere willfulness to serve you as she masterfully gave you one of the best blowjobs you could imagine.""",
 	AMELIA_SILK_REPLY_1_1_6 = """At the moment of orgasm Amelia took off the cock out of her mouth as it rained over her face.
 
-- Wow, you've come a lot. Such a strong smell too. The massage was to your liking, wasn't it?""",
-	AMELIA_SILK_REPLY_1_1_7 = """As you return to the reception Amelia gives you slightly more personal smile.
+— Wow, you've come a lot. Such a strong smell too. The massage was to your liking, wasn't it?""",
+	AMELIA_SILK_REPLY_1_1_7 = """As you return to the reception Amelia gives you a slightly more personal smile.
 
-- I hope this will fortify our business relationship even further.""",
+— I hope this will fortify our business relationship even further.""",
 	AMELIA_SILK_OPTION_2_1 = "Must say, you've blew me away",
 	AMELIA_SILK_OPTION_2_2 = "Pleasure doing \"Business\" with you",
 	AMELIA_SILK_OPTION_2_3 = "Maybe we could meet at some other day?",
-	AMELIA_SILK_REPLY_2_1AND2 = "- Likewise. Now, if you excuse me, there's other things I've pushed away and now have to attend to. Please come again.",
-	AMELIA_SILK_REPLY_2_3 = "- O-ho, aren't you daring? Very well, I promise to think about it. For now, though, I have some other business needed to be taken care of.",
+	AMELIA_SILK_REPLY_2_1AND2 = "— Likewise. Now, if you excuse me, there's other things I've pushed away and now have to attend to. Please come again.",
+	AMELIA_SILK_REPLY_2_3 = "— O-ho, aren't you daring? Very well, I promise to think about it. For now, though, I have some other business needed to be taken care of.",
 	
 	AIRE_RECRUITMENT_OPTION_1 = "I want the elf girl",
-	AIRE_RECRUITMENT_REPLY_1 = "- Oh, the princess servant? Fine, we have no further use for her.",
-	AIRE_RECRUITMENT_REPLY_BAD_START = "- You think you can make me serve you after all you've done?",
+	AIRE_RECRUITMENT_REPLY_1 = "— Oh, the princess servant? Fine, we have no further use for her.",
+	AIRE_RECRUITMENT_REPLY_BAD_START = "— You think you can make me serve you after all you've done?",
 	AIRE_RECRUITMENT_OPTION_BAD_1 = "It's never too late to try fix things up",
 	AIRE_RECRUITMENT_OPTION_BAD_2 = "It does not matter what I think, you will submit",
 	AIRE_RECRUITMENT_OPTION_BAD_3 = "Maybe I just want to torture you personally",
-	AIRE_RECRUITMENT_REPLY_BAD_1 = """Aire gives you a look which does not let any hint that she buys it. 
+	AIRE_RECRUITMENT_REPLY_BAD_1 = """Aire gives you a look which does not give any hint that she buys it. 
 
-- I'm not a fool you are taking me for. One way or another I'll make you pay """,
+— I'm not a fool you are taking me for. One way or another I'll make you pay """,
 	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """and will rescue Ana from you. """,
-	AIRE_RECRUITMENT_REPLY_BAD_2 = """Aire falls silent upon hearing your dismiss. Without further discussion you take her away.""",
-	AIRE_RECRUITMENT_REPLY_BAD_3 = """- Having you around is a torture on it's own. 
+	AIRE_RECRUITMENT_REPLY_BAD_2 = """Aire falls silent upon hearing your dismissal. Without further discussion you take her away.""",
+	AIRE_RECRUITMENT_REPLY_BAD_3 = """— Having you around is a torture on it's own. 
 
 Aire seems unimpressed by your remark and quietly follows your orders.""",
-	AIRE_RECRUITMENT_REPLY_GOOD_START = """- You've really done it... I guess I have no choice but to join you now?""",
+	AIRE_RECRUITMENT_REPLY_GOOD_START = """— You've really done it... I guess I have no choice but to join you now?""",
 	AIRE_RECRUITMENT_OPTION_GOOD_1 = """I'd not force you against your will""",
 	AIRE_RECRUITMENT_OPTION_GOOD_2 = "You'd prefer to stay at the dungeon instead?",
 	AIRE_RECRUITMENT_OPTION_GOOD_3 = "That's right, you better be obedient like a good dog",
-	AIRE_RECRUITMENT_REPLY_GOOD_1 = "- I appreciate it. Anyway, I'd rather not sit on my ass anymore.",
-	AIRE_RECRUITMENT_REPLY_GOOD_2 = "- Touché. Very well, I can't wait to check on Ana.",
+	AIRE_RECRUITMENT_REPLY_GOOD_1 = "— I appreciate it. Anyway, I'd rather not sit on my ass anymore.",
+	AIRE_RECRUITMENT_REPLY_GOOD_2 = "— Touché. Very well, I can't wait to check on Ana.",
 	AIRE_RECRUITMENT_REPLY_GOOD_3 = "Aire stays quiet and your words but her face shows that she doubts her initial opinion about you.",
-	
+
 	
 	
 	

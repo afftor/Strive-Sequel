@@ -281,8 +281,8 @@ func cooldown_tick():
 	skills.cooldown_tick()
 
 
-func assign_to_task(taskcode, taskproduct, iterations = -1):
-	xp_module.assign_to_task(taskcode, taskproduct, iterations)
+func assign_to_task(taskcode, taskproduct):
+	xp_module.assign_to_task(taskcode, taskproduct)
 
 func remove_from_task(remember = false):
 	xp_module.remove_from_task(remember)
