@@ -335,3 +335,11 @@ func checkifrelatives(id1, id2):
 	return false
 
 
+func add_fate(ch_id, value):
+	if !relativesdata.has(ch_id):
+		var person = characters_pool.get_char_by_id(ch_id)
+		if person == null: return
+		createrelativesdata(person)
+	var data = relativesdata[ch_id]
+	data.fate = value
+
