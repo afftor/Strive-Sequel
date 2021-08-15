@@ -50,7 +50,7 @@ var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','ta
 var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
-var work_rules = ['ration', 'shifts', 'constrain', 'luxury']
+var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive']
 
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
