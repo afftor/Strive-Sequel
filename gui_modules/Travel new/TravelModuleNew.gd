@@ -154,8 +154,21 @@ func build_locations_list():
 		var adata = ResourceScripts.game_world.areas[tdata.area]
 		if !adata.unlocked: continue
 		var cdata = adata[tdata.category]
-		if !cdata.has(id): continue #should add here currently nonexisted marking location link to delete
+		if !cdata.has(id): 
+			continue #should add here currently nonexisted marking location link to delete
+		
 		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = 0, quest = false}
+		if temp.type == "capital":
+			if adata.has("capital_code"):
+				if adata.capital_code == "elf_capital":
+					var capital = false
+					if ResourceScripts.game_progress.completed_quests.has("princess_search"):
+						capital = true
+					for k in ResourceScripts.game_progress.active_quests:
+						if k.code == "princess_search" and (k.stage == "stage3" or k.stage == "stage4" or k.stage == "stage5"): 
+							capital = true
+					if !capital:
+						continue
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):
 				temp.quest = true
