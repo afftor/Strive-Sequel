@@ -55,6 +55,7 @@ var lands = {
 			energyshard = {min = 2, max = 5, chance = 1},
 			trap = {min = 5, max = 10, chance = 1},
 			ink_base = {min = 2, max = 3, chance = 1},
+			bandage = {min = 2, max = 6, chance = 1},
 			itempool0 = {items = ['dagger','club'], min = 1, max = 2, chance = 1},
 			#itempool00 = {items = ['worker_outfit'], min = 3, max = 3, chance = 1},
 			itempool1 = {items = ['sword','axe','spear','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife'], min = 3, max = 6, chance = 0.8},
@@ -227,7 +228,7 @@ var factiondata = {
 		background = "fighters_guild",
 		reputation_shop = {
 			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000},
-			items = {bonedragon = [1,500]},
+			items = {bandage = [1,3], bonedragon = [1,500]},
 		}
 	},
 	mages = {
@@ -252,7 +253,7 @@ var factiondata = {
 		background = "mages_guild",
 		reputation_shop = {
 			classes = {alchemist = 500, archmage = 1000, dominator = 1500},
-			items = {oblivion_potion = [1,300],unstable_concoction = [10,100]},
+			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75]},
 		}
 	},
 	workers = {
@@ -289,7 +290,7 @@ var factiondata = {
 		background = "workers_guild",
 		reputation_shop = {
 			classes = {smith = 500, foreman = 500, engineer = 750},
-			items = {leatherdragon = [1,500], obsidian = [1,100]},
+			items = {leatherdragon = [1,500], obsidian = [1,60]},
 		}
 	},
 	servants = {
@@ -403,6 +404,7 @@ var locations = {
 			blue_moss = {min = 1, max = 2, chance = 0.2},
 			salvia = {min = 2, max = 6, chance = 0.6},
 			lifeshard = {min = 2, max = 6, chance = 0.9},
+			bandage = {min = 4, max = 6, chance = 0.8},
 			itempool1 = {items = ['axe','pickaxe','fishingtools','sickle','club'], min = 1, max = 2, chance = 0.8},
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool4 = {items = ['beer','alcohol'], min = 2, max = 6, chance = 0.8},
@@ -432,6 +434,7 @@ var locations = {
 			blue_moss = {min = 1, max = 2, chance = 0.2},
 			salvia = {min = 2, max = 6, chance = 0.6},
 			lifeshard = {min = 3, max = 6, chance = 0.9},
+			bandage = {min = 3, max = 5, chance = 0.9},
 			itempool1 = {items = ['axe','sickle','club'], min = 1, max = 2, chance = 0.8},
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool3 = {items = ['chest_base_cloth','legs_base_cloth'], min = 1, max = 2, chance = 0.8},
@@ -459,6 +462,7 @@ var locations = {
 			iron = {min = 10, max = 20, chance = 0.8},
 			salvia = {min = 2, max = 6, chance = 0.6},
 			lifeshard = {min = 3, max = 6, chance = 0.9},
+			bandage = {min = 2, max = 7, chance = 0.6},
 			itempool1 = {items = ['axe','sickle','club'], min = 1, max = 2, chance = 0.8},
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool3 = {items = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], min = 1, max = 1, chance = 1},
@@ -1755,6 +1759,7 @@ var pregen_characters = {
 		hair_length = 'ear',
 		hair_style = 'straight',
 		eye_color = 'brown',
+		skin = 'green',
 		physics_factor = 3,
 		wits_factor = 3,
 		charm_factor = 1,

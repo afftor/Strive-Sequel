@@ -534,7 +534,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/Discipline2.png",
 				description = "Labor efficiency increased by 50%%",
 				limit = 1,
 				t_name = 'discipline',

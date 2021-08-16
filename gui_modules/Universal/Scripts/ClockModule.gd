@@ -40,9 +40,6 @@ func _process(delta):
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
 	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
-		# + " - "
-		# + str(ResourceScripts.game_party.get_food_consumption())
-	# )
 
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		$TimeNode/HidePanel.visible = gamepaused_nonplayer
@@ -123,8 +120,6 @@ func update_turns_label():
 
 func advance_hour():
 	ResourceScripts.game_globals.hour += 1
-	if ResourceScripts.game_globals.hour >= variables.HoursPerDay:
-		advance_day()
 	for i in ResourceScripts.game_party.characters.values():
 		i.pretick()
 	for i in ResourceScripts.game_party.characters.values():
@@ -144,9 +139,10 @@ func advance_hour():
 		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
 	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD") + text)
 	
-#	$gold.text = str(state.money)
-#	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
+	
+	if ResourceScripts.game_globals.hour >= variables.HoursPerDay:
+		advance_day()
 
 
 func advance_day():
@@ -168,7 +164,9 @@ func advance_day():
 				if k.has('shop'):
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
+	
 	globals.autosave()
+	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()
 

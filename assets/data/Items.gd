@@ -960,7 +960,7 @@ var materiallist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/bandage.png"),
-		price = 5,
+		price = 8,
 		type = 'component',
 		tier = 'easy',
 		tags = ['no_random'],
@@ -3390,7 +3390,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'maid_headband',
-		workunits = 54,
+		workunits = 10,
 		worktype = 'tailor'
 	},
 	lacy_underwear = {
@@ -3402,7 +3402,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'lacy_underwear',
-		workunits = 15,
+		workunits = 25,
 		worktype = 'tailor'
 	},
 	seethrough_underwear = {
@@ -3438,7 +3438,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'craftsman_suit',
-		workunits = 30,
+		workunits = 60,
 		worktype = 'tailor'
 	},
 	latex_suit = {
@@ -3450,7 +3450,32 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'latex_suit',
-		workunits = 30,
+		workunits = 75,
+		worktype = 'tailor'
+	},
+	gauntlets = {
+		code = 'gauntlets',
+		materials = {steel = 15, leatherthick = 10},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'forge', value = 2}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'gauntlets',
+		workunits = 65,
+		worktype = 'smith'
+		
+	},
+	worker_gloves = {
+		code = 'gauntlets',
+		materials = {leatherthick = 15, clothsilk = 10},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 2}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'worker_gloves',
+		workunits = 65,
 		worktype = 'tailor'
 	},
 

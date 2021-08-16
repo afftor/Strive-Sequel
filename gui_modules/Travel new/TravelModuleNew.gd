@@ -577,7 +577,8 @@ func hide():
 #		gui_controller.clock.restoreoldspeed()
 	if get_parent().mansion_state == 'travels':
 		get_parent().mansion_state = 'default'
-	.hide()
+	else:
+		.hide()
 
 
 func confirm_travel():

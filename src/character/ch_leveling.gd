@@ -167,7 +167,7 @@ func check_skill_prof(skill):
 	return false
 
 #tasks
-func assign_to_task(taskcode, taskproduct, iterations = -1):
+func assign_to_task(taskcode, taskproduct):
 	#remove existing work
 	remove_from_task()
 	if taskcode == '':
@@ -202,7 +202,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
-		iterations = iterations,
 		messages = [],
 		mod = task.mod}
 	else:
@@ -213,7 +212,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
-		iterations = iterations,
 		messages = [],
 		mod = ""}
 	dict.workers.append(parent.id)
@@ -491,7 +489,7 @@ func get_progress_resource(tempresource, count_crit = false):
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2

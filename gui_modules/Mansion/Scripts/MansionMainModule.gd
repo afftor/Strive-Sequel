@@ -57,7 +57,7 @@ var hovered_person = null
 var is_entered = false
 
 
-var mansion_state = "default" setget mansion_state_set
+var mansion_state = "" setget mansion_state_set
 var mansion_prev_state
 
 
@@ -154,6 +154,7 @@ func set_active_person(person):
 
 func mansion_state_set(state):
 	# input_handler.CurrentScene = self
+	if state == mansion_state: return
 	mansion_prev_state = mansion_state
 	mansion_state = state
 	match_state()
@@ -277,7 +278,6 @@ func open_char_info():
 	gui_controller.slavepanel.set_state("default")
 	gui_controller.slavepanel.SummaryModule.show_summary()
 	gui_controller.slavepanel.show()
-	#gui_controller.slavepanel.update()
 	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.previous_screen.hide()
 	gui_controller.current_screen = gui_controller.slavepanel
@@ -800,7 +800,6 @@ func test_mode():
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
-		print(ResourceScripts.game_party.calculate_food_consumption())
 		# ResourceScripts.game_progress.show_tutorial = true
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
@@ -832,8 +831,8 @@ func test_mode():
 
 
 
-
-		#input_handler.interactive_message('servants_election_finish6', '', {})
+#		ResourceScripts.game_res.materials.meat = 0
+#		input_handler.interactive_message('celena_shrine_find', '', {})
 		#input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 

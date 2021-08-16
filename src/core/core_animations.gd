@@ -108,15 +108,22 @@ func OpenAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease
 	node.raise()
 
 func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
+#	var t1 = OS.get_ticks_msec()
 	if BeingAnimated.has(node) == true:
+#		print("a_skipped")
 		return
 	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), speed, transition_type, ease_type)
+#	print("a_start " + str(OS.get_ticks_msec()))
 	tweennode.start()
+#	var t2 = OS.get_ticks_msec()
 	yield(get_tree().create_timer(speed - 0.05), 'timeout')
+#	yield(tweennode, 'tween_completed')
+#	var t3 = OS.get_ticks_msec()
 	node.visible = false
 	BeingAnimated.erase(node)
+#	print("%d: %d - %d" % [t1, t2, t3])
 
 func OldOpenAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -143,8 +150,9 @@ func OldCloseAnimation(node):
 	BeingAnimated.erase(node)
 
 func FadeAnimation(node, time = 0.3, delay = 0):
-	#if BeingAnimated.has(node) == true:
-	#	return
+#	var t1 = OS.get_ticks_msec()
+#	if BeingAnimated.has(node) == true:
+#		return
 	#BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
@@ -152,13 +160,18 @@ func FadeAnimation(node, time = 0.3, delay = 0):
 	#BeingAnimated.erase(node)
 
 func UnfadeAnimation(node, time = 0.3, delay = 0):
-	#if BeingAnimated.has(node) == true:
-	#	return
-	#BeingAnimated.append(node)
+#	var t1 = OS.get_ticks_msec()
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+#	var t2 = OS.get_ticks_msec()
 	tweennode.start()
-	#BeingAnimated.erase(node)
+	yield(tweennode, 'tween_completed')
+#	var t3 = OS.get_ticks_msec()
+	BeingAnimated.erase(node)
+#	print("%d: %d - %d" % [t1, t2, t3])
 
 
 func UnshadeAnimation(node, time = 0.3, delay = 0):

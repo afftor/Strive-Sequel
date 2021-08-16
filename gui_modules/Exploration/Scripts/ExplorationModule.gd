@@ -349,9 +349,9 @@ func build_location_description():
 				+ " ("
 				+ tr(active_location.classname)
 				+ ")\n"
-				+ tr("DUNGEONDIFFICULTY")
-				+ ": "
-				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
+#				+ tr("DUNGEONDIFFICULTY")
+#				+ ": "
+#				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			)
 			if active_location.completed == false:
 				text += (
@@ -1871,7 +1871,7 @@ func update_buy_list():
 				(newbutton.get_meta("type") == buy_category)
 				|| buy_category == "all"
 			)
-			globals.connectmaterialtooltip(newbutton, item, 'material')
+			globals.connectmaterialtooltip(newbutton, item, "", 'material')
 			if amount > 0:
 				newbutton.get_node("amount").text = str(amount)
 				newbutton.get_node("amount").show()

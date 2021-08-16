@@ -49,7 +49,6 @@ var scriptdict = {
 onready var node_data = {
 	input_handler.NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
 	input_handler.NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
-	input_handler.NODE_TUTORIAL : {name = 'tutorial_node', mode = 'scene', scene = preload("res://src/scenes/TutorialNode.tscn")},
 	input_handler.NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
 	input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/InteractiveMessageModuleAnimated.tscn")},
 	input_handler.NODE_DIALOGUE_T2 : {name = 'dialogue_t2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/QuestDialogue.tscn")},

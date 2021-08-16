@@ -40,7 +40,9 @@ func fix_serialization():
 	for p in babies:
 		babies[p] = dict2inst(babies[p])
 		babies[p].fix_serialization()
-	pass
+	for dir in relativesdata.values():
+		if dir.father == -1: dir.father = null
+		if dir.mother == -1: dir.mother = null
 
 
 func fix_import():
@@ -332,4 +334,12 @@ func checkifrelatives(id1, id2):
 		return true
 	return false
 
+
+func add_fate(ch_id, value):
+	if !relativesdata.has(ch_id):
+		var person = characters_pool.get_char_by_id(ch_id)
+		if person == null: return
+		createrelativesdata(person)
+	var data = relativesdata[ch_id]
+	data.fate = value
 
