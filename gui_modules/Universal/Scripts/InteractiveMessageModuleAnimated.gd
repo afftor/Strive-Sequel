@@ -41,16 +41,16 @@ func open(scene):
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
-
+	
 	if scene.has("variations"):
 		select_scene_variation_based_on_data(scene)
 		get_tree().get_root().set_disable_input(false)
 		return
-
+	
 	if scene.has("dialogue_type") && gui_controller.dialogue_window_type != scene.dialogue_type:
 		set_dialogue_window_type(scene)
 		return
-
+	
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
@@ -59,18 +59,18 @@ func open(scene):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
-
+	
 	if wait_for != 0:
 		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN)
 		wait_for = 0
-
+	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		#print_debug("waiting")
 		yield(self, "TransitionFinished")
 		#print_debug("finished WAIT")
 		doing_transition = false
-
+	
 	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
@@ -81,8 +81,8 @@ func open(scene):
 	handle_loots(scene)
 	generate_scene_text(scene)
 	set_enemy(scene)
-	handle_scene_options(scene)
-
+	handle_scene_options()
+	
 	yield(get_tree().create_timer(0.5), "timeout")
 	hold_selection = false
 	show_buttons()
@@ -91,8 +91,9 @@ func open(scene):
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
-
+	
 	show()
+
 
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
@@ -201,7 +202,7 @@ func add_shrine_options(scene):
 		match shrineoptions[i].input:
 			'material':
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_material'], reqs = [], text = "DIALOGUESHRINEITEM"})
-			'character':
+			'character': #this can cause lock if called at empty combat party
 				scene.options.insert(0,{code = 'shrine_option', args = ['character'], active_char_translate = true, reqs = [], text = "DIALOGUESHRINECHARACTER"})
 			'destroy':
 				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
@@ -211,7 +212,7 @@ func shrine_option(option):
 		'select_material':
 			globals.ItemSelect(self, 'material', 'shrine_mat_select')
 		"character":
-			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character)
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character) 
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
 		'material_selected':
@@ -315,15 +316,6 @@ func event_person_selected(person):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
-func select_option(number):
-	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:
-		var button = $ScrollContainer/VBoxContainer.get_child(number-1)
-		if button.disabled == false && button.visible == true:
-			button.toggle_mode = true
-			button.pressed = true
-			hold_selection = true
-			yield(get_tree().create_timer(0.2), "timeout")
-			button.emit_signal("pressed")
 
 func close(transition = false):
 	ch1 = null
@@ -732,11 +724,11 @@ func set_enemy(scene):
 		dialogue_enemy = scene.set_enemy
 
 
-func handle_scene_options(scene):
+func handle_scene_options():
 		var option_number = 1
-		var options = scene.options
-		for i in options:
-			# yield(get_tree(), 'idle_frame')
+		var options = current_scene.options
+		for id in range(options.size()):
+			var i = options[id]
 			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
 				i.previous_dialogue_option = [i.previous_dialogue_option]
 			if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)):
@@ -750,6 +742,7 @@ func handle_scene_options(scene):
 				else:
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.set_meta("id", id)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
 			i.text_key = i.text
 			i.text = tr(i.text)
@@ -760,60 +753,81 @@ func handle_scene_options(scene):
 			newbutton.get_node("Label").bbcode_text = i.text
 			newbutton.hotkey = option_number
 			yield(get_tree(), 'idle_frame')
-			#newbutton.get_node("hotkey").text = str(option_number)
-#			if newbutton.get_node("Label").get_v_scroll().is_visible():
-#				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
-			#newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
 			newbutton.get_node("Label").rect_size.y += 8
 			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
-			newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
-
-			if i.has('select_person'):
-				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
-			elif i.has('remove_person'):
-				newbutton.connect("pressed", self, 'remove_person', [i.code])
-			elif i.has('remove_non_master'):
-				newbutton.connect("pressed", self, 'remove_non_master', [i.code])
-			elif i.code == 'shrine_option':
-				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
-			elif i.code == 'chest_mimic_force_open':
-				newbutton.connect("pressed",self,'chest_mimic_force_open')
-			elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
-				var event_type = 'story_event'
-				if scenedata.scenedict[i.code].has('default_event_type'):
-					event_type = scenedata.scenedict[i.code].default_event_type
-				newbutton.connect("pressed", input_handler, 'interactive_message_follow', [i.code, event_type, {}])
-			elif scene.tags.has("skill_event"):
-				if !i.code == 'cancel_skill_usage':
-					newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
-				elif i.code == 'cancel_skill_usage':
-					newbutton.connect("pressed", input_handler.active_character, "restore_skill_charge", [gui_controller.mansion.SkillModule.active_skill])
-					newbutton.connect("pressed", self, "hide")
-			elif scene.tags.has("custom_effect"):
-				newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
-			elif scene.tags.has("dialogue_scene") && !(i.code in ['close','quest_fight']):
-				newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
-			else:
-				var args
-				if i.has('args') == true: args = i.args
-				if args != null:
-					newbutton.connect("pressed", self, i.code, [args])
-				else:
-					newbutton.connect("pressed", self, i.code)
-
+			newbutton.connect("pressed",self,'select_option', [option_number - 1])
+			
 			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
 				newbutton.status = 'seen'
 			if i.has('type'):
 				match i.type:
 					'next_dialogue':
 						newbutton.status = 'next_dialogue'
-
-
+			
 			if i.has('disabled') && i.disabled == true:
 				newbutton.status = 'disabled'
 				disable = true
-			if i.has('bonus_effects'):
-				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
 			newbutton.disabled = disable
 			option_number += 1
+
+
+func select_option(number):
+#	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:
+#		var button = $ScrollContainer/VBoxContainer.get_child(number-1)
+#		if button.disabled == false && button.visible == true:
+#			button.toggle_mode = true
+#			button.pressed = true
+#			hold_selection = true
+#			yield(get_tree().create_timer(0.2), "timeout")
+#			button.emit_signal("pressed")
+	if hold_selection: return
+	if $ScrollContainer/VBoxContainer.get_child_count() <= number: return
+	var button = $ScrollContainer/VBoxContainer.get_child(number)
+	if button.disabled or !button.visible: 
+		return
+	
+	button.toggle_mode = true
+	button.pressed = true
+	hold_selection = true
+	var options = current_scene.options
+	var option = options[button.get_meta("id")]
+	var code = option.code
+	
+	input_handler.dialogue_option_selected(option) #need to remove this at next rework
+	if option.has('bonus_effects'):
+		globals.common_effects(option.bonus_effects)
+	
+	if option.has('select_person'):
+		select_person_for_next_event(code)
+	elif option.has('remove_person'):
+		remove_person(code)
+	elif option.has('remove_non_master'):
+		remove_non_master(code)
+	elif code == 'shrine_option':
+		shrine_option(option.args[0])
+	elif option.code == 'chest_mimic_force_open':
+		chest_mimic_force_open()
+	elif current_scene.tags.has('linked_event') && !code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
+		var event_type = 'story_event'
+		if scenedata.scenedict[code].has('default_event_type'):
+			event_type = scenedata.scenedict[code].default_event_type
+		input_handler.interactive_message_follow(code, event_type, {})
+	elif current_scene.tags.has("skill_event"):
+		if !code == 'cancel_skill_usage':
+			input_handler.active_character.use_social_skill(code, input_handler.target_character)
+		elif code == 'cancel_skill_usage':
+			input_handler.active_character.restore_skill_charge(gui_controller.mansion.SkillModule.active_skill)
+			hide()
+	elif current_scene.tags.has("custom_effect"):
+		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
+	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
+		dialogue_next(code, option.dialogue_argument)
+	else:
+		var args
+		if option.has('args'): args = option.args
+		if args != null:
+			call(code, args)
+		else:
+			call(code)
+
 

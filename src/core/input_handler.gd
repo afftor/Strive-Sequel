@@ -410,7 +410,7 @@ func _input(event):
 			var num = event.as_text().replace("Kp ",'')
 			var tnode = get_tree().get_root().get_node_or_null("dialogue")
 			if tnode != null and tnode.visible:
-				tnode.select_option(int(num))
+				tnode.select_option(int(num) - 1)
 			else:
 				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
 					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
@@ -815,7 +815,7 @@ func calculate_number_from_string_array(arr, caster, target):
 		firstrun = false
 	return endvalue
 
-func dialogue_option_selected(option):
+func dialogue_option_selected(option): 
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = get_spec_node(NODE_DIALOGUE)
 	if option.has("change_dialogue_type"):
