@@ -1457,7 +1457,7 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Meet Leader",
-			reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 1000}, {type = 'active_quest_stage', value = 'amelia_silk_quest', stage = 'stage1', state = false}],
+			reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 1000}, {type = 'dialogue_seen', check = false, value = 'AMELIA_SILK_STARTUP'}],
 			target = 'amelia_silk_start',
 			target_option = 1,
 		},

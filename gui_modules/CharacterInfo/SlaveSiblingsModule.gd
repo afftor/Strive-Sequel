@@ -22,6 +22,8 @@ func _ready():
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
 	globals.connecttexttooltip($FoodFilterTooltip, tr("INFOFOODFILTER"))
 	globals.connecttexttooltip($SexTraitsTooltip, tr("INFOSEX_TRAITS"))
+	$work_rules/ration.connect("button_down", self, "update")
+	$work_rules/ration.connect("button_up", self, "update")
 	
 	
 
