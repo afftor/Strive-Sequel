@@ -835,7 +835,8 @@ func test_mode():
 
 #		ResourceScripts.game_res.materials.meat = 0
 #		input_handler.interactive_message('celena_shrine_find', '', {})
-		#input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
+#		input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
+		input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
 #		input_handler.interactive_message('princess_recriut_intermission_3', '', {})
