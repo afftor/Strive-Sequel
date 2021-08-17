@@ -71,7 +71,7 @@ func remove_item(itemcode, number):
 	while number > 0:
 		var item
 		for i in items.values():
-			if i.itembase == itemcode && i.owner == null:
+			if (i.code == itemcode or i.itembase == itemcode) and i.owner == null:
 				item = i
 				break
 		if item != null:
