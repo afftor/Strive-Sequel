@@ -1434,7 +1434,7 @@ func no_message():
 	input_handler.interactive_message(no, '', {})
 
 func get_nquest_for_rep(value):
-	if value > variables.reputation_tresholds.back() :
+	if value >= variables.reputation_tresholds.back() :
 		return variables.reputation_tresholds.size()
 	var n = 0
 	while value >= variables.reputation_tresholds[n]:
