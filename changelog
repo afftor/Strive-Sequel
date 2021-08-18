@@ -1,9 +1,18 @@
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
 0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
 Added recipe for gauntlets and worker gloves to crafts
 Added bondages to Aliron and villages shops and fighters guild 
 Nerfed obsidian reputation price from 100 to 60
 Added Energy gem to mages reputation shop
 Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
 Fixed quest dungeons causing crashes
 Fixed crafting time for maid headband
 Fixed tooltip for shop items
