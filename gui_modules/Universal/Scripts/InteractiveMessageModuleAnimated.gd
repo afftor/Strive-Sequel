@@ -140,11 +140,13 @@ func show_full_info(person):
 var stored_scene
 
 func dialogue_next(code, argument):
+	hold_selection = true
 	previous_dialogue_option = argument
 	input_handler.interactive_message_follow(code, '', '')
 
 
 func chest_mimic_force_open():
+	hold_selection = true
 	var chest_data = input_handler.scene_loot
 	match chest_data.lock.type:
 		'mimic':
@@ -349,11 +351,13 @@ func capture_from_scene(order = 0):
 
 
 func recruit(capture = false):
+	hold_selection = true
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
 		else:
 			input_handler.SystemMessage("Population limit reached")
+		hold_selection = false
 		return
 	input_handler.active_character.recruit(capture)
 	close()
@@ -394,6 +398,7 @@ func set_baby_name(text):
 	close()
 
 func open_chest():
+	hold_selection = true
 	var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
 	if !gui_controller.windows_opened.has(loot_win):
 		gui_controller.windows_opened.append(loot_win)
@@ -428,6 +433,7 @@ func evil_event():
 	input_handler.SystemMessage("This feature is not implemented yet")
 
 func leave():
+	hold_selection = true
 	close()
 
 func fight_skirmish():
@@ -780,7 +786,8 @@ func select_option(number):
 #			hold_selection = true
 #			yield(get_tree().create_timer(0.2), "timeout")
 #			button.emit_signal("pressed")
-	if hold_selection: return
+	if hold_selection: 
+		return
 	if $ScrollContainer/VBoxContainer.get_child_count() <= number: return
 	var button = $ScrollContainer/VBoxContainer.get_child(number)
 	if button.disabled or !button.visible: 
@@ -788,7 +795,7 @@ func select_option(number):
 	
 	button.toggle_mode = true
 	button.pressed = true
-	hold_selection = true
+#	hold_selection = true
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
@@ -808,6 +815,7 @@ func select_option(number):
 	elif option.code == 'chest_mimic_force_open':
 		chest_mimic_force_open()
 	elif current_scene.tags.has('linked_event') && !code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
+		hold_selection = true
 		var event_type = 'story_event'
 		if scenedata.scenedict[code].has('default_event_type'):
 			event_type = scenedata.scenedict[code].default_event_type
@@ -821,6 +829,7 @@ func select_option(number):
 	elif current_scene.tags.has("custom_effect"):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
+		hold_selection = true
 		dialogue_next(code, option.dialogue_argument)
 	else:
 		var args
