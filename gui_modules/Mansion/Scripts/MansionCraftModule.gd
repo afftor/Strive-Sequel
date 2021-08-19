@@ -212,7 +212,7 @@ func rebuild_scheldue():
 	for i in ResourceScripts.game_res.craftinglists[craft_category]:
 		var newnode = input_handler.DuplicateContainerTemplate($CraftScheldue/ScrollContainer/VBoxContainer)
 		var recipe = Items.recipes[i.code]
-		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
+		var item = Items.get(recipe.resultitemtype + 'list')[recipe.resultitem]
 		newnode.get_node("icon").texture = item.icon
 		if item.type == 'gear' && item.crafttype == 'modular':
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
