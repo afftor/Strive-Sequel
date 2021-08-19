@@ -335,6 +335,7 @@ func close(transition = false):
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(gui_controller.mansion.SkillModule.active_skill)
+	input_handler.scene_characters.pop_back()
 	close()
 
 func repeat():
@@ -824,8 +825,7 @@ func select_option(number):
 		if !code == 'cancel_skill_usage':
 			input_handler.active_character.use_social_skill(code, input_handler.target_character)
 		elif code == 'cancel_skill_usage':
-			input_handler.active_character.restore_skill_charge(gui_controller.mansion.SkillModule.active_skill)
-			hide()
+			cancel_skill_usage()
 	elif current_scene.tags.has("custom_effect"):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
