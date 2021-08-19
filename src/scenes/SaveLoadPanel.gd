@@ -82,6 +82,7 @@ func update_file_action():
 
 func SavePanelOpen():
 #	show()
+	input_handler.text_field_input = true #not really correct 
 	saveloadmode = 'save'
 	$ImportMode.visible = false
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
@@ -261,3 +262,10 @@ func _on_ImportMode_pressed():
 		loadmode = "import"
 	else:
 		loadmode = "load"
+
+
+func hide():
+	input_handler.text_field_input = false
+	print("+")
+	.hide()
+	pass
