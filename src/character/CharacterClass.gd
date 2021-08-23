@@ -436,6 +436,14 @@ func has_status(status):
 	var res = effects.has_status(status)
 	return res
 
+
+func add_champion_trait():
+	if ResourceScripts.game_globals.date < 2: return
+	tags.push_back('champion')
+	statlist.add_champion_trait()
+	#tutorial part here
+	input_handler.ActivateTutorial('champions') #stub. not sure i'm right
+
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)
 

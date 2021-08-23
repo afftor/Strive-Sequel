@@ -234,6 +234,87 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'wits_factor'}],
 		sub_effects = []
 	},
+	e_champ_sturdy = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
+			{type = 'stat_add', stat = 'hitrate', value = 30},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "champ_sturdy",
+				limit = 1,
+				t_name = 'champ_sturdy'
+			}
+		],
+		sub_effects = [],
+	},
+	e_champ_nimble = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'evasion', value = 0.15},
+			{type = 'stat_add', stat = 'evasion', value = 30},
+			{type = 'stat_add', stat = 'speed', value = 15},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "champ_nimble",
+				limit = 1,
+				t_name = 'champ_nimble'
+			}
+		],
+		sub_effects = [],
+	},
+	e_champ_strong = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
+			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "champ_strong",
+				limit = 1,
+				t_name = 'champ_strong'
+			}
+		],
+		sub_effects = [],
+	},
+	e_champ_deadly = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.35},
+			{type = 'stat_add_p', stat = 'hitrate', value = 0.3},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "champ_deadly",
+				limit = 1,
+				t_name = 'champ_deadly'
+			}
+		],
+		sub_effects = [],
+	},
+	e_champ_precise = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hitrate', value = 0.25},
+			{type = 'stat_add', stat = 'evasion', value = 50},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "champ_precise",
+				limit = 1,
+				t_name = 'champ_precise'
+			}
+		],
+		sub_effects = [],
+	},
 	#skills
 	e_target_kill = {
 		type = 'trigger',

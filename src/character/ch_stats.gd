@@ -89,18 +89,19 @@ func custom_stats_get():
 		array.invert()
 		res['sexuals'] = (array[0] + array[1] + array[2])/3
 	if res.has('hpmax'):
+		var tres = res.hpmax
 		if statlist.is_person == true:
-			var tres = variables.basic_max_hp
-			if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
-			if statlist.race != '':
-				var race = statlist.race
-				if variables.new_stat_bonuses_syntax == true:
-					if bonuses.has('hpfactor'): tres *= bonuses['hpfactor']
-				else:
-					if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
-			if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
-			if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
-			res['hpmax'] = tres
+			tres = variables.basic_max_hp
+		if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
+		if statlist.race != '':
+			var race = statlist.race
+			if variables.new_stat_bonuses_syntax == true:
+				if bonuses.has('hpfactor'): tres *= bonuses['hpfactor']
+			else:
+				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
+		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
+		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
+		res['hpmax'] = tres
 	if res.has('mpmax'):
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
@@ -430,6 +431,18 @@ func create_s_trait_select(trait):
 		unlocked_sex_traits.clear()
 		sex_traits[trait.code] = true
 		unlocked_sex_traits.push_back(trait.code)
+
+func add_champion_trait():
+	var n = 1
+	if globals.rng.randf() < variables.doublechampchance:
+		n = 2
+	var list = variables.champtraits.duplicate()
+	for i in range(n):
+		var trait = list[globals.rng.randi_range(0, list.size() - 1)]
+		list.erase(trait)
+		add_trait(trait)
+
+
 
 func get_stat_data():
 	var res = {}
