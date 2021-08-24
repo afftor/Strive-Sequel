@@ -112,7 +112,15 @@ func showup(node, person):
 #		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		var authority_text = ""
 		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
-			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
+#			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
+			var obed_val = person.get_obed_percent_value()
+			$Panel/obedlabel.text = "%d%%" % obed_val
+			if obed_val > 40:
+				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.green)
+			elif obed_val > 15:
+				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.yellow)
+			else:
+				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
 		if person.xp_module.check_infinite_obedience() || person.xp_module.predict_obed_time() > 0:

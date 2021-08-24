@@ -33,6 +33,11 @@ var resists_damage_list = ['melee', 'ranged', 'aoe', 'heal']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
+
+var champchance = 0.1
+var doublechampchance = 0.1
+var champtraits = ['champ_sturdy', 'champ_nimble', 'champ_strong', 'champ_deadly', 'champ_precise']
+
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
 var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','authority_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']

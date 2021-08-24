@@ -305,8 +305,47 @@ var traits = {
 		visible = false,
 		effects = ['e_tr_hide'],
 	},
+	champ_sturdy = {
+		code = 'champ_sturdy',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_champ_sturdy'],
+	},
+	champ_nimble = {
+		code = 'champ_nimble',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_champ_nimble'],
+	},
+	champ_strong = {
+		code = 'champ_strong',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_champ_strong'],
+	},
+	champ_deadly = {
+		code = 'champ_deadly',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_champ_deadly'],
+	},
+	champ_precise = {
+		code = 'champ_precise',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_champ_precise'],
+	},
 }
-
 var sex_traits = { #only for interaction tab
 	dislike_petting = {
 		code = "dislike_petting",

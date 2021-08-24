@@ -1014,7 +1014,17 @@ func makerandomgroup(enemygroup):
 			if temparray.size() > 0:
 				combatparty[temparray[randi()%temparray.size()]] = i.units
 			i.number -= 1
-
+	
+	#handle champions
+	var champarr = []
+	for pos in combatparty:
+		if combatparty[pos] == null: continue
+		if rng.randf() < variables.champchance:
+			champarr.push_back(pos)
+	while champarr.size() > 3:
+		champarr.remove(rng.randi_range(0, champarr.size()-1))
+	for pos in champarr:
+		combatparty[pos] += "_champion"
 	return combatparty
 
 func complete_location(locationid):

@@ -97,6 +97,11 @@ func set_stat(stat, value):
 		return
 	statlist.set_stat(stat, value)
 
+
+func get_obed_percent_value():
+	return statlist.get_obed_percent_value()
+
+
 func add_stat_bonuses(ls:Dictionary):
 	statlist.add_stat_bonuses(ls)
 
@@ -435,6 +440,14 @@ func can_use_skill(skill):
 func has_status(status):
 	var res = effects.has_status(status)
 	return res
+
+
+func add_champion_trait():
+	if ResourceScripts.game_globals.date < 2: return
+	tags.push_back('champion')
+	statlist.add_champion_trait()
+	#tutorial part here
+	input_handler.ActivateTutorial('champions') #stub. not sure i'm right
 
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)

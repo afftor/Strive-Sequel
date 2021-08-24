@@ -376,13 +376,21 @@ func make_panel_for_character(panel, ch):
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(ch.hp)) + "/" + str(round(ch.get_stat('hpmax'))) + "\nMP: " + str(round(ch.mp)) + "/" + str(round(ch.get_stat('mpmax')))
 
 	if !ch.xp_module.check_infinite_obedience():
-		newbutton.get_node("obed").text = str(ceil(ch.xp_module.predict_obed_time()))
-		if ch.xp_module.predict_obed_time() <= 0:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-		elif ch.xp_module.predict_obed_time() <= 24:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+#		newbutton.get_node("obed").text = str(ceil(ch.xp_module.predict_obed_time()))
+#		if ch.xp_module.predict_obed_time() <= 0:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+#		elif ch.xp_module.predict_obed_time() <= 24:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+#		else:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
+		var obed_val = ch.get_obed_percent_value()
+		newbutton.get_node("obed").text = "%d%%" % obed_val
+		if obed_val > 40:
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.green)
+		elif obed_val > 15:
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		else:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
 	else:
 		newbutton.get_node("obed").text = "∞"
 
