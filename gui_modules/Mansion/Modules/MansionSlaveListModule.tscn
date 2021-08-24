@@ -382,6 +382,7 @@ margin_top = 6.0
 margin_right = 556.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 0 )
+mouse_filter = 1
 custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

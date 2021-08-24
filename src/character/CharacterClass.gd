@@ -97,6 +97,11 @@ func set_stat(stat, value):
 		return
 	statlist.set_stat(stat, value)
 
+
+func get_obed_percent_value():
+	return statlist.get_obed_percent_value()
+
+
 func add_stat_bonuses(ls:Dictionary):
 	statlist.add_stat_bonuses(ls)
 

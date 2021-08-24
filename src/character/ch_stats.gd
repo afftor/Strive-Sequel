@@ -166,6 +166,10 @@ func get_obed_cap():
 		'high':
 			return 288
 
+
+func get_obed_percent_value():
+	return int(100 * get_stat('obedience') / get_obed_cap())
+
 func get_short_name():
 	var text = ''
 	if statlist.nickname == '':
