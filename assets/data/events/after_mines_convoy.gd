@@ -180,15 +180,6 @@ var data = {
 		}],
 	},
 
-	rebel_convoy_lose = {
-		image = null, tags = [],
-		text = [ {text = "", reqs = []} ],
-		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]
-			}
-		]
-	},
-
 	after_mines_convoy_3 = {
 		image = 'refugees', tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_5", reqs = []}],

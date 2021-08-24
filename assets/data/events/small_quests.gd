@@ -1,4 +1,13 @@
 var data = {
+	generic_lose_scene = {
+		image = null, tags = [],
+		text = [ {text = "LOSE_MESSAGE", reqs = []} ],
+		options = [ {
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effect = [{code = "lose_game"}]
+			}
+		]
+	},
+	
 	amelia_silk_start = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_SILK_STARTUP", reqs = [], }],
