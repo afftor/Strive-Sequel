@@ -108,8 +108,10 @@ func return_to_mansion():
 		location = 'travel'
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time)))
+		globals.emit_signal("slave_departed")
 	else:
 		location = ResourceScripts.game_world.mansion_location
+		globals.emit_signal("slave_arrived")
 
 func return_recruit():
 	if ResourceScripts.game_progress.instant_travel == false:
@@ -119,3 +121,4 @@ func return_recruit():
 		location = 'travel'
 	else:
 		location = ResourceScripts.game_world.mansion_location
+		globals.emit_signal("slave_arrived")

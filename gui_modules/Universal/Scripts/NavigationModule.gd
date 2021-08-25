@@ -47,7 +47,7 @@ func sort_locations(locations_array):
 	return capitals + settlements + dungeons + quest_locations
 
 
-func build_accessible_locations():
+func build_accessible_locations(args = null):
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
 	input_handler.ClearContainer(nav)
 	var location_array = ["aliron"]

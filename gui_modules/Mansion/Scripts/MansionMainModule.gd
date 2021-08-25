@@ -81,6 +81,8 @@ func _ready():
 		test_mode()
 		mansion_state_set("default")
 	var is_new_game = false
+#	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
+#	globals.connect('slave_departed', $NavigationModule, "build_accessible_locations")
 	if globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
@@ -152,11 +154,20 @@ func set_active_person(person):
 	SlaveListModule.prev_selected_location = SlaveListModule.selected_location
 	slave_list_manager()
 
+
+func hide():
+	.hide()
+	mansion_state_set("hidden")
+
+
 func mansion_state_set(state):
 	# input_handler.CurrentScene = self
-	if state == mansion_state: return
-	mansion_prev_state = mansion_state
+	if state == mansion_state:
+		print(state)
+		return
+	if mansion_state != 'hidden': mansion_prev_state = mansion_state
 	mansion_state = state
+	if mansion_state == 'hidden': return
 	match_state()
 	slave_list_manager()
 	get_node("TutorialButton").show()

@@ -188,10 +188,12 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_COMBAT_S)
 		tchar.displaynode.rebuildbuffs()
+	set_process_input(true)
 	select_actor()
 
 func FinishCombat(victory = true):
 	HideFighterStats()
+	set_process_input(false)
 	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
