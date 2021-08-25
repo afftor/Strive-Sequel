@@ -77,7 +77,7 @@ func apply_temp_effect(eff_id):
 			parent.play_sfx('resist')
 		return
 	if input_handler.combat_node != null:
-		input_handler.combat_node.combatlogadd("\n%s is afflicted by %s." % [parent.get_stat('name'), eff_n])
+		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_stat('name'), eff_n])
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)

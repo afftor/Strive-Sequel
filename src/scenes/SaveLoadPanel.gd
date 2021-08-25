@@ -266,6 +266,5 @@ func _on_ImportMode_pressed():
 
 func hide():
 	input_handler.text_field_input = false
-	print("+")
 	.hide()
 	pass

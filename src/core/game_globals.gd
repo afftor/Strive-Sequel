@@ -5,6 +5,7 @@ extends Reference
 var starting_preset = ''
 var original_version
 var newgame = false
+var difficulty = 'medium'
 
 #dynamic part
 var date = 1

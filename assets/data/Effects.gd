@@ -234,23 +234,23 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'wits_factor'}],
 		sub_effects = []
 	},
-	e_champ_sturdy = {
+	e_rare_sturdy = {
 		type = 'static',
 		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
-			{type = 'stat_add', stat = 'hitrate', value = 30},
+			{type = 'stat_add_p', stat = 'hpmax', value = 1.5},
+			{type = 'stat_add', stat = 'armorpenetration', value = 30},
 		],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/hitrate.png",
-				description = "champ_sturdy",
+				description = "Rare: Sturdy\nIncreased Health and Armor Penetration",
 				limit = 1,
-				t_name = 'champ_sturdy'
+				t_name = 'rare_sturdy'
 			}
 		],
 		sub_effects = [],
 	},
-	e_champ_nimble = {
+	e_rare_nimble = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'evasion', value = 0.15},
@@ -259,15 +259,15 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/hitrate.png",
-				description = "champ_nimble",
+				icon = "res://assets/images/traits/speed.png",
+				description = "Rare: Nimble\nIncreased Evasion and Speed",
 				limit = 1,
-				t_name = 'champ_nimble'
+				t_name = 'rare_nimble'
 			}
 		],
 		sub_effects = [],
 	},
-	e_champ_strong = {
+	e_rare_strong = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
@@ -275,15 +275,15 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/hitrate.png",
-				description = "champ_strong",
+				icon = "res://assets/images/traits/firedamagebonus.png",
+				description = "Rare: Strong\nIncreased Damage and Maximum Healt",
 				limit = 1,
-				t_name = 'champ_strong'
+				t_name = 'rare_strong'
 			}
 		],
 		sub_effects = [],
 	},
-	e_champ_deadly = {
+	e_rare_deadly = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.35},
@@ -291,15 +291,15 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/hitrate.png",
-				description = "champ_deadly",
+				icon = "res://assets/images/traits/critrate.png",
+				description = "Rare: Deadly\nIncreased Damage and Hitrate",
 				limit = 1,
-				t_name = 'champ_deadly'
+				t_name = 'rare_deadly'
 			}
 		],
 		sub_effects = [],
 	},
-	e_champ_precise = {
+	e_rare_precise = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'hitrate', value = 0.25},
@@ -307,10 +307,10 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/hitrate.png",
-				description = "champ_precise",
+				icon = "res://assets/images/traits/bowextradamage.png",
+				description = "Rare: Precise\nIncreased Evasion and Hitrate",
 				limit = 1,
-				t_name = 'champ_precise'
+				t_name = 'rare_precise'
 			}
 		],
 		sub_effects = [],

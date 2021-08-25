@@ -34,9 +34,9 @@ var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 
-var champchance = 0.1
-var doublechampchance = 0.1
-var champtraits = ['champ_sturdy', 'champ_nimble', 'champ_strong', 'champ_deadly', 'champ_precise']
+var enemy_rarechance = 0.1
+var enemy_doublerarechance = 0.1
+var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_deadly', 'rare_precise']
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
@@ -226,6 +226,13 @@ var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
+
+var obed_mod_per_difficuty = {
+	easy = 1.0,
+	medium = 0.75,
+	hard = 0.5
+}
+
 
 var master_charm_quests_gold_bonus = {
 	1 : 0,

@@ -216,7 +216,6 @@ func rebuild_scheldue():
 		newnode.get_node("icon").texture = item.icon
 		if item.type == 'gear' && item.crafttype == 'modular':
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
-		print(item)
 		newnode.get_node("Label").text = tr(item.name) + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
 		newnode.set_meta("selected_craft", i)

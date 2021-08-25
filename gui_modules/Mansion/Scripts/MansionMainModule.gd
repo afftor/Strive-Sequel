@@ -597,6 +597,7 @@ func test_mode():
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
+		character.unlock_class("apprentice")
 		character.is_players_character = true
 #		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 #		character.create('HalfkinCat', 'random', 'random')

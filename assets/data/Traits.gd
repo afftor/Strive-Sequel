@@ -305,45 +305,45 @@ var traits = {
 		visible = false,
 		effects = ['e_tr_hide'],
 	},
-	champ_sturdy = {
-		code = 'champ_sturdy',
+	rare_sturdy = {
+		code = 'rare_sturdy',
 		name = '',
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['e_champ_sturdy'],
+		effects = ['e_rare_sturdy'],
 	},
-	champ_nimble = {
-		code = 'champ_nimble',
+	rare_nimble = {
+		code = 'rare_nimble',
 		name = '',
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['e_champ_nimble'],
+		effects = ['e_rare_nimble'],
 	},
-	champ_strong = {
-		code = 'champ_strong',
+	rare_strong = {
+		code = 'rare_strong',
 		name = '',
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['e_champ_strong'],
+		effects = ['e_rare_strong'],
 	},
-	champ_deadly = {
-		code = 'champ_deadly',
+	rare_deadly = {
+		code = 'rare_deadly',
 		name = '',
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['e_champ_deadly'],
+		effects = ['e_rare_deadly'],
 	},
-	champ_precise = {
-		code = 'champ_precise',
+	rare_precise = {
+		code = 'rare_precise',
 		name = '',
 		descript = '',
 		icon = null,
 		visible = false,
-		effects = ['e_champ_precise'],
+		effects = ['e_rare_precise'],
 	},
 }
 var sex_traits = { #only for interaction tab

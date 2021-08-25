@@ -295,11 +295,11 @@ func get_stat_gain_rate(statname):
 func add_stat(statname, value, revert = false):
 	if statname == 'loyaltyObedience':# no revert mode
 		value *= 0.33 * get_stat('tame_factor')
-		statlist.obedience += value
+		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'submissionObedience':# no revert mode
 		value *= 0.33 * get_stat('timid_factor')
-		statlist.obedience += value
+		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
 		for ss in statlist.sex_skills:
@@ -436,11 +436,11 @@ func create_s_trait_select(trait):
 		sex_traits[trait.code] = true
 		unlocked_sex_traits.push_back(trait.code)
 
-func add_champion_trait():
+func add_rare_trait():
 	var n = 1
-	if globals.rng.randf() < variables.doublechampchance:
+	if globals.rng.randf() < variables.enemy_doublerarechance:
 		n = 2
-	var list = variables.champtraits.duplicate()
+	var list = variables.rare_enemy_traits.duplicate()
 	for i in range(n):
 		var trait = list[globals.rng.randi_range(0, list.size() - 1)]
 		list.erase(trait)

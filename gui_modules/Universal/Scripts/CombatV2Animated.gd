@@ -344,7 +344,7 @@ func victory():
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
 		var count = 1
-		if tchar.tags.has('champion'):
+		if tchar.tags.has('rare'):
 			count = 2
 			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
 		else:
@@ -913,17 +913,17 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		var champion = false
-		if tempname.ends_with('_champion'):
-			tempname = tempname.trim_suffix('_champion')
-			champion = true
+		var rare = false
+		if tempname.ends_with('_rare'):
+			tempname = tempname.trim_suffix('_rare')
+			rare = true
 		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
 		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
-		if champion:
-			tchar.add_champion_trait()
+		if rare:
+			tchar.add_rare_trait()
 		
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)

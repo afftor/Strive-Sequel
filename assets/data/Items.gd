@@ -3467,7 +3467,7 @@ var recipes = {
 		
 	},
 	worker_gloves = {
-		code = 'gauntlets',
+		code = 'worker_gloves',
 		materials = {leatherthick = 15, clothsilk = 10},
 		items = {},
 		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 2}],
