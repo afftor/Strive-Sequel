@@ -3407,7 +3407,7 @@ var atomic = {
 	a_regen = {type = 'heal', value = [['parent_args', 0],'*',0.25]},
 	a_burn = {type = 'damage', source = 'fire', value = ['parent_args', 0]},
 	a_poison = {type = 'damage', source = 'earth', value = ['parent_args', 0]},
-	a_bleed = {type = 'damage', source = 'normal', value = ['parent_args', 0]},
+	a_bleed = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.25]},
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
 };
 #needs filling

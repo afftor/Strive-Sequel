@@ -1911,3 +1911,8 @@ var pregen_characters = {
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 }
+
+func _ready():
+	for loc in dungeons.values():
+		if !loc.has('purchase_area'):
+			loc.purchase_area = 'plains'

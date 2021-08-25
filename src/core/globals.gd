@@ -7,6 +7,7 @@ signal hour_tick
 signal task_added
 signal slave_added
 signal slave_arrived
+signal slave_departed
 
 var hour_turns_set = 1
 

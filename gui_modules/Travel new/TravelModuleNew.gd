@@ -593,6 +593,7 @@ func confirm_travel():
 			person.travel.location = location_selected.id
 			person.travel.area  = location_selected.area
 	input_handler.PlaySound("ding")
+	globals.emit_signal("slave_departed")
 	characters.clear()
 	update_lists()
 
