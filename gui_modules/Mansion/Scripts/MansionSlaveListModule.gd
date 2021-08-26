@@ -115,6 +115,8 @@ func is_in_area():
 func double_clicked(event, button):
 	if event is InputEventMouseButton and event.doubleclick:
 		# if get_parent().active_person == null:
+		if button.disabled:
+			return
 		get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
 

@@ -96,6 +96,7 @@ func use_skill(target):
 	person.use_social_skill(active_skill, target)
 	# update()
 	get_parent().mansion_state = "default"
+	get_parent().slave_list_manager()
 
 func change_panel_type():
 	if get_parent().active_person == null:
