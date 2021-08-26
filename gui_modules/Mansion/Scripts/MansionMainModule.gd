@@ -187,7 +187,7 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	if gui_controller.clock != null:
+	if gui_controller.clock != null and visible:
 		gui_controller.clock.show()
 		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
@@ -636,7 +636,8 @@ func test_mode():
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 8
 
-		character.set_stat('obedience', 0)
+		character.set_stat('obedience', 50)
+		character.unlock_class("apprentice")
 		#character.fear = 25
 		#character.base_exp = 99
 		character.set_stat('charm_factor', 5)
