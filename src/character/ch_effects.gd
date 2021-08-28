@@ -143,6 +143,15 @@ func remove_effect(eff_id):
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 #		'area': remove_area_effect(eff_id)
 
+func clean_broken_effects():
+	for e in temp_effects + static_effects + triggered_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff == null:
+			print("broken effect %s is removed" % e)
+			temp_effects.erase(e)
+			static_effects.erase(e)
+			triggered_effects.erase(e)
+
 func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	eff.remove()
@@ -194,10 +203,14 @@ func process_event(ev, skill = null):
 #		else:
 #			eff.process_event(event)
 
+
 func get_all_buffs():
 	var res = {}
 	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
+		if eff == null:
+			print(parent.id)
+			continue
 		#eff.calculate_args()
 		for b in eff.buffs:
 			b.calculate_args()

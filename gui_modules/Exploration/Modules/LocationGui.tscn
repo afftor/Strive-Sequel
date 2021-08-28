@@ -1218,3 +1218,11 @@ custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
+
+[node name="ce" type="Button" parent="."]
+visible = false
+margin_left = 341.719
+margin_top = 915.7
+margin_right = 603.719
+margin_bottom = 1023.7
+text = "event"

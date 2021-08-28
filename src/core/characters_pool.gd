@@ -103,6 +103,10 @@ func deserialize(tmp):
 		characters[hid].fix_serialization()
 
 
+func clean_broken_effects():
+	for ch in ResourceScripts.game_party.characters.values() + characters.values():
+		ch.clean_broken_effects()
+
 
 func get_babies_from_data(tmp):
 	pass
