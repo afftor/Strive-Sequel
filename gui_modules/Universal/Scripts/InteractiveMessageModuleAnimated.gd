@@ -22,6 +22,7 @@ func _ready():
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
+	
 
 
 func hide_dialogue(action = "hide"):
@@ -272,7 +273,7 @@ func lockpick_attempt(person):
 
 func select_person_for_next_event(code):
 	var reqs
-	if code.find('trap') != -1 or code.find('shrine') != -1:
+	if code.find('trap') != -1 or code.find('shrine') != -1: #imho there should be also a lockpicking events
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
 			{code = 'in_combat_party', value = true}

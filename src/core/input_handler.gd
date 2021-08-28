@@ -38,6 +38,7 @@ signal QuestCompleted
 signal CharacterCreated
 signal EnemyKilled
 signal ButtonUpdated
+signal LootGathered
 
 var last_action_data = {}
 var text_characters = []
