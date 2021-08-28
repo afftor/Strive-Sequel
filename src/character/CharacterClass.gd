@@ -376,6 +376,9 @@ func apply_effect(eff_id):
 	if npc_reference == 'combat_global': return
 	effects.apply_effect(eff_id)
 
+func clean_broken_effects():
+	effects.clean_broken_effects()
+
 func get_static_effect_by_code(code):
 	effects.get_static_effect_by_code(code)
 
