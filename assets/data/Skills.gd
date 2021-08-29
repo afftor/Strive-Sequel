@@ -2188,7 +2188,7 @@ var Skilllist = {
 		target = 'enemy',
 		target_number = 'all',
 		target_range = 'any',
-		damage_type = 'fire',
+		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.65

@@ -450,7 +450,7 @@ func add_rare_trait():
 	tags.push_back('rare')
 	statlist.add_rare_trait()
 	#tutorial part here
-	input_handler.ActivateTutorial('rares') #stub. not sure i'm right
+	#input_handler.ActivateTutorial('rares')
 
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)

@@ -1010,7 +1010,6 @@ func build_spell_panel():
 
 func test_stage(quest, stage):
 	var dict = {value = quest, stage = stage}
-	print(quest, stage)
 	#dict.value = quest
 	#dict.stage = stage
 	if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
@@ -1019,7 +1018,6 @@ func test_stage(quest, stage):
 		else:
 			return false
 	
-	print(ResourceScripts.game_progress.get_active_quest(dict.value))
 	if dict.has('state') && dict.state == false:
 		return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
 	else:

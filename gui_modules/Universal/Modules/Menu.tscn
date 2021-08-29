@@ -543,7 +543,71 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.2
+bbcode_text = "0.5.4
+Obedience is now displayed as percentage
+Default obedience gain is reduced by 25%
+Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Alchemist class is now unlocked from the start while caster is locked by guild points
+Archmage requires both Apprentice and Scholar to learn instead of requiring Caster
+Assassinate now has 3 charges per day instead of 1
+Firebomb base damage increased from 1.1 to 1.4
+All obedience gains with skills is reduced by 25% for now
+Slave delivery quest will not generate on a first week
+Slightly rebalanced some enemy stats
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
+Fixed gauntlets crafting
+Fixed some exploration issues
+0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
+Added recipe for gauntlets and worker gloves to crafts
+Added bondages to Aliron and villages shops and fighters guild 
+Nerfed obsidian reputation price from 100 to 60
+Added Energy gem to mages reputation shop
+Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
+Fixed quest dungeons causing crashes
+Fixed crafting time for maid headband
+Fixed tooltip for shop items
+0.5.3
+Added \"Bath\" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
+Added an option to switch Daisy's sprite if purchased her alternative clothes
+Added new subquest for Amelia with a scene
+Added Relatives table to character info
+Base work task production is reduced by 15% (makes unskilled workers slightly worse)
+Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
+Stat bonus effect for food production slightly nerfed
+Slightly reduced prostitution gold income
+Lowered number of classes random characters receive on average on higher levels
+Slightly increased Advanced Armor material costs
+Tailor task is now affected by Hunting Knife as crafting tool
+Reduced some early upgrade prices
+Mansion slave tooltip now shows max stat including bonus
+All food by characters is now consumed at 12 pm
+Stable speed boost per level increased from 20% to 30%
+Fixed food being consumed by characters twice as fast
+Fixed Aire generating with incorrect age which led to omitted description
+Fixed Kurdan generating with random skin
+Fixed smith/tailor/alchemy start at 2 workers instead of 1
+Fixed some missing descriptions
+Fixed autosave not storing the progress of following hour
+0.5.2b
+Fixed instance of a bug in duncan-fred questline
+Fixed main questline not triggering at milford siege
+Fixed item tooltip getting out of the screen
+Fixed gold from combat not adding to player's money
+Fixed removing characters from mansion keeping them at task counters
+0.5.2a
+Fixed resource gathering at remote locations occassionally not allowing to gather anything
+Fixed sexual traits not being toggleable after being unlocked
+Fixed class unlocking incorrectly in some cases
+0.5.2
 Resource gathering at Mansion now has limited slots but more options
 Added new upgrades for unlocking new resource gathering from Mansion
 Crafting and upgrading jobs now also have limited slots which increase with upgrade level
@@ -976,7 +1040,71 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.2
+text = "0.5.4
+Obedience is now displayed as percentage
+Default obedience gain is reduced by 25%
+Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Alchemist class is now unlocked from the start while caster is locked by guild points
+Archmage requires both Apprentice and Scholar to learn instead of requiring Caster
+Assassinate now has 3 charges per day instead of 1
+Firebomb base damage increased from 1.1 to 1.4
+All obedience gains with skills is reduced by 25% for now
+Slave delivery quest will not generate on a first week
+Slightly rebalanced some enemy stats
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
+Fixed gauntlets crafting
+Fixed some exploration issues
+0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
+Added recipe for gauntlets and worker gloves to crafts
+Added bondages to Aliron and villages shops and fighters guild 
+Nerfed obsidian reputation price from 100 to 60
+Added Energy gem to mages reputation shop
+Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
+Fixed quest dungeons causing crashes
+Fixed crafting time for maid headband
+Fixed tooltip for shop items
+0.5.3
+Added \"Bath\" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
+Added an option to switch Daisy's sprite if purchased her alternative clothes
+Added new subquest for Amelia with a scene
+Added Relatives table to character info
+Base work task production is reduced by 15% (makes unskilled workers slightly worse)
+Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
+Stat bonus effect for food production slightly nerfed
+Slightly reduced prostitution gold income
+Lowered number of classes random characters receive on average on higher levels
+Slightly increased Advanced Armor material costs
+Tailor task is now affected by Hunting Knife as crafting tool
+Reduced some early upgrade prices
+Mansion slave tooltip now shows max stat including bonus
+All food by characters is now consumed at 12 pm
+Stable speed boost per level increased from 20% to 30%
+Fixed food being consumed by characters twice as fast
+Fixed Aire generating with incorrect age which led to omitted description
+Fixed Kurdan generating with random skin
+Fixed smith/tailor/alchemy start at 2 workers instead of 1
+Fixed some missing descriptions
+Fixed autosave not storing the progress of following hour
+0.5.2b
+Fixed instance of a bug in duncan-fred questline
+Fixed main questline not triggering at milford siege
+Fixed item tooltip getting out of the screen
+Fixed gold from combat not adding to player's money
+Fixed removing characters from mansion keeping them at task counters
+0.5.2a
+Fixed resource gathering at remote locations occassionally not allowing to gather anything
+Fixed sexual traits not being toggleable after being unlocked
+Fixed class unlocking incorrectly in some cases
+0.5.2
 Resource gathering at Mansion now has limited slots but more options
 Added new upgrades for unlocking new resource gathering from Mansion
 Crafting and upgrading jobs now also have limited slots which increase with upgrade level

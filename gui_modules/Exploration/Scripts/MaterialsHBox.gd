@@ -9,6 +9,7 @@ func _ready():
 func update():
 	var dungeon = false
 	var selected_location = input_handler.active_location
+	input_handler.ClearContainer(self)
 	if selected_location == null:
 		return
 #	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
@@ -28,7 +29,6 @@ func update():
 			gatherable_resources = selected_location.gather_resources
 		self.visible = true
 		
-	input_handler.ClearContainer(self)
 	if gatherable_resources != null:
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
