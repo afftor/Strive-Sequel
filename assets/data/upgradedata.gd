@@ -580,19 +580,19 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS1"),
 				taskprogress = 75,
-				cost = {woodiron = 100, leatherthick = 100, steel = 50},
+				cost = {wood = 50, leather = 50, iron = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS2"),
 				taskprogress = 250,
-				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
+				cost = {woodiron = 50, leatherthick = 50, steel = 25},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS3"),
-				taskprogress = 250,
-				cost = {bonedragon = 10, leatherdragon = 15, clothethereal = 30},
+				taskprogress = 500,
+				cost = {mithril = 25, leathermythic = 25, clothmagic = 15},
 			},
 		}
 	},

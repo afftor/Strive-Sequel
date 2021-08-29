@@ -115,6 +115,8 @@ func is_in_area():
 func double_clicked(event, button):
 	if event is InputEventMouseButton and event.doubleclick:
 		# if get_parent().active_person == null:
+		if button.disabled:
+			return
 		get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
 
@@ -385,13 +387,22 @@ func update_button(newbutton):
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 
 	if !person.xp_module.check_infinite_obedience():
-		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
-		if person.xp_module.predict_obed_time() <= 0:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-		elif person.xp_module.predict_obed_time() <= 24:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+#		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
+#		if person.xp_module.predict_obed_time() <= 0:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+#		elif person.xp_module.predict_obed_time() <= 24:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+#		else:
+#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
+		var obed_val = person.get_obed_percent_value()
+		newbutton.get_node("obed").text = "%d%%" % obed_val
+		if obed_val > 40:
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.green)
+		elif obed_val > 15:
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		else:
-			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
+			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
+		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d hours" % ceil(person.xp_module.predict_obed_time())) 
 	else:
 		newbutton.get_node("obed").text = "∞"
 

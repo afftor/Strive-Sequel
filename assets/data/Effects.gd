@@ -234,6 +234,87 @@ var effect_table = {
 		args = [{obj = 'app_obj', param = 'wits_factor'}],
 		sub_effects = []
 	},
+	e_rare_sturdy = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 1.5},
+			{type = 'stat_add', stat = 'armorpenetration', value = 30},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "Rare: Sturdy\nIncreased Health and Armor Penetration",
+				limit = 1,
+				t_name = 'rare_sturdy'
+			}
+		],
+		sub_effects = [],
+	},
+	e_rare_nimble = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'evasion', value = 0.15},
+			{type = 'stat_add', stat = 'evasion', value = 30},
+			{type = 'stat_add', stat = 'speed', value = 15},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/speed.png",
+				description = "Rare: Nimble\nIncreased Evasion and Speed",
+				limit = 1,
+				t_name = 'rare_nimble'
+			}
+		],
+		sub_effects = [],
+	},
+	e_rare_strong = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
+			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/firedamagebonus.png",
+				description = "Rare: Strong\nIncreased Damage and Maximum Healt",
+				limit = 1,
+				t_name = 'rare_strong'
+			}
+		],
+		sub_effects = [],
+	},
+	e_rare_deadly = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.35},
+			{type = 'stat_add_p', stat = 'hitrate', value = 0.3},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/critrate.png",
+				description = "Rare: Deadly\nIncreased Damage and Hitrate",
+				limit = 1,
+				t_name = 'rare_deadly'
+			}
+		],
+		sub_effects = [],
+	},
+	e_rare_precise = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hitrate', value = 0.25},
+			{type = 'stat_add', stat = 'evasion', value = 50},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/bowextradamage.png",
+				description = "Rare: Precise\nIncreased Evasion and Hitrate",
+				limit = 1,
+				t_name = 'rare_precise'
+			}
+		],
+		sub_effects = [],
+	},
 	#skills
 	e_target_kill = {
 		type = 'trigger',
@@ -3326,7 +3407,7 @@ var atomic = {
 	a_regen = {type = 'heal', value = [['parent_args', 0],'*',0.25]},
 	a_burn = {type = 'damage', source = 'fire', value = ['parent_args', 0]},
 	a_poison = {type = 'damage', source = 'earth', value = ['parent_args', 0]},
-	a_bleed = {type = 'damage', source = 'normal', value = ['parent_args', 0]},
+	a_bleed = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.25]},
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
 };
 #needs filling

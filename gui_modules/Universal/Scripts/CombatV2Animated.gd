@@ -188,10 +188,12 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_COMBAT_S)
 		tchar.displaynode.rebuildbuffs()
+	set_process_input(true)
 	select_actor()
 
 func FinishCombat(victory = true):
 	HideFighterStats()
+	set_process_input(false)
 	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
@@ -341,39 +343,45 @@ func victory():
 		if i == null: #not sure why was this check added
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
-		rewardsdict.xp += tchar.get_stat('xpreward')
-		var loot = {}
-		for item in Enemydata.loottables[tchar.get_stat('loottable')]:
-			if item[0] == 'gold':
-				rewardsdict.gold += round(rand_range(item[1], item[2]))
-			elif Items.materiallist.has(item[0]):
-				var counter = 1
-				if item.size() > 2:
-					counter = item[2]
-				while counter > 0:
-					if randf() <= item[1]:
-						input_handler.AddOrIncrementDict(loot, {item[0] : 1})
-					counter -= 1
-				input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
-				loot.clear()
-			elif Items.itemlist.has(item[0]):
-				var itemtemp = Items.itemlist[item[0]]
-				var counter = 1
-				if item.size() > 2:
-					counter = item[2]
-				while counter > 0:
-					if randf() <= item[1]:
-						if itemtemp.type == 'usable':
-							var itemfound = false
-							for k in rewardsdict.items:
-								if k.itembase == item[0]:
-									k.amount += 1
-									itemfound = true
-									break
-							if itemfound == false:
-								var newitem = globals.CreateUsableItem(item[0])
-								rewardsdict.items.append(newitem)
-					counter -= 1
+		var count = 1
+		if tchar.tags.has('rare'):
+			count = 2
+			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
+		else:
+			rewardsdict.xp += tchar.get_stat('xpreward')
+		for q in range(count):
+			var loot = {}
+			for item in Enemydata.loottables[tchar.get_stat('loottable')]:
+				if item[0] == 'gold':
+					rewardsdict.gold += round(rand_range(item[1], item[2]))
+				elif Items.materiallist.has(item[0]):
+					var counter = 1
+					if item.size() > 2:
+						counter = item[2]
+					while counter > 0:
+						if randf() <= item[1]:
+							input_handler.AddOrIncrementDict(loot, {item[0] : 1})
+						counter -= 1
+					input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
+					loot.clear()
+				elif Items.itemlist.has(item[0]):
+					var itemtemp = Items.itemlist[item[0]]
+					var counter = 1
+					if item.size() > 2:
+						counter = item[2]
+					while counter > 0:
+						if randf() <= item[1]:
+							if itemtemp.type == 'usable':
+								var itemfound = false
+								for k in rewardsdict.items:
+									if k.itembase == item[0]:
+										k.amount += 1
+										itemfound = true
+										break
+								if itemfound == false:
+									var newitem = globals.CreateUsableItem(item[0])
+									rewardsdict.items.append(newitem)
+						counter -= 1
 
 #		if Enemydata.loottables[tchar.loottable].has('materials'):
 #			for j in Enemydata.loottables[tchar.loottable].materials:
@@ -905,12 +913,18 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
+		var rare = false
+		if tempname.ends_with('_rare'):
+			tempname = tempname.trim_suffix('_rare')
+			rare = true
 		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
 		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
-
+		if rare:
+			tchar.add_rare_trait()
+		
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")

@@ -195,8 +195,12 @@ func make_slave_for_guild(guild):
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
-
-	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
+	
+	var array = []
+	for i in guilddatatemplate.questpool[difficulty]:
+		if globals.checkreqs(worlddata.questdata[i].unlockreqs) == true:
+			array.append(i)
+	var newquest = make_quest(array[randi()%array.size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
 	newquest.travel_time = ResourceScripts.game_world.areas[guilddatatemplate.area].travel_time + round(randf()*6)

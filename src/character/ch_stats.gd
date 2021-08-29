@@ -89,18 +89,19 @@ func custom_stats_get():
 		array.invert()
 		res['sexuals'] = (array[0] + array[1] + array[2])/3
 	if res.has('hpmax'):
+		var tres = res.hpmax
 		if statlist.is_person == true:
-			var tres = variables.basic_max_hp
-			if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
-			if statlist.race != '':
-				var race = statlist.race
-				if variables.new_stat_bonuses_syntax == true:
-					if bonuses.has('hpfactor'): tres *= bonuses['hpfactor']
-				else:
-					if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
-			if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
-			if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
-			res['hpmax'] = tres
+			tres = variables.basic_max_hp
+		if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
+		if statlist.race != '':
+			var race = statlist.race
+			if variables.new_stat_bonuses_syntax == true:
+				if bonuses.has('hpfactor'): tres *= bonuses['hpfactor']
+			else:
+				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
+		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
+		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
+		res['hpmax'] = tres
 	if res.has('mpmax'):
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
@@ -164,6 +165,10 @@ func get_obed_cap():
 			return 144
 		'high':
 			return 288
+
+
+func get_obed_percent_value():
+	return int(100 * get_stat('obedience') / get_obed_cap())
 
 func get_short_name():
 	var text = ''
@@ -290,11 +295,11 @@ func get_stat_gain_rate(statname):
 func add_stat(statname, value, revert = false):
 	if statname == 'loyaltyObedience':# no revert mode
 		value *= 0.33 * get_stat('tame_factor')
-		statlist.obedience += value
+		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'submissionObedience':# no revert mode
 		value *= 0.33 * get_stat('timid_factor')
-		statlist.obedience += value
+		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
 		for ss in statlist.sex_skills:
@@ -430,6 +435,18 @@ func create_s_trait_select(trait):
 		unlocked_sex_traits.clear()
 		sex_traits[trait.code] = true
 		unlocked_sex_traits.push_back(trait.code)
+
+func add_rare_trait():
+	var n = 1
+	if globals.rng.randf() < variables.enemy_doublerarechance:
+		n = 2
+	var list = variables.rare_enemy_traits.duplicate()
+	for i in range(n):
+		var trait = list[globals.rng.randi_range(0, list.size() - 1)]
+		list.erase(trait)
+		add_trait(trait)
+
+
 
 func get_stat_data():
 	var res = {}

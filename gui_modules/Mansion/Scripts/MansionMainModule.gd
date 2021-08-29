@@ -81,6 +81,8 @@ func _ready():
 		test_mode()
 		mansion_state_set("default")
 	var is_new_game = false
+#	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
+#	globals.connect('slave_departed', $NavigationModule, "build_accessible_locations")
 	if globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
@@ -152,11 +154,20 @@ func set_active_person(person):
 	SlaveListModule.prev_selected_location = SlaveListModule.selected_location
 	slave_list_manager()
 
+
+func hide():
+	.hide()
+	mansion_state_set("hidden")
+
+
 func mansion_state_set(state):
 	# input_handler.CurrentScene = self
-	if state == mansion_state: return
-	mansion_prev_state = mansion_state
+	if state == mansion_state:
+		print(state)
+		return
+	if mansion_state != 'hidden': mansion_prev_state = mansion_state
 	mansion_state = state
+	if mansion_state == 'hidden': return
 	match_state()
 	slave_list_manager()
 	get_node("TutorialButton").show()
@@ -176,7 +187,7 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	if gui_controller.clock != null:
+	if gui_controller.clock != null and visible:
 		gui_controller.clock.show()
 		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
@@ -563,7 +574,7 @@ func test_mode():
 		character.set_stat('food_hate', ["grain"])
 		#character.unlock_class("worker")
 		character.mp = 50
-		character.unlock_class("sadist")
+		character.unlock_class("succubus")
 	#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -586,6 +597,7 @@ func test_mode():
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
+		character.unlock_class("apprentice")
 		character.is_players_character = true
 #		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 #		character.create('HalfkinCat', 'random', 'random')
@@ -624,7 +636,8 @@ func test_mode():
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 8
 
-		character.set_stat('obedience', 0)
+		character.set_stat('obedience', 50)
+		character.unlock_class("apprentice")
 		#character.fear = 25
 		#character.base_exp = 99
 		character.set_stat('charm_factor', 5)

@@ -4,7 +4,7 @@ extends Control
 var lootdata
 
 func _ready():
-	$Confirm.connect("pressed", gui_controller, "close_scene", [self])
+	$Confirm.connect("pressed", self, "confirm_loot")
 
 func open(loot): #, message):
 	show()
@@ -43,3 +43,8 @@ func open(loot): #, message):
 		globals.connecttexttooltip(newbutton, 'Gold')
 		ResourceScripts.game_res.update_money('+', loot.gold)
 		yield(get_tree().create_timer(0.2), "timeout")
+
+
+func confirm_loot():
+	input_handler.emit_signal("LootGathered")
+	gui_controller.close_scene(self)

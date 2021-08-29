@@ -254,7 +254,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_mages.png"),
 		background = "mages_guild",
 		reputation_shop = {
-			classes = {alchemist = 500, archmage = 1000, dominator = 1500},
+			classes = {caster = 500, archmage = 1000, dominator = 1500},
 			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75]},
 		}
 	},
@@ -953,10 +953,10 @@ var questdata = {
 			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [15,25]}
 			],},
 		],
-		unlockreqs = [],
+		unlockreqs = [{type = 'date', operant = 'gte', value = 6}],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [200,400]}],
+		[1, {code = 'gold', range = [250,400]}],
 		],
 		time_limit = [8,12],
 	},
@@ -1921,3 +1921,8 @@ var pregen_characters = {
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 }
+
+func _ready():
+	for loc in dungeons.values():
+		if !loc.has('purchase_area'):
+			loc.purchase_area = 'plains'

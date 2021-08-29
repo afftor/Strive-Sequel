@@ -25,13 +25,19 @@ func _ready():
 
 	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
 	
-	
-	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
+	#update_food_tooltip()
 	
 	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	set_time_buttons()
+
+func update_food_tooltip():
+	var resources = ResourceScripts.game_party.calculate_food_consumption()
+	var text = "\n\nCurrent Preferred Food Consumption:"
+	for i in resources.keys():
+		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
+	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD") + text)
 
 
 func _process(delta):
@@ -40,7 +46,9 @@ func _process(delta):
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
 	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
-
+	
+	update_food_tooltip()
+	
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		$TimeNode/HidePanel.visible = gamepaused_nonplayer
 		if gamepaused == false:
@@ -126,23 +134,20 @@ func advance_hour():
 		i.act_prepared()
 	for i in ResourceScripts.game_party.characters.values():
 		i.tick()
-	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
 		pass
 	
 	
 	
-	var text = "\n\nCurrent Preferred Food Consumption:"
-	var resources = ResourceScripts.game_party.calculate_food_consumption()
-	for i in resources.keys():
-		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
-	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD") + text)
-	
-	globals.emit_signal("hour_tick")
 	
 	if ResourceScripts.game_globals.hour >= variables.HoursPerDay:
 		advance_day()
+		
+	
+	#update_food_tooltip()
+	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	globals.emit_signal("hour_tick")
 
 
 func advance_day():

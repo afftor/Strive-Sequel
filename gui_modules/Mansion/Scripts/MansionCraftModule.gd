@@ -206,17 +206,17 @@ func sort_craft_list(first, second):
 func rebuild_scheldue():
 	input_handler.ClearContainer($CraftScheldue/ScrollContainer/VBoxContainer)
 	#Should be deleted!!!
-	var items = load("res://assets/data/Items.gd")
-	var Items = items.new()
+#	var items = load("res://assets/data/Items.gd")
+#	var Items = items.new()
 	###
 	for i in ResourceScripts.game_res.craftinglists[craft_category]:
 		var newnode = input_handler.DuplicateContainerTemplate($CraftScheldue/ScrollContainer/VBoxContainer)
 		var recipe = Items.recipes[i.code]
-		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
+		var item = Items.get(recipe.resultitemtype + 'list')[recipe.resultitem]
 		newnode.get_node("icon").texture = item.icon
 		if item.type == 'gear' && item.crafttype == 'modular':
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
-		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
+		newnode.get_node("Label").text = tr(item.name) + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
 		newnode.set_meta("selected_craft", i)
 		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])

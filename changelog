@@ -1,9 +1,29 @@
+0.5.3b
+Obedience is now displayed as percentage
+Default obedience gain is reduced by 25%
+Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Alchemist class is now unlocked from the start while caster is locked by guild points
+Archmage requires both Apprentice and Scholar to learn instead of requiring Caster
+Assassinate now has 3 charges per day instead of 1
+Firebomb base damage increased from 1.1 to 1.4
+All obedience gains with skills is reduced by 25% for now
+Slave delivery quest will not generate on a first week
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
+Fixed gauntlets crafting
 0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
 Added recipe for gauntlets and worker gloves to crafts
 Added bondages to Aliron and villages shops and fighters guild 
 Nerfed obsidian reputation price from 100 to 60
 Added Energy gem to mages reputation shop
 Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
 Fixed quest dungeons causing crashes
 Fixed crafting time for maid headband
 Fixed tooltip for shop items

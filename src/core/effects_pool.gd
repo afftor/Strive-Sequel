@@ -20,16 +20,23 @@ func add_stored_effect(id, eff):
 	effects[id] = eff
 
 func get_effect_by_id(id):
-	if !effects.has(id): return null
+	if !effects.has(id): 
+		print("effect %s not found" % id)
+		return null
 	return effects[id]
 
 func cleanup():
 	for id in effects.keys():
 		if !effects[id].is_applied:
+			print("effect %s is removed as marked for cleanup" % id)
+			print(effects[id].template)
 			remove_id(id)
 			continue
 		if effects[id].applied_char == null or effects[id].get_applied_obj() == null:
+			print("effect %s is removed as marked for cleanup" % id)
 			remove_id(id)
+			print(effects[id].template)
+	characters_pool.clean_broken_effects()
 
 func remove_id(id):
 	for eff in effects.values():

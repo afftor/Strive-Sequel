@@ -89,9 +89,10 @@ func _ready():
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
+	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
-
+#	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
 
 func test():
 	for win in gui_controller.windows_opened:

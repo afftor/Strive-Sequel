@@ -97,6 +97,11 @@ func set_stat(stat, value):
 		return
 	statlist.set_stat(stat, value)
 
+
+func get_obed_percent_value():
+	return statlist.get_obed_percent_value()
+
+
 func add_stat_bonuses(ls:Dictionary):
 	statlist.add_stat_bonuses(ls)
 
@@ -371,6 +376,9 @@ func apply_effect(eff_id):
 	if npc_reference == 'combat_global': return
 	effects.apply_effect(eff_id)
 
+func clean_broken_effects():
+	effects.clean_broken_effects()
+
 func get_static_effect_by_code(code):
 	effects.get_static_effect_by_code(code)
 
@@ -435,6 +443,14 @@ func can_use_skill(skill):
 func has_status(status):
 	var res = effects.has_status(status)
 	return res
+
+
+func add_rare_trait():
+	if ResourceScripts.game_globals.date < 2: return
+	tags.push_back('rare')
+	statlist.add_rare_trait()
+	#tutorial part here
+	input_handler.ActivateTutorial('rares') #stub. not sure i'm right
 
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)

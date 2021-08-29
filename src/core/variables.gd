@@ -33,6 +33,11 @@ var resists_damage_list = ['melee', 'ranged', 'aoe', 'heal']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
+
+var enemy_rarechance = 0.1
+var enemy_doublerarechance = 0.1
+var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_deadly', 'rare_precise']
+
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
 var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','authority_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']
@@ -221,6 +226,13 @@ var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
+
+var obed_mod_per_difficuty = {
+	easy = 1.0,
+	medium = 0.75,
+	hard = 0.5
+}
+
 
 var master_charm_quests_gold_bonus = {
 	1 : 0,

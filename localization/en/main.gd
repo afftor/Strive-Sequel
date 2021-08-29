@@ -1066,7 +1066,7 @@ var TranslationDict = {
 	RACEORCDESCRIPT = "Orcs are a semi-sapient race of brutes inhabiting many desert and badland regions. Orcs resemble large, greenish humanoids with strong bodies and bad tempers. Despite that, some orcs are rather capable of fitting into normal society to work as simple bodyguards and soldiers. \n\nCommonly orcs form tribes and aren't above killing each other or any stray groups they deem dangerous. They are also rather fond of forcefully using members of other races for sex but aren't capable of interbreeding with them. ",
 	RACEGOBLINDESCRIPT = "Goblins are short humanoids often occupying caves and dungeons. Most goblins are outright hostile to all outsiders and prefer to stick to groups as their individual power is fairly low. A certain number of goblins have abandoned their initial groups and strive to live with other races. Sometimes they even become known adventurers, but more often they are used for crude work, since they are hardly remarkable at anything except for their libido. ",
 	RACEKOBOLDDESCRIPT = "Kobolds are a short, lizard-like race distinctively related to dragons. They generally live underground or in forests and aren't very friendly to other races often seen as pests. Certain individuals have managed to find acceptance among other racial groups. ",
-	RACEGNOMEDESCRIPT = "Gnomes are a rare species of short, intelligent humanoids. Their poor physical strength makes them rather poor workers or fighters. They possess some magical capabilities, a good amount of charisma and have aneasy time connecting with other races. Many gnomes find their place as traders or entertainers, but a good amount are pretty happy to serve in more lewd occupations... assuming they can find the demand. ",
+	RACEGNOMEDESCRIPT = "Gnomes are a rare species of short, intelligent humanoids. Their poor physical strength makes them rather poor workers or fighters. They possess some magical capabilities, a good amount of charisma and have an easy time connecting with other races. Many gnomes find their place as traders or entertainers, but a good amount are pretty happy to serve in more lewd occupations... assuming they can find the demand. ",
 	RACEDWARFDESCRIPT = "Dwarves are a short, stout humanoid race that prefer to live by a strict set of rules in an enclosed underground society. Dwarves are rather physically strong, can be quick to anger, and are rarely fit for magic tasks. ",
 	RACEDRYADDESCRIPT = "Dryads are a rare species of forest humanoids possessing green skin and being covered in plant matter. They rarely engage in communication with other races and generally prefer to stick to their home. Despite that, they are quite capable of fighting and using magic.",
 	RACEFAIRYDESCRIPT = "Fairies are curious children of the forests. Looking like half-sized humanoids with a pair of insect wings on their back, fairies possess little physical threat, but their natural magic affinity is incredibly high. Their magic nature even allows them to occasionally heal wounds.\n\n Thankfully they rarely use it aggressively, preferring to instead just have fun and be quick to flee. Despite their childish temper, fairies are very proactive or even omnivorous when it comes down to bodily pleasures not unlike their cave counterparts— Goblins.",
@@ -2327,7 +2327,7 @@ var TranslationDict = {
 
 	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. My name is Amelia. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a landowner and are looking for our future cooperation. Here at the Servants Guild we are ready to provide you with finest and prettiest toys in all of the Republic. We also are in touch with many rich and powerful people of the city. ",
 	SERVANTSINTRODUCTION1_1 = "As a newcomer we would be happy to provide you with one free servant of your choice if you side with us.",
-	SERVANTSQUESTIONREPLY1 = "So basically all you do is operate an elaborated sex service?",
+	SERVANTSQUESTIONREPLY1 = "So basically all you do is operate an elaborate sex service?",
 	SERVANTSQUESTIONREPLY2 = "How exactly am I useful to you?",
 	SERVANTSQUESTIONREPLY3 = "Can you give me some tips?",
 	SERVANTSINTRODUCTION1REPLY3 = "I'll side with you",
@@ -3694,7 +3694,7 @@ Ginny leaves you for a few minutes, eventually returning to you with the symbol 
 
 As they pass you continue to move on.""",
 	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You're about to be cut off, and won't be able to retreat unnoticed.""",
-	DIVINE_SYMBOL_OPTION_10 = """Make a run for it (Physics Check)""",
+	DIVINE_SYMBOL_OPTION_10 = """Make a run for it (Physics)""",
 	DIVINE_SYMBOL_12 = """{color=green|Success}
 
 Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
@@ -3705,7 +3705,7 @@ Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
 You've tried, but after taking a corner too wildly you crash into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
 	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Hoping not be discovered again, you leave the place.""",
 	DIVINE_SYMBOL_15 = """You arrive at a small square where your target should be. However, there are multiple buildings anyone of which could be it.""",
-	DIVINE_SYMBOL_OPTION_11 = """Search (Wits Factor Check)""",
+	DIVINE_SYMBOL_OPTION_11 = """Search (Wits Factor)""",
 	DIVINE_SYMBOL_16 = """{color=red|Failure}
 
 You've entered the wrong building. A few rebels recognize you as an intruder and arm themselves.""",
@@ -3726,7 +3726,7 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 {color=aqua|Second Guard:— You shut yo-}
 
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
-	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor Check)""",
+	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
 	DIVINE_SYMBOL_20_1 = """{color=aqua|Second Guard:— Damnit, what does he want now? }
 
@@ -4333,7 +4333,7 @@ The priestess gave orders to the guards to get the princess out.""",
 
 {color=aqua|Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!}""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
-	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor check)""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor)""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
 

@@ -305,8 +305,47 @@ var traits = {
 		visible = false,
 		effects = ['e_tr_hide'],
 	},
+	rare_sturdy = {
+		code = 'rare_sturdy',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_rare_sturdy'],
+	},
+	rare_nimble = {
+		code = 'rare_nimble',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_rare_nimble'],
+	},
+	rare_strong = {
+		code = 'rare_strong',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_rare_strong'],
+	},
+	rare_deadly = {
+		code = 'rare_deadly',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_rare_deadly'],
+	},
+	rare_precise = {
+		code = 'rare_precise',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_rare_precise'],
+	},
 }
-
 var sex_traits = { #only for interaction tab
 	dislike_petting = {
 		code = "dislike_petting",
