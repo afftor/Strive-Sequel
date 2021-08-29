@@ -262,31 +262,4 @@ var data = {
 			}
 		],
 	},
-
-	demon_kurdan_lose = {
-		image = null, tags = [],
-		text = [ {text = "", reqs = []} ],
-		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
-			}
-		]
-	},
-
-	rebel_group_lose = {
-		image = null, tags = [],
-		text = [ {text = "", reqs = []} ],
-		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
-			}
-		]
-	},
-
-	demon_lose = {
-		image = null, tags = [],
-		text = [ {text = "", reqs = []} ],
-		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
-			}
-		]
-	}
 }

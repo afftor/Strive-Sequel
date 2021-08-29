@@ -1909,6 +1909,7 @@ var TranslationDict = {
 
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should have focused on their loyalty or behavior more.",
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
+	LOSE_MESSAGE = "",
 
 	DIALOGUECLOSE = "Close",
 	DIALOGUECONFIRM = "Confirm",
@@ -5501,12 +5502,113 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	AIRE_RECRUITMENT_REPLY_GOOD_2 = "— Touché. Very well, I can't wait to check on Ana.",
 	AIRE_RECRUITMENT_REPLY_GOOD_3 = "Aire stays quiet and your words but her face shows that she doubts her initial opinion about you.",
 
-	
-	
-	
-	
-	
 
+
+	AMELIA_HERBS_LETTER = "In the morning you receive a small note from the Servants Guild asking you to see the leader.",
+	AMELIA_HERBS_OPTION_START = "Got your letter",
+	AMELIA_HERBS_REPLY_START = "- Glad to see you are eager as ever, [name]. How's your mayorhood?",
+	AMELIA_HERBS_OPTION_1_1 = "Can't complain, it's good to be in power",
+	AMELIA_HERBS_OPTION_1_2 = "Nothing special, you aren't letting me do anything anyway",
+	AMELIA_HERBS_OPTION_1_3 = "Just get to the point",
+	AMELIA_HERBS_REPLY_1_1 = "- I'm glad you are enjoying it, after all, your happiness is our reassurance.",
+	AMELIA_HERBS_REPLY_1_2 = "- Ha-ha, I guess this is somewhat true, but this is fine, I'm not able to do much at my position either, you know. Nobody would let us get here if this provided any meaningful powers. But at least we can enjoy the luxury of this life.",
+	AMELIA_HERBS_REPLY_1_3 = "- Oh come on, don't be so uptight. Do you really dislike my company this much?",
+	AMELIA_HERBS_REPLY_2 = """- There's a task at my hands I believe you'll have most success at doing, given your previous experience with the Elven Forests. You see, near the great trees the elves worship one particular plant that can grow - Manna Whiff. Some of our patrons wish to pay a quite high price for it. Actually, a really high price. 
+
+- We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them. """,
+	AMELIA_HERBS_REPLY_3 = """- You should know elven officials aren't very fond of trading with us in general, moreover in such unusual circumstances. Try to keep it low profile. Anyway, here's the note with the description of who you have to find. I believe you'll manage.""",
+	
+	AMELIA_HERBS_ELF_OPTION_START = "Look for smuggler",
+	AMELIA_HERBS_ELF_REPLY_START_1 = "After searching around for some time, you've managed to find a person fitting the description: a young tribal elf priestess. As she sees you, she subtly gives you a sign to meet her where no one is around. You follow her, dragging no additional attention.",
+	AMELIA_HERBS_ELF_REPLY_START_2 = """You pass her the note and explain what you are doing here, however her response is of reject.
+
+- I'm sorry, I can't do this anymore. I won't be doing this.""",
+	AMELIA_HERBS_ELF_OPTION_1_1 = "Look, you can't do this",
+	AMELIA_HERBS_ELF_OPTION_1_2 = "I don't get it, why not?",
+	AMELIA_HERBS_ELF_OPTION_1_3 = "Are you out of your mind backing out now?",
+	AMELIA_HERBS_ELF_REPLY_1 = """- I can't do this anymore, I was desperate at the time, but if I get caught it will be over for me. And I'm already a suspect. As I'm not originally born here, I will be punished severely for it... So you have to understand, I won't do this anymore. I can't return the payment yet, but I'll do something about it soon.""",
+	AMELIA_HERBS_ELF_OPTION_2_1 = "I guess, it can't be helped then...",
+	AMELIA_HERBS_ELF_OPTION_2_2 = "Look, I really need to make this delivery (Charm Check)",
+	AMELIA_HERBS_ELF_OPTION_2_3 = "I could pay you some more, but I really need it (300 gold)",
+	AMELIA_HERBS_ELF_OPTION_2_4 = "In that case, I'll  tell to the guards that you have indeed been a smuggler",
+	AMELIA_HERBS_ELF_REPLY_2_1 = """- Thank you for understanding and goodbye.
+
+The elf girl silently returns to her duty leaving you to think on how to tell Amelia about it.""",
+	AMELIA_HERBS_ELF_REPLY_2_2_GOOD = """The elf girl hesitates for some time but eventually gives in to your request.
+
+- Fine, but I beg you, don't come for this ever again. 
+
+She leaves and after a few minutes she returns with the package. """,
+	AMELIA_HERBS_ELF_OPTION_2_2_DONE = "Thank you and good bye",
+	AMELIA_HERBS_ELF_REPLY_2_2_BAD = "- Sorry, you'll have to find some other way. ",
+	AMELIA_HERBS_ELF_REPLY_2_3 = """As you whip out a purse of gold, the elven girl seems to give up and do as you want from her.
+
+- Fine, but I beg you, don't come for this ever again. 
+
+As she hides the gold in her clothes, she returns to you in a few minutes, passing the carriage and quickly retreating.""",
+	AMELIA_HERBS_ELF_REPLY_2_4_1 = """As the girl hears your words, her face fills with fear. 
+
+- No, please... You wouldn't dare.
+
+Realizing your seriousness she drops her head.
+
+- You win, please wait here...""",
+	AMELIA_HERBS_ELF_REPLY_2_4_2 = """After a couple minutes she returns and passes you the carriage 
+
+- Here. But I beg you, do not come here again, I won't be doing this anymore.""",
+	AMELIA_HERBS_ELF_OPTION_2_4_2 = "Thanks, good bye.",
+	
+	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her (placeholder)
+
+- Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
+	
+	AMELIA_HERBS_ELFQUEST2_START_1 = """After looking for a possible smuggler, you realize that you've been found out by the guards who followed you around. As they approach you, they ask you to follow them.""",
+	AMELIA_HERBS_ELFQUEST2_START_2 = "- It's you again. We know what you are here for this time. An illegal smuggling of our holy herbs. The other culprit was already caught and punished. Given your previous merits, we will turn a blind eye on this, but don't ever try doing this again.",
+	
+	AMELIA_HERBS_END_OPTION_START = "About the delivery",
+	AMELIA_HERBS_END_REPLY_START = """As you pass the carriage to Amelia you notice how her ears perk up in surprise.
+
+- I knew I could rely on you! I've already had no faith to get it this time. Must say, our cooperation has been one of the best partnerships in my life. But, anyway, you must be very impatient for your reward. Here's 500 gold for your troubles.
+
+- I want to say, you are one kind of Masters. Strong, capable, decisive... This is really rare at our times. I'm not offering this lightly, but would you like to join me at my home this evening? This isn't something you would be offered on any day.""",
+	AMELIA_HERBS_END_OPTION_1_1 = "Sorry, I'll be busy",
+	AMELIA_HERBS_END_OPTION_1_2 = "I was afraid you wouldn't ask",
+	AMELIA_HERBS_END_REPLY_1_1 = """Amelia seems visibly disappointed but quickly masks her emotions as usual. 
+
+- That's so... I see then, wish you luck with whatever you are doing then.""",
+	AMELIA_HERBS_END_REPLY_1_2_1 = """- I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
+
+After receiving the instructions, you leave Amelia's office.""",
+	AMELIA_HERBS_END_REPLY_1_2_2 = """By the evening you enter Amelia's estate. To your surprise, there's only a couple of servants who quickly lose their interest in you as soon as Amelia shows up.
+
+- You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
+
+You hold a minor chit chat as Amelia serves you one of the highest grade wines. """,
+	AMELIA_HERBS_END_REPLY_1_2_3 = """- You know, I wasn't very sincere with you... Not any more with anyone else, I suppose. But I'd like you to hear me out. Before becoming the guild leader I was a servant too. I heard not many guild leaders happened to be the servants and not the masters, but I guess I got lucky. 
+
+- I had a master, and a pretty strict one at that, but I'd be lying if I said that I didn't like it. It was an easy, careless time I sometimes wish to return to. I think that cats need a master, you know. An owner...""",
+	AMELIA_HERBS_END_REPLY_1_2_4 = """- And I think you are just the right person who could help me to... relive those feelings.
+
+Getting caught in the moment you see no other option but to nod in agreement.
+
+- You are always so eager to help me. Well then, please give me a few minutes to prepare.
+
+Saying that, Amelia leaves you alone wondering what she's up to.""",
+	AMELIA_HERBS_END_REPLY_1_2_5 = "In a few moments you hear her calling you to enter the bedroom.",
+	AMELIA_HERBS_END_REPLY_1_2_6 = "Text placeholder",
+	AMELIA_HERBS_END_REPLY_1_2_7 = "Text placeholder",
+	AMELIA_HERBS_END_REPLY_1_2_8 = "- You are a real gentleman, [name], I haven't been so satisfied since the day I became the guild leader. Too bad everything good eventually comes to an end. But let's hope we'll get another time.",
+	AMELIA_HERBS_END_OPTION_1_2_1 = """I'll be waiting for the next time""",
+	AMELIA_HERBS_END_OPTION_1_2_2 = """That's a time I won't forget""",
+	AMELIA_HERBS_END_REPLY_START_FAIL = """- Oh my, that's a real shame. I already anticipated it, though. Well, I guess I'll have to look for another supplier now. Now, if you excuse me...
+
+Amelia leaves you for her business, leaving you alone.""",
+	
+	
+	
+	
+	
+	
 
 
 
@@ -5549,6 +5651,12 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	AMELIA_SILK_SUMMARY = "After proving yourself useful to Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_NAME = "Amelia's Request",
 	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at Servants Guild.",
+	
+	AMELIA_HERBS_SUMMARY = "",
+	AMELIA_HERBS_NAME = "",
+	AMELIA_HERBS_STAGE_1 = "", # go to Amelia and ask her what is up
+	AMELIA_HERBS_STAGE_2 = "", # Get the herbs
+	AMELIA_HERBS_STAGE_3 = "", # return to Amelia
 	
 	
 }

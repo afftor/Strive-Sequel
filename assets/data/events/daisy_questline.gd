@@ -811,15 +811,6 @@ var data = {
 		} ]
 	},
 
-	daisy_lost_lose = {
-		image = null, tags = [],
-		text = [ {text = "", reqs = []} ],
-		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
-			}
-		]
-	},
-
 	daisy_lost_4 = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [],

@@ -337,6 +337,7 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
+
 	blessed_divine_symbol = {
 		code = 'blessed_divine_symbol',
 		name = '',
@@ -353,6 +354,17 @@ var materiallist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_bracelet.png"),
+		price = 0,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
+
+	herbs = {
+		code = 'herbs',
+		name = 'Herbs',
+		descript = '',
+		icon = null,#load("res://assets/images/iconsitems/item_bracelet.png"),
 		price = 0,
 		type = 'quest',
 		tier = '',

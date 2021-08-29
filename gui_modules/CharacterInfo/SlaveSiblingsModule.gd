@@ -168,9 +168,9 @@ func rebuild_traits():
 	var traits = person.get_all_sex_traits()
 	
 	for i in traits:
-		if not ("dislike" in i):
-			if traits[i]:
-				continue
+#		if not ("dislike" in i):
+#			if traits[i]:
+#				continue
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
 		newnode.set_meta("always_disabled", true)

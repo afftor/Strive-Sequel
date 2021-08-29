@@ -198,6 +198,7 @@ var sprites = {
 	daisy_maid_body = load("res://assets/images/sprites/daisy_maid_body.png"),
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	daisy_maid_nude_body = load("res://assets/images/sprites/daisy_maid_nude_body.png"),
+	tribal_elf = load("res://assets/images/sprites/tribal_elf_body.png"),
 	}
 
 var dynamic_backgrounds = {
