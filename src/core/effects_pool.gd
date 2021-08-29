@@ -29,13 +29,13 @@ func cleanup():
 	for id in effects.keys():
 		if !effects[id].is_applied:
 			print("effect %s is removed as marked for cleanup" % id)
-			print(effects[id].template)
+#			print(effects[id].template)
 			remove_id(id)
 			continue
 		if effects[id].applied_char == null or effects[id].get_applied_obj() == null:
-			print("effect %s is removed as marked for cleanup" % id)
+			print("effect %s is removed as applied to no one" % id)
+#			print(effects[id].template)
 			remove_id(id)
-			print(effects[id].template)
 	characters_pool.clean_broken_effects()
 
 func remove_id(id):
