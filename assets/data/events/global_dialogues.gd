@@ -106,6 +106,8 @@ var data = {
 		{code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_lost_amelia_1', text = "DAISY_LOST_AMELIA_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'amelia_silk_1', text = "AMELIA_SILK_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_silk_quest', stage = 'stage1'}, {type = 'has_material', operant = 'gte', value = 50, material = 'clothsilk'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'amelia_herbs_1_1', text = "AMELIA_HERBS_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'amelia_herbs_end_1', text = "AMELIA_HERBS_END_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage3'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 

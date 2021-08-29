@@ -84,7 +84,9 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
 		guilds = [],
-		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}}],
+		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}},
+		{code = 'amelia_herbs_elf_start_1', text = "AMELIA_HERBS_ELF_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}], args = {"oneshot": false}},
+		],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {

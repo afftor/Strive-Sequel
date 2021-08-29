@@ -1747,5 +1747,15 @@ var quests = {
 			stage1 = {code = 'stage1', name = "AMELIA_SILK_NAME", descript = "AMELIA_SILK_STAGE_1"}, # bring 50 silk
 		},
 	},
+
+	amelia_herbs_quest = {
+		code = 'amelia_herbs_quest',
+		summary = "AMELIA_HERBS_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "AMELIA_HERBS_NAME", descript = "AMELIA_HERBS_STAGE_1"}, # go to Amelia
+			stage2 = {code = 'stage2', name = "AMELIA_HERBS_NAME", descript = "AMELIA_HERBS_STAGE_2"}, # get herbs
+			stage3 = {code = 'stage3', name = "AMELIA_HERBS_NAME", descript = "AMELIA_HERBS_STAGE_3"}, # return to Amelia
+		},
+	},
 }
 

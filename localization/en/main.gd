@@ -5518,7 +5518,7 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 - We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them. """,
 	AMELIA_HERBS_REPLY_3 = """- You should know elven officials aren't very fond of trading with us in general, moreover in such unusual circumstances. Try to keep it low profile. Anyway, here's the note with the description of who you have to find. I believe you'll manage.""",
 	
-	AMELIA_HERBS_ELF_OPTION_START = "- Look for smuggler",
+	AMELIA_HERBS_ELF_OPTION_START = "Look for smuggler",
 	AMELIA_HERBS_ELF_REPLY_START_1 = "After searching around for some time, you've managed to find a person fitting the description: a young tribal elf priestess. As she sees you, she subtly gives you a sign to meet her where no one is around. You follow her, dragging no additional attention.",
 	AMELIA_HERBS_ELF_REPLY_START_2 = """You pass her the note and explain what you are doing here, however her response is of reject.
 
@@ -5539,6 +5539,7 @@ The elf girl silently returns to her duty leaving you to think on how to tell Am
 - Fine, but I beg you, don't come for this ever again. 
 
 She leaves and after a few minutes she returns with the package. """,
+	AMELIA_HERBS_ELF_OPTION_2_2_DONE = "Thank you and good bye",
 	AMELIA_HERBS_ELF_REPLY_2_2_BAD = "- Sorry, you'll have to find some other way. ",
 	AMELIA_HERBS_ELF_REPLY_2_3 = """As you whip out a purse of gold, the elven girl seems to give up and do as you want from her.
 
@@ -5557,9 +5558,9 @@ Realizing your seriousness she drops her head.
 - Here. But I beg you, do not come here again, I won't be doing this anymore.""",
 	AMELIA_HERBS_ELF_OPTION_2_4_2 = "Thanks, good bye.",
 	
-	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her
-"
-- Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore.""",
+	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her (placeholder)
+
+- Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
 	
 	AMELIA_HERBS_ELFQUEST2_START_1 = """After looking for a possible smuggler, you realize that you've been found out by the guards who followed you around. As they approach you, they ask you to follow them.""",
 	AMELIA_HERBS_ELFQUEST2_START_2 = "- It's you again. We know what you are here for this time. An illegal smuggling of our holy herbs. The other culprit was already caught and punished. Given your previous merits, we will turn a blind eye on this, but don't ever try doing this again.",
@@ -5650,6 +5651,12 @@ Amelia leaves you for her business, leaving you alone.""",
 	AMELIA_SILK_SUMMARY = "After proving yourself useful to Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_NAME = "Amelia's Request",
 	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at Servants Guild.",
+	
+	AMELIA_HERBS_SUMMARY = "",
+	AMELIA_HERBS_NAME = "",
+	AMELIA_HERBS_STAGE_1 = "", # go to Amelia and ask her what is up
+	AMELIA_HERBS_STAGE_2 = "", # Get the herbs
+	AMELIA_HERBS_STAGE_3 = "", # return to Amelia
 	
 	
 }

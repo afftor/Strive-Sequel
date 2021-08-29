@@ -300,7 +300,7 @@ func update_resources():
 			text +=  str(current_workers_count) + "/" + str(max_workers_count)
 			#newbutton.disabled = current_workers_count == max_workers_count
 			if current_workers_count >= max_workers_count:
-				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 		elif location_type == "dungeon":
 			if gatherable_resources[resource] == 0:
 				for button in $Resourses/GridContainer.get_children():
@@ -444,7 +444,18 @@ func select_job(button, person):
 	# disable 
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
 	if  person.get_location() != 'aliron' && location.type != "dungeon":
-		pass
+		var gatherable_resources = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources
+		var max_workers_count = gatherable_resources[selected_resource]
+		var current_workers_count = 0
+		var active_tasks = ResourceScripts.game_party.active_tasks
+		for task in active_tasks:
+			if (task.code == selected_job.code) && (task.task_location == person.get_location()):
+				current_workers_count = task.workers.size()
+		#newbutton.disabled = current_workers_count == max_workers_count
+		if current_workers_count >= max_workers_count:
+			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
+			return
+			
 	elif location.type == "dungeon":
 		pass
 	elif selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
