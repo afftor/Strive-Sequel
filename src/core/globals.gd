@@ -214,8 +214,10 @@ func connectitemtooltip(node, item):
 
 
 func connectitemtooltip_v2(node, item):
-	if node.is_connected("mouse_entered",item,'tooltip_v2'):
-		node.disconnect("mouse_entered",item,'tooltip_v2')
+	for dir in node.get_signal_connection_list("mouse_entered"):
+		node.disconnect(dir.signal, dir.target, dir.method)
+#	if node.is_connected("mouse_entered",item,'tooltip_v2'):
+#		node.disconnect("mouse_entered",item,'tooltip_v2')
 	node.connect("mouse_entered",item,'tooltip_v2', [node])
 
 
