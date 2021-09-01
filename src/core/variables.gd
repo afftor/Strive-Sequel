@@ -40,7 +40,7 @@ var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_dead
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','authority_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']
+var bonuses_stat_list = ['productivity','mod_collect','speed','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','authority_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'authority',

@@ -341,12 +341,14 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		custom_get = true
 	},
 	matk = {
 		code = 'matk',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		custom_get = true
 	},
 	armor = {
 		code = 'armor',
