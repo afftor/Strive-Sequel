@@ -107,6 +107,12 @@ func custom_stats_get():
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		res['mpmax'] = tres
+	for st in ['matk', 'atk']:
+		if res.has(st):
+			var tres = res[st]
+			if bonuses.has(st + '_add'): tres += bonuses[st + '_add']
+			if bonuses.has(st + '_mul'): tres *= bonuses[st + '_mul']
+			res[st] = max(5.0, tres)
 	if res.has('lustmax'):
 		res.lustmax = 25 + res.sexuals_factor * 25
 		res.lust = clamp(res.lust, 0, res.lustmax)
