@@ -81,7 +81,7 @@ func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
 	list_mode = "inventory"
-	if ResourceScripts.game_res.upgrades.has("tattoo_set"):
+	if ResourceScripts.game_res.upgrades.has("tattoo_set") and ResourceScripts.game_res.upgrades.tattoo_set > 0:
 		GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
 		GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
 	else:

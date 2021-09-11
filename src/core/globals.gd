@@ -1125,6 +1125,7 @@ func common_effects(effects):
 				var newslave = ResourceScripts.scriptdict.class_slave.new("common_story")
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
 				if "recruit_from_location" in i:
+					newslave.travel.area = input_handler.active_area.code
 					newslave.travel.location = input_handler.active_location.id
 				if "send_to_mansion" in i:
 					if i.send_to_mansion:
