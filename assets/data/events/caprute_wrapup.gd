@@ -365,7 +365,7 @@ var data = {
 		{text = "ANASTASIA_EXECUTION_3", reqs = [], previous_dialogue_option = 2},
 		{text = "ANASTASIA_EXECUTION_4", reqs = []}],
 		options = [ {
-			code = 'anastasia_execution_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5
+			code = 'anastasia_execution_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5, type = 'next_dialogue'
 		}],
 	},
 	
@@ -374,7 +374,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_5", reqs = []}], custom_background = "anastasia_execution1", 
 		options = [ {
-			code = 'anastasia_execution_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'anastasia_execution_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 	
@@ -383,7 +383,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_6", reqs = []}], custom_background = "anastasia_execution2", 
 		options = [ {
-			code = 'anastasia_execution_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'anastasia_execution_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 	
@@ -401,29 +401,49 @@ var data = {
 	
 	anastasia_execution_5 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
-		text = [{text = "ANASTASIA_EXECUTION_8", reqs = [], previous_dialogue_option = 1},
-		{text = "ANASTASIA_EXECUTION_9", reqs = [], previous_dialogue_option = 2},
-		{text = "ANASTASIA_EXECUTION_10", reqs = [], previous_dialogue_option = 3},
-		{text = "ANASTASIA_EXECUTION_11", reqs = []}], custom_background = "anastasia_execution2", 
+		text = [
+#		{text = "ANASTASIA_EXECUTION_8", reqs = [], previous_dialogue_option = 1},
+#		{text = "ANASTASIA_EXECUTION_9", reqs = [], previous_dialogue_option = 2},
+#		{text = "ANASTASIA_EXECUTION_10", reqs = [], previous_dialogue_option = 3},
+		{text = "ANASTASIA_EXECUTION_11", reqs = []}], 
+		custom_background = "anastasia_execution2", 
 		options = [ {
-			code = 'anastasia_execution_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'anastasia_execution_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 	
 	anastasia_execution_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		save_scene_to_gallery = true,
-		text = [{text = "ANASTASIA_EXECUTION_12", reqs = []}], custom_background = "anastasia_execution3", 
+		text = [{text = "ANASTASIA_EXECUTION_12", reqs = []}], custom_background = "anastasia_execution2", 
 		options = [ {
-			code = 'duncans_declaration_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1
+			code = 'anastasia_execution_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,  type = 'next_dialogue'
+		}],
+	},
+	
+	anastasia_execution_7 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		save_scene_to_gallery = true,
+		text = [{text = "ANASTASIA_EXECUTION_13", reqs = []}], custom_background = "anastasia_execution2", 
+		options = [ {
+			code = 'anastasia_execution_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	anastasia_execution_8 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		save_scene_to_gallery = true,
+		text = [{text = "ANASTASIA_EXECUTION_14", reqs = []}], custom_background = "anastasia_execution3", 
+		options = [ {
+			code = 'duncans_declaration_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1, type = 'next_dialogue'
 		}],
 	},
 	
 	duncans_declaration_start = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'duncan',
-		text = [{text = "ANASTASIA_EXECUTION_13", reqs = []}], 
+		text = [{text = "DUNCANS_DECLARATION_START", reqs = []}], 
 		options = [ {
-			code = 'final_words_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'final_words_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	}
 }

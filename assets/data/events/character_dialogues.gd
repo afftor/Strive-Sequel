@@ -148,13 +148,11 @@ var data = {
 			{text = "DAISY_EXTRA_STRATUP", reqs = []},
 		],
 		options = [
-			#check if uses body_image = res://assets/images/sprites/daisy_maid_body.png TODO
 			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
 				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
 				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_body.png", orflag = true},
 				]}], dialogue_argument = 1},
-			#check if uses body_image = res://assets/images/sprites/daisy_maid_nude_body.png TODO
 			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
 				{code = 'stat', stat = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},

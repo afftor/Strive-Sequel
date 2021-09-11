@@ -48,66 +48,74 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_SILK_REPLY_1_1_3", reqs = [], }],
 		options = [ {
-			code = 'amelia_silk_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'amelia_silk_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	amelia_silk_5 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		text = [{text = "AMELIA_SILK_REPLY_1_1_4", reqs = [], }],
+		options = [ {
+			code = 'amelia_silk_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, ],
 	},
 	
 	# amelia scene 1
-	amelia_silk_5 = {
+	amelia_silk_6 = {
 		custom_background = "amelia_titjob1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "AMELIA_SILK_REPLY_1_1_4", reqs = [], }],
-		options = [ {
-			code = 'amelia_silk_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}, ],
-	},
-	
-	# amelia scene 2
-	amelia_silk_6 = {
-		custom_background = "amelia_titjob2",
-		scene_type = "ero_scene",
-		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "AMELIA_SILK_REPLY_1_1_5", reqs = [], }],
 		options = [ {
 			code = 'amelia_silk_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	
-	# amelia scene 3
+	# amelia scene 2
 	amelia_silk_7 = {
-		custom_background = "amelia_titjob3",
+		custom_background = "amelia_titjob2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "AMELIA_SILK_REPLY_1_1_6", reqs = [], }],
 		options = [ {
-			code = 'amelia_silk_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
+			code = 'amelia_silk_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	# amelia scene 3
+	amelia_silk_8 = {
+		custom_background = "amelia_titjob3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		text = [{text = "AMELIA_SILK_REPLY_1_1_7", reqs = [], }],
+		options = [ {
+			code = 'amelia_silk_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
 		}, ],
 	},
 	
 	# normal scene
-	amelia_silk_8 = {
+	amelia_silk_9 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
-		text = [{text = "AMELIA_SILK_REPLY_1_1_7", reqs = [], }],
+		text = [{text = "AMELIA_SILK_REPLY_1_1_8", reqs = [], }],
 		options = [ {
-			code = 'amelia_silk_9', text = "AMELIA_SILK_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'amelia_silk_10', text = "AMELIA_SILK_OPTION_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = 'amelia_silk_9', text = "AMELIA_SILK_OPTION_2_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'amelia_silk_10', text = "AMELIA_SILK_OPTION_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
-			code = 'amelia_silk_9', text = "AMELIA_SILK_OPTION_2_3", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			code = 'amelia_silk_10', text = "AMELIA_SILK_OPTION_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, ],
 	},
 	
-	amelia_silk_9 = {
+	amelia_silk_10 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
-		text = [{text = "AMELIA_SILK_REPLY_2_1AND2", reqs = [], previous_dialogue_option = 1},
-		{text = "AMELIA_SILK_REPLY_2_3", reqs = [], previous_dialogue_option = 2}],
+		text = [{text = "AMELIA_SILK_REPLY_2_1AND2", reqs = [], previous_dialogue_option = [1, 2]},
+		{text = "AMELIA_SILK_REPLY_2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'}]
+			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'}], type = 'next_dialogue'
 		}, ],
 	},
 	
