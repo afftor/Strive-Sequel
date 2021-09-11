@@ -362,7 +362,7 @@ var materiallist = {
 
 	herbs = {
 		code = 'herbs',
-		name = 'Herbs',
+		name = 'Rare Herbs',
 		descript = '',
 		icon = null,#load("res://assets/images/iconsitems/item_bracelet.png"),
 		price = 0,

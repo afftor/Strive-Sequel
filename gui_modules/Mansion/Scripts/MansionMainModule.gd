@@ -163,7 +163,6 @@ func hide():
 func mansion_state_set(state):
 	# input_handler.CurrentScene = self
 	if state == mansion_state:
-		print(state)
 		return
 	if mansion_state != 'hidden': mansion_prev_state = mansion_state
 	mansion_state = state
