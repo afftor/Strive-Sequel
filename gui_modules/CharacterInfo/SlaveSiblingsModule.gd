@@ -126,7 +126,7 @@ func text_url_hover_hide(meta = null):
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
-			
+
 func sex_traits_open():
 	$SexTraitsPanel.show()
 	person = input_handler.interacted_character
@@ -160,17 +160,24 @@ func rebuild_traits():
 	#input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	for i in person.statlist.traits:
 		var trait = Traitdata.traits[i]
-		if trait.visible == false:
+		if !trait.visible:
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
 		newnode.text = trait.name
 	
 	var traits = person.get_all_sex_traits()
-	
+	var h1 = person.get_unlocked_sex_traits()
+	var all_traits_known = true
 	for i in traits:
-#		if not ("dislike" in i):
-#			if traits[i]:
-#				continue
+		if !traits[i]:
+			all_traits_known = false
+			break
+	if all_traits_known:
+		for i in h1:
+			if traits.keys().has(i):
+				if traits[i]:
+					traits.erase(i)
+	for i in traits:
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
 		newnode.set_meta("always_disabled", true)
@@ -187,7 +194,10 @@ func rebuild_traits():
 						traittext += globals.sex_actions_dict[k].getname() + ", "
 					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 			globals.connecttexttooltip(newnode, traittext)
-			newnode.disabled = true
+			if !all_traits_known and !("Dislike" in trait.name):
+				newnode.disabled = false
+			else:
+				newnode.disabled = true
 			var font = input_handler.font_size_calculator(newnode)
 			newnode.set("custom_fonts/font", font)
 		else:

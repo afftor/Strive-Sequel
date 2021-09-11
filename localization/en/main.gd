@@ -2492,15 +2492,77 @@ var TranslationDict = {
 	LICHAIRETALK3 = "— But I don't have anything on me!... Unless you mean... But this would be indecent. \n\n Aire blushes heavily and looks down.",
 	LICHAIRETALK3REPLY1 = "Your company would please me greatly (Sex Factor)",
 	LICHAIRETALK3REPLY2 = "Nevermind, you can go",
-	LICHAIRETALK4 = "{color=green|Success}\n\n— I-if that's so, we can find a more secluded place then? \n\n ... \n\n After a pleasant affair Aire thanks you again and leaves in an unknown direction. You decide it's time to move on as well.",
-	LICHAIRETALK4_1 = "{color=red|Failure}\n\n— I'm sorry, I can't do that. And there's nothing else I can offer.",
-	LICHAIRETALK4_1REPLY1 = "Nevermind, it's good you are safe, take care",
-	LICHAIRETALK4_1REPLY2 = "*Push down and rape*",
+	LICHAIRETALK4 = """The elf girl twists a lock of orange hair around her finger nervously. 
+
+{color=yellow|Aire:— Can we at least find somewhere a little more comfortable than this... dusty tomb?}
+
+You both go outside and Aire starts looking for a suitable place while you follow, enchanted by the dainty wiggle of her ass. After a few minutes of searching outside the crypt, she leads you through a gap in the rocks where you stop her. Your patience is growing short and you gesture to the bare stony ground. 
+
+{color=yellow|Aire:— Here? Oh... I guess we could...}""",
+	LICHAIRETALK4_BAD = "{color=red|Failure}\n\n— I'm sorry, I can't do that. And there's nothing else I can offer.",
+	LICHAIRETALK4_BADREPLY1 = "Nevermind, it's good you are safe, take care",
+	LICHAIRETALK4_BADREPLY2 = "*Push down and rape*",
+	LICHAIRETALK4_1 = """You beckon Aire closer. Her lip quivers as you draw her into an embrace with her firm breasts pressing against your chest. With one finger you gently lift her chin until you are looking directly into beautiful amber eyes. 
+
+{color=yellow|Aire:— I-I'm very grateful, you know. You saved my life, I just... I'm sorry, I'm not very experienced at... this.}
+
+You catch a lock of hair hanging over Aire's face, and tuck it behind her pointed ear. On the way, your fingertip traces a line along the ear and her face flushes with arousal. She leans in to kiss, and you press your tongue between her lips, tasting strawberries. Your hands find her round ass, which tenses as you take hold of it, but then relaxes.""",
+	LICHAIRETALK4_2 = """You take the edges of her shirt and lift it until Aire's breasts are exposed, creamy and white. Your thumb circles one areola softly and the nipple immediately hardens to your touch. Leaning down, you squeeze her breast gently while you lick the nipple and suck it into your mouth. Aire moans while her hands pluck weakly at your clothes.
+
+You tug her belt from its buckle. The leather shorts slide down her slender thighs to reveal fine silk panties. You unbuckle your own belt too, letting your cock spring free. She bites her lip and gasps softly as you guide her hands to your shaft. You slip your free hand inside her panties and cup her pussy, teasing the slit with your middle finger. 
+
+{color=yellow|Aire:— Oh! Oh, that's... that feels... good.}""",
+	LICHAIRETALK4_3 = """You pull the silk panties down her slim legs as she continues to stroke your cock. Aire gazes at you, desire bright in her eyes. 
+
+{color=yellow|Aire:— Are we going to-},
+
+You answer the question by pushing Aire backwards until she is lying on her cloak. Blushing, she spreads her legs wide to present her wet pussy to you. You take a moment to enjoy the sight before mounting her. She cries out in ecstasy as your penis prods against her swollen pussy and then thrusts inside. Her back arches sharply as your cock stretches her tight cunt. 
+
+You fuck her hard on the stony ground, gripping her thighs as you pound her lithe body against the rock. Aire cums quickly, her pussy spasming around your cock and her ripe tits bouncing as you ride. You feel your own orgasm building as the pretty elf girl rocks her hips to coax your cock deeper. Suddenly she opens her eyes and looks at you.
+
+{color=yellow|Aire:— Wait! Please, not inside!}""",
+	LICHAIRETALK4_4 = """Aire's eyes are wide as your cock drives urgently into her pussy. Taking hold of her splayed knees, you fold her legs up high and fuck her until you cannot hold the orgasm any longer. Pulling your cock out, you spurt hot cum across her tits and belly. She sighs in pleasure and relief.
+
+{color=yellow|Aire:— Oh, thank you!}
+
+She swivels and brings your cock to her mouth again, licking at it eagerly.
+
+{color=yellow|Aire:— You saved me, and I owe you, whoever you are. Thank you for everything, and I mean everything… Will we meet again, or is this just... I mean, it was fun either way… right?}
+
+You stand and buckle your pants. Aire pulls the cloak around her naked body and looks for her scattered clothes. In a minute she is dressed and slips away into the wilderness, a coy smile on her face. You decide it's time to get going too.""",
+	
 	LICHAIRETALK5 = "— You will not speak badly of my Master! Even if you saved me, I won't allow it. Moreover, it was my fault for charging in here without scouting.",
 	LICHAIRETALK5REPLY1 = "Don't you think you should reward me for your rescue?",
 	LICHAIRETALK5REPLY2 = "You better not end up in a similar spot next time, take care.",
 	LICHAIRETALK5REPLY3 = "You know, I find it very satisfying to defile someone else's property (rape)",
-	LICHAIRETALK6 = "— Wha?… No!! \n\n You easily subdue Aire and have your way with her body as she sobs and endures it. \n\n ... \n\n After you satisfy yourself, you find her lying on the ground barely moving.",
+	LICHAIRETALK6_1 = """Seeing the cruel grin spread across your face, Aire tries to run but the fight with the lich has drained her strength. You catch hold of a wrist and pull her lithe body close. 
+
+{color=yellow|Aire:— N-No! How dare you! }
+
+Pinning her wrists with one hand, your other explores her delicate elven figure, roughly groping and pinching her thighs and ass before peeling the armor away and ripping her shirt open. Aire struggles weakly, but her firm breasts are soon exposed and their pink nipples begin to harden, quivering in the cold. 
+
+She blushes deeply, the bloom spreading from the cheeks, up her pointed ears and down her neck. The elf girl’s breath is hot against your face as you tug her belt free and pull down first the leather shorts and then her silk panties to reveal smooth fair skin; a taut ass with a neat pussy between her slim thighs.
+
+{color=yellow|Aire:— Please, no! Let me go! You have no right! My master will be furious! }""",
+	LICHAIRETALK6_2 = """Keeping her naked body clasped against you, you take some time to get familiar with her curves as Aire sobs pitifully. She cries out when your fingers find the clit, her shudders making her perky tits tremble. You stoop and catch one of the nubile breasts in your mouth, sucking and biting the tender nipple as you fondle her slit. 
+
+You rub the clit for a minute and then forcefully press your middle finger up into her tight elven pussy. Aire squeezes her thighs together around your hand and moans helplessly. Wrists pinned, you pull her upper body back so you can look into those tearful amber eyes as your finger stirs the hot little honey-pot between her legs.
+
+{color=yellow|Aire:— Nnnnn- no! That's not yours! You're not allow-aaaah! }""",
+	LICHAIRETALK6_3 = """You draw your finger slowly out of Aire's pussy to find it slick with juices, then force your hand into her open mouth to silence the wails, gripping her jaw firmly. 
+
+Letting go of the wrists, you pull her across you and lay a dozen hard spanks on the creamy skin of her tits and ass until they start to redden. She yelps and tries to cover herself but you shove her down backwards onto the floor and release your cock from your pants.
+
+{color=yellow|Aire:— Y-you bastard! I don't want this! I don't want you! }""",
+	LICHAIRETALK6_4 = """You laugh as you fall on top of Aire's struggling body, your erect cock pressing against the soft flesh of her inner thigh. Forcing your knee between her legs, you pry her slender thighs apart until they are spread wide. Shaky hands claw at your chest as you line up your cock with her glistening cunt. 
+
+Aire’s perfect tits heave as she writhes, trying to escape. Savoring the moment, you thrust your hips forward, ramming your cock deep into her hole. You swat away the flailing hands and seize hold of her tits, gripping them like handles while you fuck her vulnerable elf pussy raw.""",
+	LICHAIRETALK6_5 = """Aire's struggles gradually grow weaker as you pound her against the cold stone floor of the tomb. You feel your orgasm begin to build and lower yourself to lay on top of her, your penis sliding freely in and out as she gasps at each powerful lunge. Her eyes are closed, tears staining her face, but you grasp a handful of soft orange hair at the back of her head and pull hard, forcing a plaintive squeal. 
+
+Your lips close over hers and your tongue shoves roughly into her mouth while your hips grind relentlessly between her splayed thighs, driving your cock urgently into her spasming pussy. She tastes faintly of strawberries. Her resistance is already crushed as you deliver one final thrust, shooting hot cum deep inside her svelte elven body.""",
+	LICHAIRETALK6_6 = """You use the tight grip of her pussy to milk the cum from your cock before pulling out. Standing, you buckle your pants, leaving Aire naked, spreadeagled, and leaking semen onto the ancient flagstones of the lich's crypt. A sheen of sweat sticks the dust of the tomb to her pale skin, and she is panting for breath as her shining amber eyes stare up at you in fear and anger.
+
+Lust satisfied, you look at her lying there exhausted, broken and defenceless on the ground but still brimming with fury and injured pride.""",
 	LICHAIRETALK6REPLY1 = "Kill her",
 	LICHAIRETALK6REPLY2 = "Leave her",
 	LICHAIRETALK7 = "You slit her throat, ending her life. There's nothing else to do here and you decide to leave.",
@@ -4621,41 +4683,83 @@ Amelia smiled at you mysteriously.""",
 	ANASTASIA_EXECUTION_4 = """
 
 Oh, look, it's about to begin.""",
-	ANASTASIA_EXECUTION_5 = """As the curtain is taken down from around the platformthe crowds begin to raise their voices. In the center, a fully naked Anastasia is entrapped in a set of wooden stocks. Her face quickly turns an angry red as hundreds of eyes fix on her. A herald next to her declares her crimes at length, going on for a full minute.
+	ANASTASIA_EXECUTION_5 = """In the main square of Aliron, a large platform has been constructed with a curtain hung around it. A crowd of citizens begins to gather early in the day and there is much excited speculation about the method of Anastasia's execution.
 
-{color=aqua|Herald:— ...for these crimes, rebel Princess Anastasia is subjected...}
+The guild leaders arrive, taking their seats next to you, and an expectant hush settles over the crowd. The curtain around the central platform is dropped and shouts rise up from the gathered citizens at the sight of a fully naked Anastasia bent over with her head and hands trapped in a set of wooden stocks. Her heavy breasts swing freely in the cool morning air.
 
-He pauses dramatically for effect..
+The princess's face flushes deep red as hundreds of eyes fix on her, inspecting every inch of her naked and defenceless body. A herald stands next to her with a long scroll and begins the process of declaring her many crimes in detail, going on for several minutes as the princess squirms helplessly. """,
+	ANASTASIA_EXECUTION_6 = """{color=yellow|Herald:— ...and having been found guilty of these manifold wicked crimes, the rebel Princess Anastasia is sentenced to…}
 
-{color=aqua|Herald:— To a prolonged public humiliation. She will pay for her crimes with her body. Everyone should use her as they seem fit as long as she's not grievously harmed. }
+The herald pauses for dramatic effect.
 
-{color=yellow|Anastasia:— Wha..?}
+{color=yellow|Herald:—  ... A prolonged public humiliation. She will pay for her crimes against our fair city with the innocence of her virginal body. Every citizen should use her as they see fit. Our healers stand ready in case grievous physical injury is inflicted.}
 
-Princess could not decide if she should be happy to be alive or if  execution would be preferable to her imminent degradation.""",
-	ANASTASIA_EXECUTION_6 = """The crowd grew even more excited as many men shouldered forward quickly forming a line. Anastasia was quickly mounted without warning from behind by the first of them with guards keeping the rest at bay.
+{color=yellow|Anastasia:— Whaa...?}
 
-{color=aqua|Citizen:— Take this, you bitch! My brother died in the war because of you.}
+The princess's face is a picture of fear and confusion, trying to decide if she should be happy her life is being spared, or if she would prefer execution to her imminent brutal degradation. Tears form in her eyes as a chorus of perverted cheers ring out from the crowd
 
-{color=yellow|Anastasia:— I'm sorry... Please, it hurts... Stop...}
+A long and unruly line begins to form at the foot of the platform, with the city’s men jostling and shouldering each other to get to the front. The city guards are hard-pressed to maintain order and stop them charging the platform.""",
+	ANASTASIA_EXECUTION_7 = """Beside you, Amelia purrs and giggles at the spectacle of the princess’s subjugation. 
 
-However, the princess's pleading fell on deaf ears. Angry and horny citizens alike reveled in their debauchery.""",
-	ANASTASIA_EXECUTION_7 = """{color=aqua|Amelia:— He-he, isn't this much nicer than a dead body? I'm actually quite proud of myself. Don't look so surprised, I've managed to convince Duncan and others that after this nobody will ever see her as royalty, so she'll be safe. Physically anyway… can't guarantee what state her mind will be left in.}""",
+{color=yellow|Amelia:— Well, isn’t this much more entertaining than a boring old beheading? You know, I’m rather proud of myself.}
+
+You turn to Amelia in surprise, momentarily distracted from the plight of the naked princess.
+
+{color=yellow|Amelia:— Don’t look so shocked! I simply convinced Duncan and the others that after this nobody will accept her as royalty again. She’ll be neutralized, safe. Physically anyway, no guarantee what state her mind will be left in after getting fucked by every cock in the city…}
+
+On the platform, the first man has climbed the stairs and is examining the princess’s virgin cunt with his dirty fingers as the crowd catcalls and jeers. Anastasia squeezes her thighs together in a doomed effort to stop the man’s crude inspection of her unused pussy. The man forcefully shoves a finger into her asshole instead, making the princess scream in pain.""",
 	ANASTASIA_EXECUTION_OPTION_3 = """Clever move""",
 	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off""",
 	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
 	ANASTASIA_EXECUTION_8 = """{color=aqua|Amelia:— I did say I pity her, didn't I? And this is much more fun to watch too.}""",
 	ANASTASIA_EXECUTION_9 = """{color=aqua|Amelia:— *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.}""",
 	ANASTASIA_EXECUTION_10 = """{color=aqua|Amelia:— Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.}""",
-	ANASTASIA_EXECUTION_11 = """
+	ANASTASIA_EXECUTION_11 = """With his grubby finger still inside Anastasia’s ass the man roughly kicks her legs apart, spreading her wide. The princess wails and wriggles in the stocks, humiliated by the intrusion into her clenched sphincter The crowd roars in anticipation as the man pulls his sizable cock out of his pants and begins to rub it against her soft thighs. 
 
-{color=aqua|Amelia:— But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess.} """,
-	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet the line seemed to have no end. Her pleads and cries gave way entirely to sobs and faint moans.
+{color=yellow|Citizen:— You fucking bitch. My brother died in the war you started! 
 
-The former princess kept being used by the citizenry for the whole of the next week until eventually disappearing from the main square.""",
-	ANASTASIA_EXECUTION_13 = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced.
+{color=yellow|Anastasia:— I’m sorry! Please, don’t! Don’t hurt me!}
+
+{color=yellow|Citizen:— It’s too fucking late for that, princess cunt. Time for you to get what you deserve.}
+
+The man beats Anastasia’s round ass savagely until her asscheeks are red and raw. She cries out, her rear end writhing desperately to escape his cruel blows, exciting the laughing crowd further.
+
+{color=yellow|Citizen:— There. That’s got you nice and hot, don’t it? Ready for your dishonouring?}
+
+{color=yellow|Anastasia:— No… Please… I’m still a virgin!}
+
+Lecherous laughter rings out from the square as the princess pleads desperately. """,
+	ANASTASIA_EXECUTION_12 = """{color=yellow|Citizen:— No use begging now, princess cunt. Not every day a commoner like me gets to deflower a nubile virgin of the royal blood. Another hundred men waiting to do it if I don’t, so best you get used to the idea.}
+
+The man grabs Anastasia by her asscheeks, his fingernails sinking cruelly into her tender flesh as he spreads her pussy open. He spits onto her cunt, drawing another roar from the crowd. Anastasia’s head twists in the stocks, trying to see the face of the man behind her, but her long blonde hair gets in the way. The man presses his cock against her pussy, holding it there.
+
+{color=yellow|Citizen:— This is for my brother Harald, you cunt, I hope he’s watching, somewhere.}
+
+The man forces his cock into her, bursting her hymen open as the princess screams at her violation. The crowd hollers in debauched euphoria as the burly commoner takes the virginity of the princess, violently raping her bleeding pussy while she howls in agony and disgrace. """,
+	DUNCANS_DECLARATION_START = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced.
 
 — None can deny how instrumental the efforts of [sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
+	ANASTASIA_EXECUTION_13 = """It doesn’t take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia’s legs.. 
 
+{color=yellow|Amelia:— Did I mention I pity her? I do, you know, poor thing. But this is so much more fun to watch.}
+
+You turn to see Amelia has one hand up her dress and between her legs. Her arm is twitching rhythmically.
+
+{color=yellow|Amelia:— You know, if you plan to take part, you might want to get in there before she gets too badly messed up. I don’t think she’ll be much fun after the first hour or so.}
+
+A second man has climbed the platform. He walks around to look at the princess, grabs her hair and pulls her head up. 
+
+{color=yellow|Citizen 2:— Hello princess, why don’t we use this pretty mouth of yours as well? You’ve got a lot of work to do till you satisfy us all.}""",
+	ANASTASIA_EXECUTION_14 = """Anastasia does not find any words to object, being at the mercy of the perverts from the crowd.
+
+The man tugs his limp cock from his pants and pushes it in Anastasia’s face. She quickly takes it in her mouth, eagerly licking and sucking on him to the delight of the crowd. She gags briefly at the smell of the peasant’s unwashed penis but his cock is soon stiff and cramming into her throat as he grips her hair.
+
+He pulls his cock out of her sucking mouth as she looks at him bewildered. He walks around behind her... """,
+	ANASTASIA_EXECUTION_15 = """After a few hours, Anastasia barely resembles the feisty and spirited princess who so nearly toppled the guilds of Aliron. Her once-smooth skin has been whipped and beaten until it is bruised and torn, and her whole body is coated in the mingled semen of dozens of the city’s men. The healers have stepped in several times to save her from shock or unconsciousness.
+
+The line to abuse her has hardly shrunk at all, with several of those who have already had their pleasure rejoining for a second turn. Anastasia’s cries and pleading have given way to ragged sobs and the occasional agonized moan as another man penetrates her ruined pussy or ass. The cheers of the crowd settle down into a regular rhythm.
+
+Anastasia is displayed in the main square for a week, during which time there is never a break from the cocks defiling her holes. She is used by every man in the city as an example to any who would challenge the guilds. Eventually, her beaten and violated body disappears from the stocks. """,
 
 	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail cell where a single unbound prisoner is held: the former leader of the rebellion, princess Anastasia. Despite her state she observes you with a sharp glare, yet remains silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little need for that.""",
 	ANASTASIA_PERSUASION_OPTION_1 = """Recruit""",
@@ -5187,20 +5291,41 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """— O-ofcourse, I understand. But still, thank you.
 
 Daisy politely smiles at you and, with your approval, returns to her tasks.""",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1 = """{color=green|Success}
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_0 = """Daisy blushes and her gaze drops to your groin, where a noticeable bulge is pressing against the front of your pants. 
 
-Daisy manages to overcome her shyness to lean toward you and give you a gentle kiss. However, you hug her from the side and seal her lips with passion. As she succumbs to your kiss, you guide her hand between your legs. As she looks down, she notices your erection with concern evident on her face.""",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """{color=red|Failure}
+{color=yellow|Daisy:— Oh! Of course, Master. How should I...}
+
+She squirms as she stands before you in her smart new dress, her hands clasped in front of her waist and twisting nervously. You look at her steadily, expectantly. """,
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_BAD = """{color=red|Failure}
 
 Daisy manages to overcome her shyness and gives you a little kiss then quickly turns away. You consider taking it further, but are too slow and she's already returned to her duties.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_1 = "What are we gonna do about this?",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2 = "That's your fault, so it's only right for you to correct this",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3 = "*Push her head down*",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2 = """Daisy gulps and kneels before fully preparing herself for the proper servitude.
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1 = """Without another word, Daisy sinks gracefully to her knees, her instinct to serve you taking over. She looks up at you with reverence, waiting with her mouth obediently open and hair held back, as you unbuckle your belt and pull your cock out. 
 
-Her skills are very poor, but she manages to compensate for it with her eagerness.
+{color=yellow|Daisy:— Oh M-Master, you are too good to me, I don't deserve this.}
 
-As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face instead. Relieved, you order her to clean herself up and give her some free time from her duty.""",
+You lay your cock across her pretty face and she licks your balls at your instruction. You stroke her long fluffy ears gently as her quick tongue laps at the base of your shaft and she moans softly with desire.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """Daisy's clear blue eyes gaze up at you longingly as she plants little licks and kisses along your cock. Her oral skills are amateurish at best, but her eagerness to please you makes up for her lack of technique. There will be plenty of time to teach her how to use her lips and tongue properly.
+
+You look down at her and smile indulgently. Her left hand has dropped down between her thighs, and you can see how she touches her pussy when she thinks you won't notice. Her breath against your penis grows quicker as you nod your approval for her to continue.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3 = """"Daisy's tongue licks all the way from the base of your shaft to the swollen head of your penis and she looks up at you adoringly as her lips part to take you into her grateful mouth. Her other hand comes up and begins to work your shaft as her head bobs up and down on your cock, never breaking eye contact with you as her tongue coils around your member. 
+
+You run your hands around her head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeaks softly at the sensation as you pull her head gently but firmly down onto your penis, pressing the head of your cock into her delicate throat.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4 = """As you push your cock deeper into her mouth, Daisy's eyes tear up involuntarily. She moans around the thick penis filling her throat as you use her ears to force yourself deeper into her. Still her gaze never leaves yours as you press her lips up against your pubic hair and cram your whole length into her face.
+
+She shudders at the unexpected intrusion, but listens to your voice and keeps her throat relaxed to avoid gagging. Having opened the way, you fuck her mouth more vigorously, using her ears to keep her head in place as your cock rams into her narrow throat. Feeling your orgasm build, you draw your penis slowly out of her.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5 = """Daisy's voice sounds different and she is panting for breath after the stretching of her throat.
+
+{color=yellow|Daisy:— D-Does this please you, Master?}
+
+One of her hands returns to pump your shaft while the other rubs at her wet pussy excitedly. You release her ears and she goes to work eagerly sucking and licking your penis. 
+
+Your orgasm arrives like a steam train, spraying thick strings of cum over Daisy's cheeks and brow, and into her waiting mouth. She sighs in pleasure as your seed coats her face and she licks the sticky mess from her lips to swallow it. She takes your cock in her mouth again and sucks gently until the cum is drained from your balls. 
+
+You buckle your pants and look down at her cum-smeared face, her eyes still gazing obediently up at you. You order her to clean herself up and give her an hour of free time as a reward.""",
+
 
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush.
 
@@ -5216,12 +5341,45 @@ Daisy gasps in shame as you savor her beauty.
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_1 = "Well, you better overcome your embarrassment and properly thank me",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2 = "This emphasizes your body's natural beauty nicely",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3 = "It's proper apparel for a whore like you",
-	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1 = """As you move closer to Daisy, she quickly notices your bulge. Stimulated by her garment and sudden nudity she almost instinctively kneels before you and prepares to serve.
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1 = """Daisy blushes and her gaze drops to your groin, where a noticeable bulge is pressing against the front of your pants. 
 
-Her skills are very poor, but she manages to compensate for it with her eagerness.
+{color=yellow|Daisy:— Oh! M-Master... Can I bring you some refreshments?}
 
-As she brings you to orgasm, she pulls your dick from her mouth making it spray over her face. Relieved, you order her to clean herself and give her some free time from her duty. """,
+She squirms as she stands uncomfortably before you with her breasts exposed. Her hands are clasped in front of her waist, twisting nervously. Her nipples are hard and a wave of goosebumps runs over her naked tits. You look at her steadily, expectantly, then unbuckle your belt and pull your cock out. 
 
+{color=yellow|Daisy:— That is... I don't... What are you doing?}""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_2 = """You beckon Daisy forward and place your hands on her slender shoulders. She is trembling faintly. With one hand you casually fondle her exposed tits, your finger and thumb pinching her nipples gently until they start to grow hard. She gasps softly and bites her lip. 
+
+You explain that you went to a lot of expense for her dress, and she needs to show her gratitude. You take her wrists and guide her hands to your stiff cock. Weakly, she strokes your shaft, ashamed and unwilling. 
+
+You order Daisy down to her knees and she complies reluctantly. Her sleek tits quiver in the cool air. She stares at the floor.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_3 = """You order Daisy to look at you and her blue eyes turn to gaze up at you imploringly. 
+
+{color=yellow|Daisy:— P-Please, master. Isn't there something else...}
+
+Curtly, you order Daisy to open her mouth and after a moment of insubordinate hesitation she does. Her full lips form a perfect 'O' framing her small red tongue. Your cock twitches in anticipation and she flinches.
+
+You explain to the kneeling, half-naked bunny girl how you are going to use her mouth until you cum. She cowers a little and looks away, while not daring to remove her hands from your cock.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_4 = """You order Daisy to look at you again, and not to take her eyes from yours until she feels your cum on her skin. As she strokes your penis you step a little closer so your cock is pressing up against her pretty face. 
+
+You instruct her to touch herself while she serves you. Without breaking eye contact, her hand slips between her thighs and she starts to massage her clit through the panties. 
+
+Maneuvering your hips, you line your cock up with her mouth and prod it between her soft lips. You order her to use her tongue to pleasure you and she begins to lick small circles around the head of your penis inside her mouth. You can see the stress in her eyes as she sucks you off from her knees, working your shaft with her free hand.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_5 = """You run your hands around Daisy’s head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeals in protest as you pull her head firmly down onto your penis, pressing the head of your cock into her delicate throat.
+
+As you push your cock all the way into her mouth, Daisy's eyes tear up. She moans pitifully around the thick penis filling her throat while you use her ears as leverage to force yourself deeper. You press her lips up against your pubic hair and cram your whole length into her face.
+
+Daisy shudders at the unwanted intrusion, and gags until you tell her to relax her throat. Having prepared the way, you fuck her mouth more vigorously, using your grip on both ears to keep her head still as your cock rams into her narrow throat. Each time it slides out, her lips suck tight around your shaft before you shove it back in and she has to swallow your member again.""",
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6 = """After several minutes of throat-fucking you feel your orgasm building, and draw your penis slowly out of her. You order the kneeling Daisy to beg for your cum. Her voice sounds different after the stretching of her throat and she is panting for breath.
+
+{color=yellow|Daisy:— M-master... Will you cum on me? Please?}
+
+One hand is pumping your shaft while the other rubs her wet panties. You release her ears and let her suck on the head of your penis while she jerks you off. 
+
+Your orgasm hits, spraying thick strings of cum over Daisy's cheeks and brow and into her open mouth. She sighs as your seed coats her face and tongue. At your order, she takes your cock in her mouth again and sucks gently until the cum is drained from your balls. 
+
+You buckle your pants and look down at her cum-smeared face, her eyes still gazing obediently up at you. You tell her to clean herself up and give her an hour of free time as a reward.""",
+	
 	DAISY_TRAINING_REPLY_0 = """While you were holding a small meeting with a couple other land owners, you noticed that Daisy, although pretty and catching a lot of attention, didn't quite present herself in a manner befitting a trained servant. She messed up a guest's order and offered a stuttering apology. Perhaps, it might be a good idea to put her through proper training. """,
 	DAISY_TRAINING_OPTION_1 = "I want to have my servant trained...",
 	DAISY_TRAINING_REPLY_1 = """You explain to Amelia how you think Daisy could benefit from training to become more professional.
@@ -5244,20 +5402,54 @@ You fill out a small form denoting which actions should be excluded from her tra
 	DAISY_TRAINING_REPLY_2_5 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
 
 You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
-	DAISY_TRAINING_INTERMISSION = """In the center of an exquisitely decorated room, Daisy hangs by ropes tied about her naked body. Her eyes are blindfolded and her mouth is filled with cock. Her blindfold is still wet from tears, yet her mouth produces only moans.
+	DAISY_TRAINING_INTERMISSION_1 = """The room is decorated with expensive furniture, its walls hung with exquisitely designed drapes. A lantern burns in each corner, shedding bright light throughout the space. In the center of the room, Daisy hangs suspended by fine silk ropes tied around her naked body. Her arms and legs are spread out and secured by ropes that run to the upper corners of the room. 
 
-Initially she couldn't grasp why [master] did this to her, but after only a couple of days she accepted it. Daisy realized this is the only way she can prove her usefulness and slowly adapted to her new role.
+Daisy's blindfold is wet with tears that have soaked through it, and her mouth is filled with a fat cock around which she moans as she gasps for breath. Unseen men walk around her, inspecting and groping her exposed tits and ass. One pokes a finger into her pussy to check how wet she is.""",
+	DAISY_TRAINING_INTERMISSION_2 = """For the first few days, Daisy couldn't understand why her master had done this to her. Hadn't she been willing enough? Hadn't she tried her best to please him? She had swallowed his cum like an obedient slave and been grateful for it. How could he have sent her to this awful place?
 
-Trainer1: — It didn't take long, she's stopped complaining entirely.
+She had been here a week now and such thoughts were long forgotten. This was what she deserved. This was all she deserved. She was three holes that begged to be filled with cock, and that was all she would ever be. She accepted it now, and did her best to adapt to her new role. She slurped eagerly at the cock in her mouth, desperate to please.""",
+	DAISY_TRAINING_INTERMISSION_3 = """The man with his cock in her mouth held Daisy by the ears as he fucked her throat. Another man was lubricating her asshole, and she knew what that meant.
 
-Trainer2: — Yeah, she's a natural sub. Look how wet her cunt is.
+{color=yellow|Trainer 1:— Well, this one didn't take long. Loves the cock. She's stopped whining already.}
 
-Trainer1: — Well, she is a half bunny. Man, I'd buy one if they weren't so useless otherwise.
+{color=yellow|Trainer 2:— Oh yeah, she's a natural submissive. Practically begging to be dominated. Look how wet her cunt is.}
 
-Daisy felt a new dick being rammed inside her already trained asshole. She had learned that the way to get it over with fastest, was to take it eagerly and make her trainer cum. She responded by forcing her sphincter to provide more stimulation, involuntarily gaining pleasure in the process.
+Daisy squirms with pleasure as the man digs two fingers into her slick pussy and draws them out for a moment before going back to lubing her ass.
 
-Her training was going as planned.""",
+{color=yellow|Trainer 1:— Damn. Well she is a half-bunny. I'd buy one of these for myself if they weren't such dumb useless sluts otherwise. Isn't that right, slut? You're a dumb cunt whose only value is your holes?}
 
+Daisy tries to nod and agree but it's hard with the huge cock shoved into her mouth and the man's tight grip on her sensitive ears. The man behind her laughs. 
+
+{color=yellow|Trainer 2:— Aww, look at that! She knows it. Good bunny!}""",
+	DAISY_TRAINING_INTERMISSION_4 = """The man behind her pushes first one, then two, then three fingers into Daisy's slippery ass, working them in and out to stretch her sphincter. Her hips twitch in arousal as he fingers her.
+
+{color=yellow|Trainer 2:— Tight little holes on this one, be sorry to see her go home.}
+
+{color=yellow|Trainer 1:— Yeah, she's a bit special ain't she? I mean, she's basically trained and ready to go now. Lucky us, we got her for another week.}
+
+{color=yellow|Trainer 2:— Oh yeah, plenty of time to enjoy this premium piece of ass, make sure she's learned her lessons well.}
+
+With that the man behind her pulls his fingers out, grabs hold of her butt-cheeks, and rams his big cock into Daisy's responsive and well-trained ass. She can feel his fingernails digging into the soft skin of her behind as he ruts on her. 
+
+The man in front is nearing his orgasm, she guesses, because he releases her ears and reaches down to grip her by the breasts while his cock slams into her throat with increasing urgency.""",
+	DAISY_TRAINING_INTERMISSION_5 = """The cock in her ass was hurting her, too big and drilling into her too hard and fast. Daisy had learned that the best way to please was to take the pain eagerly and make her trainers cum quickly to get it over with. She flexes her sphincter, squeezing her asshole around the big cock impaling her and is rewarded when the man spanks her exposed ass in delight.
+
+At the same time, the man with his cock in her mouth starts to cum. Hot sticky mess sprays into her throat and she has to gulp it down quickly to avoid choking and spluttering, which could earn her a slap, or a whipping, depending on the trainer. She hears him groan with pleasure as her skilled lips suck every drop of cum from his cock while he squeezes and twists her hanging tits like the udders of a taurus girl.""",
+	DAISY_TRAINING_INTERMISSION_6 = """The big cock behind her continues to pound into her tender asshole mercilessly and Daisy concentrates on using her muscle control to pleasure him. Her pussy feels hot and swollen with her own arousal and she can feel tears on her face again from the violent assault on her ass. 
+
+The man behind slides his hand underneath her and slips his thumb into the bunny-girl's soaking pussy. He holds her there like a bowling ball as his cock thrusts forcefully into her ass again and again. The pressure on her clit is enough to make her cum almost immediately, which she hopes is what he wanted, and she arches her back, bucking wildly on the cock buried inside her. """,
+	DAISY_TRAINING_INTERMISSION_7 = """Daisy feels the man behind her go tense and a moment later he gives one last powerful thrust and his seed floods her asshole. The man grunts and tugs his cock out of her ass, laying it between her butt-cheeks so she can feel cum spurting on to her back. 
+
+{color=yellow|Trainer 2:— Fuck! That's a horny bunny-slut! Her ass almost broke my cock off!}
+
+{color=yellow|Trainer 1:— Haha, that'd be you out of a job, mate. Ah well, good progress anyway. Recommend you take her hungry little mouth next time.} 
+
+{color=yellow|Trainer 2:— Maybe I will. Fuck. What’s your plans now? Want to get an ale?}
+
+{color=yellow|Trainer 1:— Yeah, sounds good. Don't worry slut, we'll send the next shift in.}
+
+Daisy hears the two men leave the room, laughing. She feels the cum trickling slowly from her abused mouth and ass onto the floor as another two men come into the room and begin unbuckling their belts.""",
+	
 	TRAINING_COMPLETE_SERVE_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
 
 — [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
@@ -5306,18 +5498,63 @@ Daisy looks somewhat disappointed, but still respectfully bows to you before ret
 You pause for a moment, considering if you want to test her training out right away or not. """,
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1 = "Let's go for a walk",
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_2 = "I don't have any orders for now",
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1 = "You order Daisy to strip and she immediately obeys. As you collar her and bring her outside you observe that her shame has nearly completely disappeared. You decide to take a stroll among the suburbs as she obediently walks by your side. Rare bystanders gawp at Daisy which heightens her arousal.",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1 = """Looking Daisy up and down you abruptly order her to strip. She obeys instantly, and is fully naked in seconds as she shrugs off her clothes. You place a collar around her neck and attach a leash to it. Daisy waits demurely and obediently while you prepare her for public exhibition. 
+
+As you bring her outside you notice that she shows no shame at her public nudity. You lead Daisy by the leash through the town and she obediently follows by your side. A few passers-by gawp and point at the gorgeous naked bunny-girl being led like an animal, which makes Daisy smile and blush, her nipples hardening in arousal. You ponder how to put her to use.""",
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1 = "Fuck her",
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2 = "Find a group of willing strangers",
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3 = "A stray dog",
 	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4 = "Return",
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1 = """Deciding it's about time, you push her onto her knees and take her from behind like a wild animal. She makes no protest, quickly adjusting herself to give you easier access. Her cunt is incredibly wet and closes tightly around you. As you both move in unison she makes an additional effort to shake her ass and give you more stimulation. A few people observe you from a distance but she pays them no attention.
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_1 = """You lead Daisy by the leash to one of the classier suburbs of Aliron. Large houses stand around leafy parks and many attractive servants can be seen on the streets running errands for their masters. In the parks, the wealthy elites of Aliron take picnics and play sports. Daisy follows you obediently to a small hill in the center of one of these parks. 
 
-Having a great feel for her pussy you decide that it's enough for today and return with her to the mansion. """,
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2 = """After a couple of minutes you find a group of juveniles who are brave enough to approach you. You make a deal and take some of their gold, then allow them to use Daisy as they see fit. Daisy shows no signs of refusing and almost eagerly gets the job done, earning you some cash with her body. """,
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3 = """Since Daisy is showing almost animalistic behavior, you decide that a dog would be a suitable partner for her. With some luck you manage to find a large somewhat hungry mutt. As you instruct Daisy, she only slightly frowns and gets on her knees to incite the dog. After a few sniffs the dog recognizes her as a mate and mounts her with force.
+Once you are sure you have attracted some public attention, and the envious glances of numerous minor nobles, you push Daisy to her knees. She complies without hesitation as you unbuckle your belt and pull your cock out. In the distance you can hear people cheering, or exclaiming in surprise and outrage.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_2 = """Without further delay, you press Daisy down on to all fours and mount her, taking her from behind like an animal while you yank back on her leash. She makes no protest at all, spreading her hips to give your penis easier access to her pussy. As you rut on her, she moves her ass sensuously in unison with your thrusts.
 
-Daisy yelps in surprise at the unusual sensation but quickly it fades as the dog fiercely humps her cunt. The tears roll from her eyes as the dog fills her with his seed. Once the knot has deflated and slipped out, you return to the mansion.""",
+{color=yellow|Daisy:— D-Does my pussy feel good, Master?}
+
+With your cock thrust deep inside her, Daisy shakes her ass delicately from side to side to pleasure you. By now a small crowd has gathered at the foot of the hill, but she pays no attention to their catcalls. She is focused only on you, and your penis moving inside her. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_3 = """You order Daisy to cum, and to make a performance out of it. A few moments later she does so, arching her back and moaning loudly as her body trembles with a powerful orgasm. Her expert pussy grips your cock as you pound her from behind and you feel your own orgasm approaching fast.
+
+You pull out and stand, ordering Daisy to turn around. She kneels before you, gazing up at you with her mouth obediently open as she jerks you off to completion. Your cum splatters over her pretty face and onto her tongue. Taking you in her mouth she sucks the last few drops of cum from your penis before you buckle your pants again. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_4 = """You take Daisy’s chin in your hand and tilt her head up to look at you. She is a little breathless but she looks happy and proud with your cum coating her cheeks and brow. 
+ 
+{color=yellow|Daisy:— Did I do good, Master? Daisy was a good girl?}
+
+You jerk her leash and Daisy gets to her feet, face still glazed with your cum. You lead her down the hill and past the crowd that has gathered, who stand in stunned silence as you pass. You return to the mansion with your leashed and naked bunny-girl, her eyes bright and a sly smile on her face.""",
+	
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2_1 = """You lead Daisy naked and leashed through the streets of Aliron towards some of the Capital's poorer neighbourhoods. Peasants and servants walk the streets between the many beggars and the merchants selling basic goods. On a few corners slave prostitutes look jealously at Daisy, but none of the riff-raff dare to approach you.
+
+Heading deeper into the slums of the city, you encounter a gang of half a dozen teenage boys and young men. They are mostly street thugs, tough lads who have learned to stick together to survive in a world that has little use for them. They leer and catcall at Daisy who ignores them, but you beckon them over.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2_2 = """As the men approach, they are staring lecherously at Daisy's naked body but she makes no attempt to hide or cower from them, trusting completely in your power. You get their attention when you ask if they would like to spend some time fucking your toy. Their leader, a scarred young man a few years older than the others, grins and assures you they would.
+
+You ask the leader what it would be worth to him and his friends to get their dicks wet in a high-class bunny-girl today. After a hurried conference they present you with a pouch of gold. It's not a lot of money, but that's hardly the point.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2_3 = """You pass Daisy's leash to the scarred man and tell her to be an obedient slut for these young gentlemen. She nods and turns to the leader. Not believing their luck, the other men crowd around, rudely groping her breasts and ass. Calloused hands press roughly between her thighs to finger her pussy. They drag the bunny-girl to a small garden square nearby, and surround her. 
+
+You watch as Daisy is pushed down on all fours, and her head is forced down by the ears on the leader's veiny cock. She eagerly sucks him into her mouth as another two guys put their cocks in her hands to be jerked off. A larger man moves behind her and mounts her doggy-style, fucking her sweet pussy with his outsized penis.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2_4 = """Daisy is worked hard for over an hour by the gang, who each take their turn to fuck her ass, mouth, and pussy. Passers-by stop to watch the free show and cheer on the young lads. By the end, Daisy's whole body is coated in a layer of sticky cum and her holes are red and sore. 
+
+The group of men are exhausted, drained of their lust, and you move over to collect your slave before things can turn nasty. You order the trembling Daisy to show some gratitude to the young men for fucking her like the dumb slut she is. She stands unsteadily and curtseys as cum runs down her thighs.
+
+{color=yellow|Daisy:— Thank you all for fucking my dirty holes raw. It was my pleasure to be used as your cum-slut.}
+
+The young men only wave, laughing. Daisy turns to you for approval and you nod. You jerk her leash and lead her limping back through the busy streets to the mansion where you order her to wash before resuming her duties.""",
+	
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_1 = """You lead Daisy naked and leashed towards the outskirts of Aliron, where the city streets meet the surrounding countryside. Few people are on the streets this far from the center of town, just the occasional farmer or guard patrol watching for escaped slaves. 
+
+As you walk along quiet tree-lined streets, Daisy is quiet. She only speaks when spoken to but her body betrays her continuous sexual arousal. There is something almost animalistic about her behaviour and that gives you an idea.
+
+You see a large stray hound that is rooting among the bushes for something to eat. After you throw him some food, he approaches you warily. Daisy watches you, uncertainty on her face, so you snap her leash and order her closer.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_2 = """The stray dog sniffs at her naked pussy and her ass as you smile at her discomfort. Daisy frowns slightly as you order to get down on her hands and knees and hoist her ass in the air. At your instruction she begins to shake and wiggle her rear end enticingly at the dog, but her face cannot entirely hide her nervousness. 
+
+The dog sniffs around Daisy curiously and then evidently decides this is too good an opportunity to pass up. The hound mounts her forcefully, its erect knotted penis plunging into the bunny-girl's trained pussy. Daisy yelps in surprise and pain at a sensation that her extensive training had not prepared her for.""",
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_3 = """As the dog humps Daisy's obedient pussy, the surprise fades from her face and her instincts and training take over. She squirms and whines, pushing her ass backwards rhythmically into the hound's frantic thrusts. The dog's forepaws scrabble for purchase on her back as he ruts on her with animal ferocity, his tongue lolling out.
+
+The dog yowls suddenly and Daisy wails, the tears rolling from her eyes down her scarlet cheeks as the dog climaxes, filling her abused pussy with its seed. The hound's penis is trapped inside Daisy for several long minutes as she weeps in shame, until its knot deflates and it slips out. """,
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4 = """The dog sniffs at Daisy a few more times and licks at the tears streaming down her face before you chase it off. Still on her hands and knees, Daisy is sobbing at the humiliation you have forced on her. She looks up at you with fear and sorrow in her eyes as the hound’s dirty seed trickles down her thighs..
+
+{color=yellow|Daisy:— Th-thank you, Master. I deserved this.}
+
+You order Daisy to masturbate and with one hand on her bruised and oozing pussy she is soon gasping between sobs as she brings herself to a tearful orgasm. With a jerk of the leash you force Daisy to her feet and parade the crying, violated bunny-girl back through town to the mansion.""",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4 = """You decide it's not the right time and return to the mansion.""",
 
 	DAISY_ADMIRER_MESSAGE = """In the morning you receive a letter from a person you haven't met previously. After reading through it you discover that a landowner named Ramont is requesting that you sell Daisy to him. Apparently, he finds her to be a valuable sub breed that he wishes to experiment on.
@@ -5451,34 +5688,60 @@ Daisy nonchalantly fixes her dress and awaits your further orders.""",
 	AMELIA_SILK_REPLY_1_2 = """Amelia looks somewhat disappointed at your response.
 
 — That's too bad. Alright then, good luck with your day.""",
-	AMELIA_SILK_REPLY_1_1_1 = """— Sweet, let me show you one of our exquisite private rooms.""",
-	AMELIA_SILK_REPLY_1_1_2 = """Amelia leads you to one of the rooms. A dimly lit space is filled with thin fragrance and features a comfortable table at the center. By instruction you remove your upper clothes and lay down on it with your back wide open.
+	AMELIA_SILK_REPLY_1_1_1 = """Amelia leads you to a private room in the Servants' Guild with a sly smile on her face. The room is softly lit with candles and a faint sweet fragrance hangs in the warm air. In the center stands a comfortable cushioned table.
 
-— At first I thought about letting my best student take care of it, but then I thought it would be no fun. Aren't you handsome?
+{color=yellow|Amelia:— Hmmm, why don't you slip your shirt off and lay down? I'll prepare the oils.}
 
-You relax as Amelia gently goes over your back, firmly rubbing and hitting it, however after a half minute you feel something isn't so simple. As she further pushes you, you begin to feel an arousement.""",
-	AMELIA_SILK_REPLY_1_1_3 = """— While massage is a technique which helps to relax and relieve stress, it surely would be a waste if we didn't learn to use more.
+Amelia purrs softly as you strip the clothes from your upper body and get comfortable. 
 
-Amelia's voice turned softer and quieter as she almost magically aroused you by touching you in the correct places.
+{color=yellow|Amelia:— You know, I had thought about bringing my top student in for you, a talented young vixen with wonderfully skilled hands. But then I thought, where's the fun in that?}
 
-— He-he, I can see you are enjoying this as well. It's an honor to be served by the guild's leader herself, you know. """,
-	AMELIA_SILK_REPLY_1_1_4 = """With Amelia's poke you instinctively moved on your back sliding out of your pants, revealing a fully erect member.
+She approaches the table, her tail swishing from side to side.""",
+	AMELIA_SILK_REPLY_1_1_2 = """{color=yellow|Amelia:— Oh my, aren't you a handsome man? Look at these powerful muscles!}
 
-— Oh, that's one feisty manhood you have. It's a pleasure to serve you.
+Amelia's delicate fingers stroke softly from your neck to your waist, where they linger for a moment. She applies the citrus and coconut-scented oils to her hands and begins the massage. 
 
-She gracefully bared her voluptuous breasts and pushed your cock between them.""",
-	AMELIA_SILK_REPLY_1_1_5 = """As she lustly massaged you, she began using her mouth. Despite her status you can feel her sincere willfulness to serve you as she masterfully gave you one of the best blowjobs you could imagine.""",
-	AMELIA_SILK_REPLY_1_1_6 = """At the moment of orgasm Amelia took off the cock out of her mouth as it rained over her face.
+You feel your body relaxing as Amelia's hands trace slow firm caresses across your back. Her fingers feather the large muscles in your shoulders and down your sides. Her small fists drum gently, hitting your body in quick sequences of soft thumps that release tension you didn't know you were holding.""",
+	AMELIA_SILK_REPLY_1_1_3 = """Amelia leans over you as she rubs the soothing oil deep into the skin of your back and down your arms. Her slim hips are near your face and as she stoops to apply pressure you feel her soft breasts graze your side. 
 
-— Wow, you've come a lot. Such a strong smell too. The massage was to your liking, wasn't it?""",
-	AMELIA_SILK_REPLY_1_1_7 = """As you return to the reception Amelia gives you a slightly more personal smile.
+The massage continues for several minutes, the elegant catgirl's hands bringing you to a state of deep relaxation as her body brushes lightly across your own. Even in your tranquility, you can feel the pressure of your growing erection against the table. 
 
-— I hope this will fortify our business relationship even further.""",
-	AMELIA_SILK_OPTION_2_1 = "Must say, you've blew me away",
-	AMELIA_SILK_OPTION_2_2 = "Pleasure doing \"Business\" with you",
-	AMELIA_SILK_OPTION_2_3 = "Maybe we could meet at some other day?",
-	AMELIA_SILK_REPLY_2_1AND2 = "— Likewise. Now, if you excuse me, there's other things I've pushed away and now have to attend to. Please come again.",
-	AMELIA_SILK_REPLY_2_3 = "— O-ho, aren't you daring? Very well, I promise to think about it. For now, though, I have some other business needed to be taken care of.",
+{color=yellow|Amelia:— Why don't you roll over, sir, and I can tend to your chest?} """,
+	AMELIA_SILK_REPLY_1_1_4 = """You roll on to your back, your erection clearly visible through your pants. Amelia purrs softly as she leans over you, gently running her slippery hands from your hips to your shoulders, her large breasts momentarily squashing against your stiffening cock.
+
+{color=yellow|Amelia:— Massage is such a wonderful technique for helping a person to relax and relieve their stress, but it would surely be a waste if that was all one used it for.}
+
+Amelia's voice grows softer and silkier as she begins to touch you in a different way. A soft pressure here, a firm stroke there. As if enchanted by her caresses, you feel your arousal provoked into powerful lust. Amelia's hands run down your sides to your hips and over your bulging groin. She giggles seductively as she feels the hardness in your pants.
+
+{color=yellow|Amelia:— Oh, I see you are enjoying this little treat. It is a great honor to be served by the guild leader herself, don't you know?}""",
+	AMELIA_SILK_REPLY_1_1_5 = """You lift your hips and slide your pants down your legs to reveal your fully erect penis standing proud. Amelia purrs with undisguised pleasure.
+
+{color=yellow|Amelia:— Oh, just as impressive as the rest of you! That's a fine and feisty manhood you have. It will be a pleasure to serve you, sir.}
+
+The sophisticated cat-girl slowly unbuttons the front of her satin shirt to bare her voluptuous breasts. She traces oily fingers in small circles around her hard nipples and gracefully arches her back as she leans down towards your cock. 
+
+{color=yellow|Amelia:— If it pleases you, my lord?}
+
+Without waiting for a reply Amelia cups her heavy tits in her hands and presses them together around the shaft of your cock. Moving from the hips, she squeezes her breasts together to massage your penis. Oil smears across her smooth skin as she bounces lightly up and down with your cock embraced by her cleavage.""",
+	AMELIA_SILK_REPLY_1_1_6 = """Amelia tucks her chin down and begins to lick around the head of your penis as it slides between her breasts. With each bounce her tongue comes closer until your cock reaches her eager lips and she sucks it into her mouth. She sucks you expertly as she continues to massage your shaft with her tits.
+
+Despite Amelia’s elevated status as guild leader, you can feel her deep desire to serve a strong master as she delivers the most consummately skillful blowjob you have ever had. Her virtuoso lips and tongue tease your cock to a hardness you have never experienced before and your toes curl as your hips twitch upwards, trying to press deeper into her talented mouth. """,
+	AMELIA_SILK_REPLY_1_1_7 = """Your imminent orgasm is building to a level that you have never imagined and you grip the sides of the table as Amelia slides your cock out of her mouth and looks you in the eye with the tip of her tongue curled against your throbbing shaft.
+
+You can't hold any longer and with a grunt you ejaculate in a thick spray that rains down on Amelia's face and outstretched tongue. Your penis continues to spurt as she works your shaft and, as though in a trance, you can only watch as Amelia's tongue meticulously licks the sticky droplets from your aching cock.
+
+{color=yellow|Amelia:— By the gods, that’s a lot of cum. All over my face! Such a strong and distinct musk to it too. You found my massage pleasing then, [name]?}
+
+You nod wordlessly, your wits far from your reach at this moment.""",
+	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants' Guild, Amelia's smile looks different - warmer, and more personal.
+
+{color=yellow|Amelia:— Thank you for providing me with so much… silk. I hope that this experience will fortify our business relationship for the future? I certainly look forward to further private meetings.}""",
+	
+	AMELIA_SILK_OPTION_2_1 = "Your business acumen has blown me... away",
+	AMELIA_SILK_OPTION_2_2 = "It was an enormous pleasure doing \"business\" with you, Amelia",
+	AMELIA_SILK_OPTION_2_3 = "Perhaps we could schedule another meeting like this one?",
+	AMELIA_SILK_REPLY_2_1AND2 = "I assure you the feeling is mutual. Now, if you will excuse me, there are things I really must get to. Please do come again.",
+	AMELIA_SILK_REPLY_2_3 = "O-ho, aren't you a daring one? Very well, I promise to think about asking my secretary to check my diary. She'll be in touch. For now though, I have some other business that urgently needs to be taken care of.",
 	
 	AIRE_RECRUITMENT_OPTION_1 = "I want the elf girl",
 	AIRE_RECRUITMENT_REPLY_1 = "— Oh, the princess servant? Fine, we have no further use for her.",
@@ -5534,13 +5797,17 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	AMELIA_HERBS_ELF_REPLY_2_1 = """- Thank you for understanding and goodbye.
 
 The elf girl silently returns to her duty leaving you to think on how to tell Amelia about it.""",
-	AMELIA_HERBS_ELF_REPLY_2_2_GOOD = """The elf girl hesitates for some time but eventually gives in to your request.
+	AMELIA_HERBS_ELF_REPLY_2_2_GOOD = """{color=green|Success}
+
+The elf girl hesitates for some time but eventually gives in to your request.
 
 - Fine, but I beg you, don't come for this ever again. 
 
 She leaves and after a few minutes she returns with the package. """,
-	AMELIA_HERBS_ELF_OPTION_2_2_DONE = "Thank you and good bye",
-	AMELIA_HERBS_ELF_REPLY_2_2_BAD = "- Sorry, you'll have to find some other way. ",
+	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye""", # TODO ask if I should add green and red text
+	AMELIA_HERBS_ELF_REPLY_2_2_BAD = """{color=red|Failure}
+
+- Sorry, you'll have to find some other way. """,
 	AMELIA_HERBS_ELF_REPLY_2_3 = """As you whip out a purse of gold, the elven girl seems to give up and do as you want from her.
 
 - Fine, but I beg you, don't come for this ever again. 

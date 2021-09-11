@@ -496,6 +496,23 @@ func LoadGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
+	
+	# checking materials if wrong ver
+	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
+	var text = file.get_as_text()
+	file.close()
+	var pos = text.rfind("original_version\":\"")
+	var ver = text.substr(pos + 19, 5)
+	if ver != gameversion: 
+		for item in Items.materiallist:
+			if !ResourceScripts.game_res.materials.keys().has(item):
+				ResourceScripts.game_res.materials[item] = 0
+				print_debug("Added res on load: " + item)
+		for my_item in ResourceScripts.game_res.materials:
+			if !Items.materiallist.keys().has(my_item):
+				ResourceScripts.game_res.materials.erase(my_item)
+				print_debug("Removed res on load: " + my_item)
+	
 	input_handler.SystemMessage("Game Loaded")
 
 
