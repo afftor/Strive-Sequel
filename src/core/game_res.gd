@@ -38,6 +38,11 @@ func fix_serialization():
 	for i in upgradedata.upgradelist.keys():
 		if !upgrades.has(i):
 			upgrades[i] = 0
+	
+	for item in Items.materiallist:
+		if !ResourceScripts.game_res.materials.keys().has(item):
+			ResourceScripts.game_res.materials[item] = 0
+			print_debug("Added res on load: " + item)
 #	fix_items_inventory(false)
 
 func serialize():
