@@ -224,10 +224,8 @@ var tattoo_descripts = {
 func tattoo():
 	var text = ''
 	for slot in person.statlist.tattoo:
-		#print(person.statlist.tattoo[slot])
 		if person.statlist.tattoo[slot] != null:
 			text += tattoo_descripts[slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')] + " "
-			#print(person.statlist.tattoo[slot])
 	if text.length()> 0:
 		return "{color=magenta|" + text + "}"
 	else:
