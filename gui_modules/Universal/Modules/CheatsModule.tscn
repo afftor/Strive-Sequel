@@ -28,7 +28,7 @@
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=28]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavedetails.png" type="Texture" id=29]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=30]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=31]
 [ext_resource path="res://assets/images/raceshades/Human_M.png" type="Texture" id=32]
@@ -46,6 +46,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_reputationshop.png" type="Texture" id=44]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist.png" type="Texture" id=46]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 36

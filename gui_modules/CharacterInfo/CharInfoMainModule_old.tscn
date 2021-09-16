@@ -10,9 +10,9 @@
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveClassesModule.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule_old2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/button_speechbubble_pressed.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/button_speechbubble.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/button_speechbubble_hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble_hover.png" type="Texture" id=13]
 
 [node name="CharInfoMainModule" type="Panel" groups=[
 "pauseprocess",

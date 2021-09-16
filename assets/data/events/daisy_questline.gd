@@ -191,7 +191,6 @@ var data = {
 		} ],
 	},
 
-	# TODO bonus_effects didn't triggered
 	daisy_dress_acquired_normal_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'daisy_maid',

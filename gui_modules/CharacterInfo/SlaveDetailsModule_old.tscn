@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=12]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavedetails.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=16]
 [ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=18]

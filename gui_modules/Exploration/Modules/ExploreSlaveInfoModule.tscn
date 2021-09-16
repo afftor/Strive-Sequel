@@ -12,9 +12,10 @@
 [ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slaveinfo.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slaveinfo.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=15]
+
 
 
 
