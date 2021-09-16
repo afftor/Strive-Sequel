@@ -223,6 +223,42 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_renown']
 	},
+	
+	#skill related traits
+	
+	basic_combat = {#allows learning basic combat skills
+		code = 'basic_combat',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	advanced_combat = {#allows learning advanced (aoe) combat skills
+		code = 'basic_combat',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	basic_spells = {#allows learning basic combat spells
+		code = 'basic_spells',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	advanced_spells = {#allows learning advanced (aoe) combat spells
+		code = 'advanced_spells',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

@@ -3,6 +3,7 @@ extends "res://src/character/ch_jobs.gd"
 var base_exp = 0 setget base_exp_set
 var professions = []
 var prof_links = {}
+var abil_exp = 0
 
 var sleep = ''
 var work = ''

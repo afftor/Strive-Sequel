@@ -523,8 +523,8 @@ var TranslationDict = {
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell at target. Deal %d Fire damage to all targets in same row.",
 	SKILLWINDARROW = "Wind Arrow",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Must have a bow equipped.",
-	SKILLSLASH = "Slash",
-	SKILLSLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Must have a weapon equipped.",
+	SKILLENEMY_SLASH = "Slash",
+	SKILLENEMY_SLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Must have a weapon equipped.",
 	SKILLMINORHEAL = "Minor Heal",
 	SKILLMINORHEALDESCRIPT = "Restore %d health of the target.",
 	SKILLCONCENTRATE = "Concentrate",
@@ -1248,7 +1248,17 @@ var TranslationDict = {
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal.",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.",
-
+	
+	TRAITBASIC_COMBAT = "Basic Combat",
+	TRAITADVANCED_COMBAT = "Advanced Combat",
+	TRAITBASIC_SPELLS = "Basic Spellcasting",
+	TRAITADVANCED_SPELLS = "Advanced Spellcasting",
+	TRAITBASIC_COMBATDESCRIPT = "Allows to learn basic combat skills and weapons",
+	TRAITADVANCED_COMBATDESCRIPT = "Allows to learn advanced combat skills and weapons",
+	TRAITBASIC_SPELLSDESCRIPT = "Allows to learn basic combat spells and staves",
+	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
+	
+	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
 	TRAITMEDIUM_ARMOR = "Medium Armor",
 	TRAITHEAVY_ARMOR = "Heavy Armor",
