@@ -27,11 +27,12 @@
 [ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=27]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=28]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/decorative_name.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttonskill_prof.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/decorative_name.png" type="Texture" id=29]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=30]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavesummary.png" type="Texture" id=31]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_professions.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavesummary.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_professions.png" type="Texture" id=32]
+
 
 
 

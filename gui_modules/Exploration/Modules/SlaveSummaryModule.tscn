@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/wit.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/gui icons/charm.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=21]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttonskill_prof.png" type="Texture" id=22]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Summary_Panel.tres" type="StyleBox" id=23]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=24]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=25]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=30]
+
 
 [node name="SlaveSummaryModule" type="Panel"]
 rect_min_size = Vector2( 220, 1050 )

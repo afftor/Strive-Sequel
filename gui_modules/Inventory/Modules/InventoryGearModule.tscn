@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/raceshades/Human_F.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavebody.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavebody.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_pressed.png" type="Texture" id=8]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=22]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )

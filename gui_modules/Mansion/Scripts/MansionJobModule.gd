@@ -43,6 +43,7 @@ func update_characters():
 		newbutton.disabled = selected_job == null || selected_resource == null
 		newbutton.set_meta('slave', person)
 		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
+		newbutton.connect('mouse_entered', self, 'character_hovered', [newbutton, person])
 		newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
 		newbutton.get_node("stats/hp").value = person.hp
 		newbutton.get_node("stats/mp").max_value = person.get_stat('mpmax')
@@ -391,8 +392,12 @@ func show_faces():
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
-	if  selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
+	if selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
+		if selected_job.has("production_item"):
 			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.production_item]
+		else:
+			var gatherable_resources = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources
+			max_workers_count = gatherable_resources[selected_job.code]
 		#selected_job.type != "dungeon" &&
 	if ResourceScripts.world_gen.get_location_from_code(selected_location).type == "dungeon":
 		max_workers_count = 0
@@ -502,3 +507,20 @@ func set_rest(button, person):
 	else:
 		update_status(button, person)
 	show_faces()
+
+func character_hovered(button, person): 
+	# k_yellow = base color
+	if $ToolLabel.text == "":
+		return
+	$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['red'])
+	if person.equipment.gear.tool != null:
+		var worktool
+		var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
+		var item_base = item.itembase
+		var req_tool
+		if selected_job.has("worktool"):
+			req_tool = selected_job.worktool
+		if selected_job.has("tool_type"):
+			req_tool = selected_job.tool_type
+		if req_tool == item_base:
+			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])

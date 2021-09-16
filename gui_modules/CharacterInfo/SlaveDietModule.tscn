@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=4]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.gd" type="Script" id=5]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_diet.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_diet.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )

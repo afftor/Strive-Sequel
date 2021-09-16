@@ -181,6 +181,7 @@ var data = {
 				],
 				options = [
 					{
+						# CONSENT
 						code = 'princess_cutscene_good_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_1",
 						reqs = [{type = 'decision', value = 'marry_option', check = true}],
@@ -195,6 +196,7 @@ var data = {
 						dialogue_argument = 1,
 					},
 					{
+						# RAPE
 						code = 'princess_cutscene_bad_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_3",
 						reqs = [{type = 'decision', value = 'marry_option', check = true}],
@@ -202,6 +204,7 @@ var data = {
 						dialogue_argument = 1,
 					},
 					{
+						# RAPE
 						code = 'princess_cutscene_bad_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_4",
 						reqs = [{type = 'decision', value = 'enslave_option', check = true}],
@@ -223,16 +226,17 @@ var data = {
 				character = "anastasia",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
-					{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},
+#					{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},
+					{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_0", reqs = []},
 				],
 				options = [
 					{
-						code = 'princess_sex_bad_1',
+						# MINDBREAK
+						code = 'princess_cutscene_mindbreak_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_8",
 						type = 'next_dialogue',
 						reqs = [],
 						dialogue_argument = 2,
-						change_dialogue_type = 2
 					},
 					{
 						code = 'close',
@@ -245,6 +249,173 @@ var data = {
 			}
 		]
 	},
+	
+	
+	princess_cutscene_mindbreak_1 = {
+		image = null,
+		character = "anastasia",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_1", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_2 = {
+		image = null,
+		character = "anastasia",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_2", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_3',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+				change_dialogue_type = 2,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_3 = {
+		image = null,
+		custom_background = "anastasia_sex_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_3", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_4',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_4 = {
+		image = null,
+		custom_background = "anastasia_sex_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_4", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_5',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_5 = {
+		image = null,
+		custom_background = "anastasia_sex_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_5", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_6',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_6 = {
+		image = null,
+		custom_background = "anastasia_sex_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_6", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_7',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_7 = {
+		image = null,
+		custom_background = "anastasia_sex_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_7", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_mindbreak_8',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	
+	princess_cutscene_mindbreak_8 = {
+		image = null,
+		custom_background = "anastasia_sex_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_MINDBREAK_8", reqs = []},
+		],
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE",
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				change_dialogue_type = 1,
+				reqs = [],
+				bonus_effects = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [
+					{code = 'submission', operant = '+', value = 25},
+					{code = 'vaginal_virgin', operant = '=', value = false},
+				]},
+				{code = 'decision', value = 'anstasia_rape_scene'},
+				]
+			}
+		],
+	},
+	
 	princess_cutscene_good_1 = {
 		image = null,
 		character = "anastasia",
@@ -278,32 +449,51 @@ var data = {
 		],
 		options = [
 			{
-				code = 'princess_sex_good_1',
+				code = 'princess_cutscene_pre_sex_good_1',
 				text = "DIALOGUECONTINUE",
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 2
+#				change_dialogue_type = 2
 			}
 		],
 	},
-	princess_sex_good_1 = {
-		image = null,
-		custom_background = "anastasia_sex_1",
-		common_effects = [],
-		scene_type = "ero_scene",
-		save_scene_to_gallery = true,
-		tags = ['dialogue_scene','blackscreen_transition_common'],
-		text = [{text = "AFTER_ELECTION_PRINCESS_8", reqs = []},
 
-			{text = '', reqs = [], bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'loyalty', operant = '+', value = 25},
-					{code = 'vaginal_virgin', operant = '=', value = false},
-					]},
-				{code = 'decision', value = 'anstasia_sex_scene'},
-				]
-				}
+#	princess_sex_good_1 = {
+#		image = null,
+#		custom_background = "anastasia_sex_1",
+#		common_effects = [],
+#		scene_type = "ero_scene",
+#		save_scene_to_gallery = true,
+#		tags = ['dialogue_scene','blackscreen_transition_common'],
+#		text = [{text = "AFTER_ELECTION_PRINCESS_8", reqs = []},
+#
+#			{text = '', reqs = [], bonus_effects = [
+#				{code = 'unique_character_changes', value = 'anastasia', args = [
+#					{code = 'loyalty', operant = '+', value = 25},
+#					{code = 'vaginal_virgin', operant = '=', value = false},
+#					]},
+#				{code = 'decision', value = 'anstasia_sex_scene'},
+#				]
+#				}
+#		],
+#		options = [
+#			{
+#				code = 'princess_sex_good_2',
+#				text = "DIALOGUECONTINUE",
+#				type = 'next_dialogue',
+#				reqs = [],
+#				dialogue_argument = 1,
+#			}
+#		],
+#	},
+	
+	princess_cutscene_pre_sex_good_1 = {
+		image = null,
+		character = "anastasia",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_CONSENT_1", reqs = []},
 		],
 		options = [
 			{
@@ -315,13 +505,39 @@ var data = {
 			}
 		],
 	},
+	
+	# unused. Needed for test_scene?
+	princess_sex_good_1 = {
+		image = null,
+		character = "anastasia",
+		tags = ['dialogue_scene'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_2", reqs = []},
+
+#			{text = '', reqs = [], bonus_effects = [
+#				{code = 'unique_character_changes', value = 'anastasia', args = [
+#					{code = 'loyalty', operant = '+', value = 25},
+#					{code = 'vaginal_virgin', operant = '=', value = false},
+#					]},
+#				{code = 'decision', value = 'anstasia_sex_scene'},
+#				]
+#				}
+		],
+		options = [
+			{
+				code = 'princess_sex_good_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+
 	princess_sex_good_2 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
-		scene_type = "ero_scene",
-		save_scene_to_gallery = true,
+		character = "anastasia",
 		tags = ['dialogue_scene'],
-		text = [{text = "AFTER_ELECTION_PRINCESS_9", reqs = []}],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_2", reqs = []}],
 		options = [
 			{
 				code = 'princess_sex_good_3',
@@ -334,11 +550,9 @@ var data = {
 	},
 	princess_sex_good_3 = {
 		image = null,
-		custom_background = "anastasia_sex_3",
-		scene_type = "ero_scene",
-		save_scene_to_gallery = true,
+		character = "anastasia",
 		tags = ['dialogue_scene'],
-		text = [{text = "AFTER_ELECTION_PRINCESS_10", reqs = []}],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_3", reqs = []}],
 		options = [
 			{
 				code = 'princess_sex_good_4',
@@ -346,17 +560,100 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1
+#				change_dialogue_type = 1
 			}
 		],
 	},
 	princess_sex_good_4 = {
 		image = null,
 		character = "anastasia",
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{text = "AFTER_ELECTION_PRINCESS_11", reqs = []},
+		tags = ['dialogue_scene'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_4", reqs = []}],
+		options = [
+			{
+				code = 'princess_sex_good_5',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+				change_dialogue_type = 2
+			}
 		],
+	},
+	princess_sex_good_5 = {
+		image = null,
+		custom_background = "anastasia_sex_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_5", reqs = []}],
+		options = [
+			{
+				code = 'princess_sex_good_6',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	princess_sex_good_6 = {
+		image = null,
+		custom_background = "anastasia_sex_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_6", reqs = []}],
+		options = [
+			{
+				code = 'princess_sex_good_7',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	princess_sex_good_7 = {
+		image = null,
+		custom_background = "anastasia_sex_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_7", reqs = []}],
+		options = [
+			{
+				code = 'princess_sex_good_8',
+				text = "AFTER_ELECTION_PRINCESS_CONSENT_OPTION_1",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			},
+			{
+				code = 'princess_sex_good_8',
+				text = "AFTER_ELECTION_PRINCESS_CONSENT_OPTION_2",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 2,
+			},
+			{
+				code = 'princess_sex_good_8',
+				text = "AFTER_ELECTION_PRINCESS_CONSENT_OPTION_3",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 3,
+			}
+		],
+	},
+	princess_sex_good_8 = {
+		image = null,
+		custom_background = "anastasia_sex_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [{text = "AFTER_ELECTION_PRINCESS_CONSENT_REPLY_1", reqs = [], previous_dialogue_option = 1},
+		{text = "AFTER_ELECTION_PRINCESS_CONSENT_REPLY_2", reqs = [], previous_dialogue_option = 2},
+		{text = "AFTER_ELECTION_PRINCESS_CONSENT_REPLY_3", reqs = [], previous_dialogue_option = 3}],
 		options = [
 			{
 				code = 'close',
@@ -364,9 +661,34 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				change_dialogue_type = 1,
+				bonus_effects = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [
+					{code = 'loyalty', operant = '+', value = 25},
+					{code = 'vaginal_virgin', operant = '=', value = false},
+					]},
+				{code = 'decision', value = 'anstasia_sex_scene'},
+				]
 			}
 		],
 	},
+#	princess_sex_good_4 = {
+#		image = null,
+#		character = "anastasia",
+#		tags = ['dialogue_scene', 'master_translate'],
+#		text = [
+#			{text = "AFTER_ELECTION_PRINCESS_CONSENT_4", reqs = []},
+#		],
+#		options = [
+#			{
+#				code = 'close',
+#				text = "DIALOGUECLOSE",
+#				type = 'next_dialogue',
+#				reqs = [],
+#				dialogue_argument = 1,
+#			}
+#		],
+#	},
 	princess_cutscene_exit_1 = {
 		image = null,
 		character = "anastasia",
@@ -389,7 +711,7 @@ var data = {
 		character = "anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = "AFTER_ELECTION_PRINCESS_16", reqs = []},
+			{text = "AFTER_ELECTION_PRINCESS_16_OLD", reqs = []},
 		],
 		options = [
 			{
@@ -401,6 +723,7 @@ var data = {
 			}
 		],
 	},
+	# rape
 	princess_cutscene_bad_1 = {
 		image = null,
 		character = "anastasia",
@@ -410,7 +733,7 @@ var data = {
 		],
 		options = [
 			{
-				code = 'princess_cutscene_bad_2',
+				code = 'princess_cutscene_bad_pre_2',
 				text = "AFTER_ELECTION_PRINCESS_OPTION_6",
 				type = 'next_dialogue',
 				reqs = [],
@@ -425,6 +748,24 @@ var data = {
 			},
 		],
 	},
+	princess_cutscene_bad_pre_2 = {
+		image = null,
+		character = "anastasia",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_PRE_14", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_cutscene_bad_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+
 	princess_cutscene_bad_2 = {
 		image = null,
 		character = "anastasia",
@@ -439,29 +780,135 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 2
+#				change_dialogue_type = 2
 			}
 		],
 	},
 	princess_sex_bad_1 = {
+		image = null,
+#		custom_background = "anastasia_rape_1",
+#		scene_type = "ero_scene",
+#		save_scene_to_gallery = true,
+#		tags = ['dialogue_scene','blackscreen_transition_common'],
+		tags = ['dialogue_scene'],
+		character = "anastasia",
+		text = [
+#			{text = "AFTER_ELECTION_PRINCESS_15", reqs = [], previous_dialogue_option = 1},
+#			{text = "AFTER_ELECTION_PRINCESS_18", reqs = [], previous_dialogue_option = 2},
+			{text = "AFTER_ELECTION_PRINCESS_15", reqs = []},
+#			{text = '', reqs = [], bonus_effects = [
+#				{code = 'unique_character_changes', value = 'anastasia', args = [
+#					{code = 'submission', operant = '+', value = 25},
+#					{code = 'vaginal_virgin', operant = '=', value = false},
+#				]},
+#				{code = 'decision', value = 'anstasia_rape_scene'},
+#				],
+#			}
+		],
+		options = [
+			{
+#				code = 'close',
+#				text = "DIALOGUECLOSE",
+#				type = 'next_dialogue',
+#				dialogue_argument = 1,
+#				change_dialogue_type = 1,
+#				reqs = [],
+				code = 'princess_sex_bad_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				reqs = [],
+			}
+		],
+	},
+
+	princess_sex_bad_2 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		character = "anastasia",
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_16", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_sex_bad_3',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				change_dialogue_type = 2,
+				dialogue_argument = 1,
+				reqs = [],
+			}
+		],
+	},
+
+	princess_sex_bad_3 = {
 		image = null,
 		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [
-			{text = "AFTER_ELECTION_PRINCESS_15", reqs = [], previous_dialogue_option = 1},
-			{text = "AFTER_ELECTION_PRINCESS_18", reqs = [], previous_dialogue_option = 2},
-			{text = '', reqs = [], bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'submission', operant = '+', value = 25},
-					{code = 'vaginal_virgin', operant = '=', value = false},
-				]},
-				{code = 'decision', value = 'anstasia_rape_scene'},
-				],
+			{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_sex_bad_4',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				reqs = [],
 			}
+		],
+	},
 
+	princess_sex_bad_4 = {
+		image = null,
+		custom_background = "anastasia_rape_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_18", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_sex_bad_5',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				reqs = [],
+			}
+		],
+	},
 
+	princess_sex_bad_5 = {
+		image = null,
+		custom_background = "anastasia_rape_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_19", reqs = []},
+		],
+		options = [
+			{
+				code = 'princess_sex_bad_6',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				reqs = [],
+			}
+		],
+	},
+
+	princess_sex_bad_6 = {
+		image = null,
+		custom_background = "anastasia_rape_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AFTER_ELECTION_PRINCESS_20", reqs = []},
 		],
 		options = [
 			{
@@ -471,6 +918,13 @@ var data = {
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
 				reqs = [],
+				bonus_effects = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [
+					{code = 'submission', operant = '+', value = 25},
+					{code = 'vaginal_virgin', operant = '=', value = false},
+				]},
+				{code = 'decision', value = 'anstasia_rape_scene'},
+				]
 			}
 		],
 	},

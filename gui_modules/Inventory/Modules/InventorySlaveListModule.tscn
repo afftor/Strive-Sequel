@@ -10,9 +10,9 @@
 [ext_resource path="res://assets/Themes_v2/INVENTORY/I_SL_Buttons.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryFactorsModule.gd" type="Script" id=11]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttoncharlist_pressed.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttoncharlist.png" type="Texture" id=13]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttoncharlist_hover.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttoncharlist_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttoncharlist.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Buttons/buttoncharlist_hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=15]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=16]
 

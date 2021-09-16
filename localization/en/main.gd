@@ -5096,28 +5096,155 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 — That's so? Then you must wish to lay with me. I'm... not entirely against it""",
 	AFTER_ELECTION_PRINCESS_5 = """Embrace her""",
 	AFTER_ELECTION_PRINCESS_6 = """Not today""",
-	AFTER_ELECTION_PRINCESS_7 = """You chivalrously carry Anastasia to your bedroom.
+#	AFTER_ELECTION_PRINCESS_7 = """You chivalrously carry Anastasia to your bedroom.
+#
+#— I'm sorry, this is my first time with a man.""",
+#	AFTER_ELECTION_PRINCESS_8 = """After she removes her clothes, the princess lies down on the bed at your instruction. Her well proportioned body lies before you.""",
+#	AFTER_ELECTION_PRINCESS_9 = """With some preparation Anastasia manages to become wet enough for you to penetrate her relatively painlessly. She endures the initial discomfort as you savor the feel of her unused pussy.""",
+#	AFTER_ELECTION_PRINCESS_10 = """In a few moments you both climax. Her  eyes roll up into her head in bliss as your seed fills her.""",
+#	AFTER_ELECTION_PRINCESS_11 = """— I-I'm not sure what to say. I guess I didn't expect it to feel this good. I'm glad my first time was with you.""",
+	AFTER_ELECTION_PRINCESS_7 = """Smiling, you take the princess by the hand and lead her to your bedroom.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_1 = """In the bedroom, you close the door behind Anastasia and enclose her in a tight embrace that lifts her off her feet. 
 
-— I'm sorry, this is my first time with a man.""",
-	AFTER_ELECTION_PRINCESS_8 = """After she removes her clothes, the princess lies down on the bed at your instruction. Her well proportioned body lies before you.""",
-	AFTER_ELECTION_PRINCESS_9 = """With some preparation Anastasia manages to become wet enough for you to penetrate her relatively painlessly. She endures the initial discomfort as you savor the feel of her unused pussy.""",
-	AFTER_ELECTION_PRINCESS_10 = """In a few moments you both climax. Her  eyes roll up into her head in bliss as your seed fills her.""",
-	AFTER_ELECTION_PRINCESS_11 = """— I-I'm not sure what to say. I guess I didn't expect it to feel this good. I'm glad my first time was with you.""",
+You set the princess back down, holding her head in your hands and kissing her deeply, your tongue tasting her full lips and exploring her uncertain mouth. Your hands run through her hair and down to her shapely butt, where you give a firm squeeze that makes her gasp with surprise.
+
+Drawing back you tell Anastasia how you have waited long for this moment, and you will not wait anymore. She blushes and asks what you expect of her. 
+
+You grin, and explain that the first step is to remove her clothing.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_2 = """Anastasia begins to undress reluctantly, unbuckling the knee-high boots and slipping them off her stockinged legs. She shrugs the blue cloak off her shoulders and hands it to you, then loosens the girdle around her waist and slips it off. She hesitates for a moment.
+
+{color=yellow|Anastasia:— I- I usually have Aire to help me with my dress. If it won’t trouble you, could you assist me?}
+
+Anastasia turns around and lifts her long blonde hair off her shoulders. Tossing her cloak aside, you stand close behind and begin to unfasten the tiny hooks that keep the corset part of her dress in place. The scent of her hair is sweetly fragrant, like honeysuckle, as you finish unclipping the dress. She looks at you nervously over her bare shoulder.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_3 = """You help Anastasia to free herself of the top part of the dress, letting it fall to expose her beautiful ripe breasts. She blushes at the sudden nakedness and you embrace her from behind, your teeth finding the smooth skin of her neck as your hands slide gently up her taut belly to cup her tits. You feel her delicate nipples harden under the pressure of your fingertips.
+
+You squeeze her breasts then transfer your hands to her waist where you peel the dress over her hips and let it fall to the floor. She stands nude but for stockings and silk panties as you turn her around to face you. She is a vision of beauty, her fair skin flawless and hair like spun gold in the warm glow of the lantern-light. She cover hers breasts with her hands, embarrassed.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_4 = """You take her wrists and move them away so you can admire her voluptuous breasts, then pull Anastasia's perfect figure against you, circling her waist and sliding your hands inside her panties. Your hands lift and part her butt-cheeks and your middle finger traces a line down the center of her ass into the cleft between her legs. She yelps softly into your shoulder, trembling.
+
+You slip the silk panties over her round ass and let them fall around her ankles. You tug your shirt over your head so her naked breasts are pressing against your bare chest. You caress her nude body greedily and she whispers in your ear, her voice tense with unwilling arousal. 
+
+{color=yellow|Anastasia:— Um... What would you... have me... do?}""",
+	AFTER_ELECTION_PRINCESS_CONSENT_5 = """You bring Anastasia to the bed and lay her down, then watch as she carefully rolls the hosiery down over her sleek thighs. Still blushing, she plays to your intent gaze, pulling the stockings slowly from her toes and casting them away. You unbuckle your belt and let your pants drop, revealing your stiff cock. The princess’s blue eyes widen as she bites her lip and instinctively presses her thighs tight.
+
+{color=yellow|Anastasia:— Oh! That's... It's... You're...}
+
+You climb onto the satin sheets and lay beside Anastasia, fondling her finely-proportioned curves. Your fingers press in between her legs and you begin to tease her slit, feeling its tightness as your thumb glides across her clit. Her virgin pussy quickly grows slick with arousal as you finger her, and her hands brush against your penis as you bite gently on her ear and neck.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_6 = """With one hand, you spread Anastasia's legs wide and her breath catches as you swing your body up over hers. You hold yourself there for a moment, pinning her wrists to the bed. She looks up into your eyes and you see desire mingling with the fear. You stoop to kiss her again and the shaft of your cock presses against her clit. She gasps breathlessly as your tongue slides into her mouth.
+
+{color=yellow|Anastasia:— W-wait, I’m not-.}
+
+Anastasia cries out as your thick cock bursts through her hymen and fills her pussy. Her wetness lessens the discomfort as your penis thrusts into her, stretching her unused cunt as you drive yourself deep. A thin smear of virginal blood coats your shaft as you pull out, before plunging back in between her pussy lips. Mouth hanging open, arms pinned, Anastasia moans helplessly while you fuck her.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_7 = """Anastasia's eyes roll back and her body shudders as an orgasm overwhelms the young princess. Penetrating her tight pussy again and again, your own orgasm begins to build as her slim legs curl around your waist. You hold her down on the bed as your powerful cock pounds into her, and when your cum explodes inside her, you fall on top of her.
+
+Your tongue fills Anastasia’s mouth as her pussy convulses around your orgasming cock, milking the cum from you. She sighs bodily and collapses back on the pillows, your penis still gripped inside her pussy. Her breasts and belly heave wildly as she pants for breath. A sheen of sweat sticks a lock of hair to her cheek and makes her skin shine in the lamplight. A shy look spreads across the princess’s gorgeous face.
+
+{color=yellow|Anastasia:— I didn’t know this would feel so good. D-Did I do well?}""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_1 = """You did majestically""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_2 = """Not bad for a first time""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_3 = """Passable, but you'll get better with more practice""",
+	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_1 = """{color=yellow|Anastasia:— Thank you… Wait, are you mocking me?}
+
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
+	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_2 = """{color=yellow|Anastasia:— T-Thanks, I guess I can’t compete with you?}
+
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
+	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_3 = """Anastasia shies away slightly offended, but quickly snaps out of it.
+
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
+
+	# Idk part
 	AFTER_ELECTION_PRINCESS_12 = """The princess's face becomes slightly more relaxed but also uncertain as she hears your words. Deciding she'll be useful for some tasks or barter later on you decide to leave it at this for now.""",
 	AFTER_ELECTION_PRINCESS_13 = """Anastasia frowned upon hearing that but had no choice, but to comply.
 
 — I see... I guess I'm at your mercy now.""",
 	AFTER_ELECTION_PRINCESS_OPTION_6 = """I will claim my prize today""",
 	AFTER_ELECTION_PRINCESS_OPTION_7 = """I don't feel like doing it """,
-	AFTER_ELECTION_PRINCESS_14 = """You order the princess to join you in your bedroom, deciding it shall be a great way to end the evening.""",
-	AFTER_ELECTION_PRINCESS_15 = """At your command, Anastasia removes her clothes and you position her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming the girl's virginity. Despite her sobs she does not plead for you to stop, stoically enduring the pain and humiliation for the rest of the night.""",
-	AFTER_ELECTION_PRINCESS_16 = """Anastasia looks puzzled by your answer but does not protest. However, she seems nervous. Events are not playing out as she expected.""",
-	AFTER_ELECTION_PRINCESS_17 = """After the feast you've found your mindbroken Anastasia, who seems to patiently wait for you with a somewhat vacant look to her eyes.""",
+#	AFTER_ELECTION_PRINCESS_14 = """You order the princess to join you in your bedroom, deciding it shall be a great way to end the evening.""",
+#	AFTER_ELECTION_PRINCESS_15 = """At your command, Anastasia removes her clothes and you position her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming the girl's virginity. Despite her sobs she does not plead for you to stop, stoically enduring the pain and humiliation for the rest of the night.""",
+#	AFTER_ELECTION_PRINCESS_16 = """Anastasia looks puzzled by your answer but does not protest. However, she seems nervous. Events are not playing out as she expected.""",
+	AFTER_ELECTION_PRINCESS_16_OLD = """Anastasia looks puzzled by your answer but does not protest. However, she seems nervous. Events are not playing out as she expected.""",
+#	AFTER_ELECTION_PRINCESS_17 = """After the feast you've found your mindbroken Anastasia, who seems to patiently wait for you with a somewhat vacant look to her eyes.""",
 	AFTER_ELECTION_PRINCESS_OPTION_8 = """Put her to use""",
 	AFTER_ELECTION_PRINCESS_OPTION_9 = """Maybe another time""",
-	AFTER_ELECTION_PRINCESS_18 = """By your order Anastasia removes her clothes and you drop her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming broken girl's virginity. Despite her state, she offers a nice warmth and tightness so you have a fairly satisfying night.""",
+#	AFTER_ELECTION_PRINCESS_18 = """By your order Anastasia removes her clothes and you drop her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming broken girl's virginity. Despite her state, she offers a nice warmth and tightness so you have a fairly satisfying night.""",
+	AFTER_ELECTION_PRINCESS_PRE_14 = "You order the princess to take your hand and you lead her to the bedroom.",
+	AFTER_ELECTION_PRINCESS_14 = """Inside the bedroom, you order Anastasia to close the door and then stand in front of you. You lay down some ground rules. As your slave she will have to call you the Master at all times, and do whatever you demand. 
 
+Anastasia nods mutely, making you reprimand her gently. 
 
+{color=yellow|Anastasia:— I mean, yes. Yes, M… Master. As you say.}
+
+You walk around her, inspecting your new property closely. You lift her dress at the back and run the palm of your hand inside her lace petticoats, up her inner thigh, and into the cleft of her tense ass. Anastasia trembles but does not protest. You reach over her shoulder and into the top of her blouse, where you take the weight of one breast in your cupped hand. """,
+	AFTER_ELECTION_PRINCESS_15 = """Standing behind her with your hand down her cleavage, lightly pinching a nipple, you instruct her to relax.
+
+{color=yellow|Anastasia:— I-I'm sorry, M-Master. I'm trying, I'm just nervous}
+
+You pinch her nipple harder for a second and she squeals. You explain that excuses for failure will not be tolerated. Releasing her breast, you come around in front. Anastasia looks at you reproachfully, unable to shake off a lifetime of expected deference so easily. 
+
+{color=yellow|Anastasia:— There’s no need to hurt me, I’ll do whatev-}
+
+You cut her off with a quick, casual slap across the face and instruct her not to speak unless spoken to. Her cheek reddens from the blow but she is silent, her bright blue eyes wary.
+
+You explain that you are disappointed with her rebelliousness, and that she will have to earn your trust if she wishes not to have a worse fate happen to her. It is in her interests, you tell Anastasia, that she learns to please you first in all things. With that, you order her to disrobe.""",
+	AFTER_ELECTION_PRINCESS_16 = """Anastasia blushes deeply at your order to undress and looks as if she will argue, so you warn her that she can keep her fancy clothes if she undresses herself. If she makes you strip her, the clothes will be gone. 
+
+{color=yellow|Anastasia:— Yes, master. I will do it myself.}
+
+Anastasia begins to disrobe, unbuckling her knee-high boots and slipping them off. She sheds her blue cloak and lays it over an armchair. She begins to peel off her stockings but you stop her and gesture that she should remove the dress first. Anastasia struggles to unfasten the back of her dress and you raise an eyebrow at the delay.
+
+{color=yellow|Anastasia:— I'm sorry, Master. I’m used to having Aire to help me.}
+
+Smirking, you order her to turn around. Standing in her stockinged feet, she holds her long blonde hair up and you unclip the hooks holding her dress in place at the back. She loosens the girdle around her waist as you move back around in front of her and the dress begins to fall open at the top, her soft, heavy tits spilling out.""",
+	#gets naked here
+	AFTER_ELECTION_PRINCESS_17 = """Her face scarlet with shame, Anastasia wiggles her hips to slide the dress over them and it falls to the floor. Her large breasts hang, swaying as she frees her arms from the puffy blue sleeves. She slides the metal arm-guards over her wrists and drops them on the dress. You watch as she returns to her stockings, rolling them carefully down her sleek thighs to her toes. Finally, she slips off her silk panties, letting them fall around her ankles. 
+
+Anastasia steps out of the panties and stands naked, her hands reflexively covering her pussy and tits.You order her to lift her hair off her shoulders with both hands as she did a moment ago, and though she hesitates, she complies. You take a moment to enjoy the sight of your naked, compliant princess and instruct her to turn around slowly so you can examine her whole body.
+
+Her skin is smoother than the common girls, her hair more lustrous. Despite the hard time she must’ve had during all these years, she still seemingly led a fairly luxurious life.""",
+	AFTER_ELECTION_PRINCESS_18 = """With Anastasia naked and obedient, you begin a more thorough inspection of your property. Your hands roam across her body, exploring her ripe breasts, slender belly, and soft round ass. She whimpers slightly as you press her thighs apart to reveal her pussy, but you pretend not to notice. Your fingers stroke her slit and then probe between her tidy labia to check her hymen. 
+
+{color=yellow|Anastasia:— W-what are you doing? You shouldn’t touch…!}
+
+You ignore Anastasia’s pleas as she has no right to protest, being your slave now. Neither is her weak body capable of resisting you. She sobs as your fingers roughly explore her tight virgin holes though she has no alternative in the end but to tolerate your intimate assault.""",
+	AFTER_ELECTION_PRINCESS_19 = """You order the naked, weeping princess to lie on the bed and she obeys without a fight. You climb on top and seize her wrists, dragging them up over her head where you handcuff her to the headboard. New tears flow from Anastasia’s eyes as you unbuckle your pants and your cock springs out. You rub your hard penis between her juicy tits and instruct her to spread her legs for you. 
+
+She splays her legs wide, thighs trembling. You order her to beg for your cock, to beg for you to take her virginity. Her wide blue eyes are still wet with tears as she complies.
+
+With a satisfied grunt you guide your cock to her virginal pussy, pressing it until you feel the resistance of her hymen. You look her in the eye and she bites her lip. One solid thrust, a short sharp cry of pain, and Anastasia is a maiden no longer. As you pound her tight cunt, a little blood smears around her clit.""",
+	AFTER_ELECTION_PRINCESS_20 = """You fuck Anastasia for most of an hour, your thick cock railing her tight pussy again and again. After a while she cums, her unwilling orgasm making her whole body shudder. You keep fucking her through it, driving home the message that she will never be in charge of her own body again.
+
+By the time your own orgasm shoots your cum deep inside her, Anastasia gives in moaning and squirming. Her pussy spasms around your spurting cock, and you hold the princess down on the bed as your cum pumps into her, her resistance totally broken.
+
+As the princess is your property now you’ll be looking forward to more nights like this one. """,
+	AFTER_ELECTION_PRINCESS_MINDBREAK_0 = "After the feast you summon your mindbroken princess. Anastasia arrives and waits patiently for your attention with a vacant look in her eyes.",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_1 = """Seizing the princess by the wrist you lead her to your bedroom. Anastasia's face remains expressionless as you close the door and move her to the middle of the room. Standing before her, you lift the front of her dress and casually slip your hand into her silk panties. She doesn't react as you finger her virgin pussy but gives a yelp when you pinch her clit.
+
+You withdraw your hand and grab her by the breasts, squeezing them roughly through the blue dress. A frown passes over her pretty features but otherwise she remains impassive. As you slap her once, hard, across the face her blue eyes begin to tear but she doesn't offer any resistance. """,
+	AFTER_ELECTION_PRINCESS_MINDBREAK_2 = """Satisfied by Anastasia's total obedience, you drag her to your desk and bend her over. Lifting her dress and petticoats, you expose her shapely ass. You give her a firm smack and tug the silk panties down to her knees so you can inspect her pussy. Her thighs are slender, the skin creamy white, and they tremble slightly as you run your hands across her neat pussylips and firm round behind.
+
+Not sure how well the princess will even understand your words, you tell her she has made a lot of trouble and you are going to enjoy punishing her. You pinch the soft flesh of her inner thigh cruelly, marking the pale skin red as she gives a soft cry of pain. You explain that she will be a slave for your cock, a plaything to be fucked and abused at your whim. You ask if she understands.""",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_3 = """Bent over and pressed down on the table as your hand rudely explores between her legs, the princess replies in a flat voice devoid of emotion.
+
+{color=yellow|Anastasia:— Yes, master.}
+
+Surprised at Anastasia's level of comprehension you mutter your approval, unbuckling your belt to free your cock. You walk around the desk until you are in front of her and grabbing a fistful of her long blonde hair you pull her pretty face up to look at you. Her expression is still vacuous, as though mesmerized, as you hold your cock in front of her and tell her to suck on it. 
+
+Anastasia nods obediently and wraps her full lips around the head of your penis, sucking greedily as you push her head down with your grip on her hair.""",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_4 = """As the princess sucks you off, you keep a tight hold of her head and reach over the table to pull up her dress so you can spank her lily-white ass. Her yelps are muffled by the cock filling her throat, as she struggles to keep her feet on the floor. The sight of her smooth ass bouncing and twitching is delightful and you decide it's time to switch things up. 
+
+You pull your cock out of Anastasia's mouth and walk quickly around the desk. Her panties have slipped down to her ankles and you kick them away. Flipping her petticoats back up, you grab her slender waist and roughly spread her legs with your knee. Your penis is still slick with her saliva and you spit on her puckered sphincter as you line up your hips.""",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_5 = """Using your finger, you massage your spit into her anus, probing the princess’s tight ass as she groans in discomfort at the intrusion. Pulling Anastasia's hair towards you, you lift her upper body off the table so your erect penis presses into her asshole. She screams and shudders as you force yourself into her tight rectum, impaling her perfect ass with your cock. 
+
+With her hair gathered into a ponytail clamped behind her head by your fist, you have no difficulty dominating the princess's nubile body. You brutally fuck her unused ass over the table, spanking her as she wails and cries. After a few minutes her wailing stops and you feel her sphincter relax as your cock rams home. """,
+	AFTER_ELECTION_PRINCESS_MINDBREAK_6 = """You slide your penis slowly out of her ass and, using her hair, haul her away from the desk. Anastasia is still wearing her fine blue dress as you march her to the wall and shove her up against it. Your hands grab the top of the dress, at her cleavage, and you violently rip it open. Her pale breasts spill out of the torn corset as you yank the dress downwards. 
+
+Anastasia shivers, her blue eyes gazing at you blankly as you wrench the dress apart at her hips and toss it to the floor. Grabbing her wrists in one hand you pin them above her head as your other hand grabs one of her tits. Squeezing her breast savagely you pull it up to your mouth and bite her nipple. She screams again as your teeth close on her delicate flesh.
+ 
+With her tit held fast by your mouth, your free hand drops to the princess's virgin pussy, where you start rubbing her sensitive clit. She tries to press her legs together but you force them apart easily with your knee.""",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """You feel Anastasia's virginal pussy start to grow slick under the relentless assault of your fingers. You release her bruised nipple from your mouth and look her in the eyes, which only show a glimpse of sentience. 
+
+You push Anastasia to the floor and she spreads her legs wide for you. You mount her and thrust your cock inside her, breaching her hymen in a thin smear of blood and filling her pussy with your meat. She gasps at the loss of her virginity, but you pin her arms to the floor and pound her slim body into the wooden boards while her tits bounce around wildly.""",
+	AFTER_ELECTION_PRINCESS_MINDBREAK_8 = """It doesn't take you long, and as your hot cum fills her pussy, Anastasia moans faintly. You release her exhausted body and pull out, your cock trailing cum across her belly and breasts before you throw her out of your bedroom so you can rest. She stands silently outside your door, cum trickling down her legs, waiting patiently for your next instruction.""",
 
 
 	##################################################New
@@ -5804,7 +5931,7 @@ The elf girl hesitates for some time but eventually gives in to your request.
 - Fine, but I beg you, don't come for this ever again. 
 
 She leaves and after a few minutes she returns with the package. """,
-	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye""", # TODO ask if I should add green and red text
+	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye""",
 	AMELIA_HERBS_ELF_REPLY_2_2_BAD = """{color=red|Failure}
 
 - Sorry, you'll have to find some other way. """,

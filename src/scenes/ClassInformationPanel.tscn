@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_class_rmb.png" type="Texture" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel.gd" type="Script" id=2]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_simpleclass.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_simpleclass.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=10]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )

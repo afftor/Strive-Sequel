@@ -103,7 +103,7 @@ func show_summary():
 			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))]) 
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
-			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
+			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
 
 	for i in ['physics','wits','charm','sexuals']:
 		var text = ''
