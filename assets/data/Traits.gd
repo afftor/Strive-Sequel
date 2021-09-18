@@ -258,6 +258,16 @@ var traits = {
 		icon = null,
 		effects = [],
 	},
+	#example of catalysts ignoring
+	test_cat_ignore = {
+		code = 'test_cat_ignore',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		tags = ['ignore_catalysts_for_firebomb'],
+		effects = [],
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits

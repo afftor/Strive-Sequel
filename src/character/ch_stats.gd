@@ -453,6 +453,21 @@ func add_rare_trait():
 		add_trait(trait)
 
 
+func has_status(status):
+	for tr in traits:
+		var traitdata = Traitdata.traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	for tr in sex_traits:
+		var traitdata = Traitdata.sex_traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	for tr in negative_sex_traits:
+		var traitdata = Traitdata.sex_traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	return false
+
 
 func get_stat_data():
 	var res = {}
