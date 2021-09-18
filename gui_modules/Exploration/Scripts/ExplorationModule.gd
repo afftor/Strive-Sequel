@@ -436,8 +436,9 @@ func use_item_on_character(character, item):
 
 func use_e_combat_skill(caster, target, skill):
 	caster.pay_cost(skill.cost)
-	for i in skill.catalysts:
-		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+	if !caster.has_status('ignore_catalysts_for_%s' % skill.code):
+		for i in skill.catalysts:
+			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 	if skill.charges > 0:
 		if caster.skills.combat_skill_charges.has(skill.code):
 			caster.skills.combat_skill_charges[skill.code] += 1
@@ -976,7 +977,7 @@ func build_spell_panel():
 						+ str(floor(person.get_stat(st)))
 						+ ")"
 					)
-				if skill.catalysts.empty() == false:
+				if !skill.catalysts.empty() and !person.has_status('ignore_catalysts_for_%s' % i):
 					text += '\n\nRequired Catalysts: '
 					for k in skill.catalysts:
 						text += (

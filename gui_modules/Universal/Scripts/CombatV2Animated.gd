@@ -102,8 +102,9 @@ func _input(event):
 		var skill_data = Skilldata.Skilllist[skill]
 		if !activecharacter.can_use_skill(skill_data): return
 		#possible not reqired
-		for i in skill_data.catalysts:
-			if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return
+		if !activecharacter.has_status('ignore_catalysts_for_%s' % skill):
+			for i in skill_data.catalysts:
+				if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return
 		if skill_data.charges > 0 and activecharacter.skills.combat_skill_charges.has(skill) and activecharacter.skills.combat_skill_charges[skill] >= skill_data.charges: return
 		SelectSkill(skill)
 
@@ -401,6 +402,7 @@ func victory():
 		var tchar = characters_pool.get_char_by_id(i)
 		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
 		tchar.add_stat('base_exp', gained_exp)
+		tchar.add_stat('abil_exp', gained_exp)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
 		newbutton.hide()
 		newbutton.modulate.a = 0
@@ -1016,8 +1018,9 @@ func use_skill(skill_code, caster, target):
 			caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
 
 	if caster.combatgroup == 'ally':
-		for i in skill.catalysts:
-			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+		if !caster.has_status('ignore_catalysts_for_%s' % skill_code):
+			for i in skill.catalysts:
+				ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 		if skill.charges > 0:
 			if caster.skills.combat_skill_charges.has(skill.code):
 				caster.skills.combat_skill_charges[skill.code] += 1
@@ -1610,9 +1613,15 @@ func RebuildSkillPanel():
 				newbutton.disabled = true
 				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-			if !activecharacter.check_cost(skill.cost):
-				newbutton.disabled = true
-				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+#			if !activecharacter.check_cost(skill.cost):
+#				newbutton.disabled = true
+#				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			#there definetely should be catalyst check, but i'd seen no one, so added a new
+			if !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
+				for res in skill.catalysts:
+					if ResourceScripts.game_res.materials[res] < skill.catalysts[res]:
+						newbutton.disabled = true
+						newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.set_meta('skill', skill.code)
 			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 			globals.connectskilltooltip(newbutton, skill.code, activecharacter)
@@ -1628,11 +1637,12 @@ func SelectSkill(skill):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
 		return
-	for i in skill.catalysts:
-		if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
-			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
-			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'));
-			break
+	if !activecharacter.has_status('ignore_catalysts_for_%s' % skill.code):
+		for i in skill.catalysts:
+			if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
+				input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
+				call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'));
+				break
 	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
 		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
