@@ -458,6 +458,24 @@ func use_e_combat_skill(caster, target, skill):
 				targets = [target]
 			'all':
 				targets = input_handler.get_active_party()
+			'line':
+				targets = []
+				var tpos = target.combat_position
+				for line in variables.lines:
+					if !line.has(tpos): continue
+					for pos in line:
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
+					break
+			'row':
+				targets = []
+				var tpos = target.combat_position
+				for line in variables.rows:
+					if !line.has(tpos): continue
+					for pos in line:
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
+					break
 		var s_skill2_list = []
 		for i in targets:
 			if skill.has('damage_type') and skill.damage_type == 'resurrect':
@@ -482,8 +500,8 @@ func use_e_combat_skill(caster, target, skill):
 			else:
 				execute_skill(s_skill2)
 		for s_skill2 in s_skill2_list:
-			s_skill2.process_event(variables.TR_POSTDAMAGE)
-			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
+			s_skill2.process_event(variables.TR_EXPLORE_POSTDAMAGE)
+			s_skill2.caster.process_event(variables.TR_EXPLORE_POSTDAMAGE, s_skill2)
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
 				s_skill2.caster.process_event(variables.TR_KILL, s_skill2)

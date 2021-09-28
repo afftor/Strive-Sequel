@@ -178,13 +178,13 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
 		atomic = [],
-		buffs = [],
+		buffs = ['b_power_pot'],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
-				buffs = ['b_power_pot'],
+				buffs = [],
 				sub_effects = []
 			}
 		]
@@ -196,13 +196,31 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
-		buffs = [],#buff for indicating free item use, obviosly not b_stun
+		buffs = ['b_free_use'],#buff for indicating free item use, obviosly not b_stun
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'add_tag', value = 'instant'}],
-				buffs = ['b_free_use'],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_healer = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		reset = [],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['ability_type', 'neq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
+		atomic = [],
+		buffs = [],#'b_power_pot'],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
+				buffs = [],
 				sub_effects = []
 			}
 		]
@@ -2370,29 +2388,29 @@ var effect_table = {
 			}
 		]
 	},
-	e_s_regen = {#not sure about duration modes
-		type = 'temp_s',
-		target = 'target',
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
-		name = 'regen',
-		tags = ['buff', 'regen'],
-		buffs = ['b_regen'],
-		sub_effects = ['e_t_regen']
-	},
-	e_t_regen = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET],
-		conditions = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
-				atomic = ['a_regen'],
-			}
-		]
-	},
+#	e_s_regen = {#not sure about duration modes
+#		type = 'temp_s',
+#		target = 'target',
+#		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+#		stack = 1,
+#		name = 'regen',
+#		tags = ['buff', 'regen'],
+#		buffs = ['b_regen'],
+#		sub_effects = ['e_t_regen']
+#	},
+#	e_t_regen = {
+#		type = 'trigger',
+#		trigger = [variables.TR_TURN_GET],
+#		conditions = [],
+#		sub_effects = [
+#			{
+#				type = 'oneshot',
+#				target = 'owner',
+#				args = [{obj = 'app_obj', param = 'hpmax'}],
+#				atomic = ['a_regen'],
+#			}
+#		]
+#	},
 #	e_s_burn = {
 #		type = 'trigger',
 #		trigger = [variables.TR_POSTDAMAGE],
@@ -2428,6 +2446,50 @@ var effect_table = {
 				atomic = ['a_burn'],
 			}
 		]
+	},
+	e_s_regen = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'regen',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['positive'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = ['e_t_regen'],
+		atomic = [],
+		buffs = ['b_regen'],
+	},
+	e_t_regen = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = ['a_sanctuary_heal'],
+			}
+		]
+	},
+	e_s_resto = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'resto',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['buff'],
+		args = [
+			{type = 'stat_add', stat = 'resist_normal', value = 20},
+		],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_resto'],
 	},
 #	e_s_poison = {
 #		type = 'trigger',
@@ -3605,6 +3667,12 @@ var buffs = {
 		t_name = 'atkpass_s',
 		limit = 1,
 		combat_only = true
+	},
+	b_resto= {
+		icon = "res://assets/images/traits/hitrate.png",
+		description = "Incoming damage reduced",
+		limit = 1,
+		t_name = 'resto'
 	},
 };
 
