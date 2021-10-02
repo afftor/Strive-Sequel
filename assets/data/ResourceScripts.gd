@@ -93,6 +93,7 @@ onready var node_data = {
 	input_handler.ANIM_CLASS_UNLOCKED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_class_unlocked.tscn") },
 	input_handler.ANIM_TASK_COMPLETED : {name = 'ANIMTaskCompleted', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_completed.tscn") },
 	input_handler.ANIM_LOOT : {name = 'ANIMLoot', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_loot.tscn") },
+	input_handler.ANIM_SKILL_UNLOCKED : {name = 'ANIMSkillUnlocked', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_ability_unlocked.tscn") },
 }
 
 

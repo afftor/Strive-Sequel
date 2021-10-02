@@ -124,6 +124,7 @@ enum {
 	ANIM_CLASS_UNLOCKED,
 	ANIM_TASK_COMPLETED,
 	ANIM_LOOT,
+	ANIM_SKILL_UNLOCKED,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -1417,6 +1418,19 @@ func play_animation(animation, args = {}):
 			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
+		"skill_unlocked":
+			get_tree().get_root().set_disable_input(true)
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_SKILL_UNLOCKED)
+			anim_scene.get_node("AnimationPlayer").play("Ability_unlocked")
+			anim_scene.get_node("TextureRect7").texture = args["skill"].icon
+			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+			get_tree().get_root().set_disable_input(false)
+			
 
 
 const PADDINGS = 25

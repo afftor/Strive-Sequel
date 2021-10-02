@@ -19,6 +19,8 @@ var Text_x = 565
 func _ready():
 	for i in $categories.get_children():
 		i.connect("pressed",self,'class_category', [i.name])
+	for i in $SkillPanel/Categories.get_children():
+		i.connect("pressed", self, 'change_skill_category', [i.name])
 
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
 	if !get_parent().name == "CheatsModule":
@@ -64,7 +66,7 @@ func open(tempperson, tempmode = 'normal'):
 	mode = tempmode
 	current_class = null
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
-	
+	build_skills()
 	var array = []
 	for i in classesdata.professions.values():
 		if !ResourceScripts.game_progress.unlock_all_classes:
@@ -74,7 +76,7 @@ func open(tempperson, tempmode = 'normal'):
 				continue
 		array.append(i)
 	
-	array.sort_custom(self, 'sort_classes')
+	array.sort_custom(self, 'sort_by_name')
 	
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
@@ -109,7 +111,7 @@ func class_category(name):
 		i.pressed = i.name == category
 	open(person, mode)
 
-func sort_classes(first,second):
+func sort_by_name(first,second):
 	return first.name <= second.name
 
 func open_class(classcode):
@@ -163,7 +165,80 @@ func unlock_class():
 	get_parent().BodyModule.update()
 	get_parent().set_state("default")
 
+var skill_category = "all"
+# all, weapon, magic, support, aoe, heal
+	
+func build_skills():
+	input_handler.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
+	
+	var owned_skills = []
+	for i in person.xp_module.professions:
+		if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
+			for skill in classesdata.professions[i].skills:
+				owned_skills.append(skill)
+		if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
+			for skill in classesdata.professions[i].combatskills:
+				owned_skills.append(skill)
+	
+	var array = []
+	for i in Skilldata.Skilllist.values():
+		if !i.tags.has("learnable"):
+			continue
+		array.append(i)
+	array.sort_custom(self, 'sort_by_name')
+	for i in array:
+		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
+		newbutton.connect('pressed', self, "skill_selected", [i])
+		newbutton.get_node("icon").texture = i.icon
+		newbutton.get_node("name").text = tr("SKILL" + i.code.to_upper()) 
+		newbutton.set_meta('skill', i)
+		for o in owned_skills:
+			if o == i.code:
+				newbutton.get_node("learn").visible = true
+				newbutton.disabled = true
+	sort_skills()
+	$SkillPanel/xp_label.text = "Experience: " + str(person.get_ability_experience())
 
+func sort_skills():
+	if skill_category == "all":
+		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
+			if i.get_meta("skill") != null:
+				i.visible = true
+		return
+	else:
+		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
+			i.visible = false
+	
+	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
+		var skill = i.get_meta("skill")
+		if skill == null:
+			continue
+		if skill.tags.has(skill_category):
+			i.visible = true
+		if skill.ability_type == skill_category:
+			i.visible = true
+
+func change_skill_category(cat):
+	skill_category = cat
+	for i in $SkillPanel/Categories.get_children():
+		i.pressed = i.name == cat
+	sort_skills()
+
+func skill_selected(skill):
+	$SkillTooltip.show()
+	$SkillTooltip/icon.texture = skill.icon
+	$SkillTooltip/name.text = tr("SKILL" + skill.code.to_upper())
+	$SkillTooltip/description.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
+	if skill.has("learn_cost"):
+		$SkillTooltip/exp.text = str(skill.learn_cost + " EXP")
+	$SkillTooltip/cooldown.text = str(skill.combatcooldown)
+	if skill.cost.has("mp"):
+		$SkillTooltip/usage.text = str(skill.cost.mp)
+	var args = {}
+	args["skill"] = skill
+	args["person"] = person
+	input_handler.play_animation("skill_unlocked", args)
+	
 # func play_animation():
 # 	input_handler.PlaySound("class_aquired")
 # 	var anim_scene

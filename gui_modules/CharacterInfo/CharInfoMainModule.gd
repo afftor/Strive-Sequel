@@ -107,10 +107,9 @@ func match_state():
 			SlaveSiblingsModule.hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
+			$SlaveBodyModule/Body.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
 			$TalkButton.show()
-			$SlaveBodyModule/Body.show()
-			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 			#BodyModule.hide()
 		"details":
 			gui_controller.windows_opened.clear()

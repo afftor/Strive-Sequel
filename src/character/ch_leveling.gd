@@ -497,3 +497,16 @@ func get_progress_resource(tempresource, count_crit = false):
 	if location.has('gather_mod'):
 		value *= location.gather_mod
 	return value
+
+func get_ability_experience():
+	return abil_exp
+
+func sub_ability_experience(value):
+	var tmp = abil_exp
+	if tmp - value < 0:
+		return false
+	abil_exp -= value
+	return true
+
+func add_ability_experience(value):
+	abil_exp += value
