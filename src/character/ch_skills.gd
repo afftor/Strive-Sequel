@@ -52,8 +52,12 @@ func get_value_damage_mod(skill_val:Dictionary):
 	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
 	return res
 
+
 func learn_skill(skill):
+	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
+		if skilldata.has('learn_cost'):
+			parent.add_stat('abil_exp', -skilldata.learn_cost)
 		social_skills.append(skill)
 		if social_skill_panel.size() < 11:
 			for i in range(1,12):
@@ -62,7 +66,10 @@ func learn_skill(skill):
 					break
 
 func learn_c_skill(skill):
+	var skilldata = Skilldata.Skilllist[skill]
 	if !combat_skills.has(skill):
+		if skilldata.has('learn_cost'):
+			parent.add_stat('abil_exp', -skilldata.learn_cost)
 		combat_skills.append(skill)
 		if combat_skill_panel.size() < 11:
 			for i in range(1,12):

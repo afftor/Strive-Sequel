@@ -139,6 +139,24 @@ var traits = {
 			'e_tr_potion'],
 		bonusstats = {mod_alchemy = 1.0}
 	},
+	healer = {#+25% heal spells efficiency
+		code = 'healer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_healer'],
+		bonusstats = {}
+	},
+	healer2 = {#+25% heal spells efficiency
+		code = 'healer2',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_healer'], #static effects and triggers are infinite stackable - so the same as in healer
+		bonusstats = {}
+	},
 	witcrit = {#+crit
 		code = 'witcrit',
 		name = '',
@@ -256,6 +274,16 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		effects = [],
+	},
+	#example of catalysts ignoring
+	test_cat_ignore = {
+		code = 'test_cat_ignore',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		tags = ['ignore_catalysts_for_firebomb'],
 		effects = [],
 	},
 	

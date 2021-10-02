@@ -116,6 +116,8 @@ func add_stat(statname, value, revert = false):
 		set(statname, get(statname) + value)
 	elif statname == 'base_exp':
 		xp_module.base_exp += value
+	elif statname == 'abil_exp':
+		xp_module.abil_exp += value
 	else: statlist.add_stat(statname, value, revert)
 
 func mul_stat(statname, value, revert = false):
@@ -269,6 +271,16 @@ func add_trait(tr_code):
 
 func remove_trait(tr_code):
 	statlist.remove_trait(tr_code)
+
+func can_learn_skill(skill_id):
+	var skilldata = Skilldata.Skilllist[skill_id]
+	if !skilldata.tags.has('learnable'):
+		return false
+	if skilldata.has('learn_reqs') and !checkreqs(skilldata.learn_reqs):
+		return false
+	if skilldata.has('learn_cost') and xp_module.abil_exp < skilldata.learn_cost:
+		return false
+	return true
 
 func learn_skill(skill):
 	skills.learn_skill(skill)
@@ -441,7 +453,7 @@ func can_use_skill(skill):
 	return true
 
 func has_status(status):
-	var res = effects.has_status(status)
+	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
 
 

@@ -1408,8 +1408,116 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = 1.3,
+		value = [['caster.matk', '*1.3']],#1.3
 		damagestat = ['-damage_hp']
+	},
+	mass_lesser_heal = {#heals all allies for 1x damage
+		code = 'mass_lesser_heal',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
+		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],
+		learn_cost = 300,
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		cost = {mp = 15},
+		charges = 0,
+		combatcooldown = 4,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'line',
+		target_range = 'any',
+		damage_type = 'light',#not sure but not matters
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['caster.matk']],#1,
+		damagestat = ['-damage_hp']
+	},
+	rejuvenation = {#new
+		code = 'rejuvenation',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
+		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
+		learn_cost = 300,#?
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2})], 
+		cost = {mp = 15}, #?
+		charges = 0,
+		combatcooldown = 0,#?
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'row',
+		target_range = 'any',
+		damage_type = 'light',#not sure but not matters
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['caster.matk', '*0.6'], ['caster.matk']],
+		damagestat = ['no_stat','-damage_hp']
+	},
+	sanctuary = {#new
+		code = 'sanctuary',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
+		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
+		learn_cost = 300,#?
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
+		cost = {mp = 15}, #?
+		charges = 0,
+		combatcooldown = 3,#?
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'all',
+		target_range = 'any',
+		damage_type = 'light',#not sure but not matters
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['caster.matk', '*1.2'], ['caster.matk', '*0.8']],
+		damagestat = ['no_stat','-damage_hp']
+	},
+	restoration = {#new
+		code = 'restoration',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
+		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
+		learn_cost = 300,#?
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
+		cost = {mp = 15}, #?
+		charges = 0,
+		combatcooldown = 0,#?
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'light',#not sure but not matters
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['caster.matk', '*1.2'], ['caster.matk', '*0.8']],
+		damagestat = ['no_stat','-damage_hp']
 	},
 	fairy_heal = {#heals target for 50%
 		code = 'fairy_heal',
@@ -1512,33 +1620,7 @@ var Skilllist = {
 		value = [['caster.atk','*0.5'],0.5],
 		damagestat = ['no_stat','+damage_hp'],
 	},
-	mass_lesser_heal = {#heals all allies for 1x damage
-		code = 'mass_lesser_heal',
-		
-		descript = '',
-		icon = load("res://assets/images/iconsskills/lesserheal.png"),
-		type = 'combat', 
-		ability_type = 'spell',
-		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
-		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],
-		learn_cost = 300,
-		reqs = [],
-		targetreqs = [],
-		effects = [], 
-		cost = {mp = 15},
-		charges = 0,
-		combatcooldown = 4,
-		cooldown = 0,
-		catalysts = {},
-		target = 'ally',
-		target_number = 'all',
-		target_range = 'any',
-		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
-		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = 1,
-		damagestat = ['-damage_hp']
-	},
+
 #	barrier = {
 #		code = 'barrier',
 #
