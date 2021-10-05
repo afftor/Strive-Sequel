@@ -6053,14 +6053,14 @@ Amelia leaves you for her business, leaving you alone.""",
 	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
 	
 	AMELIA_SILK_SUMMARY = "After proving yourself useful to Servants Guild, Amelia has given you a task.",
-	AMELIA_SILK_NAME = "Amelia's Request",
+	AMELIA_SILK_NAME = "Amelia: Request",
 	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at Servants Guild.",
 	
-	AMELIA_HERBS_SUMMARY = "",
-	AMELIA_HERBS_NAME = "",
-	AMELIA_HERBS_STAGE_1 = "", # go to Amelia and ask her what is up
-	AMELIA_HERBS_STAGE_2 = "", # Get the herbs
-	AMELIA_HERBS_STAGE_3 = "", # return to Amelia
+	AMELIA_HERBS_SUMMARY = "After helping out, Amelia gave you a new task to earn her favor.",
+	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
+	AMELIA_HERBS_STAGE_1 = "Visit Amelia at Servants Guild", # go to Amelia and ask her what is up
+	AMELIA_HERBS_STAGE_2 = "Travel to Elven Capital and find a supplier Amelia told you about.", # Get the herbs
+	AMELIA_HERBS_STAGE_3 = "Return to Amelia at Servants Guild", # return to Amelia
 	
 	
 }

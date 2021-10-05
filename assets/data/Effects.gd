@@ -321,14 +321,32 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'hitrate', value = 0.25},
-			{type = 'stat_add', stat = 'evasion', value = 50},
+			{type = 'stat_add', stat = 'evasion', value = 35},
+			{type = 'stat_add', stat = 'mdef', value = 20},
 		],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/bowextradamage.png",
-				description = "Rare: Precise\nIncreased Evasion and Hitrate",
+				description = "Rare: Precise\nIncreased Evasion, Hitrate and MDEF",
 				limit = 1,
 				t_name = 'rare_precise'
+			}
+		],
+		sub_effects = [],
+	},
+	e_rare_tough = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 0.35},
+			{type = 'stat_add', stat = 'armor', value = 30},
+			{type = 'stat_add', stat = 'mdef', value = 30},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/bowextradamage.png",
+				description = "Rare: Tough\nIncreased Health, DEF and MDEF",
+				limit = 1,
+				t_name = 'rare_tough'
 			}
 		],
 		sub_effects = [],
