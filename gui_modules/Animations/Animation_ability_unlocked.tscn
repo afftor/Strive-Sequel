@@ -1,0 +1,355 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/glow_panel_abilityunlock.png" type="Texture" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_36.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/wing_abilityunlock.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/back_abilityunlock.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_48.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/panel_abilityunlock.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_42.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/images/iconsskills/arrowshower.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/mask_panel_abilityunlock.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Ability_unlocked"
+length = 4.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 4.3, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect3:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.166667, 4.3, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect5:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureRect5:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.4, 4.03333, 4.3, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect5:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.166667, 0.4, 4.03333, 4.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 0.0, 0.0, 90.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextureRect6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("TextureRect6:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.4, 4.03333, 4.3, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("TextureRect6:rect_rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.166667, 0.4, 4.03333, 4.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0, 0.0, -90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("TextureRect2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("TextureRect2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.4, 1.7, 3, 3.36667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("TextureRect7:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("TextureRect7:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.4, 4.03333, 4.3, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Label:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.266667, 0.533333, 4.03333, 4.2, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Label2:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.533333, 0.833333, 3.73333, 3.93333, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Label3:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.766667, 1.06667, 3.56667, 3.8, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Mask panel:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Mask panel:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 1.36667, 1.76667, 2.83333, 3.23333, 4.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 959.544 ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Ability_unlocked = SubResource( 1 )
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+margin_left = 523.371
+margin_top = 746.814
+margin_right = 649.371
+margin_bottom = 1028.81
+rect_pivot_offset = Vector2( 126.001, 281.979 )
+texture = ExtResource( 3 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+margin_left = 1268.0
+margin_top = 746.0
+margin_right = 1394.0
+margin_bottom = 1028.0
+rect_pivot_offset = Vector2( 0.0090332, 283.232 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 630.0
+margin_top = 827.009
+margin_right = 1290.0
+margin_bottom = 1027.01
+rect_pivot_offset = Vector2( 329.477, 100.777 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+margin_left = 631.168
+margin_top = 827.043
+margin_right = 706.168
+margin_bottom = 902.043
+rect_min_size = Vector2( 75, 75 )
+rect_scale = Vector2( 2.665, 2.665 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 628.315
+margin_top = 825.042
+margin_right = 1292.32
+margin_bottom = 1029.04
+rect_pivot_offset = Vector2( 331.204, 100.333 )
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 630.0
+margin_top = 827.0
+margin_right = 1291.0
+margin_bottom = 1027.0
+rect_pivot_offset = Vector2( 329.525, 99.7072 )
+texture = ExtResource( 6 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mask panel" type="TextureRect" parent="."]
+margin_left = 630.0
+margin_top = 827.0
+margin_right = 1291.0
+margin_bottom = 1027.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 856.251
+margin_top = 840.907
+margin_right = 1257.25
+margin_bottom = 907.907
+rect_pivot_offset = Vector2( 206.653, 34.6144 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.00784314, 0.788235, 0.984314, 1 )
+text = "Ability unlocked"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 856.183
+margin_top = 896.991
+margin_right = 1257.18
+margin_bottom = 955.991
+rect_pivot_offset = Vector2( 206.653, 34.6144 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.0154724, 0.539278, 0.660156, 1 )
+text = "Arrow shower"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 853.786
+margin_top = 948.164
+margin_right = 1254.79
+margin_bottom = 1007.16
+rect_pivot_offset = Vector2( 206.653, 34.6144 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.596078, 0.466667, 0.345098, 1 )
+text = "Hettie Darkmane"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

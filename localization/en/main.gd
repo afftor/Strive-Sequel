@@ -546,6 +546,12 @@ var TranslationDict = {
 
 	SKILLCOMMAND = "Command",
 	SKILLCOMMANDDESCRIPT = "Increase target's damage by 25% for 3 turns.",
+	SKILLRESTORATION = "",
+	SKILLRESTORATIONDESCRIPT = "",
+	SKILLREJUVENATION = "",
+	SKILLREJUVENATIONDESCRIPT = "",
+	SKILLSANCTUARY = "",
+	SKILLSANCTUARYDESCRIPT = "",
 	SKILLTRAP = "Trap",
 	SKILLTRAPDESCRIPT = "Sets trap under enemy. After using Skill it will be stunned for 2 turns. Requires 1 Trap component.",
 	SKILLWEAPON_REFINE = "Weapon Refine",
@@ -578,6 +584,8 @@ var TranslationDict = {
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
 	SKILLBLESSDESCRIPT = "Increase ATK by 25% for 3 turns.",
+	SKILLMENTAL_BLESS = "Mental Bless",
+	SKILLMENTAL_BLESSDESCRIPT = "increase MATK by 25% for 3 turns.",
 	SKILLBLOOD_MAGIC = "Blood Magic",
 	SKILLBLOOD_MAGICDESCRIPT = "Sacrifice 10% of your health to convert it into mana.",
 	SKILLBLOOD_EXPLOSION = "Blood Explosion",
@@ -2196,7 +2204,7 @@ var TranslationDict = {
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
 	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
 	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
-	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit ‘Confirm’ after selecting the characters you've sent. ",
+	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit ‘Confirm' after selecting the characters you've sent. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
@@ -2551,7 +2559,7 @@ You stand and buckle your pants. Aire pulls the cloak around her naked body and 
 
 Pinning her wrists with one hand, your other explores her delicate elven figure, roughly groping and pinching her thighs and ass before peeling the armor away and ripping her shirt open. Aire struggles weakly, but her firm breasts are soon exposed and their pink nipples begin to harden, quivering in the cold. 
 
-She blushes deeply, the bloom spreading from the cheeks, up her pointed ears and down her neck. The elf girl’s breath is hot against your face as you tug her belt free and pull down first the leather shorts and then her silk panties to reveal smooth fair skin; a taut ass with a neat pussy between her slim thighs.
+She blushes deeply, the bloom spreading from the cheeks, up her pointed ears and down her neck. The elf girl's breath is hot against your face as you tug her belt free and pull down first the leather shorts and then her silk panties to reveal smooth fair skin; a taut ass with a neat pussy between her slim thighs.
 
 {color=yellow|Aire:— Please, no! Let me go! You have no right! My master will be furious! }""",
 	LICHAIRETALK6_2 = """Keeping her naked body clasped against you, you take some time to get familiar with her curves as Aire sobs pitifully. She cries out when your fingers find the clit, her shudders making her perky tits tremble. You stoop and catch one of the nubile breasts in your mouth, sucking and biting the tender nipple as you fondle her slit. 
@@ -2566,7 +2574,7 @@ Letting go of the wrists, you pull her across you and lay a dozen hard spanks on
 {color=yellow|Aire:— Y-you bastard! I don't want this! I don't want you! }""",
 	LICHAIRETALK6_4 = """You laugh as you fall on top of Aire's struggling body, your erect cock pressing against the soft flesh of her inner thigh. Forcing your knee between her legs, you pry her slender thighs apart until they are spread wide. Shaky hands claw at your chest as you line up your cock with her glistening cunt. 
 
-Aire’s perfect tits heave as she writhes, trying to escape. Savoring the moment, you thrust your hips forward, ramming your cock deep into her hole. You swat away the flailing hands and seize hold of her tits, gripping them like handles while you fuck her vulnerable elf pussy raw.""",
+Aire's perfect tits heave as she writhes, trying to escape. Savoring the moment, you thrust your hips forward, ramming your cock deep into her hole. You swat away the flailing hands and seize hold of her tits, gripping them like handles while you fuck her vulnerable elf pussy raw.""",
 	LICHAIRETALK6_5 = """Aire's struggles gradually grow weaker as you pound her against the cold stone floor of the tomb. You feel your orgasm begin to build and lower yourself to lay on top of her, your penis sliding freely in and out as she gasps at each powerful lunge. Her eyes are closed, tears staining her face, but you grasp a handful of soft orange hair at the back of her head and pull hard, forcing a plaintive squeal. 
 
 Your lips close over hers and your tongue shoves roughly into her mouth while your hips grind relentlessly between her splayed thighs, driving your cock urgently into her spasming pussy. She tastes faintly of strawberries. Her resistance is already crushed as you deliver one final thrust, shooting hot cum deep inside her svelte elven body.""",
@@ -4708,66 +4716,66 @@ The herald pauses for dramatic effect.
 
 The princess's face is a picture of fear and confusion, trying to decide if she should be happy her life is being spared, or if she would prefer execution to her imminent brutal degradation. Tears form in her eyes as a chorus of perverted cheers ring out from the crowd
 
-A long and unruly line begins to form at the foot of the platform, with the city’s men jostling and shouldering each other to get to the front. The city guards are hard-pressed to maintain order and stop them charging the platform.""",
-	ANASTASIA_EXECUTION_7 = """Beside you, Amelia purrs and giggles at the spectacle of the princess’s subjugation. 
+A long and unruly line begins to form at the foot of the platform, with the city's men jostling and shouldering each other to get to the front. The city guards are hard-pressed to maintain order and stop them charging the platform.""",
+	ANASTASIA_EXECUTION_7 = """Beside you, Amelia purrs and giggles at the spectacle of the princess's subjugation. 
 
-{color=yellow|Amelia:— Well, isn’t this much more entertaining than a boring old beheading? You know, I’m rather proud of myself.}
+{color=yellow|Amelia:— Well, isn't this much more entertaining than a boring old beheading? You know, I'm rather proud of myself.}
 
 You turn to Amelia in surprise, momentarily distracted from the plight of the naked princess.
 
-{color=yellow|Amelia:— Don’t look so shocked! I simply convinced Duncan and the others that after this nobody will accept her as royalty again. She’ll be neutralized, safe. Physically anyway, no guarantee what state her mind will be left in after getting fucked by every cock in the city…}
+{color=yellow|Amelia:— Don't look so shocked! I simply convinced Duncan and the others that after this nobody will accept her as royalty again. She'll be neutralized, safe. Physically anyway, no guarantee what state her mind will be left in after getting fucked by every cock in the city…}
 
-On the platform, the first man has climbed the stairs and is examining the princess’s virgin cunt with his dirty fingers as the crowd catcalls and jeers. Anastasia squeezes her thighs together in a doomed effort to stop the man’s crude inspection of her unused pussy. The man forcefully shoves a finger into her asshole instead, making the princess scream in pain.""",
+On the platform, the first man has climbed the stairs and is examining the princess's virgin cunt with his dirty fingers as the crowd catcalls and jeers. Anastasia squeezes her thighs together in a doomed effort to stop the man's crude inspection of her unused pussy. The man forcefully shoves a finger into her asshole instead, making the princess scream in pain.""",
 	ANASTASIA_EXECUTION_OPTION_3 = """Clever move""",
 	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off""",
 	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
 	ANASTASIA_EXECUTION_8 = """{color=aqua|Amelia:— I did say I pity her, didn't I? And this is much more fun to watch too.}""",
 	ANASTASIA_EXECUTION_9 = """{color=aqua|Amelia:— *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.}""",
 	ANASTASIA_EXECUTION_10 = """{color=aqua|Amelia:— Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.}""",
-	ANASTASIA_EXECUTION_11 = """With his grubby finger still inside Anastasia’s ass the man roughly kicks her legs apart, spreading her wide. The princess wails and wriggles in the stocks, humiliated by the intrusion into her clenched sphincter The crowd roars in anticipation as the man pulls his sizable cock out of his pants and begins to rub it against her soft thighs. 
+	ANASTASIA_EXECUTION_11 = """With his grubby finger still inside Anastasia's ass the man roughly kicks her legs apart, spreading her wide. The princess wails and wriggles in the stocks, humiliated by the intrusion into her clenched sphincter The crowd roars in anticipation as the man pulls his sizable cock out of his pants and begins to rub it against her soft thighs. 
 
 {color=yellow|Citizen:— You fucking bitch. My brother died in the war you started! 
 
-{color=yellow|Anastasia:— I’m sorry! Please, don’t! Don’t hurt me!}
+{color=yellow|Anastasia:— I'm sorry! Please, don't! Don't hurt me!}
 
-{color=yellow|Citizen:— It’s too fucking late for that, princess cunt. Time for you to get what you deserve.}
+{color=yellow|Citizen:— It's too fucking late for that, princess cunt. Time for you to get what you deserve.}
 
-The man beats Anastasia’s round ass savagely until her asscheeks are red and raw. She cries out, her rear end writhing desperately to escape his cruel blows, exciting the laughing crowd further.
+The man beats Anastasia's round ass savagely until her asscheeks are red and raw. She cries out, her rear end writhing desperately to escape his cruel blows, exciting the laughing crowd further.
 
-{color=yellow|Citizen:— There. That’s got you nice and hot, don’t it? Ready for your dishonouring?}
+{color=yellow|Citizen:— There. That's got you nice and hot, don't it? Ready for your dishonouring?}
 
-{color=yellow|Anastasia:— No… Please… I’m still a virgin!}
+{color=yellow|Anastasia:— No… Please… I'm still a virgin!}
 
 Lecherous laughter rings out from the square as the princess pleads desperately. """,
-	ANASTASIA_EXECUTION_12 = """{color=yellow|Citizen:— No use begging now, princess cunt. Not every day a commoner like me gets to deflower a nubile virgin of the royal blood. Another hundred men waiting to do it if I don’t, so best you get used to the idea.}
+	ANASTASIA_EXECUTION_12 = """{color=yellow|Citizen:— No use begging now, princess cunt. Not every day a commoner like me gets to deflower a nubile virgin of the royal blood. Another hundred men waiting to do it if I don't, so best you get used to the idea.}
 
-The man grabs Anastasia by her asscheeks, his fingernails sinking cruelly into her tender flesh as he spreads her pussy open. He spits onto her cunt, drawing another roar from the crowd. Anastasia’s head twists in the stocks, trying to see the face of the man behind her, but her long blonde hair gets in the way. The man presses his cock against her pussy, holding it there.
+The man grabs Anastasia by her asscheeks, his fingernails sinking cruelly into her tender flesh as he spreads her pussy open. He spits onto her cunt, drawing another roar from the crowd. Anastasia's head twists in the stocks, trying to see the face of the man behind her, but her long blonde hair gets in the way. The man presses his cock against her pussy, holding it there.
 
-{color=yellow|Citizen:— This is for my brother Harald, you cunt, I hope he’s watching, somewhere.}
+{color=yellow|Citizen:— This is for my brother Harald, you cunt, I hope he's watching, somewhere.}
 
 The man forces his cock into her, bursting her hymen open as the princess screams at her violation. The crowd hollers in debauched euphoria as the burly commoner takes the virginity of the princess, violently raping her bleeding pussy while she howls in agony and disgrace. """,
 	DUNCANS_DECLARATION_START = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced.
 
 — None can deny how instrumental the efforts of [sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
-	ANASTASIA_EXECUTION_13 = """It doesn’t take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia’s legs.. 
+	ANASTASIA_EXECUTION_13 = """It doesn't take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia's legs.. 
 
 {color=yellow|Amelia:— Did I mention I pity her? I do, you know, poor thing. But this is so much more fun to watch.}
 
 You turn to see Amelia has one hand up her dress and between her legs. Her arm is twitching rhythmically.
 
-{color=yellow|Amelia:— You know, if you plan to take part, you might want to get in there before she gets too badly messed up. I don’t think she’ll be much fun after the first hour or so.}
+{color=yellow|Amelia:— You know, if you plan to take part, you might want to get in there before she gets too badly messed up. I don't think she'll be much fun after the first hour or so.}
 
 A second man has climbed the platform. He walks around to look at the princess, grabs her hair and pulls her head up. 
 
-{color=yellow|Citizen 2:— Hello princess, why don’t we use this pretty mouth of yours as well? You’ve got a lot of work to do till you satisfy us all.}""",
+{color=yellow|Citizen 2:— Hello princess, why don't we use this pretty mouth of yours as well? You've got a lot of work to do till you satisfy us all.}""",
 	ANASTASIA_EXECUTION_14 = """Anastasia does not find any words to object, being at the mercy of the perverts from the crowd.
 
-The man tugs his limp cock from his pants and pushes it in Anastasia’s face. She quickly takes it in her mouth, eagerly licking and sucking on him to the delight of the crowd. She gags briefly at the smell of the peasant’s unwashed penis but his cock is soon stiff and cramming into her throat as he grips her hair.
+The man tugs his limp cock from his pants and pushes it in Anastasia's face. She quickly takes it in her mouth, eagerly licking and sucking on him to the delight of the crowd. She gags briefly at the smell of the peasant's unwashed penis but his cock is soon stiff and cramming into her throat as he grips her hair.
 
 He pulls his cock out of her sucking mouth as she looks at him bewildered. He walks around behind her... """,
-	ANASTASIA_EXECUTION_15 = """After a few hours, Anastasia barely resembles the feisty and spirited princess who so nearly toppled the guilds of Aliron. Her once-smooth skin has been whipped and beaten until it is bruised and torn, and her whole body is coated in the mingled semen of dozens of the city’s men. The healers have stepped in several times to save her from shock or unconsciousness.
+	ANASTASIA_EXECUTION_15 = """After a few hours, Anastasia barely resembles the feisty and spirited princess who so nearly toppled the guilds of Aliron. Her once-smooth skin has been whipped and beaten until it is bruised and torn, and her whole body is coated in the mingled semen of dozens of the city's men. The healers have stepped in several times to save her from shock or unconsciousness.
 
-The line to abuse her has hardly shrunk at all, with several of those who have already had their pleasure rejoining for a second turn. Anastasia’s cries and pleading have given way to ragged sobs and the occasional agonized moan as another man penetrates her ruined pussy or ass. The cheers of the crowd settle down into a regular rhythm.
+The line to abuse her has hardly shrunk at all, with several of those who have already had their pleasure rejoining for a second turn. Anastasia's cries and pleading have given way to ragged sobs and the occasional agonized moan as another man penetrates her ruined pussy or ass. The cheers of the crowd settle down into a regular rhythm.
 
 Anastasia is displayed in the main square for a week, during which time there is never a break from the cocks defiling her holes. She is used by every man in the city as an example to any who would challenge the guilds. Eventually, her beaten and violated body disappears from the stocks. """,
 
@@ -5123,7 +5131,7 @@ Drawing back you tell Anastasia how you have waited long for this moment, and yo
 You grin, and explain that the first step is to remove her clothing.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_2 = """Anastasia begins to undress reluctantly, unbuckling the knee-high boots and slipping them off her stockinged legs. She shrugs the blue cloak off her shoulders and hands it to you, then loosens the girdle around her waist and slips it off. She hesitates for a moment.
 
-{color=yellow|Anastasia:— I- I usually have Aire to help me with my dress. If it won’t trouble you, could you assist me?}
+{color=yellow|Anastasia:— I- I usually have Aire to help me with my dress. If it won't trouble you, could you assist me?}
 
 Anastasia turns around and lifts her long blonde hair off her shoulders. Tossing her cloak aside, you stand close behind and begin to unfasten the tiny hooks that keep the corset part of her dress in place. The scent of her hair is sweetly fragrant, like honeysuckle, as you finish unclipping the dress. She looks at you nervously over her bare shoulder.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_3 = """You help Anastasia to free herself of the top part of the dress, letting it fall to expose her beautiful ripe breasts. She blushes at the sudden nakedness and you embrace her from behind, your teeth finding the smooth skin of her neck as your hands slide gently up her taut belly to cup her tits. You feel her delicate nipples harden under the pressure of your fingertips.
@@ -5134,33 +5142,33 @@ You squeeze her breasts then transfer your hands to her waist where you peel the
 You slip the silk panties over her round ass and let them fall around her ankles. You tug your shirt over your head so her naked breasts are pressing against your bare chest. You caress her nude body greedily and she whispers in your ear, her voice tense with unwilling arousal. 
 
 {color=yellow|Anastasia:— Um... What would you... have me... do?}""",
-	AFTER_ELECTION_PRINCESS_CONSENT_5 = """You bring Anastasia to the bed and lay her down, then watch as she carefully rolls the hosiery down over her sleek thighs. Still blushing, she plays to your intent gaze, pulling the stockings slowly from her toes and casting them away. You unbuckle your belt and let your pants drop, revealing your stiff cock. The princess’s blue eyes widen as she bites her lip and instinctively presses her thighs tight.
+	AFTER_ELECTION_PRINCESS_CONSENT_5 = """You bring Anastasia to the bed and lay her down, then watch as she carefully rolls the hosiery down over her sleek thighs. Still blushing, she plays to your intent gaze, pulling the stockings slowly from her toes and casting them away. You unbuckle your belt and let your pants drop, revealing your stiff cock. The princess's blue eyes widen as she bites her lip and instinctively presses her thighs tight.
 
 {color=yellow|Anastasia:— Oh! That's... It's... You're...}
 
 You climb onto the satin sheets and lay beside Anastasia, fondling her finely-proportioned curves. Your fingers press in between her legs and you begin to tease her slit, feeling its tightness as your thumb glides across her clit. Her virgin pussy quickly grows slick with arousal as you finger her, and her hands brush against your penis as you bite gently on her ear and neck.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_6 = """With one hand, you spread Anastasia's legs wide and her breath catches as you swing your body up over hers. You hold yourself there for a moment, pinning her wrists to the bed. She looks up into your eyes and you see desire mingling with the fear. You stoop to kiss her again and the shaft of your cock presses against her clit. She gasps breathlessly as your tongue slides into her mouth.
 
-{color=yellow|Anastasia:— W-wait, I’m not-.}
+{color=yellow|Anastasia:— W-wait, I'm not-.}
 
 Anastasia cries out as your thick cock bursts through her hymen and fills her pussy. Her wetness lessens the discomfort as your penis thrusts into her, stretching her unused cunt as you drive yourself deep. A thin smear of virginal blood coats your shaft as you pull out, before plunging back in between her pussy lips. Mouth hanging open, arms pinned, Anastasia moans helplessly while you fuck her.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_7 = """Anastasia's eyes roll back and her body shudders as an orgasm overwhelms the young princess. Penetrating her tight pussy again and again, your own orgasm begins to build as her slim legs curl around your waist. You hold her down on the bed as your powerful cock pounds into her, and when your cum explodes inside her, you fall on top of her.
 
-Your tongue fills Anastasia’s mouth as her pussy convulses around your orgasming cock, milking the cum from you. She sighs bodily and collapses back on the pillows, your penis still gripped inside her pussy. Her breasts and belly heave wildly as she pants for breath. A sheen of sweat sticks a lock of hair to her cheek and makes her skin shine in the lamplight. A shy look spreads across the princess’s gorgeous face.
+Your tongue fills Anastasia's mouth as her pussy convulses around your orgasming cock, milking the cum from you. She sighs bodily and collapses back on the pillows, your penis still gripped inside her pussy. Her breasts and belly heave wildly as she pants for breath. A sheen of sweat sticks a lock of hair to her cheek and makes her skin shine in the lamplight. A shy look spreads across the princess's gorgeous face.
 
-{color=yellow|Anastasia:— I didn’t know this would feel so good. D-Did I do well?}""",
+{color=yellow|Anastasia:— I didn't know this would feel so good. D-Did I do well?}""",
 	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_1 = """You did majestically""",
 	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_2 = """Not bad for a first time""",
 	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_3 = """Passable, but you'll get better with more practice""",
 	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_1 = """{color=yellow|Anastasia:— Thank you… Wait, are you mocking me?}
 
-{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
-	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_2 = """{color=yellow|Anastasia:— T-Thanks, I guess I can’t compete with you?}
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
+	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_2 = """{color=yellow|Anastasia:— T-Thanks, I guess I can't compete with you?}
 
-{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
 	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_3 = """Anastasia shies away slightly offended, but quickly snaps out of it.
 
-{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn’t so bad after all. C-Can I sleep next to you until the morning?..}""",
+{color=yellow|Anastasia:— For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
 
 	# Idk part
 	AFTER_ELECTION_PRINCESS_12 = """The princess's face becomes slightly more relaxed but also uncertain as she hears your words. Deciding she'll be useful for some tasks or barter later on you decide to leave it at this for now.""",
@@ -5191,7 +5199,7 @@ You walk around her, inspecting your new property closely. You lift her dress at
 
 You pinch her nipple harder for a second and she squeals. You explain that excuses for failure will not be tolerated. Releasing her breast, you come around in front. Anastasia looks at you reproachfully, unable to shake off a lifetime of expected deference so easily. 
 
-{color=yellow|Anastasia:— There’s no need to hurt me, I’ll do whatev-}
+{color=yellow|Anastasia:— There's no need to hurt me, I'll do whatev-}
 
 You cut her off with a quick, casual slap across the face and instruct her not to speak unless spoken to. Her cheek reddens from the blow but she is silent, her bright blue eyes wary.
 
@@ -5202,7 +5210,7 @@ You explain that you are disappointed with her rebelliousness, and that she will
 
 Anastasia begins to disrobe, unbuckling her knee-high boots and slipping them off. She sheds her blue cloak and lays it over an armchair. She begins to peel off her stockings but you stop her and gesture that she should remove the dress first. Anastasia struggles to unfasten the back of her dress and you raise an eyebrow at the delay.
 
-{color=yellow|Anastasia:— I'm sorry, Master. I’m used to having Aire to help me.}
+{color=yellow|Anastasia:— I'm sorry, Master. I'm used to having Aire to help me.}
 
 Smirking, you order her to turn around. Standing in her stockinged feet, she holds her long blonde hair up and you unclip the hooks holding her dress in place at the back. She loosens the girdle around her waist as you move back around in front of her and the dress begins to fall open at the top, her soft, heavy tits spilling out.""",
 	#gets naked here
@@ -5210,13 +5218,13 @@ Smirking, you order her to turn around. Standing in her stockinged feet, she hol
 
 Anastasia steps out of the panties and stands naked, her hands reflexively covering her pussy and tits.You order her to lift her hair off her shoulders with both hands as she did a moment ago, and though she hesitates, she complies. You take a moment to enjoy the sight of your naked, compliant princess and instruct her to turn around slowly so you can examine her whole body.
 
-Her skin is smoother than the common girls, her hair more lustrous. Despite the hard time she must’ve had during all these years, she still seemingly led a fairly luxurious life.""",
+Her skin is smoother than the common girls, her hair more lustrous. Despite the hard time she must've had during all these years, she still seemingly led a fairly luxurious life.""",
 	AFTER_ELECTION_PRINCESS_18 = """With Anastasia naked and obedient, you begin a more thorough inspection of your property. Your hands roam across her body, exploring her ripe breasts, slender belly, and soft round ass. She whimpers slightly as you press her thighs apart to reveal her pussy, but you pretend not to notice. Your fingers stroke her slit and then probe between her tidy labia to check her hymen. 
 
-{color=yellow|Anastasia:— W-what are you doing? You shouldn’t touch…!}
+{color=yellow|Anastasia:— W-what are you doing? You shouldn't touch…!}
 
-You ignore Anastasia’s pleas as she has no right to protest, being your slave now. Neither is her weak body capable of resisting you. She sobs as your fingers roughly explore her tight virgin holes though she has no alternative in the end but to tolerate your intimate assault.""",
-	AFTER_ELECTION_PRINCESS_19 = """You order the naked, weeping princess to lie on the bed and she obeys without a fight. You climb on top and seize her wrists, dragging them up over her head where you handcuff her to the headboard. New tears flow from Anastasia’s eyes as you unbuckle your pants and your cock springs out. You rub your hard penis between her juicy tits and instruct her to spread her legs for you. 
+You ignore Anastasia's pleas as she has no right to protest, being your slave now. Neither is her weak body capable of resisting you. She sobs as your fingers roughly explore her tight virgin holes though she has no alternative in the end but to tolerate your intimate assault.""",
+	AFTER_ELECTION_PRINCESS_19 = """You order the naked, weeping princess to lie on the bed and she obeys without a fight. You climb on top and seize her wrists, dragging them up over her head where you handcuff her to the headboard. New tears flow from Anastasia's eyes as you unbuckle your pants and your cock springs out. You rub your hard penis between her juicy tits and instruct her to spread her legs for you. 
 
 She splays her legs wide, thighs trembling. You order her to beg for your cock, to beg for you to take her virginity. Her wide blue eyes are still wet with tears as she complies.
 
@@ -5225,7 +5233,7 @@ With a satisfied grunt you guide your cock to her virginal pussy, pressing it un
 
 By the time your own orgasm shoots your cum deep inside her, Anastasia gives in moaning and squirming. Her pussy spasms around your spurting cock, and you hold the princess down on the bed as your cum pumps into her, her resistance totally broken.
 
-As the princess is your property now you’ll be looking forward to more nights like this one. """,
+As the princess is your property now you'll be looking forward to more nights like this one. """,
 	AFTER_ELECTION_PRINCESS_MINDBREAK_0 = "After the feast you summon your mindbroken princess. Anastasia arrives and waits patiently for your attention with a vacant look in her eyes.",
 	AFTER_ELECTION_PRINCESS_MINDBREAK_1 = """Seizing the princess by the wrist you lead her to your bedroom. Anastasia's face remains expressionless as you close the door and move her to the middle of the room. Standing before her, you lift the front of her dress and casually slip your hand into her silk panties. She doesn't react as you finger her virgin pussy but gives a yelp when you pinch her clit.
 
@@ -5243,7 +5251,7 @@ Anastasia nods obediently and wraps her full lips around the head of your penis,
 	AFTER_ELECTION_PRINCESS_MINDBREAK_4 = """As the princess sucks you off, you keep a tight hold of her head and reach over the table to pull up her dress so you can spank her lily-white ass. Her yelps are muffled by the cock filling her throat, as she struggles to keep her feet on the floor. The sight of her smooth ass bouncing and twitching is delightful and you decide it's time to switch things up. 
 
 You pull your cock out of Anastasia's mouth and walk quickly around the desk. Her panties have slipped down to her ankles and you kick them away. Flipping her petticoats back up, you grab her slender waist and roughly spread her legs with your knee. Your penis is still slick with her saliva and you spit on her puckered sphincter as you line up your hips.""",
-	AFTER_ELECTION_PRINCESS_MINDBREAK_5 = """Using your finger, you massage your spit into her anus, probing the princess’s tight ass as she groans in discomfort at the intrusion. Pulling Anastasia's hair towards you, you lift her upper body off the table so your erect penis presses into her asshole. She screams and shudders as you force yourself into her tight rectum, impaling her perfect ass with your cock. 
+	AFTER_ELECTION_PRINCESS_MINDBREAK_5 = """Using your finger, you massage your spit into her anus, probing the princess's tight ass as she groans in discomfort at the intrusion. Pulling Anastasia's hair towards you, you lift her upper body off the table so your erect penis presses into her asshole. She screams and shudders as you force yourself into her tight rectum, impaling her perfect ass with your cock. 
 
 With her hair gathered into a ponytail clamped behind her head by your fist, you have no difficulty dominating the princess's nubile body. You brutally fuck her unused ass over the table, spanking her as she wails and cries. After a few minutes her wailing stops and you feel her sphincter relax as your cock rams home. """,
 	AFTER_ELECTION_PRINCESS_MINDBREAK_6 = """You slide your penis slowly out of her ass and, using her hair, haul her away from the desk. Anastasia is still wearing her fine blue dress as you march her to the wall and shove her up against it. Your hands grab the top of the dress, at her cleavage, and you violently rip it open. Her pale breasts spill out of the torn corset as you yank the dress downwards. 
@@ -5502,7 +5510,7 @@ You explain to the kneeling, half-naked bunny girl how you are going to use her 
 You instruct her to touch herself while she serves you. Without breaking eye contact, her hand slips between her thighs and she starts to massage her clit through the panties. 
 
 Maneuvering your hips, you line your cock up with her mouth and prod it between her soft lips. You order her to use her tongue to pleasure you and she begins to lick small circles around the head of your penis inside her mouth. You can see the stress in her eyes as she sucks you off from her knees, working your shaft with her free hand.""",
-	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_5 = """You run your hands around Daisy’s head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeals in protest as you pull her head firmly down onto your penis, pressing the head of your cock into her delicate throat.
+	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_5 = """You run your hands around Daisy's head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeals in protest as you pull her head firmly down onto your penis, pressing the head of your cock into her delicate throat.
 
 As you push your cock all the way into her mouth, Daisy's eyes tear up. She moans pitifully around the thick penis filling her throat while you use her ears as leverage to force yourself deeper. You press her lips up against your pubic hair and cram your whole length into her face.
 
@@ -5581,7 +5589,7 @@ The man behind slides his hand underneath her and slips his thumb into the bunny
 
 {color=yellow|Trainer 1:— Haha, that'd be you out of a job, mate. Ah well, good progress anyway. Recommend you take her hungry little mouth next time.} 
 
-{color=yellow|Trainer 2:— Maybe I will. Fuck. What’s your plans now? Want to get an ale?}
+{color=yellow|Trainer 2:— Maybe I will. Fuck. What's your plans now? Want to get an ale?}
 
 {color=yellow|Trainer 1:— Yeah, sounds good. Don't worry slut, we'll send the next shift in.}
 
@@ -5653,7 +5661,7 @@ With your cock thrust deep inside her, Daisy shakes her ass delicately from side
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_3 = """You order Daisy to cum, and to make a performance out of it. A few moments later she does so, arching her back and moaning loudly as her body trembles with a powerful orgasm. Her expert pussy grips your cock as you pound her from behind and you feel your own orgasm approaching fast.
 
 You pull out and stand, ordering Daisy to turn around. She kneels before you, gazing up at you with her mouth obediently open as she jerks you off to completion. Your cum splatters over her pretty face and onto her tongue. Taking you in her mouth she sucks the last few drops of cum from your penis before you buckle your pants again. """,
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_4 = """You take Daisy’s chin in your hand and tilt her head up to look at you. She is a little breathless but she looks happy and proud with your cum coating her cheeks and brow. 
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_4 = """You take Daisy's chin in your hand and tilt her head up to look at you. She is a little breathless but she looks happy and proud with your cum coating her cheeks and brow. 
  
 {color=yellow|Daisy:— Did I do good, Master? Daisy was a good girl?}
 
@@ -5687,7 +5695,7 @@ The dog sniffs around Daisy curiously and then evidently decides this is too goo
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_3 = """As the dog humps Daisy's obedient pussy, the surprise fades from her face and her instincts and training take over. She squirms and whines, pushing her ass backwards rhythmically into the hound's frantic thrusts. The dog's forepaws scrabble for purchase on her back as he ruts on her with animal ferocity, his tongue lolling out.
 
 The dog yowls suddenly and Daisy wails, the tears rolling from her eyes down her scarlet cheeks as the dog climaxes, filling her abused pussy with its seed. The hound's penis is trapped inside Daisy for several long minutes as she weeps in shame, until its knot deflates and it slips out. """,
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4 = """The dog sniffs at Daisy a few more times and licks at the tears streaming down her face before you chase it off. Still on her hands and knees, Daisy is sobbing at the humiliation you have forced on her. She looks up at you with fear and sorrow in her eyes as the hound’s dirty seed trickles down her thighs..
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4 = """The dog sniffs at Daisy a few more times and licks at the tears streaming down her face before you chase it off. Still on her hands and knees, Daisy is sobbing at the humiliation you have forced on her. She looks up at you with fear and sorrow in her eyes as the hound's dirty seed trickles down her thighs..
 
 {color=yellow|Daisy:— Th-thank you, Master. I deserved this.}
 
@@ -5862,12 +5870,12 @@ The sophisticated cat-girl slowly unbuttons the front of her satin shirt to bare
 Without waiting for a reply Amelia cups her heavy tits in her hands and presses them together around the shaft of your cock. Moving from the hips, she squeezes her breasts together to massage your penis. Oil smears across her smooth skin as she bounces lightly up and down with your cock embraced by her cleavage.""",
 	AMELIA_SILK_REPLY_1_1_6 = """Amelia tucks her chin down and begins to lick around the head of your penis as it slides between her breasts. With each bounce her tongue comes closer until your cock reaches her eager lips and she sucks it into her mouth. She sucks you expertly as she continues to massage your shaft with her tits.
 
-Despite Amelia’s elevated status as guild leader, you can feel her deep desire to serve a strong master as she delivers the most consummately skillful blowjob you have ever had. Her virtuoso lips and tongue tease your cock to a hardness you have never experienced before and your toes curl as your hips twitch upwards, trying to press deeper into her talented mouth. """,
+Despite Amelia's elevated status as guild leader, you can feel her deep desire to serve a strong master as she delivers the most consummately skillful blowjob you have ever had. Her virtuoso lips and tongue tease your cock to a hardness you have never experienced before and your toes curl as your hips twitch upwards, trying to press deeper into her talented mouth. """,
 	AMELIA_SILK_REPLY_1_1_7 = """Your imminent orgasm is building to a level that you have never imagined and you grip the sides of the table as Amelia slides your cock out of her mouth and looks you in the eye with the tip of her tongue curled against your throbbing shaft.
 
 You can't hold any longer and with a grunt you ejaculate in a thick spray that rains down on Amelia's face and outstretched tongue. Your penis continues to spurt as she works your shaft and, as though in a trance, you can only watch as Amelia's tongue meticulously licks the sticky droplets from your aching cock.
 
-{color=yellow|Amelia:— By the gods, that’s a lot of cum. All over my face! Such a strong and distinct musk to it too. You found my massage pleasing then, [name]?}
+{color=yellow|Amelia:— By the gods, that's a lot of cum. All over my face! Such a strong and distinct musk to it too. You found my massage pleasing then, [name]?}
 
 You nod wordlessly, your wits far from your reach at this moment.""",
 	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants' Guild, Amelia's smile looks different - warmer, and more personal.

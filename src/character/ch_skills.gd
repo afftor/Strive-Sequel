@@ -52,6 +52,8 @@ func get_value_damage_mod(skill_val:Dictionary):
 	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
 	return res
 
+func get_combat_skills():
+	return combat_skills
 
 func learn_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]

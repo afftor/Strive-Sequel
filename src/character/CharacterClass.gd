@@ -1291,3 +1291,9 @@ func fill_ai(data):
 			for arr in data:
 				newdata[arr[0]] = arr[1]
 			ai.set_single_state(newdata)
+
+func get_ability_experience():
+	return xp_module.get_ability_experience()
+
+func get_combat_skills():
+	return skills.get_combat_skills()
