@@ -1295,8 +1295,5 @@ func fill_ai(data):
 func get_ability_experience():
 	return xp_module.get_ability_experience()
 
-func sub_ability_experience(value):
-	return xp_module.sub_ability_experience(value)
-
-func add_ability_experience(value):
-	return xp_module.add_ability_experience(value)
+func get_combat_skills():
+	return skills.get_combat_skills()

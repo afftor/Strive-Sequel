@@ -144,7 +144,7 @@ var data = {
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "FINAL_WORDS_2", reqs = [],},
-		],
+		], 
 		common_effects = [{code = "decision", value = "mayor_election_finished"}],
 		options = [
 			{
@@ -153,7 +153,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = []
+				bonus_effects = [],
 			},
 			{
 				code = 'close',
@@ -161,7 +161,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = []
+				bonus_effects = [],
 			},
 		],
 	},

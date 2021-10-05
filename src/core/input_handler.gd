@@ -1419,6 +1419,7 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 		"skill_unlocked":
+			PlaySound("quest_completed")
 			get_tree().get_root().set_disable_input(true)
 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_SKILL_UNLOCKED)
 			anim_scene.get_node("AnimationPlayer").play("Ability_unlocked")

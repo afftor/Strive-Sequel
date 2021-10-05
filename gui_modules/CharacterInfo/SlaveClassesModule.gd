@@ -6,6 +6,7 @@ var category = 'all'
 var person
 var mode
 var current_class
+var selected_skill
 
 var parentnode
 var shutoff = false
@@ -21,7 +22,8 @@ func _ready():
 		i.connect("pressed",self,'class_category', [i.name])
 	for i in $SkillPanel/Categories.get_children():
 		i.connect("pressed", self, 'change_skill_category', [i.name])
-
+	$SkillTooltip/cancel_button.connect("pressed", $SkillTooltip, "hide")
+	$SkillTooltip/unlock_button.connect("pressed", self, "buy_skill")
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
@@ -102,11 +104,13 @@ func open(tempperson, tempmode = 'normal'):
 func checkbox_locked():
 	person = input_handler.interacted_character
 	open(person, mode)
+	build_skills()
 
 func class_category(name):
 	person = gui_controller.mansion.active_person if person == null else input_handler.interacted_character
 	category = name
 	$ClassPanel.hide()
+	$SkillPanel.show()
 	for i in $categories.get_children():
 		i.pressed = i.name == category
 	open(person, mode)
@@ -142,6 +146,7 @@ func open_class(classcode):
 	$ClassPanel/ExpLabel.text = text
 	update_class_buttons(classcode)
 	$ClassPanel.show()
+	$SkillPanel.hide()
 
 func update_class_buttons(classcode):
 	for button in $ScrollContainer/GridContainer.get_children():
@@ -156,6 +161,7 @@ func unlock_class():
 	args["person"] = person
 	input_handler.play_animation("class_aquired", args)
 	$ClassPanel.hide()
+	$SkillPanel.show()
 	gui_controller.windows_opened.clear()
 	yield(get_tree().create_timer(0.2),"timeout")
 	person.add_stat('base_exp', -person.get_next_class_exp())
@@ -171,33 +177,42 @@ var skill_category = "all"
 func build_skills():
 	input_handler.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
 	
-	var owned_skills = []
-	for i in person.xp_module.professions:
-		if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
-			for skill in classesdata.professions[i].skills:
-				owned_skills.append(skill)
-		if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
-			for skill in classesdata.professions[i].combatskills:
-				owned_skills.append(skill)
-	
 	var array = []
 	for i in Skilldata.Skilllist.values():
-		if !i.tags.has("learnable"):
-			continue
-		array.append(i)
+		if i.tags.has("learnable"):
+			array.append(i)
 	array.sort_custom(self, 'sort_by_name')
 	for i in array:
+		if is_skill_locked(i):
+			continue
 		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, "skill_selected", [i])
 		newbutton.get_node("icon").texture = i.icon
 		newbutton.get_node("name").text = tr("SKILL" + i.code.to_upper()) 
 		newbutton.set_meta('skill', i)
-		for o in owned_skills:
+#		if is_skill_locked(i):
+#			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+#			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+#			newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+		for o in person.get_combat_skills():
 			if o == i.code:
 				newbutton.get_node("learn").visible = true
 				newbutton.disabled = true
 	sort_skills()
 	$SkillPanel/xp_label.text = "Experience: " + str(person.get_ability_experience())
+
+func is_skill_locked(skill):
+	if skill.learn_reqs.size() == 0:
+		return false
+	
+	var locked = true
+	for p in person.xp_module.professions:
+		if classesdata.professions[p].has("traits"):
+			for t in classesdata.professions[p].traits:
+				for lr in skill.learn_reqs:
+					if lr.trait == t:
+						locked = false
+	return locked
 
 func sort_skills():
 	if skill_category == "all":
@@ -225,20 +240,52 @@ func change_skill_category(cat):
 	sort_skills()
 
 func skill_selected(skill):
+	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
+		if i.get_meta("skill") != null:
+			if i.get_meta("skill").code != skill.code:
+				i.pressed = false
+	selected_skill = skill
+	$SkillTooltip/req_icon.texture = null
+	$SkillTooltip/req_icon.hint_tooltip = ""
+	$SkillTooltip/unlock_button.disabled = false
+	$SkillTooltip/exp.set("custom_colors/font_color", "#f9e380")
+	if skill.learn_cost > person.get_ability_experience():
+		$SkillTooltip/unlock_button.disabled = true
+		$SkillTooltip/exp.set("custom_colors/font_color", variables.hexcolordict.red)
+	
+	for i in skill.learn_reqs:
+		if i.trait == "basic_spells":
+			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
+			$SkillTooltip/req_icon.hint_tooltip = "TRAITBASIC_SPELLS"
+		if i.trait == "advanced_spells":
+			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
+			$SkillTooltip/req_icon.hint_tooltip = "TRAITADVANCED_SPELLS"
+		if i.trait == "basic_combat":
+			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
+			$SkillTooltip/req_icon.hint_tooltip = "TRAITBASIC_COMBAT"
+		if i.trait == "advanced_combat":
+			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
+			$SkillTooltip/req_icon.hint_tooltip = "TRAITADVANCED_COMBAT"
 	$SkillTooltip.show()
 	$SkillTooltip/icon.texture = skill.icon
 	$SkillTooltip/name.text = tr("SKILL" + skill.code.to_upper())
 	$SkillTooltip/description.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
 	if skill.has("learn_cost"):
-		$SkillTooltip/exp.text = str(skill.learn_cost + " EXP")
+		$SkillTooltip/exp.text = str(skill.learn_cost) + " EXP"
 	$SkillTooltip/cooldown.text = str(skill.combatcooldown)
 	if skill.cost.has("mp"):
 		$SkillTooltip/usage.text = str(skill.cost.mp)
+
+func buy_skill():
+	person.learn_c_skill(selected_skill.code)
+	
 	var args = {}
-	args["skill"] = skill
+	args["skill"] = selected_skill
 	args["person"] = person
 	input_handler.play_animation("skill_unlocked", args)
-	
+	yield(get_tree().create_timer(4.5), 'timeout')
+	$SkillTooltip.hide()
+	build_skills()
 # func play_animation():
 # 	input_handler.PlaySound("class_aquired")
 # 	var anim_scene

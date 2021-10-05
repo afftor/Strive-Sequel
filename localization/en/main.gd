@@ -546,6 +546,12 @@ var TranslationDict = {
 
 	SKILLCOMMAND = "Command",
 	SKILLCOMMANDDESCRIPT = "Increase target's damage by 25% for 3 turns.",
+	SKILLRESTORATION = "",
+	SKILLRESTORATIONDESCRIPT = "",
+	SKILLREJUVENATION = "",
+	SKILLREJUVENATIONDESCRIPT = "",
+	SKILLSANCTUARY = "",
+	SKILLSANCTUARYDESCRIPT = "",
 	SKILLTRAP = "Trap",
 	SKILLTRAPDESCRIPT = "Sets trap under enemy. After using Skill it will be stunned for 2 turns. Requires 1 Trap component.",
 	SKILLWEAPON_REFINE = "Weapon Refine",
