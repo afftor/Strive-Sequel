@@ -217,21 +217,21 @@ func is_skill_locked(skill):
 func sort_skills():
 	if skill_category == "all":
 		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
-			if i.get_meta("skill") != null:
-				i.visible = true
+			i.visible = i.has_meta('skill')
 		return
 	else:
 		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
 			i.visible = false
 	
 	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
-		var skill = i.get_meta("skill")
-		if skill == null:
-			continue
-		if skill.tags.has(skill_category):
-			i.visible = true
-		if skill.ability_type == skill_category:
-			i.visible = true
+		if i.has_meta("skill"):
+			var skill = i.get_meta("skill")
+			if skill == null:
+				continue
+			if skill.tags.has(skill_category):
+				i.visible = true
+			if skill.ability_type == skill_category:
+				i.visible = true
 
 func change_skill_category(cat):
 	skill_category = cat
@@ -241,9 +241,8 @@ func change_skill_category(cat):
 
 func skill_selected(skill):
 	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
-		if i.get_meta("skill") != null:
-			if i.get_meta("skill").code != skill.code:
-				i.pressed = false
+		if i.has_meta("skill") && i.get_meta("skill").code != skill.code:
+			i.pressed = false
 	selected_skill = skill
 	$SkillTooltip/req_icon.texture = null
 	$SkillTooltip/req_icon.hint_tooltip = ""

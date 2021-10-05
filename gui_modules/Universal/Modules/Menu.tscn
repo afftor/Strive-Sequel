@@ -1,3 +1,1647 @@
-[gd_scene format=2]
+[gd_scene load_steps=62 format=2]
 
-[node name="Spatial" type="Spatial"]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=13]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=14]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=16]
+[ext_resource path="res://src/scenes/SaveLoadPanel.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/scenes/Options.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/panel_modsoptions.png" type="Texture" id=19]
+[ext_resource path="res://src/scenes/ModPanel.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/scenes/WarnScreen.tscn" type="PackedScene" id=21]
+[ext_resource path="res://gui_modules/Universal/Modules/Gallery.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_NewGameOptions.tres" type="Theme" id=23]
+[ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=24]
+[ext_resource path="res://gui_modules/Universal/Scripts/Menu.gd" type="Script" id=25]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_hover.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue_pressed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_hover.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load_hover.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/background_mainmenu.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_gallery.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/buttons/mainmenu/itchio.jpg" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load_pressed.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit_hover.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/buttons/mainmenu/patreonlogo.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit_pressed.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options_pressed.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame_hover.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod_pressed.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_pressed.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod_hover.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_pressed.png" type="Texture" id=52]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options_hover.png" type="Texture" id=53]
+[ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
+[ext_resource path="res://assets/images/gui/panels/wiki.png" type="Texture" id=55]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=56]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -10
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 210, 58 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 210, 58 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 210, 58 )
+
+[node name="Menu" type="Control"]
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 35 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="char_sprite" type="TextureRect" parent="."]
+margin_left = 1008.17
+margin_top = -0.513306
+margin_right = 1921.17
+margin_bottom = 1079.49
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 97.4565
+margin_top = 331.976
+margin_right = 355.457
+margin_bottom = 695.976
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 258.0
+margin_bottom = 44.0
+toggle_mode = true
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+
+[node name="newgamebutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 52.0
+margin_right = 258.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 38 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 47 )
+
+[node name="loadbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 110.0
+margin_right = 258.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 34 )
+
+[node name="optionsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 258.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 53 )
+
+[node name="creditsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 226.0
+margin_right = 258.0
+margin_bottom = 276.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 32 )
+
+[node name="modsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 284.0
+margin_right = 258.0
+margin_bottom = 334.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+
+[node name="gallery" type="TextureButton" parent="VBoxContainer"]
+margin_top = 342.0
+margin_right = 258.0
+margin_bottom = 386.0
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 26 )
+
+[node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 394.0
+margin_right = 258.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 44 )
+texture_pressed = ExtResource( 42 )
+texture_hover = ExtResource( 40 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 53.0
+margin_top = 785.0
+margin_right = 691.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel"]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 475.0
+margin_bottom = 159.0
+
+[node name="Patreon" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 41 )
+expand = true
+stretch_mode = 5
+
+[node name="Discord" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 46 )
+expand = true
+stretch_mode = 5
+
+[node name="Itch" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 308.0
+margin_right = 458.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 37 )
+expand = true
+stretch_mode = 5
+
+[node name="Wiki" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_left = 462.0
+margin_right = 612.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 55 )
+expand = true
+stretch_mode = 5
+
+[node name="MainLabel" type="Label" parent="."]
+margin_left = -56.0731
+margin_top = 138.849
+margin_right = 549.927
+margin_bottom = 212.849
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.682353, 0.321569, 0.768627, 1 )
+text = "Strive: Conquest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" parent="." instance=ExtResource( 18 )]
+visible = false
+margin_left = 635.0
+margin_right = 1284.0
+
+[node name="saveloadpanel" parent="." instance=ExtResource( 17 )]
+visible = false
+margin_left = 635.0
+margin_top = 138.0
+margin_right = 1285.0
+margin_bottom = 912.0
+
+[node name="version" type="Label" parent="."]
+margin_left = 14.8086
+margin_top = 1043.2
+margin_right = 182.809
+margin_bottom = 1067.2
+theme = ExtResource( 2 )
+text = "ver. 0.1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoPanel" type="Panel" parent="."]
+visible = false
+margin_left = 716.0
+margin_top = 347.0
+margin_right = 1336.0
+margin_bottom = 712.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DemoPanel"]
+margin_left = 47.0
+margin_top = 47.0
+margin_right = 574.0
+margin_bottom = 215.0
+bbcode_enabled = true
+bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="DemoPanel"]
+visible = false
+margin_left = 170.0
+margin_top = 289.0
+margin_right = 431.0
+margin_bottom = 340.0
+text = "Confirm"
+
+[node name="WarnScreen" parent="." instance=ExtResource( 21 )]
+visible = false
+margin_left = 0.01477
+margin_top = 0.0440397
+margin_bottom = 1080.04
+
+[node name="mod_panel" parent="." instance=ExtResource( 20 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 340.811
+margin_top = 140.276
+margin_right = 1601.81
+margin_bottom = 943.276
+
+[node name="NewGamePanel" type="Panel" parent="."]
+visible = false
+margin_left = 605.0
+margin_top = 143.903
+margin_right = 1315.0
+margin_bottom = 917.903
+custom_styles/panel = ExtResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameLabel" type="Label" parent="NewGamePanel"]
+margin_right = 709.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "New game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsLabel" type="Label" parent="NewGamePanel"]
+margin_left = 8.0
+margin_top = 482.0
+margin_right = 296.0
+margin_bottom = 567.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
+margin_left = 39.71
+margin_top = 111.0
+margin_right = 265.71
+margin_bottom = 455.0
+theme = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/PresetContainer"]
+margin_right = 226.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
+visible = false
+margin_right = 226.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 40 )
+theme = ExtResource( 1 )
+toggle_mode = true
+
+[node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
+margin_left = 24.0
+margin_top = 567.0
+margin_right = 280.0
+margin_bottom = 743.0
+theme = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
+visible = false
+margin_right = 256.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="NewGamePanel/Settings/Button"]
+margin_left = 72.0
+margin_top = 9.0
+margin_right = 264.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tip" type="TextureRect" parent="NewGamePanel"]
+visible = false
+margin_left = 751.0
+margin_top = 85.0
+margin_right = 814.0
+margin_bottom = 141.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
+margin_left = 310.0
+margin_top = 119.0
+margin_right = 629.0
+margin_bottom = 447.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="NewGamePanel"]
+visible = false
+margin_left = 736.036
+margin_top = 42.9593
+margin_right = 831.036
+margin_bottom = 66.9593
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Settings"
+
+[node name="StartButton" type="Button" parent="NewGamePanel"]
+margin_left = 397.21
+margin_top = 672.097
+margin_right = 598.21
+margin_bottom = 735.097
+theme = ExtResource( 13 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Start Game"
+
+[node name="Gold" type="TextureRect" parent="NewGamePanel"]
+margin_left = 407.71
+margin_top = 608.097
+margin_right = 463.71
+margin_bottom = 664.097
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="NewGamePanel/Gold"]
+margin_left = 51.0
+margin_top = 16.0
+margin_right = 176.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+
+[node name="Materials" type="HBoxContainer" parent="NewGamePanel"]
+margin_left = 310.0
+margin_top = 528.0
+margin_right = 698.0
+margin_bottom = 608.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
+visible = false
+margin_left = 154.0
+margin_right = 234.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 16 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="NewGamePanel/Materials/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 74, 74 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewGamePanel/Materials/Button"]
+margin_left = 2.0
+margin_top = 43.0
+margin_right = 77.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangelogButton" type="Button" parent="."]
+margin_left = 145.075
+margin_top = 935.382
+margin_right = 378.075
+margin_bottom = 990.382
+theme = ExtResource( 1 )
+text = "Change log"
+
+[node name="Changelogpanel" type="Panel" parent="."]
+visible = false
+margin_left = 529.445
+margin_top = 97.5106
+margin_right = 1458.44
+margin_bottom = 810.511
+custom_styles/panel = ExtResource( 6 )
+
+[node name="changelogtext" type="RichTextLabel" parent="Changelogpanel"]
+margin_left = 19.0441
+margin_top = 49.6543
+margin_right = 918.044
+margin_bottom = 687.654
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "0.5.4
+Obedience is now displayed as percentage
+Default obedience gain is reduced by 25%
+Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Alchemist class is now unlocked from the start while caster is locked by guild points
+Archmage requires both Apprentice and Scholar to learn instead of requiring Caster
+Assassinate now has 3 charges per day instead of 1
+Firebomb base damage increased from 1.1 to 1.4
+All obedience gains with skills is reduced by 25% for now
+Slave delivery quest will not generate on a first week
+Slightly rebalanced some enemy stats
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
+Fixed gauntlets crafting
+Fixed some exploration issues
+0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
+Added recipe for gauntlets and worker gloves to crafts
+Added bondages to Aliron and villages shops and fighters guild 
+Nerfed obsidian reputation price from 100 to 60
+Added Energy gem to mages reputation shop
+Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
+Fixed quest dungeons causing crashes
+Fixed crafting time for maid headband
+Fixed tooltip for shop items
+0.5.3
+Added \"Bath\" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
+Added an option to switch Daisy's sprite if purchased her alternative clothes
+Added new subquest for Amelia with a scene
+Added Relatives table to character info
+Base work task production is reduced by 15% (makes unskilled workers slightly worse)
+Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
+Stat bonus effect for food production slightly nerfed
+Slightly reduced prostitution gold income
+Lowered number of classes random characters receive on average on higher levels
+Slightly increased Advanced Armor material costs
+Tailor task is now affected by Hunting Knife as crafting tool
+Reduced some early upgrade prices
+Mansion slave tooltip now shows max stat including bonus
+All food by characters is now consumed at 12 pm
+Stable speed boost per level increased from 20% to 30%
+Fixed food being consumed by characters twice as fast
+Fixed Aire generating with incorrect age which led to omitted description
+Fixed Kurdan generating with random skin
+Fixed smith/tailor/alchemy start at 2 workers instead of 1
+Fixed some missing descriptions
+Fixed autosave not storing the progress of following hour
+0.5.2b
+Fixed instance of a bug in duncan-fred questline
+Fixed main questline not triggering at milford siege
+Fixed item tooltip getting out of the screen
+Fixed gold from combat not adding to player's money
+Fixed removing characters from mansion keeping them at task counters
+0.5.2a
+Fixed resource gathering at remote locations occassionally not allowing to gather anything
+Fixed sexual traits not being toggleable after being unlocked
+Fixed class unlocking incorrectly in some cases
+0.5.2
+Resource gathering at Mansion now has limited slots but more options
+Added new upgrades for unlocking new resource gathering from Mansion
+Crafting and upgrading jobs now also have limited slots which increase with upgrade level
+Bone resource collecting now benefit from hunting knife
+Added hotkey support to combat
+Added contraceptive option which prevents impregnation
+Redone some parts of character info
+Redone task assignement menu
+Fixed halfkin tanuki having no growth factor in its data
+Fixed some scenes not displaying correctly
+Fixed Kurdan having incorrect hair length
+Fixed some issues caused by importing
+0.5.1a
+Fixed multiple assignment issues
+Fixed wrong upgrade description
+Fixed mac version
+Fixed some item tooltip inconsistencies
+Fixed some locations not being forgettable when they should be
+0.5.1
+Redone Daisy's questline
+Added upgrade to increase exotic trader slave quality
+Added upgrade to increase number of sex interactions per day
+Impregnation text now states if character could've been impregnated or not and why
+Changed upgrade price for Alchemy level 3
+Added 3 more levels to luxury room upgrade
+Shrine events now have illustrations
+Life and energy shard drop rates reduced
+Rebel's hideout is now much better guarded
+Increased speed for some animations
+Event acquired items for story characters will also be equipped now (bracelet)
+Fixed Daisy and Anastasia's sprites being paler than they should be
+Fixed multiturn skip taking too much time to calculate
+Fixed loot window sometimes showing 0 as loot number
+Fixed ballista having melee attack instead of ranged
+Fixed easy quest being in hard quest pool in fighter guild
+Fixed some errouneous descriptions
+Fixed offering altars option not translating selected character name
+Fixed tribal elves jungle even actually spawning dark elf instead
+Fixed dryads not being in rare race pool
+Fixed true succubus not receiving bonus exp from sex
+Fixed gauntlets not having effects
+0.5.0d
+Reduced time requirement for Assignmenet tasks
+Spoiler enslavement option is now available for futa
+Fixed princess not being findable if you didn't interrogate Aire
+Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8 
+Added wiki link to main menu and fixed itch.io link
+Fixed some scene issues
+0.5.0c
+Fixed some buff tooltips and misspells
+Fixed a rare bug when timed event was cancelled when it was running with another timed event
+Fixed game becoming slow on the closing until system restart/reinstall
+0.5.0b
+Blizzard now costs mana
+Blizzard now only slows enemies with 30% chance 
+Fixed some issues with shrines and chests causing errors
+Fixed clock showing in inventory
+Fixed some new skills
+Fixed traps doing damage to negative numbers
+0.5.0a
+Writ of exemption and Enslave no longer apply to unique characters
+Added some additional dialogue options based on master's class
+Certain story character will have their stats adjusted based on player's decisions
+Fixed an issue when sometimes characters didn't get assigned to task correctly
+Fixed final guards at the siege not being fightable
+Fixed elven capital questline not completing properly in some cases
+Fixed wip scenes not having an option to hide foreground
+Fixed lich intimidation check
+0.5.0
+Added civil war story arc
+Added an option to start from after the prologue
+Characters now can be generated with sexual skills (based on their virginity/classes)
+Added many missing icons for skills and enemies
+Some enemies have been slightly buffed
+Rebel enemies have been made considerably stronger
+Added some new CGs (including main story)
+Added a few class dialogue checks
+Main menu won't show characters you haven't met yet
+Travel menu has been reworked
+Fixed many other bugs
+0.4.1a
+Fixed reputation not being gained
+Fixed some enemy names and skill issues
+Fixed some loot drops being too high
+Fixed smith task benefiting from wits more than from physics
+0.4.1
+Added new quest type: Work - will ask for character with specific stats to work for limited time
+Fixed steel collar and shackles not being craftable
+Fixed paladin taunt not working
+Fixed escape animation
+Fixed new dungeons names
+Fixed cheat menu resources creation
+Fixed some instances of speech modifications getting into the way of syntax
+Removed Amulet of recognition from random item pool
+Added logical resists to some enemies
+0.4.0b
+Fixed occassional issues with item dissasembling
+Fixed fire depths giving crashes
+Fixed slaves having only penalties
+0.4.0a
+Added pregnancy descriptions and debuff
+Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
+Added an option to use bonus description text field for notes
+Fixed some issues during character creation
+Items during craft show in alphabetic order
+Fixed some scene errors
+Fixed some window errors when there was nothing to purchase
+0.3.2b
+Fixed force opening mimic sometimes causing crash
+More fixed GUI issues
+0.3.2a
+Added some additional clarity for upgrade material tooltip
+Fixed repeatability of church quest
+Fixed slave requrest descriptions to represent factor values as words when set so
+Fixed seethrough underwear not being craftable
+Fixed random fairy event showing wrong description
+Fixed tribal elves not being breedable with other races
+Fixed lamia race lacking short names causing some issues
+Fixed bald hair having length description
+Fixed oblivion potion
+Fixed writ of exemption still relying on submision forcalculations
+Fixed multiple GUI issues
+0.3.2
+Dating changes:
+Dating results are now defined by dominance of mood or fear during it. If mood is higher, slave receive loyalty boost with some consent. If fear is higher, slave receive obedience and authority boosts. Repeated actions will become less effective with each new use during same date. Dating descriptions are more varied now.
+
+Obedience system changes:
+Obedience is now capped based on authority and is not consumed statically. Loyalty no longer sets obedience to infinite but loyalty and luxury room will still make it infinite (so you still able to have some characters with no obedience issues). Submission have been removed, instead skills now provide \"positive\" obedience, \"negative\" obedience (scaling on tame/timid factor of target) or neutral obedience (generally from sex oriented skills). Social skills have been revamped.
+
+
+Added reputation shops to guilds
+Added new small quest/event sequence
+Added new illustrations for some events
+Added oblivion potion mechanics
+Added Entangle skill for Dryads
+Added option to forget locations from mansion
+Sex traits are now initially hidden for hired characters. They can be learned during dating
+Pheromones can now be used in mansion
+Some classes are now unlocked with reputation and quests
+Pregnancy duration increased from 5 to 30 days.
+Slightly buffed human's racial stats
+Dialogue options responsible for seduction now check on sex factor instead of charm factor
+Nerfed bandages output 3 -> 2
+Nerfed First Aid heal value 35% -> 30%
+Daisy now have fixed sex traits
+Fixed guild slaves not benefitting from quality upgrades
+Fixed Spirit:Turtle not working correctly
+Fixed ranged attacks not requiring bow
+Fixed First Aid Tooltip
+Fixed some console errors
+Fixed fairy racial skill not restoring correct amount of hp
+Fixed exotic slave trader event not adding properly at the game's start
+Fixed class unlock animation not using correct character name
+0.3.1
+Added multiple GUI animations to some actions
+Added new random events: New chest lock type traps, mimics, finding random resources, encounters
+Added effect duration in tooltip for combat
+Added race name to labels in hiring menu
+Recruited characters won't automatically travel to mansion anymore
+Forcefully recruited characters will receive new debuff preventing them from gaining obedience from positive skills
+Characters won't participate in fight at 0 obedience
+Breeder class is renamed to Breed Sow and now can be unlocked. Stats and reqs changed
+Slightly readjusted Aliron's slave race rates (Humans are more common than halfkins; elves are more common in general and rare races are equially as common as elves for slave market)
+Fairies lose some stats but gain a racial healing skill
+Added exotic slave trader shop every 2 weeks starting day 7 (requires new game)
+Main stats now grow slower at higher levels (starting at 40 base)
+Kobold females now generate with smaller breast size
+Trap events now deal percent damage
+Drows have been renamed to dark elves
+Slave escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
+Food starvation debuff reworked
+Defeat in combat now applies debuff preventing from participating in combat for 3 days (ticks faster when using rest)
+Travel menu opens locations by default
+Fixed craft menu opening on smithing even if its locked
+Fixed inactive enemies not being deleted properly in some situtations
+Fixed buffs not displaying in slave info
+Fixed hp/mp not displaying in dungeon locations
+0.3.0e
+Multiple fixes to tasks and travelling
+Fixed some path issues for linux/mac users (thanks to lowtech)
+0.3.0d
+Added a bit of variations to dating descriptions
+Added 'bald' hair length
+Kobold males now generate as bald
+Elf and Drow males now can generate with long hair
+Taurus females and futa now only generate with tits average and above
+Fixed created characters not acquiring correct food preferences
+Fixed fighter subquest bug when attacking lich before talking
+Fixed character travelling and occupation settings
+Fixed resources not being consumed on upgrade purchase
+Fixed dungeons not providing gathering rate speed bonus after clearing
+Fixed some abuses related to sex scene
+0.3.0c
+Fixed sex skills being shared by characters
+Fixed birth sequence crashing
+Fixed enemy hunt quests not counting kills after game load
+Fixed ongoing actions not being cancellable
+Fixed characters not returning when location is being forgotten
+Fixed quest locations not being turnable after completion
+Fixed main quest bugs including lich and xari encounters
+0.3.0b
+Added unique icons for new class spells
+Added buffs to character info panel
+Fixed lust growing over the cap
+Fixed submission/loyalty decaying too fast
+Fixed spells in dungeon not working
+Fixed upgrades breaking on game reload
+Fixed character's classes not opening on right click
+Fixed outside time not synching with mansion time
+Fixed resources displaying in elven capital
+Fixed craft items and categories being available without upgrades
+Fixed some bugs with item unequip
+Fixed dating limit per day not functioning
+Fixed sell item price being 100%
+Fixed enemy hunt quests not counting kills
+Fixed dungeon completion quests not registering their completion
+Fixed many smaller issues
+0.3.0a
+Fixed prostitution task not working
+Fixed sex interaction being bugged
+Fixed being able to select slave type on master creation
+Fixed quest locations not being usable
+Fixed characters not being returned to mansion in some cases
+Fixed wrong stats displayed on characters
+Fixed some resources not being gatherable
+0.3.0
+Global changes: Most resources are now gathered from locations
+New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
+New skills for classes: Healer, Necromancer, Sextoy
+Foreman's Hard Work now applies to all characters on the location.
+Alchemist's Firebomb now hits 1 row but with lower damage and 2 turns burn duration
+Blood Mage's Blood explosion is completely reworked
+Holy attack moved from Knight to Paladin
+Fixed some dislike traits not applying and making fingering apply twice
+Xp Conversion for master now only gives 0.5 xp per lust
+Serve and Reward with sex skills now also give xp
+Arrow Rain now only hits 1 line.
+Shackles now belong to Dominator class and increase Timid Factor by 2
+Greater shackles are removed
+Bless: Now only increase ATK by 25%
+Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
+0.2.1
+Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
+Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
+Fixed crafting list not updating correctly in somecases
+Fixed tail plug/pet suit combo not working
+Fixed some errors in election quest finish
+Fixed characters not properly clearning in other areas in some cases
+Fixed same location appearing on the list of possible locations when it was selected
+Fixed default slave bodyparts for non-human races always being the same
+Fixed fighter quest encounter not finishing properly in some cases
+Fixed mage election quest completing right on acquiring 
+Fixed non-story modes not disabling story event
+Fixed portrait/body selection menu not updating properly
+0.2.0d
+Fixed saves storing social skill texts they didn't need
+Fixed impregnation overwriting previous pregnancy
+Fixed election quest not removing loan events
+Fixed seen dialogues not reverting on restart
+0.2.0c
+Fixed some text related issues
+0.2.0b
+Fixed some issues related to workers guild election quest
+Fixed multiple quests and encounters not working
+Fixed babies not saving correctly
+Fixed mana drain skill not restoring mana to caster
+Fixed Writ of Exemption not being cancelable and not updating list properly
+0.2.0a
+Fixed main story line not progressing correctly
+Fixed a couple of missing and broken quests
+Fixed Praise having wrong syntax in some place and probably causing crashes
+Fixed quest log not showing correct item parts for modular item creation quests
+Fixed quest log not showing reputation bonus from master's charm correctly
+Fixed item stacking not working correctly when the only stackable item was equipped
+0.2.0 (requires new save)
+Added save info
+Added slave delivery quests
+Added couple new weapons
+Added new item which changes slave status to peon
+Added Guilds leaders sprites
+Added background animations
+Added prologue election quest lines
+Added a few new tutorial entries
+Added experience gain display on victory screen
+Slightly revamped some racial and class bonuses
+Rebalanced many enemy damage hp and resists, also made enemies generally slower
+Revamped def stats on gear and fixed incorrect calculations
+Dungeon chests now feature lockpicking mechanic
+Engineer class gets Trap disarming trait
+Starting slave classes in story mode are now restricted to selected guild
+Master can now start with Rogue class instead of Harlot
+Seen questions won't be showing as options anymore
+High tier enemies have more elemental resists
+Master's charm now increase repeatable quests gold and reputation rewards
+Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Travelling now costs obedience for characters
+Same equippable items now stack
+Resting characters regenerate hp/mp 3 times faster
+Made enemy names more readable
+Fixed quests allowing to turn in equipped items
+Fixed critical strike for aoe spells multiplying damage
+Fixed non-group locations having issues when returning characters 
+Fixed failed quests with active locations not returning characters from those
+Fixed a number of small visual issues
+Fixed slaves during character creation having wrong type
+Fixed blindfold action causing issues in interaction sequence
+Fixed born slaves not having assigned class correctly
+Fixed some sex traits giving extra XP when they shouldn't
+Fixed game allowing to create more characters on new game after cancelling it 
+Fixed guilds having 2 quests instead of 1 on world generation
+Fixed visual errors when hp gauges weren't initially full
+0.1.6
+Added tutorial entry for leveling
+Added item selection when completing non-material turn in quests
+Added spider enemies to goblin caves
+Added 2 new drugs to alchemy level 3 and slightly improved sex drug
+Added Dagger and Hunting Knife items
+Guild quests now start at 1 quest per guild
+Guild quests and slaves update every 7 days
+Added dynamic gold reward for items quests
+All guild quests are now accessed from main city menu
+Tools no longer have ATK stat
+Added Tool slot
+Corrected character portrait resolution at slave panel
+Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
+Old submissive effect now is called 'Doormat' 
+Subdue is made easier (now only requires same physics factor as victim)
+Fixed protect skill crashing the game
+Fixed some recruit events softlocking player when your character pool is full
+Fixed quests not generating static gear rewards
+Fixed crits having normal damage
+Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
+Fixed abuse skill not working
+Fixed some items not crafting properly
+Fixed charm effect breaking the game on reload
+Fixed characters recalled to mansion still being in location group
+0.1.5
+Fixed some more combat skill related bugs, including: Distract, Wind Attack
+Fixed exploration skills usage
+Fixed Druid class not being unlockable for Tribal Elves
+Added console logging (at appdata/roaming)
+0.1.4
+Fixed combat and skill usage
+0.1.3
+Added bonus items and reputation when joining a guild
+Fixed material reward quests not working correctly
+Fixed some screen transition bugs
+Fixed Right Click functionality ignoring active event
+Fixed Sexuals not calculating properly (therefore some classes can be properly unlocked now)
+Fixed combat defeat and Resurrection bugs.
+Slave list should correctly update after sex and class unlock
+0.1.2
+Added F hotkey functionality to sex interactions
+Fixed multiple event and exploration related crashes
+0.1.1
+Fixed servants dialogue having no exit
+Fxied default start not working correctly
+Fixed interaction menu not working 
+0.1 Release
+Added daily autosave
+Added starting presets
+Added option to set a master noun for slaves
+Revamped main slave list
+Added category search to crafting panel
+Crafting panel now lists recipes in alphabetic order
+Added consent factor to the sex system
+Added some lore events and sequences
+Revamped exploration screen
+Small Sized trait collection task penalty reduced from 25% to 15%
+Fixed Engineer class not having building bonus
+Character hiring is now done in character tab
+Fixed inventory item search not working correctly
+Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
+Sell item and slave price changed to 1/2 from 1/3
+Rebalanced most items and some recipes costs
+Daisy event is now available from Day 2
+Fixed skill 'Protect' causing soft lock
+Fixed sometimes a quest generating with bugged reward
+Fixed staff using wrong colors for handle/knub
+0.3b
+Fixed Fairies not being able to actually unlock druid class
+Fixed quests timing out 5 times as quick
+Fixed master commenting on getting enough experience (and possible other events)
+Fixed productivity mods not actually affecting productivity
+Fixed 'has_any_profession' requirement not being checked correctly for some classes
+Fixed enemies not droping gold and some loot table crashes
+Fixed materials not showing in the loot after combat
+Fixed monster hunt quest type counting enemy for two 
+0.3a
+Fixed slavers fight win event not clearing properly
+Fixed small console error regarding tooltip on item purchase
+Fixed obedience not being rounded in some places
+Fixed a bug causing characters to not return to their assignment on return
+0.3
+Reworked social skill system and work mechanics
+Silk farm upgrade remade into Cloth upgrade
+Fairies have increased hp factor and can also learn Druid class now
+Added more resource types and parts to shops
+'Slave' type has been slightly reworked
+Characters will remember their job assignement when return to mansion
+Fixed some skills from bugging the combat
+Fixed some skills not restoring charges
+Fixed locations not being deleted on quest failing
+Fixed characters not losing penis virginity during sex
+Fixed some dungeon events not working correctly
+Fixed social skills diplaying wrong names for speech lines
+Fixed event options causing stats to be set instead of increased
+0.2b
+Fixed bug with quests not generating correct reward sometimes
+Fixed bug causing quests for usable items not being completable
+Fixed quests taking items worn by characters
+0.2.0a
+Increased charm growth from using social skills
+Fixed an issue when on game start window might have spawned too high on screen
+Fixed weared items being consumed by crafting
+Fixed bugs with captured slave from elven lands
+Fixed skill cooldowns not refreshing after combat
+Fixed stats panel showing incorrect critical mod
+Fixed soft lock on defeat in events
+0.2.0
+Added class information panel
+Added more settlement and dungeon events
+Redesigned repeatable quest structure and added more repeatable quests
+Added slave personalities and random chat
+Redesigned shops to have limited amount of items
+Restricted races to regions with other races being available in events for now
+Multiple combat and exploration fixes
+Fixed a severe issue with saving
+Fixed tutorial window issues
+Fixed interaction menu bug
+0.1.0
+Release"
+text = "0.5.4
+Obedience is now displayed as percentage
+Default obedience gain is reduced by 25%
+Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
+Great Secude cooldown reduced from 4 to 2 days, Seduce cooldown reduced from 3 to 1
+Alchemist class is now unlocked from the start while caster is locked by guild points
+Archmage requires both Apprentice and Scholar to learn instead of requiring Caster
+Assassinate now has 3 charges per day instead of 1
+Firebomb base damage increased from 1.1 to 1.4
+All obedience gains with skills is reduced by 25% for now
+Slave delivery quest will not generate on a first week
+Slightly rebalanced some enemy stats
+Fixed clock going into 24 hours
+Fixed food consumption tooltip not updating runtime
+Fixed succubus lust drain skill not consuming mana on use
+Fixed gauntlets crafting
+Fixed some exploration issues
+0.5.3a
+Elven capital is no longer accessible until main story allowing to go there
+Added recipe for gauntlets and worker gloves to crafts
+Added bondages to Aliron and villages shops and fighters guild 
+Nerfed obsidian reputation price from 100 to 60
+Added Energy gem to mages reputation shop
+Slightly changed speed bonuses provided by some classes
+Reduced Builder Tools upgrade cost at all levels
+Fixed food consumption not updating when applied extra rations
+Fixed Amelia's scene not clearing properly
+Fixed Daisy's sprite not reflecting quest stage
+Fixed quest dungeons causing crashes
+Fixed crafting time for maid headband
+Fixed tooltip for shop items
+0.5.3
+Added \"Bath\" Upgrade: characters resting at mansion will slowly regain obedience
+Added more information to food consumption tooltip
+Added an option to switch Daisy's sprite if purchased her alternative clothes
+Added new subquest for Amelia with a scene
+Added Relatives table to character info
+Base work task production is reduced by 15% (makes unskilled workers slightly worse)
+Stat bonus effect for task production is increased by 40% (make skilled workers a lot better)
+Stat bonus effect for food production slightly nerfed
+Slightly reduced prostitution gold income
+Lowered number of classes random characters receive on average on higher levels
+Slightly increased Advanced Armor material costs
+Tailor task is now affected by Hunting Knife as crafting tool
+Reduced some early upgrade prices
+Mansion slave tooltip now shows max stat including bonus
+All food by characters is now consumed at 12 pm
+Stable speed boost per level increased from 20% to 30%
+Fixed food being consumed by characters twice as fast
+Fixed Aire generating with incorrect age which led to omitted description
+Fixed Kurdan generating with random skin
+Fixed smith/tailor/alchemy start at 2 workers instead of 1
+Fixed some missing descriptions
+Fixed autosave not storing the progress of following hour
+0.5.2b
+Fixed instance of a bug in duncan-fred questline
+Fixed main questline not triggering at milford siege
+Fixed item tooltip getting out of the screen
+Fixed gold from combat not adding to player's money
+Fixed removing characters from mansion keeping them at task counters
+0.5.2a
+Fixed resource gathering at remote locations occassionally not allowing to gather anything
+Fixed sexual traits not being toggleable after being unlocked
+Fixed class unlocking incorrectly in some cases
+0.5.2
+Resource gathering at Mansion now has limited slots but more options
+Added new upgrades for unlocking new resource gathering from Mansion
+Crafting and upgrading jobs now also have limited slots which increase with upgrade level
+Bone resource collecting now benefit from hunting knife
+Added hotkey support to combat
+Added contraceptive option which prevents impregnation
+Redone some parts of character info
+Redone task assignement menu
+Fixed halfkin tanuki having no growth factor in its data
+Fixed some scenes not displaying correctly
+Fixed Kurdan having incorrect hair length
+Fixed some issues caused by importing
+0.5.1a
+Fixed multiple assignment issues
+Fixed wrong upgrade description
+Fixed mac version
+Fixed some item tooltip inconsistencies
+Fixed some locations not being forgettable when they should be
+0.5.1
+Redone Daisy's questline
+Added upgrade to increase exotic trader slave quality
+Added upgrade to increase number of sex interactions per day
+Impregnation text now states if character could've been impregnated or not and why
+Changed upgrade price for Alchemy level 3
+Added 3 more levels to luxury room upgrade
+Shrine events now have illustrations
+Life and energy shard drop rates reduced
+Rebel's hideout is now much better guarded
+Increased speed for some animations
+Event acquired items for story characters will also be equipped now (bracelet)
+Fixed Daisy and Anastasia's sprites being paler than they should be
+Fixed multiturn skip taking too much time to calculate
+Fixed loot window sometimes showing 0 as loot number
+Fixed ballista having melee attack instead of ranged
+Fixed easy quest being in hard quest pool in fighter guild
+Fixed some errouneous descriptions
+Fixed offering altars option not translating selected character name
+Fixed tribal elves jungle even actually spawning dark elf instead
+Fixed dryads not being in rare race pool
+Fixed true succubus not receiving bonus exp from sex
+Fixed gauntlets not having effects
+0.5.0d
+Reduced time requirement for Assignmenet tasks
+Spoiler enslavement option is now available for futa
+Fixed princess not being findable if you didn't interrogate Aire
+Lowered total requirement for enslavement route which made it impossible to perform without aire from 11 to 8 
+Added wiki link to main menu and fixed itch.io link
+Fixed some scene issues
+0.5.0c
+Fixed some buff tooltips and misspells
+Fixed a rare bug when timed event was cancelled when it was running with another timed event
+Fixed game becoming slow on the closing until system restart/reinstall
+0.5.0b
+Blizzard now costs mana
+Blizzard now only slows enemies with 30% chance 
+Fixed some issues with shrines and chests causing errors
+Fixed clock showing in inventory
+Fixed some new skills
+Fixed traps doing damage to negative numbers
+0.5.0a
+Writ of exemption and Enslave no longer apply to unique characters
+Added some additional dialogue options based on master's class
+Certain story character will have their stats adjusted based on player's decisions
+Fixed an issue when sometimes characters didn't get assigned to task correctly
+Fixed final guards at the siege not being fightable
+Fixed elven capital questline not completing properly in some cases
+Fixed wip scenes not having an option to hide foreground
+Fixed lich intimidation check
+0.5.0
+Added civil war story arc
+Added an option to start from after the prologue
+Characters now can be generated with sexual skills (based on their virginity/classes)
+Added many missing icons for skills and enemies
+Some enemies have been slightly buffed
+Rebel enemies have been made considerably stronger
+Added some new CGs (including main story)
+Added a few class dialogue checks
+Main menu won't show characters you haven't met yet
+Travel menu has been reworked
+Fixed many other bugs
+0.4.1a
+Fixed reputation not being gained
+Fixed some enemy names and skill issues
+Fixed some loot drops being too high
+Fixed smith task benefiting from wits more than from physics
+0.4.1
+Added new quest type: Work - will ask for character with specific stats to work for limited time
+Fixed steel collar and shackles not being craftable
+Fixed paladin taunt not working
+Fixed escape animation
+Fixed new dungeons names
+Fixed cheat menu resources creation
+Fixed some instances of speech modifications getting into the way of syntax
+Removed Amulet of recognition from random item pool
+Added logical resists to some enemies
+0.4.0b
+Fixed occassional issues with item dissasembling
+Fixed fire depths giving crashes
+Fixed slaves having only penalties
+0.4.0a
+Added pregnancy descriptions and debuff
+Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
+Added an option to use bonus description text field for notes
+Fixed some issues during character creation
+Items during craft show in alphabetic order
+Fixed some scene errors
+Fixed some window errors when there was nothing to purchase
+0.3.2b
+Fixed force opening mimic sometimes causing crash
+More fixed GUI issues
+0.3.2a
+Added some additional clarity for upgrade material tooltip
+Fixed repeatability of church quest
+Fixed slave requrest descriptions to represent factor values as words when set so
+Fixed seethrough underwear not being craftable
+Fixed random fairy event showing wrong description
+Fixed tribal elves not being breedable with other races
+Fixed lamia race lacking short names causing some issues
+Fixed bald hair having length description
+Fixed oblivion potion
+Fixed writ of exemption still relying on submision forcalculations
+Fixed multiple GUI issues
+0.3.2
+Dating changes:
+Dating results are now defined by dominance of mood or fear during it. If mood is higher, slave receive loyalty boost with some consent. If fear is higher, slave receive obedience and authority boosts. Repeated actions will become less effective with each new use during same date. Dating descriptions are more varied now.
+
+Obedience system changes:
+Obedience is now capped based on authority and is not consumed statically. Loyalty no longer sets obedience to infinite but loyalty and luxury room will still make it infinite (so you still able to have some characters with no obedience issues). Submission have been removed, instead skills now provide \"positive\" obedience, \"negative\" obedience (scaling on tame/timid factor of target) or neutral obedience (generally from sex oriented skills). Social skills have been revamped.
+
+
+Added reputation shops to guilds
+Added new small quest/event sequence
+Added new illustrations for some events
+Added oblivion potion mechanics
+Added Entangle skill for Dryads
+Added option to forget locations from mansion
+Sex traits are now initially hidden for hired characters. They can be learned during dating
+Pheromones can now be used in mansion
+Some classes are now unlocked with reputation and quests
+Pregnancy duration increased from 5 to 30 days.
+Slightly buffed human's racial stats
+Dialogue options responsible for seduction now check on sex factor instead of charm factor
+Nerfed bandages output 3 -> 2
+Nerfed First Aid heal value 35% -> 30%
+Daisy now have fixed sex traits
+Fixed guild slaves not benefitting from quality upgrades
+Fixed Spirit:Turtle not working correctly
+Fixed ranged attacks not requiring bow
+Fixed First Aid Tooltip
+Fixed some console errors
+Fixed fairy racial skill not restoring correct amount of hp
+Fixed exotic slave trader event not adding properly at the game's start
+Fixed class unlock animation not using correct character name
+0.3.1
+Added multiple GUI animations to some actions
+Added new random events: New chest lock type traps, mimics, finding random resources, encounters
+Added effect duration in tooltip for combat
+Added race name to labels in hiring menu
+Recruited characters won't automatically travel to mansion anymore
+Forcefully recruited characters will receive new debuff preventing them from gaining obedience from positive skills
+Characters won't participate in fight at 0 obedience
+Breeder class is renamed to Breed Sow and now can be unlocked. Stats and reqs changed
+Slightly readjusted Aliron's slave race rates (Humans are more common than halfkins; elves are more common in general and rare races are equially as common as elves for slave market)
+Fairies lose some stats but gain a racial healing skill
+Added exotic slave trader shop every 2 weeks starting day 7 (requires new game)
+Main stats now grow slower at higher levels (starting at 40 base)
+Kobold females now generate with smaller breast size
+Trap events now deal percent damage
+Drows have been renamed to dark elves
+Slave escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
+Food starvation debuff reworked
+Defeat in combat now applies debuff preventing from participating in combat for 3 days (ticks faster when using rest)
+Travel menu opens locations by default
+Fixed craft menu opening on smithing even if its locked
+Fixed inactive enemies not being deleted properly in some situtations
+Fixed buffs not displaying in slave info
+Fixed hp/mp not displaying in dungeon locations
+0.3.0e
+Multiple fixes to tasks and travelling
+Fixed some path issues for linux/mac users (thanks to lowtech)
+0.3.0d
+Added a bit of variations to dating descriptions
+Added 'bald' hair length
+Kobold males now generate as bald
+Elf and Drow males now can generate with long hair
+Taurus females and futa now only generate with tits average and above
+Fixed created characters not acquiring correct food preferences
+Fixed fighter subquest bug when attacking lich before talking
+Fixed character travelling and occupation settings
+Fixed resources not being consumed on upgrade purchase
+Fixed dungeons not providing gathering rate speed bonus after clearing
+Fixed some abuses related to sex scene
+0.3.0c
+Fixed sex skills being shared by characters
+Fixed birth sequence crashing
+Fixed enemy hunt quests not counting kills after game load
+Fixed ongoing actions not being cancellable
+Fixed characters not returning when location is being forgotten
+Fixed quest locations not being turnable after completion
+Fixed main quest bugs including lich and xari encounters
+0.3.0b
+Added unique icons for new class spells
+Added buffs to character info panel
+Fixed lust growing over the cap
+Fixed submission/loyalty decaying too fast
+Fixed spells in dungeon not working
+Fixed upgrades breaking on game reload
+Fixed character's classes not opening on right click
+Fixed outside time not synching with mansion time
+Fixed resources displaying in elven capital
+Fixed craft items and categories being available without upgrades
+Fixed some bugs with item unequip
+Fixed dating limit per day not functioning
+Fixed sell item price being 100%
+Fixed enemy hunt quests not counting kills
+Fixed dungeon completion quests not registering their completion
+Fixed many smaller issues
+0.3.0a
+Fixed prostitution task not working
+Fixed sex interaction being bugged
+Fixed being able to select slave type on master creation
+Fixed quest locations not being usable
+Fixed characters not being returned to mansion in some cases
+Fixed wrong stats displayed on characters
+Fixed some resources not being gatherable
+0.3.0
+Global changes: Most resources are now gathered from locations
+New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
+New skills for classes: Healer, Necromancer, Sextoy
+Foreman's Hard Work now applies to all characters on the location.
+Alchemist's Firebomb now hits 1 row but with lower damage and 2 turns burn duration
+Blood Mage's Blood explosion is completely reworked
+Holy attack moved from Knight to Paladin
+Fixed some dislike traits not applying and making fingering apply twice
+Xp Conversion for master now only gives 0.5 xp per lust
+Serve and Reward with sex skills now also give xp
+Arrow Rain now only hits 1 line.
+Shackles now belong to Dominator class and increase Timid Factor by 2
+Greater shackles are removed
+Bless: Now only increase ATK by 25%
+Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
+0.2.1
+Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
+Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
+Fixed crafting list not updating correctly in somecases
+Fixed tail plug/pet suit combo not working
+Fixed some errors in election quest finish
+Fixed characters not properly clearning in other areas in some cases
+Fixed same location appearing on the list of possible locations when it was selected
+Fixed default slave bodyparts for non-human races always being the same
+Fixed fighter quest encounter not finishing properly in some cases
+Fixed mage election quest completing right on acquiring 
+Fixed non-story modes not disabling story event
+Fixed portrait/body selection menu not updating properly
+0.2.0d
+Fixed saves storing social skill texts they didn't need
+Fixed impregnation overwriting previous pregnancy
+Fixed election quest not removing loan events
+Fixed seen dialogues not reverting on restart
+0.2.0c
+Fixed some text related issues
+0.2.0b
+Fixed some issues related to workers guild election quest
+Fixed multiple quests and encounters not working
+Fixed babies not saving correctly
+Fixed mana drain skill not restoring mana to caster
+Fixed Writ of Exemption not being cancelable and not updating list properly
+0.2.0a
+Fixed main story line not progressing correctly
+Fixed a couple of missing and broken quests
+Fixed Praise having wrong syntax in some place and probably causing crashes
+Fixed quest log not showing correct item parts for modular item creation quests
+Fixed quest log not showing reputation bonus from master's charm correctly
+Fixed item stacking not working correctly when the only stackable item was equipped
+0.2.0 (requires new save)
+Added save info
+Added slave delivery quests
+Added couple new weapons
+Added new item which changes slave status to peon
+Added Guilds leaders sprites
+Added background animations
+Added prologue election quest lines
+Added a few new tutorial entries
+Added experience gain display on victory screen
+Slightly revamped some racial and class bonuses
+Rebalanced many enemy damage hp and resists, also made enemies generally slower
+Revamped def stats on gear and fixed incorrect calculations
+Dungeon chests now feature lockpicking mechanic
+Engineer class gets Trap disarming trait
+Starting slave classes in story mode are now restricted to selected guild
+Master can now start with Rogue class instead of Harlot
+Seen questions won't be showing as options anymore
+High tier enemies have more elemental resists
+Master's charm now increase repeatable quests gold and reputation rewards
+Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Travelling now costs obedience for characters
+Same equippable items now stack
+Resting characters regenerate hp/mp 3 times faster
+Made enemy names more readable
+Fixed quests allowing to turn in equipped items
+Fixed critical strike for aoe spells multiplying damage
+Fixed non-group locations having issues when returning characters 
+Fixed failed quests with active locations not returning characters from those
+Fixed a number of small visual issues
+Fixed slaves during character creation having wrong type
+Fixed blindfold action causing issues in interaction sequence
+Fixed born slaves not having assigned class correctly
+Fixed some sex traits giving extra XP when they shouldn't
+Fixed game allowing to create more characters on new game after cancelling it 
+Fixed guilds having 2 quests instead of 1 on world generation
+Fixed visual errors when hp gauges weren't initially full
+0.1.6
+Added tutorial entry for leveling
+Added item selection when completing non-material turn in quests
+Added spider enemies to goblin caves
+Added 2 new drugs to alchemy level 3 and slightly improved sex drug
+Added Dagger and Hunting Knife items
+Guild quests now start at 1 quest per guild
+Guild quests and slaves update every 7 days
+Added dynamic gold reward for items quests
+All guild quests are now accessed from main city menu
+Tools no longer have ATK stat
+Added Tool slot
+Corrected character portrait resolution at slave panel
+Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
+Old submissive effect now is called 'Doormat' 
+Subdue is made easier (now only requires same physics factor as victim)
+Fixed protect skill crashing the game
+Fixed some recruit events softlocking player when your character pool is full
+Fixed quests not generating static gear rewards
+Fixed crits having normal damage
+Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
+Fixed abuse skill not working
+Fixed some items not crafting properly
+Fixed charm effect breaking the game on reload
+Fixed characters recalled to mansion still being in location group
+0.1.5
+Fixed some more combat skill related bugs, including: Distract, Wind Attack
+Fixed exploration skills usage
+Fixed Druid class not being unlockable for Tribal Elves
+Added console logging (at appdata/roaming)
+0.1.4
+Fixed combat and skill usage
+0.1.3
+Added bonus items and reputation when joining a guild
+Fixed material reward quests not working correctly
+Fixed some screen transition bugs
+Fixed Right Click functionality ignoring active event
+Fixed Sexuals not calculating properly (therefore some classes can be properly unlocked now)
+Fixed combat defeat and Resurrection bugs.
+Slave list should correctly update after sex and class unlock
+0.1.2
+Added F hotkey functionality to sex interactions
+Fixed multiple event and exploration related crashes
+0.1.1
+Fixed servants dialogue having no exit
+Fxied default start not working correctly
+Fixed interaction menu not working 
+0.1 Release
+Added daily autosave
+Added starting presets
+Added option to set a master noun for slaves
+Revamped main slave list
+Added category search to crafting panel
+Crafting panel now lists recipes in alphabetic order
+Added consent factor to the sex system
+Added some lore events and sequences
+Revamped exploration screen
+Small Sized trait collection task penalty reduced from 25% to 15%
+Fixed Engineer class not having building bonus
+Character hiring is now done in character tab
+Fixed inventory item search not working correctly
+Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
+Sell item and slave price changed to 1/2 from 1/3
+Rebalanced most items and some recipes costs
+Daisy event is now available from Day 2
+Fixed skill 'Protect' causing soft lock
+Fixed sometimes a quest generating with bugged reward
+Fixed staff using wrong colors for handle/knub
+0.3b
+Fixed Fairies not being able to actually unlock druid class
+Fixed quests timing out 5 times as quick
+Fixed master commenting on getting enough experience (and possible other events)
+Fixed productivity mods not actually affecting productivity
+Fixed 'has_any_profession' requirement not being checked correctly for some classes
+Fixed enemies not droping gold and some loot table crashes
+Fixed materials not showing in the loot after combat
+Fixed monster hunt quest type counting enemy for two 
+0.3a
+Fixed slavers fight win event not clearing properly
+Fixed small console error regarding tooltip on item purchase
+Fixed obedience not being rounded in some places
+Fixed a bug causing characters to not return to their assignment on return
+0.3
+Reworked social skill system and work mechanics
+Silk farm upgrade remade into Cloth upgrade
+Fairies have increased hp factor and can also learn Druid class now
+Added more resource types and parts to shops
+'Slave' type has been slightly reworked
+Characters will remember their job assignement when return to mansion
+Fixed some skills from bugging the combat
+Fixed some skills not restoring charges
+Fixed locations not being deleted on quest failing
+Fixed characters not losing penis virginity during sex
+Fixed some dungeon events not working correctly
+Fixed social skills diplaying wrong names for speech lines
+Fixed event options causing stats to be set instead of increased
+0.2b
+Fixed bug with quests not generating correct reward sometimes
+Fixed bug causing quests for usable items not being completable
+Fixed quests taking items worn by characters
+0.2.0a
+Increased charm growth from using social skills
+Fixed an issue when on game start window might have spawned too high on screen
+Fixed weared items being consumed by crafting
+Fixed bugs with captured slave from elven lands
+Fixed skill cooldowns not refreshing after combat
+Fixed stats panel showing incorrect critical mod
+Fixed soft lock on defeat in events
+0.2.0
+Added class information panel
+Added more settlement and dungeon events
+Redesigned repeatable quest structure and added more repeatable quests
+Added slave personalities and random chat
+Redesigned shops to have limited amount of items
+Restricted races to regions with other races being available in events for now
+Multiple combat and exploration fixes
+Fixed a severe issue with saving
+Fixed tutorial window issues
+Fixed interaction menu bug
+0.1.0
+Release"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+margin_left = 635.0
+margin_top = 153.0
+margin_right = 1285.0
+margin_bottom = 927.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Credits"]
+margin_right = 650.0
+margin_bottom = 774.0
+texture = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="Credits/Background"]
+margin_right = 649.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits/Background"]
+visible = false
+margin_left = 29.0
+margin_top = 110.0
+margin_right = 616.0
+margin_bottom = 735.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/Background/ScrollContainer"]
+margin_right = 587.0
+margin_bottom = 35.0
+
+[node name="Button" type="Label" parent="Credits/Background/ScrollContainer/VBoxContainer"]
+margin_right = 587.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 587, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Background"]
+margin_left = 32.0
+margin_top = 151.0
+margin_right = 612.0
+margin_bottom = 752.0
+custom_fonts/normal_font = ExtResource( 56 )
+bbcode_text = "Game design, writing, programming: Maverik
+
+Combat and skil programming: ykoc
+
+GUI programming: Gerakena
+Helper Programming: SphinxKingStone
+
+Character design: Nightigall
+Character design: @naisk47
+Scene art: Allanheil
+Background art: Laynesis, OMA(Olga Morozova)
+Icon art: Persich
+
+Writing: ralphomayo
+Writing: plumpjack
+
+Proofreading: Dorant, ralphomayo
+
+Also thanks to: negtize724
+
+Ambient battle noise: swords and shouting - pfranzen
+https://freesound.org/people/pfranzen/sounds/192072/"
+text = "Game design, writing, programming: Maverik
+
+Combat and skil programming: ykoc
+
+GUI programming: Gerakena
+Helper Programming: SphinxKingStone
+
+Character design: Nightigall
+Character design: @naisk47
+Scene art: Allanheil
+Background art: Laynesis, OMA(Olga Morozova)
+Icon art: Persich
+
+Writing: ralphomayo
+Writing: plumpjack
+
+Proofreading: Dorant, ralphomayo
+
+Also thanks to: negtize724
+
+Ambient battle noise: swords and shouting - pfranzen
+https://freesound.org/people/pfranzen/sounds/192072/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gallery" parent="." instance=ExtResource( 22 )]
+visible = false
