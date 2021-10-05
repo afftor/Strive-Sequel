@@ -1590,7 +1590,7 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1
 	},
-	first_aid = {#heals target for 35%
+	first_aid = {#heals target for 30%
 		code = 'first_aid',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/HealBandage.png"),
