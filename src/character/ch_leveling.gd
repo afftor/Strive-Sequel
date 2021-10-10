@@ -106,12 +106,12 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		else:
 			prof_links['s_'+ i] = [prof.code]
 			parent.learn_skill(i)
-	for i in prof.combatskills:
-		if prof_links.has('s_'+i):
-			prof_links['s_'+ i].push_back(prof.code)
-		else:
-			prof_links['s_'+ i] = [prof.code]
-			parent.learn_c_skill(i)
+#	for i in prof.combatskills:
+#		if prof_links.has('s_'+i):
+#			prof_links['s_'+ i].push_back(prof.code)
+#		else:
+#			prof_links['s_'+ i] = [prof.code]
+#			parent.learn_c_skill(i)
 	for i in prof.traits:
 		if prof_links.has('t_'+i):
 			prof_links['t_'+ i].push_back(prof.code)
@@ -135,15 +135,15 @@ func remove_class(prof):
 				print('WARNING! error in prof dependancy')
 		else:
 			prof_links['s_' + i].erase(prof.code)
-	for i in prof.combatskills:
-		if prof_links['s_' + i].size() == 1:
-			if prof_links['s_' + i][0] == prof.code:
-				parent.unlearn_c_skill(i)
-				prof_links.erase('s_' + i)
-			else:
-				print('WARNING! error in prof dependancy')
-		else:
-			prof_links['s_' + i].erase(prof.code)
+#	for i in prof.combatskills:
+#		if prof_links['s_' + i].size() == 1:
+#			if prof_links['s_' + i][0] == prof.code:
+#				parent.unlearn_c_skill(i)
+#				prof_links.erase('s_' + i)
+#			else:
+#				print('WARNING! error in prof dependancy')
+#		else:
+#			prof_links['s_' + i].erase(prof.code)
 	for i in prof.traits:
 		if prof_links['t_' + i].size() == 1:
 			if prof_links['t_' + i][0] == prof.code:
