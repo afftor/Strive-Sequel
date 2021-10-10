@@ -282,11 +282,11 @@ func can_learn_skill(skill_id):
 		return false
 	return true
 
-func learn_skill(skill):
-	skills.learn_skill(skill)
+func learn_skill(skill, free = false):
+	skills.learn_skill(skill, free)
 
-func learn_c_skill(skill):
-	skills.learn_c_skill(skill)
+func learn_c_skill(skill, free = false):
+	skills.learn_c_skill(skill, free)
 
 func unlearn_skill(skill):
 	skills.unlearn_skill(skill)
