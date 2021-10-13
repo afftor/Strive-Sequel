@@ -5,11 +5,14 @@ Most combat classes now only unlock 1 skill for free
 Rebalanced many skills
 Mindblast cooldown is now 1 turn (previously 0)
 Enemy Rare effect Precise: evasion reduced
-
+Healer class renamed to Acolyte
 Skills are locked behind Combat/Spellcasting traits provided by classes
 "Weapon mastery" and "Magic Tools" traits removed and their dependants are replaced by combat/spellcasting traits
 
+Unique characters and Mastern now display in different color in main list
+
 Fixed caster showing up without purchasing the class first
+Fixed Amelia's sidequest not giving out the reward
 0.5.4
 Obedience is now displayed as percentage
 Default obedience gain is reduced by 25%

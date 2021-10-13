@@ -17,7 +17,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=15]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_hover.png" type="Texture" id=16]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
@@ -43,6 +42,8 @@ __meta__ = {
 }
 
 [node name="InventoryGearModule" parent="." instance=ExtResource( 13 )]
+anchor_top = 0.00220224
+anchor_bottom = 0.00220224
 margin_left = 1200.0
 margin_top = 15.0
 margin_right = 1905.0
