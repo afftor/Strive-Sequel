@@ -391,9 +391,9 @@ func add_trait(tr_code):
 		statlist.resists['light'] -= 50
 		parent.food.food_consumption_rations = false
 		if parent.get_static_effect_by_code("work_rule_ration") != null:
-			parent.emove_static_effect_by_code('work_rule_ration')
+			parent.remove_static_effect_by_code('work_rule_ration')
 		if parent.get_static_effect_by_code("work_rule_contraceptive") != null:
-			parent.emove_static_effect_by_code('work_rule_contraceptive')
+			parent.remove_static_effect_by_code('work_rule_contraceptive')
 		parent.set_work_rule("ration", false)
 		parent.set_work_rule("contraceptive", false)
 	parent.recheck_effect_tag('recheck_trait')
