@@ -392,6 +392,10 @@ func add_trait(tr_code):
 		parent.food.food_consumption_rations = false
 		if parent.get_static_effect_by_code("work_rule_ration") != null:
 			parent.remove_static_effect_by_code('work_rule_ration')
+		if parent.get_static_effect_by_code("work_rule_contraceptive") != null:
+			parent.remove_static_effect_by_code('work_rule_contraceptive')
+		parent.set_work_rule("ration", false)
+		parent.set_work_rule("contraceptive", false)
 	parent.recheck_effect_tag('recheck_trait')
 
 func remove_trait(tr_code):
@@ -922,6 +926,15 @@ func make_trait_known(trait):
 		sex_traits[trait] = true
 	if negative_sex_traits.has(trait):
 		negative_sex_traits[trait] = true
+
+
+func get_traits_buffs():
+	var res = []
+	for tr in traits:
+		var tbuff = Traitdata.make_buff_for_trait(tr)
+		if tbuff != null: res.push_back(tbuff)
+	return res
+
 
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]

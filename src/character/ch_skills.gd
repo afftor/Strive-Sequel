@@ -328,7 +328,6 @@ func use_social_skill(s_code, target):
 #							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, cached_value)
 					if stat in ['loyaltyObedience', 'submissionObedience', 'obedience']:
-						print("%s +%d" % [h.get_stat("name"), tmp])
 						if h.get_stat('obedience') >= h.get_obed_cap():
 							detail_tags.append('obed_cap') 
 					if stat  == 'lust':

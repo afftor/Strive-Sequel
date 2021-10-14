@@ -357,7 +357,7 @@ var traits = {
 		code = 'undead',
 		name = '',
 		descript = '',
-		icon = null,
+		icon = "res://assets/images/iconsclasses/necromancer.png",
 		visible = true,
 		effects = [],
 	},
@@ -1285,4 +1285,26 @@ func get_slot_list_for_tat(code):
 	for slots in tattoodata[code].effects:
 		for s in slots:
 			if !res.has(s): res.push_back(s)
+	return res
+
+
+var b_template = {
+		icon = "",
+		description = "",
+		limit = 1,
+		mansion_only = true,
+		t_name = 'trait_%s'
+	}
+
+func make_buff_for_trait(tr_id):
+	var trdata = traits[tr_id]
+	if !trdata.has('icon'): return null
+	if trdata.icon == null: return null
+	var template = b_template.duplicate()
+	template.icon = trdata.icon.get_path()
+	template.description = trdata.descript
+	template.t_name = template.t_name % trdata.code
+	template.name = template.t_name
+	var res = Buff.new(null)
+	res.createfromtemplate(template)
 	return res
