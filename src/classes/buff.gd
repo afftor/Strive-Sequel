@@ -8,7 +8,7 @@ var template
 var args: = []
 var self_args := []
 var template_name
-var name setget ,get_name
+var name = "" setget ,get_name
 
 func _init(caller):
 	parent = caller
@@ -56,6 +56,7 @@ func calculate_args():
 		pass
 
 func get_duration():
+	if parent == null: return null
 	var par = effects_pool.get_effect_by_id(parent)
 	return par.get_duration()
 

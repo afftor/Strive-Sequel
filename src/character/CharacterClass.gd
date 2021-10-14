@@ -339,6 +339,9 @@ func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
 
+func set_work_rule(rule, value):
+	xp_module.set_work_rule(rule, value)
+
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
 
@@ -419,7 +422,7 @@ func process_event(ev, skill = null):
 	effects.process_event(ev, skill)
 
 func get_all_buffs():
-	return effects.get_all_buffs()
+	return statlist.get_traits_buffs() + effects.get_all_buffs()
 
 func get_combat_buffs():
 	var tres = get_all_buffs()

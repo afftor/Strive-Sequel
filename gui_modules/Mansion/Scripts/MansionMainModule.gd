@@ -546,6 +546,7 @@ func test_mode():
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
+		character.add_trait('undead')
 		#variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)

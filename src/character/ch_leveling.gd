@@ -30,6 +30,10 @@ func fix_rules():
 			work_rules[rule] = false
 
 
+func set_work_rule(rule, value):
+	if variables.work_rules.has(rule):
+		work_rules[rule] = value
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
