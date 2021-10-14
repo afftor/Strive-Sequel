@@ -72,7 +72,7 @@ func update():
 	SlaveInfo.update()
 	BodyModule.update()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
-	if char_module_state == "siblings":
+	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()
 
 func set_state(state):
@@ -99,6 +99,7 @@ func match_state():
 			SlaveInfo.show()
 			$TalkButton.show()
 			$SlaveBodyModule/Body.show()
+			$SlaveBodyModule/buffscontainer.show()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"skills":
 			gui_controller.windows_opened.clear()
@@ -109,7 +110,7 @@ func match_state():
 			ClassesModule.show()
 			$SlaveBodyModule/Body.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
-			$TalkButton.show()
+			$SlaveBodyModule/buffscontainer.hide()
 			#BodyModule.hide()
 		"details":
 			gui_controller.windows_opened.clear()
@@ -122,6 +123,7 @@ func match_state():
 			SummaryModule.get_node("GridContainer/DetailsButton").set_pressed(true)
 			$TalkButton.show()
 			$SlaveBodyModule/Body.show()
+			$SlaveBodyModule/buffscontainer.show()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"gear":
 			#char_module_state = "default"
@@ -131,6 +133,7 @@ func match_state():
 			gui_controller.windows_opened.clear()
 			gui_controller.windows_opened.append(SlaveSiblingsModule)
 			$TalkButton.hide()
+			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0
 			SlaveInfo.hide()

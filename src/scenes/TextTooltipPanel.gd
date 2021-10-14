@@ -28,10 +28,17 @@ func showup(node, text, move_right = false):
 	set_process(true)
 	
 	$RichTextLabel.rect_size.y = 10
+	$RichTextLabel.rect_position.x = 15
 	$RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	
 	
-	if $RichTextLabel.bbcode_text.length() < 30:
+	if $RichTextLabel.bbcode_text.length() < 12:
+		$RichTextLabel.rect_position.x = 8
+		$RichTextLabel.rect_size.x = Text_x/3.5
+		self.rect_size.x = Panel_x/3.5
+		$Panel.rect_size.x = Panel_x/3.5
+		$RichTextLabel.bbcode_text = '[center]'+$RichTextLabel.bbcode_text+'[/center]'
+	elif $RichTextLabel.bbcode_text.length() < 30:
 		$RichTextLabel.rect_size.x = Text_x/2
 		self.rect_size.x = Panel_x/2
 		$Panel.rect_size.x = Panel_x/2

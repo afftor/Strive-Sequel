@@ -779,7 +779,6 @@ var data = {
 						{code = 'sex_skills_anal', operant = "+", value = 15},
 					]
 				},
-
 			],
 		options = [ {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2

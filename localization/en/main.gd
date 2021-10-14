@@ -6016,9 +6016,19 @@ Saying that, Amelia leaves you alone wondering what she's up to.""",
 
 Amelia leaves you for her business, leaving you alone.""",
 	
-	
-	
-	
+	DAISY_SERVE_OPTION_START = "Serve me",
+	DAISY_SERVE_START_1 = "- Of course, [master]. What part of mine do you like to use?",
+	DAISY_SERVE_START_2 = """- O-Ofcourse, [Master]... How should I..?
+
+Daisy awkwardly avoids eye contact, waiting for you to finish.""",
+	DAISY_SERVE_OPTION_1_1 = "Use your mouth",
+	DAISY_SERVE_OPTION_1_2 = "Bend over",
+	DAISY_SERVE_OPTION_1_3 = "Nevermind",
+	DAISY_SERVE_1_1 = """Placeholder""",
+	DAISY_SERVE_1_2 = """Placeholder""",
+	DAISY_SERVE_2_1 = """Placeholder""",
+	DAISY_SERVE_2_2 = """Placeholder""",
+	DAISY_SERVE_2_3 = """Placeholder""",
 	
 	
 

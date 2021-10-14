@@ -158,7 +158,11 @@ var data = {
 				{code = 'stat', stat = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
 				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png", orflag = true},
 				]}], dialogue_argument = 2},
-			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3},
+			{ # Serve
+			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true, negative = 'repeat_next_day', orflag = true},
+			{type = "decision", value = "DaisyDressLewd", check = true, negative = 'repeat_next_day', orflag = true}], dialogue_argument = 3,
+		}, 
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4},
 		],
 	},
 	
@@ -192,5 +196,101 @@ var data = {
 		options = [
 			{code = 'close', text = 'DIALOGUELEAVE',reqs = [], dialogue_argument = 1},
 		],
+	},
+	
+	daisy_serve_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
+		text = [
+			{text = "DAISY_SERVE_START_1", reqs = [{type = 'active_character_checks', value = [
+				{code = 'has_profession', profession = 'sextoy', check = true},
+				]}],
+			},
+			{text = "DAISY_SERVE_START_2", reqs = [{type = 'active_character_checks', value = [
+				{code = 'has_profession', profession = 'sextoy', check = false},
+				]}],
+			},
+		],
+		options = [
+			{
+			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [{type = 'active_character_checks', 
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
+			{code = "quest_completed", name = "daisy_lost", check = true}], 
+			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, 
+			{
+			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [{type = 'active_character_checks', 
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
+			{code = "quest_completed", name = "daisy_lost", check = true}], 
+			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
+		}, 
+			{
+			code = 'daisy_dialogue_start', text = "DAISY_SERVE_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
+		}, 
+		],
+	},
+	
+	daisy_serve_1_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		custom_background = "daisy_bj5",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_SERVE_1_1", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}, ],
+	},
+	
+	daisy_serve_1_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		custom_background = "daisy_bj6",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_SERVE_1_2", reqs = []},
+		], 
+		options = [ {
+			code = 'DIALOGUECLOSE', text = "close", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+		}, ],
+	},
+	
+	daisy_serve_2_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		custom_background = "daisy_bent1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_SERVE_2_1", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}, ],
+	},
+	
+	daisy_serve_2_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		custom_background = "daisy_bent2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_SERVE_2_2", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}, ],
+	},
+	
+	daisy_serve_2_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		custom_background = "daisy_bent3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_SERVE_2_3", reqs = []},
+		], 
+		options = [ {
+			code = 'DIALOGUECLOSE', text = "close", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+		}, ],
 	},
 }
