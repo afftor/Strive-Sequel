@@ -1221,7 +1221,7 @@ var TranslationDict = {
 	DIALOGUEDISCIPLINEREPORT = "[name] disciplines [targetname] to work harder.",
 	DIALOGUEAUTHORITYREPORT = "[name] uses [his] authority, making [targetname] work harder.",
 	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning form [targethis] experience. ",
-	DIALOGUEMAKE_UNDEADREPORT = "With a lengthy ritual, [name] murders and reanimates [targetname] turning [targethim] into a tireless undead.",
+	DIALOGUEMAKE_UNDEADREPORT = "[name] prepares unknowing [targetname] for the ritual. After being drugged unconcious, the magic spell forces life to leave [targetname]'s body stopping [targethis] heartbeat but trapping [targethis] soul inside. As [targethe] returns to concious and realizes [targethis] new state, the shock of realization that [targethe] never can go back leaves [targethim] speechless.",
 	DIALOGUEALCOHOLREPORT = "[name] uses a bottle of liquor for relaxation.",
 	DIALOGUEAPHRODISIACREPORT = "[name] consumes an aphrodisiac, feeling a potent surge of lust.",
 	DIALOGUETAMEDRUGREPORT = "After consuming the drug, [name] seems to have become a lot more docile. ",
@@ -1234,6 +1234,9 @@ var TranslationDict = {
 
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with a specific bonus. Requires at least 50 lust.",
+	SKILLMAKE_UNDEAD = "Turn Undead",
+	SKILLMAKE_UNDEADDESCRIPT = "Makes selected charcter into Undead. Undead's charm is reduced by 100, food consumption is set to 0. Undead can't impregnate or get pregnant. Undead have increased Dark resist and reduced Light resist. \n\nCan't be used on Unique Characters. ",
+	
 	DIALOGUEPET_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what [name]'s accumulated Lust is going to be used for.\n\n1. Restore full Obedience for 50 Lust\n2. Convert it into Experience\n3. Restore Health and Mana",
 
 	TRAITMASTERDESCRIPT = "Social skills build targets Authority 50% faster. \nIsn't affected by Authority, Obedience, Loyalty and Submission. Will not resist work or attempt escapes. ",
@@ -1265,6 +1268,12 @@ var TranslationDict = {
 	TRAITADVANCED_COMBATDESCRIPT = "Allows to learn advanced combat skills and weapons",
 	TRAITBASIC_SPELLSDESCRIPT = "Allows to learn basic combat spells and staves",
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
+	
+	TRAITHEALER1 = "Healer:Novice",
+	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.",
+	TRAITHEALER2 = "Healer:Expert",
+	TRAITHEALER2DESCRIPT = "Healing spells are 25% more effective.",
+	
 	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
@@ -1342,8 +1351,6 @@ var TranslationDict = {
 	PROFAPPRENTICEDESCRIPT = "Apprenticeship is a road for many starting mages. Apprentices focus on social spells, which can help greatly with putting others in line. ",
 	PROFSCHOLAR = "Scholar",
 	PROFSCHOLARDESCRIPT = "Scholars are mages taught to specialize in combat. While their arsenal isn't great, they can be irreplaceable due to their utility. ",
-	PROFHEALER = "Healer",
-	PROFHEALERDESCRIPT = "Support magic users specializing in tending to others and keep their body stronger than you usually would expect.",
 	PROFCASTER = "Caster",
 	PROFCASTERDESCRIPT = "Mastering powers of the arcane produces fruit: casters are able to seriously turn the battle in their favor and have a couple additional tricks up their sleeves. ",
 	PROFDOMINATOR = "Dominator",
@@ -1399,7 +1406,16 @@ var TranslationDict = {
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFRENOWN_ROYALTY = "Renown Royalty",
 	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
-
+	
+	PROFACOLYTE = "Acolyte",
+	PROFACOLYTEDESCRIPT = "Indiviuals have devoted their life to mending to others. ",
+	PROFPRIEST = "Priest",
+	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
+	PROFMONK = "Monk",
+	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
+	PROFBISHOP = "Bishop",
+	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
+	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
 
@@ -2654,7 +2670,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	XARIENCOUNTER3REPLY1 = "She called you a thief",
 	XARIENCOUNTER3REPLY2 = "She wants her books back",
 	XARIENCOUNTER3REPLY3 = "I think she's feeling lonely",
-	XARIENCOUNTER4_1 = "— Lies! Filthy elf sibling lies. So she wants her books then? She can have them. How dare she call me a thief. I will return them, alright?",
+	XARIENCOUNTER4_1 = "— Lies! Filthy elven sibling lies. So she wants her books then? She can have them. How dare she call me a thief. I will return them, alright?",
 	XARIENCOUNTER4_2 = "— Huh... Makes sense I guess. Must be really stuck in that damn tower to not even visit her sister herself. Fine, I don't really need them anymore.",
 	XARIENCOUNTER4_3 = "— Ahaha, that's a funny joke. Dark elves don't feel lonely. I think elves don't feel lonely in general, given how stuck-up they act. You can trust me, I've experienced it firsthand. So, I presume she wants her books back, so she sent a courier. Alright, I don't really need them anymore.",
 	XARIENCOUNTER4REPLY1 = "So you will give them to me?",
