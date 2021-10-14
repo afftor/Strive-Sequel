@@ -22,10 +22,10 @@ func setup_skills(data):
 	#attention! counterintuitive naming is for a keeping compartibility with simple fighters templating, where 'skills' are for combat skills
 	if data.has('skills'):
 		for skill in data.skills:
-			learn_c_skill(skill)
+			learn_c_skill(skill, true)
 	if data.has('civ_skills'):
 		for skill in data.civ_skills:
-			learn_skill(skill)
+			learn_skill(skill, true)
 	if !combat_skills.has("ranged_attack") and !combat_skills.has('attack'):
 		combat_skills.push_back('attack')
 
@@ -55,10 +55,10 @@ func get_value_damage_mod(skill_val:Dictionary):
 func get_combat_skills():
 	return combat_skills
 
-func learn_skill(skill):
+func learn_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
-		if skilldata.has('learn_cost'):
+		if skilldata.has('learn_cost') and !free:
 			parent.add_stat('abil_exp', -skilldata.learn_cost)
 		social_skills.append(skill)
 		if social_skill_panel.size() < 11:
@@ -67,10 +67,10 @@ func learn_skill(skill):
 					social_skill_panel[i] = skill
 					break
 
-func learn_c_skill(skill):
+func learn_c_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !combat_skills.has(skill):
-		if skilldata.has('learn_cost'):
+		if skilldata.has('learn_cost') and !free:
 			parent.add_stat('abil_exp', -skilldata.learn_cost)
 		combat_skills.append(skill)
 		if combat_skill_panel.size() < 11:
@@ -328,7 +328,6 @@ func use_social_skill(s_code, target):
 #							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, cached_value)
 					if stat in ['loyaltyObedience', 'submissionObedience', 'obedience']:
-						print("%s +%d" % [h.get_stat("name"), tmp])
 						if h.get_stat('obedience') >= h.get_obed_cap():
 							detail_tags.append('obed_cap') 
 					if stat  == 'lust':

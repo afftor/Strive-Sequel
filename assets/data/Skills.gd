@@ -564,9 +564,12 @@ var Skilllist = {
 		ability_type = 'spell',
 		social_skill_stats = ['wits'],
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false}],
+		targetreqs = [{code = 'is_master', check = false},{code = 'is_unique', value = false}, {code = 'trait', trait = 'undead', check = false}],
 		effects = ['e_s_undead'],
 		cost = {mp = 50},
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'mindcontrol',
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/TurnUndead.png"),
@@ -1402,7 +1405,7 @@ var Skilllist = {
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
-	lesser_heal = {#heals target for 1.3 damage
+	lesser_heal = {
 		code = 'lesser_heal',
 		
 		descript = '',
@@ -1412,7 +1415,7 @@ var Skilllist = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
 		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],
-		learn_cost = 300,
+		learn_cost = 250,
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
@@ -1458,7 +1461,7 @@ var Skilllist = {
 		value = [['caster.matk']],#1,
 		damagestat = ['-damage_hp']
 	},
-	rejuvenation = {#new
+	rejuvenation = {
 		code = 'rejuvenation',
 		
 		descript = '',
@@ -1468,13 +1471,13 @@ var Skilllist = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
 		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
-		learn_cost = 300,#?
+		learn_cost = 400,
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2})], 
-		cost = {mp = 15}, #?
+		cost = {mp = 12},
 		charges = 0,
-		combatcooldown = 0,#?
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = {},
 		target = 'ally',
@@ -1486,7 +1489,7 @@ var Skilllist = {
 		value = [['caster.matk', '*0.6'], ['caster.matk']],
 		damagestat = ['no_stat','-damage_hp']
 	},
-	sanctuary = {#new
+	sanctuary = {
 		code = 'sanctuary',
 		
 		descript = '',
@@ -1496,13 +1499,13 @@ var Skilllist = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
 		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
-		learn_cost = 300,#?
+		learn_cost = 750,
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
-		cost = {mp = 15}, #?
+		cost = {mp = 18}, 
 		charges = 0,
-		combatcooldown = 3,#?
+		combatcooldown = 3,
 		cooldown = 0,
 		catalysts = {},
 		target = 'ally',
@@ -1514,7 +1517,7 @@ var Skilllist = {
 		value = [['caster.matk', '*1.2'], ['caster.matk', '*0.8']],
 		damagestat = ['no_stat','-damage_hp']
 	},
-	restoration = {#new
+	restoration = {
 		code = 'restoration',
 		
 		descript = '',
@@ -1524,13 +1527,13 @@ var Skilllist = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
 		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'basic_spells', check = true}],#?
-		learn_cost = 300,#?
+		learn_cost = 500,
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
-		cost = {mp = 15}, #?
+		cost = {mp = 10},
 		charges = 0,
-		combatcooldown = 0,#?
+		combatcooldown = 1,
 		cooldown = 0,
 		catalysts = {},
 		target = 'ally',
@@ -1546,14 +1549,14 @@ var Skilllist = {
 		code = 'fairy_heal',
 		
 		descript = '',
-		icon = load("res://assets/images/enemies/fairyf.png"),
+		icon = load("res://assets/images/iconsskills/fairy_heal.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
-		cost = {mp = 12},
+		cost = {mp = 11},
 		charges = 1,
 		combatcooldown = 0,
 		cooldown = 1,

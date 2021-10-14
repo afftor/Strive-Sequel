@@ -72,11 +72,13 @@ func update():
 	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
 
-	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
+	$work_rules/luxury.visible = !person.has_profession("master")
 	if person != null:
 		for i in $work_rules.get_children():
 			i.pressed = person.xp_module.work_rules[i.name]
 		$work_rules/constrain.visible = !person.has_profession("master")
+		$work_rules/contraceptive.visible = !person.check_trait('undead')
+		$work_rules/ration.visible = !person.check_trait('undead')
 	#SexSkillsControl part
 	
 	if person != null:

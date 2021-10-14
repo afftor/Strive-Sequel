@@ -391,7 +391,11 @@ func add_trait(tr_code):
 		statlist.resists['light'] -= 50
 		parent.food.food_consumption_rations = false
 		if parent.get_static_effect_by_code("work_rule_ration") != null:
-			parent.emove_static_effect_by_code('work_rule_ration')
+			parent.remove_static_effect_by_code('work_rule_ration')
+		if parent.get_static_effect_by_code("work_rule_contraceptive") != null:
+			parent.remove_static_effect_by_code('work_rule_contraceptive')
+		parent.set_work_rule("ration", false)
+		parent.set_work_rule("contraceptive", false)
 	parent.recheck_effect_tag('recheck_trait')
 
 func remove_trait(tr_code):
@@ -923,6 +927,15 @@ func make_trait_known(trait):
 	if negative_sex_traits.has(trait):
 		negative_sex_traits[trait] = true
 
+
+func get_traits_buffs():
+	var res = []
+	for tr in traits:
+		var tbuff = Traitdata.make_buff_for_trait(tr)
+		if tbuff != null: res.push_back(tbuff)
+	return res
+
+
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
 	statlist.name = 'Child of ' + mother.get_stat('name')
@@ -981,6 +994,9 @@ func translate(text):
 	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', 'him', 'her'))
 	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', 'His', 'Her'))
 	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', 'Sir', 'Miss'))
+	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', 'son', 'daughter'))
+	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', 'father', 'mother'))
+	text = text.replace("[brother]", globals.fastif(statlist.sex == 'male', 'brother', 'sister'))
 	text = text.replace("[gentleman]", globals.fastif(statlist.sex == 'male', 'gentleman', 'lady'))
 	text = text.replace("[raceadj]", races.racelist[statlist.race].adjective if statlist.race != "" else "")
 	text = text.replace("[race]", races.racelist[statlist.race].name if statlist.race != "" else "")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fairy_heal.png-047cede1aa80019ba610837ba59771f4.stex"
+path="res://.import/rejuvenation.png-c2497e8d485df013bf00558ef024455a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/fairy_heal.png"
-dest_files=[ "res://.import/fairy_heal.png-047cede1aa80019ba610837ba59771f4.stex" ]
+source_file="res://assets/images/iconsskills/rejuvenation.png"
+dest_files=[ "res://.import/rejuvenation.png-c2497e8d485df013bf00558ef024455a.stex" ]
 
 [params]
 

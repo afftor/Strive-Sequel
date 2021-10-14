@@ -282,11 +282,11 @@ func can_learn_skill(skill_id):
 		return false
 	return true
 
-func learn_skill(skill):
-	skills.learn_skill(skill)
+func learn_skill(skill, free = false):
+	skills.learn_skill(skill, free)
 
-func learn_c_skill(skill):
-	skills.learn_c_skill(skill)
+func learn_c_skill(skill, free = false):
+	skills.learn_c_skill(skill, free)
 
 func unlearn_skill(skill):
 	skills.unlearn_skill(skill)
@@ -338,6 +338,9 @@ func recruit_and_return():
 func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
+
+func set_work_rule(rule, value):
+	xp_module.set_work_rule(rule, value)
 
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
@@ -419,7 +422,7 @@ func process_event(ev, skill = null):
 	effects.process_event(ev, skill)
 
 func get_all_buffs():
-	return effects.get_all_buffs()
+	return statlist.get_traits_buffs() + effects.get_all_buffs()
 
 func get_combat_buffs():
 	var tres = get_all_buffs()
@@ -810,6 +813,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return equipment.check_wooden_gear_equipped()
 		'unique':
 			return get_stat('unique') == i.value
+		'is_unique':
+			check = (get_stat('unique') == null) != i.value
 		'body_image':
 			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
 		'in_combat_party':

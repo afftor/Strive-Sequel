@@ -170,7 +170,9 @@ var impregnation_texts = {
 	is_breeder = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
 	female_contraceptives = "As [name] is on contraceptives, [he] won't be able to get pregnant from it...",
 	male_contraceptives = "As [name] is on contraceptives, [he] won't be able to impregnate anyone...",
-	already_pregnant_visible = "[name] could certainly get pregnant from it if [he] wasn't already..."
+	already_pregnant_visible = "[name] could certainly get pregnant from it if [he] wasn't already...",
+	mother_undead = "As [name] isn't actually alive, [he] won't be able to get pregnant...",
+	father_undead = "As [name] isn't actually alive, [he] won't be able to impregnate...",
 }
 
 
@@ -184,6 +186,18 @@ func impregnation_text(second_character, mother_is_self = true):
 			preg_status = globals.impregnate_check(person, second_character.person)
 	if preg_status.already_preg_visible:
 		return_text = impregnation_texts.already_pregnant_visible
+	
+	elif preg_status.mother_undead:
+		return_text = impregnation_texts.mother_undead
+	elif preg_status.father_undead:
+		return_text = impregnation_texts.father_undead
+		
+		match mother_is_self:
+			true:
+				return_text = second_character.person.translate(return_text)
+			false:
+				return_text = person.translate(return_text)
+	
 	elif preg_status.female_contraceptive:
 		return_text = impregnation_texts.female_contraceptives
 	elif preg_status.male_contraceptive:
@@ -194,7 +208,8 @@ func impregnation_text(second_character, mother_is_self = true):
 				return_text = second_character.person.translate(return_text)
 			false:
 				return_text = person.translate(return_text)
-			
+		
+	
 	if return_text == '':
 		if preg_status.no_womb || preg_status.preg_disabled:
 			return return_text

@@ -636,19 +636,19 @@ func getrelativename(person, person2):
 	#print(data1, data2)
 	for i in ['mother','father']:
 		if str(data1[i]) == str(data2.id):
-			result = '$parent'
+			result = '[father]'
 		elif str(data2[i]) == str(data1.id):
-			result = '$son'
+			result = '[child]'
 	for i in [data1, data2]:
 		if i.siblings.has(data1.id) || i.siblings.has(data2.id):
-			result = '$sibling'
+			result = '[brother]'
 	if result != null:
 		result = person2.translate(result)
 	return result
 
 
 func impregnate_check(father,mother):
-	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, breeder = false, compatible = true, already_preg_visible = false}
+	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, breeder = false, compatible = true, already_preg_visible = false, father_undead = false, mother_undead = false}
 
 	if variables.pregenabled == false:
 		result.value = false
@@ -667,7 +667,12 @@ func impregnate_check(father,mother):
 	elif father.xp_module.work_rules.contraceptive == true:
 		result.male_contraceptive = true
 		result.value = false
-
+	
+	if father.check_trait('undead'):
+		result.father_undead = true
+	if mother.check_trait('undead'):
+		result.mother_undead = true
+	
 	if father.get_stat('race') != mother.get_stat('race'):
 		for i in [father, mother]:
 			var race = i.get_stat('race')
@@ -683,15 +688,17 @@ func impregnate_check(father,mother):
 				else:
 					result.value = true
 					result.breeder = true
-
+	
 	if mother.get_stat('pregnancy').duration != 0:
 		result.value = false
 		if variables.pregduration/1.5 > mother.get_stat('pregnancy').duration:
 			result.already_preg_visible = true
-
-	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive:
+	
+	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
 		result.value = false
-
+	
+	
+	
 	return result
 
 func impregnate(father, mother):

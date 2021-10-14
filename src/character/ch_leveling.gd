@@ -30,6 +30,10 @@ func fix_rules():
 			work_rules[rule] = false
 
 
+func set_work_rule(rule, value):
+	if variables.work_rules.has(rule):
+		work_rules[rule] = value
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
@@ -105,13 +109,13 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 			prof_links['s_'+ i].push_back(prof.code)
 		else:
 			prof_links['s_'+ i] = [prof.code]
-			parent.learn_skill(i)
+			parent.learn_skill(i, true)
 	for i in prof.combatskills:
 		if prof_links.has('s_'+i):
 			prof_links['s_'+ i].push_back(prof.code)
 		else:
 			prof_links['s_'+ i] = [prof.code]
-			parent.learn_c_skill(i)
+			parent.learn_c_skill(i, true)
 	for i in prof.traits:
 		if prof_links.has('t_'+i):
 			prof_links['t_'+ i].push_back(prof.code)

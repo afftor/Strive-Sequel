@@ -102,7 +102,7 @@ func _ready():
 			input_handler.interactive_message('servants_election_finish6')
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
 		if preset.completed_quests.has("aliron_church_quest"):
-			ResourceScripts.game_progress.unlocked_classes.append('healer')
+			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		else:
 			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 
@@ -534,7 +534,7 @@ func test_mode():
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
-		character.unlock_class("caster")
+		character.unlock_class("acolyte")
 		# character.unlock_class("ruler")
 		# character.unlock_class("watchdog")
 		# character.unlock_class("director")
@@ -546,6 +546,7 @@ func test_mode():
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
+		character.add_trait('undead')
 		#variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
@@ -572,8 +573,8 @@ func test_mode():
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
 		#character.unlock_class("worker")
-		character.mp = 50
-		character.unlock_class("succubus")
+		character.unlock_class("necromancer")
+		character.mp = 100
 	#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -844,7 +845,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-#		input_handler.interactive_message('celena_shrine_find', '', {})
+#		input_handler.interactive_message('after_election_answer1', '', {})
 #		input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
