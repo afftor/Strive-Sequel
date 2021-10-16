@@ -139,8 +139,8 @@ var traits = {
 			'e_tr_potion'],
 		bonusstats = {mod_alchemy = 1.0}
 	},
-	healer = {#+25% heal spells efficiency
-		code = 'healer',
+	healer1 = {#+25% heal spells efficiency
+		code = 'healer1',
 		name = '',
 		descript = '',
 		visible = false,
@@ -329,30 +329,30 @@ var traits = {
 		icon = null,
 		effects = [],
 	},
-	magic_tools = {
-		code = 'magic_tools',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	}, #allows to equip magic rods and staves
-	weapon_mastery = {#allows to equip combat weapons
-		code = 'weapon_mastery',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-	ranged_weapon_mastery = {#allows to equip ranged combat weapons
-		code = 'ranged_weapon_mastery',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
+#	magic_tools = {
+#		code = 'magic_tools',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	}, #allows to equip magic rods and staves
+#	weapon_mastery = {#allows to equip combat weapons
+#		code = 'weapon_mastery',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	},
+#	ranged_weapon_mastery = {#allows to equip ranged combat weapons
+#		code = 'ranged_weapon_mastery',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	},
 	undead = {
 		code = 'undead',
 		name = '',

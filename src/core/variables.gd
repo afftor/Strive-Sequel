@@ -92,6 +92,7 @@ var hexcolordict = {
 	k_green = "#51fe84",
 	k_red = "#fe515d",
 	magenta = "#ff84ff",
+	unique = '#D4AF37',
 }
 
 
