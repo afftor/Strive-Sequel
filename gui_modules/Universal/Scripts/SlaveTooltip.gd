@@ -144,6 +144,7 @@ func showup(node, person):
 
 
 		input_handler.ClearContainer($buffscontainer)
+		#idk about showing buffs here - where this scene is shown anyway? 
 		for i in person.get_mansion_buffs():
 			var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
 			newnode.texture = i.icon
@@ -161,7 +162,7 @@ func showup(node, person):
 						newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 			else:
 				newnode.get_node("Label").hide()
-			# newnode.hint_tooltip = person.translate(i.description)
+			newnode.hint_tooltip = person.translate(i.description)
 
 		prevnode = parentnode
 
