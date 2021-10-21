@@ -100,7 +100,7 @@ func set_active_hero(hero):
 	GearModule.show_tattoos()
 	StatsModule.open_base_stats()
 	FactorsModule.show_factors()
-	GearModule.show_buffs()
+#	GearModule.show_buffs()
 
 
 
