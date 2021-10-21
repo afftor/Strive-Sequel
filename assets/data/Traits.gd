@@ -1298,6 +1298,7 @@ var b_template = {
 
 func make_buff_for_trait(tr_id):
 	var trdata = traits[tr_id]
+	if trdata.has('visible') and !trdata.visible: return null
 	if !trdata.has('icon'): return null
 	if trdata.icon == null: return null
 	var template = b_template.duplicate()
