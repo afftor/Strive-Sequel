@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shaman_apprentice_body.png-c3ade0314315a3aa23b4f426f7c1c8ca.stex"
+path="res://.import/mae_body.png-ba68a8ec0512ee0363edb769d6ce414e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/shaman_apprentice_body.png"
-dest_files=[ "res://.import/shaman_apprentice_body.png-c3ade0314315a3aa23b4f426f7c1c8ca.stex" ]
+source_file="res://assets/images/sprites/mae_body.png"
+dest_files=[ "res://.import/mae_body.png-ba68a8ec0512ee0363edb769d6ce414e.stex" ]
 
 [params]
 

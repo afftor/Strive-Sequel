@@ -806,38 +806,7 @@ var professions = {
 		combatskills = ['mirror_image','energy_field'],
 		conflict_classes = [],
 	},
-
-	renown_royalty = {
-		code = 'renown_royalty',
-		name = '',
-		descript = '',
-		icon = load("res://assets/images/iconsclasses/renown.png"),
-		tags = [],
-		categories = ['social'],
-		showupreqs = [{code = 'disabled', check = true}],
-		reqs = [{code = 'cant_spawn_naturally'}],
-		statchanges = {charm_bonus = 15},
-		traits = ['renown'],
-		skills = ['praise','allure'],
-		combatskills = ['command'],
-		conflict_classes = [],
-	},
-
-	alios_champion = {
-		code = 'alios_champion',
-		name = '',
-		descript = '',
-		icon = load("res://assets/images/iconsclasses/alios_champion.png"),
-		tags = [],
-		categories = ['magic'],
-		showupreqs = [{code = 'disabled', check = true}],
-		reqs = [{code = 'cant_spawn_naturally'}],
-		statchanges = {mpmax = 20, wits_bonus = 15},
-		traits = ['basic_spells'],
-		skills = [],
-		combatskills = ['windwall'],
-		conflict_classes = [],
-	},
+	
 	acolyte = {
 		code = 'acolyte',
 		name = '',
@@ -898,6 +867,59 @@ var professions = {
 		combatskills = ['holy_atk'],
 		conflict_classes = [],
 	},
+	
+	
+	renown_royalty = {
+		code = 'renown_royalty',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/renown.png"),
+		tags = [],
+		categories = ['social'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {charm_bonus = 15},
+		traits = ['renown'],
+		skills = ['praise','allure'],
+		combatskills = ['command'],
+		conflict_classes = [],
+	},
+
+	alios_champion = {
+		code = 'alios_champion',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/alios_champion.png"),
+		tags = [],
+		categories = ['magic'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {mpmax = 20, wits_bonus = 15},
+		traits = ['basic_spells'],
+		skills = [],
+		combatskills = ['windwall'],
+		conflict_classes = [],
+	},
+	
+	spouse = {
+		code = 'spouse',
+		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex',operant = 'neq', value = 'male'}],
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/alios_champion.png"),
+		tags = [],
+		categories = ['magic'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {growth_factor = 6},
+		traits = ['spouse'],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
+	
+	
 }
 
 

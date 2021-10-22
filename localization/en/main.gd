@@ -359,7 +359,8 @@ var TranslationDict = {
 	TOOLTIPPROGRESSREQUIRED = "Work Units required",
 	TOOLTIPSAVECHARACTER = "Save Character Template",
 	TOOLTIPLOADCHARACTER = "Load Character Template",
-
+	
+	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 
 	SAVENAME = "Save Name",
 	SAVETEMPLATEDESCRIPT = "You can save existing character template for the repeated use.",
@@ -1289,8 +1290,11 @@ var TranslationDict = {
 	TRAITWEAPON_MASTERYDESCRIPT = "Allows the use of Melee Weapons",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows the use of Ranged Weapons.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows the use of magic tools such as staves.",
-
-
+	
+	TRAITUNDEADDESCRIPT = "Undead\n[name] is no longer a living being. Food consumption is set to 0; Charm is reduced by 100; Light Resist -50; Dark Resist +50; Dark Damage +20%%; Can't impregnate or get pregnant.",
+	TRAITSPOUSE = "Spouse",
+	TRAITSPOUSEDESCRIPT = "Future children between Master and Spouse recieve Heir status instead of Slave or Peon. ",
+	
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
 	PROFMASTERDESCRIPT = "The sole ruler of a domain. [His] power strikes fear and respect not only in newcomers, but even in seasoned servants.",
@@ -1415,10 +1419,13 @@ var TranslationDict = {
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
 	PROFBISHOP = "Bishop",
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
+	PROFSPOUSE = "Husband",
+	PROFSPOUSEALT = "Wife",
+	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master].",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
-
+	
 	SKILLWINDWALL = "Wind Wall",
 	SKILLWINDWALLDESCRIPT = "Reduces ally line received ranged damage by 50% for 4 turns. ",
 	SKILLTAKE_POSITION = "Take Position",

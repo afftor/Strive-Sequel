@@ -1008,6 +1008,8 @@ func translate(text):
 	text = text.replace("[eye_color]", statlist.eye_color)
 	text = text.replace("[hair_color]", statlist.hair_color)
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', 'man', 'woman'))
+	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', 'husband', 'wife'))
+	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', 'groom', 'bride'))
 
 #	var masternoun = 'master'
 	var tempmasternoun = statlist.masternoun

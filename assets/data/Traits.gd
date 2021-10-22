@@ -357,10 +357,20 @@ var traits = {
 		code = 'undead',
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconsclasses/necromancer.png",
+		icon = "res://assets/images/iconsskills/TurnUndead.png",
 		visible = true,
 		effects = [],
 	},
+	
+	spouse = {
+		code = 'spouse',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = [],
+	},
+	
 	stealth = {
 		code = 'stealth',
 		name = '',

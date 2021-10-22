@@ -133,6 +133,7 @@ var template = {
 	was_proposed = false,
 	had_cons_sex_with_mc = false,
 	had_forced_sex_with_mc = false,
+	agreed_to_marry = false,
 
 	penis_virgin = true,
 	vaginal_virgin = true,
