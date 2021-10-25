@@ -45,6 +45,13 @@ func fix_serialization():
 		if typeof(dir.mother) != TYPE_STRING: dir.mother = null
 
 
+func fix_serialization_postload():
+	for p in characters:
+		characters[p].fix_serialization_postload()
+	for p in babies:
+		babies[p].fix_serialization_postload()
+
+
 func fix_import():
 	active_tasks.clear()
 	for p in characters:

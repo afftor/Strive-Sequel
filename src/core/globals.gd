@@ -484,6 +484,7 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	ResourceScripts.game_party.fix_serialization_postload()
 
 	#current approach
 	# if input_handler.CurrentScene != null:
@@ -1525,8 +1526,13 @@ func valuecheck(dict):
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
 				return false
-			else:
-				return master_char.checkreqs(dict.value)
+			return master_char.checkreqs(dict.value)
+		'spouse_check':
+			var spid = ResourceScripts.game_progress.spouse
+			if spid == null: return false
+			var spouse_char = characters_pool.get_char_by_id(spid)
+			if spouse_char == null: return false
+			return spouse_char.checkreqs(dict.value)
 		'active_character_checks':
 			var character = input_handler.active_character
 			if character == null:return false
