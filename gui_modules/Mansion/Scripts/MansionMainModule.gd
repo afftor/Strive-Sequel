@@ -546,7 +546,6 @@ func test_mode():
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
-		character.add_trait('undead')
 		#variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
@@ -726,6 +725,7 @@ func test_mode():
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_petting', operant = '+', value = 75},
+						{code = 'add_profession', profession = 'spouse'},
 					]
 				}
 			]

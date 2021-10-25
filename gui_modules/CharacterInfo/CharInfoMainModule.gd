@@ -109,6 +109,7 @@ func match_state():
 			ClassesModule.class_category("all")
 			ClassesModule.show()
 			$SlaveBodyModule/Body.hide()
+			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
 			$SlaveBodyModule/buffscontainer.hide()
 			#BodyModule.hide()
@@ -123,11 +124,12 @@ func match_state():
 			SummaryModule.get_node("GridContainer/DetailsButton").set_pressed(true)
 			$TalkButton.show()
 			$SlaveBodyModule/Body.show()
-			$SlaveBodyModule/buffscontainer.show()
+			$SlaveBodyModule/buffscontainer.show() #or hide? it's all good @Sphinx
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"gear":
 			#char_module_state = "default"
 			gui_controller.windows_opened.clear()
+			$SlaveBodyModule/buffscontainer.hide()
 			open_gear()
 		"siblings":
 			gui_controller.windows_opened.clear()
@@ -135,6 +137,7 @@ func match_state():
 			$TalkButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule/Body.hide()
+			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0
 			SlaveInfo.hide()
 			DetailsModule.hide()

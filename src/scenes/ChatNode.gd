@@ -591,7 +591,16 @@ var individual_lines = {
 	public_observe_line5 = {text = "......", events = ['date_public_observe'], personalities = ['shy','kind','serious'], reqs = [], weight = 1, tags = []},
 	public_observe_line6 = {text = "If [he] dies, I call dibs on [his] stuff.", events = ['date_public_observe'], personalities = ['bold'], reqs = [], weight = 1, tags = ['second_character_translation']},
 	public_observe_line7 = {text = "Looks like you will be getting a good lesson, [2name]. ", events = ['date_public_observe'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-
+	
+	marry_propose_agree1 = {text = "A-are you serious?.. I can't believe it, of course i will, [Master]!", events = ['marry_proposal_agree'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	marry_propose_agree2 = {text = "Wa... You are not kidding, right? I agree!", events = ['marry_proposal_agree'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
+	marry_propose_agree3 = {text = "Y-Yes, of course I agree!", events = ['marry_proposal_agree'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	
+	marry_propose_refuse1 = {text = "T-that's... really sudden... I'm sorry, I can't agree to this.", events = ['marry_proposal_refuse'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	marry_propose_refuse2 = {text = "Y-You what? No way. Don't joke like that, [Master]", events = ['marry_proposal_refuse'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
+	marry_propose_refuse3 = {text = "I'm sorry, I can't agree to this!", events = ['marry_proposal_refuse'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	
+	
 	date_propose_agree1 = {text = "I-I would like to get closer with you, [Master]. ", events = ['date_proposal_agree'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	date_propose_agree2 = {text = "Well, your charm worked this time on me. ", events = ['date_proposal_agree'], personalities = ['serious','bold'], reqs = [], weight = 1, tags = []},
 	date_propose_agree3 = {text = "Okay, why not be naughty?", events = ['date_proposal_agree'], personalities = ['bold'], reqs = [], weight = 1, tags = []},

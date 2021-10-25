@@ -919,7 +919,7 @@ func return_all_to_mansion_confirm():
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
-		if i.travel.area == active_area.code && i.check_location(active_location.id, true):
+		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
 	for person in presented_characters:
 		person.remove_from_task()

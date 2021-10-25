@@ -32,7 +32,6 @@ func _ready():
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
-	
 	globals.connecttexttooltip($SkillPanel/Categories/all, "All")
 	globals.connecttexttooltip($SkillPanel/Categories/combat, "Combat")
 	globals.connecttexttooltip($SkillPanel/Categories/spell, "Spell")
@@ -47,6 +46,7 @@ func _ready():
 	globals.connecttexttooltip($categories/sexual, "Sexual")
 	globals.connecttexttooltip($categories/combat, "Combat")
 	globals.connecttexttooltip($categories/magic, "Magic")
+	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
 
 func _process(delta):
 	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
@@ -216,7 +216,8 @@ func build_skills():
 				newbutton.get_node("learn").visible = true
 				newbutton.disabled = true
 	sort_skills()
-	$SkillPanel/xp_label.text = "Experience: " + str(person.get_ability_experience())
+	$SkillPanel/skillpoints_label.text = "Skill Points: " + str(person.get_ability_experience())
+	
 
 func is_skill_locked(skill):
 	if skill.learn_reqs.size() == 0:
@@ -291,7 +292,7 @@ func skill_selected(skill):
 	$SkillTooltip/name.text = tr("SKILL" + skill.code.to_upper())
 	$SkillTooltip/description.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
 	if skill.has("learn_cost"):
-		$SkillTooltip/exp.text = str(skill.learn_cost) + " EXP"
+		$SkillTooltip/exp.text = str(skill.learn_cost) + " SP"
 	$SkillTooltip/cooldown.text = str(skill.combatcooldown)
 	if skill.cost.has("mp"):
 		$SkillTooltip/usage.text = str(skill.cost.mp)

@@ -465,8 +465,23 @@ var date_lines = {
 		["[he2] uncomfortably {^turns:looks} away accepting your {^kiss:smooch} on the cheeck.",1],
 		["[he2] {^embarrassingly:awkwardly} moves away preventing your attempt.",1]
 	],
-
-
+	
+	marry_initiate = [
+		["You bow before [name2] and propose to marry [him2]",1]
+	],
+	
+	marry_same_sex = [
+		["{^[name2]:[race2] [boy2]} instantly points out that's not possible to marry someone of same sex in current customs.",1]
+		
+	],
+	agreed_to_marry_prev = [
+	],
+	agreed_to_marry = [
+		["{^[name2]:[race2] [boy2]} face reddens and shines up upon hearing your words.",1],
+	],
+	refused_to_marry = [
+		["{^[name2]:[race2] [boy2]:[he2]} hastily abrupts you.",1],
+	],
 	propose_initiate = [
 		["You ask {^[name2]:[race2] [boy2]} if [he2] would like to take your relationship to the next level. ",1]
 		],
@@ -896,24 +911,6 @@ func rape(person, counter):
 	return text
 
 
-#func pushdown(person, counter):
-#	var text = ''
-#	var mode
-#	text += "You forcefully push [name2] down giving [him2] a sultry look. "
-#	if person.effects.has("captured"):
-#		self.mood -= 10
-#		text += "[he2] resists and pushes you back. "
-#		mode = 'abuse'
-#	elif self.mood*4 + person.get_stat('loyalty') + person.lust >= 100 || (person.sextraits.has("Likes it rough") && self.mood*3 + person.get_stat('loyalty') + person.lust >= 75):
-#		text += "[he2] closes eyes and silently accepts you. "
-#		self.mood += 3
-#		mode = 'rapeconsent'
-#	else:
-#		self.mood -= 6
-#		text += "[he2] resists and pushes you back. "
-#		mode = 'abuse'
-#	showsexswitch(text,mode)
-#	return text
 
 
 
@@ -973,26 +970,79 @@ func propose(person, counter):
 
 var sexmode
 
-#func showsexswitch(text, mode):
-#	$sexswitch.visible = true
-#	sexmode = mode
-#	$end/RichTextLabel.bbcode_text = text
-#	if mode == 'abuse':
-#		text += "\n[color=yellow]Rape [name2] anyway?[/color]"
-#		$sexswitch/confirmsex.visible = true
-#		$sexswitch/cancelsex.visible = true
-#	elif mode == 'rapeconsent':
-#		sexmode = 'sex'
-#		$sexswitch/confirmsex.visible = true
-#		$sexswitch/cancelsex.visible = false
-#	elif mode == 'sex':
-#		$sexswitch/confirmsex.visible = true
-#		$sexswitch/cancelsex.visible = false
-#
-#	text = decoder(text)
-#	if $sexswitch/cancelsex.visible == false:
-#		text += calculateresults()
-#	$sexswitch/RichTextLabel.bbcode_text = text
+var unique_marry_rules = {
+	aire = {
+		ana_alive = {
+			reqs = [],
+			text = "Regardless of my feelings towards you, I can't agree to it. You must marry Ana, not me.",
+			agrees = false
+			},
+		ana_dead = {
+			reqs = [],
+			text = "Don't waste your time. I will never agree to this after what happened to Ana.",
+			agrees = false
+			},
+		
+	}
+		
+}
+
+func ask_to_marry(person, counter):
+	var text = ''
+
+	var gave_consent = false
+	
+	if is_same_sex():
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.marry_same_sex)
+		text += "}"
+		return text
+	
+	var result = false
+	
+	if person.get_stat('agreed_to_marry') == true:
+		gave_consent = true
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.agreed_to_marry_prev)
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agreed_before')) + "\n"
+		return text
+	
+	if person.get_stat('loyalty') >= 90:
+		if unique_marry_rules.has(person.get_stat('unique')):
+			for i in unique_marry_rules[person.get_stat('unique')]:
+				if globals.valuecheck(i.reqs):
+					result = i.agrees
+					if result:
+						text += "{color=green|"
+						text += input_handler.weightedrandom(date_lines.agreed_to_marry)
+					else:
+						
+						text += "{color=red|"
+						text += input_handler.weightedrandom(date_lines.refused_to_marry)
+					text += "}"
+						
+					break
+		else:
+			result = true
+	
+		
+	if result:
+		person.set_stat('marry_agreed', true)
+		self.mood += 50
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.agreed_to_marry)
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agree')) 
+	else:
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.refused_to_marry)
+		text += "}"
+		self.mood -= 25
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_refuse'))
+	
+	return text
+
 
 func praise(person, counter):
 	var text = input_handler.weightedrandom(date_lines.praise_initiate) + "\n\n"
@@ -1478,82 +1528,6 @@ func beer(person):
 
 
 
-
-#func wine(person, counter):
-#	var text = ''
-#	text += "You serve fresh wine for you and [name2]. "
-#
-#	if self.mood < 5 || person.xp_module.predict_obed_time() < 80:
-#		text = "[he2] refuses to drink with you. "
-#	else:
-#		if counter < 3:
-#			text += "[he2] drinks with you and [his2] mood seems to improve."
-#			self.mood += 4
-#			drunkness += 1
-#		else:
-#			self.mood += 2
-#			text += "[he2] keeps you company, but the wine does not seem to affect [him2] as heavily as before. "
-#			drunkness += 1
-#
-#		globals.itemdict.supply.amount -= 2
-#
-#	if person.sextraits.has("Alcohol Intolerance"):
-#		drunkness += 1
-#
-#	return text
-
-
-#func gift(person, counter):
-#	var text = ''
-#	text += "You present [name2] with a small decorative gift. "
-#
-#	if person.xp_module.predict_obed_time() >= 75:
-#		self.mood += 7
-#		#person.get_stat('loyalty') += 4
-#		text = text + "[he2] accepts your gift with a pleasant smile on [his2] face.  "
-#
-#	else:
-#		text = text + "[he2] takes your gift arrogantly, barely respecting your intention. "
-#		self.mood += 3
-#
-#
-#	globals.resources.gold -= 10
-#
-#	return text
-#
-#func sweets(person, counter):
-#	var text = ''
-#	text += "You purchase some candies for [name2] from a local vendor. "
-#
-#	if person.xp_module.predict_obed_time() >= 55:
-#		self.mood += 6
-#		#person.get_stat('loyalty') += 3
-#		text = text + "[he2] joyfull accepts them and enjoys the sweet taste.  "
-#
-#	else:
-#		text = text + "[he2] takes your gift arrogantly, barely respecting your intention. "
-#		self.mood += 3
-#
-#
-#	globals.resources.gold -= 5
-#
-#	return text
-#
-#
-#func tea(person, counter):
-#	var text = ''
-#	text += "You serve tea for you and [name2]. While drinking, you both chatand get a bit closer.  "
-#
-#	if counter <= 3 || randf() >= 0.5:
-#		self.mood += 5
-#		text += "[name2] seems to be pleased with your generosity and enjoys your company. "
-#	else:
-#		self.mood += 1
-#
-#	globals.itemdict.supply.amount -= 1
-#
-#	return text
-
 func drunkness():
 	var capacity = variables.slave_heights.find(person.get_stat('height'))
 	if drunkness > capacity + 3:
@@ -1761,6 +1735,17 @@ var actionsdict = {
 		location = [],
 		effect = 'stroketail',
 	},
+	ask_to_marry = {
+		group = 'Affection',
+		name = 'Ask to marry',
+		descript = "Make a proposal for [name], to officially marry [him].",
+		reqs = [{code = 'master_is_marrried', value = false}],
+		onetime = true,
+		location = [],
+		effect = 'ask_to_marry',
+		
+	},
+	
 
 #	frenchkiss = {
 #		group = 'Affection',
