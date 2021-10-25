@@ -183,7 +183,8 @@ func show_slave_info():
 				newnode.get_node("Label").text = str(tmp.count)
 			else:
 				newnode.get_node("Label").hide()
-			newnode.hint_tooltip = person.translate(i.description)
+			globals.connecttexttooltip(newnode, person.translate(i.description))
+#			newnode.hint_tooltip = person.translate(i.description)
 
 func set_color(value):
 	var color = Color(0.87,0.87,0.87,1)

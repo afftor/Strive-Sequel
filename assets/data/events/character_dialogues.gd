@@ -159,8 +159,8 @@ var data = {
 				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png", orflag = true},
 				]}], dialogue_argument = 2},
 			{ # Serve
-			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true, negative = 'repeat_next_day', orflag = true},
-			{type = "decision", value = "DaisyDressLewd", check = true, negative = 'repeat_next_day', orflag = true}], dialogue_argument = 3,
+			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true, negative = 'repeat_next_day'},
+			{type = "decision", value = "DaisyDressLewd", check = true, negative = 'repeat_next_day', orflag = true}], dialogue_argument = 3, 
 		}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4},
 		],
@@ -213,14 +213,14 @@ var data = {
 		options = [
 			{
 			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
-			{code = "quest_completed", name = "daisy_lost", check = true}], 
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true, orflag = true} ]},
+			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
 			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
 			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
-			{code = "quest_completed", name = "daisy_lost", check = true}], 
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true, orflag = true} ]},
+			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
 			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
@@ -238,7 +238,7 @@ var data = {
 			{text = "DAISY_SERVE_1_1", reqs = []},
 		], 
 		options = [ {
-			code = 'daisy_serve_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'daisy_serve_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ],
 	},
 	
@@ -251,7 +251,7 @@ var data = {
 			{text = "DAISY_SERVE_1_2", reqs = []},
 		], 
 		options = [ {
-			code = 'DIALOGUECLOSE', text = "close", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -264,7 +264,7 @@ var data = {
 			{text = "DAISY_SERVE_2_1", reqs = []},
 		], 
 		options = [ {
-			code = 'daisy_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'daisy_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -277,7 +277,7 @@ var data = {
 			{text = "DAISY_SERVE_2_2", reqs = []},
 		], 
 		options = [ {
-			code = 'daisy_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'daisy_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -290,7 +290,7 @@ var data = {
 			{text = "DAISY_SERVE_2_3", reqs = []},
 		], 
 		options = [ {
-			code = 'DIALOGUECLOSE', text = "close", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, type = 'next_dialogue',
 		}, ],
 	},
 }

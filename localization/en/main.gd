@@ -6046,12 +6046,94 @@ Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_2_2 = """Placeholder""",
 	DAISY_SERVE_2_3 = """Placeholder""",
 	
+	NO_ZEPHYRA_ARTIFACTS_MESSAGE = """In the morning you receive a letter from Ginny from the local church, asking you to visit her. """,
+	NO_ZEPHYRA_ARTIFACTS_START = """- Welcome, [name]! I've heard you've become a Mayor now? Congratulations!
+
+- I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you, I take it, she's your acquaintance?""",
+	NO_ZEPHYRA_ARTIFACTS_1 = """Ginny: - I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful as a Champion would be.
+
+Zephyra: - Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And at such scary times too. Can you imagine what all the bandits could do to someone like me? 
+
+Zephyra: - Well, I see you've settled this war for good. I was right about you after all.""",
+	NO_ZEPHYRA_ARTIFACTS_OPTION_1_1 = "You really are full of surprises",
+	NO_ZEPHYRA_ARTIFACTS_OPTION_1_2 = "I'm surprised you're still following me",
+	NO_ZEPHYRA_ARTIFACTS_OPTION_1_3 = "I don't have time for this",
+	NO_ZEPHYRA_ARTIFACTS_2_NO = """Zephyra: - It's sad to hear it, but I won't be able to talk you into cooperation after all... 
+
+Zephyra: - If you tell me, I won't be bothering you anymore then.""",
+	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_1 = "Yes, I want you to leave me alone",
+	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_2 = "I've changed my mind",
+	NO_ZEPHYRA_ARTIFACTS_2_NO_CLOSE = """Zephyra: - Farewell then. Have fun while it lasts. 
+
+Zephyra leaves the church without giving you a second glance.""",
+	NO_ZEPHYRA_ARTIFACTS_2_OK_1 = """Zephyra: - Please, you are flattering me. It's just a mission I have to perform. 
+
+Zephyra: - Now, that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+
+Zephyra: - You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	NO_ZEPHYRA_ARTIFACTS_2_OK_2 = """Zephyra: - There's a mission I have to perform, so we're here now.
+
+Zephyra: - Now, that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+
+Zephyra: - You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_1 = "How do I know your goals are good then?",
+	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_2 = "So how do you propose for me to get into it?",
+	NO_ZEPHYRA_ARTIFACTS_3_1 = """Zephyra: - Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
+
+Zephyra: - Well, you are the Mayor, so one way or another you'll be able to get to elven artifact before that demon chick will. No need to rush it, but you should look up to it.
+
+Zephyra: - So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+	NO_ZEPHYRA_ARTIFACTS_3_2 = """Zephyra: - Well, you are the Mayor, so one way or another you'll be able to get to elven artifact before that demon chick will. No need to rush it, but you should look up to it.
+
+Zephyra: - So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+	NO_ZEPHYRA_ARTIFACTS_3_OPTION_1 = "Very well, you can join me",
+	NO_ZEPHYRA_ARTIFACTS_3_OPTION_2 = "I'm not going to bother with it after all",
+	NO_ZEPHYRA_ARTIFACTS_4_1 = """Zephyra: - Jeez, finally. You really played this hard to get, didn't you? Good we can be friends from now on at least. Don't mind me too much, please.""",
+	NO_ZEPHYRA_ARTIFACTS_4_2 = """Zephyra: - Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drown in a sewer. Farewell, [name].
+
+Zephyra leaves the church without giving you a second glance.""",
+	ZEPHYRA_ARTIFACTS_INIT = """- You've done it, [name]. Not a thing just anyone can brag about. I'm glad my decision to join your side was correct after all.
+
+- Now that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+
+- You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	ZEPHYRA_ARTIFACTS_INIT_OPTION_1 = "There might be a problem with this...",
+	ZEPHYRA_ARTIFACTS_INIT_OPTION_2 = "This sword is no longer in our possession",
+	ZEPHYRA_ARTIFACTS_1 = """You explain to Zephyra what has happened during the earlier days of civil war.
+
+- Hmm, this is troublesome. A demon has taken the sword at the start of it? This might be the danger I was warned about. A shame, but we must focus on collecting other artifacts then. 
+
+- The artifacts don't possess much power currently as they are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+	ZEPHYRA_ARTIFACTS_1_OPTION_1 = "I doubt they will simply give it to us",
+	ZEPHYRA_ARTIFACTS_1_OPTION_2 = "What's gonna happen after we get all the artifacts?",
+	ZEPHYRA_ARTIFACTS_2_1 = """- Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
+	ZEPHYRA_ARTIFACTS_2_2 = """- No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	#           QUESTS           #
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
@@ -6096,5 +6178,8 @@ Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	AMELIA_HERBS_STAGE_2 = "Travel to Elven Capital and find a supplier Amelia told you about.", # Get the herbs
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at Servants Guild", # return to Amelia
 	
-	
+	ZEPHYRA_ARTIFACTS_SUMMARY = "",
+	ZEPHYRA_ARTIFACTS_NAME = "",
+	ZEPHYRA_ARTIFACTS_STAGE_1 = "",
+	ZEPHYRA_ARTIFACTS_STAGE_2 = "",
 }

@@ -115,7 +115,8 @@ var data = {
 		{text = "AMELIA_SILK_REPLY_2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'}], type = 'next_dialogue'
+			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'}, 
+			{code = 'money_change', operant = '+', value = 2000}, {code = 'add_item', item = 'lacy_underwear', number = 2}], type = 'next_dialogue'
 		}, ],
 	},
 	

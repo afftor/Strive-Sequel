@@ -1757,5 +1757,14 @@ var quests = {
 			stage3 = {code = 'stage3', name = "AMELIA_HERBS_NAME", descript = "AMELIA_HERBS_STAGE_3"}, # return to Amelia
 		},
 	},
+	
+	zephyra_artifacts_quest = {
+		code = 'zephyra_artifacts_quest',
+		summary = "ZEPHYRA_ARTIFACTS_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "ZEPHYRA_ARTIFACTS_NAME", descript = "ZEPHYRA_ARTIFACTS_STAGE_1"}, # go to church
+			stage2 = {code = 'stage2', name = "ZEPHYRA_ARTIFACTS_NAME", descript = "ZEPHYRA_ARTIFACTS_STAGE_2"},
+		},
+	}
 }
 

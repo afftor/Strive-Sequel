@@ -613,7 +613,11 @@ func handle_characters_sprites(scene):
 			if person.get_stat("name").to_lower() == scene.unique_character.to_lower():
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.show()
-				$CharacterImage.texture = person.get_body_image()
+				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				if images.sprites.has(non_body):
+					$CharacterImage.texture = input_handler.loadimage(images.sprites[non_body], 'shades')
+				else:
+					$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
 				ch1_shade = false
 				return
