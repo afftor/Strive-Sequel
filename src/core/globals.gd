@@ -914,15 +914,18 @@ func StartCombat(encounter = null):
 		data = Enemydata.encounters[encounter]
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
 		input_handler.encounter_lose_script = Enemydata.encounters[encounter].lose_effects
-
+	else:
+		input_handler.encounter_win_script = null
+		input_handler.encounter_lose_script = null
+	
 	if ResourceScripts.game_progress.skip_combat == true:
 		input_handler.finish_combat()
 		return
-
+	
 	if encounter == null:
 		StartAreaCombat()
 		return
-
+	
 	var enemies
 	var enemy_stats_mod = 1
 	match data.unittype:
