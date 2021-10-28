@@ -533,6 +533,7 @@ func ImportGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	ResourceScripts.game_party.fix_serialization_postload()
 
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
@@ -1451,6 +1452,9 @@ func common_effects(effects):
 						AddItemToInventory(CreateGearItem(item.code, {}))
 			'unlock_asset':
 				input_handler.update_progress_data(i.dir, i.key)
+			'set_spouse':
+				print(input_handler.active_character.id)
+				ResourceScripts.game_progress.spouse = input_handler.active_character.id
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -1485,7 +1489,7 @@ func valuecheck(dict):
 #		"has_property":
 #			return if_has_property(dict['prop'], dict['value'])
 		"has_hero":
-			return ResourceScripts.game_party.if_has_hero(dict['name'])
+			return ResourceScripts.game_party.if_has_hero(dict['name']) == dict.check
 		"has_material":
 			return ResourceScripts.game_res.if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
