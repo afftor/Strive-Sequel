@@ -51,6 +51,27 @@ func update_exp(value, is_set):
 		return tmp
 
 
+func fix_serialize():
+	var newprofs = []
+	for prof in professions.duplicate():
+		if classesdata.professions.has(prof): continue
+		professions.erase(prof)
+		for id in prof_links.keys():
+			if prof_links[id].has(prof):
+				prof_links[id].erase(prof)
+				if prof_links[id].empty():
+					prof_links.erase(id)
+					if id.begins_with('t_'):
+						parent.remove_trait(id.trim_prefix('t_'))
+					else:
+						parent.unlearn_c_skill(id.trim_prefix('t_'))
+						parent.unlearn_skill(id.trim_prefix('t_'))
+		if prof == 'healer':
+			newprofs.push_back('acolyte') 
+	for prof in newprofs:
+		unlock_class(prof)
+
+
 func fix_import():
 	is_on_quest = false
 	work = ''

@@ -162,6 +162,8 @@ func convert_to_new_template():
 	if template.has('ability_type'): res_res.ability_type = template.ability_type
 	else: res_res.ability_type = 'social'
 	res_res.cost = cost
+	if template.has('learn_cost'): res_res.learn_cost = template.learn_cost
+	if template.has('learn_reqs'): res_res.learn_reqs = template.learn_reqs.duplicate()
 	if template.has('charges'): res_res.charges = template.charges
 	if template.has('cooldown'): res_res.cooldown = template.cooldown
 	if template.has('combatcooldown'): res_res.combatcooldown = template.combatcooldown

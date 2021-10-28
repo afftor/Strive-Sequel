@@ -1757,5 +1757,27 @@ var quests = {
 			stage3 = {code = 'stage3', name = "AMELIA_HERBS_NAME", descript = "AMELIA_HERBS_STAGE_3"}, # return to Amelia
 		},
 	},
+	marriage_quest_main = {
+		code = 'marriage_quest_main',
+		summary = "MARRIAGE_MAIN_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "MARRIAGE_MAIN_NAME", descript = "MARRIAGE_MAIN_STAGE_1"},
+			stage2 = {code = 'stage2', name = "MARRIAGE_MAIN_NAME", descript = "MARRIAGE_MAIN_STAGE_2"},
+		},
+	},
+	marriage_quest_servants = {
+		code = 'marriage_quest_servants',
+		summary = "MARRIAGE_SERVANTS_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "MARRIAGE_SERVANTS_NAME", descript = "MARRIAGE_SERVANTS_STAGE_1"},
+		},
+	},
+	marriage_quest_workers = {
+		code = 'marriage_quest_workers',
+		summary = "MARRIAGE_WORKERS_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "MARRIAGE_WORKERS_NAME", descript = "MARRIAGE_WORKERS_STAGE_1"},
+		},
+	},
 }
 

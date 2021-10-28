@@ -42,6 +42,15 @@ func deserialize(savedict):
 		custom_stats_set(stat, statlist[stat])
 
 
+func fix_serialize():
+	for tr in traits.duplicate():
+		if Traitdata.traits.has(tr): continue
+		traits.erase(tr)
+		var arr = parent.find_eff_by_trait(tr)
+		for e in arr:
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.remove()
+
 
 func default_stats_get():
 	return statlist.duplicate()

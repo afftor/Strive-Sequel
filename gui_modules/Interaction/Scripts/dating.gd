@@ -1028,7 +1028,7 @@ func ask_to_marry(person, counter):
 	
 		
 	if result:
-		person.set_stat('marry_agreed', true)
+		person.set_stat('agreed_to_marry', true)
 		self.mood += 50
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.agreed_to_marry)
