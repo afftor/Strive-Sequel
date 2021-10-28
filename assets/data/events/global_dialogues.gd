@@ -74,6 +74,13 @@ var data = {
 		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", type = 'next_dialogue', reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
 		{code = 'final_operation_workers_1', text = "Ask for Help", reqs = [{type = 'active_quest_stage', value = 'final_operation', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_clothes_sigmund_1', text = "DAISY_CLOTHES_SIGMUND_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_workers_1', text = "MARRIAGE_WORKERS_INIT",reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'MARRIAGE_WORKERS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_workers_completed_1', text = "MARRIAGE_WORKERS_COMPLETE_OPTION", reqs = [
+			{type = 'active_quest_stage', value = 'marriage_quest_workers', stage = 'stage1'},
+			{type = 'has_money', value = 1000},
+			{type = 'has_material', operant = 'gte', value = 150, material = 'clothsilk'},
+			{type = 'has_material', operant = 'gte', value = 50, material = 'clothmagic'},
+		], dialogue_argument = 1, type = 'next_dialogue'},
 
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -108,10 +115,23 @@ var data = {
 		{code = 'amelia_silk_1', text = "AMELIA_SILK_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_silk_quest', stage = 'stage1'}, {type = 'has_material', operant = 'gte', value = 50, material = 'clothsilk'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'amelia_herbs_1_1', text = "AMELIA_HERBS_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'amelia_herbs_end_1', text = "AMELIA_HERBS_END_OPTION_START", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage3'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_servants_1', text = "MARRIAGE_SERVANTS_INIT", reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'},{type = 'dialogue_seen', check = false, value = 'MARRIAGE_SERVANTS_1_3'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_servants_completed_1', text = "MARRIAGE_SERVANTS_COMPLETE_OPTION", reqs = [
+			{type = 'active_quest_stage', value = 'marriage_quest_servants', stage = 'stage1'},
+			{code = 'money_change', operant = '-', value = 3000},
+			{code = 'material_change', operant = '-', material = 'fish', value = 200},
+			{code = 'material_change', operant = '-', material = 'meat', value = 200},
+			{code = 'material_change', operant = '-', material = 'vegetables', value = 200},
+			{code = 'material_change', operant = '-', material = 'grains', value = 200},
+			{code = 'material_change', operant = '-', material = 'beer', value = 25},
+			{code = 'material_change', operant = '-', material = 'alcohol', value = 10},
+		], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 
 	},
+
+
 
 	mages_introduction3 = {
 		image = null,

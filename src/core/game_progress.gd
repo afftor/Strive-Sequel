@@ -25,6 +25,9 @@ var completed_locations = {}
 
 var days_from_last_church_quest = 0
 
+var spouse = null
+var marriage_completed = false
+
 #Cheats
 var cheats_active = false
 var instant_travel = false

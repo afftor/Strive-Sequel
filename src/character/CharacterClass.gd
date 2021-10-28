@@ -1041,7 +1041,7 @@ func translate(text):
 			print ("spouse not set")
 			return text
 		var spouse = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
-		if spouse == null or !spouse.is_active or !spouse.is_player_character:
+		if spouse == null or !spouse.is_active or !spouse.is_players_character:
 			print ("no spouse alive")
 			return text
 		text = text.replace("[spouse", "[")
