@@ -706,7 +706,7 @@ func impregnate_check(father,mother):
 func impregnate(father, mother):
 	if impregnate_check(father,mother).value == false:
 		return
-
+	
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
@@ -1453,8 +1453,11 @@ func common_effects(effects):
 			'unlock_asset':
 				input_handler.update_progress_data(i.dir, i.key)
 			'set_spouse':
-				print(input_handler.active_character.id)
 				ResourceScripts.game_progress.spouse = input_handler.active_character.id
+#				input_handler.active_character.unlock_class('spouse')
+			'complete_wedding':
+				ResourceScripts.game_progress.marriage_completed = true
+				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

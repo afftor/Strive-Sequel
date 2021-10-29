@@ -459,6 +459,11 @@ func has_status(status):
 	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
 
+func is_master():
+	return has_profession('master')
+
+func is_spouse():
+	return id == ResourceScripts.game_progress.spouse
 
 func add_rare_trait():
 	if ResourceScripts.game_globals.date < 2: return

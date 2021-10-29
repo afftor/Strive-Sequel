@@ -290,7 +290,7 @@ var data = {
 			{text = "MARRIAGE_NIGHT_GROUP_2_2", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [ 
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'money_change', operant = '-', value = 5000},{code = 'complete_quest', value = 'marriage_quest_main'} ]}
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'money_change', operant = '-', value = 5000},{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]}
 			],
 	},
 	marriage_night_1 = {
@@ -314,7 +314,7 @@ var data = {
 			{text = "MARRIAGE_NIGHT_2_2", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [ 
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'} ]}
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]}
 			],
 	},
 }

@@ -42,6 +42,14 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
 	},
+	'spouse' : {#130% effect from social skills
+		code = 'spouse',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_spouse']#,'test_recast'],
+	},
 	'director' : {#150% effect from social skills
 		code = 'director',
 		name = '',
@@ -58,6 +66,15 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_slave']
 		bonusstats = {damage_mod_all = -0.1, mod_collect = 0.1, mod_pros = 0.1, mod_farm = 0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15, obDrainReduction = 0.9}
+	},
+	'heir' : {
+		code = 'heir',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_slave']
+		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2, obDrainReduction = 0.5, loyalty_gain_mod = 0.25}
 	},
 	servant = {#servant class trait
 		code = 'servant',
@@ -362,14 +379,6 @@ var traits = {
 		effects = [],
 	},
 	
-	spouse = {
-		code = 'spouse',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = false,
-		effects = [],
-	},
 	
 	stealth = {
 		code = 'stealth',
