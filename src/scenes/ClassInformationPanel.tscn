@@ -111,7 +111,7 @@ expand = true
 [node name="ReqIcons" type="HBoxContainer" parent="."]
 margin_left = 20.0
 margin_top = 266.0
-margin_right = 283.0
+margin_right = 232.0
 margin_bottom = 324.0
 alignment = 1
 __meta__ = {
@@ -120,7 +120,8 @@ __meta__ = {
 
 [node name="Icon" type="TextureRect" parent="ReqIcons"]
 visible = false
-margin_right = 50.0
+margin_left = 81.0
+margin_right = 131.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 50, 50 )
 expand = true

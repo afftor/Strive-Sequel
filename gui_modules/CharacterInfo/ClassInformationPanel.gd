@@ -9,11 +9,7 @@ func _ready():
 
 
 func open(classcode, person):
-	for i in $ReqIcons.get_children():
-		if !i.visible:
-			continue
-		$ReqIcons.remove_child(i)
-		
+	input_handler.ClearContainer($ReqIcons, ["Icon"])
 	var tempclass = classesdata.professions[classcode]
 	$TextureRect.texture = tempclass.icon
 	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
@@ -44,6 +40,8 @@ func open(classcode, person):
 		if i == "advanced_combat":
 			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
 			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_COMBAT"))
+		if newicon.texture == null:
+			$ReqIcons.remove_child(newicon)
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
