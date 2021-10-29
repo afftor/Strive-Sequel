@@ -733,12 +733,17 @@ func test_mode():
 
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Aire'},
+				{code = 'make_story_character', value = 'Lilia'},
 			]
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Lilith'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
 		globals.common_effects(
@@ -746,11 +751,11 @@ func test_mode():
 				{code = 'make_story_character', value = 'Zephyra'},
 			]
 		)
-		globals.common_effects(
-			[
-				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
-			]
-		)
+#		globals.common_effects(
+#			[
+#				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
+#			]
+#		)
 
 		ResourceScripts.game_res.money = 80000
 		#globals.common_effects("add_money")
@@ -846,7 +851,7 @@ func test_mode():
 
 #		ResourceScripts.game_res.materials.meat = 0
 #		input_handler.interactive_message('after_election_answer1', '', {})
-#		input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
+#		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 

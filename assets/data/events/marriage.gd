@@ -2,7 +2,7 @@ var data = {
 	marriage_church_1 = {
 		variations = [
 			{
-				reqs = [{type = 'quest_completed', name = 'final_words'}], #main 
+				reqs = [{code = "decision", value = "mayor_election_finished", check = true}], #main 
 				image = null, 
 				tags = ['dialogue_scene'],
 				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = []}],

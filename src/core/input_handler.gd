@@ -151,9 +151,9 @@ var globalsettings = {
 	warnseen = false,
 	disabletips = false,
 
-	futa = true,
+	futa = false,
 	furry = true,
-	furry_multiple_nipples = true,
+	furry_multiple_nipples = false,
 	futa_balls = true,
 	futachance = 10,
 	malechance = 50,
