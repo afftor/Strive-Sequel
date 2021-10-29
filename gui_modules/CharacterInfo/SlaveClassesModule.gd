@@ -8,6 +8,9 @@ var mode
 var current_class
 var selected_skill
 
+var skill_category = "all"
+# all, weapon, magic, support, aoe, heal
+
 var parentnode
 var shutoff = false
 var prevnode
@@ -22,12 +25,27 @@ func _ready():
 		i.connect("pressed",self,'class_category', [i.name])
 	for i in $SkillPanel/Categories.get_children():
 		i.connect("pressed", self, 'change_skill_category', [i.name])
-	$SkillTooltip/cancel_button.connect("pressed", $SkillTooltip, "hide")
+	$SkillTooltip/cancel_button.connect("pressed", self, "hide_skilltooltip")
 	$SkillTooltip/unlock_button.connect("pressed", self, "buy_skill")
+	$SkillTooltip.connect("hide", self, "build_skills")
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
+	globals.connecttexttooltip($SkillPanel/Categories/all, "All")
+	globals.connecttexttooltip($SkillPanel/Categories/combat, "Combat")
+	globals.connecttexttooltip($SkillPanel/Categories/spell, "Spell")
+	globals.connecttexttooltip($SkillPanel/Categories/support, "Support")
+	globals.connecttexttooltip($SkillPanel/Categories/aoe, "AoE")
+	globals.connecttexttooltip($SkillPanel/Categories/heal, "Heal")
+	globals.connecttexttooltip($SkillTooltip/icon_cooldown, "Cooldown")
+	globals.connecttexttooltip($SkillTooltip/icon_usage, "Manacost")
+	globals.connecttexttooltip($categories/all, "All")
+	globals.connecttexttooltip($categories/social, "Social")
+	globals.connecttexttooltip($categories/labor, "Labor")
+	globals.connecttexttooltip($categories/sexual, "Sexual")
+	globals.connecttexttooltip($categories/combat, "Combat")
+	globals.connecttexttooltip($categories/magic, "Magic")
 	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
 
 func _process(delta):
@@ -37,7 +55,6 @@ func _process(delta):
 
 func _init():
 	set_process(false)
-
 
 func show_tooltip(node, text):
 	$Tooltip.show()
@@ -69,6 +86,7 @@ func open(tempperson, tempmode = 'normal'):
 	mode = tempmode
 	current_class = null
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
+	$SkillTooltip.hide()
 	build_skills()
 	var array = []
 	for i in classesdata.professions.values():
@@ -171,9 +189,6 @@ func unlock_class():
 	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
 	get_parent().BodyModule.update()
 	get_parent().set_state("default")
-
-var skill_category = "all"
-# all, weapon, magic, support, aoe, heal
 	
 func build_skills():
 	input_handler.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
@@ -188,6 +203,7 @@ func build_skills():
 			continue
 		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, "skill_selected", [i])
+		globals.connecttexttooltip(newbutton, tr("SKILL" + i.code.to_upper() + "DESCRIPT"))
 		newbutton.get_node("icon").texture = i.icon
 		newbutton.get_node("name").text = tr("SKILL" + i.code.to_upper()) 
 		newbutton.set_meta('skill', i)
@@ -232,8 +248,10 @@ func sort_skills():
 				continue
 			if skill.tags.has(skill_category):
 				i.visible = true
-			if skill.ability_type == skill_category:
-				i.visible = true
+			# combat and spell
+			for lr in skill.learn_reqs:
+				if skill_category in lr.trait:
+					i.visible = true
 
 func change_skill_category(cat):
 	skill_category = cat
@@ -247,6 +265,7 @@ func skill_selected(skill):
 			i.pressed = false
 	selected_skill = skill
 	$SkillTooltip/req_icon.texture = null
+	globals.connecttexttooltip($SkillTooltip/req_icon, "")
 	$SkillTooltip/req_icon.hint_tooltip = ""
 	$SkillTooltip/unlock_button.disabled = false
 	$SkillTooltip/exp.set("custom_colors/font_color", "#f9e380")
@@ -257,16 +276,17 @@ func skill_selected(skill):
 	for i in skill.learn_reqs:
 		if i.trait == "basic_spells":
 			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
-			$SkillTooltip/req_icon.hint_tooltip = "TRAITBASIC_SPELLS"
+			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_SPELLS"))
 		if i.trait == "advanced_spells":
 			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
-			$SkillTooltip/req_icon.hint_tooltip = "TRAITADVANCED_SPELLS"
+			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_SPELLS"))
 		if i.trait == "basic_combat":
 			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
-			$SkillTooltip/req_icon.hint_tooltip = "TRAITBASIC_COMBAT"
+			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_COMBAT"))
 		if i.trait == "advanced_combat":
 			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
-			$SkillTooltip/req_icon.hint_tooltip = "TRAITADVANCED_COMBAT"
+			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_COMBAT"))
+	gui_controller.windows_opened.append($SkillTooltip)
 	$SkillTooltip.show()
 	$SkillTooltip/icon.texture = skill.icon
 	$SkillTooltip/name.text = tr("SKILL" + skill.code.to_upper())
@@ -285,8 +305,12 @@ func buy_skill():
 	args["person"] = person
 	input_handler.play_animation("skill_unlocked", args)
 	yield(get_tree().create_timer(4.5), 'timeout')
-	$SkillTooltip.hide()
+	hide_skilltooltip()
 	build_skills()
+
+func hide_skilltooltip():
+	$SkillTooltip.hide()
+	gui_controller.windows_opened.erase($SkillTooltip)
 # func play_animation():
 # 	input_handler.PlaySound("class_aquired")
 # 	var anim_scene

@@ -639,7 +639,11 @@ func handle_characters_sprites(scene):
 			if person.get_stat("name").to_lower() == scene.unique_character.to_lower():
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.show()
-				$CharacterImage.texture = person.get_body_image()
+				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				if images.sprites.has(non_body):
+					$CharacterImage.texture = input_handler.loadimage(images.sprites[non_body], 'shades')
+				else:
+					$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
 				ch1_shade = false
 				return
@@ -775,6 +779,16 @@ func handle_scene_options():
 					disable = true
 				else:
 					continue
+			if i.has("repeat_next_day"):
+				var cont = false
+				for d in ResourceScripts.game_progress.daily_dialogues:
+					if d.option == i.code:
+						if d.last_activation >= ResourceScripts.game_globals.date:
+							cont = true
+							break
+				if cont:
+					continue
+			
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set_meta("id", id)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
@@ -790,6 +804,7 @@ func handle_scene_options():
 			newbutton.get_node("Label").rect_size.y += 8
 			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
 			newbutton.connect("pressed",self,'select_option', [option_number - 1])
+			
 			
 			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
 				newbutton.status = 'seen'
@@ -827,6 +842,18 @@ func select_option(number):
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
+	
+	if option.has("repeat_next_day"):
+		var dup = false
+		for i in ResourceScripts.game_progress.daily_dialogues:
+			if i.option == option.code:
+				i.last_activation = ResourceScripts.game_globals.date
+				dup = true
+		if !dup:
+			ResourceScripts.game_progress.daily_dialogues.append({
+				option = option.code,
+				last_activation = ResourceScripts.game_globals.date
+			})
 	
 	input_handler.dialogue_option_selected(option) #need to remove this at next rework
 	if option.has('bonus_effects'):

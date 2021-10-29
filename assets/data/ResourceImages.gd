@@ -84,6 +84,10 @@ var backgrounds = {
 	daisy_public3 = load("res://assets/images/fullscreen scenes/DaisyCG015.png"),
 	daisy_public4 = load("res://assets/images/fullscreen scenes/DaisyCG016.png"),
 	daisy_public5 = load("res://assets/images/fullscreen scenes/DaisyCG017.png"),
+	
+	daisy_bent1 = load("res://assets/images/fullscreen scenes/DaisyCG018.png"),
+	daisy_bent2 = load("res://assets/images/fullscreen scenes/DaisyCG019.png"),
+	daisy_bent3 = load("res://assets/images/fullscreen scenes/DaisyCG020.png"),
 
 	anastasia_sex_1 = load("res://assets/images/fullscreen scenes/AnastasiaCG001.png"),
 	anastasia_sex_2 = load("res://assets/images/fullscreen scenes/AnastasiaCG002.png"),

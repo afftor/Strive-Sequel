@@ -107,7 +107,6 @@ light_mask = 0
 margin_right = 109.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
-hint_tooltip = "Hint"
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -120,7 +119,6 @@ margin_top = 44.0
 margin_right = 109.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
-hint_tooltip = "Social"
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -133,7 +131,6 @@ margin_top = 88.0
 margin_right = 109.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
-hint_tooltip = "Labor"
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -146,7 +143,6 @@ margin_top = 132.0
 margin_right = 109.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 40 )
-hint_tooltip = "Sexuals"
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -159,7 +155,6 @@ margin_top = 176.0
 margin_right = 109.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
-hint_tooltip = "Combat"
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -335,13 +330,37 @@ light_mask = 0
 margin_right = 250.0
 margin_bottom = 250.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReqIcons" type="HBoxContainer" parent="ClassPanel"]
+margin_left = 20.0
+margin_top = 266.0
+margin_right = 239.0
+margin_bottom = 324.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="ClassPanel/ReqIcons"]
+visible = false
+margin_right = 50.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="reqs" type="RichTextLabel" parent="ClassPanel"]
 light_mask = 0
 margin_left = 14.0
-margin_top = 266.0
+margin_top = 340.0
 margin_right = 246.0
-margin_bottom = 454.0
+margin_bottom = 528.0
 theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
@@ -498,7 +517,6 @@ light_mask = 0
 margin_right = 54.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "All"
 toggle_mode = true
 pressed = true
 texture_normal = ExtResource( 26 )
@@ -506,14 +524,13 @@ texture_pressed = ExtResource( 28 )
 texture_hover = ExtResource( 27 )
 expand = true
 
-[node name="skill" type="TextureButton" parent="SkillPanel/Categories"]
+[node name="combat" type="TextureButton" parent="SkillPanel/Categories"]
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_top = 58.0
 margin_right = 54.0
 margin_bottom = 112.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "Skill"
 toggle_mode = true
 texture_normal = ExtResource( 39 )
 texture_pressed = ExtResource( 29 )
@@ -527,7 +544,6 @@ margin_top = 116.0
 margin_right = 54.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "Spell"
 toggle_mode = true
 texture_normal = ExtResource( 35 )
 texture_pressed = ExtResource( 30 )
@@ -541,7 +557,6 @@ margin_top = 174.0
 margin_right = 54.0
 margin_bottom = 228.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "Support"
 toggle_mode = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 31 )
@@ -555,7 +570,6 @@ margin_top = 232.0
 margin_right = 54.0
 margin_bottom = 286.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "AoE"
 toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 34 )
@@ -569,7 +583,6 @@ margin_top = 290.0
 margin_right = 54.0
 margin_bottom = 344.0
 rect_min_size = Vector2( 54, 54 )
-hint_tooltip = "Heal"
 toggle_mode = true
 texture_normal = ExtResource( 37 )
 texture_pressed = ExtResource( 40 )
@@ -816,6 +829,7 @@ margin_left = 125.0
 margin_top = 48.0
 margin_right = 676.0
 margin_bottom = 117.0
+theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 44 )
 text = "Distract 12-20 dmg text"
 __meta__ = {

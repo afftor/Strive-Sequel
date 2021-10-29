@@ -25,8 +25,9 @@ var lands = {
 			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
 
-			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
-			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
+			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
+			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
+			{code = 'no_zephyra_artifacts_start', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
 
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
@@ -1727,7 +1728,7 @@ var pregen_characters = {
 		timid_factor = 5,
 		food_consumption = 2,
 		icon_image = 'daisy',
-		body_image = "daisy_default_body",
+		body_image = "daisy_default_happy_body",
 		physics = 11.0,
 		wits = 2.0,
 		charm = 0.0,
