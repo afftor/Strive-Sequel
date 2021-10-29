@@ -42,6 +42,15 @@ func deserialize(savedict):
 		custom_stats_set(stat, statlist[stat])
 
 
+func fix_serialize():
+	for tr in traits.duplicate():
+		if Traitdata.traits.has(tr): continue
+		traits.erase(tr)
+		var arr = parent.find_eff_by_trait(tr)
+		for e in arr:
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.remove()
+
 
 func default_stats_get():
 	return statlist.duplicate()
@@ -696,6 +705,22 @@ func setup_baby(mother, father):
 	ResourceScripts.game_party.connectrelatives(parent.id, mother.id, "mother")
 	ResourceScripts.game_party.connectrelatives(parent.id, father.id, "father")
 #	ResourceScripts.game_party.babies[parent.id] = parent
+#	if mother.get_stat('slave_class') != 'master':
+#		statlist.slave_class = mother.get_stat('slave_class')
+#	else:
+#		statlist.slave_class = 'slave'
+	if mother.is_master():
+		if father.is_spouse():
+			set_slave_category('heir')
+		else:
+			set_slave_category('slave')
+	elif mother.is_spouse():
+		if father.is_master():
+			set_slave_category('heir')
+		else:
+			set_slave_category(mother.get_stat('slave_class'))
+	else:
+		set_slave_category(mother.get_stat('slave_class'))
 
 func create(temp_race, temp_gender, temp_age):
 	statlist.race = temp_race
@@ -941,10 +966,6 @@ func baby_transform():
 	statlist.name = 'Child of ' + mother.get_stat('name')
 	if mother.get_stat('surname') != '':
 		statlist.name += " " + mother.get_stat('surname')
-	if mother.get_stat('slave_class') != 'master':
-		statlist.slave_class = mother.get_stat('slave_class')
-	else:
-		statlist.slave_class = 'slave'
 	statlist.surname = ''
 	statlist.anal_virgin = true
 	statlist.mouth_virgin = true

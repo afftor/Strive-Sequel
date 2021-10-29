@@ -273,7 +273,11 @@ func lockpick_attempt(person):
 
 func select_person_for_next_event(code):
 	var reqs
-	if code.find('trap') != -1 or code.find('shrine') != -1: #imho there should be also a lockpicking events
+	if code.find('marriage')!= -1:
+		reqs = [
+			{code = 'stat', stat = 'agree_to_marry', operant = 'eq', value = true}
+		]
+	elif code.find('trap') != -1 or code.find('shrine') != -1: #imho there should be also a lockpicking events
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
 			{code = 'in_combat_party', value = true}
@@ -531,6 +535,16 @@ var ch1_shade = false
 var ch2_shade = false
 
 
+func get_spouse_sprite():
+	var spousechar = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
+	if spousechar == null: return null
+	else:
+		match spousechar.get_stat('unique'):
+			'anastasia': return 'anastasia'
+			'daisy': return 'daisy_maid'
+			#2add
+			_: return null
+
 func handle_characters_sprites(scene):
 	#--i do not understand conditions and sequencing of most of code in cases of characters do exist
 	#--so i think that there are some logical errors here
@@ -562,10 +576,12 @@ func handle_characters_sprites(scene):
 			else:
 				scene_char = scene.character
 				char_shade = false
-				if !input_handler.progress_data.characters.has(scene_char):
+				if scene_char == 'spouse':
+					scene_char = get_spouse_sprite()
+				if scene_char != null and !input_handler.progress_data.characters.has(scene_char):
 					input_handler.progress_data.characters.append(scene_char)
 					input_handler.save_progress_data(input_handler.progress_data)
-			if ch1 != scene_char:
+			if scene_char != null and ch1 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.texture = images.sprites[scene_char]
 				if char_shade:
@@ -575,12 +591,16 @@ func handle_characters_sprites(scene):
 					$CharacterImage.material.set_shader_param('opacity', 0.0)
 					ch1_shade = false
 				ch1 = scene_char
-			else:
+				$CharacterImage.show()
+			elif scene_char != null:
 				if char_shade != ch1_shade:
 					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage, 0.5)
 					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage, 0.5)
 					ch1_shade = char_shade
-			$CharacterImage.show()
+				$CharacterImage.show()
+			else:
+				$CharacterImage.hide()
+#			$CharacterImage.show()
 		if scene.has("character2"):
 			if scene.character2.ends_with('_shade'):
 				scene_char = scene.character2.trim_suffix('_shade')
@@ -588,10 +608,12 @@ func handle_characters_sprites(scene):
 			else:
 				scene_char = scene.character2
 				char_shade = false
-				if !input_handler.progress_data.characters.has(scene_char):
+				if scene_char == 'spouse':
+					scene_char = get_spouse_sprite()
+				if scene_char != null and !input_handler.progress_data.characters.has(scene_char):
 					input_handler.progress_data.characters.append(scene_char)
 					input_handler.save_progress_data(input_handler.progress_data)
-			if ch2 != scene_char:
+			if scene_char != null and ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
 				$CharacterImage2.texture = images.sprites[scene_char]
 				if char_shade:
@@ -601,12 +623,16 @@ func handle_characters_sprites(scene):
 					$CharacterImage2.material.set_shader_param('opacity', 0.0)
 					ch2_shade = false
 				ch2 = scene_char
-			else:
+				$CharacterImage2.show()
+			elif scene_char != null:
 				if char_shade != ch2_shade:
 					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage2, 0.5)
 					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, 0.5)
 					ch2_shade = char_shade
-			$CharacterImage2.show()
+				$CharacterImage2.show()
+			else:
+				$CharacterImage2.hide()
+#			$CharacterImage2.show()
 	if scene.has("unique_character"):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]

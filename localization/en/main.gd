@@ -494,6 +494,7 @@ var TranslationDict = {
 
 	AREAISENDLESS = "This area has no progression",
 	TOWNRETURN = "Return",
+	RETURN = "Return",
 
 	#Confirms
 
@@ -813,6 +814,7 @@ var TranslationDict = {
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	HEIRCLASSDESCRIPT = "2ADD",
 
 	SLAVETYPE = "Type",
 
@@ -6039,6 +6041,88 @@ Saying that, Amelia leaves you alone wondering what she's up to.""",
 
 Amelia leaves you for her business, leaving you alone.""",
 	
+	MARRIAGE_CHURCH_CORE = """I'd like to arrange a marriage""",
+	MARRIAGE_CHURCH_FINISH_CORE = """I'm ready for the wedding""",
+	MARRIAGE_CHURCH_DEFAULT = """- I'm terribly sorry, but currently we aren't able to provide such service due to the ongoing conflict. I hope this will be over soon.""",
+	MARRIAGE_CHURCH_TEXT_1 = """- Ah, you are willing to engage someone? That's great! Mayor's wedding won't be simple to host though. May I know who's your chosen one?""",
+	MARRIAGE_CHURCH_TEXT_2 = """- I see, I see, I'm glad you found someone dear to your heart. I'm allowed to engage you, but the service is going to cost 500 gold.""",
+	PAY = """Pay.""",
+	MARRIAGE_CHURCH_TEXT_3 = """- Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as deliveries and guests. Servants guild can usually help you with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild sew those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
+	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we acn start it.""",
+	MARRIAGE_CHURCH_CLOSE_OPTION = """Thanks for the directions""",
+	MARRIAGE_SERVANTS_INIT = "I'm holding a wedding...",
+	MARRIAGE_SERVANTS_1_1 = """- Finally going to seal the deal with our little princess? That's great news. """,
+	MARRIAGE_SERVANTS_1_2 = """- Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
+	MARRIAGE_SERVANTS_1_3 = """So you want us to prepare everything for it? A person of your caliber can't have a simple wedding after all. We will likely need at least a couple hundred of each food to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple suppliers I know.""",
+	MARRIAGE_SERVANTS_2 = """- Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start preparations right away.""",
+	MARRIAGE_SERVANTS_COMPLETE_OPTION = """I've prepared everything for the wedding""",
+	MARRIAGE_SERVANTS_COMPLETE_1 = """- Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
+	MARRIAGE_SERVANTS_COMPLETE_2 = """- There's one thing about the guests if you pardon me. There's a certain category of... indecent people, who surely would seek to appear at the Mayor's wedding. While it might seem like a completely abhorrent thing, they are also quite rich and can be generous for certain services.""",
+	MARRIAGE_SERVANTS_COMPLETE_3 = """- In no way I'm suggesting you should compromise your wedding. So let me know if you want them to be invited as well.""",
+	MARRIAGE_SERVANTS_OPTION_1 = """Invite them""",
+	MARRIAGE_SERVANTS_OPTION_2 = """Refuse""",
+	MARRIAGE_SERVANTS_COMPLETE_4 = """- Understood. With that set, I wish to see you soon and have a happy wedding, [name].""",
+	MARRIAGE_WORKERS_INIT = "I'm holding a wedding and need costumes for it",
+	MARRIAGE_WORKERS_1 = """- Oh ya? My gratulations. Let me show ya to our tailors then. """,
+	MARRIAGE_WORKERS_2 = "Sigmund takes you to a couple of tailors who inform you on the materials they will require to prepare your costumes. For the highest quality dresses they will need 150 Silk Cloth, and 50 Magic Cloth. The work itself is going to cost you an additional 1000 gold.",
+	MARRIAGE_WORKERS_COMPLETE_OPTION = """I have everything needed""",
+	MARRIAGE_WORKERS_COMPLETE_1 = "As you set the deal with the tailors, they take measures from you and immediately send a helper for your partner. They promise to finish the work as quick as they can.",
+	MARRIAGE_FINAL_INIT = """- Beautiful! In that case, we'll start tomorrow. """,
+	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia brought their tools and waited for the start. Large trays of exquisite fresh food and ingredients were stocked in the kitchen. \n\nFirst guests have made their attempt to get on the good foot with you and delivered first presents. As noon drew closer, you moved to the church.""",
+	MARRIAGE_ANASTASIA_1 = """Anastasia was preparing for the upcoming ceremony as Aire tried to support her.
+{color=yellow|Aire: - You are too red, Ana.}
+
+{color=aqua|Anastasia: - Of course I am! Don't you realize how frightening this is?}
+
+{color=yellow|Aire: - Less frightening than being hunted by the Guilds' army.}""",
+	MARRIAGE_ANASTASIA_2 = """{color=aqua|Anastasia: - ...Does it suit me? It's so weird to wear something this glamorous after all these years.}
+
+{color=yellow|Aire: - You look beautiful. I never thought I'd actually see you in a wedding dress, though.} 
+
+{color=aqua|Anastasia: - One day you might also end up in one, you know.}
+
+{color=yellow|Aire: - Hmph, I doubt [name] is ever gonna allow me such liberty.} 
+
+{color=aqua|Anastasia: - Hey, don't speak bad of [him].}""",
+	MARRIAGE_FINAL_2 = """Given the fairly humble size of the church, only a selected few of the guests have been allowed inside. The building was decorated for your wedding, and Ginny was set to play the priest's role.""",
+	MARRIAGE_FINAL_3 = """As [spousename] is brought to the church, [spousehe] looks somewhat nervous, but still returns you a smile. As [spousehe] makes it to the altar, Ginny starts the ceremony.
+
+{color=yellow|Ginny: - Celena thanks you all for coming here today...}""",
+	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: - [name], do you agree to take this [spousename] as your [husband]?}""",
+	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
+	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
+	MARRIAGE_FINAL_4_OPTION_3 = """What's the point getting though all of this otherwise?""",
+	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: - Now you can kiss the [groom].}
+
+[spousename] leans to you as you seal [spousehis] lips with yours. As guests cheer on you, you finally break it after a couple of minutes. 
+
+{color=aqua|[spousename]: - Thank you, [name], this is the best day of my life...}""",
+	MARRIAGE_FINAL_6 = """As you leave the church, you return to the mansion. Many new guests wait for you over there and a loud party breaks out. As you make new connections and receive wedding presents from other landlords and authorities, you also spot how [spousename] glances at you from time to time.""",
+	MARRIAGE_FINAL_7 = """As the party goes on, one of your servants approaches you and passes a note from a small group of guests who seem to be the people mentioned by Amelia. The note states how they enjoy the party and are ready to pay a large sum of 5,000 gold for a night with the mayor's newlywed wife.""",
+	MARRIAGE_FINAL_7_OPTION_1 = """Order to throw them out""",
+	MARRIAGE_FINAL_7_OPTION_2 = """Just ignore them""",
+	MARRIAGE_FINAL_7_OPTION_3 = """Invite them to the bedroom""",
+	MARRIAGE_FINAL_8_1 = """You order to throw out the rich bastards from the party. Regaining your mood, you return to [spousename] and spend some more time with her until the night falls.""",
+	MARRIAGE_FINAL_8_2 = """You decide to ignore the proposition and return to spending time with your wife as the night falls. Despite your worries, there were no more requests made by the said group.""",
+	MARRIAGE_NIGHT_GROUP_1_1 = """As the night falls and guests start to leave, you approach [spousename] and lead [spouseher] to your bedroom. As you enter, you see multiple men who you've accepted the deal with.
+[spousename] shouts in surprise, but after looking at you, realizes this is no coincidence.\n""",
+	MARRIAGE_NIGHT_GROUP_1_2 = """As you order [spousehim] to serve these men, [spousehe] seems rather agreeable to it.""",
+	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, as [spousehe] looks at you with disbelief. However, realizing there's no way to escape this, [he] resentfully nods.""",
+	MARRIAGE_NIGHT_GROUP_1_4 = """Now all that's left is to choose what you're gonna do...""",
+	MARRIAGE_NIGHT_GROUP_OPTION_1 = """Join""",
+	MARRIAGE_NIGHT_GROUP_OPTION_2 = """Leave""",
+	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first round, as [spousename] uses [spousehis] mouth to serve your guests. As you unload into [spousehis] womb, you let another one take over while [spousename] cleans you with her mouth. As the guests continue to use your wife, you invite one of the servant girls to have fun with while you are watching.
+
+After a few hours every guest in the room had a round with [spousename] and is completely exhausted. As they finally leave, the last one passes you the money they've promised.""",
+	MARRIAGE_NIGHT_GROUP_2_2 = """You decide to leave your [spousehusband] and go for a stroll. After a couple of hours one of the men finds you and informs you how well it went, passing you the promised payment. As they leave you order the servants to take care of the leftover mess and call it a day.""",
+	MARRIAGE_NIGHT_1 = """As party moves to the closure and guests leave, your [spousehusband] approaches you in expectancy.
+
+- [Master]... Or should I use Darling now? This seems to be quite late, and if you are not tired...""",
+	MARRIAGE_NIGHT_OPTION_1 = """Let's get to the bedroom""",
+	MARRIAGE_NIGHT_OPTION_2 = """I guess I am tired""",
+	MARRIAGE_NIGHT_2_1= """You take [spousename]'s hand and go to the bedroom, leaving the rest of the mess to the servants.""",
+	MARRIAGE_NIGHT_2_2 = """[spousename] returns you a saddened look but nods in agreement. You decide to go to sleep and call it a day.""",
+	
 	DAISY_SERVE_OPTION_START = "Serve me",
 	DAISY_SERVE_START_1 = "- Of course, [master]. What part of mine do you like to use?",
 	DAISY_SERVE_START_2 = """- O-Ofcourse, [Master]... How should I..?
@@ -6189,4 +6273,21 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_ARTIFACTS_NAME = "",
 	ZEPHYRA_ARTIFACTS_STAGE_1 = "",
 	ZEPHYRA_ARTIFACTS_STAGE_2 = "",
+	
+	MARRIAGE_MAIN_SUMMARY = "Marriage",
+	MARRIAGE_MAIN_NAME = "Marriage",
+	MARRIAGE_MAIN_STAGE_1 = "Pay 500 gold to Aliron's church to set up a wedding ceremony.",
+	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with Servants Guild, Workers guild, then visit Church to start wedding",
+	MARRIAGE_SERVANTS_SUMMARY = "Marriage: Bread and Circuses",
+	MARRIAGE_SERVANTS_NAME = "Marriage: Bread and Circuses",
+	MARRIAGE_SERVANTS_STAGE_1 = "Deliver 200 of Fish, Meat, Vegetables and Grains, 10 Whiskey, 25 Beer and 3,000 gold to Amelia at the Servants Guild.",
+	MARRIAGE_WORKERS_SUMMARY = "Marriage: A nice suit",
+	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
+	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers' Guild tailor.",
+	
 }
+
+
+
+
+

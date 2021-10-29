@@ -49,6 +49,23 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_spouse = {
+		type = 'trigger',
+		trigger = [variables.TR_S_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.3, stats = ['authority']}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_tr_renown = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],

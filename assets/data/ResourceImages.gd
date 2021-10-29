@@ -204,6 +204,13 @@ var sprites = {
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	daisy_maid_nude_body = load("res://assets/images/sprites/daisy_maid_nude_body.png"),
 	tribal_elf = load("res://assets/images/sprites/tribal_elf_body.png"),
+	mae = load("res://assets/images/sprites/mae.png"),
+	mae_body = load("res://assets/images/sprites/mae_body.png"),
+	lilia = load("res://assets/images/sprites/lilia.png"),
+	lilia_body = load("res://assets/images/sprites/lilia_body.png"),
+	lilith = load("res://assets/images/sprites/lilith.png"),
+	lilith_body = load("res://assets/images/sprites/lilith_body.png"),
+	
 	}
 
 var dynamic_backgrounds = {
@@ -219,6 +226,9 @@ var portraits = {
 	aire = "res://assets/images/portraits/aire_prt.png",
 	kurdan = "res://assets/images/portraits/kurdan_prt.png",
 	zephyra = 'res://assets/images/portraits/zephyra_prt.png',
+	mae = "res://assets/images/portraits/mae_prt.png",
+	lilia = "res://assets/images/portraits/lilia_prt.png",
+	lilith = "res://assets/images/portraits/lilith_prt.png",
 }
 
 var gui = {

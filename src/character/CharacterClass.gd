@@ -459,6 +459,11 @@ func has_status(status):
 	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
 
+func is_master():
+	return has_profession('master')
+
+func is_spouse():
+	return id == ResourceScripts.game_progress.spouse
 
 func add_rare_trait():
 	if ResourceScripts.game_globals.date < 2: return
@@ -599,8 +604,14 @@ func fix_serialization():
 	effects = dict2inst(effects)
 	food = dict2inst(food)
 	xp_module.fix_rules()
-	
 	rebuild_parents()
+
+
+
+func fix_serialization_postload():
+	statlist.fix_serialize()
+	xp_module.fix_serialize()
+	
 	repair_skill_panels()
 
 
@@ -701,6 +712,8 @@ func affect_char(i):
 				xp_module.make_avaliable()
 			else:
 				xp_module.make_unavaliable()
+		'set_as_spouse':
+			ResourceScripts.game_progress.spouse = id
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -1025,7 +1038,21 @@ func rest_tick():
 func translate(text):
 	text = statlist.translate(text)
 	text = text.replace("[price]", str(calculate_price()))
+	if text.find('[spouse') != -1:
+		if !has_profession('master'):
+			print ("active char is not master")
+			return text
+		if ResourceScripts.game_progress.spouse == null:
+			print ("spouse not set")
+			return text
+		var spouse = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
+		if spouse == null or !spouse.is_active or !spouse.is_players_character:
+			print ("no spouse alive")
+			return text
+		text = text.replace("[spouse", "[")
+		return spouse.translate(text)
 	return text
+
 
 func calculate_price():
 	var value = 0

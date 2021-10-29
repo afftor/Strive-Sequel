@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.5.4'
+const gameversion = '0.5.5'
 
 #time
 signal hour_tick
@@ -484,6 +484,7 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	ResourceScripts.game_party.fix_serialization_postload()
 
 	#current approach
 	# if input_handler.CurrentScene != null:
@@ -532,6 +533,7 @@ func ImportGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	ResourceScripts.game_party.fix_serialization_postload()
 
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
@@ -704,7 +706,7 @@ func impregnate_check(father,mother):
 func impregnate(father, mother):
 	if impregnate_check(father,mother).value == false:
 		return
-
+	
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
@@ -913,15 +915,18 @@ func StartCombat(encounter = null):
 		data = Enemydata.encounters[encounter]
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
 		input_handler.encounter_lose_script = Enemydata.encounters[encounter].lose_effects
-
+	else:
+		input_handler.encounter_win_script = null
+		input_handler.encounter_lose_script = null
+	
 	if ResourceScripts.game_progress.skip_combat == true:
 		input_handler.finish_combat()
 		return
-
+	
 	if encounter == null:
 		StartAreaCombat()
 		return
-
+	
 	var enemies
 	var enemy_stats_mod = 1
 	match data.unittype:
@@ -1447,6 +1452,12 @@ func common_effects(effects):
 						AddItemToInventory(CreateGearItem(item.code, {}))
 			'unlock_asset':
 				input_handler.update_progress_data(i.dir, i.key)
+			'set_spouse':
+				ResourceScripts.game_progress.spouse = input_handler.active_character.id
+#				input_handler.active_character.unlock_class('spouse')
+			'complete_wedding':
+				ResourceScripts.game_progress.marriage_completed = true
+				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -1481,7 +1492,7 @@ func valuecheck(dict):
 #		"has_property":
 #			return if_has_property(dict['prop'], dict['value'])
 		"has_hero":
-			return ResourceScripts.game_party.if_has_hero(dict['name'])
+			return ResourceScripts.game_party.if_has_hero(dict['name']) == dict.check
 		"has_material":
 			return ResourceScripts.game_res.if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
@@ -1525,8 +1536,13 @@ func valuecheck(dict):
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
 				return false
-			else:
-				return master_char.checkreqs(dict.value)
+			return master_char.checkreqs(dict.value)
+		'spouse_check':
+			var spid = ResourceScripts.game_progress.spouse
+			if spid == null: return false
+			var spouse_char = characters_pool.get_char_by_id(spid)
+			if spouse_char == null: return false
+			return spouse_char.checkreqs(dict.value)
 		'active_character_checks':
 			var character = input_handler.active_character
 			if character == null:return false

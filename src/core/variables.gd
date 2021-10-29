@@ -186,7 +186,7 @@ var power_adjustments_per_difficulty = {
 	hard = [3,6]
 }
 var difficulty_per_level = 0.05 #% enemy stat increase
-var slave_class_list = ['slave', 'servant']#incomplete
+var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete?
 #sex chances
 
 var teen_age_weight = 1
