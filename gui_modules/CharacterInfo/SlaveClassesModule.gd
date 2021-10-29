@@ -286,6 +286,7 @@ func skill_selected(skill):
 		if i.trait == "advanced_combat":
 			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
 			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_COMBAT"))
+	$SkillTooltip/req.visible = $SkillTooltip/req_icon.texture != null
 	gui_controller.windows_opened.append($SkillTooltip)
 	$SkillTooltip.show()
 	$SkillTooltip/icon.texture = skill.icon
