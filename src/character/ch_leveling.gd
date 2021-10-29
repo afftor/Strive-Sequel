@@ -89,7 +89,7 @@ func get_next_class_exp():
 #	var professions = parent.get_stat('professions')
 	var currentclassnumber = professions.size()
 	var growth_factor = parent.get_stat('growth_factor')
-	if professions.has("master"): currentclassnumber -= 1
+	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
 	var exparray
 	var value = 0
 	if currentclassnumber < growth_factor * variables.class_cap_per_growth + variables.class_cap_basic:
@@ -338,6 +338,7 @@ func remove_from_work_quest():
 
 
 func get_obed_drain(value):
+	if parent.has_profession('master') or parent.has_profession('spouse'): return 0.0
 	var rule_bonus = 0.0
 	if work_rules.luxury: rule_bonus = 0.25
 	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
@@ -348,7 +349,7 @@ func predict_obed_time():
 	return parent.get_stat('obedience') / get_obed_drain(1)
 
 func check_infinite_obedience():
-	return get_obed_drain(1) == 0 || parent.has_profession('master')
+	return get_obed_drain(1) == 0 or parent.has_profession('master') or parent.has_profession('spouse')
 
 func work_tick():
 	if is_on_quest():

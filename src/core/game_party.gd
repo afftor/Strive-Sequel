@@ -102,6 +102,14 @@ func get_master():
 			return i
 	return null
 
+func get_spouse():
+	var tmp = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse) 
+	if tmp == null: return null
+	if !tmp.is_active: return null
+	if !tmp.is_players_character: return null
+	return tmp
+
+
 func get_unique_slave(code):
 	for i in characters.values():
 		if i.get_stat('unique') == code:
