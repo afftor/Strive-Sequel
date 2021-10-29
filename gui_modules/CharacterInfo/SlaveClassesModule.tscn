@@ -260,6 +260,7 @@ __meta__ = {
 }
 
 [node name="ClassPanel" type="Panel" parent="."]
+visible = false
 light_mask = 0
 margin_left = 970.0
 margin_top = -130.0
@@ -828,6 +829,7 @@ margin_left = 125.0
 margin_top = 48.0
 margin_right = 676.0
 margin_bottom = 117.0
+theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 44 )
 text = "Distract 12-20 dmg text"
 __meta__ = {

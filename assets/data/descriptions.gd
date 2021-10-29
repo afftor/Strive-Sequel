@@ -612,16 +612,3 @@ func get_class_traits_no_icons(newperson, classdata):
 			text += "{color=brown|" + trait.name + "}: "
 		text += trait.descript + "\n"
 	return globals.TextEncoder(text)
-
-#if i.trait == "basic_spells":
-#	$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
-#	globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_SPELLS"))
-#if i.trait == "advanced_spells":
-#	$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
-#	globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_SPELLS"))
-#if i.trait == "basic_combat":
-#	$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
-#	globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_COMBAT"))
-#if i.trait == "advanced_combat":
-#	$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
-#	globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_COMBAT"))

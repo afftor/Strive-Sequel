@@ -16,6 +16,7 @@ var unlocked_classes = []
 
 var seen_dialogues = []
 var selected_dialogues = []
+var daily_dialogues = []
 
 var stored_events = {
 	timed_events = [],

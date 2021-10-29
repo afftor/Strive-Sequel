@@ -753,6 +753,16 @@ func handle_scene_options():
 					disable = true
 				else:
 					continue
+			if i.has("repeat_next_day"):
+				var cont = false
+				for d in ResourceScripts.game_progress.daily_dialogues:
+					if d.option == i.code:
+						if d.last_activation >= ResourceScripts.game_globals.date:
+							cont = true
+							break
+				if cont:
+					continue
+			
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set_meta("id", id)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
@@ -768,6 +778,7 @@ func handle_scene_options():
 			newbutton.get_node("Label").rect_size.y += 8
 			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
 			newbutton.connect("pressed",self,'select_option', [option_number - 1])
+			
 			
 			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
 				newbutton.status = 'seen'
@@ -805,6 +816,18 @@ func select_option(number):
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
+	
+	if option.has("repeat_next_day"):
+		var dup = false
+		for i in ResourceScripts.game_progress.daily_dialogues:
+			if i.option == option.code:
+				i.last_activation = ResourceScripts.game_globals.date
+				dup = true
+		if !dup:
+			ResourceScripts.game_progress.daily_dialogues.append({
+				option = option.code,
+				last_activation = ResourceScripts.game_globals.date
+			})
 	
 	input_handler.dialogue_option_selected(option) #need to remove this at next rework
 	if option.has('bonus_effects'):

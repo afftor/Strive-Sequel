@@ -159,8 +159,8 @@ var data = {
 				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png", orflag = true},
 				]}], dialogue_argument = 2},
 			{ # Serve
-			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true, negative = 'repeat_next_day'},
-			{type = "decision", value = "DaisyDressLewd", check = true, negative = 'repeat_next_day', orflag = true}], dialogue_argument = 3, 
+			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true},
+			{type = "decision", value = "DaisyDressLewd", check = true, orflag = true}], dialogue_argument = 3, repeat_next_day = true
 		}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4},
 		],

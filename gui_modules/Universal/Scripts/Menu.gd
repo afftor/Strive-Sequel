@@ -19,7 +19,7 @@ func _ready():
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
 	$VBoxContainer/gallery.connect("pressed", self, "gallery")
-	#$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
+	#$char_sprite.texture = images.sprites[images.sprites.keys()[randi() %images.sprites.keys().size()]]
 	$char_sprite.texture = images.sprites[input_handler.progress_data.characters[randi()%input_handler.progress_data.characters.size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
