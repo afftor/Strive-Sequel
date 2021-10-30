@@ -142,6 +142,9 @@ var data = {
 		text = [
 			{text = "", reqs = []}
 		],
+		common_effects = [
+#			{code = 'add_timed_event', value = "zephyra_artifacts_init", args = [{type = 'add_to_date', date = [1,1], hour = 8}], }, 
+			 ],
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 1}
 		]
