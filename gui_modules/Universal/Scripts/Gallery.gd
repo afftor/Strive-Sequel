@@ -69,7 +69,7 @@ func build_gallery(page):
 		var node = input_handler.DuplicateContainerTemplate($ImageContainer)
 		if !src_unlock.has(src[i]):
 			node.disabled = true
-			node.get_node("Image").texture = load("res://assets/Textures_v2/Travel new 2021/placer_travel_question.png")
+			node.get_node("Image").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
 		else:
 			if state == "scenes":
 				node.get_node("Image").texture = images.backgrounds[Gallery.get_image_for_seq(src[i])]

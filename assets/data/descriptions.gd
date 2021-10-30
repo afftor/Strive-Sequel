@@ -601,3 +601,14 @@ func get_class_traits(newperson, classdata):
 			text += "{color=brown|" + trait.name + "}: "
 		text += trait.descript + "\n"
 	return globals.TextEncoder(text)
+
+func get_class_traits_no_icons(newperson, classdata):
+	var text = ''
+	for i in classdata.traits:
+		if i == "basic_spells" or i == "advanced_spells" or i == "basic_combat" or i == "advanced_combat":
+			continue
+		var trait = Traitdata.traits[i]
+		if trait.name.to_upper() != trait.name:
+			text += "{color=brown|" + trait.name + "}: "
+		text += trait.descript + "\n"
+	return globals.TextEncoder(text)

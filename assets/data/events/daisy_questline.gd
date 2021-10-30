@@ -199,6 +199,13 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'growth_factor', value = 1, operant = "+"},
+					]
+				},
 			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}]
 		} ],
 	},
@@ -223,6 +230,13 @@ var data = {
 			options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'growth_factor', value = 1, operant = "+"},
+					]
+				},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			} ],
 		} ]
@@ -324,6 +338,13 @@ var data = {
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
 				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'growth_factor', value = 1, operant = "+"},
+					]
+				},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			}
 		],
@@ -356,6 +377,13 @@ var data = {
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'growth_factor', value = 1, operant = "+"},
+					]
+				},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 		} ],
 	},
@@ -495,6 +523,13 @@ var data = {
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
 				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'growth_factor', value = 1, operant = "+"},
+					]
+				},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 8}]}],
 			}
 		],
@@ -779,7 +814,6 @@ var data = {
 						{code = 'sex_skills_anal', operant = "+", value = 15},
 					]
 				},
-
 			],
 		options = [ {
 			code = 'training_complete_fucktoy_2', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2

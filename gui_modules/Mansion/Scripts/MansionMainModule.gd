@@ -591,7 +591,7 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
-		character.set_slave_category('servant')
+		character.set_slave_category('heir')
 		character.set_stat('obedience', 0)
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
@@ -647,14 +647,6 @@ func test_mode():
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
 
-		var character2 = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.set_stat('food_love', "meat")
-		character.set_stat('food_hate', ["grain"])
-		character2.create('Elf', 'random', 'random')
-		character2.set_stat('charm', 0)
-		character2.set_stat('physics', 0)
-		character2.set_stat('wits', 0)
-		character2.set_stat('sexuals', 0)
 		var text = ''
 #		for i in races.tasklist.values():
 #			for k in i.production.values():
@@ -733,12 +725,17 @@ func test_mode():
 
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Aire'},
+				{code = 'make_story_character', value = 'Lilia'},
 			]
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Lilith'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
 		globals.common_effects(
@@ -746,11 +743,11 @@ func test_mode():
 				{code = 'make_story_character', value = 'Zephyra'},
 			]
 		)
-		globals.common_effects(
-			[
-				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
-			]
-		)
+#		globals.common_effects(
+#			[
+#				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
+#			]
+#		)
 
 		ResourceScripts.game_res.money = 80000
 		#globals.common_effects("add_money")
@@ -846,7 +843,7 @@ func test_mode():
 
 #		ResourceScripts.game_res.materials.meat = 0
 #		input_handler.interactive_message('after_election_answer1', '', {})
-#		input_handler.interactive_message('daisy_admirer_first_event_1', '', {})
+#		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 
@@ -865,5 +862,5 @@ func test_mode():
 
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
-		input_handler.add_random_chat_message(character2, 'hire')
+		#input_handler.add_random_chat_message(character2, 'hire')
 		

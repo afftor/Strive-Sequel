@@ -475,6 +475,7 @@ var date_lines = {
 		
 	],
 	agreed_to_marry_prev = [
+		["{^[name2]:[race2] [boy2]} looks at you slightly puzzled. [He2] already agreed to this before.",1],
 	],
 	agreed_to_marry = [
 		["{^[name2]:[race2] [boy2]} face reddens and shines up upon hearing your words.",1],
@@ -998,7 +999,6 @@ func ask_to_marry(person, counter):
 		text += "}"
 		return text
 	
-	var result = false
 	
 	if person.get_stat('agreed_to_marry') == true:
 		gave_consent = true
@@ -1012,8 +1012,8 @@ func ask_to_marry(person, counter):
 		if unique_marry_rules.has(person.get_stat('unique')):
 			for i in unique_marry_rules[person.get_stat('unique')]:
 				if globals.valuecheck(i.reqs):
-					result = i.agrees
-					if result:
+					gave_consent = i.agrees
+					if gave_consent:
 						text += "{color=green|"
 						text += input_handler.weightedrandom(date_lines.agreed_to_marry)
 					else:
@@ -1024,10 +1024,10 @@ func ask_to_marry(person, counter):
 						
 					break
 		else:
-			result = true
+			gave_consent = true
 	
 		
-	if result:
+	if gave_consent:
 		person.set_stat('agreed_to_marry', true)
 		self.mood += 50
 		text += "{color=green|"

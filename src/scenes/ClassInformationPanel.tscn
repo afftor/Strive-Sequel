@@ -11,7 +11,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=10]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 700, 820 )
@@ -109,9 +108,31 @@ margin_bottom = 254.0
 texture = ExtResource( 3 )
 expand = true
 
+[node name="ReqIcons" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 266.0
+margin_right = 232.0
+margin_bottom = 324.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="ReqIcons"]
+visible = false
+margin_left = 81.0
+margin_right = 131.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="reqs" type="RichTextLabel" parent="."]
 margin_left = 20.0
-margin_top = 263.0
+margin_top = 365.0
 margin_right = 233.0
 margin_bottom = 533.0
 custom_fonts/normal_font = SubResource( 4 )

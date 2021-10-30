@@ -596,6 +596,7 @@ var slave_class_names = {
 	servant = 'Peon',
 	'master' : '[Master]',
 	hireling = 'Hireling',
+	heir = "Heir"
 }
 
 var worktoolnames = {

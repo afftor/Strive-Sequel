@@ -9,6 +9,7 @@ func _ready():
 
 
 func open(classcode, person):
+	input_handler.ClearContainer($ReqIcons, ["Icon"])
 	var tempclass = classesdata.professions[classcode]
 	$TextureRect.texture = tempclass.icon
 	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
@@ -23,8 +24,24 @@ func open(classcode, person):
 	var text = ResourceScripts.descriptions.get_class_bonuses(person, tempclass) 
 	if text != '':
 		text += '\n' 
-	text += ResourceScripts.descriptions.get_class_traits(person, tempclass)
+	text += ResourceScripts.descriptions.get_class_traits_no_icons(person, tempclass)
 	$bonus.bbcode_text = text
+	for i in tempclass.traits:
+		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
+		if i == "basic_spells":
+			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
+			globals.connecttexttooltip(newicon, tr("TRAITBASIC_SPELLS"))
+		if i == "advanced_spells":
+			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
+			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_SPELLS"))
+		if i == "basic_combat":
+			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
+			globals.connecttexttooltip(newicon, tr("TRAITBASIC_COMBAT"))
+		if i == "advanced_combat":
+			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
+			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_COMBAT"))
+		if newicon.texture == null:
+			$ReqIcons.remove_child(newicon)
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
