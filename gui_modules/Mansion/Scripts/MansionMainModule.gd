@@ -591,7 +591,7 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
-		character.set_slave_category('servant')
+		character.set_slave_category('heir')
 		character.set_stat('obedience', 0)
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
@@ -647,14 +647,6 @@ func test_mode():
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
 
-		var character2 = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.set_stat('food_love', "meat")
-		character.set_stat('food_hate', ["grain"])
-		character2.create('Elf', 'random', 'random')
-		character2.set_stat('charm', 0)
-		character2.set_stat('physics', 0)
-		character2.set_stat('wits', 0)
-		character2.set_stat('sexuals', 0)
 		var text = ''
 #		for i in races.tasklist.values():
 #			for k in i.production.values():
@@ -870,5 +862,5 @@ func test_mode():
 
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
-		input_handler.add_random_chat_message(character2, 'hire')
+		#input_handler.add_random_chat_message(character2, 'hire')
 		

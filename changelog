@@ -14,6 +14,11 @@ Unique characters and Mastern now display in different color in main list
 
 Added description and slightly improved "Turn Undead" skill of necromancer
 
+Presets:
+Advanced starts with only 1 Writ of Exemption
+Sandbox now starts with 1000 reputation for each guild
+
+
 Fixed caster showing up without purchasing the class first
 Fixed Amelia's sidequest not giving out the reward
 0.5.4
