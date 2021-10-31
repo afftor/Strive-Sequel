@@ -699,7 +699,6 @@ func test_mode():
 		character.hp = 95
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.set_slave_category('slave')
 		character.add_stat('lust', 100)
 		character.set_stat("tame_factor", 1)
 		#character.unlock_class("dancer")

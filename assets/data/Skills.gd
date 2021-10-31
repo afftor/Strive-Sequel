@@ -1465,7 +1465,7 @@ var Skilllist = {
 		code = 'rejuvenation',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		icon = load("res://assets/images/iconsskills/rejuvenation.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
@@ -1493,7 +1493,7 @@ var Skilllist = {
 		code = 'sanctuary',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		icon = load("res://assets/images/iconsskills/sanctuary.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],
@@ -1521,7 +1521,7 @@ var Skilllist = {
 		code = 'restoration',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/lesserheal.png"),
+		icon = load("res://assets/images/iconsskills/restoration.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration','learnable'],

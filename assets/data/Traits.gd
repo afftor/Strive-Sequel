@@ -374,7 +374,7 @@ var traits = {
 		code = 'undead',
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconsskills/TurnUndead.png",
+		icon = "res://assets/images/iconsskills/trait_undead.pngg",
 		visible = true,
 		effects = [],
 	},
