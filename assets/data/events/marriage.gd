@@ -5,7 +5,7 @@ var data = {
 				reqs = [{code = "decision", value = "mayor_election_finished", check = true}], #main 
 				image = null, 
 				tags = ['dialogue_scene'],
-				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = []}],
+				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'marriage_church_2', text = "SELECT", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 						{code = 'close', text = "CANCEL", reqs = []}
@@ -15,7 +15,7 @@ var data = {
 				reqs = [], #default
 				image = null, 
 				tags = [],
-				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = []}],
+				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'close', text = "DIALOGUECLOSE", reqs = []}
 					],
