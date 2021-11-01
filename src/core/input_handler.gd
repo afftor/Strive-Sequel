@@ -408,7 +408,7 @@ func _input(event):
 					gui_controller.clock.show()
 		gui_controller.update_modules()
 #	if !text_field_input:
-	if CurrentScene == null or !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
+	if  CurrentScene is Control and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
 		if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 			var num = event.as_text().replace("Kp ",'')
 			var tnode = get_tree().get_root().get_node_or_null("dialogue")
