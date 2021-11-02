@@ -200,7 +200,7 @@
 						# {code = 'complete_quest', value = 'aliron_church_quest'},
 						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
-						{code = "unlock_class", name = "acolyte"},
+						{code = "unlock_class", name = "priest"},
 						{code = 'reset_day_count', quest = "aliron_church"},
 						{code = 'complete_quest', value = 'aliron_church_quest'},
 				]}],	

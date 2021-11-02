@@ -584,7 +584,7 @@ func test_mode():
 		#character.get_stat('pregnancy').duration = 10
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('Elf', 'male', 'random')
+		character.create('Elf', 'female', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		# character.assign_to_quest_and_make_unavalible()
