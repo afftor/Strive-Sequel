@@ -6,7 +6,7 @@ var data = {
 				image = null, 
 				tags = ['dialogue_scene'],
 				custom_background = "church_event", character = "ginny",
-				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = []}],
+				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'marriage_church_2', text = "SELECT", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 						{code = 'close', text = "CANCEL", reqs = []}
@@ -17,7 +17,7 @@ var data = {
 				image = null, 
 				tags = [],
 				custom_background = "church_event", character = "ginny",
-				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = []}],
+				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'close', text = "DIALOGUECLOSE", reqs = []}
 					],

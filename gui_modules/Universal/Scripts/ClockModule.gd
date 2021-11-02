@@ -97,6 +97,7 @@ func advance_turn():
 		number -= 1
 	rotate_sky()
 	gui_controller.mansion.SlaveListModule.rebuild()
+	gui_controller.mansion.SkillModule.build_skill_panel()
 
 
 func update_labels():

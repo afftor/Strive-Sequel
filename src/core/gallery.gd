@@ -1,6 +1,8 @@
 extends Node
+#it is important for scenes seqs to have scenes with correct and actual change_dialogue_type commands - for it is currently difficult to analyse those changes and adding commands to option accordingly
+#so in a sample seq _8 and _4 are the most important
 var scenes = {
-	test_scene = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4"], #sample
+	test_scene = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4", "princess_sex_good_5", "princess_sex_good_6", "princess_sex_good_7", "princess_sex_good_8"], #sample
 }
 #was forced to add a id to scene lists for inlock purpose
 var scenes_order = ['test_scene']
@@ -62,21 +64,29 @@ func process_scene_seq(scene_list):
 		#2add syntax for passing direct order to change dialogue type (or simply remove this nonsence)
 		#modifying options
 		var new_options = []
-		if i == scene_list.size() - 1:
-			new_options.push_back(close_template.duplicate())
-		else:
-			for option in data.options:
-				if new_options.size() > 0: break
-				var nscene = scene_list[i+1]
-				if typeof(nscene) == TYPE_DICTIONARY:
-					nscene = nscene.scene
-				if option.code != nscene: continue
-				var toption = option.duplicate(true)
-				if toption.has("reqs"): toption.reqs.clear()
-				if toption.has("bonus_effects"): toption.erase("bonus_effects")
+#		if i == scene_list.size() - 1:
+#			new_options.push_back(close_template.duplicate())
+#		else:
+		for option in data.options:
+			if new_options.size() > 0: break
+			var nscene
+			if i == scene_list.size() - 1:
+				nscene = 'close'
+			else:
+				nscene = scene_list[i+1]
+			if typeof(nscene) == TYPE_DICTIONARY:
+				nscene = nscene.scene
+			if option.code != nscene: continue
+			var toption = option.duplicate(true)
+			if toption.has("reqs"): toption.reqs.clear()
+			if toption.has("bonus_effects"): toption.erase("bonus_effects")
+			if i < scene_list.size() - 1: 
 				toption.code = toption.code + "_gallery"
-				new_options.push_back(toption)
-			if new_options.empty():
+			new_options.push_back(toption)
+		if new_options.empty():
+			if i == scene_list.size() - 1:
+				new_options.push_back(close_template.duplicate())
+			else:
 				var option = continue_template.duplicate()
 				var nscene = scene_list[i+1]
 				if typeof(nscene) == TYPE_DICTIONARY:

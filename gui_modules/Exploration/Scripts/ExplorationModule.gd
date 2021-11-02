@@ -461,7 +461,7 @@ func use_e_combat_skill(caster, target, skill):
 			'line':
 				targets = []
 				var tpos = target.combat_position
-				for line in variables.lines:
+				for line in variables.lines.values():
 					if !line.has(tpos): continue
 					for pos in line:
 						if active_location.group.has('pos' + str(pos)):
@@ -470,7 +470,7 @@ func use_e_combat_skill(caster, target, skill):
 			'row':
 				targets = []
 				var tpos = target.combat_position
-				for line in variables.rows:
+				for line in variables.rows.values():
 					if !line.has(tpos): continue
 					for pos in line:
 						if active_location.group.has('pos' + str(pos)):

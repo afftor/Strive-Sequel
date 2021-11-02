@@ -550,12 +550,12 @@ var TranslationDict = {
 
 	SKILLCOMMAND = "Command",
 	SKILLCOMMANDDESCRIPT = "Increase target's damage by 25% for 3 turns.",
-	SKILLRESTORATION = "",
-	SKILLRESTORATIONDESCRIPT = "",
-	SKILLREJUVENATION = "",
-	SKILLREJUVENATIONDESCRIPT = "",
-	SKILLSANCTUARY = "",
-	SKILLSANCTUARYDESCRIPT = "",
+	SKILLRESTORATION = "Restoration",
+	SKILLRESTORATIONDESCRIPT = "Greatly heals one target and applies buff: -20% damage received for 2 turns ",
+	SKILLREJUVENATION = "Rejuvination",
+	SKILLREJUVENATIONDESCRIPT = "Heals 1 row and applies additional regeneration for 2 turns",
+	SKILLSANCTUARY = "Sanctuary",
+	SKILLSANCTUARYDESCRIPT = "Heals all targets and applies additional regeneration for 3 turns",
 	SKILLTRAP = "Trap",
 	SKILLTRAPDESCRIPT = "Sets trap under enemy. After using Skill it will be stunned for 2 turns. Requires 1 Trap component.",
 	SKILLWEAPON_REFINE = "Weapon Refine",
@@ -583,7 +583,7 @@ var TranslationDict = {
 	SKILLSERRATED_SHOT = "Serrated Shot",
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
-	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all allies.",
+	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to one column.",
 	SKILLBLIZZARD = "Blizzard",
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
@@ -638,7 +638,7 @@ var TranslationDict = {
 	SKILLOVERGROWTH = "Overgrowth",
 	SKILLOVERGROWTHDESCRIPT = "Deals Earth magic damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health. Requires 1 Bandage to use.",
 
 	SKILLENDURE = "Endure",
 	SKILLENDUREDESCRIPT = "Increase all resistances by 20% for 2 turns.",
@@ -816,7 +816,7 @@ var TranslationDict = {
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
-	HEIRCLASSDESCRIPT = "2ADD",
+	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower, Loyalty grows 25% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
 
@@ -1425,7 +1425,7 @@ var TranslationDict = {
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
-	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master].",
+	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience no longer decay. Authority effect from social skills: +30%.",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
@@ -2235,7 +2235,13 @@ var TranslationDict = {
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
-
+	
+	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
+	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. ",
+	MARRY2TUTORIAL = "Your spouse will receive a new class. Their growth will be set to maximum and their obedience will no longer drain. Also your mutual children will be of status [color=aqua]Heir[/color], which will have them slower Obedience drain and higher loyalty gain, however they receive penalty on Collection, Farming and Fishing. ",
+	
+	
+	
 	ITEMHAIRDYE = "Hair Dye",
 	ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
 
@@ -6050,7 +6056,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_CHURCH_TEXT_2 = """- I see, I see, I'm glad you found someone dear to your heart. I'm allowed to engage you, but the service is going to cost 500 gold.""",
 	PAY = """Pay.""",
 	MARRIAGE_CHURCH_TEXT_3 = """- Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as deliveries and guests. Servants guild can usually help you with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild sew those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
-	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we acn start it.""",
+	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we can start it.""",
 	MARRIAGE_CHURCH_CLOSE_OPTION = """Thanks for the directions""",
 	MARRIAGE_SERVANTS_INIT = "I'm holding a wedding...",
 	MARRIAGE_SERVANTS_1_1 = """- Finally going to seal the deal with our little princess? That's great news. """,
@@ -6072,6 +6078,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_FINAL_INIT = """- Beautiful! In that case, we'll start tomorrow. """,
 	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia brought their tools and waited for the start. Large trays of exquisite fresh food and ingredients were stocked in the kitchen. \n\nFirst guests have made their attempt to get on the good foot with you and delivered first presents. As noon drew closer, you moved to the church.""",
 	MARRIAGE_ANASTASIA_1 = """Anastasia was preparing for the upcoming ceremony as Aire tried to support her.
+
 {color=yellow|Aire: - You are too red, Ana.}
 
 {color=aqua|Anastasia: - Of course I am! Don't you realize how frightening this is?}
