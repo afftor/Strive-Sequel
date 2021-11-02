@@ -267,6 +267,7 @@ func skill_selected(skill):
 	$SkillTooltip/req_icon.texture = null
 	globals.connecttexttooltip($SkillTooltip/req_icon, "")
 	$SkillTooltip/req_icon.hint_tooltip = ""
+	$SkillTooltip/usage.text = "0"
 	$SkillTooltip/unlock_button.disabled = false
 	$SkillTooltip/exp.set("custom_colors/font_color", "#f9e380")
 	if skill.learn_cost > person.get_ability_experience():

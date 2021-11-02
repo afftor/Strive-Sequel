@@ -128,6 +128,8 @@ var TranslationDict = {
 	MATERIALINK_LUST = "Ink: Passion",
 	MATERIALINK_HP = "Ink: Nature",
 	MATERIALINK_MP = "Ink: Spiritual",
+	MATERIALHERBS = "",
+	MATERIALHERBSDESCRIPT = "",
 	MATERIALINK_TRIBAL = "Ink: Power",
 	MATERIALINK_BRANDINGDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.\n\nApplied to: {color=yellow|Neck, Ass, Crotch}\n\nReduce Obedience drain by 25%.\nCan only be applied once.",
 	MATERIALINK_MAKEUPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. While makeup might not be enough to turn the Beast into the Beauty, its a favorable option for the lazy.\n\nApplied to: {color=yellow|Face}\n\nCharm: +10.",

@@ -1450,6 +1450,8 @@ func common_effects(effects):
 					while counter > 0:
 						counter -= 1
 						AddItemToInventory(CreateGearItem(item.code, {}))
+			'remove_item':
+				ResourceScripts.game_res.remove_item(i.name, i.number)
 			'unlock_asset':
 				input_handler.update_progress_data(i.dir, i.key)
 			'set_spouse':

@@ -127,7 +127,7 @@
 			
 			{code = 'divine_symbol_1', text = "DIVINE_SYMBOL_OPTION_1", dialogue_argument = 5, type = 'next_dialogue', reqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage1'}], remove_after_first_use = true},
 			{code = 'divine_symbol_5', text = "DIVINE_SYMBOL_OPTION_7", dialogue_argument = 6, type = 'next_dialogue', reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'divine_symbol'},{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'}]},
-			{code = 'marriage_church_1', text = "MARRIAGE_CHURCH_CORE", reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage1'}], dialogue_argument = 1 },
+			{code = 'marriage_church_1', text = "MARRIAGE_CHURCH_CORE", reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2', state = false}], dialogue_argument = 1 },
 			{code = 'marriage_final_init', text = "MARRIAGE_CHURCH_FINISH_CORE", reqs = [
 				{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'},
 				{type = 'quest_completed', name = 'marriage_quest_servants'},

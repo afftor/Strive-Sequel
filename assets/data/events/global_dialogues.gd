@@ -118,13 +118,13 @@ var data = {
 		{code = 'marriage_servants_1', text = "MARRIAGE_SERVANTS_INIT", reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'},{type = 'dialogue_seen', check = false, value = 'MARRIAGE_SERVANTS_1_3'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'marriage_servants_completed_1', text = "MARRIAGE_SERVANTS_COMPLETE_OPTION", reqs = [
 			{type = 'active_quest_stage', value = 'marriage_quest_servants', stage = 'stage1'},
-			{code = 'money_change', operant = '-', value = 3000},
-			{code = 'material_change', operant = '-', material = 'fish', value = 200},
-			{code = 'material_change', operant = '-', material = 'meat', value = 200},
-			{code = 'material_change', operant = '-', material = 'vegetables', value = 200},
-			{code = 'material_change', operant = '-', material = 'grains', value = 200},
-			{code = 'material_change', operant = '-', material = 'beer', value = 25},
-			{code = 'material_change', operant = '-', material = 'alcohol', value = 10},
+			{type = 'has_money', value = 3000},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'fish'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'meat'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'vegetables'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'grain'},
+			{type = 'has_items', operant = 'gte', value = 25, name = 'beer'},
+			{type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'}
 		], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
