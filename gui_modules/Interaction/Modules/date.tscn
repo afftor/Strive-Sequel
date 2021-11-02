@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=40]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=41]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -281,6 +282,7 @@ margin_right = 757.0
 margin_bottom = 448.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource( 41 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -295,7 +297,7 @@ columns = 3
 [node name="Button" type="Button" parent="panel/ScrollContainer/GridContainer"]
 visible = false
 margin_right = 200.0
-margin_bottom = 40.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 200, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0

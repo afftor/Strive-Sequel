@@ -128,6 +128,8 @@ var TranslationDict = {
 	MATERIALINK_LUST = "Ink: Passion",
 	MATERIALINK_HP = "Ink: Nature",
 	MATERIALINK_MP = "Ink: Spiritual",
+	MATERIALHERBS = "",
+	MATERIALHERBSDESCRIPT = "",
 	MATERIALINK_TRIBAL = "Ink: Power",
 	MATERIALINK_BRANDINGDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.\n\nApplied to: {color=yellow|Neck, Ass, Crotch}\n\nReduce Obedience drain by 25%.\nCan only be applied once.",
 	MATERIALINK_MAKEUPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. While makeup might not be enough to turn the Beast into the Beauty, its a favorable option for the lazy.\n\nApplied to: {color=yellow|Face}\n\nCharm: +10.",
@@ -6054,7 +6056,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_CHURCH_TEXT_2 = """- I see, I see, I'm glad you found someone dear to your heart. I'm allowed to engage you, but the service is going to cost 500 gold.""",
 	PAY = """Pay.""",
 	MARRIAGE_CHURCH_TEXT_3 = """- Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as deliveries and guests. Servants guild can usually help you with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild sew those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
-	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we acn start it.""",
+	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we can start it.""",
 	MARRIAGE_CHURCH_CLOSE_OPTION = """Thanks for the directions""",
 	MARRIAGE_SERVANTS_INIT = "I'm holding a wedding...",
 	MARRIAGE_SERVANTS_1_1 = """- Finally going to seal the deal with our little princess? That's great news. """,
@@ -6076,6 +6078,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_FINAL_INIT = """- Beautiful! In that case, we'll start tomorrow. """,
 	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia brought their tools and waited for the start. Large trays of exquisite fresh food and ingredients were stocked in the kitchen. \n\nFirst guests have made their attempt to get on the good foot with you and delivered first presents. As noon drew closer, you moved to the church.""",
 	MARRIAGE_ANASTASIA_1 = """Anastasia was preparing for the upcoming ceremony as Aire tried to support her.
+
 {color=yellow|Aire: - You are too red, Ana.}
 
 {color=aqua|Anastasia: - Of course I am! Don't you realize how frightening this is?}
