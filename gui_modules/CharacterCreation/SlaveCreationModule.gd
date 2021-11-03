@@ -28,11 +28,6 @@ func _ready():
 
 func build_bodyparts():
 	var person = get_parent().person
-	$ScrollContainer/HBoxContainer/bodyparts2/personality.visible = get_parent().mode != 'master'
-	$ScrollContainer/HBoxContainer/bodyparts2/label_personality.visible = get_parent().mode != 'master'
-	$ScrollContainer/HBoxContainer/bodyparts2/personality.select(variables.personality_array.find(person.get_stat('personality')))
-	$ScrollContainer/HBoxContainer/bodyparts2/type_label.visible = get_parent().mode != 'master'
-	$ScrollContainer/HBoxContainer/bodyparts2/slave_class.visible = get_parent().mode != 'master'
 
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	for i in get_parent().bodypartsarray:
@@ -46,7 +41,7 @@ func build_bodyparts():
 		# else:
 		# 	if get_parent().preservedsettings.has(i):
 		# 		get_parent().preservedsettings[i] = ''
-
+	
 		var workarray = []
 		if racedata.has(i):
 			workarray = racedata[i]
@@ -58,36 +53,38 @@ func build_bodyparts():
 			if get_parent().preservedsettings.has(i) and get_parent().preservedsettings[i] == k:
 				preserved_option_exists = true
 				$ScrollContainer/HBoxContainer/bodyparts.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count()-1)
-
+	
 		if preserved_option_exists == false:
 			# get_parent().preservedsettings.erase(i)
 			get_parent().preservedsettings[i] = person.get_stat(i)
 			#preservedsettings[i] = person.get(i)
 			#print(i, person.get(i))
-
+	
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).disabled = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() == 1
-
+	
 		if $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() == 0:
 			get_parent().preservedsettings.erase(i)
-
+	
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).visible = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count() != 0
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i+'_label').visible = $ScrollContainer/HBoxContainer/bodyparts.get_node(i).visible
 	for i in get_parent().sexbodypartsarray:
-		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).clear()
+		if i != 'slave_class':
+			$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).clear()
+		else:
+			if get_parent().preservedsettings.has(i):
+				$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).select(slave_classes.find(get_parent().preservedsettings[i]))
 		var current_bodypart = person.get_stat(i)
-
+		
 		if get_parent().preservedsettings.has(i) == false && current_bodypart != '':
 			get_parent().preservedsettings[i] = current_bodypart
-
-
+		
 		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(get_parent().preservedsettings[i]):
 			person.set_stat(i, racedata[i][randi()%racedata[i].size()])
 			get_parent().preservedsettings[i] = person.get_stat(i)
 		elif i == 'penis_type' && racedata.has(i) == false && get_parent().preservedsettings[i] != 'human':
 			person.set_stat(i, 'human')
 			get_parent().preservedsettings[i] = person.get_stat(i)
-
-
+		
 		match person.get_stat('sex'):
 			'male':
 				$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).visible = true
@@ -110,7 +107,7 @@ func build_bodyparts():
 				elif i in ['penis_size', 'penis_type']:
 					$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).visible = true
 					$ScrollContainer/HBoxContainer/bodyparts2.get_node(i + "_label").visible = true
-
+		
 		if person.get_stat('sex') == 'male':
 			match i:
 				'penis_size', 'balls_size':
@@ -130,21 +127,21 @@ func build_bodyparts():
 						$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(k)
 						if get_parent().preservedsettings.has(i) && get_parent().preservedsettings[i] == k:
 							$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count()-1)
-
+	
 				'tits_size', 'ass_size':
 					for k in get_parent().sizes:
 						$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(k)
 						if get_parent().preservedsettings.has(i) && get_parent().preservedsettings[i] == k:
 							$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count()-1)
-
+	
 		if i == 'penis_type':
 			$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).add_item(person.get_stat('penis_type'))
 
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).disabled = $ScrollContainer/HBoxContainer/bodyparts2.get_node(i).get_item_count() == 1
-
+	
 	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).pressed = person.get_stat(i)
-
+	
 	match person.get_stat('sex'):
 		'male':
 			$ScrollContainer/HBoxContainer/bodyparts2/penis_virgin.visible = true
@@ -155,6 +152,12 @@ func build_bodyparts():
 		'futa':
 			$ScrollContainer/HBoxContainer/bodyparts2/penis_virgin.visible = true
 			$ScrollContainer/HBoxContainer/bodyparts2/vaginal_virgin.visible = true
+	
+	$ScrollContainer/HBoxContainer/bodyparts2/personality.visible = get_parent().mode != 'master'
+	$ScrollContainer/HBoxContainer/bodyparts2/label_personality.visible = get_parent().mode != 'master'
+	$ScrollContainer/HBoxContainer/bodyparts2/personality.select(variables.personality_array.find(person.get_stat('personality')))
+	$ScrollContainer/HBoxContainer/bodyparts2/slave_class_label.visible = get_parent().mode != 'master'
+	$ScrollContainer/HBoxContainer/bodyparts2/slave_class.visible = get_parent().mode != 'master'
 
 
 func select_bodypart(value, bodypart, node):
