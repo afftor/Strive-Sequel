@@ -453,6 +453,7 @@ func LoadCharacter(updated_char_to_load = null):
 		for i in stats_array:
 			character_to_load[i] = 1
 	selected_class = character_to_load.professions
+	update_class_button()
 	for i in character_to_load:
 		if i == "food_love":
 			person.food.food_love = character_to_load["food_love"]
