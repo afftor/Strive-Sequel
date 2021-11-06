@@ -1,3 +1,7 @@
+New content:
+Added postresque daisy scene
+Added marriage sidequest (available after finishing civil war arc)
+
 Combat Abilities rework:
 Now most of combat skills are purchasable with new ability experience
 Ability experience is obtained from combats
@@ -9,7 +13,6 @@ Healer class renamed to Acolyte
 Skills are locked behind Combat/Spellcasting traits provided by classes
 "Weapon mastery" and "Magic Tools" traits removed and their dependants are replaced by combat/spellcasting traits
 Extra furry nipples and furries are set to false by default
-
 
 Unique characters and Mastern now display in different color in main list
 
@@ -23,7 +26,6 @@ Game start:
 Acolyte (replaces Healer) can be picked by Master and Mage guild follower
 Instead of Healer, church quest now unlocks Priest class
 Attendant is now Servants' Guild class option
-
 
 Fixed caster showing up without purchasing the class first
 Fixed Amelia's sidequest not giving out the reward

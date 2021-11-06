@@ -884,6 +884,21 @@ var professions = {
 		combatskills = ['command'],
 		conflict_classes = [],
 	},
+	broken_royalty = {
+		code = 'broken_royalty',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/renown.png"),
+		tags = [],
+		categories = ['social'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {mod_pros = 2},
+		traits = [],#'broken_royalty'],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
 
 	alios_champion = {
 		code = 'alios_champion',
