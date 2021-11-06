@@ -168,10 +168,16 @@ func initiate(tempperson):
 	self.fear = 0#person.fear
 	$fullbody.set_texture(null)
 	if person.get_body_image() != null:
-		var image = person.get_body_image()
-		if images.sprites.has(person.get_stat("unique")):
-			image = images.sprites[person.get_stat("unique")]
-			pass #print(image.get_path())
+#		var image = person.get_body_image()
+#		if images.sprites.has(person.get_stat("unique")):
+#			image = images.sprites[person.get_stat("unique")]
+#			pass #print(image.get_path())
+		var image
+		var non_body = person.statlist.statlist.body_image.replace("_body", "")
+		if images.sprites.has(non_body):
+			image = input_handler.loadimage(images.sprites[non_body], 'shades')
+		else:
+			image = person.get_body_image()
 		$fullbody.set_texture(image)
 	# $textfield/slaveportrait.texture = null
 

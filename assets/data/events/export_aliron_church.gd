@@ -130,8 +130,8 @@
 			{code = 'marriage_church_1', text = "MARRIAGE_CHURCH_CORE", reqs = [{type = 'dialogue_seen', value = 'MARRIAGE_CHURCH_TEXT_4', check = false}], dialogue_argument = 1 },
 			{code = 'marriage_final_init', text = "MARRIAGE_CHURCH_FINISH_CORE", reqs = [
 				{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'},
-				{type = 'quest_completed', name = 'marriage_quest_servants'},
-				{type = 'quest_completed', name = 'marriage_quest_workers'},
+				{type = 'quest_completed', name = 'marriage_quest_servants', check = true},
+				{type = 'quest_completed', name = 'marriage_quest_workers', check = true},
 				], dialogue_argument = 1},
 			
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4},
