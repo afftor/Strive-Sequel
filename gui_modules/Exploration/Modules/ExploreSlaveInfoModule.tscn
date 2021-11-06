@@ -16,9 +16,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=15]
 
-
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 970, 920 )
@@ -196,8 +193,8 @@ __meta__ = {
 }
 
 [node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_right = 98.0
-margin_bottom = 32.0
+margin_right = 96.0
+margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -206,18 +203,18 @@ text = "ATK:"
 align = 2
 
 [node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 112.0
-margin_right = 138.0
-margin_bottom = 32.0
+margin_left = 110.0
+margin_right = 136.0
+margin_bottom = 35.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 152.0
-margin_right = 280.0
-margin_bottom = 32.0
+margin_left = 150.0
+margin_right = 291.0
+margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -226,18 +223,18 @@ text = "MATK:"
 align = 2
 
 [node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 294.0
-margin_right = 320.0
-margin_bottom = 32.0
+margin_left = 305.0
+margin_right = 331.0
+margin_bottom = 35.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_top = 33.0
-margin_right = 98.0
-margin_bottom = 65.0
+margin_top = 36.0
+margin_right = 96.0
+margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -246,20 +243,20 @@ text = "DEF:"
 align = 2
 
 [node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 112.0
-margin_top = 33.0
-margin_right = 138.0
-margin_bottom = 65.0
+margin_left = 110.0
+margin_top = 36.0
+margin_right = 136.0
+margin_bottom = 71.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 152.0
-margin_top = 33.0
-margin_right = 280.0
-margin_bottom = 65.0
+margin_left = 150.0
+margin_top = 36.0
+margin_right = 291.0
+margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -268,19 +265,19 @@ text = "MDEF:"
 align = 2
 
 [node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 294.0
-margin_top = 33.0
-margin_right = 320.0
-margin_bottom = 65.0
+margin_left = 305.0
+margin_top = 36.0
+margin_right = 331.0
+margin_bottom = 71.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_top = 66.0
-margin_right = 98.0
-margin_bottom = 98.0
+margin_top = 72.0
+margin_right = 96.0
+margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -289,20 +286,20 @@ text = "Hit Rate:"
 align = 2
 
 [node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 112.0
-margin_top = 66.0
-margin_right = 138.0
-margin_bottom = 98.0
+margin_left = 110.0
+margin_top = 72.0
+margin_right = 136.0
+margin_bottom = 107.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 152.0
-margin_top = 66.0
-margin_right = 280.0
-margin_bottom = 98.0
+margin_left = 150.0
+margin_top = 72.0
+margin_right = 291.0
+margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -311,19 +308,19 @@ text = "Evasion:"
 align = 2
 
 [node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 294.0
-margin_top = 66.0
-margin_right = 320.0
-margin_bottom = 98.0
+margin_left = 305.0
+margin_top = 72.0
+margin_right = 331.0
+margin_bottom = 107.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_top = 99.0
-margin_right = 98.0
-margin_bottom = 131.0
+margin_top = 108.0
+margin_right = 96.0
+margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -332,20 +329,20 @@ text = "Speed:"
 align = 2
 
 [node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 112.0
-margin_top = 99.0
-margin_right = 138.0
-margin_bottom = 131.0
+margin_left = 110.0
+margin_top = 108.0
+margin_right = 136.0
+margin_bottom = 143.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 152.0
-margin_top = 99.0
-margin_right = 280.0
-margin_bottom = 131.0
+margin_left = 150.0
+margin_top = 108.0
+margin_right = 291.0
+margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -354,19 +351,19 @@ text = "Armor Pen.:"
 align = 2
 
 [node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 294.0
-margin_top = 99.0
-margin_right = 320.0
-margin_bottom = 131.0
+margin_left = 305.0
+margin_top = 108.0
+margin_right = 331.0
+margin_bottom = 143.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_top = 132.0
-margin_right = 98.0
-margin_bottom = 164.0
+margin_top = 144.0
+margin_right = 96.0
+margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -375,20 +372,20 @@ text = "Critical:"
 align = 2
 
 [node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 112.0
-margin_top = 132.0
-margin_right = 138.0
-margin_bottom = 164.0
+margin_left = 110.0
+margin_top = 144.0
+margin_right = 136.0
+margin_bottom = 179.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 152.0
-margin_top = 132.0
-margin_right = 280.0
-margin_bottom = 164.0
+margin_left = 150.0
+margin_top = 144.0
+margin_right = 291.0
+margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
@@ -397,10 +394,10 @@ text = "Critical Mod:"
 align = 2
 
 [node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
-margin_left = 294.0
-margin_top = 132.0
-margin_right = 320.0
-margin_bottom = 164.0
+margin_left = 305.0
+margin_top = 144.0
+margin_right = 331.0
+margin_bottom = 179.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -634,12 +631,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Consumtion"
+text = "Consumption"
 
 [node name="Label" type="Label" parent="food_consumption"]
-margin_left = 138.941
-margin_right = 164.941
-margin_bottom = 32.0
+margin_left = 162.941
+margin_right = 188.941
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"

@@ -224,6 +224,15 @@ var traits = {
 		effects = [],#'e_tr_harlot'],
 		bonusstats = {mod_pros = 0.5}
 	},
+	broken_royalty = {#
+		code = 'broken_royalty',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		bonusstats = {mod_pros = 1.5}
+	},
 	succubus = {#+100% exp from prostitution
 		code = 'succubus',
 		name = '',
@@ -270,7 +279,7 @@ var traits = {
 		effects = [],
 	},
 	advanced_combat = {#allows learning advanced (aoe) combat skills
-		code = 'basic_combat',
+		code = 'advanced_combat',
 		name = '',
 		descript = '',
 		visible = false,

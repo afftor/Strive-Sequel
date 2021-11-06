@@ -71,7 +71,7 @@ margin_right = 540.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Disassamble"
+text = "Disassemble"
 align = 1
 valign = 1
 
