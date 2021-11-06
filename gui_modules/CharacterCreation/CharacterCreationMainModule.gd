@@ -15,7 +15,7 @@ var short_sizes = ['small','average','big']
 var guild = 'none'
 
 var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
-var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
+var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
 var slave_classes = ['slave','servant']
 var selected_class = ''
@@ -26,6 +26,7 @@ var savefilename
 var saveloadstate
 
 var params_to_save = [
+	"slave_class",
 	"name",
 	"surname",
 	"nickname",
@@ -211,7 +212,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	$bodyparts2/type_label.visible = mode == 'slave'
 #	$bodyparts2/slave_class.visible = mode == 'slave'
 #	$bodyparts2/slave_class.select(0)
-	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	$BackButton.visible = type != 'slave' || is_from_cheats
 	$BackButtonCheats.visible = is_from_cheats
 	rebuild_slave()
@@ -452,6 +453,7 @@ func LoadCharacter(updated_char_to_load = null):
 		for i in stats_array:
 			character_to_load[i] = 1
 	selected_class = character_to_load.professions
+	update_class_button()
 	for i in character_to_load:
 		if i == "food_love":
 			person.food.food_love = character_to_load["food_love"]
@@ -519,10 +521,9 @@ func RebuildStatsContainer():
 				person.set_stat(i.code, preservedsettings[i.code])
 			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
-
-
+	
 	var counter = total_stat_points
-
+	
 	if person.statlist.sex_traits.size() == 0:
 		$VBoxContainer/SexTraitLabel.text = "Select Sex Trait"
 	else:
