@@ -584,7 +584,7 @@ func test_mode():
 		#character.get_stat('pregnancy').duration = 10
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('Elf', 'male', 'random')
+		character.create('Elf', 'female', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		# character.assign_to_quest_and_make_unavalible()
@@ -699,7 +699,6 @@ func test_mode():
 		character.hp = 95
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.set_slave_category('slave')
 		character.add_stat('lust', 100)
 		character.set_stat("tame_factor", 1)
 		#character.unlock_class("dancer")
@@ -725,7 +724,7 @@ func test_mode():
 
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Anastasia'},
 			]
 		)
 		globals.common_effects(

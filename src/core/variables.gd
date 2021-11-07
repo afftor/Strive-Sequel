@@ -159,12 +159,12 @@ var ItemEffectNaturalMultiplier = 0.15
 var all_races_array = []
 var starting_races_array = ['Human','Elf','TribalElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
-var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','hunter']
-var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter']
+var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','hunter','acolyte']
+var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter','acolyte']
 
 var fighters_starting_classes = ['fighter','archer','rogue']
-var mages_starting_classes = ['apprentice','scholar','attendant']
-var servants_starting_classes = ['harlot','pet','petbeast','thief']
+var mages_starting_classes = ['apprentice','scholar','acolyte']
+var servants_starting_classes = ['harlot','pet','petbeast','thief','attendant']
 var workers_starting_classes = ['worker','hunter','farmer']
 
 var guild_order = ['fighters','workers','servants','mages','slavemarket']

@@ -1,3 +1,7 @@
+New content:
+Added postresque daisy scene
+Added marriage sidequest (available after finishing civil war arc)
+
 Combat Abilities rework:
 Now most of combat skills are purchasable with new ability experience
 Ability experience is obtained from combats
@@ -18,6 +22,10 @@ Presets:
 Advanced starts with only 1 Writ of Exemption
 Sandbox now starts with 1000 reputation for each guild
 
+Game start:
+Acolyte (replaces Healer) can be picked by Master and Mage guild follower
+Instead of Healer, church quest now unlocks Priest class
+Attendant is now Servants' Guild class option
 
 Fixed caster showing up without purchasing the class first
 Fixed Amelia's sidequest not giving out the reward

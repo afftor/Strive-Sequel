@@ -337,7 +337,17 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-
+	
+#	beer = {
+#		code = 'beer',
+#		name = '',
+#		descript = '',
+#		icon = load("res://assets/images/iconsitems/icon_beer.png"),
+#		price = 15,
+#		type = 'usable',
+#		tags = ['date'],
+#	},
+	
 	blessed_divine_symbol = {
 		code = 'blessed_divine_symbol',
 		name = '',

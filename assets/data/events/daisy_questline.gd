@@ -665,7 +665,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "DAISY_TRAINING_INTERMISSION_7", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
 		}],
 	},
 

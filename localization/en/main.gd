@@ -128,6 +128,8 @@ var TranslationDict = {
 	MATERIALINK_LUST = "Ink: Passion",
 	MATERIALINK_HP = "Ink: Nature",
 	MATERIALINK_MP = "Ink: Spiritual",
+	MATERIALHERBS = "",
+	MATERIALHERBSDESCRIPT = "",
 	MATERIALINK_TRIBAL = "Ink: Power",
 	MATERIALINK_BRANDINGDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.\n\nApplied to: {color=yellow|Neck, Ass, Crotch}\n\nReduce Obedience drain by 25%.\nCan only be applied once.",
 	MATERIALINK_MAKEUPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. While makeup might not be enough to turn the Beast into the Beauty, its a favorable option for the lazy.\n\nApplied to: {color=yellow|Face}\n\nCharm: +10.",
@@ -548,12 +550,12 @@ var TranslationDict = {
 
 	SKILLCOMMAND = "Command",
 	SKILLCOMMANDDESCRIPT = "Increase target's damage by 25% for 3 turns.",
-	SKILLRESTORATION = "",
-	SKILLRESTORATIONDESCRIPT = "",
-	SKILLREJUVENATION = "",
-	SKILLREJUVENATIONDESCRIPT = "",
-	SKILLSANCTUARY = "",
-	SKILLSANCTUARYDESCRIPT = "",
+	SKILLRESTORATION = "Restoration",
+	SKILLRESTORATIONDESCRIPT = "Greatly heals one target and applies buff: -20% damage received for 2 turns ",
+	SKILLREJUVENATION = "Rejuvination",
+	SKILLREJUVENATIONDESCRIPT = "Heals 1 row and applies additional regeneration for 2 turns",
+	SKILLSANCTUARY = "Sanctuary",
+	SKILLSANCTUARYDESCRIPT = "Heals all targets and applies additional regeneration for 3 turns",
 	SKILLTRAP = "Trap",
 	SKILLTRAPDESCRIPT = "Sets trap under enemy. After using Skill it will be stunned for 2 turns. Requires 1 Trap component.",
 	SKILLWEAPON_REFINE = "Weapon Refine",
@@ -581,7 +583,7 @@ var TranslationDict = {
 	SKILLSERRATED_SHOT = "Serrated Shot",
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
-	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all allies.",
+	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to one column.",
 	SKILLBLIZZARD = "Blizzard",
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
@@ -636,7 +638,7 @@ var TranslationDict = {
 	SKILLOVERGROWTH = "Overgrowth",
 	SKILLOVERGROWTHDESCRIPT = "Deals Earth magic damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health. Requires 1 Bandage to use.",
 
 	SKILLENDURE = "Endure",
 	SKILLENDUREDESCRIPT = "Increase all resistances by 20% for 2 turns.",
@@ -814,7 +816,7 @@ var TranslationDict = {
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
-	HEIRCLASSDESCRIPT = "2ADD",
+	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower, Loyalty grows 25% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
 
@@ -1412,6 +1414,9 @@ var TranslationDict = {
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFRENOWN_ROYALTY = "Renown Royalty",
 	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	PROFBROKEN_ROYALTY = "Broken Royalty",
+	PROFBROKEN_ROYALTYDESCRIPT = "Once a famous royalty, now a mind broken individual capable of very little... At least her body is still in high demand.",
+	
 	
 	PROFACOLYTE = "Acolyte",
 	PROFACOLYTEDESCRIPT = "Indiviuals have devoted their life to mending to others. ",
@@ -1423,7 +1428,7 @@ var TranslationDict = {
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
-	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master].",
+	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience no longer decay. Authority effect from social skills: +30%.",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
@@ -2233,7 +2238,13 @@ var TranslationDict = {
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
-
+	
+	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
+	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. ",
+	MARRY2TUTORIAL = "Your spouse will receive a new class. Their growth will be set to maximum and their obedience will no longer drain. Also your mutual children will be of status [color=aqua]Heir[/color], which will have them slower Obedience drain and higher loyalty gain, however they receive penalty on Collection, Farming and Fishing. ",
+	
+	
+	
 	ITEMHAIRDYE = "Hair Dye",
 	ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
 
@@ -2591,7 +2602,7 @@ She blushes deeply, the bloom spreading from the cheeks, up her pointed ears and
 
 You rub the clit for a minute and then forcefully press your middle finger up into her tight elven pussy. Aire squeezes her thighs together around your hand and moans helplessly. Wrists pinned, you pull her upper body back so you can look into those tearful amber eyes as your finger stirs the hot little honey-pot between her legs.
 
-{color=yellow|Aire:— Nnnnn- no! That's not yours! You're not allow-aaaah! }""",
+{color=yellow|Aire:— Nnnnn— no! That's not yours! You're not allow-aaaah! }""",
 	LICHAIRETALK6_3 = """You draw your finger slowly out of Aire's pussy to find it slick with juices, then force your hand into her open mouth to silence the wails, gripping her jaw firmly. 
 
 Letting go of the wrists, you pull her across you and lay a dozen hard spanks on the creamy skin of her tits and ass until they start to redden. She yelps and tries to cover herself but you shove her down backwards onto the floor and release your cock from your pants.
@@ -4059,7 +4070,7 @@ GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of the rebel hideout Greg b
 
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the back of the room a man oversees the activities of the rebels.
 
--Ah, it seems we have company. All of you form up, stop the guild scum.""",
+— Ah, it seems we have company. All of you form up, stop the guild scum.""",
 
 	FINAL_BOSS_2 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
 
@@ -5156,7 +5167,7 @@ Drawing back you tell Anastasia how you have waited long for this moment, and yo
 You grin, and explain that the first step is to remove her clothing.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_2 = """Anastasia begins to undress reluctantly, unbuckling the knee-high boots and slipping them off her stockinged legs. She shrugs the blue cloak off her shoulders and hands it to you, then loosens the girdle around her waist and slips it off. She hesitates for a moment.
 
-{color=yellow|Anastasia:— I- I usually have Aire to help me with my dress. If it won't trouble you, could you assist me?}
+{color=yellow|Anastasia:— I— I usually have Aire to help me with my dress. If it won't trouble you, could you assist me?}
 
 Anastasia turns around and lifts her long blonde hair off her shoulders. Tossing her cloak aside, you stand close behind and begin to unfasten the tiny hooks that keep the corset part of her dress in place. The scent of her hair is sweetly fragrant, like honeysuckle, as you finish unclipping the dress. She looks at you nervously over her bare shoulder.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_3 = """You help Anastasia to free herself of the top part of the dress, letting it fall to expose her beautiful ripe breasts. She blushes at the sudden nakedness and you embrace her from behind, your teeth finding the smooth skin of her neck as your hands slide gently up her taut belly to cup her tits. You feel her delicate nipples harden under the pressure of your fingertips.
@@ -5903,7 +5914,7 @@ You can't hold any longer and with a grunt you ejaculate in a thick spray that r
 {color=yellow|Amelia:— By the gods, that's a lot of cum. All over my face! Such a strong and distinct musk to it too. You found my massage pleasing then, [name]?}
 
 You nod wordlessly, your wits far from your reach at this moment.""",
-	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants' Guild, Amelia's smile looks different - warmer, and more personal.
+	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants' Guild, Amelia's smile looks different — warmer, and more personal.
 
 {color=yellow|Amelia:— Thank you for providing me with so much… silk. I hope that this experience will fortify our business relationship for the future? I certainly look forward to further private meetings.}""",
 	
@@ -5939,193 +5950,193 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 
 	AMELIA_HERBS_LETTER = "In the morning you receive a small note from the Servants Guild asking you to see the leader.",
 	AMELIA_HERBS_OPTION_START = "Got your letter",
-	AMELIA_HERBS_REPLY_START = "- Glad to see you are eager as ever, [name]. How's your mayorhood?",
+	AMELIA_HERBS_REPLY_START = "— Glad to see you are eager as ever, [name]. How's your mayorhood?",
 	AMELIA_HERBS_OPTION_1_1 = "Can't complain, it's good to be in power",
 	AMELIA_HERBS_OPTION_1_2 = "Nothing special, you aren't letting me do anything anyway",
 	AMELIA_HERBS_OPTION_1_3 = "Just get to the point",
-	AMELIA_HERBS_REPLY_1_1 = "- I'm glad you are enjoying it, after all, your happiness is our reassurance.",
-	AMELIA_HERBS_REPLY_1_2 = "- Ha-ha, I guess this is somewhat true, but this is fine, I'm not able to do much at my position either, you know. Nobody would let us get here if this provided any meaningful powers. But at least we can enjoy the luxury of this life.",
-	AMELIA_HERBS_REPLY_1_3 = "- Oh come on, don't be so uptight. Do you really dislike my company this much?",
-	AMELIA_HERBS_REPLY_2 = """- There's a task at my hands I believe you'll have most success at doing, given your previous experience with the Elven Forests. You see, near the great trees the elves worship one particular plant that can grow - Manna Whiff. Some of our patrons wish to pay a quite high price for it. Actually, a really high price. 
+	AMELIA_HERBS_REPLY_1_1 = "— I'm glad you are enjoying it, after all, your happiness is our reassurance.",
+	AMELIA_HERBS_REPLY_1_2 = "— Ha-ha, I guess this is somewhat true, but this is fine, I'm not able to do much at my position either, you know. Nobody would let us get here if this provided any meaningful powers. But at least we can enjoy the luxury of this life.",
+	AMELIA_HERBS_REPLY_1_3 = "— Oh come on, don't be so uptight. Do you really dislike my company this much?",
+	AMELIA_HERBS_REPLY_2 = """— There's a task at my hands I believe you'll have most success at doing, given your previous experience with the Elven Forests. You see, near the great trees the elves worship one particular plant that can grow — Manna Whiff. Some of our patrons wish to pay a quite high price for it. Actually, a really high price. 
 
-- We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them. """,
-	AMELIA_HERBS_REPLY_3 = """- You should know elven officials aren't very fond of trading with us in general, moreover in such unusual circumstances. Try to keep it low profile. Anyway, here's the note with the description of who you have to find. I believe you'll manage.""",
+— We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them. """,
+	AMELIA_HERBS_REPLY_3 = """— You should know elven officials aren't very fond of trading with us in general, moreover in such unusual circumstances. Try to keep it low profile. Anyway, here's the note with the description of who you have to find. I believe you'll manage.""",
 	
 	AMELIA_HERBS_ELF_OPTION_START = "Look for smuggler",
 	AMELIA_HERBS_ELF_REPLY_START_1 = "After searching around for some time, you've managed to find a person fitting the description: a young tribal elf priestess. As she sees you, she subtly gives you a sign to meet her where no one is around. You follow her, dragging no additional attention.",
 	AMELIA_HERBS_ELF_REPLY_START_2 = """You pass her the note and explain what you are doing here, however her response is of reject.
 
-- I'm sorry, I can't do this anymore. I won't be doing this.""",
+— I'm sorry, I can't do this anymore. I won't be doing this.""",
 	AMELIA_HERBS_ELF_OPTION_1_1 = "Look, you can't do this",
 	AMELIA_HERBS_ELF_OPTION_1_2 = "I don't get it, why not?",
 	AMELIA_HERBS_ELF_OPTION_1_3 = "Are you out of your mind backing out now?",
-	AMELIA_HERBS_ELF_REPLY_1 = """- I can't do this anymore, I was desperate at the time, but if I get caught it will be over for me. And I'm already a suspect. As I'm not originally born here, I will be punished severely for it... So you have to understand, I won't do this anymore. I can't return the payment yet, but I'll do something about it soon.""",
+	AMELIA_HERBS_ELF_REPLY_1 = """— I can't do this anymore, I was desperate at the time, but if I get caught it will be over for me. And I'm already a suspect. As I'm not originally born here, I will be punished severely for it... So you have to understand, I won't do this anymore. I can't return the payment yet, but I'll do something about it soon.""",
 	AMELIA_HERBS_ELF_OPTION_2_1 = "I guess, it can't be helped then...",
 	AMELIA_HERBS_ELF_OPTION_2_2 = "Look, I really need to make this delivery (Charm Check)",
 	AMELIA_HERBS_ELF_OPTION_2_3 = "I could pay you some more, but I really need it (300 gold)",
 	AMELIA_HERBS_ELF_OPTION_2_4 = "In that case, I'll  tell to the guards that you have indeed been a smuggler",
-	AMELIA_HERBS_ELF_REPLY_2_1 = """- Thank you for understanding and goodbye.
+	AMELIA_HERBS_ELF_REPLY_2_1 = """— Thank you for understanding and goodbye.
 
 The elf girl silently returns to her duty leaving you to think on how to tell Amelia about it.""",
 	AMELIA_HERBS_ELF_REPLY_2_2_GOOD = """{color=green|Success}
 
 The elf girl hesitates for some time but eventually gives in to your request.
 
-- Fine, but I beg you, don't come for this ever again. 
+— Fine, but I beg you, don't come for this ever again. 
 
 She leaves and after a few minutes she returns with the package. """,
 	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye""",
 	AMELIA_HERBS_ELF_REPLY_2_2_BAD = """{color=red|Failure}
 
-- Sorry, you'll have to find some other way. """,
+— Sorry, you'll have to find some other way. """,
 	AMELIA_HERBS_ELF_REPLY_2_3 = """As you whip out a purse of gold, the elven girl seems to give up and do as you want from her.
 
-- Fine, but I beg you, don't come for this ever again. 
+— Fine, but I beg you, don't come for this ever again. 
 
 As she hides the gold in her clothes, she returns to you in a few minutes, passing the carriage and quickly retreating.""",
 	AMELIA_HERBS_ELF_REPLY_2_4_1 = """As the girl hears your words, her face fills with fear. 
 
-- No, please... You wouldn't dare.
+— No, please... You wouldn't dare.
 
 Realizing your seriousness she drops her head.
 
-- You win, please wait here...""",
+— You win, please wait here...""",
 	AMELIA_HERBS_ELF_REPLY_2_4_2 = """After a couple minutes she returns and passes you the carriage 
 
-- Here. But I beg you, do not come here again, I won't be doing this anymore.""",
+— Here. But I beg you, do not come here again, I won't be doing this anymore.""",
 	AMELIA_HERBS_ELF_OPTION_2_4_2 = "Thanks, good bye.",
 	
 	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her (placeholder)
 
-- Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
+— Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
 	
 	AMELIA_HERBS_ELFQUEST2_START_1 = """After looking for a possible smuggler, you realize that you've been found out by the guards who followed you around. As they approach you, they ask you to follow them.""",
-	AMELIA_HERBS_ELFQUEST2_START_2 = "- It's you again. We know what you are here for this time. An illegal smuggling of our holy herbs. The other culprit was already caught and punished. Given your previous merits, we will turn a blind eye on this, but don't ever try doing this again.",
+	AMELIA_HERBS_ELFQUEST2_START_2 = "— It's you again. We know what you are here for this time. An illegal smuggling of our holy herbs. The other culprit was already caught and punished. Given your previous merits, we will turn a blind eye on this, but don't ever try doing this again.",
 	
 	AMELIA_HERBS_END_OPTION_START = "About the delivery",
 	AMELIA_HERBS_END_REPLY_START = """As you pass the carriage to Amelia you notice how her ears perk up in surprise.
 
-- I knew I could rely on you! I've already had no faith to get it this time. Must say, our cooperation has been one of the best partnerships in my life. But, anyway, you must be very impatient for your reward. Here's 500 gold for your troubles.
+— I knew I could rely on you! I've already had no faith to get it this time. Must say, our cooperation has been one of the best partnerships in my life. But, anyway, you must be very impatient for your reward. Here's 500 gold for your troubles.
 
-- I want to say, you are one kind of Masters. Strong, capable, decisive... This is really rare at our times. I'm not offering this lightly, but would you like to join me at my home this evening? This isn't something you would be offered on any day.""",
+— I want to say, you are one kind of Masters. Strong, capable, decisive... This is really rare at our times. I'm not offering this lightly, but would you like to join me at my home this evening? This isn't something you would be offered on any day.""",
 	AMELIA_HERBS_END_OPTION_1_1 = "Sorry, I'll be busy",
 	AMELIA_HERBS_END_OPTION_1_2 = "I was afraid you wouldn't ask",
 	AMELIA_HERBS_END_REPLY_1_1 = """Amelia seems visibly disappointed but quickly masks her emotions as usual. 
 
-- That's so... I see then, wish you luck with whatever you are doing then.""",
-	AMELIA_HERBS_END_REPLY_1_2_1 = """- I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
+— That's so... I see then, wish you luck with whatever you are doing then.""",
+	AMELIA_HERBS_END_REPLY_1_2_1 = """— I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
 
 After receiving the instructions, you leave Amelia's office.""",
 	AMELIA_HERBS_END_REPLY_1_2_2 = """By the evening you enter Amelia's estate. To your surprise, there's only a couple of servants who quickly lose their interest in you as soon as Amelia shows up.
 
-- You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
+— You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
 
 You hold a minor chit chat as Amelia serves you one of the highest grade wines. """,
-	AMELIA_HERBS_END_REPLY_1_2_3 = """- You know, I wasn't very sincere with you... Not any more with anyone else, I suppose. But I'd like you to hear me out. Before becoming the guild leader I was a servant too. I heard not many guild leaders happened to be the servants and not the masters, but I guess I got lucky. 
+	AMELIA_HERBS_END_REPLY_1_2_3 = """— You know, I wasn't very sincere with you... Not any more with anyone else, I suppose. But I'd like you to hear me out. Before becoming the guild leader I was a servant too. I heard not many guild leaders happened to be the servants and not the masters, but I guess I got lucky. 
 
-- I had a master, and a pretty strict one at that, but I'd be lying if I said that I didn't like it. It was an easy, careless time I sometimes wish to return to. I think that cats need a master, you know. An owner...""",
-	AMELIA_HERBS_END_REPLY_1_2_4 = """- And I think you are just the right person who could help me to... relive those feelings.
+— I had a master, and a pretty strict one at that, but I'd be lying if I said that I didn't like it. It was an easy, careless time I sometimes wish to return to. I think that cats need a master, you know. An owner...""",
+	AMELIA_HERBS_END_REPLY_1_2_4 = """— And I think you are just the right person who could help me to... relive those feelings.
 
 Getting caught in the moment you see no other option but to nod in agreement.
 
-- You are always so eager to help me. Well then, please give me a few minutes to prepare.
+— You are always so eager to help me. Well then, please give me a few minutes to prepare.
 
 Saying that, Amelia leaves you alone wondering what she's up to.""",
 	AMELIA_HERBS_END_REPLY_1_2_5 = "In a few moments you hear her calling you to enter the bedroom.",
 	AMELIA_HERBS_END_REPLY_1_2_6 = "Text placeholder",
 	AMELIA_HERBS_END_REPLY_1_2_7 = "Text placeholder",
-	AMELIA_HERBS_END_REPLY_1_2_8 = "- You are a real gentleman, [name], I haven't been so satisfied since the day I became the guild leader. Too bad everything good eventually comes to an end. But let's hope we'll get another time.",
+	AMELIA_HERBS_END_REPLY_1_2_8 = "— You are a real gentleman, [name], I haven't been so satisfied since the day I became the guild leader. Too bad everything good eventually comes to an end. But let's hope we'll get another time.",
 	AMELIA_HERBS_END_OPTION_1_2_1 = """I'll be waiting for the next time""",
 	AMELIA_HERBS_END_OPTION_1_2_2 = """That's a time I won't forget""",
-	AMELIA_HERBS_END_REPLY_START_FAIL = """- Oh my, that's a real shame. I already anticipated it, though. Well, I guess I'll have to look for another supplier now. Now, if you excuse me...
+	AMELIA_HERBS_END_REPLY_START_FAIL = """— Oh my, that's a real shame. I already anticipated it, though. Well, I guess I'll have to look for another supplier now. Now, if you excuse me...
 
 Amelia leaves you for her business, leaving you alone.""",
 	
 	MARRIAGE_CHURCH_CORE = """I'd like to arrange a marriage""",
 	MARRIAGE_CHURCH_FINISH_CORE = """I'm ready for the wedding""",
-	MARRIAGE_CHURCH_DEFAULT = """- I'm terribly sorry, but currently we aren't able to provide such service due to the ongoing conflict. I hope this will be over soon.""",
-	MARRIAGE_CHURCH_TEXT_1 = """- Ah, you are willing to engage someone? That's great! Mayor's wedding won't be simple to host though. May I know who's your chosen one?""",
-	MARRIAGE_CHURCH_TEXT_2 = """- I see, I see, I'm glad you found someone dear to your heart. I'm allowed to engage you, but the service is going to cost 500 gold.""",
+	MARRIAGE_CHURCH_DEFAULT = """— I'm terribly sorry, but we aren't currently able to provide such service due to the ongoing conflict. Let’s hope it will be over soon.""",
+	MARRIAGE_CHURCH_TEXT_1 = """— Ah, you wish to be betrothed? That's great! The mayor's wedding won't be simple to host though. May I know who's your chosen one?""",
+	MARRIAGE_CHURCH_TEXT_2 = """— I see, I see, I'm glad you found someone dear to your heart. I'm allowed to marry the two of you, but the service is going to cost 500 gold.""",
 	PAY = """Pay.""",
-	MARRIAGE_CHURCH_TEXT_3 = """- Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as deliveries and guests. Servants guild can usually help you with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild sew those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
-	MARRIAGE_CHURCH_TEXT_4 = """- Once you prepare everything, let me know and we acn start it.""",
+	MARRIAGE_CHURCH_TEXT_3 = """— Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as organizing your deliveries and your guest list. The Servants guild can usually help with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild manufacture those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
+	MARRIAGE_CHURCH_TEXT_4 = """— Once you have prepared everything, let me know and we can start the ceremony.""",
 	MARRIAGE_CHURCH_CLOSE_OPTION = """Thanks for the directions""",
 	MARRIAGE_SERVANTS_INIT = "I'm holding a wedding...",
-	MARRIAGE_SERVANTS_1_1 = """- Finally going to seal the deal with our little princess? That's great news. """,
-	MARRIAGE_SERVANTS_1_2 = """- Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
-	MARRIAGE_SERVANTS_1_3 = """So you want us to prepare everything for it? A person of your caliber can't have a simple wedding after all. We will likely need at least a couple hundred of each food to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple suppliers I know.""",
-	MARRIAGE_SERVANTS_2 = """- Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start preparations right away.""",
+	MARRIAGE_SERVANTS_1_1 = """— Finally going to seal the deal with our little princess? That's great news. """,
+	MARRIAGE_SERVANTS_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
+	MARRIAGE_SERVANTS_1_3 = """So you want us to prepare everything for your wedding? A person of your caliber can't have a simple wedding, after all. We will likely need at least a couple hundred of each foodstuff to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple of local suppliers I know.""",
+	MARRIAGE_SERVANTS_2 = """— Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
 	MARRIAGE_SERVANTS_COMPLETE_OPTION = """I've prepared everything for the wedding""",
-	MARRIAGE_SERVANTS_COMPLETE_1 = """- Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
-	MARRIAGE_SERVANTS_COMPLETE_2 = """- There's one thing about the guests if you pardon me. There's a certain category of... indecent people, who surely would seek to appear at the Mayor's wedding. While it might seem like a completely abhorrent thing, they are also quite rich and can be generous for certain services.""",
-	MARRIAGE_SERVANTS_COMPLETE_3 = """- In no way I'm suggesting you should compromise your wedding. So let me know if you want them to be invited as well.""",
+	MARRIAGE_SERVANTS_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
+	MARRIAGE_SERVANTS_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you’ll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
+	MARRIAGE_SERVANTS_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""",
 	MARRIAGE_SERVANTS_OPTION_1 = """Invite them""",
 	MARRIAGE_SERVANTS_OPTION_2 = """Refuse""",
-	MARRIAGE_SERVANTS_COMPLETE_4 = """- Understood. With that set, I wish to see you soon and have a happy wedding, [name].""",
+	MARRIAGE_SERVANTS_COMPLETE_4 = """— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].""",
 	MARRIAGE_WORKERS_INIT = "I'm holding a wedding and need costumes for it",
-	MARRIAGE_WORKERS_1 = """- Oh ya? My gratulations. Let me show ya to our tailors then. """,
-	MARRIAGE_WORKERS_2 = "Sigmund takes you to a couple of tailors who inform you on the materials they will require to prepare your costumes. For the highest quality dresses they will need 150 Silk Cloth, and 50 Magic Cloth. The work itself is going to cost you an additional 1000 gold.",
+	MARRIAGE_WORKERS_1 = """— Oh ya? My congratulations to ya. Let me introduce ya to our tailors. """,
+	MARRIAGE_WORKERS_2 = "Sigmund takes you to a couple of tailors who inform you of the materials they will require to prepare your costumes. For the highest quality dresses they will need 150 Silk Cloth, and 50 Magic Cloth. The work itself is going to cost you an additional 1000 gold.",
 	MARRIAGE_WORKERS_COMPLETE_OPTION = """I have everything needed""",
-	MARRIAGE_WORKERS_COMPLETE_1 = "As you set the deal with the tailors, they take measures from you and immediately send a helper for your partner. They promise to finish the work as quick as they can.",
-	MARRIAGE_FINAL_INIT = """- Beautiful! In that case, we'll start tomorrow. """,
-	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia brought their tools and waited for the start. Large trays of exquisite fresh food and ingredients were stocked in the kitchen. \n\nFirst guests have made their attempt to get on the good foot with you and delivered first presents. As noon drew closer, you moved to the church.""",
-	MARRIAGE_ANASTASIA_1 = """Anastasia was preparing for the upcoming ceremony as Aire tried to support her.
-{color=yellow|Aire: - You are too red, Ana.}
+	MARRIAGE_WORKERS_COMPLETE_1 = "As you set the deal with the tailors, they take measurements from you and immediately send a helper for your partner. They promise to finish the work as quick as they can.",
+	MARRIAGE_FINAL_INIT = """— Beautiful! In that case, we'll start tomorrow. """,
+	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia bring their tools and wait for the party to start. Large trays of exquisite fresh food and ingredients are stocked in the kitchen. The first guests make their attempts to get in your good books by delivering their presents early. As noon draws closer, you move to the church.""",
+	MARRIAGE_ANASTASIA_1 = """Anastasia is preparing for the upcoming ceremony as Aire tries to support her.
+{color=yellow|Aire: — You are too red, Ana.}
 
-{color=aqua|Anastasia: - Of course I am! Don't you realize how frightening this is?}
+{color=aqua|Anastasia: — Of course I am! Don't you realize how frightening all of this is?}
 
-{color=yellow|Aire: - Less frightening than being hunted by the Guilds' army.}""",
-	MARRIAGE_ANASTASIA_2 = """{color=aqua|Anastasia: - ...Does it suit me? It's so weird to wear something this glamorous after all these years.}
+{color=yellow|Aire: — Less frightening than being hunted by the Guilds' army.}""",
+	MARRIAGE_ANASTASIA_2 = """{color=aqua|Anastasia: — ...Does it suit me? It's so weird to wear something this glamorous after all these years as a fugitive.}
 
-{color=yellow|Aire: - You look beautiful. I never thought I'd actually see you in a wedding dress, though.} 
+{color=yellow|Aire: — You look beautiful. I never thought I'd actually see you in a wedding dress, though.} 
 
-{color=aqua|Anastasia: - One day you might also end up in one, you know.}
+{color=aqua|Anastasia: — One day you might end up in one too, you know.}
 
-{color=yellow|Aire: - Hmph, I doubt [name] is ever gonna allow me such liberty.} 
+{color=yellow|Aire: — Hmph, I doubt [name] is ever gonna allow me such liberty.} 
 
-{color=aqua|Anastasia: - Hey, don't speak bad of [him].}""",
-	MARRIAGE_FINAL_2 = """Given the fairly humble size of the church, only a selected few of the guests have been allowed inside. The building was decorated for your wedding, and Ginny was set to play the priest's role.""",
-	MARRIAGE_FINAL_3 = """As [spousename] is brought to the church, [spousehe] looks somewhat nervous, but still returns you a smile. As [spousehe] makes it to the altar, Ginny starts the ceremony.
+{color=aqua|Anastasia: — Hey, don't speak badly of [him].}""",
+	MARRIAGE_FINAL_2 = """Given the fairly humble size of the church, only a selected few of your many guests have been allowed inside. The building has been newlydecorated for your wedding, and Ginny is all set to play the role of minister.""",
+	MARRIAGE_FINAL_3 = """As [spousename] is brought to the church, [spousehe] looks somewhat nervous, but still returns your wink with a smile. As [spousehe] makes it to the altar, Ginny starts the ceremony.
 
-{color=yellow|Ginny: - Celena thanks you all for coming here today...}""",
-	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: - [name], do you agree to take this [spousename] as your [husband]?}""",
+{color=yellow|Ginny: — Celena thanks you all for coming here today...}""",
+	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [husband]?}""",
 	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
 	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
-	MARRIAGE_FINAL_4_OPTION_3 = """What's the point getting though all of this otherwise?""",
-	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: - Now you can kiss the [groom].}
+	MARRIAGE_FINAL_4_OPTION_3 = """What's the point in going through all of this otherwise?""",
+	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: — Now you can kiss the [groom/bride(?)].}
 
-[spousename] leans to you as you seal [spousehis] lips with yours. As guests cheer on you, you finally break it after a couple of minutes. 
+[spousename] leans to you as you seal [spousehis] lips with yours. As guests cheer you on, you enjoy the moment, finally breaking away after a couple of minutes to grin at the crowd. 
 
-{color=aqua|[spousename]: - Thank you, [name], this is the best day of my life...}""",
-	MARRIAGE_FINAL_6 = """As you leave the church, you return to the mansion. Many new guests wait for you over there and a loud party breaks out. As you make new connections and receive wedding presents from other landlords and authorities, you also spot how [spousename] glances at you from time to time.""",
-	MARRIAGE_FINAL_7 = """As the party goes on, one of your servants approaches you and passes a note from a small group of guests who seem to be the people mentioned by Amelia. The note states how they enjoy the party and are ready to pay a large sum of 5,000 gold for a night with the mayor's newlywed wife.""",
+{color=aqua|[spousename]: — Thank you, [name], this is the best day of my life...}""",
+	MARRIAGE_FINAL_6 = """Leaving the church, you return to the mansion. Many new guests wait for you over there and a raucous, high-spirited party breaks out. While you are making new connections and receiving wedding presents from other landlords and authorities, you notice how [spousename] glances at you coyly from time to time.""",
+	MARRIAGE_FINAL_7 = """As the party stretches into the evening, one of your servants approaches and passes you a note from a small group of guests — the wealthy people mentioned by Amelia. The note mentions how much they are enjoying the party and says they are ready to pay a large sum of 5,000 gold for a night of fun with the mayor's newlywed wife.""",
 	MARRIAGE_FINAL_7_OPTION_1 = """Order to throw them out""",
 	MARRIAGE_FINAL_7_OPTION_2 = """Just ignore them""",
 	MARRIAGE_FINAL_7_OPTION_3 = """Invite them to the bedroom""",
-	MARRIAGE_FINAL_8_1 = """You order to throw out the rich bastards from the party. Regaining your mood, you return to [spousename] and spend some more time with her until the night falls.""",
-	MARRIAGE_FINAL_8_2 = """You decide to ignore the proposition and return to spending time with your wife as the night falls. Despite your worries, there were no more requests made by the said group.""",
-	MARRIAGE_NIGHT_GROUP_1_1 = """As the night falls and guests start to leave, you approach [spousename] and lead [spouseher] to your bedroom. As you enter, you see multiple men who you've accepted the deal with.
-[spousename] shouts in surprise, but after looking at you, realizes this is no coincidence.\n""",
+	MARRIAGE_FINAL_8_1 = """You order the rich bastards thrown out of your wedding party. Recovering your mood, you return to [spousename] and spend some more time with her until night falls.""",
+	MARRIAGE_FINAL_8_2 = """You decide to ignore the proposition and return to spending time with your wife as night falls. Despite your concerns, the group make no further requests.""",
+	MARRIAGE_NIGHT_GROUP_1_1 = """With night falling and guests starting to leave, you approach [spousename] and lead [spouseher] to your bedroom. As you enter, you find the group of men waiting, whose deal you accepted.
+[spousename] shouts in surprise, but after looking at you, realizes this is no coincidence.""",
 	MARRIAGE_NIGHT_GROUP_1_2 = """As you order [spousehim] to serve these men, [spousehe] seems rather agreeable to it.""",
-	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, as [spousehe] looks at you with disbelief. However, realizing there's no way to escape this, [he] resentfully nods.""",
+	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, and [spousehe/she(?)] looks at you with disbelief and horror. However, realizing there's no way for her to escape this now, [she] resentfully nods.""",
 	MARRIAGE_NIGHT_GROUP_1_4 = """Now all that's left is to choose what you're gonna do...""",
 	MARRIAGE_NIGHT_GROUP_OPTION_1 = """Join""",
 	MARRIAGE_NIGHT_GROUP_OPTION_2 = """Leave""",
-	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first round, as [spousename] uses [spousehis] mouth to serve your guests. As you unload into [spousehis] womb, you let another one take over while [spousename] cleans you with her mouth. As the guests continue to use your wife, you invite one of the servant girls to have fun with while you are watching.
+	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first turn on your [spousehusband] pussy, as [spousename] uses [spousehis] mouth to serve your guests. You unload into [spousehis] womb, and let one of the waiting rich men take over while [spousename] cleans your shaft with her mouth. While the guests continue to use your wife’s body, you order one of the servant girls into the room, to have some fun while you are watching.
 
-After a few hours every guest in the room had a round with [spousename] and is completely exhausted. As they finally leave, the last one passes you the money they've promised.""",
-	MARRIAGE_NIGHT_GROUP_2_2 = """You decide to leave your [spousehusband] and go for a stroll. After a couple of hours one of the men finds you and informs you how well it went, passing you the promised payment. As they leave you order the servants to take care of the leftover mess and call it a day.""",
-	MARRIAGE_NIGHT_1 = """As party moves to the closure and guests leave, your [spousehusband] approaches you in expectancy.
+After a few hours every guest in the room has had a round with [spousename] and is completely exhausted. As they finally leave, the last one passes you the money they promised.""",
+	MARRIAGE_NIGHT_GROUP_2_2 = """You decide to leave your [spousehusband] and go for a stroll. After a couple of hours one of the men finds you and informs you how well it went, passing you the promised payment. As they leave, you order the servants to take care of the leftover mess and call it a day.""",
+	MARRIAGE_NIGHT_1 = """As party moves to the closure and guests leave, your [spousehusband] approaches you in expectation.
 
-- [Master]... Or should I use Darling now? This seems to be quite late, and if you are not tired...""",
+— [Master]... Should I use my darling now? This seems to be quite late, and if you are not tired...""",
 	MARRIAGE_NIGHT_OPTION_1 = """Let's get to the bedroom""",
 	MARRIAGE_NIGHT_OPTION_2 = """I guess I am tired""",
 	MARRIAGE_NIGHT_2_1= """You take [spousename]'s hand and go to the bedroom, leaving the rest of the mess to the servants.""",
 	MARRIAGE_NIGHT_2_2 = """[spousename] returns you a saddened look but nods in agreement. You decide to go to sleep and call it a day.""",
 	
 	DAISY_SERVE_OPTION_START = "Serve me",
-	DAISY_SERVE_START_1 = "- Of course, [master]. What part of mine do you like to use?",
-	DAISY_SERVE_START_2 = """- O-Ofcourse, [Master]... How should I..?
+	DAISY_SERVE_START_1 = "— Of course, [master]. What part of my body would you like to use?",
+	DAISY_SERVE_START_2 = """— O-Of course, [Master]... How can I serve you best..?
 
 Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_OPTION_1_1 = "Use your mouth",
@@ -6137,137 +6148,110 @@ Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_2_2 = """Placeholder""",
 	DAISY_SERVE_2_3 = """Placeholder""",
 	
-	NO_ZEPHYRA_ARTIFACTS_MESSAGE = """In the morning you receive a letter from Ginny from the local church, asking you to visit her. """,
-	NO_ZEPHYRA_ARTIFACTS_START = """- Welcome, [name]! I've heard you've become a Mayor now? Congratulations!
+	NO_ZEPHYRA_ARTIFACTS_MESSAGE = """In the morning you receive a letter from Ginny at the local church, asking you to visit her. """,
+	NO_ZEPHYRA_ARTIFACTS_START = """— Welcome, [name]! I've heard you've become a Mayor now? Congratulations!
 
-- I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you, I take it, she's your acquaintance?""",
-	NO_ZEPHYRA_ARTIFACTS_1 = """Ginny: - I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful as a Champion would be.
+— I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you, I take it, she's your acquaintance?""",
+	NO_ZEPHYRA_ARTIFACTS_1 = """Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful as a Champion ought to be.
 
-Zephyra: - Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And at such scary times too. Can you imagine what all the bandits could do to someone like me? 
+Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And at such scary times too. Can you imagine what all those bandits could do to someone like me? 
 
-Zephyra: - Well, I see you've settled this war for good. I was right about you after all.""",
+Zephyra: — Well, I see you've settled this war for good. I was right about you after all.""",
 	NO_ZEPHYRA_ARTIFACTS_OPTION_1_1 = "You really are full of surprises",
 	NO_ZEPHYRA_ARTIFACTS_OPTION_1_2 = "I'm surprised you're still following me",
 	NO_ZEPHYRA_ARTIFACTS_OPTION_1_3 = "I don't have time for this",
-	NO_ZEPHYRA_ARTIFACTS_2_NO = """Zephyra: - It's sad to hear it, but I won't be able to talk you into cooperation after all... 
+	NO_ZEPHYRA_ARTIFACTS_2_NO = """Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
 
-Zephyra: - If you tell me, I won't be bothering you anymore then.""",
+Zephyra: — If you tell me to leave, I won't be bothering you anymore.""",
 	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_1 = "Yes, I want you to leave me alone",
 	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_2 = "I've changed my mind",
-	NO_ZEPHYRA_ARTIFACTS_2_NO_CLOSE = """Zephyra: - Farewell then. Have fun while it lasts. 
+	NO_ZEPHYRA_ARTIFACTS_2_NO_CLOSE = """Zephyra: — Farewell then. Have fun while it lasts. 
 
 Zephyra leaves the church without giving you a second glance.""",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_1 = """Zephyra: - Please, you are flattering me. It's just a mission I have to perform. 
+	NO_ZEPHYRA_ARTIFACTS_2_OK_1 = """Zephyra: — Please, you are flattering me. It's just a mission I have to perform. 
 
-Zephyra: - Now, that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+Zephyra: — Now, that you are the Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
 
-Zephyra: - You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_2 = """Zephyra: - There's a mission I have to perform, so we're here now.
+Zephyra: — You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes. They are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
+	NO_ZEPHYRA_ARTIFACTS_2_OK_2 = """Zephyra: — There's a mission I have to perform, so we're here now.
 
-Zephyra: - Now, that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+Zephyra: — Now, that you are the Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
 
-Zephyra: - You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+Zephyra: — You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes.hey are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
 	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_1 = "How do I know your goals are good then?",
 	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_2 = "So how do you propose for me to get into it?",
-	NO_ZEPHYRA_ARTIFACTS_3_1 = """Zephyra: - Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
+	NO_ZEPHYRA_ARTIFACTS_3_1 = """Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
 
-Zephyra: - Well, you are the Mayor, so one way or another you'll be able to get to elven artifact before that demon chick will. No need to rush it, but you should look up to it.
+Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush then, but you should at least look into it.
 
-Zephyra: - So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
-	NO_ZEPHYRA_ARTIFACTS_3_2 = """Zephyra: - Well, you are the Mayor, so one way or another you'll be able to get to elven artifact before that demon chick will. No need to rush it, but you should look up to it.
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+	NO_ZEPHYRA_ARTIFACTS_3_2 = """Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush thent, but you should at least look into it.
 
-Zephyra: - So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
 	NO_ZEPHYRA_ARTIFACTS_3_OPTION_1 = "Very well, you can join me",
 	NO_ZEPHYRA_ARTIFACTS_3_OPTION_2 = "I'm not going to bother with it after all",
-	NO_ZEPHYRA_ARTIFACTS_4_1 = """Zephyra: - Jeez, finally. You really played this hard to get, didn't you? Good we can be friends from now on at least. Don't mind me too much, please.""",
-	NO_ZEPHYRA_ARTIFACTS_4_2 = """Zephyra: - Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drown in a sewer. Farewell, [name].
+	NO_ZEPHYRA_ARTIFACTS_4_1 = """Zephyra: — Jeez, finally. You really played this hard to get, didn't you? Good we can be friends from now on at least. Don't mind me too much, please.""",
+	NO_ZEPHYRA_ARTIFACTS_4_2 = """Zephyra: — Ah, is that so? It's a shame, really. Well, I can only wish that you won't end up drowned in a sewer. Farewell, [name].
 
 Zephyra leaves the church without giving you a second glance.""",
-	ZEPHYRA_ARTIFACTS_INIT = """- You've done it, [name]. Not a thing just anyone can brag about. I'm glad my decision to join your side was correct after all.
+	ZEPHYRA_ARTIFACTS_INIT = """— You've done it, [name]. Not a thing just anyone can brag about. I'm glad my decision to join your side was correct after all.
 
-- Now that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that's what my deity's intention is for me.
+— Now that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
 
-- You know what's an Artifact? It's an item from deity, which can hold enormous powers, or have some hidden attributes, but they are connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+— You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes. They are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
 	ZEPHYRA_ARTIFACTS_INIT_OPTION_1 = "There might be a problem with this...",
 	ZEPHYRA_ARTIFACTS_INIT_OPTION_2 = "This sword is no longer in our possession",
 	ZEPHYRA_ARTIFACTS_1 = """You explain to Zephyra what has happened during the earlier days of civil war.
 
-- Hmm, this is troublesome. A demon has taken the sword at the start of it? This might be the danger I was warned about. A shame, but we must focus on collecting other artifacts then. 
+— Hmm, this is troublesome news. A demon took the sword at the start of the war? This might be the danger I was warned about. A real shame, but in that case we must focus on collecting other artifacts. 
 
-- The artifacts don't possess much power currently as they are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+— The artifacts don't possess much power in their current state, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
 	ZEPHYRA_ARTIFACTS_1_OPTION_1 = "I doubt they will simply give it to us",
 	ZEPHYRA_ARTIFACTS_1_OPTION_2 = "What's gonna happen after we get all the artifacts?",
-	ZEPHYRA_ARTIFACTS_2_1 = """- Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
-	ZEPHYRA_ARTIFACTS_2_2 = """- No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	ZEPHYRA_ARTIFACTS_2_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
+	ZEPHYRA_ARTIFACTS_2_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	#           QUESTS           #
-	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
 	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
 	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
 	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
 
-	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.",
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds. You must earn their trust and loyalty.",
 	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
 	GUILDS_INTRODUCTION_NAME2 = "First Step",
 	GUILDS_INTRODUCTION_NAME3 = "New Friends",
-	GUILDS_INTRODUCTION_STAGE0 = "Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
-	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
+	GUILDS_INTRODUCTION_STAGE0 = "Visit the Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
+	GUILDS_INTRODUCTION_STAGE1 = "Now, that you are accustomed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the four guilds. You can do so by completing quests from the city's notice board.",
 	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
-	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
+	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came this morning. It suggests you visit the Servants Guild and meet their leader.",
 
 	DAISY_CLOTHES_SUMMARY = "Your slave, Daisy, could use a new set of clothes.",
 	DAISY_CLOTHES_NAME = "Daisy: New Outfit",
-	DAISY_CLOTHES_STAGE_1 = "Speak to Sigmund for a new set of clothes for Daisy. ",
-	DAISY_CLOTHES_STAGE_2 = "Speak to Amelia for a new set of clothes for Daisy",
+	DAISY_CLOTHES_STAGE_1 = "Speak to Sigmund about a new set of clothes for Daisy. ",
+	DAISY_CLOTHES_STAGE_2 = "Speak to Amelia about a new set of clothes for Daisy",
 	DAISY_CLOTHES_STAGE_3 = "Wait, until Daisy's new clothes are finished. ",
 
 	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_NAME = "Daisy: Training",
-	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose a training for Daisy.",
+	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose the specific training for Daisy.",
 	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 
 	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_NAME = "Daisy: Disappearance",
-	DAISY_LOST_STAGE_1 = "Visit Amelia to learn what could happen to Daisy",
-	DAISY_LOST_STAGE_2 = "Find Daisy who should be at Ramont's Estate",
+	DAISY_LOST_STAGE_1 = "Visit Amelia to find out what could have happened to Daisy",
+	DAISY_LOST_STAGE_2 = "Find Daisy, who should be at Ramont's Estate",
 	
-	AMELIA_SILK_SUMMARY = "After proving yourself useful to Servants Guild, Amelia has given you a task.",
+	AMELIA_SILK_SUMMARY = "After proving yourself useful to the Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_NAME = "Amelia: Request",
-	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at Servants Guild.",
+	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at the Servants Guild.",
 	
-	AMELIA_HERBS_SUMMARY = "After helping out, Amelia gave you a new task to earn her favor.",
+	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
-	AMELIA_HERBS_STAGE_1 = "Visit Amelia at Servants Guild", # go to Amelia and ask her what is up
-	AMELIA_HERBS_STAGE_2 = "Travel to Elven Capital and find a supplier Amelia told you about.", # Get the herbs
-	AMELIA_HERBS_STAGE_3 = "Return to Amelia at Servants Guild", # return to Amelia
+	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild", # go to Amelia and ask her what is up
+	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.", # Get the herbs
+	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild", # return to Amelia
 	
 	ZEPHYRA_ARTIFACTS_SUMMARY = "",
 	ZEPHYRA_ARTIFACTS_NAME = "",
@@ -6277,14 +6261,14 @@ Zephyra leaves the church without giving you a second glance.""",
 	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_NAME = "Marriage",
 	MARRIAGE_MAIN_STAGE_1 = "Pay 500 gold to Aliron's church to set up a wedding ceremony.",
-	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with Servants Guild, Workers guild, then visit Church to start wedding",
+	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with the Servants Guild and the Workers Guild, then visit the Church to start the wedding",
 	MARRIAGE_SERVANTS_SUMMARY = "Marriage: Bread and Circuses",
 	MARRIAGE_SERVANTS_NAME = "Marriage: Bread and Circuses",
 	MARRIAGE_SERVANTS_STAGE_1 = "Deliver 200 of Fish, Meat, Vegetables and Grains, 10 Whiskey, 25 Beer and 3,000 gold to Amelia at the Servants Guild.",
 	MARRIAGE_WORKERS_SUMMARY = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
-	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers' Guild tailor.",
-	
+	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
+
 }
 
 
