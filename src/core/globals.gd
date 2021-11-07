@@ -1520,7 +1520,7 @@ func valuecheck(dict):
 		"quest_stage":
 			return ResourceScripts.game_progress.if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
-			return ResourceScripts.game_progress.completed_quests.has(dict.name)
+			return ResourceScripts.game_progress.completed_quests.has(dict.name) == dict.check
 		"party_level":
 			return ResourceScripts.game_party.if_party_level(dict.operant, dict.value)
 		"hero_level":

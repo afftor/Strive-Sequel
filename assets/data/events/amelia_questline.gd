@@ -123,7 +123,7 @@ var data = {
 	amelia_herbs_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [{type = "decision", value = "mayor_election_finished", check = true, negative = 'repeat_next_day'},
-		{type = 'quest_completed', name = 'amelia_silk_quest', negative = 'repeat_next_day'}],
+		{type = 'quest_completed', name = 'amelia_silk_quest', check = true, negative = 'repeat_next_day'}],
 		text = [{text = "AMELIA_HERBS_LETTER", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
