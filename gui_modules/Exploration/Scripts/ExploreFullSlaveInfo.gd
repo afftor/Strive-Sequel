@@ -166,7 +166,6 @@ func sell_slave():
 func sell_slave_confirm():
 	var selectedperson = gui_controller.exploration.person_to_hire
 	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price()/2))
-	selectedperson.remove_from_task()
 	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SOLD"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	gui_controller.exploration.active_faction.slaves.append(selectedperson.id)

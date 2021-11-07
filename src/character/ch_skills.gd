@@ -78,6 +78,9 @@ func learn_c_skill(skill, free = false):
 				if combat_skill_panel.has(i) == false:
 					combat_skill_panel[i] = skill
 					break
+	else:
+		if skilldata.has('learn_cost') and free:
+			parent.add_stat('abil_exp', skilldata.learn_cost)
 
 
 func unlearn_skill(skill):

@@ -37,7 +37,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=38]
 
-
 [node name="upgrades" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -346,10 +345,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CharList/ScrollContainer"]
-margin_right = 400.0
-margin_bottom = 52.0
 
 [node name="Button" type="TextureButton" parent="CharList/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 400.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 260, 46 )

@@ -37,8 +37,8 @@ var effects
 var combateffects
 var explorationares
 
-var current_level
-var current_stage
+#var current_level
+#var current_stage
 var current_enemy_group
 
 var scenes = {}
@@ -879,13 +879,14 @@ func start_random_event():
 	return eventtriggered
 
 func check_event_reqs(reqs):
+	var progress = input_handler.active_location.progress
 	var check = true
 	for i in reqs:
 		match i.code:
 			'level':
-				check = input_handler.operate(i.operant, current_level, i.value)
+				check = input_handler.operate(i.operant, progress.level, i.value)
 			'stage':
-				check = input_handler.operate(i.operant, current_stage, i.value)
+				check = input_handler.operate(i.operant, progress.stage, i.value)
 			'dungeon_complete':
 				check = i.value == input_handler.exploration_node.check_dungeon_end()
 			'value_check':
@@ -948,16 +949,18 @@ func StartAreaCombat():
 	var enemygroup = {}
 	var enemies = []
 	var music = 'combattheme'
-
+	
+	var progress = input_handler.active_location.progress
+	
 	for i in input_handler.active_location.stagedenemies:
-		if i.stage == current_stage && i.level == current_level:
+		if i.stage == progress.stage && i.level == progress.level:
 			enemydata = i.enemy#[i.enemy,1]
 	if enemydata == null:
 		enemydata = input_handler.active_location.enemies
 
 	enemies = make_enemies(enemydata)
 
-	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * progress.level
 
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()

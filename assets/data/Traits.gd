@@ -1,4 +1,5 @@
 extends Node
+#do not remove obsolete data for the sake of saves compatibility
 
 var traits = {
 	core_trait = {#adds core effects
@@ -248,8 +249,8 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_pet'],
-		bonusstats = {mod_pros = 0.25}
-	},
+		bonusstats = {mod_pros = 0.25} 
+	}, #not used
 	sextoy = {#+50% gold from prostitution
 		code = 'sextoy',
 		name = '',

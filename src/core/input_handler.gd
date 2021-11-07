@@ -308,7 +308,7 @@ func _init():
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
-	connect("EventFinished", self, "event_finished")
+#	connect("EventFinished", self, "event_finished")
 
 func _ready():
 	OS.window_size = globalsettings.window_size
@@ -400,9 +400,9 @@ func _input(event):
 			if gui_controller.current_screen == gui_controller.mansion:
 				gui_controller.clock.raise()
 			if gui_controller.current_screen == gui_controller.exploration:
-				var location = active_location
+#				var location = active_location
 				var capital = false
-				capital = location.type == "capital"
+				capital = active_location.type == "capital"
 				if capital:
 					gui_controller.clock.raise()
 					gui_controller.clock.show()
@@ -874,7 +874,9 @@ func event_finished():
 func start_event_attempt():
 	if dialogue_array.size() > 0:
 		if event_is_active == true:
-			yield(self, "EventFinished")
+#			yield(self, "EventFinished")
+			#yield is pointless here because of no code after it
+			return
 		else:
 			var event = dialogue_array[0]
 			start_event(event.code, event.type, event.args)

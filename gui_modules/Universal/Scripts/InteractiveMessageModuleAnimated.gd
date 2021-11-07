@@ -275,7 +275,7 @@ func select_person_for_next_event(code):
 	var reqs
 	if code.find('marriage')!= -1:
 		reqs = [
-			{code = 'stat', stat = 'agree_to_marry', operant = 'eq', value = true}
+			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
 		]
 	elif code.find('trap') != -1 or code.find('shrine') != -1: #imho there should be also a lockpicking events
 		reqs = [
@@ -301,7 +301,6 @@ func remove_non_master(code):
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
 func remove_selected(person):
-	person.remove_from_task()
 	input_handler.active_character = person
 	ResourceScripts.game_party.add_fate(person.id, tr("LOST"))
 	ResourceScripts.game_party.remove_slave(person)
@@ -324,7 +323,7 @@ func event_person_selected(person):
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 
-func close(transition = false):
+func close(transition = false, finish_scene = true):
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
@@ -334,7 +333,8 @@ func close(transition = false):
 	if transition == false:
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
-	input_handler.emit_signal("EventFinished")
+	if finish_scene: input_handler.emit_signal("EventFinished")
+	input_handler.event_finished()
 	gui_controller.is_dialogue_just_started = true
 
 

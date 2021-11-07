@@ -1,7 +1,7 @@
 extends "res://src/scenes/ClosingPanel.gd"
 # warning-ignore-all:return_value_discarded
 
-var active_location
+#var active_location
 var positiondict = {
 	1 : "HBoxContainer/frontrow/1",
 	2 : "HBoxContainer/frontrow/2",
@@ -19,7 +19,7 @@ func _ready():
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
 
 func open():
-	active_location = input_handler.active_location
+#	active_location = input_handler.active_location
 	show()
 	build_location_group()
 
@@ -27,13 +27,13 @@ var pos
 
 func selectfighter(position):
 	pos = 'pos'+str(position)
-	var reqs = [{code = 'is_at_location', value = active_location.id, check = true}]
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
 	if variables.allow_remote_intereaction == true: reqs = []
 	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
 func slave_position_selected(character):
 	if character == null:
-		active_location.group.erase(pos)
+		input_handler.active_location.group.erase(pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
@@ -45,25 +45,25 @@ func slave_position_selected(character):
 	character = character.id
 	var positiontaken = false
 	var oldheroposition = null
-	if active_location.group.has(pos) && ResourceScripts.game_party.characters[active_location.group[pos]].check_location(active_location.id, true):
+	if input_handler.active_location.group.has(pos) && ResourceScripts.game_party.characters[input_handler.active_location.group[pos]].check_location(input_handler.active_location.id, true):
 		positiontaken = true
 	
-	for i in active_location.group:
-		if active_location.group[i] == character:
+	for i in input_handler.active_location.group:
+		if input_handler.active_location.group[i] == character:
 			oldheroposition = i
-			active_location.group.erase(i)
+			input_handler.active_location.group.erase(i)
 	
 	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		active_location.group[oldheroposition] = active_location.group[pos]
+		input_handler.active_location.group[oldheroposition] = input_handler.active_location.group[pos]
 	
-	active_location.group[pos] = character
+	input_handler.active_location.group[pos] = character
 	build_location_group()
 
 
 func build_location_group():
 	for i in positiondict:
-		if active_location.group.has('pos'+str(i)) && ResourceScripts.game_party.characters[active_location.group['pos'+str(i)]] != null:
-			var character = ResourceScripts.game_party.characters[active_location.group['pos'+str(i)]]
+		if input_handler.active_location.group.has('pos'+str(i)) && ResourceScripts.game_party.characters[input_handler.active_location.group['pos'+str(i)]] != null:
+			var character = ResourceScripts.game_party.characters[input_handler.active_location.group['pos'+str(i)]]
 			get_node(positiondict[i]+"/Image").texture = character.get_icon()
 			get_node(positiondict[i]+"/Image").show()
 			get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
@@ -77,7 +77,7 @@ func start_combat():
 		input_handler.SystemMessage("Select at least 1 character to fight. ")
 		return
 	hide()
-	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()
+	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close(false, false)
 	if globals.current_enemy_group == 'random_local_group':
 		globals.StartAreaCombat()
 	else:
