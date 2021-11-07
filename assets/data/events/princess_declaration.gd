@@ -74,6 +74,9 @@ var data = {
 			{text = "ANASTASIA_DECLARATION_4", reqs = [], previous_dialogue_option = 1},
 			{text = "ANASTASIA_DECLARATION_5", reqs = [], previous_dialogue_option = 2},
 		],
+		common_effects = [
+			
+		],
 		options = [
 			{
 				code = 'final_words_1',
@@ -91,7 +94,9 @@ var data = {
 		character2 = "sigmund",
 		tags = ['dialogue_scene','blackscreen_transition_common'],
 		common_effects = [{code = 'add_timed_event', value = "amelia_herbs_start",
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}],
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}, 
+		{code = 'add_timed_event', value = "zephyra_artifacts_init", 
+		args = [{type = 'add_to_date', date = [2,2], hour = 8}], }, ],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
@@ -153,7 +158,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [],
+				bonus_effects = [{code = 'update_city'}],
 			},
 			{
 				code = 'close',
@@ -161,7 +166,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [],
+				bonus_effects = [{code = 'update_city'}],
 			},
 		],
 	},
@@ -411,6 +416,7 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = "update_city"}
 				]
 			}
 		],
@@ -668,27 +674,11 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 					]},
 				{code = 'decision', value = 'anstasia_sex_scene'},
+				{code = "update_city"}
 				]
 			}
 		],
 	},
-#	princess_sex_good_4 = {
-#		image = null,
-#		character = "anastasia",
-#		tags = ['dialogue_scene', 'master_translate'],
-#		text = [
-#			{text = "AFTER_ELECTION_PRINCESS_CONSENT_4", reqs = []},
-#		],
-#		options = [
-#			{
-#				code = 'close',
-#				text = "DIALOGUECLOSE",
-#				type = 'next_dialogue',
-#				reqs = [],
-#				dialogue_argument = 1,
-#			}
-#		],
-#	},
 	princess_cutscene_exit_1 = {
 		image = null,
 		character = "anastasia",
@@ -703,6 +693,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				bonus_effects = [{code = 'update_city'}],
 			}
 		],
 	},
@@ -720,6 +711,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				bonus_effects = [{code = 'update_city'}],
 			}
 		],
 	},
@@ -786,33 +778,13 @@ var data = {
 	},
 	princess_sex_bad_1 = {
 		image = null,
-#		custom_background = "anastasia_rape_1",
-#		scene_type = "ero_scene",
-#		save_scene_to_gallery = true,
-#		tags = ['dialogue_scene','blackscreen_transition_common'],
 		tags = ['dialogue_scene'],
 		character = "anastasia",
 		text = [
-#			{text = "AFTER_ELECTION_PRINCESS_15", reqs = [], previous_dialogue_option = 1},
-#			{text = "AFTER_ELECTION_PRINCESS_18", reqs = [], previous_dialogue_option = 2},
 			{text = "AFTER_ELECTION_PRINCESS_15", reqs = []},
-#			{text = '', reqs = [], bonus_effects = [
-#				{code = 'unique_character_changes', value = 'anastasia', args = [
-#					{code = 'submission', operant = '+', value = 25},
-#					{code = 'vaginal_virgin', operant = '=', value = false},
-#				]},
-#				{code = 'decision', value = 'anstasia_rape_scene'},
-#				],
-#			}
 		],
 		options = [
 			{
-#				code = 'close',
-#				text = "DIALOGUECLOSE",
-#				type = 'next_dialogue',
-#				dialogue_argument = 1,
-#				change_dialogue_type = 1,
-#				reqs = [],
 				code = 'princess_sex_bad_2',
 				text = "DIALOGUECONTINUE",
 				type = 'next_dialogue',
@@ -924,6 +896,7 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = "update_city"}
 				]
 			}
 		],
@@ -978,6 +951,7 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				change_dialogue_type = 1,
+				bonus_effects = [{code = 'update_city'}],
 			}
 		],
 	},

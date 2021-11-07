@@ -664,26 +664,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="learn" type="Label" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
-visible = false
-light_mask = 0
-margin_left = 6.0
-margin_top = 8.0
-margin_right = 94.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 45 )
-custom_colors/font_color = Color( 0.4, 0.929412, 0.176471, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "Learned"
-align = 1
-valign = 2
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="skillpoints_label" type="Label" parent="SkillPanel"]
 margin_left = 85.0
 margin_top = 836.0
@@ -710,6 +690,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltip"]
+visible = false
 light_mask = 0
 margin_left = 50.0
 margin_top = 50.0

@@ -194,27 +194,26 @@ func build_skills():
 	input_handler.ClearContainer($SkillPanel/ScrollContainer/GridContainer)
 	
 	var array = []
+	var array_learned = []
+	
 	for i in Skilldata.Skilllist.values():
 		if i.tags.has("learnable"):
-			array.append(i)
+			if person.get_combat_skills().has(i.code):
+				array_learned.append(i)
+			else:
+				array.append(i)
 	array.sort_custom(self, 'sort_by_name')
-	for i in array:
+	for i in array_learned + array:
 		if is_skill_locked(i):
 			continue
 		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, "skill_selected", [i])
-		globals.connecttexttooltip(newbutton, tr("SKILL" + i.code.to_upper() + "DESCRIPT"))
+		globals.connecttexttooltip(newbutton, '[center]' + i.name + '[/center]\n' + i.descript)
 		newbutton.get_node("icon").texture = i.icon
-		newbutton.get_node("name").text = tr("SKILL" + i.code.to_upper()) 
+		newbutton.get_node("name").text = i.name
 		newbutton.set_meta('skill', i)
-#		if is_skill_locked(i):
-#			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-#			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-#			newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-		for o in person.get_combat_skills():
-			if o == i.code:
-				newbutton.get_node("learn").visible = true
-				newbutton.disabled = true
+		if array_learned.has(i):
+			newbutton.disabled = true
 	sort_skills()
 	$SkillPanel/skillpoints_label.text = "Skill Points: " + str(person.get_ability_experience())
 	
@@ -267,6 +266,7 @@ func skill_selected(skill):
 	$SkillTooltip/req_icon.texture = null
 	globals.connecttexttooltip($SkillTooltip/req_icon, "")
 	$SkillTooltip/req_icon.hint_tooltip = ""
+	$SkillTooltip/usage.text = "0"
 	$SkillTooltip/unlock_button.disabled = false
 	$SkillTooltip/exp.set("custom_colors/font_color", "#f9e380")
 	if skill.learn_cost > person.get_ability_experience():

@@ -26,6 +26,9 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="."]
 margin_right = 500.0
@@ -42,9 +45,9 @@ __meta__ = {
 [node name="Question" type="Label" parent="."]
 margin_top = 58.0
 margin_right = 500.0
-margin_bottom = 89.0
+margin_bottom = 93.0
 theme = ExtResource( 2 )
-text = "Is it your firs time playing Strive: Conquest?"
+text = "Is it your first time playing Strive: Conquest?"
 align = 1
 valign = 1
 __meta__ = {

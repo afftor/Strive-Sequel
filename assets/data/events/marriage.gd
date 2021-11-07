@@ -5,6 +5,7 @@ var data = {
 				reqs = [{code = "decision", value = "mayor_election_finished", check = true}], #main 
 				image = null, 
 				tags = ['dialogue_scene'],
+				custom_background = "church_event", character = "ginny",
 				text = [{text = "MARRIAGE_CHURCH_TEXT_1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'marriage_church_2', text = "SELECT", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -15,6 +16,7 @@ var data = {
 				reqs = [], #default
 				image = null, 
 				tags = [],
+				custom_background = "church_event", character = "ginny",
 				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
 				options = [ 
 						{code = 'close', text = "DIALOGUECLOSE", reqs = []}
@@ -25,15 +27,17 @@ var data = {
 	marriage_church_2 = {
 		image = null,
 		tags = ['dialogue_scene'],
+		custom_background = "church_event", character = "ginny",
 		text = [{text = "MARRIAGE_CHURCH_TEXT_2", reqs = []}],
 		options = [ 
 				{code = 'marriage_church_3', text = "PAY", reqs = [{type = 'has_money', value = 500}], bonus_effects = [{code = 'set_spouse'}], dialogue_argument = 1, type = 'next_dialogue'},
-				{code = 'close', text = "CANCEL", reqs = []}
+				{code = 'close', text = "CANCEL", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}]}
 			],
 	},
 	marriage_church_3 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'], 
+		custom_background = "church_event", character = "ginny",
 		text = [{text = "MARRIAGE_CHURCH_TEXT_3", reqs = []}],
 		options = [ {
 			code = 'marriage_church_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -42,15 +46,17 @@ var data = {
 	marriage_church_4 = {
 		image = null,
 		tags = ['dialogue_scene'],
+		custom_background = "church_event", character = "ginny",
 		text = [{text = "MARRIAGE_CHURCH_TEXT_4", reqs = []}],
 		options = [ 
-				{code = 'close', text = "MARRIAGE_CHURCH_CLOSE_OPTION", reqs = [], bonus_effects = [{code = 'money_change', operant = '-', value = 500},{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage2'}],}
+				{code = 'close', text = "MARRIAGE_CHURCH_CLOSE_OPTION", reqs = [], type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 500},{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage2'}],}
 			],
 	},
 	
 	marriage_servants_1 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "amelia",
 		text = [
 			{text = "MARRIAGE_SERVANTS_1_1", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'anastasia'}}]},
 			{text = "MARRIAGE_SERVANTS_1_2", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'neq', value = 'anastasia'}}]},
@@ -63,16 +69,17 @@ var data = {
 	marriage_servants_2 = {
 		image = null,
 		tags = ['dialogue_scene'],
+		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_2", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_servants', stage = 'stage1'}]}],
 		options = [ 
 				{code = 'marriage_servants_completed_1', text = "MARRIAGE_SERVANTS_COMPLETE_OPTION", reqs = [
 					{type = 'has_money', value = 3000},
 					{type = 'has_material', operant = 'gte', value = 200, material = 'fish'},
-					{type = 'has_material', operant = 'gte', value = 200, material = 'maet'},
+					{type = 'has_material', operant = 'gte', value = 200, material = 'meat'},
 					{type = 'has_material', operant = 'gte', value = 200, material = 'vegetables'},
-					{type = 'has_material', operant = 'gte', value = 200, material = 'grains'},
-					{type = 'has_material', operant = 'gte', value = 25, material = 'beer'},
-					{type = 'has_material', operant = 'gte', value = 10, material = 'alcohol'},
+					{type = 'has_material', operant = 'gte', value = 200, material = 'grain'},
+					{type = 'has_items', operant = 'gte', value = 25, name = 'beer'},
+					{type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},
 					], dialogue_argument = 1, type = 'next_dialogue'},
 				{code = 'close', text = "RETURN", reqs = []}
 			],
@@ -80,14 +87,15 @@ var data = {
 	marriage_servants_completed_1 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_COMPLETE_1", reqs = [], bonus_effects = [
 			{code = 'money_change', operant = '-', value = 3000},
 			{code = 'material_change', operant = '-', material = 'fish', value = 200},
 			{code = 'material_change', operant = '-', material = 'meat', value = 200},
 			{code = 'material_change', operant = '-', material = 'vegetables', value = 200},
-			{code = 'material_change', operant = '-', material = 'grains', value = 200},
-			{code = 'material_change', operant = '-', material = 'beer', value = 25},
-			{code = 'material_change', operant = '-', material = 'alcohol', value = 10},
+			{code = 'material_change', operant = '-', material = 'grain', value = 200},
+			{code = 'remove_item', name = 'beer', number = 25},
+			{code = 'remove_item', name = 'alcohol', number = 10},
 		]}],
 		options = [ {
 			code = 'marriage_servants_completed_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -96,12 +104,14 @@ var data = {
 	marriage_servants_completed_2 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_COMPLETE_2", reqs = []}],
 		options = [ {code = 'marriage_servants_completed_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
 	},
 	marriage_servants_completed_3 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_COMPLETE_3", reqs = []}],
 		options = [ 
 			{code = 'marriage_servants_completed_4', text = "MARRIAGE_SERVANTS_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'ivitations_made'}]},
@@ -111,15 +121,17 @@ var data = {
 	marriage_servants_completed_4 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_COMPLETE_4", reqs = []}],
 		options = [ 
-				{code = 'close', text = "CLOSE", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_servants'}],}
+				{code = 'close', text = "CLOSE", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_servants'}], type = 'next_dialogue'}
 			],
 	},
 	
 	marriage_workers_1 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "sigmund",
 		text = [{text = "MARRIAGE_WORKERS_1", reqs = []}],
 		options = [ {
 			code = 'marriage_workers_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -128,6 +140,7 @@ var data = {
 	marriage_workers_2 = {
 		image = null,
 		tags = ['dialogue_scene'],
+		character = "sigmund",
 		text = [{text = "MARRIAGE_WORKERS_2", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_workers', stage = 'stage1'}]}],
 		options = [ 
 				{code = 'marriage_workers_completed_1', text = "MARRIAGE_WORKERS_COMPLETE_OPTION", reqs = [
@@ -141,19 +154,21 @@ var data = {
 	marriage_workers_completed_1 = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		character = "sigmund",
 		text = [{text = "MARRIAGE_WORKERS_COMPLETE_1", reqs = [], bonus_effects = [
 			{code = 'money_change', operant = '-', value = 1000},
 			{code = 'material_change', operant = '-', material = 'clothsilk', value = 150},
 			{code = 'material_change', operant = '-', material = 'clothmagic', value = 50},
 		]}],
 		options = [
-			{code = 'close', text = "CLOSE", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_workers'}],}
+			{code = 'close', text = "CLOSE", reqs = [], type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_workers'}],}
 			],
 	},
 	
 	marriage_final_init = {
 		image = null,
 		tags = ['dialogue_scene'], 
+		custom_background = "church_event", character = "ginny",
 		text = [{text = "MARRIAGE_FINAL_INIT", reqs = []}],
 		options = [ {
 			code = 'marriage_final_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 

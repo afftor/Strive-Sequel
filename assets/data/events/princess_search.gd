@@ -855,6 +855,7 @@ var data = {
 		character = "aire",
 		character2 = "amelia",
 		tags = ['dialogue_scene'],
+		reqs = [{type = 'quest_completed', name = 'princess_search', check = false}],
 		text = [
 			{text = "AIRE_AMELIA1", reqs = []},
 		],

@@ -543,7 +543,38 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.5.4
+bbcode_text = "New content:
+Added postresque daisy scene
+Added marriage sidequest (available after finishing civil war arc)
+
+Combat Abilities rework:
+Now most of combat skills are purchasable with new ability experience
+Ability experience is obtained from combats
+Most combat classes now only unlock 1 skill for free
+Rebalanced many skills
+Mindblast cooldown is now 1 turn (previously 0)
+Enemy Rare effect Precise: evasion reduced
+Healer class renamed to Acolyte
+Skills are locked behind Combat/Spellcasting traits provided by classes
+\"Weapon mastery\" and \"Magic Tools\" traits removed and their dependants are replaced by combat/spellcasting traits
+Extra furry nipples and furries are set to false by default
+
+Unique characters and Mastern now display in different color in main list
+
+Added description and slightly improved \"Turn Undead\" skill of necromancer
+
+Presets:
+Advanced starts with only 1 Writ of Exemption
+Sandbox now starts with 1000 reputation for each guild
+
+Game start:
+Acolyte (replaces Healer) can be picked by Master and Mage guild follower
+Instead of Healer, church quest now unlocks Priest class
+Attendant is now Servants' Guild class option
+
+Fixed caster showing up without purchasing the class first
+Fixed Amelia's sidequest not giving out the reward
+0.5.4
 Obedience is now displayed as percentage
 Default obedience gain is reduced by 25%
 Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
@@ -1040,7 +1071,38 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.5.4
+text = "New content:
+Added postresque daisy scene
+Added marriage sidequest (available after finishing civil war arc)
+
+Combat Abilities rework:
+Now most of combat skills are purchasable with new ability experience
+Ability experience is obtained from combats
+Most combat classes now only unlock 1 skill for free
+Rebalanced many skills
+Mindblast cooldown is now 1 turn (previously 0)
+Enemy Rare effect Precise: evasion reduced
+Healer class renamed to Acolyte
+Skills are locked behind Combat/Spellcasting traits provided by classes
+\"Weapon mastery\" and \"Magic Tools\" traits removed and their dependants are replaced by combat/spellcasting traits
+Extra furry nipples and furries are set to false by default
+
+Unique characters and Mastern now display in different color in main list
+
+Added description and slightly improved \"Turn Undead\" skill of necromancer
+
+Presets:
+Advanced starts with only 1 Writ of Exemption
+Sandbox now starts with 1000 reputation for each guild
+
+Game start:
+Acolyte (replaces Healer) can be picked by Master and Mage guild follower
+Instead of Healer, church quest now unlocks Priest class
+Attendant is now Servants' Guild class option
+
+Fixed caster showing up without purchasing the class first
+Fixed Amelia's sidequest not giving out the reward
+0.5.4
 Obedience is now displayed as percentage
 Default obedience gain is reduced by 25%
 Now enemies can spawn with a rare traits which increase some of their stats, xp and item rewards
