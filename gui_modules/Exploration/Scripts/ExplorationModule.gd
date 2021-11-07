@@ -2399,22 +2399,22 @@ func update_location_shop_btn(location_name):
 var purchasing_location
 
 func purchase_location():
-	var active_area #not cached
-	var active_location #not cached
+#	var active_area 
+#	var active_location 
 	if purchasing_location.has('purchase_area'):
-		active_area = ResourceScripts.game_world.areas[purchasing_location.purchase_area]
-	if active_area.locations.size() < 8:
+		input_handler.active_area = ResourceScripts.game_world.areas[purchasing_location.purchase_area]
+	if input_handler.active_area.locations.size() < 8:
 		var randomlocation = []
-		for i in active_area.locationpool:
+		for i in input_handler.active_area.locationpool:
 			randomlocation.append(worlddata.dungeons[i].code)
 		randomlocation = ResourceScripts.world_gen.make_location(
-			purchasing_location.code, active_area
+			purchasing_location.code, input_handler.active_area
 		)
-		active_location = randomlocation
+		input_handler.active_location = randomlocation
 #		input_handler.active_area = active_area
-		active_area.locations[randomlocation.id] = randomlocation
+		input_handler.active_area.locations[randomlocation.id] = randomlocation
 		ResourceScripts.game_world.location_links[randomlocation.id] = {
-			area = active_area.code, category = 'locations'
+			area = input_handler.active_area.code, category = 'locations'
 		}
 		ResourceScripts.game_res.money -= purchasing_location.purchase_price
 		input_handler.interactive_message(
