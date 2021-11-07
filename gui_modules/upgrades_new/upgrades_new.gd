@@ -256,9 +256,24 @@ func update_button(newbutton, person):
 			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
 
 
+func can_add_worker():
+	var count = 0
+	var max_count
+	var task = races.tasklist.building
+	max_count = task.base_workers + task.workers_per_upgrade * ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
+	for i in ResourceScripts.game_party.character_order:
+		var person = ResourceScripts.game_party.characters[i]
+		if !person.check_location(ResourceScripts.game_world.mansion_location, true): continue
+		if person.get_work() == "building":
+			count += 1
+	return count < max_count
+
 func set_to_upgrading(pressed, person):
 	if pressed:
-		person.assign_to_task("building", "building")
+		if can_add_worker():
+			person.assign_to_task("building", "building")
+		else:
+			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
 	else:
 		person.remove_from_task()
 	build_characters()

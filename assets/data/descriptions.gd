@@ -587,10 +587,14 @@ func get_class_reqs(newperson, classdata, colorcode = true):
 func get_class_bonuses(newperson, classdata):
 	var text = ''
 	for i in classdata.statchanges:
-		text += statdata.statdata[i].name + ": "
-		if classdata.statchanges[i]  > 0:
+		var data = statdata.statdata[i]
+		var value = classdata.statchanges[i]
+		if data.percent: 
+			value *= 100
+		text += data.name + ": "
+		if value  > 0:
 			text += "+"
-		text += str(classdata.statchanges[i]) + "\n"
+		text += str(value) + "\n"
 	return text
 
 func get_class_traits(newperson, classdata):

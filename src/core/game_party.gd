@@ -74,6 +74,7 @@ func add_slave(person, child = false):
 	globals.emit_signal("slave_added")
 
 func remove_slave(tempslave, permanent = false):
+	tempslave.remove_from_task()
 	tempslave.process_event(variables.TR_REMOVE)
 	characters_pool.move_to_pool(tempslave.id)
 	tempslave.is_players_character = false
