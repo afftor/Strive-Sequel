@@ -13,7 +13,7 @@ onready var MenuModule = $MansionBottomLeftModule
 #onready var NavModule = $NavigationModule
 onready var CraftModule = $MansionCraftModule
 onready var CraftSmallModule = $MansionCraftSmallModule
-onready var JobModule = $MansionJobModule
+onready var JobModule = $MansionJobModule2
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
@@ -254,15 +254,20 @@ func match_state():
 #				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"occupation":
 			$MansionSlaveListModule.rebuild()
-			$MansionJobModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 580))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
+#			$MansionJobModule.show()
+#			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+#			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
+#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
 			# $MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size())
-			$MansionJobModule.cancel_job_choice()
+#			$MansionJobModule.cancel_job_choice()
 			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($MansionJobModule, 0.3)
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				$MansionJobModule2.show()
+				$MansionJobModule2.rebuild()
+				ResourceScripts.core_animations.UnfadeAnimation($MansionJobModule2, 0.3)
+				gui_controller.clock.hide()
+				ResourceScripts.core_animations.FadeAnimation(gui_controller.clock, 0.3)
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionJobModule, 0.3)
+#				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"char_info":
 			open_char_info()
 		"craft":
@@ -428,8 +433,9 @@ func slave_list_manager():
 			SlaveListModule.rebuild()
 			UpgradesModule.open_queue()
 		'occupation':
+			pass
 			#$MansionSlaveListModule.rebuild()
-			$MansionJobModule.open_jobs_window()
+#			$MansionJobModule.open_jobs_window()
 		'craft':
 			if active_person == null:
 				set_active_person(SlaveListModule.visible_persons[0])

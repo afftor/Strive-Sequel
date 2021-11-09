@@ -603,8 +603,9 @@ func fix_serialization():
 	travel = dict2inst(travel)
 	effects = dict2inst(effects)
 	food = dict2inst(food)
-	xp_module.fix_rules()
 	rebuild_parents()
+	xp_module.fix_rules()
+	
 
 
 
