@@ -274,6 +274,8 @@ func apply_preserved_settings():
 			person.food.food_love = preservedsettings["food_love"]
 		elif i == "food_hate":
 			person.food.food_hate = preservedsettings["food_hate"]
+		elif i == 'slave_class':
+			person.set_slave_category(preservedsettings[i])
 		else:
 			person.set_stat(i, preservedsettings[i])
 

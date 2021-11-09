@@ -169,8 +169,11 @@ func select_bodypart(value, bodypart, node):
 
 func select_sexbodypart(value, bodypart, node):
 	var person = get_parent().person
-	get_parent().preservedsettings[bodypart] = node.get_item_text(value)
-
+	var rval = node.get_item_text(value)
+	if bodypart == 'slave_class' and rval == 'peon':
+		rval = 'servant'
+	get_parent().preservedsettings[bodypart] = rval
+	
 	get_parent().apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
 

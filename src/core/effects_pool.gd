@@ -28,7 +28,7 @@ func get_effect_by_id(id):
 func cleanup():
 	for id in effects.keys():
 		if !effects[id].is_applied:
-			print("effect %s is removed as marked for cleanup" % id)
+#			print("effect %s is removed as marked for cleanup" % id)
 #			print(effects[id].template)
 			remove_id(id)
 			continue

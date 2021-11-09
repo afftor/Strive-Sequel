@@ -25,11 +25,11 @@ func OpenJobModule(person = null):
 	get_parent().mansion_state_set("occupation")
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
-	get_parent().get_node("MansionJobModule2").show()
-	get_parent().get_node("MansionJobModule2").rebuild()
-	ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("MansionJobModule2"), 0.3)
-	gui_controller.clock.hide()
-	ResourceScripts.core_animations.FadeAnimation(gui_controller.clock, 0.3)
+#	get_parent().get_node("MansionJobModule2").show()
+#	get_parent().get_node("MansionJobModule2").rebuild()
+#	ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("MansionJobModule2"), 0.3)
+#	gui_controller.clock.hide()
+#	ResourceScripts.core_animations.FadeAnimation(gui_controller.clock, 0.3)
 	#yield(get_tree().create_timer(0.3), 'timeout')
 
 func rebuild():

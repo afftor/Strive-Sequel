@@ -1018,6 +1018,7 @@ func repeat_social_skill():
 
 func update_slave_list():
 	slave_list_node.update()
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
