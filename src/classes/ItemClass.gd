@@ -182,6 +182,11 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		#name = itemtemplate.partmaterialname
 
 
+func fix_gear():
+	var template = Items.itemlist[itembase]
+	reqs = template.reqs.duplicate()
+
+
 func substractitemcost():
 	var itemtemplate = Items.itemlist[itembase]
 	for i in parts:

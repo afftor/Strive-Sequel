@@ -26,6 +26,8 @@ func fix_serialization():
 			clear_array.append(i)
 			continue
 		items[i] = dict2inst(items[i])
+		if items[i].type == 'gear':
+			items[i].fix_gear()
 	for i in clear_array:
 		items.erase(i)
 	clear_array.clear()
