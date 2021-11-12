@@ -343,10 +343,10 @@ func open_location(data):
 
 func build_location_description():
 	var active_location = input_handler.active_location
-	var progress = active_location.progress
 	var text = ''
 	match input_handler.active_location.type:
 		'dungeon':
+			var progress = active_location.progress
 			text = (
 				active_location.name
 				+ " ("
