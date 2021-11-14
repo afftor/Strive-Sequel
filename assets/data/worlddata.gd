@@ -34,6 +34,7 @@ var lands = {
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
+			{code = 'gryphon_hunter_start', text = "Meet Derek, hunter veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -1471,6 +1472,57 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = []
+	},
+	gryphon_forest_location = {# trigger = dungeon_complete
+		code = 'gryphon_forest_location',
+		type = 'dungeon',
+		name = 'Gryphon forest',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['forest1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "exploration",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+		area = 'plains',
+		travel_time = [4,6],
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
+	},
+	gryphon_cave_location = {# trigger = dungeon_complete
+		code = 'gryphon_cave_location',
+		type = 'dungeon',
+		name = 'Gryphon cave',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+		area = 'plains',
+		travel_time = [4,6],
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_cave_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}]}]
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
