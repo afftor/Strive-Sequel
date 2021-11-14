@@ -274,20 +274,21 @@ var data = {
 			{text = "GRYPHON_ANA_SEX_2", reqs = []},
 		], 
 		options = [
-			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_1',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
-			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_2',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
-			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_3',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_1',reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2}, 
+			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_2',reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2}, 
+			{code = 'ana_gryphon_sex_3', text = 'GRYPHON_ANA_SEX_2_OPTION_3',reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2}, 
 		],
 	},
 	
 	ana_gryphon_sex_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = 'aire', character = 'anastasia',
-		text = [
-			{text = "GRYPHON_ANA_SEX_3", reqs = []},
-		], 
-		common_effects = [{code = 'remove_decision', value = 'AnaAireThreesome'}],
+		image = null,
+		custom_background = "aire_ana3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [{text = "GRYPHON_ANA_SEX_3", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECLOSE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'close', text = 'DIALOGUECLOSE',reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1}, 
 		],
 	},
 }
