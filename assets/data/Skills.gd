@@ -720,14 +720,14 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/icon_energy_field.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['noevade','support','buff','learnable'],
+		tags = ['noevade','support','buff'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_spells', check = true}],
 		learn_cost = 350,
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_s_field'], 
-		cost = {mp = 10},
+		cost = {mp = 8},
 		charges = 0,
 		combatcooldown = 4,
 		cooldown = 0,
@@ -931,7 +931,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/icon_camouflage.png"),
 		type = 'combat',
 		ability_type = 'skill', 
-		tags = ['buff','learnable'],
+		tags = ['buff'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_combat', check = true}],
 		learn_cost = 400,
@@ -958,7 +958,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/icon_reincarnation.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['buff','learnable'],
+		tags = ['buff'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_spells', check = true}],
 		learn_cost = 550,
@@ -1959,7 +1959,7 @@ var Skilllist = {
 		value = 0.8
 	},
 	
-	fly_evasion = {#buff on self: +25 evasion for 4 turns
+	fly_evasion = {
 		code = 'fly_evasion',
 		
 		descript = '',
@@ -2016,7 +2016,7 @@ var Skilllist = {
 		icon = load('res://assets/images/iconsskills/assassinate.png'),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','ads','learnable'],
+		tags = ['damage','ads'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_combat', check = true}],
 		learn_cost = 750,

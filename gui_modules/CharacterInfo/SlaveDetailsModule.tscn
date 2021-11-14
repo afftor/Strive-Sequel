@@ -381,14 +381,14 @@ margin_right = 889.947
 margin_bottom = 741.229
 size_flags_horizontal = 2
 size_flags_vertical = 2
-window_title = "Открыть файл"
+window_title = "Open a File"
 dialog_text = "Select New Portait"
 dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "/Strive-Sequel/Strive-Sequel"
-current_path = "/Strive-Sequel/Strive-Sequel/"
+current_dir = "/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "/Users/1/Desktop/godot/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -484,12 +484,12 @@ margin_right = 850.515
 margin_bottom = 618.271
 size_flags_horizontal = 2
 size_flags_vertical = 2
-window_title = "Открыть каталог"
+window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "/Strive-Sequel/Strive-Sequel"
-current_path = "/Strive-Sequel/Strive-Sequel/"
+current_dir = "/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "/Users/1/Desktop/godot/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -519,6 +519,7 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
