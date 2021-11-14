@@ -543,7 +543,13 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "New content:
+bbcode_text = "0.5.5a
+Fixed certain skill usage
+Fixed marriage character selection
+Fixed some event errors
+Fixed some typos
+0.5.5
+New content:
 Added postresque daisy scene
 Added marriage sidequest (available after finishing civil war arc)
 
@@ -1071,7 +1077,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "New content:
+text = "0.5.5a
+Fixed certain skill usage
+Fixed marriage character selection
+Fixed some event errors
+Fixed some typos
+0.5.5
+New content:
 Added postresque daisy scene
 Added marriage sidequest (available after finishing civil war arc)
 

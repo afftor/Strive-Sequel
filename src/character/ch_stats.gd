@@ -292,7 +292,9 @@ func add_bonus(b_rec:String, value, revert = false):
 		else: bonuses[b_rec] += value
 	else:
 		if revert:
-			print('error bonus not found %s' % b_rec)
+			print('warning bonus not found %s' % b_rec)
+			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 - value
+			else: bonuses[b_rec] = -value
 		else:
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
@@ -354,7 +356,9 @@ func mul_stat(statname, value, revert = false):
 					bonuses.erase(statname + '_mul')
 			else: bonuses[statname + '_mul'] *= value
 		else:
-			if revert: print('error bonus not found %s' % statname)
+			if revert: 
+				print('warning bonus not found %s' % statname)
+				bonuses[statname + '_mul'] = 1.0 / value
 			else: bonuses[statname + '_mul'] = value
 
 func add_part_stat(statname, value, revert = false):

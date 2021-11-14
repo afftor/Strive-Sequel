@@ -1356,11 +1356,11 @@ var effect_table = {
 		name = 'fly',
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 4,
+		duration = 3,
 		stack = 1,#or not
 		tags = ['buff'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'evasion', value = 25}],
+		atomic = [{type = 'stat_add', stat = 'evasion', value = 65}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Fear.png",

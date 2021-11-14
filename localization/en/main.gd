@@ -687,7 +687,7 @@ var TranslationDict = {
 	SKILLL_ORBDESCRIPT = "Deals high Air Damage to enemy Target. If Target survives, jumps for another random enemy for half of the damage. ",
 	
 	SKILLFLY_EVASION = "Flight",
-	SKILLFLY_EVASIONDESCRIPT = "Flight",
+	SKILLFLY_EVASIONDESCRIPT = "Boosts Evasion by 65 for 3 turns.",
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",

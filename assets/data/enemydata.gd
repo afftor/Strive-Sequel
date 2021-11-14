@@ -122,7 +122,7 @@ var enemygroups = {
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 
 	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
-	jungle_easy2 = {reqs = [], units = {giant_ant = [0,2], centipede = [0,1], maneater_plant = [0,1]}},
+	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}},
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
 	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}},
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
