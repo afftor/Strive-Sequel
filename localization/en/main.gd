@@ -5839,11 +5839,35 @@ Daisy:— I-I... want to thank you, [master], but I'd prefer to stay with Sir Ra
 It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Accepting your defeat, you leave the estate all alone.""",
 	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect. """,
 	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
+	DAISY_CONSENSUAL_1 = """Daisy stands waiting obediently in her maid outfit as you finish some paperwork. Rising, you spend a minute inspecting her, running your hands over her body and gently squeezing her breasts. You inquire whether she is happy to be back at your mansion.
 
+{color=yellow|Daisy:— Y-yes, Master. I'm happy to be of use to you.}
+
+You nod and lift the hem of the maid dress, then slowly peel her panties down over her thighs to let them fall around her ankles. Daisy's breath hitches as arousal stirs her and she steps daintily out of her discarded underwear.""",
+	DAISY_CONSENSUAL_2 = """You continue your inspection, exposing her breasts and slipping a hand between her thighs to check her pussy. Her bare cunt is noticeably warm to the touch and as you press a finger into her slit, her slick pussy-lips part readily. Daisy gasps in pleasure as your finger probes deep into her hot little hole and you feel her trained internal muscles tighten.
+
+{color=yellow|Daisy:— Oh! Oh, master! Your fingers feel so good inside me... You are too kind to me, master...}
+
+There are tears in her eyes as she trembles with need.""",
+	DAISY_CONSENSUAL_3 = """You lift Daisy's dress up over the top of her stockings, exposing her bare ass. She strokes your shaft lovingly, pressing the head of your cock between her quivering thighs as your fingers tease her hard nipples.. 
+
+Your hand circles Daisy's neck and pulls her head down to the desk. Her hands can't reach your penis anymore, so she uses them to spread the cheeks of her ass apart. With your grip on her throat you pull her head back up a little while keeping her belly pressed down on the table. Her wet pussy grinds against your penis as she moans in desire.
+
+Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. Bent low over the desk, she sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
+	DAISY_CONSENSUAL_4 = """You rail Daisy hard over the table, banging her hips against its wooden surface as your cock plunges into her wet and obedient pussy. She yelps in pleasure as you repeatedly drive your penis deep inside her, her rabbit-tail bobbing up and down in excitement while her nipples graze the tabletop.
+
+Daisy's pussy clamps tightly around your cock as her whole body shudders in orgasm. You keep pounding her, your own orgasm approaching fast as her silky cunt spasms around your thrusting meat. You release her throat so you can grab her hips and fuck her harder.
+
+Daisy looks back at you imploringly as you bury your cock in her up to the hilt. Her ass bucks against your hips, trying to take you deeper and you feel the head of your penis pressing on her womb.""",
+	DAISY_CONSENSUAL_5 = """Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
+
+Casually, you spank her a few times and pinch the springy flesh of her ass as it reddens. You slide your cock out of her hole and your cum begins to leak from her pussy, trickling slowly down her bare thighs and into her stockings.
+
+You buckle your pants and order her to get back to work.""",
 
 
 	
-DAISY_EXTRA_STRATUP = "— H-hello, [Master]. How can I serve you?",
+	DAISY_EXTRA_STRATUP = "— H-hello, [Master]. How can I serve you?",
 	DAISY_EXTRA_OPTION_1_1 = "Why don't we have you use your dress' better form?",
 	DAISY_EXTRA_OPTION_1_2 = "You can cover yourself ",
 	DAISY_EXTRA_REPLY_1_1_NO = """— I-if you wish so, [master]. 
@@ -6054,7 +6078,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	
 	MARRIAGE_CHURCH_CORE = """I'd like to arrange a marriage""",
 	MARRIAGE_CHURCH_FINISH_CORE = """I'm ready for the wedding""",
-	MARRIAGE_CHURCH_DEFAULT = """— I'm terribly sorry, but we aren't currently able to provide such service due to the ongoing conflict. Let’s hope it will be over soon.""",
+	MARRIAGE_CHURCH_DEFAULT = """— I'm terribly sorry, but we aren't currently able to provide such service due to the ongoing conflict. Let's hope it will be over soon.""",
 	MARRIAGE_CHURCH_TEXT_1 = """— Ah, you wish to be betrothed? That's great! The mayor's wedding won't be simple to host though. May I know who's your chosen one?""",
 	MARRIAGE_CHURCH_TEXT_2 = """— I see, I see, I'm glad you found someone dear to your heart. I'm allowed to marry the two of you, but the service is going to cost 500 gold.""",
 	PAY = """Pay.""",
@@ -6068,7 +6092,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_SERVANTS_2 = """— Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
 	MARRIAGE_SERVANTS_COMPLETE_OPTION = """I've prepared everything for the wedding""",
 	MARRIAGE_SERVANTS_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
-	MARRIAGE_SERVANTS_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you’ll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
+	MARRIAGE_SERVANTS_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you'll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
 	MARRIAGE_SERVANTS_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""",
 	MARRIAGE_SERVANTS_OPTION_1 = """Invite them""",
 	MARRIAGE_SERVANTS_OPTION_2 = """Refuse""",
@@ -6122,7 +6146,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_NIGHT_GROUP_1_4 = """Now all that's left is to choose what you're gonna do...""",
 	MARRIAGE_NIGHT_GROUP_OPTION_1 = """Join""",
 	MARRIAGE_NIGHT_GROUP_OPTION_2 = """Leave""",
-	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first turn on your [spousehusband] pussy, as [spousename] uses [spousehis] mouth to serve your guests. You unload into [spousehis] womb, and let one of the waiting rich men take over while [spousename] cleans your shaft with her mouth. While the guests continue to use your wife’s body, you order one of the servant girls into the room, to have some fun while you are watching.
+	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first turn on your [spousehusband] pussy, as [spousename] uses [spousehis] mouth to serve your guests. You unload into [spousehis] womb, and let one of the waiting rich men take over while [spousename] cleans your shaft with her mouth. While the guests continue to use your wife's body, you order one of the servant girls into the room, to have some fun while you are watching.
 
 After a few hours every guest in the room has had a round with [spousename] and is completely exhausted. As they finally leave, the last one passes you the money they promised.""",
 	MARRIAGE_NIGHT_GROUP_2_2 = """You decide to leave your [spousehusband] and go for a stroll. After a couple of hours one of the men finds you and informs you how well it went, passing you the promised payment. As they leave, you order the servants to take care of the leftover mess and call it a day.""",
@@ -6210,6 +6234,151 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_ARTIFACTS_1_OPTION_2 = "What's gonna happen after we get all the artifacts?",
 	ZEPHYRA_ARTIFACTS_2_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
 	ZEPHYRA_ARTIFACTS_2_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
+	
+	GRYPHON_AIRE_START = """As you walk through your grounds by the morning, you notice a young elf girl - Aire, who diligently trains with her bow and arrows at the makeshift range. As you watch her for some time, you notice how firm her concentration is.
+
+After another couple of precise shots she questioningly turns to you. 
+
+- Can I do something for you?""",
+	GRYPHON_AIRE_START_OPTION_1 = "Your skills are admirable ",
+	GRYPHON_AIRE_START_OPTION_2 = "I don't remember I've given you an order to train",
+	GRYPHON_AIRE_1_1 = "- Thank you. I can't let my skills go rusty even in this state. I'm glad there's still opportunity to train at this time.",
+	GRYPHON_AIRE_1_2 = "- There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is not unallowed.",
+	GRYPHON_AIRE_1_OPTION_1 = "Why are you training so hard?",
+	GRYPHON_AIRE_1_OPTION_2 = "You seem too enthusiastic about this",
+	GRYPHON_AIRE_2 = """- I've sworn to protect the princess with my life and this is not a task I can accomplish without training. I know I must obey your orders, but even then I'll be ready to put my life on the line in case something threatens Ana.""",
+	GRYPHON_AIRE_2_OPTION_1 = "You should really take it easy, the war is over",
+	GRYPHON_AIRE_2_OPTION_2 = "There's no point in it anymore, I'll protect her",
+	GRYPHON_AIRE_2_OPTION_3 = "What makes you think you are better than me, her [master]?",
+	GRYPHON_AIRE_3_1 = """- War or not, I have to stay focused. This is my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
+	GRYPHON_AIRE_3_2 = """Aire's face shows slight sneer at your words, but she quickly turns away to hide it.
+
+- Is that so? How can I trust you with her life? She's as good as a toy to you. But even if not, I don't believe you are any better than me.""",
+	GRYPHON_AIRE_3_3 = """- I know that I can't rely on you, or anyone, in such a crucial task. I'm not willing to offend, but I have doubts that you are better than me.""",
+	GRYPHON_AIRE_3_OPTION_1 = "What if I prove to you I'm capable?",
+	GRYPHON_AIRE_3_OPTION_2 = "Now I'll have to prove it to show you who's the [master] here",
+	GRYPHON_AIRE_4_1 = """- Hmph, you can ask me whatever you want then. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so.""",
+	GRYPHON_AIRE_4_2 = """- I'll see if you can. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so. """,
+	GRYPHON_AIRE_4_OPTION_1 = "You know how to motivate",
+	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself",
+	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words",
+	GRYPHON_AIRE_5 = """- Don't water your mouth until then. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, even elves won't dare to approach. If you can get one, I'll accept that you will suffice for Anastasia.""",
+	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
+	GRYPHON_AIRE_5_OPTION_2 = "Does not seem to be too bad",
+	GRYPHON_AIRE_6 = """- ...Just don't get yourself killed.""",
+	
+	GRYPHON_WORKERS_START_OPTION = "Ask about Elder Gryphon",
+	GRYPHON_WORKERS_START = """- Hmm, I dun know de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
+
+Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down the Elder Gryphon.""",
+	GRYPHON_HUNTER_START = """You find a veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
+
+- That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense so bringing too many people will do us more harm than good. 
+
+- That's quite a bold achievement you are aiming at, mayor. Not a dragon slaying, but still can go down in history. What would you want to do it for?""",
+	GRYPHON_HUNTER_START_OPTION_1 = "That beast's body can be quite valuable",
+	GRYPHON_HUNTER_START_OPTION_2 = "What's a life without a thrill?",
+	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress one girl",
+	GRYPHON_HUNTER_1_1 = """- Huh, so some rich stuff then. Well, none of my business then.
+
+I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+	GRYPHON_HUNTER_1_2 = """- I had no idea our mayor is that adventurous, I can respect that.
+
+I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+	GRYPHON_HUNTER_1_3 = """You notice how Aire frowns and gives you a judging look.
+
+- Haha, you are quite a kidder. Well, you must have your reasons.
+
+I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+	GRYPHON_HUNTER_1_OPTION_1 = "That's the plan then",
+	GRYPHON_HUNTER_1_OPTION_2 = "Let's not waste much time",
+	GRYPHON_FOREST_START = """You approach a denser part of the forest, which might give you a better idea where to find an Elder Gryphon. Aire by your side stays silent, but her face hints at judging your decisiveness. A few other hunters have come here from the city and agreed to follow your orders.""",
+	GRYPHON_FOREST_1 = """As you defeat the minor gryphon, you let the hunters track the surroundings. While waiting, Aire approaches you.
+
+- I don't like doing this, this is too dangerous.""",
+	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste to not finish it now",
+	GRYPHON_FOREST_1_OPTION_2 = "Ready to admit your defeat then?",
+	GRYPHON_FOREST_1_1 = """Aire prepares to say something but stops at the last moment. Realizing it was her idea in the first place, she's unable to bring herself to accept defeat. 
+
+Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
+	GRYPHON_FOREST_1_2 = """- Hmph, don't make me laugh. See if you die, I don't care. 
+
+Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
+	GRYPHON_CAVE_START = """With your group, stray hunters and Aire you enter the spacious cave. Almost by the entrance you spot the large feathers indicating hunters' guess was correct. After another hundred of feet you hear a heavy roar of an angry beast. The whole group quicky retreats from the cave as you are followed by a gigantic gryphon, one you've never seen before.""",
+	GRYPHON_CAVE_1 = """As the Elder Gryphon is on its last breath, you notice how it focuses its attention on Aire, who stays in the vicinity of its attack. Unexpectedly to everyone, it erupts another fierce roar and makes a dash in her direction.""",
+	GRYPHON_CAVE_1_OPTION_1 = "Try to block it",
+	GRYPHON_CAVE_1_OPTION_2 = "Do nothing",
+	GRYPHON_CAVE_BAD = """Aire's eyes widen as a giant gryphon's claw tears through her stomach. In a mere swipe her body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
+
+- P-please, protect... Ana...
+
+The gryphon lies defeated, but there's little meaning left in it.""",
+	GRYPHON_CAVE_2 = """You jump in front of Aire, blocking the incoming attack with your weapon. The massive force pushes you into Aire, who looks at you with shock and disbelief. Your weapon breaks under stress and you feel like the gryphon's claw enters your chest. The first impact pushes you back, so the claw does cut as deep as it could, yet you feel like at least one of your ribs was broken.
+
+Thankfully, the attack opened for one of the hunters an opportunity to deeply wound the gryphon's neck, which finally made it fall. With no strength left you fall onto the ground. Aire hastily drops on her knees, her eyes watering. """,
+	GRYPHON_CAVE_3 = """- You've... Why? Why did you protect me?! You must protect Ana!.. You can't die now!
+
+You only manage to give Aire a small smile before losing conscious.""",
+	GRYPHON_CAVE_4 = """You wake up in a small tent which seems to be positioned close to the gryphon's lair. You don't feel too well, but it seems one of the healers has patched you up and your life is in no danger. Next to your bed you observe a familiar elven girl.
+
+- [name]! Never do something like this again! What were you thinking!?""",
+	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct",
+	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do",
+	GRYPHON_CAVE_4_OPTION_3 = "How much I gonna bang your ass after that",
+	GRYPHON_CAVE_5 = """- You are an idiot, aren't you? Look what happened to you now... Sorry I've made you do that, I didn't think you'd actually try to bring down that beast... And thanks for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
+	GRYPHON_CAVE_5_OPTION_1 = "That's the plan then",
+	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well",
+	AIRE_GREET = """""",
+	GRYPHON_AIRE_SEX_START_OPTION_INIT = "About your promise...",
+	GRYPHON_AIRE_SEX_START = "- Y-yes? What do you have for me?",
+	GRYPHON_AIRE_SEX_START_OPTION_1 = "I want to have a threesome with you and Anastasia",
+	GRYPHON_AIRE_SEX_START_OPTION_2 = "I haven't decided yet",
+	GRYPHON_AIRE_SEX_1 = """Aire becomes silent for some time and as you think she's going to make you regret saying that, she responds.
+
+- I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more, than me. But if it is your order, we will both comply with it. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
+	GRYPHON_AIRE_SEX_1_OPTION_1 = "That's settled then",
+	GRYPHON_AIRE_SEX_1_OPTION_2 = "I've changed my mind",
+	GRYPHON_AIRE_SEX_2 = "Aire nods in response and you set a plan for the upcoming event.",
+	GRYPHON_ANA_SEX_OPTION_INIT = "Tonight we are gonna do something special...",
+	GRYPHON_ANA_SEX_START = """By your invitation Anastasia enters your room. Her eyes widen as she see her elven friend standing there in her underwear.
+
+Anastasia: - A-aire? What are you doing here?
+
+Aire: - I've been invited to join you, by our [Master]'s command.""",
+	GRYPHON_ANA_SEX_1 = """Anastasia: - That's...
+
+Aire: - Are you unhappy to have me here?
+
+Anastasia: - That's not it, I'm just embarrassed to have you here.
+
+Aire: - Me too, but that's what our protector wants, so I think it's not too big of a deal? Besides, it's not like I don't want to get closer to the two most important people in my life.
+
+Anastasia wasn't able to answer that and Aire led her to the bed.""",
+	GRYPHON_ANA_SEX_2 = """Aire: - So, let's give our best to please our [master] and have some joy not as friends but also as women. 
+
+The princess nodded as they both lowered before you. Aire stripped the last bits of her underwear and Anastasia followed closely. 
+
+Aire: - Wow, Ana, I did notice you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
+
+Anastasia: - W-what are you saying!? They aren't that much bigger... You don't think they are too big, right [name]?""",
+	GRYPHON_ANA_SEX_2_OPTION_1 = "They are perfect",
+	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
+	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
+	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
+
+Aire: - Come on, [name] worked really hard for this moment, we should properly reward him.
+
+Aire positioned herself in front of Anastasia with your dick between them. Being fully erect, she gave a sign to the Princess to squeeze it between their breasts. 
+
+Aire: - Is this to your liking, [Master]?""",
+	
+	
+	
+	
+	
+	
+	
+	
 	#           QUESTS           #
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
@@ -6268,7 +6437,14 @@ Zephyra leaves the church without giving you a second glance.""",
 	MARRIAGE_WORKERS_SUMMARY = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
-
+	
+	GRYPHON_QUEST_SUMMARY = "",
+	GRYPHON_QUEST_NAME = "",
+	GRYPHON_QUEST_STAGE_1 = "",
+	GRYPHON_QUEST_STAGE_2 = "",
+	GRYPHON_QUEST_STAGE_3 = "",
+	GRYPHON_QUEST_STAGE_4 = "",
+	
 }
 
 

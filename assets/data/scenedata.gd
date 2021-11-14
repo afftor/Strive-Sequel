@@ -1791,5 +1791,16 @@ var quests = {
 			stage1 = {code = 'stage1', name = "MARRIAGE_WORKERS_NAME", descript = "MARRIAGE_WORKERS_STAGE_1"},
 		},
 	},
+	
+	gryphon_quest = {
+		code = 'gryphon_quest',
+		summary = "GRYPHON_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_1"}, # talk to sigmund
+			stage2 = {code = 'stage2', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_2"}, # talk to derek
+			stage3 = {code = 'stage3', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_3"}, # go in forest
+			stage4 = {code = 'stage4', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_4"}, # go in cave
+		},
+	},
 }
 

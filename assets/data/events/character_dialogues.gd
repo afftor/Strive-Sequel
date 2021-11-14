@@ -129,6 +129,8 @@ var data = {
 		} ],
 	},
 	
+	
+	
 	anastasia_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'anastasia',
 		text = [
@@ -137,10 +139,13 @@ var data = {
 		options = [
 			{code = 'aire_anastasia1', text = 'I wanna try something new',reqs = [], dialogue_argument = 1
 				, change_dialogue_type = 2},#placeholdr
+			{code = 'ana_gryphon_sex_start', text = 'GRYPHON_ANA_SEX_OPTION_INIT',reqs = [{type = 'decision', value = 'AnaAireThreesome', check = true}], dialogue_argument = 1},
 			
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4}
 		],
 	},
+	
+	
 	
 	daisy_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
@@ -292,5 +297,16 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, type = 'next_dialogue',
 		}, ],
+	},
+	
+	aire_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
+		text = [
+			{text = "AIRE_GREET", reqs = []},
+		], 
+		options = [
+			{code = 'aire_gryphon_sex_start', text = 'GRYPHON_AIRE_SEX_START_OPTION_INIT',reqs = [{type = 'quest_completed', name = 'gryphon_quest', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_SEX_2'}], dialogue_argument = 1}, 
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+		],
 	},
 }

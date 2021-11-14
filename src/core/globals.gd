@@ -1552,6 +1552,10 @@ func valuecheck(dict):
 			var character = input_handler.active_character
 			if character == null:return false
 			return character.checkreqs(dict.value)
+		'unique_character_checks':
+			var character = ResourceScripts.game_party.get_unique_slave(dict.name)
+			if character == null:return false
+			return character.checkreqs(dict.value)
 		'master_is_beast':
 			return ResourceScripts.game_party.if_master_is_beast(dict.check)
 		'unique_character_at_mansion':

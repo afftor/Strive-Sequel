@@ -48,6 +48,19 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	]
 	},
 	
+	aire = {
+	code = 'aire', 
+	scenes = [
+		{code = 'gryphon_aire_start', reqs = [
+				{type = 'decision', value = 'mindbreak_completed', check = false},
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_START'},
+				{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_dead', check = false}]}
+			]
+		},
+		{code = 'aire_dialogue_start', reqs = []}
+	]
+	},
+	
 }
 
 

@@ -1,5 +1,4 @@
 var data = {
-
 	help_init_test = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = 'daisy_default',
@@ -36,13 +35,13 @@ var data = {
 		{text = "DAISY_RECRUITMENT_REPLY_3", reqs = [], previous_dialogue_option = 3}, ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-		args = [{type = 'add_to_date', date = [10,10], hour = 8}]}]
+		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
 		}],
 	},
 
 	daisy_clothes_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'daisy_default',
+		reqs = [{type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}], character = 'daisy_default',
 		text = [{text = "DAISY_CLOTHES_START", reqs = [], }],
 		options = [ {
 			code = 'daisy_clothes_2', text = "DAISY_CLOTHES_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -1310,7 +1309,7 @@ var data = {
 		{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad", reqs = [{type = 'local_counter', name = 'daisy_sympathy', operant = 'lt', value = 1, check = true}]}],
 		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'daisy_consensual_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
@@ -1322,7 +1321,7 @@ var data = {
 		text = [{text = "DAISY_LOST_APPROACH_REPLY_FIGHT_4_3", reqs = []}],
 		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'daisy_consensual_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
@@ -1371,6 +1370,51 @@ var data = {
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'},
 			{code = 'unique_character_changes', value = 'daisy', args = [{code = 'remove_character'}]}],
+		} ]
+	},
+	
+	daisy_consensual_1 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		reqs = [], unique_character = "daisy",
+		text = [{text = "DAISY_CONSENSUAL_1", reqs = []}],
+		options = [ {
+			code = 'daisy_consensual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_consensual_2 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], unique_character = "daisy",
+		text = [{text = "DAISY_CONSENSUAL_2", reqs = []}],
+		options = [ {
+			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_consensual_3 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], unique_character = "daisy",
+		text = [{text = "DAISY_CONSENSUAL_3", reqs = []}],
+		options = [ {
+			code = 'daisy_consensual_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_consensual_4 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], unique_character = "daisy",
+		text = [{text = "DAISY_CONSENSUAL_4", reqs = []}],
+		options = [ {
+			code = 'daisy_consensual_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ]
+	},
+	
+	daisy_consensual_5 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], unique_character = "daisy",
+		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		} ]
 	},
 }
