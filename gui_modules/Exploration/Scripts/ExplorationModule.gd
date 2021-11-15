@@ -430,7 +430,7 @@ func slave_position_deselect(character):
 
 
 func use_item_on_character(character, item):
-	item.use_explore(character)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	item.use_explore(character, self)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
 	#show_heal_items(position)
 	build_location_group()
