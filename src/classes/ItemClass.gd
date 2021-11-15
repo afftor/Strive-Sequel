@@ -473,6 +473,10 @@ func calculateprice():
 		price += Items.recipes[itembase].workunits * 5
 	return price
 
-func use_explore(character):
+func use_explore(character, caller = null):
 	var itemskill = Items.itemlist[itembase].explor_effect
-	character.use_social_skill(itemskill, character)
+	var skill = Skilldata.Skilllist[itemskill]
+	if skill.tags.has('use_as_combat') and caller!= null:
+		caller.use_e_combat_skill(character, character, skill)
+	else:
+		character.use_social_skill(itemskill, character)

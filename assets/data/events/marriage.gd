@@ -266,9 +266,9 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "MARRIAGE_FINAL_7", reqs = []}],
 		options = [ 
-			{code = 'marriage_final_8', text = "MARRIAGE_FINAL_7_OPTION_1", reqs = [{type = 'decision', value = 'ivitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'marriage_final_8', text = "MARRIAGE_FINAL_7_OPTION_2", reqs = [{type = 'decision', value = 'ivitations_made', check = true}], dialogue_argument = 2, type = 'next_dialogue'},
-			{code = 'marriage_night_group_1', text = "MARRIAGE_FINAL_7_OPTION_3", reqs = [{type = 'decision', value = 'ivitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'marriage_final_8', text = "MARRIAGE_FINAL_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'marriage_final_8', text = "MARRIAGE_FINAL_7_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'marriage_night_group_1', text = "MARRIAGE_FINAL_7_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 			],
 	},
 	marriage_final_8 = {
@@ -316,8 +316,8 @@ var data = {
 			{text = "MARRIAGE_NIGHT_1", reqs = []},
 			],
 		options = [ 
-			{code = 'marriage_night_group_2', text = "MARRIAGE_NIGHT_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'marriage_night_group_2', text = "MARRIAGE_NIGHT_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'marriage_night_2', text = "MARRIAGE_NIGHT_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'marriage_night_2', text = "MARRIAGE_NIGHT_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			],
 	},
 	marriage_night_2 = {
