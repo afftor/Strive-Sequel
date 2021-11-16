@@ -77,6 +77,7 @@ var always_show = [
 
 
 func _ready():
+#	input_handler.CurrentScene = self
 	if test_mode:
 		test_mode()
 		mansion_state_set("default")
@@ -110,7 +111,7 @@ func _ready():
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
-	input_handler.CurrentScene = self
+	
 	input_handler.CurrentScreen = 'mansion'
 	yield(get_tree(),'idle_frame')
 	gui_controller.mansion = self

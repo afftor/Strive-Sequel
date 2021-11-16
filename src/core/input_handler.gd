@@ -533,6 +533,7 @@ func ChangeScene(name):
 	CloseableWindowsArray.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
 	get_tree().get_root().add_child(loadscreen)
+	CurrentScene = loadscreen
 	loadscreen.goto_scene(ResourceScripts.scenedict[name])
 
 func GetTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
