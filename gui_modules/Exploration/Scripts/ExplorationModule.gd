@@ -636,8 +636,10 @@ func area_advance(mode):
 	):
 		rand_event = globals.start_random_event()
 		if rand_event != false:
+			input_handler.combat_advance = false
 			advance()
 	if rand_event == false:
+		input_handler.combat_advance = true
 		StartCombat()
 
 	action_type = mode
