@@ -180,7 +180,7 @@ var progress_data = {
 	gallery_seq = [],
 	characters = ['amelia','duncan','sigmund','myr'],
 } setget save_progress_data
-
+var combat_advance = true
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -1099,8 +1099,10 @@ func finish_combat():
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
-
-	exploration_node.advance()
+	
+	if combat_advance:
+		exploration_node.advance()
+		combat_advance = false
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
