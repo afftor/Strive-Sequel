@@ -52,6 +52,8 @@ func update_exp(value, is_set):
 
 
 func fix_serialize():
+	if parent.travel.travel_time <= 0 and work == 'travel':
+		work = ''
 	var newprofs = []
 	for prof in professions.duplicate():
 		if classesdata.professions.has(prof): continue
