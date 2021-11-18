@@ -324,6 +324,7 @@ func event_person_selected(person):
 
 
 func close(transition = false, finish_scene = true):
+	hold_selection = true
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
