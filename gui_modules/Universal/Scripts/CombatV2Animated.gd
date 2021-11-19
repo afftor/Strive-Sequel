@@ -929,6 +929,7 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")
+		tchar.mp = tchar.get_stat("mpmax")
 		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
