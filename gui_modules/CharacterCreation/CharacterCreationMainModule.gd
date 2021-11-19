@@ -54,12 +54,12 @@ var params_to_save = [
 	"penis_type",
 	"balls_size",
 	"tits_size",
-	"vagina",
+#	"vagina",
 	"ass_size",
-	"has_pussy",
+#	"has_pussy",
 	"multiple_tits",
 	"multiple_tits_developed",
-	"has_womb",
+#	"has_womb",
 	"penis_virgin",
 	"vaginal_virgin",
 	"anal_virgin",
@@ -140,6 +140,12 @@ func select_sex(value):
 	preservedsettings['sex'] = sexarray[value]
 	if preservedsettings.has("tits_size"):
 		preservedsettings.erase("tits_size")
+	if preservedsettings.has("has_pussy"):
+		preservedsettings.erase("has_pussy")
+	if preservedsettings.has("has_womb"):
+		preservedsettings.erase("has_womb")
+	if preservedsettings.has("vagina"):
+		preservedsettings.erase("vagina")
 	rebuild_slave()
 
 
