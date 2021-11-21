@@ -411,7 +411,8 @@ func _input(event):
 	if  CurrentScene is Control and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
 		if str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 			var num = event.as_text().replace("Kp ",'')
-			var tnode = get_tree().get_root().get_node_or_null("dialogue")
+#			var tnode = get_tree().get_root().get_node_or_null("dialogue")
+			var tnode = gui_controller.dialogue
 			if tnode != null and tnode.visible:
 				tnode.select_option(int(num) - 1)
 			else:
