@@ -6235,59 +6235,59 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_ARTIFACTS_2_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
 	ZEPHYRA_ARTIFACTS_2_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	
-	GRYPHON_AIRE_START = """As you walk through your grounds by the morning, you notice a young elf girl - Aire, who diligently trains with her bow and arrows at the makeshift range. As you watch her for some time, you notice how firm her concentration is.
+	GRYPHON_AIRE_START = """As you walk through your grounds by the morning, you notice a young elf girl — Aire, who diligently trains with her bow and arrows at the makeshift range. As you watch her for some time, you notice how firm her concentration is.
 
 After another couple of precise shots she questioningly turns to you. 
 
-- Can I do something for you?""",
+— Can I do something for you?""",
 	GRYPHON_AIRE_START_OPTION_1 = "Your skills are admirable ",
 	GRYPHON_AIRE_START_OPTION_2 = "I don't remember I've given you an order to train",
-	GRYPHON_AIRE_1_1 = "- Thank you. I can't let my skills go rusty even in this state. I'm glad there's still opportunity to train at this time.",
-	GRYPHON_AIRE_1_2 = "- There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is not unallowed.",
+	GRYPHON_AIRE_1_1 = "— Thank you. I can't let my skills go rusty even in this state. I'm glad there's still opportunity to train at this time.",
+	GRYPHON_AIRE_1_2 = "— There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is not unallowed.",
 	GRYPHON_AIRE_1_OPTION_1 = "Why are you training so hard?",
 	GRYPHON_AIRE_1_OPTION_2 = "You seem too enthusiastic about this",
-	GRYPHON_AIRE_2 = """- I've sworn to protect the princess with my life and this is not a task I can accomplish without training. I know I must obey your orders, but even then I'll be ready to put my life on the line in case something threatens Ana.""",
+	GRYPHON_AIRE_2 = """— I've sworn to protect the princess with my life and this is not a task I can accomplish without training. I know I must obey your orders, but even then I'll be ready to put my life on the line in case something threatens Ana.""",
 	GRYPHON_AIRE_2_OPTION_1 = "You should really take it easy, the war is over",
 	GRYPHON_AIRE_2_OPTION_2 = "There's no point in it anymore, I'll protect her",
 	GRYPHON_AIRE_2_OPTION_3 = "What makes you think you are better than me, her [master]?",
-	GRYPHON_AIRE_3_1 = """- War or not, I have to stay focused. This is my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
+	GRYPHON_AIRE_3_1 = """— War or not, I have to stay focused. This is my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
 	GRYPHON_AIRE_3_2 = """Aire's face shows slight sneer at your words, but she quickly turns away to hide it.
 
-- Is that so? How can I trust you with her life? She's as good as a toy to you. But even if not, I don't believe you are any better than me.""",
-	GRYPHON_AIRE_3_3 = """- I know that I can't rely on you, or anyone, in such a crucial task. I'm not willing to offend, but I have doubts that you are better than me.""",
+— Is that so? How can I trust you with her life? She's as good as a toy to you. But even if not, I don't believe you are any better than me.""",
+	GRYPHON_AIRE_3_3 = """— I know that I can't rely on you, or anyone, in such a crucial task. I'm not willing to offend, but I have doubts that you are better than me.""",
 	GRYPHON_AIRE_3_OPTION_1 = "What if I prove to you I'm capable?",
 	GRYPHON_AIRE_3_OPTION_2 = "Now I'll have to prove it to show you who's the [master] here",
-	GRYPHON_AIRE_4_1 = """- Hmph, you can ask me whatever you want then. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so.""",
-	GRYPHON_AIRE_4_2 = """- I'll see if you can. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so. """,
+	GRYPHON_AIRE_4_1 = """— Hmph, you can ask me whatever you want then. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so.""",
+	GRYPHON_AIRE_4_2 = """— I'll see if you can. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so. """,
 	GRYPHON_AIRE_4_OPTION_1 = "You know how to motivate",
 	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself",
 	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words",
-	GRYPHON_AIRE_5 = """- Don't water your mouth until then. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, even elves won't dare to approach. If you can get one, I'll accept that you will suffice for Anastasia.""",
+	GRYPHON_AIRE_5 = """— Don't water your mouth until then. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, even elves won't dare to approach. If you can get one, I'll accept that you will suffice for Anastasia.""",
 	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
 	GRYPHON_AIRE_5_OPTION_2 = "Does not seem to be too bad",
-	GRYPHON_AIRE_6 = """- ...Just don't get yourself killed.""",
+	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "Ask about Elder Gryphon",
-	GRYPHON_WORKERS_START = """- Hmm, I dun know de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
+	GRYPHON_WORKERS_START = """— Hmm, I dun know de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
 
 Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down the Elder Gryphon.""",
 	GRYPHON_HUNTER_START = """You find a veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
 
-- That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense so bringing too many people will do us more harm than good. 
+— That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense so bringing too many people will do us more harm than good. 
 
-- That's quite a bold achievement you are aiming at, mayor. Not a dragon slaying, but still can go down in history. What would you want to do it for?""",
+— That's quite a bold achievement you are aiming at, mayor. Not a dragon slaying, but still can go down in history. What would you want to do it for?""",
 	GRYPHON_HUNTER_START_OPTION_1 = "That beast's body can be quite valuable",
 	GRYPHON_HUNTER_START_OPTION_2 = "What's a life without a thrill?",
 	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress one girl",
-	GRYPHON_HUNTER_1_1 = """- Huh, so some rich stuff then. Well, none of my business then.
+	GRYPHON_HUNTER_1_1 = """— Huh, so some rich stuff then. Well, none of my business then.
 
 I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
-	GRYPHON_HUNTER_1_2 = """- I had no idea our mayor is that adventurous, I can respect that.
+	GRYPHON_HUNTER_1_2 = """— I had no idea our mayor is that adventurous, I can respect that.
 
 I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
 	GRYPHON_HUNTER_1_3 = """You notice how Aire frowns and gives you a judging look.
 
-- Haha, you are quite a kidder. Well, you must have your reasons.
+— Haha, you are quite a kidder. Well, you must have your reasons.
 
 I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
 	GRYPHON_HUNTER_1_OPTION_1 = "That's the plan then",
@@ -6295,13 +6295,13 @@ I have some information on where one of those was seen last time, not too far fr
 	GRYPHON_FOREST_START = """You approach a denser part of the forest, which might give you a better idea where to find an Elder Gryphon. Aire by your side stays silent, but her face hints at judging your decisiveness. A few other hunters have come here from the city and agreed to follow your orders.""",
 	GRYPHON_FOREST_1 = """As you defeat the minor gryphon, you let the hunters track the surroundings. While waiting, Aire approaches you.
 
-- I don't like doing this, this is too dangerous.""",
+— I don't like doing this, this is too dangerous.""",
 	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste to not finish it now",
 	GRYPHON_FOREST_1_OPTION_2 = "Ready to admit your defeat then?",
 	GRYPHON_FOREST_1_1 = """Aire prepares to say something but stops at the last moment. Realizing it was her idea in the first place, she's unable to bring herself to accept defeat. 
 
 Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
-	GRYPHON_FOREST_1_2 = """- Hmph, don't make me laugh. See if you die, I don't care. 
+	GRYPHON_FOREST_1_2 = """— Hmph, don't make me laugh. See if you die, I don't care. 
 
 Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
 	GRYPHON_CAVE_START = """With your group, stray hunters and Aire you enter the spacious cave. Almost by the entrance you spot the large feathers indicating hunters' guess was correct. After another hundred of feet you hear a heavy roar of an angry beast. The whole group quicky retreats from the cave as you are followed by a gigantic gryphon, one you've never seen before.""",
@@ -6310,67 +6310,67 @@ Finally Derek comes to you with a good knews. The hunters were able to find enou
 	GRYPHON_CAVE_1_OPTION_2 = "Do nothing",
 	GRYPHON_CAVE_BAD = """Aire's eyes widen as a giant gryphon's claw tears through her stomach. In a mere swipe her body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
 
-- P-please, protect... Ana...
+— P-please, protect... Ana...
 
 The gryphon lies defeated, but there's little meaning left in it.""",
 	GRYPHON_CAVE_2 = """You jump in front of Aire, blocking the incoming attack with your weapon. The massive force pushes you into Aire, who looks at you with shock and disbelief. Your weapon breaks under stress and you feel like the gryphon's claw enters your chest. The first impact pushes you back, so the claw does cut as deep as it could, yet you feel like at least one of your ribs was broken.
 
 Thankfully, the attack opened for one of the hunters an opportunity to deeply wound the gryphon's neck, which finally made it fall. With no strength left you fall onto the ground. Aire hastily drops on her knees, her eyes watering. """,
-	GRYPHON_CAVE_3 = """- You've... Why? Why did you protect me?! You must protect Ana!.. You can't die now!
+	GRYPHON_CAVE_3 = """— You've... Why? Why did you protect me?! You must protect Ana!.. You can't die now!
 
 You only manage to give Aire a small smile before losing conscious.""",
 	GRYPHON_CAVE_4 = """You wake up in a small tent which seems to be positioned close to the gryphon's lair. You don't feel too well, but it seems one of the healers has patched you up and your life is in no danger. Next to your bed you observe a familiar elven girl.
 
-- [name]! Never do something like this again! What were you thinking!?""",
+— [name]! Never do something like this again! What were you thinking!?""",
 	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct",
 	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do",
 	GRYPHON_CAVE_4_OPTION_3 = "How much I gonna bang your ass after that",
-	GRYPHON_CAVE_5 = """- You are an idiot, aren't you? Look what happened to you now... Sorry I've made you do that, I didn't think you'd actually try to bring down that beast... And thanks for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
+	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what happened to you now... Sorry I've made you do that, I didn't think you'd actually try to bring down that beast... And thanks for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
 	GRYPHON_CAVE_5_OPTION_1 = "That's the plan then",
 	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well",
-	AIRE_GREET = """""",
+	AIRE_GREET = """— What do you want of me?""",
 	GRYPHON_AIRE_SEX_START_OPTION_INIT = "About your promise...",
-	GRYPHON_AIRE_SEX_START = "- Y-yes? What do you have for me?",
+	GRYPHON_AIRE_SEX_START = "— Y-yes? What do you have for me?",
 	GRYPHON_AIRE_SEX_START_OPTION_1 = "I want to have a threesome with you and Anastasia",
 	GRYPHON_AIRE_SEX_START_OPTION_2 = "I haven't decided yet",
 	GRYPHON_AIRE_SEX_1 = """Aire becomes silent for some time and as you think she's going to make you regret saying that, she responds.
 
-- I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more, than me. But if it is your order, we will both comply with it. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
+— I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more, than me. But if it is your order, we will both comply with it. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
 	GRYPHON_AIRE_SEX_1_OPTION_1 = "That's settled then",
 	GRYPHON_AIRE_SEX_1_OPTION_2 = "I've changed my mind",
 	GRYPHON_AIRE_SEX_2 = "Aire nods in response and you set a plan for the upcoming event.",
 	GRYPHON_ANA_SEX_OPTION_INIT = "Tonight we are gonna do something special...",
 	GRYPHON_ANA_SEX_START = """By your invitation Anastasia enters your room. Her eyes widen as she see her elven friend standing there in her underwear.
 
-Anastasia: - A-aire? What are you doing here?
+Anastasia: — A-aire? What are you doing here?
 
-Aire: - I've been invited to join you, by our [Master]'s command.""",
-	GRYPHON_ANA_SEX_1 = """Anastasia: - That's...
+Aire: — I've been invited to join you, by our [Master]'s command.""",
+	GRYPHON_ANA_SEX_1 = """Anastasia: — That's...
 
-Aire: - Are you unhappy to have me here?
+Aire: — Are you unhappy to have me here?
 
-Anastasia: - That's not it, I'm just embarrassed to have you here.
+Anastasia: — That's not it, I'm just embarrassed to have you here.
 
-Aire: - Me too, but that's what our protector wants, so I think it's not too big of a deal? Besides, it's not like I don't want to get closer to the two most important people in my life.
+Aire: — Me too, but that's what our protector wants, so I think it's not too big of a deal? Besides, it's not like I don't want to get closer to the two most important people in my life.
 
 Anastasia wasn't able to answer that and Aire led her to the bed.""",
-	GRYPHON_ANA_SEX_2 = """Aire: - So, let's give our best to please our [master] and have some joy not as friends but also as women. 
+	GRYPHON_ANA_SEX_2 = """Aire: — So, let's give our best to please our [master] and have some joy not as friends but also as women. 
 
 The princess nodded as they both lowered before you. Aire stripped the last bits of her underwear and Anastasia followed closely. 
 
-Aire: - Wow, Ana, I did notice you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
+Aire: — Wow, Ana, I did notice you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
 
-Anastasia: - W-what are you saying!? They aren't that much bigger... You don't think they are too big, right [name]?""",
+Anastasia: — W-what are you saying!? They aren't that much bigger... You don't think they are too big, right [name]?""",
 	GRYPHON_ANA_SEX_2_OPTION_1 = "They are perfect",
 	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
 	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
 	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
 
-Aire: - Come on, [name] worked really hard for this moment, we should properly reward him.
+Aire: — Come on, [name] worked really hard for this moment, we should properly reward him.
 
 Aire positioned herself in front of Anastasia with your dick between them. Being fully erect, she gave a sign to the Princess to squeeze it between their breasts. 
 
-Aire: - Is this to your liking, [Master]?""",
+Aire: — Is this to your liking, [Master]?""",
 	
 	
 	

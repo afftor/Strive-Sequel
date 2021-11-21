@@ -1473,10 +1473,10 @@ var dungeons = {
 		travel_time = [4,6],
 		scripteventdata = []
 	},
-	gryphon_forest_location = {# trigger = dungeon_complete
-		code = 'gryphon_forest_location',
+	quest_gryphon_forest_location = {# trigger = dungeon_complete
+		code = 'quest_gryphon_forest_location',
 		type = 'dungeon',
-		name = 'Gryphon forest',
+		name = 'Secluded Forest',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -1499,10 +1499,10 @@ var dungeons = {
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
 	},
-	gryphon_cave_location = {# trigger = dungeon_complete
-		code = 'gryphon_cave_location',
+	quest_gryphon_cave_location = {# trigger = dungeon_complete
+		code = 'quest_gryphon_cave_location',
 		type = 'dungeon',
-		name = 'Gryphon cave',
+		name = 'Gryphon Lair',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',

@@ -562,7 +562,7 @@ var professions = {
 		statchanges = {hpmax = 15, physics_bonus = 15, speed = 5, resist_air = 20},
 		traits = ['medium_armor','valkyrie_spear','advanced_combat'],
 		skills = [],
-		combatskills = ['fly_evasion'],
+		combatskills = ['holy_lance'],
 		conflict_classes = [],
 	},
 	souleater = {

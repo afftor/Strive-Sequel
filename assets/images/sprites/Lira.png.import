@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tribal_elf_body.png-c28f4f38db38741993f3b1500a713c94.stex"
+path="res://.import/Lira.png-459f7c6608e2fea4a503d735425aee20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/tribal_elf_body.png"
-dest_files=[ "res://.import/tribal_elf_body.png-c28f4f38db38741993f3b1500a713c94.stex" ]
+source_file="res://assets/images/sprites/Lira.png"
+dest_files=[ "res://.import/Lira.png-459f7c6608e2fea4a503d735425aee20.stex" ]
 
 [params]
 

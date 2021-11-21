@@ -305,7 +305,7 @@ var data = {
 			{text = "AIRE_GREET", reqs = []},
 		], 
 		options = [
-			{code = 'aire_gryphon_sex_start', text = 'GRYPHON_AIRE_SEX_START_OPTION_INIT',reqs = [{type = 'quest_completed', name = 'gryphon_quest', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_SEX_2'}], dialogue_argument = 1}, 
+			#{code = 'aire_gryphon_sex_start', text = 'GRYPHON_AIRE_SEX_START_OPTION_INIT',reqs = [{type = 'quest_completed', name = 'gryphon_quest', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_SEX_2'}], dialogue_argument = 1}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
 		],
 	},

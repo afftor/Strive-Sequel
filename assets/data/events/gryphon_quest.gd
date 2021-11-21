@@ -112,7 +112,7 @@ var data = {
 		text = [{text = "GRYPHON_HUNTER_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_HUNTER_1_2", reqs = [], previous_dialogue_option = 2},
 		{text = "GRYPHON_HUNTER_1_3", reqs = [], previous_dialogue_option = 3}],
-		common_effects = [{code = "update_city"}, {code = 'make_quest_location', value = 'gryphon_forest_location'}],
+		common_effects = [{code = "update_city"}, {code = 'make_quest_location', value = 'quest_gryphon_forest_location'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage3'}]
@@ -132,7 +132,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "GRYPHON_FOREST_1", reqs = []}],
-		common_effects = [{code = 'make_quest_location', value = 'gryphon_cave_location'}],
+		common_effects = [{code = 'make_quest_location', value = 'quest_gryphon_cave_location'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage4'}]

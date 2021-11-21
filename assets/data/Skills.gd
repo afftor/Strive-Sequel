@@ -1961,16 +1961,18 @@ var Skilllist = {
 	
 	fly_evasion = {
 		code = 'fly_evasion',
-		
+		name = '',
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Fear.png'),
+		learn_reqs = [{stat = 'wings', operant = 'neq', value = ''}],
+		learn_cost = 500,
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['buff','support'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_fly'})], 
-		cost = {mp = 5},
+		cost = {},
 		charges = 0,
 		combatcooldown = 4, #i think this is right
 		cooldown = 0,
@@ -2336,12 +2338,12 @@ var Skilllist = {
 	},
 	holy_lance = {
 		code = 'holy_lance',
-		
+		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/holylance.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','aoe','learnable'],
+		tags = ['damage','aoe'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_combat', check = true}],
 		learn_cost = 790,
