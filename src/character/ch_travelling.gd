@@ -13,9 +13,22 @@ func remove_from_travel():
 		set_travel_time(0)
 		travel_target = {area = '', location = ''}
 
+
+func fix_infinite_travel():
+	if travel_time <= 0 and location == 'travel':
+#		parent.remove_from_task()
+		set_travel_time(0)
+		area = travel_target.area
+		location = travel_target.location
+		travel_target = {area = '', location = ''}
+
+
+
+
 func set_location_to_default():
 	location = ResourceScripts.game_world.mansion_location
 	area =  ResourceScripts.game_world.starting_area
+
 
 func fix_import():
 	location = ResourceScripts.game_world.mansion_location
@@ -24,25 +37,31 @@ func fix_import():
 	travel_time = 0
 	initial_travel_time = 0
 
+
 func travel_per_tick():
 	var value = 1
 	if ResourceScripts.game_res.upgrades.has('stables'):
 		value = 1 + variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables
 	return value
 
+
 func calculate_estimated_travel_time(t_time):
 	return ceil(t_time/travel_per_tick())
+
 
 func set_travel_time(value):
 	travel_time = value
 	initial_travel_time = value
 
+
 func check_location(value, completed = false):
 	if completed: return travel_time == 0 && location == value
 	else: return location == value
 
+
 func same_location_with(ch_travel_mod):
 	return location == ch_travel_mod.location
+
 
 func tick():
 	if travel_time > 0:
@@ -60,7 +79,6 @@ func tick():
 				globals.text_log_add("travel", parent.get_short_name() + " returned to mansion. ")
 			else:
 				parent.remove_from_task()
-				parent.travel.location = location
 				input_handler.update_slave_list()
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
