@@ -605,7 +605,7 @@ func fix_serialization():
 	food = dict2inst(food)
 	rebuild_parents()
 	xp_module.fix_rules()
-	
+	travel.fix_infinite_travel()
 
 
 

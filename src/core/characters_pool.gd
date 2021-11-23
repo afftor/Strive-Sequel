@@ -43,7 +43,6 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.characters[id].clean_effects()
 			ResourceScripts.game_party.characters[id].clean_references()
 			ResourceScripts.game_party.character_order.erase(id)
-			if !on_exit: input_handler.slave_list_node.rebuild() #temporal, needs remake
 			remove_id(id)
 	for id in ResourceScripts.game_party.babies.keys():
 		if !ResourceScripts.game_party.babies[id].is_active or on_exit:
@@ -51,6 +50,7 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.babies[id].clean_references()
 			ResourceScripts.game_party.babies.erase(id)
 			remove_id(id)
+	if !on_exit: input_handler.slave_list_node.rebuild() #temporal, needs remake
 
 func remove_id(id):
 	if ResourceScripts.game_party.characters.has(id): ResourceScripts.game_party.characters.erase(id)
