@@ -715,6 +715,8 @@ func affect_char(i):
 				xp_module.make_unavaliable()
 		'set_as_spouse':
 			ResourceScripts.game_progress.spouse = id
+		'escape':
+			escape_actions()
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -976,17 +978,24 @@ func check_escape_possibility():
 		return
 	escape()
 
+
 func escape():
 	process_event(variables.TR_REMOVE)
 	equipment.clear_eqip()
 	input_handler.active_character = self
 	input_handler.interactive_message('slave_escape', '', {})
+#	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
+#	is_active = false #for now, to replace with corresponding mechanic
+#	ResourceScripts.game_party.character_order.erase(id)
+#	characters_pool.call_deferred('cleanup')
+#	input_handler.slave_list_node.rebuild()
+	#state.text_log_add(get_short_name() + " has escaped. ")
+
+
+func escape_actions():
 	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
 	is_active = false #for now, to replace with corresponding mechanic
-	ResourceScripts.game_party.character_order.erase(id)
-	characters_pool.call_deferred('cleanup')
-	input_handler.slave_list_node.rebuild()
-	#state.text_log_add(get_short_name() + " has escaped. ")
+	characters_pool.cleanup()
 
 func predict_food():
 	return food.predict_food()
