@@ -242,6 +242,12 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_hunter1 = rebuild_skillvalue_template({target_race = 'beast', tag = 'damage',  value = 1.15}),
+	e_tr_bers1 = rebuild_skillvalue_template({source = 'fire', skilltype = 'skill', tag = 'damage', value = 1.2}),
+	e_tr_bers2 = rebuild_skillvalue_template({source = 'earth', skilltype = 'skill', tag = 'damage', value = 1.2}),
+	e_tr_druid = rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
+	e_tr_bishop = rebuild_skillvalue_template({source = 'light', skilltype = 'spell', tag = 'damage', value = 1.4}),
+	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
 #	e_tr_witcrit = {
 #		type = 'trigger',
 #		trigger = [variables.TR_CAST],
@@ -3739,3 +3745,62 @@ func rebuild_template(args):
 	res.sub_effects.push_back(args.effect)
 
 	return res
+
+
+func rebuild_skillvalue_template(args):
+	var trigger = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		buffs = [],
+		sub_effects = []
+	}
+	var sub = {
+		type = 'oneshot',
+		target = 'skill',
+		atomic = [],
+		buffs = [],
+		sub_effects = []
+	}
+	var atomic = {type = 'stat_mul', stat = 'value', value = 1}
+	var condition = {type = 'skill', value = []}
+	var targetcondition = {type = 'target', value = []}
+	if args.has('value'): #shold be always true - for without it this makes no sence
+		atomic.value = args.value
+	
+	sub.atomic.push_back(atomic)
+	trigger.sub_effects.push_back(sub)
+	
+	if args.has('tag'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['tags', 'has', args.tag]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('tags'):
+		for tag in args.tags:
+			var tmp = condition.duplicate(true)
+			tmp.value = ['tags', 'has', tag]
+			trigger.conditions.push_back(tmp)
+	
+	if args.has('skilltype'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['ability_type', 'eq', args.skilltype]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('num_targets'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['target_number', 'eq', args.num_targets]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('source'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['damage_type', 'eq', args.source]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('target_race'):
+		var tmp = targetcondition.duplicate(true)
+		tmp.value.push_back({code = 'stat', stat = 'racegroup', operant = 'eq', value = args.target_race})
+		trigger.conditions.push_back(tmp)
+	
+	return trigger

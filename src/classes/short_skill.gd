@@ -192,5 +192,7 @@ func convert_to_new_template():
 	if template.has('social_skill_stats'): res_res.social_skill_stats = template.social_skill_stats
 	if template.has('number_rnd_targets'): res_res.number_rnd_targets = template.number_rnd_targets
 	res_res.tags = tags.duplicate()
+	if tags.has('damage') and !tags.has(damage_type) and damage_type != 'weapon':
+		res_res.tags.push_back(damage_type)
 	return res_res
 

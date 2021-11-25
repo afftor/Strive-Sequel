@@ -103,7 +103,7 @@ var traits = {
 		effects = [],#'e_tr_foreman'],
 		bonusstats = {mod_collect = 0.33}
 	},
-	hunter= {
+	hunter= {#obsolete, not remove
 		code = 'hunter',
 		name = '',
 		descript = '',
@@ -111,6 +111,51 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_hunter'],
 		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
+	},
+	hunter_new = {
+		code = 'hunter_new',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_hunter1'],
+		bonusstats = {}
+	},
+	berserker = {
+		code = 'berserker',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_bers1', 'e_tr_bers2'],
+		bonusstats = {}
+	},
+	druid = {
+		code = 'druid',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_druid'],
+		bonusstats = {}
+	},
+	sniper = {
+		code = 'sniper',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_sniper'],
+		bonusstats = {}
+	},
+	bishop = {
+		code = 'bishop',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_bishop'],
+		bonusstats = {}
 	},
 	smith = {
 		code = 'smith',
