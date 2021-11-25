@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.5.5'
+const gameversion = '0.5.5b'
 
 #time
 signal hour_tick
@@ -640,7 +640,7 @@ func getrelativename(person, person2):
 		if str(data1[i]) == str(data2.id):
 			result = '[father]'
 		elif str(data2[i]) == str(data1.id):
-			result = '[child]'
+			result = '[son]'
 	for i in [data1, data2]:
 		if i.siblings.has(data1.id) || i.siblings.has(data2.id):
 			result = '[brother]'
@@ -1550,6 +1550,10 @@ func valuecheck(dict):
 			return spouse_char.checkreqs(dict.value)
 		'active_character_checks':
 			var character = input_handler.active_character
+			if character == null:return false
+			return character.checkreqs(dict.value)
+		'unique_character_checks':
+			var character = ResourceScripts.game_party.get_unique_slave(dict.name)
 			if character == null:return false
 			return character.checkreqs(dict.value)
 		'master_is_beast':

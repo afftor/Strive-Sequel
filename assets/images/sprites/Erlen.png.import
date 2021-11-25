@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elf_priestess_prt.png-e3d6e52dbb5a6057714bf5d14fe3d93e.stex"
+path="res://.import/Erlen.png-f0b357c25074694a0fcb409676a18f64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/elf_priestess_prt.png"
-dest_files=[ "res://.import/elf_priestess_prt.png-e3d6e52dbb5a6057714bf5d14fe3d93e.stex" ]
+source_file="res://assets/images/sprites/Erlen.png"
+dest_files=[ "res://.import/Erlen.png-f0b357c25074694a0fcb409676a18f64.stex" ]
 
 [params]
 

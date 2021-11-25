@@ -32,7 +32,7 @@ var encounters = {
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'bandits_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_4', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'ramont_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-
+	gryphon = {unittype = 'randomgroup', unitcode = 'gryphon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
@@ -103,6 +103,7 @@ var enemygroups = {
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	gryphon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
@@ -121,7 +122,7 @@ var enemygroups = {
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 
 	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
-	jungle_easy2 = {reqs = [], units = {giant_ant = [0,2], centipede = [0,1], maneater_plant = [0,1]}},
+	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}},
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
 	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}},
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
