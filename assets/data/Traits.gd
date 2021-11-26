@@ -429,7 +429,7 @@ var traits = {
 		code = 'undead',
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconsskills/trait_undead.pngg",
+		icon = "res://assets/images/iconsskills/trait_undead.png",
 		visible = true,
 		effects = [],
 	},
