@@ -67,4 +67,5 @@ var decisions = {
 	AnastasiaEnslaveAttempt = "Happens in guilds_meeting_14 not used",
 	SiegeHalfSupplies = "capture_wrapup quest",
 	AnastasiaPersuasionNextday = "Princess persuation part",
+	AnaAireThreesome = "Aire and Ana is ready to have a threesome after gryphon at aire_gryphon_sex_2", # removes after sex is done
 }

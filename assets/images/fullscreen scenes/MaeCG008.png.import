@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tribal_elf.png-e8916291021349a3f4528e43f49f3904.stex"
+path="res://.import/MaeCG008.png-a2277e6d865265bfcfbb11de24464c22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/tribal_elf.png"
-dest_files=[ "res://.import/tribal_elf.png-e8916291021349a3f4528e43f49f3904.stex" ]
+source_file="res://assets/images/fullscreen scenes/MaeCG008.png"
+dest_files=[ "res://.import/MaeCG008.png-a2277e6d865265bfcfbb11de24464c22.stex" ]
 
 [params]
 

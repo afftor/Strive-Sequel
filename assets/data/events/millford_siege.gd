@@ -134,13 +134,13 @@ var data = {
 		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}], #DivineSymbolStart
 		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}, #Adds option in church
 #		{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
-		{code = 'update_location'}],
+		],
 		options = [ {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}], type = 'next_dialogue'
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}, {code = 'update_location'}], type = 'next_dialogue'
 		}, {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_4", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}], type = 'next_dialogue'
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_4", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}, {code = 'update_location'}], type = 'next_dialogue'
 		}, {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_5", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}], type = 'next_dialogue'
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_5", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}, {code = 'update_location'}], type = 'next_dialogue'
 		}],
 	},
 	

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tribal_elf_body.png-c28f4f38db38741993f3b1500a713c94.stex"
+path="res://.import/savra.png-cde44ef96817e92971f089754d683b68.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/tribal_elf_body.png"
-dest_files=[ "res://.import/tribal_elf_body.png-c28f4f38db38741993f3b1500a713c94.stex" ]
+source_file="res://assets/images/sprites/savra.png"
+dest_files=[ "res://.import/savra.png-cde44ef96817e92971f089754d683b68.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elf_priestess.png-686e26476471ffcef16e2edd954d7a63.stex"
+path="res://.import/MaeCG007.png-e36aef7e8010ff31a43b58e8dca5f880.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/elf_priestess.png"
-dest_files=[ "res://.import/elf_priestess.png-686e26476471ffcef16e2edd954d7a63.stex" ]
+source_file="res://assets/images/fullscreen scenes/MaeCG007.png"
+dest_files=[ "res://.import/MaeCG007.png-e36aef7e8010ff31a43b58e8dca5f880.stex" ]
 
 [params]
 

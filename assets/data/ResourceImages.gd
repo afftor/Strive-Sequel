@@ -109,6 +109,12 @@ var backgrounds = {
 	anastasia_aire2 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG002.png"),
 	anastasia_aire3 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG003.png"),
 
+	aire_ana1 = load("res://assets/images/fullscreen scenes/AireAna001.png"),
+	aire_ana2 = load("res://assets/images/fullscreen scenes/AireAna002.png"),
+	aire_ana3 = load("res://assets/images/fullscreen scenes/AireAna003.png"),
+	aire_ana4 = load("res://assets/images/fullscreen scenes/AireAna004.png"),
+	aire_ana5 = load("res://assets/images/fullscreen scenes/AireAna005.png"),
+	aire_ana6 = load("res://assets/images/fullscreen scenes/AireAna006.png"),
 
 	}
 

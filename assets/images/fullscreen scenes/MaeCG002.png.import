@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elf_army_leader.png-6fded30fed103d8816f4d1483f82f757.stex"
+path="res://.import/MaeCG002.png-a3f1dc993178e843179adcc8446a4b73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/elf_army_leader.png"
-dest_files=[ "res://.import/elf_army_leader.png-6fded30fed103d8816f4d1483f82f757.stex" ]
+source_file="res://assets/images/fullscreen scenes/MaeCG002.png"
+dest_files=[ "res://.import/MaeCG002.png-a3f1dc993178e843179adcc8446a4b73.stex" ]
 
 [params]
 
