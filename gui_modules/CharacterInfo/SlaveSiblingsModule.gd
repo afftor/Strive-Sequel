@@ -160,12 +160,12 @@ func sex_traits_open():
 
 func rebuild_traits():
 	#input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
-	for i in person.statlist.traits:
-		var trait = Traitdata.traits[i]
-		if !trait.visible:
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
-		newnode.text = trait.name
+#	for i in person.statlist.traits:
+#		var trait = Traitdata.traits[i]
+#		if !trait.visible:
+#			continue
+#		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+#		newnode.text = trait.name
 	
 	var traits = person.get_all_sex_traits()
 	var h1 = person.get_unlocked_sex_traits()
