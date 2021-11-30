@@ -1619,6 +1619,9 @@ func stopongoingaction(meta, rebuild = false):
 
 
 func _on_passbutton_pressed():
+	if turns <= 0: 
+		$Panel/passbutton.disabled = true
+		return
 	if selectmode == 'normal':
 		startscene(categories.other[0])
 	else:
