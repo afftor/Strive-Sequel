@@ -1537,6 +1537,13 @@ func valuecheck(dict):
 			return ResourceScripts.game_res.if_has_free_items(dict.name, dict.operant, dict.value)
 		'disabled':
 			return false
+		'has_spouse':
+			var spid = ResourceScripts.game_progress.spouse
+			if spid == null: return !dict.check
+			var spouse_char = characters_pool.get_char_by_id(spid)
+			if spouse_char == null: return !dict.check
+			if !spouse_char.is_active: return !dict.check
+			return dict.check
 		'master_check':
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
