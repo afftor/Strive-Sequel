@@ -19,6 +19,7 @@ var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
 
 var debug = false
 
+
 var allowaction = false
 var highlightargets = false
 var allowedtargets = {}
@@ -296,6 +297,8 @@ func checkdeaths():
 
 
 func checkwinlose():
+	if fightover == true:
+		return true
 	var playergroupcounter = 0
 	var enemygroupcounter = 0
 	for i in range(battlefield.size()):
