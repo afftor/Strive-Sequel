@@ -70,6 +70,29 @@ func fix_serialization():
 	if t != null:
 #		if tmp.stage in []: # for i deduced that millford should be locked for full duration of quest
 		globals.common_effects([{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true},])
+	#marriage spouse fix
+	if spouse!= null and !globals.valuecheck({type = 'has_spouse', check = true}) and !marriage_completed:
+		var clear = []
+		for i in range(active_quests.size()):
+			var q = active_quests[i]
+			if q.code.begins_with('marriage_'):
+				clear.push_front(i)
+		for i in clear:
+			print("removed questdata:")
+			print(active_quests[i])
+			active_quests.remove(i)
+		for q in completed_quests.duplicate():
+			if q.begins_with("marriage"):
+				print("removed comquestdata: " + q)
+				completed_quests.erase(q)
+		for line in seen_dialogues.duplicate():
+			if line.begins_with("MARRIAGE"):
+				print("removed dialogue: " + line)
+				seen_dialogues.erase(line)
+		for line in selected_dialogues.duplicate():
+			if line.begins_with("MARRIAGE"):
+				print("removed dialogue: " + line)
+				selected_dialogues.erase(line)
 
 
 func fix_import():#this is the most questionable fix
