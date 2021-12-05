@@ -107,6 +107,7 @@ func show_buttons():
 	get_tree().get_root().set_disable_input(false)
 
 func complete_skirmish():
+	hold_selection = true
 	globals.complete_location(input_handler.active_location.id)
 	globals.remove_location(input_handler.active_location.id)
 	close()

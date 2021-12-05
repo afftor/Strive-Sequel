@@ -28,7 +28,7 @@ func update_purchase_btn():
 	if gui_controller.exploration.hiremode == "sell":
 		$PurchaseButton.disabled = false
 	else:
-		$PurchaseButton.disabled = ((gui_controller.exploration.person_to_hire.calculate_price()) >= ResourceScripts.game_res.money)
+		$PurchaseButton.disabled = ((gui_controller.exploration.person_to_hire.calculate_price()) > ResourceScripts.game_res.money)
 
 
 func hire_sell():
