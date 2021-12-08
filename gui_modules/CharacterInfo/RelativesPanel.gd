@@ -19,24 +19,24 @@ func build_relatives():
 		var panel = input_handler.DuplicateContainerTemplate($Relatives/Parents, 'panel')
 		build_panel(panel, tnewdata, tchar)
 	#siblings
-	input_handler.ClearContainer($Relatives/Siblings, ['Head', 'panel'])
+	input_handler.ClearContainer($Relatives/ScrollContainer/Siblings, ['Head', 'panel'])
 	for rel_id in reldata.siblings:
 		var tnewdata = ResourceScripts.game_party.relativesdata[rel_id] #this is not granted, but it can't fail without manual data editing - so i won't check for it
 		var tchar = characters_pool.get_char_by_id(rel_id) 
-		if ResourceScripts.game_party.babies.has(tchar.id): 
+		if ResourceScripts.game_party.babies.has(rel_id): 
 			#unborn baby
 			continue
-		var panel = input_handler.DuplicateContainerTemplate($Relatives/Siblings, 'panel')
+		var panel = input_handler.DuplicateContainerTemplate($Relatives/ScrollContainer/Siblings, 'panel')
 		build_panel(panel, tnewdata, tchar)
 	#children
-	input_handler.ClearContainer($Relatives/Children, ['Head', 'panel'])
+	input_handler.ClearContainer($Relatives/ScrollContainer2/Children, ['Head', 'panel'])
 	for rel_id in reldata.children:
 		var tnewdata = ResourceScripts.game_party.relativesdata[rel_id] #this is not granted, but it can't fail without manual data editing - so i won't check for it
 		var tchar = characters_pool.get_char_by_id(rel_id) 
-		if ResourceScripts.game_party.babies.has(tchar.id): 
+		if ResourceScripts.game_party.babies.has(rel_id): 
 			#unborn baby
 			continue
-		var panel = input_handler.DuplicateContainerTemplate($Relatives/Children, 'panel')
+		var panel = input_handler.DuplicateContainerTemplate($Relatives/ScrollContainer2/Children, 'panel')
 		build_panel(panel, tnewdata, tchar)
 
 
@@ -68,7 +68,7 @@ func build_panel(panel, tnewdata, tchar):
 
 func build_tooltip_text(reldata):
 	var res = ""
-	res += "Name: {name}/nRace: {race}/nSex: {sex}".format(reldata)
+	res += "Name: {name}\nRace: {race}\nSex: {sex}".format(reldata)
 	if reldata.has('fate'):
-		res += "/nFate: %s" % reldata.fate
+		res += "\nFate: %s" % reldata.fate
 	return res
