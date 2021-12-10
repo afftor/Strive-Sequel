@@ -85,6 +85,8 @@ func _ready():
 #	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
 #	globals.connect('slave_departed', $NavigationModule, "build_accessible_locations")
 	if globals.start_new_game == true:
+		if gui_controller.clock != null:
+			gui_controller.clock.hide()
 		globals.start_new_game = false
 		self.visible = false
 		is_new_game = true
@@ -117,6 +119,7 @@ func _ready():
 	gui_controller.mansion = self
 	gui_controller.current_screen = self
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
+	gui_controller.clock.show()
 	$MenuButton.connect("pressed", self, "show_menu")
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
 #	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
@@ -853,8 +856,8 @@ func test_mode():
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
-		ResourceScripts.game_progress.decisions.append("ivitations_made")
-		input_handler.interactive_message('marriage_final_7', '', {})
+#		ResourceScripts.game_progress.decisions.append("ivitations_made")
+#		input_handler.interactive_message('pre_final_boss_refuse', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
