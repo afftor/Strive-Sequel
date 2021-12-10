@@ -6,6 +6,7 @@ var total_stat_points
 var unassigned_points
 
 var preservedsettings = {}
+var valid_preservedsettings = {}
 
 var agearray = ['teen','adult','mature']
 var sexarray = ['male','female','futa']
@@ -133,19 +134,25 @@ func MainMenu():
 func select_age(value):
 	person.set_stat('age', agearray[value])
 	preservedsettings['age'] = agearray[value]
+	valid_preservedsettings['age'] = true
 	rebuild_slave()
 
 func select_sex(value):
 	person.set_stat('sex', sexarray[value])
 	preservedsettings['sex'] = sexarray[value]
+	valid_preservedsettings['sex'] = true
 	if preservedsettings.has("tits_size"):
-		preservedsettings.erase("tits_size")
+		valid_preservedsettings['tits_size'] = false
+#		preservedsettings.erase("tits_size")
 	if preservedsettings.has("has_pussy"):
-		preservedsettings.erase("has_pussy")
+		valid_preservedsettings['has_pussy'] = false
+#		preservedsettings.erase("has_pussy")
 	if preservedsettings.has("has_womb"):
-		preservedsettings.erase("has_womb")
+		valid_preservedsettings['has_womb'] = false
+#		preservedsettings.erase("has_womb")
 	if preservedsettings.has("vagina"):
-		preservedsettings.erase("vagina")
+		valid_preservedsettings['vagina'] = false
+#		preservedsettings.erase("vagina")
 	rebuild_slave()
 
 
@@ -187,7 +194,9 @@ func select_diet():
 
 func finish_diet_selection():
 	preservedsettings['food_love'] = person.food.food_love
+	valid_preservedsettings.food_love = true
 	preservedsettings['food_hate'] = person.food.food_hate
+	valid_preservedsettings.food_hate = true
 	var text = person.food.food_love + "|"
 	for i in person.food.food_hate:
 		text += i + " "
@@ -195,6 +204,7 @@ func finish_diet_selection():
 
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
+	valid_preservedsettings.clear()
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
@@ -225,36 +235,38 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 
 
 func rebuild_slave():
+	SlaveInfo.build_bodyparts()
 	var race = person.get_stat('race')
 	var sex = person.get_stat('sex')
 	var age = person.get_stat('age')
-	person = ResourceScripts.scriptdict.class_slave.new("char_creation_rebuild")
-	person.create(race, sex, age)
-	person.is_active = false
-	person.is_known_to_player = true
+	var t_person = ResourceScripts.scriptdict.class_slave.new("char_creation_rebuild")
+	t_person.create(race, sex, age)
+	t_person.is_active = false
+	t_person.is_known_to_player = true
 	if mode == 'master':
-		person.unlock_class('master')
+		t_person.unlock_class('master')
 
 	$VBoxContainer/race.text = races.racelist[race].name
 	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
 	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
 	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
-	if preservedsettings.has("food_love"):
+	if preservedsettings.has("food_love") and valid_preservedsettings.food_love:
 		if preservedsettings.food_love != '':
-			person.food.food_love = preservedsettings["food_love"]
+			t_person.food.food_love = preservedsettings["food_love"]
 	else:
-		person.set_stat('food_love',  '')
-	if preservedsettings.has("food_hate"):
+		t_person.set_stat('food_love',  '')
+	if preservedsettings.has("food_hate") and valid_preservedsettings.food_hate:
 		if !preservedsettings.food_hate.empty():
-			person.food.food_hate = preservedsettings["food_hate"]
+			t_person.food.food_hate = preservedsettings["food_hate"]
 	else:
-		person.set_stat('food_hate', [])
+		t_person.set_stat('food_hate', [])
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
 		else:
 			$VBoxContainer.get_node(i).text = person.get_stat(i)
-
+	
+	person = t_person
 	select_diet()
 	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
 		select_sex_trait(preservedsettings.sex_traits)
@@ -266,6 +278,7 @@ func rebuild_slave():
 func delete_keys_from_preservedsettings(keys):
 	for key in keys:
 		preservedsettings.erase(key)
+		valid_preservedsettings[key] = false
 
 
 func apply_preserved_settings():
@@ -276,6 +289,8 @@ func apply_preserved_settings():
 			keys_to_delete.append(i)
 	delete_keys_from_preservedsettings(keys_to_delete)
 	for i in preservedsettings:
+		if !valid_preservedsettings.has(i): continue
+		if !valid_preservedsettings[i]: continue
 		if i == "food_love":
 			person.food.food_love = preservedsettings["food_love"]
 		elif i == "food_hate":
@@ -317,15 +332,16 @@ func finish_character():
 func text_changed(text, value):
 	# if text != '':
 	preservedsettings[value] = text
+	valid_preservedsettings[value] = true
 	apply_preserved_settings()
 	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
 
 
 func check_confirm_possibility():
-	if !preservedsettings.has('food_love'):
+	if !preservedsettings.has('food_love') or !valid_preservedsettings.food_love:
 		input_handler.SystemMessage("You must select a liked food type")
 		return false
-	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'].empty():
+	if preservedsettings['food_love'] == '' or preservedsettings['food_hate'].empty() or !valid_preservedsettings.food_hate:
 		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
 		return false
 
@@ -395,7 +411,7 @@ func SaveCharacter():
 	var character_to_save = {}
 	for i in params_to_save:
 		character_to_save[i] = person.get_stat(i)
-		if preservedsettings.has(i) && !i in ["professions", "food_love", "food_hate"]: # && !preservedsettings in except_array:
+		if preservedsettings.has(i) and valid_preservedsettings[i] and !i in ["professions", "food_love", "food_hate"]: # && !preservedsettings in except_array:
 			character_to_save[i] = preservedsettings[i]
 	character_to_save.professions = selected_class
 	character_to_save["tits_size"] = person.get_stat("tits_size")
@@ -466,13 +482,16 @@ func LoadCharacter(updated_char_to_load = null):
 		if i == "food_love":
 			person.food.food_love = character_to_load["food_love"]
 			preservedsettings[i] = character_to_load["food_love"]
+			valid_preservedsettings[i] = true
 			continue
 		elif i == "food_hate":
 			person.food.food_hate = character_to_load["food_hate"]
 			preservedsettings[i] = character_to_load["food_hate"]
+			valid_preservedsettings[i] = true
 			continue
 		person.set_stat(i, character_to_load[i])
 		preservedsettings[i] = character_to_load[i]
+		valid_preservedsettings[i] = true
 
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
@@ -523,12 +542,14 @@ func RebuildStatsContainer():
 	for i in statdata.statdata.values():
 		if i.has('type') && i.type == 'factor':
 			array.append(i)
-			if preservedsettings.has(i.code) == false:
+			if preservedsettings.has(i.code) == false or !valid_preservedsettings[i.code]:
 				preservedsettings[i.code] = 1
+				valid_preservedsettings[i.code] = true
 			else:
 				person.set_stat(i.code, preservedsettings[i.code])
 			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
+				valid_preservedsettings[i.code] = true
 	
 	var counter = total_stat_points
 	
@@ -562,6 +583,7 @@ func stat_up(stat):
 		return
 	else:
 		preservedsettings[stat.code] += 1
+		valid_preservedsettings[stat.code] = true
 		RebuildStatsContainer()
 		$ClassSelectionModule.update_class_buttons()
 
@@ -570,6 +592,7 @@ func stat_down(stat):
 		return
 	else:
 		preservedsettings[stat.code] -= 1
+		valid_preservedsettings[stat.code] = true
 		RebuildStatsContainer()
 		$ClassSelectionModule.update_class_buttons()
 
@@ -592,6 +615,7 @@ func open_sex_traits():
 func select_sex_trait(trait):
 	person.create_s_trait_select(trait)
 	preservedsettings["sex_traits"] = trait
+	valid_preservedsettings["sex_traits"] = true
 	$TraitSelection.hide()
 	#input_handler.GetTextTooltip().hide()
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()

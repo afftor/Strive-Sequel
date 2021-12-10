@@ -571,27 +571,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Siblings" type="VBoxContainer" parent="RelativesPanel/Relatives"]
+[node name="ScrollContainer" type="ScrollContainer" parent="RelativesPanel/Relatives"]
 margin_left = 279.0
 margin_right = 555.0
 margin_bottom = 810.0
 size_flags_horizontal = 3
+scroll_horizontal_enabled = false
 
-[node name="Head" type="Label" parent="RelativesPanel/Relatives/Siblings"]
+[node name="Siblings" type="VBoxContainer" parent="RelativesPanel/Relatives/ScrollContainer"]
+margin_right = 276.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="RelativesPanel/Relatives/ScrollContainer/Siblings"]
 margin_right = 276.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 23 )
 text = "Siblings"
 align = 1
 
-[node name="panel" type="Control" parent="RelativesPanel/Relatives/Siblings"]
+[node name="panel" type="Control" parent="RelativesPanel/Relatives/ScrollContainer/Siblings"]
 visible = false
 margin_top = 48.0
 margin_right = 276.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 0, 100 )
 
-[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/Siblings/panel"]
+[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/ScrollContainer/Siblings/panel"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 80.0
@@ -602,7 +608,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Button" parent="RelativesPanel/Relatives/Siblings/panel"]
+[node name="name" type="Button" parent="RelativesPanel/Relatives/ScrollContainer/Siblings/panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 117.0
@@ -612,27 +618,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Children" type="VBoxContainer" parent="RelativesPanel/Relatives"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="RelativesPanel/Relatives"]
 margin_left = 559.0
 margin_right = 835.0
 margin_bottom = 810.0
 size_flags_horizontal = 3
+scroll_horizontal_enabled = false
 
-[node name="Head" type="Label" parent="RelativesPanel/Relatives/Children"]
+[node name="Children" type="VBoxContainer" parent="RelativesPanel/Relatives/ScrollContainer2"]
+margin_right = 276.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="Head" type="Label" parent="RelativesPanel/Relatives/ScrollContainer2/Children"]
 margin_right = 276.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 23 )
 text = "Children"
 align = 1
 
-[node name="panel" type="Control" parent="RelativesPanel/Relatives/Children"]
+[node name="panel" type="Control" parent="RelativesPanel/Relatives/ScrollContainer2/Children"]
 visible = false
 margin_top = 48.0
 margin_right = 276.0
 margin_bottom = 148.0
 rect_min_size = Vector2( 0, 100 )
 
-[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/Children/panel"]
+[node name="Icon" type="TextureRect" parent="RelativesPanel/Relatives/ScrollContainer2/Children/panel"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 80.0
@@ -643,7 +655,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Button" parent="RelativesPanel/Relatives/Children/panel"]
+[node name="name" type="Button" parent="RelativesPanel/Relatives/ScrollContainer2/Children/panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 117.0

@@ -27,6 +27,7 @@ func select_character_race():
 	# var person = get_parent().person
 	get_parent().person.set_stat('race', selected_race)
 	get_parent().preservedsettings["race"] = selected_race
+	get_parent().valid_preservedsettings['race'] = true
 	get_parent().rebuild_slave()
 
 

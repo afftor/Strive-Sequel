@@ -392,6 +392,7 @@ func keepbaby():
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 
 func removebaby():
+	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy').baby, tr("KEEPNOT"))
 	close()
 	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
 	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
