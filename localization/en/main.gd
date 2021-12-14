@@ -2006,7 +2006,7 @@ var TranslationDict = {
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
 	DIALOGUECHESTMIMICDISCOVERED = "As [name] approaches the chest in the last moment [he] spots something unusual about it. After another moment [he] informs that this is most likely to be not a chest, but Mimic. ",
 	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. \n\n{color=aqua|[name]}— {random_chat_active|mimic_eat}\n\n[He] will certainly be eaten if left in this state.",
-	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]}— {random_chat_active|mimic_rape}\n\nLeaving [him] in this state won't likely kill [him], but...",
+	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, the Mimic does not seem to be harming [him], rather seizing its prey and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]}— {random_chat_active|mimic_rape}\n\nLeaving [him] in this state won't likely kill [him], but...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]}— {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]}— {random_chat_active|mimic_erotic_leave}\n\nAfter about an hour of erotic moans and pleads [name] manages to free [him]self and escape.",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
@@ -2066,7 +2066,7 @@ var TranslationDict = {
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 
-	DIALOGUEEVENTGOBLINFRIENDLY = "As you make your way through the caves you find an isolated room. As you barge in, a lone goblin [boy] jumps in scare. \n\n— Wait, wait, please don't kill me! I'm not wanna fight, I'm only here accidently. I won't tell anyone I've seen you, I promise.\n\nSurprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].",
+	DIALOGUEEVENTGOBLINFRIENDLY = "As you make your way through the caves you find an isolated room. As you barge in, a lone goblin [boy] jumps in fear. \n\n— Wait, wait, please don't kill me! I'm not wanna fight, I'm only here accidently. I won't tell anyone I've seen you, I promise.\n\nSurprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].",
 	DIALOGUEEVENTGOBLINRECRUIT = "Attempt to recruit",
 	DIALOGUEEVENTGOBLINBRINGTOLEADER = "Request getting you to the leader",
 	DIALOGUEEVENTGOBLINKILL = "Kill",
@@ -6235,40 +6235,40 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_ARTIFACTS_2_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
 	ZEPHYRA_ARTIFACTS_2_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	
-	GRYPHON_AIRE_START = """As you walk through your grounds by the morning, you notice a young elf girl — Aire, who diligently trains with her bow and arrows at the makeshift range. As you watch her for some time, you notice how firm her concentration is.
+	GRYPHON_AIRE_START = """As you walk through the grounds of your mansion one morning, you notice a young elf girl, Aire, diligently training with her bow and arrows at the makeshift archery range. You watch her for some time, noticing how firm her concentration is.
 
-After another couple of precise shots she questioningly turns to you. 
+After another couple of precise shots she turns to you questioningly . 
 
 — Can I do something for you?""",
 	GRYPHON_AIRE_START_OPTION_1 = "Your skills are admirable ",
-	GRYPHON_AIRE_START_OPTION_2 = "I don't remember I've given you an order to train",
+	GRYPHON_AIRE_START_OPTION_2 = "I don't remember giving you an order to train",
 	GRYPHON_AIRE_1_1 = "— Thank you. I can't let my skills go rusty even in this state. I'm glad there's still opportunity to train at this time.",
-	GRYPHON_AIRE_1_2 = "— There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is not unallowed.",
+	GRYPHON_AIRE_1_2 = "— There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is permitted.",
 	GRYPHON_AIRE_1_OPTION_1 = "Why are you training so hard?",
-	GRYPHON_AIRE_1_OPTION_2 = "You seem too enthusiastic about this",
+	GRYPHON_AIRE_1_OPTION_2 = "You seem a little too enthusiastic about this",
 	GRYPHON_AIRE_2 = """— I've sworn to protect the princess with my life and this is not a task I can accomplish without training. I know I must obey your orders, but even then I'll be ready to put my life on the line in case something threatens Ana.""",
 	GRYPHON_AIRE_2_OPTION_1 = "You should really take it easy, the war is over",
-	GRYPHON_AIRE_2_OPTION_2 = "There's no point in it anymore, I'll protect her",
+	GRYPHON_AIRE_2_OPTION_2 = "There's no point in this anymore, I'll protect her",
 	GRYPHON_AIRE_2_OPTION_3 = "What makes you think you are better than me, her [master]?",
-	GRYPHON_AIRE_3_1 = """— War or not, I have to stay focused. This is my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
+	GRYPHON_AIRE_3_1 = """— War or not, I have to stay focused. This is how I express my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
 	GRYPHON_AIRE_3_2 = """Aire's face shows slight sneer at your words, but she quickly turns away to hide it.
 
-— Is that so? How can I trust you with her life? She's as good as a toy to you. But even if not, I don't believe you are any better than me.""",
-	GRYPHON_AIRE_3_3 = """— I know that I can't rely on you, or anyone, in such a crucial task. I'm not willing to offend, but I have doubts that you are better than me.""",
+— Is that so? How can I trust you with her life? She's little more than a toy to you. But even if not, I don't believe you are any better than me.""",
+	GRYPHON_AIRE_3_3 = """— I know that I can't rely on you, or anyone, in such a crucial task. I'm not trying to offend, but I have doubts that you are better than me.""",
 	GRYPHON_AIRE_3_OPTION_1 = "What if I prove to you I'm capable?",
 	GRYPHON_AIRE_3_OPTION_2 = "Now I'll have to prove it to show you who's the [master] here",
-	GRYPHON_AIRE_4_1 = """— Hmph, you can ask me whatever you want then. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so.""",
-	GRYPHON_AIRE_4_2 = """— I'll see if you can. If you prove me you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove me your worth, I'll become your lapdog if you wish so. """,
-	GRYPHON_AIRE_4_OPTION_1 = "You know how to motivate",
+	GRYPHON_AIRE_4_1 = """— Hmph, you can ask me whatever you want then. If you prove to me that you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove your worth to me, I'll become your lapdog if that is what you wish.""",
+	GRYPHON_AIRE_4_2 = """— I'll see if you can. If you prove to me that you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove your worth to me, I'll become your lapdog if that is what you wish. """,
+	GRYPHON_AIRE_4_OPTION_1 = "You really know how to motivate a man",
 	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself",
 	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words",
-	GRYPHON_AIRE_5 = """— Don't water your mouth until then. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, even elves won't dare to approach. If you can get one, I'll accept that you will suffice for Anastasia.""",
+	GRYPHON_AIRE_5 = """— Don't start drooling before it’s done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia’s protector.""",
 	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
-	GRYPHON_AIRE_5_OPTION_2 = "Does not seem to be too bad",
+	GRYPHON_AIRE_5_OPTION_2 = "This doesn’t sound too hard",
 	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "Ask about Elder Gryphon",
-	GRYPHON_WORKERS_START = """— Hmm, I dun know de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
+	GRYPHON_WORKERS_START = """— Hmm, I dunno de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
 
 Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down the Elder Gryphon.""",
 	GRYPHON_HUNTER_START = """You find a veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
@@ -6277,100 +6277,180 @@ Sigmund tells you how to find a hunter veteran named Derek who can give you the 
 
 — That's quite a bold achievement you are aiming at, mayor. Not a dragon slaying, but still can go down in history. What would you want to do it for?""",
 	GRYPHON_HUNTER_START_OPTION_1 = "That beast's body can be quite valuable",
-	GRYPHON_HUNTER_START_OPTION_2 = "What's a life without a thrill?",
-	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress one girl",
+	GRYPHON_HUNTER_START_OPTION_2 = "What's life without the thrill of conquest?",
+	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress a girl",
 	GRYPHON_HUNTER_1_1 = """— Huh, so some rich stuff then. Well, none of my business then.
 
-I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start e to track it down.""",
 	GRYPHON_HUNTER_1_2 = """— I had no idea our mayor is that adventurous, I can respect that.
 
-I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
 	GRYPHON_HUNTER_1_3 = """You notice how Aire frowns and gives you a judging look.
 
 — Haha, you are quite a kidder. Well, you must have your reasons.
 
-I have some information on where one of those was seen last time, not too far from the forest's border. I suggest going there so we might be able to track it down.""",
+I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
 	GRYPHON_HUNTER_1_OPTION_1 = "That's the plan then",
-	GRYPHON_HUNTER_1_OPTION_2 = "Let's not waste much time",
-	GRYPHON_FOREST_START = """You approach a denser part of the forest, which might give you a better idea where to find an Elder Gryphon. Aire by your side stays silent, but her face hints at judging your decisiveness. A few other hunters have come here from the city and agreed to follow your orders.""",
-	GRYPHON_FOREST_1 = """As you defeat the minor gryphon, you let the hunters track the surroundings. While waiting, Aire approaches you.
+	GRYPHON_HUNTER_1_OPTION_2 = "Let's not waste any more time",
+	GRYPHON_FOREST_START = """You approach a denser part of the forest, where you have heard you might find an Elder Gryphon. Aire by your side stays silent, but the frown on her pretty face hints at judging your decisiveness. A few other hunters have come here from the city and agreed to follow your orders.""",
+	GRYPHON_FOREST_1 = """As you defeat the minor gryphon, you let the hunters search the surroundings for the tracks of the elder. While waiting, Aire approaches you.
 
 — I don't like doing this, this is too dangerous.""",
-	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste to not finish it now",
+	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste not to finish it now",
 	GRYPHON_FOREST_1_OPTION_2 = "Ready to admit your defeat then?",
-	GRYPHON_FOREST_1_1 = """Aire prepares to say something but stops at the last moment. Realizing it was her idea in the first place, she's unable to bring herself to accept defeat. 
+	GRYPHON_FOREST_1_1 = """Aire prepares to say something but at the last moment bites her lip and stays quiet. Realizing it was her idea in the first place, she's unable to bring herself to accept defeat. 
 
-Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
+Finally Derek comes to you with good news. The hunters were able to find evidence that the Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing this you give the order to move out.""",
 	GRYPHON_FOREST_1_2 = """— Hmph, don't make me laugh. See if you die, I don't care. 
 
-Finally Derek comes to you with a good knews. The hunters were able to find enough evidence that Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing it you order to move out.""",
-	GRYPHON_CAVE_START = """With your group, stray hunters and Aire you enter the spacious cave. Almost by the entrance you spot the large feathers indicating hunters' guess was correct. After another hundred of feet you hear a heavy roar of an angry beast. The whole group quicky retreats from the cave as you are followed by a gigantic gryphon, one you've never seen before.""",
-	GRYPHON_CAVE_1 = """As the Elder Gryphon is on its last breath, you notice how it focuses its attention on Aire, who stays in the vicinity of its attack. Unexpectedly to everyone, it erupts another fierce roar and makes a dash in her direction.""",
+Finally Derek comes to you with good news. The hunters were able to find evidence that the Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing this you give the order to move out.""",
+	GRYPHON_CAVE_START = """With your group of hired hunters and Aire you enter the spacious cave. Almost by the entrance you spot large feathers indicating that the hunters' guess was correct. After another hundredfeet you hear the screeching roar of an angry beast. The whole group quicky retreats from the cave as you are followed out by a gigantic gryphon, larger than any you've ever seen before.""",
+	GRYPHON_CAVE_1 = """As the Elder Gryphon is on its last breath, you notice how it focuses its attention on Aire, who is still within the reach of its massive talons. Unexpectedly to everyone, the Elder Gryphon bellows another fierce roar and makes a dash in her direction.""",
 	GRYPHON_CAVE_1_OPTION_1 = "Try to block it",
 	GRYPHON_CAVE_1_OPTION_2 = "Do nothing",
-	GRYPHON_CAVE_BAD = """Aire's eyes widen as a giant gryphon's claw tears through her stomach. In a mere swipe her body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
+	GRYPHON_CAVE_BAD = """Aire's eyes widen as a giant gryphon's claw tears through her stomach. In a mere swipe her slender body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
 
 — P-please, protect... Ana...
 
 The gryphon lies defeated, but there's little meaning left in it.""",
-	GRYPHON_CAVE_2 = """You jump in front of Aire, blocking the incoming attack with your weapon. The massive force pushes you into Aire, who looks at you with shock and disbelief. Your weapon breaks under stress and you feel like the gryphon's claw enters your chest. The first impact pushes you back, so the claw does cut as deep as it could, yet you feel like at least one of your ribs was broken.
+	GRYPHON_CAVE_2 = """You jump in front of Aire, blocking the incoming attack with your weapon. The massive force pushes you back into Aire, who looks at you with shock and disbelief. Your weapon breaks under the pressure of the attack and you feel the gryphon's claw enter your chest. The first impact pushes you back, so the claw does not cut as deep as it could have, yet you feel like at least one of your ribs was broken.
 
-Thankfully, the attack opened for one of the hunters an opportunity to deeply wound the gryphon's neck, which finally made it fall. With no strength left you fall onto the ground. Aire hastily drops on her knees, her eyes watering. """,
-	GRYPHON_CAVE_3 = """— You've... Why? Why did you protect me?! You must protect Ana!.. You can't die now!
+Thankfully, the attack opened an opportunity for one of the hunters to deeply wound the gryphon's neck, which finally made it fall. With no strength left you slump to the ground. Aire hastily drops to her knees beside you, her eyes watering. """,
+	GRYPHON_CAVE_3 = """— You've... Why? Why did you protect me?! You have to protect Ana!.. You can't die now!
 
-You only manage to give Aire a small smile before losing conscious.""",
-	GRYPHON_CAVE_4 = """You wake up in a small tent which seems to be positioned close to the gryphon's lair. You don't feel too well, but it seems one of the healers has patched you up and your life is in no danger. Next to your bed you observe a familiar elven girl.
+You only manage to give Aire a small smile before losing consciousness.""",
+	GRYPHON_CAVE_4 = """You wake up in a small tent positioned close to the gryphon's lair. You don't feel too great, but it seems one of the healers has patched you up and your life is in no danger. Next to your bed you observe a familiar elven girl.
 
 — [name]! Never do something like this again! What were you thinking!?""",
 	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct",
 	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do",
-	GRYPHON_CAVE_4_OPTION_3 = "How much I gonna bang your ass after that",
-	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what happened to you now... Sorry I've made you do that, I didn't think you'd actually try to bring down that beast... And thanks for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
-	GRYPHON_CAVE_5_OPTION_1 = "That's the plan then",
+	GRYPHON_CAVE_4_OPTION_3 = "How much I’m gonna bang your sweet ass for this",
+	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what nearly happened... I’m sorry I made you do that, I didn't think you'd actually try to bring down that beast... And thank you for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
+	GRYPHON_CAVE_5_OPTION_1 = "That's what I wanted to hear",
 	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well",
 	AIRE_GREET = """— What do you want of me?""",
 	GRYPHON_AIRE_SEX_START_OPTION_INIT = "About your promise...",
 	GRYPHON_AIRE_SEX_START = "— Y-yes? What do you have for me?",
 	GRYPHON_AIRE_SEX_START_OPTION_1 = "I want to have a threesome with you and Anastasia",
 	GRYPHON_AIRE_SEX_START_OPTION_2 = "I haven't decided yet",
-	GRYPHON_AIRE_SEX_1 = """Aire becomes silent for some time and as you think she's going to make you regret saying that, she responds.
+	GRYPHON_AIRE_SEX_1 = """Aire becomes silent for some time and just as you think she's going to make you regret saying that, she responds.
 
-— I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more, than me. But if it is your order, we will both comply with it. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
+— I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more than me. But if it is your order, we will both obey. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
 	GRYPHON_AIRE_SEX_1_OPTION_1 = "That's settled then",
 	GRYPHON_AIRE_SEX_1_OPTION_2 = "I've changed my mind",
 	GRYPHON_AIRE_SEX_2 = "Aire nods in response and you set a plan for the upcoming event.",
 	GRYPHON_ANA_SEX_OPTION_INIT = "Tonight we are gonna do something special...",
-	GRYPHON_ANA_SEX_START = """By your invitation Anastasia enters your room. Her eyes widen as she see her elven friend standing there in her underwear.
+	
+
+GRYPHON_ANA_SEX_START = """By your invitation Anastasia enters your room clad in erotic lingerie. Her eyes widen as she sees her elven friend standing there in her underwear.
 
 Anastasia: — A-aire? What are you doing here?
 
 Aire: — I've been invited to join you, by our [Master]'s command.""",
+
+
 	GRYPHON_ANA_SEX_1 = """Anastasia: — That's...
 
 Aire: — Are you unhappy to have me here?
 
-Anastasia: — That's not it, I'm just embarrassed to have you here.
+Anastasia: — That's not it, I'm just embarrassed.
 
 Aire: — Me too, but that's what our protector wants, so I think it's not too big of a deal? Besides, it's not like I don't want to get closer to the two most important people in my life.
 
-Anastasia wasn't able to answer that and Aire led her to the bed.""",
-	GRYPHON_ANA_SEX_2 = """Aire: — So, let's give our best to please our [master] and have some joy not as friends but also as women. 
+Anastasia had no answer for that and Aire led her to the bed.""",
 
-The princess nodded as they both lowered before you. Aire stripped the last bits of her underwear and Anastasia followed closely. 
 
-Aire: — Wow, Ana, I did notice you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
+GRYPHON_ANA_SEX_2 = """Aire: — So, let's do our best to please our [master] and find some joy in the act - not just as friends but also as women. 
+
+The princess nodded as they both lowered to their knees before you. Aire stripped away the last bits of her underwear and Anastasia followed her closely. 
+
+Aire: — Wow, Ana, I noticed you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
 
 Anastasia: — W-what are you saying!? They aren't that much bigger... You don't think they are too big, right [name]?""",
 	GRYPHON_ANA_SEX_2_OPTION_1 = "They are perfect",
 	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
 	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
-	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
+	
+GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
 
-Aire: — Come on, [name] worked really hard for this moment, we should properly reward him.
+Aire: — Come on, [name] worked really hard for this moment, we should reward him.
 
-Aire positioned herself in front of Anastasia with your dick between them. Being fully erect, she gave a sign to the Princess to squeeze it between their breasts. 
+Aire positions herself in front of Anastasia, embracing her across your hips with your fully erect dick between them. Aire strokes your shaft and presses it between Anastasia’s firm breasts, pressing her own tits against the princess’s to keep it there.
 
-Aire: — Is this to your liking, [Master]?""",
+Aire: — Is this to your liking, [Master]?
+	
+You grunt in approval as the two girls obediently squeeze their breasts together around your cock.
+	
+Anastasia: — This is... This feels good...""",
+
+GRYPHON_ANA_SEX_4 = """The elf girl and the princess bob gently up and down, your penis sliding between their firm breasts. You groan in pleasure as you watch them both tending to your shaft. Aire seems more eager for this than you had expected, holding eye contact with you as she presses your hard cock tightly between her tits.
+
+Anastasia still seems ashamed, blushing deep red as she scoops her large breasts together around your dick, using them to massage your shaft as Aire bounces more vigorously up and down. The princess looks at Aire, then to you, her big blue eyes full of uncertainty and arousal.
+
+The girls’ nipples glide over and press against each other as they work your cock with their tits and you can see them growing more visibly aroused as they continue. In a few minutes they are both sheened with perspiration from their efforts and your penis slips more easily in between their slick breasts.""",
+	
+GRYPHON_ANA_SEX_5 = """	
+After some time, you can feel your orgasm beginning to build. Your hips twitch reflexively, thrusting in between the elf girl and the princess as they service you.
+
+You have to resist the urge to grab the two girls by the hair and press their chattering mouths against your cock. But your orgasm arrives like a charging bull, shooting cum into the air and all over the faces and bodies of the two women kneeling before you. """,
+
+GRYPHON_ANA_SEX_6 = """
+Anastasia looks first alarmed and then ashamed as a spray of thick semen spatters across her face and into her soft cleavage. A glob of cum lands in Aire’s eye and she closes it quickly, sperm leaking from her eyelid and running down her cheek..
+
+Aire: — Hah! By the gods, that’s a lot of cum, [Master]. Enough for two, even!
+
+Using her fingers, Aire wipes some of the cum from Anastasia’s face and holds her hand out to the princess. 
+
+Anastasia: — A-are you sure?
+
+In reply, Aire runs a finger over her own breasts, gathering some of the cum there, and then sucks the finger into her mouth to clean it. Seeing this, Anastasia hesitantly opens her mouth to lick your cum from Aire’s other hand.
+
+Aire looks back at you expectantly.
+
+Aire: — Was this everything you imagined it would be, [Master]? Or was there anything else you wanted? 
+
+She looks back at Anastasia suggestively, who blushes again. """,
+
+GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you’re only getting started.
+
+You order the two naked girls off the floor. Aire rises and takes Anastasia by the hand, leading her towards your bed. You follow close behind, admiring their pert asses. Aire lays down on her back on top of the bedcovers, spreading her slender elven legs. Anastasia looks back at you over her shoulder for a moment, as if unsure, but Aire pulls on her hand and draws the reluctant princess down until she is laying on top of the excited elf.""",
+
+
+
+GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
+
+Your hand runs over the smooth curve of Anastasia’s round ass, before slipping down between her legs. Her pussy is warm and wet with her own juices and she gasps softly in pleasure as your fingers enter her, her back arching when you stroke her clit.
+
+Your fingers move lower, probing Aire’s tight slit and finding it hot to the touch as it opens easily under the pressure of your fingertips. Aire moans with desire. You move around and mount the bed behind Anastasia
+
+Aire: — Ana, I- I’m glad I can serve you and the [Master] in this way.
+
+Anastasia: — Stop saying silly things like this...
+
+Using both hands, you press Anastasia down on top of Aire and spread her legs wider. Their pussies stacked on top of each other, you penetrate Aire first, squeezing Anastasia between you as your cock pushes firmly into the elf girl’s willing pussy. Aire cries out as you shove yourself all the way into her, stretching her tight cunt with your rock-hard penis.""",
+
+GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire’s juices, slips easily into her wet hole. The two girls stare into each other’s eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
+
+You feel Anastasia’s pussy grip your cock as she approaches orgasm and you pull out. The princess whines softly as you plunge your cock back into Aire, fucking her tight elven pussy hard as you use Anastasia’s naked body to pin her to the bed.. 
+
+Aire clings to Anastasia as you fuck her to the edge of orgasm and then withdraw. She whimpers as your meat slips out of her, pussy twitching helplessly. When you thrust into Anastasia this time she presses her ass back into you, begging urgently to be fucked.""",
+
+
+GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
+
+You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia’s pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire’s aching pussy with your cum. 
+The two girls lie in a tangled heap of slender limbs, flushed and panting for breath as you pull out of Aire. Your cum trickles from her as she lies underneath Anastasia. 
+
+Aire: — Oh, master… I never dreamed… I… thank you...
+
+Anastasia can barely speak and slumps heavily on top of Aire. Her perfect ass rises and falls as she gasps for breath, pussy hot and glistening with her own juices. You feel your cock stiffening again and you cram it into the princess’s exposed cunt.
+
+You fuck Anastasia roughly, fingers sinking into the soft flesh of her ass as you pound her. Underneath, Aire squeezes the princess’s breasts while you thrust savagely into Anastasia’s wet pussy. Anastasia cries out, caught between pain and pleasure as your cock ploughs relentlessly into her.
+
+In a few minutes you cum again, shooting your seed into Anastasia’s throbbing cunt as she is overwhelmed by a tearful orgasm. Aire cums again too, fingering her own leaking hole frantically as you fuck her beloved princess on top of her. Your cum spills from Anastasia’s pussy over Aire’s hands.
+
+Casually, you inform both girls that whenever they are ready there is work to be done.""",
+
 	
 	
 	

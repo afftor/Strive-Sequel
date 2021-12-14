@@ -230,8 +230,8 @@ var basic_lust_per_tick = 0.57
 
 var obed_mod_per_difficuty = {
 	easy = 1.0,
-	medium = 0.75,
-	hard = 0.5
+	medium = 0.5,
+	hard = 0.25
 }
 
 

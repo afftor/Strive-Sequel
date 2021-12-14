@@ -114,7 +114,7 @@ func slave_status():
 		'slave':
 			text = "[name] is your slave and must obey your orders by law."
 		'peon':
-			text = '[name] is your servant and have to follow your commands .'
+			text = '[name] is your servant and has to follow your commands .'
 		'merc':
 			text = '[name] was hired by you and costs you gold. '
 	
