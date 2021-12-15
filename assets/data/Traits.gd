@@ -112,8 +112,8 @@ var traits = {
 		effects = [],#'e_tr_hunter'],
 		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
 	},
-	hunter_new = {
-		code = 'hunter_new',
+	hunter_damage = {
+		code = 'hunter_damage',
 		name = '',
 		descript = '',
 		visible = false,

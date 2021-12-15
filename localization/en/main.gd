@@ -889,6 +889,7 @@ var TranslationDict = {
 	STATARMORPENETRATIONDESCRIPT = "Ignores value of enemy's armor. ",
 	STATMODMELEE = "Melee Dam.",
 	STATMODRANGED = "Ranged Dam.",
+	STATDAMAGE_MOD_SKILL = "Physical Damage",
 
 
 	STATFATIGUE = "Fatigue",
@@ -1273,6 +1274,12 @@ var TranslationDict = {
 	TRAITADVANCED_COMBATDESCRIPT = "Allows to learn advanced combat skills and weapons",
 	TRAITBASIC_SPELLSDESCRIPT = "Allows to learn basic combat spells and staves",
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
+	
+	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%",
+	TRAITBISHOPDESCRIPT = "Light Magic damage: +40%",
+	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
+	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%",
+	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
 	
 	TRAITHEALER1 = "Healer:Novice",
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.",
@@ -6030,7 +6037,7 @@ Realizing your seriousness she drops her head.
 — Here. But I beg you, do not come here again, I won't be doing this anymore.""",
 	AMELIA_HERBS_ELF_OPTION_2_4_2 = "Thanks, good bye.",
 	
-	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her (placeholder)
+	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her
 
 — Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
 	

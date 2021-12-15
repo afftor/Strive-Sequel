@@ -150,7 +150,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 2}],
 		statchanges = {hpmax = 15, mod_hunt = 0.5, mod_fish = 0.5},
-		traits = ['basic_combat', 'hunter_new'], #'hunter'],
+		traits = ['basic_combat', 'hunter_damage'], #'hunter'],
 		skills = [],
 		combatskills = ['huntersmark'],
 		conflict_classes = [],
