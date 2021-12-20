@@ -3,6 +3,13 @@ extends Node
 
 var effects: = {}
 
+
+func fix_durations():
+	print('fixing_durations')
+	for eff in effects.values():
+		if eff is temp_e_progress or eff is temp_e_simple or eff is temp_e_upgrade:
+			eff.fix_duration()
+
 func get_new_id():
 	var s := "eid%d"
 	var t = randi()

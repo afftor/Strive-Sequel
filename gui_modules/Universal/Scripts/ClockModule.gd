@@ -5,7 +5,7 @@ var gamepaused = false
 var gamespeed = 0
 var gametime = 0
 var previouspeed = 0
-const DEGREES_PER_HOUR = 15
+const DEGREES_PER_HOUR = 90
 onready var sky = $Sky
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
@@ -28,7 +28,8 @@ func _ready():
 	#update_food_tooltip()
 	
 	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	set_time_buttons()
 
@@ -50,33 +51,35 @@ func _process(delta):
 	update_food_tooltip()
 	
 	if input_handler.globalsettings.turn_based_time_flow == false:
-		$TimeNode/HidePanel.visible = gamepaused_nonplayer
-		if gamepaused == false:
-			for i in get_tree().get_nodes_in_group("pauseprocess"):
-				if i.visible == true:
-					previouspeed = gamespeed
-					changespeed(timebuttons[0], false)
-					gamepaused = true
-					gamepaused_nonplayer = true
-		else:
-			var allnodeshidden = true
-			for i in get_tree().get_nodes_in_group("pauseprocess"):
-				if i.visible == true:
-					allnodeshidden = false
-					break
-
-			if allnodeshidden == true && gamepaused_nonplayer == true:
-				restoreoldspeed(previouspeed)
-				gamepaused_nonplayer = false
-				gamepaused = false
-
-		if gamespeed != 0:
-			gametime += delta * gamespeed
-			rotate_sky(gametime)
-			if gametime >= variables.SecondsPerHour:
-				gametime -= variables.SecondsPerHour
-				advance_hour()
-				gui_controller.mansion.SlaveListModule.rebuild()
+		input_handler.globalsettings.turn_based_time_flow = true
+		set_time_buttons()
+#		$TimeNode/HidePanel.visible = gamepaused_nonplayer
+#		if gamepaused == false:
+#			for i in get_tree().get_nodes_in_group("pauseprocess"):
+#				if i.visible == true:
+#					previouspeed = gamespeed
+#					changespeed(timebuttons[0], false)
+#					gamepaused = true
+#					gamepaused_nonplayer = true
+#		else:
+#			var allnodeshidden = true
+#			for i in get_tree().get_nodes_in_group("pauseprocess"):
+#				if i.visible == true:
+#					allnodeshidden = false
+#					break
+#
+#			if allnodeshidden == true && gamepaused_nonplayer == true:
+#				restoreoldspeed(previouspeed)
+#				gamepaused_nonplayer = false
+#				gamepaused = false
+#
+#		if gamespeed != 0:
+#			gametime += delta * gamespeed
+#			rotate_sky(gametime)
+#			if gametime >= variables.SecondsPerHour:
+#				gametime -= variables.SecondsPerHour
+#				advance_hour()
+#				gui_controller.mansion.SlaveListModule.rebuild()
 
 
 func timeflowhotkey(hotkey):
@@ -102,7 +105,8 @@ func advance_turn():
 
 func update_labels():
 	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	rotate_sky()
 
 
@@ -128,26 +132,21 @@ func update_turns_label():
 
 
 func advance_hour():
-	ResourceScripts.game_globals.hour += 1
 	for i in ResourceScripts.game_party.characters.values():
 		i.pretick()
 	for i in ResourceScripts.game_party.characters.values():
 		i.act_prepared()
 	for i in ResourceScripts.game_party.characters.values():
 		i.tick()
-	if input_handler.globalsettings.turn_based_time_flow:
-		pass
 	
-	
-	
-	
+	ResourceScripts.game_globals.hour += 1
 	if ResourceScripts.game_globals.hour >= variables.HoursPerDay:
 		advance_day()
-		
 	
 	#update_food_tooltip()
 	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	globals.emit_signal("hour_tick")
 
 

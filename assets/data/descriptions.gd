@@ -594,16 +594,41 @@ func get_class_bonuses(newperson, classdata):
 		text += data.name + ": "
 		if value  > 0:
 			text += "+"
-		text += str(value) + "\n"
+		text += str(value)
+		if data.percent:
+			text += "%"
+		text += "\n"
+	for i in classdata.traits:
+		var trait = Traitdata.traits[i]
+		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats:
+			text += globals.TextEncoder(trait.descript) + "\n"
+			if !trait.has('bonusstats'): continue
+			for j in trait.bonusstats:
+				var data = statdata.statdata[j]
+				var value = trait.bonusstats[j]
+				if data.percent: 
+					value *= 100
+				text += data.name + ": "
+				if value  > 0:
+					text += "+"
+				text += str(value)
+				if data.percent:
+					text += "%"
+				text += "\n" 
+	if newperson != null:
+		text = newperson.translate(text)
 	return text
 
 func get_class_traits(newperson, classdata):
 	var text = ''
 	for i in classdata.traits:
 		var trait = Traitdata.traits[i]
+		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats: continue
 		if trait.name.to_upper() != trait.name:
 			text += "{color=brown|" + trait.name + "}: "
 		text += trait.descript + "\n"
+	if newperson != null:
+		text = newperson.translate(text)
 	return globals.TextEncoder(text)
 
 func get_class_traits_no_icons(newperson, classdata):
@@ -612,7 +637,10 @@ func get_class_traits_no_icons(newperson, classdata):
 		if i == "basic_spells" or i == "advanced_spells" or i == "basic_combat" or i == "advanced_combat":
 			continue
 		var trait = Traitdata.traits[i]
+		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats: continue
 		if trait.name.to_upper() != trait.name:
 			text += "{color=brown|" + trait.name + "}: "
 		text += trait.descript + "\n"
+	if newperson != null:
+		text = newperson.translate(text)
 	return globals.TextEncoder(text)

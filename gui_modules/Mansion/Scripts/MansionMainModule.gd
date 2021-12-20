@@ -643,7 +643,7 @@ func test_mode():
 #		characters_pool.move_to_state(character.id)
 
 		ResourceScripts.game_globals.date = 7
-		ResourceScripts.game_globals.hour = 8
+		ResourceScripts.game_globals.hour = 1
 
 		character.set_stat('obedience', 50)
 		character.unlock_class("apprentice")

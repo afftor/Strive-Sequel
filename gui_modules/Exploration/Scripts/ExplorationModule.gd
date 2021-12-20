@@ -215,8 +215,8 @@ func build_area_menu(area_actions):
 			action.code == 'exotic_slave_trader'
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
 			&& int(ResourceScripts.game_globals.date) % 14 != 0
-			&& ResourceScripts.game_globals.hour >= 6
-			&& ResourceScripts.game_globals.hour <= 20
+			&& ResourceScripts.game_globals.hour >= 1
+			&& ResourceScripts.game_globals.hour <= 3
 		):
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])

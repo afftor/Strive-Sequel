@@ -116,6 +116,11 @@ func custom_stats_get():
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		res['mpmax'] = tres
+	if res.has('lusttick'):
+		var tres = variables.basic_lust_per_tick
+		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
+		if bonuses.has('lusttick_mul'): tres *= bonuses.lusttick_mul
+		res['lusttick'] = tres
 	for st in ['matk', 'atk']:
 		if res.has(st):
 			var tres = res[st]
