@@ -25,7 +25,7 @@ func make_area(code):
 	ResourceScripts.game_world.areas[areadata.code] = areadata
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
-	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
+	areadata.travel_time = globals.rng.randi_range(areadata.travel_time[0], areadata.travel_time[1])#round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
 	areadata.unlocked = true
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
@@ -203,13 +203,13 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	var newquest = make_quest(array[randi()%array.size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
-	newquest.travel_time = ResourceScripts.game_world.areas[guilddatatemplate.area].travel_time + round(randf()*6)
+	newquest.travel_time = min(1, ResourceScripts.game_world.areas[guilddatatemplate.area].travel_time + round(randf()))#*6)
 	newquest.difficulty = difficulty
 	ResourceScripts.game_world.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 
 func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
-	settlement.travel_time = round(rand_range(3,8))
+	settlement.travel_time = globals.rng.randi_range(1, 2)#round(rand_range(3,8))
 	var text = ''
 	if worlddata.locationnames.has(settlement.name+"1"):
 		text = worlddata.locationnames[settlement.name+"1"][randi() % worlddata.locationnames[settlement.name + "1"].size()] + worlddata.locationnames[settlement.name+"2"][randi() % worlddata.locationnames[settlement.name + "2"].size()]
@@ -244,7 +244,7 @@ func make_location(code, area):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(ResourceScripts.game_world.locationcounter)
-	location.travel_time = round(rand_range(1,4))
+	location.travel_time = globals.rng.randi_range(1, 2)#round(rand_range(1,4))
 	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
 	location.levels = {}
@@ -445,7 +445,7 @@ func make_quest_location(code):
 	var data = worlddata.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code
-	locationdata.travel_time = round(rand_range(data.travel_time[0], data.travel_time[1]))
+	locationdata.travel_time = min(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))
 	var area = ResourceScripts.game_world.areas[data.area]
 	area.questlocations[locationdata.id] = locationdata
 	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'}

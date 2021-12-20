@@ -92,6 +92,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_worker'],
+		show_in_parent_stats = true,
 		bonusstats = {mod_collect = 0.5}
 	},
 	foreman = {
@@ -101,6 +102,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_foreman'],
+		show_in_parent_stats = true,
 		bonusstats = {mod_collect = 0.33}
 	},
 	hunter= {#obsolete, not remove
@@ -118,6 +120,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_hunter1'],
 		bonusstats = {}
 	},
@@ -127,6 +130,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_bers1', 'e_tr_bers2'],
 		bonusstats = {}
 	},
@@ -136,6 +140,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_druid'],
 		bonusstats = {}
 	},
@@ -145,6 +150,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_sniper'],
 		bonusstats = {}
 	},
@@ -154,6 +160,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_bishop'],
 		bonusstats = {}
 	},
@@ -164,6 +171,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_smith'],
+		show_in_parent_stats = true,
 		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
 	},
 	engineer = {
@@ -172,6 +180,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = [],#'e_tr_engi'],
 		bonusstats = {mod_build = 1.0}
 	},
@@ -181,6 +190,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = [],#'e_tr_chef'],
 		bonusstats = {mod_cook = 1.0}
 	},
@@ -198,6 +208,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = [#'e_tr_alchemist',
 			'e_tr_potion'],
 		bonusstats = {mod_alchemy = 1.0}
@@ -208,6 +219,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_healer'],
 		bonusstats = {}
 	},
@@ -217,6 +229,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = ['e_tr_healer'], #static effects and triggers are infinite stackable - so the same as in healer
 		bonusstats = {}
 	},
@@ -250,6 +263,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = [],#'e_tr_cattle'],
 		bonusstats = {mod_farm = 0.5}
 	},
@@ -267,6 +281,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
+		show_in_parent_stats = true,
 		effects = [],#'e_tr_harlot'],
 		bonusstats = {mod_pros = 0.5}
 	},
@@ -277,6 +292,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
+		show_in_parent_stats = true,
 		bonusstats = {mod_pros = 1.5}
 	},
 	succubus = {#+100% exp from prostitution
@@ -294,6 +310,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_pet'],
+		show_in_parent_stats = true,
 		bonusstats = {mod_pros = 0.25} 
 	}, #not used
 	sextoy = {#+50% gold from prostitution
@@ -303,6 +320,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_harlot'],
+		show_in_parent_stats = true,
 		bonusstats = {mod_pros = 0.5}
 	},
 	renown = {

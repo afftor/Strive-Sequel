@@ -485,6 +485,7 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+#	ResourceScripts.game_globals.hour = 1
 
 	#current approach
 	# if input_handler.CurrentScene != null:
@@ -498,6 +499,15 @@ func LoadGame(filename):
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
 	input_handler.SystemMessage("Game Loaded")
+
+
+func compare_version(v1:String, v2:String):
+	var vp1 = v1.split('.')
+	var vp2 = v2.split('.')
+	for i in range(vp1.size()):
+		if i >= vp2.size(): return true
+		if vp1[i].naturalnocasecmp_to(vp2[i]) != 0: return vp1[i].naturalnocasecmp_to(vp2[i]) > 0
+	return false
 
 
 func ImportGame(filename):
@@ -533,6 +543,9 @@ func ImportGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
+		effects_pool.fix_durations()
+	
 	ResourceScripts.game_party.fix_serialization_postload()
 
 	if is_instance_valid(gui_controller.mansion):
@@ -755,26 +768,6 @@ func spend_resources(temprecipe):
 			ResourceScripts.game_res.materials[temprecipe.partdict[i]] -= item.parts[i]
 	temprecipe.resources_taken = true
 
-func make_item(temprecipe):
-	var recipe = Items.recipes[temprecipe.code]
-	temprecipe.resources_taken = false
-	if recipe.resultitemtype == 'material':
-		ResourceScripts.game_res.materials[recipe.resultitem] += recipe.resultamount
-	else:
-		var item = Items.itemlist[recipe.resultitem]
-		text_log_add("crafting", "Item created: " + item.name)
-		if item.type == 'usable':
-			AddItemToInventory(CreateUsableItem(item.code))
-		elif item.type == 'gear':
-			if recipe.crafttype == 'modular':
-				AddItemToInventory(CreateGearItem(item.code, temprecipe.partdict))
-			else:
-				AddItemToInventory(CreateGearItem(item.code, {}))
-
-	if temprecipe.repeats > 0:
-		temprecipe.repeats -= 1
-		if temprecipe.repeats == 0:
-			ResourceScripts.game_res.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(ResourceScripts.game_globals.date) + ":" + str(round(ResourceScripts.game_globals.hour))})
@@ -783,7 +776,7 @@ func text_log_add(label, text):
 		newfield.show()
 		newfield.get_node("label").bbcode_text = label
 		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + str(round(ResourceScripts.game_globals.hour)) + ":00[/right]"
+		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + variables.timeword[ResourceScripts.game_globals.hour] + "[/right]"
 		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
 		yield(get_tree(), 'idle_frame')
 		var textfield = newfield.get_node('text')
@@ -1145,8 +1138,8 @@ func common_effects(effects):
 						'add_to_hour':
 							var date = ResourceScripts.game_globals.date
 							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
-							if hour > 24: hour = hour-24
-							if ResourceScripts.game_globals.hour == 23:
+							if hour > 4: hour = hour-4
+							if ResourceScripts.game_globals.hour == 3:
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq

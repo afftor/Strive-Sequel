@@ -90,6 +90,7 @@ __meta__ = {
 }
 
 [node name="turn_based_time_flow" type="CheckBox" parent="TabContainer/Gameplay"]
+visible = false
 margin_left = 40.0
 margin_top = 298.0
 margin_right = 532.0

@@ -124,8 +124,17 @@ func get_duration():
 	var res = {}
 	res.count = remains
 	res.event = null
-	if tick_event.has(variables.TR_TICK): res.event = "hours"
+	if tick_event.has(variables.TR_TICK): 
+		res.event = "hours"#2fix
+		#res.count *= 6
 	if tick_event.has(variables.TR_TURN_F) or tick_event.has(variables.TR_TURN_S) or tick_event.has(variables.TR_TURN_GET): res.event = "turns"
 	if tick_event.has(variables.TR_DEF) or tick_event.has(variables.TR_POST_TARG) or tick_event.has(variables.TR_CAST_TARGET): res.event = "hits" 
 	if tick_event.has(variables.TR_CAST) or tick_event.has(variables.TR_HIT) or tick_event.has(variables.TR_POSTDAMAGE): res.event = "attacks" 
 	return res
+
+func fix_duration():
+	if !tick_event.has(variables.TR_TICK): return
+	if !template.has('duration'): return
+	if remains < 0: return
+	remains /= 6
+	template.duration /= 6

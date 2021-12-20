@@ -74,7 +74,7 @@ func update_button(newbutton):
 		newbutton.get_node("HBoxContainer/explabel").set("custom_colors/font_color", Color(1,1,1))
 	if !person.check_location('mansion'):
 		if person.check_location('travel'):
-			newbutton.get_node('HBoxContainer/job').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
+			newbutton.get_node('HBoxContainer/job').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick()) * 6) + " hours. " 
 		else:
 			newbutton.get_node('HBoxContainer/job').text = 'Positioned: ' + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[person.travel.location].area].name
 	

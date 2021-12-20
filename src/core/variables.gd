@@ -1,6 +1,18 @@
 extends Node
 #Game Settings
-var HoursPerDay = 24
+var HoursPerDay = 4
+#var timeword = {
+#	1:"MORNING",
+#	2:"MIDDAY",
+#	3:"EVENING",
+#	0:"NIGHT",
+#}
+var timeword = {
+	1:"6:00",
+	2:"12:00",
+	3:"18:00",
+	0:"00:00",
+}
 var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
@@ -221,12 +233,12 @@ var stat_description = {
 
 var basic_max_hp = 100
 var basic_max_mp = 30
-var basic_hp_regen = 1
-var basic_mp_regen = 0.2
+var basic_hp_regen = 6
+var basic_mp_regen = 1.2
 var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
-var basic_lust_per_tick = 0.57
+var basic_lust_per_tick = 0.57 * 6
 
 var obed_mod_per_difficuty = {
 	easy = 1.0,

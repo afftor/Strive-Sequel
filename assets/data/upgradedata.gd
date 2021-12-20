@@ -12,43 +12,43 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 50,
+				taskprogress = 50 / 6,
 				cost = {wood = 50, fish = 100},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 100, fish = 250},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 150,
+				taskprogress = 150 / 6,
 				cost = {wood = 200, stone = 100, fish = 350},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {woodmagic = 100, stone = 100, fish = 500},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 100, stone = 100, fish = 500},
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 100, stone = 100, fish = 500},
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 350,
+				taskprogress = 350 / 6,
 				cost = {woodiron = 100, stone = 100, fish = 500},
 			}
 		}
@@ -64,49 +64,49 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 50,
+				taskprogress = 50 / 6,
 				cost = {wood = 50, grain = 20},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 100, grain = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 150,
+				taskprogress = 150 / 6,
 				cost = {wood = 200, stone = 100, grain = 250},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {woodmagic = 100, stone = 100, grain = 350},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 100, stone = 100, grain = 400},
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 350,
+				taskprogress = 350 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			},
 			8:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			}
 		}
@@ -122,43 +122,43 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 50,
+				taskprogress = 50 / 6,
 				cost = {wood = 50, vegetables = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 100, vegetables = 150},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 150,
+				taskprogress = 150 / 6,
 				cost = {wood = 200, stone = 100, vegetables = 250},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {woodmagic = 100, stone = 100, vegetables = 350},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 100, stone = 100, vegetables = 500},
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 100, stone = 100, vegetables = 500},
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 350,
+				taskprogress = 350 / 6,
 				cost = {woodiron = 100, stone = 100, vegetables = 500},
 			},
 		}
@@ -175,49 +175,49 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 50,
+				taskprogress = 50 / 6,
 				cost = {wood = 50, grain = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 100, grain = 150},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 150,
+				taskprogress = 150 / 6,
 				cost = {wood = 200, stone = 100, grain = 250},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {woodmagic = 100, stone = 100, grain = 350},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 100, stone = 100, grain = 500},
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 350,
+				taskprogress = 350 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			},
 			8:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {woodiron = 100, stone = 100, grain = 500},
 			}
 		}
@@ -233,19 +233,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 100, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {wood = 200, stone = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {wood = 400, stone = 150},
 			}
 		}
@@ -262,19 +262,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 100, woodmagic = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {wood = 200, woodmagic = 50},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {wood = 400, woodmagic = 100},
 			}
 		}
@@ -290,13 +290,13 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {wood = 200, woodiron = 100},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {wood = 400, woodiron = 200},
 			},
 		}
@@ -312,19 +312,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 100, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {wood = 200, stone = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {wood = 400, stone = 200},
 			}
 		}
@@ -340,13 +340,13 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {stone = 500, mithril = 25, obsidian = 10},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {stone = 500, mithril = 50, obsidian = 25},
 			},
 		}
@@ -362,19 +362,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 50, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {wood = 100, woodiron = 50, stone = 200},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {wood = 250, woodiron = 100, stone = 250},
 			},
 		}
@@ -390,19 +390,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 50, stone = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {wood = 100, clothsilk = 50, stone = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {wood = 250, clothsilk = 100, stone = 250},
 			},
 		}
@@ -418,19 +418,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {stone = 100, iron = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {stone = 250, steel = 50},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM2"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {stone = 500, iron = 250},
 			},
 		}
@@ -446,13 +446,13 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {mithril = 50, obsidian = 50, clothmagic = 100},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADERESOURCE_MAXIMUM1"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {mithril = 100, obsidian = 50, clothmagic = 100},
 			},
 		}
@@ -469,19 +469,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETAILORBONUS1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 30, stone = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETAILORBONUS2"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 50, stone = 50, clothsilk = 25},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETAILORBONUS3"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {woodiron = 50, mithril = 25, clothmagic = 25},
 			}
 		}
@@ -498,19 +498,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEBONUS1"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 10, stone = 25, iron = 10},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEBONUS2"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {iron = 50, stone = 100, wood = 100},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEBONUS3"),
-				taskprogress = 750,
+				taskprogress = 750 / 6,
 				cost = {mithril = 50, stone = 200, obsidian = 10, woodiron = 100},
 			},
 		}
@@ -527,19 +527,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {wood = 25, stone = 50, iron = 30},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS2"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS3"),
-				taskprogress = 1000,
+				taskprogress = 1000 / 6,
 				cost = {leathermythic = 20, woodancient = 10, boneancient = 30},
 			}
 		}
@@ -556,13 +556,13 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEWORKBONUS1"),
-				taskprogress = 75,
+				taskprogress = 75 / 6,
 				cost = {woodiron = 100, leatherthick = 100, steel = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEWORKBONUS2"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
 			},
 		}
@@ -579,19 +579,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS1"),
-				taskprogress = 75,
+				taskprogress = 75 / 6,
 				cost = {wood = 50, leather = 50, iron = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS2"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodiron = 50, leatherthick = 50, steel = 25},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS3"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {mithril = 25, leathermythic = 25, clothmagic = 15},
 			},
 		}
@@ -610,31 +610,31 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 50, cloth = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 100, stone = 50, cloth = 25},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS3"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 50, stone = 100, clothsilk = 25},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS4"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS5"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {woodiron = 100, clothsilk = 50, steel = 50},
 			},
 		}
@@ -651,43 +651,43 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 50, cloth = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 100, stone = 50, cloth = 25},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS3"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 50, stone = 100, clothsilk = 25},
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS4"),
-				taskprogress = 400,
+				taskprogress = 400 / 6,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS5"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS6"),
-				taskprogress = 600,
+				taskprogress = 600 / 6,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS7"),
-				taskprogress = 700,
+				taskprogress = 700 / 6,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
 			},
 		}
@@ -705,19 +705,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 30, cloth = 20},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {wood = 50, clothsilk = 15},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS3"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {wood = 100, clothsilk = 35},
 			}
 		}
@@ -735,19 +735,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS1"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {wood = 50, leather = 25},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS2"),
-				taskprogress = 200,
+				taskprogress = 200 / 6,
 				cost = {woodiron = 50, leatherthick = 50},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS3"),
-				taskprogress = 300,
+				taskprogress = 300 / 6,
 				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
 			}
 		}
@@ -765,7 +765,7 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETORTUREROOMBONUS"),
-				taskprogress = 50,
+				taskprogress = 50 / 6,
 				cost = {wood = 25, leather = 20, iron = 10},
 			},
 		}
@@ -781,7 +781,7 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETATTOOBONUS"),
-				taskprogress = 100,
+				taskprogress = 100 / 6,
 				cost = {woodiron = 25, woodmagic = 25, leatherthick = 20},
 			},
 		}
@@ -798,19 +798,19 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEEXOTICBONUS"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 10, leatherthick = 10, steel = 10},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEEXOTICBONUS"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {woodiron = 10, leathermythic = 10, mithril = 10},
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEEXOTICBONUS"),
-				taskprogress = 750,
+				taskprogress = 750 / 6,
 				cost = {woodancient = 10, adamantine = 10, leatherdragon = 10},
 			},
 		}
@@ -827,13 +827,13 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS1"),
-				taskprogress = 250,
+				taskprogress = 250 / 6,
 				cost = {woodmagic = 100, leatherthick = 100, steel = 100},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS2"),
-				taskprogress = 500,
+				taskprogress = 500 / 6,
 				cost = {woodiron = 100, leathermythic = 100, mithril = 100},
 			},
 		}
@@ -850,7 +850,7 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				bonusdescript = tr(""),
-				taskprogress = 120,
+				taskprogress = 120 / 6,
 				cost = {wood = 50, leather = 20, cloth = 20},
 			},
 		}

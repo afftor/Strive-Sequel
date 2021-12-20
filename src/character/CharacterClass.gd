@@ -1018,7 +1018,7 @@ func tick():
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
 	
 	
-	if ResourceScripts.game_globals.hour == 12:
+	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
 	
 	statlist.tick()
@@ -1042,7 +1042,7 @@ func rest_tick():
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
 	if ResourceScripts.game_res.upgrades.resting > 0 && check_location('mansion', true):
-		add_stat('obedience', 1)
+		add_stat('obedience', 6)
 
 
 func translate(text):

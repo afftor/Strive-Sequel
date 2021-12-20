@@ -258,7 +258,7 @@ var materiallist = {
 		descript = '',
 		icon = load('res://assets/images/iconsitems/item_meat.png'),
 		price = 3,
-		progress_per_item = 1.2,
+		progress_per_item = 1.2 / 6,
 		progress_formula = 'hunt_meat',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -272,7 +272,7 @@ var materiallist = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_fish.png"),
 		price = 3,
-		progress_per_item = 1.1,
+		progress_per_item = 1.1 / 6,
 		progress_formula = 'fishing',
 		tool_type = 'rod',
 		workstat = 'wits',
@@ -286,7 +286,7 @@ var materiallist = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"),
 		price = 2,
-		progress_per_item = 1.2,
+		progress_per_item = 1.2 / 6,
 		progress_formula = 'farming_wheat',
 		tool_type = 'sickle',
 		workstat = 'physics',
@@ -300,7 +300,7 @@ var materiallist = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_vege.png"),
 		price = 2,
-		progress_per_item = 1.4,
+		progress_per_item = 1.4 / 6,
 		progress_formula = 'farming_veges',
 		tool_type = 'sickle',
 		workstat = 'physics',
@@ -397,7 +397,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_stone.png"),
 		price = 5,
-		progress_per_item = 3,
+		progress_per_item = 3.0 / 6,
 		progress_formula = 'mining_stone',
 		tool_type = 'pickaxe',
 		workstat = 'physics',
@@ -415,7 +415,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_obsidian.png"),
 		price = 20,
-		progress_per_item = 15,
+		progress_per_item = 15.0 / 6,
 		progress_formula = 'mining_stone',
 		tool_type = 'pickaxe',
 		workstat = 'physics',
@@ -433,7 +433,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/Wood.png"),
 		price = 10,
-		progress_per_item = 4.5,
+		progress_per_item = 4.5 / 6,
 		progress_formula = 'woodcutting_lumber',
 		tool_type = 'axe',
 		workstat = 'physics',
@@ -451,7 +451,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/ElvenWood.png"),
 		price = 25,
-		progress_per_item = 15,
+		progress_per_item = 15.0 / 6,
 		progress_formula = 'woodmagiccutting_lumber',
 		tool_type = 'axe',
 		workstat = 'physics',
@@ -469,7 +469,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_woodiron.png"),
 		price = 40,
-		progress_per_item = 18,
+		progress_per_item = 18 / 6,
 		progress_formula = 'woodironcutting_lumber',
 		tool_type = 'axe',
 		workstat = 'physics',
@@ -487,7 +487,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_woodancient.png"),
 		price = 100,
-		progress_per_item = 50,
+		progress_per_item = 50.0 / 6,
 		progress_formula = 'woodironcutting_lumber',
 		tool_type = 'axe',
 		workstat = 'physics',
@@ -505,7 +505,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/Leather.png"),
 		price = 12,
-		progress_per_item = 5,
+		progress_per_item = 5.0 / 6,
 		progress_formula = 'hunt_leather',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -523,7 +523,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_leatherthick.png"),
 		price = 40,
-		progress_per_item = 20,
+		progress_per_item = 20.0 / 6,
 		progress_formula = 'hunt_leather_hard',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -541,7 +541,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
 		price = 75,
-		progress_per_item = 35,
+		progress_per_item = 35.0 / 6,
 		progress_formula = 'hunt_leather_hard',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -573,7 +573,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/Bone.png"),
 		price = 7,
-		progress_per_item = 3,
+		progress_per_item = 3.0 / 6,
 		progress_formula = 'hunt_leather',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -591,7 +591,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_boneancient.png"),
 		price = 50,
-		progress_per_item = 20,
+		progress_per_item = 20.0 / 6,
 		progress_formula = 'hunt_leather',
 		tool_type = 'hunt_knife',
 		workstat = 'physics',
@@ -623,7 +623,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/Cloth.png"),
 		price = 10,
-		progress_per_item = 4,
+		progress_per_item = 4.0 / 6,
 		progress_formula = 'farming_cloth',
 		tool_type = 'sickle',
 		workstat = 'physics',
@@ -641,7 +641,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_clothsilk.png"),
 		price = 20,
-		progress_per_item = 15,
+		progress_per_item = 15.0 / 6,
 		progress_formula = 'farming_cloth',
 		workstat = 'physics',
 		workmod = 'mod_collect',
@@ -684,7 +684,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/GoblinMetal.png"),
 		price = 10,
-		progress_per_item = 6,
+		progress_per_item = 6 / 6,
 		progress_formula = 'mining_iron',
 		tool_type = 'pickaxe',
 		workstat = 'physics',
@@ -715,7 +715,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_mithril.png"),
 		price = 75,
-		progress_per_item = 35,
+		progress_per_item = 35.0 / 6,
 		progress_formula = 'mining_mithril',
 		tool_type = 'pickaxe',
 		workstat = 'physics',
@@ -733,7 +733,7 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_adamantine.png"),
 		price = 100,
-		progress_per_item = 75,
+		progress_per_item = 75.0 / 6,
 		progress_formula = 'mining_mithril',
 		tool_type = 'pickaxe',
 		workstat = 'physics',
@@ -2574,7 +2574,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material',
 		resultitem = 'bread',
-		workunits = 3,
+		workunits = 3.0 / 6,
 		worktype = 'cooking'
 	},
 	meatsoup = {
@@ -2586,7 +2586,7 @@ var recipes = {
 		resultamount = 3,
 		resultitemtype = 'material',
 		resultitem = 'meatsoup',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'cooking'
 	},
 
@@ -2600,7 +2600,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'divine_symbol',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'smith',
 		unique = true
 	},
@@ -2614,7 +2614,7 @@ var recipes = {
 		resultamount = 3,
 		resultitemtype = 'material',
 		resultitem = 'fishcakes',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'cooking'
 	},
 	#resources
@@ -2627,7 +2627,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'steel',
-		workunits = 2,
+		workunits = 2.0 / 6,
 		worktype = 'smith'
 	},
 	ancientwood = {
@@ -2639,7 +2639,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'woodancient',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'alchemy'
 	},
 	adamantine = {
@@ -2651,7 +2651,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'adamantine',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'alchemy'
 	},
 	clothmagic = {
@@ -2663,7 +2663,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'clothmagic',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'tailor'
 	},
 	clothethereal = {
@@ -2675,7 +2675,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'clothethereal',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'tailor'
 	},
 	rope = {
@@ -2687,7 +2687,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'rope',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'tailor'
 	},
 	#smith
@@ -2700,7 +2700,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material',
 		resultitem = 'trap',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'smith'
 	},
 	unstable_concoction = {
@@ -2712,7 +2712,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material',
 		resultitem = 'unstable_concoction',
-		workunits = 2,
+		workunits = 2.0 / 6,
 		worktype = 'alchemy'
 	},
 	aphrodisiac = {
@@ -2724,7 +2724,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'aphrodisiac',
-		workunits = 12,
+		workunits = 12 / 6,
 		worktype = 'alchemy'
 	},
 	alcohol = {
@@ -2736,7 +2736,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'alcohol',
-		workunits = 6,
+		workunits = 6 / 6,
 		worktype = 'cooking'
 	},
 	beer = {
@@ -2748,7 +2748,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'beer',
-		workunits = 3,
+		workunits = 3.0 / 6,
 		worktype = 'cooking'
 	},
 	bandage = {
@@ -2760,7 +2760,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'bandage',
-		workunits = 3,
+		workunits = 3.0 / 6,
 		worktype = 'tailor'
 	},
 	lifegem = {
@@ -2772,7 +2772,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'lifegem',
-		workunits = 2,
+		workunits = 2.0 / 6,
 		worktype = 'alchemy'
 	},
 	energygem = {
@@ -2784,7 +2784,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'energygem',
-		workunits = 5,
+		workunits = 5.0 / 6,
 		worktype = 'alchemy'
 	},
 	revitalizer = {
@@ -2796,7 +2796,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'item',
 		resultitem = 'revitalizer',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'alchemy'
 	},
 	tamedrug = {
@@ -2808,7 +2808,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'tamedrug',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'alchemy'
 	},
 	ragedrug = {
@@ -2820,7 +2820,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'ragedrug',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'alchemy'
 	},
 	sexdrug = {
@@ -2832,7 +2832,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'sexdrug',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'alchemy'
 	},
 	minorus_pot = {
@@ -2844,7 +2844,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'minorus_potion',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'alchemy'
 	},
 	majorus_pot = {
@@ -2856,7 +2856,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'majorus_potion',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'alchemy'
 	},
 	fishingtools = {
@@ -2868,7 +2868,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'fishingtools',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'tailor'
 	},
 	leather_collar = {
@@ -2880,7 +2880,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'leather_collar',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'tailor'
 	},
 	bell_collar = {
@@ -2892,7 +2892,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'bell_collar',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'tailor'
 	},
 	ribbon = {
@@ -2904,7 +2904,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'ribbon',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'tailor'
 	},
 	elegant_choker = {
@@ -2916,7 +2916,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'elegant_choker',
-		workunits = 30,
+		workunits = 30 / 6,
 		worktype = 'tailor'
 	},
 	steel_collar = {
@@ -2928,7 +2928,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'steel_collar',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'smith'
 	},
 	shackles = {
@@ -2940,7 +2940,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'shackles',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'smith'
 	},
 	animal_ears = {
@@ -2952,7 +2952,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'animal_ears',
-		workunits = 8,
+		workunits = 8.0 / 6,
 		worktype = 'tailor'
 	},
 	tail_plug = {
@@ -2964,7 +2964,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'tail_plug',
-		workunits = 7,
+		workunits = 7.0 / 6,
 		worktype = 'tailor'
 	},
 	animal_gloves = {
@@ -2976,7 +2976,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'animal_gloves',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'tailor'
 	},
 	petsuit = {
@@ -2988,7 +2988,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'pet_suit',
-		workunits = 1,
+		workunits = 1.0 / 6,
 		worktype = 'tailor'
 	},
 	chastity_belt = {
@@ -3000,7 +3000,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chastity_belt',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'tailor'
 	},
 	stimulative_underwear = {
@@ -3012,7 +3012,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'stimulative_underwear',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'tailor'
 	},
 	strapon = {
@@ -3024,7 +3024,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'strapon',
-		workunits = 5,
+		workunits = 5.0 / 6,
 		worktype = 'tailor'
 	},
 	handcuffs = {
@@ -3036,7 +3036,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'handcuffs',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'tailor'
 	},
 	anal_beads = {
@@ -3048,7 +3048,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'anal_beads',
-		workunits = 5,
+		workunits = 5.0 / 6,
 		worktype = 'tailor'
 	},
 	anal_plug = {
@@ -3060,7 +3060,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'anal_plug',
-		workunits = 8,
+		workunits = 8.0 / 6,
 		worktype = 'tailor'
 	},
 	axe = {
@@ -3072,7 +3072,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'axe',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'smith'
 	},
 	pickaxe = {
@@ -3084,7 +3084,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'pickaxe',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'smith'
 	},
 	sickle = {
@@ -3096,7 +3096,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'sickle',
-		workunits = 12,
+		workunits = 12 / 6,
 		worktype = 'smith'
 	},
 	hammer = {
@@ -3108,7 +3108,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'hammer',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'smith'
 	},
 	hunt_knife = {
@@ -3120,7 +3120,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'hunt_knife',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'smith'
 	},
 	dagger = {
@@ -3132,7 +3132,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'dagger',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'smith'
 	},
 	sword = {
@@ -3144,7 +3144,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'sword',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'smith'
 	},
 	club = {
@@ -3156,7 +3156,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'club',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'smith'
 	},
 	spear = {
@@ -3168,7 +3168,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'spear',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'smith'
 	},
 	bow = {
@@ -3180,7 +3180,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'bow',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'tailor'
 	},
 	staff = {
@@ -3192,7 +3192,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'staff',
-		workunits = 50,
+		workunits = 50.0 / 6,
 		worktype = 'alchemy'
 	},
 	swordadv = {
@@ -3204,7 +3204,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'swordadv',
-		workunits = 150,
+		workunits = 150.0 / 6,
 		worktype = 'smith'
 	},
 	bowadv = {
@@ -3216,7 +3216,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'bowadv',
-		workunits = 150,
+		workunits = 150.0 / 6,
 		worktype = 'smith'
 	},
 	spearadv = {
@@ -3228,7 +3228,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'spearadv',
-		workunits = 150,
+		workunits = 150.0 / 6,
 		worktype = 'smith'
 	},
 	staffadv = {
@@ -3240,7 +3240,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'staffadv',
-		workunits = 150,
+		workunits = 150.0 / 6,
 		worktype = 'alchemy'
 	},
 	chest_base_cloth = {
@@ -3252,7 +3252,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_base_cloth',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'tailor'
 	},
 	chest_base_leather = {
@@ -3264,7 +3264,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_base_leather',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'tailor'
 	},
 	chest_base_metal = {
@@ -3276,7 +3276,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_base_metal',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'smith'
 	},
 
@@ -3289,7 +3289,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_adv_metal',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'smith'
 	},
 	chest_adv_leather = {
@@ -3301,7 +3301,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_adv_leather',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'tailor'
 	},
 	chest_adv_cloth = {
@@ -3313,7 +3313,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'chest_adv_cloth',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'tailor'
 	},
 
@@ -3326,7 +3326,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_base_cloth',
-		workunits = 15,
+		workunits = 15.0 / 6,
 		worktype = 'tailor'
 	},
 	legs_base_leather = {
@@ -3338,7 +3338,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_base_leather',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'tailor'
 	},
 	legs_base_metal = {
@@ -3350,7 +3350,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_base_metal',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'smith'
 	},
 
@@ -3363,7 +3363,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_adv_metal',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'smith'
 	},
 	legs_adv_leather = {
@@ -3375,7 +3375,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_adv_leather',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'tailor'
 	},
 	legs_adv_cloth = {
@@ -3387,7 +3387,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'legs_adv_cloth',
-		workunits = 100,
+		workunits = 100.0 / 6,
 		worktype = 'tailor'
 	},
 
@@ -3400,7 +3400,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'maid_dress',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'tailor'
 	},
 	maid_headband = {
@@ -3412,7 +3412,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'maid_headband',
-		workunits = 10,
+		workunits = 10.0 / 6,
 		worktype = 'tailor'
 	},
 	lacy_underwear = {
@@ -3424,7 +3424,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'lacy_underwear',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'tailor'
 	},
 	seethrough_underwear = {
@@ -3436,7 +3436,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'seethrough_underwear',
-		workunits = 30,
+		workunits = 30.0 / 6,
 		worktype = 'tailor'
 	},
 	worker_outfit = {
@@ -3448,7 +3448,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'worker_outfit',
-		workunits = 20,
+		workunits = 20.0 / 6,
 		worktype = 'tailor'
 	},
 	craftsman_suit = {
@@ -3460,7 +3460,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'craftsman_suit',
-		workunits = 60,
+		workunits = 60 / 6,
 		worktype = 'tailor'
 	},
 	latex_suit = {
@@ -3472,7 +3472,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'latex_suit',
-		workunits = 75,
+		workunits = 75.0 / 6,
 		worktype = 'tailor'
 	},
 	gauntlets = {
@@ -3484,7 +3484,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'gauntlets',
-		workunits = 65,
+		workunits = 65.0 / 6,
 		worktype = 'smith'
 		
 	},
@@ -3497,7 +3497,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'worker_gloves',
-		workunits = 65,
+		workunits = 65.0 / 6,
 		worktype = 'tailor'
 	},
 
@@ -3510,7 +3510,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_branding',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 	ink_makeup = {
@@ -3522,7 +3522,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_makeup',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 	ink_hp = {
@@ -3534,7 +3534,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_hp',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 	ink_mp = {
@@ -3546,7 +3546,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_mp',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 	ink_lust = {
@@ -3558,7 +3558,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_lust',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 	ink_tribal = {
@@ -3570,7 +3570,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'ink_tribal',
-		workunits = 25,
+		workunits = 25.0 / 6,
 		worktype = 'alchemy'
 	},
 }

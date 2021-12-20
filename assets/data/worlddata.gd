@@ -79,7 +79,7 @@ var lands = {
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
-		travel_time = [6,6],
+		travel_time = [1,1],#[6,6],
 		disposition = 25,
 		start_settlements_number = {settlement_forest1 = [1,1],settlement_forest2 = [1,1]},
 		locations = {},
@@ -119,7 +119,7 @@ var lands = {
 		lead_race = 'Dwarf',
 		secondary_races = [],
 		policies = [],
-		travel_time = [10,10],
+		travel_time = [2,2],#[10,10],
 		disposition = 15,
 		start_settlements_number = {settlement_mountains1 = [1,1],settlement_mountains2 = [1,1]},
 		starting_locations = ['dungeon_undead_crypt'],
@@ -136,7 +136,7 @@ var lands = {
 		lead_race = 'Orc',
 		secondary_races = ['Goblin','Centaur'],
 		policies = [],
-		travel_time = [15,36],
+		travel_time = [3,6],#[15,36],
 		disposition = 15,
 		start_settlements_number = {},
 		starting_locations = [],
@@ -153,7 +153,7 @@ var lands = {
 		lead_race = 'Nereid',
 		secondary_races = ['Lamia','Scylla'],
 		policies = [],
-		travel_time = [15,36],
+		travel_time = [3,6],#[15,36],
 		disposition = 15,
 		start_settlements_number = {},
 		starting_locations = [],
@@ -1206,7 +1206,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
-		travel_time = [2,2],
+		travel_time = [1,1],#[2,2],
 		options = [
 			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]}
 		],
@@ -1225,7 +1225,7 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		travel_time = [3,3],
+		travel_time = [1,1], #[3,3],
 		events = [],
 		options = [
 			{text = 'Search for Xari', reqs = [
@@ -1253,7 +1253,7 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		travel_time = [2,2],
+		travel_time = [1,1],#[2,2],
 		events = [],
 		options = [
 			{text = 'Search for Fred', reqs = [
@@ -1400,7 +1400,7 @@ var dungeons = {
 		quest = true,
 
 		area = 'plains',
-		travel_time = [4,6],
+		travel_time = [1,1],#[4,6],
 
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
@@ -1433,7 +1433,7 @@ var dungeons = {
 		quest = true,
 
 		area = 'plains',
-		travel_time = [4,6],
+		travel_time = [1,1],#[4,6],
 		scripteventdata = [
 			{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
 			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 3, operant = 'gte'}]},
@@ -1470,7 +1470,7 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]}
 			],
 		area = 'plains',
-		travel_time = [4,6],
+		travel_time = [1,1],#[4,6],
 		scripteventdata = []
 	},
 	quest_gryphon_forest_location = {# trigger = dungeon_complete
@@ -1495,7 +1495,7 @@ var dungeons = {
 		events = [],
 		quest = true,
 		area = 'plains',
-		travel_time = [4,6],
+		travel_time = [1,1], #[4,6],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
 	},
@@ -1521,7 +1521,7 @@ var dungeons = {
 		events = [],
 		quest = true,
 		area = 'plains',
-		travel_time = [4,6],
+		travel_time = [1,1], #[4,6],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_cave_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}]}]
 	},
 	dungeon_bandit_fort = {
@@ -1544,7 +1544,7 @@ var dungeons = {
 		purchase_price = 200,
 		affiliation = 'local',
 		events = [],
-		travel_time = [4,6],
+		travel_time = [1,1],# [4,6],
 	},
 	dungeon_undead_crypt = {
 		code = 'dungeon_undead_crypt',

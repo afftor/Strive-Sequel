@@ -9,7 +9,7 @@ var difficulty = 'medium'
 
 #dynamic part
 var date = 1
-var hour = 6
+var hour = 1
 
 var daily_sex_left = 1
 var daily_dates_left = 1
