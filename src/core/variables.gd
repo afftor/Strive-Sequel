@@ -5,12 +5,14 @@ var HoursPerDay = 4
 #	1:"MORNING",
 #	2:"MIDDAY",
 #	3:"EVENING",
+#	4:"NIGHT",
 #	0:"NIGHT",
 #}
 var timeword = {
 	1:"6:00",
 	2:"12:00",
 	3:"18:00",
+	4:"00:00",
 	0:"00:00",
 }
 var SecondsPerHour = 3
@@ -289,7 +291,7 @@ var new_stat_bonuses_syntax = false
 
 
 var pregenabled = true
-var pregduration = 720
+var pregduration = 120
 
 var slave_classes_per_difficulty = {
 	0 : [0, 2],
