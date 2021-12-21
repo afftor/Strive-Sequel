@@ -140,7 +140,7 @@ func advance_hour():
 		i.tick()
 	
 	ResourceScripts.game_globals.hour += 1
-	if ResourceScripts.game_globals.hour >= variables.HoursPerDay:
+	if ResourceScripts.game_globals.hour > variables.HoursPerDay:
 		advance_day()
 	
 	#update_food_tooltip()
@@ -152,7 +152,7 @@ func advance_hour():
 
 func advance_day():
 	ResourceScripts.game_party.update_global_cooldowns()
-	ResourceScripts.game_globals.hour = 0
+	ResourceScripts.game_globals.hour = 1
 	ResourceScripts.game_globals.date += 1
 	ResourceScripts.game_progress.days_from_last_church_quest += 1
 	ResourceScripts.game_globals.daily_sex_left = 1 + ResourceScripts.game_res.upgrades.sex_times
