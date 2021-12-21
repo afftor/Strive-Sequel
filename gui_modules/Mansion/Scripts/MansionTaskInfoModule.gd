@@ -109,12 +109,15 @@ func show_resources_info():
 					item = Items.materiallist[recipe.resultitem]
 				if recipe.resultitemtype == 'material':
 					newtask.get_node("Task/TaskIcon").texture = Items.materiallist[recipe.resultitem].icon
+					newtask.get_node("Task/TaskIcon/Label").show()
+					newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[recipe.resultitem])
+					globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[recipe.resultitem])
 					# newtask.get_node("icon/Label").show()
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
-
+				
 				elif recipe.crafttype == 'modular':
 					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
-
+				
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 

@@ -811,7 +811,7 @@ var data = {
 				text = "SEARCH_DUNGEON_OPTION_45",
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'amelia_help_interogation'}, {code = 'add_timed_event', value = "aire_amelia1", args = [{type = 'add_to_date', date = [2,2], hour = 18}]}, {code = 'add_timed_event', value = "aire_amelia_report", args = [{type = 'add_to_date', date = [3,3], hour = 9}]}]
+				bonus_effects = [{code = 'decision', value = 'amelia_help_interogation'}, {code = 'add_timed_event', value = "aire_amelia1", args = [{type = 'add_to_date', date = [2,2], hour = 3}]}, {code = 'add_timed_event', value = "aire_amelia_report", args = [{type = 'add_to_date', date = [3,3], hour = 2}]}]
 			},
 			{
 				code = 'princess_search_dungeon_19',

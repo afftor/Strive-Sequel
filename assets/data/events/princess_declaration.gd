@@ -94,9 +94,9 @@ var data = {
 		character2 = "sigmund",
 		tags = ['dialogue_scene','blackscreen_transition_common'],
 		common_effects = [{code = 'add_timed_event', value = "amelia_herbs_start",
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}, 
+		args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, 
 		{code = 'add_timed_event', value = "zephyra_artifacts_init", 
-		args = [{type = 'add_to_date', date = [2,2], hour = 8}], }, ],
+		args = [{type = 'add_to_date', date = [2,2], hour = 1}], }, ],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [

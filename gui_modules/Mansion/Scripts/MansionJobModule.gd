@@ -59,7 +59,7 @@ func update_characters():
 					number = person.get_progress_task(selected_job.code, selected_job.production_code)/selected_job.progress_per_item
 				else:
 					number = person.xp_module.get_progress_resource(selected_job.code)/selected_job.progress_per_item
-				newbutton.get_node("Speed").text = str(stepify(number * 24, 0.1))
+				newbutton.get_node("Speed").text = str(stepify(number * 4, 0.1))
 		#status update
 		update_status(newbutton, person)
 

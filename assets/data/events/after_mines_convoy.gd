@@ -103,7 +103,7 @@ var data = {
 	after_mines_duncan_3 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_9", reqs = []}],
-		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 6}]}],
+		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}],
 		options = [ {
 			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'civil_war_mines'}]
 		},  {
