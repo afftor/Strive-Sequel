@@ -119,7 +119,7 @@ var lands = {
 		lead_race = 'Dwarf',
 		secondary_races = [],
 		policies = [],
-		travel_time = [2,2],#[10,10],
+		travel_time = [1,1],#[10,10],
 		disposition = 15,
 		start_settlements_number = {settlement_mountains1 = [1,1],settlement_mountains2 = [1,1]},
 		starting_locations = ['dungeon_undead_crypt'],
@@ -394,6 +394,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village1'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [2,2]}, #Number of allowed slaves per task at no upgrades
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
@@ -427,6 +428,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village2'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {wood = [1,2], vegetables = [2,3], grain = [2,3], cloth = [2,3], clothsilk = [2,2]},
 		area_shop_items = {
 			meat = {min = 20, max = 50, chance = 0.8},
@@ -458,6 +460,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village3'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {fish = [2,3], meat = [2,3], leather = [2,3], stone = [3,3]},
 		area_shop_items = {
 			meat = {min = 20, max = 50, chance = 0.8},
@@ -485,6 +488,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village4'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], cloth = [2,2]},
 		area_shop_items = {
 			fish = {min = 15, max = 45, chance = 0.6},
@@ -513,6 +517,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {wood = [2,3], woodmagic = [3,3], meat = [2,3], cloth = [2,2], leather = [2,2]},
 		area_shop_items = {
 			},
@@ -530,6 +535,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest2'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {wood = [2,3], woodiron = [3,3], vegetables = [2,3], meat = [2,3], leatherthick = [2,3]},
 		area_shop_items = {
 			},
@@ -547,6 +553,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {iron = [1,2], mithril = [3,3], boneancient = [1,1]},
 		area_shop_items = {
 			},
@@ -564,6 +571,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
+		travel_time = [1,1],
 		gather_resources = {iron = [2,3], bone = [2,3], mithril = [1,1]},
 		area_shop_items = {
 			},
