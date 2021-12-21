@@ -136,7 +136,7 @@ func rebuild_recipe_list():
 					$filter/costume.show()
 				elif enditem.type == 'gear' && enditem.geartype != 'costume':
 					$filter/gear.show()
-
+	
 	array.sort_custom(self, 'sort_craft_list')
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($CraftSelect/ScrollContainer/VBoxContainer)
@@ -319,8 +319,7 @@ func selectcraftitem(item):
 					$NumberSelect.hide()
 	else:
 		$NumberSelect/HSlider.show()
-
-
+	
 	if item.crafttype == 'basic':
 		var baseitem
 		if Items.materiallist.has(item.resultitem):
@@ -347,6 +346,7 @@ func selectcraftitem(item):
 			newbutton.get_node("Reqs").text =  str(ResourceScripts.game_res.materials[m]) + "/" + str(item.materials[m])
 			newbutton.get_node("Name").text = m.capitalize()
 			newbutton.disabled = item.materials[m] > ResourceScripts.game_res.materials[m]
+			globals.connectmaterialtooltip(newbutton, Items.materiallist[m])
 		for i in item.items:
 			var amount = 0
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
@@ -359,6 +359,7 @@ func selectcraftitem(item):
 			newbutton.get_node("Reqs").text = str(amount)+ "/" +str(item.items[i])
 			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
 			newbutton.disabled = item.items[i] > amount
+#			globals.connectitemtooltip_v2(newbutton, Items.itemlist[i])
 
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
