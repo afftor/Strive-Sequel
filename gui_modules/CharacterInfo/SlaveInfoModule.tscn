@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=14]
@@ -14,6 +15,11 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=21]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="SlaveInfoModule" type="Panel"]
 light_mask = 0
@@ -40,12 +46,12 @@ __meta__ = {
 "hide_stranger",
 ]]
 light_mask = 0
-margin_left = 222.976
-margin_top = 31.9961
-margin_right = 301.976
-margin_bottom = 84.9961
+margin_left = 233.571
+margin_top = 34.115
+margin_right = 312.571
+margin_bottom = 90.115
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "25"
 align = 1
@@ -55,20 +61,23 @@ __meta__ = {
 
 [node name="icon" type="TextureRect" parent="Panel/obedlabel"]
 light_mask = 0
-margin_left = -71.8484
+margin_left = -84.5919
 margin_top = -10.3006
-margin_right = 4.1516
+margin_right = -8.59189
 margin_bottom = 60.6994
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/obedlabel"]
 light_mask = 0
-margin_left = -91.2655
+margin_left = -104.009
 margin_top = -41.7744
-margin_right = 95.7345
-margin_bottom = -1.77439
+margin_right = 82.991
+margin_bottom = 0.225601
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Obedience"

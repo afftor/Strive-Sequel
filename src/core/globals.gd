@@ -696,7 +696,7 @@ func impregnate_check(father,mother):
 			elif race.find('Halfkin') >= 0:
 				race = "Halfkin"
 
-			if variables.impregnation_compatibility.has(race) == false:
+			if variables.impregnation_compatibility.has(race) == false && input_handler.globalsettings.no_breed_incompatibility == false:
 				if mother.has_profession('breeder') == false:
 					result.value = false
 					result.compatible = false

@@ -486,7 +486,7 @@ var effect_table = {
 		type = 'temp_s',
 		name = 'celena_bless',
 		tick_event = variables.TR_TICK,
-		duration = 2,
+		duration = 4,
 		stack = 1,
 		sub_effects = [],
 		tags = [],
@@ -574,7 +574,7 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [{
 			type = 'oneshot',
-			atomic = [{type = 'stat_add_p', stat = 'authority', value = -0.2}]
+			atomic = [{type = 'stat_add_p', stat = 'authority', value = -1}]
 		}],
 		tags = [],#['addition_rest_tick'],
 		atomic = [
@@ -599,7 +599,7 @@ var effect_table = {
 		type = 'temp_s',
 		name = 'injury',
 		tick_event = variables.TR_TICK,
-		duration = 2,
+		duration = 4,
 		stack = 1,
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'injury'],
