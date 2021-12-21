@@ -562,12 +562,12 @@ func ImportGame(filename):
 				args = [
 					{type = 'fixed_date',
 					date = 14,
-					hour = 8}
+					hour = 1}
 					]
 			},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
-			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}
+			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}
 			])
 
 
@@ -1139,7 +1139,7 @@ func common_effects(effects):
 							var date = ResourceScripts.game_globals.date
 							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
 							if hour > 4: hour = hour-4
-							if ResourceScripts.game_globals.hour == 3:
+							if ResourceScripts.game_globals.hour == 4:
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq

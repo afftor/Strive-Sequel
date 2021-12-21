@@ -587,7 +587,7 @@ var data = {
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		
 		common_effects = [
-			{code = 'add_timed_event', value = "final_operation_message", args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
+			{code = 'add_timed_event', value = "final_operation_message", args = [{type = 'add_to_date', date = [5,9], hour = 1}]}, 
 			{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1},
 			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
 		],

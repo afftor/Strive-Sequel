@@ -103,11 +103,11 @@ func _ready():
 			input_handler.interactive_message('intro', '', {})
 		elif preset.start in ['skip_prologue']:
 			input_handler.interactive_message('servants_election_finish6')
-		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
+		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 1}]}])
 		if preset.completed_quests.has("aliron_church_quest"):
 			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		else:
-			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
+			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
 
 
 		SlaveListModule.rebuild()

@@ -363,14 +363,14 @@ func Reward():
 		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
 			if i.totalreputation >= 300 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
 				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
-				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
+				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
 		var counter = false
 		for i in ResourceScripts.game_progress.stored_events.timed_events:
 			if i.code == 'guilds_elections_switch':
 				counter = true
 		if counter == false:
-			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
+			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	open()
 	input_handler.play_animation("quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
