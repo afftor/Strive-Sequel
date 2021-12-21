@@ -209,7 +209,7 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 
 func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
-	settlement.travel_time = globals.rng.randi_range(1, 2)#round(rand_range(3,8))
+	settlement.travel_time = globals.rng.randi_range(settlement.travel_time[0],settlement.travel_time[1])
 	var text = ''
 	if worlddata.locationnames.has(settlement.name+"1"):
 		text = worlddata.locationnames[settlement.name+"1"][randi() % worlddata.locationnames[settlement.name + "1"].size()] + worlddata.locationnames[settlement.name+"2"][randi() % worlddata.locationnames[settlement.name + "2"].size()]
@@ -244,7 +244,7 @@ func make_location(code, area):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(ResourceScripts.game_world.locationcounter)
-	location.travel_time = globals.rng.randi_range(1, 2)#round(rand_range(1,4))
+	location.travel_time = globals.rng.randi_range(0,0)
 	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
 	location.levels = {}

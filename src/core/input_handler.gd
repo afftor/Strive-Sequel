@@ -162,7 +162,8 @@ var globalsettings = {
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
-
+	
+	no_breed_incompatibility = false,
 	turn_based_time_flow = true,
 
 	guilds_any_race = false, #unused

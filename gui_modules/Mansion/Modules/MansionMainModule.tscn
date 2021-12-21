@@ -53,6 +53,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = true
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -271,6 +272,10 @@ __meta__ = {
 }
 
 [node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
+margin_left = 713.564
+margin_top = 411.782
+margin_right = -706.436
+margin_bottom = -408.218
 
 [node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
 visible = false
