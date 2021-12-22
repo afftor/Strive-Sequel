@@ -505,6 +505,7 @@ func _on_TestButton_pressed():
 
 
 func test_mode():
+	input_handler.CurrentScene = self
 	ResourceScripts.game_progress.allow_skip_fights = true
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
