@@ -170,7 +170,8 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
 	
-	globals.autosave()
+	if ResourceScripts.game_globals.date%5 == 0:
+		globals.autosave()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()

@@ -335,11 +335,10 @@ __meta__ = {
 }
 
 [node name="ReqIcons" type="HBoxContainer" parent="ClassPanel"]
-margin_left = 20.0
+margin_left = 17.0
 margin_top = 266.0
-margin_right = 239.0
+margin_right = 236.0
 margin_bottom = 324.0
-alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -374,6 +373,9 @@ margin_bottom = 338.0
 theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SocialSkills" type="ScrollContainer" parent="ClassPanel"]
 light_mask = 0

@@ -230,7 +230,7 @@ var stat_description = {
 	3:"[color=blue]Average[/color]",
 	4:"[color=purple]Good[/color]",
 	5:"[color=yellow]Great[/color]",
-	6:"[color=]Superb[/color]"
+	6:"[color=red]Superb[/color]"
 }
 
 var basic_max_hp = 100
@@ -239,6 +239,7 @@ var basic_hp_regen = 6
 var basic_mp_regen = 1.2
 var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
+var base_obed_drain = 8
 
 var basic_lust_per_tick = 0.57 * 6
 
@@ -247,6 +248,15 @@ var obed_mod_per_difficuty = {
 	medium = 0.5,
 	hard = 0.25
 }
+
+var obed_authority_cap = {
+'low': 72,
+'medium': 144,
+'high': 288,
+}
+
+var authority_threshold_base = 200
+var authority_threshold_per_timid = 25
 
 
 var master_charm_quests_gold_bonus = {
