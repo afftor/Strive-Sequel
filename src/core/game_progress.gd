@@ -116,7 +116,7 @@ func check_timed_events():
 	var deleting_events = []
 	for i in stored_events.timed_events:
 		if globals.checkreqs(i.reqs):
-			if i.has('action'):
+			if i.has('action'): # it's for action_to_date
 				match i.action:
 					'decision':
 						if !ResourceScripts.game_progress.decisions.has(i.code):
@@ -124,21 +124,24 @@ func check_timed_events():
 					'remove_decision':
 						if ResourceScripts.game_progress.decisions.has(i.code):
 							ResourceScripts.game_progress.decisions.erase(i.code)
-
 				deleting_events.append(i)
 				return
 			var event = scenedata.scenedict[i.code]
+			var failed = false
 			if event.has('reqs'):
 				for k in event.reqs:
 					if globals.valuecheck(k) == false:
-						match k.negative:
-							'repeat_next_day':
-								for j in i.reqs:
-									if j.type in ['date']:
-										j.value += 1
-						return
-			input_handler.interactive_message(i.code, 'story_event', {})
-			deleting_events.append(i)
+						failed = true
+						if k.has('negative'):
+							match k.negative:
+								'repeat_next_day':
+									for j in i.reqs:
+										if j.type in ['date']:
+											j.value += 1
+									break
+			if !failed:
+				input_handler.interactive_message(i.code, 'story_event', {})
+				deleting_events.append(i)
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
 

@@ -61,6 +61,7 @@ __meta__ = {
 }
 
 [node name="CustomBackground" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 margin_left = -545.0
 margin_top = -385.0
@@ -147,6 +148,7 @@ __meta__ = {
 }
 
 [node name="ImagePanel" type="TextureRect" parent="."]
+visible = false
 margin_top = -371.0
 margin_right = 801.0
 texture = ExtResource( 13 )

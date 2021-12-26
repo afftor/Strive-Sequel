@@ -22,9 +22,9 @@ func _ready():
 
 func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('job')
-	get_parent().mansion_state_set("occupation")
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
+	get_parent().mansion_state_set("occupation")
 #	get_parent().get_node("MansionJobModule2").show()
 #	get_parent().get_node("MansionJobModule2").rebuild()
 #	ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("MansionJobModule2"), 0.3)

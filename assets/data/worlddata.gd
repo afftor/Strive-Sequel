@@ -25,16 +25,15 @@ var lands = {
 			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
 
-			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
-			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
-			{code = 'no_zephyra_artifacts_start', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'zephyra_artifacts_quest', stage = 'stage1'}], args = {"oneshot": false}},
+			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
+			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
-
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
 			{code = 'gryphon_hunter_start', text = "Meet Derek, hunter veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -88,6 +87,7 @@ var lands = {
 		guilds = [],
 		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}},
 		{code = 'amelia_herbs_elf_start_1', text = "Look for smuggler", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}], args = {"oneshot": false}},
+		{code = 'priestess_sword_talk_1', text = "Meet High Priestess", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage2', state = true}], args = {"oneshot": false}},
 		],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
@@ -163,6 +163,54 @@ var lands = {
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
 			},
+	},
+	 beastkin_tribe = {
+		code = 'beastkin_tribe',
+		name = "Beastkin Tribe",
+		enabled = true,
+		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
+		policies = [],
+		travel_time = [6,6],
+		disposition = 25,
+		start_settlements_number = {settlement_forest1 = [1,1],settlement_forest2 = [1,1]},
+		locations = {},
+		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
+		starting_locations = ['dungeon_grove'],
+		guilds = [],
+		events = [
+			{code = 'chieftain_meeting_1', text = "Find Chieftain", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], args = {"oneshot": false}},
+			{code = 'mae_meeting_1', text = "Visit Shaman's Lodge", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
+			{code = 'savra_supplies_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
+			{code = 'savra_ritual_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage6', state = true}, {type = 'decision', value = 'canStartRitualPrep', check = true}], args = {"oneshot": false}},
+			{code = 'ritual_start', text = "Begin The Ritual", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage7_1', state = true}, {type = 'decision', value = 'canStartRitual', check = true}], args = {"oneshot": false}},
+			{code = 'leon_visit_start', text = "Visit Leon", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage8', state = true}, {type = 'decision', value = 'canVisitLeon', check = true}], args = {"oneshot": false}},
+			{code = 'leon_visit_1_2', text = "Visit Leon", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], args = {"oneshot": false}},
+			{code = 'ask_around', text = "Ask Around", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], args = {"oneshot": false}},
+			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage11', state = true}], args = {"oneshot": false}},
+			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], args = {"oneshot": false}},
+		],
+		capital_options = [],
+		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		area_shop_items = {
+			vegetables = {min = 40, max = 80, chance = 1},
+			grain = {min = 60, max = 150, chance = 1},
+			bread = {min = 30, max = 60, chance = 1},
+			cloth = {min = 10, max = 25, chance = 0.9},
+			clothsilk = {min = 10, max = 15, chance = 0.9},
+			salvia = {min = 10, max = 20, chance = 0.7},
+			bone = {min = 5, max = 20, chance = 0.7},
+			lifeshard = {min = 4, max = 8, chance = 1},
+			energyshard = {min = 3, max = 5, chance = 1},
+			obsidian = {min = 3, max = 5, chance = 0.7},
+			itempool1 = {items = ['sword','bow','dagger','spear','staff'], min = 2, max = 4, chance = 0.8},
+			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
+			},
+		capital_background = 'beastkin_capital',
+		capital_name = "Beastkin Tribe",
+		capital_code = 'beastkin_capital',
+		capital_dynamic_background = 'beastkin_capital',
+		capital_background_noise = 'elf_noise',
+		capital_background_music = 'frostford',
 	},
 }
 
@@ -315,7 +363,7 @@ var factiondata = {
 		tags = [],
 		slavenumber = [2,3],
 		questnumber = [2,2],
-		icon = load("res://assets/Textures_v2/CITY/Icons/icon_servents.png"),
+		icon = load("res://assets/Textures_v2/CITY/Icons/icon_servants.png"),
 		background = "servants_guild",
 		reputation_shop = {
 			classes = {headgirl = 500, director = 1000, sextoy = 750, breeder = 1500},
@@ -1523,6 +1571,66 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_cave_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}]}]
+	},
+	ritual_location = {
+		code = 'ritual_location',
+		type = 'dungeon',
+		name = 'Ritual Location',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['forest1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+		area = 'forests',
+		travel_time = [4,6],
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'pre_ritual_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_1'}]}],
+#		options = [
+#			{text = 'Approach', reqs = [
+#				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage7'}],
+#				args = [{code = 'pre_ritual_1', data = '', args = []}]}
+#			],
+	},
+	leon_forest = {
+		code = 'leon_forest',
+		type = 'dungeon',
+		name = 'Leon Forest',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['forest1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+		area = 'forests',
+		travel_time = [4,6],
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
+#		options = [
+#			{text = 'Search for Leon', reqs = [
+#				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage10'}],
+#				args = [{code = 'leon_fight_1', data = '', args = []}]}
+#			],
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',

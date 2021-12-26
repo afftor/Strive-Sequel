@@ -33,9 +33,12 @@ var data = {
 		text = [{text = "DAISY_RECRUITMENT_REPLY_1", reqs = [], previous_dialogue_option = 1},
 		{text = "DAISY_RECRUITMENT_REPLY_2", reqs = [], previous_dialogue_option = 2},
 		{text = "DAISY_RECRUITMENT_REPLY_3", reqs = [], previous_dialogue_option = 3}, ],
+#		common_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
+#		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
+				args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
 		}],
 	},
 
