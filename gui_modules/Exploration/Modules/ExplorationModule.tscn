@@ -2153,6 +2153,9 @@ margin_top = 141.0
 margin_right = 48.0
 margin_bottom = 591.0
 theme = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BuyBlock" type="Control" parent="AreaShop"]
 margin_left = 521.97
@@ -2165,9 +2168,9 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/BuyBlock"]
-margin_left = 44.0
+margin_left = 56.0
 margin_top = 150.0
-margin_right = 524.0
+margin_right = 536.0
 margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false

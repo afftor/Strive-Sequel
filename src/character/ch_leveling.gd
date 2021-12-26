@@ -339,19 +339,19 @@ func remove_from_work_quest():
 	quest_id = ''
 
 
-func get_obed_drain(value):
+func get_obed_drain():
 	if parent.has_profession('master') or parent.has_profession('spouse'): return 0.0
 	var rule_bonus = 0.0
 	if work_rules.luxury: rule_bonus = 0.25
-	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
+	var value = variables.base_obed_drain * (parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty')))
 	return value
 
-func predict_obed_time():
+func predict_obed_time(): # in hours, not in ticks
 	if check_infinite_obedience() == true: return 10000
-	return parent.get_stat('obedience') / get_obed_drain(1)
+	return parent.get_stat('obedience') / get_obed_drain()
 
 func check_infinite_obedience():
-	return get_obed_drain(1) == 0 or parent.has_profession('master') or parent.has_profession('spouse')
+	return get_obed_drain() == 0 or parent.has_profession('master') or parent.has_profession('spouse')
 
 func work_tick():
 	if is_on_quest():
@@ -360,84 +360,43 @@ func work_tick():
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.workers.has(parent.id):
 			currenttask = i
-
+	
 	if currenttask == null:
 		work = ''
 		parent.rest_tick()
 		return
-
+	
 	if parent.statlist.is_uncontrollable() && !parent.has_profession('master'):
 		if !messages.has("refusedwork"):
 			globals.text_log_add('work', parent.get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
 	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.add_stat('obedience', - get_obed_drain(1))
+		parent.add_stat('obedience', - get_obed_drain())
 		messages.erase("refusedwork")
-
+	
 	if parent.get_static_effect_by_code("work_rule_ration") != null:
 		parent.food.food_consumption_rations = true
-
+	
+	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
+	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
-		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:
-			if currenttask.messages.has('notask') == false:
-				globals.text_log_add('crafting', parent.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
-				currenttask.messages.append('notask')
-			parent.rest_tick()
-			return
-		else:
-			var craftingitem = ResourceScripts.game_res.craftinglists[currenttask.product][0]
-			currenttask.messages.erase("notask")
-			if craftingitem.resources_taken == false:
-				if globals.check_recipe_resources(craftingitem) == false:
-					if currenttask.messages.has('noresources') == false:
-						globals.text_log_add('crafting', parent.get_short_name() + ": Not Enough Resources for craft. ")
-						currenttask.messages.append("noresources")
-					parent.rest_tick()
-					return
-				else:
-					globals.spend_resources(craftingitem)
-					currenttask.messages.erase("noresources")
+		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent):
 			work_tick_values(currenttask)
-			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product, true)#
-			make_item_sequence(currenttask, craftingitem)
-
+		else:
+			parent.rest_tick()
 	elif currenttask.code == 'building':
-		var upgrades_queue = ResourceScripts.game_res.upgrades_queue
-		if upgrades_queue.size() == 0:
-			self.assign_to_task('', '')
-			parent.rest_tick()
-			if messages.has("noupgrade") == false:
-				globals.text_log_add('upgrades',parent.get_short_name() + ": No task or upgrade selected for building. ")
-				messages.append("noupgrade")
-			return
-		else:
-			messages.erase('noupgrade')
+		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent):
 			work_tick_values(currenttask)
-			if !ResourceScripts.game_res.upgrade_progresses.has(upgrades_queue[0]):
-				var currentupgradelevel
-				if ResourceScripts.game_res.upgrades.has(upgrades_queue[0]):
-					currentupgradelevel = ResourceScripts.game_res.upgrades[upgrades_queue[0]] + 1
-					ResourceScripts.game_res.upgrade_progresses[upgrades_queue[0]] = {level = currentupgradelevel, progress = 0}
-			ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress += get_progress_task(currenttask.code, currenttask.product, true)#*(productivity/100)
-			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress >= upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].levels[int(ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].level)].taskprogress:
-				if ResourceScripts.game_res.upgrades.has(ResourceScripts.game_res.upgrades_queue[0]):
-					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.upgrades_queue[0]] += 1
-				else:
-					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.upgrades_queue[0]] = 1
-				input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]])
-				globals.text_log_add('upgrades',"Upgrade finished: " + upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].name)
-				if ResourceScripts.game_res.upgrades_queue[0] == "tattoo_set":
-					input_handler.ActivateTutorial("tattoo")
-				ResourceScripts.game_res.upgrade_progresses.erase(ResourceScripts.game_res.upgrades_queue[0])
-				ResourceScripts.game_res.upgrades_queue.erase(ResourceScripts.game_res.upgrades_queue[0])
+		else:
+			parent.rest_tick()
 	else:
 		var person_location = parent.get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
 		if !gatherable:
-			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)
+			currenttask.progress += prodvalue
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
 		while currenttask.threshhold <= currenttask.progress:
@@ -461,7 +420,6 @@ func work_tick():
 						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
 
 
-
 func work_tick_values(currenttask, gatherable = false):
 	var workstat
 	if !gatherable:
@@ -469,24 +427,10 @@ func work_tick_values(currenttask, gatherable = false):
 	else:
 		workstat = Items.materiallist[currenttask.code].workstat
 	if !parent.has_status('no_working_bonuses'):
-		parent.add_stat(workstat, 0.06)
-		self.base_exp += 1
+		parent.add_stat(workstat, 0.36)
+		self.base_exp += 5
 
-func make_item_sequence(currenttask, craftingitem):
-	if craftingitem.workunits >= craftingitem.workunits_needed:
-		globals.make_item(craftingitem)
-		if Items.recipes[craftingitem.code].resultitemtype != 'material' && randf() < 0.25:
-			input_handler.get_person_for_chat(currenttask.workers, 'item_created')
-		craftingitem.workunits -= craftingitem.workunits_needed
-		if craftingitem.repeats != 0:
-			if globals.check_recipe_resources(craftingitem) == true:
-				globals.spend_resources(craftingitem)
-				if craftingitem.workunits >= craftingitem.workunits_needed:
-					make_item_sequence(currenttask, craftingitem)
-			else:
-				if currenttask.messages.has('noresources') == false:
-					globals.text_log_add('crafting', parent.get_short_name() + ": " + "Not Enough Resources for craft. ")
-					currenttask.messages.append("noresources")
+
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())

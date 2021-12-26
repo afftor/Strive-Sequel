@@ -1,6 +1,20 @@
 extends Node
 #Game Settings
-var HoursPerDay = 24
+var HoursPerDay = 4
+#var timeword = {
+#	1:"MORNING",
+#	2:"MIDDAY",
+#	3:"EVENING",
+#	4:"NIGHT",
+#	0:"NIGHT",
+#}
+var timeword = {
+	1:"6:00",
+	2:"12:00",
+	3:"18:00",
+	4:"00:00",
+	0:"00:00",
+}
 var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
@@ -216,23 +230,33 @@ var stat_description = {
 	3:"[color=blue]Average[/color]",
 	4:"[color=purple]Good[/color]",
 	5:"[color=yellow]Great[/color]",
-	6:"[color=]Superb[/color]"
+	6:"[color=red]Superb[/color]"
 }
 
 var basic_max_hp = 100
 var basic_max_mp = 30
-var basic_hp_regen = 1
-var basic_mp_regen = 0.2
+var basic_hp_regen = 6
+var basic_mp_regen = 1.2
 var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
+var base_obed_drain = 8
 
-var basic_lust_per_tick = 0.57
+var basic_lust_per_tick = 0.57 * 6
 
 var obed_mod_per_difficuty = {
 	easy = 1.0,
 	medium = 0.5,
 	hard = 0.25
 }
+
+var obed_authority_cap = {
+'low': 72,
+'medium': 144,
+'high': 288,
+}
+
+var authority_threshold_base = 200
+var authority_threshold_per_timid = 25
 
 
 var master_charm_quests_gold_bonus = {
@@ -277,7 +301,7 @@ var new_stat_bonuses_syntax = false
 
 
 var pregenabled = true
-var pregduration = 720
+var pregduration = 120
 
 var slave_classes_per_difficulty = {
 	0 : [0, 2],

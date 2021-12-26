@@ -25,6 +25,7 @@ func open(classcode, person):
 	if text != '':
 		text += '\n' 
 	text += ResourceScripts.descriptions.get_class_traits_no_icons(person, tempclass)
+	text = input_handler.text_cut_excessive_lines(text)
 	$bonus.bbcode_text = text
 	for i in tempclass.traits:
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")

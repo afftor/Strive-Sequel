@@ -240,8 +240,8 @@ func update_button(newbutton, person):
 			if time_left > 0:
 				var time_left_string = ''
 				if time_left == 1:
-					time_left = 24 - ResourceScripts.game_globals.hour
-					time_left_string = str(time_left) + " h."
+					time_left = 4 - ResourceScripts.game_globals.hour
+					time_left_string = str(time_left * 6) + " h." 
 				else:
 					time_left_string = str(time_left) + " d."
 				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string

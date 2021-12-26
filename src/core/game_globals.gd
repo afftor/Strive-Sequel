@@ -9,7 +9,7 @@ var difficulty = 'medium'
 
 #dynamic part
 var date = 1
-var hour = 6
+var hour = 1
 
 var daily_sex_left = 1
 var daily_dates_left = 1
@@ -35,7 +35,7 @@ func serialize():
 	return inst2dict(self)
 
 func advance_day():
-	hour = 0
+	hour = 1
 	date += 1
 	daily_dates_left = 1
 	daily_sex_left = 1

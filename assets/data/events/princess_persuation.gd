@@ -593,7 +593,7 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}],
+						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, {code = 'update_city'}],
 					},
 				],
 			},
@@ -617,7 +617,7 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}], #add second persuation trigger here
+						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, {code = 'update_city'}], #add second persuation trigger here
 					},
 				],
 			},
@@ -640,7 +640,7 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}], #add second persuation trigger here
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, {code = 'update_city'}], #add second persuation trigger here
 			},
 		],
 	},
@@ -1275,7 +1275,7 @@ var data = {
 				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				reqs = [],
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}, {code = 'update_city'}, {code = 'complete_quest', value = 'princess_persuasion'}],
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 1}]}, {code = 'update_city'}, {code = 'complete_quest', value = 'princess_persuasion'}],
 				dialogue_argument = 1,
 			},
 		],

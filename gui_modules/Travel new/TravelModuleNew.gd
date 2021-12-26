@@ -571,7 +571,7 @@ func build_location_resources():
 					newbutton.set_meta("gather_mod", round(location.gather_mod*100))
 					globals.connectmaterialtooltip(newbutton, item)
 				else:
-					newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel new 2021/placer_travel_question.png")
+					newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
 			else:
 				var max_workers_count = gatherable_resources[i]
 				var current_workers_count = 0

@@ -14,7 +14,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Praise.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -37,7 +37,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 2,
 		icon = load("res://assets/images/iconsskills/Warn.png"),
 		tags = ['negative'],
 		dialogue_report = '',
@@ -57,7 +57,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Reward_with_sex 3.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -78,7 +78,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 1,
-		cooldown = 1,
+		cooldown = 2,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = ['negative'],
 		dialogue_report = '',
@@ -121,7 +121,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 1,
-		cooldown = 2,
+		cooldown = 5,
 		globallimit = 1, 
 		icon = load("res://assets/images/iconsskills/PublicPunish.png"),
 		dialogue_report = '',
@@ -143,7 +143,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 1,
-		cooldown = 3,
+		cooldown = 7,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = load('res://assets/images/iconsskills/PublicSex.png'),
 		tags = ['negative'],
@@ -164,7 +164,7 @@ var Skilllist = {
 		effects = ['e_target_kill'],
 		cost = {},
 		charges = 1,
-		cooldown = 3,
+		cooldown = 7,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = load("res://assets/images/iconsskills/Execution.png"),
 		tags = ['negative'],
@@ -186,7 +186,7 @@ var Skilllist = {
 		effects = [],
 		cost = {lust = 75},
 		charges = 1,
-		cooldown = 3,
+		cooldown = 5,
 		icon = load('res://assets/images/iconsskills/PublicSex.png'),
 		tags = ['positive', 'no_target'],
 		dialogue_report = '',
@@ -207,7 +207,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 1,
-		cooldown = 1,
+		cooldown = 5,
 		icon = load('res://assets/images/iconsskills/icon_bard2.png'),
 		tags = ['positive', 'no_target'],
 		dialogue_report = '',
@@ -227,11 +227,11 @@ var Skilllist = {
 		social_skill_stats = ['charm'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.3','+48'],
+		custom_duration = ['caster.charm','*0.05','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_allure1'})],
 		cost = {},
 		charges = 3,
-		cooldown = 1,
+		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Charm.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -248,11 +248,11 @@ var Skilllist = {
 		social_skill_stats = ['charm','wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.35','+48'],
+		custom_duration = ['caster.charm','*0.06','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_seduce'})],
 		cost = {mp = 20},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 2,
 		icon = load("res://assets/images/iconsskills/Seduce.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -271,11 +271,11 @@ var Skilllist = {
 		social_skill_stats = ['charm','wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.4','+48'],
+		custom_duration = ['caster.charm','*0.07','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_greatseduce'})],
 		cost = {mp = 25},
 		charges = 1,
-		cooldown = 2,
+		cooldown = 4,
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -295,7 +295,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 3,
-		cooldown = 1,
+		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/LifeDrain.png"),
 		tags = ['drain'],
 		is_drain = true,
@@ -315,7 +315,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 2,
 		icon = load("res://assets/images/iconsskills/ManaDrain.png"),
 		tags = ['drain'],
 		is_drain = true,
@@ -333,7 +333,7 @@ var Skilllist = {
 		effects = [Effectdata.rebuild_template({effect = 'e_t_serve'})],
 		cost = {lust = 20},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Serve2.png"),
 		tags = ['positive'],
 		dialogue_report = '',
@@ -488,10 +488,10 @@ var Skilllist = {
 		social_skill_stats = ['physics'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({trigger = variables.TR_SOC_SPEC, duration = 24, effect = 'e_t_hardwork'})],
+		effects = [Effectdata.rebuild_template({trigger = variables.TR_SOC_SPEC, duration = 12, effect = 'e_t_hardwork'})],
 		cost = {},
 		charges = 1,
-		cooldown = 3,
+		cooldown = 5,
 		icon = load("res://assets/images/iconsskills/Discipline.png"),
 		tags = ['no_target'],
 		value = ['0'],
@@ -509,10 +509,10 @@ var Skilllist = {
 		social_skill_stats = ['physics'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({duration = 24, effect = 'e_t_discipline'})],
+		effects = [Effectdata.rebuild_template({duration = 20, effect = 'e_t_discipline'})],
 		cost = {},
 		charges = 2,
-		cooldown = 1,
+		cooldown = 4,
 		icon = load("res://assets/images/iconsskills/Discipline2.png"),
 		tags = ['positive'],
 		value = ['0'],
@@ -529,7 +529,7 @@ var Skilllist = {
 		effects = [],
 		cost = {},
 		charges = 1,
-		cooldown = 4,
+		cooldown = 7,
 		icon = load("res://assets/images/iconsskills/Authority.png"),
 		tags = ['positive'],
 		value = [['75'], ['48'], ['10']],
@@ -1591,7 +1591,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.1
+		value = 1.3
 	},
 	first_aid = {#heals target for 30%
 		code = 'first_aid',
@@ -1645,7 +1645,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.5'],0.5],
+		value = [['caster.atk','*0.9'],0.9],
 		damagestat = ['no_stat','+damage_hp'],
 	},
 
@@ -1699,7 +1699,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		value = 0.65,
+		value = 0.45,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -1905,7 +1905,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
-		value = 0.8,
+		value = 0.4,
 		follow_up = 'eq_setup'
 	},
 	eq_setup = {
@@ -1956,7 +1956,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
-		value = 0.8
+		value = 0.4
 	},
 	
 	fly_evasion = {
@@ -2062,7 +2062,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
-		value = 1.0
+		value = 1.25
 	},
 	wind_atk = {
 		code = 'wind_atk',
@@ -2089,7 +2089,7 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.8,
+		value = 1,
 		follow_up = 'wind_atk_1'
 	},
 	wind_atk_1 = {
@@ -2116,7 +2116,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.8,
+		value = 1,
 	},
 	water_atk = {
 		code = 'water_atk',
@@ -2143,7 +2143,7 @@ var Skilllist = {
 		damage_type = 'water',
 		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'],0.9],
+		value = [['caster.atk','*0.3'],1.1],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	holy_atk = {
@@ -2171,7 +2171,7 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.0
+		value = 1.2
 	},
 	fire_cleave = {
 		code = 'fire_cleave',
@@ -2198,7 +2198,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'], 0.65],
+		value = [['caster.atk','*0.2'], 0.5],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	earth_shatter = {
@@ -2226,7 +2226,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.65
+		value = 0.6
 	},
 	revenge = {
 		code = 'revenge',
@@ -2250,7 +2250,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.2
+		value = 1.7
 	},
 	fire_burst = {
 		code = 'fire_burst',
@@ -2277,7 +2277,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
-		value = 0.65
+		value = 0.50
 	},
 	air_cutter = {
 		code = 'air_cutter',
@@ -2388,7 +2388,7 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.8
+		value = 0.7
 	},
 	arrowrain = {
 		code = 'arrowrain',
@@ -2415,7 +2415,7 @@ var Skilllist = {
 		damage_type = 'water',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.6
+		value = 0.5
 	},
 	explosivearr = {
 		code = 'explosivearr',
@@ -2442,7 +2442,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'],1.1],
+		value = [['caster.atk','*0.25'],1.3],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	shadowstrike = {
@@ -2470,7 +2470,7 @@ var Skilllist = {
 		damage_type = 'dark',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1
+		value = 1.3
 	},
 	firearr = {
 		code = 'firearr',
@@ -2497,7 +2497,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
-		value = [['caster.matk','*0.2'],1],
+		value = [['caster.matk','*0.2'],1.2],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	lightning = {
@@ -2524,7 +2524,7 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.1
+		value = 1.25
 	},
 	mindblast = {
 		code = 'mindblast',
@@ -2550,7 +2550,7 @@ var Skilllist = {
 		damage_type = 'mind',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.0,
+		value = 1.2,
 		random_factor_p = 0.1
 	},
 	psychicblast = {
@@ -2577,7 +2577,7 @@ var Skilllist = {
 		damage_type = 'mind',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.75,
+		value = 0.55,
 	},
 	resurrect = {
 		code = 'resurrect',
@@ -2631,7 +2631,7 @@ var Skilllist = {
 		damage_type = 'dark',
 		sfx = [{code = 'decay', target = 'target_frame', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
-		value = 0.9
+		value = 0.65
 	},
 	overgrowth = {
 		code = 'overgrowth',
@@ -2658,7 +2658,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.65
+		value = 0.45
 	},
 	firebomb = {
 		code = 'firebomb',
@@ -2684,7 +2684,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.matk','*0.2'],1.4],
+		value = [['caster.matk','*0.5'],2],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	acidbomb = {
@@ -2711,7 +2711,7 @@ var Skilllist = {
 		damage_type = 'water', 
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 2.2
+		value = 2.5
 	},
 	mimic_attack = {
 		code = 'mimic_attack',
@@ -3189,7 +3189,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({duration = 72, effect = 'master_productivity_1'})],
+		effects = [Effectdata.rebuild_template({duration = 12, effect = 'master_productivity_1'})],
 		cost = {},
 		charges = 0,
 		cooldown = 0,
@@ -3207,7 +3207,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({duration = 48, effect = 'master_combat_1'})],
+		effects = [Effectdata.rebuild_template({duration = 8, effect = 'master_combat_1'})],
 		cost = {},
 		charges = 0,
 		cooldown = 0,
@@ -3307,7 +3307,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({duration = 48, effect = 'succubus_combat_1'})],
+		effects = [Effectdata.rebuild_template({duration = 8, effect = 'succubus_combat_1'})],
 		cost = {mp = 15},
 		charges = 0,
 		cooldown = 0,

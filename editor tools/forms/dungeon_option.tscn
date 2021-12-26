@@ -3,6 +3,7 @@
 [ext_resource path="res://editor tools/forms/dungeon_option.gd" type="Script" id=1]
 
 [node name="WindowDialog" type="WindowDialog"]
+visible = true
 margin_right = 1526.0
 margin_bottom = 676.0
 window_title = "option"
@@ -42,18 +43,17 @@ size_flags_vertical = 3
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 4.0
 margin_right = 1506.0
-margin_bottom = 24.0
+margin_bottom = 34.0
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 31.0
-margin_bottom = 20.0
+margin_right = 47.0
+margin_bottom = 30.0
 text = "OK"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 35.0
-margin_right = 89.0
-margin_bottom = 20.0
+margin_left = 51.0
+margin_right = 140.0
+margin_bottom = 30.0
 text = "Cancel"
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="commit"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Button2" to="." method="revert"]

@@ -6,7 +6,7 @@ var scenedict = {
 
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]},
 
-	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 6}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 
@@ -964,7 +964,7 @@ var scenedict = {
 		receiver = 'master',
 		image = 'daisyevent',
 		common_effects = [#common_effects are treated in state by applying simple changes to game state and characters.
-		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 20}]},
+		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 3}]},
 		{code = 'unique_character_changes', value = 'daisy', args = [ #unique_character_changes takes an unique character and apply specific values to their values with exceptions of traits and tags which treated separately
 			{code = 'tame_factor', value = 1, operant = "+"},
 			{code = 'obedience', operant = '+', value = 75}
@@ -1114,7 +1114,7 @@ var scenedict = {
 				args = [
 					{type = 'fixed_date',
 					date = 14,
-					hour = 8}
+					hour = 1}
 					]
 			},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
@@ -1140,7 +1140,7 @@ var scenedict = {
 					args = [
 						{type = 'fixed_date',
 						date = 28,
-						hour = 8}
+						hour = 1}
 						]
 					}
 				]
@@ -1173,7 +1173,7 @@ var scenedict = {
 					args = [
 						{type = 'fixed_date',
 						date = 50,
-						hour = 8}
+						hour = 1}
 						]
 					}
 				]
@@ -1205,7 +1205,7 @@ var scenedict = {
 					args = [
 						{type = 'fixed_date',
 						date = 100,
-						hour = 8}
+						hour = 1}
 						]
 					}
 				]

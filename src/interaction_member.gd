@@ -170,7 +170,7 @@ var impregnation_texts = {
 	is_breeder = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
 	female_contraceptives = "As [name] is on contraceptives, [he] won't be able to get pregnant from it...",
 	male_contraceptives = "As [name] is on contraceptives, [he] won't be able to impregnate anyone...",
-	already_pregnant_visible = "[name] could certainly get pregnant from it if [he] wasn't already...",
+	already_pregnant_visible = "[name] could get pregnant from it if [he] wasn't already...",
 	mother_undead = "As [name] isn't actually alive, [he] won't be able to get pregnant...",
 	father_undead = "As [name] isn't actually alive, [he] won't be able to impregnate...",
 }
