@@ -1063,7 +1063,7 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
-			elif test_stage("divine_symbol_quest", "stage3"):
+			elif test_stage("divine_symbol_quest", "stage3") or test_stage("divine_symbol_quest", "stage4"):
 				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')

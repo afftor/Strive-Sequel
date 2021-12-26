@@ -3,7 +3,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "LOSE_MESSAGE", reqs = []} ],
 		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effect = [{code = "lose_game"}]
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), #bonus_effects = [{code = "lose_game"}]
 			}
 		]
 	},

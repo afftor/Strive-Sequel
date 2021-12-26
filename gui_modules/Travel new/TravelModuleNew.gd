@@ -161,13 +161,22 @@ func build_locations_list():
 		if temp.type == "capital":
 			if adata.has("capital_code"):
 				if adata.capital_code == "elf_capital":
-					var capital = false
+					var closed = true
 					if ResourceScripts.game_progress.completed_quests.has("princess_search"):
-						capital = true
+						closed = false
 					for k in ResourceScripts.game_progress.active_quests:
 						if k.code == "princess_search" and (k.stage == "stage3" or k.stage == "stage4" or k.stage == "stage5"): 
-							capital = true
-					if !capital:
+							closed = false
+					if closed:
+						continue
+				if adata.capital_code == "beastkin_capital":
+					var closed = true
+					if ResourceScripts.game_progress.completed_quests.has("sword_artifact_quest"):
+						closed = false
+					for k in ResourceScripts.game_progress.active_quests:
+						if k.code == "sword_artifact_quest" and (k.stage == "stage3" or k.stage == "stage4" or k.stage == "stage5" or k.stage == "stage6" or k.stage == "stage7" or k.stage == "stage7_1" or k.stage == "stage8" or k.stage == "stage9" or k.stage == "stage10" or k.stage == "stage11" or k.stage == "stage12" or k.stage == "stage13" or k.stage == "stage14"): 
+							closed = false
+					if closed:
 						continue
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):

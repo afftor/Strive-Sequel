@@ -6179,68 +6179,6 @@ Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_2_2 = """Placeholder""",
 	DAISY_SERVE_2_3 = """Placeholder""",
 	
-	NO_ZEPHYRA_ARTIFACTS_MESSAGE = """In the morning you receive a letter from Ginny at the local church, asking you to visit her. """,
-	NO_ZEPHYRA_ARTIFACTS_START = """— Welcome, [name]! I've heard you've become a Mayor now? Congratulations!
-
-— I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you, I take it, she's your acquaintance?""",
-	NO_ZEPHYRA_ARTIFACTS_1 = """Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful as a Champion ought to be.
-
-Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And at such scary times too. Can you imagine what all those bandits could do to someone like me? 
-
-Zephyra: — Well, I see you've settled this war for good. I was right about you after all.""",
-	NO_ZEPHYRA_ARTIFACTS_OPTION_1_1 = "You really are full of surprises",
-	NO_ZEPHYRA_ARTIFACTS_OPTION_1_2 = "I'm surprised you're still following me",
-	NO_ZEPHYRA_ARTIFACTS_OPTION_1_3 = "I don't have time for this",
-	NO_ZEPHYRA_ARTIFACTS_2_NO = """Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
-
-Zephyra: — If you tell me to leave, I won't be bothering you anymore.""",
-	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_1 = "Yes, I want you to leave me alone",
-	NO_ZEPHYRA_ARTIFACTS_2_NO_OPTION_2 = "I've changed my mind",
-	NO_ZEPHYRA_ARTIFACTS_2_NO_CLOSE = """Zephyra: — Farewell then. Have fun while it lasts. 
-
-Zephyra leaves the church without giving you a second glance.""",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_1 = """Zephyra: — Please, you are flattering me. It's just a mission I have to perform. 
-
-Zephyra: — Now, that you are the Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
-
-Zephyra: — You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes. They are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_2 = """Zephyra: — There's a mission I have to perform, so we're here now.
-
-Zephyra: — Now, that you are the Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
-
-Zephyra: — You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes.hey are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_1 = "How do I know your goals are good then?",
-	NO_ZEPHYRA_ARTIFACTS_2_OK_OPTION_2 = "So how do you propose for me to get into it?",
-	NO_ZEPHYRA_ARTIFACTS_3_1 = """Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
-
-Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush then, but you should at least look into it.
-
-Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
-	NO_ZEPHYRA_ARTIFACTS_3_2 = """Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush thent, but you should at least look into it.
-
-Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
-	NO_ZEPHYRA_ARTIFACTS_3_OPTION_1 = "Very well, you can join me",
-	NO_ZEPHYRA_ARTIFACTS_3_OPTION_2 = "I'm not going to bother with it after all",
-	NO_ZEPHYRA_ARTIFACTS_4_1 = """Zephyra: — Jeez, finally. You really played this hard to get, didn't you? Good we can be friends from now on at least. Don't mind me too much, please.""",
-	NO_ZEPHYRA_ARTIFACTS_4_2 = """Zephyra: — Ah, is that so? It's a shame, really. Well, I can only wish that you won't end up drowned in a sewer. Farewell, [name].
-
-Zephyra leaves the church without giving you a second glance.""",
-	ZEPHYRA_ARTIFACTS_INIT = """— You've done it, [name]. Not a thing just anyone can brag about. I'm glad my decision to join your side was correct after all.
-
-— Now that you are a Mayor you will have more support and resources at your disposal which is a good thing, but there remains a serious danger to this land, and, perhaps, the world. It seems that my deity's intention is for me to intervene in this.
-
-— You know what an Artifact is? It's an item, a gift from a deity, which can hold enormous powers, or have some hidden attributes. They are connected to deities in subtle ways. I believe there was once an ancient sword belonging to this land and its monarch.""",
-	ZEPHYRA_ARTIFACTS_INIT_OPTION_1 = "There might be a problem with this...",
-	ZEPHYRA_ARTIFACTS_INIT_OPTION_2 = "This sword is no longer in our possession",
-	ZEPHYRA_ARTIFACTS_1 = """You explain to Zephyra what has happened during the earlier days of civil war.
-
-— Hmm, this is troublesome news. A demon took the sword at the start of the war? This might be the danger I was warned about. A real shame, but in that case we must focus on collecting other artifacts. 
-
-— The artifacts don't possess much power in their current state, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
-	ZEPHYRA_ARTIFACTS_1_OPTION_1 = "I doubt they will simply give it to us",
-	ZEPHYRA_ARTIFACTS_1_OPTION_2 = "What's gonna happen after we get all the artifacts?",
-	ZEPHYRA_ARTIFACTS_2_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
-	ZEPHYRA_ARTIFACTS_2_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	
 	GRYPHON_AIRE_START = """As you walk through the grounds of your mansion one morning, you notice a young elf girl, Aire, diligently training with her bow and arrows at the makeshift archery range. You watch her for some time, noticing how firm her concentration is.
 
@@ -6269,9 +6207,9 @@ After another couple of precise shots she turns to you questioningly .
 	GRYPHON_AIRE_4_OPTION_1 = "You really know how to motivate a man",
 	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself",
 	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words",
-	GRYPHON_AIRE_5 = """— Don't start drooling before it’s done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia’s protector.""",
+	GRYPHON_AIRE_5 = """— Don't start drooling before it's done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia's protector.""",
 	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
-	GRYPHON_AIRE_5_OPTION_2 = "This doesn’t sound too hard",
+	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard",
 	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "Ask about Elder Gryphon",
@@ -6331,8 +6269,8 @@ You only manage to give Aire a small smile before losing consciousness.""",
 — [name]! Never do something like this again! What were you thinking!?""",
 	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct",
 	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do",
-	GRYPHON_CAVE_4_OPTION_3 = "How much I’m gonna bang your sweet ass for this",
-	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what nearly happened... I’m sorry I made you do that, I didn't think you'd actually try to bring down that beast... And thank you for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
+	GRYPHON_CAVE_4_OPTION_3 = "How much I'm gonna bang your sweet ass for this",
+	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what nearly happened... I'm sorry I made you do that, I didn't think you'd actually try to bring down that beast... And thank you for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
 	GRYPHON_CAVE_5_OPTION_1 = "That's what I wanted to hear",
 	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well",
 	AIRE_GREET = """— What do you want of me?""",
@@ -6382,7 +6320,7 @@ GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her close
 
 Aire: — Come on, [name] worked really hard for this moment, we should reward him.
 
-Aire positions herself in front of Anastasia, embracing her across your hips with your fully erect dick between them. Aire strokes your shaft and presses it between Anastasia’s firm breasts, pressing her own tits against the princess’s to keep it there.
+Aire positions herself in front of Anastasia, embracing her across your hips with your fully erect dick between them. Aire strokes your shaft and presses it between Anastasia's firm breasts, pressing her own tits against the princess's to keep it there.
 
 Aire: — Is this to your liking, [Master]?
 	
@@ -6394,7 +6332,7 @@ GRYPHON_ANA_SEX_4 = """The elf girl and the princess bob gently up and down, you
 
 Anastasia still seems ashamed, blushing deep red as she scoops her large breasts together around your dick, using them to massage your shaft as Aire bounces more vigorously up and down. The princess looks at Aire, then to you, her big blue eyes full of uncertainty and arousal.
 
-The girls’ nipples glide over and press against each other as they work your cock with their tits and you can see them growing more visibly aroused as they continue. In a few minutes they are both sheened with perspiration from their efforts and your penis slips more easily in between their slick breasts.""",
+The girls' nipples glide over and press against each other as they work your cock with their tits and you can see them growing more visibly aroused as they continue. In a few minutes they are both sheened with perspiration from their efforts and your penis slips more easily in between their slick breasts.""",
 	
 GRYPHON_ANA_SEX_5 = """	
 After some time, you can feel your orgasm beginning to build. Your hips twitch reflexively, thrusting in between the elf girl and the princess as they service you.
@@ -6402,15 +6340,15 @@ After some time, you can feel your orgasm beginning to build. Your hips twitch r
 You have to resist the urge to grab the two girls by the hair and press their chattering mouths against your cock. But your orgasm arrives like a charging bull, shooting cum into the air and all over the faces and bodies of the two women kneeling before you. """,
 
 GRYPHON_ANA_SEX_6 = """
-Anastasia looks first alarmed and then ashamed as a spray of thick semen spatters across her face and into her soft cleavage. A glob of cum lands in Aire’s eye and she closes it quickly, sperm leaking from her eyelid and running down her cheek..
+Anastasia looks first alarmed and then ashamed as a spray of thick semen spatters across her face and into her soft cleavage. A glob of cum lands in Aire's eye and she closes it quickly, sperm leaking from her eyelid and running down her cheek..
 
-Aire: — Hah! By the gods, that’s a lot of cum, [Master]. Enough for two, even!
+Aire: — Hah! By the gods, that's a lot of cum, [Master]. Enough for two, even!
 
-Using her fingers, Aire wipes some of the cum from Anastasia’s face and holds her hand out to the princess. 
+Using her fingers, Aire wipes some of the cum from Anastasia's face and holds her hand out to the princess. 
 
 Anastasia: — A-are you sure?
 
-In reply, Aire runs a finger over her own breasts, gathering some of the cum there, and then sucks the finger into her mouth to clean it. Seeing this, Anastasia hesitantly opens her mouth to lick your cum from Aire’s other hand.
+In reply, Aire runs a finger over her own breasts, gathering some of the cum there, and then sucks the finger into her mouth to clean it. Seeing this, Anastasia hesitantly opens her mouth to lick your cum from Aire's other hand.
 
 Aire looks back at you expectantly.
 
@@ -6418,7 +6356,7 @@ Aire: — Was this everything you imagined it would be, [Master]? Or was there a
 
 She looks back at Anastasia suggestively, who blushes again. """,
 
-GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you’re only getting started.
+GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
 
 You order the two naked girls off the floor. Aire rises and takes Anastasia by the hand, leading her towards your bed. You follow close behind, admiring their pert asses. Aire lays down on her back on top of the bedcovers, spreading her slender elven legs. Anastasia looks back at you over her shoulder for a moment, as if unsure, but Aire pulls on her hand and draws the reluctant princess down until she is laying on top of the excited elf.""",
 
@@ -6426,38 +6364,509 @@ You order the two naked girls off the floor. Aire rises and takes Anastasia by t
 
 GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
 
-Your hand runs over the smooth curve of Anastasia’s round ass, before slipping down between her legs. Her pussy is warm and wet with her own juices and she gasps softly in pleasure as your fingers enter her, her back arching when you stroke her clit.
+Your hand runs over the smooth curve of Anastasia's round ass, before slipping down between her legs. Her pussy is warm and wet with her own juices and she gasps softly in pleasure as your fingers enter her, her back arching when you stroke her clit.
 
-Your fingers move lower, probing Aire’s tight slit and finding it hot to the touch as it opens easily under the pressure of your fingertips. Aire moans with desire. You move around and mount the bed behind Anastasia
+Your fingers move lower, probing Aire's tight slit and finding it hot to the touch as it opens easily under the pressure of your fingertips. Aire moans with desire. You move around and mount the bed behind Anastasia
 
-Aire: — Ana, I- I’m glad I can serve you and the [Master] in this way.
+Aire: — Ana, I- I'm glad I can serve you and the [Master] in this way.
 
 Anastasia: — Stop saying silly things like this...
 
-Using both hands, you press Anastasia down on top of Aire and spread her legs wider. Their pussies stacked on top of each other, you penetrate Aire first, squeezing Anastasia between you as your cock pushes firmly into the elf girl’s willing pussy. Aire cries out as you shove yourself all the way into her, stretching her tight cunt with your rock-hard penis.""",
+Using both hands, you press Anastasia down on top of Aire and spread her legs wider. Their pussies stacked on top of each other, you penetrate Aire first, squeezing Anastasia between you as your cock pushes firmly into the elf girl's willing pussy. Aire cries out as you shove yourself all the way into her, stretching her tight cunt with your rock-hard penis.""",
 
-GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire’s juices, slips easily into her wet hole. The two girls stare into each other’s eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
+GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire's juices, slips easily into her wet hole. The two girls stare into each other's eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
 
-You feel Anastasia’s pussy grip your cock as she approaches orgasm and you pull out. The princess whines softly as you plunge your cock back into Aire, fucking her tight elven pussy hard as you use Anastasia’s naked body to pin her to the bed.. 
+You feel Anastasia's pussy grip your cock as she approaches orgasm and you pull out. The princess whines softly as you plunge your cock back into Aire, fucking her tight elven pussy hard as you use Anastasia's naked body to pin her to the bed.. 
 
 Aire clings to Anastasia as you fuck her to the edge of orgasm and then withdraw. She whimpers as your meat slips out of her, pussy twitching helplessly. When you thrust into Anastasia this time she presses her ass back into you, begging urgently to be fucked.""",
 
 
 GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
 
-You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia’s pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire’s aching pussy with your cum. 
+You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia's pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire's aching pussy with your cum. 
 The two girls lie in a tangled heap of slender limbs, flushed and panting for breath as you pull out of Aire. Your cum trickles from her as she lies underneath Anastasia. 
 
 Aire: — Oh, master… I never dreamed… I… thank you...
 
-Anastasia can barely speak and slumps heavily on top of Aire. Her perfect ass rises and falls as she gasps for breath, pussy hot and glistening with her own juices. You feel your cock stiffening again and you cram it into the princess’s exposed cunt.
+Anastasia can barely speak and slumps heavily on top of Aire. Her perfect ass rises and falls as she gasps for breath, pussy hot and glistening with her own juices. You feel your cock stiffening again and you cram it into the princess's exposed cunt.
 
-You fuck Anastasia roughly, fingers sinking into the soft flesh of her ass as you pound her. Underneath, Aire squeezes the princess’s breasts while you thrust savagely into Anastasia’s wet pussy. Anastasia cries out, caught between pain and pleasure as your cock ploughs relentlessly into her.
+You fuck Anastasia roughly, fingers sinking into the soft flesh of her ass as you pound her. Underneath, Aire squeezes the princess's breasts while you thrust savagely into Anastasia's wet pussy. Anastasia cries out, caught between pain and pleasure as your cock ploughs relentlessly into her.
 
-In a few minutes you cum again, shooting your seed into Anastasia’s throbbing cunt as she is overwhelmed by a tearful orgasm. Aire cums again too, fingering her own leaking hole frantically as you fuck her beloved princess on top of her. Your cum spills from Anastasia’s pussy over Aire’s hands.
+In a few minutes you cum again, shooting your seed into Anastasia's throbbing cunt as she is overwhelmed by a tearful orgasm. Aire cums again too, fingering her own leaking hole frantically as you fuck her beloved princess on top of her. Your cum spills from Anastasia's pussy over Aire's hands.
 
 Casually, you inform both girls that whenever they are ready there is work to be done.""",
 
+	
+	ZEPHYRA_RECRUITMENT_LETTER = "In the morning you receive a letter from Ginny from the local church, asking you to visit her.",
+	ZEPHYRA_RECRUITMENT_1 = """— Welcome, [name]! I heard you've become a Mayor now? Congratulations!
+
+— I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you. I take it she's your acquaintance?""",
+	ZEPHYRA_RECRUITMENT_2 = """Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful — as a Champion ought to be.
+
+Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And in such scary times too. Can you imagine what all those desperate bandits could do to someone like me? 
+
+Zephyra: — Well, I see you've settled this war for good. I was right about you after all.""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_1 = """You really are full of surprises""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_2 = """I'm surprised you're still following me""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_3 = """I don't have time for this""",
+	ZEPHYRA_RECRUITMENT_3_1 = """Zephyra: — Please, you are flattering me. It's just a mission I have to perform.
+
+Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
+
+Zephyra: — Do you know what an Artifact is? It's an item from a deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	ZEPHYRA_RECRUITMENT_3_2 = """Zephyra: — There's a mission I have to perform, so we're here now.
+
+Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
+
+Zephyra: — Do you know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	ZEPHYRA_RECRUITMENT_3_3 = """Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
+
+Zephyra: — If you tell me, I won't be bothering you anymore then.""",
+	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = """Yes, I want you to leave me alone""",
+	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = """I've changed my mind""",
+	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "There might be a problem with this...",
+	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession",
+	ZEPHYRA_RECRUITMENT_4 = """You explain to Zephyra what has happened during the earlier days of civil war.
+
+Zephyra: — Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other artifacts. 
+
+Zephyra: — The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+	ZEPHYRA_RECRUITMENT_4_OPTION_1 = "How do I know your goals are good?",
+	ZEPHYRA_RECRUITMENT_4_OPTION_2 = "So how do you propose for me to get to it?",
+	ZEPHYRA_RECRUITMENT_5_1 = """Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
+
+Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
+
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+	ZEPHYRA_RECRUITMENT_5_2 = """Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
+
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+	ZEPHYRA_RECRUITMENT_5_OPTION_1 = "Very well, you can join me",
+	ZEPHYRA_RECRUITMENT_5_OPTION_2 = "I'm not going to bother with it after all",
+	ZEPHYRA_RECRUITMENT_6_GOOD = """Zephyra: — Jeez, finally. You really played this hard to get, didn't you? I'm glad we can be friends from now on at least. Don't mind me too much, please.""",
+	ZEPHYRA_RECRUITMENT_6_BAD = """Zephyra: — Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drowning in a sewer. Farewell, [name].
+
+Zephyra leaves the church without giving you a second glance.""",
+	ZEPHYRA_SWORD_1 = """— You've done it, [name]. Not something just anyone can brag about. I'm glad my decision to join your side was the correct one after all.
+
+— Now that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
+
+— You know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+	ZEPHYRA_SWORD_1_OPTION_1 = "There might be a problem with this...",
+	ZEPHYRA_SWORD_1_OPTION_2 = "This sword is no longer in our possession",
+	ZEPHYRA_SWORD_2 = """You explain to Zephyra what has happened during the earlier days of the civil war.
+
+— Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we  focus on collecting other artifacts. 
+
+— The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+	ZEPHYRA_SWORD_2_OPTION_1 = "I doubt that they will simply give it to us",
+	ZEPHYRA_SWORD_2_OPTION_2 = "What's gonna happen after we gather all the artifacts?",
+	ZEPHYRA_SWORD_3_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
+	ZEPHYRA_SWORD_3_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
+	PRIESTESS_SWORD_TALK_1_1 = """After making an appointment, you are able to find an audience with the High Priestess. 
+
+— Just so you know, I'm only receiving you because of your high status. What do you need?""",
+	PRIESTESS_SWORD_TALK_1_2 = """The priestess gives you a scornful look.
+
+— Cease your human banter, as Freya's chosen I have no time for such things. Even if we had some common ground in the past it means nothing.""",
+	PRIESTESS_SWORD_TALK_1_OPTION_1 = "Are you doing well?",
+	PRIESTESS_SWORD_TALK_1_OPTION_2 = "I'm actually seeking for specific artifacts...",
+	PRIESTESS_SWORD_TALK_2 = """You explain everything you know about the artifacts and the demon woman who seems to be after them. Contrary to your expectations, the High Priestess does not seem impressed.
+
+— What you say hardly concerns me. Naturally there's no way this will happen. You are not allowed to get anywhere close to the Sacred Bowl. As for the demon you mentioned, we know nothing about it. If there's nothing else, I'll ask you not to bother me anymore. """,
+	PRIESTESS_SWORD_TALK_2_OPTION_1 = "But this might be crucial for you too",
+	PRIESTESS_SWORD_TALK_2_OPTION_2 = "Is there nothing that can change your mind?",
+	PRIESTESS_SWORD_TALK_2_OPTION_3 = "You might regret this decision",
+	PRIESTESS_SWORD_TALK_2_OPTION_4 = "*Leave*",
+	PRIESTESS_SWORD_TALK_3_123 = "The priestess ignores your response and calls a guard to show you the way out.",
+	PRIESTESS_SWORD_TALK_3_4 = "You decide there's nothing to be done and it's time to go.",
+	PRIESTESS_SWORD_TALK_4_0 = """You leave the High Priestess's chambers and walk away, but after a few hundred feet a couple guards stop you and ask you to follow them. They bring you to what seems to be the military's headquarters and a tall elf man greets you.
+
+— Hello, [name]. Please, don't be alarmed, I only ordered my men to bring you in for a chat. """,
+	PRIESTESS_SWORD_TALK_4_1 = """— I'm Erlen, the current military commander. It's not as impressive a title as you might imagine, since we are direct subordinates of the High Priestess. Freya's High Priestess is our governor and she also defines our laws. Not every elf is happy about that, though.""",
+	PRIESTESS_SWORD_TALK_4_2 = """— Yes, you might find it unusual, we prefer to remain civil and use underhand tactics inside of our society. There are many other etiquette and religious rules I'm not going to bother you with, as these are not relevant to the reason you are here.""",
+	PRIESTESS_SWORD_TALK_4_OPTION_1 = "Who are you?",
+	PRIESTESS_SWORD_TALK_4_OPTION_2 = "You elves have some shady ways of doing things",
+	PRIESTESS_SWORD_TALK_4_OPTION_3 = "What do you want?",
+	PRIESTESS_SWORD_TALK_5 = """— I've heard you are looking for a Sacred Bowl. Your story raises some questions but my sources suggest your information is credible. I can talk the High Priestess into giving you a chance to claim the Sacred Bowl.""",
+	PRIESTESS_SWORD_TALK_5_OPTION_1 = "Why would you be so generous?",
+	PRIESTESS_SWORD_TALK_5_OPTION_2 = "This won't be for free I bet?",
+	PRIESTESS_SWORD_TALK_6 = """— First I need you to do something in return. On the edge of our forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.""",
+	PRIESTESS_SWORD_TALK_6_OPTION_1 = "Do you dislike those Beastkin?",
+	PRIESTESS_SWORD_TALK_6_OPTION_2 = "Why won't you go yourself?",
+	PRIESTESS_SWORD_TALK_6_OPTION_3 = "Very well, I'll do it",
+	PRIESTESS_SWORD_TALK_7_1 = """— Elves have a... complicated relationship with the beastkin. They don't worship Freya, instead they worship Rundas. They don't quite respect nature and great trees as we do. They live in the wild, following their primal instincts. To be frank, we see them as hardly more than savages, but we have agreed to tolerate them, as long as they are secluded.""",
+	PRIESTESS_SWORD_TALK_7_2 = """— I'm obviously not allowed to go just anywhere on my own, and I can't really send any of my regular soldiers on such a delicate mission. That's why I contacted you. Yes, for that matter, I will need you to stay quiet about this mission.""",
+	PRIESTESS_SWORD_TALK_7_3 = """Erlon smiles for the first time in your talk.
+
+— I'm glad to hear that. Here's the message I have prepared. I'll mark their location on your map. You should have little trouble getting there. Once you bring me their answer, I'll do what I can to persuade the High Priestess to help with your goal.""",
+	CHIEFTAIN_MEETING_1 = """You manage to arrive at the tribe's settlement without any notable problems, in fact you were surprised to find that nobody stopped you on your way in. Most of the various beastkin and some halfkin walking around paid you little serious attention, though a few observed you closely and even made ambiguous gestures. 
+
+You've noticed they seem unusually carefree and even frivolous, including the way they dress and talk. This notion was reinforced when a few times you've came across barely hidden couples having sex right out in the open in the middle of the day, and your appearance didn't seem to bother them. As you made your way past one such couple, an older beastkin woman called out to you.
+
+— Aah, we have a new visitor. It's been a while since the last one. Do you require some help, perhaps?""",
+	CHIEFTAIN_MEETING_1_OPTION_1 = "Who are you?",
+	CHIEFTAIN_MEETING_1_OPTION_2 = "A new visitor?",
+	CHIEFTAIN_MEETING_1_OPTION_3 = "I'm looking for the chieftain of the village",
+	CHIEFTAIN_MEETING_2_1 = """— I'm Savra, the tribe's shaman. You can think of me as an elder who guides our younger kinsmen. """,
+	CHIEFTAIN_MEETING_2_2 = """— Yes. Owing to the remoteness of our location, there are not many other settlements around here besides the elves, who don't think very highly of us. New visitors are a rare sight.""",
+	CHIEFTAIN_MEETING_2_3 = """— Our Chieftain is Leon, you'll find him by the large hut near the cave. Now, if you'll excuse me, I have some business to attend to, we'll meet again later.""",
+	CHIEFTAIN_MEETING_3_1 = """In a spacious hut you find Leon, the tribe's chieftain. 
+
+— Greetings, traveler. I welcome you to the home of our tribe, as long as you stay civil and tolerant. We are happy to have to accept another among our kin, if this interests you.
+
+— I have already heard that you were looking for me. We are ever-mindful of guests but if you have some sort of business to present I'm obliged to hear it.""",
+	CHIEFTAIN_MEETING_3_2 = """In a spacious hut you find Leon, tribe's chieftain. 
+
+— Greetings, traveler. I welcome you to the home of our tribe, as long as you stay civil and tolerant. You might not be of our kin, but you don't have to worry about your safety here.
+
+— I have already heard that you were looking for me. We are ever-mindful of guests but if you have some sort of business to present I'm obliged to hear it.""",
+	CHIEFTAIN_MEETING_3_OPTION_1 = "I have a message from the elves",
+	CHIEFTAIN_MEETING_3_OPTION_2 = "Erlen sent me",
+	CHIEFTAIN_MEETING_4 = """You pass Leon the sealed letter, which opens in his paws. As he reads through it, you notice how his face frowns, yet he remains silent until he finishes reading. After thinking it through, he finally speaks.
+
+— I take it you will need my answer. I'm not sure what reason you have to travel here, but we have our needs too. You'll have to do something for us, then you'll get my answer.""",
+	CHIEFTAIN_MEETING_4_OPTION_1 = "Why me?",
+	CHIEFTAIN_MEETING_4_OPTION_2 = "What do you want?",
+	CHIEFTAIN_MEETING_4_OPTION_3 = "I guess there's no choice",
+	CHIEFTAIN_MEETING_5 = """— We have certain customs and rituals we are required to carry by Rundas. You are the first visitor in the last couple of months and you can help us with that. There's one ritual which we need an outsider to perform and if you wish to carry my answer back to the elves, I will require you to participate in it. It's nothing dangerous for you, in case you are concerned.
+
+— Find Savra, she'll tell you the details, she must be already excited about your arrival.""",
+	MAE_MEETING_1 = """As you enter the lodge, a young surprised tanuki girl appears before you, dressed in skimpy clothing. Her demeanor is unusually peculiar compared to the other villagers, though she is also visibly nervous.
+
+— Ah! H-hello! I haven't seen you around before. You are an outsider, right?.. I mean, of course you are. U-hm, I'm Mae, pleased to meet you. You must be looking for Savra? She's in the far room. N-now, please, excuse me.
+
+Before Mae finally leaves the room, she gives you another curious yet slightly frightened look. """,
+	MAE_MEETING_2 = """— Hello, again, outsider. It's a pleasure to see a new visitor these days. I suspect you've been led here by the words of the long-eared. That matters little to me, as this is just another whim of the gods. The only question is if it's the whim of Rundas or not. And so far I tend to believe it is. Say, what do you think about us?""",
+	MAE_MEETING_2_OPTION_1 = """I've seen some things on the way here...""",
+	MAE_MEETING_2_OPTION_2 = """I haven't noticed anything unusual, if anything everyone should be as open""",
+	MAE_MEETING_2_OPTION_3 = """I'm not too fond of this lifestyle""",
+	MAE_MEETING_2_1 = """— You aren't too familiar with our customs. We are descended from Rundas, the creator of the wilds and animals. As his children, we accept the nature of consequenceless mating and love. Those who reach adolescence in this tribe learn the way of sharing their feelings with others through the language of the body. The new young are adopted and raised by the whole tribe.""",
+	MAE_MEETING_2_1_OPTION_1 = """What about those who refuse?""",
+	MAE_MEETING_2_1_OPTION_2 = """This is barbaric to me""",
+	MAE_MEETING_2_1_OPTION_3 = """That's a nice custom""",
+	MAE_MEETING_2_1_1 = """— They aren't forced to, naturally. They can even leave, though they'll have to make their way through the elven guards to make it to the less dangerous part of the continent. But this happens quite rarely.
+
+— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
+
+— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+	MAE_MEETING_2_1_2 = """— I know that some outsiders often think that, but others don't seem to mind and even choose to participate. Though, there's been very few of you lately.
+
+— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
+
+— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+	MAE_MEETING_2_1_3 = """— Then you should find our company pleasant. Not mine, though, I'm a bit out of shape as you can see.
+
+— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
+
+— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+	MAE_MEETING_2_2AND3 = """— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
+
+— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+	MAE_MEETING_3_OPTION_1 = """Are you going to kill her?!""",
+	MAE_MEETING_3_OPTION_2 = """What are you talking about?""",
+	MAE_MEETING_3_OPTION_3 = """I'm not sure I need to know that""",
+	MAE_MEETING_3_1 = """— Kill? No way. Do you really think of us as savages? She'll be going through shaman initiation. As my future successor, she'll have to copulate with an outsider —  that will be your duty. 
+
+— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem. 
+
+— If she becomes pregnant it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""",
+	MAE_MEETING_3_2AND3 = """— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem. 
+
+— If she becomes pregnant it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""",  
+	MAE_MEETING_3_1_OPTION_1 = "Copulate?",
+	MAE_MEETING_3_1_OPTION_2 = "Is she really fine with this?",
+	MAE_MEETING_3_1_OPTION_3 = "Why do you want me to do it?",
+	MAE_MEETING_3_1_OPTION_4 = "Alright, I'll do it",
+	MAE_MEETING_3_1_OPTION_5 = "I won't do this",
+	MAE_MEETING_4_1 = """— Yes. She's going to have sex with a male outsider to become the next Rundas medium. Your energy will draw the blessing of Rundas to both of you and this is a requirement for a future Shaman. And, since it's her first time, it will make her offering even stronger.""",
+	MAE_MEETING_4_2 = """— Naturally. You can talk to her if you wish. She's shy, but that's natural for someone of her age who still hasn't taken a single man. Given that she joined us willingly though, I'm certain her mind is already set.""",
+	MAE_MEETING_4_3 = """— You are the only outsider we've welcomed to the village in months, and you do look like a strong male. There are no other requirements. I wish I was somewhat younger myself...""",
+	MAE_MEETING_4_4 = """— Good, good. Leon will be pleased and we'll start the preparations. The end of this week will be perfect for the ritual. Visit me tomorrow and we'll settle on the details.""",
+	MAE_MEETING_4_5 = """Savra grumps looking at you, but seeing you are not going to change your mind, she gives an exasperated sigh.
+
+— Fine. I guess we can work something out some different way then. 
+
+After pondering for some time she turns to you with her request.
+
+— If you bring us enough supplies for a long time we can set a deal and I'll vouch for you for Leon. Bring us 2,000 Meat and Fish, with that we will have ample stores in reserve in case of misfortune.""",
+	SAVRA_SUPPLIES_START = """""", # TODO add text. Savra greeting.
+	SAVRA_SUPPLIES_START_OPTION = "I've brought the supplies you've asked for",
+	SAVRA_SUPPLIES_1 = """— Woah, you really did. That's a lot of food for the tribe. You've kept your word and I'll keep mine, I'll vouch for your case, whatever it is. Shame we couldn't hold the ritual yet.""",
+	SAVRA_RITUAL_START = """You enter Shaman's hut and find Savra at the same place, working on some herb mixtures. As she turns around as sees you, she waves at you.
+
+— It's you, [name]. Good thing you came. I'm actually still in preparations right now. If you don't mind, you can go and help Mae, as she's currently gathering herbs outside of the village. I'll tell you where it is...""",
+	SAVRA_RITUAL_START_OPTION_1 = "I'll go to her then",
+	SAVRA_RITUAL_START_OPTION_2 = "Fine, I have to finish this sooner",
+	PRE_RITUAL_1 = """You come to the spot where Mae should be, but you find no one. You thought it could be a wrong place, but after searching you find traces of a fight and a basket similar to those you've seen at settlement. 
+
+Your attempt to track meets with little success. As you decide to return back and report on your findings, you hear a rustle from one of the nearby bushes. As you move closer, a small weasel quickly runs away from it. As you give a sigh and prepare to walk away, you notice that the small animal hasn't disappeared from sight as you would normally expect it to.
+
+Somehow, it carefully looks at you without moving, as if requiring your attention. [color=lime]You must follow it.[/color] Without any good reason to follow it, you still decide to do it.""",
+	PRE_RITUAL_2 = """As you follow the weasel through the forest, soon it brings you to its goal: a small human camp. A couple of cages and furniture make clear that it belongs to slavers. As you are scouting the camp, you realize that your guide has swiftly disappeared, but that doesn't bother you anymore, as in one of the cages you observe a familiar silhouette which likely belongs to the girl you are looking for.
+
+A couple of patrolling slavers went by your hiding spot.
+
+Slaver: — So far only one beastkin for a whole day. Shitty luck.
+
+Slaver2: — At least she's young and fresh, will surely net us some gold.
+
+Slaver: — Hmph, she's fat and weak. Can't even sell her for labor.""",
+	PRE_RITUAL_3 = """Slaver2: — But she's kinda cute.
+
+Slaver: — Only sick bastards like you would find her cute. By the way, don't you dare fuck her while we're sleeping, her virginity might be her only redeeming quality.
+
+Slaver2: — Crap... I could do her in the ass instead then?
+
+The patrol have continued on their way, leaving you wondering what to do.""",
+	PRE_RITUAL_3_OPTION_1 = """Try to deal with them""",
+	PRE_RITUAL_3_OPTION_2 = """Sneak (Physics Check)""",
+	PRE_RITUAL_3_OPTION_3 = """Attack""",
+	PRE_RITUAL_4_1_1_100 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 100 gold.
+
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
+	PRE_RITUAL_4_1_1_300 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 300 gold.
+
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
+	PRE_RITUAL_4_1_1_500 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 500 gold.
+
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
+	PRE_RITUAL_4_1_1_OPTION_1 = """Pay""",
+	PRE_RITUAL_4_1_1_OPTION_2 = """Fight""",
+	PRE_RITUAL_4_1_2 = """You pass the money to the smirking slavers as they bring you the captured girl. You decided not to tempt the fight and quickly lead her away from the camp.""",
+	PRE_RITUAL_4_2_1 = """{color=green|Success}
+
+You successfully sneak by the patrols and get to the cage with Mae in it. Fortunately, the keys to the cage are just a couple of feet away, allowing you to silently unlock it. Making as little sound as possible, you lead Mae away from the slavers' camp.""",
+	PRE_RITUAL_4_2_2 = """{color=red|Failure}
+
+As you try to sneak by the patrols, you trip on a tree root and fall on the ground, making a loud noise. As the slavers make their way towards you, you realize there's no option but to fight.""",
+	PRE_RITUAL_4_3 = "You decide that there's no better option but to strike now before they know you are there. With that, you fiercely charge.",
+	PRE_RITUAL_5 = """As you defeat the nearby slavers, you walk to the cage with Mae in it and get her out. Luckily, she seemed to be the only person who was caught so far. As you help her to regain her bearings, you decide to leave this camp before someone else shows up.""",
+	PRE_RITUAL_6 = """As you get on the safer distance from the slavers' camp, Mae looks at you with a sight of reverence and relief. 
+
+— Thank you. I was only gathering herbs when they came from behind and seized me. It was so scary... I dunno what could've happened to me if not for you. 
+
+— I wonder if that's really some kind of fate that we...""",
+	PRE_RITUAL_6_OPTION_1 = "I'm glad you are safe",
+	PRE_RITUAL_6_OPTION_2 = "You should be more careful",
+	PRE_RITUAL_6_OPTION_3 = "I think you could thank me for this (sexuals check)",
+	PRE_RITUAL_6_OPTION_4 = "Don't mention it",
+	PRE_RITUAL_7_1AND2AND4 = """— Y-yes. I'm really grateful. Now, I gotta collect  the herbs we need again before we return, if you don't mind.""",
+	PRE_RITUAL_7_1AND2AND4_BAD = """{color=red|Failure}
+
+— Y-yes. I'm really grateful. Now, I gotta collect  the herbs we need again before we return, if you don't mind.""",
+	PRE_RITUAL_7_3_1 = """{color=green|Success}
+
+As Mae realizes what you are suggesting, she gives you a nervous look. 
+
+— It's not that I don't like you, but... I can't. I have to remain a virgin for the ritual, you must understand.""",
+	PRE_RITUAL_7_3_1_OPTION_1 = "I can settle for a blowjob",
+	PRE_RITUAL_7_3_1_OPTION_2 = "Use your mouth then",
+	PRE_RITUAL_7_3_2 = """— You did risk your life for me... Okay, I can do it. But, please, excuse my inexperience, I've never done this before.
+
+Mae kneels before you and as she frees your dick from your pants she's almost enthralled by the sight of it. Before she starts, you ask her to bare her breasts which she does after a short pause.""",
+	PRE_RITUAL_7_3_3 = """— Thank you again. I hope you weren't disappointed? That was a bit scary at first, but I guess it's good practice. """,
+	PRE_RITUAL_8 = """You help Mae to gather the required plants and you head back to the tribe. 
+
+— So... uhm... You will be my Taker. You've come since you want to know me better? """,
+	PRE_RITUAL_8_OPTION_1 = "You don't appear very local to me",
+	PRE_RITUAL_8_OPTION_2 = "Are you okay doing this ritual?",
+	PRE_RITUAL_8_OPTION_3 = "Let's go then",
+	PRE_RITUAL_9_1 = """— I ran away from an empire town. After my parents died I would have soon become a slave. I heard about this tribe of people like me who would allow me to live with them. They were surprisingly friendly and accepting to me, and as you can see I have become the shaman's apprentice.
+
+— I'm not entirely used to how open they are about... you know, but since they have never tried to force me, I think they want me to fully accept it by myself.""",
+	PRE_RITUAL_9_2 = """— Yes, I've made up my mind to do what is required of me since the moment I arrived here. It just so happens you are going to become... m-my first. D-don't think I'm trying to say that I don't like you or anything! I think you are very brave and... at-attractive... 
+
+Mae blushes and looks away realizing she might've said something embarrassing.""",
+	PRE_RITUAL_10 = """As you are getting closer to the settlement, Mae stops in place.
+
+— As tomorrow we gonna participate in a ritual, I want to ask you something. I don't wanna get pregnant, but there's little I can do. Before the ritual I'll have to drink a mixture which should dim my mind and make me more willing for my first time. This mixture helps initiates like me to have an easier time.
+
+— But, it will also enhance my ovulation to the point even contraceptives won't stop me from getting pregnant. I have prepared a powder which will negate that effect, but I won't be able to reach it before the ritual. 
+
+— You aren't going to stay here after the ritual, so it's nothing to you, but, please, do this for me, I'm too scared of becoming a mother yet. If you get an opportunity, just drop the powder into my bowl so no one sees it. 
+
+You take the small pouch with powder Mae passes to you and put it away. As you enter the tribe Mae gives you a bow and leaves you for her delivery.""",
+	RITUAL_START = """After the sun sets, the tribe lights some incense you haven't seen before. You realize that the familiar scent of aphrodisiacs is supposed to make everyone more relaxed and aroused, including you. """,
+	RITUAL_START_OPTION_1 = "Put Mae's powder into bowl",
+	RITUAL_START_OPTION_2 = "Don't put Mae's powder into bowl",
+	RITUAL_1_1 = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]?
+
+It seems you've failed to spoil Mae's ritual drink and now will have to go through it. 
+
+{color=green|Success}
+
+Making sure nobody sees, you quickly drop the powder that Mae gave you into the bowl prepared for her.
+
+You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
+
+After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
+	RITUAL_1_2 = """You decided not to risk it and not do as she asked you. Perhaps you will be able to tell her you had no chance to do so later. 
+
+You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
+
+After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
+	RITUAL_2 = """According to the rules of the ceremony, Mae loses her robe and lets it fall to the ground, revealing her fully naked body daubed with wide lines of the ritual paint. 
+
+After a few moments her eyes become unfocused and her movements get sluggish. Before she can lose her balance, Savra catches her by the arm and leads to the altar. As Mae falls into your arms Savra contentedly retreats and invites you to do your part.
+
+— [name]... I can't wait anymore...
+
+Mae's voice is aimless, yet very sensual. As you help her to lay down before you, you start to notice the observing tribe members getting into making out with each other.""",
+	RITUAL_3 = """Mae's slit is completely drenched, proving that she's fully ready to become a woman by your actions. The narcotic haze has completely removed any will to resist or escape from her, ideal for the ritual. A small trail of blood has painted the fur around her pussy red.
+
+As you pummel into Mae's pussy, your field of view narrows and vision blurs, although you feel Mae in front of you keener than ever. You are the Taker this time, but it's not important. You want more power, and that's a noble thing, but not for everyone. Yet, power defines everything, and anyone accepting it will receive my blessing.""",
+	RITUAL_4 = """Even though these people switched to less ferocious ways of living, their mating habits have so much life and power in it. Your dominance over this girl, and her acceptance of it makes both of you the perfect exemplars. Even more so as neither of you are natives. 
+
+Fill it. Fill her womb with your seed. Have her accept it. Have her body experience it. This is what she was made for. This is what you were made for. The endless cycle of giving and taking...""",
+	RITUAL_5 = """You raise speed, realizing you are getting closer to orgasm. Mae, despite looking lost in delirium, seems to quickly pick up on your intentions. Nothing distracts you anymore and you thrust for the last time, filling Mae with your hot seed, making her scream with pleasure.
+
+However, this does not seem enough for either of you, and you resume moving again. Even though Mae shows some signs of exhaustion, she does not seem to be willing to stop either. As you continue working on the poor girl's sensitive pussy, a couple of the male beastkin approached you.
+
+— Hey, you don't mind if we also do some bonding with our future shaman, do you?
+
+You realize Mae wouldn't be able to answer anything coherent to this and turn your eyes to Savra.
+
+— We'll do as you say, [name]. You are the Taker and we'll respect your decision.""",
+	RITUAL_5_OPTION_1 = """Allow""",
+	RITUAL_5_OPTION_2 = """Refuse""",
+	RITUAL_6_1 = """A few beastkin males approach Mae from the head, presenting their erect cocks to her face. The formerly shy girl obediently takes hold of their members and begins to serve them with her mouth and hands like it was the most natural thing in the world. 
+
+As Mae's body was overwhelmed with every new orgasm, males at her top have also been made to cum by her, spraying over her head and breasts. New males replaced them, so that she was covered with more and more semen. However, this didn't bother her, as she hungrily sucked and served every new cock in turn.
+
+— Her front is for the Taker only. If you really need to, you can use her ass.
+
+Mae only gave another pleasant moan as her butt was penetrated for the first time. It felt like almost the whole adult male half of the tribe was served by her tonight...""",
+	RITUAL_6_2 = """You decide that Mae wouldn't like things to go that far and reject the men's demand. The males look annoyed but retreat to find some comfort from other willing women. Despite Mae's delirious face, you can read some hints of gratitude from her, as you return to working on her quivering body. It feels like you spend the whole night doing this, until eventually your memory blacks out...""",
+	AFTER_RITUAL_START = """Next morning you find yourself resting alone at one of the lodges. Judging from the sun it's already somewhat late and you decide to go outside. You are met by Leon and Savra, who seemed to be waiting for you. 
+
+Leon: — A fine performance, [name]. Hope you aren't too sore from last night.
+
+Savra: — Yes, that indeed was very good. I feel that Rundas is greatly pleased by you and us. We'll be blessed for a long while.""",
+	AFTER_RITUAL_START_OPTION_1 = "How's Mae?",
+	AFTER_RITUAL_START_OPTION_2 = "So you're gonna help me now?",
+	AFTER_RITUAL_1_1 = """Savra: — She's been resting after yesterday like you, but you seemed to be more experienced at such things. In case you're worried about her mental state, I can assure you she's all good. 
+
+Leon: — She's a darn fine woman. A great addition to the tribe with a good sense of responsibility.""",
+	AFTER_RITUAL_1_2 = """Leon: — You've done your part of the deal, so I'll keep mine. I'll go prepare the response. You can visit me tomorrow to collect it.""", 
+	AFTER_RITUAL_2 = """Mae leaves the tent and after seeing you noticeably blushes. 
+
+— ...G-good morning. Are you feeling well?""",
+	AFTER_RITUAL_2_OPTION_1 = """Yes""",
+	AFTER_RITUAL_2_OPTION_2 = """What about you?""",
+	AFTER_RITUAL_3 = """— I'm still feeling a bit dizzy. Not remembering things very clearly from yesterday. At least I'm glad this is done with. """, 
+	AFTER_RITUAL_3_OPTION_1 = "It was fun, wasn't it?",
+	AFTER_RITUAL_3_OPTION_2 = "Yeah, good thing we are done with it",
+	AFTER_RITUAL_3_OPTION_3 = "You did well for your first time",
+	AFTER_RITUAL_4 = """— I feel like you've become very important to me just from these couple of days. After all, you've saved me from those slavers.""",
+	AFTER_RITUAL_4_OPTION_1 = "My reward was worth it",
+	AFTER_RITUAL_4_OPTION_2 = "You should watch out for yourself and not get caught next time",
+	AFTER_RITUAL_4_OPTION_3 = "It's good nothing bad happened to you in the end",
+	AFTER_RITUAL_4_OPTION_4 = "You can't deny It was an unusual experience",
+	AFTER_RITUAL_5_1 = """— Hope that wasn't the only reason you saved me, though.""",
+	AFTER_RITUAL_5_2AND3 = """— Y-yeah, I guess I'm still kinda clumsy about such things. Thanks again. """,
+	AFTER_RITUAL_5_4 = """— Heh, I guess you could say that, yeah. Not sure I'd like to be in that situation again, though.""",
+	AFTER_RITUAL_GROUP_1 = """— During the ritual... I remember that you allowed others to use me, while I was in trance. I can't believe you did something like that, and during my first time too.""",
+	AFTER_RITUAL_GROUP_1_OPTION_1 = "But you seemed to quite enjoy it",
+	AFTER_RITUAL_GROUP_1_OPTION_2 = "That was a worthy experience for your new position",
+	AFTER_RITUAL_GROUP_1_OPTION_3 = "I couldn't reject such a sincere requests",
+	AFTER_RITUAL_GROUP_1_OPTION_4 = "It's a crime to keep your body from others",
+	AFTER_RITUAL_GROUP_2_1 = """— T-that's only because I wasn't thinking straight and you know it! The only reason I'm not dying from shame is that I hardly recall anything that happened.""",
+	AFTER_RITUAL_GROUP_2_2 = """— That's not something for you to decide, I surely could do it without such experience.""",
+	AFTER_RITUAL_GROUP_2_3 = """— Hmph, my friend was right, you men are all the same, can't be trusted with any decency. """,
+	AFTER_RITUAL_GROUP_2_4 = """Mae makes a long pause trying to approach your words, but it seems your flattery has calmed her distress.
+
+— E-even if you say so, that's not something you should do with a girl without her consent. """,
+	AFTER_RITUAL_GROUP_2_OPTION_1 = "I'm sorry, let's just forget it",
+	AFTER_RITUAL_GROUP_2_OPTION_2 = "But you seemed to enjoy it...",
+	AFTER_RITUAL_GROUP_3_1 = """— Okay, let's forget it.""",
+	AFTER_RITUAL_GROUP_3_2 = """— T-that was unusual for me. I never imagined something like this would happen, but now that I think about it... Nevermind! Let's just forget it, okay?""",
+	AFTER_RITUAL_POWDER_1 = """— Savra said I got pregnant and we both can feel it... Why didn't you add a neutralizer to the mixture as I asked you? I really begged you. I'm not ready to become a mother.""",
+	AFTER_RITUAL_POWDER_1_OPTION_1 = "Well there's not much we can do about it now",
+	AFTER_RITUAL_POWDER_1_OPTION_2 = "I had no good opportunity to do it, so it's hardly my fault",
+	AFTER_RITUAL_POWDER_1_OPTION_3 = "We should take care of our future child now",
+	AFTER_RITUAL_POWDER_1_OPTION_4 = "I just really wanted to knock you up with my child",
+	AFTER_RITUAL_POWDER_2_1AND2AND4 = """Mae sighs in exasperation as if she knows she shouldn't have trusted you in the first place. 
+
+— ...Forget it. """,
+	AFTER_RITUAL_POWDER_2_3 = """Mae gives you a puzzled look, as if trying to measure how reliable your words are. 
+
+— W-well, yeah. I guess that's what we should do now once it's born. I hope you are not going to leave me completely alone then?.. Thanks. """,
+	AFTER_RITUAL_6 = """— Say, I never really asked, but what are you actually doing? What do you plan to do from now on?""",
+	AFTER_RITUAL_6_OPTION_1 = "I have an important state mission to fulfill",
+	AFTER_RITUAL_6_OPTION_2 = "I'm just an adventurer with some extra entitlement",
+	AFTER_RITUAL_6_OPTION_3 = "I'm probably on a mission to save the world",
+	AFTER_RITUAL_6_OPTION_4 = "I just go where I have to and do what I must",
+	AFTER_RITUAL_GOOD_1 = """— Y-you know, I wish I would be able to join you for some more time. Not that I dislike it here, but... I guess I feel like that because of yesterday's thing.""",
+	AFTER_RITUAL_GOOD_1_OPTION_1 = "Your company would certainly be appreciated",
+	AFTER_RITUAL_GOOD_1_OPTION_2 = "I can't really take you with me",
+	AFTER_RITUAL_GOOD_2_1_1 = """A flicker of excitement jumps across Mae's face which goes away as she looks down.
+
+— B-but that's... I'm not sure if I'll be able to leave here now. """,
+	AFTER_RITUAL_GOOD_2_1_2 = """Savra: — No, it's fine, it might be a good thing for you to go out and get more experience with the outer world. 
+
+Mae: — Really? I thought I was gonna be a complete tribe's shaman now.
+
+Savra: — Don't be silly, I'm still alive and kicking, you know. Go out and have fun with [name], I'm sure [he]'s a great match for you.
+
+Mae blushes severely thinking of all that happened just yesterday, but nods in agreement.
+
+Mae: — Uhm... Please take care of me.""",
+	AFTER_RITUAL_GOOD_2_2 = "— Right, and I have to be a tribe's shaman now. Still, thank you for this. Hope you'll visit us again.",
+	AFTER_RITUAL_BAD_1_1 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.""",
+	AFTER_RITUAL_BAD_1_2 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.
+
+— Don't forget that your child will be here.""",
+	LEON_VISIT_START = """You enter the chieftain's hut but Leon is nowhere to be found. You decide to find Savra to figure out where he went.""",
+	LEON_VISIT_1_1 = """— Leon's missing? That is unlike him. I haven't seen him since yesterday evening but maybe you should ask around. """,
+	LEON_VISIT_1_2 = """You should search for Leon as it seems he's gone missing.""",
+	ASK_AROUND = """You ask a few watchmen if they've seen Leon, and one of them says that he saw Leon leave slightly before the sunrise. After learning the direction he supposedly went to, you mark the location on your map.""",
+	LEON_FIGHT_1 = """As you search through the area, you come across some fresh tracks. After calling out, you detect some movements short in front of you. As you approach the bush, Leon jumps on you as if you were his prey. In the spur of the moment you barely manage to block his attack with your weapon.""",
+	LEON_FIGHT_1_OPTION_1 = "*Yell at him*",
+	LEON_FIGHT_1_OPTION_2 = "*Push forward*",
+	LEON_FIGHT_2_1 = """Leon completely ignores your words and keeps pushing forward with animalistic frenzy. As you struggle against him, you see no flicker of conscience onhis face. Finally you manage to break away from him, but the fight is not over...""",
+	LEON_FIGHT_2_2 = """Despite your best efforts you can't hope to move him by even an inch. As you struggle against him, you see no flicker of conscience on his face. Finally you manage to break away from him, but the fight is not over...""",
+	LEON_FIGHT_3 = """After getting the best of him, you notice that Leon seems considerably exhausted and is panting heavily. To your surprise, he seems to regain some of his personality as he mumbles some words.
+
+— [name]... Tell Savra... The White Stag.. Has... 
+
+Before finishing the line he seemed to return to his savage state and quickly escaped into the woods. There's little hope in catching him now so you decide to return to Savra.""",
+	SAVRA_TALK = """""",
+	SAVRA_TALK_OPTION_1 = """Tell her about Leon""",
+	SAVRA_TALK_1 = """Savra listens to your story as her mood grows gloomy. 
+
+— So that's what happened... This is a problem. We'll have to save Leon, for which we're gonna need to prepare for the ritual to free his mind. I'll ask you to prepare some materials for it. """,
+	SAVRA_TALK_1_OPTION_1 = "What's going on?",
+	SAVRA_TALK_1_OPTION_2 = "What materials do you need?",
+	SAVRA_TALK_2_1 = """— The White Stag is a magical beast which appears in our lands every few years. When it's here, it drives people crazy, making them go into the wilderness and become beasts themselves. Usually it affects the weak but this time our chieftain was cursed of all people. Until he's back I'll be leading in his role.""",
+	SAVRA_TALK_2_2 = """— Saving someone from the Stag's curse isn't easy until it's defeated. Here's the list of the stuff I'll require, don't take too long. 
+
+Savra passes you a small parchment with the ingredients.
+
+— 50 Magic Wood
+— 25 Iron Wood
+— 15 Mythic Leather""",
+	SAVRA_TALK_2_OPTION_1 = "Seems easy enough",
+	SAVRA_TALK_2_OPTION_2 = "That might take some time",
+	SAVRA_TALK_2_OPTION_3 = "I better get to it then",
+	SAVRA_TALK_3 = """— Very well, visit me again once you have it. Oh, and one more thing. I'll need someone with decent magical powers to help. Someone with a high magic affinity. Find someone suitable for it.""",
+	SAVRA_TALK_OPTION_2 = "I've brought the ingredients",
+	SAVRA_TALK_4 = "— Good, good, talk to me again once you have someone for the ritual.",
+	SAVRA_TALK_OPTION_3 = "I've brought the suitable helper",
+	SAVRA_TALK_5 = "— Yes, this is very good. Let's not waste any time then, we'll start the ritual.",
+	SAVRA_TALK_6 = """After about two hours Savra and [name] come out of the sealed ritual hut and Savra passes you a carven wooden figure vaguely resembling Leon but with large horns on its head. As you look closer, you notice a faint glow coming from it, but after breaking the gaze it's no longer there.
+
+— It is done. Here's the totem. Now you'll have to find Leon and this should clear his mind from the curse. """,
+	SAVRA_TALK_6_OPTION_1 = "Can't you do it yourself?",
+	SAVRA_TALK_6_OPTION_2 = "How exactly does this work?",
+	SAVRA_TALK_6_OPTION_3 = "I'll get to it",
+	SAVRA_TALK_7_1 = """— No, as I said, I must act in place of a chieftain until the current one is missing. I trust you to deal with it.""",
+	SAVRA_TALK_7_2 = """— Find Leon, bring the totem to him. The rest will be obvious.""",
+	
+	
+	
+	
+	
 	
 	
 	
@@ -6509,11 +6918,6 @@ Casually, you inform both girls that whenever they are ready there is work to be
 	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.", # Get the herbs
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild", # return to Amelia
 	
-	ZEPHYRA_ARTIFACTS_SUMMARY = "",
-	ZEPHYRA_ARTIFACTS_NAME = "",
-	ZEPHYRA_ARTIFACTS_STAGE_1 = "",
-	ZEPHYRA_ARTIFACTS_STAGE_2 = "",
-	
 	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_NAME = "Marriage",
 	MARRIAGE_MAIN_STAGE_1 = "Pay 500 gold to Aliron's church to set up a wedding ceremony.",
@@ -6532,6 +6936,27 @@ Casually, you inform both girls that whenever they are ready there is work to be
 	GRYPHON_QUEST_STAGE_3 = "",
 	GRYPHON_QUEST_STAGE_4 = "",
 	
+	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "",
+	PRE_SWORD_ARTIFACT_QUEST_NAME = "",
+	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "",
+	
+	SWORD_ARTIFACT_QUEST_SUMMARY = "",
+	SWORD_ARTIFACT_QUEST_NAME = "",
+#	SWORD_ARTIFACT_QUEST_STAGE_1 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_2 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_3 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_4 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_5 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_6 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_7_1 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_8 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_9 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_10 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_11 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_12 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_13 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 }
 
 

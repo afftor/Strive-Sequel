@@ -283,6 +283,10 @@ func select_person_for_next_event(code):
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
 			{code = 'in_combat_party', value = true}
 			]
+	elif code.find('savra_talk_5') != -1:
+		reqs = [
+			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}
+		]
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},

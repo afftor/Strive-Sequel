@@ -8,6 +8,8 @@ var backgrounds = {
 	garden = load("res://assets/images/backgrounds/garden.png"),
 	aliron = load("res://assets/images/backgrounds/Aliron.png"),
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
+	beastkin_capital = load("res://assets/images/backgrounds/elf_capital.png"),
+	
 
 	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
 	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
@@ -177,6 +179,10 @@ var scenes = {
 	letter = load("res://assets/images/scenes/letter.png"),
 	kobold = load("res://assets/images/scenes/kobold.png"),
 	mines_quest = load('res://assets/images/scenes/mines_quest.png'),
+	aire_death = load('res://assets/images/scenes/aire_death.png'),
+	aire_wound = load('res://assets/images/scenes/aire_wound.png'),
+	tracking = load('res://assets/images/scenes/tracking.png'),
+	gryphon = load('res://assets/images/scenes/gryphon.png'),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
@@ -216,6 +222,8 @@ var sprites = {
 	lilia_body = load("res://assets/images/sprites/lilia_body.png"),
 	lilith = load("res://assets/images/sprites/lilith.png"),
 	lilith_body = load("res://assets/images/sprites/lilith_body.png"),
+	leon = load("res://assets/images/sprites/leon.png"),
+	savra = load("res://assets/images/sprites/savra.png"),
 	jean = load("res://assets/images/sprites/jean.png"),
 	jean_body = load("res://assets/images/sprites/jean_body.png"),
 	hara = load("res://assets/images/sprites/hara.png"),
@@ -228,7 +236,7 @@ var sprites = {
 var dynamic_backgrounds = {
 	aliron = load("res://assets/dynamic_backgrounds/aliron.ogv"),
 	elf_capital = load("res://assets/dynamic_backgrounds/elf_capital.ogv"),
-	furry_capital = load("res://assets/dynamic_backgrounds/furry_camp.ogv"),
+	beastkin_capital = load("res://assets/dynamic_backgrounds/furry_camp.ogv"),
 }
 
 var portraits = {
