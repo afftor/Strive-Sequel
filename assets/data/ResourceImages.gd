@@ -222,17 +222,14 @@ var sprites = {
 	lilia_body = load("res://assets/images/sprites/lilia_body.png"),
 	lilith = load("res://assets/images/sprites/lilith.png"),
 	lilith_body = load("res://assets/images/sprites/lilith_body.png"),
-<<<<<<< HEAD
 	leon = load("res://assets/images/sprites/leon.png"),
 	savra = load("res://assets/images/sprites/savra.png"),
-=======
 	jean = load("res://assets/images/sprites/jean.png"),
 	jean_body = load("res://assets/images/sprites/jean_body.png"),
 	hara = load("res://assets/images/sprites/hara.png"),
 	hara_body = load("res://assets/images/sprites/hara.png"),
 	cali = load("res://assets/images/sprites/cali.png"),
 	cali_body = load("res://assets/images/sprites/cali_body.png"),
->>>>>>> a62df562e967b03ce085912155e9015a2a8851ee
 	
 	}
 

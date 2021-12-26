@@ -36,14 +36,9 @@ var data = {
 #		common_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
 #		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}],
 		options = [ {
-<<<<<<< HEAD
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-				args = [{type = 'add_to_date', date = [1,1], hour = 8}]}]
-=======
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-		args = [{type = 'add_to_date', date = [1,1], hour = 1}]}]
->>>>>>> a62df562e967b03ce085912155e9015a2a8851ee
+				args = [{type = 'add_to_date', date = [1,1], hour = 2}]}]
 		}],
 	},
 

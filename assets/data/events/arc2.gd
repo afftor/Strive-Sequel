@@ -185,9 +185,9 @@ var data = {
 		{text = "PRIESTESS_SWORD_TALK_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "PRIESTESS_SWORD_TALK_4_2", reqs = [], previous_dialogue_option = 2},],
 		options = [ {
-			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true
+			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_1", reqs = [], dialogue_argument = 1, remove_after_first_use = true
 		}, {
-			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true
+			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		}, {
 			code = 'priestess_sword_talk_5', text = "PRIESTESS_SWORD_TALK_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, ]
@@ -622,7 +622,7 @@ var data = {
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7_1'},
 			{code = 'remove_active_location'},
 			{code = 'add_timed_event', value = "canStartRitual",
-		args = [{type = 'action_to_date', date = [1,1], hour = 18, action = "decision"}]}]
+		args = [{type = 'action_to_date', date = [1,1], hour = 3, action = "decision"}]}]
 		} ]
 	},
 	
@@ -868,9 +868,6 @@ var data = {
 			code = 'after_ritual_variant', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
-	# TODO add new BIG text to gtyphon questline
-	# TODO change sprites
-	# TODO split quests
 	after_ritual_powder_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "mae", 
