@@ -73,7 +73,8 @@ func custom_stats_set(st, value):
 			statlist[st] = clamp(statlist[st] + delta, 0, 100)
 	elif st in ['physics', 'wits', 'charm']: #not sure about sexuals since its getter has no reference to original value
 #			if value.has(st):
-		statlist[st] = min(value, statlist[st + '_factor'] * 20)
+#		statlist[st] = min(value, statlist[st + '_factor'] * 20)
+		statlist[st] = min(value, get_stat(st + '_cap'))
 	else: statlist[st] = value
 #	if st in ['physics', 'magic', 'tame', 'timid', 'growth', 'wits', 'charm', 'sexuals']:
 	if st.ends_with('_factor'):
@@ -121,6 +122,16 @@ func custom_stats_get():
 		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
 		if bonuses.has('lusttick_mul'): tres *= bonuses.lusttick_mul
 		res['lusttick'] = tres
+	for i in ['physics', 'wits', 'charm']:
+		var ii = i + '_cap'
+		if res.has(ii):
+			var tres = variables.basestat_cap
+			if bonuses.has(i + '_add'): tres += bonuses.lusttick_add
+			if bonuses.has(i + '_mul'): tres *= bonuses.lusttick_mul
+			res[ii] = tres
+		if res.has(i):
+			res[i] = min(res[i], res[ii])
+			statlist[i] = min(statlist[i], res[ii]) #cause basestats are direct accessed
 	for st in ['matk', 'atk']:
 		if res.has(st):
 			var tres = res[st]
@@ -306,11 +317,15 @@ func add_bonus(b_rec:String, value, revert = false):
 			else: bonuses[b_rec] = value
 	parent.recheck_effect_tag('recheck_stats')
 
+
 func get_stat_gain_rate(statname):
 	var res = 1
 	if statlist[statname] >= 90: res = 0.25
 	elif statlist[statname] >= 60: res = 0.5
 	elif statlist[statname] >= 40: res = 0.75
+	
+	if statname in ['physics', 'wits', 'charm']:
+		res *= variables.basestats_factor_mod[int(statlist[statname + '_factor'])]
 	return res
 
 
@@ -550,7 +565,9 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	#figuring out the race
 
 	parent.create(gendata.race, gendata.sex, gendata.age)
-
+	
+	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
+	
 #	if randf() <= 0.003:
 #		desired_class = parent.generate_ea_character(gendata, desired_class)
 	var slaveclass = desired_class

@@ -368,6 +368,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	#showtooltip(text, node)
 
+
 func ItemSelect(targetscript, type, function, requirements = true):
 	var node
 	if get_tree().get_root().has_node("ItemSelect"):

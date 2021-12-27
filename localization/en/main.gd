@@ -1,5 +1,10 @@
 extends Reference
 var TranslationDict = {
+	#Time
+	NIGHT = "Night",
+	MORNING = "Morning",
+	MIDDAY = "Midday",
+	EVENING = "Evening",
 	#Buildings
 	MANSION = "Aliron (Mansion)",
 	RETURNTOMANSION = "Return to Mansion",

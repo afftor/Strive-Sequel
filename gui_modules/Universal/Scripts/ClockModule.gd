@@ -1,219 +1,113 @@
 extends Control
 
-var gamepaused_nonplayer = false
-var gamepaused = false
-var gamespeed = 0
-var gametime = 0
-var previouspeed = 0
-const DEGREES_PER_HOUR = 90
 onready var sky = $Sky
-onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
+onready var tw = $Tween
 
+var locked = false
+
+var atlas_pos = {
+	0: 28,
+	1: 228,
+	2: 428,
+	3: 628,
+	4: 828,
+}
 
 func _ready():
-	var speedvalues = [0, 1, 5]
-	var tooltips = [tr('PAUSEBUTTONTOOLTIP'), tr('NORMALBUTTONTOOLTIP'), tr('FASTBUTTONTOOLTIP')]
-	var counter = 0
-	for i in timebuttons:
-		i.hint_tooltip = tooltips[counter]
-		i.connect("pressed", self, 'changespeed', [i])
-		i.set_meta('value', speedvalues[counter])
-		counter += 1
-	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
-	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
-	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
+	$TimeNode/HBoxContainer/finish_turn.connect("pressed", self, "advance_turn", [1])
+	$TimeNode/HBoxContainer/x2.connect("pressed", self, "advance_turn", [2])
+	$TimeNode/HBoxContainer/x4.connect("pressed", self, "advance_turn", [4])
+	
+	set_sky_pos()
+	update_labels()
+	update_food_tooltip()
+	update_gold_tooltip()
+#	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
+#	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 
-	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
-	
-	#update_food_tooltip()
-	
-	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
-	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
-	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
-	set_time_buttons()
 
 func update_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
 	var text = "\n\nCurrent Preferred Food Consumption:"
 	for i in resources.keys():
 		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
-	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD") + text)
+	globals.connecttexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text)
 
 
-func _process(delta):
+func update_gold_tooltip():
+	globals.connecttexttooltip($TimeNode/gold, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
+
+
+func set_sky_pos():
+	sky.texture.region.position.x = atlas_pos[ResourceScripts.game_globals.hour]
+
+
+func move_sky(from, to):
+	locked = true
+	var v1 = sky.texture.region
+	v1.position.x = atlas_pos[from]
+	var v2 = sky.texture.region
+	v2.position.x = atlas_pos[to]
+	if from < to:
+		tw.interpolate_property(sky.texture, "region", v1, v2, variables.SecndsPerTransition, 0, 2)
+	else:
+		var t1 = 4 - from
+		var t2 = to
+		var speed = variables.SecndsPerTransition / (t1 + t2)
+		var v3 = sky.texture.region
+		v3.position.x = atlas_pos[4]
+		var v4 = sky.texture.region
+		v4.position.x = 0
+		tw.interpolate_property(sky.texture, "region", v1, v3, speed * t1, 0, 2)
+		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, speed * t1)
+	tw.start()
+	yield(tw, "tween_all_completed")
+	locked = false
+
+
+func _process(delta): #nearly obsolete
 	if self.visible == false:
 		return
-	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
-	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
-	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
-	
+	update_labels()
+	update_gold_tooltip()
 	update_food_tooltip()
 	
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		input_handler.globalsettings.turn_based_time_flow = true
-		set_time_buttons()
-#		$TimeNode/HidePanel.visible = gamepaused_nonplayer
-#		if gamepaused == false:
-#			for i in get_tree().get_nodes_in_group("pauseprocess"):
-#				if i.visible == true:
-#					previouspeed = gamespeed
-#					changespeed(timebuttons[0], false)
-#					gamepaused = true
-#					gamepaused_nonplayer = true
-#		else:
-#			var allnodeshidden = true
-#			for i in get_tree().get_nodes_in_group("pauseprocess"):
-#				if i.visible == true:
-#					allnodeshidden = false
-#					break
-#
-#			if allnodeshidden == true && gamepaused_nonplayer == true:
-#				restoreoldspeed(previouspeed)
-#				gamepaused_nonplayer = false
-#				gamepaused = false
-#
-#		if gamespeed != 0:
-#			gametime += delta * gamespeed
-#			rotate_sky(gametime)
-#			if gametime >= variables.SecondsPerHour:
-#				gametime -= variables.SecondsPerHour
-#				advance_hour()
-#				gui_controller.mansion.SlaveListModule.rebuild()
 
 
-func timeflowhotkey(hotkey):
-	match hotkey:
-		1:
-			advance_turn()
-		2:
-			decrease_turns()
-		3:
-			increase_turns()
-
-
-func advance_turn():
+func advance_turn(amount = 1):
+	if locked: return
 	input_handler.PlaySound("button_click")
-	var number = globals.hour_turns_set
-	while number > 0:
-		advance_hour()
-		number -= 1
-	rotate_sky()
+	#synch setup
+	var cur_time = ResourceScripts.game_globals.hour
+	if cur_time == 4: cur_time = 0
+	var ntime = cur_time + amount
+	if ntime > 4: 
+		ntime -= 4
+	move_sky(cur_time, ntime)
+	
+	#asynch part
+	while amount > 0:
+		ResourceScripts.game_globals.advance_hour()
+		amount -= 1
+#	rotate_sky()
+	
 	gui_controller.mansion.SlaveListModule.rebuild()
 	gui_controller.mansion.SkillModule.build_skill_panel()
-
-
-func update_labels():
-	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
-	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
-	rotate_sky()
-
-
-func rotate_sky(gametime = 0):
-	if input_handler.globalsettings.turn_based_time_flow:
-		sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
-	else:
-		sky.rect_rotation = ((ResourceScripts.game_globals.hour - 1) * DEGREES_PER_HOUR) + (DEGREES_PER_HOUR / variables.SecondsPerHour * gametime)
-
-func decrease_turns():
-	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
-	input_handler.PlaySound("button_click")
-	update_turns_label()
-
-func increase_turns():
-	globals.hour_turns_set = min(globals.hour_turns_set + 1, variables.hour_turn_limit)
-	input_handler.PlaySound("button_click")
-	update_turns_label()
-
-
-func update_turns_label():
-	$TimeNode/turns.text = str(globals.hour_turns_set)
-
-
-func advance_hour():
-	for i in ResourceScripts.game_party.characters.values():
-		i.pretick()
-	for i in ResourceScripts.game_party.characters.values():
-		i.act_prepared()
-	for i in ResourceScripts.game_party.characters.values():
-		i.tick()
-	
-	ResourceScripts.game_globals.hour += 1
-	if ResourceScripts.game_globals.hour > variables.HoursPerDay:
-		advance_day()
-	
-	#update_food_tooltip()
-	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
-#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
-	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
+	update_labels()
+	update_food_tooltip()
+	update_gold_tooltip()
+#	set_sky_pos()
 	globals.emit_signal("hour_tick")
 
 
-func advance_day():
-	ResourceScripts.game_party.update_global_cooldowns()
-	ResourceScripts.game_globals.hour = 1
-	ResourceScripts.game_globals.date += 1
-	ResourceScripts.game_progress.days_from_last_church_quest += 1
-	ResourceScripts.game_globals.daily_sex_left = 1 + ResourceScripts.game_res.upgrades.sex_times
-	ResourceScripts.game_globals.daily_dates_left = 1
-	for i in ResourceScripts.game_party.characters.values():
-		i.cooldown_tick()
-		i.process_event(variables.TR_DAY)
-		i.quest_day_tick()
-	for i in ResourceScripts.game_world.areas.values():
-		ResourceScripts.game_world.update_guilds(i)
-		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 0:
-			ResourceScripts.world_gen.update_area_shop(i)
-			for k in i.locations.values():
-				if k.has('shop'):
-					ResourceScripts.world_gen.update_area_shop(k)
-	ResourceScripts.game_world.update_locations()
-	
-	globals.autosave()
-	
-	if gui_controller.current_screen == gui_controller.mansion:
-		gui_controller.mansion.rebuild_mansion()
+func update_labels():
+	$TimeNode/Date.text = "W: %d, D: %d" % [(ResourceScripts.game_globals.date / 7 + 1), (ResourceScripts.game_globals.date % 7 + 1)]
+#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
+	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
+	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
+#	rotate_sky()
 
 
-func set_time_buttons():
-	match input_handler.globalsettings.turn_based_time_flow:
-		true:
-			$"TimeNode/0speed".visible = false
-			$"TimeNode/1speed".visible = false
-			$"TimeNode/2speed".visible = false
-			$TimeNode/finish_turn.visible = true
-			$TimeNode/HidePanel.hide()
-			$TimeNode/turns.show()
-			$TimeNode/lessturn.show()
-			$TimeNode/moreturn.show()
-		false:
-			$"TimeNode/0speed".visible = true
-			$"TimeNode/1speed".visible = true
-			$"TimeNode/2speed".visible = true
-			$TimeNode/finish_turn.visible = false
-			$TimeNode/turns.hide()
-			$TimeNode/lessturn.hide()
-			$TimeNode/moreturn.hide()
-
-
-func changespeed(button, playsound = true):
-	if input_handler.globalsettings.turn_based_time_flow == true:
-		return
-	var oldvalue = gamespeed
-	var newvalue = button.get_meta('value')
-	for i in [$"TimeNode/0speed", $"TimeNode/1speed"]:
-		i.visible = i != button
-	gamespeed = newvalue
-	var soundarray = ['time_stop', 'time_start', 'time_up']
-	if oldvalue != newvalue && playsound:
-		input_handler.PlaySound(soundarray[int(button.name[0])])
-
-	gamepaused = newvalue == 0
-	input_handler.emit_signal("SpeedChanged", gamespeed)
-
-
-func restoreoldspeed(value):
-	for i in timebuttons:
-		if i.get_meta("value") == value:
-			changespeed(i, false)

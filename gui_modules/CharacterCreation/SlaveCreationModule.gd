@@ -195,7 +195,7 @@ func select_bodypart(value, bodypart, node):
 func select_sexbodypart(value, bodypart, node):
 	var person = get_parent().person
 	var rval = node.get_item_text(value)
-	if bodypart == 'slave_class' and rval == 'peon':
+	if bodypart == 'slave_class' and rval.to_lower() == 'peon':
 		rval = 'servant'
 	get_parent().preservedsettings[bodypart] = rval
 	get_parent().valid_preservedsettings[bodypart] = true

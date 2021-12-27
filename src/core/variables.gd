@@ -1,29 +1,33 @@
 extends Node
 #Game Settings
+#timeflow
 var HoursPerDay = 4
-#var timeword = {
-#	1:"MORNING",
-#	2:"MIDDAY",
-#	3:"EVENING",
-#	4:"NIGHT",
-#	0:"NIGHT",
-#}
+var DaysPerWeek = 7
+var shop_restock_days = 1
 var timeword = {
-	1:"6:00",
-	2:"12:00",
-	3:"18:00",
-	4:"00:00",
-	0:"00:00",
+	1:"MORNING",
+	2:"MIDDAY",
+	3:"EVENING",
+	4:"NIGHT",
+	0:"NIGHT",
 }
+#var timeword = {
+#	1:"6:00",
+#	2:"12:00",
+#	3:"18:00",
+#	4:"00:00",
+#	0:"00:00",
+#}
+var SecndsPerTransition = 1
 var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
-var shop_restock_days = 1
 
-var hour_turn_limit = 8
+
+#var hour_turn_limit = 8
 
 enum {PANEL_SOC, PANEL_COM}
 
@@ -152,6 +156,42 @@ var sex_factor_skill_multiplier = {
 	6 : 2.2,
 }
 
+var growth_factor = {
+1 : 100,
+2 : 80,
+3 : 50,
+4 : 30,
+5 : 10,
+6 : 1,
+}
+
+var basestats_factor_mod = {
+1 : 0.5,
+2 : 0.47,
+3 : 1,
+4 : 1.3,
+5 : 1.65,
+6 : 2,
+}
+
+var growth_factor_upgrade = {
+1 : 0,
+2 : 1000,
+3 : 2000,
+4 : 3500,
+5 : 5000,
+6 : 10000,
+}
+
+var basestat_factor_upgrade = {
+1 : 0,
+2 : 100,
+3 : 300,
+4 : 500,
+5 : 750,
+6 : 1500,
+}
+
 #slave & quest timings
 
 var guild_slave_update_time = 7
@@ -193,6 +233,8 @@ var basic_character_atk = 15
 var basic_character_matk = 15
 
 var enslavement_price = 100
+
+var basestat_cap = 100
 
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
