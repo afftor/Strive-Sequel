@@ -186,16 +186,10 @@ func authority_level():
 	return rval
 
 func authority_threshold():
-	return 200 - get_stat('timid_factor') * 25
+	return variables.authority_threshold_base - get_stat('timid_factor') * variables.authority_threshold_per_timid
 
 func get_obed_cap():
-	match authority_level():
-		'low':
-			return 72
-		'medium':
-			return 144
-		'high':
-			return 288
+	return variables.obed_authority_cap[authority_level()]
 
 
 func get_obed_percent_value():

@@ -38,7 +38,7 @@ func set_state(value):
 
 
 func build_gallery(page):
-	var src
+	var src 
 	var src_unlock
 	match state:
 		"ero":
@@ -50,6 +50,10 @@ func build_gallery(page):
 		"scenes":
 			src = Gallery.scenes_order
 			src_unlock = input_handler.progress_data.gallery_seq
+	
+	for i in src_unlock:
+		if !src.has(i):
+			src.append(i)
 	
 	#building pages buttons
 	input_handler.ClearContainer($Pagination)

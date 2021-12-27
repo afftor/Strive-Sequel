@@ -1254,7 +1254,7 @@ func common_effects(effects):
 					'start':
 						input_handler.PlayBackgroundSound(i.sound)
 					'stop':
-						input_handler.StopBackgroundSound()
+						input_handler.StopBackgroundSound()	
 					'resume':
 						input_handler.ResumeBackgroundSound()
 			'update_location':

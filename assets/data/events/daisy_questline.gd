@@ -33,9 +33,12 @@ var data = {
 		text = [{text = "DAISY_RECRUITMENT_REPLY_1", reqs = [], previous_dialogue_option = 1},
 		{text = "DAISY_RECRUITMENT_REPLY_2", reqs = [], previous_dialogue_option = 2},
 		{text = "DAISY_RECRUITMENT_REPLY_3", reqs = [], previous_dialogue_option = 3}, ],
+#		common_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
+#		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-		args = [{type = 'add_to_date', date = [1,1], hour = 1}]}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
+				args = [{type = 'add_to_date', date = [1,1], hour = 2}]}]
 		}],
 	},
 
@@ -151,7 +154,7 @@ var data = {
 		{code = 'decision', value = 'DaisyDressNormal'}], # dress decision normal
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1",
-			args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+			args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
 		}],
 	},
 	daisy_clothes_amelia_3_2 = {
@@ -162,7 +165,7 @@ var data = {
 		{code = 'decision', value = 'DaisyDressLewd'}], # dress decision lewd
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1",
-			args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+			args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
 		}],
 	},
 
@@ -205,7 +208,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
-			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 1}]}]
+			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}]
 		} ],
 	},
 
@@ -236,7 +239,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 1}]}],
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			} ],
 		} ]
 	},
@@ -344,7 +347,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 1}]}],
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			}
 		],
 	},
@@ -383,7 +386,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 1}]}],
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 		} ],
 	},
 
@@ -529,7 +532,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 1}]}],
+				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			}
 		],
 	},
@@ -552,15 +555,15 @@ var data = {
 		{text = "DAISY_TRAINING_REPLY_2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_1", reqs = [{type = "has_money", value = 200}], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "training_complete_serve_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			bonus_effects = [{code = 'add_timed_event', value = "training_complete_serve_1", args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'money_change', operant = '-', value = 200}],
 		}, {
 			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_4", reqs = [{type = "has_money", value = 300}, {type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_2'}], dialogue_argument = 4, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "training_complete_sex_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			bonus_effects = [{code = 'add_timed_event', value = "training_complete_sex_1", args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'money_change', operant = '-', value = 300}]
 		}, {
 			code = 'daisy_training_2', text = "DAISY_TRAINING_OPTION_2_5", reqs = [{type = "has_money", value = 400}, {type = 'dialogue_selected', check = true, value = 'DAISY_TRAINING_OPTION_2_3'}], dialogue_argument = 5, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission_1", args = [{type = 'add_to_date', date = [3,3], hour = 2}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			bonus_effects = [{code = 'add_timed_event', value = "daisy_training_intermission_1", args = [{type = 'add_to_date', date = [3,3], hour = 2}]}, {code = 'add_timed_event', value = "training_complete_fucktoy_1", args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'money_change', operant = '-', value = 400}]
 		}, {
 			code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_2_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
@@ -696,7 +699,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_SERVE_REPLY_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "TRAINING_COMPLETE_SERVE_REPLY_1_2", reqs = [], previous_dialogue_option = 2}],
 		common_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 1}]}],
+		args = [{type = 'add_to_date', date = [7,7], hour = 2}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
@@ -769,7 +772,7 @@ var data = {
 		{text = "TRAINING_COMPLETE_SEX_REPLY_1_1_all", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 1}]}, {code = 'complete_quest', value = 'daisy_training'}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 2}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}],
 	},
 
@@ -790,7 +793,7 @@ var data = {
 		text = [{text = "TRAINING_COMPLETE_SEX_REPLY_1_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_message",
-		args = [{type = 'add_to_date', date = [7,7], hour = 1}]}, {code = 'complete_quest', value = 'daisy_training'}]
+		args = [{type = 'add_to_date', date = [7,7], hour = 2}]}, {code = 'complete_quest', value = 'daisy_training'}]
 		}]
 	},
 
@@ -799,7 +802,7 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
 		common_effects = [
-			{code = 'add_timed_event', value = "daisy_admirer_message",args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
+			{code = 'add_timed_event', value = "daisy_admirer_message",args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'unique_character_changes', value = 'daisy', args = [{code = 'add_profession', profession = "sextoy"}]},
 			{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true},
 			{
@@ -1094,7 +1097,7 @@ var data = {
 		text = [{text = "DAISY_ADMIRER_MESSAGE_REPLY_1_3", reqs = []}],
 		options = [ {
 			bonus_effects = [{code = 'add_timed_event', value = "daisy_admirer_first_event_1",
-				args = [{type = 'add_to_date', date = [7,10], hour = 1}]}],
+				args = [{type = 'add_to_date', date = [7,10], hour = 2}]}],
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 		} ]
 	},
@@ -1148,7 +1151,7 @@ var data = {
 		{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
-		args = [{type = 'add_to_date', date = [6,8], hour = 4}]}], type = 'next_dialogue',
+		args = [{type = 'add_to_date', date = [6,8], hour = 3}]}], type = 'next_dialogue',
 		} ]
 	},
 
@@ -1158,7 +1161,7 @@ var data = {
 		text = [{text = "DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
-		args = [{type = 'add_to_date', date = [6,8], hour = 4}]}], type = 'next_dialogue',
+		args = [{type = 'add_to_date', date = [6,8], hour = 3}]}], type = 'next_dialogue',
 		} ]
 	},
 
@@ -1179,7 +1182,7 @@ var data = {
 		text = [{text = "SCENEDAISY_FIRST_EVENT_DISCIPLINE", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
-		args = [{type = 'add_to_date', date = [6,8], hour = 4}]}], type = 'next_dialogue',
+		args = [{type = 'add_to_date', date = [6,8], hour = 3}]}], type = 'next_dialogue',
 		}, ]
 	},
 

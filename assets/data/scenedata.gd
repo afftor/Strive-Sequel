@@ -1546,6 +1546,18 @@ var dialogue_inits = {
 			target_option = 2,
 		},
 	],
+	
+	savra_init = [
+		{
+			code = 'default',
+			name = "Talk To Savra",
+			reqs = [],
+			target = 'mages_after_election',
+			target_option = 1,
+		},
+	],
+	
+	
 }
 
 var dict = {
@@ -1758,15 +1770,6 @@ var quests = {
 		},
 	},
 	
-	zephyra_artifacts_quest = {
-		code = 'zephyra_artifacts_quest',
-		summary = "ZEPHYRA_ARTIFACTS_SUMMARY",
-		stages = {
-			stage1 = {code = 'stage1', name = "ZEPHYRA_ARTIFACTS_NAME", descript = "ZEPHYRA_ARTIFACTS_STAGE_1"}, # go to church
-			stage2 = {code = 'stage2', name = "ZEPHYRA_ARTIFACTS_NAME", descript = "ZEPHYRA_ARTIFACTS_STAGE_2"},
-		},
-	},
-	
 	marriage_quest_main = {
 		code = 'marriage_quest_main',
 		summary = "MARRIAGE_MAIN_SUMMARY",
@@ -1800,6 +1803,36 @@ var quests = {
 			stage2 = {code = 'stage2', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_2"}, # talk to derek
 			stage3 = {code = 'stage3', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_3"}, # go in forest
 			stage4 = {code = 'stage4', name = "GRYPHON_QUEST_NAME", descript = "GRYPHON_QUEST_STAGE_4"}, # go in cave
+		},
+	},
+	
+	
+	pre_sword_artifact_quest = {
+		code = 'pre_sword_artifact_quest',
+		summary = "PRE_SWORD_ARTIFACT_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "PRE_SWORD_ARTIFACT_QUEST_NAME", descript = "PRE_SWORD_ARTIFACT_QUEST_STAGE_1"}, # visit ginny and recruit zephyra
+		},
+	},
+
+	sword_artifact_quest = {
+		code = 'sword_artifact_quest',
+		summary = "SWORD_ARTIFACT_QUEST_SUMMARY",
+		stages = {
+			stage2 = {code = 'stage2', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_2"}, # go to elven capital and talk to High Priestess
+			stage3 = {code = 'stage3', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_3"}, # go to beastkin tribe location
+			stage4 = {code = 'stage4', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_4"}, # visit Lodge 
+			stage5 = {code = 'stage5', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_5"}, # bring supplys to Savra
+			stage6 = {code = 'stage6', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_6"}, # wait a day and go to Savra
+			stage7 = {code = 'stage7', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_7"}, # go to a new location
+			stage7_1 = {code = 'stage7_1', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_7_1"}, # go to a new location
+			stage8 = {code = 'stage8', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_8"}, # visit leon
+			stage9 = {code = 'stage9', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_9"}, # ask around
+			stage10 = {code = 'stage10', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_10"}, # look for leon at a new location
+			stage11 = {code = 'stage11', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_11"}, # talk to savra
+			stage12 = {code = 'stage12', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_12"}, # bring materials to savra
+			stage13 = {code = 'stage13', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_13"}, # bring someone magical to savra
+			stage14 = {code = 'stage14', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_14"}, # go find leon
 		},
 	},
 }

@@ -740,17 +740,27 @@ func test_mode():
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Lilith'},
+				{code = 'make_story_character', value = 'Hara'},
 			]
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Mae'},
+				{code = 'make_story_character', value = 'Jean'},
 			]
 		)
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Zephyra'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Cali'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Lilia'},
 			]
 		)
 #		globals.common_effects(
@@ -852,7 +862,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-		input_handler.interactive_message('event_fairy_friendly', '', {})
+		input_handler.interactive_message('final_words_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)

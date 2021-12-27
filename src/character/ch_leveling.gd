@@ -339,19 +339,19 @@ func remove_from_work_quest():
 	quest_id = ''
 
 
-func get_obed_drain(value):
+func get_obed_drain():
 	if parent.has_profession('master') or parent.has_profession('spouse'): return 0.0
 	var rule_bonus = 0.0
 	if work_rules.luxury: rule_bonus = 0.25
-	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
+	var value = variables.base_obed_drain * (parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty')))
 	return value
 
 func predict_obed_time(): # in hours, not in ticks
 	if check_infinite_obedience() == true: return 10000
-	return parent.get_stat('obedience') / get_obed_drain(1)
+	return parent.get_stat('obedience') / get_obed_drain()
 
 func check_infinite_obedience():
-	return get_obed_drain(1) == 0 or parent.has_profession('master') or parent.has_profession('spouse')
+	return get_obed_drain() == 0 or parent.has_profession('master') or parent.has_profession('spouse')
 
 func work_tick():
 	if is_on_quest():
@@ -372,7 +372,7 @@ func work_tick():
 			messages.append("refusedwork")
 		return
 	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.add_stat('obedience', - get_obed_drain(6))
+		parent.add_stat('obedience', - get_obed_drain())
 		messages.erase("refusedwork")
 	
 	if parent.get_static_effect_by_code("work_rule_ration") != null:
@@ -428,7 +428,7 @@ func work_tick_values(currenttask, gatherable = false):
 		workstat = Items.materiallist[currenttask.code].workstat
 	if !parent.has_status('no_working_bonuses'):
 		parent.add_stat(workstat, 0.36)
-		self.base_exp += 6
+		self.base_exp += 5
 
 
 
