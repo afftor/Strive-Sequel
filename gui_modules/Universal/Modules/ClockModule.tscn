@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Universal/Scripts/ClockModule.gd" type="Script" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://assets/Textures_v2/ClockModule/button_timerbig_hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/ClockModule/button_timersmall_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=11]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_food_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/ClockModule/icon_food_timer.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=19]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=20]
 
@@ -90,10 +91,10 @@ __meta__ = {
 }
 
 [node name="FoodIcon" type="TextureRect" parent="TimeNode"]
-margin_left = 7.0
-margin_top = 6.0
-margin_right = 57.0
-margin_bottom = 56.0
+margin_left = 146.869
+margin_top = 2.87753
+margin_right = 196.869
+margin_bottom = 52.8775
 texture = ExtResource( 12 )
 expand = true
 __meta__ = {
@@ -101,10 +102,10 @@ __meta__ = {
 }
 
 [node name="food" type="Label" parent="TimeNode"]
-margin_left = 55.0
-margin_top = 6.0
-margin_right = 139.0
-margin_bottom = 51.0
+margin_left = 202.604
+margin_top = 6.56123
+margin_right = 286.604
+margin_bottom = 51.5612
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -116,20 +117,21 @@ __meta__ = {
 }
 
 [node name="GoldIcon" type="TextureRect" parent="TimeNode"]
-margin_left = 148.466
-margin_top = 2.94495
-margin_right = 198.466
-margin_bottom = 52.9449
+margin_left = 5.58528
+margin_top = 3.24131
+margin_right = 55.5853
+margin_bottom = 53.2413
+texture = ExtResource( 13 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="gold" type="Label" parent="TimeNode"]
-margin_left = 201.051
-margin_top = 5.60455
-margin_right = 285.051
-margin_bottom = 50.6046
+margin_left = 56.804
+margin_top = 5.2077
+margin_right = 140.804
+margin_bottom = 50.2077
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
