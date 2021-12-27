@@ -20,8 +20,10 @@ var character_order = []
 func advance_day():
 	update_global_cooldowns()
 	for i in characters.values():
+		i.tags.erase("no_date_day")
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
+		i.quest_day_tick()
 
 func serialize():
 	var res = inst2dict(self)

@@ -34,7 +34,7 @@ func update_characters():
 	input_handler.ClearContainer($CharacterList/GridContainer)
 	for i in ResourceScripts.game_party.character_order: 
 		var person = ResourceScripts.game_party.characters[i]
-		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.get_work() == "disabled":
+		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
 			continue
 		
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)

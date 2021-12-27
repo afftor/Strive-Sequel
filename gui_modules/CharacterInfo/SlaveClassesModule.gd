@@ -118,6 +118,8 @@ func open(tempperson, tempmode = 'normal'):
 		newbutton.connect('mouse_exited', self, 'close_tooltip')
 		# globals.connecttexttooltip(newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true))
 	
+	$stats_upgrade.show()
+	
 
 
 func checkbox_locked():

@@ -729,6 +729,14 @@ func string_to_math(value = 0, string = ''):
 		'/':value /= modvalue
 	return value
 
+
+func weightedrandom_dict(dict): #uses dict of value:weight, returns value
+	var temp = []
+	for i in dict:
+		temp.push_back([i, dict[i]])
+	return weightedrandom(temp)
+
+
 func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
 	var total = 0
 	var counter = 0

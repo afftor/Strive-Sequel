@@ -465,7 +465,7 @@ func update_sex_date_buttons():
 		else:
 			SexSelect.get_node("DateButton").disabled = false
 		SexSelect.get_node("SexButton").disabled = false
-	if ResourceScripts.game_globals.daily_sex_left > 0:
+	if ResourceScripts.game_globals.weekly_sex_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
 		SexSelect.get_node("SexButton").disabled = true
@@ -474,14 +474,14 @@ func update_sex_date_buttons():
 		if i.tags.has("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
 	for i in sex_participants:
-		if i.tags.has("no_date"):
+		if i.tags.has("no_date") or i.tags.has("no_date_day"):
 			SexSelect.get_node("DateButton").disabled = true
 
 	SexSelect.get_node("DateButton").disabled = (
 		sex_participants.size() > 1
 		|| sex_participants.size() == 0
 		|| sex_participants.has(ResourceScripts.game_party.get_master())
-		|| ResourceScripts.game_globals.daily_dates_left <= 0
+		|| ResourceScripts.game_globals.weekly_dates_left <= 0
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
 

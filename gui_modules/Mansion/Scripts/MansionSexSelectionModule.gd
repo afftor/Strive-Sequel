@@ -9,7 +9,7 @@ func _ready():
 func start_scene():
 	var choosen_chars = get_parent().sex_participants
 	if !ResourceScripts.game_progress.unlimited_date_sex:
-		ResourceScripts.game_globals.daily_sex_left -= 1
+		ResourceScripts.game_globals.weekly_sex_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
 	gui_controller.sex_panel = input_handler.get_spec_node(input_handler.NODE_SEX)
@@ -24,7 +24,8 @@ func start_scene():
 func start_date():
 	var person = get_parent().sex_participants[0]
 	if !ResourceScripts.game_progress.unlimited_date_sex:
-		ResourceScripts.game_globals.daily_dates_left -= 1
+		ResourceScripts.game_globals.weekly_dates_left -= 1
+	person.tags.push_back("no_date_day")
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
 	gui_controller.date_panel = input_handler.get_spec_node(input_handler.NODE_DATE)

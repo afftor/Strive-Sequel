@@ -75,12 +75,15 @@ var template = {
 	#maybe bonus stats are to remove
 	physics = 0.0,
 	physics_bonus = 0.0,
+	physics_cap = 100,
 	wits = 0.0,
 	wits_bonus = 0.0,
+	wits_cap = 100,
 	sexuals = 0.0,
 	sexuals_bonus = 0.0,
 	charm = 0.0,
 	charm_bonus = 0.0,
+	charm_cap = 100,
 	#constant stats
 	physics_factor = 1,
 	magic_factor = 1,
