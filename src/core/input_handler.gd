@@ -1088,7 +1088,9 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
 		node.add_child(window)
-	if raise: window.raise()
+	if raise: 
+#		print(window.name)
+		window.raise()
 	if ResourceScripts.node_data[type].has('args'):
 		for param in ResourceScripts.node_data[type].args:
 			window.set(param, ResourceScripts.node_data[type].args[param])
@@ -1522,4 +1524,8 @@ func upgrade_unlocked(upgrade):
 	if upgrade.code == 'exotic_trader':
 		ResourceScripts.game_world.areas.plains.factions.exotic_slave_trader.slavelevel = ResourceScripts.game_res.upgrades.exotic_trader*2+1
 
-
+func print_order():
+	print("{")
+	for node in get_tree().get_root().get_children():
+		print ("\t" + node.name)
+	print("}")

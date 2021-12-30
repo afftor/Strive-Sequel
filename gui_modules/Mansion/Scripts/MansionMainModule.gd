@@ -862,7 +862,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-#		input_handler.interactive_message('final_words_1', '', {})
+#		input_handler.interactive_message('gryphon_hunter_start', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -871,7 +871,7 @@ func test_mode():
 #		input_handler.interactive_message('pre_final_boss_refuse', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 
-		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
+		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
