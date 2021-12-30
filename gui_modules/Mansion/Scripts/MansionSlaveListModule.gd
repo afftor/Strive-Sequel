@@ -373,7 +373,7 @@ func update_button(newbutton):
 				var time_left_string = ''
 				if time_left == 1:
 					time_left = 4 - ResourceScripts.game_globals.hour
-					time_left_string = str(time_left * 6) + " h."
+					time_left_string = str(time_left) + " turns"
 				else:
 					time_left_string = str(time_left) + " d."
 				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
@@ -417,7 +417,7 @@ func update_button(newbutton):
 		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick()) * 6) + " hours. "
+		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " turns. "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:

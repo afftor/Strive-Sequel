@@ -18,7 +18,7 @@ var timeword = {
 #	4:"00:00",
 #	0:"00:00",
 #}
-var SecndsPerTransition = 1
+var SecndsPerTransition = 1.0
 var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
