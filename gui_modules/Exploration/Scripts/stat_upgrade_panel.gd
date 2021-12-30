@@ -116,6 +116,8 @@ func show_stat_info(stat, character):
 	)
 	### 
 	for node in StatsContainer.get_children():
+		if !node.has_meta("stat"):
+			continue
 		node.pressed = (node.get_meta('stat') == stat)
 	###
 	substract_gold = 0

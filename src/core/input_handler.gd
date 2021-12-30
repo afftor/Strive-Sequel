@@ -419,10 +419,11 @@ func _input(event):
 			else:
 				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
 					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-						if input_handler.globalsettings.turn_based_time_flow == false:
-							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
-						else:
-							gui_controller.clock.timeflowhotkey(int(num))
+						gui_controller.clock.hotkey_pressed(int(num))
+#						if input_handler.globalsettings.turn_based_time_flow == false:
+#							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
+#						else:
+#							gui_controller.clock.timeflowhotkey(int(num))
 	
 	#there was an error in a code below
 	#while during fix it was fully rewritten to reflect some functional change, i choose to keep a fixed old version as a comment

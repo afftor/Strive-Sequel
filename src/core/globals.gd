@@ -777,7 +777,7 @@ func text_log_add(label, text):
 		newfield.show()
 		newfield.get_node("label").bbcode_text = label
 		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + variables.timeword[ResourceScripts.game_globals.hour] + "[/right]"
+		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + tr(variables.timeword[ResourceScripts.game_globals.hour]) + "[/right]"
 		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
 		yield(get_tree(), 'idle_frame')
 		var textfield = newfield.get_node('text')

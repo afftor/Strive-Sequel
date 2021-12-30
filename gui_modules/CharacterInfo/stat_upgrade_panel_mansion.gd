@@ -123,6 +123,7 @@ func show_stat_info(stat):
 	)
 	### 
 	for node in StatsContainer.get_children():
+		if !node.has_meta('stat'): continue
 		node.pressed = (node.get_meta('stat') == stat)
 	###
 	substract_exp = 0
@@ -159,4 +160,5 @@ func upgrade_stat():
 	character.add_stat(stat, 1)
 	show_stats()
 	show_stat_info(stat)
+	gui_controller.slavepanel.update()
 

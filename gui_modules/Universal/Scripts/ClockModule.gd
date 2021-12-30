@@ -25,6 +25,11 @@ func _ready():
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 
+func hotkey_pressed(number):
+	match number:
+		1: advance_turn(1)
+		2: advance_turn(2)
+		3: advance_turn(4)
 
 func update_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
@@ -42,24 +47,24 @@ func set_sky_pos():
 	sky.texture.region.position.x = atlas_pos[ResourceScripts.game_globals.hour]
 
 
-func move_sky(from, to):
+func move_sky(from, to, init_delay):
 	locked = true
 	var v1 = sky.texture.region
 	v1.position.x = atlas_pos[from]
 	var v2 = sky.texture.region
 	v2.position.x = atlas_pos[to]
 	if from < to:
-		tw.interpolate_property(sky.texture, "region", v1, v2, variables.SecndsPerTransition, 0, 2)
+		tw.interpolate_property(sky.texture, "region", v1, v2, variables.SecndsPerTransition - init_delay, 0, 2, init_delay)
 	else:
 		var t1 = 4 - from
 		var t2 = to
-		var speed = variables.SecndsPerTransition / (t1 + t2)
+		var speed = (variables.SecndsPerTransition - init_delay) / (t1 + t2)
 		var v3 = sky.texture.region
 		v3.position.x = atlas_pos[4]
 		var v4 = sky.texture.region
 		v4.position.x = 0
-		tw.interpolate_property(sky.texture, "region", v1, v3, speed * t1, 0, 2)
-		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, speed * t1)
+		tw.interpolate_property(sky.texture, "region", v1, v3, speed * t1, 0, 2, init_delay)
+		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, init_delay, speed * t1)
 	tw.start()
 	yield(tw, "tween_all_completed")
 	locked = false
@@ -77,7 +82,13 @@ func _process(delta): #nearly obsolete
 
 
 func advance_turn(amount = 1):
-	if locked: return
+	var init_delay = 0.0
+	if locked: 
+#		return
+		#test variant
+		tw.remove_all()
+		set_sky_pos()
+		init_delay = 0.2
 	input_handler.PlaySound("button_click")
 	#synch setup
 	var cur_time = ResourceScripts.game_globals.hour
@@ -85,7 +96,7 @@ func advance_turn(amount = 1):
 	var ntime = cur_time + amount
 	if ntime > 4: 
 		ntime -= 4
-	move_sky(cur_time, ntime)
+	move_sky(cur_time, ntime, init_delay)
 	
 	#asynch part
 	while amount > 0:
@@ -108,6 +119,8 @@ func update_labels():
 	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
+	update_food_tooltip()
+	update_gold_tooltip()
 #	rotate_sky()
 
 

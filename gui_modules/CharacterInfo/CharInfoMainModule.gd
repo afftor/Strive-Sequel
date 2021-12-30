@@ -84,6 +84,7 @@ func update():
 	SummaryModule.show_summary()
 	SlaveInfo.update()
 	BodyModule.update()
+	ClassesModule.update()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()
@@ -121,6 +122,7 @@ func match_state():
 			SlaveSiblingsModule.hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
+			ClassesModule.open(active_person)
 			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)

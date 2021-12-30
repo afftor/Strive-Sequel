@@ -106,6 +106,7 @@ margin_left = 202.604
 margin_top = 6.56123
 margin_right = 286.604
 margin_bottom = 51.5612
+mouse_filter = 1
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -132,6 +133,7 @@ margin_left = 56.804
 margin_top = 5.2077
 margin_right = 140.804
 margin_bottom = 50.2077
+mouse_filter = 1
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -177,7 +179,7 @@ __meta__ = {
 margin_left = 180.0
 margin_right = 235.0
 margin_bottom = 58.0
-hint_tooltip = "Decrease hours advanced  per turn
+hint_tooltip = "Advance Time for 12h
 Hotkey: 2"
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
@@ -203,8 +205,8 @@ __meta__ = {
 margin_left = 235.0
 margin_right = 290.0
 margin_bottom = 58.0
-hint_tooltip = "Decrease hours advanced  per turn
-Hotkey: 2"
+hint_tooltip = "Advance Time for a full day
+Hotkey: 3"
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
