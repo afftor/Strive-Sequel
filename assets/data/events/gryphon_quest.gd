@@ -163,7 +163,7 @@ var data = {
 	},
 	
 	gryphon_cave_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = 'gryphon', tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "GRYPHON_CAVE_1", reqs = []}],
 		options = [ {

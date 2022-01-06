@@ -22,6 +22,7 @@ func _ready():
 	update_labels()
 	update_food_tooltip()
 	update_gold_tooltip()
+	globals.connecttexttooltip($TimeNode/timetooltip, "Current Week, Day and time. Some quests may have time limits.")
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 

@@ -125,7 +125,7 @@ func check_timed_events():
 						if ResourceScripts.game_progress.decisions.has(i.code):
 							ResourceScripts.game_progress.decisions.erase(i.code)
 				deleting_events.append(i)
-				return
+				continue
 			var event = scenedata.scenedict[i.code]
 			var failed = false
 			if event.has('reqs'):

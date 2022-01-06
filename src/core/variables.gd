@@ -6,7 +6,7 @@ var DaysPerWeek = 7
 var shop_restock_days = 1
 var timeword = {
 	1:"MORNING",
-	2:"MIDDAY",
+	2:"NOON",
 	3:"EVENING",
 	4:"NIGHT",
 	0:"NIGHT",
