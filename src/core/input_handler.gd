@@ -954,6 +954,7 @@ func start_event(code, type, args):
 
 	scene.open(data)
 
+
 func interactive_message_custom(data):
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true))
@@ -1347,6 +1348,10 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+
+func CenterNode(node):
+	node.set_global_position((Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height")) - node.rect_size) / 2)
 
 func swap_items(arr: Array, pos1, pos2):
 	if pos1 < 0 or pos2 < 0: return

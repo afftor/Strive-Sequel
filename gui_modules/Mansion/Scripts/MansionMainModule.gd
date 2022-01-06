@@ -108,8 +108,8 @@ func _ready():
 			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		else:
 			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
-
-
+		
+		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
@@ -881,6 +881,7 @@ func test_mode():
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 
 #		character = ResourceScripts.scriptdict.class_slave.new()
+		ResourceScripts.game_globals.reset_limits()
 		yield(get_tree(), 'idle_frame')
 		#input_handler.add_random_chat_message(character2, 'hire')
 		

@@ -713,8 +713,6 @@ func impregnate_check(father,mother):
 	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
 		result.value = false
 	
-	
-	
 	return result
 
 func impregnate(father, mother):
