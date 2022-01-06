@@ -29,6 +29,7 @@ func _ready():
 	$SkillTooltip/unlock_button.connect("pressed", self, "buy_skill")
 	$SkillTooltip.connect("hide", self, "build_skills")
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
+	$UpgradeButton.connect("pressed", $stats_upgrade, 'show')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
@@ -86,7 +87,7 @@ func open(tempperson, tempmode = 'normal'):
 	mode = tempmode
 	current_class = null
 	update()
-	$stats_upgrade.show()
+#	$stats_upgrade.show()
 
 func update():
 	if person == null: return

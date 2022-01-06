@@ -395,14 +395,16 @@ func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
 	person.statlist.get_random_name()
+	input_handler.active_character.get_stat('pregnancy', true).baby = null
 	node.open(self, 'set_baby_name', person.get_stat('name'))
+	
 
 func removebaby():
 	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy').baby, tr("KEEPNOT"))
 	close()
 	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
 	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
-	input_handler.active_character.get_stat('pregnancy').baby = null
+	input_handler.active_character.get_stat('pregnancy', true).baby = null
 
 func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]

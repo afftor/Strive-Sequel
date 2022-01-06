@@ -29,6 +29,8 @@ var current_node
 var person
 
 func show():
+	if visible: return
+	input_handler.CenterNode(self)
 	person = get_parent().person
 	.show()
 	show_stats()

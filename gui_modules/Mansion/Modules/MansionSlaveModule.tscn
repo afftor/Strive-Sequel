@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/icon_slaveinfo_star.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/crown.png" type="Texture" id=21]
@@ -309,35 +309,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="physics" type="Label" parent="."]
-margin_left = 72.8327
-margin_top = 309.41
-margin_right = 122.833
-margin_bottom = 341.41
+[node name="growth" type="Label" parent="."]
+margin_left = 73.0
+margin_top = 309.0
+margin_right = 178.0
+margin_bottom = 344.0
 custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.996078, 0.317647, 0.364706, 1 )
-text = "Physics"
+text = "Growth"
 align = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="physics2" type="Label" parent="."]
-margin_left = 130.449
-margin_top = 308.616
-margin_right = 180.449
-margin_bottom = 340.616
-custom_fonts/font = ExtResource( 29 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Physics"
-align = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="wits" type="Label" parent="."]
+[node name="physics" type="Label" parent="."]
 margin_left = 71.641
 margin_top = 345.752
 margin_right = 121.641
@@ -351,7 +337,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wits2" type="Label" parent="."]
+[node name="physics2" type="Label" parent="."]
 margin_left = 130.052
 margin_top = 346.546
 margin_right = 180.052
@@ -365,7 +351,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="charm" type="Label" parent="."]
+[node name="wits" type="Label" parent="."]
 margin_left = 71.2438
 margin_top = 384.08
 margin_right = 121.244
@@ -379,7 +365,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="charm2" type="Label" parent="."]
+[node name="wits2" type="Label" parent="."]
 margin_left = 130.449
 margin_top = 383.682
 margin_right = 180.449
@@ -393,7 +379,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sexuals" type="Label" parent="."]
+[node name="charm" type="Label" parent="."]
 margin_left = 72.4354
 margin_top = 422.01
 margin_right = 122.435
@@ -407,7 +393,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sexuals2" type="Label" parent="."]
+[node name="charm2" type="Label" parent="."]
 margin_left = 131.244
 margin_top = 422.01
 margin_right = 181.244
@@ -451,36 +437,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="growth_factor" type="TextureRect" parent="TextureRect2"]
+margin_left = 2.20064
+margin_top = 25.7605
+margin_right = 42.2006
+margin_bottom = 55.7605
+mouse_filter = 0
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="physics" type="TextureRect" parent="TextureRect2"]
 margin_left = 2.20064
-margin_top = 26.7605
+margin_top = 64.7605
 margin_right = 42.2006
-margin_bottom = 51.7605
+margin_bottom = 89.7605
 mouse_filter = 0
 texture = ExtResource( 16 )
 
 [node name="wits" type="TextureRect" parent="TextureRect2"]
-margin_top = 65.649
+margin_top = 102.649
 margin_right = 40.0
-margin_bottom = 90.649
+margin_bottom = 127.649
 mouse_filter = 0
 texture = ExtResource( 11 )
 
 [node name="charm" type="TextureRect" parent="TextureRect2"]
 margin_left = 3.07358
-margin_top = 102.532
+margin_top = 140.532
 margin_right = 43.0736
-margin_bottom = 127.532
+margin_bottom = 165.532
 mouse_filter = 0
 texture = ExtResource( 17 )
-
-[node name="sexuals" type="TextureRect" parent="TextureRect2"]
-margin_left = 3.77354
-margin_top = 143.566
-margin_right = 43.7735
-margin_bottom = 168.566
-mouse_filter = 0
-texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="exp" type="Label" parent="."]
 margin_left = 106.784

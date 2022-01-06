@@ -65,7 +65,7 @@ func move_sky(from, to, init_delay):
 		var v4 = sky.texture.region
 		v4.position.x = 0
 		tw.interpolate_property(sky.texture, "region", v1, v3, speed * t1, 0, 2, init_delay)
-		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, init_delay, speed * t1)
+		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, init_delay + speed * t1)
 	tw.start()
 	yield(tw, "tween_all_completed")
 	locked = false

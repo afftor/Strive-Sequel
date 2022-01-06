@@ -992,11 +992,13 @@ func baby_transform():
 	statlist.penis_virgin = true
 	statlist.vaginal_virgin = true
 
+
 func set_slave_category(new_class):
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)
 	statlist.slave_class = new_class
+
 
 func tick():
 	add_stat('lust', get_stat('lusttick'))
@@ -1023,6 +1025,7 @@ func tick():
 
 func is_uncontrollable():
 	return statlist.obedience <= 0 && statlist.loyalty < 100
+
 
 func is_controllable():#not sure - either this or previous is wrong cause of obedience check, nvn, rework both!
 	return statlist.loyalty >= 100
