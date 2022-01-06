@@ -37,7 +37,11 @@ func rebuild():
 	$population.visible = LocationsPanel.is_visible()
 	$food_consumption.visible = LocationsPanel.is_visible()
 	$BedroomLimit.visible = !LocationsPanel.is_visible()
-	$IterationsLimit.visible = !LocationsPanel.is_visible()
+	$BedroomIcon.visible = !LocationsPanel.is_visible()
+	$SexLimit.visible = !LocationsPanel.is_visible()
+	$SexIcon.visible = !LocationsPanel.is_visible()
+	$DateLimit.visible = !LocationsPanel.is_visible()
+	$DateIcon.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
 
 	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
@@ -243,8 +247,9 @@ func build_sex_selection(person, newbutton):
 
 func update_description():
 	var sex_participants = get_parent().sex_participants
-	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
-	$IterationsLimit.text = "Interactions per week: " + str(ResourceScripts.game_globals.weekly_sex_left) + "/" + str(ResourceScripts.game_globals.weekly_sex_max)
+	$BedroomLimit.text = str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
+	$DateLimit.text = str(ResourceScripts.game_globals.weekly_dates_left) + "/" + str(ResourceScripts.game_globals.weekly_dates_max)
+	$SexLimit.text = str(ResourceScripts.game_globals.weekly_sex_left) + "/" + str(ResourceScripts.game_globals.weekly_sex_max)
 
 
 func calculate_sex_limits():

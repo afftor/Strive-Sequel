@@ -66,13 +66,15 @@ func advance_day():
 	
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 0:
-		weekly_sex_max = ResourceScripts.game_party.get_master().get_stat('sexuals_factor') / 2 # + ResourceScripts.game_res.upgrades.sex_times
-		weekly_sex_left = weekly_sex_max
-		weekly_dates_max = 1 + ResourceScripts.game_party.get_master().get_stat('charm_factor')
-		weekly_dates_left = weekly_dates_max
+		reset_limits()
 	
 	globals.autosave()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()
 
+func reset_limits():
+	weekly_sex_max = ResourceScripts.game_party.get_master().get_stat('sexuals_factor') / 2 # + ResourceScripts.game_res.upgrades.sex_times
+	weekly_sex_left = weekly_sex_max
+	weekly_dates_max = 1 + ResourceScripts.game_party.get_master().get_stat('charm_factor')
+	weekly_dates_left = weekly_dates_max
