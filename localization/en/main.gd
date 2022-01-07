@@ -756,6 +756,9 @@ var TranslationDict = {
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
 	
 	
+	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
+	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
+	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
 	TASKMAINSTAT = "Main characteristic",
 	

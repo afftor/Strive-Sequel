@@ -238,7 +238,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1004.0
+margin_right = 1008.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
@@ -548,7 +548,6 @@ margin_left = 680.272
 margin_top = 794.056
 margin_right = 732.272
 margin_bottom = 834.056
-hint_tooltip = "Bedrooms used"
 texture = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -559,7 +558,6 @@ margin_left = 325.272
 margin_top = 794.056
 margin_right = 377.272
 margin_bottom = 834.056
-hint_tooltip = "Date limit. Renews once a week."
 texture = ExtResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false

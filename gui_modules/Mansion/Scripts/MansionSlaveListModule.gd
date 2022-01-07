@@ -15,10 +15,14 @@ var limit
 
 const BUTTON_HEIGHT = 64
 
+
 func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
+	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
+	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))
+	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 
 func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('job')
