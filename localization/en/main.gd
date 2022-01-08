@@ -4007,6 +4007,7 @@ You lead your new entourage out the door. Opening your map you show the group th
 	INITIATE_HIDEOUT_ATTACK_2 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.
 
 You also notice your small group of mages, one waves to you as you pass.
+
 — Good, you're here. And it seems you followed my advice. Though I trust you didn't tell Myr the details?""",
 	INITIATE_HIDEOUT_ATTACK_6 = """— Alright let's not waste time. Prepare your men and we will begin.""",
 	INITIATE_HIDEOUT_ATTACK_OFCOURSE = """Of course""",
@@ -6864,9 +6865,153 @@ Savra passes you a small parchment with the ingredients.
 	SAVRA_TALK_7_2 = """— Find Leon, bring the totem to him. The rest will be obvious.""",
 	
 	
+	JEAN_INTRO = """As you are about to enter, you hear an unfamiliar female voice from the other side of the door, which sounds rather agitated. 
+
+Unfamiliar Voice: - Watcha means there's no available job for a single person?!
+
+Myr: - What I said. What happened to your previous team anyway?
+
+Unfamiliar Voice: - Who cares, I'm free now!""",
+	JEAN_INTRO_1 = """You decide to enter and observe a young human girl who measures you with a sharp look.
+
+Myr: - Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? 
+
+Out of Myr's deadpan voice you can't make out if she's serious or not.""",
+	JEAN_INTRO_2 = """Girl: - You are a new land owner. What makes you think I will be working for you!? 
+
+Myr: - You are out of options, Jean, and your dormitory payment is due. 
+
+Girl: - Kh...
+
+Myr: - As you can see, her temperament is atrocious, but she's one of the most skilled students I ever had. Please relieve me of her presence.""",
+	JEAN_INTRO_2_OPTION_1 = "I guess I have some free space left",
+	JEAN_INTRO_2_OPTION_2 = "No way",
+	JEAN_INTRO_BAD = """Myr: - Goddamnit... Give me some more time then.
+
+You leave the room and wait for them to finish.""",
+	JEAN_INTRO_3 = """Jean: - Hey, what the heck makes you think you can decide without me? 
+
+Myr: - Excellent. I'm sure [he]'ll have some suitable work for you. Maybe you'll also find some man and stop being such a pain in the ass. Adios.
+
+Jean: - Wait, I haven't finished!
+
+Before Jean could protest the strong magic force has pushed you both out of Myr's office.""",
+	JEAN_INTRO_4 = """- Darn that hag!.. Crap... 
+
+Realizing the hopelessness of her situation Jean finally accepts your existence and faces you.
+
+- Well, pleased to meet you, I guess. You must have some work for me, right? As you can guess I'm not good with hand work, so I hope you aren't just sitting on your ass all day.""",
+	JEAN_INTRO_4_OPTION_1 = "I do fight a lot as well",
+	JEAN_INTRO_4_OPTION_2 = "It seems you don't talk to people too often ",
+	JEAN_INTRO_4_OPTION_3 = "No, but I wouldn't mind sitting on your ass from time to time",
+	JEAN_INTRO_5_1 = """- Hmph, that's good then. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+
+You give Jean the directions of your mansion and leave her to it.""",
+	JEAN_INTRO_5_2 = """- Whatever. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+
+You give Jean the directions of your mansion and leave her to it.""",
+	JEAN_INTRO_5_3 = """Heavily blushed Jean slaps your face making a sound so loud you wonder if Myr would come out of her office to check on you. 
+
+- That's what you are thinking about? Pervert! I'll let you know I won't be doing any sort of 'service' that you are dreaming of! Now tell me where do I sleep from now on and bug off.
+
+You give Jean the directions of your mansion and leave her to it.""",
+
+
+	LILIA_INTRO = """As you move through the village with occasional elves and faes observing you, you notice that most residents stay very cautious and turn away once you look in their direction. That is, except for one very curious fairy with long red hair. After she realizes that she caught your attention, she dashes at you, completely ignoring any formalities.
+
+- Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
+	LILIA_INTRO_OPTION_1 = "Nice to meet you, I'm [name].",
+	LILIA_INTRO_OPTION_2 = "Woah, not so fast",
+	LILIA_INTRO_OPTION_3 = "You really know no manners, do you?",
+	LILIA_INTRO_2 = """- Ah, sorry, this is just so exciting and rare to meet someone like you. You look so big and strong, it make me feel all tingling *chuckle*
+
+- Say, can I join you? Please? """,
+	LILIA_INTRO_2_OPTION_1 = "Agree",
+	LILIA_INTRO_2_OPTION_2 = "Refuse",
+	LILIA_INTRO_3_1 = "- Thanks! Looking forward to living at your place.",
+	LILIA_INTRO_3_2 = "- Aww... Let me know if you change your mind!",
 	
-	
-	
+	CALI_INTRO = """As you get through the fort, you find a small note from some slavers who seemed to be in contact with local bandits. It specifies a small cave at a nearby location which is used as a safe house and how they are forced to stay there for now. You decide to write this down and move on.""",
+	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
+
+Slaver: - Hey, it seems we have a guest. We don't wanna fight, actually wanna get rid of one leftover merchandise and get on with it. You seem like a respectable gentleman. 
+
+The slaver leads you to another room.""",
+	CALI_INTRO_2 = """Lying on a floor you see a young girl. Her ears and tail give away her halfkin origin of a wolf. Despite being tied, her spirit seems to not be anywhere near broken yet.
+
+Slaver: - Name's Sally, or something like that.
+
+Girl: - It's Cali! I'd kick your ass if not for these ropes!
+
+Slaver: - This little shit just won't shut up. Why didn't we discipline her again?
+
+Slaver 2: - Because her initial buyer was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth back.""",
+	CALI_INTRO_2_OPTION_1 = "Is she still a virgin?",
+	CALI_INTRO_2_OPTION_2 = "Where did you get her?",
+	CALI_INTRO_2_OPTION_3 = "I'd like to purchase her",
+	CALI_INTRO_2_OPTION_4 = "I'll take her from you", # go to fight
+	CALI_INTRO_3_1 = """The girl blushes in deep red on your question.
+
+Cali: - Of course I am! What are you planning to do, you perverts!? Don't even think about it!
+
+The men smirk at her reaction.
+
+Slaver: - Well, that's what she says.""",
+	CALI_INTRO_3_2 = """Slaver: - She was travelling alone by the roads. Looks like she ran away from home or something. """,
+	CALI_INTRO_3_3 = """The leader strokes his chin for a few seconds. 
+
+Slaver: - I knew we could have a productive relationship with you, [sir]. It would be annoying to keep her around once we live, so we can happily part with her here.
+
+Cali: - Bastards, stop discussing me like I agreed to this!
+
+Slaver: - Given her healthy physique and appearance I believe she is worth at least 1,000 gold.""",
+	CALI_INTRO_3_OPTION_1 = "She does not seem all that pretty to me (Charm Check)",
+	CALI_INTRO_3_OPTION_2 = "I'll think about it",
+	CALI_INTRO_3_OPTION_3 = "Deal",
+	CALI_INTRO_3_OPTION_4 = "No deal, I'll take her by force",
+	CALI_INTRO_4_1_1 = """Cali: - Like I care how I seem to you!
+
+Slaver: - I suppose, a thousand might be too much, but we can't drop price lower than 750 gold. We have to cover the costs of keeping her alive and safe. 
+
+Cali: - You feed me with pig food here!""",
+	CALI_INTRO_4_1_2 = """Cali: - Like I care how I seem to you!
+
+Slaver: - Even so, we must cover the expenses for keeping her alive and safe. 
+
+Cali: - You feed me with pig food here!""",
+	CALI_INTRO_4_2 = """Slaver: - Alright, but don't take too long. There might be a new customer for her then. He-he.""",
+	CALI_INTRO_4_3 = """The slaver smirk as you pass them the money and leave the cave. You turn to the still tied Cali.""",
+	CALI_INTRO_4_4 = """Slaver: - Oh, is that so? You can try!""",
+	GOT_CALI_1_1 = """Now the tied wolf girl sits before you, looking with a defiance and a hint of fear.
+
+- So? What are you going to do with me now?""",
+	GOT_CALI_1_2 = """Now the tied wolf girl quietly sits before you. Her composed expression yet has hints of awe she's trying to hide.
+
+- W-what are you looking at? What are you going to do with me? """,
+	GOT_CALI_1_OPTION_1 = "*Rape her*",
+	GOT_CALI_1_OPTION_2 = "I'll free you",
+	GOT_CALI_2_1 = """You decided there's really no point in further chat and you should savor your acquisition right here.
+
+Unexpected to Cali, you push her down and tear her underwear as she miserably tries to squirm away. However, as her limbs are tied, she only exhausts herself.
+
+- W-what are you doing! Stop it, you bastard!
+
+As you finish with her, you return to the mansion with your newly acquired toy.""",
+	GOT_CALI_2_2 = """The wolf girl looks at you with a slight disbelief as you release her from her binds and help her to stand up. Despite her numb muscles and small figure, her liveliness can be envied. 
+
+- W-well, thank you, I guess. I'm glad you aren't like those creeps. 
+
+She takes a long pause before willing to continue.
+
+- Say... You are some big shot I suppose? Right now I don't really have anywhere to go. Maybe I could do some work for you? You look like a good guy.""",
+	GOT_CALI_2_OPTION_1 = "What sort of work can you do?",
+	GOT_CALI_2_OPTION_2 = "I could find some use for you",
+	GOT_CALI_2_OPTION_3 = "Not interested",
+	GOT_CALI_3_1 = """- I might not look like it, but I'm pretty tough. Can do some menial work or cover your back. But I'd rather not do anything, you know, bawdy...""",
+	GOT_CALI_3_2 = """- Great! I promise I'll do my best. 
+
+You leave the cave and lead Cali back to your mansion.""",
+	GOT_CALI_3_3 = """""",
 	
 	
 	

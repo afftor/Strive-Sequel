@@ -21,13 +21,13 @@ var data = {
 			{
 				code = 'final_operation_1',
 				text = "FINAL_OPERATON_START_OPTION_1",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 1
 			},
 			{
 				code = 'final_operation_2',
 				text = "FINAL_OPERATON_START_OPTION_2",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 2
 			},
 		],
@@ -51,13 +51,13 @@ var data = {
 			{
 				code = 'final_operation_4',
 				text = "FINAL_OPERATON_OPTION_2",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 3
 			},
 			{
 				code = 'final_operation_4',
 				text = "FINAL_OPERATON_OPTION_3",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 4
 			},
 		],
@@ -81,13 +81,13 @@ var data = {
 			{
 				code = 'final_operation_4',
 				text = "FINAL_OPERATON_OPTION_2",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 4
 			},
 			{
 				code = 'final_operation_4',
 				text = "FINAL_OPERATON_OPTION_3",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 5
 			},
 		],
@@ -100,7 +100,7 @@ var data = {
 			{text = "FINAL_OPERATON_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage2'}, {code = "update_guild"}]},
+			{code = 'leave', type = 'next_dialogue', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage2'}, {code = "update_guild"}]},
 		],
 	},
 }
