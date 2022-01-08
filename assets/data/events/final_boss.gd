@@ -7,7 +7,7 @@ var data = {
 				tags = ['master_translate'],
 				text = [{text = "FINAL_BOSS_1", reqs = []}],
 				options = [
-					{code = 'quest_fight', args = 'greg_boss_fight', text = "DIALOGUEFIGHTOPTION", reqs = []},
+					{code = 'quest_fight', args = 'greg_boss_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], type = 'next_dialogue',},
 				],
 			},
 			{
@@ -16,7 +16,7 @@ var data = {
 				tags = ['master_translate'],
 				text = [{text = "FINAL_BOSS_2", reqs = []}],
 				options = [
-					{ code = 'quest_fight', args = 'aire_boss_fight', text = "DIALOGUEFIGHTOPTION", reqs = []},
+					{ code = 'quest_fight', args = 'aire_boss_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], type = 'next_dialogue',},
 				],
 			},
 			{
@@ -73,7 +73,7 @@ var data = {
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [{text = "AIRE_COMBAT_ON_WIN_3", reqs = []}],
 			options = [
-				{code = "greg_combat_on_win_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1},
+				{code = "greg_combat_on_win_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',},
 			],
 	},
 	greg_combat_on_win_1 = {
@@ -186,7 +186,7 @@ var data = {
 		],
 		common_effects = [{code = 'complete_quest', value = 'final_operation'}],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}, {code = 'set_completed_active_location'}, {code = 'update_location'}]},
+			{code = 'leave', type = 'next_dialogue', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}, {code = 'set_completed_active_location'}, {code = 'update_location'}]},
 		],
 	},
 }

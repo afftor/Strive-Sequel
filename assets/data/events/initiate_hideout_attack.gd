@@ -1,12 +1,12 @@
 var data = {
 	initiate_hideout_attack = {
 		variations = [
-			{
+			{ # no help
 				image = null,
 				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_1",
-				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}],
+				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}, {type = 'decision', value = 'MagesHelpDuncan', check = false}],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
@@ -17,12 +17,12 @@ var data = {
 					},
 				]
 			},
-			{
+			{  # help
 				image = null,
 				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_2",
-				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}],
+				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}, {type = 'decision', value = 'MagesHelpDuncan', check = true}],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
@@ -46,19 +46,19 @@ var data = {
 			{
 				code = 'initiate_hideout_attack_4',
 				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_1",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 1
 			},
 			{
 				code = 'initiate_hideout_attack_4',
 				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_2",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 2
 			},
 			{
 				code = 'initiate_hideout_attack_5',
 				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_3",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 3
 			},
 		]
@@ -74,13 +74,13 @@ var data = {
 			{
 				code = 'initiate_hideout_attack_3',
 				text = "INITIATE_HIDEOUT_ATTACK_OPTION_1",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 1
 			},
 			{
 				code = 'initiate_hideout_attack_5',
 				text = "INITIATE_HIDEOUT_ATTACK_OPTION_2",
-				reqs = [],
+				reqs = [], type = 'next_dialogue',
 				dialogue_argument = 2
 			},
 		]
