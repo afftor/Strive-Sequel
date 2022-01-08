@@ -1,7 +1,7 @@
 extends Panel
 
 onready var StatsContainer = $StatsPanel/StatsVBox
-onready var CharList = $CharList/ScrollContainer/CharactersVBox
+#onready var CharList = $CharList/ScrollContainer/CharactersVBox
 onready var Materials = $StatsPanel/Materials
 var selected_character
 
