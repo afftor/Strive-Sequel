@@ -124,11 +124,11 @@ func custom_stats_get():
 		res['lusttick'] = tres
 	for i in ['physics', 'wits', 'charm']:
 		var ii = i + '_cap'
-		if res.has(ii):
-			var tres = variables.basestat_cap
-			if bonuses.has(i + '_add'): tres += bonuses.lusttick_add
-			if bonuses.has(i + '_mul'): tres *= bonuses.lusttick_mul
-			res[ii] = tres
+#		if res.has(ii):
+		var tres = variables.basestat_cap
+		if bonuses.has(ii + '_add'): tres += bonuses[ii + '_add']
+		if bonuses.has(ii + '_mul'): tres *= bonuses[ii + '_mul']
+		res[ii] = tres
 		if res.has(i):
 			res[i] = min(res[i], res[ii])
 			statlist[i] = min(statlist[i], res[ii]) #cause basestats are direct accessed

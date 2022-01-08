@@ -97,7 +97,7 @@ func showup(node, person):
 			var color = set_color(person.get_stat(i+"_bonus"))
 			get_node(i).text = str(floor(person.get_stat(i)))
 			get_node(i).set("custom_colors/font_color", color)
-			get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20 + person.get_stat(i+"_bonus"))
+			get_node(i+'2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
 			get_node(i+'2').set("custom_colors/font_color", color)
 
 		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))
