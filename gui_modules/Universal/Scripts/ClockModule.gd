@@ -46,6 +46,13 @@ func update_gold_tooltip():
 
 func set_sky_pos():
 	sky.texture.region.position.x = atlas_pos[ResourceScripts.game_globals.hour]
+	if gui_controller.mansion != null:
+		var bghold = gui_controller.mansion.get_node('BGHolder')
+		for bg in bghold.get_children():
+			if bg.name == "BG%d" % int(ResourceScripts.game_globals.hour):
+				bg.modulate = Color(1.0,1.0,1.0,1.0)
+			else:
+				bg.modulate = Color(1.0,1.0,1.0,0.0)
 
 
 func move_sky(from, to, init_delay):
@@ -66,6 +73,33 @@ func move_sky(from, to, init_delay):
 		v4.position.x = 0
 		tw.interpolate_property(sky.texture, "region", v1, v3, speed * t1, 0, 2, init_delay)
 		tw.interpolate_property(sky.texture, "region", v4, v2, speed * t2, 0, 2, init_delay + speed * t1)
+	
+	if gui_controller.mansion != null:
+		var bghold = gui_controller.mansion.get_node('BGHolder')
+		for bg in bghold.get_children():
+			if bg.name == "BG%d" % from:
+				bg.modulate = Color(1.0,1.0,1.0,1.0)
+			else:
+				bg.modulate = Color(1.0,1.0,1.0,0.0)
+		if from < to:
+			var speed =  (variables.SecndsPerTransition - init_delay) / (to - from)
+			for b1 in range(from, to):
+				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 - from) * speed) #increasing opacity of next bg, delay increasing for speed each time
+		else:
+			var t1 = 4 - from
+			var t2 = to
+			var speed = (variables.SecndsPerTransition - init_delay) / (t1 + t2)
+			for b1 in range(from, 4): #those are taking t1 tacts
+				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 - from) * speed)
+			for bg in bghold.get_children(): #resetting all bgs to default
+				if bg.name == 'BG0':
+					tw.interpolate_callback(bg, init_delay + speed * t1, 'set_modulate', Color(1.0,1.0,1.0,1.0))
+				else:
+					tw.interpolate_callback(bg, init_delay + speed * t1, 'set_modulate', Color(1.0,1.0,1.0,0.0))
+			for b1 in range(0, to):
+				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 + t1) * speed)
+			
+	
 	tw.start()
 	yield(tw, "tween_all_completed")
 	locked = false

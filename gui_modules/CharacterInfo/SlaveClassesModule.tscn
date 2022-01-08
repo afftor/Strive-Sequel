@@ -247,10 +247,10 @@ __meta__ = {
 
 [node name="CheckBox" type="CheckBox" parent="."]
 light_mask = 0
-margin_left = 33.2982
-margin_top = 772.0
-margin_right = 153.298
-margin_bottom = 813.0
+margin_left = 806.923
+margin_top = 780.409
+margin_right = 931.923
+margin_bottom = 821.409
 theme = ExtResource( 15 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -921,9 +921,22 @@ text = "Unlock"
 align = 1
 valign = 1
 
+[node name="UpgradeButton" type="Button" parent="."]
+margin_left = 347.253
+margin_top = 765.409
+margin_right = 555.253
+margin_bottom = 829.409
+theme = ExtResource( 18 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Upgrade"
+
 [node name="stats_upgrade" parent="." instance=ExtResource( 57 )]
 visible = false
-margin_left = 504.0
-margin_top = 44.0
-margin_right = 1304.0
-margin_bottom = 844.0
+margin_left = 303.824
+margin_top = -324.094
+margin_right = 683.824
+margin_bottom = 379.906
