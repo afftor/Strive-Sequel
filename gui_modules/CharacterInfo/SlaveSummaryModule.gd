@@ -119,12 +119,12 @@ func show_summary():
 			var color = set_color(person.get_stat(i+'_bonus'))
 
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.statlist[i]))  + text
-			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.custom_stats_get()[i]))  + text
+			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
 		else:
 			var color = set_color(person.get_stat(i+'_bonus'))
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)) - person.get_stat(i+"_bonus")) + text
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.custom_stats_get()[i])) + text
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 
 
