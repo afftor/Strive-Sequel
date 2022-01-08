@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=27]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/gui icons/icon_interactions.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/gui icons/icon_bedlimit.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gui/gui icons/icon_twohearts.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -46,7 +49,7 @@ font_data = ExtResource( 1 )
 
 [node name="MansionSlaveListModule" type="Panel"]
 margin_right = 1100.0
-margin_bottom = 580.0
+margin_bottom = 845.0
 theme = ExtResource( 9 )
 custom_styles/panel = ExtResource( 25 )
 script = ExtResource( 13 )
@@ -437,35 +440,8 @@ margin_right = 28.0
 margin_bottom = 28.0
 text = "Sex"
 
-[node name="population" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -219.0
-margin_top = -92.926
-margin_right = -173.0
-margin_bottom = -65.926
-hint_tooltip = "TOOLTIPPOPULATION"
-theme = ExtResource( 6 )
-custom_fonts/font = ExtResource( 28 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Pop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="population"]
-margin_left = -26.1069
-margin_top = -5.77057
-margin_right = 5.89313
-margin_bottom = 26.2294
-texture = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="food_consumption" type="Label" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -489,6 +465,34 @@ margin_top = -5.77057
 margin_right = -3.9306
 margin_bottom = 34.2294
 texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="population" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -219.0
+margin_top = -92.926
+margin_right = -173.0
+margin_bottom = -62.926
+hint_tooltip = "TOOLTIPPOPULATION"
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="population"]
+margin_left = -26.1069
+margin_top = -5.77057
+margin_right = 5.89313
+margin_bottom = 26.2294
+texture = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -539,28 +543,73 @@ margin_right = 4.0
 margin_bottom = 32.0
 texture = ExtResource( 19 )
 
-[node name="BedroomLimit" type="Label" parent="."]
-margin_left = 264.272
+[node name="BedroomIcon" type="TextureRect" parent="."]
+margin_left = 680.272
 margin_top = 794.056
-margin_right = 453.272
+margin_right = 732.272
 margin_bottom = 834.056
+texture = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DateIcon" type="TextureRect" parent="."]
+margin_left = 325.272
+margin_top = 794.056
+margin_right = 377.272
+margin_bottom = 834.056
+texture = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SexIcon" type="TextureRect" parent="."]
+margin_left = 509.133
+margin_top = 793.796
+margin_right = 561.133
+margin_bottom = 833.796
+hint_tooltip = "Date limit. Renews once a week."
+texture = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BedroomLimit" type="Label" parent="."]
+margin_left = 731.326
+margin_top = 795.316
+margin_right = 831.326
+margin_bottom = 835.316
 custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Bedroom limit:"
+text = "1/1"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IterationsLimit" type="Label" parent="."]
-margin_left = 525.066
-margin_top = 794.056
-margin_right = 721.066
-margin_bottom = 834.056
+[node name="DateLimit" type="Label" parent="."]
+margin_left = 377.0
+margin_top = 794.0
+margin_right = 477.0
+margin_bottom = 829.0
 custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Iterations limit:"
+text = "1/1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SexLimit" type="Label" parent="."]
+margin_left = 556.0
+margin_top = 794.0
+margin_right = 656.0
+margin_bottom = 829.0
+custom_fonts/font = ExtResource( 27 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "1/1"
 align = 1
 valign = 1
 __meta__ = {

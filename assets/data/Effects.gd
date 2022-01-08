@@ -195,7 +195,7 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
 		atomic = [],
-		buffs = ['b_power_pot'],
+		buffs = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -3643,15 +3643,9 @@ var buffs = {
 		t_name = 'confuse'
 	},
 	b_free_use = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Confusion",
+		icon = "res://assets/images/iconsclasses/Attendant.png",
+		description = "Allows to use an item without taking a turn",
 		t_name = 'freuse',
-		combat_only = true
-	},
-	b_power_pot = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Confusion",
-		t_name = 'powerpot',
 		combat_only = true
 	},
 	b_shred = {

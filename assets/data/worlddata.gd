@@ -32,7 +32,7 @@ var lands = {
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
-			{code = 'gryphon_hunter_start', text = "Meet Derek, hunter veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -1540,26 +1540,26 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]}
 			],
 		area = 'plains',
-		travel_time = [1,1],#[4,6],
+		travel_time = [1,1],
 		scripteventdata = []
 	},
-	quest_gryphon_forest_location = {# trigger = dungeon_complete
+	quest_gryphon_forest_location = {
 		code = 'quest_gryphon_forest_location',
 		type = 'dungeon',
-		name = 'Secluded Forest',
+		name = 'Gryphon Thicket',
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
+		difficulty = 'medium',
 		background_pool = ['forest1'],
-		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],],
+		final_enemy = [['jungle_boss3',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
 		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
 		gather_mod = [2.5,4], #temp mod for the game to work
-		stages_per_level = [10,10],
-		bgm = "dungeon",
+		stages_per_level = [7,7],
+		bgm = "exploration",
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
@@ -1572,8 +1572,8 @@ var dungeons = {
 	},
 	quest_gryphon_cave_location = {# trigger = dungeon_complete
 		code = 'quest_gryphon_cave_location',
-		type = 'encounter',
-		name = 'Gryphon Lair',
+		type = 'dungeon',
+		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',

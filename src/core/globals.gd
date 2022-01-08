@@ -368,6 +368,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	#showtooltip(text, node)
 
+
 func ItemSelect(targetscript, type, function, requirements = true):
 	var node
 	if get_tree().get_root().has_node("ItemSelect"):
@@ -712,8 +713,6 @@ func impregnate_check(father,mother):
 	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
 		result.value = false
 	
-	
-	
 	return result
 
 func impregnate(father, mother):
@@ -776,7 +775,7 @@ func text_log_add(label, text):
 		newfield.show()
 		newfield.get_node("label").bbcode_text = label
 		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + variables.timeword[ResourceScripts.game_globals.hour] + "[/right]"
+		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + tr(variables.timeword[ResourceScripts.game_globals.hour]) + "[/right]"
 		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
 		yield(get_tree(), 'idle_frame')
 		var textfield = newfield.get_node('text')

@@ -1,0 +1,214 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=14]
+[ext_resource path="res://gui_modules/CharacterInfo/stat_upgrade_panel_mansion.gd" type="Script" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
+
+[node name="CharactersPanel" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.0
+margin_top = -352.5
+margin_right = 190.0
+margin_bottom = 352.5
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="screen" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -803.0
+margin_top = -212.0
+margin_right = 805.0
+margin_bottom = 221.0
+mouse_filter = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.564706 )
+margin_right = 380.0
+margin_bottom = 705.0
+custom_styles/panel = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatInfo" type="Label" parent="StatsPanel"]
+margin_right = 379.0
+margin_bottom = 24.0
+theme = ExtResource( 13 )
+text = "Stat Info"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatInfoNameValue" type="Label" parent="StatsPanel"]
+margin_top = 421.0
+margin_right = 379.0
+margin_bottom = 445.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Stat Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatInfoCurrentValue" type="Label" parent="StatsPanel"]
+margin_top = 461.0
+margin_right = 379.0
+margin_bottom = 501.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Current Value"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatInfoUpgradeValue" type="Label" parent="StatsPanel"]
+visible = false
+margin_left = 862.57
+margin_top = 217.0
+margin_right = 921.57
+margin_bottom = 241.0
+text = "Price"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="Button" parent="StatsPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -85.0
+margin_right = 104.0
+margin_bottom = -21.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Upgrade"
+
+[node name="Testing" type="Label" parent="StatsPanel"]
+visible = false
+margin_left = 280.0
+margin_top = 552.0
+margin_right = 365.0
+margin_bottom = 576.0
+text = "Testing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsVBox" type="VBoxContainer" parent="StatsPanel"]
+margin_left = 43.3193
+margin_top = 40.0
+margin_right = 343.319
+margin_bottom = 91.0
+rect_min_size = Vector2( 300, 51 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="StatsPanel/StatsVBox"]
+visible = false
+margin_right = 300.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 0, 51 )
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 20 )
+expand = true
+
+[node name="StatName" type="Label" parent="StatsPanel/StatsVBox/Button"]
+margin_right = 300.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 5 )
+text = "Stat Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Materials" type="HBoxContainer" parent="StatsPanel"]
+margin_top = 501.0
+margin_right = 379.0
+margin_bottom = 581.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="StatsPanel/Materials"]
+visible = false
+margin_left = 149.0
+margin_right = 229.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="StatsPanel/Materials/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 74, 74 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StatsPanel/Materials/Button"]
+margin_left = 2.0
+margin_top = 50.0
+margin_right = 77.0
+margin_bottom = 77.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="Label" parent="StatsPanel"]
+margin_left = 113.0
+margin_top = 579.0
+margin_right = 164.0
+margin_bottom = 630.0
+custom_fonts/font = ExtResource( 1 )
+text = "EXP: "

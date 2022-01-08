@@ -106,6 +106,27 @@ func add_close_button(scene, position = "snap"):
 
 	return closebutton
 
+func add_close_button_simple(scene, position = "snap"):
+	var closebuttonoffset = [0, 0]
+	if position == "add_offset":
+		closebuttonoffset = [15, 15]
+	elif position == "bigger_offset":
+		closebuttonoffset = [30, 30]
+	var pos_in_tree = scene.get_child_count()
+	scene.rect_pivot_offset = Vector2(scene.rect_size.x / 2, scene.rect_size.y / 2)
+	var closebutton = load(ResourceScripts.scenedict.close).instance()
+	scene.add_child(closebutton)
+	scene.move_child(closebutton, pos_in_tree)
+	closebutton.connect("pressed", scene, 'hide')
+	var rect = scene.get_global_rect()
+	var pos = Vector2(
+		rect.end.x - closebutton.rect_size.x - closebuttonoffset[0],
+		rect.position.y + closebuttonoffset[1]
+	)
+	closebutton.rect_global_position = pos
+
+	return closebutton
+
 
 func close_scene(scene):
 	if char_creation != null && char_creation.is_visible():

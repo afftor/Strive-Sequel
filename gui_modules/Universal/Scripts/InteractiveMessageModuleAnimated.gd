@@ -67,11 +67,11 @@ func open(scene):
 	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
-		#print_debug("waiting")
+#		print_debug("waiting")
 		yield(self, "TransitionFinished")
-		#print_debug("finished WAIT")
+#		print_debug("finished WAIT")
 		doing_transition = false
-	
+#	print(self.visible)
 	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
@@ -86,6 +86,8 @@ func open(scene):
 	
 	yield(get_tree().create_timer(0.5), "timeout")
 	hold_selection = false
+#	input_handler.print_order()
+#	get_tree().get_root().print_tree_pretty()
 	show_buttons()
 	gui_controller.is_dialogue_just_started = false
 	if get_tree().get_root().get_node_or_null("lootwindow") && get_tree().get_root().get_node("lootwindow").is_visible():
@@ -393,14 +395,16 @@ func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
 	person.statlist.get_random_name()
+	input_handler.active_character.get_stat('pregnancy', true).baby = null
 	node.open(self, 'set_baby_name', person.get_stat('name'))
+	
 
 func removebaby():
 	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy').baby, tr("KEEPNOT"))
 	close()
 	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
 	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
-	input_handler.active_character.get_stat('pregnancy').baby = null
+	input_handler.active_character.get_stat('pregnancy', true).baby = null
 
 func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
@@ -509,6 +513,7 @@ func handle_scene_transition_fx(scene):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
 		doing_transition = true
 		yield(get_tree().create_timer(1), "timeout")
+#		print("handle transition end")
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		doing_transition = true

@@ -15,10 +15,14 @@ var limit
 
 const BUTTON_HEIGHT = 64
 
+
 func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
+	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
+	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))
+	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 
 func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('job')
@@ -37,7 +41,11 @@ func rebuild():
 	$population.visible = LocationsPanel.is_visible()
 	$food_consumption.visible = LocationsPanel.is_visible()
 	$BedroomLimit.visible = !LocationsPanel.is_visible()
-	$IterationsLimit.visible = !LocationsPanel.is_visible()
+	$BedroomIcon.visible = !LocationsPanel.is_visible()
+	$SexLimit.visible = !LocationsPanel.is_visible()
+	$SexIcon.visible = !LocationsPanel.is_visible()
+	$DateLimit.visible = !LocationsPanel.is_visible()
+	$DateIcon.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
 
 	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
@@ -243,8 +251,9 @@ func build_sex_selection(person, newbutton):
 
 func update_description():
 	var sex_participants = get_parent().sex_participants
-	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
-	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_sex_left) + "/" + str(1 + ResourceScripts.game_res.upgrades.sex_times)
+	$BedroomLimit.text = str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
+	$DateLimit.text = str(ResourceScripts.game_globals.weekly_dates_left) + "/" + str(ResourceScripts.game_globals.weekly_dates_max)
+	$SexLimit.text = str(ResourceScripts.game_globals.weekly_sex_left) + "/" + str(ResourceScripts.game_globals.weekly_sex_max)
 
 
 func calculate_sex_limits():
@@ -373,7 +382,7 @@ func update_button(newbutton):
 				var time_left_string = ''
 				if time_left == 1:
 					time_left = 4 - ResourceScripts.game_globals.hour
-					time_left_string = str(time_left * 6) + " h."
+					time_left_string = str(time_left) + " turns"
 				else:
 					time_left_string = str(time_left) + " d."
 				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
@@ -417,7 +426,7 @@ func update_button(newbutton):
 		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick()) * 6) + " hours. "
+		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " turns. "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:

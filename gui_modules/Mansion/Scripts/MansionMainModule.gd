@@ -64,6 +64,7 @@ var mansion_prev_state
 var prev_selected_travel
 
 var always_show = [
+	"BGHolder",
 	"TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
@@ -108,8 +109,8 @@ func _ready():
 			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 		else:
 			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
-
-
+		
+		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
@@ -465,7 +466,7 @@ func update_sex_date_buttons():
 		else:
 			SexSelect.get_node("DateButton").disabled = false
 		SexSelect.get_node("SexButton").disabled = false
-	if ResourceScripts.game_globals.daily_sex_left > 0:
+	if ResourceScripts.game_globals.weekly_sex_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
 		SexSelect.get_node("SexButton").disabled = true
@@ -474,14 +475,14 @@ func update_sex_date_buttons():
 		if i.tags.has("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
 	for i in sex_participants:
-		if i.tags.has("no_date"):
+		if i.tags.has("no_date") or i.tags.has("no_date_day"):
 			SexSelect.get_node("DateButton").disabled = true
 
 	SexSelect.get_node("DateButton").disabled = (
 		sex_participants.size() > 1
 		|| sex_participants.size() == 0
 		|| sex_participants.has(ResourceScripts.game_party.get_master())
-		|| ResourceScripts.game_globals.daily_dates_left <= 0
+		|| ResourceScripts.game_globals.weekly_dates_left <= 0
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
 
@@ -740,7 +741,7 @@ func test_mode():
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Hara'},
+				{code = 'make_story_character', value = 'Aire'},
 			]
 		)
 		globals.common_effects(
@@ -862,7 +863,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-		input_handler.interactive_message('final_words_1', '', {})
+#		input_handler.interactive_message('gryphon_hunter_start', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -871,7 +872,7 @@ func test_mode():
 #		input_handler.interactive_message('pre_final_boss_refuse', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 
-		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
+		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
@@ -881,6 +882,7 @@ func test_mode():
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 
 #		character = ResourceScripts.scriptdict.class_slave.new()
+		ResourceScripts.game_globals.reset_limits()
 		yield(get_tree(), 'idle_frame')
 		#input_handler.add_random_chat_message(character2, 'hire')
 		

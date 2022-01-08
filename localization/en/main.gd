@@ -1,5 +1,10 @@
 extends Reference
 var TranslationDict = {
+	#Time
+	NIGHT = "Night",
+	MORNING = "Morning",
+	NOON = "Noon",
+	EVENING = "Evening",
 	#Buildings
 	MANSION = "Aliron (Mansion)",
 	RETURNTOMANSION = "Return to Mansion",
@@ -751,6 +756,9 @@ var TranslationDict = {
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
 	
 	
+	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
+	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
+	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -986,13 +994,13 @@ var TranslationDict = {
 	INFOHOLDSHIFT = "Hold shift for details",
 	
 	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience it will take to unlock a new class until the soft cap limit.",
-	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It limits [color=aqua]Physical[/color] growth and influences melee combat.",
+	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration. ",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the greater the Obedience gained from positive skills. ",
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the greater the Obedience gained from negative skills. ",
-	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It limits [color=aqua]Wits[/color] growth.",
-	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests.",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events.",
+	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.",
+	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.",
 
 
 	STATFOOD_LOVE = "Loved Food",
@@ -1558,9 +1566,9 @@ var TranslationDict = {
 	
 	UPGRADEBUILDERTOOLS = "Builder Tools",
 	UPGRADEBUILDERTOOLSDESCRIPT = "Increase number of characters which can be assigned to Upgrading at once.",
-	UPGRADEBUILDERTOOLSBONUS1 = "Maximum number of Upgrading slots: 3",
-	UPGRADEBUILDERTOOLSBONUS2 = "Maximum number of Upgrading slots: 4",
-	UPGRADEBUILDERTOOLSBONUS3 = "Maximum number of Upgrading slots: 5",
+	UPGRADEBUILDERTOOLSBONUS1 = "Maximum number of Upgrading slots: 2",
+	UPGRADEBUILDERTOOLSBONUS2 = "Maximum number of Upgrading slots: 3",
+	UPGRADEBUILDERTOOLSBONUS3 = "Maximum number of Upgrading slots: 4",
 	
 	
 	INTERACTIONSNOSEXTAG = "[name]'s personal story has not progressed to the point of allowing [him] to participate in these kinds of actions.",
@@ -2139,6 +2147,8 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_DRAGON_NEST = "Dragon Nest",
 	LOCATIONNAMEDUNGEON_QUEST_MINES = "Mines",
 	LOCATIONNAMEQUEST_FINAL_OPERATION_LOCATION = "Rebels' Hideout",
+	LOCATIONNAMEQUEST_GRYPHON_FOREST_LOCATION = "Gryphon Thicket",
+	LOCATIONNAMEQUEST_GRYPHON_LAIR_LOCATION = "Elder Grypho Lair",
 
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
@@ -2166,6 +2176,7 @@ var TranslationDict = {
 	ENEMYOGRE_MELEE = "Ogre",
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
+	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER = "Spider",
@@ -3373,7 +3384,7 @@ The princess notices Aire tensing up in response to the question.
 	SENDCHARTOQUESTCONFIRM = "Send this character to quest?",
 
 	SKILLPOISON_BITE = "Poison Bite",
-	SKILLENEMY_ENTANGLE = "Entangle",
+	SKILLENTANGLE_ENEMY = "Entangle",
 	SKILLSHRED = "Shred",
 
 
@@ -6213,11 +6224,11 @@ After another couple of precise shots she turns to you questioningly .
 	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard",
 	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
 	
-	GRYPHON_WORKERS_START_OPTION = "Ask about Elder Gryphon",
+	GRYPHON_WORKERS_START_OPTION = "I'm looking for an Elder Gryphon...",
 	GRYPHON_WORKERS_START = """— Hmm, I dunno de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
 
 Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down the Elder Gryphon.""",
-	GRYPHON_HUNTER_START = """You find a veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
+	GRYPHON_HUNTER_START = """You find Derek, veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
 
 — That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense so bringing too many people will do us more harm than good. 
 
@@ -7074,33 +7085,33 @@ You leave the cave and lead Cali back to your mansion.""",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
 	
-	GRYPHON_QUEST_SUMMARY = "",
-	GRYPHON_QUEST_NAME = "",
-	GRYPHON_QUEST_STAGE_1 = "",
-	GRYPHON_QUEST_STAGE_2 = "",
-	GRYPHON_QUEST_STAGE_3 = "",
-	GRYPHON_QUEST_STAGE_4 = "",
+	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
+	GRYPHON_QUEST_NAME = "Proof of Strength",
+	GRYPHON_QUEST_STAGE_1 = "Talk to Sigmund about the possible location of Elder Gryphon",
+	GRYPHON_QUEST_STAGE_2 = "Talk to Derek at Aliron",
+	GRYPHON_QUEST_STAGE_3 = "Search through Gryphon Thicket to find Elder Gryphon's tracks",
+	GRYPHON_QUEST_STAGE_4 = "Hunt down Elder Gryphon at Elder Gryphon Lair",
 	
-	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "",
-	PRE_SWORD_ARTIFACT_QUEST_NAME = "",
-	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "",
+	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "It seems someone wishes for your audience at Aliron's church",
+	PRE_SWORD_ARTIFACT_QUEST_NAME = "Champion's return",
+	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Aliron's church to find out who summoned you.",
 	
-	SWORD_ARTIFACT_QUEST_SUMMARY = "",
-	SWORD_ARTIFACT_QUEST_NAME = "",
-#	SWORD_ARTIFACT_QUEST_STAGE_1 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_2 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_3 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_4 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_5 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_6 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_7 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_7_1 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_8 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_9 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_10 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_11 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_12 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_13 = "",
+	SWORD_ARTIFACT_QUEST_SUMMARY = "Forests and Beasts",
+	SWORD_ARTIFACT_QUEST_NAME = "Even though the Civil War is over, it seems there might be greater issues in your future.",
+	SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Ginny at Aliron's church",
+	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Elven Capital",
+	SWORD_ARTIFACT_QUEST_STAGE_3 = "Visit Beastkin Tribe",
+	SWORD_ARTIFACT_QUEST_STAGE_4 = "Visit Lodge at Beastkin Tribe",
+	SWORD_ARTIFACT_QUEST_STAGE_5 = "Bring 2000 Meat and Fish to Savra",
+	SWORD_ARTIFACT_QUEST_STAGE_6 = "Return to Beastkin Tribe after 1 day",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = "Visit Beastkin Tribe",
+	SWORD_ARTIFACT_QUEST_STAGE_7_1 = "Perform the ritual with Mae",
+	SWORD_ARTIFACT_QUEST_STAGE_8 = "Search for Leon at Beastkin Tribe",
+	SWORD_ARTIFACT_QUEST_STAGE_9 = "Search for Leon at forest location",
+	SWORD_ARTIFACT_QUEST_STAGE_10 = "Talk to Savra about breaking Leon's madness",
+	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver required materials to Savra",
+	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
+	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 }
 

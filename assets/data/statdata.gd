@@ -44,6 +44,33 @@ var statdata = {
 		abb = 'CHA',
 		direct = true
 	},
+	physics_cap = {
+		code = 'physics_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_pf',
+		type = 'cap',
+		abb = 'PHY',
+		custom_get = true
+	},
+	wits_cap = {
+		code = 'wits_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_wit',
+		type = 'cap',
+		abb = 'WIT',
+		custom_get = true
+	},
+	charm_cap = {
+		code = 'charm_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_charm',
+		type = 'cap',
+		abb = 'CHA',
+		custom_get = true
+	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
 		name = '',

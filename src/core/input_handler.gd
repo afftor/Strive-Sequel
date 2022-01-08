@@ -419,10 +419,11 @@ func _input(event):
 			else:
 				if gui_controller.clock != null and gui_controller.clock.is_visible_in_tree():
 					if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-						if input_handler.globalsettings.turn_based_time_flow == false:
-							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
-						else:
-							gui_controller.clock.timeflowhotkey(int(num))
+						gui_controller.clock.hotkey_pressed(int(num))
+#						if input_handler.globalsettings.turn_based_time_flow == false:
+#							gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(num)-1])
+#						else:
+#							gui_controller.clock.timeflowhotkey(int(num))
 	
 	#there was an error in a code below
 	#while during fix it was fully rewritten to reflect some functional change, i choose to keep a fixed old version as a comment
@@ -729,6 +730,14 @@ func string_to_math(value = 0, string = ''):
 		'/':value /= modvalue
 	return value
 
+
+func weightedrandom_dict(dict): #uses dict of value:weight, returns value
+	var temp = []
+	for i in dict:
+		temp.push_back([i, dict[i]])
+	return weightedrandom(temp)
+
+
 func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
 	var total = 0
 	var counter = 0
@@ -945,6 +954,7 @@ func start_event(code, type, args):
 
 	scene.open(data)
 
+
 func interactive_message_custom(data):
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true))
@@ -1079,7 +1089,9 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
 		node.add_child(window)
-	if raise: window.raise()
+	if raise: 
+#		print(window.name)
+		window.raise()
 	if ResourceScripts.node_data[type].has('args'):
 		for param in ResourceScripts.node_data[type].args:
 			window.set(param, ResourceScripts.node_data[type].args[param])
@@ -1337,6 +1349,10 @@ func scanfolder(path): #makes an array of all folders in modfolder
 			file_name = dir.get_next()
 		return array
 
+
+func CenterNode(node):
+	node.set_global_position((Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height")) - node.rect_size) / 2)
+
 func swap_items(arr: Array, pos1, pos2):
 	if pos1 < 0 or pos2 < 0: return
 	if pos1 >= arr.size() or pos2 >= arr.size(): return
@@ -1513,4 +1529,8 @@ func upgrade_unlocked(upgrade):
 	if upgrade.code == 'exotic_trader':
 		ResourceScripts.game_world.areas.plains.factions.exotic_slave_trader.slavelevel = ResourceScripts.game_res.upgrades.exotic_trader*2+1
 
-
+func print_order():
+	print("{")
+	for node in get_tree().get_root().get_children():
+		print ("\t" + node.name)
+	print("}")

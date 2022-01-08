@@ -21,7 +21,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
 
-
 [node name="CharactersPanel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
 margin_right = 800.0
@@ -157,6 +156,7 @@ __meta__ = {
 }
 
 [node name="Materials" type="HBoxContainer" parent="StatsPanel"]
+visible = false
 margin_top = 501.0
 margin_right = 379.0
 margin_bottom = 581.0
@@ -209,6 +209,9 @@ margin_bottom = 630.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="StatsPanel/Gold"]
 margin_left = 51.0

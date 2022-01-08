@@ -1,5 +1,10 @@
-Growth factor is no longer tied to race and has higher cost now
+Content:
+Fully implemented Aire's new sidequest
+Added a couple new recruitable characters
 
+
+Rebalances:
+Growth factor is no longer tied to race and has higher cost now
 Rebalanced time system: Now day has 4 turns instead of 24 hours
 Many social skills had their duration and cooldown revamped
 Rebalanced craft and upgrade time for most items and upgrades
@@ -8,14 +13,14 @@ Dating and sex now has certain amount of charges based on charm/sex factors of m
 Dating for single character can only be perfomed once a day (does not prevent dating other characters if you still have charges)
 Autosave is triggered every 5 days instead of 1
 Buffed boss hp
-
 Rebalanced some of the combat skills: most single target damage skills buffed while AoE nerfed
-
-
 Further reduced obedience gain
+
+
 
 Flight can be learned by any character with wings (except for harpy) and is no longer obtained from valkyrie class
 Further reduced default obedience gain from skills
+Fixed Aire's recruitment option if she was missed during civil arc questline
 Fixed multiple event related bugs and mistypes
 Fixed some instances when locations broken returning characters on deletion
 0.5.5b

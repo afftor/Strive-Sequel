@@ -90,16 +90,15 @@ func showup(node, person):
 		# 	else:
 		# 		get_node(i).text = str(floor(person.get_stat(i)))
 		# 		get_node(i+'2').text = '100'
-
-		for i in ['physics','wits','charm','sexuals']:
+		
+		$growth.text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))]
+		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
+		for i in ['physics','wits','charm']:
 			var color = set_color(person.get_stat(i+"_bonus"))
 			get_node(i).text = str(floor(person.get_stat(i)))
 			get_node(i).set("custom_colors/font_color", color)
-			if i != 'sexuals':
-				get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20 + person.get_stat(i+"_bonus"))
-				get_node(i+'2').set("custom_colors/font_color", color)
-			else:
-				get_node(i+'2').text = '100'
+			get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20 + person.get_stat(i+"_bonus"))
+			get_node(i+'2').set("custom_colors/font_color", color)
 
 		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))
 		for i in variables.productivity_mods:
