@@ -31,7 +31,17 @@ var weekly_dates_max = 1
 #var log_storage = []
 
 
+func fix_serialization():
+	date = int(date)
+	hour = int(hour)
+	weekly_sex_left = int(weekly_sex_left)
+	weekly_sex_max = int(weekly_sex_max)
+	weekly_dates_left = int(weekly_dates_left)
+	weekly_dates_max = int(weekly_dates_max)
+
+
 func fix_import():
+	fix_serialization()
 	original_version = globals.gameversion
 
 

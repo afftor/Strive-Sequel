@@ -59,6 +59,7 @@ func serialize():
 	return inst2dict(self)
 
 func fix_serialization():
+	days_from_last_church_quest = int(days_from_last_church_quest)
 	var tmp = []
 	for line in seen_dialogues:
 		if input_handler.if_translation_key(line):
