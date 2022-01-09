@@ -66,7 +66,7 @@ var params_to_save = [
 	"anal_virgin",
 	"mouth_virgin",
 	"masternoun",
-	"food_filter",
+#	"food_filter",
 	"food_hate",
 	"food_love",
 	"physics_factor",
@@ -315,6 +315,7 @@ func finish_character():
 	person.set_stat('food_consumption', 3)
 	person.hp = person.get_stat('hpmax')
 	person.mp = person.get_stat('mpmax')
+	person.food.create() #rebuild food filter
 	if mode != 'master':
 		if !preservedsettings.has('slave_class'):
 			preservedsettings.slave_class = 'slave'

@@ -46,6 +46,8 @@ func process_chardata(data):
 
 func create():
 	#setting food filter
+	for type in food_filter:
+		food_filter[type].clear()
 	for i in Items.materiallist.values():
 		if i.type == 'food':
 			if i.tags.has(food_love):
