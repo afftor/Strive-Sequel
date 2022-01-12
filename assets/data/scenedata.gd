@@ -128,7 +128,10 @@ var scenedict = {
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
+		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [
+			{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0},
+			{code = 'update_party'}
+			]}
 		],
 	},
 
@@ -139,7 +142,7 @@ var scenedict = {
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
+		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}, {code = 'update_party'}]}
 		],
 	},
 
@@ -326,7 +329,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTTRAPFAILURE"),
 			image = '',
-			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}],
+			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}, {code = 'update_party'}],
 			tags = ['active_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},

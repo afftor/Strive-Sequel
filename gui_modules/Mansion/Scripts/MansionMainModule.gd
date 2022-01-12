@@ -470,14 +470,11 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
 		SexSelect.get_node("SexButton").disabled = true
-
+	
 	for i in sex_participants:
 		if i.tags.has("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
-	for i in sex_participants:
-		if i.tags.has("no_date") or i.tags.has("no_date_day"):
-			SexSelect.get_node("DateButton").disabled = true
-
+	
 	SexSelect.get_node("DateButton").disabled = (
 		sex_participants.size() > 1
 		|| sex_participants.size() == 0
@@ -485,6 +482,9 @@ func update_sex_date_buttons():
 		|| ResourceScripts.game_globals.weekly_dates_left <= 0
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
+	for i in sex_participants:
+		if i.tags.has("no_date") or i.tags.has("no_date_day"):
+			SexSelect.get_node("DateButton").disabled = true
 
 func set_hovered_person(node, person):
 	hovered_person = person

@@ -430,8 +430,27 @@ func ItemSelect(targetscript, type, function, requirements = true):
 func QuickSave():
 	SaveGame('QuickSave')
 
-func autosave():
-	SaveGame('autosave')
+func autosave(overwrite = false):
+	if !overwrite:
+		var savedir = Directory.new()
+		var path = variables.userfolder + 'saves'
+		if !savedir.dir_exists(path):
+			savedir.make_dir(path)
+		if savedir.open(path) != OK:
+			print('ERROR opening savedir')
+			return
+		#delete existing last save
+		if savedir.file_exists('autosave_%d.sav' % variables.autosave_number_max):
+			savedir.remove('autosave_%d.sav' % variables.autosave_number_max)
+		if savedir.file_exists('autosave_%d.dat' % variables.autosave_number_max):
+			savedir.remove('autosave_%d.dat' % variables.autosave_number_max)
+		#move all other saves 1 point up
+		for i in range(variables.autosave_number_max -1, 0, -1):
+			if savedir.file_exists('autosave_%d.sav' % i):
+				savedir.rename('autosave_%d.sav' % i, 'autosave_%d.sav' % (i + 1))
+			if savedir.file_exists('autosave_%d.dat' % i):
+				savedir.rename('autosave_%d.dat' % i, 'autosave_%d.dat' % (i + 1))
+	SaveGame('autosave_1')
 
 func SaveGame(name):
 	var savedict = {}#state.serialize();
@@ -848,6 +867,32 @@ func check_events(action):
 		eventarray.erase(i)
 	return eventtriggered
 
+
+func start_unique_event():
+	var eventtriggered = false
+	var location = input_handler.active_location
+	var active_array = []
+	for i in worlddata.random_dungeon_events:
+		var event = worlddata.random_dungeon_events[i]
+		if ResourceScripts.game_progress.seen_events.has(event.event): continue
+		if !event.dungeons.has(location.code): continue
+		if event.has('levels') and !event.levels.has(int(location.progress.level)): continue
+		if event.has('stages') and !event.stages.has(int(location.progress.stage)): continue
+		if event.has('reqs') and !globals.checkreqs(event.reqs): continue
+		active_array.append(event.event)
+	if active_array.size() > 0:
+		var selected_event = input_handler.random_from_array(active_array)
+		var eventtype = "event_selection"
+		var dict = {}
+		if scenedata.scenedict[selected_event].has("default_event_type"):
+			eventtype = scenedata.scenedict[selected_event].default_event_type
+		if scenedata.scenedict[selected_event].has('bonus_args'):
+			dict = scenedata.scenedict[selected_event].bonus_args
+		input_handler.interactive_message(selected_event, eventtype, dict)
+		eventtriggered = true
+	return eventtriggered
+
+
 func start_random_event():
 	var eventarray = input_handler.active_location.randomevents
 	var eventtriggered = false
@@ -870,6 +915,7 @@ func start_random_event():
 		input_handler.interactive_message(active_array, eventtype, dict)
 		eventtriggered = true
 	return eventtriggered
+
 
 func check_event_reqs(reqs):
 	var progress = input_handler.active_location.progress
@@ -1248,6 +1294,11 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
+			'update_party':
+				if gui_controller.exploration != null:
+					gui_controller.exploration.build_location_group()
+			'rewrite_save':
+				autosave(true)
 			'background_noise':
 				match i.value:
 					'start':
