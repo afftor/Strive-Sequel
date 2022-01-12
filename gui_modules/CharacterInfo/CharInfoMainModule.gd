@@ -98,6 +98,7 @@ func set_state(state):
 	match_state()
 
 func match_state():
+	update()
 	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible()
 	for b in SummaryModule.get_node("GridContainer").get_children():
 		b.set_pressed(false)
@@ -162,8 +163,7 @@ func match_state():
 			SlaveSiblingsModule.DietModule.open_diet_window()
 			SlaveSiblingsModule.update()
 			#BodyModule.hide()
-			
-	update()
+	
 
 
 

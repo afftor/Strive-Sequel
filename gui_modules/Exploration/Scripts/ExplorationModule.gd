@@ -629,10 +629,15 @@ func area_advance(mode):
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
 	var rand_event = false
-	if (
-		input_handler.active_location.has('randomevents')
-		&& randf() <= variables.dungeon_encounter_chance
-		&& ! check_staged_enemies()
+	if (randf() <= variables.dungeon_unique_encounter_chance and !check_staged_enemies()):
+		rand_event = globals.start_unique_event()
+		if rand_event != false:
+			input_handler.combat_advance = false
+			advance()
+	if ( !rand_event and
+		input_handler.active_location.has('randomevents') and
+		randf() <= variables.dungeon_encounter_chance and
+		!check_staged_enemies() 
 	):
 		rand_event = globals.start_random_event()
 		if rand_event != false:

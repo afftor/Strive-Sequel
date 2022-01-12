@@ -33,6 +33,8 @@ func show():
 	input_handler.CenterNode(self)
 	person = get_parent().person
 	.show()
+#	$StatsPanel/ConfirmButton.grab_focus()
+#	input_handler.lock_focus($StatsPanel/ConfirmButton)
 	show_stats()
 
 

@@ -324,6 +324,9 @@ func _input(event):
 		return
 	if gui_controller.current_screen == null:
 		return
+	for action in ['ui_accept', 'ui_cancel', 'ui_select', 'ui_up', 'ui_down', 'ui_left', 'ui_right']:
+		if event.is_action(action):
+			get_tree().set_input_as_handled()
 	if event.is_action_released("F1") \
 		&& gui_controller.current_screen == gui_controller.mansion:
 		if gui_controller.mansion_tutorial_panel == null || !gui_controller.mansion_tutorial_panel.is_visible():
@@ -903,6 +906,8 @@ func start_event(code, type, args):
 		data = code
 	else:
 		data = scenedata.scenedict[code].duplicate(true)
+		if !ResourceScripts.game_progress.seen_events.has(code):
+			ResourceScripts.game_progress.seen_events.push_back(code)
 	var scene
 	match gui_controller.dialogue_window_type:
 		1:
@@ -1106,17 +1111,19 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
 	SetMusic("exploration")
-
+	
 	if encounter_win_script != null:
 		globals.common_effects(encounter_win_script)
 		encounter_win_script = null
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
-		yield(input_handler, 'EventFinished')
+		yield(input_handler, 'EventFinished') #actually not correct, but fail case never fires
 	
 	if combat_advance:
 		exploration_node.advance()
 		combat_advance = false
+	else:
+		exploration_node.build_location_group()
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
@@ -1534,3 +1541,11 @@ func print_order():
 	for node in get_tree().get_root().get_children():
 		print ("\t" + node.name)
 	print("}")
+
+
+#func lock_focus(node:Control):
+#	node.focus_neighbour_bottom = node.get_path()
+#	node.focus_neighbour_left = node.get_path()
+#	node.focus_neighbour_right = node.get_path()
+#	node.focus_neighbour_top = node.get_path()
+#	node.grab_focus()
