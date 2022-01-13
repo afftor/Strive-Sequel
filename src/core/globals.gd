@@ -767,8 +767,14 @@ func check_recipe_resources(temprecipe):
 	else:
 		var item = Items.itemlist[recipe.resultitem]
 		var check = true
+		var sum_cost = {}
 		for i in temprecipe.partdict:
-			if ResourceScripts.game_res.materials[temprecipe.partdict[i]] < item.parts[i]:
+			if sum_cost.has(temprecipe.partdict[i]):
+				 sum_cost[temprecipe.partdict[i]] += item.parts[i]
+			else:
+				sum_cost[temprecipe.partdict[i]] = item.parts[i]
+		for i in sum_cost:
+			if ResourceScripts.game_res.materials[i] < sum_cost[i]:
 				check = false
 		if check == false:
 			return false
