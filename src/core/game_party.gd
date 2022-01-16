@@ -119,6 +119,14 @@ func get_unique_slave(code):
 			return i
 	return null
 
+
+func has_nonunics():
+	for i in characters.values():
+		if i.is_master(): continue
+		if i.get_stat('unique') != null: continue
+		return true
+	return false
+
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null
 	return characters[combatparty[pos]]

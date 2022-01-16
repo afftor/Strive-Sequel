@@ -303,8 +303,8 @@ func fill_faction_quests(faction, area):
 	#get existing quests data
 	var difficulty = {easy = 0, medium = 0, hard = 0}
 
-	for i in areadata.quests.factions[faction].values():
-		difficulty[i.difficulty] += 1
+#	for i in areadata.quests.factions[faction].values():
+#		difficulty[i.difficulty] += 1
 	for i in difficulty:
 		while factiondata.questsetting[i] > difficulty[i] && factiondata.questpool[i].size() > 0:
 			make_quest_for_guild(factiondata, i)

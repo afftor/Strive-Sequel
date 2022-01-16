@@ -227,12 +227,18 @@ func show_save_details(save):
 		$DetailsPanel.hide()
 		return
 	# var text = 'Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\tVersion: " + save.version + "\tGold: " + str(save.gold) + "\nDay: " + str(save.day) + " Hour: " + str(save.hour) + "\t" + get_date_time(save) + "\tPopulation: " + str(save.population)
-	var text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
-	var text2 = "Mode: " + starting_presets.preset_data[save.preset].name + "\nVersion: " + save.version + "\n" + get_date_time(save)
+	var text
+	var text2 = "Mode: " + starting_presets.preset_data[save.preset].name + "\nVersion: " + save.version 
 	# text += "\n\n\nVersion: " + save.version
-	if save.version != globals.gameversion:
-		text += "{color=red| (Outdated)}"
-	text += "\n" 
+	if !globals.compare_version(save.version, '0.5.5b'):
+		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
+		text2 += "{color=red| (Outdated - use import mode)}"
+	else:
+		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nW: " + str(int(save.day) / 7 + 1) + " D: " + str(int(save.day) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
+		if save.version != globals.gameversion:
+			text2 += "{color=red| (Outdated)}"
+#	text += "\n" 
+	text2 += "\n" + get_date_time(save)
 	# text += get_date_time(save)
 #	text += add_zeros(save.time.hour) + ":" + add_zeros(save.time.minute) 
 #	text += " - " + str(save.time.month) + "/" + str(save.time.day) + "/" + str(save.time.year).substr(2, 4)

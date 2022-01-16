@@ -100,7 +100,7 @@ custom_styles/panel = ExtResource( 2 )
 [node name="RichTextLabel" type="RichTextLabel" parent="DetailsPanel"]
 margin_left = 17.0
 margin_top = 5.0
-margin_right = 242.0
+margin_right = 252.0
 margin_bottom = 145.0
 custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -110,9 +110,9 @@ __meta__ = {
 }
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="DetailsPanel"]
-margin_left = 242.0
+margin_left = 252.0
 margin_top = 5.0
-margin_right = 463.0
+margin_right = 473.0
 margin_bottom = 145.0
 custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -122,9 +122,9 @@ __meta__ = {
 }
 
 [node name="MasterIcon" type="TextureRect" parent="DetailsPanel"]
-margin_left = 479.491
+margin_left = 489.491
 margin_top = 14.5639
-margin_right = 600.491
+margin_right = 610.491
 margin_bottom = 135.564
 texture = ExtResource( 5 )
 expand = true

@@ -120,6 +120,7 @@ func update_guilds_old(area):
 					area.quests.factions[faction].erase(quest.id)
 				ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
 
+
 func update_guilds(area):
 	for faction in area.quests.factions:
 		var cleararray = []
@@ -128,8 +129,9 @@ func update_guilds(area):
 				quest.time_limit -= 1
 				if quest.time_limit < 0:
 					complete_quest(quest, "failed")
+					cleararray.append(quest.id)
 			else:
-				if quest.state == 'complete' || int(ResourceScripts.game_globals.date) % 7 == 0:
+				if quest.state == 'complete' || int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 0:
 					cleararray.append(quest.id)
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
@@ -145,6 +147,7 @@ func update_guilds(area):
 	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 0:
 		for faction in area.quests.factions:
 			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
+
 
 func take_quest(quest, area):
 	quest.state = 'taken'
