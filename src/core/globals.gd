@@ -508,6 +508,9 @@ func LoadGame(filename):
 	ResourceScripts.game_party.fix_serialization_postload()
 	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
 		ResourceScripts.game_globals.hour = int(ceil(ResourceScripts.game_globals.hour / 6.0))
+	else:
+		ResourceScripts.game_globals.hour = int(ResourceScripts.game_globals.hour)
+	ResourceScripts.game_globals.date = int(ResourceScripts.game_globals.date)
 #	ResourceScripts.game_globals.hour = 1
 
 	#current approach
