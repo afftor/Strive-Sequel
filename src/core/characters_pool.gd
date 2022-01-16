@@ -50,7 +50,8 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.babies[id].clean_references()
 			ResourceScripts.game_party.babies.erase(id)
 			remove_id(id)
-	if !on_exit: input_handler.slave_list_node.rebuild() #temporal, needs remake
+	if !on_exit and input_handler.slave_list_node != null: 
+		input_handler.slave_list_node.rebuild() #temporal, needs remake
 
 func remove_id(id):
 	if ResourceScripts.game_party.characters.has(id): ResourceScripts.game_party.characters.erase(id)
