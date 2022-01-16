@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.5.5b'
+const gameversion = '0.6.0 Experimental.1'
 
 #time
 signal hour_tick
@@ -506,8 +506,11 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+
 	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
 		ResourceScripts.game_globals.hour = int(ceil(ResourceScripts.game_globals.hour / 6.0))
+	ResourceScripts.game_globals.date = int(ResourceScripts.game_globals.date)
+
 #	ResourceScripts.game_globals.hour = 1
 
 	#current approach

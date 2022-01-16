@@ -73,7 +73,7 @@ var data = {
 	},
 	final_operation_mages_5_1 = {
 		variations = [
-			{
+			{  # no help
 				image = null,
 				character = 'myr',
 				tags = ['master_translate'],
@@ -108,7 +108,7 @@ var data = {
 			},
 		],
 	},
-	final_operation_mages_5_4 = {
+	final_operation_mages_5_4 = { # no help
 		image = null,
 		character = 'myr',
 		tags = ['master_translate'],
@@ -119,13 +119,14 @@ var data = {
 			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
-	final_operation_mages_3_1 = {
+	final_operation_mages_3_1 = { # help
 		image = null,
 		character = 'myr',
 		tags = ['master_translate'],
 		text = [
 			{text = "FINAL_OPERATON_MAGES_3_1", reqs = []},
 		],
+		common_effects = [{code = 'decision', value = 'MagesHelpDuncan'}],
 		options = [
 			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
@@ -152,7 +153,7 @@ var data = {
 			},
 		],
 	},
-	final_operation_mages_4 = {
+	final_operation_mages_4 = { # no help
 		image = null,
 		character = 'myr',
 		tags = ['master_translate'],
@@ -163,14 +164,14 @@ var data = {
 			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
-	final_operation_mages_5_3 = {
+	final_operation_mages_5_3 = { # help
 		image = null,
 		character = 'myr',
 		tags = ['master_translate'],
 		text = [
 			{text = "FINAL_OPERATON_MAGES_5_3", reqs = []},
 		],
-		common_effects = [{code = 'money_change', operant = '-', value = 300}],
+		common_effects = [{code = 'money_change', operant = '-', value = 300}, {code = 'decision', value = 'MagesHelpDuncan'}],
 		options = [
 			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],

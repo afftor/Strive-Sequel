@@ -97,11 +97,11 @@ var data = {
 			{code = 'add_timed_event', value = "amelia_herbs_start",
 			args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, 
 		
-			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
-			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
-			
-			{code = 'add_timed_event', value = "zephyra_sword_1",
-			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
+#			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
+#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
+#
+#			{code = 'add_timed_event', value = "zephyra_sword_1",
+#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
 		],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
