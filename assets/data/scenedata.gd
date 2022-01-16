@@ -1511,12 +1511,18 @@ var dialogue_inits = {
 		},
 	],
 	mages_init = [
-
 		{
 			code = 'default',
 			name = "Meet Leader",
 			reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage1'}],
 			target = 'mages_after_election',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = "Meet Leader",
+			reqs = [{type = 'dialogue_seen', check = false, value = 'JEAN_INTRO'}, {type = 'decision', value = 'mayor_election_finished', check = true}],
+			target = 'jean_intro',
 			target_option = 1,
 		},
 		#fred_return_to_myr_1

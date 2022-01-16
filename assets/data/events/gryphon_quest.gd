@@ -132,7 +132,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = 'aire',
 		text = [{text = "GRYPHON_FOREST_1", reqs = []}],
-		common_effects = [{code = 'make_quest_location', value = 'quest_gryphon_cave_location'}],
+#		common_effects = [{code = 'make_quest_location', value = 'quest_gryphon_cave_location'}],
 		options = [ {
 			code = 'gryphon_forest_2', text = "GRYPHON_FOREST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -145,10 +145,10 @@ var data = {
 		reqs = [], 
 		text = [{text = "GRYPHON_FOREST_1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_FOREST_1_2", reqs = [], previous_dialogue_option = 2}],
-		common_effects = [{code = 'make_quest_location', value = 'quest_gryphon_cave_location'}],
+		common_effects = [],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage4'}]
+			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage4'}, {code = 'remove_active_location'}, {code = 'make_quest_location', value = 'quest_gryphon_cave_location'}]
 		}, ]
 	},
 	
@@ -163,7 +163,7 @@ var data = {
 	},
 	
 	gryphon_cave_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = 'gryphon', tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "GRYPHON_CAVE_1", reqs = []}],
 		options = [ {
@@ -313,7 +313,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_4", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_5', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	
@@ -325,7 +325,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_5", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_6', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	
@@ -337,7 +337,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_6", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_7', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	
@@ -349,7 +349,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_7", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_8', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	
@@ -361,7 +361,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_8", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_9', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	
@@ -373,7 +373,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_9", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
+			{code = 'ana_gryphon_sex_10', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 	

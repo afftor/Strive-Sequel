@@ -18,7 +18,7 @@ var lands = {
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {"oneshot": true}},
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 4}], args = {"oneshot": true}},
 
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
 
@@ -32,7 +32,7 @@ var lands = {
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
-			{code = 'gryphon_hunter_start', text = "Meet Derek, hunter veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -562,6 +562,11 @@ var locations = {
 		tasks = ['gather','elven_forest'],
 		actions = [],
 		event_pool = [],
+		options = [
+			{text = 'Check Surroundings', reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_INTRO'}],
+				args = [{code = 'start_event', data = 'lilia_intro', args = []}]},
+		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
 		bgm = 'exploration',
@@ -1492,13 +1497,22 @@ var dungeons = {
 		travel_time = [1,1],#[4,6],
 		scripteventdata = [
 			{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
-			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 3, operant = 'gte'}]},
+			# hard no mages help
+			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
+				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false}, 
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, 
+				{code = 'stage', value = 3, operant = 'gte'}]},
 			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
-#				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_1', orflag = true},
-#				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_3', orflag = true},
-#				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_4', orflag = true},
-				{code = 'stage', value = 7, operant = 'gte'}]
-			}
+				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false},
+				{code = 'stage', value = 7, operant = 'gte'}]},
+			# easy with mages help
+			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
+				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, 
+				{code = 'stage', value = 2, operant = 'gte'}]},
+			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
+				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
+				{code = 'stage', value = 5, operant = 'gte'}]}
 		]
 	},
 	quest_daisy_admirer_location = {
@@ -1526,25 +1540,25 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]}
 			],
 		area = 'plains',
-		travel_time = [1,1],#[4,6],
+		travel_time = [1,1],
 		scripteventdata = []
 	},
-	quest_gryphon_forest_location = {# trigger = dungeon_complete
+	quest_gryphon_forest_location = {
 		code = 'quest_gryphon_forest_location',
 		type = 'dungeon',
-		name = 'Secluded Forest',
+		name = 'Gryphon Thicket',
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
+		difficulty = 'medium',
 		background_pool = ['forest1'],
-		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],],
+		final_enemy = [['jungle_boss3',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
 		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
 		gather_mod = [2.5,4], #temp mod for the game to work
-		stages_per_level = [10,10],
+		stages_per_level = [7,7],
 		bgm = "exploration",
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
@@ -1552,13 +1566,14 @@ var dungeons = {
 		quest = true,
 		area = 'plains',
 		travel_time = [1,1], #[4,6],
+		options = [],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
 	},
 	quest_gryphon_cave_location = {# trigger = dungeon_complete
 		code = 'quest_gryphon_cave_location',
 		type = 'dungeon',
-		name = 'Gryphon Lair',
+		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -1578,10 +1593,15 @@ var dungeons = {
 		quest = true,
 		area = 'plains',
 		travel_time = [1,1], #[4,6],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_cave_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}]}]
+		options = [
+			{text = 'Approach Cave', reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
+				args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]},
+		],
+		scripteventdata = []
 	},
-	ritual_location = {
-		code = 'ritual_location',
+	quest_ritual_location = {
+		code = 'quest_ritual_location',
 		type = 'dungeon',
 		name = 'Ritual Location',
 		classname = '',
@@ -1610,8 +1630,8 @@ var dungeons = {
 #				args = [{code = 'pre_ritual_1', data = '', args = []}]}
 #			],
 	},
-	leon_forest = {
-		code = 'leon_forest',
+	quest_leon_forest = {
+		code = 'quest_leon_forest',
 		type = 'dungeon',
 		name = 'Leon Forest',
 		classname = '',

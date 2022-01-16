@@ -10,11 +10,11 @@ var data = {
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
-				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}]
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}], type = 'next_dialogue',
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}]
+				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}], type = 'next_dialogue',
 			}],
 		}, {
 			reqs = [{type = 'decision', value = 'PlayerFrontline', check = false}],
@@ -25,11 +25,11 @@ var data = {
 			common_effects = [{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
-				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}]
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}], type = 'next_dialogue',
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}]
+				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}], type = 'next_dialogue',
 			}],
 		}
 		]
@@ -51,10 +51,10 @@ var data = {
 		image = "kobold", tags = ['dialogue_scene'],
 		text = [{text = "LOOKING_FOR_PRINCESS_6", reqs = []}],
 		options = [ {
-			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_6", reqs = [], dialogue_argument = 1,
+			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_6", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'remove_decision', value = 'LookingForPrincessAccess'}]
 		}, {
-			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_7", reqs = [], dialogue_argument = 1
+			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_7", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		},],
 	},
 
@@ -65,7 +65,7 @@ var data = {
 		options = [ {
 			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_8", reqs = [], dialogue_argument = 4, remove_after_first_use = true
 		}, {
-			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_9", reqs = [], dialogue_argument = 2
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_9", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		},],
 	},
 

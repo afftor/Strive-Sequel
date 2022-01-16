@@ -244,7 +244,7 @@ func make_location(code, area):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(ResourceScripts.game_world.locationcounter)
-	location.travel_time = globals.rng.randi_range(0,0)
+	location.travel_time = max(1,globals.rng.randi_range(0,0))
 	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
 	location.levels = {}
@@ -445,7 +445,7 @@ func make_quest_location(code):
 	var data = worlddata.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code
-	locationdata.travel_time = min(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))
+	locationdata.travel_time = max(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))
 	var area = ResourceScripts.game_world.areas[data.area]
 	area.questlocations[locationdata.id] = locationdata
 	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'}

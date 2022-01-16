@@ -227,4 +227,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="timetooltip" type="Control" parent="TimeNode"]
+margin_left = 149.059
+margin_top = 56.0
+margin_right = 285.059
+margin_bottom = 155.0
+
 [node name="Tween" type="Tween" parent="."]
