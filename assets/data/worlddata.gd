@@ -18,7 +18,7 @@ var lands = {
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {"oneshot": true}},
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 4}], args = {"oneshot": true}},
 
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
 
@@ -1600,8 +1600,8 @@ var dungeons = {
 		],
 		scripteventdata = []
 	},
-	ritual_location = {
-		code = 'ritual_location',
+	quest_ritual_location = {
+		code = 'quest_ritual_location',
 		type = 'dungeon',
 		name = 'Ritual Location',
 		classname = '',
@@ -1630,8 +1630,8 @@ var dungeons = {
 #				args = [{code = 'pre_ritual_1', data = '', args = []}]}
 #			],
 	},
-	leon_forest = {
-		code = 'leon_forest',
+	quest_leon_forest = {
+		code = 'quest_leon_forest',
 		type = 'dungeon',
 		name = 'Leon Forest',
 		classname = '',

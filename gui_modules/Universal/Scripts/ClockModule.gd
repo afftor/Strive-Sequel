@@ -149,7 +149,7 @@ func advance_turn(amount = 1):
 
 
 func update_labels():
-	$TimeNode/Date.text = "W: %d, D: %d" % [(ResourceScripts.game_globals.date / 7 + 1), (ResourceScripts.game_globals.date % 7 + 1)]
+	$TimeNode/Date.text = "W: %d, D: %d" % [(ResourceScripts.game_globals.date / 7 + 1), int(ResourceScripts.game_globals.date % 7 + 1)]
 #	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())

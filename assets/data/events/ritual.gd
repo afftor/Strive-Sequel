@@ -343,7 +343,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = 'ASK_AROUND', reqs = []}], 
-		common_effects = [{code = 'make_quest_location', value = 'leon_forest'},],
+		common_effects = [{code = 'make_quest_location', value = 'quest_leon_forest'},],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage10'},
