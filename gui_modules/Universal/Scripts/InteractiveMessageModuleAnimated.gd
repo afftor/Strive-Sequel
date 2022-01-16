@@ -366,13 +366,13 @@ func capture_from_scene(order = 0):
 
 func recruit(capture = false):
 	hold_selection = true
-	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
-		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
-			input_handler.SystemMessage("You don't have enough rooms")
-		else:
-			input_handler.SystemMessage("Population limit reached")
-		hold_selection = false
-		return
+#	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
+#		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
+#			input_handler.SystemMessage("You don't have enough rooms")
+#		else:
+#			input_handler.SystemMessage("Population limit reached")
+#		hold_selection = false
+#		return
 	input_handler.active_character.recruit(capture)
 	close()
 

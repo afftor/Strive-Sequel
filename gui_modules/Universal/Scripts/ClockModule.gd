@@ -116,6 +116,12 @@ func _process(delta): #nearly obsolete
 
 
 func advance_turn(amount = 1):
+	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap() and ResourceScripts.game_party.has_nonunics():
+		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
+			input_handler.SystemMessage("You don't have enough rooms")
+		else:
+			input_handler.SystemMessage("Population limit reached")
+		return
 	var init_delay = 0.0
 	if locked: 
 #		return
