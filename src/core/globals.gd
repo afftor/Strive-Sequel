@@ -506,6 +506,8 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
+		ResourceScripts.game_globals.hour = int(ceil(ResourceScripts.game_globals.hour / 6.0))
 #	ResourceScripts.game_globals.hour = 1
 
 	#current approach
@@ -526,9 +528,11 @@ func compare_version(v1:String, v2:String):
 	var vp1 = v1.split('.')
 	var vp2 = v2.split('.')
 	for i in range(vp1.size()):
-		if i >= vp2.size(): return true
-		if vp1[i].naturalnocasecmp_to(vp2[i]) != 0: return vp1[i].naturalnocasecmp_to(vp2[i]) > 0
-	return false
+		if i >= vp2.size(): 
+			return true
+		if vp1[i].naturalnocasecmp_to(vp2[i]) != 0: 
+			return vp1[i].naturalnocasecmp_to(vp2[i]) > 0
+	return true
 
 
 func ImportGame(filename):
@@ -544,8 +548,6 @@ func ImportGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
-
-
 
 	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res = dict2inst(savedict.game_res)
