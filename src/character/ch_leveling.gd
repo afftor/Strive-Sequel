@@ -433,6 +433,7 @@ func work_tick_values(currenttask, gatherable = false):
 
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
+	if !races.tasklist.has(temptask): return null
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
 	var task = races.tasklist[temptask]
 	#var subtask = task.production_code
