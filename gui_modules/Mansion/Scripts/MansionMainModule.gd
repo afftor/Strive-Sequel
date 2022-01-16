@@ -869,10 +869,14 @@ func test_mode():
 		#ResourceScripts.gallery.play_scene(0)
 		
 #		ResourceScripts.game_progress.decisions.append("ivitations_made")
-#		input_handler.interactive_message('pre_final_boss_refuse', '', {})
+		
+		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
+		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
+		ResourceScripts.game_party.get_master().xp_module.professions.clear()
+		input_handler.interactive_message('xari_encounter6', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 
-		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
+#		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 
 		for i in ResourceScripts.game_world.areas.plains.factions.values():

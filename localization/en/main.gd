@@ -2000,6 +2000,9 @@ var TranslationDict = {
 
 	DIALOGUEMISSIONCOMPLETE = 'Your group have completed the task and returns to mansion. ',
 
+	
+	SPECIAL_ACTION_CLASS = "Special Action (requires unknown class)",
+	SPECIAL_ACTION_MONEY = "Special Action (requires gold)",
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVE = "Leave",
@@ -7023,7 +7026,6 @@ She takes a long pause before willing to continue.
 
 You leave the cave and lead Cali back to your mansion.""",
 	GOT_CALI_3_3 = """""",
-	
 	
 	
 	
