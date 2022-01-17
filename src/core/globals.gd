@@ -962,6 +962,8 @@ func check_location_group():
 		return true
 
 func StartCombat(encounter = null):
+	if input_handler.combat_node == null:
+		input_handler.combat_node = input_handler.get_combat_node()
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
@@ -986,8 +988,7 @@ func StartCombat(encounter = null):
 			enemies = make_enemies(data.unitcode)
 #	var combat = get_combat_node()
 #	combat.encountercode = data.unitcode
-	if input_handler.combat_node == null:
-		input_handler.combat_node = input_handler.get_combat_node()
+	
 	input_handler.combat_node.encountercode = data.unitcode
 	input_handler.combat_node.set_norun_mode(true)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
@@ -1012,9 +1013,9 @@ func StartAreaCombat():
 	enemies = make_enemies(enemydata)
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * progress.level
-
-	if input_handler.combat_node == null:
-		input_handler.combat_node = input_handler.get_combat_node()
+	
+#	if input_handler.combat_node == null:
+#		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
