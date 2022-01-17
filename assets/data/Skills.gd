@@ -2198,7 +2198,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'], 0.5],
+		value = [['caster.atk','*0.2'], 0.7],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	earth_shatter = {
@@ -2333,7 +2333,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'],0.4],
+		value = [['caster.atk','*0.2'],0.6],
 		damagestat = ['no_stat', '+damage_hp'],
 	},
 	holy_lance = {
@@ -2415,7 +2415,7 @@ var Skilllist = {
 		damage_type = 'water',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.5
+		value = 0.65
 	},
 	explosivearr = {
 		code = 'explosivearr',
@@ -2577,7 +2577,7 @@ var Skilllist = {
 		damage_type = 'mind',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.55,
+		value = 0.65,
 	},
 	resurrect = {
 		code = 'resurrect',

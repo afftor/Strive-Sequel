@@ -38,7 +38,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'add_timed_event', value = "daisy_clothes_1",
-				args = [{type = 'add_to_date', date = [1,1], hour = 2}]}]
+				args = [{type = 'add_to_date', date = [4,4], hour = 2}]}]
 		}],
 	},
 
@@ -154,7 +154,7 @@ var data = {
 		{code = 'decision', value = 'DaisyDressNormal'}], # dress decision normal
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1",
-			args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+			args = [{type = 'add_to_date', date = [2,2], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
 		}],
 	},
 	daisy_clothes_amelia_3_2 = {
@@ -165,7 +165,7 @@ var data = {
 		{code = 'decision', value = 'DaisyDressLewd'}], # dress decision lewd
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1",
-			args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+			args = [{type = 'add_to_date', date = [2,2], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
 		}],
 	},
 

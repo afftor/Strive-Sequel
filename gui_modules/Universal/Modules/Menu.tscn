@@ -543,11 +543,10 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.6.0 Experimental
+bbcode_text = "0.6.0
 Content:
 Fully implemented Aire's new sidequest
 Added a couple new recruitable characters
-
 
 Rebalances:
 Growth factor is no longer tied to race and has higher cost now
@@ -561,7 +560,6 @@ Autosave is triggered every 5 days instead of 1
 Buffed boss hp
 Rebalanced some of the combat skills: most single target damage skills buffed while AoE nerfed
 Further reduced obedience gain
-
 
 
 Flight can be learned by any character with wings (except for harpy) and is no longer obtained from valkyrie class
@@ -1114,11 +1112,10 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.0 Experimental
+text = "0.6.0
 Content:
 Fully implemented Aire's new sidequest
 Added a couple new recruitable characters
-
 
 Rebalances:
 Growth factor is no longer tied to race and has higher cost now
@@ -1132,7 +1129,6 @@ Autosave is triggered every 5 days instead of 1
 Buffed boss hp
 Rebalanced some of the combat skills: most single target damage skills buffed while AoE nerfed
 Further reduced obedience gain
-
 
 
 Flight can be learned by any character with wings (except for harpy) and is no longer obtained from valkyrie class
