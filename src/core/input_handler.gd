@@ -324,7 +324,10 @@ func _input(event):
 		return
 	if gui_controller.current_screen == null:
 		return
-	for action in ['ui_accept', 'ui_cancel', 'ui_select', 'ui_up', 'ui_down', 'ui_left', 'ui_right']:
+	for action in ['ui_accept', 'ui_left', 'ui_right']:
+		if event.is_action(action) and !(CurrentScene.get_focus_owner() is LineEdit or CurrentScene.get_focus_owner() is TextEdit):
+			get_tree().set_input_as_handled()
+	for action in ['ui_cancel', 'ui_up', 'ui_down']:
 		if event.is_action(action):
 			get_tree().set_input_as_handled()
 	if event.is_action_released("F1") \
