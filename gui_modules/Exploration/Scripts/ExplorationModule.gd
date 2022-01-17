@@ -1092,14 +1092,14 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("toggled", self, i, [newbutton])
-#			for i in input_handler.active_location.options:
-#				if globals.checkreqs(i.reqs) == true:
-#					newbutton = input_handler.DuplicateContainerTemplate(
-#						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-#					)
-#					newbutton.text = tr(i.text)
-#					newbutton.toggle_mode = false
-#					newbutton.connect("pressed", globals, 'common_effects', [i.args])
+			for i in input_handler.active_location.options:
+				if globals.checkreqs(i.reqs) == true:
+					newbutton = input_handler.DuplicateContainerTemplate(
+						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+					)
+					newbutton.text = tr(i.text)
+					newbutton.toggle_mode = false
+					newbutton.connect("pressed", globals, 'common_effects', [i.args])
 		'encounter':
 			for i in input_handler.active_location.options:
 				if globals.checkreqs(i.reqs) == true:
