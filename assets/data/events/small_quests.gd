@@ -145,14 +145,14 @@ var data = {
 	},
 	
 	lilia_intro = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
 		options = [ {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, ],
 	},
 	
