@@ -105,7 +105,8 @@ var enemygroups = {
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
-	gryphon = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
+	gryphon = {reqs = [], units = {gryphon = [1,1]}},
+	elder_gryphon_boss = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
 	slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
 	crazy_leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
 

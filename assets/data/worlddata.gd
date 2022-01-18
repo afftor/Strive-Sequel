@@ -32,7 +32,7 @@ var lands = {
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
-			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}], args = {"oneshot": false}},
 			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -1579,7 +1579,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
@@ -1598,7 +1598,7 @@ var dungeons = {
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 				args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]},
 		],
-		scripteventdata = []
+		scripteventdata = [{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_cave_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_1'}]}]
 	},
 	quest_ritual_location = {
 		code = 'quest_ritual_location',

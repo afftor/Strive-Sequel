@@ -172,6 +172,7 @@ var data = {
 		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'update_location'}]
 		},  ],
 	},
 	
@@ -233,7 +234,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_INTRO_4_4", reqs = []}, ], 
 		options = [ {
-			code = 'quest_fight', args = 'slavers',
+			code = 'quest_fight', args = 'slavers', # TODO CHANGE IT
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ],
 	},
