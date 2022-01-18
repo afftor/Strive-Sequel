@@ -2002,7 +2002,6 @@ var TranslationDict = {
 
 	
 	SPECIAL_ACTION_CLASS = "Special Action (requires unknown class)",
-	SPECIAL_ACTION_MONEY = "Special Action (requires gold)",
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVE = "Leave",
