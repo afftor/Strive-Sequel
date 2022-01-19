@@ -1772,7 +1772,7 @@ var Skilllist = {
 		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',
-		target_number = 'single',
+		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'normal',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
