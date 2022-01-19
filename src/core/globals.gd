@@ -1014,8 +1014,8 @@ func StartAreaCombat():
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * progress.level
 	
-#	if input_handler.combat_node == null:
-#		input_handler.combat_node = input_handler.get_combat_node()
+	if input_handler.combat_node == null:
+		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
