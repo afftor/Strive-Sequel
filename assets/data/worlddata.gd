@@ -1572,7 +1572,7 @@ var dungeons = {
 	},
 	quest_gryphon_cave_location = {# trigger = dungeon_complete
 		code = 'quest_gryphon_cave_location',
-		type = 'dungeon',
+		type = 'encounter',
 		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
@@ -1598,7 +1598,7 @@ var dungeons = {
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 				args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]},
 		],
-		scripteventdata = [{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_cave_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_1'}]}]
+		scripteventdata = []
 	},
 	quest_ritual_location = {
 		code = 'quest_ritual_location',

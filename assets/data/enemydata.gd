@@ -35,6 +35,7 @@ var encounters = {
 	gryphon = {unittype = 'randomgroup', unitcode = 'gryphon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	slavers = {unittype = 'randomgroup', unitcode = 'slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'pre_ritual_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	crazy_leon = {unittype = 'randomgroup', unitcode = 'crazy_leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_fight_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	elder_gryphon_boss = {unittype = 'randomgroup', unitcode = 'elder_gryphon_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
