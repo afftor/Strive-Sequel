@@ -241,6 +241,8 @@ func createtestdummy(type = 'normal'):
 
 
 func startsequence(actors):
+	set_process_input(true)
+	gui_controller.clock.visible = false
 	hidebody()
 	participants.clear()
 	show()
@@ -1633,6 +1635,7 @@ func _on_stopbutton_pressed():
 func endencounter():
 	var text = ''
 	var consenttext = {}
+	set_process_input(false)
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 
 	for i in participants:
@@ -1945,6 +1948,7 @@ func askslaveforaction(chosen):
 	startscene(chosenaction, cont, decoder(text, groupchosen, grouptarget))
 
 func _on_finishbutton_pressed():
+	gui_controller.clock.visible = true
 	ai.clear()
 	for i in participants:
 		if i.npc == false:

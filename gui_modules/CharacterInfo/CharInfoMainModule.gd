@@ -121,6 +121,7 @@ func match_state():
 			gui_controller.windows_opened.append(ClassesModule)
 			DetailsModule.hide()
 			SlaveSiblingsModule.hide()
+			ClassesModule.get_node('stats_upgrade').hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
 			ClassesModule.open(active_person)
