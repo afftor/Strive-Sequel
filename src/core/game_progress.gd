@@ -114,6 +114,45 @@ func get_active_quest(code):
 			return i
 	return null
 
+
+func get_time_of_event(ev):
+	var res = {date = -1, hour = -1}
+	for req in ev.reqs:
+		if req.type == 'date':
+			res.date = req.value
+		if req.type == 'hour':
+			res.hour = req.value
+	return res
+
+func get_next_event_time():
+	var res = 0
+	for i in stored_events.timed_events:
+		var time = get_time_of_event(i)
+		#some debugging
+		if time.date == -1: 
+			print("error - broken timed event")
+			print(i)
+			continue
+		if time.hour == -1 or time.hour > 4: 
+			print("error - broken timed event")
+			print(i)
+			continue
+		if time.date < ResourceScripts.game_globals.date: 
+			print("error - broken timed event")
+			print(i)
+			continue
+		var trem = time.hour - ResourceScripts.game_globals.hour + 4 * (time.date - ResourceScripts.game_globals.date)
+		if trem < 0: 
+			print("error - broken timed event")
+			print(i)
+			continue
+		if res == 0: 
+			res = trem
+		else:
+			res = min(res, trem)
+	return res
+
+
 func check_timed_events():
 	var deleting_events = []
 	for i in stored_events.timed_events:
