@@ -123,6 +123,12 @@ func advance_turn(amount = 1):
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
+	#lookforward part
+	var trem = ResourceScripts.game_progress.get_next_event_time()
+	if trem > 0 and trem < amount:
+		amount = trem
+		print(trem)
+	#main part
 	var init_delay = 0.0
 	if locked: 
 #		return
@@ -143,6 +149,7 @@ func advance_turn(amount = 1):
 	while amount > 0:
 		ResourceScripts.game_globals.advance_hour()
 		amount -= 1
+		globals.emit_signal("hour_tick")
 #	rotate_sky()
 	
 	gui_controller.mansion.SlaveListModule.rebuild()
@@ -151,7 +158,7 @@ func advance_turn(amount = 1):
 	update_food_tooltip()
 	update_gold_tooltip()
 #	set_sky_pos()
-	globals.emit_signal("hour_tick")
+	
 
 
 func update_labels():
