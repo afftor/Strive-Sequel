@@ -15,9 +15,13 @@ func _init(caller).(caller):
 
 func createfromtemplate(buff_t):
 	.createfromtemplate(buff_t)
-	triggered_event = template.trigger.duplicate()
+#	triggered_event = template.trigger.duplicate()
+	for ev in template.trigger:
+		triggered_event.push_back(int(ev))
 	if template.has('reset'):
-		reset_event = template.reset.duplicate()
+#		reset_event = template.reset.duplicate()
+		for ev in template.reset:
+			reset_event.push_back(int(ev))
 	req_skill = template.req_skill
 	if template.has('ready'):
 		ready = template.ready

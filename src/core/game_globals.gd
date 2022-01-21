@@ -8,7 +8,7 @@ var newgame = false
 var difficulty = 'medium'
 
 #dynamic part
-var date = 0
+var date = 1
 var hour = 1
 
 var daily_sex_left = 1
