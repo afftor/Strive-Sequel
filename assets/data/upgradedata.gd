@@ -724,34 +724,34 @@ var upgradelist = {
 	},
 
 
-#	stables = {
-#		code = 'stables',
-#		name = '',
-#		tree_position = {tab = 1, x = 2, y = 14},
-#		descript = '',
-#		icon = "stables",
-#		category = 'upgrade',
-#		levels = {
-#			1:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADESTABLESBONUS1"),
-#				taskprogress = 15,
-#				cost = {wood = 50, leather = 25},
-#			},
-#			2:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADESTABLESBONUS2"),
-#				taskprogress = 30,
-#				cost = {woodiron = 50, leatherthick = 50},
-#			},
-#			3:{
-#				unlockreqs = [],
-#				bonusdescript = tr("UPGRADESTABLESBONUS3"),
-#				taskprogress = 50,
-#				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
-#			}
-#		}
-#	},
+	stables = {
+		code = 'stables',
+		name = '',
+		tree_position = {tab = 1, x = 2, y = 14},
+		descript = '',
+		icon = "stables",
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADESTABLESBONUS1"),
+				taskprogress = 15,
+				cost = {wood = 50, leather = 25},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADESTABLESBONUS2"),
+				taskprogress = 30,
+				cost = {woodiron = 50, leatherthick = 50},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr("UPGRADESTABLESBONUS3"),
+				taskprogress = 50,
+				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
+			}
+		}
+	},
 
 
 	torture_room = {
