@@ -234,7 +234,7 @@ func show_save_details(save):
 		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
 		text2 += "{color=red| (Outdated - use import mode)}"
 	else:
-		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nW: " + str(int(save.day) / 7 + 1) + " D: " + str(int(save.day) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
+		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nW: " + str(int(save.day - 1) / 7 + 1) + " D: " + str(int(save.day - 1) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
 		if save.version != globals.gameversion:
 			text2 += "{color=red| (Outdated)}"
 #	text += "\n" 

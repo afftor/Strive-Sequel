@@ -801,13 +801,20 @@ func spend_resources(temprecipe):
 
 
 func text_log_add(label, text):
-	log_storage.append({type = label, text = text, time = str(ResourceScripts.game_globals.date) + ":" + str(round(ResourceScripts.game_globals.hour))})
+	var date = ResourceScripts.game_globals.date
+	var hour = ResourceScripts.game_globals.hour
+	if label == 'travel': 
+		hour += 1
+		if hour > 4:
+			hour = 1
+			date += 1
+	log_storage.append({type = label, text = text, time = "%d : %d" % [date, hour]})
 	if log_node != null && weakref(log_node).get_ref():
 		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
 		newfield.show()
 		newfield.get_node("label").bbcode_text = label
 		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = '[right]'+ str(ResourceScripts.game_globals.date) + " - " + tr(variables.timeword[ResourceScripts.game_globals.hour]) + "[/right]"
+		newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
 		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
 		yield(get_tree(), 'idle_frame')
 		var textfield = newfield.get_node('text')
