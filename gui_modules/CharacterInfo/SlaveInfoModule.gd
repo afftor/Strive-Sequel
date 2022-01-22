@@ -12,8 +12,10 @@ var universal_skills = ['oral','anal','petting']
 
 
 func _ready():
+	$RichTextLabel.connect("meta_clicked", self, 'text_url_click')
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
+	$HairChange/confirm.connect("pressed", self, "confirm_hairstyle")
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
@@ -119,7 +121,23 @@ func update():
 
 # func make_location_description():
 # 	return person.get_current_location_desc()
+func text_url_click(meta):
+	match meta:
+		'hair':
+			$HairChange/hair_style.clear()
+			var hairdata = ResourceScripts.descriptions.bodypartsdata.hair_style
+			for i in hairdata.values():
+				$HairChange/hair_style.add_item(i.name)
+				$HairChange/hair_style.set_item_metadata($HairChange/hair_style.get_item_count() - 1, i.code)
+				if i.code == person.get_stat('hair_style'):
+					$HairChange/hair_style.select($HairChange/hair_style.get_item_count() - 1)
+			$HairChange.show()
 
+
+func confirm_hairstyle():
+	person.set_stat('hair_style', $HairChange/hair_style.get_selected_metadata())
+	$HairChange.hide()
+	update()
 
 
 func text_url_hover(meta):

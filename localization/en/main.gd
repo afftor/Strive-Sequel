@@ -1759,12 +1759,12 @@ var TranslationDict = {
 	BODYPARTHAIR_LENGTHHIPSDESCRIPT = "[His] [color=aqua][hair_color][/color] hair cascades down, [color=aqua]reaching [his] hips[/color].",
 
 
-	BODYPARTHAIR_STYLESTRAIGHTDESCRIPT = "It [color=aqua]hangs freely[/color] from [his] head.",
-	BODYPARTHAIR_STYLEPONYTAILDESCRIPT = "It is tied in a [color=aqua]high ponytail[/color].",
-	BODYPARTHAIR_STYLEPIGTAILSDESCRIPT = "It is managed in girly [color=aqua]twin-tails[/color].",
-	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "It is combed into a single [color=aqua]braid[/color].",
-	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "It is combed into [color=aqua]two braids[/color].",
-	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [color=aqua]bun[/color].",
+	BODYPARTHAIR_STYLESTRAIGHTDESCRIPT = "It [url=hair][color=aqua]hangs freely[/color][/url] from [his] head.",
+	BODYPARTHAIR_STYLEPONYTAILDESCRIPT = "It is tied in a [url=hair][color=aqua]high ponytail[/color][/url].",
+	BODYPARTHAIR_STYLEPIGTAILSDESCRIPT = "It is managed in girly [url=hair][color=aqua]twin-tails[/color][/url].",
+	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "It is combed into a single [url=hair][color=aqua]braid[/color][/url].",
+	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "It is combed into [url=hair][color=aqua]two braids[/color][/url].",
+	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [url=hair][color=aqua]bun[/color][/url].",
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] eyes are [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',

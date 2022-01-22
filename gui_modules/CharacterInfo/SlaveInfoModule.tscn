@@ -520,3 +520,38 @@ margin_bottom = 42.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Master"
+
+[node name="HairChange" type="Panel" parent="."]
+visible = false
+margin_left = 258.959
+margin_top = 365.746
+margin_right = 668.959
+margin_bottom = 603.746
+
+[node name="screen" type="TextureRect" parent="HairChange"]
+show_behind_parent = true
+margin_left = -575.51
+margin_top = -551.86
+margin_right = 1403.49
+margin_bottom = 580.14
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="HairChange"]
+margin_left = 144.163
+margin_top = 10.6787
+margin_right = 240.163
+margin_bottom = 42.6787
+text = "Hair style"
+
+[node name="hair_style" type="OptionButton" parent="HairChange"]
+margin_left = 76.5216
+margin_top = 49.6129
+margin_right = 305.522
+margin_bottom = 87.6129
+
+[node name="confirm" type="Button" parent="HairChange"]
+margin_left = 137.066
+margin_top = 175.747
+margin_right = 261.066
+margin_bottom = 213.747
+text = "Confirm"
