@@ -126,7 +126,13 @@ func show_stat_info(stat, character):
 	$StatsPanel/Gold.show()
 	var stat_next_level = int(character.get_stat(stat) + 1)
 	$StatsPanel/StatInfoNameValue.text = stats_dict[stat]
-	$StatsPanel/StatInfoCurrentValue.text = "Current value: " + str(character.get_stat(stat))
+	if input_handler.globalsettings.factors_as_words:
+		$StatsPanel/StatInfoCurrentValue.text = "Current value: " + ResourceScripts.descriptions.factor_descripts[int(floor(character.get_stat(stat)))]
+#		$StatsPanel/StatInfoCurrentValue.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(character.get_stat(stat))))]) 
+	else:
+		$StatsPanel/StatInfoCurrentValue.text = "Current value: " + str(int(floor(character.get_stat(stat))))
+#		$StatsPanel/StatInfoCurrentValue.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(character.get_stat(stat))))])
+#	$StatsPanel/StatInfoCurrentValue.text = "Current value: " + str(character.get_stat(stat))
 	if variables.growth_factor_upgrade.has(stat_next_level):
 		$StatsPanel/StatInfoCurrentValue.show()
 		$StatsPanel/StatInfoNameValue.show()

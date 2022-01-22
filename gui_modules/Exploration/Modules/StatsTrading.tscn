@@ -138,6 +138,7 @@ visible = false
 margin_right = 300.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 0, 51 )
+toggle_mode = true
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 8 )
