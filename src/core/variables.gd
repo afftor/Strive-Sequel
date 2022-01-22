@@ -202,7 +202,7 @@ var guild_quest_update_time = 7
 var base_population_cap = 5
 var population_cap_per_room_upgrade = 5
 var max_population_cap = 30
-var stable_boost_per_level = 0.3
+var stable_boost_per_level = 1
 
 #Items
 var RepairCostMultiplierEasy = 0.5

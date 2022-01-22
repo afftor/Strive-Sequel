@@ -40,8 +40,8 @@ func fix_import():
 
 func travel_per_tick():
 	var value = 1
-	if ResourceScripts.game_res.upgrades.has('stables'):
-		value = 1 + variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables
+#	if ResourceScripts.game_res.upgrades.has('stables'):
+#		value = 1 + variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables
 	return value
 
 

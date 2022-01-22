@@ -755,8 +755,9 @@ func calculate_travel_time(location1, location2):
 		travel_value1 = ResourceScripts.world_gen.get_area_from_location_code(location1).travel_time + ResourceScripts.world_gen.get_location_from_code(location1).travel_time
 	if location2 != ResourceScripts.game_world.mansion_location:
 		travel_value2 = ResourceScripts.world_gen.get_area_from_location_code(location2).travel_time + ResourceScripts.world_gen.get_location_from_code(location2).travel_time
-
-	return {time = travel_value1 + travel_value2, obed_cost = travel_value1*1.5}
+	var time = travel_value1 + travel_value2
+	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
+	return {time = time, obed_cost = travel_value1*1.5}
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
