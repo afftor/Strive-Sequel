@@ -15,7 +15,7 @@ func _ready():
 	$RichTextLabel.connect("meta_clicked", self, 'text_url_click')
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
-	$HairChange/confirm.connect("pressed", self, "confirm_hairstyle")
+	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
@@ -124,20 +124,26 @@ func update():
 func text_url_click(meta):
 	match meta:
 		'hair':
-			$HairChange/hair_style.clear()
+			input_handler.ClearContainer($HairChange/hair_style)
 			var hairdata = ResourceScripts.descriptions.bodypartsdata.hair_style
+			$HairChange.visible = true
 			for i in hairdata.values():
-				$HairChange/hair_style.add_item(i.name)
-				$HairChange/hair_style.set_item_metadata($HairChange/hair_style.get_item_count() - 1, i.code)
-				if i.code == person.get_stat('hair_style'):
-					$HairChange/hair_style.select($HairChange/hair_style.get_item_count() - 1)
-			$HairChange.show()
+				var panel = input_handler.DuplicateContainerTemplate($HairChange/hair_style)
+				panel.text = tr(i.name)
+				panel.connect('pressed', self, 'confirm_hairstyle', [i.code])
+			$HairChange/screen.set_global_position(Vector2(0, 0))
+			$HairChange/hair_style.set_global_position(get_viewport().get_mouse_position())
+			
 
 
-func confirm_hairstyle():
-	person.set_stat('hair_style', $HairChange/hair_style.get_selected_metadata())
-	$HairChange.hide()
+func confirm_hairstyle(style):
+	person.set_stat('hair_style', style)
+	$HairChange.visible = false
 	update()
+
+
+func close_hairstyle():
+	$HairChange.visible = false
 
 
 func text_url_hover(meta):
