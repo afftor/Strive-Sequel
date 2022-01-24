@@ -941,7 +941,7 @@ func checkaction(action, doubledildo):
 func slavedescription(member):
 	return
 	if !member.person.get_stat('unique') in ['dog','horse']:
-		get_parent().popup(member.person.make_description())
+		get_parent().popup(ResourceScripts.descriptions.trim_tag(member.person.make_description(), 'url', 'hair'))
 
 var nakedspritesdict = [] #globals.gallery.nakedsprites
 
