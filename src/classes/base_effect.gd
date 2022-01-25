@@ -230,6 +230,7 @@ func deserialize(tmp):
 	buffs.clear()
 	calculate_args()
 	for b in tmp['buffs']:
+		if !b.has('template') or b.template == null: continue
 		var t = Buff.new(id)
 		t.deserialize(b)
 		buffs.push_back(t)
