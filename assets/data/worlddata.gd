@@ -1570,7 +1570,7 @@ var dungeons = {
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
 	},
-	quest_gryphon_cave_location = {# trigger = dungeon_complete
+	quest_gryphon_cave_location = {
 		code = 'quest_gryphon_cave_location',
 		type = 'encounter',
 		name = 'Elder Gryphon Lair',
@@ -1659,6 +1659,36 @@ var dungeons = {
 #				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage10'}],
 #				args = [{code = 'leon_fight_1', data = '', args = []}]}
 #			],
+	},
+	quest_cali_cave_location = {
+		code = 'quest_cali_cave_location',
+		type = 'encounter',
+		name = 'Small Slavers Cave',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2.5,4], 
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', 
+		events = [],
+		quest = true,
+		area = 'plains',
+		travel_time = [1,1],
+		options = [
+			{text = 'Search Cave', reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_INTRO_1'}],
+				args = [{code = 'start_event', data = 'cali_intro_1', args = []}]},
+		],
+		scripteventdata = []
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
@@ -2439,7 +2469,12 @@ var random_dungeon_events = {
 		dungeons = ['dungeon_bandit_den'],#dungeons, which might have this event added on generation
 		levels = [1,2,3], #optional
 		stages = [1,2,3], #optional
-		}
+	},
+	cali_intro_event = {
+		event = 'cali_intro',
+		reqs = [{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+		dungeons = ["dungeon_bandit_fort"],
+	},
 }
 
 
