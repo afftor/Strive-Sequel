@@ -125,6 +125,7 @@ enum {
 	ANIM_TASK_COMPLETED,
 	ANIM_LOOT,
 	ANIM_SKILL_UNLOCKED,
+	ANIM_GROWTHF,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -1412,7 +1413,7 @@ func play_animation(animation, args = {}):
 	match animation:
 		"fight":
 			PlaySound("battle_start")
-			anim_scene = get_spec_node(input_handler.ANIM_BATTLE_START)
+			anim_scene = get_spec_node(ANIM_BATTLE_START)
 			anim_scene.raise()
 			anim_scene.get_node("AnimationPlayer").play("battle_start")
 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
@@ -1423,7 +1424,7 @@ func play_animation(animation, args = {}):
 			# PlaySound("quest_aquired")
 			if args.has("sound"):
 				PlaySound(args.sound)
-			anim_scene = get_spec_node(input_handler.ANIM_TASK_AQUARED)
+			anim_scene = get_spec_node(ANIM_TASK_AQUARED)
 			anim_scene.get_node("Label").text = args.label
 			anim_scene.get_node("SelectedQuest").text = args.info
 			anim_scene.get_node("AnimationPlayer").play("task_aquared")
@@ -1431,7 +1432,7 @@ func play_animation(animation, args = {}):
 			anim_scene.queue_free()
 		"class_aquired":
 			PlaySound("class_aquired")
-			anim_scene = get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
+			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
 			anim_scene.get_node("AnimationPlayer").play("class_achieved")
 			anim_scene.get_node("TextureRect").texture = classesdata.professions[args.current_class].icon
 			anim_scene.get_node("Label2").text = args.current_class.capitalize()
@@ -1443,7 +1444,7 @@ func play_animation(animation, args = {}):
 			SetMusic("mansion1")
 		"quest_completed":
 			PlaySound("quest_completed")
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
+			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("AnimationPlayer").play("task_completed")
 			var name =  selectedquest.name
 			if selectedquest.has("source"):
@@ -1456,7 +1457,7 @@ func play_animation(animation, args = {}):
 		"skill_unlocked":
 			PlaySound("quest_completed")
 			get_tree().get_root().set_disable_input(true)
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_SKILL_UNLOCKED)
+			anim_scene = get_spec_node(ANIM_SKILL_UNLOCKED)
 			anim_scene.get_node("AnimationPlayer").play("Ability_unlocked")
 			anim_scene.get_node("TextureRect7").texture = args["skill"].icon
 			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
@@ -1466,7 +1467,26 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 			get_tree().get_root().set_disable_input(false)
-			
+		"growth_factor":
+			get_tree().get_root().set_disable_input(true)
+			anim_scene = get_spec_node(ANIM_GROWTHF)
+			anim_scene.get_node("AnimationPlayer").play("Animation_growth_factor")
+			anim_scene.get_node("TextureRect5").texture = args["character"].get_icon()
+			anim_scene.get_node('Label').text = args.character.get_stat('name')
+			var value = int(args.character.get_stat('growth_factor'))
+			anim_scene.get_node('Label2').text = "Growth factor: %s" % ResourceScripts.descriptions.factor_descripts[value]
+			for i in range(1, 6):
+				anim_scene.get_node('fill%d' % i).visible = (i < value)
+			anim_scene.get_node("TextureRect6").rect_position.x += (value - 1) * 57
+			anim_scene.get_node("TextureRect4").rect_position.x += (value - 1) * 57
+			anim_scene.get_node("TextureRect7").rect_position.x += (value - 1) * 57
+#			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
+#			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+			get_tree().get_root().set_disable_input(false)
 
 
 const PADDINGS = 25

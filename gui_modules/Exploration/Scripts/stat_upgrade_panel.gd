@@ -161,4 +161,5 @@ func upgrade_stat():
 	character.add_stat(stat, 1)
 	show_stats(character)
 	show_stat_info(stat, character)
+	input_handler.play_animation('growth_factor', {character = character})
 
