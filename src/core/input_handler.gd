@@ -1116,7 +1116,7 @@ func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
 	SetMusic("exploration")
 	
-	if encounter_win_script != null:
+	if encounter_win_script != null and !encounter_win_script.empty():
 		globals.common_effects(encounter_win_script)
 		encounter_win_script = null
 		return
@@ -1149,7 +1149,7 @@ func combat_defeat():
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 			#add permadeath check here
-	if encounter_lose_script != null:
+	if encounter_lose_script != null and !encounter_lose_script.empty():
 		globals.common_effects(encounter_lose_script)
 		encounter_lose_script = null
 		return
