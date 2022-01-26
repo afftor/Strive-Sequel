@@ -644,3 +644,19 @@ func get_class_traits_no_icons(newperson, classdata):
 	if newperson != null:
 		text = newperson.translate(text)
 	return globals.TextEncoder(text)
+
+
+func trim_tag(text, tag, arg = null):
+	var res = text
+	var regexp = RegEx.new()
+	var prefix
+	var suffix = "\\[/%s\\]" % tag
+	if arg != null:
+		prefix = "\\[%s=%s\\]" % [tag, arg]
+	else:
+		prefix = "\\[%s.*\\]" % tag
+	var expression = "(?<str1>%s(?<str2>.*)%s)" % [prefix, suffix]
+	regexp.compile(expression)
+	for result in regexp.search_all(text):
+		res = res.replace(result.get_string('str1'),result.get_string('str2'))
+	return res

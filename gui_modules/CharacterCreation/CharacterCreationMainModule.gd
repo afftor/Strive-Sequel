@@ -272,7 +272,7 @@ func rebuild_slave():
 		select_sex_trait(preservedsettings.sex_traits)
 	RebuildStatsContainer()
 	SlaveInfo.build_bodyparts()
-	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
+	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 
 func delete_keys_from_preservedsettings(keys):
@@ -335,7 +335,7 @@ func text_changed(text, value):
 	preservedsettings[value] = text
 	valid_preservedsettings[value] = true
 	apply_preserved_settings()
-	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
+	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 
 func check_confirm_possibility():
@@ -501,7 +501,7 @@ func LoadCharacter(updated_char_to_load = null):
 			$VBoxContainer.get_node(i).text = person.get_stat(i)
 	# apply_preserved_settings()
 	SlaveInfo.build_bodyparts()
-	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
+	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 	# if person.statlist.sex_traits.size() == 0:
 	# 	$VBoxContainer/sextrait.text = "Select Sex Trait"
 	# else:

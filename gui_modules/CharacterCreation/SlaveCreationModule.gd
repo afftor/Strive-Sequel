@@ -190,7 +190,7 @@ func select_bodypart(value, bodypart, node):
 	get_parent().valid_preservedsettings[bodypart] = true
 
 	get_parent().apply_preserved_settings()
-	$descript.bbcode_text = person.make_description()
+	$descript.bbcode_text = person.ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 func select_sexbodypart(value, bodypart, node):
 	var person = get_parent().person
@@ -201,7 +201,7 @@ func select_sexbodypart(value, bodypart, node):
 	get_parent().valid_preservedsettings[bodypart] = true
 	
 	get_parent().apply_preserved_settings()
-	$descript.bbcode_text = person.make_description()
+	$descript.bbcode_text = person.ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 func select_type(value, node):
 	var person = get_parent().person
@@ -214,7 +214,7 @@ func select_checkbox(bodypart, node):
 	get_parent().valid_preservedsettings[bodypart] = true
 
 	get_parent().apply_preserved_settings()
-	$descript.bbcode_text = person.make_description()
+	$descript.bbcode_text = person.ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 
 func select_personality(value):

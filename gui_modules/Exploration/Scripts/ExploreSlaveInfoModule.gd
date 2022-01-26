@@ -102,7 +102,7 @@ func update(person = null):
 			if statdata.statdata.has(i.name.replace("label_","")):
 				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 	
-		$RichTextLabel.bbcode_text =  str(person.make_description())
+		$RichTextLabel.bbcode_text =  ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 		
 		# if person.travel.location != 'mansion':
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())

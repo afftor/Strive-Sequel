@@ -247,6 +247,13 @@ func add_craft_value(currenttask, value, character, tres = false):
 		var newval = make_item_sequence(currenttask, craftingitem, character)
 		var repeat = newval > 0
 		if craftingitem.repeats == 0:
+			var recipe = Items.recipes[craftingitem.code]
+			var item
+			if Items.recipes[craftingitem.code].resultitemtype != 'material':
+				item = Items.itemlist[recipe.resultitem]
+			else:
+				item = Items.materiallist[recipe.resultitem]
+			globals.text_log_add("crafting", "Task completed: " + item.name)
 			craftinglists[currenttask.product].pop_front()
 		else:
 			newval = 0
