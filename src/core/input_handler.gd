@@ -230,12 +230,7 @@ func load_progress_data():
 
 func save_progress_data(data):
 	progress_data = data
-	var text
-	var file = File.new()
-	file.open(variables.userfolder + 'progress_data', file.WRITE)
-	text = JSON.print(data)
-	file.store_string(text)
-	file.close()
+	store_progress()
 
 
 func update_progress_data(field, value):
@@ -246,7 +241,16 @@ func update_progress_data(field, value):
 		if progress_data[field].has(value):
 			return
 		progress_data[field].push_back(value)
-#
+	store_progress()
+
+
+func store_progress():
+	var text
+	var file = File.new()
+	file.open(variables.userfolder + 'progress_data', file.WRITE)
+	text = JSON.print(progress_data)
+	file.store_string(text)
+	file.close()
 #	var text
 #	var parse_result
 #	var data
