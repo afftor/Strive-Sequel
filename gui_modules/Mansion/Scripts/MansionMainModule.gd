@@ -528,7 +528,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.resource_gather_cloth_silk = 1
 		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
-#		ResourceScripts.game_res.upgrades.luxury_rooms = 1
+		ResourceScripts.game_res.upgrades.rooms = 1
 #		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.resting = 1
 		ResourceScripts.game_res.upgrades.buildertools = 3
@@ -872,7 +872,6 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		ResourceScripts.game_party.get_master().xp_module.professions.clear()
 		input_handler.interactive_message('xari_encounter6', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 

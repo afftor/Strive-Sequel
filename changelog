@@ -1,6 +1,13 @@
+Fixed bug causing events not to trigger when advancing multiple time periods at once
+Fixed some sidequests not working correctly
+Fixed certain skill errors
+Fixed some gui errors
+0.6.0a
 Some Daisy's followup events will take longer to occur
 Fixed character cap not allowing to advance turn when not going over it
 Fixed rought wood gathering upgrade only giving 1 worker slot instead of 2
+Fixed a certain new character not being recruitable
+Fixed saving not working correctly
 0.6.0
 Content:
 Fully implemented Aire's new sidequest

@@ -1968,7 +1968,7 @@ var Skilllist = {
 		learn_cost = 500,
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['buff','support'],
+		tags = ['buff','support','learnable'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_fly'})], 

@@ -51,6 +51,7 @@ var tasklist = {
 		tags = [],
 		mod = 'mod_hunt'
 	},
+	
 	farming_veges = {
 		code = 'farming_veges',
 		reqs = [{type = 'has_upgrade', name = 'resource_gather_veges', value = 1}],
