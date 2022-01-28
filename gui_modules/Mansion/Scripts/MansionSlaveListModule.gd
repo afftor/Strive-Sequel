@@ -437,7 +437,9 @@ func update_button(newbutton):
 			person_location = person.get_location()
 
 	if person_location != null:
-		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
+		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
+		if ploc != null: 
+			newbutton.get_node('Location').text = ploc.name
 	newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 	newbutton.get_node("state").texture = person.get_class_icon()
 
