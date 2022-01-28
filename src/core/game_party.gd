@@ -82,7 +82,8 @@ func remove_slave(tempslave, permanent = false):
 	tempslave.is_players_character = false
 	if permanent: tempslave.is_active = false
 	character_order.erase(tempslave.id)
-	input_handler.update_slave_list()
+#	input_handler.update_slave_list()
+	input_handler.rebuild_slave_list()
 
 
 #arguable here

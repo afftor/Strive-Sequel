@@ -185,12 +185,13 @@ func find_location_by_data(data):
 			return null
 		if area.has('capital'):
 			location = get_area_capital(area)
+			area = area.code
 		else:
 			print("error - no capital in area %s" % data.area)
 			return null
 	elif data.has('id'):
 		location = data.id
-		area = ResourceScripts.world_gen.get_area_from_location_code(location)
+		area = ResourceScripts.world_gen.get_area_from_location_code(location).code
 	elif data.has('code'):
 		for id in location_links:
 			location = id
