@@ -472,7 +472,7 @@ var data = {
 		reqs = [],
 		text = [{text = "PRE_RITUAL_4_1_1_300", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 100}]}]},
 		{text = "PRE_RITUAL_4_1_1_500", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 100}]}]}],
-		options = [ {
+		options = [ { # TODO add money check and if false add disabled option
 			code = 'pre_ritual_4_1_2', text = "PRE_RITUAL_4_1_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
 			code = 'quest_fight', args = 'slavers',

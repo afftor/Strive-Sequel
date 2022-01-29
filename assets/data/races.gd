@@ -51,6 +51,7 @@ var tasklist = {
 		tags = [],
 		mod = 'mod_hunt'
 	},
+	
 	farming_veges = {
 		code = 'farming_veges',
 		reqs = [{type = 'has_upgrade', name = 'resource_gather_veges', value = 1}],
@@ -135,7 +136,7 @@ var tasklist = {
 		workstat = 'physics',
 		worktool = 'axe',
 		base_workers = 0,
-		workers_per_upgrade = 1,
+		workers_per_upgrade = 2,
 		progress_per_item = 4.5 / 6,
 		upgrade_code = 'resource_gather_wood',
 		production_code = 'woodgather',

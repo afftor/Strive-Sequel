@@ -2000,6 +2000,8 @@ var TranslationDict = {
 
 	DIALOGUEMISSIONCOMPLETE = 'Your group have completed the task and returns to mansion. ',
 
+	
+	SPECIAL_ACTION_CLASS = "Special Action (requires unknown class)",
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVE = "Leave",
@@ -4811,7 +4813,7 @@ The man grabs Anastasia by her asscheeks, his fingernails sinking cruelly into h
 The man forces his cock into her, bursting her hymen open as the princess screams at her violation. The crowd hollers in debauched euphoria as the burly commoner takes the virginity of the princess, violently raping her bleeding pussy while she howls in agony and disgrace. """,
 	DUNCANS_DECLARATION_START = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced.
 
-— None can deny how instrumental the efforts of [sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
+— None can deny how instrumental the efforts of [Sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
 	ANASTASIA_EXECUTION_13 = """It doesn't take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia's legs.. 
 
 {color=yellow|Amelia:— Did I mention I pity her? I do, you know, poor thing. But this is so much more fun to watch.}
@@ -5109,7 +5111,7 @@ Anastasia steps out onto the balcony of the government building and the crowd's 
 Upon hearing this the crowd seemed to beam with enthusiasm, while Anastasia mustered her resolve.""",
 	ANASTASIA_DECLARATION_2 = """— My ways were wrong and I've led many people to their demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
 
-— I'm no longer the rebel leader. I know some of you still believe it is my birth right to rule, but I am no longer eligible. Instead, from now on I will be supporting the newly elected mayor of Aliron, [sir] [name] [surname]. I will be at [his] mercy while doing my best for the sake of the people.
+— I'm no longer the rebel leader. I know some of you still believe it is my birth right to rule, but I am no longer eligible. Instead, from now on I will be supporting the newly elected mayor of Aliron, [Sir] [name] [surname]. I will be at [his] mercy while doing my best for the sake of the people.
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia around the waist. The crowd is energized, as the rumors have been spread for some time of your deeds and how you're going to become the next ruler. Spontaneous applause breaks out.""",
 	ANASTASIA_DECLARATION_3 = """{color=aqua|Male Citizen 1:— It's finally over.}
@@ -5130,7 +5132,7 @@ Anastasia steps out onto the balcony of the government building and the crowd's 
 The crowd seems satisfied with her words, not noticing her halting oration or perhaps not remembering her more eloquent speech so many days ago. """,
 	ANASTASIA_DECLARATION_2MC = """— My ways were wrong. And I've led many people to their demise. I deeply regret it. And I wish for this war to stop. This is why I ask. For those who are still out there. Fighting for my sake. To stop and surrender.
 
-— I'm no longer the rebel leader. Some of you believe it is my birth right to rule. I renounce all claims to rule. From now on I support. The newly elected mayor of Aliron. [sir] [name] [surname]. I will be at [his] mercy. I am now willingly [his] slave.
+— I'm no longer the rebel leader. Some of you believe it is my birth right to rule. I renounce all claims to rule. From now on I support. The newly elected mayor of Aliron. [Sir] [name] [surname]. I will be at [his] mercy. I am now willingly [his] slave.
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia around the waist. The crowd is energized, as the rumors have been spread for some time of your deeds and how you're going to become the next ruler. Spontaneous applause breaks out.""",
 
@@ -6971,7 +6973,7 @@ Slaver: - Well, that's what she says.""",
 	CALI_INTRO_3_2 = """Slaver: - She was travelling alone by the roads. Looks like she ran away from home or something. """,
 	CALI_INTRO_3_3 = """The leader strokes his chin for a few seconds. 
 
-Slaver: - I knew we could have a productive relationship with you, [sir]. It would be annoying to keep her around once we live, so we can happily part with her here.
+Slaver: - I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we live, so we can happily part with her here.
 
 Cali: - Bastards, stop discussing me like I agreed to this!
 
@@ -7023,7 +7025,6 @@ She takes a long pause before willing to continue.
 
 You leave the cave and lead Cali back to your mansion.""",
 	GOT_CALI_3_3 = """""",
-	
 	
 	
 	

@@ -184,7 +184,7 @@ func build_queue_list():
 		globals.connecttexttooltip(newbutton, "Drag and drop to change order. Click to remove from queue.")
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgrade])
 		if output > 0:
-			newbutton.get_node("time").text = "%d h" % int(ceil(remains / (1.0 * output)))
+			newbutton.get_node("time").text = "%d t" % int(ceil(remains / (1.0 * output)))
 		else:
 			newbutton.get_node("time").visible = false
 

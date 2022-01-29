@@ -18,7 +18,7 @@ var lands = {
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 4}], args = {"oneshot": true}},
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 3}], args = {"oneshot": true}},
 
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
 
@@ -32,7 +32,7 @@ var lands = {
 
 			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
-			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}], args = {"oneshot": false}},
 			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -170,7 +170,7 @@ var lands = {
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
-		travel_time = [6,6],
+		travel_time = [2,2],
 		disposition = 25,
 		start_settlements_number = {settlement_forest1 = [1,1],settlement_forest2 = [1,1]},
 		locations = {},
@@ -1570,16 +1570,16 @@ var dungeons = {
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
 	},
-	quest_gryphon_cave_location = {# trigger = dungeon_complete
+	quest_gryphon_cave_location = {
 		code = 'quest_gryphon_cave_location',
-		type = 'dungeon',
+		type = 'encounter',
 		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
@@ -1622,7 +1622,7 @@ var dungeons = {
 		events = [],
 		quest = true,
 		area = 'forests',
-		travel_time = [4,6],
+		travel_time = [2,2],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'pre_ritual_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_1'}]}],
 #		options = [
 #			{text = 'Approach', reqs = [
@@ -1652,13 +1652,43 @@ var dungeons = {
 		events = [],
 		quest = true,
 		area = 'forests',
-		travel_time = [4,6],
+		travel_time = [2,2],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
 #		options = [
 #			{text = 'Search for Leon', reqs = [
 #				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage10'}],
 #				args = [{code = 'leon_fight_1', data = '', args = []}]}
 #			],
+	},
+	quest_cali_cave_location = {
+		code = 'quest_cali_cave_location',
+		type = 'encounter',
+		name = 'Small Slavers Cave',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2.5,4], 
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', 
+		events = [],
+		quest = true,
+		area = 'plains',
+		travel_time = [1,1],
+		options = [
+			{text = 'Search Cave', reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_INTRO_1'}],
+				args = [{code = 'start_event', data = 'cali_intro_1', args = []}]},
+		],
+		scripteventdata = []
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
@@ -2433,6 +2463,11 @@ var pregen_characters = {
 
 
 var random_dungeon_events = {
+	cali_intro_event = {
+		event = 'cali_intro',
+		reqs = [{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+		dungeons = ["dungeon_bandit_fort"],
+	},
 #	event1 = {
 #		event = 'eventname',#event code to launch
 #		reqs = [],#checks before event could spawn

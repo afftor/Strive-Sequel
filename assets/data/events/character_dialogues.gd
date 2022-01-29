@@ -137,7 +137,7 @@ var data = {
 			{text = "Anastasia comes at your demand.", reqs = []},
 		], 
 		options = [
-			{code = 'ana_gryphon_sex_start', text = 'GRYPHON_ANA_SEX_OPTION_INIT',reqs = [{type = 'decision', value = 'AnaAireThreesome', check = true}], dialogue_argument = 1},
+			{code = 'ana_gryphon_sex_start', text = 'GRYPHON_ANA_SEX_OPTION_INIT',reqs = [{type = 'decision', value = 'AnaAireThreesome', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_ANA_SEX_10'}], dialogue_argument = 1},
 			
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4}
 		],
@@ -154,12 +154,10 @@ var data = {
 			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
 				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
-				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_body.png", orflag = true},
 				]}], dialogue_argument = 1},
 			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
 			{type = 'active_character_checks', value = [
-				{code = 'stat', stat = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
-				{code = 'body_image', operant = 'eq', value = "res://assets/images/sprites/daisy_maid_nude_body.png", orflag = true},
+				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
 				]}], dialogue_argument = 2},
 			{ # Serve
 			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true},

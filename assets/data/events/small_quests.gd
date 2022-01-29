@@ -145,14 +145,14 @@ var data = {
 	},
 	
 	lilia_intro = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
 		options = [ {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -172,6 +172,7 @@ var data = {
 		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'update_location'}]
 		},  ],
 	},
 	
@@ -179,6 +180,7 @@ var data = {
 	cali_intro = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_INTRO", reqs = []} ], 
+		common_effects = [{code = 'make_quest_location', value = 'quest_cali_cave_location'},],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
@@ -188,17 +190,21 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_INTRO_1", reqs = []} ], 
 		options = [ {
-			code = 'cila_intro_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_intro_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 5, type = 'next_dialogue',
 		}, ],
 	},
 	
 	cali_intro_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "CALI_INTRO_2", reqs = []} ], 
+		image = null, tags = ['dialogue_scene'], reqs = [], # TODO add cali cg 1
+		text = [ {text = "CALI_INTRO_2", reqs = [], previous_dialogue_option = 5},
+		{text = "CALI_INTRO_3_1", reqs = [], previous_dialogue_option = 1},
+		{text = "CALI_INTRO_3_2", reqs = [], previous_dialogue_option = 2}, ], 
 		options = [ {
-			code = 'cali_intro_3', text = "CALI_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_intro_2', text = "CALI_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, 
+				remove_after_first_use = true
 		}, {
-			code = 'cali_intro_3', text = "CALI_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_intro_2', text = "CALI_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, 
+				remove_after_first_use = true
 		}, {
 			code = 'cali_intro_3', text = "CALI_INTRO_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, {
@@ -207,22 +213,22 @@ var data = {
 	},
 	
 	cali_intro_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "CALI_INTRO_3_1", reqs = [], previous_dialogue_option = 1}, 
-		 {text = "CALI_INTRO_3_2", reqs = [], previous_dialogue_option = 2},
-		 {text = "CALI_INTRO_3_3", reqs = [], previous_dialogue_option = 3}, 
-		 {text = "CALI_INTRO_4_1_1", reqs = [], previous_dialogue_option = 5},  # todo add charm check
-		 {text = "CALI_INTRO_4_1_2", reqs = [], previous_dialogue_option = 5}, ], # todo add charm check  
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [  {text = "CALI_INTRO_3_3", reqs = [], previous_dialogue_option = 3}, 
+		 {text = "CALI_INTRO_4_1_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 75}]}], previous_dialogue_option = 5},  
+		 {text = "CALI_INTRO_4_1_2", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 75}]}], previous_dialogue_option = 5}, ],  
 		options = [ {
-			code = 'lilia_intro_3', text = "CALI_INTRO_3_OPTION_1", reqs = [], dialogue_argument = 5,
+			code = 'cali_intro_3', text = "CALI_INTRO_3_OPTION_1", reqs = [], dialogue_argument = 5,
 				remove_after_first_use = true
 		}, {
 			code = 'close', text = "CALI_INTRO_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
-			code = '', text = "CALI_INTRO_3_OPTION_3", reqs = [{type = 'has_money', value = 1000},], # todo add charm check
+			code = 'purchased_cali', text = "CALI_INTRO_3_OPTION_3", reqs = [{type = 'has_money', value = 750}, {type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 75}]}],
+			bonus_effects = [{code = 'money_change', operant = '-', value = 750}],
 			dialogue_argument = 3, type = 'next_dialogue',
 		}, {
-			code = '', text = "CALI_INTRO_3_OPTION_3", reqs = [{type = 'has_money', value = 750},], # todo add charm check
+			code = 'purchased_cali', text = "CALI_INTRO_3_OPTION_3", reqs = [{type = 'has_money', value = 1000}, {type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 75}]}],
+			bonus_effects = [{code = 'money_change', operant = '-', value = 1000}],
 			dialogue_argument = 3, type = 'next_dialogue',
 		}, {
 			code = 'cali_intro_fight', text = "CALI_INTRO_3_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -233,8 +239,16 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_INTRO_4_4", reqs = []}, ], 
 		options = [ {
-			code = 'quest_fight', args = 'slavers',
+			code = 'quest_fight', args = 'cali_slavers', 
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	
+	purchased_cali = {
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [ {text = "CALI_INTRO_4_3", reqs = []} ], 
+		options = [ {
+			code = 'got_cali_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -249,7 +263,7 @@ var data = {
 	},
 	
 	got_cali_1_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
 		text = [ {text = "GOT_CALI_1_2", reqs = []}, ], 
 		options = [ {
 			code = 'got_cali_2_1', text = "GOT_CALI_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -264,6 +278,7 @@ var data = {
 		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = "remove_active_location"}]
 		}, ],
 	},
 	
@@ -272,12 +287,12 @@ var data = {
 		text = [ {text = "GOT_CALI_2_2", reqs = [], previous_dialogue_option = 2}, 
 		{text = "GOT_CALI_3_1", reqs = [], previous_dialogue_option = 1}, ], 
 		options = [ {
-			code = 'got_cali_2_2', text = "CALI_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, 
+			code = 'got_cali_2_2', text = "GOT_CALI_2_OPTION_1", reqs = [], dialogue_argument = 1, 
 				remove_after_first_use = true
 		}, {
-			code = 'cali_intro_3', text = "CALI_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'got_cali_3', text = "GOT_CALI_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
-			code = 'cali_intro_3', text = "CALI_INTRO_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'got_cali_3', text = "GOT_CALI_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -287,6 +302,7 @@ var data = {
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = "remove_active_location"}]
 		}, ],
 	},
 	

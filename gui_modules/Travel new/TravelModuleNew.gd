@@ -108,7 +108,7 @@ func build_sel_panel(is_open):
 			tbutton.connect('pressed', self, 'select_filter', ['all'])
 
 		var separator = TextureRect.new()
-		separator.texture = load("res://assets/Textures_v2/Travel new 2021/divider_travel_tooltip.png")
+		separator.texture = load("res://assets/Textures_v2/Travel/divider_travel_tooltip.png")
 		separator.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
 		selector_list.add_child(separator)
 
