@@ -400,8 +400,15 @@ func select_items_for_quest(quest_req):
 	input_handler.ClearContainer($ItemSelectionPanel/ScrollContainer/GridContainer)
 	var array = []
 	for i in ResourceScripts.game_res.items.values():
-		if !i.itembase == quest_req.type || i.owner != null:
+		if i.itembase != quest_req.type || i.owner != null:
 			continue
+		if quest_req.has('parts'):
+			var f = true
+			for part in quest_req.parts:
+				if !i.parts.has(part) or i.parts[part] != quest_req.parts[part]:
+					f = false
+					break
+			if !f: continue
 		array.append(i)
 	$ItemSelectionPanel/noitems.visible = array.size() == 0
 	for i in array:

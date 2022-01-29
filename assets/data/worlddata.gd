@@ -2433,13 +2433,13 @@ var pregen_characters = {
 
 
 var random_dungeon_events = {
-	event1 = {
-		event = 'eventname',#event code to launch
-		reqs = [],#checks before event could spawn
-		dungeons = ['dungeon_bandit_den'],#dungeons, which might have this event added on generation
-		levels = [1,2,3], #optional
-		stages = [1,2,3], #optional
-		}
+#	event1 = {
+#		event = 'eventname',#event code to launch
+#		reqs = [],#checks before event could spawn
+#		dungeons = ['dungeon_bandit_den'],#dungeons, which might have this event added on generation
+#		levels = [1,2,3], #optional
+#		stages = [1,2,3], #optional
+#		}
 }
 
 
