@@ -45,7 +45,7 @@ func show_factors():
 				text += str(floor(person.get_stat(i+"_bonus")))
 			if i != 'sexuals':
 				get_node("VBoxContainer2/TextureRect3/" + str(i)).text = str(floor(person.statlist.statlist[i])) + text
-				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = str(person.get_stat(i+'_factor') * 20)
+				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
 			else:
-				get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.statlist[i])) + text
+				get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = '100'
