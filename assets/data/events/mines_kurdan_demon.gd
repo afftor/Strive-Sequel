@@ -62,7 +62,11 @@ var data = {
 			text = "PRE_FINAL_BOSS_KNIGHT_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}]}], dialogue_argument = 6, type = 'next_dialogue',
 		}, {
 			code = 'pre_final_boss_paladin_knight',
-			text = "PRE_FINAL_BOSS_PALADIN_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'Paladin', check = true}]}], dialogue_argument = 6, type = 'next_dialogue',
+			text = "PRE_FINAL_BOSS_PALADIN_OPTION", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]}], dialogue_argument = 6, type = 'next_dialogue',
+		}, {
+			code = 'pre_final_boss_2', disabled = true,
+			text = "SPECIAL_ACTION_CLASS", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = false}]},
+			{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = false}]}], dialogue_argument = 6, type = 'next_dialogue',
 		}
 		],
 	},

@@ -94,7 +94,7 @@ var data = {
 	},
 	
 	gryphon_hunter_start = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "GRYPHON_HUNTER_START", reqs = []}],
 		options = [ {
@@ -157,7 +157,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "GRYPHON_CAVE_START", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'gryphon',
+			code = 'quest_fight', args = 'elder_gryphon_boss',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ]
 	},

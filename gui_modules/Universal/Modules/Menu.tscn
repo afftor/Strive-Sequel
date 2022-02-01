@@ -526,6 +526,9 @@ margin_right = 378.075
 margin_bottom = 990.382
 theme = ExtResource( 1 )
 text = "Change log"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Changelogpanel" type="Panel" parent="."]
 visible = false
@@ -543,11 +546,20 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.6.0 Experimental
+bbcode_text = "Fixed bug causing events not to trigger when advancing multiple time periods at once
+Fixed some sidequests not working correctly
+Fixed certain skill errors
+Fixed some gui errors
+0.6.0a
+Some Daisy's followup events will take longer to occur
+Fixed character cap not allowing to advance turn when not going over it
+Fixed rought wood gathering upgrade only giving 1 worker slot instead of 2
+Fixed a certain new character not being recruitable
+Fixed saving not working correctly
+0.6.0
 Content:
 Fully implemented Aire's new sidequest
 Added a couple new recruitable characters
-
 
 Rebalances:
 Growth factor is no longer tied to race and has higher cost now
@@ -561,7 +573,6 @@ Autosave is triggered every 5 days instead of 1
 Buffed boss hp
 Rebalanced some of the combat skills: most single target damage skills buffed while AoE nerfed
 Further reduced obedience gain
-
 
 
 Flight can be learned by any character with wings (except for harpy) and is no longer obtained from valkyrie class
@@ -1114,11 +1125,20 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.0 Experimental
+text = "Fixed bug causing events not to trigger when advancing multiple time periods at once
+Fixed some sidequests not working correctly
+Fixed certain skill errors
+Fixed some gui errors
+0.6.0a
+Some Daisy's followup events will take longer to occur
+Fixed character cap not allowing to advance turn when not going over it
+Fixed rought wood gathering upgrade only giving 1 worker slot instead of 2
+Fixed a certain new character not being recruitable
+Fixed saving not working correctly
+0.6.0
 Content:
 Fully implemented Aire's new sidequest
 Added a couple new recruitable characters
-
 
 Rebalances:
 Growth factor is no longer tied to race and has higher cost now
@@ -1132,7 +1152,6 @@ Autosave is triggered every 5 days instead of 1
 Buffed boss hp
 Rebalanced some of the combat skills: most single target damage skills buffed while AoE nerfed
 Further reduced obedience gain
-
 
 
 Flight can be learned by any character with wings (except for harpy) and is no longer obtained from valkyrie class

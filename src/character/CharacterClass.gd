@@ -327,7 +327,7 @@ func recruit(enslave = false):
 		set_slave_category('slave')
 		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
 		apply_effect(effects_pool.add_effect(eff))
-		eff.remains = 12 * (8 - get_stat('timid_factor'))
+		eff.remains = 2 * (8 - get_stat('timid_factor'))
 	ResourceScripts.game_party.add_slave(self)
 
 func recruit_and_return():

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.0 Experimental.1'
+const gameversion = '0.6.0b'
 
 #time
 signal hour_tick
@@ -894,11 +894,16 @@ func start_unique_event():
 	var active_array = []
 	for i in worlddata.random_dungeon_events:
 		var event = worlddata.random_dungeon_events[i]
-		if ResourceScripts.game_progress.seen_events.has(event.event): continue
-		if !event.dungeons.has(location.code): continue
-		if event.has('levels') and !event.levels.has(int(location.progress.level)): continue
-		if event.has('stages') and !event.stages.has(int(location.progress.stage)): continue
-		if event.has('reqs') and !globals.checkreqs(event.reqs): continue
+		if ResourceScripts.game_progress.seen_events.has(event.event): 
+			continue
+		if !event.dungeons.has(str(location.code)): 
+			continue
+		if event.has('levels') and !event.levels.has(int(location.progress.level)): 
+			continue
+		if event.has('stages') and !event.stages.has(int(location.progress.stage)): 
+			continue
+		if event.has('reqs') and !globals.checkreqs(event.reqs): 
+			continue
 		active_array.append(event.event)
 	if active_array.size() > 0:
 		var selected_event = input_handler.random_from_array(active_array)

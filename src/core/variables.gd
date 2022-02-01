@@ -361,7 +361,7 @@ var slave_classes_per_difficulty = {
 }
 
 var autosave_number_min = 0
-var autosave_number_max = 10
+var autosave_number_max = 5
 var autosave_frequency_min = 1
 var autosave_frequency_max = 100
 
