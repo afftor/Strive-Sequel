@@ -770,7 +770,8 @@ func sortactions(first, second):
 	if categoriesorder.find(first.category) == categoriesorder.find(second.category):
 		if first.get('order') != null:
 			if second.get('order') != null:
-				if first.order >= second.order:
+#				if first.order >= second.order:
+				if first.order > second.order:
 					return false
 				else:
 					return true

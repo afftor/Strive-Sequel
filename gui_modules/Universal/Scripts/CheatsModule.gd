@@ -29,7 +29,8 @@ var cheats = [
 	'plus_10k_of_guild_reputation',
 	'unlock_all_classes',
 	'add_new_character',
-	'add_material'
+	'add_material',
+	'unlock_all_scenes'
 ]
 
 func _ready():
@@ -60,12 +61,14 @@ func list_cheats():
 		newbutton.set_meta("cheat", cheat)
 		if cheat == "instant_upgrades":
 			newbutton.get_node("Label").text = "Unlock All Upgrades"
+		if cheat == "unlock_all_scenes":
+			newbutton.get_node("Label").text = "Unlock All Scenes"
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 
 
 func set_cheat(cheat = null, btn = null):
-	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]:
+	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
 		ResourceScripts.game_progress[cheat] = btn.is_pressed()
 	match cheat:
 		"instant_upgrades":
@@ -78,10 +81,12 @@ func set_cheat(cheat = null, btn = null):
 			add_new_character()
 		"add_material":
 			add_material()
+		'unlock_all_scenes':
+			unlock_all()
 	for button in LeftSide.get_children():
-		if button.name == "Button" || button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]:
+		if button.name == "Button" || button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
 			continue
-		button.toggle_mode = !button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]
+		button.toggle_mode = !button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes'] # this means 'true' i think
 		button.pressed = ResourceScripts.game_progress[button.get_meta("cheat")]
 
 
@@ -242,4 +247,5 @@ func plus_10k_of_guild_reputation():
 func add_new_character():
 	input_handler.get_spec_node(input_handler.NODE_CHARCREATE).open("slave", "none", true)
 
-
+func unlock_all(): #temporal solution - for unlocks are not gamestate-related
+	Gallery.unlock_all()

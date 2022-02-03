@@ -4,10 +4,10 @@ extends Node
 var scenes = {
 	test_scene = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4", "princess_sex_good_5", "princess_sex_good_6", "princess_sex_good_7", "princess_sex_good_8"], #sample
 }
-#was forced to add a id to scene lists for inlock purpose
+#was forced to add a id to scene lists for unlock purpose
 var scenes_order = ['test_scene']
-var story_scenes = ['church_event']
-var ero_scenes = ['anastasia_sex_1', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2', 'anastasia_sex_2']
+var story_scenes = ['church_event', 'jail', 'anastasia_event_alive', 'anastasia_event_dead'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
+var ero_scenes = ['anastasia_execution1', 'anastasia_execution2', 'anastasia_execution3', 'lich_aire_talk4', 'lich_aire_talk7', 'xari_encounter8', 'daisy_discipline', 'daisy_bj1', 'daisy_bj2', 'daisy_bj3', 'daisy_bj4', 'daisy_bj5', 'daisy_bj6', 'daisy_training1', 'daisy_training2', 'daisy_training3', 'daisy_training4', 'daisy_training5', 'daisy_public1', 'daisy_public5', 'daisy_public2', 'daisy_public3', 'daisy_public4', 'daisy_public5', 'daisy_bent1', 'daisy_bent2', 'daisy_bent3', 'anastasia_sex_1', 'anastasia_sex_2', 'anastasia_sex_3', 'anastasia_rape_1', 'anastasia_rape_2', 'aire_amelia1', 'aire_amelia2', 'amelia_titjob1', 'amelia_titjob2', 'amelia_titjob3', 'amelia_bondage1', 'amelia_bondage2', 'amelia_bondage3', 'anastasia_aire1', 'anastasia_aire2', 'anastasia_aire3', 'aire_ana1', 'aire_ana2', 'aire_ana3', 'aire_ana4', 'aire_ana5', 'aire_ana6'] 
 #so these arrays are needed for storing order 
 
 var close_template = {
@@ -122,3 +122,16 @@ func get_image_for_seq(id):
 		if data.has("custom_background"):
 			return data.custom_background
 	return res
+
+
+func unlock_all():
+	for sc in story_scenes:
+		if !input_handler.progress_data.story_scenes.has(sc):
+			input_handler.progress_data.story_scenes.push_back(sc)
+	for sc in ero_scenes:
+		if !input_handler.progress_data.ero_scenes.has(sc):
+			input_handler.progress_data.ero_scenes.push_back(sc)
+	for sc in scenes_order:
+		if !input_handler.progress_data.gallery_seq.has(sc):
+			input_handler.progress_data.gallery_seq.push_back(sc)
+	input_handler.store_progress()

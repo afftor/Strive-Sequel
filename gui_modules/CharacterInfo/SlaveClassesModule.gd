@@ -143,7 +143,8 @@ func class_category(name):
 #	open(person, mode)
 
 func sort_by_name(first,second):
-	return first.name <= second.name
+#	return first.name <= second.name
+	return first.name < second.name
 
 func open_class(classcode):
 	#if !gui_controller.windows_opened.has($ClassPanel):
@@ -212,7 +213,7 @@ func build_skills():
 				array.append(i)
 	array.sort_custom(self, 'sort_by_name')
 	for i in array_learned + array:
-		if is_skill_locked(i):
+		if !person.checkreqs(i.learn_reqs):
 			continue
 		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, "skill_selected", [i])

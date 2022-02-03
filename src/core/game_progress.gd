@@ -43,6 +43,7 @@ var social_skill_unlimited_charges = false
 var allow_skip_fights = false
 var unlimited_date_sex = false
 var unlock_all_classes = false
+#var unlock_all_scenes = false
 
 # Cheat codes
 var cheat_code = "fkfynroh"

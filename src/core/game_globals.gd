@@ -84,7 +84,7 @@ func advance_day():
 		gui_controller.mansion.rebuild_mansion()
 
 func reset_limits():
-	weekly_sex_max = ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) # + ResourceScripts.game_res.upgrades.sex_times
+	weekly_sex_max = ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.upgrades.sex_times
 	weekly_sex_left = weekly_sex_max
 	weekly_dates_max = 1 + floor(ResourceScripts.game_party.get_master().get_stat('charm_factor') * 0.5)
 	weekly_dates_left = weekly_dates_max

@@ -19,7 +19,7 @@ func _ready():
 func construct_res():
 	var args = {}
 	args.effect = effsel.get_item_text(effsel.selected)
-	if chance.pressed: args.duration = float(chance.get_parent().get_node("chance").text)
+	if chance.pressed: args.chance = float(chance.get_parent().get_node("chance").text)
 	if duration.pressed: args.duration = int(duration.get_parent().get_node("duration").text)
 	if process.pressed: args.push_value = true
 	return Effectdata.rebuild_template(args)
