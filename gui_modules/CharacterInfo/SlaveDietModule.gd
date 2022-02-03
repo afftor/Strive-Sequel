@@ -51,4 +51,5 @@ var category_order = ['high','med','low','disable']
 var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
 
 func sort_food(first, second):
-	return first.name >= second.name
+#	return first.name >= second.name
+	return first.name > second.name

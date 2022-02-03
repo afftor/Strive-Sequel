@@ -1347,6 +1347,10 @@ func common_effects(effects):
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
 				input_handler.exploration_node.open_location(location)
 			'create_character':
+				#temporal solution
+				var preset = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
+				if preset.has('tags') and preset.tags.has('solo'):
+					return
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'progress_quest':
 				var quest_exists = false

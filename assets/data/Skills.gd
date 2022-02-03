@@ -1961,10 +1961,9 @@ var Skilllist = {
 	
 	fly_evasion = {
 		code = 'fly_evasion',
-		name = '',
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Fear.png'),
-		learn_reqs = [{stat = 'wings', operant = 'neq', value = ''}],
+		learn_reqs = [{code = 'stat', stat = 'wings', operant = 'neq', value = ''}],
 		learn_cost = 500,
 		type = 'combat', 
 		ability_type = 'spell',
