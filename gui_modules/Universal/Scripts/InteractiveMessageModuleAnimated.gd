@@ -394,7 +394,7 @@ func inspect_character_child():
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
-	person.statlist.get_random_name()
+	person.statlist.get_random_name(true)
 #	input_handler.active_character.get_stat('pregnancy', true).baby = null
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 	

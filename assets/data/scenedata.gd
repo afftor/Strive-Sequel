@@ -44,7 +44,7 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUERECRUITBOSSOPTION")},
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITBOSSOPTION")},
 	{code = 'execute', reqs = [], text = tr("DIALOGUEEXECUTEOPTION")}
 	]
 	},

@@ -2164,6 +2164,28 @@ var effect_table = {
 		],
 		sub_effects = [],
 	},
+	e_t_holy = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'holydebuff',
+		duration = 'parent',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		stack = 1,
+		tags = ['debuff', 'negative'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'mdef', value = -20},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Praise.png",
+				description = "magic defence decreased",
+				limit = 1,
+				t_name = 'holydebuff'
+			}
+		],
+	},
 	e_s_stun = {
 		type = 'temp_s',
 		target = 'target',
