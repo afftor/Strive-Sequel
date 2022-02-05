@@ -1012,7 +1012,7 @@ func get_combat_node():
 func AddPanelOpenCloseAnimation(node): #idk how this should work overall, but i cant remove it (and i want to remove it)
 	if node.get_script() == null:
 		node.set_script(ResourceScripts.scriptdict.closingpanel)
-#	node._ready() #i dont care about breaking anything with commenting this line - _ready SHOULD NEVER BE CALLED MANUALLY!!
+		node._ready() #i dont care about breaking anything with commenting this line - _ready SHOULD NEVER BE CALLED MANUALLY!!
 
 func get_person_for_chat(array, event, bonus_args = []):
 	var allowed_array = []
