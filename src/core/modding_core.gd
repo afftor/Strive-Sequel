@@ -381,9 +381,11 @@ func process_script_extend(name, path):
 		return
 	if !path.begins_with('user:'):
 		print('WARNING: possibility of access denial to %s' % path)
-	file.open(path, File.READ_WRITE)
+	file.open(path, File.READ)
 	var tmp = file.get_as_text()
-	var pars = tmp.split('/n')
+	var pars = tmp.split('\n')
+	file.close()
+	file.open(path, File.WRITE)
 	if pars[0].begins_with("extends"):
 		pars[0] = 'extends "%s"' % ResourceScripts.scriptdict[name]
 	else: file.store_line('extends "%s"' % ResourceScripts.scriptdict[name])
