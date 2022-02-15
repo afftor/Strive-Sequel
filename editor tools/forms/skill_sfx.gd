@@ -10,7 +10,7 @@ func _init():
 	panel_data = [
 		{
 			type = editor_core.PANEL_OPTION,
-			stat = 'value',
+			stat = 'code',
 			container = 0,
 			groups = [],
 			rlist = sfxlist,
@@ -54,11 +54,10 @@ func get_data(dir = null):
 func commit():
 	update_res()
 	if tres == null: return
-	var tmp = [tres.value, tres.weight]
 	if newrec:
-		parent.tres.push_back(tmp)
+		parent.tres.push_back(tres)
 	else:
-		parent.tres[id] = tmp
+		parent.tres[id] = tres
 	parent.update_val()
 	.commit()
 

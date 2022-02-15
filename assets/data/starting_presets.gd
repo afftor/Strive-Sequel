@@ -32,6 +32,7 @@ var preset_data = {
 		decisions = [],
 		active_quests = [],
 		completed_quests = [],
+		tags = ['solo']
 	},
 	sandbox = {
 		code = 'sandbox',

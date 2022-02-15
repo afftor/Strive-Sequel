@@ -57,7 +57,8 @@ func show_classes():
 
 
 func sort_classes(first,second):
-	return first.name <= second.name
+#	return first.name <= second.name
+	return first.name < second.name
 
 
 func add_class(cls):

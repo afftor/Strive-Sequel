@@ -144,7 +144,7 @@ func sex_traits_open():
 			break
 	if all_traits_known:
 		array = person.get_unlocked_sex_traits()#.keys()
-		array.sort_custom(self, 'sort_traits')
+#		array.sort_custom(self, 'sort_traits')
 
 		for i in array:
 			var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)

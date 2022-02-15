@@ -99,7 +99,7 @@ func set_state(state):
 
 func match_state():
 	update()
-	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible()
+	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible_in_tree() #currently this is not required at all - due to similar effect of both closebuttons
 	for b in SummaryModule.get_node("GridContainer").get_children():
 		b.set_pressed(false)
 	match char_module_state:

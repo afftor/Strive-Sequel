@@ -55,7 +55,8 @@ func class_category(name):
 	open(person, mode)
 
 func sort_classes(first,second):
-	if first.name >= second.name:
+#	if first.name >= second.name:
+	if first.name > second.name:
 		return false
 	else:
 		return true

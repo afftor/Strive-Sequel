@@ -898,11 +898,13 @@ func get_random_age():
 		array.append([i, variables.get(i+"_age_weight")])
 	return input_handler.weightedrandom(array)
 
-func get_random_name():
+func get_random_name(keep_surname = false):
 	var text = statlist.race.to_lower() + statlist.sex.replace("futa",'female')
 	if !Namedata.namelist.has(text):
 		text = 'human'+ statlist.sex.replace("futa",'female')
 	statlist.name = Namedata.namelist[text][randi() % Namedata.namelist[text].size()]
+	if keep_surname and statlist.surname != '': 
+		return
 	if Namedata.namelist.has(statlist.race.to_lower() + 'surname'):
 		statlist.surname = Namedata.namelist[statlist.race.to_lower() + "surname"][randi() % Namedata.namelist[statlist.race.to_lower() + "surname"].size()]
 	elif statlist.race.find("Halfkin") >= 0 || statlist.race.find("Beastkin") >= 0:
@@ -984,9 +986,9 @@ func get_traits_buffs():
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
 	statlist.name = 'Child of ' + mother.get_stat('name')
-	if mother.get_stat('surname') != '':
-		statlist.name += " " + mother.get_stat('surname')
-	statlist.surname = ''
+	statlist.surname = mother.get_stat('surname')
+	if statlist.surname != '':
+		statlist.name += " " + statlist.surname
 	statlist.anal_virgin = true
 	statlist.mouth_virgin = true
 	statlist.penis_virgin = true

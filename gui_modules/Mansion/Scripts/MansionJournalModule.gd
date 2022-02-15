@@ -298,7 +298,16 @@ func select_character_for_quest(reqs):
 	selected_req = reqs
 	input_handler.ShowSlaveSelectPanel(self, 'character_selected', reqs.statreqs)
 
+var tchar = null
 func character_selected(character):
+	tchar = character
+	if character.get_stat('unique') != null:
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'character_selected_coonfirm', "Sell unique slave?"])
+	else:
+		character_selected_coonfirm()
+
+func character_selected_coonfirm():
+	var character = tchar
 	ResourceScripts.game_party.add_fate(character.id, tr("SOLD")) #or not sold
 	ResourceScripts.game_party.remove_slave(character, true)
 	selected_req.completed = true
