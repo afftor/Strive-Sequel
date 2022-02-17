@@ -125,26 +125,29 @@ func make_guild(code, area):
 		area = area.code,
 		actions = data.actions,
 		bonus_actions = data.bonus_actions,
-		chartype = data.character_types,
-		charbonus = data.character_bonuses,
-		preferences = data.preference,
+#		chartype = data.character_types,
+#		charbonus = data.character_bonuses,
+#		preferences = data.preference,
 		description = data.description,
 		questpool = {easy = data.quests_easy, medium = data.quests_medium, hard = data.quests_hard},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
+		hireable_characters = [],
 		events = [],
 		reputation = 0,
 		totalreputation = 0,
 		difficulty = 1,
-		races = [],
+#		races = [],
 		upgrades = {},
-		slavelevel = 0,
+#		slavelevel = 0,
 	}
-	if !data.tags.has("unique_slave_races"):
-		guilddatatemplate.races = area.races.duplicate(true)
-	if data.has('slave_races'):
-		for i in data.slave_races:
-			guilddatatemplate.races.append(i)
+	for tdata in data.hireable_characters:
+		var typedata = tdata.duplicate(true)
+		if !tdata.tags.has("unique_slave_races"):
+			typedata.slave_races = area.races.duplicate(true)
+		for i in tdata.slave_races:
+			typedata.slave_races.push_back(i)
+		guilddatatemplate.hireable_characters.push_back(typedata)
 	if data.has("events"):
 		guilddatatemplate.events = data.events.duplicate(true)
 	if data.has("reputation_shop"):
@@ -161,16 +164,17 @@ func make_guild(code, area):
 			data.questnumber -= 1
 	if data.has('background'): guilddatatemplate.background = data.background
 	guilddatatemplate.slavenumber = data.slavenumber
-	while data.slavenumber > 0:
-		make_slave_for_guild(guilddatatemplate)
-		data.slavenumber -= 1
+	rebuild_guild_slaves(guilddatatemplate)
+#	while data.slavenumber > 0:
+#		make_slave_for_guild(guilddatatemplate)
+#		data.slavenumber -= 1
 
 	ResourceScripts.game_world.factions[guilddatatemplate.code] = {code = guilddatatemplate.code, name = guilddatatemplate.name, area = guilddatatemplate.area}
 
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
 
-func make_slave_for_guild(guild):
+func make_slave_for_guild_old(guild):#obsolete
 	var newslave = ResourceScripts.scriptdict.class_slave.new("guild_slave")
 	var race = input_handler.weightedrandom(guild.races)
 #    if globals.globalsettings.guilds_any_race:
@@ -191,6 +195,48 @@ func make_slave_for_guild(guild):
 	newslave.set_stat('is_hirable', true)
 	newslave.set_stat('hire_scene', 'hire')
 	newslave.is_known_to_player = true
+
+
+func make_slave_for_guild(slavetype):
+	var newslave = ResourceScripts.scriptdict.class_slave.new("guild_slave")
+	var race = input_handler.weightedrandom(slavetype.slave_races)
+	var slaveclass = null
+	if slavetype.preference.size() > 0:
+		slaveclass = input_handler.random_from_array(slavetype.preference)
+	newslave.generate_random_character_from_data(race, slaveclass, slavetype.slavelevel + round(randf()-0.3))
+	var char_class = input_handler.weightedrandom(slavetype.character_types)
+	newslave.set_slave_category(char_class)
+	var bonus_resolved = {}
+	for i in slavetype.character_bonuses:
+#        newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
+		if typeof(slavetype.character_bonuses[i]) == TYPE_ARRAY: bonus_resolved[i] = round(rand_range(slavetype.character_bonuses[i][0], slavetype.character_bonuses[i][1]))
+		else: bonus_resolved[i] = slavetype.character_bonuses[i]
+	newslave.add_stat_bonuses(bonus_resolved)
+	newslave.set_stat('is_hirable', true)
+	newslave.set_stat('hire_scene', 'hire')
+	newslave.is_known_to_player = true
+	return newslave
+
+
+func rebuild_guild_slaves(guilddata):
+	var num = guilddata.slavenumber
+	for type in guilddata.hireable_characters:
+		for i in range(type.slavenumber[0]):
+			if num <= 0: return
+			num -= 1
+			guilddata.slaves.push_back(make_slave_for_guild(type).id)
+	
+	var rand_types_array = []
+	for t in range(guilddata.hireable_characters.size()):
+		var type = guilddata.hireable_characters[t]
+		for i in range(type.slavenumber[0], type.slavenumber[1]):
+			rand_types_array.push_back(t)
+	
+	while num > 0 and !rand_types_array.empty():
+		var rtype = input_handler.random_from_array(rand_types_array)
+		num -= 1
+		rand_types_array.erase(rtype)
+		guilddata.slaves.push_back(make_slave_for_guild(guilddata.hireable_characters[rtype]).id)
 
 
 

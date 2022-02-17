@@ -94,18 +94,19 @@ func get_next_class_exp():
 	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
 	var exparray
 	var value = 0
-	if currentclassnumber < growth_factor * variables.class_cap_per_growth + variables.class_cap_basic:
+	var easy_cap = growth_factor * variables.class_cap_per_growth + variables.class_cap_basic
+	if currentclassnumber < easy_cap:
 		exparray = variables.soft_level_reqs
-		if exparray.size()-1 < abs(growth_factor * variables.class_cap_per_growth + variables.class_cap_basic):
+		if exparray.size()-1 < currentclassnumber:
 			value = exparray[exparray.size()-1]
 		else:
 			value = exparray[currentclassnumber]
 	else:
 		exparray = variables.hard_level_reqs
-		if exparray.size()-1 < abs(growth_factor * variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber):
+		if exparray.size()-1 < currentclassnumber - easy_cap:
 			value = exparray[exparray.size()-1]
 		else:
-			value = exparray[abs(growth_factor * variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber)]
+			value = exparray[currentclassnumber - easy_cap]
 	return value
 
 func get_class_list(category, person):

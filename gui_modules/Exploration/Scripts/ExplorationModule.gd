@@ -1506,9 +1506,16 @@ func unlock_upgrade(upgrade, level):
 	active_faction.reputation -= upgrade.cost[level]
 	var effect = upgrade.effects
 	for i in effect:
-		var value = get_indexed('active_faction:' + i.code)
-		value = input_handler.math(i.operant, value, i.value)
-		set_indexed('active_faction:' + i.code, value)
+		if i.code == 'slavelevel':
+			for typedata in active_faction.hireable_characters:
+				typedata.slavelevel = input_handler.math(i.operant, typedata.slavelevel, i.value)
+		else:
+			var value = get_indexed('active_faction:' + i.code)
+			value = input_handler.math(i.operant, value, i.value)
+			set_indexed('active_faction:' + i.code, value)
+			if i.code == 'slavenumber':
+				for typedata in active_faction.hireable_characters:
+					typedata.slavenumber[1] = input_handler.math(i.operant, typedata.slavenumber[1], i.value)
 	update_guild_actions(active_faction)
 	faction_upgrade(true, current_pressed_area_btn, active_faction)
 

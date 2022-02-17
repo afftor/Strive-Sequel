@@ -219,6 +219,13 @@ var statdata = {
 		type = 'mental_stat',
 
 	},
+	exp_gain_mod = {
+		code = 'exp_gain_mod',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+	},
 	lusttick = {
 		code = 'lusttick',
 		name = '',

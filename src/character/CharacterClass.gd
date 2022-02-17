@@ -96,6 +96,7 @@ func set_stat(stat, value):
 		food.set(stat, value)
 		return
 	statlist.set_stat(stat, value)
+	recheck_effect_tag('recheck_stats')
 
 
 func get_obed_percent_value():
@@ -104,27 +105,40 @@ func get_obed_percent_value():
 
 func add_stat_bonuses(ls:Dictionary):
 	statlist.add_stat_bonuses(ls)
+	recheck_effect_tag('recheck_stats')
 
 func remove_stat_bonuses(ls:Dictionary):
 	statlist.remove_stat_bonuses(ls)
+	recheck_effect_tag('recheck_stats')
 
 func add_bonus(b_rec:String, value, revert = false):
 	statlist.add_bonus(b_rec, value, revert)
+	recheck_effect_tag('recheck_stats')
 
 func add_stat(statname, value, revert = false):
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
 	elif statname == 'base_exp':
-		xp_module.base_exp += value
+		if value > 0:
+			xp_module.base_exp += value * get_stat('exp_gain_mod')
+		else: 
+			xp_module.base_exp += value 
 	elif statname == 'abil_exp':
-		xp_module.abil_exp += value
+		if value > 0:
+			xp_module.abil_exp += value * get_stat('exp_gain_mod')
+		else:
+			xp_module.abil_exp += value
+			
 	else: statlist.add_stat(statname, value, revert)
+	recheck_effect_tag('recheck_stats')
 
 func mul_stat(statname, value, revert = false):
 	statlist.mul_stat(statname, value, revert)
+	recheck_effect_tag('recheck_stats')
 
 func add_part_stat(statname, value, revert = false):
 	statlist.add_part_stat(statname, value, revert)
+	recheck_effect_tag('recheck_stats')
 
 func get_weapon_range():
 	return equipment.get_weapon_range()

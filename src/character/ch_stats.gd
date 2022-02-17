@@ -309,7 +309,7 @@ func add_bonus(b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
-	parent.recheck_effect_tag('recheck_stats')
+#	parent.recheck_effect_tag('recheck_stats')
 
 
 func get_stat_gain_rate(statname):
