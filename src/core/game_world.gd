@@ -24,6 +24,7 @@ func serialize():
 
 
 func fix_serialization():
+	update_guilds_data()
 	for area in areas.values():
 		for guild in area.factions.values():
 			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
@@ -48,6 +49,23 @@ func fix_import(data):
 			var fulldata = data.areas[guilddata.area].factions[guilddata.code]
 			if fulldata.has('reputation') : guild.reputation = fulldata.reputation
 			if fulldata.has('totalreputation') : guild.reputation = fulldata.totalreputation
+
+
+func update_guilds_data():
+	for area in areas.values():
+		if !area.has('factions') or area.factions.empty(): continue
+		for guild in area.factions.values():
+			if guild.has('hireable_characters'): continue
+			guild.hireable_characters = []
+			var tempcat = {code = 'type1'}
+			tempcat.tags = guild.tags.duplicate()
+			tempcat.slavenumber = [guild.slavenumber, guild.slavenumber]
+			tempcat.character_types = guild.character_types.duplicate()
+			tempcat.character_bonuses = guild.charbonus.duplicate()
+			tempcat.slave_races = guild.races.duplicate()
+			tempcat.preference = guild.preferences.duplicate()
+			tempcat.slavelevel = guild.slavelevel
+			guild.hireable_characters.push_back(tempcat)
 
 
 func make_world():
@@ -108,7 +126,7 @@ func update_guilds_old(area):
 				characters_pool.get_char_by_id(k).is_active = false
 				i.slaves.erase(k)
 		while i.slaves.size() < i.slavenumber:
-			ResourceScripts.world_gen.make_slave_for_guild(i)
+			ResourceScripts.world_gen.make_slave_for_guild_old(i)
 	for faction in area.quests.factions:
 		for quest in area.quests.factions[faction].values():
 			if quest.state == 'taken':
@@ -141,9 +159,10 @@ func update_guilds(area):
 			for k in i.slaves:
 				characters_pool.get_char_by_id(k).is_active = false
 			i.slaves.clear()
-			while i.slaves.size() < i.slavenumber:
-				ResourceScripts.world_gen.make_slave_for_guild(i)
-
+			ResourceScripts.world_gen.rebuild_guild_slaves(i)
+#			while i.slaves.size() < i.slavenumber:
+#				ResourceScripts.world_gen.make_slave_for_guild(i)
+	
 	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 0:
 		for faction in area.quests.factions:
 			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)

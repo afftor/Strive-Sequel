@@ -234,6 +234,34 @@ func get_all_buffs():
 #			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 #				res[b.template_name].push_back(b)
 	var tmp = []
+	
+	var tbuff = Buff.new(null)
+	var f = false
+	tbuff.createfromtemplate('b_stat6')
+	if parent.get_stat('physics_factor') >= 6:
+		tbuff.description += tr('MAXPHYSICSBONUSDESC')
+		f = true
+	if parent.get_stat('wits_factor') >= 6:
+		tbuff.description += tr('MAXWITSSBONUSDESC')
+		f = true
+	if parent.get_stat('charm_factor') >= 6:
+		tbuff.description += tr('MAXCHARMSBONUSDESC')
+		f = true
+	if parent.get_stat('sexuals_factor') >= 6:
+		tbuff.description += tr('MAXSEXBONUSDESC')
+		f = true
+	if parent.get_stat('timid_factor') >= 6:
+		tbuff.description += tr('MAXTIMIDBONUSDESC')
+		f = true
+	if parent.get_stat('tame_factor') >= 6:
+		tbuff.description += tr('MAXTAMEBONUSDESC')
+		f = true
+	if parent.get_stat('magic_factor') >= 6:
+		tbuff.description += tr('MAXMAGICBONUSDESC')
+		f = true
+	if f:
+		tmp.push_back(tbuff)
+	
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
 	return tmp

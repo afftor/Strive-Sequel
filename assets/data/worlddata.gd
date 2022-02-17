@@ -2479,6 +2479,25 @@ var random_dungeon_events = {
 
 
 func _ready():
+	update_guilds_data()
 	for loc in dungeons.values():
 		if !loc.has('purchase_area'):
 			loc.purchase_area = 'plains'
+
+
+func update_guilds_data():
+	for guild in factiondata.values():
+		if guild.has('hireable_characters'): continue
+		guild.hireable_characters = []
+		var tempcat = {code = 'type1'}
+		tempcat.tags = guild.tags.duplicate()
+		tempcat.slavenumber = guild.slavenumber.duplicate()
+		tempcat.character_types = guild.character_types.duplicate()
+		tempcat.character_bonuses = guild.character_bonuses.duplicate()
+		if guild.has('slave_races'):
+			tempcat.slave_races = guild.slave_races.duplicate()
+		else:
+			tempcat.slave_races = []
+		tempcat.preference = guild.preference.duplicate()
+		tempcat.slavelevel = 0
+		guild.hireable_characters.push_back(tempcat)
