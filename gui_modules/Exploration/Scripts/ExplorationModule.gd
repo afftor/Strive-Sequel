@@ -159,7 +159,8 @@ func open_city(city):
 	var guilds = []
 	var area_actions = []
 	for i in input_handler.active_area.factions.values():
-		if i.code in ["slavemarket", "exotic_slave_trader", "aliron_church"]:
+		if !globals.checkreqs(i.conditions): continue
+		if i.code in ["slavemarket", "exotic_slave_trader","beastkin_slave_trader", "aliron_church"]:
 			area_actions.append(i)
 		else:
 			guilds.append(i)
@@ -212,7 +213,7 @@ func build_area_menu(area_actions):
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
-			action.code == 'exotic_slave_trader'
+			(action.code == 'exotic_slave_trader' or action.code == 'beastkin_slave_trader')
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
 			&& int(ResourceScripts.game_globals.date) % 14 != 0
 			&& ResourceScripts.game_globals.hour >= 1

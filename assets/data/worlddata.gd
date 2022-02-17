@@ -176,7 +176,7 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
-		guilds = [],
+		guilds = ['beastkin_slave_trader'],
 		events = [
 			{code = 'chieftain_meeting_1', text = "Find Chieftain", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], args = {"oneshot": false}},
 			{code = 'mae_meeting_1', text = "Visit Shaman's Lodge", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
@@ -392,6 +392,25 @@ var factiondata = {
 		code = 'exotic_slave_trader',
 		name = 'Exotic Slave Trader',
 		description = '',
+		actions = ['hire'],
+		preference = [],
+		character_types = [['slave',1]],
+		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+
+		slave_races = [['rare',3],['monster',1]],
+		tags = ['unique_slave_races'],
+		quests_easy = [],
+		quests_medium = [],
+		quests_hard = [],
+		slavenumber = [4,5],
+		questnumber = [],
+		bonus_actions = [],
+	},
+	beastkin_slave_trader = {
+		code = 'beastkin_slave_trader',
+		name = 'Beastkin Slave Trader',
+		description = '',
+		conditions = [{type = 'quest_completed', name = 'test', check = false}],
 		actions = ['hire'],
 		preference = [],
 		character_types = [['slave',1]],
@@ -2487,6 +2506,8 @@ func _ready():
 
 func update_guilds_data():
 	for guild in factiondata.values():
+		if !guild.has('conditions'):
+			guild.conditions = []
 		if guild.has('hireable_characters'): continue
 		guild.hireable_characters = []
 		var tempcat = {code = 'type1'}
