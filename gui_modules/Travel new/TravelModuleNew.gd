@@ -184,18 +184,20 @@ func build_locations_list():
 			if adata.questlocations.has(id):
 				if adata.questlocations[id].has("quest"):
 					temp.quest = adata.questlocations[id].quest
-		if lands_count.has(temp.area): lands_count[temp.area] += 1
-		else:  lands_count[temp.area] = 1
-		if locs_count.has(temp.type): locs_count[temp.type] += 1
-		else:  locs_count[temp.type] = 1
-		if cdata[id].has('captured'): temp.captured = cdata[id].captured
-		if cdata[id].has('locked'): temp.locked = cdata[id].locked
 		if cdata[id].has('background'):
 			temp.icon = cdata[id].background
 		elif temp.type == 'capital' and adata.has('capital_background'):
 			temp.icon = adata.capital_background
 		else:
 			temp.icon = null
+		if cdata[id].has('captured'): temp.captured = cdata[id].captured
+		if cdata[id].has('locked'): temp.locked = cdata[id].locked
+		if temp.area == 'beastkin_tribe':
+			temp.area = 'forests'
+		if lands_count.has(temp.area): lands_count[temp.area] += 1
+		else:  lands_count[temp.area] = 1
+		if locs_count.has(temp.type): locs_count[temp.type] += 1
+		else:  locs_count[temp.type] = 1
 		temp_locations[id] = temp
 	var temp = {id = 'travel', heroes = 0}
 
@@ -227,6 +229,7 @@ func sort_locations(first, second):
 						return locs_order.find(first.type) < locs_order.find(second.type)
 			else:
 				return lands_order.find(first.area) < lands_order.find(second.area)
+		return false
 	return true
 
 

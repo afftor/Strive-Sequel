@@ -55,6 +55,8 @@ func update_guilds_data():
 	for area in areas.values():
 		if !area.has('factions') or area.factions.empty(): continue
 		for guild in area.factions.values():
+			if !guild.has('conditions'):
+				guild.conditions = []
 			if guild.has('hireable_characters'): continue
 			guild.hireable_characters = []
 			var tempcat = {code = 'type1'}
