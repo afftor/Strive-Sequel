@@ -736,20 +736,14 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS1"),
 				taskprogress = 15,
-				cost = {wood = 50, leather = 25},
+				cost = {wood = 50, leather = 25, woodiron = 50, leatherthick = 50},
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS2"),
-				taskprogress = 30,
-				cost = {woodiron = 50, leatherthick = 50},
-			},
-			3:{
-				unlockreqs = [],
-				bonusdescript = tr("UPGRADESTABLESBONUS3"),
 				taskprogress = 50,
 				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
-			}
+			},
 		}
 	},
 

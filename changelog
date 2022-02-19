@@ -1,3 +1,4 @@
+
 Fixed bug causing events not to trigger when advancing multiple time periods at once
 Fixed some sidequests not working correctly
 Fixed certain skill errors
