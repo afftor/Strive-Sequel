@@ -200,6 +200,7 @@ func sort_factions(first, second):
 func build_area_menu(area_actions):
 	input_handler.ClearContainer(AreaActions)
 	var newbutton
+	var has_exotic_slaver = false
 	for option in input_handler.active_area.capital_options:
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = city_options[option]
@@ -219,8 +220,12 @@ func build_area_menu(area_actions):
 			&& ResourceScripts.game_globals.hour >= 1
 			&& ResourceScripts.game_globals.hour <= 3
 		):
+			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
+			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 		elif action.code == 'exotic_slave_trader':
 			continue
 		# elif action.code == 'aliron_church':
@@ -233,6 +238,8 @@ func build_area_menu(area_actions):
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Shop"
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
+	if has_exotic_slaver:
+		newbutton.get_parent().move_child(newbutton, newbutton.get_position_in_parent()-1)
 
 	for i in input_handler.active_area.events:
 		if globals.checkreqs(i.reqs) == false:
@@ -247,9 +254,9 @@ func build_area_menu(area_actions):
 			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
 			newbutton.connect("pressed", self, "open_city", [selected_location])
 		# newbutton.modulate = Color(0.5, 0.8, 0.5)
-		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
-		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
+		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 		newbutton.toggle_mode = false
 
 		# newbutton.get_node("Label").rect_position.x = 0

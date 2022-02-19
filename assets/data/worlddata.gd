@@ -425,6 +425,34 @@ var factiondata = {
 		questnumber = [],
 		bonus_actions = [],
 	},
+	
+	exotic_slave_trader_new = {
+		code = 'exotic_slave_trader',
+		name = 'Exotic Slave Trader',
+		description = '',
+		actions = ['hire'],
+		hireable_characters = [
+			{code = 'type1',
+			character_types = [['slave',1]],
+			character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+			slave_races = [['rare',3]],
+			tags = ['unique_slave_races'],
+			slavenumber = [3,4],
+			},
+			{code = 'type2',
+			character_types = [['slave',1]],
+			character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+			slave_races = [['monster',3]],
+			tags = ['unique_slave_races'],
+			slavenumber = [1,1],
+			},
+		],
+		questnumber = [],
+		bonus_actions = [],
+	},
+	
+	
+	
 	aliron_church = {
 		code = 'aliron_church',
 		name = 'Aliron Church',

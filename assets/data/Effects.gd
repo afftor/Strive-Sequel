@@ -2261,8 +2261,8 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Praise.png",
-				description = "magic defence decreased",
+				icon = "res://assets/images/iconsskills/light_spell_aoe.png",
+				description = "Magic defence decreased",
 				limit = 1,
 				t_name = 'holydebuff'
 			}
