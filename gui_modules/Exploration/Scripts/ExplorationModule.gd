@@ -1595,6 +1595,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 			$SlaveMarket/SlaveList/ScrollContainer/VBoxContainer
 		)
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
+		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
 		newbutton.get_node('icon').texture = tchar.get_icon()
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])

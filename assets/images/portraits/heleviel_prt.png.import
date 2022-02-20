@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LyraCG002.png-ff128821a6e7d72fd48bb0857d0ec81b.stex"
+path="res://.import/heleviel_prt.png-ba831075e81694233b9572c0d77d71e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/LyraCG002.png"
-dest_files=[ "res://.import/LyraCG002.png-ff128821a6e7d72fd48bb0857d0ec81b.stex" ]
+source_file="res://assets/images/portraits/heleviel_prt.png"
+dest_files=[ "res://.import/heleviel_prt.png-ba831075e81694233b9572c0d77d71e1.stex" ]
 
 [params]
 

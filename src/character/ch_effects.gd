@@ -237,7 +237,7 @@ func get_all_buffs():
 	
 	var tbuff = Buff.new(null)
 	var f = false
-	tbuff.createfromtemplate('b_stat6')
+	tbuff.createfromtemplate('b_factor_maxed')
 	var tdesc = ""
 	for i in ['physics_factor','wits_factor','charm_factor','sexuals_factor','timid_factor','tame_factor','magic_factor']:
 		if parent.get_stat(i) >= 6:

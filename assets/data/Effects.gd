@@ -3813,11 +3813,11 @@ var buffs = {
 		limit = 1,
 		t_name = 'resto'
 	},
-	b_stat6= {
-		icon = "res://assets/images/traits/hitrate.png",
+	b_factor_maxed = {
+		icon = "res://assets/images/iconsskills/Authority.png",
 		description = "",
 		limit = 1,
-		t_name = 'b_stat6',
+		t_name = 'b_factor_maxed',
 		mansion_only = true
 	},
 };

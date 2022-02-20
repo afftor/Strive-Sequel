@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LyraCG003.png-909a459674aee68e3d04917583e7d491.stex"
+path="res://.import/LiraCG001.png-13c70730ea670bc58fd72944f6b77ad0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/LyraCG003.png"
-dest_files=[ "res://.import/LyraCG003.png-909a459674aee68e3d04917583e7d491.stex" ]
+source_file="res://assets/images/fullscreen scenes/LiraCG001.png"
+dest_files=[ "res://.import/LiraCG001.png-13c70730ea670bc58fd72944f6b77ad0.stex" ]
 
 [params]
 
