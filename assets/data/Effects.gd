@@ -7,6 +7,88 @@ var effects = {
 #any other - for additional customisation
 
 var effect_table = {
+	#maxstat
+	e_phy6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_add_p', stat = 'hp_reg_mod', value = 1}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_wit6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 0.2}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_charm6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_S_CAST],
+				req_skill = true,
+				conditions = [{type = 'skill', value = ['tags', 'has', 'positive']}],
+				atomic = [],
+				buffs = [],
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'skill',
+						atomic = [{type = 'stat_mul', stat = 'value', value = 1.2, stats = ['authority', 'loyalty', 'loyaltyObedience', 'submissionObedience']}],
+						buffs = [],
+						sub_effects = []
+					}
+				]
+			},
+		],
+	},
+	e_sex6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_add', stat = 'speed', value = 10}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_timid6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'timid_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_add', stat = 'resist_all', value = 15}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_mag6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_add_p', stat = 'matk', value = 0.1}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tame6 = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}],
+		buffs = [],
+		sub_effects = [],
+	},
 	#traits
 	e_tr_hide = {
 		type = 'trigger',
@@ -2179,8 +2261,8 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Praise.png",
-				description = "magic defence decreased",
+				icon = "res://assets/images/iconsskills/light_spell_aoe.png",
+				description = "Magic defence decreased",
 				limit = 1,
 				t_name = 'holydebuff'
 			}
@@ -3730,6 +3812,13 @@ var buffs = {
 		description = "Incoming damage reduced",
 		limit = 1,
 		t_name = 'resto'
+	},
+	b_factor_maxed = {
+		icon = "res://assets/images/iconsskills/Authority.png",
+		description = "",
+		limit = 1,
+		t_name = 'b_factor_maxed',
+		mansion_only = true
 	},
 };
 

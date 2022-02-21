@@ -2,10 +2,14 @@ extends Node
 
 #warning-ignore-all:unused_class_variable
 var race_groups = {
+	commons = ['Human','Elf','Orc','HalfkinCat','BeastkinCat'],
+	elves = ['Elf','TribalElf','DarkElf'],
 	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
 	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
 	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
 	rare = ['TribalElf','DarkElf','Dryad','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
+	midget = ['Goblin','Gnome','Dwarf','Kobold','Fairy'],
+	top = ['Demon','Seraph','Dragonkin'],
 }
 
 

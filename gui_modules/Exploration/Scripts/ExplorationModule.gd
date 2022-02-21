@@ -159,7 +159,8 @@ func open_city(city):
 	var guilds = []
 	var area_actions = []
 	for i in input_handler.active_area.factions.values():
-		if i.code in ["slavemarket", "exotic_slave_trader", "aliron_church"]:
+		if !globals.checkreqs(i.conditions): continue
+		if i.code in ["slavemarket", "exotic_slave_trader","beastkin_slave_trader", "aliron_church"]:
 			area_actions.append(i)
 		else:
 			guilds.append(i)
@@ -199,6 +200,7 @@ func sort_factions(first, second):
 func build_area_menu(area_actions):
 	input_handler.ClearContainer(AreaActions)
 	var newbutton
+	var has_exotic_slaver = false
 	for option in input_handler.active_area.capital_options:
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = city_options[option]
@@ -212,14 +214,18 @@ func build_area_menu(area_actions):
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
-			action.code == 'exotic_slave_trader'
+			(action.code == 'exotic_slave_trader' or action.code == 'beastkin_slave_trader')
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
 			&& int(ResourceScripts.game_globals.date) % 14 != 0
 			&& ResourceScripts.game_globals.hour >= 1
 			&& ResourceScripts.game_globals.hour <= 3
 		):
+			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
+			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 		elif action.code == 'exotic_slave_trader':
 			continue
 		# elif action.code == 'aliron_church':
@@ -232,6 +238,8 @@ func build_area_menu(area_actions):
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Shop"
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
+	if has_exotic_slaver:
+		newbutton.get_parent().move_child(newbutton, newbutton.get_position_in_parent()-1)
 
 	for i in input_handler.active_area.events:
 		if globals.checkreqs(i.reqs) == false:
@@ -246,9 +254,9 @@ func build_area_menu(area_actions):
 			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
 			newbutton.connect("pressed", self, "open_city", [selected_location])
 		# newbutton.modulate = Color(0.5, 0.8, 0.5)
-		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
-		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
+		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
 		newbutton.toggle_mode = false
 
 		# newbutton.get_node("Label").rect_position.x = 0
@@ -1506,9 +1514,16 @@ func unlock_upgrade(upgrade, level):
 	active_faction.reputation -= upgrade.cost[level]
 	var effect = upgrade.effects
 	for i in effect:
-		var value = get_indexed('active_faction:' + i.code)
-		value = input_handler.math(i.operant, value, i.value)
-		set_indexed('active_faction:' + i.code, value)
+		if i.code == 'slavelevel':
+			for typedata in active_faction.hireable_characters:
+				typedata.slavelevel = input_handler.math(i.operant, typedata.slavelevel, i.value)
+		else:
+			var value = get_indexed('active_faction:' + i.code)
+			value = input_handler.math(i.operant, value, i.value)
+			set_indexed('active_faction:' + i.code, value)
+			if i.code == 'slavenumber':
+				for typedata in active_faction.hireable_characters:
+					typedata.slavenumber[1] = input_handler.math(i.operant, typedata.slavenumber[1], i.value)
 	update_guild_actions(active_faction)
 	faction_upgrade(true, current_pressed_area_btn, active_faction)
 
@@ -1580,6 +1595,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 			$SlaveMarket/SlaveList/ScrollContainer/VBoxContainer
 		)
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
+		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
 		newbutton.get_node('icon').texture = tchar.get_icon()
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])

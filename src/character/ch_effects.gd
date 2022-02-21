@@ -234,9 +234,27 @@ func get_all_buffs():
 #			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 #				res[b.template_name].push_back(b)
 	var tmp = []
+	
+	var tbuff = Buff.new(null)
+	var f = false
+	tbuff.createfromtemplate('b_factor_maxed')
+	var tdesc = ""
+	for i in ['physics_factor','wits_factor','charm_factor','sexuals_factor','timid_factor','tame_factor','magic_factor']:
+		if parent.get_stat(i) >= 6:
+			if f:
+				tdesc += "\n"
+			f = true
+			tdesc +=  tr(i.to_upper() + "BONUSDESCRIPT")
+	
+	if f:
+		tbuff.description = tdesc
+		tmp.push_back(tbuff)
+	
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
 	return tmp
+
+
 
 func can_act():
 	for e in static_effects + temp_effects + triggered_effects:
