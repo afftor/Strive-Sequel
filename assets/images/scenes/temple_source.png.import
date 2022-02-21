@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white stag_body.png-841acdf7a10c3638c9a1d8e1414cdaa1.stex"
+path="res://.import/temple_source.png-3fb6f347085a6e37b15b107d84bc0609.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/white stag_body.png"
-dest_files=[ "res://.import/white stag_body.png-841acdf7a10c3638c9a1d8e1414cdaa1.stex" ]
+source_file="res://assets/images/scenes/temple_source.png"
+dest_files=[ "res://.import/temple_source.png-3fb6f347085a6e37b15b107d84bc0609.stex" ]
 
 [params]
 

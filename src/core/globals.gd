@@ -1344,8 +1344,28 @@ func common_effects(effects):
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
 					if a.code.matchn(i.location): # SETTLEMENT_PLAINS1
 						location = a
+				# trying to find capital
+				if location == null:
+					var area = null
+					var data = i
+					if data.has('area'):
+						if ResourceScripts.game_world.areas.has(data.area): area = ResourceScripts.game_world.areas[data.area]
+						else:
+							print("error - no area %s" % data.area)
+							return null
+						if area.has('capital'):
+							location = ResourceScripts.game_world.get_area_capital(area)
+							area = area.code
+					location = {location = location, area = area}
+					input_handler.exploration_node.open_location(location)
+					return
+				
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
 				input_handler.exploration_node.open_location(location)
+			'open_city': 
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				input_handler.exploration_node.open_city(i.city)
 			'create_character':
 				#temporal solution
 				var preset = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
@@ -1469,8 +1489,20 @@ func common_effects(effects):
 				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
 					if a.code == i.to_loc.location.to_upper() || a.code == i.to_loc.location: # SETTLEMENT_PLAINS1
 						location = a
-				#location.area = area
-
+				# trying to find capital
+				if location == null:
+					var area = null
+					var data = i.to_loc
+					if data.has('area'):
+						if ResourceScripts.game_world.areas.has(data.area): area = ResourceScripts.game_world.areas[data.area]
+						else:
+							print("error - no area %s" % data.area)
+							return null
+						if area.has('capital'):
+							location = ResourceScripts.game_world.get_area_capital(area)
+							area = area.code
+					location = {location = location, area = area}
+				
 				for pos in input_handler.active_location.group:
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
@@ -1677,6 +1709,8 @@ func valuecheck(dict):
 				if i.check_location(dict.location):
 					if i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
 						counter += 1
+			if dict.has("check"):
+				return dict.check == (counter >= dict.value)
 			return counter >= dict.value
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)

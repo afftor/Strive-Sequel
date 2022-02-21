@@ -872,8 +872,8 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('xari_encounter6', '', {})
-		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
+		input_handler.interactive_message('temple_8', '', {})
+		ResourceScripts.game_progress.completed_quests.append("princess_search")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

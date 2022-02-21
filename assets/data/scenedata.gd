@@ -1815,7 +1815,6 @@ var quests = {
 		},
 	},
 	
-	
 	pre_sword_artifact_quest = {
 		code = 'pre_sword_artifact_quest',
 		summary = "PRE_SWORD_ARTIFACT_QUEST_SUMMARY",
@@ -1834,7 +1833,7 @@ var quests = {
 			stage5 = {code = 'stage5', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_5"}, # bring supplys to Savra
 			stage6 = {code = 'stage6', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_6"}, # wait a day and go to Savra
 			stage7 = {code = 'stage7', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_7"}, # go to a new location
-			stage7_1 = {code = 'stage7_1', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_7_1"}, # go to a new location
+			stage77 = {code = 'stage77', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_77"}, # go to a new location
 			stage8 = {code = 'stage8', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_8"}, # visit leon
 			stage9 = {code = 'stage9', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_9"}, # ask around
 			stage10 = {code = 'stage10', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_10"}, # look for leon at a new location
@@ -1842,6 +1841,23 @@ var quests = {
 			stage12 = {code = 'stage12', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_12"}, # bring materials to savra
 			stage13 = {code = 'stage13', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_13"}, # bring someone magical to savra
 			stage14 = {code = 'stage14', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_14"}, # go find leon
+			stage15 = {code = 'stage15', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_15"}, # go to white stag location
+		},
+	},
+	
+	temple_quest = {
+		code = 'temple_quest',
+		summary = "TEMPLE_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_1"}, # visit erlen
+			stage2 = {code = 'stage2', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_2"}, # go to temple
+			stage3 = {code = 'stage3', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_3"}, # finish temple
+			stage4 = {code = 'stage4', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_4"}, # return to priestess
+			stage5 = {code = 'stage5', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_5"}, # find Erlen
+			stage6 = {code = 'stage6', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_6"}, # talk to Lira
+			stage7 = {code = 'stage7', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_7"}, # get elf to Lira
+			stage8 = {code = 'stage8', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_8"}, # get whiskey to Lira
+			stage9 = {code = 'stage9', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_9"}, # meet erlen on his location
 		},
 	},
 }
