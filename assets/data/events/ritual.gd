@@ -378,7 +378,7 @@ var data = {
 		reqs = [], character = "leon",
 		text = [{text = 'LEON_FIGHT_3', reqs = []}], 
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'demon_priestess_1', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage11'},
 			{code = 'remove_active_location'},]
 		}, ]
@@ -411,6 +411,15 @@ var data = {
 			text = [{text = 'SAVRA_TALK', reqs = []}], 
 			options = [ {
 				code = 'savra_talk_5', text = "SAVRA_TALK_OPTION_3", select_person = true, reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
+			}, {
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			} ]
+		}, { # ask about white stag
+			image = null, tags = ['dialogue_scene', 'master_translate'],
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], character = "savra",
+			text = [{text = 'SAVRA_TALK', reqs = []}], 
+			options = [ {
+				code = 'savra_talk_white_stag', text = "SAVRA_STAG_QUESTION", reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
 			}, {
 				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			} ]
@@ -486,8 +495,9 @@ var data = {
 			code = 'savra_talk_6_2', text = "SAVRA_TALK_6_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},]
-		} ] # TODO create new location
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+		} ] 
 	},
 	
 	savra_talk_6_1 = {
@@ -500,8 +510,9 @@ var data = {
 			code = 'savra_talk_6_1', text = "SAVRA_TALK_6_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},]
-		} ] # TODO create new location
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+		} ]
 	},
 	
 	savra_talk_6_2 = {
@@ -514,8 +525,18 @@ var data = {
 			code = 'savra_talk_6_2', text = "SAVRA_TALK_6_OPTION_1", reqs = [], dialogue_argument = 1, remove_after_first_use = true
 		}, {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},]
-		} ] # TODO create new location
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+		} ]
+	},
+	
+	savra_talk_white_stag = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "savra",
+		text = [{text = 'SAVRA_STAG_ANSWER', reqs = []}], 
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
 	},
 	
 }

@@ -183,6 +183,10 @@ var scenes = {
 	aire_wound = load('res://assets/images/scenes/aire_wound.png'),
 	tracking = load('res://assets/images/scenes/tracking.png'),
 	gryphon = load('res://assets/images/scenes/gryphon.png'),
+	temple_gates = load('res://assets/images/scenes/temple_gates.png'),
+	temple_source = load('res://assets/images/scenes/temple_source.png'),
+	deer = load('res://assets/images/scenes/deer.png'),
+	leon = load('res://assets/images/scenes/leon.png'),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
@@ -230,6 +234,11 @@ var sprites = {
 	hara_body = load("res://assets/images/sprites/hara.png"),
 	cali = load("res://assets/images/sprites/cali.png"),
 	cali_body = load("res://assets/images/sprites/cali_body.png"),
+	white_stag = load("res://assets/images/sprites/white_stag.png"),
+	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
+	erlen = load("res://assets/images/sprites/erlen.png"),
+	lira = load("res://assets/images/sprites/lira.png"),
+	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	
 	}
 

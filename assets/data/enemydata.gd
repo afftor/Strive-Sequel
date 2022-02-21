@@ -35,8 +35,15 @@ var encounters = {
 	gryphon = {unittype = 'randomgroup', unitcode = 'gryphon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	slavers = {unittype = 'randomgroup', unitcode = 'slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'pre_ritual_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	crazy_leon = {unittype = 'randomgroup', unitcode = 'crazy_leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_fight_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	leon = {unittype = 'randomgroup', unitcode = 'leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_encounter_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	elder_gryphon_boss = {unittype = 'randomgroup', unitcode = 'elder_gryphon_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	cali_slavers = {unittype = 'randomgroup', unitcode = 'cali_slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'got_cali_1_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	elf_priestess = {unittype = 'randomgroup', unitcode = 'elf_priestess', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'white_stag_encounter_fight_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	white_stag = {unittype = 'randomgroup', unitcode = 'white_stag', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'white_stag_encounter_13', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	temple_raiders = {unittype = 'randomgroup', unitcode = 'temple_raiders', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	temple_specters = {unittype = 'randomgroup', unitcode = 'temple_specters', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_8', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	bridge_guards = {unittype = 'randomgroup', unitcode = 'bridge_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'erlen_leon_4', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
@@ -109,9 +116,16 @@ var enemygroups = {
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	gryphon = {reqs = [], units = {gryphon = [1,1]}},
 	elder_gryphon_boss = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
-	slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
-	crazy_leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
-	cali_slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
+	slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # TODO change
+	crazy_leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	cali_slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	elf_priestess = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	white_stag = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	temple_raiders = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	temple_specters = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	bridge_guards = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 

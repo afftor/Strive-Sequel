@@ -389,7 +389,6 @@ var data = {
 		}, ],
 	},
 
-	#TODO change location (mansion) to elf_capital
 	looking_for_princess_elven_11 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_37", reqs = [], previous_dialogue_option = 1},

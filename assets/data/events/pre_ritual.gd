@@ -619,7 +619,7 @@ var data = {
 		text = [{text = "PRE_RITUAL_10", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7_1'},
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage77'},
 			{code = 'remove_active_location'},
 			{code = 'add_timed_event', value = "canStartRitual",
 		args = [{type = 'action_to_date', date = [1,1], hour = 3, action = "decision"}]}]

@@ -289,6 +289,15 @@ func select_person_for_next_event(code):
 		reqs = [
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}
 		]
+	elif code.find('temple_start') != -1:
+		reqs = [
+			{code = 'stat', stat = 'phys_factor', operant = 'gte', value = 5}
+		]
+	elif code.find('lira_encounter_4') != -1:
+		reqs = [ 
+			{code = 'stat', stat = 'race', operant = 'eq', value = "tribal elf"},
+			{code = 'is_master', check = false}
+		]
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
