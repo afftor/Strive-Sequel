@@ -135,6 +135,7 @@ margin_left = 20.0
 margin_top = 365.0
 margin_right = 233.0
 margin_bottom = 533.0
+theme = ExtResource( 5 )
 custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true

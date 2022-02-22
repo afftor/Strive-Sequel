@@ -171,7 +171,7 @@ var globalsettings = {
 
 	autosave = true,
 	autosave_number = 3,
-	autosave_frequency = 24,
+	autosave_frequency = 4,
 
 } setget settings_save
 

@@ -431,6 +431,8 @@ func QuickSave():
 	SaveGame('QuickSave')
 
 func autosave(overwrite = false):
+	if input_handler.globalsettings.autosave_number <= 0:
+		return
 	if !overwrite:
 		var savedir = Directory.new()
 		var path = variables.userfolder + 'saves'
@@ -440,12 +442,12 @@ func autosave(overwrite = false):
 			print('ERROR opening savedir')
 			return
 		#delete existing last save
-		if savedir.file_exists('autosave_%d.sav' % variables.autosave_number_max):
-			savedir.remove('autosave_%d.sav' % variables.autosave_number_max)
-		if savedir.file_exists('autosave_%d.dat' % variables.autosave_number_max):
-			savedir.remove('autosave_%d.dat' % variables.autosave_number_max)
+		if savedir.file_exists('autosave_%d.sav' % input_handler.globalsettings.autosave_number):
+			savedir.remove('autosave_%d.sav' % input_handler.globalsettings.autosave_number)
+		if savedir.file_exists('autosave_%d.dat' % input_handler.globalsettings.autosave_number):
+			savedir.remove('autosave_%d.dat' % input_handler.globalsettings.autosave_number)
 		#move all other saves 1 point up
-		for i in range(variables.autosave_number_max -1, 0, -1):
+		for i in range(input_handler.globalsettings.autosave_number -1, 0, -1):
 			if savedir.file_exists('autosave_%d.sav' % i):
 				savedir.rename('autosave_%d.sav' % i, 'autosave_%d.sav' % (i + 1))
 			if savedir.file_exists('autosave_%d.dat' % i):

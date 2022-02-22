@@ -78,7 +78,8 @@ func advance_day():
 	if int(date) % variables.DaysPerWeek == 0:
 		reset_limits()
 	
-	globals.autosave()
+	if int(date) % input_handler.globalsettings.autosave_frequency == 0:
+		globals.autosave()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()
