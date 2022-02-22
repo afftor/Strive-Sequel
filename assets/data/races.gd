@@ -645,7 +645,7 @@ var racelist = {
 			charm_factor = [3,5],
 			wits_factor = [2,5],
 		},
-		race_bonus = {hpfactor = 0.75, evasion = 20, damage_mod_melee = -0.1, mod_collect = -0.1},
+		race_bonus = {hpfactor = 0.75, evasion = 20, damage_mod_melee = -0.1, mod_collect = -0.1, wits_bonus = 10},
 		personality = {kind = 1, bold = 0.5, shy = 1, serious = 0.2},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 25, fish = 10, grain = 15},
