@@ -12,6 +12,12 @@ func _ready():
 	$TabContainer/Graphics/factors.pressed = input_handler.globalsettings.factors_as_words
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
+	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.max_value = variables.autosave_number_max
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.min_value = variables.autosave_frequency_min
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
+	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
 
 	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 
@@ -69,6 +75,8 @@ func open():
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
+	autosave_amount_change(input_handler.globalsettings.autosave_number)
+	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = input_handler.globalsettings[i.name+'vol']
@@ -125,11 +133,28 @@ func futa_rate_change(value):
 	var text = 'Futa generation chance: ' + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
 
+
+func autosave_amount_change(value):
+	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.value = value
+	input_handler.globalsettings.autosave_number = int(value)
+	var text = 'Autosaves amount: ' + str(value)
+	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/Label.text = text
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.visible = (int(value) != 0)
+
+
+func autosave_frequency_change(value):
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.value = value
+	input_handler.globalsettings.autosave_frequency = int(value)
+	var text = 'Days per autosave: ' + str(value)
+	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/Label.text = text
+
+
 func gameplay_rule(rule):
 	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
 	if rule == "turn_based_time_flow":
 		if gui_controller.clock != null:
 			gui_controller.clock.set_time_buttons()
+
 
 func toggle_factors():
 	input_handler.globalsettings.factors_as_words = $TabContainer/Graphics/factors.pressed
