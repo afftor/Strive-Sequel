@@ -4,7 +4,7 @@ var data = {
 		reqs = [], 
 		text = [{text = 'LEON_ENCOUNTER_START', reqs = []}], 
 		options = [ {
-			code = 'quest_fight', args = 'leon',
+			code = 'quest_fight', args = 'leon_2',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	}, 
@@ -116,7 +116,7 @@ var data = {
 	#fight
 	white_stag_encounter_fight = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [ {text = 'WHITE_STAG_ENCOUNTER_7_1AND2', reqs = [], previous_dialogue_option = 1},
 		{text = 'WHITE_STAG_ENCOUNTER_8_1AND2AND4', reqs = [], previous_dialogue_option = 2},
 		{text = 'WHITE_STAG_ENCOUNTER_6_3', reqs = [], previous_dialogue_option = 3},
@@ -652,7 +652,7 @@ var data = {
 		options = [ {
 			code = 'lira_encounter_5_1_1', text = "LIRA_ENCOUNTER_4_OPTION_1", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage8', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'whiskey'},], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage8', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {
 			code = 'close', text = "LIRA_ENCOUNTER_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 		}, ]
@@ -693,7 +693,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'temple_quest', stage = 'stage9'},
-			{code = 'remove_item', name = 'whiskey', number = 10}, {code = 'update_city'}]
+			{code = 'remove_item', name = 'alcohol', number = 10}, {code = 'update_city'}]
 		}, ]
 	},
 	

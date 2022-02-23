@@ -6331,7 +6331,7 @@ Aire: — Me too, but that's what our protector wants, so I think it's not too b
 Anastasia had no answer for that and Aire led her to the bed.""",
 
 
-GRYPHON_ANA_SEX_2 = """Aire: — So, let's do our best to please our [master] and find some joy in the act - not just as friends but also as women. 
+GRYPHON_ANA_SEX_2 = """Aire: — So, let's do our best to please our [master] and find some joy in the act  — not just as friends but also as women. 
 
 The princess nodded as they both lowered to their knees before you. Aire stripped away the last bits of her underwear and Anastasia followed her closely. 
 
@@ -6394,7 +6394,7 @@ Your hand runs over the smooth curve of Anastasia's round ass, before slipping d
 
 Your fingers move lower, probing Aire's tight slit and finding it hot to the touch as it opens easily under the pressure of your fingertips. Aire moans with desire. You move around and mount the bed behind Anastasia
 
-Aire: — Ana, I- I'm glad I can serve you and the [Master] in this way.
+Aire: — Ana, I — I'm glad I can serve you and the [Master] in this way.
 
 Anastasia: — Stop saying silly things like this...
 
@@ -6892,29 +6892,29 @@ Savra passes you a small parchment with the ingredients.
 	LEON_ENCOUNTER_1 = """Before Leon manages to escape once again, you pull out the totem and it shines your hand. A bright flash blinds you as it disappears and Leon falls on the ground. You decide to carry him back to the tribe without further delay.""",
 	LEON_ENCOUNTER_2 = """A few hours pass after you deliver the unconscious Leon to Savra. Finally he emerges,looking more lively than you'd expect.
 
-- I wish I could properly thank you for my rescue, [name], but I'm afraid, as we speak, the White Stag threatens the very wellbeing of the tribe, meaning we can't waste any time. Until this is dealt with I can't give you a final answer to the question you came here with. """,
+ — I wish I could properly thank you for my rescue, [name], but I'm afraid, as we speak, the White Stag threatens the very wellbeing of the tribe, meaning we can't waste any time. Until this is dealt with I can't give you a final answer to the question you came here with. """,
 	LEON_ENCOUNTER_2_OPTION_1 = "So what are you planning to do now?",
 	LEON_ENCOUNTER_2_OPTION_2 = "Is there anything I can help with?",
-	LEON_ENCOUNTER_3 = """- We are going to hunt the stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.""",
+	LEON_ENCOUNTER_3 = """ — We are going to hunt the stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.""",
 	LEON_ENCOUNTER_3_OPTION_1 = "What are you planning?",
 	LEON_ENCOUNTER_3_OPTION_2 = "I'll let you a hand",
 	LEON_ENCOUNTER_3_OPTION_3 = "This sounds like it could be fun",
-	LEON_ENCOUNTER_4_1 = """- We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the stag. It’s not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
-	LEON_ENCOUNTER_4_2 = """- It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
+	LEON_ENCOUNTER_4_1 = """ — We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
+	LEON_ENCOUNTER_4_2 = """ — It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
 
-- Meet us in the wilds, where we begin the hunt.""",
+ — Meet us in the wilds, where we begin the hunt.""",
 	SAVRA_STAG_QUESTION = """Ask about the White Stag""",
 	SAVRA_STAG_ANSWER = """""", # TODO add text
 	WHITE_STAG_ENCOUNTER_1 = """You come to the previously established location and find a fairly large group of beastkin, ready for the hunt. Standing off to the side you spot Leon and call out to him.
 
-- You've come at a good time, we are ready to follow its trail. Look here.
+ — You've come at a good time, we are ready to follow its trail. Look here.
 
 Leon points at a small trampled bush. On a closer look you notice a faint glow coming from it. 
 
-- Must have been about an hour at most.""",
+ — Must have been about an hour at most.""",
 	WHITE_STAG_ENCOUNTER_1_OPTION_1 = "You seem to know your trade",
 	WHITE_STAG_ENCOUNTER_1_OPTION_2 = "Let's not waste any time then",
-	WHITE_STAG_ENCOUNTER_2_1 = """- Three years ago I faced the beast before. That's my duty as a chieftain, and so I must carry it out. We should move now.""",
+	WHITE_STAG_ENCOUNTER_2_1 = """ — Three years ago I faced the beast before. That's my duty as a chieftain, and so I must carry it out. We should move now.""",
 	WHITE_STAG_ENCOUNTER_2_2 = """Leon nods and you move out. """,
 	WHITE_STAG_ENCOUNTER_3 = """After about a half hour of scouting you find the clearing enveloped in a thick gray mist, unusual for the current time of a day. Beastkin hunters slowly encircle it. You enter the mist and carefully move forward in eerie silence as all other sound seems to fade away from the surrounding forest.
 
@@ -6923,38 +6923,38 @@ Before you realize that Leon is yelling at you to be careful, you see the beast 
 	WHITE_STAG_ENCOUNTER_3_OPTION_2 = "Call for help",
 	WHITE_STAG_ENCOUNTER_4 = """Feeling lost in the beast's aura, you are unable to do anything. You realize you don't know where you are, and a figure materializes before you.
 
-- So you are the one, They call [name].""",
+ — So you are the one, They call [name].""",
 	WHITE_STAG_ENCOUNTER_4_OPTION_1 = "*Stay Silent*",
 	WHITE_STAG_ENCOUNTER_4_OPTION_2 = "What's going on here..?",
-	WHITE_STAG_ENCOUNTER_5 = """- A mortal stranger like you dares to stick their nose into this realm. How despicable. Have you no fear for your life? What have you come here for?""",
+	WHITE_STAG_ENCOUNTER_5 = """ — A mortal stranger like you dares to stick their nose into this realm. How despicable. Have you no fear for your life? What have you come here for?""",
 	WHITE_STAG_ENCOUNTER_5_OPTION_1 = "I'm only here to get to the elven high priestess",
 	WHITE_STAG_ENCOUNTER_5_OPTION_2 = "I came to help these lands",
 	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "That's none of your business, demon",
-	WHITE_STAG_ENCOUNTER_6_1 = """- Preposterous. How has Freya not smitten your foul body yet?
+	WHITE_STAG_ENCOUNTER_6_1 = """ — Preposterous. How has Freya not smitten your foul body yet?
 
 Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
-	WHITE_STAG_ENCOUNTER_6_2 = """- Help? There's nothing to help here.
+	WHITE_STAG_ENCOUNTER_6_2 = """ — Help? There's nothing to help here.
 
 Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
-	WHITE_STAG_ENCOUNTER_6_3 = "- You dare to call me a Demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
+	WHITE_STAG_ENCOUNTER_6_3 = " — You dare to call me a Demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "I won't let you kill me",
 	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "It's you who will die here",
 	WHITE_STAG_ENCOUNTER_6_OPTION_3 = "Maybe we shouldn't be in so much of a hurry",
 	WHITE_STAG_ENCOUNTER_7_1AND2 = """You prepare yourself as best you can for the upcoming challenge. It seems the White Stag is going to keep you in this realm until one of you dies. With no help from Leon or others, this will be a tough fight.""",
-	WHITE_STAG_ENCOUNTER_7_3 = """- What are you trying to tell us? Are you shivering in fear?""",
+	WHITE_STAG_ENCOUNTER_7_3 = """ — What are you trying to tell us? Are you shivering in fear?""",
 	WHITE_STAG_ENCOUNTER_7_OPTION_1 = "I have an important mission to finish",
 	WHITE_STAG_ENCOUNTER_7_OPTION_2 = "We could settle this in a more civil way",
 	WHITE_STAG_ENCOUNTER_7_OPTION_3 = "I just can't stop adoring your majesty right now",
 	WHITE_STAG_ENCOUNTER_7_OPTION_4 = "I could just leave in peace",
-	WHITE_STAG_ENCOUNTER_8_1AND2AND4 = """- Enough of your childish games. Now you will pay for your insolence!""",
+	WHITE_STAG_ENCOUNTER_8_1AND2AND4 = """ — Enough of your childish games. Now you will pay for your insolence!""",
 	WHITE_STAG_ENCOUNTER_8_3 = """The deer woman takes an unusually long pause. You can't read her emotions until she finally replies back.
 
-- Your admiration is understandable, but your empty words are not going to earn my pardon.""",
+ — Your admiration is understandable, but your empty words are not going to earn my pardon.""",
 	WHITE_STAG_ENCOUNTER_8_3_OPTION_1 = "Maybe I could prove my sincerity",
 	WHITE_STAG_ENCOUNTER_8_3_OPTION_2 = "I would kill to have a woman like you",
 	WHITE_STAG_ENCOUNTER_8_3_OPTION_3 = "Maybe we could strike some mutual agreement?",
-	WHITE_STAG_ENCOUNTER_9_2AND3 = """- Hmph. You have had your chance and wasted it. Let us finish this now.""",
-	WHITE_STAG_ENCOUNTER_9_1 = """- Really, now. What could a mortal possibly do that would interest me?""",
+	WHITE_STAG_ENCOUNTER_9_2AND3 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
+	WHITE_STAG_ENCOUNTER_9_1 = """ — Really, now. What could a mortal possibly do that would interest me?""",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_1 = "I can smith your image into a beautiful piece of jewelry",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_2 = "I want to dedicate a song to you",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_3 = "I will slay any foe or beast you request",
@@ -6962,52 +6962,52 @@ Your mere presence defiles these grounds and all traces of it must be annihilate
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_5 = "I'm... not sure how I could do that",
 	WHITE_STAG_ENCOUNTER_10_4 = """You notice that Zephyra is willing to lend you a hand in this situation.
 
-Zephyra: - Ah, yes, I can make a fine painting which will reflect on your godlike nature.""",
-	WHITE_STAG_ENCOUNTER_10_1AND2AND3AND4 = """- Hmmh. Very well, mortal, I feel the sincerity in your words. This time you get to keep your soul. That said, there is still one more score left to settle, while I'm here. We will meet again.""",
-	WHITE_STAG_ENCOUNTER_10_5_1 = """- Hmph. You have had your chance and wasted it. Let us finish this now.""",
-	WHITE_STAG_ENCOUNTER_10_5_2 = """- Kh... You are not so bad for mortals. Fine, this time you will be permitted to live, as we are running out of time. 
+Zephyra: — Ah, yes, I can make a fine painting which will reflect on your godlike nature.""",
+	WHITE_STAG_ENCOUNTER_10_1AND2AND3AND4 = """ — Hmmh. Very well, mortal, I feel the sincerity in your words. This time you get to keep your soul. That said, there is still one more score left to settle, while I'm here. We will meet again.""",
+	WHITE_STAG_ENCOUNTER_10_5_1 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
+	WHITE_STAG_ENCOUNTER_10_5_2 = """ — Kh... You are not so bad for mortals. Fine, this time you will be permitted to live, as we are running out of time. 
 
 Before you are able to answer, the woman's figure is enveloped in a bright light, blinding you.""",
 	WHITE_STAG_ENCOUNTER_11 = """As the mist disperses, you find yourself returned to the familiar woods. You see the White Stag back in its animal form as the battle with the tribe begins.""",
-	WHITE_STAG_ENCOUNTER_12 = "- Now, don't let it get away! You too, [name], prepare for a fierce fight.",
+	WHITE_STAG_ENCOUNTER_12 = " — Now, don't let it get away! You too, [name], prepare for a fierce fight.",
 	WHITE_STAG_ENCOUNTER_13 = """With your combined efforts you've dealt enough damage to the White Stag. With a deafening scream its form slowly vanishes in the air. Seeing this, Leon and his party roar in triumph. Once again the tribe has triumphed over the threat...""",
 	WHITE_STAG_ENCOUNTER_14 = """You return to the tribe's settlement and after getting some rest met with Leon once again.
 
-Leon: - A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though. 
+Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though. 
 
-Savra: - Drop by sometime in future, your visit will be welcome.""",
+Savra: — Drop by sometime in future, your visit will be welcome.""",
 	PRIESTESS_TALK_START = """You go to Erlen's quarters but find it locked. As you make it through the hallway, one attendant comes to you and asks you to follow her to meet the high priestess at her quarters. As there's no better option apparent, you follow her obediently.""",
 	PRIESTESS_TALK_1 = """As you enter the room, you notice that the High Priestess seems to be more friendly than usual, though only barely. 
 
-- [name], correct? It’s a good thing you've dropped by. I have heard you went to the beastkin tribe for some reason. Not that we forbid such activity, but it makes me curious to know what would lead you to go there.""",
+ — [name], correct? It's a good thing you've dropped by. I have heard you went to the beastkin tribe for some reason. Not that we forbid such activity, but it makes me curious to know what would lead you to go there.""",
 	PRIESTESS_TALK_1_OPTION_1 = "I'm only an adventurer, I was curious about such a place",
 	PRIESTESS_TALK_1_OPTION_2 = "Erlen asked me to deliver something",
 	PRIESTESS_TALK_1_OPTION_3 = "I can't really disclose it",
-	PRIESTESS_TALK_2_1 = """- Oh, is that so? I had not considered that any cultured person would be interested in those savages. 
+	PRIESTESS_TALK_2_1 = """ — Oh, is that so? I had not considered that any cultured person would be interested in those savages. 
 
-- You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
+ — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
-- But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army leader, but as you can see, he's not currently around.""",
-	PRIESTESS_TALK_2_2 = """- That's so? Well, that's not of my concern then. 
+ — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army leader, but as you can see, he's not currently around.""",
+	PRIESTESS_TALK_2_2 = """ — That's so? Well, that's not of my concern then. 
 
-- You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
+ — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
-- But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army’s leader, but as you can see, he's not currently around.""",
+ — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
 	PRIESTESS_TALK_2_3 = """The High Priestess frowns, but quickly changes her expression as it is of no real interest to her.
 
-- You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
+ — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
-- But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army’s leader, but as you can see, he's not currently around.""",
+ — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
 	PRIESTESS_TALK_2_OPTION_1 = "Why are you asking me now?",
 	PRIESTESS_TALK_2_OPTION_2 = "What is this ceremony you need the holy water for?",
-	PRIESTESS_TALK_2_OPTION_3 = "What’s in it for me?",
-	PRIESTESS_TALK_3_1 = """- As I said, you have proven yourself very adventurous, have you not? Only a very few select elves are allowed to go there. As a stranger to these lands, such a restriction would not apply to you.""",
-	PRIESTESS_TALK_3_2 = """- As an outsider, this is nothing you should really care about. It's a regular ritual which we have to perform in Freya's name.
+	PRIESTESS_TALK_2_OPTION_3 = "What's in it for me?",
+	PRIESTESS_TALK_3_1 = """ — As I said, you have proven yourself very adventurous, have you not? Only a very few select elves are allowed to go there. As a stranger to these lands, such a restriction would not apply to you.""",
+	PRIESTESS_TALK_3_2 = """ — As an outsider, this is nothing you should really care about. It's a regular ritual which we have to perform in Freya's name.
 
-- Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had. """,
-	PRIESTESS_TALK_3_3 = """- Ah, silly me, I had almost forgotten. I have been thinking about what you said before. There might be a tiny lick of sense in that. I think we can come to an agreement on your access to the Sacred Bowl if you do this for me. This is your goal, is it not? 
+ — Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had. """,
+	PRIESTESS_TALK_3_3 = """ — Ah, silly me, I had almost forgotten. I have been thinking about what you said before. There might be a tiny lick of sense in that. I think we can come to an agreement on your access to the Sacred Bowl if you do this for me. This is your goal, is it not? 
 
-- Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
+ — Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
 	PRIESTESS_TALK_3_OPTION_1 = "This shall be an honor for me",
 	PRIESTESS_TALK_3_OPTION_2 = "Fine, if you keep your end of bargain",
 	TEMPLE_START = """You come to the place you were told about by Heleviel and after searching around you manage to find a ruined entrance to the supposed temple. However, it is blocked by a large stone slate. It seems you will need someone exceptionally powerful to move it...""",
@@ -7017,213 +7017,213 @@ Savra: - Drop by sometime in future, your visit will be welcome.""",
 	TEMPLE_1_1_1 = """[name] uses [his] strength and pushes the slate out of the way, allowing you to move into the temple.""",
 	TEMPLE_1_1_2 = """You apply your muscles to the slate and it slowly moves away, allowing you pass through.""",
 	TEMPLE_1_2 = """You throw an unstable catalyst at the slate and it melts the stone away to the point you are able to pass through. It might prevent the stone from keeping out other intruders in future, but it's too late to think about that now.""",
-	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It’s a group of raiders who seem interested in your discovery. Their leader addresses you.
+	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It's a group of raiders who seem interested in your discovery. Their leader addresses you.
 
-- Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?""",
-	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It’s a group of raiders who seem interested in your discovery. Their leader addresses you.
+ — Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?""",
+	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It's a group of raiders who seem interested in your discovery. Their leader addresses you.
 
-- Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?
+ — Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?
 
-Aire: - This isn't right, you can't just let anyone vandalize sacred places like this.""",
+Aire: — This isn't right, you can't just let anyone vandalize sacred places like this.""",
 	TEMPLE_2_OPTION_1 = "Deal",
 	TEMPLE_2_OPTION_2 = "Treasure like this should certainly be worth more than that (Charm Factor Check)",
 	TEMPLE_2_OPTION_3 = "No deal",
-	TEMPLE_3_1_1 = """- W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
-	TEMPLE_3_1_2 = """- No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
-	TEMPLE_3_2 = """- That's too bad. We aren't going to let this chance slip by. Get 'em, boys. 
+	TEMPLE_3_1_1 = """ — W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
+	TEMPLE_3_1_2 = """ — No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
+	TEMPLE_3_2 = """ — That's too bad. We aren't going to let this chance slip by. Get 'em, boys. 
 
 The group  draws their weapons and prepare for a fight.""",
 	TEMPLE_4_1 = """Aire gives you a big frown but can't say anything.
 
 The leader of the raiders smiles pleasantly. 
 
-- Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
+ — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
 
 He passes you the large sum of gold and you part ways, moving forward into the temple.""",
 	TEMPLE_4_2 = """The leader of the raiders smiles pleasantly. 
 
-- Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
+ — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
 
 He passes you the large sum of gold and you part ways, moving forward into the temple.""",
 	TEMPLE_5 = """You defeat the pillagers and make them flee from the scene. Now you can safely advance deeper into temple.""",
 	TEMPLE_6_1 = """Walking through the ancient temple with its walls lying in ruins, you end up before a set of large doors which seem to be what you are looking for. However, as you get closer, a group of specters resembling elven soldiers appear before you and speak some unknown language. It seems to be either another trial or a defense system.""",
 	TEMPLE_6_2 = """Walking through the ancient temple with its walls lying in ruins, you end up before a set of large doors which seem to be what you are looking for. However, as you get closer, a group of specters resembling elven soldiers appear before you and speak some unknown language. It seems to be either another trial or a defense system.
 
-- Hold on, these guardians must be summoned by some energy source...
+ — Hold on, these guardians must be summoned by some energy source...
 
 Aire searches the surroundings for some time until she finally spots a lone crystal on the ceiling. With a well landed shot she breaks the crystal and the elven specters disappear from sight.""",
 	TEMPLE_6_2_OPTION_1 = "Nice work, Aire",
 	TEMPLE_6_2_OPTION_2 = "Next time ask me before doing it",
-	TEMPLE_7_1 = """- It's nothing special, I've come across similar things in the past. Makes me a bit worried that this place is not going to be protected anymore.""",
-	TEMPLE_7_2 = """- ...Sorry. I didn't think this through. We can pass safely now anyway.""",
+	TEMPLE_7_1 = """ — It's nothing special, I've come across similar things in the past. Makes me a bit worried that this place is not going to be protected anymore.""",
+	TEMPLE_7_2 = """ — ...Sorry. I didn't think this through. We can pass safely now anyway.""",
 	TEMPLE_8 = """You enter a small room with an ancient elven altar at the center, which is seemingly intact. The water flows down upon it from above, disappearing under the cracks of the floor. You scoop some of the water up with the bottle provided by the High Priestess and leave the place.""",
-	AFTER_TEMPLE_PRIESTESS_1 = "- Yes? Did you bring what I asked for?",
+	AFTER_TEMPLE_PRIESTESS_1 = " — Yes? Did you bring what I asked for?",
 	AFTER_TEMPLE_PRIESTESS_1_OPTION_1 = "No",
-	AFTER_TEMPLE_PRIESTESS_2 = "- Then you shouldn't test my patience. Return, once you have it..",
+	AFTER_TEMPLE_PRIESTESS_2 = " — Then you shouldn't test my patience. Return, once you have it..",
 	AFTER_TEMPLE_PRIESTESS_3 = """The priestess accepts your request unexpectedly quickly. As you make it into her chambers, she looks nearly blissful as you pass her the filled phial of holy water.
 
-- You have actually done it, [name]. Exceptional work, for an outsider... I guess I am no longer allowed to call you a simple outsider, am I? Speaking of which, my true name is Heleviel, which you are now allowed to use. At last we can finally hold the ceremony... """,
+ — You have actually done it, [name]. Exceptional work, for an outsider... I guess I am no longer allowed to call you a simple outsider, am I? Speaking of which, my true name is Heleviel, which you are now allowed to use. At last we can finally hold the ceremony... """,
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_1 = "What about our agreement?",
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_2 = "I believe you owe me something",
-	AFTER_TEMPLE_PRIESTESS_4 = """- Yes, indeed, I have not forgotten, but the ceremony is currently of a higher priority for us. Once it's done, I swear on Freya's honor to help out with your task. Until then, you should see yourself as my honored guest. """,
+	AFTER_TEMPLE_PRIESTESS_4 = """ — Yes, indeed, I have not forgotten, but the ceremony is currently of a higher priority for us. Once it's done, I swear on Freya's honor to help out with your task. Until then, you should see yourself as my honored guest. """,
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_1 = "Maybe you could thank me in some other way until then",
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_2 = "I guess I have no other choice",
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_3 = "I'll wait until then",
 	AFTER_TEMPLE_PRIESTESS_5_1_1 = """Heleviel gives you a more intimate look as she appraises your appearance, after which her face brightens with a rare faint smile.
 
-- You know, maybe I could. You know, Freya's high priestess is not allowed to be tainted by man's touch, so if you were a male, I'd have to refuse. But with no men here...
+ — You know, maybe I could. You know, Freya's high priestess is not allowed to be tainted by man's touch, so if you were a male, I'd have to refuse. But with no men here...
 
 Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slowly, she removes her elegant dress.""",
-	AFTER_TEMPLE_PRIESTESS_5_1_2 = """- Does it make you happy that you'll get what many men can only dream of? Come, take your reward.""",
+	AFTER_TEMPLE_PRIESTESS_5_1_2 = """ — Does it make you happy that you'll get what many men can only dream of? Come, take your reward.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """- I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
+	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """ — I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
-	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn’t know it was there. Erlen’s face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
+	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
 
-- I see... That's troublesome. 
+ — I see... That's troublesome. 
 
 After taking a long pause and pondering the letter, he finally speaks up. 
 
-- They have stated that in any case of emergency, they'll support the one person who has earned their trust there. Basically, that makes you their representative here. I'm forced to let you know some of the details and I will require your further help. Say, how much do you actually know about our society?""",
+ — They have stated that in any case of emergency, they'll support the one person who has earned their trust there. Basically, that makes you their representative here. I'm forced to let you know some of the details and I will require your further help. Say, how much do you actually know about our society?""",
 	ERLERN_ENCOUNTER_1_OPTION_1 = "Not all that much besides what you've told",
 	ERLERN_ENCOUNTER_1_OPTION_2 = "Don't really know anything",
 	ERLERN_ENCOUNTER_1_OPTION_3 = "I don't really care",
-	ERLERN_ENCOUNTER_2_1AND2 = """- As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
+	ERLERN_ENCOUNTER_2_1AND2 = """ — As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
 
-- While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
+ — While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
 
-- But it seems things are getting more complicated. My purpose is still firm but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""", 
+ — But it seems things are getting more complicated. My purpose is still firm but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""", 
 	ERLERN_ENCOUNTER_2_3 = """Erlen decided to ignore your remark and still explain himself. 
 
-- As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I’m directly subordinate to the High Priestess.
+ — As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
 
-- While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
+ — While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
 
-- But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""",
+ — But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""",
 	ERLERN_ENCOUNTER_2_OPTION_1 = "Yes",
 	ERLERN_ENCOUNTER_2_OPTION_2 = "No",
-	ERLERN_ENCOUNTER_3_1 = """- Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. I want you to bring her to me, as she's a possible candidate for the next High Priestess. 
+	ERLERN_ENCOUNTER_3_1 = """ — Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. I want you to bring her to me, as she's a possible candidate for the next High Priestess. 
 
-- You shouldn't waste any more time, just get her here, no matter what.""",
+ — You shouldn't waste any more time, just get her here, no matter what.""",
 	ERLERN_ENCOUNTER_3_2 = """""", # TODO add text
 	LIRA_ENCOUNTER_1 = """After searching around, you manage to find the priestess Erlen asked you for. You bring her to an isolated place and explain that Erlen wants her to come to him.
 
-- E-Erlen wants me to come? I'm afraid this is going to be difficult. Recently we've been forbidden to leave temple's grounds. I can't risk it, as I already stand out because of my heritage.""",
+ — E-Erlen wants me to come? I'm afraid this is going to be difficult. Recently we've been forbidden to leave temple's grounds. I can't risk it, as I already stand out because of my heritage.""",
 	LIRA_ENCOUNTER_1_OPTION_1 = "Surely there might be some way",
 	LIRA_ENCOUNTER_1_OPTION_2 = "I can't leave without you",
 	LIRA_ENCOUNTER_2 = """Lira pauses for a long moment, thinking through the possibilities, then offers her own proposal.
 
-- I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
+ — I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
 	LIRA_ENCOUNTER_2_OPTION_1 = "Maybe we could think of some other way... (Wits Factor Check)",
 	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then",
-	LIRA_ENCOUNTER_3_1_GOOD = "- Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.",
+	LIRA_ENCOUNTER_3_1_GOOD = " — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.",
 	LIRA_ENCOUNTER_3_1_GOOD_OPTION_1 = "I'll be back once I get one of those",
-	LIRA_ENCOUNTER_3_1_BAD = "- N-no, nothing really comes to mind. I'm sorry, I'm not good at this kind of thing.",
+	LIRA_ENCOUNTER_3_1_BAD = " — N-no, nothing really comes to mind. I'm sorry, I'm not good at this kind of thing.",
 	LIRA_ENCOUNTER_3_1_BAD_OPTION_1 = "I'll be back once I have someone then",
 	LIRA_ENCOUNTER_4 = """You find Lira who seems to be waiting eagerly in anticipation of your progress.""",
 	LIRA_ENCOUNTER_4_OPTION_1 = "I've brought another Tribal Elf to stand in for you",
 	LIRA_ENCOUNTER_4_OPTION_2 = "I've brought the whiskey you've asked for",
 	LIRA_ENCOUNTER_4_OPTION_3 = "*Leave*",
-	LIRA_ENCOUNTER_5_1_1 = "- Alright, we'll have to swap our clothes then. Please, give me a moment or two to change...",
+	LIRA_ENCOUNTER_5_1_1 = " — Alright, we'll have to swap our clothes then. Please, give me a moment or two to change...",
 	LIRA_ENCOUNTER_5_1_2 = "After some time you manage to sneak Lira away from the temple's grounds. She's ready to meet with Erlen.",
-	LIRA_ENCOUNTER_5_2_1 = "- Alright... Give it to me, I'll mix it with some herbs to make it more authentic. ",
+	LIRA_ENCOUNTER_5_2_1 = " — Alright... Give it to me, I'll mix it with some herbs to make it more authentic. ",
 	LIRA_ENCOUNTER_5_2_2 = "After a while Lira gets through the guards by bribing them. She's ready to go and meet with Erlen.",
 	ERLEN_LIRA_1 = "You decide it's not worth returning to Erlen without Lira.",
-	ERLEN_LIRA_2 = """As Lira sees Erlen you notice how the Tribal Elf girl’s expression changes to become even more nervous than before. 
+	ERLEN_LIRA_2 = """As Lira sees Erlen you notice how the Tribal Elf girl's expression changes to become even more nervous than before. 
 
-Lira: - Pleasure to meet you, commander Erlen.
+Lira: — Pleasure to meet you, commander Erlen.
 
-Erlen: - You've made it. You aren't hurt?
+Erlen: — You've made it. You aren't hurt?
 
-Lira: - N-no, nothing like that.""",
+Lira: — N-no, nothing like that.""",
 	ERLEN_LIRA_2_OPTION_1 = "It was somewhat difficult, but we succeeded",
 	ERLEN_LIRA_2_OPTION_2 = "That was too easy, maybe you need tighter security",
 	ERLEN_LIRA_2_OPTION_3 = "What now?",
-	ERLEN_LIRA_3_1 = """Erlen: - Good work, now tell me what's been going on.""",
-	ERLEN_LIRA_3_2 = """Erlen: - If it were my personal corps, I assure you, I wouldn't be so easy on them, but good work anyway.""",
-	ERLEN_LIRA_3_3 = """Erlen: - Firstly, I want to know what's been going on. Lira, can you explain?""",
+	ERLEN_LIRA_3_1 = """Erlen: — Good work, now tell me what's been going on.""",
+	ERLEN_LIRA_3_2 = """Erlen: — If it were my personal corps, I assure you, I wouldn't be so easy on them, but good work anyway.""",
+	ERLEN_LIRA_3_3 = """Erlen: — Firstly, I want to know what's been going on. Lira, can you explain?""",
 	ERLEN_LIRA_4 = """Lira explains how she was put into curfew. The news makes Erlen grow even more tense. 
 
-Erlen: - Shit, so we really are out of time now... The High Priestess must be planning to perform the Becoming Ritual in the next few days or maybe any moment.""",
+Erlen: — Shit, so we really are out of time now... The High Priestess must be planning to perform the Becoming Ritual in the next few days or maybe any moment.""",
 	ERLEN_LIRA_4_OPTION_1 = "Becoming Ritual?",
 	ERLEN_LIRA_4_OPTION_2 = "Why did she send you away?",
 	ERLEN_LIRA_4_OPTION_3 = "Do we actually have any chance of stopping her then?",
-	ERLEN_LIRA_5_1 = """Erlen: - I must explain. The High Priestess is not an eternal ruler, nor is she selected by council. The High Priestess is chosen by Freya every few years. To summon the goddess the ritual is performed, which brings her spirit into the temple to temporarily inhabit a mortal body and deliver her decision.
+	ERLEN_LIRA_5_1 = """Erlen: — I must explain. The High Priestess is not an eternal ruler, nor is she selected by council. The High Priestess is chosen by Freya every few years. To summon the goddess the ritual is performed, which brings her spirit into the temple to temporarily inhabit a mortal body and deliver her decision.
 
-Erlen: - Naturally, she will only select a person who's present in the temple at the time, so only devoted followers are usually allowed. More often than not she selects the current priestess who will keep her rule, but if Freya wills it, a new priestess can be chosen.
+Erlen: — Naturally, she will only select a person who's present in the temple at the time, so only devoted followers are usually allowed. More often than not she selects the current priestess who will keep her rule, but if Freya wills it, a new priestess can be chosen.
 
-Erlen: - This time, however, the High Priestess feels the discontent caused by her rules, among myself and many others. Hence why I was sent away and the lower-ranked acolytes were locked down. This is to ensure her position does not change.""",
-	ERLEN_LIRA_5_2 = """Erlen: - The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however I'm uncertain how her plan might unfold, knowing that I won’t help her.""",
+Erlen: — This time, however, the High Priestess feels the discontent caused by her rules, among myself and many others. Hence why I was sent away and the lower-ranked acolytes were locked down. This is to ensure her position does not change.""",
+	ERLEN_LIRA_5_2 = """Erlen: — The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however I'm uncertain how her plan might unfold, knowing that I won't help her.""",
 	ERLEN_LIRA_5_2_OPTION_1 = "I might have got this water for her...",
 	ERLEN_LIRA_5_2_OPTION_2 = "I can't tell how, but she probably got it some way",
-	ERLEN_LIRA_5_2_1 = """Erlen: - Y-you did? Damn it... I guess we really are out of time in that case. Don't blame yourself too much,I believe she would've found some other way regardless.""",
-	ERLEN_LIRA_5_2_2 = """Erlen: - Yes, it would make sense to make our final preparations then. We really are out of time now.""",
-	ERLEN_LIRA_5_3 = """Erlen: - Not entirely. But I want to ask for your help... No, in fact I need your help. 
+	ERLEN_LIRA_5_2_1 = """Erlen: — Y-you did? Damn it... I guess we really are out of time in that case. Don't blame yourself too much,I believe she would've found some other way regardless.""",
+	ERLEN_LIRA_5_2_2 = """Erlen: — Yes, it would make sense to make our final preparations then. We really are out of time now.""",
+	ERLEN_LIRA_5_3 = """Erlen: — Not entirely. But I want to ask for your help... No, in fact I need your help. 
 
 You and Lira both give Erlen a puzzled look.
 
-Erlen: - I guess I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...""",
+Erlen: — I guess I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...""",
 	ERLEN_LIRA_5_3_OPTION_1 = "What was it?",
 	ERLEN_LIRA_5_3_OPTION_2 = "They refused?",
 	ERLEN_LIRA_5_3_OPTION_3 = "Must have requested my participation somehow",
-	ERLEN_LIRA_6_1 = """Erlen: - Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
-	ERLEN_LIRA_6_2 = """Erlen: - No, not directly at least. Leon expressed that if they were gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.""",
-	ERLEN_LIRA_6_3 = """Erlen: - Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
+	ERLEN_LIRA_6_1 = """Erlen: — Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
+	ERLEN_LIRA_6_2 = """Erlen: — No, not directly at least. Leon expressed that if they were gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.""",
+	ERLEN_LIRA_6_3 = """Erlen: — Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
 	ERLEN_LIRA_6_OPTION_1 = "So, this is why you need my help",
 	ERLEN_LIRA_6_OPTION_2 = "I'm not sure I'm suitable for such responsibility",
-	ERLEN_LIRA_7_1 = """Erlen: - Precisely. I hope you will help us after all of this. 
+	ERLEN_LIRA_7_1 = """Erlen: — Precisely. I hope you will help us after all of this. 
 
-Erlen: - I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
-	ERLEN_LIRA_7_2 = """Erlen: - I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable.
+Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
+	ERLEN_LIRA_7_2 = """Erlen: — I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable.
 
-Erlen: - I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
+Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
 	ERLEN_LIRA_7_OPTION_1 = "I didn't quite grasp the goal, what are you fighting for?",
 	ERLEN_LIRA_7_OPTION_2 = "Very well, so what's the plan?",
 	ERLEN_LIRA_8_1_1 = """Erlen takes a long pause to collect his thoughts before finally speaking up.
 
-Erlen: - I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us. 
+Erlen: — I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us. 
 
-Erlen: - Heleviel is very much in favor of continuing this policy but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.""",
-	ERLEN_LIRA_8_1_2 = """Lira: - I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...
+Erlen: — Heleviel is very much in favor of continuing this policy but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.""",
+	ERLEN_LIRA_8_1_2 = """Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...
 
-Erlen: - Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you. """,
-	ERLEN_LIRA_8_2 = """Erlen: - Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.""",
+Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you. """,
+	ERLEN_LIRA_8_2 = """Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.""",
 	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal",
 	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk",
-	ERLEN_LIRA_9_1 = """Erlen: - If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else. """,
-	ERLEN_LIRA_9_2 = """Erlen: - I... Can promise you more, but these promises will be empty if we won't actually succeed. I suggest we leave this talk until later.""",
-	ERLEN_LEON_1 = """Erlen’s group has met up with Leon and you. 
+	ERLEN_LIRA_9_1 = """Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else. """,
+	ERLEN_LIRA_9_2 = """Erlen: — I... Can promise you more, but these promises will be empty if we won't actually succeed. I suggest we leave this talk until later.""",
+	ERLEN_LEON_1 = """Erlen's group has met up with Leon and you. 
 
-Erlen: - I'm grateful that you've come.
+Erlen: — I'm grateful that you've come.
 
-Leon: - Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow his orders, not yours. 
+Leon: — Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow his orders, not yours. 
 
 Erlen decided to ignore Leon's remark and proceeded.
 
-Erlen: - My informant has reported that they're holding the ritual today. We must move swiftly, the temple will be sealed for half an hour before the start. From that point, nobody can leave or cancel the ritual.""",
+Erlen: — My informant has reported that they're holding the ritual today. We must move swiftly, the temple will be sealed for half an hour before the start. From that point, nobody can leave or cancel the ritual.""",
 	ERLEN_LEON_1_OPTION_1 = """What are we gonna do?""",
-	ERLEN_LEON_1_OPTION_2 = """We’d better not waste time chatting then""",
-	ERLEN_LEON_2 = """Erlen: - We'll have to break through. Most soldiers should be positioned away from the capital at this moment, but those which are left will all be drafted to protect the ritual.
+	ERLEN_LEON_1_OPTION_2 = """We'd better not waste time chatting then""",
+	ERLEN_LEON_2 = """Erlen: — We'll have to break through. Most soldiers should be positioned away from the capital at this moment, but those which are left will all be drafted to protect the ritual.
 
-Leon: - Sounds easy. What's the catch?
+Leon: — Sounds easy. What's the catch?
 
-Erlen: - We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.""",
+Erlen: — We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.""",
 	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows the capital like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates. 
 
 However, the bridge is guarded. As your group is spotted the soldiers rush towards you. Erlen goes out in front of them.
 
-Erlen: - At ease. These people are coming with me. 
+Erlen: — At ease. These people are coming with me. 
 
-Guard: - My apologies, commander, but we have been instructed to stop you by the High Priestess.
+Guard: — My apologies, commander, but we have been instructed to stop you by the High Priestess.
 
-Erlen: - Damn it. We'll have to fight.""",
+Erlen: — Damn it. We'll have to fight.""",
 	ERLEN_LEON_4 = """You successfully defeat the patrol and cross the bridge. However, as you get closer to the doors, you spot a larger formation of troops approaching you from behind. 
 
-Leon: - You should go or you'll never make it. We'll hold them back.
+Leon: — You should go or you'll never make it. We'll hold them back.
 
-Erlen: - My men will stay as well. Quick, [name], there's very little time left!""",
-	CEREMONY_1 = """The ceremony has been going on for some time when one of the acolytes rushes to Heleviel to inform her about the ongoing assault. She doesn’t show any emotion and just gives the order to continue with the ritual. It seems she thinks the rear guards should be able to hold Erlen long enough for her to complete her plan. 
+Erlen: — My men will stay as well. Quick, [name], there's very little time left!""",
+	CEREMONY_1 = """The ceremony has been going on for some time when one of the acolytes rushes to Heleviel to inform her about the ongoing assault. She doesn't show any emotion and just gives the order to continue with the ritual. It seems she thinks the rear guards should be able to hold Erlen long enough for her to complete her plan. 
 
 Heleviel has also heard something about beastkin making their move, but decides that it can wait until her status as High Priestess is confirmed.""",
 	CEREMONY_2 = """As your team barges in, you realize that the ritual has been launched. The room is filled with a white light. You've made it here in the last possible moment.""",
@@ -7232,65 +7232,65 @@ Heleviel has also heard something about beastkin making their move, but decides 
 	CEREMONY_3_OPTION_2 = "Lira",
 	CEREMONY_HELEVIEL_1 = """As you spell out your answer, the white fog disperses around you and you find yourself in the middle of the temple. It seems you were the real messenger of Freya and now Heleviel is going to be the High Priestess once more. 
 
-- You've all heard it for yourself. Freya has chosen me once more. Even with the ritual being nearly aborted.
+ — You've all heard it for yourself. Freya has chosen me once more. Even with the ritual being nearly aborted.
 
-- As for you, [name], it seems you must have earned the favor of the Goddess herself in order to become her herald, so we will excuse your presence here.""",
+ — As for you, [name], it seems you must have earned the favor of the Goddess herself in order to become her herald, so we will excuse your presence here.""",
 	CEREMONY_HELEVIEL_2 = """Heleviel turns to face Erlen and Lira who have both been captured by her guards.
 
-- As for these trespassers, Erlen will be executed for betraying the trust that our nation placed in him as a military commander. 
+ — As for these trespassers, Erlen will be executed for betraying the trust that our nation placed in him as a military commander. 
 
 Erlen hangs his head in a defeated posture, not saying anything. Lira tries to protest but the guards quickly silence her.
 
-- This priestess has also proven to be a traitor, despite our best intentions in allowing her to serve Freya as any other. She shall serve an example for others who might think of straying from the path. I guess you should be glad to share the same faith.""",
+ — This priestess has also proven to be a traitor, despite our best intentions in allowing her to serve Freya as any other. She shall serve an example for others who might think of straying from the path. I guess you should be glad to share the same faith.""",
 	CEREMONY_HELEVIEL_2_OPTION_1 = "I think you are being too harsh and they could be pardoned",
 	CEREMONY_HELEVIEL_2_OPTION_2 = "It's your choice",
-	CEREMONY_HELEVIEL_3_1 = """- Nonsense. Erlen is obviously too dangerous for us, he can't even be allowed to live after his attempt to ruin the ritual. I could see the priestess being his tool, but she can't be trusted either after this.""",
+	CEREMONY_HELEVIEL_3_1 = """ — Nonsense. Erlen is obviously too dangerous for us, he can't even be allowed to live after his attempt to ruin the ritual. I could see the priestess being his tool, but she can't be trusted either after this.""",
 	CEREMONY_HELEVIEL_3_1_OPTION_1 = "You could at least exile her then",
 	CEREMONY_HELEVIEL_3_1_OPTION_2 = "Give her to me",
 	CEREMONY_HELEVIEL_3_1_OPTION_3 = "You've convinced me",
 	CEREMONY_HELEVIEL_3_1_1 = """Heleviel takes a short pause, and decides to play along.
 
-- Very well, she'll be exiled from our forests forever. Thank [name] for the gift of your life.""",
+ — Very well, she'll be exiled from our forests forever. Thank [name] for the gift of your life.""",
 	CEREMONY_HELEVIEL_3_1_2 = """Heleviel smirks at your request.
 
-- Very well, you may have her as long as you keep her in your domain. We don't care what she'll be doing if it’s outside of our lands.""",
+ — Very well, you may have her as long as you keep her in your domain. We don't care what she'll be doing if it's outside of our lands.""",
 	CEREMONY_HELEVIEL_3_2 = """As things are settled you go out and explain to Leon that this is over. He accepts your command and retreats along with the beastkin warriors he brought here. As you return to Heleviel, she settles things up and invites you to her chambers.""",
-	CEREMONY_HELEVIEL_4 = """- I must thank you for your participation I suppose. Despite your helping Erlen to try to seize power from me, this has worked out well in the end and I have finally got rid of him. I know, you are waiting for your artifact, and as I promised, you can have it. After all, you are the first outsider I know to become Freya's chosen, so I have no reason to oppose you. Take the Sacred Bowl, I trust that this will serve Freya's interests in the end. 
+	CEREMONY_HELEVIEL_4 = """ — I must thank you for your participation I suppose. Despite your helping Erlen to try to seize power from me, this has worked out well in the end and I have finally got rid of him. I know, you are waiting for your artifact, and as I promised, you can have it. After all, you are the first outsider I know to become Freya's chosen, so I have no reason to oppose you. Take the Sacred Bowl, I trust that this will serve Freya's interests in the end. 
 
-- Oh, and one more thing I must tell you. It seems that the demon woman of yours is indeed plotting something. She appeared as you described. """,
+ — Oh, and one more thing I must tell you. It seems that the demon woman of yours is indeed plotting something. She appeared as you described. """,
 	CEREMONY_HELEVIEL_4_OPTION_1 = "Was a pleasure working with you",
 	CEREMONY_HELEVIEL_4_OPTION_2 = "Until the next time we meet",
 	CEREMONY_LIRA_1 = """As you spell out your answer, the white fog disperses around you and you find yourself in the middle of the temple. It seems you were the real messenger of Freya and now Lira is going to be the High Priestess instead of Heleviel. 
 
-Heleviel: - N-no way. This can't be!
+Heleviel: — N-no way. This can't be!
 
-Erlen: - You heard it. Heleviel, you will be seized for trying to subvert the assignment of Freya's next High Priestess.
+Erlen: — You heard it. Heleviel, you will be seized for trying to subvert the assignment of Freya's next High Priestess.
 
-Heleviel: - No, you traitors! This was all staged, you can't do this to me!""",
+Heleviel: — No, you traitors! This was all staged, you can't do this to me!""",
 	CEREMONY_LIRA_2 = """The guards follow Erlen and Lira's orders and take Heleviel away from the temple. You tell Leon that the battle is over and he retreats with his warriors, after which you meet with Erlen once again.""",
-	CEREMONY_LIRA_3 = """- It's hard to believe this has actually happened, but because of you Lira is the High Priestess now. As promised, I grant you the Sacred Bowl. This is the least I can repay you with.""",
+	CEREMONY_LIRA_3 = """ — It's hard to believe this has actually happened, but because of you Lira is the High Priestess now. As promised, I grant you the Sacred Bowl. This is the least I can repay you with.""",
 	CEREMONY_LIRA_3_OPTION_1 = "What's going to happen to Heleviel",
 	CEREMONY_LIRA_3_OPTION_2 = "Glad it worked out for you",
-	CEREMONY_LIRA_4_1 = """- She will likely be executed or secluded forever. Trying to prevent Freya's will from happening is the gravest possible offense in our society.""",
+	CEREMONY_LIRA_4_1 = """ — She will likely be executed or secluded forever. Trying to prevent Freya's will from happening is the gravest possible offense in our society.""",
 	CEREMONY_LIRA_4_1_OPTION_1 = "Give her to me",
 	CEREMONY_LIRA_4_1_OPTION_2 = "It's up to you then",
 	CEREMONY_LIRA_4_1_1 = """Erlen considers it for a bit and nods.
 
-- Very well, obviously I would not allow anyone else to ask for it, but you've done too much for us here. You can have her, as long as she will spend the rest of her life as a slave. I warn you that she's not going to cooperate, though.""",
+ — Very well, obviously I would not allow anyone else to ask for it, but you've done too much for us here. You can have her, as long as she will spend the rest of her life as a slave. I warn you that she's not going to cooperate, though.""",
 	CEREMONY_LIRA_4_1_1_OPTION = "Thank you",
-	CEREMONY_LIRA_4_2 = """- I wish you luck on your journey. We have a lot of work to do, but we will be glad to receive you some time again soon.""",
+	CEREMONY_LIRA_4_2 = """ — I wish you luck on your journey. We have a lot of work to do, but we will be glad to receive you some time again soon.""",
 	DEMON_PRIESTESS_1 = """The High Priestess of Freya finished her business and went to her private chamber to rest, but this time she found that she was not alone. 
 
-High Priestess: - So, it was true something shady has been going on. 
+High Priestess: — So, it was true something shady has been going on. 
 
-Demoness: - How unpleasant. I'd only like to offer some cooperation.""",
-	DEMON_PRIESTESS_2 = """High Priestess: - Preposterous. Nobody here would cooperate with your kind.
+Demoness: — How unpleasant. I'd only like to offer some cooperation.""",
+	DEMON_PRIESTESS_2 = """High Priestess: — Preposterous. Nobody here would cooperate with your kind.
 
-Demoness: - Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come. 
+Demoness: — Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come. 
 
-High Priestess: - I don't know how you got in here, but it's your last chance to leave before I call the guards.
+High Priestess: — I don't know how you got in here, but it's your last chance to leave before I call the guards.
 
-Demoness: - Hmph, so be it. Don't come crawling to me if you regret this later.""",
+Demoness: — Hmph, so be it. Don't come crawling to me if you regret this later.""",
 	DEMON_PRIESTESS_3 = """As the demoness disappears with a teleportation spell, the High Priestess lets out a sigh and sits on the bed recalling the hardships she faced to secure her position.""",
 	
 	
@@ -7299,182 +7299,182 @@ Demoness: - Hmph, so be it. Don't come crawling to me if you regret this later."
 	
 	JEAN_INTRO = """As you are about to enter, you hear an unfamiliar female voice from the other side of the door that sounds rather agitated. 
 
-Unfamiliar Voice: - Watcha means there's no available job for a single person?!
+Unfamiliar Voice: — Watcha means there's no available job for a single person?!
 
-Myr: - What I said. What happened to your previous team anyway?
+Myr: — What I said. What happened to your previous team anyway?
 
-Unfamiliar Voice: - Who cares, I'm free now!""",
+Unfamiliar Voice: — Who cares, I'm free now!""",
 	JEAN_INTRO_1 = """You decide to enter and observe a young human girl who measures you with a sharp look.
 
-Myr: - Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? 
+Myr: — Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? 
 
 Out of Myr's deadpan voice you can't make out if she's serious or not.""",
-	JEAN_INTRO_2 = """Girl: - You are a new landowner. What makes you think I will be working for you!? 
+	JEAN_INTRO_2 = """Girl: — You are a new landowner. What makes you think I will be working for you!? 
 
-Myr: - You are out of options, Jean, and your dormitory payment is due. 
+Myr: — You are out of options, Jean, and your dormitory payment is due. 
 
-Girl: - Kh...
+Girl: — Kh...
 
-Myr: - As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please relieve me of her presence.""",
+Myr: — As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please relieve me of her presence.""",
 	JEAN_INTRO_2_OPTION_1 = "I guess I have some free space left",
 	JEAN_INTRO_2_OPTION_2 = "No way",
-	JEAN_INTRO_BAD = """Myr: - Goddamnit... Give me some more time then.
+	JEAN_INTRO_BAD = """Myr: — Goddamnit... Give me some more time then.
 
 You leave the room and wait for them to finish.""",
-	JEAN_INTRO_3 = """Jean: - Hey, what the heck makes you think you can decide without me? 
+	JEAN_INTRO_3 = """Jean: — Hey, what the heck makes you think you can decide without me? 
 
-Myr: - Excellent. I'm sure [he]'ll have some suitable work for you. Maybe you'll also find a man and stop being such a pain in the ass. Adios.
+Myr: — Excellent. I'm sure [he]'ll have some suitable work for you. Maybe you'll also find a man and stop being such a pain in the ass. Adios.
 
-Jean: - Wait, I haven't finished!
+Jean: — Wait, I haven't finished!
 
 Before Jean could protest, the strong magical force has pushed you both out of Myr's office.""",
-	JEAN_INTRO_4 = """- Darn that hag!.. Crap... 
+	JEAN_INTRO_4 = """ — Darn that hag!.. Crap... 
 
 Realizing the hopelessness of her situation Jean finally acknowledges your presence and turns to face you.
 
-- Well, pleased to meet you, I guess. You must have some work for me, right? As you can guess I'm not good with housework, so I hope you aren't just sitting on your ass all day.""",
+ — Well, pleased to meet you, I guess. You must have some work for me, right? As you can guess I'm not good with housework, so I hope you aren't just sitting on your ass all day.""",
 	JEAN_INTRO_4_OPTION_1 = "I fight a lot",
 	JEAN_INTRO_4_OPTION_2 = "It seems you don't talk to people too often ",
 	JEAN_INTRO_4_OPTION_3 = "No, but I wouldn't mind sitting on your ass from time to time",
-	JEAN_INTRO_5_1 = """- Hmph, that's good then. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+	JEAN_INTRO_5_1 = """ — Hmph, that's good then. Fine, point me in the direction of where I'll be sleeping and we can meet there.
 
 You give Jean the directions to your mansion and leave her to it.""",
-	JEAN_INTRO_5_2 = """- Whatever. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+	JEAN_INTRO_5_2 = """ — Whatever. Fine, point me in the direction of where I'll be sleeping and we can meet there.
 
 You give Jean the directions to your mansion and leave her to it.""",
 	JEAN_INTRO_5_3 = """Blushing fiercely, Jean slaps your face making a sound so loud you wonder if Myr is going to come out of her office to check on you. 
 
-- That's what you are thinking about? Pervert! I'll let you know I won't be doing any of the sort of 'service' that you are dreaming of! Now tell me where I sleep from now on and bug off.
+ — That's what you are thinking about? Pervert! I'll let you know I won't be doing any of the sort of 'service' that you are dreaming of! Now tell me where I sleep from now on and bug off.
 
 You give Jean the directions to your mansion and leave her to it.""",
 
 
 	LILIA_INTRO = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once you look in their direction. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities.
 
-- Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
+ — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
 	LILIA_INTRO_OPTION_1 = "Nice to meet you, I'm [name].",
 	LILIA_INTRO_OPTION_2 = "Woah, not so fast",
 	LILIA_INTRO_OPTION_3 = "You really know no manners, do you?",
-	LILIA_INTRO_2 = """- Ah, sorry, this is just so exciting and rare to meet someone like you. You look so big and strong, it makes me feel all tingly *chuckle*
+	LILIA_INTRO_2 = """ — Ah, sorry, this is just so exciting and rare to meet someone like you. You look so big and strong, it makes me feel all tingly *chuckle*
 
-- Say, can I join you? Please? """,
+ — Say, can I join you? Please? """,
 	LILIA_INTRO_2_OPTION_1 = "Agree",
 	LILIA_INTRO_2_OPTION_2 = "Refuse",
-	LILIA_INTRO_3_1 = "- Thanks! Looking forward to living at your place.",
-	LILIA_INTRO_3_2 = "- Aww... Let me know if you change your mind!",
+	LILIA_INTRO_3_1 = " — Thanks! Looking forward to living at your place.",
+	LILIA_INTRO_3_2 = " — Aww... Let me know if you change your mind!",
 	
 	CALI_INTRO = """As you make your way through the fort, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.""",
 	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
 
-Slaver: - Hey, it seems we have a guest. We don't wanna fight, actually we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman. 
+Slaver: — Hey, it seems we have a guest. We don't wanna fight, actually we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman. 
 
 The slaver leads you to another room.""",
 	CALI_INTRO_2 = """Lying on the floor you see a young girl. Her ears and tail give away her origin as a halfkin wolf. Despite being bound, her spirit seems to not be anywhere near broken yet.
 
-Slaver: - Name's Sally, or something like that.
+Slaver: — Name's Sally, or something like that.
 
-Girl: - It's Cali! I'd kick your ass if not for these ropes!
+Girl: — It's Cali! I'd kick your ass if not for these ropes!
 
-Slaver: - This little shit just won't shut up. Why didn't we discipline her again?
+Slaver: — This little shit just won't shut up. Why didn't we discipline her again?
 
-Slaver 2: - Because the buyer we had lined up was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth again.""",
+Slaver 2: — Because the buyer we had lined up was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth again.""",
 	CALI_INTRO_2_OPTION_1 = "Is she still a virgin?",
 	CALI_INTRO_2_OPTION_2 = "Where did you get her?",
 	CALI_INTRO_2_OPTION_3 = "I'd like to purchase her",
 	CALI_INTRO_2_OPTION_4 = "I'll take her from you", # go to fight
 	CALI_INTRO_3_1 = """The girl blushes a deep scarlet color at your question.
 
-Cali: - Of course I am! What are you planning to do, you perverts!? Don't even think about it!
+Cali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!
 
 The men smirk at her reaction.
 
-Slaver: - Well, that's what she says.""",
-	CALI_INTRO_3_2 = """Slaver: - She was traveling all alone, by dangerous roads. Looks like she ran away from home or something. """,
+Slaver: — Well, that's what she says.""",
+	CALI_INTRO_3_2 = """Slaver: — She was traveling all alone, by dangerous roads. Looks like she ran away from home or something. """,
 	CALI_INTRO_3_3 = """The leader strokes his chin for a few seconds. 
 
-Slaver: - I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we leave, so we will happily part with her here.
+Slaver: — I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we leave, so we will happily part with her here.
 
-Cali: - Bastards, stop discussing me like I agreed to this!
+Cali: — Bastards, stop discussing me like I agreed to this!
 
-Slaver: - Given her healthy physique and appearance I believe she is worth at least 1,000 gold.""",
+Slaver: — Given her healthy physique and appearance I believe she is worth at least 1,000 gold.""",
 	CALI_INTRO_3_OPTION_1 = "She does not seem all that pretty to me (Charm Check)",
 	CALI_INTRO_3_OPTION_2 = "I'll think about it",
 	CALI_INTRO_3_OPTION_3 = "Deal",
 	CALI_INTRO_3_OPTION_4 = "No deal, I'll take her by force",
-	CALI_INTRO_4_1_1 = """Cali: - Like I care how I seem to you!
+	CALI_INTRO_4_1_1 = """Cali: — Like I care how I seem to you!
 
-Slaver: - I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe. 
+Slaver: — I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe. 
 
-Cali: - You feed me with pig food here!""",
-	CALI_INTRO_4_1_2 = """Cali: - Like I care how I seem to you!
+Cali: — You feed me with pig food here!""",
+	CALI_INTRO_4_1_2 = """Cali: — Like I care how I seem to you!
 
-Slaver: - Even so, we must cover the expenses for having kept her alive and safe. 
+Slaver: — Even so, we must cover the expenses for having kept her alive and safe. 
 
-Cali: - You feed me with pig food here!""",
-	CALI_INTRO_4_2 = """Slaver: - Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.""",
+Cali: — You feed me with pig food here!""",
+	CALI_INTRO_4_2 = """Slaver: — Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.""",
 	CALI_INTRO_4_3 = """The slaver smirks as you pass them the money and leave the cave. You turn to the still bound Cali.""",
-	CALI_INTRO_4_4 = """Slaver: - Oh, is that so? You can try!""",
+	CALI_INTRO_4_4 = """Slaver: — Oh, is that so? You can try!""",
 	GOT_CALI_1_1 = """The bound wolf girl sits before you, looking up at you with defiance and a hint of fear.
 
-- So? What are you going to do with me now?""",
+ — So? What are you going to do with me now?""",
 	GOT_CALI_1_2 = """The bound wolf girl quietly sits before you. Her composed expression betrays hints of fear and wonder that she's trying to hide.
 
-- W-what are you looking at? What are you going to do with me? """,
+ — W-what are you looking at? What are you going to do with me? """,
 	GOT_CALI_1_OPTION_1 = "*Rape her*",
 	GOT_CALI_1_OPTION_2 = "I'll free you",
 	GOT_CALI_2_1 = """You decide there's really no point in any further chatting and you should savor your new acquisition right here. """,
-	FORCE_CALI_1 = """To Cali’s shock, you shove her down flat on the ground and stand over her. With her hands tied behind her back and her knees bound tightly together, the halfkin wolf girl can do little to resist your superior strength. 
+	FORCE_CALI_1 = """To Cali's shock, you shove her down flat on the ground and stand over her. With her hands tied behind her back and her knees bound tightly together, the halfkin wolf girl can do little to resist your superior strength. 
 
 She tries to squirm away, wailing miserably, but you easily grab hold of her tail and hold her in place. Her short skirt rides up to expose her cute round ass. Wriggling frantically, Cali does her best to resist you as you push her skirt up around her waist and feast your eyes on her helpless body. Securely bound as she is, her struggles only exhaust herself.""",
 	FORCE_CALI_2 = """Pressing the bound Cali firmly against the ground, your hand explores her soft vulnerable ass.
 
-- W-what are you doing! Stop it, you bastard!
+ — W-what are you doing! Stop it, you bastard!
 
-Grabbing hold of the sheer fabric of Cali’s stockings you tug sharply, ripping them open to get a better look at her white cotton panties.
+Grabbing hold of the sheer fabric of Cali's stockings you tug sharply, ripping them open to get a better look at her white cotton panties.
 
-- Monster! Y-you can’t do this to me!
+ — Monster! Y-you can't do this to me!
 
 Chuckling softly, you run your finger over her panties, along the soft cleft between her thighs. Cali shudders as your fingertip prods roughly at her clit through the fabric.
 
-- N-no! Please, don’t do this! I’m not… I’ve never…
+ — N-no! Please, don't do this! I'm not… I've never…
 
-You pull the crotch of her panties to one side, revealing Cali’s tight pink pussy. """,
-	FORCE_CALI_3 = """With the halfkin wolf girl’s pussy exposed, her tone changes and she starts trying to bargain desperately with you.
+You pull the crotch of her panties to one side, revealing Cali's tight pink pussy. """,
+	FORCE_CALI_3 = """With the halfkin wolf girl's pussy exposed, her tone changes and she starts trying to bargain desperately with you.
 
-- Please, [sir], I can offer you something! What do you want? I don’t mind being a servant, I just… please… stop… Ooohhh!
+ — Please, [sir], I can offer you something! What do you want? I don't mind being a servant, I just… please… stop… Ooohhh!
 
-You begin to tease Cali’s clit with your finger, letting your thumb slip gradually between the pussylips until it’s pressing against her hymen. It doesn’t take long before her pussy starts to grow warm to the touch, her labia turning slick with her involuntary arousal. Cali strains against the ropes binding her, jerking her upper body as her thighs helplessly twist against your probing fingers. Her small firm ass quivers with the tension of keeping her slim legs clamped together. Using your free hand, you force her legs to bend at the hip.and then unbuckle your belt. 
+You begin to tease Cali's clit with your finger, letting your thumb slip gradually between the pussylips until it's pressing against her hymen. It doesn't take long before her pussy starts to grow warm to the touch, her labia turning slick with her involuntary arousal. Cali strains against the ropes binding her, jerking her upper body as her thighs helplessly twist against your probing fingers. Her small firm ass quivers with the tension of keeping her slim legs clamped together. Using your free hand, you force her legs to bend at the hip.and then unbuckle your belt. 
 
-- N-no, please! Aaah! Please, [sir], please stop this! """,
-	FORCE_CALI_4 = """With the girl’s bound legs bent, you plant your hand firmly in the small of her back and pin her against the cold ground. You can see the hard nipples on her small tits pressing through the fabric of her shirt as she is forced down. Her ass and pussy stick into the air, where your hand fondles them, preparing her to become a woman.  
+ — N-no, please! Aaah! Please, [sir], please stop this! """,
+	FORCE_CALI_4 = """With the girl's bound legs bent, you plant your hand firmly in the small of her back and pin her against the cold ground. You can see the hard nipples on her small tits pressing through the fabric of her shirt as she is forced down. Her ass and pussy stick into the air, where your hand fondles them, preparing her to become a woman.  
 
-- Oh, gods, no! Don’t do it! I don’t want it! I’m not ready!
+ — Oh, gods, no! Don't do it! I don't want it! I'm not ready!
 
-Cali’s wet slit tells a different story and without further ceremony you ignore her whining, pull out your stiff cock and plunge it into her vulnerable pussy, bursting through her hymen.
+Cali's wet slit tells a different story and without further ceremony you ignore her whining, pull out your stiff cock and plunge it into her vulnerable pussy, bursting through her hymen.
 
-- AAAAaaiiieeehhh!
+ — AAAAaaiiieeehhh!
 
 Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property.   
 
--Y-you bastard! I’ll- I’ll never forgive you for this!
+-Y-you bastard! I'll — I'll never forgive you for this!
 
-Hot tears run from the wolf girl’s closed eyes as she weeps while your penis pounds into her refreshingly tight pussy.""",
-	FORCE_CALI_5 = """Sensing the futility of further resistance, Cali’s struggles grow weaker. As your penis rams rhythmically into her, the sound of her cries begins to change. She gasps as you slowly sink your whole length in her pussy, your balls resting against her swollen clit. The tension in her yields a little and she lets out a ragged sigh as her pussy pulses and quivers around the shaft of your cock. 
+Hot tears run from the wolf girl's closed eyes as she weeps while your penis pounds into her refreshingly tight pussy.""",
+	FORCE_CALI_5 = """Sensing the futility of further resistance, Cali's struggles grow weaker. As your penis rams rhythmically into her, the sound of her cries begins to change. She gasps as you slowly sink your whole length in her pussy, your balls resting against her swollen clit. The tension in her yields a little and she lets out a ragged sigh as her pussy pulses and quivers around the shaft of your cock. 
 
-Cali’s eyes open part-way as you draw your penis out of her inch by inch. She cannot suppress a soft moan as you push down and penetrate her again, your penis stretching her virgin hole to its limits as you fill her with your rock-hard meat.  
+Cali's eyes open part-way as you draw your penis out of her inch by inch. She cannot suppress a soft moan as you push down and penetrate her again, your penis stretching her virgin hole to its limits as you fill her with your rock-hard meat.  
 
-- Ahh! Ow! Please! You don’t have to hurt me!
+ — Ahh! Ow! Please! You don't have to hurt me!
 
 The girl watches you, holding your gaze as you pump in and out of her. She no longer fights against her bonds, instead arching her back and holding her ass up for you while you fuck her.
 
-You feel Cali’s bruised pussy begin to tighten and grip your cock as you pick up speed again, thrusting faster and harder as you feel your orgasm fast approaching. """,
-	FORCE_CALI_6 = """Gripping Cali’s narrow hips, you fuck the young wolf-girl with renewed vigor as she tries in vain to control her involuntary response. 
+You feel Cali's bruised pussy begin to tighten and grip your cock as you pick up speed again, thrusting faster and harder as you feel your orgasm fast approaching. """,
+	FORCE_CALI_6 = """Gripping Cali's narrow hips, you fuck the young wolf-girl with renewed vigor as she tries in vain to control her involuntary response. 
 
-- Aahh! No, please, I’m… I-
+ — Aahh! No, please, I'm… I-
 
 Fresh tears streak her face as an unwilling orgasm courses through her, shaking her whole body. You sink your fingers into the firm muscle of her ass and, gripping her hard enough to bruise, you pound her helpless pussy until she screams in pain.
 
-- Aaggh! No! Not inside me! I beg you!
+ — Aaggh! No! Not inside me! I beg you!
 
 A moment later and your cum shoots deep into her writhing form, filling her young pussy to overflowing with your hot sticky seed. Cali wails, crying again as the semen flowing out of her hole mingles with the blood of her recent virginity.
 
@@ -7483,16 +7483,16 @@ You take a minute to savor your power over the girl and then with a quick slap o
 Cali lies there for a minute or two, sobbing as cum trickles onto her thighs. Then you hoist her up and throw her over your shoulder. Satisfied you have established your authority over the wolf girl, you return to the mansion with your newly acquired toy.""",
 	GOT_CALI_2_2 = """The wolf girl looks at you with something like disbelief as you release her from her binds and help her to stand up. Despite her numb muscles and small figure, her liveliness is something to be envied. 
 
-- W-well, thank you, I guess. I'm glad you aren't like those creeps. 
+ — W-well, thank you, I guess. I'm glad you aren't like those creeps. 
 
 She takes a long pause, rubbing her sore wrists, before she is willing to continue.
 
-- Say... You are some big shot I suppose? Right now I don't really have anywhere to go. Maybe I could do some work for you? You look like a good guy.""",
+ — Say... You are some big shot I suppose? Right now I don't really have anywhere to go. Maybe I could do some work for you? You look like a good guy.""",
 	GOT_CALI_2_OPTION_1 = "What sort of work can you do?",
 	GOT_CALI_2_OPTION_2 = "I could find some use for you",
 	GOT_CALI_2_OPTION_3 = "Not interested",
-	GOT_CALI_3_1 = """- I might not look like it, but I'm pretty tough. I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
-	GOT_CALI_3_2 = """- Great! I promise I'll do my best. 
+	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough. I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
+	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
 	GOT_CALI_3_3 = """""",
@@ -7569,7 +7569,7 @@ You leave the cave and lead Cali back to your mansion.""",
 	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Aliron's church to find out who summoned you.",
 	
 	SWORD_ARTIFACT_QUEST_NAME = "Forests and Beasts",
-	SWORD_ARTIFACT_QUEST_SUMMARY = "Even though the Civil War is over, it seems there might be greater issues in your future.",
+	SWORD_ARTIFACT_QUEST_SUMMARY = "Even though the Civil War is over, it seems there might be greater issues in your future. Zephyra told you to gather an ancient artifacts. It seems the next one can be found at elven lands.",
 	SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Ginny at Aliron's church",
 	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Elven Capital",
 	SWORD_ARTIFACT_QUEST_STAGE_3 = "Visit Beastkin Tribe",
@@ -7587,12 +7587,17 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
 	
-	TEMPLE_QUEST_SUMMARY = "",
-	TEMPLE_QUEST_NAME = "",
-	TEMPLE_QUEST_STAGE_1 = "",
-	TEMPLE_QUEST_STAGE_2 = "",
-	TEMPLE_QUEST_STAGE_3 = "",
-	TEMPLE_QUEST_STAGE_4 = "",
+	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
+	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
+	TEMPLE_QUEST_STAGE_1 = "Deliver Erlen the reply from Leon",
+	TEMPLE_QUEST_STAGE_2 = "Visit Ancient Elven Temple to obtain Sacred Water",
+	TEMPLE_QUEST_STAGE_3 = "Visit Ancient Elven Temple to obtain Sacred Water",
+	TEMPLE_QUEST_STAGE_4 = "Return to Heleviel with Sacred Water",
+	TEMPLE_QUEST_STAGE_5 = "Search for Erlen",
+	TEMPLE_QUEST_STAGE_6 = "Find the young priestess Erlen told you about",
+	TEMPLE_QUEST_STAGE_7 = "Find a way to get Lira to Erlen",
+	TEMPLE_QUEST_STAGE_8 = "Get 10 whiskey to get Lira out of the temple",
+	TEMPLE_QUEST_STAGE_9 = "Return to Erlen with Lira",
 }
 
 

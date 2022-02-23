@@ -475,7 +475,7 @@ var data = {
 		options = [ { # TODO add money check and if false add disabled option
 			code = 'pre_ritual_4_1_2', text = "PRE_RITUAL_4_1_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'quest_fight', args = 'slavers',
+			code = 'quest_fight', args = 'mae_slavers',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
@@ -514,7 +514,7 @@ var data = {
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 75}]}],
 			text = [{text = "PRE_RITUAL_4_2_2", reqs = []}],
 			options = [ {
-				code = 'quest_fight', args = 'slavers',
+				code = 'quest_fight', args = 'mae_slavers',
 				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},  ]
 		},  
@@ -526,7 +526,7 @@ var data = {
 		reqs = [],
 		text = [{text = "PRE_RITUAL_4_3", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'slavers',
+			code = 'quest_fight', args = 'mae_slavers',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},  ]
 	},

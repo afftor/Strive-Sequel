@@ -33,12 +33,12 @@ var encounters = {
 	daisy_admirer_guards1 = {unittype = 'randomgroup', unitcode = 'bandits_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_4', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	daisy_admirer_guards2 = {unittype = 'randomgroup', unitcode = 'ramont_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'daisy_lost_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	gryphon = {unittype = 'randomgroup', unitcode = 'gryphon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	slavers = {unittype = 'randomgroup', unitcode = 'slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'pre_ritual_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	crazy_leon = {unittype = 'randomgroup', unitcode = 'crazy_leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_fight_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	leon = {unittype = 'randomgroup', unitcode = 'leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_encounter_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	mae_slavers = {unittype = 'randomgroup', unitcode = 'mae_slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'pre_ritual_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	leon = {unittype = 'randomgroup', unitcode = 'leon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_fight_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	leon_2 = {unittype = 'randomgroup', unitcode = 'leon_2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'leon_encounter_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	elder_gryphon_boss = {unittype = 'randomgroup', unitcode = 'elder_gryphon_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'gryphon_cave_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	cali_slavers = {unittype = 'randomgroup', unitcode = 'cali_slavers', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'got_cali_1_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	elf_priestess = {unittype = 'randomgroup', unitcode = 'elf_priestess', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'white_stag_encounter_fight_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	white_stag_human = {unittype = 'randomgroup', unitcode = 'white_stag_human', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'white_stag_encounter_fight_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	white_stag = {unittype = 'randomgroup', unitcode = 'white_stag', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'white_stag_encounter_13', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	temple_raiders = {unittype = 'randomgroup', unitcode = 'temple_raiders', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	temple_specters = {unittype = 'randomgroup', unitcode = 'temple_specters', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_8', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -116,15 +116,14 @@ var enemygroups = {
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	gryphon = {reqs = [], units = {gryphon = [1,1]}},
 	elder_gryphon_boss = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
-	slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # TODO change
-	crazy_leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	leon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	cali_slavers = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	elf_priestess = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	white_stag = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	temple_raiders = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	temple_specters = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
-	bridge_guards = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	mae_slavers = {reqs = [], units = {bandit_melee = [3,3], bandit_ranged = [2,2], bandit_mage = [1,1]}}, 
+	leon = {reqs = [], units = {leon = [1,1]}},
+	leon_2 = {reqs = [], units = {leon = [1,1], wild_raptor = [3,3]}},
+	white_stag_human = {reqs = [], units = {white_stag_human = [1,1]}},
+	white_stag = {reqs = [], units = {white_stag = [1,1], wolf = [1,1], centipede = [1,1]}},
+	temple_raiders = {reqs = [], units = {bandit_melee = [2,2], bandit_boss = [1,1], bandit_mage = [3,3]}}, # change
+	temple_specters = {reqs = [], units = {rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
+	bridge_guards = {reqs = [], units = {rebel_recruit = [2,2], rebel_mage = [1,1]}}, # change
 
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
@@ -142,7 +141,9 @@ var enemygroups = {
 	ramont_boss_fight = {reqs = [], units = {guardian_golem = [2,2], ramont_boss = [1,1], bandit_assassin = [2,2]}},
 
 	mimic = {reqs = [], units = {mimic = [1,1]}},
-
+	
+	cali_slavers = {reqs = [], units = {bandit_melee = [2,2], bandit_ranged = [1,1], bandit_mage = [1,1]}}, 
+	
 	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
 	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}},
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
@@ -1502,7 +1503,93 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 100,
 	},
-
+	
+	leon = {
+		code = 'leon',
+		name = '',
+		descript = '',
+		hpmax = 500,
+		armor = 35,
+		mdef = 25,
+		hitrate = 140,
+		evasion = 40,
+		armorpenetration = 15,
+		atk = 85,
+		matk = 35,
+		speed = 75,
+		resists = {fire = -50, water = 75, air = 50, earth = -50, dark = 25, light = 25, mind = -50},
+		status_resists = {stun = 75, freeze = 50},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/leon_enemy.png",
+		body = null,
+		skills = ['attack','swipe_en'],
+		traits = [],
+		tags = ['human','boss'],
+		is_character = false,
+		gear = [],
+		ai = [['ads', 66],['basic', 33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	
+	white_stag = {
+		code = 'white_stag',
+		name = '',
+		descript = '',
+		hpmax = 900,
+		armor = 15,
+		mdef = 55,
+		hitrate = 120,
+		evasion = 20,
+		armorpenetration = 0,
+		atk = 70,
+		matk = 60,
+		speed = 50,
+		resists = {fire = 75, water = -75, air = -50, earth = 50, dark = 75, light = -75, mind = 50},
+		status_resists = {stun = 100, freeze = 100},
+		race = 'beast',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/white_stage_enemy.png",
+		body = null,
+		skills = ['attack'],
+		traits = [],
+		tags = ['boss'],
+		is_character = false,
+		gear = [],
+		ai = [['ads', 66],['basic', 33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	white_stag_human = {
+		code = 'white_stag_human',
+		name = '',
+		descript = '',
+		hpmax = 600,
+		armor = 20,
+		mdef = 30,
+		hitrate = 110,
+		evasion = 20,
+		armorpenetration = 0,
+		atk = 75,
+		matk = 75,
+		speed = 50,
+		resists = {fire = 75, water = -75, air = -50, earth = 50, dark = 75, light = -75, mind = 50},
+		status_resists = {stun = 100, freeze = 100},
+		race = 'beast',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/white_stage_human_enemy.png",
+		body = null,
+		skills = ['attack','shadowstrike','voidslam','enemy_slash'],
+		traits = [],
+		tags = ['boss'],
+		is_character = false,
+		gear = [],
+		ai = [['ads', 66],['basic', 33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	
 
 	ramont_boss = {#daisy quest option
 		code = 'ramont_boss',

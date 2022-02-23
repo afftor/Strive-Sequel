@@ -537,7 +537,7 @@ var pregen_characters = {
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	
-	heleviel = {
+	Heleviel = {
 		code = 'heleviel',
 		name = 'Heleviel',
 		unique = 'heleviel',
@@ -583,7 +583,7 @@ var pregen_characters = {
 		sex_skills = {petting = 35, pussy = 15, oral = 27, anal = 0},
 	},
 	
-	lira = {
+	Lira = {
 		code = 'lira',
 		name = 'Lira',
 		unique = 'lira',
