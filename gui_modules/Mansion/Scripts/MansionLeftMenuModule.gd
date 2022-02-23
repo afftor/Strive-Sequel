@@ -36,6 +36,7 @@ func open_interaction():
 
 
 func open_journal(pressed):
+	$VBoxContainer/Journal.pressed = pressed
 	if pressed:
 		ResourceScripts.core_animations.UnfadeAnimation(get_parent().Journal, 0.5)
 	else:
