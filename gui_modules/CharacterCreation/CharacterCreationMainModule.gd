@@ -561,6 +561,8 @@ func RebuildStatsContainer():
 	for i in array:
 		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
 			continue
+		if mode != 'master' && i.code in ["growth_factor"]:
+			continue
 		var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
 		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
 		newnode.get_node("down").connect("pressed", self, 'stat_down', [i])
@@ -580,7 +582,7 @@ func RebuildStatsContainer():
 		selected_class = ''
 
 func stat_up(stat):
-	if preservedsettings[stat.code] >= 5 || unassigned_points == 0:
+	if preservedsettings[stat.code] >= 6 || unassigned_points == 0:
 		return
 	else:
 		preservedsettings[stat.code] += 1
