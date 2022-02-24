@@ -7,7 +7,7 @@ var data = {
 		],
 		options = [ {
 			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
-			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'}, {code = 'update_city'}]
+			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'},]
 		} ]
 	},
 	
@@ -105,8 +105,7 @@ var data = {
 	
 	zephyra_sword_1 = {
 		image = null, tags = ["dialogue_scene", "master_translate"],
-		reqs = [{type = 'has_hero', name = 'zephyra', check = true},
-		{type = 'has_money', value = 55},], character = "zephyra",
+		reqs = [{type = 'has_hero', name = 'zephyra', check = true}], character = "zephyra",
 		text = [
 			{text = "ZEPHYRA_SWORD_1", reqs = []}
 		],
@@ -137,7 +136,7 @@ var data = {
 		{text = "ZEPHYRA_SWORD_3_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'}]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
 		} ]
 	},
 	
@@ -180,7 +179,7 @@ var data = {
 	
 	priestess_sword_talk_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], 
+		reqs = [], character = 'erlen',
 		text = [{text = "PRIESTESS_SWORD_TALK_4_0", reqs = [], previous_dialogue_option = 0},
 		{text = "PRIESTESS_SWORD_TALK_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "PRIESTESS_SWORD_TALK_4_2", reqs = [], previous_dialogue_option = 2},],
@@ -195,7 +194,7 @@ var data = {
 	
 	priestess_sword_talk_4_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = 'erlen',
 		text = [{text = "PRIESTESS_SWORD_TALK_4_0", reqs = [], previous_dialogue_option = 0},
 		{text = "PRIESTESS_SWORD_TALK_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "PRIESTESS_SWORD_TALK_4_2", reqs = [], previous_dialogue_option = 2},],
@@ -210,7 +209,7 @@ var data = {
 	
 	priestess_sword_talk_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = 'erlen',
 		text = [{text = "PRIESTESS_SWORD_TALK_5", reqs = []}],
 		options = [ {
 			code = 'priestess_sword_talk_6', text = "PRIESTESS_SWORD_TALK_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -221,7 +220,7 @@ var data = {
 	
 	priestess_sword_talk_6 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = 'erlen',
 		text = [{text = "PRIESTESS_SWORD_TALK_6", reqs = []}],
 		options = [ {
 			code = 'priestess_sword_talk_7', text = "PRIESTESS_SWORD_TALK_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -234,13 +233,14 @@ var data = {
 	
 	priestess_sword_talk_7 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = 'erlen',
 		text = [{text = "PRIESTESS_SWORD_TALK_7_1", reqs = [], previous_dialogue_option = 1},
 		{text = "PRIESTESS_SWORD_TALK_7_2", reqs = [], previous_dialogue_option = 2},
 		{text = "PRIESTESS_SWORD_TALK_7_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}],
+			tags = ['blackscreen_transition_common']
 		} ]
 	},
 	

@@ -7076,7 +7076,10 @@ Aire searches the surroundings for some time until she finally spots a lone crys
 Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slowly, she removes her elegant dress.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_2 = """ — Does it make you happy that you'll get what many men can only dream of? Come, take your reward.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """ — I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
+	AFTER_TEMPLE_PRIESTESS_5_1_4 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_6 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """- I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
@@ -7587,17 +7590,29 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
 	
-	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
-	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
-	TEMPLE_QUEST_STAGE_1 = "Deliver Erlen the reply from Leon",
-	TEMPLE_QUEST_STAGE_2 = "Visit Ancient Elven Temple to obtain Sacred Water",
-	TEMPLE_QUEST_STAGE_3 = "Visit Ancient Elven Temple to obtain Sacred Water",
-	TEMPLE_QUEST_STAGE_4 = "Return to Heleviel with Sacred Water",
-	TEMPLE_QUEST_STAGE_5 = "Search for Erlen",
-	TEMPLE_QUEST_STAGE_6 = "Find the young priestess Erlen told you about",
-	TEMPLE_QUEST_STAGE_7 = "Find a way to get Lira to Erlen",
-	TEMPLE_QUEST_STAGE_8 = "Get 10 whiskey to get Lira out of the temple",
-	TEMPLE_QUEST_STAGE_9 = "Return to Erlen with Lira",
+	TEMPLE_QUEST_SUMMARY = "Ancient Elven Temple",
+	TEMPLE_QUEST_NAME = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
+	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
+	TEMPLE_QUEST_STAGE_2 = "Return to Heleviel with Sacred Water",
+	
+	GETTING_LIRA_QUEST_SUMMARY = "",
+	GETTING_LIRA_QUEST_NAME = "",
+	GETTING_LIRA_QUEST_STAGE_1 = "Search for Erlen",
+	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess to Erlen",
+	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 whiskey to get Lira out of the temple",
+	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
+	
+#	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
+#	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
+#	TEMPLE_QUEST_STAGE_1 = "Deliver Erlen the reply from Leon",
+#	TEMPLE_QUEST_STAGE_2 = "Visit Ancient Elven Temple to obtain Sacred Water",
+#	TEMPLE_QUEST_STAGE_3 = "Visit Ancient Elven Temple to obtain Sacred Water",
+#	TEMPLE_QUEST_STAGE_4 = "Return to Heleviel with Sacred Water",
+#	TEMPLE_QUEST_STAGE_5 = "Search for Erlen",
+#	TEMPLE_QUEST_STAGE_6 = "Find the young priestess Erlen told you about",
+#	TEMPLE_QUEST_STAGE_7 = "Find a way to get Lira to Erlen",
+#	TEMPLE_QUEST_STAGE_8 = "Get 10 whiskey to get Lira out of the temple",
+#	TEMPLE_QUEST_STAGE_9 = "Return to Erlen with Lira",
 }
 
 

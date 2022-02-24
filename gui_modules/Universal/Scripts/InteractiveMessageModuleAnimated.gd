@@ -289,14 +289,14 @@ func select_person_for_next_event(code):
 		reqs = [
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}
 		]
-	elif code.find('temple_start') != -1:
+	elif code.find('temple_1') != -1:
 		reqs = [
-			{code = 'stat', stat = 'phys_factor', operant = 'gte', value = 5}
+			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
 		]
-	elif code.find('lira_encounter_4') != -1:
+	elif code.find('lira_encounter_5_1_1') != -1:
 		reqs = [ 
-			{code = 'stat', stat = 'race', operant = 'eq', value = "tribal elf"},
-			{code = 'is_master', check = false}
+			{code = 'stat', stat = 'race', operant = 'eq', value = "TribalElf"},
+#			{code = 'is_master', check = false}
 		]
 	else:
 		reqs = [
@@ -525,6 +525,10 @@ func handle_scene_transition_fx(scene):
 		$ScrollContainer.modulate.a = 1
 	if scene.tags.has("blackscreen_transition_common"):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
+		doing_transition = true
+		yield(get_tree().create_timer(1), "timeout")
+	elif scene.tags.has("whitescreen_transition_common"):
+		ResourceScripts.core_animations.WhiteScreenTransition(1)
 		doing_transition = true
 		yield(get_tree().create_timer(1), "timeout")
 #		print("handle transition end")
@@ -886,6 +890,12 @@ func select_option(number):
 	input_handler.dialogue_option_selected(option) #need to remove this at next rework
 	if option.has('bonus_effects'):
 		globals.common_effects(option.bonus_effects)
+	
+	if option.has('tags'):
+		if option.tags.has("blackscreen_transition_common"):
+			ResourceScripts.core_animations.BlackScreenTransition(1)
+			doing_transition = true
+			yield(get_tree().create_timer(1), "timeout")
 	
 	if option.has('select_person'):
 		select_person_for_next_event(code)
