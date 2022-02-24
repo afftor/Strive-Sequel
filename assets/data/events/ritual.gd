@@ -352,8 +352,8 @@ var data = {
 	},
 	
 	leon_fight_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "leon",
+		image = 'leon', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 	
 		text = [{text = 'LEON_FIGHT_1', reqs = []}], 
 		options = [ {
 			code = 'leon_fight_2', text = "LEON_FIGHT_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -363,8 +363,8 @@ var data = {
 	},
 	
 	leon_fight_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "leon",
+		image = 'leon', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
 		text = [{text = 'LEON_FIGHT_2_1', reqs = [], previous_dialogue_option = 1},
 		{text = 'LEON_FIGHT_2_2', reqs = [], previous_dialogue_option = 2}], 
 		options = [ {

@@ -14,7 +14,7 @@ var data = {
 		reqs = [], 
 		text = [{text = 'LEON_ENCOUNTER_1', reqs = []}],
 		common_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
-		{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}], #TODO change to open_city (not implemented)
+		{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}], 
 		options = [ {
 			code = 'leon_encounter_start_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'remove_active_location'}]
@@ -91,7 +91,7 @@ var data = {
 	
 	white_stag_encounter_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_4', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_5', text = "WHITE_STAG_ENCOUNTER_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -102,7 +102,7 @@ var data = {
 	
 	white_stag_encounter_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_5', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_6', text = "WHITE_STAG_ENCOUNTER_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -116,14 +116,14 @@ var data = {
 	#fight
 	white_stag_encounter_fight = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [ {text = 'WHITE_STAG_ENCOUNTER_7_1AND2', reqs = [], previous_dialogue_option = 1},
 		{text = 'WHITE_STAG_ENCOUNTER_8_1AND2AND4', reqs = [], previous_dialogue_option = 2},
 		{text = 'WHITE_STAG_ENCOUNTER_6_3', reqs = [], previous_dialogue_option = 3},
 		{text = 'WHITE_STAG_ENCOUNTER_9_2AND3', reqs = [], previous_dialogue_option = 4},
 		{text = 'WHITE_STAG_ENCOUNTER_10_5_1', reqs = [], previous_dialogue_option = 5},], 
 		options = [ {
-			code = 'quest_fight', args = 'elf_priestess',
+			code = 'quest_fight', args = 'white_stag',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},]
 	},
@@ -139,7 +139,7 @@ var data = {
 	
 	white_stag_encounter_6 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_6_1', reqs = [], previous_dialogue_option = 1},
 		{text = 'WHITE_STAG_ENCOUNTER_6_2', reqs = [], previous_dialogue_option = 2}], 
 		options = [ {
@@ -153,7 +153,7 @@ var data = {
 	
 	white_stag_encounter_7 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_7_3', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_fight', text = "WHITE_STAG_ENCOUNTER_7_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
@@ -168,7 +168,7 @@ var data = {
 	
 	white_stag_encounter_8 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_8_3', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_9', text = "WHITE_STAG_ENCOUNTER_8_3_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
@@ -181,7 +181,7 @@ var data = {
 	
 	white_stag_encounter_9 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'elf_priestess',
+		reqs = [], character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_7_3', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_10', text = "WHITE_STAG_ENCOUNTER_9_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'smith', check = true}]}], dialogue_argument = 1, type = 'next_dialogue', 
@@ -199,15 +199,11 @@ var data = {
 	
 	white_stag_encounter_10_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character2 = 'zephyra', character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_10_4', reqs = []}], 
 		options = [ {
-			code = 'white_stag_encounter_9', text = "WHITE_STAG_ENCOUNTER_8_3_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-		}, {
-			code = 'white_stag_encounter_fight', text = "WHITE_STAG_ENCOUNTER_8_3_OPTION_2", reqs = [], dialogue_argument = 4, type = 'next_dialogue', 
-		}, {
-			code = 'white_stag_encounter_fight', text = "WHITE_STAG_ENCOUNTER_8_3_OPTION_3", reqs = [], dialogue_argument = 4, type = 'next_dialogue', 
-		} ]
+			code = 'white_stag_encounter_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, ]
 	},
 	
 	white_stag_encounter_10 = {
@@ -220,7 +216,7 @@ var data = {
 	},
 	
 	white_stag_encounter_11 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		image = 'deer', tags = ['dialogue_scene', 'whitescreen_transition_common'],
 		reqs = [], 
 		text = [{text = 'WHITE_STAG_ENCOUNTER_11', reqs = []}], 
 		options = [ {
@@ -229,22 +225,24 @@ var data = {
 	},
 	
 	white_stag_encounter_12 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = 'deer', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "leon",
 		text = [{text = 'WHITE_STAG_ENCOUNTER_12', reqs = []}], 
 		options = [ {
-			code = 'quest_fight', args = 'white_stag',
+			code = 'quest_fight', args = 'deer',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
 	},
 	
 	white_stag_encounter_13 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = 'WHITE_STAG_ENCOUNTER_13', reqs = []}], 
 		options = [ { # TODO add teleport to tribe_location
 			code = 'white_stag_encounter_14', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_active_location'}]
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
+		 {code = 'remove_active_location'}]
+			
 		} ]
 	},
 	
@@ -252,8 +250,6 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = "leon", character2 = "savra",
 		text = [{text = 'WHITE_STAG_ENCOUNTER_14', reqs = []}], 
-		common_effects = [
-			{code = 'progress_quest', value = 'temple_quest', stage = 'stage1'},],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}, 
@@ -306,12 +302,12 @@ var data = {
 		{text = 'PRIESTESS_TALK_3_3', reqs = [], previous_dialogue_option = 3},], 
 		options = [ {
 			code = 'close', text = "PRIESTESS_TALK_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage2'}, {code = 'update_city'},
-				{code = 'make_quest_location', value = 'quest_temple_location'}]
+			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage1'}, 
+				{code = 'make_quest_location', value = 'quest_temple_location'}, {code = 'update_city'},]
 		}, {
 			code = 'close', text = "PRIESTESS_TALK_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage2'}, {code = 'update_city'},
-				{code = 'make_quest_location', value = 'quest_temple_location'}]
+			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage1'}, 
+				{code = 'make_quest_location', value = 'quest_temple_location'}, {code = 'update_city'},]
 		}, ]
 	},
 	
@@ -395,8 +391,11 @@ var data = {
 	
 	temple_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
-		reqs = [], # TODO - 50 loyalty for aire
-		bonus_effects = [{code = 'money_change', operant = '+', value = 1000}],
+		reqs = [],
+		common_effects = [{code = 'money_change', operant = '+', value = 1000},
+		{code = 'unique_character_changes', value = 'aire', args = [
+					{code = 'loyalty', operant = '-', value = 50},
+					]}],
 		text = [{text = 'TEMPLE_4_1', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_temple_location', reqs = [
 					{code = 'unique', value = 'aire'}]}]},
 				{text = 'TEMPLE_4_2', reqs = [{type = "location_has_specific_slaves", check = false, value = 1, location = 'quest_temple_location', reqs = [
@@ -419,7 +418,6 @@ var data = {
 		}, ]
 	},
 	
-	# TODO (allow to restart on prev scene)
 	temple_6 = {
 		variations = [ {
 				image = null, tags = ['dialogue_scene', 'master_translate',],
@@ -427,10 +425,9 @@ var data = {
 					{code = 'unique', value = 'aire'}]}], 
 				text = [{text = 'TEMPLE_6_1', reqs = []}], 
 				options = [ {
-					code = 'quest_fight', args = 'temple_specters', text = "DIALOGUEFIGHT", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+					code = 'quest_fight', args = 'temple_specters', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 				}, {
 					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-					bonus_effects = [{code = 'progress_quest', value = 'temple_quest', stage = 'stage3'}]
 				},]
 			}, {
 				image = null, tags = ['dialogue_scene', 'master_translate',],
@@ -463,7 +460,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'remove_active_location'},
-			{code = 'progress_quest', value = 'temple_quest', stage = 'stage4'}]
+			{code = 'progress_quest', value = 'temple_quest', stage = 'stage2'}]
 		} ]
 	},
 	
@@ -489,6 +486,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = "elf_priestess",
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_3', reqs = [],}], 
+		common_effects = [{code = 'complete_quest', value = 'temple_quest'}],
 		options = [ {
 			code = 'after_temple_priestess_4', text = "AFTER_TEMPLE_PRIESTESS_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
@@ -534,15 +532,56 @@ var data = {
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_2', reqs = [],}], 
 		options = [ {
 			code = 'after_temple_priestess_5_1_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 2,
 		},  ]
 	},
 	
-	after_temple_priestess_5_1_3 = { # TODO add sex scenes
-		image = null, tags = ['dialogue_scene', 'master_translate',],
-		reqs = [], character = "elf_priestess",
+	after_temple_priestess_5_1_3 = { 
+		custom_background = "heleviel1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_3', reqs = [],}], 
 		options = [ {
+			code = 'after_temple_priestess_5_1_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		},  ]
+	},
+	
+	after_temple_priestess_5_1_4 = { 
+		custom_background = "heleviel2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_4', reqs = [],}], 
+		options = [ {
+			code = 'after_temple_priestess_5_1_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		},  ]
+	},
+	
+	after_temple_priestess_5_1_5 = { 
+		custom_background = "heleviel3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_5', reqs = [],}], 
+		options = [ {
+			code = 'after_temple_priestess_5_1_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		},  ]
+	},
+	
+	after_temple_priestess_5_1_6 = { 
+		custom_background = "heleviel4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_6', reqs = [],}], 
+		options = [ {
 			code = 'after_temple_priestess_5_1and2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 1,
 		},  ]
 	},
 	
@@ -552,7 +591,7 @@ var data = {
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1AND2', reqs = [],}], 
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage5'}, 
+			bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage1'}, 
 				{code = 'make_quest_location', value = 'quest_erlen_location'}, {code = 'update_city'}]
 		},  ]
 	},
@@ -597,7 +636,7 @@ var data = {
 		text = [{text = 'ERLERN_ENCOUNTER_3_1', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage6'}, {code = 'update_location'} ]
+			bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage2'}, {code = 'update_location'} ]
 		}, ]
 	},
 	
@@ -620,7 +659,7 @@ var data = {
 			code = 'lira_encounter_3', text = "LIRA_ENCOUNTER_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
 			code = 'close', text = "LIRA_ENCOUNTER_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage7'}, {code = 'update_city'} ]
+				bonus_effects = [{code = 'update_city'}]
 		}, ]
 	},
 	
@@ -631,7 +670,7 @@ var data = {
 			text = [{text = 'LIRA_ENCOUNTER_3_1_GOOD', reqs = []} ], 
 			options = [ {
 				code = 'close', text = "LIRA_ENCOUNTER_3_1_GOOD_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-				bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage8'}, {code = 'update_city'} ]
+				bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage3'}, {code = 'update_city'} ]
 			}, ]
 		}, {
 			image = null, tags = ['dialogue_scene', 'master_translate'],
@@ -639,7 +678,7 @@ var data = {
 			text = [{text = 'LIRA_ENCOUNTER_3_1_BAD', reqs = []} ], 
 			options = [ {
 				code = 'close', text = "LIRA_ENCOUNTER_3_1_BAD_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-				bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage7'}, {code = 'update_city'} ]
+				bonus_effects = [{code = 'update_city'}]
 			}, ]
 		}, 
 		]
@@ -648,11 +687,11 @@ var data = {
 	lira_encounter_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'lira',
-		text = [{text = 'LIRA_ENCOUNTER_4', reqs = []} ], 
+		text = [{text = 'LIRA_ENCOUNTER_4', reqs = []}], 
 		options = [ {
 			code = 'lira_encounter_5_1_1', text = "LIRA_ENCOUNTER_4_OPTION_1", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage8', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'whiskey'},], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {
 			code = 'close', text = "LIRA_ENCOUNTER_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 		}, ]
@@ -673,7 +712,7 @@ var data = {
 		text = [{text = 'LIRA_ENCOUNTER_5_1_2', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'temple_quest', stage = 'stage9'}, {code = 'update_city'}]
+			bonus_effects = [{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage4'}, {code = 'update_city'}]
 		}, ]
 	},
 	
@@ -692,8 +731,8 @@ var data = {
 		text = [{text = 'LIRA_ENCOUNTER_5_1_2', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'temple_quest', stage = 'stage9'},
-			{code = 'remove_item', name = 'whiskey', number = 10}, {code = 'update_city'}]
+			bonus_effects = [{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage4'},
+			{code = 'remove_item', name = 'alcohol', number = 10}, {code = 'update_city'}]
 		}, ]
 	},
 	
@@ -823,7 +862,7 @@ var data = {
 		{text = 'ERLEN_LIRA_9_2', reqs = [], previous_dialogue_option = 2}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'complete_quest', value = 'temple_quest'}, {code = 'update_location'}]
+			bonus_effects = [{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage5'}, {code = 'update_location'}]
 		} ]
 	},
 	
@@ -884,17 +923,23 @@ var data = {
 		text = [{text = 'CEREMONY_2', reqs = []},],
 		options = [ {
 			code = 'ceremony_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 2,
 		}, ]
 	},
 	
 	ceremony_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', ],
-		reqs = [], character = 'erlen', character2 = 'elf_priestess', 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
+		reqs = [], #character = 'elf_priestess',
+		custom_background = "whitescreen",
+		scene_type = "technical_scene",
+		save_scene_to_gallery = true,
 		text = [{text = 'CEREMONY_3', reqs = []},],
 		options = [ {
 			code = 'ceremony_heleviel_1', text = "CEREMONY_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 1,
 		}, {
-			code = 'ceremony_2', text = "CEREMONY_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'ceremony_lira_1', text = "CEREMONY_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			change_dialogue_type = 1,
 		}, ]
 	},
 	
@@ -955,9 +1000,13 @@ var data = {
 		reqs = [], character = 'elf_priestess', 
 		text = [{text = 'CEREMONY_HELEVIEL_4', reqs = []},],
 		options = [ {
-			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
+			{code = 'update_city'}]
 		}, {
 			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
+			{code = 'update_city'}]
 		}, ]
 	},
 	
@@ -986,7 +1035,7 @@ var data = {
 		options = [ {
 			code = 'ceremony_lira_4_1', text = "CEREMONY_LIRA_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'close', text = "CEREMONY_LIRA_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -997,16 +1046,27 @@ var data = {
 		options = [ {
 			code = 'ceremony_lira_4_1_1', text = "CEREMONY_LIRA_4_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'close', text = "CEREMONY_LIRA_4_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_4_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
 	},
 	
 	ceremony_lira_4_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1_1', reqs = []},],
 		options = [ {
+			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, ]
+	},
+	
+	ceremony_lira_4_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate',],
+		reqs = [], character = 'erlen',
+		text = [{text = 'CEREMONY_LIRA_4_2', reqs = []},],
+		options = [ {
 			code = 'close', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
+			{code = 'update_city'}]
 		}, ]
 	},
 	

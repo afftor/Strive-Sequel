@@ -117,6 +117,31 @@ var backgrounds = {
 	aire_ana4 = load("res://assets/images/fullscreen scenes/AireAna004.png"),
 	aire_ana5 = load("res://assets/images/fullscreen scenes/AireAna005.png"),
 	aire_ana6 = load("res://assets/images/fullscreen scenes/AireAna006.png"),
+	
+	force_cali1 = load("res://assets/images/fullscreen scenes/CaliCG001.png"),
+	force_cali2 = load("res://assets/images/fullscreen scenes/CaliCG002.png"),
+	force_cali3 = load("res://assets/images/fullscreen scenes/CaliCG003.png"),
+	force_cali4 = load("res://assets/images/fullscreen scenes/CaliCG004.png"),
+	force_cali5 = load("res://assets/images/fullscreen scenes/CaliCG005.png"),
+	force_cali6 = load("res://assets/images/fullscreen scenes/CaliCG006.png"),
+	
+	mae_scene1 = load("res://assets/images/fullscreen scenes/MaeCG001.png"),
+	mae_scene2 = load("res://assets/images/fullscreen scenes/MaeCG002.png"),
+	mae_scene3 = load("res://assets/images/fullscreen scenes/MaeCG003.png"),
+	mae_scene4 = load("res://assets/images/fullscreen scenes/MaeCG004.png"),
+	mae_scene5 = load("res://assets/images/fullscreen scenes/MaeCG005.png"),
+	mae_scene6 = load("res://assets/images/fullscreen scenes/MaeCG006.png"),
+	mae_scene7 = load("res://assets/images/fullscreen scenes/MaeCG007.png"),
+	mae_scene8 = load("res://assets/images/fullscreen scenes/MaeCG008.png"),
+	mae_scene9 = load("res://assets/images/fullscreen scenes/MaeCG009.png"),
+	mae_scene10 = load("res://assets/images/fullscreen scenes/MaeCG010.png"),
+	
+	heleviel1 = load("res://assets/images/fullscreen scenes/HelevielCG001.png"),
+	heleviel2 = load("res://assets/images/fullscreen scenes/HelevielCG002.png"),
+	heleviel3 = load("res://assets/images/fullscreen scenes/HelevielCG003.png"),
+	heleviel4 = load("res://assets/images/fullscreen scenes/HelevielCG004.png"),
+	
+	whitescreen = load("res://assets/sfx/white.png"),
 
 	}
 

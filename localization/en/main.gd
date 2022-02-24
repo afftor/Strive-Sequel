@@ -7076,6 +7076,9 @@ Aire searches the surroundings for some time until she finally spots a lone crys
 Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slowly, she removes her elegant dress.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_2 = """- Does it make you happy that you'll get what many men can only dream of? Come, take your reward.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_4 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """""", # TODO add scenes text
+	AFTER_TEMPLE_PRIESTESS_5_1_6 = """""", # TODO add scenes text
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """- I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
@@ -7591,8 +7594,14 @@ You leave the cave and lead Cali back to your mansion.""",
 	TEMPLE_QUEST_NAME = "",
 	TEMPLE_QUEST_STAGE_1 = "",
 	TEMPLE_QUEST_STAGE_2 = "",
-	TEMPLE_QUEST_STAGE_3 = "",
-	TEMPLE_QUEST_STAGE_4 = "",
+	
+	GETTING_LIRA_QUEST_SUMMARY = "",
+	GETTING_LIRA_QUEST_NAME = "",
+	GETTING_LIRA_QUEST_STAGE_1 = "",
+	GETTING_LIRA_QUEST_STAGE_2 = "",
+	GETTING_LIRA_QUEST_STAGE_3 = "",
+	GETTING_LIRA_QUEST_STAGE_4 = "",
+	GETTING_LIRA_QUEST_STAGE_5 = "",
 }
 
 

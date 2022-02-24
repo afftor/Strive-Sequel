@@ -1828,7 +1828,7 @@ var quests = {
 		summary = "SWORD_ARTIFACT_QUEST_SUMMARY",
 		stages = {
 			stage2 = {code = 'stage2', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_2"}, # go to elven capital and talk to High Priestess
-			stage3 = {code = 'stage3', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_3"}, # go to beastkin tribe location
+			stage3 = {code = 'stage3', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_3"}, # go to beastkin tribe location (first Eleron talk)
 			stage4 = {code = 'stage4', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_4"}, # visit Lodge 
 			stage5 = {code = 'stage5', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_5"}, # bring supplys to Savra
 			stage6 = {code = 'stage6', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_6"}, # wait a day and go to Savra
@@ -1849,15 +1849,28 @@ var quests = {
 		code = 'temple_quest',
 		summary = "TEMPLE_QUEST_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_1"}, # visit erlen
-			stage2 = {code = 'stage2', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_2"}, # go to temple
-			stage3 = {code = 'stage3', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_3"}, # finish temple
-			stage4 = {code = 'stage4', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_4"}, # return to priestess
-			stage5 = {code = 'stage5', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_5"}, # find Erlen
-			stage6 = {code = 'stage6', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_6"}, # talk to Lira
-			stage7 = {code = 'stage7', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_7"}, # get elf to Lira
-			stage8 = {code = 'stage8', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_8"}, # get whiskey to Lira
-			stage9 = {code = 'stage9', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_9"}, # meet erlen on his location
+#			stage1 = {code = 'stage1', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_1"}, # visit erlen
+			stage1 = {code = 'stage1', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_1"}, # get water
+#			stage3 = {code = 'stage3', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_3"}, # finish temple
+			stage2 = {code = 'stage2', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_2"}, # return to priestess
+			
+#			stage5 = {code = 'stage5', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_5"}, # find Erlen
+#			stage6 = {code = 'stage6', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_6"}, # talk to Lira
+#			stage7 = {code = 'stage7', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_7"}, # get elf to Lira
+#			stage8 = {code = 'stage8', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_8"}, # get whiskey to Lira
+#			stage9 = {code = 'stage9', name = "TEMPLE_QUEST_NAME", descript = "TEMPLE_QUEST_STAGE_9"}, # meet erlen on his location
+		}
+	},
+	
+	getting_lira_quest = {
+		code = 'getting_lira_quest',
+		summary = "GETTING_LIRA_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_1"}, # find Erlen
+			stage2 = {code = 'stage2', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_2"}, # find Lira
+			stage3 = {code = 'stage3', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_3"}, # get whiskey to Lira optional
+			stage4 = {code = 'stage4', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_4"}, # go back to erlen
+			stage5 = {code = 'stage5', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_5"}, # return to ?Aliron?
 		},
 	},
 }

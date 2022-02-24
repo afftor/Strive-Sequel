@@ -7,6 +7,7 @@ var scenedict = {
 	combat = "res://gui_modules/Universal/Modules/CombatV2Animated.tscn",
 	itemselect = "res://gui_modules/Universal/Modules/ItemSelect.tscn",
 	black = "res://assets/sfx/BlackScreen.tscn",
+	white = "res://assets/sfx/WhiteScreen.tscn",
 	close = "res://src/scenes/CloseButton.tscn",
 	interaction = "res://src/interactionpanel.tscn",
 }

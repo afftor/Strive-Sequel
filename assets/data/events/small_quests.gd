@@ -272,13 +272,79 @@ var data = {
 		}, ],
 	},
 	
-	got_cali_2_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
+	got_cali_2_1 = { 
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
 		text = [ {text = "GOT_CALI_2_1", reqs = []}, ], 
 		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'}],
 		options = [ {
+			code = 'force_cali_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		},],
+	},
+	
+	force_cali_1 = {
+		custom_background = "force_cali1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_1", reqs = [], }],
+		options = [ {
+			code = 'force_cali_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	force_cali_2 = {
+		custom_background = "force_cali2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_2", reqs = [], }],
+		options = [ {
+			code = 'force_cali_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	force_cali_3 = {
+		custom_background = "force_cali3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_3", reqs = [], }],
+		options = [ {
+			code = 'force_cali_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	force_cali_4 = {
+		custom_background = "force_cali4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_4", reqs = [], }],
+		options = [ {
+			code = 'force_cali_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	force_cali_5 = {
+		custom_background = "force_cali5", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_5", reqs = [], }],
+		options = [ {
+			code = 'force_cali_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	force_cali_6 = {
+		custom_background = "force_cali6", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "FORCE_CALI_6", reqs = [], }],
+		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = "remove_active_location"}]
+			bonus_effects = [{code = "remove_active_location"}], change_dialogue_type = 1
 		}, ],
 	},
 	

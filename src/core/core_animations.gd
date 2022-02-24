@@ -270,6 +270,14 @@ func BlackScreenTransition(duration = 0.5):
 	yield(get_tree().create_timer(duration*2+0.1), 'timeout')
 	blackscreen.queue_free()
 
+func WhiteScreenTransition(duration = 0.5):
+	var whitescreen = load(ResourceScripts.scenedict.white).instance()
+	get_tree().get_root().add_child(whitescreen)
+	UnfadeAnimation(whitescreen, duration)
+	FadeAnimation(whitescreen, duration, duration)
+	yield(get_tree().create_timer(duration*2+0.1), 'timeout')
+	whitescreen.queue_free()
+
 func DelayedText(node, text):
 	node.text = text
 
