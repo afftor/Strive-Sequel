@@ -171,7 +171,7 @@ var globalsettings = {
 
 	autosave = true,
 	autosave_number = 3,
-	autosave_frequency = 24,
+	autosave_frequency = 4,
 
 } setget settings_save
 
@@ -368,6 +368,9 @@ func _input(event):
 			else:
 				match gui_controller.current_screen:
 					gui_controller.mansion:
+						if gui_controller.mansion.Journal.is_visible_in_tree():
+							gui_controller.mansion.MenuModule.open_journal(false)
+							return
 						if event.is_action("ESC") && gui_controller.mansion.mansion_state in ["default", "skills"]:
 							if gui_controller.mansion_tutorial_panel != null && gui_controller.mansion_tutorial_panel.is_visible():
 								gui_controller.mansion_tutorial_panel.hide()

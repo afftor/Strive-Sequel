@@ -152,6 +152,7 @@ ticks_on_borders = true
 margin_left = 11.0
 margin_top = -24.0
 margin_right = 476.0
+margin_bottom = 11.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "MALERATE"
@@ -174,6 +175,53 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "FUTARATE"
 align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 447.0
+margin_right = 576.0
+margin_bottom = 542.0
+custom_constants/separation = 31
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="autosave_amount" type="HSlider" parent="TabContainer/Gameplay/VBoxContainer2"]
+margin_right = 536.0
+margin_bottom = 32.0
+value = 30.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer2/autosave_amount"]
+margin_left = 11.0
+margin_top = -24.0
+margin_right = 476.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Autasaves amount"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="autosave_frequency" type="HSlider" parent="TabContainer/Gameplay/VBoxContainer2"]
+margin_top = 63.0
+margin_right = 536.0
+margin_bottom = 95.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer2/autosave_frequency"]
+margin_left = 11.0
+margin_top = -24.0
+margin_right = 482.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Days per autosave"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false

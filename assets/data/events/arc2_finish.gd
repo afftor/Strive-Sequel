@@ -4,7 +4,7 @@ var data = {
 		reqs = [], 
 		text = [{text = 'LEON_ENCOUNTER_START', reqs = []}], 
 		options = [ {
-			code = 'quest_fight', args = 'leon',
+			code = 'quest_fight', args = 'leon_2',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	}, 

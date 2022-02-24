@@ -261,8 +261,8 @@ var sprites = {
 	cali_body = load("res://assets/images/sprites/cali_body.png"),
 	white_stag = load("res://assets/images/sprites/white_stag.png"),
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
-	erlen = load("res://assets/images/sprites/erlen.png"),
-	lira = load("res://assets/images/sprites/lira.png"),
+	erlen = load("res://assets/images/sprites/Erlen.png"),
+	lira = load("res://assets/images/sprites/Lira.png"),
 	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	
 	}

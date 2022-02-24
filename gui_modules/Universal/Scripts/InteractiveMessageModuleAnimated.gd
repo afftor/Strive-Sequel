@@ -410,7 +410,8 @@ func keepbaby():
 
 func removebaby():
 	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy').baby, tr("KEEPNOT"))
-	globals.autosave(true)
+	if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+		globals.autosave(true)
 	close()
 	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
 	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
@@ -423,7 +424,8 @@ func set_baby_name(text):
 	person.set_stat('obedience', 24)
 	person.set_stat('name', text)
 	ResourceScripts.game_party.add_slave(person, true)
-	globals.autosave(true)
+	if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+		globals.autosave(true)
 	close()
 
 func open_chest():
