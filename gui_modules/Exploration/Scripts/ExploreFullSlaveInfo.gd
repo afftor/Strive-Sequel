@@ -169,9 +169,9 @@ func sell_slave_confirm():
 	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SOLD"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	gui_controller.exploration.active_faction.slaves.append(selectedperson.id)
-	selectedperson.is_players_character = false
+#	selectedperson.is_players_character = false
 	input_handler.PlaySound("money_spend")
-	input_handler.slave_list_node.rebuild()
-	gui_controller.exploration.faction_sellslaves() ### TEMPORARY
+#	input_handler.slave_list_node.rebuild()
+	gui_controller.exploration.sell_slave() #2test 
 	self.hide()
 

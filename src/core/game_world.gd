@@ -60,9 +60,9 @@ func update_guilds_data():
 			if guild.has('hireable_characters'): continue
 			guild.hireable_characters = []
 			var tempcat = {code = 'type1'}
-			tempcat.tags = guild.tags.duplicate()
+#			tempcat.tags = guild.tags.duplicate()
 			tempcat.slavenumber = [guild.slavenumber, guild.slavenumber]
-			tempcat.character_types = guild.character_types.duplicate()
+			tempcat.character_types = guild.chartype.duplicate()
 			tempcat.character_bonuses = guild.charbonus.duplicate()
 			tempcat.slave_races = guild.races.duplicate()
 			tempcat.preference = guild.preferences.duplicate()

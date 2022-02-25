@@ -1755,14 +1755,14 @@ var sell_category = 'all'
 var buy_category = 'all'
 var active_shop
 
-func faction_sellslaves():
+func faction_sellslaves():#obsolete
 	hiremode = 'sell'
 #	$HirePanel.show()
 #	$HirePanel/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 	var first_char = null
 	var counter = 0
-	for i in ResourceScripts.game_party.characters:
+	for i in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(i)
 		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
 			continue
