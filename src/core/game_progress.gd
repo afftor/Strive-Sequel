@@ -128,24 +128,29 @@ func get_time_of_event(ev):
 func get_next_event_time():
 	var res = 0
 	for i in stored_events.timed_events:
+		if i.has('broken'): continue
 		var time = get_time_of_event(i)
 		#some debugging
 		if time.date == -1: 
 			print("error - broken timed event")
 			print(i)
+			i.broken = true
 			continue
 		if time.hour == -1 or time.hour > 4: 
 			print("error - broken timed event")
 			print(i)
+			i.broken = true
 			continue
 		if time.date < ResourceScripts.game_globals.date: 
 			print("error - broken timed event")
 			print(i)
+			i.broken = true
 			continue
 		var trem = time.hour - ResourceScripts.game_globals.hour + 4 * (time.date - ResourceScripts.game_globals.date)
 		if trem < 0: 
 			print("error - broken timed event")
 			print(i)
+			i.broken = true
 			continue
 		if res == 0: 
 			res = trem

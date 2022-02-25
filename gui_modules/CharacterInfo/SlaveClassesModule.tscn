@@ -248,9 +248,9 @@ __meta__ = {
 [node name="CheckBox" type="CheckBox" parent="."]
 light_mask = 0
 margin_left = 806.923
-margin_top = 780.409
+margin_top = 841.409
 margin_right = 931.923
-margin_bottom = 821.409
+margin_bottom = 882.409
 theme = ExtResource( 15 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -923,9 +923,9 @@ valign = 1
 
 [node name="UpgradeButton" type="Button" parent="."]
 margin_left = 347.253
-margin_top = 765.409
+margin_top = 829.409
 margin_right = 555.253
-margin_bottom = 829.409
+margin_bottom = 893.409
 theme = ExtResource( 18 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )

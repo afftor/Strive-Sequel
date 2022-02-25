@@ -8,7 +8,7 @@ var backgrounds = {
 	garden = load("res://assets/images/backgrounds/garden.png"),
 	aliron = load("res://assets/images/backgrounds/Aliron.png"),
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
-	beastkin_capital = load("res://assets/images/backgrounds/elf_capital.png"),
+	beastkin_capital = load("res://assets/images/backgrounds/beastkin_capital.png"),
 	
 
 	cave_1 = load("res://assets/images/backgrounds/cave1.png"),

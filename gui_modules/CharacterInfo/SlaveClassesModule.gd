@@ -91,6 +91,8 @@ func open(tempperson, tempmode = 'normal'):
 
 func update():
 	if person == null: return
+	$ClassPanel.hide()
+	$SkillPanel.show()
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	$SkillTooltip.hide()
 	build_skills()
