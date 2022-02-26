@@ -272,9 +272,9 @@ var factiondata = {
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
-		preference = ['combat'],
-		character_types = [['servant',1]],
-		character_bonuses = {authority = [75,100], obedience = [48,48]},
+#		preference = ['combat'],
+#		character_types = [['servant',1]],
+#		character_bonuses = {authority = [75,100], obedience = [48,48]},
 		events = [
 			'fighters_init',
 			],
@@ -289,7 +289,18 @@ var factiondata = {
 		reputation_shop = {
 			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000},
 			items = {bandage = [1,3], bonedragon = [1,500]},
-		}
+		},
+		hireable_characters = [
+			{code = 'type1',
+			preference = ['combat'],
+			slavelevel = 0,
+			character_types = [['servant',1]],
+			character_bonuses = {authority = [75,100], obedience = [48,48]},
+			slave_races = [],
+			tags = [],
+			slavenumber = [2, 2],
+			}
+		],
 	},
 	mages = {
 		code = 'mages',
@@ -297,9 +308,9 @@ var factiondata = {
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
-		preference = ['magic'],
-		character_types = [['servant',1]],
-		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
+#		preference = ['magic'],
+#		character_types = [['servant',1]],
+#		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
 		events = [
 			'mages_init',
 			],
@@ -314,7 +325,18 @@ var factiondata = {
 		reputation_shop = {
 			classes = {caster = 500, archmage = 1000, dominator = 1500},
 			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75]},
-		}
+		},
+		hireable_characters = [
+			{code = 'type1',
+			preference = ['magic'],
+			slavelevel = 0,
+			character_types = [['servant',1]],
+			character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
+			slave_races = [],
+			tags = [],
+			slavenumber = [2,2],
+			}
+		],
 	},
 	workers = {
 		code = 'workers',
@@ -334,9 +356,9 @@ var factiondata = {
 				],
 			},
 		],
-		preference = ['labor'],
-		character_types = [['servant',1]],
-		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
+#		preference = ['labor'],
+#		character_types = [['servant',1]],
+#		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
 		events = [
 			'workers_init',
 			],
@@ -351,7 +373,18 @@ var factiondata = {
 		reputation_shop = {
 			classes = {smith = 500, foreman = 500, engineer = 750},
 			items = {leatherdragon = [1,500], obsidian = [1,60]},
-		}
+		},
+		hireable_characters = [
+			{code = 'type1',
+			preference = ['labor'],
+			slavelevel = 0,
+			character_types = [['servant',1]],
+			character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
+			slave_races = [],
+			tags = [],
+			slavenumber = [2,2],
+			}
+		],
 	},
 	servants = {
 		code = 'servants',
@@ -359,9 +392,9 @@ var factiondata = {
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
-		preference = ['sexual','social'],
-		character_types = [['servant',1]],
-		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
+#		preference = ['sexual','social'],
+#		character_types = [['servant',1]],
+#		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
 		events = [
 			'servants_init',
 			],
@@ -376,18 +409,29 @@ var factiondata = {
 		reputation_shop = {
 			classes = {headgirl = 500, director = 1000, sextoy = 750, breeder = 1500},
 			items = {writ_of_exemption = [1,300]},
-		}
+		},
+		hireable_characters = [
+			{code = 'type1',
+			preference = ['sexual','social'],
+			slavelevel = 0,
+			character_types = [['servant',1]],
+			character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
+			slave_races = [],
+			tags = [],
+			slavenumber = [2,3],
+			}
+		],
 	},
 	slavemarket = {
 		code = 'slavemarket',
 		name = 'Slave Market',
 		description = '',
 		actions = ['hire','sellslaves','services'],
-		preference = [],
-		character_types = [['slave',1]],
-		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+#		preference = [],
+#		character_types = [['slave',1]],
+#		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
 
-		slave_races = [['rare',3]],
+#		slave_races = [['rare',3]],
 		tags = [],
 		quests_easy = [],
 		quests_medium = [],
@@ -395,6 +439,17 @@ var factiondata = {
 		slavenumber = [3,5],
 		questnumber = [],
 		bonus_actions = [],
+		hireable_characters = [
+			{code = 'type1',
+			preference = [],
+			slavelevel = 0,
+			character_types = [['slave',1]],
+			character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+			slave_races = [['rare',3]],
+			tags = [],
+			slavenumber = [3,5],
+			}
+		],
 	},
 #	exotic_slave_trader = {
 #		code = 'exotic_slave_trader',
@@ -420,11 +475,11 @@ var factiondata = {
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'test', check = false}],
 		actions = ['hire'],
-		preference = [],
-		character_types = [['slave',1]],
-		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
-
-		slave_races = [['rare',3],['monster',1]],
+#		preference = [],
+#		character_types = [['slave',1]],
+#		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+#
+#		slave_races = [['rare',3],['monster',1]],
 		tags = ['unique_slave_races'],
 		quests_easy = [],
 		quests_medium = [],
@@ -432,6 +487,17 @@ var factiondata = {
 		slavenumber = [4,5],
 		questnumber = [],
 		bonus_actions = [],
+		hireable_characters = [
+			{code = 'type1',
+			preference = [],
+			slavelevel = 0,
+			character_types = [['slave',1]],
+			character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+			slave_races = [['rare',3],['monster',1]],
+			tags = ['unique_slave_races'],
+			slavenumber = [4,5],
+			}
+		],
 	},
 	elvish_slave_trader = {
 		code = 'elvish_slave_trader',
@@ -439,10 +505,10 @@ var factiondata = {
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'test', check = false}],
 		actions = ['hire','sellslaves','services'],
-		preference = [],
-		character_types = [['slave',1]],
-		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
-		slave_races = [['rare',3]],
+#		preference = [],
+#		character_types = [['slave',1]],
+#		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+#		slave_races = [['rare',3]],
 		tags = [],
 		quests_easy = [],
 		quests_medium = [],
@@ -450,6 +516,17 @@ var factiondata = {
 		slavenumber = [3,5],
 		questnumber = [],
 		bonus_actions = [],
+		hireable_characters = [
+			{code = 'type1',
+			preference = [],
+			slavelevel = 0,
+			character_types = [['slave',1]],
+			character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+			slave_races = [['rare',3]],
+			tags = [],
+			slavenumber = [3, 5],
+			}
+		],
 	},
 	exotic_slave_trader = {
 		code = 'exotic_slave_trader',
@@ -492,10 +569,10 @@ var factiondata = {
 		name = 'Aliron Church',
 		description = '',
 		actions = [],
-		preference = [],
-		character_types = [],
-		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
-		slave_races = [],
+#		preference = [],
+#		character_types = [],
+#		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+#		slave_races = [],
 		tags = [],
 		quests_easy = [],
 		quests_medium = [],
@@ -503,6 +580,17 @@ var factiondata = {
 		slavenumber = [],
 		questnumber = [],
 		bonus_actions = [],
+		hireable_characters = [
+			{code = 'type1',
+			preference = [],
+			slavelevel = 0,
+			character_types = [],
+			character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
+			slave_races = [],
+			tags = [],
+			slavenumber = [],
+			}
+		],
 	},
 }
 
