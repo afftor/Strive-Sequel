@@ -512,7 +512,7 @@ func test_mode():
 	ResourceScripts.game_world.make_world()
 	if true:
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('Human', 'female', 'random')
+		character.create('Fairy', 'female', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -871,7 +871,7 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('temple_8', '', {})
+		input_handler.interactive_message('zephyra_sword_1', '', {})
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])

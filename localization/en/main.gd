@@ -1553,13 +1553,13 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
 	UPGRADELUXURY_ROOMS = "Luxury Rooms",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will reduce Obedience Drain to its residents. ",
-	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
-	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
-	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
-	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
-	UPGRADELUXURYROOMSBONUS5 = "Increases maximum number of avilable Luxury Rooms to 6.",
-	UPGRADELUXURYROOMSBONUS6 = "Increases maximum number of avilable Luxury Rooms to 7.",
-	UPGRADELUXURYROOMSBONUS7 = "Increases maximum number of avilable Luxury Rooms to 8.",
+	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of available Luxury Rooms to 2.",
+	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of available Luxury Rooms to 3.",
+	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of available Luxury Rooms to 4.",
+	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of available Luxury Rooms to 5.",
+	UPGRADELUXURYROOMSBONUS5 = "Increases maximum number of available Luxury Rooms to 6.",
+	UPGRADELUXURYROOMSBONUS6 = "Increases maximum number of available Luxury Rooms to 7.",
+	UPGRADELUXURYROOMSBONUS7 = "Increases maximum number of available Luxury Rooms to 8.",
 
 
 	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of participants in sex interactions to 3',
@@ -7376,7 +7376,7 @@ The slaver leads you to another room.""",
 
 Slaver: — Name's Sally, or something like that.
 
-Girl: — It's Cali! I'd kick your ass if not for these ropes!
+Girl: — It's Cali! I'm of proud wolf race and I'd kick your ass if not for these ropes!
 
 Slaver: — This little shit just won't shut up. Why didn't we discipline her again?
 
@@ -7435,7 +7435,7 @@ She tries to squirm away, wailing miserably, but you easily grab hold of her tai
 
 Grabbing hold of the sheer fabric of Cali's stockings you tug sharply, ripping them open to get a better look at her white cotton panties.
 
- — Monster! Y-you can't do this to me!
+ — Monster! You'll regret this!
 
 Chuckling softly, you run your finger over her panties, along the soft cleft between her thighs. Cali shudders as your fingertip prods roughly at her clit through the fabric.
 
@@ -7494,7 +7494,11 @@ She takes a long pause, rubbing her sore wrists, before she is willing to contin
 	GOT_CALI_2_OPTION_1 = "What sort of work can you do?",
 	GOT_CALI_2_OPTION_2 = "I could find some use for you",
 	GOT_CALI_2_OPTION_3 = "Not interested",
-	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough. I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
+	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough, I'm of the wolves after all. 
+	
+	Cali proudly puffs her chest.
+	
+	 — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
 	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
@@ -7590,17 +7594,19 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
 	
-	TEMPLE_QUEST_SUMMARY = "Ancient Elven Temple",
-	TEMPLE_QUEST_NAME = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
+	
+	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
+	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
 	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
 	TEMPLE_QUEST_STAGE_2 = "Return to Heleviel with Sacred Water",
 	
-	GETTING_LIRA_QUEST_SUMMARY = "",
-	GETTING_LIRA_QUEST_NAME = "",
+	GETTING_LIRA_QUEST_NAME = "Revelation",
+	GETTING_LIRA_QUEST_SUMMARY = "With all things set you have to make your move together with Erlen in attempt to deal with Heleviel. ",
 	GETTING_LIRA_QUEST_STAGE_1 = "Search for Erlen",
-	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess to Erlen",
-	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 whiskey to get Lira out of the temple",
+	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Elven Capital to Erlen",
+	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 Whiskey to get Lira out of the temple",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
+	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
 #	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 #	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",

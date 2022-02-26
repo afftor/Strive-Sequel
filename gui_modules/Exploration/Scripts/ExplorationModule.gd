@@ -226,8 +226,6 @@ func build_area_menu(area_actions):
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
-		elif action.code == 'exotic_slave_trader':
-			continue
 		elif action.code == 'elvish_slave_trader' or action.code == 'beastkin_slave_trader':
 			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)

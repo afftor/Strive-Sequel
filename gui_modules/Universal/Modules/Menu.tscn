@@ -546,7 +546,21 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Fixed bug causing events not to trigger when advancing multiple time periods at once
+bbcode_text = "Added second arc story
+Gnomes now have +10 wits bonus
+Added and rebalanced \"Stables\" Upgrade
+Some class requirements have been rebalanced
+Stat requirements for class unlocks will require pure stats with no bonuses now
+Starting Character's growth factor is now set to 5 and normal factors can be increased to 6
+6 in factor gives a special bonus now
+Slightly lowered Lilia's base stats
+Lowered stat growth from combat skill usage
+Timed and Special Events in town now will display in different color
+Multiple mod editor fixes
+Selling unique characters for repeatable quests will require confirmation now
+Fixed mindbreak route for Annastasia giving wrong character and CG
+0.6.0b
+Fixed bug causing events not to trigger when advancing multiple time periods at once
 Fixed some sidequests not working correctly
 Fixed certain skill errors
 Fixed some gui errors
@@ -1125,7 +1139,21 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed bug causing events not to trigger when advancing multiple time periods at once
+text = "Added second arc story
+Gnomes now have +10 wits bonus
+Added and rebalanced \"Stables\" Upgrade
+Some class requirements have been rebalanced
+Stat requirements for class unlocks will require pure stats with no bonuses now
+Starting Character's growth factor is now set to 5 and normal factors can be increased to 6
+6 in factor gives a special bonus now
+Slightly lowered Lilia's base stats
+Lowered stat growth from combat skill usage
+Timed and Special Events in town now will display in different color
+Multiple mod editor fixes
+Selling unique characters for repeatable quests will require confirmation now
+Fixed mindbreak route for Annastasia giving wrong character and CG
+0.6.0b
+Fixed bug causing events not to trigger when advancing multiple time periods at once
 Fixed some sidequests not working correctly
 Fixed certain skill errors
 Fixed some gui errors
