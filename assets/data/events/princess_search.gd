@@ -988,8 +988,8 @@ var data = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
-			{text = "AMELIAFINDPRINCESS1_1", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = false}]},
-			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = true}]},
+			{text = "AMELIAFINDPRINCESS1_1", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{type = 'decision', value = 'prison_avail', check = false}]},
+			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{type = 'decision', value = 'prison_avail', check = true}]},
 			{text = "AMELIAFINDPRINCESS1_3", reqs = [{type = 'decision', value = 'aire_is_dead', check = true}]},
 		],
 		options = [

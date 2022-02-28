@@ -132,20 +132,4 @@ var data = {
 			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2}
 		]
 	},
-	
-	act1_scene = {
-		image = null,
-		tags = ["dialogue_scene", "master_translate", "blackscreen_transition_common"],
-		custom_background = "act1_art",
-		scene_type = "story_scene",
-		save_scene_to_gallery = true,
-		common_effects = [],
-		text = [
-			{text = "", reqs = []}
-		],
-
-		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 1}
-		]
-	}
 }

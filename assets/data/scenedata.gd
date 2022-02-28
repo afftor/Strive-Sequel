@@ -1842,6 +1842,7 @@ var quests = {
 			stage13 = {code = 'stage13', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_13"}, # bring someone magical to savra
 			stage14 = {code = 'stage14', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_14"}, # go find leon
 			stage15 = {code = 'stage15', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_15"}, # go to white stag location
+			stage16 = {code = 'stage16', name = "SWORD_ARTIFACT_QUEST_NAME", descript = "SWORD_ARTIFACT_QUEST_STAGE_16"}, # return to erlen after you're done with temple quest
 		},
 	},
 	
@@ -1870,7 +1871,7 @@ var quests = {
 			stage2 = {code = 'stage2', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_2"}, # find Lira
 			stage3 = {code = 'stage3', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_3"}, # get whiskey to Lira optional
 			stage4 = {code = 'stage4', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_4"}, # go back to erlen
-			stage5 = {code = 'stage5', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_5"}, # return to ?Aliron?
+			stage5 = {code = 'stage5', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_5"}, # return to Elf Capital
 		},
 	},
 }

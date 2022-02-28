@@ -39,7 +39,6 @@ var data = {
 		text = [{text = "ZEPHYRA_RECRUITMENT_3_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "ZEPHYRA_RECRUITMENT_3_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'}, {code = 'update_city'}]
 		}, {
 			code = 'zephyra_recruitment_2', text = "ZEPHYRA_RECRUITMENT_3_3_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ]
@@ -87,9 +86,7 @@ var data = {
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'},
-			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'}]
+			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2
 		} ]
 	},
 	
@@ -99,7 +96,6 @@ var data = {
 		text = [{text = "ZEPHYRA_RECRUITMENT_6_BAD", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'}, {code = 'update_city'}]
 		} ]
 	},
 	
@@ -135,13 +131,14 @@ var data = {
 		text = [{text = "ZEPHYRA_SWORD_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_SWORD_3_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
+#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
+			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2
 		} ]
 	},
 	
 	priestess_sword_talk_1  = {
-		image = null, tags = ["dialogue_scene", "master_translate"],
+		image = null, tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_common'],
 		reqs = [], character = "elf_priestess",
 		text = [{text = "PRIESTESS_SWORD_TALK_1_1", reqs = [], previous_dialogue_option = 0},
 		{text = "PRIESTESS_SWORD_TALK_1_2", reqs = [], previous_dialogue_option = 1}],
