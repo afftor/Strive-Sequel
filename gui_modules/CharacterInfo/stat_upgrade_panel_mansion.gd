@@ -7,12 +7,12 @@ var selected_character
 
 var stats_dict = {
 	"physics_factor": "Physics Factor",
+	"magic_factor": "Magic Factor",
 	"wits_factor": "Wits Factor",
 	"charm_factor": "Charm Factor",
 	"sexuals_factor": "Sexuals Factor",
-	"timid_factor": "Timid Factor",
 	"tame_factor": "Tame Factor",
-	"magic_factor": "Magic Factor"
+	"timid_factor": "Timid Factor",
 #	"growth_factor": "Growth Factor"
 }
 

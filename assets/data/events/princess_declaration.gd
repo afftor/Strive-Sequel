@@ -234,7 +234,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}],
 				image = null,
-				character = "anastasia",
+				character = "AnastasiaBroken",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 #					{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},
@@ -301,7 +301,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_3 = {
 		image = null,
-		custom_background = "anastasia_sex_1",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
@@ -321,7 +321,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_4 = {
 		image = null,
-		custom_background = "anastasia_sex_1",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -341,7 +341,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_5 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -361,7 +361,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_6 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -381,7 +381,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_7 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -401,7 +401,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_8 = {
 		image = null,
-		custom_background = "anastasia_sex_3",
+		custom_background = "anastasia_rape_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],

@@ -3,7 +3,7 @@ extends Reference
 
 #mostly static part
 var starting_preset = ''
-var original_version
+var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'
 
@@ -42,6 +42,8 @@ func fix_serialization():
 
 func fix_import():
 	fix_serialization()
+	date = 1
+	hour = 1
 	original_version = globals.gameversion
 
 

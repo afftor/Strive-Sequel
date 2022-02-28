@@ -185,7 +185,17 @@ func show_quest_info(quest):
 							var profbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
 							var prof_icon = classesdata.professions[prof].icon
 							profbutton.get_node("TextureRect").texture = prof_icon
-							var prof_name = "Required Class:\n" + classesdata.professions[prof].name
+							var profname = classesdata.professions[prof].name
+							if classesdata.professions[prof].has('altnamereqs'):
+								for req in classesdata.professions[prof].altnamereqs:
+									if req.code == 'sex':
+										if sex != '':
+											if input_handler.operate(req.operant, req.value, sex):
+												profname = classesdata.professions[prof].altname
+										else:
+											profname += "/" + classesdata.professions[prof].altname
+										break
+							var prof_name = "Required Class:\n" + profname
 							globals.connecttexttooltip(profbutton, prof_name)
 					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
 					var stats_text = "\nStats:\n"

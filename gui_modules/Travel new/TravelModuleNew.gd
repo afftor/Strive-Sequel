@@ -226,7 +226,10 @@ func sort_locations(first, second):
 			if lands_order.find(first.area) == lands_order.find(second.area):
 				if locs_order.has(first.type):
 					if locs_order.has(second.type):
-						return locs_order.find(first.type) < locs_order.find(second.type)
+						if locs_order.find(first.type) != locs_order.find(second.type):
+							return locs_order.find(first.type) < locs_order.find(second.type)
+						else:
+							return first.id > second.id
 			else:
 				return lands_order.find(first.area) < lands_order.find(second.area)
 		return false

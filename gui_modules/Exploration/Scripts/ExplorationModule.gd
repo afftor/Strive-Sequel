@@ -160,7 +160,7 @@ func open_city(city):
 	var area_actions = []
 	for i in input_handler.active_area.factions.values():
 		if !globals.checkreqs(i.conditions): continue
-		if i.code in ["slavemarket", "exotic_slave_trader","beastkin_slave_trader", "aliron_church"]:
+		if i.code in ["slavemarket", "exotic_slave_trader","beastkin_slave_trader", "aliron_church", "elvish_slave_trader"]:
 			area_actions.append(i)
 		else:
 			guilds.append(i)
@@ -214,7 +214,7 @@ func build_area_menu(area_actions):
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
-			(action.code == 'exotic_slave_trader' or action.code == 'beastkin_slave_trader')
+			(action.code == 'exotic_slave_trader')
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
 			&& int(ResourceScripts.game_globals.date) % 14 != 0
 			&& ResourceScripts.game_globals.hour >= 1
@@ -226,8 +226,10 @@ func build_area_menu(area_actions):
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
-		elif action.code == 'exotic_slave_trader':
-			continue
+		elif action.code == 'elvish_slave_trader' or action.code == 'beastkin_slave_trader':
+			has_exotic_slaver = true
+			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
+			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
 		# elif action.code == 'aliron_church':
 		# 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		# 	newbutton.connect("pressed", self, "enter_church", [newbutton, action])
@@ -1755,14 +1757,14 @@ var sell_category = 'all'
 var buy_category = 'all'
 var active_shop
 
-func faction_sellslaves():
+func faction_sellslaves():#obsolete
 	hiremode = 'sell'
 #	$HirePanel.show()
 #	$HirePanel/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 	var first_char = null
 	var counter = 0
-	for i in ResourceScripts.game_party.characters:
+	for i in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(i)
 		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
 			continue
@@ -2275,7 +2277,17 @@ func see_quest_info(quest):
 						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon
-						var prof_name = "Required Class:\n" + classesdata.professions[prof].name
+						var profname = classesdata.professions[prof].name
+						if classesdata.professions[prof].has('altnamereqs'):
+							for req in classesdata.professions[prof].altnamereqs:
+								if req.code == 'sex':
+									if sex != '':
+										if input_handler.operate(req.operant, req.value, sex):
+											profname = classesdata.professions[prof].altname
+									else:
+										profname += "/" + classesdata.professions[prof].altname
+									break
+						var prof_name = "Required Class:\n" + profname
 						globals.connecttexttooltip(profbutton, prof_name)
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\nStats:\n"
