@@ -1335,7 +1335,7 @@ func common_effects(effects):
 				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
-				if input_handler.active_location.id != null:
+				if input_handler.exploration_node != null:
 					input_handler.exploration_node.open_city(input_handler.active_location.id)
 			'update_party':
 				if gui_controller.exploration != null:
