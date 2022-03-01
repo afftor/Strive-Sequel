@@ -123,7 +123,7 @@ var data = {
 		{text = 'WHITE_STAG_ENCOUNTER_9_2AND3', reqs = [], previous_dialogue_option = 4},
 		{text = 'WHITE_STAG_ENCOUNTER_10_5_1', reqs = [], previous_dialogue_option = 5},], 
 		options = [ {
-			code = 'quest_fight', args = 'white_stag',
+			code = 'quest_fight', args = 'white_stag_human',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},]
 	},
@@ -229,7 +229,7 @@ var data = {
 		reqs = [], character = "leon",
 		text = [{text = 'WHITE_STAG_ENCOUNTER_12', reqs = []}], 
 		options = [ {
-			code = 'quest_fight', args = 'deer',
+			code = 'quest_fight', args = 'white_stag',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
 	},
@@ -252,8 +252,10 @@ var data = {
 		text = [{text = 'WHITE_STAG_ENCOUNTER_14', reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}, 
-			{code = 'update_city'}]
+			bonus_effects = [#{code = 'complete_quest', value = 'sword_artifact_quest'}, 
+				{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage16'},
+				{code = 'update_city'}
+			]
 		} ]
 	},
 	
@@ -602,6 +604,7 @@ var data = {
 		text = [{text = 'ERLERN_ENCOUNTER_START', reqs = [],}], 
 		options = [ {
 			code = 'erlern_encounter_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}],
 		}, ]
 	},
 	
@@ -914,7 +917,7 @@ var data = {
 		}, ]
 	},
 	
-	# TODO LIST: white screen, teleport change, open city change,
+	# TODO LIST: teleport change, open city change,
 	ceremony_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = 'erlen', character2 = 'elf_priestess', 

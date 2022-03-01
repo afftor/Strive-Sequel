@@ -7511,50 +7511,50 @@ You leave the cave and lead Cali back to your mansion.""",
 	
 	
 	#           QUESTS           #
-	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
 	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
 	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
 	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
 
-	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds. You must earn their trust and loyalty.",
 	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
 	GUILDS_INTRODUCTION_NAME2 = "First Step",
 	GUILDS_INTRODUCTION_NAME3 = "New Friends",
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds. You must earn their trust and loyalty.",
 	GUILDS_INTRODUCTION_STAGE0 = "Visit the Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
 	GUILDS_INTRODUCTION_STAGE1 = "Now, that you are accustomed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the four guilds. You can do so by completing quests from the city's notice board.",
 	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
 	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came this morning. It suggests you visit the Servants Guild and meet their leader.",
 
-	DAISY_CLOTHES_SUMMARY = "Your slave, Daisy, could use a new set of clothes.",
 	DAISY_CLOTHES_NAME = "Daisy: New Outfit",
+	DAISY_CLOTHES_SUMMARY = "Your slave, Daisy, could use a new set of clothes.",
 	DAISY_CLOTHES_STAGE_1 = "Speak to Sigmund about a new set of clothes for Daisy. ",
 	DAISY_CLOTHES_STAGE_2 = "Speak to Amelia about a new set of clothes for Daisy",
 	DAISY_CLOTHES_STAGE_3 = "Wait, until Daisy's new clothes are finished. ",
 
-	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_NAME = "Daisy: Training",
+	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose the specific training for Daisy.",
 	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 
-	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_NAME = "Daisy: Disappearance",
+	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to find out what could have happened to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy, who should be at Ramont's Estate",
 	
-	AMELIA_SILK_SUMMARY = "After proving yourself useful to the Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_NAME = "Amelia: Request",
+	AMELIA_SILK_SUMMARY = "After proving yourself useful to the Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at the Servants Guild.",
 	
-	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
+	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild", # go to Amelia and ask her what is up
 	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.", # Get the herbs
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild", # return to Amelia
 	
-	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_NAME = "Marriage",
+	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_STAGE_1 = "Pay 500 gold to Aliron's church to set up a wedding ceremony.",
 	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with the Servants Guild and the Workers Guild, then visit the Church to start the wedding",
 	MARRIAGE_SERVANTS_SUMMARY = "Marriage: Bread and Circuses",
@@ -7564,15 +7564,15 @@ You leave the cave and lead Cali back to your mansion.""",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
 	
-	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_NAME = "Proof of Strength",
+	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_STAGE_1 = "Talk to Sigmund about the possible location of Elder Gryphon",
 	GRYPHON_QUEST_STAGE_2 = "Talk to Derek at Aliron",
 	GRYPHON_QUEST_STAGE_3 = "Search through Gryphon Thicket to find Elder Gryphon's tracks",
 	GRYPHON_QUEST_STAGE_4 = "Hunt down Elder Gryphon at Elder Gryphon Lair",
 	
-	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "It seems someone wishes for your audience at Aliron's church",
 	PRE_SWORD_ARTIFACT_QUEST_NAME = "Champion's return",
+	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "It seems someone wishes for your audience at Aliron's church",
 	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Aliron's church to find out who summoned you.",
 	
 	SWORD_ARTIFACT_QUEST_NAME = "Forests and Beasts",
@@ -7594,7 +7594,6 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
 	
-	
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
 	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
@@ -7608,17 +7607,6 @@ You leave the cave and lead Cali back to your mansion.""",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
 	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
-#	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
-#	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
-#	TEMPLE_QUEST_STAGE_1 = "Deliver Erlen the reply from Leon",
-#	TEMPLE_QUEST_STAGE_2 = "Visit Ancient Elven Temple to obtain Sacred Water",
-#	TEMPLE_QUEST_STAGE_3 = "Visit Ancient Elven Temple to obtain Sacred Water",
-#	TEMPLE_QUEST_STAGE_4 = "Return to Heleviel with Sacred Water",
-#	TEMPLE_QUEST_STAGE_5 = "Search for Erlen",
-#	TEMPLE_QUEST_STAGE_6 = "Find the young priestess Erlen told you about",
-#	TEMPLE_QUEST_STAGE_7 = "Find a way to get Lira to Erlen",
-#	TEMPLE_QUEST_STAGE_8 = "Get 10 whiskey to get Lira out of the temple",
-#	TEMPLE_QUEST_STAGE_9 = "Return to Erlen with Lira",
 }
 
 

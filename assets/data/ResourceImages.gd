@@ -59,6 +59,7 @@ var backgrounds = {
 	anastasia_execution2 = load("res://assets/images/fullscreen scenes/AnastasiaCG007.png"),
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
 	act1_art = load("res://assets/images/fullscreen scenes/splash_pure_act1.png"),
+	act2_art = load("res://assets/images/fullscreen scenes/splash_pure_act2.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
