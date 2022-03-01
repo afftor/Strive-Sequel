@@ -5,6 +5,7 @@ var data = {
 		text = [
 			{text = "ZEPHYRA_RECRUITMENT_LETTER", reqs = []}
 		],
+		common_effects = [{code = 'decision', value = 'startedAct2'}],
 		options = [ {
 			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
 			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'},]
@@ -105,6 +106,7 @@ var data = {
 		text = [
 			{text = "ZEPHYRA_SWORD_1", reqs = []}
 		],
+		common_effects = [{code = 'decision', value = 'startedAct2'}],
 		options = [ {
 			code = 'zephyra_sword_2', text = "ZEPHYRA_SWORD_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {

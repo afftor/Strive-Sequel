@@ -2266,7 +2266,7 @@ var TranslationDict = {
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
 	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
 	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
-	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit ‘Confirm' after selecting the characters you've sent. ",
+	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit 'Confirm' after selecting the characters you've sent. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
@@ -3076,7 +3076,7 @@ Merc Leader:— Look we all want to punch out early, but just to make sure you'r
 	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
 	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
 
-	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.}",
+	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
 	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
 	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
@@ -5155,7 +5155,7 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 
 	FINAL_WORDS_1 = """{color=aqua|Duncan:— Congratulations, you finally made it. The rebel forces won't die out just yet, but they should never be able to unite again.}
 
-{color=yellow|Sigmund:— Dis's good ‘nuf, as long as dey won't be takin' towns.}
+{color=yellow|Sigmund:— Dis's good 'nuf, as long as dey won't be takin' towns.}
 
 {color=aqua|Duncan:— So now you're officially mayor.}
 
