@@ -514,6 +514,20 @@ func LoadGame(filename):
 	else:
 		ResourceScripts.game_globals.hour = int(ResourceScripts.game_globals.hour)
 	ResourceScripts.game_globals.date = int(ResourceScripts.game_globals.date)
+	
+	
+	if compare_version(savedict.game_globals.original_version, '0.6.1 Experimental') and ResourceScripts.game_progress.decisions.has('mayor_election_finished') and !ResourceScripts.game_progress.decisions.has('startedAct2'):
+		var already_stored = false
+		for k in ResourceScripts.game_progress.stored_events.timed_events:
+					if k.code == "zephyra_recruitment_letter" or k.code == "zephyra_sword_1":
+						already_stored = true
+		if !already_stored:
+			globals.common_effects([
+				{code = 'add_timed_event', value = "zephyra_recruitment_letter",
+				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
+				{code = 'add_timed_event', value = "zephyra_sword_1",
+				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
+			])
 #	ResourceScripts.game_globals.hour = 1
 
 	#current approach
@@ -1321,7 +1335,8 @@ func common_effects(effects):
 				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
-				input_handler.exploration_node.open_city(input_handler.active_location.id)
+				if input_handler.active_location.id != null:
+					input_handler.exploration_node.open_city(input_handler.active_location.id)
 			'update_party':
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()

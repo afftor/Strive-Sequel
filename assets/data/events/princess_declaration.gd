@@ -97,19 +97,19 @@ var data = {
 			{code = 'add_timed_event', value = "amelia_herbs_start",
 			args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, 
 		
-#			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
-#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
-#
-#			{code = 'add_timed_event', value = "zephyra_sword_1",
-#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
+			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
+			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
+
+			{code = 'add_timed_event', value = "zephyra_sword_1",
+			args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
+			
+			{code = "decision", value = "mayor_election_finished"}
 		],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
 				{code = 'make_story_character', value = 'Anastasia'}]
 			},
-
-
 			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [{code = 'unique_character_changes',
 					value = 'anastasia',
 					args = [
@@ -135,30 +135,6 @@ var data = {
 		],
 		options = [
 			{
-				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_1",
-				reqs = [],
-				type = 'next_dialogue',
-				dialogue_argument = 1,
-			},
-			{
-				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_2",
-				reqs = [],
-				type = 'next_dialogue',
-				dialogue_argument = 1,
-			},
-		],
-	},
-	final_words_2 = {
-		image = null,
-		tags = ['dialogue_scene'],
-		text = [
-			{text = "FINAL_WORDS_2", reqs = [],},
-		], 
-		common_effects = [{code = "decision", value = "mayor_election_finished"}],
-		options = [
-			{
 				code = 'princess_cutscene_init',
 				text = "DIALOGUECLOSE",
 				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
@@ -176,6 +152,32 @@ var data = {
 			},
 		],
 	},
+#	final_words_2 = {
+#		image = null,
+#		tags = ['dialogue_scene'],
+#		text = [
+#			{text = "FINAL_WORDS_2", reqs = [],},
+#		], 
+#		common_effects = [],
+#		options = [
+#			{
+#				code = 'princess_cutscene_init',
+#				text = "DIALOGUECLOSE",
+#				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
+#				type = 'next_dialogue',
+#				dialogue_argument = 1,
+#				bonus_effects = [{code = 'update_city'}],
+#			},
+#			{
+#				code = 'close',
+#				text = "DIALOGUECLOSE",
+#				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
+#				type = 'next_dialogue',
+#				dialogue_argument = 1,
+#				bonus_effects = [{code = 'update_city'}],
+#			},
+#		],
+#	},
 	#somewhere here should be recruit effects
 	#my opinion is those should be at the close options to reflect char status changes (i'm not sure there are different templates for her though)
 	princess_cutscene_init = {
