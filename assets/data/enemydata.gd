@@ -116,7 +116,7 @@ var enemygroups = {
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	gryphon = {reqs = [], units = {gryphon = [1,1]}},
 	elder_gryphon_boss = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
-	mae_slavers = {reqs = [], units = {bandit_melee = [3,3], bandit_ranged = [2,2], bandit_mage = [1,1]}}, 
+	mae_slavers = {reqs = [], units = {bandit_melee = [3,3], bandit_archer = [2,2], bandit_mage = [1,1]}}, 
 	leon = {reqs = [], units = {leon = [1,1]}},
 	leon_2 = {reqs = [], units = {leon = [1,1], wild_raptor = [3,3]}},
 	white_stag_human = {reqs = [], units = {white_stag_human = [1,1]}},
@@ -142,7 +142,7 @@ var enemygroups = {
 
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	
-	cali_slavers = {reqs = [], units = {bandit_melee = [2,2], bandit_ranged = [1,1], bandit_mage = [1,1]}}, 
+	cali_slavers = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [1,1], bandit_mage = [1,1]}}, 
 	
 	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
 	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}},
