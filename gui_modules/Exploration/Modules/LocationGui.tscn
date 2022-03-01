@@ -86,9 +86,9 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DungeonInfo"]
-margin_left = 102.0
+margin_left = 17.0
 margin_top = 21.0
-margin_right = 527.0
+margin_right = 612.0
 margin_bottom = 127.0
 theme = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 3 )

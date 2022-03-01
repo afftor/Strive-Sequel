@@ -630,7 +630,7 @@ expand = true
 stretch_mode = 1
 
 [node name="exp" type="Label" parent="SlaveMarket"]
-margin_left = 607.0
+margin_left = 538.0
 margin_top = 264.0
 margin_right = 717.0
 margin_bottom = 299.0
