@@ -285,18 +285,23 @@ func skill_selected(skill):
 		$SkillTooltip/exp.set("custom_colors/font_color", variables.hexcolordict.red)
 	
 	for i in skill.learn_reqs:
-		if i.trait == "basic_spells":
-			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
-			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_SPELLS"))
-		if i.trait == "advanced_spells":
-			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
-			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_SPELLS"))
-		if i.trait == "basic_combat":
-			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
-			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_COMBAT"))
-		if i.trait == "advanced_combat":
-			$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
-			globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_COMBAT"))
+		if i.code == 'trait':
+			if i.trait == "basic_spells":
+				$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
+				globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_SPELLS"))
+			if i.trait == "advanced_spells":
+				$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
+				globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_SPELLS"))
+			if i.trait == "basic_combat":
+				$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
+				globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITBASIC_COMBAT"))
+			if i.trait == "advanced_combat":
+				$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
+				globals.connecttexttooltip($SkillTooltip/req_icon, tr("TRAITADVANCED_COMBAT"))
+		elif i.code == 'stat':
+			if i.stat == 'wings':
+				$SkillTooltip/req_icon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png") #2change!
+				globals.connecttexttooltip($SkillTooltip/req_icon, tr("STATWINGS"))
 	$SkillTooltip/req.visible = $SkillTooltip/req_icon.texture != null
 	gui_controller.windows_opened.append($SkillTooltip)
 	$SkillTooltip.show()

@@ -41,9 +41,11 @@ func set_entered(is_entered):
 # 	return prev_buttons_count != buttons_count
 
 func calculate_scroll_area():
-	scroll_area = $ScrollContainer.get_rect().size
+#	scroll_area = $ScrollContainer.get_rect().size
+	scroll_area = input_handler.get_actual_size_for_container($ScrollContainer)
 
 func update_scroll():
+	yield(get_tree(), 'idle_frame')
 	if !is_visible_in_tree(): return
 	calculate_scroll_area()
 	v_scroll_bar.visible = (scroll_area.y < $ScrollContainer.get_child(0).rect_size.y)

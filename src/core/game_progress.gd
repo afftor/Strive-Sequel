@@ -156,7 +156,7 @@ func get_next_event_time():
 			res = trem
 		else:
 			res = min(res, trem)
-	return res
+	return int(res)
 
 
 func check_timed_events():

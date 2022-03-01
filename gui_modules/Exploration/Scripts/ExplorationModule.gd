@@ -215,8 +215,8 @@ func build_area_menu(area_actions):
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
 			(action.code == 'exotic_slave_trader')
-			&& int(ResourceScripts.game_globals.date) % 7 == 0
-			&& int(ResourceScripts.game_globals.date) % 14 != 0
+			&& int(ResourceScripts.game_globals.date) % 7 == 1
+			&& int(ResourceScripts.game_globals.date) % 14 != 1
 			&& ResourceScripts.game_globals.hour >= 1
 			&& ResourceScripts.game_globals.hour <= 3
 		):
@@ -1680,7 +1680,7 @@ func show_slave_info(person):
 			continue
 		button.pressed = button.get_meta("person") == person_to_hire
 	globals.connecttexttooltip($SlaveMarket/RichTextLabel, person.show_race_description())
-	$SlaveMarket/exp.text = str(floor(person.get_stat('base_exp')))
+	$SlaveMarket/exp.text = "Exp: " + str(floor(person.get_stat('base_exp')))
 	var text = person.get_short_name() + person.translate(" [race] [age]")
 	input_handler.ClearContainer($SlaveMarket/TextureRect/professions)
 	if person.xp_module.professions.size() > 5:
@@ -1797,6 +1797,7 @@ func fade(window, time = 0.5):
 
 
 func open_shop(pressed, pressed_button, shop):
+	$AreaShop/NumberSelection.hide()
 	gui_controller.win_btn_connections_handler(pressed, $AreaShop, pressed_button)
 	self.current_pressed_area_btn = pressed_button
 	# $AreaShop.visible = pressed

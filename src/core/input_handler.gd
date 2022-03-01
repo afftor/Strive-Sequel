@@ -1313,6 +1313,7 @@ func ClearContainer(container, template = ['Button']):
 		if !template.has(i.name):
 			i.hide()
 			i.queue_free()
+	emit_signal("ButtonUpdated")
 
 func ClearContainerForced(container, template = ['Button']):
 	for i in container.get_children():

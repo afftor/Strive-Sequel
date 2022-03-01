@@ -5,8 +5,10 @@ var target_function
 var metadata
 
 func can_drop_data(position, data):
-	#print(data)
-	return true
+	if data is ResourceScripts.scriptdict.class_slave:
+		return true
+	else:
+		return false
 
 func drop_data(position, data):
 	data.combat_position = 0

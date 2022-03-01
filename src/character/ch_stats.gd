@@ -1059,10 +1059,13 @@ func translate(text):
 
 #	var masternoun = 'master'
 	var tempmasternoun = statlist.masternoun
-	if tempmasternoun in ['master','mistress']:
-		if input_handler.meowingcondition(parent) == true:tempmasternoun = 'myaster'
-		if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
-			if input_handler.meowingcondition(parent) == true:tempmasternoun = 'mewstress'
+	if parent != null:
+		if tempmasternoun in ['master','mistress']:
+			if input_handler.meowingcondition(parent) == true:tempmasternoun = 'myaster'
+			if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
+				if input_handler.meowingcondition(parent) == true:tempmasternoun = 'mewstress'
+	else:
+		print('error in character %s - no root object' % statlist.name)
 
 	text = text.replace("[master]", tempmasternoun)
 	text = text.replace("[Master]", tempmasternoun.capitalize())
