@@ -37,7 +37,7 @@ signal QuestStarted
 signal QuestCompleted
 signal CharacterCreated
 signal EnemyKilled
-signal ButtonUpdated
+signal ButtonUpdated (node)
 signal LootGathered
 
 var last_action_data = {}
@@ -1313,7 +1313,7 @@ func ClearContainer(container, template = ['Button']):
 		if !template.has(i.name):
 			i.hide()
 			i.queue_free()
-	emit_signal("ButtonUpdated")
+	emit_signal("ButtonUpdated", container)
 
 func ClearContainerForced(container, template = ['Button']):
 	for i in container.get_children():
@@ -1326,7 +1326,7 @@ func DuplicateContainerTemplate(container, template = 'Button'):
 	newbutton.show()
 	container.add_child(newbutton)
 	container.move_child(container.get_node(template), newbutton.get_position_in_parent()) #this CAN break something in difficult cases
-	emit_signal("ButtonUpdated")
+	emit_signal("ButtonUpdated", container)
 	return newbutton
 
 

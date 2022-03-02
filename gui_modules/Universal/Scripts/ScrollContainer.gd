@@ -44,7 +44,9 @@ func calculate_scroll_area():
 #	scroll_area = $ScrollContainer.get_rect().size
 	scroll_area = input_handler.get_actual_size_for_container($ScrollContainer)
 
-func update_scroll():
+func update_scroll(node):
+#	print(get_path())
+	if node.get_parent() != $ScrollContainer: return
 	yield(get_tree(), 'idle_frame')
 	if !is_visible_in_tree(): return
 	calculate_scroll_area()

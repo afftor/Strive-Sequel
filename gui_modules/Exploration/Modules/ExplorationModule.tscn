@@ -2832,7 +2832,6 @@ margin_left = 1848.73
 margin_top = 16.8675
 margin_right = 1902.73
 margin_bottom = 67.8674
-toggle_mode = true
 texture_normal = ExtResource( 101 )
 texture_pressed = ExtResource( 102 )
 texture_hover = ExtResource( 103 )
