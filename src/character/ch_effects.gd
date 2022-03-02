@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent: WeakRef
 
 var static_effects = []
 var temp_effects = []
@@ -63,7 +63,7 @@ func find_eff_by_item(item_id):
 func check_status_resist(eff):
 	for s in variables.status_list:
 		if !eff.tags.has(s): continue
-		var res = parent.get_stat('status_resists')[s]
+		var res = parent.get_ref().get_stat('status_resists')[s]
 		var roll = globals.rng.randi_range(0, 99)
 		if roll < res: return true
 	return false
@@ -73,16 +73,16 @@ func apply_temp_effect(eff_id):
 	var eff_n = eff.template.name
 	if check_status_resist(eff):
 		if input_handler.combat_node != null:
-			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_stat('name'), eff_n])
-			parent.play_sfx('resist')
+			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_stat('name'), eff_n])
+			parent.get_ref().play_sfx('resist')
 		return
 	if input_handler.combat_node != null:
-		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_stat('name'), eff_n])
+		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_stat('name'), eff_n])
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)
 		#eff.applied_pos = position
-		eff.applied_char = parent.id
+		eff.applied_char = parent.get_ref().id
 		eff.apply()
 	else:
 		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
@@ -102,25 +102,25 @@ func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
 		'static', 'c_static', 'dynamic':
-			if parent.is_koed() and !obj.tags.has('on_dead'): return
+			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
-			obj.applied_char = parent.id
+			obj.applied_char = parent.get_ref().id
 			obj.apply()
 		'trigger':
-			if parent.is_koed() and !obj.tags.has('on_dead'): return
+			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
-			obj.applied_char = parent.id
+			obj.applied_char = parent.get_ref().id
 			obj.apply()
 		'temp_s','temp_p','temp_u':
-			if parent.is_koed() and !obj.tags.has('on_dead'): return
+			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
 			apply_temp_effect(eff_id)
 #		'area':
 #			if parent.is_coed(): return
 #			add_area_effect(eff_id)
 		'oneshot':
-			obj.applied_obj = parent
+			obj.applied_obj = parent.get_ref()
 			obj.apply()
 
 func get_static_effect_by_code(code):
@@ -209,7 +209,7 @@ func get_all_buffs():
 	for e in temp_effects + static_effects + triggered_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff == null:
-			print(parent.id)
+			print(parent.get_ref().id)
 			continue
 		if !eff.is_applied: 
 			continue
@@ -242,7 +242,7 @@ func get_all_buffs():
 	tbuff.createfromtemplate('b_factor_maxed')
 	var tdesc = ""
 	for i in ['physics_factor','wits_factor','charm_factor','sexuals_factor','timid_factor','tame_factor','magic_factor']:
-		if parent.get_stat(i) >= 6:
+		if parent.get_ref().get_stat(i) >= 6:
 			if f:
 				tdesc += "\n"
 			f = true
@@ -266,7 +266,7 @@ func can_act():
 	return true
 
 func can_evade():
-	var res = parent.can_act()
+	var res = parent.get_ref().can_act()
 	if has_status('defend'): res = false
 	return res
 

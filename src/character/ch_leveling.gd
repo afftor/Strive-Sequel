@@ -36,7 +36,7 @@ func set_work_rule(rule, value):
 
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
-		input_handler.add_random_chat_message(parent, 'exp_for_level')
+		input_handler.add_random_chat_message(parent.get_ref(), 'exp_for_level')
 		# input_handler.ActivateTutorial("levelup")
 	base_exp = value
 
@@ -52,7 +52,7 @@ func update_exp(value, is_set):
 
 
 func fix_serialize():
-	if parent.travel.travel_time <= 0 and work == 'travel':
+	if parent.get_ref().travel.travel_time <= 0 and work == 'travel':
 		work = ''
 	var newprofs = []
 	for prof in professions.duplicate():
@@ -64,10 +64,10 @@ func fix_serialize():
 				if prof_links[id].empty():
 					prof_links.erase(id)
 					if id.begins_with('t_'):
-						parent.remove_trait(id.trim_prefix('t_'))
+						parent.get_ref().remove_trait(id.trim_prefix('t_'))
 					else:
-						parent.unlearn_c_skill(id.trim_prefix('t_'))
-						parent.unlearn_skill(id.trim_prefix('t_'))
+						parent.get_ref().unlearn_c_skill(id.trim_prefix('t_'))
+						parent.get_ref().unlearn_skill(id.trim_prefix('t_'))
 		if prof == 'healer':
 			newprofs.push_back('acolyte') 
 	for prof in newprofs:
@@ -88,9 +88,9 @@ func process_chardata(data):
 
 
 func get_next_class_exp():
-#	var professions = parent.get_stat('professions')
+#	var professions = parent.get_ref().get_stat('professions')
 	var currentclassnumber = professions.size()
-	var growth_factor = parent.get_stat('growth_factor')
+	var growth_factor = parent.get_ref().get_stat('growth_factor')
 	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
 	var exparray
 	var value = 0
@@ -114,7 +114,7 @@ func get_class_list(category, person):
 	for i in classesdata.professions.values():
 		if (category != 'any' && i.categories.has(category) == false) || professions.has(i.code) == true:
 			continue
-		if parent.checkreqs(i.reqs, true) == true:
+		if parent.get_ref().checkreqs(i.reqs, true) == true:
 			array.append(i)
 	return array
 
@@ -123,41 +123,41 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	if satisfy_progress_reqs == true:
 		for i in prof.reqs:
 			if i.code == 'stat' && i.stat in ['physics','wits','charm','sexuals']:
-				parent.set_stat(i.stat, i.value)
+				parent.get_ref().set_stat(i.stat, i.value)
 	if professions.has(prof.code):
 		return "Already has this profession"
 	professions.append(prof.code)
-	parent.add_stat_bonuses(prof.statchanges)
+	parent.get_ref().add_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
 		if prof_links.has('s_'+i):
 			prof_links['s_'+ i].push_back(prof.code)
 		else:
 			prof_links['s_'+ i] = [prof.code]
-			parent.learn_skill(i, true)
+			parent.get_ref().learn_skill(i, true)
 	for i in prof.combatskills:
 		if prof_links.has('s_'+i):
 			prof_links['s_'+ i].push_back(prof.code)
 		else:
 			prof_links['s_'+ i] = [prof.code]
-			parent.learn_c_skill(i, true)
+			parent.get_ref().learn_c_skill(i, true)
 	for i in prof.traits:
 		if prof_links.has('t_'+i):
 			prof_links['t_'+ i].push_back(prof.code)
 		else:
 			prof_links['t_'+ i] = [prof.code]
-			parent.add_trait(i)
-	parent.recheck_effect_tag('recheck_class')
+			parent.get_ref().add_trait(i)
+	parent.get_ref().recheck_effect_tag('recheck_class')
 
 func remove_class(prof):
 	prof = classesdata.professions[prof]
 	if !professions.has(prof.code):
 		return "Nothing to remove"
 	professions.erase(prof.code)
-	parent.remove_stat_bonuses(prof.statchanges)
+	parent.get_ref().remove_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
 		if prof_links['s_' + i].size() == 1:
 			if prof_links['s_' + i][0] == prof.code:
-				parent.unlearn_skill(i)
+				parent.get_ref().unlearn_skill(i)
 				prof_links.erase('s_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
@@ -166,7 +166,7 @@ func remove_class(prof):
 	for i in prof.combatskills:
 		if prof_links['s_' + i].size() == 1:
 			if prof_links['s_' + i][0] == prof.code:
-				parent.unlearn_c_skill(i)
+				parent.get_ref().unlearn_c_skill(i)
 				prof_links.erase('s_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
@@ -175,13 +175,13 @@ func remove_class(prof):
 	for i in prof.traits:
 		if prof_links['t_' + i].size() == 1:
 			if prof_links['t_' + i][0] == prof.code:
-				parent.remove_trait(i)
+				parent.get_ref().remove_trait(i)
 				prof_links.erase('t_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
 		else:
 			prof_links['t_' + i].erase(prof.code)
-	parent.recheck_effect_tag('recheck_class')
+	parent.get_ref().recheck_effect_tag('recheck_class')
 
 func remove_all_classes():
 	for i in classesdata.professions:
@@ -210,11 +210,11 @@ func assign_to_task(taskcode, taskproduct):
 		task = Items.materiallist[taskcode]
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
-	var task_location = parent.get_location()
+	var task_location = parent.get_ref().get_location()
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.code == taskcode && i.product == taskproduct && i.task_location == task_location:
 			taskexisted = true
-			i.workers.append(parent.id)
+			i.workers.append(parent.get_ref().id)
 			i.workers_count += 1
 			work = i.code
 
@@ -243,7 +243,7 @@ func assign_to_task(taskcode, taskproduct):
 		task_location = task_location,
 		messages = [],
 		mod = ""}
-	dict.workers.append(parent.id)
+	dict.workers.append(parent.get_ref().id)
 	work = taskcode
 	ResourceScripts.game_party.active_tasks.append(dict)
 	globals.emit_signal("task_added")
@@ -252,8 +252,8 @@ func assign_to_task(taskcode, taskproduct):
 func remove_from_task(remember = false):
 	if work != '':
 		for i in ResourceScripts.game_party.active_tasks:
-			if i.code == work && i.task_location == parent.get_location() && i.product == workproduct:
-				i.workers.erase(parent.id)
+			if i.code == work && i.task_location == parent.get_ref().get_location() && i.product == workproduct:
+				i.workers.erase(parent.get_ref().id)
 				i.workers_count = max(0, i.workers_count - 1)
 	# if remember && work != 'travel':
 	# 	previous_work = work
@@ -281,18 +281,18 @@ func get_selected_work_quest():
 func make_unavaliable():
 	if  work != "disabled":
 		if is_on_quest:
-			input_handler.SystemMessage(tr(parent.get_short_name() + " removed from quest."))
+			input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " removed from quest."))
 			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 			quest_taken.taken = false
 		remove_from_task(false)
 
-		parent.remove_from_travel()
-		parent.reset_location()
+		parent.get_ref().remove_from_travel()
+		parent.get_ref().reset_location()
 		is_on_quest = true
 		work = "disabled"
 		quest_time_remains = -1
 		quest_time_init = -1
-		parent.set_combat_position(0)
+		parent.get_ref().set_combat_position(0)
 
 
 func make_avaliable():
@@ -309,7 +309,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	quest_id = quest.id
 	selected_work_quest = quest
 	work = quest.name
-	parent.set_combat_position(0)
+	parent.get_ref().set_combat_position(0)
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 	# for  req in quest_taken.requirements:
 	# 	if req.has("work_time"):
@@ -332,8 +332,8 @@ func quest_day_tick():
 
 func remove_from_work_quest():
 	is_on_quest = false
-	input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
-	globals.text_log_add("char", parent.translate("[name] has returned from work"))
+	input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " returned from quest."))
+	globals.text_log_add("char", parent.get_ref().translate("[name] has returned from work"))
 	input_handler.PlaySound("ding")
 	quest_time_init = 0
 	ResourceScripts.game_progress.work_quests_finished.append(quest_id)
@@ -341,58 +341,58 @@ func remove_from_work_quest():
 
 
 func get_obed_drain():
-	if parent.has_profession('master') or parent.has_profession('spouse'): return 0.0
+	if parent.get_ref().has_profession('master') or parent.get_ref().has_profession('spouse'): return 0.0
 	var rule_bonus = 0.0
 	if work_rules.luxury: rule_bonus = 0.25
-	var value = variables.base_obed_drain * (parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty')))
+	var value = variables.base_obed_drain * (parent.get_ref().get_stat('obDrainReduction') * (1 + parent.get_ref().get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_ref().get_stat('loyalty')))
 	return value
 
 func predict_obed_time(): # in hours, not in ticks
 	if check_infinite_obedience() == true: return 10000
-	return parent.get_stat('obedience') / get_obed_drain()
+	return parent.get_ref().get_stat('obedience') / get_obed_drain()
 
 func check_infinite_obedience():
-	return get_obed_drain() == 0 or parent.has_profession('master') or parent.has_profession('spouse')
+	return get_obed_drain() == 0 or parent.get_ref().has_profession('master') or parent.get_ref().has_profession('spouse')
 
 func work_tick():
 	if is_on_quest():
 		return
 	var currenttask
 	for i in ResourceScripts.game_party.active_tasks:
-		if i.workers.has(parent.id):
+		if i.workers.has(parent.get_ref().id):
 			currenttask = i
 	
 	if currenttask == null:
 		work = ''
-		parent.rest_tick()
+		parent.get_ref().rest_tick()
 		return
 	
-	if parent.statlist.is_uncontrollable() && !parent.has_profession('master'):
+	if parent.get_ref().statlist.is_uncontrollable() && !parent.get_ref().has_profession('master'):
 		if !messages.has("refusedwork"):
-			globals.text_log_add('work', parent.get_short_name() + ": Refused to work")
+			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
-	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.add_stat('obedience', - get_obed_drain())
+	if parent.get_ref().get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
+		parent.get_ref().add_stat('obedience', - get_obed_drain())
 		messages.erase("refusedwork")
 	
-	if parent.get_static_effect_by_code("work_rule_ration") != null:
-		parent.food.food_consumption_rations = true
+	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
+		parent.get_ref().food.food_consumption_rations = true
 	
 	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
 	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
-		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent):
+		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent.get_ref()):
 			work_tick_values(currenttask)
 		else:
-			parent.rest_tick()
+			parent.get_ref().rest_tick()
 	elif currenttask.code == 'building':
-		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent):
+		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent.get_ref()):
 			work_tick_values(currenttask)
 		else:
-			parent.rest_tick()
+			parent.get_ref().rest_tick()
 	else:
-		var person_location = parent.get_location()
+		var person_location = parent.get_ref().get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
@@ -411,7 +411,7 @@ func work_tick():
 				ResourceScripts.game_res.materials[currenttask.code] += 1
 				if person_location != "aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
-						globals.text_log_add('work', parent.get_short_name() + ": " + "No more resources to gather.")
+						globals.text_log_add('work', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
 						if !ResourceScripts.game_party.active_tasks.empty():
 							for task in ResourceScripts.game_party.active_tasks:
@@ -427,25 +427,25 @@ func work_tick_values(currenttask, gatherable = false):
 		workstat = races.tasklist[currenttask.code].workstat
 	else:
 		workstat = Items.materiallist[currenttask.code].workstat
-	if !parent.has_status('no_working_bonuses'):
-		parent.add_stat(workstat, 0.36)
+	if !parent.get_ref().has_status('no_working_bonuses'):
+		parent.get_ref().add_stat(workstat, 0.36)
 		self.base_exp += 5
 
 
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
 	if !races.tasklist.has(temptask): return null
-	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
+	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_ref().get_location())
 	var task = races.tasklist[temptask]
 	#var subtask = task.production_code
 	var value = call(task.progress_function)
 	var item
-	if parent.equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.equipment.gear.tool]
+	if parent.get_ref().equipment.gear.tool != null:
+		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (parent.get_stat('productivity') * parent.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
@@ -455,16 +455,16 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 
 func get_progress_resource(tempresource, count_crit = false):
 	var resource = Items.materiallist[tempresource]
-	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
+	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_ref().get_location())
 	# var subtask = task.production[tempsubtask]
 	var value = call(resource.progress_formula)
 	var item
-	if parent.equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.equipment.gear.tool]
+	if parent.get_ref().equipment.gear.tool != null:
+		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
