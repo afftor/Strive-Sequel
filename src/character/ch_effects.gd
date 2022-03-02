@@ -211,6 +211,8 @@ func get_all_buffs():
 		if eff == null:
 			print(parent.id)
 			continue
+		if !eff.is_applied: 
+			continue
 		#eff.calculate_args()
 		for b in eff.buffs:
 			b.calculate_args()
