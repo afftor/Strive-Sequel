@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent: WeakRef
 var social_skills = []
 var social_cooldowns = {}
 var social_skills_charges = {}
@@ -31,13 +31,13 @@ func setup_skills(data):
 
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
-	var damage_mods = parent.get_stat('damage_mods')
+	var damage_mods = parent.get_ref().get_ref().get_stat('damage_mods')
 	if skill.type == 'social' or damage_mods.empty(): return 1
 	var res = damage_mods['all']
 	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
-	if skill.target_range == 'weapon' and parent.get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
+	if skill.target_range == 'weapon' and parent.get_ref().get_ref().get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
 	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
-	if skill.target_range == 'weapon' and parent.get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
+	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
 	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
 	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
 	if skill.tags.has('aoe') and damage_mods.has('aoe'): res *= damage_mods['aoe'] 
@@ -47,7 +47,7 @@ func get_damage_mod(skill:Dictionary):
 
 func get_value_damage_mod(skill_val:Dictionary):
 	#stub. needs filling
-	var damage_mods = parent.get_stat('damage_mods')
+	var damage_mods = parent.get_ref().get_stat('damage_mods')
 	var res = 1.0
 	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
 	return res
@@ -59,7 +59,7 @@ func learn_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
 		if skilldata.has('learn_cost') and !free:
-			parent.add_stat('abil_exp', -skilldata.learn_cost)
+			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		social_skills.append(skill)
 		if social_skill_panel.size() < 11:
 			for i in range(1,12):
@@ -71,7 +71,7 @@ func learn_c_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !combat_skills.has(skill):
 		if skilldata.has('learn_cost') and !free:
-			parent.add_stat('abil_exp', -skilldata.learn_cost)
+			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		combat_skills.append(skill)
 		if combat_skill_panel.size() < 11:
 			for i in range(1,12):
@@ -80,11 +80,11 @@ func learn_c_skill(skill, free = false):
 					break
 	else:
 		if skilldata.has('learn_cost') and free:
-			parent.add_stat('abil_exp', skilldata.learn_cost)
+			parent.get_ref().add_stat('abil_exp', skilldata.learn_cost)
 
 
 func unlearn_skill(skill):
-	if !parent.xp_module.check_skill_prof(skill):
+	if !parent.get_ref().xp_module.check_skill_prof(skill):
 		social_skills.erase(skill)
 		social_cooldowns.erase(skill)
 		daily_cooldowns.erase(skill)
@@ -94,7 +94,7 @@ func unlearn_skill(skill):
 
 
 func unlearn_c_skill(skill):
-	if !parent.xp_module.check_skill_prof(skill):
+	if !parent.get_ref().xp_module.check_skill_prof(skill):
 		combat_skills.erase(skill)
 		combat_cooldowns.erase(skill)
 		daily_cooldowns.erase(skill)
@@ -155,10 +155,10 @@ func restore_skill_charge(code):
 func use_social_skill(s_code, target):
 	var template = Skilldata.Skilllist[s_code]
 	if template.has('special'):
-		ResourceScripts.custom_effects.call(template.special, parent)
+		ResourceScripts.custom_effects.call(template.special, parent.get_ref())
 		return
 	if target != null:
-		var check = parent.check_skill_availability(s_code, target)
+		var check = parent.get_ref().check_skill_availability(s_code, target)
 		if check.check == false:
 			#input_handler.SystemMessage(check.descript)
 			globals.text_log_add('skill',check.descript)
@@ -166,14 +166,14 @@ func use_social_skill(s_code, target):
 	social_cooldowns[s_code] = template.cooldown
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:
-			parent.add_stat(i, rand_range(0.4,0.8))
+			parent.get_ref().add_stat(i, rand_range(0.4,0.8))
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
-		var text = parent.translate(template.dialogue_text)
+		var text = parent.get_ref().translate(template.dialogue_text)
 		text = target.translate(text.replace("[target", "["))
 		data.text = text
 		
-		var charges = Skilldata.get_charges(template, parent)
+		var charges = Skilldata.get_charges(template, parent.get_ref())
 		if charges > 0 && ResourceScripts.game_progress.social_skill_unlimited_charges == false && !template.has('custom_used_charges'):
 			if social_skills_charges.has(s_code):
 				social_skills_charges[s_code] += 1
@@ -186,7 +186,7 @@ func use_social_skill(s_code, target):
 			else:
 				ResourceScripts.game_party.global_skills_used[template.code] = 1
 		
-		input_handler.active_character = parent
+		input_handler.active_character = parent.get_ref()
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
 		for i in template.dialogue_options:
@@ -195,11 +195,11 @@ func use_social_skill(s_code, target):
 		input_handler.scene_characters.append(target)
 		input_handler.interactive_message_custom(data)
 		return
-	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = parent, target = target}
+	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = parent.get_ref(), target = target}
 	
 	input_handler.PlaySound('page')
 	#paying costs
-	parent.pay_cost(template.cost)
+	parent.get_ref().pay_cost(template.cost)
 	
 	if typeof(template.charges) == TYPE_INT && template.charges > 0 && ResourceScripts.game_progress.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
@@ -214,17 +214,17 @@ func use_social_skill(s_code, target):
 			ResourceScripts.game_party.global_skills_used[template.code] = 1
 	#calcuate 'all' receviers
 	var targ_targ = [target]
-	var targ_cast = [parent]
+	var targ_cast = [parent.get_ref()]
 	var targ_all = []
 	for h_id in ResourceScripts.game_party.characters:
-		if parent.id == h_id || target != null and target.id == h_id: continue
+		if parent.get_ref().id == h_id || target != null and target.id == h_id: continue
 		if ResourceScripts.game_party.characters[h_id].get_work() == 'travel':continue
-		if !parent.same_location_with(ResourceScripts.game_party.characters[h_id]): continue
+		if !parent.get_ref().same_location_with(ResourceScripts.game_party.characters[h_id]): continue
 		targ_all.push_back(ResourceScripts.game_party.characters[h_id])
 	#create s_skill and process triggers
 	var s_skill = ResourceScripts.scriptdict.class_sskill.new()
 	s_skill.createfromskill(s_code)
-	s_skill.setup_caster(parent)
+	s_skill.setup_caster(parent.get_ref())
 	s_skill.setup_target(target)
 	s_skill.process_event(variables.TR_CAST)
 	s_skill.setup_final()
@@ -232,7 +232,7 @@ func use_social_skill(s_code, target):
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
 	s_skill.setup_effects_final()
-	parent.process_event(variables.TR_S_CAST, s_skill)
+	parent.get_ref().process_event(variables.TR_S_CAST, s_skill)
 	if target != null:
 		target.process_event(variables.TR_S_TARGET, s_skill)
 	#assumption that no social skill will have more than 1 repeat or target_number 
@@ -249,7 +249,7 @@ func use_social_skill(s_code, target):
 			'all': targ_fin = targ_all
 			'area': 
 				targ_fin = targ_all.duplicate()
-				targ_fin.push_back(parent)
+				targ_fin.push_back(parent.get_ref())
 				if target != null: targ_fin.push_back(target)
 		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
@@ -262,7 +262,7 @@ func use_social_skill(s_code, target):
 			continue
 #		var detail_tags = []
 		if i.damagestat == 'loyalty' and i.dmgf == 0:
-			if parent.has_profession('master'): 
+			if parent.get_ref().has_profession('master'): 
 #				detail_tags.append('master_loyalty')
 				i.value *= 4
 		for h in targ_fin:
@@ -336,13 +336,13 @@ func use_social_skill(s_code, target):
 					if stat  == 'lust':
 						if h.get_stat('lust') >= h.get_stat('lustmax'):
 							detail_tags.append('lust_cap')
-					if i.is_drain: parent.stat_update(stat, -tmp)
+					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
 				1:
 					tmp = h.stat_update(stat, -cached_value)
-					if i.is_drain: parent.stat_update(stat, -tmp)
+					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
 				2:
 					tmp = h.stat_update(stat, cached_value, true)
-					if i.is_drain: parent.stat_update(stat, -tmp)
+					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
 
 			effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
 			var maxstat = 100
@@ -376,7 +376,7 @@ func use_social_skill(s_code, target):
 	
 	if template.has("dialogue_report"):
 		var data = {text = '', tags = ['skill_report_event'], options = []}
-		var text = parent.translate(template.dialogue_report)
+		var text = parent.get_ref().translate(template.dialogue_report)
 		if template.has('dialogue_image'):
 			data.image = template.dialogue_image
 		else:
@@ -386,10 +386,10 @@ func use_social_skill(s_code, target):
 		
 		if template.dialogue_show_repeat == true:
 			data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
-			if parent.check_skill_availability(s_code, target).check == true:
+			if parent.get_ref().check_skill_availability(s_code, target).check == true:
 				data.options[0].disabled = false
 		
-		input_handler.active_character = parent
+		input_handler.active_character = parent.get_ref()
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
 		if input_handler.scene_characters.has(target) == false: input_handler.scene_characters.append(target)
@@ -399,7 +399,7 @@ func use_social_skill(s_code, target):
 		input_handler.interactive_message_custom(data)
 	#postdamage triggers
 	s_skill.process_event(variables.TR_POSTDAMAGE)
-	parent.process_event(variables.TR_POSTDAMAGE, s_skill)
+	parent.get_ref().process_event(variables.TR_POSTDAMAGE, s_skill)
 	if target != null:
 		target.process_event(variables.TR_POSTDAMAGE, s_skill)
 	else:
@@ -411,11 +411,11 @@ func use_social_skill(s_code, target):
 func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]
 	var skill = itembase.mansion_effect
-	if parent.checkreqs(itembase.reqs) == false:
+	if parent.get_ref().checkreqs(itembase.reqs) == false:
 		input_handler.SystemMessage(itembase.reqs_fail_message)
 		return
 	if itembase.has("uses_per_target") && items_used_global.has(itembase.code) && items_used_global[itembase.code] >= itembase.uses_per_target:
-		input_handler.SystemMessage(parent.translate("[name] can't use this item anymore."))
+		input_handler.SystemMessage(parent.get_ref().translate("[name] can't use this item anymore."))
 		return
 	elif itembase.has("uses_per_target"):
 		if items_used_global.has(itembase.code):
@@ -424,7 +424,7 @@ func use_mansion_item(item):
 			items_used_global[itembase.code] = 1
 	if itembase.tags.has("save_on_use") == false:
 		item.amount -= 1
-	use_social_skill(skill, parent)
+	use_social_skill(skill, parent.get_ref())
 
 func act_prepared():
 	for prep in prepared_act:

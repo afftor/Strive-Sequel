@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent: WeakRef
 var area = ''
 var location = ResourceScripts.game_world.mansion_location
 var travel_target = {area = '', location = ''}
@@ -16,7 +16,7 @@ func remove_from_travel():
 
 func fix_infinite_travel():
 	if travel_time <= 0 and location == 'travel':
-#		parent.remove_from_task()
+#		parent.get_ref().remove_from_task()
 		set_travel_time(0)
 		area = travel_target.area
 		location = travel_target.location
@@ -70,20 +70,20 @@ func tick():
 			travel_time = 0
 			area = travel_target.area
 			location = travel_target.location
-			globals.emit_signal("slave_arrived", parent)
+			globals.emit_signal("slave_arrived", parent.get_ref())
 			input_handler.PlaySound("ding")
 			if location == ResourceScripts.game_world.mansion_location:
-				# parent.return_to_task()
-				parent.remove_from_task()
+				# parent.get_ref().return_to_task()
+				parent.get_ref().remove_from_task()
 				input_handler.update_slave_list()
-				globals.text_log_add("travel", parent.get_short_name() + " returned to mansion. ")
+				globals.text_log_add("travel", parent.get_ref().get_short_name() + " returned to mansion. ")
 			else:
-				parent.remove_from_task()
+				parent.get_ref().remove_from_task()
 				input_handler.update_slave_list()
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
-				globals.text_log_add("travel", parent.get_short_name() + " arrived at location: " + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
+				globals.text_log_add("travel", parent.get_ref().get_short_name() + " arrived at location: " + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
 
 func make_location_description():
 	var text = ''
@@ -107,7 +107,7 @@ func make_location_description():
 	return text
 
 func return_to_mansion():
-	parent.set_work('travel')
+	parent.get_ref().set_work('travel')
 	var active_area
 	var active_location
 	if location == 'travel':
@@ -119,7 +119,7 @@ func return_to_mansion():
 	
 	if active_location.has("group"):
 		for i in active_location.group:
-			if active_location.group[i] == parent.id:
+			if active_location.group[i] == parent.get_ref().id:
 				active_location.group.erase(i)
 				break
 	if ResourceScripts.game_progress.instant_travel == false:
@@ -135,7 +135,7 @@ func return_recruit():
 	if ResourceScripts.game_progress.instant_travel == false:
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
-		parent.set_work('travel')
+		parent.get_ref().set_work('travel')
 		location = 'travel'
 	else:
 		location = ResourceScripts.game_world.mansion_location
