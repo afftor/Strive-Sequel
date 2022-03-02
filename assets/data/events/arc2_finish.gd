@@ -694,7 +694,7 @@ var data = {
 		options = [ {
 			code = 'lira_encounter_5_1_1', text = "LIRA_ENCOUNTER_4_OPTION_1", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {
 			code = 'close', text = "LIRA_ENCOUNTER_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 		}, ]
@@ -914,28 +914,33 @@ var data = {
 		text = [{text = 'CEREMONY_1', reqs = []},],
 		options = [ {
 			code = 'ceremony_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 2,
 		}, ]
 	},
 	
-	# TODO LIST: teleport change, open city change,
+	# TODO LIST: teleport change
 	ceremony_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'erlen', character2 = 'elf_priestess', 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
+		reqs = [], character = 'elf_priestess', character_alpha = 180,
+		character2 = 'lira', character2_alpha = 180,
+		custom_background = "whitescreen",
+		scene_type = "technical_scene",
+		save_scene_to_gallery = false,
 		common_effects = [ {code = 'play_sound', value = 'doorsmash'} ,
 			{code = 'screen_shake', strength = 3, length = 0.3},],
 		text = [{text = 'CEREMONY_2', reqs = []},],
 		options = [ {
 			code = 'ceremony_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			change_dialogue_type = 2,
 		}, ]
 	},
 	
 	ceremony_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
-		reqs = [], #character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'elf_priestess', character_alpha = 180,
+		character2 = 'lira', character2_alpha = 180,
 		custom_background = "whitescreen",
 		scene_type = "technical_scene",
-		save_scene_to_gallery = true,
+		save_scene_to_gallery = false,
 		text = [{text = 'CEREMONY_3', reqs = []},],
 		options = [ {
 			code = 'ceremony_heleviel_1', text = "CEREMONY_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -1043,7 +1048,7 @@ var data = {
 	},
 	
 	ceremony_lira_4_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1', reqs = []},],
 		options = [ {
