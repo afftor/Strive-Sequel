@@ -578,7 +578,7 @@ var data = {
 	},
 	
 	pre_ritual_7_3_2 = {
-		custom_background = "amelia_bondage1", # TODO change
+		custom_background = "mae_scene2", # TODO change
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], 

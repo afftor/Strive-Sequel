@@ -7593,6 +7593,7 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_16 = "",
 	
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
 	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",

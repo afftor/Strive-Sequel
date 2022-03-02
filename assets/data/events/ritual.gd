@@ -368,7 +368,7 @@ var data = {
 		text = [{text = 'LEON_FIGHT_2_1', reqs = [], previous_dialogue_option = 1},
 		{text = 'LEON_FIGHT_2_2', reqs = [], previous_dialogue_option = 2}], 
 		options = [ {
-			code = 'quest_fight', args = 'crazy_leon',
+			code = 'quest_fight', args = 'leon',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},

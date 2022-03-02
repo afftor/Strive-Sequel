@@ -663,6 +663,16 @@ func handle_characters_sprites(scene):
 			else:
 				$CharacterImage2.hide()
 #			$CharacterImage2.show()
+	
+	#handle modulation
+#	$CharacterImage.self_modulate.a = 255
+#	$CharacterImage2.self_modulate.a = 255
+#	if scene.has("character_alpha"):
+#		$CharacterImage.self_modulate.a = scene.character_alpha
+#	if scene.has("character2_alpha"):
+#		$CharacterImage2.self_modulate.a = scene.character2_alpha
+	
+	#handle unique character script
 	if scene.has("unique_character"):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
