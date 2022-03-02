@@ -1062,6 +1062,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1_1', reqs = []},],
+		common_effects = [{code = 'make_story_character', value = 'Heleviel', recruit_from_location = true}],
 		options = [ {
 			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
@@ -1080,7 +1081,7 @@ var data = {
 	
 	demon_priestess_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
-		reqs = [], character = 'demon_female', character2 = 'elf_priestess',
+		reqs = [], character = 'elf_priestess', character2 = 'demon_female',
 		text = [{text = 'DEMON_PRIESTESS_1', reqs = []},],
 		options = [ {
 			code = 'demon_priestess_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
@@ -1089,7 +1090,7 @@ var data = {
 	
 	demon_priestess_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = 'demon_female', character2 = 'elf_priestess',
+		reqs = [], character = 'elf_priestess', character2 = 'demon_female',
 		text = [{text = 'DEMON_PRIESTESS_2', reqs = []},],
 		options = [ {
 			code = 'demon_priestess_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
