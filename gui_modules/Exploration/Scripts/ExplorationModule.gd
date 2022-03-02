@@ -218,8 +218,8 @@ func build_area_menu(area_actions):
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
 			(action.code == 'exotic_slave_trader')
-			&& int(ResourceScripts.game_globals.date) % 7 == 1
-			&& int(ResourceScripts.game_globals.date) % 14 != 1
+			&& int(ResourceScripts.game_globals.date) % 7 == 0
+			&& int(ResourceScripts.game_globals.date) % 14 != 0
 			&& ResourceScripts.game_globals.hour >= 1
 			&& ResourceScripts.game_globals.hour <= 3
 		):
