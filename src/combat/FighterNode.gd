@@ -133,7 +133,8 @@ func noq_rebuildbuffs(newbuffs):
 	var oldbuff = 0
 	for b in newbuffs:
 		if buffs.has(b.template_name): oldbuff += 1
-	if oldbuff == buffs.size():
+#	if oldbuff == buffs.size():
+	if false: #for test purpose
 		for i in newbuffs:
 			if buffs.has(i.template_name): update_buff(i)
 			else: add_buff(i)
@@ -154,6 +155,19 @@ func add_buff(i):
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
 	newbuff.hint_tooltip = text
+	var tmp = i.get_duration()
+	if tmp != null:
+		newbuff.get_node("Label").text = str(tmp.count)
+		match tmp.event:
+			'hours':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+			'turns':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+			'hits':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+			'attacks':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+		newbuff.get_node("Label").show()
 
 func update_buff(i):
 	var pos = buffs.find(i.template_name)

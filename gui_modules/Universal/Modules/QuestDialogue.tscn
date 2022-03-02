@@ -39,17 +39,20 @@ __meta__ = {
 }
 
 [node name="CharacterImage" type="TextureRect" parent="."]
-margin_left = 1355.67
-margin_right = 1395.67
+self_modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 1450.0
+margin_right = 1490.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CharacterImage2" type="TextureRect" parent="."]
-margin_left = 1355.67
-margin_right = 1395.67
+self_modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = -100.0
+margin_right = -60.0
 margin_bottom = 40.0
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

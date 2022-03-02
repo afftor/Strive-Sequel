@@ -353,7 +353,7 @@ var data = {
 	
 	leon_fight_1 = {
 		image = 'leon', tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 	
+		reqs = [], 
 		text = [{text = 'LEON_FIGHT_1', reqs = []}], 
 		options = [ {
 			code = 'leon_fight_2', text = "LEON_FIGHT_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -368,7 +368,7 @@ var data = {
 		text = [{text = 'LEON_FIGHT_2_1', reqs = [], previous_dialogue_option = 1},
 		{text = 'LEON_FIGHT_2_2', reqs = [], previous_dialogue_option = 2}], 
 		options = [ {
-			code = 'quest_fight', args = 'crazy_leon',
+			code = 'quest_fight', args = 'leon',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
@@ -422,6 +422,7 @@ var data = {
 				code = 'savra_talk_white_stag', text = "SAVRA_STAG_QUESTION", reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
 			}, {
 				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+				bonus_effects = [{code = "update_city"}]
 			} ]
 		} ]
 	},
@@ -457,7 +458,7 @@ var data = {
 		text = [{text = 'SAVRA_TALK_3', reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage12'},]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage12'}, {code = "update_city"}]
 		}, ]
 	},
 	
@@ -470,7 +471,7 @@ var data = {
 		{code = 'material_change', operant = '-', material = 'leathermythic', value = 15}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage13'},]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage13'}, {code = "update_city"}]
 		},  ]
 	}, 
 	
@@ -496,7 +497,8 @@ var data = {
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'},
+			{code = "update_city"}]
 		} ] 
 	},
 	
@@ -511,7 +513,8 @@ var data = {
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'},
+			{code = "update_city"}]
 		} ]
 	},
 	
@@ -526,7 +529,7 @@ var data = {
 		}, {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'}, {code = "update_city"}]
 		} ]
 	},
 	
@@ -536,6 +539,7 @@ var data = {
 		text = [{text = 'SAVRA_STAG_ANSWER', reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = "update_city"}]
 		}, ]
 	},
 	
