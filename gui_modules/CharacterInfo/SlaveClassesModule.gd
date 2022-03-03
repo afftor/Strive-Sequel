@@ -259,9 +259,10 @@ func sort_skills():
 			if skill.tags.has(skill_category):
 				i.visible = true
 			# combat and spell
-			for lr in skill.learn_reqs:
-				if skill_category in lr.trait:
-					i.visible = true
+			# not working and uselesss due to no gui for it
+#			for lr in skill.learn_reqs:
+#				if skill_category in lr.trait:
+#					i.visible = true
 
 func change_skill_category(cat):
 	skill_category = cat
