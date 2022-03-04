@@ -1947,8 +1947,8 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		options = [
-			{text = 'Approach', reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_START'}],
+			{text = 'Approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 				args = [{code = 'start_event', data = 'temple_start', args = []}]},
 			{text = 'Approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},],

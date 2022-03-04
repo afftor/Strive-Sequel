@@ -76,7 +76,7 @@ var data = {
 				reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'paladin', check = true}]},
 				{type = 'master_check', value = [{code = 'has_profession', profession = 'knight', check = true}], orflag = true},
 				{type = 'decision', value = 'KurdanFollowing', check = true}],
-				image = null, tags = ['dialogue_scene'], character = "demon_female", character2 = "kurdan",
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
 				text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
 				options = [ {
 				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
