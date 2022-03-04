@@ -31,11 +31,11 @@ func setup_skills(data):
 
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
-	var damage_mods = parent.get_ref().get_ref().get_stat('damage_mods')
+	var damage_mods = parent.get_ref().get_stat('damage_mods')
 	if skill.type == 'social' or damage_mods.empty(): return 1
 	var res = damage_mods['all']
 	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
-	if skill.target_range == 'weapon' and parent.get_ref().get_ref().get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
+	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
 	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
 	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
 	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']

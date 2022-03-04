@@ -322,8 +322,8 @@ func buy_skill():
 	args["skill"] = selected_skill
 	args["person"] = person
 	input_handler.play_animation("skill_unlocked", args)
-	yield(get_tree().create_timer(4.5), 'timeout')
 	hide_skilltooltip()
+	yield(get_tree().create_timer(4.5), 'timeout')
 	build_skills()
 
 func hide_skilltooltip():
