@@ -901,12 +901,6 @@ func select_option(number):
 	if option.has('bonus_effects'):
 		globals.common_effects(option.bonus_effects)
 	
-	if option.has('tags'):
-		if option.tags.has("blackscreen_transition_common"):
-			ResourceScripts.core_animations.BlackScreenTransition(1)
-			doing_transition = true
-			yield(get_tree().create_timer(1), "timeout")
-	
 	if option.has('select_person'):
 		select_person_for_next_event(code)
 	elif option.has('remove_person'):

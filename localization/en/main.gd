@@ -3268,11 +3268,11 @@ The princess notices Aire tensing up in response to the question.
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia:— [name]? We should properly reward [him], once this whole mess is over.}
 
-	{color=aqua|Aire:— Ana, you really don't need to do that.}
+{color=aqua|Aire:— Ana, you really don't need to do that.}
 
-	{color=yellow|Anastasia:— Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
+{color=yellow|Anastasia:— Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
 
-	{color=aqua|Aire:— ...}""",
+{color=aqua|Aire:— ...}""",
 
 	SIGMUNDOPTION = "— Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
 
@@ -3286,7 +3286,7 @@ The princess notices Aire tensing up in response to the question.
 	SIGMUND_QUESTION5 = "Surely with such high stakes I'll be due some reward for my efforts.",
 
 	SIGMUND_ANSWER2 = """— Yah, it wouldn't be da problem, but it's actually da major one for the magic ore used for enchantable alloys.
-	Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+Dis is not a wide known information, but it seems da rebels knew where to strike.""",
 
 	SIGMUND_ANSWER3 = "— Great, I'll mark it on ya map.",
 	SIGMUND_ANSWER4 = "— Argh, darn, fine, as long as you deal with it.",
@@ -6342,7 +6342,7 @@ Anastasia: — W-what are you saying!? They aren't that much bigger... You don't
 	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
 	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
 	
-GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
+	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
 
 Aire: — Come on, [name] worked really hard for this moment, we should reward him.
 
@@ -6360,12 +6360,12 @@ Anastasia still seems ashamed, blushing deep red as she scoops her large breasts
 
 The girls' nipples glide over and press against each other as they work your cock with their tits and you can see them growing more visibly aroused as they continue. In a few minutes they are both sheened with perspiration from their efforts and your penis slips more easily in between their slick breasts.""",
 	
-GRYPHON_ANA_SEX_5 = """	
+	GRYPHON_ANA_SEX_5 = """	
 After some time, you can feel your orgasm beginning to build. Your hips twitch reflexively, thrusting in between the elf girl and the princess as they service you.
 
 You have to resist the urge to grab the two girls by the hair and press their chattering mouths against your cock. But your orgasm arrives like a charging bull, shooting cum into the air and all over the faces and bodies of the two women kneeling before you. """,
 
-GRYPHON_ANA_SEX_6 = """
+	GRYPHON_ANA_SEX_6 = """
 Anastasia looks first alarmed and then ashamed as a spray of thick semen spatters across her face and into her soft cleavage. A glob of cum lands in Aire's eye and she closes it quickly, sperm leaking from her eyelid and running down her cheek..
 
 Aire: — Hah! By the gods, that's a lot of cum, [Master]. Enough for two, even!
@@ -6382,13 +6382,11 @@ Aire: — Was this everything you imagined it would be, [Master]? Or was there a
 
 She looks back at Anastasia suggestively, who blushes again. """,
 
-GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
+	GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
 
 You order the two naked girls off the floor. Aire rises and takes Anastasia by the hand, leading her towards your bed. You follow close behind, admiring their pert asses. Aire lays down on her back on top of the bedcovers, spreading her slender elven legs. Anastasia looks back at you over her shoulder for a moment, as if unsure, but Aire pulls on her hand and draws the reluctant princess down until she is laying on top of the excited elf.""",
 
-
-
-GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
+	GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
 
 Your hand runs over the smooth curve of Anastasia's round ass, before slipping down between her legs. Her pussy is warm and wet with her own juices and she gasps softly in pleasure as your fingers enter her, her back arching when you stroke her clit.
 
@@ -6400,14 +6398,14 @@ Anastasia: — Stop saying silly things like this...
 
 Using both hands, you press Anastasia down on top of Aire and spread her legs wider. Their pussies stacked on top of each other, you penetrate Aire first, squeezing Anastasia between you as your cock pushes firmly into the elf girl's willing pussy. Aire cries out as you shove yourself all the way into her, stretching her tight cunt with your rock-hard penis.""",
 
-GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire's juices, slips easily into her wet hole. The two girls stare into each other's eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
+	GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire's juices, slips easily into her wet hole. The two girls stare into each other's eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
 
 You feel Anastasia's pussy grip your cock as she approaches orgasm and you pull out. The princess whines softly as you plunge your cock back into Aire, fucking her tight elven pussy hard as you use Anastasia's naked body to pin her to the bed.. 
 
 Aire clings to Anastasia as you fuck her to the edge of orgasm and then withdraw. She whimpers as your meat slips out of her, pussy twitching helplessly. When you thrust into Anastasia this time she presses her ass back into you, begging urgently to be fucked.""",
 
 
-GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
+	GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
 
 You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia's pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire's aching pussy with your cum. 
 The two girls lie in a tangled heap of slender limbs, flushed and panting for breath as you pull out of Aire. Your cum trickles from her as she lies underneath Anastasia. 

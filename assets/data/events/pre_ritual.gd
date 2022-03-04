@@ -238,8 +238,7 @@ var data = {
 		{text = "PRIESTESS_SWORD_TALK_7_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}],
-			tags = ['blackscreen_transition_common']
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}, {code = 'screen_black_transition', value = 1}],
 		} ]
 	},
 	
