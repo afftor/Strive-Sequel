@@ -1178,7 +1178,8 @@ func use_skill(skill_code, caster, target):
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		caster.process_event(variables.TR_TURN_F)
-			#use queued skills
+		caster.displaynode.rebuildbuffs()
+		#use queued skills
 		while !q_skills.empty():
 			var tdata = q_skills.pop_front()
 			var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)

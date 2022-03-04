@@ -423,9 +423,11 @@ var data = {
 		text = [{text = "SAVRA_RITUAL_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "SAVRA_RITUAL_START_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'make_quest_location', value = 'quest_ritual_location'},
-			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},
-			{code = 'update_city'}]
+			bonus_effects = [
+				{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},
+				{code = 'update_city'},
+				{code = 'make_quest_location', value = 'quest_ritual_location'},
+			]
 		}, {
 			code = 'close', text = "SAVRA_RITUAL_START_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'make_quest_location', value = 'quest_ritual_location'},

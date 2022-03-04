@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.1 Experimental'
+const gameversion = '0.6.1'
 
 #time
 signal hour_tick
@@ -1317,7 +1317,7 @@ func common_effects(effects):
 						match k.type:
 							'raw':
 								newcharacter = ResourceScripts.scriptdict.class_slave.new("common_scene_raw")
-								newcharacter.is_active = false
+#								newcharacter.is_active = false
 								newcharacter.generate_random_character_from_data(k.race, k.class, k.difficulty)
 								newcharacter.set_slave_category(k.slave_type)
 							'function':

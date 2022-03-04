@@ -84,7 +84,7 @@ func _ready():
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.test_mode
-	$JournalButton.connect("toggled", self, "open_journal")
+	$JournalButton.connect("pressed", self, "open_journal")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
@@ -115,15 +115,18 @@ func enslave_select():
 
 
 
-func open_journal(pressed):
-	if pressed:
+func open_journal():
+#	globals.common_effects( [{code = 'update_city'}])
+	if !$MansionJournalModule.visible:
 		ResourceScripts.core_animations.UnfadeAnimation($MansionJournalModule, 0.5)
+		$MansionJournalModule.visible = true
+		$MansionJournalModule.open()
 	else:
 		ResourceScripts.core_animations.FadeAnimation($MansionJournalModule, 0.5)
 		yield(get_tree().create_timer(0.5), "timeout")
-	$MansionJournalModule.visible = pressed
-	$MansionJournalModule.open()
-	gui_controller.windows_opened.append($MansionJournalModule) if pressed else gui_controller.windows_opened.erase($MansionJournalModule)
+		$MansionJournalModule.visible = false
+	
+	gui_controller.windows_opened.append($MansionJournalModule) if $MansionJournalModule.visible else gui_controller.windows_opened.erase($MansionJournalModule)
 
 
 func open(location):
@@ -215,8 +218,8 @@ func build_area_menu(area_actions):
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
 			(action.code == 'exotic_slave_trader')
-			&& int(ResourceScripts.game_globals.date) % 7 == 1
-			&& int(ResourceScripts.game_globals.date) % 14 != 1
+			&& int(ResourceScripts.game_globals.date) % 7 == 0
+			&& int(ResourceScripts.game_globals.date) % 14 != 0
 			&& ResourceScripts.game_globals.hour >= 1
 			&& ResourceScripts.game_globals.hour <= 3
 		):
@@ -226,6 +229,8 @@ func build_area_menu(area_actions):
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
+		elif action.code == 'exotic_slave_trader':
+			continue
 		elif action.code == 'elvish_slave_trader' or action.code == 'beastkin_slave_trader':
 			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)

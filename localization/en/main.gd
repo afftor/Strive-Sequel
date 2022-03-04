@@ -2212,6 +2212,12 @@ var TranslationDict = {
 	ENEMYGREG = "Greg",
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
+	
+	ENEMYLEON = "Leon",
+	ENEMYWHITE_STAG = "White Stag",
+	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
+	ENEMYELF_SPECTER = "Elf Specter",
+	ENEMYELF_SOLDIER = "Elven Sodier",
 
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",

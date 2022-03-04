@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent: WeakRef
 
 #gear
 var gear = {
@@ -51,7 +51,7 @@ func get_gear(slot):
 func equip(item, item_prev_id = null):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
 	#if duplicate != null:
-	if parent.checkreqs(item.reqs) == false:
+	if parent.get_ref().checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
 		if item_prev_id == null:
 			return
@@ -65,14 +65,14 @@ func equip(item, item_prev_id = null):
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
 		gear[i] = item.id
-	item.owner = parent.id
+	item.owner = parent.get_ref().id
 	#adding bonuses
-	parent.add_stat_bonuses(item.bonusstats)
+	parent.get_ref().add_stat_bonuses(item.bonusstats)
 	for e in item.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-		parent.apply_effect(effects_pool.add_effect(eff))
+		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('item', item.id)
-	parent.recheck_effect_tag('recheck_item')
+	parent.get_ref().recheck_effect_tag('recheck_item')
 
 func unequip(item):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
@@ -93,13 +93,13 @@ func unequip(item):
 		if gear[i] == item.id:
 			gear[i] = null
 	#removing bonuses
-	parent.remove_stat_bonuses(item.bonusstats)
+	parent.get_ref().remove_stat_bonuses(item.bonusstats)
 	
-	var arr = parent.find_eff_by_item(item.id)
+	var arr = parent.get_ref().find_eff_by_item(item.id)
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-	parent.recheck_effect_tag('recheck_item')
+	parent.get_ref().recheck_effect_tag('recheck_item')
 
 func clear_eqip():
 	for i in gear:

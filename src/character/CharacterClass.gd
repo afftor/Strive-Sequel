@@ -52,23 +52,24 @@ func get_combat_positon():
 	return combat_position
 
 func rebuild_parents():
-	statlist.parent = self
-	xp_module.parent = self
-	equipment.parent = self
-	skills.parent = self
-	travel.parent = self
-	effects.parent = self
-	food.parent = self
+	statlist.parent = weakref(self)
+	xp_module.parent = weakref(self)
+	equipment.parent = weakref(self)
+	skills.parent = weakref(self)
+	travel.parent = weakref(self)
+	effects.parent = weakref(self)
+	food.parent = weakref(self)
 
 
 func clean_references():
-	statlist.parent = null
-	xp_module.parent = null
-	equipment.parent = null
-	skills.parent = null
-	travel.parent = null
-	effects.parent = null
-	food.parent = null
+	pass
+#	statlist.parent = null
+#	xp_module.parent = null
+#	equipment.parent = null
+#	skills.parent = null
+#	travel.parent = null
+#	effects.parent = null
+#	food.parent = null
 
 #component functions tunneling
 func base_exp_set(value):

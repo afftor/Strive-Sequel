@@ -6,7 +6,7 @@ var traits = []
 var sex_traits = {}
 var negative_sex_traits = {}
 var unlocked_sex_traits = []
-var parent = null
+var parent: WeakRef = null
 var reported_pregnancy = false
 
 
@@ -46,7 +46,7 @@ func fix_serialize():
 	for tr in traits.duplicate():
 		if Traitdata.traits.has(tr): continue
 		traits.erase(tr)
-		var arr = parent.find_eff_by_trait(tr)
+		var arr = parent.get_ref().find_eff_by_trait(tr)
 		for e in arr:
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
@@ -85,8 +85,8 @@ func custom_stats_set(st, value):
 	if st == 'obedience':
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if st == 'name':
-		if ResourceScripts.game_party.relativesdata.has(parent.id):
-			ResourceScripts.game_party.relativesdata[parent.id].name = get_full_name()
+		if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
+			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
 
 
 func custom_stats_get():
@@ -247,10 +247,10 @@ func add_stat_bonuses(ls:Dictionary):
 			match statdata.statdata[rec].default_bonus:
 				'add': add_stat(rec, ls[rec])
 				'mul':
-#					print('debug warning + %s' % parent.id)
+#					print('debug warning + %s' % parent.get_ref().id)
 					mul_stat(rec, ls[rec])
 				'add_part':
-#					print('debug warning + %s' % parent.id)
+#					print('debug warning + %s' % parent.get_ref().id)
 					add_part_stat(rec, ls[rec])
 #			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
 #				add_bonus(rec + '_add', ls[rec])
@@ -278,10 +278,10 @@ func remove_stat_bonuses(ls:Dictionary):
 			match statdata.statdata[rec].default_bonus:
 				'add': add_stat(rec, ls[rec], true)
 				'mul':
-#					print('debug warning - %s' % parent.id)
+#					print('debug warning - %s' % parent.get_ref().id)
 					mul_stat(rec, ls[rec], true)
 				'add_part':
-#					print('debug warning - %s' % parent.id)
+#					print('debug warning - %s' % parent.get_ref().id)
 					add_part_stat(rec, ls[rec], true)
 #			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
 #				add_bonus(rec + '_add', ls[rec], true)
@@ -309,7 +309,7 @@ func add_bonus(b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
-#	parent.recheck_effect_tag('recheck_stats')
+#	parent.get_ref().recheck_effect_tag('recheck_stats')
 
 
 func get_stat_gain_rate(statname):
@@ -405,10 +405,10 @@ func add_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
 	traits.push_back(tr_code)
-	parent.add_stat_bonuses(trait.bonusstats)
+	parent.get_ref().add_stat_bonuses(trait.bonusstats)
 	for e in trait.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-		parent.apply_effect(effects_pool.add_effect(eff))
+		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tr_code)
 	if tr_code == 'undead':
 		statlist.food_consumption = 0
@@ -416,25 +416,25 @@ func add_trait(tr_code):
 #		statlist.sexuals -= 50
 		statlist.resists['dark'] += 50
 		statlist.resists['light'] -= 50
-		parent.food.food_consumption_rations = false
-		if parent.get_static_effect_by_code("work_rule_ration") != null:
-			parent.remove_static_effect_by_code('work_rule_ration')
-		if parent.get_static_effect_by_code("work_rule_contraceptive") != null:
-			parent.remove_static_effect_by_code('work_rule_contraceptive')
-		parent.set_work_rule("ration", false)
-		parent.set_work_rule("contraceptive", false)
-	parent.recheck_effect_tag('recheck_trait')
+		parent.get_ref().food.food_consumption_rations = false
+		if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
+			parent.get_ref().remove_static_effect_by_code('work_rule_ration')
+		if parent.get_ref().get_static_effect_by_code("work_rule_contraceptive") != null:
+			parent.get_ref().remove_static_effect_by_code('work_rule_contraceptive')
+		parent.get_ref().set_work_rule("ration", false)
+		parent.get_ref().set_work_rule("contraceptive", false)
+	parent.get_ref().recheck_effect_tag('recheck_trait')
 
 func remove_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if !traits.has(tr_code): return
 	traits.erase(tr_code)
-	parent.remove_stat_bonuses(trait.bonusstats)
-	var arr = parent.find_eff_by_trait(tr_code)
+	parent.get_ref().remove_stat_bonuses(trait.bonusstats)
+	var arr = parent.get_ref().find_eff_by_trait(tr_code)
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-	parent.recheck_effect_tag('recheck_trait')
+	parent.get_ref().recheck_effect_tag('recheck_trait')
 
 func check_trait(trait):
 	return (traits.has(trait) or sex_traits.has(trait) or negative_sex_traits.has(trait))
@@ -452,7 +452,7 @@ func add_sex_trait(code, known = false):
 			unlocked_sex_traits.push_back(code)
 		if !sex_traits.has(code):
 			sex_traits[code] = known
-			if parent.is_players_character:
+			if parent.get_ref().is_players_character:
 				var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
 				globals.text_log_add('char', text)
 
@@ -511,8 +511,8 @@ func get_stat_data():
 
 #AI-related stuff
 func need_heal(): #stub. borderlines are subject to tuning
-	if parent.has_status('banish'): return -1.0
-	var rate = parent.hp * 1.0 / self.statlist.hpmax
+	if parent.get_ref().has_status('banish'): return -1.0
+	var rate = parent.get_ref().hp * 1.0 / self.statlist.hpmax
 	if rate < 0.2: return 1.0
 	if rate < 0.4: return 0.5
 	if rate < 0.6: return 0.0
@@ -521,7 +521,7 @@ func need_heal(): #stub. borderlines are subject to tuning
 
 #generating char stuff
 func fill_masternoun():
-	if parent.has_profession('master'):
+	if parent.get_ref().has_profession('master'):
 		if statlist.sex == 'male':
 			statlist.masternoun = tr('PROFMASTER').to_lower()
 		else:
@@ -558,12 +558,12 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		gendata.race = races[randi()%races.size()]
 	#figuring out the race
 
-	parent.create(gendata.race, gendata.sex, gendata.age)
+	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
 	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
 	
 #	if randf() <= 0.003:
-#		desired_class = parent.generate_ea_character(gendata, desired_class)
+#		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
 	var slaveclass = desired_class
 	if slaveclass == null:
 		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])
@@ -623,34 +623,34 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 			continue
 		var classarray = []
 		if randf() >= 0.85:
-			classarray = parent.get_class_list('any', parent)
+			classarray = parent.get_ref().get_class_list('any', parent.get_ref())
 		else:
-			classarray = parent.get_class_list(slaveclass, parent)
+			classarray = parent.get_ref().get_class_list(slaveclass, parent.get_ref())
 		if classarray != null && classarray.size() > 0:
-			parent.unlock_class(classarray[randi()%classarray.size()].code, true)
+			parent.get_ref().unlock_class(classarray[randi()%classarray.size()].code, true)
 		classcounter -= 1
 
 	var traitarray = []
 	#assign traits
 	for i in Traitdata.sex_traits.values():
-		if i.negative == true && i.random_generation == true && parent.checkreqs(i.acquire_reqs) == true:
+		if i.negative == true && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
 	var rolls = 2
 	while rolls > 0:
 		var number = randi()%traitarray.size()
 		var newtrait = traitarray[number]
-		parent.add_sex_trait(newtrait.code)
+		parent.get_ref().add_sex_trait(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
 	traitarray.clear()
 	rolls = 1
 	for i in Traitdata.sex_traits.values():
-		if i.negative == false && i.random_generation == true && parent.checkreqs(i.acquire_reqs) == true:
+		if i.negative == false && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
 	while rolls > 0:
 		var number = randi()%traitarray.size()
 		var newtrait = traitarray[number]
-		parent.add_sex_trait(newtrait.code)
+		parent.get_ref().add_sex_trait(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
 
@@ -666,7 +666,7 @@ func generate_simple_fighter(data):
 #	statlist.combat_skills = data.skills
 #	if !data.skills.has("ranged_attack"):
 #		combat_skills += ['attack']
-	parent.npc_reference = data.code
+	parent.get_ref().npc_reference = data.code
 	statlist.is_person = false
 	statlist.xpreward = data.xpreward
 	statlist.loottable = data.loot
@@ -702,7 +702,7 @@ func setup_baby(mother, father):
 		temp_race = race2.replace("Beastkin", "Halfkin")
 	elif race1.find('Beastkin') >= 0 && race2.find("Beastkin") < 0:
 		temp_race = race1.replace("Beastkin", "Halfkin")
-	parent.create(temp_race, 'random', 'teen')
+	parent.get_ref().create(temp_race, 'random', 'teen')
 	for i in variables.inheritedassets:
 		if randf() >= 0.5:
 			statlist[i] = father.statlist.statlist[i]
@@ -718,13 +718,13 @@ func setup_baby(mother, father):
 	statlist.relatives.father = father.id
 	baby_transform()
 	var pregdata = {}
-	pregdata.baby = parent.id
+	pregdata.baby = parent.get_ref().id
 	pregdata.duration = variables.pregduration
 	mother.set_stat('pregnancy', pregdata.duplicate())
-	characters_pool.move_to_baby(parent.id)
-	ResourceScripts.game_party.connectrelatives(parent.id, mother.id, "mother")
-	ResourceScripts.game_party.connectrelatives(parent.id, father.id, "father")
-#	ResourceScripts.game_party.babies[parent.id] = parent
+	characters_pool.move_to_baby(parent.get_ref().id)
+	ResourceScripts.game_party.connectrelatives(parent.get_ref().id, mother.id, "mother")
+	ResourceScripts.game_party.connectrelatives(parent.get_ref().id, father.id, "father")
+#	ResourceScripts.game_party.babies[parent.get_ref().id] = parent.get_ref()
 #	if mother.get_stat('slave_class') != 'master':
 #		statlist.slave_class = mother.get_stat('slave_class')
 #	else:
@@ -780,8 +780,8 @@ func create(temp_race, temp_gender, temp_age):
 				apply_custom_bodychange(i, statlist[i])
 #	add_trait('core_trait')
 #	learn_c_skill('attack')
-	parent.hp = get_stat('hpmax')
-	parent.mp = get_stat('mpmax')
+	parent.get_ref().hp = get_stat('hpmax')
+	parent.get_ref().mp = get_stat('mpmax')
 
 func get_racial_features():
 	var race_template = races.racelist[statlist.race]
@@ -806,9 +806,9 @@ func get_racial_features():
 
 	if race_template.has("combat_skills"):
 		for i in race_template.combat_skills:
-			parent.learn_c_skill(i)
+			parent.get_ref().learn_c_skill(i)
 
-	parent.food.get_racial_features(statlist.race)
+	parent.get_ref().food.get_racial_features(statlist.race)
 
 	var array = []
 	if race_template.has('personality'):
@@ -869,7 +869,7 @@ var skill_shortcuts = {
 func apply_custom_bodychange(target, part):
 	statlist[target] = part
 	for i in ResourceScripts.descriptions.bodypartsdata[target][part].bodychanges:
-		if parent.checkreqs(i.reqs) == true:
+		if parent.get_ref().checkreqs(i.reqs) == true:
 			var newvalue = i.value
 			if typeof(newvalue) == TYPE_ARRAY:
 				if typeof(newvalue[0]) == TYPE_ARRAY:
@@ -1006,23 +1006,23 @@ func tick():
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
-		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !parent.has_status('pregnant'):
+		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !parent.get_ref().has_status('pregnant'):
 			if reported_pregnancy == false:
 				var text = tr("LOGREPORTPREGNANCY")
-				if parent.has_profession('master'): text = tr('LOGREPORTPREGNANCYMASTER')
+				if parent.get_ref().has_profession('master'): text = tr('LOGREPORTPREGNANCYMASTER')
 				reported_pregnancy = true
 				globals.text_log_add('char', translate(text))
 			if !check_trait('breeder'):
 				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-				parent.apply_effect(effects_pool.add_effect(eff))
+				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration * 3 <= variables.pregduration:
-			if check_trait('breeder') and !parent.has_status('pregnant') or !check_trait('breeder') and !parent.has_status('heavy_pregnant'):
+			if check_trait('breeder') and !parent.get_ref().has_status('pregnant') or !check_trait('breeder') and !parent.get_ref().has_status('heavy_pregnant'):
 				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-				parent.apply_effect(effects_pool.add_effect(eff))
+				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
-			parent.remove_all_temp_effects_tag('pregnant')
-			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent})
+			parent.get_ref().remove_all_temp_effects_tag('pregnant')
+			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
 
 
 func is_uncontrollable():
@@ -1059,11 +1059,11 @@ func translate(text):
 
 #	var masternoun = 'master'
 	var tempmasternoun = statlist.masternoun
-	if parent != null:
+	if parent.get_ref() != null:
 		if tempmasternoun in ['master','mistress']:
-			if input_handler.meowingcondition(parent) == true:tempmasternoun = 'myaster'
+			if input_handler.meowingcondition(parent.get_ref()) == true:tempmasternoun = 'myaster'
 			if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
-				if input_handler.meowingcondition(parent) == true:tempmasternoun = 'mewstress'
+				if input_handler.meowingcondition(parent.get_ref()) == true:tempmasternoun = 'mewstress'
 	else:
 		print('error in character %s - no root object' % statlist.name)
 
@@ -1090,7 +1090,7 @@ func can_add_tattoo(slot, code):
 	var template = Traitdata.tattoodata[code]
 	if tattoo[slot] == code : return false
 	if template.has('conditions'):
-		if !parent.checkreqs(template.conditions): return false
+		if !parent.get_ref().checkreqs(template.conditions): return false
 	if ResourceScripts.game_res.if_has_material(template.item, 'lt', 1): return false
 	if !template.can_repeat:
 		for s in tattoo:
@@ -1106,7 +1106,7 @@ func add_tattoo(slot, code) -> bool:
 		if !slots.has(slot): continue
 		for e in template.effects[slots]:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-			parent.apply_effect(effects_pool.add_effect(eff))
+			parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 			eff.set_args('tattoo', "%s_%s" % [slot, code])
 	tattoo[slot] = code
 	return true
@@ -1114,7 +1114,7 @@ func add_tattoo(slot, code) -> bool:
 
 func remove_tattoo(slot):
 	if tattoo[slot] == null: return
-	var arr = parent.find_eff_by_tattoo(slot, tattoo[slot])
+	var arr = parent.get_ref().find_eff_by_tattoo(slot, tattoo[slot])
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()

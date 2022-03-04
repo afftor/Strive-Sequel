@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent: WeakRef
 
 
 #food
@@ -64,11 +64,11 @@ func create():
 
 
 func get_food():
-	if parent.check_trait('undead'): return
+	if parent.get_ref().check_trait('undead'): return
 	var eaten = false
-	if food_consumption_rations == true && parent.get_static_effect_by_code('work_rule_ration') == null:
-		parent.add_stat('food_consumption', 3)
-	var food_consumption = parent.get_stat('food_consumption')
+	if food_consumption_rations == true && parent.get_ref().get_static_effect_by_code('work_rule_ration') == null:
+		parent.get_ref().add_stat('food_consumption', 3)
+	var food_consumption = parent.get_ref().get_stat('food_consumption')
 	for j in ['high','med','low']:
 		for i in food_filter[j]:
 			var food = Items.materiallist[i]
@@ -83,7 +83,7 @@ func get_food():
 							check = true
 					if check == false:
 						var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_food_like)
-						parent.apply_effect(effects_pool.add_effect(eff))
+						parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 				else:
 					var check = false
 					for k in food_hate:
@@ -92,27 +92,27 @@ func get_food():
 					if check == true:
 						if food.tags.size() <= 1:
 							var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_food_dislike)
-							parent.apply_effect(effects_pool.add_effect(eff))
+							parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 				break
 		if eaten == true:
 			starvation = false
 			break
 	
-	if food_consumption_rations == true && parent.get_static_effect_by_code('work_rule_ration') == null:
+	if food_consumption_rations == true && parent.get_ref().get_static_effect_by_code('work_rule_ration') == null:
 		food_consumption_rations = false
-		parent.add_stat('food_consumption', 3, true)
+		parent.get_ref().add_stat('food_consumption', 3, true)
 	
 	if eaten == false:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_starve)
-		parent.apply_effect(effects_pool.add_effect(eff))
+		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		starvation = true
 		
-		globals.text_log_add('food', parent.get_short_name() + ": not enough food. Authority reduced.")
+		globals.text_log_add('food', parent.get_ref().get_short_name() + ": not enough food. Authority reduced.")
 
 
 func predict_food():
-	if parent.check_trait('undead'): return {}
-	var food_consumption = parent.get_stat('food_consumption')
+	if parent.get_ref().check_trait('undead'): return {}
+	var food_consumption = parent.get_ref().get_stat('food_consumption')
 	var food = food_love
 	var res = {}
 	res[food] = food_consumption
