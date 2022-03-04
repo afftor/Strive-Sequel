@@ -77,7 +77,7 @@ func advance_day():
 	ResourceScripts.game_world.advance_day()
 	
 	#weeks check
-	if int(date) % variables.DaysPerWeek == 1:
+	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
 		reset_limits()
 	
 	if int(date) % input_handler.globalsettings.autosave_frequency == 0:
