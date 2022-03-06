@@ -49,7 +49,7 @@ func set_combat_position(pos):
 	combat_position = pos
 
 func get_combat_positon():
-	return combat_position
+	return int(combat_position)
 
 func rebuild_parents():
 	statlist.parent = weakref(self)
