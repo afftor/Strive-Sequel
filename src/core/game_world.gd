@@ -86,7 +86,7 @@ func get_default_area_name():
 func advance_day():
 	for i in areas.values():
 		update_guilds(i)
-		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1:
+		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1:
 			ResourceScripts.world_gen.update_area_shop(i)
 			for k in i.locations.values():
 				if k.has('shop'):
@@ -151,12 +151,12 @@ func update_guilds(area):
 					complete_quest(quest, "failed")
 					cleararray.append(quest.id)
 			else:
-				if quest.state == 'complete' || int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1:
+				if quest.state == 'complete' or int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1 or variables.guild_quest_update_time == 1:
 					cleararray.append(quest.id)
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
 			area.quests.factions[faction].erase(i)
-	if int(ResourceScripts.game_globals.date) % variables.guild_slave_update_time == 1:
+	if int(ResourceScripts.game_globals.date) % variables.guild_slave_update_time == 1 or variables.guild_slave_update_time == 1:
 		for i in area.factions.values():
 			for k in i.slaves:
 				characters_pool.get_char_by_id(k).is_active = false
@@ -165,7 +165,7 @@ func update_guilds(area):
 #			while i.slaves.size() < i.slavenumber:
 #				ResourceScripts.world_gen.make_slave_for_guild(i)
 	
-	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1:
+	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1 or variables.guild_quest_update_time == 1:
 		for faction in area.quests.factions:
 			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
 
