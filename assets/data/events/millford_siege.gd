@@ -368,7 +368,7 @@ var data = {
 		}, {
 			reqs = [],
 			image = 'city_guards', tags = ['dialogue_scene'],
-			text = [{text = "DIVINE_SYMBOL_20_1", reqs = []}],
+			text = [{text = "DIVINE_SYMBOL_20_2", reqs = []}],
 			options = [ {
 				code = 'quest_fight', args = 'two_guards', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 			}],

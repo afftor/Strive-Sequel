@@ -3882,14 +3882,18 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
 	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
-	DIVINE_SYMBOL_20_1 = """{color=aqua|Second Guard:— Damnit, what does he want now? }
+	DIVINE_SYMBOL_20_1 = """{color=green|Success}
+
+{color=aqua|Second Guard:— Damnit, what does he want now? }
 
 {color=yellow|First Guard:— Probably figured you've been sleeping during the last watch.}
 
 {color=aqua|Second Guard:— You didn't tell him that, did you? Fuck, lets go. }
 
 They leave the building, leaving the door unguarded.""",
-	DIVINE_SYMBOL_20_2 = "{color=aqua|Second Guard:— Bullshit, they're intruders. Get them!}",
+	DIVINE_SYMBOL_20_2 = """{color=red|Failure}
+
+{color=aqua|Second Guard:— Bullshit, they're intruders. Get them!}""",
 	DIVINE_SYMBOL_21 = """Deciding there's no room for negotiation, you prepare for a fight.""",
 	DIVINE_SYMBOL_22 = """As you knock out the guards you are finally able to approach the doors.""",
 	DIVINE_SYMBOL_23 = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.

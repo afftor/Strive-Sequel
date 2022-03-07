@@ -182,7 +182,7 @@ var data = {
 	white_stag_encounter_9 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'white_stag',
-		text = [{text = 'WHITE_STAG_ENCOUNTER_7_3', reqs = []}], 
+		text = [{text = 'WHITE_STAG_ENCOUNTER_9_1', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_10', text = "WHITE_STAG_ENCOUNTER_9_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'smith', check = true}]}], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
@@ -202,7 +202,7 @@ var data = {
 		reqs = [], character2 = 'zephyra', character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_10_4', reqs = []}], 
 		options = [ {
-			code = 'white_stag_encounter_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'white_stag_encounter_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -722,7 +722,7 @@ var data = {
 	lira_encounter_5_2_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'lira',
-		text = [{text = 'LIRA_ENCOUNTER_5_1_1', reqs = []} ], 
+		text = [{text = 'LIRA_ENCOUNTER_5_2_1', reqs = []} ], 
 		options = [ {
 			code = 'lira_encounter_5_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -731,7 +731,7 @@ var data = {
 	lira_encounter_5_2_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], 
-		text = [{text = 'LIRA_ENCOUNTER_5_1_2', reqs = []} ], 
+		text = [{text = 'LIRA_ENCOUNTER_5_2_2', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage4'},

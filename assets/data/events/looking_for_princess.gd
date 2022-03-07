@@ -250,8 +250,8 @@ var data = {
 
 	looking_for_princess_elven_1 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
-		text = [{text = "LOOKING_FOR_PRINCESS_22", reqs = [{type = 'decision', value = 'interrogation_success', check = false}]},
-		{text = "LOOKING_FOR_PRINCESS_23", reqs = [{type = 'decision', value = 'interrogation_success', check = true}]}],
+		text = [{text = "LOOKING_FOR_PRINCESS_22", reqs = [{type = 'decision', value = 'interrogation_success', check = true}]},
+		{text = "LOOKING_FOR_PRINCESS_23", reqs = [{type = 'decision', value = 'interrogation_success', check = false}]}],
 		options = [ {
 			code = 'looking_for_princess_elven_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
