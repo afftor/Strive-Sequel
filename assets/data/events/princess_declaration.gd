@@ -107,10 +107,20 @@ var data = {
 		],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
-			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = false}], bonus_effects = [
 				{code = 'make_story_character', value = 'Anastasia'}]
+			}, 
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
+				{code = 'make_story_character', value = 'AnastasiaBroken'}]
+			}, # broken part
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = true}, {type = 'decision', value = 'bracelet_returned', check = true}], bonus_effects = [{code = 'unique_character_changes',
+					value = 'anastasiaBroken',
+					args = [
+						{code = 'create_and_equip', item = "anastasia_broken_bracelet", parts = {}}
+						],
+			}] # broken part
 			},
-			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [{code = 'unique_character_changes',
+			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = false}], bonus_effects = [{code = 'unique_character_changes',
 					value = 'anastasia',
 					args = [
 						{code = 'create_and_equip', item = "anastasia_bracelet", parts = {}}
@@ -123,7 +133,7 @@ var data = {
 				{code = 'make_story_character', value = 'Aire'}]
 			},
 			{text = '', reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [ # broken part
 					{code = 'wits_factor', operant = '=', value = 1},
 					{code = 'wits', operant = '=', value = 3},
 					{code = 'charm', operant = '=', value = 8},

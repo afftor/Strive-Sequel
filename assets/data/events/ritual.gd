@@ -485,7 +485,7 @@ var data = {
 	},
 	
 	savra_talk_6 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene', 'active_character_translate', 'blackscreen_transition_common'],
 		reqs = [], character = "savra",
 		text = [{text = 'SAVRA_TALK_6', reqs = [], previous_dialogue_option = 0},
 		{text = 'SAVRA_TALK_7_1', reqs = [], previous_dialogue_option = 1},
@@ -503,7 +503,7 @@ var data = {
 	},
 	
 	savra_talk_6_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'],
 		reqs = [], character = "savra",
 		text = [{text = 'SAVRA_TALK_6', reqs = [], previous_dialogue_option = 0},
 		{text = 'SAVRA_TALK_7_1', reqs = [], previous_dialogue_option = 1},
@@ -519,7 +519,7 @@ var data = {
 	},
 	
 	savra_talk_6_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'],
 		reqs = [], character = "savra",
 		text = [{text = 'SAVRA_TALK_6', reqs = [], previous_dialogue_option = 0},
 		{text = 'SAVRA_TALK_7_1', reqs = [], previous_dialogue_option = 1},

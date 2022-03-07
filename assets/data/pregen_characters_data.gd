@@ -175,7 +175,7 @@ var pregen_characters = {
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	AnastasiaBroken = {
-		code = 'anastasia',
+		code = 'anastasiaBroken',
 		name = 'Anastasia',
 		surname = '',
 		race = 'Human',

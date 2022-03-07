@@ -1417,6 +1417,24 @@ var itemlist = {
 		tags = ['no_random'],
 		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
 	},
+	
+	anastasia_broken_bracelet = {#
+		code = 'anastasia_broken_bracelet',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['hands'],
+		price = 500,
+		icon = load("res://assets/images/iconsitems/item_bracelet.png"),
+		tier = 'hard',
+		reqs = [{code = 'unique', value = 'anastasiaBroken'}],
+		effects = [],
+		tags = ['no_random'],
+		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
+	},
 
 	daisy_dress = {
 		code = 'daisy_dress',
