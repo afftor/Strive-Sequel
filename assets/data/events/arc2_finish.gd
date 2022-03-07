@@ -944,10 +944,10 @@ var data = {
 		text = [{text = 'CEREMONY_3', reqs = []},],
 		options = [ {
 			code = 'ceremony_heleviel_1', text = "CEREMONY_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			change_dialogue_type = 1,
+			change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'HelevielPriestess'}]
 		}, {
 			code = 'ceremony_lira_1', text = "CEREMONY_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			change_dialogue_type = 1,
+			change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'LiraPriestess'}]
 		}, ]
 	},
 	

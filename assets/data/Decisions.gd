@@ -75,5 +75,7 @@ var decisions = {
 	maePregnant = "Mae got pregnant at ritual ritual_1_2",
 	canVisitLeon = "Allows to visit Leon in a day, after_ritual_good_2_2 and others close",
 	canStartRitual = "Allows to start ritual in a day",
-	startedAct2 = "",
+	startedAct2 = "Needed to fix loading on beta version",
+	LiraPriestess = "Lira becomes a priestess in the end of act2 ceremony_3",
+	HelevielPriestess = "Heleviel becomes a priestess in the end of act2 ceremony_3",
 }

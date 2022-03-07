@@ -5379,6 +5379,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 
 	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
 	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
+	ITEMANASTASIA_BROKEN_BRACELET = "Anastasia's Bracelet",
+	ITEMANASTASIA_BROKEN_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
 
 	ITEMDAISY_DRESS = "Daisy's Dress",
 	ITEMDAISY_DRESSDESCRIPT = "A custom-tailored uniform designed specifically for a bunny girl in your possession. It is uncommonly durable and accentuates her stronger points.\n\n{color=yellow|Only equippable by Daisy} ",

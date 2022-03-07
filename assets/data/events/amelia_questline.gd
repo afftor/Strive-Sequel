@@ -209,7 +209,7 @@ var data = {
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}]
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}, {code = "update_city"}]
 		}, ],
 	},
 	
@@ -223,7 +223,7 @@ var data = {
 				code = 'close',
 				text = "AMELIA_HERBS_ELF_OPTION_2_2_DONE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 				bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'},
-				{code = 'material_change', operant = '+', material = 'herbs', value = 1}]
+				{code = 'material_change', operant = '+', material = 'herbs', value = 1}, {code = "update_city"}]
 				} ],
 			}, {
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 65}]}],
@@ -241,7 +241,7 @@ var data = {
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'},
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}, {code = "update_city"},
 			{code = 'material_change', operant = '+', material = 'herbs', value = 1},
 			{code = 'money_change', operant = '-', value = 300}]
 		}, ],
@@ -260,17 +260,17 @@ var data = {
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_4_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'},
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}, {code = "update_city"},
 			{code = 'material_change', operant = '+', material = 'herbs', value = 1}]
 		}, ],
 	},
 	
 	amelia_herbs_elf_quest1 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
 		text = [{text = "AMELIA_HERBS_ELFQUEST1_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'},
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}, {code = "update_city"},
 			{code = 'material_change', operant = '+', material = 'herbs', value = 1}]
 		}, ],
 	},
@@ -285,10 +285,10 @@ var data = {
 	
 	amelia_herbs_elf_quest2_2 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'elf_priestess',
-		text = [{text = "AMELIA_HERBS_ELFQUEST2_START_1", reqs = []}],
+		text = [{text = "AMELIA_HERBS_ELFQUEST2_START_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}]
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage3'}, {code = "update_city"}]
 		}, ],
 	},
 	
