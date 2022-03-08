@@ -123,7 +123,7 @@ var data = {
 		{text = 'WHITE_STAG_ENCOUNTER_9_2AND3', reqs = [], previous_dialogue_option = 4},
 		{text = 'WHITE_STAG_ENCOUNTER_10_5_1', reqs = [], previous_dialogue_option = 5},], 
 		options = [ {
-			code = 'quest_fight', args = 'white_stag',
+			code = 'quest_fight', args = 'white_stag_human',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},]
 	},
@@ -182,7 +182,7 @@ var data = {
 	white_stag_encounter_9 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'white_stag',
-		text = [{text = 'WHITE_STAG_ENCOUNTER_7_3', reqs = []}], 
+		text = [{text = 'WHITE_STAG_ENCOUNTER_9_1', reqs = []}], 
 		options = [ {
 			code = 'white_stag_encounter_10', text = "WHITE_STAG_ENCOUNTER_9_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'smith', check = true}]}], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
@@ -202,7 +202,7 @@ var data = {
 		reqs = [], character2 = 'zephyra', character = 'white_stag',
 		text = [{text = 'WHITE_STAG_ENCOUNTER_10_4', reqs = []}], 
 		options = [ {
-			code = 'white_stag_encounter_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'white_stag_encounter_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -229,7 +229,7 @@ var data = {
 		reqs = [], character = "leon",
 		text = [{text = 'WHITE_STAG_ENCOUNTER_12', reqs = []}], 
 		options = [ {
-			code = 'quest_fight', args = 'deer',
+			code = 'quest_fight', args = 'white_stag',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
 	},
@@ -252,8 +252,10 @@ var data = {
 		text = [{text = 'WHITE_STAG_ENCOUNTER_14', reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}, 
-			{code = 'update_city'}]
+			bonus_effects = [#{code = 'complete_quest', value = 'sword_artifact_quest'}, 
+				{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage16'},
+				{code = 'update_city'}
+			]
 		} ]
 	},
 	
@@ -602,6 +604,7 @@ var data = {
 		text = [{text = 'ERLERN_ENCOUNTER_START', reqs = [],}], 
 		options = [ {
 			code = 'erlern_encounter_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}],
 		}, ]
 	},
 	
@@ -691,7 +694,7 @@ var data = {
 		options = [ {
 			code = 'lira_encounter_5_1_1', text = "LIRA_ENCOUNTER_4_OPTION_1", select_person = true, reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'lira_encounter_5_2_1', text = "LIRA_ENCOUNTER_4_OPTION_2", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true}, {type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'},], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {
 			code = 'close', text = "LIRA_ENCOUNTER_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 		}, ]
@@ -719,7 +722,7 @@ var data = {
 	lira_encounter_5_2_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'lira',
-		text = [{text = 'LIRA_ENCOUNTER_5_1_1', reqs = []} ], 
+		text = [{text = 'LIRA_ENCOUNTER_5_2_1', reqs = []} ], 
 		options = [ {
 			code = 'lira_encounter_5_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -728,7 +731,7 @@ var data = {
 	lira_encounter_5_2_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], 
-		text = [{text = 'LIRA_ENCOUNTER_5_1_2', reqs = []} ], 
+		text = [{text = 'LIRA_ENCOUNTER_5_2_2', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage4'},
@@ -911,35 +914,40 @@ var data = {
 		text = [{text = 'CEREMONY_1', reqs = []},],
 		options = [ {
 			code = 'ceremony_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			change_dialogue_type = 2,
 		}, ]
 	},
 	
-	# TODO LIST: white screen, teleport change, open city change,
+	# TODO LIST: teleport change
 	ceremony_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'erlen', character2 = 'elf_priestess', 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
+		reqs = [], character = 'elf_priestess', character_alpha = 180,
+		character2 = 'lira', character2_alpha = 180,
+		custom_background = "whitescreen",
+		scene_type = "technical_scene",
+		save_scene_to_gallery = false,
 		common_effects = [ {code = 'play_sound', value = 'doorsmash'} ,
 			{code = 'screen_shake', strength = 3, length = 0.3},],
 		text = [{text = 'CEREMONY_2', reqs = []},],
 		options = [ {
 			code = 'ceremony_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			change_dialogue_type = 2,
 		}, ]
 	},
 	
 	ceremony_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
-		reqs = [], #character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'elf_priestess', character_alpha = 180,
+		character2 = 'lira', character2_alpha = 180,
 		custom_background = "whitescreen",
 		scene_type = "technical_scene",
-		save_scene_to_gallery = true,
+		save_scene_to_gallery = false,
 		text = [{text = 'CEREMONY_3', reqs = []},],
 		options = [ {
 			code = 'ceremony_heleviel_1', text = "CEREMONY_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			change_dialogue_type = 1,
+			change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'HelevielPriestess'}]
 		}, {
 			code = 'ceremony_lira_1', text = "CEREMONY_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			change_dialogue_type = 1,
+			change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'LiraPriestess'}]
 		}, ]
 	},
 	
@@ -1040,7 +1048,7 @@ var data = {
 	},
 	
 	ceremony_lira_4_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1', reqs = []},],
 		options = [ {
@@ -1054,6 +1062,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1_1', reqs = []},],
+		common_effects = [{code = 'make_story_character', value = 'Heleviel', recruit_from_location = true}],
 		options = [ {
 			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
@@ -1072,7 +1081,7 @@ var data = {
 	
 	demon_priestess_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
-		reqs = [], character = 'demon_female', character2 = 'elf_priestess',
+		reqs = [], character = 'elf_priestess', character2 = 'demon_female',
 		text = [{text = 'DEMON_PRIESTESS_1', reqs = []},],
 		options = [ {
 			code = 'demon_priestess_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
@@ -1081,7 +1090,7 @@ var data = {
 	
 	demon_priestess_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = 'demon_female', character2 = 'elf_priestess',
+		reqs = [], character = 'elf_priestess', character2 = 'demon_female',
 		text = [{text = 'DEMON_PRIESTESS_2', reqs = []},],
 		options = [ {
 			code = 'demon_priestess_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 

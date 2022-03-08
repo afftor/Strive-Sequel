@@ -663,6 +663,16 @@ func handle_characters_sprites(scene):
 			else:
 				$CharacterImage2.hide()
 #			$CharacterImage2.show()
+	
+	#handle modulation
+#	$CharacterImage.self_modulate.a = 255
+#	$CharacterImage2.self_modulate.a = 255
+#	if scene.has("character_alpha"):
+#		$CharacterImage.self_modulate.a = scene.character_alpha
+#	if scene.has("character2_alpha"):
+#		$CharacterImage2.self_modulate.a = scene.character2_alpha
+	
+	#handle unique character script
 	if scene.has("unique_character"):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
@@ -890,12 +900,6 @@ func select_option(number):
 	input_handler.dialogue_option_selected(option) #need to remove this at next rework
 	if option.has('bonus_effects'):
 		globals.common_effects(option.bonus_effects)
-	
-	if option.has('tags'):
-		if option.tags.has("blackscreen_transition_common"):
-			ResourceScripts.core_animations.BlackScreenTransition(1)
-			doing_transition = true
-			yield(get_tree().create_timer(1), "timeout")
 	
 	if option.has('select_person'):
 		select_person_for_next_event(code)

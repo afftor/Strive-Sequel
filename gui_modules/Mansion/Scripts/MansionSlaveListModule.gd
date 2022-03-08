@@ -413,7 +413,7 @@ func update_button(newbutton):
 			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		else:
 			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
-		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d hours" % ceil(person.xp_module.predict_obed_time())) 
+		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d turns" % ceil(person.xp_module.predict_obed_time())) 
 	else:
 		newbutton.get_node("obed").text = "∞"
 

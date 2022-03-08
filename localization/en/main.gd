@@ -1553,13 +1553,13 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
 	UPGRADELUXURY_ROOMS = "Luxury Rooms",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will reduce Obedience Drain to its residents. ",
-	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
-	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
-	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
-	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
-	UPGRADELUXURYROOMSBONUS5 = "Increases maximum number of avilable Luxury Rooms to 6.",
-	UPGRADELUXURYROOMSBONUS6 = "Increases maximum number of avilable Luxury Rooms to 7.",
-	UPGRADELUXURYROOMSBONUS7 = "Increases maximum number of avilable Luxury Rooms to 8.",
+	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of available Luxury Rooms to 2.",
+	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of available Luxury Rooms to 3.",
+	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of available Luxury Rooms to 4.",
+	UPGRADELUXURYROOMSBONUS4 = "Increases maximum number of available Luxury Rooms to 5.",
+	UPGRADELUXURYROOMSBONUS5 = "Increases maximum number of available Luxury Rooms to 6.",
+	UPGRADELUXURYROOMSBONUS6 = "Increases maximum number of available Luxury Rooms to 7.",
+	UPGRADELUXURYROOMSBONUS7 = "Increases maximum number of available Luxury Rooms to 8.",
 
 
 	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of participants in sex interactions to 3',
@@ -2212,6 +2212,12 @@ var TranslationDict = {
 	ENEMYGREG = "Greg",
 	ENEMYAIRE = "Aire",
 	ENEMYKURDAN = "Kurdan",
+	
+	ENEMYLEON = "Leon",
+	ENEMYWHITE_STAG = "White Stag",
+	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
+	ENEMYELF_SPECTER = "Elf Specter",
+	ENEMYELF_SOLDIER = "Elven Sodier",
 
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -2266,7 +2272,7 @@ var TranslationDict = {
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
 	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
 	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
-	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit ‘Confirm' after selecting the characters you've sent. ",
+	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit 'Confirm' after selecting the characters you've sent. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task. Keep in mind that working will usually reduce character's obedience and that crafts require to assign items to make first.",
@@ -3076,7 +3082,7 @@ Merc Leader:— Look we all want to punch out early, but just to make sure you'r
 	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
 	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
 
-	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.}",
+	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
 	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
 	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
@@ -3268,11 +3274,11 @@ The princess notices Aire tensing up in response to the question.
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia:— [name]? We should properly reward [him], once this whole mess is over.}
 
-	{color=aqua|Aire:— Ana, you really don't need to do that.}
+{color=aqua|Aire:— Ana, you really don't need to do that.}
 
-	{color=yellow|Anastasia:— Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
+{color=yellow|Anastasia:— Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
 
-	{color=aqua|Aire:— ...}""",
+{color=aqua|Aire:— ...}""",
 
 	SIGMUNDOPTION = "— Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
 
@@ -3286,7 +3292,7 @@ The princess notices Aire tensing up in response to the question.
 	SIGMUND_QUESTION5 = "Surely with such high stakes I'll be due some reward for my efforts.",
 
 	SIGMUND_ANSWER2 = """— Yah, it wouldn't be da problem, but it's actually da major one for the magic ore used for enchantable alloys.
-	Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+Dis is not a wide known information, but it seems da rebels knew where to strike.""",
 
 	SIGMUND_ANSWER3 = "— Great, I'll mark it on ya map.",
 	SIGMUND_ANSWER4 = "— Argh, darn, fine, as long as you deal with it.",
@@ -3876,14 +3882,18 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
 	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
-	DIVINE_SYMBOL_20_1 = """{color=aqua|Second Guard:— Damnit, what does he want now? }
+	DIVINE_SYMBOL_20_1 = """{color=green|Success}
+
+{color=aqua|Second Guard:— Damnit, what does he want now? }
 
 {color=yellow|First Guard:— Probably figured you've been sleeping during the last watch.}
 
 {color=aqua|Second Guard:— You didn't tell him that, did you? Fuck, lets go. }
 
 They leave the building, leaving the door unguarded.""",
-	DIVINE_SYMBOL_20_2 = "{color=aqua|Second Guard:— Bullshit, they're intruders. Get them!}",
+	DIVINE_SYMBOL_20_2 = """{color=red|Failure}
+
+{color=aqua|Second Guard:— Bullshit, they're intruders. Get them!}""",
 	DIVINE_SYMBOL_21 = """Deciding there's no room for negotiation, you prepare for a fight.""",
 	DIVINE_SYMBOL_22 = """As you knock out the guards you are finally able to approach the doors.""",
 	DIVINE_SYMBOL_23 = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you.
@@ -5155,7 +5165,7 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 
 	FINAL_WORDS_1 = """{color=aqua|Duncan:— Congratulations, you finally made it. The rebel forces won't die out just yet, but they should never be able to unite again.}
 
-{color=yellow|Sigmund:— Dis's good ‘nuf, as long as dey won't be takin' towns.}
+{color=yellow|Sigmund:— Dis's good 'nuf, as long as dey won't be takin' towns.}
 
 {color=aqua|Duncan:— So now you're officially mayor.}
 
@@ -5369,6 +5379,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 
 	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
 	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
+	ITEMANASTASIA_BROKEN_BRACELET = "Anastasia's Bracelet",
+	ITEMANASTASIA_BROKEN_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
 
 	ITEMDAISY_DRESS = "Daisy's Dress",
 	ITEMDAISY_DRESSDESCRIPT = "A custom-tailored uniform designed specifically for a bunny girl in your possession. It is uncommonly durable and accentuates her stronger points.\n\n{color=yellow|Only equippable by Daisy} ",
@@ -6342,7 +6354,7 @@ Anastasia: — W-what are you saying!? They aren't that much bigger... You don't
 	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
 	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
 	
-GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
+	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
 
 Aire: — Come on, [name] worked really hard for this moment, we should reward him.
 
@@ -6360,12 +6372,12 @@ Anastasia still seems ashamed, blushing deep red as she scoops her large breasts
 
 The girls' nipples glide over and press against each other as they work your cock with their tits and you can see them growing more visibly aroused as they continue. In a few minutes they are both sheened with perspiration from their efforts and your penis slips more easily in between their slick breasts.""",
 	
-GRYPHON_ANA_SEX_5 = """	
+	GRYPHON_ANA_SEX_5 = """	
 After some time, you can feel your orgasm beginning to build. Your hips twitch reflexively, thrusting in between the elf girl and the princess as they service you.
 
 You have to resist the urge to grab the two girls by the hair and press their chattering mouths against your cock. But your orgasm arrives like a charging bull, shooting cum into the air and all over the faces and bodies of the two women kneeling before you. """,
 
-GRYPHON_ANA_SEX_6 = """
+	GRYPHON_ANA_SEX_6 = """
 Anastasia looks first alarmed and then ashamed as a spray of thick semen spatters across her face and into her soft cleavage. A glob of cum lands in Aire's eye and she closes it quickly, sperm leaking from her eyelid and running down her cheek..
 
 Aire: — Hah! By the gods, that's a lot of cum, [Master]. Enough for two, even!
@@ -6382,13 +6394,11 @@ Aire: — Was this everything you imagined it would be, [Master]? Or was there a
 
 She looks back at Anastasia suggestively, who blushes again. """,
 
-GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
+	GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
 
 You order the two naked girls off the floor. Aire rises and takes Anastasia by the hand, leading her towards your bed. You follow close behind, admiring their pert asses. Aire lays down on her back on top of the bedcovers, spreading her slender elven legs. Anastasia looks back at you over her shoulder for a moment, as if unsure, but Aire pulls on her hand and draws the reluctant princess down until she is laying on top of the excited elf.""",
 
-
-
-GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
+	GRYPHON_ANA_SEX_8 = """Their plump breasts press together and they both watch you as you approach, your penis already stiffening again at the delightful sight of the naked princess straddling her aroused serving-girl.  
 
 Your hand runs over the smooth curve of Anastasia's round ass, before slipping down between her legs. Her pussy is warm and wet with her own juices and she gasps softly in pleasure as your fingers enter her, her back arching when you stroke her clit.
 
@@ -6400,14 +6410,14 @@ Anastasia: — Stop saying silly things like this...
 
 Using both hands, you press Anastasia down on top of Aire and spread her legs wider. Their pussies stacked on top of each other, you penetrate Aire first, squeezing Anastasia between you as your cock pushes firmly into the elf girl's willing pussy. Aire cries out as you shove yourself all the way into her, stretching her tight cunt with your rock-hard penis.""",
 
-GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire's juices, slips easily into her wet hole. The two girls stare into each other's eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
+	GRYPHON_ANA_SEX_9 = """After a few strokes you pull out and enter Anastasia, who trembles with arousal as your shaft, slick with Aire's juices, slips easily into her wet hole. The two girls stare into each other's eyes as you fuck the princess doggy-style on top of her serving-girl. You fuck Anastasia hard while gripping her hips, making her yelp as you grind roughly against her smooth ass.
 
 You feel Anastasia's pussy grip your cock as she approaches orgasm and you pull out. The princess whines softly as you plunge your cock back into Aire, fucking her tight elven pussy hard as you use Anastasia's naked body to pin her to the bed.. 
 
 Aire clings to Anastasia as you fuck her to the edge of orgasm and then withdraw. She whimpers as your meat slips out of her, pussy twitching helplessly. When you thrust into Anastasia this time she presses her ass back into you, begging urgently to be fucked.""",
 
 
-GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
+	GRYPHON_ANA_SEX_10 = """You take your time, fucking each girl in turn over the next couple of hours until they are both exhausted and pleading for the release of orgasm. 
 
 You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia's pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire's aching pussy with your cum. 
 The two girls lie in a tangled heap of slender limbs, flushed and panting for breath as you pull out of Aire. Your cum trickles from her as she lies underneath Anastasia. 
@@ -6427,50 +6437,50 @@ Casually, you inform both girls that whenever they are ready there is work to be
 	ZEPHYRA_RECRUITMENT_1 = """— Welcome, [name]! I heard you've become a Mayor now? Congratulations!
 
 — I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you. I take it she's your acquaintance?""",
-	ZEPHYRA_RECRUITMENT_2 = """Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful — as a Champion ought to be.
+	ZEPHYRA_RECRUITMENT_2 = """{color=yellow|Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful — as a Champion ought to be.}
 
-Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And in such scary times too. Can you imagine what all those desperate bandits could do to someone like me? 
+{color=aqua|Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And in such scary times too. Can you imagine what all those desperate bandits could do to someone like me? }
 
-Zephyra: — Well, I see you've settled this war for good. I was right about you after all.""",
+{color=aqua|Zephyra: — Well, I see you've settled this war for good. I was right about you after all.}""",
 	ZEPHYRA_RECRUITMENT_2_OPTION_1 = """You really are full of surprises""",
 	ZEPHYRA_RECRUITMENT_2_OPTION_2 = """I'm surprised you're still following me""",
 	ZEPHYRA_RECRUITMENT_2_OPTION_3 = """I don't have time for this""",
-	ZEPHYRA_RECRUITMENT_3_1 = """Zephyra: — Please, you are flattering me. It's just a mission I have to perform.
+	ZEPHYRA_RECRUITMENT_3_1 = """{color=aqua|Zephyra: — Please, you are flattering me. It's just a mission I have to perform.
 
 Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
 
-Zephyra: — Do you know what an Artifact is? It's an item from a deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
-	ZEPHYRA_RECRUITMENT_3_2 = """Zephyra: — There's a mission I have to perform, so we're here now.
+Zephyra: — Do you know what an Artifact is? It's an item from a deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.}""",
+	ZEPHYRA_RECRUITMENT_3_2 = """{color=aqua|Zephyra: — There's a mission I have to perform, so we're here now.
 
 Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
 
-Zephyra: — Do you know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
-	ZEPHYRA_RECRUITMENT_3_3 = """Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
+Zephyra: — Do you know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.}""",
+	ZEPHYRA_RECRUITMENT_3_3 = """{color=aqua|Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
 
-Zephyra: — If you tell me, I won't be bothering you anymore then.""",
+Zephyra: — If you tell me, I won't be bothering you anymore then.}""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = """Yes, I want you to leave me alone""",
 	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = """I've changed my mind""",
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "There might be a problem with this...",
 	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession",
 	ZEPHYRA_RECRUITMENT_4 = """You explain to Zephyra what has happened during the earlier days of civil war.
 
-Zephyra: — Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other artifacts. 
+{color=aqua|Zephyra: — Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other artifacts. 
 
-Zephyra: — The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+Zephyra: — The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.}""",
 	ZEPHYRA_RECRUITMENT_4_OPTION_1 = "How do I know your goals are good?",
 	ZEPHYRA_RECRUITMENT_4_OPTION_2 = "So how do you propose for me to get to it?",
-	ZEPHYRA_RECRUITMENT_5_1 = """Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
+	ZEPHYRA_RECRUITMENT_5_1 = """{color=aqua|Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
 
 Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
 
-Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
-	ZEPHYRA_RECRUITMENT_5_2 = """Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.}""",
+	ZEPHYRA_RECRUITMENT_5_2 = """{color=aqua|Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
 
-Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.""",
+Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.}""",
 	ZEPHYRA_RECRUITMENT_5_OPTION_1 = "Very well, you can join me",
 	ZEPHYRA_RECRUITMENT_5_OPTION_2 = "I'm not going to bother with it after all",
-	ZEPHYRA_RECRUITMENT_6_GOOD = """Zephyra: — Jeez, finally. You really played this hard to get, didn't you? I'm glad we can be friends from now on at least. Don't mind me too much, please.""",
-	ZEPHYRA_RECRUITMENT_6_BAD = """Zephyra: — Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drowning in a sewer. Farewell, [name].
+	ZEPHYRA_RECRUITMENT_6_GOOD = """{color=aqua|Zephyra: — Jeez, finally. You really played this hard to get, didn't you? I'm glad we can be friends from now on at least. Don't mind me too much, please.}""",
+	ZEPHYRA_RECRUITMENT_6_BAD = """{color=aqua|Zephyra: — Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drowning in a sewer. Farewell, [name].}
 
 Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_SWORD_1 = """— You've done it, [name]. Not something just anyone can brag about. I'm glad my decision to join your side was the correct one after all.
@@ -6633,16 +6643,16 @@ Somehow, it carefully looks at you without moving, as if requiring your attentio
 
 A couple of patrolling slavers went by your hiding spot.
 
-Slaver: — So far only one beastkin for a whole day. Shitty luck.
+{color=yellow|Slaver: — So far only one beastkin for a whole day. Shitty luck.
 
 Slaver2: — At least she's young and fresh, will surely net us some gold.
 
-Slaver: — Hmph, she's fat and weak. Can't even sell her for labor.""",
-	PRE_RITUAL_3 = """Slaver2: — But she's kinda cute.
+Slaver: — Hmph, she's fat and weak. Can't even sell her for labor.}""",
+	PRE_RITUAL_3 = """{color=yellow|Slaver2: — But she's kinda cute.
 
 Slaver: — Only sick bastards like you would find her cute. By the way, don't you dare fuck her while we're sleeping, her virginity might be her only redeeming quality.
 
-Slaver2: — Crap... I could do her in the ass instead then?
+Slaver2: — Crap... I could do her in the ass instead then?}
 
 The patrol have continued on their way, leaving you wondering what to do.""",
 	PRE_RITUAL_3_OPTION_1 = """Try to deal with them""",
@@ -6766,15 +6776,15 @@ Mae only gave another pleasant moan as her butt was penetrated for the first tim
 	RITUAL_6_2 = """You decide that Mae wouldn't like things to go that far and reject the men's demand. The males look annoyed but retreat to find some comfort from other willing women. Despite Mae's delirious face, you can read some hints of gratitude from her, as you return to working on her quivering body. It feels like you spend the whole night doing this, until eventually your memory blacks out...""",
 	AFTER_RITUAL_START = """Next morning you find yourself resting alone at one of the lodges. Judging from the sun it's already somewhat late and you decide to go outside. You are met by Leon and Savra, who seemed to be waiting for you. 
 
-Leon: — A fine performance, [name]. Hope you aren't too sore from last night.
+{color=yellow|Leon: — A fine performance, [name]. Hope you aren't too sore from last night.}
 
-Savra: — Yes, that indeed was very good. I feel that Rundas is greatly pleased by you and us. We'll be blessed for a long while.""",
+{color=aqua|Savra: — Yes, that indeed was very good. I feel that Rundas is greatly pleased by you and us. We'll be blessed for a long while.}""",
 	AFTER_RITUAL_START_OPTION_1 = "How's Mae?",
 	AFTER_RITUAL_START_OPTION_2 = "So you're gonna help me now?",
-	AFTER_RITUAL_1_1 = """Savra: — She's been resting after yesterday like you, but you seemed to be more experienced at such things. In case you're worried about her mental state, I can assure you she's all good. 
+	AFTER_RITUAL_1_1 = """{color=aqua|Savra: — She's been resting after yesterday like you, but you seemed to be more experienced at such things. In case you're worried about her mental state, I can assure you she's all good. }
 
-Leon: — She's a darn fine woman. A great addition to the tribe with a good sense of responsibility.""",
-	AFTER_RITUAL_1_2 = """Leon: — You've done your part of the deal, so I'll keep mine. I'll go prepare the response. You can visit me tomorrow to collect it.""", 
+{color=yellow|Leon: — She's a darn fine woman. A great addition to the tribe with a good sense of responsibility.}""",
+	AFTER_RITUAL_1_2 = """{color=yellow|Leon: — You've done your part of the deal, so I'll keep mine. I'll go prepare the response. You can visit me tomorrow to collect it.}""", 
 	AFTER_RITUAL_2 = """Mae leaves the tent and after seeing you noticeably blushes. 
 
 — ...G-good morning. Are you feeling well?""",
@@ -6829,15 +6839,15 @@ Leon: — She's a darn fine woman. A great addition to the tribe with a good sen
 	AFTER_RITUAL_GOOD_2_1_1 = """A flicker of excitement jumps across Mae's face which goes away as she looks down.
 
 — B-but that's... I'm not sure if I'll be able to leave here now. """,
-	AFTER_RITUAL_GOOD_2_1_2 = """Savra: — No, it's fine, it might be a good thing for you to go out and get more experience with the outer world. 
+	AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Savra: — No, it's fine, it might be a good thing for you to go out and get more experience with the outer world. }
 
-Mae: — Really? I thought I was gonna be a complete tribe's shaman now.
+{color=aqua|Mae: — Really? I thought I was gonna be a complete tribe's shaman now.}
 
-Savra: — Don't be silly, I'm still alive and kicking, you know. Go out and have fun with [name], I'm sure [he]'s a great match for you.
+{color=yellow|Savra: — Don't be silly, I'm still alive and kicking, you know. Go out and have fun with [name], I'm sure [he]'s a great match for you.}
 
 Mae blushes severely thinking of all that happened just yesterday, but nods in agreement.
 
-Mae: — Uhm... Please take care of me.""",
+{color=aqua|Mae: — Uhm... Please take care of me.}""",
 	AFTER_RITUAL_GOOD_2_2 = "— Right, and I have to be a tribe's shaman now. Still, thank you for this. Hope you'll visit us again.",
 	AFTER_RITUAL_BAD_1_1 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.""",
 	AFTER_RITUAL_BAD_1_2 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.
@@ -6962,7 +6972,7 @@ Your mere presence defiles these grounds and all traces of it must be annihilate
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_5 = "I'm... not sure how I could do that",
 	WHITE_STAG_ENCOUNTER_10_4 = """You notice that Zephyra is willing to lend you a hand in this situation.
 
-Zephyra: — Ah, yes, I can make a fine painting which will reflect on your godlike nature.""",
+{color=aqua|Zephyra: — Ah, yes, I can make a fine painting which will reflect on your godlike nature.}""",
 	WHITE_STAG_ENCOUNTER_10_1AND2AND3AND4 = """ — Hmmh. Very well, mortal, I feel the sincerity in your words. This time you get to keep your soul. That said, there is still one more score left to settle, while I'm here. We will meet again.""",
 	WHITE_STAG_ENCOUNTER_10_5_1 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
 	WHITE_STAG_ENCOUNTER_10_5_2 = """ — Kh... You are not so bad for mortals. Fine, this time you will be permitted to live, as we are running out of time. 
@@ -6973,9 +6983,9 @@ Before you are able to answer, the woman's figure is enveloped in a bright light
 	WHITE_STAG_ENCOUNTER_13 = """With your combined efforts you've dealt enough damage to the White Stag. With a deafening scream its form slowly vanishes in the air. Seeing this, Leon and his party roar in triumph. Once again the tribe has triumphed over the threat...""",
 	WHITE_STAG_ENCOUNTER_14 = """You return to the tribe's settlement and after getting some rest met with Leon once again.
 
-Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though. 
+{color=yellow|Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though. }
 
-Savra: — Drop by sometime in future, your visit will be welcome.""",
+{color=aqua|Savra: — Drop by sometime in future, your visit will be welcome.}""",
 	PRIESTESS_TALK_START = """You go to Erlen's quarters but find it locked. As you make it through the hallway, one attendant comes to you and asks you to follow her to meet the high priestess at her quarters. As there's no better option apparent, you follow her obediently.""",
 	PRIESTESS_TALK_1 = """As you enter the room, you notice that the High Priestess seems to be more friendly than usual, though only barely. 
 
@@ -7028,8 +7038,12 @@ Aire: — This isn't right, you can't just let anyone vandalize sacred places li
 	TEMPLE_2_OPTION_1 = "Deal",
 	TEMPLE_2_OPTION_2 = "Treasure like this should certainly be worth more than that (Charm Factor Check)",
 	TEMPLE_2_OPTION_3 = "No deal",
-	TEMPLE_3_1_1 = """ — W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
-	TEMPLE_3_1_2 = """ — No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
+	TEMPLE_3_1_1 = """ {color=green|Success}
+
+— W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
+	TEMPLE_3_1_2 = """ {color=red|Failure}
+
+— No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
 	TEMPLE_3_2 = """ — That's too bad. We aren't going to let this chance slip by. Get 'em, boys. 
 
 The group  draws their weapons and prepare for a fight.""",
@@ -7120,9 +7134,13 @@ After taking a long pause and pondering the letter, he finally speaks up.
  — I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
 	LIRA_ENCOUNTER_2_OPTION_1 = "Maybe we could think of some other way... (Wits Factor Check)",
 	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then",
-	LIRA_ENCOUNTER_3_1_GOOD = " — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.",
+	LIRA_ENCOUNTER_3_1_GOOD = """{color=green|Success}
+
+ — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.""",
 	LIRA_ENCOUNTER_3_1_GOOD_OPTION_1 = "I'll be back once I get one of those",
-	LIRA_ENCOUNTER_3_1_BAD = " — N-no, nothing really comes to mind. I'm sorry, I'm not good at this kind of thing.",
+	LIRA_ENCOUNTER_3_1_BAD = """{color=red|Failure}
+
+ — N-no, nothing really comes to mind. I'm sorry, I'm not good at this kind of thing.""",
 	LIRA_ENCOUNTER_3_1_BAD_OPTION_1 = "I'll be back once I have someone then",
 	LIRA_ENCOUNTER_4 = """You find Lira who seems to be waiting eagerly in anticipation of your progress.""",
 	LIRA_ENCOUNTER_4_OPTION_1 = "I've brought another Tribal Elf to stand in for you",
@@ -7135,97 +7153,97 @@ After taking a long pause and pondering the letter, he finally speaks up.
 	ERLEN_LIRA_1 = "You decide it's not worth returning to Erlen without Lira.",
 	ERLEN_LIRA_2 = """As Lira sees Erlen you notice how the Tribal Elf girl's expression changes to become even more nervous than before. 
 
-Lira: — Pleasure to meet you, commander Erlen.
+{color=yellow|Lira: — Pleasure to meet you, commander Erlen.}
 
-Erlen: — You've made it. You aren't hurt?
+{color=aqua|Erlen: — You've made it. You aren't hurt?}
 
-Lira: — N-no, nothing like that.""",
+{color=yellow|Lira: — N-no, nothing like that.}""",
 	ERLEN_LIRA_2_OPTION_1 = "It was somewhat difficult, but we succeeded",
 	ERLEN_LIRA_2_OPTION_2 = "That was too easy, maybe you need tighter security",
 	ERLEN_LIRA_2_OPTION_3 = "What now?",
-	ERLEN_LIRA_3_1 = """Erlen: — Good work, now tell me what's been going on.""",
-	ERLEN_LIRA_3_2 = """Erlen: — If it were my personal corps, I assure you, I wouldn't be so easy on them, but good work anyway.""",
-	ERLEN_LIRA_3_3 = """Erlen: — Firstly, I want to know what's been going on. Lira, can you explain?""",
+	ERLEN_LIRA_3_1 = """{color=aqua|Erlen: — Good work, now tell me what's been going on.}""",
+	ERLEN_LIRA_3_2 = """{color=aqua|Erlen: — If it were my personal corps, I assure you, I wouldn't be so easy on them, but good work anyway.}""",
+	ERLEN_LIRA_3_3 = """{color=aqua|Erlen: — Firstly, I want to know what's been going on. Lira, can you explain?}""",
 	ERLEN_LIRA_4 = """Lira explains how she was put into curfew. The news makes Erlen grow even more tense. 
 
-Erlen: — Shit, so we really are out of time now... The High Priestess must be planning to perform the Becoming Ritual in the next few days or maybe any moment.""",
+{color=aqua|Erlen: — Shit, so we really are out of time now... The High Priestess must be planning to perform the Becoming Ritual in the next few days or maybe any moment.}""",
 	ERLEN_LIRA_4_OPTION_1 = "Becoming Ritual?",
 	ERLEN_LIRA_4_OPTION_2 = "Why did she send you away?",
 	ERLEN_LIRA_4_OPTION_3 = "Do we actually have any chance of stopping her then?",
-	ERLEN_LIRA_5_1 = """Erlen: — I must explain. The High Priestess is not an eternal ruler, nor is she selected by council. The High Priestess is chosen by Freya every few years. To summon the goddess the ritual is performed, which brings her spirit into the temple to temporarily inhabit a mortal body and deliver her decision.
+	ERLEN_LIRA_5_1 = """{color=aqua|Erlen: — I must explain. The High Priestess is not an eternal ruler, nor is she selected by council. The High Priestess is chosen by Freya every few years. To summon the goddess the ritual is performed, which brings her spirit into the temple to temporarily inhabit a mortal body and deliver her decision.
 
 Erlen: — Naturally, she will only select a person who's present in the temple at the time, so only devoted followers are usually allowed. More often than not she selects the current priestess who will keep her rule, but if Freya wills it, a new priestess can be chosen.
 
-Erlen: — This time, however, the High Priestess feels the discontent caused by her rules, among myself and many others. Hence why I was sent away and the lower-ranked acolytes were locked down. This is to ensure her position does not change.""",
-	ERLEN_LIRA_5_2 = """Erlen: — The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however I'm uncertain how her plan might unfold, knowing that I won't help her.""",
+Erlen: — This time, however, the High Priestess feels the discontent caused by her rules, among myself and many others. Hence why I was sent away and the lower-ranked acolytes were locked down. This is to ensure her position does not change.}""",
+	ERLEN_LIRA_5_2 = """{color=aqua|Erlen: — The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however I'm uncertain how her plan might unfold, knowing that I won't help her.}""",
 	ERLEN_LIRA_5_2_OPTION_1 = "I might have got this water for her...",
 	ERLEN_LIRA_5_2_OPTION_2 = "I can't tell how, but she probably got it some way",
-	ERLEN_LIRA_5_2_1 = """Erlen: — Y-you did? Damn it... I guess we really are out of time in that case. Don't blame yourself too much,I believe she would've found some other way regardless.""",
-	ERLEN_LIRA_5_2_2 = """Erlen: — Yes, it would make sense to make our final preparations then. We really are out of time now.""",
-	ERLEN_LIRA_5_3 = """Erlen: — Not entirely. But I want to ask for your help... No, in fact I need your help. 
+	ERLEN_LIRA_5_2_1 = """{color=aqua|Erlen: — Y-you did? Damn it... I guess we really are out of time in that case. Don't blame yourself too much,I believe she would've found some other way regardless.}""",
+	ERLEN_LIRA_5_2_2 = """{color=aqua|Erlen: — Yes, it would make sense to make our final preparations then. We really are out of time now.}""",
+	ERLEN_LIRA_5_3 = """{color=aqua|Erlen: — Not entirely. But I want to ask for your help... No, in fact I need your help. }
 
 You and Lira both give Erlen a puzzled look.
 
-Erlen: — I guess I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...""",
+{color=aqua|Erlen: — I guess I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...}""",
 	ERLEN_LIRA_5_3_OPTION_1 = "What was it?",
 	ERLEN_LIRA_5_3_OPTION_2 = "They refused?",
 	ERLEN_LIRA_5_3_OPTION_3 = "Must have requested my participation somehow",
-	ERLEN_LIRA_6_1 = """Erlen: — Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
-	ERLEN_LIRA_6_2 = """Erlen: — No, not directly at least. Leon expressed that if they were gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.""",
-	ERLEN_LIRA_6_3 = """Erlen: — Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. """,
+	ERLEN_LIRA_6_1 = """{color=aqua|Erlen: — Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. }""",
+	ERLEN_LIRA_6_2 = """{color=aqua|Erlen: — No, not directly at least. Leon expressed that if they were gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.}""",
+	ERLEN_LIRA_6_3 = """{color=aqua|Erlen: — Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. }""",
 	ERLEN_LIRA_6_OPTION_1 = "So, this is why you need my help",
 	ERLEN_LIRA_6_OPTION_2 = "I'm not sure I'm suitable for such responsibility",
-	ERLEN_LIRA_7_1 = """Erlen: — Precisely. I hope you will help us after all of this. 
+	ERLEN_LIRA_7_1 = """{color=aqua|Erlen: — Precisely. I hope you will help us after all of this. 
 
-Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
-	ERLEN_LIRA_7_2 = """Erlen: — I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable.
+Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.}""",
+	ERLEN_LIRA_7_2 = """{color=aqua|Erlen: — I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable.
 
-Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.""",
+Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.}""",
 	ERLEN_LIRA_7_OPTION_1 = "I didn't quite grasp the goal, what are you fighting for?",
 	ERLEN_LIRA_7_OPTION_2 = "Very well, so what's the plan?",
 	ERLEN_LIRA_8_1_1 = """Erlen takes a long pause to collect his thoughts before finally speaking up.
 
-Erlen: — I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us. 
+{color=aqua|Erlen: — I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us. 
 
-Erlen: — Heleviel is very much in favor of continuing this policy but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.""",
-	ERLEN_LIRA_8_1_2 = """Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...
+Erlen: — Heleviel is very much in favor of continuing this policy but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.}""",
+	ERLEN_LIRA_8_1_2 = """{color=yellow|Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...}
 
-Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you. """,
-	ERLEN_LIRA_8_2 = """Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.""",
+{color=aqua|Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you. }""",
+	ERLEN_LIRA_8_2 = """{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.}""",
 	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal",
 	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk",
-	ERLEN_LIRA_9_1 = """Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else. """,
-	ERLEN_LIRA_9_2 = """Erlen: — I... Can promise you more, but these promises will be empty if we won't actually succeed. I suggest we leave this talk until later.""",
+	ERLEN_LIRA_9_1 = """{color=aqua|Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else.} """,
+	ERLEN_LIRA_9_2 = """{color=aqua|Erlen: — I... Can promise you more, but these promises will be empty if we won't actually succeed. I suggest we leave this talk until later.}""",
 	ERLEN_LEON_1 = """Erlen's group has met up with Leon and you. 
 
-Erlen: — I'm grateful that you've come.
+{color=aqua|Erlen: — I'm grateful that you've come.}
 
-Leon: — Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow his orders, not yours. 
+{color=yellow|Leon: — Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow his orders, not yours. }
 
 Erlen decided to ignore Leon's remark and proceeded.
 
-Erlen: — My informant has reported that they're holding the ritual today. We must move swiftly, the temple will be sealed for half an hour before the start. From that point, nobody can leave or cancel the ritual.""",
+{color=aqua|Erlen: — My informant has reported that they're holding the ritual today. We must move swiftly, the temple will be sealed for half an hour before the start. From that point, nobody can leave or cancel the ritual.}""",
 	ERLEN_LEON_1_OPTION_1 = """What are we gonna do?""",
 	ERLEN_LEON_1_OPTION_2 = """We'd better not waste time chatting then""",
-	ERLEN_LEON_2 = """Erlen: — We'll have to break through. Most soldiers should be positioned away from the capital at this moment, but those which are left will all be drafted to protect the ritual.
+	ERLEN_LEON_2 = """{color=aqua|Erlen: — We'll have to break through. Most soldiers should be positioned away from the capital at this moment, but those which are left will all be drafted to protect the ritual.}
 
-Leon: — Sounds easy. What's the catch?
+{color=yellow|Leon: — Sounds easy. What's the catch?}
 
-Erlen: — We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.""",
+{color=aqua|Erlen: — We have to get Lira inside the temple before the ceremony is over. We'll be leading the infiltration.}""",
 	ERLEN_LEON_3 = """As you make your way through the back streets led by Erlen, who knows the capital like the back of his own hand, you manage to avoid any patrols. Your group is fairly small, consisting of both elven and beastkin leaders and your personal team. As you make it closer to the main temple, you are forced to come out of hiding to cross the bridge that leads to the temple gates. 
 
 However, the bridge is guarded. As your group is spotted the soldiers rush towards you. Erlen goes out in front of them.
 
-Erlen: — At ease. These people are coming with me. 
+{color=aqua|Erlen: — At ease. These people are coming with me. }
 
-Guard: — My apologies, commander, but we have been instructed to stop you by the High Priestess.
+{color=yellow|Guard: — My apologies, commander, but we have been instructed to stop you by the High Priestess.}
 
-Erlen: — Damn it. We'll have to fight.""",
+{color=aqua|Erlen: — Damn it. We'll have to fight.}""",
 	ERLEN_LEON_4 = """You successfully defeat the patrol and cross the bridge. However, as you get closer to the doors, you spot a larger formation of troops approaching you from behind. 
 
-Leon: — You should go or you'll never make it. We'll hold them back.
+{color=yellow|Leon: — You should go or you'll never make it. We'll hold them back.}
 
-Erlen: — My men will stay as well. Quick, [name], there's very little time left!""",
+{color=aqua|Erlen: — My men will stay as well. Quick, [name], there's very little time left!}""",
 	CEREMONY_1 = """The ceremony has been going on for some time when one of the acolytes rushes to Heleviel to inform her about the ongoing assault. She doesn't show any emotion and just gives the order to continue with the ritual. It seems she thinks the rear guards should be able to hold Erlen long enough for her to complete her plan. 
 
 Heleviel has also heard something about beastkin making their move, but decides that it can wait until her status as High Priestess is confirmed.""",
@@ -7265,11 +7283,11 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 	CEREMONY_HELEVIEL_4_OPTION_2 = "Until the next time we meet",
 	CEREMONY_LIRA_1 = """As you spell out your answer, the white fog disperses around you and you find yourself in the middle of the temple. It seems you were the real messenger of Freya and now Lira is going to be the High Priestess instead of Heleviel. 
 
-Heleviel: — N-no way. This can't be!
+{color=yellow|Heleviel: — N-no way. This can't be!}
 
-Erlen: — You heard it. Heleviel, you will be seized for trying to subvert the assignment of Freya's next High Priestess.
+{color=aqua|Erlen: — You heard it. Heleviel, you will be seized for trying to subvert the assignment of Freya's next High Priestess.}
 
-Heleviel: — No, you traitors! This was all staged, you can't do this to me!""",
+{color=yellow|Heleviel: — No, you traitors! This was all staged, you can't do this to me!}""",
 	CEREMONY_LIRA_2 = """The guards follow Erlen and Lira's orders and take Heleviel away from the temple. You tell Leon that the battle is over and he retreats with his warriors, after which you meet with Erlen once again.""",
 	CEREMONY_LIRA_3 = """ — It's hard to believe this has actually happened, but because of you Lira is the High Priestess now. As promised, I grant you the Sacred Bowl. This is the least I can repay you with.""",
 	CEREMONY_LIRA_3_OPTION_1 = "What's going to happen to Heleviel",
@@ -7284,51 +7302,48 @@ Heleviel: — No, you traitors! This was all staged, you can't do this to me!"""
 	CEREMONY_LIRA_4_2 = """ — I wish you luck on your journey. We have a lot of work to do, but we will be glad to receive you some time again soon.""",
 	DEMON_PRIESTESS_1 = """The High Priestess of Freya finished her business and went to her private chamber to rest, but this time she found that she was not alone. 
 
-High Priestess: — So, it was true something shady has been going on. 
+{color=yellow|High Priestess: — So, it was true something shady has been going on. }
 
-Demoness: — How unpleasant. I'd only like to offer some cooperation.""",
-	DEMON_PRIESTESS_2 = """High Priestess: — Preposterous. Nobody here would cooperate with your kind.
+{color=aqua|Demoness: — How unpleasant. I'd only like to offer some cooperation.}""",
+	DEMON_PRIESTESS_2 = """{color=yellow|High Priestess: — Preposterous. Nobody here would cooperate with your kind.}
 
-Demoness: — Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come. 
+{color=aqua|Demoness: — Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come. }
 
-High Priestess: — I don't know how you got in here, but it's your last chance to leave before I call the guards.
+{color=yellow|High Priestess: — I don't know how you got in here, but it's your last chance to leave before I call the guards.}
 
-Demoness: — Hmph, so be it. Don't come crawling to me if you regret this later.""",
+{color=aqua|Demoness: — Hmph, so be it. Don't come crawling to me if you regret this later.}""",
 	DEMON_PRIESTESS_3 = """As the demoness disappears with a teleportation spell, the High Priestess lets out a sigh and sits on the bed recalling the hardships she faced to secure her position.""",
-	
-	
-	
 	
 	
 	JEAN_INTRO = """As you are about to enter, you hear an unfamiliar female voice from the other side of the door that sounds rather agitated. 
 
-Unfamiliar Voice: — Watcha means there's no available job for a single person?!
+{color=yellow|Unfamiliar Voice: — Watcha means there's no available job for a single person?!}
 
-Myr: — What I said. What happened to your previous team anyway?
+{color=aqua|Myr: — What I said. What happened to your previous team anyway?}
 
-Unfamiliar Voice: — Who cares, I'm free now!""",
+{color=yellow|Unfamiliar Voice: — Who cares, I'm free now!}""",
 	JEAN_INTRO_1 = """You decide to enter and observe a young human girl who measures you with a sharp look.
 
-Myr: — Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? 
+{color=aqua|Myr: — Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? }
 
 Out of Myr's deadpan voice you can't make out if she's serious or not.""",
-	JEAN_INTRO_2 = """Girl: — You are a new landowner. What makes you think I will be working for you!? 
+	JEAN_INTRO_2 = """{color=yellow|Girl: — You are a new landowner. What makes you think I will be working for you!? }
 
-Myr: — You are out of options, Jean, and your dormitory payment is due. 
+{color=aqua|Myr: — You are out of options, Jean, and your dormitory payment is due. }
 
-Girl: — Kh...
+{color=yellow|Girl: — Kh...}
 
-Myr: — As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please relieve me of her presence.""",
+{color=aqua|Myr: — As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please relieve me of her presence.}""",
 	JEAN_INTRO_2_OPTION_1 = "I guess I have some free space left",
 	JEAN_INTRO_2_OPTION_2 = "No way",
-	JEAN_INTRO_BAD = """Myr: — Goddamnit... Give me some more time then.
+	JEAN_INTRO_BAD = """{color=aqua|Myr: — Goddamnit... Give me some more time then.}
 
 You leave the room and wait for them to finish.""",
-	JEAN_INTRO_3 = """Jean: — Hey, what the heck makes you think you can decide without me? 
+	JEAN_INTRO_3 = """{color=yellow|Jean: — Hey, what the heck makes you think you can decide without me? }
 
-Myr: — Excellent. I'm sure [he]'ll have some suitable work for you. Maybe you'll also find a man and stop being such a pain in the ass. Adios.
+{color=aqua|Myr: — Excellent. I'm sure [he]'ll have some suitable work for you. Maybe you'll also find a man and stop being such a pain in the ass. Adios.}
 
-Jean: — Wait, I haven't finished!
+{color=yellow|Jean: — Wait, I haven't finished!}
 
 Before Jean could protest, the strong magical force has pushed you both out of Myr's office.""",
 	JEAN_INTRO_4 = """ — Darn that hag!.. Crap... 
@@ -7369,54 +7384,54 @@ You give Jean the directions to your mansion and leave her to it.""",
 	CALI_INTRO = """As you make your way through the fort, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.""",
 	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
 
-Slaver: — Hey, it seems we have a guest. We don't wanna fight, actually we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman. 
+{color=aqua|Slaver: — Hey, it seems we have a guest. We don't wanna fight, actually we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman. }
 
 The slaver leads you to another room.""",
 	CALI_INTRO_2 = """Lying on the floor you see a young girl. Her ears and tail give away her origin as a halfkin wolf. Despite being bound, her spirit seems to not be anywhere near broken yet.
 
-Slaver: — Name's Sally, or something like that.
+{color=yellow|Slaver: — Name's Sally, or something like that.}
 
-Girl: — It's Cali! I'd kick your ass if not for these ropes!
+{color=aqua|Girl: — It's Cali! I'm of proud wolf race and I'd kick your ass if not for these ropes!}
 
-Slaver: — This little shit just won't shut up. Why didn't we discipline her again?
+{color=yellow|Slaver: — This little shit just won't shut up. Why didn't we discipline her again?
 
-Slaver 2: — Because the buyer we had lined up was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth again.""",
+Slaver 2: — Because the buyer we had lined up was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth again.}""",
 	CALI_INTRO_2_OPTION_1 = "Is she still a virgin?",
 	CALI_INTRO_2_OPTION_2 = "Where did you get her?",
 	CALI_INTRO_2_OPTION_3 = "I'd like to purchase her",
 	CALI_INTRO_2_OPTION_4 = "I'll take her from you", # go to fight
 	CALI_INTRO_3_1 = """The girl blushes a deep scarlet color at your question.
 
-Cali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!
+{color=aqua|ali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!}
 
 The men smirk at her reaction.
 
-Slaver: — Well, that's what she says.""",
-	CALI_INTRO_3_2 = """Slaver: — She was traveling all alone, by dangerous roads. Looks like she ran away from home or something. """,
+{color=yellow|Slaver: — Well, that's what she says.}""",
+	CALI_INTRO_3_2 = """{color=yellow|Slaver: — She was traveling all alone, by dangerous roads. Looks like she ran away from home or something. }""",
 	CALI_INTRO_3_3 = """The leader strokes his chin for a few seconds. 
 
-Slaver: — I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we leave, so we will happily part with her here.
+{color=yellow|Slaver: — I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we leave, so we will happily part with her here.}
 
-Cali: — Bastards, stop discussing me like I agreed to this!
+{color=aqua|Cali: — Bastards, stop discussing me like I agreed to this!}
 
-Slaver: — Given her healthy physique and appearance I believe she is worth at least 1,000 gold.""",
+{color=yellow|Slaver: — Given her healthy physique and appearance I believe she is worth at least 1,000 gold.}""",
 	CALI_INTRO_3_OPTION_1 = "She does not seem all that pretty to me (Charm Check)",
 	CALI_INTRO_3_OPTION_2 = "I'll think about it",
 	CALI_INTRO_3_OPTION_3 = "Deal",
 	CALI_INTRO_3_OPTION_4 = "No deal, I'll take her by force",
-	CALI_INTRO_4_1_1 = """Cali: — Like I care how I seem to you!
+	CALI_INTRO_4_1_1 = """{color=aqua|Cali: — Like I care how I seem to you!}
 
-Slaver: — I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe. 
+{color=yellow|Slaver: — I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe. }
 
-Cali: — You feed me with pig food here!""",
-	CALI_INTRO_4_1_2 = """Cali: — Like I care how I seem to you!
+{color=aqua|Cali: — You feed me with pig food here!}""",
+	CALI_INTRO_4_1_2 = """{color=aqua|Cali: — Like I care how I seem to you!}
 
-Slaver: — Even so, we must cover the expenses for having kept her alive and safe. 
+{color=yellow|Slaver: — Even so, we must cover the expenses for having kept her alive and safe. }
 
-Cali: — You feed me with pig food here!""",
-	CALI_INTRO_4_2 = """Slaver: — Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.""",
+{color=aqua|Cali: — You feed me with pig food here!}""",
+	CALI_INTRO_4_2 = """{color=yellow|Slaver: — Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.}""",
 	CALI_INTRO_4_3 = """The slaver smirks as you pass them the money and leave the cave. You turn to the still bound Cali.""",
-	CALI_INTRO_4_4 = """Slaver: — Oh, is that so? You can try!""",
+	CALI_INTRO_4_4 = """{color=yellow|Slaver: — Oh, is that so? You can try!}""",
 	GOT_CALI_1_1 = """The bound wolf girl sits before you, looking up at you with defiance and a hint of fear.
 
  — So? What are you going to do with me now?""",
@@ -7435,7 +7450,7 @@ She tries to squirm away, wailing miserably, but you easily grab hold of her tai
 
 Grabbing hold of the sheer fabric of Cali's stockings you tug sharply, ripping them open to get a better look at her white cotton panties.
 
- — Monster! Y-you can't do this to me!
+ — Monster! You'll regret this!
 
 Chuckling softly, you run your finger over her panties, along the soft cleft between her thighs. Cali shudders as your fingertip prods roughly at her clit through the fabric.
 
@@ -7494,7 +7509,11 @@ She takes a long pause, rubbing her sore wrists, before she is willing to contin
 	GOT_CALI_2_OPTION_1 = "What sort of work can you do?",
 	GOT_CALI_2_OPTION_2 = "I could find some use for you",
 	GOT_CALI_2_OPTION_3 = "Not interested",
-	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough. I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
+	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough, I'm of the wolves after all. 
+	
+	Cali proudly puffs her chest.
+	
+	 — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
 	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
@@ -7507,50 +7526,50 @@ You leave the cave and lead Cali back to your mansion.""",
 	
 	
 	#           QUESTS           #
-	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home.",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
 	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
 	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
 	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
 
-	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds. You must earn their trust and loyalty.",
 	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
 	GUILDS_INTRODUCTION_NAME2 = "First Step",
 	GUILDS_INTRODUCTION_NAME3 = "New Friends",
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds. You must earn their trust and loyalty.",
 	GUILDS_INTRODUCTION_STAGE0 = "Visit the Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
 	GUILDS_INTRODUCTION_STAGE1 = "Now, that you are accustomed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the four guilds. You can do so by completing quests from the city's notice board.",
 	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
 	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came this morning. It suggests you visit the Servants Guild and meet their leader.",
 
-	DAISY_CLOTHES_SUMMARY = "Your slave, Daisy, could use a new set of clothes.",
 	DAISY_CLOTHES_NAME = "Daisy: New Outfit",
+	DAISY_CLOTHES_SUMMARY = "Your slave, Daisy, could use a new set of clothes.",
 	DAISY_CLOTHES_STAGE_1 = "Speak to Sigmund about a new set of clothes for Daisy. ",
 	DAISY_CLOTHES_STAGE_2 = "Speak to Amelia about a new set of clothes for Daisy",
 	DAISY_CLOTHES_STAGE_3 = "Wait, until Daisy's new clothes are finished. ",
 
-	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_NAME = "Daisy: Training",
+	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
 	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose the specific training for Daisy.",
 	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 
-	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_NAME = "Daisy: Disappearance",
+	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
 	DAISY_LOST_STAGE_1 = "Visit Amelia to find out what could have happened to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy, who should be at Ramont's Estate",
 	
-	AMELIA_SILK_SUMMARY = "After proving yourself useful to the Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_NAME = "Amelia: Request",
+	AMELIA_SILK_SUMMARY = "After proving yourself useful to the Servants Guild, Amelia has given you a task.",
 	AMELIA_SILK_STAGE_1 = "Deliver 50 Silk to Amelia at the Servants Guild.",
 	
-	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_NAME = "Amelia: Elven Botany",
+	AMELIA_HERBS_SUMMARY = "After helping her out, Amelia gave you a new task to earn her favor.",
 	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild", # go to Amelia and ask her what is up
 	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.", # Get the herbs
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild", # return to Amelia
 	
-	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_NAME = "Marriage",
+	MARRIAGE_MAIN_SUMMARY = "Marriage",
 	MARRIAGE_MAIN_STAGE_1 = "Pay 500 gold to Aliron's church to set up a wedding ceremony.",
 	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with the Servants Guild and the Workers Guild, then visit the Church to start the wedding",
 	MARRIAGE_SERVANTS_SUMMARY = "Marriage: Bread and Circuses",
@@ -7560,15 +7579,15 @@ You leave the cave and lead Cali back to your mansion.""",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
 	
-	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_NAME = "Proof of Strength",
+	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_STAGE_1 = "Talk to Sigmund about the possible location of Elder Gryphon",
 	GRYPHON_QUEST_STAGE_2 = "Talk to Derek at Aliron",
 	GRYPHON_QUEST_STAGE_3 = "Search through Gryphon Thicket to find Elder Gryphon's tracks",
 	GRYPHON_QUEST_STAGE_4 = "Hunt down Elder Gryphon at Elder Gryphon Lair",
 	
-	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "It seems someone wishes for your audience at Aliron's church",
 	PRE_SWORD_ARTIFACT_QUEST_NAME = "Champion's return",
+	PRE_SWORD_ARTIFACT_QUEST_SUMMARY = "It seems someone wishes for your audience at Aliron's church",
 	PRE_SWORD_ARTIFACT_QUEST_STAGE_1 = "Visit Aliron's church to find out who summoned you.",
 	
 	SWORD_ARTIFACT_QUEST_NAME = "Forests and Beasts",
@@ -7587,32 +7606,22 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver required materials to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
-	SWORD_ARTIFACT_QUEST_STAGE_14 = "",
-	SWORD_ARTIFACT_QUEST_STAGE_15 = "",
+	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track dowh the White Stag",
+	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Elven Capital",
 	
-	TEMPLE_QUEST_SUMMARY = "Ancient Elven Temple",
-	TEMPLE_QUEST_NAME = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
+	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
+	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
 	TEMPLE_QUEST_STAGE_1 = "Visit Ancient Elven Temple to obtain Sacred Water",
 	TEMPLE_QUEST_STAGE_2 = "Return to Heleviel with Sacred Water",
 	
-	GETTING_LIRA_QUEST_SUMMARY = "",
-	GETTING_LIRA_QUEST_NAME = "",
+	GETTING_LIRA_QUEST_NAME = "Revelation",
+	GETTING_LIRA_QUEST_SUMMARY = "With all things set you have to make your move together with Erlen in attempt to deal with Heleviel. ",
 	GETTING_LIRA_QUEST_STAGE_1 = "Search for Erlen",
-	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess to Erlen",
-	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 whiskey to get Lira out of the temple",
+	GETTING_LIRA_QUEST_STAGE_2 = "Find a way to get young priestess from Elven Capital to Erlen",
+	GETTING_LIRA_QUEST_STAGE_3 = "Get 10 Whiskey to get Lira out of the temple",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
+	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
-#	TEMPLE_QUEST_NAME = "Ancient Elven Temple",
-#	TEMPLE_QUEST_SUMMARY = "Freya's High Priestess, Heleviel, asked you to bring here some sacred water required for the ritual.",
-#	TEMPLE_QUEST_STAGE_1 = "Deliver Erlen the reply from Leon",
-#	TEMPLE_QUEST_STAGE_2 = "Visit Ancient Elven Temple to obtain Sacred Water",
-#	TEMPLE_QUEST_STAGE_3 = "Visit Ancient Elven Temple to obtain Sacred Water",
-#	TEMPLE_QUEST_STAGE_4 = "Return to Heleviel with Sacred Water",
-#	TEMPLE_QUEST_STAGE_5 = "Search for Erlen",
-#	TEMPLE_QUEST_STAGE_6 = "Find the young priestess Erlen told you about",
-#	TEMPLE_QUEST_STAGE_7 = "Find a way to get Lira to Erlen",
-#	TEMPLE_QUEST_STAGE_8 = "Get 10 whiskey to get Lira out of the temple",
-#	TEMPLE_QUEST_STAGE_9 = "Return to Erlen with Lira",
 }
 
 

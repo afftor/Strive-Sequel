@@ -123,7 +123,7 @@ var data = {
 			{text = "RETURNTODUNCAN_ANSWER2", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], bonus_effects = [
+			{code = "intermission_2_intro_1", text = "DIALOGUECLOSE", dialogue_argument = 1, reqs = [], bonus_effects = [
 				{code = 'complete_quest', value = 'civil_war_start'},
 				{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage1'},
 				]

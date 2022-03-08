@@ -5,6 +5,7 @@ var data = {
 		text = [
 			{text = "ZEPHYRA_RECRUITMENT_LETTER", reqs = []}
 		],
+		common_effects = [{code = 'decision', value = 'startedAct2'}],
 		options = [ {
 			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
 			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'},]
@@ -39,7 +40,6 @@ var data = {
 		text = [{text = "ZEPHYRA_RECRUITMENT_3_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "ZEPHYRA_RECRUITMENT_3_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'}, {code = 'update_city'}]
 		}, {
 			code = 'zephyra_recruitment_2', text = "ZEPHYRA_RECRUITMENT_3_3_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ]
@@ -87,9 +87,7 @@ var data = {
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'},
-			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'}]
+			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2
 		} ]
 	},
 	
@@ -99,7 +97,6 @@ var data = {
 		text = [{text = "ZEPHYRA_RECRUITMENT_6_BAD", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'pre_sword_artifact_quest'}, {code = 'update_city'}]
 		} ]
 	},
 	
@@ -109,6 +106,7 @@ var data = {
 		text = [
 			{text = "ZEPHYRA_SWORD_1", reqs = []}
 		],
+		common_effects = [{code = 'decision', value = 'startedAct2'}],
 		options = [ {
 			code = 'zephyra_sword_2', text = "ZEPHYRA_SWORD_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
@@ -135,13 +133,14 @@ var data = {
 		text = [{text = "ZEPHYRA_SWORD_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_SWORD_3_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
+#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
+			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2
 		} ]
 	},
 	
 	priestess_sword_talk_1  = {
-		image = null, tags = ["dialogue_scene", "master_translate"],
+		image = null, tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_common'],
 		reqs = [], character = "elf_priestess",
 		text = [{text = "PRIESTESS_SWORD_TALK_1_1", reqs = [], previous_dialogue_option = 0},
 		{text = "PRIESTESS_SWORD_TALK_1_2", reqs = [], previous_dialogue_option = 1}],
@@ -239,8 +238,7 @@ var data = {
 		{text = "PRIESTESS_SWORD_TALK_7_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}],
-			tags = ['blackscreen_transition_common']
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage3'}, {code = 'update_city'}, {code = 'screen_black_transition', value = 1}],
 		} ]
 	},
 	
@@ -581,7 +579,7 @@ var data = {
 	},
 	
 	pre_ritual_7_3_2 = {
-		custom_background = "amelia_bondage1", # TODO change
+		custom_background = "mae_scene2", # TODO change
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], 

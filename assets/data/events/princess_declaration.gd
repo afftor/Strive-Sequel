@@ -97,20 +97,30 @@ var data = {
 			{code = 'add_timed_event', value = "amelia_herbs_start",
 			args = [{type = 'add_to_date', date = [1,1], hour = 1}]}, 
 		
-#			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
-#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
-#
-#			{code = 'add_timed_event', value = "zephyra_sword_1",
-#			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
+			{code = 'add_timed_event', value = "zephyra_recruitment_letter",
+			args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
+
+			{code = 'add_timed_event', value = "zephyra_sword_1",
+			args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
+			
+			{code = "decision", value = "mayor_election_finished"}
 		],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
-			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = false}], bonus_effects = [
 				{code = 'make_story_character', value = 'Anastasia'}]
+			}, 
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
+				{code = 'make_story_character', value = 'AnastasiaBroken'}]
+			}, # broken part
+			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = true}, {type = 'decision', value = 'bracelet_returned', check = true}], bonus_effects = [{code = 'unique_character_changes',
+					value = 'anastasiaBroken',
+					args = [
+						{code = 'create_and_equip', item = "anastasia_broken_bracelet", parts = {}}
+						],
+			}] # broken part
 			},
-
-
-			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}], bonus_effects = [{code = 'unique_character_changes',
+			{text = "", reqs = [{type = 'decision', value = 'bracelet_returned', check = true},{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = false}], bonus_effects = [{code = 'unique_character_changes',
 					value = 'anastasia',
 					args = [
 						{code = 'create_and_equip', item = "anastasia_bracelet", parts = {}}
@@ -123,7 +133,7 @@ var data = {
 				{code = 'make_story_character', value = 'Aire'}]
 			},
 			{text = '', reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
+				{code = 'unique_character_changes', value = 'anastasia', args = [ # broken part
 					{code = 'wits_factor', operant = '=', value = 1},
 					{code = 'wits', operant = '=', value = 3},
 					{code = 'charm', operant = '=', value = 8},
@@ -133,30 +143,6 @@ var data = {
 				]
 			}
 		],
-		options = [
-			{
-				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_1",
-				reqs = [],
-				type = 'next_dialogue',
-				dialogue_argument = 1,
-			},
-			{
-				code = 'final_words_2',
-				text = "FINAL_WORDS_OPTION_2",
-				reqs = [],
-				type = 'next_dialogue',
-				dialogue_argument = 1,
-			},
-		],
-	},
-	final_words_2 = {
-		image = null,
-		tags = ['dialogue_scene'],
-		text = [
-			{text = "FINAL_WORDS_2", reqs = [],},
-		], 
-		common_effects = [{code = "decision", value = "mayor_election_finished"}],
 		options = [
 			{
 				code = 'princess_cutscene_init',
@@ -176,6 +162,32 @@ var data = {
 			},
 		],
 	},
+#	final_words_2 = {
+#		image = null,
+#		tags = ['dialogue_scene'],
+#		text = [
+#			{text = "FINAL_WORDS_2", reqs = [],},
+#		], 
+#		common_effects = [],
+#		options = [
+#			{
+#				code = 'princess_cutscene_init',
+#				text = "DIALOGUECLOSE",
+#				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
+#				type = 'next_dialogue',
+#				dialogue_argument = 1,
+#				bonus_effects = [{code = 'update_city'}],
+#			},
+#			{
+#				code = 'close',
+#				text = "DIALOGUECLOSE",
+#				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
+#				type = 'next_dialogue',
+#				dialogue_argument = 1,
+#				bonus_effects = [{code = 'update_city'}],
+#			},
+#		],
+#	},
 	#somewhere here should be recruit effects
 	#my opinion is those should be at the close options to reflect char status changes (i'm not sure there are different templates for her though)
 	princess_cutscene_init = {
@@ -234,7 +246,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}],
 				image = null,
-				character = "anastasia",
+				character = "AnastasiaBroken",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 #					{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},
@@ -301,7 +313,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_3 = {
 		image = null,
-		custom_background = "anastasia_sex_1",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
@@ -321,7 +333,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_4 = {
 		image = null,
-		custom_background = "anastasia_sex_1",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -341,7 +353,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_5 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -361,7 +373,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_6 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -381,7 +393,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_7 = {
 		image = null,
-		custom_background = "anastasia_sex_2",
+		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
@@ -401,7 +413,7 @@ var data = {
 	
 	princess_cutscene_mindbreak_8 = {
 		image = null,
-		custom_background = "anastasia_sex_3",
+		custom_background = "anastasia_rape_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
