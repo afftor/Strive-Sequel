@@ -873,7 +873,7 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
+		#input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])

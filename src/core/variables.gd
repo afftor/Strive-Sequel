@@ -167,7 +167,7 @@ var growth_factor = {
 
 var basestats_factor_mod = {
 1 : 0.5,
-2 : 0.47,
+2 : 0.67,
 3 : 1,
 4 : 1.3,
 5 : 1.65,

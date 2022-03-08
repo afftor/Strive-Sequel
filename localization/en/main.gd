@@ -1447,7 +1447,7 @@ var TranslationDict = {
 	
 	
 	PROFACOLYTE = "Acolyte",
-	PROFACOLYTEDESCRIPT = "Indiviuals have devoted their life to mending to others. ",
+	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
 	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
 	PROFMONK = "Monk",
@@ -2217,7 +2217,7 @@ var TranslationDict = {
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
-	ENEMYELF_SOLDIER = "Elven Sodier",
+	ENEMYELF_SOLDIER = "Elven Soldier",
 
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
