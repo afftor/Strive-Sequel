@@ -483,7 +483,7 @@ func update_sex_date_buttons():
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
 	for i in sex_participants:
-		if i.tags.has("no_date") or i.tags.has("no_date_day"):
+		if i.tags.has("no_date") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
 
 func set_hovered_person(node, person):
@@ -545,7 +545,9 @@ func test_mode():
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
-		character.unlock_class("acolyte")
+		character.unlock_class("shaman")
+		character.xp_module.base_exp = 1500
+		character.add_stat('abil_exp', 1500)
 		# character.unlock_class("ruler")
 		# character.unlock_class("watchdog")
 		# character.unlock_class("director")
@@ -871,7 +873,8 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('temple_8', '', {})
+		input_handler.interactive_message('event_dungeon_prisoner', '', {})
+		characters_pool.cleanup()
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])

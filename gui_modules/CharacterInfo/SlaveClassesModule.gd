@@ -99,9 +99,9 @@ func update():
 	var array = []
 	for i in classesdata.professions.values():
 		if !ResourceScripts.game_progress.unlock_all_classes:
-			if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs) || person.has_profession(i.code):
+			if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs, true) || person.has_profession(i.code):
 				continue
-			if !$CheckBox.pressed && person.checkreqs(i.reqs) == false:
+			if !$CheckBox.pressed && person.checkreqs(i.reqs, true) == false:
 				continue
 		array.append(i)
 	
@@ -114,7 +114,7 @@ func update():
 		if !ResourceScripts.game_progress.unlock_all_classes:
 			if i.has('altname') && person.checkreqs(i.altnamereqs):
 				name = i.altname
-			if person.checkreqs(i.reqs) == false:
+			if person.checkreqs(i.reqs, true) == false:
 				newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
@@ -154,7 +154,7 @@ func open_class(classcode):
 	var tempclass = classesdata.professions[classcode]
 	var class_locked = true
 	if !ResourceScripts.game_progress.unlock_all_classes:
-		class_locked = !person.checkreqs(tempclass.reqs)
+		class_locked = !person.checkreqs(tempclass.reqs, true)
 	else:
 		class_locked = false
 	var text = ResourceScripts.descriptions.get_class_details(person, tempclass)
