@@ -123,7 +123,7 @@ var enemygroups = {
 	white_stag = {reqs = [], units = {white_stag = [1,1], wolf = [1,1], centipede = [1,1]}},
 	temple_raiders = {reqs = [], units = {bandit_melee = [2,2], bandit_boss = [1,1], bandit_mage = [3,3]}},
 	temple_specters = {reqs = [], units = {elf_specter = [6,6]}},
-	bridge_guards = {reqs = [], units = {elf_sodlier = [6,6]}},
+	bridge_guards = {reqs = [], units = {elf_soldier = [6,6]}},
 
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},

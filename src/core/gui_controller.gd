@@ -75,7 +75,7 @@ func update_modules():
 
 
 func clock_visibility():
-	if !current_screen in [mansion, exploration, game_menu]:
+	if input_handler.combat_node != null or !current_screen in [mansion, exploration, game_menu]:
 		if clock != null:
 			clock.visible = false
 		return
