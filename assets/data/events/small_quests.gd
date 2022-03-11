@@ -378,7 +378,7 @@ var data = {
 		custom_background = "act1_art",
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
-		common_effects = [],
+		common_effects = [{code = "hide_dialogue"}],
 		text = [
 			{text = "", reqs = []}
 		],
@@ -393,7 +393,7 @@ var data = {
 		custom_background = "act2_art",
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
-		common_effects = [],
+		common_effects = [{code = "hide_dialogue"}],
 		text = [
 			{text = "", reqs = []}
 		],
