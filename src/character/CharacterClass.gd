@@ -285,6 +285,10 @@ func equip(item, item_prev_id = null):
 func unequip(item):
 	equipment.unequip(item)
 
+func unequip_all():
+	equipment.clear_equip()
+
+
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
 
@@ -710,7 +714,7 @@ func death():
 
 func killed():
 	process_event(variables.TR_DEATH)
-	equipment.clear_eqip()
+	equipment.clear_equip()
 #	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
 	ResourceScripts.game_party.add_fate(id, tr("DIED"))
@@ -1013,7 +1017,7 @@ func check_escape_possibility():
 
 func escape():
 	process_event(variables.TR_REMOVE)
-	equipment.clear_eqip()
+	equipment.clear_equip()
 	input_handler.active_character = self
 	input_handler.interactive_message('slave_escape', '', {})
 #	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
