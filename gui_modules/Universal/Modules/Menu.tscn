@@ -546,7 +546,11 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added second arc story
+bbcode_text = "Added and fixed missing icons and names for new enemy events
+Corrected some of new class icons
+Fixed some event errors
+0.6.1
+Added second arc story
 Gnomes now have +10 wits bonus
 Added and rebalanced \"Stables\" Upgrade
 Some class requirements have been rebalanced
@@ -1139,7 +1143,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added second arc story
+text = "Added and fixed missing icons and names for new enemy events
+Corrected some of new class icons
+Fixed some event errors
+0.6.1
+Added second arc story
 Gnomes now have +10 wits bonus
 Added and rebalanced \"Stables\" Upgrade
 Some class requirements have been rebalanced

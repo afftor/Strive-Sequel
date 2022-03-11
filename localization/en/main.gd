@@ -1447,7 +1447,7 @@ var TranslationDict = {
 	
 	
 	PROFACOLYTE = "Acolyte",
-	PROFACOLYTEDESCRIPT = "Indiviuals have devoted their life to mending to others. ",
+	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
 	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
 	PROFMONK = "Monk",
@@ -2217,7 +2217,7 @@ var TranslationDict = {
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
-	ENEMYELF_SOLDIER = "Elven Sodier",
+	ENEMYELF_SOLDIER = "Elven Soldier",
 
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -6168,7 +6168,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_FINAL_3 = """As [spousename] is brought to the church, [spousehe] looks somewhat nervous, but still returns your wink with a smile. As [spousehe] makes it to the altar, Ginny starts the ceremony.
 
 {color=yellow|Ginny: — Celena thanks you all for coming here today...}""",
-	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [husband]?}""",
+	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [spousehusband]?}""",
 	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
 	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
 	MARRIAGE_FINAL_4_OPTION_3 = """What's the point in going through all of this otherwise?""",

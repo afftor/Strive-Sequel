@@ -403,7 +403,9 @@ func make_quest(questcode):
 				statreq -= 1
 				if statdata.code == 'stat':
 					var req = {code = statdata.code, operant = statdata.operant, stat = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
-					statdata.type.erase(req.code)
+					statdata.type.erase(req.stat)
+					if statdata.type.empty():
+						statdata.use_once = true
 					tempdata.statreqs.append(req)
 				elif statdata.code == 'class':
 					var number = round(rand_range(statdata.range[0],statdata.range[1]))

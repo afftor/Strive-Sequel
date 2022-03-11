@@ -86,6 +86,19 @@ func get_stat(statname, ref = false):
 		return food.get(statname)
 	return statlist.get_stat(statname, ref)
 
+
+func get_stat_nobonus(statname, ref = false):
+	if statname in ['hp', 'mp', 'shield', 'taunt']:
+		return get(statname)
+	if statname == 'base_exp':
+		return xp_module.base_exp
+	if statname == 'counters':
+		return effects.counters
+	if statname.begins_with('food_') and !(statname in ['food_consumption']):
+		return food.get(statname)
+	return statlist.get_stat_nobonus(statname, ref)
+
+
 func set_stat(stat, value):
 	if stat in ['hp', 'mp', 'shield', 'taunt']:
 		set(stat, value)
@@ -271,6 +284,10 @@ func equip(item, item_prev_id = null):
 
 func unequip(item):
 	equipment.unequip(item)
+
+func unequip_all():
+	equipment.clear_equip()
+
 
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
@@ -697,7 +714,7 @@ func death():
 
 func killed():
 	process_event(variables.TR_DEATH)
-	equipment.clear_eqip()
+	equipment.clear_equip()
 #	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
 	ResourceScripts.game_party.add_fate(id, tr("DIED"))
@@ -770,7 +787,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 	match i.code:
 		'stat':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
-			check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
+			if ignore_npc_stats_gear:
+				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)
+			else:
+				check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
 		'stat_index':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = input_handler.operate(i.operant, get_stat(i.stat)[i.index], i.value)
@@ -854,7 +874,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 
 	return check
 
-func decipher_reqs(reqs, colorcode = false):
+func decipher_reqs(reqs, colorcode = false, purestat = false):
 	var text = ''
 	for i in reqs:
 		var text2 = ''
@@ -866,7 +886,7 @@ func decipher_reqs(reqs, colorcode = false):
 #			continue
 		text2 = decipher_single(i)
 		if colorcode == true:
-			if checkreqs([i]):
+			if checkreqs([i], purestat):
 				text2 = '{color=green|' + text2 + '}'
 			else:
 				text2 = '{color=red|' + text2 + '}'
@@ -997,7 +1017,7 @@ func check_escape_possibility():
 
 func escape():
 	process_event(variables.TR_REMOVE)
-	equipment.clear_eqip()
+	equipment.clear_equip()
 	input_handler.active_character = self
 	input_handler.interactive_message('slave_escape', '', {})
 #	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))

@@ -101,7 +101,7 @@ func unequip(item):
 		eff.remove()
 	parent.get_ref().recheck_effect_tag('recheck_item')
 
-func clear_eqip():
+func clear_equip():
 	for i in gear:
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
