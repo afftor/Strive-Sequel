@@ -6096,7 +6096,7 @@ Realizing your seriousness she drops her head.
 	AMELIA_HERBS_END_REPLY_1_2_1 = """— I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
 
 After receiving the instructions, you leave Amelia's office.""",
-	AMELIA_HERBS_END_REPLY_1_2_2 = """By the evening you enter Amelia's estate. To your surprise, there's only a couple of servants who quickly lose their interest in you as soon as Amelia shows up.
+	AMELIA_HERBS_END_REPLY_1_2_2 = """As evening comes, you find yourself at the gates of Amelia's estate.  A couple of junior servants let you in and eye you warily but are immediately dismissed by Amelia.
 
 — You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
 
@@ -6112,11 +6112,97 @@ Getting caught in the moment you see no other option but to nod in agreement.
 
 Saying that, Amelia leaves you alone wondering what she's up to.""",
 	AMELIA_HERBS_END_REPLY_1_2_5 = "In a few moments you hear her calling you to enter the bedroom.",
-	AMELIA_HERBS_END_REPLY_1_2_6 = "Text placeholder",
-	AMELIA_HERBS_END_REPLY_1_2_7 = "Text placeholder",
-	AMELIA_HERBS_END_REPLY_1_2_8 = "— You are a real gentleman, [name], I haven't been so satisfied since the day I became the guild leader. Too bad everything good eventually comes to an end. But let's hope we'll get another time.",
-	AMELIA_HERBS_END_OPTION_1_2_1 = """I'll be waiting for the next time""",
-	AMELIA_HERBS_END_OPTION_1_2_2 = """That's a time I won't forget""",
+	AMELIA_BONDAGE_1 = """{color=yellow|Amelia:— Punctual as always, I see. A little sharp, even. Hope you didn't cut anyone on your way here.}
+
+Amelia giggles at her joke. She welcomes you into a sumptuously appointed parlour and bids you get comfortable on a long sofa. She brings a bottle of the finest wine in Aliron and serves you a brimming goblet.
+
+You make small talk for a while, chatting about the weather, about the guilds. Amelia has a quick mind and is an entertaining companion. As you talk, she shuffles closer to you on the sofa until her knees are touching yours. You lay your hand on her thigh and she purrs. Amelia puts her wine down and turns to you, a serious look on her face. 
+
+{color=yellow|Amelia:— I have a confession to make, [name]. I have been less than entirely honest with you. No less than with anyone else, of course, but there’s something I want to tell you.}
+
+You sip your wine and gesture to her to continue.""",
+	AMELIA_BONDAGE_2 = """{color=yellow|Amelia:— Before I became guild leader, I was a servant. Not many guild leaders come from the servant class, most are drawn from among the masters. I guess you could say I was lucky.}
+
+You raise your goblet to her luck.
+
+{color=yellow|Amelia:— As a servant, naturally, I had a master. A very strict master. He could be harsh with his discipline, but I'd be lying if I said that I didn't enjoy it.}
+
+You raise an eyebrow at her confession, wondering where this is leading. 
+
+{color=yellow|Amelia:— Despite the... discipline, being a servant girl was a carefree time for me. Sometimes I wish I could return to it, to escape the duties and responsibility of guild leadership.}
+
+Amelia places her hand on your arm and strokes slowly down to where your hand rests on her stockinged thigh.
+
+{color=yellow|Amelia:— I think that cats need a strong master. Someone to take care of them, and... chastise them occasionally?}""",
+	AMELIA_BONDAGE_3 = """The gorgeous cat-girl looks up at you, biting her lip as she draws your hand further up her thigh.
+
+{color=yellow|Amelia:— A dominant owner, who they can look up to and depend upon, whose authority they trust. Who knows how to treat them firmly.} 
+
+Amelia parts her knees and encourages your hand to slip under her dress. You feel the heat of her bare thighs and your fingers discover she is not wearing any panties. Her pussy is warm and wet. She sighs softly as you caress her slit.
+
+{color=yellow|Amelia:— I hope that... you might be just the person to help me relive those days. Recapture the feeling of being a submissive pet to a powerful man.}
+
+You have no other thought but to agree. Amelia purrs.
+
+{color=yellow|Amelia:— You are always so kind to me, [name]. Please, give me a moment to prepare and then come to my chambers.} 
+
+Amelia hops up and disappears through a doorway, throwing you a coquettish grin over her shoulder""",
+	AMELIA_BONDAGE_4 = """A minute later you hear Amelia calling you to her bedroom. 
+
+As you swing open the door you see a large four-poster bed and a plush purple armchair. A leather harness hangs from a pulley in the centre of the room and Amelia has laid out a number of ropes, paddles, whips, cuffs, and clamps on the bed.
+
+The slender cat-girl stands in the centre, below the pulley, wearing only stockings and an open-topped corset that displays her voluptuous breasts.
+
+{color=yellow|Amelia:— Oh master, there you are. I- I've been such a bad girl. I should be punished.}
+
+Amelia's feline eyes are wide and she is flushed with desire, her long tail whipping side to side. 
+
+You cross the room and grab a handful of hair, yanking her head back. A smile crosses her pretty face as she moans at your sudden forcefulness. Your other hand reaches around behind her to grab an ass-cheek, squeezing it hard enough to hurt.
+
+{color=yellow|Amelia:— Yes, master, teach me a lesson I won't forget. Show me what discipline means.}""",
+	AMELIA_BONDAGE_5 = """Amelia writhes provocatively against you, rubbing her breasts and clit on your muscular frame. Gripping her by the hair you drag her to the bed. You take the handcuffs and bend Amelia over, pulling her arms behind to snap the cuffs over her wrists. She rubs her naked ass into your groin, her tail flicking back and forth across the bulge in your pants. 
+
+You grab a coil of fine silk rope and tow Amelia into the centre of the room. Pulling the harness down, you slip its leather loops over her upper body. Amelia begins to pant in uncontrollable arousal as you bind her. 
+
+You lash rope around her midriff, running it tight around each of her heaving breasts, and then around her collarbone, pinning her arms to her sides. Hauling on the pulley jerks Amelia upright. 
+
+You grab her calf and lift one leg, bending it until the knee almost touches her face. You tie it in place, strapping the foot tight against her buttock. She whimpers excitedly as you stand back to admire your ropework.""",
+	AMELIA_BONDAGE_6 = """With Amelia's wet pussy at your mercy, you unleash your cock. She groans lewdly at the sight of your erect penis, raw lust in her eyes. You ask if she is ready to be punish-fucked like the wayward slut that she is. 
+
+{color=yellow|Amelia:— Oh yes, master. Use me however pleases you, master. Make me submit.} 
+
+You fondle her vulnerable body, kneading her breasts and pinching the soft flesh of her ass. Your shaft grinds against wet pussy-lips and Amelia keens needily. You take hold, one hand grabbing a tit, one gripping her hair, and slowly enter her slick pussy. She tries to twitch her hips to urge you deeper but she can hardly move. 
+
+As your thick cock penetrates deep, Amelia sighs in ecstasy. Her eyes roll back and her tight cunt convulses around you. She cums again with each slow and deliberate thrust, her pussy spasming wildly for several minutes. You pinch her nipples as you bury your meat in her, whispering filth into her ear while she gasps for breath.""",
+	AMELIA_BONDAGE_7 = """{color=yellow|Amelia:— Oh master... Break me, master...}
+
+Your thrusts pick up speed and you pound Amelia’s pussy remorselessly. You use your grip on her breast and hair to slam yourself into her cunt hard enough to bruise the soft flesh. Amelia screams in wild abandon as you hammer her, until you cover her mouth with your hand to muffle the cries. 
+
+Once her screams subside, you grab her narrow waist with both hands so you can fuck her harder. Both your bodies are covered in a fine sheen of sweat. Amelia is panting loud as your penis rams violently into her pussy. You feel your orgasm approaching fast. 
+
+{color=yellow|Amelia:— Cum inside me master, please cum in my disobedient little cunt!}
+
+Your final powerful thrust lifts her off the floor. Impaled on your cock. She hangs from the harness as your cum shoots into her bruised pussy. Amelia yowls, back arched, while your semen pumps into her and then mewls longingly when you pull out.""",
+	AMELIA_BONDAGE_8 = """Amelia croons softly as she stands on one leg, cum trickling from her swollen pussy down over her stockings. You ask if she has learned her lesson, or if she requires further discipline.
+
+{color=yellow|Amelia:— Oh yes, master, I've learned so well. I remember what I am now.}
+
+You cup her leaking cunt and smear a handful of cum into her face and hair. You untie her raised leg so she stands on both feet, then loosen the ropes and remove the harness. She sways unsteadily, still handcuffed, her thighs parted to ease the soreness in her tender pussy. You sit on the armchair and pull her over your knee. 
+
+You had planned to unlock the cuffs right away but her trembling ass is too great a temptation. You spank her roughly and she cries out at each smack.  
+
+{color=yellow|Amelia:— Thank you, master... I deserve this.}
+
+You thrash her into another orgasm while her rope-burned tits rub against your cock. Only then do you uncuff her. Sobbing, she climbs into your lap and embraces you, her fine body shivering in overwhelmed gratitude.""",
+	AMELIA_BONDAGE_9 = """Back in the parlour half an hour later, Amelia clears the wine goblets away. She steps gingerly to the door, pauses, and looks over her shoulder at where you lounge on the sofa.
+
+{color=yellow|Amelia:— Well, you are quite the gentleman, [name]. You really know how to show a girl a good time. I haven’t been so… satisfied since the day I was made guild leader. They say that all good things must come to an end, but I hope we’ll have a chance to do this again, some day.}
+
+The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.""",
+#	AMELIA_BONDAGE_10 = "The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.",
+#
+#	AMELIA_BONDAGE_OPTION_1 = """I'll be waiting for the next time""",
+#	AMELIA_BONDAGE_OPTION_2 = """That's a time I won't forget""",
 	AMELIA_HERBS_END_REPLY_START_FAIL = """— Oh my, that's a real shame. I already anticipated it, though. Well, I guess I'll have to look for another supplier now. Now, if you excuse me...
 
 Amelia leaves you for her business, leaving you alone.""",
@@ -7603,7 +7689,7 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = "Search for Leon at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = "Search for Leon at forest location",
 	SWORD_ARTIFACT_QUEST_STAGE_10 = "Talk to Savra about breaking Leon's madness",
-	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver required materials to Savra",
+	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver 50 Magic Wood, 25 Iron Wood and 15 Mythic Leather to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track dowh the White Stag",

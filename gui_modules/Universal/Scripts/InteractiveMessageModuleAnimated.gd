@@ -927,8 +927,6 @@ func select_option(number):
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
 		hold_selection = true
 		dialogue_next(code, option.dialogue_argument)
-	elif current_scene.tags.has("hide_dialogue"):
-		hide_dialogue()
 	else:
 		var args
 		if option.has('args'): args = option.args
