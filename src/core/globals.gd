@@ -1586,6 +1586,8 @@ func common_effects(effects):
 			'complete_wedding':
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
+			'hide_dialogue':
+				gui_controller.dialogue.hide_dialogue()
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

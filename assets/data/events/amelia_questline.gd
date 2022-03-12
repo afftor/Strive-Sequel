@@ -323,7 +323,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, 
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
 		}, ],
 	},
@@ -332,7 +332,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_1", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+			code = 'amelia_herbs_end_1_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	
@@ -340,7 +340,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_2", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+			code = 'amelia_herbs_end_1_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	
@@ -348,7 +348,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_3", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+			code = 'amelia_herbs_end_1_2_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	
@@ -356,52 +356,122 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_4", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2
+			code = 'amelia_herbs_end_1_2_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	
 	amelia_herbs_end_1_2_5 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_5", reqs = []}],
+		options = [ {
+			code = 'amelia_bondage_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	amelia_bondage_1 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],  character = 'amelia',
+		text = [{text = "AMELIA_BONDAGE_1", reqs = []}],
+		options = [ {
+			code = 'amelia_bondage_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	amelia_bondage_2 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],  character = 'amelia',
+		text = [{text = "AMELIA_BONDAGE_2", reqs = []}],
+		options = [ {
+			code = 'amelia_bondage_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, ],
+	},
+	
+	amelia_bondage_3 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],  character = 'amelia',
+		text = [{text = "AMELIA_BONDAGE_3", reqs = []}],
+		options = [ {
+			code = 'amelia_bondage_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, ],
+	},
+	
+	amelia_bondage_4 = { 
 		custom_background = "amelia_bondage1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], 
-		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_5", reqs = [], }],
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_BONDAGE_4", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'amelia_bondage_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
-	amelia_herbs_end_1_2_6 = {
+	amelia_bondage_5 = { 
+		custom_background = "amelia_bondage1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_BONDAGE_5", reqs = []}],
+		options = [ {
+			code = 'amelia_bondage_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	amelia_bondage_6 = { 
 		custom_background = "amelia_bondage2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_6", reqs = [], }],
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_BONDAGE_6", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'amelia_bondage_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
-	amelia_herbs_end_1_2_7 = {
+	amelia_bondage_7 = { 
 		custom_background = "amelia_bondage3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_7", reqs = [], }],
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_BONDAGE_7", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'amelia_bondage_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
-	amelia_herbs_end_1_2_8 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'amelia',
-		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_8", reqs = []}],
+	amelia_bondage_8 = { 
+		custom_background = "amelia_bondage3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_BONDAGE_8", reqs = []}],
 		options = [ {
-			code = 'close', text = "AMELIA_HERBS_END_OPTION_1_2_1", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
-		}, {
-			code = 'close', text = "AMELIA_HERBS_END_OPTION_1_2_2", reqs = [], dialogue_argument = 1, 
+			code = 'amelia_bondage_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
+		}, ],
+	},
+	
+	amelia_bondage_9 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'], reqs = [],  character = 'amelia',
+		text = [{text = "AMELIA_BONDAGE_9", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
 		}, ],
 	},
+	
+#	amelia_herbs_end_1_2_8 = {
+#		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'amelia',
+#		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_8", reqs = []}],
+#		options = [ {
+#			code = 'amelia_bondage_10', text = "AMELIA_BONDAGE_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+#		}, {
+#			code = 'amelia_bondage_10', text = "AMELIA_BONDAGE_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+#		}, ],
+#	},
+#
+#	amelia_bondage_10 = {
+#		image = null, tags = ['dialogue_scene'], reqs = [], 
+#		text = [{text = "AMELIA_BONDAGE_10", reqs = []}],
+#		options = [ {
+#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
+#		}, ],
+#	},
 }

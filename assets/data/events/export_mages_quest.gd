@@ -268,7 +268,7 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_1", reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'TribalElf', 'DarkElf']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
-				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
 			]
 		},
 			{image = null,
@@ -302,12 +302,12 @@ var data = {
 		custom_background = "xari_encounter8",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		dialogue_type = 2,
+#		dialogue_type = 2,
 		# character = 'xari',
 		tags = [],
 		text = [
 			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
-			{text = "XARIENCOUNTER8_2", reqs = []},
+			{text = "XARIENCOUNTER8_2", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 3}]}]},
 			{text = "XARIENCOUNTER8_3", reqs = []},
 		],
 		options = [
