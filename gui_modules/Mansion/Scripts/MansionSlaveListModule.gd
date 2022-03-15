@@ -19,7 +19,7 @@ const BUTTON_HEIGHT = 64
 func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
-	globals.connect("hour_tick", self, "update")
+	globals.connect("hour_tick", self, "update_dislocations")
 	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
 	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))
 	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
@@ -28,6 +28,7 @@ func OpenJobModule(person = null):
 	input_handler.ActivateTutorial('job')
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
+	get_parent().remove_hovered_person()
 	get_parent().mansion_state_set("occupation")
 #	get_parent().get_node("MansionJobModule2").show()
 #	get_parent().get_node("MansionJobModule2").rebuild()
@@ -72,7 +73,7 @@ func rebuild():
 		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
-		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
+		newbutton.connect('mouse_exited_custom', get_parent(), 'remove_hovered_person')
 		
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 		newbutton.get_node("job").set_disabled(false)
@@ -102,23 +103,6 @@ func rebuild():
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
 
-### Requires some magic method to force recalculate scroll container size (Known Godot issue, but no one knows how to fix that) ###
-func set_hover_area():
-	yield(get_tree(), 'idle_frame')
-#	var chars = count_visible_chars()
-	var height
-#	height = BUTTON_HEIGHT * chars
-#	$HoverArea.rect_size = Vector2(1004, height) - Vector2(20, 20)
-#	$HoverArea.rect_position.x = $ScrollContainer.rect_position.x + 10
-#	$HoverArea.rect_position.y = $ScrollContainer.rect_position.y + 10
-
-### =========================================================================================================================== ###
-
-
-
-func is_in_area():
-	var in_area = $HoverArea.get_global_rect().has_point(get_global_mouse_position())
-	return in_area
 
 func double_clicked(event, button):
 	if event is InputEventMouseButton and event.doubleclick:
@@ -186,7 +170,6 @@ func build_locations_list():
 	newbutton.set_meta("location", "show_all")
 	newbutton.text = "Show All"
 	newbutton.connect("pressed", self, "show_location_characters", [newbutton])
-	newbutton.connect("pressed", self, "set_hover_area")
 	var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 	LocationsList.add_child(newseparator)
 	newseparator.visible = true
@@ -202,7 +185,6 @@ func build_locations_list():
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
-		newbutton.connect("pressed", self, "set_hover_area")
 		newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 		LocationsList.add_child(newseparator)
 		newseparator.visible = true

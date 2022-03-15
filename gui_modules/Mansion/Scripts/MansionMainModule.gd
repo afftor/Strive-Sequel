@@ -291,7 +291,7 @@ func match_state():
 			menu_buttons.get_node("SexButton").pressed = true
 
 	rebuild_task_info()
-	SlaveListModule.set_hover_area()
+
 
 func open_char_info():
 	gui_controller.slavepanel = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
@@ -491,8 +491,8 @@ func set_hovered_person(node, person):
 	SlaveModule.show_slave_info()
 
 func remove_hovered_person():
-	if SlaveListModule.is_in_area():
-		return
+#	if SlaveListModule.is_in_area():
+#		return
 	hovered_person = null
 	SlaveModule.show_slave_info()
 

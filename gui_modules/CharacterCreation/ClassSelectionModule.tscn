@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
 [ext_resource path="res://gui_modules/CharacterCreation/ClassSelectionModule.gd" type="Script" id=5]
-[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=6]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Pressed.tres" type="StyleBox" id=9]
@@ -23,29 +22,33 @@ size = 20
 font_data = ExtResource( 1 )
 
 [node name="ClassSelectionModule" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1140.0
-margin_bottom = -250.0
-custom_styles/panel = ExtResource( 10 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="Panel" parent="."]
-self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
-show_behind_parent = true
-margin_right = 780.0
-margin_bottom = 830.0
+[node name="ClassPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -390.0
+margin_top = -414.5
+margin_right = 390.0
+margin_bottom = 414.5
+custom_styles/panel = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClassPanel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="ClassPanel"]
+self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
+show_behind_parent = true
 margin_right = 780.0
-margin_bottom = 829.0
-custom_styles/panel = ExtResource( 6 )
+margin_bottom = 830.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,11 +144,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ConfirmButton" type="Button" parent="."]
-margin_left = 559.749
-margin_top = 748.947
-margin_right = 754.749
-margin_bottom = 816.947
+[node name="ConfirmButton" type="Button" parent="ClassPanel"]
+margin_left = 551.244
+margin_top = 749.125
+margin_right = 746.244
+margin_bottom = 817.125
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/disabled = ExtResource( 13 )
@@ -159,11 +162,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CancelButton" type="Button" parent="."]
-margin_left = 350.0
-margin_top = 748.947
-margin_right = 545.0
-margin_bottom = 816.947
+[node name="CancelButton" type="Button" parent="ClassPanel"]
+margin_left = 341.495
+margin_top = 749.125
+margin_right = 536.495
+margin_bottom = 817.125
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 12 )
