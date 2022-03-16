@@ -1369,13 +1369,13 @@ func common_effects(effects):
 						if ResourceScripts.game_world.areas.has(data.area): area = ResourceScripts.game_world.areas[data.area]
 						else:
 							print("error - no area %s" % data.area)
-							return null
+							continue
 						if area.has('capital'):
 							location = ResourceScripts.game_world.get_area_capital(area)
 							area = area.code
 					location = {location = location, area = area}
 					input_handler.exploration_node.open_location(location)
-					return
+					continue
 				
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
 				input_handler.exploration_node.open_location(location)
@@ -1387,7 +1387,7 @@ func common_effects(effects):
 				#temporal solution
 				var preset = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
 				if preset.has('tags') and preset.tags.has('solo'):
-					return
+					continue
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'progress_quest':
 				var quest_exists = false
@@ -1514,7 +1514,7 @@ func common_effects(effects):
 						if ResourceScripts.game_world.areas.has(data.area): area = ResourceScripts.game_world.areas[data.area]
 						else:
 							print("error - no area %s" % data.area)
-							return null
+							continue
 						if area.has('capital'):
 							location = ResourceScripts.game_world.get_area_capital(area)
 							area = area.code
@@ -1530,7 +1530,7 @@ func common_effects(effects):
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:
 					print("teleportation from %s failed" % str(i.from_loc))
-					return
+					continue
 				locdata = ResourceScripts.world_gen.get_location_from_code(locdata.location)
 				for pos in locdata.group:
 					var ch_id = locdata.group[pos]
