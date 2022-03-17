@@ -1,10 +1,10 @@
-extends Panel
+extends Control
 
 var class_array = []
 
 func _ready():
-	$ConfirmButton.connect("pressed", self, "select_class")
-	$CancelButton.connect("pressed", self, "cancel_class_selection")
+	$ClassPanel/ConfirmButton.connect("pressed", self, "select_class")
+	$ClassPanel/CancelButton.connect("pressed", self, "cancel_class_selection")
 
 
 func open_class_list():
@@ -77,7 +77,7 @@ func update_pressed_buttons():
 	for i in $ClassPanel/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('class'):
 			i.pressed = get_parent().selected_class == i.get_meta('class')
-	$ConfirmButton.disabled = !is_class_selected
+	$ClassPanel/ConfirmButton.disabled = !is_class_selected
 
 var is_class_selected = false
 var selected_class

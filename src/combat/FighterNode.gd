@@ -130,6 +130,7 @@ func process_critical():
 
 #control visuals
 func noq_rebuildbuffs(newbuffs):
+	if !visible: return
 	var oldbuff = 0
 	for b in newbuffs:
 		if buffs.has(b.template_name): oldbuff += 1
@@ -145,6 +146,7 @@ func noq_rebuildbuffs(newbuffs):
 			add_buff(i)
 
 func add_buff(i):
+	if !visible: return
 	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
 	var text = i.description
 	newbuff.texture = i.icon
@@ -170,6 +172,7 @@ func add_buff(i):
 		newbuff.get_node("Label").show()
 
 func update_buff(i):
+	if !visible: return
 	var pos = buffs.find(i.template_name)
 	var newbuff = $Buffs.get_child(pos)
 	var text = i.description
@@ -197,20 +200,24 @@ func update_buff(i):
 
 
 func update_hp_label(newhp, newhpp):
+	if !visible: return
 	if fighter.combatgroup == 'ally' || ResourceScripts.game_progress.show_enemy_hp:
 		$hplabel.text = str(ceil(newhp)) + '/' + str(ceil(fighter.get_stat('hpmax')))
 	else:
 		$hplabel.text = str(ceil(newhpp)) + '%%'
 
 func update_mp_label(newmp, newmpp):
+	if !visible: return
 	if fighter.combatgroup == 'ally' || ResourceScripts.game_progress.show_enemy_hp:
 		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
 		$mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
+	if !visible: return
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
 #	set_process_input(false)
 
 func resurrect():
+	if !visible: return
 	$Icon.material = null

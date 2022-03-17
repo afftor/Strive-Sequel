@@ -316,13 +316,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClassSelectionModule" parent="." instance=ExtResource( 37 )]
-visible = false
-margin_left = 580.0
-margin_top = 130.0
-margin_right = -560.0
-margin_bottom = -120.0
-
 [node name="ConfirmButton" type="TextureButton" parent="."]
 margin_left = 1585.21
 margin_top = 938.0
@@ -585,6 +578,54 @@ custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select 1 Liked and at least 1 Hated food types."
 
+[node name="BackButton" type="TextureButton" parent="."]
+margin_left = 830.0
+margin_top = 977.0
+margin_right = 1090.0
+margin_bottom = 1017.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BackButton"]
+margin_right = 260.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Back to Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButtonCheats" type="TextureButton" parent="."]
+margin_left = 830.0
+margin_top = 977.0
+margin_right = 1090.0
+margin_bottom = 1017.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BackButtonCheats"]
+margin_right = 260.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SaveLoadCharPanel" type="Panel" parent="."]
 visible = false
 margin_left = 548.557
@@ -771,50 +812,9 @@ custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Cancel"
 
-[node name="BackButton" type="TextureButton" parent="."]
-margin_left = 830.0
-margin_top = 977.0
-margin_right = 1090.0
-margin_bottom = 1017.0
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 24 )
-texture_hover = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="BackButton"]
-margin_right = 260.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Back to Menu"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BackButtonCheats" type="TextureButton" parent="."]
-margin_left = 830.0
-margin_top = 977.0
-margin_right = 1090.0
-margin_bottom = 1017.0
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 24 )
-texture_hover = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="BackButtonCheats"]
-margin_right = 260.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Back"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ClassSelectionModule" parent="." instance=ExtResource( 37 )]
+visible = false
+margin_left = 140.338
+margin_top = 16.8629
+margin_right = -119.662
+margin_bottom = -23.1371

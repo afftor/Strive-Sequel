@@ -261,10 +261,10 @@ func rebuild_slave():
 	else:
 		t_person.set_stat('food_hate', [])
 	for i in ['name','surname','nickname']:
-		if preservedsettings.has(i):
+		if preservedsettings.has(i) and valid_preservedsettings[i]:
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
 		else:
-			$VBoxContainer.get_node(i).text = person.get_stat(i)
+			$VBoxContainer.get_node(i).text = t_person.get_stat(i)
 	
 	person = t_person
 	select_diet()
@@ -481,6 +481,7 @@ func LoadCharacter(updated_char_to_load = null):
 	selected_class = character_to_load.professions
 	update_class_button()
 	for i in character_to_load:
+		if !(i in params_to_save): continue
 		if i == "food_love":
 			person.food.food_love = character_to_load["food_love"]
 			preservedsettings[i] = character_to_load["food_love"]
@@ -496,7 +497,8 @@ func LoadCharacter(updated_char_to_load = null):
 		valid_preservedsettings[i] = true
 
 	for i in ['name','surname','nickname']:
-		if preservedsettings.has(i):
+		if preservedsettings.has(i) and valid_preservedsettings[i]:
+#			valid_preservedsettings[i] = false
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
 		else:
 			$VBoxContainer.get_node(i).text = person.get_stat(i)
@@ -581,6 +583,7 @@ func RebuildStatsContainer():
 	apply_preserved_settings()
 	if selected_class != '' && person.checkreqs(classesdata.professions[selected_class].reqs) == false:
 		selected_class = ''
+		update_class_button()
 
 func stat_up(stat):
 	if preservedsettings[stat.code] >= 6 || unassigned_points == 0:

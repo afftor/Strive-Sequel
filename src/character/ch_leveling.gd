@@ -408,17 +408,17 @@ func work_tick():
 				else:
 					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production_item] += 1
 			else:
-				ResourceScripts.game_res.materials[currenttask.code] += 1
 				if person_location != "aliron" && location.type == "dungeon":
-					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
+					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] > 0:
+						ResourceScripts.game_res.materials[currenttask.code] += 1
+						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
+					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] <= 0:
 						globals.text_log_add('work', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
 						if !ResourceScripts.game_party.active_tasks.empty():
 							for task in ResourceScripts.game_party.active_tasks:
 								if task.code == currenttask.code && task.task_location == location.id:
 									ResourceScripts.game_party.active_tasks.erase(task)
-					else:
-						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
 
 
 func work_tick_values(currenttask, gatherable = false):
