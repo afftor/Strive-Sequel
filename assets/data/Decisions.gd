@@ -43,6 +43,7 @@ var decisions = {
 	MagesHelpDuncan = "Mages helping Duncan with the fight at initiate_hideout_attack",
 	LookingForPrincessAccess = "Happens at looking_for_princess_1, can be removed at looking_for_princess_2,3. Not used rn",
 	BraceletPreviousAttack = "Fighting Kobold",
+	AllowSearch = "Allowing to search for bracelet if other reqs is ok",
 	BlockSearch = "Looking for Kobold",
 	PrincessObtained = "Anastasia is captured alive",
 	fighters_election_support = "Fighters will support your mayor campaign",

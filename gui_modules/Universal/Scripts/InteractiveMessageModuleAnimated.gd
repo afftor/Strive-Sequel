@@ -775,7 +775,8 @@ func generate_scene_text(scene):
 		else:
 			scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
 	if scene.tags.has("active_character_translate"):
-		scenetext = input_handler.active_character.translate(scenetext)
+		if input_handler.active_character != null:
+			scenetext = input_handler.active_character.translate(scenetext)
 	if scene.tags.has("scene_character_translate"):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
 	if scene.tags.has("location_resource_info"):

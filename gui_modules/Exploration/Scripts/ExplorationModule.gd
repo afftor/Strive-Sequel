@@ -1089,13 +1089,6 @@ func open_location_actions():
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
 			return
-	if input_handler.active_location.has('completed'):
-		if input_handler.active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Search')
-				newbutton.connect("toggled", self, 'search_kobold', [newbutton])
-				return
 	match input_handler.active_location.type:
 		'dungeon':
 			enter_dungeon()
@@ -1107,33 +1100,16 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("toggled", self, i, [newbutton])
-			if input_handler.active_location.has("options"):
-				for i in input_handler.active_location.options:
-					if globals.checkreqs(i.reqs) == true:
-						newbutton = input_handler.DuplicateContainerTemplate(
-							$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-						)
-						newbutton.text = tr(i.text)
-						newbutton.toggle_mode = false
-						newbutton.connect("pressed", globals, 'common_effects', [i.args])
-		'encounter':
-			for i in input_handler.active_location.options:
-				if globals.checkreqs(i.reqs) == true:
-					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-					)
-					newbutton.text = tr(i.text)
-					newbutton.toggle_mode = false
-					newbutton.connect("pressed", globals, 'common_effects', [i.args])
-		'quest_location':
-			for i in input_handler.active_location.options:
-				if globals.checkreqs(i.reqs) == true:
-					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-					)
-					newbutton.text = tr(i.text)
-					newbutton.toggle_mode = false
-					newbutton.connect("pressed", globals, 'common_effects', [i.args])
+	
+	if input_handler.active_location.has("options"):
+		for i in input_handler.active_location.options:
+			if globals.checkreqs(i.reqs) == true:
+				newbutton = input_handler.DuplicateContainerTemplate(
+					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+				)
+				newbutton.toggle_mode = false
+				newbutton.text = tr(i.text)
+				newbutton.connect("pressed", globals, 'common_effects', [i.args])
 
 
 func enter_dungeon():
@@ -2509,9 +2485,4 @@ func combat_duncan_greg_event(pressed, button):
 	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 func meet_duncan_event(pressed, button):
 	input_handler.interactive_message('divine_symbol_6', '', {})
-func search_kobold(pressed, button):
-	if (ResourceScripts.game_progress.seen_dialogues.has("LOOKING_FOR_PRINCESS_6")):
-		input_handler.interactive_message('looking_for_princess_5', '', {}) #already saw him
-	else:
-		input_handler.interactive_message('looking_for_princess_3', '', {}) #first time seeing
 
