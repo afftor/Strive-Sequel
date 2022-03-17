@@ -1668,6 +1668,21 @@ var dungeons = {
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
+		options = [ {text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
+			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]},
+			
+			{text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
+			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]},
+
+		],
 		quest = true,
 
 		area = 'plains',
