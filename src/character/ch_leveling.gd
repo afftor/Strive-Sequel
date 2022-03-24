@@ -419,6 +419,8 @@ func work_tick():
 							for task in ResourceScripts.game_party.active_tasks:
 								if task.code == currenttask.code && task.task_location == location.id:
 									ResourceScripts.game_party.active_tasks.erase(task)
+				else:
+					ResourceScripts.game_res.materials[currenttask.code] += 1
 
 
 func work_tick_values(currenttask, gatherable = false):
