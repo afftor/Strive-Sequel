@@ -129,7 +129,7 @@ var data = {
 		reqs = [], character = 'amelia',
 		text = [{text = "DAISY_CLOTHES_AMELIA_REPLY_2_1", reqs = []}],
 		options = [ {
-			code = 'daisy_clothes_amelia_3_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'daisy_clothes_amelia_3_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_1_1", reqs = [{type = "has_money", value = 150}], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
 			code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE", reqs = [], dialogue_argument = 3,
 		}],

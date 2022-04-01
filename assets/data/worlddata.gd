@@ -621,6 +621,16 @@ var locations = {
 		bgm = 'exploration',
 		travel_time = [1,1],
 		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [2,2]}, #Number of allowed slaves per task at no upgrades
+		options = [ {text = 'Combat', reqs = [ 
+				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
+			],
+			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]},
+			{text = 'Meet Duncan', reqs = [ 
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
+			],
+			args = [{code = 'start_event', data = 'divine_symbol_6', args = []}]},
+		],
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
 			fish = {min = 15, max = 45, chance = 1},
