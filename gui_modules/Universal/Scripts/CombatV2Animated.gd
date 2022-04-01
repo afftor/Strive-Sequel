@@ -805,6 +805,7 @@ func make_fighter_panel(fighter, spot):
 	spot = int(spot)
 	var container = battlefieldpositions[int(spot)]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
+	panel.visible = true
 	panel.material = load("res://assets/sfx/BarrierShader.tres").duplicate()
 	#panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
 	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
@@ -846,7 +847,6 @@ func make_fighter_panel(fighter, spot):
 	else:
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
-	panel.visible = true
 	panel.noq_rebuildbuffs(fighter.get_combat_buffs())
 
 var fighterhighlighted = false
