@@ -416,6 +416,7 @@ var data = {
 		{text = "LICHAIRETALK4_2", reqs = []},
 		],
 		options = [
+#		{code = 'lich_aire_talk4_3', text = tr("DIALOGUECONTINUE") + tr("DIALOGUESKIPSEXSCENE"), reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2},
 		{code = 'lich_aire_talk4_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2},
 		],
 	},

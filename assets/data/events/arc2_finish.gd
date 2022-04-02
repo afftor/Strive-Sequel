@@ -920,12 +920,11 @@ var data = {
 	
 	# TODO LIST: teleport change
 	ceremony_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'whitescreen_transition_common'],
-		reqs = [], character = 'elf_priestess', character_alpha = 180,
-		character2 = 'lira', character2_alpha = 180,
-		custom_background = "whitescreen",
-		scene_type = "technical_scene",
-		save_scene_to_gallery = false,
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], 
+		custom_background = "elven_temple_scene",
+		scene_type = "story_scene",
+		save_scene_to_gallery = true,
 		common_effects = [ {code = 'play_sound', value = 'doorsmash'} ,
 			{code = 'screen_shake', strength = 3, length = 0.3},],
 		text = [{text = 'CEREMONY_2', reqs = []},],

@@ -5,7 +5,7 @@ var data = {
 		text = [{text = "BETRAYAL_CONFIRMED_ADVANCE", reqs = []}],
 		options = [ {
 			code = 'quest_fight', args = 'betrayal_confirmed_rebels_1',
-			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1,
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -207,7 +207,9 @@ var data = {
 		options = [ {
 			code = 'divine_symbol_7', text = "DIVINE_SYMBOL_OPTION_8", type = 'next_dialogue',
 			reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'blessed_divine_symbol'}], 
-			dialogue_argument = 1
+			dialogue_argument = 1, remove_after_first_use = true
+		}, {
+			code = 'divine_symbol_8', text = "DIVINE_SYMBOL_OPTION_9", reqs = [{type = 'dialogue_seen', check = true, value = 'DIVINE_SYMBOL_8'}], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}],
@@ -220,7 +222,7 @@ var data = {
 		options = [ {
 			code = 'divine_symbol_8', text = "DIVINE_SYMBOL_OPTION_9", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}],
 	},
 	
@@ -228,7 +230,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
 		text = [{text = "DIVINE_SYMBOL_9", reqs = []}],
 		options = [ {
-			code = 'divine_symbol_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
+			code = 'divine_symbol_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}],
 	},
 	
@@ -236,7 +238,7 @@ var data = {
 		image = 'dome', tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "DIVINE_SYMBOL_10", reqs = []}],
 		options = [ {
-			code = 'divine_symbol_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
+			code = 'divine_symbol_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}],
 	},
 	

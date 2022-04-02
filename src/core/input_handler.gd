@@ -172,6 +172,8 @@ var globalsettings = {
 	autosave = true,
 	autosave_number = 3,
 	autosave_frequency = 4,
+	
+	sex_filter = false, # if true skips erotic scenes that doesn't match up with masters gender
 
 } setget settings_save
 

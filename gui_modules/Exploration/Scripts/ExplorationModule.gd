@@ -1077,17 +1077,16 @@ func open_location_actions():
 	var newbutton
 	if input_handler.active_location.has("locked"):
 		if input_handler.active_location.locked:
-			#better do it using actions next time. upd: actions doesn't for for dungeons
-			if test_stage("lead_convoy_quest", "stage3"):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Combat')
-				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
-			elif test_stage("divine_symbol_quest", "stage3") or test_stage("divine_symbol_quest", "stage4"):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Combat')
-				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
+			# do options
+			if input_handler.active_location.has("options"):
+				for i in input_handler.active_location.options:
+					if globals.checkreqs(i.reqs) == true:
+						newbutton = input_handler.DuplicateContainerTemplate(
+							$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+						)
+						newbutton.toggle_mode = false
+						newbutton.text = tr(i.text)
+						newbutton.connect("pressed", globals, 'common_effects', [i.args])
 			return
 	match input_handler.active_location.type:
 		'dungeon':
@@ -2479,10 +2478,4 @@ func select_workers():
 	yield(get_tree().create_timer(0.6), 'timeout')
 	MANSION.get_node("MansionJobModule2").selected_location = selected_location
 	MANSION.SlaveListModule.OpenJobModule()
-
-func combat_duncan_greg_event(pressed, button):
-	input_handler.interactive_message('betrayal_confirmed_advance', '', {})
-	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-func meet_duncan_event(pressed, button):
-	input_handler.interactive_message('divine_symbol_6', '', {})
 

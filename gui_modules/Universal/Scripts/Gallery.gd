@@ -51,11 +51,6 @@ func build_gallery(page):
 			src = Gallery.scenes_order
 			src_unlock = input_handler.progress_data.gallery_seq
 	
-	for i in src_unlock:
-		if !src.has(i):
-			src.append(i)
-	#this is a HUGE and lazy patch (not in a good meaning of this word) - it breaks gallery conception, don't work towards showing unlocking progress
-	
 	#building pages buttons
 	input_handler.ClearContainer($Pagination)
 	var page_max = (src.size() - 1) / scenes_per_page + 1

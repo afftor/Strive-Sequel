@@ -1761,3 +1761,12 @@ func valuecheck(dict):
 				var stat = dict.value * master_char.statlist.statlist.get(dict.factor)
 				var result = r > stat
 				return result == dict.check
+		'sex_filter': # return true if master.sex == scene_sex
+			# dict.scene_sex - masters gender in the next scene. If scene shows us as a male then scene_sex = male
+			if !input_handler.globalsettings.sex_filter:
+				return false
+			var master_char = ResourceScripts.game_party.get_master()
+			if master_char == null:
+				return false
+			var master_sex = master_char.statlist.statlist.sex
+			return master_sex == dict.scene_sex
