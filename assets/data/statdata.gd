@@ -331,6 +331,20 @@ var statdata = {
 		baseicon = 'food_love',
 		type = 'misc',
 	},
+	hp_reg_add = {
+		code = 'hp_reg_add',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	mp_reg_add = {
+		code = 'mp_reg_add',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
 	hitrate = {
 		code = 'hitrate',
 		name = '',

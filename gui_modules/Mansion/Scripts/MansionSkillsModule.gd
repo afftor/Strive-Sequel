@@ -48,7 +48,7 @@ func build_skill_panel():
 					used_charges = person.call(skill.custom_used_charges[1], skill.custom_used_charges[2])
 			text = str(charges - used_charges) + "/" + str(charges)
 
-			if person.checkreqs(skill.reqs) == false:
+			if (person.checkreqs(skill.reqs) == false) or (person.has_status('no_social_skills') and person.skills.active_panel == variables.PANEL_SOC):
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.get_node("charges").text = text
