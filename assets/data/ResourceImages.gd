@@ -254,6 +254,7 @@ var sprites = {
 	lilia_body = load("res://assets/images/sprites/lilia_body.png"),
 	lilith = load("res://assets/images/sprites/lilith.png"),
 	lilith_body = load("res://assets/images/sprites/lilith_body.png"),
+	heleviel_body = load("res://assets/images/sprites/heleviel_body.png"),
 	leon = load("res://assets/images/sprites/leon.png"),
 	savra = load("res://assets/images/sprites/savra.png"),
 	jean = load("res://assets/images/sprites/jean.png"),
@@ -289,6 +290,8 @@ var portraits = {
 	jean = "res://assets/images/portraits/jean_prt.png",
 	hara = "res://assets/images/portraits/hara_prt.png",
 	cali = "res://assets/images/portraits/cali_prt.png",
+	heleviel = "res://assets/images/portraits/heleviel_prt.png",
+	lira = "res://assets/images/portraits/lira_prt.png",
 }
 
 var gui = {
