@@ -1530,7 +1530,7 @@ var Skilllist = {
 		learn_cost = 500,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_resto', duration = 2})], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 1,
@@ -1542,8 +1542,8 @@ var Skilllist = {
 		damage_type = 'light',#not sure but not matters
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = [['caster.matk', '*1.2'], ['caster.matk', '*0.8']],
-		damagestat = ['no_stat','-damage_hp']
+		value = [['caster.matk', '*2.5']],
+		damagestat = ['-damage_hp']
 	},
 	fairy_heal = {#heals target for 50%
 		code = 'fairy_heal',
