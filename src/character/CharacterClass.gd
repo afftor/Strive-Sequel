@@ -291,6 +291,15 @@ func add_trait(tr_code):
 func remove_trait(tr_code):
 	statlist.remove_trait(tr_code)
 
+func get_traits_by_tag(tag):
+	return statlist.get_traits_by_tag(tag)
+
+func get_traits_by_arg(arg, value):
+	return statlist.get_traits_by_arg(arg, value)
+
+func get_random_traits():
+	statlist.get_random_traits()
+
 func can_learn_skill(skill_id):
 	var skilldata = Skilldata.Skilllist[skill_id]
 	if !skilldata.tags.has('learnable'):
@@ -441,7 +450,7 @@ func process_event(ev, skill = null):
 	effects.process_event(ev, skill)
 
 func get_all_buffs():
-	return statlist.get_traits_buffs() + effects.get_all_buffs()
+	return effects.get_all_buffs() #statlist.get_traits_buffs() + effects.get_all_buffs()
 
 func get_combat_buffs():
 	var tres = get_all_buffs()
@@ -736,6 +745,8 @@ func affect_char(i):
 			ResourceScripts.game_progress.spouse = id
 		'escape':
 			escape_actions()
+		'remove_trait':
+			remove_trait(i.value)
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -1033,10 +1044,11 @@ func tick():
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
-
-	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
-	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
 	
+	var treg = variables.basic_hp_regen * get_stat('hp_reg_mod') + get_stat('hp_reg_add')
+	self.hp += max(treg, 0)
+	treg = (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod') + get_stat('mp_reg_add')
+	self.mp += max(treg, 0)
 	
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
@@ -1046,9 +1058,9 @@ func tick():
 		#fatigue -= 1
 		travel.tick()
 		return
-
+	
 	xp_module.work_tick()
-
+	
 	if last_escape_day_check != ResourceScripts.game_globals.date && randf() <= 0.2:
 		check_escape_possibility()
 		if ResourceScripts.game_party.characters.has(self.id):
