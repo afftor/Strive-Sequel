@@ -1255,10 +1255,11 @@ func common_effects(effects):
 					elif k.code == 'tag':
 						match k.operant:
 							'remove':
-								if k.value == 'no_sex':
+								character.tags.erase(k.value)
+								if k.value == 'no_sex' and !character.has_status('no_sex'):
 									var text = character.get_short_name() + ": " + "Sex unlocked"
 									text_log_add('char', text)
-								character.tags.erase(k.value)
+								
 								#character.stats.tags.erase(k.value)
 					elif k.code == 'assign_to_quest_and_make_unavalible':
 						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
@@ -1341,7 +1342,8 @@ func common_effects(effects):
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
 			'rewrite_save':
-				autosave(true)
+				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+					autosave(true)
 			'background_noise':
 				match i.value:
 					'start':
