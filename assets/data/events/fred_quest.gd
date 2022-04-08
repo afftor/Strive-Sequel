@@ -383,7 +383,7 @@ var data = {
 		],
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
-			bonus_effects = [{code = 'screen_black_transition', value = 1}],
+			bonus_effects = [{code = 'screen_black_transition', value = 1},{code = 'rewrite_save'}],
 				},
 
 		]

@@ -158,7 +158,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'update_city'}],
+				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}],
 			},
 		],
 	},
@@ -266,6 +266,7 @@ var data = {
 						text = "AFTER_ELECTION_PRINCESS_OPTION_9",
 						type = 'next_dialogue',
 						reqs = [],
+						bonus_effects = [{code = 'rewrite_save'}], 
 						dialogue_argument = 1,
 					},
 				],
@@ -434,7 +435,8 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anstasia_rape_scene'},
-				{code = "update_city"}
+				{code = "update_city"},
+				{code = 'rewrite_save'}
 				]
 			}
 		],
@@ -460,6 +462,7 @@ var data = {
 				text = "AFTER_ELECTION_PRINCESS_6",
 				type = 'next_dialogue',
 				reqs = [],
+				bonus_effects = [{code = 'rewrite_save'}], 
 				dialogue_argument = 1,
 			},
 		],
@@ -692,7 +695,8 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 					]},
 				{code = 'decision', value = 'anstasia_sex_scene'},
-				{code = "update_city"}
+				{code = "update_city"},
+				{code = 'rewrite_save'}
 				]
 			}
 		],
@@ -711,7 +715,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'update_city'}],
+				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}],
 			}
 		],
 	},
@@ -729,7 +733,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'update_city'}],
+				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}],
 			}
 		],
 	},
@@ -755,6 +759,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+				bonus_effects = [{code = 'rewrite_save'}], 
 			},
 		],
 	},
@@ -914,7 +919,8 @@ var data = {
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anstasia_rape_scene'},
-				{code = "update_city"}
+				{code = "update_city"},
+				{code = 'rewrite_save'}, 
 				]
 			}
 		],

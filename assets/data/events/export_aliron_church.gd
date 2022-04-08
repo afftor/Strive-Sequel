@@ -25,7 +25,7 @@
 			{text = "GINNYVISIT2_3", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [
-			{code = 'close', reqs = [], text = "DIALOGUECLOSE",
+			{code = 'close', reqs = [], text = "DIALOGUECLOSE", bonus_effects = [{code = 'rewrite_save'}],
 			},
 		],
 		

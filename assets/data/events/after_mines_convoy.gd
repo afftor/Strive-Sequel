@@ -119,6 +119,7 @@ var data = {
 		text = [{text = "AFTER_MINES_MESSAGE", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2,
+			bonus_effects = [{code = 'rewrite_save'}], 
 		}],
 	},
 

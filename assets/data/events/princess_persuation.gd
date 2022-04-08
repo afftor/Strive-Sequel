@@ -661,7 +661,8 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 					{code = 'decision', value = 'AnastasiaPersuasionNextday'}, {code = 'update_city'},
-					{code = 'dialogue_counter', name = 'sympathy2', op = 0}
+					{code = 'dialogue_counter', name = 'sympathy2', op = 0},
+					{code = 'rewrite_save'}
 				], #add second persuation trigger here
 			},
 		],

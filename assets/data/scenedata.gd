@@ -6,7 +6,7 @@ var scenedict = {
 
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]},
 
-	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], bonus_effects = [{code = 'rewrite_save'}], text = tr("DIALOGUECLOSE")}]},
 
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 
@@ -1145,7 +1145,8 @@ var scenedict = {
 						date = 28,
 						hour = 1}
 						]
-					}
+					},
+				{code = 'rewrite_save'}
 				]
 			}],
 			},
@@ -1178,7 +1179,8 @@ var scenedict = {
 						date = 50,
 						hour = 1}
 						]
-					}
+					},
+				{code = 'rewrite_save'}
 				]
 			}],
 			},
@@ -1210,7 +1212,8 @@ var scenedict = {
 						date = 100,
 						hour = 1}
 						]
-					}
+					},
+				{code = 'rewrite_save'}
 				]
 			}],
 			},
@@ -1232,7 +1235,7 @@ var scenedict = {
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS4", reqs = []}],
 			options = [
-			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 86000}, {code = 'complete_quest', value = 'main_quest_loan'}]},
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 86000}, {code = 'complete_quest', value = 'main_quest_loan'}, {code = 'rewrite_save'}]},
 			],
 			},
 			{
@@ -1254,7 +1257,7 @@ var scenedict = {
 		],
 		common_effects = [{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage2'}],
 		options = [
-		{code = 'close', text = "DIALOGUECLOSE", reqs = []},
+		{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'rewrite_save'}]},
 		],
 	},
 

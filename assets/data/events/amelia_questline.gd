@@ -127,7 +127,7 @@ var data = {
 		text = [{text = "AMELIA_HERBS_LETTER", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage1'}]
+			bonus_effects = [{code = 'progress_quest', value = 'amelia_herbs_quest', stage = 'stage1'}, {code = 'rewrite_save'}]
 		} ],
 	},
 	
