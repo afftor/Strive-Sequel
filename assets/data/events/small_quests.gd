@@ -182,7 +182,7 @@ var data = {
 		text = [ {text = "CALI_INTRO", reqs = []} ], 
 		common_effects = [{code = 'make_quest_location', value = 'quest_cali_cave_location'},],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'advance_location'}]
 		}, ],
 	},
 	

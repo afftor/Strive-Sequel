@@ -184,7 +184,9 @@ var progress_data = {
 	gallery_seq = [],
 	characters = ['amelia','duncan','sigmund','myr'],
 } setget save_progress_data
-var combat_advance = true
+
+var combat_advance = false #if any result in combat cause advance
+var combat_explore = false #if we can advance at all
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -1132,11 +1134,11 @@ func finish_combat():
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished') #actually not correct, but fail case never fires
 	
-	if combat_advance:
+	if combat_explore:
 		exploration_node.advance()
-		combat_advance = false
 	else:
 		exploration_node.build_location_group()
+	combat_advance = false
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
@@ -1164,6 +1166,9 @@ func combat_defeat():
 		return
 	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.close()
+	if combat_explore and combat_advance:
+		exploration_node.advance()
+	combat_advance = false
 	if exploration_node != null && active_location.has('progress'):
 		exploration_node.open_location_actions()
 

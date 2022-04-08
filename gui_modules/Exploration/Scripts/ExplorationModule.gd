@@ -636,19 +636,20 @@ func execute_skill(s_skill2):  #to update to exploration version
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
 
-func area_advance(mode):
+func area_advance(mode): #advance request
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 #	current_stage = active_location.progress.stage
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
+	input_handler.combat_explore = true
 	var rand_event = false
 	if (randf() <= variables.dungeon_unique_encounter_chance and !check_staged_enemies()):
 		rand_event = globals.start_unique_event()
 		if rand_event != false:
-			input_handler.combat_advance = false
-			advance()
+			input_handler.combat_advance = true
+#			advance()
 	if ( !rand_event and
 		input_handler.active_location.has('randomevents') and
 		randf() <= variables.dungeon_encounter_chance and
@@ -656,10 +657,10 @@ func area_advance(mode):
 	):
 		rand_event = globals.start_random_event()
 		if rand_event != false:
-			input_handler.combat_advance = false
-			advance()
+			input_handler.combat_advance = true
+#			advance()
 	if rand_event == false:
-		input_handler.combat_advance = true
+		input_handler.combat_advance = false
 		StartCombat()
 
 	action_type = mode
@@ -676,6 +677,7 @@ func check_staged_enemies():
 
 
 func advance():
+	input_handler.combat_explore = false
 	build_location_group()
 	if check_dungeon_end() == false:
 		input_handler.active_location.progress.stage += 1
