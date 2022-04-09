@@ -8,7 +8,7 @@ var data = {
 		common_effects = [{code = 'decision', value = 'startedAct2'}],
 		options = [ {
 			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
-			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'},]
+			bonus_effects = [{code = 'progress_quest', value = 'pre_sword_artifact_quest', stage = 'stage1'}, {code = 'rewrite_save'}]
 		} ]
 	},
 	
