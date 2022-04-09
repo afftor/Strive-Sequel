@@ -45,12 +45,16 @@ func calculate_scroll_area():
 	scroll_area = input_handler.get_actual_size_for_container($ScrollContainer)
 
 func update_scroll(node):
-#	print(get_path())
+#	print(node.get_path())
 	if node.get_parent() != $ScrollContainer: return
+#	print(node.get_path())
+#	print(v_scroll_bar.max_value)
 	yield(get_tree(), 'idle_frame')
 	if !is_visible_in_tree(): return
 	calculate_scroll_area()
 	v_scroll_bar.visible = (scroll_area.y < $ScrollContainer.get_child(0).rect_size.y)
+#	v_scroll_bar.value = 0.0
+	position_grabber(0.0)
 
 
 
