@@ -1878,5 +1878,14 @@ var quests = {
 			stage5 = {code = 'stage5', name = "GETTING_LIRA_QUEST_NAME", descript = "GETTING_LIRA_QUEST_STAGE_5"}, # return to Elf Capital
 		},
 	},
+	
+	cali_fighters_quest = {
+		code = 'cali_fighters_quest',
+		summary = "CALI_FIGHTERS_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_1"}, # go to fighters
+			stage2 = {code = 'stage2', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_2"}, # searh surroundings
+		},
+	},
 }
 

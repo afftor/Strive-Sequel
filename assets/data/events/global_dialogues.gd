@@ -38,6 +38,7 @@ var data = {
 		{code = 'princess_search_fighters_3', text = "SEARCH_FIGHTERS_OPTION_4", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'SEARCH_FIGHTERS_3'}], type = 'next_dialogue', dialogue_argument = 11},
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
 		{code = 'aire_recruiment_start', text = "AIRE_RECRUITMENT_OPTION_1", reqs = [{type = 'decision', value = 'mayor_election_finished', check = true}, {type = 'decision', value = 'aire_is_dead', check = false}, {type = 'has_hero', name = 'aire', check = false}], type = 'next_dialogue', dialogue_argument = 0, remove_after_first_use = true},
+		{code = 'cali_fighters_1', text = "CALI_FIGHTERS_INIT_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
