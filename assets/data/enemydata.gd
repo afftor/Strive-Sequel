@@ -43,6 +43,8 @@ var encounters = {
 	temple_raiders = {unittype = 'randomgroup', unitcode = 'temple_raiders', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	temple_specters = {unittype = 'randomgroup', unitcode = 'temple_specters', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'temple_8', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	bridge_guards = {unittype = 'randomgroup', unitcode = 'bridge_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'erlen_leon_4', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	cali_goblins_first = {unittype = 'randomgroup', unitcode = 'cali_goblins_first', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_goblins_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	cali_goblins_second = {unittype = 'randomgroup', unitcode = 'cali_goblins_second', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_goblins_5', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -124,7 +126,8 @@ var enemygroups = {
 	temple_raiders = {reqs = [], units = {bandit_melee = [2,2], bandit_boss = [1,1], bandit_mage = [3,3]}},
 	temple_specters = {reqs = [], units = {elf_specter = [6,6]}},
 	bridge_guards = {reqs = [], units = {elf_soldier = [6,6]}},
-
+	cali_goblins_first = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
+	cali_goblins_second = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 

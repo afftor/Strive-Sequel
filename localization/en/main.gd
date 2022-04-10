@@ -7596,15 +7596,164 @@ She takes a long pause, rubbing her sore wrists, before she is willing to contin
 	GOT_CALI_2_OPTION_2 = "I could find some use for you",
 	GOT_CALI_2_OPTION_3 = "Not interested",
 	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough, I'm of the wolves after all. 
-	
-	Cali proudly puffs her chest.
-	
-	 — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
+
+Cali proudly puffs her chest.
+
+ — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
 	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
-	GOT_CALI_3_3 = """""",
+	GOT_CALI_3_3 = """""", # TODO add text
+	
+	CALI_SIDEQUEST_1 = """At noon you are approached by one of your residents: Cali. She looks at you with a slightly worried face.
 
+- Hey, [name]. You know, It's been a while since I started to live here. I was thinking that I wanna do something big.""",
+	CALI_SIDEQUEST_1_OPTION_1 = "That's an admirable attitude",
+	CALI_SIDEQUEST_1_OPTION_2 = "You would still have to start somewhere small",
+	CALI_SIDEQUEST_1_OPTION_3 = "You don't have to worry about this, you can stay as long as you want",
+	CALI_SIDEQUEST_1_1 = """- Hmph, no need for flattery, that's what a proud wolf should do - not simply rely on the good will of others. """,
+	CALI_SIDEQUEST_1_2 = """- You... Aren't wrong about this. But I still have to.""",
+	CALI_SIDEQUEST_1_3 = """- No, no, this is wrong. I must give my best and repay you as well.""",
+	CALI_SIDEQUEST_1_ADDITIONAL = """
+
+- So, I've heard about those guilds here. I bet if I join one it will help me get stronger. You must know something about it, right? Which one do you think will suit me better?""",
+	CALI_SIDEQUEST_2_OPTION_1 = "Fighters guild would suit you quite well",
+	CALI_SIDEQUEST_2_OPTION_2 = "Maybe you can do some magic for the Mages guild?",
+	CALI_SIDEQUEST_2_OPTION_3 = "You could join Workers for some fair labor",
+	CALI_SIDEQUEST_2_OPTION_4 = "Servants might be a good fit for a girl",
+	CALI_SIDEQUEST_3_1 = """- Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters. 
+
+- So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
+	CALI_SIDEQUEST_2_2 = """- No, I hate studying and I heard you need to do that a lot to become a mage. It does not really suit me, don't you think?""",
+	CALI_SIDEQUEST_2_3 = """- Ugh, boring. I'd rather do something more active.""",
+	CALI_SIDEQUEST_2_4 = """- Oh, come on, you are talking just like my mom! I may be a girl, but I'm not really good with that girly stuff. There must be something better.""",
+	CALI_FIGHTERS_INIT_OPTION = "Cali",
+	CALI_FIGHTERS_1 = """As you walk inside the guild with Cali, she's staring around in awe. After a couple of seconds getting used to the surroundings, you locate the register table and make your way to it. As the wolf girl starts enthusiastically requesting her registration, the receptionist looks less than enthusiastic about it.
+
+{color=yellow|Receptionist:- You look quite young and inexperienced. This isn't a playground, you know.}
+
+{color=aqua|Cali:- H-hey, I know that! So what if I have no experience?} 
+
+{color=yellow|Receptionist:- We can't vouch for your safety. At the very least bring your legal guardian with you.}
+
+{color=aqua|Cali:- W-well... Then, what about [him]?! [He]'s mine...}
+
+Cali gives you a troubled look.""",
+	CALI_FIGHTERS_1_OPTION_1 = "[Master]",
+	CALI_FIGHTERS_1_OPTION_2F = "Father",
+	CALI_FIGHTERS_1_OPTION_2M = "Mother",
+	CALI_FIGHTERS_1_OPTION_2SF = "Stepfather",
+	CALI_FIGHTERS_1_OPTION_2SM = "Stepmother",
+	CALI_FIGHTERS_1_OPTION_3 = "Just a good friend",
+	CALI_FIGHTERS_2_1AND3 = "{color=aqua|Cali:- That's it! If [he] allows me then it's fine, right?}",
+	CALI_FIGHTERS_2_2 = """Cali looks slightly disturbed by your response but quickly realizes she has to play along.
+
+{color=aqua|Cali:- Y-yeah, that works for you, right?}""",
+	CALI_FIGHTERS_2_ADDITIONAL = """
+
+Receptionist gives you a tired look but decides to give it a pass.
+
+{color=yellow|Receptionist:- Fine. You are a landowner so we can hold you responsible I guess. }
+
+{color=aqua|Cali:- Yes!.. - Cali nearly jumped upon hearing it.}
+
+{color=yellow|Receptionist:- However, as I said, this is not a playground. Before you become a member there will be a test for you to prove your capability.}""",
+	CALI_FIGHTERS_3 = """Receptionist scrambled the papers on his desk until found one of the requests.
+
+{color=yellow|Receptionist:- Here. A simple task for a member of the Fighters' Guild. A group of goblins have been raiding one of the local villages. If you can drive them away you will be accepted.}
+
+Cali enthusiastically took the note and turned to you. 
+
+{color=aqua|Cali:- Easy-peasy. What stupid goblins can even do? We will finish with them before the evening. Let's go!}""",
+	CALI_FIGHTERS_3_OPTION_1 = "Sure, right behind you",
+	CALI_FIGHTERS_3_OPTION_2 = "Let's be careful",
+	CALI_FIGHTERS_4 = """You and Cali walk out of the Fighter's guild and observe the map for the required location.""",
+	CALI_GOBLINS_NO_CALI = """You decide it's not wise not to bring Cali on this quest.""",
+	CALI_GOBLINS_1 = """Full of spirit, Cali quickly jumps to the village and learns about the raiding goblins' location. After another twenty minutes you approach what seems to be a small forest encampment with a couple of goblin watchers who haven't spotted you yet. However, despite your best effort to not alarm them, Cali brashly comes out of the bushes and quickly grasps the attention of your enemies. 
+
+With multiple goblins coming out of the camp there's no other choice but to fight them now.""",
+	CALI_GOBLINS_2 = """As you defeat the multitude of goblins, you notice how a few from the back start running away deeper into the camp. Cali, who seems to be enjoying herself, notices this as well and before you can stop her, charges after them. """,
+	CALI_GOBLINS_3 = """As the wolf girl rushes after the goblins she fails to spot a trap laid under the leaves. As she trips on it, a couple of goblins jump from behind in ambush, one of which manages to latch on her back. 
+
+- Get off me!... Now!
+
+As she struggles to get him off her, more goblins slowly move closer, surrounding Cali as she eventually breaks free. 
+
+- Uh, oh... [name]... Where are you..?
+
+Realizing her position, Cali looks frightened but does not try to run away yet. 
+
+As you make it closer to her, you make a decision...""",
+	CALI_GOBLINS_3_OPTION_1 = "Push in and save her",
+	CALI_GOBLINS_3_OPTION_2 = "Let her deal with it",
+	CALI_GOBLINS_4_1 = """You courageously rush in and drag Cali from danger. However, before she can thank you, more goblins come in and force you into a fight.""",
+	CALI_GOBLINS_4_2 = """You decide to stay back and give Cali a lesson. With no other option she's forced to fight in an uneven battle.
+
+As you strike down a few goblins caught on the back, you notice that Cali, while still fighting back and keeping distance, seems to suffer some wounds and might not make it without your interference. You decide it's time to help her out.""",
+	CALI_GOBLINS_5 = """As you finally manage to make the rest of the goblins flee in terror, you and Cali catch the breath and she speaks up to you.
+
+- I'm sorry... I shouldn't have ran carelessly after them. Thanks for helping me.""",
+	CALI_GOBLINS_5_OPTION_1 = "As long as you've learned your lesson",
+	CALI_GOBLINS_5_OPTION_2 = "Don't act without my permission next time",
+	CALI_GOBLINS_5_OPTION_3 = "If you do this again, I'll leave you to them if this happens again",
+	CALI_GOBLINS_6_1 = """- Yeah! In the end we did it, right?
+
+Cali seems relieved with your words and grabs your hand as you return to the village.""",
+	CALI_GOBLINS_6_2AND3 = """- Sorry... I promise I'll be more careful next time.
+
+Cali seems somewhat upset with your words as you return to the village""",
+	CALI_GOBLINS_7 = """You report on your success to the village elder and leave successfully completing the mission. Cali seems rather happy with the results.
+
+- We did it nicely. Thanks for helping me out with this.""",
+	CALI_GOBLINS_7_OPTION_1 = "You managed great as well",
+	CALI_GOBLINS_7_OPTION_2 = "It was only a bunch of goblins, no big deal",
+	CALI_GOBLINS_7_OPTION_3 = "Are you sure it's what you wanna do?",
+	CALI_GOBLINS_8_1 = """- Ha-ha, you think so? I'm sure our future adventures will be even better!""",
+	CALI_GOBLINS_8_2 = """- Maybe for you, but it was pretty thrilling for my first time.""",
+	CALI_GOBLINS_8_3 = """- Of course! This is only the beginning.""",
+	CALI_GOBLINS_8_ADDITIONAL = """
+
+Despite everything, Cali does not let her spirit down and you leave to home""",
+	CALI_SEX_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
+
+You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. 
+
+- I'm feeling strange... Thinking about [him]...
+
+As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
+
+- [Master]?! This is...""",
+	CALI_SEX_1_OPTION_1 = "This feels good isn't it?",
+	CALI_SEX_1_OPTION_2 = "You should lock the door next time",
+	CALI_SEX_1_OPTION_3 = "*Leave quietly*",
+	CALI_SEX_2_3 = """You decide to ignore it and close the door...""",
+	CALI_SEX_2_3_OPTION_1 = "This isn't the time...",
+	CALI_SEX_2_3_OPTION_2 = "I'd rather not at all.",
+	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still cowers her private parts from you.
+
+- I'm... um... not sure what to say now.""",
+	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
+	CALI_SEX_2_1AND2_OPTION_2 = "Don't mind if I watch?",
+	CALI_SEX_3 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
+
+- You are a pervert, Master. 
+
+Her playful tone catches up as her hand starts rubbing her snatch.
+
+- But... I don't dislike being watched by you...
+
+As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
+
+- Wow... I never felt like this before.""",
+	CALI_SEX_3_OPTION_1 = "That was a joy to watch",
+	CALI_SEX_3_OPTION_2 = "Don't you wanna let me help?",
+	
+	CALI_SEX_4_1 = """- Y-yeah, that was a bit crazy. Sorry, I'd like to stay alone for a bit.""",
+	CALI_SEX_4_2 = """- Yeah, sorry, maybe some other time. I'd like to rest for a bit.""",
+	CALI_SEX_4_ADDITIONAL = """
+
+Cali makes sure you realize that it's time to leave and you close the door.""",
+	
 	
 	
 	
@@ -7708,6 +7857,10 @@ You leave the cave and lead Cali back to your mansion.""",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
 	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
+	CALI_FIGHTERS_QUEST_NAME = "Cali Fighters Initiation",
+	CALI_FIGHTERS_QUEST_SUMMARY = "Your slave, Cali, wants to be more useful and decided to join fighters guild",
+	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
+	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
 }
 
 
