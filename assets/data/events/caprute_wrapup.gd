@@ -229,7 +229,7 @@ var data = {
 		text = [{text = "MIND_CONTROL_4", reqs = [], previous_dialogue_option = 1},
 		{text = "MIND_CONTROL_5", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'},{code = 'rewrite_save'}]
 		} ],
 	},
 	

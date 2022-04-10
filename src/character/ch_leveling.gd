@@ -431,7 +431,7 @@ func work_tick_values(currenttask, gatherable = false):
 		workstat = Items.materiallist[currenttask.code].workstat
 	if !parent.get_ref().has_status('no_working_bonuses'):
 		parent.get_ref().add_stat(workstat, 0.36)
-		self.base_exp += 5
+		parent.get_ref().add_stat('base_exp', 5)
 
 
 

@@ -546,7 +546,11 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added and fixed missing icons and names for new enemy events
+bbcode_text = "Fixed some info scene errors
+Fixed multiple event errors
+Fixed some unique character sprites and portraits
+0.6.1a
+Added and fixed missing icons and names for new enemy events
 Corrected some of new class icons
 Fixed some event errors
 0.6.1
@@ -1143,7 +1147,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added and fixed missing icons and names for new enemy events
+text = "Fixed some info scene errors
+Fixed multiple event errors
+Fixed some unique character sprites and portraits
+0.6.1a
+Added and fixed missing icons and names for new enemy events
 Corrected some of new class icons
 Fixed some event errors
 0.6.1

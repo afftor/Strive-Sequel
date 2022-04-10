@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.1a'
+const gameversion = '0.6.1b'
 
 #time
 signal hour_tick
@@ -1341,7 +1341,8 @@ func common_effects(effects):
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
 			'rewrite_save':
-				autosave(true)
+				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+					autosave(true)
 			'background_noise':
 				match i.value:
 					'start':
@@ -1354,6 +1355,11 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_location(input_handler.active_location)
+			'advance_location':
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				if input_handler.combat_explore:
+					input_handler.exploration_node.advance()
 			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration

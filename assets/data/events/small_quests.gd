@@ -182,7 +182,7 @@ var data = {
 		text = [ {text = "CALI_INTRO", reqs = []} ], 
 		common_effects = [{code = 'make_quest_location', value = 'quest_cali_cave_location'},],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'advance_location'}]
 		}, ],
 	},
 	
@@ -399,7 +399,7 @@ var data = {
 		],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1,
-				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'}]
+				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'},{code = 'rewrite_save'}]
 			}
 		]
 	}

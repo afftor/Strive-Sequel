@@ -1938,7 +1938,7 @@ func celena_item(code):
 		dict.tags.append("free_loot")
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
-		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -1954,7 +1954,7 @@ func celena_character(person):
 	else:
 		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
 
-	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -1988,7 +1988,7 @@ func freya_item(code):
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
 
-	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
@@ -2009,7 +2009,7 @@ func freya_character(person):
 		else:
 			dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
 
-	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -2026,7 +2026,6 @@ func freya_destroy(person):
 	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['freya_destroy_shrine',1]]})
 	dict.tags.append("free_loot")
 
-
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 
@@ -2042,7 +2041,7 @@ func erebus_item(code):
 		dict.tags.append("free_loot")
 	else:
 		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
-		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -2058,7 +2057,7 @@ func erebus_character(person):
 	else:
 		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
 
-	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
