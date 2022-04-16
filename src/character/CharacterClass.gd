@@ -294,6 +294,9 @@ func remove_trait(tr_code):
 func get_traits_by_tag(tag):
 	return statlist.get_traits_by_tag(tag)
 
+func get_random_trait_tag(tag):
+	return statlist.get_random_trait_tag(tag)
+
 func get_traits_by_arg(arg, value):
 	return statlist.get_traits_by_arg(arg, value)
 
@@ -537,6 +540,9 @@ func get_next_class_exp():
 func get_work():
 	return xp_module.get_work()
 
+func get_tutelage_type():
+	return xp_module.get_tutelage_type()
+
 func is_on_quest():
 	return xp_module.is_on_quest()
 
@@ -747,6 +753,9 @@ func affect_char(i):
 			escape_actions()
 		'remove_trait':
 			remove_trait(i.value)
+		'set_tutelage':
+			xp_module.assign_to_learning(i.value)
+			input_handler.rebuild_slave_list()
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)

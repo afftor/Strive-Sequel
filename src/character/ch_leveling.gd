@@ -318,6 +318,19 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	gui_controller.mansion.TaskModule.show_resources_info()
 
 
+func assign_to_learning(learning_type):
+#	remove_from_task(false)
+	is_on_quest = true
+	quest_time_remains = int(variables.tutduration)
+	quest_id = learning_type
+	work = 'learning'
+#	parent.get_ref().set_combat_position(0)
+	quest_time_init = int(variables.tutduration)
+
+func get_tutelage_type(): #stub, 2add data etc
+	return tr(quest_id)
+
+
 func get_quest_time_remains():
 	return int(quest_time_remains)
 
@@ -325,8 +338,10 @@ func get_quest_time_remains():
 func quest_day_tick():
 	if quest_time_remains > 0:
 		quest_time_remains -= 1
-		if quest_time_remains <= 0 and work != "disabled":
+		if quest_time_remains <= 0 and work != "disabled" and work != 'learning':
 			remove_from_work_quest()
+		elif quest_time_remains <= 0 and work == 'learning':
+			finish_learning()
 
 
 
@@ -338,6 +353,68 @@ func remove_from_work_quest():
 	quest_time_init = 0
 	ResourceScripts.game_progress.work_quests_finished.append(quest_id)
 	quest_id = ''
+
+
+func finish_learning():
+	is_on_quest = false
+	globals.text_log_add("char", parent.get_ref().translate("[name] has returned from training"))
+	input_handler.PlaySound("ding")
+	quest_time_init = 0
+	var res_text = "\n\n{color=aqua|" + parent.get_ref().get_short_name() + "} finished training."
+	match quest_id:
+		'nothing':
+			if randf() < 0.5:
+				var tr = parent.get_ref().get_random_trait_tag('negative')
+				parent.get_ref().add_trait(tr)
+				res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
+			else:
+				res_text += "\nNo traits acquired"
+		'slave_training':
+			parent.get_ref().add_stat('authority', 100)
+			res_text += "\n%s + 100" % statdata.statdata.authority.name
+			parent.get_ref().add_stat('loyalty', 50)
+			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
+			if randf() < 0.5:
+				parent.get_ref().add_stat('tame_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
+			else:
+				parent.get_ref().add_stat('timid_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.timid_factor.name
+			parent.get_ref().add_stat('base_exp', 150)
+			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
+		'academy':
+			for st in ['physics', 'wits']:
+				var tmp = globals.rng.randi_range(20, 30)
+				parent.get_ref().add_stat(st, tmp)
+				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
+			parent.get_ref().add_stat('base_exp', 500)
+			res_text += "\n%s + 500" % statdata.statdata.base_exp.name
+		'heir':
+			for st in ['physics', 'wits', 'charm']:
+				var tmp = globals.rng.randi_range(35, 50)
+				parent.get_ref().add_stat(st, tmp)
+				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
+			var st = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])
+			var st1 = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])
+			parent.get_ref().add_stat(st, 1) 
+			parent.get_ref().add_stat(st1, 1) 
+			if st == st1:
+				res_text += "\n%s + %d" % [statdata.statdata[st].name, 2]
+			else:
+				res_text += "\n%s + %d" % [statdata.statdata[st].name, 1]
+				res_text += "\n%s + %d" % [statdata.statdata[st1].name, 1]
+			var tr = parent.get_ref().get_random_trait_tag('positive')
+			parent.get_ref().add_trait(tr)
+			res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
+			parent.get_ref().add_stat('base_exp', 1000)
+			res_text += "\n%s + 1000" % statdata.statdata.base_exp.name
+		_: pass
+	var data = {text = '', tags = ['skill_report_event'], options = [], image = null} #not sure if this tag is correct and/or reqiured
+	data.text = res_text # there may be more to it, some header maybe
+	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+	input_handler.interactive_message_custom(data)
+	quest_id = ''
+	work = ''
 
 
 func get_obed_drain():

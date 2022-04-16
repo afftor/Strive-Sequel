@@ -314,6 +314,7 @@ func update_heroes_list():
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
 		if ch.get_location() != from_location_selected.id: continue
+		if ch.get_work() == 'learning': continue
 #		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
 #		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
 		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
@@ -325,6 +326,7 @@ func update_heroes_list():
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
 		if ch.get_location() != from_location_selected.id: continue
+		if ch.get_work() == 'learning': continue
 #		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
 #		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
 		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():

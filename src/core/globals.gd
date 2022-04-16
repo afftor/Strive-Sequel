@@ -1287,10 +1287,14 @@ func common_effects(effects):
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
 						k.set_stat(i.stat, i.value)
-			'affect_scene_characters':
+			'affect_scene_characters': #idk why it is the same as above and why it is used instead of above
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
 						k.set_stat(i.stat, i.value)
+			'real_affect_scene_characters':
+#				if i.type == 'all':
+				for k in input_handler.scene_characters:
+					k.affect_char(i)
 			'change_type_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:

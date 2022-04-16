@@ -879,8 +879,8 @@ func test_mode():
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
-		globals.common_effects([{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-		globals.common_effects([{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+#		globals.common_effects([{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+#		globals.common_effects([{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500

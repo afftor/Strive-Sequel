@@ -66,6 +66,8 @@ func change_slave(param):
 	if selected_person.get_work() == "disabled":
 		get_parent().set_state("default")
 		get_parent().get_node("TalkButton").visible = false
+	if selected_person.get_work() == 'learning':
+		change_slave(param)
 
 func update():
 	if get_parent().unique_dict.has(get_parent().active_person.get_stat('unique')):

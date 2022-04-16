@@ -414,6 +414,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="progress" type="ProgressBar" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 253.0
+margin_top = 11.0454
+margin_right = 676.0
+margin_bottom = 38.0454
+
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 visible = false
 margin_left = 30.0
