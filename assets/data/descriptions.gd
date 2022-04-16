@@ -60,7 +60,7 @@ func new_charcter_description(character):
 			if !character.get_stat('bonus_description').begins_with("#"):
 				text += character.get_stat('bonus_description')
 			continue
-		elif check_allowed_sex == true && (person.tags.has("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
+		elif check_allowed_sex == true && (person.has_status("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
 			check_allowed_sex = false
 			if add_no_sex_descript == false:
 				text += tr("NOSEXDETAILSDESCRIPT")

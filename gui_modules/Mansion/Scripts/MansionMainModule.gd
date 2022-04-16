@@ -472,7 +472,7 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = true
 	
 	for i in sex_participants:
-		if i.tags.has("no_sex"):
+		if i.has_status("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
 	
 	SexSelect.get_node("DateButton").disabled = (
@@ -575,6 +575,7 @@ func test_mode():
 			'curious',
 			'life_power'
 		]
+		character.get_random_traits()
 		#character.armor = 135
 		#character.set_stat('wits', 20)
 		character.set_stat('consent', 100)
@@ -604,12 +605,13 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
-		character.set_slave_category('heir')
+#		character.set_slave_category('heir')
 		character.set_stat('obedience', 0)
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
 		character.unlock_class("apprentice")
+		character.get_random_traits()
 		character.is_players_character = true
 #		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 #		character.create('HalfkinCat', 'random', 'random')
@@ -717,7 +719,7 @@ func test_mode():
 		#character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
-		# character.assign_to_quest_and_make_unavalible()
+#		character.affect_char({type = 'set_availability', value = false})
 
 		globals.common_effects(
 			[
@@ -873,12 +875,16 @@ func test_mode():
 		
 		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
 		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		#input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
+#		input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
+
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
-
+		
+#		globals.common_effects([{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+#		globals.common_effects([{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 			i.totalreputation += 5000

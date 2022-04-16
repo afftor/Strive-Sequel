@@ -41,6 +41,16 @@ func update_characters():
 		newbutton.get_node("Name").text = person.get_stat("name")
 		newbutton.get_node("Icon").texture = person.get_icon()
 		newbutton.disabled = selected_job == null || selected_resource == null
+		if selected_job != null and selected_job.has("code"):
+			if selected_job.code == "prostitution":
+				if person.has_status('no_sex'): newbutton.disabled = true
+				if person.has_status('no_whoring '): newbutton.disabled = true
+			if selected_job.code in ['smith','alchemy','tailor','cooking']:
+				if person.has_status('no_craft'): newbutton.disabled = true
+			if selected_job.code == "building":
+				if person.has_status('no_upgrade'): newbutton.disabled = true
+		if !(selected_resource in [null, 'rest', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
+			if person.has_status('no_collect'): newbutton.disabled = true
 		newbutton.set_meta('slave', person)
 		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
 		newbutton.connect('mouse_entered', self, 'character_hovered', [newbutton, person])

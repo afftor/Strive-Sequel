@@ -225,6 +225,12 @@ func build_skills():
 		newbutton.set_meta('skill', i)
 		if array_learned.has(i):
 			newbutton.disabled = true
+		if i.ability_type == 'skill' and person.has_status('no_combat_skills'):
+			newbutton.disabled = true
+		if i.ability_type == 'spell' and person.has_status('no_combat_spells'):
+			newbutton.disabled = true
+		if i.tags.has('support') and person.has_status('no_combat_support'):
+			newbutton.disabled = true
 	sort_skills()
 	$SkillPanel/skillpoints_label.text = "Skill Points: " + str(person.get_ability_experience())
 	

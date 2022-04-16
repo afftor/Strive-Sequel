@@ -3,7 +3,14 @@ extends Node
 #wolves_skirmish_start
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
-
+	select_tutelage = {
+		text = tr("DIALOGUETUTELAGETEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [
+			{code = 'close', text = tr('DIALOGUETUTNOTHING'), reqs = [], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'nothing'}, {code = 'rewrite_save'}]},
+			{code = 'close', text = tr('DIALOGUETUTSLAVE'), reqs = [{type = 'has_money', value = 500}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training'}, {code = 'money_change', operant = '-', value = 500}, {code = 'rewrite_save'}]},
+			{code = 'close', text = tr('DIALOGUETUTACADEMY'), reqs = [{type = 'has_money', value = 1500}, {type = "has_upgrade", name = 'academy', value = 1}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'academy'}, {code = 'money_change', operant = '-', value = 1500}, {code = 'rewrite_save'}]},
+			{code = 'close', text = tr('DIALOGUETUTHEIR'), reqs = [{type = 'has_money', value = 5000}, {type = 'active_character_checks', value = [{code = 'trait', trait = 'heir', check = true}]}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'heir'}, {code = 'money_change', operant = '-', value = 5000}, {code = 'rewrite_save'}]},
+		]
+	},
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]},
 
 	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], bonus_effects = [{code = 'rewrite_save'}], text = tr("DIALOGUECLOSE")}]},

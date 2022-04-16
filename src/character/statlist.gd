@@ -38,6 +38,8 @@ var template = {
 	exp_mod = 1,
 	hp_reg_mod = 1.0,
 	mp_reg_mod = 1.0,
+	hp_reg_add = 0.0,
+	mp_reg_add = 0.0,
 	exp_gain_mod = 1.0,
 	#enemy combat/reward data
 	xpreward = 10,

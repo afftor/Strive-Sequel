@@ -1616,6 +1616,15 @@ func RebuildSkillPanel():
 			if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
 				newbutton.disabled = true
 				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.has_status('no_combat_skills') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.has_status('no_combat_spells') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.has_status('no_combat_support') and skill.tags.has('support'):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
 #			if !activecharacter.check_cost(skill.cost):
 #				newbutton.disabled = true

@@ -234,6 +234,36 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_tr_mm = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'mpmax', value = 0.5}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_gifted = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'mpmax', value = 2}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_bell = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'atk', value = 0.15}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_hidpow = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'matk', value = 0.15}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_healthy = {
+		type = 'static',
+		atomic = [{type = 'bonus', bonusname = 'hp_flat_bonus', value = 10}],
+		buffs = [],
+		sub_effects = [],
+	},
 	rations_food = {
 		type = 'static',
 		atomic = [{type = 'stat_add', stat = 'food_consumption', value = 3}],

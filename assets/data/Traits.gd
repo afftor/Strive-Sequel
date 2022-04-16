@@ -450,6 +450,7 @@ var traits = {
 		icon = "res://assets/images/iconsskills/trait_undead.png",
 		visible = true,
 		effects = [],
+		tags = ['neutral']
 	},
 	
 	
@@ -461,6 +462,319 @@ var traits = {
 		visible = false,
 		effects = ['e_tr_hide'],
 	},
+	#new ones
+	#positive
+	prodigy = {
+		code = 'prodigy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {exp_gain_mod = 0.25},
+		weight = 100,
+		tags = ['positive']
+	},
+	passive = {
+		code = 'passive',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {obDrainReduction = 0.5},
+		weight = 100,
+		tags = ['positive']
+	},
+	nimble = {
+		code = 'nimble',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {speed = 10},
+		weight = 100,
+		tags = ['positive']
+	},
+	quick = {
+		code = 'quick',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {mod_collect = 0.2},
+		weight = 100,
+		tags = ['positive']
+	},
+	handy = {
+		code = 'handy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {mod_craft = 0.2},
+		weight = 100,
+		tags = ['positive']
+	},
+	deadly = {
+		code = 'deadly',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {critchance = 9},
+		weight = 100,
+		tags = ['positive']
+	},
+	lively = {
+		code = 'lively',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {hp_reg_add = 3},
+		weight = 100,
+		tags = ['positive']
+	},
+	mvortex = {
+		code = 'mvortex',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {mp_reg_add = 1},
+		weight = 100,
+		tags = ['positive']
+	},
+	gifted = {
+		code = 'gifted',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = ['e_tr_gifted'],
+		bonusstats = {},
+		weight = 100,
+		tags = ['positive']
+	},
+	belligerent = {
+		code = 'belligerent',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = ['e_tr_bell'],
+		bonusstats = {},
+		weight = 100,
+		tags = ['positive']
+	},
+	hiddenpowers = {
+		code = 'hiddenpowers',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = ['e_tr_hidpow'],
+		bonusstats = {},
+		weight = 100,
+		tags = ['positive']
+	},
+	healthy = {
+		code = 'healthy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = ['e_tr_healthy'],
+		bonusstats = {},
+		weight = 100,
+		tags = ['positive']
+	},
+	#negative
+	dim = {
+		code = 'dim',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {exp_gain_mod = -0.25},
+		weight = 100,
+		tags = ['negative']
+	},
+	rebel = {
+		code = 'rebel',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {obDrainReduction = 1.5}, #mb not - obdrainincrease possible
+		weight = 100,
+		tags = ['negative']
+	},
+	slow = {
+		code = 'slow',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {speed = -10},
+		weight = 100,
+		tags = ['negative']
+	},
+	clumsy = {
+		code = 'clumsy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {mod_collect = -0.8},
+		weight = 100,
+		tags = ['negative']
+	},
+	inept = {
+		code = 'inept',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {mod_craft = -0.8},
+		weight = 100,
+		tags = ['negative']
+	},
+	sicky = {
+		code = 'sicky',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {hp_reg_add = -3},
+		weight = 100,
+		tags = ['negative']
+	},
+	magicmutt = {
+		code = 'magicmutt',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = ['e_tr_mm'],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative']
+	},
+	blundering = {
+		code = 'blundering',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_collect']
+	},
+	crude = {
+		code = 'crude',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_craft']
+	},
+	chaste = {
+		code = 'chaste',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_whoring']
+	},
+	pacifist = {
+		code = 'pacifist',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_combat']
+	},
+	whimp = {
+		code = 'whimp',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_combat_skills']
+	},
+	m_inept = {
+		code = 'm_inept',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_combat_spells']
+	},
+	selfish = {
+		code = 'selfish',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_combat_support']
+	},
+	coward = {
+		code = 'coward',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_social_skills']
+	},
+	frigid = {
+		code = 'frigid',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		tags = ['negative', 'no_sex_traits']
+	},
+	
+	#rare opps
 	rare_sturdy = {
 		code = 'rare_sturdy',
 		name = '',

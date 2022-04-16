@@ -140,6 +140,8 @@ func custom_stats_get():
 			res[st] = max(5.0, tres)
 	if res.has('lustmax'):
 		res.lustmax = 25 + res.sexuals_factor * 25
+		if check_trait('frigid'):
+			res.lustmax /= 2
 		res.lust = clamp(res.lust, 0, res.lustmax)
 	if res.has('resists'):
 		var tres = res.resists
@@ -435,6 +437,7 @@ func add_trait(tr_code):
 		parent.get_ref().set_work_rule("contraceptive", false)
 	parent.get_ref().recheck_effect_tag('recheck_trait')
 
+
 func remove_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if !traits.has(tr_code): return
@@ -446,6 +449,7 @@ func remove_trait(tr_code):
 		eff.remove()
 	parent.get_ref().recheck_effect_tag('recheck_trait')
 
+
 func check_trait(trait):
 	return (traits.has(trait) or sex_traits.has(trait) or negative_sex_traits.has(trait))
 
@@ -453,7 +457,10 @@ func check_trait(trait):
 func remove_negative_sex_trait(code):
 	negative_sex_traits.erase(code)
 
+
 func add_sex_trait(code, known = false):
+	if parent.get_ref().has_status("no_sex_traits"): 
+		return
 	var trait = Traitdata.sex_traits[code]
 	if trait.negative == true:
 		negative_sex_traits[code] = known
@@ -466,12 +473,17 @@ func add_sex_trait(code, known = false):
 				var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
 				globals.text_log_add('char', text)
 
+
 func remove_sex_trait(code, absolute = true):
 	if absolute: unlocked_sex_traits.erase(code)
 	sex_traits.erase(code)
 
+
 func unlock_sex_trait(code):
+	if parent.get_ref().has_status("no_sex_traits"): 
+		return
 	unlocked_sex_traits.push_back(code)
+
 
 func create_s_trait_select(trait):
 	if sex_traits.has(trait.code):
@@ -508,6 +520,46 @@ func has_status(status):
 		if traitdata.has('tags') and traitdata.tags.has(status):
 			return true
 	return false
+
+
+func get_traits_by_tag(tag):
+	var res = []
+	for tr in traits:
+		var traitdata = Traitdata.traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(tag):
+			res.push_back(tr)
+	return res
+
+
+func get_traits_by_arg(arg, value):
+	var res = []
+	for tr in traits:
+		var traitdata = Traitdata.traits[tr]
+		if traitdata.has(arg) and traitdata[arg] == value:
+			res.push_back(tr)
+	return res
+
+
+func get_random_trait_tag(tag):
+	var buf = {}
+	for tr in Traitdata.traits:
+		if traits.has(tr): continue
+		var data = Traitdata.traits[tr]
+		if !data.has('tags'): continue
+		if !data.tags.has(tag): continue
+		if !data.has('weight'): continue # or not
+		buf[tr] = data.weight
+	return input_handler.weightedrandom_dict(buf)
+
+
+func get_random_traits():
+	add_trait(get_random_trait_tag('positive'))
+	if randf() < 0.15:
+		add_trait(get_random_trait_tag('positive'))
+	if randf() < 0.5:
+		add_trait(get_random_trait_tag('negative'))
+	if randf() < 0.5:
+		add_trait(get_random_trait_tag('negative'))
 
 
 func get_stat_data():
@@ -663,6 +715,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		parent.get_ref().add_sex_trait(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
+	get_random_traits()
 
 
 func generate_simple_fighter(data):
@@ -724,6 +777,17 @@ func setup_baby(mother, father):
 			statlist[i] = mother.statlist.statlist[i]
 		else:
 			statlist[i] = father.statlist.statlist[i]
+	
+	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
+		if randf() >= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
+			add_trait(tr)
+	for tr in mother.get_traits_by_tag('negative') + father.get_traits_by_tag('negative'):
+		if mother.has_profession("breeder") or father.has_profession("breeder"):
+			if randf() >= 0.1:
+				add_trait(tr)
+		elif randf() >= 0.5:
+			add_trait(tr)
+	
 	statlist.relatives.mother = mother.id
 	statlist.relatives.father = father.id
 	baby_transform()
