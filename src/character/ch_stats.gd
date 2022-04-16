@@ -233,6 +233,16 @@ func get_stat(statname, ref = false):
 		res = tmp[statname] + tmp[statname + '_bonus']
 	return res
 
+
+func get_stat_nobonus(statname, ref = false):
+	var tmp
+	if ref: tmp = statlist
+	else:  tmp = custom_stats_get()
+	if !tmp.has(statname): return null
+	var res = tmp[statname]
+	return res
+
+
 func add_stat_bonuses(ls:Dictionary):
 	if variables.new_stat_bonuses_syntax:
 		for rec in ls:

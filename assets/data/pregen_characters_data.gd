@@ -127,7 +127,7 @@ var pregen_characters = {
 		food_like = 'grain',
 		food_hate = ['meat'],
 		skills = ['take_position'],
-		classes = ['ranger'],
+		classes = ['archer','ranger'],
 		sex_skills = {petting = 7, pussy = 17, oral = 12, anal = 2},
 	},
 	Anastasia = {
@@ -296,7 +296,7 @@ var pregen_characters = {
 		obedience = 48,
 		authority = 100,
 		submission = 10,
-		vaginal_virgin = true,
+		vaginal_virgin = false,
 		anal_virgin = true,
 		mouth_virgin = true,
 		ass_size = 'big',
@@ -579,7 +579,7 @@ var pregen_characters = {
 		personality = 'bold',
 		food_like = 'vege',
 		food_hate = ['meat'],
-		classes = [],
+		classes = ['acolyte','priest'],
 		sex_skills = {petting = 35, pussy = 15, oral = 27, anal = 0},
 	},
 	

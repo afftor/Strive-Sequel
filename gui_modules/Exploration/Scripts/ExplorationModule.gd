@@ -636,19 +636,20 @@ func execute_skill(s_skill2):  #to update to exploration version
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
 
-func area_advance(mode):
+func area_advance(mode): #advance request
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 #	current_stage = active_location.progress.stage
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
+	input_handler.combat_explore = true
 	var rand_event = false
 	if (randf() <= variables.dungeon_unique_encounter_chance and !check_staged_enemies()):
 		rand_event = globals.start_unique_event()
 		if rand_event != false:
-			input_handler.combat_advance = false
-			advance()
+			input_handler.combat_advance = true
+#			advance()
 	if ( !rand_event and
 		input_handler.active_location.has('randomevents') and
 		randf() <= variables.dungeon_encounter_chance and
@@ -656,10 +657,10 @@ func area_advance(mode):
 	):
 		rand_event = globals.start_random_event()
 		if rand_event != false:
-			input_handler.combat_advance = false
-			advance()
+			input_handler.combat_advance = true
+#			advance()
 	if rand_event == false:
-		input_handler.combat_advance = true
+		input_handler.combat_advance = false
 		StartCombat()
 
 	action_type = mode
@@ -676,6 +677,7 @@ func check_staged_enemies():
 
 
 func advance():
+	input_handler.combat_explore = false
 	build_location_group()
 	if check_dungeon_end() == false:
 		input_handler.active_location.progress.stage += 1
@@ -1077,25 +1079,17 @@ func open_location_actions():
 	var newbutton
 	if input_handler.active_location.has("locked"):
 		if input_handler.active_location.locked:
-			#better do it using actions next time. upd: actions doesn't for for dungeons
-			if test_stage("lead_convoy_quest", "stage3"):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Combat')
-				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
-			elif test_stage("divine_symbol_quest", "stage3") or test_stage("divine_symbol_quest", "stage4"):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Combat')
-				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
+			# do options
+			if input_handler.active_location.has("options"):
+				for i in input_handler.active_location.options:
+					if globals.checkreqs(i.reqs) == true:
+						newbutton = input_handler.DuplicateContainerTemplate(
+							$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+						)
+						newbutton.toggle_mode = false
+						newbutton.text = tr(i.text)
+						newbutton.connect("pressed", globals, 'common_effects', [i.args])
 			return
-	if input_handler.active_location.has('completed'):
-		if input_handler.active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
-				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-				newbutton.toggle_mode = true
-				newbutton.text = tr('Search')
-				newbutton.connect("toggled", self, 'search_kobold', [newbutton])
-				return
 	match input_handler.active_location.type:
 		'dungeon':
 			enter_dungeon()
@@ -1107,33 +1101,16 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("toggled", self, i, [newbutton])
-			if input_handler.active_location.has("options"):
-				for i in input_handler.active_location.options:
-					if globals.checkreqs(i.reqs) == true:
-						newbutton = input_handler.DuplicateContainerTemplate(
-							$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-						)
-						newbutton.text = tr(i.text)
-						newbutton.toggle_mode = false
-						newbutton.connect("pressed", globals, 'common_effects', [i.args])
-		'encounter':
-			for i in input_handler.active_location.options:
-				if globals.checkreqs(i.reqs) == true:
-					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-					)
-					newbutton.text = tr(i.text)
-					newbutton.toggle_mode = false
-					newbutton.connect("pressed", globals, 'common_effects', [i.args])
-		'quest_location':
-			for i in input_handler.active_location.options:
-				if globals.checkreqs(i.reqs) == true:
-					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-					)
-					newbutton.text = tr(i.text)
-					newbutton.toggle_mode = false
-					newbutton.connect("pressed", globals, 'common_effects', [i.args])
+	
+	if input_handler.active_location.has("options"):
+		for i in input_handler.active_location.options:
+			if globals.checkreqs(i.reqs) == true:
+				newbutton = input_handler.DuplicateContainerTemplate(
+					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+				)
+				newbutton.toggle_mode = false
+				newbutton.text = tr(i.text)
+				newbutton.connect("pressed", globals, 'common_effects', [i.args])
 
 
 func enter_dungeon():
@@ -2503,15 +2480,4 @@ func select_workers():
 	yield(get_tree().create_timer(0.6), 'timeout')
 	MANSION.get_node("MansionJobModule2").selected_location = selected_location
 	MANSION.SlaveListModule.OpenJobModule()
-
-func combat_duncan_greg_event(pressed, button):
-	input_handler.interactive_message('betrayal_confirmed_advance', '', {})
-	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-func meet_duncan_event(pressed, button):
-	input_handler.interactive_message('divine_symbol_6', '', {})
-func search_kobold(pressed, button):
-	if (ResourceScripts.game_progress.seen_dialogues.has("LOOKING_FOR_PRINCESS_6")):
-		input_handler.interactive_message('looking_for_princess_5', '', {}) #already saw him
-	else:
-		input_handler.interactive_message('looking_for_princess_3', '', {}) #first time seeing
 

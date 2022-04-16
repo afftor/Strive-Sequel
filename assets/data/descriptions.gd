@@ -580,8 +580,8 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 
 func get_class_reqs(newperson, classdata, colorcode = true):
 	var text = ''
-	if newperson.decipher_reqs(classdata.reqs, colorcode):
-		text += newperson.decipher_reqs(classdata.reqs, colorcode)
+	if newperson.decipher_reqs(classdata.reqs, colorcode, true):
+		text += newperson.decipher_reqs(classdata.reqs, colorcode, true)
 	return text
 
 func get_class_bonuses(newperson, classdata):

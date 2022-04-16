@@ -526,7 +526,7 @@ var TranslationDict = {
 
 	#Skills
 	SKILLATTACK = "Attack",
-	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon. ",
+	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon.",
 	SKILLRANGED_ATTACK = "Attack (ranged)",
 	SKILLFIREBOLT = "Firebolt",
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell at target. Deal %d Fire damage to all targets in same row.",
@@ -554,126 +554,126 @@ var TranslationDict = {
 	SKILLDOUBLEATTACKDESCRIPT= "Attacks for %d damage twice.",
 
 	SKILLCOMMAND = "Command",
-	SKILLCOMMANDDESCRIPT = "Increase target's damage by 25% for 3 turns.",
+	SKILLCOMMANDDESCRIPT = "Increase target's ATK and MATK by 50% for 3 turns.",
 	SKILLRESTORATION = "Restoration",
-	SKILLRESTORATIONDESCRIPT = "Greatly heals one target and applies buff: -20% damage received for 2 turns ",
+	SKILLRESTORATIONDESCRIPT = "Heals a target for 250% of MATK. Reduces damage taken by 20% for 2 turns.",
 	SKILLREJUVENATION = "Rejuvination",
-	SKILLREJUVENATIONDESCRIPT = "Heals 1 row and applies additional regeneration for 2 turns",
+	SKILLREJUVENATIONDESCRIPT = "Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.",
 	SKILLSANCTUARY = "Sanctuary",
-	SKILLSANCTUARYDESCRIPT = "Heals all targets and applies additional regeneration for 3 turns",
+	SKILLSANCTUARYDESCRIPT = "Heals all targets for 80% of MATK. Regenerates 120% of MATK each turn for 3 turns.",
 	SKILLTRAP = "Trap",
-	SKILLTRAPDESCRIPT = "Sets trap under enemy. After using Skill it will be stunned for 2 turns. Requires 1 Trap component.",
+	SKILLTRAPDESCRIPT = "Sets trap under enemy, stunning target for 2 turns. Requires 1 Trap component.",
 	SKILLWEAPON_REFINE = "Weapon Refine",
-	SKILLWEAPON_REFINEDESCRIPT = "Buffs ally's ATK by 30% until end of combat.",
+	SKILLWEAPON_REFINEDESCRIPT = "Increase target's ATK by 30% until end of combat.",
 	SKILLACIDBOMB = "Acid Bomb",
-	SKILLACIDBOMBDESCRIPT = "Throws Acid bomb at target, dealing high Earth magic damage and reducing target's armor by 40 for 4 turns. Requires 1 Unstable Concoction.",
+	SKILLACIDBOMBDESCRIPT = "Throws Acid bomb at a target, dealing 250% of MATK as Water damage and reducing target's armor by 25 for 4 turns. Requires 1 Unstable Concoction.",
 	SKILLFIREBOMB = "Fire Bomb",
-	SKILLFIREBOMBDESCRIPT = "Throws Fire bomb at target row, dealing high Fire magic damage and causing target to burn for 2 turns. Requires 1 Unstable Concoction.",
+	SKILLFIREBOMBDESCRIPT = "Throws Fire bomb at a column, dealing 200% of MATK as Fire damage and causing targets to burn for 2 turns. Requires 1 Unstable Concoction.",
 	SKILLDISTRACT = "Distract",
 	SKILLDISTRACTDESCRIPT = "Reduces target's Hitrate and Evasion by 30 for 2 turns.",
 	SKILLATTRACT = "Attract",
-	SKILLATTRACTDESCRIPT = "Charms Target for 2 turns. Charm breaks if damage is taken",
+	SKILLATTRACTDESCRIPT = "Charms target for 2 turns. Charm breaks if damage is taken.",
 	SKILLENTHRAL = "Enthrall",
 	SKILLENTHRALDESCRIPT = "Stuns target and self for 3 turns or until either are damaged. Only works on humanoids.",
 	SKILLFIRE_ATTACK = "Fire Attack",
-	SKILLFIRE_ATTACKDESCRIPT = "Deal 120% physical Fire damage.",
+	SKILLFIRE_ATTACKDESCRIPT = "Deal 120% of ATK as Fire damage.",
 	SKILLDRAGONMIGHT = "Dragon's Might",
-	SKILLDRAGONMIGHTDESCRIPT = "Increases damage and DEF by 25% until end of battle. Only usable once in 2 days.",
+	SKILLDRAGONMIGHTDESCRIPT = "Increases Damage and DEF by 25% until end of battle. Only usable once in 2 days.",
 	SKILLLESSER_HEAL = "Lesser Heal",
-	SKILLLESSER_HEALDESCRIPT = "Heals target ally for a 120% of MATK.",
+	SKILLLESSER_HEALDESCRIPT = "Heals target for 130% of MATK.",
 	SKILLFAIRY_HEAL = "Fairy Grace",
-	SKILLFAIRY_HEALDESCRIPT = "Heals target ally for a 50% of their maximum health. Only usable once in a day.",
+	SKILLFAIRY_HEALDESCRIPT = "Heals target for 50% of their maximum health. Only usable once in a day.",
 	SKILLENTANGLE = "Entangle",
-	SKILLENTANGLEDESCRIPT = "Deals Earth spell damage and stuns target for 1 turn. Only usable twice in a day.",
+	SKILLENTANGLEDESCRIPT = "Deals 130% of MATK as Earth damage and stuns target for 1 turn. Only usable twice in a day.",
 	SKILLSERRATED_SHOT = "Serrated Shot",
-	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
+	SKILLSERRATED_SHOTDESCRIPT = "Deals 90% of ATK as physical damage and causes target to bleed for 3 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
-	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to one column.",
+	SKILLMASS_LESSER_HEALDESCRIPT = "Heals a column for 100% of MATK.",
 	SKILLBLIZZARD = "Blizzard",
-	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
+	SKILLBLIZZARDDESCRIPT = "Deals 45% of MATK as Water damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
-	SKILLBLESSDESCRIPT = "Increase ATK by 25% for 3 turns.",
+	SKILLBLESSDESCRIPT = "Increase target's ATK by 25% for 3 turns.",
 	SKILLMENTAL_BLESS = "Mental Bless",
-	SKILLMENTAL_BLESSDESCRIPT = "increase MATK by 25% for 3 turns.",
+	SKILLMENTAL_BLESSDESCRIPT = "Increase target's MATK by 25% for 3 turns.",
 	SKILLBLOOD_MAGIC = "Blood Magic",
 	SKILLBLOOD_MAGICDESCRIPT = "Sacrifice 10% of your health to convert it into mana.",
 	SKILLBLOOD_EXPLOSION = "Blood Explosion",
-	SKILLBLOOD_EXPLOSIONDESCRIPT = "Sacrifice 20% of your health to deal 3x weapon type magic damage to all enemies. ",
+	SKILLBLOOD_EXPLOSIONDESCRIPT = "Sacrifice 20% of your health to deal 300% of MATK as weapon damage to all enemies.",
 
 	SKILLEARTH_ATK = "Earth Strike",
-	SKILLEARTH_ATKDESCRIPT = "Deals Earth physical damage and has 30% chance to Stun target for 1 turn",
+	SKILLEARTH_ATKDESCRIPT = "Deals 125% of ATK as Earth damage and has 30% chance to Stun target for 1 turn",
 	SKILLWIND_ATK = "Wind Flurry",
-	SKILLWIND_ATKDESCRIPT = "Deals Air physical damage to two random targets.",
+	SKILLWIND_ATKDESCRIPT = "Deals 100% of ATK as Air damage to one target and random enemy.",
 	SKILLWATER_ATK = "Water Blade",
-	SKILLWATER_ATKDESCRIPT = "Deals Water physical damage and causes target to bleed for 2 turns.",
+	SKILLWATER_ATKDESCRIPT = "Deals 110% of ATK as Water damage and causes target to bleed for 2 turns.",
 	SKILLHOLY_ATK = "Holy Attack",
-	SKILLHOLY_ATKDESCRIPT = "Deals Holy physical damage and has 20% chance to Confuse target.",
+	SKILLHOLY_ATKDESCRIPT = "Deals 120% of ATK as Light damage and has 20% chance to Confuse target.",
 	SKILLFIRE_CLEAVE = "Fire Cleave",
-	SKILLFIRE_CLEAVEDESCRIPT = "Deals Fire physical damage to a row and has 20% chance to cause Burn for 2 turns.",
+	SKILLFIRE_CLEAVEDESCRIPT = "Deals 70% of ATK as Fire damage to a column and has 20% chance to cause Burn for 2 turns.",
 	SKILLEARTH_SHATTER = "Earth Shatter",
-	SKILLEARTH_SHATTERDESCRIPT = "Deals Earth physical damage to all targets. Reduces evasion by 25 for 2 turns.",
+	SKILLEARTH_SHATTERDESCRIPT = "Deals 60% of ATK as Earth damage to all enemies. Reduces evasion by 25 for 2 turns.",
 	SKILLREVENGE = "Revenge",
-	SKILLREVENGEDESCRIPT = "Deals high weapon damage based on health missing.",
+	SKILLREVENGEDESCRIPT = "Deals high physiscal damage based on health missing.",
 	SKILLFIRE_BURST = "Fire Burst",
-	SKILLFIRE_BURSTDESCRIPT = "Deals Fire magic damage to all targets. Reduces target's hit chance by 20 for 3 turns.",
+	SKILLFIRE_BURSTDESCRIPT = "Deals 50% of MATK as Fire damage to all enemies and reduces target's hit chance by 20 for 3 turns.",
 	SKILLAIR_CUTTER = "Air Cutter",
-	SKILLAIR_CUTTERDESCRIPT = "Deals Air physical damage to 3 random targets. 50% chance to cause target to bleed for 2 turns.",
+	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as Air damage to one target and 2 random enemies. 50% chance to cause targets to bleed for 2 turns.",
 	SKILLHOLY_LANCE = "Holy Lance",
-	SKILLHOLY_LANCEDESCRIPT = "Hits 2 targets with Holy physical damage.",
+	SKILLHOLY_LANCEDESCRIPT = "Deals 100% of ATK as Light damage to a row.",
 	SKILLSWIPE = "Swipe",
-	SKILLSWIPEDESCRIPT = "Deals Air physical damage to 3 targets. 30% chance to reduce target's DEF by 20 for 2 turns.",
+	SKILLSWIPEDESCRIPT = "Deals 70% of ATK as Air damage to a column. 30% chance to reduce target's DEF by 20 for 2 turns.",
 	SKILLARROWRAIN = "Arrow Rain",
-	SKILLARROWRAINDESCRIPT = "Deals Water physical damage to a row. 30% chance to reduce target's MDEF by 20 for 2 turns.",
+	SKILLARROWRAINDESCRIPT = "Deals 65% of ATK as Water damage to a column. 30% chance to reduce target's MDEF by 20 for 2 turns.",
 	SKILLEXPLOSIVEARR = "Explosive Arrow",
-	SKILLEXPLOSIVEARRDESCRIPT = "Deals Fire physical damage to a target. Burns target for 2 turns.",
+	SKILLEXPLOSIVEARRDESCRIPT = "Deals 130% of ATK as Fire damage to a target. Burns target for 2 turns.",
 	SKILLSHADOWSTRIKE = "Shadow Strike",
-	SKILLSHADOWSTRIKEDESCRIPT = "Deals Dark physical damage to a target. Reduces ATK by 20 for 2 turns.",
+	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as Dark damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.",
 	SKILLFIREARR = "Fire Arrow",
-	SKILLFIREARRDESCRIPT = "Deals Fire magic damage to a target. 50% chance to burn target for 2 turns.",
+	SKILLFIREARRDESCRIPT = "Deals 120% of MATK as Fire damage to a target. 50% chance to burn target for 2 turns.",
 	SKILLLIGHTNING = "Lightning",
-	SKILLLIGHTNINGDESCRIPT = "Deals Air magic damage to a target. Stuns target for 1 turn.",
+	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as Air damage to a target. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
-	SKILLMINDBLASTDESCRIPT = "Deals Mind magic damage to a target.",
+	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as Mind damage to a target.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
-	SKILLPSYCHICBLASTDESCRIPT = "Deals Mind magic damage to a line.",
+	SKILLPSYCHICBLASTDESCRIPT = "Deals 65% of MATK as Mind damage to a column.",
 	SKILLRESURRECT = "Resurrect",
 	SKILLRESURRECTDESCRIPT = "Resurrects target ally at 40% of maximum health.",
 	SKILLDECAY = "Decay",
-	SKILLDECAYDESCRIPT = "Deals Dark magic damage to all enemies.",
+	SKILLDECAYDESCRIPT = "Deals 65% of MATK as Dark damage to all enemies.",
 	SKILLOVERGROWTH = "Overgrowth",
-	SKILLOVERGROWTHDESCRIPT = "Deals Earth magic damage to all enemies.",
+	SKILLOVERGROWTHDESCRIPT = "Deals 45% of MATK as Earth damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
 	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health. Requires 1 Bandage to use.",
 	SKILLLIGHT_SPELL = "Holy Light",
-	SKILLLIGHT_SPELLDESCRIPT = "Deals Light magic damage to target",
+	SKILLLIGHT_SPELLDESCRIPT = "Deals 100% of MATK as Light damage to a target",
 	SKILLLIGHT_SPELL_AOE = "Divine Radiance",
-	SKILLLIGHT_SPELL_AOEDESCRIPT = "Deals Light magic damage to all enemies and reduce MDEF by 20 for 3 turns.",
+	SKILLLIGHT_SPELL_AOEDESCRIPT = "Deals 30% of MATK as Light damage to all enemies and reduces MDEF by 20 for 3 turns.",
 
 	SKILLENDURE = "Endure",
 	SKILLENDUREDESCRIPT = "Increase all resistances by 20% for 2 turns.",
 	SKILLMIRROR_IMAGE = "Mirror Image",
 	SKILLMIRROR_IMAGEDESCRIPT = "Buff All Ally: 25% chance to avoid any Ability damage for 2 turns (except Mind). Replaces Energy Field.",
 	SKILLENERGY_FIELD = "Energy Field",
-	SKILLENERGY_FIELDDESCRIPT = "Buff All Ally: When taking damage, deals low Air damage to attacker based on Caster's MATK. Replaces Mirror Image.",
+	SKILLENERGY_FIELDDESCRIPT = "Buff All Ally: When taking damage, deals 40% of caster's MATK as Air damage to attacker. Replaces Mirror Image.",
 	SKILLPROTECTIVE_SHELL = "Protective Shell",
-	SKILLPROTECTIVE_SHELLDESCRIPT = "Buff Ally Row: Reduce incoming damage by 35% for next 3 attacks.",
+	SKILLPROTECTIVE_SHELLDESCRIPT = "Buffs Ally column: Reduce incoming damage by 35% for next 3 attacks.",
 	SKILLHAMMERFALL = "Hammerfall",
-	SKILLHAMMERFALLDESCRIPT = "Deals 1.5 Neutral damage to target, stuns target for 2 turns. ",
+	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as physiscal damage to a target. Stuns target for 2 turns. ",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Remove all negative buffs from Ally target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
-	SKILLRIGHTEOUS_FIREDESCRIPT = "Deals 1.0 fire Spell damage to any enemy. Silences target for 2 turns",
+	SKILLRIGHTEOUS_FIREDESCRIPT = "Deals 75% of MATK as Fire damage. Silences target for 2 turns",
 	SKILLELEMENTAL_WEAKNESS = "Elemental Weakness",
-	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Target enemy receive -40 Fire, Air, Earth and Water resists for 3 turns.",
+	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Reduces target's Fire, Air, Earth and Water resists by 40 for 3 turns.",
 	SKILLELEMENTAL_PROTECTION = "Elemental Protection",
-	SKILLELEMENTAL_PROTECTIONDESCRIPT = "Buff Ally Row: +25 Fire, Air, Earth and Water resists for 3 turns.",
+	SKILLELEMENTAL_PROTECTIONDESCRIPT = "Increases target's Fire, Air, Earth and Water resists by 25 for 3 turns.",
 	SKILLTAUNT = "Taunt",
 	SKILLTAUNTDESCRIPT = "Forces all enemies to focus on caster.",
 	SKILLCAMOUFLAGE = "Camouflage",
-	SKILLCAMOUFLAGEDESCRIPT = "Buff All Ally: +20 Evasion for 2 turns. ",
+	SKILLCAMOUFLAGEDESCRIPT = "Buff All Allies: +20 Evasion for 2 turns. ",
 	SKILLREINCARNATE = "Reincarnate",
 	SKILLREINCARNATEDESCRIPT = "Reinforce Spirit of an Ally. When HP reach zero, restore it to full.",
-	SKILLHUNTERSMARK = "Hunters Mark",
+	SKILLHUNTERSMARK = "Hunter's Mark",
 	SKILLHUNTERSMARKDESCRIPT = "Target enemy takes 15% more damage for 3 turns.",
 	SKILLBARD1 = "Hymn",
 	SKILLBARD1DESCRIPT = "Buff Ally Row: Increase Hitrate, Evasion and Speed by 20 for 4 turns. Cancel other Song Effects.",
@@ -688,12 +688,12 @@ var TranslationDict = {
 	SKILLSPIRIT3 = "Spirit: Eagle",
 	SKILLSPIRIT3DESCRIPT = "Buff Ally Target: +20% Skill Damage dealt, +30 Hitrate until end of combat. Cancel other Spirit Effects.",
 	SKILLDEVOURSPIRIT = "Devour Spirit",
-	SKILLDEVOURSPIRITDESCRIPT = "Debuff Enemy Target: When Target dies, restore 20% of max MP to Caster.",
+	SKILLDEVOURSPIRITDESCRIPT = "Debuff Enemy target: when target dies, restore 20% of max MP to Caster.",
 	SKILLEARTHQUAKE = "Earthquake",
-	SKILLEARTHQUAKEDESCRIPT = "Deals Earth Spell Damage to all enemies for 3 turns.",
+	SKILLEARTHQUAKEDESCRIPT = "Deals 40% of MATK as Earth damage to all enemies for 3 turns.",
 	SKILLEARTHQUAKE_GLOB = "Earthquake",
 	SKILLL_ORB = "Lightning Orb",
-	SKILLL_ORBDESCRIPT = "Deals high Air Damage to enemy Target. If Target survives, jumps for another random enemy for half of the damage. ",
+	SKILLL_ORBDESCRIPT = "Deals 250% of MATK as Air damage to a target. If target survives, deals half of the damage to random enemy.",
 	
 	SKILLFLY_EVASION = "Flight",
 	SKILLFLY_EVASIONDESCRIPT = "Boosts Evasion by 65 for 3 turns.",
@@ -1172,7 +1172,7 @@ var TranslationDict = {
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
 	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. Target must have at least 50 Lust.",
 	SKILLHARDWORK = "Hard Work",
-	SKILLHARDWORKDESCRIPT = "Increases productivity by 50% for 1 day for all characters on the current location. ",
+	SKILLHARDWORKDESCRIPT = "Increases productivity by 50% for 3 days for all characters on the current location. ",
 	SKILLPUBLICHUMILIATION = "Public Humiliation",
 	SKILLPUBLICHUMILIATIONDESCRIPT = "Category: {color=red|Mean}\nSet up a public humiliation for selected target. Greatly improves target's behavior and slightly affects audience.\nBasic Effects: \nObedience: 40, Authority: 12, Obedience (public): 30.",
 	SKILLPUBLICSEXHUMILIATION = "Public Sex Humiliation",
@@ -1447,7 +1447,7 @@ var TranslationDict = {
 	
 	
 	PROFACOLYTE = "Acolyte",
-	PROFACOLYTEDESCRIPT = "Indiviuals have devoted their life to mending to others. ",
+	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
 	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
 	PROFMONK = "Monk",
@@ -2217,7 +2217,7 @@ var TranslationDict = {
 	ENEMYWHITE_STAG = "White Stag",
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
-	ENEMYELF_SOLDIER = "Elven Sodier",
+	ENEMYELF_SOLDIER = "Elven Soldier",
 
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -6096,7 +6096,7 @@ Realizing your seriousness she drops her head.
 	AMELIA_HERBS_END_REPLY_1_2_1 = """— I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
 
 After receiving the instructions, you leave Amelia's office.""",
-	AMELIA_HERBS_END_REPLY_1_2_2 = """By the evening you enter Amelia's estate. To your surprise, there's only a couple of servants who quickly lose their interest in you as soon as Amelia shows up.
+	AMELIA_HERBS_END_REPLY_1_2_2 = """As evening comes, you find yourself at the gates of Amelia's estate.  A couple of junior servants let you in and eye you warily but are immediately dismissed by Amelia.
 
 — You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
 
@@ -6112,11 +6112,97 @@ Getting caught in the moment you see no other option but to nod in agreement.
 
 Saying that, Amelia leaves you alone wondering what she's up to.""",
 	AMELIA_HERBS_END_REPLY_1_2_5 = "In a few moments you hear her calling you to enter the bedroom.",
-	AMELIA_HERBS_END_REPLY_1_2_6 = "Text placeholder",
-	AMELIA_HERBS_END_REPLY_1_2_7 = "Text placeholder",
-	AMELIA_HERBS_END_REPLY_1_2_8 = "— You are a real gentleman, [name], I haven't been so satisfied since the day I became the guild leader. Too bad everything good eventually comes to an end. But let's hope we'll get another time.",
-	AMELIA_HERBS_END_OPTION_1_2_1 = """I'll be waiting for the next time""",
-	AMELIA_HERBS_END_OPTION_1_2_2 = """That's a time I won't forget""",
+	AMELIA_BONDAGE_1 = """{color=yellow|Amelia:— Punctual as always, I see. A little sharp, even. Hope you didn't cut anyone on your way here.}
+
+Amelia giggles at her joke. She welcomes you into a sumptuously appointed parlour and bids you get comfortable on a long sofa. She brings a bottle of the finest wine in Aliron and serves you a brimming goblet.
+
+You make small talk for a while, chatting about the weather, about the guilds. Amelia has a quick mind and is an entertaining companion. As you talk, she shuffles closer to you on the sofa until her knees are touching yours. You lay your hand on her thigh and she purrs. Amelia puts her wine down and turns to you, a serious look on her face. 
+
+{color=yellow|Amelia:— I have a confession to make, [name]. I have been less than entirely honest with you. No less than with anyone else, of course, but there’s something I want to tell you.}
+
+You sip your wine and gesture to her to continue.""",
+	AMELIA_BONDAGE_2 = """{color=yellow|Amelia:— Before I became guild leader, I was a servant. Not many guild leaders come from the servant class, most are drawn from among the masters. I guess you could say I was lucky.}
+
+You raise your goblet to her luck.
+
+{color=yellow|Amelia:— As a servant, naturally, I had a master. A very strict master. He could be harsh with his discipline, but I'd be lying if I said that I didn't enjoy it.}
+
+You raise an eyebrow at her confession, wondering where this is leading. 
+
+{color=yellow|Amelia:— Despite the... discipline, being a servant girl was a carefree time for me. Sometimes I wish I could return to it, to escape the duties and responsibility of guild leadership.}
+
+Amelia places her hand on your arm and strokes slowly down to where your hand rests on her stockinged thigh.
+
+{color=yellow|Amelia:— I think that cats need a strong master. Someone to take care of them, and... chastise them occasionally?}""",
+	AMELIA_BONDAGE_3 = """The gorgeous cat-girl looks up at you, biting her lip as she draws your hand further up her thigh.
+
+{color=yellow|Amelia:— A dominant owner, who they can look up to and depend upon, whose authority they trust. Who knows how to treat them firmly.} 
+
+Amelia parts her knees and encourages your hand to slip under her dress. You feel the heat of her bare thighs and your fingers discover she is not wearing any panties. Her pussy is warm and wet. She sighs softly as you caress her slit.
+
+{color=yellow|Amelia:— I hope that... you might be just the person to help me relive those days. Recapture the feeling of being a submissive pet to a powerful man.}
+
+You have no other thought but to agree. Amelia purrs.
+
+{color=yellow|Amelia:— You are always so kind to me, [name]. Please, give me a moment to prepare and then come to my chambers.} 
+
+Amelia hops up and disappears through a doorway, throwing you a coquettish grin over her shoulder""",
+	AMELIA_BONDAGE_4 = """A minute later you hear Amelia calling you to her bedroom. 
+
+As you swing open the door you see a large four-poster bed and a plush purple armchair. A leather harness hangs from a pulley in the centre of the room and Amelia has laid out a number of ropes, paddles, whips, cuffs, and clamps on the bed.
+
+The slender cat-girl stands in the centre, below the pulley, wearing only stockings and an open-topped corset that displays her voluptuous breasts.
+
+{color=yellow|Amelia:— Oh master, there you are. I- I've been such a bad girl. I should be punished.}
+
+Amelia's feline eyes are wide and she is flushed with desire, her long tail whipping side to side. 
+
+You cross the room and grab a handful of hair, yanking her head back. A smile crosses her pretty face as she moans at your sudden forcefulness. Your other hand reaches around behind her to grab an ass-cheek, squeezing it hard enough to hurt.
+
+{color=yellow|Amelia:— Yes, master, teach me a lesson I won't forget. Show me what discipline means.}""",
+	AMELIA_BONDAGE_5 = """Amelia writhes provocatively against you, rubbing her breasts and clit on your muscular frame. Gripping her by the hair you drag her to the bed. You take the handcuffs and bend Amelia over, pulling her arms behind to snap the cuffs over her wrists. She rubs her naked ass into your groin, her tail flicking back and forth across the bulge in your pants. 
+
+You grab a coil of fine silk rope and tow Amelia into the centre of the room. Pulling the harness down, you slip its leather loops over her upper body. Amelia begins to pant in uncontrollable arousal as you bind her. 
+
+You lash rope around her midriff, running it tight around each of her heaving breasts, and then around her collarbone, pinning her arms to her sides. Hauling on the pulley jerks Amelia upright. 
+
+You grab her calf and lift one leg, bending it until the knee almost touches her face. You tie it in place, strapping the foot tight against her buttock. She whimpers excitedly as you stand back to admire your ropework.""",
+	AMELIA_BONDAGE_6 = """With Amelia's wet pussy at your mercy, you unleash your cock. She groans lewdly at the sight of your erect penis, raw lust in her eyes. You ask if she is ready to be punish-fucked like the wayward slut that she is. 
+
+{color=yellow|Amelia:— Oh yes, master. Use me however pleases you, master. Make me submit.} 
+
+You fondle her vulnerable body, kneading her breasts and pinching the soft flesh of her ass. Your shaft grinds against wet pussy-lips and Amelia keens needily. You take hold, one hand grabbing a tit, one gripping her hair, and slowly enter her slick pussy. She tries to twitch her hips to urge you deeper but she can hardly move. 
+
+As your thick cock penetrates deep, Amelia sighs in ecstasy. Her eyes roll back and her tight cunt convulses around you. She cums again with each slow and deliberate thrust, her pussy spasming wildly for several minutes. You pinch her nipples as you bury your meat in her, whispering filth into her ear while she gasps for breath.""",
+	AMELIA_BONDAGE_7 = """{color=yellow|Amelia:— Oh master... Break me, master...}
+
+Your thrusts pick up speed and you pound Amelia’s pussy remorselessly. You use your grip on her breast and hair to slam yourself into her cunt hard enough to bruise the soft flesh. Amelia screams in wild abandon as you hammer her, until you cover her mouth with your hand to muffle the cries. 
+
+Once her screams subside, you grab her narrow waist with both hands so you can fuck her harder. Both your bodies are covered in a fine sheen of sweat. Amelia is panting loud as your penis rams violently into her pussy. You feel your orgasm approaching fast. 
+
+{color=yellow|Amelia:— Cum inside me master, please cum in my disobedient little cunt!}
+
+Your final powerful thrust lifts her off the floor. Impaled on your cock. She hangs from the harness as your cum shoots into her bruised pussy. Amelia yowls, back arched, while your semen pumps into her and then mewls longingly when you pull out.""",
+	AMELIA_BONDAGE_8 = """Amelia croons softly as she stands on one leg, cum trickling from her swollen pussy down over her stockings. You ask if she has learned her lesson, or if she requires further discipline.
+
+{color=yellow|Amelia:— Oh yes, master, I've learned so well. I remember what I am now.}
+
+You cup her leaking cunt and smear a handful of cum into her face and hair. You untie her raised leg so she stands on both feet, then loosen the ropes and remove the harness. She sways unsteadily, still handcuffed, her thighs parted to ease the soreness in her tender pussy. You sit on the armchair and pull her over your knee. 
+
+You had planned to unlock the cuffs right away but her trembling ass is too great a temptation. You spank her roughly and she cries out at each smack.  
+
+{color=yellow|Amelia:— Thank you, master... I deserve this.}
+
+You thrash her into another orgasm while her rope-burned tits rub against your cock. Only then do you uncuff her. Sobbing, she climbs into your lap and embraces you, her fine body shivering in overwhelmed gratitude.""",
+	AMELIA_BONDAGE_9 = """Back in the parlour half an hour later, Amelia clears the wine goblets away. She steps gingerly to the door, pauses, and looks over her shoulder at where you lounge on the sofa.
+
+{color=yellow|Amelia:— Well, you are quite the gentleman, [name]. You really know how to show a girl a good time. I haven’t been so… satisfied since the day I was made guild leader. They say that all good things must come to an end, but I hope we’ll have a chance to do this again, some day.}
+
+The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.""",
+#	AMELIA_BONDAGE_10 = "The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.",
+#
+#	AMELIA_BONDAGE_OPTION_1 = """I'll be waiting for the next time""",
+#	AMELIA_BONDAGE_OPTION_2 = """That's a time I won't forget""",
 	AMELIA_HERBS_END_REPLY_START_FAIL = """— Oh my, that's a real shame. I already anticipated it, though. Well, I guess I'll have to look for another supplier now. Now, if you excuse me...
 
 Amelia leaves you for her business, leaving you alone.""",
@@ -6168,7 +6254,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_FINAL_3 = """As [spousename] is brought to the church, [spousehe] looks somewhat nervous, but still returns your wink with a smile. As [spousehe] makes it to the altar, Ginny starts the ceremony.
 
 {color=yellow|Ginny: — Celena thanks you all for coming here today...}""",
-	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [husband]?}""",
+	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [spousehusband]?}""",
 	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
 	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
 	MARRIAGE_FINAL_4_OPTION_3 = """What's the point in going through all of this otherwise?""",
@@ -7510,15 +7596,164 @@ She takes a long pause, rubbing her sore wrists, before she is willing to contin
 	GOT_CALI_2_OPTION_2 = "I could find some use for you",
 	GOT_CALI_2_OPTION_3 = "Not interested",
 	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough, I'm of the wolves after all. 
-	
-	Cali proudly puffs her chest.
-	
-	 — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
+
+Cali proudly puffs her chest.
+
+ — I can do some menial work or I could cover your back. But I'd rather not do anything, you know, bawdy...""",
 	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
-	GOT_CALI_3_3 = """""",
+	GOT_CALI_3_3 = """""", # TODO add text
+	
+	CALI_SIDEQUEST_1 = """At noon you are approached by one of your residents: Cali. She looks at you with a slightly worried face.
 
+- Hey, [name]. You know, It's been a while since I started to live here. I was thinking that I wanna do something big.""",
+	CALI_SIDEQUEST_1_OPTION_1 = "That's an admirable attitude",
+	CALI_SIDEQUEST_1_OPTION_2 = "You would still have to start somewhere small",
+	CALI_SIDEQUEST_1_OPTION_3 = "You don't have to worry about this, you can stay as long as you want",
+	CALI_SIDEQUEST_1_1 = """- Hmph, no need for flattery, that's what a proud wolf should do - not simply rely on the good will of others. """,
+	CALI_SIDEQUEST_1_2 = """- You... Aren't wrong about this. But I still have to.""",
+	CALI_SIDEQUEST_1_3 = """- No, no, this is wrong. I must give my best and repay you as well.""",
+	CALI_SIDEQUEST_1_ADDITIONAL = """
+
+- So, I've heard about those guilds here. I bet if I join one it will help me get stronger. You must know something about it, right? Which one do you think will suit me better?""",
+	CALI_SIDEQUEST_2_OPTION_1 = "Fighters guild would suit you quite well",
+	CALI_SIDEQUEST_2_OPTION_2 = "Maybe you can do some magic for the Mages guild?",
+	CALI_SIDEQUEST_2_OPTION_3 = "You could join Workers for some fair labor",
+	CALI_SIDEQUEST_2_OPTION_4 = "Servants might be a good fit for a girl",
+	CALI_SIDEQUEST_3_1 = """- Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters. 
+
+- So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
+	CALI_SIDEQUEST_2_2 = """- No, I hate studying and I heard you need to do that a lot to become a mage. It does not really suit me, don't you think?""",
+	CALI_SIDEQUEST_2_3 = """- Ugh, boring. I'd rather do something more active.""",
+	CALI_SIDEQUEST_2_4 = """- Oh, come on, you are talking just like my mom! I may be a girl, but I'm not really good with that girly stuff. There must be something better.""",
+	CALI_FIGHTERS_INIT_OPTION = "Cali",
+	CALI_FIGHTERS_1 = """As you walk inside the guild with Cali, she's staring around in awe. After a couple of seconds getting used to the surroundings, you locate the register table and make your way to it. As the wolf girl starts enthusiastically requesting her registration, the receptionist looks less than enthusiastic about it.
+
+{color=yellow|Receptionist:- You look quite young and inexperienced. This isn't a playground, you know.}
+
+{color=aqua|Cali:- H-hey, I know that! So what if I have no experience?} 
+
+{color=yellow|Receptionist:- We can't vouch for your safety. At the very least bring your legal guardian with you.}
+
+{color=aqua|Cali:- W-well... Then, what about [him]?! [He]'s mine...}
+
+Cali gives you a troubled look.""",
+	CALI_FIGHTERS_1_OPTION_1 = "[Master]",
+	CALI_FIGHTERS_1_OPTION_2F = "Father",
+	CALI_FIGHTERS_1_OPTION_2M = "Mother",
+	CALI_FIGHTERS_1_OPTION_2SF = "Stepfather",
+	CALI_FIGHTERS_1_OPTION_2SM = "Stepmother",
+	CALI_FIGHTERS_1_OPTION_3 = "Just a good friend",
+	CALI_FIGHTERS_2_1AND3 = "{color=aqua|Cali:- That's it! If [he] allows me then it's fine, right?}",
+	CALI_FIGHTERS_2_2 = """Cali looks slightly disturbed by your response but quickly realizes she has to play along.
+
+{color=aqua|Cali:- Y-yeah, that works for you, right?}""",
+	CALI_FIGHTERS_2_ADDITIONAL = """
+
+Receptionist gives you a tired look but decides to give it a pass.
+
+{color=yellow|Receptionist:- Fine. You are a landowner so we can hold you responsible I guess. }
+
+{color=aqua|Cali:- Yes!.. - Cali nearly jumped upon hearing it.}
+
+{color=yellow|Receptionist:- However, as I said, this is not a playground. Before you become a member there will be a test for you to prove your capability.}""",
+	CALI_FIGHTERS_3 = """Receptionist scrambled the papers on his desk until found one of the requests.
+
+{color=yellow|Receptionist:- Here. A simple task for a member of the Fighters' Guild. A group of goblins have been raiding one of the local villages. If you can drive them away you will be accepted.}
+
+Cali enthusiastically took the note and turned to you. 
+
+{color=aqua|Cali:- Easy-peasy. What stupid goblins can even do? We will finish with them before the evening. Let's go!}""",
+	CALI_FIGHTERS_3_OPTION_1 = "Sure, right behind you",
+	CALI_FIGHTERS_3_OPTION_2 = "Let's be careful",
+	CALI_FIGHTERS_4 = """You and Cali walk out of the Fighter's guild and observe the map for the required location.""",
+	CALI_GOBLINS_NO_CALI = """You decide it's not wise not to bring Cali on this quest.""",
+	CALI_GOBLINS_1 = """Full of spirit, Cali quickly jumps to the village and learns about the raiding goblins' location. After another twenty minutes you approach what seems to be a small forest encampment with a couple of goblin watchers who haven't spotted you yet. However, despite your best effort to not alarm them, Cali brashly comes out of the bushes and quickly grasps the attention of your enemies. 
+
+With multiple goblins coming out of the camp there's no other choice but to fight them now.""",
+	CALI_GOBLINS_2 = """As you defeat the multitude of goblins, you notice how a few from the back start running away deeper into the camp. Cali, who seems to be enjoying herself, notices this as well and before you can stop her, charges after them. """,
+	CALI_GOBLINS_3 = """As the wolf girl rushes after the goblins she fails to spot a trap laid under the leaves. As she trips on it, a couple of goblins jump from behind in ambush, one of which manages to latch on her back. 
+
+- Get off me!... Now!
+
+As she struggles to get him off her, more goblins slowly move closer, surrounding Cali as she eventually breaks free. 
+
+- Uh, oh... [name]... Where are you..?
+
+Realizing her position, Cali looks frightened but does not try to run away yet. 
+
+As you make it closer to her, you make a decision...""",
+	CALI_GOBLINS_3_OPTION_1 = "Push in and save her",
+	CALI_GOBLINS_3_OPTION_2 = "Let her deal with it",
+	CALI_GOBLINS_4_1 = """You courageously rush in and drag Cali from danger. However, before she can thank you, more goblins come in and force you into a fight.""",
+	CALI_GOBLINS_4_2 = """You decide to stay back and give Cali a lesson. With no other option she's forced to fight in an uneven battle.
+
+As you strike down a few goblins caught on the back, you notice that Cali, while still fighting back and keeping distance, seems to suffer some wounds and might not make it without your interference. You decide it's time to help her out.""",
+	CALI_GOBLINS_5 = """As you finally manage to make the rest of the goblins flee in terror, you and Cali catch the breath and she speaks up to you.
+
+- I'm sorry... I shouldn't have ran carelessly after them. Thanks for helping me.""",
+	CALI_GOBLINS_5_OPTION_1 = "As long as you've learned your lesson",
+	CALI_GOBLINS_5_OPTION_2 = "Don't act without my permission next time",
+	CALI_GOBLINS_5_OPTION_3 = "If you do this again, I'll leave you to them if this happens again",
+	CALI_GOBLINS_6_1 = """- Yeah! In the end we did it, right?
+
+Cali seems relieved with your words and grabs your hand as you return to the village.""",
+	CALI_GOBLINS_6_2AND3 = """- Sorry... I promise I'll be more careful next time.
+
+Cali seems somewhat upset with your words as you return to the village""",
+	CALI_GOBLINS_7 = """You report on your success to the village elder and leave successfully completing the mission. Cali seems rather happy with the results.
+
+- We did it nicely. Thanks for helping me out with this.""",
+	CALI_GOBLINS_7_OPTION_1 = "You managed great as well",
+	CALI_GOBLINS_7_OPTION_2 = "It was only a bunch of goblins, no big deal",
+	CALI_GOBLINS_7_OPTION_3 = "Are you sure it's what you wanna do?",
+	CALI_GOBLINS_8_1 = """- Ha-ha, you think so? I'm sure our future adventures will be even better!""",
+	CALI_GOBLINS_8_2 = """- Maybe for you, but it was pretty thrilling for my first time.""",
+	CALI_GOBLINS_8_3 = """- Of course! This is only the beginning.""",
+	CALI_GOBLINS_8_ADDITIONAL = """
+
+Despite everything, Cali does not let her spirit down and you leave to home""",
+	CALI_SEX_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
+
+You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. 
+
+- I'm feeling strange... Thinking about [him]...
+
+As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
+
+- [Master]?! This is...""",
+	CALI_SEX_1_OPTION_1 = "This feels good isn't it?",
+	CALI_SEX_1_OPTION_2 = "You should lock the door next time",
+	CALI_SEX_1_OPTION_3 = "*Leave quietly*",
+	CALI_SEX_2_3 = """You decide to ignore it and close the door...""",
+	CALI_SEX_2_3_OPTION_1 = "This isn't the time...",
+	CALI_SEX_2_3_OPTION_2 = "I'd rather not at all.",
+	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still cowers her private parts from you.
+
+- I'm... um... not sure what to say now.""",
+	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
+	CALI_SEX_2_1AND2_OPTION_2 = "Don't mind if I watch?",
+	CALI_SEX_3 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
+
+- You are a pervert, Master. 
+
+Her playful tone catches up as her hand starts rubbing her snatch.
+
+- But... I don't dislike being watched by you...
+
+As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
+
+- Wow... I never felt like this before.""",
+	CALI_SEX_3_OPTION_1 = "That was a joy to watch",
+	CALI_SEX_3_OPTION_2 = "Don't you wanna let me help?",
+	
+	CALI_SEX_4_1 = """- Y-yeah, that was a bit crazy. Sorry, I'd like to stay alone for a bit.""",
+	CALI_SEX_4_2 = """- Yeah, sorry, maybe some other time. I'd like to rest for a bit.""",
+	CALI_SEX_4_ADDITIONAL = """
+
+Cali makes sure you realize that it's time to leave and you close the door.""",
+	
 	
 	
 	
@@ -7603,7 +7838,7 @@ You leave the cave and lead Cali back to your mansion.""",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = "Search for Leon at Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = "Search for Leon at forest location",
 	SWORD_ARTIFACT_QUEST_STAGE_10 = "Talk to Savra about breaking Leon's madness",
-	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver required materials to Savra",
+	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver 50 Magic Wood, 25 Iron Wood and 15 Mythic Leather to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
 	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track dowh the White Stag",
@@ -7622,6 +7857,10 @@ You leave the cave and lead Cali back to your mansion.""",
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
 	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
+	CALI_FIGHTERS_QUEST_NAME = "Cali Fighters Initiation",
+	CALI_FIGHTERS_QUEST_SUMMARY = "Your slave, Cali, wants to be more useful and decided to join fighters guild",
+	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
+	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
 }
 
 

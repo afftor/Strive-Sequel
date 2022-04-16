@@ -60,6 +60,7 @@ var backgrounds = {
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
 	act1_art = load("res://assets/images/fullscreen scenes/splash_pure_act1.png"),
 	act2_art = load("res://assets/images/fullscreen scenes/splash_pure_act2.png"),
+	elven_temple_scene = load("res://assets/images/fullscreen scenes/Scene_Elven_Temple.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
@@ -142,6 +143,7 @@ var backgrounds = {
 	heleviel3 = load("res://assets/images/fullscreen scenes/HelevielCG003.png"),
 	heleviel4 = load("res://assets/images/fullscreen scenes/HelevielCG004.png"),
 	
+	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 
 	}
@@ -252,6 +254,7 @@ var sprites = {
 	lilia_body = load("res://assets/images/sprites/lilia_body.png"),
 	lilith = load("res://assets/images/sprites/lilith.png"),
 	lilith_body = load("res://assets/images/sprites/lilith_body.png"),
+	heleviel_body = load("res://assets/images/sprites/heleviel_body.png"),
 	leon = load("res://assets/images/sprites/leon.png"),
 	savra = load("res://assets/images/sprites/savra.png"),
 	jean = load("res://assets/images/sprites/jean.png"),
@@ -287,6 +290,8 @@ var portraits = {
 	jean = "res://assets/images/portraits/jean_prt.png",
 	hara = "res://assets/images/portraits/hara_prt.png",
 	cali = "res://assets/images/portraits/cali_prt.png",
+	heleviel = "res://assets/images/portraits/heleviel_prt.png",
+	lira = "res://assets/images/portraits/lira_prt.png",
 }
 
 var gui = {

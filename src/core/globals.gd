@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.1'
+const gameversion = '0.6.1b'
 
 #time
 signal hour_tick
@@ -1360,6 +1360,11 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_location(input_handler.active_location)
+			'advance_location':
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				if input_handler.combat_explore:
+					input_handler.exploration_node.advance()
 			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
@@ -1592,6 +1597,8 @@ func common_effects(effects):
 			'complete_wedding':
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
+			'hide_dialogue':
+				gui_controller.dialogue.hide_dialogue()
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -1765,3 +1772,12 @@ func valuecheck(dict):
 				var stat = dict.value * master_char.statlist.statlist.get(dict.factor)
 				var result = r > stat
 				return result == dict.check
+		'sex_filter': # return true if master.sex == scene_sex
+			# dict.scene_sex - masters gender in the next scene. If scene shows us as a male then scene_sex = male
+			if !input_handler.globalsettings.sex_filter:
+				return false
+			var master_char = ResourceScripts.game_party.get_master()
+			if master_char == null:
+				return false
+			var master_sex = master_char.statlist.statlist.sex
+			return master_sex == dict.scene_sex

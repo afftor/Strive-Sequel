@@ -182,7 +182,7 @@ var data = {
 		text = [ {text = "CALI_INTRO", reqs = []} ], 
 		common_effects = [{code = 'make_quest_location', value = 'quest_cali_cave_location'},],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'advance_location'}]
 		}, ],
 	},
 	
@@ -364,7 +364,7 @@ var data = {
 	
 	got_cali_3 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
-		text = [ {text = "GOT_CALI_3_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true}]}, 
+		text = [ {text = "GOT_CALI_3_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true}, {code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -378,7 +378,7 @@ var data = {
 		custom_background = "act1_art",
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
-		common_effects = [],
+		common_effects = [{code = "hide_dialogue"}],
 		text = [
 			{text = "", reqs = []}
 		],
@@ -393,13 +393,13 @@ var data = {
 		custom_background = "act2_art",
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
-		common_effects = [],
+		common_effects = [{code = "hide_dialogue"}],
 		text = [
 			{text = "", reqs = []}
 		],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1,
-				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'}]
+				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'},{code = 'rewrite_save'}]
 			}
 		]
 	}

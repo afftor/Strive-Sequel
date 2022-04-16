@@ -64,7 +64,7 @@ var data = {
 				dialogue_argument = 1,
 			},
 			{
-				code = 'princess_search_fighters_main',
+				code = 'princess_search_fighters_5',
 				text = "SEARCH_FIGHTERS_OPTION_6",
 				reqs = [],
 				dialogue_argument = 1,
@@ -918,7 +918,10 @@ var data = {
 			{text = "AIRE_AMELIA6", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 1}], change_dialogue_type = 1}
+			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [
+				{code = 'rewrite_save'}, 
+				{code = 'screen_black_transition', value = 1}
+				], change_dialogue_type = 1}
 		]
 	},
 
@@ -932,6 +935,7 @@ var data = {
 				code = 'close',
 				text = "DIALOGUECLOSE",
 				reqs = [],
+				bonus_effects = [{code = 'rewrite_save'}], 
 			},
 		],
 
@@ -992,6 +996,7 @@ var data = {
 			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{type = 'decision', value = 'prison_avail', check = true}]},
 			{text = "AMELIAFINDPRINCESS1_3", reqs = [{type = 'decision', value = 'aire_is_dead', check = true}]},
 		],
+		common_effects = [{code = "decision", value = "AllowSearch"}],
 		options = [
 			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION1", reqs = [], dialogue_argument = 1},
 			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION2", reqs = [], dialogue_argument = 2},

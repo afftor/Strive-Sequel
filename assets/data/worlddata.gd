@@ -621,6 +621,16 @@ var locations = {
 		bgm = 'exploration',
 		travel_time = [1,1],
 		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [2,2]}, #Number of allowed slaves per task at no upgrades
+		options = [ {text = 'Combat', reqs = [ 
+				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
+			],
+			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]},
+			{text = 'Meet Duncan', reqs = [ 
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
+			],
+			args = [{code = 'start_event', data = 'divine_symbol_6', args = []}]},
+		],
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
 			fish = {min = 15, max = 45, chance = 1},
@@ -1668,6 +1678,21 @@ var dungeons = {
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
+		options = [ {text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
+			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]},
+			
+			{text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
+			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]},
+
+		],
 		quest = true,
 
 		area = 'plains',
@@ -1988,6 +2013,35 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'erlen_lira_1', args = []}]},
 			{text = 'Meet Erlen', reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}],
 				args = [{code = 'start_event', data = 'erlen_lira_2', args = []}]},
+		],
+		scripteventdata = []
+	},
+	quest_cali_goblins_location = {
+		code = 'quest_cali_goblins_location',
+		type = 'encounter',
+		name = 'Village With Goblins',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['village1', 'village2', 'village3', 'village4'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2.5,4], 
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', 
+		events = [],
+		quest = true,
+		area = 'forests',
+		travel_time = [1,1],
+		options = [
+			{text = 'Search surroundings', reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
+				args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]},
 		],
 		scripteventdata = []
 	},
