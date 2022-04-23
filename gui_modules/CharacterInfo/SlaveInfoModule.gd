@@ -136,6 +136,10 @@ func update_traitlist():
 		if trdata.tags.has('negative'):
 			button.texture_normal = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_negative.png")
 			button.texture_hover = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_negative_hover.png")
+		if trdata.has('cross') and trdata.cross:
+			button.get_node('cross').visible = true
+		else:
+			button.get_node('cross').visible = false
 		#i suggest put trait removing feature here, on button_press
 
 

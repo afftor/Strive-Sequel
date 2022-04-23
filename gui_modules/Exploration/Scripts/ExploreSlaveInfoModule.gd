@@ -151,7 +151,7 @@ func rebuild_traits():
 	if person == null:
 		person = current_person
 	input_handler.ClearContainer($ScrollContainer/traits)
-	for i in person.statlist.traits:
+	for i in person.statlist.traits: #this is counterintuitive - for those are listed under "sex traits" ingame - and there are a lot of them here
 		var trait = Traitdata.traits[i]
 		if trait.visible == false:
 			continue
