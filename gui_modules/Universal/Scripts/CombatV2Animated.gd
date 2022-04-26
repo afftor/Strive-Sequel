@@ -1005,7 +1005,7 @@ func use_skill(skill_code, caster, target):
 	allowaction = false
 
 	var skill = Skilldata.Skilllist[skill_code]
-
+	var fa = true
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.get_stat('name') + ' uses ' + activeitem.name + ". ")
@@ -1030,9 +1030,9 @@ func use_skill(skill_code, caster, target):
 			else:
 				caster.skills.combat_skill_charges[skill.code] = 1
 			caster.skills.daily_cooldowns[skill_code] = skill.cooldown
-		if skill.ability_type == 'skill':
+		if skill.ability_type == 'skill' && skill.name != "":
 			caster.add_stat('physics', rand_range(0.1,0.3))
-		elif skill.ability_type == 'spell':
+		elif skill.ability_type == 'spell' && skill.name != "":
 			caster.add_stat('wits', rand_range(0.1,0.3))
 	#caster part of setup
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
@@ -1064,7 +1064,7 @@ func use_skill(skill_code, caster, target):
 	var endturn = !s_skill1.tags.has('instant');
 	for n in range(s_skill1.repeat):
 		#get all affected targets
-		if skill.tags.has('random_target') or (target != null and target.hp <= 0) :
+		if skill.tags.has('random_target') or (target != null and !(s_skill1.target_number in ['nontarget', 'nontarget_group', 'single_nontarget']) and target.hp <= 0) :
 			if checkwinlose():
 				eot = false
 				return
@@ -1125,6 +1125,8 @@ func use_skill(skill_code, caster, target):
 				s_skill2.target.play_sfx('miss')
 				combatlogadd(target.get_stat('name') + " evades the damage.")
 				Off_Target_Glow()
+				if s_skill2.tags.has('no_fa_miss'):
+					fa = false
 			else:
 				#hit landed animation
 				if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.hit != null:
@@ -1160,7 +1162,7 @@ func use_skill(skill_code, caster, target):
 	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
 	#follow-up
-	if skill.has('follow_up'):
+	if skill.has('follow_up') and fa:
 		use_skill(skill.follow_up, caster, target)
 	if skill.tags.has('not_final'): return
 
@@ -1288,7 +1290,7 @@ func CalculateTargets(skill, target, finale = false):
 	var array = []
 
 	if target == null: return array
-
+	
 	var targetgroup
 
 	if int(target.position) in range(1,7):
@@ -1342,7 +1344,8 @@ func CalculateTargets(skill, target, finale = false):
 					array.append(tchar)
 		'nontarget':
 			for j in range(1, 13):
-				if target.position == j: continue
+				if target.position == j: 
+					continue
 				if j in range(1,7) && targetgroup == 'player':
 					if battlefield[j] == null : continue
 					var tchar = characters_pool.get_char_by_id(battlefield[j])
