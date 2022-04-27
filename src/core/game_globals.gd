@@ -52,6 +52,8 @@ func serialize():
 
 
 func advance_hour():
+	if int(date) % input_handler.globalsettings.autosave_frequency == 0 and hour + 1 > variables.HoursPerDay:
+		globals.autosave()
 	for i in ResourceScripts.game_party.characters.values():
 		i.pretick()
 	for i in ResourceScripts.game_party.characters.values():
@@ -79,9 +81,6 @@ func advance_day():
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
 		reset_limits()
-	
-	if int(date) % input_handler.globalsettings.autosave_frequency == 0:
-		globals.autosave()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()
