@@ -151,12 +151,12 @@ func rebuild_traits():
 	if person == null:
 		person = current_person
 	input_handler.ClearContainer($ScrollContainer/traits)
-	for i in person.statlist.traits: #this is counterintuitive - for those are listed under "sex traits" ingame - and there are a lot of them here
-		var trait = Traitdata.traits[i]
-		if trait.visible == false:
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
-		newnode.text = trait.name
+#	for i in person.statlist.traits: #this is counterintuitive - for those are listed under "sex traits" ingame - and there are a lot of them here
+#		var trait = Traitdata.traits[i]
+#		if trait.visible == false:
+#			continue
+#		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
+#		newnode.text = trait.name
 	
 	
 	var traits = person.get_all_sex_traits()
