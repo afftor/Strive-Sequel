@@ -511,6 +511,18 @@ func work_tick_values(currenttask, gatherable = false):
 		parent.get_ref().add_stat('base_exp', 5)
 
 
+func get_task_crit_chance(bonus_tool = false):
+	if parent.get_ref().has_status('no_task_crit'):
+		return 0
+	var res = 0
+	if parent.get_ref().check_trait('talented'): 
+		res = 0.15
+	if bonus_tool and parent.get_ref().equipment.gear.tool != null:
+		var item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
+		if item.bonusstats.has("task_crit_chance"):
+			res += item.bonusstats.task_crit_chance
+	return res
+
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
 	if !races.tasklist.has(temptask): return null
@@ -525,12 +537,16 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	
+	var bonus_tool = false
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
-		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
-			value = value*2
+		bonus_tool = true
+	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
+		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
 	return value
+
 
 func get_progress_resource(tempresource, count_crit = false):
 	var resource = Items.materiallist[tempresource]
@@ -544,9 +560,12 @@ func get_progress_resource(tempresource, count_crit = false):
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
+	
+	var bonus_tool = false
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
-		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
-			value = value*2
+		bonus_tool = true
+	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
+		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
 	return value

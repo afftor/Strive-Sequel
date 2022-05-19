@@ -473,6 +473,7 @@ var traits = {
 		effects = [],
 		bonusstats = {exp_gain_mod = 0.25},
 		weight = 100,
+		conflicts = ['dim'],
 		tags = ['positive']
 	},
 	passive = {
@@ -484,6 +485,7 @@ var traits = {
 		effects = [],
 		bonusstats = {obDrainReduction = 0.5},
 		weight = 100,
+		conflicts = ['rebel'],
 		tags = ['positive']
 	},
 	nimble = {
@@ -495,6 +497,7 @@ var traits = {
 		effects = [],
 		bonusstats = {speed = 10},
 		weight = 100,
+		conflicts = ['slow'],
 		tags = ['positive']
 	},
 	quick = {
@@ -506,6 +509,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_collect = 0.2},
 		weight = 100,
+		conflicts = ['blundering', 'clumsy'],
 		tags = ['positive']
 	},
 	handy = {
@@ -517,6 +521,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_craft = 0.2},
 		weight = 100,
+		conflicts = ['crude', 'inept'],
 		tags = ['positive']
 	},
 	deadly = {
@@ -539,6 +544,7 @@ var traits = {
 		effects = [],
 		bonusstats = {hp_reg_add = 3},
 		weight = 100,
+		conflicts = ['sicky'],
 		tags = ['positive']
 	},
 	mvortex = {
@@ -549,6 +555,54 @@ var traits = {
 		icon = "res://assets/images/iconstraits/swirl.png",
 		effects = [],
 		bonusstats = {mp_reg_add = 1},
+		weight = 100,
+		conflicts = ['m_inept'],
+		tags = ['positive']
+	},
+	bawdy = {
+		code = 'bawdy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/bed.png",
+		effects = [],
+		weight = 100,
+		tags = ['positive'],
+		conflicts = ['chaste', 'frigid'],
+		bonusstats = {mod_pros = 0.25}
+	},
+	sturdy = {
+		code = 'sturdy',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/leg.png",
+		effects = [],
+		bonusstats = {armor = 10},
+		weight = 100,
+		conflicts = ['frail'],
+		tags = ['positive']
+	},
+	talented = {
+		code = 'talented',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/brain.png",
+		effects = [],
+		bonusstats = {}, #hardcoded
+		weight = 100,
+		conflicts = ['menial'],
+		tags = ['positive']
+	},
+	forager = {
+		code = 'forager',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/brain.png",
+		effects = [],
+		bonusstats = {}, #hardcoded
 		weight = 100,
 		tags = ['positive']
 	},
@@ -561,6 +615,7 @@ var traits = {
 		effects = ['e_tr_gifted'],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['magicmutt'],
 		tags = ['positive']
 	},
 	belligerent = {
@@ -583,6 +638,7 @@ var traits = {
 		effects = ['e_tr_hidpow'],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['m_inept'],
 		tags = ['positive']
 	},
 	healthy = {
@@ -594,6 +650,7 @@ var traits = {
 		effects = ['e_tr_healthy'],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['sicky'],
 		tags = ['positive']
 	},
 	#negative
@@ -606,6 +663,7 @@ var traits = {
 		effects = [],
 		bonusstats = {exp_gain_mod = -0.25},
 		weight = 100,
+		conflicts = ['prodigy'],
 		tags = ['negative']
 	},
 	rebel = {
@@ -617,6 +675,7 @@ var traits = {
 		effects = [],
 		bonusstats = {obDrainReduction = 1.5}, #mb not - obdrainincrease possible
 		weight = 100,
+		conflicts = ['passive'],
 		tags = ['negative']
 	},
 	slow = {
@@ -628,6 +687,7 @@ var traits = {
 		effects = [],
 		bonusstats = {speed = -10},
 		weight = 100,
+		conflicts = ['nimble'],
 		tags = ['negative']
 	},
 	clumsy = {
@@ -639,6 +699,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_collect = -0.8},
 		weight = 100,
+		conflicts = ['quick', 'blundering'],
 		tags = ['negative']
 	},
 	inept = {
@@ -650,6 +711,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_craft = -0.8},
 		weight = 100,
+		conflicts = ['handy', 'crude'],
 		tags = ['negative']
 	},
 	sicky = {
@@ -661,6 +723,19 @@ var traits = {
 		effects = [],
 		bonusstats = {hp_reg_add = -3},
 		weight = 100,
+		conflicts = ['lively', 'healthy'],
+		tags = ['negative']
+	},
+	frail = {
+		code = 'frail',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/heart.png",
+		effects = [],
+		bonusstats = {armor = -10},
+		weight = 100,
+		conflicts = ['sturdy'],
 		tags = ['negative']
 	},
 	magicmutt = {
@@ -672,6 +747,7 @@ var traits = {
 		effects = ['e_tr_mm'],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['gifted'],
 		tags = ['negative']
 	},
 	blundering = {
@@ -684,6 +760,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['quick', 'clumsy'],
 		tags = ['negative', 'no_collect']
 	},
 	crude = {
@@ -696,6 +773,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['handy', 'inept'],
 		tags = ['negative', 'no_craft']
 	},
 	chaste = {
@@ -708,6 +786,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['bawdy'],
 		tags = ['negative', 'no_whoring']
 	},
 	pacifist = {
@@ -720,6 +799,18 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		tags = ['negative', 'no_combat']
+	},
+	menial = {
+		code = 'menial',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/pacific.png",
+		effects = [],
+		bonusstats = {},
+		weight = 100,
+		conflicts = ['talented'],
+		tags = ['negative', 'no_task_crit']
 	},
 	whimp = {
 		code = 'whimp',
@@ -743,6 +834,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['mvortex', 'hiddenpowers'],
 		tags = ['negative', 'no_combat_spells']
 	},
 	selfish = {
@@ -778,6 +870,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		conflicts = ['bawdy'],
 		tags = ['negative', 'no_sex_traits']
 	},
 	
