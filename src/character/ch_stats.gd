@@ -615,6 +615,9 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
 			add_sex_trait(i)
+	if chardata.has("traits"):
+		for i in chardata.traits:
+			add_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
