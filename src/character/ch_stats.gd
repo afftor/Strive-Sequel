@@ -414,6 +414,7 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 
 #traits
 func add_trait(tr_code):
+	if tr_code == null: return
 	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
 	traits.push_back(tr_code)
@@ -436,6 +437,15 @@ func add_trait(tr_code):
 		parent.get_ref().set_work_rule("ration", false)
 		parent.get_ref().set_work_rule("contraceptive", false)
 	parent.get_ref().recheck_effect_tag('recheck_trait')
+
+
+func can_add_trait(tr_code):
+	var trait = Traitdata.traits[tr_code]
+	if traits.has(tr_code): return false
+	if !trait.has('conflicts'): return true
+	for tr_conflict in trait.conflicts:
+		if traits.has(tr_conflict): return false
+	return true
 
 
 func remove_trait(tr_code):
@@ -543,7 +553,7 @@ func get_traits_by_arg(arg, value):
 func get_random_trait_tag(tag):
 	var buf = {}
 	for tr in Traitdata.traits:
-		if traits.has(tr): continue
+		if !can_add_trait(tr): continue
 		var data = Traitdata.traits[tr]
 		if !data.has('tags'): continue
 		if !data.tags.has(tag): continue
@@ -605,6 +615,9 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
 			add_sex_trait(i)
+	if chardata.has("traits"):
+		for i in chardata.traits:
+			add_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]

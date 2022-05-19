@@ -69,6 +69,8 @@ func get_food():
 	if food_consumption_rations == true && parent.get_ref().get_static_effect_by_code('work_rule_ration') == null:
 		parent.get_ref().add_stat('food_consumption', 3)
 	var food_consumption = parent.get_ref().get_stat('food_consumption')
+	if parent.get_ref().check_trait('forager'):
+		food_consumption = 0
 	for j in ['high','med','low']:
 		for i in food_filter[j]:
 			var food = Items.materiallist[i]

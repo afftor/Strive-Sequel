@@ -757,6 +757,7 @@ func weightedrandom_dict(dict): #uses dict of value:weight, returns value
 
 
 func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
+	if array.empty(): return null
 	var total = 0
 	var counter = 0
 	for i in array:

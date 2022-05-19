@@ -4,6 +4,7 @@ extends Panel
 onready var Info = $ExploreSlaveInfoModule
 onready var SummaryModule = $ExploreSlaveSummaryModule
 onready var BodyModule = $SlaveBodyModule
+onready var traitlist = $ScrollContainer/HBoxContainer
 var submodules = []
 
 
@@ -60,7 +61,7 @@ func show_summary(person, from_dialogue = null):
 		if i.name != 'lust': i.value = person.get_stat(i.name)
 		else:i.value = person.get_stat(i.name)
 		i.get_node("Label").text = str(floor(i.value)) + "/" + str(floor(i.max_value))
-
+	
 	for i in SummaryModule.get_node("factors").get_children():
 		# if i.name in ['food_consumption', 'base_exp']:
 		if i.name in ['base_exp']:
@@ -72,9 +73,7 @@ func show_summary(person, from_dialogue = null):
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
-
-
-
+	
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
 			var color = set_color(person.get_stat(i+'_bonus'))
@@ -86,7 +85,7 @@ func show_summary(person, from_dialogue = null):
 			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
 			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
-
+	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
 	# for i in person.xp_module.professions:
 	# 	var newnode = input_handler.DuplicateContainerTemplate(BodyModule.get_node("professions"))
@@ -100,8 +99,34 @@ func show_summary(person, from_dialogue = null):
 	# 	globals.connecttexttooltip(newnode, temptext)
 	Info.update(person)
 	BodyModule.update(person)
+	update_traitlist(person)
 	update_purchase_btn()
 
+
+func update_traitlist(person):
+	input_handler.ClearContainer(traitlist, ['Button'])
+	for tr in person.get_traits_by_arg('visible', true):
+		var button = input_handler.DuplicateContainerTemplate(traitlist, 'Button')
+		var trdata = Traitdata.traits[tr]
+		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+		if trdata.has('icon') and trdata.icon != null:
+			if trdata.icon is String:
+				button.get_node('icon').texture = load(trdata.icon)
+			else:
+				button.get_node('icon').texture = trdata.icon
+		if trdata.has('cross') and trdata.cross:
+			button.get_node('cross').visible = true
+		else:
+			button.get_node('cross').visible = false
+			if trdata.tags.has('positive'):
+				button.texture_normal = load("res://assets/images/iconstraits/green.png")
+	#			button.texture_normal = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_positive.png")
+	#			button.texture_hover = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_positive_hover.png")
+			if trdata.tags.has('negative'):
+				button.texture_normal = load("res://assets/images/iconstraits/red.png")
+	#			button.texture_normal = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_negative.png")
+	#			button.texture_hover = load("res://assets/Textures_v2/CHAR_INFO/traitpanel/button_tratis_negative_hover.png")
+		#i suggest put trait removing feature here, on button_press
 
 
 func set_color(value):

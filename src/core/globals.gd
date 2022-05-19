@@ -1345,9 +1345,10 @@ func common_effects(effects):
 			'update_party':
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
-			'rewrite_save':
-				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
-					autosave(true)
+			'rewrite_save': #obsolete
+				pass
+#				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
+#					autosave(true)
 			'background_noise':
 				match i.value:
 					'start':
