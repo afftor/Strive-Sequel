@@ -519,7 +519,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/hammer.png",
 		effects = [],
-		bonusstats = {mod_craft = 0.2},
+		bonusstats = {mod_tailor = 0.2, mod_smith = 0.2, mod_alchemy = 0.2, mod_cook = 0.2},
 		weight = 100,
 		conflicts = ['crude', 'inept'],
 		tags = ['positive']
@@ -709,7 +709,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/hammer.png",
 		effects = [],
-		bonusstats = {mod_craft = -0.8},
+		bonusstats = {mod_tailor = -0.8, mod_smith = -0.8, mod_alchemy = -0.8, mod_cook = -0.8},
 		weight = 100,
 		conflicts = ['handy', 'crude'],
 		tags = ['negative']
