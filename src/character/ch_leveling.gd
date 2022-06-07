@@ -514,9 +514,9 @@ func work_tick_values(currenttask, gatherable = false):
 func get_task_crit_chance(bonus_tool = false):
 	if parent.get_ref().has_status('no_task_crit'):
 		return 0
-	var res = 0
-	if parent.get_ref().check_trait('talented'): 
-		res = 0.15
+	var res = parent.get_ref().get_stat('base_task_crit_chance')
+#	if parent.get_ref().check_trait('talented'): 
+#		res = 0.15
 	if bonus_tool and parent.get_ref().equipment.gear.tool != null:
 		var item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
 		if item.bonusstats.has("task_crit_chance"):

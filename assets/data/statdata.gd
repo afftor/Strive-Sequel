@@ -546,7 +546,14 @@ var statdata = {
 		baseicon = 'food_love',
 		default_bonus = 'add_part'
 	},
-	task_crit_chance = {
+	base_task_crit_chance = { # for char
+		code = 'base_task_crit_chance',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+	},
+	task_crit_chance = { # for item desc
 		code = 'task_crit_chance',
 		name = '',
 		descript = '',
