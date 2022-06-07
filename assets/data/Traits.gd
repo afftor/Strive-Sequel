@@ -590,7 +590,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/brain.png",
 		effects = [],
-		bonusstats = {}, #hardcoded
+		bonusstats = {base_task_crit_chance = 0.15}, 
 		weight = 100,
 		conflicts = ['menial'],
 		tags = ['positive']
