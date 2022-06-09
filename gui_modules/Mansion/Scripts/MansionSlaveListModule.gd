@@ -385,6 +385,13 @@ func build_for_skills(person, newbutton):
 		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
 	newbutton.get_node("job").disabled = person.is_on_quest()
 
+var training_types = {
+	nothing = 'No Training',
+	slave_training = "Slave Training",
+	academy = 'Academy',
+	heir = 'Heir Education',
+}
+
 
 func build_for_tutelage(person, newbutton):
 	newbutton.get_node('progress').visible = true
@@ -394,7 +401,7 @@ func build_for_tutelage(person, newbutton):
 	newbutton.get_node('obed').visible = false
 	newbutton.get_node('progress').value = variables.tutduration - person.get_quest_time_remains()
 	newbutton.get_node('progress').max_value = variables.tutduration
-	newbutton.get_node('Location').text = person.get_tutelage_type()
+	newbutton.get_node('Location').text = training_types[person.get_tutelage_type()]
 	
 
 

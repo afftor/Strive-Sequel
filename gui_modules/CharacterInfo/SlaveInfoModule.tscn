@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/iconstraits/heart.png" type="Texture" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
@@ -555,12 +556,14 @@ expand = true
 [node name="icon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 3.0
+margin_top = 4.0
+margin_right = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
+texture = ExtResource( 17 )
 expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

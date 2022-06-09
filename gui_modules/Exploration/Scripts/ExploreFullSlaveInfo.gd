@@ -108,7 +108,7 @@ func update_traitlist(person):
 	for tr in person.get_traits_by_arg('visible', true):
 		var button = input_handler.DuplicateContainerTemplate(traitlist, 'Button')
 		var trdata = Traitdata.traits[tr]
-		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+		globals.connecttexttooltip(button,"[center]{color=yellow|" + trdata.name + '}[/center]\n' + trdata.descript)
 		if trdata.has('icon') and trdata.icon != null:
 			if trdata.icon is String:
 				button.get_node('icon').texture = load(trdata.icon)

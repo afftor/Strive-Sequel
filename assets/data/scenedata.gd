@@ -4,7 +4,7 @@ extends Node
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	select_tutelage = {
-		text = tr("DIALOGUETUTELAGETEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [
+		text = tr("DIALOGUETUTELAGETEXT"), image = null, tags = ['active_character_translate'], options = [
 			{code = 'close', text = tr('DIALOGUETUTNOTHING'), reqs = [], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'nothing'}, {code = 'rewrite_save'}]},
 			{code = 'close', text = tr('DIALOGUETUTSLAVE'), reqs = [{type = 'has_money', value = 500}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training'}, {code = 'money_change', operant = '-', value = 500}, {code = 'rewrite_save'}]},
 			{code = 'close', text = tr('DIALOGUETUTACADEMY'), reqs = [{type = 'has_money', value = 1500}, {type = "has_upgrade", name = 'academy', value = 1}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'academy'}, {code = 'money_change', operant = '-', value = 1500}, {code = 'rewrite_save'}]},
