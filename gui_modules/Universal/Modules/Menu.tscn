@@ -244,10 +244,10 @@ expand = true
 stretch_mode = 5
 
 [node name="MainLabel" type="Label" parent="."]
-margin_left = -56.0731
-margin_top = 138.849
-margin_right = 549.927
-margin_bottom = 212.849
+margin_left = 18.6715
+margin_top = 149.104
+margin_right = 624.672
+margin_bottom = 223.104
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.682353, 0.321569, 0.768627, 1 )
 text = "Strive: Conquest"
@@ -546,7 +546,17 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Fixed some info scene errors
+bbcode_text = "0.6.1c
+Aire now possess Archer class
+Heleviel now posses Acolyte and Priest classes
+Fixed some resources not being gatherable
+Hopefully fixed rare instances when events didn't trigger
+Fixed restorating having wrong effect
+Fixed some skill tooltips
+Removed an option for disabled characters to use social skills
+Fixed working exp not being affected by bonuses
+0.6.1b
+Fixed some info scene errors
 Fixed multiple event errors
 Fixed some unique character sprites and portraits
 0.6.1a
@@ -1147,7 +1157,17 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed some info scene errors
+text = "0.6.1c
+Aire now possess Archer class
+Heleviel now posses Acolyte and Priest classes
+Fixed some resources not being gatherable
+Hopefully fixed rare instances when events didn't trigger
+Fixed restorating having wrong effect
+Fixed some skill tooltips
+Removed an option for disabled characters to use social skills
+Fixed working exp not being affected by bonuses
+0.6.1b
+Fixed some info scene errors
 Fixed multiple event errors
 Fixed some unique character sprites and portraits
 0.6.1a

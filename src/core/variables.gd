@@ -345,8 +345,7 @@ var new_stat_bonuses_syntax = false
 
 var pregenabled = true
 var pregduration = 120
-
-var tutduration = 14
+var tutduration = 14 #days
 
 var slave_classes_per_difficulty = {
 	0 : [0, 2],

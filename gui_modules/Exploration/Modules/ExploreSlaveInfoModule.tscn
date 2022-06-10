@@ -181,10 +181,10 @@ __meta__ = {
 }
 
 [node name="base_stats" type="GridContainer" parent="BaseStatsPanel"]
-margin_left = 20.0
+margin_left = 8.0
 margin_top = 22.5528
-margin_right = 340.0
-margin_bottom = 186.553
+margin_right = 339.0
+margin_bottom = 201.553
 custom_constants/vseparation = 1
 custom_constants/hseparation = 14
 columns = 4

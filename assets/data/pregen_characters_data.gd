@@ -39,6 +39,7 @@ var pregen_characters = {
 		ass_size = 'small',
 		tits_size = 'average',
 		sex_traits = ['pushover','dislike_group'],
+		traits = ['prodigy','coward'],
 		tags = [],
 		personality = 'shy',
 		food_like = 'vege',
@@ -82,6 +83,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['scholar','shaman'],
+		traits = ['gifted'],
 		tags = [],
 		sex_skills = {petting = 2, penetration = 15, oral = 4, anal = 0},
 	},
@@ -128,6 +130,7 @@ var pregen_characters = {
 		food_hate = ['meat'],
 		skills = ['take_position'],
 		classes = ['archer','ranger'],
+		traits = ['nimble','inept'],
 		sex_skills = {petting = 7, pussy = 17, oral = 12, anal = 2},
 	},
 	Anastasia = {
@@ -172,6 +175,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['renown_royalty'],
+		traits = ['frail'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	AnastasiaBroken = {
@@ -216,6 +220,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['broken_royalty'],
+		traits = ['frail'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Zephyra = {
@@ -261,6 +266,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['fish'],
 		classes = ['alios_champion'],
+		traits = ['gifted','clumsy'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Mae = {
@@ -307,6 +313,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['fish'],
 		classes = ['apprentice','shaman'],
+		traits = ['lively','whimp'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Lilia = {
@@ -351,6 +358,7 @@ var pregen_characters = {
 		personality = 'shy',
 		food_like = 'vege',
 		food_hate = ['meat'],
+		traits = ['mvortex','inept'],
 		classes = [],
 		sex_skills = {petting = 15, pussy = 0, oral = 5, anal = 0},
 	},
@@ -399,6 +407,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['meat'],
 		classes = [],
+		traits = ['mvortex','inept'],
 		sex_skills = {petting = 27, pussy = 33, oral = 25, anal = 21},
 	},
 	Cali = {
@@ -444,6 +453,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = [],
+		traits = ['sturdy','menial'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Jean = {
@@ -489,6 +499,7 @@ var pregen_characters = {
 		food_like = 'grain',
 		food_hate = ['fish'],
 		classes = ['scholar','caster'],
+		traits = ['prodigy','rebel'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Hara = {
@@ -580,6 +591,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['meat'],
 		classes = ['acolyte','priest'],
+		traits = ['deadly','crude','rebel'],
 		sex_skills = {petting = 35, pussy = 15, oral = 27, anal = 0},
 	},
 	
@@ -626,6 +638,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['fish'],
 		classes = ['acolyte'],
+		traits = ['quick','whimp'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	

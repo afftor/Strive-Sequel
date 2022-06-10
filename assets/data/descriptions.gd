@@ -338,8 +338,8 @@ var bodypartsdata = {
 			{code = 'has_womb', value = [[true,1]], reqs = [],},
 			{code = 'has_pussy', value = [[true,1]], reqs = []},
 			{code = 'penis_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = []},
-			{code = 'balls_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = [{code = 'rule', type = 'futa_balls', value = true}]},
-			{code = 'balls_size', value = [['',1]], reqs = [{code = 'rule', type = 'futa_balls', value = false}]},
+			{code = 'balls_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = [{code = 'setting', type = 'futa_balls', value = true}]},
+			{code = 'balls_size', value = [['',1]], reqs = [{code = 'setting', type = 'futa_balls', value = false}]},
 		]},
 	},
 	age = {

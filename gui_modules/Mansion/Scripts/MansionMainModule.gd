@@ -528,7 +528,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.resource_gather_cloth_silk = 1
 		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
-		ResourceScripts.game_res.upgrades.rooms = 1
+		ResourceScripts.game_res.upgrades.rooms = 5
 #		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.resting = 1
 		ResourceScripts.game_res.upgrades.buildertools = 3
@@ -595,7 +595,7 @@ func test_mode():
 			character.skills.social_skills.append(i)
 		character.is_players_character = true
 		globals.impregnate(character, character)
-		#character.get_stat('pregnancy').duration = 10
+		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('Elf', 'female', 'random')
@@ -765,6 +765,31 @@ func test_mode():
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Lira'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Mae'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Lilia'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Lilith'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Cali'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Daisy'},
 			]
 		)
 #		globals.common_effects(
