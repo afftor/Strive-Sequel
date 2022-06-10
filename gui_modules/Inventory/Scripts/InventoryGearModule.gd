@@ -160,23 +160,5 @@ func show_tattoo_tooltip(slot):
 
 func show_buffs():
 	var person = gui_controller.mansion.active_person
-	input_handler.ClearContainer($buffscontainer)
-	for i in person.get_mansion_buffs():
-		var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
-		newnode.texture = i.icon
-		var tmp = i.get_duration()
-		if tmp != null:
-			newnode.get_node("Label").text = str(tmp.count)
-			match tmp.event:
-				'hours':
-					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-				'turns':
-					newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-				'hits':
-					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-				'attacks':
-					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-		else:
-			newnode.get_node("Label").hide()
-		newnode.hint_tooltip = person.translate(i.description)
+	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 

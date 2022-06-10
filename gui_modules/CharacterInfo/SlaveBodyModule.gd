@@ -18,26 +18,9 @@ func update(person = null):
 			person = gui_controller.exploration.person_to_hire
 	# if person != null:
 	$Body.texture = person.get_body_image()
-
-	input_handler.ClearContainer($buffscontainer)
-	for i in person.get_mansion_buffs():
-		var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
-		newnode.texture = i.icon
-		var tmp = i.get_duration()
-		if tmp != null:
-			newnode.get_node("Label").text = str(tmp.count)
-#			match tmp.event:
-#				'hours':
-#					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-#				'turns':
-#					newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-#				'hits':
-#					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-#				'attacks':
-#					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-		else:
-			newnode.get_node("Label").hide()
-		globals.connecttexttooltip(newnode, person.translate(i.description))
+	
+	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
+	
 	input_handler.ClearContainer($ScrollContainer/professions)
 	if person.xp_module.professions.size() > 6:
 		$ScrollContainer/professions.columns = 12
