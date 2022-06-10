@@ -356,7 +356,7 @@ func build_buffs_for_char(person, node, mode):
 		'combat': list = person.get_combat_buffs()
 		'all': list = person.get_all_buffs()
 	for i in list:
-		if i.template.has('show_in_traits') and i.template.dhow_in_traits: continue
+		if i.template.has('show_in_traits') and i.template.show_in_traits: continue
 		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
 		newnode.texture = i.icon
 		var tmp = i.get_duration()
