@@ -791,6 +791,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("trait_removal", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
@@ -846,6 +847,7 @@ func test_mode():
 #		)
 
 		character.mp = 10
+		character.add_trait('talented')
 		var tmp = {}
 		tmp.oral = 70
 		tmp.anal = 90
@@ -873,8 +875,9 @@ func test_mode():
 		
 #		ResourceScripts.game_progress.decisions.append("ivitations_made")
 		
-		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue")
-		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
+		#never do this way - cause crash with oblivion potion!!!
+#		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
+#		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
 #		input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")

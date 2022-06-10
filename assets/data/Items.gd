@@ -2349,6 +2349,22 @@ var itemlist = {
 		mansion_effect = 'pheromones',
 		interaction_effect = 'pheromones',
 	},
+	trait_removal = {# removes trait
+		code = 'trait_removal',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 500,
+		icon = load("res://assets/images/iconsitems/icon_scroll1.png"),
+		tier = 'hard',
+		reqs = [],
+		effects = [],
+		tags = ['save_on_use'], #saved on use in case of cancel, consumed during scene
+		mansion_effect = 'trait_removal',
+	},
 
 
 	#Near combat Consumables

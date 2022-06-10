@@ -454,7 +454,7 @@ var traits = {
 		icon = "res://assets/images/iconsskills/trait_undead.png",
 		visible = true,
 		effects = [],
-		tags = ['neutral']
+		tags = ['neutral', 'permanent']
 	},
 	
 	
