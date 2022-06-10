@@ -327,12 +327,12 @@ func build_traitlist_for_char(person, node):
 		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
 		button.texture = trdata.icon
 		button.get_node("Label").hide()
-		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+		globals.connecttexttooltip(button,"[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript))
 	for tr in person.get_traits_by_arg('visible', true):
 		var trdata = Traitdata.traits[tr]
 		if trdata.has('tags') and trdata.tags.has('simple_icon'): continue
 		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
-		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+		globals.connecttexttooltip(button,"[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript))
 		if trdata.has('icon') and trdata.icon != null:
 			if trdata.icon is String:
 				button.get_node('icon').texture = load(trdata.icon)
