@@ -860,7 +860,9 @@ func handle_scene_options():
 			if i.has('disabled') && i.disabled == true:
 				newbutton.status = 'disabled'
 				disable = true
-			newbutton.disabled = disable
+			if disable:
+				newbutton.disabled = true
+				newbutton.status = 'disabled'
 			option_number += 1
 
 

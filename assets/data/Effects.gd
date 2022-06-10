@@ -3848,7 +3848,8 @@ var buffs = {
 		description = "",
 		limit = 1,
 		t_name = 'b_factor_maxed',
-		mansion_only = true
+		mansion_only = true,
+		show_in_traits = true
 	},
 };
 

@@ -140,45 +140,20 @@ func showup(node, person):
 
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
-
-
-		input_handler.ClearContainer($buffscontainer)
+		
+		globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 		#idk about showing buffs here - where this scene is shown anyway? 
-		for i in person.get_mansion_buffs():
-			var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
-			newnode.texture = i.icon
-			var tmp = i.get_duration()
-			if tmp != null:
-				newnode.get_node("Label").text = str(tmp.count)
-				match tmp.event:
-					'hours':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-					'turns':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-					'hits':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-					'attacks':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-			else:
-				newnode.get_node("Label").hide()
-			newnode.hint_tooltip = person.translate(i.description)
-
 		prevnode = parentnode
-
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1
-
 		show()
-
 		var pos = node.get_global_rect()
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 		self.set_global_position(pos)
-
 		if get_rect().end.x+100 > screen.size.x:
 			rect_global_position.x -= get_rect().end.x+100 - screen.size.x
 		if get_rect().end.y+125 > screen.size.y:
 			rect_global_position.y -= get_rect().end.y+125 - screen.size.y
-
 		set_process(true)
 
 

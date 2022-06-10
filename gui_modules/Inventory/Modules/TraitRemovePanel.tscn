@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_stroke.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_stroke_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_manage.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/TraitRemovePanel/panel_traits_stroke_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_42.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=10]
+[ext_resource path="res://gui_modules/Inventory/Scripts/TraitRemovePanel.gd" type="Script" id=11]
+
+[node name="Panel" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -345.0
+margin_top = -400.0
+margin_right = 345.0
+margin_bottom = 400.0
+texture = ExtResource( 4 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Traits"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 18.0
+margin_top = 98.0
+margin_right = 668.0
+margin_bottom = 769.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 620.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 102.0
+margin_top = 1.0
+margin_right = 615.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.431373, 1 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 102.0
+margin_top = 28.0
+margin_right = 615.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Name
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 92, 92 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cross" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

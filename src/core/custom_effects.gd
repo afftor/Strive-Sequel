@@ -118,6 +118,10 @@ func oblivionpot(character):
 	input_handler.interactive_message("oblivion_potion_use",'custom_effect', character)
 
 
+func trait_removal(character):
+	input_handler.get_spec_node(input_handler.NODE_TRAIREM_PANEL).open(character)
+
+
 func pheromones(character):
 	input_handler.active_character = character
 	if character.get_stat('race') in races.race_groups.halfbreeds + races.race_groups.beast:
