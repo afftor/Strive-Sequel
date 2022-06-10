@@ -338,33 +338,37 @@ var traits = {
 		code = 'basic_combat',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png"),
 		effects = [],
+		tags = ['simple_icon']
 	},
 	advanced_combat = {#allows learning advanced (aoe) combat skills
 		code = 'advanced_combat',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png"),
 		effects = [],
+		tags = ['simple_icon']
 	},
 	basic_spells = {#allows learning basic combat spells
 		code = 'basic_spells',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png"),
 		effects = [],
+		tags = ['simple_icon']
 	},
 	advanced_spells = {#allows learning advanced (aoe) combat spells
 		code = 'advanced_spells',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png"),
 		effects = [],
+		tags = ['simple_icon']
 	},
 	#example of catalysts ignoring
 	test_cat_ignore = {

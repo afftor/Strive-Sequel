@@ -313,9 +313,25 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 
 func build_traitlist_for_char(person, node):
 	input_handler.ClearContainer(node, ['Button', 'Button2'])
+	for b in person.get_all_buffs():
+		if !b.template.has('show_in_traits'): continue
+		if !b.template.show_in_traits: continue
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
+		button.texture = b.icon
+		button.get_node("Label").hide()
+		globals.connecttexttooltip(button, person.translate(b.description))
 	for tr in person.get_traits_by_arg('visible', true):
-		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
 		var trdata = Traitdata.traits[tr]
+		if !trdata.has('tags'): continue
+		if !trdata.tags.has('simple_icon'): continue
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
+		button.texture = trdata.icon
+		button.get_node("Label").hide()
+		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+	for tr in person.get_traits_by_arg('visible', true):
+		var trdata = Traitdata.traits[tr]
+		if trdata.has('tags') and trdata.tags.has('simple_icon'): continue
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
 		button.hint_tooltip = trdata.name + '\n' + trdata.descript
 		if trdata.has('icon') and trdata.icon != null:
 			if trdata.icon is String:
@@ -340,6 +356,7 @@ func build_buffs_for_char(person, node, mode):
 		'combat': list = person.get_combat_buffs()
 		'all': list = person.get_all_buffs()
 	for i in list:
+		if i.template.has('show_in_traits') and i.template.dhow_in_traits: continue
 		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
 		newnode.texture = i.icon
 		var tmp = i.get_duration()

@@ -633,16 +633,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="traitscontainer" type="HBoxContainer" parent="."]
+[node name="scroll" type="ScrollContainer" parent="."]
 margin_left = 189.0
-margin_top = 470.0
+margin_top = 456.0
 margin_right = 463.0
 margin_bottom = 521.0
+scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="traitscontainer"]
+[node name="traitscontainer" type="HBoxContainer" parent="scroll"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="scroll/traitscontainer"]
 visible = false
 margin_right = 50.0
 margin_bottom = 51.0
@@ -650,7 +656,7 @@ rect_min_size = Vector2( 50, 50 )
 texture_normal = ExtResource( 32 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="traitscontainer/Button"]
+[node name="icon" type="TextureRect" parent="scroll/traitscontainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -663,7 +669,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cross" type="TextureRect" parent="traitscontainer/Button"]
+[node name="cross" type="TextureRect" parent="scroll/traitscontainer/Button"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -678,7 +684,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="traitscontainer/Button"]
+[node name="TextureRect" type="TextureRect" parent="scroll/traitscontainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 34 )
@@ -687,7 +693,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="TextureRect" parent="traitscontainer"]
+[node name="Button2" type="TextureRect" parent="scroll/traitscontainer"]
 visible = false
 margin_right = 51.0
 margin_bottom = 51.0
@@ -696,7 +702,7 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="traitscontainer/Button2"]
+[node name="Label" type="Label" parent="scroll/traitscontainer/Button2"]
 margin_top = 24.0
 margin_right = 49.0
 margin_bottom = 51.0

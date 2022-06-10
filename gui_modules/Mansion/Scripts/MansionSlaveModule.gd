@@ -174,7 +174,7 @@ func show_slave_info():
 		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 		
-		globals.build_traitlist_for_char(person, $traitscontainer)
+		globals.build_traitlist_for_char(person, $scroll/traitscontainer)
 		input_handler.ClearContainer($buffscontainer)
 		for i in person.get_mansion_buffs():
 			var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
