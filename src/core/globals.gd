@@ -310,6 +310,55 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 #	node.showup(targetnode, data, type)
 
 
+
+func build_traitlist_for_char(person, node):
+	input_handler.ClearContainer(node, ['Button', 'Button2'])
+	for tr in person.get_traits_by_arg('visible', true):
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
+		var trdata = Traitdata.traits[tr]
+		button.hint_tooltip = trdata.name + '\n' + trdata.descript
+		if trdata.has('icon') and trdata.icon != null:
+			if trdata.icon is String:
+				button.get_node('icon').texture = load(trdata.icon)
+			else:
+				button.get_node('icon').texture = trdata.icon
+		if trdata.has('cross') and trdata.cross:
+			button.get_node('cross').visible = true
+		else:
+			button.get_node('cross').visible = false
+			if trdata.tags.has('positive'):
+				button.texture_normal = load("res://assets/images/iconstraits/green.png")
+			if trdata.tags.has('negative'):
+				button.texture_normal = load("res://assets/images/iconstraits/red.png")
+
+
+func build_buffs_for_char(person, node, mode):
+	input_handler.ClearContainer(node, ['Button'])
+	var list
+	match mode:
+		'mansion': list = person.get_mansion_buffs()
+		'combat': list = person.get_combat_buffs()
+		'all': list = person.get_all_buffs()
+	for i in list:
+		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
+		newnode.texture = i.icon
+		var tmp = i.get_duration()
+		if tmp != null:
+			newnode.get_node("Label").text = str(tmp.count)
+		else:
+			newnode.get_node("Label").hide()
+#		match tmp.event:
+#			'hours':
+#				newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+#			'turns':
+#				newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+#			'hits':
+#				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+#			'attacks':
+#				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+		globals.connecttexttooltip(newnode, person.translate(i.description))
+
+
 func TextEncoder(text, node = null):
 	var tooltiparray = []
 	var counter = 0

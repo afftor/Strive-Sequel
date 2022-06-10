@@ -173,7 +173,8 @@ func show_slave_info():
 		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
 		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
-
+		
+		globals.build_traitlist_for_char(person, $traitscontainer)
 		input_handler.ClearContainer($buffscontainer)
 		for i in person.get_mansion_buffs():
 			var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)

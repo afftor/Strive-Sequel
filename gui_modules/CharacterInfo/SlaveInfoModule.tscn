@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
@@ -16,10 +16,13 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=16]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=21]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits_detail_hover.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -28,21 +31,24 @@ font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 13 )
-region_rect = Rect2( 0, 0, 26, 26 )
 
 [sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 64, 16 )
+
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 940, 26 )
 
-[sub_resource type="Theme" id=4]
+[sub_resource type="Theme" id=5]
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null
 HScrollBar/icons/increment_highlight = null
 HScrollBar/styles/grabber = SubResource( 2 )
-HScrollBar/styles/grabber_highlight = null
-HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = SubResource( 3 )
+HScrollBar/styles/grabber_highlight = SubResource( 3 )
+HScrollBar/styles/grabber_pressed = SubResource( 3 )
+HScrollBar/styles/scroll = SubResource( 4 )
 HScrollBar/styles/scroll_focus = null
 
 [node name="SlaveInfoModule" type="Panel"]
@@ -533,9 +539,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 14.0
 margin_top = -147.0
-margin_right = -14.0
+margin_right = -12.0
 margin_bottom = -14.0
-theme = SubResource( 4 )
+theme = SubResource( 5 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -585,6 +591,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 10 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="TextureRect" parent="ScrollContainer/HBoxContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/Button2"]
+margin_left = 28.5601
+margin_top = 81.947
+margin_right = 77.5601
+margin_bottom = 105.947
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

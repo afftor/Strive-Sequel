@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -31,6 +31,9 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=29]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=30]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=31]
+[ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -530,10 +533,10 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
-margin_left = 3.8147e-06
+margin_left = -0.793697
 margin_top = 103.0
-margin_right = 238.0
-margin_bottom = 135.0
+margin_right = 237.206
+margin_bottom = 138.0
 mouse_filter = 0
 custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -619,6 +622,81 @@ expand = true
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="buffscontainer/Button"]
+margin_top = 24.0
+margin_right = 49.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 29 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traitscontainer" type="HBoxContainer" parent="."]
+margin_left = 189.0
+margin_top = 470.0
+margin_right = 463.0
+margin_bottom = 521.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="traitscontainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 32 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="traitscontainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cross" type="TextureRect" parent="traitscontainer/Button"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+texture = ExtResource( 33 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="traitscontainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 34 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="TextureRect" parent="traitscontainer"]
+visible = false
+margin_right = 51.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 51 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="traitscontainer/Button2"]
 margin_top = 24.0
 margin_right = 49.0
 margin_bottom = 51.0
