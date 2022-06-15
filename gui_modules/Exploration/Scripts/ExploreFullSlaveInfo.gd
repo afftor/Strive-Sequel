@@ -24,6 +24,7 @@ func _ready():
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 
+
 func update_purchase_btn():
 	$PurchaseButton/Label.text = gui_controller.exploration.hiremode.capitalize()
 	if gui_controller.exploration.hiremode == "sell":
@@ -39,15 +40,16 @@ func hire_sell():
 		sell_slave()
 
 
-func show_summary(person, from_dialogue = null):
-	if from_dialogue == null:
+func show_summary(person, from_dialogue = false):
+	if !from_dialogue:
 		$PurchaseButton.visible = true
 		$Price.visible = true
 		$TextureRect.visible = true
-	if gui_controller.exploration.hiremode == "sell":
-		$Price.text = str(round(person.calculate_price() / 2))
-	else:
-		$Price.text = str(round(person.calculate_price()))
+		if gui_controller.exploration.hiremode == "sell":
+			$Price.text = str(round(person.calculate_price() / 2))
+		else:
+			$Price.text = str(round(person.calculate_price()))
+		update_purchase_btn()
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	SummaryModule.get_node("Portrait").texture = person.get_icon()
@@ -97,10 +99,9 @@ func show_summary(person, from_dialogue = null):
 	# 	var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
 	# 	temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 	# 	globals.connecttexttooltip(newnode, temptext)
-	Info.update(person)
+	Info.update(person, from_dialogue)
 	BodyModule.update(person)
 	update_traitlist(person)
-	update_purchase_btn()
 
 
 func update_traitlist(person):

@@ -5,7 +5,7 @@ signal signal_RMB_release
 signal signal_LMB
 
 var RMBpressed = false
-
+var indialog = false
 
 func _input(event):
 	if !self.is_visible_in_tree() || disable():
@@ -23,7 +23,7 @@ func _input(event):
 
 
 func disable():
-	if gui_controller.dialogue != null && gui_controller.dialogue.is_visible() || \
+	if !indialog and gui_controller.dialogue != null and gui_controller.dialogue.is_visible() || \
 		gui_controller.inventory != null && gui_controller.inventory.is_visible():
 		return true
 	return false

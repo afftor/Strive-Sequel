@@ -24,14 +24,15 @@ func _ready():
 		newvalue.name = i
 		newlabel.show()
 		newvalue.show()
-	update()
-	
+#	update()
 
-func update(person = null):
+
+func update(person = null, from_dialogue = false):
 	# get_parent().get_parent().submodules.append(self)
 	if person == null:
 		person = gui_controller.exploration.person_to_hire
 		current_person = person
+		from_dialogue = false
 	else:
 		current_person = person
 	if person != null:
@@ -66,12 +67,20 @@ func update(person = null):
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
-		var expnode = gui_controller.exploration
-		$Panel/authoritylabel.visible = expnode.hiremode != "hire"
-		$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
-		$Panel/submissionlabel.visible = expnode.hiremode != "hire"
-		$Panel/authoritylabel2.visible = expnode.hiremode != "hire"
-		$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
+		
+		if from_dialogue:
+			$Panel/authoritylabel.visible = person.is_known_to_player
+			$Panel/loyaltylabel.visible = person.is_known_to_player
+			$Panel/submissionlabel.visible = person.is_known_to_player
+			$Panel/authoritylabel2.visible = person.is_known_to_player
+			$Panel/authoritylabel3.visible = person.is_known_to_player
+		else:
+			var expnode = gui_controller.exploration
+			$Panel/authoritylabel.visible = expnode.hiremode != "hire"
+			$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
+			$Panel/submissionlabel.visible = expnode.hiremode != "hire"
+			$Panel/authoritylabel2.visible = expnode.hiremode != "hire"
+			$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
 
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
@@ -147,9 +156,9 @@ func update(person = null):
 # 	return person.get_current_location_desc()
 
 func rebuild_traits():
-	var person = gui_controller.exploration.person_to_hire
-	if person == null:
-		person = current_person
+#	var person = gui_controller.exploration.person_to_hire
+#	if person == null:
+#		person = current_person
 	input_handler.ClearContainer($ScrollContainer/traits)
 #	for i in person.statlist.traits: #this is counterintuitive - for those are listed under "sex traits" ingame - and there are a lot of them here
 #		var trait = Traitdata.traits[i]
@@ -158,15 +167,14 @@ func rebuild_traits():
 #		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
 #		newnode.text = trait.name
 	
-	
-	var traits = person.get_all_sex_traits()
+	var traits = current_person.get_all_sex_traits()
 	
 	for i in traits:
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
 		if traits[i] == true:#trait is known
 			newnode.text = trait.name
-			var traittext = person.translate(trait.descript)
+			var traittext = current_person.translate(trait.descript)
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
 					traittext += "\n\nDisliked actions:[color=aqua] "
@@ -178,7 +186,7 @@ func rebuild_traits():
 			globals.connecttexttooltip(newnode, traittext)
 		else:
 			newnode.text = tr("TRAITUNKNOWN")
-			globals.connecttexttooltip(newnode, person.translate(tr("TRAITUNKNOWNTOOLTIP")))
+			globals.connecttexttooltip(newnode, current_person.translate(tr("TRAITUNKNOWNTOOLTIP")))
 	
 
 func text_url_hover(meta):

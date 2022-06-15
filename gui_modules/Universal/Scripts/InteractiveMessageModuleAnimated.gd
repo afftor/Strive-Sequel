@@ -122,8 +122,10 @@ func update_scene_characters():
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.get_node('icon').texture = i.get_icon()
 		globals.connectslavetooltip(newbutton, i)
-		if i.is_players_character == false:
-			newbutton.connect('signal_RMB_release',self, 'show_full_info', [i])
+		newbutton.indialog = true
+#		if i.is_players_character == false:
+#			newbutton.connect('signal_RMB_release',self, 'show_full_info', [i])
+		newbutton.connect('signal_RMB_release',self, 'show_full_info', [i])
 
 
 # Temporary
