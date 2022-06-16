@@ -44,7 +44,7 @@ func update_characters():
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
 				if person.has_status('no_sex'): newbutton.disabled = true
-				if person.has_status('no_whoring '): newbutton.disabled = true
+				if person.has_status('no_whoring'): newbutton.disabled = true
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":
