@@ -32,6 +32,7 @@ font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 64, 16 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 23 )
@@ -616,6 +617,15 @@ custom_fonts/font = ExtResource( 24 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

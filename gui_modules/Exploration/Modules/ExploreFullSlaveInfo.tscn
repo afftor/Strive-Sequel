@@ -32,24 +32,25 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 29 )
 region_rect = Rect2( 0, 0, 64, 16 )
 
 [sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 64, 16 )
+
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 27 )
 region_rect = Rect2( 0, 0, 940, 26 )
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=4]
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null
 HScrollBar/icons/increment_highlight = null
 HScrollBar/styles/grabber = SubResource( 1 )
-HScrollBar/styles/grabber_highlight = SubResource( 4 )
-HScrollBar/styles/grabber_pressed = SubResource( 4 )
-HScrollBar/styles/scroll = SubResource( 2 )
+HScrollBar/styles/grabber_highlight = SubResource( 2 )
+HScrollBar/styles/grabber_pressed = SubResource( 2 )
+HScrollBar/styles/scroll = SubResource( 3 )
 HScrollBar/styles/scroll_focus = null
 
 [node name="ExploreFullSlaveModule" type="Panel" groups=[
@@ -312,7 +313,7 @@ margin_left = 1198.0
 margin_top = -249.0
 margin_right = -6.0
 margin_bottom = -126.0
-theme = SubResource( 3 )
+theme = SubResource( 4 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -385,6 +386,17 @@ custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_right = -105.0
+texture = ExtResource( 26 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
