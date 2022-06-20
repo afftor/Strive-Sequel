@@ -35,7 +35,7 @@ func _ready():
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 	globals.connecttexttooltip($SkillPanel/Categories/all, "All")
 	globals.connecttexttooltip($SkillPanel/Categories/combat, "Combat")
-	globals.connecttexttooltip($SkillPanel/Categories/spell, "Spell")
+	globals.connecttexttooltip($SkillPanel/Categories/spells, "Spell")
 	globals.connecttexttooltip($SkillPanel/Categories/support, "Support")
 	globals.connecttexttooltip($SkillPanel/Categories/aoe, "AoE")
 	globals.connecttexttooltip($SkillPanel/Categories/heal, "Heal")
@@ -253,11 +253,10 @@ func sort_skills():
 		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
 			i.visible = i.has_meta('skill')
 		return
-	else:
-		for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
-			i.visible = false
-	
+#	else:
 	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
+		i.visible = false
+#	for i in $SkillPanel/ScrollContainer/GridContainer.get_children():
 		if i.has_meta("skill"):
 			var skill = i.get_meta("skill")
 			if skill == null:
@@ -265,10 +264,10 @@ func sort_skills():
 			if skill.tags.has(skill_category):
 				i.visible = true
 			# combat and spell
-			# not working and uselesss due to no gui for it
-#			for lr in skill.learn_reqs:
-#				if skill_category in lr.trait:
-#					i.visible = true
+			for lr in skill.learn_reqs:
+				if lr.code != 'trait': continue
+				if lr.trait.ends_with(skill_category.to_lower()):
+					i.visible = true
 
 func change_skill_category(cat):
 	skill_category = cat

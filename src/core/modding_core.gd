@@ -15,12 +15,19 @@ var data_loaded = false
 #never really filled, only format
 var avaliable_modes_list = [] #name, data_file, desc
 
+
+signal before_mods_loaded
+signal after_mods_loaded
+signal after_data_fixed
+
 func _ready():
 	get_mods_list()
+	emit_signal("before_mods_loaded")
 	process_pathes_mods()
 	process_extensions_mods()
 	process_script_mods()
 	ResourceScripts.load_scripts()
+	emit_signal("after_mods_loaded")
 
 func process_data_mods():
 	if data_loaded: return
@@ -285,7 +292,14 @@ func fix_main_data_postload():#fixing incomplete data in core files, mostly move
 	for i in classesdata.professions.values():
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
-	
+		if i.has('statchanges'):
+			for j in i.statchanges:
+				if typeof(i.statchanges[j]) == TYPE_STRING:
+					if i.statchanges[j].is_valid_integer():
+						i.statchanges[j] = int(i.statchanges[j])
+					elif i.statchanges[j].is_valid_float():
+						i.statchanges[j] = float(i.statchanges[j])
+		
 	for i in Skilldata.Skilllist.values():
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
@@ -307,6 +321,8 @@ func fix_main_data_postload():#fixing incomplete data in core files, mostly move
 	for i in Enemydata.enemies.values():
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'portraits')
+	
+	emit_signal("after_data_fixed")
 
 
 func fix_indexes_array(arr: Array):
