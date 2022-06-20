@@ -546,7 +546,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.6.1c
+bbcode_text = "Added trait system
+Added tutelage system
+Fixed futa never spawning with balls
+Fixed some AI patterns and skills not working correctly
+Fixed some skill errors
+0.6.1c
 Aire now possess Archer class
 Heleviel now posses Acolyte and Priest classes
 Fixed some resources not being gatherable
@@ -1157,7 +1162,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.1c
+text = "Added trait system
+Added tutelage system
+Fixed futa never spawning with balls
+Fixed some AI patterns and skills not working correctly
+Fixed some skill errors
+0.6.1c
 Aire now possess Archer class
 Heleviel now posses Acolyte and Priest classes
 Fixed some resources not being gatherable

@@ -208,6 +208,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
+				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}]
 		} ],
 	},
@@ -239,6 +240,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
+				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			} ],
 		} ]
@@ -347,6 +349,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
+				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			}
 		],
@@ -386,6 +389,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
+				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 		} ],
 	},
@@ -532,6 +536,7 @@ var data = {
 						{code = 'growth_factor', value = 1, operant = "+"},
 					]
 				},
+				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
 			}
 		],
@@ -705,7 +710,8 @@ var data = {
 			bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}  ],
 	},
-
+	
+	
 	training_complete_sex_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 		reqs = [], character = "daisy_maid",

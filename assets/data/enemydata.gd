@@ -1748,6 +1748,7 @@ var loot_variants_data = {
 	{code = 'static_gear', min = 1, max = 2, grade = ['easy','medium','hard']},
 	{code = 'gear', min = 1, max = 2, grade = ['medium','hard'], material_grade = [['medium', 5],['hard',5]]},
 	{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
+	{code = 'defined', name = 'soul_shard', min = 0, max = 1},
 	{code = 'gold', min = 400, max = 600}
 	],
 

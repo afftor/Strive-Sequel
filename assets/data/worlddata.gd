@@ -113,6 +113,7 @@ var lands = {
 			obsidian = {min = 3, max = 5, chance = 0.7},
 			itempool1 = {items = ['sword','bow','dagger','spear','staff'], min = 2, max = 4, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
+			soul_stone = {min = 1, max = 1, chance = 0.1}
 			},
 		capital_background = 'elf_capital',
 		capital_name = "Elven Capital",

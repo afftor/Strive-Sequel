@@ -106,7 +106,7 @@ var data = {
 	},
 	
 	jean_intro_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'myr', character2 = 'jean',
+		image = null, tags = ['dialogue_scene','master_translate'], reqs = [], character = 'myr', character2 = 'jean',
 		text = [ {text = "JEAN_INTRO_3", reqs = []} ],
 		options = [ {
 			code = 'jean_intro_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

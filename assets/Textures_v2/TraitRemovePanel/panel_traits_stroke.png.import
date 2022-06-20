@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unused.png-5eb3d70bc85cd522fb236a5c8bf03842.stex"
+path="res://.import/panel_traits_stroke.png-e6299789e7a92dd3fcd4e067f3d62053.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsitems/unused.png"
-dest_files=[ "res://.import/unused.png-5eb3d70bc85cd522fb236a5c8bf03842.stex" ]
+source_file="res://assets/Textures_v2/TraitRemovePanel/panel_traits_stroke.png"
+dest_files=[ "res://.import/panel_traits_stroke.png-e6299789e7a92dd3fcd4e067f3d62053.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -720,6 +720,8 @@ func test_mode():
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
 #		character.affect_char({type = 'set_availability', value = false})
+		
+		#common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 
 		globals.common_effects(
 			[
@@ -736,7 +738,6 @@ func test_mode():
 				}
 			]
 		)
-
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Anastasia'},
@@ -816,7 +817,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("trait_removal", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
@@ -893,7 +894,9 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-#		input_handler.interactive_message('gryphon_hunter_start', '', {})
+	
+		ResourceScripts.game_progress.decisions.append("aire_is_saved")
+		input_handler.interactive_message('princess_search_fighters_3', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)

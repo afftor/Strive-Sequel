@@ -1721,10 +1721,10 @@ var quests = {
 		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
 		stages = {
 			stage1 = {code = 'stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
-			stage2 = {code = 'stage2', name = 'Chasing the Princes', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
-			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
-			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
-			stage5 = {code = 'stage5', name = 'Chasing the Princes', descript = """You've captured the princess herself. It's time to bring her back to Duncan."""},
+			stage2 = {code = 'stage2', name = 'Chasing the Princess', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
+			stage3 = {code = 'stage3', name = 'Chasing the Princess', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
+			stage4 = {code = 'stage4', name = 'Chasing the Princess', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
+			stage5 = {code = 'stage5', name = 'Chasing the Princess', descript = """You've captured the princess herself. It's time to bring her back to Duncan."""},
 		},
 	},
 

@@ -849,5 +849,22 @@ var upgradelist = {
 			},
 		}
 	},
+	academy = {
+		code = 'academy',
+		name = '',
+		icon = "exotic_trader",
+		tree_position = {tab = 1, x = 9, y = 9},
+		descript = '',
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 50,
+				cost = {stone = 500, woodiron = 150, leatherthick = 50, obsidian = 25},
+			},
+		}
+	},
+
 
 }

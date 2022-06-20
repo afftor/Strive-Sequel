@@ -292,6 +292,7 @@ var data = {
 		text = [
 		{text = "LICHENCWINAIRE", reqs = [],
 		bonus_effects = [
+			{code = 'decision', value = 'aire_is_saved'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			]},
 		],

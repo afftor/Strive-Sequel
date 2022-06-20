@@ -229,7 +229,9 @@ var TranslationDict = {
 	ITEMWRIT_OF_EXEMPTIONDESCRIPT = "An official paper holding all the necessities to grant a person freedom from slavery. It has all the required seals and is only missing a name...\n\nCan't be applied to unique characters.",
 	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug used on bestial races. Inhaling causes a great surge of euphoria and lust in an individual, making them accept just about any treatment they usually would be too shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
-
+	ITEMSOUL_STONE = "Soul Stone",
+	ITEMSOUL_STONEDESCRIPT = "Allows to remove one inherent character trait.",
+	
 	ITEMSENSITIVITY_POT = "Sensitivity Drug",
 	ITEMSENSITIVITY_POTDESCRIPT = "Increases sensitivity during sexual interactions.",
 	ITEMOBLIVION_POTION = "Oblivion Potion",
@@ -1350,7 +1352,7 @@ var TranslationDict = {
 	TRAITCRUDE = "Crude",
 	TRAITCHASTE = "Chaste",
 	TRAITPACIFIST = "Pacifist",
-	TRAITWHIMP = "Whimp",
+	TRAITWHIMP = "Wimp",
 	TRAITM_INEPT = "Magically Inept",
 	TRAITSELFISH = "Selfish",
 	TRAITCOWARD = "Coward",
@@ -1666,8 +1668,10 @@ var TranslationDict = {
 	UPGRADESEX_TIMEBONUS1 = "Increase daily sex interactions to 2",
 	UPGRADESEX_TIMEBONUS2 = "Increase daily sex interactions to 3",
 	UPGRADERESTING = "Bath",
-	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will slowly regain their Obedience",
+	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will slowly regain their Obedience.",
 	UPGRADERESTINGBONUS1 = "",
+	UPGRADEACADEMY = "Academy",
+	UPGRADEACADEMYDESCRIPT = "Allows to send newborn children for Academy training.",
 
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
@@ -2246,6 +2250,9 @@ var TranslationDict = {
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
 	SETTLEMENT_PLAINS1 = "Settlement",
+	SETTLEMENT_PLAINS2 = "Settlement",
+	SETTLEMENT_PLAINS3 = "Settlement",
+	SETTLEMENT_PLAINS4 = "Settlement",
 
 	DUNGEONDIFFICULTY = "Difficulty",
 	DUNGEONDIFFICULTYEASY = "Easy",
@@ -4791,8 +4798,8 @@ Duncan:— With this the meeting is over.}""",
 
 	MIND_CONTROL_1 = """— Well, who would've thought you would be so ambitious as to get your hands on the princess herself. But I assure you this shall not be easy. Duncan did not lie when he said she's completely unwilling to cooperate as she sees us as nothing but evil.
 
-— You'll have to do your best in order to persuade her. I'll give you a little tip. Play on her naivety and sense of duty. She still holds a strong conviction that she's responsible for everyone's wellbeing.""",
-	MIND_CONTROL_OPTION_1 = """Another way?""",
+— You'll have to do your best in order to persuade her. I'll give you a little tip. Play on her naivety and sense of duty. She still holds a strong conviction that she's responsible for everyone's wellbeing. But if you aren't sure of yourself, you could try a less sophisticated ways.""",
+	MIND_CONTROL_OPTION_1 = """What ways?""",
 	MIND_CONTROL_OPTION_2 = """You mean torture""",
 	MIND_CONTROL_2 = """— No-no, the torture wouldn't work on her, if anything, it would probably make things worse, she might become even more recalcitrant leading up to her death.""",
 	MIND_CONTROL_3 = """— There exist some practices of enforced control. I've observed a magic technique which completely bends a target's mind to another's will. Then the master could issue any orders, precious little was left of the slave's own personality in the end though.
@@ -4801,7 +4808,7 @@ Duncan:— With this the meeting is over.}""",
 	MIND_CONTROL_OPTION_3 = """Thanks for the tip""",
 	MIND_CONTROL_OPTION_4 = """I wouldn't want to do something like this""",
 	MIND_CONTROL_4 = """— It's my pleasure. I wish you success in whatever you are planning.""",
-	MIND_CONTROL_5 = """— Neither would I,  a willing servant is always best after all. I just want to make sure you know it's an option. Use this information as you see fit.""",
+	MIND_CONTROL_5 = """— Neither would I, a willing servant is always best after all. I just want to make sure you know it's an option. Use this information as you see fit.""",
 	MIND_CONTROL_OPTION_5 = """About the princess...""",
 	MIND_CONTROL_6 = """— Yes, how'd your negotiations go?""",
 	MIND_CONTROL_OPTION_6 = """I've decided it's not worth it""",
@@ -6336,7 +6343,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
 	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
 	MARRIAGE_FINAL_4_OPTION_3 = """What's the point in going through all of this otherwise?""",
-	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: — Now you can kiss the [groom/bride(?)].}
+	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: — Now you can kiss the [groom].}
 
 [spousename] leans to you as you seal [spousehis] lips with yours. As guests cheer you on, you enjoy the moment, finally breaking away after a couple of minutes to grin at the crowd. 
 
@@ -7078,7 +7085,7 @@ Savra passes you a small parchment with the ingredients.
 
  — Meet us in the wilds, where we begin the hunt.""",
 	SAVRA_STAG_QUESTION = """Ask about the White Stag""",
-	SAVRA_STAG_ANSWER = """""", # TODO add text
+	SAVRA_STAG_ANSWER = """ — White Stag is a being of mysterious nature. Even though we consider it evil I'm more inclined to believe for it to be a challenge. Rundas must be testing our strength hence why it was never really defeated. As a spiritual leader I can't ignore my duty and ask you to show it at least some respect. """,
 	WHITE_STAG_ENCOUNTER_1 = """You come to the previously established location and find a fairly large group of beastkin, ready for the hunt. Standing off to the side you spot Leon and call out to him.
 
  — You've come at a good time, we are ready to follow its trail. Look here.
