@@ -540,7 +540,7 @@ texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 25 )
 expand = true
 
-[node name="spell" type="TextureButton" parent="SkillPanel/Categories"]
+[node name="spells" type="TextureButton" parent="SkillPanel/Categories"]
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_top = 116.0
