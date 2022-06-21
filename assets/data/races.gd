@@ -310,7 +310,7 @@ var tasklist = {
 		progress_per_item = 1.0,
 		#production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
-		tags = ['alchemy'],
+		tags = ['alchemy', 'hide_progress_ratio'],
 		mod = 'mod_build'
 	},
 	cooking = {
@@ -328,7 +328,7 @@ var tasklist = {
 		production_descript = tr("JOBCOOKINGCRAFTDESCRIPT"),
 		#production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
 		icon = null,
-		tags = ['cooking'],
+		tags = ['cooking', 'hide_progress_ratio'],
 		mod = 'mod_cook'
 	},
 	tailor = {
@@ -350,7 +350,7 @@ var tasklist = {
 		progress_per_item = 1,
 		#production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
 		icon = null,
-		tags = ['tailor'],
+		tags = ['tailor','hide_progress_ratio'],
 		mod = 'mod_tailor'
 	},
 	smith = {
@@ -372,7 +372,7 @@ var tasklist = {
 		progress_per_item = 1,
 		#production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
 		icon = null,
-		tags = ['smith'],
+		tags = ['smith', 'hide_progress_ratio'],
 		mod = 'mod_smith'
 	},
 	alchemy = {
@@ -393,7 +393,7 @@ var tasklist = {
 		progress_per_item = 1,
 		#production = {alchemy = {code = 'alchemy',item = 'alchemy',descript = tr("JOBALCHEMYCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"), progress_per_item = 1, reqs = [], progress_function = 'alchemy_progress'}},
 		icon = null,
-		tags = ['alchemy'],
+		tags = ['alchemy', 'hide_progress_ratio'],
 		mod = 'mod_alchemy'
 	},
 	
@@ -406,7 +406,7 @@ var tasklist = {
 		workstat = '',
 		production = {},
 		icon = null,
-		tags = [],
+		tags = ['hide_progress_ratio'],
 	},
 }
 

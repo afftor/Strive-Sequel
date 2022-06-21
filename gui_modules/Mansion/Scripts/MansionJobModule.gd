@@ -366,10 +366,10 @@ func select_resource(job, resource, newbutton):
 		if job.has('worktool') || job.has('tool_type'):
 			$Worktool.show()
 			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
-		if job.progress_per_item != 1:
+		if !job.tags.has('hide_progress_ratio'):
 			$Workunit.show()
 			$WorkunitLabel.show()
-			$WorkunitLabel.text = str(job.progress_per_item)
+			$WorkunitLabel.text = "%.1f" % job.progress_per_item
 			globals.connecttexttooltip($Workunit, "Progress required per item")
 		var text = job.descript
 		if job.has('workstat'):
