@@ -1203,6 +1203,9 @@ func complete_location(locationid):
 func remove_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
+	if location.type == 'capital':
+		print('WARNING - incorrect location removal')
+		return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	area.locations.erase(location.id)
@@ -1433,6 +1436,7 @@ func common_effects(effects):
 				if input_handler.combat_explore:
 					input_handler.exploration_node.advance()
 			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
+				gui_controller.exploration.show()
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				var location
@@ -1451,11 +1455,14 @@ func common_effects(effects):
 						if area.has('capital'):
 							location = ResourceScripts.game_world.get_area_capital(area)
 							area = area.code
-					location = {location = location, area = area}
-					input_handler.exploration_node.open_location(location)
+#					location = {id = location, area = area}
+					location = ResourceScripts.world_gen.get_location_from_code(location)
+					input_handler.active_location = location
+					input_handler.exploration_node.open_city(location.id)
 					continue
 				
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
+				input_handler.active_location = location
 				input_handler.exploration_node.open_location(location)
 			'open_city': 
 				if input_handler.exploration_node == null:

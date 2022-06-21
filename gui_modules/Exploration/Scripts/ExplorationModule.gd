@@ -140,7 +140,7 @@ func open(location):
 
 
 func open_city(city):
-	if gui_controller.dialogue != null and !gui_controller.dialogue.is_visible() and !gui_controller.dialogue.doing_transition:
+	if gui_controller.dialogue == null or !gui_controller.dialogue.is_visible() and !gui_controller.dialogue.doing_transition:
 		self.raise()
 	gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
