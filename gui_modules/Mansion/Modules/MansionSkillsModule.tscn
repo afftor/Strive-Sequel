@@ -110,6 +110,17 @@ custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 2
 
+[node name="cooldown" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 29.189
+margin_top = 30.3669
+margin_right = 69.189
+margin_bottom = 65.3669
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 1
+valign = 1
+
 [node name="energycost" type="Label" parent="SkillPanel/Button"]
 visible = false
 margin_left = 53.0

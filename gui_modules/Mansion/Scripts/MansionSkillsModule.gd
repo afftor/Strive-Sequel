@@ -55,6 +55,12 @@ func build_skill_panel():
 			newbutton.get_node("charges").show()
 			if charges - used_charges <= 0:
 				newbutton.disabled = true
+				if person.skills.social_cooldowns.has(skill.code):
+					newbutton.get_node('cooldown').visible = true
+					newbutton.get_node('cooldown').text = str(person.skills.social_cooldowns[skill.code])
+				if person.skills.daily_cooldowns.has(skill.code):
+					newbutton.get_node('cooldown').visible = true
+					newbutton.get_node('cooldown').text = str(person.skills.daily_cooldowns[skill.code])
 			if person.skills.active_panel == variables.PANEL_COM: newbutton.disabled = true
 			newbutton.set_meta('skill', skill.code)
 			newbutton.connect("pressed",self,"select_skill_target", [skill.code])
