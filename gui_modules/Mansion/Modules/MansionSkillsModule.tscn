@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/panel_borders.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/icon_skillssword_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_light.png" type="Texture" id=12]
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionSkillsModule.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -21,6 +22,11 @@ margin_left = 25.0
 margin_right = 25.0
 margin_top = 10.0
 margin_bottom = 10.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+use_filter = true
+font_data = ExtResource( 14 )
 
 [node name="MansionSkillsModule" type="Panel"]
 anchor_right = 0.573
@@ -112,11 +118,12 @@ align = 2
 
 [node name="cooldown" type="Label" parent="SkillPanel/Button"]
 visible = false
-margin_left = 29.189
-margin_top = 30.3669
-margin_right = 69.189
-margin_bottom = 65.3669
-custom_fonts/font = ExtResource( 2 )
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 96.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.968627, 1, 0, 1 )
 text = "1"
 align = 1
 valign = 1

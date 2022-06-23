@@ -546,7 +546,15 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added trait system
+bbcode_text = "Added Academy upgrade
+Added initial sex traits to unique characters
+Added visible skill cooldown to social skills
+Daisy will lose Coward trait on completing the dress quest stage
+Fixed Vegetable farming unlocking at 2 workers instead of 1
+Fixed one of the fighter guild quest outcomes not properly registering that you've saved Aire
+Corrected some missing and unprocessed dialogue texts
+0.6.2
+Added trait system
 Added tutelage system
 Fixed futa never spawning with balls
 Fixed some AI patterns and skills not working correctly
@@ -1162,7 +1170,15 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added trait system
+text = "Added Academy upgrade
+Added initial sex traits to unique characters
+Added visible skill cooldown to social skills
+Daisy will lose Coward trait on completing the dress quest stage
+Fixed Vegetable farming unlocking at 2 workers instead of 1
+Fixed one of the fighter guild quest outcomes not properly registering that you've saved Aire
+Corrected some missing and unprocessed dialogue texts
+0.6.2
+Added trait system
 Added tutelage system
 Fixed futa never spawning with balls
 Fixed some AI patterns and skills not working correctly

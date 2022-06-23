@@ -103,7 +103,7 @@ func quest_kill_receiver(enemycode):
 						if cond.code == 'kill_monsters' && enemydata.tags.has(cond.type) && cond.value > cond.curvalue:
 							cond.curvalue += 1
 							if cond.value == cond.curvalue:
-								input_handler.SystemMessage(quest.name + ":" + "QUESTREQSCOMPLETE")
+								input_handler.SystemMessage(quest.name + ":" + tr("QUESTREQSCOMPLETE"))
 								input_handler.PlaySound("book")
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
@@ -111,7 +111,7 @@ func quest_kill_receiver(enemycode):
 					if cond.code == 'kill_monsters' && enemydata.tags.has(cond.type) && cond.value > cond.curvalue:
 						cond.curvalue += 1
 						if cond.value == cond.curvalue:
-							input_handler.SystemMessage(quest.name + ":" + "QUESTREQSCOMPLETE")
+							input_handler.SystemMessage(quest.name + ":" + tr("QUESTREQSCOMPLETE"))
 							input_handler.PlaySound("book")
 
 func update_locations():

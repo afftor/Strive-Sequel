@@ -529,7 +529,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
 		ResourceScripts.game_res.upgrades.rooms = 5
-#		ResourceScripts.game_res.upgrades.forge = 3
+		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.resting = 1
 		ResourceScripts.game_res.upgrades.buildertools = 3
 #		ResourceScripts.game_res.upgrades.tattoo_set = 1
@@ -545,7 +545,7 @@ func test_mode():
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
-		character.unlock_class("shaman")
+		character.unlock_class("valkyrie")
 		character.xp_module.base_exp = 1500
 		character.add_stat('abil_exp', 1500)
 		# character.unlock_class("ruler")
@@ -896,7 +896,7 @@ func test_mode():
 #		ResourceScripts.game_res.materials.meat = 0
 	
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-		input_handler.interactive_message('princess_search_fighters_3', '', {})
+		input_handler.interactive_message('amelia_herbs_end_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)

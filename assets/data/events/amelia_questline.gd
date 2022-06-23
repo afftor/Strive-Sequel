@@ -337,10 +337,10 @@ var data = {
 	},
 	
 	amelia_herbs_end_1_2_2 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], #character = null,
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_2", reqs = []}],
 		options = [ {
-			code = 'amelia_herbs_end_1_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'amelia_bondage_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
 	},
 	

@@ -623,6 +623,7 @@ var TranslationDict = {
 	SKILLHOLY_LANCE = "Holy Lance",
 	SKILLHOLY_LANCEDESCRIPT = "Deals 100% of ATK as Light damage to a row.",
 	SKILLSWIPE = "Swipe",
+	SKILLSWIPE_EN = "Swipe",
 	SKILLSWIPEDESCRIPT = "Deals 70% of ATK as Air damage to a column. 30% chance to reduce target's DEF by 20 for 2 turns.",
 	SKILLARROWRAIN = "Arrow Rain",
 	SKILLARROWRAINDESCRIPT = "Deals 65% of ATK as Water damage to a column. 30% chance to reduce target's MDEF by 20 for 2 turns.",
@@ -1152,7 +1153,7 @@ var TranslationDict = {
 	SKILLCONSUME_SOUL = "Consume Soul",
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Provide a care service for another person. Improves Obedience and reduce Obedience drain by 25% for 1 day. Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 30, Loyalty: 4. ",
+	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and reduce Obedience drain by 25% for 1 day. Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 30, Loyalty: 4. ",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. ",
 	SKILLSEDATE = "Sedate",
@@ -1196,7 +1197,7 @@ var TranslationDict = {
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Protects target from damage.",
 	SKILLSHAREDTOY = "Shared Toy",
-	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Only usable once in 3 days. Improved by Sexual Proficiency. Requires 75 Lust.\nBasic Effects: \nObedience: 45",
+	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Only usable once in 4 days. Improved by Sexual Proficiency. Requires 75 Lust.\nBasic Effects: \nObedience: 45",
 	SKILLPERFORMANCE = "Performance",
 	SKILLPERFORMANCEDESCRIPT = "Category: {color=green|Gracious}\nProvide a small rest and entertainment for your other servants. Improves with Charm.\nBasic Effects: \nObedience: 24, Loyalty: 5.",
 
@@ -2020,7 +2021,7 @@ var TranslationDict = {
 	SEXTRAITDISLIKE_RIDINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
 
 
 
@@ -2245,6 +2246,9 @@ var TranslationDict = {
 	LOCATIONNAMEQUEST_FINAL_OPERATION_LOCATION = "Rebels' Hideout",
 	LOCATIONNAMEQUEST_GRYPHON_FOREST_LOCATION = "Gryphon Thicket",
 	LOCATIONNAMEQUEST_GRYPHON_LAIR_LOCATION = "Elder Grypho Lair",
+	LOCATIONNAMEQUEST_RITUAL_LOCATION = "Herbs Field",
+	LOCATIONNAMEQUEST_LEON_FOREST = "Leon's location",
+	LOCATIONNAMEQUEST_LEON_FOREST_2 = "Leon's location",
 
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
@@ -6053,7 +6057,7 @@ Amelia's voice grows softer and silkier as she begins to touch you in a differen
 
 {color=yellow|Amelia:— Oh, just as impressive as the rest of you! That's a fine and feisty manhood you have. It will be a pleasure to serve you, sir.}
 
-The sophisticated cat-girl slowly unbuttons the front of her satin shirt to bare her voluptuous breasts. She traces oily fingers in small circles around her hard nipples and gracefully arches her back as she leans down towards your cock. 
+Amelia slowly unbuttons the front of her satin shirt to bare her voluptuous breasts. She traces oily fingers in small circles around her hard nipples and gracefully arches her back as she leans down towards your cock. 
 
 {color=yellow|Amelia:— If it pleases you, my lord?}
 
@@ -6103,7 +6107,7 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 
 
 	AMELIA_HERBS_LETTER = "In the morning you receive a small note from the Servants Guild asking you to see the leader.",
-	AMELIA_HERBS_OPTION_START = "Got your letter",
+	AMELIA_HERBS_OPTION_START = "I've received your letter...",
 	AMELIA_HERBS_REPLY_START = "— Glad to see you are eager as ever, [name]. How's your mayorhood?",
 	AMELIA_HERBS_OPTION_1_1 = "Can't complain, it's good to be in power",
 	AMELIA_HERBS_OPTION_1_2 = "Nothing special, you aren't letting me do anything anyway",
@@ -6181,11 +6185,11 @@ Realizing your seriousness she drops her head.
 	AMELIA_HERBS_END_REPLY_1_2_1 = """— I knew we were on the same wave. Now, I'll need some time to prepare. I didn't get guests for a long time.
 
 After receiving the instructions, you leave Amelia's office.""",
-	AMELIA_HERBS_END_REPLY_1_2_2 = """As evening comes, you find yourself at the gates of Amelia's estate.  A couple of junior servants let you in and eye you warily but are immediately dismissed by Amelia.
+	AMELIA_HERBS_END_REPLY_1_2_2 = """As evening comes, you find yourself at the gates of Amelia's estate.  A couple of junior servants let you in and eye you warily but are immediately dismissed by Amelia.""",
 
-— You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
+#— You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
 
-You hold a minor chit chat as Amelia serves you one of the highest grade wines. """,
+#You hold a minor chit chat as Amelia serves you one of the highest grade wines. """,
 	AMELIA_HERBS_END_REPLY_1_2_3 = """— You know, I wasn't very sincere with you... Not any more with anyone else, I suppose. But I'd like you to hear me out. Before becoming the guild leader I was a servant too. I heard not many guild leaders happened to be the servants and not the masters, but I guess I got lucky. 
 
 — I had a master, and a pretty strict one at that, but I'd be lying if I said that I didn't like it. It was an easy, careless time I sometimes wish to return to. I think that cats need a master, you know. An owner...""",
@@ -6203,7 +6207,7 @@ Amelia giggles at her joke. She welcomes you into a sumptuously appointed parlou
 
 You make small talk for a while, chatting about the weather, about the guilds. Amelia has a quick mind and is an entertaining companion. As you talk, she shuffles closer to you on the sofa until her knees are touching yours. You lay your hand on her thigh and she purrs. Amelia puts her wine down and turns to you, a serious look on her face. 
 
-{color=yellow|Amelia:— I have a confession to make, [name]. I have been less than entirely honest with you. No less than with anyone else, of course, but there’s something I want to tell you.}
+{color=yellow|Amelia:— I have a confession to make, [name]. I have been less than entirely honest with you. No less than with anyone else, of course, but there's something I want to tell you.}
 
 You sip your wine and gesture to her to continue.""",
 	AMELIA_BONDAGE_2 = """{color=yellow|Amelia:— Before I became guild leader, I was a servant. Not many guild leaders come from the servant class, most are drawn from among the masters. I guess you could say I was lucky.}
@@ -6219,7 +6223,7 @@ You raise an eyebrow at her confession, wondering where this is leading.
 Amelia places her hand on your arm and strokes slowly down to where your hand rests on her stockinged thigh.
 
 {color=yellow|Amelia:— I think that cats need a strong master. Someone to take care of them, and... chastise them occasionally?}""",
-	AMELIA_BONDAGE_3 = """The gorgeous cat-girl looks up at you, biting her lip as she draws your hand further up her thigh.
+	AMELIA_BONDAGE_3 = """The gorgeous catgirl looks up at you, biting her lip as she draws your hand further up her thigh.
 
 {color=yellow|Amelia:— A dominant owner, who they can look up to and depend upon, whose authority they trust. Who knows how to treat them firmly.} 
 
@@ -6236,7 +6240,7 @@ Amelia hops up and disappears through a doorway, throwing you a coquettish grin 
 
 As you swing open the door you see a large four-poster bed and a plush purple armchair. A leather harness hangs from a pulley in the centre of the room and Amelia has laid out a number of ropes, paddles, whips, cuffs, and clamps on the bed.
 
-The slender cat-girl stands in the centre, below the pulley, wearing only stockings and an open-topped corset that displays her voluptuous breasts.
+The slender catgirl stands in the centre, below the pulley, wearing only stockings and an open-topped corset that displays her voluptuous breasts.
 
 {color=yellow|Amelia:— Oh master, there you are. I- I've been such a bad girl. I should be punished.}
 
@@ -6261,7 +6265,7 @@ You fondle her vulnerable body, kneading her breasts and pinching the soft flesh
 As your thick cock penetrates deep, Amelia sighs in ecstasy. Her eyes roll back and her tight cunt convulses around you. She cums again with each slow and deliberate thrust, her pussy spasming wildly for several minutes. You pinch her nipples as you bury your meat in her, whispering filth into her ear while she gasps for breath.""",
 	AMELIA_BONDAGE_7 = """{color=yellow|Amelia:— Oh master... Break me, master...}
 
-Your thrusts pick up speed and you pound Amelia’s pussy remorselessly. You use your grip on her breast and hair to slam yourself into her cunt hard enough to bruise the soft flesh. Amelia screams in wild abandon as you hammer her, until you cover her mouth with your hand to muffle the cries. 
+Your thrusts pick up speed and you pound Amelia's pussy remorselessly. You use your grip on her breast and hair to slam yourself into her cunt hard enough to bruise the soft flesh. Amelia screams in wild abandon as you hammer her, until you cover her mouth with your hand to muffle the cries. 
 
 Once her screams subside, you grab her narrow waist with both hands so you can fuck her harder. Both your bodies are covered in a fine sheen of sweat. Amelia is panting loud as your penis rams violently into her pussy. You feel your orgasm approaching fast. 
 
@@ -6281,9 +6285,9 @@ You had planned to unlock the cuffs right away but her trembling ass is too grea
 You thrash her into another orgasm while her rope-burned tits rub against your cock. Only then do you uncuff her. Sobbing, she climbs into your lap and embraces you, her fine body shivering in overwhelmed gratitude.""",
 	AMELIA_BONDAGE_9 = """Back in the parlour half an hour later, Amelia clears the wine goblets away. She steps gingerly to the door, pauses, and looks over her shoulder at where you lounge on the sofa.
 
-{color=yellow|Amelia:— Well, you are quite the gentleman, [name]. You really know how to show a girl a good time. I haven’t been so… satisfied since the day I was made guild leader. They say that all good things must come to an end, but I hope we’ll have a chance to do this again, some day.}
+{color=yellow|Amelia:— Well, you are quite the gentleman, [name]. You really know how to show a girl a good time. I haven't been so… satisfied since the day I was made guild leader. They say that all good things must come to an end, but I hope we'll have a chance to do this again, some day.}
 
-The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.""",
+The catgirl walks awkwardly through to her room and disappears. You let yourself out and return to the mansion.""",
 #	AMELIA_BONDAGE_10 = "The gorgeous cat-girl walks awkwardly through to her kitchen and disappears. You let yourself out and return to the mansion.",
 #
 #	AMELIA_BONDAGE_OPTION_1 = """I'll be waiting for the next time""",
@@ -6756,20 +6760,20 @@ Before Mae finally leaves the room, she gives you another curious yet slightly f
 
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
-— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+— You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_1_2 = """— I know that some outsiders often think that, but others don't seem to mind and even choose to participate. Though, there's been very few of you lately.
 
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
-— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+— You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_1_3 = """— Then you should find our company pleasant. Not mine, though, I'm a bit out of shape as you can see.
 
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
-— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+— You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_2AND3 = """— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
-— You will have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
+— You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_3_OPTION_1 = """Are you going to kill her?!""",
 	MAE_MEETING_3_OPTION_2 = """What are you talking about?""",
 	MAE_MEETING_3_OPTION_3 = """I'm not sure I need to know that""",
@@ -7031,7 +7035,7 @@ Mae blushes severely thinking of all that happened just yesterday, but nods in a
 	LEON_FIGHT_1 = """As you search through the area, you come across some fresh tracks. After calling out, you detect some movements short in front of you. As you approach the bush, Leon jumps on you as if you were his prey. In the spur of the moment you barely manage to block his attack with your weapon.""",
 	LEON_FIGHT_1_OPTION_1 = "*Yell at him*",
 	LEON_FIGHT_1_OPTION_2 = "*Push forward*",
-	LEON_FIGHT_2_1 = """Leon completely ignores your words and keeps pushing forward with animalistic frenzy. As you struggle against him, you see no flicker of conscience onhis face. Finally you manage to break away from him, but the fight is not over...""",
+	LEON_FIGHT_2_1 = """Leon completely ignores your words and keeps pushing forward with animalistic frenzy. As you struggle against him, you see no flicker of conscience on his face. Finally you manage to break away from him, but the fight is not over...""",
 	LEON_FIGHT_2_2 = """Despite your best efforts you can't hope to move him by even an inch. As you struggle against him, you see no flicker of conscience on his face. Finally you manage to break away from him, but the fight is not over...""",
 	LEON_FIGHT_3 = """After getting the best of him, you notice that Leon seems considerably exhausted and is panting heavily. To your surprise, he seems to regain some of his personality as he mumbles some words.
 
@@ -7191,7 +7195,7 @@ Before you are able to answer, the woman's figure is enveloped in a bright light
  — Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
 	PRIESTESS_TALK_3_OPTION_1 = "This shall be an honor for me",
 	PRIESTESS_TALK_3_OPTION_2 = "Fine, if you keep your end of bargain",
-	TEMPLE_START = """You come to the place you were told about by Heleviel and after searching around you manage to find a ruined entrance to the supposed temple. However, it is blocked by a large stone slate. It seems you will need someone exceptionally powerful to move it...""",
+	TEMPLE_START = """You come to the place you were told about by the High Priestess and after searching around you manage to find a ruined entrance to the supposed temple. However, it is blocked by a large stone slate. It seems you will need someone exceptionally powerful to move it...""",
 	TEMPLE_START_OPTION_1 = "Attempt to move",
 	TEMPLE_START_OPTION_2 = "Use Acid Bomb",
 	TEMPLE_START_OPTION_3 = "Leave",
@@ -7573,7 +7577,7 @@ Slaver 2: — Because the buyer we had lined up was the guy who loved them feist
 	CALI_INTRO_2_OPTION_4 = "I'll take her from you", # go to fight
 	CALI_INTRO_3_1 = """The girl blushes a deep scarlet color at your question.
 
-{color=aqua|ali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!}
+{color=aqua|Cali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!}
 
 The men smirk at her reaction.
 

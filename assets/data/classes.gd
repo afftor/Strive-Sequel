@@ -571,7 +571,7 @@ var professions = {
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/soul eater.png"),
 		tags = [],
-		categories = ['social'],
+		categories = ['social','magic'],
 		showupreqs = [],
 		reqs = [{code = 'has_profession', profession = 'dominator', check = true},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}, {code = 'stat', stat = 'wits_factor', operant = 'gte', value = 3}],
 		statchanges = {damage_mod_mind = 0.2},
