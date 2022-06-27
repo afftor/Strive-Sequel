@@ -1769,6 +1769,11 @@ func valuecheck(dict):
 			var character = input_handler.active_character
 			if character == null:return false
 			return character.checkreqs(dict.value)
+		'scene_character_checks':
+			if input_handler.scene_characters.empty(): return false
+			var character = input_handler.scene_characters[0]
+			if character == null: return false
+			return character.checkreqs(dict.value)
 		'unique_character_checks':
 			var character = ResourceScripts.game_party.get_unique_slave(dict.name)
 			if character == null:return false

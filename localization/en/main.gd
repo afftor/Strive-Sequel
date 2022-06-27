@@ -2201,7 +2201,7 @@ var TranslationDict = {
 	DIALOGUETUTNOTHING = "No Training (free)",
 	DIALOGUETUTSLAVE = "Slave Training (500 Gold)",
 	DIALOGUETUTACADEMY = "Academy (1500 Gold)",
-	DIALOGUETUTHEIR = "Heir Education (500 Gold)",
+	DIALOGUETUTHEIR = "Heir Education (5000 Gold)",
 	
 	SPRINGTEXT = "You find a small clearing with a spring. It might be a good time to take a break and rest.",
 	SPRING_HEAL = "Your group rests and restores some health.",

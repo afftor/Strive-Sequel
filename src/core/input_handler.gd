@@ -896,7 +896,7 @@ func interactive_message(code, type = '', args = {}):
 	dialogue_array.append({code = code, type = type, args = args})
 	start_event_attempt()
 
-func interactive_message_follow(code, type, args):
+func interactive_message_follow(code, type, args): #not safe
 	start_event(code, type, args)
 
 func event_finished():
@@ -977,11 +977,11 @@ func start_event(code, type, args):
 	scene.open(data)
 
 
-func interactive_message_custom(data):
+func interactive_message_custom(data): #not safe
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true))
 
-func interactive_dialogue_start(code, stage):
+func interactive_dialogue_start(code, stage): #not safe
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.dialogue_next(code, stage)
 

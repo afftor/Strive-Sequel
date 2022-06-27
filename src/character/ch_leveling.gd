@@ -412,7 +412,7 @@ func finish_learning():
 	var data = {text = '', tags = ['skill_report_event'], options = [], image = null} #not sure if this tag is correct and/or reqiured
 	data.text = res_text # there may be more to it, some header maybe
 	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
-	input_handler.interactive_message_custom(data)
+	input_handler.interactive_message(data, 'direct')
 	quest_id = ''
 	work = ''
 
