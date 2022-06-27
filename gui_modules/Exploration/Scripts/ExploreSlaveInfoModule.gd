@@ -190,8 +190,10 @@ func rebuild_traits():
 	
 
 func text_url_hover(meta):
-	var person = gui_controller.exploration.person_to_hire
-	if person == null:
+	var person
+	if current_person == null:
+		person = gui_controller.exploration.person_to_hire
+	else: 
 		person = current_person
 	match meta:
 		'race':
