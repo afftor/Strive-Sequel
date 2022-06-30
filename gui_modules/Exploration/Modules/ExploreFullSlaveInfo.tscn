@@ -369,8 +369,7 @@ __meta__ = {
 
 [node name="Button2" type="TextureRect" parent="ScrollContainer/HBoxContainer"]
 visible = false
-margin_left = 105.0
-margin_right = 205.0
+margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 4 )
@@ -379,9 +378,9 @@ stretch_mode = 1
 
 [node name="Label" type="Label" parent="ScrollContainer/HBoxContainer/Button2"]
 margin_left = 28.5601
-margin_top = 81.947
+margin_top = 68.2711
 margin_right = 77.5601
-margin_bottom = 105.947
+margin_bottom = 97.2711
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
@@ -393,8 +392,6 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Button2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -105.0
-margin_right = -105.0
 texture = ExtResource( 26 )
 expand = true
 __meta__ = {
