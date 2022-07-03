@@ -45,7 +45,7 @@ var effect_table = {
 					{
 						type = 'oneshot',
 						target = 'skill',
-						atomic = [{type = 'stat_mul', stat = 'value', value = 1.2, stats = ['authority', 'loyalty', 'loyaltyObedience', 'submissionObedience']}],
+						atomic = [{type = 'stat_mul', stat = 'value', value = 1.2, stats = [ 'loyalty', 'loyaltyObedience', 'submissionObedience']}],
 						buffs = [],
 						sub_effects = []
 					}
@@ -125,7 +125,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['authority']}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['authority']}],#2REMAKE
 				buffs = [],
 				sub_effects = []
 			}
@@ -142,7 +142,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.3, stats = ['authority']}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.3, stats = ['authority']}],#2REMAKE
 				buffs = [],
 				sub_effects = []
 			}
@@ -686,7 +686,7 @@ var effect_table = {
 		stack = 1,
 		sub_effects = [{
 			type = 'oneshot',
-			atomic = [{type = 'stat_add_p', stat = 'authority', value = -1}]
+			atomic = [{type = 'stat_add_p', stat = 'authority', value = -1}]#2REMAKE
 		}],
 		tags = [],#['addition_rest_tick'],
 		atomic = [
@@ -3147,7 +3147,7 @@ var effect_table = {
 	#temp items
 	e_leather_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.65},{type = 'stat_add_p', stat = 'authority_mod', value = 0.20}],
+		atomic = [],#{type = 'stat_mul', stat = 'obDrainReduction', value = 0.65},{type = 'stat_add_p', stat = 'authority_mod', value = 0.20}],
 		descript = 'Reduces Obedience Drain by 35%. Increases Authority gain by 20%. ',
 		buffs = [],
 		sub_effects = [],
@@ -3161,7 +3161,7 @@ var effect_table = {
 	},
 	e_steel_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.35},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
+		atomic = [],#{type = 'stat_mul', stat = 'obDrainReduction', value = 0.35},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
 		descript = 'Reduces Obedience Drain by 65%. Increases Authority gain by 35%.',
 		buffs = [],
 		sub_effects = [],

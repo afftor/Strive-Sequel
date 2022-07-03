@@ -946,8 +946,8 @@ var TranslationDict = {
 	STATLOYALTYDESCRIPT = "Loyalty is built with positive skills and behavior. Loyalty reduce Obedience Drain and improve some interactions. Loyalty can be built on dates.",
 	STATSUBMISSION = "Submission",
 	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time unless maxed out. Maxed out Submission will no longer require Obedience for work and stops escapes.",
-	STATAUTHORITY = "Authority",
-	STATAUTHORITYDESCRIPT = "Authority represents a character's respect for you. Authority is built by punishments and dates, and determines how quickly Loyalty is built. Low authority and obedience makes possible for character to attempt escape.",
+#	STATAUTHORITY = "Authority",
+#	STATAUTHORITYDESCRIPT = "Authority represents a character's respect for you. Authority is built by punishments and dates, and determines how quickly Loyalty is built. Low authority and obedience makes possible for character to attempt escape.",
 	STATLUST = "Lust",
 	STATLUSTDESCRIPT = "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when utilized correctly.",
 	STATPRODUCTIVITY = "Productivity",
@@ -3391,7 +3391,7 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 
 	STATOBDRAINREDUCTION = "Obedience Drain Decrease",
 	STATOBDRAININCREASE = "Obedience Drain Increase",
-	STATAUTHORITY_MOD = "Authority Growth",
+#	STATAUTHORITY_MOD = "Authority Growth",
 
 	ITEMCHEST_ADV_CLOTH = "Coat",
 	ITEMLEGS_ADV_CLOTH = "Mantle",

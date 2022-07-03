@@ -436,7 +436,7 @@ var scenedict = {
 	]
 	},
 
-	event_goblin_recruit = {
+	event_goblin_recruit = {#2REMAKE
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = ['random 15', "+25"]}]}],
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
@@ -537,7 +537,7 @@ var scenedict = {
 	{code = 'event_fairy_leave', reqs = [], text = tr("DIALOGUEEVENTFAIRYLEAVE")}
 	]
 	},
-	event_fairy_recruit = {
+	event_fairy_recruit = {#2REMAKE
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = ['random 30', "+25"]}]}],
 			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
@@ -674,7 +674,7 @@ var scenedict = {
 		{code = 'event_person_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
 		],
 	},
-	event_person_free = {
+	event_person_free = {#2REMAKE
 		text = tr("DIALOGUEEVENTPERSONFREE"),
 		args = {},
 		tags = ['scene_character_translate'],
@@ -687,7 +687,7 @@ var scenedict = {
 		],
 	},
 
-	event_person_recruit_attempt = {
+	event_person_recruit_attempt = {#2REMAKE
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},#type = 'charm_factor', operant = 'gte', value = 3}]}
 			],
@@ -713,7 +713,7 @@ var scenedict = {
 		],
 	},
 
-	event_good_rebels_beastkin = {text = tr("DIALOGUEEVENTGOODREBELSBEAST"),
+	event_good_rebels_beastkin = {text = tr("DIALOGUEEVENTGOODREBELSBEAST"),#2REMAKE
 	args = {},
 	tags = ['good','scene_character_translate'],
 	default_event_type = "character_event",

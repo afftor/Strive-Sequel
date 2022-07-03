@@ -109,22 +109,6 @@ var statdata = {
 		abb = 'TIM',
 		direct = true
 	},
-	authority = {
-		code = 'authority',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-		direct = true
-	},
-	loyalty = {
-		code = 'loyalty',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-		direct = true
-	},
 	submission = {
 		code = 'submission',
 		name = '',
@@ -175,20 +159,28 @@ var statdata = {
 		type = 'mental_stat',
 		direct = true
 	},
-	loyaltyObedience = {
-		code = 'loyaltyObedience',
-		name = 'STATOBEDIENCE',
-		descript = 'STATOBEDIENCEDESCRIPT',
+	obedience_drain = {
+		code = 'obedience_drain',
+		name = '',
+		descript = '',
 		baseicon = 'stat_obed',
 		type = 'mental_stat',
+		custom_get = true,
 	},
-	submissionObedience = {
-		code = 'submissionObedience',
-		name = 'STATOBEDIENCE',
-		descript = 'STATOBEDIENCEDESCRIPT',
-		baseicon = 'stat_obed',
-		type = 'mental_stat',
-	},
+#	loyaltyObedience = {
+#		code = 'loyaltyObedience',
+#		name = 'STATOBEDIENCE',
+#		descript = 'STATOBEDIENCEDESCRIPT',
+#		baseicon = 'stat_obed',
+#		type = 'mental_stat',
+#	},
+#	submissionObedience = {
+#		code = 'submissionObedience',
+#		name = 'STATOBEDIENCE',
+#		descript = 'STATOBEDIENCEDESCRIPT',
+#		baseicon = 'stat_obed',
+#		type = 'mental_stat',
+#	},
 	fear = {
 		code = 'fear',
 		name = '',
@@ -211,13 +203,44 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 	},
+	loyalty = {
+		code = 'loyalty',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = true
+	},
+	loyalty_max = {
+		code = 'loyalty_max',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = true
+	},
+	loyalty_gain = {
+		code = 'loyalty_gain',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		custom_get = true
+	},
+	loyalty_max_gain = {
+		code = 'loyalty_max_gain',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		custom_get = true
+	},
 	loyalty_gain_mod = {
 		code = 'loyalty_gain_mod',
 		name = '',
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
-
 	},
 	exp_gain_mod = {
 		code = 'exp_gain_mod',
@@ -608,13 +631,6 @@ var statdata = {
 		percent = true,
 		baseicon = 'food_love',
 		is_negative = true
-	},
-	authority_mod = {#never applied stat for some reasons
-		code = 'authority_mod',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		default_bonus = 'add_part'
 	},
 	#container stats
 	resists = {

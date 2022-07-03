@@ -706,7 +706,7 @@ func test_mode():
 					)
 
 		character.set_stat('loyalty', 100)
-		character.set_stat('authority', 100)
+#		character.set_stat('authority', 100)
 		character.set_stat('submission', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000

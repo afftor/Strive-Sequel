@@ -46,7 +46,6 @@ var stats = {
 	loyalty_gain_mod = '',
 	lusttick = '',
 	obDrainReduction = '',
-	authority_mod = '',
 	mod_cook = "",
 }
 
@@ -1019,7 +1018,7 @@ var itemlist = {
 		reqs = [],
 		effects = [], #'e_leather_collar_effect'],
 		tags = [],
-		basestats = {obDrainReduction = 0.65, authority_mod = 0.2},
+		basestats = {}, #obDrainReduction = 0.65, authority_mod = 0.2},
 	},
 	elegant_choker = {#-15% obedience decay, -10% fear decay
 		code = 'elegant_choker',
@@ -1053,7 +1052,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],#'e_steel_collar_effect'],
 		tags = [],
-		basestats = {obDrainReduction = 0.35, authority_mod = 0.35},
+		basestats = {},#obDrainReduction = 0.35, authority_mod = 0.35},
 	},
 	amulet_of_recognition = {
 		code = 'amulet_of_recognition',

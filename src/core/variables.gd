@@ -38,7 +38,7 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+consent', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat', '+authority', '+loyaltyObedience', '+submissionObedience']#, '-loyaltyObedience', '-submissionObedience'] #not sure about these
+var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+consent', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat']#, '-loyaltyObedience', '-submissionObedience'] #not sure about these
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'loyalty', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
@@ -58,11 +58,10 @@ var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_dead
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','speed','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','authority_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']
+var bonuses_stat_list = ['productivity','mod_collect','speed','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod', 'loyalty_gain_mod', 'obDrainReduction', 'obDrainIncrease', 'hp_reg_mod', 'mp_reg_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'authority',
-'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
+var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
 
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
@@ -285,20 +284,22 @@ var base_obed_drain = 8
 
 var basic_lust_per_tick = 0.57 * 6
 
-var obed_mod_per_difficuty = {
-	easy = 1.0,
-	medium = 0.5,
-	hard = 0.25
+var authority_lines = { #possibly obsolete
+	low = "Defiance",
+	medium = "Respect",
+	high = 'Reverence',
 }
 
-var obed_authority_cap = {
-'low': 72,
-'medium': 144,
-'high': 288,
-}
-
-var authority_threshold_base = 200
-var authority_threshold_per_timid = 25
+# obsolete
+#var obed_mod_per_difficuty = {
+#	easy = 1.0,
+#	medium = 0.5,
+#	hard = 0.25
+#}
+#
+#
+#var authority_threshold_base = 200
+#var authority_threshold_per_timid = 25
 
 
 var master_charm_quests_gold_bonus = {

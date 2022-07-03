@@ -3,11 +3,6 @@ extends Panel
 onready var DietModule = $SlaveDietModule
 
 var person
-var authority_lines = {
-	low = "Defiance",
-	medium = "Respect",
-	high = 'Reverence',
-}
 
 var universal_skills = ['oral','anal','petting']
 

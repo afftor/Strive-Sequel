@@ -178,20 +178,19 @@ func custom_stats_get():
 	return res
 
 func authority_level():
-	var rval
-	if get_stat("authority") < authority_threshold()/2:
-		rval = 'low'
-	elif get_stat("authority") < authority_threshold():
-		rval = 'medium'
-	else:
-		rval = 'high'
+	var rval = ""
+#	if get_stat("authority") < authority_threshold()/2:
+#		rval = 'low'
+#	elif get_stat("authority") < authority_threshold():
+#		rval = 'medium'
+#	else:
+#		rval = 'high'
 	return rval
 
-func authority_threshold():
-	return variables.authority_threshold_base - get_stat('timid_factor') * variables.authority_threshold_per_timid
 
 func get_obed_cap():
-	return variables.obed_authority_cap[authority_level()]
+	return 0
+#	return variables.obed_authority_cap[authority_level()]
 
 
 func get_obed_percent_value():

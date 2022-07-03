@@ -275,14 +275,14 @@ func use_social_skill(s_code, target):
 			if stat in ['loyaltyObedience', 'submissionObedience', 'obedience', 'loyalty'] and h.has_profession('master'): continue
 			if mod == 0:
 				match stat:
-					'loyalty':
-						match target.authority_level():#or h, not target?
-							'low':
-								cached_value *= 0.25
-							'medium':
-								cached_value *= 0.75
-	#						'high':
-	#							i.value *= 1
+#					'loyalty':
+#						match target.authority_level():#or h, not target?
+#							'low':
+#								cached_value *= 0.25
+#							'medium':
+#								cached_value *= 0.75
+#	#						'high':
+#	#							i.value *= 1
 					
 					'submission':#obsolete
 						if target.get_stat('submission') >= 100:
@@ -356,7 +356,7 @@ func use_social_skill(s_code, target):
 			if tmp < 0:
 				change = ''
 			effect_text += ": "
-			if maxstat != 0 && !(stat in ['loyaltyObedience', 'submissionObedience', 'obedience','authority','submission','consent', 'lust', 'loyalty']):
+			if maxstat != 0 && !(stat in ['loyaltyObedience', 'submissionObedience', 'obedience','submission','consent', 'lust', 'loyalty']):
 				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
 			else:
 				effect_text += change + str(floor(tmp)) 

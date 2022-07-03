@@ -1018,8 +1018,8 @@ func show_race_description():
 
 func check_escape_chance():
 	var check = false
-	if authority_level() == 'low' && get_stat('obedience') < 15 && get_stat('loyalty') < 100 && get_stat('submission') < 100:
-		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
+#	if authority_level() == 'low' && get_stat('obedience') < 15 && get_stat('loyalty') < 100 && get_stat('submission') < 100:
+#		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
 	return check
 
 func check_escape_possibility():
@@ -1364,11 +1364,6 @@ func check_skill_availability(s_code, target):
 func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
 
-func authority_level(): #remove from gui all copypaste!!
-	return statlist.authority_level()
-
-func authority_threshold():
-	return statlist.authority_threshold()
 
 func get_obed_cap():
 	return statlist.get_obed_cap()
