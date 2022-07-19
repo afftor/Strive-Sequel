@@ -492,7 +492,7 @@ var scenedict = {
 	event_goblin_capture = {
 	text = "DIALOGUEEVENTGOBLINCAPTUREREPLY",
 	image = 'goblin_encounter',
-	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
+	common_effects = [],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
@@ -582,7 +582,7 @@ var scenedict = {
 	event_fairy_capture = {
 	text = "DIALOGUEEVENTFAIRYCAPTUREREPLY",
 	image = 'fairy_encounter',
-	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
+	common_effects = [],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},

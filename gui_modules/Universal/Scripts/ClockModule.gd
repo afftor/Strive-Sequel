@@ -108,10 +108,9 @@ func move_sky(from, to, init_delay):
 func _process(delta): #nearly obsolete
 	if self.visible == false:
 		return
-	update_labels()
-	update_gold_tooltip()
-	update_food_tooltip()
-	
+#	update_labels()
+#	update_gold_tooltip()
+#	update_food_tooltip()
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		input_handler.globalsettings.turn_based_time_flow = true
 

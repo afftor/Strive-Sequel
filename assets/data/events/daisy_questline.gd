@@ -964,9 +964,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'obedience', operant = "-", value = 24},
-						{code = 'loyalty', operant = "-", value = 15},
-						{code = 'submission', operant = "+", value = 25},
+						{code = 'obedience', operant = "-", value = 25},
 					]
 				}],
 		scene_type = "ero_scene",
@@ -986,9 +984,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'obedience', operant = "-", value = 24},
-						{code = 'loyalty', operant = "-", value = 15},
-						{code = 'submission', operant = "+", value = 25},
+						{code = 'obedience', operant = "-", value = 25},
 					]
 				}],
 		scene_type = "ero_scene",
@@ -1008,9 +1004,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'obedience', operant = "-", value = 24},
-						{code = 'loyalty', operant = "-", value = 15},
-						{code = 'submission', operant = "+", value = 25},
+						{code = 'obedience', operant = "-", value = 25},
 					]
 				}],
 		scene_type = "ero_scene",
@@ -1030,9 +1024,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'obedience', operant = "-", value = 24},
-						{code = 'loyalty', operant = "-", value = 15},
-						{code = 'submission', operant = "+", value = 25},
+						{code = 'obedience', operant = "-", value = 25},
 					]
 				}],
 		scene_type = "ero_scene",
@@ -1305,8 +1297,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'loyalty', operant = "+", value = 25},
-						{code = 'submission', operant = "+", value = 25},
+						{code = 'loyalty', operant = "+", value = 40},
 					]
 				}],
 		options = [ {
