@@ -3391,7 +3391,7 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 
 	STATOBDRAINREDUCTION = "Obedience Drain Decrease",
 	STATOBDRAININCREASE = "Obedience Drain Increase",
-	STATAUTHORITY_MOD = "Authority Growth",
+#	STATAUTHORITY_MOD = "Authority Growth",
 
 	ITEMCHEST_ADV_CLOTH = "Coat",
 	ITEMLEGS_ADV_CLOTH = "Mantle",

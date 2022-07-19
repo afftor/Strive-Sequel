@@ -81,6 +81,7 @@ align = 1
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 margin_left = 32.0
 margin_top = 185.12
 margin_right = 270.0

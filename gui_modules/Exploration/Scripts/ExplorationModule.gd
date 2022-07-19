@@ -404,12 +404,7 @@ func slave_position_selected(pos, character):
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate(tr("CHAR_NO_COMBAT")))
 		return
-	elif (
-		character.get_stat('obedience') <= 0
-		# and character.get_stat('loyalty') < 100
-		# and character.get_stat('submission') < 100
-		and !character.has_profession('master')
-	):
+	elif !character.is_master() and !character.has_status('combatant'):
 		input_handler.SystemMessage(character.translate(tr("NO_FIGHT_LOW_OBED")))
 		return
 	character = character.id

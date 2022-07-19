@@ -2,11 +2,6 @@ extends Panel
 
 
 var person
-var authority_lines = {
-	low = "Defiance",
-	medium = "Respect",
-	high = 'Reverence',
-}
 
 var universal_skills = ['oral','anal','petting']
 
@@ -44,7 +39,7 @@ func update():
 		$Panel.visible = !person.has_profession("master")
 		$MasterIcon.visible = person.has_profession("master")
 		var text = ""
-		if person.xp_module.check_infinite_obedience() == false:
+		if person.check_infinite_obedience() == false:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
 			$Panel/obedlabel.text = "%d%%" % obed_val
@@ -56,32 +51,33 @@ func update():
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.check_infinite_obedience() == true || person.xp_module.predict_obed_time() > 0:
+		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 	
-		var authority
-		if person.get_stat('authority') < person.authority_threshold()/2:
-			authority = 'low'
-		elif person.get_stat('authority') < person.authority_threshold():
-			authority = 'medium'
-		else:
-			authority = 'high'
-		text = authority_lines[authority]
-		
-		$Panel/authoritylabel.text = 'Authority: ' + text
-		if authority == "low":
-			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
-		else:
-			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
+#		var authority
+#		if person.get_stat('authority') < person.authority_threshold()/2:
+#			authority = 'low'
+#		elif person.get_stat('authority') < person.authority_threshold():
+#			authority = 'medium'
+#		else:
+#			authority = 'high'
+#		text = variables.authority_lines[authority]
+#
+#		$Panel/authoritylabel.text = 'Authority: ' + text
+#		if authority == "low":
+#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
+#		else:
+#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
-		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
-		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)	
+#		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
+		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
+#		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
+		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 
 		for i in $BaseStatsPanel/resists.get_children():
 			var tmp = person.get_stat('resists')

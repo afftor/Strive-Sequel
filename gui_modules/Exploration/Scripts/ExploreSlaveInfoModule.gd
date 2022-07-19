@@ -2,11 +2,6 @@ extends Panel
 
 
 #var person
-var authority_lines = {
-	low = "Defiance",
-	medium = "Respect",
-	high = 'Reverence',
-}
 
 var universal_skills = ['oral','anal','petting']
 var current_person
@@ -37,7 +32,7 @@ func update(person = null, from_dialogue = false):
 		current_person = person
 	if person != null:
 		var text = ""
-		if person.xp_module.check_infinite_obedience() == false:
+		if person.check_infinite_obedience() == false:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
 			$Panel/obedlabel.text = "%d%%" % obed_val
@@ -49,21 +44,21 @@ func update(person = null, from_dialogue = false):
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.check_infinite_obedience() == true || person.xp_module.predict_obed_time() > 0:
+		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 	
-		var authority
-		if person.get_stat('authority') < person.authority_threshold()/2:
-			authority = 'low'
-		elif person.get_stat('authority') < person.authority_threshold():
-			authority = 'medium'
-		else:
-			authority = 'high'
-		text = authority_lines[authority]
-		
-		$Panel/authoritylabel.text = 'Authority: ' + text
+#		var authority
+#		if person.get_stat('authority') < person.authority_threshold()/2:
+#			authority = 'low'
+#		elif person.get_stat('authority') < person.authority_threshold():
+#			authority = 'medium'
+#		else:
+#			authority = 'high'
+#		text = authority_lines[authority]
+#
+#		$Panel/authoritylabel.text = 'Authority: ' + text
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
@@ -85,8 +80,9 @@ func update(person = null, from_dialogue = false):
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
-		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
+#		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
+		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
+#		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)	
 
 		for i in $BaseStatsPanel/resists.get_children():

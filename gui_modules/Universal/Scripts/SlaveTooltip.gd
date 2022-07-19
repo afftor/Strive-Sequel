@@ -2,11 +2,6 @@ extends Panel
 
 
 var person
-var authority_lines = {
-	low = "Defiance",
-	medium = "Respect",
-	high = 'Reverence',
-}
 
 var parentnode
 var shutoff = false
@@ -122,21 +117,21 @@ func showup(node, person):
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.check_infinite_obedience() || person.xp_module.predict_obed_time() > 0:
+		if person.check_infinite_obedience() || person.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 
 		var authority
-		if person.get_stat('authority') < person.authority_threshold()/2:
-			authority = 'low'
-		elif person.get_stat('authority') < person.authority_threshold():
-			authority = 'medium'
-		else:
-			authority = 'high'
-		authority_text = authority_lines[authority]
-
-		$Panel/authoritylabel.text = 'Authority: ' + authority_text
+#		if person.get_stat('authority') < person.authority_threshold()/2:
+#			authority = 'low'
+#		elif person.get_stat('authority') < person.authority_threshold():
+#			authority = 'medium'
+#		else:
+#			authority = 'high'
+#		authority_text = authority_lines[authority]
+#
+#		$Panel/authoritylabel.text = 'Authority: ' + authority_text
 
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')

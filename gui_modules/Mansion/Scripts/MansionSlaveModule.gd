@@ -3,12 +3,6 @@ extends Panel
 
 onready var MansionMainModule = get_parent()
 var person
-var authority_lines = {
-	low = "Defiance",
-	medium = "Respect",
-	high = 'Reverence',
-}
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -134,7 +128,7 @@ func show_slave_info():
 				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
 		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		var authority_text = ""
-		if person.xp_module.check_infinite_obedience() == false:
+		if person.check_infinite_obedience() == false:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
 			$Panel/obedlabel.text = "%d%%" % obed_val
@@ -146,32 +140,33 @@ func show_slave_info():
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.check_infinite_obedience() == true || person.xp_module.predict_obed_time() > 0:
+		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 
 		var authority
-		if person.get_stat('authority') < person.authority_threshold()/2:
-			authority = 'low'
-		elif person.get_stat('authority') < person.authority_threshold():
-			authority = 'medium'
-		else:
-			authority = 'high'
-		authority_text = authority_lines[authority]
-		if authority == "low":
-			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
-		else:
-			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
-
-		$Panel/authoritylabel.text = 'Authority: ' + authority_text
+#		if person.get_stat('authority') < person.authority_threshold()/2:
+#			authority = 'low'
+#		elif person.get_stat('authority') < person.authority_threshold():
+#			authority = 'medium'
+#		else:
+#			authority = 'high'
+#		authority_text = authority_lines[authority]
+#		if authority == "low":
+#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
+#		else:
+#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
+#
+#		$Panel/authoritylabel.text = 'Authority: ' + authority_text
 
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
-		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
+		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
+#		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
+#		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 		
 		globals.build_traitlist_for_char(person, $scroll/traitscontainer)

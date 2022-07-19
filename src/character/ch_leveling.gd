@@ -9,7 +9,7 @@ var sleep = ''
 var work = ''
 var previous_work = ''
 var workproduct = null
-var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false}
+var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false}
 var messages = []
 
 
@@ -30,9 +30,26 @@ func fix_rules():
 			work_rules[rule] = false
 
 
+func check_work_rule(rule):
+	if !variables.work_rules.has(rule):
+		return false
+	if !work_rules.has(rule):
+		print("warning - work rule %s removed" % rule)
+		return false
+	return work_rules[rule]
+
+
 func set_work_rule(rule, value):
 	if variables.work_rules.has(rule):
 		work_rules[rule] = value
+	#possibly move those effects to dynamic later
+	if !Effectdata.effect_table.has("work_rule_" + rule): return
+	match value:
+		true:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
+			parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+		false:
+			parent.get_ref().remove_static_effect_by_code("work_rule_" + rule)
 
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
@@ -370,9 +387,9 @@ func finish_learning():
 			else:
 				res_text += "\nNo traits acquired"
 		'slave_training':
-			parent.get_ref().add_stat('authority', 100)
-			res_text += "\n%s + 100" % statdata.statdata.authority.name
-			parent.get_ref().add_stat('loyalty', 50)
+#			parent.get_ref().add_stat('authority', 100)
+#			res_text += "\n%s + 100" % statdata.statdata.authority.name
+			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
 			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
 			if randf() < 0.5:
 				parent.get_ref().add_stat('tame_factor', 1)
@@ -417,20 +434,6 @@ func finish_learning():
 	work = ''
 
 
-func get_obed_drain():
-	if parent.get_ref().has_profession('master') or parent.get_ref().has_profession('spouse'): return 0.0
-	var rule_bonus = 0.0
-	if work_rules.luxury: rule_bonus = 0.25
-	var value = variables.base_obed_drain * (parent.get_ref().get_stat('obDrainReduction') * (1 + parent.get_ref().get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_ref().get_stat('loyalty')))
-	return value
-
-func predict_obed_time(): # in hours, not in ticks
-	if check_infinite_obedience() == true: return 10000
-	return parent.get_ref().get_stat('obedience') / get_obed_drain()
-
-func check_infinite_obedience():
-	return get_obed_drain() == 0 or parent.get_ref().has_profession('master') or parent.get_ref().has_profession('spouse')
-
 func work_tick():
 	if is_on_quest():
 		return
@@ -444,14 +447,11 @@ func work_tick():
 		parent.get_ref().rest_tick()
 		return
 	
-	if parent.get_ref().statlist.is_uncontrollable() && !parent.get_ref().has_profession('master'):
+	if parent.get_ref().is_uncontrollable() && !parent.get_ref().has_profession('master'):
 		if !messages.has("refusedwork"):
 			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
-	if parent.get_ref().get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.get_ref().add_stat('obedience', - get_obed_drain())
-		messages.erase("refusedwork")
 	
 	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
 		parent.get_ref().food.food_consumption_rations = true

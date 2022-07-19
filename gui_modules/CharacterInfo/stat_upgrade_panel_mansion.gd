@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 onready var StatsContainer = $StatsPanel/StatsVBox
 #onready var CharList = $CharList/ScrollContainer/CharactersVBox

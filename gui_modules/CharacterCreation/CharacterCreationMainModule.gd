@@ -320,7 +320,6 @@ func finish_character():
 		if !preservedsettings.has('slave_class'):
 			preservedsettings.slave_class = 'slave'
 		person.set_slave_category(preservedsettings.slave_class.to_lower())
-		person.set_stat('authority', person.authority_threshold()/1.5)
 		person.set_stat('obedience', 48)
 		person.set_stat('growth_factor', 5)
 	else:

@@ -522,7 +522,7 @@ func actioneffect(values, scenedict):
 
 	if values.has('tags'):
 		if values.tags.has('punish'):
-			if (person.xp_module.predict_obed_time() < 90 || mode == 'forced') && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
+			if (person.predict_obed_time() < 90 || mode == 'forced') && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
 				for i in scenedict.givers:
 					globals.addrelations(person, i.person, -rand_range(5,10))
 				person.add_stat('obedience', values.obed)

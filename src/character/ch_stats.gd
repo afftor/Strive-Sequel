@@ -65,7 +65,7 @@ func custom_stats_set(st, value):
 		st = st.trim_prefix("sex_skills_")
 		statlist.sex_skills[st] = value
 		return
-	if st in ['loyalty', 'submission']:
+	if st in ['submission']:
 #			if value.has(st):
 		var delta = value - statlist[st]
 		if delta != 0:
@@ -82,8 +82,10 @@ func custom_stats_set(st, value):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
 	if st == 'lust':
 		statlist.lust = clamp(value, 0, get_stat('lustmax'))
-	if st == 'obedience':
-		statlist.obedience = min(statlist.obedience, get_obed_cap())
+#	if st == 'obedience':
+#		statlist.obedience = min(statlist.obedience, get_obed_cap())
+	if st in ['obedience']:
+		statlist[st] = min(statlist[st], statlist[st + '_max'])
 	if st == 'name':
 		if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
 			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
@@ -117,6 +119,12 @@ func custom_stats_get():
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		res['mpmax'] = tres
+	if res.has('obedience_max'):
+		var tres = variables.basic_max_obed
+		if bonuses.has('obedience_max_add'): tres += bonuses.obedience_max_add
+		if bonuses.has('obedience_max_mul'): tres *= bonuses.obedience_max_mul
+		res.obedience_max= tres
+		res.obedience = clamp(res.obedience, 0, res.obedience_max)
 	if res.has('lusttick'):
 		var tres = variables.basic_lust_per_tick
 		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
@@ -143,6 +151,20 @@ func custom_stats_get():
 		if check_trait('frigid'):
 			res.lustmax /= 2
 		res.lust = clamp(res.lust, 0, res.lustmax)
+	if res.has('obedience_drain'):
+		res.obedience_drain = variables.basic_obed_drain - statlist.timid_factor
+		if bonuses.has('obedience_drain_add'): res.obedience_drain += bonuses.obedience_drain_add
+		if bonuses.has('obedience_drain_mul'): res.obedience_drain *= bonuses.obedience_drain_mul
+		res.obedience_drain = max(0.0, res.obedience_drain)
+		if parent.get_ref().has_status('soulbind'):
+			res.obedience_drain = 0.0
+	if res.has('loyalty_gain'):
+		res.loyalty_gain = 0.75 + 0.375 * res.tame_factor
+		if bonuses.has('loyalty_gain_add'): res.loyalty_gain += bonuses.loyalty_gain_add
+		if bonuses.has('loyalty_gain_mul'): res.loyalty_gain *= bonuses.loyalty_gain_mul
+		res.loyalty_gain = max(0.0, res.loyalty_gain)
+		if parent.get_ref().has_status('starvation'):
+			res.loyalty_gain = 0.0
 	if res.has('resists'):
 		var tres = res.resists
 		for r in variables.resists_list:
@@ -177,25 +199,19 @@ func custom_stats_get():
 		res.damage_mods = tres
 	return res
 
-func authority_level():
-	var rval
-	if get_stat("authority") < authority_threshold()/2:
-		rval = 'low'
-	elif get_stat("authority") < authority_threshold():
-		rval = 'medium'
-	else:
-		rval = 'high'
-	return rval
-
-func authority_threshold():
-	return variables.authority_threshold_base - get_stat('timid_factor') * variables.authority_threshold_per_timid
-
-func get_obed_cap():
-	return variables.obed_authority_cap[authority_level()]
-
 
 func get_obed_percent_value():
-	return int(100 * get_stat('obedience') / get_obed_cap())
+	return int(100 * get_stat('obedience') / get_stat('obedience_max'))
+
+
+func predict_obed_time(): # in hours, not in ticks
+	if check_infinite_obedience() == true: return 10000
+	return get_stat('obedience') / get_stat('obedience_drain')
+
+
+func check_infinite_obedience():
+	return get_stat('obedience_drain') == 0 or parent.get_ref().is_master() or parent.get_ref().is_spouse()
+
 
 func get_short_name():
 	var text = ''
@@ -336,14 +352,6 @@ func get_stat_gain_rate(statname):
 
 
 func add_stat(statname, value, revert = false):
-	if statname == 'loyaltyObedience':# no revert mode
-		value *= 0.33 * get_stat('tame_factor')
-		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
-		statlist.obedience = min(statlist.obedience, get_obed_cap())
-	if statname == 'submissionObedience':# no revert mode
-		value *= 0.33 * get_stat('timid_factor')
-		statlist.obedience += value * variables.obed_mod_per_difficuty[ResourceScripts.game_globals.difficulty]
-		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
 		for ss in statlist.sex_skills:
 			if revert: statlist.sex_skills[ss] -= value
@@ -415,14 +423,17 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 #traits
 func add_trait(tr_code):
 	if tr_code == null: return
-	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
+	var trait = Traitdata.traits[tr_code]
 	traits.push_back(tr_code)
 	parent.get_ref().add_stat_bonuses(trait.bonusstats)
 	for e in trait.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tr_code)
+	if trait.has('traits'):
+		for id in trait.traits: #for free basic_sevitude and others
+			add_trait(id)
 	if tr_code == 'undead':
 		statlist.food_consumption = 0
 		statlist.charm -= 100
@@ -1070,6 +1081,20 @@ func get_traits_buffs():
 	return res
 
 
+func get_price_for_trait(tr_id):
+	var data = Traitdata.traits[tr_id]
+	if !data.tags.has('loyalty'): return 0
+	var res = 0
+	if data.has('l_cost'):
+		res = data.l_cost
+	res += get_stat('loyalty_traits_unlocked') * 5
+	if data.has('bind_trait'):
+		for tr in data.bind_trait:
+			if check_trait(tr):
+				res *= 0.5
+				break
+	return res
+
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
 	statlist.name = 'Child of ' + mother.get_stat('name')
@@ -1090,6 +1115,11 @@ func set_slave_category(new_class):
 
 
 func tick():
+	if !parent.get_ref().is_master():
+		add_stat('loyalty', get_stat('loyalty_gain'))
+		add_stat('loyalty_total', get_stat('loyalty_gain'))
+		if !parent.get_ref().is_spouse():
+			add_stat('obedience', - get_stat('obedience_drain'))
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1

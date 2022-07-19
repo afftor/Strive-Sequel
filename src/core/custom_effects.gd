@@ -91,7 +91,7 @@ func writ_of_exemption(character):
 	input_handler.active_character = person
 	input_handler.interactive_message_follow("writ_of_exemption",'custom_effect', {})
 
-func writ_of_exemption_use():
+func writ_of_exemption_use(): #possibly rework
 	var character = person
 	var acceptance_req = 100
 	var acceptance_chance = 0
@@ -101,7 +101,7 @@ func writ_of_exemption_use():
 		acceptance_chance = 100
 	else:
 		acceptance_chance = character.get_stat('loyalty')
-		acceptance_chance = acceptance_chance - acceptance_chance*variables.personality_conversion_rates[character.get_stat('personality')]
+		acceptance_chance = acceptance_chance - acceptance_chance * variables.personality_conversion_rates[character.get_stat('personality')]
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',character)
 		character.set_slave_category('servant')

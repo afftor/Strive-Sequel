@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -34,6 +34,11 @@
 [ext_resource path="res://assets/images/gui/gui icons/icon_twohearts.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees_filler.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_g.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_r.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_y.png" type="Texture" id=38]
+[ext_resource path="res://src/3stateProgressBar.gd" type="Script" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -170,33 +175,34 @@ __meta__ = {
 [node name="obed" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 505.0
 margin_top = 4.0
-margin_right = 585.0
+margin_right = 644.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 80, 0 )
 hint_tooltip = "STATOBEDIENCEDESCRIPT"
 mouse_filter = 0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Obed"
+align = 1
 
 [node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 589.0
+margin_left = 648.0
 margin_top = 4.0
-margin_right = 699.0
+margin_right = 718.0
 margin_bottom = 46.0
-rect_min_size = Vector2( 110, 0 )
+rect_min_size = Vector2( 70, 0 )
 custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Exp"
 
 [node name="location" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 703.0
+margin_left = 722.0
 margin_top = 4.0
-margin_right = 938.0
+margin_right = 922.0
 margin_bottom = 46.0
-rect_min_size = Vector2( 235, 0 )
+rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Location"
@@ -205,9 +211,9 @@ __meta__ = {
 }
 
 [node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 942.0
+margin_left = 926.0
 margin_top = 4.0
-margin_right = 1007.0
+margin_right = 991.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 50, 0 )
 custom_fonts/font = ExtResource( 26 )
@@ -230,14 +236,13 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1008.0
-margin_bottom = 45.0
+margin_right = 1004.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 1004.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )
@@ -281,9 +286,9 @@ __meta__ = {
 }
 
 [node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 563.0
+margin_left = 652.0
 margin_top = 5.0
-margin_right = 638.0
+margin_right = 727.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 75, 0 )
 custom_fonts/font = ExtResource( 27 )
@@ -371,23 +376,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obed" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="obed" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 507.0
 margin_top = 6.0
 margin_right = 572.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 0 )
-mouse_filter = 1
-custom_fonts/font = ExtResource( 27 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "100%"
-align = 1
-valign = 1
-clip_text = true
+value = 100.0
+texture_under = ExtResource( 37 )
+texture_over = ExtResource( 37 )
+texture_progress = ExtResource( 35 )
+script = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+texture_1 = ExtResource( 36 )
+texture_2 = ExtResource( 38 )
+texture_3 = ExtResource( 35 )
 
 [node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 939.188
@@ -403,7 +408,7 @@ __meta__ = {
 }
 
 [node name="Location" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 703.0
+margin_left = 734.0
 margin_top = 6.0
 margin_right = 924.0
 margin_bottom = 45.0
@@ -417,6 +422,7 @@ __meta__ = {
 }
 
 [node name="progress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 253.0
 margin_top = 11.0454
 margin_right = 676.0

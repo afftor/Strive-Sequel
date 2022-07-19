@@ -386,7 +386,6 @@ var icons = {
 #	"res://assets/images/iconsskills/arrowshower.png",
 #	"res://assets/images/iconsskills/Attack.png",
 #	skill_attract = "res://assets/images/iconsskills/Attract.png",
-#	skill_authority = "res://assets/images/iconsskills/Authority.png",
 #	"res://assets/images/iconsskills/Barrier.png",
 #	"res://assets/images/iconsskills/BloodMagic.png",
 #	skill_charm = "res://assets/images/iconsskills/Charm.png",

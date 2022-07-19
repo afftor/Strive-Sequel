@@ -120,6 +120,7 @@ valign = 1
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 light_mask = 0
 margin_left = 32.0
 margin_top = 156.12
@@ -526,7 +527,7 @@ light_mask = 0
 margin_left = 41.0
 margin_top = 264.0
 margin_right = 937.0
-margin_bottom = 880.0
+margin_bottom = 747.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 20 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
