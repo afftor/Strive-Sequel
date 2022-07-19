@@ -365,6 +365,7 @@ var data = {
 			{code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
+						{code = 'add_trait', trait = 'loyalty_dress_lewd'},
 						{code = 'create_and_equip', item = "daisy_dress_lewd", parts = {}}
 						],
 			},],
@@ -724,6 +725,8 @@ var data = {
 					args = [
 						{code = 'charm_factor', operant = '+', value = 1},
 						{code = 'sex_skills_oral', operant = "+", value = 15},
+						{code = 'add_trait', trait = 'loyalty_sex_basic'},
+						{code = 'add_trait', trait = 'loyalty_sex_oral'},
 					]
 				},
 
@@ -820,6 +823,10 @@ var data = {
 						{code = 'sex_skills_petting', operant = "+", value = 20},
 						{code = 'sex_skills_pussy', operant = "+", value = 25},
 						{code = 'sex_skills_anal', operant = "+", value = 15},
+						{code = 'add_trait', trait = 'loyalty_sex_basic'},
+						{code = 'add_trait', trait = 'loyalty_sex_oral'},
+						{code = 'add_trait', trait = 'loyalty_sex_adv'},
+						{code = 'add_trait', trait = 'loyalty_sex_group'},
 					]
 				},
 			],

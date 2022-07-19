@@ -472,7 +472,9 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = true
 	
 	for i in sex_participants:
-		if i.has_status("no_sex"):
+		if i.has_status("no_sex") or !i.has_status("sex_basic"):
+			SexSelect.get_node("SexButton").disabled = true
+		if !i.has_status("sex_group") and sex_participants.size() > 2:
 			SexSelect.get_node("SexButton").disabled = true
 	
 	SexSelect.get_node("DateButton").disabled = (
@@ -483,7 +485,7 @@ func update_sex_date_buttons():
 		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
 	)
 	for i in sex_participants:
-		if i.tags.has("no_date") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
+		if i.has_status("no_date") or !i.has_status("dating") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
 
 func set_hovered_person(node, person):
@@ -606,7 +608,7 @@ func test_mode():
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 #		character.set_slave_category('heir')
-		character.set_stat('obedience', 0)
+#		character.set_stat('obedience', 0)
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
@@ -650,7 +652,7 @@ func test_mode():
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 1
 
-		character.set_stat('obedience', 50)
+#		character.set_stat('obedience', 50)
 		character.unlock_class("apprentice")
 		#character.fear = 25
 		#character.base_exp = 99
@@ -705,9 +707,10 @@ func test_mode():
 						+ "\n"
 					)
 
-		character.set_stat('loyalty', 100)
+#		character.set_stat('loyalty', 100)
 #		character.set_stat('authority', 100)
 		character.set_stat('submission', 95)
+		character.add_stat('loyalty', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000
 		character.mp = 10

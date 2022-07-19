@@ -216,11 +216,11 @@ func initiate(tempperson):
 		if person.has_temp_effect('resist_state'):
 			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
-		elif person.get_stat('loyalty') >= 50:
+		elif person.get_stat('loyalty_total') >= 35:
 			text += "[he2] gladly accepts your order and is ready to follow you anywhere you take [him2]. "
 			self.mood += 10
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
-		elif person.xp_module.predict_obed_time() >= 60:
+		elif person.get_stat('obedience') >= 40:
 			self.mood += 4
 			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
@@ -951,7 +951,8 @@ func propose(person, counter):
 
 
 	if gave_consent == false:
-		var difficulty =  self.mood*2 + person.get_stat('loyalty')/2 + drunkness*6
+		var difficulty =  self.mood * 2 + drunkness * 6
+		if person.has_status('sex_basic'): difficulty += 40
 		if dislike_same_sex():
 			difficulty -= 25
 	#	if globals.state.relativesdata.has(person.id) && (int(globals.state.relativesdata[person.id].father) == int(globals.player.id) || int(globals.state.relativesdata[person.id].mother) == int(globals.player.id)):
@@ -1014,7 +1015,7 @@ func ask_to_marry(person, counter):
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agreed_before')) + "\n"
 		return text
 	
-	if person.get_stat('loyalty') >= 90:
+	if person.has_status('swear_loyalty'):
 		if unique_marry_rules.has(person.get_stat('unique')):
 			for i in unique_marry_rules[person.get_stat('unique')]:
 				if globals.valuecheck(i.reqs):
@@ -1055,7 +1056,7 @@ func praise(person, counter):
 
 	if person.has_temp_effect('resist_state') == false:
 		self.mood += 15
-		person.add_stat('obedience', 10)
+		person.add_stat('obedience', 50)
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.praise_accept)
 		text += "}"
@@ -1104,7 +1105,7 @@ func scold(person, counter):
 func rubears(person, counter):
 	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 20 && 8 - counter > 3:
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 50 && 8 - counter > 3:
 		self.mood += 8 - counter
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.rubears_accept)
@@ -1120,7 +1121,7 @@ func rubears(person, counter):
 func stroketail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 25 && 11 - counter*1.5 > 2:
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 65 && 11 - counter*1.5 > 2:
 		self.mood += 11 - counter*1.5
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.stroketail_accept)
@@ -1551,11 +1552,9 @@ func calculateresults():
 	var endmood = floor(self.mood)
 	var endfear = floor(self.fear)
 
-#	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
-#	eff.set_args('subm_bonus', subm_bonus)
-#	eff.set_args('loyal_bonus', loyal_bonus)
-#	person.apply_effect(effects_pool.add_effect(eff))
-	var obedience = 0
+	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
+	person.apply_effect(effects_pool.add_effect(eff))
+	var obedience = 100
 	var authority = 0
 	var consent = 0
 	var loyalty = 0
@@ -1568,8 +1567,8 @@ func calculateresults():
 #	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
 	#+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
 	if endmood >= endfear:
-		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
-		authority = ceil(endmood/10)
+#		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
+		loyalty = 6 + master.get_stat('charm_factor') * 2 +  person.get_stat('tame_factor') * 2
 		consent = master.get_stat("sexuals_factor")*4
 		text += ("\n\n{color=green|Positive Mood}: "
 		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
@@ -1580,20 +1579,19 @@ func calculateresults():
 
 		person.add_stat("loyalty", loyalty)
 		person.add_stat("consent", consent)
-		person.add_stat("authority", authority)
 
 	else:
-		obedience = ceil(endfear/1.75)
-		authority = ceil(endfear/3) + master.get_stat('physics_factor') * 4
+		loyalty = 6 + master.get_stat('charm_factor') + person.get_stat('timid_factor') 
 		text += ("\n\n{color=red|Fearful Mood}: "
 		+ "\nObedience: +" + str(obedience)
 		+ "\nAuthority: +" + str(authority) + " ([Master]'s Physics Factor Bonus: +" + str(master.get_stat("physics_factor")*4)+")"
 		+ "\n\nWhile this was an unpleasant expirience for [name], it will certainly teach [him] to be afraid of your anger."
 		)
-		person.add_stat("obedience", obedience)
-		person.add_stat("authority", authority)
+		person.add_stat("loyalty", loyalty)
+	
+	person.add_stat("obedience", obedience)
 
-	if person.get_stat('consent') >= 30 || person.get_stat('loyalty') + person.get_stat('consent')*2 > 110:
+	if person.get_stat('consent') >= 30 or (person.has_status('basic_sex') and  person.get_stat('consent')*2 > 110 - 75):
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n\n{color=green|It seems [name] does not mind to continue this encounter...}"
 		sex_offer = true
 

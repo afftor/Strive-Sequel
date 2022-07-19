@@ -191,7 +191,15 @@ func has_profession(profession):
 	return xp_module.professions.has(profession)
 
 func check_trait(trait):
+	if is_master() and trait.begins_with('loyalty_'): return true
 	return statlist.check_trait(trait)
+
+func predict_obed_time():
+	return statlist.predict_obed_time()
+
+func check_infinite_obedience():
+	return statlist.check_infinite_obedience()
+
 
 func get_class_icon():
 	if has_profession("master"):
@@ -316,6 +324,10 @@ func get_traits_by_arg(arg, value):
 func get_random_traits():
 	statlist.get_random_traits()
 
+func get_price_for_trait(tr_id):
+	return statlist.get_price_for_trait(tr_id)
+
+
 func can_learn_skill(skill_id):
 	var skilldata = Skilldata.Skilllist[skill_id]
 	if !skilldata.tags.has('learnable'):
@@ -372,6 +384,7 @@ func recruit(enslave = false):
 		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
 		apply_effect(effects_pool.add_effect(eff))
 		eff.remains = 2 * (8 - get_stat('timid_factor'))
+		set_work_rule('bindings', true)
 	ResourceScripts.game_party.add_slave(self)
 
 func recruit_and_return():
@@ -385,6 +398,9 @@ func set_work(task):
 
 func set_work_rule(rule, value):
 	xp_module.set_work_rule(rule, value)
+
+func check_work_rule(rule):
+	return xp_module.check_work_rule(rule)
 
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
@@ -502,6 +518,10 @@ func can_use_skill(skill):
 func has_status(status):
 	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
+
+func has_work_rule(rule):
+	if !variables.work_rules.has(rule): return false
+	return xp_module.work_rules[rule]
 
 func is_master():
 	return has_profession('master')
@@ -766,6 +786,8 @@ func affect_char(i):
 			escape_actions()
 		'remove_trait':
 			remove_trait(i.value)
+		'add_trait':
+			add_trait(i.value)
 		'set_tutelage':
 			xp_module.assign_to_learning(i.value)
 			input_handler.rebuild_slave_list()
@@ -802,6 +824,8 @@ func checkreqs(arg, ignore_npc_stats_gear = false): #additional flag is never us
 		return valuecheck(arg, ignore_npc_stats_gear)
 
 func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never used
+	if ch.has('master_check') and ch.master_check and !is_master():
+		return ResourceScripts.game_party.get_master().valuecheck(ch, ignore_npc_stats_gear)
 	var i = ch.duplicate()
 	var check = true
 	match i.code:
@@ -1020,11 +1044,12 @@ func check_escape_chance():
 	var check = false
 #	if authority_level() == 'low' && get_stat('obedience') < 15 && get_stat('loyalty') < 100 && get_stat('submission') < 100:
 #		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
+	check = (get_stat('obedience') <= 0) #temporal
 	return check
 
 func check_escape_possibility():
 	last_escape_day_check = ResourceScripts.game_globals.date
-	if !check_escape_chance() || xp_module.professions.has("master") || has_status('no_escape'):
+	if !check_escape_chance() || is_master() || has_status('no_escape'):
 		return false
 	var shackles_chance = get_stat('shackles_chance')
 	if shackles_chance != null:
@@ -1076,7 +1101,7 @@ func tick():
 	self.hp += max(treg, 0)
 	treg = (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod') + get_stat('mp_reg_add')
 	self.mp += max(treg, 0)
-	
+	#loyalty and obedience changes are in sats
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
 	
@@ -1101,7 +1126,7 @@ func rest_tick():
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
 	if ResourceScripts.game_res.upgrades.resting > 0 && check_location('mansion', true):
-		add_stat('obedience', 6)
+		add_stat('obedience', get_stat('obedience_drain') * 0.5)
 
 
 func translate(text):
@@ -1364,9 +1389,6 @@ func check_skill_availability(s_code, target):
 func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
 
-
-func get_obed_cap():
-	return statlist.get_obed_cap()
 
 func lockpick_chance(): #used for chest opening
 	var base_chance = randf()*5+5 #5-10

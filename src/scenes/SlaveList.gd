@@ -49,7 +49,7 @@ func update_button(newbutton):
 	else:
 		newbutton.get_node("HBoxContainer/job").text = races.tasklist[person.get_work()].name
 	
-	if !person.xp_module.check_infinite_obedience():
+	if !person.check_infinite_obedience():
 #		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.xp_module.predict_obed_time()))
 #		if person.xp_module.predict_obed_time() <= 0:
 #			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))

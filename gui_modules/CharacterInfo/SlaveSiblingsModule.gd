@@ -6,6 +6,8 @@ var person
 
 var universal_skills = ['oral','anal','petting']
 
+onready var loyalty_panel = $UpgradesPanel/ScrollContainer/UpgradesList
+var loyalty_mode = true
 
 func _ready():
 	update()
@@ -19,32 +21,25 @@ func _ready():
 	globals.connecttexttooltip($SexTraitsTooltip, tr("INFOSEX_TRAITS"))
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
-	
+	$change_button.connect("pressed", self, 'swap_mode')
+	loyalty_panel.root = get_parent()
 	
 
 func set_work_rule(rule):
 	var setting = get_node("work_rules/"+rule).pressed
-	person.xp_module.work_rules[rule] = setting
+	person.set_work_rule(rule, setting)
 	if rule == "luxury":
 		luxury_room()
-		return
-	elif rule == "contraceptive":
-		return
-	match setting:
-		true:
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
-			person.apply_effect(effects_pool.add_effect(eff))
-		false:
-			person.remove_static_effect_by_code("work_rule_" + rule)
+
 
 func luxury_room():
 	person = get_parent().active_person
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
-		if p.xp_module.work_rules["luxury"]:
+		if p.check_work_rule("luxury"):
 			luxury_rooms_taken += 1
 	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
-	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
+	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 
 func set_color(value):
@@ -59,19 +54,21 @@ func update():
 	person = input_handler.interacted_character
 	#relatives
 	$RelativesPanel.build_relatives()
+	loyalty_panel.update_upgrades_tree(person)
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
-		if p.xp_module.work_rules["luxury"]:
+		if p.check_work_rule("luxury"):
 			luxury_rooms_taken += 1
 	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
-	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
+	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
-	$work_rules/luxury.visible = !person.has_profession("master")
+	$work_rules/luxury.visible = !person.is_master()
 	if person != null:
 		for i in $work_rules.get_children():
-			i.pressed = person.xp_module.work_rules[i.name]
-		$work_rules/constrain.visible = !person.has_profession("master")
+			var t = person.check_work_rule(i.name)
+			i.pressed = person.check_work_rule(i.name)
+		$work_rules/constrain.visible = !person.is_master()
 		$work_rules/contraceptive.visible = !person.check_trait('undead')
 		$work_rules/ration.visible = !person.check_trait('undead')
 	#SexSkillsControl part
@@ -225,3 +222,14 @@ func toggle_trait(trait_status, trait):
 	update_trait_capacity()
 	#get_parent().SlaveInfo.rebuild_traits()
 
+func swap_mode():
+	if loyalty_mode:
+		loyalty_mode = false
+		$UpgradesPanel.visible = false
+		$RelativesPanel.visible = true
+		$change_button/Label.text = "Trainings"
+	else:
+		loyalty_mode = true
+		$UpgradesPanel.visible = true
+		$RelativesPanel.visible = false
+		$change_button/Label.text = "Relatives"

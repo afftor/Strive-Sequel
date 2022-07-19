@@ -43,9 +43,9 @@ var stats = {
 	sexuals_bonus = '',
 	timid_factor = '',
 
-	loyalty_gain_mod = '',
+	loyalty_gain = '',
 	lusttick = '',
-	obDrainReduction = '',
+	obedience_drain = '',
 	mod_cook = "",
 }
 
@@ -1002,7 +1002,7 @@ var materiallist = {
 
 var itemlist = {
 	#gear
-
+	#2add trait reqs for items
 	leather_collar = {
 		code = 'leather_collar',
 		name = "",
@@ -1016,11 +1016,11 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/leathercollar.png"),
 		tier = 'easy',
 		reqs = [],
-		effects = [], #'e_leather_collar_effect'],
+		effects = [], 
 		tags = [],
-		basestats = {}, #obDrainReduction = 0.65, authority_mod = 0.2},
+		basestats = {obedience_drain = -2, loyalty_gain = 0.5},
 	},
-	elegant_choker = {#-15% obedience decay, -10% fear decay
+	elegant_choker = {
 		code = 'elegant_choker',
 		name = "",
 		descript = "",
@@ -1033,11 +1033,11 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/chocker.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = [],#'e_chocker_effect'],
+		effects = [],
 		tags = [],
-		basestats = {timid_factor = 1, obDrainReduction = 0.8},
+		basestats = {obedience_drain = -1, loyalty_gain = 1, timid_factor = 1},
 	},
-	steel_collar = {#-25% fear decay
+	steel_collar = {
 		code = 'steel_collar',
 		name = "",
 		descript = "",
@@ -1050,9 +1050,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/steelcollar.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = [],#'e_steel_collar_effect'],
+		effects = [],
 		tags = [],
-		basestats = {},#obDrainReduction = 0.35, authority_mod = 0.35},
+		basestats = {obedience_drain = -4, loyalty_gain = 0.8},
 	},
 	amulet_of_recognition = {
 		code = 'amulet_of_recognition',
@@ -1124,7 +1124,7 @@ var itemlist = {
 		tags = [],
 		basestats = {charm_bonus = 15},
 	},
-	pet_suit = {#+30 charm, -15 physics, -20% fear decay, -15% obedience decay
+	pet_suit = {
 		code = 'pet_suit',
 		name = "",
 		descript = "",
@@ -1140,7 +1140,7 @@ var itemlist = {
 		effects = [#'e_i_pet_suit',
 			 'e_i_pet_suit_bonus'],
 		tags = [],
-		basestats = {charm_bonus = 15, obDrainIncrease = 0.2},
+		basestats = {obedience_drain = 1, charm_bonus = 15},
 	},
 	maid_dress = {
 		code = 'maid_dress',
@@ -1155,9 +1155,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/maiduniform.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = [],#'e_maid_dress_effect'],
+		effects = [],
 		tags = [],
-		basestats = {charm_bonus = 10, obDrainReduction = 0.7},
+		basestats = {charm_bonus = 10, obedience_drain = -2, loyalty_gain = 0.6},
 	},
 	worker_outfit = {
 		code = 'worker_outfit',
@@ -1208,7 +1208,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm_bonus = 5, loyalty_gain_mod = 0.15},
+		basestats = {charm_bonus = 5, loyalty_gain = 1},
 	},
 	seethrough_underwear = {
 		code = 'seethrough_underwear',
@@ -1262,6 +1262,7 @@ var itemlist = {
 		basestats = {sexuals_bonus = 15},
 	},
 	shackles = {#prevents escape if body_factor < 4; physics -25
+		#maybe still needs reworking
 		code = 'shackles',
 		name = "",
 		descript = "",
@@ -1274,9 +1275,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/shackles.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = ['e_i_shackles'],#'e_i_shackles_obed'],
+		effects = ['e_i_shackles'],
 		tags = [],
-		basestats = {physics_bonus = -50, obDrainReduction = 0.25},
+		basestats = {physics_bonus = -50, obedience_drain = -6},
 	},
 	handcuffs = {#physics -10, Adds hidden counter: +x value per day, when counter hits 100, add trait "submissive"
 		code = 'handcuffs',
@@ -1291,9 +1292,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/handcuffs.png"),
 		tier = 'easy',
 		reqs = [],
-		effects = ['e_handcuffs_effect'],#'e_i_handcuffs_obed'],
+		effects = ['e_handcuffs_effect'],
 		tags = [],
-		basestats = {physics_bonus = -10, obDrainReduction = 0.85},
+		basestats = {physics_bonus = -10, obedience_drain = -4},
 	},
 	strapon = {#substitutes for penis in sex actions
 		code = 'strapon',
@@ -1414,7 +1415,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'anastasia'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
+		basestats = {obedience_drain = -3, loyalty_gain = 1.5, charm_bonus = 5},
 	},
 	
 	anastasia_broken_bracelet = {#
@@ -1432,7 +1433,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'anastasiaBroken'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
+		basestats = {obedience_drain = -3, loyalty_gain = 1.5, charm_bonus = 5},
 	},
 
 	daisy_dress = {
@@ -1450,7 +1451,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'daisy'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {charm_bonus = 15, obDrainReduction = 0.6, loyalty_gain_mod = 0.25},
+		basestats = {charm_bonus = 15, obedience_drain = -6, loyalty_gain = 2},
 	},
 	daisy_dress_lewd = {
 		code = 'daisy_dress_lewd',

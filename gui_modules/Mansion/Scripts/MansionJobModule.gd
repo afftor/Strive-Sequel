@@ -40,11 +40,16 @@ func update_characters():
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
 		newbutton.get_node("Name").text = person.get_stat("name")
 		newbutton.get_node("Icon").texture = person.get_icon()
-		newbutton.disabled = selected_job == null || selected_resource == null
+		newbutton.disabled = false
+		if selected_job == null or selected_resource == null:
+			newbutton.disabled = true 
+		if !person.has_status('basic_servitude') and !person.is_master():
+			newbutton.disabled = true
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
 				if person.has_status('no_sex'): newbutton.disabled = true
 				if person.has_status('no_whoring'): newbutton.disabled = true
+				if !person.has_status('prostitution'): newbutton.disabled = true
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":

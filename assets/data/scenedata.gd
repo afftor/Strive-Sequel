@@ -440,7 +440,12 @@ var scenedict = {
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = ['random 15', "+25"]}]}],
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
+			common_effects = [
+				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},
+				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 100},
+				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
+				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}
+				],
 			tags = ['scene_character_translate','active_character_translate'],
 			image = 'goblin_encounter',
 			options = [
@@ -541,7 +546,11 @@ var scenedict = {
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = ['random 30', "+25"]}]}],
 			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
+			common_effects = [
+				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},
+				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},
+				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
+				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'fairy_encounter',
 			options = [
@@ -680,7 +689,10 @@ var scenedict = {
 		tags = ['scene_character_translate'],
 		default_event_type = 'scene_character_event',
 		image = 'slave_decision',
-		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'servant'},{code = 'affect_scene_characters', type = 'stat', stat = 'authority', value = 55}],
+		common_effects = [
+			{code = 'change_type_scene_characters', type = 'all', value = 'servant'},
+			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
+			],
 		options = [
 		{code = 'event_person_recruit_attempt', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
@@ -692,7 +704,11 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},#type = 'charm_factor', operant = 'gte', value = 3}]}
 			],
 			text = tr("DIALOGUERECRUITSUCCESS"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 65},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
+			common_effects = [
+				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3},
+				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},
+				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
+				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'slave_decision',
 			options = [
@@ -721,7 +737,7 @@ var scenedict = {
 	set_enemy = 'rebels_small',
 	winscene = 'event_person_acquired',
 	common_effects = [
-	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'servant',bonuses = {authority = 35, submission = 5}}}],},
+	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'servant',bonuses = {submission = 5}}}],},
 	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},

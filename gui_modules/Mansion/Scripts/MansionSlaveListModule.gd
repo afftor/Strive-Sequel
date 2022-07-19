@@ -138,7 +138,7 @@ func build_for_travel(person, newbutton):
 	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
-	elif (person.xp_module.predict_obed_time() <= 0) && !person.is_controllable():
+	elif (person.predict_obed_time() <= 0) && !person.is_controllable():
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 	else:
@@ -260,13 +260,16 @@ func build_sex_selection(person, newbutton):
 	for button in SlaveContainer.get_children():
 		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
 			continue
-		button.pressed = sex_participants.has(button.get_meta("slave"))
+		var ch = button.get_meta("slave")
+		button.pressed = sex_participants.has(ch)
 		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
-		if button.get_meta("slave").has_status("no_sex"):
+		if ch.has_status("no_sex") or !ch.has_status("sex_basic") or (sex_participants.size() > 1 and !ch.has_status("sex_group")):
 			button.hint_tooltip = "Sex Requirements aren't met"
 			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
 
 	update_description()
+
+
 
 
 func update_description():
@@ -461,7 +464,7 @@ func update_button(newbutton):
 		else:
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 
-	if !person.xp_module.check_infinite_obedience():
+	if !person.check_infinite_obedience():
 #		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
 #		if person.xp_module.predict_obed_time() <= 0:
 #			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
@@ -469,17 +472,20 @@ func update_button(newbutton):
 #			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
 #		else:
 #			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
-		var obed_val = person.get_obed_percent_value()
-		newbutton.get_node("obed").text = "%d%%" % obed_val
-		if obed_val > 40:
-			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.green)
-		elif obed_val > 15:
-			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
-		else:
-			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
-		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d turns" % ceil(person.xp_module.predict_obed_time())) 
+#		var obed_val = person.get_obed_percent_value()
+#		newbutton.get_node("obed").text = "%d%%" % obed_val
+#		if obed_val > 40:
+#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.green)
+#		elif obed_val > 15:
+#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
+#		else:
+#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
+#		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d turns" % ceil(person.predict_obed_time())) 
+		newbutton.get_node("obed").max_value = person.get_stat('obedience_max')
+		newbutton.get_node("obed").value = person.get_stat('obedience')
 	else:
-		newbutton.get_node("obed").text = "∞"
+#		newbutton.get_node("obed").text = "∞"
+		newbutton.get_node("obed").visible = false
 
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
@@ -504,7 +510,11 @@ func update_button(newbutton):
 		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
 		if ploc != null: 
 			newbutton.get_node('Location').text = ploc.name
-	newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
+	newbutton.get_node("job").disabled = true
+	if person.is_master() or person.has_status('basic_servitude'):
+		newbutton.get_node("job").disabled = false
+	if person.travel.location == "travel" || person.is_on_quest():
+		newbutton.get_node("job").disabled = true
 	newbutton.get_node("state").texture = person.get_class_icon()
 
 

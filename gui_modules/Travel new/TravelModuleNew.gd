@@ -317,7 +317,7 @@ func update_heroes_list():
 		if ch.get_work() == 'learning': continue
 #		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
 #		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
-		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+		if (ch.predict_obed_time() <= 0) && !ch.is_controllable():
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(char_list)
 		make_panel_for_character(panel, ch)
@@ -329,7 +329,7 @@ func update_heroes_list():
 		if ch.get_work() == 'learning': continue
 #		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
 #		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
-		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+		if (ch.predict_obed_time() <= 0) && !ch.is_controllable():
 			var panel = input_handler.DuplicateContainerTemplate(char_list)
 			make_panel_for_character(panel, ch)
 			panel.connect("pressed", self, "select_char", [panel])
@@ -392,7 +392,7 @@ func make_panel_for_character(panel, ch):
 	newbutton.get_node("stats/mp").value = ch.mp
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(ch.hp)) + "/" + str(round(ch.get_stat('hpmax'))) + "\nMP: " + str(round(ch.mp)) + "/" + str(round(ch.get_stat('mpmax')))
 
-	if !ch.xp_module.check_infinite_obedience():
+	if !ch.check_infinite_obedience():
 #		newbutton.get_node("obed").text = str(ceil(ch.xp_module.predict_obed_time()))
 #		if ch.xp_module.predict_obed_time() <= 0:
 #			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
@@ -436,7 +436,7 @@ func make_panel_for_character(panel, ch):
 		else:
 			newbutton.get_node("job").text = "Gathering " + Items.materiallist[ch.get_work()].name
 
-	if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+	if (ch.predict_obed_time() <= 0) && !ch.is_controllable():
 		panel.disabled = true
 
 	panel.set_meta('slave', ch)

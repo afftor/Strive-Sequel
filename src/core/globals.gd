@@ -783,12 +783,12 @@ func impregnate_check(father,mother):
 		result.value = false
 		result.no_womb = true
 
-	elif mother.xp_module.work_rules.contraceptive == true:
+	elif mother.check_work_rule('contraceptive'):
 		result.female_contraceptive = true
 		result.value = false
 	
 	
-	elif father.xp_module.work_rules.contraceptive == true:
+	elif father.check_work_rule('contraceptive') == true:
 		result.male_contraceptive = true
 		result.value = false
 	
@@ -1336,6 +1336,8 @@ func common_effects(effects):
 						ResourceScripts.game_party.remove_slave(character)
 					elif k.code == 'add_profession':
 						character.unlock_class(k.profession)
+					elif k.code == 'add_trait':
+						character.add_trait(k.trait)
 					elif k.code == 'create_and_equip':
 						var item = CreateGearItem(k.item, k.parts)
 						AddItemToInventory(item)

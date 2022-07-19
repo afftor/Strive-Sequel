@@ -128,7 +128,7 @@ func show_slave_info():
 				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
 		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		var authority_text = ""
-		if person.xp_module.check_infinite_obedience() == false:
+		if person.check_infinite_obedience() == false:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
 			$Panel/obedlabel.text = "%d%%" % obed_val
@@ -140,7 +140,7 @@ func show_slave_info():
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.check_infinite_obedience() == true || person.xp_module.predict_obed_time() > 0:
+		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
@@ -164,7 +164,8 @@ func show_slave_info():
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
+		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
+#		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
 #		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 		

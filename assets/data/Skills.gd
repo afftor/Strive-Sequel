@@ -2,6 +2,11 @@ extends Node
 
 #var professions = load("res://assets/data/classes.gd").new().professions
 
+#example of value reqs
+#		value_caster_reqs = {1:[{code = 'is_master', check = false}]},
+#		value_target_reqs = {0:[{code = 'stat', stat = 'sex', value = 'male', operant = 'eq'}]},
+#sample rec req 
+#		value_receiver_reqs = {1:[{code = 'is_master', check = false}]}
 var Skilllist = {
 	praise = { 
 		code = 'praise',
@@ -20,13 +25,10 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'praise',
-		value = [['caster.charm', '*3', '/100', '+1', '*20'], ['1']],
-		damagestat = ['+loyaltyObedience', '+consent'],
-		#example of value reqs
-#		value_caster_reqs = {1:[{code = 'is_master', check = false}]},
-#		value_target_reqs = {0:[{code = 'stat', stat = 'sex', value = 'male', operant = 'eq'}]},
+		value = [['5'], ['100']],
+		damagestat = ['+loyalty', '+obedience'],
 	},
-	warn = {#
+	warn = {#not sure about being negative now and though adding loyalty to slaves
 		code = 'warn',
 		descript = '',
 		type = 'social',
@@ -43,8 +45,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'warn',
-		value = [['caster.physics', '*3', '/100', '+1', '*30'],  ['caster.charm', "*0.04",'+4']],
-		damagestat = ['+submissionObedience', '+authority'],
+		value = [['5'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 	},
 	rewardsex = {
 		code = 'rewardsex',
@@ -63,9 +65,11 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'sexreward',
-		value = [['caster.sexuals', '*2', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
-		damagestat = [ '+loyaltyObedience', '-lust', '+consent','base_exp','base_exp'],
-		receiver = ['target','target','target','target','caster'],
+		value = [['caster.sex_factor', '+5'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
+#		value = [['caster.sexuals', '*2', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
+#		damagestat = [ '+loyaltyObedience', '-lust', '+consent','base_exp','base_exp'],
+#		receiver = ['target','target','target','target','caster'],
 	},
 	punish = {
 		code = 'punish',
@@ -84,8 +88,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'punish',
-		value = [['caster.physics', '*3', '/100', '+1', '*45'], ['caster.physics', "*0.1",'+10']],
-		damagestat = ['+submissionObedience', '+authority'],
+		value = [['10'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 #		value = [['15'],['caster.physics', '*0.3', '+40']],
 #		damagestat = ['+obedience','+fear'],
 	},
@@ -106,9 +110,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'abuse',
-		value = [['caster.physics', '*3', '/100', '+1', '*36'], ['5'], ['10'], ['40']],
-		damagestat = ['+submissionObedience', '+authority', '-loyalty', '+loyaltyObedience'],
-		receiver = ['target','target','target','caster']
+		value = [['5'], ['100'], ['5'], ['50']], 
+		damagestat = ['+loyalty', '+obedience', '+loyalty', '+obedience'],
+		receiver = ['target','target','caster','caster']
 	},
 	publichumiliation = {
 		code = 'publichumiliation',
@@ -128,9 +132,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		dialogue_image = 'public_punish',
 		tags = ['negative'],
-		value = [['caster.charm', '*2', '/100', '+1', '*40'], ['12'], ['caster.charm', '*3', '/100', '+1', '*30'], ['caster.charm', "*0.03",'+5']],
-		damagestat = ['+submissionObedience', '+authority', '+submissionObedience','+authority'],
-		receiver = ['target','target','all','all']
+		value = [['10'], ['100'], ['5'], ['100']], 
+		damagestat = ['+loyalty', '+obedience', '+loyalty', '+obedience'],
+		receiver = ['target', 'target','all', 'all'],
 	},
 	publicsexhumiliation = {
 		code = 'publicsexhumiliation',
@@ -150,9 +154,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'public_sex',
-		value = [['50'], ['caster.sexuals', "*0.1",'+15'], ['10'], ['24'], ['15'],['6']],
-		damagestat = ['+submissionObedience', '+lust','-loyalty', '+submissionObedience','+lust','+authority'],
-		receiver = ['target','target', 'target', 'all','all','all']
+		value = [['10'], ['100'], ['5'], ['100'], ['15']],
+		damagestat = ['+loyalty','+obedience', '+loyalty', '+obedience', '+lust'],
+		receiver = ['target', 'target','all','all', 'all'],
 	},
 	publicexecution = {
 		code = 'publicexecution',
@@ -171,9 +175,9 @@ var Skilllist = {
 		dialogue_image = 'execution',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['96'],['25'],['10']],
-		damagestat = ['+submissionObedience', '+authority', '-loyalty'],
-		receiver = ['all','all','all']
+		value = [['25'],['100']], 
+		damagestat = ['+loyalty', '+obedience'],
+		receiver = ['all','all']
 	},
 	sharedtoy = { #+obedience to everyone on 
 		code = 'sharedtoy',
@@ -192,9 +196,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'sexreward',
-		value = [['caster.sexuals', '/100', '+1', '*45']],
-		damagestat = '+loyaltyObedience',
-		receiver = 'all'
+		value = [['10'],['100']], 
+		damagestat = ['+loyalty', '+obedience'],
+		receiver = ['all','all']
 	},
 	performance = { #+obedience to everyone on 
 		code = 'performance',
@@ -213,11 +217,10 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = '',
-		value = [['caster.charm', '*2', '/100', '+1', '*24'],['5']],
-		damagestat = ['+loyaltyObedience','+loyalty'],
+		value = [['5'],['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 		receiver = ['all','all'],
-		#sample rec req 
-#		value_receiver_reqs = {1:[{code = 'is_master', check = false}]}
+
 	},
 	allure = {#
 		code = 'allure',
@@ -227,7 +230,7 @@ var Skilllist = {
 		social_skill_stats = ['charm'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.05','+8'],
+#		custom_duration = ['caster.charm','*0.05','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_allure1'})],
 		cost = {},
 		charges = 3,
@@ -237,8 +240,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'charm',
-		value = [['2'], ['caster.charm', '*3', '/100', '+1', '*36']],
-		damagestat = ['+loyalty', '+loyaltyObedience'],
+		value = [['100']],
+		damagestat = '+obedience'
 	},
 	seduce = {
 		code = 'seduce',
@@ -248,7 +251,7 @@ var Skilllist = {
 		social_skill_stats = ['charm','wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.06','+8'],
+#		custom_duration = ['caster.charm','*0.06','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_seduce'})],
 		cost = {mp = 20},
 		charges = 2,
@@ -258,10 +261,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'seduce',
-		value = [['1'], ['caster.charm', '*3', '/100', '+1', '*40'],['8']],
-		damagestat = ['+loyalty', '+loyaltyObedience','+consent'],
-#		value = [['0']],
-#		damagestat = ['no_stat']
+		value = [['10'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 	},
 	greatseduce = {
 		code = 'greatseduce',
@@ -271,7 +272,7 @@ var Skilllist = {
 		social_skill_stats = ['charm','wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		custom_duration = ['caster.charm','*0.07','+8'],
+#		custom_duration = ['caster.charm','*0.07','+8'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_greatseduce'})],
 		cost = {mp = 25},
 		charges = 1,
@@ -281,8 +282,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'seduce',
-		value = [['1'], ['caster.charm', '*3', '/100', '+1', '*50'],['15']],
-		damagestat = ['+loyalty', '+loyaltyObedience','+consent'],
+		value = [['15'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
@@ -339,9 +340,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'serve',
-		value = [['caster.charm', '*2', '/100', '+1', '*30'],['4']],
-		damagestat = ['loyaltyObedience','loyalty'],
-		receiver = ['target','target']
+		value = [['100']],
+		damagestat = '+obedience',
 	},
 	sedate = {
 		code = 'sedate',
@@ -351,7 +351,7 @@ var Skilllist = {
 		social_skill_stats = ['wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		effects = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_sedate'})],
 		cost = {mp = 10},
 		charges = 2,
 		cooldown = 1,
@@ -360,8 +360,8 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'sedation',
 		tags = ['positive'],
-		value = [['1'], ['caster.wits', '*2', '/100', '+1', '*40']],
-		damagestat = ['+loyalty', '+loyaltyObedience'],
+		value = [['4'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 	},
 	fear = {
 		code = 'fear',
@@ -371,7 +371,7 @@ var Skilllist = {
 		social_skill_stats = ['wits'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
-		effects = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_fear'})],
 		cost = {mp = 10},
 		charges = 1,
 		cooldown = 1,
@@ -380,8 +380,8 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'fear',
 		tags = ['negative'],
-		value = [['caster.wits', '*3', '/100', '+1', '*65'], ['10']],
-		damagestat = ['+submissionObedience','+authority'],
+		value = [['100']], 
+		damagestat = '+obedience',
 	},
 	innervate = {#REDO
 		code = 'innervate',
@@ -457,8 +457,8 @@ var Skilllist = {
 		dialogue_image = 'mindcontrol',
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = ['positive'],
-		value = [['150'], ['25'], ['100']],
-		damagestat = ['authority', 'loyalty','+consent'],
+		value = [['50'], ['100']], 
+		damagestat = [ '+loyalty', '+obedience'],
 	},
 	stopmindcontrol = {#fix to target self and all other params
 		code = 'stopmindcontrol',
@@ -532,9 +532,8 @@ var Skilllist = {
 		cooldown = 7,
 		icon = load("res://assets/images/iconsskills/Authority.png"),
 		tags = ['positive'],
-		value = [['75'], ['48'], ['10']],
-		damagestat = ['authority', 'loyaltyObedience', 'loyalty'],
-		receiver = 'target'
+		value = [['15'], ['100']], 
+		damagestat = ['+loyalty', '+obedience'],
 	},
 	consume_soul = {#kills target, gain its experience
 		code = 'consume_soul',
@@ -3210,8 +3209,8 @@ var Skilllist = {
 		tags = ['positive'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['target.lust','*-1.0'],['target.lust'],['target.lust','*0.5'],['15'],['60']],
-		damagestat = ['lust','hp','mp','authority','loyaltyObedience'],
+		value = [['target.lust','*-1.0'],['target.lust'],['target.lust','*0.5']],
+		damagestat = ['lust','hp','mp'],
 	},
 	master_lust_obed = {#consume all target lust, gives 2 obedience and 2 fear per 1 lust
 		code = 'master_lust_obed',
@@ -3225,11 +3224,11 @@ var Skilllist = {
 		charges = 0,
 		cooldown = 0,
 		icon = null,
-		tags = ['positive'],
+		tags = ['positive', 'no_mod'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['-50'],['100']],
-		damagestat = ['lust','loyaltyObedience'],
+		value = [['target.lust','*0.2'],['target.lust'],['100']],
+		damagestat = ['loyalty','-lust','obedience'],
 	},
 	master_lust_buff = {#consume 50 target lust, gives +20% productivity for 3 days buff
 		code = 'master_lust_buff',
@@ -3341,13 +3340,13 @@ var Skilllist = {
 		charges = 0,
 		cooldown = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
-		tags = ['positive'],
+		tags = ['positive', 'no_mod'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'succubuslust',
-		value = [['-50'],['48']],
-		damagestat = ['lust','loyaltyObedience'],
-		receiver = ['target','caster']
+		value = [['target.lust','*0.125'],['target.lust'],['100']],
+		damagestat = ['loyalty','-lust','obedience'],
+		receiver = ['caster','target','caster']
 	},
 	succubus_lust_combat_buff = {#consume 50 target lust, gives +25% atk/matk buff for 2 days
 		code = 'succubus_lust_combat_buff',
@@ -3423,7 +3422,7 @@ var Skilllist = {
 		sound = [],
 		value = [['36'],['10']],
 		random_factor = [5,0],
-		damagestat = ['loyaltyObedience','-submission']
+		damagestat = ['+obedience','-submission']
 	},
 	beer = {
 		code = 'alcohol',
@@ -3450,7 +3449,7 @@ var Skilllist = {
 		sound = [],
 		value = [['20'],['2']],
 		random_factor = [4,0],
-		damagestat = ['loyaltyObedience','-submission']
+		damagestat = ['+obedience','-submission']
 	},
 	exp_scroll = {
 		code = 'exp_scroll',

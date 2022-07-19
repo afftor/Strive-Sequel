@@ -167,20 +167,14 @@ var statdata = {
 		type = 'mental_stat',
 		custom_get = true,
 	},
-#	loyaltyObedience = {
-#		code = 'loyaltyObedience',
-#		name = 'STATOBEDIENCE',
-#		descript = 'STATOBEDIENCEDESCRIPT',
-#		baseicon = 'stat_obed',
-#		type = 'mental_stat',
-#	},
-#	submissionObedience = {
-#		code = 'submissionObedience',
-#		name = 'STATOBEDIENCE',
-#		descript = 'STATOBEDIENCEDESCRIPT',
-#		baseicon = 'stat_obed',
-#		type = 'mental_stat',
-#	},
+	obedience_max = {
+		code = 'obedience_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		custom_get = true
+	},
 	fear = {
 		code = 'fear',
 		name = '',
@@ -211,8 +205,8 @@ var statdata = {
 		type = '',
 		direct = true
 	},
-	loyalty_max = {
-		code = 'loyalty_max',
+	loyalty_total = {
+		code = 'loyalty_total',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',
@@ -227,20 +221,13 @@ var statdata = {
 		type = '',
 		custom_get = true
 	},
-	loyalty_max_gain = {
-		code = 'loyalty_max_gain',
+	loyalty_traits_unlocked = {
+		code = 'loyalty_traits_unlocked',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		custom_get = true
-	},
-	loyalty_gain_mod = {
-		code = 'loyalty_gain_mod',
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
+		direct = true
 	},
 	exp_gain_mod = {
 		code = 'exp_gain_mod',
@@ -613,24 +600,6 @@ var statdata = {
 		percent = true,
 		baseicon = 'food_love',
 		skip_process = true
-	},
-
-	obDrainReduction = {
-		code = 'obDrainReduction',
-		name = '',
-		descript = '',
-		percent = true,
-		baseicon = 'food_love',
-		default_bonus = 'mul',
-		is_negative = true
-	},
-	obDrainIncrease = {
-		code = 'obDrainIncrease',
-		name = '',
-		descript = '',
-		percent = true,
-		baseicon = 'food_love',
-		is_negative = true
 	},
 	#container stats
 	resists = {

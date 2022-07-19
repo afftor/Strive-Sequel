@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -26,6 +26,10 @@
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=24]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=25]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=26]
+[ext_resource path="res://gui_modules/CharacterInfo/LUpgradesList.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -502,6 +506,7 @@ __meta__ = {
 }
 
 [node name="RelativesPanel" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 25 )
@@ -665,6 +670,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="UpgradesPanel" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UpgradesPanel"]
+margin_left = 824.0
+margin_top = 25.0
+margin_right = 1663.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 22 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Trainings"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradesPanel"]
+margin_left = 859.0
+margin_top = 102.0
+margin_right = 1639.0
+margin_bottom = 835.0
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesList" parent="UpgradesPanel/ScrollContainer" instance=ExtResource( 27 )]
+
 [node name="food_consumption" type="Label" parent="."]
 margin_left = 542.0
 margin_top = 860.0
@@ -736,3 +775,23 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="change_button" type="TextureButton" parent="."]
+margin_left = 865.954
+margin_top = 849.917
+margin_right = 995.954
+margin_bottom = 889.917
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="change_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Relatives"
+align = 1
+valign = 1
