@@ -482,7 +482,7 @@ var traits = {
 		bonusstats = {exp_gain_mod = 0.25},
 		weight = 100,
 		conflicts = ['dim'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	passive = {
 		code = 'passive',
@@ -494,7 +494,7 @@ var traits = {
 		bonusstats = {obedience_drain = -5},
 		weight = 100,
 		conflicts = ['rebel'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	nimble = {
 		code = 'nimble',
@@ -506,7 +506,7 @@ var traits = {
 		bonusstats = {speed = 10},
 		weight = 100,
 		conflicts = ['slow'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	quick = {
 		code = 'quick',
@@ -518,7 +518,7 @@ var traits = {
 		bonusstats = {mod_collect = 0.2},
 		weight = 100,
 		conflicts = ['blundering', 'clumsy'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	handy = {
 		code = 'handy',
@@ -530,7 +530,7 @@ var traits = {
 		bonusstats = {mod_tailor = 0.2, mod_smith = 0.2, mod_alchemy = 0.2, mod_cook = 0.2},
 		weight = 100,
 		conflicts = ['crude', 'inept'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	deadly = {
 		code = 'deadly',
@@ -541,7 +541,7 @@ var traits = {
 		effects = [],
 		bonusstats = {critchance = 9},
 		weight = 100,
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	lively = {
 		code = 'lively',
@@ -553,7 +553,7 @@ var traits = {
 		bonusstats = {hp_reg_add = 3},
 		weight = 100,
 		conflicts = ['sicky'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	mvortex = {
 		code = 'mvortex',
@@ -565,7 +565,7 @@ var traits = {
 		bonusstats = {mp_reg_add = 1},
 		weight = 100,
 		conflicts = ['m_inept'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	bawdy = {
 		code = 'bawdy',
@@ -575,7 +575,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/bed.png",
 		effects = [],
 		weight = 100,
-		tags = ['positive'],
+		tags = ['positive', 'can_start'],
 		conflicts = ['chaste', 'frigid'],
 		bonusstats = {mod_pros = 0.25}
 	},
@@ -589,7 +589,7 @@ var traits = {
 		bonusstats = {armor = 10},
 		weight = 100,
 		conflicts = ['frail'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	talented = {
 		code = 'talented',
@@ -601,7 +601,7 @@ var traits = {
 		bonusstats = {base_task_crit_chance = 0.15}, 
 		weight = 100,
 		conflicts = ['menial'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	forager = {
 		code = 'forager',
@@ -612,7 +612,7 @@ var traits = {
 		effects = [],
 		bonusstats = {}, #hardcoded
 		weight = 100,
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	gifted = {
 		code = 'gifted',
@@ -624,7 +624,7 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['magicmutt'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	belligerent = {
 		code = 'belligerent',
@@ -635,7 +635,7 @@ var traits = {
 		effects = ['e_tr_bell'],
 		bonusstats = {},
 		weight = 100,
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	hiddenpowers = {
 		code = 'hiddenpowers',
@@ -647,7 +647,7 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['m_inept'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	healthy = {
 		code = 'healthy',
@@ -659,7 +659,7 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['sicky'],
-		tags = ['positive']
+		tags = ['positive', 'can_start']
 	},
 	#negative
 	dim = {
@@ -1881,6 +1881,7 @@ var sex_traits = { #only for interaction tab
 func _ready():
 	for tr in traits:
 		if !traits[tr].has('code'): traits[tr].code = tr
+		if !traits[tr].has('tags'): traits[tr].tags = []
 		if !traits[tr].has('bonusstats'): traits[tr].bonusstats = {}
 
 

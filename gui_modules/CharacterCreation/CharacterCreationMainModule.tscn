@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -47,6 +47,10 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=46]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed_c.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_c.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_disabled_c.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_hover_c.png" type="Texture" id=51]
 
 [node name="CharacterCreationMainModule" type="Panel" groups=[
 "ignore_rightclicks",
@@ -205,81 +209,144 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Age"
 align = 1
 
-[node name="Label6" type="Label" parent="VBoxContainer"]
-visible = false
-margin_top = 344.0
-margin_right = 492.0
-margin_bottom = 376.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SLAVEPARTRACE"
-align = 1
-
-[node name="race" type="Button" parent="VBoxContainer"]
+[node name="race" type="TextureButton" parent="VBoxContainer"]
 margin_top = 356.0
 margin_right = 433.0
-margin_bottom = 411.0
+margin_bottom = 422.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 2 )
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="VBoxContainer/race"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Race"
-
-[node name="Label7" type="Label" parent="VBoxContainer"]
-visible = false
-margin_top = 402.0
-margin_right = 433.0
-margin_bottom = 434.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SLAVEPARTSEXTRAIT"
 align = 1
-
-[node name="class" type="Button" parent="VBoxContainer"]
-margin_top = 417.0
-margin_right = 433.0
-margin_bottom = 472.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Starting Class"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectedClass" type="Label" parent="VBoxContainer"]
-margin_top = 478.0
-margin_right = 433.0
-margin_bottom = 513.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SelectedClass"
-align = 1
-valign = 1
+[node name="icon" type="TextureRect" parent="VBoxContainer/race"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="sextrait" type="Button" parent="VBoxContainer"]
-margin_top = 519.0
+[node name="trait" type="TextureButton" parent="VBoxContainer"]
+margin_top = 428.0
 margin_right = 433.0
-margin_bottom = 574.0
+margin_bottom = 494.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Sex Trait"
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
 
-[node name="SexTraitLabel" type="Label" parent="VBoxContainer"]
-margin_top = 580.0
-margin_right = 433.0
-margin_bottom = 615.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Label" type="Label" parent="VBoxContainer/trait"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Sex Traits"
+text = "Trait"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="VBoxContainer/trait"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/trait"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="class" type="TextureButton" parent="VBoxContainer"]
+margin_top = 500.0
+margin_right = 433.0
+margin_bottom = 566.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="VBoxContainer/class"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Class"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/class"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sextrait" type="TextureButton" parent="VBoxContainer"]
+margin_top = 572.0
+margin_right = 433.0
+margin_bottom = 638.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 51 )
+texture_disabled = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="VBoxContainer/sextrait"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Trait"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/sextrait"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 59.0
+margin_bottom = 59.0
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -296,27 +363,6 @@ margin_top = 130.0
 margin_right = -560.0
 margin_bottom = -120.0
 theme = ExtResource( 36 )
-
-[node name="RaceSelectionModule" parent="." instance=ExtResource( 39 )]
-visible = false
-margin_left = 580.0
-margin_top = 130.0
-margin_right = -560.0
-margin_bottom = -120.0
-
-[node name="class_label" type="Label" parent="."]
-visible = false
-margin_left = 229.438
-margin_top = 791.128
-margin_right = 507.438
-margin_bottom = 815.128
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SLAVESTARTINGCLASS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConfirmButton" type="TextureButton" parent="."]
 margin_left = 1585.21
@@ -769,6 +815,13 @@ texture_normal = ExtResource( 45 )
 texture_pressed = ExtResource( 47 )
 texture_hover = ExtResource( 46 )
 
+[node name="RaceSelectionModule" parent="." instance=ExtResource( 39 )]
+visible = false
+margin_left = 580.0
+margin_top = 130.0
+margin_right = -234.003
+margin_bottom = -120.0
+
 [node name="TraitSelection" type="Panel" parent="."]
 visible = false
 margin_left = 754.0
@@ -794,8 +847,8 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="TraitSelection/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 349.0
-margin_bottom = 40.0
+margin_right = 348.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 4 )
 toggle_mode = true

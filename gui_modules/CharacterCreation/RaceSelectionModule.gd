@@ -29,6 +29,7 @@ func select_character_race():
 	get_parent().preservedsettings["race"] = selected_race
 	get_parent().valid_preservedsettings['race'] = true
 	get_parent().rebuild_slave()
+	get_parent().build_race()
 
 
 func show_race_info(temprace):
