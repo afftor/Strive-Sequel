@@ -34,6 +34,7 @@ var params_to_save = [
 	"sex",
 	"age",
 	"race",
+	"traits",
 	"sex_traits",
 	"personality",
 	"skin",
@@ -107,6 +108,7 @@ func _ready():
 	$VBoxContainer/HBoxContainer/AgeVBox/age.connect("item_selected", self, "select_age")
 	$VBoxContainer/HBoxContainer/SexVBox/sex.connect("item_selected", self, "select_sex")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
+	$VBoxContainer/trait.connect('pressed', self, "open_traits")
 
 
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
@@ -245,11 +247,9 @@ func rebuild_slave():
 	t_person.is_known_to_player = true
 	if mode == 'master':
 		t_person.unlock_class('master')
-
-	$VBoxContainer/race.text = races.racelist[race].name
 	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
 	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
-	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
+	build_class()
 	if preservedsettings.has("food_love") and valid_preservedsettings.food_love:
 		if preservedsettings.food_love != '':
 			t_person.food.food_love = preservedsettings["food_love"]
@@ -282,6 +282,10 @@ func delete_keys_from_preservedsettings(keys):
 
 
 func apply_preserved_settings():
+	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
+		person.create_s_trait_select(preservedsettings.sex_traits)
+	if preservedsettings.has("traits") && preservedsettings.traits != null:
+		person.add_trait(preservedsettings.traits)
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	var keys_to_delete = []
 	for i in bodypartsarray:
@@ -478,7 +482,7 @@ func LoadCharacter(updated_char_to_load = null):
 		for i in stats_array:
 			character_to_load[i] = 1
 	selected_class = character_to_load.professions
-	update_class_button()
+	build_class()
 	for i in character_to_load:
 		if !(i in params_to_save): continue
 		if i == "food_love":
@@ -556,10 +560,7 @@ func RebuildStatsContainer():
 	
 	var counter = total_stat_points
 	
-	if person.statlist.sex_traits.size() == 0:
-		$VBoxContainer/SexTraitLabel.text = "Select Sex Trait"
-	else:
-		$VBoxContainer/SexTraitLabel.text = Traitdata.sex_traits[person.statlist.sex_traits.keys()[0]].name
+	build_sex_trait()
 	for i in array:
 		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
 			continue
@@ -580,9 +581,9 @@ func RebuildStatsContainer():
 	$StatsModule/totalstatlabel.text = 'Free points left: ' + str(counter)
 
 	apply_preserved_settings()
-	if selected_class != '' && person.checkreqs(classesdata.professions[selected_class].reqs) == false:
+	if selected_class != '' && !person.checkreqs(classesdata.professions[selected_class].reqs):
 		selected_class = ''
-		update_class_button()
+		build_class()
 
 func stat_up(stat):
 	if preservedsettings[stat.code] >= 6 || unassigned_points == 0:
@@ -603,38 +604,100 @@ func stat_down(stat):
 		$ClassSelectionModule.update_class_buttons()
 
 func open_sex_traits():
-	RaceSelection.hide()
-	ClassSelection.hide()
-	TraitSelection.show()
-	input_handler.ClearContainer($TraitSelection/ScrollContainer/VBoxContainer)
-	for i in Traitdata.sex_traits.values():
-		if i.starting == false || person.checkreqs(i.acquire_reqs) == false:
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($TraitSelection/ScrollContainer/VBoxContainer)
-		newbutton.text = i.name
-		if person.check_trait(i.code):
-			newbutton.pressed = true
-		newbutton.connect("pressed", self, "select_sex_trait", [i])
-		globals.connecttexttooltip(newbutton, person.translate(i.descript))
+	hide_all_dialogues()
+	TraitSelection.build_sex()
 
 
-func select_sex_trait(trait):
-	person.create_s_trait_select(trait)
-	preservedsettings["sex_traits"] = trait
+func open_traits():
+	hide_all_dialogues()
+	TraitSelection.build_trait()
+
+
+func select_sex_trait(trait_id):
+#	person.create_s_trait_select(trait_id)
+	preservedsettings["sex_traits"] = trait_id
 	valid_preservedsettings["sex_traits"] = true
 	$TraitSelection.hide()
-	#input_handler.GetTextTooltip().hide()
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	RebuildStatsContainer()
+	build_sex_trait()
+
+
+func select_trait(trait_id):
+#	person.add_trait(trait_id)
+	preservedsettings["traits"] = trait_id
+	valid_preservedsettings["traits"] = true
+	$TraitSelection.hide()
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	RebuildStatsContainer()
+	build_trait()
+
+
+func build_trait():
+	if preservedsettings.has("traits") && preservedsettings.traits != null:
+		var trdata = Traitdata.traits[preservedsettings.traits]
+		$VBoxContainer/trait/Label.text = tr(trdata.name)
+		if trdata.has('icon') and trdata.icon != null:
+			if trdata.icon is String:
+				$VBoxContainer/trait/icon.texture = load(trdata.icon)
+			else:
+				$VBoxContainer/trait/icon.texture = trdata.icon
+			if trdata.tags.has('simple_icon'):
+				$VBoxContainer/trait/bg.texture = null
+			else:
+				if trdata.tags.has('positive'):
+					$VBoxContainer/trait/bg.texture = load("res://assets/images/iconstraits/green.png")
+				elif trdata.tags.has('negative'):
+					$VBoxContainer/trait/bg.texture = load("res://assets/images/iconstraits/red.png")
+				else:
+					$VBoxContainer/trait/bg.texture = load("res://assets/images/iconstraits/grey.png")
+		else:
+			$VBoxContainer/trait/bg.texture = null
+			$VBoxContainer/trait/icon.texture = null
+	else:
+		$VBoxContainer/trait/bg.texture = null
+		$VBoxContainer/trait/icon.texture = null
+		$VBoxContainer/trait/Label.text = "Trait"
+
+
+func build_sex_trait():
+	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
+		var trdata = Traitdata.sex_traits[preservedsettings.sex_traits]
+		$VBoxContainer/sextrait/Label.text = tr(trdata.name)
+	else:
+		$VBoxContainer/sextrait/Label.text = "Sex Trait"
+
+
+func build_race():
+	if preservedsettings.has("race") && preservedsettings.race != null:
+		var rdata = races.racelist[preservedsettings.race]
+		$VBoxContainer/race/Label.text = tr(rdata.name)
+	else:
+		print('warn - race selection not valid')
+		$VBoxContainer/race/Label.text = "Race"
+
+
+func build_class():
+	if selected_class != "":
+		var trdata = classesdata.professions[selected_class]
+		$VBoxContainer/class/Label.text = tr(trdata.name)
+		if trdata.has('icon') and trdata.icon != null:
+			if trdata.icon is String:
+				$VBoxContainer/class/icon.texture = load(trdata.icon)
+			else:
+				$VBoxContainer/class/icon.texture = trdata.icon
+		else:
+			$VBoxContainer/class/icon.texture = null
+	else:
+		$VBoxContainer/class/icon.texture = null
+		$VBoxContainer/class/Label.text = "Class"
+
 
 
 func confirm_return():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_creation', tr("RETURNTOMAINMENUQUESTION")])
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
-
-func update_class_button():
-	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
 
 func test():
 #	print("Preserved Settings:", preservedsettings)
@@ -643,3 +706,10 @@ func test():
 #	print(person.get_stat("race"))
 #	print(person.get_full_name())
 	print("Sex Traits:", person.statlist.sex_traits)
+
+
+func hide_all_dialogues():
+	$SaveLoadCharPanel.hide()
+	RaceSelection.hide()
+	TraitSelection.hide()
+	ClassSelection.hide()
