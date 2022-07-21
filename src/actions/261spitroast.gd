@@ -26,6 +26,8 @@ func requirements():
 	for i in takers:
 		if i.person.get_stat('has_pussy') == false:
 			valid = false
+		if !i.person.has_status('sex_oral'):
+			valid = false
 	
 	return valid
 

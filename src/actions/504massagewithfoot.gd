@@ -35,6 +35,9 @@ func requirements():
 	for i in givers +takers:
 		if i.limbs == false:
 			valid = false
+	for i in givers:
+		if !i.person.has_status('sex_adv'):
+			valid = false
 	return valid
 
 #Disabling until something is decided about tools

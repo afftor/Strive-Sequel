@@ -32,11 +32,21 @@ func gather_data():
 		if !trait_data.has("tree_position"): continue
 		upgrades_data[trait_data.code] = trait_data.tree_position
 
-
-
+var selected_id = ""
 func learn_upgrade(id):
-	person.add_stat('loyalty', -person.get_price_for_trait(id))
+	selected_id = id
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr('UNLOCKLOYALTYPROMPT')])
+
+
+func learn_upgrade_confirmed():
+	if selected_id == "": return
+	var args = {}
+	args["current_trait"] = selected_id
+	args["person"] = person
+	person.add_stat('loyalty', -person.get_price_for_trait(selected_id))
 	person.add_stat('loyalty_traits_unlocked', 1)
-	person.add_trait(id)
+	person.add_trait(selected_id)
+	selected_id = ""
 	update_upgrades_tree(person)
 	root.update()
+	input_handler.play_animation("trait_aquired", args)

@@ -39,6 +39,8 @@ func requirements():
 				valid = false
 			if i.limbs == false:
 				valid = false
+			if !i.person.has_status('sex_perv'):
+				valid = false
 		for i in takers:
 			if i.person.get_stat('penis_size') == '':
 				valid = false

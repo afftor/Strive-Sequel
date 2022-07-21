@@ -24,6 +24,8 @@ func requirements():
 	for i in givers:
 		if i.person.get_stat('penis_size') == '' && !i.strapon:
 			valid = false
+		if !i.person.has_status('sex_adv'):
+				valid = false
 	return valid
 
 func getname(state = null):

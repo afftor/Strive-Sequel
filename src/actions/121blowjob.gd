@@ -43,6 +43,9 @@ func requirements():
 #				valid = false
 			if i.person.get_stat('penis_size') == '':
 				valid = false
+	for i in givers:
+		if !i.person.has_status('sex_oral'):
+			valid = false
 	return valid
 
 func givereffect(member):

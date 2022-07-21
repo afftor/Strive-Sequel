@@ -35,6 +35,9 @@ func requirements():
 #		for i in takers:
 #			if i.anus != null:
 #				valid = false
+	for i in givers:
+		if !i.person.has_status('sex_oral'):
+			valid = false
 	return valid
 
 func givereffect(member):
