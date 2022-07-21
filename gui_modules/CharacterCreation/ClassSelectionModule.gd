@@ -99,7 +99,7 @@ func cancel_class_selection():
 func select_class():
 	is_class_selected = false
 	get_parent().selected_class = selected_class
-	get_parent().update_class_button()
+	get_parent().build_class()
 	hide()
 	# get_parent().rebuild_slave()
 	get_parent().check_confirm_possibility()
