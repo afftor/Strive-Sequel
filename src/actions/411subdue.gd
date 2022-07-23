@@ -30,6 +30,8 @@ func requirements():
 	for i in givers:
 		if i.subduing != null:
 			valid = false
+		if !i.person.has_status('sex_adv'):
+			valid = false
 	return valid
 
 func givereffect(member):

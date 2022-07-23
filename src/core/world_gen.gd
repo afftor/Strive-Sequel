@@ -213,6 +213,20 @@ func make_slave_for_guild(slavetype):
 		if typeof(slavetype.character_bonuses[i]) == TYPE_ARRAY: bonus_resolved[i] = round(rand_range(slavetype.character_bonuses[i][0], slavetype.character_bonuses[i][1]))
 		else: bonus_resolved[i] = slavetype.character_bonuses[i]
 	newslave.add_stat_bonuses(bonus_resolved)
+	if slavetype.has('traits'):
+		for i in slavetype.traits:
+			var tr
+			if i is Array:
+				if randf() > i[1]: 
+					continue
+				tr = i[0]
+			else:
+				tr = i
+			var tdata = Traitdata.traits[tr]
+			if tr.has('reqs') and !newslave.checkreqs(tdata.reqs): 
+				continue
+			newslave.add_trait(tr)
+	
 	newslave.set_stat('is_hirable', true)
 	newslave.set_stat('hire_scene', 'hire')
 	newslave.is_known_to_player = true

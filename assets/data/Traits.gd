@@ -494,6 +494,7 @@ var traits = {
 		bonusstats = {obedience_drain = -5},
 		weight = 100,
 		conflicts = ['rebel'],
+		reqs = [{code = 'is_master', check = false}],
 		tags = ['positive', 'can_start']
 	},
 	nimble = {
@@ -885,8 +886,7 @@ var traits = {
 	loyalty_basic_servitude = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_hand2.png",
 		effects = [],
 		bonusstats = {obedience_drain = -4},
 		reqs = [],
@@ -898,8 +898,7 @@ var traits = {
 	loyalty_dating = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_date.png",
 		effects = [],
 		bonusstats = {loyalty_gain = 0.5},
 		reqs = [],
@@ -910,8 +909,7 @@ var traits = {
 	loyalty_combatant = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_sword.png",
 		effects = [],
 		bonusstats = {obedience_drain = -1},
 		reqs = [],
@@ -922,8 +920,7 @@ var traits = {
 	loyalty_dress_lewd = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_dress2.png",
 		effects = [],
 		reqs = [],
 		l_cost = 30,
@@ -933,8 +930,7 @@ var traits = {
 	loyalty_dress_work = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_dress.png",
 		effects = [],
 		reqs = [],
 		l_cost = 20,
@@ -944,8 +940,7 @@ var traits = {
 	loyalty_bodmod = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_bodmod.png",
 		effects = [],
 		reqs = [],
 		l_cost = 25,
@@ -955,11 +950,10 @@ var traits = {
 	loyalty_adv_servitude = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_hand.png",
 		effects = [],
 		bonusstats = {obedience_drain = -3},
-		reqs = [{code = 'has_status', status = 'basic_servitude', check = true}], #wasn't in doc but obvious
+		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}], #wasn't in doc but obvious
 		l_cost = 30,
 		tree_position = {x = 7, y = 3},
 		tags = ['loyalty', 'adv_servitude']
@@ -967,11 +961,10 @@ var traits = {
 	loyalty_callmaster = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_crown.png",
 		effects = [],
 		bonusstats = {obedience_drain = -2},
-		reqs = [{code = 'has_status', status = 'basic_servitude', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 50,
 		tree_position = {x = 1, y = 5},
 		tags = ['loyalty', 'callmaster']
@@ -979,11 +972,10 @@ var traits = {
 	loyalty_swear = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_crown2.png",
 		effects = [],
 		bonusstats = {obedience_drain = -5, loyalty_gain = 1},
-		reqs = [{code = 'has_status', status = 'adv_servitude', check = true}, {code = 'has_status', status = 'callmaster', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_adv_servitude', check = true}, {code = 'trait', trait = 'loyalty_callmaster', check = true}],
 		l_cost = 50,
 		tree_position = {x = 3, y = 5},
 		tags = ['loyalty', 'swear_loyalty']
@@ -991,8 +983,7 @@ var traits = {
 	loyalty_soulbind = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_collar.png",
 		effects = [], #hardcoded
 		reqs = [{code = 'has_profession', profession = 'dominator', check = true, master_check = true}],
 		l_cost = 50,
@@ -1002,11 +993,10 @@ var traits = {
 	loyalty_exhibitionism = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_exhibit.png",
 		effects = ['e_ltr_exhibit'],
 		bonusstats = {mod_pros = 0.15},
-		reqs = [{code = 'has_status', status = 'basic_servitude', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 35,
 		tree_position = {x = 7, y = 5},
 		tags = ['loyalty', 'exhibit']
@@ -1014,11 +1004,10 @@ var traits = {
 	loyalty_sex_basic = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_sex.png",
 		effects = [],
 		bonusstats = {},
-		reqs = [{code = 'has_status', status = 'basic_servitude', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 30,
 		tree_position = {x = 1, y = 7},
 		tags = ['loyalty', 'sex_basic']
@@ -1026,11 +1015,10 @@ var traits = {
 	loyalty_sex_oral = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_oral.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.1},
-		reqs = [{code = 'has_status', status = 'sex_basic', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 30,
 		tree_position = {x = 3, y = 7},
 		tags = ['loyalty', 'sex_oral']
@@ -1038,11 +1026,10 @@ var traits = {
 	loyalty_sex_adv = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_doggy.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.15},
-		reqs = [{code = 'has_status', status = 'sex_basic', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 45,
 		tree_position = {x = 5, y = 7},
 		tags = ['loyalty', 'sex_adv']
@@ -1050,11 +1037,10 @@ var traits = {
 	loyalty_sex_perv = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_69.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.25},
-		reqs = [{code = 'has_status', status = 'sex_adv', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],
 		l_cost = 60,
 		tree_position = {x = 7, y = 7},
 		tags = ['loyalty', 'sex_perv']
@@ -1062,11 +1048,10 @@ var traits = {
 	loyalty_sex_group = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_group.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.2},
-		reqs = [{code = 'has_status', status = 'sex_basic', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 60,
 		tree_position = {x = 1, y = 9},
 		tags = ['loyalty', 'sex_group']
@@ -1074,11 +1059,10 @@ var traits = {
 	loyalty_prostitution = {
 		name = '',
 		descript = '',
-		visible = true,
-		icon = "res://assets/images/iconstraits/heart.png",
+		icon = "res://assets/images/iconstraits/l_pros.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.15},
-		reqs = [{code = 'has_status', status = 'basic_servitude', check = true}],
+		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 35,
 		tree_position = {x = 3, y = 9},
 		tags = ['loyalty', 'prostitution']

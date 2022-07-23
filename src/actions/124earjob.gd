@@ -39,6 +39,8 @@ func requirements():
 		for i in takers:
 			if i.person.get_stat('ears') in ['normal','orcish']:
 				valid = false
+			if !i.person.has_status('sex_perv'):
+				valid = false
 	return valid
 
 func givereffect(member):

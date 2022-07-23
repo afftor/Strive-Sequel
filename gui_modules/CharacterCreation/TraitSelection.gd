@@ -26,6 +26,8 @@ func build_trait():
 	for i in Traitdata.traits.values():
 		if !i.tags.has('can_start'):
 			continue
+		if i.has('reqs') and !person.checkreqs(i.reqs):
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = i.name
 		if person.check_trait(i.code):

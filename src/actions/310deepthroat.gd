@@ -36,11 +36,15 @@ func requirements():
 		for i in givers:
 			if i.person.get_stat('penis_size') == '' && !i.strapon:
 				valid = false
+			if !i.person.has_status('sex_adv'):
+				valid = false
 #			elif i.penis != null && givers.size() > 1:
 #				valid = false
 		for i in takers:
 #			if i.mouth != null && givers.size() > 1:
 #				valid = false
+			if !i.person.has_status('sex_oral'):
+				valid = false
 			if i.acc1 == null:
 				valid = false
 	return valid

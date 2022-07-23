@@ -41,6 +41,9 @@ func requirements():
 #				valid = false
 			elif i.person.get_stat('sex') == 'male':
 				valid = false
+	for i in givers:
+		if !i.person.has_status('sex_oral'):
+			valid = false
 	return valid
 
 func givereffect(member):

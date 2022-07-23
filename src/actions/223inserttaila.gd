@@ -36,6 +36,11 @@ func requirements():
 				valid = false
 			if !variables.longtails.has(i.person.get_stat('tail')):
 				valid = false
+			if !i.person.has_status('sex_adv'):
+				valid = false
+		for i in takers:
+			if !i.person.has_status('sex_perv'):
+				valid = false
 	return valid
 
 func givereffect(member):
