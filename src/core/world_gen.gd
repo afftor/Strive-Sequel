@@ -223,7 +223,7 @@ func make_slave_for_guild(slavetype):
 			else:
 				tr = i
 			var tdata = Traitdata.traits[tr]
-			if tr.has('reqs') and !newslave.checkreqs(tdata.reqs): 
+			if tdata.has('reqs') and !newslave.checkreqs(tdata.reqs): 
 				continue
 			newslave.add_trait(tr)
 	
