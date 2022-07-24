@@ -116,7 +116,7 @@ func build_for_ocupation(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	if person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
@@ -126,14 +126,14 @@ func build_for_default(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 
 func build_for_travel(person, newbutton):
 	newbutton.get_node('progress').visible = false
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	var selected_travel_characters = get_parent().selected_travel_characters
 	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
@@ -155,7 +155,7 @@ func build_for_craft(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	newbutton.pressed = false
 	if person.travel.location != ResourceScripts.game_world.mansion_location:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
@@ -254,7 +254,7 @@ func build_sex_selection(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	calculate_sex_limits()
 	var sex_participants = get_parent().sex_participants
 	for button in SlaveContainer.get_children():
@@ -349,7 +349,7 @@ func build_for_upgrades(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	if get_parent().select_chars_mode:
 		if person.get_work() == "building" || !person.check_location('aliron'):
 			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
@@ -376,7 +376,7 @@ func build_for_skills(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = true
+	newbutton.get_node('obed').visible = !person.is_master()
 	if person == get_parent().skill_source:
 		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_chosen.png")
 		newbutton.disabled = true
@@ -463,24 +463,9 @@ func update_button(newbutton):
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
-
+	
+	
 	if !person.check_infinite_obedience():
-#		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
-#		if person.xp_module.predict_obed_time() <= 0:
-#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-#		elif person.xp_module.predict_obed_time() <= 24:
-#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
-#		else:
-#			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
-#		var obed_val = person.get_obed_percent_value()
-#		newbutton.get_node("obed").text = "%d%%" % obed_val
-#		if obed_val > 40:
-#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.green)
-#		elif obed_val > 15:
-#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
-#		else:
-#			newbutton.get_node("obed").set("custom_colors/font_color", variables.hexcolordict.red)
-#		globals.connecttexttooltip(newbutton.get_node("obed"), "Expected work time left: %d turns" % ceil(person.predict_obed_time())) 
 		newbutton.get_node("obed").max_value = person.get_stat('obedience_max')
 		newbutton.get_node("obed").value = person.get_stat('obedience')
 	else:
