@@ -61,6 +61,8 @@ func update():
 			swap_mode()
 	else:
 		$change_button.visible = true
+		if !loyalty_mode:
+			swap_mode()
 
 	$UpgradesPanel/Label.text = "Loyalty: " + str(floor(person.get_stat("loyalty")))
 	#work_rules part
