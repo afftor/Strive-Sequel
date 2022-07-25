@@ -55,6 +55,13 @@ func update():
 	#relatives
 	$RelativesPanel.build_relatives()
 	loyalty_panel.update_upgrades_tree(person)
+	if person.is_master():
+		$change_button.visible = false
+		if loyalty_mode:
+			swap_mode()
+	else:
+		$change_button.visible = true
+
 	$UpgradesPanel/Label.text = "Loyalty: " + str(floor(person.get_stat("loyalty")))
 	#work_rules part
 	var luxury_rooms_taken = 0

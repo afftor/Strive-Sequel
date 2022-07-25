@@ -277,13 +277,13 @@ func use_social_skill(s_code, target):
 				match stat:
 					'loyalty':
 						var skill_stat_type
-						if template.tags.has('positive'): 
-							skill_stat_type = parent.get_ref().get_stat('charm_factor') 
-							if h.has_status('no_%s_gain' % stat) or h.has_status('no_%s_gain_temp' % stat): 
-								detail_tags.append('blocked')
-								cached_value = 0
+						if h.has_status('no_%s_gain' % stat) or h.has_status('no_%s_gain_temp' % stat): 
+							detail_tags.append('blocked')
+							cached_value = 0
 						if !s_skill.tags.has('no_mod'):
-							cached_value = round(cached_value * (0.4 + skill_stat_type*0.25))
+							if template.tags.has('positive'): 
+								skill_stat_type = parent.get_ref().get_stat('charm_factor')
+								cached_value = round(cached_value * (0.4 + skill_stat_type*0.25))
 							skill_stat_type = h.get_stat('tame_factor')
 							if template.tags.has('negative'): 
 								skill_stat_type = target.get_stat('timid_factor')
@@ -329,24 +329,25 @@ func use_social_skill(s_code, target):
 				maxstat = h.get_stat('obedience_max')
 			elif i.damagestat.find("factor")>=0:
 				maxstat = 0
-			var change = '+'
-			if tmp < 0:
-				change = ''
-			effect_text += ": "
-			if maxstat != 0 && !(stat in ['obedience','consent', 'lust', 'loyalty']):
-				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
-			else:
-				effect_text += change + str(floor(tmp)) 
-#			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
-#				effect_text += " - Maxed"
 			if detail_tags.has("obed_cap") && stat == 'obedience':
-				effect_text += ("(%d) - Maxed" % cached_value)
-			if detail_tags.has("lust_cap") && stat == 'lust':
-				effect_text += " - Maxed"
-			if detail_tags.has("blocked") && stat == 'obedience':
-				effect_text += ' - Is in resist mode'
-			if detail_tags.has("blocked") && stat == 'loyalty':
-				effect_text += " - Can't get loyalty"
+				effect_text += ": Maxed" 
+			else:
+				var change = '+'
+				if tmp < 0:
+					change = ''
+				effect_text += ": "
+				if maxstat != 0 && !(stat in ['obedience','consent', 'lust', 'loyalty']):
+					effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
+				else:
+					effect_text += change + str(floor(tmp)) 
+	#			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
+	#				effect_text += " - Maxed"
+				if detail_tags.has("lust_cap") && stat == 'lust':
+					effect_text += " - Maxed"
+				if detail_tags.has("blocked") && stat == 'obedience':
+					effect_text += ' - Is in resist mode'
+				if detail_tags.has("blocked") && stat == 'loyalty':
+					effect_text += " - Can't get loyalty"
 			for j in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
