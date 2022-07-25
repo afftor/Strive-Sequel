@@ -156,14 +156,14 @@ func custom_stats_get():
 		if bonuses.has('obedience_drain_add'): res.obedience_drain += bonuses.obedience_drain_add
 		if bonuses.has('obedience_drain_mul'): res.obedience_drain *= bonuses.obedience_drain_mul
 		res.obedience_drain = max(0.0, res.obedience_drain)
-		if parent.get_ref().has_status('soulbind'):
+		if parent and parent.get_ref().has_status('soulbind'):
 			res.obedience_drain = 0.0
 	if res.has('loyalty_gain'):
 		res.loyalty_gain = 0.75 + 0.375 * res.tame_factor
 		if bonuses.has('loyalty_gain_add'): res.loyalty_gain += bonuses.loyalty_gain_add
 		if bonuses.has('loyalty_gain_mul'): res.loyalty_gain *= bonuses.loyalty_gain_mul
 		res.loyalty_gain = max(0.0, res.loyalty_gain)
-		if parent.get_ref().has_status('starvation'):
+		if parent and parent.get_ref().has_status('starvation'):
 			res.loyalty_gain = 0.0
 	if res.has('resists'):
 		var tres = res.resists
