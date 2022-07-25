@@ -364,7 +364,11 @@ var data = {
 	
 	got_cali_3 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
-		text = [ {text = "GOT_CALI_3_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true}, {code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
+		text = [ {text = "GOT_CALI_3_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [
+			
+			{code = 'make_story_character', value = 'Cali', recruit_from_location = true}, 
+			{code = 'unique_character_changes', value = 'cali',args = [{code = 'add_trait', trait = 'loyalty_basic_servitude'}]},
+			{code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
