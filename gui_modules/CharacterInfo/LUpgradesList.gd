@@ -35,7 +35,8 @@ func gather_data():
 var selected_id = ""
 func learn_upgrade(id):
 	selected_id = id
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr('UNLOCKLOYALTYPROMPT')])
+	var text = "Unlock this for {color=green|" + str(person.get_price_for_trait(id)) + "} Loyalty?"
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr(text)])
 
 
 func learn_upgrade_confirmed():

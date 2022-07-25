@@ -210,7 +210,7 @@ func update_character_dislocation():
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area)
 			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
-			text2 += "\nObedience Cost: " + str(obed_cost)
+			#text2 += "\nObedience Cost: " + str(obed_cost)
 		else:
 			text += "\nSelect Characters to send"
 

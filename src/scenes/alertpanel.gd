@@ -30,7 +30,7 @@ func Show(TargetNode : Object, Text : String, \
 		  LeftLabel : String, LeftFunc : String, \
 		  RightLabel : String, RightFunc : String) -> void:
 		popup()
-		$RichTextLabel.bbcode_text = Text
+		$RichTextLabel.bbcode_text = globals.TextEncoder(Text)
 		targetnode = TargetNode
 		left_fn = LeftFunc
 		$ButtonL/Label.text = LeftLabel

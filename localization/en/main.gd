@@ -369,6 +369,7 @@ var TranslationDict = {
 	TOOLTIPSAVECHARACTER = "Save Character Template",
 	TOOLTIPLOADCHARACTER = "Load Character Template",
 	
+	
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 
 	SAVENAME = "Save Name",
@@ -767,6 +768,8 @@ var TranslationDict = {
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
+	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
+	
 	TASKMAINSTAT = "Main characteristic",
 	
 	JOBPROSTITUTEGOLDDESCRIPT = "Earn gold by prostitution.",
@@ -776,6 +779,10 @@ var TranslationDict = {
 	JOBTAILORCRAFTDESCRIPT = "Craft item in tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item in alchemy workshop.",
 
+	BUTTONCLASS = "Classes and Skills",
+	BUTTONTRAINING = "Training and Rules",
+	BUTTONGEAR = "Gear",
+	BUTTONCUSTOMIZATION = "Customization",
 
 	SLAVEPARTNAME = "Name",
 	SLAVEPARTSURNAME = "Surname",
@@ -829,7 +836,7 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty from Mean skills and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
@@ -957,6 +964,7 @@ var TranslationDict = {
 
 	STATLOYALTY_GAIN_MOD = "Loyalty Gain",
 	STATLUSTTICK = "Lust Growth",
+	STATOBEDIENCE_DRAIN = "Obedience Drain",
 
 	STATMOD_BUILD = "Upgrading",
 	STATMOD_COLLECT = "Collection",
@@ -1021,7 +1029,7 @@ var TranslationDict = {
 
 	STATFOOD_LOVE = "Loved Food",
 	STATFOOD_HATE = "Hated Food",
-	STATFOOD_LOVEDESCRIPT = "When a favorite food is eaten, it gives a minor boost to Productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
+	STATFOOD_LOVEDESCRIPT = "When a favorite food is eaten, it gives a minor boost to Productivity and Obedience for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
 	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will lower Productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
 
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
@@ -1400,6 +1408,42 @@ var TranslationDict = {
 	TRAITMENIALDESCRIPT = "Task Crit chance is set to 0.",
 	TRAITSTURDYDESCRIPT = "+10 DEF.",
 	TRAITFRAILDESCRIPT = "-10 DEF.",
+	TRAITLOYALTY_BASIC_SERVITUDE = "Basic Servitude",
+	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = "{color=green|Allows to assign to occupations\nObedience Drain: -4}\n\nComplete control starts with the smallest of steps. Mannerisms, protocol, and etiquette must be established to reap their rewards. ",
+	TRAITLOYALTY_DATING = "Dating",
+	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Unlocks Dating\nLoyalty Gain: +0.5}\n\nA timeless tradition repurposed for your needs. A kind word, a subtle innuendo, and social comforts go a long way towards establishing a useful bond.",
+	TRAITLOYALTY_COMBATANT = "Combatant",
+	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Unlocks Combat Assignment\nObedience Drain: -1}\n\nSlaves in chains have few uses. Those who've earned their masters trust and defend them are far more valuable.",
+	TRAITLOYALTY_DRESS_LEWD = "Lewd Clothes",
+	TRAITLOYALTY_DRESS_LEWDDESCRIPT = "{color=green|Unlocks equipment of more extravagant gear}\n\nAmple skin, soft cloth, and eager display of their assets all for their masters' benefit. A fine slave can be a work of art physically, this one knows that.\n\nRequires: Basic Servitude" ,
+	TRAITLOYALTY_DRESS_WORK = "Work Clothes",
+	TRAITLOYALTY_DRESS_WORKDESCRIPT = "{color=green|Unlocks equipment of work oriented gear}\n\nGloves, boots, protective aprons, and goggles are just a few of the things a slave might wear during work. A slave is an investment afterall.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_BODMOD = "Body Modifications",
+	TRAITLOYALTY_BODMODDESCRIPT = "{color=green|Unlocks body tattoos and modifications}\n\nSlave can give many things to a master, some more than others. This one in particular will even change their very form to that desire.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_ADV_SERVITUDE = "Advanced Servitude",
+	TRAITLOYALTY_ADV_SERVITUDEDESCRIPT = "{color=green|Obedience Drain: -3}\n\nBefore service was demanded, now service is often there before you’ve realized it’s needed. This slave knows a masters needs and fulfills them aptly.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_CALLMASTER = "Master Acknowledgment",
+	TRAITLOYALTY_CALLMASTERDESCRIPT = "{color=green|Allows to set Master pronouns\nObedience Drain: -2}\n\nA title might seem like little to those who are unaware, but those that are 'Master' is the highest honor. This slave awknowleges the role you both will play.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_SWEAR = "Swear Loyalty",
+	TRAITLOYALTY_SWEARDESCRIPT = "{color=green|Obedience Drain: -5\nLoyalty Gain: +2}\n\nCoercion is no longer needed. Through deed or fear this slave has pledged their loyalty to you alone.\n\nRequires: Advanced Servitude, Master Acknowledgement",
+	TRAITLOYALTY_SOULBIND = "Soulbind",
+	TRAITLOYALTY_SOULBINDDESCRIPT = "{color=green|Obedience Drain: 0\nLoyalty Gain: 0}\n\nThe mind is such a fickle thing, a proper mage can exploit this as has been shown in this now exceptionally obedient specimen.\n\nRequires: Dominator Class on Master",
+	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
+	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "{color=green|Lust Growth: +1\nProstitution Productivity: +15%}\n\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_PROSTITUTION = "Prostitution",
+	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnel pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
+	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn’t take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_SEX_ORAL = "Sex:Oral",
+	TRAITLOYALTY_SEX_ORALDESCRIPT = "{color=green|Unlocks oral sex actions during sex interactions\nProstitution Productivity: +10%}\n\nA long day after managing a manor can be made all the better with a few minutes of one sided pleasure. After all a happy master tends to be a kind master.\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_ADV = "Sex:Advanced",
+	TRAITLOYALTY_SEX_ADVDESCRIPT = "{color=green|Unlocks advanced sex actions during sex interactions\nProstitution Productivity: +15%}\n\nAfter serving their master repeatedly in the bedroom this slave has learned, and their owner can only benefit.\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_PERV = "Sex:Perverse",
+	TRAITLOYALTY_SEX_PERVDESCRIPT = "{color=green|Unlocks perverted sex actions during sex interactions\nProstitution Productivity: +25%}\n\nWhen ones duties revolve around use of their bodies, standard use can seem…vanilla. Often times slaves are more than willing to spice things up a bit.\n\nRequires: Sex:Advanced",
+	TRAITLOYALTY_SEX_GROUP = "Sex:Group",
+	TRAITLOYALTY_SEX_GROUPDESCRIPT = "{color=green|Unlocks group sex actions and multiple partners during sex interactions\nProstitution Productivity: +20%}\n\nIf one source of pleasure can drive this slave to pleasure, what might two? For that matter what might three or more?\n\nRequires: Sex:Basics",
+
+	
 	
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
@@ -2419,7 +2463,7 @@ var TranslationDict = {
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Obedience Drain is increased by 6.",
 	WORKRULELUXURY =  "Private Room",
-	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Obedience Drain -2, Loyalty Gain +0.5",
+	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Obedience Drain -3, Loyalty Gain +0.5",
 	
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
