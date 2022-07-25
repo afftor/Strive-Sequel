@@ -13,11 +13,12 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connecttexttooltip(get_node("VBoxContainer2/TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
 	$VBoxContainer2/TextureRect4/NextClassExp.hint_tooltip = tr("NEXTCLASSEXP")# + str(person.get_next_class_exp())
-	globals.connecttexttooltip($GridContainer/SkillsButton, "Class and Skills")
-	globals.connecttexttooltip($GridContainer/SiblingsButton, "Food and Details")
-	globals.connecttexttooltip($GridContainer/GearButton, "Gear")
-	globals.connecttexttooltip($GridContainer/DetailsButton, "Customization")
-
+	globals.connecttexttooltip($GridContainer/SkillsButton, tr("BUTTONCLASS"))#"Class and Skills")
+	globals.connecttexttooltip($GridContainer/SiblingsButton, tr("BUTTONTRAINING"))#"Training and Rules")
+	globals.connecttexttooltip($GridContainer/GearButton, tr("BUTTONGEAR"))#"Gear")
+	globals.connecttexttooltip($GridContainer/DetailsButton, tr("BUTTONCUSTOMIZATION"))#"Customization")
+	
+	
 	for i in base_stats_container.get_children():
 		if i.name == "Exp":
 			continue

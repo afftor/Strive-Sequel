@@ -298,6 +298,7 @@ var factiondata = {
 			character_bonuses = {},# = [75,100], obedience = [48,48]},
 			slave_races = [],
 			tags = [],
+			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant',1]],
 			slavenumber = [2, 2],
 			}
 		],
@@ -335,6 +336,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,2],
+			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant',0.9]],
 			}
 		],
 	},
@@ -383,6 +385,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,2],
+			traits = [['loyalty_basic_servitude', 1], ['loyalty_dress_work', 0.6]],
 			}
 		],
 	},
@@ -419,6 +422,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,3],
+			traits = [['loyalty_basic_servitude', 1], ['loyalty_adv_servitude', 0.3]],
 			}
 		],
 	},
@@ -448,6 +452,7 @@ var factiondata = {
 			slave_races = [['rare',3]],
 			tags = [],
 			slavenumber = [3,5],
+			traits = [['loyalty_basic_servitude', 0.5]],
 			}
 		],
 	},
@@ -498,6 +503,7 @@ var factiondata = {
 			character_bonuses = {pricemod = 1.3}, #authority = [50,75], obedience = [48,48], ,
 			slave_races = [['halfbreeds',1]],
 			tags = ['unique_slave_races'],
+			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant', 0.7]],
 			slavenumber = [1,1],
 			}
 		],
@@ -523,6 +529,7 @@ var factiondata = {
 			character_types = [['servant',1]],
 			character_bonuses = {pricemod = 1.1},#authority = [30,50], obedience = [48,48], 
 			slave_races = [['Elf',5],['TribalElf',1]],
+			traits = [['loyalty_basic_servitude', 0.7], ['loyalty_combatant', 0.4]],
 			tags = [],
 			slavenumber = [2,3],
 			},
@@ -550,6 +557,7 @@ var factiondata = {
 			character_bonuses = {submission = [10,20],pricemod = 5},# authority = [0,10], obedience = [12,18], 
 			slave_races = [['top', 1]],
 			tags = ['unique_slave_races'],
+			traits = [['loyalty_basic_servitude', 0.2], ['loyalty_combatant', 0.1]],
 			slavenumber = [1,1],
 			},
 			{code = 'type2',
@@ -559,6 +567,7 @@ var factiondata = {
 			character_bonuses = {submission = [10,20],pricemod = 3},# authority = [0,10], obedience = [12,18], 
 			slave_races = [['monster',2],['rare',3]],
 			tags = ['unique_slave_races'],
+			traits = [['loyalty_basic_servitude', 0.3], ['loyalty_combatant', 0.1]],
 			slavenumber = [3,4],
 			},
 		],

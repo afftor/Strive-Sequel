@@ -295,7 +295,7 @@ var effect_table = {
 		code = 'work_rule_luxury',
 		type = 'static',
 		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -2},
+			{type = 'stat_add', stat = 'obedience_drain', value = -3},
 			{type = 'stat_add', stat = 'loyalty_gain', value = 0.5},
 		],
 		buffs = [],
@@ -683,7 +683,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_love.png",
-				description = "Favorite Food: Productivity increased by 10%%.", #2change
+				description = "Favorite Food: Obedience Drain -1, Loyalty Gain +0.5.", #2change
 				limit = 1,
 				t_name = 'food_like',
 				mansion_only = true,

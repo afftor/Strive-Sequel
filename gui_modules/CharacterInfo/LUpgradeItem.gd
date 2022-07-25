@@ -26,7 +26,7 @@ func setup_upgrade(upgrade_id):
 #	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_data = Traitdata.traits[upgrade_id]
 	$name.text = tr(upgrade_data.name)
-	hint_tooltip = tr(upgrade_data.descript)
+	globals.connecttexttooltip(self,'[center]'+tr(upgrade_data.name)+'[/center]\n'+tr(upgrade_data.descript))
 	#setup icon
 	if upgrade_data.icon is String:
 		$Image.texture = load(upgrade_data.icon)
@@ -44,12 +44,12 @@ func setup_upgrade(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock2
 		set_inactive()
-		hint_tooltip += "\nReqs not met"
+		hint_tooltip += "\nRequirements are not met"
 	elif  person.get_stat('loyalty') < person.get_price_for_trait(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock1
 		set_inactive()
-		hint_tooltip += "\nNot enough loyalty"
+		hint_tooltip += "\nNot enough Loyalty"
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()

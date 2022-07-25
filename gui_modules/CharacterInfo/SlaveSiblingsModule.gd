@@ -13,7 +13,7 @@ func _ready():
 	update()
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
-		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
+		globals.connecttexttooltip(i,tr("WORKRULE" + i.name.to_upper() + "DESCRIPT"))
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
@@ -63,6 +63,8 @@ func update():
 		$change_button.visible = true
 		if !loyalty_mode:
 			swap_mode()
+
+	$UpgradesPanel/Label.text = "Loyalty: " + str(floor(person.get_stat("loyalty")))
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():

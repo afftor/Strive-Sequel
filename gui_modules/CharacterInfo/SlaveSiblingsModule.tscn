@@ -679,10 +679,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="UpgradesPanel"]
-margin_left = 824.0
-margin_top = 25.0
-margin_right = 1663.0
-margin_bottom = 100.0
+margin_left = 894.0
+margin_top = 14.0
+margin_right = 1397.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Trainings"
@@ -777,9 +777,9 @@ __meta__ = {
 }
 
 [node name="change_button" type="TextureButton" parent="."]
-margin_left = 865.954
+margin_left = 1169.95
 margin_top = 849.917
-margin_right = 995.954
+margin_right = 1299.95
 margin_bottom = 889.917
 texture_normal = ExtResource( 28 )
 texture_pressed = ExtResource( 29 )

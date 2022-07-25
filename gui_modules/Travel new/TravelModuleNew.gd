@@ -529,10 +529,10 @@ func build_location_info():
 			if characters.size() > 0:
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
 				text += "Travel time: %d\n" % ceil(travel_time.time / tmp)
-				text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
+				#text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
 				text += "Estimated travel time: %d\n" % ceil(travel_time.time)
-				text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
+				#text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
 		if location_selected.has('captured') && location_selected.captured == true:
 			text += globals.TextEncoder("{color=red|Location unaccessible}")
 	else:

@@ -15,7 +15,7 @@ func _ready():
 	$CancelButton.connect('pressed', self, 'cancel_job_choice')
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
-		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
+		globals.connecttexttooltip(i,tr("WORKRULE" + i.name.to_upper() + "DESCRIPT"))
 
 
 
