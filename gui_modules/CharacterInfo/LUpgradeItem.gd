@@ -1,8 +1,8 @@
 extends TextureButton
 var color_dict = {
-	unlocked = Color(variables.hexcolordict.gray),
-	avail = Color(variables.hexcolordict.green),
-	lock1 = Color(variables.hexcolordict.yellow),
+	unlocked = Color(variables.hexcolordict.green),
+	avail = Color(variables.hexcolordict.yellow),
+	lock1 = Color(variables.hexcolordict.red),
 	lock2 = Color(variables.hexcolordict.red),
 	
 }

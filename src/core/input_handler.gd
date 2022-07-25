@@ -1452,6 +1452,7 @@ func play_animation(animation, args = {}):
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
 			anim_scene.get_node("AnimationPlayer").play("class_achieved")
 			anim_scene.get_node("TextureRect").texture = classesdata.professions[args.current_class].icon
+			anim_scene.get_node("Label").text = "Class Acquired"
 			anim_scene.get_node("Label2").text = args.current_class.capitalize()
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
@@ -1468,6 +1469,7 @@ func play_animation(animation, args = {}):
 				anim_scene.get_node("TextureRect").texture = load(tdata.icon)
 			else:
 				anim_scene.get_node("TextureRect").texture = tdata.icon
+			anim_scene.get_node("Label").text = "Training"
 			anim_scene.get_node("Label2").text = tdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")

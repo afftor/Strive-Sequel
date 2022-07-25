@@ -581,7 +581,7 @@ func test_mode():
 		#character.armor = 135
 		#character.set_stat('wits', 20)
 		character.set_stat('consent', 100)
-		character.set_stat('charm_factor', 6)
+		character.set_stat('charm_factor', 2)
 		character.set_stat('physics_factor', 6)
 		character.set_stat('sexuals_factor', 6)
 		#character.set_stat('wits_factor', 5)
