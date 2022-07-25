@@ -61,6 +61,8 @@ func update():
 			swap_mode()
 	else:
 		$change_button.visible = true
+		if !loyalty_mode:
+			swap_mode()
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
