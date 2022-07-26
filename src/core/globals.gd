@@ -809,12 +809,18 @@ func impregnate_check(father,mother):
 				race = "Halfkin"
 
 			if variables.impregnation_compatibility.has(race) == false && input_handler.globalsettings.no_breed_incompatibility == false:
-				if mother.has_profession('breeder') == false:
-					result.value = false
-					result.compatible = false
-				else:
+#				if mother.has_profession('breeder') == false:
+#					result.value = false
+#					result.compatible = false
+#				else:
+#					result.value = true
+#					result.breeder = true
+				if mother.has_status('breeder') or father.has_status('breeder'):
 					result.value = true
-					result.breeder = true
+					result.compatible = true
+				else:
+					result.value = false
+					result.breeder = false
 	
 	if mother.get_stat('pregnancy').duration != 0:
 		result.value = false

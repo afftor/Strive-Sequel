@@ -465,12 +465,8 @@ func update_button(newbutton):
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 	
 	
-	if !person.check_infinite_obedience():
-		newbutton.get_node("obed").max_value = person.get_stat('obedience_max')
-		newbutton.get_node("obed").value = person.get_stat('obedience')
-	else:
-#		newbutton.get_node("obed").text = "∞"
-		newbutton.get_node("obed").visible = false
+	newbutton.get_node("obed").max_value = person.get_stat('obedience_max')
+	newbutton.get_node("obed").value = person.get_stat('obedience')
 
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))

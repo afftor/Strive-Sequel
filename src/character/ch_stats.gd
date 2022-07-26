@@ -156,7 +156,7 @@ func custom_stats_get():
 		if bonuses.has('obedience_drain_add'): res.obedience_drain += bonuses.obedience_drain_add
 		if bonuses.has('obedience_drain_mul'): res.obedience_drain *= bonuses.obedience_drain_mul
 		res.obedience_drain = max(0.0, res.obedience_drain)
-		if parent and parent.get_ref().has_status('soulbind'):
+		if parent and (parent.get_ref().has_status('soulbind') or parent.get_ref().get_work() == 'travel'):
 			res.obedience_drain = 0.0
 	if res.has('loyalty_gain'):
 		res.loyalty_gain = 0.75 + 0.375 * res.tame_factor
@@ -1139,7 +1139,10 @@ func tick():
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.get_ref().remove_all_temp_effects_tag('pregnant')
-			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
+			if has_status('keep_baby'):
+				input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
+			else:
+				input_handler.interactive_message('childbirth_alt', 'childbirth', {pregchar = parent.get_ref()})
 
 
 func is_uncontrollable():

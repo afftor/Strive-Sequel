@@ -31,6 +31,9 @@ func requirements():
 			valid = false
 	if takers.size() < 1 || givers.size() < 1 || givers.size() + takers.size() > 3:
 		valid = false
+	for i in takers:
+		if !i.person.has_status('sex_anal'):
+			valid = false
 #	for i in takers:
 #		if i.anus != null:
 #			valid = false

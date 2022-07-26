@@ -26,6 +26,9 @@ func requirements():
 			valid = false
 		if !i.person.has_status('sex_adv'):
 			valid = false
+	for i in takers:
+		if !i.person.has_status('sex_anal'):
+			valid = false
 #		elif i.penis != null && givers.size() > 1:
 #			valid = false
 #	for i in takers:

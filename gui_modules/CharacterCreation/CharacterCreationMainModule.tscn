@@ -819,7 +819,7 @@ texture_hover = ExtResource( 46 )
 visible = false
 margin_left = 580.0
 margin_top = 130.0
-margin_right = -234.003
+margin_right = -573.0
 margin_bottom = -120.0
 
 [node name="TraitSelection" type="Panel" parent="."]

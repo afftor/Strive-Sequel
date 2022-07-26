@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv'],
+		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'combatant'],
 		effects = ['e_tr_master']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
@@ -767,10 +767,10 @@ var traits = {
 		icon = "res://assets/images/iconstraits/bag.png",
 		cross = true,
 		effects = [],
-		bonusstats = {},
+		bonusstats = {mod_collect = -0.8, mod_farm = -0.8, mod_fish = -0.8},
 		weight = 100,
 		conflicts = ['quick', 'clumsy'],
-		tags = ['negative', 'no_collect']
+		tags = ['negative'],# 'no_collect']
 	},
 	crude = {
 		code = 'crude',
@@ -780,10 +780,10 @@ var traits = {
 		icon = "res://assets/images/iconstraits/hammer.png",
 		cross = true,
 		effects = [],
-		bonusstats = {},
+		bonusstats = {mod_smith = -0.8, mod_taylor = -0.8, mod_alchemy = -0.8},
 		weight = 100,
 		conflicts = ['handy', 'inept'],
-		tags = ['negative', 'no_craft']
+		tags = ['negative'],# 'no_craft']
 	},
 	chaste = {
 		code = 'chaste',
@@ -793,10 +793,10 @@ var traits = {
 		icon = "res://assets/images/iconstraits/bed.png",
 		cross = true,
 		effects = [],
-		bonusstats = {},
+		bonusstats = {mod_pros = -0.8},
 		weight = 100,
 		conflicts = ['bawdy'],
-		tags = ['negative', 'no_whoring']
+		tags = ['negative'],# 'no_whoring']
 	},
 	pacifist = {
 		code = 'pacifist',
@@ -804,10 +804,10 @@ var traits = {
 		descript = '',
 		visible = true,
 		icon = "res://assets/images/iconstraits/pacific.png",
-		effects = [],
+		effects = ['e_tr_pacifist'],
 		bonusstats = {},
 		weight = 100,
-		tags = ['negative', 'no_combat']
+		tags = ['negative'],# 'no_combat']
 	},
 	menial = {
 		code = 'menial',
@@ -828,10 +828,10 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/sword.png",
 		cross = true,
-		effects = [],
+		effects = ['e_tr_whimp'],
 		bonusstats = {},
 		weight = 100,
-		tags = ['negative', 'no_combat_skills']
+		tags = ['negative'],# 'no_combat_skills']
 	},
 	m_inept = {
 		code = 'm_inept',
@@ -840,11 +840,11 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/scepter.png",
 		cross = true,
-		effects = [],
+		effects = ['e_tr_minept'],
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['mvortex', 'hiddenpowers'],
-		tags = ['negative', 'no_combat_spells']
+		tags = ['negative'],# 'no_combat_spells']
 	},
 	selfish = {
 		code = 'selfish',
@@ -865,9 +865,9 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/cat.png",
 		effects = [],
-		bonusstats = {},
+		bonusstats = {hitrate = -50},
 		weight = 100,
-		tags = ['negative', 'no_social_skills']
+		tags = ['negative'],# 'no_social_skills']
 	},
 	frigid = {
 		code = 'frigid',
@@ -1023,6 +1023,17 @@ var traits = {
 		tree_position = {x = 5.5, y = 4.5},
 		tags = ['loyalty', 'sex_oral']
 	},
+	loyalty_sex_anal = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		effects = [],
+		bonusstats = {mod_pros = 0.1},  #2fix
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
+		l_cost = 30,  #2fix
+		tree_position = {x = 6, y = 10},  #2fix
+		tags = ['loyalty', 'sex_anal']
+	},
 	loyalty_sex_adv = {
 		name = '',
 		descript = '',
@@ -1066,6 +1077,28 @@ var traits = {
 		l_cost = 35,
 		tree_position = {x = 7.5, y = 2.5},
 		tags = ['loyalty', 'prostitution']
+	},
+	loyalty_pregnancy = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		effects = [],
+		bonusstats = {},  #2fix
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
+		l_cost = 30,  #2fix
+		tree_position = {x = 6, y = 12},  #2fix
+		tags = ['loyalty', 'keep_baby']
+	},
+	loyalty_interbreed = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		effects = [],
+		bonusstats = {},  #2fix
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
+		l_cost = 30,  #2fix
+		tree_position = {x = 6, y = 12},  #2fix
+		tags = ['loyalty', 'breeder']
 	},
 	#rare opps
 	rare_sturdy = {

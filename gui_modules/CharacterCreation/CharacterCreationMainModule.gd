@@ -207,6 +207,10 @@ func finish_diet_selection():
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
 	valid_preservedsettings.clear()
+	build_class()
+	build_race()
+	build_sex_trait()
+	build_trait()
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
@@ -672,9 +676,14 @@ func build_race():
 	if preservedsettings.has("race") && preservedsettings.race != null:
 		var rdata = races.racelist[preservedsettings.race]
 		$VBoxContainer/race/Label.text = tr(rdata.name)
+		if rdata.icon is String:
+			$VBoxContainer/race/icon.texture = load(rdata.icon)
+		else:
+			$VBoxContainer/race/icon.texture = rdata.icon
 	else:
 		print('warn - race selection not valid')
 		$VBoxContainer/race/Label.text = "Race"
+		$VBoxContainer/race/icon.texture = null
 
 
 func build_class():
