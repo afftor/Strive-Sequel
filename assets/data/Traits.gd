@@ -780,7 +780,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/hammer.png",
 		cross = true,
 		effects = [],
-		bonusstats = {mod_smith = -0.8, mod_taylor = -0.8, mod_alchemy = -0.8},
+		bonusstats = {mod_smith = -0.8, mod_tailor = -0.8, mod_alchemy = -0.8},
 		weight = 100,
 		conflicts = ['handy', 'inept'],
 		tags = ['negative'],# 'no_craft']
