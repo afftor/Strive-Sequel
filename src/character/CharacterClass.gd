@@ -233,8 +233,8 @@ func generate_ea_character(gendata, desired_class):
 		res = chardata.class_category
 	return res
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
-	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty)
+func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty, trait_blacklist)
 
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)

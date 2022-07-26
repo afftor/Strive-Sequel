@@ -204,7 +204,10 @@ func make_slave_for_guild(slavetype):
 	var slaveclass = null
 	if slavetype.preference.size() > 0:
 		slaveclass = input_handler.random_from_array(slavetype.preference)
-	newslave.generate_random_character_from_data(race, slaveclass, slavetype.slavelevel + round(randf()-0.3))
+	var tr_bll = []
+	if slavetype.has('no_traits'):
+		tr_bll = slavetype.no_traits
+	newslave.generate_random_character_from_data(race, slaveclass, slavetype.slavelevel + round(randf()-0.3), tr_bll)
 	var char_class = input_handler.weightedrandom(slavetype.character_types)
 	newslave.set_slave_category(char_class)
 	var bonus_resolved = {}
