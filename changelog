@@ -2,7 +2,9 @@
 Revamped Obedience and Loyalty systems
 Now obedience is reduced every turn, maxed with any social skill and once hit Zero will make character escape.
 Obedience Drain is now a more distinct value which is modified by unlocked trainings, gear and Timid Factor
-Loyalty is now used to unlock character training and is obtained every turn. 
+Loyalty is now used to unlock character training and is obtained every turn.
+Most of disabling traits have been changed to cause penalty
+Guild slaves will no longer spawn with traits which would make their guild's position inadequate (i.e. weak combat in fighters)
 0.6.2a
 Added Academy upgrade
 Added initial sex traits to unique characters

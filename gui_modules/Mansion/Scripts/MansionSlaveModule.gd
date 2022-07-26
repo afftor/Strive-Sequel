@@ -37,10 +37,10 @@ func show_slave_info():
 		person = input_handler.interacted_character
 	if person != null:
 		$Panel.visible = !person.has_profession('master')
-		globals.connecttexttooltip($RichTextLabel, person.show_race_description())
+		#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
 		$exp.text = str(floor(person.get_stat('base_exp')))
 		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-		var text = person.get_short_name() + person.translate(" [race] [age]")
+		var text = "[center]"+person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
 		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
 		if person.xp_module.professions.size() > 5:
 			$TextureRect/ScrollContainer/professions.columns = 10 #or 9 - idk what is lesser evil
@@ -81,23 +81,26 @@ func show_slave_info():
 			globals.connecttexttooltip(newnode, temptext)
 		$Portrait.texture = person.get_icon()
 		$sex.texture = images.icons[person.get_stat('sex')]
+		$race.texture = races.racelist[person.get_stat('race')].icon
+		globals.connecttexttooltip($sex, person.get_stat('sex').capitalize())
+		globals.connecttexttooltip($race, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 		$RichTextLabel.bbcode_text = text
 
 		for i in ['hp','mp','lust']:
 			get_node("base_stats/"+ i ).max_value = person.get_stat(i+'max')
 			get_node("base_stats/"+ i ).value = person.get_stat(i)
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-		text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
+		#text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
 		var gatherable = Items.materiallist.has(person.get_work())
-		if person.is_players_character == true:
-			if person.get_work() != '' and person.get_work() != "Assignment" and person.get_work() != "disabled" and person.get_work() != "learning":
-				if !gatherable:
-					text = races.tasklist[person.get_work()].name
-				else:
-					text = Items.materiallist[person.get_work()].progress_formula.capitalize()
-			else:
-				text += "Occupation: None"
-			text += "\n"
+#		if person.is_players_character == true:
+#			if person.get_work() != '' and person.get_work() != "Assignment" and person.get_work() != "disabled" and person.get_work() != "learning":
+#				if !gatherable:
+#					text = races.tasklist[person.get_work()].name
+#				else:
+#					text = Items.materiallist[person.get_work()].progress_formula.capitalize()
+#			else:
+#				text += "Occupation: None"
+#			text += "\n"
 			# if state.get_master() != person:
 				# if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
 				# 	text += "{color=green|Obedience: "
@@ -107,7 +110,7 @@ func show_slave_info():
 				# 	text += str(ceil(person.obedience)) + "}"
 				# else:
 				# 	text += "∞}"
-		$job.bbcode_text = globals.TextEncoder(text)
+		#$job.bbcode_text = globals.TextEncoder(text)
 		
 		$growth.text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))]
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
@@ -131,7 +134,7 @@ func show_slave_info():
 		if person.check_infinite_obedience() == false:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
-			$Panel/obedlabel.text = "%d%%" % obed_val
+			$Panel/obedlabel.text = "%d" % obed_val
 			if obed_val > 40:
 				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.green)
 			elif obed_val > 15:

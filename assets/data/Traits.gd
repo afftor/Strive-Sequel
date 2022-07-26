@@ -998,7 +998,7 @@ var traits = {
 		effects = [], #hardcoded
 		reqs = [{code = 'has_profession', profession = 'dominator', check = true, master_check = true}],
 		l_cost = 50,
-		tree_position = {x = 7,y = 0},
+		tree_position = {x = 6,y = 0},
 		tags = ['loyalty', 'soulbind']
 	},
 	loyalty_sex_basic = {
@@ -1020,18 +1020,18 @@ var traits = {
 		bonusstats = {mod_pros = 0.1},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 30,
-		tree_position = {x = 5.5, y = 4.5},
+		tree_position = {x = 6, y = 4.5},
 		tags = ['loyalty', 'sex_oral']
 	},
 	loyalty_sex_anal = {
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		icon = "res://assets/images/iconstraits/l_oral.png",
 		effects = [],
-		bonusstats = {mod_pros = 0.1},  #2fix
-		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
-		l_cost = 30,  #2fix
-		tree_position = {x = 6, y = 10},  #2fix
+		bonusstats = {mod_pros = 0.1},
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}], 
+		l_cost = 35,
+		tree_position = {x = 4.5, y = 4.5},
 		tags = ['loyalty', 'sex_anal']
 	},
 	loyalty_sex_adv = {
@@ -1064,7 +1064,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.2},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 60,
-		tree_position = {x = 7, y = 4.5},
+		tree_position = {x = 7.5, y = 4.5},
 		tags = ['loyalty', 'sex_group']
 	},
 	loyalty_prostitution = {
@@ -1085,8 +1085,8 @@ var traits = {
 		effects = [],
 		bonusstats = {},  #2fix
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
-		l_cost = 30,  #2fix
-		tree_position = {x = 6, y = 12},  #2fix
+		l_cost = 50,  #2fix
+		tree_position = {x = 7.5,y = 0},  #2fix
 		tags = ['loyalty', 'keep_baby']
 	},
 	loyalty_interbreed = {
@@ -1095,9 +1095,9 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
 		effects = [],
 		bonusstats = {},  #2fix
-		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
-		l_cost = 30,  #2fix
-		tree_position = {x = 6, y = 12},  #2fix
+		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],  #2fix
+		l_cost = 75,  #2fix
+		tree_position = {x = 7, y = 6.5},  #2fix
 		tags = ['loyalty', 'breeder']
 	},
 	#rare opps

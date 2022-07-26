@@ -2000,7 +2000,7 @@ func freya_character(person):
 
 
 	if person.checkreqs([{code = 'has_wooden_gear'}]):
-		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
+		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}"
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 	else:
 		if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:

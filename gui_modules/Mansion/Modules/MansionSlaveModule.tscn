@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=32]
 [ext_resource path="res://assets/images/iconstraits/cross.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=35]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=36]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -46,6 +48,11 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 34
+use_filter = true
+font_data = ExtResource( 36 )
 
 [node name="MansionSlaveModule" type="Panel"]
 rect_min_size = Vector2( 470, 665 )
@@ -67,6 +74,7 @@ __meta__ = {
 }
 
 [node name="job" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 200.0
 margin_top = 139.0
 margin_right = 456.0
@@ -159,12 +167,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="race" type="TextureRect" parent="."]
+margin_left = 260.416
+margin_top = 146.127
+margin_right = 300.416
+margin_bottom = 186.127
+texture = ExtResource( 35 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="sex" type="TextureRect" parent="."]
-margin_left = 7.0
-margin_top = 103.0
-margin_right = 47.0
-margin_bottom = 143.0
-mouse_filter = 2
+margin_left = 347.201
+margin_top = 146.18
+margin_right = 387.201
+margin_bottom = 186.18
 texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
@@ -174,11 +193,11 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 200.0
-margin_top = 107.0
+margin_top = 103.436
 margin_right = 456.0
-margin_bottom = 144.0
+margin_bottom = 140.436
 custom_fonts/normal_font = ExtResource( 29 )
-custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/default_color = Color( 1, 0.721569, 0.196078, 1 )
 bbcode_enabled = true
 text = "Name"
 scroll_active = false
@@ -504,12 +523,12 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
-margin_left = 119.711
-margin_top = -1.52588e-05
-margin_right = 198.711
-margin_bottom = 40.0
+margin_left = 120.77
+margin_top = -8.47575
+margin_right = 199.77
+margin_bottom = 41.5242
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = ExtResource( 29 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "25"
 align = 1
@@ -518,10 +537,10 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="Panel/obedlabel"]
-margin_left = -67.5715
-margin_top = -25.487
-margin_right = 8.42854
-margin_bottom = 45.513
+margin_left = -70.9468
+margin_top = -11.9857
+margin_right = 5.05327
+margin_bottom = 59.0143
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
