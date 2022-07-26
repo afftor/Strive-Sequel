@@ -25,6 +25,10 @@ func setup_upgrade(upgrade_id):
 	set_meta("code", upgrade_id)
 #	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_data = Traitdata.traits[upgrade_id]
+	if upgrade_data.has('hide_reqs') and person.checkreqs(upgrade_data.hide_reqs):
+		visible = false
+	else:
+		visible = true
 	$name.text = tr(upgrade_data.name)
 	globals.connecttexttooltip(self,'[center]'+tr(upgrade_data.name)+'[/center]\n'+tr(upgrade_data.descript))
 	#setup icon
