@@ -1713,6 +1713,8 @@ func valuecheck(dict):
 	match dict['type']:
 		"no_check":
 			return true
+		'false':
+			return false
 		"has_money":
 			return ResourceScripts.game_res.if_has_money(dict['value'])
 #		"has_property":
