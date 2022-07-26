@@ -686,8 +686,7 @@ func fix_serialization_postload():
 func fix_import():
 	xp_module.fix_import()
 	travel.fix_import()
-	if statlist.statlist.unique != null:
-		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.statlist.unique)
+	statlist.fix_import()
 
 
 func repair_skill_panels():

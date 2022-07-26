@@ -42,6 +42,13 @@ func deserialize(savedict):
 		custom_stats_set(stat, statlist[stat])
 
 
+func fix_import():
+	if statlist.unique != null and !ResourceScripts.game_world.easter_egg_characters_acquired.has(statlist.unique):
+		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
+	statlist.loyalty = 0
+	statlist.obedience = 100
+
+
 func fix_serialize():
 	for tr in traits.duplicate():
 		if Traitdata.traits.has(tr): continue
