@@ -29,7 +29,7 @@ func requirements():
 	if takers.size() != 1 || givers.size() != 1:
 		valid = false
 	for i in givers + takers:
-		if !i.person.has_status('sex_adv'):
+		if !i.person.has_status('sex_anal'):
 			valid = false
 	return valid
 

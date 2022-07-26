@@ -613,8 +613,8 @@ func confirm_travel():
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
-		if !person.is_controllable():
-			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
+#		if !person.is_controllable():
+#			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
 		if ResourceScripts.game_progress.instant_travel == false:
 			person.previous_location = person.travel.location
 			person.xp_module.work = 'travel'

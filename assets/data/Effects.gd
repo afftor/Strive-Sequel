@@ -268,6 +268,24 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_tr_pacifist = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'atk', value = -0.5}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_minept = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'matk', value = -0.5}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_whimp = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'hpmax', value = -0.4},],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_ltr_exhibit = {
 		type = 'static',
 		atomic = [{type = 'stat_add', bonusname = 'lusttick', value = 1}],

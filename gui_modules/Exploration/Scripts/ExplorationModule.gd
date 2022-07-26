@@ -834,7 +834,7 @@ func build_location_group():
 	for ch in ResourceScripts.game_party.characters.values():
 		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
 			continue
-		if ch.check_location(input_handler.active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat'):
+		if ch.check_location(input_handler.active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
 			if !input_handler.active_location.group.has(['pos' + str(ch.combat_position)]):
 				input_handler.active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:

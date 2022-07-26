@@ -3,6 +3,7 @@ extends Node
 #wolves_skirmish_start
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+	childbirth_alt = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]}, #change text
 	select_tutelage = {
 		text = tr("DIALOGUETUTELAGETEXT"), image = null, tags = ['active_character_translate'], options = [
 			{code = 'close', text = tr('DIALOGUETUTNOTHING'), reqs = [], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'nothing'}, {code = 'rewrite_save'}]},

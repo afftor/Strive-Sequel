@@ -233,8 +233,8 @@ func generate_ea_character(gendata, desired_class):
 		res = chardata.class_category
 	return res
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
-	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty)
+func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty, trait_blacklist)
 
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)
@@ -1093,6 +1093,12 @@ func pretick():
 func tick():
 	if is_on_quest():
 		return
+	
+	if last_escape_day_check != ResourceScripts.game_globals.date and randf() <= 0.2 or ( get_stat('obedience') <= 0 and get_work() != 'travel'):
+		check_escape_possibility()
+		if !ResourceScripts.game_party.characters.has(self.id):
+			return
+	
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
@@ -1113,10 +1119,7 @@ func tick():
 	
 	xp_module.work_tick()
 	
-	if last_escape_day_check != ResourceScripts.game_globals.date && randf() <= 0.2:
-		check_escape_possibility()
-		if ResourceScripts.game_party.characters.has(self.id):
-			return
+
 
 
 func rest_tick():

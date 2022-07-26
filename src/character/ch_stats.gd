@@ -156,7 +156,7 @@ func custom_stats_get():
 		if bonuses.has('obedience_drain_add'): res.obedience_drain += bonuses.obedience_drain_add
 		if bonuses.has('obedience_drain_mul'): res.obedience_drain *= bonuses.obedience_drain_mul
 		res.obedience_drain = max(0.0, res.obedience_drain)
-		if parent and parent.get_ref().has_status('soulbind'):
+		if parent and (parent.get_ref().has_status('soulbind') or parent.get_ref().get_work() == 'travel'):
 			res.obedience_drain = 0.0
 	if res.has('loyalty_gain'):
 		res.loyalty_gain = 0.75 + 0.375 * res.tame_factor
@@ -561,10 +561,11 @@ func get_traits_by_arg(arg, value):
 	return res
 
 
-func get_random_trait_tag(tag):
+func get_random_trait_tag(tag, trait_blacklist = []):
 	var buf = {}
 	for tr in Traitdata.traits:
 		if !can_add_trait(tr): continue
+		if trait_blacklist.has(tr): continue
 		var data = Traitdata.traits[tr]
 		if !data.has('tags'): continue
 		if !data.tags.has(tag): continue
@@ -573,14 +574,14 @@ func get_random_trait_tag(tag):
 	return input_handler.weightedrandom_dict(buf)
 
 
-func get_random_traits():
-	add_trait(get_random_trait_tag('positive'))
+func get_random_traits(trait_blacklist = []):
+	add_trait(get_random_trait_tag('positive', trait_blacklist))
 	if randf() < 0.15:
-		add_trait(get_random_trait_tag('positive'))
+		add_trait(get_random_trait_tag('positive', trait_blacklist))
 	if randf() < 0.5:
-		add_trait(get_random_trait_tag('negative'))
+		add_trait(get_random_trait_tag('negative', trait_blacklist))
 	if randf() < 0.5:
-		add_trait(get_random_trait_tag('negative'))
+		add_trait(get_random_trait_tag('negative', trait_blacklist))
 
 
 func get_stat_data():
@@ -633,7 +634,7 @@ func process_chardata(chardata, unique = false):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
+func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
 	if typeof(races) == TYPE_STRING && races == 'random':
@@ -739,7 +740,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		parent.get_ref().add_sex_trait(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
-	get_random_traits()
+	get_random_traits(trait_blacklist)
 
 
 func generate_simple_fighter(data):
@@ -1139,7 +1140,10 @@ func tick():
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.get_ref().remove_all_temp_effects_tag('pregnant')
-			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
+			if has_status('keep_baby'):
+				input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
+			else:
+				input_handler.interactive_message('childbirth_alt', 'childbirth', {pregchar = parent.get_ref()})
 
 
 func is_uncontrollable():
