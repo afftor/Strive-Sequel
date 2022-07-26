@@ -300,6 +300,7 @@ var factiondata = {
 			tags = [],
 			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant',1]],
 			slavenumber = [2, 2],
+			no_traits = ['whimp','pacifist','coward'],
 			}
 		],
 	},
@@ -337,6 +338,7 @@ var factiondata = {
 			tags = [],
 			slavenumber = [2,2],
 			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant',0.9]],
+			no_traits = ['whimp','m_inept','coward'],
 			}
 		],
 	},
@@ -386,6 +388,7 @@ var factiondata = {
 			tags = [],
 			slavenumber = [2,2],
 			traits = [['loyalty_basic_servitude', 1], ['loyalty_dress_work', 0.6]],
+			no_traits = ['crude','blundering','inept','clumsy'],
 			}
 		],
 	},
@@ -423,6 +426,7 @@ var factiondata = {
 			tags = [],
 			slavenumber = [2,3],
 			traits = [['loyalty_basic_servitude', 1], ['loyalty_adv_servitude', 0.3]],
+			no_traits = ['chaste','frigid'],
 			}
 		],
 	},

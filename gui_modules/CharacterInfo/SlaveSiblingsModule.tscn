@@ -679,10 +679,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="UpgradesPanel"]
-margin_left = 894.0
-margin_top = 14.0
-margin_right = 1397.0
-margin_bottom = 68.0
+margin_left = 995.938
+margin_top = 21.551
+margin_right = 1498.94
+margin_bottom = 75.551
 custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Trainings"

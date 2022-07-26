@@ -420,13 +420,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 895.191
-margin_top = 161.393
-margin_right = 1216.19
-margin_bottom = 228.393
+margin_left = 861.0
+margin_top = 161.0
+margin_right = 1251.0
+margin_bottom = 228.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.54902, 0.658824, 0.529412, 1 )
 text = "Class aquired"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

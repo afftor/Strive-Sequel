@@ -347,7 +347,7 @@ func use_social_skill(s_code, target):
 				if detail_tags.has("blocked") && stat == 'obedience':
 					effect_text += ' - Is in resist mode'
 				if detail_tags.has("blocked") && stat == 'loyalty':
-					effect_text += " - Can't get loyalty"
+					effect_text += " - Has already gained Loyalty today"
 			for j in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
