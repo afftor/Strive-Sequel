@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'combatant'],
+		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'combatant', 'keep_baby'],
 		effects = ['e_tr_master']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
@@ -1085,6 +1085,7 @@ var traits = {
 		effects = [],
 		bonusstats = {},  #2fix
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
+		hide_reqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		l_cost = 50,  #2fix
 		tree_position = {x = 7.5,y = 0},  #2fix
 		tags = ['loyalty', 'keep_baby']

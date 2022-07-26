@@ -330,6 +330,10 @@ func finish_character():
 		person.set_slave_category(preservedsettings.slave_class.to_lower())
 		person.set_stat('obedience', 48)
 		person.set_stat('growth_factor', 5)
+		if guild == 'fighters':
+			person.add_tarit('loyalty_combatant')
+		if guild in ['serwants', 'workers']:
+			person.add_tarit('loyalty_dress_work')
 	else:
 		person.set_slave_category('master')
 		person.set_stat('consent', 1000)
