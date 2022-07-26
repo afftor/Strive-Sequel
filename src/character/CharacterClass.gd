@@ -828,6 +828,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 	var i = ch.duplicate()
 	var check = true
 	match i.code:
+		'false':
+			return false
 		'stat':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			if ignore_npc_stats_gear:

@@ -244,15 +244,15 @@ var professions = {
 #		skills = [],
 #		combatskills = [],
 #	},
-	breeder = {
+	breeder = { #obsolete, for compat only
 		code = 'breeder',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Breeder.png"),
 		tags = [],
 		categories = ['sexual'],
-		showupreqs = [{code = "class_unlocked", class = 'breeder', operant = 'eq', check = true}],
-		reqs = [{code = 'sex', operant = 'neq', value = 'male'},{code = 'virgin', check = false},{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}],
+		showupreqs = [{code = 'false'}],
+		reqs = [{code = 'false'}],
 		statchanges = {sexuals_bonus = 10},
 		traits = ['breeder'],
 		skills = [],
