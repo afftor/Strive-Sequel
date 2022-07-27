@@ -2,7 +2,7 @@ extends Reference
 #extends Node
 
 var itemcounter = 0
-var money = 0
+var money = 0 setget set_money
 var upgrades = {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}#not sure
@@ -57,6 +57,10 @@ func serialize():
 	return res
 
 #inventory
+func set_money(value):
+	money = value
+	globals.emit_signal("update_clock")
+
 func materials_set(value):
 	var text = ''
 	for i in value:
@@ -145,6 +149,7 @@ func update_money(operant, value):
 			globals.text_log_add('money',"Gold used: " + str(value))
 		'=':
 			money = value
+	globals.emit_signal("update_clock")
 
 func update_materials(operant, material, value):
 	match operant:
@@ -154,6 +159,7 @@ func update_materials(operant, material, value):
 			materials[material] -= value
 		'=':
 			materials[material] = value
+	globals.emit_signal("update_clock")
 
 func get_item_id_by_code(itembase):
 	for item in items.values():
