@@ -514,14 +514,14 @@ func unlock_sex_trait(code):
 
 
 func create_s_trait_select(trait_id):
-	if sex_traits.has(trait_id):
-		sex_traits.erase(trait_id)
-		unlocked_sex_traits.erase(trait_id)
-	else:
-		sex_traits.clear()
-		unlocked_sex_traits.clear()
-		sex_traits[trait_id] = true
-		unlocked_sex_traits.push_back(trait_id)
+#	if sex_traits.has(trait_id):
+#		sex_traits.erase(trait_id)
+#		unlocked_sex_traits.erase(trait_id)
+#	else:
+	sex_traits.clear()
+	unlocked_sex_traits.clear()
+	sex_traits[trait_id] = true
+	unlocked_sex_traits.push_back(trait_id)
 
 func add_rare_trait():
 	var n = 1
