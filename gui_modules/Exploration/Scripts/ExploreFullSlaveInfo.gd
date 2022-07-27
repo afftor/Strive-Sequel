@@ -142,7 +142,6 @@ func hire_character():
 	person.recruit() #ResourceScripts.game_party.add_slave(person)
 	person.travel.location = gui_controller.exploration.selected_location
 	person.remove_from_task()
-	gui_controller.clock.update_labels()
 	hide()
 
 	if input_handler.scene_characters.has(person):
