@@ -219,7 +219,7 @@ func build_skills():
 			continue
 		var newbutton =  input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, "skill_selected", [i])
-		globals.connecttexttooltip(newbutton, '[center]' + i.name + '[/center]\n' + i.descript)
+		var text = '[center]' + i.name + '[/center]\n' + i.descript
 		newbutton.get_node("icon").texture = i.icon
 		newbutton.get_node("name").text = i.name
 		newbutton.set_meta('skill', i)
@@ -227,10 +227,20 @@ func build_skills():
 			newbutton.disabled = true
 		if i.ability_type == 'skill' and person.has_status('no_combat_skills'):
 			newbutton.disabled = true
+			text += "\n[color=red]Can't learn combat skills[/color]"
+			newbutton.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.material = load("res://assets/sfx/bw_shader.tres")
 		if i.ability_type == 'spell' and person.has_status('no_combat_spells'):
 			newbutton.disabled = true
+			text += "\n[color=red]Can't learn combat spells[/color]"
+			newbutton.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.material = load("res://assets/sfx/bw_shader.tres")
 		if i.tags.has('support') and person.has_status('no_combat_support'):
 			newbutton.disabled = true
+			text += "\n[color=red]Can't learn support skills[/color]"
+			newbutton.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.material = load("res://assets/sfx/bw_shader.tres")
+		globals.connecttexttooltip(newbutton, text)
 	sort_skills()
 	$SkillPanel/skillpoints_label.text = "Skill Points: " + str(person.get_ability_experience())
 	

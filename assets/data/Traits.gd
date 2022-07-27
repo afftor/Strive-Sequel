@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'combatant', 'keep_baby'],
+		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'combatant', 'keep_baby', 'body mod', 'basic_servitude', 'prostitution', ],
 		effects = ['e_tr_master']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills

@@ -108,6 +108,9 @@ func e_createfromtemplate(buff_t, caller = null):
 		'oneshot': tmp = oneshot_effect.new(caller)
 		'c_static': tmp = condition_effect.new(caller)
 		'dynamic': tmp = dynamic_effect.new(caller)
+		_: 
+			print ('wrong eff type - %s' % template.type)
+			return null
 	tmp.createfromtemplate(template)
 	return tmp
 
