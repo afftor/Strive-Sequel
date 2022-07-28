@@ -1110,7 +1110,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'loyalty_gain', value = 1},
-			{type = 'stat_add', stat = 'loyalty_gain_max', value = 1},
 		],
 		buffs = [
 			{
