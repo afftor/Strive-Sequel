@@ -3601,8 +3601,8 @@ var effect_table = {
 		name = 'date_bonus',
 		tick_event = [variables.TR_TICK],
 		args = [],
-		sub_effects = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.5}],
-		atomic = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.5}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
 			description = "Loyalty gain increased by.",
