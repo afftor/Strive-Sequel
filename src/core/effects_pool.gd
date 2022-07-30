@@ -119,3 +119,7 @@ func deserialize(tmp):
 	for k in tmp.keys():
 		var eff = deserialize_effect(tmp[k], k)
 		effects[k] = eff
+	for k in effects:
+		var eff = effects[k]
+		var tmp_e = tmp[k]
+		eff.deserialize_postload(tmp_e)

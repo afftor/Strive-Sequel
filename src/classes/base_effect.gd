@@ -227,6 +227,9 @@ func deserialize(tmp):
 	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
 	if get_applied_obj() == null: return
+
+
+func deserialize_postload(tmp):
 	buffs.clear()
 	calculate_args()
 	for b in tmp['buffs']:
@@ -235,6 +238,8 @@ func deserialize(tmp):
 		t.deserialize(b)
 		buffs.push_back(t)
 	pass
+
+
 
 func rebuild_buffs():
 	buffs.clear()
