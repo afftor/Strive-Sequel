@@ -27,6 +27,9 @@ func serialize():
 
 func deserialize(tmp):
 	.deserialize(tmp)
+
+func deserialize_postload(tmp):
+	.deserialize_postload(tmp)
 	calculate_args()
 
 func recheck():

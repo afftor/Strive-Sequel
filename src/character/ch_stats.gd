@@ -371,6 +371,7 @@ func add_stat(statname, value, revert = false):
 		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
+	if !statdata.statdata.has(statname): return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] - value)
@@ -382,6 +383,7 @@ func add_stat(statname, value, revert = false):
 		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
+	if !statdata.statdata.has(statname): return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] / value)
@@ -403,6 +405,7 @@ func mul_stat(statname, value, revert = false):
 			else: bonuses[statname + '_mul'] = value
 
 func add_part_stat(statname, value, revert = false):
+	if !statdata.statdata.has(statname): return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] /(1.0 + value))
