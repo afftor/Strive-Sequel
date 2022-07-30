@@ -1026,7 +1026,7 @@ var traits = {
 	loyalty_sex_anal = {
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_oral.png",
+		icon = "res://assets/images/iconstraits/l_anal.png",
 		effects = [],
 		bonusstats = {mod_pros = 0.1},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}], 
@@ -1081,24 +1081,24 @@ var traits = {
 	loyalty_pregnancy = {
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
-		bonusstats = {},  #2fix
-		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],  #2fix
+		bonusstats = {},
+		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}], 
 		hide_reqs = [{code = 'sex', operant = 'eq', value = 'male'}],
-		l_cost = 50,  #2fix
-		tree_position = {x = 7.5,y = 0},  #2fix
+		l_cost = 50,
+		tree_position = {x = 7.5,y = 0},
 		tags = ['loyalty', 'keep_baby']
 	},
 	loyalty_interbreed = {
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_oral.png", #2fix
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
-		bonusstats = {},  #2fix
-		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],  #2fix
-		l_cost = 75,  #2fix
-		tree_position = {x = 7, y = 6.5},  #2fix
+		bonusstats = {},
+		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],
+		l_cost = 75,
+		tree_position = {x = 7, y = 6.5},
 		tags = ['loyalty', 'breeder']
 	},
 	#rare opps

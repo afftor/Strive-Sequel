@@ -546,7 +546,16 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added Academy upgrade
+bbcode_text = "0.6.3
+Added text to Heleviel optional scene
+Revamped Obedience and Loyalty systems
+Now obedience is reduced every turn, maxed with any social skill and once hit Zero will make character escape.
+Obedience Drain is now a more distinct value which is modified by unlocked trainings, gear and Timid Factor
+Loyalty is now used to unlock character training and is obtained every turn.
+Most of disabling traits have been changed to cause penalty
+Guild slaves will no longer spawn with traits which would make their guild's position inadequate (e.g. weak combat in fighters)
+0.6.2a
+Added Academy upgrade
 Added initial sex traits to unique characters
 Added visible skill cooldown to social skills
 Daisy will lose Coward trait on completing the dress quest stage
@@ -1170,7 +1179,16 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added Academy upgrade
+text = "0.6.3
+Added text to Heleviel optional scene
+Revamped Obedience and Loyalty systems
+Now obedience is reduced every turn, maxed with any social skill and once hit Zero will make character escape.
+Obedience Drain is now a more distinct value which is modified by unlocked trainings, gear and Timid Factor
+Loyalty is now used to unlock character training and is obtained every turn.
+Most of disabling traits have been changed to cause penalty
+Guild slaves will no longer spawn with traits which would make their guild's position inadequate (e.g. weak combat in fighters)
+0.6.2a
+Added Academy upgrade
 Added initial sex traits to unique characters
 Added visible skill cooldown to social skills
 Daisy will lose Coward trait on completing the dress quest stage
