@@ -38,7 +38,7 @@ func open(character):
 
 func traitpress(tr_id):
 	person.remove_trait(tr_id)
-	ResourceScripts.game_res.remove_item("trait_removal", 1)
+	ResourceScripts.game_res.remove_item("soul_stone", 1)
 	if gui_controller.inventory != null && gui_controller.inventory.is_visible():
 		gui_controller.inventory.set_active_hero(person)
 	hide()
