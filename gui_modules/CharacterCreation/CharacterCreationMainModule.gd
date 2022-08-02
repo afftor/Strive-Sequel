@@ -286,10 +286,6 @@ func delete_keys_from_preservedsettings(keys):
 
 
 func apply_preserved_settings():
-	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
-		person.create_s_trait_select(preservedsettings.sex_traits)
-	if preservedsettings.has("traits") && preservedsettings.traits != null:
-		person.add_trait(preservedsettings.traits)
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	var keys_to_delete = []
 	for i in bodypartsarray:
@@ -319,6 +315,10 @@ func finish_character():
 #	$TraitSelection.hide()
 #	$ClassPanel.hide()
 	person.is_active = true
+	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
+		person.create_s_trait_select(preservedsettings.sex_traits)
+	if preservedsettings.has("traits") && preservedsettings.traits != null:
+		person.add_trait(preservedsettings.traits)
 	person.unlock_class(selected_class)
 	person.set_stat('food_consumption', 3)
 	person.hp = person.get_stat('hpmax')
