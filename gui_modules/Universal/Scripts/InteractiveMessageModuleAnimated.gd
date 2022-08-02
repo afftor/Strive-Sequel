@@ -83,7 +83,7 @@ func open(scene):
 	generate_scene_text(scene)
 	set_enemy(scene)
 	handle_scene_options()
-	
+	raise()
 	yield(get_tree().create_timer(0.5), "timeout")
 	hold_selection = false
 #	input_handler.print_order()

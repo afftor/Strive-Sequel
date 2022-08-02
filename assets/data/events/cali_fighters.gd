@@ -1,7 +1,7 @@
 var data = {
 	cali_sidequest_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'stat', stat = 'loyalty_max', operant = 'gte', value = 40}], negative = 'repeat_next_day'}], character = "cali",
+		reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'stat', stat = 'loyalty_total', operant = 'gte', value = 40}], negative = 'repeat_next_day'}], character = "cali",
 		text = [ {text = "CALI_SIDEQUEST_1", reqs = []} ], 
 		options = [ {
 			code = 'cali_sidequest_2', text = "CALI_SIDEQUEST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

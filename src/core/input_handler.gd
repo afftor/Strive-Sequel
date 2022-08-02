@@ -1130,7 +1130,7 @@ func finish_combat():
 	SetMusic("exploration")
 	
 	if encounter_win_script != null and !encounter_win_script.empty():
-		globals.common_effects(encounter_win_script)
+		globals.common_effects(encounter_win_script.duplicate(true))
 		encounter_win_script = null
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
