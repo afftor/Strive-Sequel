@@ -825,6 +825,7 @@ var data = {
 						{code = 'sex_skills_anal', operant = "+", value = 15},
 						{code = 'add_trait', trait = 'loyalty_sex_basic'},
 						{code = 'add_trait', trait = 'loyalty_sex_oral'},
+						{code = 'add_trait', trait = 'loyalty_sex_anal'},
 						{code = 'add_trait', trait = 'loyalty_sex_adv'},
 						{code = 'add_trait', trait = 'loyalty_sex_group'},
 					]

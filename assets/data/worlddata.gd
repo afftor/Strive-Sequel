@@ -413,7 +413,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_servants.png"),
 		background = "servants_guild",
 		reputation_shop = {
-			classes = {headgirl = 500, director = 1000, sextoy = 750, breeder = 1500},
+			classes = {headgirl = 500, director = 1000, sextoy = 750},
 			items = {writ_of_exemption = [1,300]},
 		},
 		hireable_characters = [

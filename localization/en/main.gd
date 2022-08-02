@@ -616,7 +616,7 @@ var TranslationDict = {
 	SKILLEARTH_SHATTER = "Earth Shatter",
 	SKILLEARTH_SHATTERDESCRIPT = "Deals 60% of ATK as Earth damage to all enemies. Reduces evasion by 25 for 2 turns.",
 	SKILLREVENGE = "Revenge",
-	SKILLREVENGEDESCRIPT = "Deals high physiscal damage based on health missing.",
+	SKILLREVENGEDESCRIPT = "Deals high physical damage based on health missing.",
 	SKILLFIRE_BURST = "Fire Burst",
 	SKILLFIRE_BURSTDESCRIPT = "Deals 50% of MATK as Fire damage to all enemies and reduces target's hit chance by 20 for 3 turns.",
 	SKILLAIR_CUTTER = "Air Cutter",
@@ -662,7 +662,7 @@ var TranslationDict = {
 	SKILLPROTECTIVE_SHELL = "Protective Shell",
 	SKILLPROTECTIVE_SHELLDESCRIPT = "Buffs Ally column: Reduce incoming damage by 35% for next 3 attacks.",
 	SKILLHAMMERFALL = "Hammerfall",
-	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as physiscal damage to a target. Stuns target for 2 turns. ",
+	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as physical damage to a target. Stuns target for 2 turns. ",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Remove all negative buffs from Ally target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
@@ -1187,13 +1187,13 @@ var TranslationDict = {
 	SKILLPUBLICHUMILIATION = "Public Humiliation",
 	SKILLPUBLICHUMILIATIONDESCRIPT = "Category: {color=red|Mean}\nSet up a public humiliation for selected target. Greatly improves target's behavior and slightly affects audience.\nBasic Effects: \nLoyalty: +10 (half for viewers), Maxes Obedience.",
 	SKILLPUBLICSEXHUMILIATION = "Public Sex Humiliation",
-	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Category: {color=pink|Lewd}\nSet up a public sex humiliation for the selected target, increasing Submission and a bit of Lust for all observants. \nBasic Effects: \nLoyalty: +10(half for viewers), Maxes Obedience.",
+	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Category: {color=pink|Lewd}\nSet up a public sex humiliation for the selected target, improving behavior of the target and viewers and providing a bit of Lust for all observants. \nBasic Effects: \nLoyalty: +10(half for viewers), Maxes Obedience.",
 	SKILLPUBLICEXECUTION = "Public Execution",
-	SKILLPUBLICEXECUTIONDESCRIPT = "Category: {color=red|Mean}\nExecutes selected character. Greatly improves Obedience, and Authority, but reduces Loyalty for everyone present. \nBasic Effects: \nLoyalty: +25, Maxes Obedience.",
+	SKILLPUBLICEXECUTIONDESCRIPT = "Category: {color=red|Mean}\nExecutes selected character. Greatly improves obedience of everyone involved.\nBasic Effects: \nLoyalty: +25, Maxes Obedience.",
 	SKILLALLURE = "Allure",
 	SKILLALLUREDESCRIPT = "Category: {color=green|Gracious}\nEntices the target, increasing their Obedience and reducing Obedience drain, improved by Charm.\nBasic Effects: \nObedience Drain -5 and Loyalty Gain + 1 for 5 days, Maxes Obedience.",
 	SKILLSUPREMACY = "Supremacy",
-	SKILLSUPREMACYDESCRIPT = "Category: {color=green|Gracious}\nOverwhelms target with awe and respect for caster. Greatly increases Authority.\nBasic Effects: \nLoyalty: +20, Maxes Obedience.",
+	SKILLSUPREMACYDESCRIPT = "Category: {color=green|Gracious}\nOverwhelms target with awe and respect for caster. Greatly increases Authority.\nBasic Effects: \nLoyalty: +25, Maxes Obedience.",
 	SKILLINSPIRE = "Inspire",
 	SKILLINSPIREDESCRIPT = "Buffs whole team, increasing damage, DEF and MDEF by 20% for 1 combat.",
 	SKILLHIDE = "Hide",
@@ -7317,12 +7317,34 @@ Aire searches the surroundings for some time until she finally spots a lone crys
  — You know, maybe I could. You know, Freya's high priestess is not allowed to be tainted by man's touch, so if you were a male, I'd have to refuse. But with no men here...
 
 Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slowly, she removes her elegant dress.""",
-	AFTER_TEMPLE_PRIESTESS_5_1_2 = """ — Does it make you happy that you'll get what many men can only dream of? Come, take your reward.""",
-	AFTER_TEMPLE_PRIESTESS_5_1_3 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_4 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_5 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_6 = """""", # TODO add scenes text
-	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """- I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
+	AFTER_TEMPLE_PRIESTESS_5_1_2 = """— Does it make you happy that you'll get what many men can only dream of? Come, take your reward.
+	
+	Not one to pass up such an opportunity you do indeed take your reward. Realizing as you slide up onto the bed how soft it is, impressed, only to be impressed more as you make contact with her. Her skin is soft, a soft silken touch only possible by those far from the rigorous labors you endure. 
+	
+	You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel’s response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
+	AFTER_TEMPLE_PRIESTESS_5_1_3 = """— Do not mark me.
+
+	Her rebuke showed no anger, only a single determined remark showing an expectation that it’d be obeyed. With that "order" in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
+
+	Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her “order" of not marking her a few times due to her doing the same to you.
+
+— I-I said!-""", 
+	AFTER_TEMPLE_PRIESTESS_5_1_4 = """You cut off her protests by taking her lips with your own, the elf shaking now as your hands slide up from her hips to her breast, a soft rubbing followed by a single finger sliding over her nipple soon causing that attention to occupy her mind, not anything else.
+
+	Minutes later the kiss is broken to you both panting, your mouth traveling down her as you explore, tasting along her until she’s lifted higher upon the bed, her knees lifted to your shoulders as you look up at her now, A few moments of anticipation are awarded with a soft pleasure as you start to slowly glide your tongue over the elven woman’s entrance, not spreading her petals yet, your tongue only tracing the edges of her smooth womanhood.
+
+	Heleviel for her part in this regained her composure quickly, her face still flushed as she looked down at you in thought; what thoughts you’d never know but the moment your tongue slipped between her lips and found her sensitive clit the sounds and looks she made were of pure pleasure. A few moments of tasting her soon turned into nuzzling her inner leg again, a soft nip following before you resumed your gathering of your reward.
+""", 
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Heleviel’s composure to her credit was kept for some time, her hips shaking as she would look down at you with as much dignity as was normally plastered on her face, though a shadow of pleasure hung over her eyes. The secrets to driving her on weren’t difficult to find, but her reactions were subtle until you glided your tongue directly over her clit one last time, her hand shooting down to grab at your hair, a hungry groan escaping her throat.	
+
+Understanding you’d resume licking her there, her hips rolling in your grip as she panted and moaned now, soon the sounds no longer subtle as you felt her tense now, her hips shaking as she started to cum. 
+""", 
+	AFTER_TEMPLE_PRIESTESS_5_1_6 = """Heleviel lays there for a few moments before releasing your hair, just panting now as she looks down at you then relaxes. After a few seconds you realize that this isn’t going to be a mutually beneficial arrangement and stand up as you start to redress, eyes moving over her the entire time.
+
+ — The guards will…escort you out. 
+
+	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes but you can’t help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
+	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
