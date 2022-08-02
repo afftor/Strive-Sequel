@@ -1599,6 +1599,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	if pressed:
 		unfade($SlaveMarket, 0.3)
 	else:
+		input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
 		fade($SlaveMarket, 0.3)
 
 func show_upgrade_window():

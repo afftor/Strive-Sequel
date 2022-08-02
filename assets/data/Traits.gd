@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'sex_anal', 'combatant', 'keep_baby', 'body mod', 'basic_servitude', 'prostitution', ],
+		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'sex_anal', 'combatant', 'keep_baby', 'body_mod', 'basic_servitude', 'prostitution', ],
 		effects = ['e_tr_master']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
@@ -891,7 +891,7 @@ var traits = {
 		bonusstats = {obedience_drain = -4},
 		reqs = [],
 		l_cost = 10,
-		tree_position = {x = 2, y = 0},
+		tree_position = {tab = 1, x = 2, y = 0},
 		tags = ['loyalty', 'basic_servitude'],
 		bind_trait = [] # test solution for price decreasing traits mechanic
 	},
@@ -903,7 +903,7 @@ var traits = {
 		bonusstats = {loyalty_gain = 0.5},
 		reqs = [],
 		l_cost = 15,
-		tree_position = {x = 0, y = 0},
+		tree_position = {tab = 1, x = 0, y = 0},
 		tags = ['loyalty', 'dating']
 	},
 	loyalty_combatant = {
@@ -914,7 +914,7 @@ var traits = {
 		bonusstats = {obedience_drain = -1},
 		reqs = [],
 		l_cost = 20,
-		tree_position = {x = 4, y = 0},
+		tree_position = {tab = 1, x = 4, y = 0},
 		tags = ['loyalty', 'combatant']
 	},
 	loyalty_dress_lewd = {
@@ -924,7 +924,7 @@ var traits = {
 		effects = [],
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 30,
-		tree_position = {x = 0, y = 2.5},
+		tree_position = {tab = 1, x = 0, y = 2.5},
 		tags = ['loyalty', 'dress_lewd']
 	},
 	loyalty_dress_work = {
@@ -934,7 +934,7 @@ var traits = {
 		effects = [],
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 20,
-		tree_position = {x = 1.5, y = 2.5},
+		tree_position = {tab = 1, x = 1.5, y = 2.5},
 		tags = ['loyalty', 'dress_work']
 	},
 	loyalty_bodmod = {
@@ -944,7 +944,7 @@ var traits = {
 		effects = [],
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 25,
-		tree_position = {x = 3, y = 2.5},
+		tree_position = {tab = 1, x = 3, y = 2.5},
 		tags = ['loyalty', 'body_mod']
 	},
 	loyalty_exhibitionism = {
@@ -955,7 +955,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.15},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 35,
-		tree_position = {x = 4.5, y = 2.5},
+		tree_position = {tab = 1, x = 4.5, y = 2.5},
 		tags = ['loyalty', 'exhibit']
 	},
 	loyalty_adv_servitude = {
@@ -966,7 +966,7 @@ var traits = {
 		bonusstats = {obedience_drain = -3},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 30,
-		tree_position = {x = 1, y = 5},
+		tree_position = {tab = 1, x = 1, y = 5},
 		tags = ['loyalty', 'adv_servitude']
 	},
 	loyalty_callmaster = {
@@ -977,7 +977,7 @@ var traits = {
 		bonusstats = {obedience_drain = -2},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 50,
-		tree_position = {x = 3, y = 5},
+		tree_position = {tab = 1, x = 3, y = 5},
 		tags = ['loyalty', 'callmaster']
 	},
 	loyalty_swear = {
@@ -988,7 +988,7 @@ var traits = {
 		bonusstats = {obedience_drain = -5, loyalty_gain = 1},
 		reqs = [{code = 'trait', trait = 'loyalty_adv_servitude', check = true}, {code = 'trait', trait = 'loyalty_callmaster', check = true}],
 		l_cost = 65,
-		tree_position = {x = 2, y = 7},
+		tree_position = {tab = 1, x = 2, y = 7},
 		tags = ['loyalty', 'swear_loyalty']
 	},
 	loyalty_soulbind = {
@@ -996,9 +996,10 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_collar.png",
 		effects = [], #hardcoded
-		reqs = [{code = 'has_profession', profession = 'dominator', check = true, master_check = true}],
+		reqs = [],
+		hide_reqs = [{code = 'has_profession', profession = 'dominator', check = false, master_check = true}],
 		l_cost = 50,
-		tree_position = {x = 6,y = 0},
+		tree_position = {tab = 1, x = 6,y = 0},
 		tags = ['loyalty', 'soulbind']
 	},
 	loyalty_sex_basic = {
@@ -1009,7 +1010,7 @@ var traits = {
 		bonusstats = {},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 30,
-		tree_position = {x = 6, y = 2.5},
+		tree_position = {tab = 2, x = 6, y = 2.5},
 		tags = ['loyalty', 'sex_basic']
 	},
 	loyalty_sex_oral = {
@@ -1020,7 +1021,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.1},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 30,
-		tree_position = {x = 6, y = 4.5},
+		tree_position = {tab = 2, x = 6, y = 4.5},
 		tags = ['loyalty', 'sex_oral']
 	},
 	loyalty_sex_anal = {
@@ -1031,7 +1032,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.1},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}], 
 		l_cost = 35,
-		tree_position = {x = 4.5, y = 4.5},
+		tree_position = {tab = 2, x = 4.5, y = 4.5},
 		tags = ['loyalty', 'sex_anal']
 	},
 	loyalty_sex_adv = {
@@ -1042,7 +1043,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.15},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 45,
-		tree_position = {x = 5.5, y = 6.5},
+		tree_position = {tab = 2, x = 5.5, y = 6.5},
 		tags = ['loyalty', 'sex_adv']
 	},
 	loyalty_sex_perv = {
@@ -1053,7 +1054,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.25},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],
 		l_cost = 60,
-		tree_position = {x = 5.5, y = 8.5},
+		tree_position = {tab = 2, x = 5.5, y = 8.5},
 		tags = ['loyalty', 'sex_perv']
 	},
 	loyalty_sex_group = {
@@ -1064,7 +1065,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.2},
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}],
 		l_cost = 60,
-		tree_position = {x = 7.5, y = 4.5},
+		tree_position = {tab = 2, x = 7.5, y = 4.5},
 		tags = ['loyalty', 'sex_group']
 	},
 	loyalty_prostitution = {
@@ -1075,7 +1076,7 @@ var traits = {
 		bonusstats = {mod_pros = 0.15},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 35,
-		tree_position = {x = 7.5, y = 2.5},
+		tree_position = {tab = 2, x = 7.5, y = 2.5},
 		tags = ['loyalty', 'prostitution']
 	},
 	loyalty_pregnancy = {
@@ -1087,7 +1088,7 @@ var traits = {
 		reqs = [{code = 'trait', trait = 'loyalty_sex_basic', check = true}], 
 		hide_reqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		l_cost = 50,
-		tree_position = {x = 7.5,y = 0},
+		tree_position = {tab = 2, x = 7.5,y = 0},  #2fix
 		tags = ['loyalty', 'keep_baby']
 	},
 	loyalty_interbreed = {
@@ -1095,10 +1096,10 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
-		bonusstats = {},
-		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],
-		l_cost = 75,
-		tree_position = {x = 7, y = 6.5},
+		bonusstats = {}, 
+		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],  
+		l_cost = 75,  
+		tree_position = {tab = 2, x = 7, y = 6.5},  #2fix
 		tags = ['loyalty', 'breeder']
 	},
 	#rare opps

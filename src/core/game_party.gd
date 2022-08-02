@@ -177,13 +177,13 @@ func heal_full_party():
 		i.heal(i.hp)
 
 
-func get_output_for_task(tsk, loc_id):
+func get_output_for_task(tsk, loc_id, predict = false):
 	var res = 0
 	for task in active_tasks:
 		if task.code == tsk and task.task_location == loc_id:
 			for worker_id in task.workers:
 				var tmp = characters_pool.get_char_by_id(worker_id)
-				res += tmp.get_progress_task(task.code, task.product, true)
+				res += tmp.get_progress_task(task.code, task.product, !predict)
 	return res
 
 

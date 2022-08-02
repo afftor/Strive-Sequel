@@ -17,7 +17,7 @@ var is_on_quest = false
 var quest_id
 var quest_time_remains = 0
 var quest_time_init = 0
-var selected_work_quest = null
+#var selected_work_quest = null
 
 
 func _init():
@@ -291,8 +291,8 @@ func get_quest_time_init():
 	return int(quest_time_init)
 
 
-func get_selected_work_quest():
-	return selected_work_quest
+func get_selected_quest():
+	return quest_id
 
 
 func make_unavaliable():
@@ -324,7 +324,6 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	is_on_quest = true
 	quest_time_remains = int(work_time)
 	quest_id = quest.id
-	selected_work_quest = quest
 	work = quest.name
 	parent.get_ref().set_combat_position(0)
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)

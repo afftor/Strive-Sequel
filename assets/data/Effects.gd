@@ -288,7 +288,7 @@ var effect_table = {
 	},
 	e_ltr_exhibit = {
 		type = 'static',
-		atomic = [{type = 'stat_add', bonusname = 'lusttick', value = 1}],
+		atomic = [{type = 'stat_add', stat = 'lusttick', value = 1}],
 		buffs = [],
 		sub_effects = [],
 	},

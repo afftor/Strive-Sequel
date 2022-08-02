@@ -150,7 +150,7 @@ func build_queue_list():
 	var upgrades = ResourceScripts.game_res.upgrades_queue
 	input_handler.ClearContainer(queuelist)
 	var remains = 0
-	var output = ResourceScripts.game_party.get_output_for_task("building", ResourceScripts.game_world.mansion_location)
+	var output = ResourceScripts.game_party.get_output_for_task("building", ResourceScripts.game_world.mansion_location, true)
 
 	for upgrade in upgrades:
 		var upgrade_data = upgradedata.upgradelist[upgrade]

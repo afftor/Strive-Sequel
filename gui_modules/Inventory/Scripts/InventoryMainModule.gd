@@ -94,12 +94,14 @@ func update():
 
 func set_active_hero(hero):
 	input_handler.interacted_character = hero
+	selectedhero = hero
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()
 	GearModule.show_tattoos()
 	StatsModule.open_base_stats()
 	FactorsModule.show_factors()
+	update()
 #	GearModule.show_buffs()
 
 

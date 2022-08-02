@@ -11,16 +11,20 @@ var unit_size = 80
 
 var person
 var root
+var curtab = 1
 
 func _ready():
 	gather_data()
 
-func update_upgrades_tree(ch):
+func update_upgrades_tree(ch, tab):
 	person = ch
+	curtab = tab
 	input_handler.ClearContainer(self)
 	for code in upgrades_data:
 		var panel = input_handler.DuplicateContainerTemplate(self)
 		panel.setup_upgrade(code)
+		if upgrades_data[code].tab != curtab:
+			panel.visible = false
 		panel.rect_position = unit_size * Vector2(upgrades_data[code].x, upgrades_data[code].y)
 		panel.connect("pressed", self, "learn_upgrade", [code])
 
@@ -48,6 +52,6 @@ func learn_upgrade_confirmed():
 	person.add_stat('loyalty_traits_unlocked', 1)
 	person.add_trait(selected_id)
 	selected_id = ""
-	update_upgrades_tree(person)
+	update_upgrades_tree(person, curtab)
 	root.update()
 	input_handler.play_animation("trait_aquired", args)
