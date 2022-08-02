@@ -17,7 +17,7 @@ var data = {
 		{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}], 
 		options = [ {
 			code = 'leon_encounter_start_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_active_location'},]
+			bonus_effects = [{code = 'remove_quest_location', value = 'quest_leon_forest_2'},]
 		},  ]
 	},
 	
