@@ -405,8 +405,8 @@ func check_work_rule(rule):
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
 
-func get_selected_work_quest():
-	return xp_module.get_selected_work_quest()
+func get_selected_quest():
+	return xp_module.get_selected_quest()
 
 func remove_from_work_quest():
 	xp_module.remove_from_work_quest()

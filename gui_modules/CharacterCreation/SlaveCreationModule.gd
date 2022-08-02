@@ -197,7 +197,7 @@ func select_sexbodypart(value, bodypart, node):
 	var rval = node.get_item_text(value)
 	if bodypart == 'slave_class' and rval.to_lower() == 'peon':
 		rval = 'servant'
-	get_parent().preservedsettings[bodypart] = rval
+	get_parent().preservedsettings[bodypart] = rval.to_lower()
 	get_parent().valid_preservedsettings[bodypart] = true
 	
 	get_parent().apply_preserved_settings()

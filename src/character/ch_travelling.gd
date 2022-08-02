@@ -107,7 +107,7 @@ func make_location_description():
 	return text
 
 func return_to_mansion():
-	parent.get_ref().set_work('travel')
+#	parent.get_ref().set_work('travel')
 	var active_area
 	var active_location
 	if location == 'travel':
@@ -122,8 +122,9 @@ func return_to_mansion():
 			if active_location.group[i] == parent.get_ref().id:
 				active_location.group.erase(i)
 				break
-	if ResourceScripts.game_progress.instant_travel == false:
+	if ResourceScripts.game_progress.instant_travel == false and parent.get_ref().get_work() != 'disabled':
 		location = 'travel'
+		parent.get_ref().set_work('travel')
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time)))
 		globals.emit_signal("slave_departed")

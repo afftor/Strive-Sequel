@@ -1591,7 +1591,7 @@ func calculateresults():
 	
 	person.add_stat("obedience", obedience)
 
-	if person.get_stat('consent') >= 30 or (person.has_status('basic_sex') and  person.get_stat('consent')*2 > 110 - 75):
+	if person.get_stat('consent') >= 30 or (person.has_status('sex_basic') and  person.get_stat('consent')*2 > 110 - 75):
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n\n{color=green|It seems [name] does not mind to continue this encounter...}"
 		sex_offer = true
 
