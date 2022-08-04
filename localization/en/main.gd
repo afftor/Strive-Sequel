@@ -8006,7 +8006,7 @@ Cali makes sure you realize that it's time to leave and you close the door.""",
 	SWORD_ARTIFACT_QUEST_STAGE_11 = "Deliver 50 Magic Wood, 25 Iron Wood and 15 Mythic Leather to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_12 = "Find a helper for Savra's work",
 	SWORD_ARTIFACT_QUEST_STAGE_13 = "Return to Leon once more",
-	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track dowh the White Stag",
+	SWORD_ARTIFACT_QUEST_STAGE_14 = "Track down the White Stag",
 	SWORD_ARTIFACT_QUEST_STAGE_15 = "Talk with Erlen at Elven Capital",
 	
 	TEMPLE_QUEST_NAME = "Ancient Elven Temple",

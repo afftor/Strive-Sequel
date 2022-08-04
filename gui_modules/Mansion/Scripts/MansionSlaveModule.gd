@@ -82,7 +82,9 @@ func show_slave_info():
 		$Portrait.texture = person.get_icon()
 		$sex.texture = images.icons[person.get_stat('sex')]
 		$race.texture = races.racelist[person.get_stat('race')].icon
-		globals.connecttexttooltip($sex, person.get_stat('sex').capitalize())
+		$age.texture = images.ages[person.get_stat('age')]
+		globals.connecttexttooltip($sex, "Sex: " + person.get_stat('sex').capitalize())
+		globals.connecttexttooltip($age, "Age: " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
 		globals.connecttexttooltip($race, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 		$RichTextLabel.bbcode_text = text
 

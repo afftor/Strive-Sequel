@@ -515,6 +515,12 @@ var shades = {
 
 }
 
+var ages = {
+	teen = load("res://assets/images/iconsages/T.png"),
+	adult = load("res://assets/images/iconsages/Y.png"),
+	mature = load("res://assets/images/iconsages/M.png"),
+}
+
 var cursors = {
 	default = load("res://assets/images/gui/universal/cursordefault.png"),
 	attack = load("res://assets/images/gui/universal/cursorfight.png"),

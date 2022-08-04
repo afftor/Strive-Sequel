@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=35]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=36]
+[ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=37]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -168,9 +169,9 @@ __meta__ = {
 }
 
 [node name="race" type="TextureRect" parent="."]
-margin_left = 260.416
+margin_left = 252.416
 margin_top = 146.127
-margin_right = 300.416
+margin_right = 292.416
 margin_bottom = 186.127
 texture = ExtResource( 35 )
 expand = true
@@ -180,11 +181,23 @@ __meta__ = {
 }
 
 [node name="sex" type="TextureRect" parent="."]
-margin_left = 347.201
+margin_left = 307.201
 margin_top = 146.18
-margin_right = 387.201
+margin_right = 347.201
 margin_bottom = 186.18
 texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="age" type="TextureRect" parent="."]
+margin_left = 361.201
+margin_top = 146.18
+margin_right = 401.201
+margin_bottom = 186.18
+texture = ExtResource( 37 )
 expand = true
 stretch_mode = 6
 __meta__ = {
