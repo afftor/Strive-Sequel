@@ -40,7 +40,7 @@ func show_slave_info():
 		#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
 		$exp.text = str(floor(person.get_stat('base_exp')))
 		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-		var text = "[center]"+person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
+		var text = "[center]" + person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
 		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
 		if person.xp_module.professions.size() > 5:
 			$TextureRect/ScrollContainer/professions.columns = 10 #or 9 - idk what is lesser evil
@@ -79,13 +79,7 @@ func show_slave_info():
 			temptext += combat_skills
 			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 			globals.connecttexttooltip(newnode, temptext)
-		$Portrait.texture = person.get_icon()
-		$sex.texture = images.icons[person.get_stat('sex')]
-		$race.texture = races.racelist[person.get_stat('race')].icon
-		$age.texture = images.ages[person.get_stat('age')]
-		globals.connecttexttooltip($sex, "Sex: " + person.get_stat('sex').capitalize())
-		globals.connecttexttooltip($age, "Age: " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
-		globals.connecttexttooltip($race, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
+		globals.build_attrs_for_char(self, person)
 		$RichTextLabel.bbcode_text = text
 
 		for i in ['hp','mp','lust']:

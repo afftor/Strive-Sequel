@@ -908,7 +908,7 @@ func build_location_group():
 			$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
 		)
 		newbutton.dragdata = i
-		newbutton.get_node("icon").texture = i.get_icon()
+		newbutton.get_node("icon").texture = i.get_icon_small()
 		if newbutton.get_node('icon').texture == null:
 			if i.has_profession('master'):
 				newbutton.get_node('icon').texture = images.icons.class_master
@@ -1576,7 +1576,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
 		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
-		newbutton.get_node('icon').texture = tchar.get_icon()
+		newbutton.get_node('icon').texture = tchar.get_icon_small()
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
@@ -1643,7 +1643,7 @@ func sell_slave():
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
-		newbutton.get_node('icon').texture = tchar.get_icon()
+		newbutton.get_node('icon').texture = tchar.get_icon_small()
 		globals.connectslavetooltip(newbutton, tchar)
 	if !char_list.empty():
 		var person = char_list[0]

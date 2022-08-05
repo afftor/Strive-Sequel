@@ -15,7 +15,7 @@ var storedlines = []
 func add_new_chatter(character, line):
 	var newnode = input_handler.DuplicateContainerTemplate($VBoxContainer)
 	var data = {name = character.get_short_name(), text = character.translate(line), time = str(ResourceScripts.game_globals.date) + "-" + str(ResourceScripts.game_globals.hour) + ":00"}
-	newnode.get_node("Icon").texture = character.get_icon()
+	newnode.get_node("Icon").texture = character.get_icon_small()
 	newnode.get_node("Text").text = data.text
 	newnode.get_node("Name").text = data.name
 	ResourceScripts.core_animations.UnfadeAnimation(newnode,0.3)

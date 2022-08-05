@@ -85,8 +85,7 @@ func show_summary():
 	var person
 	selected_person = input_handler.interacted_character
 	person = selected_person
-	$Portrait.texture = person.get_icon()
-	$sex.texture = images.icons[person.get_stat('sex')]
+	globals.build_attrs_for_char(self, person)
 	$Name/name.text = person.get_full_name()
 	$VBoxContainer2/TextureRect3/BaseExp.text = str(floor(person.get_stat("base_exp")))
 	$VBoxContainer2/TextureRect4/NextClassExp.text = str(person.get_next_class_exp())

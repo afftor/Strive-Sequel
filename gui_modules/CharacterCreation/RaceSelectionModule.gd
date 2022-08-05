@@ -13,12 +13,15 @@ func select_race():
 	var person = get_parent().person
 	selected_race = person.get_stat("race")
 	input_handler.ClearContainer($RaceSelection/ScrollContainer/VBoxContainer)
-	for i in races.racelist.values():
+	for id in races.racelist:
+		var i = races.racelist[id]
 		var newbutton = input_handler.DuplicateContainerTemplate($RaceSelection/ScrollContainer/VBoxContainer)
 		if person.get_stat('race') == i.code: newbutton.pressed = true
-		newbutton.text = i.name
+		newbutton.get_node('name').text = i.name
+		newbutton.get_node('icon').texture = i.icon
+		newbutton.set_meta('race', id)
 		# newbutton.connect("mouse_entered", self, 'show_race_info',[i.code])
-		newbutton.connect("pressed", self, "show_race_info", [i.code])
+		newbutton.connect("pressed", self, "show_race_info", [id])
 	show_race_info(person.get_stat("race"))
 
 
@@ -69,7 +72,7 @@ func update_buttons():
 	for button in $RaceSelection/ScrollContainer/VBoxContainer.get_children():
 		if button.name == "Button":
 			continue
-		button.pressed = selected_race == button.text
+		button.pressed = selected_race == button.get_meta('race')
 
 
 func cancel_race_selection():

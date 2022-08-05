@@ -85,6 +85,7 @@ func update():
 	SlaveInfo.update()
 	BodyModule.update()
 	ClassesModule.update()
+	SlaveSiblingsModule.update()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()

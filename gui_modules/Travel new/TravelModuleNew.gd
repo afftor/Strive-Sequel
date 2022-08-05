@@ -384,7 +384,7 @@ func make_panel_for_location(panel, loc):
 
 func make_panel_for_character(panel, ch):
 	var newbutton = panel.get_node('HBoxContainer')
-	newbutton.get_node("icon").texture = ch.get_icon()
+	newbutton.get_node("icon").texture = ch.get_icon_small()
 	newbutton.get_node("name").text = ch.get_short_name()
 	newbutton.get_node("stats/hp").max_value = ch.get_stat('hpmax')
 	newbutton.get_node("stats/hp").value = ch.hp

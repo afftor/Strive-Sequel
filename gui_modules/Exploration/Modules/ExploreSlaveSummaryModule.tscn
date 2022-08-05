@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -23,7 +23,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=27]
@@ -32,11 +32,8 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavesummary.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_professions.png" type="Texture" id=32]
-
-
-
-
-
+[ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=34]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 31 )
@@ -54,9 +51,6 @@ font_data = ExtResource( 30 )
 rect_min_size = Vector2( 220, 1050 )
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Portrait" type="TextureRect" parent="."]
 margin_left = 11.0
@@ -70,22 +64,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sex" type="TextureRect" parent="."]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -209.0
-margin_top = -515.5
-margin_right = -167.0
-margin_bottom = -478.5
-texture = ExtResource( 24 )
+[node name="race" type="TextureRect" parent="."]
+margin_left = 14.4541
+margin_top = 15.9214
+margin_right = 54.454
+margin_bottom = 55.9214
+texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 
-[node name="base_stats" type="VBoxContainer" parent="." groups=[
-"hide_stranger",
-]]
+[node name="sex" type="TextureRect" parent="."]
+margin_left = 14.2384
+margin_top = 65.3627
+margin_right = 54.2384
+margin_bottom = 105.363
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="age" type="TextureRect" parent="."]
+margin_left = 15.4827
+margin_top = 115.874
+margin_right = 55.4827
+margin_bottom = 155.874
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="base_stats" type="VBoxContainer" parent="." groups=["hide_stranger"]]
 margin_left = 8.0
 margin_top = 232.0
 margin_right = 208.0
@@ -108,8 +120,8 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 25.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "1.100"
 align = 1
 
@@ -127,8 +139,8 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 25.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "1.100"
 align = 1
 
@@ -146,8 +158,8 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 25.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "1.100"
 align = 1
 
@@ -183,9 +195,7 @@ margin_bottom = 31.0
 mouse_filter = 1
 text = "0"
 
-[node name="growth_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="growth_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 margin_right = 50.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 50, 35 )
@@ -200,8 +210,8 @@ stretch_mode = 6
 margin_left = 69.2385
 margin_right = 229.239
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Excellent"
 
 [node name="physics_factor" type="TextureRect" parent="factors"]
@@ -299,9 +309,7 @@ margin_bottom = 32.0
 custom_fonts/font = ExtResource( 3 )
 text = "25"
 
-[node name="tame_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="tame_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 245.0
@@ -320,9 +328,7 @@ margin_bottom = 32.0
 custom_fonts/font = ExtResource( 3 )
 text = "25"
 
-[node name="timid_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="timid_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 margin_top = 245.0
 margin_right = 50.0
 margin_bottom = 280.0
@@ -434,8 +440,8 @@ margin_left = 6.0
 margin_top = -2.0
 margin_right = 56.0
 margin_bottom = 30.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -447,8 +453,8 @@ margin_left = 6.0
 margin_top = 39.0
 margin_right = 56.0
 margin_bottom = 71.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -461,8 +467,8 @@ margin_left = 6.0
 margin_top = 75.0
 margin_right = 56.0
 margin_bottom = 107.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -472,8 +478,8 @@ margin_left = 6.0
 margin_top = 106.0
 margin_right = 56.0
 margin_bottom = 138.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -483,8 +489,8 @@ margin_left = 6.0
 margin_top = 142.0
 margin_right = 56.0
 margin_bottom = 174.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sexuals"
 align = 1
 clip_text = true
@@ -500,8 +506,8 @@ margin_top = -2.0
 margin_right = 50.0
 margin_bottom = 30.0
 mouse_filter = 0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -512,8 +518,8 @@ __meta__ = {
 margin_top = 39.0
 margin_right = 50.0
 margin_bottom = 71.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -522,8 +528,8 @@ clip_text = true
 margin_top = 75.0
 margin_right = 50.0
 margin_bottom = 107.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -532,8 +538,8 @@ clip_text = true
 margin_top = 106.0
 margin_right = 50.0
 margin_bottom = 138.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -542,8 +548,8 @@ clip_text = true
 margin_top = 142.0
 margin_right = 50.0
 margin_bottom = 174.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sexuals"
 align = 1
 clip_text = true
@@ -562,9 +568,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="professions" groups=[
-"ignore_rightclicks",
-]]
+[node name="Button" type="TextureRect" parent="professions" groups=["ignore_rightclicks"]]
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
@@ -630,8 +634,8 @@ margin_top = 33.0
 margin_right = 197.0
 margin_bottom = 92.0
 grow_horizontal = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Name"
 align = 1
 __meta__ = {

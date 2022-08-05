@@ -52,9 +52,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_disabled_c.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_hover_c.png" type="Texture" id=51]
 
-[node name="CharacterCreationMainModule" type="Panel" groups=[
-"ignore_rightclicks",
-]]
+[node name="CharacterCreationMainModule" type="Panel" groups=["ignore_rightclicks"]]
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -79,8 +77,8 @@ margin_left = 78.0
 margin_top = 82.0
 margin_right = 546.0
 margin_bottom = 199.0
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,8 +98,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 433.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTNAME"
 align = 1
 
@@ -110,16 +108,16 @@ margin_top = 41.0
 margin_right = 433.0
 margin_bottom = 81.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "SLAVEPARTNAME"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 margin_top = 87.0
 margin_right = 433.0
 margin_bottom = 122.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSURNAME"
 align = 1
 
@@ -128,16 +126,16 @@ margin_top = 128.0
 margin_right = 433.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Surname"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 margin_top = 174.0
 margin_right = 433.0
 margin_bottom = 209.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTNICKNAME"
 align = 1
 
@@ -146,8 +144,8 @@ margin_top = 215.0
 margin_right = 433.0
 margin_bottom = 255.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Optional"
 placeholder_alpha = 0.5
 
@@ -164,8 +162,8 @@ margin_bottom = 89.0
 [node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/SexVBox"]
 margin_right = 200.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
@@ -175,11 +173,11 @@ margin_right = 200.0
 margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_constants/arrow_margin = 5
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
@@ -191,8 +189,8 @@ margin_bottom = 89.0
 [node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/AgeVBox"]
 margin_right = 200.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTAGE"
 align = 1
 
@@ -202,10 +200,10 @@ margin_right = 200.0
 margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Age"
 align = 1
 
@@ -380,8 +378,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="ConfirmButton"]
 margin_right = 220.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "CONFIRM"
 align = 1
 valign = 1
@@ -483,8 +481,8 @@ margin_left = 74.4177
 margin_top = 2.87262
 margin_right = 111.418
 margin_bottom = 34.8726
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 1
 
@@ -529,11 +527,11 @@ margin_right = 282.05
 margin_bottom = 26.905
 rect_min_size = Vector2( 145, 0 )
 theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_icons/arrow = ExtResource( 21 )
 text = "Like"
 align = 1
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
@@ -556,11 +554,11 @@ margin_right = 282.05
 margin_bottom = 26.905
 rect_min_size = Vector2( 145, 0 )
 theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_icons/arrow = ExtResource( 21 )
 text = "Like"
 align = 1
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
@@ -580,11 +578,11 @@ margin_right = 282.05
 margin_bottom = 26.905
 rect_min_size = Vector2( 145, 0 )
 theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_icons/arrow = ExtResource( 21 )
 text = "Like"
 align = 1
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
@@ -604,11 +602,11 @@ margin_right = 282.05
 margin_bottom = 26.905
 rect_min_size = Vector2( 145, 0 )
 theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_icons/arrow = ExtResource( 21 )
 text = "Like"
 align = 1
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
@@ -622,8 +620,8 @@ margin_left = 26.8948
 margin_top = 24.0
 margin_right = 330.895
 margin_bottom = 116.0
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 text = "Select 1 Liked and at least 1 Hated food types."
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -641,8 +639,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BackButton"]
 margin_right = 260.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back to Menu"
 align = 1
 valign = 1
@@ -665,8 +663,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BackButtonCheats"]
 margin_right = 260.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back"
 align = 1
 valign = 1
@@ -729,8 +727,8 @@ margin_left = 17.0
 margin_top = 9.0
 margin_right = 427.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Savename"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -766,10 +764,6 @@ margin_left = 31.0
 margin_top = 516.0
 margin_right = 589.0
 margin_bottom = 558.0
-custom_styles/read_only = ExtResource( 40 )
-custom_styles/focus = ExtResource( 40 )
-custom_styles/normal = ExtResource( 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -777,6 +771,10 @@ custom_colors/font_color_selected = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_uneditable = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/read_only = ExtResource( 40 )
+custom_styles/focus = ExtResource( 40 )
+custom_styles/normal = ExtResource( 40 )
 placeholder_text = "SAVENAME"
 
 [node name="SaveLoadButton" type="Button" parent="SaveLoadCharPanel"]
@@ -858,13 +856,13 @@ margin_left = 110.901
 margin_top = 724.068
 margin_right = 305.901
 margin_bottom = 780.068
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/normal = ExtResource( 34 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 32 )
+custom_styles/pressed = ExtResource( 31 )
+custom_styles/normal = ExtResource( 34 )
 text = "Cancel"
 
 [node name="ClassSelectionModule" parent="." instance=ExtResource( 37 )]

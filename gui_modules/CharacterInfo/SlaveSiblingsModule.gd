@@ -67,7 +67,7 @@ func update():
 			swap_mode()
 		input_handler.ActivateTutorial("training")
 
-	$UpgradesPanel/Label.text = "Loyalty: " + str(floor(person.get_stat("loyalty")))
+	$UpgradesPanel/Label.text = str(floor(person.get_stat("loyalty")))
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():

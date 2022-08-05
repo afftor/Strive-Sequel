@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=30]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=31]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_skilltree.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -673,12 +675,28 @@ __meta__ = {
 [node name="UpgradesPanel" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 25 )
+
+[node name="TextureRect" type="TextureRect" parent="UpgradesPanel"]
+margin_left = 891.238
+margin_top = 101.301
+margin_right = 1599.24
+margin_bottom = 825.301
+texture = ExtResource( 32 )
+
+[node name="Label" type="Label" parent="UpgradesPanel"]
+margin_left = 1432.0
+margin_top = 848.0
+margin_right = 1601.0
+margin_bottom = 888.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "100"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UpgradesPanel"]
+[node name="Label2" type="Label" parent="UpgradesPanel"]
 margin_left = 995.938
 margin_top = 21.551
 margin_right = 1498.94
@@ -692,15 +710,12 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradesPanel"]
-margin_left = 859.0
+margin_left = 890.0
 margin_top = 102.0
 margin_right = 1639.0
-margin_bottom = 835.0
+margin_bottom = 826.0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UpgradesList" parent="UpgradesPanel/ScrollContainer" instance=ExtResource( 27 )]
 
@@ -777,10 +792,10 @@ __meta__ = {
 }
 
 [node name="change_button" type="TextureButton" parent="."]
-margin_left = 1169.95
-margin_top = 849.917
-margin_right = 1299.95
-margin_bottom = 889.917
+margin_left = 892.88
+margin_top = 847.244
+margin_right = 1022.88
+margin_bottom = 887.244
 texture_normal = ExtResource( 28 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 30 )
@@ -797,10 +812,10 @@ align = 1
 valign = 1
 
 [node name="change_button2" type="TextureButton" parent="."]
-margin_left = 923.95
-margin_top = 849.917
-margin_right = 1053.95
-margin_bottom = 889.917
+margin_left = 1191.51
+margin_top = 847.135
+margin_right = 1321.51
+margin_bottom = 887.135
 texture_normal = ExtResource( 28 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 30 )

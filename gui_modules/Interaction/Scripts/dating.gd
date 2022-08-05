@@ -181,8 +181,8 @@ func initiate(tempperson):
 		$fullbody.set_texture(image)
 	# $textfield/slaveportrait.texture = null
 
-	if person.get_icon() != null && person.get_icon():
-		$textfield/slaveportrait/TextureRect.set_texture(person.get_icon())
+	if person.get_icon_small() != null:
+		$textfield/slaveportrait/TextureRect.set_texture(person.get_icon_small())
 	else:
 		$textfield/slaveportrait/TextureRect.set_texture(null)
 	$textfield/slaveportrait/Name.text = person.get_short_name()

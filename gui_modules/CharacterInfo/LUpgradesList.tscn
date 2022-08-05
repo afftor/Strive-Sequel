@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_trainings_hover.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_trainings_disabled.png" type="Texture" id=4]
@@ -66,8 +66,8 @@ margin_top = 1.0
 margin_right = -1.0
 margin_bottom = 28.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Luxury rooms"
 align = 1
 valign = 2
