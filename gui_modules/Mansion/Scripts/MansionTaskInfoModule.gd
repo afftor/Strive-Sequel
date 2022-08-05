@@ -157,7 +157,7 @@ func show_resources_info():
 				var work_time_init = ch.get_quest_time_init()
 				var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
 				newtask.show()
-				newtask.get_node("Task/TaskIcon").texture = ch.get_icon()
+				newtask.get_node("Task/TaskIcon").texture = ch.get_icon_small()
 				newtask.get_node("NoResources").hide()
 				newtask.get_node("ProgressBar").max_value = work_time_init
 				newtask.get_node("ProgressBar").value = work_time_init - work_time

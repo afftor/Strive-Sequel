@@ -52,8 +52,7 @@ func show_summary(person, from_dialogue = false):
 		update_purchase_btn()
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
-	SummaryModule.get_node("Portrait").texture = person.get_icon()
-	SummaryModule.get_node("sex").texture = images.icons[person.get_stat('sex')]
+	globals.build_attrs_for_char($ExploreSlaveSummaryModule, person)
 	SummaryModule.get_node("Name/name").text = person.get_short_name()
 	SummaryModule.get_node("VBoxContainer2/TextureRect3/BaseExp").text = str(floor(person.get_stat("base_exp")))
 	SummaryModule.get_node("VBoxContainer2/TextureRect4/NextClassExp").text = str(person.get_next_class_exp())

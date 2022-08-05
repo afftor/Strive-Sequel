@@ -29,7 +29,7 @@ func showup(node, person):
 	if person != null:
 		$exp.text = str(floor(person.get_stat('base_exp')))
 #		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-		var text = person.get_short_name() + person.translate(" [race] [age]")
+		var text = "[center]" + person.get_full_name() + "[/center]"
 		input_handler.ClearContainer($TextureRect/professions)
 		if person.xp_module.professions.size() > 5:
 			$TextureRect/professions.columns = 10
@@ -48,8 +48,7 @@ func showup(node, person):
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
 			newnode.get_node("Label").text = name
 			newnode.get_node("ProfIcon").texture = prof.icon
-		$Portrait.texture = person.get_icon()
-		$sex.texture = images.icons[person.get_stat('sex')]
+		globals.build_attrs_for_char(self, person)
 		$RichTextLabel.bbcode_text = text
 
 		for i in ['hp','mp','lust']:
@@ -76,7 +75,7 @@ func showup(node, person):
 				# 	text += str(ceil(person.obedience)) + "}"
 				# else:
 				# 	text += "∞}"
-		$job.bbcode_text = globals.TextEncoder(text)
+#		$job.bbcode_text = globals.TextEncoder(text)
 
 		# for i in ['physics','wits','charm','sexuals']:
 		# 	if i != 'sexuals':

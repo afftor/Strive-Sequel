@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=38]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_disabled.png" type="Texture" id=40]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -153,10 +154,10 @@ margin_left = 21.0181
 margin_top = 2.97345
 margin_right = 95.0181
 margin_bottom = 34.9734
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 2 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -227,15 +228,15 @@ visible = false
 margin_right = 128.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )
 custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
@@ -289,6 +290,7 @@ rect_min_size = Vector2( 50, 50 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 40 )
 
 [node name="Name" type="Label" parent="CharacterList/GridContainer/Button"]
 light_mask = 0
@@ -296,8 +298,8 @@ margin_left = 104.0
 margin_top = 8.0
 margin_right = 248.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 align = 1
 clip_text = true
 __meta__ = {
@@ -376,8 +378,8 @@ margin_left = 564.0
 margin_top = 45.0
 margin_right = 802.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Occupation"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -388,8 +390,8 @@ margin_left = 1480.0
 margin_top = 45.0
 margin_right = 1763.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Character list"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -459,10 +461,10 @@ margin_left = 4.05946
 margin_top = 56.7953
 margin_right = 78.0595
 margin_bottom = 78.7953
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 7 )
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -485,8 +487,8 @@ __meta__ = {
 margin_top = -2.0
 margin_right = 197.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 29 )
 text = "Close"
 align = 1
 valign = 1
@@ -548,8 +550,8 @@ margin_left = 236.0
 margin_top = 982.0
 margin_right = 320.0
 margin_bottom = 1033.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -559,8 +561,8 @@ margin_left = 523.0
 margin_top = 982.0
 margin_right = 599.0
 margin_bottom = 1033.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -571,8 +573,8 @@ margin_top = 982.0
 margin_right = 810.0
 margin_bottom = 1033.0
 mouse_filter = 0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

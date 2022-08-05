@@ -426,7 +426,7 @@ func update_button(newbutton):
 		return
 	var person = newbutton.get_meta('slave')
 
-	newbutton.get_node("icon").texture = person.get_icon()
+	newbutton.get_node("icon").texture = person.get_icon_small()
 	newbutton.get_node("name").text = person.get_short_name()
 	if person.get_stat('unique') != null || person.get_stat('slave_class') == 'master':
 		newbutton.get_node("name").set("custom_colors/font_color", variables.hexcolordict.unique)

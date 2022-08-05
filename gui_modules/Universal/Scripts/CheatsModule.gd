@@ -95,7 +95,7 @@ func list_characters():
 	for ch in ResourceScripts.game_party.characters.values():
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList)
 		newbutton.get_node("Name").text = ch.get_full_name()
-		newbutton.get_node("Icon").texture = ch.get_icon()
+		newbutton.get_node("Icon").texture = ch.get_icon_small()
 		newbutton.connect("pressed", self, "list_character_cheats", [ch, newbutton])
 
 var selected_person

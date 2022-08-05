@@ -1034,7 +1034,10 @@ func random_icon():
 func get_icon():
 	if statlist.icon_image in ['', null]:
 		return null
-	return input_handler.loadimage(statlist.icon_image, 'portraits')
+	if statlist.icon_image is String:
+		return input_handler.loadimage(statlist.icon_image, 'portraits')
+	else:
+		return statlist.icon_image
 
 func get_icon_path():
 	if typeof(statlist.icon_image) != TYPE_STRING:

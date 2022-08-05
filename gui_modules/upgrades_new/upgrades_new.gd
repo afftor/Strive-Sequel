@@ -231,7 +231,7 @@ func build_characters():
 
 
 func update_button(newbutton, person):
-	newbutton.get_node("Icon").texture = person.get_icon()
+	newbutton.get_node("Icon").texture = person.get_icon_small()
 	newbutton.get_node("name").text = person.get_short_name()
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":

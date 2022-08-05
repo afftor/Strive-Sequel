@@ -320,7 +320,7 @@ func rebuildparticipantslist():
 		newnode.get_node("sex").set_texture(images.icons[i.sex])
 		newnode.get_node("sex").set_tooltip(i.sex)
 		newnode.get_node('HBoxContainer/arousal').value = i.sens
-		newnode.get_node("portrait").texture = i.person.get_icon()
+		newnode.get_node("portrait").texture = i.person.get_icon_small()
 		# newnode.get_node("container/portrait").connect("mouse_entered",self,'showbody',[i])
 		# newnode.get_node("container/portrait").connect("mouse_exited",self,'hidebody')
 		newnode.connect("pressed", self, 'showbody', [i])

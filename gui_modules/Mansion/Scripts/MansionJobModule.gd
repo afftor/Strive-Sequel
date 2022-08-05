@@ -39,7 +39,7 @@ func update_characters():
 		
 		var newbutton = input_handler.DuplicateContainerTemplate($CharacterList/GridContainer)
 		newbutton.get_node("Name").text = person.get_stat("name")
-		newbutton.get_node("Icon").texture = person.get_icon()
+		newbutton.get_node("Icon").texture = person.get_icon_small()
 		newbutton.disabled = false
 		if selected_job == null or selected_resource == null:
 			newbutton.disabled = true 
@@ -430,7 +430,7 @@ func show_faces():
 			if ok:
 				var b = input_handler.DuplicateContainerTemplate($GridContainer2)
 				b.connect('pressed', self, 'set_rest', [null, p])
-				b.get_node("TextureRect").texture = p.get_icon()
+				b.get_node("TextureRect").texture = p.get_icon_small()
 				if b.get_node('TextureRect').texture == null:
 					if p.has_profession('master'):
 						b.get_node('TextureRect').texture = images.icons.class_master

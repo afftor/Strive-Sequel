@@ -32,7 +32,7 @@ func update_button(newbutton):
 	if newbutton.name == 'Button':
 		return
 	var person = newbutton.get_meta('slave')
-	newbutton.get_node("HBoxContainer/icon").texture = person.get_icon()
+	newbutton.get_node("HBoxContainer/icon").texture = person.get_icon_small()
 	newbutton.get_node("HBoxContainer/name").text = person.get_full_name()
 	newbutton.get_node("HBoxContainer/sex").texture = images.icons[person.get_stat('sex')]
 	

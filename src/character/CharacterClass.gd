@@ -602,6 +602,12 @@ func get_icon(path = false):
 	if path: return statlist.get_icon_path()
 	else: return statlist.get_icon()
 
+func get_icon_small():
+	var res = get_icon()
+	if res == null:
+		res = races.racelist[get_stat('race')].icon
+	return res
+
 func get_body_image():
 	return statlist.get_body_image()
 
