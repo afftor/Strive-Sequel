@@ -101,6 +101,18 @@ func get_food_consumption():
 		counter += i.get_stat("food_consumption")
 	return counter
 
+
+func predict_char_event():
+	var res = 1000
+	for i in characters.values():
+		var tmp = i.predict_obed_time()
+		if tmp + 1 < res:
+			res = tmp + 1
+		tmp = i.predict_preg_time()
+		if tmp != null and tmp < res:
+			res = tmp
+	return res
+
 #finders
 func get_master():
 	for i in characters.values():

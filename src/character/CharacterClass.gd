@@ -197,6 +197,9 @@ func check_trait(trait):
 func predict_obed_time():
 	return statlist.predict_obed_time()
 
+func predict_preg_time():
+	return statlist.predict_preg_time()
+
 func check_infinite_obedience():
 	return statlist.check_infinite_obedience()
 
