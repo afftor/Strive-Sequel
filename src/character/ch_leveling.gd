@@ -401,14 +401,14 @@ func finish_learning():
 		'academy':
 			for st in ['physics', 'wits']:
 				var tmp = globals.rng.randi_range(20, 30)
-				parent.get_ref().add_stat(st, tmp)
+				parent.get_ref().add_stat(st + '_direct', tmp)
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
 			parent.get_ref().add_stat('base_exp', 500)
 			res_text += "\n%s + 500" % statdata.statdata.base_exp.name
 		'heir':
 			for st in ['physics', 'wits', 'charm']:
 				var tmp = globals.rng.randi_range(35, 50)
-				parent.get_ref().add_stat(st, tmp)
+				parent.get_ref().add_stat(st + '_direct', tmp)
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
 			var st = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])
 			var st1 = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])

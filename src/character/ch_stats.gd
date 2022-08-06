@@ -371,6 +371,8 @@ func add_stat(statname, value, revert = false):
 		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
+	if statname.ends_with('_direct'):
+		statname = statname.trim_suffix('_direct')
 	if !statdata.statdata.has(statname): return
 	if statdata.statdata[statname].direct:
 		if revert:
