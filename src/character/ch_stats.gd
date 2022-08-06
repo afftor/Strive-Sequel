@@ -220,6 +220,13 @@ func check_infinite_obedience():
 	return get_stat('obedience_drain') == 0 or parent.get_ref().is_master() or parent.get_ref().is_spouse()
 
 
+func predict_preg_time():
+	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
+		return statlist.pregnancy.duration
+	else: 
+		return null
+
+
 func get_short_name():
 	var text = ''
 	if statlist.nickname == '':

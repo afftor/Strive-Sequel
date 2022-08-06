@@ -128,6 +128,10 @@ func advance_turn(amount = 1):
 	if trem > 0 and trem < amount:
 		amount = trem
 		print(trem)
+	trem = ResourceScripts.game_party.predict_char_event()
+	if trem > 0 and trem < amount:
+		amount = trem
+		print(trem)
 	#main part
 	var init_delay = 0.0
 	if locked: 
