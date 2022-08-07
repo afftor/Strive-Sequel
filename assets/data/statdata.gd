@@ -440,6 +440,12 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
+	price = {
+		code = 'price',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
 
 	physics_bonus = {
 		code = 'physics_bonus',
