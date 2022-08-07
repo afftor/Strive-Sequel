@@ -784,7 +784,7 @@ var effect_table = {
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'injury'],
 		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = -20},
+			{type = 'stat_add_p', stat = 'hpmax', value = -0.2},
 		],
 		buffs = [
 			{#to fix

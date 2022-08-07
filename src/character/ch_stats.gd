@@ -310,7 +310,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
 				continue
 			if !statdata.statdata.has(rec):
