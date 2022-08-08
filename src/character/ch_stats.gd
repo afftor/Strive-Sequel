@@ -900,6 +900,10 @@ func create(temp_race, temp_gender, temp_age):
 #	learn_c_skill('attack')
 	parent.get_ref().hp = get_stat('hpmax')
 	parent.get_ref().mp = get_stat('mpmax')
+	
+	if input_handler.globalsettings.generate_portraits:
+		make_random_portrait()
+
 
 func get_racial_features():
 	var race_template = races.racelist[statlist.race]
@@ -1262,3 +1266,11 @@ func remove_tattoo(slot):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 	tattoo[slot] = null
+
+
+func make_random_portrait():
+	statlist.icon_image = ResourceScripts.rnd_main.setrandom(statlist) 
+	if statlist != null && statlist.icon_image != null && !statlist.icon_image.empty(): # this if sets the matching body image
+		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)
+		if File.new().file_exists(fullImagePath):
+			statlist.body_image = fullImagePath 

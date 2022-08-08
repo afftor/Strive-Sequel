@@ -13,6 +13,7 @@ func _ready():
 	$VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	$VBoxContainer/masternoun.connect("pressed", self, "custom_masternoun_open")
 	$VBoxContainer/icon.connect("pressed", self, "custom_icon_open", ["portrait"])
+	$VBoxContainer/icon2.connect("pressed", self, "make_random_portrait")
 	$VBoxContainer/body.connect("pressed", self, "custom_icon_open", ["body"])
 	$Label.text = "Add Custom Description"
 	$ConfirmButton.connect("pressed", self, "confirm")
@@ -77,6 +78,17 @@ func custom_icon_open(state):
 	ImageSelect.mode = state
 	ImageSelect.buildimagelist(state)
 	details_state = state
+
+
+func make_random_portrait(state):
+	unpress_buttons()
+	person = input_handler.interacted_character
+	if person != null:
+		person.make_random_portrait()
+		gui_controller.slavepanel.BodyModule.update()
+		gui_controller.slavepanel.SummaryModule.show_summary()  
+
+
 
 func confirm():
 	person = input_handler.interacted_character

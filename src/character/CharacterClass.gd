@@ -269,6 +269,9 @@ func create(temp_race, temp_gender, temp_age):
 	food.create()
 	add_trait('core_trait')
 
+func make_random_portrait():
+	statlist.make_random_portrait()
+
 func setup_baby(mother, father):
 	statlist.setup_baby(mother, father)
 
