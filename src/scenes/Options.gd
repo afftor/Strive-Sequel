@@ -21,7 +21,7 @@ func _ready():
 
 	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 
-	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
+	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent', 'generate_portraits']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
 

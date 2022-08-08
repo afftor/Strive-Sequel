@@ -175,6 +175,8 @@ var globalsettings = {
 	autosave_frequency = 4,
 	
 	sex_filter = false, # if true skips erotic scenes that doesn't match up with masters gender
+	
+	generate_portraits = true
 
 } setget settings_save
 
