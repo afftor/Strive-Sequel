@@ -165,6 +165,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_obed',
 		type = 'mental_stat',
+		is_negative = true,
 		custom_get = true,
 	},
 	obedience_max = {

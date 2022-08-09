@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=141 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -121,6 +121,9 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=119]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=120]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=121]
+[ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=122]
+[ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
+[ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -220,9 +223,6 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoPlayer" parent="." instance=ExtResource( 96 )]
 
@@ -306,15 +306,15 @@ visible = false
 margin_right = 128.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 120 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = ExtResource( 120 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
@@ -359,15 +359,15 @@ margin_left = 734.0
 margin_right = 832.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 121 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = ExtResource( 121 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Guild"
 
@@ -416,8 +416,8 @@ margin_top = -3.0
 margin_right = 272.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 272, 59 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "111111111111111"
 align = 1
 valign = 1
@@ -425,9 +425,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SlaveMarket" type="Panel" parent="." groups=[
-"pauseprocess",
-]]
+[node name="SlaveMarket" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false
 margin_left = 516.0
 margin_top = 137.0
@@ -509,8 +507,8 @@ margin_left = 53.0
 margin_top = 2.0
 margin_right = 330.0
 margin_bottom = 49.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Name"
 valign = 1
 __meta__ = {
@@ -522,8 +520,8 @@ margin_left = 326.0
 margin_top = 2.0
 margin_right = 391.0
 margin_bottom = 49.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "100"
 align = 2
 valign = 1
@@ -551,9 +549,10 @@ theme = ExtResource( 19 )
 margin_left = 733.0
 margin_top = 110.0
 margin_right = 988.0
-margin_bottom = 192.0
-custom_fonts/normal_font = ExtResource( 8 )
+margin_bottom = 158.0
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -561,8 +560,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="SlaveMarket"]
 margin_right = 517.0
 margin_bottom = 88.0
-custom_fonts/font = ExtResource( 121 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 121 )
 text = "List of Slaves"
 align = 1
 valign = 1
@@ -591,9 +590,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="SlaveMarket/TextureRect/professions" groups=[
-"ignore_rightclicks",
-]]
+[node name="Button" type="TextureRect" parent="SlaveMarket/TextureRect/professions" groups=["ignore_rightclicks"]]
 visible = false
 margin_right = 89.0
 margin_bottom = 89.0
@@ -649,22 +646,35 @@ margin_right = 714.0
 margin_bottom = 262.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="race" type="TextureRect" parent="SlaveMarket"]
+margin_left = 788.416
+margin_top = 159.127
+margin_right = 828.416
+margin_bottom = 199.127
+texture = ExtResource( 122 )
+expand = true
+stretch_mode = 6
 
 [node name="sex" type="TextureRect" parent="SlaveMarket"]
-margin_left = 540.0
-margin_top = 103.0
-margin_right = 581.0
-margin_bottom = 140.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 843.201
+margin_top = 159.18
+margin_right = 883.201
+margin_bottom = 199.18
+texture = ExtResource( 124 )
+expand = true
+stretch_mode = 6
 
-[node name="base_stats" type="VBoxContainer" parent="SlaveMarket" groups=[
-"hide_stranger",
-]]
+[node name="age" type="TextureRect" parent="SlaveMarket"]
+margin_left = 897.201
+margin_top = 159.18
+margin_right = 937.201
+margin_bottom = 199.18
+texture = ExtResource( 123 )
+expand = true
+stretch_mode = 6
+
+[node name="base_stats" type="VBoxContainer" parent="SlaveMarket" groups=["hide_stranger"]]
 margin_left = 727.0
 margin_top = 208.0
 margin_right = 991.0
@@ -692,8 +702,8 @@ stretch_margin_bottom = 5
 margin_top = -3.0
 margin_right = 262.0
 margin_bottom = 27.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -714,8 +724,8 @@ nine_patch_stretch = true
 margin_top = -4.0
 margin_right = 262.0
 margin_bottom = 26.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -736,8 +746,8 @@ nine_patch_stretch = true
 margin_top = -4.0
 margin_right = 263.0
 margin_bottom = 26.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -776,17 +786,15 @@ margin_bottom = 31.0
 mouse_filter = 1
 text = "0"
 
-[node name="growth_factor" type="Label" parent="SlaveMarket/factors" groups=[
-"hide_master",
-]]
+[node name="growth_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
 margin_right = 50.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "GRO"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/growth_factor"]
@@ -794,8 +802,8 @@ margin_left = 69.2385
 margin_top = -4.0
 margin_right = 229.239
 margin_bottom = 28.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Excellent"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -809,8 +817,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "PHY"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/physics_factor"]
@@ -829,8 +837,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "MAG"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/magic_factor"]
@@ -849,8 +857,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "WIT"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/wits_factor"]
@@ -869,8 +877,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "CHA"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/charm_factor"]
@@ -889,8 +897,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "SEX"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/sexuals_factor"]
@@ -901,9 +909,7 @@ margin_bottom = 28.0
 custom_fonts/font = ExtResource( 8 )
 text = "25"
 
-[node name="tame_factor" type="Label" parent="SlaveMarket/factors" groups=[
-"hide_master",
-]]
+[node name="tame_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
 margin_top = 198.0
 margin_right = 55.0
 margin_bottom = 233.0
@@ -911,8 +917,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "TAM"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/tame_factor"]
@@ -923,9 +929,7 @@ margin_bottom = 28.0
 custom_fonts/font = ExtResource( 8 )
 text = "25"
 
-[node name="timid_factor" type="Label" parent="SlaveMarket/factors" groups=[
-"hide_master",
-]]
+[node name="timid_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
 margin_top = 231.0
 margin_right = 54.0
 margin_bottom = 266.0
@@ -933,8 +937,8 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "TMD"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/timid_factor"]
@@ -970,8 +974,8 @@ margin_left = 722.0
 margin_top = 309.0
 margin_right = 995.0
 margin_bottom = 349.0
-custom_fonts/font = ExtResource( 120 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 120 )
 text = "Sex Traits"
 align = 1
 __meta__ = {
@@ -1002,8 +1006,8 @@ margin_right = 255.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 255, 0 )
 mouse_filter = 0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "1.100"
 align = 1
 valign = 1
@@ -1013,8 +1017,8 @@ margin_left = 722.0
 margin_top = 346.0
 margin_right = 997.0
 margin_bottom = 386.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Consent"
 align = 1
 valign = 1
@@ -1035,8 +1039,8 @@ texture_hover = ExtResource( 38 )
 margin_top = -2.0
 margin_right = 380.0
 margin_bottom = 78.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Show Info"
 align = 1
 valign = 1
@@ -1057,8 +1061,8 @@ margin_left = 107.0
 margin_right = 214.0
 margin_bottom = 42.0
 rect_scale = Vector2( -1, 1 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Hire"
 align = 1
 valign = 1
@@ -1082,8 +1086,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="SlaveMarket/SellMode"]
 margin_right = 106.0
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Sell"
 align = 1
 valign = 1
@@ -1111,8 +1115,8 @@ texture_hover = ExtResource( 36 )
 margin_top = -2.0
 margin_right = 194.0
 margin_bottom = 56.0
-custom_fonts/font = ExtResource( 120 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 120 )
 text = "Enslave"
 align = 1
 valign = 1
@@ -1130,8 +1134,8 @@ texture_hover = ExtResource( 36 )
 margin_top = -2.0
 margin_right = 194.0
 margin_bottom = 56.0
-custom_fonts/font = ExtResource( 120 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 120 )
 text = "Upgrade"
 align = 1
 valign = 1
@@ -1191,8 +1195,8 @@ margin_left = 34.0
 margin_top = 29.0
 margin_right = 264.0
 margin_bottom = 64.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Quest Title"
 align = 1
 valign = 1
@@ -1205,8 +1209,8 @@ margin_left = 34.0
 margin_top = 59.0
 margin_right = 264.0
 margin_bottom = 89.0
-custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
 text = "Requester"
 align = 1
 valign = 1
@@ -1220,8 +1224,8 @@ margin_top = 101.0
 margin_right = 239.0
 margin_bottom = 230.0
 theme = ExtResource( 19 )
-custom_fonts/normal_font = ExtResource( 29 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 29 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {
@@ -1283,8 +1287,8 @@ margin_left = 54.0
 margin_top = 292.0
 margin_right = 440.0
 margin_bottom = 324.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Requester: "
 align = 1
 valign = 1
@@ -1298,8 +1302,8 @@ margin_left = 73.0
 margin_top = 52.0
 margin_right = 422.0
 margin_bottom = 277.0
-custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1311,10 +1315,10 @@ margin_top = 715.842
 margin_right = 377.0
 margin_bottom = 781.842
 theme = ExtResource( 74 )
-custom_fonts/font = ExtResource( 121 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 121 )
 text = "Accept"
 
 [node name="questreqs" type="HBoxContainer" parent="QuestBoard/QuestDetails"]
@@ -1358,8 +1362,8 @@ margin_left = 3.0
 margin_top = 46.0
 margin_right = 70.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "100"
 align = 2
 
@@ -1403,8 +1407,8 @@ margin_left = 3.0
 margin_top = 46.0
 margin_right = 72.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "100"
 align = 2
 
@@ -1413,8 +1417,8 @@ margin_left = 54.0
 margin_top = 497.0
 margin_right = 440.0
 margin_bottom = 529.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Rewards"
 align = 1
 
@@ -1423,8 +1427,8 @@ margin_left = 54.0
 margin_top = 350.0
 margin_right = 440.0
 margin_bottom = 382.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Requirements"
 align = 1
 
@@ -1440,8 +1444,8 @@ margin_left = 41.0
 margin_top = 14.0
 margin_right = 112.0
 margin_bottom = 38.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Days:"
 
 [node name="NoQuests" type="Label" parent="QuestBoard"]
@@ -1479,8 +1483,8 @@ margin_left = 12.0
 margin_top = 679.0
 margin_right = 791.0
 margin_bottom = 712.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Reputation Earned : 10000"
 align = 1
 valign = 1
@@ -1488,8 +1492,8 @@ valign = 1
 [node name="Label" type="Label" parent="FactionDetails"]
 margin_right = 800.0
 margin_bottom = 65.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Upgrades"
 align = 1
 valign = 1
@@ -1554,8 +1558,8 @@ margin_left = 25.2283
 margin_top = 141.127
 margin_right = 81.2283
 margin_bottom = 176.127
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Price"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1576,8 +1580,8 @@ margin_top = 65.0001
 margin_right = 748.0
 margin_bottom = 92.0001
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "FactionPoints"
 align = 2
 
@@ -1586,8 +1590,8 @@ margin_left = 50.0
 margin_top = 65.0001
 margin_right = 174.0
 margin_bottom = 92.0001
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "UnspentPoints"
 align = 2
 
@@ -1628,8 +1632,8 @@ margin_left = 1.0
 margin_top = 20.0
 margin_right = 96.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Easy"
 align = 1
 
@@ -1680,8 +1684,8 @@ margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
 margin_bottom = 44.0975
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Medium"
 align = 1
 
@@ -1729,8 +1733,8 @@ margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
 margin_bottom = 44.0975
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Hard"
 align = 1
 
@@ -1783,8 +1787,8 @@ margin_left = 15.0
 margin_top = 196.0
 margin_right = 292.0
 margin_bottom = 231.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Unspent: "
 align = 1
 valign = 1
@@ -1802,9 +1806,7 @@ margin_bottom = 957.0
 [node name="LocationGui" parent="." instance=ExtResource( 98 )]
 visible = false
 
-[node name="AreaShop" type="Panel" parent="." groups=[
-"pauseprocess",
-]]
+[node name="AreaShop" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false
 margin_left = 398.0
 margin_top = 137.0
@@ -1847,8 +1849,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="AreaShop"]
 margin_right = 1123.0
 margin_bottom = 83.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Marketplace"
 align = 1
 valign = 1
@@ -2084,8 +2086,8 @@ margin_left = 69.0
 margin_top = 6.0
 margin_right = 279.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Test"
 clip_text = true
 __meta__ = {
@@ -2101,8 +2103,8 @@ margin_left = -68.0
 margin_top = -18.7131
 margin_right = -11.0
 margin_bottom = 16.2869
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "10"
 align = 2
 
@@ -2111,8 +2113,8 @@ margin_left = 340.97
 margin_top = 6.0
 margin_right = 388.97
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "1"
 align = 2
 
@@ -2121,8 +2123,8 @@ margin_left = 498.337
 margin_top = 108.88
 margin_right = 551.337
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Cost"
 
 [node name="Label2" type="Label" parent="AreaShop/SellBlock"]
@@ -2130,8 +2132,8 @@ margin_left = 387.443
 margin_top = 108.88
 margin_right = 480.443
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Number"
 
 [node name="Label3" type="Label" parent="AreaShop/SellBlock"]
@@ -2139,8 +2141,8 @@ margin_left = 113.97
 margin_top = 108.88
 margin_right = 206.97
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Item"
 align = 1
 __meta__ = {
@@ -2206,8 +2208,8 @@ margin_left = 69.0
 margin_top = 5.0
 margin_right = 279.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Test"
 clip_text = true
 __meta__ = {
@@ -2223,8 +2225,8 @@ margin_left = -68.0
 margin_top = -19.7131
 margin_right = -11.0
 margin_bottom = 15.2869
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "10"
 align = 2
 
@@ -2233,8 +2235,8 @@ margin_left = 340.97
 margin_top = 5.0
 margin_right = 388.97
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "1"
 align = 2
 
@@ -2243,8 +2245,8 @@ margin_left = 477.337
 margin_top = 108.88
 margin_right = 530.337
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Cost"
 
 [node name="Label2" type="Label" parent="AreaShop/BuyBlock"]
@@ -2252,8 +2254,8 @@ margin_left = 366.443
 margin_top = 108.88
 margin_right = 459.443
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Number"
 
 [node name="Label3" type="Label" parent="AreaShop/BuyBlock"]
@@ -2261,8 +2263,8 @@ margin_left = 88.97
 margin_top = 108.88
 margin_right = 181.97
 margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Item"
 align = 1
 __meta__ = {
@@ -2349,8 +2351,8 @@ margin_left = 384.962
 margin_top = 53.459
 margin_right = 464.962
 margin_bottom = 88.459
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "x Price"
 align = 2
 __meta__ = {
@@ -2380,8 +2382,8 @@ margin_left = 62.0
 margin_top = 83.765
 margin_right = 520.0
 margin_bottom = 142.765
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Inventory"
 align = 1
 valign = 1
@@ -2394,8 +2396,8 @@ margin_left = 610.043
 margin_top = 83.765
 margin_right = 1068.04
 margin_bottom = 142.765
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Trader"
 align = 1
 valign = 1
@@ -2430,9 +2432,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GuildShop/ScrollContainer"]
 
-[node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer" groups=[
-"ignore_rightclicks",
-]]
+[node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer" groups=["ignore_rightclicks"]]
 visible = false
 margin_right = 514.0
 margin_bottom = 108.0
@@ -2496,8 +2496,8 @@ margin_left = 115.443
 margin_top = 63.0
 margin_right = 170.443
 margin_bottom = 98.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Type"
 valign = 1
 __meta__ = {
@@ -2641,8 +2641,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="GuildShop"]
 margin_right = 610.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Reputation Shop"
 align = 1
 valign = 1
@@ -2669,8 +2669,8 @@ texture = ExtResource( 113 )
 margin_left = 9.0
 margin_right = 346.0
 margin_bottom = 81.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Locations"
 align = 1
 valign = 1
@@ -2679,8 +2679,8 @@ valign = 1
 margin_left = 353.97
 margin_right = 690.97
 margin_bottom = 81.0
-custom_fonts/font = ExtResource( 119 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
 text = "Information"
 align = 1
 valign = 1
