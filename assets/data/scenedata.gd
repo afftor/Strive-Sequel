@@ -614,7 +614,7 @@ var scenedict = {
 			races = [['monster', 1],['rare', 4]],
 			difficulty = [0,2],
 			type = 'slave',
-			bonuses = {pricemod = 0.5, obedience = 48, submission = 10},
+			bonuses = {pricemod = 0.5, obedience = 100},
 			is_hirable = true
 			}
 		},
@@ -638,7 +638,7 @@ var scenedict = {
 	common_effects = [
 		{code = 'make_scene_character',
 			value = [
-			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 24, submission = 10}, type = 'slave'}}],
+			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 100, submission = 10}, type = 'slave'}}],
 		},
 		{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 10},{code = 'affect_scene_characters', type = 'all', stat = 'submission', value = 20}],
 	options = [

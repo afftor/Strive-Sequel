@@ -986,7 +986,9 @@ var TranslationDict = {
 	STATRESIST_LIGHT = "Light Resist",
 	STATRESIST_DARK = "Dark Resist",
 	STATRESIST_MIND = "Mind Resist",
-
+	
+	STATPRICE = "Value",
+	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
 
@@ -1141,7 +1143,7 @@ var TranslationDict = {
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
 
 	SKILLPRAISE = "Praise",
-	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm. \nBasic Effects: \nLoyalty: 5, Maxes Obedience",
+	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm. \nBasic Effects: \nLoyalty: +5, Maxes Obedience",
 	SKILLWARN = "Warn",
 	SKILLWARNDESCRIPT = "Category: {color=red|Mean}\nA basic tool to instigate fear. Improved by Charm.\nBasic Effects: \nLoyalty: +5, Maxes Obedience",
 	SKILLPUNISH = "Punish",
@@ -1193,7 +1195,7 @@ var TranslationDict = {
 	SKILLALLURE = "Allure",
 	SKILLALLUREDESCRIPT = "Category: {color=green|Gracious}\nEntices the target, increasing their Obedience and reducing Obedience drain, improved by Charm.\nBasic Effects: \nObedience Drain -5 and Loyalty Gain + 1 for 5 days, Maxes Obedience.",
 	SKILLSUPREMACY = "Supremacy",
-	SKILLSUPREMACYDESCRIPT = "Category: {color=green|Gracious}\nOverwhelms target with awe and respect for caster. Greatly increases Authority.\nBasic Effects: \nLoyalty: +25, Maxes Obedience.",
+	SKILLSUPREMACYDESCRIPT = "Category: {color=green|Gracious}\nOverwhelms target with awe and respect for caster. Greatly increases Loyalty.\nBasic Effects: \nLoyalty: +25, Maxes Obedience.",
 	SKILLINSPIRE = "Inspire",
 	SKILLINSPIREDESCRIPT = "Buffs whole team, increasing damage, DEF and MDEF by 20% for 1 combat.",
 	SKILLHIDE = "Hide",
@@ -1205,7 +1207,7 @@ var TranslationDict = {
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Protects target from damage.",
 	SKILLSHAREDTOY = "Shared Toy",
-	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Only usable once in 4 days. Improved by Sexual Proficiency. Requires 75 Lust.\nBasic Effects: \nLoyalty +10, Maxes Obedience",
+	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Only usable once in 4 days. Improved by Sexual Proficiency.\nBasic Effects: \nLoyalty +10, Maxes Obedience",
 	SKILLPERFORMANCE = "Performance",
 	SKILLPERFORMANCEDESCRIPT = "Category: {color=green|Gracious}\nProvide a small rest and entertainment for your other servants. Improves with Charm.\nBasic Effects: \nLoyalty +5, Maxes Obedience.",
 
@@ -1293,7 +1295,7 @@ var TranslationDict = {
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
-	TRAITDIRECTORDESCRIPT = "Social skills build targets Authority 50% faster. ",
+	TRAITDIRECTORDESCRIPT = "Social skills are 50% more efficient. ",
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal.",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.",
@@ -2246,7 +2248,7 @@ var TranslationDict = {
 	DIALOGUEVENTFAIRYLEAVEREPLY = "After chatting for a bit you part your ways with fairy. ",
 	
 	
-	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training} - {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training} - {color=yellow|500 gold}, provides a large boost to Authority and Loyalty with a chance to improve Tame or Timid factors;\n{color=aqua|Academy} - {color=yellow|1500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs) - {color=yellow|5000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
+	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training} - {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training} - {color=yellow|500 gold}, provides a large boost to Loyalty with a chance to improve Tame or Timid factors;\n{color=aqua|Academy} - {color=yellow|1500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs) - {color=yellow|5000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
 	
 	DIALOGUETUTNOTHING = "No Training (free)",
 	DIALOGUETUTSLAVE = "Slave Training (500 Gold)",

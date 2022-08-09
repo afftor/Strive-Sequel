@@ -182,6 +182,15 @@ var growth_factor_upgrade = {
 6 : 10000,
 }
 
+var growth_factor_cost_mod = {
+	1 : 1,
+	2 : 1.2,
+	3 : 1.7,
+	4 : 2.5,
+	5 : 3.5,
+	6 : 5
+}
+
 var basestat_factor_upgrade = {
 1 : 0,
 2 : 100,

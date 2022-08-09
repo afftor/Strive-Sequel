@@ -1,3 +1,5 @@
+Fixed some traits not working correctly
+Updated gui parts related to characters
 0.6.3a
 Fixed multiple save corruption and performance issues caused by new system
 Fixed ability to pick multiple traits during character creation
