@@ -1659,7 +1659,7 @@ func show_slave_info(person):
 		button.pressed = button.get_meta("person") == person_to_hire
 	globals.connecttexttooltip($SlaveMarket/RichTextLabel, person.show_race_description())
 	$SlaveMarket/exp.text = "Exp: " + str(floor(person.get_stat('base_exp')))
-	var text = person.get_short_name() + person.translate(" [race] [age]")
+	var text = "[center]" + person.get_full_name() + "[/center]"
 	input_handler.ClearContainer($SlaveMarket/TextureRect/professions)
 	if person.xp_module.professions.size() > 5:
 		$SlaveMarket/TextureRect/professions.columns = 10
@@ -1691,7 +1691,7 @@ func show_slave_info(person):
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newnode, temptext)
 	$SlaveMarket/Portrait.texture = person.get_icon()
-	$SlaveMarket/sex.texture = images.icons[person.get_stat('sex')]
+	globals.build_attrs_for_char($SlaveMarket, person)
 	$SlaveMarket/RichTextLabel.bbcode_text = text
 
 	for i in ['hp', 'mp', 'lust']:
