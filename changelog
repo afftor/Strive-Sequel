@@ -1,5 +1,7 @@
 Fixed some traits not working correctly
 Updated gui parts related to characters
+Added automatic portrait assignment and relevant setting to default game
+Revamped slave price formula
 0.6.3a
 Fixed multiple save corruption and performance issues caused by new system
 Fixed ability to pick multiple traits during character creation

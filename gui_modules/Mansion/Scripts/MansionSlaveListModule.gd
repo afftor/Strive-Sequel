@@ -329,8 +329,7 @@ func show_location_characters(button = null):
 					get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
-	if !selected_location in ["show_all"]:
-		get_parent().TravelsModule.dislocation_area = selected_location
+	
 	if visible_persons.size() < 1:
 		selected_location = "show_all"
 		show_location_characters()
@@ -491,11 +490,14 @@ func update_button(newbutton):
 		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
 		if ploc != null: 
 			newbutton.get_node('Location').text = ploc.name
-	newbutton.get_node("job").disabled = true
-	if person.is_master() or person.has_status('basic_servitude'):
-		newbutton.get_node("job").disabled = false
+	newbutton.get_node("job").disabled = false
+	if !person.has_status('basic_servitude'):
+		newbutton.get_node("job").disabled = true
+		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
+		globals.connecttexttooltip(newbutton.get_node("job"), person.translate("[name] lacks Training: Basic Servitude"))
 	if person.travel.location == "travel" || person.is_on_quest():
 		newbutton.get_node("job").disabled = true
+		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
 	newbutton.get_node("state").texture = person.get_class_icon()
 
 
