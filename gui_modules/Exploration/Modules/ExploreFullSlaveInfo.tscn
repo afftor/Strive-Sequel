@@ -59,9 +59,6 @@ margin_top = 15.0
 margin_right = 1905.0
 margin_bottom = 1065.0
 script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1890.0
@@ -386,6 +383,53 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 26 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1198.0
+margin_top = -373.0
+margin_right = -6.0
+margin_bottom = -250.0
+theme = SubResource( 4 )
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer2"]
+custom_constants/separation = 5
+
+[node name="Button" type="TextureButton" parent="ScrollContainer2/HBoxContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 25 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer2/HBoxContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer2/HBoxContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 26 )

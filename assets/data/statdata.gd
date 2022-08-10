@@ -441,11 +441,21 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
-	price = {
+	price = { #not a real stat
 		code = 'price',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		hidden = true
+	},
+	pricemod = { #not a real stat, stub for generating descriptions
+		code = 'pricemod',
+		name = 'STATPRICE',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		default_bonus = 'add_part',
+		hidden = true
 	},
 
 	physics_bonus = {
@@ -689,6 +699,7 @@ func _ready():
 		if !val.has('custom_get'): val.custom_get = false
 		if !val.has('skip_process'): val.skip_process = false
 		if !val.has('is_negative'): val.is_negative = false
+		if !val.has('hidden'): val.hidden = false
 
 #	for st in statdata:
 #		print("'%s':" % st)

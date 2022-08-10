@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=2]
+[gd_scene load_steps=143 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -124,6 +124,8 @@
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=122]
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
+[ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=125]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -755,6 +757,7 @@ __meta__ = {
 }
 
 [node name="factors" type="VBoxContainer" parent="SlaveMarket"]
+visible = false
 margin_left = 546.0
 margin_top = 314.0
 margin_right = 667.0
@@ -969,7 +972,48 @@ margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
+[node name="scroll" type="ScrollContainer" parent="SlaveMarket"]
+margin_left = 720.957
+margin_top = 507.686
+margin_right = 994.957
+margin_bottom = 572.686
+theme = ExtResource( 19 )
+scroll_vertical_enabled = false
+
+[node name="traitscontainer" type="HBoxContainer" parent="SlaveMarket/scroll"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="SlaveMarket/scroll/traitscontainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 125 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SlaveMarket/scroll/traitscontainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 126 )
+expand = true
+
 [node name="traitslabel" type="Label" parent="SlaveMarket"]
+visible = false
 margin_left = 722.0
 margin_top = 309.0
 margin_right = 995.0
@@ -983,14 +1027,12 @@ __meta__ = {
 }
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="SlaveMarket"]
+visible = false
 margin_left = 733.0
 margin_top = 392.0
 margin_right = 989.0
 margin_bottom = 566.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="traits" type="VBoxContainer" parent="SlaveMarket/ScrollContainer2"]
 margin_right = 255.0
@@ -1013,6 +1055,7 @@ align = 1
 valign = 1
 
 [node name="ConsentLabel" type="Label" parent="SlaveMarket"]
+visible = false
 margin_left = 722.0
 margin_top = 346.0
 margin_right = 997.0

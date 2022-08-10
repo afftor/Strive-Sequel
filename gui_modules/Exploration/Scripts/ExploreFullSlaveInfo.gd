@@ -5,6 +5,7 @@ onready var Info = $ExploreSlaveInfoModule
 onready var SummaryModule = $ExploreSlaveSummaryModule
 onready var BodyModule = $SlaveBodyModule
 onready var traitlist = $ScrollContainer/HBoxContainer
+onready var traitlist2 = $ScrollContainer2/HBoxContainer
 var submodules = []
 
 
@@ -47,8 +48,10 @@ func show_summary(person, from_dialogue = false):
 		$TextureRect.visible = true
 		if gui_controller.exploration.hiremode == "sell":
 			$Price.text = str(round(person.calculate_price() / 2))
+			$ExploreSlaveInfoModule/Panel/obedlabel.visible = true
 		else:
 			$Price.text = str(round(person.calculate_price()))
+			$ExploreSlaveInfoModule/Panel/obedlabel.visible = false
 		update_purchase_btn()
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
@@ -105,6 +108,7 @@ func show_summary(person, from_dialogue = false):
 
 func update_traitlist(person):
 	globals.build_traitlist_for_char(person, traitlist)
+	globals.build_loyalty_traitlist(person, traitlist2)
 
 
 
