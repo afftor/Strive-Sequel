@@ -23,7 +23,8 @@ func _ready():
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
-	$change_button2.connect("pressed", self, 'swap_tab')
+	$change_button2.connect("pressed", self, 'swap_tab', [1])
+	$change_button3.connect("pressed", self, 'swap_tab', [2])
 	loyalty_panel.root = get_parent()
 	
 
@@ -56,7 +57,7 @@ func update():
 	person = input_handler.interacted_character
 	#relatives
 	$RelativesPanel.build_relatives()
-	loyalty_panel.update_upgrades_tree(person, loyalty_tab)
+	setup_tab()
 	if person.is_master():
 		$change_button.visible = false
 		if loyalty_mode:
@@ -242,19 +243,30 @@ func swap_mode():
 		$RelativesPanel.visible = true
 		$change_button/Label.text = "Trainings"
 		$change_button2.visible = false
+		$change_button3.visible = false
 	else:
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
 		$change_button2.visible = true
+		$change_button3.visible = true
 		$change_button/Label.text = "Relatives"
 
 
-func swap_tab():
-	if loyalty_tab == 1:
-		loyalty_tab = 2
-		$change_button2/Label.text = "Main"
+func swap_tab(tab):
+	if loyalty_tab != tab:
+		loyalty_tab = tab
+		setup_tab(true)
 	else:
-		loyalty_tab = 1
-		$change_button2/Label.text = "Sex"
-	loyalty_panel.update_upgrades_tree(person, loyalty_tab)
+		setup_tab(false)
+
+
+func setup_tab(rebuild = true):
+	if loyalty_tab == 2:
+		$change_button2.pressed = false
+		$change_button3.pressed = true
+	else:
+		$change_button2.pressed = true
+		$change_button3.pressed = false
+	if rebuild:
+		loyalty_panel.update_upgrades_tree(person, loyalty_tab)

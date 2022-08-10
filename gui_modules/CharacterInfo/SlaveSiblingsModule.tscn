@@ -82,9 +82,6 @@ margin_bottom = 920.0
 theme = ExtResource( 12 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SlaveDietModule" type="Panel" parent="."]
 show_behind_parent = true
@@ -812,10 +809,11 @@ align = 1
 valign = 1
 
 [node name="change_button2" type="TextureButton" parent="."]
-margin_left = 1191.51
+margin_left = 1086.51
 margin_top = 847.135
-margin_right = 1321.51
+margin_right = 1216.51
 margin_bottom = 887.135
+toggle_mode = true
 texture_normal = ExtResource( 28 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 30 )
@@ -824,6 +822,24 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="change_button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Main"
+align = 1
+valign = 1
+
+[node name="change_button3" type="TextureButton" parent="."]
+margin_left = 1246.51
+margin_top = 847.135
+margin_right = 1376.51
+margin_bottom = 887.135
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 30 )
+
+[node name="Label" type="Label" parent="change_button3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
