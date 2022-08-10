@@ -361,7 +361,7 @@ func build_loyalty_traitlist(person, node):
 		text += build_desc_for_bonusstats(upgrade_data.bonusstats)
 		text += tr(upgrade_data.descript)
 		globals.connecttexttooltip(button, text)
-		button.self_modulate = Color(variables.hexcolordict.green)
+#		button.self_modulate = Color(variables.hexcolordict.green)
 		if upgrade_data.icon is String:
 			button.get_node('icon').texture = load(upgrade_data.icon)
 		else:
