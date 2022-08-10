@@ -584,7 +584,7 @@ func get_class_reqs(newperson, classdata, colorcode = true):
 		text += newperson.decipher_reqs(classdata.reqs, colorcode, true)
 	return text
 
-func get_class_bonuses(newperson, classdata):
+func get_class_bonuses(newperson, classdata): #maybe there should be used the same generation of stat changes description as in loyalty traits and items 
 	var text = ''
 	for i in classdata.statchanges:
 		var data = statdata.statdata[i]

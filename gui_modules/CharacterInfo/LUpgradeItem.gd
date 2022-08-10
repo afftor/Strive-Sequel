@@ -30,7 +30,10 @@ func setup_upgrade(upgrade_id):
 	else:
 		visible = true
 	$name.text = tr(upgrade_data.name)
-	globals.connecttexttooltip(self,'[center]'+tr(upgrade_data.name)+'[/center]\n'+tr(upgrade_data.descript))
+	var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
+	text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
+	text += tr(upgrade_data.descript)
+	globals.connecttexttooltip(self, text)
 	#setup icon
 	if upgrade_data.icon is String:
 		$Image.texture = load(upgrade_data.icon)

@@ -352,6 +352,22 @@ func build_traitlist_for_char(person, node):
 				button.texture_normal = load("res://assets/images/iconstraits/red.png")
 
 
+func build_loyalty_traitlist(person, node):
+	input_handler.ClearContainer(node, ['Button'])
+	for tr in person.get_traits_by_tag('loyalty'):
+		var upgrade_data = Traitdata.traits[tr]
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
+		var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
+		text += build_desc_for_bonusstats(upgrade_data.bonusstats)
+		text += tr(upgrade_data.descript)
+		globals.connecttexttooltip(button, text)
+		button.self_modulate = Color(variables.hexcolordict.green)
+		if upgrade_data.icon is String:
+			button.get_node('icon').texture = load(upgrade_data.icon)
+		else:
+			button.get_node('icon').texture = upgrade_data.icon
+
+
 func build_buffs_for_char(person, node, mode):
 	input_handler.ClearContainer(node, ['Button'])
 	var list
@@ -388,6 +404,53 @@ func build_attrs_for_char(node, person):
 	globals.connecttexttooltip(node.get_node('sex'), "Sex: " + person.get_stat('sex').capitalize())
 	globals.connecttexttooltip(node.get_node('age'), "Age: " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
 	globals.connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
+
+
+func build_desc_for_bonusstats(bonusstats):
+	var text = ""
+	for i in bonusstats:
+		if bonusstats[i] != 0:
+			var value = bonusstats[i]
+			var data = statdata.statdata[i]
+			if data.hidden: continue
+			var change = ''
+			text += data.name + ': {color='
+			match data.default_bonus:
+				"add":
+					if data.percent:
+						value = value*100
+					if value > 0:
+						change = '+'
+					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+						text += 'green|' + change
+					else:
+						text += 'red|' + change
+					value = str(value)
+					if data.percent:
+						value = value + '%'
+				"add_part":
+					value = value*100
+					if value > 0:
+						change = '+'
+					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+						text += 'green|' + change
+					else:
+						text += 'red|' + change
+					value = str(value)
+					value = value + '%'
+				"mul":
+					value = value - 1.0
+					value = value*100
+					if value > 0:
+						change = '+'
+					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+						text += 'green|' + change
+					else:
+						text += 'red|' + change
+					value = str(value)
+					value = value + '%'
+			text += value + '}\n'
+	return text
 
 func TextEncoder(text, node = null):
 	var tooltiparray = []

@@ -9,7 +9,6 @@ func _ready():
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = input_handler.globalsettings.fullscreen
-	$TabContainer/Graphics/factors.pressed = input_handler.globalsettings.factors_as_words
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
@@ -19,11 +18,13 @@ func _ready():
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
 
-	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 
-	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent', 'generate_portraits']:
-		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
+	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
+		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
+	for i in ['generate_portraits', 'factors_as_words']:
+		get_node("TabContainer/Graphics/" + i).connect("pressed", self, "gameplay_rule", ['Graphics', i])
+		get_node("TabContainer/Graphics/" + i).pressed = input_handler.globalsettings[i]
 
 	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
 
@@ -149,12 +150,9 @@ func autosave_frequency_change(value):
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/Label.text = text
 
 
-func gameplay_rule(rule):
-	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
+func gameplay_rule(tab, rule):
+	input_handler.globalsettings[rule] = get_node("TabContainer/%s/%s" %[tab, rule]).pressed
 	if rule == "turn_based_time_flow":
 		if gui_controller.clock != null:
 			gui_controller.clock.set_time_buttons()
 
-
-func toggle_factors():
-	input_handler.globalsettings.factors_as_words = $TabContainer/Graphics/factors.pressed
