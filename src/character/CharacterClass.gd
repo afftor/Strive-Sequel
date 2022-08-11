@@ -1168,8 +1168,16 @@ func calculate_price():
 	var value = 0
 	#value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2
 	#value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*10 + get_stat('growth_factor') * 75 + get_stat('magic_factor') * 15
+	var tr_mul1 = 0
+	var tr_mul2 = 0
+	var mod_mul = 1.0
+	tr_mul1 = get_traits_by_tag('positive').size() 
+	tr_mul2 = get_traits_by_tag('negative').size()
+	mod_mul += min (tr_mul1 * 0.2, 0.6)
+	mod_mul -= tr_mul2 * 0.2 
+	if statlist.bonuses.has("price_mul"): mod_mul += statlist.bonuses.price_mul - 1.0
 	if statlist.bonuses.has("price_add"): value += statlist.bonuses.price_add
-	if statlist.bonuses.has("price_mul"): value *= statlist.bonuses.price_mul
+	value *= mod_mul
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
 	return max(50,round(value))
 

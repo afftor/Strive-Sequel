@@ -491,6 +491,7 @@ func update_button(newbutton):
 		if ploc != null: 
 			newbutton.get_node('Location').text = ploc.name
 	newbutton.get_node("job").disabled = false
+	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
 	if !person.has_status('basic_servitude'):
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])

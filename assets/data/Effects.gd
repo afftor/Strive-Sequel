@@ -89,6 +89,25 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_virgin = {
+		type = 'c_static',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'sex', operant = 'eq', value = 'female'},
+			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
+			],
+		tags = ['recheck_stats'],
+		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.5}],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Authority.png", #2fix
+			description = "Virgin", #2fix
+			limit = 1,
+			t_name = 'b_virgin',
+			mansion_only = true,
+			show_in_traits = true
+		},],
+		sub_effects = [],
+	},
 	#traits
 	e_tr_hide = {
 		type = 'trigger',
