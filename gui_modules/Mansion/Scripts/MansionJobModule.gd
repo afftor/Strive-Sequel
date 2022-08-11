@@ -43,19 +43,29 @@ func update_characters():
 		newbutton.disabled = false
 		if selected_job == null or selected_resource == null:
 			newbutton.disabled = true 
+			globals.connecttexttooltip(newbutton, "Select Resource first")
 		if !person.has_status('basic_servitude') and !person.is_master():
 			newbutton.disabled = true
+			globals.connecttexttooltip(newbutton, person.translate("[name] lacks Training: Basic Servitude"))
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
-				if person.has_status('no_sex'): newbutton.disabled = true
-				if person.has_status('no_whoring'): newbutton.disabled = true
-				if !person.has_status('prostitution'): newbutton.disabled = true
+				if person.has_status('no_sex'):
+					newbutton.disabled = true
+					globals.connecttexttooltip(newbutton, person.translate("[name] refuses to perfrorm sexual tasks"))
+				if person.has_status('no_whoring'):
+					newbutton.disabled = true
+					globals.connecttexttooltip(newbutton, person.translate("[name] refuses to perfrorm this task"))
+				if !person.has_status('prostitution'): 
+					newbutton.disabled = true
+					globals.connecttexttooltip(newbutton, person.translate("[name] lacks Training: Prostitution"))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":
 				if person.has_status('no_upgrade'): newbutton.disabled = true
 		if !(selected_resource in [null, 'rest', 'gold', 'smith','alchemy','tailor','cooking', 'building']):
 			if person.has_status('no_collect'): newbutton.disabled = true
+		if newbutton.disabled == true && selected_job != null:
+			newbutton.get_node('Name').set("custom_colors/font_color", variables.hexcolordict['red'])
 		newbutton.set_meta('slave', person)
 		newbutton.connect('pressed', self, 'character_selected', [newbutton, person])
 		newbutton.connect('mouse_entered', self, 'character_hovered', [newbutton, person])

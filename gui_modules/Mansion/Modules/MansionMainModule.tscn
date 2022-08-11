@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionMainModule.gd" type="Script" id=4]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule_old.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui_modules/Travel new/TravelModuleNew.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
@@ -18,7 +17,6 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSexSelectionModule.tscn" type="PackedScene" id=18]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionLocationsModule.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=20]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftSmallModule.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=22]
@@ -33,7 +31,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionTravelsModule.tscn" type="PackedScene" id=34]
 [ext_resource path="res://gui_modules/upgrades_new/upgrades.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/images/backgrounds/mansion_noon.png" type="Texture" id=37]
@@ -102,14 +99,6 @@ margin_right = 1420.0
 margin_bottom = 928.413
 rect_min_size = Vector2( 1100, 580 )
 
-[node name="MansionJobModule" parent="." instance=ExtResource( 7 )]
-visible = false
-margin_left = 320.0
-margin_top = 680.0
-margin_right = 1420.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 1100, 385 )
-
 [node name="MansionLogModule" parent="." instance=ExtResource( 10 )]
 margin_left = 1435.0
 margin_top = 85.0
@@ -128,20 +117,6 @@ margin_left = 320.0
 margin_top = 948.0
 margin_right = 319.84
 margin_bottom = 937.32
-
-[node name="MansionTravelsModule" parent="." instance=ExtResource( 34 )]
-visible = false
-margin_left = 320.0
-margin_top = 680.0
-margin_right = 1420.0
-margin_bottom = 1065.0
-
-[node name="MansionLocationsModule" parent="." instance=ExtResource( 19 )]
-visible = false
-margin_left = 320.0
-margin_top = 85.0
-margin_right = -500.0
-margin_bottom = -417.0
 
 [node name="MansionUpgradesModule" parent="." instance=ExtResource( 15 )]
 visible = false

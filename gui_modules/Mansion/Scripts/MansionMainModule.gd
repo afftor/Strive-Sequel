@@ -2,7 +2,6 @@ extends Control
 
 # VARIABLES
 # Modules
-onready var TravelsModule = $MansionTravelsModule
 onready var UpgradesModule_ = $upgrades
 onready var SlaveListModule = $MansionSlaveListModule
 onready var SkillModule = $MansionSkillsModule
@@ -16,7 +15,6 @@ onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule2
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
-onready var Locations = $MansionLocationsModule
 onready var submodules = []
 
 export var test_mode = false
@@ -369,26 +367,26 @@ func craft_handler():
 			ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 
 
-func travels_manager(params):
-	TravelsModule.open_character_dislocation()
-	match params.code:
-		'default':
-			is_travel_selected = false
-			selected_destination = null
-			Locations.show()
-			selected_travel_characters.clear()
-			TravelsModule.get_node("Resources").hide()
-			TravelsModule.get_node("SelectedLocation/Label").text = "Select Location"
-			TravelsModule.get_node("LocationListButton").pressed = Locations.is_visible()
-			TravelsModule.update_character_dislocation()
-			# SlaveListModule.rebuild()
-		'destination_selected':
-			is_travel_selected = true
-			selected_travel_characters.clear()
-			selected_destination = params.destination
-			TravelsModule.update_character_dislocation()
-			SlaveListModule.rebuild()
-#			TravelsModule.update_buttons()
+#func travels_manager(params):
+#	TravelsModule.open_character_dislocation()
+#	match params.code:
+#		'default':
+#			is_travel_selected = false
+#			selected_destination = null
+#			Locations.show()
+#			selected_travel_characters.clear()
+#			TravelsModule.get_node("Resources").hide()
+#			TravelsModule.get_node("SelectedLocation/Label").text = "Select Location"
+#			TravelsModule.get_node("LocationListButton").pressed = Locations.is_visible()
+#			TravelsModule.update_character_dislocation()
+#			# SlaveListModule.rebuild()
+#		'destination_selected':
+#			is_travel_selected = true
+#			selected_travel_characters.clear()
+#			selected_destination = params.destination
+#			TravelsModule.update_character_dislocation()
+#			SlaveListModule.rebuild()
+##			TravelsModule.update_buttons()
 
 func upgrades_manager():
 	SlaveListModule.rebuild()
@@ -423,7 +421,7 @@ func slave_list_manager():
 					self.selected_travel_characters.erase(active_person)
 				else:
 					self.selected_travel_characters.append(active_person)
-				TravelsModule.update_character_dislocation()
+			#	TravelsModule.update_character_dislocation()
 			SlaveListModule.rebuild()
 #			TravelsModule.update_buttons()
 		'upgrades':
