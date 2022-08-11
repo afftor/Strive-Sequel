@@ -38,6 +38,8 @@ func fix_serialization():
 	weekly_sex_max = int(weekly_sex_max)
 	weekly_dates_left = int(weekly_dates_left)
 	weekly_dates_max = int(weekly_dates_max)
+	if original_version == null: #stub, technically not correct
+		original_version = globals.gameversion
 
 
 func fix_import():

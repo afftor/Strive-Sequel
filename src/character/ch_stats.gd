@@ -261,6 +261,8 @@ func get_stat(statname, ref = false):
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
 	elif statname in ['physics','wits','charm','sexuals']:
 		res = tmp[statname] + tmp[statname + '_bonus']
+	if statname.ends_with('_factor'):
+		res = int(res)
 	return res
 
 

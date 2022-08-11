@@ -80,7 +80,7 @@ func custom_icon_open(state):
 	details_state = state
 
 
-func make_random_portrait(state):
+func make_random_portrait():
 	unpress_buttons()
 	person = input_handler.interacted_character
 	if person != null:
