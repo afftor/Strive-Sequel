@@ -491,9 +491,12 @@ func update_button(newbutton):
 		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
 		if ploc != null: 
 			newbutton.get_node('Location').text = ploc.name
-	newbutton.get_node("job").disabled = true
-	if person.is_master() or person.has_status('basic_servitude'):
-		newbutton.get_node("job").disabled = false
+	newbutton.get_node("job").disabled = false
+	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
+	if !person.has_status('basic_servitude'):
+		newbutton.get_node("job").disabled = true
+		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
+		globals.connecttexttooltip(newbutton.get_node("job"), person.translate("[name] lacks Training: Basic Servitude"))
 	if person.travel.location == "travel" || person.is_on_quest():
 		newbutton.get_node("job").disabled = true
 	newbutton.get_node("state").texture = person.get_class_icon()
