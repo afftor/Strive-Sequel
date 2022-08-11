@@ -651,14 +651,12 @@ func LoadGame(filename):
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
 
-	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
-		ResourceScripts.game_globals.hour = int(ceil(ResourceScripts.game_globals.hour / 6.0))
-	else:
-		ResourceScripts.game_globals.hour = int(ResourceScripts.game_globals.hour)
-	ResourceScripts.game_globals.date = int(ResourceScripts.game_globals.date)
+	if !compare_version(ResourceScripts.game_globals.original_version, '0.5.5b'):
+		ResourceScripts.game_globals.hour = ResourceScripts.game_globals.hour / 6
+		print(ResourceScripts.game_globals.original_version)
+		print("Warning - unsafe loading")
 	
-	
-	if compare_version(savedict.game_globals.original_version, '0.6.1 Experimental') and ResourceScripts.game_progress.decisions.has('mayor_election_finished') and !ResourceScripts.game_progress.decisions.has('startedAct2'):
+	if compare_version(ResourceScripts.game_globals.original_version, '0.6.1 Experimental') and ResourceScripts.game_progress.decisions.has('mayor_election_finished') and !ResourceScripts.game_progress.decisions.has('startedAct2'):
 		var already_stored = false
 		for k in ResourceScripts.game_progress.stored_events.timed_events:
 					if k.code == "zephyra_recruitment_letter" or k.code == "zephyra_sword_1":
@@ -670,8 +668,6 @@ func LoadGame(filename):
 				{code = 'add_timed_event', value = "zephyra_sword_1",
 				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
 			])
-#	ResourceScripts.game_globals.hour = 1
-
 	#current approach
 	# if input_handler.CurrentScene != null:
 		# input_handler.CurrentScene.queue_free()
