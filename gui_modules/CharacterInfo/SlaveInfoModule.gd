@@ -13,6 +13,7 @@ func _ready():
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	globals.connecttexttooltip($Panel/loyaltylabel, tr("TOOLTIPLOYALTYOBEDIENCE"))
+	globals.connecttexttooltip($Panel/valuelabel, tr("TOOLTIPVALUE"))
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
@@ -74,6 +75,7 @@ func update():
 	
 		$Panel/loyaltylabel.text = "Loyalty Gain: " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\nObedience Drain: " + str(person.get_stat("obedience_drain"))
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
+		$Panel/valuelabel.text = str(person.calculate_price())
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
 

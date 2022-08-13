@@ -1,7 +1,12 @@
+0.6.4a
+Fixed issue with saves
+Fixed nereids have incorrect data
+Added trait for virginity
+0.6.4
 Fixed some traits not working correctly
 Updated gui parts related to characters
 Added automatic portrait assignment and relevant setting to default game
-Revamped slave price formula
+Revamped slave price formula and added price bonuses on certain training and classes
 0.6.3a
 Fixed multiple save corruption and performance issues caused by new system
 Fixed ability to pick multiple traits during character creation

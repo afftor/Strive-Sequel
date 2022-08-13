@@ -769,6 +769,7 @@ var TranslationDict = {
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
+	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features.",
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -1011,7 +1012,7 @@ var TranslationDict = {
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
-	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience it will take to unlock a new class until the soft cap limit.",
+	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience it will take to unlock a new class until the soft cap limit. Growth Factor also highly affects character's Value.",
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
@@ -5138,7 +5139,7 @@ You realize there's nothing you can say to change Anastasia's mind at this point
 	ANASTASIA_PERSUASION_42 = """
 
 — Hello, [name]... I've been thinking a lot about this. I think you're right. I shouldn't throw my life away. I... I think I can acknowledge the guilds and beg mercy for my actions, but I'm still unsure if I should become yours.""",
-	ANASTASIA_PERSUASION_OPTION_36 = """I wish you reunite you with your friend (Call Aire)""",
+	ANASTASIA_PERSUASION_OPTION_36 = """I wish to reunite you with your friend (Call Aire)""",
 	ANASTASIA_PERSUASION_OPTION_37 = """I wanted to return something of yours""",
 	ANASTASIA_PERSUASION_OPTION_38 = """Eventually we'll have to come to an agreement""",
 	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later""",

@@ -97,10 +97,10 @@ var effect_table = {
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
 		tags = ['recheck_stats'],
-		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.25}],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Authority.png", #2fix
-			description = "Virgin", #2fix
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+			description = "[name] is a virgin. Value is increased by 25%%",
 			limit = 1,
 			t_name = 'b_virgin',
 			mansion_only = true,
