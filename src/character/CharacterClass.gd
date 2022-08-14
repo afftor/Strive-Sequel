@@ -379,6 +379,7 @@ func set_travel_time(value):
 	travel.set_travel_time(value)
 
 func return_to_mansion():
+	xp_module.remove_from_task()
 	travel.return_to_mansion()
 
 func recruit(enslave = false):
