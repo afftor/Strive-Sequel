@@ -111,7 +111,7 @@ func predict_char_event():
 		tmp = i.predict_preg_time()
 		if tmp != null and tmp < res:
 			res = tmp
-	return res
+	return int(ceil(res))
 
 #finders
 func get_master():
