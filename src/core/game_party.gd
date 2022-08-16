@@ -209,15 +209,21 @@ func calculate_food_consumption():
 	return res
 
 #reworked from globals
+func get_relatives_data(id):
+	if !relativesdata.has(id):
+		return null
+	return relativesdata[id]
+
+
 func connectrelatives_old(person1, person2, way):
 	if person1 == null || person2 == null:
 		return
-	if ResourceScripts.game_party.relativesdata.has(person1.id) == false:
+	if relativesdata.has(person1.id) == false:
 		createrelativesdata(person1)
-	if ResourceScripts.game_party.relativesdata.has(person2.id) == false:
+	if relativesdata.has(person2.id) == false:
 		createrelativesdata(person2)
 	if way in ['mother','father']:
-		var entry = ResourceScripts.game_party.relativesdata[person1.id]
+		var entry = relativesdata[person1.id]
 		entry.children.append(person2.id)
 		for i in entry.children:
 			if i != person2.id:

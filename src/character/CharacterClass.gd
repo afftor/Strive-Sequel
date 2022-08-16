@@ -426,6 +426,31 @@ func get_skill_by_tag(tg):
 func baby_transform():
 	statlist.baby_transform()
 
+
+func setup_as_heir():
+	var reldata = ResourceScripts.game_party.get_relatives_data(id)
+	if reldata == null: return #possibly error
+	if reldata.father == null or reldata.mother == null: return
+	var mreldata = ResourceScripts.game_party.get_relatives_data(reldata.mother)
+	var freldata = ResourceScripts.game_party.get_relatives_data(reldata.father)
+	if mreldata == null or freldata == null: return
+	var mother = characters_pool.get_char_by_id(mreldata.id)
+	var father = characters_pool.get_char_by_id(freldata.id)
+	if mother == null or father == null: return
+	if mother.is_master():
+		if father.is_spouse():
+			set_slave_category('heir')
+		else:
+			set_slave_category('slave')
+	elif mother.is_spouse():
+		if father.is_master():
+			set_slave_category('heir')
+		else:
+			set_slave_category(mother.get_stat('slave_class'))
+	else:
+		set_slave_category(mother.get_stat('slave_class'))
+
+
 func get_weapon_element():
 	#for testing
 	return equipment.get_weapon_element()

@@ -425,6 +425,7 @@ func set_baby_name(text):
 	input_handler.active_character.get_stat('pregnancy', true).baby = null
 	person.set_stat('obedience', 24)
 	person.set_stat('name', text)
+	person.setup_as_heir()
 	ResourceScripts.game_party.add_slave(person, true)
 	input_handler.interactive_message_follow('select_tutelage', '', '')
 #	if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
