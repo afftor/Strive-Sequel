@@ -136,7 +136,9 @@ func add_stat(statname, value, revert = false):
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')
 		else: 
-			xp_module.base_exp += value 
+			xp_module.base_exp += value
+	elif statname == 'base_exp_direct':
+			xp_module.base_exp += value
 	elif statname == 'abil_exp':
 		if value > 0:
 			xp_module.abil_exp += value * get_stat('exp_gain_mod')
@@ -623,8 +625,6 @@ func get_quest_time_remains():
 	return xp_module.get_quest_time_remains()
 
 func quest_day_tick():
-	if self.is_on_quest():
-		add_stat("base_exp", 12)
 	xp_module.quest_day_tick()
 
 func use_mansion_item(item):
