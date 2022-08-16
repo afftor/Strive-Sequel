@@ -398,14 +398,14 @@ func finish_learning():
 			else:
 				parent.get_ref().add_stat('timid_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.timid_factor.name
-			parent.get_ref().add_stat('base_exp', 150)
+			parent.get_ref().add_stat('base_exp_direct', 150)
 			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
 		'academy':
 			for st in ['physics', 'wits']:
 				var tmp = globals.rng.randi_range(20, 30)
 				parent.get_ref().add_stat(st + '_direct', tmp)
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
-			parent.get_ref().add_stat('base_exp', 500)
+			parent.get_ref().add_stat('base_exp_direct', 500)
 			res_text += "\n%s + 500" % statdata.statdata.base_exp.name
 		'heir':
 			for st in ['physics', 'wits', 'charm']:
