@@ -849,18 +849,6 @@ func setup_baby(mother, father):
 #		statlist.slave_class = mother.get_stat('slave_class')
 #	else:
 #		statlist.slave_class = 'slave'
-	if mother.is_master():
-		if father.is_spouse():
-			set_slave_category('heir')
-		else:
-			set_slave_category('slave')
-	elif mother.is_spouse():
-		if father.is_master():
-			set_slave_category('heir')
-		else:
-			set_slave_category(mother.get_stat('slave_class'))
-	else:
-		set_slave_category(mother.get_stat('slave_class'))
 
 func create(temp_race, temp_gender, temp_age):
 	statlist.race = temp_race
