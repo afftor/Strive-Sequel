@@ -873,6 +873,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = 'erlen', character2 = 'leon',
 		text = [{text = 'ERLEN_LEON_1', reqs = []},],
+		common_effects = [{code = 'remove_quest_location', value = 'quest_erlen_location'}],
 		options = [ {
 			code = 'erlen_leon_2', text = "ERLEN_LEON_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {

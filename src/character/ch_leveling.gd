@@ -353,6 +353,8 @@ func get_quest_time_remains():
 
 func quest_day_tick():
 	if quest_time_remains > 0:
+		if work != 'learning':
+			parent.get_ref().add_stat("base_exp", 12)
 		quest_time_remains -= 1
 		if quest_time_remains <= 0 and work != "disabled" and work != 'learning':
 			remove_from_work_quest()
@@ -396,22 +398,22 @@ func finish_learning():
 			else:
 				parent.get_ref().add_stat('timid_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.timid_factor.name
-			parent.get_ref().add_stat('base_exp', 150)
+			parent.get_ref().add_stat('base_exp_direct', 150)
 			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
 		'academy':
 			for st in ['physics', 'wits']:
 				var tmp = globals.rng.randi_range(20, 30)
 				parent.get_ref().add_stat(st + '_direct', tmp)
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
-			parent.get_ref().add_stat('base_exp', 500)
+			parent.get_ref().add_stat('base_exp_direct', 500)
 			res_text += "\n%s + 500" % statdata.statdata.base_exp.name
 		'heir':
 			for st in ['physics', 'wits', 'charm']:
 				var tmp = globals.rng.randi_range(35, 50)
 				parent.get_ref().add_stat(st + '_direct', tmp)
 				res_text += "\n%s + %d" % [statdata.statdata[st].name, tmp]
-			var st = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])
-			var st1 = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sex_factor'])
+			var st = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sexuals_factor'])
+			var st1 = input_handler.random_from_array(['physics_factor', 'wits_factor', 'charm_factor', 'sexuals_factor'])
 			parent.get_ref().add_stat(st, 1) 
 			parent.get_ref().add_stat(st1, 1) 
 			if st == st1:
@@ -422,7 +424,7 @@ func finish_learning():
 			var tr = parent.get_ref().get_random_trait_tag('positive')
 			parent.get_ref().add_trait(tr)
 			res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
-			parent.get_ref().add_stat('base_exp', 1000)
+			parent.get_ref().add_stat('base_exp_direct', 1000)
 			res_text += "\n%s + 1000" % statdata.statdata.base_exp.name
 		_: pass
 	var data = {text = '', tags = ['skill_report_event'], options = [], image = null} #not sure if this tag is correct and/or reqiured
@@ -434,7 +436,7 @@ func finish_learning():
 
 
 func work_tick():
-	if is_on_quest():
+	if is_on_quest:
 		return
 	var currenttask
 	for i in ResourceScripts.game_party.active_tasks:
