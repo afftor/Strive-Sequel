@@ -1165,7 +1165,7 @@ var TranslationDict = {
 	SKILLCONSUME_SOUL = "Consume Soul",
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and reduce Obedience drain by 25% for 1 day. Requires 20 lust. Improved by Charm. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience",
+	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and reduce Obedience drain for 5 days. Requires 20 lust. Improved by Charm. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. ",
 	SKILLSEDATE = "Sedate",

@@ -25,6 +25,7 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
+var permanent_classes = ['master','renown_royalty','broken_royalty','alios_champion']
 
 
 #var hour_turn_limit = 8

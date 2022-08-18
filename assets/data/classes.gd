@@ -916,6 +916,22 @@ var professions = {
 		conflict_classes = [],
 	},
 	
+	freyas_priestess = {
+		code = 'freyas_priestess',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/freyas_priestess.png"),
+		tags = [],
+		categories = ['combat','magic'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code ='cant_spawn_naturally'}],
+		statchanges = {wits_bonus = 10, mpmax = 15, price = 750},
+		traits = ['basic_spells','advanced_spells'],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
+	
 	spouse = {
 		code = 'spouse',
 		name = '',

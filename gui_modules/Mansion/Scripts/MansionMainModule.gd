@@ -902,7 +902,7 @@ func test_mode():
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
-#		ResourceScripts.game_progress.decisions.append("ivitations_made")
+#		ResourceScripts.game_progress.decisions.append("marry_invitations_made")
 		
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 

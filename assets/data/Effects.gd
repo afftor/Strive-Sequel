@@ -99,8 +99,8 @@ var effect_table = {
 		tags = ['recheck_stats'],
 		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.25}],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "[name] is a virgin. Value is increased by 25%%",
+			icon = "res://assets/images/iconstraits/lotus.png",
+			description = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
 			limit = 1,
 			t_name = 'b_virgin',
 			mansion_only = true,
