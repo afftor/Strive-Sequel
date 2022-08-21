@@ -114,7 +114,7 @@ var data = {
 		character = "amelia",
 		text = [{text = "MARRIAGE_SERVANTS_COMPLETE_3", reqs = []}],
 		options = [ 
-			{code = 'marriage_servants_completed_4', text = "MARRIAGE_SERVANTS_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'ivitations_made'}]},
+			{code = 'marriage_servants_completed_4', text = "MARRIAGE_SERVANTS_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'marry_invitations_made'}]},
 			{code = 'marriage_servants_completed_4', text = "MARRIAGE_SERVANTS_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			],
 	},
@@ -257,8 +257,8 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		text = [{text = "MARRIAGE_FINAL_6", reqs = []}],
 		options = [ 
-			{code = 'marriage_final_7', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'ivitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'ivitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'marriage_final_7', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue'},
 			],
 	},
 	marriage_final_7 = {

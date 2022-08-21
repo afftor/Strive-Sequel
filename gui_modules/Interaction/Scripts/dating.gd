@@ -979,14 +979,26 @@ func propose(person, counter):
 var sexmode
 
 var unique_marry_rules = {
+	anastasia = {
+		marriage_agreed = {
+			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = true}],
+			text = "As by our agreement... I'm ready to become your wife.",
+			agrees = true
+			},
+		enslavement_agreed = {
+			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = false}],
+			text = "Sorry, this is not going to happen, even if you say so, I'm not allowed to marry you. ",
+			agrees = false
+			},
+	},
 	aire = {
 		ana_alive = {
-			reqs = [],
+			reqs = [{type = 'decision', value = 'PrincessObtained', check = true}],
 			text = "Regardless of my feelings towards you, I can't agree to it. You must marry Ana, not me.",
 			agrees = false
 			},
 		ana_dead = {
-			reqs = [],
+			reqs = [{type = 'decision', value = 'PrincessDead', check = true}],
 			text = "Don't waste your time. I will never agree to this after what happened to Ana.",
 			agrees = false
 			},
@@ -1015,25 +1027,26 @@ func ask_to_marry(person, counter):
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agreed_before')) + "\n"
 		return text
 	
-	if person.has_status('swear_loyalty'):
-		if unique_marry_rules.has(person.get_stat('unique')):
-			for i in unique_marry_rules[person.get_stat('unique')]:
-				if globals.valuecheck(i.reqs):
-					gave_consent = i.agrees
-					if gave_consent:
-						text += "{color=green|"
-						text += input_handler.weightedrandom(date_lines.agreed_to_marry)
-					else:
-						
-						text += "{color=red|"
-						text += input_handler.weightedrandom(date_lines.refused_to_marry)
-					text += "}"
-						
-					break
-		else:
+	if unique_marry_rules.has(person.get_stat('unique')):
+		for i in unique_marry_rules[person.get_stat('unique')]:
+			if globals.valuecheck(i.reqs):
+				gave_consent = i.agrees
+				if gave_consent:
+					text += "{color=green|"
+					text += input_handler.weightedrandom(date_lines.agreed_to_marry)
+				else:
+					
+					text += "{color=red|"
+					text += input_handler.weightedrandom(date_lines.refused_to_marry)
+				text += "}"
+					
+				break
+	else:
+		if person.has_status('swear_loyalty'):
 			gave_consent = true
 	
-		
+	
+	
 	if gave_consent:
 		person.set_stat('agreed_to_marry', true)
 		self.mood += 50

@@ -446,7 +446,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		hidden = true
+		hidden = false
 	},
 	pricemod = { #not a real stat, stub for generating descriptions
 		code = 'pricemod',
@@ -455,7 +455,7 @@ var statdata = {
 		baseicon = 'food_love',
 		percent = true,
 		default_bonus = 'add_part',
-		hidden = true
+		hidden = false
 	},
 
 	physics_bonus = {

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=9]
@@ -117,12 +118,15 @@ valign = 1
 "hide_stranger",
 ]]
 light_mask = 0
-margin_left = 53.591
-margin_top = 103.666
-margin_right = 232.591
-margin_bottom = 135.666
+margin_left = 26.0
+margin_top = 143.0
+margin_right = 278.0
+margin_bottom = 197.0
 mouse_filter = 0
 text = "Loyalty: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="character_class" type="Label" parent="Panel" groups=[
 "hide_master",
@@ -141,6 +145,32 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="valuelabel" type="Label" parent="Panel" groups=[
+"hide_master",
+]]
+light_mask = 0
+margin_left = 138.636
+margin_top = 93.8409
+margin_right = 265.636
+margin_bottom = 135.841
+mouse_filter = 1
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Slave"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="valueicon" type="TextureRect" parent="Panel" groups=[
+"hidemaster",
+]]
+margin_left = 95.9311
+margin_top = 91.6577
+margin_right = 139.931
+margin_bottom = 135.658
+texture = ExtResource( 4 )
 
 [node name="BaseStatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

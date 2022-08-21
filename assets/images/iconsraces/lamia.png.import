@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spouse.png-929283d79b287546ea1688063a344031.stex"
+path="res://.import/lamia.png-dfa212bad148fefd990a2df5115deee8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Spouse.png"
-dest_files=[ "res://.import/Spouse.png-929283d79b287546ea1688063a344031.stex" ]
+source_file="res://assets/images/iconsraces/lamia.png"
+dest_files=[ "res://.import/lamia.png-dfa212bad148fefd990a2df5115deee8.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -202,7 +202,7 @@ func remove_class(prof):
 
 func remove_all_classes():
 	for i in classesdata.professions:
-		if i != 'master':
+		if !variables.permanent_classes.has(i):
 			remove_class(i)
 
 func check_skill_prof(skill):

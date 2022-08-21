@@ -1131,7 +1131,7 @@ var data = {
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_53", reqs = []},
-					{text = "ANASTASIA_ACCEPT_MARRY", reqs = []}, #req same as variation's
+					{text = "ANASTASIA_ACCEPT_MARRY", reqs = [],  bonus_effects = [{code = 'decision', name = 'AnastasiaMarry'}]}, #req same as variation's
 					{text = "ANASTASIA_PERSUASION_57", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}]},
 				],
 				options = [

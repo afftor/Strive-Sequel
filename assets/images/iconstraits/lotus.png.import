@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spouse.png-929283d79b287546ea1688063a344031.stex"
+path="res://.import/lotus.png-2944ba91a88790f03071dbfa5ce56e5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Spouse.png"
-dest_files=[ "res://.import/Spouse.png-929283d79b287546ea1688063a344031.stex" ]
+source_file="res://assets/images/iconstraits/lotus.png"
+dest_files=[ "res://.import/lotus.png-2944ba91a88790f03071dbfa5ce56e5a.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

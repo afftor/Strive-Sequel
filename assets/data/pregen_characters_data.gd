@@ -578,7 +578,7 @@ var pregen_characters = {
 		personality = 'bold',
 		food_like = 'vege',
 		food_hate = ['meat'],
-		classes = ['acolyte','priest'],
+		classes = ['freyas_priestess'],
 		traits = ['deadly','crude','rebel'],
 		sex_skills = {petting = 35, pussy = 15, oral = 27, anal = 0},
 	},

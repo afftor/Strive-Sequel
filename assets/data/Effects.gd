@@ -97,10 +97,10 @@ var effect_table = {
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
 		tags = ['recheck_stats'],
-		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.25}],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Authority.png", #2fix
-			description = "Virgin", #2fix
+			icon = "res://assets/images/iconstraits/lotus.png",
+			description = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
 			limit = 1,
 			t_name = 'b_virgin',
 			mansion_only = true,
