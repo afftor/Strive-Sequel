@@ -1762,7 +1762,7 @@ var Skilllist = {
 		ability_type = 'spell',
 		tags = ['damage','ads', 'aoe', 'no_fa_miss'],
 		reqs = [],
-		targetreqs = [{code = 'stat', stat = 'race', operant = 'neq', value = 'undead'}],
+		targetreqs = [{code = 'stat', stat = 'racegroup', operant = 'neq', value = 'undead'}],
 		effects = [],
 		cost = {mp = 30},
 		charges = 0,
