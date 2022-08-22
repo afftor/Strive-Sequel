@@ -61,9 +61,10 @@ func find_eff_by_item(item_id):
 	return res
 
 func check_status_resist(eff):
+	var tres = parent.get_ref().get_stat('status_resists')
 	for s in variables.status_list:
 		if !eff.tags.has(s): continue
-		var res = parent.get_ref().get_stat('status_resists')[s]
+		var res = tres[s]
 		var roll = globals.rng.randi_range(0, 99)
 		if roll < res: return true
 	return false

@@ -612,6 +612,7 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
 		if rangetype == 'melee': t_targets = get_enemy_targets_melee(fighter)
 		for t in t_targets:
+			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
 			allowedtargets.enemy.push_back(t.position)
 	if targetgroups == 'ally':
 		var t_targets = get_allied_targets(fighter)
@@ -624,6 +625,7 @@ func UpdateSkillTargets(caster, glow_skip = false):
 			pass
 		for t in t_targets:
 			if rangetype == 'not_caster' and t.id == caster.id: continue
+			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
 			allowedtargets.ally.push_back(t.position)
 	if targetgroups == 'self':
 		allowedtargets.ally.append(int(fighter.position))
