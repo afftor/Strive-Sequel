@@ -84,6 +84,7 @@ func tick():
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
 				globals.text_log_add("travel", parent.get_ref().get_short_name() + " arrived at location: " + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
+			parent.get_ref().return_to_task()
 
 func make_location_description():
 	var text = ''

@@ -199,6 +199,31 @@ func get_output_for_task(tsk, loc_id, predict = false):
 	return res
 
 
+func clean_tasks(loc_id):
+	var tarr = []
+	for i in active_tasks:
+		if i.task_location == loc_id:
+			clean_task(i)
+			tarr.push_back(i)
+	for i in tarr:
+		active_tasks.erase(i)
+
+
+func clean_task(task):
+	for id in task.workers.duplicate():
+		var tchar = characters_pool.get_char_by_id(id)
+		if tchar.check_task(task): #character is not removed from task before
+			tchar.remove_from_task() #character should normally be set to ni work and removed from workers list
+			if tchar.check_task(task): #character is STILL not removed from task
+				print("error - %s not removing from task" % id)
+				task.workers.erase(id)
+			if task.workers.has(id): #character is STILL not removed from task
+				print("error - %s removal from task wasn' correct" % id)
+				task.workers.erase(id)
+#		else: #data for character is inconsistent
+#			task.workers.erase(id)
+
+
 func calculate_food_consumption():
 	var res = {}
 	for i in characters.values():

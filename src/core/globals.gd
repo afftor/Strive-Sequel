@@ -1285,11 +1285,13 @@ func remove_location(locationid):
 		print('WARNING - incorrect location removal')
 		return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
+	ResourceScripts.game_party.clean_tasks(location.id)
 	return_characters_from_location(locationid)
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
 	ResourceScripts.game_world.location_links.erase(location.id)
-
+	
+	
 	input_handler.update_slave_list()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
@@ -1327,14 +1329,11 @@ func return_characters_from_location(locationid):
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
-			if ResourceScripts.game_progress.instant_travel == false:
-#				person.travel.location = 'travel'
-#				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
-#				person.travel.travel_time = area.travel_time + location.travel_time
-				person.return_to_mansion()
-			else:
+			if ResourceScripts.game_progress.instant_travel:
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
+			else:
+				person.return_to_mansion()
 
 var yes
 var no
