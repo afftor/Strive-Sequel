@@ -362,11 +362,24 @@ func cooldown_tick():
 	skills.cooldown_tick()
 
 
+func check_task(task):
+	return xp_module.check_task(task)
+
+func find_current_task():
+	var res = xp_module.find_task(get_location())
+	if res == null: 
+		return res
+	if res.workers.has(id): 
+		return res
+	else:
+		print ("warn - %s not included into current task" % id)
+		return null
+
 func assign_to_task(taskcode, taskproduct):
 	xp_module.assign_to_task(taskcode, taskproduct)
 
-func remove_from_task(remember = false):
-	xp_module.remove_from_task(remember)
+func remove_from_task():
+	xp_module.remove_from_task()
 
 func return_to_task():
 	xp_module.return_to_task()

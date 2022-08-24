@@ -9,6 +9,8 @@ var sleep = ''
 var work = ''
 var previous_work = ''
 var workproduct = null
+var previous_workproduct = null
+var previous_location = ResourceScripts.game_world.mansion_location
 var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false}
 var messages = []
 
@@ -213,6 +215,48 @@ func check_skill_prof(skill):
 	return false
 
 #tasks
+func clean_prev_data():
+	previous_work = ''
+	previous_workproduct = null
+	previous_location = ResourceScripts.game_world.mansion_location
+
+
+func save_prev_data():
+	previous_work = work
+	previous_workproduct = workproduct
+	previous_location = parent.get_ref().get_location()
+
+
+func check_prev_data():
+	if previous_location != parent.get_ref().get_location():
+		return false
+	if find_worktask(previous_location, previous_work, previous_workproduct) == null:
+		return false
+	return true
+
+
+func find_worktask(loc, task = work, prod = workproduct):
+	for i in ResourceScripts.game_party.active_tasks:
+		if i.task_location != loc:
+			continue
+		if i.code != task:
+			continue
+		if i.product != prod:
+			continue
+		return i
+	return null
+
+
+func check_task(task): #not check actual work, only data consistency
+	if task.task_location != parent.get_ref().get_location():
+		return false
+	if task.code != work:
+		return false
+	if task.product != workproduct:
+		return false
+	return true
+
+
 func assign_to_task(taskcode, taskproduct):
 	#remove existing work
 	remove_from_task()
@@ -226,17 +270,13 @@ func assign_to_task(taskcode, taskproduct):
 	else:
 		task = Items.materiallist[taskcode]
 	#check if task is existing and add slave to it if it does
-	var taskexisted = false
 	var task_location = parent.get_ref().get_location()
-	for i in ResourceScripts.game_party.active_tasks:
-		if i.code == taskcode && i.product == taskproduct && i.task_location == task_location:
-			taskexisted = true
-			i.workers.append(parent.get_ref().id)
-			i.workers_count += 1
-			work = i.code
-
+	var tmp = find_worktask(task_location, taskcode, taskproduct)
+	work = taskcode
 	workproduct = taskproduct
-	if taskexisted:
+	save_prev_data()
+	if tmp != null:
+		tmp.workers.append(parent.get_ref().id)
 		return
 	#make new task if it didn't exist
 	var dict
@@ -261,24 +301,26 @@ func assign_to_task(taskcode, taskproduct):
 		messages = [],
 		mod = ""}
 	dict.workers.append(parent.get_ref().id)
-	work = taskcode
 	ResourceScripts.game_party.active_tasks.append(dict)
 	globals.emit_signal("task_added")
 
 
-func remove_from_task(remember = false):
-	if work != '':
-		for i in ResourceScripts.game_party.active_tasks:
-			if i.code == work && i.task_location == parent.get_ref().get_location() && i.product == workproduct:
-				i.workers.erase(parent.get_ref().id)
-				i.workers_count = max(0, i.workers_count - 1)
-	# if remember && work != 'travel':
-	# 	previous_work = work
+func remove_from_task():
+	var task = find_worktask(parent.get_ref().get_location())
+	if task == null: 
+		work = ''
+		return
+	if task.workers.has(parent.get_ref().id):
+		task.workers.erase(parent.get_ref().id)
+	else:
+		print("error - %s is not in it's worktask's workers" % parent.get_ref().id)
 	work = ''
 
 func return_to_task():
-	assign_to_task(previous_work, workproduct)
-	previous_work = ''
+	if check_prev_data():
+		assign_to_task(previous_work, previous_workproduct)
+	elif previous_location == parent.get_ref().get_location(): 
+		clean_prev_data()
 
 func get_work():
 	return work
@@ -301,7 +343,7 @@ func make_unavaliable():
 			input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " removed from quest."))
 			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 			quest_taken.taken = false
-		remove_from_task(false)
+		remove_from_task()
 
 		parent.get_ref().remove_from_travel()
 		parent.get_ref().reset_location()
@@ -320,7 +362,7 @@ func make_avaliable():
 
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
-	remove_from_task(false)
+	remove_from_task()
 	is_on_quest = true
 	quest_time_remains = int(work_time)
 	quest_id = quest.id
@@ -371,6 +413,7 @@ func remove_from_work_quest():
 	quest_time_init = 0
 	ResourceScripts.game_progress.work_quests_finished.append(quest_id)
 	quest_id = ''
+	return_to_task()
 
 
 func finish_learning():
@@ -438,10 +481,10 @@ func finish_learning():
 func work_tick():
 	if is_on_quest:
 		return
-	var currenttask
-	for i in ResourceScripts.game_party.active_tasks:
-		if i.workers.has(parent.get_ref().id):
-			currenttask = i
+	var currenttask = find_worktask(parent.get_ref().get_location())
+#	for i in ResourceScripts.game_party.active_tasks:
+#		if i.workers.has(parent.get_ref().id):
+#			currenttask = i
 	
 	if currenttask == null:
 		work = ''

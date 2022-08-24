@@ -565,6 +565,7 @@ func make_chest_loot(chest):
 			'defined':
 				var tempitem = i.name
 				var amount = round(rand_range(i.min, i.max))
+				if amount <= 0 : continue
 				if Items.materiallist.has(tempitem):
 					input_handler.AddOrIncrementDict(dict.materials, {tempitem : amount})
 				if Items.itemlist.has(tempitem):
