@@ -98,17 +98,14 @@ func custom_stats_set(st, value):
 			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
 
 
-func custom_stats_get():
-	var res = statlist.duplicate(true)
-#	if res.has(''):
-#		res[''] =
-	if res.has('sexuals'):
+func custom_stats_get(stat):
+	if stat == 'sexuals':
 		var array = statlist.sex_skills.values()
 		array.sort()
 		array.invert()
-		res['sexuals'] = (array[0] + array[1] + array[2])/3
-	if res.has('hpmax'):
-		var tres = res.hpmax
+		return (array[0] + array[1] + array[2])/3
+	if stat == 'hpmax':
+		var tres = statlist.hpmax
 		if statlist.is_person == true:
 			tres = variables.basic_max_hp
 		if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
@@ -120,91 +117,97 @@ func custom_stats_get():
 				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
 		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
 		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
-		res['hpmax'] = tres
-	if res.has('mpmax'):
+		return tres
+	if stat == 'mpmax':
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
-		res['mpmax'] = tres
-	if res.has('obedience_max'):
+		return tres
+	if stat == 'obedience_max':
 		var tres = variables.basic_max_obed
 		if bonuses.has('obedience_max_add'): tres += bonuses.obedience_max_add
 		if bonuses.has('obedience_max_mul'): tres *= bonuses.obedience_max_mul
-		res.obedience_max= tres
-		res.obedience = clamp(res.obedience, 0, res.obedience_max)
-	if res.has('lusttick'):
+		return tres
+	if stat == 'obedience':
+		statlist.obedience =  clamp(statlist.obedience, 0, custom_stats_get('obedience_max'))
+		return statlist.obedience
+	if stat == 'lusttick':
 		var tres = variables.basic_lust_per_tick
 		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
 		if bonuses.has('lusttick_mul'): tres *= bonuses.lusttick_mul
-		res['lusttick'] = tres
-	for i in ['physics', 'wits', 'charm']:
-		var ii = i + '_cap'
-#		if res.has(ii):
+		return tres
+	if stat in ['physics', 'wits', 'charm']:
+		var tres = min(statlist[stat], custom_stats_get(stat + '_cap'))
+		statlist[stat] = tres
+		return tres
+	if stat.ends_with('_cap') and stat.trim_suffix('_cap') in ['physics', 'wits', 'charm']:
 		var tres = variables.basestat_cap
-		if bonuses.has(ii + '_add'): tres += bonuses[ii + '_add']
-		if bonuses.has(ii + '_mul'): tres *= bonuses[ii + '_mul']
-		res[ii] = tres
-		if res.has(i):
-			res[i] = min(res[i], res[ii])
-			statlist[i] = min(statlist[i], res[ii]) #cause basestats are direct accessed
-	for st in ['matk', 'atk']:
-		if res.has(st):
-			var tres = res[st]
-			if bonuses.has(st + '_add'): tres += bonuses[st + '_add']
-			if bonuses.has(st + '_mul'): tres *= bonuses[st + '_mul']
-			res[st] = max(5.0, tres)
-	if res.has('lustmax'):
-		res.lustmax = 25 + res.sexuals_factor * 25
+		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
+		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
+		return tres
+	if stat in ['matk', 'atk']:
+		var tres = statlist[stat]
+		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
+		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
+		return max(5.0, tres)
+	if stat == 'lustmax':
+		var tres = 25 + statlist.sexuals_factor * 25
 		if check_trait('frigid'):
-			res.lustmax /= 2
-		res.lust = clamp(res.lust, 0, res.lustmax)
-	if res.has('obedience_drain'):
-		res.obedience_drain = variables.basic_obed_drain - statlist.timid_factor
-		if bonuses.has('obedience_drain_add'): res.obedience_drain += bonuses.obedience_drain_add
-		if bonuses.has('obedience_drain_mul'): res.obedience_drain *= bonuses.obedience_drain_mul
-		res.obedience_drain = max(0.0, res.obedience_drain)
+			tres /= 2
+		return tres
+	if stat == 'lust':
+		var tres = clamp(statlist.lust, 0, custom_stats_get('lustmax'))
+		statlist.lust = tres
+		return tres
+	if stat == 'obedience_drain':
+		var tres = variables.basic_obed_drain - statlist.timid_factor
+		if bonuses.has('obedience_drain_add'): tres += bonuses.obedience_drain_add
+		if bonuses.has('obedience_drain_mul'): tres *= bonuses.obedience_drain_mul
+		tres = max(0.0, tres)
 		if parent and (parent.get_ref().has_status('soulbind') or parent.get_ref().get_work() == 'travel'):
-			res.obedience_drain = 0.0
-	if res.has('loyalty_gain'):
-		res.loyalty_gain = 0.75 + 0.375 * res.tame_factor
-		if bonuses.has('loyalty_gain_add'): res.loyalty_gain += bonuses.loyalty_gain_add
-		if bonuses.has('loyalty_gain_mul'): res.loyalty_gain *= bonuses.loyalty_gain_mul
-		res.loyalty_gain = max(0.0, res.loyalty_gain)
+			tres = 0.0
+		return tres
+	if stat == 'loyalty_gain':
+		var tres = 0.75 + 0.375 * statlist.tame_factor
+		if bonuses.has('loyalty_gain_add'): tres += bonuses.loyalty_gain_add
+		if bonuses.has('loyalty_gain_mul'): tres *= bonuses.loyalty_gain_mul
+		tres = max(0.0, tres)
 		if parent and parent.get_ref().has_status('starvation'):
-			res.loyalty_gain = 0.0
-	if res.has('resists'):
-		var tres = res.resists
+			tres = 0.0
+		return tres
+	if stat == 'resists':
+		var tres = statlist.resists.duplicate()
 		for r in variables.resists_list:
 			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
-		res.resists = tres
-	if res.has('resist_damage'):
-		var tres = res.resist_damage
+		return tres
+	if stat == 'resist_damage':
+		var tres = statlist.resist_damage.duplicate()
 		for r in variables.resists_damage_list:
 			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 			if bonuses.has('resist_damage_' + r + '_add'): tres[r] += bonuses['resist_damage_' + r + '_add']
 			if bonuses.has('resist_damage_' + r + '_mul'): tres[r] *= bonuses['resist_damage_' + r + '_mul']
-		res.resist_damage = tres
-	if res.has('status_resists'):
-		var tres = res.status_resists
+		return tres
+	if stat == 'status_resists':
+		var tres = statlist.status_resists.duplicate()
 		for r in variables.status_list:
 			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 			if bonuses.has('resist_status_' + r + '_add'): tres[r] += bonuses['resist_status_' + r + '_add']
 			if bonuses.has('resist_status_' + r + '_mul'): tres[r] *= bonuses['resist_status_' + r + '_mul']
-		res.status_resists = tres
-	if res.has('damage_mods'):
-		var tres = res.damage_mods
+		return tres
+	if stat == 'damage_mods':
+		var tres = statlist.damage_mods.duplicate()
 		for r in variables.damage_mods_list:
 			if !tres.has(r): tres[r] = 1.0
 			if bonuses.has('damage_mod_' + r + '_add'): tres[r] += bonuses['damage_mod_' + r + '_add']
 			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
-		res.damage_mods = tres
-	return res
+		return tres
+	return statlist[stat]
 
 
 func get_obed_percent_value():
@@ -251,27 +254,25 @@ func set_stat(statname, value): #for direct access only
 
 #bonus system
 func get_stat(statname, ref = false):
-	var tmp
-	if ref: tmp = statlist
-	else:  tmp = custom_stats_get()
-	if !tmp.has(statname): return null
-	var res = tmp[statname]
+	if !statlist.has(statname): return null
+	var res
+	if ref: res = statlist[statname]
+	else:  res = custom_stats_get(statname)
 	if statdata.statdata.has(statname) and !statdata.statdata[statname].custom_get: #variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
 	elif statname in ['physics','wits','charm','sexuals']:
-		res = tmp[statname] + tmp[statname + '_bonus']
+		res += get_stat(statname + '_bonus')
 	if statname.ends_with('_factor'):
 		res = int(res)
 	return res
 
 
 func get_stat_nobonus(statname, ref = false):
-	var tmp
-	if ref: tmp = statlist
-	else:  tmp = custom_stats_get()
-	if !tmp.has(statname): return null
-	var res = tmp[statname]
+	if !statlist.has(statname): return null
+	var res
+	if ref: res = statlist[statname]
+	else:  res = custom_stats_get(statname)
 	return res
 
 
