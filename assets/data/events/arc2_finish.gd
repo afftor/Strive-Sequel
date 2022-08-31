@@ -304,12 +304,13 @@ var data = {
 		{text = 'PRIESTESS_TALK_3_3', reqs = [], previous_dialogue_option = 3},], 
 		options = [ {
 			code = 'close', text = "PRIESTESS_TALK_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage1'}, 
-				{code = 'make_quest_location', value = 'quest_temple_location'}, {code = 'update_city'},]
+			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage1'}, {code = 'update_city'},
+				{code = 'make_quest_location', value = 'quest_temple_location'}, ]
 		}, {
 			code = 'close', text = "PRIESTESS_TALK_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [ {code = 'progress_quest', value = 'temple_quest', stage = 'stage1'}, 
-				{code = 'make_quest_location', value = 'quest_temple_location'}, {code = 'update_city'},]
+				{code = 'update_city'},
+				{code = 'make_quest_location', value = 'quest_temple_location'},]
 		}, ]
 	},
 	
@@ -593,8 +594,10 @@ var data = {
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1AND2', reqs = [],}], 
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage1'}, 
-				{code = 'make_quest_location', value = 'quest_erlen_location'}, {code = 'update_city'}]
+			bonus_effects = [
+				{code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage1'}, 
+				{code = 'update_city'},
+				{code = 'make_quest_location', value = 'quest_erlen_location'}]
 		},  ]
 	},
 	
