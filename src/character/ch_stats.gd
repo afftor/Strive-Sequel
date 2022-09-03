@@ -826,13 +826,13 @@ func setup_baby(mother, father):
 			statlist[i] = father.statlist.statlist[i]
 	
 	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
-		if randf() >= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
+		if randf() <= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
 			add_trait(tr)
 	for tr in mother.get_traits_by_tag('negative') + father.get_traits_by_tag('negative'):
 		if mother.has_profession("breeder") or father.has_profession("breeder"):
-			if randf() >= 0.1:
+			if randf() <= 0.1:
 				add_trait(tr)
-		elif randf() >= 0.5:
+		elif randf() <= 0.5:
 			add_trait(tr)
 	
 	statlist.relatives.mother = mother.id
