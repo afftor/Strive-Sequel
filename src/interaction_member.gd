@@ -167,7 +167,8 @@ var impregnation_texts = {
 
 	can_be_impregnated = "[name] could certainly get pregnant from it...",
 	cant_be_impregnated = "However, due to racial differences, [name] won't be able to get pregnant from it...",
-	is_breeder = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
+	is_breeder_father = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...", #2fix
+	is_breeder_mother = "Being a [color=yellow]Breed Sow[/color], [name] will certainly be able to get pregnant from it...",
 	female_contraceptives = "As [name] is on contraceptives, [he] won't be able to get pregnant from it...",
 	male_contraceptives = "As [name] is on contraceptives, [he] won't be able to impregnate anyone...",
 	already_pregnant_visible = "[name] could get pregnant from it if [he] wasn't already...",
@@ -191,43 +192,49 @@ func impregnation_text(second_character, mother_is_self = true):
 		return_text = impregnation_texts.mother_undead
 	elif preg_status.father_undead:
 		return_text = impregnation_texts.father_undead
-		
 		match mother_is_self:
 			true:
 				return_text = second_character.person.translate(return_text)
 			false:
 				return_text = person.translate(return_text)
+		return "\n[color=silver]" + return_text + "[/color]"
 	
 	elif preg_status.female_contraceptive:
 		return_text = impregnation_texts.female_contraceptives
 	elif preg_status.male_contraceptive:
 		return_text = impregnation_texts.male_contraceptives
-		
 		match mother_is_self:
 			true:
 				return_text = second_character.person.translate(return_text)
 			false:
 				return_text = person.translate(return_text)
-		
+		return "\n[color=silver]" + return_text + "[/color]"
 	
 	if return_text == '':
 		if preg_status.no_womb || preg_status.preg_disabled:
-			return return_text
-
-		if preg_status.breeder:
-			return_text = impregnation_texts.is_breeder
-		elif preg_status.compatible:
+			return return_text #or "\n[color=silver]" + return_text + "[/color]" ?
+		
+		if preg_status.mother_breeder:
+			return_text = impregnation_texts.is_breeder_mother
+		elif preg_status.father_breeder:
+			return_text = impregnation_texts.is_breeder_father
+			match mother_is_self:
+				true:
+					return_text = second_character.person.translate(return_text)
+				false:
+					return_text = person.translate(return_text)
+			return "\n[color=silver]" + return_text + "[/color]"
+	if return_text == '':
+		if preg_status.compatible:
 			return_text = impregnation_texts.can_be_impregnated
 		elif preg_status.compatible == false:
 			return_text = impregnation_texts.cant_be_impregnated
-
+	
 	match mother_is_self:
 		true:
 			return_text = person.translate(return_text)
 		false:
 			return_text = second_character.person.translate(return_text)
-
-
 	return "\n[color=silver]" + return_text + "[/color]"
 
 
