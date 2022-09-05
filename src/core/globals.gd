@@ -844,7 +844,7 @@ func getrelativename(person, person2):
 
 
 func impregnate_check(father,mother):
-	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, breeder = false, compatible = true, already_preg_visible = false, father_undead = false, mother_undead = false}
+	var result = {value = true, preg_disabled = false, no_womb = false, male_contraceptive = false, female_contraceptive = false, mother_breeder = false, father_breeder = false, compatible = true, already_preg_visible = false, father_undead = false, mother_undead = false}
 
 	if variables.pregenabled == false:
 		result.value = false
@@ -884,12 +884,15 @@ func impregnate_check(father,mother):
 #				else:
 #					result.value = true
 #					result.breeder = true
-				if mother.has_status('breeder') or father.has_status('breeder'):
+				if mother.has_status('breeder'):
 					result.value = true
-					result.compatible = true
+					result.mother_breeder = true
+				elif father.has_status('breeder'):
+					result.value = true
+					result.father_breeder = true
 				else:
 					result.value = false
-					result.breeder = false
+					result.compatible = false
 	
 	if mother.get_stat('pregnancy').duration != 0:
 		result.value = false
