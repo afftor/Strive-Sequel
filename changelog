@@ -1,6 +1,12 @@
 Added some new classes to the exception list for oblivion potion removal
 Added Lamia's race icon
 Changed Heleviel's start class to add new class
+Fixed one of marriage options taking money instead of adding
+Fixed positive trait chance inheritance being too low
+Fixed some breeding mechanics
+Presumably fixed characters getting stuck at deleted locations
+Fixed blood explosion being castable on undeads
+Fixed children training exp gain being affected by modifiers
 0.6.4a
 Fixed issue with saves
 Fixed nereids have incorrect data
