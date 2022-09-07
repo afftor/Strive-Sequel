@@ -489,6 +489,7 @@ func update_sex_date_buttons():
 		SexSelect.get_node("DateButton").disabled = false
 	
 	for i in sex_participants:
+		if i.is_master(): continue
 		if i.has_status("no_date") or !i.has_status("dating") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
 
