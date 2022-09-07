@@ -259,6 +259,7 @@ func check_task(task): #not check actual work, only data consistency
 
 func assign_to_task(taskcode, taskproduct):
 	#remove existing work
+	
 	remove_from_task()
 	if taskcode == '':
 		work = ''
@@ -272,13 +273,21 @@ func assign_to_task(taskcode, taskproduct):
 	#check if task is existing and add slave to it if it does
 	var task_location = parent.get_ref().get_location()
 	var tmp = find_worktask(task_location, taskcode, taskproduct)
-	work = taskcode
-	workproduct = taskproduct
-	save_prev_data()
 	if tmp != null:
+		if task.has('upgrade_code') && task.has('workers_per_upgrade') && task.has('base_workers'):
+			var upgrade_level = ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
+			var max_workers_count = task.base_workers + task.workers_per_upgrade * upgrade_level
+			if tmp.workers.size() >= max_workers_count:
+				return
+		work = taskcode
+		workproduct = taskproduct
+		save_prev_data()
 		tmp.workers.append(parent.get_ref().id)
 		return
 	#make new task if it didn't exist
+	work = taskcode
+	workproduct = taskproduct
+	save_prev_data()
 	var dict
 	if !gatherable:
 		dict = {code = taskcode,
