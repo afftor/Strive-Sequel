@@ -475,13 +475,19 @@ func update_sex_date_buttons():
 		if !i.has_status("sex_group") and sex_participants.size() > 2:
 			SexSelect.get_node("SexButton").disabled = true
 	
-	SexSelect.get_node("DateButton").disabled = (
-		sex_participants.size() > 1
-		|| sex_participants.size() == 0
-		|| sex_participants.has(ResourceScripts.game_party.get_master())
-		|| ResourceScripts.game_globals.weekly_dates_left <= 0
-		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
-	)
+	if sex_participants.size() > 2 or sex_participants.size() == 0: 
+		SexSelect.get_node("DateButton").disabled = true
+	elif ResourceScripts.game_globals.weekly_dates_left <= 0: 
+		SexSelect.get_node("DateButton").disabled = true
+	elif ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location: 
+		SexSelect.get_node("DateButton").disabled = true
+	elif sex_participants.size() == 2 and !sex_participants.has(ResourceScripts.game_party.get_master()):
+		SexSelect.get_node("DateButton").disabled = true
+	elif sex_participants.size() == 1 and sex_participants.has(ResourceScripts.game_party.get_master()):
+		SexSelect.get_node("DateButton").disabled = true
+	else:
+		SexSelect.get_node("DateButton").disabled = false
+	
 	for i in sex_participants:
 		if i.has_status("no_date") or !i.has_status("dating") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
@@ -507,12 +513,13 @@ func _on_TestButton_pressed():
 
 func test_mode():
 	input_handler.CurrentScene = self
+	gui_controller.mansion = self
 	ResourceScripts.game_progress.allow_skip_fights = true
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('Fairy', 'female', 'random')
+		character.create('BeastkinCat', 'female', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -594,11 +601,11 @@ func test_mode():
 				continue
 			character.skills.social_skills.append(i)
 		character.is_players_character = true
-		globals.impregnate(character, character)
+#		globals.impregnate(character, character)
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('Elf', 'female', 'random')
+		character.create('BeastkinWolf', 'female', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		# character.assign_to_quest_and_make_unavalible()
@@ -649,6 +656,14 @@ func test_mode():
 
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 1
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
+#		input_handler.SystemMessage("TEST")
 
 #		character.set_stat('obedience', 50)
 		character.unlock_class("apprentice")
@@ -661,7 +676,8 @@ func test_mode():
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
-
+		globals.impregnate(ResourceScripts.game_party.get_master(), character)
+		character.get_stat('pregnancy', true).duration = 2
 		var text = ''
 #		for i in races.tasklist.values():
 #			for k in i.production.values():
@@ -880,8 +896,17 @@ func test_mode():
 		tmp.anal = 90
 		tmp.petting = 100
 		#character.set_stat('sex_skills', tmp)
-		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-		input_handler.active_area = ResourceScripts.game_world.areas.plains
+#		yield(get_tree(),'idle_frame')
+#		if gui_controller.exploration == null:
+#			gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
+#		gui_controller.open_exploration('beastkin_capital')
+#		gui_controller.mansion.hide()
+#		gui_controller.exploration.open_city('beastkin_capital')
+#		gui_controller.exploration.show()
+#		gui_controller.nav_panel.select_location('beastkin_capital')
+#		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
+#		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		globals.common_effects([{code = 'update_city'},{code = 'make_quest_location', value = 'quest_erlen_location'}, ])
 		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
 				#i.captured = true
@@ -897,7 +922,7 @@ func test_mode():
 #		ResourceScripts.game_res.materials.meat = 0
 	
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-		#input_handler.interactive_message('amelia_herbs_end_1', '', {})
+#		input_handler.interactive_message('cali_servants_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -910,6 +935,7 @@ func test_mode():
 #		input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
+		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")
 
 #		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
