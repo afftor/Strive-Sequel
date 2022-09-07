@@ -1112,7 +1112,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 			'node':
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
-		node.add_child(window)
+		node.add_child(window) #adding more than one sysmessages at one frame causes error here
 	if raise: 
 #		print(window.name)
 		window.raise()
@@ -1298,6 +1298,7 @@ func dir_contents(target):
 		return array
 	else:
 		print("An error occurred when trying to access the path.")
+		return array
 
 
 func evaluate(input): #used to read strings as conditions when needed
