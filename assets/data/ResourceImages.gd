@@ -143,6 +143,9 @@ var backgrounds = {
 	heleviel3 = load("res://assets/images/fullscreen scenes/HelevielCG003.png"),
 	heleviel4 = load("res://assets/images/fullscreen scenes/HelevielCG004.png"),
 	
+	cali_sex_1 = load("res://assets/images/fullscreen scenes/CaliCG007.png"),
+	cali_sex_2 = load("res://assets/images/fullscreen scenes/CaliCG008.png"),
+	cali_sex_3 = load("res://assets/images/fullscreen scenes/CaliCG009.png"),
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 
