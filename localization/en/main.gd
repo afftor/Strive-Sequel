@@ -7922,9 +7922,142 @@ As her voice gets more passionate, she ogles at you and your bulge, however refr
 	CALI_SEX_4_ADDITIONAL = """
 
 Cali makes sure you realize that it's time to leave and you close the door.""",
-	
-	
-	
+	CALI_FIGHTERS_FINISH_OPTION = "Cali's assignment",
+	CALI_SIDEQUEST_4 = """Cali reports the completion to the receptionist who seems to be rather skeptical about it.
+
+{color=aqua|Cali: - We did it so now you'll accept me, right?}
+
+{color=yellow|Receptionist: - So you were helped I'm assuming?}
+
+{color=aqua|Cali: - N-no? I worked with an esteemed adventurer.  Besides that's not against the rules is it?}  """,
+	CALI_SIDEQUEST_5 = """The receptionist decides not to argue any further and stamps the contract's completion. Cali shines showing you the stamped paper. 
+
+{color=aqua|Cali: - See? I'm not just some stray anymore! I'm Cali the goblin slayer!}  """,
+	CALI_SIDEQUEST_5_OPTION_1 = "Excellent work, I'm happy for you.",
+	CALI_SIDEQUEST_5_OPTION_2 = "Oh? Planning to leave us mere mortals behind and set off on a grand adventure?",
+	CALI_SIDEQUEST_6_1 = "{color=aqua|Cali: - Hey, I Couldn't have done that without you. Thanks, [name]. I hope there's more adventures to be had for us.}",
+	CALI_SIDEQUEST_6_2 = "{color=aqua|Cali: - Don't be silly, I still owe you a great debt? And I've a feeling there's more adventure to be found in your company.}",
+	CALI_SIDEQUEST_7 = """One morning you come upon Cali.  Though normally full of cheer and causing chaos in the training yard, now the girl looks to be standing in the main hall in quiet contemplation.  She seems to be speaking to herself, working out some sort of problem aloud before looking down at her clothing, sighing and shaking her head, her eyes clearly worried about something.
+
+Making note of your approach the girl immediately walks over to you, her normal demeanor gone as she looks at you sheepishly.
+
+Cali: - Oh, [Master]... Sorry. Um, Can I ask you something? Do you think I'm feminine?  I mean I'm a girl but, feminine I'm not so sure about.""",
+	CALI_SIDEQUEST_7_OPTION_1 = "You are more than feminine enough.",
+	CALI_SIDEQUEST_7_OPTION_2 = "Well, not in particular",
+	CALI_SIDEQUEST_7_OPTION_3 = "Why would it matter?",
+	CALI_SIDEQUEST_8_1 = """Cali's ears droop on your response as she speaks.
+
+Cali: - Heh, what's up with that? Are you trying to comfort me? I'm asking you a serious question here [master].""",
+	CALI_SIDEQUEST_8_2 = "Cali: - Yeah, I thought so. Thanks for being honest.",
+	CALI_SIDEQUEST_8 = "- I'm a girl, you know. Many people mention that I'm not very girly and it's been getting to me lately. I know I'm not usually acting like most girls, I'm pretty active and like games and adventurous stuff. I'm not sure what to do...",
+	CALI_SIDEQUEST_8_OPTION_1 = "You can learn to be more feminine if you want to",
+	CALI_SIDEQUEST_8_OPTION_2 = "I don't mind you acting like a tomboy.",
+	CALI_SIDEQUEST_8_OPTION_2_alt = "You should try more 'manly' stuff to get your mind ",
+	CALI_SIDEQUEST_9_1 = """- You think so..? I guess I want to. He-he, I've never really been good with stuff like dresses and etiquette. I guess, maybe it's time for me to try it. It may be fun for all we know. 
+
+After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
+	CALI_SIDEQUEST_9_2 = """"Cali: - Y-you really think so?  I mean I guess I'd like to, but I've never really been good with this stuff.  Although for you I suppose I could try. 
+
+After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
+	CALI_SIDEQUEST_9_2_alt = """- Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? 
+
+After thinking about it, you decide it might be a good idea to visit Workers Guild for some ideas.""", #currentlyis meaningless due to no workers root
+	CALI_SERVANTS_START_OPTION = "Ask on Cali's beneficence",
+	CALI_SERVANTS_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
+
+With a hint of doubt, Cali agrees to try these activities. 
+
+- Huh, I'm not sure I'm good with this stuff...""",
+	CALI_SERVANTS_1_OPTION_1 = "Don't worry, you can do it",
+	CALI_SERVANTS_1_OPTION_2 = "There's first time for everything, you won't know until you try",
+	CALI_SERVANTS_1_OPTION_3 = "You shouldn't get discouraged right as we started",
+	CALI_SERVANTS_2 = """- Okay, okay, I'm gonna try it. 
+
+After discussing it with the helpers, you are explained about general training for future servant girls which starts with figuring out the most talented aspects, dressing up, signing and formal language. Cali agrees to try this out.""",
+	CALI_SERVANTS_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her. """,
+	CALI_SERVANTS_4 = """As she goes on a break, Cali spots a small cat moving through the backyard. Forgetting everything about the conduct, she tries to sprint to it but trips and falls due to her attire.
+
+- O...Ouch... Crap!
+
+Also forgetting to watch her tongue, she realized that her dress was torn because of the fall. Sadly, you'll have to pay for it. You decide to call it a day and make the wolf girl change back.""",
+	CALI_SERVANTS_5 = """Cali seems to be in a sorry state as she comes back to you.
+
+- Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this. """,
+	CALI_SERVANTS_5_OPTION_1 = "You shouldn't give up just yet",
+	CALI_SERVANTS_5_OPTION_2 = "Maybe it isn't for you after all",
+	CALI_SERVANTS_6 = """{color=yellow|Amelia: - I saw your training, Cali is it? Nice to meet you.}
+
+{color=aqua|Cali: - Hello... Who are you?}
+
+{color=yellow|Amelia: - Consider me a humble person who would like to give advice. I'm sorry these ears seem to eavesdrop on your conversation, but in truth I think you've taken a slightly wrong approach.}
+
+{color=aqua|Cali: - What do you mean?}""",
+	CALI_SERVANTS_7 = """{color=yellow|Amelia: - You are a girl and you want to look more like one, am I correct? However, as you've noticed, you aren't quite like other girls.}
+
+Cali gets visually discouraged hearing this, but Amelia does not stop there.
+
+{color=yellow|Amelia: - This does not mean you should give up, though. If some things don't work for you, others might.}
+
+{color=aqua|Cali: - I still don't really understand.}
+
+{color=yellow|Amelia: - Do you mind me taking some of your time? It won't cost you anything. I would not feel right if you left us unsatisfied.}""",
+	CALI_SERVANTS_8 = """After a moment Cali agrees and Amelia takes her away from you. As you wait for about half an hour, Cali reappears before you and seems to be in a quite better mood than when she left. You can't quite make out what changed about her, but somehow she grabs your subconscious attention as she moves towards you. 
+
+{color=aqua|Cali: - [Master]! Sorry for taking time...}
+
+As she observes your reaction she starts smiling even more.  """,
+	CALI_SERVANTS_8_OPTION_1 = "You look pretty",
+	CALI_SERVANTS_8_OPTION_2 = "What was it?",
+	CALI_SERVANTS_8_OPTION_3 = "You seem somewhat different",
+	CALI_SERVANTS_9 = """{color=yellow|Amelia: - He-he, so you notice it now? You don't need a complete attire change or a full makeup to emphasize your beauty. Some pose and expression training look a lot more natural for you. Well, that and a couple small woman secrets.}
+
+You notice how Cali now looks at Amelia with respect. In the end, encouraged with the results, Cali agrees to occasionally visit and learn from Amelia. As she walks outside, Amelia speaks to you.
+
+{color=yellow|Amelia: - She's a good girl, you better not betray her trust in you.}
+
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared.  """,
+	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view.  Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her.  After you look up at her she finally blurts out in an excited tone.
+
+Cali: - [Master]! Hey [Master] that food cart is back in front of the mansion.  Their meat dumplings smell so good!  A-and I was wondering if you could buy us some…
+
+You notice how Cali slightly lowered her voice, her hands slipping behind her back as a result of her training with Amelia.  The posture was distracting to say the least.""",
+	CALI_SEX_5_OPTION_1 = "Since you asked so nicely, here is the coin. Get enough for everyone.",
+	CALI_SEX_5_OPTION_2 = "Sorry, we can't afford it right now. Perhaps next time",
+	CALI_SEX_5_1 = """Cali gives you a small pout but refrains from protest.
+
+Cali: - I see, well, another time then.""",
+	CALI_SEX_6 = """You hand Cali the money and after a few moments she returns with a tray of dumplings.  The smell is exactly as she mentioned.  Passing them out to the other servants, she soon is sitting beside you after handing you one as well.  
+
+The two of you eat in silence as you mull over the treat.  Warm, soft, and expertly cooked you muse for a few moments about going outside yourself and seeing if you and the merchant can come to an agreement about deliveries of these treats.""",
+	CALI_SEX_7 = """Cali finishes her treat soon after you. She would look up, peering around the main hall. She notices that the two of you are alone.  Taking the wrapper from your treats, she looks up at you now with a grateful, excited look.
+
+Cali: - Thanks [Master].  It was tasty.  
+
+The girl's face reddens a bit as she again looks around the room, she looks nervous before she speaks.
+
+Cali: - Amelia has been giving me tips and I was thinking about doing something for you in turn…""",
+	CALI_SEX_8 = """Cali takes one more nervous look around before she looks back up to you with a mischievous look.  Saying nothing more for now the girl soon slipped down to her knees in front of you.  Taking a steadying breath she'd move to your trousers as she undid them easily, hand finding and wrapping around your shaft as she pulled it free.""",
+	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand was unsure at first, before she'd start to intently pump your shaft.  
+
+Cali: - Wow, I've never seen one this close before…  It's warm.
+
+The girl continues to stroke your member, obviously having greatly benefited from Amelia's tutelage.  After a few moments of this you find yourself almost rocking back and forth, the girl's hand working you like she's far more experienced than she is.
+
+Calie: You seem to like this…
+
+The girl would slowly pick up the speed she stroked you, until finally she leaned down, her mouth enveloping the head of your shaft.""",
+	CALI_SEX_10 = """Cali leaned down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she'd have to back off, looking up at you with a blush.
+
+Cali: - Huh, It's really big, jeez. I wonder if I can…
+
+Cali would now start to envelope the head of your shaft again, this time using her hand to still pump the base as she sucked on the head, occasionally pumping her mouth just a bit deeper.  It was an amazing feeling as you just laid there, calming yourself as you put a mental note to thank Amelia for this.  """,
+	CALI_SEX_11 = """Working without complaint, and making the most sensual noises you'd heard come from the girl, you did your best to hold on. Fighting the building urge of release before finally hitching your breath as you start to cum.""",
+	CALI_SEX_12 = """To her credit even without much warning Cali keeps her lips sealed tightly around the head of your shaft.  Her eyes surprised but her grip firm as you nearly came out of the seat.  Soon panting in your position, you look down at the girl; her mouth slowly pulling off the head of your shaft as she keeps the cum there in her mouth.  
+
+She looks up into your eyes a bit surprised now, the girl soon resolving herself and swallowing it all, letting out a little sigh before quickly returning a smile back at you.""",
+	CALI_SEX_13 = """Cali: - W-well, hope that pleased you, [Master].
+
+As she confirms your reaction she quickly retreats from sight to her duties. """,
 	
 	
 	
@@ -8030,6 +8163,10 @@ Cali makes sure you realize that it's time to leave and you close the door.""",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your slave, Cali, wants to be more useful and decided to join fighters guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
+	CALI_SERVANTS_QUEST_SUMMARY = "", #2add
+	CALI_SERVANTS_QUEST_NAME = "",
+	CALI_SERVANTS_QUEST_STAGE_1 = "",
+	
 }
 
 

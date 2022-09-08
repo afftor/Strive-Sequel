@@ -39,6 +39,10 @@ var data = {
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
 		{code = 'aire_recruiment_start', text = "AIRE_RECRUITMENT_OPTION_1", reqs = [{type = 'decision', value = 'mayor_election_finished', check = true}, {type = 'decision', value = 'aire_is_dead', check = false}, {type = 'has_hero', name = 'aire', check = false}], type = 'next_dialogue', dialogue_argument = 0, remove_after_first_use = true},
 		{code = 'cali_fighters_1', text = "CALI_FIGHTERS_INIT_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
+		{code = 'cali_sidequest_4', text = "CALI_FIGHTERS_FINISH_OPTION", reqs = [
+			{type = 'quest_completed', name = 'cali_fighters_quest', check = true},
+			{type = 'dialogue_seen', check = false, value = 'CALI_SIDEQUEST_4'}
+			], type = 'next_dialogue', dialogue_argument = 0},
 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -128,6 +132,11 @@ var data = {
 			{type = 'has_items', operant = 'gte', value = 25, name = 'beer'},
 			{type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'}
 		], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'cali_servants_1', text = "CALI_SERVANTS_START_OPTION", reqs = [
+			{type = 'active_quest_stage', value = 'cali_servants_quest', stage = 'stage1'},
+			{type = 'has_money', value = 1000}
+			], type = 'next_dialogue', dialogue_argument = 0},
+		
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 

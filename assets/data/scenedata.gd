@@ -1911,5 +1911,13 @@ var quests = {
 			stage2 = {code = 'stage2', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_2"}, # searh surroundings
 		},
 	},
+	cali_servants_quest = {
+		code = 'cali_servants_quest',
+		summary = "CALI_SERVANTS_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_SERVANTS_QUEST_NAME", descript = "CALI_SERVANTS_QUEST_STAGE_1"}, # go to servants
+
+		},
+	},
 }
 
