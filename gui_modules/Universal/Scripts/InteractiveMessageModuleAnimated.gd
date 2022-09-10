@@ -56,6 +56,7 @@ func open(scene):
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
 	hold_selection = true
+	raise()
 	if scene.has("common_effects"):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
@@ -83,7 +84,7 @@ func open(scene):
 	generate_scene_text(scene)
 	set_enemy(scene)
 	handle_scene_options()
-	raise()
+	
 	yield(get_tree().create_timer(0.5), "timeout")
 	hold_selection = false
 #	input_handler.print_order()

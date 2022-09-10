@@ -216,8 +216,7 @@ var data = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = "LICHENCTALK4",
-		common_effects = [{code = 'decision', value = 'lich_extra_reward'},{code = 'make_loot', pool = [['fighters_lich_bonus_loot',1]]}, 
-		{code = 'open_loot'}],
+		common_effects = [{code = 'decision', value = 'lich_extra_reward'},{code = 'make_loot', pool = [['fighters_lich_bonus_loot',1]]},{code = 'open_loot'}],
 		options = [
 		{code = 'quest_fight', text = "LICHENCTALK4REPLY1", reqs = [], args = 'lich_fight_normal', dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'lich_enc_conclusion', text = "LICHENCTALK4REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
