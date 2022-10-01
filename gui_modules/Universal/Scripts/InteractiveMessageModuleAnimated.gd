@@ -301,6 +301,11 @@ func select_person_for_next_event(code):
 			{code = 'stat', stat = 'race', operant = 'eq', value = "TribalElf"},
 #			{code = 'is_master', check = false}
 		]
+	elif code.find('cali_william_9') != -1:
+		reqs = [ 
+			{code = 'stat', stat = 'unique', operant = 'neq', value = "cali"},
+			{code = 'is_master', check = false}
+		]
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},

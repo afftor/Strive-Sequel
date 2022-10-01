@@ -171,6 +171,8 @@ func check_timed_events():
 					'remove_decision':
 						if ResourceScripts.game_progress.decisions.has(i.code):
 							ResourceScripts.game_progress.decisions.erase(i.code)
+					'quest':
+						globals.common_effects([{code = 'progress_quest', value = i.code.quest, stage = i.code.stage}])
 				deleting_events.append(i)
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
 #					globals.autosave(true)

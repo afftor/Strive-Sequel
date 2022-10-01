@@ -18,8 +18,8 @@ var data = {
 	
 	aire_recruiment_1 = {
 		variations = [ {
-			reqs = [{type = 'decision', value = 'PrincessDead', check = true, orflag = true}, 
-			{type = 'decision', value = 'aire_raped', check = true}], 
+			reqs = [{type = 'decision', value = 'PrincessDead', check = true}, 
+			{type = 'decision', value = 'aire_raped', check = true, orflag = true}], 
 			
 			image = null, tags = ['dialogue_scene'],  character = 'aire',
 			text = [ {text = "AIRE_RECRUITMENT_REPLY_BAD_START", reqs = []} ],
@@ -32,8 +32,8 @@ var data = {
 			}, ], 
 		},
 		{
-			reqs = [{type = 'decision', value = 'PrincessDead', check = false, orflag = true}, 
-			{type = 'decision', value = 'aire_raped', check = false}], 
+			reqs = [{type = 'decision', value = 'PrincessDead', check = false}, 
+			{type = 'decision', value = 'aire_raped', check = false, orflag = true}], 
 			
 			image = null, tags = ['dialogue_scene'], character = 'aire',
 			text = [ {text = "AIRE_RECRUITMENT_REPLY_GOOD_START", reqs = []} ],
@@ -344,7 +344,7 @@ var data = {
 		text = [{text = "FORCE_CALI_6", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = "remove_active_location"}], change_dialogue_type = 1
+			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}], change_dialogue_type = 1
 		}, ],
 	},
 	

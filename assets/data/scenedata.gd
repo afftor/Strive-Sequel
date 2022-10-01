@@ -1919,5 +1919,24 @@ var quests = {
 
 		},
 	},
+	cali_heirloom_quest = {
+		code = 'cali_heirloom_quest',
+		summary = "CALI_HEIRLOOM_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_1"}, # go to willage
+			stage2 = {code = 'stage2', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_2"}, # get enough wood
+			stage2_1 = {code = 'stage2_1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_2_1"}, # get enough wood discount # if needed
+			stage3 = {code = 'stage3', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_3"}, # bandits
+			stage4 = {code = 'stage4', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_4"}, # find collector
+			stage5 = {code = 'stage5', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_5"}, # rise position
+			stage5_1 = {code = 'stage5_1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_5_1"}, # william met
+			stage6 = {code = 'stage6', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_6"}, # get sword from william
+			stage7 = {code = 'stage7', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_7"}, # wait for cali to return
+			stage8 = {code = 'stage8', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_8"}, # sword get
+			stage9 = {code = 'stage9', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_9"}, # speek with cali
+			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
+
+		},
+	},
 }
 

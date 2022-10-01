@@ -79,4 +79,10 @@ var decisions = {
 	startedAct2 = "Needed to fix loading on beta version",
 	LiraPriestess = "Lira becomes a priestess in the end of act2 ceremony_3",
 	HelevielPriestess = "Heleviel becomes a priestess in the end of act2 ceremony_3",
+	cali_wood_discount = "get discount for Cali's heirloon quest",
+	cali_heirloom_good = "get sword without forcing Cali",
+	cali_heirloom_bargain = "tried to bargain with william",
+	cali_heirloom_discount = "3 days work",
+	cali_keep = "discard giving cali to william",
+	cali_sex = "sex scene with cali seen", #there should be 4 or 5 of them - but i found only 3
 }

@@ -214,13 +214,13 @@ var data = {
 		options = [
 			{
 			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true, orflag = true} ]},
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
 			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
 			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
 			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true, orflag = true} ]},
+			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
 			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
 			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
@@ -302,6 +302,16 @@ var data = {
 		], 
 		options = [
 			{code = 'aire_gryphon_sex_start', text = 'GRYPHON_AIRE_SEX_START_OPTION_INIT',reqs = [{type = 'quest_completed', name = 'gryphon_quest', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_SEX_2'}], dialogue_argument = 1}, 
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+		],
+	},
+	cali_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'cali',
+		text = [
+			{text = "CALI_GREET", reqs = []},
+		], 
+		options = [
+			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
 		],
 	},
