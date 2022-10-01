@@ -1433,7 +1433,7 @@ var sex_traits = { #only for interaction tab
 		starting = true,
 		random_generation = true,
 		negative = false,
-		reqs = [{code = 'effect_exists', value = 'tipsy', orflag = true},{code = 'effect_exists', value = 'drunk', orflag = true}],
+		reqs = [{code = 'effect_exists', value = 'tipsy'},{code = 'effect_exists', value = 'drunk', orflag = true}],
 		effects = [{effect = 'sens_bonus', operant = '+', value = 0.3, trigger = 'action_self'}],
 	},
 	irresistible = {

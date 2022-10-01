@@ -169,6 +169,7 @@ var data = {
 					{code = 'charm_factor', operant = '+', value = 1},
 				]},
 				{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
+				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [5,5], hour = 2}]},
 				{code = 'complete_quest', value = 'cali_servants_quest'},# or advance
 			 ]
 		},],
@@ -268,6 +269,7 @@ var data = {
 		custom_background = "cali_sex_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		common_effects = [{code = 'decision', value = 'cali_sex'}],
 		tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "CALI_SEX_9", reqs = []}],
 		options = [
@@ -342,4 +344,155 @@ var data = {
 		} ],
 	},
 
+
+	cali_amelia_1 = {
+		image = null,
+		character = "cali",
+		character2 = 'amelia',
+		reqs = [{type = "decision", value = "cali_sex", check = false}],
+		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		text = [
+			{text = "CALI_AMELIA_1", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_amelia_2 = {
+		image = null,
+		character = "cali",
+		character2 = 'amelia',
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_2", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_3',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_amelia_3 = {
+		image = null,
+		character = "cali",
+		character2 = 'amelia',
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_3", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_4',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+				change_dialogue_type = 2
+			}
+		],
+	},
+	cali_amelia_4 = {
+		image = null,
+		custom_background = "amelia_cali_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_4", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_5',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_amelia_5 = {
+		image = null,
+		custom_background = "amelia_cali_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_5", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_6',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_amelia_6 = {
+		image = null,
+		custom_background = "amelia_cali_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_6", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_7',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+				change_dialogue_type = 1
+			}
+		],
+	},
+	cali_amelia_7 = {
+		image = null,
+		character = "cali",
+		character2 = 'amelia',
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_7", reqs = []},
+		],
+		options = [
+			{
+				code = 'cali_amelia_8',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_amelia_8 = {
+		image = null,
+		character = "cali",
+		character2 = 'amelia',
+		tags = ['dialogue_scene', 'master_translate',],
+		text = [
+			{text = "CALI_AMELIA_8", reqs = []},
+		],
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
 }

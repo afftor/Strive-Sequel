@@ -60,7 +60,12 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 		{code = 'aire_dialogue_start', reqs = []}
 	]
 	},
-	
+	cali = {
+	code = 'cali', 
+	scenes = [
+		{code = 'cali_dialogue_start', reqs = []}
+	]
+	},
 }
 
 

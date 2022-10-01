@@ -1513,7 +1513,7 @@ func item_selected(item):
 func alcohol(person):
 	var text = ''
 	text += "You present [name2] with a bottle of whiskey. "
-	if self.mood < 15 || person.get_stat('authority') < 10:
+	if self.mood < 15 || !person.has_status('basic_servitude'):
 		text += 'However, [he2] refuses to drink in your company. '
 	else:
 		text += "[he2] accepts your invitation and you slowly consume it, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
