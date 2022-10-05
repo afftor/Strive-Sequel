@@ -758,7 +758,7 @@ func test_mode():
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Cali'},
 			]
 		)
 		globals.common_effects(
@@ -827,6 +827,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
@@ -921,9 +922,9 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-	
+		globals.common_effects([{code = 'progress_quest', value = 'daisy_lost', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-#		input_handler.interactive_message('cali_servants_1', '', {})
+		input_handler.interactive_message('daisy_lost_10', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)

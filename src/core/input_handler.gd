@@ -1484,6 +1484,15 @@ func play_animation(animation, args = {}):
 			PlaySound("quest_completed")
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("AnimationPlayer").play("task_completed")
+			anim_scene.get_node("Label3").text = args.name
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+		"repeatable_quest_completed":
+			PlaySound("quest_completed")
+			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
+			anim_scene.get_node("AnimationPlayer").play("task_completed")
 			var name =  selectedquest.name
 			if selectedquest.has("source"):
 				name += " (" + worlddata.factiondata[selectedquest.source].name + ")"

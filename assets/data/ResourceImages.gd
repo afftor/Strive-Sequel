@@ -143,13 +143,13 @@ var backgrounds = {
 	heleviel3 = load("res://assets/images/fullscreen scenes/HelevielCG003.png"),
 	heleviel4 = load("res://assets/images/fullscreen scenes/HelevielCG004.png"),
 	
-	cali_sex_1 = load("res://assets/images/fullscreen scenes/CaliCG007.png"),
-	cali_sex_2 = load("res://assets/images/fullscreen scenes/CaliCG008.png"),
-	cali_sex_3 = load("res://assets/images/fullscreen scenes/CaliCG009.png"),
+	cali_bj_happy_1 = load("res://assets/images/fullscreen scenes/CaliCG007.png"),
+	cali_bj_happy_2 = load("res://assets/images/fullscreen scenes/CaliCG008.png"),
+	cali_bj_happy_3 = load("res://assets/images/fullscreen scenes/CaliCG009.png"),
 	
-	cali_sex_4 = load("res://assets/images/fullscreen scenes/CaliCG019.png"),
-	cali_sex_5 = load("res://assets/images/fullscreen scenes/CaliCG020.png"),
-	cali_sex_6 = load("res://assets/images/fullscreen scenes/CaliCG021.png"),
+	cali_riding_1 = load("res://assets/images/fullscreen scenes/CaliCG019.png"),
+	cali_riding_2 = load("res://assets/images/fullscreen scenes/CaliCG020.png"),
+	cali_riding_3 = load("res://assets/images/fullscreen scenes/CaliCG021.png"),
 	
 	amelia_cali_1 = load("res://assets/images/fullscreen scenes/Amelia_Cali1.png"),
 	amelia_cali_2 = load("res://assets/images/fullscreen scenes/Amelia_Cali2.png"),

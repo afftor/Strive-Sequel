@@ -1141,7 +1141,7 @@ var scenedict = {
 			{code = 'add_timed_event', value = "loan_event1",
 				args = [
 					{type = 'fixed_date',
-					date = 14,
+					date = 15,
 					hour = 1}
 					]
 			},
@@ -1167,7 +1167,7 @@ var scenedict = {
 				{code = 'add_timed_event', value = "loan_event2",
 					args = [
 						{type = 'fixed_date',
-						date = 28,
+						date = 29,
 						hour = 1}
 						]
 					},
@@ -1234,7 +1234,7 @@ var scenedict = {
 				{code = 'add_timed_event', value = "loan_event4",
 					args = [
 						{type = 'fixed_date',
-						date = 100,
+						date = 99,
 						hour = 1}
 						]
 					},

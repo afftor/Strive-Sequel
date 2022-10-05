@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.4a'
+const gameversion = '0.6.5'
 
 #time
 signal hour_tick
@@ -1581,6 +1581,12 @@ func common_effects(effects):
 					if k.code == i.value:
 						ResourceScripts.game_progress.active_quests.erase(k)
 						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						
+						var args = {}
+						args["label"] = "Quest Completed"
+						args["name"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
+						#args["sound"] = "class_aquired"
+						input_handler.play_animation("quest_completed", args)
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':

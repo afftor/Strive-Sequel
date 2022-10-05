@@ -151,6 +151,25 @@ var template = {
 	relatives = {},
 	sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}},
 	sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0},
+	
+	brothel_rules = {
+		waitress = true,
+		hostess = false,
+		dancer = false,
+		stripper = false,
+		
+		petting = false,
+		oral = false,
+		anal = false,
+		pussy = false,
+		group = false,
+		sextoy = false,
+		
+		males = true,
+		females = true,
+		futa = true
+	},
+	
 	consent = 0,
 	relations = {},
 	metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0},

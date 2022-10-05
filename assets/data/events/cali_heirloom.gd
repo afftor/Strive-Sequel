@@ -657,6 +657,7 @@ var data = {
 	cali_grat_6 = { #bad
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_GRAT_6", reqs = []} ],
+		character = "cali",
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'remove_character'}]}, {code = 'complete_quest', value = 'cali_heirloom_quest'}]
@@ -925,7 +926,7 @@ var data = {
 	},
 	cali_grat_sex_1 = {
 		image = null,
-		custom_background = "cali_sex_4",
+		custom_background = "cali_riding_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		common_effects = [{code = 'decision', value = 'cali_sex'}],
@@ -943,10 +944,10 @@ var data = {
 	},
 	cali_grat_sex_2 = {
 		image = null,
-		custom_background = "cali_sex_5",
+		custom_background = "cali_riding_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "CALI_GRAT_SEX_2", reqs = []}],
 		options = [
 			{
@@ -960,10 +961,10 @@ var data = {
 	},
 	cali_grat_sex_3 = {
 		image = null,
-		custom_background = "cali_sex_6",
+		custom_background = "cali_riding_3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "CALI_GRAT_SEX_3", reqs = []}],
 		options = [
 			{
