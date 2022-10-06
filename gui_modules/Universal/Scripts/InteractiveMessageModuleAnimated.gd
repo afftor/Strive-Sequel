@@ -352,6 +352,9 @@ func close(transition = false, finish_scene = true):
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
+	if gui_controller.dialogue_window_type == 2:
+		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+		gui_controller.dialogue_window_type = 1
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
