@@ -90,6 +90,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['sex_skills_petting'],
 		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_basic',
 		tags = [],
 	},
 	oral = {
@@ -98,6 +99,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['sex_skills_oral'],
 		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_oral',
 		tags = [],
 	},
 	pussy = {
@@ -106,6 +108,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['sex_skills_pussy'],
 		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_basic',
 		tags = ['virginity','impregnation'],
 	},
 	anal = {
@@ -113,6 +116,7 @@ var gold_tasks_data = {
 		formula = 'gold_anal',
 		text_events = [],
 		workstats = ['sex_skills_anal'],
+		req_training = 'loyalty_sex_anal',
 		workmod = 'mod_pros',
 		tags = [],
 	},
@@ -121,6 +125,7 @@ var gold_tasks_data = {
 		formula = 'gold_penetration',
 		text_events = [],
 		workstats = ['sex_skills_penetration'],
+		req_training = 'loyalty_sex_basic',
 		workmod = 'mod_pros',
 		tags = [],
 	},
@@ -130,6 +135,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['sex_skills_pussy','sex_skills_anal'],
 		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_group',
 		tags = ['virginity','impregnation'],
 	},
 	sextoy = {
@@ -138,6 +144,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['sex_skills_anal','sex_skills_oral','sex_skills_petting'],
 		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_adv',
 		tags = ['virginity','impregnation'],
 	},
 }
