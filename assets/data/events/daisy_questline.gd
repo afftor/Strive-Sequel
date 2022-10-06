@@ -1395,13 +1395,13 @@ var data = {
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_2", reqs = []}],
 		options = [ {
-			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, type = 'next_dialogue'
 		} ]
 	},
 	
 	daisy_consensual_3 = {
-		image = null, tags = ['dialogue_scene'],
-		reqs = [], unique_character = "daisy",
+		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_3", reqs = []}],
 		options = [ {
 			code = 'daisy_consensual_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -1409,8 +1409,8 @@ var data = {
 	},
 	
 	daisy_consensual_4 = {
-		image = null, tags = ['dialogue_scene'],
-		reqs = [], unique_character = "daisy",
+		image = null, custom_background = "daisy_bent2", tags = ['dialogue_scene'],
+		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_4", reqs = []}],
 		options = [ {
 			code = 'daisy_consensual_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -1418,8 +1418,8 @@ var data = {
 	},
 	
 	daisy_consensual_5 = {
-		image = null, tags = ['dialogue_scene'],
-		reqs = [], unique_character = "daisy",
+		image =  null, custom_background = "daisy_bent3", tags = ['dialogue_scene'],
+		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

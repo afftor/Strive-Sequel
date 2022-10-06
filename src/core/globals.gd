@@ -1821,8 +1821,6 @@ func valuecheck(dict):
 				if ResourceScripts.game_progress.decisions.has(i):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
-		"quest_stage":
-			return ResourceScripts.game_progress.if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
 			return ResourceScripts.game_progress.completed_quests.has(dict.name) == dict.check
 		"party_level":
@@ -1893,6 +1891,13 @@ func valuecheck(dict):
 				return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
 			else:
 				return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
+		'any_quest_stage':
+			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
+				return false
+			for i in dict.stages:
+				if ResourceScripts.game_progress.get_active_quest(dict.value).stage == i:
+					return true
+			return false
 		'faction_reputation':
 			var data = ResourceScripts.world_gen.get_faction_from_code(dict.code)
 			var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]

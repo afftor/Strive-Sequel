@@ -922,9 +922,11 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
+
+		
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_lost', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-		input_handler.interactive_message('daisy_lost_10', '', {})
+		#input_handler.interactive_message('daisy_lost_12', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)

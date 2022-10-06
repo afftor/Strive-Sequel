@@ -486,14 +486,77 @@ func finish_learning():
 	quest_id = ''
 	work = ''
 
+var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
+
+func select_brothel_activity():
+	var brothel_rules
+	
+	var non_sex_rules = []
+	var sex_rules = []
+	
+	for i in brothel_rules:
+		if brothel_non_sex_options.has(i):
+			non_sex_rules.append(i)
+		else:
+			sex_rules.append(i)
+	
+	if sex_rules.size() >= 0:
+		#pick chance
+		if 50 + parent.get_ref().get_stat('charm')/2 > randf()*100:
+			var remove_from_sex = []
+			
+			#every rule toggled only has 50% chance to be picked by default
+			for i in sex_rules:
+				if randf() >= 0.5:
+					remove_from_sex.append(i)
+			if remove_from_sex.size() == sex_rules.size(): #make sure at least 1 option is sill available in the end
+				remove_from_sex.remove(randi() % remove_from_sex.size())
+			for i in remove_from_sex:
+				sex_rules.remove(i)
+			
+			var highest_value = get_highest_value(sex_rules)
+			
+			var data = gold_tasks_data[highest_value.code]
+			work_tick_values(data.workstats[randi()%data.workstats.size()])
+			
+			ResourceScripts.game_res.money += highest_value.value * (1 + (0.1 * sex_rules.size())) # 10% percent for every toggled sex service
+			
+			#TODO add metrics and decriptions
+			
+			return
+	else:
+		var highest_value = get_highest_value(non_sex_rules)
+		
+		var data = gold_tasks_data[highest_value.code]
+		work_tick_values(data.workstats[randi()%data.workstats.size()])
+		
+		ResourceScripts.game_res.money += highest_value.value
+		
+
+
+
+
+func get_highest_value(array):#find highest profit option
+	var values = {}
+	var highest_value = {code = '', value = 0}
+	for i in array:
+		values[i] = round(get_gold_value(i) * (0.8 + randf() * 0.4)) #20% randomness to value
+		if highest_value.value < values[i]:
+			highest_value.code = i
+			highest_value.value = values[i]
+	
+	return highest_value
+
+func get_gold_value(task):
+	var value = call(gold_tasks_data[task].formula)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(gold_tasks_data[task].workmod)/100.0)
+	
+	return value
 
 func work_tick():
 	if is_on_quest:
 		return
 	var currenttask = find_worktask(parent.get_ref().get_location())
-#	for i in ResourceScripts.game_party.active_tasks:
-#		if i.workers.has(parent.get_ref().id):
-#			currenttask = i
 	
 	if currenttask == null:
 		work = ''
@@ -511,25 +574,38 @@ func work_tick():
 	
 	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
 	
+	
+	
+	if currenttask.code == 'prostitution':
+		var workstat
+		var brothel_rules = parent.get_ref().get_stat('brothel_rules')
+		for i in brothel_rules:
+			pass
+		
+		work_tick_values(workstat)
+	
+	
+	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
 		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(currenttask)
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	elif currenttask.code == 'building':
 		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(currenttask)
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	else:
 		var person_location = parent.get_ref().get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
-		work_tick_values(currenttask, gatherable)
 		if !gatherable:
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 			currenttask.progress += prodvalue
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
+			work_tick_values(Items.materiallist[currenttask.code].workstat)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if !gatherable:
@@ -552,16 +628,15 @@ func work_tick():
 				else:
 					ResourceScripts.game_res.materials[currenttask.code] += 1
 
-
-func work_tick_values(currenttask, gatherable = false):
-	var workstat
-	if !gatherable:
-		workstat = races.tasklist[currenttask.code].workstat
-	else:
-		workstat = Items.materiallist[currenttask.code].workstat
+func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
-		parent.get_ref().add_stat(workstat, 0.36)
+		if workstat.has("sex_skills"):
+			parent.get_ref().add_stat(workstat, rand_range(1.2,1.8))
+		else:
+			parent.get_ref().add_stat(workstat, 0.36)
 		parent.get_ref().add_stat('base_exp', 5)
+
+
 
 
 func get_task_crit_chance(bonus_tool = false):

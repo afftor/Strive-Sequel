@@ -1010,7 +1010,7 @@ var TranslationDict = {
 	STATMOD_TAILOR = "Tailor",
 	STATMOD_ALCHEMY = "Alchemy",
 	STATMOD_FARM = "Farm",
-	STATMOD_PROS = "Prostitution",
+	STATMOD_PROS = "Service",
 	STATMOD_TASK_EFFICIECNY = "Task Effciency",
 
 	STATRESIST_NORMAL = "Normal Resist",
@@ -8062,44 +8062,44 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 Not waiting for your reply she disappears from sight as nonchalantly as she appeared. """,
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
-Cali: - [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
+- [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
 
 You notice how Cali slightly lowered her voice, her hands slipping behind her back as a result of her training with Amelia. The posture was distracting to say the least.""",
 	CALI_SEX_5_OPTION_1 = "Since you asked so nicely, here is the coin. Get enough for everyone. (-100 Gold)",
 	CALI_SEX_5_OPTION_2 = "Sorry, we can't afford it right now. Perhaps next time",
 	CALI_SEX_5_1 = """Cali gives you a small pout but refrains from protest.
 
-Cali: - I see, well, another time then.""",
+- I see, well, another time then.""",
 	CALI_SEX_6 = """You hand Cali the money and after a few moments she returns with a tray of dumplings. The smell is exactly as she mentioned. Passing them out to the other servants, she soon is sitting beside you after handing you one as well. 
 
 The two of you eat in silence as you mull over the treat. Warm, soft, and expertly cooked you muse for a few moments about going outside yourself and seeing if you and the merchant can come to an agreement about deliveries of these treats.""",
 	CALI_SEX_7 = """Cali finishes her treat soon after you. She would look up, peering around the main hall. She notices that the two of you are alone. Taking the wrapper from your treats, she looks up at you now with a grateful, excited look.
 
-Cali: - Thanks [Master]. It was tasty. 
+- Thanks [Master]. It was tasty. 
 
 The girl's face reddens a bit as she again looks around the room, she looks nervous before she speaks.
 
-Cali: - Amelia has been giving me tips and I was thinking about doing something for you in turn...""",
+- Amelia has been giving me tips and I was thinking about doing something for you in turn...""",
 	CALI_SEX_8 = """Cali takes one more nervous look around before she looks back up to you with a mischievous look. Saying nothing more for now the girl soon slipped down to her knees in front of you. Taking a steadying breath she'd move to your trousers as she undid them easily, hand finding and wrapping around your shaft as she pulled it free.""",
 	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand was unsure at first, before she'd start to intently pump your shaft. 
 
-Cali: - Wow, I've never seen one this close before... It's warm.
+- Wow, I've never seen one this close before... It's warm.
 
 The girl continues to stroke your member, obviously having greatly benefited from Amelia's tutelage. After a few moments of this you find yourself almost rocking back and forth, the girl's hand working you like she's far more experienced than she is.
 
-Cali: - You seem to like this...
+- You seem to like this...
 
 The girl would slowly pick up the speed she stroked you, until finally she leaned down, her mouth enveloping the head of your shaft.""",
 	CALI_SEX_10 = """Cali leaned down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she'd have to back off, looking up at you with a blush.
 
-Cali: - Huh, It's really big, jeez. I wonder if I can...
+- Huh, It's really big, jeez. I wonder if I can...
 
 Cali would now start to envelope the head of your shaft again, this time using her hand to still pump the base as she sucked on the head, occasionally pumping her mouth just a bit deeper. It was an amazing feeling as you just laid there, calming yourself as you put a mental note to thank Amelia for this. """,
 	CALI_SEX_11 = """Working without complaint, and making the most sensual noises you'd heard come from the girl, you did your best to hold on. Fighting the building urge of release before finally hitching your breath as you start to cum.""",
 	CALI_SEX_12 = """To her credit even without much warning Cali keeps her lips sealed tightly around the head of your shaft. Her eyes surprised but her grip firm as you nearly came out of the seat. Soon panting in your position, you look down at the girl; her mouth slowly pulling off the head of your shaft as she keeps the cum there in her mouth. 
 
 She looks up into your eyes a bit surprised now, the girl soon resolving herself and swallowing it all, letting out a little sigh before quickly returning a smile back at you.""",
-	CALI_SEX_13 = """Cali: - W-well, hope that pleased you, [Master].
+	CALI_SEX_13 = """- W-well, hope that pleased you, [Master].
 
 As she confirms your reaction she quickly retreats from sight to her duties. """,
 	
@@ -8522,7 +8522,7 @@ Cali had no words to reply as tears welled up in her eyes. With a single stroke,
 
 Ever a tight partner the girls entrance though damp still isn't accommodating, driving you to have to grind her on you now, her figure still shuddering, little moans escaping her as she's soon looking intently up at you.
 
-Cali:- [Master]...
+- [Master]...
 
 With her help you soon start to press into her, the teens tight entrance squeezing you firmly as each inch stretches her out further. Cali doesn't complain, instead letting gravity take over as she loosens her grip on you slightly, sliding her body down fully onto your shaft nearly instantly, a soft whimper coming from her mouth as she looks up at you now.
 """,
@@ -8530,7 +8530,7 @@ With her help you soon start to press into her, the teens tight entrance squeezi
 
 With time the girl would relax more, being more pliable in your hands as you continued your thrusting into her, her eyes staying locked on you as she squeezed tighter with her legs, her body shaking slightly from the stimulation.
 
-Cali:- I need to [master], I need to cum""",
+- P-please... [Master]... Aaah-ah...""",
 	CALI_GRAT_SEX_3 = """
 The wolf girl half pleads for it now, her hips writhing on you after only a few moments longer, her eyes hazing as she tightens up around you, her ankles locking tight as you feel the tell tell sign of her climax starting now. 
 
