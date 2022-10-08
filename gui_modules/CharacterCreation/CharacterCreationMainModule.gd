@@ -503,6 +503,13 @@ func LoadCharacter(updated_char_to_load = null):
 			preservedsettings[i] = character_to_load["food_hate"]
 			valid_preservedsettings[i] = true
 			continue
+		elif i == 'sex_traits':
+			preservedsettings.erase(i)
+			valid_preservedsettings[i] = false
+			if Traitdata.sex_traits.has(character_to_load.sex_traits):
+				preservedsettings.sex_traits = character_to_load.sex_traits
+				valid_preservedsettings[i] = true
+			continue
 		person.set_stat(i, character_to_load[i])
 		preservedsettings[i] = character_to_load[i]
 		valid_preservedsettings[i] = true

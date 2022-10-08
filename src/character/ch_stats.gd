@@ -57,6 +57,12 @@ func fix_serialize():
 		for e in arr:
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
+	for tr in sex_traits.duplicate():
+		if Traitdata.sex_traits.has(tr): continue
+		sex_traits.erase(tr)
+	for tr in unlocked_sex_traits.duplicate():
+		if Traitdata.sex_traits.has(tr): continue
+		unlocked_sex_traits.erase(tr)
 
 
 func default_stats_get():
