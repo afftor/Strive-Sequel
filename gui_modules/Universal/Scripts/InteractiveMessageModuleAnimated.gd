@@ -347,7 +347,12 @@ func event_person_selected(person):
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 
-func close(transition = false, finish_scene = true):
+func close(args = {}):
+	hold_selection = true
+	if !args.has('transition'):
+		args.transition = false 
+	if !args.has('finish_scene'):
+		args.finish_scene = true
 	hold_selection = true
 	ch1 = null
 	ch2 = null
@@ -355,13 +360,28 @@ func close(transition = false, finish_scene = true):
 	if gui_controller.dialogue_window_type == 2:
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 		gui_controller.dialogue_window_type = 1
-	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	yield(get_tree().create_timer(0.2), "timeout")
+		var screen_duration = 0.5
+		if args.has('screen_duration'):
+			screen_duration = args.screen_duration
+		var transition_duration = screen_duration * 0.5
+		if args.has('transition_duration'):
+			transition_duration = args.transition_duration
+		if screen_duration <= 0.001:
+			ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+			yield(get_tree().create_timer(0.2), "timeout")
+		else:
+			ResourceScripts.core_animations.FadeAnimation(self, transition_duration, screen_duration * 0.25)
+			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
+			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
+	else:
+		ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+		yield(get_tree().create_timer(0.2), "timeout")
+	hold_selection = false
 	hide()
-	if transition == false:
+	if args.transition == false:
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
-	if finish_scene: input_handler.emit_signal("EventFinished")
+	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
 	gui_controller.is_dialogue_just_started = true
 
