@@ -770,7 +770,7 @@ var TranslationDict = {
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
-	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features.",
+	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
 	
 	TASKMAINSTAT = "Main characteristic",
 	

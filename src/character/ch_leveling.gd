@@ -515,11 +515,21 @@ func select_brothel_activity():
 				sex_rules.remove(i)
 			
 			var highest_value = get_highest_value(sex_rules)
-			
 			var data = gold_tasks_data[highest_value.code]
+			var bonus_gold = 0
+			
+			
+			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+				parent.get_ref().set_stat('vaginal_virgin', false)
+				parent.get_ref().set_stat('vaginal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = 'brothel_customer'})
+				bonus_gold += parent.get_ref().get_stat('value') * 0.03
+			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+				parent.get_ref().set_stat('anal_virgin', false)
+				parent.get_ref().set_stat('anal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = 'brothel_customer'})
+			
 			work_tick_values(data.workstats[randi()%data.workstats.size()])
 			
-			ResourceScripts.game_res.money += highest_value.value * (1 + (0.1 * sex_rules.size())) # 10% percent for every toggled sex service
+			ResourceScripts.game_res.money += highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().get_stat('value'))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
 			
 			#TODO add metrics and decriptions
 			
@@ -530,7 +540,7 @@ func select_brothel_activity():
 		var data = gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		ResourceScripts.game_res.money += highest_value.value
+		ResourceScripts.game_res.money += highest_value.value * max(1.4, (1 + 0.005 * parent.get_ref().get_stat('value')))
 		
 
 

@@ -1330,7 +1330,7 @@ var data = {
 		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'daisy_consensual_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			bonus_effects = [
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
 	},
@@ -1395,7 +1395,7 @@ var data = {
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_2", reqs = []}],
 		options = [ {
-			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, type = 'next_dialogue'
+			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, open_speed = 2, change_dialogue_type = 2, type = 'next_dialogue'
 		} ]
 	},
 	
@@ -1422,7 +1422,8 @@ var data = {
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'screen_black_transition', value = 1}],
 		} ]
 	},
 }

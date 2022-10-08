@@ -661,6 +661,9 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
+	
+	set_virginity_data()
+	
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
 	var gendata = {race = '', sex = 'random', age = 'random'}
@@ -958,11 +961,19 @@ func get_sex_features():
 
 	if statlist.vaginal_virgin == false || statlist.anal_virgin == false:
 		statlist.mouth_virgin = false
-
-
+	
 	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
 		if statlist[i] == false:
 			statlist.sex_skills[skill_shortcuts[i]] = rand_range(1,10)
+	set_virginity_data()
+
+
+func set_virginity_data():
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i] == false:
+			statlist[i+'_lost'] = {date = [-1,-1], source = null}
+		else:
+			statlist[i+'_lost'] = {date = null, source = null}
 
 func add_random_sex_skill():
 	var array = ['petting']

@@ -131,7 +131,7 @@ var template = {
 	multiple_tits = 0,
 	multiple_tits_developed = false,
 	has_womb = false,
-	pregnancy = { "fertility": 0, "duration": 0, "baby": null },
+	pregnancy = {"fertility": 0, "duration": 0, "baby": null },
 	lactation = false,
 
 	was_proposed = false,
@@ -143,6 +143,12 @@ var template = {
 	vaginal_virgin = true,
 	anal_virgin = true,
 	mouth_virgin = true,
+	
+	penis_virgin_lost = {date = null, source = null},
+	vaginal_virgin_lost = {date = null, source = null},
+	anal_virgin_lost = {date = null, source = null},
+	mouth_virgin_lost = {date = null, source = null},
+	
 	#tasks
 
 	shackles_chance = null,

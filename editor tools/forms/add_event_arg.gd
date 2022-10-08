@@ -7,7 +7,7 @@ var newrec = true
 onready var typesel = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/type
 onready var descedit = $MarginContainer/VBoxContainer/HBoxContainer/desc_panel/VBoxContainer/desc
 
-var condtypes = ['add_to_date', 'fixed_date']
+var condtypes = ['ch', 'fixed_date']
 var types_desc = ['add with delay', 'set to fixed date (not always safe)'] 
 
 

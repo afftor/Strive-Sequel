@@ -788,7 +788,7 @@ func test_mode():
 		)
 		globals.common_effects(
 			[
-				{code = 'make_story_character', value = 'Mae'},
+				{code = 'make_story_character', value = 'Anastasia'},
 			]
 		)
 		globals.common_effects(
@@ -801,6 +801,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Lilith'},
 			]
 		)
+		
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Cali'},

@@ -30,6 +30,9 @@ var weekly_dates_max = 1
 #var log_node
 #var log_storage = []
 
+func get_date():
+	return [date, hour]
+
 
 func fix_serialization():
 	date = int(date)
