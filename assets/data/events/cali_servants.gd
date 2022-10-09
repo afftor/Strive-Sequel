@@ -263,6 +263,7 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
+#				open_speed = 1.0,
 				change_dialogue_type = 2
 			}
 		],

@@ -260,7 +260,9 @@ func set_stat(statname, value): #for direct access only
 
 #bonus system
 func get_stat(statname, ref = false):
-	if !statlist.has(statname): return null
+	if !statlist.has(statname): 
+		print("no stat - %s" % statname)
+		return null
 	var res
 	if ref: res = statlist[statname]
 	else:  res = custom_stats_get(statname)
@@ -389,7 +391,9 @@ func add_stat(statname, value, revert = false):
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
 		statname = statname.trim_suffix('_direct')
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] - value)
@@ -401,7 +405,9 @@ func add_stat(statname, value, revert = false):
 		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] / value)
@@ -423,7 +429,9 @@ func mul_stat(statname, value, revert = false):
 			else: bonuses[statname + '_mul'] = value
 
 func add_part_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] /(1.0 + value))

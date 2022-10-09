@@ -106,6 +106,7 @@ func OpenAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease
 	if !node.is_inside_tree(): return
 	if BeingAnimated.has(node) == true:
 		return
+	node.raise()
 	BeingAnimated.append(node)
 	node.visible = true
 	var tweennode = input_handler.GetTweenNode(node)
@@ -113,7 +114,7 @@ func OpenAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease
 	tweennode.start()
 	yield(get_tree().create_timer(speed - 0.05), 'timeout')
 	BeingAnimated.erase(node)
-	node.raise()
+	
 
 func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
 	if !node.is_inside_tree(): return
