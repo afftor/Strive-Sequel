@@ -5700,7 +5700,7 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
-— You've really done it, [master]. I never imagined this dress would be so nice.""",
+— You've really done it, [master]. I never imagined this dress would be so nice.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "I think you should express your gratitude in a way that fits your position (Sexuals Factor)",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags",
@@ -5746,7 +5746,7 @@ You buckle your pants and look down at her cum-smeared face, her eyes still gazi
 
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush.
 
-— T-thank you for the gift, [master]. I hope you like my new look.""",
+— T-thank you for the gift, [master]. I hope you like my new look.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it (reveal her body)",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = """Daisy lightly smiles at your words.""",
@@ -8059,7 +8059,7 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 
 {color=yellow|Amelia: - She's a good girl, you better not betray her trust in you.}
 
-Not waiting for your reply she disappears from sight as nonchalantly as she appeared. """,
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali:Charm +10}""",
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
 - [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...

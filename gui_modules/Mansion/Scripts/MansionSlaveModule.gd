@@ -195,3 +195,5 @@ func text_url_hover_hide(meta = null):
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
+
+

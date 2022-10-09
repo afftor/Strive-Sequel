@@ -1019,7 +1019,7 @@ var scenedict = {
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = [], change_dialogue_type = 1},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_confess_event = {

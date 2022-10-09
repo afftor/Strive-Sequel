@@ -585,7 +585,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], 
 		text = [{text = "PRE_RITUAL_7_3_2", reqs = [], }],
 		options = [ {
-			code = 'pre_ritual_7_3_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1
+			code = 'pre_ritual_7_3_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 		}, ],
 	},
 	

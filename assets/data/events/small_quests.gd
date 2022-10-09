@@ -344,7 +344,7 @@ var data = {
 		text = [{text = "FORCE_CALI_6", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}], change_dialogue_type = 1
+			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}]
 		}, ],
 	},
 	
@@ -387,7 +387,7 @@ var data = {
 			{text = "", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 1}
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
 	}, 
 	
@@ -402,7 +402,7 @@ var data = {
 			{text = "", reqs = []}
 		],
 		options = [ {
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1,
+				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'},{code = 'rewrite_save'}]
 			}
 		]

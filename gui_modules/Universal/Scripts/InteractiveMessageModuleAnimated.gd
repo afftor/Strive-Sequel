@@ -360,7 +360,7 @@ func close(args = {}):
 	if gui_controller.dialogue_window_type == 2:
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 		gui_controller.dialogue_window_type = 1
-		var screen_duration = 0.5
+		var screen_duration = 1.0
 		if args.has('screen_duration'):
 			screen_duration = args.screen_duration
 		var transition_duration = screen_duration * 0.5
