@@ -876,7 +876,7 @@ func dialogue_option_selected(option):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
 				else:
-					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), 1.0)
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()
