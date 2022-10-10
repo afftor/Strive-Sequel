@@ -155,7 +155,7 @@ func OrgasmDenialCum():
 		text += '_petting'
 	#$Panel/sceneeffects.bbcode_text +="\n" +
 	OrgasmDenyVictim.person.add_stat('obedience', 4 + OrgasmDenyVictim.person.get_stat('sexuals_factor') * 2)
-	OrgasmDenyVictim.person.add_stat('loyal', 5)
+	OrgasmDenyVictim.person.add_stat('loyalty', 5)
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
 	OrgasmDenyVictim.sens = 0
 	OrgasmDenyVictim.orgasm(decoder(OrgasmDenyText[text], [OrgasmDenyPlayer], [OrgasmDenyVictim]))
@@ -1060,14 +1060,14 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in givers:
 			if scenescript.giverpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
 				i.person.set_stat('vaginal_virgin', false)
-				i.person.set_stat('vaginal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = takers[0].person.id})
+				i.person.set_stat('vaginal_virgin_lost', {source = takers[0].person.id})
 				virgin.type = 'vaginal'
 				virgin.character = i
 				if takers.size() == 1 && takers[0].person.has_profession('master'):
 					i.person.add_stat('loyalty', 20)
 			elif scenescript.giverpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.set_stat('anal_virgin', false)
-				i.person.set_stat('anal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = takers[0].person.id})
+				i.person.set_stat('anal_virgin_lost', {source = takers[0].person.id})
 				virgin.type = 'anal'
 				virgin.character = i
 				if takers.size() == 1 && takers[0].person.has_profession('master'):
@@ -1075,14 +1075,14 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in takers:
 			if scenescript.takerpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
 				i.person.set_stat('vaginal_virgin', false)
-				i.person.set_stat('vaginal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = givers[0].person.id})
-				givers.type = 'vaginal'
+				i.person.set_stat('vaginal_virgin_lost', {source = givers[0].person.id})
+				virgin.type = 'vaginal'
 				virgin.character = i
 				if givers.size() == 1 && givers[0].person.has_profession('master'):
 					i.person.add_stat('loyalty', 20)
 			elif scenescript.takerpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.set_stat('anal_virgin', false)
-				i.person.set_stat('anal_virgin_lost', {date = ResourceScripts.game_globals.get_date(), source = givers[0].person.id})
+				i.person.set_stat('anal_virgin_lost', {source = givers[0].person.id})
 				virgin.type = 'anal'
 				virgin.character = i
 				if givers.size() == 1 && givers[0].person.has_profession('master'):

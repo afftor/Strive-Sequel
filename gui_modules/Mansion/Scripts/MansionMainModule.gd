@@ -748,10 +748,11 @@ func test_mode():
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
+						{code = 'loyalty', value = 150, operant = "+"},
+						{code = 'consent', value = 150, operant = "+"},
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_petting', operant = '+', value = 75},
-						{code = 'add_profession', profession = 'spouse'},
 					]
 				}
 			]
@@ -927,7 +928,7 @@ func test_mode():
 		
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-		input_handler.interactive_message('cali_servants_5', '', {})
+		#input_handler.interactive_message('cali_bandits_3', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		

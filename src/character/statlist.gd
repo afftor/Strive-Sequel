@@ -144,10 +144,10 @@ var template = {
 	anal_virgin = true,
 	mouth_virgin = true,
 	
-	penis_virgin_lost = {date = null, source = null},
-	vaginal_virgin_lost = {date = null, source = null},
-	anal_virgin_lost = {date = null, source = null},
-	mouth_virgin_lost = {date = null, source = null},
+	penis_virgin_lost = {source = null},
+	vaginal_virgin_lost = {source = null},
+	anal_virgin_lost = {source = null},
+	mouth_virgin_lost = {source = null},
 	
 	#tasks
 
@@ -178,7 +178,7 @@ var template = {
 	
 	consent = 0,
 	relations = {},
-	metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0},
+	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
 	lastsexday = 0,
 
 	asser = 0,

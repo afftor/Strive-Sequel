@@ -575,6 +575,15 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		dialogue_type = 2,
+		common_effects = [
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'take_virginity', type = 'vaginal', partner = "guild_trainer"},
+					{code = 'take_virginity', type = 'anal', partner = "guild_trainer"},
+				]
+			}],
 		text = [{text = "DAISY_TRAINING_INTERMISSION_1", reqs = []}],
 		options = [ {
 			code = 'daisy_training_intermission_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

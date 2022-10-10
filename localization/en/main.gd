@@ -8138,16 +8138,16 @@ Uncle: - I thank you for your cooperation. Then we will be on our way.
 Cali soon leaves, never crossing your path again. Either from her being missing or not willing to let you find her.""",
 	CALI_HEIRLOOM_5 = """Uncle: - I see... Perhaps it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.
 
-	Cali's protest sinks abruptly upon hearing it.
+Cali's protest sinks abruptly upon hearing it.
 
-	Cali: - O-oh... Uh, can you give me some time? I don't have it right now...
+Cali: - O-oh... Uh, can you give me some time? I don't have it right now...
 
-	Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.""",
+Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
-	- Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
+- Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
 
-	- I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it. """,
+- I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it. """,
 	CALI_HEIRLOOM_6_OPTION_1 = "Everyone makes mistakes",
 	CALI_HEIRLOOM_6_OPTION_2 = "Why did you decide to run away?",
 	CALI_HEIRLOOM_6_OPTION_3 = "Why is this heirloom important?",
@@ -8155,7 +8155,7 @@ Cali soon leaves, never crossing your path again. Either from her being missing 
 	CALI_HEIRLOOM_6_1 = """- Ha-ha, right. Thanks for trying to cheer me up, but it's better to wait until I solve this.""",
 	CALI_HEIRLOOM_6_2 = """Cali takes a long pause before she finally speaks up.
 
-	- I'm not sure I belong within the clan at all, and I thought this would be better for me and them. I don't feel comfortable talking more about it yet.""",
+- I'm not sure I belong within the clan at all, and I thought this would be better for me and them. I don't feel comfortable talking more about it yet.""",
 	CALI_HEIRLOOM_6_3 = """- I don't really know. The adults said it's a gift to our clan from the gods and will serve the next hero being born or something stupid like this. It didn't do a thing for me as I said. """,
 	CALI_HEIRLOOM_7 = """- Yes, the bandits that captured me were near a village. I can at least recognize the place. The locals might have an idea where the bandits migrated to.""",
 	CALI_HEIRLOOM_7_OPTION_1 = "Let's get your clan's sword then",
@@ -8163,7 +8163,7 @@ Cali soon leaves, never crossing your path again. Either from her being missing 
 	CALI_HEIRLOOM_8_1 = """- You don't have to come with me, but I appreciate it. I'll feel safer knowing you'll be watching my back.""",
 	CALI_HEIRLOOM_8_2 = """Cali furiously shakes her head.
 
-	- Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
+- Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
 	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near [settlement_name].""",
 	CALI_FARMER_1 = """As you walk around searching for potential witnesses, one of the farmers spots you.
 
@@ -8193,8 +8193,9 @@ Cali: - Help you? After calling me a bandit?!
 The farmer ignores Cali's remark and continues trying to persuade you into helping him.
 
 Farmer: - I need some lumber to repair it. You get me 200 Wood. I'll tell you where you can find them, since I overheard where they said they were headed off to.""",
-	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence",
-	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad.",
+	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence (-200 Wood)",
+	CALI_FARMER_4_OPTION_1_1 = "You can have the wood for your fence (-100 Wood)",
+	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad. (Worker)",
 	CALI_FARMER_4_OPTION_3 = "We don't quite have that right now",
 	CALI_FARMER_4_3 = """The farmer gives you a scrutinizing look realizing that he wasn't able to fool you. 
 
@@ -8723,15 +8724,15 @@ Amelia: - Don't fret over it, a couple of girls can have a bit of private fun on
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants guild on Cali's behalf",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Cali's past finally caught up with her. You'll have to help her sort it out if you want to keep her at your side...",
 	CALI_HEIRLOOM_QUEST_NAME = "Pariah",
-	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ", #go to willage
-	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant", #get wood
-	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant", #get less wood
-	CALI_HEIRLOOM_QUEST_STAGE_3 = "Search For Bandits", #find bandits
-	CALI_HEIRLOOM_QUEST_STAGE_4 = "Ask about collector", #ask about collector
-	CALI_HEIRLOOM_QUEST_STAGE_5 = "", #rise position
-	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "", #william met
-	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William", #get sword from william
-	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return", #wait for cali to return
+	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ",
+	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant",
+	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant",
+	CALI_HEIRLOOM_QUEST_STAGE_3 = "Search For Bandits",
+	CALI_HEIRLOOM_QUEST_STAGE_4 = "Ask about Collector at streets of Aliron",
+	CALI_HEIRLOOM_QUEST_STAGE_5 = "It seems you won't be able to meet William just yet... Perhaps you'll have to do something esle for now.",
+	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "Visit William at Aliron City",
+	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William",
+	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return",
 	CALI_HEIRLOOM_QUEST_STAGE_8 = "", #sword get
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village

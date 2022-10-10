@@ -14,6 +14,7 @@ func _ready():
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	globals.connecttexttooltip($Panel/loyaltylabel, tr("TOOLTIPLOYALTYOBEDIENCE"))
 	globals.connecttexttooltip($Panel/valuelabel, tr("TOOLTIPVALUE"))
+	
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
@@ -160,16 +161,3 @@ func text_url_hover_hide(meta = null):
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
-
-
-func displaymetrics():
-	var text = ""
-	
-	if person.get_stat('is_owned'):
-		text += "Owned by you for " + str(person.get_stat('ownership')) + "days" #weeks
-	if person.get_stat('vaginal_virgin_lost').source != null:
-		text += "\n[He] lost his vaginal virginity to " + person.get_stat('vaginal_virgin_lost').source
-	if person.get_stat('anal_virgin_lost').source != null:
-		text += "\n[He] lost his anal virginity to " + person.get_stat('anal_virgin_lost').source
-	
-	

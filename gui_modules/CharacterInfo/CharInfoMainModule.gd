@@ -18,6 +18,7 @@ func _ready():
 #		module.update()
 #	update()
 	$TalkButton.connect("pressed", self, 'talk', [])
+	$SlaveBodyModule/StatsButton.connect('pressed', self, 'displaymetrics',[])
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
 	kurdan = {
@@ -189,4 +190,66 @@ func open_gear():
 	gui_controller.current_screen = gui_controller.inventory
 	gui_controller.inventory.set_active_hero(active_person)
 	gui_controller.emit_signal("screen_changed")
+
+
+var sources = {
+	brothel_customer = "a customer of a brothel",
+	guild_trainer = "a guild trainer",
+	
+}
+
+func displaymetrics():
+	$SlaveBodyModule/StatsPanel.visible = !$SlaveBodyModule/StatsPanel.visible
+	
+	if !$SlaveBodyModule/StatsPanel.visible: return
+	
+	var text = ""
+	var person = active_person
+	if person.is_players_character:
+		text += "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days." % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+	
+	
+	if person.get_stat('vaginal_virgin_lost').source != null:
+		if person.get_stat('vaginal_virgin_lost').source.begins_with('hid'):
+			var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost').source]
+			
+			if source.id == ResourceScripts.game_party.get_master().id:
+				text += "\n[He] lost [his] hymen to {color=yellow|you}."
+			else:
+				text += "\n[He] lost [his] hymen to {color=yellow|}" + source.name + "}."
+		else:
+			text += "\n[He] lost [his] hymen to {color=yellow|" + sources[person.get_stat('vaginal_virgin_lost').source] + "}."
+	
+	if person.get_stat('anal_virgin_lost').source != null:
+		if person.get_stat('anal_virgin_lost').source.begins_with('hid'):
+			var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost').source]
+			
+			if source.id == ResourceScripts.game_party.get_master().id:
+				text += "\n[He] lost [his] anal virginity to {color=yellow|you}."
+			else:
+				text += "\n[He] lost [his] anal virginity to {color=yellow|" + source.name + "}."
+		else:
+			text += "\n[He] lost [his] anal virginity to {color=yellow|" + sources[person.get_stat('vaginal_virgin_lost').source] + "}."
+	text += "[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s)." % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+	var partner_number = person.get_stat('metric_partners').size() + person.get_stat('metric_randompartners')
+	if partner_number == 0:
+		text += "[He] didn't appear to engage into sexual activity with anyone so far..."
+	elif partner_number == 1:
+		text += "[He] only had a single partner for all this time."
+	else:
+		text += "Overall [he] had sex with %d partners during all this time. " % partner_number
+	
+	if person.has_womb == true:
+		text += "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s)" % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
+	if person.penis_size != '':
+		text += "[He] had impregnated {color=yellow|%d} time(s). " % [person.get_stat('metrics_impregnation')]
+	
+	text += '[He] earned {color=yellow|%d} gold and {color=yellow|%d} food while working on you. ' % [person.get_stat("metrics_goldearned"), person.get_stat("metrics_foodearned"),]
+	
+	person.translate(text)
+	
+	$SlaveBodyModule/StatsPanel/RichTextLabel.bbcode_text = text
+#	if person.get_stat('anal_virgin_lost').source != null:
+#		text += "\n[He] lost his anal virginity to " + person.get_stat('anal_virgin_lost').source
+
 

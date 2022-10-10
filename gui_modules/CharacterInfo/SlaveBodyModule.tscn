@@ -113,17 +113,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsButton" type="TextureButton" parent="."]
-visible = false
-light_mask = 0
-margin_left = 5.21887
-margin_top = 47.5277
-margin_right = 45.2189
-margin_bottom = 87.5277
-texture_normal = ExtResource( 5 )
-expand = true
-stretch_mode = 5
-
 [node name="ProfessionsBG" type="Panel" parent="."]
 light_mask = 0
 margin_left = 1.0
@@ -194,3 +183,25 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StatsPanel" type="Panel" parent="."]
+visible = false
+margin_right = 693.0
+margin_bottom = 918.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
+margin_left = 46.6691
+margin_top = 50.9117
+margin_right = 653.669
+margin_bottom = 876.912
+bbcode_enabled = true
+
+[node name="StatsButton" type="TextureButton" parent="."]
+light_mask = 0
+margin_left = 654.747
+margin_top = 2.98278
+margin_right = 694.747
+margin_bottom = 42.9828
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5

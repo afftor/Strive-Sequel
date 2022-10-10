@@ -1476,6 +1476,11 @@ func fill_ai(data):
 				newdata[arr[0]] = arr[1]
 			ai.set_single_state(newdata)
 
+func take_virginity(type, partner):
+	if get_stat(type+'_virgin') == true:
+		set_stat(type + "_virgin", false)
+		set_stat(type + "_virgin_lost", {source = partner.id})
+
 func get_ability_experience():
 	return xp_module.get_ability_experience()
 

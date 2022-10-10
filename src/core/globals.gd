@@ -907,7 +907,8 @@ func impregnate_check(father,mother):
 func impregnate(father, mother):
 	if impregnate_check(father,mother).value == false:
 		return
-	
+	mother.add_stat('metrics_pregnancy',  1)
+	father.add_stat("metrics_impregnation", 1)
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
@@ -1422,6 +1423,10 @@ func common_effects(effects):
 						var item = CreateGearItem(k.item, k.parts)
 						AddItemToInventory(item)
 						character.equip(item)
+					elif k.code == 'take_virginity':
+						if k.partner == 'master':
+							k.partner = ResourceScripts.game_party.get_master().id
+						character.take_virginity(k.type, k.partner)
 					else:
 						character_stat_change(character, k)
 			'start_event':
