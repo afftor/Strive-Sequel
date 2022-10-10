@@ -406,6 +406,7 @@ func victory():
 		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
 		tchar.add_stat('base_exp', gained_exp)
 		tchar.add_stat('abil_exp', gained_exp)
+		tchar.add_stat('metrics_win', 1)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
 		newbutton.hide()
 		newbutton.modulate.a = 0
@@ -1151,6 +1152,7 @@ func use_skill(skill_code, caster, target):
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
 				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kill', 1)
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG)
 			s_skill2.target.displaynode.rebuildbuffs()

@@ -74,6 +74,10 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st.begins_with('metrics_'):
+		var stat = st.trim_prefix('metrics_')
+		statlist.metrics[stat] = value
+		return
 	if st.begins_with("sex_skills_"):
 		st = st.trim_prefix("sex_skills_")
 		statlist.sex_skills[st] = value
@@ -260,6 +264,14 @@ func set_stat(statname, value): #for direct access only
 
 #bonus system
 func get_stat(statname, ref = false):
+	if statname.begins_with('metrics_'):
+		var tmp = statlist.metrics
+		var stat = statname.trim_prefix('metrics_')
+		if tmp.has(stat):
+			return tmp[stat]
+		else:
+			print("no stat - %s" % statname)
+			return null
 	if !statlist.has(statname): 
 		print("no stat - %s" % statname)
 		return null
@@ -386,6 +398,15 @@ func add_stat(statname, value, revert = false):
 		statname = statname.trim_prefix('sex_skills_')
 		if revert: statlist.sex_skills[statname] -= value
 		else: statlist.sex_skills[statname] += value
+		return
+	if statname.begins_with('metrics_'):
+		var tmp = statlist.metrics
+		var stat = statname.trim_prefix('metrics_')
+		if tmp.has(stat):
+			if revert: tmp[stat] -= value
+			else: tmp[stat] += value
+		else:
+			print("no stat - %s" % statname)
 		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
