@@ -7773,7 +7773,7 @@ Cali's wet slit tells a different story and without further ceremony you ignore 
 
 Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property.  
 
--Y-you bastard! I'll — I'll never forgive you for this!
+ — Y-you bastard! I'll — I'll never forgive you for this!
 
 Hot tears run from the wolf girl's closed eyes as she weeps while your penis pounds into her refreshingly tight pussy.""",
 	FORCE_CALI_5 = """Sensing the futility of further resistance, Cali's struggles grow weaker. As your penis rams rhythmically into her, the sound of her cries begins to change. She gasps as you slowly sink your whole length in her pussy, your balls resting against her swollen clit. The tension in her yields a little and she lets out a ragged sigh as her pussy pulses and quivers around the shaft of your cock. 
@@ -8736,6 +8736,34 @@ Amelia: - Don't fret over it, a couple of girls can have a bit of private fun on
 	CALI_HEIRLOOM_QUEST_STAGE_8 = "", #sword get
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
+	
+	
+	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
+	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her discipline. She stays silent having no words for you.\n\n- ......",
+	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n- [Master]. Are you feeling well? What can I do for you?",
+	DIALOGUEANAINITIATEHN = "Anastasia greets you with a submissive pose. It seems she finally given up on her old life and accepted this role.\n\n- [Master]! How can I s-serve you?",
+	DIALOGUEANAINITIATEM = "Your wife, Anastasia smiles warmly at you.\n\n- My Dear, You called for me?",
+	DIALOGUEANAINITIATEB = "As Anastasia comes at your summon her eyes are nearly blank.\n\n- What is your order, [Master]?",
+	DIALOGUEAIREINITIATELN = "Your slave elf Aire which was left alone in your custody, looks at you in silence and disgust. Her pose exudes protest.",
+	DIALOGUEAIREINITIATEHN = "Your slave elf Aire have submitted to your ownership and now patiently waits for your commands.\n\n- What do you order?",
+	DIALOGUEAIREINITIATELP = "Your slave elf Aire stands before you, not quite hostile but still cautious.\n\n- You wanted to see me? Is Ana doing well?",
+	DIALOGUEAIREINITIATEHP = "Your slave elf Aire comes at your call. It seems despite her official status she's grown quite trustful to you.\n\n- [Master]. You wanted to see me? I hope you are treating Ana with respect.",
+	DIALOGUEZEPHINITIATEL = "Mysterious fox girl Zephyra appears in front of you almost imperceptibly.\n\n- Greetings, [Master]. Are you looking for my company?",
+	DIALOGUEZEPHINITIATEH = "Mysterious fox girl Zephyra appears in front of you nonchalantly.\n\n- [Master]. What are you doing this evening? How about a tea drinking party?\n\nIt seems she ignores the fact it was you who summoned her.",
+	DIALOGUEZEPHINITIATEM = "Your wife, ever eccentric fox girl Zephyra appears and quickly close distance with you, grasping your hand.\n\n- Darling! Have you missed me?\n\nShe affectionately rubs her tail over you.",
+	DIALOGUEDAISYINITIATEL = "Your recent acquirement: a shy bunny girl Daisy appears as you summon her.\n\n- Y-yes, [Master]. What can I-i do?\n\nYou feel like she's almost have to force herself from hiding away from you.",
+	DIALOGUEDAISYINITIATEH = "A bunny girl Daisy appears before you. It seems she has grown used to serving you.\n\n- [Master], how's been your day? What can I do for you?",
+	DIALOGUEDAISYINITIATEM = "Your wife and slave bunny Daisy stands before you.\n\n- [Master], how's been your day? Would you like a dinner, bath or me...? Sorry, someone told me it's a good way to greet you like this!",
+	DIALOGUECALIINITIATELP = "Young wolf girl Cali quickly appears showing no hints of fear or shyness.\n\n- Heya, what's up?!",
+	DIALOGUECALIINITIATELN = "Young wolf girl Cali reluctantly comes as you summon her. She barely keeps herself from insulting you.\n\n- What do you want?",
+	DIALOGUECALIINITIATEHP = "Cali appears in front of you eagerly begging for your attention with her tail wagging.\n\n- [Master]! What are we doing today? Wanna go somewhere together? I've heard of one really nice meat stall...",
+	DIALOGUECALIINITIATEHN = "Cali submissively appears on your command with her ears downed. Her old boldness have finally been uprooted and now she obediently waits for your command.\n\n- W-what can I do for you, [Master]?",
+	DIALOGUECALIINITIATEM = "Your young wife, Cali, jumps at you as you visit her. It seems her marital status haven't really affected her character.\n\n- [Master]! What are we doing today? Wanna play something together?",
+	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n- [Master]? Whatcha doin'? Did you came to play with me?",
+	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
+	DIALOGUELILIAINITIATEM = "Your extravagant wife, small fairy Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
+	
+	
 }
 
 

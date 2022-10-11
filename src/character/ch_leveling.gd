@@ -529,9 +529,13 @@ func select_brothel_activity():
 			
 			work_tick_values(data.workstats[randi()%data.workstats.size()])
 			
-			parent.get_ref().add_stat('metrics_random_partners', globals.fastif(sex_rules.has('group'), 2, 1))
+			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			ResourceScripts.game_res.money += highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().get_stat('value'))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().get_stat('value'))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			
+			parent.get_ref().add_stat('metrics_goldearn', goldearned)
+			
+			ResourceScripts.game_res.money += goldearned
 			
 			#TODO add decriptions and impregnation
 			

@@ -440,7 +440,7 @@ func make_quest(questcode):
 							classarray.append(newclass)
 							number -= 1
 					for i in classarray:
-						tempdata.statreqs.append({code = 'has_profession', value = i, check = true})
+						tempdata.statreqs.append({code = 'has_profession', profession = i, check = true})
 				if statdata.use_once == true:
 					tempdata.conditions.erase(statdata)
 			tempdata.erase('condition_number')

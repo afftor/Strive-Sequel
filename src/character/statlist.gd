@@ -178,7 +178,7 @@ var template = {
 	
 	consent = 0,
 	relations = {},
-	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
+	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, materialearn = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
 	lastsexday = 0,
 
 	asser = 0,

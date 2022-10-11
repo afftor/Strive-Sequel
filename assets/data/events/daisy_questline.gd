@@ -582,6 +582,7 @@ var data = {
 				args = [
 					{code = 'take_virginity', type = 'vaginal', partner = "guild_trainer"},
 					{code = 'take_virginity', type = 'anal', partner = "guild_trainer"},
+					{code = 'metrics_randompartners', operant = '+', value = 4}
 				]
 			}],
 		text = [{text = "DAISY_TRAINING_INTERMISSION_1", reqs = []}],
@@ -1387,6 +1388,14 @@ var data = {
 	daisy_consensual_3 = {
 		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		reqs = [],
+		common_effects = [
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'take_virginity', type = 'vaginal', partner = "master"},
+				]
+			}],
 		text = [{text = "DAISY_CONSENSUAL_3", reqs = []}],
 		options = [ {
 			code = 'daisy_consensual_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

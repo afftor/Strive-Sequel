@@ -1059,30 +1059,26 @@ func startscene(scenescript, cont = false, pretext = ''):
 	if scenescript.virginloss == true:
 		for i in givers:
 			if scenescript.giverpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
-				i.person.set_stat('vaginal_virgin', false)
-				i.person.set_stat('vaginal_virgin_lost', {source = takers[0].person.id})
+				i.person.take_virginity("vaginal",takers[0].person.id)
 				virgin.type = 'vaginal'
 				virgin.character = i
 				if takers.size() == 1 && takers[0].person.has_profession('master'):
 					i.person.add_stat('loyalty', 20)
 			elif scenescript.giverpart == 'anus' && i.person.get_stat('anal_virgin') == true:
-				i.person.set_stat('anal_virgin', false)
-				i.person.set_stat('anal_virgin_lost', {source = takers[0].person.id})
+				i.person.take_virginity("anal",takers[0].person.id)
 				virgin.type = 'anal'
 				virgin.character = i
 				if takers.size() == 1 && takers[0].person.has_profession('master'):
 					i.person.add_stat('loyalty', 10)
 		for i in takers:
 			if scenescript.takerpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
-				i.person.set_stat('vaginal_virgin', false)
-				i.person.set_stat('vaginal_virgin_lost', {source = givers[0].person.id})
+				i.person.take_virginity("vaginal",givers[0].person.id)
 				virgin.type = 'vaginal'
 				virgin.character = i
 				if givers.size() == 1 && givers[0].person.has_profession('master'):
 					i.person.add_stat('loyalty', 20)
 			elif scenescript.takerpart == 'anus' && i.person.get_stat('anal_virgin') == true:
-				i.person.set_stat('anal_virgin', false)
-				i.person.set_stat('anal_virgin_lost', {source = givers[0].person.id})
+				i.person.take_virginity("anal",givers[0].person.id)
 				virgin.type = 'anal'
 				virgin.character = i
 				if givers.size() == 1 && givers[0].person.has_profession('master'):

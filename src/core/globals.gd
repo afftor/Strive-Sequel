@@ -1427,6 +1427,10 @@ func common_effects(effects):
 						if k.partner == 'master':
 							k.partner = ResourceScripts.game_party.get_master().id
 						character.take_virginity(k.type, k.partner)
+					elif k.code == 'add_partner':
+						if k.partner == 'master':
+							k.partner = ResourceScripts.game_party.get_master().id
+						character.add_partner(k.partner)
 					else:
 						character_stat_change(character, k)
 			'start_event':

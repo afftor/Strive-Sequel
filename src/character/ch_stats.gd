@@ -999,10 +999,9 @@ func get_sex_features():
 
 func set_virginity_data():
 	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i] == false:
-			statlist[i+'_lost'] = {date = [-1,-1], source = null}
-		else:
-			statlist[i+'_lost'] = {date = null, source = null}
+		if statlist[i+'_lost'].source == 'master':
+			statlist[i+'_lost'].source = ResourceScripts.game_party.get_master().id
+			statlist.metrics.partners.append(ResourceScripts.game_party.get_master().id)
 
 func add_random_sex_skill():
 	var array = ['petting']

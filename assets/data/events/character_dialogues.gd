@@ -2,10 +2,38 @@ var data = {
 	zephyra_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',
 		text = [
-			{text = "ZEPHYRA_EXTRA_GREET", reqs = [
-				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'neq', value = 'slave'}]}], previous_dialogue_option = 0},
-			{text = "ZEPHYRA_EXTRA_GREET2", reqs = [
-				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'eq', value = 'slave'}]}], previous_dialogue_option = 0}, 
+			
+			
+			{
+				text = "DIALOGUEZEPHINITIATEL", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					},{previous_dialogue_option = 0}
+					],
+			},
+			{
+				text = "DIALOGUEZEPHINITIATEH", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					},{previous_dialogue_option = 0}
+					],
+			},
+			{
+				text = "DIALOGUEZEPHINITIATEM", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'has_profession', profession = 'spouse', check = true},
+						]
+					}, {previous_dialogue_option = 0}
+					],
+			},
+			
 				
 			{text = "", reqs = [], previous_dialogue_option = 4},
 			{text = "ZEPHYRA_EXTRA_REPLY3", reqs = [], previous_dialogue_option = 6},
@@ -98,7 +126,7 @@ var data = {
 	
 	
 	
-	amelia_dialogue_start = {
+	amelia_dialogue_start = { #should be moved out of this script
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
 		text = [
 			{text = "AMELIA_BONUS_QUESTION", reqs = [], previous_dialogue_option = 0}
@@ -134,8 +162,65 @@ var data = {
 	anastasia_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'anastasia',
 		text = [
-			{text = "Anastasia comes at your demand.", reqs = []},
-		], 
+			{
+				text = "DIALOGUEANAINITIATELP", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{type = 'decision', value = 'anastasia_rape_scene', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEANAINITIATEHP", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{type = 'decision', value = 'anastasia_rape_scene', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEANAINITIATELN", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{type = 'decision', value = 'anastasia_rape_scene', check = true},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEANAINITIATEHN", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{type = 'decision', value = 'anastasia_rape_scene', check = true},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEANAINITIATEM", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{type = 'decision', value = 'anastasia_rape_scene', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'has_profession', profession = 'spouse', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEANAINITIATEB", 
+				reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = true},
+					]
+			},
+		],
 		options = [
 			{code = 'ana_gryphon_sex_start', text = 'GRYPHON_ANA_SEX_OPTION_INIT',reqs = [{type = 'decision', value = 'AnaAireThreesome', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_ANA_SEX_10'}], dialogue_argument = 1},
 			
@@ -148,7 +233,33 @@ var data = {
 	daisy_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
 		text = [
-			{text = "DAISY_EXTRA_STRATUP", reqs = []},
+			{
+				text = "DIALOGUEDAISYINITIATEL", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEDAISYINITIATEH", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEDAISYINITIATEM", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'has_profession', profession = 'spouse', check = true},
+						]
+					}],
+			},
+			
 		],
 		options = [
 			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
@@ -298,8 +409,43 @@ var data = {
 	aire_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
 		text = [
-			{text = "AIRE_GREET", reqs = []},
-		], 
+			{
+				text = "DIALOGUEAIREINITIATELP", 
+				reqs = [
+					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEAIREINITIATEHP", 
+				reqs = [
+					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEAIREINITIATELN", 
+				reqs = [
+					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUEAIREINITIATEHN", 
+				reqs = [
+					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+		],
 		options = [
 			{code = 'aire_gryphon_sex_start', text = 'GRYPHON_AIRE_SEX_START_OPTION_INIT',reqs = [{type = 'quest_completed', name = 'gryphon_quest', check = true}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_SEX_2'}], dialogue_argument = 1}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
@@ -308,11 +454,94 @@ var data = {
 	cali_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'cali',
 		text = [
-			{text = "CALI_GREET", reqs = []},
+			{
+				text = "DIALOGUECALIINITIATELP", 
+				reqs = [
+					{type = 'decision', value = 'cali_raped', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUECALIINITIATEHP", 
+				reqs = [
+					{type = 'decision', value = 'cali_raped', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUECALIINITIATELN", 
+				reqs = [
+					{type = 'decision', value = 'cali_raped', check = true},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUECALIINITIATEHN", 
+				reqs = [
+					{type = 'decision', value = 'cali_raped', check = true},
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUECALIINITIATEM", 
+				reqs = [
+					{type = 'decision', value = 'cali_raped', check = false},
+					{type = 'active_character_checks', value = [
+						{code = 'has_profession', profession = 'spouse', check = true},
+						]
+					}],
+			},
 		], 
 		options = [
 			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
 		],
 	},
+	
+	lilia_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'lilia',
+		text = [
+			{
+				text = "DIALOGUELILIAINITIATEL", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUELILIAINITIATEH", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},
+			{
+				text = "DIALOGUELILIAINITIATEM", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'has_profession', profession = 'spouse', check = true},
+						]
+					}],
+			},
+		], 
+		options = [
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+		],
+	},
+
 }
+	

@@ -275,7 +275,17 @@ var data = {
 	got_cali_2_1 = { 
 		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
 		text = [ {text = "GOT_CALI_2_1", reqs = []}, ], 
-		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'}],
+		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'},
+		{code = 'decision', value = 'cali_raped'},
+		{
+			code = 'unique_character_changes',
+			value = 'cali',
+			args = [
+				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
+				{code = 'obedience', operant = '-', value = 90},
+			]
+		},
+		],
 		options = [ {
 			code = 'force_cali_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		},],

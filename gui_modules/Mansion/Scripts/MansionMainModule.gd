@@ -753,71 +753,18 @@ func test_mode():
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_petting', operant = '+', value = 75},
+						{code = 'add_profession', profession = 'spouse'},
 					]
-				}
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Cali'},
-			]
-		)
-		globals.common_effects(
-			[
+				},
+				#{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Aire'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Jean'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Zephyra'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Heleviel'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Lira'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Anastasia'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Lilith'},
-			]
-		)
-		
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Cali'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Daisy'},
-			]
-		)
-#		globals.common_effects(
-#			[
-#				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
-#			]
-#		)
 
 		ResourceScripts.game_res.money = 80000
 		#globals.common_effects("add_money")
@@ -928,7 +875,8 @@ func test_mode():
 		
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-		#input_handler.interactive_message('cali_bandits_3', '', {})
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		#input_handler.interactive_message('got_cali_2_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		

@@ -433,7 +433,7 @@ var data = {
 					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
-				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = 'decision', value = 'anastasia_rape'},
 				{code = "update_city"},
 				{code = 'rewrite_save'}
 				]
@@ -914,7 +914,7 @@ var data = {
 					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
-				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = 'decision', value = 'anastasia_rape'},
 				{code = "update_city"},
 				{code = 'rewrite_save'}, 
 				]

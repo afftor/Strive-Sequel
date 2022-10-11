@@ -1479,7 +1479,15 @@ func fill_ai(data):
 func take_virginity(type, partner):
 	if get_stat(type+'_virgin') == true:
 		set_stat(type + "_virgin", false)
-		set_stat(type + "_virgin_lost", {source = partner.id})
+		set_stat(type + "_virgin_lost", {source = partner})
+		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
+			get_stat('metrics', true).partners.append(partner)
+
+func add_partner(partner):
+	if partner == 'master' && get_stat('metrics_partners').has(ResourceScripts.game_party.get_master().id) == false:
+		partner = ResourceScripts.game_party.get_master().id
+	if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
+		get_stat('metrics', true).partners.append(partner)
 
 func get_ability_experience():
 	return xp_module.get_ability_experience()
