@@ -152,23 +152,6 @@ var template = {
 	sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}},
 	sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0},
 	
-	brothel_rules = {
-		waitress = true,
-		hostess = false,
-		dancer = false,
-		stripper = false,
-		
-		petting = false,
-		oral = false,
-		anal = false,
-		pussy = false,
-		group = false,
-		sextoy = false,
-		
-		males = true,
-		females = true,
-		futa = true
-	},
 	
 	consent = 0,
 	relations = {},

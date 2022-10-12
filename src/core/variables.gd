@@ -74,6 +74,8 @@ var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin'
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
 var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings']
+var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
+var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
