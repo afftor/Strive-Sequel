@@ -12,6 +12,23 @@ var workproduct = null
 var previous_workproduct = null
 var previous_location = ResourceScripts.game_world.mansion_location
 var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false}
+var brothel_rules = {
+		waitress = true,
+		hostess = false,
+		dancer = false,
+		stripper = false,
+		
+		petting = false,
+		oral = false,
+		anal = false,
+		pussy = false,
+		group = false,
+		sextoy = false,
+		
+		males = true,
+		females = true,
+		futa = true
+	}
 var messages = []
 
 
@@ -30,6 +47,9 @@ func fix_rules():
 	for rule in variables.work_rules:
 		if !work_rules.has(rule):
 			work_rules[rule] = false
+	for rule in variables.brothel_rules:
+		if !brothel_rules.has(rule):
+			brothel_rules[rule] = false
 
 
 func check_work_rule(rule):
@@ -486,16 +506,14 @@ func finish_learning():
 	quest_id = ''
 	work = ''
 
-var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 
 func select_brothel_activity():
-	var brothel_rules
-	
 	var non_sex_rules = []
 	var sex_rules = []
 	
 	for i in brothel_rules:
-		if brothel_non_sex_options.has(i):
+		if !brothel_rules[i]: continue
+		if variables.brothel_non_sex_options.has(i):
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
@@ -540,16 +558,20 @@ func select_brothel_activity():
 			#TODO add decriptions and impregnation
 			
 			return
-	else:
+	elif non_sex_rules.size() >= 0:
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		ResourceScripts.game_res.money += highest_value.value * max(1.4, (1 + 0.005 * parent.get_ref().get_stat('value')))
-		
-
-
+		var goldearned = highest_value.value * max(1.4, (1 + 0.005 * parent.get_ref().get_stat('value')))
+			
+		parent.get_ref().add_stat('metrics_goldearn', goldearned)
+			
+		ResourceScripts.game_res.money += goldearned
+	else:
+		work = ''
+		parent.get_ref().rest_tick()
 
 
 func get_highest_value(array):#find highest profit option
@@ -563,11 +585,13 @@ func get_highest_value(array):#find highest profit option
 	
 	return highest_value
 
+
 func get_gold_value(task):
 	var value = call(gold_tasks_data[task].formula)
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(gold_tasks_data[task].workmod)/100.0)
 	
 	return value
+
 
 func work_tick():
 	if is_on_quest:
@@ -588,19 +612,11 @@ func work_tick():
 	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
 		parent.get_ref().food.food_consumption_rations = true
 	
-	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
-	
-	
-	
 	if currenttask.code == 'prostitution':
-		var workstat
-		var brothel_rules = parent.get_ref().get_stat('brothel_rules')
-		for i in brothel_rules:
-			pass
-		
-		work_tick_values(workstat)
+		select_brothel_activity()
+		return
 	
-	
+	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
 	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
 		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent.get_ref()):
@@ -627,8 +643,10 @@ func work_tick():
 			if !gatherable:
 				if races.tasklist[currenttask.code].production_item == 'gold':
 					ResourceScripts.game_res.money += 1
+					parent.get_ref().add_stat('metrics_goldearn', 1)
 				else:
 					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production_item] += 1
+					add_metric_for_outcome(races.tasklist[currenttask.code].production_item)
 			else:
 				if person_location != "aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] > 0:
@@ -643,6 +661,18 @@ func work_tick():
 									ResourceScripts.game_party.active_tasks.erase(task)
 				else:
 					ResourceScripts.game_res.materials[currenttask.code] += 1
+				add_metric_for_outcome(currenttask.code)
+
+
+func add_metric_for_outcome(res_id):
+	var matdata = Items.materiallist[res_id]
+	if matdata.type == 'food':
+		parent.get_ref().add_stat('metrics_foodearn', 1)
+	#2add correct material check
+	else:
+		parent.get_ref().add_stat('metrics_materialearn', 1)
+#	parent.get_ref().add_stat('metrics_goldearn', 1)
+
 
 func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
@@ -651,8 +681,6 @@ func work_tick_values(workstat):
 		else:
 			parent.get_ref().add_stat(workstat, 0.36)
 		parent.get_ref().add_stat('base_exp', 5)
-
-
 
 
 func get_task_crit_chance(bonus_tool = false):
