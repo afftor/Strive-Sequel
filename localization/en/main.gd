@@ -770,7 +770,7 @@ var TranslationDict = {
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
-	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features.",
+	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -5700,7 +5700,7 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
-— You've really done it, [master]. I never imagined this dress would be so nice.""",
+— You've really done it, [master]. I never imagined this dress would be so nice.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "I think you should express your gratitude in a way that fits your position (Sexuals Factor)",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags",
@@ -5746,7 +5746,7 @@ You buckle your pants and look down at her cum-smeared face, her eyes still gazi
 
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush.
 
-— T-thank you for the gift, [master]. I hope you like my new look.""",
+— T-thank you for the gift, [master]. I hope you like my new look.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great",
 	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it (reveal her body)",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = """Daisy lightly smiles at your words.""",
@@ -7773,7 +7773,7 @@ Cali's wet slit tells a different story and without further ceremony you ignore 
 
 Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property.  
 
--Y-you bastard! I'll — I'll never forgive you for this!
+ — Y-you bastard! I'll — I'll never forgive you for this!
 
 Hot tears run from the wolf girl's closed eyes as she weeps while your penis pounds into her refreshingly tight pussy.""",
 	FORCE_CALI_5 = """Sensing the futility of further resistance, Cali's struggles grow weaker. As your penis rams rhythmically into her, the sound of her cries begins to change. She gasps as you slowly sink your whole length in her pussy, your balls resting against her swollen clit. The tension in her yields a little and she lets out a ragged sigh as her pussy pulses and quivers around the shaft of your cock. 
@@ -8059,7 +8059,7 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 
 {color=yellow|Amelia: - She's a good girl, you better not betray her trust in you.}
 
-Not waiting for your reply she disappears from sight as nonchalantly as she appeared. """,
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali:Charm +10}""",
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
 - [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
@@ -8138,16 +8138,16 @@ Uncle: - I thank you for your cooperation. Then we will be on our way.
 Cali soon leaves, never crossing your path again. Either from her being missing or not willing to let you find her.""",
 	CALI_HEIRLOOM_5 = """Uncle: - I see... Perhaps it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.
 
-	Cali's protest sinks abruptly upon hearing it.
+Cali's protest sinks abruptly upon hearing it.
 
-	Cali: - O-oh... Uh, can you give me some time? I don't have it right now...
+Cali: - O-oh... Uh, can you give me some time? I don't have it right now...
 
-	Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.""",
+Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
-	- Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
+- Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
 
-	- I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it. """,
+- I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it. """,
 	CALI_HEIRLOOM_6_OPTION_1 = "Everyone makes mistakes",
 	CALI_HEIRLOOM_6_OPTION_2 = "Why did you decide to run away?",
 	CALI_HEIRLOOM_6_OPTION_3 = "Why is this heirloom important?",
@@ -8155,7 +8155,7 @@ Cali soon leaves, never crossing your path again. Either from her being missing 
 	CALI_HEIRLOOM_6_1 = """- Ha-ha, right. Thanks for trying to cheer me up, but it's better to wait until I solve this.""",
 	CALI_HEIRLOOM_6_2 = """Cali takes a long pause before she finally speaks up.
 
-	- I'm not sure I belong within the clan at all, and I thought this would be better for me and them. I don't feel comfortable talking more about it yet.""",
+- I'm not sure I belong within the clan at all, and I thought this would be better for me and them. I don't feel comfortable talking more about it yet.""",
 	CALI_HEIRLOOM_6_3 = """- I don't really know. The adults said it's a gift to our clan from the gods and will serve the next hero being born or something stupid like this. It didn't do a thing for me as I said. """,
 	CALI_HEIRLOOM_7 = """- Yes, the bandits that captured me were near a village. I can at least recognize the place. The locals might have an idea where the bandits migrated to.""",
 	CALI_HEIRLOOM_7_OPTION_1 = "Let's get your clan's sword then",
@@ -8163,7 +8163,7 @@ Cali soon leaves, never crossing your path again. Either from her being missing 
 	CALI_HEIRLOOM_8_1 = """- You don't have to come with me, but I appreciate it. I'll feel safer knowing you'll be watching my back.""",
 	CALI_HEIRLOOM_8_2 = """Cali furiously shakes her head.
 
-	- Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
+- Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
 	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near [settlement_name].""",
 	CALI_FARMER_1 = """As you walk around searching for potential witnesses, one of the farmers spots you.
 
@@ -8193,8 +8193,9 @@ Cali: - Help you? After calling me a bandit?!
 The farmer ignores Cali's remark and continues trying to persuade you into helping him.
 
 Farmer: - I need some lumber to repair it. You get me 200 Wood. I'll tell you where you can find them, since I overheard where they said they were headed off to.""",
-	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence",
-	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad.",
+	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence (-200 Wood)",
+	CALI_FARMER_4_OPTION_1_1 = "You can have the wood for your fence (-100 Wood)",
+	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad. (Worker)",
 	CALI_FARMER_4_OPTION_3 = "We don't quite have that right now",
 	CALI_FARMER_4_3 = """The farmer gives you a scrutinizing look realizing that he wasn't able to fool you. 
 
@@ -8723,18 +8724,46 @@ Amelia: - Don't fret over it, a couple of girls can have a bit of private fun on
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants guild on Cali's behalf",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Cali's past finally caught up with her. You'll have to help her sort it out if you want to keep her at your side...",
 	CALI_HEIRLOOM_QUEST_NAME = "Pariah",
-	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ", #go to willage
-	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant", #get wood
-	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant", #get less wood
-	CALI_HEIRLOOM_QUEST_STAGE_3 = "Search For Bandits", #find bandits
-	CALI_HEIRLOOM_QUEST_STAGE_4 = "Ask about collector", #ask about collector
-	CALI_HEIRLOOM_QUEST_STAGE_5 = "", #rise position
-	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "", #william met
-	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William", #get sword from william
-	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return", #wait for cali to return
+	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ",
+	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant",
+	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant",
+	CALI_HEIRLOOM_QUEST_STAGE_3 = "Search For Bandits",
+	CALI_HEIRLOOM_QUEST_STAGE_4 = "Ask about Collector at streets of Aliron",
+	CALI_HEIRLOOM_QUEST_STAGE_5 = "It seems you won't be able to meet William just yet... Perhaps you'll have to do something esle for now.",
+	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "Visit William at Aliron City",
+	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William",
+	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return",
 	CALI_HEIRLOOM_QUEST_STAGE_8 = "", #sword get
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
+	
+	
+	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
+	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her discipline. She stays silent having no words for you.\n\n- ......",
+	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n- [Master]. Are you feeling well? What can I do for you?",
+	DIALOGUEANAINITIATEHN = "Anastasia greets you with a submissive pose. It seems she finally given up on her old life and accepted this role.\n\n- [Master]! How can I s-serve you?",
+	DIALOGUEANAINITIATEM = "Your wife, Anastasia smiles warmly at you.\n\n- My Dear, You called for me?",
+	DIALOGUEANAINITIATEB = "As Anastasia comes at your summon her eyes are nearly blank.\n\n- What is your order, [Master]?",
+	DIALOGUEAIREINITIATELN = "Your slave elf Aire which was left alone in your custody, looks at you in silence and disgust. Her pose exudes protest.",
+	DIALOGUEAIREINITIATEHN = "Your slave elf Aire have submitted to your ownership and now patiently waits for your commands.\n\n- What do you order?",
+	DIALOGUEAIREINITIATELP = "Your slave elf Aire stands before you, not quite hostile but still cautious.\n\n- You wanted to see me? Is Ana doing well?",
+	DIALOGUEAIREINITIATEHP = "Your slave elf Aire comes at your call. It seems despite her official status she's grown quite trustful to you.\n\n- [Master]. You wanted to see me? I hope you are treating Ana with respect.",
+	DIALOGUEZEPHINITIATEL = "Mysterious fox girl Zephyra appears in front of you almost imperceptibly.\n\n- Greetings, [Master]. Are you looking for my company?",
+	DIALOGUEZEPHINITIATEH = "Mysterious fox girl Zephyra appears in front of you nonchalantly.\n\n- [Master]. What are you doing this evening? How about a tea drinking party?\n\nIt seems she ignores the fact it was you who summoned her.",
+	DIALOGUEZEPHINITIATEM = "Your wife, ever eccentric fox girl Zephyra appears and quickly close distance with you, grasping your hand.\n\n- Darling! Have you missed me?\n\nShe affectionately rubs her tail over you.",
+	DIALOGUEDAISYINITIATEL = "Your recent acquirement: a shy bunny girl Daisy appears as you summon her.\n\n- Y-yes, [Master]. What can I-i do?\n\nYou feel like she's almost have to force herself from hiding away from you.",
+	DIALOGUEDAISYINITIATEH = "A bunny girl Daisy appears before you. It seems she has grown used to serving you.\n\n- [Master], how's been your day? What can I do for you?",
+	DIALOGUEDAISYINITIATEM = "Your wife and slave bunny Daisy stands before you.\n\n- [Master], how's been your day? Would you like a dinner, bath or me...? Sorry, someone told me it's a good way to greet you like this!",
+	DIALOGUECALIINITIATELP = "Young wolf girl Cali quickly appears showing no hints of fear or shyness.\n\n- Heya, what's up?!",
+	DIALOGUECALIINITIATELN = "Young wolf girl Cali reluctantly comes as you summon her. She barely keeps herself from insulting you.\n\n- What do you want?",
+	DIALOGUECALIINITIATEHP = "Cali appears in front of you eagerly begging for your attention with her tail wagging.\n\n- [Master]! What are we doing today? Wanna go somewhere together? I've heard of one really nice meat stall...",
+	DIALOGUECALIINITIATEHN = "Cali submissively appears on your command with her ears downed. Her old boldness have finally been uprooted and now she obediently waits for your command.\n\n- W-what can I do for you, [Master]?",
+	DIALOGUECALIINITIATEM = "Your young wife, Cali, jumps at you as you visit her. It seems her marital status haven't really affected her character.\n\n- [Master]! What are we doing today? Wanna play something together?",
+	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n- [Master]? Whatcha doin'? Did you came to play with me?",
+	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
+	DIALOGUELILIAINITIATEM = "Your extravagant wife, small fairy Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
+	
+	
 }
 
 

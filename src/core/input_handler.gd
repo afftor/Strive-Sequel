@@ -959,6 +959,7 @@ func start_event(code, type, args):
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			active_character = args.pregchar
+			active_character.set_stat('metrics_birth', active_character.get_stat('metrics_birth') + 1)
 			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy').baby]
 			scene_characters.append(baby)
 		'event_selection':

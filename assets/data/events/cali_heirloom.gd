@@ -65,13 +65,13 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_HEIRLOOM_6_INIT", reqs = [], previous_dialogue_option = 1},],
 		options = [ {
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3
 		},
 		{
 			code = 'cali_heirloom_7', text = "CALI_HEIRLOOM_6_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -88,13 +88,13 @@ var data = {
 			{text = "CALI_HEIRLOOM_6_3", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [ {
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3
 		},
 		{
 			code = 'cali_heirloom_7', text = "CALI_HEIRLOOM_6_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -177,7 +177,7 @@ var data = {
 			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 200, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
-			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
 			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [

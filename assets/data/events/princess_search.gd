@@ -921,7 +921,7 @@ var data = {
 			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [
 				{code = 'rewrite_save'}, 
 				{code = 'screen_black_transition', value = 1}
-				], change_dialogue_type = 1}
+				]}
 		]
 	},
 

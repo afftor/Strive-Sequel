@@ -445,7 +445,7 @@ var data = {
 		{text = "LICHAIRETALK4_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', reqs = [], change_dialogue_type = 1, text = tr("DIALOGUELEAVE"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
+			{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]
 		},
@@ -551,7 +551,7 @@ var data = {
 		{text = "LICHAIRETALK7", reqs = []},
 		],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
+		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],

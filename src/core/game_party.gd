@@ -73,6 +73,7 @@ func add_slave(person, child = false):
 	if person.get_stat('unique') != null:
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
 	person.fill_masternoun()
+	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
 	globals.text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 

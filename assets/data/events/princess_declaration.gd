@@ -427,14 +427,13 @@ var data = {
 				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
 				reqs = [],
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
 					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
-				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = 'decision', value = 'anastasia_rape'},
 				{code = "update_city"},
 				{code = 'rewrite_save'}
 				]
@@ -587,7 +586,6 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-#				change_dialogue_type = 1
 			}
 		],
 	},
@@ -688,7 +686,6 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
 					{code = 'loyalty', operant = '+', value = 25},
@@ -911,14 +908,13 @@ var data = {
 				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
 				reqs = [],
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
 					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
-				{code = 'decision', value = 'anstasia_rape_scene'},
+				{code = 'decision', value = 'anastasia_rape'},
 				{code = "update_city"},
 				{code = 'rewrite_save'}, 
 				]
@@ -974,7 +970,6 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
 				bonus_effects = [{code = 'update_city'}],
 			}
 		],

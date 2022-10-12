@@ -62,9 +62,9 @@ var data = {
 		}, { # Female Halfkin
 			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2F", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Female Beastkin
-			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2F", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2M", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Female Human
-			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2F", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'eq', value = "Human"}]}], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2M", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'eq', value = "Human"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Male Halfkin
 			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2F", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'male'}, {code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Male Beastkin
@@ -72,9 +72,9 @@ var data = {
 		}, { # Male Human
 			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2F", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'male'}, {code = 'stat', stat = 'race', operant = 'eq', value = "Human"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Not human or wolf Female
-			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2SF", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'neq', value = "Human"}, {code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2SM", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}, {code = 'stat', stat = 'race', operant = 'neq', value = "Human"}, {code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, { # Not human or wolf Male
-			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2SM", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'male'}, {code = 'stat', stat = 'race', operant = 'neq', value = "Human"}, {code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_2SF", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'male'}, {code = 'stat', stat = 'race', operant = 'neq', value = "Human"}, {code = 'stat', stat = 'race', operant = 'neq', value = "HalfkinWolf"}, {code = 'stat', stat = 'race', operant = 'neq', value = "BeastkinWolf"}]}], dialogue_argument = 2, type = 'next_dialogue',
 		}, {
 			code = 'cali_fighters_2', text = "CALI_FIGHTERS_1_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, ],

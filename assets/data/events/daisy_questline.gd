@@ -182,6 +182,17 @@ var data = {
 						{code = 'create_and_equip', item = "daisy_dress", parts = {}}
 						],
 			},
+			{code = 'complete_quest', value = 'daisy_clothes'},
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'growth_factor', value = 1, operant = "+"},
+				]
+			},
+			{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
+			
+			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}
 			],
 		options = [ {
 			code = 'daisy_dress_acquired_normal_2', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -200,16 +211,7 @@ var data = {
 		{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'growth_factor', value = 1, operant = "+"},
-					]
-				},
-				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}]
+			bonus_effects = []
 		} ],
 	},
 
@@ -232,16 +234,7 @@ var data = {
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_BAD", reqs = []}],
 			options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'growth_factor', value = 1, operant = "+"},
-					]
-				},
-				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
+				bonus_effects = [],
 			} ],
 		} ]
 	},
@@ -340,17 +333,7 @@ var data = {
 				text = "DIALOGUECLOSE",
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'growth_factor', value = 1, operant = "+"},
-					]
-				},
-				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
+				bonus_effects = [],
 			}
 		],
 	},
@@ -368,7 +351,19 @@ var data = {
 						{code = 'add_trait', trait = 'loyalty_dress_lewd'},
 						{code = 'create_and_equip', item = "daisy_dress_lewd", parts = {}}
 						],
-			},],
+			},
+			{code = 'complete_quest', value = 'daisy_clothes'},
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'growth_factor', value = 1, operant = "+"},
+				]
+			},
+			{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
+			{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}
+			
+			],
 		options = [ {
 			code = 'daisy_dress_acquired_lewd_2', text = "DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -382,16 +377,7 @@ var data = {
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1", reqs = [], }],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'growth_factor', value = 1, operant = "+"},
-					]
-				},
-				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
+				bonus_effects = [],
 		} ],
 	},
 
@@ -528,17 +514,7 @@ var data = {
 				text = "DIALOGUECLOSE",
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1,
-				bonus_effects = [{code = 'complete_quest', value = 'daisy_clothes'},
-				{
-					code = 'unique_character_changes',
-					value = 'daisy',
-					args = [
-						{code = 'growth_factor', value = 1, operant = "+"},
-					]
-				},
-				{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-				{code = 'add_timed_event', value = "daisy_training_message", args = [{type = 'add_to_date', date = [4,7], hour = 2}]}],
+				bonus_effects = [],
 			}
 		],
 	},
@@ -599,6 +575,16 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		dialogue_type = 2,
+		common_effects = [
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'take_virginity', type = 'vaginal', partner = "guild_trainer"},
+					{code = 'take_virginity', type = 'anal', partner = "guild_trainer"},
+					{code = 'metrics_randompartners', operant = '+', value = 4}
+				]
+			}],
 		text = [{text = "DAISY_TRAINING_INTERMISSION_1", reqs = []}],
 		options = [ {
 			code = 'daisy_training_intermission_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -673,7 +659,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "DAISY_TRAINING_INTERMISSION_7", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 
@@ -902,7 +888,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_4", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
 		}, ]
 	},
 
@@ -952,7 +938,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_2_4", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
 		}, ]
 	},
 
@@ -1032,7 +1018,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}], type = 'next_dialogue'
 		}, ]
 	},
 
@@ -1041,7 +1027,7 @@ var data = {
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'daisy_training'}]
 		}, ]
 	},
 
@@ -1187,7 +1173,7 @@ var data = {
 		save_scene_to_gallery = true,
 		text = [{text = "SCENEDAISY_FIRST_EVENT_DISCIPLINE", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_lost_message",
 		args = [{type = 'add_to_date', date = [6,8], hour = 3}]}], type = 'next_dialogue',
 		}, ]
 	},
@@ -1330,7 +1316,7 @@ var data = {
 		common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'daisy_consensual_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'daisy_lost'},
+			bonus_effects = [
 			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
 	},
@@ -1395,13 +1381,21 @@ var data = {
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_2", reqs = []}],
 		options = [ {
-			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, type = 'next_dialogue'
+			code = 'daisy_consensual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, open_speed = 2, change_dialogue_type = 2, type = 'next_dialogue'
 		} ]
 	},
 	
 	daisy_consensual_3 = {
 		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		reqs = [],
+		common_effects = [
+			{
+				code = 'unique_character_changes',
+				value = 'daisy',
+				args = [
+					{code = 'take_virginity', type = 'vaginal', partner = "master"},
+				]
+			}],
 		text = [{text = "DAISY_CONSENSUAL_3", reqs = []}],
 		options = [ {
 			code = 'daisy_consensual_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -1422,7 +1416,8 @@ var data = {
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'screen_black_transition', value = 1}],
 		} ]
 	},
 }
