@@ -73,6 +73,20 @@ func set_work_rule(rule, value):
 		false:
 			parent.get_ref().remove_static_effect_by_code("work_rule_" + rule)
 
+func check_brothel_rule(rule):
+	if !variables.brothel_rules.has(rule):
+		return false
+	if !brothel_rules.has(rule):
+		print("warning - brothel rule %s removed" % rule)
+		return false
+	return brothel_rules[rule]
+
+
+func set_brothel_rule(rule, value):
+	if variables.brothel_rules.has(rule):
+		brothel_rules[rule] = value
+
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent.get_ref(), 'exp_for_level')

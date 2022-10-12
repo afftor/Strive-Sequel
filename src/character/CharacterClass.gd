@@ -424,6 +424,13 @@ func set_work_rule(rule, value):
 func check_work_rule(rule):
 	return xp_module.check_work_rule(rule)
 
+func set_brothel_rule(rule, value):
+	xp_module.set_brothel_rule(rule, value)
+
+func check_brothel_rule(rule):
+	return xp_module.check_brothel_rule(rule)
+
+
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
 
