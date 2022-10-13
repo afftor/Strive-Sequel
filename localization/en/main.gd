@@ -1458,7 +1458,7 @@ var TranslationDict = {
 	TRAITLOYALTY_BODMOD = "Body Modifications",
 	TRAITLOYALTY_BODMODDESCRIPT = "{color=green|Unlocks body tattoos and modifications}\n\nSlave can give many things to a master, some more than others. This one in particular will even change their very form to that desire.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_ADV_SERVITUDE = "Advanced Servitude",
-	TRAITLOYALTY_ADV_SERVITUDEDESCRIPT = "\nBefore service was demanded, now service is often there before you’ve realized it’s needed. This slave knows a masters needs and fulfills them aptly.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_ADV_SERVITUDEDESCRIPT = "\nBefore service was demanded, now service is often there before you've realized it's needed. This slave knows a masters needs and fulfills them aptly.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_CALLMASTER = "Master Acknowledgment",
 	TRAITLOYALTY_CALLMASTERDESCRIPT = "{color=green|Allows to set Master pronouns}\n\nA title might seem like little to those who are unaware, but those that are 'Master' is the highest honor. This slave awknowleges the role you both will play.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SWEAR = "Swear Loyalty",
@@ -1470,7 +1470,7 @@ var TranslationDict = {
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
 	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnel pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
-	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn’t take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn't take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_ORAL = "Sex:Oral",
 	TRAITLOYALTY_SEX_ORALDESCRIPT = "{color=green|Unlocks oral sex actions during sex interactions}\n\nA long day after managing a manor can be made all the better with a few minutes of one sided pleasure. After all a happy master tends to be a kind master.\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_SEX_ANAL = "Sex:Anal",
@@ -7315,7 +7315,7 @@ Aire: — This isn't right, you can't just let anyone vandalize sacred places li
 	TEMPLE_2_OPTION_1 = "Deal",
 	TEMPLE_2_OPTION_2 = "Treasure like this should certainly be worth more than that (Charm Factor Check)",
 	TEMPLE_2_OPTION_3 = "No deal",
-	TEMPLE_3_1_1 = """ {color=green|Success}
+	TEMPLE_3_1_1 = """{color=green|Success}
 
 — W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
 	TEMPLE_3_1_2 = """ {color=red|Failure}
@@ -7369,29 +7369,29 @@ Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slow
 	
 	Not one to pass up such an opportunity you do indeed take your reward. Realizing as you slide up onto the bed how soft it is, impressed, only to be impressed more as you make contact with her. Her skin is soft, a soft silken touch only possible by those far from the rigorous labors you endure. 
 	
-	You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel’s response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
+	You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel's response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """— Do not mark me.
 
-	Her rebuke showed no anger, only a single determined remark showing an expectation that it’d be obeyed. With that "order" in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
+	Her rebuke showed no anger, only a single determined remark showing an expectation that it'd be obeyed. With that "order" in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
 
 	Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her “order" of not marking her a few times due to her doing the same to you.
 
 — I-I said!-""", 
 	AFTER_TEMPLE_PRIESTESS_5_1_4 = """You cut off her protests by taking her lips with your own, the elf shaking now as your hands slide up from her hips to her breast, a soft rubbing followed by a single finger sliding over her nipple soon causing that attention to occupy her mind, not anything else.
 
-	Minutes later the kiss is broken to you both panting, your mouth traveling down her as you explore, tasting along her until she’s lifted higher upon the bed, her knees lifted to your shoulders as you look up at her now, A few moments of anticipation are awarded with a soft pleasure as you start to slowly glide your tongue over the elven woman’s entrance, not spreading her petals yet, your tongue only tracing the edges of her smooth womanhood.
+	Minutes later the kiss is broken to you both panting, your mouth traveling down her as you explore, tasting along her until she's lifted higher upon the bed, her knees lifted to your shoulders as you look up at her now, A few moments of anticipation are awarded with a soft pleasure as you start to slowly glide your tongue over the elven woman's entrance, not spreading her petals yet, your tongue only tracing the edges of her smooth womanhood.
 
-	Heleviel for her part in this regained her composure quickly, her face still flushed as she looked down at you in thought; what thoughts you’d never know but the moment your tongue slipped between her lips and found her sensitive clit the sounds and looks she made were of pure pleasure. A few moments of tasting her soon turned into nuzzling her inner leg again, a soft nip following before you resumed your gathering of your reward.
+	Heleviel for her part in this regained her composure quickly, her face still flushed as she looked down at you in thought; what thoughts you'd never know but the moment your tongue slipped between her lips and found her sensitive clit the sounds and looks she made were of pure pleasure. A few moments of tasting her soon turned into nuzzling her inner leg again, a soft nip following before you resumed your gathering of your reward.
 """, 
-	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Heleviel’s composure to her credit was kept for some time, her hips shaking as she would look down at you with as much dignity as was normally plastered on her face, though a shadow of pleasure hung over her eyes. The secrets to driving her on weren’t difficult to find, but her reactions were subtle until you glided your tongue directly over her clit one last time, her hand shooting down to grab at your hair, a hungry groan escaping her throat.	
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Heleviel's composure to her credit was kept for some time, her hips shaking as she would look down at you with as much dignity as was normally plastered on her face, though a shadow of pleasure hung over her eyes. The secrets to driving her on weren't difficult to find, but her reactions were subtle until you glided your tongue directly over her clit one last time, her hand shooting down to grab at your hair, a hungry groan escaping her throat.	
 
-Understanding you’d resume licking her there, her hips rolling in your grip as she panted and moaned now, soon the sounds no longer subtle as you felt her tense now, her hips shaking as she started to cum. 
+Understanding you'd resume licking her there, her hips rolling in your grip as she panted and moaned now, soon the sounds no longer subtle as you felt her tense now, her hips shaking as she started to cum. 
 """, 
-	AFTER_TEMPLE_PRIESTESS_5_1_6 = """Heleviel lays there for a few moments before releasing your hair, just panting now as she looks down at you then relaxes. After a few seconds you realize that this isn’t going to be a mutually beneficial arrangement and stand up as you start to redress, eyes moving over her the entire time.
+	AFTER_TEMPLE_PRIESTESS_5_1_6 = """Heleviel lays there for a few moments before releasing your hair, just panting now as she looks down at you then relaxes. After a few seconds you realize that this isn't going to be a mutually beneficial arrangement and stand up as you start to redress, eyes moving over her the entire time.
 
  — The guards will...escort you out. 
 
-	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes but you can’t help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
+	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
@@ -8269,32 +8269,32 @@ Cali: - Let's go visit this guy, hopefully he still has it.""",
 	CALI_WILLIAM_REFUSE = """Your attempt to set up a visit with William has failed. The servants hinted at you being too insignificant to spend their Master's time on you. Perhaps, you'll have to gain more renown before returning...""",
 	CALI_WILLIAM_1 = """You make your way inside the man's estate. Right as you make it inside, the wealth is so apparent that it makes you wonder if you could even dream of achieving something similar. Rows of servants politely greet you and guide you to the owner. 
 
-	After a brief acquaintance, you get to the business and explain what you came for. 
+After a brief acquaintance, you get to the business and explain what you came for. 
 
-	- I'm glad you've visited, Mayor. What do I owe to this? """,
+- I'm glad you've visited, Mayor. What do I owe to this? """,
 	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant",
 	CALI_WILLIAM_1_OPTION_2 = "There was an item sold to you by bandits.", 
 	CALI_WILLIAM_2 = """Cali timidly retells the events she went through. You can notice that she's rather intimidated by the splendor of this manor. 
 
-	- Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
+- Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
 
-	Cali: - You're kidding me!? That price is insane!
+Cali: - You're kidding me!? That price is insane!
 
-	Cali blurts out in anger but the owner doesn't seem startled in the slightest.""",
+Cali blurts out in anger but the owner doesn't seem startled in the slightest.""",
 	CALI_WILLIAM_2_OPTION_1 = "Cali's right, it is too expensive",
 	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide", 
 	CALI_WILLIAM_3 = """- Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money so I can be patient enough to get the best offer for it.
 
-	- But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
+- But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
 
-	William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
+William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
 
-	- You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
+- You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
 
-	As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
+As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
-	- Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
+- Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
 	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
 	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
 	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
@@ -8327,21 +8327,21 @@ Cali blushes to your sudden protective statement, her opinion of you notably imp
 	CALI_RETURNS = """ """, #no text currently
 	CALI_WILLIAM_11_1 = """The man takes another long look at Cali as she catches on to the implication, doing her best to appear femininely attractive. 
 
-	- That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
+- That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
 	CALI_WILLIAM_11_2 = """William takes another long look at Cali but she does not seem to catch on with your intent, giving him a hostile look.
 
-	- I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
+- I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
 	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3,000 gold for a week with her.",
 	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days",
 	CALI_WILLIAM_12 = """The man stays quiet for some time as he deliberately inspects the wolf-girl. Finally he relents.
 
-	- Very well, if your assessment is correct of her and her skills this will be well worth it.
+- Very well, if your assessment is correct of her and her skills this will be well worth it.
 
-	You take Cali aside and explain to her that this is her duty for now. 
+You take Cali aside and explain to her that this is her duty for now. 
 
-	- Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
+- Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
 
-	In the end she accepted that she had to deal with the consequences of her own actions.""", 
+In the end she accepted that she had to deal with the consequences of her own actions.""", 
 	CALI_WILLIAM_13 = """As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.""", 
 	CALI_GRAT_BAD = """At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay. """,
 	CALI_GRAT_1 = """As you return to the Mansion, Cali looks at you with reverence.
@@ -8361,7 +8361,7 @@ After a moment of consideration Cali moves in closer to you and speaks with a hi
 	CALI_GRAT_2_OPTION_2 = "I'm not really interested.", 
 	CALI_GRAT_3 = """- Aah, is that so? That's a shame.
 
-	Cali is visibly disappointed but does not insist. She takes the heirloom and after thanking you once again leaves to her room for preparations.""",
+Cali is visibly disappointed but does not insist. She takes the heirloom and after thanking you once again leaves to her room for preparations.""",
 	CALI_GRAT_4 = """Cali quickly realizes your intention and smiles.
 
 - Y-yeah, I'm not sure I'll be able to pay it all back, but I gotta start somewhere...?""",
@@ -8613,9 +8613,208 @@ Cali: - Was this...?
 
 Amelia: - Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.
 """,
- 
+	
+	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
 
+ — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
+	LILIA_STARTING_1_OPTION_1 = "Nice to meet you, I'm [name].",
+	LILIA_STARTING_1_OPTION_2 = "Woah, not so fast",
+	LILIA_STARTING_1_OPTION_3 = "You really know no manners, do you?",
+	LILIA_STARTING_2_1 = """ — Ah, sorry, it's just so exciting and rare to meet someone like you! You look so big and strong!
 
+- Hey, hey, what did you come for? 
+
+Unlike most other locals, Lilia is quite friendly towards you.. """,
+	LILIA_STARTING_2_2 = """- Hey, hey, what did you come for? 
+
+Unlike most other locals, Lilia is quite friendly towards you..""",
+	LILIA_STARTING_2_3 = """""", # TODO ask for text
+	LILIA_STARTING_2_OPTION_1 = "Do you wanna go somewhere more private?",
+	LILIA_STARTING_2_OPTION_2 = "Do you wanna join me?",
+	LILIA_STARTING_2_OPTION_3 = "How do you like it here?",
+	LILIA_STARTING_2_OPTION_4 = "I should go now, see you another time",
+	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches  on to your intentions, though she doesn't immediately reject the proposal.
+
+- You're strange. I dunno, I have no experience in such things...""",
+	LILIA_SEDUCTION_1_OPTION_1 = "I can see you're practically shaking near me though (Sex Factor)",
+	LILIA_SEDUCTION_1_OPTION_2 = "I have plenty of experience",
+	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something",
+	LILIA_SEDUCTION_1_OPTION_4 = "But you must be curious what it is like",
+	LILIA_SEDUCTION_2_2AND3 = "- Sorry, I don't think I wanna just yet.",
+	LILIA_SEDUCTION_2_4 = "- He-he, other girls have been talking a lot about it, but I'm still not sure. You are so big and stuff...",
+	LILIA_SEDUCTION_2_4_OPTION_1 = "But isn't that what interests you?",
+	LILIA_SEDUCTION_2_4_OPTION_2 = "I can be very gentle",
+	LILIA_SEDUCTION_2_4_OPTION_3 = "If something goes wrong we can always patch things up",
+	LILIA_SEDUCTION_2_4_2AND3 = "Lilia acts as if this talk didn't happen and falls silent.",
+#	LILIA_SEX_SCENE_1_1 = """- I guess... 
+#
+#Lilia falls silent as if conflicted, but finally looks like she lost any patience. 
+#
+#- Ah, fine, who knows when there will be another chance like this?
+#
+#The fairy takes a quick look around if anyone is paying attention, then grabs your hand pulling you into a nearby bush.""",
+	LILIA_SEX_SCENE_0 = """As Lilia hears your suggestion, her lips turn into a mischievous smile. 
+
+- Sure! I was afraid you wouldn't ask.""",
+	LILIA_SEX_SCENE_1 = """The fae approaches, staring up at you, due to the large size difference.  A few moments later, she reaches up grasping your hand after looking around the forest.  It doesn't take her long to guide you just a bit deeper into a nice shaded alcove.  
+
+The fairy darts around now, a literal bundle of energy moving this and that, even adjusting branches as you're not quite sure what she's doing at first, but soon realizes she's setting her stage; making everything perfect, at least in her eyes.  Finally having everything settled Lillia turns to you looking at you expectantly.  
+
+- Ok! Everything is perfect!
+
+Lillia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now.  After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
+
+- Oh! I mean if you insist we can leave it there…
+
+The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds.  A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
+
+You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers.  
+
+Lillia: T-that's so much better than my fingers…take me [name].  Please…""",
+	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole.  Lillia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
+
+You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected.  Lillia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
+
+She wasn't an experienced lover, but her tightness and willingness to please helped make up for it.  Occasionally you'd have to stop as the girl shuddered hard on your shaft, making you unsure if she was cumming, or just shaking from how deep you were in her body.  Each time Lillia had to stop this way she'd soon urge you on, telling you to take her harder now.""",
+	LILIA_SEX_SCENE_3 = """The mating continued on for a while before you started to pulse inside of her, the girl already panting hard, giving pleasured little sounds before making an ecstatic sound as you started to cum inside of her, soaking her inner walls and filling her womb.  She stayed there for a few moments, her hips shaking as she was literally clamped down on your cock, her stomach slightly inflated as she panted out.
+
+- …needed that.  Oh I need to keep doing that? C-can I come with you?  Please… 
+
+You let her question hang in the air for a few moments before pulling her off you, seeing your cum leak out of her body, as you easily hold her in one of your arms.  It wasn't every day someone met one of her kind, much less bedded one of them.  Lillia might make an interesting addition to your manor.""",
+	LILIA_RECRUIT_1_1 = """- Eh? I dunno, I don't think I know you well enough, [name].""",
+	LILIA_RECRUIT_1_2 = """- Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.""",
+	LILIA_RECRUIT_1_OPTION_1 = "I'd love to have you at my place (Charm Factor)",
+	LILIA_RECRUIT_1_OPTION_2 = "Eventually you get used to it",
+	LILIA_RECRUIT_1_OPTION_3 = "Humans can be pretty bad, but you'll be under my protection",
+	LILIA_RECRUIT_1_OPTION_4 = "You aren't scared of me though",
+	LILIA_RECRUIT_NO = "- I think I'll pass on it, I'm not ready to leave my home just yet.",
+	LILIA_RECRUIT_NO_RED = """{color=red|Failure}
+
+- I think I'll pass on it, I'm not ready to leave my home just yet.""",
+	LILIA_RECRUITED = """Lilia hesitates for a bit but her attitude towards you eventually sways her choice.
+
+- Fine, I'd hate to wait for your next visit. Let me grab a few of my things!""",
+	LILIA_RECRUITED_GREEN = """{color=green|Success}
+
+Lilia hesitates for a bit but her attitude towards you eventually sways her choice.
+
+- Fine, I'd hate to wait for your next visit. Let me grab a few of my things!""",
+	LILIA_RECRUIT_1_4 = """- He-he, that's true, you aren't scary at all. But what am I gonna do there?""",
+	LILIA_RECRUIT_1_4_OPTION_1 = """You could be a performer""",
+	LILIA_RECRUIT_1_4_OPTION_2 = """I wouldn't ask from you for more than what we were already doing""",
+	LILIA_RECRUIT_1_4_OPTION_3 = """There's a lot of possibilities for adventure""",
+	
+	SICK_LILIA_START = """After a few days since Lilia moved in with you, one morning you find her in bed extremely weakened.
+
+- [name]... I don't feel... so well... Can I... rest for today?
+
+Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
+	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
+
+- A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I.  She'll need time for her body to adjust to these harsh conditions.  Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
+	SICK_LILIA_1_OPTION_1 = "So she's going to be alright?",
+	SICK_LILIA_1_OPTION_2 = "Is there anything I could do to help her?",
+	SICK_LILIA_2_1 = """- It's hard to tell if her body will be able to deal with it naturally at this point.
+
+- There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
+	SICK_LILIA_2_2 = """- There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
+	SICK_LILIA_2_OPTION_1 = "I don't have to pay?",
+	SICK_LILIA_2_OPTION_2 = "Thanks a lot, you are a true savior",
+	SICK_LILIA_3_1 = """- I only wrote you a formula, you're the one who will need to produce it.  It also gets you out of my hair.
+
+- One more thing... I hope you'll have the decency to not sexually abuse her while she's in this state.""",
+	SICK_LILIA_3_2 = """Myr stays oblivious to your praises and passes you the paper sheet. 
+
+- One more thing... I hope you'll have the decency to not sexually abuse her while she's in this state.""",
+	SICK_LILIA_3_OPTION_1 = "I'd never do that.",
+	SICK_LILIA_3_OPTION_2 = "What do you take me for!?",
+	SICK_LILIA_4_1 = """- I hope so. But your reputation is not as flawless as you imply so I felt it necessary. Now that we are done, leave me be.""",
+	SICK_LILIA_4_2 = """- A sexual deviant who dragged a pure wild fairy from the forest because those things are sexual addicts.""",
+	SICK_LILIA_4_2_OPTION_1 = "It's not like that, it's purely coincidental and she wanted to come on her own",
+	SICK_LILIA_4_2_OPTION_2 = "Hey, you can't blame me, that's what any man would do",
+	SICK_LILIA_5 = """Myr sighs heavily while making a gesture for you to leave as this discussion is finished. With no other choice you leave her office.""",
+	SICK_LILIA_6 = """As you make your way out of Myr's office and read through her notes you spot the line which directs you to go to "my crook of a sister", realizing you'll have to visit Xari for that. """,
+	
+	XARI_CLOTHES_1 = """- Hey, [name]. It's been a while. Did Myr sent you on some errand again?""",
+	XARI_CLOTHES_1_OPTION_1 = "I have this note here...",
+	XARI_CLOTHES_1_OPTION_2 = "Not quite",
+	XARI_CLOTHES_2 = """As Xari reads through the paper note, you explain that you need a certain medicine. She quickly grasps on that.
+
+- Yeah, I can brew this, no problem. Good thing you came here since in the city you wouldn't be able to make such a pure substance. That'll be 500 gold.""",
+	XARI_CLOTHES_2_OPTION_1 = "Pay (500 Gold)",
+	XARI_CLOTHES_2_OPTION_2 = "I don't have the money yet...",
+	XARI_CLOTHES_3_1 = """- Great, let me start my preparations...""",
+	XARI_CLOTHES_3_2 = """- Well then, I'll be right here. It shouldn't take you long after all.""",
+	XARI_CLOTHES_4 = """As you pass money to Xari, she begins searching through her cluttered shelves. 
+
+- You know... You are curing a fairy, am I right? Since this is gonna take some time anyway, how about you do something for me and I'll make it a tad more special?
+
+- A few days ago there was a troll who stole some of my clothes which I was drying. I was planning to go teach him a lesson but you could do that, couldn't you? Then I can make this brew a bit more effective.
+
+- With fairies' natural affinity to magic it's pretty easy to give them a boost every once in a while. I can make her smarter, more loyal or a tad lewder.""",
+	XARI_CLOTHES_4_OPTION_1 = "I'd rather pass on this task",
+	XARI_CLOTHES_4_OPTION_2 = "Okay, make her smarter (+Wit Factor, +Magic Factor)",
+	XARI_CLOTHES_4_OPTION_3 = "Okay, make her more loyal (+Tame Factor)",
+	XARI_CLOTHES_4_OPTION_4 = "Okay, make her lewder (+Sex Factor) ",
+	XARI_CLOTHES_5_1 = """- Fine, I'll get them myself then. Hold on then, this won't take long...""",
+	XARI_CLOTHES_6 = """- Done. Just don't give it to her all at once. She should improve after a couple days.
+
+Xari passes you a small phial filled with fluid and sends you off.""",
+	XARI_CLOTHES_5_2AND3AND4 = """- Alright, it's not far from here. I'll likely be done when you return so go and teach that brute a lesson.""",
+	
+	TROLL_CLOTHES_1 = """As you get to the cave as instructed by Xari, you quickly spot its dweller who does not attack you just yet.
+
+- You... come... Rags...
+
+Out of his poor attempt to speak the common tongue you realize that he knows what you've come for. It's known trolls have a great smell so he likely knows you've visited Xari's place. 
+
+- Trade... Food...
+
+Looks like the troll is willing to part with his loot in exchange for something edible.""",
+	TROLL_CLOTHES_1_OPTION_1 = "Give him 50 meat (-50 Meat)",
+	TROLL_CLOTHES_1_OPTION_2 = "Tell him about a deer's grazing spot you found on your way here (Hunter)",
+	TROLL_CLOTHES_1_OPTION_3 = "I don't trade with filthy monsters (Fight)",
+	TROLL_CLOTHES_1_OPTION_4 = "Leave",
+	TROLL_CLOTHES_2_1 = """You manage to trade for Xari's clothes, which seem much less clean than what they would have been before drying. Hoping this won't disappoint her too much, you leave the troll alone.""",
+	TROLL_CLOTHES_2_2 = """You manage to barely explain yourself so the troll understood you. With some doubt he let you have the clothes leaving for the spot you told him. Perhaps it was luck that he wasn't lied to by others all too often.""",
+	TROLL_CLOTHES_2_3 = """After you defeat the troll you manage to find Xari's clothes which are in much worse condition than expected. But since you defeated the troll at least she should be happy it won't happen again.""",
+	
+	XARI_CLOTHES_7 = """As you pass Xari her clothes she looks less than impressed. Yet she proceeds with her part of the deal as agreed.
+
+- Here. Just don't give it to her all at once. She should improve after a couple days.
+
+She passes you a small phial filled with fluid and sends you off.""",
+	
+	LILIA_MANSION_1 = """You finally manage to bring Lillia the potion that took you the entire evening to acquire.  Looking at her she doesn't appear to have had her condition worsen or improve while you were gone. The girl is too weak to object as you administer the potion to her, the taste obviously foul.""",
+	LILIA_MANSION_2 = """The situation now dealt with, you finally are able to get some rest yourself.
+
+Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold.  This thought is at the forefront as you open your eyes to see Lillia start sliding her panties down now, moving her body up onto you.
+
+- [Master], sorry for being a bit selfish but I really miss this…""",
+	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans.  You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty.  
+
+A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft.  A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time.  You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
+
+Lillia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
+	LILIA_MANSION_4 = """Sweat on her body starts to show after a few minutes of exertion while your hands rest firmly on her legs for just a moment as you fight the need to release. Although after a few moments you're unable to stop yourself. The little fae was now pinning herself down, holding herself firmly onto your cock as you filled every crevice of her womb.
+
+- A-ah… This feels too good…[Master]! I'm going to cum!
+
+Lillia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
+	LILIA_MANSION_5 = """Lillia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
+
+After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder.  Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	#       QUESTS       #
@@ -8737,6 +8936,14 @@ Amelia: - Don't fret over it, a couple of girls can have a bit of private fun on
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
 	
+	SICK_LILIA_QUEST_NAME = "",
+	SICK_LILIA_QUEST_SUMMARY = "",
+	SICK_LILIA_QUEST_STAGE_1 = "",
+	SICK_LILIA_QUEST_STAGE_2 = "",
+	SICK_LILIA_QUEST_STAGE_3 = "",
+	SICK_LILIA_QUEST_STAGE_4 = "",
+	SICK_LILIA_QUEST_STAGE_5 = "",
+	
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her discipline. She stays silent having no words for you.\n\n- ......",
@@ -8762,7 +8969,6 @@ Amelia: - Don't fret over it, a couple of girls can have a bit of private fun on
 	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n- [Master]? Whatcha doin'? Did you came to play with me?",
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, small fairy Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
-	
 	
 }
 

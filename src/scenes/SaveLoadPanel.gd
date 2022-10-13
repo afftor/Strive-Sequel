@@ -245,8 +245,9 @@ func show_save_details(save):
 	$DetailsPanel/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$DetailsPanel/RichTextLabel2.bbcode_text = globals.TextEncoder(text2)
 	$DetailsPanel.show()
-	$DetailsPanel/MasterIcon.visible = input_handler.loadimage(save.master_icon) != null
-	$DetailsPanel/MasterIcon.texture = input_handler.loadimage(save.master_icon)
+	if $DetailsPanel/MasterIcon != null and save.has("master_icon"):
+		$DetailsPanel/MasterIcon.visible = input_handler.loadimage(save.master_icon) != null
+		$DetailsPanel/MasterIcon.texture = input_handler.loadimage(save.master_icon)
 
 func add_zeros(number):
 	if number > 9:

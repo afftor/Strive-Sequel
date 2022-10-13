@@ -933,6 +933,12 @@ func start_event(code, type, args):
 			scene = get_spec_node(self.NODE_DIALOGUE)
 		2:
 			scene = get_spec_node(self.NODE_DIALOGUE_T2)
+	if args.has("changed_window_type"): # transfering prev option on scene change
+		match gui_controller.dialogue_window_type:
+			1:
+				scene.previous_dialogue_option = get_spec_node(self.NODE_DIALOGUE_T2).previous_dialogue_option
+			2:
+				scene.previous_dialogue_option = get_spec_node(self.NODE_DIALOGUE).previous_dialogue_option
 	gui_controller.dialogue = scene
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:

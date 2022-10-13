@@ -144,37 +144,37 @@ var data = {
 		}, ],
 	},
 	
-	lilia_intro = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
-		options = [ {
-			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
-		}, ],
-	},
-	
-	lilia_intro_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "LILIA_INTRO_2", reqs = []} ], character = 'lilia',
-		options = [ {
-			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
-		}, ],
-	},
-	
-	lilia_intro_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "LILIA_INTRO_3_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true}]},
-		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
-		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'update_location'}]
-		},  ],
-	},
+#	lilia_intro = {
+#		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
+#		options = [ {
+#			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+#		}, ],
+#	},
+#
+#	lilia_intro_2 = {
+#		image = null, tags = ['dialogue_scene'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO_2", reqs = []} ], character = 'lilia',
+#		options = [ {
+#			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+#		}, ],
+#	},
+#
+#	lilia_intro_3 = {
+#		image = null, tags = ['dialogue_scene'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO_3_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true}]},
+#		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
+#		options = [ {
+#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#			bonus_effects = [{code = 'update_location'}]
+#		},  ],
+#	},
 	
 	
 	cali_intro = {
