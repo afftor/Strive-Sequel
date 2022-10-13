@@ -150,16 +150,16 @@ var gold_tasks_data = {
 }
  
 func gold_waitress():
-	return (5 + parent.get_ref().get_stat('charm')/20.0)/6
+	return (7 + parent.get_ref().get_stat('charm')/20.0)/6
 
 func gold_hostess():
-	return (7 + parent.get_ref().get_stat('wits')/18.0)/6
+	return (9 + parent.get_ref().get_stat('wits')/18.0)/6
 
 func gold_dancer():
-	return (2 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
+	return (4 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
 
-func gold_strip():
-	return (4 + parent.get_ref().get_stat('sexuals')/8.0)/6
+func gold_stripper():
+	return (6 + parent.get_ref().get_stat('sexuals')/8.0)/6
 
 func gold_petting():
 	return (3 + parent.get_ref().get_stat('sex_skills_petting')/25.0)/6

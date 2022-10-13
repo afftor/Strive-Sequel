@@ -273,12 +273,12 @@ var tasklist = {
 		mod = 'mod_collect'
 	},
 	
-	prostitution = {
-		code = 'prostitution',
+	brothel = {
+		code = 'brothel',
 		reqs = [],
 		name = '',
 		descript = '',
-		workstat = 'sexuals',
+		workstat = 'sex_skills',
 		progress_per_item = 1.0 / 6,
 		production_code = 'prostitutegold',
 		production_item = 'gold',

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -40,6 +40,10 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=38]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=39]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_disabled.png" type="Texture" id=40]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=41]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=42]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=43]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=44]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -578,3 +582,56 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BrothelRules" type="Panel" parent="."]
+margin_left = 78.0
+margin_top = 274.0
+margin_right = 860.0
+margin_bottom = 714.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="BrothelRules"]
+margin_left = 32.2704
+margin_top = 68.5958
+margin_right = 293.27
+margin_bottom = 388.596
+custom_constants/vseparation = 11
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="CheckBox" parent="BrothelRules/GridContainer"]
+visible = false
+margin_right = 141.0
+margin_bottom = 48.0
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 41 )
+text = "Test rule"
+
+[node name="rulestooltip" type="TextureRect" parent="BrothelRules"]
+margin_left = 0.330963
+margin_top = 6.06903
+margin_right = 48.331
+margin_bottom = 51.069
+texture = ExtResource( 43 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="BrothelRules"]
+margin_left = 87.1022
+margin_top = 15.8572
+margin_right = 239.102
+margin_bottom = 39.8572
+custom_fonts/font = ExtResource( 44 )
+text = "Service Rules"
+
+[node name="brothel_descript" type="RichTextLabel" parent="BrothelRules"]
+margin_left = 413.066
+margin_top = 20.2043
+margin_right = 754.066
+margin_bottom = 420.204
+custom_fonts/normal_font = ExtResource( 44 )
+bbcode_enabled = true
