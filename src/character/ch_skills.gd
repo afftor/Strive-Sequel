@@ -323,12 +323,12 @@ func use_social_skill(s_code, target):
 
 			effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
 			var maxstat = 100
-			if h.get_stat(stat+'max') != null:
-				maxstat = h.get_stat(stat + "max")
-			elif stat == 'obedience':
-				maxstat = h.get_stat('obedience_max')
-			elif i.damagestat.find("factor")>=0:
+			if stat in ['obedience']:
+				maxstat = h.get_stat(stat + '_max')
+			elif i.damagestat.find("factor")>=0 or stat in ['loyalty']:
 				maxstat = 0
+			elif h.get_stat(stat+'max') != null:
+				maxstat = h.get_stat(stat + "max")
 			if detail_tags.has("obed_cap") && stat == 'obedience':
 				effect_text += ": Maxed" 
 			else:
