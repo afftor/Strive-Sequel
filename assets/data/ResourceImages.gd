@@ -154,6 +154,11 @@ var backgrounds = {
 	amelia_cali_1 = load("res://assets/images/fullscreen scenes/Amelia_Cali1.png"),
 	amelia_cali_2 = load("res://assets/images/fullscreen scenes/Amelia_Cali2.png"),
 	amelia_cali_3 = load("res://assets/images/fullscreen scenes/Amelia_Cali10.png"),
+	
+	lilia_sex_1 = load("res://assets/images/fullscreen scenes/LiliaCG001.png"),
+	lilia_sex_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_3 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
+	lilia_sex_4 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
 
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),

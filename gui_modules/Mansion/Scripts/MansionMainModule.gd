@@ -933,7 +933,7 @@ func test_mode():
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-#		input_handler.interactive_message('fred_return_to_duncan_answer_2', '', {})
+		input_handler.interactive_message('got_cali_2_1', '', {})
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")

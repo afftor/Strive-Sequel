@@ -1938,5 +1938,13 @@ var quests = {
 
 		},
 	},
+	sick_lilia_quest = {
+		code = 'sick_lilia_quest',
+		summary = "SICK_LILIA_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_1"}, # talk to Myr
+			stage2 = {code = 'stage2', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_2"}, # go to Xari
+		},
+	},
 }
 

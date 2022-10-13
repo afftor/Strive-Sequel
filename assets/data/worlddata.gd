@@ -1502,6 +1502,9 @@ var dungeons = {
 			{text = 'Enter', reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
 				args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]},
+			{text = 'Find Xari', reqs = [
+				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
+				args = [{code = 'start_event', data = '', args = []}]},
 		],
 	},
 	quest_mages_fred = {

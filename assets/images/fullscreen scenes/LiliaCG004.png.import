@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Amelia_Cali1.png-c07a772a5bd02de6e04a6e90000be28e.stex"
+path="res://.import/LiliaCG004.png-6e8213fb8bce8e313328f655f4ff9d74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/Amelia_Cali1.png"
-dest_files=[ "res://.import/Amelia_Cali1.png-c07a772a5bd02de6e04a6e90000be28e.stex" ]
+source_file="res://assets/images/fullscreen scenes/LiliaCG004.png"
+dest_files=[ "res://.import/LiliaCG004.png-6e8213fb8bce8e313328f655f4ff9d74.stex" ]
 
 [params]
 
