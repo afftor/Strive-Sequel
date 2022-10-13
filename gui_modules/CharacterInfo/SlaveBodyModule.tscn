@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=14]
 
 [node name="SlaveBodyModule" type="Panel"]
 show_behind_parent = true
@@ -113,17 +114,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsButton" type="TextureButton" parent="."]
-visible = false
-light_mask = 0
-margin_left = 5.21887
-margin_top = 47.5277
-margin_right = 45.2189
-margin_bottom = 87.5277
-texture_normal = ExtResource( 5 )
-expand = true
-stretch_mode = 5
-
 [node name="ProfessionsBG" type="Panel" parent="."]
 light_mask = 0
 margin_left = 1.0
@@ -194,3 +184,27 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StatsPanel" type="Panel" parent="."]
+margin_right = 693.0
+margin_bottom = 918.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
+margin_left = 46.6691
+margin_top = 50.9117
+margin_right = 653.669
+margin_bottom = 876.912
+custom_fonts/normal_font = ExtResource( 14 )
+bbcode_enabled = true
+bbcode_text = "This is a test text"
+text = "This is a test text"
+
+[node name="StatsButton" type="TextureButton" parent="."]
+light_mask = 0
+margin_left = 654.747
+margin_top = 2.98278
+margin_right = 694.747
+margin_bottom = 42.9828
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5

@@ -65,13 +65,13 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_HEIRLOOM_6_INIT", reqs = [], previous_dialogue_option = 1},],
 		options = [ {
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3
 		},
 		{
 			code = 'cali_heirloom_7', text = "CALI_HEIRLOOM_6_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -88,13 +88,13 @@ var data = {
 			{text = "CALI_HEIRLOOM_6_3", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [ {
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_1", reqs = [], dialogue_argument = 1
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_2", reqs = [], dialogue_argument = 2
 		},
 		{
-			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'cali_heirloom_6', text = "CALI_HEIRLOOM_6_OPTION_3", reqs = [], dialogue_argument = 3
 		},
 		{
 			code = 'cali_heirloom_7', text = "CALI_HEIRLOOM_6_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -177,7 +177,7 @@ var data = {
 			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 200, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
-			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
 			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [
@@ -657,6 +657,7 @@ var data = {
 	cali_grat_6 = { #bad
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "CALI_GRAT_6", reqs = []} ],
+		character = "cali",
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'remove_character'}]}, {code = 'complete_quest', value = 'cali_heirloom_quest'}]
@@ -925,7 +926,7 @@ var data = {
 	},
 	cali_grat_sex_1 = {
 		image = null,
-		custom_background = "cali_sex_4",
+		custom_background = "cali_riding_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		common_effects = [{code = 'decision', value = 'cali_sex'}],
@@ -943,10 +944,10 @@ var data = {
 	},
 	cali_grat_sex_2 = {
 		image = null,
-		custom_background = "cali_sex_5",
+		custom_background = "cali_riding_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "CALI_GRAT_SEX_2", reqs = []}],
 		options = [
 			{
@@ -960,10 +961,10 @@ var data = {
 	},
 	cali_grat_sex_3 = {
 		image = null,
-		custom_background = "cali_sex_6",
+		custom_background = "cali_riding_3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "CALI_GRAT_SEX_3", reqs = []}],
 		options = [
 			{

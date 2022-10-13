@@ -131,7 +131,7 @@ var template = {
 	multiple_tits = 0,
 	multiple_tits_developed = false,
 	has_womb = false,
-	pregnancy = { "fertility": 0, "duration": 0, "baby": null },
+	pregnancy = {"fertility": 0, "duration": 0, "baby": null },
 	lactation = false,
 
 	was_proposed = false,
@@ -143,6 +143,12 @@ var template = {
 	vaginal_virgin = true,
 	anal_virgin = true,
 	mouth_virgin = true,
+	
+	penis_virgin_lost = {source = null},
+	vaginal_virgin_lost = {source = null},
+	anal_virgin_lost = {source = null},
+	mouth_virgin_lost = {source = null},
+	
 	#tasks
 
 	shackles_chance = null,
@@ -151,9 +157,11 @@ var template = {
 	relatives = {},
 	sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}},
 	sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0},
+	
+	
 	consent = 0,
 	relations = {},
-	metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0},
+	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, materialearn = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
 	lastsexday = 0,
 
 	asser = 0,

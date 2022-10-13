@@ -1,8 +1,4 @@
 var decisions = {
-	#PrincessDead = {
-	#	id = "PrincessDead",
-	#	description = "Princess Anastasia got killed by elf priestess"
-	#}
 	PrincessDead = "Princess Anastasia got killed by elf priestess",
 	aire_raped = "Happens after Lich fight lich_aire_talk6_6",
 	anastasia_added = "Adds princess at princess_declaration_4",
@@ -37,6 +33,7 @@ var decisions = {
 	SaveRebels = "Mines quest decision to save rebels from demon",
 	ZephyraRecruited = "Divine symbol or artifacts questline, Zephyra recruited divine_symbol_26, 27, 28, zephyra_recruitment_6_good",
 	ZephyraEnslaved = "Divine symbol questline, Zephyra enslaved divine_symbol_26",
+	anastasia_rape_scene = "Anastasia was raped setting you on negative route for her",
 	KurdanRecruited = "Mines quest decision to recruit Kurdan",
 	KurdanFollowing = "Mines quest decision that  Kurdan will follow",
 	PlayerFrontline = "Gives some rewards",
@@ -79,10 +76,15 @@ var decisions = {
 	startedAct2 = "Needed to fix loading on beta version",
 	LiraPriestess = "Lira becomes a priestess in the end of act2 ceremony_3",
 	HelevielPriestess = "Heleviel becomes a priestess in the end of act2 ceremony_3",
+	cali_raped = "cali rape during her initial quest which locks her on bad route",
 	cali_wood_discount = "get discount for Cali's heirloon quest",
 	cali_heirloom_good = "get sword without forcing Cali",
 	cali_heirloom_bargain = "tried to bargain with william",
 	cali_heirloom_discount = "3 days work",
 	cali_keep = "discard giving cali to william",
 	cali_sex = "sex scene with cali seen", #there should be 4 or 5 of them - but i found only 3
+	seduced_lilia = "Had sex with lilia when first met her",
+	potion_wit_magic = "Potion for Lilia that adds Wit and Magic factor",
+	potion_tame = "Potion for Lilia that adds Tame factor",
+	potion_sex = "Potion for Lilia that adds Sex factot",
 }

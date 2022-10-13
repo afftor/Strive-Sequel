@@ -391,7 +391,7 @@ func Reward():
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	open()
-	input_handler.play_animation("quest_completed")
+	input_handler.play_animation("repeatable_quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
 	if is_recount_reputation:
 		globals.common_effects([{code = 'reputation', name = guild, value = reputation_value, operant = '+'}])

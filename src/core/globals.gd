@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.4a'
+const gameversion = '0.6.5'
 
 #time
 signal hour_tick
@@ -907,7 +907,8 @@ func impregnate_check(father,mother):
 func impregnate(father, mother):
 	if impregnate_check(father,mother).value == false:
 		return
-	
+	mother.add_stat('metrics_pregnancy',  1)
+	father.add_stat("metrics_impregnation", 1)
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
@@ -1422,6 +1423,14 @@ func common_effects(effects):
 						var item = CreateGearItem(k.item, k.parts)
 						AddItemToInventory(item)
 						character.equip(item)
+					elif k.code == 'take_virginity':
+						if k.partner == 'master':
+							k.partner = ResourceScripts.game_party.get_master().id
+						character.take_virginity(k.type, k.partner)
+					elif k.code == 'add_partner':
+						if k.partner == 'master':
+							k.partner = ResourceScripts.game_party.get_master().id
+						character.add_partner(k.partner)
 					else:
 						character_stat_change(character, k)
 			'start_event':
@@ -1581,6 +1590,12 @@ func common_effects(effects):
 					if k.code == i.value:
 						ResourceScripts.game_progress.active_quests.erase(k)
 						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						
+						var args = {}
+						args["label"] = "Quest Completed"
+						args["name"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
+						#args["sound"] = "class_aquired"
+						input_handler.play_animation("quest_completed", args)
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
@@ -1756,6 +1771,8 @@ func common_effects(effects):
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
 			'hide_dialogue':
 				gui_controller.dialogue.hide_dialogue()
+			'plan_mansion_event':
+				ResourceScripts.game_progress.planned_mansion_events.append(i.value)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -1815,8 +1832,6 @@ func valuecheck(dict):
 				if ResourceScripts.game_progress.decisions.has(i):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
-		"quest_stage":
-			return ResourceScripts.game_progress.if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
 			return ResourceScripts.game_progress.completed_quests.has(dict.name) == dict.check
 		"party_level":
@@ -1887,6 +1902,13 @@ func valuecheck(dict):
 				return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
 			else:
 				return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
+		'any_quest_stage':
+			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
+				return false
+			for i in dict.stages:
+				if ResourceScripts.game_progress.get_active_quest(dict.value).stage == i:
+					return true
+			return false
 		'faction_reputation':
 			var data = ResourceScripts.world_gen.get_faction_from_code(dict.code)
 			var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]

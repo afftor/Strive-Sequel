@@ -159,11 +159,10 @@ func show_slave_info():
 #
 #		$Panel/authoritylabel.text = 'Authority: ' + authority_text
 
-		$Panel/loyaltylabel.value = person.get_stat('loyalty')
+		$Panel/authoritylabel2.text = "Loyalty: "+ str(floor(person.get_stat('loyalty')))
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
 #		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
 #		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
@@ -195,3 +194,5 @@ func text_url_hover_hide(meta = null):
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
+
+

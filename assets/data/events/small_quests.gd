@@ -144,37 +144,37 @@ var data = {
 		}, ],
 	},
 	
-	lilia_intro = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
-		options = [ {
-			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
-		}, ],
-	},
-	
-	lilia_intro_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "LILIA_INTRO_2", reqs = []} ], character = 'lilia',
-		options = [ {
-			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		}, {
-			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
-		}, ],
-	},
-	
-	lilia_intro_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "LILIA_INTRO_3_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true}]},
-		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
-		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'update_location'}]
-		},  ],
-	},
+#	lilia_intro = {
+#		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO", reqs = []} ], character = 'lilia',
+#		options = [ {
+#			code = 'lilia_intro_2', master_translate = true, text = "LILIA_INTRO_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_2', text = "LILIA_INTRO_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+#		}, ],
+#	},
+#
+#	lilia_intro_2 = {
+#		image = null, tags = ['dialogue_scene'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO_2", reqs = []} ], character = 'lilia',
+#		options = [ {
+#			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#		}, {
+#			code = 'lilia_intro_3', text = "LILIA_INTRO_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+#		}, ],
+#	},
+#
+#	lilia_intro_3 = {
+#		image = null, tags = ['dialogue_scene'], reqs = [], 
+#		text = [ {text = "LILIA_INTRO_3_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true}]},
+#		 {text = "LILIA_INTRO_3_2", reqs = [], previous_dialogue_option = 2},], character = 'lilia',
+#		options = [ {
+#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#			bonus_effects = [{code = 'update_location'}]
+#		},  ],
+#	},
 	
 	
 	cali_intro = {
@@ -275,7 +275,17 @@ var data = {
 	got_cali_2_1 = { 
 		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
 		text = [ {text = "GOT_CALI_2_1", reqs = []}, ], 
-		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'}],
+		common_effects = [{code = 'make_story_character', value = 'Cali', recruit_from_location = true, slave_category = 'slave'},
+		{code = 'decision', value = 'cali_raped'},
+		{
+			code = 'unique_character_changes',
+			value = 'cali',
+			args = [
+				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
+				{code = 'obedience', operant = '-', value = 90},
+			]
+		},
+		],
 		options = [ {
 			code = 'force_cali_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		},],
@@ -344,7 +354,7 @@ var data = {
 		text = [{text = "FORCE_CALI_6", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}], change_dialogue_type = 1
+			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}]
 		}, ],
 	},
 	
@@ -387,7 +397,7 @@ var data = {
 			{text = "", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 1}
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
 	}, 
 	
@@ -402,7 +412,7 @@ var data = {
 			{text = "", reqs = []}
 		],
 		options = [ {
-				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1,
+				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'},{code = 'rewrite_save'}]
 			}
 		]

@@ -57,6 +57,12 @@ func fix_serialize():
 		for e in arr:
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
+	for tr in sex_traits.duplicate():
+		if Traitdata.sex_traits.has(tr): continue
+		sex_traits.erase(tr)
+	for tr in unlocked_sex_traits.duplicate():
+		if Traitdata.sex_traits.has(tr): continue
+		unlocked_sex_traits.erase(tr)
 
 
 func default_stats_get():
@@ -68,6 +74,10 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st.begins_with('metrics_'):
+		var stat = st.trim_prefix('metrics_')
+		statlist.metrics[stat] = value
+		return
 	if st.begins_with("sex_skills_"):
 		st = st.trim_prefix("sex_skills_")
 		statlist.sex_skills[st] = value
@@ -254,7 +264,17 @@ func set_stat(statname, value): #for direct access only
 
 #bonus system
 func get_stat(statname, ref = false):
-	if !statlist.has(statname): return null
+	if statname.begins_with('metrics_'):
+		var tmp = statlist.metrics
+		var stat = statname.trim_prefix('metrics_')
+		if tmp.has(stat):
+			return tmp[stat]
+		else:
+			print("no stat - %s" % statname)
+			return null
+	if !statlist.has(statname): 
+		print("no stat - %s" % statname)
+		return null
 	var res
 	if ref: res = statlist[statname]
 	else:  res = custom_stats_get(statname)
@@ -379,11 +399,22 @@ func add_stat(statname, value, revert = false):
 		if revert: statlist.sex_skills[statname] -= value
 		else: statlist.sex_skills[statname] += value
 		return
+	if statname.begins_with('metrics_'):
+		var tmp = statlist.metrics
+		var stat = statname.trim_prefix('metrics_')
+		if tmp.has(stat):
+			if revert: tmp[stat] -= value
+			else: tmp[stat] += value
+		else:
+			print("no stat - %s" % statname)
+		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
 		statname = statname.trim_suffix('_direct')
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] - value)
@@ -395,7 +426,9 @@ func add_stat(statname, value, revert = false):
 		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] / value)
@@ -417,7 +450,9 @@ func mul_stat(statname, value, revert = false):
 			else: bonuses[statname + '_mul'] = value
 
 func add_part_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): return
+	if !statdata.statdata.has(statname): 
+		print("no stat - %s" % statname)
+		return
 	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] /(1.0 + value))
@@ -655,6 +690,9 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
+	
+	set_virginity_data()
+	
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
 	var gendata = {race = '', sex = 'random', age = 'random'}
@@ -952,11 +990,18 @@ func get_sex_features():
 
 	if statlist.vaginal_virgin == false || statlist.anal_virgin == false:
 		statlist.mouth_virgin = false
-
-
+	
 	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
 		if statlist[i] == false:
 			statlist.sex_skills[skill_shortcuts[i]] = rand_range(1,10)
+	set_virginity_data()
+
+
+func set_virginity_data():
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i+'_lost'].source == 'master':
+			statlist[i+'_lost'].source = ResourceScripts.game_party.get_master().id
+			statlist.metrics.partners.append(ResourceScripts.game_party.get_master().id)
 
 func add_random_sex_skill():
 	var array = ['petting']

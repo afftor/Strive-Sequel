@@ -385,7 +385,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_10", reqs = []}],
 		options = [
-			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1}, 
+			{code = 'close', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],
 	},
 }

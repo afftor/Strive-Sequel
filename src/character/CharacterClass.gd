@@ -424,6 +424,13 @@ func set_work_rule(rule, value):
 func check_work_rule(rule):
 	return xp_module.check_work_rule(rule)
 
+func set_brothel_rule(rule, value):
+	xp_module.set_brothel_rule(rule, value)
+
+func check_brothel_rule(rule):
+	return xp_module.check_brothel_rule(rule)
+
+
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()
 
@@ -1475,6 +1482,19 @@ func fill_ai(data):
 			for arr in data:
 				newdata[arr[0]] = arr[1]
 			ai.set_single_state(newdata)
+
+func take_virginity(type, partner):
+	if get_stat(type+'_virgin') == true:
+		set_stat(type + "_virgin", false)
+		set_stat(type + "_virgin_lost", {source = partner})
+		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
+			get_stat('metrics', true).partners.append(partner)
+
+func add_partner(partner):
+	if partner == 'master' && get_stat('metrics_partners').has(ResourceScripts.game_party.get_master().id) == false:
+		partner = ResourceScripts.game_party.get_master().id
+	if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
+		get_stat('metrics', true).partners.append(partner)
 
 func get_ability_experience():
 	return xp_module.get_ability_experience()

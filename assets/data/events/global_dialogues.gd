@@ -134,7 +134,7 @@ var data = {
 		], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'cali_servants_1', text = "CALI_SERVANTS_START_OPTION", reqs = [
 			{type = 'active_quest_stage', value = 'cali_servants_quest', stage = 'stage1'},
-			{type = 'has_money', value = 1000}
+			{type = 'has_money', value = 500}
 			], type = 'next_dialogue', dialogue_argument = 0},
 		
 		

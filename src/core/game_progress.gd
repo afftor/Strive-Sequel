@@ -53,6 +53,8 @@ var work_quests_finished = []
 
 var dialogue_local_counters = {}
 
+var planned_mansion_events = []
+
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
@@ -196,13 +198,6 @@ func check_timed_events():
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
 
-#checks
-func if_quest_stage(name, value, operant):
-	var questprogress
-	#questprogress = GetQuest(name)
-	if questprogress == null:
-		questprogress = 0
-	return input_handler.operate(operant, questprogress, value)
 
 func if_has_area_progress(value, operant, area):
 	if !areaprogress.has(area):return false

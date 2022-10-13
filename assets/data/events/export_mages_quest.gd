@@ -311,7 +311,7 @@ var data = {
 			{text = "XARIENCOUNTER8_3", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], change_dialogue_type = 1, bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'},{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'},{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
 		]
 	},
 

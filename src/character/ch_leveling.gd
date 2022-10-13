@@ -12,6 +12,23 @@ var workproduct = null
 var previous_workproduct = null
 var previous_location = ResourceScripts.game_world.mansion_location
 var work_rules = {ration = false, shifts = false, constrain = false, luxury = false, contraceptive = false, bindings = false}
+var brothel_rules = {
+		waitress = true,
+		hostess = false,
+		dancer = false,
+		stripper = false,
+		
+		petting = false,
+		oral = false,
+		anal = false,
+		pussy = false,
+		group = false,
+		sextoy = false,
+		
+		males = true,
+		females = true,
+		futa = true
+	}
 var messages = []
 
 
@@ -30,6 +47,9 @@ func fix_rules():
 	for rule in variables.work_rules:
 		if !work_rules.has(rule):
 			work_rules[rule] = false
+	for rule in variables.brothel_rules:
+		if !brothel_rules.has(rule):
+			brothel_rules[rule] = false
 
 
 func check_work_rule(rule):
@@ -52,6 +72,20 @@ func set_work_rule(rule, value):
 			parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		false:
 			parent.get_ref().remove_static_effect_by_code("work_rule_" + rule)
+
+func check_brothel_rule(rule):
+	if !variables.brothel_rules.has(rule):
+		return false
+	if !brothel_rules.has(rule):
+		print("warning - brothel rule %s removed" % rule)
+		return false
+	return brothel_rules[rule]
+
+
+func set_brothel_rule(rule, value):
+	if variables.brothel_rules.has(rule):
+		brothel_rules[rule] = value
+
 
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
@@ -487,13 +521,96 @@ func finish_learning():
 	work = ''
 
 
+func select_brothel_activity():
+	var non_sex_rules = []
+	var sex_rules = []
+	
+	for i in brothel_rules:
+		if !brothel_rules[i]: continue
+		if variables.brothel_non_sex_options.has(i):
+			non_sex_rules.append(i)
+		else:
+			sex_rules.append(i)
+	
+	if sex_rules.size() >= 0:
+		#pick chance
+		if 50 + parent.get_ref().get_stat('charm')/2 > randf()*100:
+			var remove_from_sex = []
+			
+			#every rule toggled only has 50% chance to be picked by default
+			for i in sex_rules:
+				if randf() >= 0.5:
+					remove_from_sex.append(i)
+			if remove_from_sex.size() == sex_rules.size(): #make sure at least 1 option is sill available in the end
+				remove_from_sex.remove(randi() % remove_from_sex.size())
+			for i in remove_from_sex:
+				sex_rules.remove(i)
+			
+			var highest_value = get_highest_value(sex_rules)
+			var data = gold_tasks_data[highest_value.code]
+			var bonus_gold = 0
+			
+			
+			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+				parent.get_ref().set_stat('vaginal_virgin', false)
+				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
+				bonus_gold += parent.get_ref().get_stat('value') * 0.03
+			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+				parent.get_ref().set_stat('anal_virgin', false)
+				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
+			
+			work_tick_values(data.workstats[randi()%data.workstats.size()])
+			
+			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
+			
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().get_stat('value'))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			
+			parent.get_ref().add_stat('metrics_goldearn', goldearned)
+			
+			ResourceScripts.game_res.money += goldearned
+			
+			#TODO add decriptions and impregnation
+			
+			return
+	elif non_sex_rules.size() >= 0:
+		var highest_value = get_highest_value(non_sex_rules)
+		
+		var data = gold_tasks_data[highest_value.code]
+		work_tick_values(data.workstats[randi()%data.workstats.size()])
+		
+		var goldearned = highest_value.value * max(1.4, (1 + 0.005 * parent.get_ref().get_stat('value')))
+			
+		parent.get_ref().add_stat('metrics_goldearn', goldearned)
+			
+		ResourceScripts.game_res.money += goldearned
+	else:
+		work = ''
+		parent.get_ref().rest_tick()
+
+
+func get_highest_value(array):#find highest profit option
+	var values = {}
+	var highest_value = {code = '', value = 0}
+	for i in array:
+		values[i] = round(get_gold_value(i) * (0.8 + randf() * 0.4)) #20% randomness to value
+		if highest_value.value < values[i]:
+			highest_value.code = i
+			highest_value.value = values[i]
+	
+	return highest_value
+
+
+func get_gold_value(task):
+	var value = call(gold_tasks_data[task].formula)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(gold_tasks_data[task].workmod)/100.0)
+	
+	return value
+
+
 func work_tick():
 	if is_on_quest:
 		return
 	var currenttask = find_worktask(parent.get_ref().get_location())
-#	for i in ResourceScripts.game_party.active_tasks:
-#		if i.workers.has(parent.get_ref().id):
-#			currenttask = i
 	
 	if currenttask == null:
 		work = ''
@@ -509,34 +626,41 @@ func work_tick():
 	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
 		parent.get_ref().food.food_consumption_rations = true
 	
+	if currenttask.code == 'prostitution':
+		select_brothel_activity()
+		return
+	
 	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
 	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
 		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(currenttask)
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	elif currenttask.code == 'building':
 		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(currenttask)
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	else:
 		var person_location = parent.get_ref().get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
-		work_tick_values(currenttask, gatherable)
 		if !gatherable:
+			work_tick_values(races.tasklist[currenttask.code].workstat)
 			currenttask.progress += prodvalue
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
+			work_tick_values(Items.materiallist[currenttask.code].workstat)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if !gatherable:
 				if races.tasklist[currenttask.code].production_item == 'gold':
 					ResourceScripts.game_res.money += 1
+					parent.get_ref().add_stat('metrics_goldearn', 1)
 				else:
 					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production_item] += 1
+					add_metric_for_outcome(races.tasklist[currenttask.code].production_item)
 			else:
 				if person_location != "aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] > 0:
@@ -551,16 +675,25 @@ func work_tick():
 									ResourceScripts.game_party.active_tasks.erase(task)
 				else:
 					ResourceScripts.game_res.materials[currenttask.code] += 1
+				add_metric_for_outcome(currenttask.code)
 
 
-func work_tick_values(currenttask, gatherable = false):
-	var workstat
-	if !gatherable:
-		workstat = races.tasklist[currenttask.code].workstat
+func add_metric_for_outcome(res_id):
+	var matdata = Items.materiallist[res_id]
+	if matdata.type == 'food':
+		parent.get_ref().add_stat('metrics_foodearn', 1)
+	#2add correct material check
 	else:
-		workstat = Items.materiallist[currenttask.code].workstat
+		parent.get_ref().add_stat('metrics_materialearn', 1)
+#	parent.get_ref().add_stat('metrics_goldearn', 1)
+
+
+func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
-		parent.get_ref().add_stat(workstat, 0.36)
+		if workstat.has("sex_skills"):
+			parent.get_ref().add_stat(workstat, rand_range(1.2,1.8))
+		else:
+			parent.get_ref().add_stat(workstat, 0.36)
 		parent.get_ref().add_stat('base_exp', 5)
 
 

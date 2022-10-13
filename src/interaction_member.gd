@@ -266,11 +266,11 @@ func orgasm(custom_text = null):
 	person_metrics.orgasm += 1
 	if sceneref.participants.size() == 2 && person.has_profession("master"):
 		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
-			person.add_stat('loyal', rand_range(1.4,5.6))
+			person.add_stat('loyalty', rand_range(1.4,5.6))
 		else:
-			person.add_stat('loyal', rand_range(1,4))
+			person.add_stat('loyalty', rand_range(1,4))
 	elif person.has_profession("master"):
-		person.add_stat('loyal', rand_range(1,2))
+		person.add_stat('loyalty', rand_range(1,2))
 	#anus in use, find scene
 	if anus != null:
 		scene = anus

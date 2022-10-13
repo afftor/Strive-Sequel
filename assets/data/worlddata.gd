@@ -768,8 +768,11 @@ var locations = {
 		event_pool = [],
 		options = [
 			{text = 'Check Surroundings', reqs = [
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_INTRO'}],
-				args = [{code = 'start_event', data = 'lilia_intro', args = []}]},
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_STARTING_1'}],
+				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
+			{text = 'Check Surroundings', reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LILIA_STARTING_1'}],
+				args = [{code = 'start_event', data = 'lilia_startring_2', args = []}]},
 		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
@@ -1504,7 +1507,10 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]},
 			{text = 'Find Xari', reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
-				args = [{code = 'start_event', data = '', args = []}]},
+				args = [{code = 'start_event', data = 'xari_clothes_1', args = []}]},
+			{text = 'Find Xari', reqs = [
+				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
+				args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]},
 		],
 	},
 	quest_mages_fred = {
@@ -2062,6 +2068,35 @@ var dungeons = {
 		options = [
 			{text = 'Search surroundings', reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
 				args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]},
+		],
+		scripteventdata = []
+	},
+	quest_troll_cave_location = {
+		code = 'quest_troll_cave_location',
+		type = 'encounter',
+		name = 'Trolls Cave',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_4'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2.5,4], 
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', 
+		events = [],
+		quest = true,
+		area = 'mountains',
+		travel_time = [1,1],
+		options = [
+			{text = 'Find troll', reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
+				args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]},
 		],
 		scripteventdata = []
 	},

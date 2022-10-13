@@ -546,7 +546,17 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Fixed issue with saves
+bbcode_text = "Added some new classes to the exception list for oblivion potion removal
+Added Lamia's race icon
+Changed Heleviel's start class to add new class
+Fixed one of marriage options taking money instead of adding
+Fixed positive trait chance inheritance being too low
+Fixed some breeding mechanics
+Presumably fixed characters getting stuck at deleted locations
+Fixed blood explosion being castable on undeads
+Fixed children training exp gain being affected by modifiers
+0.6.4a
+Fixed issue with saves
 Fixed nereids have incorrect data
 Added trait for virginity
 0.6.4
@@ -1196,7 +1206,17 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed issue with saves
+text = "Added some new classes to the exception list for oblivion potion removal
+Added Lamia's race icon
+Changed Heleviel's start class to add new class
+Fixed one of marriage options taking money instead of adding
+Fixed positive trait chance inheritance being too low
+Fixed some breeding mechanics
+Presumably fixed characters getting stuck at deleted locations
+Fixed blood explosion being castable on undeads
+Fixed children training exp gain being affected by modifiers
+0.6.4a
+Fixed issue with saves
 Fixed nereids have incorrect data
 Added trait for virginity
 0.6.4

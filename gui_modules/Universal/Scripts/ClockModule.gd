@@ -162,12 +162,11 @@ func advance_turn(amount = 1):
 	update_food_tooltip()
 	update_gold_tooltip()
 #	set_sky_pos()
-	
+
 
 
 func update_labels():
-	$TimeNode/Date.text = "W: %d, D: %d" % [((ResourceScripts.game_globals.date - 1) / 7 + 1), int((ResourceScripts.game_globals.date - 1) % 7 + 1)]
-#	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Date.text = "W: %d, D: %d" % ResourceScripts.game_globals.get_week_and_day()
 	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)

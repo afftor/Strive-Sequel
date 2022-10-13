@@ -14,6 +14,7 @@ func _ready():
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	globals.connecttexttooltip($Panel/loyaltylabel, tr("TOOLTIPLOYALTYOBEDIENCE"))
 	globals.connecttexttooltip($Panel/valuelabel, tr("TOOLTIPVALUE"))
+	
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()

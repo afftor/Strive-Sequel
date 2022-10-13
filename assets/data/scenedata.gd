@@ -1019,7 +1019,7 @@ var scenedict = {
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = [], change_dialogue_type = 1},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_confess_event = {
@@ -1141,7 +1141,7 @@ var scenedict = {
 			{code = 'add_timed_event', value = "loan_event1",
 				args = [
 					{type = 'fixed_date',
-					date = 14,
+					date = 15,
 					hour = 1}
 					]
 			},
@@ -1167,7 +1167,7 @@ var scenedict = {
 				{code = 'add_timed_event', value = "loan_event2",
 					args = [
 						{type = 'fixed_date',
-						date = 28,
+						date = 29,
 						hour = 1}
 						]
 					},
@@ -1234,7 +1234,7 @@ var scenedict = {
 				{code = 'add_timed_event', value = "loan_event4",
 					args = [
 						{type = 'fixed_date',
-						date = 100,
+						date = 99,
 						hour = 1}
 						]
 					},
@@ -1935,7 +1935,6 @@ var quests = {
 			stage8 = {code = 'stage8', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_8"}, # sword get
 			stage9 = {code = 'stage9', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_9"}, # speek with cali
 			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
-
 		},
 	},
 	sick_lilia_quest = {
@@ -1944,6 +1943,9 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_1"}, # talk to Myr
 			stage2 = {code = 'stage2', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_2"}, # go to Xari
+			stage3 = {code = 'stage3', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_3"}, # find troll
+			stage4 = {code = 'stage4', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_4"}, # return to Xari
+			stage5 = {code = 'stage5', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_5"}, # bring potion to Lilia
 		},
 	},
 }

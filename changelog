@@ -1,3 +1,11 @@
+Made main loan quest more clear on the dates and added a tip to it
+Added new unique character lines for their private dialogues
+Fixed Date button not being active when master and a servant are selected
+Fixed loot window being under the dialogues
+Fixed Cali's character sprite
+Fixed certain actions not increasing loyalty
+Updated some scene art
+0.6.4b
 Added some new classes to the exception list for oblivion potion removal
 Added Lamia's race icon
 Changed Heleviel's start class to add new class

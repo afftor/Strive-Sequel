@@ -876,7 +876,7 @@ func dialogue_option_selected(option):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
 				else:
-					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), 1.0)
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()
@@ -933,6 +933,12 @@ func start_event(code, type, args):
 			scene = get_spec_node(self.NODE_DIALOGUE)
 		2:
 			scene = get_spec_node(self.NODE_DIALOGUE_T2)
+	if args.has("changed_window_type"): # transfering prev option on scene change
+		match gui_controller.dialogue_window_type:
+			1:
+				scene.previous_dialogue_option = get_spec_node(self.NODE_DIALOGUE_T2).previous_dialogue_option
+			2:
+				scene.previous_dialogue_option = get_spec_node(self.NODE_DIALOGUE).previous_dialogue_option
 	gui_controller.dialogue = scene
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:
@@ -959,6 +965,7 @@ func start_event(code, type, args):
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			active_character = args.pregchar
+			active_character.set_stat('metrics_birth', active_character.get_stat('metrics_birth') + 1)
 			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy').baby]
 			scene_characters.append(baby)
 		'event_selection':
@@ -1481,6 +1488,15 @@ func play_animation(animation, args = {}):
 			anim_scene.queue_free()
 			SetMusic("mansion1")
 		"quest_completed":
+			PlaySound("quest_completed")
+			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
+			anim_scene.get_node("AnimationPlayer").play("task_completed")
+			anim_scene.get_node("Label3").text = args.name
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+		"repeatable_quest_completed":
 			PlaySound("quest_completed")
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("AnimationPlayer").play("task_completed")

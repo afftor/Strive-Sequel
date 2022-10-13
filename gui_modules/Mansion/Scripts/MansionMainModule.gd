@@ -748,74 +748,23 @@ func test_mode():
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
+						{code = 'loyalty', value = 150, operant = "+"},
+						{code = 'consent', value = 150, operant = "+"},
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_petting', operant = '+', value = 75},
 						{code = 'add_profession', profession = 'spouse'},
 					]
-				}
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Anastasia'},
-			]
-		)
-		globals.common_effects(
-			[
+				},
+				#{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Aire'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Jean'},
-			]
-		)
-		globals.common_effects(
-			[
 				{code = 'make_story_character', value = 'Zephyra'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Heleviel'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Lira'},
-			]
-		)
-		globals.common_effects(
-			[
+				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Lilia'},
 				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Lilia'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Lilith'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Cali'},
-			]
-		)
-		globals.common_effects(
-			[
-				{code = 'make_story_character', value = 'Daisy'},
-			]
-		)
-#		globals.common_effects(
-#			[
-#				{code = 'affect_unique_character', name = 'Zephyra', type = 'set_availability', value = false},
-#			]
-#		)
 
 		ResourceScripts.game_res.money = 80000
 		#globals.common_effects("add_money")
@@ -827,6 +776,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
@@ -921,11 +871,13 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-	
+
+		
+		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
-#		input_handler.interactive_message('cali_servants_1', '', {})
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		#input_handler.interactive_message('got_cali_2_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
-		#input_handler.interactive_message('daisy_dress_acquired_normal_1', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
 #		ResourceScripts.game_progress.decisions.append("marry_invitations_made")
@@ -933,7 +885,7 @@ func test_mode():
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('got_cali_2_1', '', {})
+#		input_handler.interactive_message('pre_final_boss_paladin_knight', '', {})
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")

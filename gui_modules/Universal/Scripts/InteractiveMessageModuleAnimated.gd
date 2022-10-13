@@ -146,10 +146,10 @@ func show_full_info(person):
 
 var stored_scene
 
-func dialogue_next(code, argument):
+func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
-	input_handler.interactive_message_follow(code, '', '')
+	input_handler.interactive_message_follow(code, '', args)
 
 
 func chest_mimic_force_open():
@@ -347,18 +347,41 @@ func event_person_selected(person):
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 
-func close(transition = false, finish_scene = true):
+func close(args = {}):
+	hold_selection = true
+	if !args.has('transition'):
+		args.transition = false 
+	if !args.has('finish_scene'):
+		args.finish_scene = true
 	hold_selection = true
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
-	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	yield(get_tree().create_timer(0.2), "timeout")
+	if gui_controller.dialogue_window_type == 2:
+		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+		gui_controller.dialogue_window_type = 1
+		var screen_duration = 1.0
+		if args.has('screen_duration'):
+			screen_duration = args.screen_duration
+		var transition_duration = screen_duration * 0.5
+		if args.has('transition_duration'):
+			transition_duration = args.transition_duration
+		if screen_duration <= 0.001:
+			ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+			yield(get_tree().create_timer(0.2), "timeout")
+		else:
+			ResourceScripts.core_animations.FadeAnimation(self, transition_duration, screen_duration * 0.25)
+			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
+			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
+	else:
+		ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+		yield(get_tree().create_timer(0.2), "timeout")
+	hold_selection = false
 	hide()
-	if transition == false:
+	if args.transition == false:
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
-	if finish_scene: input_handler.emit_signal("EventFinished")
+	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
 	gui_controller.is_dialogue_just_started = true
 
@@ -519,9 +542,11 @@ func set_dialogue_window_type(scene):
 		1:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
 			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option
 		2:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option
 	gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	gui_controller.dialogue.open(scene)
 
@@ -939,7 +964,10 @@ func select_option(number):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
 		hold_selection = true
-		dialogue_next(code, option.dialogue_argument)
+		if option.has('change_dialogue_type'):
+			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})
+		else:
+			dialogue_next(code, option.dialogue_argument)
 	else:
 		var args
 		if option.has('args'): args = option.args

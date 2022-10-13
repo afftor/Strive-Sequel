@@ -46,7 +46,8 @@ margin_bottom = 1080.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 495.05 ]
 }
 test_mode = true
 
@@ -81,6 +82,9 @@ texture = ExtResource( 39 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
@@ -277,9 +281,9 @@ __meta__ = {
 }
 
 [node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
-margin_left = 713.564
+margin_left = 717.34
 margin_top = 411.782
-margin_right = -706.436
+margin_right = -702.661
 margin_bottom = -408.218
 
 [node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
