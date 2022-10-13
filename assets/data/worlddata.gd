@@ -697,6 +697,14 @@ var locations = {
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool3 = {items = ['chest_base_cloth','legs_base_cloth'], min = 1, max = 2, chance = 0.8},
 			},
+		options = [ {text = 'Farmer', reqs = [ 
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
+			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]},
+			{text = 'Farmer', reqs = [ 
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
+			],
+			args = [{code = 'start_event', data = 'cali_farmer_4', args = []}]},
+		],
 	},
 	settlement_plains3 = {
 		code = 'settlement_plains3',
@@ -2229,6 +2237,51 @@ var dungeons = {
 		purchase_price = 500,
 		affiliation = 'local',
 		events = [],
+	},
+	quest_cali_bandits_location = {
+		code = 'quest_daisy_admirer_location',
+		type = 'encounter',
+		name = "Ramont's Estate",#2fix
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		quest = true,
+		options = [],
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'cali_bandits_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_1'}]},
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_bandits_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_3'}]}]
+	},
+	quest_cali_village = {
+		code = 'quest_cali_village',
+		type = 'encounter',
+		name = 'Cali tribe Village',#2fix
+		classname = '',
+		descript = ".",#2fix
+		difficulty = 'easy',
+		background = 'village_1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [1,1],
+		events = [],
+		options = [
+			{text = 'Follow Cali', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], args = [{code = 'start_event', data = 'cali_hector_1', args = []}]}
+		],
+		area = 'plains',#2fix
+		travel_time = [1,1],
 	},
 
 #	dungeon_frozen_domain = {

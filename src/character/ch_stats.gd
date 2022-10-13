@@ -264,6 +264,14 @@ func set_stat(statname, value): #for direct access only
 
 #bonus system
 func get_stat(statname, ref = false):
+	if statname.begins_with('sex_skills_'):
+		var tmp = statlist.sex_skills
+		var stat = statname.trim_prefix('sex_skills_')
+		if tmp.has(stat):
+			return tmp[stat]
+		else:
+			print("no stat - %s" % statname)
+			return null
 	if statname.begins_with('metrics_'):
 		var tmp = statlist.metrics
 		var stat = statname.trim_prefix('metrics_')
