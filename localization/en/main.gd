@@ -8942,6 +8942,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	SICK_LILIA_QUEST_STAGE_2 = "",
 	SICK_LILIA_QUEST_STAGE_3 = "",
 	SICK_LILIA_QUEST_STAGE_4 = "",
+	SICK_LILIA_QUEST_STAGE_5 = "",
 	
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",

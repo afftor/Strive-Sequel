@@ -109,7 +109,7 @@ var data = {
 		} ]
 	},
 	
-	lilia_recruit_1 = { # TODO add if seduced before
+	lilia_recruit_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_RECRUIT_1_1", reqs = [{type = 'decision', value = 'seduced_lilia', check = false}]},
@@ -127,20 +127,23 @@ var data = {
 		}, ]
 	},
 	
-	lilia_recruited = { # TODO add remove event, recruit lilia
+	lilia_recruited = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_RECRUITED", reqs = [], previous_dialogue_option = 1},
 		{text = "LILIA_RECRUITED_GREEN", reqs = [], previous_dialogue_option = 11},],
-		common_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true}],
+		common_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true},
+		{code = 'decision', value = 'recruited_lilia'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'update_location'},
-				{code = 'add_timed_event', value = "sick_lilia_start", args = [{type = 'add_to_date', date = [2,2], hour = 1}]}]
+			bonus_effects = [
+				{code = 'add_timed_event', value = "sick_lilia_start", args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
+				{code = 'update_location'},
+			]
 		}, ]
 	},
 	
-	lilia_recruit_1_4 = { # TODO add remove event, recruit lilia
+	lilia_recruit_1_4 = { 
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_RECRUIT_1_4", reqs = []}],
@@ -153,7 +156,7 @@ var data = {
 		}, ]
 	},
 	
-	sick_lilia_start = { # TODO disable lilia
+	sick_lilia_start = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "lilia", 
 		text = [{text = "SICK_LILIA_START", reqs = []}],
@@ -333,7 +336,7 @@ var data = {
 		}, ]
 	},
 	
-	troll_clothes_1 = { # TODO add reqs to options
+	troll_clothes_1 = { 
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "TROLL_CLOTHES_1", reqs = []}],
@@ -378,7 +381,7 @@ var data = {
 		}, ]
 	},
 	
-	xari_clothes_7 = { # TODO remove Xari and Troll location
+	xari_clothes_7 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "xari", 
 		text = [{text = "XARI_CLOTHES_7", reqs = []}],

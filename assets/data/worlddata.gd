@@ -767,10 +767,10 @@ var locations = {
 		actions = [],
 		event_pool = [],
 		options = [
-			{text = 'Check Surroundings', reqs = [
+			{text = 'Check Surroundings', reqs = [ {type = 'decision', value = 'recruited_lilia', check = false},
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_STARTING_1'}],
 				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
-			{text = 'Check Surroundings', reqs = [
+			{text = 'Check Surroundings', reqs = [ {type = 'decision', value = 'recruited_lilia', check = false},
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LILIA_STARTING_1'}],
 				args = [{code = 'start_event', data = 'lilia_startring_2', args = []}]},
 		],

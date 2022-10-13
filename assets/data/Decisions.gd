@@ -84,6 +84,7 @@ var decisions = {
 	cali_keep = "discard giving cali to william",
 	cali_sex = "sex scene with cali seen", #there should be 4 or 5 of them - but i found only 3
 	seduced_lilia = "Had sex with lilia when first met her",
+	recruited_lilia = "Recruited Lilia in forest",
 	potion_wit_magic = "Potion for Lilia that adds Wit and Magic factor",
 	potion_tame = "Potion for Lilia that adds Tame factor",
 	potion_sex = "Potion for Lilia that adds Sex factot",
