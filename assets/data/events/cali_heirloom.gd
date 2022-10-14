@@ -198,17 +198,19 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage3'},
+				{code = 'update_location'},
 				{code = 'material_change', operant = '-', material = 'wood', value = 200},
 				{code = 'make_quest_location', value = 'quest_cali_bandits_location'},
-				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false},{code = 'update_location'}
+				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false}
 			]
 		},
 		{
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage3'},
+				{code = 'update_location'},
 				{code = 'material_change', operant = '-', material = 'wood', value = 100},
 				{code = 'make_quest_location', value = 'quest_cali_bandits_location'},
-				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false},{code = 'update_location'}
+				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false},
 			]
 		},
 		 ],

@@ -1919,8 +1919,9 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, counter, dict.value)
 		'location_has_specific_slaves':
 			var counter = 0
+			var location = ResourceScripts.game_world.find_location_by_data({code = dict.location}).location
 			for i in ResourceScripts.game_party.characters.values():
-				if i.check_location(dict.location):
+				if i.check_location(location):
 					if i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
 						counter += 1
 			if dict.has("check"):
