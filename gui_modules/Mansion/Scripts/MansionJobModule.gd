@@ -11,6 +11,9 @@ func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
 	globals.connecttexttooltip($BrothelRules/rulestooltip, tr("BROTHELTOOLTIP"))
 	gui_controller.add_close_button(self, "bigger_offset")#.connect("pressed", self, 'close_job_pannel')
+	for i in $BrothelRules/sexes_container.get_children():
+		var name = i.get_name()
+		i.connect('pressed', self, 'switch_brothel_option',[i, name])
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -555,12 +558,25 @@ func show_brothel_options():
 		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+		if person.is_master() == false:
+			if person.checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
+				if person.get_stat('slave_class') != 'slave':
+					newbutton.disabled = true
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks training to be assigned to this task}"))
+				else:
+					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
+					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}"))
+		
 	for i in brothel_rules.sexes:
-		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		newbutton.text = tr("BROTHEL"+i.to_upper())
-		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
-		newbutton.pressed = person.check_brothel_rule(i)
-		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		get_node("BrothelRules/sexes_container/"+i).pressed = person.check_brothel_rule(i)
+		
+#		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+#		newbutton.text = tr("BROTHEL"+i.to_upper())
+#		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+#		newbutton.pressed = person.check_brothel_rule(i)
+#		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 	
 	update_brothel_text()
 

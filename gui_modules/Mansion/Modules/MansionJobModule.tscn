@@ -611,6 +611,38 @@ theme = ExtResource( 42 )
 custom_fonts/font = ExtResource( 41 )
 text = "Test rule"
 
+[node name="sexes_container" type="HBoxContainer" parent="BrothelRules"]
+margin_left = 368.0
+margin_top = 368.0
+margin_right = 757.0
+margin_bottom = 428.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="males" type="CheckBox" parent="BrothelRules/sexes_container"]
+margin_right = 112.0
+margin_bottom = 60.0
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 41 )
+text = "Males"
+
+[node name="females" type="CheckBox" parent="BrothelRules/sexes_container"]
+margin_left = 116.0
+margin_right = 252.0
+margin_bottom = 60.0
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 41 )
+text = "Females"
+
+[node name="futa" type="CheckBox" parent="BrothelRules/sexes_container"]
+margin_left = 256.0
+margin_right = 353.0
+margin_bottom = 60.0
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 41 )
+text = "Futa"
+
 [node name="rulestooltip" type="TextureRect" parent="BrothelRules"]
 margin_left = 0.330963
 margin_top = 6.06903
@@ -619,6 +651,9 @@ margin_bottom = 51.069
 texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="BrothelRules"]
 margin_left = 87.1022
@@ -627,11 +662,29 @@ margin_right = 239.102
 margin_bottom = 39.8572
 custom_fonts/font = ExtResource( 44 )
 text = "Service Rules"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="BrothelRules"]
+margin_left = 423.0
+margin_top = 341.0
+margin_right = 679.0
+margin_bottom = 365.0
+custom_fonts/font = ExtResource( 44 )
+text = "Allowed Customers"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="brothel_descript" type="RichTextLabel" parent="BrothelRules"]
-margin_left = 413.066
-margin_top = 20.2043
-margin_right = 754.066
-margin_bottom = 420.204
+margin_left = 436.385
+margin_top = 17.9955
+margin_right = 777.385
+margin_bottom = 310.995
 custom_fonts/normal_font = ExtResource( 44 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

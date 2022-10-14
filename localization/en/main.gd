@@ -792,7 +792,7 @@ var TranslationDict = {
 	BROTHELDANCER = "Dancer",
 	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
 	BROTHELSTRIPPER = "Stripper",
-	BROTHELSTRIPPERDESCRIPT = "[name] will flash [his] privates and perfrom private shows without going all the way. Scales with Sexual Proficiency",
+	BROTHELSTRIPPERDESCRIPT = "[name] will flash [his] privates and perfrom private shows without going all the way. Scales with Charm",
 	
 	BROTHELPETTING = "Non-penetrative",
 	BROTHELPETTINGDESCRIPT = "[name] will provide sex service without allowing penetrative actions saving potential virginity and preventing impregnation.",
@@ -8938,13 +8938,13 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
 	
-	SICK_LILIA_QUEST_NAME = "",
-	SICK_LILIA_QUEST_SUMMARY = "",
-	SICK_LILIA_QUEST_STAGE_1 = "",
-	SICK_LILIA_QUEST_STAGE_2 = "",
-	SICK_LILIA_QUEST_STAGE_3 = "",
-	SICK_LILIA_QUEST_STAGE_4 = "",
-	SICK_LILIA_QUEST_STAGE_5 = "",
+	SICK_LILIA_QUEST_NAME = "Homesick",
+	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",
+	SICK_LILIA_QUEST_STAGE_1 = "Ask Myr for help",
+	SICK_LILIA_QUEST_STAGE_2 = "Visit Xari",
+	SICK_LILIA_QUEST_STAGE_3 = "Find troll which stole Xari's clothes",
+	SICK_LILIA_QUEST_STAGE_4 = "Return to Xari with her clothes",
+	SICK_LILIA_QUEST_STAGE_5 = "Cure Lilia",
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- “H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
