@@ -1011,9 +1011,13 @@ var TranslationDict = {
 	STATMOD_SMITH = "Smith",
 	STATMOD_TAILOR = "Tailor",
 	STATMOD_ALCHEMY = "Alchemy",
-	STATMOD_FARM = "Farm",
+	STATMOD_FARM = "Farming",
 	STATMOD_PROS = "Service",
 	STATMOD_TASK_EFFICIECNY = "Task Effciency",
+	STATMOD_WAITRESS = "Waitress Income",
+	STATMOD_HOSTESS = "Hostess Income",
+	STATMOD_DANCER = "Dancer Income",
+	STATMOD_STRIP = "Stripper Income",
 
 	STATRESIST_NORMAL = "Normal Resist",
 	STATRESIST_FIRE = "Fire Resist",
@@ -2474,7 +2478,7 @@ var TranslationDict = {
 	ITEMMAJORUS_POTION = "Majorus Potion",
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to grow a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMEXP_SCROLL = "Scroll of Knowledge",
-	ITEMEXP_SCROLLDESCRIPT = "Grants 100 experience to the user.",
+	ITEMEXP_SCROLLDESCRIPT = "Grants 100 points of experience to the user.",
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
@@ -7773,7 +7777,7 @@ Cali's wet slit tells a different story and without further ceremony you ignore 
 
  — AAAAaaiiieeehhh!
 
-Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property.  
+Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property. 
 
  — Y-you bastard! I'll — I'll never forgive you for this!
 
@@ -8587,7 +8591,7 @@ CALI_AMELIA_4_1 = """Cali would distract herself in the small talk as Amelia pul
 
 Amelia: - I know that it can be frustrating not catching the eye of the man you desire, but for today we've no need to worry about that.
 
-Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts.  They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. 
+Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. 
 """,
 	CALI_AMELIA_5 = """A few moments later the two were kissing again, uninterrupted as soon as their tongues would meet. Amelia's hips softly rubbing over her bare leg now. After breath demanded them break the kiss, Cali's face was a deep shade of red as Amelia's hand slipped lower, moving her panties aside.
 
@@ -8630,17 +8634,17 @@ Unlike most other locals, Lilia is quite friendly towards you.. """,
 	LILIA_STARTING_2_2 = """- Hey, hey, what did you come for? 
 
 Unlike most other locals, Lilia is quite friendly towards you..""",
-	LILIA_STARTING_2_3 = """""", # TODO ask for text
+	LILIA_STARTING_2_3 = """- I like it, alright. But I've lived here for all I can remember. It can get reeeaal boring you know.""",
 	LILIA_STARTING_2_OPTION_1 = "Do you wanna go somewhere more private?",
 	LILIA_STARTING_2_OPTION_2 = "Do you wanna join me?",
 	LILIA_STARTING_2_OPTION_3 = "How do you like it here?",
 	LILIA_STARTING_2_OPTION_4 = "I should go now, see you another time",
-	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches  on to your intentions, though she doesn't immediately reject the proposal.
+	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches on to your intentions, though she doesn't immediately reject the proposal.
 
 - You're strange. I dunno, I have no experience in such things...""",
 	LILIA_SEDUCTION_1_OPTION_1 = "I can see you're practically shaking near me though (Sex Factor)",
 	LILIA_SEDUCTION_1_OPTION_2 = "I have plenty of experience",
-	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something",
+	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something nice",
 	LILIA_SEDUCTION_1_OPTION_4 = "But you must be curious what it is like",
 	LILIA_SEDUCTION_2_2AND3 = "- Sorry, I don't think I wanna just yet.",
 	LILIA_SEDUCTION_2_4 = "- He-he, other girls have been talking a lot about it, but I'm still not sure. You are so big and stuff...",
@@ -8658,31 +8662,30 @@ Unlike most other locals, Lilia is quite friendly towards you..""",
 	LILIA_SEX_SCENE_0 = """As Lilia hears your suggestion, her lips turn into a mischievous smile. 
 
 - Sure! I was afraid you wouldn't ask.""",
-	LILIA_SEX_SCENE_1 = """The fae approaches, staring up at you, due to the large size difference.  A few moments later, she reaches up grasping your hand after looking around the forest.  It doesn't take her long to guide you just a bit deeper into a nice shaded alcove.  
+	LILIA_SEX_SCENE_1 = """The fae approaches, staring up at you, due to the large size difference. A few moments later, she reaches up grasping your hand after looking around the forest. It doesn't take her long to guide you just a bit deeper into a nice shaded alcove. 
 
-The fairy darts around now, a literal bundle of energy moving this and that, even adjusting branches as you're not quite sure what she's doing at first, but soon realizes she's setting her stage; making everything perfect, at least in her eyes.  Finally having everything settled Lillia turns to you looking at you expectantly.  
+The fairy darts around now, a literal bundle of energy moving this and that, even adjusting branches as you're not quite sure what she's doing at first, but soon realizes she's setting her stage; making everything perfect, at least in her eyes. Finally having everything settled Lilia turns to you looking at you expectantly. 
 
-- Ok! Everything is perfect!
+- Ok! Everything is perfect!""",
 
-Lillia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now.  After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
 
-- Oh! I mean if you insist we can leave it there…
+	LILIA_SEX_SCENE_1_1 = """Lilia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now. After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
 
-The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds.  A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
+- Oh! I mean if you insist we can leave it there...
 
-You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers.  
+The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds. A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
 
-Lillia: T-that's so much better than my fingers…take me [name].  Please…""",
-	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole.  Lillia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
+You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers. 
 
-You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected.  Lillia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
+- T-that's so much better than my fingers... take me [name]. Please...""",
+	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole. Lilia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
 
-She wasn't an experienced lover, but her tightness and willingness to please helped make up for it.  Occasionally you'd have to stop as the girl shuddered hard on your shaft, making you unsure if she was cumming, or just shaking from how deep you were in her body.  Each time Lillia had to stop this way she'd soon urge you on, telling you to take her harder now.""",
-	LILIA_SEX_SCENE_3 = """The mating continued on for a while before you started to pulse inside of her, the girl already panting hard, giving pleasured little sounds before making an ecstatic sound as you started to cum inside of her, soaking her inner walls and filling her womb.  She stayed there for a few moments, her hips shaking as she was literally clamped down on your cock, her stomach slightly inflated as she panted out.
+You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected. Lilia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
 
-- …needed that.  Oh I need to keep doing that? C-can I come with you?  Please… 
+She wasn't an experienced lover, but her tightness and willingness to please helped make up for it. Occasionally you'd have to stop as the girl shuddered hard on your shaft, making you unsure if she was cumming, or just shaking from how deep you were in her body. Each time Lilia had to stop this way she'd soon urge you on, telling you to take her harder now.""",
+	LILIA_SEX_SCENE_3 = """The mating continued on for a while before you started to pulse inside of her, the girl already panting hard, giving pleasured little sounds before making an ecstatic sound as you started to cum inside of her, soaking her inner walls and filling her womb. She stayed there for a few moments, her hips shaking as she was literally clamped down on your cock, her stomach slightly inflated as she panted out.
 
-You let her question hang in the air for a few moments before pulling her off you, seeing your cum leak out of her body, as you easily hold her in one of your arms.  It wasn't every day someone met one of her kind, much less bedded one of them.  Lillia might make an interesting addition to your manor.""",
+- ...Amazing! Let's do this again some other time, okay?'""",
 	LILIA_RECRUIT_1_1 = """- Eh? I dunno, I don't think I know you well enough, [name].""",
 	LILIA_RECRUIT_1_2 = """- Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.""",
 	LILIA_RECRUIT_1_OPTION_1 = "I'd love to have you at my place (Charm Factor)",
@@ -8713,7 +8716,7 @@ Lilia hesitates for a bit but her attitude towards you eventually sways her choi
 Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
 	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
 
-- A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I.  She'll need time for her body to adjust to these harsh conditions.  Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
+- A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I. She'll need time for her body to adjust to these harsh conditions. Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
 	SICK_LILIA_1_OPTION_1 = "So she's going to be alright?",
 	SICK_LILIA_1_OPTION_2 = "Is there anything I could do to help her?",
 	SICK_LILIA_2_1 = """- It's hard to tell if her body will be able to deal with it naturally at this point.
@@ -8722,7 +8725,7 @@ Your fear settles in as you realize that she must be sick. Your concerns are gro
 	SICK_LILIA_2_2 = """- There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
 	SICK_LILIA_2_OPTION_1 = "I don't have to pay?",
 	SICK_LILIA_2_OPTION_2 = "Thanks a lot, you are a true savior",
-	SICK_LILIA_3_1 = """- I only wrote you a formula, you're the one who will need to produce it.  It also gets you out of my hair.
+	SICK_LILIA_3_1 = """- I only wrote you a formula, you're the one who will need to produce it. It also gets you out of my hair.
 
 - One more thing... I hope you'll have the decency to not sexually abuse her while she's in this state.""",
 	SICK_LILIA_3_2 = """Myr stays oblivious to your praises and passes you the paper sheet. 
@@ -8787,25 +8790,25 @@ Looks like the troll is willing to part with his loot in exchange for something 
 
 She passes you a small phial filled with fluid and sends you off.""",
 	
-	LILIA_MANSION_1 = """You finally manage to bring Lillia the potion that took you the entire evening to acquire.  Looking at her she doesn't appear to have had her condition worsen or improve while you were gone. The girl is too weak to object as you administer the potion to her, the taste obviously foul.""",
+	LILIA_MANSION_1 = """You finally manage to bring Lilia the potion that took you the entire evening to acquire. Looking at her she doesn't appear to have had her condition worsen or improve while you were gone. The girl is too weak to object as you administer the potion to her, the taste obviously foul.""",
 	LILIA_MANSION_2 = """The situation now dealt with, you finally are able to get some rest yourself.
 
-Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold.  This thought is at the forefront as you open your eyes to see Lillia start sliding her panties down now, moving her body up onto you.
+Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold. This thought is at the forefront as you open your eyes to see Lilia start sliding her panties down now, moving her body up onto you.
 
-- [Master], sorry for being a bit selfish but I really miss this…""",
-	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans.  You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty.  
+- [Master], sorry for being a bit selfish but I really miss this...""",
+	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty. 
 
-A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft.  A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time.  You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
+A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft. A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time. You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
 
-Lillia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
+Lilia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
 	LILIA_MANSION_4 = """Sweat on her body starts to show after a few minutes of exertion while your hands rest firmly on her legs for just a moment as you fight the need to release. Although after a few moments you're unable to stop yourself. The little fae was now pinning herself down, holding herself firmly onto your cock as you filled every crevice of her womb.
 
-- A-ah… This feels too good…[Master]! I'm going to cum!
+- A-ah... This feels too good...[Master]! I'm going to cum!
 
-Lillia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
-	LILIA_MANSION_5 = """Lillia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
+Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
+	LILIA_MANSION_5 = """Lilia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
 
-After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder.  Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
+After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
 	
 	
 	
@@ -8819,7 +8822,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	
 	
 	
-	#       QUESTS       #
+	#     QUESTS     #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by Week 3 Day 1.",
@@ -8873,7 +8876,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
 	
-	GRYPHON_QUEST_NAME = "Proof of Strength",
+	GRYPHON_QUEST_NAME = "Aire: Proof of Strength",
 	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_STAGE_1 = "Talk to Sigmund about the possible location of Elder Gryphon",
 	GRYPHON_QUEST_STAGE_2 = "Talk to Derek at Aliron",
@@ -8916,7 +8919,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
 	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
-	CALI_FIGHTERS_QUEST_NAME = "Small and Brave",
+	CALI_FIGHTERS_QUEST_NAME = "Cali: Small and Brave",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your member, Cali, wants to be more useful and decided to join fighters guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
@@ -8924,7 +8927,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_SERVANTS_QUEST_NAME = "Cali is a Girl",
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants guild on Cali's behalf",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Cali's past finally caught up with her. You'll have to help her sort it out if you want to keep her at your side...",
-	CALI_HEIRLOOM_QUEST_NAME = "Pariah",
+	CALI_HEIRLOOM_QUEST_NAME = "Cali: Pariah",
 	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ",
 	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant",
 	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant",
@@ -8938,7 +8941,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
 	
-	SICK_LILIA_QUEST_NAME = "Homesick",
+	SICK_LILIA_QUEST_NAME = "Lilia: Homesick",
 	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",
 	SICK_LILIA_QUEST_STAGE_1 = "Ask Myr for help",
 	SICK_LILIA_QUEST_STAGE_2 = "Visit Xari",

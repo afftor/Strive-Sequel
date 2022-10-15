@@ -360,33 +360,6 @@ func tooltip_v2(targetnode):
 	var data = {title = name, text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 
-
-func repairwithmaterials():
-	var materialsdict = counterepairmaterials()
-
-	durability = maxdurability
-
-	for i in materialsdict:
-		ResourceScripts.game_res.materials[i] -= materialsdict[i]
-
-func canrepairwithmaterials(): #checks if item can be repaired at present state and returns the problem
-	var canrepair = true
-	var text = ''
-	var materialsdict = counterepairmaterials()
-
-	for i in materialsdict:
-		if ResourceScripts.game_res.materials[i] < materialsdict[i]:
-			canrepair = false
-			text += tr("NOTENOUGH") + ' [color=yellow]' + Items.materiallist[i].name + '[/color]'
-
-	if effects.has('brittle'):
-		canrepair = false
-		text = tr("CANTREPAIREFFECT")
-
-	var returndict = {canrepair = canrepair, text = text}
-
-	return returndict
-
 func calculatematerials():
 	var itemtemplate = Items.itemlist[itembase] #item base for item parts amount
 	var materialsdict = {} #total materials used in creation
@@ -397,30 +370,6 @@ func calculatematerials():
 		else:
 			materialsdict[parts[i]] = itemtemplate.parts[i]
 	return materialsdict
-
-func counterepairmaterials():
-	var requiredmaterialsdict = calculatematerials()
-	var itemtemplate = Items.itemlist[itembase]
-
-	#calculating total resource needs
-	var multiplier = 0
-	match itemtemplate.repairdifficulty: #0.5, 0.65, 0.8
-		'easy':
-			multiplier = variables.RepairCostMultiplierEasy
-		'medium':
-			multiplier = variables.RepairCostMultiplierMedium
-		'hard':
-			multiplier = variables.RepairCostMultiplierHard
-	if effects.has('natural'): #0.15
-		multiplier -= variables.ItemEffectNaturalMultiplier
-
-	var durabilitymultiplier = 1 - durability/maxdurability
-
-	for i in requiredmaterialsdict:
-		requiredmaterialsdict[i] *= multiplier * durabilitymultiplier
-		requiredmaterialsdict[i] = ceil(requiredmaterialsdict[i])
-
-	return requiredmaterialsdict
 
 func calculateprice():
 	var price = 0

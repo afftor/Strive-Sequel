@@ -282,8 +282,8 @@ var factiondata = {
 			'fighters_init',
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
-		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium'],
-		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard'],
+		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium','fighters_craft_gear_medium'],
+		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard','fighters_craft_gear_hard'],
 		tags = [],
 		slavenumber = [2,2],
 		questnumber = [4,4],
@@ -463,24 +463,6 @@ var factiondata = {
 			}
 		],
 	},
-#	exotic_slave_trader = {
-#		code = 'exotic_slave_trader',
-#		name = 'Exotic Slave Trader',
-#		description = '',
-#		actions = ['hire'],
-#		preference = [],
-#		character_types = [['slave',1]],
-#		character_bonuses = {submission = [10,20], authority = [0,10], obedience = [12,18], pricemod = 4},
-#
-#		slave_races = [['rare',3],['monster',1]],
-#		tags = ['unique_slave_races'],
-#		quests_easy = [],
-#		quests_medium = [],
-#		quests_hard = [],
-#		slavenumber = [4,5],
-#		questnumber = [],
-#		bonus_actions = [],
-#	},
 	beastkin_slave_trader = {
 		code = 'beastkin_slave_trader',
 		name = 'Beastkin Slave Trader',
@@ -775,12 +757,12 @@ var locations = {
 		actions = [],
 		event_pool = [],
 		options = [
-			{text = 'Check Surroundings', reqs = [ {type = 'decision', value = 'recruited_lilia', check = false},
+			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false}, {type = 'decision', value = 'mayor_election_finished', check = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_STARTING_1'}],
 				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
-			{text = 'Check Surroundings', reqs = [ {type = 'decision', value = 'recruited_lilia', check = false},
+			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false},
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LILIA_STARTING_1'}],
-				args = [{code = 'start_event', data = 'lilia_startring_2', args = []}]},
+				args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]},
 		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
@@ -1092,6 +1074,46 @@ var questdata = {
 		],
 		time_limit = [8,16],
 	},
+	
+	fighters_craft_gear_medium = {
+		code = 'fighters_craft_gear_medium',
+		name = 'Gear Supply',
+		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		randomconditions = [
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','wooodiron']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
+			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], range = [1,1], parts = {ArmorTrim = ['steel','obsidian','clothmagic','woodmagic']}},
+			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather'], range = [1,1], parts = {ArmorBaseMed = ['leatherthick','leathermythic','insect_chitin','lizard_skin','boneancient']}},
+			],
+		unlockreqs = [],
+		reputation = [250,450],
+		rewards = [
+		[1, {code = 'gold', item_based = true, range = [2,2.2]}],
+		],
+		time_limit = [8,12],
+	},
+	fighters_craft_gear_hard = {
+		code = 'fighters_craft_gear_hard',
+		name = 'Gear Supply',
+		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		randomconditions = [
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','wooodiron','obsidian']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
+			
+			
+			
+			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantium']}},
+			],
+		unlockreqs = [],
+		reputation = [400,600],
+		rewards = [
+		[1, {code = 'gold', item_based = true, range = [2.7,3.5]}],
+		],
+		time_limit = [10,13],
+	},
+	
+	
 	mages_materials_easy = {
 		code = 'mages_materials_easy',
 		name = 'Resource Supply',
@@ -1181,6 +1203,42 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
+	
+	mages_craft_gear_medium = {
+		code = 'mages_craft_gear_medium',
+		name = 'Mage Gear Supply',
+		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		randomconditions = [
+			{code = 'random_item', function = 'range', type = ['staff'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','wooodiron']}},
+			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [1,1], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
+			],
+		unlockreqs = [],
+		reputation = [250,450],
+		rewards = [
+		[1, {code = 'gold', item_based = true, range = [2,2.2]}],
+		],
+		time_limit = [8,12],
+	},
+	mages_craft_gear_hard = {
+		code = 'mages_craft_gear_hard',
+		name = 'Mage Gear Supply',
+		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		randomconditions = [
+			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','wooodiron','mithril']}},
+			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [2,2], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
+			
+			
+			
+			{code = 'random_item', function = 'range', type = ['chest_adv_cloth','legs_adv_cloth'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
+			],
+		unlockreqs = [],
+		reputation = [400,600],
+		rewards = [
+		[1, {code = 'gold', item_based = true, range = [2.7,3.5]}],
+		],
+		time_limit = [10,13],
+	},
+	
 	servants_craft_items_easy = {
 		code = 'servants_craft_items_easy',
 		name = 'Items Request',
@@ -1787,7 +1845,7 @@ var dungeons = {
 		descript = '',
 		difficulty = 'medium',
 		background_pool = ['forest1'],
-		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],],
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1]],
 		final_enemy = [['jungle_boss3',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
@@ -2012,7 +2070,7 @@ var dungeons = {
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 				args = [{code = 'start_event', data = 'temple_start', args = []}]},
 			{text = 'Approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},],
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
 				args = [{code = 'start_event', data = 'temple_6', args = []}]},
 		],
 		scripteventdata = []
@@ -2082,7 +2140,7 @@ var dungeons = {
 	quest_troll_cave_location = {
 		code = 'quest_troll_cave_location',
 		type = 'encounter',
-		name = 'Trolls Cave',
+		name = "Troll's Cave",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -2239,9 +2297,9 @@ var dungeons = {
 		events = [],
 	},
 	quest_cali_bandits_location = {
-		code = 'quest_daisy_admirer_location',
-		type = 'dungeon',
-		name = "Ramont's Estate",#2fix
+		code = 'quest_cali_bandits_location',
+		type = 'encounter',
+		name = "Bandit's Hideout",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -2268,9 +2326,9 @@ var dungeons = {
 	quest_cali_village = {
 		code = 'quest_cali_village',
 		type = 'encounter',
-		name = 'Cali tribe Village',#2fix
+		name = "Cali's Home Village",
 		classname = '',
-		descript = ".",#2fix
+		descript = ".",
 		difficulty = 'easy',
 		background = 'village_1',
 		enemyarray =  [],
@@ -2282,7 +2340,7 @@ var dungeons = {
 		options = [
 			{text = 'Follow Cali', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], args = [{code = 'start_event', data = 'cali_hector_1', args = []}]}
 		],
-		area = 'plains',#2fix
+		area = 'plains',
 		travel_time = [1,1],
 	},
 

@@ -721,7 +721,6 @@ func test_mode():
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
 				{code = 'make_story_character', value = 'Lilia'},
-				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
 
@@ -835,7 +834,7 @@ func test_mode():
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		#input_handler.interactive_message('got_cali_2_1', '', {})
+		input_handler.interactive_message('sick_lilia_start', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
