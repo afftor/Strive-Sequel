@@ -573,6 +573,38 @@ var statdata = {
 		baseicon = 'food_love',
 		default_bonus = 'add_part'
 	},
+	mod_waitress = {
+		code = 'mod_waitress',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
+	mod_hostess = {
+		code = 'mod_hostess',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
+	mod_dancer = {
+		code = 'mod_dancer',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
+	mod_strip = {
+		code = 'mod_strip',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
 	base_task_crit_chance = { # for char
 		code = 'base_task_crit_chance',
 		name = '',

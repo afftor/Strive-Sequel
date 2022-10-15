@@ -53,6 +53,10 @@ var template = {
 	mod_alchemy = 1.0,
 	mod_farm = 1.0,
 	mod_pros = 1.0,
+	mod_waitress = 1.0,
+	mod_hostess = 1.0,
+	mod_dancer = 1.0,
+	mod_strip = 1.0,
 	base_task_crit_chance = 0.0,
 
 	atk = variables.basic_character_atk,
