@@ -51,16 +51,16 @@ func whoring_gold():
 
  
 func gold_waitress():
-	return (7 + parent.get_ref().get_stat('charm')/20.0)/6
+	return parent.get_ref().get_stat('mod_waitress') * (7 + parent.get_ref().get_stat('charm')/20.0)/6
 
 func gold_hostess():
-	return (9 + parent.get_ref().get_stat('wits')/18.0)/6
+	return parent.get_ref().get_stat('mod_hostess') * (9 + parent.get_ref().get_stat('wits')/18.0)/6
 
 func gold_dancer():
-	return (4 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
+	return parent.get_ref().get_stat('mod_dancer') * (4 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
 
 func gold_stripper():
-	return (6 + parent.get_ref().get_stat('sexuals')/8.0)/6
+	return parent.get_ref().get_stat('mod_strip') *  (6 + parent.get_ref().get_stat('sexuals')/8.0)/6
 
 func gold_petting():
 	return (3 + parent.get_ref().get_stat('sex_skills_petting')/25.0)/6

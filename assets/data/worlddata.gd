@@ -2240,7 +2240,7 @@ var dungeons = {
 	},
 	quest_cali_bandits_location = {
 		code = 'quest_daisy_admirer_location',
-		type = 'encounter',
+		type = 'dungeon',
 		name = "Ramont's Estate",#2fix
 		classname = '',
 		descript = '',
@@ -2252,6 +2252,8 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [10,10],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
 		affiliation = 'local',
