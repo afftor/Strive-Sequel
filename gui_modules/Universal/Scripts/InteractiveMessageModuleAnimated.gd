@@ -146,10 +146,10 @@ func show_full_info(person):
 
 var stored_scene
 
-func dialogue_next(code, argument):
+func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
-	input_handler.interactive_message_follow(code, '', '')
+	input_handler.interactive_message_follow(code, '', args)
 
 
 func chest_mimic_force_open():
@@ -542,9 +542,11 @@ func set_dialogue_window_type(scene):
 		1:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
 			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option
 		2:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option
 	gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	gui_controller.dialogue.open(scene)
 
@@ -962,7 +964,10 @@ func select_option(number):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
 		hold_selection = true
-		dialogue_next(code, option.dialogue_argument)
+		if option.has('change_dialogue_type'):
+			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})
+		else:
+			dialogue_next(code, option.dialogue_argument)
 	else:
 		var args
 		if option.has('args'): args = option.args

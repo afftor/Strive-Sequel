@@ -9,7 +9,11 @@ var selected_location = "aliron"
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
+	globals.connecttexttooltip($BrothelRules/rulestooltip, tr("BROTHELTOOLTIP"))
 	gui_controller.add_close_button(self, "bigger_offset")#.connect("pressed", self, 'close_job_pannel')
+	for i in $BrothelRules/sexes_container.get_children():
+		var name = i.get_name()
+		i.connect('pressed', self, 'switch_brothel_option',[i, name])
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -20,6 +24,7 @@ func rebuild():
 	$ToolLabel.text = ""
 	$WorkunitLabel.text = ""
 	$Modlabel.text = ""
+	$BrothelRules.hide()
 	$Workmod.hide()
 	$Workstat.hide()
 	$Worktool.hide()
@@ -282,7 +287,7 @@ func update_resources():
 				#newbutton.disabled = current_workers_count == max_workers_count
 				if current_workers_count >= max_workers_count:
 					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
-			elif i.code == "cooking" or i.code == "prostitution":
+			elif i.code == "cooking" or i.code == "brothel":
 				var current_workers_count = 0
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:
@@ -339,6 +344,7 @@ func update_resources():
 
 
 func select_resource(job, resource, newbutton):
+	$BrothelRules.hide()
 	# part 1
 	$ToolLabel.text = ""
 	var work_tools
@@ -390,7 +396,10 @@ func select_resource(job, resource, newbutton):
 		if job.has('workstat'):
 			$Workstat.texture = stat_icons[job.workstat]
 			$Workstat.show()
-			globals.connecttexttooltip($Workstat, "Job Stat: " + tr("STAT"+job.workstat.to_upper()) + "\nThis stat will grow by attending to this job.")
+			if job.code != 'brothel':
+				globals.connecttexttooltip($Workstat, "Job Stat: " + tr("STAT"+job.workstat.to_upper()) + "\nThis stat will grow by attending to this job.")
+			else:
+				globals.connecttexttooltip($Workstat, "Growing stat will depend on what task will be performed by character when servicing customers.")
 		if job.has('mod'):
 			$Modlabel.show()
 			$Workmod.show()
@@ -461,14 +470,13 @@ var stat_icons = {
 	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
 	wits = load("res://assets/images/gui/gui icons/icon_wits64.png"),
 	charm = load("res://assets/images/gui/gui icons/icon_charm64.png"),
-	sexuals = load("res://assets/images/gui/gui icons/icon_sex64.png"),
+	sex_skills = load("res://assets/images/gui/gui icons/icon_sex64.png"),
 	
 }
 
 func select_job(button, person):
 	person = get_parent().active_person
-	
-	if selected_job.code == "rest" || selected_job.code == person.get_work():
+	if selected_job.code == "rest" || (selected_job.code == person.get_work() && selected_job.code != 'brothel'):
 		set_rest(button, person)
 		return
 	# disable 
@@ -500,6 +508,8 @@ func select_job(button, person):
 			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
 			return
 	
+	
+	
 	var gatherable = Items.materiallist.has(selected_job.code)
 	if location.type == "dungeon":
 		if selected_job.has("production_item"):
@@ -520,7 +530,85 @@ func select_job(button, person):
 	#update_characters() # change for status update
 	update_status(button, person)
 	show_faces()
+	if selected_job.code == 'brothel':
+		show_brothel_options()
 	#get_parent().mansion_state_set("default")
+
+
+var brothel_rules = {
+	non_sex = ['waitress', 'hostess', 'dancer', 'stripper'],
+	sexual = ['petting', 'oral', 'anal', 'pussy', 'group', 'sextoy'],
+	sexes = ['males','females','futa'],
+	
+}
+
+func show_brothel_options():
+	$BrothelRules.show()
+	$BrothelRules/Label.text = "Service Rules: " + person.get_short_name()
+	input_handler.ClearContainer($BrothelRules/GridContainer)
+	for i in brothel_rules.non_sex:
+		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		newbutton.text = tr("BROTHEL"+i.to_upper())
+		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		newbutton.pressed = person.check_brothel_rule(i)
+		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+	for i in brothel_rules.sexual:
+		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		newbutton.text = tr("BROTHEL"+i.to_upper())
+		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		newbutton.pressed = person.check_brothel_rule(i)
+		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+		if person.is_master() == false:
+			if person.checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
+				if person.get_stat('slave_class') != 'slave':
+					newbutton.disabled = true
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks training to be assigned to this task}"))
+				else:
+					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
+					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}"))
+		
+	for i in brothel_rules.sexes:
+		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		get_node("BrothelRules/sexes_container/"+i).pressed = person.check_brothel_rule(i)
+		
+#		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+#		newbutton.text = tr("BROTHEL"+i.to_upper())
+#		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+#		newbutton.pressed = person.check_brothel_rule(i)
+#		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+	
+	update_brothel_text()
+
+func update_brothel_text():
+	var text = ''
+	var can_do_sex = false
+	var can_do_penetrative = false
+	var can_get_pregnant = false
+	
+	for i in brothel_rules.sexual:
+		if person.check_brothel_rule(i) == true:
+			can_do_sex = true
+			if i in ['anal','pussy','group','sextoy']:
+				can_do_penetrative = true
+				if i != 'anal' && person.get_stat('has_womb') == true:
+					can_get_pregnant = true
+	
+	
+	if can_do_sex && can_do_penetrative:
+		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if the find [him] appealing.}"
+		if can_get_pregnant:
+			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration.}"
+	elif can_do_sex:
+		text = "{color=yellow|[name] will entertain clients by serving them and provide them with light sexual services not involving penetration.}"
+	else:
+		text = "{color=green|[name] will serve and entertain clients but will refuse any sexual services.}"
+	
+	$BrothelRules/brothel_descript.bbcode_text = globals.TextEncoder(person.translate(text))
+
+func switch_brothel_option(button, option):
+	person.set_brothel_rule(option, button.pressed)
+	update_brothel_text()
 
 
 func set_rest(button, person):

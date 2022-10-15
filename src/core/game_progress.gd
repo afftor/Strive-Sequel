@@ -53,6 +53,8 @@ var work_quests_finished = []
 
 var dialogue_local_counters = {}
 
+var planned_mansion_events = []
+
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')

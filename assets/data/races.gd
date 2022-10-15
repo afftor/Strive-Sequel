@@ -273,12 +273,12 @@ var tasklist = {
 		mod = 'mod_collect'
 	},
 	
-	prostitution = {
-		code = 'prostitution',
+	brothel = {
+		code = 'brothel',
 		reqs = [],
 		name = '',
 		descript = '',
-		workstat = 'sexuals',
+		workstat = 'sex_skills',
 		progress_per_item = 1.0 / 6,
 		production_code = 'prostitutegold',
 		production_item = 'gold',
@@ -407,6 +407,107 @@ var tasklist = {
 		production = {},
 		icon = null,
 		tags = ['hide_progress_ratio'],
+	},
+}
+
+
+var gold_tasks_data = {
+	waitress = {
+		code = 'waitress',
+		formula = 'gold_waitress',
+		text_events = [],
+		workstats = ['charm'],
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	hostess = {
+		code = 'hostess',
+		formula = 'gold_hostess',
+		text_events = [],
+		workstats = ['wits'],
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	dancer = {
+		code = 'dancer',
+		formula = 'gold_dancer',
+		text_events = [],
+		workstats = ['physics'],
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	stripper = {
+		code = 'stripper',
+		formula = 'gold_stripper',
+		text_events = [],
+		workstats = ['charm'],
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	
+	
+	petting = {
+		code = 'petting',
+		formula = 'gold_petting',
+		text_events = [],
+		workstats = ['sex_skills_petting'],
+		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_basic',
+		tags = [],
+	},
+	oral = {
+		code = 'oral',
+		formula = 'gold_oral',
+		text_events = [],
+		workstats = ['sex_skills_oral'],
+		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_oral',
+		tags = [],
+	},
+	pussy = {
+		code = 'petting',
+		formula = 'gold_petting',
+		text_events = [],
+		workstats = ['sex_skills_pussy'],
+		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_basic',
+		tags = ['virginity','impregnation'],
+	},
+	anal = {
+		code = 'anal',
+		formula = 'gold_anal',
+		text_events = [],
+		workstats = ['sex_skills_anal'],
+		req_training = 'loyalty_sex_anal',
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	penetration = {
+		code = 'penetration',
+		formula = 'gold_penetration',
+		text_events = [],
+		workstats = ['sex_skills_penetration'],
+		req_training = 'loyalty_sex_basic',
+		workmod = 'mod_pros',
+		tags = [],
+	},
+	group = {
+		code = 'group',
+		formula = 'gold_group',
+		text_events = [],
+		workstats = ['sex_skills_pussy','sex_skills_anal'],
+		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_group',
+		tags = ['virginity','impregnation'],
+	},
+	sextoy = {
+		code = 'sextoy',
+		formula = 'gold_sextoy',
+		text_events = [],
+		workstats = ['sex_skills_anal','sex_skills_oral','sex_skills_petting'],
+		workmod = 'mod_pros',
+		req_training = 'loyalty_sex_adv',
+		tags = ['virginity','impregnation'],
 	},
 }
 
