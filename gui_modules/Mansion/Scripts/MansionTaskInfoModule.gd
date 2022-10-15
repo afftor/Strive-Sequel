@@ -85,7 +85,7 @@ func show_workers(task, button):
 
 func show_resources_info():
 	for task in ResourceScripts.game_party.active_tasks:
-		if task.code == "building":
+		if task.code in ["building",'brothel']:
 			continue
 		var task_name = task.code
 		var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)

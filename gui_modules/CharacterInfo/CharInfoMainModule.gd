@@ -259,10 +259,10 @@ func displaymetrics():
 				else:
 					text += "\n[His] first experience with anal penetration was with  {color=yellow|" + source.name + "}."
 			else:
-				text += "\n[His] first experience with anal penetration was with  {color=yellow|" + sources[person.get_stat('vaginal_virgin_lost').source] + "}."
+				text += "\n[His] first experience with anal penetration was with  {color=yellow|" + sources[person.get_stat('anal_virgin_lost').source] + "}."
 	
 	
-	text += '\n\n[He] earned {color=yellow|%d} gold and {color=yellow|%d} food while working on you. ' % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),]
+	text += '\n\n[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ' % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
 	
 	text += "\n\n[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies." % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
 	

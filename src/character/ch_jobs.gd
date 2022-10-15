@@ -49,117 +49,18 @@ func whoring_gold():
 
 #had to divide by 6, probably should remove multiplier at work tick for these
 
-var gold_tasks_data = {
-	waitress = {
-		code = 'waitress',
-		formula = 'gold_waitress',
-		text_events = [],
-		workstats = ['physics'],
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	hostess = {
-		code = 'hostess',
-		formula = 'gold_hostess',
-		text_events = [],
-		workstats = ['wits'],
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	dancer = {
-		code = 'dancer',
-		formula = 'gold_dancer',
-		text_events = [],
-		workstats = ['charm'],
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	stripper = {
-		code = 'stripper',
-		formula = 'gold_stripper',
-		text_events = [],
-		workstats = ['sexuals'],
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	
-	
-	petting = {
-		code = 'petting',
-		formula = 'gold_petting',
-		text_events = [],
-		workstats = ['sex_skills_petting'],
-		workmod = 'mod_pros',
-		req_training = 'loyalty_sex_basic',
-		tags = [],
-	},
-	oral = {
-		code = 'oral',
-		formula = 'gold_oral',
-		text_events = [],
-		workstats = ['sex_skills_oral'],
-		workmod = 'mod_pros',
-		req_training = 'loyalty_sex_oral',
-		tags = [],
-	},
-	pussy = {
-		code = 'petting',
-		formula = 'gold_petting',
-		text_events = [],
-		workstats = ['sex_skills_pussy'],
-		workmod = 'mod_pros',
-		req_training = 'loyalty_sex_basic',
-		tags = ['virginity','impregnation'],
-	},
-	anal = {
-		code = 'anal',
-		formula = 'gold_anal',
-		text_events = [],
-		workstats = ['sex_skills_anal'],
-		req_training = 'loyalty_sex_anal',
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	penetration = {
-		code = 'penetration',
-		formula = 'gold_penetration',
-		text_events = [],
-		workstats = ['sex_skills_penetration'],
-		req_training = 'loyalty_sex_basic',
-		workmod = 'mod_pros',
-		tags = [],
-	},
-	group = {
-		code = 'group',
-		formula = 'gold_group',
-		text_events = [],
-		workstats = ['sex_skills_pussy','sex_skills_anal'],
-		workmod = 'mod_pros',
-		req_training = 'loyalty_sex_group',
-		tags = ['virginity','impregnation'],
-	},
-	sextoy = {
-		code = 'sextoy',
-		formula = 'gold_sextoy',
-		text_events = [],
-		workstats = ['sex_skills_anal','sex_skills_oral','sex_skills_petting'],
-		workmod = 'mod_pros',
-		req_training = 'loyalty_sex_adv',
-		tags = ['virginity','impregnation'],
-	},
-}
  
 func gold_waitress():
-	return parent.get_ref().get_stat('mod_waitress') * (5 + parent.get_ref().get_stat('charm')/20.0)/6
+	return parent.get_ref().get_stat('mod_waitress') * (7 + parent.get_ref().get_stat('charm')/20.0)/6
 
 func gold_hostess():
-	return parent.get_ref().get_stat('mod_hostess') *(7 + parent.get_ref().get_stat('wits')/18.0)/6
+	return parent.get_ref().get_stat('mod_hostess') * (9 + parent.get_ref().get_stat('wits')/18.0)/6
 
 func gold_dancer():
-	return parent.get_ref().get_stat('mod_dancer') *(2 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
+	return parent.get_ref().get_stat('mod_dancer') * (4 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
 
-func gold_strip():
-	return parent.get_ref().get_stat('mod_strip') * (4 + parent.get_ref().get_stat('sexuals')/8.0)/6
+func gold_stripper():
+	return parent.get_ref().get_stat('mod_strip') *  (6 + parent.get_ref().get_stat('sexuals')/8.0)/6
 
 func gold_petting():
 	return (3 + parent.get_ref().get_stat('sex_skills_petting')/25.0)/6
