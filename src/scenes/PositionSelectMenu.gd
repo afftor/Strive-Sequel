@@ -77,7 +77,7 @@ func start_combat():
 		input_handler.SystemMessage("Select at least 1 character to fight. ")
 		return
 	hide()
-	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close(false, false)
+	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close({finish_scene = false})
 	if globals.current_enemy_group == 'random_local_group':
 		globals.StartAreaCombat()
 	else:
