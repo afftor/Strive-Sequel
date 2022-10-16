@@ -7933,11 +7933,10 @@ Cali seems somewhat upset with your words as you return to the village""",
 	CALI_GOBLINS_8_ADDITIONAL = """
 
 Despite everything, Cali does not let her spirit down and you leave to home""",
-	CALI_SEX_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
+	CALI_SEX_1_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
 
-You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. 
-
-- I'm feeling strange... Thinking about [him]...
+You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. """,
+	CALI_SEX_1_2 = """- I'm feeling strange... Thinking about [him]...
 
 As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
 
@@ -7953,15 +7952,14 @@ As she turns to you, she realizes you've been looking at her for some time. Her 
 - I'm... um... not sure what to say now.""",
 	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
 	CALI_SEX_2_1AND2_OPTION_2 = "Don't mind if I watch?",
-	CALI_SEX_3 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
+	CALI_SEX_3_1 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
 
 - You are a pervert, Master. 
 
 Her playful tone catches up as her hand starts rubbing her snatch.
 
-- But... I don't dislike being watched by you...
-
-As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
+- But... I don't dislike being watched by you...""",
+	CALI_SEX_3_2 = """As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
 
 - Wow... I never felt like this before.""",
 	CALI_SEX_3_OPTION_1 = "That was a joy to watch",
@@ -8946,6 +8944,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	SICK_LILIA_QUEST_STAGE_1 = "Ask Myr for help",
 	SICK_LILIA_QUEST_STAGE_2 = "Visit Xari",
 	SICK_LILIA_QUEST_STAGE_3 = "Find troll which stole Xari's clothes",
+	SICK_LILIA_QUEST_STAGE_35 = "Get Xari's clothes from troll",
 	SICK_LILIA_QUEST_STAGE_4 = "Return to Xari with her clothes",
 	SICK_LILIA_QUEST_STAGE_5 = "Cure Lilia",
 	

@@ -181,7 +181,8 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage1'},
-			{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = false}]
+			{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = false},
+			{code = 'update_mansion'}]
 		}, ]
 	},
 	
@@ -369,6 +370,9 @@ var data = {
 			code = 'quest_fight', args = 'troll_clothes', text = "TROLL_CLOTHES_1_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [
+				{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage35'},
+			]
 		}, ]
 	},
 	

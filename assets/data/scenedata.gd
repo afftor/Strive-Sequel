@@ -1944,6 +1944,7 @@ var quests = {
 			stage1 = {code = 'stage1', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_1"}, # talk to Myr
 			stage2 = {code = 'stage2', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_2"}, # go to Xari
 			stage3 = {code = 'stage3', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_3"}, # find troll
+			stage35 = {code = 'stage35', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_35"}, # get clothes from troll
 			stage4 = {code = 'stage4', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_4"}, # return to Xari
 			stage5 = {code = 'stage5', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_5"}, # bring potion to Lilia
 		},
