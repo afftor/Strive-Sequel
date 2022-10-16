@@ -80,6 +80,7 @@ func custom_stats_set(st, value):
 		return
 	if st.begins_with("sex_skills_"):
 		st = st.trim_prefix("sex_skills_")
+		value = min(value, 100.0)
 		statlist.sex_skills[st] = value
 		return
 	if st in ['submission']:
@@ -268,6 +269,7 @@ func get_stat(statname, ref = false):
 		var tmp = statlist.sex_skills
 		var stat = statname.trim_prefix('sex_skills_')
 		if tmp.has(stat):
+			tmp[stat] = min(tmp[stat], 100.0)
 			return tmp[stat]
 		else:
 			print("no stat - %s" % statname)
@@ -406,6 +408,7 @@ func add_stat(statname, value, revert = false):
 		statname = statname.trim_prefix('sex_skills_')
 		if revert: statlist.sex_skills[statname] -= value
 		else: statlist.sex_skills[statname] += value
+		statlist.sex_skills[statname] = min(statlist.sex_skills[statname], 100.0)
 		return
 	if statname.begins_with('metrics_'):
 		var tmp = statlist.metrics
