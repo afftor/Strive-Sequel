@@ -147,6 +147,15 @@ var backgrounds = {
 	cali_bj_happy_2 = load("res://assets/images/fullscreen scenes/CaliCG008.png"),
 	cali_bj_happy_3 = load("res://assets/images/fullscreen scenes/CaliCG009.png"),
 	
+	cali_bj_outside_1 = load("res://assets/images/fullscreen scenes/CaliCG010.png"),
+	cali_bj_outside_2 = load("res://assets/images/fullscreen scenes/CaliCG011.png"),
+	cali_bj_outside_3 = load("res://assets/images/fullscreen scenes/CaliCG012.png"),
+	
+	cali_touching_1 = load("res://assets/images/fullscreen scenes/CaliCG013.png"),
+	cali_touching_2 = load("res://assets/images/fullscreen scenes/CaliCG014.png"),
+	cali_touching_3 = load("res://assets/images/fullscreen scenes/CaliCG015.png"),
+	cali_touching_4 = load("res://assets/images/fullscreen scenes/CaliCG016.png"),
+	
 	cali_riding_1 = load("res://assets/images/fullscreen scenes/CaliCG019.png"),
 	cali_riding_2 = load("res://assets/images/fullscreen scenes/CaliCG020.png"),
 	cali_riding_3 = load("res://assets/images/fullscreen scenes/CaliCG021.png"),
