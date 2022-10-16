@@ -557,7 +557,7 @@ func select_brothel_activity():
 			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
-				bonus_gold += parent.get_ref().calculate_price() * 0.02
+				bonus_gold += parent.get_ref().calculate_price() * 0.01
 			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
@@ -585,7 +585,7 @@ func select_brothel_activity():
 		var data = races.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		var goldearned = highest_value.value * max(1.4, (1 + 0.003 * parent.get_ref().calculate_price()))
+		var goldearned = highest_value.value * max(1.4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
 		goldearned = round(goldearned)
 		

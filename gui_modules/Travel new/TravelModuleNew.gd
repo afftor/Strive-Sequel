@@ -295,8 +295,6 @@ func update_to_list():
 		var panel = input_handler.DuplicateContainerTemplate(to_list)
 		make_panel_for_location(panel, loc)
 
-		#i'm not sure that heroes' number should be displayed here and not travel distance
-		#upd. in reference picture there is neither heroes' number nor distance in this label so i'm confused
 		if loc.heroes > 0:
 			panel.get_node("Label").text = str(loc.heroes)
 		else:
@@ -352,7 +350,7 @@ func make_panel_for_location(panel, loc):
 	if loc.id == 'travel':
 		panel.text = "Characters on the road"
 	else:
-		var text = ResourceScripts.world_gen.get_location_from_code(loc.id).name
+		var text = ResourceScripts.world_gen.get_area_from_location_code(loc.id).name + " - " + ResourceScripts.world_gen.get_location_from_code(loc.id).name
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
@@ -528,10 +526,10 @@ func build_location_info():
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0:
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
-				text += "Travel time: %d\n" % ceil(travel_time.time / tmp)
+				text += "Travel time: %d cycles\n" % ceil(travel_time.time / tmp)
 				#text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
-				text += "Estimated travel time: %d\n" % ceil(travel_time.time)
+				text += "Estimated travel time: %d cycles\n" % ceil(travel_time.time)
 				#text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
 		if location_selected.has('captured') && location_selected.captured == true:
 			text += globals.TextEncoder("{color=red|Location unaccessible}")

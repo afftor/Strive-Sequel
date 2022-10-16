@@ -537,7 +537,7 @@ func select_job(button, person):
 
 var brothel_rules = {
 	non_sex = ['waitress', 'hostess', 'dancer', 'stripper'],
-	sexual = ['petting', 'oral', 'anal', 'pussy', 'group', 'sextoy'],
+	sexual = ['petting', 'oral', 'anal', 'pussy', 'penetration', 'group', 'sextoy'],
 	sexes = ['males','females','futa'],
 	
 }
@@ -548,11 +548,16 @@ func show_brothel_options():
 	input_handler.ClearContainer($BrothelRules/GridContainer)
 	for i in brothel_rules.non_sex:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		newbutton.text = tr("BROTHEL"+i.to_upper())
+		if person.get_stat('sex') == "male" && races.gold_tasks_data[i].tags.has('has_alt_name'):
+			newbutton.text = tr("BROTHEL"+i.to_upper() + "ALT")
+		else:
+			newbutton.text = tr("BROTHEL"+i.to_upper())
 		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 	for i in brothel_rules.sexual:
+		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		newbutton.text = tr("BROTHEL"+i.to_upper())
 		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))

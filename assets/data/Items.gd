@@ -1486,7 +1486,7 @@ var itemlist = {
 		tags = ['no_random'],
 		basestats = {atk = 3},
 	},
-	cali_heirloom_active= {
+	cali_heirloom_active = {
 		code = 'cali_heirloom_active',
 		name = "",
 		descript = "",
@@ -1501,7 +1501,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {atk = 20, critchance = 20},
+		basestats = {atk = 30, critchance = 20, hitrate = 15},
 	},
 	
 	cali_collar = {

@@ -2239,7 +2239,7 @@ func see_quest_info(quest):
 					if r.code == "stat":
 						stats[r.stat] = r.value
 					if r.code == "has_profession" && r.check:
-						prof = r.value
+						prof = r.profession
 						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon

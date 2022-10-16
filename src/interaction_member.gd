@@ -263,7 +263,6 @@ func orgasm(custom_text = null):
 	var vaginatext = ''
 	var anustext = ''
 	orgasms += 1
-	person_metrics.orgasm += 1
 	if sceneref.participants.size() == 2 && person.has_profession("master"):
 		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
 			person.add_stat('loyalty', rand_range(1.4,5.6))

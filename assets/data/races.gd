@@ -418,7 +418,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['charm'],
 		workmod = 'mod_pros',
-		tags = [],
+		tags = ['has_alt_name'],
 	},
 	hostess = {
 		code = 'hostess',
@@ -426,7 +426,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['wits'],
 		workmod = 'mod_pros',
-		tags = [],
+		tags = ['has_alt_name'],
 	},
 	dancer = {
 		code = 'dancer',
@@ -466,7 +466,7 @@ var gold_tasks_data = {
 	},
 	pussy = {
 		code = 'petting',
-		formula = 'gold_petting',
+		formula = 'gold_pussy',
 		text_events = [],
 		workstats = ['sex_skills_pussy'],
 		workmod = 'mod_pros',

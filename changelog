@@ -6,12 +6,14 @@ Revamped prostitution task and added new non-sexual gold tasks. Prostitution mod
 Added personal character details
 Materials now only sell for half price
 Removed quest items from shop selling list
+Added area names to locaiton list
 Added couple new repeatable quests
 Lilia's stats upped. Lilia questline is now unlocked after completing first story arc
 Fixed Date button not being active when master and a servant are selected
 Fixed loot window being under the dialogues
 Fixed Cali's character sprite
 Fixed certain actions not increasing loyalty
+Fixed beastkin tribe settlement producing excessive locations
 Updated some scene art
 0.6.4b
 Added some new classes to the exception list for oblivion potion removal

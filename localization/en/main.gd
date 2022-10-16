@@ -787,7 +787,9 @@ var TranslationDict = {
 	
 	BROTHELWAITRESS = "Waitress",
 	BROTHELWAITRESSDESCRIPT = "[name] will work as waitress and serve customers with food and drinks. One of the most innocent assignements out there. Scales with Charm",
+	BROTHELWAITRESSALT = "Waiter",
 	BROTHELHOSTESS = "Hostess",
+	BROTHELHOSTESSALT = "Host",
 	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. Scales with Wits",
 	BROTHELDANCER = "Dancer",
 	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
@@ -800,6 +802,8 @@ var TranslationDict = {
 	BROTHELORALDESCRIPT = "[name] will perform oral sex for clients.",
 	BROTHELPUSSY = "Vaginal",
 	BROTHELPUSSYDESCRIPT = "[name] will allow clients to use [his] vagina potentially leading to impregnation.",
+	BROTHELPENETRATION = "Penetration",
+	BROTHELPENETRATIONDESCRIPT = "[name] will satisfy clients with using [his] penis.",
 	BROTHELANAL = "Anal",
 	BROTHELANALDESCRIPT = "[name] will serve clients with [his] ass.",
 	BROTHELGROUP = "Group",
@@ -872,7 +876,7 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
@@ -2361,6 +2365,7 @@ var TranslationDict = {
 	ENEMYBANDIT_MAGE = "Bandit Mage",
 	ENEMYBANDIT_BOSS = "Bandit Boss",
 	ENEMYRAMONT_BOSS = "Ramont",
+	ENEMYHECTOR_BOSS = "Hector",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
 	ENEMYREBEL_KNIGHT = "Rebel Knight",
 	ENEMYREBEL_MAGE = "Rebel Mage",

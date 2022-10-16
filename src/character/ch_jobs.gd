@@ -71,6 +71,9 @@ func gold_oral():
 func gold_pussy():
 	return (5 + parent.get_ref().get_stat('sex_skills_pussy')/17.0)/6
 
+func gold_penetration():
+	return (4 + parent.get_ref().get_stat('sex_skills_penetration')/15.0)/6
+
 func gold_anal():
 	return (4 + parent.get_ref().get_stat('sex_skills_anal')/12.0)/6
 

@@ -520,7 +520,7 @@ func test_mode():
 	ResourceScripts.game_world.make_world()
 	if true:
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('BeastkinCat', 'female', 'random')
+		character.create('BeastkinCat', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -606,7 +606,7 @@ func test_mode():
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('BeastkinWolf', 'female', 'random')
+		character.create('BeastkinWolf', 'futa', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		# character.assign_to_quest_and_make_unavalible()
@@ -715,7 +715,7 @@ func test_mode():
 						{code = 'add_profession', profession = 'spouse'},
 					]
 				},
-				#{code = 'make_story_character', value = 'Cali'},
+				{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Aire'},
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
@@ -834,7 +834,7 @@ func test_mode():
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('sick_lilia_start', '', {})
+		input_handler.interactive_message('cali_finale_6', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		

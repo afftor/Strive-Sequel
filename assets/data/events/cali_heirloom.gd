@@ -926,7 +926,12 @@ var data = {
 		],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'remove_active_location'},]
+			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'remove_active_location'}, {code = 'unique_character_changes',
+					value = 'cali',
+					args = [
+						{code = 'create_and_equip', item = "cali_heirloom_active", parts = {}}
+						],
+			},]
 		} ],
 	},
 	cali_grat_sex_1 = {

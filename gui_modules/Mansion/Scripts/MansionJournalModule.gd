@@ -181,7 +181,7 @@ func show_quest_info(quest):
 						if r.code == "stat":
 							stats[r.stat] = r.value
 						if r.code == "has_profession" && r.check:
-							prof = r.value
+							prof = r.profession
 							var profbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
 							var prof_icon = classesdata.professions[prof].icon
 							profbutton.get_node("TextureRect").texture = prof_icon

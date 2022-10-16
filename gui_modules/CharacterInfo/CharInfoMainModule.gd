@@ -217,8 +217,10 @@ func displaymetrics():
 	var person = active_person
 	if person.is_players_character:
 		text += "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days." % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
-	
-	text += "\n\n[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s)." % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+	if person.is_master() == true:
+		text += "\n\n[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s)." % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+	else:
+		text += "\n\n[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s)." % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
 	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
 	var no_sex = false
 	if partner_number == 0:

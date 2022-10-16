@@ -166,7 +166,7 @@ var enemygroups = {
 	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
-	hector_boss_fight = {reqs = [], units = {guardian_golem = [2,2], hector_boss = [1,1], bandit_assassin = [2,2]}}, #cali boss fight !!! copied from above, needs fixing
+	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -1686,7 +1686,7 @@ var enemies = {
 		code = 'hector_boss',
 		name = '',
 		descript = '',
-		hpmax = 300,
+		hpmax = 400,
 		armor = 50,
 		mdef = 65,
 		hitrate = 110,

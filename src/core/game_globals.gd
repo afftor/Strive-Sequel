@@ -37,7 +37,7 @@ func get_week_and_day():
 	return [((date - 1) / 7 + 1), int((date - 1) % 7 + 1)]
 
 func get_week_and_day_custom(new_date):
-	return [((new_date - 1) / 7), int((new_date - 1) % 7 + 1)]
+	return [((new_date - 1) / 7), int((int(new_date) - 1) % 7 + 1)]
 
 func fix_serialization():
 	date = int(date)

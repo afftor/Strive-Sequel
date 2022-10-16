@@ -185,10 +185,10 @@ var lands = {
 		policies = [],
 		travel_time = [2,2],
 		disposition = 25,
-		start_settlements_number = {settlement_forest1 = [1,1],settlement_forest2 = [1,1]},
+		start_settlements_number = {},
 		locations = {},
-		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
-		starting_locations = ['dungeon_grove'],
+		locationpool = [],
+		starting_locations = [],
 		guilds = ['beastkin_slave_trader'],
 		events = [
 			{code = 'chieftain_meeting_1', text = "Find Chieftain", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], args = {"oneshot": false}},
