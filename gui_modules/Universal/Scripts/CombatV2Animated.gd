@@ -1152,7 +1152,7 @@ func use_skill(skill_code, caster, target):
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
 				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kill', 1)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kills', 1)
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG)
 			s_skill2.target.displaynode.rebuildbuffs()
