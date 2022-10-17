@@ -308,11 +308,9 @@ func assign_to_task(taskcode, taskproduct):
 	var task_location = parent.get_ref().get_location()
 	var tmp = find_worktask(task_location, taskcode, taskproduct)
 	if tmp != null:
-		if task.has('upgrade_code') && task.has('workers_per_upgrade') && task.has('base_workers'):
-			var upgrade_level = ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
-			var max_workers_count = task.base_workers + task.workers_per_upgrade * upgrade_level
-			if tmp.workers.size() >= max_workers_count:
-				return
+		var max_workers_count = ResourceScripts.game_world.get_worker_count_for_task(tmp)
+		if max_workers_count >= 0 and max_workers_count <= tmp.workers.size():
+			return
 		work = taskcode
 		workproduct = taskproduct
 		save_prev_data()
