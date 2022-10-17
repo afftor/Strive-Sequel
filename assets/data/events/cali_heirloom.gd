@@ -359,7 +359,7 @@ var data = {
 				} ],
 			},
 			{
-				image = null, #not null but there is no 'meeting' in scenes' images 
+				image = 'cali_meeting',
 				tags = ['dialogue_scene'], 
 				reqs = [],
 				text = [ {text = "CALI_WILLIAM_1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5_1'}]}],
@@ -374,7 +374,7 @@ var data = {
 		]
 	},
 	cali_william_2 = {
-		image = null, #not null but there is no 'meeting' in scenes' images 
+		image = 'cali_meeting',
 		tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ {text = "CALI_WILLIAM_2", reqs = []},],
@@ -387,7 +387,7 @@ var data = {
 		 ],
 	},
 	cali_william_3 = {
-		image = null, #not null but there is no 'meeting' in scenes' images 
+		image = 'cali_meeting',
 		tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ 
@@ -417,7 +417,7 @@ var data = {
 		 ],
 	},
 	cali_william_4 = {
-		image = null, #not null but there is no 'meeting' in scenes' images 
+		image = 'cali_meeting',
 		tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [{text = "CALI_WILLIAM_4", reqs = [], previous_dialogue_option = 1}],
@@ -435,7 +435,7 @@ var data = {
 		 ],
 	},
 	cali_william_5 = {
-		image = null, #not null but there is no 'meeting' in scenes' images 
+		image = 'cali_meeting', 
 		tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [{text = "CALI_WILLIAM_5", reqs = []}],
@@ -446,7 +446,7 @@ var data = {
 		 ],
 	},
 	cali_william_6 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_meeting', tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ {text = "CALI_WILLIAM_6", reqs = []} ], 
 		options = [ {
@@ -486,7 +486,7 @@ var data = {
 	cali_william_11 = {
 		variations = [
 			{
-				image = null, #not null but there is no 'meeting' in scenes' images 
+				image = 'cali_meeting',
 				tags = ['dialogue_scene'], 
 				reqs = [{type = 'unique_character_checks', name = 'cali', value = [{code = 'stat', stat = 'sexuals', operant = 'gte', value = 50}, {code = 'stat', stat = 'charm', operant = 'gte', value = 50, orflag = true}]}],
 				text = [ {text = "CALI_WILLIAM_11_1", reqs = []}],
@@ -499,7 +499,7 @@ var data = {
 				 ],
 			},
 			{
-				image = null, #not null but there is no 'meeting' in scenes' images 
+				image = 'cali_meeting',
 				tags = ['dialogue_scene'], 
 				reqs = [],
 				text = [ {text = "CALI_WILLIAM_11_2", reqs = []}],
@@ -511,7 +511,7 @@ var data = {
 		]
 	},
 	cali_william_12 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_meeting', tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ {text = "CALI_WILLIAM_12", reqs = []} ], 
 		options = [ {
@@ -523,9 +523,9 @@ var data = {
 	},
 	
 	cali_william_9 = { #proxy for effects
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_meeting', tags = ['dialogue_scene'], 
 		reqs = [],
-		text = [ {text = "CALI_WILLIAM_9", reqs = []} ], 
+		text = [], 
 		common_effects = [ #add quest progress
 			{code = 'real_affect_scene_characters', type = 'quest', duration = 7, id = 'cali_heirloom', name = 'QUESTWILLIAM'},
 			{code = 'decision', value = 'cali_heirloom_good'},
@@ -533,11 +533,11 @@ var data = {
 			
 		],
 		options = [ {
-			code = 'cali_grat_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}, {code = 'add_timed_event', value = "cali_return_init", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}]
+			code = 'cali_grat_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}, {code = 'add_timed_event', args = [{type = 'action_to_date', date = [1,1], hour = 2, action = 'quest'}], value = {quest = 'cali_heirloom_quest', stage = 'stage9'}}]
 		} ],
 	},
 	cali_william_10 = { #proxy for effects mostly
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_meeting', tags = ['dialogue_scene'], 
 		reqs = [],
 		text = [ {text = "CALI_WILLIAM_10", reqs = []} ], 
 		common_effects = [ #add quest progress
@@ -576,24 +576,36 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}]
 		} ],
 	},
-	
-	cali_returns = { #proxy for effects
-		image = null, tags = ['dialogue_scene'], 
-		reqs = [],
-		text = [ {text = "CALI_RETURNS", reqs = []} ], 
-		common_effects = [ #add quest progress
-			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = true},
-			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage8'}
-		],
-		options = [ {
-			code = 'cali_grat_bad', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		} ],
-	},
-	cali_grat_bad = {
+#
+#	cali_returns = { #proxy for effects
+#		image = null, tags = ['dialogue_scene'], 
+#		reqs = [],
+#		character = "cali",
+#		text = [ {text = "CALI_RETURNS", reqs = []} ], 
+#		options = [ {
+#			code = 'cali_grat_bad', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+#		} ],
+#	},
+	cali_returns = {
 		image = null, tags = ['dialogue_scene'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_GRAT_BAD", reqs = []} ],
+		common_effects = [ #add quest progress
+			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = true},
+			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage8'},
+			
+			{
+				code = 'unique_character_changes',
+				value = 'cali',
+				args = [
+					{code = 'take_virginity', type = 'vaginal', partner = 'william'},
+					{code = 'take_virginity', type = 'anal', partner = 'william'},
+					{code = 'metrics_randompartners', operant = '+', value = 3},
+					{code = 'obedience', operant = '=', value = 20},
+				]
+			},
+		],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'add_timed_event', args = [{type = 'action_to_date', date = [1,1], hour = 2, action = 'quest'}], value = {quest = 'cali_heirloom_quest', stage = 'stage9'}}]
 		} ],
@@ -640,6 +652,15 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		character = "cali",
+		common_effects = [
+		{
+			code = 'unique_character_changes',
+			value = 'cali',
+			args = [
+				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
+				{code = 'obedience', operant = '+', value = 90},
+			]
+		},],
 		text = [ {text = "CALI_GRAT_4", reqs = []} ], 
 		options = [ {
 			code = 'cali_grat_sex_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2

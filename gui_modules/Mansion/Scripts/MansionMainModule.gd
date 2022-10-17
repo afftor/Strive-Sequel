@@ -829,12 +829,13 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
+		globals.common_effects([{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}])
 
 		
-		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
-		ResourceScripts.game_progress.decisions.append("aire_is_saved")
+		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
+		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('cali_finale_6', '', {})
+		input_handler.interactive_message('cali_william_2', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
@@ -845,10 +846,9 @@ func test_mode():
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
 #		input_handler.interactive_message('pre_final_boss_paladin_knight', '', {})
 
-		ResourceScripts.game_progress.completed_quests.append("princess_search")
+		ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")
 
-#		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
 #		globals.common_effects([{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])

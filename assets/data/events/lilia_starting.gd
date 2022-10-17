@@ -175,8 +175,8 @@ var data = {
 	},
 	
 	sick_lilia_start = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "lilia", 
+		image = 'lilia_sick', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], #character = "lilia", 
 		text = [{text = "SICK_LILIA_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

@@ -465,7 +465,7 @@ var gold_tasks_data = {
 		tags = [],
 	},
 	pussy = {
-		code = 'petting',
+		code = 'pussy',
 		formula = 'gold_pussy',
 		text_events = [],
 		workstats = ['sex_skills_pussy'],

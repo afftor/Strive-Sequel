@@ -28,6 +28,9 @@ var timeforinteraction = 20
 var permanent_classes = ['master','renown_royalty','broken_royalty','alios_champion']
 
 
+var debug_mode = false
+var no_obedience_drain = true
+
 #var hour_turn_limit = 8
 
 enum {PANEL_SOC, PANEL_COM}

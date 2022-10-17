@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lilia healing.png-f6750d9c074aab14977ddc5897a176c9.stex"
+path="res://.import/lilia_sick.png-9e1edeb1b6e2a874251ffbf48b43af54.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/lilia healing.png"
-dest_files=[ "res://.import/lilia healing.png-f6750d9c074aab14977ddc5897a176c9.stex" ]
+source_file="res://assets/images/scenes/lilia_sick.png"
+dest_files=[ "res://.import/lilia_sick.png-9e1edeb1b6e2a874251ffbf48b43af54.stex" ]
 
 [params]
 

@@ -5738,7 +5738,7 @@ You lay your cock across her pretty face and she licks your balls at your instru
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """Daisy's clear blue eyes gaze up at you longingly as she plants little licks and kisses along your cock. Her oral skills are amateurish at best, but her eagerness to please you makes up for her lack of technique. There will be plenty of time to teach her how to use her lips and tongue properly.
 
 You look down at her and smile indulgently. Her left hand has dropped down between her thighs, and you can see how she touches her pussy when she thinks you won't notice. Her breath against your penis grows quicker as you nod your approval for her to continue.""",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3 = """"Daisy's tongue licks all the way from the base of your shaft to the swollen head of your penis and she looks up at you adoringly as her lips part to take you into her grateful mouth. Her other hand comes up and begins to work your shaft as her head bobs up and down on your cock, never breaking eye contact with you as her tongue coils around your member. 
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3 = """Daisy's tongue licks all the way from the base of your shaft to the swollen head of your penis and she looks up at you adoringly as her lips part to take you into her grateful mouth. Her other hand comes up and begins to work your shaft as her head bobs up and down on your cock, never breaking eye contact with you as her tongue coils around your member. 
 
 You run your hands around her head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeaks softly at the sensation as you pull her head gently but firmly down onto your penis, pressing the head of your cock into her delicate throat.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4 = """As you push your cock deeper into her mouth, Daisy's eyes tear up involuntarily. She moans around the thick penis filling her throat as you use her ears to force yourself deeper into her. Still her gaze never leaves yours as you press her lips up against your pubic hair and cram your whole length into her face.
@@ -6088,29 +6088,38 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
 	DAISY_CONSENSUAL_1 = """Daisy stands waiting obediently in her maid outfit as you finish some paperwork. Rising, you spend a minute inspecting her, running your hands over her body and gently squeezing her breasts. You inquire whether she is happy to be back at your mansion.
 
-{color=yellow|Daisy:— Y-yes, Master. I'm happy to be of use to you.}
+{color=yellow|Daisy:— Y-yes, [Master]. I'm happy to be of use to you.}
 
 You nod and lift the hem of the maid dress, then slowly peel her panties down over her thighs to let them fall around her ankles. Daisy's breath hitches as arousal stirs her and she steps daintily out of her discarded underwear.""",
 	DAISY_CONSENSUAL_2 = """You continue your inspection, exposing her breasts and slipping a hand between her thighs to check her pussy. Her bare cunt is noticeably warm to the touch and as you press a finger into her slit, her slick pussy-lips part readily. Daisy gasps in pleasure as your finger probes deep into her hot little hole and you feel her trained internal muscles tighten.
 
-{color=yellow|Daisy:— Oh! Oh, master! Your fingers feel so good inside me... You are too kind to me, master...}
+{color=yellow|Daisy:— Oh! Oh, [Master]! Your fingers feel so good inside me... You are too kind to me, master...}
 
 There are tears in her eyes as she trembles with need.""",
-	DAISY_CONSENSUAL_3 = """You lift Daisy's dress up over the top of her stockings, exposing her bare ass. She strokes your shaft lovingly, pressing the head of your cock between her quivering thighs as your fingers tease her hard nipples.. 
+	DAISY_CONSENSUAL_3_SERVE = """{color=yellow|Daisy:— Of course, [Master].}
+	
+Daisy obediently lowers to pull her panties down to ease your access to her privates. Once she's done you authoritatively push her onto the table. 
+	
+You lift Daisy's dress up over the top of her stockings, exposing her bare rear. Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. She sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
+	DAISY_CONSENSUAL_3 = """You lift Daisy's dress up over the top of her stockings, exposing her bare ass. She strokes your shaft lovingly, pressing the head of your cock between her quivering thighs as your fingers tease her hard nipples. 
 
 Your hand circles Daisy's neck and pulls her head down to the desk. Her hands can't reach your penis anymore, so she uses them to spread the cheeks of her ass apart. With your grip on her throat you pull her head back up a little while keeping her belly pressed down on the table. Her wet pussy grinds against your penis as she moans in desire.
 
 Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. Bent low over the desk, she sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
 	DAISY_CONSENSUAL_4 = """You rail Daisy hard over the table, banging her hips against its wooden surface as your cock plunges into her wet and obedient pussy. She yelps in pleasure as you repeatedly drive your penis deep inside her, her rabbit-tail bobbing up and down in excitement while her nipples graze the tabletop.
 
+{color=yellow|Daisy:— Aa-ah, [Master]... You are too rough!..}
+
 Daisy's pussy clamps tightly around your cock as her whole body shudders in orgasm. You keep pounding her, your own orgasm approaching fast as her silky cunt spasms around your thrusting meat. You release her throat so you can grab her hips and fuck her harder.
 
 Daisy looks back at you imploringly as you bury your cock in her up to the hilt. Her ass bucks against your hips, trying to take you deeper and you feel the head of your penis pressing on her womb.""",
-	DAISY_CONSENSUAL_5 = """Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
+	DAISY_CONSENSUAL_5 = """{color=yellow|Daisy:— [Master]!... I'm about to... I'm cumming!}
+
+Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
 
 Casually, you spank her a few times and pinch the springy flesh of her ass as it reddens. You slide your cock out of her hole and your cum begins to leak from her pussy, trickling slowly down her bare thighs and into her stockings.
 
-You buckle your pants and order her to get back to work.""",
+{color=yellow|Daisy:— Thank you, [Master]... I love you.}""",
 
 
 	
@@ -6492,18 +6501,25 @@ After a few hours every guest in the room has had a round with [spousename] and 
 	MARRIAGE_NIGHT_2_2 = """[spousename] returns you a saddened look but nods in agreement. You decide to go to sleep and call it a day.""",
 	
 	DAISY_SERVE_OPTION_START = "Serve me",
-	DAISY_SERVE_START_1 = "— Of course, [master]. What part of my body would you like to use?",
+	DAISY_SERVE_START_1 = "— Of course, [Master]. What part of my body would you like to use?",
 	DAISY_SERVE_START_2 = """— O-Of course, [Master]... How can I serve you best..?
 
 Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_OPTION_1_1 = "Use your mouth",
 	DAISY_SERVE_OPTION_1_2 = "Bend over",
 	DAISY_SERVE_OPTION_1_3 = "Nevermind",
-	DAISY_SERVE_1_1 = """Placeholder""",
-	DAISY_SERVE_1_2 = """Placeholder""",
-	DAISY_SERVE_2_1 = """Placeholder""",
-	DAISY_SERVE_2_2 = """Placeholder""",
-	DAISY_SERVE_2_3 = """Placeholder""",
+	
+	
+	CALI_SERVE_START_1 = "— ...You mean like naughty stuff? Okay, I don't mind if it's with you, [Master]. ",
+	CALI_SERVE_START_2 = """— What can I do for you, [Master]?
+
+It seems Cali's training has paid off and she does not hesitate answering.""",
+	CALI_SERVE_OPTION_1_1 = "Use your mouth",
+	CALI_SERVE_OPTION_1_2 = "We do it standing",
+	CALI_SERVE_OPTION_1_3 = "Nevermind",
+	
+	
+	
 	
 	
 	GRYPHON_AIRE_START = """As you walk through the grounds of your mansion one morning, you notice a young elf girl, Aire, diligently training with her bow and arrows at the makeshift archery range. You watch her for some time, noticing how firm her concentration is.
@@ -8280,12 +8296,12 @@ Cali: - Let's go visit this guy, hopefully he still has it.""",
 
 After a brief acquaintance, you get to the business and explain what you came for. 
 
-- I'm glad you've visited, Mayor. What do I owe to this? """,
+William: - I'm glad you've visited, Mayor. What do I owe to this? """,
 	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant",
 	CALI_WILLIAM_1_OPTION_2 = "There was an item sold to you by bandits.", 
 	CALI_WILLIAM_2 = """Cali timidly retells the events she went through. You can notice that she's rather intimidated by the splendor of this manor. 
 
-- Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
+William: - Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
 
 Cali: - You're kidding me!? That price is insane!
 
@@ -8294,61 +8310,61 @@ Cali blurts out in anger but the owner doesn't seem startled in the slightest.""
 	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide", 
 	CALI_WILLIAM_3 = """- Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money so I can be patient enough to get the best offer for it.
 
-- But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
+William: - But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
 
 William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
 
-- You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
+William: - You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
 
 As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
-- Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
+William: - Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
 	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
 	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
 	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
-	CALI_WILLIAM_4 = """ """, #no text for some reason
+	CALI_WILLIAM_4 = """William stays quiet, waiting for your proposal.""", 
 	CALI_WILLIAM_4_OPTION_1 = "She is not really worth it. I might offer you a much better servant in exchange.",
 	CALI_WILLIAM_4_OPTION_2 = "Cali is of a much higher caliber than you think.", 
 	CALI_WILLIAM_4_OPTION_3 = "Cali will do this.", 
 	CALI_WILLIAM_4_OPTION_4 = "Maybe this is too early to decide on just yet...", 
 	CALI_WILLIAM_5 = """William considers the proposal for a moment then nods.
 
-- Very well, she does not seem all that refined I suppose.
+William: - Very well, she does not seem all that refined I suppose.
 
 Cali's face is soon one of anger, but she wisely keeps quiet..
 
-- Then, I'd like to know of the servant you will be trading in her place. """, 
+William: - Then, I'd like to know of the servant you will be trading in her place. """, 
 	CALI_WILLIAM_5_OPTION_2 = "*Reconsider*", 
 	CALI_WILLIAM_6 = """- Fine by me. It will be waiting for you unless another makes an offer. """, 
 	CALI_WILLIAM_7 = """As you make it out of the mansion, Cali stops you. Her voice is low and she's clearly uncomfortable with the situation.
 
-- H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. """,
+Cali: - H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. """,
 	CALI_WILLIAM_7_OPTION_1 = "I'll consider it",
 	CALI_WILLIAM_7_OPTION_2 = "I won't let him lay a hand on you even if you are okay with it", 
 	CALI_WILLIAM_8_1 = """Cali nods and you quietly continue on your way back home.""",
 	CALI_WILLIAM_8_2 = """- Hey now, you do care for me. I'm not really used to this... but thanks.
 
 Cali blushes to your sudden protective statement, her opinion of you notably improves.""",
-	CALI_WILLIAM_9 = """ """, #no text currently
-	CALI_REPLACEMENT_RETURNS = """ """, #no text currently
+	CALI_WILLIAM_9 = """William: - Very well, this will suffice. In this case, pleasure doing business with you.""",
+	CALI_REPLACEMENT_RETURNS = """At the arranged date, the [name], which you sent to William returns back to your mansion. """, 
 	CALI_WILLIAM_10 = """Cali meekly nods at your decision and as you prepare the papers. She will stay at William's manor for now while you return home.""", 
-	CALI_RETURNS = """ """, #no text currently
+	CALI_RETURNS = """At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay.""", 
 	CALI_WILLIAM_11_1 = """The man takes another long look at Cali as she catches on to the implication, doing her best to appear femininely attractive. 
 
-- That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
+William: - That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
 	CALI_WILLIAM_11_2 = """William takes another long look at Cali but she does not seem to catch on with your intent, giving him a hostile look.
 
-- I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
+William: - I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
 	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3,000 gold for a week with her.",
 	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days",
 	CALI_WILLIAM_12 = """The man stays quiet for some time as he deliberately inspects the wolf-girl. Finally he relents.
 
-- Very well, if your assessment is correct of her and her skills this will be well worth it.
+William: - Very well, if your assessment is correct of her and her skills this will be well worth it.
 
 You take Cali aside and explain to her that this is her duty for now. 
 
-- Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
+Cali: - Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
 
 In the end she accepted that she had to deal with the consequences of her own actions.""", 
 	CALI_WILLIAM_13 = """As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.""", 
@@ -8714,7 +8730,7 @@ Lilia hesitates for a bit but her attitude towards you eventually sways her choi
 	
 	SICK_LILIA_START = """After a few days since Lilia moved in with you, one morning you find her in bed extremely weakened.
 
-- [name]... I don't feel... so well... Can I... rest for today?
+- [name]... I don't feel... so well... Can I... Please, rest for today?
 
 Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
 	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
@@ -8940,9 +8956,9 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "Visit William at Aliron City",
 	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William",
 	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return",
-	CALI_HEIRLOOM_QUEST_STAGE_8 = "", #sword get
-	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
-	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
+	CALI_HEIRLOOM_QUEST_STAGE_8 = "Wait for some time",
+	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali",
+	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home",
 	
 	SICK_LILIA_QUEST_NAME = "Lilia: Homesick",
 	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",

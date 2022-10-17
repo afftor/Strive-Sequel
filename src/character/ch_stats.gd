@@ -1192,7 +1192,7 @@ func tick():
 	if !parent.get_ref().is_master():
 		add_stat('loyalty', get_stat('loyalty_gain'))
 		add_stat('loyalty_total', get_stat('loyalty_gain'))
-		if !parent.get_ref().is_spouse():
+		if !parent.get_ref().is_spouse() && variables.no_obedience_drain == false:
 			add_stat('obedience', - get_stat('obedience_drain'))
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:

@@ -204,8 +204,8 @@ func open_gear():
 
 var sources = {
 	brothel_customer = "a customer of a brothel",
-	guild_trainer = "a guild trainer",
-	
+	guild_trainer = "a guild trainer, during sex toy training",
+	william = "William, Aliron's famous collector",
 }
 
 func displaymetrics():
@@ -259,7 +259,7 @@ func displaymetrics():
 				if source.id == ResourceScripts.game_party.get_master().id:
 					text += "\n[His] first experience with anal penetration was with {color=yellow|you}."
 				else:
-					text += "\n[His] first experience with anal penetration was with  {color=yellow|" + source.name + "}."
+					text += "\n[His] first experience with anal penetration was with {color=yellow|" + source.name + "}."
 			else:
 				text += "\n[His] first experience with anal penetration was with  {color=yellow|" + sources[person.get_stat('anal_virgin_lost').source] + "}."
 	
