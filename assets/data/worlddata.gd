@@ -1080,7 +1080,7 @@ var questdata = {
 		name = 'Gear Supply',
 		descript = 'The Fighters Guild requires a gear of certain quality. ',
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','wooodiron']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], range = [1,1], parts = {ArmorTrim = ['steel','obsidian','clothmagic','woodmagic']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather'], range = [1,1], parts = {ArmorBaseMed = ['leatherthick','leathermythic','insect_chitin','lizard_skin','boneancient']}},
@@ -1103,7 +1103,7 @@ var questdata = {
 			
 			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
-			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantium']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
@@ -2298,7 +2298,7 @@ var dungeons = {
 	},
 	quest_cali_bandits_location = {
 		code = 'quest_cali_bandits_location',
-		type = 'encounter',
+		type = 'dungeon',
 		name = "Bandit's Hideout",
 		classname = '',
 		descript = '',

@@ -59,20 +59,6 @@ func update():
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 	
-#		var authority
-#		if person.get_stat('authority') < person.authority_threshold()/2:
-#			authority = 'low'
-#		elif person.get_stat('authority') < person.authority_threshold():
-#			authority = 'medium'
-#		else:
-#			authority = 'high'
-#		text = variables.authority_lines[authority]
-#
-#		$Panel/authoritylabel.text = 'Authority: ' + text
-#		if authority == "low":
-#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
-#		else:
-#			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
 	
 		$Panel/loyaltylabel.text = "Loyalty Gain: " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\nObedience Drain: " + str(person.get_stat("obedience_drain"))
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)

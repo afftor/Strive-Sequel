@@ -258,19 +258,17 @@ var data = {
 			bonus_effects = []
 		} ],
 	},
-	cali_bandits_3 = { #victory
-		image = null, tags = ['dialogue_scene'], 
+	cali_bandits_3 = {
+		image = 'cali_bandit_win', tags = ['dialogue_scene'], 
 		reqs = [],
-		character = "cali",
 		text = [ {text = "CALI_BANDITS_3", reqs = []} ], 
 		options = [ {
 			code = 'cali_bandits_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'play_sound', value = 'slap'}]
 		} ],
 	},
 	cali_bandits_4 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_bandit_win', tags = ['dialogue_scene'], 
 		reqs = [],
-		character = "cali",
 		text = [ {text = "CALI_BANDITS_4", reqs = [], previous_dialogue_option = 1},],
 		options = [ {
 			code = 'cali_bandits_5', text = "CALI_BANDITS_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -281,9 +279,8 @@ var data = {
 		 ],
 	},
 	cali_bandits_5 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_bandit_win', tags = ['dialogue_scene'], 
 		reqs = [],
-		character = "cali",
 		text = [ 
 			{text = "CALI_BANDITS_5_1", reqs = [], previous_dialogue_option = 1},
 			{text = "CALI_BANDITS_5_2", reqs = [], previous_dialogue_option = 2},
@@ -301,9 +298,8 @@ var data = {
 		 ],
 	},
 	cali_bandits_6 = {
-		image = null, tags = ['dialogue_scene'], 
+		image = 'cali_bandit_win', tags = ['dialogue_scene'], 
 		reqs = [],
-		character = "cali",
 		text = [ 
 			{text = "CALI_BANDITS_6_1", reqs = [], previous_dialogue_option = 1},
 			{text = "CALI_BANDITS_6_2", reqs = [], previous_dialogue_option = 2},
@@ -906,7 +902,7 @@ var data = {
 		 ],
 	},
 	cali_finale_3 = {
-		image = null, #there should be 'image' but i found no one matching
+		image = 'cali_mother_dead',
 		tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [ {text = "CALI_FINALE_3", reqs = [], previous_dialogue_option = 1},],
@@ -914,7 +910,7 @@ var data = {
 		 ],
 	},
 	cali_finale_4 = {
-		image = null, #there should be 'image' but i found no one matching
+		image = 'cali_mother_dead', 
 		tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [ {text = "CALI_FINALE_4", reqs = [], previous_dialogue_option = 1},],

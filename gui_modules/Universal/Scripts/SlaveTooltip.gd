@@ -122,15 +122,6 @@ func showup(node, person):
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 
 		var authority
-#		if person.get_stat('authority') < person.authority_threshold()/2:
-#			authority = 'low'
-#		elif person.get_stat('authority') < person.authority_threshold():
-#			authority = 'medium'
-#		else:
-#			authority = 'high'
-#		authority_text = authority_lines[authority]
-#
-#		$Panel/authoritylabel.text = 'Authority: ' + authority_text
 
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')

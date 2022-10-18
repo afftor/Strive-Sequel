@@ -472,8 +472,6 @@ func finish_learning():
 			else:
 				res_text += "\nNo traits acquired"
 		'slave_training':
-#			parent.get_ref().add_stat('authority', 100)
-#			res_text += "\n%s + 100" % statdata.statdata.authority.name
 			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
 			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
 			if randf() < 0.5:
