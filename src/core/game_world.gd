@@ -38,6 +38,9 @@ func fix_serialization():
 				print("wrong questnumber for %s - counters resetted" % [guild.name])
 			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 				print("wrong questnumber for %s - unallocated quests" % [guild.name])
+	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
+	if tmp.type != 'dungeon': 
+		tmp.type = 'dungeon'
 
 
 func fix_import(data):
