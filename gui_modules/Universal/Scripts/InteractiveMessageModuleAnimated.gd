@@ -149,6 +149,12 @@ var stored_scene
 func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
+	if args.has("changed_window_type"): # transfering prev option on scene change
+		match gui_controller.dialogue_window_type:
+			1:
+				input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = argument
+			2:
+				 input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = argument
 	input_handler.interactive_message_follow(code, '', args)
 
 
