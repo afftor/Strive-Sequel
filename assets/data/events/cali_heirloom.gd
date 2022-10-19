@@ -405,7 +405,7 @@ var data = {
 		},
 		{
 			code = 'cali_grat_1', text = "CALI_WILLIAM_3_OPTION_2", reqs = [{type = 'has_money', value = 5000}], dialogue_argument = 2, type = 'next_dialogue',
-			bonus_effects = [{code = 'money_change', operant = '-', value = 5000}, {code = 'decision', value = 'cali_heirloom_good'},{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage8'},{code = 'update_city'}, {code = 'add_timed_event', value = "cali_return_init", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}],
+			bonus_effects = [{code = 'money_change', operant = '-', value = 5000}, {code = 'decision', value = 'cali_heirloom_good'},{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage8'},{code = 'update_city'}, {code = 'add_timed_event', args = [{type = 'action_to_date', date = [1,1], hour = 2, action = 'quest'}], value = {quest = 'cali_heirloom_quest', stage = 'stage9'}}],
 		},
 		{
 			code = 'close', text = "CALI_WILLIAM_3_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}]
