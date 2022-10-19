@@ -591,7 +591,7 @@ func select_brothel_activity():
 		
 		ResourceScripts.game_res.money += goldearned
 	else:
-		work = ''
+		remove_from_task()
 		parent.get_ref().rest_tick()
 
 
