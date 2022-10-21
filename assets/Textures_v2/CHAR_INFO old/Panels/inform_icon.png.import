@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forge1_hl.png-c78e582cb892c565ca23937a78c69e0f.stex"
+path="res://.import/inform_icon.png-36376bcbb679e95cfaa626368551e97d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/buildings/forge1_hl.png"
-dest_files=[ "res://.import/forge1_hl.png-c78e582cb892c565ca23937a78c69e0f.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon.png"
+dest_files=[ "res://.import/inform_icon.png-36376bcbb679e95cfaa626368551e97d.stex" ]
 
 [params]
 

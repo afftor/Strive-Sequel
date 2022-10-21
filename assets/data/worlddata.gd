@@ -38,6 +38,7 @@ var lands = {
 			{code = 'cali_william_init', text = "Search for collectioner", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_1', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_3', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], args = {"oneshot": false}},
+			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -757,11 +758,10 @@ var locations = {
 		actions = [],
 		event_pool = [],
 		options = [
-			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false}, {type = 'decision', value = 'mayor_election_finished', check = true}, 
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_STARTING_1'}],
+			{text = 'Check Surroundings', reqs = [
+				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
 				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
-			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false},
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LILIA_STARTING_1'}],
+			{text = 'Check Surroundings', reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
 				args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]},
 		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},

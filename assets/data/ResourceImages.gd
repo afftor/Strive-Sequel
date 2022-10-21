@@ -613,6 +613,7 @@ var upgrade_icons = {
 	rooms = load("res://assets/images/gui/upgrades/rooms.png"),
 	rooms_lux = load("res://assets/images/gui/upgrades/rooms_lux.png"),
 	woodcutting = load("res://assets/images/gui/upgrades/woodcutting.png"),
+	academy = load("res://assets/images/gui/upgrades/academy.png")
 
 
 

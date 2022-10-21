@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/city_hall_hl.png-afce81677766dfcd96fb0f594b880e08.stex"
+path="res://.import/academy.png-2b6c16b63894871a3e4fe6f2e8899096.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/buildings/city_hall_hl.png"
-dest_files=[ "res://.import/city_hall_hl.png-afce81677766dfcd96fb0f594b880e08.stex" ]
+source_file="res://assets/images/gui/upgrades/academy.png"
+dest_files=[ "res://.import/academy.png-2b6c16b63894871a3e4fe6f2e8899096.stex" ]
 
 [params]
 

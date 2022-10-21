@@ -519,6 +519,7 @@ func test_mode():
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
+		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('BeastkinCat', 'male', 'random')
 		character.unlock_class("master")
@@ -835,7 +836,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		#input_handler.interactive_message('cali_william_2', '', {})
+		input_handler.interactive_message('xari_encounter6', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		

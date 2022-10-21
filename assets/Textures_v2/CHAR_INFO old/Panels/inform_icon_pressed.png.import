@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate_hl.png-8e826d683491995c7477b34d63731263.stex"
+path="res://.import/inform_icon_pressed.png-d564b47fea0bc0258ac4b1a621a240be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/buildings/gate_hl.png"
-dest_files=[ "res://.import/gate_hl.png-8e826d683491995c7477b34d63731263.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon_pressed.png"
+dest_files=[ "res://.import/inform_icon_pressed.png-d564b47fea0bc0258ac4b1a621a240be.stex" ]
 
 [params]
 

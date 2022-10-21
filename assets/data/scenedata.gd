@@ -1937,6 +1937,15 @@ var quests = {
 			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
 		},
 	},
+	lilia_meet_quest = {
+		code = "lilia_meet_quest",
+		summary = "LILIA_MEET_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "LILIA_MEET_QUEST_NAME", descript = "LILIA_MEET_QUEST_STAGE_1"}, # talk to Myr
+			stage2 = {code = 'stage2', name = "LILIA_MEET_QUEST_NAME", descript = "LILIA_MEET_QUEST_STAGE_2"}, # go to Xari
+		},
+		
+	},
 	sick_lilia_quest = {
 		code = 'sick_lilia_quest',
 		summary = "SICK_LILIA_QUEST_SUMMARY",
