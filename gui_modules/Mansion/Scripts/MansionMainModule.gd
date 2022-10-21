@@ -835,7 +835,8 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('cali_william_2', '', {})
+		input_handler.interactive_message('xari_encounter7', '', {})
+		input_handler.interactive_message('xari_encounter7', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
