@@ -478,8 +478,18 @@ var stat_icons = {
 
 func select_job(button, person):
 	person = get_parent().active_person
-	if selected_job.code == "rest" || (selected_job.code == person.get_work() && selected_job.code != 'brothel'):
+	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
 		set_rest(button, person)
+		return
+	if selected_job.code == "rest":
+		set_rest(button, person)
+		show_brothel_options()
+		return
+	if selected_job.code == 'brothel':
+		person.assign_to_task('brothel', 'brothel')
+		show_brothel_options()
+		update_status(button, person)
+		show_faces()
 		return
 	# disable 
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
@@ -511,7 +521,6 @@ func select_job(button, person):
 			return
 	
 	
-	
 	var gatherable = Items.materiallist.has(selected_job.code)
 	if location.type == "dungeon":
 		if selected_job.has("production_item"):
@@ -532,8 +541,7 @@ func select_job(button, person):
 	#update_characters() # change for status update
 	update_status(button, person)
 	show_faces()
-	if selected_job.code == 'brothel':
-		show_brothel_options()
+	
 	#get_parent().mansion_state_set("default")
 
 
