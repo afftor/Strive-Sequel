@@ -746,7 +746,7 @@ var TranslationDict = {
 	TASKBUILDINGDESCRIPT = "Work on the current upgrade. Upgrade must be set in Upgrades menu. ",
 	TASKTRAVEL = "Travel",
 	TASKREST = "Rest",
-	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery.",
+	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery. Will not do any work while resting.",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",
@@ -1449,7 +1449,7 @@ var TranslationDict = {
 	TRAITSELFISHDESCRIPT = "Can't use combat supporting Abilities.",
 	TRAITCOWARDDESCRIPT = "Hit Rate -50.",
 	TRAITFRIGIDDESCRIPT = "Can't acquire new sex traits. Maximum lust is reduced by 50%.",
-	TRAITBAWDYDESCRIPT = "Prostitution mod +25%.",
+	TRAITBAWDYDESCRIPT = "Service Mod +25%.",
 	TRAITFORAGERDESCRIPT = "30% Chance to not consume any food on day end.",
 	TRAITTALENTEDDESCRIPT = "Task Crit chance +15%.",
 	TRAITMENIALDESCRIPT = "Task Crit chance is set to 0.",
@@ -6552,7 +6552,7 @@ After another couple of precise shots she turns to you questioningly .
 	GRYPHON_AIRE_5 = """— Don't start drooling before it's done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia's protector.""",
 	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
 	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard",
-	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
+	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed. Not that I care, but we gonna be in trouble if that happens.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "I'm looking for an Elder Gryphon...",
 	GRYPHON_WORKERS_START = """— Hmm, I dunno de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
@@ -8639,6 +8639,15 @@ Cali: - Was this...?
 Amelia: - Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.
 """,
 	
+	LILIA_PRELUDE1 = """As you walk through the streets, you eavesdrop an uncommon conversation apparently from one of adventurers. 
+
+Citizen A: - I'm telling you, After I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.
+
+Citizen B: - That's like for all of them, no? 
+
+Citizen A: - Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...""",
+	LILIA_PRELUDE2 = "You decide to make a note about this and perhaps visit it next time you go to elven forests.",
+	
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
@@ -8960,6 +8969,11 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali",
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home",
 	
+	LILIA_MEET_QUEST_NAME = "Lilia: Fairy Unusual",
+	LILIA_MEET_QUEST_SUMMARY = "You've learned about an extraordinary fairy which resides in one of forest settlements. Perhaps its worth investigating",
+	LILIA_MEET_QUEST_STAGE_1 = "Find a fairy you've heard about in one of forest settlements",
+	LILIA_MEET_QUEST_STAGE_2 = "Persuade Lilia to join you",
+	
 	SICK_LILIA_QUEST_NAME = "Lilia: Homesick",
 	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",
 	SICK_LILIA_QUEST_STAGE_1 = "Ask Myr for help",
@@ -8994,8 +9008,30 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
 
-
 	
+	
+	
+	
+	
+	METRICS_BASE = "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
+	METRICS_DATES_MASTER = "[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
+	METRICS_DATES = "[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
+	METRICS_PARTNERS = "Overall [he] had sex with {color=yellow|%d} partners during all this time. ",
+	METRICS_PARTNERS_ONE = "[He] only had a {color=yellow|single partner} for all this time. ",
+	METRICS_PARTNERS_NONE = "[He] didn't appear to engage into sexual activity with anyone so far... ",
+	METRICS_IMPREGS = "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s). ",
+	METRICS_PEGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
+	METRICS_VIRGINITY_YOU = "[He] lost [his] vaginal virginity to {color=yellow|you}. ",
+	METRICS_VIRGINITY_OTHER = "[He] lost [his] vaginal virginity to {color=yellow|%s}. ",
+	METRICS_ANAL_VIRGINITY_YOU = "[His] first experience with anal penetration was with {color=yellow|you}. ",
+	METRICS_ANAL_VIRGINITY_OTHER = "[His] first experience with anal penetration was with {color=yellow|%s}. ",
+	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ",
+	METRICS_COMBAT = "[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies. ",
+	
+	
+	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
+	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
+	METRICS_SOURCE_WILLIAM = "William, Aliron's famous collector",
 }
 
 

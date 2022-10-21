@@ -41,10 +41,10 @@ margin_right = 1905.0
 margin_bottom = 1065.0
 
 [node name="TalkButton" type="TextureButton" parent="."]
-margin_left = 1209.23
-margin_top = 147.885
-margin_right = 1260.23
-margin_bottom = 198.885
+margin_left = 1221.36
+margin_top = 161.744
+margin_right = 1272.36
+margin_bottom = 212.744
 theme = ExtResource( 10 )
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 11 )

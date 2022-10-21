@@ -271,7 +271,7 @@ var data = {
 				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
 				]}], dialogue_argument = 2},
 			{ # Serve
-			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{code = "quest_completed", name = "daisy_training", check = true}], dialogue_argument = 3, repeat_next_day = true
+			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "quest_completed", name = "daisy_training", check = true}], dialogue_argument = 3, repeat_next_day = true
 		}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4},
 		],
@@ -324,13 +324,13 @@ var data = {
 		options = [
 			{
 			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [
-				{code = "quest_completed", name = "daisy_training", check = true}
+				{type = "quest_completed", name = "daisy_training", check = true}
 				], 
 			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
 			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [
-				{code = "quest_completed", name = "daisy_lost", check = true}], 
+				{type = "quest_completed", name = "daisy_lost", check = true}], 
 			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
@@ -558,13 +558,13 @@ var data = {
 		options = [
 			{
 			code = 'cali_serve_1_1', text = "CALI_SERVE_OPTION_1_1", reqs = [
-				{code = "quest_completed", name = "cali_heirloom_quest", check = true}
+				{type = "quest_completed", name = "cali_heirloom_quest", check = true}
 				], 
 			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
 			code = 'cali_serve_2_1', text = "CALI_SERVE_OPTION_1_2", reqs = [
-				{code = "quest_completed", name = "cali_heirloom_quest", check = true}], 
+				{type = "quest_completed", name = "cali_heirloom_quest", check = true}], 
 			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
@@ -646,7 +646,7 @@ var data = {
 			{text = "CALI_GRAT_SEX_1", reqs = []},
 		], 
 		options = [ {
-			code = 'daisy_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
@@ -659,7 +659,7 @@ var data = {
 			{text = "CALI_GRAT_SEX_2", reqs = []},
 		], 
 		options = [ {
-			code = 'daisy_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	

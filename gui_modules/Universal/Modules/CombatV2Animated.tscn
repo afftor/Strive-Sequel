@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://gui_modules/Animations/Label2_victory.tscn" type="PackedScene" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=56]
 [ext_resource path="res://gui_modules/Animations/button_victory_collect.tscn" type="PackedScene" id=57]
+[ext_resource path="res://assets/images/portraits/daisy_maid_portrait.png" type="Texture" id=58]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/line_blue.png" type="Texture" id=59]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=60]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=61]
@@ -746,17 +747,18 @@ texture = ExtResource( 38 )
 
 [node name="Panel3" type="TextureRect" parent="."]
 margin_left = 709.0
-margin_top = 100.0
+margin_top = 140.0
 margin_right = 1211.0
-margin_bottom = 198.0
+margin_bottom = 238.0
 texture = ExtResource( 37 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel3"]
+margin_top = -1.33484
 margin_right = 503.0
-margin_bottom = 102.0
+margin_bottom = 100.665
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Char Name"
@@ -770,9 +772,9 @@ __meta__ = {
 
 [node name="ItemPanel" type="TextureRect" parent="."]
 margin_left = 738.0
-margin_top = 257.0
+margin_top = 297.0
 margin_right = 1182.0
-margin_bottom = 508.0
+margin_bottom = 548.0
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1409,6 +1411,57 @@ margin_right = 124.05
 margin_bottom = 42.0
 custom_fonts/font = ExtResource( 23 )
 text = "Wood"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel4" type="Panel" parent="."]
+visible = false
+margin_left = 514.0
+margin_top = 53.0
+margin_right = 1405.0
+margin_bottom = 127.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
+anchor_top = -0.0240784
+anchor_bottom = -0.0240784
+margin_left = 13.3484
+margin_top = 9.83783
+margin_right = 870.348
+margin_bottom = 59.8378
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel4/VBoxContainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
+margin_left = 0.66748
+margin_top = 1.66856
+margin_right = 48.6675
+margin_bottom = 48.6686
+texture = ExtResource( 58 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel4/VBoxContainer/Button"]
+margin_left = 1.05945
+margin_top = 39.8811
+margin_right = 164.059
+margin_bottom = 73.8811
+rect_scale = Vector2( 0.3, 0.3 )
+value = 50.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

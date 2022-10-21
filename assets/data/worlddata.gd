@@ -38,6 +38,7 @@ var lands = {
 			{code = 'cali_william_init', text = "Search for collectioner", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_1', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_3', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], args = {"oneshot": false}},
+			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -757,11 +758,10 @@ var locations = {
 		actions = [],
 		event_pool = [],
 		options = [
-			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false}, {type = 'decision', value = 'mayor_election_finished', check = true}, 
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_STARTING_1'}],
+			{text = 'Check Surroundings', reqs = [
+				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
 				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
-			{text = 'Check Surroundings', reqs = [{type = 'decision', value = 'recruited_lilia', check = false},
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LILIA_STARTING_1'}],
+			{text = 'Check Surroundings', reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
 				args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]},
 		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
@@ -1080,7 +1080,7 @@ var questdata = {
 		name = 'Gear Supply',
 		descript = 'The Fighters Guild requires a gear of certain quality. ',
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','wooodiron']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], range = [1,1], parts = {ArmorTrim = ['steel','obsidian','clothmagic','woodmagic']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather'], range = [1,1], parts = {ArmorBaseMed = ['leatherthick','leathermythic','insect_chitin','lizard_skin','boneancient']}},
@@ -1103,7 +1103,7 @@ var questdata = {
 			
 			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
-			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantium']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
@@ -2298,7 +2298,7 @@ var dungeons = {
 	},
 	quest_cali_bandits_location = {
 		code = 'quest_cali_bandits_location',
-		type = 'encounter',
+		type = 'dungeon',
 		name = "Bandit's Hideout",
 		classname = '',
 		descript = '',

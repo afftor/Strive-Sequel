@@ -553,9 +553,20 @@ var brothel_rules = {
 }
 
 func show_brothel_options():
+	
 	$BrothelRules.show()
 	$BrothelRules/Label.text = "Service Rules: " + person.get_short_name()
 	input_handler.ClearContainer($BrothelRules/GridContainer)
+	
+	for i in ['rest']:
+		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		newbutton.text = tr("TASKREST")
+		globals.connecttexttooltip(newbutton, person.translate(tr("TASKRESTDESCRIPT")))
+		newbutton.pressed = person.get_work() == ''
+		if newbutton.pressed:
+			switch_rest(newbutton)
+		newbutton.connect('pressed', self, 'switch_rest', [newbutton])
+	
 	for i in brothel_rules.non_sex:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		if person.get_stat('sex') == "male" && races.gold_tasks_data[i].tags.has('has_alt_name'):
@@ -585,14 +596,6 @@ func show_brothel_options():
 					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
 					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}"))
 	
-	for i in ['rest']:
-		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		newbutton.text = tr("REST")
-		globals.connecttexttooltip(newbutton, person.translate(tr("RESTDESCRIPT")))
-		newbutton.pressed = person.get_work() == ''
-		if newbutton.pressed:
-			switch_rest(newbutton)
-		newbutton.connect('pressed', self, 'switch_rest', [newbutton])
 	
 	for i in brothel_rules.sexes:
 		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))

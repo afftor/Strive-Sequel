@@ -519,6 +519,7 @@ func test_mode():
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
+		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
 		character.create('BeastkinCat', 'male', 'random')
 		character.unlock_class("master")
@@ -636,8 +637,8 @@ func test_mode():
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
-		globals.impregnate(ResourceScripts.game_party.get_master(), character)
-		character.get_stat('pregnancy', true).duration = 2
+		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
+		#character.get_stat('pregnancy', true).duration = 2
 		var text = ''
 #		for i in races.tasklist.values():
 #			for k in i.production.values():
@@ -835,8 +836,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('xari_encounter7', '', {})
-		input_handler.interactive_message('xari_encounter7', '', {})
+		input_handler.interactive_message('xari_encounter6', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
@@ -847,7 +847,7 @@ func test_mode():
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
 #		input_handler.interactive_message('pre_final_boss_paladin_knight', '', {})
 
-		ResourceScripts.game_progress.completed_quests.append("daisy_lost")
+		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

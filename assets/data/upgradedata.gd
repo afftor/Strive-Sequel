@@ -852,7 +852,7 @@ var upgradelist = {
 	academy = {
 		code = 'academy',
 		name = '',
-		icon = "exotic_trader",
+		icon = "academy",
 		tree_position = {tab = 1, x = 9, y = 9},
 		descript = '',
 		category = 'facilitiy',

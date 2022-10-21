@@ -1,8 +1,27 @@
 var data = {
+	lilia_search_start = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [],
+		text = [{text = "LILIA_PRELUDE1", reqs = []}],
+		options = [ {
+			code = 'lilia_search_start_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		} ]
+	},
+	lilia_search_start_1 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], 
+		text = [{text = "LILIA_PRELUDE2", reqs = []}],
+		options = [{
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage1'},{code = 'update_location'}]
+		},]
+	},
+	
 	lilia_startring_1 = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_STARTING_1", reqs = []}],
+		common_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage2'},{code = 'update_location'}],
 		options = [ {
 			code = 'lilia_starting_2', text = "LILIA_STARTING_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true,
 		}, {
@@ -156,6 +175,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'add_timed_event', value = "sick_lilia_start", args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
+				{code = 'complete_quest', value = 'lilia_meet_quest'},
 				{code = 'update_location'},
 			]
 		}, ]

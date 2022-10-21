@@ -49,7 +49,6 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 495.05 ]
 }
-test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0

@@ -1,5 +1,17 @@
-Cali and Daisy should now be able to replay some of their scenes after thier quests are finished in the personal dialogues. Also characters should address their master nouns more often in scenes\
-Fixed multiple quest options
+0.6.5c
+Added entry quest for lilia recruitment
+Service options were moved to rest
+Fixed Cali's sword
+0.6.5b
+Cali and Daisy now require their questlines finished to marry and have unique respond lines
+Fixed some items not being used correctly
+Fixed marry proposal for certain unique characters not working properly
+Fixed some world generation data being incorrect
+Fixed one of the dungeons in cali's quest not being usable
+0.6.5a
+Cali and Daisy should now be able to replay some of their scenes after their quests are finished in the personal dialogues. Also characters should address their master nouns more often in scenes
+Fixed multiple quest options and illustrations
+Presumably fixed worker assignement bug
 0.6.5
 Finished Cali's main questline
 Added initial Lilia's questline with 2 scenes

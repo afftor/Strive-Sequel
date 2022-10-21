@@ -131,7 +131,6 @@ func initiate(tempperson):
 	self.mood = 0
 	self.drunkness = 0
 	self.turn = 10
-	self.authStart = tempperson.get_stat('authority')
 	self.consStart = tempperson.get_stat('consent')
 	self.finish_encounter = false
 	date = false
@@ -306,8 +305,7 @@ func updatelist():
 				newnode.disabled = true
 
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = "Consent: " + str(floor(person.get_stat("consent")))  #"Authority: " + str(floor(person.get_stat('authority'))) + "("  + str(person.authority_threshold()) + ")" + ",
-
+	var text = "Consent: " + str(floor(person.get_stat("consent"))) 
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -484,7 +482,7 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]} looks at you slightly puzzled. [He2] already agreed to this before.",1],
 	],
 	agreed_to_marry = [
-		["{^[name2]:[race2] [boy2]} face reddens and shines up upon hearing your words.",1],
+		["{^[name2]:[race2] [boy2]}'s face reddens and shines up upon hearing your words.",1],
 	],
 	refused_to_marry = [
 		["{^[name2]:[race2] [boy2]:[he2]} hastily abrupts you.",1],
@@ -1003,8 +1001,31 @@ var unique_marry_rules = {
 			agrees = false
 			},
 		
-	}
-		
+	},
+	daisy = {
+		daisy_quest_finished = {
+			reqs = [{type = "quest_completed", name = "daisy_lost", check = true}],
+			text = "A-are you for real, [Master]?.. I-if you find me worthy... Of course I agree!",
+			agrees = true
+			},
+		daisy_quest_unfinished = {
+			reqs = [{type = "quest_completed", name = "daisy_lost", check = false}],
+			text = "I-I'm sorry, [Master], I think this is a bit too sudden...",
+			agrees = false
+			},
+	},
+	cali = {
+		cali_quest_finished = {
+			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = true}],
+			text = "Really!? Of course I will. Nobody ever done so much for me... I love you, [Master]!",
+			agrees = true
+			},
+		cali_quest_unfinished = {
+			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = false}],
+			text = "That's really weird thing for you to say... Sorry, I don't think I'm ready yet.",
+			agrees = false
+			},
+	},
 }
 
 func ask_to_marry(person, counter):
@@ -1026,19 +1047,12 @@ func ask_to_marry(person, counter):
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agreed_before')) + "\n"
 		return text
-	
+	var unique_text = ""
 	if unique_marry_rules.has(person.get_stat('unique')):
-		for i in unique_marry_rules[person.get_stat('unique')]:
+		for i in unique_marry_rules[person.get_stat('unique')].values():
 			if globals.valuecheck(i.reqs):
 				gave_consent = i.agrees
-				if gave_consent:
-					text += "{color=green|"
-					text += input_handler.weightedrandom(date_lines.agreed_to_marry)
-				else:
-					
-					text += "{color=red|"
-					text += input_handler.weightedrandom(date_lines.refused_to_marry)
-				text += "}"
+				unique_text = i.text
 					
 				break
 	else:
@@ -1053,13 +1067,21 @@ func ask_to_marry(person, counter):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.agreed_to_marry)
 		text += "}"
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agree')) 
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: "
+		if unique_text != "":
+			text += unique_text
+		else:
+			text += person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agree')) 
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.refused_to_marry)
 		text += "}"
 		self.mood -= 25
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_refuse'))
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: "
+		if unique_text != "":
+			text += unique_text
+		else:
+			text += person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_refuse'))
 	
 	return text
 
@@ -1518,8 +1540,6 @@ func alcohol(person):
 	else:
 		text += "[he2] accepts your invitation and you slowly consume it, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
 		self.mood += 15
-		#person.add_stat('authority', 11)
-		#person.add_stat('consent', 2)
 
 		drunkness += 3
 		ResourceScripts.game_res.remove_item('alcohol',1)
@@ -1536,8 +1556,6 @@ func beer(person):
 	else:
 		text += "[he2] accepts your invitation and you casually drink together, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
 		self.mood += 10
-		#person.add_stat('authority', 5)
-		#person.add_stat('consent', 3)
 
 		drunkness += 1
 		ResourceScripts.game_res.remove_item('beer',1)
