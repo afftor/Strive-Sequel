@@ -364,6 +364,7 @@ func close(args = {}):
 	ch2 = null
 	previous_dialogue_option = 0
 	if gui_controller.dialogue_window_type == 2:
+		previous_text = ""
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 		gui_controller.dialogue_window_type = 1
 		var screen_duration = 1.0
@@ -379,6 +380,7 @@ func close(args = {}):
 			ResourceScripts.core_animations.FadeAnimation(self, transition_duration, screen_duration * 0.25)
 			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
 			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
+		$RichTextLabel.bbcode_text = ''
 	else:
 		ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
