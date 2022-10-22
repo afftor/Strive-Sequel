@@ -1525,6 +1525,13 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
+			name = "Ask for Limnrov", # TODO make text smaller
+			reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage2'}],
+			target = 'cali_act2_workers_2',
+			target_option = 1,
+		},
+		{
+			code = 'default',
 			name = "Meet Leader",
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}],
 			target = 'workers_introduction2',
@@ -1911,6 +1918,7 @@ var quests = {
 			stage2 = {code = 'stage2', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_2"}, # searh surroundings
 		},
 	},
+	
 	cali_servants_quest = {
 		code = 'cali_servants_quest',
 		summary = "CALI_SERVANTS_QUEST_SUMMARY",
@@ -1919,6 +1927,7 @@ var quests = {
 
 		},
 	},
+	
 	cali_heirloom_quest = {
 		code = 'cali_heirloom_quest',
 		summary = "CALI_HEIRLOOM_QUEST_SUMMARY",
@@ -1937,6 +1946,7 @@ var quests = {
 			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
 		},
 	},
+	
 	sick_lilia_quest = {
 		code = 'sick_lilia_quest',
 		summary = "SICK_LILIA_QUEST_SUMMARY",
@@ -1947,6 +1957,15 @@ var quests = {
 			stage35 = {code = 'stage35', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_35"}, # get clothes from troll
 			stage4 = {code = 'stage4', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_4"}, # return to Xari
 			stage5 = {code = 'stage5', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_5"}, # bring potion to Lilia
+		},
+	},
+	
+	cali_collar_quest = {
+		code = 'cali_collar_quest',
+		summary = "",
+		stages = {
+			stage1 = {code = 'stage1', name = "", descript = ""}, # ask at workers guild about custom collar
+			stage2 = {code = 'stage2', name = "", descript = ""}, # ask Limnrov about collar
 		},
 	},
 }

@@ -8808,6 +8808,76 @@ Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing 
 
 After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
 	
+	CALI_ACT1_1 = """Visiting your captive, Cali you stand there in silence, the girl looking up at you with a tired rage behind her eyes now.
+
+- W-what do you want now!?…  Haven’t you done enough?! Let me go!
+
+Staring her down you take a good look at her.  Slender and bruised, her body isn’t suited for labor, but she has to earn her keep.
+
+- You think I’ll work for you? After what you’ve done?""",
+	CALI_ACT1_1_OPTION_1 = "Whomever does not work shall not eat.",
+	CALI_ACT1_1_OPTION_2 = "Surely you don’t want to be sold to the slavers?  Your new Master’s will be far less kind.",
+	CALI_ACT1_1_OPTION_3 = "Perhaps you need another reminder like the one at caves?",
+	CALI_ACT1_2_1 = """Cali looks at you with her ears lowered as she averts her gaze.  Her eyes look around the building now, taking in everything as she seems to submit for now.  
+
+- Whatever, fine...""",
+	CALI_ACT1_2_2 = """Cali’s eyes turn cold as she seems to look through you.  Nodding after you finish telling her, she says nothing for the remainder of the day as her new duties begin.""",
+	CALI_ACT1_2_3 = """The girl lunges at you as you catch her by the throat, pinning her back firmly to the wall of the room. Tears pour from the girl's eyes as she looks at you with fury, her arms flailing at you in rage.
+
+- You fucking bastard! I’m not your whore!""",
+	CALI_ACT1_2_3_OPTION_1 = """You can certainly be treated like one, or you can work.""",
+	CALI_ACT1_2_3_OPTION_2 = """Serve with your labor, or serve with your body, Cali.""",
+	CALI_ACT1_3 = """The girl’s eyes well with tears as she nods.  For now she doesn’t fight you as she’s put to her new duties.""",
+	
+	CALI_ACT2_GONE = """You awake one morning to find your manor’s back door open. Your confusion is short-lived as you go down to check on Cali, finding her room empty. Finding the door’s lock picked, you curse aloud as it seems in her desperation she was able to escape.""",
+	CALI_ACT2_1 = """You’re going through your daily tasks as you check on your mansion.  Checking on Cali’s work now, her task is an arduous one. The girl is sweating profusely, her white shirt all but see-through now, the view of her breasts quite nice considering.
+
+The girl seeing you looks far from pleased, her eyes unfocusing as she can't even seem to look at you.
+
+- What are you looking at, huh?!  Did you not see enough already?!""",
+	CALI_ACT2_1_OPTION_1 = "I look where I please, slave.",
+	CALI_ACT2_1_OPTION_2 = "Keep up the hostility, Cali, it’ll make it all the sweeter when I take you again.",
+	CALI_ACT2_1_OPTION_3 = "I simply enjoy the view.",
+	CALI_ACT2_2_1 = """Cali growls at you now, her eyes showing a hatred that was rare to find.
+
+- You bastard! I’m not some dog on a leash!
+
+As you leave her be for now, you can’t help but muse at the thought “dog on a leash.”""",
+	CALI_ACT2_2_2 = """The girl turns her nose up at you defiantly instead focusing on her work now.
+
+- I’m not some mindless pet, asshole!
+
+You leave her to her work, thinking intently about making her into that very pet that she seemed so scared to become.""",
+	CALI_ACT2_2_3 = """Cali wasn’t expecting that reply as her face turned blood red.  Trying to hide it by getting back the girl was only partially successful.
+
+You decide to leave her alone for now. Perhaps something could make her more pliable to your will?""",
+	CALI_ACT2_3 = """Your thoughts have been increasingly focused on taming your new slave, Cali.  Cali has been difficult, the girl intent on refusing you.  After careful deliberation you come to the conclusion that just calling her your property is one thing, but she should look the part as well.
+
+A collar seems the most logical first step but a regular collar seems insufficient.  You decide it might be a better idea to  head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
+	CALI_ACT2_WORKERS_OPTION_1 = "Ask Sigmund about a specialist",
+	CALI_ACT2_WORKERS_1 = """Sigmund:- Wha? Someone to make a collar?  Are the ones at the market not good enough?
+
+You explain to the dwarf that the ones in the market are indeed fine, but what you’re looking for is a custom piece.  The burly male thinks for a few moments while scratching his beard before nodding.
+
+Sigmund:- Limnrov is who you’d want to find.  Ask up at the front for him, the receptionist can take you to ‘em.
+
+With nothing else to ask Sigmund, you leave him to continue running the Guild’s affairs.""",
+	CALI_ACT2_WORKERS_2 = """Once you bring up the name of the craftsman with the receptionist, it’s not long before you’re standing in a backroom that smells strongly of the tradesman’s craft.  Limnrov himself, is an older Dark Elf, his eyes sharp as he looks up at you from the excellent piece he’s currently working on.
+
+Limnrov: - I’d not sent for the courier yet.  Master William can wait a few hours longer on this repair.""",
+	CALI_ACT2_WORKERS_2_OPTION_1 = "I’m not a courier, I’m a customer.",
+	CALI_ACT2_WORKERS_2_OPTION_2 = "I’m here to hire you for your services.",
+	CALI_ACT2_WORKERS_3 = """The Dark Elf looks you up and down for a few more moments before giving a nod.
+
+Limnrov: - Ah, my mistake.  What can I do for you?
+
+You explain to Limnrov your desire to commission a custom piece for a recently acquired slave.  After asking you details he will need, the elf gives a stoic nod before looking at you. Two sketches are then laid out before you.
+
+Limnrov:- I’ve two designs I might suggest.  The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave.  The latter however, I’ve been eager to create.  A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_WORKERS_3_OPTION_1 = "What will you need to produce the simple collar?",
+	CALI_ACT2_WORKERS_3_OPTION_2 = "What will you need to produce the extravagant collar?",
+	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this",
+	
 	
 	
 	
