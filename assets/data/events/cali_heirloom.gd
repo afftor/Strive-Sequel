@@ -868,7 +868,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		character = "cali",
-		text = [ {text = "CALI_HECTOR_1", reqs = []} ], 
+		text = [ {text = "CALI_HECTOR_8", reqs = []} ], 
 		options = [ {
 			code = 'quest_fight', args = 'hector',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
