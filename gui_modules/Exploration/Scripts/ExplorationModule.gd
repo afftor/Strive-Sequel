@@ -2296,27 +2296,14 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
-				var value = round(
-					(
-						i.value
-						+ (
+				if i.value is Array:
+					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					newbutton.hint_tooltip = "Based on item"
+				else:
+					var value = round(
+						(
 							i.value
-							* variables.master_charm_quests_gold_bonus[int(
-								ResourceScripts.game_party.get_master().get_stat('charm_factor')
-							)]
-						)
-					)
-				)
-				newbutton.get_node("Icon").texture = images.icons.quest_gold
-				newbutton.get_node("amount").text = str(value)
-				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = (
-					"Gold: "
-					+ str(i.value)
-					+ " + "
-					+ str(
-						round(
-							(
+							+ (
 								i.value
 								* variables.master_charm_quests_gold_bonus[int(
 									ResourceScripts.game_party.get_master().get_stat('charm_factor')
@@ -2324,8 +2311,25 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					+ "(Master Charm Bonus)"
-				)
+					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					newbutton.get_node("amount").text = str(value)
+					newbutton.get_node("amount").show()
+					newbutton.hint_tooltip = (
+						"Gold: "
+						+ str(i.value)
+						+ " + "
+						+ str(
+							round(
+								(
+									i.value
+									* variables.master_charm_quests_gold_bonus[int(
+										ResourceScripts.game_party.get_master().get_stat('charm_factor')
+									)]
+								)
+							)
+						)
+						+ "(Master Charm Bonus)"
+					)
 			'reputation':
 				var value = round(
 					(

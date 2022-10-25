@@ -223,11 +223,15 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").show()
 					globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
 				'gold':
-					var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.get_node("TextureRect").texture = images.icons.quest_gold
-					newbutton.get_node("amount").text = str(value)
-					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + "(Master Charm Bonus)"
+					if i.value is Array:
+#						newbutton.get_node("amount").text = "Based on item"
+						newbutton.hint_tooltip = "Gold: based on item"
+					else:
+						var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+						newbutton.get_node("amount").text = str(value)
+						newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + "(Master Charm Bonus)"
+						newbutton.get_node("amount").show()
 				'reputation':
 					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.get_node("TextureRect").texture = images.icons[i.code]
@@ -361,7 +365,12 @@ func Reward():
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
-				ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				if i.value is Array:
+					var val = i.value[0] * selectedquest.turned_value
+					val *= 1 +  variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+					ResourceScripts.game_res.money += round(val)
+				else:
+					ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 			'reputation':
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
@@ -468,13 +477,17 @@ func hide_item_selection():
 
 
 func turn_in_quest_items():
+	if !selectedquest.has('turned_value') :
+		selectedquest.turned_value = 0
 	var amount = selected_req.value
 	for i in selected_items:
 		if i.amount < amount:
 			amount -= i.amount
+			selectedquest.turned_value += i.calculateprice() * i.amount
 			i.amount = 0
 		else:
 			i.amount -= amount
+			selectedquest.turned_value += i.calculateprice() * amount
 
 	selected_req.completed = true
 	$ItemSelectionPanel.hide()
