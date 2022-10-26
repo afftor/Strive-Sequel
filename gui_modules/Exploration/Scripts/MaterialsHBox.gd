@@ -44,7 +44,7 @@ func update():
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:
 					if (task.code == i) && (task.task_location == selected_location.code):
-						current_workers_count = task.workers_count
+						current_workers_count = task.workers.size()
 				newbutton.set_meta("max_workers", max_workers_count)
 				newbutton.set_meta("current_workers", current_workers_count)
 				newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)

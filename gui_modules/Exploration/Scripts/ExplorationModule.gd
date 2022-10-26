@@ -296,26 +296,28 @@ func open_location(data):
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
 				$LocationGui/Resources/SelectWorkers.visible = true
-			if gatherable_resources != null:
-				var stop_loop = false
-				for i in gatherable_resources:
-					if stop_loop:
-						break
-					var item = Items.materiallist[i]
-					var current_workers_count = 0
-					var active_tasks = ResourceScripts.game_party.active_tasks
-					if active_tasks.empty():
-						$LocationGui/Resources/SelectWorkers.visible = true
-						break
-					for task in active_tasks:
-						if (task.code == i) && (task.task_location == selected_location):
-							current_workers_count = task.workers_count
-							if current_workers_count < gatherable_resources[i]:
-								$LocationGui/Resources/SelectWorkers.visible = true
-								stop_loop = true
-								break
-							else:
-								$LocationGui/Resources/SelectWorkers.visible = false
+			if gatherable_resources == null:
+				$LocationGui/Resources/SelectWorkers.visible = false
+#			if gatherable_resources != null:
+#				var stop_loop = false
+#				for i in gatherable_resources:
+#					if stop_loop:
+#						break
+#					var item = Items.materiallist[i]
+#					var current_workers_count = 0
+#					var active_tasks = ResourceScripts.game_party.active_tasks
+#					if active_tasks.empty():
+#						$LocationGui/Resources/SelectWorkers.visible = true
+#						break
+#					for task in active_tasks:
+#						if (task.code == i) && (task.task_location == selected_location):
+#							current_workers_count = task.workers.size()
+#							if current_workers_count < gatherable_resources[i]:
+#								$LocationGui/Resources/SelectWorkers.visible = true
+#								stop_loop = true
+#								break
+#							else:
+#								$LocationGui/Resources/SelectWorkers.visible = false
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
 #	active_location = data
