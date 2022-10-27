@@ -477,7 +477,7 @@ var stat_icons = {
 }
 
 func select_job(button, person):
-	person = get_parent().active_person
+	self.person = person
 	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
 		set_rest(button, person)
 		return
@@ -489,6 +489,7 @@ func select_job(button, person):
 		person.assign_to_task('brothel', 'brothel')
 		show_brothel_options()
 		update_status(button, person)
+		update_resources()
 		show_faces()
 		return
 	# disable 
@@ -651,6 +652,7 @@ func switch_rest(button):
 		update_characters()
 		show_faces()
 		show_brothel_options()
+		update_resources()
 
 func set_rest(button, person):
 	person.remove_from_task()
