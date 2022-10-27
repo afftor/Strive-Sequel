@@ -15,10 +15,14 @@ func _ready():
 	$VBoxContainer/icon.connect("pressed", self, "custom_icon_open", ["portrait"])
 	$VBoxContainer/icon2.connect("pressed", self, "make_random_portrait")
 	$VBoxContainer/body.connect("pressed", self, "custom_icon_open", ["body"])
+	$VBoxContainer/uniquesprite.connect("pressed", self, 'unique_sprite_choose')
 	$Label.text = "Add Custom Description"
 	$ConfirmButton.connect("pressed", self, "confirm")
 	custom_description_open()
 
+func show():
+	.show()
+	$VBoxContainer/uniquesprite.visible = person.get_stat('unique') != null
 
 func unpress_buttons():
 	for button in $VBoxContainer.get_children():
@@ -79,6 +83,18 @@ func custom_icon_open(state):
 	ImageSelect.buildimagelist(state)
 	details_state = state
 
+func unique_sprite_choose():
+	unpress_buttons()
+	$VBoxContainer/uniquesprite.pressed = true
+	$Label.hide()
+	$ConfirmButton.hide()
+	$TextEdit.hide()
+	$VBoxContainer/IconBlock.show()
+	$ScrollContainer.show()
+	ImageSelect.mode = 'unique'
+	ImageSelect.buildimagelist('unique')
+	details_state = 'unique_sprite'
+	
 
 func make_random_portrait():
 	unpress_buttons()

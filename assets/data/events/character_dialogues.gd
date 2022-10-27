@@ -262,14 +262,14 @@ var data = {
 			
 		],
 		options = [
-			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
-			{type = 'active_character_checks', value = [
-				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
-				]}], dialogue_argument = 1},
-			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
-			{type = 'active_character_checks', value = [
-				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
-				]}], dialogue_argument = 2},
+#			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
+#			{type = 'active_character_checks', value = [
+#				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
+#				]}], dialogue_argument = 1},
+#			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
+#			{type = 'active_character_checks', value = [
+#				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
+#				]}], dialogue_argument = 2},
 			{ # Serve
 			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "quest_completed", name = "daisy_training", check = true}], dialogue_argument = 3, repeat_next_day = true
 		}, 

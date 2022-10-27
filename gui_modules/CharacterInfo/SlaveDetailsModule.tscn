@@ -70,8 +70,8 @@ margin_right = 315.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Add Custom Description"
 
@@ -82,20 +82,22 @@ margin_right = 315.0
 margin_bottom = 93.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Set Nickname"
 
-[node name="masternoun" type="Button" parent="VBoxContainer" groups=["hide_master"]]
+[node name="masternoun" type="Button" parent="VBoxContainer" groups=[
+"hide_master",
+]]
 light_mask = 0
 margin_top = 102.0
 margin_right = 315.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Set Master Noun"
 
@@ -106,8 +108,8 @@ margin_right = 315.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Select Custom Portrait"
 
@@ -118,8 +120,8 @@ margin_right = 315.0
 margin_bottom = 246.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Make random portrait"
 
 [node name="body" type="Button" parent="VBoxContainer"]
@@ -129,17 +131,29 @@ margin_right = 315.0
 margin_bottom = 297.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Select Custom Body"
+
+[node name="uniquesprite" type="Button" parent="VBoxContainer"]
+light_mask = 0
+margin_top = 306.0
+margin_right = 315.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
+text = "Select Unique Sprite"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
 light_mask = 0
-margin_top = 316.0
+margin_top = 357.0
 margin_right = 315.0
-margin_bottom = 676.0
+margin_bottom = 735.0
 rect_min_size = Vector2( 315, 0 )
 
 [node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
@@ -150,71 +164,71 @@ margin_bottom = 30.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Cancel"
 
 [node name="search" type="LineEdit" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_right = 315.0
-margin_bottom = 42.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 placeholder_text = "Search"
 
 [node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 46.0
+margin_top = 49.0
 margin_right = 315.0
-margin_bottom = 88.0
+margin_bottom = 94.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Add custom image"
 
 [node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 92.0
+margin_top = 98.0
 margin_right = 315.0
-margin_bottom = 134.0
+margin_bottom = 143.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Open system folder"
 
 [node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 138.0
+margin_top = 147.0
 margin_right = 315.0
-margin_bottom = 180.0
+margin_bottom = 192.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reload portraits"
 
 [node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 184.0
+margin_top = 196.0
 margin_right = 315.0
-margin_bottom = 226.0
+margin_bottom = 241.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reset the image"
 
 [node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock"]
@@ -227,50 +241,50 @@ margin_bottom = 326.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reverse to default"
 
 [node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 230.0
+margin_top = 245.0
 margin_right = 315.0
-margin_bottom = 272.0
+margin_bottom = 290.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Folders"
 
 [node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 276.0
+margin_top = 294.0
 margin_right = 315.0
-margin_bottom = 316.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 315, 40 )
 hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
 theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "Assign Both"
 
 [node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
 light_mask = 0
-margin_top = 320.0
+margin_top = 338.0
 margin_right = 315.0
-margin_bottom = 360.0
+margin_bottom = 378.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 9 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
 text = "Race Locked"
 
 [node name="TextEdit" type="TextEdit" parent="."]
@@ -280,10 +294,10 @@ margin_top = 190.0
 margin_right = 910.0
 margin_bottom = 760.0
 theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
 custom_styles/focus = ExtResource( 16 )
 custom_styles/normal = ExtResource( 16 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Text Edit"
 wrap_enabled = true
 __meta__ = {
@@ -296,8 +310,8 @@ margin_left = 412.518
 margin_top = 150.0
 margin_right = 473.518
 margin_bottom = 177.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Label"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -310,8 +324,8 @@ margin_top = 815.52
 margin_right = 912.045
 margin_bottom = 881.52
 theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -393,8 +407,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "/Program Files2/proj/GitHub/Strive-Sequel_main"
-current_path = "/Program Files2/proj/GitHub/Strive-Sequel_main/"
+current_dir = "/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "/Users/1/Desktop/godot/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -494,8 +508,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "/Program Files2/proj/GitHub/Strive-Sequel_main"
-current_path = "/Program Files2/proj/GitHub/Strive-Sequel_main/"
+current_dir = "/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "/Users/1/Desktop/godot/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -517,8 +531,8 @@ Put your images into portrait folder and hit 'Reload Portraits' button"
 light_mask = 0
 margin_right = 970.0
 margin_bottom = 73.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Details"
 align = 1
 valign = 1

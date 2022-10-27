@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/collar.png-5405d1f1de6784a0c35e47190dc72d07.stex"
+path="res://.import/enslaving_collar.png-a11203a92c8790ef47ae2dd5e3332b4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsgear/collar.png"
-dest_files=[ "res://.import/collar.png-5405d1f1de6784a0c35e47190dc72d07.stex" ]
+source_file="res://assets/images/iconsgear/enslaving_collar.png"
+dest_files=[ "res://.import/enslaving_collar.png-a11203a92c8790ef47ae2dd5e3332b4b.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

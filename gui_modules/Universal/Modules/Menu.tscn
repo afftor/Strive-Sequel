@@ -546,7 +546,11 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Cali and Daisy now require their questlines finished to marry and have unique respond lines
+bbcode_text = "Added entry quest for lilia recruitment
+Service options were moved to rest
+Fixed Cali's sword
+0.6.5b
+Cali and Daisy now require their questlines finished to marry and have unique respond lines
 Fixed some items not being used correctly
 Fixed marry proposal for certain unique characters not working properly
 Fixed some world generation data being incorrect
@@ -1232,7 +1236,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Cali and Daisy now require their questlines finished to marry and have unique respond lines
+text = "Added entry quest for lilia recruitment
+Service options were moved to rest
+Fixed Cali's sword
+0.6.5b
+Cali and Daisy now require their questlines finished to marry and have unique respond lines
 Fixed some items not being used correctly
 Fixed marry proposal for certain unique characters not working properly
 Fixed some world generation data being incorrect

@@ -2299,8 +2299,10 @@ func see_quest_info(quest):
 				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
 				if i.value is Array:
+					newbutton.get_node("amount").show()
+					newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
 					newbutton.get_node("Icon").texture = images.icons.quest_gold
-					newbutton.hint_tooltip = "Based on item"
+					globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
 				else:
 					var value = round(
 						(
@@ -2316,7 +2318,7 @@ func see_quest_info(quest):
 					newbutton.get_node("Icon").texture = images.icons.quest_gold
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = (
+					globals.connecttexttooltip(newbutton, (
 						"Gold: "
 						+ str(i.value)
 						+ " + "
@@ -2330,7 +2332,7 @@ func see_quest_info(quest):
 								)
 							)
 						)
-						+ "(Master Charm Bonus)"
+						+ "(Master Charm Bonus)")
 					)
 			'reputation':
 				var value = round(

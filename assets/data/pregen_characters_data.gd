@@ -632,3 +632,154 @@ var pregen_characters = {
 	},
 	
 }
+
+var unique_sprites = {
+	daisy = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "daisy_default_happy_body", 
+			face_path = "daisy",
+			unlock_reqs = []
+			},
+		maid = {
+			name = "Maid",
+			descript = "",
+			path = "daisy_maid_body", 
+			face_path = "daisy_maid",
+			unlock_reqs = [{code = 'complete_quest', value = 'daisy_clothes'}]
+			},
+		maid_lewd = {
+			name = "Lewd Maid",
+			descript = "",
+			path = "daisy_maid_nude_body", 
+			face_path = "daisy_maid",
+			unlock_reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true}]
+			},
+	},
+	cali = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "cali_body", 
+			face_path = "cali",
+			unlock_reqs = []
+			},
+		halloween = {
+			name = "Halloween",
+			descript = "",
+			path = "cali_body_halloween", 
+			face_path = "cali_halloween",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+			},
+	},
+	aire = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "aire_body", 
+			face_path = "aire",
+			unlock_reqs = []
+			},
+	},
+	anastasia = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "anastasia_body", 
+			face_path = "anastasia",
+			unlock_reqs = []
+			},
+		halloween = {
+			name = "Default",
+			descript = "",
+			path = "anastasia_body_halloween", 
+			face_path = "anastasia_halloween",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+			},
+	},
+	zephyra = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "zephyra_body", 
+			face_path = "zephyra",
+			unlock_reqs = []
+			},
+	},
+	mae = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "mae_body", 
+			face_path = "mae",
+			unlock_reqs = []
+			},
+	},
+	lilia = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lilia_body", 
+			face_path = "lilia",
+			unlock_reqs = []
+			},
+	},
+	lilith = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lilith_body", 
+			face_path = "lilith",
+			unlock_reqs = []
+			},
+	},
+	hara = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "hara_body", 
+			face_path = "hara",
+			unlock_reqs = []
+			},
+	},
+	jean = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "jean_body", 
+			face_path = "jean",
+			unlock_reqs = []
+			},
+	},
+	heleviel = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "heleviel_body", 
+			face_path = "heleviel",
+			unlock_reqs = []
+			},
+	},
+	lira = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lira_body", 
+			face_path = "lira",
+			unlock_reqs = []
+			},
+	},
+	kurdan = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "kurdan_body", 
+			face_path = "kurdan",
+			unlock_reqs = []
+			},
+	},
+	
+	
+	
+}

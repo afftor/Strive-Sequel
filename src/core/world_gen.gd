@@ -470,9 +470,7 @@ func make_quest(questcode):
 						match k.code:
 							'random_item':
 								if Items.itemlist[k.type].has('parts'):
-									reward.value = [round(rand_range(i.range[0], i.range[1]))]
-#									for j in k.parts:
-#										item_price += Items.materiallist[k.parts[j]].price * Items.itemlist[k.type].parts[j] * k.value
+									reward.value = [rand_range(i.range[0], i.range[1])]
 								else:
 									item_price += Items.itemlist[k.type].price * k.value
 									reward.value = round(item_price * rand_range(i.range[0], i.range[1]))

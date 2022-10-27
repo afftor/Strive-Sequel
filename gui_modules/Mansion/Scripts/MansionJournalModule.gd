@@ -225,8 +225,10 @@ func show_quest_info(quest):
 				'gold':
 					newbutton.get_node("TextureRect").texture = images.icons.quest_gold
 					if i.value is Array:
-#						newbutton.get_node("amount").text = "Based on item"
-						newbutton.hint_tooltip = "Gold: based on item"
+						newbutton.get_node("amount").show()
+						newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
+						globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
+						
 					else:
 						var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 						newbutton.get_node("amount").text = str(value)

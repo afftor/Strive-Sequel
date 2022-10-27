@@ -1478,7 +1478,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['chest'],
 		price = 250,
-		icon = load("res://assets/images/iconsitems/jacket.png"),
+		icon = load("res://assets/images/iconsgear/jacket.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],#'e_maid_dress_effect'],
@@ -1529,7 +1529,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/airesbow.png"),
 		tier = 'medium',
 		price = 1000,
-		basestats = {atk = 20, critchance = 10, hitraye = 20, mod_hunt = 0.2},
+		basestats = {atk = 20, critchance = 10, hitrate = 20, mod_hunt = 0.2},
 		crafttype = 'basic',
 		type = 'gear',
 		itemtype = 'weapon',
@@ -1576,8 +1576,8 @@ var itemlist = {
 		tags = ['no_random'],
 		basestats = {obedience_drain = -6, loyalty_gain = 1.5},
 	},
-	enslave_collar = {
-		code = 'enslave_collar',
+	enslaving_collar = {
+		code = 'enslaving_collar',
 		name = "",
 		descript = "",
 		type = 'gear',
@@ -1586,12 +1586,12 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['neck'],
 		price = 750,
-		icon = load("res://assets/images/iconsitems/collar.png"),
+		icon = load("res://assets/images/iconsgear/enslaving_collar.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -5, loyalty_gain = 3, damagemod = -0.9, productivity = -0.9},
+		basestats = {obedience_drain = -5, loyalty_gain = 3, damage_mod_all = -0.9, productivity = -0.9},
 	},
 
 
@@ -2693,7 +2693,7 @@ var itemlist = {
 		geartype = 'costume',
 		crafttype = 'basic',
 		slots = ['head'],
-		price = 200,
+		price = 500,
 		icon = load("res://assets/images/iconsgear/earrings.png"),
 		tier = 'medium',
 		reqs = [],
@@ -2710,7 +2710,7 @@ var itemlist = {
 		geartype = 'costume',
 		crafttype = 'basic',
 		slots = ['head'],
-		price = 200,
+		price = 650,
 		icon = load("res://assets/images/iconsgear/witchhat.png"),
 		tier = 'medium',
 		reqs = [],
@@ -3679,6 +3679,20 @@ var recipes = {
 		worktype = 'smith'
 		
 	},
+	
+	earrings = {
+		code = 'earrings',
+		materials = {mithril = 6, ice_crystal = 2},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'forge', value = 2}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'earrings',
+		workunits = 12,
+		worktype = 'smith'
+		
+	},
 	worker_gloves = {
 		code = 'worker_gloves',
 		materials = {leatherthick = 15, clothsilk = 10},
@@ -3691,7 +3705,18 @@ var recipes = {
 		workunits = 6,
 		worktype = 'tailor'
 	},
-
+	witch_hat = {
+		code = 'witch_hat',
+		materials = {clothmagic = 15, clothsilk = 10},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 3}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'witch_hat',
+		workunits = 30,
+		worktype = 'tailor'
+	},
 	ink_branding = {
 		code = 'ink_branding',
 		materials = {ink_base = 1, woodiron = 3},

@@ -1,6 +1,7 @@
 extends Node
 
 var pregen_characters = load("res://assets/data/pregen_characters_data.gd").new().pregen_characters
+var pregen_character_sprites = load("res://assets/data/pregen_characters_data.gd").new().unique_sprites
 
 var lands = {
 	plains = {
@@ -38,7 +39,7 @@ var lands = {
 			{code = 'cali_william_init', text = "Search for collectioner", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_1', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_3', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], args = {"oneshot": false}},
-			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": false}},
+			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": true}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -370,7 +371,7 @@ var factiondata = {
 		events = [
 			'workers_init',
 			],
-		quests_easy = ['workers_threat_easy','workers_resources_easy','workers_craft_tools_easy','workers_food_easy'],
+		quests_easy = ["workers_craft_tools_easy"], #['workers_threat_easy','workers_resources_easy','workers_craft_tools_easy','workers_food_easy'],
 		quests_medium = ['workers_resources_medium','workers_food_medium','workers_craft_tools_medium'],
 		quests_hard = ['workers_resources_hard','workers_food_hard'],
 		slavenumber = [2,2],
@@ -1488,7 +1489,7 @@ var questdata = {
 		reputation = [350,550],
 		rewards = [
 		[1, {code = 'gold', range = [400,650]}],
-		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','swordadv','spearadv','clubadv','bowadv']}, {code = 'gold',range = [150,250]}],
+		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','swordadv','spearadv','bowadv']}, {code = 'gold',range = [150,250]}],
 		],
 		time_limit = [12,18],
 	},

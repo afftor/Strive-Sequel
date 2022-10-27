@@ -179,7 +179,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_start_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_START_2", reqs = []}],
 		options = [ {
 			code = 'amelia_herbs_elf_1', text = "AMELIA_HERBS_ELF_OPTION_1_1", reqs = [], dialogue_argument = 1, 
@@ -191,7 +191,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_1", reqs = []}],
 		options = [ {
 			code = 'amelia_herbs_elf_2_1', text = "AMELIA_HERBS_ELF_OPTION_2_1", reqs = [], dialogue_argument = 1, 
@@ -205,7 +205,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_2_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -216,7 +216,7 @@ var data = {
 	amelia_herbs_elf_2_2 = {
 	variations = [ {
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 65}]}],
-				image = null, tags = ['dialogue_scene'], character = "tribal_elf",
+				image = null, tags = ['dialogue_scene'], character = "lira",
 				text = [{text = "AMELIA_HERBS_ELF_REPLY_2_2_GOOD", reqs = []}],
 				common_effects = [],
 				options = [ {
@@ -227,7 +227,7 @@ var data = {
 				} ],
 			}, {
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 65}]}],
-				image = null, tags = ['dialogue_scene'], character = "tribal_elf",
+				image = null, tags = ['dialogue_scene'], character = "lira",
 				text = [{text = "AMELIA_HERBS_ELF_REPLY_2_2_BAD", reqs = []}],
 				options = [ {
 					code = 'amelia_herbs_elf_1', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
@@ -237,7 +237,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_2_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -248,7 +248,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_2_4_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_4_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -256,7 +256,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_2_4_2 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELF_REPLY_2_4_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
@@ -266,7 +266,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_quest1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'tribal_elf',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'lira',
 		text = [{text = "AMELIA_HERBS_ELFQUEST1_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 

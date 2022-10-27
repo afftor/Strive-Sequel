@@ -656,21 +656,6 @@ func LoadGame(filename):
 		print(ResourceScripts.game_globals.original_version)
 		print("Warning - unsafe loading")
 	
-	if compare_version(ResourceScripts.game_globals.original_version, '0.6.1 Experimental') and ResourceScripts.game_progress.decisions.has('mayor_election_finished') and !ResourceScripts.game_progress.decisions.has('startedAct2'):
-		var already_stored = false
-		for k in ResourceScripts.game_progress.stored_events.timed_events:
-					if k.code == "zephyra_recruitment_letter" or k.code == "zephyra_sword_1":
-						already_stored = true
-		if !already_stored:
-			globals.common_effects([
-				{code = 'add_timed_event', value = "zephyra_recruitment_letter",
-				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
-				{code = 'add_timed_event', value = "zephyra_sword_1",
-				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
-			])
-	#current approach
-	# if input_handler.CurrentScene != null:
-		# input_handler.CurrentScene.queue_free()
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
 	if is_instance_valid(gui_controller.current_screen):
@@ -1892,6 +1877,8 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.seen_dialogues.has(dict.value) == dict.check
 		'dialogue_selected':
 			return ResourceScripts.game_progress.selected_dialogues.has(dict.value) == dict.check
+		'event_seen':
+			return ResourceScripts.game_progress.seen_events.has(dict.value) == dict.check
 		'active_quest_stage':
 			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:

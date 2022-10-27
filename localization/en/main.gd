@@ -264,7 +264,20 @@ var TranslationDict = {
 	ITEMCROWNDESCRIPT = "An old crown of unknown origin",
 	ITEMBELL_COLLARDESCRIPT = "Despite its nature, this collar considered more of an object of fashion came from distant land.",
 	ITEMRIBBONDESCRIPT = "A bright red ribbon of unknown nature. ",
-
+	
+	
+	ITEMJACKET = "Jacket",
+	ITEMJACKETDESCRIPT = "A lightweight clothing which offers no protecting.",
+	ITEMENSLAVING_COLLAR = "Enslaving Collar",
+	ITEMENSLAVING_COLLARDESCRIPT = "Magical slave collar which slowly mends will of the wearer.",
+	ITEMEARRINGS = "Earrings", 
+	ITEMEARRINGSDESCRIPT = "A pair of fancy jewelry.", 
+	ITEMAIRE_BOW = "Aire's Bow",
+	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
+	ITEMWITCH_HAT = "Witch Hat",
+	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
+	
+	
 	#Items
 	ITEMAXE = "Axe",
 	ITEMPICKAXE = "Pickaxe",
@@ -9032,6 +9045,94 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
 	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
 	METRICS_SOURCE_WILLIAM = "William, Aliron's famous collector",
+	
+	
+	
+	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: - Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
+
+{color=magenta|Zephyra: - Today I'll be telling the story of a young girl wearing a red hood and her tragic story.}""",
+	HALLOWEEN_EVENT1 = """{color=magenta|Zephyra: - A young girl was going through the forest. A deep, dark, forest carrying a basket with meat buns for her sickly grandmother. }
+
+{color=aqua|Anastasia: - This is really embarrassing, I shouldn't have agreed to this... }
+
+{color=magenta|Zephyra: - Even though she was young and frightened she still bravely embarked on this task. Little did she know what danger was awaiting her.}""",
+	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: - Isn't it that story about a girl being eaten by a wolf?! Why me of all people...}
+
+{color=magenta|Zephyra: - Her naivety would certainly play a role here if she met some wrongdoers. And to her misfortune she indeed came across them. A couple of bandits saw her walking alone through the woods and readily approached her.}""",
+	HALLOWEEN_EVENT3 = """{color=gray_text_dialogue|Bandit: - Well there, pretty, where are you heading?}
+
+{color=aqua|Anastasia: *Gulp* - I'm going to my sickly grandma, I'm bringing her meat buns...}
+
+{color=gray_text_dialogue|Bandit: - Wow, did you hear that? A woman and food delivery for us, two in one! You must have heard of us coming here dressed like this?}
+
+{color=aqua|Anastasia: - I-I don't understand what you mean. Please, let me go...}
+
+{color=gray_text_dialogue|Bandit: - No, this clearly won't do. We shall consider it if you do something for us. How about showing your giant breasts?}""",
+	HALLOWEEN_EVENT4 = """{color=aqua|Anastasia: - No, let me go, get your hands away from me! What even is this set up?!}
+
+{color=gray_text_dialogue|Bandit: - Stay quiet silly girl, none can help you in these dark woods!}
+
+{color=magenta|Zephyra: - Such a sorrowful sight would make any hero rush to save her, but the help came from a source she wouldn't expect.}""",
+	HALLOWEEN_EVENT5 = """{color=yellow|Cali: - Watcha doing you bastards!? I, bandit punisher, Ca-I mean, Big Good Wolf will not let you go unpunished for this!}
+
+{color=yellow|Cali: - Ryaaaaa!}
+
+{color=gray_text_dialogue|Bandit: - Wha- Aaarrgh! Noo, don't kill us!}
+
+{color=magenta|Zephyra: - As a true beast, the wolf jumped at the bandits which ran in fear of being eaten. }""",
+	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: - Woah, you really have no shame wearing that?.. }
+
+{color=yellow|Cali: - Whatcha mean? I'm a wolf and this is what I look like. }
+
+{color=aqua|Anastasia: - Maybe I'm too self-conscious...}
+
+{color=yellow|Cali: - No matter, human girl. Say, what business do you have in my woods?}""",
+	HALLOWEEN_EVENT7 = """{color=magenta|Zephyra: - The wolf showed interest in the girl she never saw before. For better or worse, the girl had been sincere.}
+
+{color=aqua|Anastasia: - I've been traveling to my grandma.}
+
+{color=yellow|Cali: - Why would you do that? It's dangerous for young girls to travel alone. }
+
+{color=aqua|Anastasia: - I understand, however my duty was to bring her some meat buns.}
+
+{color=yellow|Cali: - No way, meat buns!? Ho-oh, now that's something I can not overlook!}""",
+	HALLOWEEN_EVENT8 = """{color=yellow|Cali: - Those meat buns, they must be really tasty, right? Show me, I wanna see!}
+
+{color=aqua|Anastasia: - ...Well they are in this basket... }
+
+{color=aqua|Anastasia: - Huh, it's empty... Did the bandits take them while I was not looking?}
+
+{color=yellow|Cali: - I said I wanna see the meat buns, I can smell them. Are you trying to trick the Big Good Wolf?}
+
+{color=yellow|Cali: - Then, I'll have to search you to find them! }""",
+
+	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: - No, wait! Aah-}
+
+{color=yellow|Cali: - Hmm, could you be hiding them here? What's up with your chest, it's huge! I'm jealous...}
+
+{color=aqua|Anastasia: - D-don't squeeze them... So roughly...}
+
+{color=yellow|Cali: - Haah, they do feel nice on touch. Not exactly like meat buns... But somehow very captivating...}""",
+	HALLOWEEN_EVENT10 = """{color=aqua|Anastasia: - Ngh... Please... Let them go...}
+
+{color=yellow|Cali: - Let them go? So these were the 'meat buns' you were talking about? I knew it, they smell differently, but still nice.}
+
+{color=yellow|Cali: - Hu-huh, I guess with no other option I shall taste them! }
+
+{color=aqua|Anastasia: - Wait, this is wron-... Stop-sto-Ah-h haa.... }""",
+	HALLOWEEN_EVENT11 = """{color=magenta|Zephyra: - Sadly, no one could hear her pleas for help in the dark woods.}
+
+{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.""",
+	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: - Did that story really go like this?}
+
+{color=yellow|Cali: - I dunno, it felt kinda natural. }
+
+{color=aqua|Anastasia: - At least I got a less skimpy costume...}
+
+{color=yellow|Cali: - Ah, you know we get to keep them though? I hope [Master] is going to like this. }
+
+{color=aqua|Anastasia: - W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
+
 }
 
 

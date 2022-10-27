@@ -1,5 +1,11 @@
 extends Node
 
+var season_events_range = {
+	halloween = {start = [15,10], end = [15,11], event = 'halloween_start', event_reqs = []},
+	#christmass = {start = [15,12], end = [15, 1], event = null,event_reqs = [{}]}
+}
+
+
 #wolves_skirmish_start
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
@@ -867,7 +873,6 @@ var scenedict = {
 	daisy_meet = {
 		text = tr('SCENEDAISY_MEET_TEXT'),
 		tags = ['linked_event'],#linked_event means that all options will trigger other events by name instead of generic options like 'close' or 'inspect'
-		receiver = 'master', #not used yet but supposed to represent a group of characters involved into event
 		image = 'daisystart',
 		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
@@ -879,7 +884,6 @@ var scenedict = {
 	daisy_claim_kinship = {
 		text = tr("SCENEDAISY_CLAIM_KINSHIPTEXT"),
 		tags = ['dialogue_scene'],
-		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'make_story_character', value = 'Daisy'}],
 		options = [
@@ -889,7 +893,6 @@ var scenedict = {
 	daisy_purchase = {
 		text = tr("SCENEDAISY_PURCHASE_TEXT"),
 		tags = ['linked_event'],
-		receiver = 'master',
 		image = 'daisystart',
 		options = [{code = 'daisy_purchase_negotiate', text = tr("SCENEDAISY_PURCHASE_OPTION1"), reqs = [], type = 'next_dialogue'},
 		{code = 'daisy_purchase_negotiate', text = tr("SCENEDAISY_PURCHASE_WORKER_OPTION1"), type = 'next_dialogue', reqs = [{
@@ -938,7 +941,6 @@ var scenedict = {
 	daisy_purchase_confirm = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
 		tags = ['dialogue_scene'],
-		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200},
 		{code = 'make_story_character', value = 'Daisy'}],
@@ -948,7 +950,6 @@ var scenedict = {
 	daisy_purchase_confirm_discount = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
 		tags = ['dialogue_scene'],
-		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}],
 		options = [
@@ -957,7 +958,6 @@ var scenedict = {
 	daisy_purchase_leave = {
 		text = tr("SCENEDAISY_PURCHASE_LEAVE_TEXT"),
 		tags = [],
-		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [],
 		options = [
@@ -967,7 +967,6 @@ var scenedict = {
 	daisy_ignore_purchase = {
 		text = tr("SCENEDAISY_IGNORE_TEXT"),
 		tags = [],
-		receiver = 'master',
 		image = 'daisystart',
 		common_effects = [],
 		options = [
@@ -978,7 +977,6 @@ var scenedict = {
 	daisy_first_event = {
 		text = tr("SCENEDAISY_FIRST_EVENT_TEXT"),
 		tags = ['linked_event'],
-		receiver = 'master',
 		reqs = [{type = 'unique_character_at_mansion', name = 'daisy', check = true, negative = 'repeat_next_day'}],#this requirement only applies when checking timed_events. 'negative' means what resolution should apply when requirement is not met.
 		image = 'daisyevent',
 		options = [
@@ -989,7 +987,6 @@ var scenedict = {
 	daisy_first_event_reassure = {
 		text = tr("SCENEDAISY_FIRST_EVENT_REASSURE"),
 		tags = [],
-		receiver = 'master',
 		image = 'daisyevent',
 		common_effects = [#common_effects are treated in state by applying simple changes to game state and characters.
 		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 3}]},
@@ -1009,7 +1006,6 @@ var scenedict = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [],
-		receiver = 'master',
 		image = null,
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
@@ -1026,7 +1022,6 @@ var scenedict = {
 		text = tr("SCENEDAISY_CONFESS_EVENT_TEXT"),
 		tags = ['linked_event','master_translate'],
 		reqs = [{type = 'unique_character_at_mansion', name = 'daisy', check = true, negative = 'repeat_next_day'}],
-		receiver = 'master',
 		image = 'daisyconfess',
 		options = [
 		{code = 'daisy_confess_accept', text = tr("SCENEDAISY_CONFESS_EVENT_OPTION1"), reqs = []},
@@ -1036,7 +1031,6 @@ var scenedict = {
 	daisy_confess_accept = {
 		text = tr("SCENEDAISY_CONFESS_ACCEPT_TEXT"),
 		tags = [],
-		receiver = 'master',
 		image = 'daisyconfess',
 		common_effects = [
 		{code = 'unique_character_changes', value = 'daisy', args = [
@@ -1053,7 +1047,6 @@ var scenedict = {
 	daisy_confess_refuse = {
 		text = tr("SCENEDAISY_CONFESS_REFUSE_TEXT"),
 		tags = [],
-		receiver = 'master',
 		image = 'daisyconfess',
 		common_effects = [
 		{code = 'unique_character_changes', value = 'daisy', args = [

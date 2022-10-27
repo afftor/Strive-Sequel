@@ -277,7 +277,7 @@ var sprites = {
 	daisy_maid_body = load("res://assets/images/sprites/daisy_maid_body.png"),
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	daisy_maid_nude_body = load("res://assets/images/sprites/daisy_maid_nude_body.png"),
-	tribal_elf = load("res://assets/images/sprites/Lira.png"),
+	lira = load("res://assets/images/sprites/Lira.png"),
 	mae = load("res://assets/images/sprites/mae.png"),
 	mae_body = load("res://assets/images/sprites/mae_body.png"),
 	lilia = load("res://assets/images/sprites/lilia.png"),
@@ -296,8 +296,12 @@ var sprites = {
 	white_stag = load("res://assets/images/sprites/white_stag.png"),
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
 	erlen = load("res://assets/images/sprites/Erlen.png"),
-	lira = load("res://assets/images/sprites/Lira.png"),
 	lira_body = load("res://assets/images/sprites/lira_body.png"),
+	
+	cali_halloween = load("res://assets/images/sprites/cali.png"),
+	cali_halloween_body = load("res://assets/images/sprites/cali.png"),
+	anastasia_halloween = load("res://assets/images/sprites/anastasia.png"),
+	anastasia_halloween_body = load("res://assets/images/sprites/anastasia.png"),
 	
 	}
 
@@ -310,6 +314,7 @@ var dynamic_backgrounds = {
 var portraits = {
 	daisy = 'res://assets/images/portraits/daisy_prt.png',
 	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
+	daisy_maid = 'res://assets/images/portraits/daisy_maid_portrait.png',
 	anastasia = "res://assets/images/portraits/anastasia_prt.png",
 	aire = "res://assets/images/portraits/aire_prt.png",
 	kurdan = "res://assets/images/portraits/kurdan_prt.png",
@@ -322,6 +327,8 @@ var portraits = {
 	cali = "res://assets/images/portraits/cali_prt.png",
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
+	cali_halloween = "res://assets/images/portraits/cali_prt.png",
+	anastasia_halloween = "res://assets/images/portraits/anastasia_prt.png",
 }
 
 var gui = {

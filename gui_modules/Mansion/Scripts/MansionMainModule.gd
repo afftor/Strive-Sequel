@@ -80,6 +80,7 @@ func _ready():
 	if test_mode:
 		test_mode()
 		mansion_state_set("default")
+	add_season_events()
 	var is_new_game = false
 #	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
 #	globals.connect('slave_departed', $NavigationModule, "build_accessible_locations")
@@ -132,8 +133,13 @@ func _ready():
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
-func test():
-	pass
+
+
+func add_season_events():
+	var date = OS.get_date().day + OS.get_date().month * 30
+	for i in scenedata.season_events_range.values():
+		if !ResourceScripts.game_progress.seen_events.has(i.event) && date >= i.start[0] + i.start[1]*30 && date <= i.end[0] + i.end[1]*30:
+			globals.common_effects([{code = 'add_timed_event', value = i.event, args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -816,6 +822,7 @@ func test_mode():
 #		gui_controller.nav_panel.select_location('beastkin_capital')
 #		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 #		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		print(OS.get_datetime())
 		globals.common_effects([{code = 'update_city'},{code = 'make_quest_location', value = 'quest_erlen_location'}, ])
 		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
@@ -836,7 +843,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('xari_encounter6', '', {})
+		#input_handler.interactive_message('halloween_start', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
