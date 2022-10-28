@@ -127,11 +127,13 @@ func custom_stats_get(stat):
 			else:
 				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
 		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
 		return tres
 	if stat == 'mpmax':
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		return tres
 	if stat == 'obedience_max':
@@ -156,11 +158,28 @@ func custom_stats_get(stat):
 		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
 		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
 		return tres
+	if stat.ends_with('_bonus'):
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
+		return tres
 	if stat in ['matk', 'atk']:
 		var tres = statlist[stat]
 		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 3
 		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
 		return max(5.0, tres)
+	if stat in ['def', 'mdef']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 2
+		return tres
+	if stat in ['speed', 'hitrate', 'evasion']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 4
+		return tres
+	if stat in ['productivity']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
+		return tres
 	if stat == 'lustmax':
 		var tres = 25 + statlist.sexuals_factor * 25
 		if check_trait('frigid'):

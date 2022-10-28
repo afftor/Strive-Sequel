@@ -140,6 +140,12 @@ func process_chardata(data):
 			unlock_class(prof)
 
 
+func get_prof_number():
+	var tres = professions.size()
+	if professions.has("master") or professions.has('spouse'): tres -= 1
+	return tres
+
+
 func get_next_class_exp():
 #	var professions = parent.get_ref().get_stat('professions')
 	var currentclassnumber = professions.size()
