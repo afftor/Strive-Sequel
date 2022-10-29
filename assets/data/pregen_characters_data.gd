@@ -668,7 +668,7 @@ var unique_sprites = {
 		halloween = {
 			name = "Halloween",
 			descript = "",
-			path = "cali_body_halloween", 
+			path = "cali_halloween_body", 
 			face_path = "cali_halloween",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},
@@ -693,7 +693,7 @@ var unique_sprites = {
 		halloween = {
 			name = "Default",
 			descript = "",
-			path = "anastasia_body_halloween", 
+			path = "anastasia_halloween_body", 
 			face_path = "anastasia_halloween",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},

@@ -51,37 +51,37 @@ func whoring_gold():
 
  
 func gold_waitress():
-	return parent.get_ref().get_stat('mod_waitress') * (7 + parent.get_ref().get_stat('charm')/20.0)/6
+	return parent.get_ref().get_stat('mod_waitress') * (7 + parent.get_ref().get_stat('charm')/18.0)/6
 
 func gold_hostess():
-	return parent.get_ref().get_stat('mod_hostess') * (9 + parent.get_ref().get_stat('wits')/18.0)/6
+	return parent.get_ref().get_stat('mod_hostess') * (9 + parent.get_ref().get_stat('wits')/16.0)/6
 
 func gold_dancer():
-	return parent.get_ref().get_stat('mod_dancer') * (4 + parent.get_ref().get_stat('charm')/10.0 + parent.get_ref().get_stat('physics')/25.0)/6
+	return parent.get_ref().get_stat('mod_dancer') * (4 + parent.get_ref().get_stat('charm')/8.0 + parent.get_ref().get_stat('physics')/15.0)/6
 
 func gold_stripper():
-	return parent.get_ref().get_stat('mod_strip') *  (6 + parent.get_ref().get_stat('sexuals')/8.0)/6
+	return parent.get_ref().get_stat('mod_strip') *  (6 + parent.get_ref().get_stat('sexuals')/7.0)/6
 
 func gold_petting():
-	return (3 + parent.get_ref().get_stat('sex_skills_petting')/25.0)/6
+	return (3 + parent.get_ref().get_stat('sex_skills_petting')/20.0)/6
 
 func gold_oral():
-	return (3 + parent.get_ref().get_stat('sex_skills_oral')/20.0)/6
+	return (3 + parent.get_ref().get_stat('sex_skills_oral')/15.0)/6
 
 func gold_pussy():
-	return (5 + parent.get_ref().get_stat('sex_skills_pussy')/17.0)/6
+	return (5 + parent.get_ref().get_stat('sex_skills_pussy')/14.0)/6
 
 func gold_penetration():
-	return (4 + parent.get_ref().get_stat('sex_skills_penetration')/15.0)/6
+	return (4 + parent.get_ref().get_stat('sex_skills_penetration')/14.0)/6
 
 func gold_anal():
-	return (4 + parent.get_ref().get_stat('sex_skills_anal')/12.0)/6
+	return (4 + parent.get_ref().get_stat('sex_skills_anal')/9.0)/6
 
 func gold_group():
-	return (1 + parent.get_ref().get_stat('sex_skills_anal')/10.0 + parent.get_ref().get_stat('sex_skills_pussy')/10.0) /6
+	return (1 + parent.get_ref().get_stat('sex_skills_anal')/7.0 + parent.get_ref().get_stat('sex_skills_pussy')/7.0) /6
 
 func gold_sextoy():
-	return (1 + parent.get_ref().get_stat('sexuals')/5.0) /6
+	return (1 + parent.get_ref().get_stat('sexuals')/4.0) /6
 
 func cooking_progress():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('wits')/50.0))

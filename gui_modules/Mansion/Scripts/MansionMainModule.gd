@@ -136,6 +136,8 @@ func _ready():
 
 
 func add_season_events():
+	if test_mode == true:
+		return
 	var date = OS.get_date().day + OS.get_date().month * 30
 	for i in scenedata.season_events_range.values():
 		if !ResourceScripts.game_progress.seen_events.has(i.event) && date >= i.start[0] + i.start[1]*30 && date <= i.end[0] + i.end[1]*30:
@@ -706,7 +708,7 @@ func test_mode():
 #		character.affect_char({type = 'set_availability', value = false})
 		
 		#common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-
+		variables.no_obedience_drain = true
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Daisy'},
@@ -716,10 +718,21 @@ func test_mode():
 					args = [
 						{code = 'loyalty', value = 150, operant = "+"},
 						{code = 'consent', value = 150, operant = "+"},
-						{code = 'sexuals_factor', value = 1, operant = "+"},
+						{code = 'price', value = 3000, operant = "+"},
+						{code = 'sexuals_factor', value = 2, operant = "+"},
+						{code = 'growth_factor', value = 2, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
-						{code = 'sex_skills_petting', operant = '+', value = 75},
-						{code = 'add_profession', profession = 'spouse'},
+						{code = 'sex_skills_oral', operant = "+", value = 100},
+						{code = 'sex_skills_petting', operant = "+", value = 100},
+						{code = 'sex_skills_pussy', operant = "+", value = 100},
+						{code = 'sex_skills_anal', operant = "+", value = 100},
+						{code = 'add_trait', trait = 'loyalty_sex_basic'},
+						{code = 'add_trait', trait = 'loyalty_sex_oral'},
+						{code = 'add_trait', trait = 'loyalty_sex_anal'},
+						{code = 'add_trait', trait = 'loyalty_sex_adv'},
+						{code = 'add_trait', trait = 'loyalty_sex_group'},
+						{code = 'add_profession', profession = 'sextoy'},
+						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
 				},
 				{code = 'make_story_character', value = 'Cali'},
@@ -727,7 +740,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
-				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Heleviel'},
 			]
 		)
 
@@ -822,7 +835,6 @@ func test_mode():
 #		gui_controller.nav_panel.select_location('beastkin_capital')
 #		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 #		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		print(OS.get_datetime())
 		globals.common_effects([{code = 'update_city'},{code = 'make_quest_location', value = 'quest_erlen_location'}, ])
 		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
@@ -843,7 +855,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		#input_handler.interactive_message('halloween_start', '', {})
+		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		

@@ -562,7 +562,7 @@ func select_brothel_activity():
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
 			if no_training == true:
 				goldearned = goldearned - goldearned/3
 			goldearned = round(goldearned)
@@ -581,7 +581,7 @@ func select_brothel_activity():
 		var data = races.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		var goldearned = highest_value.value * max(1.4, (1 + 0.001 * parent.get_ref().calculate_price()))
+		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
 		goldearned = round(goldearned)
 		

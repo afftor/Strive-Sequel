@@ -47,7 +47,7 @@ var data = {
 	help_sigmund_end_1 = {
 		image = null, character = "sigmund", tags = [],
 		text = [ {text = "HELP_SIGMUND_3", reqs = []} ],
-		common_effects = [{code = 'make_quest_location', value = 'dungeon_quest_mines'},
+		common_effects = [{code = 'make_quest_location', value = 'quest_mines_dungeon'},
 		{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage2'}],
 		
 		options = [ {
@@ -59,7 +59,7 @@ var data = {
 	help_sigmund_end_2 = {
 		image = null, character = "sigmund", tags = [],
 		text = [ {text = "HELP_SIGMUND_4", reqs = []} ],
-		common_effects = [{code = 'make_quest_location', value = 'dungeon_quest_mines'},
+		common_effects = [{code = 'make_quest_location', value = 'quest_mines_dungeon'},
 		{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage2'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], type = 'next_dialogue'

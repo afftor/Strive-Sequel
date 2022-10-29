@@ -9122,7 +9122,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 {color=aqua|Anastasia: - Wait, this is wron-... Stop-sto-Ah-h haa.... }""",
 	HALLOWEEN_EVENT11 = """{color=magenta|Zephyra: - Sadly, no one could hear her pleas for help in the dark woods.}
 
-{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.""",
+{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.}""",
 	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: - Did that story really go like this?}
 
 {color=yellow|Cali: - I dunno, it felt kinda natural. }

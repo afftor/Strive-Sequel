@@ -168,7 +168,8 @@ var backgrounds = {
 	lilia_sex_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
 	lilia_sex_3 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
 	lilia_sex_4 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
-
+	
+	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 
@@ -298,10 +299,10 @@ var sprites = {
 	erlen = load("res://assets/images/sprites/Erlen.png"),
 	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	
-	cali_halloween = load("res://assets/images/sprites/cali.png"),
-	cali_halloween_body = load("res://assets/images/sprites/cali.png"),
-	anastasia_halloween = load("res://assets/images/sprites/anastasia.png"),
-	anastasia_halloween_body = load("res://assets/images/sprites/anastasia.png"),
+	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
+	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),
+	anastasia_halloween = load("res://assets/images/sprites/anastasia_halloween.png"),
+	anastasia_halloween_body = load("res://assets/images/sprites/anastasia_halloween_body.png"),
 	
 	}
 
@@ -327,8 +328,8 @@ var portraits = {
 	cali = "res://assets/images/portraits/cali_prt.png",
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
-	cali_halloween = "res://assets/images/portraits/cali_prt.png",
-	anastasia_halloween = "res://assets/images/portraits/anastasia_prt.png",
+	cali_halloween = "res://assets/images/portraits/cali_halloween_prt.png",
+	anastasia_halloween = "res://assets/images/portraits/anastasia_halloween_prt.png",
 }
 
 var gui = {

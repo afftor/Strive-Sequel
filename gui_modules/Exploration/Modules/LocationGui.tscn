@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -40,6 +40,9 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=38]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24_outline.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
+[ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=43]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -1226,3 +1229,103 @@ margin_top = 915.7
 margin_right = 603.719
 margin_bottom = 1023.7
 text = "event"
+
+[node name="AvailableSlaves" type="Panel" parent="."]
+visible = false
+margin_left = 1479.6
+margin_top = 94.3348
+margin_right = 1890.6
+margin_bottom = 777.335
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AvailableSlaves"]
+margin_left = 24.0
+margin_top = 53.0
+margin_right = 386.0
+margin_bottom = 575.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AvailableSlaves/ScrollContainer"]
+margin_right = 350.0
+margin_bottom = 60.0
+
+[node name="Button" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 350, 60 )
+texture = ExtResource( 43 )
+expand = true
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
+margin_left = 5.56763
+margin_top = 3.0
+margin_right = 55.5676
+margin_bottom = 53.0
+texture = ExtResource( 41 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.6713
+margin_top = 23.2238
+margin_right = 208.671
+margin_bottom = 37.2238
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TakeButton" type="Button" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
+anchor_top = -0.0140149
+anchor_bottom = -0.0140149
+margin_left = 256.3
+margin_top = 8.88628
+margin_right = 296.3
+margin_bottom = 48.8863
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellButton" type="Button" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
+anchor_top = -0.0140149
+anchor_bottom = -0.0140149
+margin_left = 301.732
+margin_top = 9.72717
+margin_right = 341.732
+margin_bottom = 49.7272
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="AvailableSlaves"]
+margin_left = 96.2671
+margin_top = 630.379
+margin_right = 313.267
+margin_bottom = 661.379
+text = "Quick Sell All"
+
+[node name="Label" type="Label" parent="AvailableSlaves"]
+margin_left = 54.2344
+margin_top = 21.1694
+margin_right = 333.234
+margin_bottom = 36.1694
+text = "Captured Characters"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="AvailableSlaves"]
+margin_left = 363.0
+margin_top = 5.0
+margin_right = 405.0
+margin_bottom = 47.0
+texture = ExtResource( 42 )
+expand = true
+stretch_mode = 6

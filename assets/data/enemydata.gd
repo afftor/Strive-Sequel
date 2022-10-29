@@ -1,7 +1,6 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {1 : 'rat', 4 : 'rat',5 : 'rat'}},
 }
 
 var encounters = {

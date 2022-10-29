@@ -93,14 +93,15 @@ var data = {
 		character2 = 'cali_halloween',
 		text = [ {text = "HALLOWEEN_EVENT9", reqs = []} ],
 		options = [ {
-			code = 'halloween_10', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
+			code = 'halloween_10', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 2
 			}
 		]
 	},
 	halloween_10 = {
 		image = null, tags = ['dialogue_scene'],
-		character = 'anastasia_halloween',
-		character2 = 'cali_halloween',
+		custom_background = "halloween_scene",
+		save_scene_to_gallery = true,
+		scene_type = "ero_scene",
 		text = [ {text = "HALLOWEEN_EVENT10", reqs = []} ],
 		options = [ {
 			code = 'halloween_11', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
@@ -109,11 +110,9 @@ var data = {
 	},
 	halloween_11 = {
 		image = null, tags = ['dialogue_scene'],
-		character = 'anastasia_halloween',
-		character2 = 'cali_halloween',
 		text = [ {text = "HALLOWEEN_EVENT11", reqs = []} ],
 		options = [ {
-			code = 'halloween_12', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
+			code = 'halloween_12', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 1
 			}
 		]
 	},
@@ -121,6 +120,16 @@ var data = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],
 		character = 'anastasia_halloween',
 		character2 = 'cali_halloween',
+		common_effects = [
+			{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'body_image', operant = '=', value = "cali_halloween_body"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_halloween_prt.png"}]},
+			{code = 'unique_character_changes', value = 'anastasia', args = [
+			{code = 'body_image', operant = '=', value = "anastasia_halloween_body"}, 
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/anastasia_halloween_prt.png"}]},
+			
+			
+			],
 		text = [ {text = "HALLOWEEN_EVENT12", reqs = []} ],
 		options = [ {
 			code = 'close', reqs = [], text = tr("DIALOGUECLOSE")
