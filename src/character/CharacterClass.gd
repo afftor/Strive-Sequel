@@ -647,6 +647,10 @@ func get_quest_time_remains():
 func quest_day_tick():
 	xp_module.quest_day_tick()
 
+func get_prof_number():
+	return xp_module.get_prof_number()
+
+
 func use_mansion_item(item):
 	skills.use_mansion_item(item)
 

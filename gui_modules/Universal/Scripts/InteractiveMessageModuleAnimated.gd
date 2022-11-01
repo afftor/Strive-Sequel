@@ -36,8 +36,8 @@ func hide_dialogue(action = "hide"):
 func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
-	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
-		get_tree().get_root().get_node("ANIMLoot").raise()
+#	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
+#		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
@@ -57,6 +57,8 @@ func open(scene):
 	current_scene = scene
 	hold_selection = true
 	raise()
+	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
+		get_tree().get_root().get_node("ANIMLoot").raise()
 	if scene.has("common_effects"):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:

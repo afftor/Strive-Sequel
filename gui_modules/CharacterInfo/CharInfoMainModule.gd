@@ -142,7 +142,7 @@ func match_state():
 			ClassesModule.get_node('stats_upgrade').hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
-			ClassesModule.open(active_person)
+#			ClassesModule.open(active_person)
 			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
