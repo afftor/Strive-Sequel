@@ -300,6 +300,14 @@ func c_log(node, args):
 	tween.start()
 	return delaytime + delay
 
+func order(node, args):
+	var delay = 0
+	var delaytime = 0.1
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(node, delay, 'update_queue', args.queue)
+	tween.start()
+	return delaytime + delay
+
 func critical(node, args = null):
 	var delay = 0.01
 	if !crit_display.has(node):

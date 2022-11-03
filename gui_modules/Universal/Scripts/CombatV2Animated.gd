@@ -249,6 +249,7 @@ func select_actor():
 		newturn()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
+	update_queue_asynch()
 	#currentactor.update_timers()
 	if currentactor <= 0:
 		env_turn()
@@ -285,6 +286,7 @@ func checkdeaths():
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
 					turnorder.remove(j)
+					update_queue_asynch()
 					break
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
@@ -796,6 +798,7 @@ func calculateorder():
 		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 
 	turnorder.sort_custom(self, 'speedsort')
+	update_queue_asynch()
 
 
 func speedsort(first, second):
@@ -1750,6 +1753,22 @@ func combatlogadd(text):
 
 func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)
+
+
+func update_queue_asynch():
+	var data = {node = self, time = turns, type = 'order', slot = 'order', params = {queue = turnorder.duplicate()}}
+	CombatAnimations.add_new_data(data)
+
+
+func update_queue(queue): #don't call in asynchroned state
+	input_handler.ClearContainer($Panel4/VBoxContainer)
+	for ch in queue:
+		if ch.pos < 0 : continue
+		var person = characters_pool.get_char_by_id(battlefield[ch.pos])
+		var tmp = input_handler.DuplicateContainerTemplate($Panel4/VBoxContainer, 'Button')
+		tmp.get_node('icon').texture = person.get_icon()
+		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
+		tmp.get_node('hpbar').value = person.hp
 
 
 var active_position
