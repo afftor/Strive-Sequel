@@ -304,7 +304,7 @@ func order(node, args):
 	var delay = 0
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(node, delay, 'update_queue', args.queue)
+	tween.interpolate_callback(node, delay, 'update_queue', args.queue, args.current)
 	tween.start()
 	return delaytime + delay
 
