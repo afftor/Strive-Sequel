@@ -691,7 +691,7 @@ var unique_sprites = {
 			unlock_reqs = []
 			},
 		halloween = {
-			name = "Default",
+			name = "Halloween",
 			descript = "",
 			path = "anastasia_halloween_body", 
 			face_path = "anastasia_halloween",

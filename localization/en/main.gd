@@ -1068,7 +1068,7 @@ var TranslationDict = {
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
-	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience it will take to unlock a new class until the soft cap limit. Growth Factor also highly affects character's Value.",
+	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
@@ -1641,6 +1641,9 @@ var TranslationDict = {
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience Drain is 0. Loyalty Gain +3.",
+	
+	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
+	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power. ",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty. ",
@@ -2359,6 +2362,7 @@ var TranslationDict = {
 	LOCATIONNAMEQUEST_RITUAL_LOCATION = "Herbs Field",
 	LOCATIONNAMEQUEST_LEON_FOREST = "Leon's location",
 	LOCATIONNAMEQUEST_LEON_FOREST_2 = "Leon's location",
+	LOCATIONNAMEQUEST_CALI_BANDITS_LOCATION = "Bandits' Hideout",
 
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",

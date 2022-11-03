@@ -627,7 +627,7 @@ func update_brothel_text():
 	if person.get_work() == '':
 		text = "{color=yellow|[name] will rest.}"
 	elif can_do_sex && can_do_penetrative:
-		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if the find [him] appealing.}"
+		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if they find [him] appealing.}"
 		if can_get_pregnant:
 			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration.}"
 	elif can_do_sex:

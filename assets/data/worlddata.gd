@@ -1098,13 +1098,13 @@ var questdata = {
 		name = 'Gear Supply',
 		descript = 'The Fighters Guild requires a gear of certain quality. ',
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','wooodiron','obsidian']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
 			
 			
 			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
-			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','bowadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
@@ -1210,7 +1210,7 @@ var questdata = {
 		name = 'Mage Gear Supply',
 		descript = 'The Fighters Guild requires a gear of certain quality. ',
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['staff'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','wooodiron']}},
+			{code = 'random_item', function = 'range', type = ['staff'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [1,1], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
 			],
 		unlockreqs = [],
@@ -1225,7 +1225,7 @@ var questdata = {
 		name = 'Mage Gear Supply',
 		descript = 'The Fighters Guild requires a gear of certain quality. ',
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','wooodiron','mithril']}},
+			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','woodiron','mithril']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [2,2], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
 			
 			

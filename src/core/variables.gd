@@ -271,10 +271,7 @@ var male_penis_virgin_default_chance = 50
 var female_ass_virgin_default_chance = 90
 var male_ass_virgin_default_chance = 90
 
-var class_cap_basic = 2
-var class_cap_per_growth = 1
-var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
-var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
+var hard_level_reqs = [150,250,400,650,900,1250,1750,2500,3350,4100,5000]
 
 #Slave values
 var slave_basic_sizes = ['masculine','flat','small','average','big','huge']
