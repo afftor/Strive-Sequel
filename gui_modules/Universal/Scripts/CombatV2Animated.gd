@@ -798,7 +798,7 @@ func calculateorder():
 		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 
 	turnorder.sort_custom(self, 'speedsort')
-	update_queue_asynch()
+#	update_queue_asynch()
 
 
 func speedsort(first, second):
@@ -1756,17 +1756,22 @@ func combatlogadd_q(text):
 
 
 func update_queue_asynch():
-	var data = {node = self, time = turns, type = 'order', slot = 'order', params = {queue = turnorder.duplicate()}}
+	var data = {node = self, time = turns, type = 'order', slot = 'order', params = {queue = turnorder.duplicate(), current = currentactor}}
 	CombatAnimations.add_new_data(data)
 
 
-func update_queue(queue): #don't call in asynchroned state
+func update_queue(queue, current): #don't call in asynchroned state
 	input_handler.ClearContainer($Panel4/VBoxContainer)
-	for ch in queue:
+	
+	for ch in [{pos = current}] + queue:
 		if ch.pos < 0 : continue
 		var person = characters_pool.get_char_by_id(battlefield[ch.pos])
 		var tmp = input_handler.DuplicateContainerTemplate($Panel4/VBoxContainer, 'Button')
-		tmp.get_node('icon').texture = person.get_icon()
+		if ch.pos > 6:
+			tmp.disabled = true
+		var icon = person.get_icon()
+		if icon != null:
+			tmp.get_node('icon').texture = icon
 		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
 		tmp.get_node('hpbar').value = person.hp
 
