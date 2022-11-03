@@ -181,7 +181,7 @@ var data = {
 			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
-			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [
+			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [
 				{code = 'decision', value = 'cali_wood_discount'},
 				{code = 'unique_character_changes', value = 'cali', args = [{code = 'loyalty', operant = '+', value = 20},]},
 			],
