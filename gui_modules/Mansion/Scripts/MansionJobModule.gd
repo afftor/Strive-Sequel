@@ -211,16 +211,26 @@ func close_job_pannel():
 
 func update_resources():
 	input_handler.ClearContainer($Resourses/GridContainer)
-	if selected_location != 'aliron':
-		var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-		if selected_job != null:
-			if selected_job.has("code"):
-				if selected_job.code == "rest":
-					restbutton.pressed = true
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
-		restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
-		
-		globals.connecttexttooltip(restbutton, "Rest")
+#	if selected_location != 'aliron':
+#		var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+#		if selected_job != null:
+#			if selected_job.has("code"):
+#				if selected_job.code == "rest":
+#					restbutton.pressed = true
+#		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+#		restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
+#
+#		globals.connecttexttooltip(restbutton, "Rest")
+	
+	var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+	if selected_job != null:
+		if selected_job.has("code"):
+			if selected_job.code == "rest" or selected_job.code == "brothel":
+				restbutton.pressed = true
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
+
+	globals.connecttexttooltip(restbutton, "Rest")
 	
 	person = get_parent().active_person
 #	var luxury_rooms_taken = 0
@@ -249,6 +259,8 @@ func update_resources():
 	else:
 		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 		for i in races.tasklist.values():
+			if i.code == "rest" or i.code == "brothel":
+				continue
 			if globals.checkreqs(i.reqs) == false:
 				continue
 			#don't show if res in not unlocked
