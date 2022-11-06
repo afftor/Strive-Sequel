@@ -590,6 +590,8 @@ func show_brothel_options():
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
+		if person.get_work() == '':
+			newbutton.disabled = true
 	for i in brothel_rules.sexual:
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
 			continue
@@ -599,6 +601,8 @@ func show_brothel_options():
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
+		if person.get_work() == '':
+			newbutton.disabled = true
 		if person.is_master() == false:
 			if person.checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
 				if person.get_stat('slave_class') != 'slave':
