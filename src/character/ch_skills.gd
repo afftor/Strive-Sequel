@@ -307,7 +307,7 @@ func use_social_skill(s_code, target):
 					if stat == 'obedience':
 						if h.get_stat('obedience') >= h.get_stat('obedience_max'):
 							detail_tags.append('obed_cap') 
-					if stat == 'loyalty':
+					if stat == 'loyalty' and tmp > 0:
 						h.tags.push_back("no_loyalty_gain_temp")
 						h.stat_update('loyalty_total', tmp)
 					if stat  == 'lust':
