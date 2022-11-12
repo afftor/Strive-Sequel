@@ -484,7 +484,6 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
-visible = false
 margin_left = 154.0
 margin_right = 234.0
 margin_bottom = 80.0
@@ -2009,8 +2008,9 @@ Icon art: Persich
 
 Writing: ralphomayo
 Writing: plumpjack
+Writing: S[Mutt]
 
-Proofreading: Dorant, ralphomayo
+Proofreading: Dorant, ralphomayo, Khuja
 
 Also thanks to: negtize724
 
@@ -2031,8 +2031,9 @@ Icon art: Persich
 
 Writing: ralphomayo
 Writing: plumpjack
+Writing: S[Mutt]
 
-Proofreading: Dorant, ralphomayo
+Proofreading: Dorant, ralphomayo, Khuja
 
 Also thanks to: negtize724
 

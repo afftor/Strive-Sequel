@@ -8,7 +8,7 @@ var lands = {
 		code = 'plains',
 		name = "Plains",
 		enabled = true,
-		races = [['Human', 25], ['halfbreeds', 5], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local racces
+		races = [['Human', 25], ['halfbeast', 5], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local races
 		policies = [], #not used yet
 		travel_time = [0,0], #how long it gonna take to travel to region
 		disposition = 100, #reputation, not currently used
@@ -82,7 +82,7 @@ var lands = {
 		code = 'forests',
 		name = "Forests",
 		enabled = true,
-		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
+		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
 		travel_time = [1,1],#[6,6],
 		disposition = 25,
@@ -183,7 +183,7 @@ var lands = {
 		code = 'beastkin_tribe',
 		name = "Beastkin Tribe",
 		enabled = true,
-		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
+		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
 		travel_time = [2,2],
 		disposition = 25,
@@ -492,7 +492,7 @@ var factiondata = {
 			slavelevel = 2,
 			character_types = [['servant',1]],
 			character_bonuses = {pricemod = 1.3}, #authority = [50,75], obedience = [48,48], ,
-			slave_races = [['halfbreeds',1]],
+			slave_races = [['halfbeast',1]],
 			tags = ['unique_slave_races'],
 			traits = [['loyalty_basic_servitude', 1], ['loyalty_combatant', 0.7]],
 			slavenumber = [1,1],
@@ -1701,6 +1701,10 @@ var dungeons = {
 		name = 'bandit_den',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			races = [['local', 3], ['common',1]]
+		},
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
@@ -1722,6 +1726,10 @@ var dungeons = {
 		name = 'bandit_fort',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
 		difficulty = 'medium',
 		background_pool = ['fort1', 'fort2', 'fort3'],
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
@@ -1745,6 +1753,10 @@ var dungeons = {
 		classname = '',
 		difficulty = 'medium',
 		descript = '',
+		charcter_data = {
+			chance_mod = 0.7,
+			races = [['common', 6], ['uncommon', 1]]
+		},
 		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
@@ -1765,6 +1777,10 @@ var dungeons = {
 		name = 'goblin_cave',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.7,
+			races = [["common", 1], ['local', 2], ['Goblin',5]]
+		},
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		bgm = "dungeon",
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
@@ -1786,6 +1802,10 @@ var dungeons = {
 		name = 'grove',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 0.8,
+			races = [["common", 2], ['local', 4],['uncommon',1]]
+		},
 		purchase_area = 'forests',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		bgm = "dungeon",
@@ -1808,6 +1828,10 @@ var dungeons = {
 		name = 'ancient_jungles',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.1,
+			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
+		},
 		purchase_area = 'forests',
 		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
 		bgm = "dungeon",
@@ -1830,6 +1854,10 @@ var dungeons = {
 		name = 'fire_depths',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.0,
+			races = [["common", 2], ['uncommon', 4],['rare',1]]
+		},
 		purchase_area = 'mountains',
 		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
 		bgm = "dungeon",
@@ -1852,7 +1880,11 @@ var dungeons = {
 		name = "Bandit's Hideout",
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
+		charcter_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
@@ -1945,6 +1977,10 @@ var dungeons = {
 		name = 'Mines',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1.2,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -1976,6 +2012,10 @@ var dungeons = {
 		name = "Rebels' Hideout",
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
+		},
 		difficulty = 'medium',
 		background_pool = ['cave_1'],
 		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
@@ -2047,6 +2087,10 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [10,10],
+		charcter_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
 		bgm = "dungeon",
 		purchase_price = 0,
 		affiliation = 'local',
@@ -2067,6 +2111,10 @@ var dungeons = {
 		name = 'Gryphon Thicket',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
 		difficulty = 'medium',
 		background_pool = ['forest1'],
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1]],
@@ -2094,6 +2142,10 @@ var dungeons = {
 		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2125,6 +2177,10 @@ var dungeons = {
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
+		charcter_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',5], ['uncommon',2]]
+		},
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
@@ -2154,6 +2210,10 @@ var dungeons = {
 		name = "Leon's location",
 		classname = '',
 		descript = '',
+		charcter_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',2], ['uncommon',5],['rare',1]]
+		},
 		difficulty = 'easy',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2187,7 +2247,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['bandit_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
@@ -2341,7 +2401,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['village1', 'village2', 'village3', 'village4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['bandits_medium_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [],
 		levels = [1,1],
 		resources = [],

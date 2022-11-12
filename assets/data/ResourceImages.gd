@@ -165,9 +165,11 @@ var backgrounds = {
 	amelia_cali_3 = load("res://assets/images/fullscreen scenes/Amelia_Cali10.png"),
 	
 	lilia_sex_1 = load("res://assets/images/fullscreen scenes/LiliaCG001.png"),
-	lilia_sex_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
-	lilia_sex_3 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
-	lilia_sex_4 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
+	lilia_sex_1_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_1_3 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_1_4 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_2_1 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
+	lilia_sex_2_2 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
 	
 	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
 	#technical screens
@@ -297,7 +299,7 @@ var sprites = {
 	white_stag = load("res://assets/images/sprites/white_stag.png"),
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
 	erlen = load("res://assets/images/sprites/Erlen.png"),
-	lira_body = load("res://assets/images/sprites/lira_body.png"),
+	i_body = load("res://assets/images/sprites/lira_body.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
 	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/service.png-0e0c84033ff062c359ce1b1263577aa7.stex"
+path="res://.import/StagCG002.png-f331f03bd599d15212ead14ddebff113.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/service.png"
-dest_files=[ "res://.import/service.png-0e0c84033ff062c359ce1b1263577aa7.stex" ]
+source_file="res://assets/images/fullscreen scenes/StagCG002.png"
+dest_files=[ "res://.import/StagCG002.png-f331f03bd599d15212ead14ddebff113.stex" ]
 
 [params]
 

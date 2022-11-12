@@ -2100,7 +2100,7 @@ func pheromones(member):
 	if member.effects.has('pheromones'):
 		text = "\n" + member.name +" is already under effect of pheromones."
 	else:
-		if member.person.get_stat('race') in races.race_groups.halfbreeds + races.race_groups.beast:
+		if member.person.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 			member.effects.append("pheromones")
 			member.lewdmod += 1
 			member.consent = 100

@@ -124,7 +124,7 @@ func trait_removal(character):
 
 func pheromones(character):
 	input_handler.active_character = character
-	if character.get_stat('race') in races.race_groups.halfbreeds + races.race_groups.beast:
+	if character.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 		character.add_stat("lust", character.get_stat("lustmax"))
 	input_handler.interactive_message("pheromones_use",'char_translate',character)
 

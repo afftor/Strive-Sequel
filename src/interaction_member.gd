@@ -379,8 +379,8 @@ func orgasm(custom_text = null):
 					if scene.scene.giverpart == 'vagina':
 						for i in scene.givers:
 							if sceneref.impregnationcheck(i.person, person) == true:
-								globals.impregnation(i.person, person)
-								penistext += impregnation_text(i, true)
+								globals.impregnate(i.person, person)
+								penistext += impregnation_text(i, false)
 				penistext = sceneref.decoder(penistext, scene.givers, [self])
 		#orgasm without penis, secondary ejaculation
 		else:

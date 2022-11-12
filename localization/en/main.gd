@@ -890,7 +890,7 @@ var TranslationDict = {
 	SLAVEAGEMATURE = "Mature",
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]",
-	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
@@ -1318,7 +1318,7 @@ var TranslationDict = {
 	DIALOGUEHARDWORKREPORT = "[name] inspires [targetname] to work harder.",
 	DIALOGUEDISCIPLINEREPORT = "[name] disciplines [targetname] to work harder.",
 	DIALOGUEAUTHORITYREPORT = "[name] uses [his] authority, making [targetname] work harder.",
-	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning form [targethis] experience. ",
+	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning from [targethis] experience. ",
 	DIALOGUEMAKE_UNDEADREPORT = "[name] prepares unknowing [targetname] for the ritual. After being drugged unconcious, the magic spell forces life to leave [targetname]'s body stopping [targethis] heartbeat but trapping [targethis] soul inside. As [targethe] returns to concious and realizes [targethis] new state, the shock of realization that [targethe] never can go back leaves [targethim] speechless.",
 	DIALOGUEALCOHOLREPORT = "[name] uses a bottle of liquor for relaxation.",
 	DIALOGUEAPHRODISIACREPORT = "[name] consumes an aphrodisiac, feeling a potent surge of lust.",
