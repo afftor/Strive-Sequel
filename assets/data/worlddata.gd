@@ -1701,7 +1701,7 @@ var dungeons = {
 		name = 'bandit_den',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
 		},
@@ -1726,7 +1726,7 @@ var dungeons = {
 		name = 'bandit_fort',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -1753,7 +1753,7 @@ var dungeons = {
 		classname = '',
 		difficulty = 'medium',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 0.7,
 			races = [['common', 6], ['uncommon', 1]]
 		},
@@ -1777,7 +1777,7 @@ var dungeons = {
 		name = 'goblin_cave',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.7,
 			races = [["common", 1], ['local', 2], ['Goblin',5]]
 		},
@@ -1802,7 +1802,7 @@ var dungeons = {
 		name = 'grove',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 0.8,
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
@@ -1828,7 +1828,7 @@ var dungeons = {
 		name = 'ancient_jungles',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.1,
 			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
 		},
@@ -1854,7 +1854,7 @@ var dungeons = {
 		name = 'fire_depths',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.0,
 			races = [["common", 2], ['uncommon', 4],['rare',1]]
 		},
@@ -1880,7 +1880,7 @@ var dungeons = {
 		name = "Bandit's Hideout",
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -1977,7 +1977,7 @@ var dungeons = {
 		name = 'Mines',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.2,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -2012,7 +2012,7 @@ var dungeons = {
 		name = "Rebels' Hideout",
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
 		},
@@ -2087,7 +2087,7 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [10,10],
-		charcter_data = {
+		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -2111,7 +2111,7 @@ var dungeons = {
 		name = 'Gryphon Thicket',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -2142,7 +2142,7 @@ var dungeons = {
 		name = 'Elder Gryphon Lair',
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
@@ -2177,7 +2177,7 @@ var dungeons = {
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',5], ['uncommon',2]]
 		},
@@ -2210,7 +2210,7 @@ var dungeons = {
 		name = "Leon's location",
 		classname = '',
 		descript = '',
-		charcter_data = {
+		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',2], ['uncommon',5],['rare',1]]
 		},
