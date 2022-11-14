@@ -752,45 +752,25 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
 
 	#Add extra stats for harder characters
-	while difficulty > 1:
+	var bonus_counter = 0
+	while difficulty > 1 && bonus_counter < 10:
 		var array = []
-		if randf() >= 0.8:
-			array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
-		else:
-			match slaveclass:
-				'combat':
-					array = ['physics_factor']
-				'magic':
-					array = ['wits_factor', 'magic_factor']
-				'social', 'sexual':
-					array = ['tame_factor', 'charm_factor', 'sexuals_factor']
-				'labor':
-					array = ['physics_factor', 'wits_factor']
+		array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
 		array = array[randi()%array.size()]
-		#if statlist[array] < 5: statlist[array] += 1#initial setup direct access
-		add_stat(array, 1)
+		if randf() >= 0.3:
+			add_stat(array, 1)
 		difficulty -= 1
+		bonus_counter += 1
 	difficulty = adjust_difficulty
 	while difficulty > -1:
 		var array = []
-		if randf() >= 0.75:
-			array = ['physics', 'wits','sexuals', 'charm']
-		else:
-			match slaveclass:
-				'combat':
-					array = ['physics']
-				'magic':
-					array = ['wits']
-				'social', 'sexual':
-					array = ['charm', 'sexuals']
-				'labor':
-					array = ['physics', 'wits']
+		array = ['physics', 'wits','sexuals', 'charm']
 		array = array[randi()%array.size()]
-		if array == 'sexuals':
-			add_random_sex_skill()
-		else:
-			#statlist[array] += rand_range(1,15)#initial setup direct access
-			add_stat(array, rand_range(1,15))
+		if randf() >= 0.7:
+			if array == 'sexuals':
+				add_random_sex_skill()
+			else:
+				add_stat(array, rand_range(1,15))
 		difficulty -= 1
 
 	#assign classes

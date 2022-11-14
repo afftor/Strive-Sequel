@@ -130,6 +130,7 @@ var lands = {
 	mountains = {
 		code = 'mountains',
 		name = "Mountains",
+		races = [['Dwarf', 100], ['Gnome',10],['Kobold', 10]],
 		enabled = true,
 		lead_race = 'Dwarf',
 		secondary_races = [],

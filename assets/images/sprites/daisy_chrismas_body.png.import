@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bandits3.png-966a593547cfcb8fc21f89a29bc09270.stex"
+path="res://.import/daisy_chrismas_body.png-ed90714b8ec8303602b981e1f01dae4e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/bandits3.png"
-dest_files=[ "res://.import/bandits3.png-966a593547cfcb8fc21f89a29bc09270.stex" ]
+source_file="res://assets/images/sprites/daisy_chrismas_body.png"
+dest_files=[ "res://.import/daisy_chrismas_body.png-ed90714b8ec8303602b981e1f01dae4e.stex" ]
 
 [params]
 

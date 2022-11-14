@@ -41,6 +41,7 @@ var data = {
 	halloween_4 = {
 		image = null, tags = ['dialogue_scene'],
 		character = 'anastasia_halloween',
+		character2 = 'bandits',
 		text = [ {text = "HALLOWEEN_EVENT4", reqs = []} ],
 		options = [ {
 			code = 'halloween_5', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
