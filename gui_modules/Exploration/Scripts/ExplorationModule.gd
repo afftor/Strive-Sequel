@@ -91,6 +91,7 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
+	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
 
@@ -112,7 +113,6 @@ func enslave_select():
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
 	sell_slave()
-
 
 
 func open_journal():
@@ -324,6 +324,7 @@ func open_location(data):
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 #	input_handler.active_area = active_area
 	input_handler.active_location = data
+	input_handler.emit_signal("LocationSlavesUpdate")
 #	if input_handler.active_location.has('progress'):
 #		current_level = active_location.progress.level
 #		current_stage = active_location.progress.stage
@@ -634,6 +635,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 
 
 func area_advance(mode): #advance request
+	globals.reset_roll_data()
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
@@ -658,6 +660,7 @@ func area_advance(mode): #advance request
 #			advance()
 	if rand_event == false:
 		input_handler.combat_advance = false
+		globals.char_roll_data.lvl = input_handler.active_location.progress.level
 		StartCombat()
 
 	action_type = mode
@@ -928,6 +931,18 @@ func build_location_group():
 		return
 	build_item_panel()
 	build_spell_panel()
+
+
+func add_rolled_chars(tarr):
+	if input_handler.active_location != null:
+		if !input_handler.active_location.has('captured_characters'):
+			input_handler.active_location.captured_characters = []
+	else:
+		return
+	for id in tarr:
+		input_handler.active_location.captured_characters.push_back(id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
 
 var selectedperson
 func return_character(character):

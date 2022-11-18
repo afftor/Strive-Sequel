@@ -70,7 +70,7 @@ func add_slave(person, child = false):
 	person.is_active = true
 	person.statlist.bonuses.erase('price_mul')
 #	character_order.push_back(person.id)
-	if person.get_stat('unique') != null:
+	if person.is_unique():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
 	person.fill_masternoun()
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
@@ -139,7 +139,7 @@ func get_unique_slave(code):
 func has_nonunics():
 	for i in characters.values():
 		if i.is_master(): continue
-		if i.get_stat('unique') != null: continue
+		if i.is_unique(): continue
 		return true
 	return false
 

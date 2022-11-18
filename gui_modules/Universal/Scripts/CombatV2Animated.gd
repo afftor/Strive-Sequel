@@ -449,7 +449,19 @@ func victory():
 	# $Rewards.visible = true
 	# $Rewards.modulate.a = 0
 	# ResourceScripts.core_animations.UnfadeAnimation($Rewards)
-
+	var rewardchars = globals.roll_characters()
+	for id in rewardchars:
+		var tchar = characters_pool.get_char_by_id(id)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		var ttex = tchar.get_icon_small()
+		if ttex != null: 
+			newbutton.get_node('Icon').texture = ttex
+		else:
+			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
+		newbutton.get_node('name').text = tchar.get_short_name() + " - " + tchar.get_short_race()
+		newbutton.get_node("amount").text = ""
+		globals.connectslavetooltip(newbutton, tchar)
+	input_handler.exploration_node.add_rolled_chars(rewardchars)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -474,9 +486,9 @@ func victory():
 			newnode.get_node("amount").visible = false
 		else:
 			newnode.get_node("amount").text = str(i.amount)
-
-
-
+	
+	
+	
 	#yield(get_tree().create_timer(1.7), 'timeout')
 
 #	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():

@@ -979,6 +979,47 @@ margin_top = 80.0
 margin_right = 1307.0
 margin_bottom = 584.0
 
+[node name="Panel4" type="TextureRect" parent="."]
+margin_left = 597.0
+margin_top = 45.0
+margin_right = 1319.0
+margin_bottom = 125.0
+texture = ExtResource( 58 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 10
+
+[node name="Button" type="TextureButton" parent="Panel4/VBoxContainer"]
+visible = false
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 64 )
+texture_hover = ExtResource( 65 )
+texture_disabled = ExtResource( 66 )
+
+[node name="icon" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 67 )
+expand = true
+stretch_mode = 6
+
+[node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
+margin_left = 5.29205
+margin_top = 48.6518
+margin_right = 53.2921
+margin_bottom = 53.6518
+value = 50.0
+texture_progress = ExtResource( 63 )
+
 [node name="Menu" type="TextureRect" parent="."]
 margin_left = 31.0
 margin_top = 943.059
@@ -1414,44 +1455,3 @@ text = "Wood"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Panel4" type="TextureRect" parent="."]
-margin_left = 597.0
-margin_top = 45.0
-margin_right = 1319.0
-margin_bottom = 125.0
-texture = ExtResource( 58 )
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-custom_constants/separation = 10
-
-[node name="Button" type="TextureButton" parent="Panel4/VBoxContainer"]
-visible = false
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 64 )
-texture_hover = ExtResource( 65 )
-texture_disabled = ExtResource( 66 )
-
-[node name="icon" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 67 )
-expand = true
-stretch_mode = 6
-
-[node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
-margin_left = 5.29205
-margin_top = 48.6518
-margin_right = 53.2921
-margin_bottom = 53.6518
-value = 50.0
-texture_progress = ExtResource( 63 )

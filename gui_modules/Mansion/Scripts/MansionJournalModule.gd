@@ -317,7 +317,7 @@ func select_character_for_quest(reqs):
 var tchar = null
 func character_selected(character):
 	tchar = character
-	if character.get_stat('unique') != null:
+	if character.is_unique():
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'character_selected_coonfirm', "Sell unique slave?"])
 	else:
 		character_selected_coonfirm()

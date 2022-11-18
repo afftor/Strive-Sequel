@@ -1,17 +1,17 @@
-extends Panel
+extends Control
 
 onready var StatsContainer = $StatsPanel/StatsVBox
 onready var CharList = $CharList/ScrollContainer/CharactersVBox
-var selected_character
+onready var CharList2 = $CharList2/ScrollContainer/CharactersVBox
 
 var stats_dict = {
-#	"physics_factor": "Physics Factor",
-#	"wits_factor": "Wits Factor",
-#	"charm_factor": "Charm Factor",
-#	"sexuals_factor": "Sexuals Factor",
-#	"timid_factor": "Timid Factor",
-#	"tame_factor": "Tame Factor",
-#	"magic_factor": "Magic Factor"
+	"physics_factor": "Physics Factor",
+	"wits_factor": "Wits Factor",
+	"charm_factor": "Charm Factor",
+	"sexuals_factor": "Sexuals Factor",
+	"timid_factor": "Timid Factor",
+	"tame_factor": "Tame Factor",
+	"magic_factor": "Magic Factor",
 	"growth_factor": "Growth Factor"
 }
 
@@ -26,7 +26,8 @@ var stats_dict = {
 var substract_gold = 0
 var current_node
 var person
-
+var person2
+var active_stat
 
 func hide_stats_info():
 	$StatsPanel.hide()
@@ -34,43 +35,68 @@ func hide_stats_info():
 
 func show_characters_panel():
 	# var idx = 0
-	var name
 	input_handler.ClearContainer(CharList)
 	for i in ResourceScripts.game_party.character_order:
 		var character = ResourceScripts.game_party.characters[i]
-		name = character.get_full_name()
+		var name = character.get_full_name()
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList)
 		newbutton.get_node("CharacterName").text = name
 		newbutton.get_node("icon").texture = character.get_icon_small()
-		newbutton.connect("pressed", self, "show_stats", [character])
+		newbutton.connect("pressed", self, "select_char", [character, 1])
+		newbutton.set_meta("slave", character)
+	input_handler.ClearContainer(CharList2)
+	for i in ResourceScripts.game_party.character_order:
+		var character = ResourceScripts.game_party.characters[i]
+		if character.is_master() : continue
+		if character.is_unique() : continue
+		var name = character.get_full_name()
+		var newbutton = input_handler.DuplicateContainerTemplate(CharList2)
+		newbutton.get_node("CharacterName").text = name
+		newbutton.get_node("icon").texture = character.get_icon_small()
+		newbutton.connect("pressed", self, "select_char", [character, 2])
 		newbutton.set_meta("slave", character)
 	$StatsPanel.hide()
 
 
-func show_stats(character):
+func select_char(character, slot):
+	if slot == 1:
+		person = character
+	else:
+		person2 = character
+	active_stat = null
+	show_stats()
+
+
+func show_stats():
+	update_buttons()
+	if person == null or person2 == null:
+		$StatsPanel.hide()
+		return
+	if person == person2:
+		$StatsPanel.hide()
+		return
 	$StatsPanel/Gold.hide()
 	$StatsPanel/StatInfoCurrentValue.hide()
 	$StatsPanel/StatInfoNameValue.hide()
 	$StatsPanel/ConfirmButton.hide()
 	$StatsPanel.show()
 	input_handler.ClearContainer(StatsContainer)
-	if character == null:
-		return
 	for stat in stats_dict:
 		# if character.get_stat(stat) == 6:
 		# 	continue
-		if character.is_master() && stat in ["timid_factor", "tame_factor"]:
+		if person.is_master() && stat in ["timid_factor", "tame_factor"]:
 			continue
 		else:
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)
 			newbutton.get_node("StatName").text = stats_dict[stat]
-			if character.get_stat(stat) == 6:
+			if person.get_stat(stat) == 6:
 				newbutton.disabled = true
 				continue
-			newbutton.connect("pressed", self, "show_stat_info", [stat, character])
+			if person.get_stat(stat) >= person2.get_stat(stat):
+				newbutton.disabled = true
+				continue
+			newbutton.connect("pressed", self, "show_stat_info", [stat])
 			newbutton.set_meta("stat", stat)
-	person = character
-	update_buttons()
 
 
 func _ready():
@@ -84,34 +110,38 @@ func update_buttons():
 		if !button.has_meta("slave"):
 			continue
 		button.pressed = button.get_meta("slave") == person
+	for button in CharList2.get_children():
+		if !button.has_meta("slave"):
+			continue
+		button.pressed = button.get_meta("slave") == person2
 
 
 
-func show_stat_info(stat, character):
+func show_stat_info(stat):
 	### Testing Node
 	$StatsPanel/Testing.text = (
-		character.get_full_name()
+		person.get_full_name()
 		+ "\n"
 		+ "physics_factor"
-		+ str(character.get_stat("physics_factor"))
+		+ str(person.get_stat("physics_factor"))
 		+ "\n"
 		+ "wits_factor"
-		+ str(character.get_stat("wits_factor"))
+		+ str(person.get_stat("wits_factor"))
 		+ "\n"
 		+ "sexuals_factor"
-		+ str(character.get_stat("sexuals_factor"))
+		+ str(person.get_stat("sexuals_factor"))
 		+ "\n"
 		+ "charm_factor"
-		+ str(character.get_stat("charm_factor"))
+		+ str(person.get_stat("charm_factor"))
 		+ "\n"
 		+ "timid_factor"
-		+ str(character.get_stat("timid_factor"))
+		+ str(person.get_stat("timid_factor"))
 		+ "\n"
 		+ "tame_factor"
-		+ str(character.get_stat("tame_factor"))
+		+ str(person.get_stat("tame_factor"))
 		+ "\n"
 		+ "magic_factor"
-		+ str(character.get_stat("magic_factor"))
+		+ str(person.get_stat("magic_factor"))
 		+ "\n"
 	)
 	### 
@@ -124,42 +154,36 @@ func show_stat_info(stat, character):
 	$StatsPanel.show()
 	$StatsPanel/ConfirmButton.visible = stat != null
 	$StatsPanel/Gold.show()
-	var stat_next_level = int(character.get_stat(stat) + 1)
+	var stat_cur_level = int(person.get_stat(stat))
+	var stat_next_level
+	if stat == 'growth_factor':
+		stat_next_level = stat_cur_level + 1
+	else:
+		stat_next_level = int(person2.get_stat(stat))
 	$StatsPanel/StatInfoNameValue.text = stats_dict[stat]
 	if input_handler.globalsettings.factors_as_words:
-		$StatsPanel/StatInfoCurrentValue.text = "Current value: " + ResourceScripts.descriptions.factor_descripts[int(floor(character.get_stat(stat)))]
-#		$StatsPanel/StatInfoCurrentValue.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(character.get_stat(stat))))]) 
+		$StatsPanel/StatInfoCurrentValue.text =  ResourceScripts.descriptions.factor_descripts[stat_cur_level] + "->" + ResourceScripts.descriptions.factor_descripts[stat_next_level]
 	else:
-		$StatsPanel/StatInfoCurrentValue.text = "Current value: " + str(int(floor(character.get_stat(stat))))
-#		$StatsPanel/StatInfoCurrentValue.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(character.get_stat(stat))))])
-#	$StatsPanel/StatInfoCurrentValue.text = "Current value: " + str(character.get_stat(stat))
-	if variables.growth_factor_upgrade.has(stat_next_level):
-		$StatsPanel/StatInfoCurrentValue.show()
-		$StatsPanel/StatInfoNameValue.show()
-		substract_gold = variables.growth_factor_upgrade[stat_next_level]
-		$StatsPanel/ConfirmButton.disabled = ResourceScripts.game_res.money < substract_gold
-		$StatsPanel/Gold/Label.text = str(substract_gold)
-	else:
-#		$StatsPanel/StatInfoCurrentValue.hide()
-#		$StatsPanel/StatInfoNameValue.hide()
-		$StatsPanel/StatInfoCurrentValue.text += "Max value reached." + "\n" + "Upgrade is not possible."
-		$StatsPanel/ConfirmButton.disabled = true
-		$StatsPanel/Gold.hide()
-		show_stats(character)
-	person = character
+		$StatsPanel/StatInfoCurrentValue.text = str(stat_cur_level) + "->" + str(stat_next_level)
+
+	$StatsPanel/StatInfoCurrentValue.show()
+	$StatsPanel/StatInfoNameValue.show()
+	substract_gold = int (person.calculate_price() * 0.1)
+	$StatsPanel/ConfirmButton.disabled = ResourceScripts.game_res.money < substract_gold
+	$StatsPanel/Gold/Label.text = str(substract_gold)
 	active_stat = stat
 
 
-
-var active_stat
-
-
 func upgrade_stat():
-	var character = person
-	var stat = active_stat
 	ResourceScripts.game_res.money -= substract_gold
-	character.add_stat(stat, 1)
-	show_stats(character)
-	show_stat_info(stat, character)
-	input_handler.play_animation('growth_factor', {character = character})
+	if active_stat == 'growth_factor':
+		person.add_stat(active_stat, 1)
+	else:
+		person.set_stat(active_stat, person2.get_stat(active_stat))
+	ResourceScripts.game_party.add_fate(person2.id, tr("SOLD2STAT"))
+	ResourceScripts.game_party.remove_slave(person2)
+	input_handler.play_animation('factor', {stat = active_stat, character = person})
+	active_stat = null
+	person2 = null
+	show_characters_panel()
 

@@ -255,6 +255,9 @@ func generate_simple_fighter(tempname):
 		#need check for hard difficulty
 		fill_ai(data.ai)
 	ai.app_obj = self
+	if data.has('tags') and data.tags.has('boss'):
+		globals.char_roll_data.uniq = true
+		
 
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
@@ -582,6 +585,11 @@ func is_master():
 
 func is_spouse():
 	return id == ResourceScripts.game_progress.spouse
+
+
+func is_unique():
+	return get_stat('unique') != null
+
 
 func add_rare_trait():
 	if ResourceScripts.game_globals.date < 2: return
@@ -975,7 +983,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'unique':
 			return get_stat('unique') == i.value
 		'is_unique':
-			check = (get_stat('unique') == null) != i.value
+			check = is_unique() == i.value
 		'body_image':
 			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
 		'in_combat_party':

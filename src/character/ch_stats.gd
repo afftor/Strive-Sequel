@@ -722,9 +722,28 @@ func process_chardata(chardata, unique = false):
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
 	
 	set_virginity_data()
-	
+
+
+func roll_growth(diff):
+	var weight = {}
+	weight[1] = 100 - (diff - 1) * 100.0/14.0
+	weight[4] = 5 + (diff - 1) * 10.0/14.0
+	weight[5] = 3 + (diff - 1) * 7.0/14.0
+	weight[5] = 1 + (diff - 1) * 4.0/14.0
+	if diff <= 3:
+		weight[2] = 40 + (diff - 1) * 10.0/2.0
+	else:
+		weight[2] = 50 - (diff - 3) * 45.0/12.0
+	if diff <= 5:
+		weight[3] = 25 + (diff - 1) * 35.0/4.0
+	else:
+		weight[3] = 60 - (diff - 5) * 25.0/10.0
+	var tmp = input_handler.weightedrandom_dict(weight)
+	set_stat('growth_factor', tmp)
+
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
 	if typeof(races) == TYPE_STRING && races == 'random':
@@ -737,7 +756,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 
 	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
-	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
+#	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
+	roll_growth(adjust_difficulty)
 	
 #	if randf() <= 0.003:
 #		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
