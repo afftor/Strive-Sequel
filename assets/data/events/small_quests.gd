@@ -139,7 +139,7 @@ var data = {
 					]
 				}]}, ],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
 		}, ],
 	},
 	

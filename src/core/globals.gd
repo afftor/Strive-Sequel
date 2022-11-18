@@ -1253,6 +1253,7 @@ func makerandomgroup(enemygroup):
 		if combatparty[pos] == null: continue
 		if rng.randf() < variables.enemy_rarechance:
 			champarr.push_back(pos)
+			char_roll_data.mboss = true
 	while champarr.size() > 3:
 		champarr.remove(rng.randi_range(0, champarr.size()-1))
 	for pos in champarr:
@@ -1323,6 +1324,92 @@ func return_characters_from_location(locationid):
 				person.return_to_task()
 			else:
 				person.return_to_mansion()
+
+
+var char_roll_data = {}
+func reset_roll_data():
+	char_roll_data.max_amount = 4
+	char_roll_data.lvl = 0
+	char_roll_data.mboss = false
+	char_roll_data.uniq = false
+	char_roll_data.event = false
+	char_roll_data.trait_bonus = false
+	char_roll_data.area = 'plains'
+	match ResourceScripts.game_globals.difficulty:
+		'easy':
+			char_roll_data.diff = 2
+		'medium':
+			char_roll_data.diff = 4
+		'hard':
+			char_roll_data.diff = 6
+
+
+func get_rolled_diff(): #excluding event bonus
+	var t_diff = char_roll_data.diff
+	t_diff += char_roll_data.lvl
+	if char_roll_data.mboss: t_diff += 1
+	if char_roll_data.uniq: t_diff += 2 
+#	if char_roll_data.trait_bonus: t_diff += 2 not implemented
+	
+	return t_diff
+
+
+func roll_characters():
+	var res = []
+	var chance1 = 0.25
+	var chance2 = 0.1
+	
+	if char_roll_data.mboss: 
+		chance1 = 0.5
+		chance2 = 0.15
+	if char_roll_data.uniq: 
+		chance1 = 1.0
+#	if char_roll_data.trait_bonus: not implemented
+#		chance1 = 0.5
+#		chance2 = 0.15
+	
+	var t_diff = get_rolled_diff()
+	if char_roll_data.event: t_diff += 2
+	
+	var t_race = 'random'
+	var areadata = input_handler.active_area
+	var locdata = input_handler.active_location
+	var racedata = []
+	if locdata.has('caharcter_data'):
+		locdata = locdata.character_data
+		if locdata.has('chance_mod'):
+			chance1 *= locdata.chance_mod
+			chance2 *= locdata.chance_mod
+		if locdata.has('races'):
+			racedata = locdata.races.duplicate()
+		elif areadata.has('races'):
+			racedata = areadata.races.duplicate()
+		 #or weight_random if data is weighted 
+#		race = input_handler.weightedrandom(input_handler.active_area.races)
+	
+	var n = 0
+	if rng.randf() < chance1:
+		if racedata is Array and !racedata.empty():
+			t_race = input_handler.weightedrandom(racedata)
+		if t_race == 'local':
+			t_race = input_handler.weightedrandom(areadata.races)
+		var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
+		newslave.generate_random_character_from_data(t_race, null, t_diff)
+		newslave.is_active = true
+		res.push_back(newslave.id)
+		while rng.randf() < chance2 and n < char_roll_data.max_amount:
+			if racedata is Array and !racedata.empty():
+				t_race = input_handler.weightedrandom(racedata)
+			if t_race == 'local':
+				t_race = input_handler.weightedrandom(areadata.races)
+			newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
+			newslave.generate_random_character_from_data(t_race, null, t_diff)
+			newslave.is_active = true
+			res.push_back(newslave.id)
+	
+	reset_roll_data()
+	return res
+
 
 var yes
 var no

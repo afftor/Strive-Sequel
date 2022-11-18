@@ -39,6 +39,7 @@ signal CharacterCreated
 signal EnemyKilled
 signal ButtonUpdated (node)
 signal LootGathered
+signal LocationSlavesUpdate
 
 var last_action_data = {}
 var text_characters = []
@@ -1515,14 +1516,14 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 			get_tree().get_root().set_disable_input(false)
-		"growth_factor":
+		"factor":
 			get_tree().get_root().set_disable_input(true)
 			anim_scene = get_spec_node(ANIM_GROWTHF)
 			anim_scene.get_node("AnimationPlayer").play("Animation_growth_factor")
 			anim_scene.get_node("TextureRect5").texture = args["character"].get_icon()
 			anim_scene.get_node('Label').text = args.character.get_stat('name')
-			var value = int(args.character.get_stat('growth_factor'))
-			anim_scene.get_node('Label2').text = "Growth factor: %s" % ResourceScripts.descriptions.factor_descripts[value]
+			var value = int(args.character.get_stat(args.stat))
+			anim_scene.get_node('Label2').text = "%s: %s" % [tr(statdata.statdata[args.stat].name), ResourceScripts.descriptions.factor_descripts[value]]
 			for i in range(1, 6):
 				anim_scene.get_node('fill%d' % i).visible = (i < value)
 			anim_scene.get_node("TextureRect6").rect_position.x += (value - 1) * 57
