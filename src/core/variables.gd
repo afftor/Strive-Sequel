@@ -162,11 +162,11 @@ var sex_factor_skill_multiplier = {
 }
 
 var growth_factor = {
-1 : 50,
-2 : 90,
-3 : 60,
-4 : 30,
-5 : 10,
+1 : 150,
+2 : 70,
+3 : 30,
+4 : 10,
+5 : 3,
 6 : 1,
 }
 
