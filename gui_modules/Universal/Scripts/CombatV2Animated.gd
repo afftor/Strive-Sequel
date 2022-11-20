@@ -453,12 +453,16 @@ func victory():
 	for id in rewardchars:
 		var tchar = characters_pool.get_char_by_id(id)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.modulate.a = 0
+		newbutton.show()
 		var ttex = tchar.get_icon_small()
 		if ttex != null: 
 			newbutton.get_node('Icon').texture = ttex
 		else:
 			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
-		newbutton.get_node('name').text = tchar.get_short_name() + " - " + tchar.get_short_race()
+		newbutton.get_node('name').text = tchar.get_full_name()
+		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node("amount").text = ""
 		globals.connectslavetooltip(newbutton, tchar)
 	input_handler.exploration_node.add_rolled_chars(rewardchars)

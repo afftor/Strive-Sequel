@@ -20,7 +20,7 @@ func _init():
 
 
 func showup(node, person):
-	$Panel.visible = !person.has_profession("master")
+#	$Panel.visible = !person.has_profession("master")
 	parentnode = node
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:

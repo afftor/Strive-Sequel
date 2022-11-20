@@ -23,9 +23,11 @@ func update():
 		var ttex = tchar.get_icon_small()
 		if ttex != null: 
 			newbutton.get_node('Icon').texture = ttex
-		newbutton.get_node('Label').text = tchar.get_short_name() + " - " + tchar.get_short_race()
+		newbutton.get_node('Label').text = tchar.get_full_name()
+		newbutton.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node('TakeButton').connect('pressed', self, 'hire_char', [id])
 		newbutton.get_node('SellButton').connect('pressed', self, 'sell_char', [id])
+		newbutton.connect('pressed', self, 'show_full_info', [tchar])
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
 		globals.connecttexttooltip(newbutton.get_node('SellButton'), str(int(tchar.calculate_price() / 2)))
 
@@ -74,3 +76,13 @@ func hire_char(ch_id):
 	if slave_tooltip != null:
 		slave_tooltip.hide()
 	input_handler.emit_signal("LocationSlavesUpdate")
+
+
+func show_full_info(person = null):
+	if person == null: return
+	var FullSlaveInfo = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO)
+	if ! gui_controller.windows_opened.has(FullSlaveInfo):
+		gui_controller.windows_opened.append(FullSlaveInfo)
+	gui_controller.explore_slaveinfo = FullSlaveInfo
+	FullSlaveInfo.show()
+	FullSlaveInfo.show_summary(person, true)
