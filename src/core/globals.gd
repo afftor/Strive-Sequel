@@ -1280,6 +1280,12 @@ func remove_location(locationid):
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	ResourceScripts.game_party.clean_tasks(location.id)
 	return_characters_from_location(locationid)
+	if location.has('captured_characters'):
+		for id in location.captured_characters:
+			var tchar = characters_pool.get_char_by_id(id)
+			var val = tchar.calculate_price() / 2
+			ResourceScripts.game_res.money += int(val)
+			tchar.is_active = false
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
 	ResourceScripts.game_world.location_links.erase(location.id)

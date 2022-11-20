@@ -1273,11 +1273,11 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AvailableSlaves/ScrollContainer"]
 
-[node name="Button" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="AvailableSlaves/ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 294.0
 margin_bottom = 49.0
-texture = ExtResource( 59 )
+texture_normal = ExtResource( 59 )
 stretch_mode = 1
 
 [node name="Icon" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
