@@ -5,6 +5,7 @@ onready var CharList = $CharList/ScrollContainer/CharactersVBox
 onready var CharList2 = $CharList2/ScrollContainer/CharactersVBox
 
 var stats_dict = {
+	"growth_factor": "Growth Factor",
 	"physics_factor": "Physics Factor",
 	"wits_factor": "Wits Factor",
 	"charm_factor": "Charm Factor",
@@ -12,7 +13,6 @@ var stats_dict = {
 	"timid_factor": "Timid Factor",
 	"tame_factor": "Tame Factor",
 	"magic_factor": "Magic Factor",
-	"growth_factor": "Growth Factor"
 }
 
 #var price = {
@@ -44,6 +44,7 @@ func show_characters_panel():
 		newbutton.get_node("icon").texture = character.get_icon_small()
 		newbutton.connect("pressed", self, "select_char", [character, 1])
 		newbutton.set_meta("slave", character)
+		globals.connectslavetooltip(newbutton, character)
 	input_handler.ClearContainer(CharList2)
 	for i in ResourceScripts.game_party.character_order:
 		var character = ResourceScripts.game_party.characters[i]
@@ -55,6 +56,7 @@ func show_characters_panel():
 		newbutton.get_node("icon").texture = character.get_icon_small()
 		newbutton.connect("pressed", self, "select_char", [character, 2])
 		newbutton.set_meta("slave", character)
+		globals.connectslavetooltip(newbutton, character)
 	$StatsPanel.hide()
 
 
@@ -89,6 +91,8 @@ func show_stats():
 		else:
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)
 			newbutton.get_node("StatName").text = stats_dict[stat]
+			if stat == 'growth_factor':
+				newbutton.get_node("StatName").set("custom_colors/font_color", variables.hexcolordict.yellow)
 			if person.get_stat(stat) == 6:
 				newbutton.disabled = true
 				continue
