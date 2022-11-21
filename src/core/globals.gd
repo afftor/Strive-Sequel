@@ -664,6 +664,7 @@ func LoadGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
+		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
 
 
@@ -722,6 +723,7 @@ func ImportGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
+		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Imported")
 	globals.common_effects([
 			{code = 'add_timed_event', value = "loan_event1",

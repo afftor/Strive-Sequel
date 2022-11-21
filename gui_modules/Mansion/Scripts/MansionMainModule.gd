@@ -115,9 +115,9 @@ func _ready():
 		mansion_state_set("default")
 	
 	input_handler.CurrentScreen = 'mansion'
-	yield(get_tree(),'idle_frame')
 	gui_controller.mansion = self
 	gui_controller.current_screen = self
+	yield(get_tree(),'idle_frame')
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
 	gui_controller.clock.show()
 	$MenuButton.connect("pressed", self, "show_menu")
@@ -855,7 +855,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('halloween_9', '', {})
+#		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
