@@ -147,25 +147,14 @@ func get_prof_number():
 
 
 func get_next_class_exp():
-#	var professions = parent.get_ref().get_stat('professions')
 	var currentclassnumber = professions.size()
-	var growth_factor = parent.get_ref().get_stat('growth_factor')
 	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
-	var exparray
+	var exparray = variables.hard_level_reqs
 	var value = 0
-	var easy_cap = growth_factor * variables.class_cap_per_growth + variables.class_cap_basic
-	if currentclassnumber < easy_cap:
-		exparray = variables.soft_level_reqs
-		if exparray.size()-1 < currentclassnumber:
-			value = exparray[exparray.size()-1]
-		else:
-			value = exparray[currentclassnumber]
+	if exparray.size()-1 < currentclassnumber:
+		value = exparray[exparray.size()-1]
 	else:
-		exparray = variables.hard_level_reqs
-		if exparray.size()-1 < currentclassnumber - easy_cap:
-			value = exparray[exparray.size()-1]
-		else:
-			value = exparray[currentclassnumber - easy_cap]
+		value = exparray[currentclassnumber]
 	return value
 
 func get_class_list(category, person):

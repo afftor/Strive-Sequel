@@ -105,7 +105,7 @@ var data = {
 	lilia_sex_scene_1_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		custom_background = "lilia_sex_1",
+		custom_background = "lilia_sex_1_3",
 		text = [{text = "LILIA_SEX_SCENE_1_1", reqs = []}],
 		common_effects = [],
 		options = [ {
@@ -127,7 +127,7 @@ var data = {
 		text = [{text = "LILIA_SEX_SCENE_2", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		custom_background = "lilia_sex_1",
+		custom_background = "lilia_sex_1_3",
 		options = [ {
 			code = 'lilia_sex_scene_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
@@ -139,7 +139,7 @@ var data = {
 		text = [{text = "LILIA_SEX_SCENE_3", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		custom_background = "lilia_sex_2",
+		custom_background = "lilia_sex_1_4",
 		options = [ {
 			code = 'lilia_starting_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 12, type = 'next_dialogue', 
 			change_dialogue_type = 1
@@ -468,7 +468,7 @@ var data = {
 		text = [{text = "LILIA_MANSION_3", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		custom_background = "lilia_sex_3",
+		custom_background = "lilia_sex_2_1",
 		options = [ {
 			code = 'lilia_mansion_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
@@ -480,7 +480,7 @@ var data = {
 		text = [{text = "LILIA_MANSION_4", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		custom_background = "lilia_sex_4",
+		custom_background = "lilia_sex_2_2",
 		options = [ {
 			code = 'lilia_mansion_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			change_dialogue_type = 1

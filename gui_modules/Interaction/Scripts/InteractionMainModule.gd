@@ -1062,27 +1062,27 @@ func startscene(scenescript, cont = false, pretext = ''):
 				i.person.take_virginity("vaginal",takers[0].person.id)
 				virgin.type = 'vaginal'
 				virgin.character = i
-				if takers.size() == 1 && takers[0].person.has_profession('master'):
-					i.person.add_stat('loyalty', 20)
+#				if takers.size() == 1 && takers[0].person.has_profession('master'):
+#					i.person.add_stat('loyalty', 20)
 			elif scenescript.giverpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.take_virginity("anal",takers[0].person.id)
 				virgin.type = 'anal'
 				virgin.character = i
-				if takers.size() == 1 && takers[0].person.has_profession('master'):
-					i.person.add_stat('loyalty', 10)
+#				if takers.size() == 1 && takers[0].person.has_profession('master'):
+#					i.person.add_stat('loyalty', 10)
 		for i in takers:
 			if scenescript.takerpart == 'vagina' && i.person.get_stat('vaginal_virgin') == true:
 				i.person.take_virginity("vaginal",givers[0].person.id)
 				virgin.type = 'vaginal'
 				virgin.character = i
-				if givers.size() == 1 && givers[0].person.has_profession('master'):
-					i.person.add_stat('loyalty', 20)
+#				if givers.size() == 1 && givers[0].person.has_profession('master'):
+#					i.person.add_stat('loyalty', 20)
 			elif scenescript.takerpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.take_virginity("anal",givers[0].person.id)
 				virgin.type = 'anal'
 				virgin.character = i
-				if givers.size() == 1 && givers[0].person.has_profession('master'):
-					i.person.add_stat('loyalty', 10)
+#				if givers.size() == 1 && givers[0].person.has_profession('master'):
+#					i.person.add_stat('loyalty', 10)
 		if scenescript.giverpart == 'penis':
 			for i in givers:
 				i.person.set_stat('penis_virgin', false)
@@ -2100,7 +2100,7 @@ func pheromones(member):
 	if member.effects.has('pheromones'):
 		text = "\n" + member.name +" is already under effect of pheromones."
 	else:
-		if member.person.get_stat('race') in races.race_groups.halfbreeds + races.race_groups.beast:
+		if member.person.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 			member.effects.append("pheromones")
 			member.lewdmod += 1
 			member.consent = 100

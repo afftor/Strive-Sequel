@@ -115,7 +115,7 @@ func setup_person(ch, no_loyal = false):
 	person_metrics = person.get_stat('metrics', true)
 	person_relations = person.get_stat('relations', true)
 	person_mods = person.get_stat('mods', true)
-	if !no_loyal: loyalty = ch.get_stat('loyal')
+	if !no_loyal: loyalty = ch.get_stat('loyalty')
 	submission = ch.get_stat('obedience')
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
@@ -379,8 +379,8 @@ func orgasm(custom_text = null):
 					if scene.scene.giverpart == 'vagina':
 						for i in scene.givers:
 							if sceneref.impregnationcheck(i.person, person) == true:
-								globals.impregnation(i.person, person)
-								penistext += impregnation_text(i, true)
+								globals.impregnate(i.person, person)
+								penistext += impregnation_text(i, false)
 				penistext = sceneref.decoder(penistext, scene.givers, [self])
 		#orgasm without penis, secondary ejaculation
 		else:

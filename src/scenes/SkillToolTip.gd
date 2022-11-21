@@ -29,6 +29,8 @@ func showup(node, skillcode):
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
 		text += "\n\nCooldown: {color=yellow|" + str(skill.combatcooldown) + "}"
 	
+	text += "\n\n{color=yellow|Right Click to assign another ability}"
+	
 	$descript.bbcode_text = globals.TextEncoder(text)
 	
 	text = "Usage Cost: "
@@ -40,6 +42,7 @@ func showup(node, skillcode):
 		text = text.substr(0, text.length() - 2) + ". "
 	if text == "Usage Cost: ":
 		text += "None"
+	
 	$cost.text = text
 	
 	

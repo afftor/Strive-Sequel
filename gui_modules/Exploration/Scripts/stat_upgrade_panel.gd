@@ -107,6 +107,7 @@ func _ready():
 	gui_controller.add_close_button(self)
 	# show_characters_panel()
 	$StatsPanel/ConfirmButton.connect("pressed", self, "upgrade_stat")
+	globals.connecttexttooltip($Hint, tr("FACTOR_INCREASE_TOOLTIP"))
 
 
 func update_buttons():

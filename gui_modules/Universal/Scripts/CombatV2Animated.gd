@@ -172,6 +172,9 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
+	if music == 'combattheme':
+		var temparray = ['battle1','battle2','battle3']
+		music = temparray[randi()%temparray.size()]
 	input_handler.SetMusic(music)
 	fightover = false
 	$Rewards.visible = false
@@ -461,7 +464,7 @@ func victory():
 			newbutton.get_node('Icon').texture = ttex
 		else:
 			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
-		newbutton.get_node('name').text = tchar.get_full_name()
+		newbutton.get_node('name').text = tr("COMBAT_CHARACTER_CAPTURED") + ": " + tchar.get_full_name()
 		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node("amount").text = ""
 		globals.connectslavetooltip(newbutton, tchar)
