@@ -44,6 +44,7 @@ func show_characters_panel():
 		newbutton.get_node("icon").texture = character.get_icon_small()
 		newbutton.connect("pressed", self, "select_char", [character, 1])
 		newbutton.set_meta("slave", character)
+		globals.connectslavetooltip(newbutton, character)
 	input_handler.ClearContainer(CharList2)
 	for i in ResourceScripts.game_party.character_order:
 		var character = ResourceScripts.game_party.characters[i]
@@ -55,6 +56,7 @@ func show_characters_panel():
 		newbutton.get_node("icon").texture = character.get_icon_small()
 		newbutton.connect("pressed", self, "select_char", [character, 2])
 		newbutton.set_meta("slave", character)
+		globals.connectslavetooltip(newbutton, character)
 	$StatsPanel.hide()
 
 
