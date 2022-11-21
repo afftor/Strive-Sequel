@@ -1384,7 +1384,7 @@ func roll_characters():
 	var areadata = input_handler.active_area
 	var locdata = input_handler.active_location
 	var racedata = []
-	if locdata.has('caharcter_data'):
+	if locdata.has('character_data'):
 		locdata = locdata.character_data
 		if locdata.has('chance_mod'):
 			chance1 *= locdata.chance_mod
