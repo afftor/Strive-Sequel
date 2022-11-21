@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -42,7 +42,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=41]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=42]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=43]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=44]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/enslave/button_enslave_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/gui/explore/Captured Characters/buttons/icon hero/icon_hero_active.png" type="Texture" id=46]
@@ -67,6 +66,14 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 28
 font_data = ExtResource( 2 )
 
 [node name="LocationGui" type="Panel"]
@@ -168,8 +175,8 @@ margin_left = 7.0
 margin_top = 2.0
 margin_right = 293.0
 margin_bottom = 50.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Battle Group"
 align = 1
 valign = 1
@@ -250,8 +257,8 @@ __meta__ = {
 margin_top = -5.0
 margin_right = 114.0
 margin_bottom = 19.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 
@@ -273,8 +280,8 @@ stretch_margin_bottom = 5
 margin_top = -3.0
 margin_right = 114.0
 margin_bottom = 21.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -343,8 +350,8 @@ __meta__ = {
 margin_top = -5.0
 margin_right = 114.0
 margin_bottom = 19.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 
@@ -366,8 +373,8 @@ stretch_margin_bottom = 5
 margin_top = -3.0
 margin_right = 114.0
 margin_bottom = 21.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -436,8 +443,8 @@ __meta__ = {
 margin_top = -5.0
 margin_right = 114.0
 margin_bottom = 19.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -462,8 +469,8 @@ stretch_margin_bottom = 5
 margin_top = -3.0
 margin_right = 114.0
 margin_bottom = 21.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -538,8 +545,8 @@ margin_left = -2.0
 margin_top = -4.0
 margin_right = 112.0
 margin_bottom = 20.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -565,8 +572,8 @@ margin_left = -2.0
 margin_top = -2.0
 margin_right = 112.0
 margin_bottom = 22.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -636,8 +643,8 @@ margin_left = -2.0
 margin_top = -4.0
 margin_right = 112.0
 margin_bottom = 20.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -663,8 +670,8 @@ margin_left = -2.0
 margin_top = -2.0
 margin_right = 112.0
 margin_bottom = 22.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -734,8 +741,8 @@ margin_left = -2.0
 margin_top = -5.0
 margin_right = 112.0
 margin_bottom = 19.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -761,8 +768,8 @@ margin_left = -2.0
 margin_top = -3.0
 margin_right = 112.0
 margin_bottom = 21.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -854,8 +861,8 @@ margin_left = 7.0
 margin_top = 89.0
 margin_right = 94.0
 margin_bottom = 117.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 39 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Mave"
 align = 1
 valign = 1
@@ -868,8 +875,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="PresentedSlavesPanel"]
 margin_right = 615.0
 margin_bottom = 87.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Travelers"
 align = 1
 valign = 1
@@ -940,8 +947,8 @@ margin_left = 27.4532
 margin_top = 19.4405
 margin_right = 48.4532
 margin_bottom = 48.4405
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
 __meta__ = {
@@ -998,8 +1005,8 @@ margin_left = 52.0
 margin_top = 6.0
 margin_right = 261.0
 margin_bottom = 33.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Heal Spell"
 align = 1
 valign = 1
@@ -1013,8 +1020,8 @@ margin_top = 27.0
 margin_right = 313.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.8, 0.8 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 40 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Master"
 align = 1
 valign = 1
@@ -1067,8 +1074,8 @@ valign = 1
 margin_top = -3.0
 margin_right = 300.0
 margin_bottom = 51.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Inventory"
 align = 1
 valign = 1
@@ -1097,8 +1104,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="Resources"]
 margin_right = 630.0
 margin_bottom = 59.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Available Resources"
 align = 1
 valign = 1
@@ -1143,8 +1150,8 @@ margin_left = 2.0
 margin_top = 51.0
 margin_right = 77.0
 margin_bottom = 78.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 align = 1
 valign = 1
@@ -1227,15 +1234,15 @@ visible = false
 margin_right = 108.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 55 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 35 )
 custom_styles/pressed = ExtResource( 35 )
 custom_styles/focus = ExtResource( 35 )
 custom_styles/disabled = ExtResource( 35 )
 custom_styles/normal = ExtResource( 35 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
@@ -1264,20 +1271,27 @@ texture = ExtResource( 53 )
 [node name="ScrollContainer" type="ScrollContainer" parent="AvailableSlaves"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = 79.0
-margin_right = -30.0
-margin_bottom = -76.0
+margin_left = 19.3784
+margin_top = 75.6216
+margin_right = -12.6216
+margin_bottom = -79.3784
 theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AvailableSlaves/ScrollContainer"]
+margin_right = 336.0
+size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="AvailableSlaves/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 294.0
-margin_bottom = 49.0
+margin_right = 336.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 59 )
+expand = true
 stretch_mode = 1
 
 [node name="Icon" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
@@ -1289,6 +1303,9 @@ rect_min_size = Vector2( 35, 35 )
 texture = ExtResource( 41 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button/Icon"]
 margin_right = 35.0
@@ -1296,24 +1313,29 @@ margin_bottom = 35.0
 texture = ExtResource( 46 )
 
 [node name="Label" type="Label" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
-margin_left = 49.0
-margin_top = 11.0
-margin_right = 197.0
-margin_bottom = 38.0
+margin_left = 48.4053
+margin_top = 8.62158
+margin_right = 206.405
+margin_bottom = 38.6216
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 43 )
 text = "Name"
 valign = 1
+clip_text = true
 
 [node name="TakeButton" type="TextureButton" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
-margin_left = 207.0
-margin_top = 7.0
-margin_right = 242.0
-margin_bottom = 42.0
+margin_left = 249.027
+margin_top = 5.0
+margin_right = 289.027
+margin_bottom = 45.0
 texture_normal = ExtResource( 55 )
 texture_pressed = ExtResource( 45 )
 texture_hover = ExtResource( 49 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button/TakeButton"]
 anchor_left = 0.5
@@ -1328,13 +1350,14 @@ mouse_filter = 2
 texture = ExtResource( 54 )
 
 [node name="SellButton" type="TextureButton" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button"]
-margin_left = 252.0
-margin_top = 7.0
-margin_right = 287.0
-margin_bottom = 42.0
+margin_left = 292.0
+margin_top = 5.0
+margin_right = 332.0
+margin_bottom = 45.0
 texture_normal = ExtResource( 56 )
 texture_pressed = ExtResource( 57 )
 texture_hover = ExtResource( 47 )
+expand = true
 
 [node name="TextureRect" type="TextureRect" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button/SellButton"]
 anchor_left = 0.5
@@ -1347,6 +1370,20 @@ margin_right = 12.0
 margin_bottom = 12.0
 mouse_filter = 2
 texture = ExtResource( 51 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AvailableSlaves/ScrollContainer/VBoxContainer/Button/SellButton"]
+margin_left = 0.891846
+margin_top = 19.0273
+margin_right = 40.8918
+margin_bottom = 33.0273
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "500"
+align = 1
 
 [node name="Button" type="TextureButton" parent="AvailableSlaves"]
 margin_left = 109.859
@@ -1360,23 +1397,26 @@ texture_hover = ExtResource( 52 )
 [node name="Label2" type="Label" parent="AvailableSlaves/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.568627, 1 )
 custom_fonts/font = ExtResource( 44 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.568627, 1 )
 text = "Quick Sell"
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="AvailableSlaves"]
-margin_left = 54.2344
-margin_top = 13.1694
-margin_right = 333.234
-margin_bottom = 40.1694
+margin_left = 38.659
+margin_top = 7.70517
+margin_right = 317.659
+margin_bottom = 44.7052
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.568627, 1 )
-custom_fonts/font = ExtResource( 44 )
 text = "Captured Characters"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="AvailableSlaves"]
+[node name="Hint" type="TextureRect" parent="AvailableSlaves"]
 margin_left = 320.237
 margin_top = 4.8909
 margin_right = 362.237
@@ -1384,3 +1424,6 @@ margin_bottom = 46.8909
 texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

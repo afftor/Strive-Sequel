@@ -1,4 +1,12 @@
-Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked. Exp requirements are no longer affected by it.
+Dungeon recruiting:
+Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
+
+Factors revamp:
+Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked.
+Exp requirements are no longer affected by it.
+Starting Growth factor for unique characters have been reduced 
+Factors now increased by sacrificing a character at slave market. 
+
 Removed loyalty bonus on taking virginity by master
 Removed breeder class for purchase
 Updated service icon/behavior to better reflect on slave's current state

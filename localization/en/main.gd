@@ -798,6 +798,12 @@ var TranslationDict = {
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	
+	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
+	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
+	CAPTUREADDTOOLTIP = "Add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	
+	FACTOR_INCREASE_TOOLTIP = "By sacrificing unneeded characters you can boost factors of other characters as long as donor character's stat is higher than receiver's. Growth Factor only can be increased by 1 per donor. End price is defined by receiver's value.",
+	COMBAT_CHARACTER_CAPTURED = "Character",
 	BROTHELWAITRESS = "Waitress",
 	BROTHELWAITRESSDESCRIPT = "[name] will work as waitress and serve customers with food and drinks. One of the most innocent assignements out there. Scales with Charm",
 	BROTHELWAITRESSALT = "Waiter",
@@ -1059,7 +1065,9 @@ var TranslationDict = {
 
 	TOOLTIPGOLD = "Owned gold. Gold is used for buying slaves and items and can be obtained from selling items, completing quests and some tasks.",
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
-
+	
+	
+	
 	INFOFOODFILTER = "Food filter allows to restrict or prioritize food which character will consume. Higher priority food consumed first. Keep in mind that some food may be hated by a character.",
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
@@ -1068,22 +1076,22 @@ var TranslationDict = {
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
-	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
-	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
+	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
+	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
-	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
-	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
-	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n{color=green|Maxed Wits Factor increases experience gain.}",
-	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.\n{color=green|Maxed Sex Factor provides Speed bonus}.",
+	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
+	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
+	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
+	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
 	
 	
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
 	WITS_FACTORBONUSDESCRIPT = "Wits Factor: Experience gain: +20%%",
-	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills efficiency +20%%",
+	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills Efficiency +20%%",
 	SEXUALS_FACTORBONUSDESCRIPT = "Sex Factor: Speed: +10",
 	MAGIC_FACTORBONUSDESCRIPT = "Magic Factor: MATK: +10%%",
-	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain and Maximum Gain: +25%%",
+	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain: +25%%",
 	TIMID_FACTORBONUSDESCRIPT = "Timid Factor: Damage taken: -15%%",
 	
 
@@ -2294,7 +2302,7 @@ var TranslationDict = {
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAfter a few minutes of getting through cave maze, you end up before the entrance of the room which seems to lead to the local goblin leader. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
-	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck|hell} are you {^doing|thinking}?! Let me go!.. You bastards!",
+	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
 	DIALOGUEEVENTGOBLINKILLREPLY = "You can't risk any suspicious goblin leave, let alone warn others. Before [he] can react, your group strike [him] down. Unfortunately, there's nothing else of interest here.",
 	DIALOGUEEVENTGOBLINLEAVEREPLY = "There's no need to dispose of a friendly goblin even at a place like this. You allow [him] to go free which brings a relief on [his] face.\n\n— That's great! I'll see myself off. Best of luck to you, guys!",
 	DIALOGUEEVENTFAIRYFRIENDLY = "As you make it through the woods, a lone Fairy jumps in front of you. [He] seems to be curious from meeting someone [he] never seen before. \n\n— Hey, what are you doing here? I've never seen you before... \n\n[He] seems to be willing to stick with you out of boredom or curiosity at least for a chat.",

@@ -1780,7 +1780,7 @@ var dungeons = {
 		descript = '',
 		character_data = {
 			chance_mod = 1.7,
-			races = [["common", 1], ['local', 2], ['Goblin',5]]
+			races = [["common", 1], ['local', 4], ['Goblin',5]]
 		},
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		bgm = "dungeon",

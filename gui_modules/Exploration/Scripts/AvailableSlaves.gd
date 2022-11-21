@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	input_handler.connect("LocationSlavesUpdate", self, 'update')
 	$Button.connect("pressed", self, 'sell_all')
+	globals.connecttexttooltip($Hint, tr("CAPTURETOOLTIP"))
 	update()
 
 
@@ -29,7 +30,9 @@ func update():
 		newbutton.get_node('SellButton').connect('pressed', self, 'sell_char', [id])
 		newbutton.connect('pressed', self, 'show_full_info', [tchar])
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
-		globals.connecttexttooltip(newbutton.get_node('SellButton'), str(int(tchar.calculate_price() / 2)))
+		newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price() / 2))
+		globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2))
+		globals.connecttexttooltip(newbutton.get_node("TakeButton"), tr("CAPTUREADDTOOLTIP"))
 
 
 func sell_all():

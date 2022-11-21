@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=21]
 
 [node name="CharactersPanel" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
@@ -49,10 +50,11 @@ __meta__ = {
 }
 
 [node name="StatInfo" type="Label" parent="StatsPanel"]
+margin_top = -1.7818
 margin_right = 379.0
-margin_bottom = 24.0
+margin_bottom = 33.2182
 theme = ExtResource( 13 )
-text = "Stat Info"
+text = "Improved Status"
 align = 1
 valign = 1
 __meta__ = {
@@ -63,8 +65,8 @@ __meta__ = {
 margin_top = 486.0
 margin_right = 406.0
 margin_bottom = 521.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Stat Name"
 align = 1
 valign = 1
@@ -76,8 +78,8 @@ __meta__ = {
 margin_top = 526.0
 margin_right = 403.0
 margin_bottom = 566.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Current Value"
 align = 1
 valign = 1
@@ -106,11 +108,11 @@ margin_top = -89.0
 margin_right = 98.5
 margin_bottom = -30.0
 theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 5 )
 text = "Upgrade"
 
 [node name="Testing" type="Label" parent="StatsPanel"]
@@ -195,8 +197,8 @@ margin_left = 2.0
 margin_top = 50.0
 margin_right = 77.0
 margin_bottom = 77.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -220,8 +222,8 @@ margin_left = 51.0
 margin_top = 8.0
 margin_right = 176.0
 margin_bottom = 48.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
 
@@ -231,7 +233,7 @@ margin_top = 87.0
 margin_right = 407.0
 margin_bottom = 111.0
 theme = ExtResource( 13 )
-text = "ChooseCharcter"
+text = "Choose Receiver"
 align = 1
 valign = 1
 __meta__ = {
@@ -244,7 +246,7 @@ margin_top = 87.0
 margin_right = 1227.0
 margin_bottom = 122.0
 theme = ExtResource( 13 )
-text = "ChooseCharcter"
+text = "Choose Donor"
 align = 1
 valign = 1
 __meta__ = {
@@ -300,8 +302,8 @@ margin_left = 54.0
 margin_top = 6.0
 margin_right = 336.0
 margin_bottom = 45.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Character Name"
 align = 1
 valign = 1
@@ -369,8 +371,8 @@ margin_left = 54.0
 margin_top = 6.0
 margin_right = 336.0
 margin_bottom = 45.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Character Name"
 align = 1
 valign = 1
@@ -396,3 +398,10 @@ visible = false
 margin_right = 12.0
 margin_bottom = 614.0
 theme = ExtResource( 3 )
+
+[node name="Hint" type="TextureRect" parent="."]
+margin_left = 1146.1
+margin_top = 12.6992
+margin_right = 1210.1
+margin_bottom = 76.6992
+texture = ExtResource( 21 )
