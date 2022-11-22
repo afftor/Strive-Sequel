@@ -112,6 +112,7 @@ func _ready():
 	modding_core.fix_main_data_preload()
 	modding_core.process_data_mods()
 	modding_core.fix_main_data_postload()
+	reset_roll_data()
 
 
 #not used
