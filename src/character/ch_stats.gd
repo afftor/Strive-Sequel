@@ -168,7 +168,7 @@ func custom_stats_get(stat):
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 3
 		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
 		return max(5.0, tres)
-	if stat in ['def', 'mdef']:
+	if stat in ['armor', 'mdef']:
 		var tres = statlist[stat]
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 2
 		return tres

@@ -545,7 +545,22 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
+bbcode_text = "Dungeon recruiting:
+Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
+
+Factors revamp:
+Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked.
+Exp requirements are no longer affected by it.
+Starting Growth factor for unique characters have been reduced 
+Factors now increased by sacrificing a character at slave market. 
+
+Removed loyalty bonus on taking virginity by master
+Removed breeder class for purchase
+Updated service icon/behavior to better reflect on slave's current state
+Fixed some descriptions
+Minor bugfixes
+0.6.5d
+Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
 Updated some character sprites and added more images to gallery
 Fixed servicing characters earning way more than they should
 Fixed Lilia's initial event not being removed from aliron
@@ -1240,7 +1255,22 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
+text = "Dungeon recruiting:
+Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
+
+Factors revamp:
+Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked.
+Exp requirements are no longer affected by it.
+Starting Growth factor for unique characters have been reduced 
+Factors now increased by sacrificing a character at slave market. 
+
+Removed loyalty bonus on taking virginity by master
+Removed breeder class for purchase
+Updated service icon/behavior to better reflect on slave's current state
+Fixed some descriptions
+Minor bugfixes
+0.6.5d
+Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
 Updated some character sprites and added more images to gallery
 Fixed servicing characters earning way more than they should
 Fixed Lilia's initial event not being removed from aliron

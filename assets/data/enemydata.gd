@@ -963,7 +963,7 @@ var enemies = {
 		resists = {fire = -50, mind = -25},
 		race = 'beast',
 		loot = 'rat_loot',
-		icon = "res://assets/images/enemies/RatIcon.png",
+		icon = "res://assets/images/enemies/enemy_rat.png",
 		body = null,
 		skills = [],
 		traits = [],

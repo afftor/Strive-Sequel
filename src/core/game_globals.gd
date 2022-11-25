@@ -74,6 +74,7 @@ func advance_hour():
 	hour += 1
 	if hour > variables.HoursPerDay:
 		advance_day()
+		
 
 
 func advance_day():
@@ -81,12 +82,12 @@ func advance_day():
 	hour = 1
 	date += 1
 	ResourceScripts.game_progress.days_from_last_church_quest += 1
-#	daily_sex_left = 1 + ResourceScripts.game_res.upgrades.sex_times
-#	daily_dates_left = 1
+	ResourceScripts.game_res.subtract_taxes()
 	ResourceScripts.game_party.advance_day()
 	
 	#guilds and shops check
 	ResourceScripts.game_world.advance_day()
+	
 	
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
