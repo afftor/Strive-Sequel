@@ -1408,6 +1408,7 @@ func roll_characters():
 		var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
 		newslave.generate_random_character_from_data(t_race, null, t_diff)
 		newslave.is_active = true
+#		newslave.set_slave_category('servant')
 		res.push_back(newslave.id)
 		while rng.randf() < chance2 and n < char_roll_data.max_amount:
 			if racedata is Array and !racedata.empty():
@@ -1417,6 +1418,7 @@ func roll_characters():
 			newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
 			newslave.generate_random_character_from_data(t_race, null, t_diff)
 			newslave.is_active = true
+#			newslave.set_slave_category('servant')
 			res.push_back(newslave.id)
 	
 	reset_roll_data()

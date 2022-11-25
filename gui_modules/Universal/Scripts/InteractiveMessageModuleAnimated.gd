@@ -75,7 +75,6 @@ func open(scene):
 #		print_debug("finished WAIT")
 		doing_transition = false
 #	print(self.visible)
-	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.hide()
@@ -83,6 +82,7 @@ func open(scene):
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
 	handle_loots(scene)
+	update_scene_characters()
 	generate_scene_text(scene)
 	set_enemy(scene)
 	handle_scene_options()
@@ -209,6 +209,58 @@ func add_chest_options(scene):
 
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+
+
+func add_recruit_option(scene):
+	if input_handler.scene_characters.empty():
+		input_handler.scene_characters.push_back(input_handler.active_character)
+		input_handler.active_character = null
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	if state == 'random_combat':
+		scene.options.insert(1,{code = 'recruit_option_safe', reqs = [], text = "DIALOGUERECRUITFORCEATTEMPT"})
+	var char2 = input_handler.active_character
+	if char2 != null:
+		scene.options.insert(1,{code = 'recruit_option', reqs = [], text = "DIALOGUERECRUITATTEMPT"})
+
+
+func recruit_option_safe():
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	input_handler.interactive_message_follow("recruit_captured_enslave", "story_event", {})
+	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
+
+func recruit_option():
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	var char2 = input_handler.active_character
+	var val1 = char_to_recruit.get_stat('charm_factor')
+	var val2= char2.get_stat('charm')
+	if state == 'random_combat':
+		if val2 >= val1 * globals.rng.randf_range(10.0, 20.0):
+			input_handler.interactive_message_follow("recruit_captured_success", "story_event", {})
+		else:
+			input_handler.interactive_message_follow("recruit_captured_fail", "story_event", {})
+	else:
+		if val2 >= val1 * globals.rng.randf_range(5.0, 15.0):
+			input_handler.interactive_message_follow("recruit_meet_success", "story_event", {})
+		else:
+			input_handler.interactive_message_follow("recruit_meet_fail", "story_event", {})
+	
+	char2.add_stat('charm', globals.rng.randi_range(2, 5))
+	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
 
 
 func add_shrine_options(scene):
@@ -786,6 +838,8 @@ func handle_loots(scene):
 		add_chest_options(scene)
 	if scene.tags.has("shrine"):
 		add_shrine_options(scene)
+	if scene.tags.has("recruit"):
+		add_recruit_option(scene)
 	if scene.tags.has("free_loot"):
 		add_loot_options(scene)
 

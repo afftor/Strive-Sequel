@@ -862,6 +862,8 @@ func affect_char(i):
 			input_handler.rebuild_slave_list()
 		'quest':
 			assign_to_quest_and_make_unavalible({id = i.id, name = i.name}, i.duration)
+		'slavetype':
+			set_slave_category(i.value)
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
