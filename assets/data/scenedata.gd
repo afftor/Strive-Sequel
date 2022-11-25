@@ -1278,7 +1278,67 @@ var scenedict = {
 		{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'rewrite_save'}]},
 		],
 	},
-
+	
+	recruit_captured = {
+		text = tr("DIALOGUERECRUIT"),
+		tags = ['recruit','scene_character_translate'],
+		image = 'celena_shrine', #2fix
+		options = [
+		{code = 'recruit_captured', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
+	},
+	recruit_meet = {
+		text = tr("DIALOGUEMEET"),
+		tags = ['recruit','scene_character_translate'],
+		image = 'erebus_shrine', #2fix
+		options = [
+		{code = 'recruit_meet', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
+	},
+	recruit_captured_enslave = {text = tr("DIALOGUERECRUITENSLAVE"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	]
+	},
+	recruit_captured_success = {text = tr("DIALOGUERECRUITGOOD"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
+	]
+	},
+	recruit_captured_fail = {text = tr("DIALOGUERECRUITBAD"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	]
+	},
+	recruit_meet_success = {text = tr("DIALOGUEMEETGOOD"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = []},
+	{code = 'recruit_from_scene', reqs = [{type = 'disabled'}], not_hide = true, text = tr("DIALOGUEMEETGOODHIRELING"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'hireling'},]},
+	]
+	},
+	recruit_meet_fail = {text = tr("DIALOGUEMEETBAD"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	]
+	},
+	
+	
 	celena_shrine_find = {
 		text = tr("DIALOGUESHRINECELENA"),
 		tags = [],

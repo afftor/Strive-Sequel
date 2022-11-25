@@ -30,7 +30,10 @@ func update():
 		newbutton.get_node('SellButton').connect('pressed', self, 'sell_char', [id])
 		newbutton.connect('pressed', self, 'show_full_info', [tchar])
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
-		newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price() / 2))
+		if tchar.src == 'random_combat':
+			newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price() / 2))
+		else:
+			newbutton.get_node("SellButton/Label").visible = false
 		globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2))
 		globals.connecttexttooltip(newbutton.get_node("TakeButton"), tr("CAPTUREADDTOOLTIP"))
 
@@ -38,10 +41,11 @@ func update():
 func sell_all():
 	for id in input_handler.active_location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)
-		var val = tchar.calculate_price() / 2
-		ResourceScripts.game_res.money += int(val)
+		if tchar.src == 'random_combat':
+			var val = tchar.calculate_price() / 2
+			ResourceScripts.game_res.money += int(val)
+			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
-	input_handler.PlaySound("money_spend")
 	input_handler.active_location.captured_characters.clear()
 	input_handler.emit_signal("LocationSlavesUpdate")
 
@@ -49,10 +53,11 @@ func sell_all():
 func sell_char(ch_id):
 	if input_handler.active_location.captured_characters.has(ch_id):
 		var tchar = characters_pool.get_char_by_id(ch_id)
-		var val = tchar.calculate_price() / 2
-		ResourceScripts.game_res.money += int(val)
+		if tchar.src == 'random_combat':
+			var val = tchar.calculate_price() / 2
+			ResourceScripts.game_res.money += int(val)
+			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
-		input_handler.PlaySound("money_spend")
 		input_handler.active_location.captured_characters.erase(ch_id)
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
@@ -69,16 +74,21 @@ func hire_char(ch_id):
 				input_handler.SystemMessage("Population limit reached")
 			return
 		var tchar = characters_pool.get_char_by_id(ch_id)
-		tchar.set_stat('is_hirable', false)
-		tchar.recruit() 
-		tchar.travel.location = gui_controller.exploration.selected_location
-		tchar.remove_from_task()
-		input_handler.PlaySound("money_spend")
-		input_handler.active_location.captured_characters.erase(ch_id)
+		input_handler.active_character = tchar
+		if tchar.src == 'random_combat':
+			input_handler.interactive_message("recruit_captured", "story_event", {})
+		else:
+			input_handler.interactive_message("recruit_meet", "story_event", {})
+#		tchar.set_stat('is_hirable', false)
+#		tchar.recruit() 
+#		tchar.travel.location = gui_controller.exploration.selected_location
+#		tchar.remove_from_task()
+#		input_handler.PlaySound("money_spend")
+#		input_handler.active_location.captured_characters.erase(ch_id)
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
 		slave_tooltip.hide()
-	input_handler.emit_signal("LocationSlavesUpdate")
+#	input_handler.emit_signal("LocationSlavesUpdate")
 
 
 func show_full_info(person = null):
