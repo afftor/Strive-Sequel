@@ -197,6 +197,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	select_actor()
 
 func FinishCombat(victory = true):
+	victory_seq_run = false
 	HideFighterStats()
 	set_process_input(false)
 	autoskill_dummy.is_active = false
@@ -325,7 +326,11 @@ func checkwinlose():
 var rewardsdict
 
 #to check next functions
+var victory_seq_run = false
 func victory():
+	if victory_seq_run:
+		return
+	victory_seq_run = true
 	get_tree().get_root().set_disable_input(true)
 
 	autoskill_dummy.is_active = false
