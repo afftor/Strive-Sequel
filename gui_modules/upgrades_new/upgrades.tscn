@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://gui_modules/upgrades_new/upgrades_new.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/BasePanelFlat.tres" type="StyleBox" id=2]
@@ -27,7 +27,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_enough.png" type="Texture" id=26]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=27]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_32.tres" type="DynamicFont" id=28]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=29]
 [ext_resource path="res://gui_modules/upgrades_new/UpgradesList.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=32]
@@ -457,31 +456,27 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Description Header"
 align = 1
 
-[node name="description" type="Label" parent="description/VBoxContainer"]
+[node name="description" type="RichTextLabel" parent="description/VBoxContainer"]
 margin_top = 46.0
 margin_right = 724.0
-margin_bottom = 183.0
+margin_bottom = 89.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 29 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Description
-Description
-Description
-Description "
-align = 1
-autowrap = true
+custom_fonts/normal_font = ExtResource( 28 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
 
 [node name="resources" type="Label" parent="description/VBoxContainer"]
-margin_top = 187.0
+margin_top = 93.0
 margin_right = 724.0
-margin_bottom = 229.0
+margin_bottom = 135.0
 custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Resources"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
-margin_top = 233.0
+margin_top = 139.0
 margin_right = 724.0
 margin_bottom = 625.0
 size_flags_vertical = 3
@@ -491,7 +486,7 @@ custom_constants/margin_left = 90
 [node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer/MarginContainer"]
 margin_left = 90.0
 margin_right = 634.0
-margin_bottom = 392.0
+margin_bottom = 486.0
 size_flags_vertical = 3
 theme = ExtResource( 14 )
 scroll_horizontal_enabled = false
@@ -649,3 +644,12 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TaxLabel" type="Label" parent="."]
+margin_left = 1335.53
+margin_top = 827.755
+margin_right = 1692.53
+margin_bottom = 878.755
+mouse_filter = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Weekly Tax: "

@@ -29,6 +29,7 @@ func _ready():
 	$CancelButton.connect("pressed", self, "hide", [])
 	$description/Confirm.connect("pressed", self, "add_upgrade_to_queue", [])
 	globals.connecttexttooltip($description/workunits, tr("TOOLTIPPROGRESSREQUIRED"))
+	globals.connecttexttooltip($TaxLabel, tr("TOOLTIPTAX"))
 
 
 func show():
@@ -119,6 +120,8 @@ func build_description(upgrade_id):
 		work_cost.get_parent().visible = false
 		can_upgrade = false
 	else:
+		if upgrade_next_state.has('tax'):
+			text += "\n\n{color=yellow|This upgrade will increase Weekly Tax by %d}" % upgrade_next_state.tax 
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
 			var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
@@ -142,7 +145,8 @@ func build_description(upgrade_id):
 #		panel.get_node("count").text = "%d" % [upgrade_next_state.taskprogress]
 
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
-	desc_panel.get_node("VBoxContainer/description").text = text
+	desc_panel.get_node("VBoxContainer/description").bbcode_text = globals.TextEncoder(text)
+	$TaxLabel.text = "Weekly Taxes: %d" % ResourceScripts.game_res.tax
 	#2add here building bonuses list not existing for now
 
 
