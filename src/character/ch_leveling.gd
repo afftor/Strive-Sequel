@@ -538,7 +538,7 @@ func select_brothel_activity():
 			if remove_from_sex.size() == sex_rules.size(): #make sure at least 1 option is sill available in the end
 				remove_from_sex.remove(randi() % remove_from_sex.size())
 			for i in remove_from_sex:
-				sex_rules.remove(i)
+				sex_rules.erase(i)
 			
 			var highest_value = get_highest_value(sex_rules)
 			var data = races.gold_tasks_data[highest_value.code]

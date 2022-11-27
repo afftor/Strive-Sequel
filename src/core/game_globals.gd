@@ -82,16 +82,18 @@ func advance_day():
 	hour = 1
 	date += 1
 	ResourceScripts.game_progress.days_from_last_church_quest += 1
-	ResourceScripts.game_res.subtract_taxes()
 	ResourceScripts.game_party.advance_day()
 	
 	#guilds and shops check
 	ResourceScripts.game_world.advance_day()
 	
 	
+	
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:
 		reset_limits()
+		
+		ResourceScripts.game_res.subtract_taxes()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()

@@ -633,28 +633,28 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEROOMSBONUS2"),
 				taskprogress = 25,
 				cost = {wood = 100, stone = 50, cloth = 25},
-				tax = 50
+				tax = 10
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS3"),
 				taskprogress = 35,
 				cost = {woodiron = 50, stone = 100, clothsilk = 25},
-				tax = 150
+				tax = 10
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS4"),
 				taskprogress = 45,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
-				tax = 250
+				tax = 10
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS5"),
 				taskprogress = 60,
 				cost = {woodiron = 100, clothsilk = 50, steel = 50},
-				tax = 500
+				tax = 10
 			},
 		}
 	},
@@ -672,49 +672,49 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS1"),
 				taskprogress = 15,
 				cost = {wood = 50, cloth = 25},
-				tax = 20
+				tax = 10
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS2"),
 				taskprogress = 25,
 				cost = {wood = 100, stone = 50, cloth = 25},
-				tax = 40
+				tax = 10
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS3"),
 				taskprogress = 35,
 				cost = {woodiron = 50, stone = 100, clothsilk = 25},
-				tax = 60
+				tax = 10
 			},
 			4:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS4"),
 				taskprogress = 45,
 				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
-				tax = 80
+				tax = 10
 			},
 			5:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS5"),
 				taskprogress = 55,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 100
+				tax = 10
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS6"),
 				taskprogress = 65,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 125
+				tax = 10
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS7"),
 				taskprogress = 75,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 150
+				tax = 10
 			},
 		}
 	},
@@ -740,14 +740,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS2"),
 				taskprogress = 40,
 				cost = {wood = 50, clothsilk = 15},
-				tax = 30
+				tax = 10
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS3"),
 				taskprogress = 60,
 				cost = {wood = 100, clothsilk = 35},
-				tax = 100
+				tax = 10
 			}
 		}
 	},
@@ -766,14 +766,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADESTABLESBONUS1"),
 				taskprogress = 15,
 				cost = {wood = 50, leather = 25, woodiron = 50, leatherthick = 50},
-				tax = 50
+				tax = 10
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS2"),
 				taskprogress = 50,
 				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
-				tax = 100
+				tax = 10
 			},
 		}
 	},
@@ -808,7 +808,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADETATTOOBONUS"),
 				taskprogress = 25,
 				cost = {woodiron = 25, woodmagic = 25, leatherthick = 20},
-				tax = 25
+				tax = 10
 			},
 		}
 	},
@@ -855,14 +855,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS1"),
 				taskprogress = 25,
 				cost = {woodmagic = 100, leatherthick = 100, steel = 100},
-				tax = 25
+				tax = 10
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS2"),
 				taskprogress = 50,
 				cost = {woodiron = 100, leathermythic = 100, mithril = 100},
-				tax = 100
+				tax = 10
 			},
 		}
 	},
@@ -880,7 +880,7 @@ var upgradelist = {
 				bonusdescript = tr(""),
 				taskprogress = 15,
 				cost = {wood = 50, leather = 20, cloth = 20},
-				tax = 20
+				tax = 10
 			},
 		}
 	},
@@ -897,7 +897,7 @@ var upgradelist = {
 				bonusdescript = tr(""),
 				taskprogress = 50,
 				cost = {stone = 500, woodiron = 150, leatherthick = 50, obsidian = 25},
-				tax = 200
+				tax = 10
 			},
 		}
 	},

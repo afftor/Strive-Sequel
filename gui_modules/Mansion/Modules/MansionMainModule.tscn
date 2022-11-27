@@ -41,11 +41,11 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 36
 font_data = ExtResource( 19 )
 
@@ -59,6 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 495.05 ]
 }
+test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -301,6 +302,7 @@ visible = false
 [node name="Console" type="Control" parent="." groups=[
 "pauseprocess",
 ]]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
@@ -309,7 +311,10 @@ script = ExtResource( 7 )
 modulate = Color( 1, 1, 1, 0.862745 )
 anchor_right = 1.0
 anchor_bottom = 0.495
-margin_bottom = 0.399963
+margin_left = 40.0
+margin_top = 33.0
+margin_right = -707.0
+margin_bottom = -4.59998
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,7 +323,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -67.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -328,8 +333,8 @@ anchor_top = 0.879
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.265045
-custom_fonts/font = SubResource( 2 )
-placeholder_text = "Exemple: /do {\"code\" : \"money_change\", \"operant\" : \"+\", \"value\" : \"100000\"}"
+custom_fonts/font = SubResource( 3 )
+placeholder_text = "Example: /do {\"code\":\"money_change\",\"operant\":\"+\",\"value\":1000}"
 placeholder_alpha = 0.27
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1164,7 +1164,7 @@ var Skilllist = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'single',
-		target_range = 'weapon',
+		target_range = 'earth',
 		damage_type = 'normal',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
@@ -2031,7 +2031,7 @@ var Skilllist = {
 		target = 'enemy',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'weapon',
+		damage_type = 'dark',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.atk', '*4.0']
@@ -2087,7 +2087,7 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1,
+		value = 0.8,
 		follow_up = 'wind_atk_1'
 	},
 	wind_atk_1 = {
@@ -2114,7 +2114,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1,
+		value = 0.8,
 	},
 	water_atk = {
 		code = 'water_atk',

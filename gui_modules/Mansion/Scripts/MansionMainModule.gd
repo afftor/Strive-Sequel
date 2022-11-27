@@ -865,7 +865,7 @@ func test_mode():
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
+#		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
 
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")

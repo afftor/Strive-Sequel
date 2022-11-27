@@ -7,12 +7,16 @@ Exp requirements are no longer affected by it.
 Starting Growth factor for unique characters have been reduced 
 Factors now increased by sacrificing a character at slave market. 
 
+Added console to run some custom commands (F2)
 Removed loyalty bonus on taking virginity by master
 Removed breeder class for purchase
 Nerfed combat xp across the board
 Updated service icon/behavior to better reflect on slave's current state
 Boosted Cali's sword
+Assassination damage type changed to dark
+Hammerfall damage type changed to earth
 Fixed some descriptions
+Fixed some parts of sex service not working correctly
 Minor bugfixes
 0.6.5d
 Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
