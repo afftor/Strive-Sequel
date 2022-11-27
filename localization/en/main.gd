@@ -732,6 +732,8 @@ var TranslationDict = {
 	TASKMINING_STONEDESCRIPT = "Work at mines for gathering Stones. Stones are heavily used in constructions but can also serve as some material parts.",
 	TASKPROSTITUTION = "Prostitution",
 	TASKPROSTITUTIONDESCRIPT = "Providing sexual services to public in order to earn gold.",
+	TASKBROTHEL = "Service",
+	TASKBROTHELDESCRIPT = "Provides entertainment or sexual service in exchange for gold.",
 	TASKCOOKING = "Cooking",
 	TASKCOOKINGDESCRIPT = "Craft food items. Must have chosen a recipe to cook. ",
 	TASKTAILOR = "Tailor",
@@ -781,16 +783,16 @@ var TranslationDict = {
 	JOBTAILORCRAFTDESCRIPT = "Craft item in tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item in alchemy workshop.",
 	
-	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.",
+	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	
 	BROTHELWAITRESS = "Waitress",
-	BROTHELWAITRESSDESCRIPT = "[name] will work as waitress and serve customers with food and drinks. One of the most innocent assignements out there./nScales with Charm",
+	BROTHELWAITRESSDESCRIPT = "[name] will work as waitress and serve customers with food and drinks. One of the most innocent assignements out there. Scales with Charm",
 	BROTHELHOSTESS = "Hostess",
-	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt./nScales with Wits",
+	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. Scales with Wits",
 	BROTHELDANCER = "Dancer",
-	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory./nScales with Physics",
+	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
 	BROTHELSTRIPPER = "Stripper",
-	BROTHELSTRIPPERSDESCRIPT = "[name] will flash [his] privates and perfrom private shows without going all the way./nScales with Sexuals",
+	BROTHELSTRIPPERDESCRIPT = "[name] will flash [his] privates and perfrom private shows without going all the way. Scales with Charm",
 	
 	BROTHELPETTING = "Non-penetrative",
 	BROTHELPETTINGDESCRIPT = "[name] will provide sex service without allowing penetrative actions saving potential virginity and preventing impregnation.",
@@ -803,14 +805,14 @@ var TranslationDict = {
 	BROTHELGROUP = "Group",
 	BROTHELGROUPDESCRIPT = "[name] will serve multiple clients at once.",
 	BROTHELSEXTOY = "Sextoy",
-	BROTHELSETXOYDESCRIPT = "[name] will willingly oblidge to any sexual activity the clients may ask from [him].",
+	BROTHELSEXTOYDESCRIPT = "[name] will willingly oblidge to any sexual activity the clients may ask from [him].",
 	
 	BROTHELMALES = "Males",
 	BROTHELMALESDESCRIPT = "[name] will serve male customers. This can lead to pregnancy. Toggle to disable.",
 	BROTHELFEMALES = "Females",
 	BROTHELFEMALESDESCRIPT = "[name] will serve female customers. Toggle to disable.",
-	BROTHELFUTAS = "Futas",
-	BROTHELFUTASSDESCRIPT = "[name] will serve futanari customers. This can lead to pregnancy. Toggle to disable.",
+	BROTHELFUTA = "Futas",
+	BROTHELFUTADESCRIPT = "[name] will serve futanari customers. This can lead to pregnancy. Toggle to disable.",
 	
 	
 	BUTTONCLASS = "Classes and Skills",
@@ -1009,9 +1011,13 @@ var TranslationDict = {
 	STATMOD_SMITH = "Smith",
 	STATMOD_TAILOR = "Tailor",
 	STATMOD_ALCHEMY = "Alchemy",
-	STATMOD_FARM = "Farm",
+	STATMOD_FARM = "Farming",
 	STATMOD_PROS = "Service",
 	STATMOD_TASK_EFFICIECNY = "Task Effciency",
+	STATMOD_WAITRESS = "Waitress Income",
+	STATMOD_HOSTESS = "Hostess Income",
+	STATMOD_DANCER = "Dancer Income",
+	STATMOD_STRIP = "Stripper Income",
 
 	STATRESIST_NORMAL = "Normal Resist",
 	STATRESIST_FIRE = "Fire Resist",
@@ -2472,7 +2478,7 @@ var TranslationDict = {
 	ITEMMAJORUS_POTION = "Majorus Potion",
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to grow a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMEXP_SCROLL = "Scroll of Knowledge",
-	ITEMEXP_SCROLLDESCRIPT = "Grants 100 experience to the user.",
+	ITEMEXP_SCROLLDESCRIPT = "Grants 100 points of experience to the user.",
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
@@ -7003,13 +7009,20 @@ You take the small pouch with powder Mae passes to you and put it away. As you e
 	RITUAL_START = """After the sun sets, the tribe lights some incense you haven't seen before. You realize that the familiar scent of aphrodisiacs is supposed to make everyone more relaxed and aroused, including you. """,
 	RITUAL_START_OPTION_1 = "Put Mae's powder into bowl",
 	RITUAL_START_OPTION_2 = "Don't put Mae's powder into bowl",
-	RITUAL_1_1 = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]?
-
-It seems you've failed to spoil Mae's ritual drink and now will have to go through it. 
+	RITUAL_1_1_GOOD = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]? 
 
 {color=green|Success}
 
 Making sure nobody sees, you quickly drop the powder that Mae gave you into the bowl prepared for her.
+
+You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
+
+After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
+RITUAL_1_1_BAD = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]?
+
+{color=red|Failure}
+
+It seems you've failed to spoil Mae's ritual drink and now will have to go through it. 
 
 You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
 
@@ -7771,7 +7784,7 @@ Cali's wet slit tells a different story and without further ceremony you ignore 
 
  — AAAAaaiiieeehhh!
 
-Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property.  
+Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property. 
 
  — Y-you bastard! I'll — I'll never forgive you for this!
 
@@ -7927,11 +7940,10 @@ Cali seems somewhat upset with your words as you return to the village""",
 	CALI_GOBLINS_8_ADDITIONAL = """
 
 Despite everything, Cali does not let her spirit down and you leave to home""",
-	CALI_SEX_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
+	CALI_SEX_1_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited - Cali. As you hear some noise coming from there, you decide to take a look. 
 
-You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. 
-
-- I'm feeling strange... Thinking about [him]...
+You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. """,
+	CALI_SEX_1_2 = """- I'm feeling strange... Thinking about [him]...
 
 As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
 
@@ -7947,15 +7959,14 @@ As she turns to you, she realizes you've been looking at her for some time. Her 
 - I'm... um... not sure what to say now.""",
 	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
 	CALI_SEX_2_1AND2_OPTION_2 = "Don't mind if I watch?",
-	CALI_SEX_3 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
+	CALI_SEX_3_1 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
 
 - You are a pervert, Master. 
 
 Her playful tone catches up as her hand starts rubbing her snatch.
 
-- But... I don't dislike being watched by you...
-
-As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
+- But... I don't dislike being watched by you...""",
+	CALI_SEX_3_2 = """As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
 
 - Wow... I never felt like this before.""",
 	CALI_SEX_3_OPTION_1 = "That was a joy to watch",
@@ -8561,7 +8572,7 @@ Amelia: - But, stressed and distressed as you are, your lessons might not be par
 Cali's breathing would pick up as she pulled herself closer to Amelia now, the girl nearly in her lap as Cali looked over at her now, giving into the sensations as she leaned closer. It was unexpected for Amelia, Cali as well as the two of them kissed now, bodies pressing against one another as their kiss deepened. Hands that were massaging her before were now exploring, grasping lightly at Cali's body, only to be interested as a few loud bangs could be heard close by, both ladies jumping a bit and distancing themselves slightly.
 """,
 
-CALI_AMELIA_3_1 = """Cali: - Ah... Uhh... I'm not...
+	CALI_AMELIA_3_1 = """Cali: - Ah... Uhh... I'm not...
 
 Amelia: - I apologize, Cali, that was...nice. It seems both of us are plenty up currently. 
 
@@ -8585,7 +8596,7 @@ CALI_AMELIA_4_1 = """Cali would distract herself in the small talk as Amelia pul
 
 Amelia: - I know that it can be frustrating not catching the eye of the man you desire, but for today we've no need to worry about that.
 
-Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts.  They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. 
+Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. 
 """,
 	CALI_AMELIA_5 = """A few moments later the two were kissing again, uninterrupted as soon as their tongues would meet. Amelia's hips softly rubbing over her bare leg now. After breath demanded them break the kiss, Cali's face was a deep shade of red as Amelia's hand slipped lower, moving her panties aside.
 
@@ -8628,17 +8639,17 @@ Unlike most other locals, Lilia is quite friendly towards you.. """,
 	LILIA_STARTING_2_2 = """- Hey, hey, what did you come for? 
 
 Unlike most other locals, Lilia is quite friendly towards you..""",
-	LILIA_STARTING_2_3 = """""", # TODO ask for text
+	LILIA_STARTING_2_3 = """- I like it, alright. But I've lived here for all I can remember. It can get reeeaal boring you know.""",
 	LILIA_STARTING_2_OPTION_1 = "Do you wanna go somewhere more private?",
 	LILIA_STARTING_2_OPTION_2 = "Do you wanna join me?",
 	LILIA_STARTING_2_OPTION_3 = "How do you like it here?",
 	LILIA_STARTING_2_OPTION_4 = "I should go now, see you another time",
-	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches  on to your intentions, though she doesn't immediately reject the proposal.
+	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches on to your intentions, though she doesn't immediately reject the proposal.
 
 - You're strange. I dunno, I have no experience in such things...""",
 	LILIA_SEDUCTION_1_OPTION_1 = "I can see you're practically shaking near me though (Sex Factor)",
 	LILIA_SEDUCTION_1_OPTION_2 = "I have plenty of experience",
-	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something",
+	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something nice",
 	LILIA_SEDUCTION_1_OPTION_4 = "But you must be curious what it is like",
 	LILIA_SEDUCTION_2_2AND3 = "- Sorry, I don't think I wanna just yet.",
 	LILIA_SEDUCTION_2_4 = "- He-he, other girls have been talking a lot about it, but I'm still not sure. You are so big and stuff...",
@@ -8656,31 +8667,30 @@ Unlike most other locals, Lilia is quite friendly towards you..""",
 	LILIA_SEX_SCENE_0 = """As Lilia hears your suggestion, her lips turn into a mischievous smile. 
 
 - Sure! I was afraid you wouldn't ask.""",
-	LILIA_SEX_SCENE_1 = """The fae approaches, staring up at you, due to the large size difference.  A few moments later, she reaches up grasping your hand after looking around the forest.  It doesn't take her long to guide you just a bit deeper into a nice shaded alcove.  
+	LILIA_SEX_SCENE_1 = """The fae approaches, staring up at you, due to the large size difference. A few moments later, she reaches up grasping your hand after looking around the forest. It doesn't take her long to guide you just a bit deeper into a nice shaded alcove. 
 
-The fairy darts around now, a literal bundle of energy moving this and that, even adjusting branches as you're not quite sure what she's doing at first, but soon realizes she's setting her stage; making everything perfect, at least in her eyes.  Finally having everything settled Lillia turns to you looking at you expectantly.  
+The fairy darts around now, a literal bundle of energy moving this and that, even adjusting branches as you're not quite sure what she's doing at first, but soon realizes she's setting her stage; making everything perfect, at least in her eyes. Finally having everything settled Lilia turns to you looking at you expectantly. 
 
-- Ok! Everything is perfect!
+- Ok! Everything is perfect!""",
 
-Lillia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now.  After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
 
-- Oh! I mean if you insist we can leave it there…
+	LILIA_SEX_SCENE_1_1 = """Lilia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now. After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
 
-The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds.  A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
+- Oh! I mean if you insist we can leave it there...
 
-You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers.  
+The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds. A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
 
-Lillia: T-that's so much better than my fingers…take me [name].  Please…""",
-	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole.  Lillia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
+You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers. 
 
-You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected.  Lillia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
+- T-that's so much better than my fingers... take me [name]. Please...""",
+	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole. Lilia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
 
-She wasn't an experienced lover, but her tightness and willingness to please helped make up for it.  Occasionally you'd have to stop as the girl shuddered hard on your shaft, making you unsure if she was cumming, or just shaking from how deep you were in her body.  Each time Lillia had to stop this way she'd soon urge you on, telling you to take her harder now.""",
-	LILIA_SEX_SCENE_3 = """The mating continued on for a while before you started to pulse inside of her, the girl already panting hard, giving pleasured little sounds before making an ecstatic sound as you started to cum inside of her, soaking her inner walls and filling her womb.  She stayed there for a few moments, her hips shaking as she was literally clamped down on your cock, her stomach slightly inflated as she panted out.
+You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected. Lilia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
 
-- …needed that.  Oh I need to keep doing that? C-can I come with you?  Please… 
+She wasn't an experienced lover, but her tightness and willingness to please helped make up for it. Occasionally you'd have to stop as the girl shuddered hard on your shaft, making you unsure if she was cumming, or just shaking from how deep you were in her body. Each time Lilia had to stop this way she'd soon urge you on, telling you to take her harder now.""",
+	LILIA_SEX_SCENE_3 = """The mating continued on for a while before you started to pulse inside of her, the girl already panting hard, giving pleasured little sounds before making an ecstatic sound as you started to cum inside of her, soaking her inner walls and filling her womb. She stayed there for a few moments, her hips shaking as she was literally clamped down on your cock, her stomach slightly inflated as she panted out.
 
-You let her question hang in the air for a few moments before pulling her off you, seeing your cum leak out of her body, as you easily hold her in one of your arms.  It wasn't every day someone met one of her kind, much less bedded one of them.  Lillia might make an interesting addition to your manor.""",
+- ...Amazing! Let's do this again some other time, okay?'""",
 	LILIA_RECRUIT_1_1 = """- Eh? I dunno, I don't think I know you well enough, [name].""",
 	LILIA_RECRUIT_1_2 = """- Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.""",
 	LILIA_RECRUIT_1_OPTION_1 = "I'd love to have you at my place (Charm Factor)",
@@ -8711,7 +8721,7 @@ Lilia hesitates for a bit but her attitude towards you eventually sways her choi
 Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
 	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
 
-- A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I.  She'll need time for her body to adjust to these harsh conditions.  Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
+- A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I. She'll need time for her body to adjust to these harsh conditions. Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
 	SICK_LILIA_1_OPTION_1 = "So she's going to be alright?",
 	SICK_LILIA_1_OPTION_2 = "Is there anything I could do to help her?",
 	SICK_LILIA_2_1 = """- It's hard to tell if her body will be able to deal with it naturally at this point.
@@ -8720,7 +8730,7 @@ Your fear settles in as you realize that she must be sick. Your concerns are gro
 	SICK_LILIA_2_2 = """- There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
 	SICK_LILIA_2_OPTION_1 = "I don't have to pay?",
 	SICK_LILIA_2_OPTION_2 = "Thanks a lot, you are a true savior",
-	SICK_LILIA_3_1 = """- I only wrote you a formula, you're the one who will need to produce it.  It also gets you out of my hair.
+	SICK_LILIA_3_1 = """- I only wrote you a formula, you're the one who will need to produce it. It also gets you out of my hair.
 
 - One more thing... I hope you'll have the decency to not sexually abuse her while she's in this state.""",
 	SICK_LILIA_3_2 = """Myr stays oblivious to your praises and passes you the paper sheet. 
@@ -8785,25 +8795,435 @@ Looks like the troll is willing to part with his loot in exchange for something 
 
 She passes you a small phial filled with fluid and sends you off.""",
 	
-	LILIA_MANSION_1 = """You finally manage to bring Lillia the potion that took you the entire evening to acquire.  Looking at her she doesn't appear to have had her condition worsen or improve while you were gone. The girl is too weak to object as you administer the potion to her, the taste obviously foul.""",
+	LILIA_MANSION_1 = """You finally manage to bring Lilia the potion that took you the entire evening to acquire. Looking at her she doesn't appear to have had her condition worsen or improve while you were gone. The girl is too weak to object as you administer the potion to her, the taste obviously foul.""",
 	LILIA_MANSION_2 = """The situation now dealt with, you finally are able to get some rest yourself.
 
-Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold.  This thought is at the forefront as you open your eyes to see Lillia start sliding her panties down now, moving her body up onto you.
+Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold. This thought is at the forefront as you open your eyes to see Lilia start sliding her panties down now, moving her body up onto you.
 
-- [Master], sorry for being a bit selfish but I really miss this…""",
-	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans.  You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty.  
+- [Master], sorry for being a bit selfish but I really miss this...""",
+	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty. 
 
-A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft.  A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time.  You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
+A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft. A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time. You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
 
-Lillia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
+Lilia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
 	LILIA_MANSION_4 = """Sweat on her body starts to show after a few minutes of exertion while your hands rest firmly on her legs for just a moment as you fight the need to release. Although after a few moments you're unable to stop yourself. The little fae was now pinning herself down, holding herself firmly onto your cock as you filled every crevice of her womb.
 
-- A-ah… This feels too good…[Master]! I'm going to cum!
+- A-ah... This feels too good...[Master]! I'm going to cum!
 
-Lillia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
-	LILIA_MANSION_5 = """Lillia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
+Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
+	LILIA_MANSION_5 = """Lilia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
 
-After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder.  Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
+After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
+	
+	CALI_ACT1_1 = """Visiting your captive, Cali you stand there in silence, the girl looking up at you with a tired rage behind her eyes now.
+
+- W-what do you want now!?...  Haven't you done enough?! Let me go!
+
+Staring her down you take a good look at her.  Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
+
+- You think I'll work for you? After what you've done?""",
+	CALI_ACT1_1_OPTION_1 = "Whomever does not work shall not eat.",
+	CALI_ACT1_1_OPTION_2 = "Surely you don't want to be sold to the slavers?  Your new Master's will be far less kind.",
+	CALI_ACT1_1_OPTION_3 = "Perhaps you need another reminder like the one at caves?",
+	CALI_ACT1_2_1 = """Cali looks at you with her ears lowered as she averts her gaze.  Her eyes look around the building now, taking in everything as she seems to submit for now.  
+
+- Whatever, fine...""",
+	CALI_ACT1_2_2 = """Cali's eyes turn cold as she seems to look through you.  Nodding after you finish telling her, she says nothing for the remainder of the day as her new duties begin.""",
+	CALI_ACT1_2_3 = """The girl lunges at you as you catch her by the throat, pinning her back firmly to the wall of the room. Tears pour from the girl's eyes as she looks at you with fury, her arms flailing at you in rage.
+
+- You fucking bastard! I'm not your whore!""",
+	CALI_ACT1_2_3_OPTION_1 = """You can certainly be treated like one, or you can work.""",
+	CALI_ACT1_2_3_OPTION_2 = """Serve with your labor, or serve with your body, Cali.""",
+	CALI_ACT1_3 = """The girl's eyes well with tears as she nods.  For now she doesn't fight you as she's put to her new duties.""",
+	
+	CALI_ACT2_GONE = """You awake one morning to find your manor's back door open. Your confusion is short-lived as you go down to check on Cali, finding her room empty. Finding the door's lock picked, you curse aloud as it seems in her desperation she was able to escape.""",
+	CALI_ACT2_1 = """You're going through your daily tasks as you check on your mansion.  Checking on Cali's work now, her task is an arduous one. The girl is sweating profusely, her white shirt all but see-through now, the view of her breasts quite nice considering.
+
+The girl seeing you looks far from pleased, her eyes unfocusing as she can't even seem to look at you.
+
+- What are you looking at, huh?!  Did you not see enough already?!""",
+	CALI_ACT2_1_OPTION_1 = "I look where I please, slave.",
+	CALI_ACT2_1_OPTION_2 = "Keep up the hostility, Cali, it'll make it all the sweeter when I take you again.",
+	CALI_ACT2_1_OPTION_3 = "I simply enjoy the view.",
+	CALI_ACT2_2_1 = """Cali growls at you now, her eyes showing a hatred that was rare to find.
+
+- You bastard! I'm not some dog on a leash!
+
+As you leave her be for now, you can't help but muse at the thought “dog on a leash.”""",
+	CALI_ACT2_2_2 = """The girl turns her nose up at you defiantly instead focusing on her work now.
+
+- I'm not some mindless pet, asshole!
+
+You leave her to her work, thinking intently about making her into that very pet that she seemed so scared to become.""",
+	CALI_ACT2_2_3 = """Cali wasn't expecting that reply as her face turned blood red.  Trying to hide it by getting back the girl was only partially successful.
+
+You decide to leave her alone for now. Perhaps something could make her more pliable to your will?""",
+	CALI_ACT2_3 = """Your thoughts have been increasingly focused on taming your new slave, Cali.  Cali has been difficult, the girl intent on refusing you.  After careful deliberation you come to the conclusion that just calling her your property is one thing, but she should look the part as well.
+
+A collar seems the most logical first step but a regular collar seems insufficient.  You decide it might be a better idea to  head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
+	CALI_ACT2_WORKERS_OPTION_1 = "Ask Sigmund about a specialist",
+	CALI_ACT2_WORKERS_1 = """Sigmund:- Wha? Someone to make a collar?  Are the ones at the market not good enough?
+
+You explain to the dwarf that the ones in the market are indeed fine, but what you're looking for is a custom piece.  The burly male thinks for a few moments while scratching his beard before nodding.
+
+Sigmund:- Limnrov is who you'd want to find.  Ask up at the front for him, the receptionist can take you to ‘em.
+
+With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
+	CALI_ACT2_WORKERS_2 = """Once you bring up the name of the craftsman with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft.  Limnrov himself, is an older Dark Elf, his eyes sharp as he looks up at you from the excellent piece he's currently working on.
+
+Limnrov: - I'd not sent for the courier yet.  Master William can wait a few hours longer on this repair.""",
+	CALI_ACT2_WORKERS_2_OPTION_1 = "I'm not a courier, I'm a customer.",
+	CALI_ACT2_WORKERS_2_OPTION_2 = "I'm here to hire you for your services.",
+	CALI_ACT2_WORKERS_3 = """The Dark Elf looks you up and down for a few more moments before giving a nod.
+
+Limnrov: - Ah, my mistake.  What can I do for you?
+
+You explain to Limnrov your desire to commission a custom piece for a recently acquired slave.  After asking you details he will need, the elf gives a stoic nod before looking at you. Two sketches are then laid out before you.
+
+Limnrov:- I've two designs I might suggest.  The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave.  The latter however, I've been eager to create.  A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_WORKERS_3_OPTION_1 = "What will you need to produce the simple collar?",
+	CALI_ACT2_WORKERS_3_OPTION_2 = "What will you need to produce the extravagant collar?",
+	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this",
+	CALI_ACT2_WORKERS_4_1 = """Limrov starts to jot down a list of items that he will need you to procure before handing it over to you: 10 Thick Leather""",
+	CALI_ACT2_WORKERS_4_2 = """Limrov starts to jot down a list of items that he will need you to procure before handing it over to you: 10 Thick Leather, 10 Silk""",
+#	CALI_ACT2_WORKERS_4_2 = """Limrov looks rather excited as he produces a list of items, most notable of all being a large gem and hands it over to you.""",
+	CALI_ACT2_WORKERS_4_1_OPTION_1 = "Here are the materials for the Simple collar",
+	CALI_ACT2_WORKERS_4_2_OPTION_1 = "Here are the materials for the Extravagant collar",
+	CALI_ACT2_WORKERS_4_3 = """Limnrov:- Very well, I'll be here.
+
+Limnrov accompanies you to the entrance of the Guild.""",
+	CALI_ACT2_WORKERS_5_1 = """Limrov looks the materials and payment over intently before nodding.  
+
+Limnrov: - Ah yes, this will do.  Give me a few days and I'll have it delivered by courier.""",
+	CALI_ACT2_WORKERS_5_2 = """Limnrov is intent as he checks over every detail of the materials.  Eventually satisfied, the man takes the coin and components needed before looking at you with a grin.  
+
+Limnrov: - Excellent, most excellent.  Very well, I'll make sure your slave has a collar all others will pale compared to.  Give me a few days and I'll have a courier deliver it.""",
+	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the simple collar. Though its design lacks much ornamentation the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
+#	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror and gleams back to you.""",
+	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care.""",
+	CALI_ACT2_LIMNROV = """Limnrov:- I've two designs I might suggest.  The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave.  The latter however, I've been eager to create.  A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+
+- What do you want? I've been behaving, [name].
+
+You pull the simple collar out, showing it to the girl.  Cali's eyes initially show hints of fear, then denial as the girl shakes her head now vigorously, moving away from you now.  
+
+- Are you serious? Y-you want me to wear this!?""",
+	CALI_ACT2_SIMPLE_COLLAR_1_OPTION_1 = "There's nothing to fear, Cali, it's a common sign of ownership.",
+	CALI_ACT2_SIMPLE_COLLAR_1_OPTION_2 = "I'm not asking, slave.  Now do as you're told before I need to get creative.",
+	CALI_ACT2_SIMPLE_COLLAR_2_1 = """Cali sits there frozen for a moment before taking a long, steadying breath.  Her posture relaxes somewhat and she doesn't fight you as you put the collar on her.  After a few moments, your hand rests on the top of her head as she shudders uncomfortably.
+
+- You think I'm some kind of a pet!?""",
+	CALI_ACT2_SIMPLE_COLLAR_2_1_OPTION_1 = "Pets are looked after, are they not?",
+	CALI_ACT2_SIMPLE_COLLAR_2_1_OPTION_2 = "Pet or slave, which one sounds better?",
+	CALI_ACT2_SIMPLE_COLLAR_3 = """Cali fails to find a proper response and stays quiet.  Finally you dismiss the girl for the day and carry on with your work.""",
+	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali shudders as fresh tears hit the floor.  The girl's posture seems to relax, her eyes staring ahead as she shakes now.  The girl doesn't fight you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
+
+Once the collar is around her neck, Cali looks at you, her face blank but her body shaking.  Eventually you dismiss the girl so you can carry on with your work.""",
+	CALI_ACT2_EXQUISITE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+
+- What do you want? I've been behaving, [name].
+
+When you pull out the collar Cali's eyes light up for the faintest moment.  The girl's eyes tracking the item as she looked it over.  
+
+- It's pretty...
+
+Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
+
+- This is for me..? I don't dislike it, but you really think this is enough after what you've done...
+
+As you place the collar around Cali's neck, the girl's hand instinctively rests upon the jewel for a moment.  Though she doesn't run, her body still goes rigid as you rest your hand atop of her head.""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "Here there are no bandits. No one to lay a hand on you, save me.",
+	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_2 = "You're far better off than when I found you.",
+	CALI_ACT2_EXQUISITE_COLLAR_2 = """Cali opens her mouth as if to argue against what you've said but stops.  She eventually concedes the point with a soft shrug.  With that settled you dismiss the girl for the day, leaving her to her duties.""",
+	
+	CALI_ACT3_MAGIC_1 = """Your slave, Cali, has relented and no longer fights your orders. You can't help but feel the girl and you are at an impasse.  Cali remains unbroken through it all, willful as ever.
+
+One morning Cali approaches you now, clearly tired.  
+
+- [name], I was wondering if I could have a break today.
+
+The girl does look worn out. Clearly life working at the mansion is more strenuous than she is used to.  After considering it for a moment you decide that you could let her take a break for today, but now seems like a good time to have her loosen up a bit for you in exchange.""",
+	CALI_ACT3_MAGIC_1_OPTION_1 = "Sure, but I want you to lift up your shirt in exchange.",
+	CALI_ACT3_MAGIC_1_OPTION_2 = "Maybe if you let me feel you up.",
+	CALI_ACT3_MAGIC_1_OPTION_3 = "Very well, just for today.",
+	CALI_ACT3_MAGIC_2_1AND2 = """Cali looks at you deadpan for a few seconds before her face scrunches up in disgust.  
+
+- You really are a fucking pervert! 
+
+Before you can respond, the girl leaves half-slamming the door as she gets to work. Clearly deciding that would be a better alternative than giving into your base needs.""",
+	CALI_ACT3_MAGIC_2_3 = """Cali looks relieved at you before nodding.
+
+Cali: Ok then, um... thank you.""",
+	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders.  You could force the girl into bed. It wouldn't be hard, but seems far less satisfying.  You eventually decide there must be something you can do to sway her.  You think about the dominators you've heard of mages who can influence the mind of others.  Perhaps a mage might be able to assist you in this endeavor.""",
+	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders.  You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise.  Knowing magics are wide and varied though you decide to ask another mage. Perhaps they have some knowledge you're lacking.""",
+	CALI_ACT3_JEAN_START_OPTION = "Approach Jean about the issue",
+	CALI_ACT3_JEAN_1 = """Talking to Jean, you explain the issue in depth to her. The girl's nose scrunching up as if she's going to tell you to do something impolite with your issue, before instead realizing who she works for.
+
+Jean goes to respond to you multiple times before finally asking you a question
+
+Jean:- Why not get another one then?  It's not like she's anything special, just a half-wolf.""",
+	CALI_ACT3_JEAN_1_OPTION_1 = "I've grown rather fond of her.",
+	CALI_ACT3_JEAN_1_OPTION_2 = "I'm rather enjoying the challenge.",
+	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up before shaking her head.
+
+Jean gives you a partial look of disgust. Obviously she was about to say something before she decides it's better Cali, than her.
+
+The girl considers your answer for a moment before finally giving you an answer.  
+
+Jean:- Why don't you just have the beast's collar enchanted?
+
+You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise.  Jean watching you finally huffs out a sigh, looking at you.
+
+Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know...  I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+	CALI_ACT3_JEAN_2_2 = """Jean sighs, then gives you a knowing nod.
+
+Jean: - Of course you'd say that.  Pervert.
+
+The girl considers your answer for a moment before finally giving you an answer.  
+
+Jean:- Why don't you just have the beast's collar enchanted?
+
+You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise.  Jean watching you finally huffs out a sigh, looking at you.	
+
+Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know...  I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+	CALI_ACT3_JEAN_3 = """You get to the spot which was marked by Jean and find a dimly glowing water spring. You scoop some water from it which should be enough to provide Jean with what she needs.""",
+	CALI_ACT3_JEAN_3_OPTION_1 = "Give Rare Magical Essence",
+	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent(s) required, Jean gets to work.  After you retrieve Cali's collar under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
+
+Jean: - There, done.  Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...""",
+	CALI_ACT3_JEAN_5 = """Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again.""",
+	CALI_ACT3_MAGES_OPTION_INIT = "Ask about mind altering spells",
+	CALI_ACT3_MAGES_1 = """Myr isn't available for your request today it seems.  After inquiring around the guild you eventually find an apprentice wearing a bored expression on his face to make your inquiry to.
+
+Apprentice: - Magical assistance in taming a slave?  And she's quite keen on resisting your advances. Ah yes, we could help with that.  Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.""",
+	CALI_ACT3_MAGES_1_OPTION_1 = "I'm sure I can afford it.",
+	CALI_ACT3_MAGES_1_OPTION_2 = "What's the rate?",
+	CALI_ACT3_MAGES_2 = """The young mage pulls out a large chart, looking it over before telling you the service will be 500 gold.""",
+	CALI_ACT3_MAGES_2_OPTION_1 = "Fine, if I've no other choice (500 Gold)",
+	CALI_ACT3_MAGES_2_OPTION_2 = "Is there any way to earn a discount?",
+	CALI_ACT3_MAGES_2_OPTION_3 = "I'll come back later.",
+	CALI_ACT3_MAGES_3_1 = """After you retrieve Cali's collar under the guise of the article needing to be cleaned, the apprentice makes quick work of applying the enchantment to it all while taking a heavy amount of your coin.
+
+Apprentice: - Good it's done.  Do know this won't make her blindly obedient, only more willing to do what you ask...
+
+Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again""",
+	CALI_ACT3_MAGES_3_2 = """The young mage shakes his head.
+
+Apprentice: - Absolutely not, Guildmaster Myr would have my head!""",
+	CALI_ACT3_MAGES_3_3 = """Apprentice: - Very well, I'll be here when you return.""",
+	CALI_ACT3_MAGES_4 = """Apprentice: Welcome back, you have the fee I trust?""",
+	CALI_ACT3_BLOW_OPTION_INIT = "Talk to Cali",
+	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance.  Unbeknownst to her the enchantment seems to be doing it's job quite well, the girl's resolve slowly weakening.
+
+Eventually, you confront the girl about her peeking upon you, only for her face to turn a dark shade of red.
+
+- What? No! I wasn't staring at you.  I just don't like having you in the same room as me.
+
+You say nothing for now, just letting the girl talk. Your eyes locked on her as she continued to blush, her frustration evident.
+
+-  I'm on a break right now! What do you even want from me?!""",
+	CALI_ACT3_BLOW_2 = """Cali looks nervously at you after your confrontation, moving a bit too eagerly as you motion her to get to the floor.  Each step seems conflicted, but needy as the girl is down on her knees in front of you.
+
+As you open your pants in front of her, she gulps now, shaking as she speaks.
+
+- F-fine... You damn pervert... Just this once!""",
+	CALI_ACT3_BLOW_3 = """Cali doesn't say anything at first as she gets down on her knees, looking up at you now. Her face is a mask of an embarrassed blush.  Despite this she doesn't complain now as she undoes your trousers, her face darkening even more as she sees your member.
+
+- Wha...it's bigger than I remember.""",
+	CALI_ACT3_BLOW_4 = """Cali seeing the lewd look on your face after commenting on the size rolls her eyes a bit.
+
+- It just is! Don't take that as a compliment.""",
+	CALI_ACT3_BLOW_5 = """The girl would wrap her hand around your shaft now, gently pumping her fingers around the base as she looked down at it.  Once it showed a dot of precum on the tip, she'd wince; almost as if expecting you to cum right there as her inexperience showed.
+
+You consider telling the girl to hurry up, but relent now, watching her as she finally opens her mouth. She started suckling quite nicely on just the head, her hand pumping up and down before she looked up at you gauging your reaction.""",
+	CALI_ACT3_BLOW_6 = """Cali only hesitates for a moment longer before pushing her face back down deeper onto your shaft now, a few pumps before she'd resume just pumping on your member with her hand. Her mouth sucking on the head.""",
+	CALI_ACT3_BLOW_7 = """Cali seems eager as she repeats this process now, her hips swaying back and forth for a moment before she stops herself.  Pumping her hands faster on your length now, she notices the base pulsing as you get closer. Although the girl doesn't pull away, pushing you over the edge as you start to cum soon. """,
+	CALI_ACT3_BLOW_8 = """Cali lets a surprised little squeak as you start to cum into the girl's mouth, her eyes wide as you finish.  To your surprise, she doesn't pull away. Swallowing every drop though her face shows a mask of embarrassment at the act.
+
+The two of you sit there for a few moments now. Cali said nothing before standing up abruptly now, looking away from  you; her face red now.  """,
+	CALI_ACT3_BLOW_9 = """- I...I'm going to go back to my break...
+
+Cali doesn't give you any time to respond. She was practically running out of the room as you sat there quite impressed with the work she did.""",
+	CALI_ACT4_MERCHANT_START = """The enchantment has proven to be of excellent quality, yet you can't help but wonder if there is more that could be done.  Cali has been willing to offer her mouth at least, but the resistance is still there. 
+
+Thinking over your predicament, you decide to muse over the idea while doing some shopping in town. Perhaps one of the merchants will have something that can assist you?""",
+	CALI_ACT4_MERCHANT_1 = """Rows of toys, food, and exotic luxuries line the isles of Aliron's Market, but none seem quite suited to your needs currently.  While you lunch at one of the stalls, a bookseller across from the food cart catches your eye.  
+
+The merchant is quick to spot one eyeing his wares. He waves to you, calling out.
+
+Merchant:- Greetings, good sir! I see you've an eye for quality.  Perhaps you'd like a tome on how to enjoy a Seraph's curves or -
+
+It seems the merchant will prattle on forever if you don't stop him.""",
+	CALI_ACT4_MERCHANT_1_OPTION_1 = "I'm just browsing",
+	CALI_ACT4_MERCHANT_1_OPTION_2 = "Do you have any books relating to Wolfkin? Or the half-breeds?",
+	CALI_ACT4_MERCHANT_2_1 = """The merchant looks at you with a knowing smile, shaking his head. 
+
+Merchant:- Ah, but that is not the look of a man who is just browsing.  Tell me, what do you need sir?""",
+	CALI_ACT4_MERCHANT_3 = """Relenting, you tell the merchant you're in the market for a book on Wolfkin, or their half-breeds.
+
+Merchant:- Ah, yes yes I do have something of its like.  
+
+The man reaches onto one of the shelves in the cart and hands you a small tome, no thicker than your thumb.  A quick glance at its contents shows you that this is a book on wolfkin mating habits. 
+
+Though the book itself is not that large, the information is extensive.  There are pro taming arguments listed, illustrations of sexual positions her kind would be suited best for, and even a section of best practices.
+
+The price tag on the book states it costs a measly 50 gold.""",
+	CALI_ACT4_MERCHANT_3_OPTION_1 = "Here is the coin (50 Gold)",
+	CALI_ACT4_MERCHANT_3_OPTION_2 = "I'm not quite sure yet",
+	CALI_ACT4_MERCHANT_4_1 = """The merchant takes your coin with a smile.  Leaving the man to manage his cart, you head home now. Eager to see how this will unfold.""",
+	CALI_ACT4_MERCHANT_4_2 = """The man nods before turning to another customer as you leave.""",
+	CALI_ACT4_MERCHANT_5 = """The man welcomes you eagerly now, hammering you with questions and suggestions as you pick the book on Wolfkin off the shelf.""",
+	CALI_ACT4_MERCHANT_6 = """Returning home, you leave the book in Cali's room. Perhaps some inspiration into her kind's mating habits will soften her to the idea.""",
+	CALI_ACT4_MAST_1 = """Deciding to check on Cali, you move down to her room, hearing soft sighs through the door.""",
+	CALI_ACT4_MAST_2 = """Moving closer you stay as silent as possible, though the only noise one could hear now is the softly growling and moaning sounds coming from her room.  Moving closer you can indeed make out Cali's voice, a tremble to it as the girl is laid there on her bed, the book beside her as she looks down at it.
+
+Whatever image in the book sparked her need seems to reignite it now as you're able to hear the girl's voice, her words accompanied with a pant.
+
+- Why am I doing this...
+
+Cali continued to try for a few moments, eventually eliciting a soft moan as she touched herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan.  Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself; her hips rolling now.  """,
+	CALI_ACT4_MAST_3 = """- I might have liked it...
+
+Cali continues to masturbate, occasionally looking at the book as she panted and moaned softly. Eventually she would seize up as she came, her face buried in her pillow as she let out a little scream.""",
+	CALI_ACT4_MAST_3_OPTION_1 = "Walk in",
+	CALI_ACT4_MAST_4_LEAVE = """You quietly leave, allowing her to bask in the afterglow of her orgasm admiring her change in behavior. It would seem Cali's resistance is starting to wane, her natural urges starting to take over.""",
+	CALI_ACT4_MAST_4 = """As you walk in Cali makes an embarrassed squeak, her face turning blood red.
+
+- [name]! W-what are you doing here!
+
+You don't say anything for now, only giving Cali a knowing smile. Letting her stumble over her words as it became clear to her she'd been caught in the act.
+
+- Pervert...
+
+Cali looks away from you now, embarrassed more than angry. Her face still blushing hard.""",
+	CALI_ACT4_MAST_4_OPTION_1 = "Everyone in the mansion would have been able to hear you, Cali.",
+	CALI_ACT4_MAST_4_OPTION_2 = "Is that any way to act Cali?  Why don't you show me what you were doing?",
+	CALI_ACT4_MAST_5 = """Cali's blush darkens as she soon wraps herself up in her blankets now, not even her face visible as she mumbles out a barely audible reply.
+
+- I can't help it...
+
+The girl only blushes more as you move towards her on the bed now.  Looking away as her face is a solid sheet of red, whimpers are heard from her as you toss her blankets aside, leaving her exposed figure under you.
+
+- W-wait I'm not...
+
+The girl's eyes go wide seeing your length as you open your pants now, pushing her bared figure back down.  A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
+	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning as a reply as you push into her.  Eyes rolling back, all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.""",
+	CALI_ACT4_FUCK_2 = """- R-right there...
+
+The girl's body would eventually go rigid on you as she climaxes, a seductive little moan bubbling out of her throat as you soon join her.  Cali doesn't protest as you bury yourself deep into her body, your cum filling her.
+
+Cali says nothing as you pull out of her afterward, the girl left laying there as you look her body over, a smirk on your lips as you make sure to close the door behind you.""",
+	CALI_ACT4_MAST_6 = """Cali's face is red still as she looks at you, then the book.  It's quite obvious what she was masterbating to, the illustration of a male of your face inserted into a half wolf from behind is quite well drawn.  She snaps the book closed now, stuffing it under her pillow as she says nothing for now.
+
+Looking at you, then where she hid the book she finally relented, moving the cover aside and showing you, her pussy soaked from her recent orgasm.  
+
+- T-there! Happy? You're not getting anymore to-""",
+	CALI_ACT4_MAST_7 = """Her words were cut off as you moved onto the bed with her, her little body pressed down fully.  Cali doesn't fight you to position her now, if anything the girl willingly moves where you want her. 
+
+- W-wait I'm not...
+
+The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down.  A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
+	CALI_ACT5_PET_START = """Cali has been surprisingly tolerant as of late.  Though not eager to serve, the girl's training has gone well even if you've been mostly subtle about it.  Despite this though, she still has not turned into a proper pet, something you desire to remedy.
+
+You consider your options, and though she might very well just accept your orders now, you decide that it is time to move onto the next step.
+
+This resolution in hand you leave the manor that afternoon to search for the proper accessories for your “pet”.""",
+	CALI_ACT5_PET_1 = """The shop smells like... well, animals.  You're not quite sure what you expected as you pass rows of items ranging from large dog collars, to hand made treats.  One sight catches your eye as you turn a corner, an employee and dog are walking down the aisle.  The dog stops on command, sits on command, and even seems eager.  Eventually the hounds' work is rewarded with food, a dog dish is placed down that the beast eagerly eats from.""",
+	CALI_ACT5_PET_2 = """The obedience of the dog is impressive, so much so you decide to ask the employee about it.
+
+Employee: - How did I get him to behave so well?  Well, look for yourself now.
+
+The dog is hungry, though obviously not starved as the beast has ample meat on its bones.
+
+Employee: - He knows that if he does what he's told he gets to eat.  Food is the great motivator after all.
+
+You thank the employee for his insight.  Heading back to your mansion to put the newfound knowledge to use.""",
+	CALI_ACT5_PET_3 = """Breakfast and lunch today have been sparse for Cali. In addition to that, the girl's labor was especially strenuous today; a perfect mix for a strong appetite.  Going about your day as normal you eventually call for Cali right before dinner is to be started.
+
+The girl comes as told now, though she looks far from pleased by the prospect. 
+
+- Can this wait, [name]? It's dinner time and I'm starving...    
+
+After a moment, you sit her dinner in a dog bowl beside you.  Her eyes traveled up to you with a look of frustration, but it was obvious her hunger was winning as she stared down at the food in the bowl. """,
+	CALI_ACT5_PET_3_OPTION_1 = "I have your food right here.",
+	CALI_ACT5_PET_3_OPTION_2 = "Because I think you should be eating right here, Cali. Like a good girl.",
+	CALI_ACT5_PET_4 = """Cali looks up at you with a mild shock, then resignation. It is clear the girl might have expected you were using her food to coerce her into something.
+
+- I... no.  Why? I'd look like an animal... This is weird!""",
+	CALI_ACT5_PET_4_OPTION_1 = "Why are you so worried about what you look like?",
+	CALI_ACT5_PET_4_OPTION_2 = "I think the ears and tail add more to that than how you eat.",
+	CALI_ACT5_PET_4_OPTION_3 = "It's this or you go hungry Cali, make your choice.",
+	CALI_ACT5_PET_5_1 = """- I feel like I'm losing myself... just becoming what you want me to be...""",
+	CALI_ACT5_PET_5_2 = """Cali looks at you with an embarrassed expression, her ears drooping lower.
+
+- Hey, it's not like it's my fault...""",
+	CALI_ACT5_PET_5_3 = """Cali takes a long look at the bowl now, your ultimatum obviously hitting a nerve with her.  Chin sticking up the girl soon turns right around and walks out.  Perhaps you should try again later.""",
+	CALI_ACT5_PET_6 = """Cali unbeknownst to her while she refuted you, has stepped closer to the bowl now. Her stomach obviously has a vote on this issue.""",
+	CALI_ACT5_PET_6_OPTION_1 = "Aren't you hungry?",
+	CALI_ACT5_PET_6_OPTION_2 = "You might just like it if you try.",
+	CALI_ACT5_PET_6_OPTION_3 = "You ungrateful little bitch, do as you're told..NOW!",
+	CALI_ACT5_PET_7_GONE = """Cali's face turns cold to you as she moves over to the bowl, getting down to eat out of it like she was told.  You were just thinking to yourself on how you finally might have broken the girl when you catch a glimpse of something coming towards you, a loud crash as the food bowl bounces off your forehead.
+
+- I am NOT your bitch, you monster!
+
+Dazed from the object colliding with your face, by the time you realize what has happened, the girl has your keys in hand. Escaping through the mansion's front door.
+
+Perhaps it was too much for her...""",
+	CALI_ACT5_PET_7 = """Cali looks at you for a few moments, shaking before hunger wins out.  The girl goes to pick up the bowl looking at you, realizing she'd have to eat out of it like an animal.  
+
+Kneeling down, the girl soon was on all fours. Her ass slightly in the air as she tasted the food.  Soon, she gives in as she starts to eat.""",
+	CALI_ACT5_PET_8 = """Her panties were visibly wet as she ate now. A grunt was heard from her as your hand finds them now, sliding over her backside while you sit beside your feeding pet.  Cali stops  
+
+More than once Cali would let a little whimper escape her mouth now, her entrance hot through her panties as it was clear she was quite excited. Her hips lifting up higher to present herself to you.
+
+Her body continues to shake until she tenses up not long after she finishes the meal, her panties becoming soaked as the girl cums from the stimulation.""",
+	CALI_ACT5_PET_9 = """- Why... doesn't this feel wrong...?
+
+Cali seems conflicted before sighing, her body relaxing now there on the floor as your hand slides through her hair. It seems she has completely forgotten her initial grudge despite everything.
+
+The girl doesn't fight you as you slide your hands over her back and shoulders, her head hanging down in contemplation as you barely can hear what she whispers.
+
+- I liked it... """,
+	CALI_ACT5_PET_9_OPTION_1 = """That wasn't so hard, was it?""",
+	CALI_ACT5_PET_9_OPTION_2 = """Good girl. Now sit.""",
+	CALI_ACT5_PET_10_1 = """Cali shakes her head, her face a blood red blush as she just sat there now. Your hand sliding over the top of her head, petting her.  Spending the evening just stroking her, she eagerly leans into the petting, relaxing.""",
+	CALI_ACT5_PET_10_2 = """Cali sits without even realizing it at first, her expression somewhat shocked as she dares not to move as your hand slides over the top of her head, petting her for now.  Spending the evening just stroking her, she soon leans into your petting, relaxing before being dismissed for the day.""",
+	CALI_ACT6_NAKED_1 = """Just as the day before, today Cali meets you in your chambers. This time the girl seems more relaxed, the meal yesterday did much to lift her spirits.
+
+- I have been a good pet today...
+
+The girl states, looking at you expectantly, then down at the bowl. Her eyes widen as she sees even more has been added to it this time.""",
+	CALI_ACT6_NAKED_1_OPTION_1 = "You've been a good girl Cali, but you can be even better.  I want you to undress while you eat today.",
+	CALI_ACT6_NAKED_1_OPTION_2 = "A good pet doesn't wear clothing, do they Cali?",
+	CALI_ACT6_NAKED_1_OPTION_3 = "Not good enough Cali, I want you nude while you eat this time to make up for it. ",
+	CALI_ACT6_NAKED_2_1 = """Cali hesitates for a single moment, but her resolve is in shreds. The girl undresses now as she moves down to eat beside you.""",
+	CALI_ACT6_NAKED_2_2 = """Cali looks at you then her clothing.  She goes to argue but stops, considering it before stripping herself of her garments.  The girl still blushes, but doesn't further object as she kneels down to eat beside you.""",
+	CALI_ACT6_NAKED_2_3 = """Cali's eyes show a hint of tears as you chastise her now.  
+
+- Nothing's ever good enough for you...
+
+Cali leaves you there now, it is quite clear you've hurt her feelings with your statement.""",
+	CALI_ACT6_NAKED_3 = """Eating there, the girl gives no complaints to your eyes moving over her.  Though it is quite clear her entrance is soaked, getting even wetter as her ass is lifted invitingly into the air, whether she's aware of it or not.""",
+	CALI_ACT6_NAKED_4 = """When the girl is getting close to the end of her meal, you decide now is the time that she shows you how grateful she is for the food.
+
+Hand sliding down her bare backside, you say nothing, but the soft squeak followed by a light moan is all you need to hear. As your hand slides lower, rubbing her warm petals, the slickness invites you to enjoy more than just a touch.
+
+Cali's eyes widen as you move around fully behind her, undoing your pants as you grip her hip tightly now.""",
+	CALI_ACT6_NAKED_5 = """- W-what are you doi-
+
+The girl's question is cut short as you slide deep into her body, your shaft pressing down into the tight pussy.  Not fighting you, Cali just lets out a long moan, her body shaking under your grip as you begin to pump into her.  
+
+Soon the thrusting of your member was joined by Cali needily pumping her hips back into yours. Her unfulfilled need taking over as she wordlessly begged you to take her harder, needing the release as you feel yourself getting close soon.""",
+	CALI_ACT6_NAKED_6 = """Finally filling the girl, you pin your shaft deep inside of her as she openly moans. Both of you cumming together while she clamps down on your shaft. The half-wolf refuses, or is unable to release her hold as she takes every drop eagerly.  
+
+- I... ugh... I'll be a good girl...
+
+You remind her as you're still deep inside of her that she should call you what you are. Your hand is still tight on her hip as she shudders under you.
+
+- [Master]... I'll be a good girl, [Master]...""",
+	CALI_ACT6_NAKED_7 = """With your training complete, Cali sitting down beside you like before. Her eyes observe you with a blind acceptance.""",
+	CALI_ACT6_NAKED_7_OPTION_1 = "Good girl",
 	
 	
 	
@@ -8811,13 +9231,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	#       QUESTS       #
+	#     QUESTS     #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by Week 3 Day 1.",
@@ -8871,7 +9285,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
 	
-	GRYPHON_QUEST_NAME = "Proof of Strength",
+	GRYPHON_QUEST_NAME = "Aire: Proof of Strength",
 	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
 	GRYPHON_QUEST_STAGE_1 = "Talk to Sigmund about the possible location of Elder Gryphon",
 	GRYPHON_QUEST_STAGE_2 = "Talk to Derek at Aliron",
@@ -8914,7 +9328,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	GETTING_LIRA_QUEST_STAGE_4 = "Return to Erlen with Lira",
 	GETTING_LIRA_QUEST_STAGE_5 = "Meet Erlen at Elven Capital",
 	
-	CALI_FIGHTERS_QUEST_NAME = "Small and Brave",
+	CALI_FIGHTERS_QUEST_NAME = "Cali: Small and Brave",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your member, Cali, wants to be more useful and decided to join fighters guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
@@ -8922,7 +9336,7 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_SERVANTS_QUEST_NAME = "Cali is a Girl",
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants guild on Cali's behalf",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Cali's past finally caught up with her. You'll have to help her sort it out if you want to keep her at your side...",
-	CALI_HEIRLOOM_QUEST_NAME = "Pariah",
+	CALI_HEIRLOOM_QUEST_NAME = "Cali: Pariah",
 	CALI_HEIRLOOM_QUEST_STAGE_1 = "Visit Village ",
 	CALI_HEIRLOOM_QUEST_STAGE_2 = "Bring 200 Rough Wood to Peasant",
 	CALI_HEIRLOOM_QUEST_STAGE_2_1 = "Bring 100 Rough Wood to Peasant",
@@ -8936,40 +9350,67 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
 	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
 	
-	SICK_LILIA_QUEST_NAME = "",
-	SICK_LILIA_QUEST_SUMMARY = "",
-	SICK_LILIA_QUEST_STAGE_1 = "",
-	SICK_LILIA_QUEST_STAGE_2 = "",
-	SICK_LILIA_QUEST_STAGE_3 = "",
-	SICK_LILIA_QUEST_STAGE_4 = "",
-	SICK_LILIA_QUEST_STAGE_5 = "",
+	SICK_LILIA_QUEST_NAME = "Lilia: Homesick",
+	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",
+	SICK_LILIA_QUEST_STAGE_1 = "Ask Myr for help",
+	SICK_LILIA_QUEST_STAGE_2 = "Visit Xari",
+	SICK_LILIA_QUEST_STAGE_3 = "Find troll which stole Xari's clothes",
+	SICK_LILIA_QUEST_STAGE_35 = "Get Xari's clothes from troll",
+	SICK_LILIA_QUEST_STAGE_4 = "Return to Xari with her clothes",
+	SICK_LILIA_QUEST_STAGE_5 = "Cure Lilia",
 	
+	CALI_COLLAR_QUEST_NAME = "",
+	CALI_COLLAR_QUEST_SUMMARY = "",
+	CALI_COLLAR_QUEST_STAGE_1 = "",
+	CALI_COLLAR_QUEST_STAGE_2 = "",
+	CALI_COLLAR_QUEST_STAGE_3 = "",
+	CALI_COLLAR_QUEST_STAGE_4 = "",
 	
-	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
-	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her discipline. She stays silent having no words for you.\n\n- ......",
-	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n- [Master]. Are you feeling well? What can I do for you?",
-	DIALOGUEANAINITIATEHN = "Anastasia greets you with a submissive pose. It seems she finally given up on her old life and accepted this role.\n\n- [Master]! How can I s-serve you?",
-	DIALOGUEANAINITIATEM = "Your wife, Anastasia smiles warmly at you.\n\n- My Dear, You called for me?",
-	DIALOGUEANAINITIATEB = "As Anastasia comes at your summon her eyes are nearly blank.\n\n- What is your order, [Master]?",
-	DIALOGUEAIREINITIATELN = "Your slave elf Aire which was left alone in your custody, looks at you in silence and disgust. Her pose exudes protest.",
-	DIALOGUEAIREINITIATEHN = "Your slave elf Aire have submitted to your ownership and now patiently waits for your commands.\n\n- What do you order?",
-	DIALOGUEAIREINITIATELP = "Your slave elf Aire stands before you, not quite hostile but still cautious.\n\n- You wanted to see me? Is Ana doing well?",
-	DIALOGUEAIREINITIATEHP = "Your slave elf Aire comes at your call. It seems despite her official status she's grown quite trustful to you.\n\n- [Master]. You wanted to see me? I hope you are treating Ana with respect.",
-	DIALOGUEZEPHINITIATEL = "Mysterious fox girl Zephyra appears in front of you almost imperceptibly.\n\n- Greetings, [Master]. Are you looking for my company?",
-	DIALOGUEZEPHINITIATEH = "Mysterious fox girl Zephyra appears in front of you nonchalantly.\n\n- [Master]. What are you doing this evening? How about a tea drinking party?\n\nIt seems she ignores the fact it was you who summoned her.",
-	DIALOGUEZEPHINITIATEM = "Your wife, ever eccentric fox girl Zephyra appears and quickly close distance with you, grasping your hand.\n\n- Darling! Have you missed me?\n\nShe affectionately rubs her tail over you.",
-	DIALOGUEDAISYINITIATEL = "Your recent acquirement: a shy bunny girl Daisy appears as you summon her.\n\n- Y-yes, [Master]. What can I-i do?\n\nYou feel like she's almost have to force herself from hiding away from you.",
-	DIALOGUEDAISYINITIATEH = "A bunny girl Daisy appears before you. It seems she has grown used to serving you.\n\n- [Master], how's been your day? What can I do for you?",
-	DIALOGUEDAISYINITIATEM = "Your wife and slave bunny Daisy stands before you.\n\n- [Master], how's been your day? Would you like a dinner, bath or me...? Sorry, someone told me it's a good way to greet you like this!",
-	DIALOGUECALIINITIATELP = "Young wolf girl Cali quickly appears showing no hints of fear or shyness.\n\n- Heya, what's up?!",
-	DIALOGUECALIINITIATELN = "Young wolf girl Cali reluctantly comes as you summon her. She barely keeps herself from insulting you.\n\n- What do you want?",
-	DIALOGUECALIINITIATEHP = "Cali appears in front of you eagerly begging for your attention with her tail wagging.\n\n- [Master]! What are we doing today? Wanna go somewhere together? I've heard of one really nice meat stall...",
-	DIALOGUECALIINITIATEHN = "Cali submissively appears on your command with her ears downed. Her old boldness have finally been uprooted and now she obediently waits for your command.\n\n- W-what can I do for you, [Master]?",
-	DIALOGUECALIINITIATEM = "Your young wife, Cali, jumps at you as you visit her. It seems her marital status haven't really affected her character.\n\n- [Master]! What are we doing today? Wanna play something together?",
+	CALI_MAGIC_QUEST_NAME = "",
+	CALI_MAGIC_QUEST_SUMMARY = "",
+	CALI_MAGIC_QUEST_STAGE_1 = "",
+	CALI_MAGIC_QUEST_STAGE_2 = "",
+	CALI_MAGIC_QUEST_STAGE_3 = "",
+	CALI_MAGIC_QUEST_STAGE_4 = "",
+	CALI_MAGIC_QUEST_STAGE_5 = "",
+	
+	CALI_MERCHANT_QUEST_NAME = "",
+	CALI_MERCHANT_QUEST_SUMMARY = "",
+	CALI_MERCHANT_QUEST_STAGE_1 = "",
+	CALI_MERCHANT_QUEST_STAGE_2 = "",
+	
+	CALI_PET_QUEST_NAME = "",
+	CALI_PET_QUEST_SUMMARY = "",
+	CALI_PET_QUEST_STAGE_1 = "",
+	CALI_PET_QUEST_STAGE_2 = "",
+	CALI_PET_QUEST_STAGE_3 = "",
+	CALI_PET_QUEST_STAGE_4 = "",
+	
+	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- “H-hello, [Master]... How was your day?",
+	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
+	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n- “[Master]. Are you feeling well? What can I do for you?",
+	DIALOGUEANAINITIATEHN = "Anastasia greets you with a submissive demeanor. It seems she finally gave up on her old life and accepted this role.\n\n- “[Master]! How can I s-serve you?",
+	DIALOGUEANAINITIATEM = "Your wife, Anastasia smiles warmly at you.\n\n- “Dear, You called for me?",
+	DIALOGUEANAINITIATEB = "As Anastasia responds to your summon her eyes are nearly blank.\n\n- “What is your order, [Master]?",
+	DIALOGUEAIREINITIATELN = "Your elven slave Aire whom was left alone in your custody, looks at you in silence and disgust. Her pose emanates protest.",
+	DIALOGUEAIREINITIATEHN = "Your elven slave Aire has submitted to your ownership and now patiently waits for your commands.\n\n- “What do you order, master?“",
+	DIALOGUEAIREINITIATELP = "Your elven slave Aire stands before you, not quite hostile but still cautious.\n\n- “You wanted to see me? Is Ana doing well?",
+	DIALOGUEAIREINITIATEHP = "Your elven slave Aire comes at your call. It seems despite her official status she's grown quite trustful to you.\n\n- “[Master]. You wanted to see me? I hope you are treating Ana with respect.",
+	DIALOGUEZEPHINITIATEL = "Mysterious as always Zephyra appears in front of you almost imperceptibly.\n\n- “Greetings, [Master]. Are you looking for my company?",
+	DIALOGUEZEPHINITIATEH = "The fox-girl Zephyra appears in front of you nonchalantly.\n\n- [Master]. What are you doing this evening? How about a tea party?\n\nIt seems she ignores the fact it was you who summoned her.",
+	DIALOGUEZEPHINITIATEM = "Your wife, the ever eccentric fox-girl Zephyra appears and quickly closes distance with you, grasping your hand.\n\n- Darling! Have you missed me?\n\nShe affectionately entwines her tail with your leg..",
+	DIALOGUEDAISYINITIATEL = "Your recent acquisition: a shy bunny-girl, Daisy appears as you summon her.\n\n- Y-yes, [Master]. What can I-I do?\n\nYou feel like she almost has to force herself from hiding from you.",
+	DIALOGUEDAISYINITIATEH = "The bunny-girl Daisy appears before you. It seems she has grown used to serving you.\n\n- [Master], how's your day been? What can I do for you?",
+	DIALOGUEDAISYINITIATEM = "Your wife and slave Daisy stands before you.\n\n- [Master], how's been your day? Would you like dinner, a bath, or me...? Sorry, someone told me it's a good way to greet you like this!",
+	DIALOGUECALIINITIATELP = "The wolf-girl Cali quickly appears showing no hints of fear or shyness.\n\n- Heya, what's up?!",
+	DIALOGUECALIINITIATELN = "The wolf-girl Cali reluctantly comes as you summon her. She barely keeps her tongue in cheek.\n\n- W-What do you want?",
+	DIALOGUECALIINITIATEHP = "Cali appears in front of you eagerly begging for your attention ,her tail wagging.\n\n- [Master]! What are we doing today? Wanna go somewhere together? I've heard of a really nice meat stall...",
+	DIALOGUECALIINITIATEHN = "Cali submissively appears on your command with her ears lowered. Her old boldness has finally been uprooted as she obediently obeys your command.\n\n- W-what can I do for you, [Master]?",
+	DIALOGUECALIINITIATEM = "Your young wife, Cali, jumps at you as you visit her. It seems her marital status hasn't really affected her character.\n\n- [Master]! What are we doing today? Wanna play something together?",
 	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n- [Master]? Whatcha doin'? Did you came to play with me?",
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
-	DIALOGUELILIAINITIATEM = "Your extravagant wife, small fairy Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
-	
+	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
+	DIALOGUEJEANINITIATEM = "",
 }
 
 

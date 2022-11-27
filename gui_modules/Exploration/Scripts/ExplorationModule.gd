@@ -1844,7 +1844,7 @@ func update_sell_list():
 	input_handler.ClearContainer($AreaShop/SellBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
 	for i in ResourceScripts.game_res.materials:
-		if ResourceScripts.game_res.materials[i] <= 0:
+		if ResourceScripts.game_res.materials[i] <= 0 || Items.materiallist[i].type == 'quest':
 			continue
 		var item = Items.materiallist[i]
 		var type = get_item_category(item)
@@ -1853,7 +1853,7 @@ func update_sell_list():
 		)
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(item.price)
+		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
@@ -1873,10 +1873,7 @@ func update_sell_list():
 		)
 		newbutton.get_node("name").text = item.name
 		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
-		if is_half_price:
-			newbutton.get_node("price").text = str(item.calculateprice() / 2)
-		else:
-			newbutton.get_node("price").text = str(item.calculateprice())
+		newbutton.get_node("price").text = str(ceil(item.calculateprice() * variables.item_sell_multiplier))
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(item.amount)
 		newbutton.set_meta('type', type)
@@ -2021,7 +2018,6 @@ func item_puchase_confirm(value):
 		update_buy_list()
 
 
-var is_half_price : bool = true
 
 func item_sell(item):
 	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
@@ -2033,18 +2029,12 @@ func item_sell(item):
 	purchase_item = item
 	var price
 	if item.price:
-		price = item.price  # / 2
+		price = ceil(item.price * variables.material_sell_multiplier)
 	else:
-		if is_half_price:
-			price = item.calculateprice() / 2
-		else:
-			price = item.calculateprice()
+		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
 	var sellingamount
 	if ! Items.materiallist.has(item.code):
-		if is_half_price:
-			price = item.calculateprice() / 2
-		else:
-			price = item.calculateprice()
+		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
 		sellingamount = item.amount
 	else:
 		sellingamount = ResourceScripts.game_res.materials[item.code]
@@ -2065,19 +2055,14 @@ func item_sell_confirm(value):
 	input_handler.PlaySound("money_spend")
 	var price
 	if purchase_item.price:
-		price = purchase_item.price  # / 2
+		price = ceil(purchase_item.price * variables.material_sell_multiplier) 
 	else:
-		if is_half_price:
-			price = purchase_item.calculateprice() / 2
-		else:
-			price = purchase_item.calculate_price()
+		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
+	
 	if Items.materiallist.has(purchase_item.code):
 		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
 	else:
-		if is_half_price:
-			price = round(purchase_item.calculateprice() / 2)
-		else:
-			price = purchase_item.calculate_price()
+		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
 		purchase_item.amount -= value
 	ResourceScripts.game_res.money += price * value
 	update_sell_list()

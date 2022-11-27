@@ -54,6 +54,8 @@ var encounters = {
 
 	greg_boss_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'greg_combat_on_win_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'aire_combat_on_win_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	
+	hector = {unittype = 'randomgroup', unitcode = 'hector_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_finale_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
@@ -129,7 +131,7 @@ var enemygroups = {
 	bridge_guards = {reqs = [], units = {elf_soldier = [6,6]}},
 	cali_goblins_first = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	cali_goblins_second = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
-	troll_clothes = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
+	troll_clothes = {reqs = [], units = {troll = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
@@ -164,7 +166,7 @@ var enemygroups = {
 	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
-
+	hector_boss_fight = {reqs = [], units = {guardian_golem = [2,2], hector_boss = [1,1], bandit_assassin = [2,2]}}, #cali boss fight !!! copied from above, needs fixing
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -1654,6 +1656,34 @@ var enemies = {
 	},
 	ramont_boss = {#daisy quest option
 		code = 'ramont_boss',
+		name = '',
+		descript = '',
+		hpmax = 300,
+		armor = 50,
+		mdef = 65,
+		hitrate = 110,
+		evasion = 10,
+		armorpenetration = 35,
+		atk = 90,
+		matk = 5,
+		speed = 45,
+		resists = {fire = 50, water = 50, air = -75, earth = 50, dark = 50, light = -50, mind = -25},
+		status_resists = {stun = 100, freeze = 90},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/bandit_boss.png",
+		body = null,
+		skills = [],
+		traits = [],
+		tags = ['human','boss'],
+		is_character = false,
+		gear = [],
+		ai = [['basic', 66], ['ads', 33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	hector_boss = {#cali quest option !!! copied from above, needs fixing
+		code = 'hector_boss',
 		name = '',
 		descript = '',
 		hpmax = 300,

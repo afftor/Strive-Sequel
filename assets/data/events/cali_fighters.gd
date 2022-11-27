@@ -201,14 +201,30 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [ {code = 'complete_quest', value = 'cali_fighters_quest'},
-			{code = 'add_timed_event', value = "cali_sex_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
+			{code = 'add_timed_event', value = "cali_sex_1_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
 			{code = 'remove_active_location'}, ]
 		}, ],
 	},
 	
-	cali_sex_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
-		text = [ {text = "CALI_SEX_1", reqs = []} ],
+	cali_sex_1_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [ {text = "CALI_SEX_1_1", reqs = []} ],
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "cali_touching_1",
+		options = [ {
+			code = 'cali_sex_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	cali_sex_1_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [ {text = "CALI_SEX_1_2", reqs = []} ],
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "cali_touching_2",
 		options = [ {
 			code = 'cali_sex_2', text = "CALI_SEX_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -219,18 +235,38 @@ var data = {
 	},
 	
 	cali_sex_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
 		text = [ {text = "CALI_SEX_2_1AND2", reqs = []} ],
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "cali_touching_3",
 		options = [ {
-			code = 'cali_sex_3', text = "CALI_SEX_2_1AND2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_sex_3_1', text = "CALI_SEX_2_1AND2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'cali_sex_3', text = "CALI_SEX_2_1AND2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_sex_3_1', text = "CALI_SEX_2_1AND2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		},  ],
 	},
 	
-	cali_sex_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],character = "cali",
-		text = [ {text = "CALI_SEX_3", reqs = []} ],
+	cali_sex_3_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		text = [ {text = "CALI_SEX_3_1", reqs = []} ],
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "cali_touching_3",
+		options = [ {
+			code = 'cali_sex_3_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	cali_sex_3_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		text = [ {text = "CALI_SEX_3_2", reqs = []} ],
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "cali_touching_4",
 		options = [ {
 			code = 'cali_sex_4', text = "CALI_SEX_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -243,6 +279,7 @@ var data = {
 		text = [ {text = "CALI_SEX_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_SEX_4_2", reqs = [], previous_dialogue_option = 2}, 
 		{text = "CALI_SEX_4_ADDITIONAL", reqs = []},],
+		dialogue_type = 1,
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ],
@@ -251,9 +288,10 @@ var data = {
 	cali_sex_2_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [ {text = "CALI_SEX_2_3", reqs = []} ],
+		dialogue_type = 1,
 		options = [ {
 			code = 'close', text = "CALI_SEX_2_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'add_timed_event', value = "cali_sex_1", args = [{type = 'add_to_date', date = [3,3], hour = 3}]}]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_sex_1_1", args = [{type = 'add_to_date', date = [3,3], hour = 3}]}]
 		}, {
 			code = 'close', text = "CALI_SEX_2_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		},  ],

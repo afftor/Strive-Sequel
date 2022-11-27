@@ -2,8 +2,6 @@ var data = {
 	zephyra_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',
 		text = [
-			
-			
 			{
 				text = "DIALOGUEZEPHINITIATEL", 
 				reqs = [
@@ -11,8 +9,8 @@ var data = {
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
-					},{previous_dialogue_option = 0}
-					],
+					},
+					], previous_dialogue_option = 0
 			},
 			{
 				text = "DIALOGUEZEPHINITIATEH", 
@@ -21,8 +19,8 @@ var data = {
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
-					},{previous_dialogue_option = 0}
-					],
+					},
+					], previous_dialogue_option = 0
 			},
 			{
 				text = "DIALOGUEZEPHINITIATEM", 
@@ -30,11 +28,10 @@ var data = {
 					{type = 'active_character_checks', value = [
 						{code = 'has_profession', profession = 'spouse', check = true},
 						]
-					}, {previous_dialogue_option = 0}
-					],
+					},
+					], previous_dialogue_option = 0
 			},
 			
-				
 			{text = "", reqs = [], previous_dialogue_option = 4},
 			{text = "ZEPHYRA_EXTRA_REPLY3", reqs = [], previous_dialogue_option = 6},
 			{text = "ZEPHYRA_EXTRA_REPLY1_2", reqs = [
@@ -503,8 +500,10 @@ var data = {
 			},
 		], 
 		options = [
-			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1}, 
-			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1, type = 'next_dialogue', },
+			{code = 'cali_act3_blow_1', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage5'}], dialogue_argument = 1, type = 'next_dialogue', },
+			{code = 'cali_act5_pet_3', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_pet_quest', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue', },
+			{code = 'close', text = 'DIALOGUELEAVE',reqs = [], dialogue_argument = 1,},
 		],
 	},
 	
@@ -540,6 +539,26 @@ var data = {
 		], 
 		options = [
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+		],
+	},
+	
+	jean_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'jean',
+		text = [
+			{
+				text = "DIALOGUEJEANINITIATEM", 
+				reqs = [
+					{type = 'active_character_checks', value = [
+						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'has_profession', profession = 'spouse', check = false},
+						]
+					}],
+			},	
+		], 
+		options = [
+			{code = 'cali_act3_jean_1', text = "CALI_ACT3_JEAN_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage2'}, {type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage3', orflag = true}], dialogue_argument = 1, type = 'next_dialogue',},
+			{code = 'cali_act3_jean_4', text = "CALI_ACT3_JEAN_3_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage6'}], dialogue_argument = 1, type = 'next_dialogue',},
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
 		],
 	},
 

@@ -26,8 +26,8 @@ var brothel_rules = {
 		sextoy = false,
 		
 		males = true,
-		females = true,
-		futa = true
+		females = false,
+		futa = false
 	}
 var messages = []
 
@@ -525,16 +525,19 @@ func select_brothel_activity():
 	var non_sex_rules = []
 	var sex_rules = []
 	
+	var no_training = false
 	for i in brothel_rules:
-		if !brothel_rules[i]: continue
+		if !brothel_rules[i] || i in ['males','futa','females']: continue
 		if variables.brothel_non_sex_options.has(i):
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
+			if parent.get_ref().checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
+					no_training = true
 	
-	if sex_rules.size() >= 0:
+	if sex_rules.size() > 0:
 		#pick chance
-		if 50 + parent.get_ref().get_stat('charm')/2 > randf()*100:
+		if 50 + max(parent.get_ref().get_stat('sexuals')/2,parent.get_ref().get_stat('charm')/2) > randf()*100:
 			var remove_from_sex = []
 			
 			#every rule toggled only has 50% chance to be picked by default
@@ -547,14 +550,14 @@ func select_brothel_activity():
 				sex_rules.remove(i)
 			
 			var highest_value = get_highest_value(sex_rules)
-			var data = gold_tasks_data[highest_value.code]
+			var data = races.gold_tasks_data[highest_value.code]
 			var bonus_gold = 0
 			
 			
 			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
-				bonus_gold += parent.get_ref().get_stat('value') * 0.03
+				bonus_gold += parent.get_ref().calculate_price() * 0.02
 			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
@@ -563,7 +566,11 @@ func select_brothel_activity():
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().get_stat('value'))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			if no_training == true:
+				goldearned = goldearned - goldearned/3
+			goldearned = round(goldearned)
+			
 			
 			parent.get_ref().add_stat('metrics_goldearn', goldearned)
 			
@@ -572,16 +579,18 @@ func select_brothel_activity():
 			#TODO add decriptions and impregnation
 			
 			return
-	elif non_sex_rules.size() >= 0:
+	elif non_sex_rules.size() > 0:
 		var highest_value = get_highest_value(non_sex_rules)
 		
-		var data = gold_tasks_data[highest_value.code]
+		var data = races.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		var goldearned = highest_value.value * max(1.4, (1 + 0.005 * parent.get_ref().get_stat('value')))
-			
+		var goldearned = highest_value.value * max(1.4, (1 + 0.003 * parent.get_ref().calculate_price()))
+		
+		goldearned = round(goldearned)
+		
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
-			
+		
 		ResourceScripts.game_res.money += goldearned
 	else:
 		work = ''
@@ -592,7 +601,7 @@ func get_highest_value(array):#find highest profit option
 	var values = {}
 	var highest_value = {code = '', value = 0}
 	for i in array:
-		values[i] = round(get_gold_value(i) * (0.8 + randf() * 0.4)) #20% randomness to value
+		values[i] = max(1,round(get_gold_value(i) * (0.8 + randf() * 0.4))) #20% randomness to value
 		if highest_value.value < values[i]:
 			highest_value.code = i
 			highest_value.value = values[i]
@@ -601,8 +610,8 @@ func get_highest_value(array):#find highest profit option
 
 
 func get_gold_value(task):
-	var value = call(gold_tasks_data[task].formula)
-	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(gold_tasks_data[task].workmod)/100.0)
+	var value = call(races.gold_tasks_data[task].formula)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(races.gold_tasks_data[task].workmod)/100.0)
 	
 	return value
 
@@ -626,7 +635,7 @@ func work_tick():
 	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
 		parent.get_ref().food.food_consumption_rations = true
 	
-	if currenttask.code == 'prostitution':
+	if currenttask.code == 'brothel':
 		select_brothel_activity()
 		return
 	
@@ -690,7 +699,7 @@ func add_metric_for_outcome(res_id):
 
 func work_tick_values(workstat):
 	if !parent.get_ref().has_status('no_working_bonuses'):
-		if workstat.has("sex_skills"):
+		if workstat.findn("sex_skills") >= 0:
 			parent.get_ref().add_stat(workstat, rand_range(1.2,1.8))
 		else:
 			parent.get_ref().add_stat(workstat, 0.36)

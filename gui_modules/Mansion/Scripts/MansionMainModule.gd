@@ -621,50 +621,9 @@ func test_mode():
 		character.unlock_class("apprentice")
 		character.get_random_traits()
 		character.is_players_character = true
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
-#		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-#		character.create('HalfkinCat', 'random', 'random')
-#		characters_pool.move_to_state(character.id)
 
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 1
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
-#		input_handler.SystemMessage("TEST")
 
 #		character.set_stat('obedience', 50)
 		character.unlock_class("apprentice")
@@ -756,13 +715,12 @@ func test_mode():
 						{code = 'add_profession', profession = 'spouse'},
 					]
 				},
-				#{code = 'make_story_character', value = 'Cali'},
+				{code = 'make_story_character', value = 'Cali'},
 				{code = 'make_story_character', value = 'Aire'},
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
 				{code = 'make_story_character', value = 'Lilia'},
-				{code = 'make_story_character', value = 'Mae'},
 			]
 		)
 
@@ -876,16 +834,17 @@ func test_mode():
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		#input_handler.interactive_message('got_cali_2_1', '', {})
+#		input_handler.interactive_message('lilia_recruited', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
-#		ResourceScripts.game_progress.decisions.append("marry_invitations_made")
+#		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-#		input_handler.interactive_message('pre_final_boss_paladin_knight', '', {})
+		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
+
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")

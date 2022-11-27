@@ -216,10 +216,11 @@ var max_population_cap = 30
 var stable_boost_per_level = 1
 
 #Items
-var RepairCostMultiplierEasy = 0.5
-var RepairCostMultiplierMedium = 0.65
-var RepairCostMultiplierHard = 0.8
-var ItemEffectNaturalMultiplier = 0.15
+
+var material_sell_multiplier = 0.5
+var crafter_material_sell_multiplier = 0.5
+var item_sell_multiplier = 0.75
+
 #Heroes
 var all_races_array = []
 var starting_races_array = ['Human','Elf','TribalElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']

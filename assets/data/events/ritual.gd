@@ -13,8 +13,9 @@ var data = {
 	ritual_1_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		common_effects = [{code = 'decision', value = 'putPowder'}],
-		text = [{text = "RITUAL_1_1", reqs = []}],
+		text = [{text = "RITUAL_1_1_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 30}]}],
+				bonus_effects = [{code = 'decision', value = 'putPowder'}]},
+			{text = "RITUAL_1_1_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 30}]}]}],
 		options = [ {
 			code = 'ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]

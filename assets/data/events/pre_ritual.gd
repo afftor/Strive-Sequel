@@ -511,7 +511,7 @@ var data = {
 			} ]
 		}, {
 			image = null, tags = ['dialogue_scene', 'master_translate'],
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 75}]}],
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 75}]}],
 			text = [{text = "PRE_RITUAL_4_2_2", reqs = []}],
 			options = [ {
 				code = 'quest_fight', args = 'mae_slavers',

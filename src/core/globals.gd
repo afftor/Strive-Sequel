@@ -1721,6 +1721,11 @@ func common_effects(effects):
 				gui_controller.nav_panel.build_accessible_locations()
 			'return_to_mansion':
 				gui_controller.nav_panel.return_to_mansion()
+			'update_mansion':
+				if gui_controller.current_screen == gui_controller.mansion:
+					gui_controller.nav_panel.build_accessible_locations()
+					gui_controller.nav_panel.update_buttons()
+					gui_controller.mansion.SlaveListModule.rebuild()
 			# example:
 			# location = "SETTLEMENT_PLAINS1"
 			# area = "plains"
@@ -1921,8 +1926,9 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, counter, dict.value)
 		'location_has_specific_slaves':
 			var counter = 0
+			var location = ResourceScripts.game_world.find_location_by_data({code = dict.location}).location
 			for i in ResourceScripts.game_party.characters.values():
-				if i.check_location(dict.location):
+				if i.check_location(location):
 					if i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
 						counter += 1
 			if dict.has("check"):

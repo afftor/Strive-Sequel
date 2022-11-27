@@ -175,6 +175,10 @@ func check_timed_events():
 							ResourceScripts.game_progress.decisions.erase(i.code)
 					'quest':
 						globals.common_effects([{code = 'progress_quest', value = i.code.quest, stage = i.code.stage}])
+					'affect_unique_character':
+						var k = ResourceScripts.game_party.get_unique_slave(i.code.name.to_lower())
+						if k != null:
+							k.affect_char(i.code)
 				deleting_events.append(i)
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
 #					globals.autosave(true)

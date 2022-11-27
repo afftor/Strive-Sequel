@@ -125,7 +125,8 @@ var data = {
 		],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
-				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage1'}
+				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage1'},
+				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = true},
 				#2add/fix location part
 			]
 		},
@@ -169,7 +170,7 @@ var data = {
 		reqs = [],
 		character = "cali",
 		text = [ 
-			{text = "CALI_FARMER_4_1", reqs = [], previous_dialogue_option = 1}, #return text
+			{text = "CALI_FARMER_4_1", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'}]}, #return text
 			{text = "CALI_FARMER_4_2", reqs = [], previous_dialogue_option = 2}, #normal first time text
 			{text = "CALI_FARMER_4_3", reqs = [], previous_dialogue_option = 3}, #get discount text
 			], 
@@ -197,15 +198,19 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = false}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage3'},
+				{code = 'update_location'},
 				{code = 'material_change', operant = '-', material = 'wood', value = 200},
-				#2add location
+				{code = 'make_quest_location', value = 'quest_cali_bandits_location'},
+				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false}
 			]
 		},
 		{
 			code = 'close', text = "DIALOGUECLOSE", reqs = [{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
 				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage3'},
+				{code = 'update_location'},
 				{code = 'material_change', operant = '-', material = 'wood', value = 100},
-				#2add location
+				{code = 'make_quest_location', value = 'quest_cali_bandits_location'},
+				{code = 'set_location_param', location = 'settlement_plains2', area = 'plains', param = 'locked', value = false},
 			]
 		},
 		 ],
@@ -217,7 +222,7 @@ var data = {
 		text = [ {text = "CALI_FARMER_6", reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
-				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage2'} #or split onto 2 variants
+				{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage2'}, {code = 'update_location'}
 			]
 		}, ],
 	},
@@ -768,7 +773,7 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_SWORD_RETURN_7", reqs = []} ],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage10'}] #2add location creating
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage10'}, {code = 'make_quest_location', value = 'quest_cali_village'},] 
 		} ],
 	},
 	
@@ -921,7 +926,7 @@ var data = {
 		],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}]
+			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'remove_active_location'},]
 		} ],
 	},
 	cali_grat_sex_1 = {
