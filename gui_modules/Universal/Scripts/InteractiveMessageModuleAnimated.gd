@@ -563,6 +563,7 @@ func leave():
 	close()
 
 func fight_skirmish():
+	globals.char_roll_data.no_roll = true
 	if current_scene.has("winscene"):
 		input_handler.encounter_win_script = current_scene.winscene
 	globals.current_enemy_group = dialogue_enemy
@@ -570,6 +571,7 @@ func fight_skirmish():
 	#close(true)
 
 func quest_fight(code):
+	globals.char_roll_data.no_roll = true
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 	#close(true)

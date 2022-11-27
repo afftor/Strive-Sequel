@@ -1135,6 +1135,8 @@ func StartCombat(encounter = null):
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
+#		if data.has('no_rnd_captured') and data.no_rnd_captured:
+#			char_roll_data.no_roll = true
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
 		input_handler.encounter_lose_script = Enemydata.encounters[encounter].lose_effects
 	else:
@@ -1340,6 +1342,7 @@ func return_characters_from_location(locationid):
 
 var char_roll_data = {}
 func reset_roll_data():
+	char_roll_data.no_roll = false
 	char_roll_data.max_amount = 4
 	char_roll_data.lvl = 0
 	char_roll_data.mboss = false
@@ -1368,6 +1371,9 @@ func get_rolled_diff(): #excluding event bonus
 
 func roll_characters():
 	var res = []
+	if char_roll_data.no_roll:
+		reset_roll_data()
+		return res
 	var chance1 = 0.25
 	var chance2 = 0.1
 	
@@ -1410,6 +1416,7 @@ func roll_characters():
 		newslave.is_active = true
 #		newslave.set_slave_category('servant')
 		res.push_back(newslave.id)
+		n += 1
 		while rng.randf() < chance2 and n < char_roll_data.max_amount:
 			if racedata is Array and !racedata.empty():
 				t_race = input_handler.weightedrandom(racedata)
@@ -1420,6 +1427,7 @@ func roll_characters():
 			newslave.is_active = true
 #			newslave.set_slave_category('servant')
 			res.push_back(newslave.id)
+			n += 1
 	
 	reset_roll_data()
 	return res
