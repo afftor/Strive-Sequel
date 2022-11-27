@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Slave_Module.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/SlaveTooltipPanel.tres" type="StyleBox" id=2]
@@ -28,30 +28,39 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/SlaveTooltip.gd" type="Script" id=26]
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=28]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=29]
+[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/gui icons/charm.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/gui/gui icons/wit.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/gui/gui icons/timid_factor.png" type="Texture" id=37]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 14
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 outline_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 36
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 24
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 4 )
 
@@ -62,6 +71,9 @@ rect_min_size = Vector2( 470, 461 )
 theme = ExtResource( 1 )
 custom_styles/panel = ExtResource( 2 )
 script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="Panel" parent="."]
 self_modulate = Color( 0, 0, 0, 0.823529 )
@@ -93,7 +105,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=["ignore_rightclicks"]]
+[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=[
+"ignore_rightclicks",
+]]
 visible = false
 margin_right = 89.0
 margin_bottom = 89.0
@@ -111,7 +125,7 @@ margin_left = 6.0
 margin_top = 64.0
 margin_right = 84.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Label"
 align = 1
 __meta__ = {
@@ -181,8 +195,8 @@ margin_left = 200.0
 margin_top = 7.0
 margin_right = 456.0
 margin_bottom = 35.0
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 text = "Name"
 scroll_active = false
@@ -190,7 +204,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="base_stats" type="VBoxContainer" parent="." groups=["hide_stranger"]]
+[node name="base_stats" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
 margin_left = 192.0
 margin_top = 111.0
 margin_right = 456.0
@@ -218,8 +234,8 @@ stretch_margin_bottom = 5
 margin_top = -2.75696
 margin_right = 262.0
 margin_bottom = 29.243
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -240,8 +256,8 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 262.0
 margin_bottom = 28.243
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -262,10 +278,243 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 263.0
 margin_bottom = 28.243
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="factors" type="GridContainer" parent="."]
+light_mask = 0
+margin_left = 192.0
+margin_top = 220.0
+margin_right = 463.0
+margin_bottom = 372.0
+rect_scale = Vector2( 1, 0.887 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/hseparation = 86
+columns = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="growth_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+light_mask = 0
+margin_right = 50.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/growth_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Excellent"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charm_factor" type="TextureRect" parent="factors"]
+light_mask = 0
+margin_left = 136.0
+margin_right = 186.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/charm_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics_factor" type="TextureRect" parent="factors"]
+light_mask = 0
+margin_top = 39.0
+margin_right = 50.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/physics_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sexuals_factor" type="TextureRect" parent="factors"]
+light_mask = 0
+margin_left = 136.0
+margin_top = 39.0
+margin_right = 186.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/sexuals_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="magic_factor" type="TextureRect" parent="factors"]
+light_mask = 0
+margin_top = 78.0
+margin_right = 50.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="factors/magic_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+
+[node name="tame_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+light_mask = 0
+margin_left = 136.0
+margin_top = 78.0
+margin_right = 186.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/tame_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wits_factor" type="TextureRect" parent="factors"]
+light_mask = 0
+margin_top = 117.0
+margin_right = 50.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 35 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/wits_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
+
+[node name="timid_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+light_mask = 0
+margin_left = 136.0
+margin_top = 117.0
+margin_right = 186.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 37 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="factors/timid_factor"]
+light_mask = 0
+margin_left = 69.2385
+margin_top = -2.0
+margin_right = 129.238
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 29 )
+text = "25"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -275,8 +524,8 @@ margin_left = 73.0
 margin_top = 210.0
 margin_right = 179.0
 margin_bottom = 242.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -289,8 +538,8 @@ margin_left = 72.833
 margin_top = 250.0
 margin_right = 122.833
 margin_bottom = 282.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -303,8 +552,8 @@ margin_left = 130.449
 margin_top = 250.0
 margin_right = 180.449
 margin_bottom = 282.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -317,8 +566,8 @@ margin_left = 71.641
 margin_top = 285.0
 margin_right = 121.641
 margin_bottom = 317.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -331,8 +580,8 @@ margin_left = 130.052
 margin_top = 285.0
 margin_right = 180.052
 margin_bottom = 317.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -345,8 +594,8 @@ margin_left = 71.244
 margin_top = 325.0
 margin_right = 121.244
 margin_bottom = 357.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -359,8 +608,8 @@ margin_left = 130.449
 margin_top = 325.0
 margin_right = 180.449
 margin_bottom = 357.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -443,8 +692,8 @@ margin_left = 63.0
 margin_top = 173.0
 margin_right = 181.0
 margin_bottom = 205.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 4 )
 text = "0"
 align = 1
 __meta__ = {
@@ -462,14 +711,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obedlabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="obedlabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 margin_left = 119.711
 margin_top = -1.52588e-05
 margin_right = 198.711
 margin_bottom = 40.0
 rect_scale = Vector2( 0.627771, 0.627771 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 5 )
 text = "25"
 align = 1
 __meta__ = {
@@ -488,47 +740,59 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="authoritylabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 margin_left = 3.8147e-06
 margin_top = 69.682
 margin_right = 238.0
 margin_bottom = 101.682
 mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 6 )
 text = "Authority: "
 align = 1
 
-[node name="authoritylabel2" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="authoritylabel2" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 margin_left = 14.7019
 margin_top = 21.41
 margin_right = 26.7019
 margin_bottom = 53.41
 mouse_filter = 0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 7 )
 text = "L"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel3" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="authoritylabel3" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 visible = false
 margin_left = 14.7019
 margin_top = 54.665
 margin_right = 27.7019
 margin_bottom = 86.665
 mouse_filter = 0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = SubResource( 7 )
 text = "S"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 margin_left = 32.0
 margin_top = 25.752
 margin_right = 214.0
@@ -537,7 +801,10 @@ value = 100.0
 texture_over = ExtResource( 10 )
 texture_progress = ExtResource( 7 )
 
-[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
+[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
 visible = false
 margin_left = 32.0
 margin_top = 58.546
