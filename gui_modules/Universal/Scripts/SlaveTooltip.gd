@@ -140,7 +140,20 @@ func showup(node, person):
 		if get_rect().end.y+125 > screen.size.y:
 			rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 		set_process(true)
-
+	for i in $factors.get_children():
+		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "timid_factor"]:
+			i.hide()
+		else:
+			i.show()
+		if i.name in ['base_exp']:
+			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
+			continue
+		if input_handler.globalsettings.factors_as_words:
+			i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
+			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))]) 
+		else:
+			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
+			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
 
 func cooldown():
 	shutoff = true
