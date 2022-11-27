@@ -834,7 +834,7 @@ func test_mode():
 		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("aire_is_saved")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-#		input_handler.interactive_message('lilia_recruited', '', {})
+		input_handler.interactive_message('cali_act1_1', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
