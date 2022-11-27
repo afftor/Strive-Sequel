@@ -855,16 +855,18 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		input_handler.interactive_message('cali_act1_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
-#		ResourceScripts.game_progress.decisions.append("marry_invitations_made")
+#		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-#		input_handler.interactive_message('pre_final_boss_paladin_knight', '', {})
+		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
+
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")

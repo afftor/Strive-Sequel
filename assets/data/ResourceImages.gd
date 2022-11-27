@@ -156,6 +156,17 @@ var backgrounds = {
 	cali_touching_3 = load("res://assets/images/fullscreen scenes/CaliCG015.png"),
 	cali_touching_4 = load("res://assets/images/fullscreen scenes/CaliCG016.png"),
 	
+	cali_fuck_1 = load("res://assets/images/fullscreen scenes/CaliCG017.png"),
+	cali_fuck_2 = load("res://assets/images/fullscreen scenes/CaliCG018.png"),
+	
+	cali_bowl_1 = load("res://assets/images/fullscreen scenes/CaliCG022.png"),
+	cali_bowl_2 = load("res://assets/images/fullscreen scenes/CaliCG023.png"),
+	
+	cali_bowl_naked_1 = load("res://assets/images/fullscreen scenes/CaliCG024.png"),
+	cali_bowl_naked_2 = load("res://assets/images/fullscreen scenes/CaliCG025.png"),
+	cali_bowl_naked_3 = load("res://assets/images/fullscreen scenes/CaliCG026.png"),
+	cali_bowl_naked_4 = load("res://assets/images/fullscreen scenes/CaliCG027.png"),
+	
 	cali_riding_1 = load("res://assets/images/fullscreen scenes/CaliCG019.png"),
 	cali_riding_2 = load("res://assets/images/fullscreen scenes/CaliCG020.png"),
 	cali_riding_3 = load("res://assets/images/fullscreen scenes/CaliCG021.png"),

@@ -102,6 +102,9 @@ var data = {
 		text = [ {text = "JEAN_INTRO_BAD", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [
+				{code = "update_guild"}
+			]
 		}, ],
 	},
 	
@@ -139,7 +142,10 @@ var data = {
 					]
 				}]}, ],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [
+				{code = "update_guild"}
+			]
 		}, ],
 	},
 	
@@ -351,9 +357,10 @@ var data = {
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "FORCE_CALI_6", reqs = [], }],
+		common_effects = [{code = 'plan_mansion_event', value = 'cali_act1_1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"}]
+			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"},]
 		}, ],
 	},
 	

@@ -1,6 +1,5 @@
 
 var data = {
-
 	fighters_introduction2 = {
 		image = null,
 		character = 'duncan',
@@ -46,9 +45,6 @@ var data = {
 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
-
-
-
 	},
 
 
@@ -87,10 +83,12 @@ var data = {
 			{type = 'has_material', operant = 'gte', value = 50, material = 'clothmagic'},
 		], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'gryphon_workers_start', text = "GRYPHON_WORKERS_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'cali_act2_workers_1', text = "CALI_ACT2_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
+
 
 	servants_introduction = {
 		image = null,
@@ -137,11 +135,9 @@ var data = {
 			{type = 'has_money', value = 500}
 			], type = 'next_dialogue', dialogue_argument = 0},
 		
-		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 
 	},
-
 
 
 	mages_introduction3 = {
@@ -169,10 +165,8 @@ var data = {
 		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},
 		{code = 'final_operation_mages_1', text = "Ask for Help", reqs = [{type = 'active_quest_stage', value = 'final_operation', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'sick_lilia_1', text = "There's an issue with a Fairy...", reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
-
+		
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
-
-
 }

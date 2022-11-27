@@ -447,6 +447,7 @@ var data = {
 			{text = "", reqs = [{type = 'decision', value = 'potion_sex', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'sexuals_factor', value = 1}]},
 			{text = "", reqs = [{type = 'decision', value = 'potion_wit_magic', check = true}], bonus_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'wits_factor', value = 1}, {code = 'affect_unique_character', name = 'lilia', type = 'stat', stat = 'magic_factor', value = 1}]},
 		],
+		common_effects = [{code = 'affect_unique_character', name = 'lilia', type = 'set_availability', value = true}],
 		options = [ {
 			code = 'lilia_mansion_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
@@ -495,6 +496,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'complete_quest', value = 'sick_lilia_quest'},
+				{code = 'update_mansion'},
 			]
 		}, ]
 	},

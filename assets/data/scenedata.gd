@@ -1578,6 +1578,20 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
+			name = "Ask for Limnrov", # TODO make text smaller
+			reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage2'}],
+			target = 'cali_act2_workers_2',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = "Visit Limnrov",
+			reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage3'}],
+			target = 'cali_act2_limnrov',
+			target_option = 1,
+		},
+		{
+			code = 'default',
 			name = "Meet Leader",
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}],
 			target = 'workers_introduction2',
@@ -1602,9 +1616,23 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Meet Leader",
+			reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage2'}],
+			target = 'cali_act3_mages_1',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = "Meet Leader",
 			reqs = [{type = 'dialogue_seen', check = false, value = 'JEAN_INTRO'}, {type = 'decision', value = 'mayor_election_finished', check = true}],
 			target = 'jean_intro',
 			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = "Talk To Apprentice",
+			reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage3'}],
+			target = 'cali_act3_mages_2',
+			target_option = 3,
 		},
 		#fred_return_to_myr_1
 #		{
@@ -1964,6 +1992,7 @@ var quests = {
 			stage2 = {code = 'stage2', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_2"}, # searh surroundings
 		},
 	},
+	
 	cali_servants_quest = {
 		code = 'cali_servants_quest',
 		summary = "CALI_SERVANTS_QUEST_SUMMARY",
@@ -1972,6 +2001,7 @@ var quests = {
 
 		},
 	},
+	
 	cali_heirloom_quest = {
 		code = 'cali_heirloom_quest',
 		summary = "CALI_HEIRLOOM_QUEST_SUMMARY",
@@ -2009,6 +2039,50 @@ var quests = {
 			stage35 = {code = 'stage35', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_35"}, # get clothes from troll
 			stage4 = {code = 'stage4', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_4"}, # return to Xari
 			stage5 = {code = 'stage5', name = "SICK_LILIA_QUEST_NAME", descript = "SICK_LILIA_QUEST_STAGE_5"}, # bring potion to Lilia
+		},
+	},
+	
+	cali_collar_quest = {
+		code = 'cali_collar_quest',
+		summary = "CALI_COLLAR_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_1"}, # ask at workers guild about custom collar
+			stage2 = {code = 'stage2', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_2"}, # ask Limnrov about collar
+			stage3 = {code = 'stage3', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_3"}, # talk to Limnrov about collar
+			stage4 = {code = 'stage4', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_4"}, # wait for courier with collar
+		},
+	},
+	
+	cali_magic_quest = {
+		code = 'cali_magic_quest',
+		summary = "CALI_MAGIC_QUEST_SUMMARY",
+		stages = {
+			stage2 = {code = 'stage2', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_2"}, # ask Mages about Cali or talk to Jean (go to dungeon)
+			stage3 = {code = 'stage3', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_3"}, # return to apprentince
+			stage4 = {code = 'stage4', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_4"}, # Wait 2 days
+			stage5 = {code = 'stage5', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_5"}, # Talk to Cali
+			
+			stage1 = {code = 'stage1', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_1"}, # Return to Jean
+			stage6 = {code = 'stage6', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_6"}, # Talk to Jean
+		},
+	},
+	
+	cali_merchant_quest = {
+		code = 'cali_merchant_quest',
+		summary = "CALI_MERCHANT_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_MERCHANT_QUEST_NAME", descript = "CALI_MERCHANT_QUEST_STAGE_1"}, # visit merchant
+			stage2 = {code = 'stage2', name = "CALI_MERCHANT_QUEST_NAME", descript = "CALI_MERCHANT_QUEST_STAGE_2"}, # return to merchant
+		},
+	},
+	
+	cali_pet_quest = {
+		code = 'cali_pet_quest',
+		summary = "CALI_PET_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_1"}, # visit pet shop
+			stage2 = {code = 'stage2', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_2"}, # talk to cali
+			stage3 = {code = 'stage3', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_3"}, # talk to cali tomorrow (kinda bad)
 		},
 	},
 }

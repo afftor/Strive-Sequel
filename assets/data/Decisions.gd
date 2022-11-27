@@ -88,4 +88,5 @@ var decisions = {
 	potion_wit_magic = "Potion for Lilia that adds Wit and Magic factor",
 	potion_tame = "Potion for Lilia that adds Tame factor",
 	potion_sex = "Potion for Lilia that adds Sex factot",
+	cali_gone = "Cali run away",
 }

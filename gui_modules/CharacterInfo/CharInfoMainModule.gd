@@ -76,6 +76,13 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	]
 	},
 	
+	
+	jean = {
+	code = 'jean', 
+	scenes = [
+		{code = 'jean_dialogue_start', reqs = []}
+	]
+	},
 }
 
 

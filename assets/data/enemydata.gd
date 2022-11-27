@@ -130,7 +130,7 @@ var enemygroups = {
 	bridge_guards = {reqs = [], units = {elf_soldier = [6,6]}},
 	cali_goblins_first = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	cali_goblins_second = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
-	troll_clothes = {reqs = [], units = {elder_gryphon_boss = [1,1]}},
+	troll_clothes = {reqs = [], units = {troll = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
