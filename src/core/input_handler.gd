@@ -343,6 +343,12 @@ func _input(event):
 	for action in ['ui_cancel', 'ui_up', 'ui_down']:
 		if event.is_action(action):
 			get_tree().set_input_as_handled()
+#	if event.is_action_released("ConsoleOpenButton") \ #Egodgorn
+#		&& gui_controller.current_screen == gui_controller.mansion:
+#		if gui_controller.mansion_tutorial_panel == null || !gui_controller.mansion_tutorial_panel.is_visible():
+#			gui_controller.mansion.show_tutorial()
+#		else:
+#			gui_controller.mansion_tutorial_panel.hide()
 	if event.is_action_released("F1") \
 		&& gui_controller.current_screen == gui_controller.mansion:
 		if gui_controller.mansion_tutorial_panel == null || !gui_controller.mansion_tutorial_panel.is_visible():
