@@ -1520,7 +1520,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {atk = 30, critchance = 20, hitrate = 15},
+		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15},
 	},
 	aire_bow = {
 		code = 'aire_bow',

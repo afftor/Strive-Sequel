@@ -67,12 +67,12 @@ func sell_char(ch_id):
 
 func hire_char(ch_id):
 	if input_handler.active_location.captured_characters.has(ch_id):
-		if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
-			if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
-				input_handler.SystemMessage("You don't have enough rooms")
-			else:
-				input_handler.SystemMessage("Population limit reached")
-			return
+#		if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
+#			if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
+#				input_handler.SystemMessage("You don't have enough rooms")
+#			else:
+#				input_handler.SystemMessage("Population limit reached")
+#			return
 		var tchar = characters_pool.get_char_by_id(ch_id)
 		input_handler.active_character = tchar
 		if tchar.src == 'random_combat':

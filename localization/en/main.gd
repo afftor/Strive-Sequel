@@ -2193,6 +2193,20 @@ var TranslationDict = {
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
 
+	DIALOGUERECRUIT = "You stand before [name], who was captured and now awaits for [his] destiny. You can try to persuade [him] to join you willingly or simply turn [him] into slave.",
+	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
+	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
+	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
+	DIALOGUERECRUITGOODSLAVE = "Make Slave",
+	DIALOGUERECRUITGOODSERVANT = "Make Peon",
+	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
+	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
+	
+	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
+	
+	
+	DIALOGUEMEET = "",
+
 	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",

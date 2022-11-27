@@ -484,6 +484,7 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
+visible = false
 margin_left = 154.0
 margin_right = 234.0
 margin_bottom = 80.0

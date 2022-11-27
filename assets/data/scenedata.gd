@@ -1282,7 +1282,7 @@ var scenedict = {
 	recruit_captured = {
 		text = tr("DIALOGUERECRUIT"),
 		tags = ['recruit','scene_character_translate'],
-		image = 'celena_shrine', #2fix
+		image = 'slave_decision', 
 		options = [
 		{code = 'recruit_captured', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
@@ -1290,7 +1290,7 @@ var scenedict = {
 	recruit_meet = {
 		text = tr("DIALOGUEMEET"),
 		tags = ['recruit','scene_character_translate'],
-		image = 'erebus_shrine', #2fix
+		image = 'recruit', 
 		options = [
 		{code = 'recruit_meet', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
