@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.5'
+const gameversion = '0.6.6 experimental 2'
 
 #time
 signal hour_tick
@@ -105,10 +105,14 @@ func _ready():
 			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
 #			text += k.name + ' = "' + k.code + '",\n'
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
-
+	
+	races.fill_racegroups()
+	
+	
 	modding_core.fix_main_data_preload()
 	modding_core.process_data_mods()
 	modding_core.fix_main_data_postload()
+	reset_roll_data()
 
 
 #not used
@@ -656,21 +660,6 @@ func LoadGame(filename):
 		print(ResourceScripts.game_globals.original_version)
 		print("Warning - unsafe loading")
 	
-	if compare_version(ResourceScripts.game_globals.original_version, '0.6.1 Experimental') and ResourceScripts.game_progress.decisions.has('mayor_election_finished') and !ResourceScripts.game_progress.decisions.has('startedAct2'):
-		var already_stored = false
-		for k in ResourceScripts.game_progress.stored_events.timed_events:
-					if k.code == "zephyra_recruitment_letter" or k.code == "zephyra_sword_1":
-						already_stored = true
-		if !already_stored:
-			globals.common_effects([
-				{code = 'add_timed_event', value = "zephyra_recruitment_letter",
-				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}, 
-				{code = 'add_timed_event', value = "zephyra_sword_1",
-				args = [{type = 'add_to_date', date = [2,2], hour = 1}]}
-			])
-	#current approach
-	# if input_handler.CurrentScene != null:
-		# input_handler.CurrentScene.queue_free()
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
 	if is_instance_valid(gui_controller.current_screen):
@@ -679,6 +668,7 @@ func LoadGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
+		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
 
 
@@ -737,6 +727,7 @@ func ImportGame(filename):
 	yield(self, "scene_changed")
 	if is_instance_valid(gui_controller.clock):
 		gui_controller.clock.update_labels()
+		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Imported")
 	globals.common_effects([
 			{code = 'add_timed_event', value = "loan_event1",
@@ -1268,6 +1259,7 @@ func makerandomgroup(enemygroup):
 		if combatparty[pos] == null: continue
 		if rng.randf() < variables.enemy_rarechance:
 			champarr.push_back(pos)
+			char_roll_data.mboss = true
 	while champarr.size() > 3:
 		champarr.remove(rng.randi_range(0, champarr.size()-1))
 	for pos in champarr:
@@ -1291,6 +1283,12 @@ func remove_location(locationid):
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	ResourceScripts.game_party.clean_tasks(location.id)
 	return_characters_from_location(locationid)
+	if location.has('captured_characters'):
+		for id in location.captured_characters:
+			var tchar = characters_pool.get_char_by_id(id)
+			var val = tchar.calculate_price() / 2
+			ResourceScripts.game_res.money += int(val)
+			tchar.is_active = false
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
 	ResourceScripts.game_world.location_links.erase(location.id)
@@ -1338,6 +1336,94 @@ func return_characters_from_location(locationid):
 				person.return_to_task()
 			else:
 				person.return_to_mansion()
+
+
+var char_roll_data = {}
+func reset_roll_data():
+	char_roll_data.max_amount = 4
+	char_roll_data.lvl = 0
+	char_roll_data.mboss = false
+	char_roll_data.uniq = false
+	char_roll_data.event = false
+	char_roll_data.trait_bonus = false
+	char_roll_data.area = 'plains'
+	match ResourceScripts.game_globals.difficulty:
+		'easy':
+			char_roll_data.diff = 2
+		'medium':
+			char_roll_data.diff = 4
+		'hard':
+			char_roll_data.diff = 6
+
+
+func get_rolled_diff(): #excluding event bonus
+	var t_diff = char_roll_data.diff
+	t_diff += char_roll_data.lvl
+	if char_roll_data.mboss: t_diff += 1
+	if char_roll_data.uniq: t_diff += 2 
+#	if char_roll_data.trait_bonus: t_diff += 2 not implemented
+	
+	return t_diff
+
+
+func roll_characters():
+	var res = []
+	var chance1 = 0.25
+	var chance2 = 0.1
+	
+	if char_roll_data.mboss: 
+		chance1 = 0.5
+		chance2 = 0.15
+	if char_roll_data.uniq: 
+		chance1 = 1.0
+#	if char_roll_data.trait_bonus: not implemented
+#		chance1 = 0.5
+#		chance2 = 0.15
+	
+	var t_diff = get_rolled_diff()
+	if char_roll_data.event: t_diff += 2
+	
+	var t_race = 'random'
+	var areadata = input_handler.active_area
+	var locdata = input_handler.active_location
+	var racedata = []
+	if locdata.has('character_data'):
+		locdata = locdata.character_data
+		if locdata.has('chance_mod'):
+			chance1 *= locdata.chance_mod
+			chance2 *= locdata.chance_mod
+		if locdata.has('races'):
+			racedata = locdata.races.duplicate()
+		elif areadata.has('races'):
+			racedata = areadata.races.duplicate()
+		 #or weight_random if data is weighted 
+#		race = input_handler.weightedrandom(input_handler.active_area.races)
+	
+	var n = 0
+	if rng.randf() < chance1:
+		if racedata is Array and !racedata.empty():
+			t_race = input_handler.weightedrandom(racedata)
+		if t_race == 'local':
+			t_race = input_handler.weightedrandom(areadata.races)
+		var newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
+		newslave.generate_random_character_from_data(t_race, null, t_diff)
+		newslave.is_active = true
+#		newslave.set_slave_category('servant')
+		res.push_back(newslave.id)
+		while rng.randf() < chance2 and n < char_roll_data.max_amount:
+			if racedata is Array and !racedata.empty():
+				t_race = input_handler.weightedrandom(racedata)
+			if t_race == 'local':
+				t_race = input_handler.weightedrandom(areadata.races)
+			newslave = ResourceScripts.scriptdict.class_slave.new("random_combat")
+			newslave.generate_random_character_from_data(t_race, null, t_diff)
+			newslave.is_active = true
+#			newslave.set_slave_category('servant')
+			res.push_back(newslave.id)
+	
+	reset_roll_data()
+	return res
+
 
 var yes
 var no
@@ -1897,6 +1983,8 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.seen_dialogues.has(dict.value) == dict.check
 		'dialogue_selected':
 			return ResourceScripts.game_progress.selected_dialogues.has(dict.value) == dict.check
+		'event_seen':
+			return ResourceScripts.game_progress.seen_events.has(dict.value) == dict.check
 		'active_quest_stage':
 			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:

@@ -1,20 +1,132 @@
 extends Node
 
 #warning-ignore-all:unused_class_variable
-var race_groups = {
-	commons = ['Human','Elf','Orc','HalfkinCat','BeastkinCat'],
-	elves = ['Elf','TribalElf','DarkElf'],
-	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
-	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
-	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
-	rare = ['TribalElf','DarkElf','Dryad','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
-	midget = ['Goblin','Gnome','Dwarf','Kobold','Fairy'],
-	top = ['Demon','Seraph','Dragonkin'],
-}
-
 
 #also tried to fix cooking but not sure if all was made
 var tasklist = {
+	brothel = {
+		code = 'brothel',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'sex_skills',
+		progress_per_item = 1.0 / 6,
+		production_code = 'prostitutegold',
+		production_item = 'gold',
+		progress_function = 'whoring_gold',
+		production_reqs = [],
+		production_icon = load("res://assets/images/gui/service.png"),
+		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
+		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
+		icon = null,
+		tags = ['sex'],
+		mod = 'mod_pros'
+	},
+	building = {
+		code = 'building',
+		reqs = [],
+		name = '',
+		descript = tr("TASKBUILDINGDESCRIPT"),
+		workstat = 'physics',
+		worktool = 'hammer',
+		base_workers = 1,
+		workers_per_upgrade = 1,
+		upgrade_code = 'buildertools',
+		production_code = 'building',
+		production_item = 'building',
+		progress_function = 'building_progress',
+		production_reqs = [],
+		production_icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"),
+		production_descript = tr("JOBBUILDINGCRAFTDESCRIPT"),
+		progress_per_item = 1.0,
+		#production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
+		icon = null,
+		tags = ['alchemy', 'hide_progress_ratio'],
+		mod = 'mod_build'
+	},
+	cooking = {
+		code = 'cooking',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'wits',
+		progress_per_item = 1,
+		production_code = 'cooking',
+		production_item = 'cooking',
+		progress_function = 'cooking_progress',
+		production_reqs = [],
+		production_icon = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"),
+		production_descript = tr("JOBCOOKINGCRAFTDESCRIPT"),
+		#production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
+		icon = null,
+		tags = ['cooking', 'hide_progress_ratio'],
+		mod = 'mod_cook'
+	},
+	tailor = {
+		code = 'tailor',
+		reqs = [{type = "has_upgrade", name = 'tailor', value = 1}],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		worktool = 'hunt_knife',
+		base_workers = 0,
+		workers_per_upgrade = 1,
+		upgrade_code = 'tailor',
+		production_code = 'cooking',
+		production_item = 'tailor',
+		progress_function = 'tailor_progress',
+		production_reqs = [],
+		production_icon = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"),
+		production_descript = tr("JOBTAILORCRAFTDESCRIPT"),
+		progress_per_item = 1,
+		#production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
+		icon = null,
+		tags = ['tailor','hide_progress_ratio'],
+		mod = 'mod_tailor'
+	},
+	smith = {
+		code = 'smith',
+		reqs = [{type = "has_upgrade", name = 'forge', value = 1}],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		worktool = 'hammer',
+		base_workers = 0,
+		workers_per_upgrade = 1,
+		upgrade_code = 'forge',
+		production_code = 'smith',
+		production_item = 'smith',
+		progress_function = 'forge_progress',
+		production_reqs = [],
+		production_icon = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"),
+		production_descript = tr("JOBSMITHCRAFTDESCRIPT"),
+		progress_per_item = 1,
+		#production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
+		icon = null,
+		tags = ['smith', 'hide_progress_ratio'],
+		mod = 'mod_smith'
+	},
+	alchemy = {
+		code = 'alchemy',
+		reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}],
+		name = '',
+		descript = tr("TASKALCHEMYDESCRIPT"),
+		workstat = 'wits',
+		base_workers = 0,
+		workers_per_upgrade = 1,
+		upgrade_code = 'alchemy',
+		production_code = 'alchemy',
+		production_item = 'alchemy',
+		progress_function = 'alchemy_progress',
+		production_reqs = [],
+		production_icon = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"),
+		production_descript = tr("JOBALCHEMYCRAFTDESCRIPT"),
+		progress_per_item = 1,
+		#production = {alchemy = {code = 'alchemy',item = 'alchemy',descript = tr("JOBALCHEMYCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"), progress_per_item = 1, reqs = [], progress_function = 'alchemy_progress'}},
+		icon = null,
+		tags = ['alchemy', 'hide_progress_ratio'],
+		mod = 'mod_alchemy'
+	},
 	fishing = {
 		code = 'fishing',
 		reqs = [],
@@ -273,129 +385,6 @@ var tasklist = {
 		mod = 'mod_collect'
 	},
 	
-	brothel = {
-		code = 'brothel',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'sex_skills',
-		progress_per_item = 1.0 / 6,
-		production_code = 'prostitutegold',
-		production_item = 'gold',
-		progress_function = 'whoring_gold',
-		production_reqs = [],
-		production_icon = load("res://assets/images/gui/inventory/icon_prostitution64x64.png"),
-		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
-		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
-		icon = null,
-		tags = ['sex'],
-		mod = 'mod_pros'
-	},
-	building = {
-		code = 'building',
-		reqs = [],
-		name = '',
-		descript = tr("TASKBUILDINGDESCRIPT"),
-		workstat = 'physics',
-		worktool = 'hammer',
-		base_workers = 1,
-		workers_per_upgrade = 1,
-		upgrade_code = 'buildertools',
-		production_code = 'building',
-		production_item = 'building',
-		progress_function = 'building_progress',
-		production_reqs = [],
-		production_icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"),
-		production_descript = tr("JOBBUILDINGCRAFTDESCRIPT"),
-		progress_per_item = 1.0,
-		#production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
-		icon = null,
-		tags = ['alchemy', 'hide_progress_ratio'],
-		mod = 'mod_build'
-	},
-	cooking = {
-		code = 'cooking',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'wits',
-		progress_per_item = 1,
-		production_code = 'cooking',
-		production_item = 'cooking',
-		progress_function = 'cooking_progress',
-		production_reqs = [],
-		production_icon = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"),
-		production_descript = tr("JOBCOOKINGCRAFTDESCRIPT"),
-		#production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
-		icon = null,
-		tags = ['cooking', 'hide_progress_ratio'],
-		mod = 'mod_cook'
-	},
-	tailor = {
-		code = 'tailor',
-		reqs = [{type = "has_upgrade", name = 'tailor', value = 1}],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'hunt_knife',
-		base_workers = 0,
-		workers_per_upgrade = 1,
-		upgrade_code = 'tailor',
-		production_code = 'cooking',
-		production_item = 'tailor',
-		progress_function = 'tailor_progress',
-		production_reqs = [],
-		production_icon = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"),
-		production_descript = tr("JOBTAILORCRAFTDESCRIPT"),
-		progress_per_item = 1,
-		#production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
-		icon = null,
-		tags = ['tailor','hide_progress_ratio'],
-		mod = 'mod_tailor'
-	},
-	smith = {
-		code = 'smith',
-		reqs = [{type = "has_upgrade", name = 'forge', value = 1}],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'hammer',
-		base_workers = 0,
-		workers_per_upgrade = 1,
-		upgrade_code = 'forge',
-		production_code = 'smith',
-		production_item = 'smith',
-		progress_function = 'forge_progress',
-		production_reqs = [],
-		production_icon = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"),
-		production_descript = tr("JOBSMITHCRAFTDESCRIPT"),
-		progress_per_item = 1,
-		#production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
-		icon = null,
-		tags = ['smith', 'hide_progress_ratio'],
-		mod = 'mod_smith'
-	},
-	alchemy = {
-		code = 'alchemy',
-		reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}],
-		name = '',
-		descript = tr("TASKALCHEMYDESCRIPT"),
-		workstat = 'wits',
-		base_workers = 0,
-		workers_per_upgrade = 1,
-		upgrade_code = 'alchemy',
-		production_code = 'alchemy',
-		production_item = 'alchemy',
-		progress_function = 'alchemy_progress',
-		production_reqs = [],
-		production_icon = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"),
-		production_descript = tr("JOBALCHEMYCRAFTDESCRIPT"),
-		progress_per_item = 1,
-		#production = {alchemy = {code = 'alchemy',item = 'alchemy',descript = tr("JOBALCHEMYCRAFTDESCRIPT"), icon = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"), progress_per_item = 1, reqs = [], progress_function = 'alchemy_progress'}},
-		icon = null,
-		tags = ['alchemy', 'hide_progress_ratio'],
-		mod = 'mod_alchemy'
-	},
 	
 
 	travel = { #dummy task for travelling assignment
@@ -418,7 +407,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['charm'],
 		workmod = 'mod_pros',
-		tags = [],
+		tags = ['has_alt_name'],
 	},
 	hostess = {
 		code = 'hostess',
@@ -426,7 +415,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['wits'],
 		workmod = 'mod_pros',
-		tags = [],
+		tags = ['has_alt_name'],
 	},
 	dancer = {
 		code = 'dancer',
@@ -465,8 +454,8 @@ var gold_tasks_data = {
 		tags = [],
 	},
 	pussy = {
-		code = 'petting',
-		formula = 'gold_petting',
+		code = 'pussy',
+		formula = 'gold_pussy',
 		text_events = [],
 		workstats = ['sex_skills_pussy'],
 		workmod = 'mod_pros',
@@ -511,6 +500,18 @@ var gold_tasks_data = {
 	},
 }
 
+func fill_racegroups():
+	for i in racelist:
+		for tag in racelist[i].race_tags:
+			if race_groups.has(tag):
+				race_groups[tag].append(racelist[i].code)
+			else:
+				race_groups[tag] = [racelist[i].code]
+
+var race_groups = {}
+
+
+
 var racelist = {
 	Human = {
 		code = "Human",
@@ -533,6 +534,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
 		tags = [],
+		race_tags = ['commons'],
 		bodyparts = {
 			height = ['petite','short','average','tall','towering'],
 			ears = ['normal'],
@@ -566,6 +568,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 0.2, fish = 0.3, grain = 1},
 		diet_hate = {vege = 0, meat = 75, fish = 25, grain = 10},
 		tags = [],
+		race_tags = ['common','elf'],
 		bodyparts = {
 			skin = ['pale','fair','olive'],
 			ears = ['elven'],
@@ -594,6 +597,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 0.2, fish = 0.5, grain = 1},
 		diet_hate = {vege = 5, meat = 45, fish = 15, grain = 5},
 		tags = [],
+		race_tags = ['elf','uncommon'],
 		bodyparts = {
 			ears = ['elven'],
 			skin = ['dark','brown','olive'],
@@ -622,6 +626,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 0.5, fish = 0.5, grain = 1},
 		diet_hate = {vege = 10, meat = 20, fish = 20, grain = 10},
 		tags = [],
+		race_tags = ['elf','rare'],
 		bodyparts = {
 			ears = ['elven'],
 			skin = ['grey','purple','teal'],
@@ -651,6 +656,7 @@ var racelist = {
 		diet_love = {vege = 0.1, meat = 2, fish = 0.5, grain = 0.4},
 		diet_hate = {vege = 45, meat = 0, fish = 15, grain = 25},
 		tags = [],
+		race_tags = ['common'],
 		bodyparts = {
 			ears = ['orcish'],
 			skin = ['green','grey','brown'],
@@ -667,9 +673,9 @@ var racelist = {
 		basestats = {
 			food_consumption = [1,3],
 			physics_factor = [2,3],
-			magic_factor = [1,1],
-			tame_factor = [2,4],
-			timid_factor = [4,5],
+			magic_factor = [1,2],
+			tame_factor = [1,3],
+			timid_factor = [3,5],
 			sexuals_factor = [3,5],
 			charm_factor = [1,3],
 			wits_factor = [1,3],
@@ -679,6 +685,7 @@ var racelist = {
 		diet_love = {vege = 0.4, meat = 2, fish = 1, grain = 0.7},
 		diet_hate = {vege = 55, meat = 1, fish = 10, grain = 25},
 		tags = [],
+		race_tags = ['midget','common'],
 		bodyparts = {
 			ears = ['orcish'],
 			skin = ['green','grey','brown'],
@@ -708,6 +715,7 @@ var racelist = {
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 55, meat = 0, fish = 1, grain = 25},
 		tags = [],
+		race_tags = ['midget','uncommon'],
 		bodyparts = {
 			skin = ['green','grey','brown'],
 			height = ['tiny','petite'],
@@ -739,6 +747,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 25, fish = 10, grain = 15},
 		tags = [],
+		race_tags = ['midget','uncommon'],
 		bodyparts = {
 			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
@@ -766,6 +775,7 @@ var racelist = {
 		diet_love = {vege = 0.3, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},
 		tags = [],
+		race_tags = ['midget','uncommon'],
 		bodyparts = {
 			height = ['short','petite'],
 			body_shape = ['shortstack'],
@@ -793,6 +803,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],
+		race_tags = ['midget','uncommon'],
 		combat_skills = ['fairy_heal'],
 		bodyparts = {
 			ears = ['elven'],
@@ -825,6 +836,7 @@ var racelist = {
 		diet_love = {vege = 2, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 45, grain = 10},
 		tags = [],
+		race_tags = ['uncommon'],
 		combat_skills = ['entangle'],
 		bodyparts = {
 			ears = ['elven'],
@@ -855,6 +867,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 20, meat = 5, fish = 10, grain = 15},
 		tags = [],
+		race_tags = ['rare', 'top'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			eye_color = ['yellow','red','black', 'green'],
@@ -886,6 +899,7 @@ var racelist = {
 		diet_hate = {vege = 5, meat = 15, fish = 10, grain = 5},
 		personality = {kind = 1, bold = 0.3, shy = 0.5, serious = 1},
 		tags = [],
+		race_tags = ['rare','top'],
 		bodyparts = {
 			wings = ["seraph"],
 			},
@@ -912,6 +926,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 3, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 5, fish = 10, grain = 30},
 		tags = [],
+		race_tags = ['rare','top'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			eye_color = ['red','amber'],
@@ -944,6 +959,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 2},
 		diet_hate = {vege = 5, meat = 15, fish = 10, grain = 5},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			body_lower = ['horse'],
 			body_shape = ['halfhorse'],
@@ -974,6 +990,7 @@ var racelist = {
 		diet_love = {vege = 2, meat = 0.1, fish = 0.5, grain = 3},
 		diet_hate = {vege = 5, meat = 75, fish = 50, grain = 5},
 		tags = ['large_tits'],
+		race_tags = ['uncommon'],
 		bodyparts = {
 			tail = ['cow'],
 			ears = ['cow'],
@@ -1002,6 +1019,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 15, meat = 10, fish = 5, grain = 5},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			body_lower = ['avian'],
 			body_shape = ['halfbird'],
@@ -1032,6 +1050,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 15, meat = 15, fish = 15, grain = 15},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			skin = ['slime'],
 			body_shape = ['jelly'],
@@ -1059,6 +1078,7 @@ var racelist = {
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 75, meat = 5, fish = 5, grain = 50},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			body_shape = ['halfsnake'],
@@ -1089,6 +1109,7 @@ var racelist = {
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 75, meat = 5, fish = 5, grain = 50},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			body_shape = ['halfspider'],
@@ -1118,6 +1139,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 3, grain = 0.5},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			body_shape = ['halfsquid'],
@@ -1146,6 +1168,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 1, fish = 3, grain = 1.5},
 		diet_hate = {vege = 15, meat = 15, fish = 0, grain = 5},
 		tags = [],
+		race_tags = ['monster'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			skin = ['teal','green'],
@@ -1177,6 +1200,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 2, fish = 2, grain = 1.5},
 		diet_hate = {vege = 80, meat = 5, fish = 5, grain = 40},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
+		race_tags = ['common','beast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			skin_coverage = ['fur_white','fur_grey','fur_brown','fur_striped','fur_black','fur_orange_white'],
@@ -1209,6 +1233,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 4, fish = 1, grain = 1},
 		diet_hate = {vege = 50, meat = 5, fish = 15, grain = 20},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
+		race_tags = ['uncommon','beast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			skin_coverage = ['fur_white','fur_grey','fur_brown','fur_black'],
@@ -1241,6 +1266,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 70, meat = 5, fish = 15, grain = 35},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
+		race_tags = ['uncommon','beast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			skin_coverage = ['fur_white','fur_grey','fur_black','fur_orange'],
@@ -1273,6 +1299,7 @@ var racelist = {
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
+		race_tags = ['uncommon','beast'],
 		bodyparts = {
 			skin_coverage = ['fur_white','fur_grey'],
 			tail = ['bunny'],
@@ -1303,6 +1330,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
+		race_tags = ['uncommon','beast'],
 		bodyparts = {
 			skin_coverage = ['fur_brown','fur_striped'],
 			tail = ['tanuki'],
@@ -1333,6 +1361,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 2, fish = 2, grain = 1.5},
 		diet_hate = {vege = 80, meat = 5, fish = 5, grain = 40},
 		tags = ['beast'],
+		race_tags = ['common','halfbeast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			tail = ['cat'],
@@ -1361,6 +1390,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 4, fish = 1, grain = 1},
 		diet_hate = {vege = 50, meat = 5, fish = 15, grain = 20},
 		tags = ['beast'],
+		race_tags = ['uncommon','halfbeast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			tail = ['wolf'],
@@ -1389,6 +1419,7 @@ var racelist = {
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 70, meat = 5, fish = 15, grain = 35},
 		tags = ['beast'],
+		race_tags = ['uncommon','halfbeast'],
 		bodyparts = {
 			eye_shape = ['slit'],
 			tail = ['fox'],
@@ -1417,6 +1448,7 @@ var racelist = {
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
 		tags = ['beast'],
+		race_tags = ['uncommon','halfbeast'],
 		bodyparts = {
 			tail = ['bunny'],
 			ears = ['bunny_standing','bunny_drooping'],
@@ -1444,6 +1476,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = ['beast'],
+		race_tags = ['uncommon','halfbeast'],
 		bodyparts = {
 			tail = ['tanuki'],
 			ears = ['tanuki'],

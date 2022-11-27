@@ -139,7 +139,6 @@ var data = {
 					value = 'jean',
 					args = [
 						{code = 'obedience', operant = "-", value = 24},
-#						{code = 'authority', operant = "-", value = 50},
 					]
 				}]}, ],
 		options = [ {

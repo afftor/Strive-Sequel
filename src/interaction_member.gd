@@ -115,7 +115,7 @@ func setup_person(ch, no_loyal = false):
 	person_metrics = person.get_stat('metrics', true)
 	person_relations = person.get_stat('relations', true)
 	person_mods = person.get_stat('mods', true)
-	if !no_loyal: loyalty = ch.get_stat('loyal')
+	if !no_loyal: loyalty = ch.get_stat('loyalty')
 	submission = ch.get_stat('obedience')
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
@@ -263,7 +263,6 @@ func orgasm(custom_text = null):
 	var vaginatext = ''
 	var anustext = ''
 	orgasms += 1
-	person_metrics.orgasm += 1
 	if sceneref.participants.size() == 2 && person.has_profession("master"):
 		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
 			person.add_stat('loyalty', rand_range(1.4,5.6))
@@ -380,8 +379,8 @@ func orgasm(custom_text = null):
 					if scene.scene.giverpart == 'vagina':
 						for i in scene.givers:
 							if sceneref.impregnationcheck(i.person, person) == true:
-								globals.impregnation(i.person, person)
-								penistext += impregnation_text(i, true)
+								globals.impregnate(i.person, person)
+								penistext += impregnation_text(i, false)
 				penistext = sceneref.decoder(penistext, scene.givers, [self])
 		#orgasm without penis, secondary ejaculation
 		else:

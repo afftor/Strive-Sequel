@@ -176,10 +176,13 @@ var backgrounds = {
 	amelia_cali_3 = load("res://assets/images/fullscreen scenes/Amelia_Cali10.png"),
 	
 	lilia_sex_1 = load("res://assets/images/fullscreen scenes/LiliaCG001.png"),
-	lilia_sex_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
-	lilia_sex_3 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
-	lilia_sex_4 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
-
+	lilia_sex_1_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_1_3 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_1_4 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
+	lilia_sex_2_1 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
+	lilia_sex_2_2 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
+	
+	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 
@@ -256,6 +259,10 @@ var scenes = {
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
+	cali_bandit_win = load("res://assets/images/scenes/cali win.png"),
+	cali_mother_dead = load("res://assets/images/scenes/cali mother.png"),
+	cali_meeting = load("res://assets/images/scenes/conference.png"),
+	lilia_sick = load("res://assets/images/scenes/lilia_sick.png"),
 }
 
 var sprites = {
@@ -284,7 +291,7 @@ var sprites = {
 	daisy_maid_body = load("res://assets/images/sprites/daisy_maid_body.png"),
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	daisy_maid_nude_body = load("res://assets/images/sprites/daisy_maid_nude_body.png"),
-	tribal_elf = load("res://assets/images/sprites/Lira.png"),
+	lira = load("res://assets/images/sprites/Lira.png"),
 	mae = load("res://assets/images/sprites/mae.png"),
 	mae_body = load("res://assets/images/sprites/mae_body.png"),
 	lilia = load("res://assets/images/sprites/lilia.png"),
@@ -303,8 +310,13 @@ var sprites = {
 	white_stag = load("res://assets/images/sprites/white_stag.png"),
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
 	erlen = load("res://assets/images/sprites/Erlen.png"),
-	lira = load("res://assets/images/sprites/Lira.png"),
-	lira_body = load("res://assets/images/sprites/lira_body.png"),
+	i_body = load("res://assets/images/sprites/lira_body.png"),
+	bandits = load("res://assets/images/sprites/bandits.png"),
+	
+	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
+	cali_halloween_body = load("res://assets/images/sprites/cali_halloween_body.png"),
+	anastasia_halloween = load("res://assets/images/sprites/anastasia_halloween.png"),
+	anastasia_halloween_body = load("res://assets/images/sprites/anastasia_halloween_body.png"),
 	
 	}
 
@@ -317,6 +329,7 @@ var dynamic_backgrounds = {
 var portraits = {
 	daisy = 'res://assets/images/portraits/daisy_prt.png',
 	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
+	daisy_maid = 'res://assets/images/portraits/daisy_maid_portrait.png',
 	anastasia = "res://assets/images/portraits/anastasia_prt.png",
 	aire = "res://assets/images/portraits/aire_prt.png",
 	kurdan = "res://assets/images/portraits/kurdan_prt.png",
@@ -329,6 +342,8 @@ var portraits = {
 	cali = "res://assets/images/portraits/cali_prt.png",
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
+	cali_halloween = "res://assets/images/portraits/cali_halloween_prt.png",
+	anastasia_halloween = "res://assets/images/portraits/anastasia_halloween_prt.png",
 }
 
 var gui = {
@@ -620,6 +635,7 @@ var upgrade_icons = {
 	rooms = load("res://assets/images/gui/upgrades/rooms.png"),
 	rooms_lux = load("res://assets/images/gui/upgrades/rooms_lux.png"),
 	woodcutting = load("res://assets/images/gui/upgrades/woodcutting.png"),
+	academy = load("res://assets/images/gui/upgrades/academy.png")
 
 
 

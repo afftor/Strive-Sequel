@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -57,10 +57,16 @@
 [ext_resource path="res://gui_modules/Animations/Label2_victory.tscn" type="PackedScene" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=56]
 [ext_resource path="res://gui_modules/Animations/button_victory_collect.tscn" type="PackedScene" id=57]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/border_panel_icon_battle_hero.png" type="Texture" id=58]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/line_blue.png" type="Texture" id=59]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=60]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=61]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_victory.png" type="Texture" id=62]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/battle_hp.png" type="Texture" id=63]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_active.png" type="Texture" id=64]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_hover.png" type="Texture" id=65]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_unactive.png" type="Texture" id=66]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero.png" type="Texture" id=67]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -746,17 +752,18 @@ texture = ExtResource( 38 )
 
 [node name="Panel3" type="TextureRect" parent="."]
 margin_left = 709.0
-margin_top = 100.0
+margin_top = 140.0
 margin_right = 1211.0
-margin_bottom = 198.0
+margin_bottom = 238.0
 texture = ExtResource( 37 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel3"]
+margin_top = -1.33484
 margin_right = 503.0
-margin_bottom = 102.0
+margin_bottom = 100.665
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Char Name"
@@ -770,9 +777,9 @@ __meta__ = {
 
 [node name="ItemPanel" type="TextureRect" parent="."]
 margin_left = 738.0
-margin_top = 257.0
+margin_top = 297.0
 margin_right = 1182.0
-margin_bottom = 508.0
+margin_bottom = 548.0
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -973,9 +980,50 @@ text = "1"
 [node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
 visible = false
 margin_left = 613.0
-margin_top = 80.0
+margin_top = 136.0
 margin_right = 1307.0
-margin_bottom = 584.0
+margin_bottom = 640.0
+
+[node name="Panel4" type="TextureRect" parent="."]
+margin_left = 597.0
+margin_top = 45.0
+margin_right = 1319.0
+margin_bottom = 125.0
+texture = ExtResource( 58 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 10
+
+[node name="Button" type="TextureButton" parent="Panel4/VBoxContainer"]
+visible = false
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 64 )
+texture_hover = ExtResource( 65 )
+texture_disabled = ExtResource( 66 )
+
+[node name="icon" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 67 )
+expand = true
+stretch_mode = 6
+
+[node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
+margin_left = 5.29205
+margin_top = 48.6518
+margin_right = 53.2921
+margin_bottom = 53.6518
+value = 50.0
+texture_progress = ExtResource( 63 )
 
 [node name="Menu" type="TextureRect" parent="."]
 margin_left = 31.0

@@ -80,6 +80,7 @@ func _ready():
 	if test_mode:
 		test_mode()
 		mansion_state_set("default")
+	add_season_events()
 	var is_new_game = false
 #	globals.connect('slave_arrived', $NavigationModule, "build_accessible_locations")
 #	globals.connect('slave_departed', $NavigationModule, "build_accessible_locations")
@@ -114,9 +115,9 @@ func _ready():
 		mansion_state_set("default")
 	
 	input_handler.CurrentScreen = 'mansion'
-	yield(get_tree(),'idle_frame')
 	gui_controller.mansion = self
 	gui_controller.current_screen = self
+	yield(get_tree(),'idle_frame')
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
 	gui_controller.clock.show()
 	$MenuButton.connect("pressed", self, "show_menu")
@@ -132,8 +133,15 @@ func _ready():
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
-func test():
-	pass
+
+
+func add_season_events():
+	if test_mode == true:
+		return
+	var date = OS.get_date().day + OS.get_date().month * 30
+	for i in scenedata.season_events_range.values():
+		if !ResourceScripts.game_progress.seen_events.has(i.event) && date >= i.start[0] + i.start[1]*30 && date <= i.end[0] + i.end[1]*30:
+			globals.common_effects([{code = 'add_timed_event', value = i.event, args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -519,8 +527,9 @@ func test_mode():
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
+		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('BeastkinCat', 'female', 'random')
+		character.create('BeastkinCat', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -606,7 +615,7 @@ func test_mode():
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('BeastkinWolf', 'female', 'random')
+		character.create('BeastkinWolf', 'futa', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		# character.assign_to_quest_and_make_unavalible()
@@ -636,8 +645,8 @@ func test_mode():
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
 		character.set_stat('consent', 100)
-		globals.impregnate(ResourceScripts.game_party.get_master(), character)
-		character.get_stat('pregnancy', true).duration = 2
+		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
+		#character.get_stat('pregnancy', true).duration = 2
 		var text = ''
 #		for i in races.tasklist.values():
 #			for k in i.production.values():
@@ -699,7 +708,7 @@ func test_mode():
 #		character.affect_char({type = 'set_availability', value = false})
 		
 		#common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-
+		variables.no_obedience_drain = true
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Daisy'},
@@ -709,10 +718,21 @@ func test_mode():
 					args = [
 						{code = 'loyalty', value = 150, operant = "+"},
 						{code = 'consent', value = 150, operant = "+"},
-						{code = 'sexuals_factor', value = 1, operant = "+"},
+						{code = 'price', value = 3000, operant = "+"},
+						{code = 'sexuals_factor', value = 2, operant = "+"},
+						{code = 'growth_factor', value = 2, operant = "+"},
 						{code = 'submission', operant = '+', value = 50},
-						{code = 'sex_skills_petting', operant = '+', value = 75},
-						{code = 'add_profession', profession = 'spouse'},
+						{code = 'sex_skills_oral', operant = "+", value = 100},
+						{code = 'sex_skills_petting', operant = "+", value = 100},
+						{code = 'sex_skills_pussy', operant = "+", value = 100},
+						{code = 'sex_skills_anal', operant = "+", value = 100},
+						{code = 'add_trait', trait = 'loyalty_sex_basic'},
+						{code = 'add_trait', trait = 'loyalty_sex_oral'},
+						{code = 'add_trait', trait = 'loyalty_sex_anal'},
+						{code = 'add_trait', trait = 'loyalty_sex_adv'},
+						{code = 'add_trait', trait = 'loyalty_sex_group'},
+						{code = 'add_profession', profession = 'sextoy'},
+						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
 				},
 				{code = 'make_story_character', value = 'Cali'},
@@ -720,7 +740,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
-				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Heleviel'},
 			]
 		)
 
@@ -829,12 +849,14 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
+		globals.common_effects([{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}])
 
 		
-		globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
-		ResourceScripts.game_progress.decisions.append("aire_is_saved")
+		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
+		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		input_handler.interactive_message('cali_act1_1', '', {})
+#		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('aliron_church_enter', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
@@ -846,10 +868,9 @@ func test_mode():
 		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
 
 
-		ResourceScripts.game_progress.completed_quests.append("princess_search")
+		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")
 
-#		globals.common_effects([{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
 #		globals.common_effects([{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])

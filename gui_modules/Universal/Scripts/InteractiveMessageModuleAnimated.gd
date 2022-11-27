@@ -36,8 +36,8 @@ func hide_dialogue(action = "hide"):
 func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
-	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
-		get_tree().get_root().get_node("ANIMLoot").raise()
+#	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
+#		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
@@ -57,6 +57,8 @@ func open(scene):
 	current_scene = scene
 	hold_selection = true
 	raise()
+	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
+		get_tree().get_root().get_node("ANIMLoot").raise()
 	if scene.has("common_effects"):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
@@ -73,7 +75,6 @@ func open(scene):
 #		print_debug("finished WAIT")
 		doing_transition = false
 #	print(self.visible)
-	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.hide()
@@ -81,6 +82,7 @@ func open(scene):
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
 	handle_loots(scene)
+	update_scene_characters()
 	generate_scene_text(scene)
 	set_enemy(scene)
 	handle_scene_options()
@@ -149,6 +151,12 @@ var stored_scene
 func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
+	if args.has("changed_window_type"): # transfering prev option on scene change
+		match gui_controller.dialogue_window_type:
+			1:
+				input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = argument
+			2:
+				 input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = argument
 	input_handler.interactive_message_follow(code, '', args)
 
 
@@ -201,6 +209,58 @@ func add_chest_options(scene):
 
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+
+
+func add_recruit_option(scene):
+	if input_handler.scene_characters.empty():
+		input_handler.scene_characters.push_back(input_handler.active_character)
+		input_handler.active_character = null
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	if state == 'random_combat':
+		scene.options.insert(1,{code = 'recruit_option_safe', reqs = [], text = "DIALOGUERECRUITFORCEATTEMPT"})
+	var char2 = input_handler.active_character
+	if char2 != null:
+		scene.options.insert(1,{code = 'recruit_option', reqs = [], text = "DIALOGUERECRUITATTEMPT"})
+
+
+func recruit_option_safe():
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	input_handler.interactive_message_follow("recruit_captured_enslave", "story_event", {})
+	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
+
+func recruit_option():
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	var char2 = input_handler.active_character
+	var val1 = char_to_recruit.get_stat('charm_factor')
+	var val2= char2.get_stat('charm')
+	if state == 'random_combat':
+		if val2 >= val1 * globals.rng.randf_range(10.0, 20.0):
+			input_handler.interactive_message_follow("recruit_captured_success", "story_event", {})
+		else:
+			input_handler.interactive_message_follow("recruit_captured_fail", "story_event", {})
+	else:
+		if val2 >= val1 * globals.rng.randf_range(5.0, 15.0):
+			input_handler.interactive_message_follow("recruit_meet_success", "story_event", {})
+		else:
+			input_handler.interactive_message_follow("recruit_meet_fail", "story_event", {})
+	
+	char2.add_stat('charm', globals.rng.randi_range(2, 5))
+	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
 
 
 func add_shrine_options(scene):
@@ -358,6 +418,7 @@ func close(args = {}):
 	ch2 = null
 	previous_dialogue_option = 0
 	if gui_controller.dialogue_window_type == 2:
+		previous_text = ""
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
 		gui_controller.dialogue_window_type = 1
 		var screen_duration = 1.0
@@ -373,6 +434,7 @@ func close(args = {}):
 			ResourceScripts.core_animations.FadeAnimation(self, transition_duration, screen_duration * 0.25)
 			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
 			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
+		$RichTextLabel.bbcode_text = ''
 	else:
 		ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -776,6 +838,8 @@ func handle_loots(scene):
 		add_chest_options(scene)
 	if scene.tags.has("shrine"):
 		add_shrine_options(scene)
+	if scene.tags.has("recruit"):
+		add_recruit_option(scene)
 	if scene.tags.has("free_loot"):
 		add_loot_options(scene)
 

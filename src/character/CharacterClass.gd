@@ -255,6 +255,9 @@ func generate_simple_fighter(tempname):
 		#need check for hard difficulty
 		fill_ai(data.ai)
 	ai.app_obj = self
+	if data.has('tags') and data.tags.has('boss'):
+		globals.char_roll_data.uniq = true
+		
 
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
@@ -583,6 +586,11 @@ func is_master():
 func is_spouse():
 	return id == ResourceScripts.game_progress.spouse
 
+
+func is_unique():
+	return get_stat('unique') != null
+
+
 func add_rare_trait():
 	if ResourceScripts.game_globals.date < 2: return
 	tags.push_back('rare')
@@ -646,6 +654,10 @@ func get_quest_time_remains():
 
 func quest_day_tick():
 	xp_module.quest_day_tick()
+
+func get_prof_number():
+	return xp_module.get_prof_number()
+
 
 func use_mansion_item(item):
 	skills.use_mansion_item(item)
@@ -850,6 +862,8 @@ func affect_char(i):
 			input_handler.rebuild_slave_list()
 		'quest':
 			assign_to_quest_and_make_unavalible({id = i.id, name = i.name}, i.duration)
+		'slavetype':
+			set_slave_category(i.value)
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -971,7 +985,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'unique':
 			return get_stat('unique') == i.value
 		'is_unique':
-			check = (get_stat('unique') == null) != i.value
+			check = is_unique() == i.value
 		'body_image':
 			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
 		'in_combat_party':

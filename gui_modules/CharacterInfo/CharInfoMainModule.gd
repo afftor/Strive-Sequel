@@ -113,6 +113,8 @@ func update():
 	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()
 
+
+
 func set_state(state):
 	if state == char_module_state:
 		gui_controller.windows_opened.clear()
@@ -122,7 +124,6 @@ func set_state(state):
 	match_state()
 
 func match_state():
-	update()
 	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible_in_tree() #currently this is not required at all - due to similar effect of both closebuttons
 	for b in SummaryModule.get_node("GridContainer").get_children():
 		b.set_pressed(false)
@@ -148,7 +149,7 @@ func match_state():
 			ClassesModule.get_node('stats_upgrade').hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
-			ClassesModule.open(active_person)
+#			ClassesModule.open(active_person)
 			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
@@ -189,6 +190,7 @@ func match_state():
 			SlaveSiblingsModule.update()
 			#BodyModule.hide()
 	
+	update()
 
 
 
@@ -210,9 +212,9 @@ func open_gear():
 
 
 var sources = {
-	brothel_customer = "a customer of a brothel",
-	guild_trainer = "a guild trainer",
-	
+	brothel_customer = tr("METRICS_SOURCE_BROTHEL_CUSTOMER"),
+	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
+	william = tr("METRICS_SOURCE_WILLIAM"),
 }
 
 func displaymetrics():
@@ -223,25 +225,27 @@ func displaymetrics():
 	var text = ""
 	var person = active_person
 	if person.is_players_character:
-		text += "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days." % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
-	
-	text += "\n\n[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s)." % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+		text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+	if person.is_master() == true:
+		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+	else:
+		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
 	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
 	var no_sex = false
 	if partner_number == 0:
-		text += "[He] didn't appear to engage into sexual activity with anyone so far... "
+		text += tr("METRICS_PARTNERS_NONE")
 		no_sex = true
 	elif partner_number == 1:
-		text += "[He] only had a {color=yellow|single partner} for all this time. "
+		text += tr("METRICS_PARTNERS_ONE")
 	else:
-		text += "Overall [he] had sex with {color=yellow|%d} partners during all this time. " % partner_number
+		text += tr("METRICS_PARTNERS") % partner_number
 	
 	if no_sex == false:
 		text += "\n"
 		if person.get_stat('has_womb') == true:
-			text += "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s)" % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
+			text += tr("METRICS_IMPREGS") % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
 		if person.get_stat('penis_size') != '':
-			text += "[He] had impregnated {color=yellow|%d} time(s). " % [person.get_stat('metrics_impregnation')]
+			text += tr("METRICS_PEGNANCIES") % [person.get_stat('metrics_impregnation')]
 	
 	
 		
@@ -251,27 +255,27 @@ func displaymetrics():
 				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost').source]
 				
 				if source.id == ResourceScripts.game_party.get_master().id:
-					text += "\n[He] lost [his] vaginal virginity to {color=yellow|you}."
+					text += "\n" + tr("METRICS_VIRGINITY_YOU")
 				else:
-					text += "\n[He] lost [his] vaginal virginity to {color=yellow|}" + source.name + "}."
+					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
 			else:
-				text += "\n[He] lost [his] vaginal virginity to {color=yellow|" + sources[person.get_stat('vaginal_virgin_lost').source] + "}."
+				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost').source]
 		
 		if person.get_stat('anal_virgin_lost').source != null:
 			if person.get_stat('anal_virgin_lost').source.begins_with('hid'):
 				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost').source]
 				
 				if source.id == ResourceScripts.game_party.get_master().id:
-					text += "\n[His] first experience with anal penetration was with {color=yellow|you}."
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_YOU")
 				else:
-					text += "\n[His] first experience with anal penetration was with  {color=yellow|" + source.name + "}."
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
 			else:
-				text += "\n[His] first experience with anal penetration was with  {color=yellow|" + sources[person.get_stat('anal_virgin_lost').source] + "}."
+				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost').source] 
 	
 	
-	text += '\n\n[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ' % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
+	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
 	
-	text += "\n\n[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies." % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
+	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
 	
 	text = person.translate(globals.TextEncoder(text))
 	

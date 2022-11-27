@@ -1,7 +1,6 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {1 : 'rat', 4 : 'rat',5 : 'rat'}},
 }
 
 var encounters = {
@@ -166,7 +165,7 @@ var enemygroups = {
 	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
-	hector_boss_fight = {reqs = [], units = {guardian_golem = [2,2], hector_boss = [1,1], bandit_assassin = [2,2]}}, #cali boss fight !!! copied from above, needs fixing
+	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -199,7 +198,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	bandit_archer = {
 		code = 'bandit_archer',
@@ -226,7 +225,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	bandit_assassin = {
 		code = 'bandit_assassin',
@@ -253,7 +252,7 @@ var enemies = {
 		gear = [],
 		ai =  [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 25,
+		xpreward = 15,
 	},
 	bandit_boss = {
 		code = 'bandit_boss',
@@ -282,7 +281,7 @@ var enemies = {
 		ai = [['basic', 85], ['aoe', 15]],
 		ai_hard = [['basic', 85], ['aoe', 50]],
 		ai_position = ['melee'],
-		xpreward = 50,
+		xpreward = 40,
 	},
 	rebel_recruit = {
 		code = 'rebel_recruit',
@@ -311,7 +310,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	rebel_knight = {
 		code = 'rebel_knight',
@@ -340,7 +339,7 @@ var enemies = {
 		ai = [['basic', 75], ['aoe', 25]],
 		ai_hard = [['basic', 50], ['aoe', 50]],
 		ai_position = ['melee','fire_cleave'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	rebel_mage = {
 		code = 'rebel_mage',
@@ -367,7 +366,7 @@ var enemies = {
 		gear = [],
 		ai = [['aoe', 33], ['ads', 66]],
 		ai_position = ['ranged'],
-		xpreward = 25,
+		xpreward = 15,
 	},
 	rebel_healer = {
 		code = 'rebel_healer',
@@ -394,7 +393,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 25], ['heal', 75]],
 		ai_position = ['ranged'],
-		xpreward = 25,
+		xpreward = 15,
 	},
 
 	trained_dog = {
@@ -422,7 +421,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 15,
+		xpreward = 10,
 	},
 	trained_bear = {
 		code = 'trained_bear',
@@ -449,7 +448,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 25,
+		xpreward = 15,
 	},
 	trained_raptor = {
 		code = 'trained_raptor',
@@ -476,7 +475,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 35,
+		xpreward = 20,
 	},
 	guardian_golem = {
 		code = 'guardian_golem',
@@ -504,7 +503,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 40,
+		xpreward = 25,
 	},
 	ballista = {
 		code = 'ballista',
@@ -532,7 +531,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['ranged'],
-		xpreward = 30,
+		xpreward = 20,
 	},
 	bandit_mage = {
 		code = 'bandit_mage',
@@ -559,7 +558,7 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 45], ['aoe', 45], ['support', 10]], #add healing on self when hp < 50 with 75% chance
 		ai_position = ['ranged'],
-		xpreward = 30,
+		xpreward = 15,
 	},
 	cave_goblin_melee = {
 		code = 'cave_goblin_melee',
@@ -586,7 +585,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 15,
+		xpreward = 7,
 	},
 	cave_goblin_archer = {
 		code = 'cave_goblin_archer',
@@ -613,7 +612,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['ranged'],
-		xpreward = 15,
+		xpreward = 10,
 	},
 	cave_goblin_mage = {
 		code = 'cave_goblin_mage',
@@ -640,7 +639,7 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 100]],
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	cave_goblin_boss = {
 		code = 'cave_goblin_boss',
@@ -667,7 +666,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 25,
+		xpreward = 20,
 	},
 	ogre_melee = {
 		code = 'ogre_melee',
@@ -695,7 +694,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 50,
+		xpreward = 20,
 	},
 	ogre_mage = {
 		code = 'ogre_mage',
@@ -723,7 +722,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 55,
+		xpreward = 25,
 	},
 	troll = {
 		code = 'troll',
@@ -750,7 +749,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 80,
+		xpreward = 50,
 	},
 	skeleton_melee = {
 		code = 'skeleton_melee',
@@ -778,7 +777,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	skeleton_archer = {
 		code = 'skeleton_archer',
@@ -806,7 +805,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	zombie = {
 		code = 'zombie',
@@ -834,7 +833,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	undead_lich = {
 		code = 'undead_lich',
@@ -863,7 +862,7 @@ var enemies = {
 		ai = [['aoe', 33], ['ads', 66]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['ranged'],
-		xpreward = 50,
+		xpreward = 35,
 	},
 	lich_quest = {
 		code = 'lich_quest',
@@ -892,7 +891,7 @@ var enemies = {
 		ai = [['aoe', 33], ['ads', 66]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['ranged'],
-		xpreward = 50,
+		xpreward = 35,
 	},
 	wolf = {
 		code = 'wolf',
@@ -919,7 +918,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 5,
 	},
 	spider = {
 		code = 'spider',
@@ -946,7 +945,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
-		xpreward = 15,
+		xpreward = 7,
 	},
 	rat = {
 		code = 'rat',
@@ -964,7 +963,7 @@ var enemies = {
 		resists = {fire = -50, mind = -25},
 		race = 'beast',
 		loot = 'rat_loot',
-		icon = "res://assets/images/enemies/RatIcon.png",
+		icon = "res://assets/images/enemies/enemy_rat.png",
 		body = null,
 		skills = [],
 		traits = [],
@@ -973,7 +972,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 5,
 	},
 	gryphon = {
 		code = 'gryphon',
@@ -1001,7 +1000,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads',50]],
 		ai_position = ['melee'],
-		xpreward = 100,
+		xpreward = 50,
 	},
 	elder_gryphon_boss = {
 		code = 'elder_gryphon_boss',
@@ -1029,7 +1028,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads',50]],
 		ai_position = ['melee'],
-		xpreward = 100,
+		xpreward = 75,
 	},
 
 	mimic = {
@@ -1058,7 +1057,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 100,
+		xpreward = 50,
 	},
 
 
@@ -1087,7 +1086,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['aoe', 50]],
 		ai_position = ['melee'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 	rock_thrower = {
 		code = 'rock_thrower',
@@ -1115,7 +1114,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 	maneater_plant = {
 		code = 'maneater_plant',
@@ -1142,7 +1141,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 20],['ads',40],['aoe',40]],
 		ai_position = ['any'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 
 	giant_ant = {
@@ -1170,7 +1169,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['any'],
-		xpreward = 20,
+		xpreward = 10,
 	},
 	wild_raptor =  {
 		code = 'wild_raptor',
@@ -1197,7 +1196,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['any'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 	centipede = {
 		code = 'centipede',
@@ -1252,7 +1251,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 30],['ads',70]],
 		ai_position = ['ranged'],
-		xpreward = 145,
+		xpreward = 100,
 	},
 	great_viper = {
 		code = 'great_viper',
@@ -1280,7 +1279,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['any'],
-		xpreward = 140,
+		xpreward = 100,
 	},
 	anthropoid = {
 		code = 'anthropoid',
@@ -1308,7 +1307,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100]],
 		ai_position = ['any'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 	ifrit = {
 		code = 'ifrit',
@@ -1336,7 +1335,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 30],['ads',70]],
 		ai_position = ['any'],
-		xpreward = 20,
+		xpreward = 15,
 	},
 	magma_beast = {
 		code = 'magma_beast',
@@ -1364,7 +1363,7 @@ var enemies = {
 		gear = [],
 		ai = [['aoe', 100]],
 		ai_position = ['ranged'],
-		xpreward = 150,
+		xpreward = 100,
 	},
 	erebus_stone = {
 		code = 'erebus_stone',
@@ -1392,7 +1391,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 25],['ads', 75]],
 		ai_position = ['ranged'],
-		xpreward = 80,
+		xpreward = 50,
 	},
 
 	#quest enemies
@@ -1480,7 +1479,7 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
 		ai_position = ['ranged'],
-		xpreward = 100,
+		xpreward = 50,
 	},
 	kurdan = {
 		code = 'kurdan',
@@ -1508,7 +1507,7 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['ranged'],
-		xpreward = 100,
+		xpreward = 25,
 	},
 	
 	leon = {
@@ -1686,7 +1685,7 @@ var enemies = {
 		code = 'hector_boss',
 		name = '',
 		descript = '',
-		hpmax = 300,
+		hpmax = 400,
 		armor = 50,
 		mdef = 65,
 		hitrate = 110,

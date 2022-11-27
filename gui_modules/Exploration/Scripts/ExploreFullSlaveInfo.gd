@@ -53,6 +53,10 @@ func show_summary(person, from_dialogue = false):
 			$Price.text = str(round(person.calculate_price()))
 			$ExploreSlaveInfoModule/Panel/obedlabel.visible = false
 		update_purchase_btn()
+	else:
+		$PurchaseButton.visible = false
+		$Price.visible = false
+		$TextureRect.visible = false
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	globals.build_attrs_for_char($ExploreSlaveSummaryModule, person)

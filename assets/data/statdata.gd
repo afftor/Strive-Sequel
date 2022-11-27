@@ -492,6 +492,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_collect = {
 		code = 'mod_collect',

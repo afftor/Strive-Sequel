@@ -105,7 +105,7 @@ var pregen_characters = {
 		charm_factor = 2,
 		sexuals_factor = 2,
 		magic_factor = 3,
-		growth_factor = 4,
+		growth_factor = 3,
 		tame_factor = 3,
 		timid_factor = 4,
 		food_consumption = 2,
@@ -150,7 +150,7 @@ var pregen_characters = {
 		charm_factor = 5,
 		sexuals_factor = 4,
 		magic_factor = 3,
-		growth_factor = 5,
+		growth_factor = 4,
 		tame_factor = 4,
 		timid_factor = 3,
 		food_consumption = 2,
@@ -194,7 +194,7 @@ var pregen_characters = {
 		charm_factor = 3,
 		sexuals_factor = 4,
 		magic_factor = 3,
-		growth_factor = 3,
+		growth_factor = 2,
 		tame_factor = 5,
 		timid_factor = 5,
 		food_consumption = 2,
@@ -239,7 +239,7 @@ var pregen_characters = {
 		charm_factor = 4,
 		sexuals_factor = 3,
 		magic_factor = 4,
-		growth_factor = 5,
+		growth_factor = 4,
 		tame_factor = 5,
 		timid_factor = 3,
 		food_consumption = 1,
@@ -285,7 +285,7 @@ var pregen_characters = {
 		charm_factor = 4,
 		sexuals_factor = 4,
 		magic_factor = 5,
-		growth_factor = 5,
+		growth_factor = 4,
 		tame_factor = 4,
 		timid_factor = 5,
 		food_consumption = 3,
@@ -331,7 +331,7 @@ var pregen_characters = {
 		charm_factor = 4,
 		sexuals_factor = 5,
 		magic_factor = 4,
-		growth_factor = 4,
+		growth_factor = 2,
 		tame_factor = 4,
 		timid_factor = 3,
 		food_consumption = 2,
@@ -424,7 +424,7 @@ var pregen_characters = {
 		charm_factor = 2,
 		sexuals_factor = 3,
 		magic_factor = 3,
-		growth_factor = 5,
+		growth_factor = 3,
 		tame_factor = 4,
 		timid_factor = 2,
 		food_consumption = 3,
@@ -469,7 +469,7 @@ var pregen_characters = {
 		charm_factor = 1,
 		sexuals_factor = 3,
 		magic_factor = 4,
-		growth_factor = 6,
+		growth_factor = 5,
 		tame_factor = 3,
 		timid_factor = 1,
 		food_consumption = 3,
@@ -514,7 +514,7 @@ var pregen_characters = {
 		charm_factor = 3,
 		sexuals_factor = 5,
 		magic_factor = 2,
-		growth_factor = 5,
+		growth_factor = 4,
 		tame_factor = 4,
 		timid_factor = 3,
 		food_consumption = 2,
@@ -605,7 +605,7 @@ var pregen_characters = {
 		charm_factor = 4,
 		sexuals_factor = 3,
 		magic_factor = 4,
-		growth_factor = 4,
+		growth_factor = 3,
 		tame_factor = 4,
 		timid_factor = 5,
 		food_consumption = 2,
@@ -630,5 +630,156 @@ var pregen_characters = {
 		traits = ['quick','whimp'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
+	
+}
+
+var unique_sprites = {
+	daisy = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "daisy_default_happy_body", 
+			face_path = "daisy",
+			unlock_reqs = []
+			},
+		maid = {
+			name = "Maid",
+			descript = "",
+			path = "daisy_maid_body", 
+			face_path = "daisy_maid",
+			unlock_reqs = [{code = 'complete_quest', value = 'daisy_clothes'}]
+			},
+		maid_lewd = {
+			name = "Lewd Maid",
+			descript = "",
+			path = "daisy_maid_nude_body", 
+			face_path = "daisy_maid",
+			unlock_reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true}]
+			},
+	},
+	cali = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "cali_body", 
+			face_path = "cali",
+			unlock_reqs = []
+			},
+		halloween = {
+			name = "Halloween",
+			descript = "",
+			path = "cali_halloween_body", 
+			face_path = "cali_halloween",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+			},
+	},
+	aire = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "aire_body", 
+			face_path = "aire",
+			unlock_reqs = []
+			},
+	},
+	anastasia = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "anastasia_body", 
+			face_path = "anastasia",
+			unlock_reqs = []
+			},
+		halloween = {
+			name = "Halloween",
+			descript = "",
+			path = "anastasia_halloween_body", 
+			face_path = "anastasia_halloween",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
+			},
+	},
+	zephyra = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "zephyra_body", 
+			face_path = "zephyra",
+			unlock_reqs = []
+			},
+	},
+	mae = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "mae_body", 
+			face_path = "mae",
+			unlock_reqs = []
+			},
+	},
+	lilia = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lilia_body", 
+			face_path = "lilia",
+			unlock_reqs = []
+			},
+	},
+	lilith = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lilith_body", 
+			face_path = "lilith",
+			unlock_reqs = []
+			},
+	},
+	hara = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "hara_body", 
+			face_path = "hara",
+			unlock_reqs = []
+			},
+	},
+	jean = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "jean_body", 
+			face_path = "jean",
+			unlock_reqs = []
+			},
+	},
+	heleviel = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "heleviel_body", 
+			face_path = "heleviel",
+			unlock_reqs = []
+			},
+	},
+	lira = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "lira_body", 
+			face_path = "lira",
+			unlock_reqs = []
+			},
+	},
+	kurdan = {
+		default = {
+			name = "Default",
+			descript = "",
+			path = "kurdan_body", 
+			face_path = "kurdan",
+			unlock_reqs = []
+			},
+	},
+	
+	
 	
 }

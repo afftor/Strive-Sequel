@@ -259,24 +259,23 @@ var data = {
 			
 		],
 		options = [
-			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
-			{type = 'active_character_checks', value = [
-				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
-				]}], dialogue_argument = 1},
-			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
-			{type = 'active_character_checks', value = [
-				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
-				]}], dialogue_argument = 2},
+#			{code = 'daisy_dialogue_1_1', text = 'DAISY_EXTRA_OPTION_1_1',reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
+#			{type = 'active_character_checks', value = [
+#				{code = 'body_image', operant = 'eq', value = "daisy_maid_body"},
+#				]}], dialogue_argument = 1},
+#			{code = 'daisy_dialogue_1_2', text = "DAISY_EXTRA_OPTION_1_2", reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true},
+#			{type = 'active_character_checks', value = [
+#				{code = 'body_image', operant = 'eq', value = "daisy_maid_nude_body"},
+#				]}], dialogue_argument = 2},
 			{ # Serve
-			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "decision", value = "DaisyDressNormal", check = true},
-			{type = "decision", value = "DaisyDressLewd", check = true, orflag = true}], dialogue_argument = 3, repeat_next_day = true
+			code = 'daisy_serve_start', text = "DAISY_SERVE_OPTION_START", reqs = [{type = "quest_completed", name = "daisy_training", check = true}], dialogue_argument = 3, repeat_next_day = true
 		}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4},
 		],
 	},
 	
 	daisy_dialogue_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_1_NO", reqs = [{type = 'active_character_checks', value = [
 				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
@@ -292,7 +291,7 @@ var data = {
 	},
 	
 	daisy_dialogue_1_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_2_NO", reqs = [{type = 'active_character_checks', value = [
 				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
@@ -308,7 +307,7 @@ var data = {
 	},
 	
 	daisy_serve_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], unique_character = 'daisy',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_SERVE_START_1", reqs = [{type = 'active_character_checks', value = [
 				{code = 'has_profession', profession = 'sextoy', check = true},
@@ -321,15 +320,14 @@ var data = {
 		],
 		options = [
 			{
-			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
-			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
+			code = 'daisy_serve_1_1', text = "DAISY_SERVE_OPTION_1_1", reqs = [
+				{type = "quest_completed", name = "daisy_training", check = true}
+				], 
 			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
-			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [{type = 'active_character_checks', 
-			value = [ {code = 'has_profession', profession = 'sextoy', check = true} ]},
-			{code = "quest_completed", name = "daisy_lost", check = true, orflag = true}], 
+			code = 'daisy_serve_2_1', text = "DAISY_SERVE_OPTION_1_2", reqs = [
+				{type = "quest_completed", name = "daisy_lost", check = true}], 
 			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
 		}, 
 			{
@@ -339,25 +337,61 @@ var data = {
 	},
 	
 	daisy_serve_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
-		custom_background = "daisy_bj5",
+		image = null, tags = ['dialogue_scene','active_character_translate'], reqs = [],
+		custom_background = "daisy_bj4",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
-			{text = "DAISY_SERVE_1_1", reqs = []},
+			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1", reqs = []},
 		], 
 		options = [ {
 			code = 'daisy_serve_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ],
 	},
-	
 	daisy_serve_1_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "daisy_bj4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_1_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	daisy_serve_1_3 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "daisy_bj4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_1_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	daisy_serve_1_4 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "daisy_bj4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4", reqs = []},
+		], 
+		options = [ {
+			code = 'daisy_serve_1_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	
+	daisy_serve_1_5 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
 		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
-			{text = "DAISY_SERVE_1_2", reqs = []},
+			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5", reqs = []},
 		], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -365,12 +399,12 @@ var data = {
 	},
 	
 	daisy_serve_2_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
 		custom_background = "daisy_bent1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
-			{text = "DAISY_SERVE_2_1", reqs = []},
+			{text = "DAISY_CONSENSUAL_3_SERVE", reqs = []},
 		], 
 		options = [ {
 			code = 'daisy_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -378,12 +412,12 @@ var data = {
 	},
 	
 	daisy_serve_2_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
 		custom_background = "daisy_bent2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
-			{text = "DAISY_SERVE_2_2", reqs = []},
+			{text = "DAISY_CONSENSUAL_4", reqs = []},
 		], 
 		options = [ {
 			code = 'daisy_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -391,12 +425,12 @@ var data = {
 	},
 	
 	daisy_serve_2_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
 		custom_background = "daisy_bent3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
-			{text = "DAISY_SERVE_2_3", reqs = []},
+			{text = "DAISY_CONSENSUAL_5", reqs = []},
 		], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -404,7 +438,7 @@ var data = {
 	},
 	
 	aire_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'aire',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'aire',
 		text = [
 			{
 				text = "DIALOGUEAIREINITIATELP", 
@@ -449,7 +483,7 @@ var data = {
 		],
 	},
 	cali_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'cali',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'cali',
 		text = [
 			{
 				text = "DIALOGUECALIINITIATELP", 
@@ -503,12 +537,148 @@ var data = {
 			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1, type = 'next_dialogue', },
 			{code = 'cali_act3_blow_1', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage5'}], dialogue_argument = 1, type = 'next_dialogue', },
 			{code = 'cali_act5_pet_3', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_pet_quest', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue', },
-			{code = 'close', text = 'DIALOGUELEAVE',reqs = [], dialogue_argument = 1,},
+			{code = 'cali_serve_start', text = 'DAISY_SERVE_OPTION_START',reqs = [], dialogue_argument = 1}, 
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
 		],
 	},
 	
+	cali_serve_start = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'cali',
+		text = [
+			{text = "CALI_SERVE_START_1", reqs = [{type = 'active_character_checks', value = [
+				{code = 'has_profession', profession = 'sextoy', check = true},
+				]}],
+			},
+			{text = "CALI_SERVE_START_2", reqs = [{type = 'active_character_checks', value = [
+				{code = 'has_profession', profession = 'sextoy', check = false},
+				]}],
+			},
+		],
+		options = [
+			{
+			code = 'cali_serve_1_1', text = "CALI_SERVE_OPTION_1_1", reqs = [
+				{type = "quest_completed", name = "cali_heirloom_quest", check = true}
+				], 
+			dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, 
+			{
+			code = 'cali_serve_2_1', text = "CALI_SERVE_OPTION_1_2", reqs = [
+				{type = "quest_completed", name = "cali_heirloom_quest", check = true}], 
+			dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 2
+		}, 
+			{
+			code = 'cali_dialogue_start', text = "CALI_SERVE_OPTION_1_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
+		}, 
+		],
+	},
+	
+	
+	
+	cali_serve_1_1 = {
+		image = null, tags = ['dialogue_scene','active_character_translate'], reqs = [],
+		custom_background = "cali_bj_happy_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_SEX_8", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	cali_serve_1_2 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_bj_happy_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_SEX_9", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_1_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	cali_serve_1_3 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_bj_happy_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_SEX_10", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_1_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	cali_serve_1_4 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_bj_happy_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_SEX_11", reqs = []},
+			{text = "CALI_SEX_12", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_1_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	cali_serve_1_5 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_bj_happy_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_SEX_13", reqs = []},
+		], 
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	cali_serve_2_1 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_riding_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_GRAT_SEX_1", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	cali_serve_2_2 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_riding_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_GRAT_SEX_2", reqs = []},
+		], 
+		options = [ {
+			code = 'cali_serve_2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	cali_serve_2_3 = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [],
+		custom_background = "cali_riding_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{text = "CALI_GRAT_SEX_3", reqs = []},
+		], 
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ],
+	},
+	
+	
+	
 	lilia_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'lilia',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'lilia',
 		text = [
 			{
 				text = "DIALOGUELILIAINITIATEL", 

@@ -140,26 +140,21 @@ func process_chardata(data):
 			unlock_class(prof)
 
 
+func get_prof_number():
+	var tres = professions.size()
+	if professions.has("master") or professions.has('spouse'): tres -= 1
+	return tres
+
+
 func get_next_class_exp():
-#	var professions = parent.get_ref().get_stat('professions')
 	var currentclassnumber = professions.size()
-	var growth_factor = parent.get_ref().get_stat('growth_factor')
 	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
-	var exparray
+	var exparray = variables.hard_level_reqs
 	var value = 0
-	var easy_cap = growth_factor * variables.class_cap_per_growth + variables.class_cap_basic
-	if currentclassnumber < easy_cap:
-		exparray = variables.soft_level_reqs
-		if exparray.size()-1 < currentclassnumber:
-			value = exparray[exparray.size()-1]
-		else:
-			value = exparray[currentclassnumber]
+	if exparray.size()-1 < currentclassnumber:
+		value = exparray[exparray.size()-1]
 	else:
-		exparray = variables.hard_level_reqs
-		if exparray.size()-1 < currentclassnumber - easy_cap:
-			value = exparray[exparray.size()-1]
-		else:
-			value = exparray[currentclassnumber - easy_cap]
+		value = exparray[currentclassnumber]
 	return value
 
 func get_class_list(category, person):
@@ -308,11 +303,9 @@ func assign_to_task(taskcode, taskproduct):
 	var task_location = parent.get_ref().get_location()
 	var tmp = find_worktask(task_location, taskcode, taskproduct)
 	if tmp != null:
-		if task.has('upgrade_code') && task.has('workers_per_upgrade') && task.has('base_workers'):
-			var upgrade_level = ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
-			var max_workers_count = task.base_workers + task.workers_per_upgrade * upgrade_level
-			if tmp.workers.size() >= max_workers_count:
-				return
+		var max_workers_count = ResourceScripts.game_world.get_worker_count_for_task(tmp)
+		if max_workers_count >= 0 and max_workers_count <= tmp.workers.size():
+			return
 		work = taskcode
 		workproduct = taskproduct
 		save_prev_data()
@@ -474,8 +467,6 @@ func finish_learning():
 			else:
 				res_text += "\nNo traits acquired"
 		'slave_training':
-#			parent.get_ref().add_stat('authority', 100)
-#			res_text += "\n%s + 100" % statdata.statdata.authority.name
 			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
 			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
 			if randf() < 0.5:
@@ -557,7 +548,7 @@ func select_brothel_activity():
 			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
-				bonus_gold += parent.get_ref().calculate_price() * 0.02
+				bonus_gold += parent.get_ref().calculate_price() * 0.01
 			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
@@ -566,7 +557,7 @@ func select_brothel_activity():
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * max(1.5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 50%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
 			if no_training == true:
 				goldearned = goldearned - goldearned/3
 			goldearned = round(goldearned)
@@ -585,7 +576,7 @@ func select_brothel_activity():
 		var data = races.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
-		var goldearned = highest_value.value * max(1.4, (1 + 0.003 * parent.get_ref().calculate_price()))
+		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
 		goldearned = round(goldearned)
 		
@@ -593,7 +584,7 @@ func select_brothel_activity():
 		
 		ResourceScripts.game_res.money += goldearned
 	else:
-		work = ''
+		remove_from_task()
 		parent.get_ref().rest_tick()
 
 

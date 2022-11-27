@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -15,27 +15,25 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=13]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=14]
 [ext_resource path="res://gui_modules/Exploration/Scripts/stat_upgrade_panel.gd" type="Script" id=15]
-[ext_resource path="res://assets/Themes_v2/EXPLORATION/SlaveUpgradesPanel.tres" type="StyleBox" id=16]
+[ext_resource path="res://assets/images/gui/explore/Upgrade Character/panel_upgrade.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=21]
 
-[node name="CharactersPanel" type="Panel"]
+[node name="CharactersPanel" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
 margin_right = 800.0
 margin_bottom = 800.0
-custom_styles/panel = ExtResource( 16 )
+texture = ExtResource( 16 )
 script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.823529 )
+self_modulate = Color( 0, 0, 0, 0.784314 )
 show_behind_parent = true
-margin_right = 800.0
-margin_bottom = 800.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,10 +50,11 @@ __meta__ = {
 }
 
 [node name="StatInfo" type="Label" parent="StatsPanel"]
+margin_top = -1.7818
 margin_right = 379.0
-margin_bottom = 24.0
+margin_bottom = 33.2182
 theme = ExtResource( 13 )
-text = "Stat Info"
+text = "Improved Status"
 align = 1
 valign = 1
 __meta__ = {
@@ -63,9 +62,9 @@ __meta__ = {
 }
 
 [node name="StatInfoNameValue" type="Label" parent="StatsPanel"]
-margin_top = 421.0
-margin_right = 379.0
-margin_bottom = 445.0
+margin_top = 486.0
+margin_right = 406.0
+margin_bottom = 521.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Stat Name"
@@ -76,9 +75,9 @@ __meta__ = {
 }
 
 [node name="StatInfoCurrentValue" type="Label" parent="StatsPanel"]
-margin_top = 461.0
-margin_right = 379.0
-margin_bottom = 501.0
+margin_top = 526.0
+margin_right = 403.0
+margin_bottom = 566.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Current Value"
@@ -91,19 +90,23 @@ __meta__ = {
 [node name="StatInfoUpgradeValue" type="Label" parent="StatsPanel"]
 visible = false
 margin_left = 862.57
-margin_top = 217.0
+margin_top = 225.0
 margin_right = 921.57
-margin_bottom = 241.0
+margin_bottom = 249.0
 text = "Price"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ConfirmButton" type="Button" parent="StatsPanel"]
-margin_left = 78.8632
-margin_top = 630.0
-margin_right = 286.863
-margin_bottom = 694.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -98.5
+margin_top = -89.0
+margin_right = 98.5
+margin_bottom = -30.0
 theme = ExtResource( 12 )
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -124,9 +127,9 @@ __meta__ = {
 }
 
 [node name="StatsVBox" type="VBoxContainer" parent="StatsPanel"]
-margin_left = 43.3193
+margin_left = 30.0
 margin_top = 40.0
-margin_right = 343.319
+margin_right = 356.0
 margin_bottom = 91.0
 rect_min_size = Vector2( 300, 51 )
 __meta__ = {
@@ -135,7 +138,7 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="StatsPanel/StatsVBox"]
 visible = false
-margin_right = 300.0
+margin_right = 326.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 0, 51 )
 toggle_mode = true
@@ -204,9 +207,9 @@ __meta__ = {
 
 [node name="Gold" type="TextureRect" parent="StatsPanel"]
 margin_left = 113.0
-margin_top = 579.0
+margin_top = 566.0
 margin_right = 164.0
-margin_bottom = 630.0
+margin_bottom = 617.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
@@ -230,7 +233,20 @@ margin_top = 87.0
 margin_right = 407.0
 margin_bottom = 111.0
 theme = ExtResource( 13 )
-text = "ChooseCharcter"
+text = "Choose Receiver"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 829.0
+margin_top = 87.0
+margin_right = 1227.0
+margin_bottom = 122.0
+theme = ExtResource( 13 )
+text = "Choose Donor"
 align = 1
 valign = 1
 __meta__ = {
@@ -313,3 +329,79 @@ visible = false
 margin_right = 12.0
 margin_bottom = 614.0
 theme = ExtResource( 3 )
+
+[node name="CharList2" type="Control" parent="."]
+margin_left = 836.0
+margin_top = 152.0
+margin_right = 1217.0
+margin_bottom = 766.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CharList2"]
+margin_left = 25.0
+margin_top = -1.0
+margin_right = 325.0
+margin_bottom = 614.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactersVBox" type="VBoxContainer" parent="CharList2/ScrollContainer"]
+margin_right = 300.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 300, 51 )
+
+[node name="Button" type="TextureButton" parent="CharList2/ScrollContainer/CharactersVBox"]
+visible = false
+margin_right = 340.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 300, 51 )
+theme = ExtResource( 2 )
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 18 )
+
+[node name="CharacterName" type="Label" parent="CharList2/ScrollContainer/CharactersVBox/Button"]
+margin_left = 54.0
+margin_top = 6.0
+margin_right = 336.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Character Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="CharList2/ScrollContainer/CharactersVBox/Button"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="CharList2"]
+visible = false
+margin_right = 12.0
+margin_bottom = 614.0
+theme = ExtResource( 3 )
+
+[node name="Hint" type="TextureRect" parent="."]
+margin_left = 1146.1
+margin_top = 12.6992
+margin_right = 1210.1
+margin_bottom = 76.6992
+texture = ExtResource( 21 )

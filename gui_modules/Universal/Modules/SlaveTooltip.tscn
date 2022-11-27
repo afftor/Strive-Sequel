@@ -452,6 +452,7 @@ __meta__ = {
 }
 
 [node name="Panel" type="Control" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 200.0
 margin_top = 220.0

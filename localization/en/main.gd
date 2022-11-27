@@ -264,7 +264,20 @@ var TranslationDict = {
 	ITEMCROWNDESCRIPT = "An old crown of unknown origin",
 	ITEMBELL_COLLARDESCRIPT = "Despite its nature, this collar considered more of an object of fashion came from distant land.",
 	ITEMRIBBONDESCRIPT = "A bright red ribbon of unknown nature. ",
-
+	
+	
+	ITEMJACKET = "Jacket",
+	ITEMJACKETDESCRIPT = "A lightweight clothing which offers no protecting.",
+	ITEMENSLAVING_COLLAR = "Enslaving Collar",
+	ITEMENSLAVING_COLLARDESCRIPT = "Magical slave collar which slowly mends will of the wearer.",
+	ITEMEARRINGS = "Earrings", 
+	ITEMEARRINGSDESCRIPT = "A pair of fancy jewelry.", 
+	ITEMAIRE_BOW = "Aire's Bow",
+	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
+	ITEMWITCH_HAT = "Witch Hat",
+	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
+	
+	
 	#Items
 	ITEMAXE = "Axe",
 	ITEMPICKAXE = "Pickaxe",
@@ -746,7 +759,7 @@ var TranslationDict = {
 	TASKBUILDINGDESCRIPT = "Work on the current upgrade. Upgrade must be set in Upgrades menu. ",
 	TASKTRAVEL = "Travel",
 	TASKREST = "Rest",
-	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery.",
+	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery. Will not do any work while resting.",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",
@@ -785,9 +798,17 @@ var TranslationDict = {
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	
+	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
+	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
+	CAPTUREADDTOOLTIP = "Add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	
+	FACTOR_INCREASE_TOOLTIP = "By sacrificing unneeded characters you can boost factors of other characters as long as donor character's stat is higher than receiver's. Growth Factor only can be increased by 1 per donor. End price is defined by receiver's value.",
+	COMBAT_CHARACTER_CAPTURED = "Character",
 	BROTHELWAITRESS = "Waitress",
 	BROTHELWAITRESSDESCRIPT = "[name] will work as waitress and serve customers with food and drinks. One of the most innocent assignements out there. Scales with Charm",
+	BROTHELWAITRESSALT = "Waiter",
 	BROTHELHOSTESS = "Hostess",
+	BROTHELHOSTESSALT = "Host",
 	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. Scales with Wits",
 	BROTHELDANCER = "Dancer",
 	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
@@ -800,6 +821,8 @@ var TranslationDict = {
 	BROTHELORALDESCRIPT = "[name] will perform oral sex for clients.",
 	BROTHELPUSSY = "Vaginal",
 	BROTHELPUSSYDESCRIPT = "[name] will allow clients to use [his] vagina potentially leading to impregnation.",
+	BROTHELPENETRATION = "Penetration",
+	BROTHELPENETRATIONDESCRIPT = "[name] will satisfy clients with using [his] penis.",
 	BROTHELANAL = "Anal",
 	BROTHELANALDESCRIPT = "[name] will serve clients with [his] ass.",
 	BROTHELGROUP = "Group",
@@ -872,8 +895,8 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
-	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]",
+	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
@@ -1042,7 +1065,9 @@ var TranslationDict = {
 
 	TOOLTIPGOLD = "Owned gold. Gold is used for buying slaves and items and can be obtained from selling items, completing quests and some tasks.",
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
-
+	
+	
+	
 	INFOFOODFILTER = "Food filter allows to restrict or prioritize food which character will consume. Higher priority food consumed first. Keep in mind that some food may be hated by a character.",
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
@@ -1051,22 +1076,22 @@ var TranslationDict = {
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
-	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience it will take to unlock a new class until the soft cap limit. Growth Factor also highly affects character's Value.",
-	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
+	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
+	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
-	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
-	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
-	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n{color=green|Maxed Wits Factor increases experience gain.}",
-	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.\n{color=green|Maxed Sex Factor provides Speed bonus}.",
+	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious social skills.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
+	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
+	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
+	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
 	
 	
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
 	WITS_FACTORBONUSDESCRIPT = "Wits Factor: Experience gain: +20%%",
-	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills efficiency +20%%",
+	CHARM_FACTORBONUSDESCRIPT = "Charm Factor: Social Skills Efficiency +20%%",
 	SEXUALS_FACTORBONUSDESCRIPT = "Sex Factor: Speed: +10",
 	MAGIC_FACTORBONUSDESCRIPT = "Magic Factor: MATK: +10%%",
-	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain and Maximum Gain: +25%%",
+	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain: +25%%",
 	TIMID_FACTORBONUSDESCRIPT = "Timid Factor: Damage taken: -15%%",
 	
 
@@ -1301,7 +1326,7 @@ var TranslationDict = {
 	DIALOGUEHARDWORKREPORT = "[name] inspires [targetname] to work harder.",
 	DIALOGUEDISCIPLINEREPORT = "[name] disciplines [targetname] to work harder.",
 	DIALOGUEAUTHORITYREPORT = "[name] uses [his] authority, making [targetname] work harder.",
-	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning form [targethis] experience. ",
+	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning from [targethis] experience. ",
 	DIALOGUEMAKE_UNDEADREPORT = "[name] prepares unknowing [targetname] for the ritual. After being drugged unconcious, the magic spell forces life to leave [targetname]'s body stopping [targethis] heartbeat but trapping [targethis] soul inside. As [targethe] returns to concious and realizes [targethis] new state, the shock of realization that [targethe] never can go back leaves [targethim] speechless.",
 	DIALOGUEALCOHOLREPORT = "[name] uses a bottle of liquor for relaxation.",
 	DIALOGUEAPHRODISIACREPORT = "[name] consumes an aphrodisiac, feeling a potent surge of lust.",
@@ -1445,7 +1470,7 @@ var TranslationDict = {
 	TRAITSELFISHDESCRIPT = "Can't use combat supporting Abilities.",
 	TRAITCOWARDDESCRIPT = "Hit Rate -50.",
 	TRAITFRIGIDDESCRIPT = "Can't acquire new sex traits. Maximum lust is reduced by 50%.",
-	TRAITBAWDYDESCRIPT = "Prostitution mod +25%.",
+	TRAITBAWDYDESCRIPT = "Service Mod +25%.",
 	TRAITFORAGERDESCRIPT = "30% Chance to not consume any food on day end.",
 	TRAITTALENTEDDESCRIPT = "Task Crit chance +15%.",
 	TRAITMENIALDESCRIPT = "Task Crit chance is set to 0.",
@@ -1624,6 +1649,9 @@ var TranslationDict = {
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
 	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience Drain is 0. Loyalty Gain +3.",
+	
+	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
+	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power. ",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty. ",
@@ -2165,6 +2193,20 @@ var TranslationDict = {
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
 
+	DIALOGUERECRUIT = "You stand before [name], who was captured and now awaits for [his] destiny. You can try to persuade [him] to join you willingly or simply turn [him] into slave.",
+	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
+	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
+	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
+	DIALOGUERECRUITGOODSLAVE = "Make Slave",
+	DIALOGUERECRUITGOODSERVANT = "Make Peon",
+	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
+	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
+	
+	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
+	
+	
+	DIALOGUEMEET = "",
+
 	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
@@ -2274,7 +2316,7 @@ var TranslationDict = {
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAfter a few minutes of getting through cave maze, you end up before the entrance of the room which seems to lead to the local goblin leader. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
-	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck|hell} are you {^doing|thinking}?! Let me go!.. You bastards!",
+	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
 	DIALOGUEEVENTGOBLINKILLREPLY = "You can't risk any suspicious goblin leave, let alone warn others. Before [he] can react, your group strike [him] down. Unfortunately, there's nothing else of interest here.",
 	DIALOGUEEVENTGOBLINLEAVEREPLY = "There's no need to dispose of a friendly goblin even at a place like this. You allow [him] to go free which brings a relief on [his] face.\n\n— That's great! I'll see myself off. Best of luck to you, guys!",
 	DIALOGUEEVENTFAIRYFRIENDLY = "As you make it through the woods, a lone Fairy jumps in front of you. [He] seems to be curious from meeting someone [he] never seen before. \n\n— Hey, what are you doing here? I've never seen you before... \n\n[He] seems to be willing to stick with you out of boredom or curiosity at least for a chat.",
@@ -2342,6 +2384,7 @@ var TranslationDict = {
 	LOCATIONNAMEQUEST_RITUAL_LOCATION = "Herbs Field",
 	LOCATIONNAMEQUEST_LEON_FOREST = "Leon's location",
 	LOCATIONNAMEQUEST_LEON_FOREST_2 = "Leon's location",
+	LOCATIONNAMEQUEST_CALI_BANDITS_LOCATION = "Bandits' Hideout",
 
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
@@ -2361,6 +2404,7 @@ var TranslationDict = {
 	ENEMYBANDIT_MAGE = "Bandit Mage",
 	ENEMYBANDIT_BOSS = "Bandit Boss",
 	ENEMYRAMONT_BOSS = "Ramont",
+	ENEMYHECTOR_BOSS = "Hector",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
 	ENEMYREBEL_KNIGHT = "Rebel Knight",
 	ENEMYREBEL_MAGE = "Rebel Mage",
@@ -5733,7 +5777,7 @@ You lay your cock across her pretty face and she licks your balls at your instru
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """Daisy's clear blue eyes gaze up at you longingly as she plants little licks and kisses along your cock. Her oral skills are amateurish at best, but her eagerness to please you makes up for her lack of technique. There will be plenty of time to teach her how to use her lips and tongue properly.
 
 You look down at her and smile indulgently. Her left hand has dropped down between her thighs, and you can see how she touches her pussy when she thinks you won't notice. Her breath against your penis grows quicker as you nod your approval for her to continue.""",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3 = """"Daisy's tongue licks all the way from the base of your shaft to the swollen head of your penis and she looks up at you adoringly as her lips part to take you into her grateful mouth. Her other hand comes up and begins to work your shaft as her head bobs up and down on your cock, never breaking eye contact with you as her tongue coils around your member. 
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3 = """Daisy's tongue licks all the way from the base of your shaft to the swollen head of your penis and she looks up at you adoringly as her lips part to take you into her grateful mouth. Her other hand comes up and begins to work your shaft as her head bobs up and down on your cock, never breaking eye contact with you as her tongue coils around your member. 
 
 You run your hands around her head, through her soft brown hair, and up to her long bunny ears, where you take a firm hold. She squeaks softly at the sensation as you pull her head gently but firmly down onto your penis, pressing the head of your cock into her delicate throat.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4 = """As you push your cock deeper into her mouth, Daisy's eyes tear up involuntarily. She moans around the thick penis filling her throat as you use her ears to force yourself deeper into her. Still her gaze never leaves yours as you press her lips up against your pubic hair and cram your whole length into her face.
@@ -6083,29 +6127,38 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
 	DAISY_CONSENSUAL_1 = """Daisy stands waiting obediently in her maid outfit as you finish some paperwork. Rising, you spend a minute inspecting her, running your hands over her body and gently squeezing her breasts. You inquire whether she is happy to be back at your mansion.
 
-{color=yellow|Daisy:— Y-yes, Master. I'm happy to be of use to you.}
+{color=yellow|Daisy:— Y-yes, [Master]. I'm happy to be of use to you.}
 
 You nod and lift the hem of the maid dress, then slowly peel her panties down over her thighs to let them fall around her ankles. Daisy's breath hitches as arousal stirs her and she steps daintily out of her discarded underwear.""",
 	DAISY_CONSENSUAL_2 = """You continue your inspection, exposing her breasts and slipping a hand between her thighs to check her pussy. Her bare cunt is noticeably warm to the touch and as you press a finger into her slit, her slick pussy-lips part readily. Daisy gasps in pleasure as your finger probes deep into her hot little hole and you feel her trained internal muscles tighten.
 
-{color=yellow|Daisy:— Oh! Oh, master! Your fingers feel so good inside me... You are too kind to me, master...}
+{color=yellow|Daisy:— Oh! Oh, [Master]! Your fingers feel so good inside me... You are too kind to me, master...}
 
 There are tears in her eyes as she trembles with need.""",
-	DAISY_CONSENSUAL_3 = """You lift Daisy's dress up over the top of her stockings, exposing her bare ass. She strokes your shaft lovingly, pressing the head of your cock between her quivering thighs as your fingers tease her hard nipples.. 
+	DAISY_CONSENSUAL_3_SERVE = """{color=yellow|Daisy:— Of course, [Master].}
+	
+Daisy obediently lowers to pull her panties down to ease your access to her privates. Once she's done you authoritatively push her onto the table. 
+	
+You lift Daisy's dress up over the top of her stockings, exposing her bare rear. Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. She sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
+	DAISY_CONSENSUAL_3 = """You lift Daisy's dress up over the top of her stockings, exposing her bare ass. She strokes your shaft lovingly, pressing the head of your cock between her quivering thighs as your fingers tease her hard nipples. 
 
 Your hand circles Daisy's neck and pulls her head down to the desk. Her hands can't reach your penis anymore, so she uses them to spread the cheeks of her ass apart. With your grip on her throat you pull her head back up a little while keeping her belly pressed down on the table. Her wet pussy grinds against your penis as she moans in desire.
 
 Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. Bent low over the desk, she sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
 	DAISY_CONSENSUAL_4 = """You rail Daisy hard over the table, banging her hips against its wooden surface as your cock plunges into her wet and obedient pussy. She yelps in pleasure as you repeatedly drive your penis deep inside her, her rabbit-tail bobbing up and down in excitement while her nipples graze the tabletop.
 
+{color=yellow|Daisy:— Aa-ah, [Master]... You are too rough!..}
+
 Daisy's pussy clamps tightly around your cock as her whole body shudders in orgasm. You keep pounding her, your own orgasm approaching fast as her silky cunt spasms around your thrusting meat. You release her throat so you can grab her hips and fuck her harder.
 
 Daisy looks back at you imploringly as you bury your cock in her up to the hilt. Her ass bucks against your hips, trying to take you deeper and you feel the head of your penis pressing on her womb.""",
-	DAISY_CONSENSUAL_5 = """Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
+	DAISY_CONSENSUAL_5 = """{color=yellow|Daisy:— [Master]!... I'm about to... I'm cumming!}
+
+Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
 
 Casually, you spank her a few times and pinch the springy flesh of her ass as it reddens. You slide your cock out of her hole and your cum begins to leak from her pussy, trickling slowly down her bare thighs and into her stockings.
 
-You buckle your pants and order her to get back to work.""",
+{color=yellow|Daisy:— Thank you, [Master]... I love you.}""",
 
 
 	
@@ -6487,18 +6540,25 @@ After a few hours every guest in the room has had a round with [spousename] and 
 	MARRIAGE_NIGHT_2_2 = """[spousename] returns you a saddened look but nods in agreement. You decide to go to sleep and call it a day.""",
 	
 	DAISY_SERVE_OPTION_START = "Serve me",
-	DAISY_SERVE_START_1 = "— Of course, [master]. What part of my body would you like to use?",
+	DAISY_SERVE_START_1 = "— Of course, [Master]. What part of my body would you like to use?",
 	DAISY_SERVE_START_2 = """— O-Of course, [Master]... How can I serve you best..?
 
 Daisy awkwardly avoids eye contact, waiting for you to finish.""",
 	DAISY_SERVE_OPTION_1_1 = "Use your mouth",
 	DAISY_SERVE_OPTION_1_2 = "Bend over",
 	DAISY_SERVE_OPTION_1_3 = "Nevermind",
-	DAISY_SERVE_1_1 = """Placeholder""",
-	DAISY_SERVE_1_2 = """Placeholder""",
-	DAISY_SERVE_2_1 = """Placeholder""",
-	DAISY_SERVE_2_2 = """Placeholder""",
-	DAISY_SERVE_2_3 = """Placeholder""",
+	
+	
+	CALI_SERVE_START_1 = "— ...You mean like naughty stuff? Okay, I don't mind if it's with you, [Master]. ",
+	CALI_SERVE_START_2 = """— What can I do for you, [Master]?
+
+It seems Cali's training has paid off and she does not hesitate answering.""",
+	CALI_SERVE_OPTION_1_1 = "Use your mouth",
+	CALI_SERVE_OPTION_1_2 = "We do it standing",
+	CALI_SERVE_OPTION_1_3 = "Nevermind",
+	
+	
+	
 	
 	
 	GRYPHON_AIRE_START = """As you walk through the grounds of your mansion one morning, you notice a young elf girl, Aire, diligently training with her bow and arrows at the makeshift archery range. You watch her for some time, noticing how firm her concentration is.
@@ -6531,7 +6591,7 @@ After another couple of precise shots she turns to you questioningly .
 	GRYPHON_AIRE_5 = """— Don't start drooling before it's done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia's protector.""",
 	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
 	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard",
-	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed.""",
+	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed. Not that I care, but we gonna be in trouble if that happens.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "I'm looking for an Elder Gryphon...",
 	GRYPHON_WORKERS_START = """— Hmm, I dunno de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
@@ -8282,12 +8342,12 @@ Cali: - Let's go visit this guy, hopefully he still has it.""",
 
 After a brief acquaintance, you get to the business and explain what you came for. 
 
-- I'm glad you've visited, Mayor. What do I owe to this? """,
+William: - I'm glad you've visited, Mayor. What do I owe to this? """,
 	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant",
 	CALI_WILLIAM_1_OPTION_2 = "There was an item sold to you by bandits.", 
 	CALI_WILLIAM_2 = """Cali timidly retells the events she went through. You can notice that she's rather intimidated by the splendor of this manor. 
 
-- Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
+William: - Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
 
 Cali: - You're kidding me!? That price is insane!
 
@@ -8296,61 +8356,61 @@ Cali blurts out in anger but the owner doesn't seem startled in the slightest.""
 	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide", 
 	CALI_WILLIAM_3 = """- Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money so I can be patient enough to get the best offer for it.
 
-- But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
+William: - But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
 
 William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
 
-- You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
+William: - You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
 
 As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
-- Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
+William: - Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
 	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
 	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
 	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
-	CALI_WILLIAM_4 = """ """, #no text for some reason
+	CALI_WILLIAM_4 = """William stays quiet, waiting for your proposal.""", 
 	CALI_WILLIAM_4_OPTION_1 = "She is not really worth it. I might offer you a much better servant in exchange.",
 	CALI_WILLIAM_4_OPTION_2 = "Cali is of a much higher caliber than you think.", 
 	CALI_WILLIAM_4_OPTION_3 = "Cali will do this.", 
 	CALI_WILLIAM_4_OPTION_4 = "Maybe this is too early to decide on just yet...", 
 	CALI_WILLIAM_5 = """William considers the proposal for a moment then nods.
 
-- Very well, she does not seem all that refined I suppose.
+William: - Very well, she does not seem all that refined I suppose.
 
 Cali's face is soon one of anger, but she wisely keeps quiet..
 
-- Then, I'd like to know of the servant you will be trading in her place. """, 
+William: - Then, I'd like to know of the servant you will be trading in her place. """, 
 	CALI_WILLIAM_5_OPTION_2 = "*Reconsider*", 
 	CALI_WILLIAM_6 = """- Fine by me. It will be waiting for you unless another makes an offer. """, 
 	CALI_WILLIAM_7 = """As you make it out of the mansion, Cali stops you. Her voice is low and she's clearly uncomfortable with the situation.
 
-- H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. """,
+Cali: - H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. """,
 	CALI_WILLIAM_7_OPTION_1 = "I'll consider it",
 	CALI_WILLIAM_7_OPTION_2 = "I won't let him lay a hand on you even if you are okay with it", 
 	CALI_WILLIAM_8_1 = """Cali nods and you quietly continue on your way back home.""",
 	CALI_WILLIAM_8_2 = """- Hey now, you do care for me. I'm not really used to this... but thanks.
 
 Cali blushes to your sudden protective statement, her opinion of you notably improves.""",
-	CALI_WILLIAM_9 = """ """, #no text currently
-	CALI_REPLACEMENT_RETURNS = """ """, #no text currently
+	CALI_WILLIAM_9 = """William: - Very well, this will suffice. In this case, pleasure doing business with you.""",
+	CALI_REPLACEMENT_RETURNS = """At the arranged date, the [name], which you sent to William returns back to your mansion. """, 
 	CALI_WILLIAM_10 = """Cali meekly nods at your decision and as you prepare the papers. She will stay at William's manor for now while you return home.""", 
-	CALI_RETURNS = """ """, #no text currently
+	CALI_RETURNS = """At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay.""", 
 	CALI_WILLIAM_11_1 = """The man takes another long look at Cali as she catches on to the implication, doing her best to appear femininely attractive. 
 
-- That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
+William: - That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
 	CALI_WILLIAM_11_2 = """William takes another long look at Cali but she does not seem to catch on with your intent, giving him a hostile look.
 
-- I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
+William: - I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
 	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3,000 gold for a week with her.",
 	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days",
 	CALI_WILLIAM_12 = """The man stays quiet for some time as he deliberately inspects the wolf-girl. Finally he relents.
 
-- Very well, if your assessment is correct of her and her skills this will be well worth it.
+William: - Very well, if your assessment is correct of her and her skills this will be well worth it.
 
 You take Cali aside and explain to her that this is her duty for now. 
 
-- Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
+Cali: - Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
 
 In the end she accepted that she had to deal with the consequences of her own actions.""", 
 	CALI_WILLIAM_13 = """As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.""", 
@@ -8625,6 +8685,15 @@ Cali: - Was this...?
 Amelia: - Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.
 """,
 	
+	LILIA_PRELUDE1 = """As you walk through the streets, you eavesdrop an uncommon conversation apparently from one of adventurers. 
+
+Citizen A: - I'm telling you, After I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.
+
+Citizen B: - That's like for all of them, no? 
+
+Citizen A: - Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...""",
+	LILIA_PRELUDE2 = "You decide to make a note about this and perhaps visit it next time you go to elven forests.",
+	
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
@@ -8716,7 +8785,7 @@ Lilia hesitates for a bit but her attitude towards you eventually sways her choi
 	
 	SICK_LILIA_START = """After a few days since Lilia moved in with you, one morning you find her in bed extremely weakened.
 
-- [name]... I don't feel... so well... Can I... rest for today?
+- [name]... I don't feel... so well... Can I... Please, rest for today?
 
 Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
 	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
@@ -9346,9 +9415,14 @@ You remind her as you're still deep inside of her that she should call you what 
 	CALI_HEIRLOOM_QUEST_STAGE_5_1 = "Visit William at Aliron City",
 	CALI_HEIRLOOM_QUEST_STAGE_6 = "Get Cali's heirloom sword from William",
 	CALI_HEIRLOOM_QUEST_STAGE_7 = "Wait for Cali to return",
-	CALI_HEIRLOOM_QUEST_STAGE_8 = "", #sword get
-	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali", #speek with cali
-	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home", #go to village
+	CALI_HEIRLOOM_QUEST_STAGE_8 = "Wait for some time",
+	CALI_HEIRLOOM_QUEST_STAGE_9 = "Speak with Cali",
+	CALI_HEIRLOOM_QUEST_STAGE_10 = "Visit Cali's home",
+	
+	LILIA_MEET_QUEST_NAME = "Lilia: Fairy Unusual",
+	LILIA_MEET_QUEST_SUMMARY = "You've learned about an extraordinary fairy which resides in one of forest settlements. Perhaps its worth investigating",
+	LILIA_MEET_QUEST_STAGE_1 = "Find a fairy you've heard about in one of forest settlements",
+	LILIA_MEET_QUEST_STAGE_2 = "Persuade Lilia to join you",
 	
 	SICK_LILIA_QUEST_NAME = "Lilia: Homesick",
 	SICK_LILIA_QUEST_SUMMARY = "Lilia has fallen ill. It's up to you to help her now.",
@@ -9411,6 +9485,117 @@ You remind her as you're still deep inside of her that she should call you what 
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n- It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n- [Master], you've been missing Lilia? Let's go to bed already!",
 	DIALOGUEJEANINITIATEM = "",
+	
+	
+	
+	
+	
+	METRICS_BASE = "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
+	METRICS_DATES_MASTER = "[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
+	METRICS_DATES = "[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
+	METRICS_PARTNERS = "Overall [he] had sex with {color=yellow|%d} partners during all this time. ",
+	METRICS_PARTNERS_ONE = "[He] only had a {color=yellow|single partner} for all this time. ",
+	METRICS_PARTNERS_NONE = "[He] didn't appear to engage into sexual activity with anyone so far... ",
+	METRICS_IMPREGS = "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s). ",
+	METRICS_PEGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
+	METRICS_VIRGINITY_YOU = "[He] lost [his] vaginal virginity to {color=yellow|you}. ",
+	METRICS_VIRGINITY_OTHER = "[He] lost [his] vaginal virginity to {color=yellow|%s}. ",
+	METRICS_ANAL_VIRGINITY_YOU = "[His] first experience with anal penetration was with {color=yellow|you}. ",
+	METRICS_ANAL_VIRGINITY_OTHER = "[His] first experience with anal penetration was with {color=yellow|%s}. ",
+	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ",
+	METRICS_COMBAT = "[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies. ",
+	
+	
+	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
+	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
+	METRICS_SOURCE_WILLIAM = "William, Aliron's famous collector",
+	
+	
+	
+	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: - Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
+
+{color=magenta|Zephyra: - Today I'll be telling the story of a young girl wearing a red hood and her tragic story.}""",
+	HALLOWEEN_EVENT1 = """{color=magenta|Zephyra: - A young girl was going through the forest. A deep, dark, forest carrying a basket with meat buns for her sickly grandmother. }
+
+{color=aqua|Anastasia: - This is really embarrassing, I shouldn't have agreed to this... }
+
+{color=magenta|Zephyra: - Even though she was young and frightened she still bravely embarked on this task. Little did she know what danger was awaiting her.}""",
+	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: - Isn't it that story about a girl being eaten by a wolf?! Why me of all people...}
+
+{color=magenta|Zephyra: - Her naivety would certainly play a role here if she met some wrongdoers. And to her misfortune she indeed came across them. A couple of bandits saw her walking alone through the woods and readily approached her.}""",
+	HALLOWEEN_EVENT3 = """{color=gray_text_dialogue|Bandit: - Well there, pretty, where are you heading?}
+
+{color=aqua|Anastasia: *Gulp* - I'm going to my sickly grandma, I'm bringing her meat buns...}
+
+{color=gray_text_dialogue|Bandit: - Wow, did you hear that? A woman and food delivery for us, two in one! You must have heard of us coming here dressed like this?}
+
+{color=aqua|Anastasia: - I-I don't understand what you mean. Please, let me go...}
+
+{color=gray_text_dialogue|Bandit: - No, this clearly won't do. We shall consider it if you do something for us. How about showing your giant breasts?}""",
+	HALLOWEEN_EVENT4 = """{color=aqua|Anastasia: - No, let me go, get your hands away from me! What even is this set up?!}
+
+{color=gray_text_dialogue|Bandit: - Stay quiet silly girl, none can help you in these dark woods!}
+
+{color=magenta|Zephyra: - Such a sorrowful sight would make any hero rush to save her, but the help came from a source she wouldn't expect.}""",
+	HALLOWEEN_EVENT5 = """{color=yellow|Cali: - Watcha doing you bastards!? I, bandit punisher, Ca-I mean, Big Good Wolf will not let you go unpunished for this!}
+
+{color=yellow|Cali: - Ryaaaaa!}
+
+{color=gray_text_dialogue|Bandit: - Wha- Aaarrgh! Noo, don't kill us!}
+
+{color=magenta|Zephyra: - As a true beast, the wolf jumped at the bandits which ran in fear of being eaten. }""",
+	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: - Woah, you really have no shame wearing that?.. }
+
+{color=yellow|Cali: - Whatcha mean? I'm a wolf and this is what I look like. }
+
+{color=aqua|Anastasia: - Maybe I'm too self-conscious...}
+
+{color=yellow|Cali: - No matter, human girl. Say, what business do you have in my woods?}""",
+	HALLOWEEN_EVENT7 = """{color=magenta|Zephyra: - The wolf showed interest in the girl she never saw before. For better or worse, the girl had been sincere.}
+
+{color=aqua|Anastasia: - I've been traveling to my grandma.}
+
+{color=yellow|Cali: - Why would you do that? It's dangerous for young girls to travel alone. }
+
+{color=aqua|Anastasia: - I understand, however my duty was to bring her some meat buns.}
+
+{color=yellow|Cali: - No way, meat buns!? Ho-oh, now that's something I can not overlook!}""",
+	HALLOWEEN_EVENT8 = """{color=yellow|Cali: - Those meat buns, they must be really tasty, right? Show me, I wanna see!}
+
+{color=aqua|Anastasia: - ...Well they are in this basket... }
+
+{color=aqua|Anastasia: - Huh, it's empty... Did the bandits take them while I was not looking?}
+
+{color=yellow|Cali: - I said I wanna see the meat buns, I can smell them. Are you trying to trick the Big Good Wolf?}
+
+{color=yellow|Cali: - Then, I'll have to search you to find them! }""",
+
+	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: - No, wait! Aah-}
+
+{color=yellow|Cali: - Hmm, could you be hiding them here? What's up with your chest, it's huge! I'm jealous...}
+
+{color=aqua|Anastasia: - D-don't squeeze them... So roughly...}
+
+{color=yellow|Cali: - Haah, they do feel nice on touch. Not exactly like meat buns... But somehow very captivating...}""",
+	HALLOWEEN_EVENT10 = """{color=aqua|Anastasia: - Ngh... Please... Let them go...}
+
+{color=yellow|Cali: - Let them go? So these were the 'meat buns' you were talking about? I knew it, they smell differently, but still nice.}
+
+{color=yellow|Cali: - Hu-huh, I guess with no other option I shall taste them! }
+
+{color=aqua|Anastasia: - Wait, this is wron-... Stop-sto-Ah-h haa.... }""",
+	HALLOWEEN_EVENT11 = """{color=magenta|Zephyra: - Sadly, no one could hear her pleas for help in the dark woods.}
+
+{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.}""",
+	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: - Did that story really go like this?}
+
+{color=yellow|Cali: - I dunno, it felt kinda natural. }
+
+{color=aqua|Anastasia: - At least I got a less skimpy costume...}
+
+{color=yellow|Cali: - Ah, you know we get to keep them though? I hope [Master] is going to like this. }
+
+{color=aqua|Anastasia: - W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
 }
 
 

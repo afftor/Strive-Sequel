@@ -28,6 +28,9 @@ var timeforinteraction = 20
 var permanent_classes = ['master','renown_royalty','broken_royalty','alios_champion']
 
 
+var debug_mode = false
+var no_obedience_drain = false
+
 #var hour_turn_limit = 8
 
 enum {PANEL_SOC, PANEL_COM}
@@ -74,7 +77,7 @@ var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin'
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
 var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings']
-var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
+var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
 var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 
 var system_messages = {
@@ -159,11 +162,11 @@ var sex_factor_skill_multiplier = {
 }
 
 var growth_factor = {
-1 : 50,
-2 : 90,
-3 : 60,
-4 : 30,
-5 : 10,
+1 : 150,
+2 : 70,
+3 : 30,
+4 : 10,
+5 : 3,
 6 : 1,
 }
 
@@ -268,10 +271,7 @@ var male_penis_virgin_default_chance = 50
 var female_ass_virgin_default_chance = 90
 var male_ass_virgin_default_chance = 90
 
-var class_cap_basic = 2
-var class_cap_per_growth = 1
-var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
-var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
+var hard_level_reqs = [150,250,400,650,900,1250,1750,2500,3350,4100,5000]
 
 #Slave values
 var slave_basic_sizes = ['masculine','flat','small','average','big','huge']
@@ -363,17 +363,22 @@ var pregduration = 120
 var tutduration = 14 #days
 
 var slave_classes_per_difficulty = {
-	0 : [0, 2],
-	1 : [0, 3],
-	2 : [1, 4],
-	3 : [1, 4],
-	4 : [2, 5],
-	5 : [2, 6],
-	6 : [3, 6],
-	7 : [3, 7],
-	8 : [4, 7],
-	9 : [4, 8],
-	10 : [5, 8],
+	0 : [0, 0],
+	1 : [0, 0],
+	2 : [0, 1],
+	3 : [0, 1],
+	4 : [0, 2],
+	5 : [0, 2],
+	6 : [0, 2],
+	7 : [0, 3],
+	8 : [0, 3],
+	9 : [0, 3],
+	10 : [0, 4],
+	11 : [0, 4],
+	12 : [0, 4],
+	13 : [0, 4],
+	14 : [0, 4],
+	15 : [0, 4],
 }
 
 var autosave_number_min = 0

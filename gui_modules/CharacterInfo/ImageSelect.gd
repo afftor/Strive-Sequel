@@ -41,7 +41,36 @@ func _on_reloadlist_pressed():
 
 var currentpath
 
+
+func build_unique_sprites():
+	for i in get_parent().get_node("ScrollContainer/GridContainer").get_children():
+		if i.get_name() != "Button":
+			i.visible = false
+			i.free()
+	person = input_handler.interacted_character
+	var unique = person.get_stat('unique')
+	if worlddata.pregen_character_sprites.has(unique) == false:
+		return
+	for i in worlddata.pregen_character_sprites[unique].values():
+		if globals.checkreqs(i.unlock_reqs) == false:
+			continue
+		var newbutton = get_parent().get_node("ScrollContainer/GridContainer/Button").duplicate()
+		get_parent().get_node("ScrollContainer/GridContainer").add_child(newbutton)
+		newbutton.show()
+		newbutton.get_node("Label").text = i.name
+		newbutton.get_node('pic').texture = images.portraits[i.face_path]
+		newbutton.connect('pressed',self,'select_unique_sprite', [i])
+
+func select_unique_sprite(data):
+	person.set_stat('icon_image', data.face_path)
+	person.set_stat('body_image', data.path)
+	updatepage()
+	
+
 func buildimagelist(type = mode):
+	if type == 'unique':
+		build_unique_sprites()
+		return
 	var dir = Directory.new()
 	var filecheck = File.new()
 	if type == 'portrait':
@@ -57,12 +86,7 @@ func buildimagelist(type = mode):
 	for i in input_handler.dir_contents(currentpath):
 		if filecheck.file_exists(i) && (i.find('.png') >= 0 || i.find('.jpg') >= 0):
 			var node = get_parent().get_node("ScrollContainer/GridContainer/Button").duplicate()
-#			var iconpath = i.replace(currentpath, thumbnailpath + type)
-#			node.set_meta('thumbnail', iconpath)
-#			if !filecheck.file_exists(iconpath) && globals.rules.thumbnails == true:
-#				createimagethumbnail(i, iconpath)
 			get_parent().get_node("ScrollContainer/GridContainer").add_child(node)
-			#node.get_node("pic").set_texture(globals.loadimage(iconpath))
 			node.connect('pressed', self, 'setslaveimage', [i])
 			node.get_node("Label").set_text(i.replacen(currentpath + '/','').replacen('.jpg','').replacen('.png',''))
 			node.set_meta("type", i)
@@ -159,24 +183,6 @@ func _on_reverseportrait_pressed():
 	var tmp = person.get_stat('unique')
 	if tmp != null and !(tmp in ['dog', 'horse']): #not working for thjere is no imageportait attribute
 		person.imageportait = globals.characters.characters[tmp].imageportait
-#		if person.unique == 'Cali':
-#			person.imageportait = globals.characters.characters.Cali.imageportait
-#		elif person.unique == 'Emily':
-#			person.imageportait = globals.characters.characters.Emily.imageportait
-#		elif person.unique == 'Tisha':
-#			person.imageportait = globals.characters.characters.Tisha.imageportait
-#		elif person.unique == 'Chloe':
-#			person.imageportait = globals.characters.characters.Chloe.imageportait
-#		elif person.unique == 'Yris':
-#			person.imageportait = globals.characters.characters.Yris.imageportait
-#		elif person.unique == 'Maple':
-#			person.imageportait = globals.characters.characters.Maple.imageportait
-#		elif person.unique == 'Ayneris':
-#			person.imageportait = globals.characters.characters.Ayneris.imageportait
-#		elif person.unique == 'Melissa':
-#			person.imageportait = globals.characters.characters.Melissa.imageportait
-#		elif person.unique == 'Ayda':
-#			person.imageportait = globals.characters.characters.Ayda.imageportait
 		self.visible = false
 		person.imagefull = null
 		updatepage()

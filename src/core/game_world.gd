@@ -38,6 +38,9 @@ func fix_serialization():
 				print("wrong questnumber for %s - counters resetted" % [guild.name])
 			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 				print("wrong questnumber for %s - unallocated quests" % [guild.name])
+	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
+	if tmp != null and tmp.type != 'dungeon': 
+		tmp.type = 'dungeon'
 
 
 func fix_import(data):
@@ -223,6 +226,20 @@ func find_location_by_data(data):
 			if loc_data.code == data.code: break
 	return {location = location, area = area}
 
+
+func get_worker_count_for_task(worktask):
+	var loc = ResourceScripts.world_gen.get_location_from_code(worktask.task_location)
+	if loc == null: return 0
+	if loc.type in ["dungeon",'encounter']:
+		return -1 #loc.gather_limit_resources[worktask.code] 
+	if loc.has("category") and loc.category == 'capital':
+		var task = races.tasklist[worktask.code]
+		if task.has('upgrade_code') && task.has('workers_per_upgrade') && task.has('base_workers'):
+			var upgrade_level = ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
+			return task.base_workers + task.workers_per_upgrade * upgrade_level
+		else:
+			return -1
+	return loc.gather_resources[worktask.product]
 
 
 func complete_quest(quest, state = 'failed'):

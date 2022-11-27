@@ -546,7 +546,57 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added some new classes to the exception list for oblivion potion removal
+bbcode_text = "Dungeon recruiting:
+Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
+
+Factors revamp:
+Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked.
+Exp requirements are no longer affected by it.
+Starting Growth factor for unique characters have been reduced 
+Factors now increased by sacrificing a character at slave market. 
+
+Removed loyalty bonus on taking virginity by master
+Removed breeder class for purchase
+Updated service icon/behavior to better reflect on slave's current state
+Fixed some descriptions
+Minor bugfixes
+0.6.5d
+Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
+Updated some character sprites and added more images to gallery
+Fixed servicing characters earning way more than they should
+Fixed Lilia's initial event not being removed from aliron
+0.6.5c
+Added entry quest for lilia recruitment
+Service options were moved to rest
+Fixed Cali's sword
+0.6.5b
+Cali and Daisy now require their questlines finished to marry and have unique respond lines
+Fixed some items not being used correctly
+Fixed marry proposal for certain unique characters not working properly
+Fixed some world generation data being incorrect
+Fixed one of the dungeons in cali's quest not being usable0.6.5a
+0.6.5a
+Cali and Daisy should now be able to replay some of their scenes after their quests are finished in the personal dialogues. Also characters should address their master nouns more often in scenes
+Fixed multiple quest options and illustrations
+Presumably fixed worker assignement bug
+0.6.5
+Finished Cali's main questline
+Added initial Lilia's questline with 2 scenes
+Made main loan quest more clear on the dates and added a tip to it
+Added new unique character lines for their private dialogues
+Revamped prostitution task and added new non-sexual gold tasks. Prostitution mod is renamed to Service
+Added personal character details
+Materials now only sell for half price
+Removed quest items from shop selling list
+Added couple new repeatable quests
+Lilia's stats upped. Lilia questline is now unlocked after completing first story arc
+Fixed Date button not being active when master and a servant are selected
+Fixed loot window being under the dialogues
+Fixed Cali's character sprite
+Fixed certain actions not increasing loyalty
+Updated some scene art
+0.6.4b
+Added some new classes to the exception list for oblivion potion removal
 Added Lamia's race icon
 Changed Heleviel's start class to add new class
 Fixed one of marriage options taking money instead of adding
@@ -1206,7 +1256,57 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added some new classes to the exception list for oblivion potion removal
+text = "Dungeon recruiting:
+Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
+
+Factors revamp:
+Growth factor has been revamped: now it boosts character's stats depending on how many classes they have unlocked.
+Exp requirements are no longer affected by it.
+Starting Growth factor for unique characters have been reduced 
+Factors now increased by sacrificing a character at slave market. 
+
+Removed loyalty bonus on taking virginity by master
+Removed breeder class for purchase
+Updated service icon/behavior to better reflect on slave's current state
+Fixed some descriptions
+Minor bugfixes
+0.6.5d
+Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
+Updated some character sprites and added more images to gallery
+Fixed servicing characters earning way more than they should
+Fixed Lilia's initial event not being removed from aliron
+0.6.5c
+Added entry quest for lilia recruitment
+Service options were moved to rest
+Fixed Cali's sword
+0.6.5b
+Cali and Daisy now require their questlines finished to marry and have unique respond lines
+Fixed some items not being used correctly
+Fixed marry proposal for certain unique characters not working properly
+Fixed some world generation data being incorrect
+Fixed one of the dungeons in cali's quest not being usable0.6.5a
+0.6.5a
+Cali and Daisy should now be able to replay some of their scenes after their quests are finished in the personal dialogues. Also characters should address their master nouns more often in scenes
+Fixed multiple quest options and illustrations
+Presumably fixed worker assignement bug
+0.6.5
+Finished Cali's main questline
+Added initial Lilia's questline with 2 scenes
+Made main loan quest more clear on the dates and added a tip to it
+Added new unique character lines for their private dialogues
+Revamped prostitution task and added new non-sexual gold tasks. Prostitution mod is renamed to Service
+Added personal character details
+Materials now only sell for half price
+Removed quest items from shop selling list
+Added couple new repeatable quests
+Lilia's stats upped. Lilia questline is now unlocked after completing first story arc
+Fixed Date button not being active when master and a servant are selected
+Fixed loot window being under the dialogues
+Fixed Cali's character sprite
+Fixed certain actions not increasing loyalty
+Updated some scene art
+0.6.4b
+Added some new classes to the exception list for oblivion potion removal
 Added Lamia's race icon
 Changed Heleviel's start class to add new class
 Fixed one of marriage options taking money instead of adding
@@ -1939,8 +2039,9 @@ Icon art: Persich
 
 Writing: ralphomayo
 Writing: plumpjack
+Writing: S[Mutt]
 
-Proofreading: Dorant, ralphomayo
+Proofreading: Dorant, ralphomayo, Khuja
 
 Also thanks to: negtize724
 
@@ -1961,8 +2062,9 @@ Icon art: Persich
 
 Writing: ralphomayo
 Writing: plumpjack
+Writing: S[Mutt]
 
-Proofreading: Dorant, ralphomayo
+Proofreading: Dorant, ralphomayo, Khuja
 
 Also thanks to: negtize724
 

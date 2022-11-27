@@ -3,6 +3,7 @@ extends Reference
 
 var itemcounter = 0
 var money = 0 setget set_money
+var tax = 0
 var upgrades = {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}#not sure
@@ -11,6 +12,7 @@ var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials = {} setget materials_set
 var oldmaterials = {}
 var upgrades_queue = []
+
 
 func _init():
 	for i in upgradedata.upgradelist.keys():
@@ -56,6 +58,10 @@ func serialize():
 #	fix_items_inventory(false)
 	return res
 
+func subtract_taxes():
+	money -= tax
+	if money < 0:
+		pass #TODO add gameover sequence if player runs out of money
 #inventory
 func set_money(value):
 	money = value
@@ -268,6 +274,8 @@ func add_craft_value(currenttask, value, character, tres = false):
 		else: 
 			return true
 
+func unlock_upgrade():
+	pass
 
 func add_build_value(currenttask, value, character, tres = false):
 	if upgrades_queue.empty():
@@ -291,6 +299,10 @@ func add_build_value(currenttask, value, character, tres = false):
 				upgrades[curupgrade] += 1
 			else:
 				upgrades[curupgrade] = 1
+			
+			if tdata.levels[int(upgrade_progresses[curupgrade].level)].has('tax'):
+				tax += tdata.levels[int(upgrade_progresses[curupgrade].level)].tax
+			
 			input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[curupgrade])
 			globals.text_log_add('upgrades',"Upgrade finished: " + tdata.name)
 			if curupgrade == "tattoo_set":

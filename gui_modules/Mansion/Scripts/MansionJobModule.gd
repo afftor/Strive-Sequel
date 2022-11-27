@@ -205,19 +205,31 @@ func close_job_pannel():
 		gui_controller.clock.raise()
 #	ResourceScripts.core_animations.FadeAnimation(self, 0.3)
 #	get_parent().mansion_state = "default"
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	get_parent().mansion_state_set("default")
 
-
+var restbutton
 func update_resources():
 	input_handler.ClearContainer($Resourses/GridContainer)
-	var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+#	if selected_location != 'aliron':
+#		var restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+#		if selected_job != null:
+#			if selected_job.has("code"):
+#				if selected_job.code == "rest":
+#					restbutton.pressed = true
+#		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+#		restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
+#
+#		globals.connecttexttooltip(restbutton, "Rest")
+	
+	restbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 	if selected_job != null:
 		if selected_job.has("code"):
-			if selected_job.code == "rest":
+			if selected_job.code == "rest" or selected_job.code == "brothel":
 				restbutton.pressed = true
 	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
-	
+
 	globals.connecttexttooltip(restbutton, "Rest")
 	
 	person = get_parent().active_person
@@ -247,6 +259,8 @@ func update_resources():
 	else:
 		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 		for i in races.tasklist.values():
+			if i.code == "rest" or i.code == "brothel":
+				continue
 			if globals.checkreqs(i.reqs) == false:
 				continue
 			#don't show if res in not unlocked
@@ -475,9 +489,23 @@ var stat_icons = {
 }
 
 func select_job(button, person):
-	person = get_parent().active_person
-	if selected_job.code == "rest" || (selected_job.code == person.get_work() && selected_job.code != 'brothel'):
+	self.person = person
+	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
 		set_rest(button, person)
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		return
+	if selected_job.code == "rest":
+		set_rest(button, person)
+		show_brothel_options()
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		return
+	if selected_job.code == 'brothel':
+		person.assign_to_task('brothel', 'brothel')
+		show_brothel_options()
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+		update_status(button, person)
+		update_resources()
+		show_faces()
 		return
 	# disable 
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
@@ -509,7 +537,6 @@ func select_job(button, person):
 			return
 	
 	
-	
 	var gatherable = Items.materiallist.has(selected_job.code)
 	if location.type == "dungeon":
 		if selected_job.has("production_item"):
@@ -530,34 +557,55 @@ func select_job(button, person):
 	#update_characters() # change for status update
 	update_status(button, person)
 	show_faces()
-	if selected_job.code == 'brothel':
-		show_brothel_options()
+	
 	#get_parent().mansion_state_set("default")
 
 
 var brothel_rules = {
 	non_sex = ['waitress', 'hostess', 'dancer', 'stripper'],
-	sexual = ['petting', 'oral', 'anal', 'pussy', 'group', 'sextoy'],
+	sexual = ['petting', 'oral', 'anal', 'pussy', 'penetration', 'group', 'sextoy'],
 	sexes = ['males','females','futa'],
 	
 }
 
 func show_brothel_options():
+	
 	$BrothelRules.show()
 	$BrothelRules/Label.text = "Service Rules: " + person.get_short_name()
 	input_handler.ClearContainer($BrothelRules/GridContainer)
+	
+	for i in ['rest']:
+		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		newbutton.text = tr("TASKREST")
+		globals.connecttexttooltip(newbutton, person.translate(tr("TASKRESTDESCRIPT")))
+		newbutton.pressed = person.get_work() == ''
+		if newbutton.pressed:
+			switch_rest(newbutton)
+		newbutton.connect('pressed', self, 'switch_rest', [newbutton])
+	
 	for i in brothel_rules.non_sex:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		newbutton.text = tr("BROTHEL"+i.to_upper())
+		if person.get_stat('sex') == "male" && races.gold_tasks_data[i].tags.has('has_alt_name'):
+			newbutton.text = tr("BROTHEL"+i.to_upper() + "ALT")
+		else:
+			newbutton.text = tr("BROTHEL"+i.to_upper())
 		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+		newbutton.add_to_group('sex_option')
+		if person.get_work() == '':
+			newbutton.disabled = true
 	for i in brothel_rules.sexual:
+		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		newbutton.text = tr("BROTHEL"+i.to_upper())
 		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
+		newbutton.add_to_group('sex_option')
+		if person.get_work() == '':
+			newbutton.disabled = true
 		if person.is_master() == false:
 			if person.checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
 				if person.get_stat('slave_class') != 'slave':
@@ -567,7 +615,8 @@ func show_brothel_options():
 					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
 					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
 					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}"))
-		
+	
+	
 	for i in brothel_rules.sexes:
 		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
 		get_node("BrothelRules/sexes_container/"+i).pressed = person.check_brothel_rule(i)
@@ -594,9 +643,10 @@ func update_brothel_text():
 				if i != 'anal' && person.get_stat('has_womb') == true:
 					can_get_pregnant = true
 	
-	
-	if can_do_sex && can_do_penetrative:
-		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if the find [him] appealing.}"
+	if person.get_work() == '':
+		text = "{color=yellow|[name] will rest.}"
+	elif can_do_sex && can_do_penetrative:
+		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if they find [him] appealing.}"
 		if can_get_pregnant:
 			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration.}"
 	elif can_do_sex:
@@ -610,6 +660,20 @@ func switch_brothel_option(button, option):
 	person.set_brothel_rule(option, button.pressed)
 	update_brothel_text()
 
+func switch_rest(button):
+	if button.pressed:
+		set_rest(null, person)
+		update_brothel_text()
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		for nd in get_tree().get_nodes_in_group('sex_option'):
+			nd.disabled = true
+	else:
+		person.assign_to_task('brothel', 'brothel')
+		update_characters()
+		show_faces()
+		show_brothel_options()
+		update_resources()
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
 
 func set_rest(button, person):
 	person.remove_from_task()

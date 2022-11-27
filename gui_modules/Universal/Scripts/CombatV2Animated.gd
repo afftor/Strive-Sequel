@@ -172,6 +172,9 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
+	if music == 'combattheme':
+		var temparray = ['battle1','battle2','battle3']
+		music = temparray[randi()%temparray.size()]
 	input_handler.SetMusic(music)
 	fightover = false
 	$Rewards.visible = false
@@ -249,6 +252,7 @@ func select_actor():
 		newturn()
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
+	update_queue_asynch()
 	#currentactor.update_timers()
 	if currentactor <= 0:
 		env_turn()
@@ -285,6 +289,7 @@ func checkdeaths():
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
 					turnorder.remove(j)
+					update_queue_asynch()
 					break
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
@@ -447,7 +452,23 @@ func victory():
 	# $Rewards.visible = true
 	# $Rewards.modulate.a = 0
 	# ResourceScripts.core_animations.UnfadeAnimation($Rewards)
-
+	var rewardchars = globals.roll_characters()
+	for id in rewardchars:
+		var tchar = characters_pool.get_char_by_id(id)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.modulate.a = 0
+		newbutton.show()
+		var ttex = tchar.get_icon_small()
+		if ttex != null: 
+			newbutton.get_node('Icon').texture = ttex
+		else:
+			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
+		newbutton.get_node('name').text = tr("COMBAT_CHARACTER_CAPTURED") + ": " + tchar.get_full_name()
+		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
+		newbutton.get_node("amount").text = ""
+		globals.connectslavetooltip(newbutton, tchar)
+	input_handler.exploration_node.add_rolled_chars(rewardchars)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -472,9 +493,9 @@ func victory():
 			newnode.get_node("amount").visible = false
 		else:
 			newnode.get_node("amount").text = str(i.amount)
-
-
-
+	
+	
+	
 	#yield(get_tree().create_timer(1.7), 'timeout')
 
 #	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
@@ -796,6 +817,7 @@ func calculateorder():
 		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 
 	turnorder.sort_custom(self, 'speedsort')
+#	update_queue_asynch()
 
 
 func speedsort(first, second):
@@ -1152,7 +1174,7 @@ func use_skill(skill_code, caster, target):
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
 				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kill', 1)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kills', 1)
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG)
 			s_skill2.target.displaynode.rebuildbuffs()
@@ -1750,6 +1772,27 @@ func combatlogadd(text):
 
 func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)
+
+
+func update_queue_asynch():
+	var data = {node = self, time = turns, type = 'order', slot = 'order', params = {queue = turnorder.duplicate(), current = currentactor}}
+	CombatAnimations.add_new_data(data)
+
+
+func update_queue(queue, current): #don't call in asynchroned state
+	input_handler.ClearContainer($Panel4/VBoxContainer)
+	
+	for ch in [{pos = current}] + queue:
+		if ch.pos < 0 : continue
+		var person = characters_pool.get_char_by_id(battlefield[ch.pos])
+		var tmp = input_handler.DuplicateContainerTemplate($Panel4/VBoxContainer, 'Button')
+		if ch.pos > 6:
+			tmp.disabled = true
+		var icon = person.get_icon()
+		if icon != null:
+			tmp.get_node('icon').texture = icon
+		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
+		tmp.get_node('hpbar').value = person.hp
 
 
 var active_position

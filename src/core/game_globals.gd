@@ -37,7 +37,7 @@ func get_week_and_day():
 	return [((date - 1) / 7 + 1), int((date - 1) % 7 + 1)]
 
 func get_week_and_day_custom(new_date):
-	return [((new_date - 1) / 7), int((new_date - 1) % 7 + 1)]
+	return [((new_date - 1) / 7), int((int(new_date) - 1) % 7 + 1)]
 
 func fix_serialization():
 	date = int(date)
@@ -74,6 +74,7 @@ func advance_hour():
 	hour += 1
 	if hour > variables.HoursPerDay:
 		advance_day()
+		
 
 
 func advance_day():
@@ -81,12 +82,12 @@ func advance_day():
 	hour = 1
 	date += 1
 	ResourceScripts.game_progress.days_from_last_church_quest += 1
-#	daily_sex_left = 1 + ResourceScripts.game_res.upgrades.sex_times
-#	daily_dates_left = 1
+	ResourceScripts.game_res.subtract_taxes()
 	ResourceScripts.game_party.advance_day()
 	
 	#guilds and shops check
 	ResourceScripts.game_world.advance_day()
+	
 	
 	#weeks check
 	if int(date) % variables.DaysPerWeek == 1 or variables.DaysPerWeek == 1:

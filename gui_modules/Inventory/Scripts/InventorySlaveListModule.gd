@@ -10,7 +10,7 @@ func update():
 		var i = ResourceScripts.game_party.characters[id]
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = i.get_full_name()
-		if i.get_stat('unique') != null || i.get_stat('slave_class') == 'master':
+		if i.is_master() or i.is_unique():
 			newnode.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.unique)
 		newnode.pressed = (i == selectedhero)
 		if i.is_on_quest():

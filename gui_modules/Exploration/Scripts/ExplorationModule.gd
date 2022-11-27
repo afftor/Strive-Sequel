@@ -91,6 +91,7 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
+	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
 
@@ -112,7 +113,6 @@ func enslave_select():
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
 	sell_slave()
-
 
 
 func open_journal():
@@ -296,32 +296,35 @@ func open_location(data):
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
 				$LocationGui/Resources/SelectWorkers.visible = true
-			if gatherable_resources != null:
-				var stop_loop = false
-				for i in gatherable_resources:
-					if stop_loop:
-						break
-					var item = Items.materiallist[i]
-					var current_workers_count = 0
-					var active_tasks = ResourceScripts.game_party.active_tasks
-					if active_tasks.empty():
-						$LocationGui/Resources/SelectWorkers.visible = true
-						break
-					for task in active_tasks:
-						if (task.code == i) && (task.task_location == selected_location):
-							current_workers_count = task.workers_count
-							if current_workers_count < gatherable_resources[i]:
-								$LocationGui/Resources/SelectWorkers.visible = true
-								stop_loop = true
-								break
-							else:
-								$LocationGui/Resources/SelectWorkers.visible = false
+			if gatherable_resources == null:
+				$LocationGui/Resources/SelectWorkers.visible = false
+#			if gatherable_resources != null:
+#				var stop_loop = false
+#				for i in gatherable_resources:
+#					if stop_loop:
+#						break
+#					var item = Items.materiallist[i]
+#					var current_workers_count = 0
+#					var active_tasks = ResourceScripts.game_party.active_tasks
+#					if active_tasks.empty():
+#						$LocationGui/Resources/SelectWorkers.visible = true
+#						break
+#					for task in active_tasks:
+#						if (task.code == i) && (task.task_location == selected_location):
+#							current_workers_count = task.workers.size()
+#							if current_workers_count < gatherable_resources[i]:
+#								$LocationGui/Resources/SelectWorkers.visible = true
+#								stop_loop = true
+#								break
+#							else:
+#								$LocationGui/Resources/SelectWorkers.visible = false
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
 #	active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 #	input_handler.active_area = active_area
 	input_handler.active_location = data
+	input_handler.emit_signal("LocationSlavesUpdate")
 #	if input_handler.active_location.has('progress'):
 #		current_level = active_location.progress.level
 #		current_stage = active_location.progress.stage
@@ -632,6 +635,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 
 
 func area_advance(mode): #advance request
+	globals.reset_roll_data()
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
@@ -656,6 +660,7 @@ func area_advance(mode): #advance request
 #			advance()
 	if rand_event == false:
 		input_handler.combat_advance = false
+		globals.char_roll_data.lvl = input_handler.active_location.progress.level
 		StartCombat()
 
 	action_type = mode
@@ -926,6 +931,18 @@ func build_location_group():
 		return
 	build_item_panel()
 	build_spell_panel()
+
+
+func add_rolled_chars(tarr):
+	if input_handler.active_location != null:
+		if !input_handler.active_location.has('captured_characters'):
+			input_handler.active_location.captured_characters = []
+	else:
+		return
+	for id in tarr:
+		input_handler.active_location.captured_characters.push_back(id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
 
 var selectedperson
 func return_character(character):
@@ -2239,7 +2256,7 @@ func see_quest_info(quest):
 					if r.code == "stat":
 						stats[r.stat] = r.value
 					if r.code == "has_profession" && r.check:
-						prof = r.value
+						prof = r.profession
 						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon
@@ -2296,27 +2313,16 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
-				var value = round(
-					(
-						i.value
-						+ (
+				if i.value is Array:
+					newbutton.get_node("amount").show()
+					newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
+					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
+				else:
+					var value = round(
+						(
 							i.value
-							* variables.master_charm_quests_gold_bonus[int(
-								ResourceScripts.game_party.get_master().get_stat('charm_factor')
-							)]
-						)
-					)
-				)
-				newbutton.get_node("Icon").texture = images.icons.quest_gold
-				newbutton.get_node("amount").text = str(value)
-				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = (
-					"Gold: "
-					+ str(i.value)
-					+ " + "
-					+ str(
-						round(
-							(
+							+ (
 								i.value
 								* variables.master_charm_quests_gold_bonus[int(
 									ResourceScripts.game_party.get_master().get_stat('charm_factor')
@@ -2324,8 +2330,25 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					+ "(Master Charm Bonus)"
-				)
+					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					newbutton.get_node("amount").text = str(value)
+					newbutton.get_node("amount").show()
+					globals.connecttexttooltip(newbutton, (
+						"Gold: "
+						+ str(i.value)
+						+ " + "
+						+ str(
+							round(
+								(
+									i.value
+									* variables.master_charm_quests_gold_bonus[int(
+										ResourceScripts.game_party.get_master().get_stat('charm_factor')
+									)]
+								)
+							)
+						)
+						+ "(Master Charm Bonus)")
+					)
 			'reputation':
 				var value = round(
 					(

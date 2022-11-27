@@ -127,11 +127,13 @@ func custom_stats_get(stat):
 			else:
 				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
 		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
 		return tres
 	if stat == 'mpmax':
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		return tres
 	if stat == 'obedience_max':
@@ -156,11 +158,28 @@ func custom_stats_get(stat):
 		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
 		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
 		return tres
+	if stat.ends_with('_bonus'):
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
+		return tres
 	if stat in ['matk', 'atk']:
 		var tres = statlist[stat]
 		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 3
 		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
 		return max(5.0, tres)
+	if stat in ['armor', 'mdef']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 2
+		return tres
+	if stat in ['speed', 'hitrate', 'evasion']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 4
+		return tres
+	if stat in ['productivity']:
+		var tres = statlist[stat]
+		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
+		return tres
 	if stat == 'lustmax':
 		var tres = 25 + statlist.sexuals_factor * 25
 		if check_trait('frigid'):
@@ -703,9 +722,28 @@ func process_chardata(chardata, unique = false):
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
 	
 	set_virginity_data()
-	
+
+
+func roll_growth(diff):
+	var weight = {}
+	weight[1] = 100 - (diff - 1) * 100.0/14.0
+	weight[4] = 5 + (diff - 1) * 10.0/14.0
+	weight[5] = 3 + (diff - 1) * 7.0/14.0
+	weight[5] = 1 + (diff - 1) * 4.0/14.0
+	if diff <= 3:
+		weight[2] = 40 + (diff - 1) * 10.0/2.0
+	else:
+		weight[2] = 50 - (diff - 3) * 45.0/12.0
+	if diff <= 5:
+		weight[3] = 25 + (diff - 1) * 35.0/4.0
+	else:
+		weight[3] = 60 - (diff - 5) * 25.0/10.0
+	var tmp = input_handler.weightedrandom_dict(weight)
+	set_stat('growth_factor', tmp)
+
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
 	if typeof(races) == TYPE_STRING && races == 'random':
@@ -718,7 +756,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 
 	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
-	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
+#	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
+	roll_growth(adjust_difficulty)
 	
 #	if randf() <= 0.003:
 #		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
@@ -733,45 +772,25 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
 
 	#Add extra stats for harder characters
-	while difficulty > 1:
+	var bonus_counter = 0
+	while difficulty > 1 && bonus_counter < 10:
 		var array = []
-		if randf() >= 0.8:
-			array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
-		else:
-			match slaveclass:
-				'combat':
-					array = ['physics_factor']
-				'magic':
-					array = ['wits_factor', 'magic_factor']
-				'social', 'sexual':
-					array = ['tame_factor', 'charm_factor', 'sexuals_factor']
-				'labor':
-					array = ['physics_factor', 'wits_factor']
+		array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
 		array = array[randi()%array.size()]
-		#if statlist[array] < 5: statlist[array] += 1#initial setup direct access
-		add_stat(array, 1)
+		if randf() >= 0.3:
+			add_stat(array, 1)
 		difficulty -= 1
-	difficulty = adjust_difficulty
+		bonus_counter += 1
+	difficulty = adjust_difficulty/3
 	while difficulty > -1:
 		var array = []
-		if randf() >= 0.75:
-			array = ['physics', 'wits','sexuals', 'charm']
-		else:
-			match slaveclass:
-				'combat':
-					array = ['physics']
-				'magic':
-					array = ['wits']
-				'social', 'sexual':
-					array = ['charm', 'sexuals']
-				'labor':
-					array = ['physics', 'wits']
+		array = ['physics', 'wits','sexuals', 'charm']
 		array = array[randi()%array.size()]
-		if array == 'sexuals':
-			add_random_sex_skill()
-		else:
-			#statlist[array] += rand_range(1,15)#initial setup direct access
-			add_stat(array, rand_range(1,15))
+		if randf() >= 0.7:
+			if array == 'sexuals':
+				add_random_sex_skill()
+			else:
+				add_stat(array, rand_range(1,15))
 		difficulty -= 1
 
 	#assign classes
@@ -1192,7 +1211,7 @@ func tick():
 	if !parent.get_ref().is_master():
 		add_stat('loyalty', get_stat('loyalty_gain'))
 		add_stat('loyalty_total', get_stat('loyalty_gain'))
-		if !parent.get_ref().is_spouse():
+		if !parent.get_ref().is_spouse() && variables.no_obedience_drain == false:
 			add_stat('obedience', - get_stat('obedience_drain'))
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:

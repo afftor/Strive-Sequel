@@ -52,8 +52,6 @@ func givereffect(member):
 
 func takereffect(member):
 	var effects = {sens = 310, horny = 5}
-	member.person_metrics.anal += 1
-	member.person_metrics.vag += 1
 	return effects
 
 func initiate():
