@@ -39,9 +39,9 @@ var lands = {
 			{code = 'cali_william_init', text = "Search for collectioner", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_1', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
 			{code = 'cali_william_3', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act4_merchant_1', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_merchant_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act4_merchant_5', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_merchant_quest', stage = 'stage2', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act5_pet_1', text = "Pet Store", reqs = [{type = 'active_quest_stage', value = 'cali_pet_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
+			{code = 'cali_act4_merchant_1', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage12', state = true}], args = {"oneshot": false}},
+			{code = 'cali_act4_merchant_5', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage13', state = true}], args = {"oneshot": false}},
+			{code = 'cali_act5_pet_1', text = "Pet Shop", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage15', state = true}], args = {"oneshot": false}},
 			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": true}},
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -2483,7 +2483,7 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{code = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage2'}, {code = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage3', orflag = true}]}
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
 		]
 	},
 #	dungeon_bandit_fort = {

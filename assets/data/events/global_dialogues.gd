@@ -83,7 +83,7 @@ var data = {
 			{type = 'has_material', operant = 'gte', value = 50, material = 'clothmagic'},
 		], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'gryphon_workers_start', text = "GRYPHON_WORKERS_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
-		{code = 'cali_act2_workers_1', text = "CALI_ACT2_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'cali_act2_workers_1', text = "CALI_ACT2_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

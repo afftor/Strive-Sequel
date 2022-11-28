@@ -1579,14 +1579,14 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Ask for Limnrov", # TODO make text smaller
-			reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage2'}],
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage2'}],
 			target = 'cali_act2_workers_2',
 			target_option = 1,
 		},
 		{
 			code = 'default',
 			name = "Visit Limnrov",
-			reqs = [{type = 'active_quest_stage', value = 'cali_collar_quest', stage = 'stage3'}],
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage3'}],
 			target = 'cali_act2_limnrov',
 			target_option = 1,
 		},
@@ -1616,7 +1616,7 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Meet Leader",
-			reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage2'}],
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}],
 			target = 'cali_act3_mages_1',
 			target_option = 1,
 		},
@@ -1630,7 +1630,7 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = "Talk To Apprentice",
-			reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage3'}],
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8'}],
 			target = 'cali_act3_mages_2',
 			target_option = 3,
 		},
@@ -2042,47 +2042,27 @@ var quests = {
 		},
 	},
 	
-	cali_collar_quest = {
-		code = 'cali_collar_quest',
-		summary = "CALI_COLLAR_QUEST_SUMMARY",
+	cali_taming_quest = {
+		code = 'cali_taming_quest',
+		summary = "CALI_TAMING_QUEST_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_1"}, # ask at workers guild about custom collar
-			stage2 = {code = 'stage2', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_2"}, # ask Limnrov about collar
-			stage3 = {code = 'stage3', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_3"}, # talk to Limnrov about collar
-			stage4 = {code = 'stage4', name = "CALI_COLLAR_QUEST_NAME", descript = "CALI_COLLAR_QUEST_STAGE_4"}, # wait for courier with collar
-		},
-	},
-	
-	cali_magic_quest = {
-		code = 'cali_magic_quest',
-		summary = "CALI_MAGIC_QUEST_SUMMARY",
-		stages = {
-			stage2 = {code = 'stage2', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_2"}, # ask Mages about Cali or talk to Jean (go to dungeon)
-			stage3 = {code = 'stage3', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_3"}, # return to apprentince
-			stage4 = {code = 'stage4', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_4"}, # Wait 2 days
-			stage5 = {code = 'stage5', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_5"}, # Talk to Cali
-			
-			stage1 = {code = 'stage1', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_1"}, # Return to Jean
-			stage6 = {code = 'stage6', name = "CALI_MAGIC_QUEST_NAME", descript = "CALI_MAGIC_QUEST_STAGE_6"}, # Talk to Jean
-		},
-	},
-	
-	cali_merchant_quest = {
-		code = 'cali_merchant_quest',
-		summary = "CALI_MERCHANT_QUEST_SUMMARY",
-		stages = {
-			stage1 = {code = 'stage1', name = "CALI_MERCHANT_QUEST_NAME", descript = "CALI_MERCHANT_QUEST_STAGE_1"}, # visit merchant
-			stage2 = {code = 'stage2', name = "CALI_MERCHANT_QUEST_NAME", descript = "CALI_MERCHANT_QUEST_STAGE_2"}, # return to merchant
-		},
-	},
-	
-	cali_pet_quest = {
-		code = 'cali_pet_quest',
-		summary = "CALI_PET_QUEST_SUMMARY",
-		stages = {
-			stage1 = {code = 'stage1', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_1"}, # visit pet shop
-			stage2 = {code = 'stage2', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_2"}, # talk to cali
-			stage3 = {code = 'stage3', name = "CALI_PET_QUEST_NAME", descript = "CALI_PET_QUEST_STAGE_3"}, # talk to cali tomorrow (kinda bad)
+			stage1 = {code = 'stage1', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_1"}, # ask at workers guild about custom collar
+			stage2 = {code = 'stage2', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_2"}, # ask Limnrov about collar
+			stage3 = {code = 'stage3', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_3"}, # talk to Limnrov about collar
+			stage4 = {code = 'stage4', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_4"}, # wait for courier with collar
+			stage5 = {code = 'stage5', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_5"}, # wait for act 2
+			stage6 = {code = 'stage6', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_6"}, # ask Mages about Cali or talk to Jean (go to dungeon)
+			stage7 = {code = 'stage7', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_7"}, # Talk to Jean
+			stage8 = {code = 'stage8', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_8"}, # return to apprentince
+			stage9 = {code = 'stage9', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_9"}, # Wait 2 days
+			stage10 = {code = 'stage10', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_10"}, # Talk to Cali
+			stage11 = {code = 'stage11', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_11"}, # wait for act 3
+			stage12 = {code = 'stage12', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_12"}, # visit merchant
+			stage13 = {code = 'stage13', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_13"}, # return to merchant
+			stage14 = {code = 'stage14', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_14"},  # wait for act 4
+			stage15 = {code = 'stage15', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_15"},  # visit pet shop
+			stage16 = {code = 'stage16', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_16"},  # talk to Сali
+			stage17 = {code = 'stage17', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_17"},  # talk to Сali tomorrow (kinda bad)
 		},
 	},
 }
