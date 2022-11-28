@@ -535,8 +535,8 @@ var data = {
 		], 
 		options = [
 			{code = 'cali_sword_return_1', text = 'CALI_SWORD_RETURN_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage9'}], dialogue_argument = 1, type = 'next_dialogue', },
-			{code = 'cali_act3_blow_1', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage5'}], dialogue_argument = 1, type = 'next_dialogue', },
-			{code = 'cali_act5_pet_3', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_pet_quest', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue', },
+			{code = 'cali_act3_blow_1', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage10'}], dialogue_argument = 1, type = 'next_dialogue', },
+			{code = 'cali_act5_pet_3', text = 'CALI_ACT3_BLOW_OPTION_INIT',reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage16'}], dialogue_argument = 1, type = 'next_dialogue', },
 			{code = 'cali_serve_start', text = 'DAISY_SERVE_OPTION_START',reqs = [], dialogue_argument = 1}, 
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
 		],
@@ -726,8 +726,8 @@ var data = {
 			},	
 		], 
 		options = [
-			{code = 'cali_act3_jean_1', text = "CALI_ACT3_JEAN_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage2'}, {type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage3', orflag = true}], dialogue_argument = 1, type = 'next_dialogue',},
-			{code = 'cali_act3_jean_4', text = "CALI_ACT3_JEAN_3_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_magic_quest', stage = 'stage6'}], dialogue_argument = 1, type = 'next_dialogue',},
+			{code = 'cali_act3_jean_1', text = "CALI_ACT3_JEAN_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}], dialogue_argument = 1, type = 'next_dialogue',},
+			{code = 'cali_act3_jean_4', text = "CALI_ACT3_JEAN_3_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage7'}], dialogue_argument = 1, type = 'next_dialogue',},
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
 		],
 	},
