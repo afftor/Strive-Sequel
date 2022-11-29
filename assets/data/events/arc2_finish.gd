@@ -991,7 +991,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'erlen', character2 = 'elf_priestess', 
 		text = [{text = 'CEREMONY_HELEVIEL_3_1_1', reqs = [], previous_dialogue_option = 1},
-		{text = 'CEREMONY_HELEVIEL_3_1_2', reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Lira', recruit_from_location = true}]},],
+		{text = 'CEREMONY_HELEVIEL_3_1_2', reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Lira', recruit_from_location = true}]},{code = 'plan_mansion_event', value = 'lira_mansion_1'}],
 		options = [ {
 			code = 'ceremony_heleviel_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -1065,7 +1065,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = 'erlen',
 		text = [{text = 'CEREMONY_LIRA_4_1_1', reqs = []},],
-		common_effects = [{code = 'make_story_character', value = 'Heleviel', recruit_from_location = true}],
+		common_effects = [{code = 'make_story_character', value = 'Heleviel', recruit_from_location = true}, {code = 'plan_mansion_event', value = 'heleviel_mansion_1'}],
 		options = [ {
 			code = 'ceremony_lira_4_2', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, ]
