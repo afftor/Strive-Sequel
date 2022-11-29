@@ -5627,8 +5627,15 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 
 	ITEMCALI_COLLAR = "Cali's Collar",
 	ITEMCALI_COLLARDESCRIPT = "A collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
+	CALI_EXQUISITE_COLLAR = "Cali's Exquisite Collar",
+	CALI_EXQUISITE_COLLARDESCRIPT = "A fancy collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
+	
 	ITEMCALI_COLLAR_ENCHANTED = "Cali's Enchanted Collar",
-	ITEMCALI_COLLAR_ENCHANTEDDESCRIPT = "A collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali} ",
+	ITEMCALI_COLLAR_ENCHANTEDDESCRIPT = "A collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali}",
+	
+	
+	ITEMCALI_COLLAR_ENCHANTED_2 = "Cali's Ex. Enchanted Collar",
+	ITEMCALI_COLLAR_ENCHANTED_2DESCRIPT = "A fancy collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali}",
 	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 
@@ -9179,12 +9186,15 @@ The girl only blushes more as you move towards her on the bed now. Looking away 
 - W-wait I'm not...
 
 The girl's eyes go wide seeing your length as you open your pants now, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
-	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning as a reply as you push into her. Eyes rolling back, all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.""",
+	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning as a reply as you push into her.  Eyes rolling back all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
+
+The sight of the teen squirming around as you pumped into her was perfect as she served you willingly, eagerly now.  Soon the matting became rougher as you naturally escalated with her, your grip tight on her hips as you thrust into her.  
+""",
 	CALI_ACT4_FUCK_2 = """- R-right there...
 
 The girl's body would eventually go rigid on you as she climaxes, a seductive little moan bubbling out of her throat as you soon join her. Cali doesn't protest as you bury yourself deep into her body, your cum filling her.
 
-Cali says nothing as you pull out of her afterward, the girl left laying there as you look her body over, a smirk on your lips as you make sure to close the door behind you.""",
+Cali stay quiet as you pull out of her afterward, the girl left laying there as you look her body over, a smirk on your lips as you make sure to close the door behind you.""",
 	CALI_ACT4_MAST_6 = """Cali's face is red still as she looks at you, then the book. It's quite obvious what she was masterbating to, the illustration of a male of your face inserted into a half wolf from behind is quite well drawn. She snaps the book closed now, stuffing it under her pillow as she says nothing for now.
 
 Looking at you, then where she hid the book she finally relented, moving the cover aside and showing you, her pussy soaked from her recent orgasm. 
@@ -9244,12 +9254,20 @@ Perhaps it was too much for her...""",
 	CALI_ACT5_PET_7 = """Cali looks at you for a few moments, shaking before hunger wins out. The girl goes to pick up the bowl looking at you, realizing she'd have to eat out of it like an animal. 
 
 Kneeling down, the girl soon was on all fours. Her ass slightly in the air as she tasted the food. Soon, she gives in as she starts to eat.""",
-	CALI_ACT5_PET_8 = """Her panties were visibly wet as she ate now. A grunt was heard from her as your hand finds them now, sliding over her backside while you sit beside your feeding pet. Cali stops 
+	CALI_ACT5_PET_8 = """Her panties were visibly wet as she ate now. A grunt was heard from her as your hand finds them now, sliding over her backside while you sit beside your feeding pet.  Cali stops her eating now, looking back with dark blush creeping over her face.
 
-More than once Cali would let a little whimper escape her mouth now, her entrance hot through her panties as it was clear she was quite excited. Her hips lifting up higher to present herself to you.
+Cali:- [Name], what are you doing?
 
-Her body continues to shake until she tenses up not long after she finishes the meal, her panties becoming soaked as the girl cums from the stimulation.""",
-	CALI_ACT5_PET_9 = """- Why... doesn't this feel wrong...?
+A light touch to her chin is all the girl would receive in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she’s unable to focus on her meal for much longer.
+
+Cali:- W-wait not th-""",
+	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+
+Cali:- Nhhh...
+
+The girl withdrew her protests giving into your caress, finally buckling as her legs closed hard around your hand as he soaked her panties, a shrill cry coming from her throat as she nearly collapsed onto her bowl, her eyes looking ahead a bit dazed now.   
+
+- Why... doesn't this feel wrong...?
 
 Cali seems conflicted before sighing, her body relaxing now there on the floor as your hand slides through her hair. It seems she has completely forgotten her initial grudge despite everything.
 

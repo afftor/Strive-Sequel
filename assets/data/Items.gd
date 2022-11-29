@@ -1557,7 +1557,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -4, loyalty_gain = 0.7},
+		basestats = {obedience_drain = -4, loyalty_gain = 0.75},
 	},
 	cali_exquisite_collar = {
 		code = 'cali_exquisite_collar',
@@ -1574,7 +1574,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -4, loyalty_gain = 0.7},
+		basestats = {obedience_drain = -5, loyalty_gain = 1.5},
 	},
 	cali_collar_enchanted = {
 		code = 'cali_collar_enchanted',
@@ -1591,7 +1591,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -6, loyalty_gain = 1.5},
+		basestats = {obedience_drain = -6, loyalty_gain = 1, sexuals_bonus = 10},
 	},
 	cali_collar_enchanted_2 = {
 		code = 'cali_collar_enchanted_2',
@@ -1608,7 +1608,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -6, loyalty_gain = 1.7, sexuals_bonus = 15},
+		basestats = {obedience_drain = -7, loyalty_gain = 1.7, sexuals_bonus = 15},
 	},
 	enslaving_collar = {
 		code = 'enslaving_collar',
