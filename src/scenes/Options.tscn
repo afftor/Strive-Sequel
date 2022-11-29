@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -19,6 +19,11 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png" type="Texture" id=17]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=18]
 [ext_resource path="res://gui_modules/MenuButton.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+font_data = ExtResource( 20 )
 
 [node name="Options" type="Panel"]
 margin_left = 602.0
@@ -37,7 +42,7 @@ margin_top = 99.0
 margin_right = 616.0
 margin_bottom = 668.0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color_bg = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,9 +55,11 @@ margin_top = 45.0
 
 [node name="MenuButton" parent="TabContainer/Gameplay" instance=ExtResource( 19 )]
 margin_left = 40.0
-margin_top = 563.432
-margin_right = 204.0
-margin_bottom = 605.432
+margin_top = 563.0
+margin_right = 206.0
+margin_bottom = 605.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="furry" type="CheckBox" parent="TabContainer/Gameplay"]
 margin_left = 40.0
@@ -560,3 +567,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Options"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
