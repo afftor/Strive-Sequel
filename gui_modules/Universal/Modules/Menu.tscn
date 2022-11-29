@@ -549,7 +549,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Dungeon recruiting:
+bbcode_text = "0.6.6a
+Fixed erebus stone enemy/hammerfall skill
+Fixed certain events not working properly due to recent changes
+Fixed skills missing names
+0.6.6
+Dungeon recruiting:
 Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
 
 Factors revamp:
@@ -558,10 +563,16 @@ Exp requirements are no longer affected by it.
 Starting Growth factor for unique characters have been reduced 
 Factors now increased by sacrificing a character at slave market. 
 
+Added console to run some custom commands (F2)
 Removed loyalty bonus on taking virginity by master
 Removed breeder class for purchase
+Nerfed combat xp across the board
 Updated service icon/behavior to better reflect on slave's current state
+Boosted Cali's sword
+Assassination damage type changed to dark
+Hammerfall damage type changed to earth
 Fixed some descriptions
+Fixed some parts of sex service not working correctly
 Minor bugfixes
 0.6.5d
 Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
@@ -1259,7 +1270,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Dungeon recruiting:
+text = "0.6.6a
+Fixed erebus stone enemy/hammerfall skill
+Fixed certain events not working properly due to recent changes
+Fixed skills missing names
+0.6.6
+Dungeon recruiting:
 Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
 
 Factors revamp:
@@ -1268,10 +1284,16 @@ Exp requirements are no longer affected by it.
 Starting Growth factor for unique characters have been reduced 
 Factors now increased by sacrificing a character at slave market. 
 
+Added console to run some custom commands (F2)
 Removed loyalty bonus on taking virginity by master
 Removed breeder class for purchase
+Nerfed combat xp across the board
 Updated service icon/behavior to better reflect on slave's current state
+Boosted Cali's sword
+Assassination damage type changed to dark
+Hammerfall damage type changed to earth
 Fixed some descriptions
+Fixed some parts of sex service not working correctly
 Minor bugfixes
 0.6.5d
 Added special Halloween event and new sprites. Event is available after completing first arc until 15.11
@@ -2078,3 +2100,4 @@ __meta__ = {
 }
 
 [node name="Gallery" parent="." instance=ExtResource( 22 )]
+visible = false

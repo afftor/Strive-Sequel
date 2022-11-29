@@ -1164,8 +1164,8 @@ var Skilllist = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'single',
-		target_range = 'earth',
-		damage_type = 'normal',
+		target_range = 'melee',
+		damage_type = 'earth',
 		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.5

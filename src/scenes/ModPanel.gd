@@ -216,9 +216,10 @@ func sort_mods():
 			sorted_mods.push_back(m)
 		else:
 			var inserted = false
+			var last = sorted_mods.size()-1
 			for sm in sorted_mods.size():
-				if m.name in sorted_mods[sm].before:
-					sorted_mods.insert(sm+1, m)
+				if m.name in sorted_mods[last-sm].before:
+					sorted_mods.insert(last-sm+1, m)
 					inserted = true
 					break
 			if not inserted:

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.6 experimental 3'
+const gameversion = '0.6.6a'
 
 #time
 signal hour_tick
@@ -1854,8 +1854,6 @@ func common_effects(effects):
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
 				ResourceScripts.game_progress.planned_mansion_events.append(i.value)
-			_: 
-				return "Invalid command" #Egodgorn
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
