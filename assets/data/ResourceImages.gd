@@ -182,6 +182,14 @@ var backgrounds = {
 	lilia_sex_2_1 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
 	lilia_sex_2_2 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
 	
+	heleviel_bj_1 = load("res://assets/images/fullscreen scenes/HelevielCG005.png"),
+	heleviel_bj_2 = load("res://assets/images/fullscreen scenes/HelevielCG006.png"),
+	heleviel_bj_3 = load("res://assets/images/fullscreen scenes/HelevielCG007.png"),
+	
+	lira_sex_1 = load("res://assets/images/fullscreen scenes/LiraCG001.png"),
+	lira_sex_2 = load("res://assets/images/fullscreen scenes/LiraCG002.png"),
+	lira_sex_3 = load("res://assets/images/fullscreen scenes/LiraCG003.png"),
+	
 	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),

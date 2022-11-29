@@ -60,7 +60,7 @@ var data = {
 			{
 				code = 'princess_search_fighters_4',
 				text = "SEARCH_FIGHTERS_OPTION_5",
-				reqs = [{type = 'decision', value = 'aire_is_saved', check = true}], #not sure about this
+				reqs = [{type = 'decision', value = 'aire_is_saved', check = true}, {type = 'decision', value = 'aire_is_dead', check = false},], #not sure about this
 				dialogue_argument = 1,
 			},
 			{
@@ -483,7 +483,7 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_8_1", reqs = [{type = 'decision', value = 'aire_is_saved', check = false}], previous_dialogue_option = 1},
-			{text = "SEARCH_DUNGEON_8_1_IF_MET", reqs = [{type = 'decision', value = 'aire_is_saved', check = true}], previous_dialogue_option = 1},
+			{text = "SEARCH_DUNGEON_8_1_IF_MET", reqs = [{type = 'decision', value = 'aire_is_saved', check = true}, {type = 'decision', value = 'aire_is_dead', check = false},], previous_dialogue_option = 1},
 			{text = "SEARCH_DUNGEON_8_2", reqs = [], previous_dialogue_option = 2},
 			{text = "SEARCH_DUNGEON_8_3", reqs = [], previous_dialogue_option = 3},
 			{text = "SEARCH_DUNGEON_8_4", reqs = [], previous_dialogue_option = 4},
