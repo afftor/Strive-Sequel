@@ -9,7 +9,7 @@ var data = {
 				{text = "PRE_ANASTASIA_EXECUTION_3", reqs = [{type = 'decision', value = 'SiegeLostSupplies', check = false}], previous_dialogue_option = 1}],
 				options = [ {
 					code = 'capture_wrapup_start', text = "PRE_ANASTASIA_EXECUTION_OPTION_1", 
-					reqs = [{type = 'decision', value = 'aire_is_saved', check = true}], dialogue_argument = 1, remove_after_first_use = true,
+					reqs = [{type = 'decision', value = 'aire_is_saved', check = true}, {type = 'decision', value = 'aire_is_dead', check = false},], dialogue_argument = 1, remove_after_first_use = true,
 				}, {
 					code = 'capture_wrapup_1', text = "PRE_ANASTASIA_EXECUTION_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 				}, {

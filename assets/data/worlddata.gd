@@ -2066,7 +2066,7 @@ var dungeons = {
 			# hard no mages help
 			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
 				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false}, 
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, 
+				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
 				{code = 'stage', value = 3, operant = 'gte'}]},
 			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
 				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false},
@@ -2074,7 +2074,7 @@ var dungeons = {
 			# easy with mages help
 			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
 				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, 
+				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
 				{code = 'stage', value = 2, operant = 'gte'}]},
 			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
 				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
