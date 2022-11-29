@@ -248,8 +248,8 @@ margin_left = 18.6715
 margin_top = 149.104
 margin_right = 624.672
 margin_bottom = 223.104
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.682353, 0.321569, 0.768627, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Strive: Conquest"
 align = 1
 __meta__ = {
@@ -337,8 +337,8 @@ __meta__ = {
 [node name="NewGameLabel" type="Label" parent="NewGamePanel"]
 margin_right = 709.0
 margin_bottom = 85.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 text = "New game"
 align = 1
 valign = 1
@@ -351,8 +351,8 @@ margin_left = 8.0
 margin_top = 482.0
 margin_right = 296.0
 margin_bottom = 567.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Settings"
 align = 1
 valign = 1
@@ -402,8 +402,8 @@ margin_left = 72.0
 margin_top = 9.0
 margin_right = 264.0
 margin_bottom = 41.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -426,8 +426,8 @@ margin_left = 310.0
 margin_top = 119.0
 margin_right = 629.0
 margin_bottom = 447.0
-custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 
 [node name="Label" type="Label" parent="NewGamePanel"]
@@ -436,8 +436,8 @@ margin_left = 736.036
 margin_top = 42.9593
 margin_right = 831.036
 margin_bottom = 66.9593
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Settings"
 
 [node name="StartButton" type="Button" parent="NewGamePanel"]
@@ -446,12 +446,12 @@ margin_top = 672.097
 margin_right = 598.21
 margin_bottom = 735.097
 theme = ExtResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Start Game"
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
@@ -468,8 +468,8 @@ margin_left = 51.0
 margin_top = 16.0
 margin_right = 176.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 
@@ -511,8 +511,8 @@ margin_left = 2.0
 margin_top = 43.0
 margin_right = 77.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 __meta__ = {
@@ -1985,8 +1985,8 @@ texture = ExtResource( 19 )
 [node name="Label" type="Label" parent="Credits/Background"]
 margin_right = 649.0
 margin_bottom = 81.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 text = "Credits"
 align = 1
 valign = 1

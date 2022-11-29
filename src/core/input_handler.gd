@@ -306,6 +306,13 @@ func quit():
 
 
 func _init():
+	if variables.get('input_handler_extend'):
+		variables.set('input_handler_extend', false)
+		OS.window_size = globalsettings.window_size
+		OS.window_position = globalsettings.window_pos
+		settings_load()
+		load_progress_data()
+		return
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
 		for ifile in dir_contents(i):
@@ -1103,10 +1110,17 @@ func text_form_recitation(string_array):
 func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
 	var node = get_tree().get_root()
+	for n in modding_core.gui_nodes:
+		if n.name == ResourceScripts.node_data[type].name and !ResourceScripts.node_data[type].has('no_return'):
+			window = n
+			node.add_child(window)
+			modding_core.gui_nodes.erase(window)
+			break
+
 	if node.has_node(ResourceScripts.node_data[type].name) and !ResourceScripts.node_data[type].has('no_return'):
 		window = node.get_node(ResourceScripts.node_data[type].name)
 		#node.remove_child(window)
-	else:
+	elif window == null:
 		match ResourceScripts.node_data[type].mode:
 			'scene':
 				window = ResourceScripts.node_data[type].scene.instance()
