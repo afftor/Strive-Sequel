@@ -692,7 +692,8 @@ func build_race():
 		else:
 			$VBoxContainer/race/icon.texture = rdata.icon
 	else:
-		print('warn - race selection not valid')
+		if !preservedsettings.empty():
+			print('warn - race selection not valid')
 		$VBoxContainer/race/Label.text = "Race"
 		$VBoxContainer/race/icon.texture = null
 
