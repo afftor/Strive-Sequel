@@ -132,7 +132,7 @@ enum {
 
 
 var globalsettings = {
-	ActiveLocalization = 'en',
+	ActiveLocalization = 'de',
 	mastervol = -15,
 	mastermute = false,
 	musicvol = -20,
@@ -313,6 +313,8 @@ func _init():
 		settings_load()
 		load_progress_data()
 		return
+		
+	settings_load()
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
 		for ifile in dir_contents(i):
@@ -329,12 +331,13 @@ func _init():
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
+	TranslationServer.set_locale(globalsettings.ActiveLocalization)
 #	connect("EventFinished", self, "event_finished")
 
 func _ready():
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
-	settings_load()
+	#settings_load() Egodgorn
 	load_progress_data()
 
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
