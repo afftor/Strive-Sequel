@@ -8619,6 +8619,32 @@ The wolf girl half pleads for it now, her hips writhing on you after only a few 
 
 You could slow down and take your time, enjoy her a bit longer now, but her whimpers and soft moans soon urge you to join her, the two of you finding yourselves grinding hungrily against each other, an eruption of mess between the two of you as Cali squeezes her eyes shut, shaking in your grasp.""",
 	
+	CALI_GRAT_SEX_ALTER_1 = """Cali is shaking as you lift her up now, her eyes moving to yours before looking away, a blush obvious on her face.  That blush she wears turns even darker as she feels the warmth of your shaft resting between her legs, the head gliding between her petals.  
+
+You take your time with this, soft whimpers coming from Cali's mouth, though it's obvious she's trying to suppress them.  As you continue your grinding it's clear by her shaking that she's nervous, the gulp the girl makes audible as she looks up at you, her eyes wide. 
+
+- [Master] I'm... ok I'm ready...
+
+You feel a bit of pride swell in you as the girl is being so brave for you, serving your needs even with her own fears.  After a few more minutes of grinding both of you are panting, your eyes locking for a brief moment as you start to press now, drawing louder whimpers from the half-wolf as you start to press into her body, her eyes closed as you take her slowly. 
+
+""",
+	CALI_GRAT_SEX_ALTER_2 = """Cali's legs squeeze tight around you as you find yourself half inside of her now, her eyes closed as she's clenched around your shaft like a vice.  The squeezing only would drive you on as you grip her hips, pushing deep into her until your hips and hers were pressed against each other, the whimpers from the teens mouth clearly audible.
+
+- Aah-hah... It's not... as bad as I imagined.
+
+Her body was well worth the wait. The female's body light in your hands as you began your driving into her, her hole squeezing firmly in protest of the intrusion, but unable to stop it either way.  Cali for her own part either by embarrassment or in an attempt to appear brave for you bites down on her lip to quiet herself, with mixed results.
+""",
+	CALI_GRAT_SEX_ALTER_3 = """
+Cali's whimpers were cute, arousing even as the girl allowed her body to serve whatever needs you had now.  Your hands were quite tight on her figure as you pumped into her, no protests coming from the virgin girl as you drove deep into her womanhood.  Soon enough you'd find yourself buried to the base of your shaft inside of her, Cali taking you fully on her first time as she squeezes you naturally, only adding to your pleasure.
+
+After such an effort on her part it'd be an understatement to say you were pleased with her performance, your hips pumping hungrily into the teen as she continues to try to stifle her whimpers. Eventually she loses the struggle as she gasps out, her eyes going wide for a few moments as you fill her. Your cum shoots deep into her body as she goes rigid, her back arching hard as you leave every single drop in her.
+""",
+	CALI_GRAT_SEX_ALTER_4 = """
+Everything is quiet for a few moments as you hold her there, her breath coming out in ragged pants before she sneaks a look at you.  
+
+- I'm... glad it was you [Master].
+""",
+	
 	CALI_AMELIA_1 = """As is usual today Cali has been attending her lessons with Amelia at the Servant's Guild. This time however Amelia can't help but notice the girl is distracted, her effort far from her usual.
 
 Amelia: - Cali, tell me, is there something bothering you?
