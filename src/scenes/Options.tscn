@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -18,7 +18,20 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png" type="Texture" id=17]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=18]
-[ext_resource path="res://gui_modules/MenuButton.tscn" type="PackedScene" id=19]
+[ext_resource path="res://gui_modules/Universal/Modules/ChangeLanguageMenuButtonModule.gd" type="Script" id=19]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 29
+font_data = ExtResource( 20 )
 
 [node name="Options" type="Panel"]
 margin_left = 602.0
@@ -37,7 +50,7 @@ margin_top = 99.0
 margin_right = 616.0
 margin_bottom = 668.0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color_bg = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,11 +61,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 45.0
 
-[node name="MenuButton" parent="TabContainer/Gameplay" instance=ExtResource( 19 )]
+[node name="MenuButton" type="MenuButton" parent="TabContainer/Gameplay"]
 margin_left = 40.0
-margin_top = 563.432
-margin_right = 204.0
-margin_bottom = 605.432
+margin_top = 563.0
+margin_right = 206.0
+margin_bottom = 605.0
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SwitchLanguage"
+flat = false
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="furry" type="CheckBox" parent="TabContainer/Gameplay"]
 margin_left = 40.0
@@ -560,3 +582,36 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Options"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReloadGameLanguage" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ReloadGameLanguage"]
+margin_left = 215.149
+margin_top = 623.0
+margin_right = 415.149
+margin_bottom = 673.0
+rect_pivot_offset = Vector2( 100, 25 )
+custom_fonts/font = SubResource( 2 )
+text = "Ok"
+
+[node name="Label" type="Label" parent="ReloadGameLanguage"]
+margin_left = 69.0
+margin_top = 298.0
+margin_right = 583.0
+margin_bottom = 567.0
+custom_fonts/font = SubResource( 3 )
+text = "To change the language, you need to restart the game"
+align = 1
+valign = 1
+autowrap = true
+
+[connection signal="pressed" from="ReloadGameLanguage/Button" to="." method="_on_Button_pressed"]

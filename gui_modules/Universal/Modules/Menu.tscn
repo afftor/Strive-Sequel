@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -56,7 +56,6 @@
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
 [ext_resource path="res://assets/images/gui/panels/wiki.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=56]
-[ext_resource path="res://gui_modules/MenuButton.tscn" type="PackedScene" id=57]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -96,8 +95,6 @@ expand = true
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="MenuButton" parent="." instance=ExtResource( 57 )]
 
 [node name="char_sprite" type="TextureRect" parent="."]
 margin_left = 1008.17
