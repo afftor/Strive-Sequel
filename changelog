@@ -1,3 +1,8 @@
+0.6.6a
+Fixed erebus stone enemy/hammerfall skill
+Fixed certain events not working properly due to recent changes
+Fixed skills missing names
+0.6.6
 Dungeon recruiting:
 Now after combat there's a chance to receive a potential recruit. Recruitees depend on location and area. Recruitees can be added to roster or quickly sold. On forgetting location all characters there will be sold. More mechanics for recruitees will be introduced later.
 

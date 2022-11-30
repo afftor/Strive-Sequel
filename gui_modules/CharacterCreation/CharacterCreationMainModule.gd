@@ -254,6 +254,9 @@ func rebuild_slave():
 	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
 	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
 	build_class()
+	build_race()
+	build_sex_trait()
+	build_trait()
 	if preservedsettings.has("food_love") and valid_preservedsettings.food_love:
 		if preservedsettings.food_love != '':
 			t_person.food.food_love = preservedsettings["food_love"]
@@ -274,6 +277,7 @@ func rebuild_slave():
 	select_diet()
 	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
 		select_sex_trait(preservedsettings.sex_traits)
+	
 	RebuildStatsContainer()
 	SlaveInfo.build_bodyparts()
 	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')

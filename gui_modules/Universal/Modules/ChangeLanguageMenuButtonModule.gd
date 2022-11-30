@@ -18,6 +18,5 @@ func _on_item_pressed(id):
 	
 	input_handler.globalsettings.ActiveLocalization = name.to_lower()
 	input_handler.settings_save(input_handler.globalsettings)
-	
 	OkPanel.visible = true
 	pass

@@ -408,14 +408,6 @@ func fix_main_data():
 	#load images
 	images.loadimages()
 
-	#fix skills format
-	for s in Skilldata.Skilllist:
-		var tmp = Skilldata.Skilllist[s]
-		if tmp.has('new_syntax') and tmp.new_syntax == true: continue
-		var ss = ResourceScripts.scriptdict.class_sskill_legacy.new()
-		ss.createfromskill(s)
-		Skilldata.Skilllist[s] = ss.convert_to_new_template()
-
 	#fix skills
 	for i in Skilldata.Skilllist.values():
 		if !i.has('name'):
@@ -429,6 +421,14 @@ func fix_main_data():
 			i.icon = input_handler.loadimage(i.icon, 'icons')
 		#type fix
 		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
+		
+	#fix skills format
+	for s in Skilldata.Skilllist:
+		var tmp = Skilldata.Skilllist[s]
+		if tmp.has('new_syntax') and tmp.new_syntax == true: continue
+		var ss = ResourceScripts.scriptdict.class_sskill_legacy.new()
+		ss.createfromskill(s)
+		Skilldata.Skilllist[s] = ss.convert_to_new_template()
 
 	#load proffessions
 	for i in classesdata.professions.values():
