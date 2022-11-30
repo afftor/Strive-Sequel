@@ -132,7 +132,7 @@ enum {
 
 
 var globalsettings = {
-	ActiveLocalization = 'de',
+	ActiveLocalization = 'en',
 	mastervol = -15,
 	mastermute = false,
 	musicvol = -20,
