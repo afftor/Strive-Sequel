@@ -628,7 +628,10 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_GRAT_2", reqs = []} ], 
 		options = [ {
-			code = 'cali_grat_sex_1', text = "CALI_GRAT_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'cali_grat_sex_1', text = "CALI_GRAT_2_OPTION_1", reqs = [{type = "decision", value = "cali_sex", check = true}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			},
+			{
+			code = 'cali_grat_sex_alter_1', text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "cali_sex", check = false}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 			},
 			{
 			code = 'cali_grat_3', text = "CALI_GRAT_2_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -659,7 +662,10 @@ var data = {
 		},],
 		text = [ {text = "CALI_GRAT_4", reqs = []} ], 
 		options = [ {
-			code = 'cali_grat_sex_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'cali_grat_sex_1', text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "cali_sex", check = true}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			},
+			{
+			code = 'cali_grat_sex_alter_1', text = "DIALOGUECONTINUE", reqs = [{type = "decision", value = "cali_sex", check = false}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 			},
 		],
 	},
@@ -1001,6 +1007,75 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				change_dialogue_type = 1
+			}
+		],
+	},
+	cali_grat_sex_alter_1 = {
+		image = null,
+		custom_background = "cali_riding_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		common_effects = [{code = 'decision', value = 'cali_sex'}],
+		tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		text = [{text = "CALI_GRAT_SEX_ALTER_1", reqs = []}],
+		options = [
+			{
+				code = 'cali_grat_sex_alter_2',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_grat_sex_alter_2 = {
+		image = null,
+		custom_background = "cali_riding_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [{text = "CALI_GRAT_SEX_ALTER_2", reqs = []}],
+		options = [
+			{
+				code = 'cali_grat_sex_alter_3',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_grat_sex_alter_3 = {
+		image = null,
+		custom_background = "cali_riding_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [{text = "CALI_GRAT_SEX_ALTER_3", reqs = []}],
+		options = [
+			{
+				code = 'cali_grat_sex_alter_4',
+				text = "DIALOGUECONTINUE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
+			}
+		],
+	},
+	cali_grat_sex_alter_4 = {
+		image = null,
+		custom_background = "cali_riding_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [{text = "CALI_GRAT_SEX_ALTER_4", reqs = []}],
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE",
+				type = 'next_dialogue',
+				reqs = [],
+				dialogue_argument = 1,
 			}
 		],
 	},

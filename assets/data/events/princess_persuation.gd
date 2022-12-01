@@ -828,7 +828,7 @@ var data = {
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_46", reqs = []},
-					{text = "ANASTASIA_PERSUASION_47", reqs = [{type = 'decision', value = 'aire_is_saved', check = true}], bonus_effects = [
+					{text = "ANASTASIA_PERSUASION_47", reqs = [{type = 'decision', value = 'aire_is_saved', check = true}, {type = 'decision', value = 'aire_is_dead', check = false},], bonus_effects = [
 						{code = 'dialogue_counter', name = 'sympathy2', op = '+'},
 						{code = 'dialogue_counter', name = 'sympathy2', op = '+'},
 						{code = 'dialogue_counter', name = 'sympathy2', op = '+'},

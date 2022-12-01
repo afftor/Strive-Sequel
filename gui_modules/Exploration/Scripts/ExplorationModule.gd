@@ -1621,6 +1621,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 
 func show_upgrade_window():
 	gui_controller.close_top_window()
+	$SlaveMarket.hide()
 	if !gui_controller.windows_opened.has($StatsUpgrade):
 		gui_controller.windows_opened.append($StatsUpgrade)
 	$StatsUpgrade.show()

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.6 experimental 2'
+const gameversion = '0.6.6a'
 
 #time
 signal hour_tick
@@ -48,14 +48,10 @@ var sex_actions_dict = {}
 
 #warning-ignore:unused_signal
 signal scene_changed
+signal scene_change_start
+
 
 func _init():
-
-
-	#for logging purposes
-	print("Game Version: " + str(gameversion))
-	print("OS: " +  OS.get_name())
-
 	if dir.dir_exists(variables.userfolder + 'saves') == false:
 		dir.make_dir(variables.userfolder + 'saves')
 
@@ -66,7 +62,15 @@ func _init():
 		if i.ends_with('.gd'):
 			var newaction = load(i).new()
 			sex_actions_dict[newaction.code] = newaction
-
+	
+	#quit if extending
+	if variables.get('globals_extend'):
+		variables.set('globals_extend', false)
+		return
+	#for logging purposes
+	print("Game Version: " + str(gameversion))
+	print("OS: " +  OS.get_name())
+	
 	for i in input_handler.dir_contents("res://assets/data/events"):
 		if i.find('.gd') < 0:
 			continue
@@ -81,37 +85,15 @@ func _init():
 func _ready():
 	randomize() #for legacy code sake
 	rng.randomize()
+	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
-#	#recreate statdata records for containers
-#	for i in variables.resists_list:
-#		statdata.statdata['resist_'+i] = {code = "resist_"+i}
-
-	for i in statdata.statdata.values():
-		if !i.has('name') or i.name == '': i.name = tr("STAT" + i.code.to_upper())
-		else: i.name = tr(i.name)
-		if !i.has('descript') or i.descript == '': i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
-		else: i.descript = tr(i.descript)
-
-	for i in upgradedata.upgradelist.values():
-		i.name = tr("UPGRADE" + i.code.to_upper())
-		i.descript = tr("UPGRADE" + i.code.to_upper() + "DESCRIPT")
-
-	for i in statdata.worktoolnames:
-		statdata.worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
-
-	for i in ResourceScripts.descriptions.bodypartsdata:
-		for k in ResourceScripts.descriptions.bodypartsdata[i].values():
-			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
-#			text += k.name + ' = "' + k.code + '",\n'
-			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
-	
-	races.fill_racegroups()
-	
-	
-	modding_core.fix_main_data_preload()
+	modding_core.load_mods()
 	modding_core.process_data_mods()
-	modding_core.fix_main_data_postload()
+	modding_core.process_translation_mods()
+	races.fill_racegroups()
+	modding_core.fix_main_data()
+
 	reset_roll_data()
 
 
@@ -1872,8 +1854,6 @@ func common_effects(effects):
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
 				ResourceScripts.game_progress.planned_mansion_events.append(i.value)
-			_: 
-				return "Invalid command" #Egodgorn
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

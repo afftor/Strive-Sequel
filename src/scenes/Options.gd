@@ -1,5 +1,8 @@
 extends Panel
 
+var ReloadPanel
+var SwitchLanguage
+
 #warning-ignore-all:return_value_discarded
 # var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
 func _ready():
@@ -17,7 +20,9 @@ func _ready():
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
-
+	ReloadPanel = $ReloadGameLanguage
+	SwitchLanguage = $TabContainer/Gameplay/MenuButton
+	SwitchLanguage.OkPanel = ReloadPanel
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
@@ -156,3 +161,8 @@ func gameplay_rule(tab, rule):
 		if gui_controller.clock != null:
 			gui_controller.clock.set_time_buttons()
 
+
+
+func _on_Button_pressed():
+	get_tree().quit()
+	pass # Replace with function body.

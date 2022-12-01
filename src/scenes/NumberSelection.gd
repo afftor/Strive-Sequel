@@ -14,6 +14,8 @@ var modular_item = null
 
 func _ready():
 	$Button.connect('pressed', self, "confirm_number_selection")
+	if name == "NumberSelection":
+		$MAX.connect('pressed', self, "max_value_slider")
 	$HSlider.connect("value_changed", self, "change_number_selection")
 
 func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, minvalue = 1, maxvalue = 100, requiregold = false, item_icon = null, item = null):
@@ -62,6 +64,9 @@ func update():
 func confirm_number_selection():
 	target_node.call(target_function, $HSlider.value / $HSlider.step)
 	hide()
-
+func max_value_slider():
+	$HSlider.value = $HSlider.max_value
+	pass
+	
 func change_number_selection(value):
 	update()

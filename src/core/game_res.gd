@@ -3,7 +3,6 @@ extends Reference
 
 var itemcounter = 0
 var money = 0 setget set_money
-var tax = 0
 var upgrades = {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}#not sure
@@ -12,7 +11,7 @@ var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials = {} setget materials_set
 var oldmaterials = {}
 var upgrades_queue = []
-
+var tax = 0
 
 func _init():
 	for i in upgradedata.upgradelist.keys():
@@ -42,6 +41,7 @@ func fix_serialization():
 	for i in upgradedata.upgradelist.keys():
 		if !upgrades.has(i):
 			upgrades[i] = 0
+	fix_tax()
 	
 	for item in Items.materiallist:
 		if !ResourceScripts.game_res.materials.keys().has(item):
@@ -58,10 +58,27 @@ func serialize():
 #	fix_items_inventory(false)
 	return res
 
+
+func fix_tax():
+	tax = 0
+	for upgrade in upgrades:
+		if upgrades[upgrade] <= 0: continue
+		var udata = upgradedata.upgradelist[upgrade]
+		if udata.has('tax'): #not used but may be needed later
+			tax += udata.tax
+		if udata.has('levels'):
+			for lv in range(upgrades[upgrade]):
+				var ldata = udata.levels[lv + 1]
+				if ldata.has('tax'):
+					tax += ldata.tax
+
+
 func subtract_taxes():
 	money -= tax
 	if money < 0:
 		input_handler.interactive_message('generic_lose_scene', '', {})
+
+
 #inventory
 func set_money(value):
 	money = value

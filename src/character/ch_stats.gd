@@ -920,6 +920,8 @@ func setup_baby(mother, father):
 #		statlist.slave_class = 'slave'
 
 func create(temp_race, temp_gender, temp_age):
+	if temp_race == 'halfbreeds':
+		temp_race = 'halfbeast'
 	statlist.race = temp_race
 	statlist.sex = temp_gender
 	statlist.age = temp_age

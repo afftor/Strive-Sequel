@@ -2378,6 +2378,21 @@ margin_bottom = 174.8
 theme = ExtResource( 42 )
 custom_fonts/font = ExtResource( 8 )
 text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MAX" type="Button" parent="AreaShop/NumberSelection"]
+margin_left = 38.1663
+margin_top = 122.8
+margin_right = 103.166
+margin_bottom = 177.8
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 8 )
+text = "Max"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemName" type="Label" parent="AreaShop/NumberSelection"]
 margin_top = 10.0
