@@ -61,7 +61,7 @@ func serialize():
 func subtract_taxes():
 	money -= tax
 	if money < 0:
-		pass #TODO add gameover sequence if player runs out of money
+		input_handler.interactive_message('generic_lose_scene', '', {})
 #inventory
 func set_money(value):
 	money = value
