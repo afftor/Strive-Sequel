@@ -886,9 +886,9 @@ func FighterShowStats(fighter):
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
 
-func FighterMouseOver(fighter):
+func FighterMouseOver(fighter, no_press = false):
 	FighterShowStats(fighter)
-	if allowaction == true && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
+	if allowaction == true && no_press == false && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 		if customcursor != null:
 			Input.set_custom_mouse_cursor(images.cursors[customcursor])
 		elif fighter.combatgroup == 'enemy':
@@ -900,6 +900,9 @@ func FighterMouseOver(fighter):
 		Stop_Target_Glow();
 		for c in cur_targets:
 			Target_eff_Glow(c.position);
+	elif no_press:
+		Stop_Target_Glow()
+		Target_Glow(fighter.position)
 
 
 func FighterMouseOverFinish(fighter):
@@ -1798,6 +1801,8 @@ func update_queue(queue, current): #don't call in asynchroned state
 			tmp.get_node('icon').texture = icon
 		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
 		tmp.get_node('hpbar').value = person.hp
+		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person, true])
+		tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person])
 
 
 var active_position
