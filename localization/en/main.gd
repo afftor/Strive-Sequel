@@ -5629,8 +5629,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 
 	ITEMCALI_COLLAR = "Cali's Collar",
 	ITEMCALI_COLLARDESCRIPT = "A collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
-	CALI_EXQUISITE_COLLAR = "Cali's Exquisite Collar",
-	CALI_EXQUISITE_COLLARDESCRIPT = "A fancy collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
+	ITEMCALI_EXQUISITE_COLLAR = "Cali's Exquisite Collar",
+	ITEMCALI_EXQUISITE_COLLARDESCRIPT = "A fancy collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
 	
 	ITEMCALI_COLLAR_ENCHANTED = "Cali's Enchanted Collar",
 	ITEMCALI_COLLAR_ENCHANTEDDESCRIPT = "A collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali}",
@@ -9026,15 +9026,14 @@ You pull the simple collar out, showing it to the girl. Cali's eyes initially sh
 	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali shudders as fresh tears hit the floor. The girl's posture seems to relax, her eyes staring ahead as she shakes now. The girl doesn't fight you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
 
 Once the collar is around her neck, Cali looks at you, her face blank but her body shaking. Eventually you dismiss the girl so you can carry on with your work.""",
-	CALI_ACT2_EXQUISITE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+	CALI_ACT2_EXQUISITE_COLLAR_1_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
 
 When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes tracking the item as she looked it over. 
 
-- It's pretty...
-
-Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
+- It's pretty...""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
 
 - This is for me..? I don't dislike it, but you really think this is enough after what you've done...
 
@@ -9289,15 +9288,14 @@ Cali:- [Name], what are you doing?
 A light touch to her chin is all the girl would receive in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she’s unable to focus on her meal for much longer.
 
 Cali:- W-wait not th-""",
-	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
 Cali:- Nhhh...
 
 The girl withdrew her protests giving into your caress, finally buckling as her legs closed hard around your hand as he soaked her panties, a shrill cry coming from her throat as she nearly collapsed onto her bowl, her eyes looking ahead a bit dazed now.   
 
-- Why... doesn't this feel wrong...?
-
-Cali seems conflicted before sighing, her body relaxing now there on the floor as your hand slides through her hair. It seems she has completely forgotten her initial grudge despite everything.
+- Why... doesn't this feel wrong...? """,
+	CALI_ACT5_PET_9_2 = """Cali seems conflicted before sighing, her body relaxing now there on the floor as your hand slides through her hair. It seems she has completely forgotten her initial grudge despite everything.
 
 The girl doesn't fight you as you slide your hands over her back and shoulders, her head hanging down in contemplation as you barely can hear what she whispers.
 

@@ -672,6 +672,13 @@ var unique_sprites = {
 			face_path = "cali_halloween",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},
+		collar = {
+			name = "Collar",
+			descript = "",
+			path = "cali_collar_body", 
+			face_path = "cali_collar",
+			unlock_reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}, {type = 'decision', value = 'cali_exquisite_collar', check = true, orflag = true}]
+			},
 	},
 	aire = {
 		default = {
