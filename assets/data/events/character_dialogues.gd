@@ -483,7 +483,7 @@ var data = {
 		],
 	},
 	cali_dialogue_start = {
-		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'cali',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'cali',
 		text = [
 			{
 				text = "DIALOGUECALIINITIATELP", 

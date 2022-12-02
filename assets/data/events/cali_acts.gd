@@ -241,7 +241,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "CALI_ACT2_WORKERS_6_2", reqs = []}],
 		options = [ {
-			code = 'cali_act2_exquisite_collar_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_act2_exquisite_collar_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
 	
@@ -249,6 +249,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_1", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'body_image', operant = '=', value = "cali_collar_body"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_collar_prt.png"}]}],
 		options = [ {
 			code = 'cali_act2_simple_collar_2_1', text = "CALI_ACT2_SIMPLE_COLLAR_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -258,7 +261,7 @@ var data = {
 	
 	cali_act2_simple_collar_2_1 = { 
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_2_1", reqs = []}],
 		options = [ {
 			code = 'cali_act2_simple_collar_3', text = "CALI_ACT2_SIMPLE_COLLAR_2_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -269,13 +272,14 @@ var data = {
 	
 	cali_act2_simple_collar_3 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_3", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
 					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes', value = 'cali', args = [{code = 'loyalty', operant = '+', value = 20},]},
 					{code = 'unique_character_changes',
 					value = 'cali',
@@ -289,13 +293,14 @@ var data = {
 	
 	cali_act2_simple_collar_2_2 = { 
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT2_SIMPLE_COLLAR_2_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
 					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = "decision", value = "cali_normal_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
 					args = [
@@ -306,10 +311,22 @@ var data = {
 		}, ]
 	},
 	
-	cali_act2_exquisite_collar_1 = { 
+	cali_act2_exquisite_collar_1_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "cali",
-		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1", reqs = []}],
+		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1_1", reqs = []}],
+		options = [ {
+			code = 'cali_act2_exquisite_collar_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	cali_act2_exquisite_collar_1_2 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "cali",
+		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_1_2", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'body_image', operant = '=', value = "cali_collar_body"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_collar_prt.png"}]}],
 		options = [ {
 			code = 'cali_act2_exquisite_collar_2', text = "CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -319,13 +336,14 @@ var data = {
 	
 	cali_act2_exquisite_collar_2 = { 
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT2_EXQUISITE_COLLAR_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
 					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+					{code = "decision", value = "cali_exquisite_collar"},
 					{code = 'unique_character_changes',
 					value = 'cali',
 					args = [
@@ -338,7 +356,7 @@ var data = {
 	
 	cali_act3_magic_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_1", reqs = []}],
 		options = [ {
 			code = 'cali_act3_magic_2_1AND2', text = "CALI_ACT3_MAGIC_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -351,7 +369,7 @@ var data = {
 	
 	cali_act3_magic_2_1AND2 = { 
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_2_1AND2", reqs = []}],
 		options = [ {
 			code = 'cali_act3_magic_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -360,7 +378,7 @@ var data = {
 	
 	cali_act3_magic_2_3 = { 
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_MAGIC_2_3", reqs = []}],
 		common_effects = [
 			{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
@@ -503,7 +521,7 @@ var data = {
 	
 	cali_act3_blow_2 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT3_BLOW_2", reqs = []}],
 		options = [ {
 			code = 'cali_act3_blow_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -584,18 +602,27 @@ var data = {
 	
 	cali_act3_blow_9 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "cali",
-		text = [{text = "CALI_ACT3_BLOW_9", reqs = []}],
-		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage11'},
-			{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
-			{code = 'unique_character_changes',
+		reqs = [], unique_character = "cali",
+		text = [{text = "CALI_ACT3_BLOW_9", reqs = []},
+			{text = "", reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}],
+				bonus_effects = [{code = 'unique_character_changes',
 					value = 'cali',
 					args = [
 						{code = 'create_and_equip', item = "cali_collar_enchanted", parts = {}}
 						],
-			},
+			},]},
+			{text = "", reqs = [{type = 'decision', value = 'cali_exquisite_collar', check = true}],
+				bonus_effects = [{code = 'unique_character_changes',
+					value = 'cali',
+					args = [
+						{code = 'create_and_equip', item = "cali_collar_enchanted_2", parts = {}}
+						],
+			},]},
+		],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage11'},
+				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
 			]
 		}, ]
 	},
@@ -828,7 +855,7 @@ var data = {
 	
 	cali_act5_pet_3 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_3", reqs = [], }], 
 		options = [ {
 			code = 'cali_act5_pet_4', text = "CALI_ACT5_PET_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -839,7 +866,7 @@ var data = {
 	
 	cali_act5_pet_4 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_4", reqs = [], }], 
 		options = [ {
 			code = 'cali_act5_pet_5', text = "CALI_ACT5_PET_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -852,7 +879,7 @@ var data = {
 	
 	cali_act5_pet_5_3 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_5_3", reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -864,7 +891,7 @@ var data = {
 	
 	cali_act5_pet_5 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_5_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_ACT5_PET_5_2", reqs = [], previous_dialogue_option = 2}], 
 		options = [ {
@@ -874,7 +901,7 @@ var data = {
 	
 	cali_act5_pet_6 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_6", reqs = [], }], 
 		options = [ {
 			code = 'cali_act5_pet_7', text = "CALI_ACT5_PET_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -887,7 +914,7 @@ var data = {
 	
 	cali_act5_pet_7_gone = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_7_GONE", reqs = []}], 
 		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'remove_character'}]},
 		{code = 'play_sound', value = 'doorsmash'} ],
@@ -917,14 +944,23 @@ var data = {
 		save_scene_to_gallery = true,
 		custom_background = "cali_bowl_2",
 		options = [ {
-			code = 'cali_act5_pet_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
+			code = 'cali_act5_pet_9_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
 		}, ]
 	},
 	
-	cali_act5_pet_9 = { 
+	cali_act5_pet_9_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
-		text = [{text = "CALI_ACT5_PET_9", reqs = [], }], 
+		reqs = [], unique_character = "cali",
+		text = [{text = "CALI_ACT5_PET_9_1", reqs = [], }], 
+		options = [ {
+			code = 'cali_act5_pet_9_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	
+	cali_act5_pet_9_2 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], unique_character = "cali",
+		text = [{text = "CALI_ACT5_PET_9_2", reqs = [], }], 
 		options = [ {
 			code = 'cali_act5_pet_10', text = "CALI_ACT5_PET_9_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
@@ -934,7 +970,7 @@ var data = {
 	
 	cali_act5_pet_10 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT5_PET_10_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_ACT5_PET_10_2", reqs = [], previous_dialogue_option = 2}], 
 		options = [ {
@@ -946,7 +982,7 @@ var data = {
 	
 	cali_act6_naked_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_1", reqs = [], }], 
 		options = [ {
 			code = 'cali_act6_naked_2', text = "CALI_ACT6_NAKED_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -959,7 +995,7 @@ var data = {
 	
 	cali_act6_naked_2 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_2_1", reqs = [], previous_dialogue_option = 1}, 
 		{text = "CALI_ACT6_NAKED_2_2", reqs = [], previous_dialogue_option = 2}, ], 
 		options = [ {
@@ -969,7 +1005,7 @@ var data = {
 	
 	cali_act6_naked_2_3 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_2_3", reqs = []}], 
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -1028,7 +1064,7 @@ var data = {
 	
 	cali_act6_naked_7 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "cali",
+		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_7", reqs = []}], 
 		options = [ {
 			code = 'close', text = "CALI_ACT6_NAKED_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
