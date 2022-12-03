@@ -634,6 +634,9 @@ func process_script_extend(name, path):
 		return
 	if !path.begins_with('user:'):
 		print('WARNING: possibility of access denial to %s' % path)
+	
+	path = tmp_save_file(path)
+	
 	file.open(path, File.READ)
 	var tmp = file.get_as_text()
 	var pars = tmp.split('\n')
@@ -817,3 +820,24 @@ func runtime_injection(script,data,reload = false):
 	script.source_code = src.join('\n')
 	if reload:
 		script.reload()
+
+func tmp_save_file(filepath):
+	#check dir
+	var tmp_path = 'res://tmp'
+	var dir = Directory.new()
+	if dir.open(tmp_path) != OK:
+		dir.make_dir(tmp_path)
+	#get text from old file
+	var f = File.new()
+	f.open(filepath, File.READ)
+	var old_text = f.get_as_text()
+	f.close()
+	#get new filepath
+	var filebase = filepath.get_base_dir()
+	var tmp_file_path = filepath.replace(filebase, tmp_path)
+	#save new file
+	f.open(tmp_file_path, File.WRITE)
+	f.store_string(old_text)
+	f.close()
+	return tmp_file_path
+	
