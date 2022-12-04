@@ -22,7 +22,7 @@ var data = {
 	},
 
 	cali_sidequest_6 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "cali",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "cali",
 		text = [ {text = "CALI_SIDEQUEST_6_1", reqs = [], previous_dialogue_option = 1},
 			{text = "CALI_SIDEQUEST_6_2", reqs = [], previous_dialogue_option = 2},],
 		options = [ {
