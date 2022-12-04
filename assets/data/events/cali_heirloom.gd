@@ -523,7 +523,7 @@ var data = {
 		reqs = [],
 		text = [], 
 		common_effects = [ #add quest progress
-			{code = 'real_affect_scene_characters', type = 'quest', duration = 7, id = 'cali_heirloom', name = 'QUESTWILLIAM'},
+			{code = 'affect_active_character', type = 'quest', duration = 7, id = 'cali_heirloom', name = 'Assignment'},
 			{code = 'decision', value = 'cali_heirloom_good'},
 			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage8'}
 			
