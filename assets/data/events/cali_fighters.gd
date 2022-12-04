@@ -200,7 +200,7 @@ var data = {
 		{text = "CALI_GOBLINS_8_ADDITIONAL", reqs = []},],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [ {code = 'complete_quest', value = 'cali_fighters_quest'},
+			bonus_effects = [ {code = 'progress_quest', value = 'cali_fighters_quest', stage = 'stage3'},
 			{code = 'add_timed_event', value = "cali_sex_1_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
 			{code = 'remove_active_location'}, ]
 		}, ],

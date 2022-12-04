@@ -28,7 +28,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
-#				{code = 'complete_quest', value = 'cali_sidequest'},
+				{code = 'complete_quest', value = 'cali_fighters_quest'},
 				{code = 'add_timed_event', value = "cali_sidequest_7", args = [{type = 'add_to_date', date = [7,7], hour = 1}]},
 			 ]
 		},],
