@@ -1176,6 +1176,7 @@ var previous_guild = ''
 
 func update_guild_actions(guild):
 	input_handler.ClearContainer(AreaActions)
+	hide_guild_panels()
 	var newbutton
 	if active_faction.has('events'):
 		for i in active_faction.events:
@@ -1243,6 +1244,11 @@ func update_guild_actions(guild):
 	newbutton.connect("pressed", self, "open_city", [selected_location])
 
 
+func hide_guild_panels():
+	for nd in [$FactionDetails, $DisassembleModule, $GuildShop, $SlaveMarket]:
+		nd.hide()
+
+
 func enter_guild(guild):
 	self.current_pressed_area_btn = null
 	if (
@@ -1275,6 +1281,7 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 
 func faction_disassemble(pressed, pressed_button, guild):
+	hide_guild_panels()
 	if $FactionDetails.is_visible():
 		$FactionDetails.hide()
 	gui_controller.win_btn_connections_handler(pressed, $DisassembleModule, pressed_button)
@@ -1289,6 +1296,7 @@ func faction_disassemble(pressed, pressed_button, guild):
 
 
 func faction_guild_shop(pressed, pressed_button, guild):
+	hide_guild_panels()
 	$GuildShop/NumberSelection2.hide()
 	gui_controller.win_btn_connections_handler(pressed, $GuildShop, pressed_button)
 	active_faction = guild
@@ -1428,6 +1436,7 @@ func confirm_buy_item():
 
 
 func faction_upgrade(pressed, pressed_button, guild):
+	hide_guild_panels()
 	gui_controller.win_btn_connections_handler(pressed, $FactionDetails, pressed_button)
 	active_faction = guild
 	self.current_pressed_area_btn = pressed_button
@@ -1576,6 +1585,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	$SlaveMarket/HireMode.pressed = true
 	$SlaveMarket/SellMode.pressed = false
 	market_mode = mode
+	hide_guild_panels()
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
 	self.current_pressed_area_btn = pressed_button
