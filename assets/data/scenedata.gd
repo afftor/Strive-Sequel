@@ -1990,6 +1990,7 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_1"}, # go to fighters
 			stage2 = {code = 'stage2', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_2"}, # searh surroundings
+			stage3 = {code = 'stage3', name = "CALI_FIGHTERS_QUEST_NAME", descript = "CALI_FIGHTERS_QUEST_STAGE_3"}, # report 
 		},
 	},
 	
