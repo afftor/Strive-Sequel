@@ -298,7 +298,7 @@ var data = {
 		reqs = [], character = "xari", 
 		text = [{text = "XARI_CLOTHES_2", reqs = []}],
 		options = [ {
-			code = 'xari_clothes_3_1', text = "XARI_CLOTHES_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'xari_clothes_3_1', text = "XARI_CLOTHES_2_OPTION_1", reqs = [{type = 'has_money', value = 500}], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
 			code = 'xari_clothes_3_2', text = "XARI_CLOTHES_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
@@ -310,6 +310,7 @@ var data = {
 		text = [{text = "XARI_CLOTHES_3_1", reqs = []}],
 		options = [ {
 			code = 'xari_clothes_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'money_change', operant = '-', value = 500}]
 		}, ]
 	},
 	

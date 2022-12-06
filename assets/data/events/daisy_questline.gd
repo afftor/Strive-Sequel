@@ -1368,7 +1368,7 @@ var data = {
 	},
 	
 	daisy_consensual_1 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_1", reqs = []}],
 		options = [ {
@@ -1377,7 +1377,7 @@ var data = {
 	},
 	
 	daisy_consensual_2 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_2", reqs = []}],
 		options = [ {
@@ -1386,7 +1386,7 @@ var data = {
 	},
 	
 	daisy_consensual_3 = {
-		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [],
 		common_effects = [
 			{
@@ -1403,7 +1403,7 @@ var data = {
 	},
 	
 	daisy_consensual_4 = {
-		image = null, custom_background = "daisy_bent2", tags = ['dialogue_scene'],
+		image = null, custom_background = "daisy_bent2", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_4", reqs = []}],
 		options = [ {
@@ -1412,7 +1412,7 @@ var data = {
 	},
 	
 	daisy_consensual_5 = {
-		image =  null, custom_background = "daisy_bent3", tags = ['dialogue_scene'],
+		image =  null, custom_background = "daisy_bent3", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
 		options = [ {
