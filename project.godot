@@ -305,7 +305,7 @@ ConsoleOpenButton={
 [locale]
 
 test="en"
-translations=PoolStringArray( "res://localization/tr.en.translation" )
+translations=PoolStringArray(  )
 
 [logging]
 
