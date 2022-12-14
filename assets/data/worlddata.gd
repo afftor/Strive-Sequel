@@ -2271,7 +2271,7 @@ var dungeons = {
 		travel_time = [1,1],
 		options = [
 			{text = 'Search Cave', reqs = [
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_INTRO_1'}],
+				{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
 				args = [{code = 'start_event', data = 'cali_intro_1', args = []}]},
 		],
 		scripteventdata = []
