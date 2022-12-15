@@ -161,10 +161,10 @@ func show_stat_info(stat):
 	$StatsPanel/Gold.show()
 	var stat_cur_level = int(person.get_stat(stat))
 	var stat_next_level
-	if stat == 'growth_factor':
-		stat_next_level = stat_cur_level + 1
-	else:
-		stat_next_level = int(person2.get_stat(stat))
+#	if stat == 'growth_factor':
+	stat_next_level = stat_cur_level + 1
+#	else:
+#		stat_next_level = int(person2.get_stat(stat))
 	$StatsPanel/StatInfoNameValue.text = stats_dict[stat]
 	if input_handler.globalsettings.factors_as_words:
 		$StatsPanel/StatInfoCurrentValue.text =  ResourceScripts.descriptions.factor_descripts[stat_cur_level] + "->" + ResourceScripts.descriptions.factor_descripts[stat_next_level]
@@ -180,15 +180,19 @@ func show_stat_info(stat):
 
 
 func upgrade_stat():
+	var tmp = person.get_stat(active_stat)
+	if tmp >= 6:
+		print("error - can't upgrade stat to 7 or greater")
+		return
 	ResourceScripts.game_res.money -= substract_gold
-	if active_stat == 'growth_factor':
-		person.add_stat(active_stat, 1)
-	else:
-		person.set_stat(active_stat, person2.get_stat(active_stat))
+#	if active_stat == 'growth_factor':
+	person.add_stat(active_stat, 1)
+#	else:
+#		person.set_stat(active_stat, person2.get_stat(active_stat))
 	ResourceScripts.game_party.add_fate(person2.id, tr("SOLD2STAT"))
 	ResourceScripts.game_party.remove_slave(person2)
-	input_handler.play_animation('factor', {stat = active_stat, character = person})
 	active_stat = null
 	person2 = null
 	show_characters_panel()
+	input_handler.play_animation('factor', {stat = active_stat, character = person})
 
