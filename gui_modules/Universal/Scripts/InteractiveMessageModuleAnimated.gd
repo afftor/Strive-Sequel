@@ -31,7 +31,9 @@ func hide_dialogue(action = "hide"):
 			continue
 		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
-	get_node("ShowPanel").visible = action == "hide"
+	var tnode = get_node("ShowPanel")
+	if tnode != null:
+		tnode.visible = action == "hide"
 
 func open(scene):
 	if gui_controller.dialogue == null:
@@ -420,6 +422,7 @@ func close(args = {}):
 	if gui_controller.dialogue_window_type == 2:
 		previous_text = ""
 		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = 0
 		gui_controller.dialogue_window_type = 1
 		var screen_duration = 1.0
 		if args.has('screen_duration'):
