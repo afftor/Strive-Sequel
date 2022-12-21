@@ -271,6 +271,7 @@ var scenes = {
 	cali_mother_dead = load("res://assets/images/scenes/cali mother.png"),
 	cali_meeting = load("res://assets/images/scenes/conference.png"),
 	lilia_sick = load("res://assets/images/scenes/lilia_sick.png"),
+	aire_hunter = load("res://assets/images/scenes/aire_hunter.png"),
 }
 
 var sprites = {
