@@ -4248,7 +4248,7 @@ Duncan:— [name], you can return to Aliron now. We shall plan out our next move
 	FINAL_OPERATON_4 = """— The longer it takes you the more time the enemy has to prepare,so try not to keep us waiting too long. I'll mark the location on your map.
 
 — Don't mention this to the other guilds. We still aren't sure if Greg was the only traitor in our midst and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
-
+	FINAL_OPERATON_WORKERS_OPTION_1 = "Ask for Help",
 	FINAL_OPERATON_WORKERS_1 = """— Ach, have ya no mind to what pressure we're under? Entire guild is tied up supporting the fighters spat with the rebels. Got none free ta take on some outside job at the moment.""",
 	FINAL_OPERATON_SERVANTS_1 = """— Came to us for Duncan's little raid? Please, [name], I thought you knew that we don't deal in any violence. Sorry... But to cheer you up, here's a little tip from me: ask Myr. Mages are certainly more capable in what you're looking for.""",
 	FINAL_OPERATON_MAGES_1 = """— A job? I don't see why I would care, but for the sake of my own amusement let's hear it. What exactly do you want?""",
@@ -9325,6 +9325,178 @@ You remind her as you're still deep inside of her that she should call you what 
 	CALI_ACT6_NAKED_7 = """With your training complete, Cali sitting down beside you like before. Her eyes observe you with a blind acceptance.""",
 	CALI_ACT6_NAKED_7_OPTION_1 = "Good girl",
 	
+	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: - Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
+
+{color=magenta|Zephyra: - Today I'll be telling the story of a young girl wearing a red hood and her tragic story.}""",
+	HALLOWEEN_EVENT1 = """{color=magenta|Zephyra: - A young girl was going through the forest. A deep, dark, forest carrying a basket with meat buns for her sickly grandmother. }
+
+{color=aqua|Anastasia: - This is really embarrassing, I shouldn't have agreed to this... }
+
+{color=magenta|Zephyra: - Even though she was young and frightened she still bravely embarked on this task. Little did she know what danger was awaiting her.}""",
+	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: - Isn't it that story about a girl being eaten by a wolf?! Why me of all people...}
+
+{color=magenta|Zephyra: - Her naivety would certainly play a role here if she met some wrongdoers. And to her misfortune she indeed came across them. A couple of bandits saw her walking alone through the woods and readily approached her.}""",
+	HALLOWEEN_EVENT3 = """{color=gray_text_dialogue|Bandit: - Well there, pretty, where are you heading?}
+
+{color=aqua|Anastasia: *Gulp* - I'm going to my sickly grandma, I'm bringing her meat buns...}
+
+{color=gray_text_dialogue|Bandit: - Wow, did you hear that? A woman and food delivery for us, two in one! You must have heard of us coming here dressed like this?}
+
+{color=aqua|Anastasia: - I-I don't understand what you mean. Please, let me go...}
+
+{color=gray_text_dialogue|Bandit: - No, this clearly won't do. We shall consider it if you do something for us. How about showing your giant breasts?}""",
+	HALLOWEEN_EVENT4 = """{color=aqua|Anastasia: - No, let me go, get your hands away from me! What even is this set up?!}
+
+{color=gray_text_dialogue|Bandit: - Stay quiet silly girl, none can help you in these dark woods!}
+
+{color=magenta|Zephyra: - Such a sorrowful sight would make any hero rush to save her, but the help came from a source she wouldn't expect.}""",
+	HALLOWEEN_EVENT5 = """{color=yellow|Cali: - Watcha doing you bastards!? I, bandit punisher, Ca-I mean, Big Good Wolf will not let you go unpunished for this!}
+
+{color=yellow|Cali: - Ryaaaaa!}
+
+{color=gray_text_dialogue|Bandit: - Wha- Aaarrgh! Noo, don't kill us!}
+
+{color=magenta|Zephyra: - As a true beast, the wolf jumped at the bandits which ran in fear of being eaten. }""",
+	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: - Woah, you really have no shame wearing that?.. }
+
+{color=yellow|Cali: - Whatcha mean? I'm a wolf and this is what I look like. }
+
+{color=aqua|Anastasia: - Maybe I'm too self-conscious...}
+
+{color=yellow|Cali: - No matter, human girl. Say, what business do you have in my woods?}""",
+	HALLOWEEN_EVENT7 = """{color=magenta|Zephyra: - The wolf showed interest in the girl she never saw before. For better or worse, the girl had been sincere.}
+
+{color=aqua|Anastasia: - I've been traveling to my grandma.}
+
+{color=yellow|Cali: - Why would you do that? It's dangerous for young girls to travel alone. }
+
+{color=aqua|Anastasia: - I understand, however my duty was to bring her some meat buns.}
+
+{color=yellow|Cali: - No way, meat buns!? Ho-oh, now that's something I can not overlook!}""",
+	HALLOWEEN_EVENT8 = """{color=yellow|Cali: - Those meat buns, they must be really tasty, right? Show me, I wanna see!}
+
+{color=aqua|Anastasia: - ...Well they are in this basket... }
+
+{color=aqua|Anastasia: - Huh, it's empty... Did the bandits take them while I was not looking?}
+
+{color=yellow|Cali: - I said I wanna see the meat buns, I can smell them. Are you trying to trick the Big Good Wolf?}
+
+{color=yellow|Cali: - Then, I'll have to search you to find them! }""",
+
+	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: - No, wait! Aah-}
+
+{color=yellow|Cali: - Hmm, could you be hiding them here? What's up with your chest, it's huge! I'm jealous...}
+
+{color=aqua|Anastasia: - D-don't squeeze them... So roughly...}
+
+{color=yellow|Cali: - Haah, they do feel nice on touch. Not exactly like meat buns... But somehow very captivating...}""",
+	HALLOWEEN_EVENT10 = """{color=aqua|Anastasia: - Ngh... Please... Let them go...}
+
+{color=yellow|Cali: - Let them go? So these were the 'meat buns' you were talking about? I knew it, they smell differently, but still nice.}
+
+{color=yellow|Cali: - Hu-huh, I guess with no other option I shall taste them! }
+
+{color=aqua|Anastasia: - Wait, this is wron-... Stop-sto-Ah-h haa.... }""",
+	HALLOWEEN_EVENT11 = """{color=magenta|Zephyra: - Sadly, no one could hear her pleas for help in the dark woods.}
+
+{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.}""",
+	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: - Did that story really go like this?}
+
+{color=yellow|Cali: - I dunno, it felt kinda natural. }
+
+{color=aqua|Anastasia: - At least I got a less skimpy costume...}
+
+{color=yellow|Cali: - Ah, you know we get to keep them though? I hope [Master] is going to like this. }
+
+{color=aqua|Anastasia: - W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
+
+	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter Heleviel's behavior makes another approach seem needed. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
+
+Reaching the bottom of the stairs you're not quite sure what she was expecting, but the sight of a dungeon so well equipped for the usage of slaves seemed to be far removed from what she perceived as a reality.
+
+{color=yellow|Heleviel: Stop! I am not some toy for a mere Male I am a priestess of-}""",
+	HELEVIEL_MANSION_2 = """The stone walls echo as you silence her with a backhand sending her to the floor.  There is a long silence as the only sound coming from the torch lit room is that of her chain being lifted by your hand. She tries to hide her shock, and would have done well to most but you've seen better actresses than her make an attempt.
+
+Heleviell continues to struggle in vain as she's pulled over to a large metal ring in the wall, her eyes wide as she renews her fight, only to receive another backhand for her trouble, then a third. Left there she no longer struggles as you attach her chain to the ring, trapping the troublesome slave.""",
+	HELEVIEL_MANSION_3 = """{color=yellow|Heleviel: I-I am not-}
+
+The elf stammers, denial taking hold as you grasp her throat, making her look into your eyes, the hint of tears starting to show. As she's just starting to regain her composure your hand finds her thigh, squeezing tightly as she squirms, her thrashing doubling in effort as your hand finds her silken panties, you almost almost feel a tinge of regret for destroying such magnificent craftsmanship, but dismiss that as you tear them from her pale skin the sound of them ripping covered by her scream of desperation.""",
+	HELEVIEL_MANSION_4 = """You let those words sink in as her eyes fill with shock, renewing her panic as you reach down, tearing the chest of her dress open to expose her.  Her breasts are ample, still perky and youthful as you take a possessive grip upon one to inspect your new acquisition.  She tries to protest but only stammers out a cry as you take hold of her nipple and twist.  Whimpers now openly sound as you grip her hair, Heleviel struggles in vain as you allow this so she might wear herself out.  """,
+	HELEVIEL_MANSION_5 = """Her body limited in motion she can only watch as you pull the hip of her dress away to expose the flawless skin underneath, her sweat from the long road shining on her. Her struggles become weaker now as you grip her, squeezing as she squirmed helplessly in the chains.
+
+{color=yellow|Heleviel: I-I'm not...}
+
+Heleviel stammers to herself, unable to cope with the situation as you undo your trousers in front of her, her eyes at first going from disbelief, to horror, and finally resignation as you pulse before the elf. Precum is dotting the tip of your shaft as you regrip her hair tightly, strands snapping between your fingers as you pull her towards your member.  
+
+Heleviel struggles and thrashes her head about for a few moments, tears openly flowing from her eyes as her last protest from her mouth is shut up, a cry silenced as you push your girth into her mouth now at the moment she parted her lips. The shock of that moment clearly kept her teeth at bay.  
+
+{color=yellow|Heleviel: Mmmrff I mrrf.}""",
+	HELEVIEL_MANSION_6 = """A stern look at her as a warning was all that was needed to break the rest of her resolve, her dignity crumbling as you push down her throat now, forcing the elf to choke on your member, her body squirming as you deny her of even air for her behavior. Legs kicking and her body thrashing didn't dislodge you as you kept yourself deep in her throat, letting her vision start to haze, her body going nearly limp before you pull out just enough to allow her to breathe desperate breaths through her nose, her eyes pouring tears as she coughed and squirmed around in her bindings.  
+
+Heleviel turned her gaze upward in panic again as you pushed back into her throat the moment she was fully lucid, pumping in and out of her throat, not allowing her air enough for comfort as you pleasure yourself at her expense. After she again hit her limit you would once more pull out just enough, the elf's drool hanging down her chin as you then repeated this process constantly, each time pushing her to her limits only to pull back and give her the hope that it had ended. """,
+	HELEVIEL_MANSION_7 = """Shaft pulsing on her tongue and in her throat you continue this punishment until finally you grip her hair tighter, her body pliable as she no longer fights. Tears poured from her eyes as the once proud priestess of Freya was trapped there, unable to stop you as you pull back, cum starting to release into her mouth, the woman's eyes hazed over as you finally end her torment, leaving her there with your shaft still in her mouth until she'd swallow like was expected of a slave.
+
+It took her a few moments to obey, her eyes closing as she shuddered, swallowing your cum, her eyes hazed over from tears and exhaustion as you pulled out of her hanging mouth, her jaw too fatigued to even close fully as you left her mouth empty for the first time in the better part of an hour.""",
+	HELEVIEL_MANSION_8 = """Heleviel would cough, her head hanging, her eyes still dripping tears as you stand over the female now, your eyes looking down at her on the ground at your feet, where she belonged.  Eventually you'd lean down grasping her hair again, her eyes made to meet yours as you just smile down at the defeated Priestess. Behind her gaze something was smoldering, a rage at her situation. Fury enveloped her tearstained face as she broke the stare first, eyes watering over once again as her voice cracked.
+
+{color=yellow|Heleviel: N-no more.. No m-more.  Stop you m-monster...}
+
+Heleviel repeated her mantra between gasping and choked breaths, her eyes glazed over as she seemed to slump down lower on the floor. Her body continued to hang there as exhaustion overtook her, rasping protests fading into exhausted mumbles.  You continue to stand over her for a few minutes, admiring your work before turning to leave her there, making a mental note that she might take a bit longer to break than your other servants.  """,
+	LIRA_MANSION_1 = """Lira follows you on the end of her tether quietly, her head hanging down as she hides her face in the hood of her cloak.  Though normally quiet in your mansion now there is a bustle of movement, the servants attending to their daily tasks in one of the few busy times of the day.  Shyness apparent, she more than once jerks her head to avoid the looks of an occasional servant as you lead her further into your home.  
+
+{color=yellow|Lira: w-where are we going?}
+
+
+Lira asks you as she continues to try to hide herself, occasionally taking frightened looks around now, her eyes tracking every bit of movement intently as if some monster hid around every corner. You stop her finally in front of a hand carved wooden door, intricate in its design as she stops to stare at it.  """,
+	LIRA_MANSION_2 = """You move in behind her soon, your hand resting on her neck as she instantly seizes, starting to shake like a frightened rabbit. Her throat clenches a few times, her hips squirming as she seems ready to try to fight, to bolt at any moment, before she notices more than a few of your servants stop what they're doing as you hold her there, her face turning blood red. Turning her easily, she soon is facing the group of onlookers.
+
+{color=yellow|Lira: Wh-what are you doing!? I-I'm not.}
+
+Her words turn into a shrill cry as you jerk down the lower part of her robe now, her breasts spilling out as she froze, her eyes wide. Servants watching, she squirms left and right, unable to free herself from your grasp as her panties soon join the dress in pooling at her feet, her skin hot to the touch as she practically vibrates with embarrassment. After a few moments she chokes out a response as you fondle her chest idly on display now, rather impressed with how soft the priestess' skin is.
+
+{color=yellow|Lira: [name]..Please...n-not like this. }""",
+	LIRA_MANSION_3 = """You continue to fondle her as your servants onlook now, the elf so embarrassed that she can barely even move, her shyness paralzying her. Soon you would turn only a bit now, opening the door to the room before taking her lead again, a sharp tug on it making her stumble as she was made to follow you into the room.
+
+{color=yellow|Lira: Ack! You don't need to - }
+
+Her eyes go wide as you grasp her neck again, tighter this time as she shook now, your hand leaning her head back until her hood fell down, her ear by your lips as you speak""",
+	LIRA_MANSION_3_OPTION_1 = """If you keep squirming we're going to do this in the town square.""",
+	LIRA_MANSION_3_OPTION_2 = """I'd think you'd be more grateful, I could have let Heleviel hurt you.""",
+	LIRA_MANSION_4_1 = """Lira visibly wilted at your words, her body still shaking as she stopped her squirming now.  She was pliable now as you guided her to the bed, firmly pulling her up into your lap and having the elf lay over you. Lira doesn't fight your touch further as you reach down and pull your shaft free under her. """,
+	LIRA_MANSION_4_2 = """Lira stopped moving for a few moments as she gathered herself.  Eventually she relaxed somewhat in your grip making it easy to guide her to the new bed.  She still squirmed sheepishly as you pulled your shaft free, the heat of her sex warm against the base as you position her.""",
+	LIRA_MANSION_4 = """
+{color=yellow|Lira: I-is that?! I've n-never seen one...}""",
+	LIRA_MANSION_5 = """You smack Lira's bottom firmly now, a reminder to show respect as you push her down just a bit towards the base, the elf starting to pant now as the top of your shaft rubs against her exposed entrance. Lira feels damp now, a realization coming over you that under all of that shame and embarrassment, her body was betraying her.  
+
+{color=yellow|Lira: It's so warm...i-is it warm in here?}
+
+
+Lira speaks out in a half dazed voice, occasionally trying to pull away from you.  Your hands resting tight on her ass as you pull her back to you, her holes stretched out a bit from the tight grip as Lira protests. Moments later the young elf freezes as the head of your shaft slipped over her entrance.  
+
+{color=yellow|Lira: N-no! You shouldn't!}""",
+	LIRA_MANSION_6 = """Lira thrashes until with your grip firm you force the slave down onto you. Her eyes went wide as she yelped and clenched tight, making her first penetration all the tighter. After a few moments of her squirming around in soft protest you grasp her hair, pulling her to look at you.  
+
+{color=yellow|Lira: T-thats...no...}
+
+Inch by inch you push into the tight elf, the entire time she thrashes and squirms on your lap.  After a few moments she pants now, fully impaled onto you. Eventually you start to pump the elf onto your member, the tightness perfect as she whimpers above you, her hands gripping tightly onto the sheets on your side as she abandons her resistance, unable to stop you anyways.  
+
+You continue to use Lira for a few minutes like this, her virgin blood showing on your member as she's grinded up and down, her entrance pulsing and twitching around your member. Lira for her part said nothing, her face obscured soon by her hood, treating it like a security blanket as you claim the tight little entrance for your needs. Again you pull down the cloth covering her face as she makes a protesting squeak, the slipperiness of her entrance soon catching your attention. """,
+	LIRA_MANSION_7 = """As you relax your grip on her preparing to change positions, you're greeted by the welcome surprise of Lira starting to ride on you herself now. The pace is slow, but deliberate as she rides your shaft, looking away as more than once she tries to pull her hood up to hide her face, protesting with a whine each time you stop her.  
+
+{color=yellow|Lira: [name], P-please don't look at me...} 
+
+Lira soon is riding you harder, surrendering if not in obedience, but in blind need as she pumps her hips down onto your cock, the deliberate pace causing a cascade of little mewling sounds to come from her as she finds her pleasure in the act, her entrance causing you to have to fight the urge to cum. Holding out as long as you can, Lira seems to pick up on this, her hips rocking faster as she refuses to look at you, her face in profile blood red from embarrassment. Her shameful face soon turns to shock as she feels your cock convulsing inside of her, hot lines of semen pumping up into the elven virgin's body, claiming her for yourself.""",
+	LIRA_MANSION_8 = """Lira continued to clench as embarrassment took hold of her face, moments later this was discarded as the girl seized up now, the hot cum soaking her inner walls driving her over the edge as she orgasmed now, an almost happy sound slipping out as she collapsed. There was a moment of relaxed bliss before her eyes shot wide now, looking at you as she still managed to have her face turn even redder.
+
+{color=yellow|Lira: Did you- I-inside?}
+
+Lira seems to panic for a few moments, squirming hard around your shaft before she dismounts. A few moments later she gave you a quick bow and scampered off to the bathroom you'd passed enroute to her room. You remind yourself that obedience training is going to have to be a daily thing at this rate with her.""",
+	LIRA_MANSION_9 = """Lira returns to the room a few moments later fully dressed. Makes absolutely no sense. It occurs to you that her dress had been kicked into the room once you'd removed it. Despite this though you don't recall seeing her pick it up. After giving a wary look to Lira, she has a small glint in her eye now as she realizes you knew even as she turned to look away, her cheeks still blood red.  
+
+{color=yellow|Lira: Will that be all for tonight... [master]?}
+
+The last word comes out of her mouth now sounding like an attempt to placate your curiosity.  You consider inquiring just when the girl had grabbed the robe but finally dismissed it, instead deeming it a good idea to make sure that inventory was done a bit more frequently in the mansion. If Lira was as good at taking items unnoticed it seemed she might be of more use to you than you thought.""",
+	
 	EXCALIBUR_QUEST_1 = """You come across a small clearing with a large rock in the center of it. As you take a closer look you realize it has a sword handle sticking out of it being buried in stone. Despite its state, the sword looks in a respectable state. However pulling it does not seem to be easy...""",
 	EXCALIBUR_QUEST_1_OPTION_1 = "Pull it",
 	EXCALIBUR_QUEST_GOOD = """With incredible effort you manage to pull the sword out of stone! As it's finally free you can feel a potent magic residing in it. Adoring your acquirement you leave the lone clearing. """,
@@ -9545,179 +9717,28 @@ You remind her as you're still deep inside of her that she should call you what 
 	
 	
 	
-	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: - Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
-
-{color=magenta|Zephyra: - Today I'll be telling the story of a young girl wearing a red hood and her tragic story.}""",
-	HALLOWEEN_EVENT1 = """{color=magenta|Zephyra: - A young girl was going through the forest. A deep, dark, forest carrying a basket with meat buns for her sickly grandmother. }
-
-{color=aqua|Anastasia: - This is really embarrassing, I shouldn't have agreed to this... }
-
-{color=magenta|Zephyra: - Even though she was young and frightened she still bravely embarked on this task. Little did she know what danger was awaiting her.}""",
-	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: - Isn't it that story about a girl being eaten by a wolf?! Why me of all people...}
-
-{color=magenta|Zephyra: - Her naivety would certainly play a role here if she met some wrongdoers. And to her misfortune she indeed came across them. A couple of bandits saw her walking alone through the woods and readily approached her.}""",
-	HALLOWEEN_EVENT3 = """{color=gray_text_dialogue|Bandit: - Well there, pretty, where are you heading?}
-
-{color=aqua|Anastasia: *Gulp* - I'm going to my sickly grandma, I'm bringing her meat buns...}
-
-{color=gray_text_dialogue|Bandit: - Wow, did you hear that? A woman and food delivery for us, two in one! You must have heard of us coming here dressed like this?}
-
-{color=aqua|Anastasia: - I-I don't understand what you mean. Please, let me go...}
-
-{color=gray_text_dialogue|Bandit: - No, this clearly won't do. We shall consider it if you do something for us. How about showing your giant breasts?}""",
-	HALLOWEEN_EVENT4 = """{color=aqua|Anastasia: - No, let me go, get your hands away from me! What even is this set up?!}
-
-{color=gray_text_dialogue|Bandit: - Stay quiet silly girl, none can help you in these dark woods!}
-
-{color=magenta|Zephyra: - Such a sorrowful sight would make any hero rush to save her, but the help came from a source she wouldn't expect.}""",
-	HALLOWEEN_EVENT5 = """{color=yellow|Cali: - Watcha doing you bastards!? I, bandit punisher, Ca-I mean, Big Good Wolf will not let you go unpunished for this!}
-
-{color=yellow|Cali: - Ryaaaaa!}
-
-{color=gray_text_dialogue|Bandit: - Wha- Aaarrgh! Noo, don't kill us!}
-
-{color=magenta|Zephyra: - As a true beast, the wolf jumped at the bandits which ran in fear of being eaten. }""",
-	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: - Woah, you really have no shame wearing that?.. }
-
-{color=yellow|Cali: - Whatcha mean? I'm a wolf and this is what I look like. }
-
-{color=aqua|Anastasia: - Maybe I'm too self-conscious...}
-
-{color=yellow|Cali: - No matter, human girl. Say, what business do you have in my woods?}""",
-	HALLOWEEN_EVENT7 = """{color=magenta|Zephyra: - The wolf showed interest in the girl she never saw before. For better or worse, the girl had been sincere.}
-
-{color=aqua|Anastasia: - I've been traveling to my grandma.}
-
-{color=yellow|Cali: - Why would you do that? It's dangerous for young girls to travel alone. }
-
-{color=aqua|Anastasia: - I understand, however my duty was to bring her some meat buns.}
-
-{color=yellow|Cali: - No way, meat buns!? Ho-oh, now that's something I can not overlook!}""",
-	HALLOWEEN_EVENT8 = """{color=yellow|Cali: - Those meat buns, they must be really tasty, right? Show me, I wanna see!}
-
-{color=aqua|Anastasia: - ...Well they are in this basket... }
-
-{color=aqua|Anastasia: - Huh, it's empty... Did the bandits take them while I was not looking?}
-
-{color=yellow|Cali: - I said I wanna see the meat buns, I can smell them. Are you trying to trick the Big Good Wolf?}
-
-{color=yellow|Cali: - Then, I'll have to search you to find them! }""",
-
-	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: - No, wait! Aah-}
-
-{color=yellow|Cali: - Hmm, could you be hiding them here? What's up with your chest, it's huge! I'm jealous...}
-
-{color=aqua|Anastasia: - D-don't squeeze them... So roughly...}
-
-{color=yellow|Cali: - Haah, they do feel nice on touch. Not exactly like meat buns... But somehow very captivating...}""",
-	HALLOWEEN_EVENT10 = """{color=aqua|Anastasia: - Ngh... Please... Let them go...}
-
-{color=yellow|Cali: - Let them go? So these were the 'meat buns' you were talking about? I knew it, they smell differently, but still nice.}
-
-{color=yellow|Cali: - Hu-huh, I guess with no other option I shall taste them! }
-
-{color=aqua|Anastasia: - Wait, this is wron-... Stop-sto-Ah-h haa.... }""",
-	HALLOWEEN_EVENT11 = """{color=magenta|Zephyra: - Sadly, no one could hear her pleas for help in the dark woods.}
-
-{color=magenta|Zephyra: - That dreadful night the red riding hood was eaten by the wolf.}""",
-	HALLOWEEN_EVENT12 = """{color=aqua|Anastasia: - Did that story really go like this?}
-
-{color=yellow|Cali: - I dunno, it felt kinda natural. }
-
-{color=aqua|Anastasia: - At least I got a less skimpy costume...}
-
-{color=yellow|Cali: - Ah, you know we get to keep them though? I hope [Master] is going to like this. }
-
-{color=aqua|Anastasia: - W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
-
-	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter Heleviel's behavior makes another approach seem needed. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
-
-Reaching the bottom of the stairs you're not quite sure what she was expecting, but the sight of a dungeon so well equipped for the usage of slaves seemed to be far removed from what she perceived as a reality.
-
-{color=yellow|Heleviel: Stop! I am not some toy for a mere Male I am a priestess of-}""",
-	HELEVIEL_MANSION_2 = """The stone walls echo as you silence her with a backhand sending her to the floor.  There is a long silence as the only sound coming from the torch lit room is that of her chain being lifted by your hand. She tries to hide her shock, and would have done well to most but you've seen better actresses than her make an attempt.
-
-Heleviell continues to struggle in vain as she's pulled over to a large metal ring in the wall, her eyes wide as she renews her fight, only to receive another backhand for her trouble, then a third. Left there she no longer struggles as you attach her chain to the ring, trapping the troublesome slave.""",
-	HELEVIEL_MANSION_3 = """{color=yellow|Heleviel: I-I am not-}
-
-The elf stammers, denial taking hold as you grasp her throat, making her look into your eyes, the hint of tears starting to show. As she's just starting to regain her composure your hand finds her thigh, squeezing tightly as she squirms, her thrashing doubling in effort as your hand finds her silken panties, you almost almost feel a tinge of regret for destroying such magnificent craftsmanship, but dismiss that as you tear them from her pale skin the sound of them ripping covered by her scream of desperation.""",
-	HELEVIEL_MANSION_4 = """You let those words sink in as her eyes fill with shock, renewing her panic as you reach down, tearing the chest of her dress open to expose her.  Her breasts are ample, still perky and youthful as you take a possessive grip upon one to inspect your new acquisition.  She tries to protest but only stammers out a cry as you take hold of her nipple and twist.  Whimpers now openly sound as you grip her hair, Heleviel struggles in vain as you allow this so she might wear herself out.  """,
-	HELEVIEL_MANSION_5 = """Her body limited in motion she can only watch as you pull the hip of her dress away to expose the flawless skin underneath, her sweat from the long road shining on her. Her struggles become weaker now as you grip her, squeezing as she squirmed helplessly in the chains.
-
-{color=yellow|Heleviel: I-I'm not...}
-
-Heleviel stammers to herself, unable to cope with the situation as you undo your trousers in front of her, her eyes at first going from disbelief, to horror, and finally resignation as you pulse before the elf. Precum is dotting the tip of your shaft as you regrip her hair tightly, strands snapping between your fingers as you pull her towards your member.  
-
-Heleviel struggles and thrashes her head about for a few moments, tears openly flowing from her eyes as her last protest from her mouth is shut up, a cry silenced as you push your girth into her mouth now at the moment she parted her lips. The shock of that moment clearly kept her teeth at bay.  
-
-{color=yellow|Heleviel: Mmmrff I mrrf.}""",
-	HELEVIEL_MANSION_6 = """A stern look at her as a warning was all that was needed to break the rest of her resolve, her dignity crumbling as you push down her throat now, forcing the elf to choke on your member, her body squirming as you deny her of even air for her behavior. Legs kicking and her body thrashing didn't dislodge you as you kept yourself deep in her throat, letting her vision start to haze, her body going nearly limp before you pull out just enough to allow her to breathe desperate breaths through her nose, her eyes pouring tears as she coughed and squirmed around in her bindings.  
-
-Heleviel turned her gaze upward in panic again as you pushed back into her throat the moment she was fully lucid, pumping in and out of her throat, not allowing her air enough for comfort as you pleasure yourself at her expense. After she again hit her limit you would once more pull out just enough, the elf's drool hanging down her chin as you then repeated this process constantly, each time pushing her to her limits only to pull back and give her the hope that it had ended. """,
-	HELEVIEL_MANSION_7 = """Shaft pulsing on her tongue and in her throat you continue this punishment until finally you grip her hair tighter, her body pliable as she no longer fights. Tears poured from her eyes as the once proud priestess of Freya was trapped there, unable to stop you as you pull back, cum starting to release into her mouth, the woman's eyes hazed over as you finally end her torment, leaving her there with your shaft still in her mouth until she'd swallow like was expected of a slave.
-
-It took her a few moments to obey, her eyes closing as she shuddered, swallowing your cum, her eyes hazed over from tears and exhaustion as you pulled out of her hanging mouth, her jaw too fatigued to even close fully as you left her mouth empty for the first time in the better part of an hour.""",
-	HELEVIEL_MANSION_8 = """Heleviel would cough, her head hanging, her eyes still dripping tears as you stand over the female now, your eyes looking down at her on the ground at your feet, where she belonged.  Eventually you'd lean down grasping her hair again, her eyes made to meet yours as you just smile down at the defeated Priestess. Behind her gaze something was smoldering, a rage at her situation. Fury enveloped her tearstained face as she broke the stare first, eyes watering over once again as her voice cracked.
-
-{color=yellow|Heleviel: N-no more.. No m-more.  Stop you m-monster...}
-
-Heleviel repeated her mantra between gasping and choked breaths, her eyes glazed over as she seemed to slump down lower on the floor. Her body continued to hang there as exhaustion overtook her, rasping protests fading into exhausted mumbles.  You continue to stand over her for a few minutes, admiring your work before turning to leave her there, making a mental note that she might take a bit longer to break than your other servants.  """,
-LIRA_MANSION_1 = """Lira follows you on the end of her tether quietly, her head hanging down as she hides her face in the hood of her cloak.  Though normally quiet in your mansion now there is a bustle of movement, the servants attending to their daily tasks in one of the few busy times of the day.  Shyness apparent, she more than once jerks her head to avoid the looks of an occasional servant as you lead her further into your home.  
-
-{color=yellow|Lira: w-where are we going?}
-
-
-Lira asks you as she continues to try to hide herself, occasionally taking frightened looks around now, her eyes tracking every bit of movement intently as if some monster hid around every corner. You stop her finally in front of a hand carved wooden door, intricate in its design as she stops to stare at it.  """,
-LIRA_MANSION_2 = """You move in behind her soon, your hand resting on her neck as she instantly seizes, starting to shake like a frightened rabbit. Her throat clenches a few times, her hips squirming as she seems ready to try to fight, to bolt at any moment, before she notices more than a few of your servants stop what they're doing as you hold her there, her face turning blood red. Turning her easily, she soon is facing the group of onlookers.
-
-{color=yellow|Lira: Wh-what are you doing!? I-I'm not.}
-
-Her words turn into a shrill cry as you jerk down the lower part of her robe now, her breasts spilling out as she froze, her eyes wide. Servants watching, she squirms left and right, unable to free herself from your grasp as her panties soon join the dress in pooling at her feet, her skin hot to the touch as she practically vibrates with embarrassment. After a few moments she chokes out a response as you fondle her chest idly on display now, rather impressed with how soft the priestess' skin is.
-
-{color=yellow|Lira: [name]..Please...n-not like this. }""",
-LIRA_MANSION_3 = """You continue to fondle her as your servants onlook now, the elf so embarrassed that she can barely even move, her shyness paralzying her. Soon you would turn only a bit now, opening the door to the room before taking her lead again, a sharp tug on it making her stumble as she was made to follow you into the room.
-
-{color=yellow|Lira: Ack! You don't need to - }
-
-Her eyes go wide as you grasp her neck again, tighter this time as she shook now, your hand leaning her head back until her hood fell down, her ear by your lips as you speak""",
-LIRA_MANSION_3_OPTION_1 = """If you keep squirming we're going to do this in the town square.""",
-LIRA_MANSION_3_OPTION_2 = """I'd think you'd be more grateful, I could have let Heleviel hurt you.""",
-LIRA_MANSION_4_1 = """Lira visibly wilted at your words, her body still shaking as she stopped her squirming now.  She was pliable now as you guided her to the bed, firmly pulling her up into your lap and having the elf lay over you. Lira doesn't fight your touch further as you reach down and pull your shaft free under her. """,
-LIRA_MANSION_4_2 = """Lira stopped moving for a few moments as she gathered herself.  Eventually she relaxed somewhat in your grip making it easy to guide her to the new bed.  She still squirmed sheepishly as you pulled your shaft free, the heat of her sex warm against the base as you position her.""",
-LIRA_MANSION_4 = """
-{color=yellow|Lira: I-is that?! I've n-never seen one...}""",
-LIRA_MANSION_5 = """You smack Lira's bottom firmly now, a reminder to show respect as you push her down just a bit towards the base, the elf starting to pant now as the top of your shaft rubs against her exposed entrance. Lira feels damp now, a realization coming over you that under all of that shame and embarrassment, her body was betraying her.  
-
-{color=yellow|Lira: It's so warm...i-is it warm in here?}
-
-
-Lira speaks out in a half dazed voice, occasionally trying to pull away from you.  Your hands resting tight on her ass as you pull her back to you, her holes stretched out a bit from the tight grip as Lira protests. Moments later the young elf freezes as the head of your shaft slipped over her entrance.  
-
-{color=yellow|Lira: N-no! You shouldn't!}""",
-LIRA_MANSION_6 = """Lira thrashes until with your grip firm you force the slave down onto you. Her eyes went wide as she yelped and clenched tight, making her first penetration all the tighter. After a few moments of her squirming around in soft protest you grasp her hair, pulling her to look at you.  
-
-{color=yellow|Lira: T-thats...no...}
-
-Inch by inch you push into the tight elf, the entire time she thrashes and squirms on your lap.  After a few moments she pants now, fully impaled onto you. Eventually you start to pump the elf onto your member, the tightness perfect as she whimpers above you, her hands gripping tightly onto the sheets on your side as she abandons her resistance, unable to stop you anyways.  
-
-You continue to use Lira for a few minutes like this, her virgin blood showing on your member as she's grinded up and down, her entrance pulsing and twitching around your member. Lira for her part said nothing, her face obscured soon by her hood, treating it like a security blanket as you claim the tight little entrance for your needs. Again you pull down the cloth covering her face as she makes a protesting squeak, the slipperiness of her entrance soon catching your attention. """,
-LIRA_MANSION_7 = """As you relax your grip on her preparing to change positions, you're greeted by the welcome surprise of Lira starting to ride on you herself now. The pace is slow, but deliberate as she rides your shaft, looking away as more than once she tries to pull her hood up to hide her face, protesting with a whine each time you stop her.  
-
-{color=yellow|Lira: [name], P-please don't look at me...} 
-
-Lira soon is riding you harder, surrendering if not in obedience, but in blind need as she pumps her hips down onto your cock, the deliberate pace causing a cascade of little mewling sounds to come from her as she finds her pleasure in the act, her entrance causing you to have to fight the urge to cum. Holding out as long as you can, Lira seems to pick up on this, her hips rocking faster as she refuses to look at you, her face in profile blood red from embarrassment. Her shameful face soon turns to shock as she feels your cock convulsing inside of her, hot lines of semen pumping up into the elven virgin's body, claiming her for yourself.""",
-LIRA_MANSION_8 = """Lira continued to clench as embarrassment took hold of her face, moments later this was discarded as the girl seized up now, the hot cum soaking her inner walls driving her over the edge as she orgasmed now, an almost happy sound slipping out as she collapsed. There was a moment of relaxed bliss before her eyes shot wide now, looking at you as she still managed to have her face turn even redder.
-
-{color=yellow|Lira: Did you- I-inside?}
-
-Lira seems to panic for a few moments, squirming hard around your shaft before she dismounts. A few moments later she gave you a quick bow and scampered off to the bathroom you'd passed enroute to her room. You remind yourself that obedience training is going to have to be a daily thing at this rate with her.""",
-LIRA_MANSION_9 = """Lira returns to the room a few moments later fully dressed. Makes absolutely no sense. It occurs to you that her dress had been kicked into the room once you'd removed it. Despite this though you don't recall seeing her pick it up. After giving a wary look to Lira, she has a small glint in her eye now as she realizes you knew even as she turned to look away, her cheeks still blood red.  
-
-{color=yellow|Lira: Will that be all for tonight... [master]?}
-
-The last word comes out of her mouth now sounding like an attempt to placate your curiosity.  You consider inquiring just when the girl had grabbed the robe but finally dismissed it, instead deeming it a good idea to make sure that inventory was done a bit more frequently in the mansion. If Lira was as good at taking items unnoticed it seemed she might be of more use to you than you thought.""",
-
-
+	# DATING
+	
+	ANASTASIA_MARRIAGE_AGREED_TEXT = """As by our agreement... I'm ready to become your wife.""",
+	ANASTASIA_MARRIAGE_AGREED_DESCRIPTION = """Anastasia reddens a bit, but managed to compose herself like a lady before answering.""",
+	ANASTASIA_ENSLAVEMENT_AGREED_TEXT = """Sorry, this is not going to happen, even if you say so, I'm not allowed to marry you.""",
+	ANASTASIA_ENSLAVEMENT_AGREED_DESCRIPTION = """Even though Anastasia clearly surprised by your words, she keeps her face mostly calm.""",
+	AIRE_ANA_ALIVE_TEXT = """Regardless of my feelings towards you, I can't agree to it. You must marry Ana, not me.""",
+	AIRE_ANA_ALIVE_DESCRIPTION = """Aire looks completely deadpan to your proposal.""",
+	AIRE_ANA_DEAD_TEXT = """Don't waste your time. I will never agree to this after what happened to Ana.""",
+	AIRE_ANA_DEAD_DESCRIPTION = """Aire looks completely deadpan to your proposal.""",
+	DAISY_QUEST_FINISHED_TEXT = """A-are you for real, [Master]?.. I-if you find me worthy... Of course I agree!""",
+	DAISY_QUEST_FINISHED_DESCRIPTION = """Daisy's eyes widen hearing your proposal. Barely holding back her tears of joy, she slowly replies.""",
+	DAISY_QUEST_UNFINISHED_TEXT = """I-I'm sorry, [Master], I think this is a bit too sudden...""",
+	DAISY_QUEST_UNFINISHED_DESCRIPTION = """Daisy looks troubled and averts her eyes.""",
+	CALI_QUEST_FINISHED_TEXT = """Really!? Of course I will. Nobody ever done so much for me... I love you, [Master]!""",
+	CALI_QUEST_FINISHED_DESCRIPTION = """Cali turns ecstatic on hearing your words. After going through so much with you, her answer is obvious.""",
+	CALI_QUEST_UNFINISHED_TEXT = """That's really weird thing for you to say... Sorry, I don't think I'm ready yet.""",
+	CALI_QUEST_UNFINISHED_DESCRIPTION = """Cali gives you a troubled look, trying to joke it off.""",
+	CALI_BAD_ROUTE_FINISHED_TEXT = """I-if [Master] desires me to become [his] wife, I will be happy to do it!""",
+	CALI_BAD_ROUTE_FINISHED_DESCRIPTION = """Cali dumbfoundedly looks up at you. After being trained in such lengths, she can only find joy in such recognition from you.""",
+	CALI_BAD_ROUTE_UNFINISHED_TEXT = """Are you kidding me?! Who would ever marry a horrible person like you?""",
+	CALI_BAD_ROUTE_UNFINISHED_DESCRIPTION = """Cali looks clearly agitated by your proposal. It seems you haven't fully bended her yet.""",
 }
 
 
