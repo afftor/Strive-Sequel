@@ -1612,16 +1612,20 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	var person_id
 	var person
 	if !active_faction.slaves.empty():
+		$SlaveMarket/HireMode.disabled = false
 		person_id = active_faction.slaves[0]
 		person = characters_pool.get_char_by_id(person_id)
 		show_slave_info(person)
 	else:
-		current_pressed_area_btn.pressed = false
-		$SlaveMarket.hide()
-		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
-		gui_controller.win_btn_connections_handler(false, $SlaveMarket, pressed_button)
-		return
+		$SlaveMarket/HireMode.disabled = true
+		change_mode('sell')
+#		current_pressed_area_btn.pressed = false
+#		$SlaveMarket.hide()
+#		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
+#		gui_controller.win_btn_connections_handler(false, $SlaveMarket, pressed_button)
+#		return
 	if !play_anim:
+		$SlaveMarket.visible = true
 		return
 	if pressed:
 		unfade($SlaveMarket, 0.3)
@@ -1649,6 +1653,10 @@ func change_mode(mode):
 func sell_slave():
 	$SlaveMarket/HireMode.pressed = false
 	$SlaveMarket/SellMode.pressed = true
+	if !active_faction.slaves.empty():
+		$SlaveMarket/HireMode.disabled = false
+	else:
+		$SlaveMarket/HireMode.disabled = true
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
 		slave_tooltip.hide()

@@ -981,11 +981,13 @@ var unique_marry_rules = {
 		marriage_agreed = {
 			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = true}],
 			text = "As by our agreement... I'm ready to become your wife.",
+			description = "Anastasia reddens a bit, but managed to compose herself like a lady before answering.",
 			agrees = true
 			},
 		enslavement_agreed = {
 			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = false}],
 			text = "Sorry, this is not going to happen, even if you say so, I'm not allowed to marry you. ",
+			description = "Even though Anastasia clearly surprised by your words, she keeps her face mostly calm.",
 			agrees = false
 			},
 	},
@@ -993,11 +995,13 @@ var unique_marry_rules = {
 		ana_alive = {
 			reqs = [{type = 'decision', value = 'PrincessObtained', check = true}],
 			text = "Regardless of my feelings towards you, I can't agree to it. You must marry Ana, not me.",
+			description = "Aire looks completely deadpan to your proposal.",
 			agrees = false
 			},
 		ana_dead = {
 			reqs = [{type = 'decision', value = 'PrincessDead', check = true}],
 			text = "Don't waste your time. I will never agree to this after what happened to Ana.",
+			description = "Aire looks completely deadpan to your proposal.",
 			agrees = false
 			},
 		
@@ -1006,11 +1010,13 @@ var unique_marry_rules = {
 		daisy_quest_finished = {
 			reqs = [{type = "quest_completed", name = "daisy_lost", check = true}],
 			text = "A-are you for real, [Master]?.. I-if you find me worthy... Of course I agree!",
+			description = "Daisy's eyes widen hearing your proposal. Barely holding back her tears of joy, she slowly replies.",
 			agrees = true
 			},
 		daisy_quest_unfinished = {
 			reqs = [{type = "quest_completed", name = "daisy_lost", check = false}],
 			text = "I-I'm sorry, [Master], I think this is a bit too sudden...",
+			description = "Daisy looks troubled and averts her eyes.",
 			agrees = false
 			},
 	},
@@ -1018,12 +1024,27 @@ var unique_marry_rules = {
 		cali_quest_finished = {
 			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = true}],
 			text = "Really!? Of course I will. Nobody ever done so much for me... I love you, [Master]!",
+			description = "Cali turns ecstatic on hearing your words. After going through so much with you, her answer is obvious.",
 			agrees = true
 			},
 		cali_quest_unfinished = {
 			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = false}],
 			text = "That's really weird thing for you to say... Sorry, I don't think I'm ready yet.",
+			description = "Cali gives you a troubled look, trying to joke it off.",
 			agrees = false
+			},
+		
+		cali_bad_route_finished = {
+			reqs = [{type = "quest_completed", name = "cali_taming_quest", check = true}],
+			text = "I-if [Master] desires me to become [his] wife, I will be happy to do it!",
+			description = "Cali dumbfoundedly looks up at you. After being trained in such lengths, she can only find joy in such recognition from you.",
+			agrees = true
+			},
+		cali_bad_route_unfinished = {
+			reqs = [{type = "quest_completed", name = "cali_taming_quest", check = false}],
+			text = "Are you kidding me?! Who would ever marry a horrible person like you?",
+			description = "Cali looks clearly agitated but your proposal. It seems you haven't fully bended her yet.",
+			agrees = true
 			},
 	},
 }
@@ -1047,13 +1068,15 @@ func ask_to_marry(person, counter):
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agreed_before')) + "\n"
 		return text
+	var unique_descript = ""
 	var unique_text = ""
 	if unique_marry_rules.has(person.get_stat('unique')):
 		for i in unique_marry_rules[person.get_stat('unique')].values():
 			if globals.valuecheck(i.reqs):
 				gave_consent = i.agrees
 				unique_text = i.text
-					
+				unique_descript = i.description
+				
 				break
 	else:
 		if person.has_status('swear_loyalty'):
@@ -1065,7 +1088,10 @@ func ask_to_marry(person, counter):
 		person.set_stat('agreed_to_marry', true)
 		self.mood += 50
 		text += "{color=green|"
-		text += input_handler.weightedrandom(date_lines.agreed_to_marry)
+		if unique_descript != "":
+			text += unique_descript
+		else:
+			text += input_handler.weightedrandom(date_lines.agreed_to_marry)
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: "
 		if unique_text != "":
@@ -1074,7 +1100,10 @@ func ask_to_marry(person, counter):
 			text += person.translate(input_handler.get_random_chat_line(person, 'marry_proposal_agree')) 
 	else:
 		text += "{color=red|"
-		text += input_handler.weightedrandom(date_lines.refused_to_marry)
+		if unique_descript != "":
+			text += unique_descript
+		else:
+			text += input_handler.weightedrandom(date_lines.refused_to_marry)
 		text += "}"
 		self.mood -= 25
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: "

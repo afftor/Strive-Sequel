@@ -1,3 +1,14 @@
+0.6.6b
+Fixed some mod issues
+Fixed a certain lock out option during arc 1 questline
+Fixed a certain case when Cali quest was unprogressable
+Fixed Lilia's quest not consume money in one of the options
+Fixed some parts of the quest texts not translating variables
+Fixed a bug where you could purchase guild upgrades with no limit
+Added additional quest step to Cali's questline to make it easier to figure
+Added gameover when you run out of money on tax day
+Added character description missing for different body types (e.g. centaur bottom parts)
+Other minor tweaks and fixes
 0.6.6a
 Fixed erebus stone enemy/hammerfall skill
 Fixed certain events not working properly due to recent changes

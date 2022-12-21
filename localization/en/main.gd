@@ -9440,6 +9440,7 @@ You remind her as you're still deep inside of her that she should call you what 
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your member, Cali, wants to be more useful and decided to join fighters guild",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
+	CALI_FIGHTERS_QUEST_STAGE_3 = "Report back to Fighters Guild",
 	CALI_SERVANTS_QUEST_SUMMARY = "Your member, Cali, wants to get more feminine and wishes to attend Servants classes.",
 	CALI_SERVANTS_QUEST_NAME = "Cali is a Girl",
 	CALI_SERVANTS_QUEST_STAGE_1 = "Visit Servants guild on Cali's behalf",
