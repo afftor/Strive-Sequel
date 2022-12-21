@@ -209,6 +209,7 @@ var lands = {
 			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], args = {"oneshot": false}}, 
 			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage13', state = true}], args = {"oneshot": false}}, 
 			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], args = {"oneshot": false}}, 
+			{code = 'excalibur_quest_1', text = "Check Surroundings", reqs = [{type = 'decision', value = 'got_excalibur', check = false}], args = {"oneshot": false}}, 
 		],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},

@@ -8189,42 +8189,42 @@ As she confirms your reaction she quickly retreats from sight to her duties. """
 	CALI_HEIRLOOM_1 = """In the morning you look over a request for an audience: One in regards to your servant, Cali. After calling her over to you, you prepare to meet the visitor. """,
 	CALI_HEIRLOOM_2 = """Cali becomes quiet on seeing the visitor, a middle aged human male.
 
-Visitor: - So this is where you've been, Cali. 
+{color=aqua|Visitor: - So this is where you've been, Cali. }
 
-Cali: - Uncle...
+{color=yellow|Cali: - Uncle...}
 
-Visitor: - I'd heard rumors that you'd taken residence inside one of the city's mansions.. I've come to return you home.""",
-	CALI_HEIRLOOM_3 = """Cali: - No, I like it in [name]'s service.
+{color=aqua|Visitor: - I'd heard rumors that you'd taken residence inside one of the city's mansions.. I've come to return you home.}""",
+	CALI_HEIRLOOM_3 = """{color=yellow|Cali: - No, I like it in [name]'s service.}
 
-Uncle: - Have you ever considered your mother? She's been quite troubled since your disappearance.
+{color=aqua|Uncle: - Have you ever considered your mother? She's been quite troubled since your disappearance.}
 
-Cali: - ...""",
+{color=yellow|Cali: - ...}""",
 	CALI_HEIRLOOM_3_OPTION_1 = "I'm going to need an explanation",
 	CALI_HEIRLOOM_3_OPTION_2 = "If your mother misses you that much, you should go home",
-	CALI_HEIRLOOM_4_1 = """Uncle: - Pardon me, Cali is the daughter of my sister. A few weeks ago she ran away from home. It seems you've offered her refuge, for that I thank you..
+	CALI_HEIRLOOM_4_1 = """{color=aqua|Uncle: - Pardon me, Cali is the daughter of my sister. A few weeks ago she ran away from home. It seems you've offered her refuge, for that I thank you..
 
-Uncle: - She's at that phase where she causes strife within the clan. I don't personally blame her for it.
+Uncle: - She's at that phase where she causes strife within the clan. I don't personally blame her for it.}
 
-Cali: - It's not a phase! I'm not going back to the clan, Uncle. I'd rather join bandits. """,
-	CALI_HEIRLOOM_4_2 = """Cali: - No, you don't understand. They don't need me there. They only want me because of the stupid traditions. 
+{color=yellow|Cali: - It's not a phase! I'm not going back to the clan, Uncle. I'd rather join bandits.} """,
+	CALI_HEIRLOOM_4_2 = """{color=yellow|Cali: - No, you don't understand. They don't need me there. They only want me because of the stupid traditions. 
+}
+{color=aqua|Uncle: - They're not "stupid" traditions, this is quite serious and you know it. }
 
-Uncle: - They're not "stupid" traditions, this is quite serious and you know it. 
-
-Cali: - No, I'm staying here... I mean, if [name] is not against it.""",
+{color=yellow|Cali: - No, I'm staying here... I mean, if [name] is not against it.}""",
 	CALI_HEIRLOOM_4_OPTION_1 = "You can stay if you want to.",
 	CALI_HEIRLOOM_4_OPTION_2 = "I'm sorry but I'm not going against your family",
-	CALI_HEIRLOOM_FINISH = """Cali: - T-that... Damn it! If you don't want me here, I'll just leave then. 
-
-Uncle: - I thank you for your cooperation. Then we will be on our way. 
+	CALI_HEIRLOOM_FINISH = """{color=yellow|Cali: - T-that... Damn it! If you don't want me here, I'll just leave then. 
+}
+{color=aqua|Uncle: - I thank you for your cooperation. Then we will be on our way. }
 
 Cali soon leaves, never crossing your path again. Either from her being missing or not willing to let you find her.""",
-	CALI_HEIRLOOM_5 = """Uncle: - I see... Perhaps it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.
-
+	CALI_HEIRLOOM_5 = """{color=aqua|Uncle: - I see... Perhaps it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.
+}
 Cali's protest sinks abruptly upon hearing it.
 
-Cali: - O-oh... Uh, can you give me some time? I don't have it right now...
+{color=yellow|Cali: - O-oh... Uh, can you give me some time? I don't have it right now...}
 
-Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.""",
+{color=aqua|Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.}""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
 - Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
@@ -8246,53 +8246,53 @@ Uncle: - I see. Very well, but I hope you do realize its importance to us. I'll 
 	CALI_HEIRLOOM_8_2 = """Cali furiously shakes her head.
 
 - Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
-	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near [settlement_name].""",
+	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near [settlement_name].""", # TODO ask about name
 	CALI_FARMER_1 = """As you walk around searching for potential witnesses, one of the farmers spots you.
 
-Farmer: - Bandits! A bandit scout!
+{color=aqua|Farmer: - Bandits! A bandit scout!}
 
 You look puzzled as you realize that he points at Cali, who does not take it without objection.""",
-	CALI_FARMER_2 = """Cali: - Hey, I'm not a bandit!
+	CALI_FARMER_2 = """{color=yellow|Cali: - Hey, I'm not a bandit!}
 
-Farmer: - You think I'd trust a bandit?! Call the guards!""",
+{color=aqua|Farmer: - You think I'd trust a bandit?! Call the guards!}""",
 	CALI_FARMER_2_OPTION_1 = "Why do you say she is a bandit?",
 	CALI_FARMER_2_OPTION_2 = "This is my servant I can vouch for her",
-	CALI_FARMER_3 = """Farmer: - She's a half-beast. In our lands most of them are either bandits, that or slaves and I see no leash on her. 
+	CALI_FARMER_3 = """{color=aqua|Farmer: - She's a half-beast. In our lands most of them are either bandits, that or slaves and I see no leash on her. }
 
-Cali: - I'm telling you, I'm not a bandit, I'm a good girl!
+{color=yellow|Cali: - I'm telling you, I'm not a bandit, I'm a good girl!}
 
 The farmer gives her a long, measuring look before finally calming down.
 
-Farmer: - Fine, but I'm gonna tell everyone about you. So if the raiders come after you leave, you'll make it into wanted lists. """,
+{color=aqua|Farmer: - Fine, but I'm gonna tell everyone about you. So if the raiders come after you leave, you'll make it into wanted lists. }""",
 	CALI_FARMER_3_OPTION_1 = "We are actually hunting for a certain bandit group",
 	CALI_FARMER_3_OPTION_2 = "If you've no love for bandits, perhaps you could help us",
 	CALI_FARMER_4_2 = """As you explain to the farmer about the bandits you are looking for, he seems to tolerate Cali a bit more but does not warm up by much.
 
-Farmer: - Yeah, bandits are a plague alright. What do I get from helping you? They are nowhere around here. You know what? Since their last raid, my fence was ruined! How about you help me out?
+{color=aqua|Farmer: - Yeah, bandits are a plague alright. What do I get from helping you? They are nowhere around here. You know what? Since their last raid, my fence was ruined! How about you help me out?}
 
-Cali: - Help you? After calling me a bandit?!
+{color=yellow|Cali: - Help you? After calling me a bandit?!}
 
 The farmer ignores Cali's remark and continues trying to persuade you into helping him.
 
-Farmer: - I need some lumber to repair it. You get me 200 Wood. I'll tell you where you can find them, since I overheard where they said they were headed off to.""",
+{color=aqua|Farmer: - I need some lumber to repair it. You get me 200 Wood. I'll tell you where you can find them, since I overheard where they said they were headed off to.}""",
 	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence (-200 Wood)",
 	CALI_FARMER_4_OPTION_1_1 = "You can have the wood for your fence (-100 Wood)",
 	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad. (Worker)",
 	CALI_FARMER_4_OPTION_3 = "We don't quite have that right now",
 	CALI_FARMER_4_3 = """The farmer gives you a scrutinizing look realizing that he wasn't able to fool you. 
 
-Farmer: - Damn, fine, I thought a city [boy] like you would have no idea... I'll manage with 100 pieces of wood. 
+{color=aqua|Farmer: - Damn, fine, I thought a city [boy] like you would have no idea... I'll manage with 100 pieces of wood. }
 
 You notice that Cali is looking at you with greater respect.""",
 	CALI_FARMER_4_1 = """You find the Farmer you met before. His mood seems to be as bad as ever.""",
-	CALI_FARMER_5 = """Farmer: - Good, good...
+	CALI_FARMER_5 = """{color=aqua|Farmer: - Good, good...}
 
-Cali: - Are you gonna tell us now?
+{color=yellow|Cali: - Are you gonna tell us now?}
 
-Farmer: - Yeah, yeah... The bandits were here around the time you asked. They made camp in the forest but after some time, the soldiers' patrols spooked them. They retreated to the hidden cave down the river. They have been laying low recently from what I gather. 
+{color=aqua|Farmer: - Yeah, yeah... The bandits were here around the time you asked. They made camp in the forest but after some time, the soldiers' patrols spooked them. They retreated to the hidden cave down the river. They have been laying low recently from what I gather. }
 
 With the help of a farmer you mark location on your map and finally move on. It's safe to assume the bandits will try to put up a fight so you better be prepared.""",
-	CALI_FARMER_6 = """Farmer: - Then don't waste my time. I know you city folk have enough money on you. You help me, I help you. Until then.""",
+	CALI_FARMER_6 = """{color=aqua|Farmer: - Then don't waste my time. I know you city folk have enough money on you. You help me, I help you. Until then.}""",
 	CALI_BANDITS_1 = """- I think these are the ones. They passed me onto those slavers that you rescued me from. Can't wait to settle the score!""",
 	CALI_BANDITS_1_OPTION_1 = "This shouldn't take long",
 	CALI_BANDITS_1_OPTION_2 = "Don't rush ahead, it might be dangerous",
@@ -8304,79 +8304,79 @@ With the help of a farmer you mark location on your map and finally move on. It'
 - Y-yeah, let's do it...""",
 	CALI_BANDITS_3 = """As the group leader collapses to the ground, you tie him up to start the interrogation. 
 
-Group Leader: - What have you cunts come here for?? What do you need from me?
+{color=aqua|Group Leader: - What have you cunts come here for?? What do you need from me?}
 
-Cali: - Remember me?
+{color=aqua|Cali: - Remember me?}
 
-Group Leader: - Why would I remember some half-beast bitch?""",
+{color=aqua|Group Leader: - Why would I remember some half-beast bitch?}""",
 	CALI_BANDITS_4 = """Cali angrily kicks the bound bandit in the stomach eliciting a groan.
 
-Cali: - You sold me to slavers! After taking my things too. 
+{color=yellow|Cali: - You sold me to slavers! After taking my things too. }
 
-Group Leader: - So what? Weren't you the one who jumped us? Yelling about how you're gonna become a famous hero.
+{color=aqua|Group Leader: - So what? Weren't you the one who jumped us? Yelling about how you're gonna become a famous hero.}
 
-Cali: - T-that's not the point! I want my stuff back. The sword you took from me!
+{color=yellow|Cali: - T-that's not the point! I want my stuff back. The sword you took from me!}
 
-Group Leader: - And I want the rebel princess to suck me off.""",
+{color=aqua|Group Leader: - And I want the rebel princess to suck me off.}""",
 	CALI_BANDITS_4_OPTION_1 = "Kick him a few more times, he's earned it",
 	CALI_BANDITS_4_OPTION_2 = "You better not make her angry or I'm not going to protect you",
 	CALI_BANDITS_5_1 = """Cali happily complies to your request, until the bandit starts begging her to stop..""",
 	CALI_BANDITS_5_2 = """Cali prepares to continue with her justice when the leader decides to give in.""",
-	CALI_BANDITS_5 = """Group Leader: - Alright, fine, that's enough! I don't have it anyway! Some collector from Aliron paid more than enough coin for it!
+	CALI_BANDITS_5 = """{color=aqua|Group Leader: - Alright, fine, that's enough! I don't have it anyway! Some collector from Aliron paid more than enough coin for it!}
 
-Cali: - Dammit... Who was it?
+{color=yellow|Cali: - Dammit... Who was it?}
 
-Group Leader: - No clue, but he surely was rich. Maybe the richest fucker out there; had a beard and like a dozen bodyguards... That's all I know. That's all you came for?""",
+{color=aqua|Group Leader: - No clue, but he surely was rich. Maybe the richest fucker out there; had a beard and like a dozen bodyguards... That's all I know. That's all you came for?}""",
 	CALI_BANDITS_5_OPTION_1 = "We can go now",
 	CALI_BANDITS_5_OPTION_2 = "Cali, you can have some more fun",
 	CALI_BANDITS_5_OPTION_3 = "We'll bring you to justice",
 	CALI_BANDITS_6_1 = """You leave the tied bandit who stays silent as he likely expects to eventually untie himself.""",
-	CALI_BANDITS_6_2 = """Cali: - Oh yeah, I do think I earned some payback...
+	CALI_BANDITS_6_2 = """{color=yellow|Cali: - Oh yeah, I do think I earned some payback...}
 
 Cali proceeds to exact her revenge on the helpless bandit for a few more minutes until his face is nearly unrecognizable. Slightly tired, Cali, joins you as you leave.""",
-	CALI_BANDITS_6_3 = """Group Leader: - No, wait, we can talk about this!
+	CALI_BANDITS_6_3 = """{color=aqua|Group Leader: - No, wait, we can talk about this!}
 
-Cali: - Right. He's gotta answer for what I went through!
+{color=yellow|Cali: - Right. He's gotta answer for what I went through!}
 
 Ignoring the bandit's pleas, you gag his mouth and deliver him to a nearby settlement's local guards..""",
-	CALI_BANDITS_7 = """Cali: - Can we even find it? I was sure they would have it but now...""",
+	CALI_BANDITS_7 = """{color=yellow|Cali: - Can we even find it? I was sure they would have it but now...}""",
 	CALI_BANDITS_7_OPTION_1 = "We'll go to the city and see what we can do.",
 	CALI_BANDITS_7_OPTION_2 = "There shouldn't be so many rich collectors that we can't find it",
-	CALI_BANDITS_8 = """Cali: - Right, I shouldn't give up yet.""",
+	CALI_BANDITS_8 = """{color=yellow|Cali: - Right, I shouldn't give up yet.}""",
 	CALI_WILLIAM_INIT_OPTION = "Search for Collector", 
 	CALI_WILLIAM_INIT = """After asking around, you have some luck learning that the most likely person to be the collector you are looking for, would be William. The man was one of the noble houses and retained his position even after the coup.
 
-Cali: - Let's go visit this guy, hopefully he still has it.""",
+{color=yellow|Cali: - Let's go visit this guy, hopefully he still has it.}""",
 	CALI_WILLIAM_OPTION = "Visit William's Mansion", 
 	CALI_WILLIAM_REFUSE = """Your attempt to set up a visit with William has failed. The servants hinted at you being too insignificant to spend their Master's time on you. Perhaps, you'll have to gain more renown before returning...""",
 	CALI_WILLIAM_1 = """You make your way inside the man's estate. Right as you make it inside, the wealth is so apparent that it makes you wonder if you could even dream of achieving something similar. Rows of servants politely greet you and guide you to the owner. 
 
 After a brief acquaintance, you get to the business and explain what you came for. 
 
-William: - I'm glad you've visited, Mayor. What do I owe to this? """,
+{color=aqua|William: - I'm glad you've visited, Mayor. What do I owe to this? }""",
 	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant",
 	CALI_WILLIAM_1_OPTION_2 = "There was an item sold to you by bandits.", 
 	CALI_WILLIAM_2 = """Cali timidly retells the events she went through. You can notice that she's rather intimidated by the splendor of this manor. 
 
-William: - Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. 
+{color=aqua|William: - Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. }
 
-Cali: - You're kidding me!? That price is insane!
+{color=yellow|Cali: - You're kidding me!? That price is insane!}
 
 Cali blurts out in anger but the owner doesn't seem startled in the slightest.""",
 	CALI_WILLIAM_2_OPTION_1 = "Cali's right, it is too expensive",
 	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide", 
 	CALI_WILLIAM_3 = """- Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money so I can be patient enough to get the best offer for it.
 
-William: - But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.
+{color=aqua|William: - But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.}
 
 William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
 
-William: - You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.
+{color=aqua|William: - You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.}
 
 As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
-William: - Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? """,
+{color=aqua|William: - Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? }""",
 	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
 	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
 	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
@@ -8387,41 +8387,41 @@ William: - Let's skip the pleasantries this time. You've brought the money? Or w
 	CALI_WILLIAM_4_OPTION_4 = "Maybe this is too early to decide on just yet...", 
 	CALI_WILLIAM_5 = """William considers the proposal for a moment then nods.
 
-William: - Very well, she does not seem all that refined I suppose.
+{color=aqua|William: - Very well, she does not seem all that refined I suppose.}
 
 Cali's face is soon one of anger, but she wisely keeps quiet..
 
-William: - Then, I'd like to know of the servant you will be trading in her place. """, 
+{color=aqua|William: - Then, I'd like to know of the servant you will be trading in her place. }""", 
 	CALI_WILLIAM_5_OPTION_2 = "*Reconsider*", 
 	CALI_WILLIAM_6 = """- Fine by me. It will be waiting for you unless another makes an offer. """, 
 	CALI_WILLIAM_7 = """As you make it out of the mansion, Cali stops you. Her voice is low and she's clearly uncomfortable with the situation.
 
-Cali: - H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. """,
+{color=yellow|Cali: - H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. }""",
 	CALI_WILLIAM_7_OPTION_1 = "I'll consider it",
 	CALI_WILLIAM_7_OPTION_2 = "I won't let him lay a hand on you even if you are okay with it", 
 	CALI_WILLIAM_8_1 = """Cali nods and you quietly continue on your way back home.""",
 	CALI_WILLIAM_8_2 = """- Hey now, you do care for me. I'm not really used to this... but thanks.
 
 Cali blushes to your sudden protective statement, her opinion of you notably improves.""",
-	CALI_WILLIAM_9 = """William: - Very well, this will suffice. In this case, pleasure doing business with you.""",
+	CALI_WILLIAM_9 = """{color=aqua|William: - Very well, this will suffice. In this case, pleasure doing business with you.}""",
 	CALI_REPLACEMENT_RETURNS = """At the arranged date, the [name], which you sent to William returns back to your mansion. """, 
 	CALI_WILLIAM_10 = """Cali meekly nods at your decision and as you prepare the papers. She will stay at William's manor for now while you return home.""", 
 	CALI_RETURNS = """At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay.""", 
 	CALI_WILLIAM_11_1 = """The man takes another long look at Cali as she catches on to the implication, doing her best to appear femininely attractive. 
 
-William: - That... Might be true now that you point it out. Why would you bring this up now exactly?""", 
+{color=aqua|William: - That... Might be true now that you point it out. Why would you bring this up now exactly?}""", 
 	CALI_WILLIAM_11_2 = """William takes another long look at Cali but she does not seem to catch on with your intent, giving him a hostile look.
 
-William: - I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.""", 
+{color=aqua|William: - I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.}""", 
 	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3,000 gold for a week with her.",
 	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days",
 	CALI_WILLIAM_12 = """The man stays quiet for some time as he deliberately inspects the wolf-girl. Finally he relents.
 
-William: - Very well, if your assessment is correct of her and her skills this will be well worth it.
+{color=aqua|William: - Very well, if your assessment is correct of her and her skills this will be well worth it.}
 
 You take Cali aside and explain to her that this is her duty for now. 
 
-Cali: - Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... 
+{color=yellow|Cali: - Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... }
 
 In the end she accepted that she had to deal with the consequences of her own actions.""", 
 	CALI_WILLIAM_13 = """As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.""", 
@@ -8491,71 +8491,71 @@ By the look of it, Cali was completely right. The heirloom sword did not feel li
 - Well, let's return it and this will be over. My uncle should be staying in a nearby tavern.""",
 	CALI_SWORD_RETURN_3 = """You find Cali's uncle alone in a tavern room. The man looks troubled but becomes more active when he sees you.
 
-Cali: - I've got the heirloom. It wasn't easy but I managed.
+{color=yellow|Cali: - I've got the heirloom. It wasn't easy but I managed.}
 
-Uncle: - 'Good, but I have bad news... Soon after I reported back that I found you, I received a message. It seems Hector has seized the power over the current head and he took your mother hostage. 
+{color=aqua|Uncle: - 'Good, but I have bad news... Soon after I reported back that I found you, I received a message. It seems Hector has seized the power over the current head and he took your mother hostage. }
 
-Cali: - Wha-
+{color=yellow|Cali: - Wha-}
 
 Cali freezes in place not knowing what to do. """,
 	CALI_SWORD_RETURN_3_OPTION_1 = "Who's Hector?",
 	CALI_SWORD_RETURN_3_OPTION_2 = "What exactly is going on?",
-	CALI_SWORD_RETURN_4 = """Uncle: - I guess I should explain. You see, in our clan there's a hereditary line of heroic leaders, blessed by gods. Those who are born into the line are expected to lead and protect it. Cali's mother belonged to it and she had to give birth to the next heir. However...
+	CALI_SWORD_RETURN_4 = """{color=aqua|Uncle: - I guess I should explain. You see, in our clan there's a hereditary line of heroic leaders, blessed by gods. Those who are born into the line are expected to lead and protect it. Cali's mother belonged to it and she had to give birth to the next heir. However...}
 
-Cali: - I was born, - Cali proclaimed with unhindered reproach.
+{color=yellow|Cali: - I was born, - Cali proclaimed with unhindered reproach.}
 
-Uncle: - Yes, Cali was born out of wedlock. Her mother refused to give up on her and we never learned who her father could be. Still, she was accepted into the clan, but of course not everyone was happy about it. Her mother was expected to marry and have her next child become an heir, however she could not conceive again and her husband abandoned them before eventually disappearing. 
+{color=aqua|Uncle: - Yes, Cali was born out of wedlock. Her mother refused to give up on her and we never learned who her father could be. Still, she was accepted into the clan, but of course not everyone was happy about it. Her mother was expected to marry and have her next child become an heir, however she could not conceive again and her husband abandoned them before eventually disappearing. 
 
-Uncle: - So after that, it was decided that Cali is needed to fulfill that role and give us the next heir. It was a difficult decision, especially given her nature, but this is preferable to having no heir at all and ultimately this is a fate decided by gods.""",
-	CALI_SWORD_RETURN_5 = """Uncle: - Hector, her expected partner, comes from the second family which is in line to become clan leaders themselves. So it was decided upon...
+Uncle: - So after that, it was decided that Cali is needed to fulfill that role and give us the next heir. It was a difficult decision, especially given her nature, but this is preferable to having no heir at all and ultimately this is a fate decided by gods.}""",
+	CALI_SWORD_RETURN_5 = """{color=aqua|Uncle: - Hector, her expected partner, comes from the second family which is in line to become clan leaders themselves. So it was decided upon...}
 
-Cali: - Me, becoming his wife, so our child would be the next worthy heir or something stupid like that.
+{color=yellow|Cali: - Me, becoming his wife, so our child would be the next worthy heir or something stupid like that.}
 
-Uncle: - Yes, that was the idea. But now he just wants to have the sword for himself, it seems.""",
+{color=aqua|Uncle: - Yes, that was the idea. But now he just wants to have the sword for himself, it seems.}""",
 	CALI_SWORD_RETURN_5_OPTION_1 = "Maybe there was a misunderstanding",
 	CALI_SWORD_RETURN_5_OPTION_2 = "Not a good idea to give it to him",
 	CALI_SWORD_RETURN_6 = """Cali gives off a troubled vibe, clearly the situation has put a strain on her.
 
-Uncle: - Now that your mother is a hostage, there's no option but to return the heirloom to him. Even though I hate it, what option do we really have left?
+{color=aqua|Uncle: - Now that your mother is a hostage, there's no option but to return the heirloom to him. Even though I hate it, what option do we really have left?}
 
-Cali: - ...I should go. Even if we weren't close, she's still my mother.
+{color=yellow|Cali: - ...I should go. Even if we weren't close, she's still my mother.}
 
-Uncle: - At least have him go with you, he looks capable..""",
+{color=aqua|Uncle: - At least have him go with you, he looks capable..}""",
 	CALI_SWORD_RETURN_6_OPTION_1 = "Don't worry, I'll come with you",
 	CALI_SWORD_RETURN_6_OPTION_2 = "Since there's nothing better to do I'll tag along ",
 	CALI_SWORD_RETURN_7 = """Cali looks warmly at you and nods. 
 
-Uncle: - Okay, make yourself preparations and we'll depart to our home shortly.""",
+{color=aqua|Uncle: - Okay, make yourself preparations and we'll depart to our home shortly.}""",
 	CALI_HECTOR_INIT = "Follow Cali",
 	CALI_HECTOR_1 = """As you come to the Clan's village, you follow Cali from behind as she carries her sword holding it close to the chest. Your visit has been anticipated and many people start to gather observing from a distance. 
 
 Soon a group of armed men come out in an attempt to greet you. Judging from Cali's reaction, it is headed by Hector. A bit behind them you spot a lone woman being watched over by a couple of other guards realizing that it should be Cali's mother.""",
 	CALI_HECTOR_2 = """As Cali moves ahead, you are being stopped by a few guards.
 
-Hector: - Look who returned home. I thought you were long dead, Cali.
+{color=aqua|ector: - Look who returned home. I thought you were long dead, Cali.}
 
-Cali: - You can see I'm quite fine.""",
-	CALI_HECTOR_3 = """Hector: - Not that I care. You've brought what you've stolen?
+{color=yellow|Cali: - You can see I'm quite fine.}""",
+	CALI_HECTOR_3 = """{color=aqua|Hector: - Not that I care. You've brought what you've stolen?}
 
-Cali: - I didn't steal it. It belonged to me. 
+{color=yellow|Cali: - I didn't steal it. It belonged to me. }
 
-Hector: - Hmph. Now pass it.
+{color=aqua|Hector: - Hmph. Now pass it.}
 
 Cali tensed, being reluctant to part with the sword.""",
-	CALI_HECTOR_4 = """Cali: - First let my mother go!
+	CALI_HECTOR_4 = """{color=yellow|Cali: - First let my mother go!}
 
-Hector: - You dare to make demands of me? The clan's leader?
+{color=aqua|Hector: - You dare to make demands of me? The clan's leader?}
 
-Cali: - You are no leader! A leader wouldn't hold a helpless woman hostage!
+{color=yellow|Cali: - You are no leader! A leader wouldn't hold a helpless woman hostage!}
 
-Hector: - Enough!""",
+{color=aqua|Hector: - Enough!}""",
 	CALI_HECTOR_5 = """As Hector moved closer to Cali, she moved away from him, but there was no escape as the place was surrounded by Hector's men. Hector soon laid hands on the sword, tugging at it to force it from her grasp
 
 To his surprise, Cali refused to let it go. Instead she was stubbornly holding fast against the much larger man.
 
-Hector: - You little bitch, who do you think you are!
+{color=aqua|Hector: - You little bitch, who do you think you are!}
 
-Cali: - I won't surrender it to an evil man like you!""",
+{color=yellow|Cali: - I won't surrender it to an evil man like you!}""",
 	CALI_HECTOR_6 = """Despite everything going on, no one attempts to intervene; unsure if this is also the will of a higher being. Enraged by her words, Hector uses his free hand to draw his sword as Cali's eyes widen in surprise. 
 
 As his blade is brought down, Cali is unable to escape as she's holding on to her own sword, the blade useless. """,
@@ -8565,12 +8565,12 @@ Cali instinctively closed her eyes only to realize she was unharmed. Her mother 
 
 To everyone's shock, she dashed in to stop Hector who now backed away, enraged at the intervention.
 
-Hector: - Dumb bitch! This is all your fault. 
+{color=aqua|Hector: - Dumb bitch! This is all your fault. }
 
 Cali is speechless as her emotions take hold of her. The sword acted as a natural extension in her hand as she attacked Hector in retribution. Despite her training she still was far from a capable fencer, yet her sword shined brightly as she pressed the attack. """,
 	CALI_HECTOR_8 = """Sorely pressed, Hector addressed the soldiers loyal to him in a feeble attempt to bring the situation under control.
 
-Hector: - What are you waiting for? Cut her down!
+{color=aqua|Hector: - What are you waiting for? Cut her down!}
 
 With Cali being outnumbered it falls to you to even the odds.""",
 	CALI_FINALE_1 = """With his men defeated, Hector raises his sword in defense as Cali strikes. The block is useless as his sword shatters on contact like another miracle. Still enraged, Cali delivers another blow that cleaves through the man's armor, making him fall in defeat;a terrified look showing over his face.
@@ -8582,12 +8582,12 @@ However, the girl's eyes show no intention of relenting...""",
 	CALI_FINALE_2_2 = """You decide it's not your place to interfere as Cali deals the finishing blow; the sword tumbling out of her hands a moment later. """,
 	CALI_FINALE_3 = """With the battle over, Cali quickly moves to her mother's body. To her surprise she's still breathing, but the size of her wound leaves no question about the lethality of her injury.
 
-Cali: - Mother!.. Mom! Please, you can't die!
+{color=yellow|Cali: - Mother!.. Mom! Please, you can't die!}
 
-Mother: - Cali, you've really grown up... I knew... What I was doing... What would happen to me...But I'm glad you're safe... 
+{color=aqua|Mother: - Cali, you've really grown up... I knew... What I was doing... What would happen to me...But I'm glad you're safe... }
 
-Cali: - ..Glad? What are you talking about? """,
-	CALI_FINALE_4 = """Mother: - Don't you... see it? You *are* one of the chosen... So it was fate all along... I've made many mistakes... in my lifetime... But protecting you was not one of them... 
+{color=yellow|Cali: - ..Glad? What are you talking about?} """,
+	CALI_FINALE_4 = """{color=aqua|Mother: - Don't you... see it? You *are* one of the chosen... So it was fate all along... I've made many mistakes... in my lifetime... But protecting you was not one of them... }
 
 Cali had no words to reply as tears welled up in her eyes. With a single stroke, her mother brushed her cheek.""",
 	CALI_FINALE_5 = """After a few days of grieving, Cali seems ready to return with you. She refused to take her place as the next clan leader and after all that has happened it's probably for the best. 
@@ -8614,8 +8614,7 @@ With her help you soon start to press into her, the teens tight entrance squeezi
 With time the girl would relax more, being more pliable in your hands as you continued your thrusting into her, her eyes staying locked on you as she squeezed tighter with her legs, her body shaking slightly from the stimulation.
 
 - P-please... [Master]... Aaah-ah...""",
-	CALI_GRAT_SEX_3 = """
-The wolf girl half pleads for it now, her hips writhing on you after only a few moments longer, her eyes hazing as she tightens up around you, her ankles locking tight as you feel the tell tell sign of her climax starting now. 
+	CALI_GRAT_SEX_3 = """The wolf girl half pleads for it now, her hips writhing on you after only a few moments longer, her eyes hazing as she tightens up around you, her ankles locking tight as you feel the tell tell sign of her climax starting now. 
 
 You could slow down and take your time, enjoy her a bit longer now, but her whimpers and soft moans soon urge you to join her, the two of you finding yourselves grinding hungrily against each other, an eruption of mess between the two of you as Cali squeezes her eyes shut, shaking in your grasp.""",
 	
@@ -8625,110 +8624,97 @@ You take your time with this, soft whimpers coming from Cali's mouth, though it'
 
 - [Master] I'm... ok I'm ready...
 
-You feel a bit of pride swell in you as the girl is being so brave for you, serving your needs even with her own fears.  After a few more minutes of grinding both of you are panting, your eyes locking for a brief moment as you start to press now, drawing louder whimpers from the half-wolf as you start to press into her body, her eyes closed as you take her slowly. 
-
-""",
+You feel a bit of pride swell in you as the girl is being so brave for you, serving your needs even with her own fears.  After a few more minutes of grinding both of you are panting, your eyes locking for a brief moment as you start to press now, drawing louder whimpers from the half-wolf as you start to press into her body, her eyes closed as you take her slowly. """,
 	CALI_GRAT_SEX_ALTER_2 = """Cali's legs squeeze tight around you as you find yourself half inside of her now, her eyes closed as she's clenched around your shaft like a vice.  The squeezing only would drive you on as you grip her hips, pushing deep into her until your hips and hers were pressed against each other, the whimpers from the teens mouth clearly audible.
 
 - Aah-hah... It's not... as bad as I imagined.
 
-Her body was well worth the wait. The female's body light in your hands as you began your driving into her, her hole squeezing firmly in protest of the intrusion, but unable to stop it either way.  Cali for her own part either by embarrassment or in an attempt to appear brave for you bites down on her lip to quiet herself, with mixed results.
-""",
+Her body was well worth the wait. The female's body light in your hands as you began your driving into her, her hole squeezing firmly in protest of the intrusion, but unable to stop it either way.  Cali for her own part either by embarrassment or in an attempt to appear brave for you bites down on her lip to quiet herself, with mixed results.""",
 	CALI_GRAT_SEX_ALTER_3 = """
 Cali's whimpers were cute, arousing even as the girl allowed her body to serve whatever needs you had now.  Your hands were quite tight on her figure as you pumped into her, no protests coming from the virgin girl as you drove deep into her womanhood.  Soon enough you'd find yourself buried to the base of your shaft inside of her, Cali taking you fully on her first time as she squeezes you naturally, only adding to your pleasure.
 
-After such an effort on her part it'd be an understatement to say you were pleased with her performance, your hips pumping hungrily into the teen as she continues to try to stifle her whimpers. Eventually she loses the struggle as she gasps out, her eyes going wide for a few moments as you fill her. Your cum shoots deep into her body as she goes rigid, her back arching hard as you leave every single drop in her.
-""",
+After such an effort on her part it'd be an understatement to say you were pleased with her performance, your hips pumping hungrily into the teen as she continues to try to stifle her whimpers. Eventually she loses the struggle as she gasps out, her eyes going wide for a few moments as you fill her. Your cum shoots deep into her body as she goes rigid, her back arching hard as you leave every single drop in her.""",
 	CALI_GRAT_SEX_ALTER_4 = """
 Everything is quiet for a few moments as you hold her there, her breath coming out in ragged pants before she sneaks a look at you.  
 
-- I'm... glad it was you [Master].
-""",
+- I'm... glad it was you [Master].""",
 	
 	CALI_AMELIA_1 = """As is usual today Cali has been attending her lessons with Amelia at the Servant's Guild. This time however Amelia can't help but notice the girl is distracted, her effort far from her usual.
 
-Amelia: - Cali, tell me, is there something bothering you?
+{color=aqua|Amelia: - Cali, tell me, is there something bothering you?}
 
 Cali would snap her head up while being deep in thought, looking at Amelia with a somewhat surprised look on her face.
 
-Cali: - Ah, no, it's nothing.
+{color=yellow|Cali: - Ah, no, it's nothing.}
 
-Amelia: - It's alright Cali, you can trust me. If not as your mentor, at least as your friend.
-""",
+{color=yellow|Amelia: - It's alright Cali, you can trust me. If not as your mentor, at least as your friend.}""",
 	CALI_AMELIA_2 = """Cali thinks for a long moment before taking a slow breath.
 
-Cali: - I've been trying to get [master]'s attention here lately. But it's not working. It's like [he] doesn't notice me at all...
+{color=yellow|Cali: - I've been trying to get [master]'s attention here lately. But it's not working. It's like [he] doesn't notice me at all...}
 
-Amelia: - I see. Yes, that would be disheartening. 
+{color=aqua|Amelia: - I see. Yes, that would be disheartening. }
 
 Cali looks down now quiet, but nodding in agreement to her mentor's words.
 
-Amelia: - But, stressed and distressed as you are, your lessons might not be particularly effective today. I think for now rest would suit you better. Perhaps a massage.""",
+{color=aqua|Amelia: - But, stressed and distressed as you are, your lessons might not be particularly effective today. I think for now rest would suit you better. Perhaps a massage.}""",
 	CALI_AMELIA_3 = """Cali would mull it over for a few moments before relenting and nodding. The girl was in no place to argue about a chance to relax. Amelia for her part was an expert in this sort of fare, her hands sliding over the girls shoulders now as she'd start to work the tension out of the girls shoulders. Moments later Cali's only sounds were pleased moans and sighs as Amelia demonstrated her expertise in massage. The contact was needed for the girl as she'd soon lean into the contact pressing against Amelia now.
 
-Cali's breathing would pick up as she pulled herself closer to Amelia now, the girl nearly in her lap as Cali looked over at her now, giving into the sensations as she leaned closer. It was unexpected for Amelia, Cali as well as the two of them kissed now, bodies pressing against one another as their kiss deepened. Hands that were massaging her before were now exploring, grasping lightly at Cali's body, only to be interested as a few loud bangs could be heard close by, both ladies jumping a bit and distancing themselves slightly.
-""",
+Cali's breathing would pick up as she pulled herself closer to Amelia now, the girl nearly in her lap as Cali looked over at her now, giving into the sensations as she leaned closer. It was unexpected for Amelia, Cali as well as the two of them kissed now, bodies pressing against one another as their kiss deepened. Hands that were massaging her before were now exploring, grasping lightly at Cali's body, only to be interested as a few loud bangs could be heard close by, both ladies jumping a bit and distancing themselves slightly.""",
 
-	CALI_AMELIA_3_1 = """Cali: - Ah... Uhh... I'm not...
+	CALI_AMELIA_3_1 = """{color=yellow|Cali: - Ah... Uhh... I'm not...}
 
-Amelia: - I apologize, Cali, that was...nice. It seems both of us are plenty up currently. 
+{color=aqua|Amelia: - I apologize, Cali, that was...nice. It seems both of us are plenty up currently. }
 
 Amelia would place her hand on her chin thinking before continuing as she looked Cali over. 
 
-Amelia:- Though, if that wasn't to your distaste, I've a room where we won't be interrupted.
+{color=aqua|Amelia:- Though, if that wasn't to your distaste, I've a room where we won't be interrupted.}
 
-As Cali averts her blushed gaze, she still responds with a willing nod.
-""",
+As Cali averts her blushed gaze, she still responds with a willing nod.""",
 	CALI_AMELIA_4 = """Cali followed Amelia deeper into the Guild's quarters now finding herself in a dimly lit room, soft scents wafting through the air as she was led to a rather large bed.
 
-Amelia: - It's been some time since I've had company here.
+{color=aqua|Amelia: - It's been some time since I've had company here.}
 
 Cali was still looking the room over, standing at the entrance as Amelia guided her onto the bed now, hand resting on her lower back as the wolf-girl was turned, resting against the edge as Amelia joined her.
 
-Cali: - I'm... not sure what to do...it's nice here.
+{color=yellow|Cali: - I'm... not sure what to do...it's nice here.}
 
-Amelia: - Just enjoy yourself Cali, you are my guest after all.
-""",
+{color=aqua|Amelia: - Just enjoy yourself Cali, you are my guest after all.}""",
 CALI_AMELIA_4_1 = """Cali would distract herself in the small talk as Amelia pulled the girl closer, her legs straddling just one of Cali's, moving closer as she just smiled.
 
-Amelia: - I know that it can be frustrating not catching the eye of the man you desire, but for today we've no need to worry about that.
+{color=aqua|Amelia: - I know that it can be frustrating not catching the eye of the man you desire, but for today we've no need to worry about that.}
 
-Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. 
-""",
+Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. """,
 	CALI_AMELIA_5 = """A few moments later the two were kissing again, uninterrupted as soon as their tongues would meet. Amelia's hips softly rubbing over her bare leg now. After breath demanded them break the kiss, Cali's face was a deep shade of red as Amelia's hand slipped lower, moving her panties aside.
 
-Cali:- A-ah!
+{color=yellow|Cali:- A-ah!}
 
-Cali would speak in a dazed panic before devolving her protests into a needy groan as the woman gently started to rub. Protests now stifled Amelia would continue to do what was needed. A few moments into the girl's stimulation, Amelia would move her hand now up to her dress, pulling it down to expose her breasts for the girl.
-""",
+Cali would speak in a dazed panic before devolving her protests into a needy groan as the woman gently started to rub. Protests now stifled Amelia would continue to do what was needed. A few moments into the girl's stimulation, Amelia would move her hand now up to her dress, pulling it down to expose her breasts for the girl.""",
 	CALI_AMELIA_6 = """Cali would soon lean in kissing Amelia again now, the kisses needy and desperate as the girl's desire grew more. The soft sounds of lips and tongues intertwined would soon be interrupted by a throaty moan now, Amelia having slipped her fingers into the girl.
 
 The younger girl was panting into the kisses now, aroused and desperate to please, to be acknowledged. She could feel the heat of Amelia's womanhood as the woman grinded her hips over her thigh now, just adding to her arousal.
 
 Eventually breath again demanded the kiss broken as Cali was panting, squirming from arousal and stimulation. 
 
-Cali: - I-I'm a-almost-
+{color=yellow|Cali: - I-I'm a-almost-}
 
-She was cut off by another kiss now, her body contracting on the woman's fingers as she started to climax, her hips rolling as she did all that she could to extend the sensation.
-""",
+She was cut off by another kiss now, her body contracting on the woman's fingers as she started to climax, her hips rolling as she did all that she could to extend the sensation.""",
 	CALI_AMELIA_7 = """Eventually the two just sat there, Amelia rubbing the girl's shoulders again as she softly groaned.
 
-Amelia: - Now, do you feel better?
+{color=aqua|Amelia: - Now, do you feel better?}
 
 Cali was shy now realizing what she had just done and nodded now, still blushing hard.
 
-Cali: - Was this...?
+{color=yellow|Cali: - Was this...?}
 
-Amelia: - Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.
-""",
+{color=aqua|Amelia: - Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.}""",
 	
 	LILIA_PRELUDE1 = """As you walk through the streets, you eavesdrop an uncommon conversation apparently from one of adventurers. 
 
-Citizen A: - I'm telling you, After I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.
+{color=yellow|Citizen A: - I'm telling you, After I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.}
 
-Citizen B: - That's like for all of them, no? 
+{color=aqua|Citizen B: - That's like for all of them, no? }
 
-Citizen A: - Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...""",
+{color=yellow|Citizen A: - Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
 	LILIA_PRELUDE2 = "You decide to make a note about this and perhaps visit it next time you go to elven forests.",
 	
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
@@ -8968,25 +8954,25 @@ You decide to leave her alone for now. Perhaps something could make her more pli
 
 A collar seems the most logical first step but a regular collar seems insufficient. You decide it might be a better idea to head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
 	CALI_ACT2_WORKERS_OPTION_1 = "Ask Sigmund about a specialist",
-	CALI_ACT2_WORKERS_1 = """Sigmund:- Wha? Someone to make a collar? Are the ones at the market not good enough?
+	CALI_ACT2_WORKERS_1 = """{color=yellow|Sigmund:- Wha? Someone to make a collar? Are the ones at the market not good enough?}
 
 You explain to the dwarf that the ones in the market are indeed fine, but what you're looking for is a custom piece. The burly male thinks for a few moments while scratching his beard before nodding.
 
-Sigmund:- Limnrov is who you'd want to find. Ask up at the front for him, the receptionist can take you to ‘em.
+{color=yellow|Sigmund:- Limnrov is who you'd want to find. Ask up at the front for him, the receptionist can take you to ‘em.}
 
 With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
 	CALI_ACT2_WORKERS_2 = """Once you bring up the name of the craftsman with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Limnrov himself, is an older Dark Elf, his eyes sharp as he looks up at you from the excellent piece he's currently working on.
 
-Limnrov: - I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.""",
+{color=aqua|Limnrov: - I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.}""",
 	CALI_ACT2_WORKERS_2_OPTION_1 = "I'm not a courier, I'm a customer.",
 	CALI_ACT2_WORKERS_2_OPTION_2 = "I'm here to hire you for your services.",
 	CALI_ACT2_WORKERS_3 = """The Dark Elf looks you up and down for a few more moments before giving a nod.
 
-Limnrov: - Ah, my mistake. What can I do for you?
+{color=aqua|Limnrov: - Ah, my mistake. What can I do for you?}
 
 You explain to Limnrov your desire to commission a custom piece for a recently acquired slave. After asking you details he will need, the elf gives a stoic nod before looking at you. Two sketches are then laid out before you.
 
-Limnrov:- I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
+{color=aqua|Limnrov:- I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.}""",
 	CALI_ACT2_WORKERS_3_OPTION_1 = "What will you need to produce the simple collar?",
 	CALI_ACT2_WORKERS_3_OPTION_2 = "What will you need to produce the extravagant collar?",
 	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this",
@@ -8995,19 +8981,19 @@ Limnrov:- I've two designs I might suggest. The former is your standard affair, 
 #	CALI_ACT2_WORKERS_4_2 = """Limrov looks rather excited as he produces a list of items, most notable of all being a large gem and hands it over to you.""",
 	CALI_ACT2_WORKERS_4_1_OPTION_1 = "Here are the materials for the Simple collar",
 	CALI_ACT2_WORKERS_4_2_OPTION_1 = "Here are the materials for the Extravagant collar",
-	CALI_ACT2_WORKERS_4_3 = """Limnrov:- Very well, I'll be here.
+	CALI_ACT2_WORKERS_4_3 = """{color=aqua|Limnrov:- Very well, I'll be here.}
 
 Limnrov accompanies you to the entrance of the Guild.""",
 	CALI_ACT2_WORKERS_5_1 = """Limrov looks the materials and payment over intently before nodding. 
 
-Limnrov: - Ah yes, this will do. Give me a few days and I'll have it delivered by courier.""",
+{color=aqua|Limnrov: - Ah yes, this will do. Give me a few days and I'll have it delivered by courier.}""",
 	CALI_ACT2_WORKERS_5_2 = """Limnrov is intent as he checks over every detail of the materials. Eventually satisfied, the man takes the coin and components needed before looking at you with a grin. 
 
-Limnrov: - Excellent, most excellent. Very well, I'll make sure your slave has a collar all others will pale compared to. Give me a few days and I'll have a courier deliver it.""",
+{color=aqua|Limnrov: - Excellent, most excellent. Very well, I'll make sure your slave has a collar all others will pale compared to. Give me a few days and I'll have a courier deliver it.}""",
 	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the simple collar. Though its design lacks much ornamentation the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
 #	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror and gleams back to you.""",
 	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care.""",
-	CALI_ACT2_LIMNROV = """Limnrov:- I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_LIMNROV = """{color=aqua|Limnrov:- I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.}""",
 	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
@@ -9059,7 +9045,7 @@ The girl does look worn out. Clearly life working at the mansion is more strenuo
 Before you can respond, the girl leaves half-slamming the door as she gets to work. Clearly deciding that would be a better alternative than giving into your base needs.""",
 	CALI_ACT3_MAGIC_2_3 = """Cali looks relieved at you before nodding.
 
-Cali: Ok then, um... thank you.""",
+{color=yellow|Cali: Ok then, um... thank you.}""",
 	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders. You could force the girl into bed. It wouldn't be hard, but seems far less satisfying. You eventually decide there must be something you can do to sway her. You think about the dominators you've heard of mages who can influence the mind of others. Perhaps a mage might be able to assist you in this endeavor.""",
 	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders. You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise. Knowing magics are wide and varied though you decide to ask another mage. Perhaps they have some knowledge you're lacking.""",
 	CALI_ACT3_JEAN_START_OPTION = "Approach Jean about the issue",
@@ -9067,7 +9053,7 @@ Cali: Ok then, um... thank you.""",
 
 Jean goes to respond to you multiple times before finally asking you a question
 
-Jean:- Why not get another one then? It's not like she's anything special, just a half-wolf.""",
+{color=aqua|Jean:- Why not get another one then? It's not like she's anything special, just a half-wolf.}""",
 	CALI_ACT3_JEAN_1_OPTION_1 = "I've grown rather fond of her.",
 	CALI_ACT3_JEAN_1_OPTION_2 = "I'm rather enjoying the challenge.",
 	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up before shaking her head.
@@ -9076,32 +9062,32 @@ Jean gives you a partial look of disgust. Obviously she was about to say somethi
 
 The girl considers your answer for a moment before finally giving you an answer. 
 
-Jean:- Why don't you just have the beast's collar enchanted?
+{color=aqua|Jean:- Why don't you just have the beast's collar enchanted?}
 
 You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean watching you finally huffs out a sigh, looking at you.
 
-Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+{color=aqua|Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.}""",
 	CALI_ACT3_JEAN_2_2 = """Jean sighs, then gives you a knowing nod.
 
-Jean: - Of course you'd say that. Pervert.
+{color=aqua|Jean: - Of course you'd say that. Pervert.}
 
 The girl considers your answer for a moment before finally giving you an answer. 
 
-Jean:- Why don't you just have the beast's collar enchanted?
+{color=aqua|Jean:- Why don't you just have the beast's collar enchanted?}
 
 You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean watching you finally huffs out a sigh, looking at you.	
 
-Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+{color=aqua|Jean:- You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.}""",
 	CALI_ACT3_JEAN_3 = """You get to the spot which was marked by Jean and find a dimly glowing water spring. You scoop some water from it which should be enough to provide Jean with what she needs.""",
 	CALI_ACT3_JEAN_3_OPTION_1 = "Give Rare Magical Essence",
 	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent(s) required, Jean gets to work. After you retrieve Cali's collar under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
 
-Jean: - There, done. Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...""",
+{color=aqua|Jean: - There, done. Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...}""",
 	CALI_ACT3_JEAN_5 = """Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again.""",
 	CALI_ACT3_MAGES_OPTION_INIT = "Ask about mind altering spells",
 	CALI_ACT3_MAGES_1 = """Myr isn't available for your request today it seems. After inquiring around the guild you eventually find an apprentice wearing a bored expression on his face to make your inquiry to.
 
-Apprentice: - Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we could help with that. Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.""",
+{color=aqua|Apprentice: - Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we could help with that. Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.}""",
 	CALI_ACT3_MAGES_1_OPTION_1 = "I'm sure I can afford it.",
 	CALI_ACT3_MAGES_1_OPTION_2 = "What's the rate?",
 	CALI_ACT3_MAGES_2 = """The young mage pulls out a large chart, looking it over before telling you the service will be 500 gold.""",
@@ -9110,14 +9096,14 @@ Apprentice: - Magical assistance in taming a slave? And she's quite keen on resi
 	CALI_ACT3_MAGES_2_OPTION_3 = "I'll come back later.",
 	CALI_ACT3_MAGES_3_1 = """After you retrieve Cali's collar under the guise of the article needing to be cleaned, the apprentice makes quick work of applying the enchantment to it all while taking a heavy amount of your coin.
 
-Apprentice: - Good it's done. Do know this won't make her blindly obedient, only more willing to do what you ask...
+{color=aqua|Apprentice: - Good it's done. Do know this won't make her blindly obedient, only more willing to do what you ask...}
 
 Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again""",
 	CALI_ACT3_MAGES_3_2 = """The young mage shakes his head.
 
-Apprentice: - Absolutely not, Guildmaster Myr would have my head!""",
-	CALI_ACT3_MAGES_3_3 = """Apprentice: - Very well, I'll be here when you return.""",
-	CALI_ACT3_MAGES_4 = """Apprentice: Welcome back, you have the fee I trust?""",
+{color=aqua|Apprentice: - Absolutely not, Guildmaster Myr would have my head!}""",
+	CALI_ACT3_MAGES_3_3 = """{color=aqua|Apprentice: - Very well, I'll be here when you return.}""",
+	CALI_ACT3_MAGES_4 = """{color=aqua|Apprentice: Welcome back, you have the fee I trust?}""",
 	CALI_ACT3_BLOW_OPTION_INIT = "Talk to Cali",
 	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance. Unbeknownst to her the enchantment seems to be doing it's job quite well, the girl's resolve slowly weakening.
 
@@ -9164,10 +9150,10 @@ It seems the merchant will prattle on forever if you don't stop him.""",
 	CALI_ACT4_MERCHANT_1_OPTION_2 = "Do you have any books relating to Wolfkin? Or the half-breeds?",
 	CALI_ACT4_MERCHANT_2_1 = """The merchant looks at you with a knowing smile, shaking his head. 
 
-Merchant:- Ah, but that is not the look of a man who is just browsing. Tell me, what do you need sir?""",
+{color=yellow|Merchant:- Ah, but that is not the look of a man who is just browsing. Tell me, what do you need sir?}""",
 	CALI_ACT4_MERCHANT_3 = """Relenting, you tell the merchant you're in the market for a book on Wolfkin, or their half-breeds.
 
-Merchant:- Ah, yes yes I do have something of its like. 
+{color=yellow|Merchant:- Ah, yes yes I do have something of its like. }
 
 The man reaches onto one of the shelves in the cart and hands you a small tome, no thicker than your thumb. A quick glance at its contents shows you that this is a book on wolfkin mating habits. 
 
@@ -9215,8 +9201,7 @@ The girl only blushes more as you move towards her on the bed now. Looking away 
 The girl's eyes go wide seeing your length as you open your pants now, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
 	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning as a reply as you push into her.  Eyes rolling back all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
 
-The sight of the teen squirming around as you pumped into her was perfect as she served you willingly, eagerly now.  Soon the matting became rougher as you naturally escalated with her, your grip tight on her hips as you thrust into her.  
-""",
+The sight of the teen squirming around as you pumped into her was perfect as she served you willingly, eagerly now.  Soon the matting became rougher as you naturally escalated with her, your grip tight on her hips as you thrust into her.  """,
 	CALI_ACT4_FUCK_2 = """- R-right there...
 
 The girl's body would eventually go rigid on you as she climaxes, a seductive little moan bubbling out of her throat as you soon join her. Cali doesn't protest as you bury yourself deep into her body, your cum filling her.
@@ -9339,6 +9324,14 @@ You remind her as you're still deep inside of her that she should call you what 
 - [Master]... I'll be a good girl, [Master]...""",
 	CALI_ACT6_NAKED_7 = """With your training complete, Cali sitting down beside you like before. Her eyes observe you with a blind acceptance.""",
 	CALI_ACT6_NAKED_7_OPTION_1 = "Good girl",
+	
+	EXCALIBUR_QUEST_1 = """You come across a small clearing with a large rock in the center of it. As you take a closer look you realize it has a sword handle sticking out of it being buried in stone. Despite its state, the sword looks in a respectable state. However pulling it does not seem to be easy...""",
+	EXCALIBUR_QUEST_1_OPTION_1 = "Pull it",
+	EXCALIBUR_QUEST_GOOD = """With incredible effort you manage to pull the sword out of stone! As it's finally free you can feel a potent magic residing in it. Adoring your acquirement you leave the lone clearing. """,
+	EXCALIBUR_QUEST_BAD = """You give your best spending a few minutes grabbing the sword with no success. It does not even bulge, neither stone seems to be affected by all your efforts. Praising the fact that nobody seen your pathetic struggles, you decide to leave the sword alone for now.""",
+	
+	
+	
 	
 	
 	

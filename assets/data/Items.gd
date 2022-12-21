@@ -2786,6 +2786,23 @@ var itemlist = {
 		tags = [],
 		basestats = {mdef = 5},
 	},
+	excalibur = { # TODO change
+		code = 'excalibur',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'weapon',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['neck'],
+		price = 100,
+		icon = load("res://assets/images/iconsgear/item_ribbon.png"),
+		tier = 'easy',
+		reqs = [],
+		effects = [], 
+		tags = [],
+		basestats = {obedience_drain = -2, loyalty_gain = 0.5},
+	},
 }
 
 var recipes = {
