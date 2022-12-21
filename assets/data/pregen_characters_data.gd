@@ -215,8 +215,8 @@ var pregen_characters = {
 		personality = 'kind',
 		food_like = 'meat',
 		food_hate = ['vege'],
-		classes = ['broken_royalty','loyalty_basic_servitude','loyalty_adv_servitude', 'loyalty_bodmod','loyalty_callmaster'],
-		traits = ['frail'],
+		classes = ['broken_royalty'],
+		traits = ['frail','loyalty_basic_servitude','loyalty_adv_servitude', 'loyalty_bodmod','loyalty_callmaster'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Zephyra = {

@@ -7,7 +7,14 @@ var data = {
 			}
 		]
 	},
-	
+	money_lose_scene = {
+		image = null, tags = [],
+		text = [ {text = "LOSE_MONEY_MESSAGE", reqs = []} ],
+		options = [ {
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "lose_game"}]
+			}
+		]
+	},
 	aire_recruiment_start = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [ {text = "AIRE_RECRUITMENT_REPLY_1", reqs = []} ],

@@ -76,7 +76,7 @@ func fix_tax():
 func subtract_taxes():
 	money -= tax
 	if money < 0:
-		input_handler.interactive_message('generic_lose_scene', '', {})
+		input_handler.interactive_message('money_lose_scene', '', {})
 
 
 #inventory

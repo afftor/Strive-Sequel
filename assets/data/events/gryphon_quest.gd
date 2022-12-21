@@ -94,7 +94,7 @@ var data = {
 	},
 	
 	gryphon_hunter_start = {
-		image = null, tags = ['dialogue_scene'],
+		image = 'aire_hunter', tags = ['dialogue_scene'],
 		reqs = [], 
 		text = [{text = "GRYPHON_HUNTER_START", reqs = []}],
 		options = [ {
