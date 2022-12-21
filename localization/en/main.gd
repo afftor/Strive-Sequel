@@ -2185,7 +2185,8 @@ var TranslationDict = {
 
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should have focused on their loyalty or behavior more.",
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
-	LOSE_MESSAGE = "",
+	LOSE_MESSAGE = "Sadly, it seems that your reign is over.",
+	LOSE_MONEY_MESSAGE = "You've ran out of gold. Sadly, it seems that your reign is over.",
 
 	DIALOGUECLOSE = "Close",
 	DIALOGUECONFIRM = "Confirm",
@@ -5620,7 +5621,9 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMDAISY_DRESSDESCRIPT = "A custom-tailored uniform designed specifically for a bunny girl in your possession. It is uncommonly durable and accentuates her stronger points.\n\n{color=yellow|Only equippable by Daisy} ",
 	ITEMDAISY_DRESS_LEWD = "Daisy's Dress (Lewd)",
 	ITEMDAISY_DRESS_LEWDDESCRIPT = "A custom-tailored uniform designed specifically for a bunny girl in your possession. Depsite it fairly normal appearance, it can be quickly switched to reveal her private parts, while also stimulating her body.\n\n{color=yellow|Only equippable by Daisy} ",
-
+	
+	
+	
 	
 	ITEMCALI_HEIRLOOM = "Heirloom Sword",
 	ITEMCALI_HEIRLOOMDESCRIPT = "A Heirloom Sword which belongs to Cali. According to her, it's rather useless but the fine smith work and mysterious aura suggests otherwise.\n\n{color=yellow|Only equippable by Cali} ",
@@ -5638,6 +5641,9 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	
 	ITEMCALI_COLLAR_ENCHANTED_2 = "Cali's Ex. Enchanted Collar",
 	ITEMCALI_COLLAR_ENCHANTED_2DESCRIPT = "A fancy collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali}",
+	
+	ITEMHOLY_SWORD = "Sword From Stone",
+	ITEMHOLY_SWORDDESCRIPT = "A holy sword obtained from the stone. Required titanic strength to obtain.",
 	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 
