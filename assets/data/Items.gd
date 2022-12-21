@@ -2786,8 +2786,8 @@ var itemlist = {
 		tags = [],
 		basestats = {mdef = 5},
 	},
-	excalibur = { # TODO change
-		code = 'excalibur',
+	holy_sword = {
+		code = 'holy_sword',
 		name = "",
 		descript = "",
 		type = 'gear',

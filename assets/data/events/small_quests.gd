@@ -436,7 +436,7 @@ var data = {
 	
 	excalibur_quest_2 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "EXCALIBUR_QUEST_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 175}]}], bonus_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'excalibur', number = 1}]}, 
+		text = [ {text = "EXCALIBUR_QUEST_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 175}]}], bonus_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'holy_sword', number = 1}]}, 
 			{text = "EXCALIBUR_QUEST_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 175}]}]},  ], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
