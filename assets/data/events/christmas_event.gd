@@ -10,7 +10,7 @@ var data = {
 	},
 	
 	christmas_1 = {
-		image = null, tags = ['dialogue_scene','master_translate'],
+		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
 		character = 'daisy_default',
 		character2 = 'white_stag_christmas',
 		reqs = [],
@@ -88,7 +88,7 @@ var data = {
 	},
 	
 	christmas_8 = {
-		image = null, tags = ['dialogue_scene','master_translate'],
+		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
 		character = 'daisy_christmas',
 		character2 = 'white_stag_christmas',
 		reqs = [],
