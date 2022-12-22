@@ -642,6 +642,13 @@ var unique_sprites = {
 			face_path = "daisy",
 			unlock_reqs = []
 			},
+		default_sad = {
+			name = "Default Sad",
+			descript = "",
+			path = "daisy_default_body", 
+			face_path = "daisy_sad",
+			unlock_reqs = []
+			},
 		maid = {
 			name = "Maid",
 			descript = "",
@@ -655,6 +662,13 @@ var unique_sprites = {
 			path = "daisy_maid_nude_body", 
 			face_path = "daisy_maid",
 			unlock_reqs = [{type = 'decision', value = 'DaisyDressLewd', check = true}]
+			},
+		christmas = {
+			name = "Christmas",
+			descript = "",
+			path = "daisy_christmas_body", 
+			face_path = "daisy_christmas",
+			unlock_reqs = []
 			},
 	},
 	cali = {

@@ -1986,12 +1986,19 @@ func valuecheck(dict):
 			else:
 				return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
 		'any_quest_stage':
-			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
+			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stages') == false:
 				return false
 			for i in dict.stages:
 				if ResourceScripts.game_progress.get_active_quest(dict.value).stage == i:
 					return true
 			return false
+		'has_active_quest':
+			var has = false
+			for i in ResourceScripts.game_progress.active_quests:
+				if i.code == dict.name:
+					has = true
+					break
+			return has == dict.check
 		'faction_reputation':
 			var data = ResourceScripts.world_gen.get_faction_from_code(dict.code)
 			var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]

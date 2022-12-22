@@ -1068,7 +1068,7 @@ var data = {
 		text = [{text = "CALI_ACT6_NAKED_7", reqs = []}], 
 		options = [ {
 			code = 'close', text = "CALI_ACT6_NAKED_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = []
+			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'add_profession', profession = "petbeast"}]},]
 		}, ],
 	},
 }

@@ -383,7 +383,7 @@ var data = {
 	
 	#fight
 	temple_3_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate',],
+		image = 'temple_raiders', tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], 
 		text = [{text = 'TEMPLE_3_2', reqs = []}], 
 		options = [ {

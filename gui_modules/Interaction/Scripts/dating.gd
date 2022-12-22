@@ -980,72 +980,72 @@ var unique_marry_rules = {
 	anastasia = {
 		marriage_agreed = {
 			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = true}],
-			text = "As by our agreement... I'm ready to become your wife.",
-			description = "Anastasia reddens a bit, but managed to compose herself like a lady before answering.",
+			text = "ANASTASIA_MARRIAGE_AGREED_TEXT",
+			description = "ANASTASIA_MARRIAGE_AGREED_DESCRIPTION",
 			agrees = true
-			},
+		},
 		enslavement_agreed = {
 			reqs = [{type = 'decision', value = 'AnastasiaMarry', check = false}],
-			text = "Sorry, this is not going to happen, even if you say so, I'm not allowed to marry you. ",
-			description = "Even though Anastasia clearly surprised by your words, she keeps her face mostly calm.",
+			text = "ANASTASIA_ENSLAVEMENT_AGREED_TEXT",
+			description = "ANASTASIA_ENSLAVEMENT_AGREED_DESCRIPTION",
 			agrees = false
-			},
+		},
 	},
 	aire = {
 		ana_alive = {
 			reqs = [{type = 'decision', value = 'PrincessObtained', check = true}],
-			text = "Regardless of my feelings towards you, I can't agree to it. You must marry Ana, not me.",
-			description = "Aire looks completely deadpan to your proposal.",
+			text = "AIRE_ANA_ALIVE_TEXT",
+			description = "AIRE_ANA_ALIVE_DESCRIPTION",
 			agrees = false
-			},
+		},
 		ana_dead = {
 			reqs = [{type = 'decision', value = 'PrincessDead', check = true}],
-			text = "Don't waste your time. I will never agree to this after what happened to Ana.",
-			description = "Aire looks completely deadpan to your proposal.",
+			text = "AIRE_ANA_DEAD_TEXT",
+			description = "AIRE_ANA_DEAD_DESCRIPTION",
 			agrees = false
-			},
+		},
 		
 	},
 	daisy = {
 		daisy_quest_finished = {
 			reqs = [{type = "quest_completed", name = "daisy_lost", check = true}],
-			text = "A-are you for real, [Master]?.. I-if you find me worthy... Of course I agree!",
-			description = "Daisy's eyes widen hearing your proposal. Barely holding back her tears of joy, she slowly replies.",
+			text = "DAISY_QUEST_FINISHED_TEXT",
+			description = "DAISY_QUEST_FINISHED_DESCRIPTION",
 			agrees = true
-			},
+		},
 		daisy_quest_unfinished = {
-			reqs = [{type = "quest_completed", name = "daisy_lost", check = false}],
-			text = "I-I'm sorry, [Master], I think this is a bit too sudden...",
-			description = "Daisy looks troubled and averts her eyes.",
+			reqs = [{type = "has_active_quest", name = "daisy_lost", check = true}],
+			text = "DAISY_QUEST_UNFINISHED_TEXT",
+			description = "DAISY_QUEST_UNFINISHED_DESCRIPTION",
 			agrees = false
-			},
+		},
 	},
 	cali = {
 		cali_quest_finished = {
 			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = true}],
-			text = "Really!? Of course I will. Nobody ever done so much for me... I love you, [Master]!",
-			description = "Cali turns ecstatic on hearing your words. After going through so much with you, her answer is obvious.",
+			text = "CALI_QUEST_FINISHED_DESCRIPTION",
+			description = "CALI_QUEST_FINISHED_TEXT",
 			agrees = true
-			},
+		},
 		cali_quest_unfinished = {
-			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = false}],
-			text = "That's really weird thing for you to say... Sorry, I don't think I'm ready yet.",
-			description = "Cali gives you a troubled look, trying to joke it off.",
+			reqs = [{type = "has_active_quest", name = "cali_heirloom_quest", check = true}],
+			text = "CALI_QUEST_UNFINISHED_DESCRIPTION",
+			description = "CALI_QUEST_UNFINISHED_TEXT",
 			agrees = false
-			},
+		},
 		
 		cali_bad_route_finished = {
 			reqs = [{type = "quest_completed", name = "cali_taming_quest", check = true}],
-			text = "I-if [Master] desires me to become [his] wife, I will be happy to do it!",
-			description = "Cali dumbfoundedly looks up at you. After being trained in such lengths, she can only find joy in such recognition from you.",
+			text = "CALI_BAD_ROUTE_FINISHED_TEXT",
+			description = "CALI_BAD_ROUTE_FINISHED_DESCRIPTION",
 			agrees = true
-			},
+		},
 		cali_bad_route_unfinished = {
-			reqs = [{type = "quest_completed", name = "cali_taming_quest", check = false}],
-			text = "Are you kidding me?! Who would ever marry a horrible person like you?",
-			description = "Cali looks clearly agitated but your proposal. It seems you haven't fully bended her yet.",
-			agrees = true
-			},
+			reqs = [{type = "has_active_quest", name = "cali_taming_quest", check = true}],
+			text = "CALI_BAD_ROUTE_UNFINISHED_TEXT",
+			description = "CALI_BAD_ROUTE_UNFINISHED_DESCRIPTION",
+			agrees = false
+		},
 	},
 }
 
