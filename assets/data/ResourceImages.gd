@@ -266,6 +266,8 @@ var scenes = {
 	temple_raiders = load('res://assets/images/scenes/temple_raiders.png'),
 	deer = load('res://assets/images/scenes/deer.png'),
 	leon = load('res://assets/images/scenes/leon.png'),
+	ritual = load('res://assets/images/scenes/ritual.png'),
+	mae_camp = load('res://assets/images/scenes/mae_camp.png'),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),

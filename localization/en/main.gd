@@ -6928,9 +6928,8 @@ You've noticed they seem unusually carefree and even frivolous, including the wa
 	CHIEFTAIN_MEETING_5 = """— We have certain customs and rituals we are required to carry by Rundas. You are the first visitor in the last couple of months and you can help us with that. There's one ritual which we need an outsider to perform and if you wish to carry my answer back to the elves, I will require you to participate in it. It's nothing dangerous for you, in case you are concerned.
 
 — Find Savra, she'll tell you the details, she must be already excited about your arrival.""",
-	MAE_MEETING_1 = """As you enter the lodge, a young surprised tanuki girl appears before you, dressed in skimpy clothing. Her demeanor is unusually peculiar compared to the other villagers, though she is also visibly nervous.
-
-— Ah! H-hello! I haven't seen you around before. You are an outsider, right?.. I mean, of course you are. U-hm, I'm Mae, pleased to meet you. You must be looking for Savra? She's in the far room. N-now, please, excuse me.
+	MAE_MEETING_1 = """As you enter the lodge, a young surprised tanuki girl appears before you, dressed in skimpy clothing. Her demeanor is unusually peculiar compared to the other villagers, though she is also visibly nervous.""",
+	MAE_MEETING_1_1 = """— Ah! H-hello! I haven't seen you around before. You are an outsider, right?.. I mean, of course you are. U-hm, I'm Mae, pleased to meet you. You must be looking for Savra? She's in the far room. N-now, please, excuse me.
 
 Before Mae finally leaves the room, she gives you another curious yet slightly frightened look. """,
 	MAE_MEETING_2 = """— Hello, again, outsider. It's a pleasure to see a new visitor these days. I suspect you've been led here by the words of the long-eared. That matters little to me, as this is just another whim of the gods. The only question is if it's the whim of Rundas or not. And so far I tend to believe it is. Say, what do you think about us?""",

@@ -304,9 +304,18 @@ var data = {
 	},
 	
 	mae_meeting_1 = {
+		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "MAE_MEETING_1", reqs = []}],
+		options = [ {
+			code = 'mae_meeting_1_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		} ]
+	},
+	
+	mae_meeting_1_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'mae',
-		text = [{text = "MAE_MEETING_1", reqs = []}],
+		text = [{text = "MAE_MEETING_1_1", reqs = []}],
 		options = [ {
 			code = 'mae_meeting_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]

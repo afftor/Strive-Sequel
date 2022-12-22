@@ -10,8 +10,8 @@ var data = {
 		} ]
 	},
 	
-	ritual_1_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ritual_1_1 = { 
+		image = 'ritual', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "RITUAL_1_1_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 30}]}],
 				bonus_effects = [{code = 'decision', value = 'putPowder'}]},
@@ -21,8 +21,8 @@ var data = {
 		}, ]
 	},
 	
-	ritual_1_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ritual_1_2 = { 
+		image = 'ritual', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "RITUAL_1_2", reqs = []}],
 		common_effects = [{code = 'decision', value = 'maePregnant'}],
