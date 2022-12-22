@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_chrismas_body.png-ed90714b8ec8303602b981e1f01dae4e.stex"
+path="res://.import/daisy_christmas.png-91258ffe7302fef8d1485fe8a1728a10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/daisy_chrismas_body.png"
-dest_files=[ "res://.import/daisy_chrismas_body.png-ed90714b8ec8303602b981e1f01dae4e.stex" ]
+source_file="res://assets/images/sprites/daisy_christmas.png"
+dest_files=[ "res://.import/daisy_christmas.png-91258ffe7302fef8d1485fe8a1728a10.stex" ]
 
 [params]
 

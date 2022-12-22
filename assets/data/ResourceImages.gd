@@ -191,6 +191,8 @@ var backgrounds = {
 	lira_sex_3 = load("res://assets/images/fullscreen scenes/LiraCG003.png"),
 	
 	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
+	christmas_scene = load("res://assets/images/fullscreen scenes/DaisyChristmas001.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 
@@ -261,6 +263,7 @@ var scenes = {
 	gryphon = load('res://assets/images/scenes/gryphon.png'),
 	temple_gates = load('res://assets/images/scenes/temple_gates.png'),
 	temple_source = load('res://assets/images/scenes/temple_source.png'),
+	temple_raiders = load('res://assets/images/scenes/temple_raiders.png'),
 	deer = load('res://assets/images/scenes/deer.png'),
 	leon = load('res://assets/images/scenes/leon.png'),
 
@@ -300,6 +303,8 @@ var sprites = {
 	daisy_maid_body = load("res://assets/images/sprites/daisy_maid_body.png"),
 	daisy_maid_nude = load("res://assets/images/sprites/daisy_maid_nude.png"),
 	daisy_maid_nude_body = load("res://assets/images/sprites/daisy_maid_nude_body.png"),
+	daisy_christmas = load("res://assets/images/sprites/daisy_christmas.png"),
+	daisy_christmas_body = load("res://assets/images/sprites/daisy_christmas_body.png"),
 	lira = load("res://assets/images/sprites/Lira.png"),
 	mae = load("res://assets/images/sprites/mae.png"),
 	mae_body = load("res://assets/images/sprites/mae_body.png"),
@@ -320,6 +325,7 @@ var sprites = {
 	cali_collar_body = load("res://assets/images/sprites/cali_collar_body.png"),
 	white_stag = load("res://assets/images/sprites/white_stag.png"),
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
+	white_stag_christmas = load("res://assets/images/sprites/white_stag_christmas.png"),
 	erlen = load("res://assets/images/sprites/Erlen.png"),
 	i_body = load("res://assets/images/sprites/lira_body.png"),
 	bandits = load("res://assets/images/sprites/bandits.png"),
@@ -341,6 +347,7 @@ var portraits = {
 	daisy = 'res://assets/images/portraits/daisy_prt.png',
 	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
 	daisy_maid = 'res://assets/images/portraits/daisy_maid_portrait.png',
+	daisy_christmas = 'res://assets/images/portraits/daisy_christmas_prt.png',
 	anastasia = "res://assets/images/portraits/anastasia_prt.png",
 	aire = "res://assets/images/portraits/aire_prt.png",
 	kurdan = "res://assets/images/portraits/kurdan_prt.png",

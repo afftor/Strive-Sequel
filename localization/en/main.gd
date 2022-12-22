@@ -9510,73 +9510,73 @@ The last word comes out of her mouth now sounding like an attempt to placate you
 	
 	CHRISTMAS_EVENT_INTRO = """One young poor girl has been staying on the streets in the winter. Being left alone she was trying to make living by selling some life shards.
 
-Daisy: - Please... Purchase these shiny stones...
+{color=yellow|Daisy: - Please... Purchase these shiny stones...}
 
-Stranger: - Don't you know? The market for these things crashed due to overabundance. 
+{color=aqua|Stranger: - Don't you know? The market for these things crashed due to overabundance. }
 
-Daisy: - Uuuuh... No way... I've spent my last money in hope of reselling them...""",
+{color=yellow|Daisy: - Uuuuh... No way... I've spent my last money in hope of reselling them...}""",
 	CHRISTMAS_EVENT_1 = """It was Christmas Eve but her hopes to make some money at least for a roof for tonight have been left in vain. 
 
 With teary eyes she crouched down, lighting those shards and observing them closely in an attempt to shrug away the coldness. She has been recalling her memories in that faint light...""",
-	CHRISTMAS_EVENT_2 = """Rudolph: - Hey, are you actually trying to throw your life away? This won't work, these are healing shards, you know.
+	CHRISTMAS_EVENT_2 = """{color=aqua|Rudolph: - Hey, are you actually trying to throw your life away? This won't work, these are healing shards, you know.}
 
-Daisy: - W-Who are you? 
+{color=yellow|Daisy: - W-Who are you? }
 
-Rudolph: - I'm this scenarios' invited guest... Ah, you meant literally. You can see me as a holiday spirit. I'm here to offer you a job. 
+{color=aqua|Rudolph: - I'm this scenarios' invited guest... Ah, you meant literally. You can see me as a holiday spirit. I'm here to offer you a job. }
 
-Daisy: - B-But, I'm not that kind of girl...
+{color=yellow|Daisy: - B-But, I'm not that kind of girl...}
 
-Rudolph: - I'm not a pimp, you doofus. It's a standard job. Come on, you don't want to spend your night here, do you?""",
-	CHRISTMAS_EVENT_3 = """Rudolph: - Come here, I have something for you. Oh yeah, and take off your clothes.
+{color=aqua|Rudolph: - I'm not a pimp, you doofus. It's a standard job. Come on, you don't want to spend your night here, do you?}""",
+	CHRISTMAS_EVENT_3 = """{color=aqua|Rudolph: - Come here, I have something for you. Oh yeah, and take off your clothes.}
 
-Daisy: - W-wait, my clothes?! But you said...
+{color=yellow|Daisy: - W-wait, my clothes?! But you said...}
 
-Rudolph: - Shut up and come already.""",
-	CHRISTMAS_EVENT_4 = """Daisy: - W-w-what are these clothes? 
+{color=aqua|Rudolph: - Shut up and come already.}""",
+	CHRISTMAS_EVENT_4 = """{color=yellow|Daisy: - W-w-what are these clothes? }
 
-Rudolph: - You know how they say it, sometimes you have to become what you needed in the first place.
+{color=aqua|Rudolph: - You know how they say it, sometimes you have to become what you needed in the first place.}
 
-Daisy: - But... This skirt is way too short, and there's no underwear!
+{color=yellow|Daisy: - But... This skirt is way too short, and there's no underwear!}
 
-Rudolph: - That's an established uniform for these days, not much I can do about it. Don't sweat about it though, you look just fine.""",
-	CHRISTMAS_EVENT_5 = """Daisy: - But what am I to do now?..
+{color=aqua|Rudolph: - That's an established uniform for these days, not much I can do about it. Don't sweat about it though, you look just fine.}""",
+	CHRISTMAS_EVENT_5 = """{color=yellow|Daisy: - But what am I to do now?..}
 
-Rudolph: - Didn't I tell you? You gotta do some santa’s work yourself. Now take this bag and come after me.
+{color=aqua|Rudolph: - Didn't I tell you? You gotta do some santa’s work yourself. Now take this bag and come after me.}
 
-Daisy: - Eeeeh?...
+{color=yellow|Daisy: - Eeeeh?...}
 
 Dropping her protests, the girl obediently went after her new employer.""",
 	CHRISTMAS_EVENT_6 = """The girl was surprised when she had to visit numerous houses of a common folk varying degrees of poverty. As parents and kids were greeting her she found it a fresh experience.
 
 Finally by the end of the day she came to an orphanage.
 
-Child: - Santa! Is it a real Santa?
+{color=aqua|Child: - Santa! Is it a real Santa?}
 
-Daisy: - I-I'm not real Santa, but he's busy so I'm helping out.""",
-	CHRISTMAS_EVENT_7 = """could experience elsewhere. She spent some time playing with children.
+{color=yellow|Daisy: - I-I'm not real Santa, but he's busy so I'm helping out.}""",
+	CHRISTMAS_EVENT_7 = """Happy children gathered around the girl who was surprised by the sudden treatment she rarely could experience elsewhere. She spent some time playing with children.
 
  A at couple of moments she was dangerously close to being discovered by a bunch of older boys but in the end somehow it worked out.""",
-	CHRISTMAS_EVENT_8 = """Younger child: - Thanks for visiting us, Santa's Helper!
+	CHRISTMAS_EVENT_8 = """{color=aqua|Younger child: - Thanks for visiting us, Santa's Helper!}
 
-Daisy: - Ha-ah... Well, it's finally over?
+{color=yellow|Daisy: - Ha-ah... Well, it's finally over?}
 
-Rudolph: - Thanks for your hard work. Now that you've done it so well, here's your present. Believe it or not, I know what you have wanted for Christmas. 
+{color=aqua|Rudolph: - Thanks for your hard work. Now that you've done it so well, here's your present. Believe it or not, I know what you have wanted for Christmas. }
 
-Daisy: - Y-you did?""",
+{color=yellow|Daisy: - Y-you did?}""",
 	CHRISTMAS_EVENT_9 = """For her work Daisy received a colorful box as a small present. Without further waiting she unwrapped it.
 
-Daisy: - This is... a collar?
+{color=yellow|Daisy: - This is... a collar?}
 
-Rudolph: - Now you will have a home and a [Master]. This is what you actually wanted, isn't it? I'm sure you'll have a lot of happy memories together. 
+{color=aqua|Rudolph: - Now you will have a home and a [Master]. This is what you actually wanted, isn't it? I'm sure you'll have a lot of happy memories together. }
 
 Not sure how to reply, the girl still managed to thank her back.""",
 	CHRISTMAS_EVENT_10 = """Rudolph: - Even though it might be hard, you should still try your best. 
 
-Daisy: - Things could be against us, but we can adore these moments of peace and happiness.
+{color=yellow|Daisy: - Things could be against us, but we can adore these moments of peace and happiness.}
 
-Rudolph: - Well said, child. I see you've gone quite a path to get here. 
+{color=aqua|Rudolph: - Well said, child. I see you've gone quite a path to get here. }
 
-Daisy: - W-We all want to wish you all Merry Christmas and Happy holidays!""",
+{color=yellow|Daisy: - W-We all want to wish you all Merry Christmas and Happy holidays!}""",
 	
 	
 	

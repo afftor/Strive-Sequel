@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elven_temple.png-82ad1ace5c3fbad95a303840bcfa9783.stex"
+path="res://.import/white_stag_christmas.png-2f1c7ab0184217b9ac58ee635aa8b8c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/elven_temple.png"
-dest_files=[ "res://.import/elven_temple.png-82ad1ace5c3fbad95a303840bcfa9783.stex" ]
+source_file="res://assets/images/sprites/white_stag_christmas.png"
+dest_files=[ "res://.import/white_stag_christmas.png-2f1c7ab0184217b9ac58ee635aa8b8c1.stex" ]
 
 [params]
 
