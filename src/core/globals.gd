@@ -1857,7 +1857,8 @@ func common_effects(effects):
 			'hide_dialogue':
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
-				ResourceScripts.game_progress.planned_mansion_events.append(i.value)
+				if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
+					ResourceScripts.game_progress.planned_mansion_events.append(i.value)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

@@ -141,11 +141,9 @@ func return_to_mansion(with_state = "default"):
 	if !ResourceScripts.game_progress.planned_mansion_events.empty():
 		var to_rem = []
 		for i in ResourceScripts.game_progress.planned_mansion_events:
-#			if i == "lilia_mansion_1":
-#				input_handler.interactive_message('lilia_mansion_1', '', {})
-#				to_rem.append(i)
-			input_handler.interactive_message(i, '', {})
-			to_rem.append(i)
+			if globals.checkreqs(scenedata.scenedict[i].duplicate(true).reqs):
+				input_handler.interactive_message(i, '', {})
+				to_rem.append(i)
 		for rem in to_rem:
 			ResourceScripts.game_progress.planned_mansion_events.erase(rem)
 	
