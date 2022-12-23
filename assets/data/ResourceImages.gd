@@ -270,6 +270,7 @@ var scenes = {
 	leon = load('res://assets/images/scenes/leon.png'),
 	ritual = load('res://assets/images/scenes/ritual.png'),
 	mae_camp = load('res://assets/images/scenes/mae_camp.png'),
+	wedding = load("res://assets/images/scenes/marriage.png"),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),

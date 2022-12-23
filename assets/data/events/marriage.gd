@@ -168,7 +168,8 @@ var data = {
 	marriage_final_init = {
 		image = null,
 		tags = ['dialogue_scene'], 
-		custom_background = "church_event", character = "ginny",
+#		custom_background = "church_event",
+		character = "ginny",
 		text = [{text = "MARRIAGE_FINAL_INIT", reqs = []}],
 		options = [ {
 			code = 'marriage_final_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -209,8 +210,8 @@ var data = {
 		}],
 	},
 	marriage_final_2 = {
-		custom_background = "church_event",
-		image = null,
+#		custom_background = "church_event",
+		image = 'wedding',
 		character = 'ginny',
 		tags = ['dialogue_scene', 'blackscreen_transition_common'], 
 		text = [{text = "MARRIAGE_FINAL_2", reqs = []}],
@@ -219,8 +220,8 @@ var data = {
 		}],
 	},
 	marriage_final_3 = {
-		custom_background = "church_event",
-		image = null,
+#		custom_background = "church_event",
+		image = 'wedding',
 		character = 'ginny',
 		character2 = 'spouse',
 		tags = ['dialogue_scene', 'master_translate'], 
@@ -230,10 +231,10 @@ var data = {
 		}],
 	},
 	marriage_final_4 = {
-		custom_background = "church_event",
-		image = null,
-		character = 'ginny',
-		character2 = 'spouse',
+#		custom_background = "church_event",
+		image = 'wedding',
+#		character = 'ginny',
+#		character2 = 'spouse',
 		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'], 
 		text = [{text = "MARRIAGE_FINAL_4", reqs = []}],
 		options = [ {code = 'marriage_final_5', text = "MARRIAGE_FINAL_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
@@ -242,10 +243,10 @@ var data = {
 		],
 	},
 	marriage_final_5 = {
-		custom_background = "church_event",
-		image = null,
-		character = 'ginny',
-		character2 = 'spouse',
+#		custom_background = "church_event",
+		image = 'wedding',
+#		character = 'ginny',
+#		character2 = 'spouse',
 		tags = ['dialogue_scene', 'master_translate'], 
 		text = [{text = "MARRIAGE_FINAL_5", reqs = []}],
 		options = [ {
