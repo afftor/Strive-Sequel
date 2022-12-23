@@ -192,6 +192,8 @@ var backgrounds = {
 	
 	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
 	christmas_scene = load("res://assets/images/fullscreen scenes/DaisyChristmas001.png"),
+	cali_zephyra_1 = load("res://assets/images/fullscreen scenes/CaliZephyra001.png"),
+	cali_zephyra_2 = load("res://assets/images/fullscreen scenes/CaliZephyra002.png"),
 	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
