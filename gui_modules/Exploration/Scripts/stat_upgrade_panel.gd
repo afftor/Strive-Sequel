@@ -191,8 +191,9 @@ func upgrade_stat():
 #		person.set_stat(active_stat, person2.get_stat(active_stat))
 	ResourceScripts.game_party.add_fate(person2.id, tr("SOLD2STAT"))
 	ResourceScripts.game_party.remove_slave(person2)
+	input_handler.play_animation('factor', {stat = active_stat, character = person})
 	active_stat = null
 	person2 = null
 	show_characters_panel()
-	input_handler.play_animation('factor', {stat = active_stat, character = person})
+
 
