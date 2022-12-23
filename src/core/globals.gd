@@ -652,6 +652,10 @@ func LoadGame(filename):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
+	
+	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
+		ResourceScripts.game_progress.planned_mansion_events.append("ZCEvent_1")
+	
 
 
 func compare_version(v1:String, v2:String):

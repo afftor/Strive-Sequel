@@ -947,6 +947,7 @@ var data = {
 			{text = "CALI_FINALE_6_1", reqs = [], previous_dialogue_option = [1, 2]},
 			{text = "CALI_FINALE_6_3", reqs = [], previous_dialogue_option = 3},
 		],
+		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'remove_active_location'}, {code = 'unique_character_changes',

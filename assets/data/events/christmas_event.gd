@@ -1,6 +1,17 @@
 var data = {
-	christmas_start = {
+	christmas_pre_start = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],
+		character = 'zephyra',
+		reqs = [{type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},
+		{type = 'quest_completed', name = 'sword_artifact_quest', check = true}],
+		text = [ {text = "CHRISTMAS_EVENT_PRE_INTRO", reqs = []} ],
+		options = [ {
+			code = 'christmas_start', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
+		} ]
+	},
+	
+	christmas_start = {
+		image = null, tags = ['dialogue_scene', "blackscreen_transition_common",'master_translate'],
 		character = 'daisy_default',
 		reqs = [],
 		text = [ {text = "CHRISTMAS_EVENT_INTRO", reqs = []} ],

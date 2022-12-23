@@ -1066,6 +1066,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_7", reqs = []}], 
+		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'}],
 		options = [ {
 			code = 'close', text = "CALI_ACT6_NAKED_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'add_profession', profession = "petbeast"}]},]
