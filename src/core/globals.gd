@@ -1419,6 +1419,35 @@ func roll_characters():
 	return res
 
 
+func roll_hirelings(loc):
+	var t_diff = 10 #stub main
+	if char_roll_data.event: t_diff += 2
+	
+	var t_race = 'random'
+	var locdata = ResourceScripts.world_gen.get_location_from_code(loc)
+	var areadata = ResourceScripts.world_gen.get_area_from_location_code(loc)
+	var racedata = []
+	if locdata.has('character_data'):
+		locdata = locdata.character_data
+		if locdata.has('races'):
+			racedata = locdata.races.duplicate()
+		elif areadata.has('races'):
+			racedata = areadata.races.duplicate()
+	
+	if racedata is Array and !racedata.empty():
+		t_race = input_handler.weightedrandom(racedata)
+	if t_race == 'local':
+		t_race = input_handler.weightedrandom(areadata.races)
+	var newslave = ResourceScripts.scriptdict.class_slave.new("random_hireling")
+	newslave.generate_random_character_from_data(t_race, null, t_diff)
+	newslave.is_active = true
+	
+	if !locdata.has('captured_characters'):
+		locdata.captured_characters = []
+	locdata.captured_characters.push_back(newslave.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
+
 var yes
 var no
 func common_effects(effects):
@@ -1859,6 +1888,22 @@ func common_effects(effects):
 			'plan_mansion_event':
 				if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
 					ResourceScripts.game_progress.planned_mansion_events.append(i.value)
+      'add_special_task_for_location':
+				var template = {
+					code = 'special',
+					product = 'special',
+					progress = 0,
+					threshold = i.amount,
+					workers = [],
+					workers_count = 0,
+					task_location = i.location,
+					messages = [],
+					args = i.args,
+					desc = i.desc
+					}
+				ResourceScripts.game_party.active_tasks.push_back(template)
+			'add_hireling_to_location':
+				roll_hirelings(i.location)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

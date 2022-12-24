@@ -381,6 +381,9 @@ func find_current_task():
 func assign_to_task(taskcode, taskproduct):
 	xp_module.assign_to_task(taskcode, taskproduct)
 
+func assign_to_special_task(worktask):
+	xp_module.assign_to_special_task(worktask)
+
 func remove_from_task():
 	xp_module.remove_from_task()
 
