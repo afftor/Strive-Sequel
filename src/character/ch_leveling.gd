@@ -272,6 +272,8 @@ func find_worktask(loc, task = work, prod = workproduct):
 			continue
 		if i.product != prod:
 			continue
+		if i.code == 'special' and !i.workers.has(parent.get_ref().id):
+			continue
 		return i
 	return null
 
@@ -320,7 +322,7 @@ func assign_to_task(taskcode, taskproduct):
 		dict = {code = taskcode,
 		product = taskproduct,
 		progress = 0,
-		threshhold = task.progress_per_item,
+		threshold = task.progress_per_item,
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
@@ -330,7 +332,7 @@ func assign_to_task(taskcode, taskproduct):
 		dict = {code = taskcode,
 		product = taskproduct,
 		progress = 0,
-		threshhold = task.progress_per_item,
+		threshold = task.progress_per_item,
 		workers = [],
 		workers_count = 1,
 		task_location = task_location,
@@ -339,6 +341,19 @@ func assign_to_task(taskcode, taskproduct):
 	dict.workers.append(parent.get_ref().id)
 	ResourceScripts.game_party.active_tasks.append(dict)
 	globals.emit_signal("task_added")
+
+
+func assign_to_special_task(worktask):
+	print(worktask)
+	remove_from_task()
+	var task = races.tasklist.special
+	var max_workers_count = task.base_workers
+	if max_workers_count >= 0 and max_workers_count <= worktask.workers.size():
+		return
+	work = 'special'
+	workproduct = 'special'
+#	save_prev_data() cause it's difficult to find worktask for it
+	worktask.workers.append(parent.get_ref().id)
 
 
 func remove_from_task():
@@ -607,6 +622,21 @@ func get_gold_value(task):
 	return value
 
 
+func recruit_tick(task): #maybe incomplete
+	task.progress += 1 #major stub
+	while task.progress >= task.threshold:
+		task.progress -= task.threshold
+		globals.roll_hirelings(task.task_location)
+
+
+func special_tick(task): #maybe incomplete
+	task.progress += 1 #major stub
+	if task.progress >= task.threshold:
+		globals.common_effects(task.args)
+		ResourceScripts.game_party.clean_task(task)
+		ResourceScripts.game_party.active_tasks.erase(task)
+
+
 func work_tick():
 	if is_on_quest:
 		return
@@ -628,6 +658,14 @@ func work_tick():
 	
 	if currenttask.code == 'brothel':
 		select_brothel_activity()
+		return
+	
+	if currenttask.code == 'recruiting':
+		recruit_tick(currenttask)
+		return
+	
+	if currenttask.code == 'special':
+		special_tick(currenttask)
 		return
 	
 	var prodvalue = get_progress_task(currenttask.code, currenttask.product, true)
@@ -652,8 +690,8 @@ func work_tick():
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
 			work_tick_values(Items.materiallist[currenttask.code].workstat)
-		while currenttask.threshhold <= currenttask.progress:
-			currenttask.progress -= currenttask.threshhold
+		while currenttask.threshold <= currenttask.progress:
+			currenttask.progress -= currenttask.threshold
 			if !gatherable:
 				if races.tasklist[currenttask.code].production_item == 'gold':
 					ResourceScripts.game_res.money += 1

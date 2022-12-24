@@ -22,6 +22,29 @@ var tasklist = {
 		tags = ['sex'],
 		mod = 'mod_pros'
 	},
+	special = { #2fix
+		code = 'special',
+		base_workers = 1,
+		production_icon = load("res://assets/images/gui/service.png"),
+		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
+		icon = null,
+		tags = ['hide_progress_ratio']
+	},
+	recruiting = {  #2fix
+		code = 'recruiting',
+		reqs = [],
+		name = '',
+		descript = '',
+		base_workers = 1,
+		progress_per_item = 10,
+		production_reqs = [],
+		production_icon = load("res://assets/images/gui/service.png"),
+		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
+		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
+		icon = null,
+		tags = ['recruiting'],
+		mod = ''
+	},
 	building = {
 		code = 'building',
 		reqs = [],
