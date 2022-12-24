@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.6b'
+const gameversion = '0.6.6c'
 
 #time
 signal hour_tick
@@ -652,6 +652,10 @@ func LoadGame(filename):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
+	
+	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
+		ResourceScripts.game_progress.planned_mansion_events.append("ZCEvent_1")
+	
 
 
 func compare_version(v1:String, v2:String):
@@ -1882,8 +1886,9 @@ func common_effects(effects):
 			'hide_dialogue':
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
-				ResourceScripts.game_progress.planned_mansion_events.append(i.value)
-			'add_special_task_for_location':
+				if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
+					ResourceScripts.game_progress.planned_mansion_events.append(i.value)
+      'add_special_task_for_location':
 				var template = {
 					code = 'special',
 					product = 'special',

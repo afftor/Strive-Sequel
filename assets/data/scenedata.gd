@@ -2,7 +2,7 @@ extends Node
 
 var season_events_range = {
 	halloween = {start = [15,10], end = [15,11], event = 'halloween_start', event_reqs = []},
-	christmas = {start = [15,12], end = [15, 1], event = 'christmas_start', event_reqs = []}
+	christmas = {start = [15,12], end = [15,13], event = 'christmas_pre_start', event_reqs = []}
 }
 
 

@@ -9507,6 +9507,9 @@ The last word comes out of her mouth now sounding like an attempt to placate you
 	EXCALIBUR_QUEST_GOOD = """With incredible effort you manage to pull the sword out of stone! As it's finally free you can feel a potent magic residing in it. Adoring your acquirement you leave the lone clearing. """,
 	EXCALIBUR_QUEST_BAD = """You give your best spending a few minutes grabbing the sword with no success. It does not even bulge, neither stone seems to be affected by all your efforts. Praising the fact that nobody seen your pathetic struggles, you decide to leave the sword alone for now.""",
 	
+	CHRISTMAS_EVENT_PRE_INTRO = """{color=aqua|Zephyra: - At this merry time of year, I hope you are doing great, [Master]. 
+
+Zephyra: - This day we'll be telling you a story about a lonesome girl whose only wish was a bit of happiness... Please, enjoy it. }""",
 	CHRISTMAS_EVENT_INTRO = """One young poor girl has been staying on the streets in the winter. Being left alone she was trying to make living by selling some life shards.
 
 {color=yellow|Daisy: - Please... Purchase these shiny stones...}
@@ -9576,6 +9579,97 @@ Not sure how to reply, the girl still managed to thank her back.""",
 {color=aqua|Rudolph: - Well said, child. I see you've gone quite a path to get here. }
 
 {color=yellow|Daisy: - W-We all want to wish you all Merry Christmas and Happy holidays!}""",
+	
+	ZCEVENT_1 = """As you walk through the Mansion you notice two of your residents, Zephyra and Cali talking to each other.
+
+{color=aqua|Zephyra: - You know, I haven't noticed before, but we have a lot in common.}
+
+Cali thinks for a moment, noticing the similarities in their origin, tones and appearance.
+
+{color=yellow|Cali: - True... Haha, we could pass for sisters.}
+
+{color=aqua|Zephyra: - He-heh, Perhaps our [Master] has particular interest in girls like us?}""",
+	ZCEVENT_2 = """{color=aqua|Zephyra: - Do you want to hang around today? I'm sure [Master] can take us somewhere nice.}
+
+{color=yellow|Cali: - Sure, why not!}
+
+With no choice left, today you are forced to take your cute residents for a small appointment.""",
+	ZCEVENT_3 = """{color=aqua|Zephyra: - This tavern is really nice, just as they were saying it in that book...}
+
+{color=yellow|Cali: - I read no stupid books.}
+
+{color=aqua|Zephyra: - Hmmm... This indeed shows. }
+
+{color=yellow|Cali: - What do you mean by that?}""",
+	ZCEVENT_4 = """{color=aqua|Zephyra: - You seem to take pride in that statement. }
+
+{color=yellow|Cali: - So what? Who needs books anyway? If anything, bookworms make more trouble for normal people.}
+
+Despite her sour expression, Zephyra decides to drop this topic. 
+
+{color=aqua|Zephyra: - What do you do for fun then?}""",
+	ZCEVENT_5 = """{color=yellow|Cali: - Ah, I like adventuring with [Master]. And sometimes I play with kids when there's no work.}
+
+{color=aqua|Zephyra: - Playing with kids...? Aren't you too old for this? Or perhaps that suits your image.}
+
+{color=yellow|Cali: - Hey, shut up, you are even shorter than me! Did all your growth go into that stupid tail of yours? }
+
+{color=aqua|Zephyra: - W-w...}
+
+Before it's too late you silence both girls and order them to stay silent which they do with a clear indication of hatred to each other.""",
+	ZCEVENT_6 = """As you take a breath outside, one of the waiter girls approaches you and privately informs you that she has seen the tension between your company and advises you of one of their popular soft wine brands popular among beastkin and halfkin. With no better idea you figure out it may help to calm down the girls.""",
+	ZCEVENT_7 = """You return to girls who clearly aren't in a great mood. As you present them the wine you obtained, their curiosity picks up. 
+
+{color=aqua|Zephyra: - This seems rather a delightful drink. Cali, you can handle this at least?}
+
+{color=yellow|Cali: - Of course I can drink! If you can do it, you think I won't be able to?}
+
+After digesting the drink you ordered, your and the girls' mood has slightly improved. The girls seemingly became less tense despite their previous quarrel and  With time their conversation went into a relatively peaceful direction. 
+
+After a bit you get a call from one of your acquaintances from the guilds, having to retreat from the girls for a while.""",
+	ZCEVENT_8 = """{color=aqua|Zephyra: - I think regardless of all our differences we can agree on one thing.}
+
+{color=yellow|Cali: - Whatcha mean?}
+
+{color=aqua|Zephyra: - We both are here because of one [man] we really care for. }
+
+{color=yellow|Cali: - ...I guess you have a point.}
+
+{color=aqua|Zephyra: - Hey, you know what...}""",
+	ZCEVENT_9 = """After some time you come back to the room seeing two girls moved close to each other and acting slightly suspicious.
+
+{color=yellow|Cali: - [Master]...}
+
+{color=aqua|Zephyra: - You are always taking care of us and doing such a great job..}
+
+{color=yellow|Cali: - We agreed that we wanna thank you for it.}
+
+{color=aqua|Zephyra: - *Giggle* It was her idea...}""",
+	ZCEVENT_10 = """Despite being in a public place the girls shifted their clothes laughing mischievously. Perhaps it is due to the recent alcohol they have ingested...
+
+{color=aqua|Zephyra: - Which one do you like more? He-he...}
+
+{color=yellow|Cali: - Mines are a bit bigger!}
+
+{color=aqua|Zephyra: - That's because they are erect. Did you get excited mentally preparing yourself?}""",
+	ZCEVENT_11 = """You are at a loss of words but thankfully nobody else seems to pay attention to this little prank.
+
+However girls seem to catch your concerns and with more giggling cover themselves back. 
+
+{color=yellow|Cali: - Your face was so stupid. }
+
+{color=aqua|Zephyra: - Hey, don't call [Master] stupid, that's rude. *giggle*}""",
+	ZCEVENT_12 = """You leave back to the mansion with girls seemingly getting along and weighing on you like a pair of clingy animals. 
+
+You feel relieved it all turned out well. The girls went to rest soon after you arrived home.""",
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

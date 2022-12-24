@@ -2,14 +2,13 @@ var data = {
 	halloween_start = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],
 		character = 'zephyra',
-		negative = 'repeat_next_day',
-		reqs = [{type = 'decision', value = 'mayor_election_finished', check = true}],
+		reqs = [{type = 'decision', value = 'mayor_election_finished', check = true, negative = 'repeat_next_day'},
+		{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},
+		{type = 'unique_character_checks', name = 'cali', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},],
 		text = [ {text = "HALLOWEEN_EVENT_INTRO", reqs = []} ],
 		options = [ {
 			code = 'halloween_1', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
-			},
-			
-		]
+		} ] 
 	},
 	halloween_1 = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow"],

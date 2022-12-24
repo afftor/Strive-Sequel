@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest_sword.png-b2ab3e5d5d7ea38429f76e0d2a0e07e6.stex"
+path="res://.import/hunt_dialogue.png-0b6002f34db0adc4c85040760ad0b7c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/forest_sword.png"
-dest_files=[ "res://.import/forest_sword.png-b2ab3e5d5d7ea38429f76e0d2a0e07e6.stex" ]
+source_file="res://assets/images/scenes/hunt_dialogue.png"
+dest_files=[ "res://.import/hunt_dialogue.png-0b6002f34db0adc4c85040760ad0b7c0.stex" ]
 
 [params]
 

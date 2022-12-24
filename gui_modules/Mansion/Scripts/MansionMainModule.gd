@@ -136,10 +136,21 @@ func _ready():
 
 
 func add_season_events():
-	if test_mode == true:
-		return
+#	if test_mode == true:
+#		return
 	var date = OS.get_date().day + OS.get_date().month * 30
+	if OS.get_date().month == 1:
+		date = OS.get_date().day + 13 * 30
 	for i in scenedata.season_events_range.values():
+		
+		# removing all season events from timed_events
+		var to_rem = []
+		for e in ResourceScripts.game_progress.stored_events.timed_events:
+			if e.code == i.event:
+				to_rem.append(e)
+		for r in to_rem:
+			ResourceScripts.game_progress.stored_events.timed_events.erase(r)
+		
 		if !ResourceScripts.game_progress.seen_events.has(i.event) && date >= i.start[0] + i.start[1]*30 && date <= i.end[0] + i.end[1]*30:
 			globals.common_effects([{code = 'add_timed_event', value = i.event, args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 
@@ -857,22 +868,19 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-#		input_handler.interactive_message('priestess_sword_talk_1', '', {})
+#		input_handler.interactive_message('cali_act6_naked_7', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
-#		input_handler.interactive_message('aliron_church_enter', '', {})
+#		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
 		
 #		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		
 		#never do this way - cause crash with oblivion potion!!!
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
-#		ResourceScripts.game_party.get_master().xp_module.professions.append("knight")
-#		input_handler.interactive_message('cali_act6_naked_2_3', '', {})
-#		input_handler.interactive_message('marriage_final_1', '', {})
 
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
-		ResourceScripts.game_progress.completed_quests.append("cali_fighters_quest")
+		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
