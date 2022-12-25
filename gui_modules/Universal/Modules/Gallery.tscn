@@ -199,10 +199,12 @@ __meta__ = {
 visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
-mouse_filter = 2
+mouse_filter = 0
 expand = true
 stretch_mode = 7
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="gui_input" from="FullScreenImage" to="." method="_on_FullScreenImage_gui_input"]
