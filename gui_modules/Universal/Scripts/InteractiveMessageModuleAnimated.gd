@@ -90,6 +90,8 @@ func open(scene):
 	handle_scene_options()
 	
 	yield(get_tree().create_timer(0.5), "timeout")
+	if ResourceScripts.core_animations.BeingAnimated.has(self):
+		ResourceScripts.core_animations.BeingAnimated.erase(self)
 	hold_selection = false
 #	input_handler.print_order()
 #	get_tree().get_root().print_tree_pretty()
