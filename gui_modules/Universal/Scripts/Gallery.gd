@@ -161,9 +161,10 @@ func FindNextImagesInPlayer():
 		if i == imagename:
 			break
 		currentCount += 1
-		if currentCount == content.size() - 1:#если картинка была последняя в коллекции то выходим
-			$FullScreenImage.hide()
-			return
+		print(content.size())
+	if currentCount == content.size() - 1:#если картинка была последняя в коллекции то выходим
+		$FullScreenImage.hide()
+		return
 	
 	var progress : Array = input_handler.progress_data.ero_scenes
 	var newimagename = content[currentCount + 1]
