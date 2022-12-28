@@ -1,7 +1,7 @@
 var data = {
 	
 	heleviel_mansion_1 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "HELEVIEL_MANSION_1", reqs = []},
@@ -17,7 +17,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_2 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "HELEVIEL_MANSION_2", reqs = []},
@@ -33,7 +33,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_3 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "HELEVIEL_MANSION_3", reqs = []},
@@ -50,7 +50,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_4 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		custom_background = "heleviel_bj_1",
 		scene_type = "ero_scene",
@@ -69,7 +69,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_5 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		custom_background = "heleviel_bj_2",
 		scene_type = "ero_scene",
@@ -88,7 +88,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_6 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		custom_background = "heleviel_bj_2",
 		scene_type = "ero_scene",
@@ -106,7 +106,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_7 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		custom_background = "heleviel_bj_3",
 		scene_type = "ero_scene",
@@ -126,7 +126,7 @@ var data = {
 		],
 	},
 	heleviel_mansion_8 = {
-		image = null,
+		image = null, reqs = [],
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "HELEVIEL_MANSION_8", reqs = []},
