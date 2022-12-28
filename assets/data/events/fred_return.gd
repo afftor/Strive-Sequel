@@ -207,7 +207,7 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_RAPED1", reqs = []}],
 			options = [
-			{code = 'intermission_2_aire_raped', text = "DIALOGUECONTINIE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'intermission_2_aire_raped', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 			],
 			},
 			# Var 2
