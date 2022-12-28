@@ -862,7 +862,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-		globals.common_effects([{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}])
+#		globals.common_effects([{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}])
 
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
@@ -892,8 +892,16 @@ func test_mode():
 			i.totalreputation += 5000
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
-
-#		character = ResourceScripts.scriptdict.class_slave.new()
+		
+		#example of special tasks adding
+		globals.common_effects(
+			[
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST", 
+				args = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}]},
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST", 
+				args = [{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'}]},
+			]
+		)
 		ResourceScripts.game_globals.reset_limits()
 		yield(get_tree(), 'idle_frame')
 		#input_handler.add_random_chat_message(character2, 'hire')

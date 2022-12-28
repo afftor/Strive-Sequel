@@ -46,6 +46,11 @@ func fix_serialization():
 	for dir in relativesdata.values():
 		if typeof(dir.father) != TYPE_STRING: dir.father = null
 		if typeof(dir.mother) != TYPE_STRING: dir.mother = null
+	for task in active_tasks:
+		if task.has('threshhold'):
+			task.threshold = task.threshhold
+			task.erase('threshhold')
+
 
 
 func fix_serialization_postload():

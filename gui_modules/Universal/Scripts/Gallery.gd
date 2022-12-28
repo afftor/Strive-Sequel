@@ -4,6 +4,9 @@ var state
 
 var scenes_per_page = 12
 
+var Collection : String
+var imagename
+
 export var test_mode:bool
 
 func test_mode():
@@ -111,8 +114,9 @@ func show_scene_images():
 			newbutton.connect("pressed", self, "show_fullscreen", [image])
 
 
-func show_fullscreen(image):
+func show_fullscreen(image): # image:string 
 	$FullScreenImage.show()
+	Collection = image
 #	$FullScreenImage.texture = load(image)
 	$FullScreenImage.texture = images.backgrounds[image]
 	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
@@ -131,3 +135,44 @@ func close_galery():
 	ResourceScripts.core_animations.FadeAnimation(self)
 	yield(get_tree().create_timer(0.3), "timeout")
 	hide()
+
+
+func _on_FullScreenImage_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			match state:
+				"ero":
+					FindNextImagesInPlayer()
+				"story":
+					pass
+				"scenes":
+					pass
+	
+func FindNextImagesInPlayer():
+	#делим Collection 
+	imagename = Collection
+	Collection = Collection.rstrip("1234567890")
+	#
+	var content : Array = Gallery.ero_scenes_collection[str(Collection)]
+	var count = content.size() # сколько всего картинок в коллекции
+	var currentCount = 0 # номер текущего изображения в коллеции
+	
+	for i in content:# узнаем номер картинки в коллекции
+		if i == imagename:
+			break
+		currentCount += 1
+		print(content.size())
+	if currentCount == content.size() - 1:#если картинка была последняя в коллекции то выходим
+		$FullScreenImage.hide()
+		return
+	
+	var progress : Array = input_handler.progress_data.ero_scenes
+	var newimagename = content[currentCount + 1]
+	#Если изображение у игрока не открыто, то показываем другую картинку
+	if !progress.has(content[currentCount + 1]):
+		$FullScreenImage.texture = load("res://assets/Textures_v2/back_charinfo.png")
+		Collection = newimagename
+		return
+	#
+	$FullScreenImage.texture = images.backgrounds[newimagename]
+	Collection = newimagename
