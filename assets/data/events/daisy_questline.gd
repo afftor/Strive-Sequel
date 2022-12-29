@@ -1317,7 +1317,8 @@ var data = {
 		options = [ {
 			code = 'daisy_consensual_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
-			{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
+				{code = 'complete_quest', value = 'daisy_lost'},
+				{code = 'remove_quest_location', value = 'quest_daisy_admirer_location'}, ]
 		} ]
 	},
 
