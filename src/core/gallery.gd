@@ -3,7 +3,8 @@ extends Node
 #so in a sample seq _8 and _4 are the most important
 var scenes = {
 	test_scene = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4", "princess_sex_good_5", "princess_sex_good_6", "princess_sex_good_7", "princess_sex_good_8"], #sample
-}
+} 
+#for a scene with variations use format {scene = "scene_name", variant = 1} instead of "scene_name"
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = ['test_scene']
 var story_scenes = ['church_event', 'jail', 'anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
@@ -42,7 +43,7 @@ func process_scene_seq(scene_list):
 			scname = scene.scene
 			data = scenedata.scenedict[scname].duplicate(true)
 			if scene.has("variant"):
-				data = data.variants[scene.variant]
+				data = data.variations[scene.variant]
 				data.erase("reqs")
 			if scene.has("previous_option"):
 				var temp_text = []
