@@ -7132,9 +7132,8 @@ You realize Mae wouldn't be able to answer anything coherent to this and turn yo
 — We'll do as you say, [name]. You are the Taker and we'll respect your decision.""",
 	RITUAL_5_OPTION_1 = """Allow""",
 	RITUAL_5_OPTION_2 = """Refuse""",
-	RITUAL_6_1 = """A few beastkin males approach Mae from the head, presenting their erect cocks to her face. The formerly shy girl obediently takes hold of their members and begins to serve them with her mouth and hands like it was the most natural thing in the world. 
-
-As Mae's body was overwhelmed with every new orgasm, males at her top have also been made to cum by her, spraying over her head and breasts. New males replaced them, so that she was covered with more and more semen. However, this didn't bother her, as she hungrily sucked and served every new cock in turn.
+	RITUAL_6_1_1 = """A few beastkin males approach Mae from the head, presenting their erect cocks to her face. The formerly shy girl obediently takes hold of their members and begins to serve them with her mouth and hands like it was the most natural thing in the world.""",
+	 RITUAL_6_1_2 = """As Mae's body was overwhelmed with every new orgasm, males at her top have also been made to cum by her, spraying over her head and breasts. New males replaced them, so that she was covered with more and more semen. However, this didn't bother her, as she hungrily sucked and served every new cock in turn.
 
 — Her front is for the Taker only. If you really need to, you can use her ass.
 
