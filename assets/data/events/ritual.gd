@@ -27,11 +27,14 @@ var data = {
 		text = [{text = "RITUAL_1_2", reqs = []}],
 		common_effects = [{code = 'decision', value = 'maePregnant'}],
 		options = [ {
-			code = 'ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, ]
 	},
 	
-	ritual_2 = {
+	ritual_2 = { # start here
+		custom_background = "mae_scene3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "RITUAL_2", reqs = []}],
@@ -41,6 +44,9 @@ var data = {
 	},
 	
 	ritual_3 = {
+		custom_background = "mae_scene4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "RITUAL_3", reqs = []}],
@@ -50,6 +56,9 @@ var data = {
 	},
 	
 	ritual_4 = {
+		custom_background = "mae_scene4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "RITUAL_4", reqs = []}],
@@ -59,23 +68,41 @@ var data = {
 	},
 	
 	ritual_5 = {
+		custom_background = "mae_scene5", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "RITUAL_5", reqs = []}],
 		options = [ {
-			code = 'ritual_6_1', text = "RITUAL_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'ritual_6_1_1', text = "RITUAL_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'ritual_6_2', text = "RITUAL_5_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'ritual_6_2', text = "RITUAL_5_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',  change_dialogue_type = 1
 		}, ]
 	},
 	
-	ritual_6_1 = {
+	ritual_6_1_1 = { # lots of cocks
+		custom_background = "mae_scene6", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		common_effects = [{code = 'decision', value = 'letFuck'}],
-		text = [{text = "RITUAL_6_1", reqs = []}],
+		text = [{text = "RITUAL_6_1_1", reqs = []}],
 		options = [ {
-			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
+			code = 'ritual_6_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
+		}, ]
+	},
+	
+	ritual_6_1_2 = { # lots of cocks
+		custom_background = "mae_scene7", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "RITUAL_6_1_2", reqs = []}],
+		options = [ {
+			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue', change_dialogue_type = 1
 		}, ]
 	},
 	
@@ -84,7 +111,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "RITUAL_6_2", reqs = []}],
 		options = [ {
-			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
+			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
 		}, ]
 	},
 	
