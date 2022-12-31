@@ -632,16 +632,6 @@ var locations = {
 		bgm = 'exploration',
 		travel_time = [1,1],
 		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [2,2]}, #Number of allowed slaves per task at no upgrades
-		options = [ {text = 'Combat', reqs = [ 
-				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
-			],
-			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]},
-			{text = 'Meet Duncan', reqs = [ 
-				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
-				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
-			],
-			args = [{code = 'start_event', data = 'divine_symbol_6', args = []}]},
-		],
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
 			fish = {min = 15, max = 45, chance = 1},
@@ -691,14 +681,6 @@ var locations = {
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool3 = {items = ['chest_base_cloth','legs_base_cloth'], min = 1, max = 2, chance = 0.8},
 			},
-		options = [ {text = 'Farmer', reqs = [ 
-				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
-			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]},
-			{text = 'Farmer', reqs = [ 
-				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
-			],
-			args = [{code = 'start_event', data = 'cali_farmer_4', args = []}]},
-		],
 	},
 	settlement_plains3 = {
 		code = 'settlement_plains3',
@@ -768,13 +750,6 @@ var locations = {
 		tasks = ['gather','elven_forest'],
 		actions = [],
 		event_pool = [],
-		options = [
-			{text = 'Check Surroundings', reqs = [
-				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
-				args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]},
-			{text = 'Check Surroundings', reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
-				args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]},
-		],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
 		bgm = 'exploration',
@@ -1552,9 +1527,6 @@ var dungeons = {
 		stages_per_level = [1,1],
 		events = [],
 		travel_time = [1,1],#[2,2],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]}
-		],
 	},
 	quest_mages_xari = {
 		code = 'quest_mages_xari',
@@ -1572,23 +1544,6 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
-		options = [
-			{text = 'Search for Xari', reqs = [
-				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}],
-				args = [{code = 'start_event', data = 'xari_encounter1', args = []}]},
-			{text = 'See Xari', reqs = [
-				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}],
-				args = [{code = 'start_event', data = 'xari_encounter9', args = []}]},
-			{text = 'Enter', reqs = [
-				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
-				args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]},
-			{text = 'Find Xari', reqs = [
-				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
-				args = [{code = 'start_event', data = 'xari_clothes_1', args = []}]},
-			{text = 'Find Xari', reqs = [
-				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
-				args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]},
-		],
 	},
 	quest_mages_fred = {
 		code = 'quest_mages_fred',
@@ -1606,11 +1561,6 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1],#[2,2],
 		events = [],
-		options = [
-			{text = 'Search for Fred', reqs = [
-				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}],
-				args = [{code = 'start_event', data = 'fred_1', args = []}]},
-		],
 	},
 
 	basic_threat_wolves = {
@@ -1626,9 +1576,6 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]}
-		],
 		events = [],
 	},
 	basic_threat_rebels = {
@@ -1644,9 +1591,6 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'rebels_skirmish_start', args = []}]}
-		],
 		events = [],
 	},
 	basic_threat_goblins = {
@@ -1662,10 +1606,7 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		events = [],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'goblins_skirmish_start', args = []}]}
-		]
+		events = []
 	},
 	basic_threat_ogre = {
 		code = 'basic_threat_ogre',
@@ -1681,9 +1622,6 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]}
-		],
 	},
 	basic_threat_troll = {
 		code = 'basic_threat_troll',
@@ -1699,9 +1637,6 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
-		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]}
-		],
 	},
 
 	dungeon_bandit_den = {
@@ -1928,9 +1863,6 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
-		options = [
-			{text = 'Follow Cali', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], args = [{code = 'start_event', data = 'cali_hector_1', args = []}]}
-		],
 		area = 'plains',
 		travel_time = [1,1],
 	},
@@ -2043,21 +1975,6 @@ var dungeons = {
 		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
 		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
-		options = [ {text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
-			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
-			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
-			],
-			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]},
-			
-			{text = 'Search', reqs = [ {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
-			{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
-			{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
-			{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
-			],
-			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]},
-
-		],
 		quest = true,
 
 		area = 'plains',
@@ -2105,11 +2022,6 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 		quest = true,
-		options = [
-			{text = 'Approach', reqs = [
-				{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
-				args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]}
-			],
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -2172,11 +2084,6 @@ var dungeons = {
 		quest = true,
 		area = 'plains',
 		travel_time = [1,1], #[4,6],
-		options = [
-			{text = 'Approach Cave', reqs = [
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
-				args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_ritual_location = {
@@ -2270,11 +2177,6 @@ var dungeons = {
 		quest = true,
 		area = 'plains',
 		travel_time = [1,1],
-		options = [
-			{text = 'Search Cave', reqs = [
-				{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
-				args = [{code = 'start_event', data = 'cali_intro_1', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_leon_forest_2 = {
@@ -2300,10 +2202,6 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [1,1],
-		options = [
-			{text = 'Search For Leon', reqs = [],
-				args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_white_stag_location = {
@@ -2329,10 +2227,6 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [1,1],
-		options = [
-			{text = 'Search For Leon', reqs = [],
-				args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_temple_location = {
@@ -2358,14 +2252,6 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [1,1],
-		options = [
-			{text = 'Approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
-				args = [{code = 'start_event', data = 'temple_start', args = []}]},
-			{text = 'Approach', reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
-				args = [{code = 'start_event', data = 'temple_6', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_erlen_location = {
@@ -2391,14 +2277,6 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [1,1],
-		options = [
-			{text = 'Search Around', reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage1', state = true}],
-				args = [{code = 'start_event', data = 'erlern_encounter_start', args = []}]},
-			{text = 'Meet Erlen', reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, {type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true} ],
-				args = [{code = 'start_event', data = 'erlen_lira_1', args = []}]},
-			{text = 'Meet Erlen', reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}],
-				args = [{code = 'start_event', data = 'erlen_lira_2', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_cali_goblins_location = {
@@ -2424,10 +2302,6 @@ var dungeons = {
 		quest = true,
 		area = 'plains',
 		travel_time = [1,1],
-		options = [
-			{text = 'Search surroundings', reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
-				args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_troll_cave_location = {
@@ -2453,10 +2327,6 @@ var dungeons = {
 		quest = true,
 		area = 'mountains',
 		travel_time = [1,1],
-		options = [
-			{text = 'Find troll', reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
-				args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]},
-		],
 		scripteventdata = []
 	},
 	quest_dungeon_grove = {
@@ -2737,6 +2607,253 @@ var random_dungeon_events = {
 #		levels = [1,2,3], #optional
 #		stages = [1,2,3], #optional
 #		}
+}
+
+var fixed_location_options = { #override serialized data
+	settlement_plains1 = [ 
+		{
+			text = 'Combat', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
+			],
+			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]
+		},
+		{
+			text = 'Meet Duncan', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
+				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
+			],
+			args = [{code = 'start_event', data = 'divine_symbol_6', args = []}]
+		},
+	],
+	settlement_plains2 = [ 
+		{
+			text = 'Farmer', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
+			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]
+		},
+		{
+			text = 'Farmer', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
+			],
+			args = [{code = 'start_event', data = 'cali_farmer_4', args = []}]
+		},
+	],
+	settlement_forest1 = [
+		{
+			text = 'Check Surroundings', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
+			args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]
+		},
+		{
+			text = 'Check Surroundings', 
+			reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
+			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
+		},
+	],
+	quest_fighters_lich = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
+		}
+	],
+	quest_mages_xari = [
+		{
+			text = 'Search for Xari', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}],
+			args = [{code = 'start_event', data = 'xari_encounter1', args = []}]
+		},
+		{
+			text = 'See Xari', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}],
+			args = [{code = 'start_event', data = 'xari_encounter9', args = []}]
+		},
+		{
+			text = 'Enter', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
+			args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]
+		},
+		{
+			text = 'Find Xari', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
+			args = [{code = 'start_event', data = 'xari_clothes_1', args = []}]
+		},
+		{
+			text = 'Find Xari', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
+			args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]
+		},
+	],
+	quest_mages_fred = [
+		{
+			text = 'Search for Fred', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}],
+			args = [{code = 'start_event', data = 'fred_1', args = []}]
+		},
+	],
+	basic_threat_wolves = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
+		}
+	],
+	basic_threat_rebels = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'rebels_skirmish_start', args = []}]
+		}
+	],
+	basic_threat_goblins = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'goblins_skirmish_start', args = []}]
+		}
+	],
+	basic_threat_ogre = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]
+		}
+	],
+	basic_threat_troll = [
+		{
+			text = 'Proceed', 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]
+		}
+	],
+	quest_cali_cave_location = [
+		{
+			text = 'Search Cave', 
+			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
+			args = [{code = 'start_event', data = 'cali_intro_1', args = []}]
+		},
+	],
+	quest_cali_goblins_location = [
+		{
+			text = 'Search surroundings', 
+			reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
+			args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]
+		},
+	],
+	quest_cali_village = [
+		{
+			text = 'Follow Cali', 
+			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], 
+			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
+		}
+	],
+	quest_final_operation_location = [ #not sure about code = 'value_check' here, as it should not be used in option's reqs
+		{
+			text = 'Search', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false},
+				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]
+		},
+		{
+			text = 'Search', 
+			reqs = [ 
+				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
+				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
+			],
+			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]
+		},
+	],
+	quest_daisy_admirer_location = [
+		{
+			text = 'Approach', 
+			reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
+			args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]
+		}
+	],
+	quest_gryphon_cave_location = [
+		{
+			text = 'Approach Cave', 
+			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
+			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
+		},
+	],
+	quest_leon_forest_2 = [
+		{
+			text = 'Search For Leon', 
+			reqs = [],
+			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
+		},
+	],
+	quest_white_stag_location = [
+		{
+			text = 'Search For Leon', 
+			reqs = [],
+			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
+		},
+	],
+	quest_temple_location = [
+		{
+			text = 'Approach', 
+			reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
+			args = [{code = 'start_event', data = 'temple_start', args = []}]
+		},
+		{
+			text = 'Approach', 
+			reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
+			args = [{code = 'start_event', data = 'temple_6', args = []}]
+		},
+	],
+	quest_erlen_location = [
+		{
+			text = 'Search Around', 
+			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage1', state = true}],
+			args = [{code = 'start_event', data = 'erlern_encounter_start', args = []}]
+		},
+		{
+			text = 'Meet Erlen', 
+			reqs = [
+				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
+				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true} ],
+			args = [{code = 'start_event', data = 'erlen_lira_1', args = []}]
+		},
+		{
+			text = 'Meet Erlen', 
+			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}],
+			args = [{code = 'start_event', data = 'erlen_lira_2', args = []}]
+		},
+	],
+	quest_troll_cave_location = [
+		{
+			text = 'Find troll', 
+			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
+			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
+		},
+	],
+}
+
+var fixed_location_events = {
+	
 }
 
 

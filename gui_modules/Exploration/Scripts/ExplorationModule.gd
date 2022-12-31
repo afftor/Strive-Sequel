@@ -1089,18 +1089,22 @@ func test_stage(quest, stage):
 func open_location_actions():
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
+	var option_list = []
 	if input_handler.active_location.has("locked"):
 		if input_handler.active_location.locked:
 			# do options
-			if input_handler.active_location.has("options"):
-				for i in input_handler.active_location.options:
-					if globals.checkreqs(i.reqs) == true:
-						newbutton = input_handler.DuplicateContainerTemplate(
-							$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-						)
-						newbutton.toggle_mode = false
-						newbutton.text = tr(i.text)
-						newbutton.connect("pressed", globals, 'common_effects', [i.args])
+			if worlddata.fixed_location_options.has(input_handler.active_location.code):
+				option_list = worlddata.fixed_location_options[input_handler.active_location.code]
+			elif input_handler.active_location.has("options"):
+				option_list = input_handler.active_location.options
+			for i in option_list:
+				if globals.checkreqs(i.reqs) == true:
+					newbutton = input_handler.DuplicateContainerTemplate(
+						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+					)
+					newbutton.toggle_mode = false
+					newbutton.text = tr(i.text)
+					newbutton.connect("pressed", globals, 'common_effects', [i.args])
 			return
 	match input_handler.active_location.type:
 		'dungeon':
@@ -1114,15 +1118,18 @@ func open_location_actions():
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("toggled", self, i, [newbutton])
 	
-	if input_handler.active_location.has("options"):
-		for i in input_handler.active_location.options:
-			if globals.checkreqs(i.reqs) == true:
-				newbutton = input_handler.DuplicateContainerTemplate(
-					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-				)
-				newbutton.toggle_mode = false
-				newbutton.text = tr(i.text)
-				newbutton.connect("pressed", globals, 'common_effects', [i.args])
+	if worlddata.fixed_location_options.has(input_handler.active_location.code):
+		option_list = worlddata.fixed_location_options[input_handler.active_location.code]
+	elif input_handler.active_location.has("options"):
+		option_list = input_handler.active_location.options
+	for i in option_list:
+		if globals.checkreqs(i.reqs) == true:
+			newbutton = input_handler.DuplicateContainerTemplate(
+				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+			)
+			newbutton.toggle_mode = false
+			newbutton.text = tr(i.text)
+			newbutton.connect("pressed", globals, 'common_effects', [i.args])
 
 
 func enter_dungeon():
