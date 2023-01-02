@@ -44,6 +44,7 @@ func mining_iron():
 func mining_mithril():
 	return variables.base_work_increment + (variables.stat_work_increment * (parent.get_ref().get_stat('physics')/30.0))
 
+
 func whoring_gold():
 	return (1 + parent.get_ref().get_stat('sexuals')/60.0 + parent.get_ref().get_stat('charm')/80.0)
 
@@ -98,3 +99,10 @@ func alchemy_progress():
 func building_progress():
 	return (1 + parent.get_ref().get_stat('wits')/100.0 + parent.get_ref().get_stat('physics')/50.0) * (1 + 0.25 * ResourceScripts.game_res.upgrades.forgeworkshop)
 
+
+
+func settlement_recruiting_easy():
+	return (1 + parent.get_ref().get_stat('charm')/33.0)
+
+func settlement_recruiting_hard():
+	return (0.2 + parent.get_ref().get_stat('charm')/10.0)
