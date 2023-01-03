@@ -7057,9 +7057,22 @@ As Mae realizes what you are suggesting, she gives you a nervous look.
 — It's not that I don't like you, but... I can't. I have to remain a virgin for the ritual, you must understand.""",
 	PRE_RITUAL_7_3_1_OPTION_1 = "I can settle for a blowjob",
 	PRE_RITUAL_7_3_1_OPTION_2 = "Use your mouth then",
-	PRE_RITUAL_7_3_2 = """— You did risk your life for me... Okay, I can do it. But, please, excuse my inexperience, I've never done this before.
+	PRE_RITUAL_BLOW_1 = """— You did risk your life for me... Okay, I can do it. But, please, excuse my inexperience, I've never done this before.
 
-Mae kneels before you and as she frees your dick from your pants she's almost enthralled by the sight of it. Before she starts, you ask her to bare her breasts which she does after a short pause.""",
+You can feel Mae's nervous energy as she kneels before you, her soft fur brushing against your legs. She takes a deep breath before reaching for your belt, her fingers fumbling with the buckle. Finally, she manages to free your cock from its confines, and she gasps at the sight of it. You can't help but smirk at her reaction.
+
+- Can... Can I touch it?""",
+	PRE_RITUAL_BLOW_2 = """You nod, giving her permission to explore your hard, throbbing member. She wraps her fingers around it tentatively, and you can feel her gentle touch send shivers down your spine. You can't help but moan as she starts to stroke you, her touch growing bolder with each passing moment.
+
+As she continues to pleasure you, you can't help but get lost in the sensation. Your eyes close, and you let out a soft sigh. But you know this isn't enough. You want more and ask her to show you her tits.""",
+	PRE_RITUAL_BLOW_3 = """She pauses for a moment, a hint of nervousness in her eyes. But she knows what you want, and she slowly pulls her bra, revealing her ample, busty curves. You can't help but savor her luxurious chest. She's a little bit chubby, but that only makes her more attractive in your eyes.
+
+As you continue to gaze at her, Mae takes the hint and lowers her head, taking your cock into her mouth. You moan as she begins to lick and suck, her tongue running over the length of your shaft. Even though it's likely her first time, she's surprisingly talented. You can feel yourself getting harder and harder, your body responding to her touch.
+
+- Mmh, this is... Not as difficult as I imagined...""",
+	PRE_RITUAL_BLOW_4 = """You reach out and run your hands over her soft fur, pulling her closer to you as she continues to pleasure you. And soon enough, you can't hold back any longer. With a final moan, you release your load all over her face, filling her mouth with your cum. 
+
+She's slightly taken aback at first, but quickly recovers and licks her lips, savoring the taste of you. You stand up, feeling satisfied and fulfilled. Mae looks up at you with a hint of pride in her eyes, realizing that she's managed to satisfy your request. You clean up and continue on your way.""",
 	PRE_RITUAL_7_3_3 = """— Thank you again. I hope you weren't disappointed? That was a bit scary at first, but I guess it's good practice. """,
 	PRE_RITUAL_8 = """You help Mae to gather the required plants and you head back to the tribe. 
 
