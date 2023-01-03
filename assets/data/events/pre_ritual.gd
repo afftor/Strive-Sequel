@@ -581,20 +581,51 @@ var data = {
 		reqs = [], character = "mae",
 		text = [{text = "PRE_RITUAL_7_3_1", reqs = []}],
 		options = [ {
-			code = 'pre_ritual_7_3_2', text = "PRE_RITUAL_7_3_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'pre_ritual_blow_1', text = "PRE_RITUAL_7_3_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'pre_ritual_7_3_2', text = "PRE_RITUAL_7_3_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+			code = 'pre_ritual_blow_1', text = "PRE_RITUAL_7_3_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		},  ]
 	},
 	
-	pre_ritual_7_3_2 = {
-		custom_background = "mae_scene2", # TODO change
+	pre_ritual_blow_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], character = "mae",
+		text = [{text = "PRE_RITUAL_BLOW_1", reqs = []}],
+		options = [ {
+			code = 'pre_ritual_blow_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		},  ]
+	},
+	
+	pre_ritual_blow_2 = {
+		custom_background = "mae_scene1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], 
-		text = [{text = "PRE_RITUAL_7_3_2", reqs = [], }],
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "PRE_RITUAL_BLOW_2", reqs = [], }],
 		options = [ {
-			code = 'pre_ritual_7_3_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'pre_ritual_blow_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	
+	pre_ritual_blow_3 = {
+		custom_background = "mae_scene1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "PRE_RITUAL_BLOW_3", reqs = [], }],
+		options = [ {
+			code = 'pre_ritual_blow_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ],
+	},
+	
+	pre_ritual_blow_4 = {
+		custom_background = "mae_scene2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "PRE_RITUAL_BLOW_4", reqs = [], }],
+		options = [ {
+			code = 'pre_ritual_7_3_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
 		}, ],
 	},
 	
