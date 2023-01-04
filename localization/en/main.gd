@@ -7107,7 +7107,7 @@ Making sure nobody sees, you quickly drop the powder that Mae gave you into the 
 You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
 
 After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
-RITUAL_1_1_BAD = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]?
+	RITUAL_1_1_BAD = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]?
 
 {color=red|Failure}
 

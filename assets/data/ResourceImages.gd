@@ -334,7 +334,7 @@ var sprites = {
 	white_stag_body = load("res://assets/images/sprites/white_stag_body.png"),
 	white_stag_christmas = load("res://assets/images/sprites/white_stag_christmas.png"),
 	erlen = load("res://assets/images/sprites/Erlen.png"),
-	i_body = load("res://assets/images/sprites/lira_body.png"),
+	lira_body = load("res://assets/images/sprites/lira_body.png"),
 	bandits = load("res://assets/images/sprites/bandits.png"),
 	
 	cali_halloween = load("res://assets/images/sprites/cali_halloween.png"),
