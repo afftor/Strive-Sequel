@@ -1388,6 +1388,8 @@ var data = {
 	
 	daisy_consensual_3 = {
 		image = null,custom_background = "daisy_bent1", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		reqs = [],
 		common_effects = [
 			{
@@ -1405,6 +1407,8 @@ var data = {
 	
 	daisy_consensual_4 = {
 		image = null, custom_background = "daisy_bent2", tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_4", reqs = []}],
 		options = [ {
@@ -1413,7 +1417,11 @@ var data = {
 	},
 	
 	daisy_consensual_5 = {
-		image =  null, custom_background = "daisy_bent3", tags = ['dialogue_scene', 'master_translate'],
+		image =  null,
+		 custom_background = "daisy_bent3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "DAISY_CONSENSUAL_5", reqs = []}],
 		options = [ {
