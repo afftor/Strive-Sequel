@@ -12,20 +12,21 @@ var scenes = {
 	daisy_consensual = ["daisy_consensual_1","daisy_consensual_2","daisy_consensual_3","daisy_consensual_4","daisy_consensual_5"],
 	anastasia_sex = ["princess_cutscene_good_2", "princess_sex_good_1", "princess_sex_good_2", "princess_sex_good_3", "princess_sex_good_4", "princess_sex_good_5", "princess_sex_good_6", "princess_sex_good_7", "princess_sex_good_8"], #sample
 	anastasia_rape = ["princess_cutscene_mindbreak_1", "princess_cutscene_mindbreak_2","princess_cutscene_mindbreak_3","princess_cutscene_mindbreak_4","princess_cutscene_mindbreak_5","princess_cutscene_mindbreak_6","princess_cutscene_mindbreak_7","princess_cutscene_mindbreak_8"],
-	halloween_start = ["halloween_start","halloween_1","halloween_2","halloween_3","halloween_4","halloween_5","halloween_6","halloween_7","halloween_8","halloween_9","halloween_10","halloween_11","halloween_12"],
 	aire_amelia1 = ["aire_amelia1","aire_amelia2","aire_amelia3","aire_amelia4","aire_amelia5","aire_amelia6"],
 	amelia_titjob = ["amelia_silk_1","amelia_silk_2","amelia_silk_3","amelia_silk_4","amelia_silk_5","amelia_silk_6","amelia_silk_7","amelia_silk_8","amelia_silk_9","amelia_silk_10"],
 	amelia_bondage = ["amelia_bondage_1","amelia_bondage_2","amelia_bondage_3","amelia_bondage_4","amelia_bondage_5","amelia_bondage_6","amelia_bondage_7","amelia_bondage_8","amelia_bondage_9"],
 	anastasia_aire = ["aire_anastasia1","aire_anastasia2","aire_anastasia3"],
 	aire_anal = ["ana_gryphon_sex_1","ana_gryphon_sex_2","ana_gryphon_sex_3","ana_gryphon_sex_4","ana_gryphon_sex_5","ana_gryphon_sex_6","ana_gryphon_sex_7","ana_gryphon_sex_8","ana_gryphon_sex_9","ana_gryphon_sex_10"],
 	force_cali = ["force_cali_1","force_cali_2","force_cali_3","force_cali_4","force_cali_5","force_cali_6"],
+	heleviel = ["after_temple_priestess_1","after_temple_priestess_2","after_temple_priestess_3","after_temple_priestess_4",{scene = "after_temple_priestess_5_1",variant = 1},"after_temple_priestess_5_1_2","after_temple_priestess_5_1_3","after_temple_priestess_5_1_4","after_temple_priestess_5_1_5","after_temple_priestess_5_1_6","after_temple_priestess_5_1and2"],
+	lilia_sex = ["lilia_sex_scene_1","lilia_sex_scene_1_1","lilia_sex_scene_2","lilia_sex_scene_3","lilia_starting_2"],
 	cali_touching = ["cali_sex_1_1","cali_sex_1_2","cali_sex_2_3","cali_sex_2","cali_sex_3_1","cali_sex_3_2","cali_sex_4"],
 	cali_bj_happy = ["cali_sex_5","cali_sex_6","cali_sex_7","cali_sex_8","cali_sex_9","cali_sex_10","cali_sex_11","cali_sex_12","cali_sex_13"],
 	cali_riding = ["cali_serve_start","cali_serve_2_1","cali_serve_2_2","cali_serve_2_3"],
-	heleviel = ["after_temple_priestess_1","after_temple_priestess_2","after_temple_priestess_3","after_temple_priestess_4",{scene = "after_temple_priestess_5_1",variant = 1},"after_temple_priestess_5_1_2","after_temple_priestess_5_1_3","after_temple_priestess_5_1_4","after_temple_priestess_5_1_5","after_temple_priestess_5_1_6","after_temple_priestess_5_1and2"]
+	halloween_start = ["halloween_start","halloween_1","halloween_2","halloween_3","halloween_4","halloween_5","halloween_6","halloween_7","halloween_8","halloween_9","halloween_10","halloween_11","halloween_12"]
 }	
 #was forced to add a id to scene lists for unlock purpose
-var scenes_order = ["anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start","daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage","anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer","daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel"]
+var scenes_order = ["anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start","daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage","anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer","daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex"]
 var story_scenes = ['church_event', 'jail', 'anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
  'anastasia_execution1', 'anastasia_execution2', 'anastasia_execution3',
@@ -44,12 +45,12 @@ var ero_scenes = [
  'anastasia_aire1', 'anastasia_aire2', 'anastasia_aire3',
  'aire_ana1', 'aire_ana2', 'aire_ana3', 'aire_ana4', 'aire_ana5', 'aire_ana6',
  'force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6',
- 'mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10',
+ #'mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10',
  'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4',
 'lilia_sex_1','lilia_sex_2','lilia_sex_3','lilia_sex_4',
 'cali_touching_1','cali_touching_2','cali_touching_3','cali_touching_4',
 'cali_bj_happy_1','cali_bj_happy_2','cali_bj_happy_3',
-'amelia_cali_1','amelia_cali_2','amelia_cali_3',
+#'amelia_cali_1','amelia_cali_2','amelia_cali_3',
 'cali_riding_1','cali_riding_2','cali_riding_3',
 'halloween_scene'] 
 
