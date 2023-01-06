@@ -363,6 +363,7 @@ var new_stat_bonuses_syntax = false
 
 
 var pregenabled = true
+var brothel_pregnancy_chance = 0.1
 var pregduration = 120
 var tutduration = 14 #days
 

@@ -235,41 +235,45 @@ func update_resources():
 
 	globals.connecttexttooltip(restbutton, "Rest")
 	
-	if !(selected_location in ['aliron']): #not any capital
-		var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-		var jobdata = races.tasklist.recruiting
-		if selected_job != null:
-			if selected_job.has("code"):
-				if selected_job.code == "recruiting":
-					newbutton.pressed = true
-		newbutton.get_node("TextureRect").texture = jobdata.production_icon
-		var max_workers_count = jobdata.base_workers
-		var text = ""
-		var current_workers_count = 0
-		var active_tasks = ResourceScripts.game_party.active_tasks
-		for task in active_tasks:
-			if (task.code == 'recruiting') && (task.task_location == selected_location):
-				current_workers_count = task.workers.size()
-		text += str(current_workers_count) + "/" + str(max_workers_count)
-		newbutton.get_node("Label").text = text
-		#newbutton.disabled = current_workers_count == max_workers_count
-		if current_workers_count >= max_workers_count:
-			newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
-		
-		newbutton.connect("pressed", self, "select_resource", [jobdata, "recruiting", newbutton])
+	var person_location = selected_location
+	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
+	
+	for r_task in ['recruit_easy', 'recruit_hard']:
+		if location.has('tags') and location.tags.has(r_task):
+			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
+			var jobdata = races.tasklist[r_task]
+			if selected_job != null:
+				if selected_job.has("code"):
+					if selected_job.code == "recruiting":
+						newbutton.pressed = true
+			newbutton.get_node("TextureRect").texture = jobdata.production_icon
+			var max_workers_count = jobdata.base_workers
+			var text = ""
+			var current_workers_count = 0
+			var active_tasks = ResourceScripts.game_party.active_tasks
+			for task in active_tasks:
+				if (task.code == r_task) && (task.task_location == selected_location):
+					current_workers_count = task.workers.size()
+			text += str(current_workers_count) + "/" + str(max_workers_count)
+			newbutton.get_node("Label").text = text
+			#newbutton.disabled = current_workers_count == max_workers_count
+			if current_workers_count >= max_workers_count:
+				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.9,0.48,0.48, 1))
+			
+			newbutton.connect("pressed", self, "select_resource", [jobdata, "recruiting", newbutton])
 
-		globals.connecttexttooltip(newbutton, "Reccruiting")
+			globals.connecttexttooltip(newbutton, jobdata.descript)
 	
 	for task in ResourceScripts.game_party.active_tasks:
 		if (task.code == 'special') && (task.task_location == selected_location):
 			var current_workers_count = task.workers.size()
 			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
 			var jobdata = races.tasklist.special
-			var max_workers_count = jobdata.base_workers
+			var max_workers_count = task.max_workers
 			var text = ""
 			text += str(current_workers_count) + "/" + str(max_workers_count)
 			newbutton.get_node("Label").text = text
-			newbutton.get_node("TextureRect").texture = jobdata.production_icon
+			newbutton.get_node("TextureRect").texture = load(task.icon)
 			newbutton.set_meta('spec_job', task)
 			
 			if selected_job != null:
@@ -291,8 +295,7 @@ func update_resources():
 	#$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 
 	var gatherable_resources = []
-	var person_location = selected_location
-	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
+	
 	var location_type
 	if location.has("locked"):
 		if location.locked:
@@ -308,7 +311,7 @@ func update_resources():
 	else:
 		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 		for i in races.tasklist.values():
-			if i.code in ["rest", "brothel", "special", "recruiting"]:
+			if i.code in ["rest", "brothel", "special", "recruit_easy", "recruit_hard"]:
 				continue
 			if globals.checkreqs(i.reqs) == false:
 				continue
@@ -495,6 +498,8 @@ func show_faces():
 		max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
 	elif selected_job.has('base_workers'):
 		max_workers_count = selected_job.base_workers
+		if selected_job.code == "special" and stored_spec_job.has('max_workers'):
+			max_workers_count = stored_spec_job.max_workers
 	elif selected_location != 'aliron' && ResourceScripts.world_gen.get_location_from_code(selected_location).type != "dungeon":
 		if selected_job.has("production_item"):
 			max_workers_count = ResourceScripts.world_gen.get_location_from_code(selected_location).gather_resources[selected_job.production_item]
@@ -588,6 +593,8 @@ func select_job(button, person):
 		for task in active_tasks:
 			if (task.code == selected_job.code) && (task.task_location == person.get_location()):
 				current_workers_count = task.workers.size()
+				if task.has("max_workers"):
+					max_workers_count = task.max_workers
 		if current_workers_count >= max_workers_count:
 			input_handler.SystemMessage(tr("NO_FREE_SLOTS"))
 			return
