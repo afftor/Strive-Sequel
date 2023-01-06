@@ -22,9 +22,10 @@ var scenes = {
 	cali_touching = ["cali_sex_1_1","cali_sex_1_2","cali_sex_2_3","cali_sex_2","cali_sex_3_1","cali_sex_3_2","cali_sex_4"],
 	cali_bj_happy = ["cali_sex_5","cali_sex_6","cali_sex_7","cali_sex_8","cali_sex_9","cali_sex_10","cali_sex_11","cali_sex_12","cali_sex_13"],
 	cali_riding = ["cali_serve_start","cali_serve_2_1","cali_serve_2_2","cali_serve_2_3"],
+	heleviel = ["after_temple_priestess_1","after_temple_priestess_2","after_temple_priestess_3","after_temple_priestess_4",{scene = "after_temple_priestess_5_1",variant = 1},"after_temple_priestess_5_1_2","after_temple_priestess_5_1_3","after_temple_priestess_5_1_4","after_temple_priestess_5_1_5","after_temple_priestess_5_1_6","after_temple_priestess_5_1and2"]
 }	
 #was forced to add a id to scene lists for unlock purpose
-var scenes_order = ["anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start","daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage","anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer","daisy_dress_acquired_normal","cali_bj_happy","cali_riding"]
+var scenes_order = ["anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start","daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage","anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer","daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel"]
 var story_scenes = ['church_event', 'jail', 'anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
  'anastasia_execution1', 'anastasia_execution2', 'anastasia_execution3',
