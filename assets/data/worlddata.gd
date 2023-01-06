@@ -650,6 +650,7 @@ var locations = {
 			itempool2 = {items = ['worker_outfit'], min = 1, max = 1, chance = 0.3},
 			itempool4 = {items = ['beer','alcohol'], min = 2, max = 6, chance = 0.8},
 			},
+		tags = ['recruit_easy']
 	},
 	settlement_plains2 = {
 		code = 'settlement_plains2',

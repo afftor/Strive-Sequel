@@ -1893,14 +1893,57 @@ func common_effects(effects):
 					code = 'special',
 					product = 'special',
 					progress = 0,
-					threshold = i.amount,
+#					threshold = i.amount,
 					workers = [],
 					workers_count = 0,
 					task_location = i.location,
 					messages = [],
-					args = i.args,
-					desc = i.desc
+					args = [],
+#					desc = i.desc,
+#					name = i.name,
+#					icon = i.icon,
+#					max_workers = i.max_workers
+#					function = "",
 					}
+				var template2 = races.tasklist.special
+				var template3 = {}
+				if i.has('template'):
+					template3 = races.tasklist[i.template]
+				#threshold
+				template.threshold = template2.progress_per_item
+				if template3.has('progress_per_item'):
+					template.threshold = template3.progress_per_item
+				if i.has('amount'):
+					template.threshold = i.amount
+				#args
+				if i.has('args'):
+					template.args = i.args.duplicate(true)
+				elif template3.has('args'):
+					template.args = template3.args.duplicate(true)
+				elif template2.has('args'):
+					template.args = template2.args.duplicate(true)
+				#desc name icon
+				for st in ['desc', 'name', 'icon']:
+					template[st] = ""
+					if template2.has(st):
+						template[st] = template2[st]
+					if template3.has(st):
+						template[st] = template3[st]
+					if i.has(st):
+						template[st] = i[st]
+				#max_workers
+				template.max_workers = template2.base_workers
+				if template3.has('base_workers'):
+					template.max_workers = template3.base_workers
+				if i.has('max_workers'):
+					template.max_workers = i.max_workers
+				#function
+				if template2.has('function'):
+					template.function = template2.function
+				if template3.has('function'):
+					template.function = template3.function
+				if i.has('function'):
+					template.function = i.function
 				ResourceScripts.game_party.active_tasks.push_back(template)
 			'add_hireling_to_location':
 				roll_hirelings(i.location)
