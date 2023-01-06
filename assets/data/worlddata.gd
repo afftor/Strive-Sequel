@@ -624,8 +624,13 @@ var locations = {
 		leader = '',
 		captured = false, #disable button to travel, button has tooltip saying it's untravable
 		locked = false,
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 50], ['common',5], ['uncommon',1]]
+		},
 		tasks = ['gather'],
 		actions = ['local_shop'],
+		tags = ['recruit_easy'],
 		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',1], ['event_good_rebels_beastkin',1]],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village1'],
@@ -660,8 +665,13 @@ var locations = {
 		name = 'village_human',
 		races = [],
 		leader = '',
+		character_data = {
+			chance_mod = 1.2,
+			races = [['local', 40], ['common',5], ['uncommon',2]]
+		},
 		tasks = ['gather'],
 		actions = ['local_shop'],
+		tags = ['recruit_easy'],
 		event_pool = [],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village2'],
@@ -691,8 +701,13 @@ var locations = {
 		name = 'village_human',
 		races = [],
 		leader = '',
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 30], ['common',1], ['uncommon',1]]
+		},
 		tasks = ['gather','elven_forest'],
 		actions = [],
+		tags = ['recruit_hard'],
 		event_pool = [],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['forest1'],
@@ -710,6 +725,7 @@ var locations = {
 		races = [],
 		leader = '',
 		tasks = ['gather'],
+		tags = ['recruit_hard'],
 		actions = [],
 		event_pool = [],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
@@ -717,24 +733,6 @@ var locations = {
 		bgm = 'exploration',
 		travel_time = [1,1],
 		gather_resources = {iron = [1,2], mithril = [1,1], boneancient = [1,1]},
-		area_shop_items = {
-			},
-	},
-	settlement_mountains2 = {
-		code = 'settlement_mountains2',
-		type = 'settlement',
-		classname = 'settlement_small',
-		name = 'village_human',
-		races = [],
-		leader = '',
-		tasks = ['gather'],
-		actions = [],
-		event_pool = [],
-		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
-		background_pool = ['cave_3'],
-		bgm = 'exploration',
-		travel_time = [1,1],
-		gather_resources = {iron = [2,3], bone = [2,3], mithril = [1,1]},
 		area_shop_items = {
 			},
 	},
