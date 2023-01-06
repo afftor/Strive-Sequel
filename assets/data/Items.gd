@@ -1539,7 +1539,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {atk = 50, hitrate = 50, critmod = 33, damage_mod_holy = 0.5},
+		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5},
 	},
 	aire_bow = {
 		code = 'aire_bow',

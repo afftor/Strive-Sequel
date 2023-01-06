@@ -190,6 +190,9 @@ func is_controllable():
 	return statlist.is_controllable() or has_profession('master')
 
 func has_profession(profession):
+	if profession in ['pet','petbeast']:
+		if xp_module.professions.has('pet') || xp_module.professions.has('petbeast'):
+			return true
 	return xp_module.professions.has(profession)
 
 func check_trait(trait):

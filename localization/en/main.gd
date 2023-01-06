@@ -707,8 +707,8 @@ var TranslationDict = {
 	SKILLSPIRIT2DESCRIPT = "Buff Ally Target: -25% Skill Damage taken, -15% Spell Damage taken until end of combat. Cancel other Spirit Effects.",
 	SKILLSPIRIT3 = "Spirit: Eagle",
 	SKILLSPIRIT3DESCRIPT = "Buff Ally Target: +20% Skill Damage dealt, +30 Hitrate until end of combat. Cancel other Spirit Effects.",
-	SKILLDEVOURSPIRIT = "Devour Spirit",
-	SKILLDEVOURSPIRITDESCRIPT = "Debuff Enemy target: when target dies, restore 20% of max MP to Caster.",
+	SKILLDEVOUR = "Devour Spirit",
+	SKILLDEVOURDESCRIPT = "Debuff Enemy target: when target dies, restore 20% of max MP to Caster.",
 	SKILLEARTHQUAKE = "Earthquake",
 	SKILLEARTHQUAKEDESCRIPT = "Deals 40% of MATK as Earth damage to all enemies for 3 turns.",
 	SKILLEARTHQUAKE_GLOB = "Earthquake",
@@ -2382,7 +2382,7 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_FIRE_DEPTHS = "Fire Depths",
 	LOCATIONNAMEDUNGEON_FROZEN_DOMAIN = "Frozen Domain",
 	LOCATIONNAMEDUNGEON_DRAGON_NEST = "Dragon Nest",
-	LOCATIONNAMEDUNGEON_QUEST_MINES = "Mines",
+	LOCATIONNAMEDUNGEON_QUEST_MINES_DUNGEON = "Mines",
 	LOCATIONNAMEQUEST_FINAL_OPERATION_LOCATION = "Rebels' Hideout",
 	LOCATIONNAMEQUEST_GRYPHON_FOREST_LOCATION = "Gryphon Thicket",
 	LOCATIONNAMEQUEST_GRYPHON_LAIR_LOCATION = "Elder Grypho Lair",
@@ -5642,7 +5642,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMCALI_COLLAR_ENCHANTED_2 = "Cali's Ex. Enchanted Collar",
 	ITEMCALI_COLLAR_ENCHANTED_2DESCRIPT = "A fancy collar made specifically for your slave, Cali. It was enchanted with a magic which will make her more likely to comply to your orders.\n\n{color=yellow|Only equippable by Cali}",
 	
-	ITEMHOLY_SWORD = "Sword From Stone",
+	ITEMHOLY_SWORD = "Sword from the stone",
 	ITEMHOLY_SWORDDESCRIPT = "A holy sword obtained from the stone. Required titanic strength to obtain.",
 	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",

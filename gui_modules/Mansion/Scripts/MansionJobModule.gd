@@ -547,12 +547,12 @@ func select_job(button, person):
 	self.person = person
 	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
 		set_rest(button, person)
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
 		return
 	if selected_job.code == "rest":
 		set_rest(button, person)
 		show_brothel_options()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
 		return
 	if selected_job.code == 'brothel':
 		person.assign_to_task('brothel', 'brothel')
@@ -734,7 +734,7 @@ func switch_rest(button):
 	if button.pressed:
 		set_rest(null, person)
 		update_brothel_text()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
 		for nd in get_tree().get_nodes_in_group('sex_option'):
 			nd.disabled = true
 	else:

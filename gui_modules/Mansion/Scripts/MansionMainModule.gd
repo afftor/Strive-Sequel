@@ -772,7 +772,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("gauntlets", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("holy_sword", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))

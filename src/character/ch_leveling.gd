@@ -582,6 +582,7 @@ func select_brothel_activity():
 			
 			ResourceScripts.game_res.money += goldearned
 			
+			
 			#TODO add decriptions and impregnation
 			
 			return
