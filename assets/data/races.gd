@@ -15,7 +15,7 @@ var tasklist = {
 		production_item = 'gold',
 		progress_function = 'whoring_gold',
 		production_reqs = [],
-		production_icon = load("res://assets/images/gui/service.png"),
+		production_icon = load("res://assets/images/gui/gui icons/icon_rest_brothel.png"),
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
 		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
