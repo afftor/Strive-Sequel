@@ -230,6 +230,12 @@ func find_location_by_data(data):
 func get_worker_count_for_task(worktask):
 	var loc = ResourceScripts.world_gen.get_location_from_code(worktask.task_location)
 	if loc == null: return 0
+	if worktask.product == 'recruiting':
+		var task = races.tasklist[worktask.code]
+		if task.has('base_workers'):
+			return task.base_workers
+		else:
+			return -1
 	if loc.type in ["dungeon",'encounter']:
 		return -1 #loc.gather_limit_resources[worktask.code] 
 	if loc.has("category") and loc.category == 'capital':
