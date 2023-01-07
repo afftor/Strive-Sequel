@@ -100,7 +100,7 @@ func update_status(newbutton, person):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if !person.is_on_quest():
-			newbutton.get_node("Status").texture = load("res://assets/images/gui/rest_icon.png")
+			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 	else:
 		if !gatherable:
 			var work = races.tasklist[person.get_work()]
@@ -230,7 +230,7 @@ func update_resources():
 		if selected_job.has("code"):
 			if selected_job.code == "rest" or selected_job.code == "brothel":
 				restbutton.pressed = true
-	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/rest_icon.png")
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 
 	globals.connecttexttooltip(restbutton, "Rest")
@@ -552,12 +552,12 @@ func select_job(button, person):
 	self.person = person
 	if selected_job.code == person.get_work() && selected_job.code != 'brothel':
 		set_rest(button, person)
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		return
 	if selected_job.code == "rest":
 		set_rest(button, person)
 		show_brothel_options()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		return
 	if selected_job.code == 'brothel':
 		person.assign_to_task('brothel', 'brothel')
@@ -741,7 +741,7 @@ func switch_rest(button):
 	if button.pressed:
 		set_rest(null, person)
 		update_brothel_text()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest&brothel.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		for nd in get_tree().get_nodes_in_group('sex_option'):
 			nd.disabled = true
 	else:
