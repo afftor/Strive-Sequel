@@ -44,7 +44,7 @@ var tasklist = {
 		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
 		tags = ['recruiting'],
-		function = 'recruit_easy',
+		function = 'settlement_recruiting_easy',
 		mod = ''
 	},
 	recruit_hard = {  #2fix
@@ -60,7 +60,7 @@ var tasklist = {
 		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
 		tags = ['recruiting'],
-		function = 'recruit_hard',
+		function = 'settlement_recruiting_hard',
 		mod = ''
 	},
 	building = {
