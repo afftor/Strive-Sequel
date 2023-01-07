@@ -233,7 +233,7 @@ func update_resources():
 	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 
-	globals.connecttexttooltip(restbutton, "Rest")
+	globals.connecttexttooltip(restbutton, tr('TASKRESTSERVICE'))
 	
 	var person_location = selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(person_location)
@@ -562,7 +562,7 @@ func select_job(button, person):
 	if selected_job.code == 'brothel':
 		person.assign_to_task('brothel', 'brothel')
 		show_brothel_options()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		update_status(button, person)
 		update_resources()
 		show_faces()
@@ -750,7 +750,7 @@ func switch_rest(button):
 		show_faces()
 		show_brothel_options()
 		update_resources()
-		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 
 func set_rest(button, person):
 	person.remove_from_task()
