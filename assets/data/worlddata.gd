@@ -625,7 +625,7 @@ var locations = {
 		captured = false, #disable button to travel, button has tooltip saying it's untravable
 		locked = false,
 		character_data = {
-			chance_mod = 1.5,
+			diff_roll = 15,
 			races = [['local', 50], ['common',5], ['uncommon',1]]
 		},
 		tasks = ['gather'],
