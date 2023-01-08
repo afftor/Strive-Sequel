@@ -20,8 +20,9 @@ func _ready():
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
+	$TabContainer/Gameplay/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
 	ReloadPanel = $ReloadGameLanguage
-	SwitchLanguage = $TabContainer/Gameplay/MenuButton
+	SwitchLanguage = $TabContainer/Gameplay/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
@@ -83,6 +84,8 @@ func open():
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
+	$TabContainer/Gameplay/DisableAnimations.pressed = input_handler.globalsettings.AnimateBackGround
+
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = input_handler.globalsettings[i.name+'vol']
@@ -126,6 +129,8 @@ func close():
 
 # func cheat_toggle(i, button):
 # 	variables.set(i,button.pressed)
+func disable_animations_backgrounds(value):
+	input_handler.globalsettings["AnimateBackGround"] = value
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
