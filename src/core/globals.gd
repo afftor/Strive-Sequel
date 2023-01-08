@@ -1379,6 +1379,8 @@ func roll_characters():
 	var areadata = input_handler.active_area
 	var locdata = input_handler.active_location
 	var racedata = []
+	if areadata.has('races'):
+		racedata = areadata.races.duplicate()
 	if locdata.has('character_data'):
 		locdata = locdata.character_data
 		if locdata.has('chance_mod'):
@@ -1386,8 +1388,6 @@ func roll_characters():
 			chance2 *= locdata.chance_mod
 		if locdata.has('races'):
 			racedata = locdata.races.duplicate()
-		elif areadata.has('races'):
-			racedata = areadata.races.duplicate()
 		 #or weight_random if data is weighted 
 #		race = input_handler.weightedrandom(input_handler.active_area.races)
 	
@@ -1427,12 +1427,15 @@ func roll_hirelings(loc):
 	var locdata = ResourceScripts.world_gen.get_location_from_code(loc)
 	var areadata = ResourceScripts.world_gen.get_area_from_location_code(loc)
 	var racedata = []
+	if areadata.has('races'):
+		racedata = areadata.races.duplicate()
 	if locdata.has('character_data'):
-		locdata = locdata.character_data
-		if locdata.has('races'):
-			racedata = locdata.races.duplicate()
-		elif areadata.has('races'):
-			racedata = areadata.races.duplicate()
+		var locdata1 = locdata.character_data
+		if locdata1.has('races'):
+			racedata = locdata1.races.duplicate()
+		if locdata1.has('diff_roll'):
+			t_diff = locdata1.diff_roll
+	
 	
 	if racedata is Array and !racedata.empty():
 		t_race = input_handler.weightedrandom(racedata)
