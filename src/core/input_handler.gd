@@ -133,6 +133,7 @@ enum {
 
 var globalsettings = {
 	ActiveLocalization = 'en',
+	AnimateBackGround = true,
 	mastervol = -15,
 	mastermute = false,
 	musicvol = -20,

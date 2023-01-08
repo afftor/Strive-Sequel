@@ -229,6 +229,7 @@ __meta__ = {
 }
 
 [node name="VideoPlayer" parent="." instance=ExtResource( 96 )]
+autoplay = false
 
 [node name="GuildBG" type="TextureRect" parent="."]
 margin_left = 15.0

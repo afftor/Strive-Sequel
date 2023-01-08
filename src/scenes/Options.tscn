@@ -61,7 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 45.0
 
-[node name="MenuButton" type="MenuButton" parent="TabContainer/Gameplay"]
+[node name="SwitchLanguage" type="MenuButton" parent="TabContainer/Gameplay"]
 margin_left = 40.0
 margin_top = 563.0
 margin_right = 206.0
@@ -69,7 +69,7 @@ margin_bottom = 605.0
 focus_mode = 2
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "SwitchLanguage"
+text = "Switch Language"
 flat = false
 script = ExtResource( 19 )
 __meta__ = {
@@ -102,6 +102,9 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Multiple Nipples on Furries"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="futa_balls" type="CheckBox" parent="TabContainer/Gameplay"]
 margin_left = 40.0
@@ -151,12 +154,29 @@ margin_left = 40.0
 margin_top = 338.0
 margin_right = 532.0
 margin_bottom = 378.0
+rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Enable Tutorials"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisableAnimations" type="CheckBox" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 378.0
+margin_right = 532.0
+margin_bottom = 418.0
+rect_pivot_offset = Vector2( -462.269, -82 )
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Disable Animation backgrounds"
 __meta__ = {
 "_edit_use_anchors_": false
 }
