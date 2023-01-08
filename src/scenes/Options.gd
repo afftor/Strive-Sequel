@@ -84,7 +84,7 @@ func open():
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
-	$TabContainer/Gameplay/DisableAnimations.pressed = input_handler.globalsettings.AnimateBackGround
+	$TabContainer/Gameplay/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
 
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
@@ -130,7 +130,7 @@ func close():
 # func cheat_toggle(i, button):
 # 	variables.set(i,button.pressed)
 func disable_animations_backgrounds(value):
-	input_handler.globalsettings["AnimateBackGround"] = value
+	input_handler.globalsettings["animatedbackground"] = value
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value

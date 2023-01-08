@@ -636,7 +636,7 @@ var locations = {
 		background_pool = ['village1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [2,2]}, #Number of allowed slaves per task at no upgrades
+		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [1,1]}, #Number of allowed slaves per task at no upgrades
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
 			fish = {min = 15, max = 45, chance = 1},
@@ -676,7 +676,7 @@ var locations = {
 		background_pool = ['village2'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [1,2], vegetables = [2,3], grain = [2,3], cloth = [2,3], clothsilk = [2,2]},
+		gather_resources = {vegetables = [2,3], grain = [2,3], cloth = [2,3], clothsilk = [1,1]},
 		area_shop_items = {
 			meat = {min = 20, max = 50, chance = 0.8},
 			fish = {min = 15, max = 45, chance = 0.6},

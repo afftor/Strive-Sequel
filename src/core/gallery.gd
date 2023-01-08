@@ -73,7 +73,7 @@ var ero_scenes_collection = {
 	"force_cali":['force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6'],
 	"mae_scene":['mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10'],
 	"heleviel1":[ 'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4'],
-	"lilia_sex_":['lilia_sex_1','lilia_sex_2','lilia_sex_3','lilia_sex_4'],
+	"lilia_sex_":['lilia_sex_1','lilia_sex_2_1','lilia_sex_2_2','lilia_sex_3','lilia_sex_4'],
 	"cali_touching_":['cali_touching_1','cali_touching_2','cali_touching_3','cali_touching_4'],
 	"cali_bj_happy_":['cali_bj_happy_1','cali_bj_happy_2','cali_bj_happy_3'],
 	"amelia_cali_":['amelia_cali_1','amelia_cali_2','amelia_cali_3'],

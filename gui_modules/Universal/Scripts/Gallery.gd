@@ -161,7 +161,6 @@ func FindNextImagesInPlayer():
 		if i == imagename:
 			break
 		currentCount += 1
-		print(content.size())
 	if currentCount == content.size() - 1:#если картинка была последняя в коллекции то выходим
 		$FullScreenImage.hide()
 		return

@@ -781,7 +781,10 @@ var TranslationDict = {
 	TASKMINING_MITHRILDESCRIPT = "Work at mines for gathering Mythril — a potent magic alloy recognized for its outstanding quality.",
 	TASKMINING_OBSIDIAN = "Obsidian",
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
-	
+	TASKRECRUIT_EASY = "Search for recruits",
+	TASKRECRUIT_EASYDESCRIPT = "Search for recruits",
+	TASKRECRUIT_HARD = "Search for recruits",
+	TASKRECRUIT_HARDDESCRIPT = "Search for recruits",
 	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
@@ -804,6 +807,8 @@ var TranslationDict = {
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
 	CAPTUREADDTOOLTIP = "Add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character. You won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	
 	FACTOR_INCREASE_TOOLTIP = "By sacrificing unneeded characters you can boost factors of other characters as long as donor character's stat is higher than receiver's. Growth Factor only can be increased by 1 per donor. End price is defined by receiver's value.",
 	COMBAT_CHARACTER_CAPTURED = "Character",
@@ -2211,8 +2216,11 @@ var TranslationDict = {
 	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
 	
 	
-	DIALOGUEMEET = "",
-
+	DIALOGUEMEET = "Your servants have found a potential recruitee, [name], who seems to be interested in joining your household. ",
+	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
+	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
+	
+	
 	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",

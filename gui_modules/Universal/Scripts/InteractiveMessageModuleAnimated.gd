@@ -262,7 +262,7 @@ func recruit_option():
 		else:
 			input_handler.interactive_message_follow("recruit_meet_fail", "story_event", {})
 	
-	char2.add_stat('charm', globals.rng.randi_range(2, 5))
+	char2.add_stat('charm', globals.rng.randi_range(1, 3))
 	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
 	input_handler.emit_signal("LocationSlavesUpdate")
 

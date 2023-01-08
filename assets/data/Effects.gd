@@ -720,7 +720,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_love.png",
-				description = "Favorite Food: Obedience Drain -1, Loyalty Gain +0.5.", #2change
+				description = "Favorite Food: Obedience Drain -1, Loyalty Gain +0.5.", 
 				limit = 1,
 				t_name = 'food_like',
 				mansion_only = true,
