@@ -14,6 +14,7 @@ func update():
 	else:
 		return
 	if input_handler.active_location.captured_characters.empty():
+		input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		hide()
 	else:
 		show()
@@ -32,8 +33,11 @@ func update():
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
 		if tchar.src == 'random_combat':
 			newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price() / 2))
+			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2))
 		else:
 			newbutton.get_node("SellButton/Label").visible = false
+			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2)) #2change
+			newbutton.get_node("SellButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png") #2change
 		globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2))
 		globals.connecttexttooltip(newbutton.get_node("TakeButton"), tr("CAPTUREADDTOOLTIP"))
 
