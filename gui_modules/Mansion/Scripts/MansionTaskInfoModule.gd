@@ -121,11 +121,18 @@ func show_resources_info():
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
 
-		elif task_name in ['recruiting', 'special']:
+		elif task.product in ['recruiting']:
 			newtask.show()
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
+			task_name = "recruiting"
+		elif task.product in ['special']:
+			newtask.show()
+			newtask.get_node("Task/TaskIcon").texture = load(task.icon)
+			newtask.get_node("ProgressBar").max_value = task.threshold
+			newtask.get_node("ProgressBar").value = task.progress
+			task_name = task.name
 		elif task.product in ['gold']:
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshold

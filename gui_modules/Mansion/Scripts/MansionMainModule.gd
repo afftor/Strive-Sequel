@@ -898,7 +898,7 @@ func test_mode():
 			[
 				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST", 
 				args = [{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}]},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST", 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST2", name = "test", max_workers = 4,
 				args = [{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'}]},
 			]
 		)

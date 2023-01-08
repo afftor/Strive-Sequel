@@ -346,8 +346,7 @@ func assign_to_task(taskcode, taskproduct):
 func assign_to_special_task(worktask):
 	print(worktask)
 	remove_from_task()
-	var task = races.tasklist.special
-	var max_workers_count = task.base_workers
+	var max_workers_count = worktask.max_workers
 	if max_workers_count >= 0 and max_workers_count <= worktask.workers.size():
 		return
 	work = 'special'
@@ -366,6 +365,7 @@ func remove_from_task():
 	else:
 		print("error - %s is not in it's worktask's workers" % parent.get_ref().id)
 	work = ''
+
 
 func return_to_task():
 	if check_prev_data():
@@ -564,6 +564,11 @@ func select_brothel_activity():
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
 				bonus_gold += parent.get_ref().calculate_price() * 0.01
+			if sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
+				tmpchar.create('random', 'male', 'random')
+				if randf() < variables.brothel_pregnancy_chance:
+					globals.impregnate(tmpchar, parent.get_ref())
 			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
@@ -624,14 +629,21 @@ func get_gold_value(task):
 
 
 func recruit_tick(task): #maybe incomplete
-	task.progress += 1 #major stub
+	var taskdata = races.tasklist[task.code]
+	var val = 1
+	if taskdata.has('function'):
+		val = call(taskdata.function)
+	task.progress += val
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
 		globals.roll_hirelings(task.task_location)
 
 
 func special_tick(task): #maybe incomplete
-	task.progress += 1 #major stub
+	var val = 1
+	if task.has('function'):
+		val = call(task.function)
+	task.progress += val
 	if task.progress >= task.threshold:
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)
@@ -661,7 +673,7 @@ func work_tick():
 		select_brothel_activity()
 		return
 	
-	if currenttask.code == 'recruiting':
+	if currenttask.product == 'recruiting':
 		recruit_tick(currenttask)
 		return
 	

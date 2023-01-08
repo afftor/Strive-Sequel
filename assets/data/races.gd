@@ -15,7 +15,7 @@ var tasklist = {
 		production_item = 'gold',
 		progress_function = 'whoring_gold',
 		production_reqs = [],
-		production_icon = load("res://assets/images/gui/service.png"),
+		production_icon = load("res://assets/images/gui/gui icons/icon_rest_brothel.png"),
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
 		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
@@ -27,11 +27,12 @@ var tasklist = {
 		base_workers = 1,
 		production_icon = load("res://assets/images/gui/service.png"),
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
-		icon = null,
+		icon = "res://assets/images/gui/service.png",
+		progress_per_item = 10,
 		tags = ['hide_progress_ratio']
 	},
-	recruiting = {  #2fix
-		code = 'recruiting',
+	recruit_easy = {  #2fix
+		code = 'recruit_easy',
 		reqs = [],
 		name = '',
 		descript = '',
@@ -43,6 +44,23 @@ var tasklist = {
 		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
 		tags = ['recruiting'],
+		function = 'settlement_recruiting_easy',
+		mod = ''
+	},
+	recruit_hard = {  #2fix
+		code = 'recruit_hard',
+		reqs = [],
+		name = '',
+		descript = '',
+		base_workers = 1,
+		progress_per_item = 10,
+		production_reqs = [],
+		production_icon = load("res://assets/images/gui/service.png"),
+		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
+		#production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
+		icon = null,
+		tags = ['recruiting'],
+		function = 'settlement_recruiting_hard',
 		mod = ''
 	},
 	building = {
