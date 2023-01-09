@@ -329,7 +329,7 @@ func update_resources():
 				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.production_item])
 			else:
 				globals.connecttexttooltip(newbutton, i.name)
-			var selected_job = i
+			selected_job = i
 			var selected_res
 			if i.has("production_item"):
 				selected_res = i.production_item
@@ -374,21 +374,19 @@ func update_resources():
 				newbutton.pressed = selected_job.production_item == item_dict.code
 		newbutton.set_meta("resource", resource)
 		
-		var selected_job = item_dict
+		var t_job = item_dict
 		for i in races.tasklist.values():
 			if i.has("production_item"):
-				if i.production_item == selected_job.code:
-					selected_job = i
-		var selected_res
-		if selected_job.has("production_item"):
-			selected_res = selected_job.production_item
+				if i.production_item == t_job.code:
+					t_job = i.duplicate(true)
+		var t_res
+		if t_job.has("production_item"):
+			t_res = t_job.production_item
 		elif selected_job.has("code"):
-			selected_res = selected_job.code
-		newbutton.connect("pressed", self, "select_resource", [selected_job, selected_res, newbutton])
-		
-		newbutton.get_node("TextureRect").texture = item_dict.icon
+			t_res = t_job.code
 		
 		if person_location != 'aliron' && location_type != "dungeon":
+			t_job.erase('base_workers')
 			max_workers_count = gatherable_resources[resource]
 			var active_tasks = ResourceScripts.game_party.active_tasks
 			for task in active_tasks:
@@ -399,6 +397,7 @@ func update_resources():
 			if current_workers_count >= max_workers_count:
 				newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 		elif location_type == "dungeon":
+			t_job.erase('base_workers')
 			if gatherable_resources[resource] == 0:
 				for button in $Resourses/GridContainer.get_children():
 					if button.name == "Button" || !button.has_meta('resource'): continue
@@ -407,6 +406,9 @@ func update_resources():
 			text += str(gatherable_resources[resource])
 		newbutton.get_node("Label").text = text
 		newbutton.set_meta("work", item_dict)
+		newbutton.get_node("TextureRect").texture = item_dict.icon
+		
+		newbutton.connect("pressed", self, "select_resource", [t_job, t_res, newbutton])
 
 
 func select_resource(job, resource, newbutton):
@@ -554,6 +556,10 @@ func select_job(button, person):
 		set_rest(button, person)
 		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		return
+	if selected_job.has('production_item') and selected_job.production_item == person.get_work():
+		set_rest(button, person)
+		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+		return
 	if selected_job.code == "rest":
 		set_rest(button, person)
 		show_brothel_options()
@@ -575,6 +581,7 @@ func select_job(button, person):
 		return
 	# disable 
 	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
+	
 	if selected_job.has('upgrade_code') && selected_job.has('workers_per_upgrade') && selected_job.has('base_workers'):
 		var upgrade_level = ResourceScripts.game_res.findupgradelevel(selected_job.upgrade_code)
 		var max_workers_count = selected_job.base_workers + selected_job.workers_per_upgrade * upgrade_level
