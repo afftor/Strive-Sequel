@@ -165,22 +165,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DisableAnimations" type="CheckBox" parent="TabContainer/Gameplay"]
-margin_left = 40.0
-margin_top = 378.0
-margin_right = 532.0
-margin_bottom = 418.0
-rect_pivot_offset = Vector2( -462.269, -82 )
-theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Disable Animation backgrounds"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay"]
 margin_left = 40.0
 margin_top = 90.0
@@ -435,6 +419,22 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Random Portraits"
+
+[node name="DisableAnimations" type="CheckBox" parent="TabContainer/Graphics"]
+margin_left = 26.0
+margin_top = 139.0
+margin_right = 518.0
+margin_bottom = 179.0
+rect_pivot_offset = Vector2( -462.269, -82 )
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Disable Animation backgrounds"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Cheats" type="Tabs" parent="TabContainer"]
 visible = false
