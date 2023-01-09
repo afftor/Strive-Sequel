@@ -20,7 +20,7 @@ func _ready():
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
-	$TabContainer/Gameplay/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
+	$TabContainer/Graphics/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
 	ReloadPanel = $ReloadGameLanguage
 	SwitchLanguage = $TabContainer/Gameplay/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
@@ -84,7 +84,7 @@ func open():
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
-	$TabContainer/Gameplay/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
+	$TabContainer/Graphics/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
 
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
