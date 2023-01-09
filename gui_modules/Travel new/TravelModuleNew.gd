@@ -551,7 +551,20 @@ func build_location_resources():
 	var dungeon = false
 	var hidden = false
 	info_res_panel.show()
+	input_handler.ClearContainer(info_res_node)
 	var location = ResourceScripts.world_gen.get_location_from_code(location_selected.id)
+	for r_task in ['recruit_easy', 'recruit_hard']:
+		if location.has('tags') and location.tags.has(r_task):
+			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
+			var jobdata = races.tasklist[r_task]
+			newbutton.get_node("TextureRect").texture = jobdata.production_icon
+			var max_workers_count = jobdata.base_workers
+			var current_workers_count = 0
+			for task in ResourceScripts.game_party.active_tasks:
+				if (task.code == r_task) && (task.task_location == location_selected.id):
+					current_workers_count = task.workers.size()
+			newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
+			globals.connecttexttooltip(newbutton, jobdata.descript)
 	var gatherable_resources
 	if (location.type in ["capital", "quest_location"]) or (location.has('locked') and location.locked):
 		info_res_panel.hide()
@@ -564,7 +577,7 @@ func build_location_resources():
 	else:
 		if location.has('gather_resources'):
 			gatherable_resources = location.gather_resources
-	input_handler.ClearContainer(info_res_node)
+	
 	if gatherable_resources != null:
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]

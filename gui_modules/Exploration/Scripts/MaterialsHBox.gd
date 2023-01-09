@@ -15,6 +15,20 @@ func update():
 #	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	if selected_location.type == "quest_location":
 		return
+	
+	for r_task in ['recruit_easy', 'recruit_hard']:
+		if selected_location.has('tags') and selected_location.tags.has(r_task):
+			var newbutton = input_handler.DuplicateContainerTemplate(self)
+			var jobdata = races.tasklist[r_task]
+			newbutton.get_node("TextureRect").texture = jobdata.production_icon
+			var max_workers_count = jobdata.base_workers
+			var current_workers_count = 0
+			for task in ResourceScripts.game_party.active_tasks:
+				if (task.code == r_task) && (task.task_location == selected_location.code):
+					current_workers_count = task.workers.size()
+			newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
+			globals.connecttexttooltip(newbutton, jobdata.descript)
+	
 	var gatherable_resources
 	if selected_location.type in ["dungeon",'encounter']:
 		dungeon = true

@@ -634,6 +634,7 @@ func recruit_tick(task): #maybe incomplete
 	if taskdata.has('function'):
 		val = call(taskdata.function)
 	task.progress += val
+	work_tick_values(taskdata.workstat)
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
 		globals.roll_hirelings(task.task_location)
