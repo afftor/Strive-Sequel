@@ -329,11 +329,11 @@ func update_resources():
 				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.production_item])
 			else:
 				globals.connecttexttooltip(newbutton, i.name)
-			selected_job = i
-			var selected_res
+			var tmp_job = i
+			var tmp_res
 			if i.has("production_item"):
-				selected_res = i.production_item
-			newbutton.connect("pressed", self, "select_resource", [selected_job, selected_res, newbutton])
+				tmp_res = i.production_item
+			newbutton.connect("pressed", self, "select_resource", [tmp_job, tmp_res, newbutton])
 			if i.has("production_icon"):
 				newbutton.get_node("TextureRect").texture = i.production_icon
 			elif i.has("production_item"):
@@ -560,12 +560,12 @@ func select_job(button, person):
 		set_rest(button, person)
 		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		return
-	if selected_job.code == "rest":
+	if selected_job.code == "rest" and person.get_work() != "brothel":
 		set_rest(button, person)
 		show_brothel_options()
 		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
 		return
-	if selected_job.code == 'brothel':
+	if selected_job.code == "rest" and person.get_work() == "brothel":
 		person.assign_to_task('brothel', 'brothel')
 		show_brothel_options()
 		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
