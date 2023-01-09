@@ -782,9 +782,9 @@ var TranslationDict = {
 	TASKMINING_OBSIDIAN = "Obsidian",
 	TASKMINING_OBSIDIANDESCRIPT = "Work at mines for gathering Obsidian. Obsidian is recognized for its rarity and certain magical properties.",
 	TASKRECRUIT_EASY = "Search for recruits",
-	TASKRECRUIT_EASYDESCRIPT = "Search for recruits",
+	TASKRECRUIT_EASYDESCRIPT = "Search for recruits at current location. After its finished you'll be able to talk them into joing you if succesful.",
 	TASKRECRUIT_HARD = "Search for recruits",
-	TASKRECRUIT_HARDDESCRIPT = "Search for recruits",
+	TASKRECRUIT_HARDDESCRIPT = "Search for recruits at current location. After its finished you'll be able to talk them into joing you if succesful.",
 	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
@@ -2219,6 +2219,9 @@ var TranslationDict = {
 	DIALOGUEMEET = "Your servants have found a potential recruitee, [name], who seems to be interested in joining your household. ",
 	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
 	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
+	DIALOGUEMEETGOODDEFAULT = "Add to roster as Peon",
+	DIALOGUEMEETGOODHIRELING = "",
+	
 	
 	
 	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
