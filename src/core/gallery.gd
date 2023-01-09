@@ -23,11 +23,17 @@ var scenes = {
 	cali_touching = ["cali_sex_1_1","cali_sex_1_2","cali_sex_2_3","cali_sex_2","cali_sex_3_1","cali_sex_3_2","cali_sex_4"],
 	cali_bj_happy = ["cali_sex_5","cali_sex_6","cali_sex_7","cali_sex_8","cali_sex_9","cali_sex_10","cali_sex_11","cali_sex_12","cali_sex_13"],
 	cali_riding = ["cali_serve_start","cali_serve_2_1","cali_serve_2_2","cali_serve_2_3"],
-	halloween_start = ["halloween_start","halloween_1","halloween_2","halloween_3","halloween_4","halloween_5","halloween_6","halloween_7","halloween_8","halloween_9","halloween_10","halloween_11","halloween_12"]
+	halloween_start = ["halloween_start","halloween_1","halloween_2","halloween_3","halloween_4","halloween_5","halloween_6","halloween_7","halloween_8","halloween_9","halloween_10","halloween_11","halloween_12"],
+	christmas = ["christmas_pre_start","christmas_start","christmas_1","christmas_2","christmas_3","christmas_4","christmas_5","christmas_6","christmas_7","christmas_8","christmas_9","christmas_10"]
 }	
 #was forced to add a id to scene lists for unlock purpose
-var scenes_order = ["anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start","daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage","anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer","daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex"]
-var story_scenes = ['church_event', 'jail', 'anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
+var scenes_order = [
+	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start",
+	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
+	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
+	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas"
+	]
+var story_scenes = ['anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
  'anastasia_execution1', 'anastasia_execution2', 'anastasia_execution3',
  'lich_aire_talk4', 'lich_aire_talk7',
@@ -52,7 +58,8 @@ var ero_scenes = [
 'cali_bj_happy_1','cali_bj_happy_2','cali_bj_happy_3',
 #'amelia_cali_1','amelia_cali_2','amelia_cali_3',
 'cali_riding_1','cali_riding_2','cali_riding_3',
-'halloween_scene'] 
+'halloween_scene',
+'christmas_scene'] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
