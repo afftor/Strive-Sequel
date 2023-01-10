@@ -348,6 +348,7 @@ func update_resources():
 				for task in active_tasks:
 					if (task.code == i.code) && (task.task_location == person_location):
 						current_workers_count = task.workers.size()
+						break
 				text += str(current_workers_count) + "/" + str(max_workers_count)
 				newbutton.get_node("Label").text = text
 				#newbutton.disabled = current_workers_count == max_workers_count

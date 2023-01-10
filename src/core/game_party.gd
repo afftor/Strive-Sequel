@@ -50,6 +50,9 @@ func fix_serialization():
 		if task.has('threshhold'):
 			task.threshold = task.threshhold
 			task.erase('threshhold')
+	for task in active_tasks.duplicate():
+		if task.product == 'rest':
+			active_tasks.erase(task)
 
 
 
