@@ -382,7 +382,7 @@ func update_resources():
 		var t_res
 		if t_job.has("production_item"):
 			t_res = t_job.production_item
-		elif selected_job.has("code"):
+		elif t_job.has("code"):
 			t_res = t_job.code
 		
 		if person_location != 'aliron' && location_type != "dungeon":
