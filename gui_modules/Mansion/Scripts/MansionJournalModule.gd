@@ -103,6 +103,8 @@ func show_quest_info(quest):
 			i.pressed = i.get_meta('quest') == quest
 
 	if !quest.has('stage'):
+		$CancelButton.visible = true
+		$CompleteButton.visible = true
 		var quest_descript = quest.descript
 		selectedquest = quest
 		input_handler.selectedquest = quest
@@ -207,6 +209,17 @@ func show_quest_info(quest):
 						tooltiptext += stats_text
 					globals.connecttexttooltip(newbutton, tooltiptext)
 					quest_descript += "\nWork duration: " + time + ' days.'
+				'special_task':
+					$CompleteButton.hide()
+					if quest.id in ResourceScripts.game_progress.work_quests_finished:
+						$CompleteButton.show()
+					var t_text = "\nComplete corresponding special task"
+					if i.has('name'):
+						t_text += ": " + tr(i.name)
+					if i.has('icon'):
+						newbutton.get_node("TextureRect").texture = load(i.icon)
+					quest_descript += t_text
+					globals.connecttexttooltip(newbutton, t_text)
 
 
 		for i in quest.rewards:
@@ -255,8 +268,6 @@ func show_quest_info(quest):
 
 		$RightPanel/QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
 		$RightPanel/CenterContainer/Time/Label.text = str(quest.time_limit) + " days left."
-		$CancelButton.visible = true
-		$CompleteButton.visible = true
 	else:
 		$RightPanel/rewards.hide()
 		$RightPanel/reqs.hide()

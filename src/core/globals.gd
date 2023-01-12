@@ -1950,6 +1950,8 @@ func common_effects(effects):
 				ResourceScripts.game_party.active_tasks.push_back(template)
 			'add_hireling_to_location':
 				roll_hirelings(i.location)
+			'finish_worktask':
+				ResourceScripts.game_progress.work_quests_finished.push_back(i.value)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
