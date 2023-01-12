@@ -546,7 +546,18 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.6.6c
+bbcode_text = "0.6.6d
+Most scenes and events have been added to gallery
+Added text to Mae's blowjob scene and illustrations to ritual
+Added setting option to disable background animation (for those users who have it flickering)
+Slightly nerfed basic stats for some of common races
+Fixed scenes at the end of arc 2
+Fixed Holy Sword's bonus damage and crit rate
+Fixed Devour skill description
+Fixed Lira's sprite
+Pet and Natural Pet should be interchangable for quests
+Reduced settlement number and rebalanced their materials. Also added task to search for recruits at settlements
+0.6.6c
 Added christmass event
 Added small event with cali and zephyra
 Added one interaction to beastkin village
@@ -1286,7 +1297,18 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.6c
+text = "0.6.6d
+Most scenes and events have been added to gallery
+Added text to Mae's blowjob scene and illustrations to ritual
+Added setting option to disable background animation (for those users who have it flickering)
+Slightly nerfed basic stats for some of common races
+Fixed scenes at the end of arc 2
+Fixed Holy Sword's bonus damage and crit rate
+Fixed Devour skill description
+Fixed Lira's sprite
+Pet and Natural Pet should be interchangable for quests
+Reduced settlement number and rebalanced their materials. Also added task to search for recruits at settlements
+0.6.6c
 Added christmass event
 Added small event with cali and zephyra
 Added one interaction to beastkin village

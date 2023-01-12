@@ -1326,7 +1326,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}]},
-	{code = 'recruit_from_scene', reqs = [{type = 'disabled'}], not_hide = true, text = tr("DIALOGUEMEETGOODHIRELING"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'hireling'},]},
+	#{code = 'recruit_from_scene', reqs = [{type = 'disabled'}], not_hide = true, text = tr("DIALOGUEMEETGOODHIRELING"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'hireling'},]},
 	]
 	},
 	recruit_meet_fail = {text = tr("DIALOGUEMEETBAD"),

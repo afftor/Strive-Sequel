@@ -37,7 +37,8 @@ func update():
 		else:
 			newbutton.get_node("SellButton/Label").visible = false
 			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTUREDISMISSTOOLTIP")) #2change
-			newbutton.get_node("SellButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png") #2change
+			newbutton.get_node("SellButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_dismiss.png")
+			newbutton.get_node("TakeButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_recruit.png")
 		globals.connecttexttooltip(newbutton.get_node("TakeButton"), tr("CAPTUREADDTOOLTIP"))
 
 
