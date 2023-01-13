@@ -92,4 +92,5 @@ var decisions = {
 	cali_normal_collar = "Cali got cheap collar",
 	cali_exquisite_collar = "Cali got expensive collar",
 	got_excalibur = "Pulling out a sword from the stone in beast tribe",
+	KurdanKnightPaladinRoute = "We had Kurdan and used Palading/Knight route to prevent him from turning",
 }

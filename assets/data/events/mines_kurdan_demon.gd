@@ -79,7 +79,7 @@ var data = {
 				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
 				text = [{text = "PRE_FINAL_BOSS_PALADIN_KNIGHT", reqs = []}],
 				options = [ {
-				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
+				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}, {code = 'decision', value = 'KurdanKnightPaladinRoute'}],
 				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 				} ],
 			}, { #has Kurdan, NOT paladin = fight demon_kurdan
@@ -186,8 +186,10 @@ var data = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
 		options = [ {
-			code = 'pre_final_boss_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
-			}
+			code = 'pre_final_boss_8', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = false}], dialogue_argument = 0, type = 'next_dialogue'
+			}, {
+			code = 'demon_kurdan_win_2', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = true}], dialogue_argument = 1, type = 'next_dialogue'
+			}, 
 		],
 	},
 
@@ -195,14 +197,15 @@ var data = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
 		options = [ {
-			code = 'demon_kurdan_win_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			code = 'demon_kurdan_win_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 			}
 		],
 	},
 
 	demon_kurdan_win_2 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
-		text = [ {text = "PRE_FINAL_BOSS_13", reqs = []} ],
+		text = [ {text = "PRE_FINAL_BOSS_13", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = false}]},
+		 {text = "PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN", reqs = [{type = 'decision', value = 'KurdanKnightPaladinRoute', check = true}]}, ],
 		options = [ {
 			code = 'pre_final_boss_6',
 			text = "PRE_FINAL_BOSS_OPTION_6", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
