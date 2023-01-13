@@ -184,6 +184,8 @@ func take_quest(quest, area):
 			i.area = area.code
 			i.completed = false
 			location_links[location.id] = {area = area.code, category = 'questlocations'}
+		if i.code == 'special_task':
+			globals.common_effects(i.starteffect)
 
 
 func find_location_from_req(req):

@@ -289,6 +289,7 @@ var factiondata = {
 			'fighters_init',
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
+#		quests_easy = ['test'],
 		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium','fighters_craft_gear_medium'],
 		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard','fighters_craft_gear_hard'],
 		tags = [],
@@ -740,6 +741,27 @@ var locations = {
 
 
 var questdata = {
+	test = {
+		code = 'test',
+		name = 'test',
+		descript = 'test',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['test1', 'test2', 'test3'],
+			amount = [10, 15],
+			max_workers = [1, 4],
+			icon = "res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png",
+			function = ['settlement_recruiting_easy', 'settlement_recruiting_hard']
+			}],
+		unlockreqs = [],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [125,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [10,30]}],
+		],
+		time_limit = [8,12],
+	},
 	workers_resources_easy = {
 		code = 'workers_resources_easy',
 		name = 'Resource gathering',
