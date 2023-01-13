@@ -17,7 +17,7 @@ var data = {
 				bonus_effects = [{code = 'decision', value = 'putPowder'}]},
 			{text = "RITUAL_1_1_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 30}]}]}],
 		options = [ {
-			code = 'ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
 		}, ]
 	},
 	
