@@ -286,7 +286,8 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_14", reqs = []}],
 		options = [ {
-			code = 'mindcontrol_3', text = "MIND_CONTROL_OPTION_11", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 1,
+			code = 'mindcontrol_3', text = "MIND_CONTROL_OPTION_11", reqs = [{type = "has_money", value = 5000}], dialogue_argument = 1,
+			bonus_effects = [{code = 'money_change', operant = '-', value = 5000}],
 		}, {
 			code = 'close', text = "MIND_CONTROL_OPTION_12", reqs = [], dialogue_argument = 2,
 		}],

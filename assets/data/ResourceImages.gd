@@ -272,6 +272,7 @@ var scenes = {
 	mae_camp = load('res://assets/images/scenes/mae_camp.png'),
 	wedding = load("res://assets/images/scenes/marriage.png"),
 	excalibur = load("res://assets/images/scenes/excalibur.png"),
+	excalibur_extract = load("res://assets/images/scenes/excalibur_extract.png"),
 	
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),

@@ -434,17 +434,28 @@ var data = {
 	excalibur_quest_1 = {
 		image = 'excalibur', tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "EXCALIBUR_QUEST_1", reqs = []} ], 
-		options = [ {
-			code = 'excalibur_quest_2', text = "EXCALIBUR_QUEST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-		}, {
+		options = [ { # good
+			code = 'excalibur_quest_good', text = "EXCALIBUR_QUEST_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 175}]}], dialogue_argument = 1, type = 'next_dialogue',
+		}, { # bad
+			code = 'excalibur_quest_bad', text = "EXCALIBUR_QUEST_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 175}]}], dialogue_argument = 1, type = 'next_dialogue',
+		}, { # leave
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],
 	},
 	
-	excalibur_quest_2 = {
+	excalibur_quest_good = {
+		image = 'excalibur_extract', tags = ['dialogue_scene'], reqs = [], 
+		text = [{text = "EXCALIBUR_QUEST_GOOD", reqs = []}], 
+		common_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'holy_sword', number = 1}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [ {code = 'update_city'} ]
+		}, ],
+	},
+	
+	excalibur_quest_bad = {
 		image = 'excalibur', tags = ['dialogue_scene'], reqs = [], 
-		text = [ {text = "EXCALIBUR_QUEST_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 175}]}], bonus_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'holy_sword', number = 1}]}, 
-			{text = "EXCALIBUR_QUEST_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 175}]}]},  ], 
+		text = [{text = "EXCALIBUR_QUEST_BAD", reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [ {code = 'update_city'} ]
