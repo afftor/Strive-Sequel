@@ -385,11 +385,10 @@ func make_quest(questcode):
 	data.descript = template.descript
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.state = 'free'
-
+	
 	var requirements_number = 1
 	var reqsarray = template.randomconditions.duplicate()
-
-
+	
 	while requirements_number > 0:
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate(true)
 		var reqsarrayposition = reqsarray.find(tempdata)
@@ -450,6 +449,23 @@ func make_quest(questcode):
 				tempdata.work_time = round(rand_range(tempdata.work_time[0], tempdata.work_time[1]))
 			tempdata.statreqs.append({code = 'is_master', check = false})
 			tempdata.statreqs.append({code = 'is_free', check = true})
+		elif tempdata.code == 'special_task':
+			var task_reward = [{code = 'finish_worktask', value = data.id}]
+			var task_dict = {code = 'add_special_task_for_location', location = tempdata.location, args = task_reward}
+			for key in ['template', 'desc', 'name', 'icon', 'function']:
+				if tempdata.has(key):
+					if tempdata[key] is Array:
+						tempdata[key] = input_handler.random_from_array(tempdata[key])
+					task_dict[key] = tempdata[key]
+					if !(key in ['name', 'icon']):
+						tempdata.erase(key)
+			for key in ['max_workers', 'amount']:
+				if tempdata.has(key):
+					if tempdata[key] is Array:
+						tempdata[key] = globals.rng.randi_range(tempdata[key][0], tempdata[key][1])
+					task_dict[key] = tempdata[key]
+					tempdata.erase(key)
+			tempdata.starteffect = [task_dict]
 		else:
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()]
 		requirements_number -= 1
@@ -457,7 +473,7 @@ func make_quest(questcode):
 	for i in template.rewards.duplicate():
 		rewardarray.append([i, i[0]])
 	rewardarray = input_handler.weightedrandom(rewardarray)
-
+	
 	for i in rewardarray:
 		var reward = {}
 		if typeof(i) != TYPE_DICTIONARY: continue #ignoring weight value
@@ -501,7 +517,7 @@ func make_quest(questcode):
 				reward.value = round(rand_range(i.value[0], i.value[1]))
 		if reward.empty() == false:
 			data.rewards.append(reward)
-
+	
 	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
 	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
 	return data

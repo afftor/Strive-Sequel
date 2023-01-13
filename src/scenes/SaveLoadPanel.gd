@@ -42,7 +42,11 @@ func update_save_file():
 		if savedata.has(savename):
 			newbutton.get_node("Date").show()
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
-
+#sorting data save
+	var x = $ScrollContainer/VBoxContainer.get_children()
+	x.sort_custom(self,"Sort")
+	for j in x.size():
+		$ScrollContainer/VBoxContainer.move_child(x[j],j)
 
 func update_file(filename):
 	if filename == '':
@@ -106,7 +110,11 @@ func SavePanelOpen():
 		if savedata.has(savename):
 			newbutton.get_node("Date").show()
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
-
+	#sorting data save
+	var x = $ScrollContainer/VBoxContainer.get_children()
+	x.sort_custom(self,"Sort")
+	for j in x.size():
+		$ScrollContainer/VBoxContainer.move_child(x[j],j)
 
 
 func LoadPanelOpen():
@@ -136,8 +144,11 @@ func LoadPanelOpen():
 		if savedata.has(savename):
 			newbutton.get_node("Date").show()
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
-
-
+	#sorting data save
+	var x = $ScrollContainer/VBoxContainer.get_children()
+	x.sort_custom(self,"Sort")
+	for j in x.size():
+		$ScrollContainer/VBoxContainer.move_child(x[j],j)
 
 func PressLoadGame(savename):
 	# var file = File.new()
@@ -275,3 +286,15 @@ func hide():
 	input_handler.text_field_input = false
 	.hide()
 	pass
+
+func Sort(a,b):
+	if a.get_node("Label").text == "Savename":
+		return false
+	var Aname = a.get_node("Label").text
+	var Bname = b.get_node("Label").text
+	var x = OS.get_unix_time_from_datetime(savedata[Aname]["time"])
+	var y = OS.get_unix_time_from_datetime(savedata[Bname]["time"])
+	
+	if x > y :
+		return true
+	return false
