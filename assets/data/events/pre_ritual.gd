@@ -304,7 +304,7 @@ var data = {
 	},
 	
 	mae_meeting_1 = {
-		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "MAE_MEETING_1", reqs = []}],
 		options = [ {
@@ -450,14 +450,23 @@ var data = {
 		reqs = [],
 		text = [{text = "PRE_RITUAL_1", reqs = []}],
 		options = [ {
-			code = 'pre_ritual_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'pre_ritual_2_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
 	},
 	
-	pre_ritual_2 = {
+	pre_ritual_2_1 = {
+		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
+		text = [{text = "PRE_RITUAL_2_1", reqs = []}],
+		options = [ {
+			code = 'pre_ritual_2_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		} ]
+	},
+	
+	pre_ritual_2_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		text = [{text = "PRE_RITUAL_2", reqs = []}],
+		text = [{text = "PRE_RITUAL_2_2", reqs = []}],
 		options = [ {
 			code = 'pre_ritual_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
