@@ -3,6 +3,7 @@ var data = {
 	lira_mansion_1 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [
 			{text = "LIRA_MANSION_1", reqs = []},
 		],
@@ -19,6 +20,7 @@ var data = {
 	lira_mansion_2 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [
 			{text = "LIRA_MANSION_2", reqs = []},
 		],
@@ -35,6 +37,7 @@ var data = {
 	lira_mansion_3 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [
 			{text = "LIRA_MANSION_3", reqs = []},
 		],
@@ -60,6 +63,7 @@ var data = {
 	lira_mansion_4 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -81,6 +85,7 @@ var data = {
 	lira_mansion_5 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
 		text = [
@@ -99,6 +104,7 @@ var data = {
 	lira_mansion_6 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		custom_background = "lira_sex_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -118,6 +124,7 @@ var data = {
 	lira_mansion_7 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		custom_background = "lira_sex_2",
 		scene_type = "ero_scene",
 		text = [
@@ -136,6 +143,7 @@ var data = {
 	lira_mansion_8 = {
 		image = null,
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		custom_background = "lira_sex_3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -157,6 +165,7 @@ var data = {
 		image = null,
 		character = 'lira',
 		tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [
 			{text = "LIRA_MANSION_9", reqs = []},
 		],

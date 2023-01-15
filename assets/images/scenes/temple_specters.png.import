@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temple_raiders.png-e71151eb179f6dba7005f6f528bc4747.stex"
+path="res://.import/temple_specters.png-ae30e338f45bddf0236b44315fcc50c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/temple_raiders.png"
-dest_files=[ "res://.import/temple_raiders.png-e71151eb179f6dba7005f6f528bc4747.stex" ]
+source_file="res://assets/images/scenes/temple_specters.png"
+dest_files=[ "res://.import/temple_specters.png-ae30e338f45bddf0236b44315fcc50c5.stex" ]
 
 [params]
 

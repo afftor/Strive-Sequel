@@ -240,8 +240,9 @@ var data = {
 		text = [{text = 'WHITE_STAG_ENCOUNTER_13', reqs = []}], 
 		options = [ { # TODO add teleport to tribe_location
 			code = 'white_stag_encounter_14', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
-		 {code = 'remove_active_location'}, {code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
+			bonus_effects = [{code = 'remove_active_location'}, 
+			{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
+			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
 			
 		} ]
 	},
@@ -383,7 +384,7 @@ var data = {
 	
 	#fight
 	temple_3_2 = {
-		image = 'temple_raiders', tags = ['dialogue_scene', 'master_translate',],
+		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], 
 		text = [{text = 'TEMPLE_3_2', reqs = []}], 
 		options = [ {
@@ -423,7 +424,7 @@ var data = {
 	
 	temple_6 = {
 		variations = [ {
-				image = null, tags = ['dialogue_scene', 'master_translate',],
+				image = 'temple_specters', tags = ['dialogue_scene', 'master_translate',],
 				reqs = [{type = "location_has_specific_slaves", check = false, value = 1, location = 'quest_temple_location', reqs = [
 					{code = 'unique', value = 'aire'}]}], 
 				text = [{text = 'TEMPLE_6_1', reqs = []}], 
@@ -991,9 +992,10 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'erlen', character2 = 'elf_priestess', 
 		text = [{text = 'CEREMONY_HELEVIEL_3_1_1', reqs = [], previous_dialogue_option = 1},
-		{text = 'CEREMONY_HELEVIEL_3_1_2', reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Lira', recruit_from_location = true}]},{code = 'plan_mansion_event', value = 'lira_mansion_1'}],
+		{text = 'CEREMONY_HELEVIEL_3_1_2', reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'make_story_character', value = 'Lira', recruit_from_location = true}]}],
 		options = [ {
 			code = 'ceremony_heleviel_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = [{code = 'plan_mansion_event', value = 'lira_mansion_1'},]
 		}, ]
 	},
 	
