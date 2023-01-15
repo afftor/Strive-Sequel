@@ -94,6 +94,9 @@ var data = {
 	
 	lilia_sex_scene_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "lilia_sex",
+		save_scene_to_gallery = true,
 		reqs = [], character = "lilia", 
 		text = [{text = "LILIA_SEX_SCENE_1", reqs = []}],
 		common_effects = [{code = 'decision', value = 'seduced_lilia'}],

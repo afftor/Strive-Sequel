@@ -10,6 +10,9 @@ var data = {
 	
 	amelia_silk_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "amelia_titjob",
+		save_scene_to_gallery = true,
 		text = [{text = "AMELIA_SILK_REPLY_START", reqs = [], }],
 		common_effects = [{code = 'material_change', operant = '-', material = 'clothsilk', value = 50}],
 		options = [ {
@@ -370,6 +373,9 @@ var data = {
 	
 	amelia_bondage_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [],  character = 'amelia',
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "amelia_bondage",
+		save_scene_to_gallery = true,
 		text = [{text = "AMELIA_BONDAGE_1", reqs = []}],
 		options = [ {
 			code = 'amelia_bondage_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

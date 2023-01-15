@@ -277,6 +277,9 @@ var data = {
 	
 	princess_cutscene_mindbreak_1 = {
 		image = null,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "anastasia_rape",
+		save_scene_to_gallery = true,
 		character = "anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -443,6 +446,9 @@ var data = {
 	
 	princess_cutscene_good_1 = {
 		image = null,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "anastasia_sex",
+		save_scene_to_gallery = true,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
 		text = [
@@ -925,6 +931,7 @@ var data = {
 	aire_anastasia1 = {
 		image = null,
 		custom_background = "anastasia_aire1",
+		unlocked_gallery_seq = "anastasia_aire",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],

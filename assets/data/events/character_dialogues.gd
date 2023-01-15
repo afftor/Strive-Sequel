@@ -544,6 +544,9 @@ var data = {
 	
 	cali_serve_start = {
 		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'cali',
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "cali_riding",
+		save_scene_to_gallery = true,
 		text = [
 			{text = "CALI_SERVE_START_1", reqs = [{type = 'active_character_checks', value = [
 				{code = 'has_profession', profession = 'sextoy', check = true},

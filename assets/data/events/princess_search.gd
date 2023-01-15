@@ -852,6 +852,9 @@ var data = {
 
 	aire_amelia1 = {
 		image = null,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "aire_amelia1",
+		save_scene_to_gallery = true,
 		character = "aire",
 		character2 = "amelia",
 		tags = ['dialogue_scene'],
