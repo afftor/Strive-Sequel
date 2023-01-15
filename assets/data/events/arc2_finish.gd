@@ -470,6 +470,9 @@ var data = {
 	
 	after_temple_priestess_1 = {
 		image = null, tags = ['dialogue_scene',],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "heleviel",
+		save_scene_to_gallery = true,
 		reqs = [], character = "elf_priestess",
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_1', reqs = [],}], 
 		options = [ {

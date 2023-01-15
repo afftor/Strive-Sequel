@@ -1,6 +1,9 @@
 var data = {
 	halloween_start = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "halloween_start",
+		save_scene_to_gallery = true,
 		character = 'zephyra',
 		reqs = [{type = 'decision', value = 'mayor_election_finished', check = true, negative = 'repeat_next_day'},
 		{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},

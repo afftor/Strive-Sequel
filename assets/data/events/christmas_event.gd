@@ -1,6 +1,9 @@
 var data = {
 	christmas_pre_start = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "christmas",
+		save_scene_to_gallery = true,
 		character = 'zephyra',
 		reqs = [{type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},
 		{type = 'quest_completed', name = 'sword_artifact_quest', check = true}],
