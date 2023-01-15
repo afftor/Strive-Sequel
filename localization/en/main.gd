@@ -7354,9 +7354,9 @@ Your mere presence defiles these grounds and all traces of it must be annihilate
 	WHITE_STAG_ENCOUNTER_8_3_OPTION_3 = "Maybe we could strike some mutual agreement?",
 	WHITE_STAG_ENCOUNTER_9_2AND3 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
 	WHITE_STAG_ENCOUNTER_9_1 = """ — Really, now. What could a mortal possibly do that would interest me?""",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_1 = "I can smith your image into a beautiful piece of jewelry",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_2 = "I want to dedicate a song to you",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_3 = "I will slay any foe or beast you request",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_1 = "I can smith your image into a beautiful piece of jewelry (Smith)",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_2 = "I want to dedicate a song to you (Bard)",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_3 = "I will slay any foe or beast you request (Knight)",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_4 = "...",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_5 = "I'm... not sure how I could do that",
 	WHITE_STAG_ENCOUNTER_10_4 = """You notice that Zephyra is willing to lend you a hand in this situation.
