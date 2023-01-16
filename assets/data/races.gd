@@ -22,8 +22,8 @@ var tasklist = {
 		tags = ['sex'],
 		mod = 'mod_pros'
 	},
-	special = { #2fix
-		code = 'special',
+	fighters_task = {
+		code = 'fighters_task',
 		base_workers = 1,
 		production_icon = load("res://assets/images/gui/service.png"),
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),

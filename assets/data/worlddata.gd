@@ -288,8 +288,8 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
-#		quests_easy = ['test'],
+		#quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
+		quests_easy = ['fighters_task_easy'],
 		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium','fighters_craft_gear_medium'],
 		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard','fighters_craft_gear_hard'],
 		tags = [],
@@ -637,7 +637,7 @@ var locations = {
 		background_pool = ['village1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], fish = [2,3], grain = [2,3], iron = [1,1]}, #Number of allowed slaves per task at no upgrades
+		gather_resources = {wood = [2,3], stone = [2,3], grain = [2,3], iron = [1,1]}, #Number of allowed slaves per task at no upgrades
 		area_shop_items = {
 			meat = {min = 20, max = 30, chance = 0.2},
 			fish = {min = 15, max = 45, chance = 1},
@@ -677,7 +677,7 @@ var locations = {
 		background_pool = ['village2'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {vegetables = [2,3], grain = [2,3], cloth = [2,3], clothsilk = [1,1]},
+		gather_resources = {vegetables = [2,3], leather = [2,3], cloth = [2,3], clothsilk = [1,1]},
 		area_shop_items = {
 			meat = {min = 20, max = 50, chance = 0.8},
 			fish = {min = 15, max = 45, chance = 0.6},
@@ -741,27 +741,189 @@ var locations = {
 
 
 var questdata = {
-	test = {
-		code = 'test',
-		name = 'test',
-		descript = 'test',
+	fighters_task_easy = {
+		code = 'fighters_task_easy',
+		name = 'Helper Hand',
+		descript = 'The fighters guild looking for attendants to replace a few squires who fell ill.',
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['test1', 'test2', 'test3'],
-			amount = [10, 15],
-			max_workers = [1, 4],
-			icon = "res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png",
-			function = ['settlement_recruiting_easy', 'settlement_recruiting_hard']
+			name = ['Helper Hand'],
+			amount = [12, 15],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
+			function = ['fighters_task_easy']
 			}],
 		unlockreqs = [],
-		reputation = [100,150],
+		reputation = [125,150],
 		rewards = [
-		[1, {code = 'gold', range = [125,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [10,30]}],
+		[1, {code = 'gold', range = [145,160]}],
 		],
 		time_limit = [8,12],
 	},
+	fighters_task_medium = {
+		code = 'fighters_task_medium',
+		name = 'Town Patrol',
+		descript = 'The fighters guild looking for a few spare fighters to fill the role of guardsmen.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Town Patrol'],
+			amount = [20, 25],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
+			function = ['fighters_task_medium']
+			}],
+		unlockreqs = [],
+		reputation = [220,270],
+		rewards = [
+		[1, {code = 'gold', range = [300,350]}],
+		],
+		time_limit = [9,12],
+	},
+	fighters_task_hard = {
+		code = 'fighters_task_hard',
+		name = 'Recruit Training',
+		descript = 'The fighters guild looking for experienced trainers to coach new recruits.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Recruit Training'],
+			amount = [35, 50],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
+			function = ['fighters_task_hard']
+			}],
+		unlockreqs = [],
+		reputation = [350, 450],
+		rewards = [
+		[1, {code = 'gold', range = [400,550]}],
+		],
+		time_limit = [9,12],
+	},
+	mages_task_easy = {
+		code = 'mages_task_easy',
+		name = 'Library Assistance',
+		descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Library Assistance'],
+			amount = [12, 15],
+			max_workers = [2, 3],
+			icon = "rres://assets/images/gui/gui icons/icon_wits64.png",
+			function = ['mages_task_easy']
+			}],
+		unlockreqs = [],
+		reputation = [125,150],
+		rewards = [
+		[1, {code = 'gold', range = [145,160]}],
+		],
+		time_limit = [8,12],
+	},
+	mages_task_medium = {
+		code = 'mages_task_medium',
+		name = 'Spell Slinging',
+		descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Spell Slinging'],
+			amount = [20, 25],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
+			function = ['mages_task_medium']
+			}],
+		unlockreqs = [],
+		reputation = [220,270],
+		rewards = [
+		[1, {code = 'gold', range = [300,350]}],
+		],
+		time_limit = [9,12],
+	},
+	mages_task_hard = {
+		code = 'mages_task_hard',
+		name = 'Curse Lifter',
+		descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Curse Lifter'],
+			amount = [35, 50],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
+			function = ['mages_task_hard']
+			}],
+		unlockreqs = [],
+		reputation = [350, 450],
+		rewards = [
+		[1, {code = 'gold', range = [400,550]}],
+		],
+		time_limit = [9,12],
+	},
+	workers_task_easy = {
+		code = 'workers_task_easy',
+		name = 'Blacksmith Assistant',
+		descript = 'The worker guild can use a few extra hands to help with the job at the town.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Blacksmith Assistant'],
+			amount = [11, 13],
+			max_workers = [1, 2],
+			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
+			function = ['mages_task_easy']
+			}],
+		unlockreqs = [],
+		reputation = [125,150],
+		rewards = [
+		[1, {code = 'gold', range = [145,160]}],
+		],
+		time_limit = [8,12],
+	},
+	workers_task_medium = {
+		code = 'workers_task_medium',
+		name = 'Spell Slinging',
+		descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Spell Slinging'],
+			amount = [20, 25],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
+			function = ['mages_task_medium']
+			}],
+		unlockreqs = [],
+		reputation = [220,270],
+		rewards = [
+		[1, {code = 'gold', range = [300,350]}],
+		],
+		time_limit = [9,12],
+	},
+	workers_task_hard = {
+		code = 'workers_task_hard',
+		name = 'Curse Lifter',
+		descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+		randomconditions = [{
+			code = 'special_task', 
+			location = 'aliron',
+			name = ['Recruit Training'],
+			amount = [35, 50],
+			max_workers = [2, 3],
+			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
+			function = ['mages_task_hard']
+			}],
+		unlockreqs = [],
+		reputation = [350, 450],
+		rewards = [
+		[1, {code = 'gold', range = [400,550]}],
+		],
+		time_limit = [9,12],
+	},
+	
+	
+	
 	workers_resources_easy = {
 		code = 'workers_resources_easy',
 		name = 'Resource gathering',

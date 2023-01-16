@@ -106,3 +106,24 @@ func settlement_recruiting_easy():
 
 func settlement_recruiting_hard():
 	return (0.2 + parent.get_ref().get_stat('charm')/10.0)
+
+
+func fighters_task_easy():
+	return (1 + parent.get_ref().get_stat('physics')/33.0)
+
+func fighters_task_medium():
+	return (0.8 + parent.get_ref().get_stat('physics')/50.0)
+
+func fighters_task_hard():
+	return (0.75 + parent.get_ref().get_stat('physics')/66.0)
+
+
+
+func mages_task_easy():
+	return (1 + parent.get_ref().get_stat('wits')/33.0)
+
+func mages_task_medium():
+	return (0.8 + parent.get_ref().get_stat('wits')/50.0)
+
+func mages_task_hard():
+	return (0.75 + parent.get_ref().get_stat('wits')/66.0)

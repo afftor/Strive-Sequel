@@ -344,7 +344,6 @@ func assign_to_task(taskcode, taskproduct):
 
 
 func assign_to_special_task(worktask):
-	print(worktask)
 	remove_from_task()
 	var max_workers_count = worktask.max_workers
 	if max_workers_count >= 0 and max_workers_count <= worktask.workers.size():
