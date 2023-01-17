@@ -22,6 +22,15 @@ var tasklist = {
 		tags = ['sex'],
 		mod = 'mod_pros'
 	},
+	special = { #don't remove - we need fallback for special tasks
+		code = 'special',
+		base_workers = 1,
+		production_icon = load("res://assets/images/gui/service.png"),
+		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
+		icon = "res://assets/images/gui/service.png",
+		progress_per_item = 10,
+		tags = ['hide_progress_ratio', 'special']
+	},
 	fighters_task = {
 		code = 'fighters_task',
 		base_workers = 1,
@@ -29,7 +38,7 @@ var tasklist = {
 		production_descript = tr("JOBPROSTITUTEGOLDDESCRIPT"),
 		icon = "res://assets/images/gui/service.png",
 		progress_per_item = 10,
-		tags = ['hide_progress_ratio']
+		tags = ['hide_progress_ratio', 'special']
 	},
 	recruit_easy = {  #2fix
 		code = 'recruit_easy',

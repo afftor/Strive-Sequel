@@ -101,6 +101,9 @@ func update_status(newbutton, person):
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if !person.is_on_quest():
 			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+	elif person.get_work() == 'special':
+		var task = person.find_worktask()
+		newbutton.get_node("Status").texture = load(task.icon)
 	else:
 		if !gatherable:
 			var work = races.tasklist[person.get_work()]
@@ -311,7 +314,7 @@ func update_resources():
 	else:
 		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 		for i in races.tasklist.values():
-			if i.code in ["rest", "brothel", "special", "recruit_easy", "recruit_hard"]:
+			if i.code in ["rest", "brothel", "recruit_easy", "recruit_hard"] or i.tags.has('special'):
 				continue
 			if globals.checkreqs(i.reqs) == false:
 				continue
@@ -517,7 +520,9 @@ func show_faces():
 		var work = p.get_work()
 		var ok = false
 		if selected_job.has('code') || selected_job.has('production_item'):
-			if selected_job.has("production_item"):
+			if selected_job.code == "special":
+				ok = stored_spec_job.workers.has(p.id)
+			elif selected_job.has("production_item"):
 				if (selected_job.code == work || selected_job.production_item == work) and p.get_location() == selected_location:
 					ok = true
 			else:
