@@ -598,6 +598,8 @@ var data = {
 	
 	pre_ritual_blow_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		unlocked_gallery_seq = "pre_ritual_blow",
+		save_scene_to_gallery = true,
 		reqs = [], character = "mae",
 		text = [{text = "PRE_RITUAL_BLOW_1", reqs = []}],
 		options = [ {

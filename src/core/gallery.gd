@@ -24,14 +24,20 @@ var scenes = {
 	cali_bj_happy = ["cali_sex_5","cali_sex_6","cali_sex_7","cali_sex_8","cali_sex_9","cali_sex_10","cali_sex_11","cali_sex_12","cali_sex_13"],
 	cali_riding = ["cali_serve_start","cali_serve_2_1","cali_serve_2_2","cali_serve_2_3"],
 	halloween_start = ["halloween_start","halloween_1","halloween_2","halloween_3","halloween_4","halloween_5","halloween_6","halloween_7","halloween_8","halloween_9","halloween_10","halloween_11","halloween_12"],
-	christmas = ["christmas_pre_start","christmas_start","christmas_1","christmas_2","christmas_3","christmas_4","christmas_5","christmas_6","christmas_7","christmas_8","christmas_9","christmas_10"]
+	christmas = ["christmas_pre_start","christmas_start","christmas_1","christmas_2","christmas_3","christmas_4","christmas_5","christmas_6","christmas_7","christmas_8","christmas_9","christmas_10"],
+	heleviel_mansion = ["heleviel_mansion_1","heleviel_mansion_2","heleviel_mansion_3","heleviel_mansion_4","heleviel_mansion_5","heleviel_mansion_6","heleviel_mansion_7","heleviel_mansion_8"],
+	lira_mansion = ["lira_mansion_1","lira_mansion_2","lira_mansion_3","lira_mansion_4","lira_mansion_5","lira_mansion_6","lira_mansion_7","lira_mansion_8","lira_mansion_9"],
+	cali_act5_pet = ["cali_act5_pet_1","cali_act5_pet_2","cali_act5_pet_3","cali_act5_pet_4","cali_act5_pet_5","cali_act5_pet_6","cali_act5_pet_7","cali_act5_pet_8","cali_act5_pet_9_1","cali_act5_pet_9_2","cali_act5_pet_10"],
+	cali_act6_naked = ["cali_act6_naked_1","cali_act6_naked_2","cali_act6_naked_3","cali_act6_naked_4","cali_act6_naked_5","cali_act6_naked_6","cali_act6_naked_7"],
+	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"]
 }	
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
 	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start",
 	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
 	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
-	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas"
+	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
+	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow"
 	]
 var story_scenes = ['anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -51,15 +57,18 @@ var ero_scenes = [
  'anastasia_aire1',
  'aire_ana1',
  'force_cali1',
- #'mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10',
+ 'mae_scene1',
  'heleviel1',
-'lilia_sex_1',
+'lilia_sex_1_3',
 'cali_touching_1',
 'cali_bj_happy_1',
 #'amelia_cali_1','amelia_cali_2','amelia_cali_3',
 'cali_riding_1',
 'halloween_scene',
-'christmas_scene'] 
+'christmas_scene',
+'lira_sex_1',
+'cali_bowl_1',
+'cali_bowl_naked_1'] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -80,12 +89,15 @@ var ero_scenes_collection = {
 	"force_cali":['force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6'],
 	"mae_scene":['mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10'],
 	"heleviel":[ 'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4'],
-	"lilia_sex_":['lilia_sex_1','lilia_sex_1_2','lilia_sex_1_3','lilia_sex_1_4','lilia_sex_2_1','lilia_sex_2_2'],
+	"lilia_sex_1_":['lilia_sex_1_3'],
 	"cali_touching_":['cali_touching_1','cali_touching_2','cali_touching_3','cali_touching_4'],
 	"cali_bj_happy_":['cali_bj_happy_1','cali_bj_happy_2','cali_bj_happy_3'],
 	"amelia_cali_":['amelia_cali_1','amelia_cali_2','amelia_cali_3'],
 	"cali_riding_":['cali_riding_1','cali_riding_2','cali_riding_3'],
-	"halloween_scene":["halloween_scene"]
+	"halloween_scene":["halloween_scene"],
+	"lira_sex_":["lira_sex_1","lira_sex_2","lira_sex_3"],
+	"cali_bowl_":["cali_bowl_1","cali_bowl_2"],
+	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"]
 }
 #so these arrays are needed for storing order 
 
