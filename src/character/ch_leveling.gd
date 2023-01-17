@@ -644,6 +644,8 @@ func special_tick(task): #maybe incomplete
 	if task.has('function'):
 		val = call(task.function)
 	task.progress += val
+	if task.has('workstat'):
+		work_tick_values(task.workstat)
 	if task.progress >= task.threshold:
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)

@@ -457,6 +457,9 @@ func update_button(newbutton):
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 	elif person.get_work() == 'learning':
 		newbutton.get_node('progress').value = variables.tutduration - person.get_quest_time_remains()
+	elif person.get_work() == 'special':
+		var task = person.find_worktask()
+		newbutton.get_node("job/Label").text = tr(task.name)
 	else:
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
