@@ -835,6 +835,8 @@ var data = {
 	
 	cali_act5_pet_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
+		unlocked_gallery_seq = "cali_act5_pet",
+		save_scene_to_gallery = true,
 		reqs = [], 
 		text = [{text = "CALI_ACT5_PET_1", reqs = [], }], 
 		options = [ {
@@ -982,6 +984,8 @@ var data = {
 	
 	cali_act6_naked_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
+		unlocked_gallery_seq = "cali_act6_naked",
+		save_scene_to_gallery = true,
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_1", reqs = [], }], 
 		options = [ {

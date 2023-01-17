@@ -2,6 +2,8 @@ var data = {
 	
 	lira_mansion_1 = {
 		image = null,
+		unlocked_gallery_seq = "lira_mansion",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [

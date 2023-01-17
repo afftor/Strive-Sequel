@@ -109,6 +109,8 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		custom_background = "lilia_sex_1_3",
+		save_scene_to_gallery = true,
+		scene_type = "ero_scene",
 		text = [{text = "LILIA_SEX_SCENE_1_1", reqs = []}],
 		common_effects = [],
 		options = [ {
