@@ -3,7 +3,8 @@ extends Node
 #so in a sample seq _8 and _4 are the most important
 var scenes = {
 	anastasia_execution = ["anastasia_execution_start","anastasia_execution_1","anastasia_execution_2","anastasia_execution_3","anastasia_execution_4","anastasia_execution_5","anastasia_execution_6","anastasia_execution_7","anastasia_execution_8"],
-	lich_aire_talk = ["lich_aire_talk1","lich_aire_talk5","lich_aire_talk2","lich_aire_talk3","lich_aire_talk6_1","lich_aire_talk4_1","lich_aire_talk4_2","lich_aire_talk4_3","lich_aire_talk4_4"],
+	lich_aire_talk = ["lich_aire_talk1","lich_aire_talk2","lich_aire_talk5","lich_aire_talk6_1","lich_aire_talk6_2","lich_aire_talk6_3","lich_aire_talk6_4","lich_aire_talk6_5","lich_aire_talk6_6","lich_aire_talk7"],
+	lich_aire_talkk = ["lich_aire_talk1","lich_aire_talk2","lich_aire_talk3",{scene = "lich_aire_talk4",variant = 0},"lich_aire_talk4_1","lich_aire_talk4_2","lich_aire_talk4_3","lich_aire_talk4_4"],
 	xari_encounter = ["xari_encounter1","xari_encounter2","xari_encounter3","xari_encounter4","xari_encounter5","xari_encounter6",{scene = "xari_encounter7", variant = 3},"xari_encounter8"],
 	daisy_admirer = ["daisy_admirer_message","daisy_admirer_message_1_3",{scene = "daisy_admirer_first_event_1",variant = 0},"daisy_admirer_first_event_2","daisy_admirer_first_event_3","daisy_admirer_first_event_4","daisy_admirer_first_event_5"],
 	daisy_dress_acquired_normal = ["daisy_dress_acquired_normal_1","daisy_dress_acquired_normal_2",{scene = "daisy_dress_acquired_normal_3",variant = 0},"daisy_dress_acquired_normal_4_1","daisy_dress_acquired_normal_4_2","daisy_dress_acquired_normal_4_3","daisy_dress_acquired_normal_4_4","daisy_dress_acquired_normal_4_5"],
@@ -33,7 +34,7 @@ var scenes = {
 }	
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
-	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","halloween_start",
+	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","lich_aire_talkk","halloween_start",
 	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
 	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
@@ -56,6 +57,7 @@ var ero_scenes = [
  'amelia_bondage1',
  'anastasia_aire1',
  'aire_ana1',
+ 'aire_ana4',
  'force_cali1',
  'mae_scene1',
  'heleviel1',
@@ -85,7 +87,7 @@ var ero_scenes_collection = {
 	"amelia_titjob":['amelia_titjob1', 'amelia_titjob2', 'amelia_titjob3'],
 	"amelia_bondage":['amelia_bondage1', 'amelia_bondage2', 'amelia_bondage3'],
 	"anastasia_aire":['anastasia_aire1', 'anastasia_aire2', 'anastasia_aire3'],
-	"aire_ana":['aire_ana1', 'aire_ana2', 'aire_ana3', 'aire_ana4', 'aire_ana5', 'aire_ana6'],
+	"aire_ana":['aire_ana1', 'aire_ana2', 'aire_ana3','aire_ana4', 'aire_ana5', 'aire_ana6'],
 	"force_cali":['force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6'],
 	"mae_scene":['mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10'],
 	"heleviel":[ 'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4'],

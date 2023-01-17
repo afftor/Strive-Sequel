@@ -12,7 +12,7 @@ export var test_mode:bool
 func test_mode():
 	gui_controller.current_screen = self
 	globals.common_effects([
-		{code = "unlock_asset", dir = "gallery_seq", key = "test_scene"},
+		{code = "unlock_asset", dir = "gallery_seq", key = "lich_aire_talkk"},
 		{code = "unlock_asset", dir = "ero_scenes", key = "anastasia_sex_1"},
 		])
 

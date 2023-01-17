@@ -316,9 +316,6 @@ var data = {
 
 	lich_aire_talk1 = {
 		image = null,
-		scene_type = "unlocked_gallery_seq",
-		unlocked_gallery_seq = "lich_aire_talk",
-		save_scene_to_gallery = true,
 		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
@@ -350,6 +347,8 @@ var data = {
 
 	lich_aire_talk3 = {
 		image = null,
+		unlocked_gallery_seq = "lich_aire_talkk",
+		save_scene_to_gallery = true,
 		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
@@ -457,6 +456,8 @@ var data = {
 
 	lich_aire_talk5 = {
 		image = null,
+		unlocked_gallery_seq = "lich_aire_talk",
+		save_scene_to_gallery = true,
 		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
