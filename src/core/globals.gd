@@ -1940,13 +1940,14 @@ func common_effects(effects):
 					template.max_workers = template3.base_workers
 				if i.has('max_workers'):
 					template.max_workers = i.max_workers
-				#function
-				if template2.has('function'):
-					template.function = template2.function
-				if template3.has('function'):
-					template.function = template3.function
-				if i.has('function'):
-					template.function = i.function
+				#function workstat
+				for st in ['function', 'workstat']:
+					if template2.has(st):
+						template[st] = template2[st]
+					if template3.has(st):
+						template[st] = template3[st]
+					if i.has(st):
+						template[st] = i[st]
 				ResourceScripts.game_party.active_tasks.push_back(template)
 			'add_hireling_to_location':
 				roll_hirelings(i.location)

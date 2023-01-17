@@ -306,6 +306,7 @@ var data = {
 	force_cali_1 = {
 		custom_background = "force_cali1", 
 		scene_type = "ero_scene",
+		unlocked_gallery_seq = "force_cali",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "FORCE_CALI_1", reqs = [], }],

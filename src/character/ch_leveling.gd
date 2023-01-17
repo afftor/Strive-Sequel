@@ -344,7 +344,6 @@ func assign_to_task(taskcode, taskproduct):
 
 
 func assign_to_special_task(worktask):
-	print(worktask)
 	remove_from_task()
 	var max_workers_count = worktask.max_workers
 	if max_workers_count >= 0 and max_workers_count <= worktask.workers.size():
@@ -645,6 +644,8 @@ func special_tick(task): #maybe incomplete
 	if task.has('function'):
 		val = call(task.function)
 	task.progress += val
+	if task.has('workstat'):
+		work_tick_values(task.workstat)
 	if task.progress >= task.threshold:
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)

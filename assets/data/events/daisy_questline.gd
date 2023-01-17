@@ -171,6 +171,9 @@ var data = {
 
 	daisy_dress_acquired_normal_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "daisy_dress_acquired_normal",
+		save_scene_to_gallery = true,
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
@@ -632,6 +635,7 @@ var data = {
 		reqs = [],
 		custom_background = "daisy_training4",
 		scene_type = "ero_scene",
+		unlocked_gallery_seq = "daisy_training",
 		save_scene_to_gallery = true,
 		text = [{text = "DAISY_TRAINING_INTERMISSION_5", reqs = []}],
 		options = [ {
@@ -794,6 +798,9 @@ var data = {
 
 	training_complete_fucktoy_1 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "daisy_public",
+		save_scene_to_gallery = true,
 		reqs = [], character = "daisy_maid",
 		text = [{text = "TRAINING_COMPLETE_FUCKTOY_REPLY_0", reqs = []}],
 		common_effects = [
@@ -1033,6 +1040,9 @@ var data = {
 
 	daisy_admirer_message = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "daisy_admirer",
+		save_scene_to_gallery = true,
 		reqs = [], character = "daisy_maid",
 		text = [{text = "DAISY_ADMIRER_MESSAGE", reqs = []}],
 		options = [ {
@@ -1370,6 +1380,9 @@ var data = {
 	
 	daisy_consensual_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "daisy_consensual",
+		save_scene_to_gallery = true,
 		reqs = [], unique_character = "daisy",
 		text = [{text = "DAISY_CONSENSUAL_1", reqs = []}],
 		options = [ {

@@ -2,6 +2,8 @@ var data = {
 	
 	heleviel_mansion_1 = {
 		image = null, reqs = [],
+		unlocked_gallery_seq = "heleviel_mansion",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "HELEVIEL_MANSION_1", reqs = []},

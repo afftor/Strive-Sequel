@@ -352,6 +352,9 @@ var data = {
 	#Close guild window before so that Aliron is on the screen
 	anastasia_execution_start = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "anastasia_execution",
+		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_1", reqs = []}],
 		options = [ {
 			code = 'anastasia_execution_1', text = "ANASTASIA_EXECUTION_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -372,7 +375,6 @@ var data = {
 	
 	anastasia_execution_2 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
-		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_5", reqs = []}], custom_background = "anastasia_execution1", 
 		options = [ {
 			code = 'anastasia_execution_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

@@ -157,6 +157,9 @@ var data = {
 	# Xari Encounter
 	xari_encounter1 = {
 		image = null,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "xari_encounter",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		character = 'xari',
 		text = [

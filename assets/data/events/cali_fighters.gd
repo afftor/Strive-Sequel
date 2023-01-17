@@ -208,6 +208,7 @@ var data = {
 	
 	cali_sex_1_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		unlocked_gallery_seq = "cali_touching",
 		text = [ {text = "CALI_SEX_1_1", reqs = []} ],
 		dialogue_type = 2,
 		scene_type = "ero_scene",

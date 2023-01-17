@@ -180,6 +180,9 @@ var data = {
 	
 	cali_sex_5 = {
 		image = null,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "cali_bj_happy",
+		save_scene_to_gallery = true,
 		character = "cali",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [

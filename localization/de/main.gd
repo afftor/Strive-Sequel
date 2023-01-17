@@ -3828,7 +3828,9 @@ Kurdan leaves following the demon's path.""",
 {color=aqua|Demon:— Hmph, whatever, I don't need your powers to do it.}
 """,
 
-	PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN = "",
+	PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN = """Kurdan bows to you after your win.
+	
+— You've fought as valiantly as you acted. I respect this and I want to atone my initial mistake to come here.""",
 
 	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
 

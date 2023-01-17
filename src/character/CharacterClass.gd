@@ -439,6 +439,9 @@ func set_brothel_rule(rule, value):
 func check_brothel_rule(rule):
 	return xp_module.check_brothel_rule(rule)
 
+func find_worktask():
+	return xp_module.find_worktask(get_location())
+
 
 func get_quest_time_init():
 	return xp_module.get_quest_time_init()

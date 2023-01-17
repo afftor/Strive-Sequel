@@ -273,6 +273,9 @@ var data = {
 	
 	ana_gryphon_sex_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character2 = 'aire', character = 'anastasia',
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "aire_anal",
+		save_scene_to_gallery = true,
 		text = [
 			{text = "GRYPHON_ANA_SEX_1", reqs = []},
 		], 
