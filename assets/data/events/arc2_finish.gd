@@ -13,11 +13,12 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = 'LEON_ENCOUNTER_1', reqs = []}],
-		common_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
-		{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}], 
+#		common_effects = [], 
 		options = [ {
 			code = 'leon_encounter_start_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_quest_location', value = 'quest_leon_forest_2'},]
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
+			{code = 'remove_active_location'}, 
+			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
 		},  ]
 	},
 	
@@ -240,8 +241,8 @@ var data = {
 		text = [{text = 'WHITE_STAG_ENCOUNTER_13', reqs = []}], 
 		options = [ { # TODO add teleport to tribe_location
 			code = 'white_stag_encounter_14', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_active_location'}, 
-			{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
+			{code = 'remove_active_location'}, 
 			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
 			
 		} ]
