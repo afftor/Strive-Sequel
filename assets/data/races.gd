@@ -55,7 +55,7 @@ var tasklist = {
 		tags = ['recruiting'],
 		workstat = 'charm',
 		function = 'settlement_recruiting_easy',
-		mod = ''
+		mod = '' #keep those
 	},
 	recruit_hard = {  #2fix
 		code = 'recruit_hard',
@@ -72,7 +72,7 @@ var tasklist = {
 		tags = ['recruiting'],
 		workstat = 'charm',
 		function = 'settlement_recruiting_hard',
-		mod = ''
+		mod = '' #keep those
 	},
 	building = {
 		code = 'building',

@@ -285,7 +285,7 @@ func update_resources():
 						newbutton.pressed = true
 			
 			newbutton.connect("pressed", self, "select_resource", [jobdata, "special", newbutton])
-			globals.connecttexttooltip(newbutton, tr(task.desc))
+			globals.connecttexttooltip(newbutton, tr(task.name))
 			
 	
 	person = get_parent().active_person
@@ -460,7 +460,10 @@ func select_resource(job, resource, newbutton):
 	if job.code == "rest":
 		$DescriptionLabel.bbcode_text = tr("TASKRESTDESCRIPT")
 	elif job.has("descript"):
-		if job.has('worktool') || job.has('tool_type'):
+		var text = job.descript
+		if job.code == 'special':
+			text = stored_spec_job.desc
+		elif job.has('worktool') || job.has('tool_type'):
 			$Worktool.show()
 			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
 		if !job.tags.has('hide_progress_ratio'):
@@ -468,7 +471,7 @@ func select_resource(job, resource, newbutton):
 			$WorkunitLabel.show()
 			$WorkunitLabel.text = "%.1f" % job.progress_per_item
 			globals.connecttexttooltip($Workunit, "Progress required per item")
-		var text = job.descript
+		
 		if job.has('workstat'):
 			$Workstat.texture = stat_icons[job.workstat]
 			$Workstat.show()
@@ -476,7 +479,7 @@ func select_resource(job, resource, newbutton):
 				globals.connecttexttooltip($Workstat, "Job Stat: " + tr("STAT"+job.workstat.to_upper()) + "\nThis stat will grow by attending to this job.")
 			else:
 				globals.connecttexttooltip($Workstat, "Growing stat will depend on what task will be performed by character when servicing customers.")
-		if job.has('mod'):
+		if job.has('mod') and job.mod != "":
 			$Modlabel.show()
 			$Workmod.show()
 			$Modlabel.text = tr("STAT" + job.mod.to_upper())

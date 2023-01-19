@@ -752,6 +752,7 @@ var questdata = {
 			amount = [12, 15],
 			max_workers = [2, 3],
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
+			desc = "FIGHTERSTASKEASYDESK",
 			function = ['fighters_task_easy']
 			}],
 		unlockreqs = [],
