@@ -652,7 +652,7 @@ func special_tick(task): #maybe incomplete
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)
 		ResourceScripts.game_party.active_tasks.erase(task)
-		globals.text_log_add('work', tr("SPECTASKCOMPLETED"))
+		globals.text_log_add('work', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
 		input_handler.PlaySound("ding")
 
 
