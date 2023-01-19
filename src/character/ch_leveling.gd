@@ -637,6 +637,8 @@ func recruit_tick(task): #maybe incomplete
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
 		globals.roll_hirelings(task.task_location)
+		globals.text_log_add('work', tr("HIRELINGFOUND"))
+		input_handler.PlaySound("ding")
 
 
 func special_tick(task): #maybe incomplete
@@ -650,6 +652,8 @@ func special_tick(task): #maybe incomplete
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)
 		ResourceScripts.game_party.active_tasks.erase(task)
+		globals.text_log_add('work', tr("SPECTASKCOMPLETED"))
+		input_handler.PlaySound("ding")
 
 
 func work_tick():
