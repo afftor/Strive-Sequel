@@ -127,3 +127,21 @@ func mages_task_medium():
 
 func mages_task_hard():
 	return (0.75 + parent.get_ref().get_stat('wits')/66.0)
+
+func workers_task_easy():
+	return (1 + parent.get_ref().get_stat('physics')/33.0)
+
+func workers_task_medium():
+	return (0.8 + parent.get_ref().get_stat('wits')/50.0)
+
+func workers_task_hard():
+	return (0.75 + parent.get_ref().get_stat('physics')/66.0)
+
+func servants_task_easy():
+	return (1 + parent.get_ref().get_stat('charm')/33.0)
+
+func servants_task_medium():
+	return (0.8 + parent.get_ref().get_stat('charm')/50.0)
+
+func servants_task_hard():
+	return (0.75 + parent.get_ref().get_stat('charm')/66.0)

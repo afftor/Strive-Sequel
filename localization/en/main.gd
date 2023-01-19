@@ -785,6 +785,8 @@ var TranslationDict = {
 	TASKRECRUIT_EASYDESCRIPT = "Search for recruits at current location. After its finished you'll be able to talk them into joing you if succesful.",
 	TASKRECRUIT_HARD = "Search for recruits",
 	TASKRECRUIT_HARDDESCRIPT = "Search for recruits at current location. After its finished you'll be able to talk them into joing you if succesful.",
+	TASKMISSION = "Mission",
+	TASKRONMISSIONCOMPLETE = "When this task is finished receive your reward from Journal.",
 	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/particles/1_2.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.204778, 0.764505, 0.993174 )
+colors = PoolColorArray( 1, 0, 0.495117, 0.133333, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0.495117, 0.2 )
+
+[node name="Debaf" type="CPUParticles2D"]
+position = Vector2( 224, 253 )
+amount = 15
+speed_scale = 0.7
+explosiveness = 0.3
+randomness = 1.0
+lifetime_randomness = 0.3
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 60.09
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 300 )
+initial_velocity_random = 1.0
+tangential_accel = 100.0
+scale_amount = 0.2
+scale_amount_random = 0.5
+color_ramp = SubResource( 12 )
+__meta__ = {
+"_editor_description_": ""
+}

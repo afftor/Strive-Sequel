@@ -433,7 +433,7 @@ var data = {
 	},
 	
 	excalibur_quest_1 = {
-		image = 'excalibur', tags = ['dialogue_scene'], reqs = [], 
+		image = 'stone_sword', tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "EXCALIBUR_QUEST_1", reqs = []} ], 
 		options = [ { # good
 			code = 'excalibur_quest_good', text = "EXCALIBUR_QUEST_1_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 175}]}], dialogue_argument = 1, type = 'next_dialogue',
@@ -445,7 +445,7 @@ var data = {
 	},
 	
 	excalibur_quest_good = {
-		image = 'excalibur_extract', tags = ['dialogue_scene'], reqs = [], 
+		image = 'stone_sword2', tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "EXCALIBUR_QUEST_GOOD", reqs = []}], 
 		common_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'holy_sword', number = 1}],
 		options = [ {
@@ -455,7 +455,7 @@ var data = {
 	},
 	
 	excalibur_quest_bad = {
-		image = 'excalibur', tags = ['dialogue_scene'], reqs = [], 
+		image = 'stone_sword', tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "EXCALIBUR_QUEST_BAD", reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

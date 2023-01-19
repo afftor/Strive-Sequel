@@ -2309,7 +2309,7 @@ func see_quest_info(quest):
 				globals.connecttexttooltip(newbutton, tooltiptext)
 				text += "\nWork duration: " + time + ' days.'
 			'special_task':
-				var t_text = "Complete corresponding special task"
+				var t_text = "Complete one time task"
 				if i.has('name'):
 					t_text += ": " + tr(i.name)
 				if i.has('icon'):

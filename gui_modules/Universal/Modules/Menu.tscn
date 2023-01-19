@@ -546,7 +546,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.6.6d
+bbcode_text = "0.6.7
+Added new repeatable quest type
+Adjusted initial resources for settlements
+Corrected scene gallery unlocks
+Fixed multiple quests and image errors
+0.6.6d
 Most scenes and events have been added to gallery
 Added text to Mae's blowjob scene and illustrations to ritual
 Added setting option to disable background animation (for those users who have it flickering)
@@ -1297,7 +1302,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.6d
+text = "0.6.7
+Added new repeatable quest type
+Adjusted initial resources for settlements
+Corrected scene gallery unlocks
+Fixed multiple quests and image errors
+0.6.6d
 Most scenes and events have been added to gallery
 Added text to Mae's blowjob scene and illustrations to ritual
 Added setting option to disable background animation (for those users who have it flickering)

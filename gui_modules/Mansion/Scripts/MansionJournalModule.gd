@@ -213,7 +213,7 @@ func show_quest_info(quest):
 					$CompleteButton.hide()
 					if quest.id in ResourceScripts.game_progress.work_quests_finished:
 						$CompleteButton.show()
-					var t_text = "\nComplete corresponding special task"
+					var t_text = "\nComplete one time task"
 					if i.has('name'):
 						t_text += ": " + tr(i.name)
 					if i.has('icon'):

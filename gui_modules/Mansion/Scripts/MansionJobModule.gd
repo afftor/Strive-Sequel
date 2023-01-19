@@ -462,7 +462,7 @@ func select_resource(job, resource, newbutton):
 	elif job.has("descript"):
 		var text = job.descript
 		if job.code == 'special':
-			text = stored_spec_job.desc
+			text = stored_spec_job.descript + "\n" + tr("TASKRONMISSIONCOMPLETE")
 		elif job.has('worktool') || job.has('tool_type'):
 			$Worktool.show()
 			globals.connecttexttooltip($Worktool, "Effective Tool: Will increase work speed when equipped")
