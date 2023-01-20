@@ -292,6 +292,11 @@ func Sort(a,b):
 		return false
 	var Aname = a.get_node("Label").text
 	var Bname = b.get_node("Label").text
+	if savedata.has(Aname) and savedata.has(Bname):
+		pass
+	else:
+		return false
+	
 	var x = OS.get_unix_time_from_datetime(savedata[Aname]["time"])
 	var y = OS.get_unix_time_from_datetime(savedata[Bname]["time"])
 	
