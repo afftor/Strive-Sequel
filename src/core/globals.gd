@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.6d'
+const gameversion = '0.6.7'
 
 #time
 signal hour_tick
@@ -1926,7 +1926,7 @@ func common_effects(effects):
 				elif template2.has('args'):
 					template.args = template2.args.duplicate(true)
 				#desc name icon
-				for st in ['desc', 'name', 'icon']:
+				for st in ['descript', 'name', 'icon']:
 					template[st] = ""
 					if template2.has(st):
 						template[st] = template2[st]

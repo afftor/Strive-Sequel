@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/excalibur.png-c51afc8b2e340a9a25fd8b967f97720c.stex"
+path="res://.import/2.png-e26852ca2350c676a1861935d1cd2be0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/excalibur.png"
-dest_files=[ "res://.import/excalibur.png-c51afc8b2e340a9a25fd8b967f97720c.stex" ]
+source_file="res://assets/images/particles/2.png"
+dest_files=[ "res://.import/2.png-e26852ca2350c676a1861935d1cd2be0.stex" ]
 
 [params]
 

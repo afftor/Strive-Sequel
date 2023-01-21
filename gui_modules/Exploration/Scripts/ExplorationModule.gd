@@ -2170,7 +2170,7 @@ func change_texture(button, state):
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
 
 
-func see_quest_info(quest):
+func see_quest_info(quest): 
 	for i in $QuestBoard/ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
 			continue
@@ -2308,6 +2308,14 @@ func see_quest_info(quest):
 					tooltiptext += stats_text
 				globals.connecttexttooltip(newbutton, tooltiptext)
 				text += "\nWork duration: " + time + ' days.'
+			'special_task':
+				var t_text = "Complete one time task"
+				if i.has('name'):
+					t_text += ": " + tr(i.name)
+				if i.has('icon'):
+					newbutton.get_node("Icon").texture = load(i.icon)
+				text += t_text
+				globals.connecttexttooltip(newbutton, t_text)
 
 
 	for i in quest.rewards:

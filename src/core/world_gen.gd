@@ -452,7 +452,7 @@ func make_quest(questcode):
 		elif tempdata.code == 'special_task':
 			var task_reward = [{code = 'finish_worktask', value = data.id}]
 			var task_dict = {code = 'add_special_task_for_location', location = tempdata.location, args = task_reward}
-			for key in ['template', 'desc', 'name', 'icon', 'function']:
+			for key in ['template', 'descript', 'name', 'icon', 'function']:
 				if tempdata.has(key):
 					if tempdata[key] is Array:
 						tempdata[key] = input_handler.random_from_array(tempdata[key])

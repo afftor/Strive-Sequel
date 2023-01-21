@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/excalibur_extract.png-7fdb311cbb073951bfef566a4d5f714c.stex"
+path="res://.import/stone_sword2.png-72ba25e28467c49f9f7cfd2e7b876831.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/excalibur_extract.png"
-dest_files=[ "res://.import/excalibur_extract.png-7fdb311cbb073951bfef566a4d5f714c.stex" ]
+source_file="res://assets/images/scenes/stone_sword2.png"
+dest_files=[ "res://.import/stone_sword2.png-72ba25e28467c49f9f7cfd2e7b876831.stex" ]
 
 [params]
 
