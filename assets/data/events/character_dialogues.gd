@@ -443,7 +443,7 @@ var data = {
 			{
 				text = "DIALOGUEAIREINITIATELP", 
 				reqs = [
-					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
+					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
 					{type = 'active_character_checks', value = [
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
 						]
@@ -452,7 +452,7 @@ var data = {
 			{
 				text = "DIALOGUEAIREINITIATEHP", 
 				reqs = [
-					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
+					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
 					{type = 'active_character_checks', value = [
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
 						]
@@ -461,7 +461,7 @@ var data = {
 			{
 				text = "DIALOGUEAIREINITIATELN", 
 				reqs = [
-					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
+					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
 					{type = 'active_character_checks', value = [
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
 						]
@@ -470,7 +470,7 @@ var data = {
 			{
 				text = "DIALOGUEAIREINITIATEHN", 
 				reqs = [
-					{code = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
+					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
 					{type = 'active_character_checks', value = [
 						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
 						]
