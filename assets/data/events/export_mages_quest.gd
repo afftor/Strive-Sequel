@@ -269,7 +269,7 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = ['dialogue_scene'],
-			text = [{text = "XARIENCOUNTER7_1",}],
+			text = [{text = "XARIENCOUNTER7_1", reqs = []}],
 			reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'TribalElf', 'DarkElf']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
 				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
@@ -278,7 +278,8 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = ['dialogue_scene'],
-			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			text = [{text = "XARIENCOUNTER7_2", reqs = []}], 
+			reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
 				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
 			]
@@ -286,7 +287,8 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = [],
-			text = "XARIENCOUNTER7_3", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}],
+			text = [{text = "XARIENCOUNTER7_3", reqs = []}], 
+			reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}],
 			options = [
 				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}, {code = "update_location"}]},
 			]
@@ -295,6 +297,7 @@ var data = {
 			character = 'xari',
 			tags = ['dialogue_scene'],
 			text = [{ text = "XARIENCOUNTER7_4", reqs = [] }],
+			reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'lt', value = 4}]}],
 			options = [
 				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = "update_location"}]},
 			]
