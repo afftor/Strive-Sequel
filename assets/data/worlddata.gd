@@ -19,31 +19,7 @@ var lands = {
 		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
-		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 3}], args = {"oneshot": true}},
-
-			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
-
-			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
-			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
-
-			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
-			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}, {type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}], args = {"oneshot": false}},
-			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
-			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
-
-			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
-			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
-			{code = 'gryphon_hunter_start', text = "Meet Hunter Veteran", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}], args = {"oneshot": false}},
-			{code = 'zephyra_recruitment_1', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
-			{code = 'cali_william_init', text = "Search for collectioner", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
-			{code = 'cali_william_1', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
-			{code = 'cali_william_3', text = "William's mansion", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act4_merchant_1', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage12', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act4_merchant_5', text = "Merchant Stalls", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage13', state = true}], args = {"oneshot": false}},
-			{code = 'cali_act5_pet_1', text = "Pet Shop", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage15', state = true}], args = {"oneshot": false}},
-			{code = 'lilia_search_start', text = "Check the streets", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}], args = {"oneshot": true}},
-			],
+		events = [],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
@@ -94,18 +70,7 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		starting_locations = ['dungeon_grove'],
 		guilds = ['elvish_slave_trader'],
-		events = [{code = 'looking_for_princess_elven_1', text = "Meet Priestess", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}, {type = 'decision', value = 'PrincessDead', check = false}, {type = 'decision', value = 'PrincessObtained', check = false}], args = {"oneshot": false}},
-			{code = 'amelia_herbs_elf_start_1', text = "Look For Smuggler", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, {type = 'quest_completed', name = 'getting_lira_quest', check = false}], args = {"oneshot": false}},
-			{code = 'amelia_herbs_elf_quest1', text = "Look For Smuggler", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, {type = 'quest_completed', name = 'getting_lira_quest', check = true}, {type = 'decision', value = 'LiraPriestess', check = true}], args = {"oneshot": false}},
-			{code = 'amelia_herbs_elf_quest2_1', text = "Look For Smuggler", reqs = [{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, {type = 'quest_completed', name = 'getting_lira_quest', check = true}, {type = 'decision', value = 'HelevielPriestess', check = true}], args = {"oneshot": false}},
-			{code = 'priestess_sword_talk_1', text = "Meet High Priestess", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage2', state = true}], args = {"oneshot": false}},
-			{code = 'priestess_talk_start', text = "Visit Erlen", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage16', check = true}, {code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRIESTESS_TALK_START'}], args = {"oneshot": false}},
-			{code = 'after_temple_priestess_1', text = "Meet High Priestess", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_TALK_START'}, {type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true}], args = {"oneshot": false}},
-			{code = 'after_temple_priestess_3', text = "Meet High Priestess", reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage2', state = true}], args = {"oneshot": false}},
-			{code = 'lira_encounter_1', text = "Search For Lira", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, {code = 'value_check', type = 'dialogue_seen', check = false, value = 'LIRA_ENCOUNTER_1'}], args = {"oneshot": false}},
-			{code = 'lira_encounter_4', text = "Find Lira", reqs = [{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LIRA_ENCOUNTER_1'}, {type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, {type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true}], args = {"oneshot": false}},
-			{code = 'erlen_leon_1', text = "Initiate", reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
-		],
+		events = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -196,21 +161,7 @@ var lands = {
 		locationpool = [],
 		starting_locations = [],
 		guilds = ['beastkin_slave_trader'],
-		events = [
-			{code = 'chieftain_meeting_1', text = "Find Chieftain", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], args = {"oneshot": false}},
-			{code = 'mae_meeting_1', text = "Visit Shaman's Lodge", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], args = {"oneshot": false}},
-			{code = 'savra_supplies_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage5', state = true}], args = {"oneshot": false}},
-			{code = 'savra_ritual_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage6', state = true}, {type = 'decision', value = 'canStartRitualPrep', check = true}], args = {"oneshot": false}},
-			{code = 'ritual_start', text = "Begin The Ritual", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage77', state = true}, {type = 'decision', value = 'canStartRitual', check = true}], args = {"oneshot": false}},
-			{code = 'leon_visit_start', text = "Visit Leon", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage8', state = true}, {type = 'decision', value = 'canVisitLeon', check = true}], args = {"oneshot": false}},
-			{code = 'leon_visit_1_2', text = "Visit Leon", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], args = {"oneshot": false}},
-			{code = 'ask_around', text = "Ask Around", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], args = {"oneshot": false}},
-			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage11', state = true}], args = {"oneshot": false}}, 
-			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], args = {"oneshot": false}}, 
-			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage13', state = true}], args = {"oneshot": false}}, 
-			{code = 'savra_talk_start', text = "Visit Savra", reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], args = {"oneshot": false}}, 
-			{code = 'excalibur_quest_1', text = "Check Surroundings", reqs = [{type = 'decision', value = 'got_excalibur', check = false}], args = {"oneshot": false}}, 
-		],
+		events = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -2718,6 +2669,300 @@ var random_dungeon_events = {
 }
 
 var fixed_location_options = { #override serialized data
+	aliron = [
+		{
+			text = "Check the streets", 
+			reqs = [
+				{code = 'value_check', type = 'event_seen', check = false, value = 'daisy_meet'},
+				{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, 
+				{type = "date", operant = 'gte', value = 3}
+			], 
+			args = [{code = 'start_event', data = 'daisy_meet', args = []}]
+		},
+		{
+			text = "Search for Reim", 
+			reqs = [
+				{code = 'value_check', type = 'event_seen', check = false, value = 'reim_encounter'},
+				{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}
+			], 
+			args = [{code = 'start_event', data = 'reim_encounter', args = []}]
+		},
+		{
+			text = "Visit Fred's Dormitory", 
+			reqs = [
+				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_intro'},
+				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}
+			], 
+			args = [{code = 'start_event', data = 'fred_intro', args = []}]
+		},
+		{
+			text = "Visit Fred's Dormitory", 
+			reqs = [
+				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_bribe_take'},
+				{type = 'decision', value = 'fred_bribe_taken', check = true}
+			], 
+			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
+		},
+		{
+			text = "Aliron Church", 
+			reqs = [
+				{type = 'decision', value = 'ginny_visit', check = true}, 
+				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
+				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
+			], 
+			args = [{code = 'start_event', data = 'aliron_church_firstcome', args = []}]
+		},
+		{
+			text = "Aliron Church", 
+			reqs = [
+				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
+				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
+			], 
+			args = [{code = 'start_event', data = 'aliron_church_enter', args = []}]
+		},
+		{
+			text = "Lead the convoy", 
+			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], 
+			args = [{code = 'start_event', data = 'after_mines_convoy_1', args = []}]
+		},
+		{
+			text = "Visit Jail", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+				{type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},
+				{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}
+			], 
+			args = [{code = 'start_event', data = 'princess_search_dungeon_1', args = []}]
+		},
+		{
+			text = "Meet princess in jail", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
+				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = false},
+				{type = 'decision', value = 'persuade_1_completed', check = false}
+			],
+			args = [{code = 'start_event', data = 'princess_persuation_init', args = []}]
+		},
+		{
+			text = "Meet princess in jail", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
+				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}
+			], 
+			args = [{code = 'start_event', data = 'princess_persuation_2_init', args = []}]
+		},
+		{
+			text = "Meet Hunter Veteran", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'},
+				{type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}
+			], 
+			args = [{code = 'start_event', data = 'gryphon_hunter_start', args = []}]
+		},
+		{
+			text = "Aliron Church", 
+			reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true}], 
+			args = [{code = 'start_event', data = 'zephyra_recruitment_1', args = []}]
+		},
+		{
+			text = "Search for collectioner", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], 
+			args = [{code = 'start_event', data = 'cali_william_init', args = []}]
+		},
+		{
+			text = "William's mansion", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], 
+			args = [{code = 'start_event', data = 'cali_william_1', args = []}]
+		},
+		{
+			text = "William's mansion", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], 
+			args = [{code = 'start_event', data = 'cali_william_3', args = []}]
+		},
+		{
+			text = "Merchant Stalls", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage12', state = true}], 
+			args = [{code = 'start_event', data = 'cali_act4_merchant_1', args = []}]
+		},
+		{
+			text = "Merchant Stalls", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage13', state = true}], 
+			args = [{code = 'start_event', data = 'cali_act4_merchant_5', args = []}]
+		},
+		{
+			text = "Pet Shop", 
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage15', state = true}], 
+			args = [{code = 'start_event', data = 'cali_act5_pet_1', args = []}]
+		},
+		{
+			text = "Check the streets", 
+			reqs = [
+				{code = 'value_check', type = 'event_seen', check = false, value = 'lilia_search_start'},
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}
+			], 
+			args = [{code = 'start_event', data = 'lilia_search_start', args = []}]
+		},
+	],
+	elf_capital = [
+		{
+			text = "Meet Priestess", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'},
+				{type = 'decision', value = 'PrincessDead', check = false}, 
+				{type = 'decision', value = 'PrincessObtained', check = false}
+			], 
+			args = [{code = 'start_event', data = 'looking_for_princess_elven_1', args = []}]
+		},
+		{
+			text = "Look For Smuggler", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
+				{type = 'quest_completed', name = 'getting_lira_quest', check = false}
+			],
+			args = [{code = 'start_event', data = 'amelia_herbs_elf_start_1', args = []}]
+		},
+		{
+			text = "Look For Smuggler", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
+				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, 
+				{type = 'decision', value = 'LiraPriestess', check = true}
+			], 
+			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest1', args = []}]
+		},
+		{
+			text = "Look For Smuggler", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
+				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, {type = 'decision', value = 'HelevielPriestess', check = true}
+			], 
+			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest2_1', args = []}]
+		},
+		{
+			text = "Meet High Priestess", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage2', state = true}], 
+			args = [{code = 'start_event', data = 'priestess_sword_talk_1', args = []}]
+		},
+		{
+			 text = "Visit Erlen", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage16', check = true}, 
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRIESTESS_TALK_START'}
+			], 
+			args = [{code = 'start_event', data = 'priestess_talk_start', args = []}]
+		},
+		{
+			text = "Meet High Priestess", 
+			reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_TALK_START'}, 
+				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true}
+			], 
+			args = [{code = 'start_event', data = 'after_temple_priestess_1', args = []}]
+		},
+		{
+			text = "Meet High Priestess", 
+			reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage2', state = true}], 
+			args = [{code = 'start_event', data = 'after_temple_priestess_3', args = []}]
+		},
+		{
+			text = "Search For Lira", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LIRA_ENCOUNTER_1'}
+			], 
+			args = [{code = 'start_event', data = 'lira_encounter_1', args = []}]
+		},
+		{
+			text = "Find Lira", 
+			reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LIRA_ENCOUNTER_1'},
+				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
+				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true}
+			], 
+			args = [{code = 'start_event', data = 'lira_encounter_4', args = []}]
+		},
+		{
+			text = "Initiate", 
+			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage5', state = true}], 
+			args = [{code = 'start_event', data = 'erlen_leon_1', args = []}]
+		},
+	],
+	beastkin_capital = [
+		{
+			text = "Find Chieftain", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], 
+			args = [{code = 'start_event', data = 'chieftain_meeting_1', args = []}]
+		},
+		{
+			text = "Visit Shaman's Lodge", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], 
+			args = [{code = 'start_event', data = 'mae_meeting_1', args = []}]
+		},
+		{
+			text = "Visit Savra", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage5', state = true}], 
+			args = [{code = 'start_event', data = 'savra_supplies_start', args = []}]
+		},
+		{
+			text = "Visit Savra", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage6', state = true}, 
+				{type = 'decision', value = 'canStartRitualPrep', check = true}
+			], 
+			args = [{code = 'start_event', data = 'savra_ritual_start', args = []}]
+		},
+		{
+			text = "Begin The Ritual", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage77', state = true}, 
+				{type = 'decision', value = 'canStartRitual', check = true}
+			], 
+			args = [{code = 'start_event', data = 'ritual_start', args = []}]
+		},
+		{
+			text = "Visit Leon", 
+			reqs = [
+				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage8', state = true}, 
+				{type = 'decision', value = 'canVisitLeon', check = true}
+			], 
+			args = [{code = 'start_event', data = 'leon_visit_start', args = []}]
+		},
+		{
+			text = "Visit Leon", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
+			args = [{code = 'start_event', data = 'leon_visit_1_2', args = []}]
+		},
+		{
+			text = "Ask Around", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
+			args = [{code = 'start_event', data = 'ask_around', args = []}]
+		},
+		{
+			text = "Visit Savra", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage11', state = true}], 
+			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
+		}, 
+		{
+			text = "Visit Savra", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], 
+			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
+		}, 
+		{
+			text = "Visit Savra", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage13', state = true}], 
+			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
+		}, 
+		{
+			text = "Visit Savra", 
+			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], 
+			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
+		}, 
+		{
+			text = "Check Surroundings", 
+			reqs = [{type = 'decision', value = 'got_excalibur', check = false}], 
+			args = [{code = 'start_event', data = 'excalibur_quest_1', args = []}]
+		},
+	],
 	settlement_plains1 = [ 
 		{
 			text = 'Combat', 
