@@ -247,28 +247,43 @@ func build_area_menu(area_actions):
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
 	if has_exotic_slaver:
 		newbutton.get_parent().move_child(newbutton, newbutton.get_position_in_parent()-1)
-
-	for i in input_handler.active_area.events:
-		if globals.checkreqs(i.reqs) == false:
-			continue
-		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = i.text
-		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
-		newbutton.get_node("Label").set("custom_fonts/font", font)
-		if i.args.keys().has("oneshot") && !i.args.oneshot:
-			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, '', i.args])
-		else:
-			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
+	if worlddata.fixed_location_options.has(selected_location):
+		for i in worlddata.fixed_location_options[selected_location]:
+			if globals.checkreqs(i.reqs) == false:
+				continue
+			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
+			newbutton.get_node("Label").text = i.text
+			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+			newbutton.get_node("Label").set("custom_fonts/font", font)
+			newbutton.connect("pressed", globals, 'common_effects', [i.args])
 			newbutton.connect("pressed", self, "open_city", [selected_location])
-		# newbutton.modulate = Color(0.5, 0.8, 0.5)
-		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
-		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
-		newbutton.toggle_mode = false
+			# newbutton.modulate = Color(0.5, 0.8, 0.5)
+			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
+			newbutton.toggle_mode = false
+	elif input_handler.active_area.has("events"):
+		for i in input_handler.active_area.events:
+			if globals.checkreqs(i.reqs) == false:
+				continue
+			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
+			newbutton.get_node("Label").text = i.text
+			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+			newbutton.get_node("Label").set("custom_fonts/font", font)
+			if i.args.keys().has("oneshot") && !i.args.oneshot:
+				newbutton.connect("pressed", input_handler, "interactive_message", [i.code, '', i.args])
+			else:
+				newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
+				newbutton.connect("pressed", self, "open_city", [selected_location])
+			# newbutton.modulate = Color(0.5, 0.8, 0.5)
+			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
+			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
+			newbutton.toggle_mode = false
 
-		# newbutton.get_node("Label").rect_position.x = 0
-		# newbutton.get_node("Label").rect_size.x = 272
-		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
+			# newbutton.get_node("Label").rect_position.x = 0
+			# newbutton.get_node("Label").rect_size.x = 272
+			# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
 
 
 
