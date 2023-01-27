@@ -253,6 +253,28 @@ func heal(node, args = null):
 	
 	return nextanimationtime + aftereffectdelay
 
+func buff(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.5
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0)
+	buffs_update_delays[node] = 0.5
+	ResourceScripts.core_animations.gfx_particles(node, 'buff', 1, 1)
+	tween.start()
+	
+	return nextanimationtime + aftereffectdelay
+
+func debuff(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.5
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0)
+	buffs_update_delays[node] = 0.5
+	ResourceScripts.core_animations.gfx_particles(node, 'debuff', 1, 1)
+	tween.start()
+	
+	return nextanimationtime + aftereffectdelay
+
 func miss(node, args = null):#conflicting usage of tween node!!
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.1

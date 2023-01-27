@@ -27,7 +27,8 @@ var data = {
 		text = [{text = "AMELIA_SILK_REPLY_1_2", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'}]
+			bonus_effects = [{code = 'complete_quest', value = 'amelia_silk_quest'},
+			{code = 'money_change', operant = '+', value = 2000}]
 		} ],
 	},
 	

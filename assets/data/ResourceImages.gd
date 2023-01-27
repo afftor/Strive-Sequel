@@ -621,7 +621,10 @@ var GFX_sprites = {
 	}
 
 var GFX_particles = {
-	heal = "res://assets/sfx/HealEffect.tscn",
+#	heal = "res://assets/sfx/HealEffect.tscn",
+	heal = "res://assets/sfx/heal.tscn",
+	buff = "res://assets/sfx/buff.tscn",
+	debuff = "res://assets/sfx/debuff.tscn",
 }
 
 func loadimages():

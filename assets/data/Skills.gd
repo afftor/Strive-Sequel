@@ -600,7 +600,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -627,7 +627,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -654,7 +654,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -681,7 +681,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -708,7 +708,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat']
@@ -735,7 +735,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'neutral',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk', '*0.4']],
 		damagestat = ['no_stat']
@@ -763,7 +763,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -787,7 +787,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -841,7 +841,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'debuff', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 	},
@@ -867,7 +868,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 	},
@@ -893,7 +894,7 @@ var Skilllist = {
 		target_number = 'single',#'line'
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 	},
@@ -919,7 +920,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -946,7 +947,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -973,7 +974,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 	},
@@ -999,7 +1000,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
 	},
@@ -1022,7 +1023,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1046,7 +1047,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1070,7 +1071,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1094,7 +1095,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1118,7 +1119,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1142,7 +1143,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1190,7 +1191,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1219,7 +1220,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1246,7 +1247,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1273,7 +1274,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -1379,7 +1380,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		value = ['0'],
 		damagestat = 'no_stat',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	dragonmight = {#increases damage and armor by 25% until end of battle. Once in 2 days
@@ -1403,7 +1404,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		value = ['0'],
 		damagestat = 'no_stat',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	lesser_heal = {
@@ -1727,7 +1728,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -1979,7 +1980,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -2005,7 +2006,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -2826,7 +2827,7 @@ var Skilllist = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		value = ['caster.atk'],
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	shred = {
@@ -2898,7 +2899,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0,
 	},
@@ -2922,7 +2923,7 @@ var Skilllist = {
 		number_rnd_targets = 3,
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1,
 	},
@@ -2971,7 +2972,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 	},
@@ -3122,7 +3123,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -3147,7 +3148,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [], 
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
