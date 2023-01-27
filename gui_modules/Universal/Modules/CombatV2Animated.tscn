@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -67,7 +67,6 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_hover.png" type="Texture" id=65]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_unactive.png" type="Texture" id=66]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero.png" type="Texture" id=67]
-[ext_resource path="res://assets/sfx/buff.tscn" type="PackedScene" id=68]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -1467,6 +1466,3 @@ text = "Wood"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="buff" parent="." instance=ExtResource( 68 )]
-position = Vector2( 433.234, 282.343 )

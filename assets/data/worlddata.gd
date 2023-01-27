@@ -752,7 +752,7 @@ var questdata = {
 			max_workers = [2, 3],
 			workstat = 'wits',
 			descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
-			icon = "rres://assets/images/gui/gui icons/icon_wits64.png",
+			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_easy']
 			}],
 		unlockreqs = [],
@@ -841,7 +841,7 @@ var questdata = {
 			workstat = 'wits',
 			descript = 'The worker guild looks for tailors who can help with the recent order.',
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
-			function = ['workers_ttask_medium']
+			function = ['workers_task_medium']
 			}],
 		unlockreqs = [],
 		reputation = [220,270],

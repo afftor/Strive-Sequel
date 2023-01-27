@@ -1753,7 +1753,7 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
-		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
+		value = [['caster.hp','*0.1'],['caster.hp','*0.3']],
 		damagestat = ['-hp', '+mp']
 	},
 	blood_explosion = {

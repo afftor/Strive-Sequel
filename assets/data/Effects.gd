@@ -675,7 +675,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "Productivity increased",
+				description = "Hard Work: +50% Productivity",
 				limit = 1,
 				t_name = 'hardwork',
 				mansion_only = true,
@@ -720,7 +720,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_love.png",
-				description = "Favorite Food: Obedience Drain -1, Loyalty Gain +0.5.", 
+				description = "Favorite Food: -1 Obedience Drain, +0.5 Loyalty Gain.", 
 				limit = 1,
 				t_name = 'food_like',
 				mansion_only = true,
@@ -741,7 +741,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_hate.png",
-				description = "Hated Food: Productivity reduced by 10%%.",
+				description = "Hated Food: -10% Productivity.",
 				limit = 1,
 				t_name = 'food_hate',
 				mansion_only = true,
@@ -787,7 +787,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png",
-				description = "Starvation\nProductivity reduced by 50%%\nDamage reduced by 50%%",
+				description = "Starvation: -50% Productivity, -50% Damage.",
 				limit = 1,
 				t_name = 'starvation',
 #				mansion_only = true,
@@ -845,7 +845,7 @@ var effect_table = {
 		buffs = [
 			{#to fix
 				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",
-				description = "Grave Injury\nProductivity reduced by 25%%. Sexuals Bonus -50. Can't participate in Combat. ",
+				description = "Grave Injury: -25% Productivity, -50 Sexuals. Can't participate in Combat.",
 				limit = 1,
 				t_name = 'grave_injury',
 #				mansion_only = true,
@@ -874,7 +874,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline2.png",
-				description = "Labor efficiency increased by 50%%",
+				description = "Discipline: +50% Labor and craft efficiencies.",
 				limit = 1,
 				t_name = 'discipline',
 				mansion_only = true,
@@ -897,7 +897,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Seduce: Escape chance decreased", #2fix
+				description = "Seduce: -7 Obedience drain", #2fix
 				limit = 1,
 				t_name = 'seduce',
 				mansion_only = true,
@@ -918,7 +918,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Greater Seduce: Escape chance decreased; Lust Growth increased by 50%%", #2fix
+				description = "Great Seduce: Prevents escapes; -9 Obedience drain, +50% Lust growth.", #2fix
 				limit = 1,
 				t_name = 'seduce',
 				mansion_only = true,
@@ -941,7 +941,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "Allured: Obedience drain reduced by 20%%",#2fix
+				description = "Allure: -5 Obedience drain, +1 Loyalty gain.",#2fix
 				limit = 1,
 				t_name = 'allure',
 				mansion_only = true,
@@ -963,7 +963,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "Allured: Obedience drain reduced by 20%%",#2fix
+				description = "Sedated: -10 Obedience drain",#2fix
 				limit = 1,
 				t_name = 'sedate',
 				mansion_only = true,
@@ -986,7 +986,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "Allured: Obedience drain reduced by 20%%",#2fix
+				description = "Fear: -6 Obedience drain, -1 Loyalty gain.",#2fix
 				limit = 1,
 				t_name = 'fear',
 				mansion_only = true,
@@ -1089,7 +1089,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Praise.png",
-				description = "Inspired - damage and defence increased",
+				description = "Inspired: +20% damage, DEF and MDEF.",
 				limit = 1,
 				t_name = 'inspire'
 			}
@@ -1112,7 +1112,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Trainer.png",
-				description = "Damage increased",
+				description = "Commanded: +50% ATK and MATK.",
 				limit = 1,
 				t_name = 'command'
 			}
@@ -1133,7 +1133,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "Serving: Obedience drain reduced by 25%%",#2fix
+				description = "Serving: +1 Loyalty gain.",#2fix
 				limit = 1,
 				t_name = 'serve',
 				mansion_only = true,
@@ -1206,7 +1206,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/WeaponRefine.png",
-				description = "ATK increased",
+				description = "Weapon refined: +30% ATK.",
 				limit = 1,
 				t_name = 'refine'
 			}
@@ -1228,7 +1228,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/miscarriagepot.png",
-				description = "Armor reduced",
+				description = "Acid: -25 DEF.",
 				limit = 1,
 				t_name = 'acid_bomb'
 			}
@@ -1291,7 +1291,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Whore.png",
-				description = "Damage reduced",
+				description = "Attracted: -30% Damage",
 				limit = 1,
 				t_name = 'attract'
 			}
@@ -1377,7 +1377,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
-				description = "Armor increased",
+				description = "Protection: +25 DEF.",
 				limit = 1,
 				t_name = 'protect_c'
 			}
@@ -1449,7 +1449,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Dragon_Knight.png",
-				description = "Damage and armor increased",
+				description = "Dragon's Might: +25% Damage and DEF.",
 				limit = 1,
 				t_name = 'dragonmight'
 			}
@@ -1534,7 +1534,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png",
-				description = "Speed reduced",
+				description = "Blizzard: -20 Speed.",
 				limit = 1,
 				t_name = 'blizzard'
 			}
@@ -1556,7 +1556,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png",
-				description = "ATK Increased",
+				description = "Blessed: +25% ATK.",
 				limit = 1,
 				t_name = 'bless'
 			}
@@ -1583,7 +1583,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png",
-				description = "MATK Increased",
+				description = "Mentally Blessed: +25% MATK.",
 				limit = 1,
 				t_name = 'mental_bless'
 			}
@@ -1621,7 +1621,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Fear.png",
-				description = "Evasion increased",
+				description = "Flying: +65 Evasion.",
 				limit = 1,
 				t_name = 'fly'
 			}
@@ -1653,7 +1653,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Debilitate.png",
-				description = "Evasion reduced",
+				description = "Shattered: -25 Evasion.",
 				limit = 1,
 				t_name = 'eshatter'
 			}
@@ -1689,7 +1689,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png",
-				description = "Hit chance reduced",
+				description = "Fire Burst: -20 Hit Rate.",
 				limit = 1,
 				t_name = 'fireburst'
 			}
@@ -1710,7 +1710,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Acid-spit.png",
-				description = "DEF reduced",
+				description = "Swipe: -20 DEF.",
 				limit = 1,
 				t_name = 'swipe'
 			}
@@ -1731,7 +1731,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arrowshower.png",
-				description = "MDEF reduced",
+				description = "Arraow Rain: -20 MDEF.",
 				limit = 1,
 				t_name = 'arrowrain'
 			}
@@ -1753,7 +1753,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Sedate.png",
-				description = "Damage reduced",
+				description = "-20 ATK and MATK.",
 				limit = 1,
 				t_name = 'sstrike'
 			}
@@ -1782,7 +1782,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png",
-				description = "Resists increased",
+				description = "Endure: +20 All resists.",
 				limit = 1,
 				t_name = 'endure',
 				combat_only = true,
@@ -1834,7 +1834,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Bard - faster",
+				description = "Hymn: +20 Hit Rate, Evasion and Speed.",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -1858,7 +1858,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Bard - stronger",
+				description = "Warmarch: +20% ATK and MATK.",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -1882,7 +1882,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Bard - resilent",
+				description = "Soothe: +15 DEF and MDEF, dispel 1 negative effect every turn",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -2058,7 +2058,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Resistes decreased",
+				description = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances.",
 				limit = 1,
 				t_name = 'elweak',
 				combat_only = true,
@@ -2084,7 +2084,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Resistes increased",
+				description = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances.",
 				limit = 1,
 				t_name = 'elweak',
 				combat_only = true,
@@ -2105,7 +2105,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Fear.png",
-				description = "Evasion increased",
+				description = "Camouflage: +20 Evasion.",
 				limit = 1,
 				t_name = 'camo'
 			}
@@ -2125,7 +2125,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Receives more damage",
+				description = "Hunter's Mark: Receives 15% more damage",
 				limit = 1,
 				t_name = 'huntersmark',
 				combat_only = true,
@@ -2284,7 +2284,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "spirit - hare",
+				description = "Spirit - Hare: +30 Speed, +25 Evasion.",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2306,7 +2306,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "spirit - eagle",
+				description = "Spirit - Eagle: +20% Skill damage, +30 Hit Rate.",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2325,7 +2325,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "spirit - turtle",
+				description = "Spirit - Turtle: -25% Skill Damage taken, -15% Spell Damage taken",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2434,7 +2434,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/light_spell_aoe.png",
-				description = "Magic defence decreased",
+				description = "Divine Radiance: -20 MDEF.",
 				limit = 1,
 				t_name = 'holydebuff'
 			}
@@ -3074,7 +3074,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/takeposition.png",
-			description = "+50 Armor Penetration; +20%% Damage Dealt.",
+			description = "Position Taken: +50 Armor Penetration; +20%% Damage.",
 			args = [],
 			limit = 1,
 			t_name = 'takeposition',
@@ -3095,7 +3095,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/windwall.png",
-			description = "Reduces randged damage by 50%%",
+			description = "Wind Wall: -50% Randged Damage.",
 			args = [],
 			limit = 1,
 			t_name = 'windwall',
@@ -3346,7 +3346,7 @@ var effect_table = {
 			{code = 'stat', stat = 'sex_factor', operant = 'lt', value = 5}
 		],
 		tags = ['recheck_trait', 'recheck_item'],
-		descript = 'Reduce Physics and Wits by 25 if character has less than 5 Sex Factor and no Deviant trait.',
+		descript = 'Reduces Physics and Wits by 25 if character has less than 5 Sex Factor and no Deviant trait.',
 		atomic = [
 			{type = 'stat_add', stat = 'wits_bonus', value = -25},
 			{type = 'stat_add', stat = 'physics_bonus', value = -25}
@@ -3389,7 +3389,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
-				description = "Atk and Matk increased by 15%%",
+				description = "ATK and MATK are increased by 15%%",
 				limit = 1,
 				t_name = "Master's Morale",
 			}
@@ -3410,7 +3410,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "Productivity increased by 20%%",
+				description = "+20% Productivity.",
 				limit = 1,
 				t_name = "Master's Morale",
 			}
@@ -3431,7 +3431,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Productivity increased by 10%%",
+				description = "Satisfacted: +10% Productivity.",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,
@@ -3453,7 +3453,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Productivity increased by 20%%",
+				description = "Satisfacted: +20% Productivity.",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,
@@ -3476,7 +3476,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
-				description = "Atk and Matk increased by 25%%",
+				description = "Lust Drained: +25% ATK and MATK.",
 				limit = 1,
 				t_name = "Lust Drain",
 			}
@@ -3549,7 +3549,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/icon_protective_shell.png",
-			description = "Celena's Blessing: Reduce incoming damage by 30%%",
+			description = "Celena's Blessing: +30% All resistances.",
 			args = [],
 			limit = 1,
 			t_name = 'celena_bless',
@@ -3569,7 +3569,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "Freya's Blessing: +30 Armor Penetration, +25 Hitrate",
+			description = "Freya's Blessing: +30 Armor Penetration, +25 Hit Rate",
 			args = [],
 			limit = 1,
 			t_name = 'freya_bless',
@@ -3588,7 +3588,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/BloodMagic.png",
-			description = "Celena's Curse: Max health is reduced by 50%%.",
+			description = "Celena's Curse: -50% Max. Health.",
 			args = [],
 			limit = 1,
 			t_name = 'celena_curse',
@@ -3666,7 +3666,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/preg_icon1.png",
-			description = "Is pregnant. Speed -10, Physics Bonus -20",
+			description = "Is pregnant: -10 Speed, -20 Physics",
 			args = [],
 			limit = 1,
 			t_name = 'preg',
@@ -3684,7 +3684,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/preg_icon2.png",
-			description = "Is heavily pregnant. Speed -20, Physics Bonus -40",
+			description = "Is heavily pregnant: -20 Speed, -40 Physics",
 			args = [],
 			limit = 1,
 			t_name = 'preg',
@@ -3809,37 +3809,37 @@ var buffs = {
 	},
 	b_stun = {
 		icon = "res://assets/images/traits/experience.png", #?? mb to fix
-		description = "Stunned",
+		description = "Stunned: Cannot act",
 		limit = 1,
 		t_name = 'stun'
 	},
 	b_charm_c = {
 		icon = "res://assets/images/iconsskills/Charm.png", #?? mb to fix
-		description = "Charmed",
+		description = "Charmed: Cannot act",
 		limit = 1,
 		t_name = 'charm'
 	},
 	b_trap = {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Trapped",
+		description = "Trapped: Cannot act",
 		limit = 1,
 		t_name = 'trap'
 	},
 	b_mirror = {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Mirror image - chance to evade damage from skills",
+		description = "Mirror Image: Chance to evade damage from skills",
 		limit = 1,
 		t_name = 'mirror'
 	},
 	b_field= {
 		icon = "res://assets/images/iconsskills/Barrier.png",
-		description = "Energy field - chance to deal Air Spell damage to attacker",
+		description = "Energy Field: Chance to deal Air Spell damage to attacker",
 		limit = 1,
 		t_name = 'field'
 	},
 	b_shell= {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Protective shell",
+		description = "Protective Shell: Incoming damage reduced by 35%",
 		limit = 1,
 		t_name = 'shell'
 	},
@@ -3851,7 +3851,7 @@ var buffs = {
 	},
 	b_distract = {
 		icon = "res://assets/images/iconsskills/distract.png",
-		description = "Hitrate and Evasion reduced",
+		description = "Distracted: -30 Hit Rate and Evasion",
 		limit = 1,
 		t_name = 'distract'
 	},
@@ -3862,7 +3862,7 @@ var buffs = {
 	},
 	b_freeze = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
-		description = "Frozen",
+		description = "Frozen: Cannot act, receives 100% more Air damage",
 		t_name = 'freeze'
 	},
 	b_disarm = {
@@ -3887,7 +3887,7 @@ var buffs = {
 	},
 	b_regen = {
 		icon = "res://assets/images/iconsskills/lesserheal.png",
-		description = "Regeneration",
+		description = "Health regeneration",
 		t_name = 'regen'
 	},
 	b_burn = {
@@ -3936,12 +3936,12 @@ var buffs = {
 	},
 	tr_curseatk = {
 		icon = "res://assets/images/iconsskills/icon_turtle.png",
-		description = "Attacking this target cause atk decreased",
+		description = "Attacking this target causes ATK decreased",
 		t_name = 'curseatk_src',
 	},
 	b_magicward = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Attack and mdef increased",
+		description = "Attack and MFED increased",
 		t_name = 'magicward',
 		combat_only = true
 	},
@@ -3973,7 +3973,7 @@ var buffs = {
 	},
 	b_resto= {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Incoming damage reduced",
+		description = "Resting: physical resist increased by 20%",
 		limit = 1,
 		t_name = 'resto'
 	},
