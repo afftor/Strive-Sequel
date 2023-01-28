@@ -10455,6 +10455,69 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	GREETING_LINE_POSITIVE1 = "[Master] would like to spend time {^together:with me}...?",
 	GREETING_LINE_POSITIVE2 = "It's my pleasure to accompany you, [Master].",
 	GREETING_LINE_POSITIVE3 = "Let's have some fun together, [Master]!",
+	
+	GREETING_LINE_CAUTIOUS1 = "Yes, [Master], what do you want me for?",
+	GREETING_LINE_CAUTIOUS2 = "I still have a work today, can we get over it quickly?",
+	GREETING_LINE_CAUTIOUS3 = "What do you want of me? *grumble*",
+	GREETING_LINE_CAUTIOUS4 = "Y-yes, [Master]. What can I do for you?",
+	
+	PUNISH_LINE_LIGHT1 = "Ouch! It hurts!",
+	PUNISH_LINE_LIGHT2 = "What was that for!?",
+	PUNISH_LINE_LIGHT3 = "Ugh!... You...",
+	PUNISH_LINE_LIGHT4 = "No! Stop...",
+	
+	PUNISH_LINE_HEAVY1 = "Ouch! Please stop!",
+	
+	PUBLIC_LINE1 = "N-no way, please don't do this in front of everyone...",
+	PUBLIC_LINE2 = "Wha... Why you brought everyone here!?",
+	PUBLIC_LINE3 = "This... is going to be humiliating.",
+	PUBLIC_LINE4 = "Are you trying to scare me like this? See if I care.",
+	PUBLIC_LINE5 = "P-please, [Master], I don't like being watched.",
+	PUBLIC_LINE6 = "W-why everyone is here? I don't...",
+	PUBLIC_LINE7 = "N-no... No! please...",
+	
+	PUBLIC_OBSERVE_LINE1 = "[Master] is going to punish you, [2name]...?",
+	PUBLIC_OBSERVE_LINE2 = "Hmph, serves you right.",
+	PUBLIC_OBSERVE_LINE3 = "Looks like [2name] is being punished. At least I get a break from work.",
+	PUBLIC_OBSERVE_LINE4 = "Please accept this with dignity.",
+	PUBLIC_OBSERVE_LINE5 = "......",
+	PUBLIC_OBSERVE_LINE6 = "If [he] dies, I call dibs on [his] stuff.", 
+	PUBLIC_OBSERVE_LINE7 = "Looks like you will be getting a good lesson, [2name]. ",
+	
+	MARRY_PROPOSE_AGREE1 = "A-are you serious?.. I can't believe it, of course i will, [Master]!",
+	MARRY_PROPOSE_AGREE2 = "Wa... You are not kidding, right? I agree!",
+	MARRY_PROPOSE_AGREE3 = "Y-Yes, of course I agree!",
+	
+	MARRY_PROPOSAL_AGREED_BEFORE1 = "Didn't I already gave my agreement..?", 
+	MARRY_PROPOSAL_AGREED_BEFORE2 = "Y-yes, we have discussed it and I agreed...",
+	
+	MARRY_PROPOSE_REFUSE1 = "T-that's... really sudden... I'm sorry, I can't agree to this.",
+	MARRY_PROPOSE_REFUSE2 = "Y-You what? No way. Don't joke like that, [Master]",
+	MARRY_PROPOSE_REFUSE3 = "I'm sorry, I can't agree to this!",
+	
+	DATE_PROPOSE_AGREE1 = "I-I would like to get closer with you, [Master]. ",
+	DATE_PROPOSE_AGREE2 = "Well, your charm worked this time on me. ",
+	DATE_PROPOSE_AGREE3 = "Okay, why not be naughty?",
+	DATE_PROPOSE_AGREE4 = "This is to help our bodily needs, correct?",
+	DATE_PROPOSE_AGREE5 = "W-well, if you don't mind someone like me...",
+	DATE_PROPOSE_AGREE6 = "It's a pleasure you feel the same way.",
+	
+	DATE_PROPOSE_REFUSE1 = "Sorry, I don't feel about you in same way.",
+	DATE_PROPOSE_REFUSE2 = "P-please, maybe some other time...",
+	DATE_PROPOSE_REFUSE3 = "I'd rather not.",
+	DATE_PROPOSE_REFUSE4 = "Uh, no. This is awkward.",
+	DATE_PROPOSE_REFUSE5 = "I'm sure there's someone better than me.",
+	
+	DATE_PROPOSE_HAD_SEX1 = "Don't be silly, didn't we do it already?",
+	DATE_PROPOSE_HAD_SEX2 = "Sure, if you want me to confirm it officially...",
+	DATE_PROPOSE_HAD_SEX3 = "...But didn't we already do that?",
+	
+	
+	
+	
+	
+	
+	
 }
 
 
