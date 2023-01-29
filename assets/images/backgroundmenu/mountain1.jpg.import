@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/town2_1.jpg-7f1d049c2952dd149af5592dcc9128fe.stex"
+path="res://.import/mountain1.jpg-be0371626769e63fd7730cd4cf011f9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backdrop/town2_1.jpg"
-dest_files=[ "res://.import/town2_1.jpg-7f1d049c2952dd149af5592dcc9128fe.stex" ]
+source_file="res://assets/images/backgroundmenu/mountain1.jpg"
+dest_files=[ "res://.import/mountain1.jpg-be0371626769e63fd7730cd4cf011f9e.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

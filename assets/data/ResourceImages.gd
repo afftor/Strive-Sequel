@@ -10,6 +10,11 @@ var backgrounds = {
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
 	beastkin_capital = load("res://assets/images/backgrounds/beastkin_capital.png"),
 	
+	forest1_menu = load("res://assets/images/backgroundmenu/forest1.jpg"),
+	mountain1_menu = load("res://assets/images/backgroundmenu/mountain1.jpg"),
+	mountain2_menu = load("res://assets/images/backgroundmenu/mountain2.jpg"),
+	town1_menu = load("res://assets/images/backgroundmenu/town1.jpg"),
+	town2_menu = load("res://assets/images/backgroundmenu/town2.jpg"),
 
 	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
 	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
@@ -621,7 +626,10 @@ var GFX_sprites = {
 	}
 
 var GFX_particles = {
-	heal = "res://assets/sfx/HealEffect.tscn",
+#	heal = "res://assets/sfx/HealEffect.tscn",
+	heal = "res://assets/sfx/heal.tscn",
+	buff = "res://assets/sfx/buff.tscn",
+	debuff = "res://assets/sfx/debuff.tscn",
 }
 
 func loadimages():

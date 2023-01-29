@@ -60,6 +60,41 @@ func _ready():
 		newbutton.text = i.name
 		newbutton.name = i.code
 		newbutton.connect('pressed', self, 'start_preset_set', [newbutton])
+	
+	cycle_backgrounds()
+
+func cycle_backgrounds():
+	var arr = [images.backgrounds["forest1_menu"],
+		images.backgrounds["mountain1_menu"],
+		images.backgrounds["mountain2_menu"],
+		images.backgrounds["town1_menu"],
+		images.backgrounds["town2_menu"],
+	]
+	randomize()
+	arr.shuffle()
+	var tw = Tween.new()
+	add_child(tw)
+	var last_bg
+	var first_cycle = true
+	var scrolling_speed = 14.0
+	$background.texture = arr[0]
+	while true:
+		for bg in arr.size():
+			if first_cycle:
+				first_cycle = false
+				continue
+			print_debug($background.rect_position)
+			if $background.rect_position.x > -50:
+				tw.interpolate_property($background, "rect_position", $background.rect_position, Vector2(-200, 0), scrolling_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			else:
+				tw.interpolate_property($background, "rect_position", $background.rect_position, Vector2(0, 0), scrolling_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tw.start()
+			yield(tw, "tween_all_completed")
+			ResourceScripts.core_animations.SmoothTextureChange($background, arr[bg], 0.5)
+			last_bg = arr[bg]
+		arr.shuffle()
+		while arr[0] == last_bg: # this ensures that after shuffle we don't get the same background right away
+			arr.shuffle()
 
 func check_last_save():
 	lastsave = globals.get_last_save();
