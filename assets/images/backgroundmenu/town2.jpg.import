@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/forest2_1.jpg-a8d80f541dbb420a7e1746a98b39d8eb.stex"
+path="res://.import/town2.jpg-ee5375159a77a6e93735b1a143ca5ae2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backdrop/forest2_1.jpg"
-dest_files=[ "res://.import/forest2_1.jpg-a8d80f541dbb420a7e1746a98b39d8eb.stex" ]
+source_file="res://assets/images/backgroundmenu/town2.jpg"
+dest_files=[ "res://.import/town2.jpg-ee5375159a77a6e93735b1a143ca5ae2.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

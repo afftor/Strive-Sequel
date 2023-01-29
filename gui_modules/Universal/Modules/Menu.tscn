@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -26,23 +26,28 @@
 [ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=24]
 [ext_resource path="res://gui_modules/Universal/Scripts/Menu.gd" type="Script" id=25]
 [ext_resource path="res://assets/fonts/CursiveFont.tres" type="DynamicFont" id=26]
-[ext_resource path="res://assets/images/backdrop/mount1_1.jpg" type="Texture" id=27]
-[ext_resource path="res://assets/images/backdrop/Mount3.jpg" type="Texture" id=28]
+[ext_resource path="res://assets/images/backgroundmenu/mountain1.jpg" type="Texture" id=27]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_itch2.png" type="Texture" id=30]
-[ext_resource path="res://assets/images/backdrop/forest2_1.jpg" type="Texture" id=35]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord2.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord.png" type="Texture" id=46]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_patreon.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=56]
-[ext_resource path="res://assets/images/backdrop/town2_1.jpg" type="Texture" id=57]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_patreon2.png" type="Texture" id=58]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_fandom2.png" type="Texture" id=59]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_itch.png" type="Texture" id=60]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_fandom.png" type="Texture" id=61]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="StyleBoxTexture" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+[sub_resource type="DynamicFont" id=5]
 size = 64
 outline_size = 3
 outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
@@ -50,15 +55,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 29 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="StyleBoxTexture" id=7]
-
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=6]
 size = 128
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -67,40 +64,43 @@ use_filter = true
 extra_spacing_bottom = -10
 font_data = ExtResource( 24 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
 [node name="Menu" type="Control"]
 script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -3.0
-margin_top = 1.0
-margin_right = 2157.0
-margin_bottom = 1081.0
-texture = ExtResource( 57 )
+[node name="background" type="TextureRect" parent="."]
+margin_right = 2160.0
+margin_bottom = 1080.0
+texture = ExtResource( 27 )
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = -3.0
 margin_top = 1.0
 margin_right = 2157.0
 margin_bottom = 1081.0
-texture = ExtResource( 35 )
 stretch_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="."]
@@ -108,7 +108,6 @@ margin_left = -3.0
 margin_top = 1.0
 margin_right = 2157.0
 margin_bottom = 1081.0
-texture = ExtResource( 27 )
 stretch_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="."]
@@ -116,7 +115,6 @@ margin_left = -3.0
 margin_top = 1.0
 margin_right = 2157.0
 margin_bottom = 1081.0
-texture = ExtResource( 28 )
 stretch_mode = 1
 
 [node name="char_sprite" type="TextureRect" parent="."]
@@ -140,13 +138,13 @@ margin_right = 319.0
 margin_bottom = 90.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Continue"
 
@@ -156,13 +154,13 @@ margin_right = 345.0
 margin_bottom = 188.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "New game"
 __meta__ = {
@@ -176,13 +174,13 @@ margin_right = 252.0
 margin_bottom = 286.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Load"
 __meta__ = {
@@ -196,12 +194,13 @@ margin_right = 296.0
 margin_bottom = 384.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Options"
 __meta__ = {
@@ -215,13 +214,13 @@ margin_right = 287.0
 margin_bottom = 482.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Credits"
 __meta__ = {
@@ -235,13 +234,13 @@ margin_right = 262.0
 margin_bottom = 580.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Mods"
 __meta__ = {
@@ -255,13 +254,13 @@ margin_right = 295.0
 margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Galerry"
 __meta__ = {
@@ -275,13 +274,13 @@ margin_right = 241.0
 margin_bottom = 776.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 text = "Quit"
 __meta__ = {
@@ -302,6 +301,7 @@ margin_top = 73.0
 margin_right = 76.0
 margin_bottom = 692.0
 rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 10
 
 [node name="Patreon" type="TextureButton" parent="Panel/VBoxContainer"]
 margin_right = 192.0
@@ -314,9 +314,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Discord" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 154.0
+margin_top = 160.0
 margin_right = 192.0
-margin_bottom = 304.0
+margin_bottom = 310.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 46 )
 texture_hover = ExtResource( 41 )
@@ -325,9 +325,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Itch" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 308.0
+margin_top = 320.0
 margin_right = 192.0
-margin_bottom = 458.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 60 )
 texture_hover = ExtResource( 30 )
@@ -336,9 +336,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Wiki" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 462.0
+margin_top = 480.0
 margin_right = 192.0
-margin_bottom = 612.0
+margin_bottom = 630.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 61 )
 texture_hover = ExtResource( 59 )
@@ -351,8 +351,8 @@ margin_left = 563.0
 margin_top = 59.0
 margin_right = 1413.0
 margin_bottom = 210.0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.980392, 0.960784, 0.772549, 1 )
-custom_fonts/font = SubResource( 1 )
 text = "Strive: Conquest"
 align = 1
 
@@ -374,8 +374,8 @@ margin_top = 1037.0
 margin_right = 115.0
 margin_bottom = 1072.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.909804, 0.898039, 0.756863, 1 )
 custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.909804, 0.898039, 0.756863, 1 )
 text = "ver. 0.1.0"
 __meta__ = {
 "_editor_description_": ""
@@ -439,8 +439,8 @@ __meta__ = {
 [node name="NewGameLabel" type="Label" parent="NewGamePanel"]
 margin_right = 709.0
 margin_bottom = 85.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "New game"
 align = 1
 valign = 1
@@ -453,8 +453,8 @@ margin_left = 8.0
 margin_top = 482.0
 margin_right = 296.0
 margin_bottom = 567.0
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
 text = "Settings"
 align = 1
 valign = 1
@@ -504,8 +504,8 @@ margin_left = 72.0
 margin_top = 9.0
 margin_right = 264.0
 margin_bottom = 41.0
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -528,8 +528,8 @@ margin_left = 310.0
 margin_top = 119.0
 margin_right = 629.0
 margin_bottom = 447.0
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 
 [node name="Label" type="Label" parent="NewGamePanel"]
@@ -538,8 +538,8 @@ margin_left = 736.036
 margin_top = 42.9593
 margin_right = 831.036
 margin_bottom = 66.9593
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
 text = "Settings"
 
 [node name="StartButton" type="Button" parent="NewGamePanel"]
@@ -548,12 +548,12 @@ margin_top = 672.097
 margin_right = 598.21
 margin_bottom = 735.097
 theme = ExtResource( 13 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Start Game"
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
@@ -570,8 +570,8 @@ margin_left = 51.0
 margin_top = 16.0
 margin_right = 176.0
 margin_bottom = 48.0
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 
@@ -613,8 +613,8 @@ margin_left = 2.0
 margin_top = 43.0
 margin_right = 77.0
 margin_bottom = 78.0
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 __meta__ = {
@@ -627,9 +627,9 @@ margin_top = 990.0
 margin_right = 153.0
 margin_bottom = 1038.0
 theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.941176, 0.92549, 0.741176, 1 )
 custom_colors/font_color_pressed = Color( 0.655824, 0.660156, 0.521523, 1 )
-custom_fonts/font = ExtResource( 26 )
 text = "Change log"
 
 [node name="Changelogpanel" type="Panel" parent="."]
@@ -646,7 +646,7 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
 bbcode_text = "0.6.6d
 Most scenes and events have been added to gallery
@@ -2169,8 +2169,8 @@ texture = ExtResource( 19 )
 [node name="Label" type="Label" parent="Credits/Background"]
 margin_right = 649.0
 margin_bottom = 81.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Credits"
 align = 1
 valign = 1
@@ -2197,7 +2197,7 @@ margin_bottom = 35.0
 margin_right = 587.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 587, 0 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "Credits"
 align = 1
 valign = 1
