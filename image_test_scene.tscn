@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/recolor shader.shader" type="Shader" id=1]
+[ext_resource path="res://assets/RecolorShaderMasks.tres" type="Material" id=2]
 [ext_resource path="res://assets/images/iconsgear/item_leather_chest_adv.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/iconsgear/ArmorBasicCloth.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -143,3 +145,12 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="masked_recolor_test" type="TextureRect" parent="."]
+material = ExtResource( 2 )
+margin_left = 236.0
+margin_top = 250.0
+margin_right = 440.0
+margin_bottom = 431.0
+texture = ExtResource( 4 )
+expand = true
