@@ -10571,7 +10571,7 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	DATE_START6 = "As long as I get a break from the work...",
 	DATE_START7 = "Uhm... I'm sorry for not being a very good company for [Master].",
 	DATE_START8 = "You called for me, [Master]?",
-	DATE_START9 = "I'll accompany you to my best capability,
+	DATE_START9 = "I'll accompany you to my best capability,",
 	
 	DATE_START_HAPPY1 = "Finally, I was thinking you'd never ask!",
 	DATE_START_HAPPY2 = "Hey, how were you doing, [Master]?",
