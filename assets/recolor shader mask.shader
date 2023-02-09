@@ -60,6 +60,8 @@ void fragment(){
 		if (k.x > 1.0) k.x -= 1.0;
 		if (k.x < 0.0) k.x += 1.0;
 		k.y = dcolor.y;
+		k.z *= dcolor.z/t1.z;
+		k.z = clamp(k.z, 0.0, 1.0);
 //		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		k = mix(color.rgb, k, overlay * texture(part1, UV).a);
@@ -73,6 +75,8 @@ void fragment(){
 		if (k.x > 1.0) k.x -= 1.0;
 		if (k.x < 0.0) k.x += 1.0;
 		k.y = dcolor.y;
+		k.z *= dcolor.z / t2.z;
+		k.z = clamp(k.z, 0.0, 1.0);
 //		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		k = mix(color.rgb, k, overlay* texture(part2, UV).a);
@@ -86,6 +90,8 @@ void fragment(){
 		if (k.x > 1.0) k.x -= 1.0;
 		if (k.x < 0.0) k.x += 1.0;
 		k.y = dcolor.y;
+		k.z *= dcolor.z / t3.z;
+		k.z = clamp(k.z, 0.0, 1.0);
 //		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		k = mix(color.rgb, k, overlay * texture(part3, UV).a);
