@@ -6,7 +6,7 @@ var pregen_character_sprites = load("res://assets/data/pregen_characters_data.gd
 var lands = {
 	plains = {
 		code = 'plains',
-		name = "Plains",
+		name = tr("PLAINS"),
 		enabled = true,
 		races = [['Human', 25], ['halfbeast', 5], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local races
 		policies = [], #not used yet
@@ -59,7 +59,7 @@ var lands = {
 	},
 	forests = {
 		code = 'forests',
-		name = "Forests",
+		name = tr("FORESTS"),
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
@@ -97,7 +97,7 @@ var lands = {
 	},
 	mountains = {
 		code = 'mountains',
-		name = "Mountains",
+		name = tr("MOUNTAINS"),
 		races = [['Dwarf', 100], ['Gnome',10],['Kobold', 10]],
 		enabled = true,
 		lead_race = 'Dwarf',
@@ -115,7 +115,7 @@ var lands = {
 	},
 	steppe = {
 		code = 'steppe',
-		name = "Steppe",
+		name = tr("STEPPE"),
 		enabled = false,
 		lead_race = 'Orc',
 		secondary_races = ['Goblin','Centaur'],
@@ -132,7 +132,7 @@ var lands = {
 	},
 	seas = {
 		code = 'seas',
-		name = "Seas",
+		name = tr("SEAS"),
 		enabled = false,
 		lead_race = 'Nereid',
 		secondary_races = ['Lamia','Scylla'],
@@ -150,7 +150,7 @@ var lands = {
 	},
 	 beastkin_tribe = {
 		code = 'beastkin_tribe',
-		name = "Beastkin Tribe",
+		name = tr("BEASTKIN_TRIBE"),
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
@@ -189,8 +189,8 @@ var lands = {
 var guild_upgrades = {
 	slavenumberupgrade = {
 		code = 'slavenumberupgrade',
-		descript = 'Increases the number of available characters for hire at once by 1. ',
-		name = 'Hirelings number',
+		descript = tr("SLAVENUMBERUPGRADE_DISC"),
+		name = tr("SLAVENUMBERUPGRADE_NAME"),
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -198,8 +198,8 @@ var guild_upgrades = {
 	},
 	slavequality = {
 		code = 'slavequality',
-		descript = 'Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher. ',
-		name = 'Hirelings quality',
+		descript = tr("SLAVEQUALITY_DISC"),
+		name = tr("SLAVEQUALITY_NAME"),
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -216,8 +216,8 @@ var guild_upgrades = {
 	# },
 	workers_disassamby_upgrade = {
 		code = 'workers_disassamby_upgrade',
-		descript = 'Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.',
-		name = 'Disassembe',
+		descript = tr("WORKERS_DISASSAMBY_UPGRADE_DISC"),
+		name = tr("WORKERS_DISASSAMBY_UPGRADE_NAME"),
 		cost = [100,500,1000,2000],
 		reqs = [{type = "current_guild", check = true, value = "workers"}],
 		maxlevel = 4,
@@ -229,7 +229,7 @@ var guild_upgrades = {
 var factiondata = {
 	fighters = {
 		code = 'fighters',
-		name = 'Fighters',
+		name = tr("FIGHTERS"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -265,7 +265,7 @@ var factiondata = {
 	
 	mages = {
 		code = 'mages',
-		name = 'Mages',
+		name = tr("MAGES"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -301,7 +301,7 @@ var factiondata = {
 	
 	workers = {
 		code = 'workers',
-		name = 'Workers',# Guild',
+		name = tr("WORKERS"),# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [
@@ -349,7 +349,7 @@ var factiondata = {
 	
 	servants = {
 		code = 'servants',
-		name = 'Servants',
+		name = tr("SERVANTS"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -385,7 +385,7 @@ var factiondata = {
 	
 	slavemarket = {
 		code = 'slavemarket',
-		name = 'Slave Market',
+		name = tr("SLAVEMARKET"),
 		description = '',
 		actions = ['hire','sellslaves','services'],
 		tags = [],
@@ -411,7 +411,7 @@ var factiondata = {
 	
 	beastkin_slave_trader = {
 		code = 'beastkin_slave_trader',
-		name = 'Beastkin Slave Trader',
+		name = tr("BEASTKIN_SLAVE_TRADER"),
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'sword_artifact_quest', check = true}],
 		actions = ['hire'],
@@ -446,7 +446,7 @@ var factiondata = {
 	
 	elvish_slave_trader = {
 		code = 'elvish_slave_trader',
-		name = 'Elvish Slave Trader',
+		name = tr("ELVISH_SLAVE_TRADER"),
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'test', check = false}],
 		actions = ['hire','sellslaves','services'],
@@ -483,7 +483,7 @@ var factiondata = {
 	
 	exotic_slave_trader = {
 		code = 'exotic_slave_trader',
-		name = 'Exotic Slave Trader',
+		name = tr("EXOTIC_SLAVE_TRADER"),
 		description = '',
 		actions = ['hire'],
 		hireable_characters = [
@@ -519,7 +519,7 @@ var factiondata = {
 	
 	aliron_church = {
 		code = 'aliron_church',
-		name = 'Aliron Church',
+		name = tr("ALIRON_CHURCH"),
 		description = '',
 		actions = [],
 #		preference = [],
@@ -553,7 +553,7 @@ var locations = {
 		code = 'settlement_plains1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human_quest',
+		name = tr("SETTLEMENT_PLAINS1_"),
 		races = [],
 		leader = '',
 		captured = false, #disable button to travel, button has tooltip saying it's untravable
@@ -595,7 +595,7 @@ var locations = {
 		code = 'settlement_plains2',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = tr("SETTLEMENT_PLAINS2_"),
 		races = [],
 		leader = '',
 		character_data = {
@@ -631,7 +631,7 @@ var locations = {
 		code = 'settlement_forest1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = tr("SETTLEMENT_FOREST1"),
 		races = [],
 		leader = '',
 		character_data = {
@@ -654,7 +654,7 @@ var locations = {
 		code = 'settlement_mountains1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = tr("SETTLEMENT_MOUNTAINS1"),
 		races = [],
 		leader = '',
 		tasks = ['gather'],
@@ -676,17 +676,17 @@ var locations = {
 var questdata = {
 	fighters_task_easy = {
 		code = 'fighters_task_easy',
-		name = 'Helper Hand',
-		descript = 'The fighters guild looking for attendants to replace a few squires who fell ill.',
+		name =  tr("FIGHTERS_TASK_EASY_NAME"),
+		descript = tr("FIGHTERS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Helper Hand'],
+			name = [tr("FIGHTERS_TASK_EASY_RNDCND_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+			descript = tr("FIGHTERS_TASK_EASY_RNDCND_DESC"),
 			function = ['fighters_task_easy']
 			}],
 		unlockreqs = [],
@@ -698,17 +698,17 @@ var questdata = {
 	},
 	fighters_task_medium = {
 		code = 'fighters_task_medium',
-		name = 'Town Patrol',
-		descript = 'The fighters guild looking for a few spare fighters to fill the role of guardsmen.',
+		name = tr("FIGHTERS_TASK_MEDIUM_NAME"),
+		descript = tr("FIGHTERS_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Town Patrol'],
+			name = [tr("FIGHTERS_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = 'The fighters guild looking for a few spare fighters to fill the role of guardsmen.',
+			descript = tr("FIGHTERS_TASK_MEDIUM_RNDCND_DESC"),
 			function = ['fighters_task_medium']
 			}],
 		unlockreqs = [],
@@ -720,17 +720,17 @@ var questdata = {
 	},
 	fighters_task_hard = {
 		code = 'fighters_task_hard',
-		name = 'Recruit Training',
-		descript = 'The fighters guild looking for experienced trainers to coach new recruits.',
+		name = tr("FIGHTERS_TASK_HARD_NAME"),
+		descript = tr("FIGHTERS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Recruit Training'],
+			name = [tr("FIGHTERS_TASK_HARD_RNDCND_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = 'The fighters guild looking for experienced trainers to coach new recruits.',
+			descript = tr("FIGHTERS_TASK_HARD_RNDCND_DESC"),
 			function = ['fighters_task_hard']
 			}],
 		unlockreqs = [],
@@ -742,16 +742,16 @@ var questdata = {
 	},
 	mages_task_easy = {
 		code = 'mages_task_easy',
-		name = 'Library Assistance',
-		descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
+		name = tr("MAGES_TASK_EASY_NAME"),
+		descript = tr("MAGES_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Library Assistance'],
+			name = [tr("MAGES_TASK_EASY_RNDCND_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
+			descript = tr("MAGES_TASK_EASY_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_easy']
 			}],
@@ -764,16 +764,16 @@ var questdata = {
 	},
 	mages_task_medium = {
 		code = 'mages_task_medium',
-		name = 'Spell Slinging',
-		descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+		name =tr("MAGES_TASK_MEDIUM_NAME"),
+		descript = tr("MAGES_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Spell Slinging'],
+			name = [tr("MAGES_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+			descript = tr("MAGES_TASK_MEDIUM_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_medium']
 			}],
@@ -786,16 +786,16 @@ var questdata = {
 	},
 	mages_task_hard = {
 		code = 'mages_task_hard',
-		name = 'Curse Lifter',
-		descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+		name = tr("MAGES_TASK_HARD_NAME"),
+		descript = tr("MAGES_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Curse Lifter'],
+			name = [tr("MAGES_TASK_HARD_RNDCND_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+			descript = tr("MAGES_TASK_HARD_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_hard']
 			}],
@@ -808,15 +808,15 @@ var questdata = {
 	},
 	workers_task_easy = {
 		code = 'workers_task_easy',
-		name = 'Blacksmith Assistant',
-		descript = 'The worker guild can use a few extra hands to help with the job at the town.',
+		name = tr("WORKERS_TASK_EASY_NAME"),
+		descript = tr("WORKERS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Blacksmith Assistant'],
+			name = [tr("WORKERS_TASK_EASY_RNDCND_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 2],
-			descript = 'The worker guild can use a few extra hands to help with the job at the town.',
+			descript = tr("WORKERS_TASK_EASY_RNDCND_DESC"),
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_easy']
@@ -830,16 +830,16 @@ var questdata = {
 	},
 	workers_task_medium = {
 		code = 'workers_task_medium',
-		name = 'Wanted: Tailors',
-		descript = 'The worker guild looks for tailors who can help with the recent order.',
+		name = tr("WORKERS_TASK_MEDIUM_NAME"),
+		descript = tr("WORKERS_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [''],
+			name = [tr("WORKERS_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The worker guild looks for tailors who can help with the recent order.',
+			descript = tr("WORKERS_TASK_MEDIUM_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['workers_task_medium']
 			}],
@@ -852,16 +852,16 @@ var questdata = {
 	},
 	workers_task_hard = {
 		code = 'workers_task_hard',
-		name = 'Restoration Project',
-		descript = 'The worker guild requires additional help for a large building restoration.',
+		name = tr("WORKERS_TASK_HARD_NAME"),
+		descript = tr("WORKERS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Restoration Project'],
+			name = [tr("WORKERS_TASK_HARD_RNDCND_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'physics',
-			descript = 'The worker guild requires additional help for a large building restoration.',
+			descript = tr("WORKERS_TASK_HARD_RNDCND_NAME"),
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_hard']
 			}],
@@ -876,15 +876,15 @@ var questdata = {
 	
 	servants_task_easy = {
 		code = 'servants_task_easy',
-		name = 'One Time Waitress',
-		descript = 'The servants guild is looking for someone to work at a public restaurant.',
+		name = tr("SERVANTS_TASK_EASY_NAME"),
+		descript = tr("SERVANTS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['One Time Waitress'],
+			name = [tr("SERVANTS_TASK_EASY_RNDCND_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 1],
-			descript = 'The servants guild is looking for someone to work at a public restaurant.',
+			descript = tr("SERVANTS_TASK_EASY_RNDCND_DESC"),
 			workstat = 'charm',
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_easy']
@@ -920,16 +920,16 @@ var questdata = {
 #	},
 	servants_task_hard = {
 		code = 'servants_task_hard',
-		name = 'Rich Party',
-		descript = 'The servants guild looking for performance artists for a large scale celebration party.',
+		name = tr("SERVANTS_TASK_HARD_NAME"),
+		descript = tr("SERVANTS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Rich Party'],
+			name = [tr("SERVANTS_TASK_HARD_RNDCND_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'charm',
-			descript = 'The servants guild looking for performance artists for a large scale celebration party.',
+			descript = tr("SERVANTS_TASK_HARD_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_hard']
 			}],
@@ -947,8 +947,8 @@ var questdata = {
 	
 	workers_resources_easy = {
 		code = 'workers_resources_easy',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','cloth','bone','leather'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -960,8 +960,8 @@ var questdata = {
 	},
 	workers_resources_medium = {
 		code = 'workers_resources_medium',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodiron','iron','steel','clothmagic'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -973,8 +973,8 @@ var questdata = {
 	},
 	workers_resources_hard = {
 		code = 'workers_resources_hard',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancient','leathermythic','mithril','lizard_skin'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [250,400],
@@ -986,8 +986,8 @@ var questdata = {
 	},
 	workers_food_easy = {
 		code = 'workers_food_easy',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [35,55]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1000,8 +1000,8 @@ var questdata = {
 	},
 	workers_food_medium = {
 		code = 'workers_food_medium',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1014,8 +1014,8 @@ var questdata = {
 	},
 	workers_food_hard = {
 		code = 'workers_food_hard',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['bread','fishcakes','meatsoup'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [250,450],
@@ -1028,8 +1028,8 @@ var questdata = {
 	},
 	workers_craft_tools_easy = {
 		code = 'workers_craft_tools_easy',
-		name = 'Tool making',
-		descript = 'The Workers Guild requires some instruments crafted in a specific way ',
+		name = tr("WORKERS_CRAFT_TOOLS_NAME"),
+		descript = tr("WORKERS_CRAFT_TOOLS_DESC"),
 		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [1,1], parts = {ToolBlade = ['iron','bone']}}],
 		unlockreqs = [],
 		reputation = [150,200],
@@ -1040,8 +1040,8 @@ var questdata = {
 	},
 	workers_craft_tools_medium = {
 		code = 'workers_craft_tools_medium',
-		name = 'Tool making',
-		descript = 'The Workers Guild requires some instruments crafted in a specific way ',
+		name = tr("WORKERS_CRAFT_TOOLS_NAME"),
+		descript = tr("WORKERS_CRAFT_TOOLS_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle','hammer','hunt_knife'], range = [1,1], parts = {ToolBlade = ['steel','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle','hammer','fishingtools','hunt_knife'], range = [1,1], parts = {ToolHandle = ['steel','woodmagic']}},
@@ -1055,8 +1055,8 @@ var questdata = {
 	},
 	workers_threat_easy = {
 		code = 'workers_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Workers Guild requires a help with a certain issue.',
+		name = tr("WORKERS_THREAT_NAME"),
+		descript = tr("WORKERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [150,200],
@@ -1069,8 +1069,8 @@ var questdata = {
 	},
 	workers_threat_medium = {
 		code = 'workers_threat_medium',
-		name = 'Trouble Solving',
-		descript = 'The Workers Guild requires a help with a certain issue.',
+		name = tr("WORKERS_THREAT_NAME"),
+		descript = tr("WORKERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_troll'], difficulty = 'medium'}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1082,8 +1082,8 @@ var questdata = {
 	},
 	fighters_threat_easy = {
 		code = 'fighters_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Fighters Guild requires a help with a certain issue.',
+		name = tr("FIGHTERS_THREAT_NAME"),
+		descript = tr("FIGHTERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_goblins','basic_threat_rebels']}],#,
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1095,8 +1095,8 @@ var questdata = {
 	},
 	fighters_threat_medium = {
 		code = 'fighters_threat_medium',
-		name = 'Trouble Solving',
-		descript = 'The Fighters Guild requires a help with a certain issue.',
+		name = tr("FIGHTERS_THREAT_NAME"),
+		descript = tr("FIGHTERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogre']}],#,
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1108,8 +1108,8 @@ var questdata = {
 	},
 	fighters_dungeon_easy = {
 		code = 'fighters_dungeon_easy',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave']}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1122,8 +1122,8 @@ var questdata = {
 	},
 	fighters_dungeon_medium = {
 		code = 'fighters_dungeon_medium',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [200,350],
@@ -1136,8 +1136,8 @@ var questdata = {
 	},
 	fighters_dungeon_hard = {
 		code = 'fighters_dungeon_hard',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_fire_depths','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [300,500],
@@ -1151,8 +1151,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_easy = {
 		code = 'fighters_monster_hunt_easy',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','goblin'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1164,8 +1164,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_medium = {
 		code = 'fighters_monster_hunt_medium',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [200,250],
@@ -1177,8 +1177,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_hard = {
 		code = 'fighters_monster_hunt_hard',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [15,25]}],
 		unlockreqs = [],
 		reputation = [400,500],
@@ -1191,8 +1191,8 @@ var questdata = {
 	
 	fighters_craft_gear_medium = {
 		code = 'fighters_craft_gear_medium',
-		name = 'Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
+		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
@@ -1208,8 +1208,8 @@ var questdata = {
 	},
 	fighters_craft_gear_hard = {
 		code = 'fighters_craft_gear_hard',
-		name = 'Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
+		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},

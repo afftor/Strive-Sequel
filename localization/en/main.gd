@@ -10602,6 +10602,132 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	TREAT_FOOD_LIKE1 = "Wow, how did you know this is my favorite?",
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
 	TREAT_FOOD_NEUTRAL1 = "Thank you, [master], I'll accept this.",
+	
+	#worlddata land
+	
+	PLAINS = "Plains",
+	FORESTS = "Forests",
+	MOUNTAINS = "Mountains",
+	STEPPE = "Steppe",
+	SEAS = "Seas",
+	BEASTKIN_TRIBE = "",
+	
+	#worlddata guild_upgrades
+	
+	SLAVENUMBERUPGRADE_NAME = "Hirelings number",
+	SLAVENUMBERUPGRADE_DISC = "Increases the number of available characters for hire at once by 1.",
+	
+	SLAVEQUALITY_NAME = "Hirelings quality",
+	SLAVEQUALITY_DISC = "Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher.",
+	
+	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
+	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",
+	
+	#factiondata
+	
+	FIGHTERS = "Fighters",
+	MAGES = "Mages",
+	WORKERS = "Workers",
+	SERVANTS = "Servants",
+	SLAVEMARKET = "Slave Market",
+	BEASTKIN_SLAVE_TRADER = "Beastkin Slave Trader",
+	ELVISH_SLAVE_TRADER = "Elvish Slave Trader",
+	EXOTIC_SLAVE_TRADER = "Exotic Slave Trader",
+	ALIRON_CHURCH = "Aliron Church",
+	
+	#locations
+	
+	SETTLEMENT_PLAINS1_ = "village_human_quest",
+	SETTLEMENT_PLAINS2_ = "village_human",
+	SETTLEMENT_FOREST1 = "village_human",
+	SETTLEMENT_MOUNTAINS1 = "village_human",
+	
+	#questdata
+	
+	FIGHTERS_TASK_EASY_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	FIGHTERS_TASK_EASY_RNDCND_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_RNDCND_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	
+	FIGHTERS_TASK_MEDIUM_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	FIGHTERS_TASK_MEDIUM_RNDCND_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_RNDCND_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	
+	FIGHTERS_TASK_HARD_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	FIGHTERS_TASK_HARD_RNDCND_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_RNDCND_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	
+	MAGES_TASK_EASY_NAME = "Library Assistance",
+	MAGES_TASK_EASY_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	MAGES_TASK_EASY_RNDCND_NAME = "Library Assistance",
+	MAGES_TASK_EASY_RNDCND_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	
+	MAGES_TASK_MEDIUM_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	MAGES_TASK_MEDIUM_RNDCND_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_RNDCND_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	
+	MAGES_TASK_HARD_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	MAGES_TASK_HARD_RNDCND_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_RNDCND_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	
+	WORKERS_TASK_EASY_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	WORKERS_TASK_EASY_RNDCND_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_RNDCND_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	
+	WORKERS_TASK_MEDIUM_NAME = "Wanted: Tailors",
+	WORKERS_TASK_MEDIUM_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	WORKERS_TASK_MEDIUM_RNDCND_NAME = " ",
+	WORKERS_TASK_MEDIUM_RNDCND_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	
+	WORKERS_TASK_HARD_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_DESC = "The worker guild requires additional help for a large building restoration.",
+	WORKERS_TASK_HARD_RNDCND_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_RNDCND_DESC = "The worker guild requires additional help for a large building restoration.",
+	
+	SERVANTS_TASK_EASY_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	SERVANTS_TASK_EASY_RNDCND_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_RNDCND_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	
+	SERVANTS_TASK_HARD_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	SERVANTS_TASK_HARD_RNDCND_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_RNDCND_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	
+	WORKERS_RESOURCES_NAME = "Resource gathering",
+	WORKERS_RESOURCES_DESC = "The Workers Guild requires additional resources for its needs.",
+	
+	WORKERS_FOOD_NAME = "Food supply",
+	WORKERS_FOOD_DESC = "The Workers Guild requires additional food supplies.",
+	
+	WORKERS_CRAFT_TOOLS_NAME = "Tool making",
+	WORKERS_CRAFT_TOOLS_DESC = "The Workers Guild requires some instruments crafted in a specific way.",
+	
+	WORKERS_THREAT_NAME = "Trouble Solving",
+	WORKERS_THREAT_DESC = "The Workers Guild requires a help with a certain issue.",
+	
+	FIGHTERS_THREAT_NAME = "Trouble Solving",
+	FIGHTERS_THREAT_DESC = "The Fighters Guild requires a help with a certain issue.",
+	
+	FIGHTERS_DUNGEON_NAME = "Dungeon clear",
+	FIGHTERS_DUNGEON_DESC = "The Fighters Guild requires a local dungeon to be cleared.",
+	
+	FIGHTERS_MONSTER_HUNT_NAME = "Monster Hunt",
+	FIGHTERS_MONSTER_HUNT_DESC = "The Fighters Guild has a task for hunting certain amount of enemies.",
+	
+	FIGHTERS_CRAFT_GEAR_NAME = "Gear Supply",
+	FIGHTERS_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",
+	
+	WORKERS_THREAT_NAME = "",
+	WORKERS_THREAT_DESC = "",
+	
+	WORKERS_THREAT_NAME = "",
+	WORKERS_THREAT_DESC = "",
 }
 
 
