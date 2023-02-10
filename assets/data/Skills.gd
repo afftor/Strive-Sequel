@@ -164,7 +164,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false},{code = 'stat', stat = 'obedience',operant = 'lte', value = 25}],
+		targetreqs = [{code = 'is_master', check = false}],
 		effects = ['e_target_kill'],
 		cost = {},
 		charges = 1,

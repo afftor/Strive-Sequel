@@ -7931,7 +7931,9 @@ Cali proudly puffs her chest.
 	GOT_CALI_3_2 = """ — Great! I promise I'll do my best. 
 
 You leave the cave and lead Cali back to your mansion.""",
-	GOT_CALI_3_3 = """""", # TODO add text
+	GOT_CALI_3_3 = """— A-aha... Alright, I guess I'll be on my way then. 
+	
+Cali looks surprisingly disappointed but decides not to tempt her fate and leaves.""",
 	
 	CALI_SIDEQUEST_1 = """At noon you are approached by one of your residents: Cali. She looks at you with a slightly worried face.
 
@@ -8563,7 +8565,7 @@ Uncle: - So after that, it was decided that Cali is needed to fulfill that role 
 Soon a group of armed men come out in an attempt to greet you. Judging from Cali's reaction, it is headed by Hector. A bit behind them you spot a lone woman being watched over by a couple of other guards realizing that it should be Cali's mother.""",
 	CALI_HECTOR_2 = """As Cali moves ahead, you are being stopped by a few guards.
 
-{color=aqua|ector: - Look who returned home. I thought you were long dead, Cali.}
+{color=aqua|Hector: - Look who returned home. I thought you were long dead, Cali.}
 
 {color=yellow|Cali: - You can see I'm quite fine.}""",
 	CALI_HECTOR_3 = """{color=aqua|Hector: - Not that I care. You've brought what you've stolen?}
@@ -8989,7 +8991,7 @@ A collar seems the most logical first step but a regular collar seems insufficie
 
 You explain to the dwarf that the ones in the market are indeed fine, but what you're looking for is a custom piece. The burly male thinks for a few moments while scratching his beard before nodding.
 
-{color=yellow|Sigmund:- Limnrov is who you'd want to find. Ask up at the front for him, the receptionist can take you to ‘em.}
+{color=yellow|Sigmund:- Limnrov is who you'd want to find. Ask up at the front for him, the receptionist can take you to 'em.}
 
 With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
 	CALI_ACT2_WORKERS_2 = """Once you bring up the name of the craftsman with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Limnrov himself, is an older Dark Elf, his eyes sharp as he looks up at you from the excellent piece he's currently working on.

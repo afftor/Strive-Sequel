@@ -76,14 +76,13 @@ func cycle_backgrounds():
 	add_child(tw)
 	var last_bg
 	var first_cycle = true
-	var scrolling_speed = 14.0
+	var scrolling_speed = 8.0
 	$background.texture = arr[0]
 	while true:
 		for bg in arr.size():
 			if first_cycle:
 				first_cycle = false
 				continue
-			print_debug($background.rect_position)
 			if $background.rect_position.x > -50:
 				tw.interpolate_property($background, "rect_position", $background.rect_position, Vector2(-200, 0), scrolling_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			else:
