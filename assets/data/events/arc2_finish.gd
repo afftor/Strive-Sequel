@@ -332,7 +332,7 @@ var data = {
 	},
 	
 	temple_1 = {
-		image = null, tags = ['dialogue_scene', 'active_character_translate',],
+		image = 'temple_gates', tags = ['dialogue_scene', 'active_character_translate',],
 		reqs = [], 
 		text = [{text = 'TEMPLE_1_1_1', reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = false}]}], previous_dialogue_option = 0},
 		{text = 'TEMPLE_1_1_2', reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = true}]}], previous_dialogue_option = 0},
@@ -344,6 +344,7 @@ var data = {
 	
 	temple_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
+		character = 'bandits',
 		reqs = [], 
 		text = [{text = 'TEMPLE_2_2', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_temple_location', reqs = [
 					{code = 'unique', value = 'aire'}]}]},
@@ -363,6 +364,7 @@ var data = {
 	
 	temple_3_1_1_good = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
+		character = 'bandits',
 		reqs = [], 
 		text = [{text = 'TEMPLE_3_1_1', reqs = []}], 
 		options = [ {
@@ -375,6 +377,7 @@ var data = {
 	
 	temple_3_1_1_bad = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
+		character = 'bandits',
 		reqs = [], 
 		text = [{text = 'TEMPLE_3_1_2', reqs = []}], 
 		options = [ {
@@ -388,6 +391,7 @@ var data = {
 	#fight
 	temple_3_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
+		character = 'bandits',
 		reqs = [], 
 		text = [{text = 'TEMPLE_3_2', reqs = []}], 
 		options = [ {
@@ -398,6 +402,7 @@ var data = {
 	
 	temple_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
+		character = 'bandits',
 		reqs = [],
 		common_effects = [{code = 'money_change', operant = '+', value = 1000},
 		{code = 'unique_character_changes', value = 'aire', args = [
@@ -417,7 +422,7 @@ var data = {
 	},
 	
 	temple_5 = {
-		image = null, tags = ['dialogue_scene', 'master_translate',],
+		image = 'temple_gates', tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], 
 		text = [{text = 'TEMPLE_5', reqs = []}], 
 		options = [ {
