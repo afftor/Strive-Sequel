@@ -43,7 +43,8 @@ var data = {
 		]
 	},
 	fred_2 = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED2", reqs = []}
@@ -55,7 +56,8 @@ var data = {
 	},
 
 	fred_talk_1 = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1", reqs = []}
@@ -71,7 +73,8 @@ var data = {
 	},
 
 	find_fred_rogue = {
-		image = 'fred',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_ROGUE", reqs = []}
@@ -82,7 +85,8 @@ var data = {
 	},
 
 	fred_talk_1_answer_1 = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'lt', value = 4}]},]},
@@ -97,7 +101,8 @@ var data = {
 	},
 
 	fred_talk_1_else = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ELSE", reqs = []}
@@ -111,7 +116,8 @@ var data = {
 	},
 
 	fred_talk_fail = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK_FAIL", reqs = []}
@@ -122,7 +128,8 @@ var data = {
 	},
 
 	fred_talk_1_if_greg_1 = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_IF_GREG1", reqs = []}
@@ -145,17 +152,29 @@ var data = {
 	},
 
 	fred_got_after_fight = {
-		image = 'fred',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_AFTERWIN", reqs = []}
+		],
+		options = [
+			{code = "fred_talk_initiate", text = "CONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+		]
+	},
+	
+	fred_talk_initiate = {
+		image = 'fred',
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "FINDFRED_START", reqs = []}
 		],
 		options = [
 			{code = "fred_talk_1_if_answer_2", text = "FINDFRED_AFTERWIN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "fred_talk_1_if_answer_3", text = "FINDFRED_AFTERWIN_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 		]
 	},
-
+	
 	fred_talk_1_if_answer_2 = {
 		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
@@ -268,7 +287,8 @@ var data = {
 	},
 
 	fred_talk_1_if_answer_10 = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER10", reqs = []}
@@ -282,6 +302,7 @@ var data = {
 
 	fred_talk_bribe_taken = {
 		image = null,
+		character = "bandits",
 		common_effects = [
 			{code = 'money_change', operant = '-', value = 300},
 			{code = 'decision', value = 'bribed_mercs'},
@@ -296,7 +317,8 @@ var data = {
 	},
 
 	fred_talk_bribe_refused = {
-		image = 'fred_mercs',
+		image = null,
+		character = "bandits",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_BRIBE_REFUSED", reqs = []}

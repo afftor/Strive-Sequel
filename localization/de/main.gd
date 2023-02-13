@@ -3270,60 +3270,71 @@ After securing the money you leave the dormitory.
 
 {color=green|Earned 500 Gold}""",
 
-	FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
+		FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
 
 The men didn't make any effort to hide their tracks and you soon find a cave's mouth on the side of a rocky outcrop hidden in the trees.
 
-You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with a group of armed men, almost certainly sellswords, standing over him.""",
+You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with a group of three armed men resembling bandits, standing over him.""",
 
-	FINDFRED2 = """{color=aqua|Merc:— See? He's not going anywhere. I'm bored and it's hella cold here. Let's go already.}
+	FINDFRED2 = """{color=aqua|Fat Bandit:— See? He's not going anywhere. I'm bored and it's hella cold here. Let's go already.}
 
-{color=yellow|Merc 2:— Stop being such a whiny little bitch. They said to get rid of this guy if they don't return by evening.}
+{color=yellow|Small Bandit:— Yeah, I haven't cleared my throat for three days straight. Boss, come on.}
 
-{color=aqua|Merc:— Screw it, I wanna get drunk already. You don't really expect them to cough up extra pay do ya?}""",
+{color=aqua|Boss:— We aren't going anywhere just yet, you idiots. This is an opportunity to earn some extra cash and favor.}""",
 
 	FINDFRED_OPTION1 = "Talk",
 	FINDFRED_OPTION2 = "Attack",
 
-	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\n\nMerc:— Huh? Who the hell are you?",
+	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\n\nFat Bandit:— Huh? Who are you?",
 	FINDFRED_TALK1_QUESTION1 = "I've come with a message, your services are no longer needed.",
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
 	FINDFRED_ROGUE_OPTION = "You fuckers were sold out, the city militia is already on this way here (Rogue)",
-	FINDFRED_ROGUE = """Merc:— Shit! What did this asshole...
+	FINDFRED_ROGUE = """{color=aqua|Fat Bandit:— Huh? What is going on?}
 
-Merc Leader:— Damnit, I knew these bastards could not be trusted. Retreat!
+{color=yellow|Small Bandit:— I knew these bastards could not be trusted!}
 
-Mercs quickly escape without realizing your bluff, leaving you with their prisoner.""",
-	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
+{color=aqua|Boss:- Damn it... We retreat now, forget about this guy.}
 
-— Huh, really? Who are you trying to fool here?""",
+The trio quickly escape without realizing your bluff, leaving you with their prisoner.""",
+	FINDFRED_TALK1_ANSWER1 = """The boss of trio gives you a skeptic look.
 
-	FINDFRED_TALK1_ANSWER1_1 = """— Huh, really? Who are you trying to fool here?""",
+{color=aqua|Boss:— Huh, really? Who are you trying to fool here?}""",
+
+	FINDFRED_TALK1_ANSWER1_1 = """{color=aqua|Boss— Huh, really? Who are you trying to fool here?}""",
 
 	FINDFRED_TALK1_QUESTION5 = "Taking me for an imposter would be a dumb move.",
 	FINDFRED_TALK1_QUESTION6 = "Hey, I'm being serious here. Let's not jump to conclusions.",
 	FINDFRED_TALK1_QUESTION7 = "Aren't you skittish for someone who's already received your payment?",
 	FINDFRED_TALK1_QUESTION8 = "Was worth a try. I guess we'll do it the hard way.",
 
-	FINDFRED_TALK1_ELSE = """The mercs look relieved by the thought of being freed from guard duty, but the leader gives you a doubtful look.
+	FINDFRED_TALK1_ELSE = """{color=yellow|Small Bandit:- Finally! I can't wait to get out of this shithole.}
 
-Merc Leader:— Look we all want to punch out early, but just to make sure you're on the level, what's the name of our contractor?""",
+{color=aqua|Boss:— Very well, we all one be done with it anyway, but just to make sure you're on the level, what's the name of our contractor?}""",
 
 	FINDFRED_TALK1_CONTRACTOR_DUNCAN = "Duncan",
 	FINDFRED_TALK1_CONTRACTOR_GREG = "Greg",
 	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
 	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
 
-	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Merc Leader:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
-	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
+	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Boss:— Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
+	FINDFRED_TALK1_IF_GREG2 = "As the bandits leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
-	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
+	FINDFRED_ATTACK = """Deciding there's no point in negotiations you prepare to attack the bandits.
+	
+{color=aqua|Fat Bandit:- Huh, you think you are so tough? Bring it on!}
 
-	FINDFRED_AFTERWIN = """After the last sellsword falls, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.
+{color=yellow|Small Bandit:- Yah, show 'em fatso. }""",
 
-— W-who are you? Are you from the guild? Would you mind untying me?""",
+	FINDFRED_AFTERWIN = """
+{color=yellow|Small Bandit:- Screw it! They are too strong!}
+
+{color=aqua|Boss:— I'm afraid to admit it, but we'll have to retreat now. We'll get you next time!}
+	
+After the trio runs for their lives, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.
+
+{color=yellow|Fred:— W-who are you? Are you from the guild? Would you mind untying me?}""",
 
 	FINDFRED_AFTERWIN_QUESTION1 = "Not until you explain yourself.",
 	FINDFRED_AFTERWIN_QUESTION2 = "Where's the artifact you've stolen?",
@@ -7390,43 +7401,58 @@ Before you are able to answer, the woman's figure is enveloped in a bright light
 	TEMPLE_1_1_1 = """[name] uses [his] strength and pushes the slate out of the way, allowing you to move into the temple.""",
 	TEMPLE_1_1_2 = """You apply your muscles to the slate and it slowly moves away, allowing you pass through.""",
 	TEMPLE_1_2 = """You throw an unstable catalyst at the slate and it melts the stone away to the point you are able to pass through. It might prevent the stone from keeping out other intruders in future, but it's too late to think about that now.""",
-	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It's a group of raiders who seem interested in your discovery. Their leader addresses you.
+	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you. 
+	
+{color=aqua|Small Bandit:- Look boss, this fools have opened it for us.}
 
- — Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?""",
-	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. It's a group of raiders who seem interested in your discovery. Their leader addresses you.
+{color=yellow|Fat Bandit:- These guys look kinda familiar...}
 
- — Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?
+{color=aqua|Boss:- Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?}""",
+	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you. 
+	
+{color=aqua|Small Bandit:- Look boss, this fools have opened it for us.}
 
-Aire: — This isn't right, you can't just let anyone vandalize sacred places like this.""",
+{color=yellow|Fat Bandit:- These guys look kinda familiar...}
+
+{color=aqua|Boss:- Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?}
+
+{color=yellow|Aire: — This isn't right, you can't just let anyone vandalize sacred places like this.}""",
 	TEMPLE_2_OPTION_1 = "Deal",
 	TEMPLE_2_OPTION_2 = "Treasure like this should certainly be worth more than that (Charm Factor Check)",
 	TEMPLE_2_OPTION_3 = "No deal",
 	TEMPLE_3_1_1 = """{color=green|Success}
+{color=yellow|Small Bandit: - You are kidding, right?}
 
-— W-well, I guess we can pay you 1,500 gold in this case. But we can't spare any more as we still need to get this back to the market.""",
+{color=aqua|Boss: — Hmh, fine, I guess we can pay you 1,500 gold in this case, but this is our final offer.} """,
 	TEMPLE_3_1_2 = """ {color=red|Failure}
 
-— No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
-	TEMPLE_3_2 = """ — That's too bad. We aren't going to let this chance slip by. Get 'em, boys. 
+{color=aqua|Boss: — No can do, pal, we aren't that rich yet. A thousand is a good price for this already.}""",
+	TEMPLE_3_2 = """{color=aqua|Boss: — That's too bad. We aren't going to let this chance slip by. Get 'em, boys.}
+	
+	{color=yellow|Fat Bandit: — 'Right, Boss.}
 
 The group draws their weapons and prepare for a fight.""",
-	TEMPLE_4_1 = """Aire gives you a big frown but can't say anything.
+	TEMPLE_4_1 = """Aire gives you a big frown but does not dare to say anything.
 
-The leader of the raiders smiles pleasantly. 
+The leader of the bandits smiles pleasantly. 
 
- — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
-
-He passes you the large sum of gold and you part ways, moving forward into the temple.""",
-	TEMPLE_4_2 = """The leader of the raiders smiles pleasantly. 
-
- — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.
+{color=aqua|Boss: — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.}
 
 He passes you the large sum of gold and you part ways, moving forward into the temple.""",
-	TEMPLE_5 = """You defeat the pillagers and make them flee from the scene. Now you can safely advance deeper into temple.""",
+	TEMPLE_4_2 = """The leader of the bandits smiles pleasantly. 
+
+{color=aqua|Boss: — Good, very good. Here you can have this gold as promised. I'm sure this place is a treasure in itself.}
+
+He passes you the large sum of gold and you part ways, moving forward into the temple.""",
+	TEMPLE_5 = """{color=yellow|Small Bandit: — Crap, they are too strong.}
+	
+{color=aqua|Boss: — Damnit, you'll pay for this!}
+	
+You defeat the bandits and make them flee from the scene. Now you can safely advance deeper into temple.""",
 	TEMPLE_6_1 = """Walking through the ancient temple with its walls lying in ruins, you end up before a set of large doors which seem to be what you are looking for. However, as you get closer, a group of specters resembling elven soldiers appear before you and speak some unknown language. It seems to be either another trial or a defense system.""",
 	TEMPLE_6_2 = """Walking through the ancient temple with its walls lying in ruins, you end up before a set of large doors which seem to be what you are looking for. However, as you get closer, a group of specters resembling elven soldiers appear before you and speak some unknown language. It seems to be either another trial or a defense system.
 
- — Hold on, these guardians must be summoned by some energy source...
+Aire: — Hold on, these guardians must be summoned by some energy source...
 
 Aire searches the surroundings for some time until she finally spots a lone crystal on the ceiling. With a well landed shot she breaks the crystal and the elven specters disappear from sight.""",
 	TEMPLE_6_2_OPTION_1 = "Nice work, Aire",
