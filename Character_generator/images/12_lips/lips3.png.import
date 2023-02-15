@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat_tale.png-db21ad4c1d13252c1d6aca0f96efc908.stex"
+path="res://.import/lips3.png-28d0747a90cb78895ca5f276a21f5b63.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/06_tales/cat_tale.png"
-dest_files=[ "res://.import/cat_tale.png-db21ad4c1d13252c1d6aca0f96efc908.stex" ]
+source_file="res://Character_generator/images/12_lips/lips3.png"
+dest_files=[ "res://.import/lips3.png-28d0747a90cb78895ca5f276a21f5b63.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
