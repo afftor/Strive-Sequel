@@ -9689,13 +9689,196 @@ However girls seem to catch your concerns and with more giggling cover themselve
 
 You feel relieved it all turned out well. The girls went to rest soon after you arrived home.""",
 	
+	ZEPHYRA_QUEST_1 = """You find Zephyra preparing to leave the mansion. You ask her where she's going.
+
+- Ah, I was planning to visit Ginny at the church. We’ve become friends recently. You can tag along if you wanna.""",
+	ZEPHYRA_QUEST_1_OPTION_1 = "Alright",
+	ZEPHYRA_QUEST_1_OPTION_2 = "Maybe some other time",
+	ZEPHYRA_QUEST_2 = """Zephyra's eyes shine with joy upon hearing your reply.
+
+- Great, let's not waste time then! She said she wanted to see me.""",
+	ZEPHYRA_QUEST_3 = """You find the church nearly empty at this time of day with Ginny coming out to greet you.
+
+Ginny: - Ah, Zephyra... And you brought the Mayor with you?
+
+Zephyra: - I couldn't hold him back from tagging along. It's not a girls only club after all, right?
+
+Ginny: - No, of course not. It's a pleasure, Mayor. 
+
+Zephyra: - So, what do you have on your mind?""",
+	ZEPHYRA_QUEST_4 = """Ginny: - Right... Uh, actually I have to ask you for a favor, I really need to leave the church for a few hours. My friend has gotten sick and needs my help. Would you watch over it for me?
+
+Zephyra: - Say no more, I always wanted to try out a nun's role. 
+
+Zephyra seems rather relaxed about the whole situation, but you suppose Ginny wouldn't trust it to just about anyone.""",
+	ZEPHYRA_QUEST_4_OPTION_1 = """I guess I can stick around to keep you company""",
+	ZEPHYRA_QUEST_4_OPTION_2 = """Is it really a good idea to let someone take your role?""",
+	ZEPHYRA_QUEST_5_1 = """Ginny: - Ah, I wouldn't have to worry about anything with the Mayor here too. Thank you!
+
+Zephyra: - I wouldn't trust [him] on [his] own, but with me here you have nothing to fear about. 
+
+Ginny: - That... seemed a bit rude. Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+	ZEPHYRA_QUEST_5_2 = """Ginny: - I'm sure Zephyra is very capable. I've never met someone like her who is as kind and as genuinely compassionate as Celena’s teachings guide us to be.
+
+Zephyra: - Please, I'm weak to flattering.
+
+Ginny: - I'm not! Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+	ZEPHYRA_QUEST_6 = """You and Zephyra are left alone to monitor the church. It seems to be a slow day and visitors are quite rare and undemanding. You are surprised by how naturally Zephyra takes up Ginny's role of helping visitors. That is until one visitor, a young, poor looking woman, approaches Zephyra.
+
+Woman: - I'm sorry, I really need some help...
+
+Zephyra: - Tell us what happened.
+
+Woman: - I... Lost my wallet and my children have nothing to eat until my next payment... I know that Celena helps people in need.""",
+	ZEPHYRA_QUEST_7 = """Zephyra: - Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides she can tell if you have already received some help ea...
+
+Woman: - No, please, I can't stay here for long, I have to return home soon or my husband will get mad, I beg you!
+
+Zephyra is unsure what to do and seems to seek your input.""",
+	ZEPHYRA_QUEST_7_OPTION_1 = "Zephyra's right, we can't just give church's money to anyone",
+	ZEPHYRA_QUEST_7_OPTION_2 = "We should help those in need (charm check)",
+	ZEPHYRA_QUEST_7_OPTION_3 = "There's no need to get into church's treasury, I can help you on my own (300 gold)",
+	ZEPHYRA_QUEST_8_1 = """You support Zephyra and tell that this whole situation seems a bit suspicious. The woman leaves with a downed look as Zephyra gives a relieved sigh.""",
+	ZEPHYRA_QUEST_8_2_GOOD = """Zephyra reluctantly agrees that this is her responsibility. She passes the woman some coins from the church's donation box.
+
+Woman: - Thank you! I won't forget your generosity. 
+
+As the woman leaves Zephyra looks at you with a hint of newly acquired respect. 
+
+Zephyra: - Hehe, I didn't expect someone of your status to be so thoughtful.""",
+	ZEPHYRA_QUEST_8_2_BAD = """Zephyra does not seem convinced by your words and the woman turns to leave with no money. Zephyra looks a bit stern but quickly gets over it.""",
+	ZEPHYRA_QUEST_8_3 = """Both Zephyra and the woman are shocked by your decision. As you give money to the woman and she leaves, Zephyra looks at you with respect. 
+
+Zephyra: - Wow, I didn't expect someone of your status to be so generous. Are you trying to win my heart all over again? He-he.""",
 	
-	
-	
-	
-	
-	
-	
+	ZEPHYRA_DAISY_1 = """A new visitor appears... It's no other than your slave bunny girl Daisy. You decide to stay hidden, letting Zephyra take care of this alone. 
+
+Daisy: - H-hello, Zephyra, why are you here? Where's Ginny? 
+
+Zephyra: - She's out for quite some time. She left her role to me while she's away.
+
+Daisy: - O-oh... I was hoping to make a confession. I'm not sure if I should come back later...
+
+Zephyra: - I assure you, I can help with this no worse than her. 
+
+Daisy seems unsure about this, but somehow she's unable to deny Zephyra's predatory interest.""",
+	ZEPHYRA_DAISY_2_1 = """Daisy: - *Sigh* I feel sinful and very dirty. I've been doing very inappropriate things I would never normally agree to if not for my [Master]. 
+
+Zephyra: - That's terrible to hear. But as I take it, it wasn't your choice. How bad were these actions?
+
+Daisy: - They were lewd, shameful things... What should I do?
+
+Zephyra: - Your sins will be forgiven given your innocent soul. After all, you aren't responsible for them, unlike someone who should be confessing here instead.
+
+Daisy: - I see... Thank you, I do feel a bit better now. You are quite natural at this... You won't tell anyone about it?
+
+Zephyra: - Of course not, do I really look like someone who would rat people out? I would only outfox them. 
+
+Daisy leaves the chapel and returns to her duty.""",
+	ZEPHYRA_DAISY_2_2 = """Daisy: - I wanted to pray and make a donation for all the good things that happened to me...
+
+Zephyra: - Ooh? You think it was divine guidance?
+
+Daisy: - I-I like to think so... After all, I'm lucky to have a kind caring [Master]. 
+
+Zephyra: - You are right. But you shouldn’t treat our [Master] too acceptingly. I’ve heard [he] might not be an ideal person. [He] could be up for doing some bad things. For example, [he] might even be eavesdropping on us right now…
+
+Daisy: - No way, I trust my [Master]! And it’s not like I’d be embarrassed if he heard.
+
+Thankfully, Daisy seems to be too dim to notice Zephyra's sneer. As she's done with the prayer, she leaves the chapel.""",
+	ZEPHYRA_VISITOR_1 = """After some time a gaudy looking man appears in the church, seeming quite out of place. As he looks around, it's obvious he's searching for someone. 
+
+Zephyra: - May I help you, good sir? 
+
+Visitor: - I was hoping to see Ginny. Is she not around today?
+
+Zephyra: - I'm afraid she's away for a while. 
+
+Visitor: - Darn, that's terrible. I've only come to see her. You know, she's so innocent and a nun uniform looks great on her. I've actually been asking her out for a while...
+
+Zephyra: - Uh-huh...
+
+Zephyra seems to be trying to avoid this conversation going any further.""",
+	ZEPHYRA_VISITOR_2 = """Zephyra: - Pardon me, I feel like I should get to work.
+
+Visitor: - Wait, you look very kind and pure as well...
+
+Zephyra: - No-no, you are mistaken. In fact I'm the opposite of pure.
+
+Visitor: - Huh? How can this be?
+
+Zephyra: - You see... I have a [Master]. And [he] has already defiled every inch of my body.
+
+Visitor: - S-Such insolence!""",
+	ZEPHYRA_VISITOR_2_OPTION_1 = """Wait a second, I did not do that""",
+	ZEPHYRA_VISITOR_2_OPTION_2 = """That's an understatement, I've gone much further than just her body""",
+	ZEPHYRA_VISITOR_3_1 = """Zephyra: - S-stupid, just play along with me!
+
+But it seems the problematic visitor has already been turned off. 
+
+Visitor: - No matter! Even if it's a lie, I can't admire a lady who can spout such obscene things so easily.
+
+Visitor:  - I guess I'll be returning when Ginny is back. 
+
+Saying that, the man leaves the church and you alone.""",
+	ZEPHYRA_VISITOR_3_2 = """Visitor: - Nuoooooh! This is truly evil, the worst of our time! I can't admire someone so defiled! 
+
+Zephyra: - Y-yes, it is most regrettable I can't meet your standards.
+
+Visitor:  - I guess I'll be returning when Ginny is back. 
+
+Saying that, the man leaves the church and you alone.""",
+	ZEPHYRA_MAN_1 = """A man enters the church. His lifeless eyes and sullen expression give the appearance of a walking corpse. He seems to be suffering from depression. Zephyra calmly approaches him.  
+
+Zephyra: - Hello. You seem like something is weighing on you. 
+
+The man stays quiet for some time grasping his thoughts. Finally he speaks up.""",
+	ZEPHYRA_MAN_2 = """Man: - ...Say, do you really believe in Celena? In gods at all? With all the pain and suffering around us can you say with a straight face that there's some deep meaning in life?
+
+Zephyra - I agree. There are no gods and it's all probably just made up to make you give up your money in our favor. Nobody watches over your life and you are the only one responsible for it.
+
+The man looks at her with unexpected liveliness in his eyes.""",
+	ZEPHYRA_MAN_3 = """Man: - Then... What should I do?
+
+Zephyra: - Maybe just do what you feel is right? You don't seem to be a bad person since you've come here for advice. I believe you can perhaps arrive at your own conclusions that are unlike anyone else’s.
+
+The man takes a long pause, after which, he starts nodding his head furiously.""",
+	ZEPHYRA_MAN_4 = """Man: - T-thank you... You've really helped me. 
+
+Saying this, he leaves. 
+
+Zephyra: - Haah, he didn't even leave a donation.""",
+	ZEPHYRA_MAN_4_OPTION_1 = "\"There are no gods\"?",
+	ZEPHYRA_MAN_4_OPTION_2 = "You've dealt with him rather creatively",
+	ZEPHYRA_QUEST_9_1 = """Zephyra smirks at your question. She clearly realizes the absurdity of the situation but that only makes her smile wider.
+
+Zephyra: - Did you really expect I could prove him wrong? He made up his mind before he came here. I doubt it will be his final decision though.
+
+Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
+	ZEPHYRA_QUEST_9_2 = """Zephyra: - Why, thank you. I consider myself a primarily diplomatic person after all. But, to tell you the truth, he reminded me of my younger sister. If not for that, I wouldn't have even tried to help him. I still have no idea what's on her mind most of the time...
+
+Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
+	ZEPHYRA_QUEST_9_OPTION_1 = "Sometimes I share these thoughts",
+	ZEPHYRA_QUEST_9_OPTION_2 = "He's a lost person deserving a pity",
+	ZEPHYRA_QUEST_9_OPTION_3 = "I prefer not to think about these things",
+	ZEPHYRA_QUEST_10_1 = """Zephyra: - Ah, is that so? Perhaps you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you?.. Just kidding, I'm a terrible preacher.""",
+	ZEPHYRA_QUEST_10_2 = """Zephyra: - Yep, yep. That's right.
+
+Zephyra nods in agreement to your statement.
+
+Zephyra: - Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
+	ZEPHYRA_QUEST_10_3 = """Zephyra: - Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...""",
+	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today’s events, she thanks the both of you.
+
+Ginny: - I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the mayor.
+
+Zephyra : - Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
+
+Ginny: - I'm afraid it was a gift to the mayor specifically when I mentioned him... Do you want to give your candies back then?
+
+Zephyra: - ...Don't make me more sad than necessary.
+
+In the end you didn't get to do much else with Zephyra today but it seems like you still grew closer.""",
 	
 	
 	
