@@ -540,7 +540,7 @@ func test_mode():
 	if true:
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
-		character.create('BeastkinCat', 'male', 'random')
+		character.create('Dryad', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -868,7 +868,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-#		input_handler.interactive_message('cali_act6_naked_7', '', {})
+		input_handler.interactive_message('fred_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

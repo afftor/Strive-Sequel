@@ -164,7 +164,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false},{code = 'stat', stat = 'obedience',operant = 'lte', value = 25}],
+		targetreqs = [{code = 'is_master', check = false}],
 		effects = ['e_target_kill'],
 		cost = {},
 		charges = 1,
@@ -1754,7 +1754,7 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
-		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
+		value = [['caster.hp','*0.1'],['caster.hp','*0.3']],
 		damagestat = ['-hp', '+mp']
 	},
 	blood_explosion = {

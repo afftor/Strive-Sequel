@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/particles/1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/particles/3.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/particles/2_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/recolor shader mask.shader" type="Shader" id=4]
+
+[resource]
+shader = ExtResource( 4 )
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.980392, 0, 1, 1 )
+shader_param/target3color = Color( 0.980392, 0, 1, 1 )
+shader_param/part1color = Color( 0.160784, 0.552941, 0.905882, 1 )
+shader_param/part2color = Color( 0.972549, 0.152941, 0, 1 )
+shader_param/part3color = Color( 1, 1, 1, 1 )
+shader_param/overlay = 1.0
+shader_param/part1 = ExtResource( 1 )
+shader_param/part2 = ExtResource( 3 )
+shader_param/part3 = ExtResource( 2 )

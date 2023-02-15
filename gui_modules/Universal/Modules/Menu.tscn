@@ -131,6 +131,9 @@ margin_top = 229.0
 margin_right = 1149.0
 margin_bottom = 1005.0
 custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="continuebutton" type="Button" parent="VBoxContainer"]
 margin_left = 25.0
@@ -248,9 +251,9 @@ __meta__ = {
 }
 
 [node name="gallery" type="Button" parent="VBoxContainer"]
-margin_left = 49.0
+margin_left = 54.0
 margin_top = 588.0
-margin_right = 295.0
+margin_right = 291.0
 margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -262,7 +265,7 @@ custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
 custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
-text = "Galerry"
+text = "Gallery"
 __meta__ = {
 "_editor_description_": ""
 }
