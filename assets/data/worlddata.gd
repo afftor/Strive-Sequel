@@ -1230,8 +1230,8 @@ var questdata = {
 	
 	mages_materials_easy = {
 		code = 'mages_materials_easy',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name = tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['wood','bone','cloth'], range = [7,12]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1243,8 +1243,8 @@ var questdata = {
 	},
 	mages_materials_medium = {
 		code = 'mages_materials_medium',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name =tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['woodmagic','clothmagic','obsidian'], range = [5,15]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1256,8 +1256,8 @@ var questdata = {
 	},
 	mages_materials_hard = {
 		code = 'mages_materials_hard',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name = tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['woodancient','clothethereal','boneancient','mithril'], range = [6,12]}],
 		unlockreqs = [],
 		reputation = [300,500],
@@ -1269,8 +1269,8 @@ var questdata = {
 	},
 	mages_craft_potions_easy = {
 		code = 'mages_craft_potions_easy',
-		name = 'Potion Making',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [2,3]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1281,8 +1281,8 @@ var questdata = {
 	},
 	mages_craft_potions_medium = {
 		code = 'mages_craft_potions_medium',
-		name = 'Magic Catalysts',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [5,8]},{code = 'random_item', type = ['energyshard','energygem'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1293,8 +1293,8 @@ var questdata = {
 	},
 	mages_craft_potions_hard = {
 		code = 'mages_craft_potions_hard',
-		name = 'Magic Catalysts',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['circlet'], range = [1,2]},{code = 'random_item', type = ['lifegem','energygem'], range = [2,4]}, {code = 'random_material', type = ['ink_mp'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1305,8 +1305,8 @@ var questdata = {
 	},
 	mages_threat_easy = {
 		code = 'mages_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Mages Guild requires a help with a certain issue.',
+		name = tr("MAGES_THREAT_NAME"),
+		descript = tr("MAGES_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1320,8 +1320,8 @@ var questdata = {
 	
 	mages_craft_gear_medium = {
 		code = 'mages_craft_gear_medium',
-		name = 'Mage Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("MAGES_CRAFT_GEAR_NAME"),
+		descript = tr("MAGES_CRAFT_GEAR_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['staff'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [1,1], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
@@ -1335,8 +1335,8 @@ var questdata = {
 	},
 	mages_craft_gear_hard = {
 		code = 'mages_craft_gear_hard',
-		name = 'Mage Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("MAGES_CRAFT_GEAR_NAME"),
+		descript = tr("MAGES_CRAFT_GEAR_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','woodiron','mithril']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [2,2], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
@@ -1355,8 +1355,8 @@ var questdata = {
 	
 	servants_craft_items_easy = {
 		code = 'servants_craft_items_easy',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = tr("SERVANTS_CRAFT_NAME"),
+		descript = tr("SERVANTS_CRAFT_DESC"),
 		randomconditions = [{code = 'random_item', type = ['leather_collar','animal_gloves','animal_ears','handcuffs','bell_collar'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1367,8 +1367,8 @@ var questdata = {
 	},
 	servants_craft_items_medium = {
 		code = 'servants_craft_items_medium',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = tr("SERVANTS_CRAFT_NAME"),
+		descript = tr("SERVANTS_CRAFT_DESC"),
 		randomconditions = [{code = 'random_item', type = ['chastity_belt','tail_plug','steel_collar','sexdrug','anal_beads','ribbon'], range = [1,3]}],
 		unlockreqs = [],
 		reputation = [250,350],
@@ -1379,8 +1379,8 @@ var questdata = {
 	},
 	servants_craft_items_hard = {
 		code = 'servants_craft_items_hard',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = tr("SERVANTS_CRAFT_NAME"),
+		descript = tr("SERVANTS_CRAFT_DESC"),
 		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_choker','seethrough_underwear','latex_suit'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [400,550],
@@ -1391,8 +1391,8 @@ var questdata = {
 	},
 	servants_slave_easy = {
 		code = 'servants_slave_easy',
-		name = 'Slave Request',
-		descript = 'The Servants Guild is in need of specific trained individual.',
+		name = tr("SERVANTS_SLAVE_NAME"),
+		descript = tr("SERVANTS_SLAVE_DESC"),
 
 		randomconditions = [
 			{code = 'slave_delivery',
@@ -1412,8 +1412,8 @@ var questdata = {
 	},
 	servants_slave_medium = {
 		code = 'servants_slave_medium',
-		name = 'Slave Request',
-		descript = 'The Servants Guild is in need of specific trained individual.',
+		name = tr("SERVANTS_SLAVE_NAME"),
+		descript = tr("SERVANTS_SLAVE_DESC"),
 
 		randomconditions = [
 			{code = 'slave_delivery',
@@ -1434,8 +1434,8 @@ var questdata = {
 	},
 	servants_slave_work_easy = {
 		code = 'servants_slave_work_easy',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
@@ -1463,8 +1463,8 @@ var questdata = {
 	},
 	servants_slave_work_medium = {
 		code = 'servants_slave_work_medium',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1496,8 +1496,8 @@ var questdata = {
 	},
 	servants_slave_work_hard = {
 		code = 'servants_slave_work_hard',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1528,8 +1528,8 @@ var questdata = {
 	},
 	fighters_slave_work_easy = {
 		code = 'fighters_slave_work_easy',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1554,8 +1554,8 @@ var questdata = {
 	},
 	fighters_slave_work_medium = {
 		code = 'fightersslave_work_medium',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1581,8 +1581,8 @@ var questdata = {
 	},
 	fighters_slave_work_hard = {
 		code = 'fighters_slave_work_hard',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1610,25 +1610,25 @@ var questdata = {
 
 
 var locationnames = {
-	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
-	village_human2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
-	village_human_quest = ["Millford"],
-	bandit_fort_nouns = ['Fort','Stockade','Fastness','Castle','Outpost','Tower'],
-	bandit_fort_adjs = ['Bandit','Outlaw','Brigand','Robber','Cutthroat'],
-	goblin_cave_nouns = ['Cave','Tunnel','Burrow','Cavern','Den'],
-	goblin_cave_adjs = ['Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
-	bandit_den_nouns = ['Hideout', 'Cave', 'Den', 'Pit'],
-	bandit_den_adjs = ['Bandit', 'Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
-	grove_nouns = ['Forest','Grove','Thicket','Woodland','Backwoods','Cover','Timberland','Wildwood','Orchard','Spinney','Hedge'],
-	grove_adjs = ['Dark', 'Green', 'White', 'Gold', 'Silver', 'Dense', 'Thick', 'Overgrown', 'Shiny', 'Bushy', 'Living'],
-	crypt_nouns = ['Crypt','Cemetery', 'Grave','Catacomb','Mausoleum','Tomb','Vault','Chamber'],
-	crypt_adjs = ['Dark','Black','Blood', 'Bone', 'Rotten', 'Flesh', 'Evil', 'Blood', 'Red', 'Grim', 'Great', 'Demonic', 'Gloomy', 'Deadly'],
-	mountains_nouns = ['Caves','Tunnels','Burrows','Caverns','Mine','Quarry','Chambers','Dungeon'],
-	mountains_adjs = ['Dark','Black', 'Distant', 'Red', 'Blue','Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
-	fire_depths_nouns = ['Caves','Dungeon','Scar', 'Chambers', 'Halls', 'Lair'],
-	fire_depths_adjs = ['Burning','Fire','Scorching', 'Heating'],
-	city_nouns = ['Ruins','Chambers','Halls','Quarters','Labyrinth'],
-	city_adjs =  ['Dark','Distant', 'Red', 'Blue', 'Black', 'Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
+	village_human1 = [tr("VILLAGE_HUMAN1"),tr("VILLAGE_HUMAN2"),tr("VILLAGE_HUMAN3"),tr("VILLAGE_HUMAN4"),tr("VILLAGE_HUMAN5"),tr("VILLAGE_HUMAN6"),tr("VILLAGE_HUMAN7"),tr("VILLAGE_HUMAN8"),tr("VILLAGE_HUMAN9"),tr("VILLAGE_HUMAN10"),tr("VILLAGE_HUMAN11")],
+	village_human2 = [tr("VILLAGE_HUMAN2_1"),tr("VILLAGE_HUMAN2_2"),tr("VILLAGE_HUMAN2_3"),tr("VILLAGE_HUMAN2_4"),tr("VILLAGE_HUMAN2_5"),tr("VILLAGE_HUMAN2_6"),tr("VILLAGE_HUMAN2_7"),tr("VILLAGE_HUMAN2_8"),tr("VILLAGE_HUMAN2_9")],
+	village_human_quest = [tr("VILLAGE_HUMAN_QUEST1")],
+	bandit_fort_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
+	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
+	goblin_cave_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
+	goblin_cave_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
+	bandit_den_nouns = [tr("BANDIT_DEN_NOUNS1"),tr("BANDIT_DEN_NOUNS2"),tr("BANDIT_DEN_NOUNS3"),tr("BANDIT_DEN_NOUNS4")],
+	bandit_den_adjs = [tr("BANDIT_DEN_ADJS1"),tr("BANDIT_DEN_ADJS2"),tr("BANDIT_DEN_ADJS3"),tr("BANDIT_DEN_ADJS4"),tr("BANDIT_DEN_ADJS5"),tr("BANDIT_DEN_ADJS6"),tr("BANDIT_DEN_ADJS7"),tr("BANDIT_DEN_ADJS8")],
+	grove_nouns = [tr("GROVE_NOUNS1"),tr("GROVE_NOUNS2"),tr("GROVE_NOUNS3"),tr("GROVE_NOUNS4"),tr("GROVE_NOUNS5"),tr("GROVE_NOUNS6"),tr("GROVE_NOUNS7"),tr("GROVE_NOUNS8"),tr("GROVE_NOUNS9"),tr("GROVE_NOUNS10"),tr("GROVE_NOUNS11")],
+	grove_adjs = [tr("GROVE_ADJS1"), tr("GROVE_ADJS2"), tr("GROVE_ADJS3"), tr("GROVE_ADJS4"), tr("GROVE_ADJS5"), tr("GROVE_ADJS6"), tr("GROVE_ADJS7"), tr("GROVE_ADJS8"), tr("GROVE_ADJS9"), tr("GROVE_ADJS19"), tr("GROVE_ADJS11")],
+	crypt_nouns = [tr("CRYPT_NOUNS1"),tr("CRYPT_NOUNS2"),tr("CRYPT_NOUNS3"),tr("CRYPT_NOUNS4"),tr("CRYPT_NOUNS5"),tr("CRYPT_NOUNS6"),tr("CRYPT_NOUNS7"),tr("CRYPT_NOUNS8")],
+	crypt_adjs = [tr("CRYPT_ADJS1"),tr("CRYPT_ADJS2"),tr("CRYPT_ADJS3"),tr("CRYPT_ADJS4"),tr("CRYPT_ADJS5"),tr("CRYPT_ADJS6"),tr("CRYPT_ADJS7"),tr("CRYPT_ADJS8"),tr("CRYPT_ADJS9"),tr("CRYPT_ADJS10"),tr("CRYPT_ADJS11"),tr("CRYPT_ADJS12"),tr("CRYPT_ADJS13"),tr("CRYPT_ADJS14")],
+	mountains_nouns = [tr("MOUNTAINS_NOUNS1"),tr("MOUNTAINS_NOUNS2"),tr("MOUNTAINS_NOUNS3"),tr("MOUNTAINS_NOUNS4"),tr("MOUNTAINS_NOUNS5"),tr("MOUNTAINS_NOUNS6"),tr("MOUNTAINS_NOUNS7"),tr("MOUNTAINS_NOUNS8")],
+	mountains_adjs = [tr("MOUNTAINS_ADJS1"),tr("MOUNTAINS_ADJS2"),tr("MOUNTAINS_ADJS3"),tr("MOUNTAINS_ADJS4"),tr("MOUNTAINS_ADJS5"),tr("MOUNTAINS_ADJS6"),tr("MOUNTAINS_ADJS7"),tr("MOUNTAINS_ADJS8"),tr("MOUNTAINS_ADJS9"),tr("MOUNTAINS_ADJS10")],
+	fire_depths_nouns = [tr("FIRE_DEPTHS_NOUNS1"),tr("FIRE_DEPTHS_NOUNS2"),tr("FIRE_DEPTHS_NOUNS3"),tr("FIRE_DEPTHS_NOUNS4"),tr("FIRE_DEPTHS_NOUNS5"),tr("FIRE_DEPTHS_NOUNS6")],
+	fire_depths_adjs = [tr("FIRE_DEPTHS_ADJS1"),tr("FIRE_DEPTHS_ADJS2"),tr("FIRE_DEPTHS_ADJS3"),tr("FIRE_DEPTHS_ADJS4")],
+	city_nouns = [tr("CITY_NOUNS1"),tr("CITY_NOUNS2"),tr("CITY_NOUNS3"),tr("CITY_NOUNS4"),tr("CITY_NOUNS5")],
+	city_adjs =  [tr("CITY_ADJS1"),tr("CITY_ADJS2"),tr("CITY_ADJS3"),tr("CITY_ADJS4"),tr("CITY_ADJS5"),tr("CITY_ADJS6"),tr("CITY_ADJS7"),tr("CITY_ADJS8"),tr("CITY_ADJS9"),tr("CITY_ADJS10")],
 	ancient_jungles_nouns = ['Thicket','Jungle','Rainforest','Wilds','Wildwood','Hedge','Chaparral','Morass','Tangle'],
 	ancient_jungles_adjs = ['Green','Dark','Dense','Thick','Overgrown','Bushy','Living','Ancient','Old','Great','Red','Gloomy'],
 }
