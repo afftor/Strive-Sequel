@@ -361,17 +361,25 @@ func victory():
 		if tchar.tags.has('rare'):
 			count = 2
 			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
+		elif tchar.tags.has('miniboss'):
+#			count = 2
+			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
 		for q in range(count):
 			var loot = {}
 			for item in Enemydata.loottables[tchar.get_stat('loottable')]:
 				if item[0] == 'gold':
-					rewardsdict.gold += round(rand_range(item[1], item[2]))
+					if tchar.tags.has('miniboss'):
+						rewardsdict.gold += 2 * round(rand_range(item[1], item[2]))
+					else:
+						rewardsdict.gold += round(rand_range(item[1], item[2]))
 				elif Items.materiallist.has(item[0]):
 					var counter = 1
 					if item.size() > 2:
 						counter = item[2]
+					if tchar.tags.has('miniboss'):
+						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
 					while counter > 0:
 						if randf() <= item[1]:
 							input_handler.AddOrIncrementDict(loot, {item[0] : 1})
@@ -383,6 +391,8 @@ func victory():
 					var counter = 1
 					if item.size() > 2:
 						counter = item[2]
+					if tchar.tags.has('miniboss'):
+						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
 					while counter > 0:
 						if randf() <= item[1]:
 							if itemtemp.type == 'usable':
@@ -951,9 +961,13 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			continue
 		var tempname = enemygroup[i]
 		var rare = false
+		var mboss = false
 		if tempname.ends_with('_rare'):
 			tempname = tempname.trim_suffix('_rare')
 			rare = true
+		if tempname.ends_with('_miniboss'):
+			tempname = tempname.trim_suffix('_miniboss')
+			mboss = true
 		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
 		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
@@ -961,6 +975,9 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		tchar.position = i
 		if rare:
 			tchar.add_rare_trait()
+		if mboss:
+			tchar.tags.push_back("miniboss")
+			tchar.add_trait('miniboss')
 		
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)
