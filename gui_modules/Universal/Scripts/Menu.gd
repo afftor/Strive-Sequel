@@ -42,6 +42,7 @@ func _ready():
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
+	$NewGamePanel/SkipP.connect("toggled", self, 'check_skip')
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
 
 	input_handler.ClearContainer($NewGamePanel/Settings)
@@ -111,6 +112,7 @@ func newgame(pressed, pressed_button):
 	self.current_pressed_btn = pressed_button
 	$NewGamePanel.visible = pressed
 	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
+	ResourceScripts.game_globals.skip_prologue = $NewGamePanel/SkipP.pressed
 
 func start_game():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'start_game_confirm', tr('STARTTHISGAME')])
@@ -211,7 +213,8 @@ func start_preset_set(button):
 	ResourceScripts.game_globals.starting_preset = data.code
 
 
-
+func check_skip(value):
+	ResourceScripts.game_globals.skip_prologue = value
 # func add_close_button(scene):
 # 	var pos_in_tree = scene.get_child_count()
 # 	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
