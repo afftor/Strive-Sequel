@@ -45,6 +45,8 @@ var data = {
 			code = 'zephyra_dialogue_2', text = "ZEPHYRA_EXTRA_OPTION2", reqs = [], dialogue_argument = 7
 		}, {
 			code = 'zephyra_dialogue_start', text = "ZEPHYRA_EXTRA_OPTION3", reqs = [], dialogue_argument = 6, remove_after_first_use = true
+		},{
+			code = 'zephyra_quest_1', text = "ZEPHYRA_QUEST_INIT_OPTION_1", reqs = [{type = 'decision', value = 'mayor_election_finished', check = true}, {type = 'dialogue_seen', check = false, value = 'ZEPHYRA_QUEST_2'}], dialogue_argument = 1, repeat_next_day = true
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		}],
