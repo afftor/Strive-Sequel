@@ -2175,8 +2175,23 @@ func valuecheck(dict):
 
 func apply_starting_preset():
 	var preset =  starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
+	if preset.has('difficulty'):
+		ResourceScripts.game_globals.difficulty = preset.difficulty
 	if ResourceScripts.game_globals.skip_prologue:
-		preset.start = "skip_prologue"
+		preset = starting_presets.preset_data['advanced']
+	
+	ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
+	ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
+	ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
+	if preset.has('seen_dialogues'):
+		ResourceScripts.game_progress.seen_dialogues = preset.seen_dialogues.duplicate()
+	if preset.has("unlocked_classes"):
+		ResourceScripts.game_progress.unlocked_classes = preset.unlocked_classes.duplicate()
+	
+	if preset.has("total_reputation"):
+		for i in ['fighters','workers','servants','mages']:
+			globals.common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
+	
 	if preset.start in ['default','default_solo']:
 		input_handler.interactive_message('intro', '', {})
 	elif preset.start in ['skip_prologue']:
@@ -2186,8 +2201,6 @@ func apply_starting_preset():
 		ResourceScripts.game_progress.unlocked_classes.append('acolyte')
 	else:
 		common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
-	if preset.has('difficulty'):
-		ResourceScripts.game_globals.difficulty = preset.difficulty
 
 
 
