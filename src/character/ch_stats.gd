@@ -193,6 +193,10 @@ func custom_stats_get(stat):
 		var tres = variables.basic_obed_drain - statlist.timid_factor
 		if bonuses.has('obedience_drain_add'): tres += bonuses.obedience_drain_add
 		if bonuses.has('obedience_drain_mul'): tres *= bonuses.obedience_drain_mul
+		if ResourceScripts.game_globals.difficulty == 'easy':
+			tres *= 0.75
+		if ResourceScripts.game_globals.difficulty == 'hard':
+			tres *= 1.25
 		tres = max(0.0, tres)
 		if parent and (parent.get_ref().has_status('soulbind') or parent.get_ref().get_work() == 'travel'):
 			tres = 0.0

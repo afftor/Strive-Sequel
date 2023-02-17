@@ -98,16 +98,7 @@ func _ready():
 		input_handler.GameStartNode.queue_free()
 		show()
 		input_handler.ActivateTutorial("introduction")
-		var preset =  starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
-		if preset.start in ['default','default_solo']:
-			input_handler.interactive_message('intro', '', {})
-		elif preset.start in ['skip_prologue']:
-			input_handler.interactive_message('servants_election_finish6')
-		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 1}]}])
-		if preset.completed_quests.has("aliron_church_quest"):
-			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
-		else:
-			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
+		globals.apply_starting_preset()
 		
 		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
@@ -132,6 +123,8 @@ func _ready():
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
+
+
 
 
 
@@ -868,7 +861,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('fred_1', '', {})
+#		input_handler.interactive_message('fred_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

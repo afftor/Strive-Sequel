@@ -208,12 +208,15 @@ func FinishCombat(victory = true):
 	for p in playergroup.values():
 		var ch = characters_pool.get_char_by_id(p)
 		if ch.hp <=0:
-			ch.hp = 1
-			ch.is_active = true
-			ch.defeated = false
-			ch.combat_position = 0
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-			ch.apply_effect(effects_pool.add_effect(eff))
+			if ResourceScripts.game_globals.difficulty != 'hard':
+				ch.hp = 1
+				ch.is_active = true
+				ch.defeated = false
+				ch.combat_position = 0
+				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+				ch.apply_effect(effects_pool.add_effect(eff))
+			else:
+				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 

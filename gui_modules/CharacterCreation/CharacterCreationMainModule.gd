@@ -328,6 +328,8 @@ func finish_character():
 	person.hp = person.get_stat('hpmax')
 	person.mp = person.get_stat('mpmax')
 	person.food.create() #rebuild food filter
+	#i don't like handle starting eqipment here. but this is the only point where newly created characters are accessible - and we need to do this for the characters created during prologue
+	globals.equip_char(person, 'club', {WeaponMace = 'wood'})
 	if mode != 'master':
 		if !preservedsettings.has('slave_class'):
 			preservedsettings.slave_class = 'slave'
@@ -341,7 +343,10 @@ func finish_character():
 	else:
 		person.set_slave_category('master')
 		person.set_stat('consent', 1000)
+		globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
+		globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 	ResourceScripts.game_party.add_slave(person)
+	
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
 	input_handler.add_random_chat_message(person, 'hire')
