@@ -554,6 +554,24 @@ var effect_table = {
 		],
 		sub_effects = [],
 	},
+	e_miniboss = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = 2.0},
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add', stat = 'hitrate', value = 20},
+			{type = 'stat_add', stat = 'evasion', value = 20},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",
+				description = "miniboss", #2fix
+				limit = 1,
+				t_name = 'miniboss'
+			}
+		],
+		sub_effects = [],
+	},
 	#skills
 	e_target_kill = {
 		type = 'trigger',
