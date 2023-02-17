@@ -10910,6 +10910,186 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	CITY_ADJS9 = "Crystal",
 	CITY_ADJS10 = "Rocking",
 	
+	ANCIENT_JUNGLES_NOUNS1 = "Thicket",
+	ANCIENT_JUNGLES_NOUNS2 = "Jungle",
+	ANCIENT_JUNGLES_NOUNS3 = "Rainforest",
+	ANCIENT_JUNGLES_NOUNS4 = "Wilds",
+	ANCIENT_JUNGLES_NOUNS5 = "Wildwood",
+	ANCIENT_JUNGLES_NOUNS6 = "Hedge",
+	ANCIENT_JUNGLES_NOUNS7 = "Chaparral",
+	ANCIENT_JUNGLES_NOUNS8 = "Morass",
+	ANCIENT_JUNGLES_NOUNS9 = "Tangle",
+	
+	ANCIENT_JUNGLES_ADJS1 = "Green",
+	ANCIENT_JUNGLES_ADJS2 = "Dark",
+	ANCIENT_JUNGLES_ADJS3 = "Dense",
+	ANCIENT_JUNGLES_ADJS4 = "Thick",
+	ANCIENT_JUNGLES_ADJS5 = "Overgrown",
+	ANCIENT_JUNGLES_ADJS6 = "Bushy",
+	ANCIENT_JUNGLES_ADJS7 = "Living",
+	ANCIENT_JUNGLES_ADJS8 = "Ancient",
+	ANCIENT_JUNGLES_ADJS9 = "Old",
+	ANCIENT_JUNGLES_ADJS10 = "Great",
+	ANCIENT_JUNGLES_ADJS11 = "Red",
+	ANCIENT_JUNGLES_ADJS12 = "Gloomy",
+	
+	#dungeonnoun
+	
+	DUNGEONNOUN1 = "Tunnels",
+	DUNGEONNOUN2 = "Quarters",
+	DUNGEONNOUN3 = "Caves",
+	DUNGEONNOUN4 = "Halls",
+	DUNGEONNOUN5 = "Delves",
+	DUNGEONNOUN6 = "Burrows",
+	DUNGEONNOUN7 = "Vault",
+	DUNGEONNOUN8 = "Labyrinth",
+	DUNGEONNOUN9 = "Chambers",
+	DUNGEONNOUN10 = "Crypt",
+	DUNGEONNOUN11 = "Tombs",
+	DUNGEONNOUN12 = "Catacombs",
+	DUNGEONNOUN13 = "Lair",
+	DUNGEONNOUN14 = "Dungeon",
+	DUNGEONNOUN15 = "Caverns",
+	
+	#dungeonadj
+	
+	DUNGEONADJ1 = "Dark",
+	DUNGEONADJ2 = "White",
+	DUNGEONADJ3 = "Red",
+	DUNGEONADJ4 = "Black",
+	DUNGEONADJ5 = "Molten",
+	DUNGEONADJ6 = "Distant",
+	DUNGEONADJ7 = "Eternal",
+	DUNGEONADJ8 = "Gloomy",
+	DUNGEONADJ9 = "Lower",
+	DUNGEONADJ10 = "Moaning",
+	DUNGEONADJ11 = "Demonic",
+	DUNGEONADJ12 = "Rocking",
+	DUNGEONADJ13 = "Living",
+	DUNGEONADJ14 = "Crystal",
+	DUNGEONADJ15 = "Deadly",
+	DUNGEONADJ16 = "Roaring",
+	
+	#dungeons
+	
+	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
+	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
+	
+	QUEST_MAGES_XARI_TEXT = "Xari's Location",
+	QUEST_MAGES_XARI_DESC = "",
+	
+	QUEST_MAGES_FRED_TEXT = "Fred's Location",
+	QUEST_MAGES_FRED_DESC = "",
+	
+	BASIC_THREAT_WOLVES_TEXT = "Threat - Wild wolves",
+	BASIC_THREAT_WOLVES_DESC = "Farmers report a pack of wild wolves attacking their flock.",
+	
+	BASIC_THREAT_REBELS_TEXT = "Threat - Rebels",
+	BASIC_THREAT_REBELS_DESC = "A group of rebels terrorize local villagers.",
+	
+	BASIC_THREAT_GOBLINS_TEXT = "Threat - Goblins",
+	BASIC_THREAT_GOBLINS_DESC = "A group of wild goblins attacking passing travelers.",
+	
+	BASIC_THREAT_OGRE_TEXT = "Threat - Ogre",
+	BASIC_THREAT_OGRE_DESC = "An angry ogre attacking passing travelers.",
+	
+	BASIC_THREAT_TROLL_TEXT = "Threat - Troll",
+	BASIC_THREAT_TROLL_DESC = "An angry troll attacking passing travelers.",
+	
+	DUNGEON_BANDIT_DEN_TEXT = "bandit_den",
+	DUNGEON_BANDIT_DEN_DESC = "",
+	
+	DUNGEON_BANDIT_FORT_TEXT = "bandit_fort",
+	DUNGEON_BANDIT_FORT_DESC = "",
+	
+	DUNGEON_UNDEAD_CRYPT_TEXT = "crypt",
+	DUNGEON_UNDEAD_CRYPT_DESC = "",
+	
+	DUNGEON_GOBLIN_CAVE_TEXT = "goblin_cave",
+	DUNGEON_GOBLIN_CAVE_DESC = "",
+	
+	DUNGEON_GROVE_TEXT = "grove",
+	DUNGEON_GROVE_DESC = "",
+	
+	DUNGEON_ANCIENT_JUNGLES_TEXT = "ancient_jungles",
+	DUNGEON_ANCIENT_JUNGLES_DESC = "",
+	
+	DUNGEON_FIRE_DEPTHS_TEXT = "fire_depths",
+	DUNGEON_FIRE_DEPTHS_DESC = "",
+	
+	QUEST_CALI_BANDITS_LOCATION_TEXT = "Bandit's Hideout",
+	QUEST_CALI_BANDITS_LOCATION_DESC = "",
+	
+	QUEST_CALI_VILLAGE_TEXT = "Cali's Home Village",
+	QUEST_CALI_VILLAGE_DESC = ".",
+	
+	QUEST_MINES_DUNGEON_TEXT = "Mines",
+	QUEST_MINES_DUNGEON_DESC = "",
+	
+	QUEST_FINAL_OPERATION_LOCATION_TEXT = "Rebels' Hideout",
+	QUEST_FINAL_OPERATION_LOCATION_DESC = "",
+	
+	QUEST_DAISY_ADMIRER_LOCATION_TEXT = "Ramont's Estate",
+	QUEST_DAISY_ADMIRER_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_FOREST_LOCATION_TEXT = "Gryphon Thicket",
+	QUEST_GRYPHON_FOREST_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_CAVE_LOCATION_TEXT = "Elder Gryphon Lair",
+	QUEST_GRYPHON_CAVE_LOCATION_DESC = "",
+	
+	QUEST_RITUAL_LOCATION_TEXT = "Herbs Field",
+	QUEST_RITUAL_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_DESC = "",
+	
+	QUEST_CALI_CAVE_LOCATION_TEXT = "Small Slavers Cave",
+	QUEST_CALI_CAVE_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_2_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_2_DESC = "",
+	
+	QUEST_WHITE_STAG_LOCATION_TEXT = "White Stag Location",
+	QUEST_WHITE_STAG_LOCATION_DESC = "",
+	
+	QUEST_TEMPLE_LOCATION_TEXT = "Temple",
+	QUEST_TEMPLE_LOCATION_DESC = "",
+	
+	QUEST_ERLEN_LOCATION_TEXT = "Erlens location",
+	QUEST_ERLEN_LOCATION_DESC = "",
+	
+	QUEST_CALI_GOBLINS_LOCATION_TEXT = "Threatened Village",
+	QUEST_CALI_GOBLINS_LOCATION_DESC = "",
+	
+	QUEST_TROLL_CAVE_LOCATION_TEXT = "Troll's Cave",
+	QUEST_TROLL_CAVE_LOCATION_DESC = "",
+	
+	QUEST_DUNGEON_GROVE_TEXT = "grove",
+	QUEST_DUNGEON_GROVE_DESC = "",
+	
+	#eventscrits
+	
+	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
+	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
+	
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Attack",
+	
+	#fixed_location_options
+	
+	ALIRON1 = "",
+	ALIRON2 = "",
+	ALIRON3 = "",
+	ALIRON4 = "",
+	ALIRON5 = "",
+	ALIRON6 = "",
+	ALIRON7 = "",
+	ALIRON8 = "",
+	ALIRON9 = "",
+	ALIRON10 = "",
+	
+	
 }
 
 
