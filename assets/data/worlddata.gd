@@ -2740,7 +2740,7 @@ var random_dungeon_events = {
 var fixed_location_options = { #override serialized data
 	aliron = [
 		{
-			text = "Check the streets", 
+			text = tr("ALIRON1"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'daisy_meet'},
 				{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, 
@@ -2749,7 +2749,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'daisy_meet', args = []}]
 		},
 		{
-			text = "Search for Reim", 
+			text = tr("ALIRON2"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'reim_encounter'},
 				{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}
@@ -2757,7 +2757,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'reim_encounter', args = []}]
 		},
 		{
-			text = "Visit Fred's Dormitory", 
+			text = tr("ALIRON3"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_intro'},
 				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}
@@ -2765,7 +2765,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'fred_intro', args = []}]
 		},
 		{
-			text = "Visit Fred's Dormitory", 
+			text = tr("ALIRON4"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_bribe_take'},
 				{type = 'decision', value = 'fred_bribe_taken', check = true}
@@ -2773,7 +2773,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON5"), 
 			reqs = [
 				{type = 'decision', value = 'ginny_visit', check = true}, 
 				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
@@ -2782,7 +2782,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'aliron_church_firstcome', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON6"), 
 			reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
 				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
@@ -2790,12 +2790,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'aliron_church_enter', args = []}]
 		},
 		{
-			text = "Lead the convoy", 
+			text = tr("ALIRON7"), 
 			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], 
 			args = [{code = 'start_event', data = 'after_mines_convoy_1', args = []}]
 		},
 		{
-			text = "Visit Jail", 
+			text = tr("ALIRON8"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},
@@ -2804,7 +2804,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_search_dungeon_1', args = []}]
 		},
 		{
-			text = "Meet princess in jail", 
+			text = tr("ALIRON9"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
 				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = false},
@@ -2813,7 +2813,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_persuation_init', args = []}]
 		},
 		{
-			text = "Meet princess in jail", 
+			text = tr("ALIRON10"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
 				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}
@@ -2821,7 +2821,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_persuation_2_init', args = []}]
 		},
 		{
-			text = "Meet Hunter Veteran", 
+			text = tr("ALIRON11"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'},
 				{type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}
@@ -2829,42 +2829,42 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'gryphon_hunter_start', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON12"), 
 			reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true}], 
 			args = [{code = 'start_event', data = 'zephyra_recruitment_1', args = []}]
 		},
 		{
-			text = "Search for collectioner", 
+			text = tr("ALIRON13"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_init', args = []}]
 		},
 		{
-			text = "William's mansion", 
+			text = tr("ALIRON14"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_1', args = []}]
 		},
 		{
-			text = "William's mansion", 
+			text = tr("ALIRON15"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_3', args = []}]
 		},
 		{
-			text = "Merchant Stalls", 
+			text = tr("ALIRON16"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage12', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act4_merchant_1', args = []}]
 		},
 		{
-			text = "Merchant Stalls", 
+			text = tr("ALIRON17"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage13', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act4_merchant_5', args = []}]
 		},
 		{
-			text = "Pet Shop", 
+			text =tr("ALIRON18"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage15', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act5_pet_1', args = []}]
 		},
 		{
-			text = "Check the streets", 
+			text = tr("ALIRON19"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'lilia_search_start'},
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}
@@ -2874,7 +2874,7 @@ var fixed_location_options = { #override serialized data
 	],
 	elf_capital = [
 		{
-			text = "Meet Priestess", 
+			text = tr("ELF_CAPITAL1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'},
 				{type = 'decision', value = 'PrincessDead', check = false}, 
@@ -2883,7 +2883,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'looking_for_princess_elven_1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = false}
@@ -2891,7 +2891,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_start_1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL3"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, 
@@ -2900,7 +2900,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, {type = 'decision', value = 'HelevielPriestess', check = true}
@@ -2908,12 +2908,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest2_1', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL5"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage2', state = true}], 
 			args = [{code = 'start_event', data = 'priestess_sword_talk_1', args = []}]
 		},
 		{
-			 text = "Visit Erlen", 
+			 text =  tr("ELF_CAPITAL6"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage16', check = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRIESTESS_TALK_START'}
@@ -2921,7 +2921,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'priestess_talk_start', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL7"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_TALK_START'}, 
 				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true}
@@ -2929,12 +2929,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'after_temple_priestess_1', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL8"), 
 			reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage2', state = true}], 
 			args = [{code = 'start_event', data = 'after_temple_priestess_3', args = []}]
 		},
 		{
-			text = "Search For Lira", 
+			text =  tr("ELF_CAPITAL9"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LIRA_ENCOUNTER_1'}
@@ -2942,7 +2942,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lira_encounter_1', args = []}]
 		},
 		{
-			text = "Find Lira", 
+			text =  tr("ELF_CAPITAL10"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LIRA_ENCOUNTER_1'},
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
@@ -2951,29 +2951,29 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lira_encounter_4', args = []}]
 		},
 		{
-			text = "Initiate", 
+			text =  tr("ELF_CAPITAL11"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'erlen_leon_1', args = []}]
 		},
 	],
 	beastkin_capital = [
 		{
-			text = "Find Chieftain", 
+			text = tr("BEASTKIN_CAPITAL1"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], 
 			args = [{code = 'start_event', data = 'chieftain_meeting_1', args = []}]
 		},
 		{
-			text = "Visit Shaman's Lodge", 
+			text = tr("BEASTKIN_CAPITAL2"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], 
 			args = [{code = 'start_event', data = 'mae_meeting_1', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL3"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'savra_supplies_start', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage6', state = true}, 
 				{type = 'decision', value = 'canStartRitualPrep', check = true}
@@ -2981,7 +2981,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'savra_ritual_start', args = []}]
 		},
 		{
-			text = "Begin The Ritual", 
+			text = tr("BEASTKIN_CAPITAL5"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage77', state = true}, 
 				{type = 'decision', value = 'canStartRitual', check = true}
@@ -2989,7 +2989,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'ritual_start', args = []}]
 		},
 		{
-			text = "Visit Leon", 
+			text = tr("BEASTKIN_CAPITAL6"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage8', state = true}, 
 				{type = 'decision', value = 'canVisitLeon', check = true}
@@ -2997,51 +2997,51 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'leon_visit_start', args = []}]
 		},
 		{
-			text = "Visit Leon", 
+			text = tr("BEASTKIN_CAPITAL7"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
 			args = [{code = 'start_event', data = 'leon_visit_1_2', args = []}]
 		},
 		{
-			text = "Ask Around", 
+			text = tr("BEASTKIN_CAPITAL8"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
 			args = [{code = 'start_event', data = 'ask_around', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL9"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage11', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL10"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL11"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage13', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL12"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Check Surroundings", 
+			text = tr("BEASTKIN_CAPITAL13"), 
 			reqs = [{type = 'decision', value = 'got_excalibur', check = false}], 
 			args = [{code = 'start_event', data = 'excalibur_quest_1', args = []}]
 		},
 	],
 	settlement_plains1 = [ 
 		{
-			text = 'Combat', 
+			text = tr("SETTLEMENT_PLAINS1_1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
 			],
 			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]
 		},
 		{
-			text = 'Meet Duncan', 
+			text = tr("SETTLEMENT_PLAINS1_2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
 				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
@@ -3051,13 +3051,13 @@ var fixed_location_options = { #override serialized data
 	],
 	settlement_plains2 = [ 
 		{
-			text = 'Farmer', 
+			text = tr("SETTLEMENT_PLAINS2_1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
 			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]
 		},
 		{
-			text = 'Farmer', 
+			text = tr("SETTLEMENT_PLAINS2_2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
 			],
@@ -3066,51 +3066,51 @@ var fixed_location_options = { #override serialized data
 	],
 	settlement_forest1 = [
 		{
-			text = 'Check Surroundings', 
+			text = tr("SETTLEMENT_FOREST1_1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]
 		},
 		{
-			text = 'Check Surroundings', 
+			text = tr("SETTLEMENT_FOREST1_2"), 
 			reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
 		},
 	],
 	quest_fighters_lich = [
 		{
-			text = 'Proceed', 
+			text = tr("QUEST_FIGHTERS_LICH1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
 		}
 	],
 	quest_mages_xari = [
 		{
-			text = 'Search for Xari', 
+			text = tr("QUEST_MAGES_XARI1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}],
 			args = [{code = 'start_event', data = 'xari_encounter1', args = []}]
 		},
 		{
-			text = 'See Xari', 
+			text = tr("QUEST_MAGES_XARI2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'xari_encounter9', args = []}]
 		},
 		{
-			text = 'Enter', 
+			text = tr("QUEST_MAGES_XARI3"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]
 		},
 		{
-			text = 'Find Xari', 
+			text = tr("QUEST_MAGES_XARI4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'xari_clothes_1', args = []}]
 		},
 		{
-			text = 'Find Xari', 
+			text = tr("QUEST_MAGES_XARI5"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
 			args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]
@@ -3118,7 +3118,7 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_mages_fred = [
 		{
-			text = 'Search for Fred', 
+			text = tr("QUEST_MAGES_FRED1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}],
 			args = [{code = 'start_event', data = 'fred_1', args = []}]
@@ -3126,63 +3126,63 @@ var fixed_location_options = { #override serialized data
 	],
 	basic_threat_wolves = [
 		{
-			text = 'Proceed', 
+			text = tr("QUEST_MAGES_FRED1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_rebels = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_REBELS1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'rebels_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_goblins = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_GOBLINS1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'goblins_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_ogre = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_OGRE1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_troll = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_TROLL1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]
 		}
 	],
 	quest_cali_cave_location = [
 		{
-			text = 'Search Cave', 
+			text = tr("QUEST_CALI_CAVE_LOCATION1"), 
 			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
 			args = [{code = 'start_event', data = 'cali_intro_1', args = []}]
 		},
 	],
 	quest_cali_goblins_location = [
 		{
-			text = 'Search surroundings', 
+			text = tr("QUEST_CALI_GOBLINS_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
 			args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]
 		},
 	],
 	quest_cali_village = [
 		{
-			text = 'Follow Cali', 
+			text = tr("QUEST_CALI_VILLAGE1"), 
 			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], 
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
 	quest_final_operation_location = [ #not sure about code = 'value_check' here, as it should not be used in option's reqs
 		{
-			text = 'Search', 
+			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false},
@@ -3192,7 +3192,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]
 		},
 		{
-			text = 'Search', 
+			text = tr("QUEST_FINAL_OPERATION_LOCATION2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
@@ -3204,42 +3204,42 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_daisy_admirer_location = [
 		{
-			text = 'Approach', 
+			text = tr("quest_daisy_admirer_location1"), 
 			reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]
 		}
 	],
 	quest_gryphon_cave_location = [
 		{
-			text = 'Approach Cave', 
+			text = tr("quest_gryphon_cave_location1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
 	quest_leon_forest_2 = [
 		{
-			text = 'Search For Leon', 
+			text = tr("quest_leon_forest_2_1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
-			text = 'Search For Leon', 
+			text = tr("quest_white_stag_location1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},
 	],
 	quest_temple_location = [
 		{
-			text = 'Approach', 
+			text = tr("QUEST_TEMPLE_LOCATION1"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 			args = [{code = 'start_event', data = 'temple_start', args = []}]
 		},
 		{
-			text = 'Approach', 
+			text = tr("QUEST_TEMPLE_LOCATION2"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
@@ -3248,26 +3248,26 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_erlen_location = [
 		{
-			text = 'Search Around', 
+			text = tr("QUEST_ERLEN_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage1', state = true}],
 			args = [{code = 'start_event', data = 'erlern_encounter_start', args = []}]
 		},
 		{
-			text = 'Meet Erlen', 
+			text = tr("QUEST_ERLEN_LOCATION2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true} ],
 			args = [{code = 'start_event', data = 'erlen_lira_1', args = []}]
 		},
 		{
-			text = 'Meet Erlen', 
+			text = tr("QUEST_ERLEN_LOCATION3"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}],
 			args = [{code = 'start_event', data = 'erlen_lira_2', args = []}]
 		},
 	],
 	quest_troll_cave_location = [
 		{
-			text = 'Find troll', 
+			text = tr("QUEST_TROLL_CAVE_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
 			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
 		},

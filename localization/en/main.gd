@@ -11078,16 +11078,106 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	
 	#fixed_location_options
 	
-	ALIRON1 = "",
-	ALIRON2 = "",
-	ALIRON3 = "",
-	ALIRON4 = "",
-	ALIRON5 = "",
-	ALIRON6 = "",
-	ALIRON7 = "",
-	ALIRON8 = "",
-	ALIRON9 = "",
-	ALIRON10 = "",
+	ALIRON1 = "Check the streets",
+	ALIRON2 = "Search for Reim",
+	ALIRON3 = "Visit Fred's Dormitory",
+	ALIRON4 = "Visit Fred's Dormitory",
+	ALIRON5 = "Aliron Church",
+	ALIRON6 = "Aliron Church",
+	ALIRON7 = "Lead the convoy",
+	ALIRON8 = "Visit Jail",
+	ALIRON9 = "Meet princess in jail",
+	ALIRON10 = "Meet princess in jail",
+	ALIRON11 = "Meet Hunter Veteran",
+	ALIRON12 = "Aliron Church",
+	ALIRON13 = "Search for collectioner",
+	ALIRON14 = "William's mansion",
+	ALIRON15 = "William's mansion",
+	ALIRON16 = "Merchant Stalls",
+	ALIRON17 = "Merchant Stalls",
+	ALIRON18 = "Pet Shop",
+	ALIRON19 = "Check the streets",
+	
+	ELF_CAPITAL1 = "Meet Priestess",
+	ELF_CAPITAL2 = "Look For Smuggler",
+	ELF_CAPITAL3 = "Look For Smuggler",
+	ELF_CAPITAL4 = "Look For Smuggler",
+	ELF_CAPITAL5 = "Meet High Priestess",
+	ELF_CAPITAL6 = "Visit Erlen",
+	ELF_CAPITAL7 = "Meet High Priestess",
+	ELF_CAPITAL8 = "Meet High Priestess",
+	ELF_CAPITAL9 = "Search For Lira",
+	ELF_CAPITAL10 = "Find Lira",
+	ELF_CAPITAL11 = "Initiate",
+	
+	BEASTKIN_CAPITAL1 = "Find Chieftain",
+	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
+	BEASTKIN_CAPITAL3 = "Visit Savra",
+	BEASTKIN_CAPITAL4 = "Visit Savra",
+	BEASTKIN_CAPITAL5 = "Begin The Ritual",
+	BEASTKIN_CAPITAL6 = "Visit Leon",
+	BEASTKIN_CAPITAL7 = "Visit Leon",
+	BEASTKIN_CAPITAL8 = "Ask Around",
+	BEASTKIN_CAPITAL9 = "Visit Savra",
+	BEASTKIN_CAPITAL10 = "Visit Savra",
+	BEASTKIN_CAPITAL11 = "Visit Savra",
+	BEASTKIN_CAPITAL12 = "Visit Savra",
+	BEASTKIN_CAPITAL13 = "Check Surroundings",
+	
+	SETTLEMENT_PLAINS1_1 = "Combat",
+	SETTLEMENT_PLAINS1_2 = "Meet Duncan",
+	
+	SETTLEMENT_PLAINS2_1 = "Farmer",
+	SETTLEMENT_PLAINS2_2 = "Farmer",
+	
+	SETTLEMENT_FOREST1_1 = "Check Surroundings",
+	SETTLEMENT_FOREST1_2 = "Check Surroundings",
+	
+	QUEST_FIGHTERS_LICH1 = "Proceed",
+	
+	QUEST_MAGES_XARI1 = "Search for Xari",
+	QUEST_MAGES_XARI2 = "See Xari",
+	QUEST_MAGES_XARI3 = "Enter",
+	QUEST_MAGES_XARI4 = "Find Xari",
+	QUEST_MAGES_XARI5 = "Find Xari",
+	
+	QUEST_MAGES_FRED1 = "Search for Fred",
+	
+	BASIC_THREAT_WOLVES1 = "Proceed",
+	
+	BASIC_THREAT_REBELS1 = "Proceed",
+	
+	BASIC_THREAT_GOBLINS1 = "Proceed",
+	
+	BASIC_THREAT_OGRE1 = "Proceed",
+	
+	BASIC_THREAT_TROLL1 = "Proceed",
+	
+	QUEST_CALI_CAVE_LOCATION1 = "Search Cave",
+	
+	QUEST_CALI_GOBLINS_LOCATION1 = "Search surroundings",
+	
+	QUEST_CALI_VILLAGE1 = "Follow Cali",
+	
+	QUEST_FINAL_OPERATION_LOCATION1 = "Search",
+	QUEST_FINAL_OPERATION_LOCATION2 = "Search",
+	
+	quest_daisy_admirer_location1 = "Approach",
+	
+	quest_gryphon_cave_location1 = "Approach Cave",
+	
+	quest_leon_forest_2_1 = "Search For Leon",
+	
+	quest_white_stag_location1 = "Search For Leon",
+	
+	QUEST_TEMPLE_LOCATION1 = "Approach",
+	QUEST_TEMPLE_LOCATION2 = "Approach",
+	
+	QUEST_ERLEN_LOCATION1 = "Search Around",
+	QUEST_ERLEN_LOCATION2 = "Meet Erlen",
+	QUEST_ERLEN_LOCATION3 = "Meet Erlen",
+	
+	QUEST_TROLL_CAVE_LOCATION1 = "Find troll",
 	
 	
 }
