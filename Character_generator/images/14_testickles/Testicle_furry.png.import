@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes1.png-3cd87c97df57ebbea8741958b7c5fc10.stex"
+path="res://.import/Testicle_furry.png-6d5b689100a283f5211f255aa5d324d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/eyes1.png"
-dest_files=[ "res://.import/eyes1.png-3cd87c97df57ebbea8741958b7c5fc10.stex" ]
+source_file="res://Character_generator/images/14_testickles/Testicle_furry.png"
+dest_files=[ "res://.import/Testicle_furry.png-6d5b689100a283f5211f255aa5d324d1.stex" ]
 
 [params]
 
