@@ -2250,7 +2250,7 @@ var dungeons = {
 	},
 	quest_leon_forest = {
 		code = 'quest_leon_forest',
-		type = 'dungeon',
+		type = 'encounter',
 		name = "Leon's location",
 		classname = '',
 		descript = '',
@@ -2275,7 +2275,8 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [2,2],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
+#		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
+		scripteventdata = [],
 #		options = [
 #			{text = 'Search for Leon', reqs = [
 #				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage10'}],
@@ -3026,6 +3027,13 @@ var fixed_location_options = { #override serialized data
 			text = 'Approach Cave', 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
+		},
+	],
+	quest_leon_forest = [
+		{
+			text = 'Search For Leon', 
+			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}],
+			args = [{code = 'start_event', data = 'leon_fight_1', args = []}]
 		},
 	],
 	quest_leon_forest_2 = [
