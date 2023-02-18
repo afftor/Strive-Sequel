@@ -817,7 +817,10 @@ func death():
 		affect_char({type = 'effect', value = 'e_g_injury_delay'})
 		#in this case check for permadeath is not here but in various finish combat methods
 	else:
-		affect_char({type = 'effect', value = 'e_grave_injury'})
+		if ResourceScripts.game_globals.difficulty != 'hard':
+			affect_char({type = 'effect', value = 'e_grave_injury'})
+		else:
+			killed(false)
 		#add permadeath check here
 	#clean_effects()
 #	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
@@ -825,8 +828,8 @@ func death():
 #		print('warning! char died outside combat')
 #		characters_pool.call_deferred('cleanup')
 
-func killed():
-	process_event(variables.TR_DEATH)
+func killed(direct_call = true):
+	if direct_call: process_event(variables.TR_DEATH)
 	equipment.clear_equip()
 #	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
@@ -835,6 +838,9 @@ func killed():
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
+	if is_master():
+		input_handler.interactive_message('generic_lose_scene', '', {})
+
 
 func affect_char(i):
 	match i.type:

@@ -21,18 +21,6 @@ func start():
 	for i in data.upgrades:
 		ResourceScripts.game_res.upgrades[i] = data.upgrades[i]
 	
-	ResourceScripts.game_progress.decisions = data.decisions.duplicate()
-	ResourceScripts.game_progress.active_quests = data.active_quests.duplicate()
-	ResourceScripts.game_progress.completed_quests = data.completed_quests.duplicate()
-	if data.has('seen_dialogues'):
-		ResourceScripts.game_progress.seen_dialogues = data.seen_dialogues.duplicate()
-	if data.has("unlocked_classes"):
-		ResourceScripts.game_progress.unlocked_classes = data.unlocked_classes.duplicate()
-	
-	if data.has("total_reputation"):
-		for i in ['fighters','workers','servants','mages']:
-			globals.common_effects([{code = 'reputation', name = i, operant = '+', value = data.total_reputation}])
-	
 	gui_controller.char_creation = input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
 	if data.code != 'default':

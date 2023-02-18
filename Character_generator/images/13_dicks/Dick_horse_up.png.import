@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes1.png-3cd87c97df57ebbea8741958b7c5fc10.stex"
+path="res://.import/Dick_horse_up.png-ee8976508a10e3af35fd75b365f12f63.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/eyes1.png"
-dest_files=[ "res://.import/eyes1.png-3cd87c97df57ebbea8741958b7c5fc10.stex" ]
+source_file="res://Character_generator/images/13_dicks/Dick_horse_up.png"
+dest_files=[ "res://.import/Dick_horse_up.png-ee8976508a10e3af35fd75b365f12f63.stex" ]
 
 [params]
 
