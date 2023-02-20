@@ -653,7 +653,9 @@ func LoadGame(filename):
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
 	
-	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
+	while ResourceScripts.game_progress.planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
+		ResourceScripts.game_progress.planned_mansion_events.erase("ZCEvent_1")
+	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && !ResourceScripts.game_progress.planned_mansion_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
 		ResourceScripts.game_progress.planned_mansion_events.append("ZCEvent_1")
 	
 
@@ -1160,13 +1162,22 @@ func StartAreaCombat():
 	
 	var progress = input_handler.active_location.progress
 	
+	var rnd_enemies = true
 	for i in input_handler.active_location.stagedenemies:
 		if i.stage == progress.stage && i.level == progress.level:
+			rnd_enemies = false
 			enemydata = i.enemy#[i.enemy,1]
 	if enemydata == null:
 		enemydata = input_handler.active_location.enemies
 
 	enemies = make_enemies(enemydata)
+	if rnd_enemies and progress.stage == input_handler.active_location.levels["L" + str(progress.level)].stages:
+		char_roll_data.mboss = true
+		for pos in enemies:
+			if enemies[pos] == null: continue
+			if enemies[pos].ends_with('_rare'):
+				enemies[pos] = enemies[pos].trim_suffix("_rare")
+			enemies[pos] += "_miniboss"
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * progress.level
 	
@@ -1247,7 +1258,7 @@ func makerandomgroup(enemygroup):
 		if combatparty[pos] == null: continue
 		if rng.randf() < variables.enemy_rarechance:
 			champarr.push_back(pos)
-			char_roll_data.mboss = true
+			char_roll_data.rare = true
 	while champarr.size() > 3:
 		champarr.remove(rng.randi_range(0, champarr.size()-1))
 	for pos in champarr:
@@ -1331,6 +1342,7 @@ func reset_roll_data():
 	char_roll_data.no_roll = false
 	char_roll_data.max_amount = 4
 	char_roll_data.lvl = 0
+	char_roll_data.rare = false
 	char_roll_data.mboss = false
 	char_roll_data.uniq = false
 	char_roll_data.event = false
@@ -1348,7 +1360,7 @@ func reset_roll_data():
 func get_rolled_diff(): #excluding event bonus
 	var t_diff = char_roll_data.diff
 	t_diff += char_roll_data.lvl
-	if char_roll_data.mboss: t_diff += 1
+	if char_roll_data.rare: t_diff += 1
 	if char_roll_data.uniq: t_diff += 2 
 #	if char_roll_data.trait_bonus: t_diff += 2 not implemented
 	
@@ -1363,17 +1375,21 @@ func roll_characters():
 	var chance1 = 0.25
 	var chance2 = 0.1
 	
-	if char_roll_data.mboss: 
+	if char_roll_data.rare: 
 		chance1 = 0.5
 		chance2 = 0.15
 	if char_roll_data.uniq: 
 		chance1 = 1.0
+	if char_roll_data.mboss: 
+		chance1 = 0.5
+		chance2 = 0.0
 #	if char_roll_data.trait_bonus: not implemented
 #		chance1 = 0.5
 #		chance2 = 0.15
 	
 	var t_diff = get_rolled_diff()
 	if char_roll_data.event: t_diff += 2
+	if char_roll_data.mboss: t_diff += 2
 	
 	var t_race = 'random'
 	var areadata = input_handler.active_area
@@ -2157,3 +2173,40 @@ func valuecheck(dict):
 				return false
 			var master_sex = master_char.statlist.statlist.sex
 			return master_sex == dict.scene_sex
+
+
+func apply_starting_preset():
+	var preset =  starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
+	if preset.has('difficulty'):
+		ResourceScripts.game_globals.difficulty = preset.difficulty
+	if ResourceScripts.game_globals.skip_prologue:
+		preset = starting_presets.preset_data['advanced']
+	
+	ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
+	ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
+	ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
+	if preset.has('seen_dialogues'):
+		ResourceScripts.game_progress.seen_dialogues = preset.seen_dialogues.duplicate()
+	if preset.has("unlocked_classes"):
+		ResourceScripts.game_progress.unlocked_classes = preset.unlocked_classes.duplicate()
+	
+	if preset.has("total_reputation"):
+		for i in ['fighters','workers','servants','mages']:
+			globals.common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
+	
+	if preset.start in ['default','default_solo']:
+		input_handler.interactive_message('intro', '', {})
+	elif preset.start in ['skip_prologue']:
+		input_handler.interactive_message('servants_election_finish6')
+	common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 1}]}])
+	if preset.completed_quests.has("aliron_church_quest"):
+		ResourceScripts.game_progress.unlocked_classes.append('acolyte')
+	else:
+		common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
+
+
+
+func equip_char(ch, type, args):
+	var newgear = CreateGearItem(type, args)
+	AddItemToInventory(newgear)
+	ch.equip(newgear)

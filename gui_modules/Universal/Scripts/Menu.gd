@@ -42,6 +42,7 @@ func _ready():
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
+	$NewGamePanel/SkipP.connect("toggled", self, 'check_skip')
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
 
 	input_handler.ClearContainer($NewGamePanel/Settings)
@@ -76,14 +77,13 @@ func cycle_backgrounds():
 	add_child(tw)
 	var last_bg
 	var first_cycle = true
-	var scrolling_speed = 14.0
+	var scrolling_speed = 8.0
 	$background.texture = arr[0]
 	while true:
 		for bg in arr.size():
 			if first_cycle:
 				first_cycle = false
 				continue
-			print_debug($background.rect_position)
 			if $background.rect_position.x > -50:
 				tw.interpolate_property($background, "rect_position", $background.rect_position, Vector2(-200, 0), scrolling_speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			else:
@@ -112,6 +112,7 @@ func newgame(pressed, pressed_button):
 	self.current_pressed_btn = pressed_button
 	$NewGamePanel.visible = pressed
 	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
+	ResourceScripts.game_globals.skip_prologue = $NewGamePanel/SkipP.pressed
 
 func start_game():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'start_game_confirm', tr('STARTTHISGAME')])
@@ -212,7 +213,8 @@ func start_preset_set(button):
 	ResourceScripts.game_globals.starting_preset = data.code
 
 
-
+func check_skip(value):
+	ResourceScripts.game_globals.skip_prologue = value
 # func add_close_button(scene):
 # 	var pos_in_tree = scene.get_child_count()
 # 	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)

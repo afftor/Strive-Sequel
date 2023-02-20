@@ -17,9 +17,9 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_outer.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_log.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Universal/bar_battle_mp.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Universal/mana_p.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/combat/cloud1.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Universal/bar_battle_hp.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Universal/health_p.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_inventory.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_chars_l.png" type="Texture" id=22]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=23]
@@ -392,6 +392,7 @@ margin_bottom = 175.0
 mouse_filter = 2
 value = 50.0
 texture_progress = ExtResource( 20 )
+nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -405,6 +406,10 @@ margin_bottom = 193.0
 mouse_filter = 2
 value = 100.0
 texture_progress = ExtResource( 18 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 9.0
@@ -1023,7 +1028,7 @@ __meta__ = {
 [node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
 margin_left = 5.29205
 margin_top = 48.6518
-margin_right = 53.2921
+margin_right = 53.292
 margin_bottom = 53.6518
 value = 50.0
 texture_progress = ExtResource( 63 )

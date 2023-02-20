@@ -3,6 +3,7 @@ extends Reference
 
 #mostly static part
 var starting_preset = ''
+var skip_prologue = false
 var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'

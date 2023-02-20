@@ -70,7 +70,10 @@ var ero_scenes = [
 'christmas_scene',
 'lira_sex_1',
 'cali_bowl_1',
-'cali_bowl_naked_1'] 
+'cali_bowl_naked_1',
+'zephyra_bath_1',
+'zephyra_bath_2',
+'zephyra_bath_4',] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],

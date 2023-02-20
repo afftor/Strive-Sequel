@@ -1074,8 +1074,8 @@ func ask_to_marry(person, counter):
 		for i in unique_marry_rules[person.get_stat('unique')].values():
 			if globals.valuecheck(i.reqs):
 				gave_consent = i.agrees
-				unique_text = i.text
-				unique_descript = i.description
+				unique_text = tr(i.text)
+				unique_descript = tr(i.description)
 				
 				break
 	else:

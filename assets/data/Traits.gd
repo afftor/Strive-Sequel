@@ -1146,6 +1146,14 @@ var traits = {
 		visible = false,
 		effects = ['e_rare_precise'],
 	},
+	miniboss = {
+		code = 'miniboss',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_miniboss'],
+	},
 }
 var sex_traits = { #only for interaction tab
 	dislike_petting = {
