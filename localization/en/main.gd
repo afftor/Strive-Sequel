@@ -10856,6 +10856,584 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	TREAT_FOOD_LIKE1 = "Wow, how did you know this is my favorite?",
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
 	TREAT_FOOD_NEUTRAL1 = "Thank you, [master], I'll accept this.",
+	
+	#worlddata land
+	
+	PLAINS = "Plains",
+	FORESTS = "Forests",
+	MOUNTAINS = "Mountains",
+	STEPPE = "Steppe",
+	SEAS = "Seas",
+	BEASTKIN_TRIBE = "",
+	
+	#worlddata guild_upgrades
+	
+	SLAVENUMBERUPGRADE_NAME = "Hirelings number",
+	SLAVENUMBERUPGRADE_DISC = "Increases the number of available characters for hire at once by 1.",
+	
+	SLAVEQUALITY_NAME = "Hirelings quality",
+	SLAVEQUALITY_DISC = "Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher.",
+	
+	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
+	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",
+	
+	#factiondata
+	
+	FIGHTERS = "Fighters",
+	MAGES = "Mages",
+	WORKERS = "Workers",
+	SERVANTS = "Servants",
+	SLAVEMARKET = "Slave Market",
+	BEASTKIN_SLAVE_TRADER = "Beastkin Slave Trader",
+	ELVISH_SLAVE_TRADER = "Elvish Slave Trader",
+	EXOTIC_SLAVE_TRADER = "Exotic Slave Trader",
+	ALIRON_CHURCH = "Aliron Church",
+	
+	#locations
+	
+	SETTLEMENT_PLAINS1_ = "village_human_quest",
+	SETTLEMENT_PLAINS2_ = "village_human",
+	SETTLEMENT_FOREST1 = "village_human",
+	SETTLEMENT_MOUNTAINS1 = "village_human",
+	
+	#questdata
+	
+	FIGHTERS_TASK_EASY_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	FIGHTERS_TASK_EASY_RNDCND_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_RNDCND_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	
+	FIGHTERS_TASK_MEDIUM_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	FIGHTERS_TASK_MEDIUM_RNDCND_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_RNDCND_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	
+	FIGHTERS_TASK_HARD_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	FIGHTERS_TASK_HARD_RNDCND_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_RNDCND_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	
+	MAGES_TASK_EASY_NAME = "Library Assistance",
+	MAGES_TASK_EASY_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	MAGES_TASK_EASY_RNDCND_NAME = "Library Assistance",
+	MAGES_TASK_EASY_RNDCND_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	
+	MAGES_TASK_MEDIUM_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	MAGES_TASK_MEDIUM_RNDCND_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_RNDCND_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	
+	MAGES_TASK_HARD_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	MAGES_TASK_HARD_RNDCND_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_RNDCND_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	
+	WORKERS_TASK_EASY_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	WORKERS_TASK_EASY_RNDCND_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_RNDCND_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	
+	WORKERS_TASK_MEDIUM_NAME = "Wanted: Tailors",
+	WORKERS_TASK_MEDIUM_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	WORKERS_TASK_MEDIUM_RNDCND_NAME = " ",
+	WORKERS_TASK_MEDIUM_RNDCND_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	
+	WORKERS_TASK_HARD_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_DESC = "The worker guild requires additional help for a large building restoration.",
+	WORKERS_TASK_HARD_RNDCND_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_RNDCND_DESC = "The worker guild requires additional help for a large building restoration.",
+	
+	SERVANTS_TASK_EASY_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	SERVANTS_TASK_EASY_RNDCND_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_RNDCND_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	
+	SERVANTS_TASK_HARD_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	SERVANTS_TASK_HARD_RNDCND_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_RNDCND_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	
+	WORKERS_RESOURCES_NAME = "Resource gathering",
+	WORKERS_RESOURCES_DESC = "The Workers Guild requires additional resources for its needs.",
+	
+	WORKERS_FOOD_NAME = "Food supply",
+	WORKERS_FOOD_DESC = "The Workers Guild requires additional food supplies.",
+	
+	WORKERS_CRAFT_TOOLS_NAME = "Tool making",
+	WORKERS_CRAFT_TOOLS_DESC = "The Workers Guild requires some instruments crafted in a specific way.",
+	
+	WORKERS_THREAT_NAME = "Trouble Solving",
+	WORKERS_THREAT_DESC = "The Workers Guild requires a help with a certain issue.",
+	
+	FIGHTERS_THREAT_NAME = "Trouble Solving",
+	FIGHTERS_THREAT_DESC = "The Fighters Guild requires a help with a certain issue.",
+	
+	FIGHTERS_DUNGEON_NAME = "Dungeon clear",
+	FIGHTERS_DUNGEON_DESC = "The Fighters Guild requires a local dungeon to be cleared.",
+	
+	FIGHTERS_MONSTER_HUNT_NAME = "Monster Hunt",
+	FIGHTERS_MONSTER_HUNT_DESC = "The Fighters Guild has a task for hunting certain amount of enemies.",
+	
+	FIGHTERS_CRAFT_GEAR_NAME = "Gear Supply",
+	FIGHTERS_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",
+	
+	MAGES_MATERIALS_NAME = "Resource Supply",
+	MAGES_MATERIALS_DESC = "The Mages Guild requires additional resources for its needs.",
+	
+	MAGES_CRAFT_POTIONS_NAME = "Potion Making",
+	MAGES_CRAFT_POTIONS_DESC = "The Mages Guild needs to resupply their store room.",
+	
+	MAGES_THREAT_NAME = "Trouble Solving",
+	MAGES_THREAT_DESC = "The Mages Guild requires a help with a certain issue.",
+	
+	MAGES_CRAFT_GEAR_NAME = "Mage Gear Supply",
+	MAGES_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",
+	
+	SERVANTS_CRAFT_NAME = "Items Request",
+	SERVANTS_CRAFT_DESC = "The Servants Guild needs a specific crafted items",
+	
+	SERVANTS_SLAVE_NAME = "Slave Request",
+	SERVANTS_SLAVE_DESC = "The Servants Guild is in need of specific trained individual.",
+	
+	SERVANTS_SLAVE_WORK_NAME = "Assignment",
+	SERVANTS_SLAVE_WORK_DESC = "The Servants Guild is in need of someone performing a task for them.",
+	
+	FIGHTERS_SLAVE_WORK_NAME = "Assignment",
+	FIGHTERS_SLAVE_WORK_DESC = "The Fighters Guild is in need of someone performing a task for them.",
+	
+	#locationnames
+	VILLAGE_HUMAN1 = "Green",
+	VILLAGE_HUMAN2 = "Black",
+	VILLAGE_HUMAN3 = "Gold",
+	VILLAGE_HUMAN4 = "Stone",
+	VILLAGE_HUMAN5 = "Great",
+	VILLAGE_HUMAN6 = "Rain",
+	VILLAGE_HUMAN7 = "Storm",
+	VILLAGE_HUMAN8 = "Red",
+	VILLAGE_HUMAN9 = "River",
+	VILLAGE_HUMAN10 = "Oaken",
+	VILLAGE_HUMAN11 = "Ashen",
+	
+	VILLAGE_HUMAN2_1 = "wood",
+	VILLAGE_HUMAN2_2 = "ford",
+	VILLAGE_HUMAN2_3 = "vale",
+	VILLAGE_HUMAN2_4 = "burg",
+	VILLAGE_HUMAN2_5 = "wind",
+	VILLAGE_HUMAN2_6 = "ridge",
+	VILLAGE_HUMAN2_7 = "minster",
+	VILLAGE_HUMAN2_8 = "moor",
+	VILLAGE_HUMAN2_9 = "meadow",
+	
+	VILLAGE_HUMAN_QUEST1 = "Millford",
+	
+	BANDIT_FORT_NOUNS1 = "Fort",
+	BANDIT_FORT_NOUNS2 = "Stockade",
+	BANDIT_FORT_NOUNS3 = "Fastness",
+	BANDIT_FORT_NOUNS4 = "Castle",
+	BANDIT_FORT_NOUNS5 = "Outpost",
+	BANDIT_FORT_NOUNS6 = "Tower",
+	
+	BANDIT_FORT_ADJS1 = "Bandit",
+	BANDIT_FORT_ADJS2 = "Outlaw",
+	BANDIT_FORT_ADJS3 = "Brigand",
+	BANDIT_FORT_ADJS4 = "Robber",
+	BANDIT_FORT_ADJS5 = "Cutthroat",
+	
+	GOBLIN_CAVE_NOUNS1 = "Cave",
+	GOBLIN_CAVE_NOUNS2 = "Tunnel",
+	GOBLIN_CAVE_NOUNS3 = "Burrow",
+	GOBLIN_CAVE_NOUNS4 = "Cavern",
+	GOBLIN_CAVE_NOUNS5 = "Den",
+	
+	GOBLIN_CAVE_ADJS1 = "Dirty",
+	GOBLIN_CAVE_ADJS2 = "Murky",
+	GOBLIN_CAVE_ADJS3 = "Distant",
+	GOBLIN_CAVE_ADJS4 = "Red",
+	GOBLIN_CAVE_ADJS5 = "Blue",
+	GOBLIN_CAVE_ADJS6 = "Black",
+	GOBLIN_CAVE_ADJS7 = "Lower",
+	
+	BANDIT_DEN_NOUNS1 = "Hideout",
+	BANDIT_DEN_NOUNS2 = "Cave",
+	BANDIT_DEN_NOUNS3 = "Den",
+	BANDIT_DEN_NOUNS4 = "Pit",
+	
+	BANDIT_DEN_ADJS1 = "Bandit",
+	BANDIT_DEN_ADJS2 = "Dirty",
+	BANDIT_DEN_ADJS3 = "Murky",
+	BANDIT_DEN_ADJS4 = "Distant",
+	BANDIT_DEN_ADJS5 = "Red",
+	BANDIT_DEN_ADJS6 = "Blue",
+	BANDIT_DEN_ADJS7 = "Black",
+	BANDIT_DEN_ADJS8 = "Lower",
+	
+	GROVE_NOUNS1 = "Forest",
+	GROVE_NOUNS2 = "Grove",
+	GROVE_NOUNS3 = "Thicket",
+	GROVE_NOUNS4 = "Woodland",
+	GROVE_NOUNS5 = "Backwoods",
+	GROVE_NOUNS6 = "Cover",
+	GROVE_NOUNS7 = "Timberland",
+	GROVE_NOUNS8 = "Wildwood",
+	GROVE_NOUNS9 = "Orchard",
+	GROVE_NOUNS10 = "Spinney",
+	GROVE_NOUNS11 = "Hedge",
+	
+	GROVE_ADJS1 = "Dark",
+	GROVE_ADJS2 = "Green",
+	GROVE_ADJS3 = "White",
+	GROVE_ADJS4 = "Gold",
+	GROVE_ADJS5 = "Silver",
+	GROVE_ADJS6 = "Dense",
+	GROVE_ADJS7 = "Thick",
+	GROVE_ADJS8 = "Overgrown",
+	GROVE_ADJS9 = "Shiny",
+	GROVE_ADJS10 = "Bushy",
+	GROVE_ADJS11 = "Living",
+	
+	CRYPT_NOUNS1 = "Crypt",
+	CRYPT_NOUNS2 = "Cemetery",
+	CRYPT_NOUNS3 = "Grave",
+	CRYPT_NOUNS4 = "Catacomb",
+	CRYPT_NOUNS5 = "Mausoleum",
+	CRYPT_NOUNS6 = "Tomb",
+	CRYPT_NOUNS7 = "Vault",
+	CRYPT_NOUNS8 = "Chamber",
+	
+	CRYPT_ADJS1 = "Dark",
+	CRYPT_ADJS2 = "Black",
+	CRYPT_ADJS3 = "Blood",
+	CRYPT_ADJS4 = "Bone",
+	CRYPT_ADJS5 = "Rotten",
+	CRYPT_ADJS6 = "Flesh",
+	CRYPT_ADJS7 = "Evil",
+	CRYPT_ADJS8 = "Blood",
+	CRYPT_ADJS9 = "Red",
+	CRYPT_ADJS10 = "Grim",
+	CRYPT_ADJS11 = "Great",
+	CRYPT_ADJS12 = "Demonic",
+	CRYPT_ADJS13 = "Gloomy",
+	CRYPT_ADJS14 = "Deadly",
+	
+	MOUNTAINS_NOUNS1 = "Caves",
+	MOUNTAINS_NOUNS2 = "Tunnels",
+	MOUNTAINS_NOUNS3 = "Burrows",
+	MOUNTAINS_NOUNS4 = "Caverns",
+	MOUNTAINS_NOUNS5 = "Mine",
+	MOUNTAINS_NOUNS6 = "Quarry",
+	MOUNTAINS_NOUNS7 = "Chambers",
+	MOUNTAINS_NOUNS8 = "Dungeon",
+	
+	MOUNTAINS_ADJS1 = "Dark",
+	MOUNTAINS_ADJS2 = "Black",
+	MOUNTAINS_ADJS3 = "Distant",
+	MOUNTAINS_ADJS4 = "Red",
+	MOUNTAINS_ADJS5 = "Blue",
+	MOUNTAINS_ADJS6 = "Lower",
+	MOUNTAINS_ADJS7 = "Deep",
+	MOUNTAINS_ADJS8 = "Heavy",
+	MOUNTAINS_ADJS9 = "Crystal",
+	MOUNTAINS_ADJS10 = "Rocking",
+	
+	FIRE_DEPTHS_NOUNS1 = "Caves",
+	FIRE_DEPTHS_NOUNS2 = "Dungeon",
+	FIRE_DEPTHS_NOUNS3 = "Scar",
+	FIRE_DEPTHS_NOUNS4 = "Chambers",
+	FIRE_DEPTHS_NOUNS5 = "Halls",
+	FIRE_DEPTHS_NOUNS6 = "Lair",
+	
+	FIRE_DEPTHS_ADJS1 = "Burning",
+	FIRE_DEPTHS_ADJS2 = "Fire",
+	FIRE_DEPTHS_ADJS3 = "Scorching",
+	FIRE_DEPTHS_ADJS4 = "Heating",
+	
+	CITY_NOUNS1 = "Ruins",
+	CITY_NOUNS2 = "Chambers",
+	CITY_NOUNS3 = "Halls",
+	CITY_NOUNS4 = "Quarters",
+	CITY_NOUNS5 = "Labyrinth",
+	
+	CITY_ADJS1 = "Dark",
+	CITY_ADJS2 = "Distant",
+	CITY_ADJS3 = "Red",
+	CITY_ADJS4 = "Blue",
+	CITY_ADJS5 = "Black",
+	CITY_ADJS6 = "Lower",
+	CITY_ADJS7 = "Deep",
+	CITY_ADJS8 = "Heavy",
+	CITY_ADJS9 = "Crystal",
+	CITY_ADJS10 = "Rocking",
+	
+	ANCIENT_JUNGLES_NOUNS1 = "Thicket",
+	ANCIENT_JUNGLES_NOUNS2 = "Jungle",
+	ANCIENT_JUNGLES_NOUNS3 = "Rainforest",
+	ANCIENT_JUNGLES_NOUNS4 = "Wilds",
+	ANCIENT_JUNGLES_NOUNS5 = "Wildwood",
+	ANCIENT_JUNGLES_NOUNS6 = "Hedge",
+	ANCIENT_JUNGLES_NOUNS7 = "Chaparral",
+	ANCIENT_JUNGLES_NOUNS8 = "Morass",
+	ANCIENT_JUNGLES_NOUNS9 = "Tangle",
+	
+	ANCIENT_JUNGLES_ADJS1 = "Green",
+	ANCIENT_JUNGLES_ADJS2 = "Dark",
+	ANCIENT_JUNGLES_ADJS3 = "Dense",
+	ANCIENT_JUNGLES_ADJS4 = "Thick",
+	ANCIENT_JUNGLES_ADJS5 = "Overgrown",
+	ANCIENT_JUNGLES_ADJS6 = "Bushy",
+	ANCIENT_JUNGLES_ADJS7 = "Living",
+	ANCIENT_JUNGLES_ADJS8 = "Ancient",
+	ANCIENT_JUNGLES_ADJS9 = "Old",
+	ANCIENT_JUNGLES_ADJS10 = "Great",
+	ANCIENT_JUNGLES_ADJS11 = "Red",
+	ANCIENT_JUNGLES_ADJS12 = "Gloomy",
+	
+	#dungeonnoun
+	
+	DUNGEONNOUN1 = "Tunnels",
+	DUNGEONNOUN2 = "Quarters",
+	DUNGEONNOUN3 = "Caves",
+	DUNGEONNOUN4 = "Halls",
+	DUNGEONNOUN5 = "Delves",
+	DUNGEONNOUN6 = "Burrows",
+	DUNGEONNOUN7 = "Vault",
+	DUNGEONNOUN8 = "Labyrinth",
+	DUNGEONNOUN9 = "Chambers",
+	DUNGEONNOUN10 = "Crypt",
+	DUNGEONNOUN11 = "Tombs",
+	DUNGEONNOUN12 = "Catacombs",
+	DUNGEONNOUN13 = "Lair",
+	DUNGEONNOUN14 = "Dungeon",
+	DUNGEONNOUN15 = "Caverns",
+	
+	#dungeonadj
+	
+	DUNGEONADJ1 = "Dark",
+	DUNGEONADJ2 = "White",
+	DUNGEONADJ3 = "Red",
+	DUNGEONADJ4 = "Black",
+	DUNGEONADJ5 = "Molten",
+	DUNGEONADJ6 = "Distant",
+	DUNGEONADJ7 = "Eternal",
+	DUNGEONADJ8 = "Gloomy",
+	DUNGEONADJ9 = "Lower",
+	DUNGEONADJ10 = "Moaning",
+	DUNGEONADJ11 = "Demonic",
+	DUNGEONADJ12 = "Rocking",
+	DUNGEONADJ13 = "Living",
+	DUNGEONADJ14 = "Crystal",
+	DUNGEONADJ15 = "Deadly",
+	DUNGEONADJ16 = "Roaring",
+	
+	#dungeons
+	
+	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
+	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
+	
+	QUEST_MAGES_XARI_TEXT = "Xari's Location",
+	QUEST_MAGES_XARI_DESC = "",
+	
+	QUEST_MAGES_FRED_TEXT = "Fred's Location",
+	QUEST_MAGES_FRED_DESC = "",
+	
+	BASIC_THREAT_WOLVES_TEXT = "Threat - Wild wolves",
+	BASIC_THREAT_WOLVES_DESC = "Farmers report a pack of wild wolves attacking their flock.",
+	
+	BASIC_THREAT_REBELS_TEXT = "Threat - Rebels",
+	BASIC_THREAT_REBELS_DESC = "A group of rebels terrorize local villagers.",
+	
+	BASIC_THREAT_GOBLINS_TEXT = "Threat - Goblins",
+	BASIC_THREAT_GOBLINS_DESC = "A group of wild goblins attacking passing travelers.",
+	
+	BASIC_THREAT_OGRE_TEXT = "Threat - Ogre",
+	BASIC_THREAT_OGRE_DESC = "An angry ogre attacking passing travelers.",
+	
+	BASIC_THREAT_TROLL_TEXT = "Threat - Troll",
+	BASIC_THREAT_TROLL_DESC = "An angry troll attacking passing travelers.",
+	
+	DUNGEON_BANDIT_DEN_TEXT = "bandit_den",
+	DUNGEON_BANDIT_DEN_DESC = "",
+	
+	DUNGEON_BANDIT_FORT_TEXT = "bandit_fort",
+	DUNGEON_BANDIT_FORT_DESC = "",
+	
+	DUNGEON_UNDEAD_CRYPT_TEXT = "crypt",
+	DUNGEON_UNDEAD_CRYPT_DESC = "",
+	
+	DUNGEON_GOBLIN_CAVE_TEXT = "goblin_cave",
+	DUNGEON_GOBLIN_CAVE_DESC = "",
+	
+	DUNGEON_GROVE_TEXT = "grove",
+	DUNGEON_GROVE_DESC = "",
+	
+	DUNGEON_ANCIENT_JUNGLES_TEXT = "ancient_jungles",
+	DUNGEON_ANCIENT_JUNGLES_DESC = "",
+	
+	DUNGEON_FIRE_DEPTHS_TEXT = "fire_depths",
+	DUNGEON_FIRE_DEPTHS_DESC = "",
+	
+	QUEST_CALI_BANDITS_LOCATION_TEXT = "Bandit's Hideout",
+	QUEST_CALI_BANDITS_LOCATION_DESC = "",
+	
+	QUEST_CALI_VILLAGE_TEXT = "Cali's Home Village",
+	QUEST_CALI_VILLAGE_DESC = ".",
+	
+	QUEST_MINES_DUNGEON_TEXT = "Mines",
+	QUEST_MINES_DUNGEON_DESC = "",
+	
+	QUEST_FINAL_OPERATION_LOCATION_TEXT = "Rebels' Hideout",
+	QUEST_FINAL_OPERATION_LOCATION_DESC = "",
+	
+	QUEST_DAISY_ADMIRER_LOCATION_TEXT = "Ramont's Estate",
+	QUEST_DAISY_ADMIRER_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_FOREST_LOCATION_TEXT = "Gryphon Thicket",
+	QUEST_GRYPHON_FOREST_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_CAVE_LOCATION_TEXT = "Elder Gryphon Lair",
+	QUEST_GRYPHON_CAVE_LOCATION_DESC = "",
+	
+	QUEST_RITUAL_LOCATION_TEXT = "Herbs Field",
+	QUEST_RITUAL_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_DESC = "",
+	
+	QUEST_CALI_CAVE_LOCATION_TEXT = "Small Slavers Cave",
+	QUEST_CALI_CAVE_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_2_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_2_DESC = "",
+	
+	QUEST_WHITE_STAG_LOCATION_TEXT = "White Stag Location",
+	QUEST_WHITE_STAG_LOCATION_DESC = "",
+	
+	QUEST_TEMPLE_LOCATION_TEXT = "Temple",
+	QUEST_TEMPLE_LOCATION_DESC = "",
+	
+	QUEST_ERLEN_LOCATION_TEXT = "Erlens location",
+	QUEST_ERLEN_LOCATION_DESC = "",
+	
+	QUEST_CALI_GOBLINS_LOCATION_TEXT = "Threatened Village",
+	QUEST_CALI_GOBLINS_LOCATION_DESC = "",
+	
+	QUEST_TROLL_CAVE_LOCATION_TEXT = "Troll's Cave",
+	QUEST_TROLL_CAVE_LOCATION_DESC = "",
+	
+	QUEST_DUNGEON_GROVE_TEXT = "grove",
+	QUEST_DUNGEON_GROVE_DESC = "",
+	
+	#eventscrits
+	
+	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
+	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
+	
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Attack",
+	
+	#fixed_location_options
+	
+	ALIRON1 = "Check the streets",
+	ALIRON2 = "Search for Reim",
+	ALIRON3 = "Visit Fred's Dormitory",
+	ALIRON4 = "Visit Fred's Dormitory",
+	ALIRON5 = "Aliron Church",
+	ALIRON6 = "Aliron Church",
+	ALIRON7 = "Lead the convoy",
+	ALIRON8 = "Visit Jail",
+	ALIRON9 = "Meet princess in jail",
+	ALIRON10 = "Meet princess in jail",
+	ALIRON11 = "Meet Hunter Veteran",
+	ALIRON12 = "Aliron Church",
+	ALIRON13 = "Search for collectioner",
+	ALIRON14 = "William's mansion",
+	ALIRON15 = "William's mansion",
+	ALIRON16 = "Merchant Stalls",
+	ALIRON17 = "Merchant Stalls",
+	ALIRON18 = "Pet Shop",
+	ALIRON19 = "Check the streets",
+	
+	ELF_CAPITAL1 = "Meet Priestess",
+	ELF_CAPITAL2 = "Look For Smuggler",
+	ELF_CAPITAL3 = "Look For Smuggler",
+	ELF_CAPITAL4 = "Look For Smuggler",
+	ELF_CAPITAL5 = "Meet High Priestess",
+	ELF_CAPITAL6 = "Visit Erlen",
+	ELF_CAPITAL7 = "Meet High Priestess",
+	ELF_CAPITAL8 = "Meet High Priestess",
+	ELF_CAPITAL9 = "Search For Lira",
+	ELF_CAPITAL10 = "Find Lira",
+	ELF_CAPITAL11 = "Initiate",
+	
+	BEASTKIN_CAPITAL1 = "Find Chieftain",
+	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
+	BEASTKIN_CAPITAL3 = "Visit Savra",
+	BEASTKIN_CAPITAL4 = "Visit Savra",
+	BEASTKIN_CAPITAL5 = "Begin The Ritual",
+	BEASTKIN_CAPITAL6 = "Visit Leon",
+	BEASTKIN_CAPITAL7 = "Visit Leon",
+	BEASTKIN_CAPITAL8 = "Ask Around",
+	BEASTKIN_CAPITAL9 = "Visit Savra",
+	BEASTKIN_CAPITAL10 = "Visit Savra",
+	BEASTKIN_CAPITAL11 = "Visit Savra",
+	BEASTKIN_CAPITAL12 = "Visit Savra",
+	BEASTKIN_CAPITAL13 = "Check Surroundings",
+	
+	SETTLEMENT_PLAINS1_1 = "Combat",
+	SETTLEMENT_PLAINS1_2 = "Meet Duncan",
+	
+	SETTLEMENT_PLAINS2_1 = "Farmer",
+	SETTLEMENT_PLAINS2_2 = "Farmer",
+	
+	SETTLEMENT_FOREST1_1 = "Check Surroundings",
+	SETTLEMENT_FOREST1_2 = "Check Surroundings",
+	
+	QUEST_FIGHTERS_LICH1 = "Proceed",
+	
+	QUEST_MAGES_XARI1 = "Search for Xari",
+	QUEST_MAGES_XARI2 = "See Xari",
+	QUEST_MAGES_XARI3 = "Enter",
+	QUEST_MAGES_XARI4 = "Find Xari",
+	QUEST_MAGES_XARI5 = "Find Xari",
+	
+	QUEST_MAGES_FRED1 = "Search for Fred",
+	
+	BASIC_THREAT_WOLVES1 = "Proceed",
+	
+	BASIC_THREAT_REBELS1 = "Proceed",
+	
+	BASIC_THREAT_GOBLINS1 = "Proceed",
+	
+	BASIC_THREAT_OGRE1 = "Proceed",
+	
+	BASIC_THREAT_TROLL1 = "Proceed",
+	
+	QUEST_CALI_CAVE_LOCATION1 = "Search Cave",
+	
+	QUEST_CALI_GOBLINS_LOCATION1 = "Search surroundings",
+	
+	QUEST_CALI_VILLAGE1 = "Follow Cali",
+	
+	QUEST_FINAL_OPERATION_LOCATION1 = "Search",
+	QUEST_FINAL_OPERATION_LOCATION2 = "Search",
+	
+	quest_daisy_admirer_location1 = "Approach",
+	
+	quest_gryphon_cave_location1 = "Approach Cave",
+	
+	quest_leon_forest_2_1 = "Search For Leon",
+	
+	quest_white_stag_location1 = "Search For Leon",
+	
+	QUEST_TEMPLE_LOCATION1 = "Approach",
+	QUEST_TEMPLE_LOCATION2 = "Approach",
+	
+	QUEST_ERLEN_LOCATION1 = "Search Around",
+	QUEST_ERLEN_LOCATION2 = "Meet Erlen",
+	QUEST_ERLEN_LOCATION3 = "Meet Erlen",
+	
+	QUEST_TROLL_CAVE_LOCATION1 = "Find troll",
+	
+	
 }
 
 
