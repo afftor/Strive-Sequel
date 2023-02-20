@@ -120,7 +120,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 #		pos = Vector2(pos.x, pos.y - get_global_rect().end.y + screen.size.y)
 #		self.set_global_position(pos)
 	if pos.y + full_height > screen.size.y:
-		pos = Vector2(pos.x, screen.size.y - full_height)
+		pos = Vector2(pos.x, screen.size.y - full_height - 15)
 		self.set_global_position(pos)
 		
 	set_process(true)
