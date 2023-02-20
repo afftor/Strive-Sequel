@@ -8,6 +8,8 @@ func start():
 		return
 	var data = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].duplicate()
 	slave_number = data.free_slave_number
+	if ResourceScripts.game_globals.skip_prologue:
+		slave_number += 1 #stub
 	for i in data.materials:
 		ResourceScripts.game_res.materials[i] = data.materials[i]
 	for i in data.items:

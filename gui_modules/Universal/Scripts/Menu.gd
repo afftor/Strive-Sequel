@@ -55,7 +55,7 @@ func _ready():
 		newbutton.connect('pressed', self, 'gameplay_setting', [newbutton])
 	input_handler.ClearContainer($NewGamePanel/PresetContainer/VBoxContainer)
 	for i in starting_presets.preset_data.values():
-		if !i.has("code"):
+		if !i.has("code") or i.has('tags') and i.tags.has('hidden'):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
 		newbutton.text = i.name
