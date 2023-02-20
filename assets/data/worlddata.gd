@@ -553,7 +553,7 @@ var locations = {
 		code = 'settlement_plains1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = tr("SETTLEMENT_PLAINS1_"),
+		name = tr("VILLAGE_HUMAN_QUEST1"),
 		races = [],
 		leader = '',
 		captured = false, #disable button to travel, button has tooltip saying it's untravable
@@ -595,7 +595,7 @@ var locations = {
 		code = 'settlement_plains2',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = tr("SETTLEMENT_PLAINS2_"),
+		name = "",
 		races = [],
 		leader = '',
 		character_data = {
@@ -631,7 +631,7 @@ var locations = {
 		code = 'settlement_forest1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = tr("SETTLEMENT_FOREST1"),
+		name = "Forest Settlement",
 		races = [],
 		leader = '',
 		character_data = {
@@ -1610,8 +1610,8 @@ var questdata = {
 
 
 var locationnames = {
-	village_human1 = [tr("VILLAGE_HUMAN1"),tr("VILLAGE_HUMAN2"),tr("VILLAGE_HUMAN3"),tr("VILLAGE_HUMAN4"),tr("VILLAGE_HUMAN5"),tr("VILLAGE_HUMAN6"),tr("VILLAGE_HUMAN7"),tr("VILLAGE_HUMAN8"),tr("VILLAGE_HUMAN9"),tr("VILLAGE_HUMAN10"),tr("VILLAGE_HUMAN11")],
-	village_human2 = [tr("VILLAGE_HUMAN2_1"),tr("VILLAGE_HUMAN2_2"),tr("VILLAGE_HUMAN2_3"),tr("VILLAGE_HUMAN2_4"),tr("VILLAGE_HUMAN2_5"),tr("VILLAGE_HUMAN2_6"),tr("VILLAGE_HUMAN2_7"),tr("VILLAGE_HUMAN2_8"),tr("VILLAGE_HUMAN2_9")],
+	settlement_plains1 = [tr("VILLAGE_HUMAN1"),tr("VILLAGE_HUMAN2"),tr("VILLAGE_HUMAN3"),tr("VILLAGE_HUMAN4"),tr("VILLAGE_HUMAN5"),tr("VILLAGE_HUMAN6"),tr("VILLAGE_HUMAN7"),tr("VILLAGE_HUMAN8"),tr("VILLAGE_HUMAN9"),tr("VILLAGE_HUMAN10"),tr("VILLAGE_HUMAN11")],
+	settlement_plains2 = [tr("VILLAGE_HUMAN2_1"),tr("VILLAGE_HUMAN2_2"),tr("VILLAGE_HUMAN2_3"),tr("VILLAGE_HUMAN2_4"),tr("VILLAGE_HUMAN2_5"),tr("VILLAGE_HUMAN2_6"),tr("VILLAGE_HUMAN2_7"),tr("VILLAGE_HUMAN2_8"),tr("VILLAGE_HUMAN2_9")],
 	village_human_quest = [tr("VILLAGE_HUMAN_QUEST1")],
 	bandit_fort_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
 	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
@@ -1780,7 +1780,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss',3]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [['dungeon_find_chest_easy', 1],['dungeon_find_armory_easy',1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]],
 		levels = [2,3],
 		resources = ['cloth','leather','iron','wood','clothsilk'],
@@ -1856,7 +1856,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		bgm = "dungeon",
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['goblins_easy_boss1',1],['goblins_easy_boss2',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
 		levels = [2,3],
 		resources = ['bone','leather','stone','wood'],

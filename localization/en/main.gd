@@ -384,7 +384,7 @@ var TranslationDict = {
 	TOOLTIPPROGRESSREQUIRED = "Work Units required",
 	TOOLTIPSAVECHARACTER = "Save Character Template",
 	TOOLTIPLOADCHARACTER = "Load Character Template",
-	
+	TOOLTIPSKIPPROLOGUE = "Skips prologue quests and starts first story arc. The loan mission is disabled. ",
 	
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 
@@ -2405,7 +2405,7 @@ var TranslationDict = {
 	LOCATIONNAMEQUEST_LEON_FOREST_2 = "Leon's location",
 	LOCATIONNAMEQUEST_CALI_BANDITS_LOCATION = "Bandits' Hideout",
 	LOCATIONNAMEQUEST_MINES_DUNGEON = "Mines",
-
+	HIRELINGFOUND = "Found Recruit",
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
@@ -2413,7 +2413,7 @@ var TranslationDict = {
 	SETTLEMENT_PLAINS2 = "Settlement",
 	SETTLEMENT_PLAINS3 = "Settlement",
 	SETTLEMENT_PLAINS4 = "Settlement",
-
+	SETTLEMENT_FOREST1 = "Settlement",
 	DUNGEONDIFFICULTY = "Difficulty",
 	DUNGEONDIFFICULTYEASY = "Easy",
 	DUNGEONDIFFICULTYMEDIUM = "Medium",
@@ -2422,7 +2422,9 @@ var TranslationDict = {
 	ENEMYBANDIT_MELEE = "Bandit",
 	ENEMYBANDIT_ARCHER = "Ranged Bandit",
 	ENEMYBANDIT_MAGE = "Bandit Mage",
-	ENEMYBANDIT_BOSS = "Bandit Boss",
+	ENEMYBANDIT_BOSS_MELEE = "Slashing Brute",
+	ENEMYBANDIT_BOSS_ARCHER = "Deadeye",
+	ENEMYBANDIT_BOSS_MAGE = "Rogue Sorcerer",
 	ENEMYRAMONT_BOSS = "Ramont",
 	ENEMYHECTOR_BOSS = "Hector",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
@@ -10893,7 +10895,6 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	
 	SETTLEMENT_PLAINS1_ = "village_human_quest",
 	SETTLEMENT_PLAINS2_ = "village_human",
-	SETTLEMENT_FOREST1 = "village_human",
 	SETTLEMENT_MOUNTAINS1 = "village_human",
 	
 	#questdata

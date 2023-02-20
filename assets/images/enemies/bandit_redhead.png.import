@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes1.png-63b94ff9b5bdddef99e00a66cd48248e.stex"
+path="res://.import/bandit_redhead.png-1448b404538969c957ee07f8fdded9a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/10_eyes/eyes1.png"
-dest_files=[ "res://.import/eyes1.png-63b94ff9b5bdddef99e00a66cd48248e.stex" ]
+source_file="res://assets/images/enemies/bandit_redhead.png"
+dest_files=[ "res://.import/bandit_redhead.png-1448b404538969c957ee07f8fdded9a2.stex" ]
 
 [params]
 

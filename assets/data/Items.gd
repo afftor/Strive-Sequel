@@ -183,6 +183,7 @@ var partmaterials = {
 		bonedragon = {atk = 8, matk = 23},
 		fire_ruby = {atk = 1, matk = 13, damage_mod_fire = 0.3},
 		ice_crystal = {atk = 3, matk = 12, damage_mod_water = 0.25},
+		earth_shard = {atk = 5, matk = 10, damage_mod_earth = 0.2},
 		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4},
 	},
 	ArmorBaseCloth = {

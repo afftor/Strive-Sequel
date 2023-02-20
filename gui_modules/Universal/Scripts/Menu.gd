@@ -43,6 +43,7 @@ func _ready():
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
 	$NewGamePanel/SkipP.connect("toggled", self, 'check_skip')
+	globals.connecttexttooltip($NewGamePanel/SkipP, tr("TOOLTIPSKIPPROLOGUE"))
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
 
 	input_handler.ClearContainer($NewGamePanel/Settings)
