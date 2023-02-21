@@ -200,6 +200,8 @@ func FinishCombat(victory = true):
 	victory_seq_run = false
 	HideFighterStats()
 	set_process_input(false)
+	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.close() #for test
 	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
