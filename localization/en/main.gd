@@ -10861,12 +10861,12 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	
 	#worlddata land
 	
-	PLAINS = "Plains",
-	FORESTS = "Forests",
-	MOUNTAINS = "Mountains",
-	STEPPE = "Steppe",
-	SEAS = "Seas",
-	BEASTKIN_TRIBE = "",
+	AREAPLAINS = "Plains",
+	AREAFORESTS = "Forests",
+	AREAMOUNTAINS = "Mountains",
+	AREASTEPPE = "Steppe",
+	AREASEAS = "Seas",
+	AREABEASTKIN_TRIBE = "Far Forests",
 	
 	#worlddata guild_upgrades
 	
