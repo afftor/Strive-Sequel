@@ -2618,7 +2618,7 @@ var TranslationDict = {
 	STARTINGDILOGUE1_1 = "— I'm glad you like it.\n\n",
 	STARTINGDILOGUE1_2 = "— It surely is.\n\n",
 	STARTINGDILOGUE1_3 = "— Oh, a [man] of business? I like it.\n\n",
-	STARTINGDILOGUE1_4 = "— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of 1.000 gold and is due in 2 weeks.",
+	STARTINGDILOGUE1_4 = "— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of {custom_text_function=GetLoanSum#0|} gold and is due in 2 weeks.",
 	STARTINGDIALOGUE1REPLY1 = "Understood",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
 	STARTINGDIALOGUE2_1 = "— Good. ",
@@ -3046,10 +3046,10 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
 
 	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
-	LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
-	LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
-	LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
-	LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
+	LOAN_SUCCESS1 = "They took {custom_text_function=GetLoanSum#0|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#1|}th day and will be requiring {custom_text_function=GetLoanSum#1|} gold.",
+	LOAN_SUCCESS2 = "They took {custom_text_function=GetLoanSum#1|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#2|}th day and will be requiring {custom_text_function=GetLoanSum#2|} gold... Unless something else can be done about it.",
+	LOAN_SUCCESS3 = "They took {custom_text_function=GetLoanSum#2|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#3|}th day and will be requiring {custom_text_function=GetLoanSum#3|} gold... Unless something else can be done about it.",
+	LOAN_SUCCESS4 = "They took {custom_text_function=GetLoanSum#3|} gold and departed quickly. This was your last payment and now you are free to do what you want...",
 	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
 
 	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sex Factor}. It also increase chance to unlock a trait. ",
@@ -9732,10 +9732,10 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
-	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by Week 3 Day 1.",
-	MAIN_QUEST_LOAN_STAGE1 = "You must have over 3000 gold by Week 5 Day 1.",
-	MAIN_QUEST_LOAN_STAGE2 = "You must have over 10000 gold by Week 8 Day 1.",
-	MAIN_QUEST_LOAN_STAGE3 = "You must have over 86000 gold by Week 15 Day 1.",
+	MAIN_QUEST_LOAN_STAGE0 = "You must have over {custom_text_function=GetLoanSum#0|} gold by {custom_text_function=GetLoanDayDetailed#0|}.",
+	MAIN_QUEST_LOAN_STAGE1 = "You must have over {custom_text_function=GetLoanSum#1|} gold by {custom_text_function=GetLoanDayDetailed#1|}.",
+	MAIN_QUEST_LOAN_STAGE2 = "You must have over {custom_text_function=GetLoanSum#2|} gold by {custom_text_function=GetLoanDayDetailed#2|}.",
+	MAIN_QUEST_LOAN_STAGE3 = "You must have over {custom_text_function=GetLoanSum#3|} gold by {custom_text_function=GetLoanDayDetailed#3|}.",
 
 	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
 	GUILDS_INTRODUCTION_NAME2 = "First Step",

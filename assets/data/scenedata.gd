@@ -1691,10 +1691,10 @@ var dialogue_inits = {
 
 var dict = {
 MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home. ",
-MAIN_QUEST_LOAN_STAGE0 = 'You must have over 1000 gold by 14th day.',
-MAIN_QUEST_LOAN_STAGE1 = 'By 28th day have at least 3000 gold.',
-MAIN_QUEST_LOAN_STAGE2 = 'By 50th day have at least 10000 gold.',
-MAIN_QUEST_LOAN_STAGE3 = 'By 100th day have at least 86000 gold.',
+MAIN_QUEST_LOAN_STAGE0 = 'You must have over {custom_text_function=GetLoanSum#0|} gold by {custom_text_function=GetLoanDay#0|}th day.',
+MAIN_QUEST_LOAN_STAGE1 = 'By {custom_text_function=GetLoanDay#1|}th day have at least {custom_text_function=GetLoanSum#1|} gold.',
+MAIN_QUEST_LOAN_STAGE2 = 'By {custom_text_function=GetLoanDay#2|}th day have at least {custom_text_function=GetLoanSum#2|} gold.',
+MAIN_QUEST_LOAN_STAGE3 = 'By {custom_text_function=GetLoanDay#3|}th day have at least {custom_text_function=GetLoanSum#3|} gold.',
 MAIN_QUEST_LOAN_NAME = 'The Loan',
 
 
