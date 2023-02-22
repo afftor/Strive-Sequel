@@ -1968,7 +1968,7 @@ func common_effects(effects):
 			'finish_worktask':
 				ResourceScripts.game_progress.work_quests_finished.push_back(i.value)
 			'pay_loan':
-				ResourceScripts.game_res.update_money('-', get_loan_sum(i.stage))
+				ResourceScripts.game_res.update_money('-', get_loan_sum(i.stage - 1))
 			'election_finish':
 				if ResourceScripts.game_globals.difficulty != 'hard':
 					common_effects([{code = 'complete_quest', value = 'main_quest_loan'}, {code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}]) #stub, do not want recursion here

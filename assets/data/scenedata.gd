@@ -1131,13 +1131,14 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = "STARTINGDIALOGUE4_1",
 		common_effects = [
-			{code = 'add_timed_event', value = "loan_event1",
-				args = [
-					{type = 'fixed_date',
-					date = 15,
-					hour = 1}
-					]
-			},
+#			{code = 'add_timed_event', value = "loan_event1",
+#				args = [
+#					{type = 'fixed_date',
+#					date = 15,
+#					hour = 1}
+#					]
+#			},
+			{code = 'plan_loan_event', stage = 1},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
 			],
@@ -1155,15 +1156,17 @@ var scenedict = {
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',
 			bonus_effects = [
-				{code = 'money_change', operant = '-', value = 1000},
+#				{code = 'money_change', operant = '-', value = 1000},
+				{code = 'pay_loan', stage = 1},
 				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage1'},
-				{code = 'add_timed_event', value = "loan_event2",
-					args = [
-						{type = 'fixed_date',
-						date = 29,
-						hour = 1}
-						]
-					},
+				{code = 'plan_loan_event', stage = 2},
+#				{code = 'add_timed_event', value = "loan_event2",
+#					args = [
+#						{type = 'fixed_date',
+#						date = 29,
+#						hour = 1}
+#						]
+#					},
 				{code = 'rewrite_save'}
 				]
 			}],
@@ -1189,15 +1192,17 @@ var scenedict = {
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',
 			bonus_effects = [
-				{code = 'money_change', operant = '-', value = 3000},
+#				{code = 'money_change', operant = '-', value = 3000},
+				{code = 'pay_loan', stage = 2},
 				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage2'},
-				{code = 'add_timed_event', value = "loan_event3",
-					args = [
-						{type = 'fixed_date',
-						date = 50,
-						hour = 1}
-						]
-					},
+				{code = 'plan_loan_event', stage = 3},
+#				{code = 'add_timed_event', value = "loan_event3",
+#					args = [
+#						{type = 'fixed_date',
+#						date = 50,
+#						hour = 1}
+#						]
+#					},
 				{code = 'rewrite_save'}
 				]
 			}],
@@ -1222,15 +1227,17 @@ var scenedict = {
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',
 			bonus_effects = [
-				{code = 'money_change', operant = '-', value = 10000},
+#				{code = 'money_change', operant = '-', value = 10000},
+				{code = 'pay_loan', stage = 3},
 				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage3'},
-				{code = 'add_timed_event', value = "loan_event4",
-					args = [
-						{type = 'fixed_date',
-						date = 99,
-						hour = 1}
-						]
-					},
+				{code = 'plan_loan_event', stage = 4},
+#				{code = 'add_timed_event', value = "loan_event4",
+#					args = [
+#						{type = 'fixed_date',
+#						date = 99,
+#						hour = 1}
+#						]
+#					},
 				{code = 'rewrite_save'}
 				]
 			}],
@@ -1253,7 +1260,11 @@ var scenedict = {
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS4", reqs = []}],
 			options = [
-			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 86000}, {code = 'complete_quest', value = 'main_quest_loan'}, {code = 'rewrite_save'}]},
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [
+#				{code = 'money_change', operant = '-', value = 86000},
+				{code = 'pay_loan', stage = 4},
+				{code = 'complete_quest', value = 'main_quest_loan'}, 
+				{code = 'rewrite_save'}]},
 			],
 			},
 			{
