@@ -2316,7 +2316,8 @@ func see_quest_info(quest):
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\nStats:\n"
 				var tooltiptext = "Slave Required:\n"
-				tooltiptext += "Sex: " + sex
+				if sex != "":
+					tooltiptext += "Sex: " + sex
 				if !stats.empty():
 					for st in stats:
 						stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
