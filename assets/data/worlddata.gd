@@ -2939,7 +2939,7 @@ var fixed_location_options = { #override serialized data
 	],
 	basic_threat_wolves = [
 		{
-			text = tr("QUEST_MAGES_FRED1"), 
+			text = tr("BASIC_THREAT_WOLVES1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
 		}
