@@ -8,8 +8,8 @@ func start():
 		return
 	var data = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].duplicate()
 	slave_number = data.free_slave_number
-	if ResourceScripts.game_globals.skip_prologue:
-		slave_number += 1 #stub
+	if !ResourceScripts.game_globals.skip_prologue:
+		slave_number -= 1 #stub
 	for i in data.materials:
 		ResourceScripts.game_res.materials[i] = data.materials[i]
 	for i in data.items:
@@ -25,11 +25,11 @@ func start():
 	
 	gui_controller.char_creation = input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
-	if data.code != 'default':
-		while slave_number > 0:
-			slave_number -= 1
-			input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
-			yield(input_handler, 'CharacterCreated')
+#	if data.code != 'default':
+	while slave_number > 0:
+		slave_number -= 1
+		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
+		yield(input_handler, 'CharacterCreated')
 	
 	finish()
 

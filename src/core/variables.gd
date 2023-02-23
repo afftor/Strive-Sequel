@@ -308,6 +308,10 @@ var authority_lines = { #possibly obsolete
 	high = 'Reverence',
 }
 
+
+var base_loan_sum = [1000, 3000, 10000, 30000]
+var base_loan_dates = [15, 29, 50, 99]
+
 # obsolete
 #var obed_mod_per_difficuty = {
 #	easy = 1.0,

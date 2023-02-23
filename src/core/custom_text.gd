@@ -1,7 +1,11 @@
 extends Node
 
 func get_custom_text(data):
-	return call(data)
+	if data.find('#') != -1:
+		var newdata = data.split('#')
+		return call(newdata[0], newdata[1])
+	else:
+		return call(data)
 
 var elect_support_dict = {
 	servants_election_support = "You have support of Servants Guild",
@@ -78,3 +82,19 @@ func RomanNumberConvert(value):
 		10:
 			rval = 'X'
 	return rval
+
+
+func GetLoanSum(stage):
+	return str(globals.get_loan_sum(int(stage)))
+
+
+func GetLoanDay(stage):
+	return str(variables.base_loan_dates[int(stage)])
+
+
+func GetLoanDayDetailed(stage):
+	var day = variables.base_loan_dates[int(stage)]
+	var res = "Week %d Day %d"
+	day = ResourceScripts.game_globals.get_week_and_day_custom(day)
+	day[0] += 1 #or not if function above is incorrect
+	return res % day
