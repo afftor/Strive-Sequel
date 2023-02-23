@@ -2240,9 +2240,9 @@ func see_quest_info(quest):
 				)
 				text += (
 					"\n"
-					+ worlddata.dungeons[i.type].name
+					+ tr(worlddata.dungeons[i.type].name)
 					+ ": "
-					+ worlddata.dungeons[i.type].descript
+					+ tr(worlddata.dungeons[i.type].descript)
 				)
 			'complete_dungeon':
 				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
