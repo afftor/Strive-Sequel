@@ -1188,8 +1188,6 @@ func combat_defeat():
 		globals.common_effects(encounter_lose_script)
 		encounter_lose_script = null
 		return
-	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
-		gui_controller.dialogue.close()
 	if combat_explore and combat_advance:
 		exploration_node.advance()
 	combat_advance = false

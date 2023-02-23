@@ -2143,7 +2143,7 @@ func quest_board(pressed, pressed_button):
 					$QuestBoard/ScrollContainer/VBoxContainer
 				)
 				newbutton.get_node("Label").text = tr(k.name)
-				newbutton.get_node("Requester").text = k.source.capitalize()
+				newbutton.get_node("Requester").text = tr(k.source.capitalize())
 				var text = tr(k.descript)
 				newbutton.get_node("RichTextLabel2").bbcode_text = globals.TextEncoder(text)
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
@@ -2316,7 +2316,8 @@ func see_quest_info(quest):
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\nStats:\n"
 				var tooltiptext = "Slave Required:\n"
-				tooltiptext += "Sex: " + sex
+				if sex != "":
+					tooltiptext += "Sex: " + sex
 				if !stats.empty():
 					for st in stats:
 						stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
@@ -2432,7 +2433,7 @@ func see_quest_info(quest):
 					+ "(Master Charm Bonus)"
 				)
 	$QuestBoard/QuestDetails/Requester.text = ""
-	$QuestBoard/QuestDetails/Requester.text += input_handler.active_area.factions[quest.source].name + " "
+	$QuestBoard/QuestDetails/Requester.text += tr(input_handler.active_area.factions[quest.source].name) + " "
 
 	$QuestBoard/QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$QuestBoard/QuestDetails/time/Label.text = "Limit: " + str(quest.time_limit) + " days."

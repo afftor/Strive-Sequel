@@ -220,8 +220,7 @@ func show_quest_info(quest):
 						newbutton.get_node("TextureRect").texture = load(i.icon)
 					quest_descript += t_text
 					globals.connecttexttooltip(newbutton, t_text)
-
-
+		
 		for i in quest.rewards:
 			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/rewards)
 			match i.code:
