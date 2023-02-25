@@ -189,8 +189,8 @@ var lands = {
 var guild_upgrades = {
 	slavenumberupgrade = {
 		code = 'slavenumberupgrade',
-		descript = tr("SLAVENUMBERUPGRADE_DISC"),
-		name = tr("SLAVENUMBERUPGRADE_NAME"),
+		descript = "SLAVENUMBERUPGRADE_DISC",
+		name = "SLAVENUMBERUPGRADE_NAME",
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -198,8 +198,8 @@ var guild_upgrades = {
 	},
 	slavequality = {
 		code = 'slavequality',
-		descript = tr("SLAVEQUALITY_DISC"),
-		name = tr("SLAVEQUALITY_NAME"),
+		descript = "SLAVEQUALITY_DISC",
+		name = "SLAVEQUALITY_DISC",
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -1355,8 +1355,8 @@ var questdata = {
 	
 	servants_craft_items_easy = {
 		code = 'servants_craft_items_easy',
-		name = tr("SERVANTS_CRAFT_NAME"),
-		descript = tr("SERVANTS_CRAFT_DESC"),
+		name = "SERVANTS_CRAFT_NAME",
+		descript = "SERVANTS_CRAFT_DESC",
 		randomconditions = [{code = 'random_item', type = ['leather_collar','animal_gloves','animal_ears','handcuffs','bell_collar'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -2939,7 +2939,7 @@ var fixed_location_options = { #override serialized data
 	],
 	basic_threat_wolves = [
 		{
-			text = tr("QUEST_MAGES_FRED1"), 
+			text = tr("BASIC_THREAT_WOLVES1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
 		}
