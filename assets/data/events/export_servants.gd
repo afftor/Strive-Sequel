@@ -232,7 +232,7 @@ var data = {
 		],
 		options = [
 			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue',
-			dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5},
+			dialogue_argument = 1, change_dialogue_type = 2},
 		],
 	},
 
@@ -279,7 +279,7 @@ var data = {
 		],
 		options = [
 			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue',
-			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1}
+			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 2.0, tags = ["blackscreen_transition_slow"]}
 		]
 	},
 

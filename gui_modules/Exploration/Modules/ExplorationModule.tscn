@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=2]
+[gd_scene load_steps=141 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=25]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=26]
-[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=27]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=28]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=29]
 [ext_resource path="res://assets/images/gui/gui icons/food.png" type="Texture" id=30]
@@ -480,7 +479,6 @@ __meta__ = {
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -490,6 +488,7 @@ margin_left = 56.0
 margin_top = 147.0
 margin_right = 461.0
 margin_bottom = 636.0
+theme = ExtResource( 19 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -544,13 +543,6 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="VScrollBar" type="VScrollBar" parent="SlaveMarket/SlaveList"]
-margin_left = 23.0
-margin_top = 160.0
-margin_right = 35.0
-margin_bottom = 667.0
-theme = ExtResource( 19 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SlaveMarket"]
 margin_left = 733.0
@@ -2096,7 +2088,6 @@ texture_hover = ExtResource( 53 )
 margin_top = 104.765
 margin_right = 40.0
 margin_bottom = 144.765
-script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2107,6 +2098,7 @@ margin_top = 150.0
 margin_right = 548.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 480, 0 )
+theme = ExtResource( 19 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2205,22 +2197,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VScrollBar" type="VScrollBar" parent="AreaShop/SellBlock"]
-margin_left = 36.0
-margin_top = 141.0
-margin_right = 48.0
-margin_bottom = 591.0
-theme = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BuyBlock" type="Control" parent="AreaShop"]
 margin_left = 521.97
 margin_top = 104.765
 margin_right = 561.97
 margin_bottom = 144.765
-script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2230,6 +2211,7 @@ margin_left = 56.0
 margin_top = 150.0
 margin_right = 536.0
 margin_bottom = 600.0
+theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2323,16 +2305,6 @@ custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Item"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VScrollBar" type="VScrollBar" parent="AreaShop/BuyBlock"]
-margin_left = 552.07
-margin_top = 141.0
-margin_right = 564.07
-margin_bottom = 591.0
-theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2757,24 +2729,29 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Information"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BuyLocation"]
 margin_left = 20.0
 margin_top = 104.0
 margin_right = 335.0
 margin_bottom = 564.0
+theme = ExtResource( 19 )
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuyLocation/ScrollContainer"]
 margin_right = 315.0
-rect_min_size = Vector2( 315, 0 )
+rect_min_size = Vector2( 300, 0 )
 
 [node name="Button" type="Button" parent="BuyLocation/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 315.0
-margin_bottom = 52.0
+margin_right = 300.0
+margin_bottom = 55.0
 theme = ExtResource( 42 )
 toggle_mode = true
 text = "Location Name"

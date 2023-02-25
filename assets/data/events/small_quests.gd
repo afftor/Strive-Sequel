@@ -402,7 +402,7 @@ var data = {
 	
 	act1_scene = {
 		image = null,
-		tags = ["dialogue_scene", "master_translate", "blackscreen_transition_common"],
+		tags = ["dialogue_scene", "master_translate"],
 		custom_background = "act1_art",
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
