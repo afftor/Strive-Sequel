@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=5]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionUpgradesModule.gd" type="Script" id=6]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=7]
-[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=9]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Upgrades_BG.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/SimplePanel.tres" type="StyleBox" id=11]
@@ -57,7 +56,6 @@ margin_left = 755.44
 margin_right = 1074.44
 margin_bottom = 385.0
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,7 +124,6 @@ __meta__ = {
 margin_right = 388.0
 margin_bottom = 385.0
 custom_styles/panel = SubResource( 2 )
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

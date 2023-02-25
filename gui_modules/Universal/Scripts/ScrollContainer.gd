@@ -6,6 +6,7 @@ var v_scroll_bar
 var mouse_entered = false
 var buttons_count = 0
 
+# if basic scroll is broken then this scrips breaks too
 
 func _ready():
 	scroll_area = $ScrollContainer.get_rect().size
