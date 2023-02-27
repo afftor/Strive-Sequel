@@ -113,7 +113,7 @@ position = Vector2( 219, 5 )
 
 [node name="Spine" type="Bone2D" parent="HumanF1"]
 material = SubResource( 1 )
-position = Vector2( 15, -584 )
+position = Vector2( 15, -593 )
 rotation = 1.5708
 rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -345,19 +345,25 @@ rotation = -1.5708
 texture = ExtResource( 36 )
 
 [node name="Tits" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( 7.00006, 9.99997 )
+position = Vector2( 24, 9.99991 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="Tits_tex" type="Sprite" parent="HumanF1/Spine/Tits"]
+[node name="Tits_tex" type="Polygon2D" parent="HumanF1/Spine/Tits"]
 material = SubResource( 4 )
-position = Vector2( 24.0001, 9.99994 )
+position = Vector2( -522.998, 413.002 )
 rotation = -1.5708
 texture = ExtResource( 21 )
+skeleton = NodePath("../../..")
+polygon = PoolVector2Array( 350.497, 453.783, 496.619, 457.031, 547.761, 528.468, 532.337, 593.411, 456.841, 614.517, 360.238, 611.27, 301.79, 589.352, 288.801, 538.209, 292.048, 509.797, 319.649, 472.454, 340.957, 469.404, 411.702, 531.106, 403.723, 563.021, 384.574, 589.085, 352.66, 600.255, 320.213, 589.085, 303.191, 567.808, 297.872, 535.894, 315.957, 496.532, 326.064, 538.553, 425, 482.17, 417.553, 525.787, 417.021, 552.383, 429.787, 579.511, 456.915, 599.723, 489.362, 599.192, 516.058, 583.713, 529.551, 553.129, 526.596, 517.277, 509.043, 485.362, 489.071, 472.169, 500.765, 537.836, 365.957, 464.085, 384.574, 467.277, 401.064, 480.574, 409.043, 505.043, 439.362, 468.34, 465.426, 464.617, 420.213, 504.511, 411.17, 457.702 )
+uv = PoolVector2Array( 350.497, 453.783, 496.619, 457.031, 547.761, 528.468, 532.337, 593.411, 456.841, 614.517, 360.238, 611.27, 301.79, 589.352, 288.801, 538.209, 292.048, 509.797, 319.649, 472.454, 340.957, 469.404, 411.702, 531.106, 403.723, 563.021, 384.574, 589.085, 352.66, 600.255, 320.213, 589.085, 303.191, 567.808, 297.872, 535.894, 315.957, 496.532, 326.064, 538.553, 425, 482.17, 417.553, 525.787, 417.021, 552.383, 429.787, 579.511, 456.915, 599.723, 489.362, 599.192, 516.058, 583.713, 529.551, 553.129, 526.596, 517.277, 509.043, 485.362, 489.071, 472.169, 500.765, 537.836, 365.957, 464.085, 384.574, 467.277, 401.064, 480.574, 409.043, 505.043, 439.362, 468.34, 465.426, 464.617, 420.213, 504.511, 411.17, 457.702 )
+polygons = [ PoolIntArray( 19, 10, 18 ), PoolIntArray( 18, 17, 19 ), PoolIntArray( 17, 16, 19 ), PoolIntArray( 16, 15, 19 ), PoolIntArray( 15, 14, 19 ), PoolIntArray( 14, 13, 19 ), PoolIntArray( 13, 12, 19 ), PoolIntArray( 12, 11, 19 ), PoolIntArray( 31, 25, 24 ), PoolIntArray( 31, 24, 23 ), PoolIntArray( 31, 23, 22 ), PoolIntArray( 31, 22, 21 ), PoolIntArray( 31, 30, 29 ), PoolIntArray( 31, 29, 28 ), PoolIntArray( 31, 28, 27 ), PoolIntArray( 31, 27, 26 ), PoolIntArray( 31, 26, 25 ), PoolIntArray( 35, 19, 11 ), PoolIntArray( 34, 19, 35 ), PoolIntArray( 33, 19, 34 ), PoolIntArray( 32, 19, 33 ), PoolIntArray( 10, 19, 32 ), PoolIntArray( 38, 21, 31 ), PoolIntArray( 38, 31, 20 ), PoolIntArray( 20, 31, 36 ), PoolIntArray( 36, 31, 37 ), PoolIntArray( 37, 31, 30 ), PoolIntArray( 36, 33, 34, 20 ), PoolIntArray( 34, 35, 38, 20 ), PoolIntArray( 35, 11, 21, 38 ), PoolIntArray( 11, 12, 22, 21 ), PoolIntArray( 13, 23, 22, 12 ), PoolIntArray( 14, 24, 23, 13 ), PoolIntArray( 24, 4, 5, 14 ), PoolIntArray( 36, 39, 33 ), PoolIntArray( 39, 1, 37, 36 ), PoolIntArray( 39, 0, 32, 33 ), PoolIntArray( 0, 39, 1 ), PoolIntArray( 37, 30, 1 ), PoolIntArray( 1, 29, 30 ), PoolIntArray( 1, 29, 28, 2 ), PoolIntArray( 2, 28, 27 ), PoolIntArray( 27, 3, 2 ), PoolIntArray( 27, 26, 3 ), PoolIntArray( 26, 25, 3 ), PoolIntArray( 25, 4, 24 ), PoolIntArray( 3, 4, 25 ), PoolIntArray( 15, 5, 6 ), PoolIntArray( 15, 5, 14 ), PoolIntArray( 16, 15, 6 ), PoolIntArray( 16, 7, 6 ), PoolIntArray( 17, 7, 16 ), PoolIntArray( 17, 8, 18 ), PoolIntArray( 8, 7, 17 ), PoolIntArray( 18, 9, 8 ), PoolIntArray( 9, 10, 18 ), PoolIntArray( 32, 10, 9, 0 ) ]
+bones = [ NodePath("Spine"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderR/ArmR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderR/ArmR/HandR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderL/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/ShoulderL/ArmL/HandL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Taz"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Taz/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Taz/LegR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Taz/Penis"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Pregnancy"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Tits"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Head/Face"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Spine/Head/Hair"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+internal_vertex_count = 30
 
 [node name="Tits_nipple_tex" type="Sprite" parent="HumanF1/Spine/Tits"]
 material = SubResource( 1 )
-position = Vector2( 22.0001, 10.9999 )
+position = Vector2( 19, 8.99994 )
 rotation = -1.5708
 texture = ExtResource( 22 )
 

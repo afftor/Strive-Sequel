@@ -1969,6 +1969,16 @@ func common_effects(effects):
 				roll_hirelings(i.location)
 			'finish_worktask':
 				ResourceScripts.game_progress.work_quests_finished.push_back(i.value)
+			'pay_loan':
+				ResourceScripts.game_res.update_money('-', get_loan_sum(i.stage - 1))
+			'election_finish':
+				if ResourceScripts.game_globals.difficulty != 'hard':
+					common_effects([{code = 'complete_quest', value = 'main_quest_loan'}, {code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}]) #stub, do not want recursion here
+			'plan_loan_event':
+				var newevent = {reqs = [], code = 'loan_event' + str(i.stage + 1)}
+				var newreq = [{type = 'date', operant = 'eq', value = variables.base_loan_dates[i.stage]}, {type = 'hour', operant = 'eq', value = 1}]
+				newevent.reqs += newreq
+				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -2210,3 +2220,12 @@ func equip_char(ch, type, args):
 	var newgear = CreateGearItem(type, args)
 	AddItemToInventory(newgear)
 	ch.equip(newgear)
+
+
+func get_loan_sum(n):
+	var res = variables.base_loan_sum[n]
+	match ResourceScripts.game_globals.difficulty:
+		'easy':
+			res *= 0.25
+	
+	return res
