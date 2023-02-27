@@ -102,7 +102,7 @@ var data = {
 		reqs = [], 
 		text = [{text = "RITUAL_6_1_2", reqs = []}],
 		options = [ {
-			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue', change_dialogue_type = 1
+			code = 'after_ritual_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue', change_dialogue_type = 1, close_speed = 1.0
 		}, ]
 	},
 	

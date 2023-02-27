@@ -115,7 +115,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [ {text = "HALLOWEEN_EVENT11", reqs = []} ],
 		options = [ {
-			code = 'halloween_12', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 1
+			code = 'halloween_12', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 1, close_speed = 2.0
 			}
 		]
 	},

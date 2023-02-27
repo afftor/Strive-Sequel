@@ -97,7 +97,7 @@ var data = {
 		custom_background = "christmas_scene",
 		
 		options = [ {
-			code = 'christmas_8', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 1
+			code = 'christmas_8', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0, change_dialogue_type = 1, close_speed = 1.0
 		} ]
 	},
 	

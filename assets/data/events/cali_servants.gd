@@ -505,7 +505,8 @@ var data = {
 				type = 'next_dialogue',
 				reqs = [],
 				dialogue_argument = 1,
-				change_dialogue_type = 1
+				change_dialogue_type = 1,
+				close_speed = 1.0
 			}
 		],
 	},

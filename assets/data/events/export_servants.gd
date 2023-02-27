@@ -284,7 +284,7 @@ var data = {
 		],
 		options = [
 			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue',
-			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 2.0, tags = ["blackscreen_transition_slow"]}
+			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 2.0}
 		]
 	},
 
