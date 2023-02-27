@@ -877,6 +877,7 @@ func dialogue_option_selected(option):
 				if option.has("close_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
 					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)
+					get_tree().create_timer(option.close_speed/2).connect("timeout", get_spec_node(self.NODE_DIALOGUE), "clear_character_images") # fixes bug when we can see old sprites for a moment at the start of transition
 					get_spec_node(self.NODE_DIALOGUE).hide()
 				else:
 					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2))

@@ -450,7 +450,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "AMELIA_BONDAGE_8", reqs = []}],
 		options = [ {
-			code = 'amelia_bondage_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1
+			code = 'amelia_bondage_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1, close_speed = 1.0
 		}, ],
 	},
 	

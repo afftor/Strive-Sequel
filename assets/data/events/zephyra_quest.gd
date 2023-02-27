@@ -100,7 +100,7 @@ var data = {
 	
 	zephyra_daisy_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "zephyra", character2 = "daisy_default",
+		reqs = [], character = "zephyra", unique_character2 = "daisy",
 		custom_background = "church_event",
 		text = [{text = "ZEPHYRA_DAISY_1", reqs = []}],
 		options = [ {
@@ -110,7 +110,7 @@ var data = {
 	
 	zephyra_daisy_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "zephyra", character2 = "daisy_default",
+		reqs = [], character = "zephyra", unique_character2 = "daisy",
 		custom_background = "church_event",
 		text = [
 			{text = "ZEPHYRA_DAISY_2_1", reqs = [{type = 'dialogue_seen', check = true, value = 'TRAINING_COMPLETE_FUCKTOY_REPLY_0'}]},
@@ -307,7 +307,7 @@ var data = {
 		save_scene_to_gallery = true,
 		custom_background = "zephyra_bath_4",
 		options = [ {
-			code = 'zephyra_bath_6', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 1
+			code = 'zephyra_bath_6', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1.0
 		}, ]
 	},
 	

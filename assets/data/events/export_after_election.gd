@@ -3,7 +3,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		character2 = "myr",
-		tags = ["dialogue_scene", "master_translate"],
+		tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_slow'],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE1", reqs = []}
 		],

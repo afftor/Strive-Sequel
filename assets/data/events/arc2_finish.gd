@@ -596,7 +596,7 @@ var data = {
 		text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_6', reqs = [],}], 
 		options = [ {
 			code = 'after_temple_priestess_5_1and2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			change_dialogue_type = 1,
+			change_dialogue_type = 1, close_speed = 1.0
 		},  ]
 	},
 	
