@@ -1,3 +1,9 @@
+0.6.8c
+Fixed a critical issue with scene clearing on leaving to main menu
+Fixed some more bugs related to events
+0.6.8b
+Fixed some gui issues
+Fixed multiple text errors where translation didn't trigger
 0.6.8a
 Fixed normal start not starting main questline
 Fixed save import

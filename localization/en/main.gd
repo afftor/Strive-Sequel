@@ -10894,8 +10894,8 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	#locations
 	
 	SETTLEMENT_PLAINS1_ = "village_human_quest",
-	SETTLEMENT_PLAINS2_ = "village_human",
-	SETTLEMENT_MOUNTAINS1 = "village_human",
+	SETTLEMENT_PLAINS2_ = "Settlement",
+	SETTLEMENT_MOUNTAINS1 = "Settlement",
 	
 	#questdata
 	
