@@ -60,6 +60,39 @@ func _ready():
 	connect("screen_changed", self, "update_modules")
 
 
+func revert_scenes_data():
+	current_screen = null
+	previous_screen = null
+	windows_opened.clear()
+	window_button_connections.clear()
+	is_dialogue_just_started = true
+	dialogue_window_type = 1
+	dialogue_txt = ""
+	input_handler.CloseableWindowsArray.clear() #maybe obsolete, but for safety reason
+	input_handler.CurrentScene = null # the same as prev
+	input_handler.slave_list_node = null
+	input_handler.skill_list_node = null
+	input_handler.Mansion = null
+	input_handler.SlaveModule = null
+	input_handler.PreviousScene = null
+	input_handler.interacted_character = null
+	input_handler.exploration_node = null
+	input_handler.active_character = null
+	input_handler.scene_characters.clear()
+	input_handler.scene_loot = null
+	input_handler.active_area = null
+	input_handler.active_location = null
+	input_handler.selected_location = null
+	input_handler.active_faction.clear()
+	input_handler.activated_skill = null
+	input_handler.target_character = null
+	input_handler.ghost_items.clear()
+	input_handler.encounter_win_script = null
+	input_handler.encounter_lose_script = null
+	input_handler.selectedquest = null
+	
+
+
 func update_modules():
 	if current_screen == null:
 		return
