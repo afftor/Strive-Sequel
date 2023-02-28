@@ -2583,7 +2583,7 @@ var fixed_location_options = { #override serialized data
 				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_bribe_take'},
 				{type = 'decision', value = 'fred_bribe_taken', check = true}
 			], 
-			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
+			args = [{code = 'start_event', data = 'fred_bribe_take', args = []}]
 		},
 		{
 			text = tr("ALIRON5"), 
