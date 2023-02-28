@@ -768,7 +768,7 @@ func return_to_main_menu():
 	input_handler.CurrentScene.queue_free()
 	input_handler.ChangeScene('menu')
 	ResourceScripts.revert_gamestate()
-	gui_controller.current_screen = null
+	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
 
 func addrelations(person, person2, value):
@@ -1779,7 +1779,7 @@ func common_effects(effects):
 				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
-				globals.return_to_main_menu()
+				return_to_main_menu()
 			'complete_active_location_quests':
 				if input_handler.active_location.has('questid'):
 					var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
