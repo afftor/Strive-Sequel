@@ -20,9 +20,9 @@ func update_shader():
 			material.set_shader_param("anchor%d" % (i + 1), nd.anchor)
 			material.set_shader_param("move%d" % (i + 1), nd.get_deform())
 			material.set_shader_param("range%d" % (i + 1), nd.gizmo_extents)
-			print(nd.anchor)
-			print(nd.get_deform())
-			print(nd.gizmo_extents)
+#			print(nd.anchor)
+#			print(nd.get_deform())
+#			print(nd.gizmo_extents)
 		else:
 			material.set_shader_param("move%d" % (i + 1), nd.get_deform())
 			material.set_shader_param("range%d" % (i + 1), 0)
