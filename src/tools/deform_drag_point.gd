@@ -15,6 +15,8 @@ func set_lock_anchor(value):
 	lock_anchor_position = value
 	if value:
 		anchor = position
+	else:
+		get_parent().update_shader() 
 
 
 func get_deform():
