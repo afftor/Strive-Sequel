@@ -1704,7 +1704,7 @@ func common_effects(effects):
 						args["label"] = "Quest Updated"
 						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
 						args["sound"] = "class_aquired"
-						input_handler.play_animation("quest", args)
+						input_handler.imation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
 					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")

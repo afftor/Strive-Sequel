@@ -1,0 +1,79 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 anchor1 = vec2(0.0);
+uniform vec2 anchor2 = vec2(0.0);
+uniform vec2 anchor3 = vec2(0.0);
+uniform vec2 anchor4 = vec2(0.0);
+uniform vec2 anchor5 = vec2(0.0);
+uniform vec2 anchor6 = vec2(0.0);
+
+uniform vec2 move1 = vec2(0.0);
+uniform vec2 move2 = vec2(0.0);
+uniform vec2 move3 = vec2(0.0);
+uniform vec2 move4 = vec2(0.0);
+uniform vec2 move5 = vec2(0.0);
+uniform vec2 move6 = vec2(0.0);
+
+uniform float range1 = 0.0;
+uniform float range2 = 0.0;
+uniform float range3 = 0.0;
+uniform float range4 = 0.0;
+uniform float range5 = 0.0;
+uniform float range6 = 0.0;
+
+uniform float power = 1.0;
+
+void vertex(){
+	vec2 offset = vec2(0.0);
+	float dist = length(VERTEX - anchor1);
+	
+	if (dist < range1){
+		offset += move1 * (range1 - dist) * power / range1;
+	}
+	dist = length(VERTEX - anchor2);
+	if (dist < range2){
+		offset += move2 * (range2 - dist) * power / range2;
+	}
+	dist = length(VERTEX - anchor3);
+	if (dist < range3){
+		offset += move3 * (range3 - dist) * power / range3;
+	}
+	dist = length(VERTEX - anchor4);
+	if (dist < range4){
+		offset += move4 * (range4 - dist) * power / range4;
+	}
+	dist = length(VERTEX - anchor5);
+	if (dist < range5){
+		offset += move5 * (range5 - dist) * power / range5;
+	}
+	dist = length(VERTEX - anchor6);
+	if (dist < range6){
+		offset += move6 * (range6 - dist) * power / range6;
+	}
+	VERTEX += offset;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/anchor1 = Vector2( 0, 0 )
+shader_param/anchor2 = Vector2( 0, 0 )
+shader_param/anchor3 = Vector2( 0, 0 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 0.0
+shader_param/range2 = 0.0
+shader_param/range3 = 0.0
+shader_param/range4 = 0.0
+shader_param/range5 = 0.0
+shader_param/range6 = 0.0
+shader_param/power = 1.0

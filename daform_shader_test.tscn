@@ -1,0 +1,176 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/tools/auto_poly.gd" type="Script" id=1]
+[ext_resource path="res://Character_generator/images/00_body_nude/tits_normal.png" type="Texture" id=2]
+[ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=3]
+[ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 anchor1 = vec2(0.0);
+uniform vec2 anchor2 = vec2(0.0);
+uniform vec2 anchor3 = vec2(0.0);
+uniform vec2 anchor4 = vec2(0.0);
+uniform vec2 anchor5 = vec2(0.0);
+uniform vec2 anchor6 = vec2(0.0);
+
+uniform vec2 move1 = vec2(0.0);
+uniform vec2 move2 = vec2(0.0);
+uniform vec2 move3 = vec2(0.0);
+uniform vec2 move4 = vec2(0.0);
+uniform vec2 move5 = vec2(0.0);
+uniform vec2 move6 = vec2(0.0);
+
+uniform float range1 = 0.0;
+uniform float range2 = 0.0;
+uniform float range3 = 0.0;
+uniform float range4 = 0.0;
+uniform float range5 = 0.0;
+uniform float range6 = 0.0;
+
+uniform float power = 1.0;
+
+void vertex(){
+	vec2 offset = vec2(0.0);
+	float dist = length(VERTEX - anchor1);
+	
+	if (dist < range1){
+		offset += move1 * (range1 - dist) * power / range1;
+	}
+	dist = length(VERTEX - anchor2);
+	if (dist < range2){
+		offset += move2 * (range2 - dist) * power / range2;
+	}
+	dist = length(VERTEX - anchor3);
+	if (dist < range3){
+		offset += move3 * (range3 - dist) * power / range3;
+	}
+	dist = length(VERTEX - anchor4);
+	if (dist < range4){
+		offset += move4 * (range4 - dist) * power / range4;
+	}
+	dist = length(VERTEX - anchor5);
+	if (dist < range5){
+		offset += move5 * (range5 - dist) * power / range5;
+	}
+	dist = length(VERTEX - anchor6);
+	if (dist < range6){
+		offset += move6 * (range6 - dist) * power / range6;
+	}
+	VERTEX += offset;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/anchor1 = Vector2( 300, 530 )
+shader_param/anchor2 = Vector2( 300, 575 )
+shader_param/anchor3 = Vector2( 350, 600 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( -25, -10 )
+shader_param/move2 = Vector2( -20, 10 )
+shader_param/move3 = Vector2( -5, 10 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 50.0
+shader_param/range3 = 60.0
+shader_param/range4 = 0.0
+shader_param/range5 = 0.0
+shader_param/range6 = 0.0
+shader_param/power = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/anchor1 = Vector2( 345.672, 550.977 )
+shader_param/anchor2 = Vector2( 353.733, 543.28 )
+shader_param/anchor3 = Vector2( 359.904, 571.81 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( -13.6118, 28.4858 )
+shader_param/move2 = Vector2( -15.2548, -18.8408 )
+shader_param/move3 = Vector2( 15, -3.5 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 60.0
+shader_param/range2 = 70.0
+shader_param/range3 = 40.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+
+[node name="Node2D" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AutoPoly" type="Polygon2D" parent="."]
+material = SubResource( 2 )
+position = Vector2( -183.948, -309.94 )
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( 339, 457, 316, 484, 296, 522, 292, 557, 310, 589, 347, 607, 385, 600, 411, 565, 428, 592, 463, 606, 495, 614, 527, 590, 543, 543, 533, 499, 504, 465, 474, 454, 438, 458, 422, 471, 393, 454, 367, 449, 309.005, 556.038, 316.114, 521.44, 333.649, 498.218, 353.081, 474.521, 379.621, 474.995, 398.578, 486.843, 405.213, 496.322, 430.806, 496.796, 443.128, 481.156, 464.929, 475.943, 489.574, 483.526, 504.265, 501.535, 519.431, 531.867, 517.536, 565.99, 486.256, 588.265, 454.976, 586.369, 433.175, 568.834, 423.697, 541.82, 424.171, 518.123, 404.265, 518.123, 401.896, 541.82, 393.365, 561.251, 379.147, 576.417, 360.19, 588.739, 335.545, 585.421, 316.114, 574.047, 321.327, 527.602, 336.967, 528.549, 346.919, 541.346, 344.55, 553.194, 327.488, 552.72, 317.062, 545.611, 496.209, 526.18, 486.73, 536.606, 490.047, 548.929, 499.526, 548.455, 512.796, 547.981, 509.005, 526.654, 354.976, 497.744, 379.621, 509.592, 380.569, 535.184, 443.602, 529.023, 448.341, 512.436, 464.455, 495.374, 464.455, 495.848 )
+uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+polygons = [ [ 1, 2, 21 ], [ 1, 21, 22 ], [ 0, 1, 23 ], [ 1, 22, 23 ], [ 19, 0, 23 ], [ 18, 19, 24 ], [ 19, 23, 24 ], [ 17, 18, 25 ], [ 18, 24, 25 ], [ 17, 25, 26 ], [ 17, 26, 27 ], [ 16, 17, 28 ], [ 17, 27, 28 ], [ 15, 16, 29 ], [ 16, 28, 29 ], [ 14, 15, 30 ], [ 15, 29, 30 ], [ 13, 14, 31 ], [ 14, 30, 31 ], [ 12, 13, 32 ], [ 11, 12, 33 ], [ 9, 10, 34 ], [ 10, 11, 34 ], [ 11, 33, 34 ], [ 8, 9, 35 ], [ 9, 34, 35 ], [ 7, 8, 36 ], [ 8, 35, 36 ], [ 7, 36, 37 ], [ 27, 26, 38 ], [ 37, 38, 39 ], [ 38, 26, 39 ], [ 7, 37, 40 ], [ 37, 39, 40 ], [ 7, 40, 41 ], [ 6, 7, 42 ], [ 7, 41, 42 ], [ 5, 6, 43 ], [ 6, 42, 43 ], [ 4, 5, 44 ], [ 5, 43, 44 ], [ 3, 4, 45 ], [ 20, 3, 45 ], [ 4, 44, 45 ], [ 22, 21, 47 ], [ 21, 46, 47 ], [ 43, 42, 49 ], [ 44, 43, 49 ], [ 20, 45, 50 ], [ 45, 44, 50 ], [ 44, 49, 50 ], [ 48, 47, 50 ], [ 49, 48, 50 ], [ 2, 3, 51 ], [ 3, 20, 51 ], [ 21, 2, 51 ], [ 46, 21, 51 ], [ 20, 50, 51 ], [ 47, 46, 51 ], [ 50, 47, 51 ], [ 35, 34, 54 ], [ 36, 35, 54 ], [ 52, 53, 55 ], [ 53, 54, 55 ], [ 34, 33, 55 ], [ 54, 34, 55 ], [ 12, 32, 56 ], [ 33, 12, 56 ], [ 55, 33, 56 ], [ 13, 31, 57 ], [ 32, 13, 57 ], [ 31, 52, 57 ], [ 56, 32, 57 ], [ 52, 55, 57 ], [ 55, 56, 57 ], [ 23, 22, 58 ], [ 24, 23, 58 ], [ 22, 47, 58 ], [ 26, 25, 59 ], [ 39, 26, 59 ], [ 25, 24, 59 ], [ 24, 58, 59 ], [ 47, 48, 59 ], [ 58, 47, 59 ], [ 41, 40, 60 ], [ 42, 41, 60 ], [ 49, 42, 60 ], [ 48, 49, 60 ], [ 40, 39, 60 ], [ 39, 59, 60 ], [ 59, 48, 60 ], [ 37, 36, 61 ], [ 38, 37, 61 ], [ 36, 54, 61 ], [ 54, 53, 61 ], [ 28, 27, 62 ], [ 61, 53, 62 ], [ 27, 38, 62 ], [ 38, 61, 62 ], [ 29, 28, 63 ], [ 30, 29, 63 ], [ 31, 30, 64 ], [ 30, 63, 64 ], [ 52, 31, 64 ], [ 28, 62, 64 ], [ 63, 28, 64 ], [ 53, 52, 64 ], [ 62, 53, 64 ] ]
+internal_vertex_count = 45
+script = ExtResource( 1 )
+auto_poly = true
+copy_uvs = null
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 246, 316 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="DeformPoly" type="Polygon2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( 905.097, 124.451 )
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( 336.019, 449.402, 304.739, 503.905, 275.829, 555.09, 321.801, 612.91, 447.393, 617.175, 556.872, 608.17, 581.991, 480.682, 484.834, 433.763, 363.033, 436.606, 294.787, 542.767, 302.37, 517.649, 321.327, 485.895, 337.441, 467.412, 358.294, 458.407, 378.673, 460.303, 397.156, 469.782, 406.635, 491.109, 409.479, 513.383, 408.057, 546.559, 400, 565.99, 387.204, 586.843, 361.611, 597.744, 332.701, 597.27, 309.005, 578.786, 298.104, 559.829, 316.114, 526.654, 330.332, 520.019, 342.654, 524.284, 340.758, 543.241, 330.332, 551.772, 314.218, 541.346, 334.123, 493.004, 360.19, 472.625, 385.308, 483.052, 390.521, 512.436, 388.152, 539.924, 373.934, 566.938, 349.289, 574.995, 320.379, 567.886, 305.687, 548.455, 309.005, 530.445, 320.379, 504.853 )
+uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+polygons = [ [ 1, 2, 10 ], [ 2, 9, 10 ], [ 0, 1, 11 ], [ 0, 11, 12 ], [ 8, 0, 13 ], [ 0, 12, 13 ], [ 8, 13, 14 ], [ 7, 8, 15 ], [ 8, 14, 15 ], [ 7, 15, 16 ], [ 5, 6, 17 ], [ 6, 7, 17 ], [ 7, 16, 17 ], [ 4, 5, 18 ], [ 5, 17, 18 ], [ 4, 18, 19 ], [ 4, 19, 20 ], [ 3, 4, 21 ], [ 4, 20, 21 ], [ 3, 21, 22 ], [ 2, 3, 23 ], [ 3, 22, 23 ], [ 9, 2, 24 ], [ 2, 23, 24 ], [ 26, 25, 28 ], [ 27, 26, 28 ], [ 28, 25, 30 ], [ 29, 28, 30 ], [ 12, 11, 31 ], [ 26, 27, 31 ], [ 13, 12, 32 ], [ 12, 31, 32 ], [ 14, 13, 32 ], [ 31, 27, 32 ], [ 15, 14, 33 ], [ 14, 32, 33 ], [ 16, 15, 33 ], [ 17, 16, 34 ], [ 16, 33, 34 ], [ 32, 27, 34 ], [ 33, 32, 34 ], [ 19, 18, 35 ], [ 18, 17, 35 ], [ 17, 34, 35 ], [ 27, 28, 35 ], [ 34, 27, 35 ], [ 21, 20, 36 ], [ 20, 19, 36 ], [ 19, 35, 36 ], [ 35, 28, 36 ], [ 22, 21, 37 ], [ 21, 36, 37 ], [ 28, 29, 37 ], [ 36, 28, 37 ], [ 24, 23, 38 ], [ 23, 22, 38 ], [ 22, 37, 38 ], [ 37, 29, 38 ], [ 9, 24, 39 ], [ 29, 30, 39 ], [ 38, 29, 39 ], [ 24, 38, 39 ], [ 10, 9, 40 ], [ 25, 10, 40 ], [ 30, 25, 40 ], [ 9, 39, 40 ], [ 39, 30, 40 ], [ 1, 10, 41 ], [ 10, 25, 41 ], [ 25, 26, 41 ], [ 11, 1, 41 ], [ 31, 11, 41 ], [ 26, 31, 41 ] ]
+internal_vertex_count = 33
+script = ExtResource( 3 )
+auto_poly = true
+copy_uvs = null
+
+[node name="Position2D" type="Position2D" parent="DeformPoly"]
+position = Vector2( 332.06, 579.463 )
+script = ExtResource( 4 )
+__meta__ = {
+"_gizmo_extents_": 60.0
+}
+anchor = Vector2( 345.672, 550.977 )
+lock_anchor_position = true
+
+[node name="Position2D2" type="Position2D" parent="DeformPoly"]
+position = Vector2( 338.478, 524.439 )
+script = ExtResource( 4 )
+__meta__ = {
+"_gizmo_extents_": 70.0
+}
+anchor = Vector2( 353.733, 543.28 )
+lock_anchor_position = true
+
+[node name="Position2D3" type="Position2D" parent="DeformPoly"]
+position = Vector2( 374.904, 568.31 )
+script = ExtResource( 4 )
+__meta__ = {
+"_gizmo_extents_": 40.0
+}
+anchor = Vector2( 359.904, 571.81 )
+lock_anchor_position = true
+
+[node name="Position2D4" type="Position2D" parent="DeformPoly"]
+script = ExtResource( 4 )
+
+[node name="Position2D5" type="Position2D" parent="DeformPoly"]
+script = ExtResource( 4 )
+
+[node name="Position2D6" type="Position2D" parent="DeformPoly"]
+script = ExtResource( 4 )
