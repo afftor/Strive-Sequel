@@ -1976,7 +1976,7 @@ func common_effects(effects):
 					common_effects([{code = 'complete_quest', value = 'main_quest_loan'}, {code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}]) #stub, do not want recursion here
 			'plan_loan_event':
 				var newevent = {reqs = [], code = 'loan_event' + str(i.stage)}
-				var newreq = [{type = 'date', operant = 'eq', value = variables.base_loan_dates[i.stage]}, {type = 'hour', operant = 'eq', value = 1}]
+				var newreq = [{type = 'date', operant = 'eq', value = variables.base_loan_dates[i.stage - 1]}, {type = 'hour', operant = 'eq', value = 1}]
 				newevent.reqs += newreq
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 
