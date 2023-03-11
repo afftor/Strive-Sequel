@@ -2084,6 +2084,7 @@ var quests = {
 		code = "zephyra_bath_quest",
 		summary = "ZEPHYRA_BATH_QUEST_SUMMARY",
 		stages = {
+			stage0 = {code = 'stage0', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_0"}, # stand in for ginny while she's away
 			stage1 = {code = 'stage1', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_1"}, # build and visit bath
 			stage2 = {code = 'stage2', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_2"}, # visit bath
 		},
