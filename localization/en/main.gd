@@ -10109,6 +10109,7 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	
 	ZEPHYRA_BATH_QUEST_NAME = "",
 	ZEPHYRA_BATH_QUEST_SUMMARY = "",
+	ZEPHYRA_BATH_QUEST_STAGE_0 = "",
 	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
 	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
 	

@@ -792,6 +792,7 @@ func handle_characters_sprites(scene):
 					$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
 				ch1_shade = false
+				ch1 = person.get_stat("name").to_lower()
 				return
 	if scene.has("unique_character2"):
 		for i in ResourceScripts.game_party.characters: 
@@ -808,6 +809,7 @@ func handle_characters_sprites(scene):
 					$CharacterImage2.texture = person.get_body_image()
 				$CharacterImage2.material.set_shader_param('opacity', 0.0)
 				ch2_shade = false
+				ch2 = person.get_stat("name").to_lower()
 				return
 #	if !scene.has("character"):
 #		$ImagePanel.show()

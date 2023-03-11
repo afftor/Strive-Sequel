@@ -5,6 +5,7 @@ var data = {
 		text = [{text = "ZEPHYRA_QUEST_1", reqs = []}],
 		options = [ {
 			code = 'zephyra_quest_2', text = "ZEPHYRA_QUEST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'progress_quest', value = 'zephyra_bath_quest', stage = 'stage0'}]
 		}, { 
 			code = 'close', text = "ZEPHYRA_QUEST_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}, ]
@@ -114,7 +115,7 @@ var data = {
 		custom_background = "church_event",
 		text = [
 			{text = "ZEPHYRA_DAISY_2_1", reqs = [{type = 'dialogue_seen', check = true, value = 'TRAINING_COMPLETE_FUCKTOY_REPLY_0'}]},
-			{text = "ZEPHYRA_DAISY_2_2", reqs = [{type = 'dialogue_seen', check = true, value = 'TRAINING_COMPLETE_SERVE_REPLY_0'}]},
+			{text = "ZEPHYRA_DAISY_2_2", reqs = [{type = 'dialogue_seen', check = true, value = 'TRAINING_COMPLETE_SERVE_REPLY_0'}, {type = 'dialogue_seen', check = true, value = 'TRAINING_COMPLETE_SEX_REPLY_0', orflag = true} ]},
 		],
 		options = [ {
 			code = 'zephyra_visitor_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -315,6 +316,13 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = "zephyra",
 		text = [{text = "ZEPHYRA_BATH_6", reqs = []}],
+		common_effects = [ {
+			code = 'unique_character_changes',
+			value = 'zephyra',
+			args = [
+				{code = 'take_virginity', type = 'vaginal', partner = 'master'}
+			]
+		} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_bath_quest'}]
