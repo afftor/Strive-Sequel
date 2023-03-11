@@ -439,7 +439,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="description"]
-margin_left = 1152.0
+margin_left = 1172.0
 margin_top = 127.0
 margin_right = 1876.0
 margin_bottom = 752.0
@@ -448,7 +448,7 @@ __meta__ = {
 }
 
 [node name="desc_header" type="Label" parent="description/VBoxContainer"]
-margin_right = 724.0
+margin_right = 704.0
 margin_bottom = 42.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 28 )
@@ -458,7 +458,7 @@ align = 1
 
 [node name="description" type="RichTextLabel" parent="description/VBoxContainer"]
 margin_top = 46.0
-margin_right = 724.0
+margin_right = 704.0
 margin_bottom = 89.0
 grow_horizontal = 2
 custom_fonts/normal_font = ExtResource( 28 )
@@ -468,7 +468,7 @@ scroll_active = false
 
 [node name="resources" type="Label" parent="description/VBoxContainer"]
 margin_top = 93.0
-margin_right = 724.0
+margin_right = 704.0
 margin_bottom = 135.0
 custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -477,7 +477,7 @@ align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
 margin_top = 139.0
-margin_right = 724.0
+margin_right = 704.0
 margin_bottom = 625.0
 size_flags_vertical = 3
 custom_constants/margin_right = 90
@@ -485,7 +485,7 @@ custom_constants/margin_left = 90
 
 [node name="ScrollContainer" type="ScrollContainer" parent="description/VBoxContainer/MarginContainer"]
 margin_left = 90.0
-margin_right = 634.0
+margin_right = 614.0
 margin_bottom = 486.0
 size_flags_vertical = 3
 theme = ExtResource( 14 )
