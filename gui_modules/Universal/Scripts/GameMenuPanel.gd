@@ -75,3 +75,9 @@ func hide():
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.update_modules()
 	.hide()
+
+
+func _on_Button_button_down():
+	var gallery_scene = preload("res://gui_modules/Universal/Modules/Gallery.tscn").instance()
+	get_tree().root.add_child(gallery_scene)
+	gallery_scene.close_state = true
