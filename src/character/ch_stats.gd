@@ -733,7 +733,7 @@ func roll_growth(diff):
 	weight[1] = 100 - (diff - 1) * 100.0/14.0
 	weight[4] = 5 + (diff - 1) * 10.0/14.0
 	weight[5] = 3 + (diff - 1) * 7.0/14.0
-	weight[5] = 1 + (diff - 1) * 4.0/14.0
+	weight[6] = 1 + (diff - 1) * 4.0/14.0
 	if diff <= 3:
 		weight[2] = 40 + (diff - 1) * 10.0/2.0
 	else:
