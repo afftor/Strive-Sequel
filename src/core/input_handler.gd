@@ -1639,3 +1639,19 @@ func print_order():
 #	node.focus_neighbour_right = node.get_path()
 #	node.focus_neighbour_top = node.get_path()
 #	node.grab_focus()
+
+func import_recolor_parameter(to_mat, from_mat):
+	for param in ["target%dcolor", "part%dcolor", "part%d"]:
+		for i in range(3):
+			var parname = param % (i + 1)
+			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
+	to_mat.set_shader_param('overlay', from_mat.get_shader_param('overlay'))
+
+
+func import_deform_parameter(to_mat, from_mat):
+	for param in ["anchor%d", "move%d", "range%d"]:
+		for i in range(6):
+			var parname = param % (i + 1)
+			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
+	to_mat.set_shader_param('power', from_mat.get_shader_param('power'))
+
