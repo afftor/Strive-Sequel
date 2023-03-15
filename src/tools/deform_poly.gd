@@ -4,7 +4,8 @@ class_name DeformPoly
 
 
 func _ready():
-	material = load("res://assets/deform_shader_recolor.tres").duplicate()
+	if material == null:
+		material = load("res://assets/deform_shader_recolor.tres").duplicate()
 	if get_child_count() == 0: 
 		for i in range(6):
 			var new_node = DeformDragPoint.new()
