@@ -1,11 +1,11 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/ShoulderR.png" type="Texture" id=2]
 [ext_resource path="res://Character_generator/images/00_body_nude/ArmL1.png" type="Texture" id=3]
 [ext_resource path="res://Character_generator/images/00_body_nude/HandL1.png" type="Texture" id=4]
 [ext_resource path="res://Character_generator/images/00_body_nude/ArmR1.png" type="Texture" id=5]
-[ext_resource path="res://Character_generator/images/98_masks/mask_kobold.png" type="Texture" id=6]
+[ext_resource path="res://Character_generator/images/02_faces/face3.png" type="Texture" id=6]
 [ext_resource path="res://Character_generator/images/00_body_nude/HandR1.png" type="Texture" id=7]
 [ext_resource path="res://Character_generator/images/00_body_nude/default_belly.png" type="Texture" id=8]
 [ext_resource path="res://Character_generator/images/00_body_nude/torso.png" type="Texture" id=9]
@@ -26,9 +26,9 @@
 [ext_resource path="res://Character_generator/images/04_hairs_base/hair_base_default.png" type="Texture" id=24]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/LegL_armor1.png" type="Texture" id=25]
 [ext_resource path="res://Character_generator/images/21_nereid/Nereid_armL.png" type="Texture" id=26]
-[ext_resource path="res://Character_generator/images/05_hairs_assist/hair_assist_pigtails.png" type="Texture" id=27]
-[ext_resource path="res://Character_generator/images/01_heads/head_kobold2.png" type="Texture" id=28]
-[ext_resource path="res://Character_generator/images/03_ears/ears_elven.png" type="Texture" id=29]
+[ext_resource path="res://Character_generator/images/05_hairs_assist/hair_assist_twin_tails 2.png" type="Texture" id=27]
+[ext_resource path="res://Character_generator/images/01_heads/head_loli.png" type="Texture" id=28]
+[ext_resource path="res://Character_generator/images/03_ears/ears_orc.png" type="Texture" id=29]
 [ext_resource path="res://Character_generator/images/010_armory_set_maidu/Arm_armorR1.png" type="Texture" id=30]
 [ext_resource path="res://Character_generator/images/010_armory_set_maidu/Shoulder_armorR1.png" type="Texture" id=31]
 [ext_resource path="res://Character_generator/images/010_armory_set_maidu/Hand1_armorR1.png" type="Texture" id=32]
@@ -47,7 +47,7 @@
 [ext_resource path="res://Character_generator/images/21_nereid/nereid_armR.png" type="Texture" id=45]
 [ext_resource path="res://Character_generator/images/22_slime/slime_taz.png" type="Texture" id=46]
 [ext_resource path="res://Character_generator/images/10_eyes/sklera.png" type="Texture" id=47]
-[ext_resource path="res://Character_generator/images/02_faces/face1.png" type="Texture" id=48]
+[ext_resource path="res://Character_generator/Female_tits_wide.tres" type="Material" id=48]
 [ext_resource path="res://Character_generator/images/13_dicks/Dick_furry_up.png" type="Texture" id=49]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_body.png" type="Texture" id=50]
 [ext_resource path="res://Character_generator/images/21_nereid/nereid_LegL.png" type="Texture" id=51]
@@ -73,7 +73,7 @@ shader_param/part2color = Color( 0.466667, 0.219608, 0.32549, 1 )
 shader_param/part3color = Color( 0.47451, 0.235294, 0.235294, 1 )
 shader_param/overlay = 0.966
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=17]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -229,8 +229,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 17 )
 shader_param/anchor1 = Vector2( 361, 478 )
 shader_param/anchor2 = Vector2( 520, 478 )
 shader_param/anchor3 = Vector2( 0, 0 )
@@ -291,193 +291,7 @@ shader_param/part3color = Color( 0.419608, 0.564706, 0.643137, 1 )
 shader_param/overlay = 0.952
 shader_param/part1 = ExtResource( 42 )
 
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform vec2 anchor1 = vec2(0.0);
-uniform vec2 anchor2 = vec2(0.0);
-uniform vec2 anchor3 = vec2(0.0);
-uniform vec2 anchor4 = vec2(0.0);
-uniform vec2 anchor5 = vec2(0.0);
-uniform vec2 anchor6 = vec2(0.0);
-
-uniform vec2 move1 = vec2(0.0);
-uniform vec2 move2 = vec2(0.0);
-uniform vec2 move3 = vec2(0.0);
-uniform vec2 move4 = vec2(0.0);
-uniform vec2 move5 = vec2(0.0);
-uniform vec2 move6 = vec2(0.0);
-
-uniform float range1 = 0.0;
-uniform float range2 = 0.0;
-uniform float range3 = 0.0;
-uniform float range4 = 0.0;
-uniform float range5 = 0.0;
-uniform float range6 = 0.0;
-
-uniform float power = 1.0;
-
-
-uniform vec4 target1color : hint_color;
-uniform vec4 target2color : hint_color;
-uniform vec4 target3color : hint_color;
-
-uniform vec4 part1color : hint_color;
-uniform vec4 part2color : hint_color;
-uniform vec4 part3color : hint_color;
-
-uniform sampler2D part1;
-uniform sampler2D part2;
-uniform sampler2D part3;
-
-uniform float overlay = 0.7;
-
-vec3 rgb2hsl(vec3 c )
-{
-    float epsilon = 0.00000001;
-    float cmin = min( c.r, min( c.g, c.b ) );
-    float cmax = max( c.r, max( c.g, c.b ) );
-    float cd   = cmax - cmin;
-    vec3 hsl = vec3(0.0);
-    hsl.z = (cmax + cmin) / 2.0;
-    hsl.y = mix(cd / (cmax + cmin + epsilon), cd / (epsilon + 2.0 - (cmax + cmin)), step(0.5, hsl.z));
-
-    vec3 a = vec3(1.0 - step(epsilon, abs(cmax - c)));
-    a = mix(vec3(a.x, 0.0, a.z), a, step(0.5, 2.0 - a.x - a.y));
-    a = mix(vec3(a.x, a.y, 0.0), a, step(0.5, 2.0 - a.x - a.z));
-    a = mix(vec3(a.x, a.y, 0.0), a, step(0.5, 2.0 - a.y - a.z));
-    
-    hsl.x = dot( vec3(0.0, 2.0, 4.0) + ((c.gbr - c.brg) / (epsilon + cd)), a );
-    hsl.x = (hsl.x + (1.0 - step(0.0, hsl.x) ) * 6.0 ) / 6.0;
-	hsl.y = clamp (hsl.y, 0.0, 1.0);
-    return hsl;
-}
-
-vec3 hsl2rgb(vec3 HSL)
-{
-  float R = abs(HSL.x * 6.0 - 3.0) - 1.0;
-  float G = 2.0 - abs(HSL.x * 6.0 - 2.0);
-  float B = 2.0 - abs(HSL.x * 6.0 - 4.0);
-  vec3 RGB = clamp(vec3(R,G,B), 0.0, 1.0);
-  float C = (1.0 - abs(2.0 * HSL.z - 1.0)) * HSL.y;
-  return (RGB - 0.5) * C + HSL.z;
-}
-
-void fragment(){
-    vec4 color = texture(TEXTURE, UV);
-	float a = color.a;
-	vec3 t1 = rgb2hsl(target1color.rgb);
-	vec3 t2 = rgb2hsl(target2color.rgb);
-	vec3 t3 = rgb2hsl(target3color.rgb);
-	vec3 k = rgb2hsl(color.rgb);
-	if (texture(part1, UV).a > 0.0){
-		vec3 dcolor = rgb2hsl(part1color.rgb);
-		float rot = dcolor.x - t1.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z/t1.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay * texture(part1, UV).a);
-		color = vec4(k.xyz, a);
-	}
-	k = rgb2hsl(color.rgb);
-	if (texture(part2, UV).a > 0.0){
-		vec3 dcolor = rgb2hsl(part2color.rgb);
-		float rot = dcolor.x - t2.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z / t2.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay* texture(part2, UV).a);
-		color = vec4(k.xyz, a);
-	}
-	k = rgb2hsl(color.rgb);
-	if (texture(part3, UV).a > 0.0){
-		vec3 dcolor = rgb2hsl(part3color.rgb);
-		float rot = dcolor.x - t3.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z / t3.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay * texture(part3, UV).a);
-		color = vec4(k.xyz, a);
-	}
-	COLOR = color;
-}
-
-void vertex(){
-	vec2 offset = vec2(0.0);
-	float dist = length(VERTEX - anchor1);
-	
-	if (dist < range1){
-		offset += move1 * (range1 - dist) * power / range1;
-	}
-	dist = length(VERTEX - anchor2);
-	if (dist < range2){
-		offset += move2 * (range2 - dist) * power / range2;
-	}
-	dist = length(VERTEX - anchor3);
-	if (dist < range3){
-		offset += move3 * (range3 - dist) * power / range3;
-	}
-	dist = length(VERTEX - anchor4);
-	if (dist < range4){
-		offset += move4 * (range4 - dist) * power / range4;
-	}
-	dist = length(VERTEX - anchor5);
-	if (dist < range5){
-		offset += move5 * (range5 - dist) * power / range5;
-	}
-	dist = length(VERTEX - anchor6);
-	if (dist < range6){
-		offset += move6 * (range6 - dist) * power / range6;
-	}
-	VERTEX += offset;
-}"
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
-shader_param/anchor1 = Vector2( 436, 590 )
-shader_param/anchor2 = Vector2( 365, 539 )
-shader_param/anchor3 = Vector2( 519, 539 )
-shader_param/anchor4 = Vector2( 0, 0 )
-shader_param/anchor5 = Vector2( 0, 0 )
-shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 0, 0 )
-shader_param/move4 = Vector2( 0, 0 )
-shader_param/move5 = Vector2( 0, 0 )
-shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 100.0
-shader_param/range2 = 110.0
-shader_param/range3 = 110.0
-shader_param/range4 = 0
-shader_param/range5 = 0
-shader_param/range6 = 0
-shader_param/power = 1.0
-shader_param/target1color = Color( 0.65098, 0.411765, 0.313726, 1 )
-shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part1color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part2color = Color( 0.27451, 0.317647, 0.2, 1 )
-shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
-shader_param/overlay = 0.999
-shader_param/part3 = ExtResource( 6 )
-
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=19]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -634,7 +448,7 @@ void vertex(){
 }"
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+shader = SubResource( 19 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 365, 539 )
 shader_param/anchor3 = Vector2( 519, 539 )
@@ -642,12 +456,12 @@ shader_param/anchor4 = Vector2( 0, 0 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
 shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 2.5607, -0.856628 )
 shader_param/move3 = Vector2( 0, 0 )
 shader_param/move4 = Vector2( 0, 0 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 60.0
+shader_param/range1 = 0
 shader_param/range2 = 110.0
 shader_param/range3 = 110.0
 shader_param/range4 = 0
@@ -659,62 +473,10 @@ shader_param/target2color = Color( 1, 0, 0, 1 )
 shader_param/target3color = Color( 1, 0, 0, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
-shader_param/part3color = Color( 0.223529, 0.482353, 0.254902, 1 )
+shader_param/part3color = Color( 0.105882, 0.270588, 0.12549, 1 )
 shader_param/overlay = 0.7
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 9 )
-shader_param/anchor1 = Vector2( 436, 590 )
-shader_param/anchor2 = Vector2( 365, 539 )
-shader_param/anchor3 = Vector2( 519, 539 )
-shader_param/anchor4 = Vector2( 0, 0 )
-shader_param/anchor5 = Vector2( 0, 0 )
-shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 0, 0 )
-shader_param/move4 = Vector2( 0, 0 )
-shader_param/move5 = Vector2( 0, 0 )
-shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 100.0
-shader_param/range2 = 110.0
-shader_param/range3 = 110.0
-shader_param/range4 = 0
-shader_param/range5 = 0
-shader_param/range6 = 0
-shader_param/power = 1.0
-shader_param/target1color = Color( 1, 0, 0, 1 )
-shader_param/target2color = Color( 1, 0, 0, 1 )
-shader_param/target3color = Color( 1, 0, 0, 1 )
-shader_param/part1color = Color( 1, 0, 0, 1 )
-shader_param/part2color = Color( 1, 0, 0, 1 )
-shader_param/part3color = Color( 1, 0, 0, 1 )
-shader_param/overlay = 0.7
-
-[sub_resource type="ShaderMaterial" id=12]
-shader = ExtResource( 39 )
-shader_param/target1color = Color( 0.792157, 0.831373, 0.0705882, 1 )
-shader_param/target2color = Color( 0.14902, 0.584314, 0.0862745, 1 )
-shader_param/target3color = Color( 0.14902, 0.584314, 0.0862745, 1 )
-shader_param/part1color = Color( 0.14902, 0.584314, 0.0862745, 1 )
-shader_param/part2color = Color( 0.177002, 0.566406, 0.456886, 1 )
-shader_param/part3color = Color( 0.854902, 0.858824, 0.937255, 1 )
-shader_param/overlay = 0.7
-
-[sub_resource type="ShaderMaterial" id=13]
-shader = ExtResource( 39 )
-shader_param/target1color = Color( 0.831373, 0.623529, 0.623529, 1 )
-shader_param/target2color = Color( 0.133333, 0.501961, 0.329412, 1 )
-shader_param/target3color = Color( 0.133333, 0.2, 0.501961, 1 )
-shader_param/part1color = Color( 0.133333, 0.2, 0.501961, 1 )
-shader_param/part2color = Color( 0.133333, 0.2, 0.501961, 1 )
-shader_param/part3color = Color( 0.133333, 0.2, 0.501961, 1 )
-shader_param/overlay = 0.976
-shader_param/part1 = ExtResource( 40 )
-shader_param/part2 = ExtResource( 41 )
-shader_param/part3 = ExtResource( 43 )
-
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id=20]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -870,11 +632,11 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = SubResource( 14 )
-shader_param/anchor1 = Vector2( 361, 478 )
-shader_param/anchor2 = Vector2( 520, 478 )
-shader_param/anchor3 = Vector2( 0, 0 )
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 20 )
+shader_param/anchor1 = Vector2( 436, 590 )
+shader_param/anchor2 = Vector2( 361.026, 539.273 )
+shader_param/anchor3 = Vector2( 519, 539 )
 shader_param/anchor4 = Vector2( 0, 0 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
@@ -884,9 +646,38 @@ shader_param/move3 = Vector2( 0, 0 )
 shader_param/move4 = Vector2( 0, 0 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 200.0
-shader_param/range2 = 200.0
-shader_param/range3 = 0
+shader_param/range1 = 0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.65098, 0.411765, 0.313726, 1 )
+shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/part1color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/part2color = Color( 0.254902, 0.305882, 0.168627, 1 )
+shader_param/part3color = Color( 0.713726, 0.247059, 0.247059, 1 )
+shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 19 )
+shader_param/anchor1 = Vector2( 436, 590 )
+shader_param/anchor2 = Vector2( 365, 539 )
+shader_param/anchor3 = Vector2( 519, 539 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
 shader_param/range4 = 0
 shader_param/range5 = 0
 shader_param/range6 = 0
@@ -897,7 +688,30 @@ shader_param/target3color = Color( 1, 0, 0, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.0
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 39 )
+shader_param/target1color = Color( 0.792157, 0.831373, 0.0705882, 1 )
+shader_param/target2color = Color( 0.14902, 0.584314, 0.0862745, 1 )
+shader_param/target3color = Color( 0.14902, 0.584314, 0.0862745, 1 )
+shader_param/part1color = Color( 0.14902, 0.584314, 0.0862745, 1 )
+shader_param/part2color = Color( 0.177002, 0.566406, 0.456886, 1 )
+shader_param/part3color = Color( 0.854902, 0.858824, 0.937255, 1 )
 shader_param/overlay = 0.7
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 39 )
+shader_param/target1color = Color( 0.831373, 0.623529, 0.623529, 1 )
+shader_param/target2color = Color( 0.133333, 0.501961, 0.329412, 1 )
+shader_param/target3color = Color( 0.133333, 0.2, 0.501961, 1 )
+shader_param/part1color = Color( 0.133333, 0.2, 0.501961, 1 )
+shader_param/part2color = Color( 0.133333, 0.2, 0.501961, 1 )
+shader_param/part3color = Color( 0.133333, 0.2, 0.501961, 1 )
+shader_param/overlay = 0.976
+shader_param/part1 = ExtResource( 40 )
+shader_param/part2 = ExtResource( 41 )
+shader_param/part3 = ExtResource( 43 )
 
 [sub_resource type="ShaderMaterial" id=16]
 shader = ExtResource( 39 )
@@ -913,17 +727,17 @@ shader_param/part1 = ExtResource( 42 )
 [node name="Female_pose1" type="Node2D"]
 
 [node name="HumanF1" type="Skeleton2D" parent="."]
-position = Vector2( 219, 5 )
+position = Vector2( 1, -401 )
 
 [node name="Spine" type="Bone2D" parent="HumanF1"]
 material = SubResource( 1 )
-position = Vector2( 80, -802 )
+position = Vector2( -5.71426, -558.571 )
 rotation = 1.5708
 rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_mesh" type="Polygon2D" parent="HumanF1/Spine"]
-material = SubResource( 3 )
+material = SubResource( 18 )
 position = Vector2( -534.998, 435.002 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1006,6 +820,7 @@ scale = Vector2( 1, 0.8 )
 texture = ExtResource( 1 )
 
 [node name="Tail_tex" type="Sprite" parent="HumanF1/Spine"]
+visible = false
 material = SubResource( 6 )
 position = Vector2( 205, 2.99924 )
 rotation = -1.5708
@@ -1018,7 +833,7 @@ default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 45 )
@@ -1034,7 +849,7 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR/HandR"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -36.9996, 145.789 )
 rotation = -1.5708
 texture = ExtResource( 7 )
@@ -1045,7 +860,7 @@ rotation = -1.5708
 texture = ExtResource( 32 )
 
 [node name="ArmR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
 texture = ExtResource( 5 )
@@ -1056,7 +871,7 @@ rotation = -1.5708
 texture = ExtResource( 30 )
 
 [node name="ShoulderR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 2 )
@@ -1073,7 +888,7 @@ default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 26 )
@@ -1089,7 +904,7 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL/HandL"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 4 )
@@ -1100,7 +915,7 @@ rotation = -1.5708
 texture = ExtResource( 13 )
 
 [node name="ArmL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
 texture = ExtResource( 3 )
@@ -1111,7 +926,7 @@ rotation = -1.5708
 texture = ExtResource( 16 )
 
 [node name="ShoulderL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 11 )
@@ -1122,45 +937,45 @@ rotation = -1.5708
 texture = ExtResource( 38 )
 
 [node name="Torso_tex2" type="Sprite" parent="HumanF1/Spine"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 9 )
 
 [node name="Torso_races" type="Sprite" parent="HumanF1/Spine"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 55 )
 
 [node name="Belly_default_tex" type="Sprite" parent="HumanF1/Spine"]
 light_mask = 0
-material = SubResource( 8 )
-position = Vector2( 219, -1.00079 )
+material = ExtResource( 48 )
+position = Vector2( 212, -3.00073 )
 rotation = -1.5708
 texture = ExtResource( 8 )
 
 [node name="Taz" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( 206.403, -5.44847 )
+position = Vector2( 216, -2.00078 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="LegL" type="Bone2D" parent="HumanF1/Spine/Taz"]
-position = Vector2( 94.4412, 80.6786 )
-scale = Vector2( 1, 0.97 )
+position = Vector2( 94.9799, 83.0258 )
+scale = Vector2( 1, 0.95 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="HumanF1/Spine/Taz/LegL"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
 [node name="LegL_tex" type="Sprite" parent="HumanF1/Spine/Taz/LegL"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 10 )
@@ -1171,20 +986,20 @@ rotation = -1.5708
 texture = ExtResource( 25 )
 
 [node name="LegR" type="Bone2D" parent="HumanF1/Spine/Taz"]
-position = Vector2( 96.9026, -44.1237 )
+position = Vector2( 97.2702, -45.7014 )
 scale = Vector2( 1, 0.95 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="HumanF1/Spine/Taz/LegR"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
 [node name="LegR_tex" type="Sprite" parent="HumanF1/Spine/Taz/LegR"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 35 )
@@ -1195,14 +1010,14 @@ rotation = -1.5708
 texture = ExtResource( 15 )
 
 [node name="Taz_tex" type="Sprite" parent="HumanF1/Spine/Taz"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 12 )
 
 [node name="Taz_races" type="Sprite" parent="HumanF1/Spine/Taz"]
 visible = false
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
 texture = ExtResource( 46 )
@@ -1234,7 +1049,7 @@ rotation = -1.5708
 texture = ExtResource( 33 )
 
 [node name="Torso_nipple_tex" type="Sprite" parent="HumanF1/Spine"]
-material = SubResource( 8 )
+material = SubResource( 10 )
 position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
 texture = ExtResource( 14 )
@@ -1251,7 +1066,7 @@ position = Vector2( 135, 12.9995 )
 rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
 
 [node name="Belly_pregnancy_tex" type="Sprite" parent="HumanF1/Spine/Pregnancy"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 37 )
@@ -1262,12 +1077,12 @@ rotation = -1.5708
 texture = ExtResource( 36 )
 
 [node name="Tits" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -53, 10.0002 )
+position = Vector2( -52.4286, 9.71447 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
-material = SubResource( 8 )
+material = SubResource( 21 )
 position = Vector2( -481.999, 427.002 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1281,21 +1096,21 @@ auto_poly = true
 copy_uvs = null
 
 [node name="Position2D" type="Position2D" parent="HumanF1/Spine/Tits/Tits_mesh"]
+visible = false
 position = Vector2( 436, 590 )
 script = ExtResource( 61 )
 __meta__ = {
 "_gizmo_extents_": 100.0
 }
 anchor = Vector2( 436, 590 )
-lock_anchor_position = true
 
 [node name="Position2D2" type="Position2D" parent="HumanF1/Spine/Tits/Tits_mesh"]
-position = Vector2( 365, 539 )
+position = Vector2( 361.026, 539.273 )
 script = ExtResource( 61 )
 __meta__ = {
 "_gizmo_extents_": 110.0
 }
-anchor = Vector2( 365, 539 )
+anchor = Vector2( 361.026, 539.273 )
 lock_anchor_position = true
 
 [node name="Position2D3" type="Position2D" parent="HumanF1/Spine/Tits/Tits_mesh"]
@@ -1334,16 +1149,16 @@ auto_poly = true
 copy_uvs = null
 
 [node name="Position2D" type="Position2D" parent="HumanF1/Spine/Tits/Nipple_mesh"]
+visible = false
 position = Vector2( 436, 590 )
 script = ExtResource( 61 )
 __meta__ = {
 "_gizmo_extents_": 60.0
 }
 anchor = Vector2( 436, 590 )
-lock_anchor_position = true
 
 [node name="Position2D2" type="Position2D" parent="HumanF1/Spine/Tits/Nipple_mesh"]
-position = Vector2( 365, 539 )
+position = Vector2( 367.561, 538.143 )
 script = ExtResource( 61 )
 __meta__ = {
 "_gizmo_extents_": 110.0
@@ -1352,7 +1167,6 @@ anchor = Vector2( 365, 539 )
 lock_anchor_position = true
 
 [node name="Position2D3" type="Position2D" parent="HumanF1/Spine/Tits/Nipple_mesh"]
-visible = false
 position = Vector2( 519, 539 )
 script = ExtResource( 61 )
 __meta__ = {
@@ -1389,13 +1203,13 @@ auto_poly = true
 copy_uvs = null
 
 [node name="Position2D" type="Position2D" parent="HumanF1/Spine/Tits/Tits_armor_mesh"]
+visible = false
 position = Vector2( 436, 590 )
 script = ExtResource( 61 )
 __meta__ = {
 "_gizmo_extents_": 100.0
 }
 anchor = Vector2( 436, 590 )
-lock_anchor_position = true
 
 [node name="Position2D2" type="Position2D" parent="HumanF1/Spine/Tits/Tits_armor_mesh"]
 position = Vector2( 365, 539 )
@@ -1428,29 +1242,29 @@ visible = false
 script = ExtResource( 61 )
 
 [node name="Head" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -361, 9.00003 )
+position = Vector2( -188, -7.9993 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-material = SubResource( 8 )
-position = Vector2( 590, -9.00214 )
+material = ExtResource( 48 )
+position = Vector2( 411, 5.99847 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
 [node name="Face" type="Bone2D" parent="HumanF1/Spine/Head"]
-position = Vector2( 91, -2.00031 )
+position = Vector2( -88.0001, 12.0003 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Sklera_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-position = Vector2( 282.356, -6.28671 )
+position = Vector2( 280.571, -4.71521 )
 rotation = -1.5708
 texture = ExtResource( 47 )
 
 [node name="Eyes_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
 material = SubResource( 12 )
-position = Vector2( 499, -7.00186 )
+position = Vector2( 498.595, -4.97797 )
 rotation = -1.5708
 texture = ExtResource( 56 )
 __meta__ = {
@@ -1458,13 +1272,13 @@ __meta__ = {
 }
 
 [node name="Face_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 8 )
+material = ExtResource( 48 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
-texture = ExtResource( 48 )
+texture = ExtResource( 6 )
 
 [node name="Eyebrows_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 3 )
+material = SubResource( 18 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 18 )
@@ -1476,17 +1290,17 @@ rotation = -1.5708
 texture = ExtResource( 20 )
 
 [node name="Hair" type="Bone2D" parent="HumanF1/Spine/Head"]
-position = Vector2( 31, 1.00001 )
+position = Vector2( -148, 15.0005 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_assist_mesh" type="Polygon2D" parent="HumanF1/Spine/Head/Hair"]
-material = SubResource( 3 )
+material = SubResource( 18 )
 position = Vector2( -196.998, 429 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
 texture = ExtResource( 27 )
-polygon = PoolVector2Array( 226.361, 214.538, 216.712, 286.468, 211.449, 369.801, 214.081, 448.748, 237.765, 542.608, 282.502, 625.941, 332.502, 659.275, 398.291, 661.906, 447.414, 657.52, 487.765, 660.152, 557.94, 659.275, 598.291, 630.327, 647.414, 554.889, 681.625, 469.801, 700.046, 373.31, 695.66, 287.345, 671.975, 205.766, 622.853, 153.134, 552.677, 125.941, 472.853, 119.801, 400.923, 119.801, 327.239, 136.468, 268.467, 158.397, 361.449, 185.59, 339.519, 229.45, 333.379, 269.801, 330.747, 317.169, 332.502, 373.31, 333.379, 420.678, 332.502, 474.187, 333.379, 529.45, 334.256, 589.099, 381.625, 172.432, 422.853, 159.275, 450.923, 162.783, 517.589, 175.064, 547.414, 204.011, 551.8, 239.099, 558.818, 289.976, 561.449, 347.871, 553.554, 412.783, 550.046, 466.292, 544.782, 537.345, 538.642, 594.362, 442.151, 225.064, 464.958, 261.029, 493.028, 295.239, 502.677, 344.362, 501.8, 401.38, 499.168, 457.52, 499.168, 506.643, 494.782, 561.029, 490.396, 603.134, 416.712, 232.082, 400.923, 275.941, 393.028, 300.503, 390.396, 350.503, 390.396, 415.415, 387.765, 454.889, 385.133, 500.503, 382.502, 548.748, 382.502, 590.854, 293.028, 212.783, 280.747, 271.555, 276.361, 325.941, 275.484, 382.959, 276.361, 444.362, 278.993, 511.906, 286.888, 567.169, 299.168, 609.275, 599.168, 202.257, 621.975, 260.152, 631.625, 311.029, 638.642, 366.292, 632.502, 436.468, 615.835, 489.976, 599.168, 539.976, 580.747, 584.713, 448.291, 191.731, 485.133, 206.643, 508.818, 227.696, 526.361, 261.029, 533.379, 304.011, 533.379, 347.871, 533.379, 392.608, 530.747, 432.082, 524.607, 465.415, 413.203, 198.748, 386.888, 223.31, 369.344, 257.52, 363.203, 287.345, 359.695, 332.959, 359.695, 375.064, 363.203, 410.152, 367.589, 446.117, 619.344, 186.468, 650.923, 239.976, 663.203, 289.976, 664.958, 355.766, 658.818, 419.801, 647.414, 482.082, 626.361, 536.468, 600.923, 582.959, 575.484, 619.801, 278.993, 193.485, 258.818, 254.011, 249.168, 306.643, 252.677, 379.45, 254.432, 440.854, 257.063, 486.468, 262.326, 539.976, 278.993, 593.485, 330.747, 202.257, 313.203, 277.696, 305.309, 329.45, 307.063, 389.099, 307.063, 447.871, 314.081, 493.485, 318.467, 545.24, 318.467, 587.345, 573.73, 206.643, 588.642, 261.906, 600.923, 332.082, 602.677, 370.678, 594.782, 453.134, 579.87, 501.38, 558.818, 563.661, 438.642, 267.169, 443.028, 322.432, 443.905, 371.555, 445.66, 413.661, 443.905, 451.38, 443.905, 492.608, 442.151, 539.099, 441.274, 575.064, 439.519, 610.152, 581.625, 176.818, 538.642, 150.503, 505.309, 145.239, 443.905, 139.099, 403.554, 141.731, 353.554, 153.134, 319.344, 170.678, 468.467, 306.643, 471.098, 345.239, 474.607, 393.485, 472.853, 439.099, 471.975, 477.696, 470.221, 525.064, 467.589, 570.678, 464.958, 616.292, 420.221, 311.029, 417.589, 346.994, 415.835, 393.485, 412.326, 434.713, 411.449, 482.082, 412.326, 521.555, 413.203, 559.275, 412.326, 598.748, 597.414, 414.538, 635.133, 395.239, 358.818, 488.222, 358.818, 535.59, 358.818, 588.222, 361.449, 633.836, 517.589, 635.59, 522.853, 523.31, 520.221, 558.397, 456.186, 211.906, 484.256, 236.468, 499.168, 264.538, 513.203, 302.257, 520.221, 344.362, 518.467, 384.713, 515.835, 422.432, 514.081, 465.415, 406.186, 225.064, 386.888, 267.169, 375.484, 296.117, 374.607, 333.836, 380.747, 383.836, 408.818, 183.836, 378.116, 205.766, 364.081, 229.45, 354.432, 265.415, 349.168, 296.117, 347.414, 342.608, 347.414, 379.45, 476.361, 186.468, 512.326, 204.889, 539.519, 246.994, 546.537, 286.468, 549.168, 333.836, 545.66, 361.906 )
+polygon = PoolVector2Array( 224.342, 201.974, 216.712, 286.468, 211.449, 369.801, 214.081, 448.748, 237.765, 542.608, 282.502, 625.941, 332.502, 659.275, 398.291, 661.906, 447.414, 657.52, 487.765, 660.152, 557.94, 659.275, 598.291, 630.327, 647.414, 554.889, 681.625, 469.801, 700.046, 373.31, 695.66, 287.345, 671.975, 205.766, 630.921, 126.316, 559.211, 108.553, 471.053, 111.842, 399.342, 110.526, 305.263, 111.184, 253.947, 138.158, 361.449, 185.59, 339.519, 229.45, 333.379, 269.801, 330.747, 317.169, 332.502, 373.31, 333.379, 420.678, 332.502, 474.187, 333.379, 529.45, 334.256, 589.099, 381.625, 172.432, 422.853, 159.275, 450.923, 162.783, 517.589, 175.064, 547.414, 204.011, 551.8, 239.099, 558.818, 289.976, 561.449, 347.871, 553.554, 412.783, 550.046, 466.292, 544.782, 537.345, 538.642, 594.362, 442.151, 225.064, 464.958, 261.029, 493.028, 295.239, 502.677, 344.362, 501.8, 401.38, 499.168, 457.52, 499.168, 506.643, 494.782, 561.029, 490.396, 603.134, 416.712, 232.082, 400.923, 275.941, 393.028, 300.503, 390.396, 350.503, 390.396, 415.415, 387.765, 454.889, 385.133, 500.503, 382.502, 548.748, 382.502, 590.854, 293.028, 212.783, 280.747, 271.555, 276.361, 325.941, 275.484, 382.959, 276.361, 444.362, 278.993, 511.906, 286.888, 567.169, 299.168, 609.275, 599.168, 202.257, 621.975, 260.152, 631.625, 311.029, 638.642, 366.292, 632.502, 436.468, 615.835, 489.976, 599.168, 539.976, 580.747, 584.713, 448.291, 191.731, 485.133, 206.643, 508.818, 227.696, 526.361, 261.029, 533.379, 304.011, 533.379, 347.871, 533.379, 392.608, 530.747, 432.082, 524.607, 465.415, 413.203, 198.748, 386.888, 223.31, 369.344, 257.52, 363.203, 287.345, 359.695, 332.959, 359.695, 375.064, 363.203, 410.152, 367.589, 446.117, 626.974, 176.974, 650.923, 239.976, 663.203, 289.976, 664.958, 355.766, 658.818, 419.801, 647.414, 482.082, 626.361, 536.468, 600.923, 582.959, 575.484, 619.801, 259.868, 190.789, 258.818, 254.011, 249.168, 306.643, 252.677, 379.45, 254.432, 440.854, 257.063, 486.468, 262.326, 539.976, 278.993, 593.485, 330.747, 202.257, 313.203, 277.696, 305.309, 329.45, 307.063, 389.099, 307.063, 447.871, 314.081, 493.485, 318.467, 545.24, 318.467, 587.345, 573.73, 206.643, 588.642, 261.906, 600.923, 332.082, 602.677, 370.678, 594.782, 453.134, 579.87, 501.38, 558.818, 563.661, 438.642, 267.169, 443.028, 322.432, 443.905, 371.555, 445.66, 413.661, 443.905, 451.38, 443.905, 492.608, 442.151, 539.099, 441.274, 575.064, 439.519, 610.152, 592.105, 157.895, 549.342, 140.789, 505.309, 145.239, 443.905, 139.099, 403.554, 141.731, 342.763, 140.789, 296.711, 157.895, 468.467, 306.643, 471.098, 345.239, 474.607, 393.485, 472.853, 439.099, 471.975, 477.696, 470.221, 525.064, 467.589, 570.678, 464.958, 616.292, 420.221, 311.029, 417.589, 346.994, 415.835, 393.485, 412.326, 434.713, 411.449, 482.082, 412.326, 521.555, 413.203, 559.275, 412.326, 598.748, 597.414, 414.538, 635.133, 395.239, 358.818, 488.222, 358.818, 535.59, 358.818, 588.222, 361.449, 633.836, 517.589, 635.59, 522.853, 523.31, 520.221, 558.397, 456.186, 211.906, 484.256, 236.468, 499.168, 264.538, 513.203, 302.257, 520.221, 344.362, 518.467, 384.713, 515.835, 422.432, 514.081, 465.415, 406.186, 225.064, 386.888, 267.169, 375.484, 296.117, 374.607, 333.836, 380.747, 383.836, 408.818, 183.836, 378.116, 205.766, 364.081, 229.45, 354.432, 265.415, 349.168, 296.117, 347.414, 342.608, 347.414, 379.45, 476.361, 186.468, 512.326, 204.889, 539.519, 246.994, 546.537, 286.468, 549.168, 333.836, 545.66, 361.906 )
 uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
 internal_vertex_count = 171
@@ -1541,8 +1355,8 @@ visible = false
 script = ExtResource( 61 )
 
 [node name="Hairs_mesh" type="Polygon2D" parent="HumanF1/Spine/Head/Hair"]
-material = SubResource( 3 )
-position = Vector2( -197.998, 428.001 )
+material = SubResource( 18 )
+position = Vector2( -198.546, 428.334 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
 texture = ExtResource( 24 )
@@ -1598,30 +1412,34 @@ script = ExtResource( 61 )
 visible = false
 script = ExtResource( 61 )
 
-[node name="Ears_furry_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+[node name="Ears_furry_tex" type="Sprite" parent="HumanF1/Spine/Head/Hair"]
 visible = false
-material = SubResource( 15 )
-position = Vector2( 588, -2.00217 )
+material = SubResource( 18 )
+position = Vector2( 551.453, -3.21631 )
 rotation = -1.5708
+scale = Vector2( 1, 1 )
 texture = ExtResource( 44 )
 
-[node name="Head_armor_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+[node name="Head_armor_tex" type="Sprite" parent="HumanF1/Spine/Head/Hair"]
+visible = false
+position = Vector2( -31, -1 )
 rotation = -1.5708
 
-[node name="Horns_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+[node name="Horns_tex" type="Sprite" parent="HumanF1/Spine/Head/Hair"]
+visible = false
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 material = SubResource( 16 )
-position = Vector2( 573, -9.00204 )
+position = Vector2( 542, -10.002 )
 rotation = -1.5708
+scale = Vector2( 1, 1 )
 texture = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-visible = false
-material = SubResource( 8 )
-position = Vector2( 567, -10.002 )
+material = ExtResource( 48 )
+position = Vector2( 390.357, 5.83191 )
 rotation = -1.5708
 scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 29 )

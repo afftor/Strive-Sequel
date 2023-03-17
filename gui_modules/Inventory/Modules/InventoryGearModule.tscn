@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
@@ -14,12 +14,12 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo_hover.png" type="Texture" id=14]
+[ext_resource path="res://Character_generator/Female_pose1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=22]
-
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -35,7 +35,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Female_pose1" parent="." instance=ExtResource( 15 )]
+position = Vector2( 347, 1403 )
+
 [node name="BodyMask" type="Light2D" parent="."]
+visible = false
 light_mask = 2
 position = Vector2( 345.568, 512.451 )
 z_as_relative = false
@@ -44,6 +48,7 @@ mode = 3
 range_item_cull_mask = 2
 
 [node name="BodyImage" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 light_mask = 2
 margin_left = -139.051
@@ -434,10 +439,10 @@ __meta__ = {
 
 [node name="face" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 182.451
-margin_right = 395.568
-margin_bottom = 282.451
+margin_left = 28.0
+margin_top = 173.0
+margin_right = 128.0
+margin_bottom = 273.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -464,10 +469,10 @@ __meta__ = {
 
 [node name="neck" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 315.046
-margin_right = 395.568
-margin_bottom = 415.046
+margin_left = 28.0
+margin_top = 304.0
+margin_right = 128.0
+margin_bottom = 404.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -494,10 +499,10 @@ __meta__ = {
 
 [node name="arms" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 474.941
-margin_top = 476.905
-margin_right = 574.941
-margin_bottom = 576.905
+margin_left = 584.0
+margin_top = 482.0
+margin_right = 684.0
+margin_bottom = 582.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -524,10 +529,10 @@ __meta__ = {
 
 [node name="chest" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 476.905
-margin_right = 395.568
-margin_bottom = 576.905
+margin_left = 28.0
+margin_top = 448.0
+margin_right = 128.0
+margin_bottom = 548.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -554,10 +559,10 @@ __meta__ = {
 
 [node name="crotch" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 351.082
-margin_top = 772.451
-margin_right = 451.082
-margin_bottom = 872.451
+margin_left = 581.0
+margin_top = 762.0
+margin_right = 681.0
+margin_bottom = 862.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -584,10 +589,10 @@ __meta__ = {
 
 [node name="waist" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 627.2
-margin_right = 395.568
-margin_bottom = 727.2
+margin_left = 584.0
+margin_top = 629.0
+margin_right = 684.0
+margin_bottom = 729.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -614,10 +619,10 @@ __meta__ = {
 
 [node name="ass" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 245.568
-margin_top = 771.905
-margin_right = 345.568
-margin_bottom = 871.905
+margin_left = 30.0
+margin_top = 767.0
+margin_right = 130.0
+margin_bottom = 867.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -644,10 +649,10 @@ __meta__ = {
 
 [node name="legs" type="TextureButton" parent="TattooSlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 912.451
-margin_right = 395.568
-margin_bottom = 1012.45
+margin_left = 30.0
+margin_top = 908.0
+margin_right = 130.0
+margin_bottom = 1008.0
 rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
@@ -673,10 +678,10 @@ __meta__ = {
 }
 
 [node name="TattooButton" type="TextureButton" parent="."]
-margin_left = 623.819
-margin_top = 872.451
-margin_right = 677.819
-margin_bottom = 926.451
+margin_left = 622.0
+margin_top = 968.0
+margin_right = 676.0
+margin_bottom = 1022.0
 hint_tooltip = "Tattoo"
 texture_normal = ExtResource( 16 )
 texture_hover = ExtResource( 14 )
