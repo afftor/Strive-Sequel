@@ -1,6 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
-[sub_resource type="Shader" id=20]
+[ext_resource path="res://Character_generator/images/98_masks/mask_hair2.png" type="Texture" id=1]
+[ext_resource path="res://Character_generator/images/98_masks/mask_hair1.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -157,30 +160,32 @@ void vertex(){
 }"
 
 [resource]
-shader = SubResource( 20 )
-shader_param/anchor1 = Vector2( 436, 590 )
-shader_param/anchor2 = Vector2( 361.026, 539.273 )
-shader_param/anchor3 = Vector2( 519, 539 )
-shader_param/anchor4 = Vector2( 0, 0 )
+shader = SubResource( 1 )
+shader_param/anchor1 = Vector2( 381, 467 )
+shader_param/anchor2 = Vector2( 359, 398 )
+shader_param/anchor3 = Vector2( 504, 466 )
+shader_param/anchor4 = Vector2( 533, 398 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( -14.5454, 9.09088 )
-shader_param/move3 = Vector2( 13.8444, 9.3642 )
-shader_param/move4 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 36, 74 )
+shader_param/move2 = Vector2( -17, 10 )
+shader_param/move3 = Vector2( -37, 75 )
+shader_param/move4 = Vector2( 10, 9 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 0
-shader_param/range2 = 110.0
-shader_param/range3 = 110.0
-shader_param/range4 = 0
+shader_param/range1 = 200.0
+shader_param/range2 = 200.0
+shader_param/range3 = 200.0
+shader_param/range4 = 200.0
 shader_param/range5 = 0
 shader_param/range6 = 0
 shader_param/power = 1.0
-shader_param/target1color = Color( 0.65098, 0.411765, 0.313726, 1 )
-shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part1color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part2color = Color( 0.254902, 0.305882, 0.168627, 1 )
-shader_param/part3color = Color( 0.713726, 0.247059, 0.247059, 1 )
-shader_param/overlay = 0.999
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 0.423529, 0.631373, 0.635294, 1 )
+shader_param/part3color = Color( 0.0941176, 0.101961, 0.227451, 1 )
+shader_param/overlay = 0.7
+shader_param/part2 = ExtResource( 2 )
+shader_param/part3 = ExtResource( 1 )
