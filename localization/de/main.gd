@@ -2415,7 +2415,7 @@ var TranslationDict = {
 	ENEMYREBEL_HEALER = "Rebel Healer",
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
-	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",
+	ENEMYCAVE_GOBLIN_SHAMAN = "Cave Goblin Shaman",
 	ENEMYCAVE_GOBLIN_BOSS = "Cave Goblin Boss",
 	ENEMYOGRE_MELEE = "Ogre",
 	ENEMYOGRE_MAGE = "Ogre Mage",
@@ -9418,6 +9418,11 @@ You remind her as you're still deep inside of her that she should call you what 
 	AMELIA_HERBS_STAGE_1 = "Visit Amelia at the Servants Guild", # go to Amelia and ask her what is up
 	AMELIA_HERBS_STAGE_2 = "Travel to the Elven Capital and find the supplier Amelia told you about.", # Get the herbs
 	AMELIA_HERBS_STAGE_3 = "Return to Amelia at the Servants Guild", # return to Amelia
+	
+	ZEPHYRA_BATH_QUEST_NAME = "Zephyra: ",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is sceheming on something...",
+	ZEPHYRA_BATH_QUEST_STAGE_1 = "Upgrade your mansion to host a bath.",
+	ZEPHYRA_BATH_QUEST_STAGE_2 = "Wait for something to happen.",
 	
 	MARRIAGE_MAIN_NAME = "Marriage",
 	MARRIAGE_MAIN_SUMMARY = "Marriage",

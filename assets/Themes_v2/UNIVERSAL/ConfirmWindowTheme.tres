@@ -13,5 +13,4 @@ margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource( 1 )
-Fonts/colors/ = Color( 0.976471, 0.882353, 0.505882, 1 )
 Panel/styles/panel = SubResource( 1 )
