@@ -131,7 +131,7 @@ func make_guild(code, area):
 #		preferences = data.preference,
 		description = data.description,
 		questpool = {easy = data.quests_easy, medium = data.quests_medium, hard = data.quests_hard},
-		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
+#		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
 		hireable_characters = [],
 		events = [],
@@ -155,14 +155,14 @@ func make_guild(code, area):
 		guilddatatemplate.reputation_shop = data.reputation_shop.duplicate(true)
 	if data.slavenumber.size() > 0:
 		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
-	if data.questnumber.size() > 0:
-		data.questnumber = round(rand_range(data.questnumber[0], data.questnumber[1]))
-		area.quests.factions[data.code] = {}
-		while data.questnumber > 0:
-			for i in ['easy','medium']:#'medium','hard']:
-				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
-					make_quest_for_guild(guilddatatemplate, i)
-			data.questnumber -= 1
+#	if data.questnumber.size() > 0:
+#		data.questnumber = round(rand_range(data.questnumber[0], data.questnumber[1]))
+#		area.quests.factions[data.code] = {}
+#		while data.questnumber > 0:
+#			for i in ['easy','medium','hard']:
+#				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
+#					make_quest_for_guild(guilddatatemplate, i)
+#			data.questnumber -= 1
 	if data.has('background'): guilddatatemplate.background = data.background
 	guilddatatemplate.slavenumber = data.slavenumber
 	rebuild_guild_slaves(guilddatatemplate)
@@ -173,6 +173,7 @@ func make_guild(code, area):
 	ResourceScripts.game_world.factions[guilddatatemplate.code] = {code = guilddatatemplate.code, name = guilddatatemplate.name, area = guilddatatemplate.area}
 
 	area.factions[guilddatatemplate.code] = guilddatatemplate
+	fill_faction_quests(guilddatatemplate.code, area.code)
 
 
 func make_slave_for_guild_old(guild):#obsolete
@@ -366,11 +367,27 @@ func fill_faction_quests(faction, area):
 
 	#get existing quests data
 	var difficulty = {easy = 0, medium = 0, hard = 0}
+	for quest in areadata.quests.factions[faction].values():
+		difficulty[quest.difficulty] += 1
+	var diff_limits = {easy = 1, medium = 0, hard = 0}
+	if factiondata.totalreputation >= 300:
+		diff_limits.easy = 2
+	if factiondata.totalreputation >= 500:
+		diff_limits.easy = 2
+		diff_limits.medium = 1
+	if factiondata.totalreputation >= 1000:
+		diff_limits.easy = 2
+		diff_limits.medium = 1
+		diff_limits.hard = 1
+	if factiondata.totalreputation >= 1500:
+		diff_limits.easy = 2
+		diff_limits.medium = globals.rng.randi_range(1, 2)
+		diff_limits.hard = 1
 
 #	for i in areadata.quests.factions[faction].values():
 #		difficulty[i.difficulty] += 1
 	for i in difficulty:
-		while factiondata.questsetting[i] > difficulty[i] && factiondata.questpool[i].size() > 0:
+		while diff_limits[i] > difficulty[i] && factiondata.questpool[i].size() > 0:
 			make_quest_for_guild(factiondata, i)
 			difficulty[i] += 1
 

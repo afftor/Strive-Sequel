@@ -46,15 +46,7 @@ func _ready():
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
-	$FactionDetails.get_node("QuestGen").connect("pressed", self, "show_quest_gen")
-	$FactionDetails.get_node("QuestGenPanel/Apply").connect(
-		"pressed", self, "show_quest_gen", ["hide"]
-	)
-	$FactionDetails.get_node("QuestGenPanel").hide()
 
-	for i in $FactionDetails.get_node("QuestGenPanel/HBoxContainer").get_children():
-		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
-		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
 	$QuestBoard/QuestDetails/AcceptQuest.connect("pressed", self, "accept_quest")
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
@@ -1470,28 +1462,6 @@ func faction_upgrade(pressed, pressed_button, guild):
 	$FactionDetails/FactionPoints.text = "Faction points: " + str(active_faction.totalreputation)
 	$FactionDetails/UnspentPoints.text = "Unspent points: " + str(active_faction.reputation)
 
-	for i in active_faction.questsetting:
-		if i == 'total':
-			continue
-		$FactionDetails/QuestGenPanel/HBoxContainer.get_node(i + "/counter").text = str(
-			active_faction.questsetting[i]
-		)
-
-	$FactionDetails/QuestGenPanel/totalquestpoints.text = (
-		"Total quests: "
-		+ str(
-			(
-				active_faction.questsetting.total
-				- (
-					active_faction.questsetting.easy
-					+ active_faction.questsetting.medium
-					+ active_faction.questsetting.hard
-				)
-			)
-		)
-		+ "/"
-		+ str(active_faction.questsetting.total)
-	)
 	var check = true
 	for i in worlddata.guild_upgrades.values():
 		if i.reqs != []:
@@ -1552,36 +1522,6 @@ func unlock_upgrade(upgrade, level):
 				for typedata in active_faction.hireable_characters:
 					typedata.slavenumber[1] = input_handler.math(i.operant, typedata.slavenumber[1], i.value)
 	update_guild_actions(active_faction)
-	faction_upgrade(true, current_pressed_area_btn, active_faction)
-
-
-func show_quest_gen(action = "show"):
-	if action == "show":
-		$FactionDetails.get_node("QuestGenPanel").visible = $FactionDetails.get_node("QuestGen").is_pressed()
-	else:
-		$FactionDetails.get_node("QuestGenPanel").hide()
-		$FactionDetails.get_node("QuestGen").pressed = false
-
-
-func details_quest_up(difficulty):
-	if (
-		(
-			active_faction.questsetting.total
-			- (
-				active_faction.questsetting.easy
-				+ active_faction.questsetting.medium
-				+ active_faction.questsetting.hard
-			)
-		)
-		> 0
-	):
-		active_faction.questsetting[difficulty] += 1
-	faction_upgrade(true, current_pressed_area_btn, active_faction)
-
-
-func details_quest_down(difficulty):
-	if active_faction.questsetting[difficulty] > 0:
-		active_faction.questsetting[difficulty] -= 1
 	faction_upgrade(true, current_pressed_area_btn, active_faction)
 
 

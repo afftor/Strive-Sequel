@@ -1740,8 +1740,8 @@ func common_effects(effects):
 				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value) #guess there should be a + operant check before it
 				var n = get_nquest_for_rep(guild.totalreputation) - n1
 				if n > 0:
-					guild.questsetting.total += n
-					guild.questsetting.easy += n
+#					guild.questsetting.total += n
+#					guild.questsetting.easy += n
 					var args = {}
 					args["label"] = guild.name
 					args["info"] = "Reputation: +%d Total Quest" % n
