@@ -200,6 +200,11 @@ var backgrounds = {
 	cali_zephyra_1 = load("res://assets/images/fullscreen scenes/CaliZephyra001.png"),
 	cali_zephyra_2 = load("res://assets/images/fullscreen scenes/CaliZephyra002.png"),
 	
+	zephyra_bath_1 = load("res://assets/images/fullscreen scenes/ZephyraBathCG001.png"), 
+	zephyra_bath_2 = load("res://assets/images/fullscreen scenes/ZephyraBathCG002.png"),
+	zephyra_bath_3 = load("res://assets/images/fullscreen scenes/ZephyraBathCG003.png"), 
+	zephyra_bath_4 = load("res://assets/images/fullscreen scenes/ZephyraBathCG004.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 

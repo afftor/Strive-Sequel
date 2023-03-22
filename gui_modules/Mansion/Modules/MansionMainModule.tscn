@@ -50,13 +50,11 @@ size = 36
 font_data = ExtResource( 19 )
 
 [node name="MansionMainModule" type="Panel"]
-margin_left = 1.0
 margin_right = 1921.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 30.9806 ]
 }
 test_mode = true
@@ -188,8 +186,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="MenuButton"]
 margin_right = 116.0
 margin_bottom = 53.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Menu"
 align = 1
 valign = 1
@@ -243,15 +241,15 @@ anchor_bottom = -0.015625
 margin_right = 137.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = ExtResource( 20 )
 custom_styles/pressed = ExtResource( 20 )
 custom_styles/focus = ExtResource( 20 )
 custom_styles/disabled = ExtResource( 20 )
 custom_styles/normal = ExtResource( 20 )
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
@@ -299,9 +297,7 @@ margin_bottom = -408.218
 [node name="MansionJobModule2" parent="." instance=ExtResource( 36 )]
 visible = false
 
-[node name="Console" type="Control" parent="." groups=[
-"pauseprocess",
-]]
+[node name="Console" type="Control" parent="." groups=["pauseprocess"]]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

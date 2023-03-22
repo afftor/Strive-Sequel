@@ -6,7 +6,7 @@ var pregen_character_sprites = load("res://assets/data/pregen_characters_data.gd
 var lands = {
 	plains = {
 		code = 'plains',
-		name = "Plains",
+		name = tr("AREAPLAINS"),
 		enabled = true,
 		races = [['Human', 25], ['halfbeast', 5], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local races
 		policies = [], #not used yet
@@ -59,7 +59,7 @@ var lands = {
 	},
 	forests = {
 		code = 'forests',
-		name = "Forests",
+		name = tr("AREAFORESTS"),
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
@@ -97,7 +97,7 @@ var lands = {
 	},
 	mountains = {
 		code = 'mountains',
-		name = "Mountains",
+		name = tr("AREAMOUNTAINS"),
 		races = [['Dwarf', 100], ['Gnome',10],['Kobold', 10]],
 		enabled = true,
 		lead_race = 'Dwarf',
@@ -115,7 +115,7 @@ var lands = {
 	},
 	steppe = {
 		code = 'steppe',
-		name = "Steppe",
+		name = tr("AREASTEPPE"),
 		enabled = false,
 		lead_race = 'Orc',
 		secondary_races = ['Goblin','Centaur'],
@@ -132,7 +132,7 @@ var lands = {
 	},
 	seas = {
 		code = 'seas',
-		name = "Seas",
+		name = tr("AREASEAS"),
 		enabled = false,
 		lead_race = 'Nereid',
 		secondary_races = ['Lamia','Scylla'],
@@ -150,7 +150,7 @@ var lands = {
 	},
 	 beastkin_tribe = {
 		code = 'beastkin_tribe',
-		name = "Beastkin Tribe",
+		name = tr("AREABEASTKIN_TRIBE"),
 		enabled = true,
 		races = [['Elf', 100], ['TribalElf',10],['halfbeast', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
@@ -189,8 +189,8 @@ var lands = {
 var guild_upgrades = {
 	slavenumberupgrade = {
 		code = 'slavenumberupgrade',
-		descript = 'Increases the number of available characters for hire at once by 1. ',
-		name = 'Hirelings number',
+		descript = "SLAVENUMBERUPGRADE_DISC",
+		name = "SLAVENUMBERUPGRADE_NAME",
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -198,8 +198,8 @@ var guild_upgrades = {
 	},
 	slavequality = {
 		code = 'slavequality',
-		descript = 'Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher. ',
-		name = 'Hirelings quality',
+		descript = "SLAVEQUALITY_DISC",
+		name = "SLAVEQUALITY_DISC",
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
@@ -216,8 +216,8 @@ var guild_upgrades = {
 	# },
 	workers_disassamby_upgrade = {
 		code = 'workers_disassamby_upgrade',
-		descript = 'Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.',
-		name = 'Disassembe',
+		descript = tr("WORKERS_DISASSAMBY_UPGRADE_DISC"),
+		name = tr("WORKERS_DISASSAMBY_UPGRADE_NAME"),
 		cost = [100,500,1000,2000],
 		reqs = [{type = "current_guild", check = true, value = "workers"}],
 		maxlevel = 4,
@@ -229,7 +229,7 @@ var guild_upgrades = {
 var factiondata = {
 	fighters = {
 		code = 'fighters',
-		name = 'Fighters',
+		name = tr("FIGHTERS"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -265,7 +265,7 @@ var factiondata = {
 	
 	mages = {
 		code = 'mages',
-		name = 'Mages',
+		name = tr("MAGES"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -301,7 +301,7 @@ var factiondata = {
 	
 	workers = {
 		code = 'workers',
-		name = 'Workers',# Guild',
+		name = tr("WORKERS"),# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [
@@ -349,7 +349,7 @@ var factiondata = {
 	
 	servants = {
 		code = 'servants',
-		name = 'Servants',
+		name = tr("SERVANTS"),
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
@@ -385,7 +385,7 @@ var factiondata = {
 	
 	slavemarket = {
 		code = 'slavemarket',
-		name = 'Slave Market',
+		name = tr("SLAVEMARKET"),
 		description = '',
 		actions = ['hire','sellslaves','services'],
 		tags = [],
@@ -411,7 +411,7 @@ var factiondata = {
 	
 	beastkin_slave_trader = {
 		code = 'beastkin_slave_trader',
-		name = 'Beastkin Slave Trader',
+		name = tr("BEASTKIN_SLAVE_TRADER"),
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'sword_artifact_quest', check = true}],
 		actions = ['hire'],
@@ -446,7 +446,7 @@ var factiondata = {
 	
 	elvish_slave_trader = {
 		code = 'elvish_slave_trader',
-		name = 'Elvish Slave Trader',
+		name = tr("ELVISH_SLAVE_TRADER"),
 		description = '',
 		conditions = [{type = 'quest_completed', name = 'test', check = false}],
 		actions = ['hire','sellslaves','services'],
@@ -483,7 +483,7 @@ var factiondata = {
 	
 	exotic_slave_trader = {
 		code = 'exotic_slave_trader',
-		name = 'Exotic Slave Trader',
+		name = tr("EXOTIC_SLAVE_TRADER"),
 		description = '',
 		actions = ['hire'],
 		hireable_characters = [
@@ -519,7 +519,7 @@ var factiondata = {
 	
 	aliron_church = {
 		code = 'aliron_church',
-		name = 'Aliron Church',
+		name = tr("ALIRON_CHURCH"),
 		description = '',
 		actions = [],
 #		preference = [],
@@ -553,7 +553,7 @@ var locations = {
 		code = 'settlement_plains1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human_quest',
+		name = tr("VILLAGE_HUMAN_QUEST1"),
 		races = [],
 		leader = '',
 		captured = false, #disable button to travel, button has tooltip saying it's untravable
@@ -595,7 +595,7 @@ var locations = {
 		code = 'settlement_plains2',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = "Stonevale",
 		races = [],
 		leader = '',
 		character_data = {
@@ -631,7 +631,7 @@ var locations = {
 		code = 'settlement_forest1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = "Leafshade Haven",
 		races = [],
 		leader = '',
 		character_data = {
@@ -654,7 +654,7 @@ var locations = {
 		code = 'settlement_mountains1',
 		type = 'settlement',
 		classname = 'settlement_small',
-		name = 'village_human',
+		name = "Mountain Settlement",
 		races = [],
 		leader = '',
 		tasks = ['gather'],
@@ -676,17 +676,17 @@ var locations = {
 var questdata = {
 	fighters_task_easy = {
 		code = 'fighters_task_easy',
-		name = 'Helper Hand',
-		descript = 'The fighters guild looking for attendants to replace a few squires who fell ill.',
+		name =  tr("FIGHTERS_TASK_EASY_NAME"),
+		descript = tr("FIGHTERS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Helper Hand'],
+			name = [tr("FIGHTERS_TASK_EASY_RNDCND_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+			descript = tr("FIGHTERS_TASK_EASY_RNDCND_DESC"),
 			function = ['fighters_task_easy']
 			}],
 		unlockreqs = [],
@@ -698,17 +698,17 @@ var questdata = {
 	},
 	fighters_task_medium = {
 		code = 'fighters_task_medium',
-		name = 'Town Patrol',
-		descript = 'The fighters guild looking for a few spare fighters to fill the role of guardsmen.',
+		name = tr("FIGHTERS_TASK_MEDIUM_NAME"),
+		descript = tr("FIGHTERS_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Town Patrol'],
+			name = [tr("FIGHTERS_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = 'The fighters guild looking for a few spare fighters to fill the role of guardsmen.',
+			descript = tr("FIGHTERS_TASK_MEDIUM_RNDCND_DESC"),
 			function = ['fighters_task_medium']
 			}],
 		unlockreqs = [],
@@ -720,17 +720,17 @@ var questdata = {
 	},
 	fighters_task_hard = {
 		code = 'fighters_task_hard',
-		name = 'Recruit Training',
-		descript = 'The fighters guild looking for experienced trainers to coach new recruits.',
+		name = tr("FIGHTERS_TASK_HARD_NAME"),
+		descript = tr("FIGHTERS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Recruit Training'],
+			name = [tr("FIGHTERS_TASK_HARD_RNDCND_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = 'The fighters guild looking for experienced trainers to coach new recruits.',
+			descript = tr("FIGHTERS_TASK_HARD_RNDCND_DESC"),
 			function = ['fighters_task_hard']
 			}],
 		unlockreqs = [],
@@ -742,16 +742,16 @@ var questdata = {
 	},
 	mages_task_easy = {
 		code = 'mages_task_easy',
-		name = 'Library Assistance',
-		descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
+		name = tr("MAGES_TASK_EASY_NAME"),
+		descript = tr("MAGES_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Library Assistance'],
+			name = [tr("MAGES_TASK_EASY_RNDCND_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild seeks a few helpers to work on sorting the extensive book archives.',
+			descript = tr("MAGES_TASK_EASY_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_easy']
 			}],
@@ -764,16 +764,16 @@ var questdata = {
 	},
 	mages_task_medium = {
 		code = 'mages_task_medium',
-		name = 'Spell Slinging',
-		descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+		name =tr("MAGES_TASK_MEDIUM_NAME"),
+		descript = tr("MAGES_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Spell Slinging'],
+			name = [tr("MAGES_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild is looking for a competent mage to assist a sorcery ritual.',
+			descript = tr("MAGES_TASK_MEDIUM_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_medium']
 			}],
@@ -786,16 +786,16 @@ var questdata = {
 	},
 	mages_task_hard = {
 		code = 'mages_task_hard',
-		name = 'Curse Lifter',
-		descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+		name = tr("MAGES_TASK_HARD_NAME"),
+		descript = tr("MAGES_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Curse Lifter'],
+			name = [tr("MAGES_TASK_HARD_RNDCND_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.',
+			descript = tr("MAGES_TASK_HARD_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_hard']
 			}],
@@ -808,15 +808,15 @@ var questdata = {
 	},
 	workers_task_easy = {
 		code = 'workers_task_easy',
-		name = 'Blacksmith Assistant',
-		descript = 'The worker guild can use a few extra hands to help with the job at the town.',
+		name = tr("WORKERS_TASK_EASY_NAME"),
+		descript = tr("WORKERS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Blacksmith Assistant'],
+			name = [tr("WORKERS_TASK_EASY_RNDCND_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 2],
-			descript = 'The worker guild can use a few extra hands to help with the job at the town.',
+			descript = tr("WORKERS_TASK_EASY_RNDCND_DESC"),
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_easy']
@@ -830,16 +830,16 @@ var questdata = {
 	},
 	workers_task_medium = {
 		code = 'workers_task_medium',
-		name = 'Wanted: Tailors',
-		descript = 'The worker guild looks for tailors who can help with the recent order.',
+		name = tr("WORKERS_TASK_MEDIUM_NAME"),
+		descript = tr("WORKERS_TASK_MEDIUM_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [''],
+			name = [tr("WORKERS_TASK_MEDIUM_RNDCND_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = 'The worker guild looks for tailors who can help with the recent order.',
+			descript = tr("WORKERS_TASK_MEDIUM_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['workers_task_medium']
 			}],
@@ -852,16 +852,16 @@ var questdata = {
 	},
 	workers_task_hard = {
 		code = 'workers_task_hard',
-		name = 'Restoration Project',
-		descript = 'The worker guild requires additional help for a large building restoration.',
+		name = tr("WORKERS_TASK_HARD_NAME"),
+		descript = tr("WORKERS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Restoration Project'],
+			name = [tr("WORKERS_TASK_HARD_RNDCND_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'physics',
-			descript = 'The worker guild requires additional help for a large building restoration.',
+			descript = tr("WORKERS_TASK_HARD_RNDCND_NAME"),
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_hard']
 			}],
@@ -876,15 +876,15 @@ var questdata = {
 	
 	servants_task_easy = {
 		code = 'servants_task_easy',
-		name = 'One Time Waitress',
-		descript = 'The servants guild is looking for someone to work at a public restaurant.',
+		name = tr("SERVANTS_TASK_EASY_NAME"),
+		descript = tr("SERVANTS_TASK_EASY_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['One Time Waitress'],
+			name = [tr("SERVANTS_TASK_EASY_RNDCND_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 1],
-			descript = 'The servants guild is looking for someone to work at a public restaurant.',
+			descript = tr("SERVANTS_TASK_EASY_RNDCND_DESC"),
 			workstat = 'charm',
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_easy']
@@ -920,16 +920,16 @@ var questdata = {
 #	},
 	servants_task_hard = {
 		code = 'servants_task_hard',
-		name = 'Rich Party',
-		descript = 'The servants guild looking for performance artists for a large scale celebration party.',
+		name = tr("SERVANTS_TASK_HARD_NAME"),
+		descript = tr("SERVANTS_TASK_HARD_DESC"),
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = ['Rich Party'],
+			name = [tr("SERVANTS_TASK_HARD_RNDCND_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'charm',
-			descript = 'The servants guild looking for performance artists for a large scale celebration party.',
+			descript = tr("SERVANTS_TASK_HARD_RNDCND_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_hard']
 			}],
@@ -947,8 +947,8 @@ var questdata = {
 	
 	workers_resources_easy = {
 		code = 'workers_resources_easy',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','cloth','bone','leather'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -960,8 +960,8 @@ var questdata = {
 	},
 	workers_resources_medium = {
 		code = 'workers_resources_medium',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodiron','iron','steel','clothmagic'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -973,8 +973,8 @@ var questdata = {
 	},
 	workers_resources_hard = {
 		code = 'workers_resources_hard',
-		name = 'Resource gathering',
-		descript = 'The Workers Guild requires additional resources for its needs. ',
+		name = tr("WORKERS_RESOURCES_NAME"),
+		descript = tr("WORKERS_RESOURCES_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancient','leathermythic','mithril','lizard_skin'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [250,400],
@@ -986,8 +986,8 @@ var questdata = {
 	},
 	workers_food_easy = {
 		code = 'workers_food_easy',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [35,55]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1000,8 +1000,8 @@ var questdata = {
 	},
 	workers_food_medium = {
 		code = 'workers_food_medium',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1014,8 +1014,8 @@ var questdata = {
 	},
 	workers_food_hard = {
 		code = 'workers_food_hard',
-		name = 'Food supply',
-		descript = 'The Workers Guild requires additional food supplies.',
+		name = tr("WORKERS_FOOD_NAME"),
+		descript = tr("WORKERS_FOOD_DESC"),
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['bread','fishcakes','meatsoup'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [250,450],
@@ -1028,8 +1028,8 @@ var questdata = {
 	},
 	workers_craft_tools_easy = {
 		code = 'workers_craft_tools_easy',
-		name = 'Tool making',
-		descript = 'The Workers Guild requires some instruments crafted in a specific way ',
+		name = tr("WORKERS_CRAFT_TOOLS_NAME"),
+		descript = tr("WORKERS_CRAFT_TOOLS_DESC"),
 		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [1,1], parts = {ToolBlade = ['iron','bone']}}],
 		unlockreqs = [],
 		reputation = [150,200],
@@ -1040,8 +1040,8 @@ var questdata = {
 	},
 	workers_craft_tools_medium = {
 		code = 'workers_craft_tools_medium',
-		name = 'Tool making',
-		descript = 'The Workers Guild requires some instruments crafted in a specific way ',
+		name = tr("WORKERS_CRAFT_TOOLS_NAME"),
+		descript = tr("WORKERS_CRAFT_TOOLS_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle','hammer','hunt_knife'], range = [1,1], parts = {ToolBlade = ['steel','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle','hammer','fishingtools','hunt_knife'], range = [1,1], parts = {ToolHandle = ['steel','woodmagic']}},
@@ -1055,8 +1055,8 @@ var questdata = {
 	},
 	workers_threat_easy = {
 		code = 'workers_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Workers Guild requires a help with a certain issue.',
+		name = tr("WORKERS_THREAT_NAME"),
+		descript = tr("WORKERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [150,200],
@@ -1069,8 +1069,8 @@ var questdata = {
 	},
 	workers_threat_medium = {
 		code = 'workers_threat_medium',
-		name = 'Trouble Solving',
-		descript = 'The Workers Guild requires a help with a certain issue.',
+		name = tr("WORKERS_THREAT_NAME"),
+		descript = tr("WORKERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_troll'], difficulty = 'medium'}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1082,8 +1082,8 @@ var questdata = {
 	},
 	fighters_threat_easy = {
 		code = 'fighters_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Fighters Guild requires a help with a certain issue.',
+		name = tr("FIGHTERS_THREAT_NAME"),
+		descript = tr("FIGHTERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_goblins','basic_threat_rebels']}],#,
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1095,8 +1095,8 @@ var questdata = {
 	},
 	fighters_threat_medium = {
 		code = 'fighters_threat_medium',
-		name = 'Trouble Solving',
-		descript = 'The Fighters Guild requires a help with a certain issue.',
+		name = tr("FIGHTERS_THREAT_NAME"),
+		descript = tr("FIGHTERS_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogre']}],#,
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1108,8 +1108,8 @@ var questdata = {
 	},
 	fighters_dungeon_easy = {
 		code = 'fighters_dungeon_easy',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave']}],
 		unlockreqs = [],
 		reputation = [150,250],
@@ -1122,8 +1122,8 @@ var questdata = {
 	},
 	fighters_dungeon_medium = {
 		code = 'fighters_dungeon_medium',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [200,350],
@@ -1136,8 +1136,8 @@ var questdata = {
 	},
 	fighters_dungeon_hard = {
 		code = 'fighters_dungeon_hard',
-		name = 'Dungeon clear',
-		descript = 'The Fighters Guild requires a local dungeon to be cleared.',
+		name = tr("FIGHTERS_DUNGEON_NAME"),
+		descript = tr("FIGHTERS_DUNGEON_DESC"),
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_fire_depths','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [300,500],
@@ -1151,8 +1151,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_easy = {
 		code = 'fighters_monster_hunt_easy',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','goblin'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1164,8 +1164,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_medium = {
 		code = 'fighters_monster_hunt_medium',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [200,250],
@@ -1177,8 +1177,8 @@ var questdata = {
 	},
 	fighters_monster_hunt_hard = {
 		code = 'fighters_monster_hunt_hard',
-		name = 'Monster Hunt',
-		descript = 'The Fighters Guild has a task for hunting certain amount of enemies.',
+		name = tr("FIGHTERS_MONSTER_HUNT_NAME"),
+		descript = tr("FIGHTERS_MONSTER_HUNT_DESC"),
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [15,25]}],
 		unlockreqs = [],
 		reputation = [400,500],
@@ -1191,8 +1191,8 @@ var questdata = {
 	
 	fighters_craft_gear_medium = {
 		code = 'fighters_craft_gear_medium',
-		name = 'Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
+		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
@@ -1208,8 +1208,8 @@ var questdata = {
 	},
 	fighters_craft_gear_hard = {
 		code = 'fighters_craft_gear_hard',
-		name = 'Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
+		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
@@ -1230,8 +1230,8 @@ var questdata = {
 	
 	mages_materials_easy = {
 		code = 'mages_materials_easy',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name = tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['wood','bone','cloth'], range = [7,12]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1243,8 +1243,8 @@ var questdata = {
 	},
 	mages_materials_medium = {
 		code = 'mages_materials_medium',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name =tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['woodmagic','clothmagic','obsidian'], range = [5,15]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1256,8 +1256,8 @@ var questdata = {
 	},
 	mages_materials_hard = {
 		code = 'mages_materials_hard',
-		name = 'Resource Supply',
-		descript = 'The Mages Guild requires additional resources for its needs. ',
+		name = tr("MAGES_MATERIALS_NAME"),
+		descript = tr("MAGES_MATERIALS_DESC"),
 		randomconditions = [{code = 'random_material', type = ['woodancient','clothethereal','boneancient','mithril'], range = [6,12]}],
 		unlockreqs = [],
 		reputation = [300,500],
@@ -1269,8 +1269,8 @@ var questdata = {
 	},
 	mages_craft_potions_easy = {
 		code = 'mages_craft_potions_easy',
-		name = 'Potion Making',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [2,3]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1281,8 +1281,8 @@ var questdata = {
 	},
 	mages_craft_potions_medium = {
 		code = 'mages_craft_potions_medium',
-		name = 'Magic Catalysts',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [5,8]},{code = 'random_item', type = ['energyshard','energygem'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1293,8 +1293,8 @@ var questdata = {
 	},
 	mages_craft_potions_hard = {
 		code = 'mages_craft_potions_hard',
-		name = 'Magic Catalysts',
-		descript = 'The Mages Guild needs to resupply their store room.',
+		name = tr("MAGES_CRAFT_POTIONS_NAME"),
+		descript = tr("MAGES_CRAFT_POTIONS_DESC"),
 		randomconditions = [{code = 'random_item', type = ['circlet'], range = [1,2]},{code = 'random_item', type = ['lifegem','energygem'], range = [2,4]}, {code = 'random_material', type = ['ink_mp'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
@@ -1305,8 +1305,8 @@ var questdata = {
 	},
 	mages_threat_easy = {
 		code = 'mages_threat_easy',
-		name = 'Trouble Solving',
-		descript = 'The Mages Guild requires a help with a certain issue.',
+		name = tr("MAGES_THREAT_NAME"),
+		descript = tr("MAGES_THREAT_DESC"),
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1320,8 +1320,8 @@ var questdata = {
 	
 	mages_craft_gear_medium = {
 		code = 'mages_craft_gear_medium',
-		name = 'Mage Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("MAGES_CRAFT_GEAR_NAME"),
+		descript = tr("MAGES_CRAFT_GEAR_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['staff'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [1,1], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
@@ -1335,8 +1335,8 @@ var questdata = {
 	},
 	mages_craft_gear_hard = {
 		code = 'mages_craft_gear_hard',
-		name = 'Mage Gear Supply',
-		descript = 'The Fighters Guild requires a gear of certain quality. ',
+		name = tr("MAGES_CRAFT_GEAR_NAME"),
+		descript = tr("MAGES_CRAFT_GEAR_DESC"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','woodiron','mithril']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [2,2], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
@@ -1355,8 +1355,8 @@ var questdata = {
 	
 	servants_craft_items_easy = {
 		code = 'servants_craft_items_easy',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = "SERVANTS_CRAFT_NAME",
+		descript = "SERVANTS_CRAFT_DESC",
 		randomconditions = [{code = 'random_item', type = ['leather_collar','animal_gloves','animal_ears','handcuffs','bell_collar'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [100,150],
@@ -1367,8 +1367,8 @@ var questdata = {
 	},
 	servants_craft_items_medium = {
 		code = 'servants_craft_items_medium',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = tr("SERVANTS_CRAFT_NAME"),
+		descript = tr("SERVANTS_CRAFT_DESC"),
 		randomconditions = [{code = 'random_item', type = ['chastity_belt','tail_plug','steel_collar','sexdrug','anal_beads','ribbon'], range = [1,3]}],
 		unlockreqs = [],
 		reputation = [250,350],
@@ -1379,8 +1379,8 @@ var questdata = {
 	},
 	servants_craft_items_hard = {
 		code = 'servants_craft_items_hard',
-		name = 'Items Request',
-		descript = 'The Servants Guild needs a specific crafted items',
+		name = tr("SERVANTS_CRAFT_NAME"),
+		descript = tr("SERVANTS_CRAFT_DESC"),
 		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_choker','seethrough_underwear','latex_suit'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [400,550],
@@ -1391,8 +1391,8 @@ var questdata = {
 	},
 	servants_slave_easy = {
 		code = 'servants_slave_easy',
-		name = 'Slave Request',
-		descript = 'The Servants Guild is in need of specific trained individual.',
+		name = tr("SERVANTS_SLAVE_NAME"),
+		descript = tr("SERVANTS_SLAVE_DESC"),
 
 		randomconditions = [
 			{code = 'slave_delivery',
@@ -1412,8 +1412,8 @@ var questdata = {
 	},
 	servants_slave_medium = {
 		code = 'servants_slave_medium',
-		name = 'Slave Request',
-		descript = 'The Servants Guild is in need of specific trained individual.',
+		name = tr("SERVANTS_SLAVE_NAME"),
+		descript = tr("SERVANTS_SLAVE_DESC"),
 
 		randomconditions = [
 			{code = 'slave_delivery',
@@ -1434,8 +1434,8 @@ var questdata = {
 	},
 	servants_slave_work_easy = {
 		code = 'servants_slave_work_easy',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
@@ -1463,8 +1463,8 @@ var questdata = {
 	},
 	servants_slave_work_medium = {
 		code = 'servants_slave_work_medium',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1496,8 +1496,8 @@ var questdata = {
 	},
 	servants_slave_work_hard = {
 		code = 'servants_slave_work_hard',
-		name = 'Assignment',
-		descript = 'The Servants Guild is in need of someone performing a task for them.',
+		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1528,8 +1528,8 @@ var questdata = {
 	},
 	fighters_slave_work_easy = {
 		code = 'fighters_slave_work_easy',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1554,8 +1554,8 @@ var questdata = {
 	},
 	fighters_slave_work_medium = {
 		code = 'fightersslave_work_medium',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1581,8 +1581,8 @@ var questdata = {
 	},
 	fighters_slave_work_hard = {
 		code = 'fighters_slave_work_hard',
-		name = 'Assignment',
-		descript = 'The Fighters Guild is in need of someone performing a task for them.',
+		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
 		randomconditions = [
 			{code = 'slave_work',
 			mandatory_conditions = [],
@@ -1610,42 +1610,42 @@ var questdata = {
 
 
 var locationnames = {
-	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
-	village_human2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
-	village_human_quest = ["Millford"],
-	bandit_fort_nouns = ['Fort','Stockade','Fastness','Castle','Outpost','Tower'],
-	bandit_fort_adjs = ['Bandit','Outlaw','Brigand','Robber','Cutthroat'],
-	goblin_cave_nouns = ['Cave','Tunnel','Burrow','Cavern','Den'],
-	goblin_cave_adjs = ['Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
-	bandit_den_nouns = ['Hideout', 'Cave', 'Den', 'Pit'],
-	bandit_den_adjs = ['Bandit', 'Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
-	grove_nouns = ['Forest','Grove','Thicket','Woodland','Backwoods','Cover','Timberland','Wildwood','Orchard','Spinney','Hedge'],
-	grove_adjs = ['Dark', 'Green', 'White', 'Gold', 'Silver', 'Dense', 'Thick', 'Overgrown', 'Shiny', 'Bushy', 'Living'],
-	crypt_nouns = ['Crypt','Cemetery', 'Grave','Catacomb','Mausoleum','Tomb','Vault','Chamber'],
-	crypt_adjs = ['Dark','Black','Blood', 'Bone', 'Rotten', 'Flesh', 'Evil', 'Blood', 'Red', 'Grim', 'Great', 'Demonic', 'Gloomy', 'Deadly'],
-	mountains_nouns = ['Caves','Tunnels','Burrows','Caverns','Mine','Quarry','Chambers','Dungeon'],
-	mountains_adjs = ['Dark','Black', 'Distant', 'Red', 'Blue','Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
-	fire_depths_nouns = ['Caves','Dungeon','Scar', 'Chambers', 'Halls', 'Lair'],
-	fire_depths_adjs = ['Burning','Fire','Scorching', 'Heating'],
-	city_nouns = ['Ruins','Chambers','Halls','Quarters','Labyrinth'],
-	city_adjs =  ['Dark','Distant', 'Red', 'Blue', 'Black', 'Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
-	ancient_jungles_nouns = ['Thicket','Jungle','Rainforest','Wilds','Wildwood','Hedge','Chaparral','Morass','Tangle'],
-	ancient_jungles_adjs = ['Green','Dark','Dense','Thick','Overgrown','Bushy','Living','Ancient','Old','Great','Red','Gloomy'],
+	settlement_plains11 = [tr("VILLAGE_HUMAN1"),tr("VILLAGE_HUMAN2"),tr("VILLAGE_HUMAN3"),tr("VILLAGE_HUMAN4"),tr("VILLAGE_HUMAN5"),tr("VILLAGE_HUMAN6"),tr("VILLAGE_HUMAN7"),tr("VILLAGE_HUMAN8"),tr("VILLAGE_HUMAN9"),tr("VILLAGE_HUMAN10"),tr("VILLAGE_HUMAN11")],
+	settlement_plains12 = [tr("VILLAGE_HUMAN2_1"),tr("VILLAGE_HUMAN2_2"),tr("VILLAGE_HUMAN2_3"),tr("VILLAGE_HUMAN2_4"),tr("VILLAGE_HUMAN2_5"),tr("VILLAGE_HUMAN2_6"),tr("VILLAGE_HUMAN2_7"),tr("VILLAGE_HUMAN2_8"),tr("VILLAGE_HUMAN2_9")],
+	village_human_quest = [tr("VILLAGE_HUMAN_QUEST1")],
+	bandit_fort_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
+	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
+	goblin_cave_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
+	goblin_cave_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
+	bandit_den_nouns = [tr("BANDIT_DEN_NOUNS1"),tr("BANDIT_DEN_NOUNS2"),tr("BANDIT_DEN_NOUNS3"),tr("BANDIT_DEN_NOUNS4")],
+	bandit_den_adjs = [tr("BANDIT_DEN_ADJS1"),tr("BANDIT_DEN_ADJS2"),tr("BANDIT_DEN_ADJS3"),tr("BANDIT_DEN_ADJS4"),tr("BANDIT_DEN_ADJS5"),tr("BANDIT_DEN_ADJS6"),tr("BANDIT_DEN_ADJS7"),tr("BANDIT_DEN_ADJS8")],
+	grove_nouns = [tr("GROVE_NOUNS1"),tr("GROVE_NOUNS2"),tr("GROVE_NOUNS3"),tr("GROVE_NOUNS4"),tr("GROVE_NOUNS5"),tr("GROVE_NOUNS6"),tr("GROVE_NOUNS7"),tr("GROVE_NOUNS8"),tr("GROVE_NOUNS9"),tr("GROVE_NOUNS10"),tr("GROVE_NOUNS11")],
+	grove_adjs = [tr("GROVE_ADJS1"), tr("GROVE_ADJS2"), tr("GROVE_ADJS3"), tr("GROVE_ADJS4"), tr("GROVE_ADJS5"), tr("GROVE_ADJS6"), tr("GROVE_ADJS7"), tr("GROVE_ADJS8"), tr("GROVE_ADJS9"), tr("GROVE_ADJS10"), tr("GROVE_ADJS11")],
+	crypt_nouns = [tr("CRYPT_NOUNS1"),tr("CRYPT_NOUNS2"),tr("CRYPT_NOUNS3"),tr("CRYPT_NOUNS4"),tr("CRYPT_NOUNS5"),tr("CRYPT_NOUNS6"),tr("CRYPT_NOUNS7"),tr("CRYPT_NOUNS8")],
+	crypt_adjs = [tr("CRYPT_ADJS1"),tr("CRYPT_ADJS2"),tr("CRYPT_ADJS3"),tr("CRYPT_ADJS4"),tr("CRYPT_ADJS5"),tr("CRYPT_ADJS6"),tr("CRYPT_ADJS7"),tr("CRYPT_ADJS8"),tr("CRYPT_ADJS9"),tr("CRYPT_ADJS10"),tr("CRYPT_ADJS11"),tr("CRYPT_ADJS12"),tr("CRYPT_ADJS13"),tr("CRYPT_ADJS14")],
+	mountains_nouns = [tr("MOUNTAINS_NOUNS1"),tr("MOUNTAINS_NOUNS2"),tr("MOUNTAINS_NOUNS3"),tr("MOUNTAINS_NOUNS4"),tr("MOUNTAINS_NOUNS5"),tr("MOUNTAINS_NOUNS6"),tr("MOUNTAINS_NOUNS7"),tr("MOUNTAINS_NOUNS8")],
+	mountains_adjs = [tr("MOUNTAINS_ADJS1"),tr("MOUNTAINS_ADJS2"),tr("MOUNTAINS_ADJS3"),tr("MOUNTAINS_ADJS4"),tr("MOUNTAINS_ADJS5"),tr("MOUNTAINS_ADJS6"),tr("MOUNTAINS_ADJS7"),tr("MOUNTAINS_ADJS8"),tr("MOUNTAINS_ADJS9"),tr("MOUNTAINS_ADJS10")],
+	fire_depths_nouns = [tr("FIRE_DEPTHS_NOUNS1"),tr("FIRE_DEPTHS_NOUNS2"),tr("FIRE_DEPTHS_NOUNS3"),tr("FIRE_DEPTHS_NOUNS4"),tr("FIRE_DEPTHS_NOUNS5"),tr("FIRE_DEPTHS_NOUNS6")],
+	fire_depths_adjs = [tr("FIRE_DEPTHS_ADJS1"),tr("FIRE_DEPTHS_ADJS2"),tr("FIRE_DEPTHS_ADJS3"),tr("FIRE_DEPTHS_ADJS4")],
+	city_nouns = [tr("CITY_NOUNS1"),tr("CITY_NOUNS2"),tr("CITY_NOUNS3"),tr("CITY_NOUNS4"),tr("CITY_NOUNS5")],
+	city_adjs =  [tr("CITY_ADJS1"),tr("CITY_ADJS2"),tr("CITY_ADJS3"),tr("CITY_ADJS4"),tr("CITY_ADJS5"),tr("CITY_ADJS6"),tr("CITY_ADJS7"),tr("CITY_ADJS8"),tr("CITY_ADJS9"),tr("CITY_ADJS10")],
+	ancient_jungles_nouns = [tr("ANCIENT_JUNGLES_NOUNS1"),tr("ANCIENT_JUNGLES_NOUNS2"),tr("ANCIENT_JUNGLES_NOUNS3"),tr("ANCIENT_JUNGLES_NOUNS4"),tr("ANCIENT_JUNGLES_NOUNS5"),tr("ANCIENT_JUNGLES_NOUNS6"),tr("ANCIENT_JUNGLES_NOUNS7"),tr("ANCIENT_JUNGLES_NOUNS8"),tr("ANCIENT_JUNGLES_NOUNS9")],
+	ancient_jungles_adjs = [tr("ANCIENT_JUNGLES_ADJS1"),tr("ANCIENT_JUNGLES_ADJS2"),tr("ANCIENT_JUNGLES_ADJS3"),tr("ANCIENT_JUNGLES_ADJS4"),tr("ANCIENT_JUNGLES_ADJS5"),tr("ANCIENT_JUNGLES_ADJS6"),tr("ANCIENT_JUNGLES_ADJS7"),tr("ANCIENT_JUNGLES_ADJS8"),tr("ANCIENT_JUNGLES_ADJS9"),tr("ANCIENT_JUNGLES_ADJS10"),tr("ANCIENT_JUNGLES_ADJS11"),tr("ANCIENT_JUNGLES_ADJS12")],
 }
 
 
-var dungeonnoun = ['Tunnels','Quarters','Caves','Halls','Delves','Burrows','Vault','Labyrinth','Chambers','Crypt','Tombs','Catacombs','Lair','Dungeon','Caverns']
-var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Gloomy','Lower','Moaning','Demonic','Rocking','Living','Crystal','Deadly','Roaring']
+var dungeonnoun = [tr("DUNGEONNOUN1"),tr("DUNGEONNOUN2"),tr("DUNGEONNOUN3"),tr("DUNGEONNOUN4"),tr("DUNGEONNOUN5"),tr("DUNGEONNOUN6"),tr("DUNGEONNOUN7"),tr("DUNGEONNOUN8"),tr("DUNGEONNOUN9"),tr("DUNGEONNOUN10"),tr("DUNGEONNOUN11"),tr("DUNGEONNOUN12"),tr("DUNGEONNOUN13"),tr("DUNGEONNOUN14"),tr("DUNGEONNOUN15")]
+var dungeonadj = [tr("DUNGEONADJ1"),tr("DUNGEONADJ2"),tr("DUNGEONADJ3"),tr("DUNGEONADJ4"),tr("DUNGEONADJ5"),tr("DUNGEONADJ6"),tr("DUNGEONADJ7"),tr("DUNGEONADJ8"),tr("DUNGEONADJ9"),tr("DUNGEONADJ10"),tr("DUNGEONADJ11"),tr("DUNGEONADJ12"),tr("DUNGEONADJ13"),tr("DUNGEONADJ14"),tr("DUNGEONADJ15"),tr("DUNGEONADJ16")]
 
 
 var dungeons = {
 	quest_fighters_lich = {
 		code = 'quest_fighters_lich',
 		type = 'quest_location',
-		name = "Lich's Hideout",
+		name = tr("QUEST_FIGHTERS_LICH_TEXT"),
 		area = 'plains',
 		classname = '',
-		descript = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
+		descript = tr("QUEST_FIGHTERS_LICH_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1659,10 +1659,10 @@ var dungeons = {
 	quest_mages_xari = {
 		code = 'quest_mages_xari',
 		type = 'encounter',
-		name = "Xari's Location",
+		name = tr("QUEST_MAGES_XARI_TEXT"),
 		area = 'plains',
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_MAGES_XARI_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1676,10 +1676,10 @@ var dungeons = {
 	quest_mages_fred = {
 		code = 'quest_mages_fred',
 		type = 'encounter',
-		name = "Fred's Location",
+		name = tr("QUEST_MAGES_FRED_TEXT"),
 		area = 'plains',
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_MAGES_FRED_DESC"),
 		difficulty = 'easy',
 		background = 'cave_3',
 		enemyarray =  [],
@@ -1694,9 +1694,9 @@ var dungeons = {
 	basic_threat_wolves = {
 		code = 'basic_threat_wolves',
 		type = 'encounter',
-		name = 'Threat - Wild wolves',
+		name = tr("BASIC_THREAT_WOLVES_TEXT"),
 		classname = '',
-		descript = 'Farmers report a pack of wild wolves attacking their flock.',
+		descript = tr("BASIC_THREAT_WOLVES_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1709,9 +1709,9 @@ var dungeons = {
 	basic_threat_rebels = {
 		code = 'basic_threat_rebels',
 		type = 'encounter',
-		name = 'Threat - Rebels',
+		name = tr("BASIC_THREAT_REBELS_TEXT"),
 		classname = '',
-		descript = "A group of rebels terrorize local villagers.",
+		descript = tr("BASIC_THREAT_REBELS_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1724,9 +1724,9 @@ var dungeons = {
 	basic_threat_goblins = {
 		code = 'basic_threat_goblins',
 		type = 'encounter',
-		name = 'Threat - Goblins',
+		name = tr("BASIC_THREAT_GOBLINS_TEXT"),
 		classname = '',
-		descript = "A group of wild goblins attacking passing travelers.",
+		descript = tr("BASIC_THREAT_GOBLINS_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1739,9 +1739,9 @@ var dungeons = {
 	basic_threat_ogre = {
 		code = 'basic_threat_ogre',
 		type = 'encounter',
-		name = 'Threat - Ogre',
+		name = tr("BASIC_THREAT_OGRE_TEXT"),
 		classname = '',
-		descript = "An angry ogre attacking passing travelers.",
+		descript = tr("BASIC_THREAT_OGRE_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1754,9 +1754,9 @@ var dungeons = {
 	basic_threat_troll = {
 		code = 'basic_threat_troll',
 		type = 'encounter',
-		name = 'Threat - Troll',
+		name = tr("BASIC_THREAT_TROLL_TEXT"),
 		classname = '',
-		descript = "An angry troll attacking passing travelers.",
+		descript = tr("BASIC_THREAT_TROLL_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [],
@@ -1772,7 +1772,7 @@ var dungeons = {
 		type = 'dungeon',
 		name = 'bandit_den',
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
 		character_data = {
 			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
@@ -1780,7 +1780,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss',3]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [['dungeon_find_chest_easy', 1],['dungeon_find_armory_easy',1],['event_trap_easy', 1],['event_dungeon_prisoner',1],['celena_shrine_find',1],['erebus_shrine_find',0.5],['freya_shrine_find',0.3]],
 		levels = [2,3],
 		resources = ['cloth','leather','iron','wood','clothsilk'],
@@ -1795,9 +1795,9 @@ var dungeons = {
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
 		type = 'dungeon',
-		name = 'bandit_fort',
+		name = "bandit_fort",
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_BANDIT_FORT_DESC"),
 		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
@@ -1821,10 +1821,10 @@ var dungeons = {
 	dungeon_undead_crypt = {
 		code = 'dungeon_undead_crypt',
 		type = 'dungeon',
-		name = 'crypt',
+		name = "crypt",
 		classname = '',
 		difficulty = 'medium',
-		descript = '',
+		descript = tr("DUNGEON_UNDEAD_CRYPT_DESC"),
 		character_data = {
 			chance_mod = 0.7,
 			races = [['common', 6], ['uncommon', 1]]
@@ -1848,7 +1848,7 @@ var dungeons = {
 		type = 'dungeon',
 		name = 'goblin_cave',
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_GOBLIN_CAVE_DESC"),
 		character_data = {
 			chance_mod = 1.7,
 			races = [["common", 1], ['local', 4], ['Goblin',5]]
@@ -1856,7 +1856,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		bgm = "dungeon",
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['goblins_easy_boss1',1],['goblins_easy_boss2',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
 		levels = [2,3],
 		resources = ['bone','leather','stone','wood'],
@@ -1873,7 +1873,7 @@ var dungeons = {
 		type = 'dungeon',
 		name = 'grove',
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_GROVE_DESC"),
 		character_data = {
 			chance_mod = 0.8,
 			races = [["common", 2], ['local', 4],['uncommon',1]]
@@ -1897,9 +1897,9 @@ var dungeons = {
 	dungeon_ancient_jungles = {
 		code = 'dungeon_ancient_jungles',
 		type = 'dungeon',
-		name = 'ancient_jungles',
+		name = 'ancient_jungle',
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_ANCIENT_JUNGLES_DESC"),
 		character_data = {
 			chance_mod = 1.1,
 			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
@@ -1923,9 +1923,9 @@ var dungeons = {
 	dungeon_fire_depths = {
 		code = 'dungeon_fire_depths',
 		type = 'dungeon',
-		name = 'fire_depths',
+		name = "fire_depths",
 		classname = '',
-		descript = '',
+		descript = tr("DUNGEON_FIRE_DEPTHS_DESC"),
 		character_data = {
 			chance_mod = 1.0,
 			races = [["common", 2], ['uncommon', 4],['rare',1]]
@@ -1949,9 +1949,9 @@ var dungeons = {
 	quest_cali_bandits_location = {
 		code = 'quest_cali_bandits_location',
 		type = 'dungeon',
-		name = "Bandit's Hideout",
+		name = tr("QUEST_CALI_BANDITS_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_CALI_BANDITS_LOCATION_DESC"),
 		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
@@ -1980,9 +1980,9 @@ var dungeons = {
 	quest_cali_village = {
 		code = 'quest_cali_village',
 		type = 'encounter',
-		name = "Cali's Home Village",
+		name = tr("QUEST_CALI_VILLAGE_TEXT"),
 		classname = '',
-		descript = ".",
+		descript = tr("QUEST_CALI_VILLAGE_DESC"),
 		difficulty = 'easy',
 		background = 'village1',
 		enemyarray =  [],
@@ -2043,9 +2043,9 @@ var dungeons = {
 	quest_mines_dungeon = {
 		code = 'quest_mines_dungeon',
 		type = 'dungeon',
-		name = 'Mines',
+		name = tr("QUEST_MINES_DUNGEON_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_MINES_DUNGEON_DESC"),
 		character_data = {
 			chance_mod = 1.2,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
@@ -2078,9 +2078,9 @@ var dungeons = {
 	quest_final_operation_location = {
 		code = 'quest_final_operation_location',
 		type = 'dungeon',
-		name = "Rebels' Hideout",
+		name = tr("QUEST_FINAL_OPERATION_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_FINAL_OPERATION_LOCATION|_DESC"),
 		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
@@ -2130,9 +2130,9 @@ var dungeons = {
 	quest_daisy_admirer_location = {
 		code = 'quest_daisy_admirer_location',
 		type = 'encounter',
-		name = "Ramont's Estate",
+		name = tr("QUEST_DAISY_ADMIRER_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_DAISY_ADMIRER_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['village1'],
 		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
@@ -2157,9 +2157,9 @@ var dungeons = {
 	quest_gryphon_forest_location = {
 		code = 'quest_gryphon_forest_location',
 		type = 'dungeon',
-		name = 'Gryphon Thicket',
+		name = tr("QUEST_GRYPHON_FOREST_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_GRYPHON_FOREST_LOCATION_DESC"),
 		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
@@ -2188,9 +2188,9 @@ var dungeons = {
 	quest_gryphon_cave_location = {
 		code = 'quest_gryphon_cave_location',
 		type = 'encounter',
-		name = 'Elder Gryphon Lair',
+		name = tr("QUEST_GRYPHON_CAVE_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_GRYPHON_CAVE_LOCATION_DESC"),
 		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
@@ -2217,9 +2217,9 @@ var dungeons = {
 	quest_ritual_location = {
 		code = 'quest_ritual_location',
 		type = 'dungeon',
-		name = 'Herbs Field',
+		name = tr("QUEST_RITUAL_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_RITUAL_LOCATION_DESC"),
 		difficulty = 'easy',
 		character_data = {
 			chance_mod = 1,
@@ -2250,10 +2250,10 @@ var dungeons = {
 	},
 	quest_leon_forest = {
 		code = 'quest_leon_forest',
-		type = 'dungeon',
-		name = "Leon's location",
+		type = 'encounter',
+		name = tr("QUEST_LEON_FOREST_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_LEON_FOREST_DESC"),
 		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',2], ['uncommon',5],['rare',1]]
@@ -2275,7 +2275,8 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [2,2],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
+#		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'leon_fight_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}]}],
+		scripteventdata = [],
 #		options = [
 #			{text = 'Search for Leon', reqs = [
 #				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage10'}],
@@ -2285,9 +2286,9 @@ var dungeons = {
 	quest_cali_cave_location = {
 		code = 'quest_cali_cave_location',
 		type = 'encounter',
-		name = 'Small Slavers Cave',
+		name = tr("QUEST_CALI_CAVE_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_CALI_CAVE_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2310,9 +2311,9 @@ var dungeons = {
 	quest_leon_forest_2 = {
 		code = 'quest_leon_forest_2',
 		type = 'encounter',
-		name = "Leon's location",
+		name = tr("QUEST_LEON_FOREST_2_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_LEON_FOREST_2_DESC"),
 		difficulty = 'easy',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2335,9 +2336,9 @@ var dungeons = {
 	quest_white_stag_location = {
 		code = 'quest_white_stag_location',
 		type = 'encounter',
-		name = 'White Stag Location',
+		name = tr("QUEST_WHITE_STAG_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_WHITE_STAG_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2360,9 +2361,9 @@ var dungeons = {
 	quest_temple_location = {
 		code = 'quest_temple_location',
 		type = 'encounter',
-		name = 'Temple',
+		name = tr("QUEST_TEMPLE_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_TEMPLE_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2385,9 +2386,9 @@ var dungeons = {
 	quest_erlen_location = {
 		code = 'quest_erlen_location',
 		type = 'encounter',
-		name = 'Erlens location',
+		name = tr("QUEST_ERLEN_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_ERLEN_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2410,9 +2411,9 @@ var dungeons = {
 	quest_cali_goblins_location = {
 		code = 'quest_cali_goblins_location',
 		type = 'encounter',
-		name = 'Threatened Village',
+		name = tr("QUEST_CALI_GOBLINS_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_CALI_GOBLINS_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['village1', 'village2', 'village3', 'village4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2435,9 +2436,9 @@ var dungeons = {
 	quest_troll_cave_location = {
 		code = 'quest_troll_cave_location',
 		type = 'encounter',
-		name = "Troll's Cave",
+		name = tr("QUEST_TROLL_CAVE_LOCATION_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_TROLL_CAVE_LOCATION_DESC"),
 		difficulty = 'easy',
 		background_pool = ['cave_4'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
@@ -2460,9 +2461,9 @@ var dungeons = {
 	quest_dungeon_grove = {
 		code = 'quest_dungeon_grove',
 		type = 'dungeon',
-		name = 'grove',
+		name = tr("QUEST_DUNGEON_GROVE_TEXT"),
 		classname = '',
-		descript = '',
+		descript = tr("QUEST_DUNGEON_GROVE_DESC"),
 		purchase_area = 'forests',
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		bgm = "dungeon",
@@ -2497,10 +2498,10 @@ var eventscrits = {
 			{
 				effects = [],
 				action = 'choice_event',
-				text = 'You come to the place finding tracks of the bandits. ',
+				text = tr("BANDITS_THREAT_QUEST_TEXT1"),
 				reqs = [],
 				options = [
-					{text = 'Fight', reqs = [], follow_up = 'event_fight'},
+					{text = tr("BANDITS_THREAT_QUEST_TEXT2"), reqs = [], follow_up = 'event_fight'},
 				],
 			},
 			],
@@ -2518,10 +2519,10 @@ var eventscrits = {
 			{
 				effects = [{code = 'generate_event_stranger'}],
 				action = 'choice_event',
-				text = 'You meet a lone adventurer: [name]. ',
+				text = tr("MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1"),
 				reqs = [],
 				options = [
-					{text = 'Attack', reqs = [], follow_up = 'event_fight'},
+					{text = tr("MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2"), reqs = [], follow_up = 'event_fight'},
 				],
 			}
 
@@ -2552,7 +2553,7 @@ var random_dungeon_events = {
 var fixed_location_options = { #override serialized data
 	aliron = [
 		{
-			text = "Check the streets", 
+			text = tr("ALIRON1"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'daisy_meet'},
 				{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, 
@@ -2561,7 +2562,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'daisy_meet', args = []}]
 		},
 		{
-			text = "Search for Reim", 
+			text = tr("ALIRON2"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'reim_encounter'},
 				{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}
@@ -2569,7 +2570,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'reim_encounter', args = []}]
 		},
 		{
-			text = "Visit Fred's Dormitory", 
+			text = tr("ALIRON3"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_intro'},
 				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}
@@ -2577,15 +2578,15 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'fred_intro', args = []}]
 		},
 		{
-			text = "Visit Fred's Dormitory", 
+			text = tr("ALIRON4"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'fred_bribe_take'},
 				{type = 'decision', value = 'fred_bribe_taken', check = true}
 			], 
-			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
+			args = [{code = 'start_event', data = 'fred_bribe_take', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON5"), 
 			reqs = [
 				{type = 'decision', value = 'ginny_visit', check = true}, 
 				{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'},
@@ -2594,7 +2595,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'aliron_church_firstcome', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON6"), 
 			reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'},
 				{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = false}
@@ -2602,12 +2603,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'aliron_church_enter', args = []}]
 		},
 		{
-			text = "Lead the convoy", 
+			text = tr("ALIRON7"), 
 			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], 
 			args = [{code = 'start_event', data = 'after_mines_convoy_1', args = []}]
 		},
 		{
-			text = "Visit Jail", 
+			text = tr("ALIRON8"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},
@@ -2616,7 +2617,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_search_dungeon_1', args = []}]
 		},
 		{
-			text = "Meet princess in jail", 
+			text = tr("ALIRON9"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
 				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = false},
@@ -2625,7 +2626,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_persuation_init', args = []}]
 		},
 		{
-			text = "Meet princess in jail", 
+			text = tr("ALIRON10"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, 
 				{type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}
@@ -2633,7 +2634,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'princess_persuation_2_init', args = []}]
 		},
 		{
-			text = "Meet Hunter Veteran", 
+			text = tr("ALIRON11"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage2'},
 				{type = 'dialogue_seen', check = false, value = 'GRYPHON_HUNTER_START'}
@@ -2641,42 +2642,42 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'gryphon_hunter_start', args = []}]
 		},
 		{
-			text = "Aliron Church", 
+			text = tr("ALIRON12"), 
 			reqs = [{type = 'active_quest_stage', value = 'pre_sword_artifact_quest', stage = 'stage1', state = true}], 
 			args = [{code = 'start_event', data = 'zephyra_recruitment_1', args = []}]
 		},
 		{
-			text = "Search for collectioner", 
+			text = tr("ALIRON13"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage4', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_init', args = []}]
 		},
 		{
-			text = "William's mansion", 
+			text = tr("ALIRON14"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_1', args = []}]
 		},
 		{
-			text = "William's mansion", 
+			text = tr("ALIRON15"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6', state = true}], 
 			args = [{code = 'start_event', data = 'cali_william_3', args = []}]
 		},
 		{
-			text = "Merchant Stalls", 
+			text = tr("ALIRON16"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage12', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act4_merchant_1', args = []}]
 		},
 		{
-			text = "Merchant Stalls", 
+			text = tr("ALIRON17"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage13', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act4_merchant_5', args = []}]
 		},
 		{
-			text = "Pet Shop", 
+			text =tr("ALIRON18"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage15', state = true}], 
 			args = [{code = 'start_event', data = 'cali_act5_pet_1', args = []}]
 		},
 		{
-			text = "Check the streets", 
+			text = tr("ALIRON19"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'lilia_search_start'},
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_SWORD_TALK_1_1'}
@@ -2686,7 +2687,7 @@ var fixed_location_options = { #override serialized data
 	],
 	elf_capital = [
 		{
-			text = "Meet Priestess", 
+			text = tr("ELF_CAPITAL1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'},
 				{type = 'decision', value = 'PrincessDead', check = false}, 
@@ -2695,7 +2696,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'looking_for_princess_elven_1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = false}
@@ -2703,7 +2704,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_start_1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL3"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, 
@@ -2712,7 +2713,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest1', args = []}]
 		},
 		{
-			text = "Look For Smuggler", 
+			text =  tr("ELF_CAPITAL4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_herbs_quest', stage = 'stage2'}, 
 				{type = 'quest_completed', name = 'getting_lira_quest', check = true}, {type = 'decision', value = 'HelevielPriestess', check = true}
@@ -2720,12 +2721,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'amelia_herbs_elf_quest2_1', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL5"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage2', state = true}], 
 			args = [{code = 'start_event', data = 'priestess_sword_talk_1', args = []}]
 		},
 		{
-			 text = "Visit Erlen", 
+			 text =  tr("ELF_CAPITAL6"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage16', check = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRIESTESS_TALK_START'}
@@ -2733,7 +2734,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'priestess_talk_start', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL7"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'PRIESTESS_TALK_START'}, 
 				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true}
@@ -2741,12 +2742,12 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'after_temple_priestess_1', args = []}]
 		},
 		{
-			text = "Meet High Priestess", 
+			text =  tr("ELF_CAPITAL8"), 
 			reqs = [{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage2', state = true}], 
 			args = [{code = 'start_event', data = 'after_temple_priestess_3', args = []}]
 		},
 		{
-			text = "Search For Lira", 
+			text =  tr("ELF_CAPITAL9"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LIRA_ENCOUNTER_1'}
@@ -2754,7 +2755,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lira_encounter_1', args = []}]
 		},
 		{
-			text = "Find Lira", 
+			text =  tr("ELF_CAPITAL10"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LIRA_ENCOUNTER_1'},
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
@@ -2763,29 +2764,29 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lira_encounter_4', args = []}]
 		},
 		{
-			text = "Initiate", 
+			text =  tr("ELF_CAPITAL11"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'erlen_leon_1', args = []}]
 		},
 	],
 	beastkin_capital = [
 		{
-			text = "Find Chieftain", 
+			text = tr("BEASTKIN_CAPITAL1"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage3', state = true}], 
 			args = [{code = 'start_event', data = 'chieftain_meeting_1', args = []}]
 		},
 		{
-			text = "Visit Shaman's Lodge", 
+			text = tr("BEASTKIN_CAPITAL2"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage4', state = true}], 
 			args = [{code = 'start_event', data = 'mae_meeting_1', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL3"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'savra_supplies_start', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage6', state = true}, 
 				{type = 'decision', value = 'canStartRitualPrep', check = true}
@@ -2793,7 +2794,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'savra_ritual_start', args = []}]
 		},
 		{
-			text = "Begin The Ritual", 
+			text = tr("BEASTKIN_CAPITAL5"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage77', state = true}, 
 				{type = 'decision', value = 'canStartRitual', check = true}
@@ -2801,7 +2802,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'ritual_start', args = []}]
 		},
 		{
-			text = "Visit Leon", 
+			text = tr("BEASTKIN_CAPITAL6"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage8', state = true}, 
 				{type = 'decision', value = 'canVisitLeon', check = true}
@@ -2809,51 +2810,51 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'leon_visit_start', args = []}]
 		},
 		{
-			text = "Visit Leon", 
+			text = tr("BEASTKIN_CAPITAL7"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
 			args = [{code = 'start_event', data = 'leon_visit_1_2', args = []}]
 		},
 		{
-			text = "Ask Around", 
+			text = tr("BEASTKIN_CAPITAL8"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
 			args = [{code = 'start_event', data = 'ask_around', args = []}]
 		},
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL9"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage11', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL10"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage12', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL11"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage13', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Visit Savra", 
+			text = tr("BEASTKIN_CAPITAL12"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage15', state = true}], 
 			args = [{code = 'start_event', data = 'savra_talk_start', args = []}]
 		}, 
 		{
-			text = "Check Surroundings", 
+			text = tr("BEASTKIN_CAPITAL13"), 
 			reqs = [{type = 'decision', value = 'got_excalibur', check = false}], 
 			args = [{code = 'start_event', data = 'excalibur_quest_1', args = []}]
 		},
 	],
 	settlement_plains1 = [ 
 		{
-			text = 'Combat', 
+			text = tr("SETTLEMENT_PLAINS1_1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'},
 			],
 			args = [{code = 'start_event', data = 'betrayal_confirmed_advance', args = []}]
 		},
 		{
-			text = 'Meet Duncan', 
+			text = tr("SETTLEMENT_PLAINS1_2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage3'},
 				{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage4', orflag = true},
@@ -2863,13 +2864,13 @@ var fixed_location_options = { #override serialized data
 	],
 	settlement_plains2 = [ 
 		{
-			text = 'Farmer', 
+			text = tr("SETTLEMENT_PLAINS2_1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage1'}, {type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}],
 			args = [{code = 'start_event', data = 'cali_farmer_1', args = []}]
 		},
 		{
-			text = 'Farmer', 
+			text = tr("SETTLEMENT_PLAINS2_2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage2'},{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_plains2', reqs = [{code = 'unique', value = 'cali'}]}
 			],
@@ -2878,51 +2879,51 @@ var fixed_location_options = { #override serialized data
 	],
 	settlement_forest1 = [
 		{
-			text = 'Check Surroundings', 
+			text = tr("SETTLEMENT_FOREST1_1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'lilia_startring_1', args = []}]
 		},
 		{
-			text = 'Check Surroundings', 
+			text = tr("SETTLEMENT_FOREST1_2"), 
 			reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
 		},
 	],
 	quest_fighters_lich = [
 		{
-			text = 'Proceed', 
+			text = tr("QUEST_FIGHTERS_LICH1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
 		}
 	],
 	quest_mages_xari = [
 		{
-			text = 'Search for Xari', 
+			text = tr("QUEST_MAGES_XARI1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}],
 			args = [{code = 'start_event', data = 'xari_encounter1', args = []}]
 		},
 		{
-			text = 'See Xari', 
+			text = tr("QUEST_MAGES_XARI2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'xari_encounter9', args = []}]
 		},
 		{
-			text = 'Enter', 
+			text = tr("QUEST_MAGES_XARI3"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}],
 			args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]
 		},
 		{
-			text = 'Find Xari', 
+			text = tr("QUEST_MAGES_XARI4"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'xari_clothes_1', args = []}]
 		},
 		{
-			text = 'Find Xari', 
+			text = tr("QUEST_MAGES_XARI5"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
 			args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]
@@ -2930,7 +2931,7 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_mages_fred = [
 		{
-			text = 'Search for Fred', 
+			text = tr("QUEST_MAGES_FRED1"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}],
 			args = [{code = 'start_event', data = 'fred_1', args = []}]
@@ -2938,63 +2939,63 @@ var fixed_location_options = { #override serialized data
 	],
 	basic_threat_wolves = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_WOLVES1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_rebels = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_REBELS1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'rebels_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_goblins = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_GOBLINS1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'goblins_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_ogre = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_OGRE1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]
 		}
 	],
 	basic_threat_troll = [
 		{
-			text = 'Proceed', 
+			text = tr("BASIC_THREAT_TROLL1"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]
 		}
 	],
 	quest_cali_cave_location = [
 		{
-			text = 'Search Cave', 
+			text = tr("QUEST_CALI_CAVE_LOCATION1"), 
 			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'got_cali_1_1'}],
 			args = [{code = 'start_event', data = 'cali_intro_1', args = []}]
 		},
 	],
 	quest_cali_goblins_location = [
 		{
-			text = 'Search surroundings', 
+			text = tr("QUEST_CALI_GOBLINS_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'cali_fighters_quest', stage = 'stage2', state = true}],
 			args = [{code = 'start_event', data = 'cali_goblins_1', args = []}]
 		},
 	],
 	quest_cali_village = [
 		{
-			text = 'Follow Cali', 
+			text = tr("QUEST_CALI_VILLAGE1"), 
 			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], 
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
 	quest_final_operation_location = [ #not sure about code = 'value_check' here, as it should not be used in option's reqs
 		{
-			text = 'Search', 
+			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false},
@@ -3004,7 +3005,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]
 		},
 		{
-			text = 'Search', 
+			text = tr("QUEST_FINAL_OPERATION_LOCATION2"), 
 			reqs = [ 
 				{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
@@ -3016,42 +3017,49 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_daisy_admirer_location = [
 		{
-			text = 'Approach', 
+			text = tr("quest_daisy_admirer_location1"), 
 			reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]
 		}
 	],
 	quest_gryphon_cave_location = [
 		{
-			text = 'Approach Cave', 
+			text = tr("quest_gryphon_cave_location1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
-	quest_leon_forest_2 = [
+	quest_leon_forest = [
 		{
 			text = 'Search For Leon', 
+			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}],
+			args = [{code = 'start_event', data = 'leon_fight_1', args = []}]
+		},
+	],
+	quest_leon_forest_2 = [
+		{
+			text = tr("quest_leon_forest_2_1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
-			text = 'Search For Leon', 
+			text = tr("quest_white_stag_location1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},
 	],
 	quest_temple_location = [
 		{
-			text = 'Approach', 
+			text = tr("QUEST_TEMPLE_LOCATION1"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 			args = [{code = 'start_event', data = 'temple_start', args = []}]
 		},
 		{
-			text = 'Approach', 
+			text = tr("QUEST_TEMPLE_LOCATION2"), 
 			reqs = [
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
@@ -3060,26 +3068,26 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_erlen_location = [
 		{
-			text = 'Search Around', 
+			text = tr("QUEST_ERLEN_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage1', state = true}],
 			args = [{code = 'start_event', data = 'erlern_encounter_start', args = []}]
 		},
 		{
-			text = 'Meet Erlen', 
+			text = tr("QUEST_ERLEN_LOCATION2"), 
 			reqs = [
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true} ],
 			args = [{code = 'start_event', data = 'erlen_lira_1', args = []}]
 		},
 		{
-			text = 'Meet Erlen', 
+			text = tr("QUEST_ERLEN_LOCATION3"), 
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage4', state = true}],
 			args = [{code = 'start_event', data = 'erlen_lira_2', args = []}]
 		},
 	],
 	quest_troll_cave_location = [
 		{
-			text = 'Find troll', 
+			text = tr("QUEST_TROLL_CAVE_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
 			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
 		},

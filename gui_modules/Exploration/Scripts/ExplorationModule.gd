@@ -1472,7 +1472,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 		if !check:
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
-		text = i.name + ": " + i.descript
+		text = tr(i.name) + ": " + tr(i.descript)
 		var currentupgradelevel
 		if active_faction.upgrades.has(i.code):
 			currentupgradelevel = active_faction.upgrades[i.code]
@@ -2082,9 +2082,9 @@ func quest_board(pressed, pressed_button):
 				var newbutton = input_handler.DuplicateContainerTemplate(
 					$QuestBoard/ScrollContainer/VBoxContainer
 				)
-				newbutton.get_node("Label").text = k.name
-				newbutton.get_node("Requester").text = k.source.capitalize()
-				var text = k.descript
+				newbutton.get_node("Label").text = tr(k.name)
+				newbutton.get_node("Requester").text = tr(k.source.capitalize())
+				var text = tr(k.descript)
 				newbutton.get_node("RichTextLabel2").bbcode_text = globals.TextEncoder(text)
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
 				newbutton.get_node("ButtonOverlay").connect(
@@ -2136,7 +2136,7 @@ func see_quest_info(quest):
 	$QuestBoard/QuestDetails.show()
 	input_handler.ClearContainer($QuestBoard/QuestDetails/questreqs)
 	input_handler.ClearContainer($QuestBoard/QuestDetails/questrewards)
-	var text = '[center]' + quest.name + '[/center]\n' + quest.descript
+	var text = '[center]' + tr(quest.name) + '[/center]\n' + tr(quest.descript)
 	for i in quest.requirements:
 		var newbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 		match i.code:
@@ -2180,9 +2180,9 @@ func see_quest_info(quest):
 				)
 				text += (
 					"\n"
-					+ worlddata.dungeons[i.type].name
+					+ tr(worlddata.dungeons[i.type].name)
 					+ ": "
-					+ worlddata.dungeons[i.type].descript
+					+ tr(worlddata.dungeons[i.type].descript)
 				)
 			'complete_dungeon':
 				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
@@ -2373,7 +2373,7 @@ func see_quest_info(quest):
 					+ "(Master Charm Bonus)"
 				)
 	$QuestBoard/QuestDetails/Requester.text = ""
-	$QuestBoard/QuestDetails/Requester.text += input_handler.active_area.factions[quest.source].name + " "
+	$QuestBoard/QuestDetails/Requester.text += tr(input_handler.active_area.factions[quest.source].name) + " "
 
 	$QuestBoard/QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$QuestBoard/QuestDetails/time/Label.text = "Limit: " + str(quest.time_limit) + " days."

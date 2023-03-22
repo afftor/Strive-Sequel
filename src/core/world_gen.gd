@@ -276,11 +276,14 @@ func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
 	settlement.travel_time = globals.rng.randi_range(settlement.travel_time[0],settlement.travel_time[1])
 	var text = ''
-	if worlddata.locationnames.has(settlement.name+"1"):
-		text = worlddata.locationnames[settlement.name+"1"][randi() % worlddata.locationnames[settlement.name + "1"].size()] + worlddata.locationnames[settlement.name+"2"][randi() % worlddata.locationnames[settlement.name + "2"].size()]
+	#print(settlement.code, settlement.name)
+	if worlddata.locationnames.has(settlement.code) && settlement.name == null:
+		text = worlddata.locationnames[settlement.code+"1"][randi() % worlddata.locationnames[settlement.code + "1"].size()] + worlddata.locationnames[settlement.code+"2"][randi() % worlddata.locationnames[settlement.code + "2"].size()]
 	else:
-		text = worlddata.locationnames[settlement.name][randi() % worlddata.locationnames[settlement.name].size()]
-	settlement.name = text
+		text = settlement.name
+#	else:
+#		text = worlddata.locationnames[settlement.code][randi() % worlddata.locationnames[settlement.code].size()]
+	settlement.name = tr(text)
 	settlement.id = "L" + str(ResourceScripts.game_world.locationcounter)
 	settlement.group = {}
 	settlement.type = 'settlement'
@@ -302,9 +305,9 @@ func make_settlement(code, area):
 
 func make_location(code, area):
 	var location = worlddata.dungeons[code].duplicate(true)
-	var text = location.name
+	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
-		text = "The " + worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()] + " " + worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()]
+		text = "The " + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
 	if location.has('singlename'):
 		text = location.singlename
 	location.name = text
@@ -398,8 +401,8 @@ func make_quest(questcode):
 	data.id = "Q" + str(ResourceScripts.game_progress.questcounter)
 	ResourceScripts.game_progress.questcounter += 1
 	data.code = template.code
-	data.name = template.name
-	data.descript = template.descript
+	data.name = tr(template.name)
+	data.descript = tr(template.descript)
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.state = 'free'
 	

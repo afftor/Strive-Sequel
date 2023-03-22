@@ -2,6 +2,8 @@ extends Control
 
 var state
 
+var close_state : bool
+
 var scenes_per_page = 12
 
 var Collection : String
@@ -132,6 +134,12 @@ func open_galery():
 
 
 func close_galery():
+	
+	if close_state == true:
+		gui_controller.close_scene(self)
+		queue_free()
+		return
+		
 	ResourceScripts.core_animations.FadeAnimation(self)
 	yield(get_tree().create_timer(0.3), "timeout")
 	hide()

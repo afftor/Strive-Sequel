@@ -488,14 +488,6 @@ rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 1 )
 toggle_mode = true
 
-[node name="SkipP" type="CheckBox" parent="NewGamePanel"]
-margin_left = 31.9541
-margin_top = 430.539
-margin_right = 145.954
-margin_bottom = 454.539
-custom_fonts/font = ExtResource( 28 )
-text = "Skip prologue"
-
 [node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
 margin_left = 24.0
 margin_top = 567.0
@@ -521,6 +513,15 @@ custom_fonts/font = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SkipP" type="CheckBox" parent="NewGamePanel"]
+margin_left = 24.0203
+margin_top = 697.391
+margin_right = 269.02
+margin_bottom = 745.391
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 28 )
+text = "Skip prologue"
 
 [node name="tip" type="TextureRect" parent="NewGamePanel"]
 visible = false
@@ -660,7 +661,26 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.6d
+bbcode_text = "0.6.8b
+Fixed some gui issues
+Fixed multiple text errors where translation didn't trigger
+0.6.8a
+Fixed normal start not starting main questline
+Fixed save import
+0.6.8
+Now each dungeon floor ends with miniboss battle which has 50% chance to reward with higher grade slave
+Added new Zephyra sidequest
+Revamped main menu
+Integrated new skill and effect descriptions (Thanks to Lipach)
+Added Tailor bonus to arachna in exchange for some hp
+Fixed some events and typos
+Fixed staves not allowing certain materials to be used for parts
+0.6.7
+Added new repeatable quest type
+Adjusted initial resources for settlements
+Corrected scene gallery unlocks
+Fixed multiple quests and image errors
+0.6.6d
 Most scenes and events have been added to gallery
 Added text to Mae's blowjob scene and illustrations to ritual
 Added setting option to disable background animation (for those users who have it flickering)
@@ -1411,7 +1431,26 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.6d
+text = "0.6.8b
+Fixed some gui issues
+Fixed multiple text errors where translation didn't trigger
+0.6.8a
+Fixed normal start not starting main questline
+Fixed save import
+0.6.8
+Now each dungeon floor ends with miniboss battle which has 50% chance to reward with higher grade slave
+Added new Zephyra sidequest
+Revamped main menu
+Integrated new skill and effect descriptions (Thanks to Lipach)
+Added Tailor bonus to arachna in exchange for some hp
+Fixed some events and typos
+Fixed staves not allowing certain materials to be used for parts
+0.6.7
+Added new repeatable quest type
+Adjusted initial resources for settlements
+Corrected scene gallery unlocks
+Fixed multiple quests and image errors
+0.6.6d
 Most scenes and events have been added to gallery
 Added text to Mae's blowjob scene and illustrations to ritual
 Added setting option to disable background animation (for those users who have it flickering)

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.6.7'
+const gameversion = '0.6.8c'
 
 #time
 signal hour_tick
@@ -653,7 +653,9 @@ func LoadGame(filename):
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
 	
-	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
+	while ResourceScripts.game_progress.planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
+		ResourceScripts.game_progress.planned_mansion_events.erase("ZCEvent_1")
+	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && !ResourceScripts.game_progress.planned_mansion_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
 		ResourceScripts.game_progress.planned_mansion_events.append("ZCEvent_1")
 	
 

@@ -2032,6 +2032,7 @@ var quests = {
 			stage10 = {code = 'stage10', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_10"}, # go to village
 		},
 	},
+	
 	lilia_meet_quest = {
 		code = "lilia_meet_quest",
 		summary = "LILIA_MEET_QUEST_SUMMARY",
@@ -2041,6 +2042,7 @@ var quests = {
 		},
 		
 	},
+	
 	sick_lilia_quest = {
 		code = 'sick_lilia_quest',
 		summary = "SICK_LILIA_QUEST_SUMMARY",
@@ -2076,6 +2078,17 @@ var quests = {
 			stage16 = {code = 'stage16', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_16"},  # talk to Сali
 			stage17 = {code = 'stage17', name = "CALI_TAMING_QUEST_NAME", descript = "CALI_TAMING_QUEST_STAGE_17"},  # talk to Сali tomorrow (kinda bad)
 		},
+	},
+	
+	zephyra_bath_quest = {
+		code = "zephyra_bath_quest",
+		summary = "ZEPHYRA_BATH_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = 'stage0', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_0"}, # stand in for ginny while she's away
+			stage1 = {code = 'stage1', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_1"}, # build and visit bath
+			stage2 = {code = 'stage2', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_2"}, # visit bath
+		},
+		
 	},
 }
 

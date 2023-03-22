@@ -384,7 +384,7 @@ var TranslationDict = {
 	TOOLTIPPROGRESSREQUIRED = "Work Units required",
 	TOOLTIPSAVECHARACTER = "Save Character Template",
 	TOOLTIPLOADCHARACTER = "Load Character Template",
-	
+	TOOLTIPSKIPPROLOGUE = "Skips prologue quests and starts first story arc. The loan mission is disabled. ",
 	
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 
@@ -1802,7 +1802,7 @@ var TranslationDict = {
 	UPGRADESEX_TIMEBONUS1 = "Increase daily sex interactions to 2",
 	UPGRADESEX_TIMEBONUS2 = "Increase daily sex interactions to 3",
 	UPGRADERESTING = "Bath",
-	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will will deplete their Obedience at half speed.",
+	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will deplete their Obedience at half speed.",
 	UPGRADERESTINGBONUS1 = "",
 	UPGRADEACADEMY = "Academy",
 	UPGRADEACADEMYDESCRIPT = "Allows to send newborn children for Academy training.",
@@ -2405,7 +2405,7 @@ var TranslationDict = {
 	LOCATIONNAMEQUEST_LEON_FOREST_2 = "Leon's location",
 	LOCATIONNAMEQUEST_CALI_BANDITS_LOCATION = "Bandits' Hideout",
 	LOCATIONNAMEQUEST_MINES_DUNGEON = "Mines",
-
+	HIRELINGFOUND = "Found Recruit",
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
@@ -2413,7 +2413,7 @@ var TranslationDict = {
 	SETTLEMENT_PLAINS2 = "Settlement",
 	SETTLEMENT_PLAINS3 = "Settlement",
 	SETTLEMENT_PLAINS4 = "Settlement",
-
+	SETTLEMENT_FOREST1 = "Settlement",
 	DUNGEONDIFFICULTY = "Difficulty",
 	DUNGEONDIFFICULTYEASY = "Easy",
 	DUNGEONDIFFICULTYMEDIUM = "Medium",
@@ -2422,7 +2422,9 @@ var TranslationDict = {
 	ENEMYBANDIT_MELEE = "Bandit",
 	ENEMYBANDIT_ARCHER = "Ranged Bandit",
 	ENEMYBANDIT_MAGE = "Bandit Mage",
-	ENEMYBANDIT_BOSS = "Bandit Boss",
+	ENEMYBANDIT_BOSS_MELEE = "Slashing Brute",
+	ENEMYBANDIT_BOSS_ARCHER = "Deadeye",
+	ENEMYBANDIT_BOSS_MAGE = "Rogue Sorcerer",
 	ENEMYRAMONT_BOSS = "Ramont",
 	ENEMYHECTOR_BOSS = "Hector",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
@@ -3040,7 +3042,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	SERVANTSELECTIONFINISH7_1 = "— What's not to enjoy? Lots of people are hopeful for the future of the city. Lots of opportunities to profit and grow. This is like a great test for me.",
 	SERVANTSELECTIONFINISH7_2 = "— Don't worry. We have a speaker who will make you look like you are the only reason the city hasn't collapsed in the past week. Just smile and look confident.",
 	SERVANTSELECTIONFINISH7_3 = "— Haha, just wait until it's over, I'll keep you company then.",
-	SERVANTSELECTIONFINISH7_ANY = "— It seems this one is done. You'll be up in ten minutes and... \n\n Before Amelia could answer, a deafening blast erupted from the podium, and a group of people materialized there. Led by a young blonde girl adorned in shiny armor and luxurious clothes.",
+	SERVANTSELECTIONFINISH7_ANY = "— It seems this one is done. You'll be up in ten minutes and... \n\nBefore Amelia could answer, a deafening blast erupted from the podium, and a group of people materialized there. Led by a young blonde girl adorned in shiny armor and luxurious clothes.",
 	SERVANTSELECTIONFINISH8 = "Before anyone could react, the square was covered by a magic sphere, blocking any potential avenues for retreat or assistance. However, none of the invaders showed any apparent hostility. \n\n The girl spoke. \n\n— People of Aliron, the Human Lands. I'm Anastasia, Daughter of King Alber. My father was mercilessly killed 12 years ago. I swear to avenge him, defeat his enemies and return our kingdom to its former rule. Those who fight for our cause will be rewarded. Please stay strong and help us defeat the wrongdoers. Come seek us and together we will stop this unholy regime." ,
 	SERVANTSELECTIONFINISH9 = "A few moments after she finished a bright flash covered the square to hide a magic portal that Anastasia used to escape. The magic barrier fell and people stood dumbstruck at what just happened.",
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
@@ -7573,7 +7575,7 @@ After taking a long pause and pondering the letter, he finally speaks up.
  — I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
 	LIRA_ENCOUNTER_2_OPTION_1 = "Maybe we could think of some other way... (Wits Factor Check)",
 	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then",
-	LIRA_ENCOUNTER_3_1_GOOD = """{color=green|Success}
+	LIRA_ENCOUNTER_3_1_GOOD = """{color=red|Failure}
 
  — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.""",
 	LIRA_ENCOUNTER_3_1_GOOD_OPTION_1 = "I'll be back once I get one of those",
@@ -9328,10 +9330,10 @@ Kneeling down, the girl soon was on all fours. Her ass slightly in the air as sh
 
 Cali: — [Name], what are you doing?
 
-A light touch to her chin is all the girl would receive in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she’s unable to focus on her meal for much longer.
+A light touch to her chin is all the girl would receive in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
 Cali: — W-wait not th-""",
-	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
 Cali: — Nhhh...
 
@@ -9596,7 +9598,7 @@ With teary eyes she crouched down, lighting those shards and observing them clos
 {color=aqua|Rudolph: — That's an established uniform for these days, not much I can do about it. Don't sweat about it though, you look just fine.}""",
 	CHRISTMAS_EVENT_5 = """{color=yellow|Daisy: — But what am I to do now?..}
 
-{color=aqua|Rudolph: — Didn't I tell you? You gotta do some santa’s work yourself. Now take this bag and come after me.}
+{color=aqua|Rudolph: — Didn't I tell you? You gotta do some santa's work yourself. Now take this bag and come after me.}
 
 {color=yellow|Daisy: — Eeeeh?...}
 
@@ -9716,9 +9718,231 @@ However girls seem to catch your concerns and with more giggling cover themselve
 
 You feel relieved it all turned out well. The girls went to rest soon after you arrived home.""",
 	
+	ZEPHYRA_QUEST_INIT_OPTION_1 = "Talk to Zephyra",
+	ZEPHYRA_QUEST_1 = """You find Zephyra preparing to leave the mansion. You ask her where she's going.
+
+- Ah, I was planning to visit Ginny at the church. We've become friends recently. You can tag along if you wanna.""",
+	ZEPHYRA_QUEST_1_OPTION_1 = "Alright",
+	ZEPHYRA_QUEST_1_OPTION_2 = "Maybe some other time",
+	ZEPHYRA_QUEST_2 = """Zephyra's eyes shine with joy upon hearing your reply.
+
+- Great, let's not waste time then! She said she wanted to see me.""",
+	ZEPHYRA_QUEST_3 = """You find the church nearly empty at this time of day with Ginny coming out to greet you.
+
+Ginny: - Ah, Zephyra... And you brought the Mayor with you?
+
+Zephyra: - I couldn't hold him back from tagging along. It's not a girls only club after all, right?
+
+Ginny: - No, of course not. It's a pleasure, Mayor. 
+
+Zephyra: - So, what do you have on your mind?""",
+	ZEPHYRA_QUEST_4 = """Ginny: - Right... Uh, actually I have to ask you for a favor, I really need to leave the church for a few hours. My friend has gotten sick and needs my help. Would you watch over it for me?
+
+Zephyra: - Say no more, I always wanted to try out a nun's role. 
+
+Zephyra seems rather relaxed about the whole situation, but you suppose Ginny wouldn't trust it to just about anyone.""",
+	ZEPHYRA_QUEST_4_OPTION_1 = """I guess I can stick around to keep you company""",
+	ZEPHYRA_QUEST_4_OPTION_2 = """Is it really a good idea to let someone take your role?""",
+	ZEPHYRA_QUEST_5_1 = """Ginny: - Ah, I wouldn't have to worry about anything with the Mayor here too. Thank you!
+
+Zephyra: - I wouldn't trust [him] on [his] own, but with me here you have nothing to fear about. 
+
+Ginny: - That... seemed a bit rude. Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+	ZEPHYRA_QUEST_5_2 = """Ginny: - I'm sure Zephyra is very capable. I've never met someone like her who is as kind and as genuinely compassionate as Celena's teachings guide us to be.
+
+Zephyra: - Please, I'm weak to flattering.
+
+Ginny: - I'm not! Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+	ZEPHYRA_QUEST_6 = """You and Zephyra are left alone to monitor the church. It seems to be a slow day and visitors are quite rare and undemanding. You are surprised by how naturally Zephyra takes up Ginny's role of helping visitors. That is until one visitor, a young, poor looking woman, approaches Zephyra.
+
+Woman: - I'm sorry, I really need some help...
+
+Zephyra: - Tell us what happened.
+
+Woman: - I... Lost my wallet and my children have nothing to eat until my next payment... I know that Celena helps people in need.""",
+	ZEPHYRA_QUEST_7 = """Zephyra: - Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides she can tell if you have already received some help ea...
+
+Woman: - No, please, I can't stay here for long, I have to return home soon or my husband will get mad, I beg you!
+
+Zephyra is unsure what to do and seems to seek your input.""",
+	ZEPHYRA_QUEST_7_OPTION_1 = "Zephyra's right, we can't just give church's money to anyone",
+	ZEPHYRA_QUEST_7_OPTION_2 = "We should help those in need (charm check)",
+	ZEPHYRA_QUEST_7_OPTION_3 = "There's no need to get into church's treasury, I can help you on my own (300 gold)",
+	ZEPHYRA_QUEST_8_1 = """You support Zephyra and tell that this whole situation seems a bit suspicious. The woman leaves with a downed look as Zephyra gives a relieved sigh.""",
+	ZEPHYRA_QUEST_8_2_GOOD = """{color=green|Success}
+
+Zephyra reluctantly agrees that this is her responsibility. She passes the woman some coins from the church's donation box.
+
+Woman: - Thank you! I won't forget your generosity. 
+
+As the woman leaves Zephyra looks at you with a hint of newly acquired respect. 
+
+Zephyra: - Hehe, I didn't expect someone of your status to be so thoughtful.""",
+	ZEPHYRA_QUEST_8_2_BAD = """{color=red|Failure}
+
+Zephyra does not seem convinced by your words and the woman turns to leave with no money. Zephyra looks a bit stern but quickly gets over it.""",
+	ZEPHYRA_QUEST_8_3 = """Both Zephyra and the woman are shocked by your decision. As you give money to the woman and she leaves, Zephyra looks at you with respect. 
+
+Zephyra: - Wow, I didn't expect someone of your status to be so generous. Are you trying to win my heart all over again? He-he.""",
 	
-	
-	
+	ZEPHYRA_DAISY_1 = """A new visitor appears... It's no other than your slave bunny girl Daisy. You decide to stay hidden, letting Zephyra take care of this alone. 
+
+Daisy: - H-hello, Zephyra, why are you here? Where's Ginny? 
+
+Zephyra: - She's out for quite some time. She left her role to me while she's away.
+
+Daisy: - O-oh... I was hoping to make a confession. I'm not sure if I should come back later...
+
+Zephyra: - I assure you, I can help with this no worse than her. 
+
+Daisy seems unsure about this, but somehow she's unable to deny Zephyra's predatory interest.""",
+	ZEPHYRA_DAISY_2_1 = """Daisy: - *Sigh* I feel sinful and very dirty. I've been doing very inappropriate things I would never normally agree to if not for my [Master]. 
+
+Zephyra: - That's terrible to hear. But as I take it, it wasn't your choice. How bad were these actions?
+
+Daisy: - They were lewd, shameful things... What should I do?
+
+Zephyra: - Your sins will be forgiven given your innocent soul. After all, you aren't responsible for them, unlike someone who should be confessing here instead.
+
+Daisy: - I see... Thank you, I do feel a bit better now. You are quite natural at this... You won't tell anyone about it?
+
+Zephyra: - Of course not, do I really look like someone who would rat people out? I would only outfox them. 
+
+Daisy leaves the chapel and returns to her duty.""",
+	ZEPHYRA_DAISY_2_2 = """Daisy: - I wanted to pray and make a donation for all the good things that happened to me...
+
+Zephyra: - Ooh? You think it was divine guidance?
+
+Daisy: - I-I like to think so... After all, I'm lucky to have a kind caring [Master]. 
+
+Zephyra: - You are right. But you shouldn't treat our [Master] too acceptingly. I've heard [he] might not be an ideal person. [He] could be up for doing some bad things. For example, [he] might even be eavesdropping on us right now...
+
+Daisy: - No way, I trust my [Master]! And it's not like I'd be embarrassed if he heard.
+
+Thankfully, Daisy seems to be too dim to notice Zephyra's sneer. As she's done with the prayer, she leaves the chapel.""",
+	ZEPHYRA_VISITOR_1 = """After some time a gaudy looking man appears in the church, seeming quite out of place. As he looks around, it's obvious he's searching for someone. 
+
+Zephyra: - May I help you, good sir? 
+
+Visitor: - I was hoping to see Ginny. Is she not around today?
+
+Zephyra: - I'm afraid she's away for a while. 
+
+Visitor: - Darn, that's terrible. I've only come to see her. You know, she's so innocent and a nun uniform looks great on her. I've actually been asking her out for a while...
+
+Zephyra: - Uh-huh...
+
+Zephyra seems to be trying to avoid this conversation going any further.""",
+	ZEPHYRA_VISITOR_2 = """Zephyra: - Pardon me, I feel like I should get to work.
+
+Visitor: - Wait, you look very kind and pure as well...
+
+Zephyra: - No-no, you are mistaken. In fact I'm the opposite of pure.
+
+Visitor: - Huh? How can this be?
+
+Zephyra: - You see... I have a [Master]. And [he] has already defiled every inch of my body.
+
+Visitor: - S-Such insolence!""",
+	ZEPHYRA_VISITOR_2_OPTION_1 = """Wait a second, I did not do that""",
+	ZEPHYRA_VISITOR_2_OPTION_2 = """That's an understatement, I've gone much further than just her body""",
+	ZEPHYRA_VISITOR_3_1 = """Zephyra: - S-stupid, just play along with me!
+
+But it seems the problematic visitor has already been turned off. 
+
+Visitor: - No matter! Even if it's a lie, I can't admire a lady who can spout such obscene things so easily.
+
+Visitor:  - I guess I'll be returning when Ginny is back. 
+
+Saying that, the man leaves the church and you alone.""",
+	ZEPHYRA_VISITOR_3_2 = """Visitor: - Nuoooooh! This is truly evil, the worst of our time! I can't admire someone so defiled! 
+
+Zephyra: - Y-yes, it is most regrettable I can't meet your standards.
+
+Visitor:  - I guess I'll be returning when Ginny is back. 
+
+Saying that, the man leaves the church and you alone.""",
+	ZEPHYRA_MAN_1 = """A man enters the church. His lifeless eyes and sullen expression give the appearance of a walking corpse. He seems to be suffering from depression. Zephyra calmly approaches him.  
+
+Zephyra: - Hello. You seem like something is weighing on you. 
+
+The man stays quiet for some time grasping his thoughts. Finally he speaks up.""",
+	ZEPHYRA_MAN_2 = """Man: - ...Say, do you really believe in Celena? In gods at all? With all the pain and suffering around us can you say with a straight face that there's some deep meaning in life?
+
+Zephyra - I agree. There are no gods and it's all probably just made up to make you give up your money in our favor. Nobody watches over your life and you are the only one responsible for it.
+
+The man looks at her with unexpected liveliness in his eyes.""",
+	ZEPHYRA_MAN_3 = """Man: - Then... What should I do?
+
+Zephyra: - Maybe just do what you feel is right? You don't seem to be a bad person since you've come here for advice. I believe you can perhaps arrive at your own conclusions that are unlike anyone else's.
+
+The man takes a long pause, after which, he starts nodding his head furiously.""",
+	ZEPHYRA_MAN_4 = """Man: - T-thank you... You've really helped me. 
+
+Saying this, he leaves. 
+
+Zephyra: - Haah, he didn't even leave a donation.""",
+	ZEPHYRA_MAN_4_OPTION_1 = "\"There are no gods\"?",
+	ZEPHYRA_MAN_4_OPTION_2 = "You've dealt with him rather creatively",
+	ZEPHYRA_QUEST_9_1 = """Zephyra smirks at your question. She clearly realizes the absurdity of the situation but that only makes her smile wider.
+
+Zephyra: - Did you really expect I could prove him wrong? He made up his mind before he came here. I doubt it will be his final decision though.
+
+Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
+	ZEPHYRA_QUEST_9_2 = """Zephyra: - Why, thank you. I consider myself a primarily diplomatic person after all. But, to tell you the truth, he reminded me of my younger sister. If not for that, I wouldn't have even tried to help him. I still have no idea what's on her mind most of the time...
+
+Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
+	ZEPHYRA_QUEST_9_OPTION_1 = "Sometimes I share these thoughts",
+	ZEPHYRA_QUEST_9_OPTION_2 = "He's a lost person deserving a pity",
+	ZEPHYRA_QUEST_9_OPTION_3 = "I prefer not to think about these things",
+	ZEPHYRA_QUEST_10_1 = """Zephyra: - Ah, is that so? Perhaps you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you?.. Just kidding, I'm a terrible preacher.""",
+	ZEPHYRA_QUEST_10_2 = """Zephyra: - Yep, yep. That's right.
+
+Zephyra nods in agreement to your statement.
+
+Zephyra: - Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
+	ZEPHYRA_QUEST_10_3 = """Zephyra: - Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...""",
+	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today's events, she thanks the both of you.
+
+Ginny: - I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the mayor.
+
+Zephyra : - Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
+
+Ginny: - I'm afraid it was a gift to the mayor specifically when I mentioned him... Do you want to give your candies back then?
+
+Zephyra: - ...Don't make me more sad than necessary.
+
+In the end you didn't get to do much else with Zephyra today but it seems like you still grew closer.""",
+	ZEPHYRA_BATH_1 = """In the evening, you prepare to take a bath after a long day. Once you get inside you realize that you aren't quite alone. There's another person hiding in there who has clearly been waiting for you.
+
+Zephyra: - Ahhh, your spacious bath is just great, [Master]. What a coincidence we both decided to get in here at the same time after such a tiresome day.
+
+As you give her a wary look, she starts spilling the beans. 
+
+Zephyra: - W-well, don't look at me like this, I've been preparing to make the first move after being here for so long. You can't expect a cute girl like me to join you and be just a work drone. 
+
+Zephyra, fully naked, casually moves next to you sitting in water.""",
+	ZEPHYRA_BATH_1_OPTION_1 = "I didn't take you for such a bold girl",
+	ZEPHYRA_BATH_1_OPTION_2 = "What are you planning?",
+	ZEPHYRA_BATH_2_1 = """- I-I'm not... It's just... Well, we gotta seal our relationship sooner, rather than later, don't we? Besides, I can't get behind the other servants too much, can I?
+
+Zephyra is blushing heavily but still rises from the water and leans on you, kissing you clumsily.""",
+	ZEPHYRA_BATH_2_2 = """- [Master], are you really this dense? Sigh... This is what I get for falling in love with a dunce. Think of it as payment for your help at the church then...
+
+Zephyra leans on you and clumsily kisses you, putting you in the mood and not leaving any room for negotiation.""",
+	ZEPHYRA_BATH_3 = """After your lips break you let her supple butt rest on your lap. You wrap your arms around Zephyra's waist, pulling her close to you. Her large tail wraps around your leg, flicking playfully.
+
+You can feel heat radiating off of her, and you can't help but respond in kind. You run your hands over her body, exploring every inch of her smooth skin. You can't resist the urge to tease her, running your fingers over her perky nipples. Zephyra moans softly, arching her back against you. You take this as an invitation to continue your exploration. You slip your fingers between her legs. Despite her clearly being a virgin, you feel her already wet and ready for you.
+
+- Did you know... That foxes mate for life? *giggle*""",
+	ZEPHYRA_BATH_4 = """Your fingers dig into her soft hips as you guide her onto you. Her warmth envelops your dick as you pierce her hymen. Zephyra cries out in pleasure, her tight walls squeezing around your rod as she takes in the full length of your penis. She gasps and moans, her body flexing and arching with every thrust.""",
+
+	ZEPHYRA_BATH_5 = """You pick up the pace, pounding harder and faster into her petite butt. Zephyra's moans turn into cries of pleasure as she orgasms, coming apart in your arms. The sensation of her spasming insides is too much to bear and you come inside of her, painting her walls with your seed. 
+
+However, you don't feel quite satisfied yet. You resume slamming into her backside as her lewd cries fill the bath...""",
+	ZEPHYRA_BATH_6 = """As you both catch your breath, you hold her close, relishing the feeling of her soft skin against yours. She snuggles closely and wraps her tail around you, closing her eyes in tranquility.  
+
+- Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
 	
 	
 	
@@ -9882,6 +10106,12 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	CALI_TAMING_QUEST_STAGE_15 = "Visit Aliron's pet shop",
 	CALI_TAMING_QUEST_STAGE_16 = "Talk to Cali",
 	CALI_TAMING_QUEST_STAGE_17 = "Talk to Cali",
+	
+	ZEPHYRA_BATH_QUEST_NAME = "",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "",
+	ZEPHYRA_BATH_QUEST_STAGE_0 = "",
+	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
+	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- “H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
@@ -10629,6 +10859,583 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 	TREAT_FOOD_LIKE1 = "Wow, how did you know this is my favorite?",
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
 	TREAT_FOOD_NEUTRAL1 = "Thank you, [master], I'll accept this.",
+	
+	#worlddata land
+	
+	AREAPLAINS = "Plains",
+	AREAFORESTS = "Forests",
+	AREAMOUNTAINS = "Mountains",
+	AREASTEPPE = "Steppe",
+	AREASEAS = "Seas",
+	AREABEASTKIN_TRIBE = "Far Forests",
+	
+	#worlddata guild_upgrades
+	
+	SLAVENUMBERUPGRADE_NAME = "Hirelings number",
+	SLAVENUMBERUPGRADE_DISC = "Increases the number of available characters for hire at once by 1.",
+	
+	SLAVEQUALITY_NAME = "Hirelings quality",
+	SLAVEQUALITY_DISC = "Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher.",
+	
+	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
+	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",
+	
+	#factiondata
+	
+	FIGHTERS = "Fighters",
+	MAGES = "Mages",
+	WORKERS = "Workers",
+	SERVANTS = "Servants",
+	SLAVEMARKET = "Slave Market",
+	BEASTKIN_SLAVE_TRADER = "Beastkin Slave Trader",
+	ELVISH_SLAVE_TRADER = "Elvish Slave Trader",
+	EXOTIC_SLAVE_TRADER = "Exotic Slave Trader",
+	ALIRON_CHURCH = "Aliron Church",
+	
+	#locations
+	
+	SETTLEMENT_PLAINS1_ = "village_human_quest",
+	SETTLEMENT_PLAINS2_ = "Settlement",
+	SETTLEMENT_MOUNTAINS1 = "Settlement",
+	
+	#questdata
+	
+	FIGHTERS_TASK_EASY_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	FIGHTERS_TASK_EASY_RNDCND_NAME = "Helper Hand",
+	FIGHTERS_TASK_EASY_RNDCND_DESC = "The fighters guild looking for attendants to replace a few squires who fell ill.",
+	
+	FIGHTERS_TASK_MEDIUM_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	FIGHTERS_TASK_MEDIUM_RNDCND_NAME = "Town Patrol",
+	FIGHTERS_TASK_MEDIUM_RNDCND_DESC = "The fighters guild looking for a few spare fighters to fill the role of guardsmen.",
+	
+	FIGHTERS_TASK_HARD_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	FIGHTERS_TASK_HARD_RNDCND_NAME = "Recruit Training",
+	FIGHTERS_TASK_HARD_RNDCND_DESC = "The fighters guild looking for experienced trainers to coach new recruits.",
+	
+	MAGES_TASK_EASY_NAME = "Library Assistance",
+	MAGES_TASK_EASY_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	MAGES_TASK_EASY_RNDCND_NAME = "Library Assistance",
+	MAGES_TASK_EASY_RNDCND_DESC = "The mages guild seeks a few helpers to work on sorting the extensive book archives.",
+	
+	MAGES_TASK_MEDIUM_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	MAGES_TASK_MEDIUM_RNDCND_NAME = "Spell Slinging",
+	MAGES_TASK_MEDIUM_RNDCND_DESC = "The mages guild is looking for a competent mage to assist a sorcery ritual.",
+	
+	MAGES_TASK_HARD_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	MAGES_TASK_HARD_RNDCND_NAME = "Curse Lifter",
+	MAGES_TASK_HARD_RNDCND_DESC = "The mages guild looking for strong wizards capable to provide mana support in a complex curse removal.",
+	
+	WORKERS_TASK_EASY_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	WORKERS_TASK_EASY_RNDCND_NAME = "Blacksmith Assistant",
+	WORKERS_TASK_EASY_RNDCND_DESC = "The worker guild can use a few extra hands to help with the job at the town.",
+	
+	WORKERS_TASK_MEDIUM_NAME = "Wanted: Tailors",
+	WORKERS_TASK_MEDIUM_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	WORKERS_TASK_MEDIUM_RNDCND_NAME = " ",
+	WORKERS_TASK_MEDIUM_RNDCND_DESC = "The worker guild looks for tailors who can help with the recent order.",
+	
+	WORKERS_TASK_HARD_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_DESC = "The worker guild requires additional help for a large building restoration.",
+	WORKERS_TASK_HARD_RNDCND_NAME = "Restoration Project",
+	WORKERS_TASK_HARD_RNDCND_DESC = "The worker guild requires additional help for a large building restoration.",
+	
+	SERVANTS_TASK_EASY_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	SERVANTS_TASK_EASY_RNDCND_NAME = "One Time Waitress",
+	SERVANTS_TASK_EASY_RNDCND_DESC = "The servants guild is looking for someone to work at a public restaurant.",
+	
+	SERVANTS_TASK_HARD_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	SERVANTS_TASK_HARD_RNDCND_NAME = "Rich Party",
+	SERVANTS_TASK_HARD_RNDCND_DESC = "The servants guild looking for performance artists for a large scale celebration party.",
+	
+	WORKERS_RESOURCES_NAME = "Resource gathering",
+	WORKERS_RESOURCES_DESC = "The Workers Guild requires additional resources for its needs.",
+	
+	WORKERS_FOOD_NAME = "Food supply",
+	WORKERS_FOOD_DESC = "The Workers Guild requires additional food supplies.",
+	
+	WORKERS_CRAFT_TOOLS_NAME = "Tool making",
+	WORKERS_CRAFT_TOOLS_DESC = "The Workers Guild requires some instruments crafted in a specific way.",
+	
+	WORKERS_THREAT_NAME = "Trouble Solving",
+	WORKERS_THREAT_DESC = "The Workers Guild requires a help with a certain issue.",
+	
+	FIGHTERS_THREAT_NAME = "Trouble Solving",
+	FIGHTERS_THREAT_DESC = "The Fighters Guild requires a help with a certain issue.",
+	
+	FIGHTERS_DUNGEON_NAME = "Dungeon clear",
+	FIGHTERS_DUNGEON_DESC = "The Fighters Guild requires a local dungeon to be cleared.",
+	
+	FIGHTERS_MONSTER_HUNT_NAME = "Monster Hunt",
+	FIGHTERS_MONSTER_HUNT_DESC = "The Fighters Guild has a task for hunting certain amount of enemies.",
+	
+	FIGHTERS_CRAFT_GEAR_NAME = "Gear Supply",
+	FIGHTERS_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",
+	
+	MAGES_MATERIALS_NAME = "Resource Supply",
+	MAGES_MATERIALS_DESC = "The Mages Guild requires additional resources for its needs.",
+	
+	MAGES_CRAFT_POTIONS_NAME = "Potion Making",
+	MAGES_CRAFT_POTIONS_DESC = "The Mages Guild needs to resupply their store room.",
+	
+	MAGES_THREAT_NAME = "Trouble Solving",
+	MAGES_THREAT_DESC = "The Mages Guild requires a help with a certain issue.",
+	
+	MAGES_CRAFT_GEAR_NAME = "Mage Gear Supply",
+	MAGES_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",
+	
+	SERVANTS_CRAFT_NAME = "Items Request",
+	SERVANTS_CRAFT_DESC = "The Servants Guild needs a specific crafted items",
+	
+	SERVANTS_SLAVE_NAME = "Slave Request",
+	SERVANTS_SLAVE_DESC = "The Servants Guild is in need of specific trained individual.",
+	
+	SERVANTS_SLAVE_WORK_NAME = "Assignment",
+	SERVANTS_SLAVE_WORK_DESC = "The Servants Guild is in need of someone performing a task for them.",
+	
+	FIGHTERS_SLAVE_WORK_NAME = "Assignment",
+	FIGHTERS_SLAVE_WORK_DESC = "The Fighters Guild is in need of someone performing a task for them.",
+	
+	#locationnames
+	VILLAGE_HUMAN1 = "Green",
+	VILLAGE_HUMAN2 = "Black",
+	VILLAGE_HUMAN3 = "Gold",
+	VILLAGE_HUMAN4 = "Stone",
+	VILLAGE_HUMAN5 = "Great",
+	VILLAGE_HUMAN6 = "Rain",
+	VILLAGE_HUMAN7 = "Storm",
+	VILLAGE_HUMAN8 = "Red",
+	VILLAGE_HUMAN9 = "River",
+	VILLAGE_HUMAN10 = "Oaken",
+	VILLAGE_HUMAN11 = "Ashen",
+	
+	VILLAGE_HUMAN2_1 = "wood",
+	VILLAGE_HUMAN2_2 = "ford",
+	VILLAGE_HUMAN2_3 = "vale",
+	VILLAGE_HUMAN2_4 = "burg",
+	VILLAGE_HUMAN2_5 = "wind",
+	VILLAGE_HUMAN2_6 = "ridge",
+	VILLAGE_HUMAN2_7 = "minster",
+	VILLAGE_HUMAN2_8 = "moor",
+	VILLAGE_HUMAN2_9 = "meadow",
+	
+	VILLAGE_HUMAN_QUEST1 = "Millford",
+	
+	BANDIT_FORT_NOUNS1 = "Fort",
+	BANDIT_FORT_NOUNS2 = "Stockade",
+	BANDIT_FORT_NOUNS3 = "Fastness",
+	BANDIT_FORT_NOUNS4 = "Castle",
+	BANDIT_FORT_NOUNS5 = "Outpost",
+	BANDIT_FORT_NOUNS6 = "Tower",
+	
+	BANDIT_FORT_ADJS1 = "Bandit",
+	BANDIT_FORT_ADJS2 = "Outlaw",
+	BANDIT_FORT_ADJS3 = "Brigand",
+	BANDIT_FORT_ADJS4 = "Robber",
+	BANDIT_FORT_ADJS5 = "Cutthroat",
+	
+	GOBLIN_CAVE_NOUNS1 = "Cave",
+	GOBLIN_CAVE_NOUNS2 = "Tunnel",
+	GOBLIN_CAVE_NOUNS3 = "Burrow",
+	GOBLIN_CAVE_NOUNS4 = "Cavern",
+	GOBLIN_CAVE_NOUNS5 = "Den",
+	
+	GOBLIN_CAVE_ADJS1 = "Dirty",
+	GOBLIN_CAVE_ADJS2 = "Murky",
+	GOBLIN_CAVE_ADJS3 = "Distant",
+	GOBLIN_CAVE_ADJS4 = "Red",
+	GOBLIN_CAVE_ADJS5 = "Blue",
+	GOBLIN_CAVE_ADJS6 = "Black",
+	GOBLIN_CAVE_ADJS7 = "Lower",
+	
+	BANDIT_DEN_NOUNS1 = "Hideout",
+	BANDIT_DEN_NOUNS2 = "Cave",
+	BANDIT_DEN_NOUNS3 = "Den",
+	BANDIT_DEN_NOUNS4 = "Pit",
+	
+	BANDIT_DEN_ADJS1 = "Bandit",
+	BANDIT_DEN_ADJS2 = "Dirty",
+	BANDIT_DEN_ADJS3 = "Murky",
+	BANDIT_DEN_ADJS4 = "Distant",
+	BANDIT_DEN_ADJS5 = "Red",
+	BANDIT_DEN_ADJS6 = "Blue",
+	BANDIT_DEN_ADJS7 = "Black",
+	BANDIT_DEN_ADJS8 = "Lower",
+	
+	GROVE_NOUNS1 = "Forest",
+	GROVE_NOUNS2 = "Grove",
+	GROVE_NOUNS3 = "Thicket",
+	GROVE_NOUNS4 = "Woodland",
+	GROVE_NOUNS5 = "Backwoods",
+	GROVE_NOUNS6 = "Cover",
+	GROVE_NOUNS7 = "Timberland",
+	GROVE_NOUNS8 = "Wildwood",
+	GROVE_NOUNS9 = "Orchard",
+	GROVE_NOUNS10 = "Spinney",
+	GROVE_NOUNS11 = "Hedge",
+	
+	GROVE_ADJS1 = "Dark",
+	GROVE_ADJS2 = "Green",
+	GROVE_ADJS3 = "White",
+	GROVE_ADJS4 = "Gold",
+	GROVE_ADJS5 = "Silver",
+	GROVE_ADJS6 = "Dense",
+	GROVE_ADJS7 = "Thick",
+	GROVE_ADJS8 = "Overgrown",
+	GROVE_ADJS9 = "Shiny",
+	GROVE_ADJS10 = "Bushy",
+	GROVE_ADJS11 = "Living",
+	
+	CRYPT_NOUNS1 = "Crypt",
+	CRYPT_NOUNS2 = "Cemetery",
+	CRYPT_NOUNS3 = "Grave",
+	CRYPT_NOUNS4 = "Catacomb",
+	CRYPT_NOUNS5 = "Mausoleum",
+	CRYPT_NOUNS6 = "Tomb",
+	CRYPT_NOUNS7 = "Vault",
+	CRYPT_NOUNS8 = "Chamber",
+	
+	CRYPT_ADJS1 = "Dark",
+	CRYPT_ADJS2 = "Black",
+	CRYPT_ADJS3 = "Blood",
+	CRYPT_ADJS4 = "Bone",
+	CRYPT_ADJS5 = "Rotten",
+	CRYPT_ADJS6 = "Flesh",
+	CRYPT_ADJS7 = "Evil",
+	CRYPT_ADJS8 = "Blood",
+	CRYPT_ADJS9 = "Red",
+	CRYPT_ADJS10 = "Grim",
+	CRYPT_ADJS11 = "Great",
+	CRYPT_ADJS12 = "Demonic",
+	CRYPT_ADJS13 = "Gloomy",
+	CRYPT_ADJS14 = "Deadly",
+	
+	MOUNTAINS_NOUNS1 = "Caves",
+	MOUNTAINS_NOUNS2 = "Tunnels",
+	MOUNTAINS_NOUNS3 = "Burrows",
+	MOUNTAINS_NOUNS4 = "Caverns",
+	MOUNTAINS_NOUNS5 = "Mine",
+	MOUNTAINS_NOUNS6 = "Quarry",
+	MOUNTAINS_NOUNS7 = "Chambers",
+	MOUNTAINS_NOUNS8 = "Dungeon",
+	
+	MOUNTAINS_ADJS1 = "Dark",
+	MOUNTAINS_ADJS2 = "Black",
+	MOUNTAINS_ADJS3 = "Distant",
+	MOUNTAINS_ADJS4 = "Red",
+	MOUNTAINS_ADJS5 = "Blue",
+	MOUNTAINS_ADJS6 = "Lower",
+	MOUNTAINS_ADJS7 = "Deep",
+	MOUNTAINS_ADJS8 = "Heavy",
+	MOUNTAINS_ADJS9 = "Crystal",
+	MOUNTAINS_ADJS10 = "Rocking",
+	
+	FIRE_DEPTHS_NOUNS1 = "Caves",
+	FIRE_DEPTHS_NOUNS2 = "Dungeon",
+	FIRE_DEPTHS_NOUNS3 = "Scar",
+	FIRE_DEPTHS_NOUNS4 = "Chambers",
+	FIRE_DEPTHS_NOUNS5 = "Halls",
+	FIRE_DEPTHS_NOUNS6 = "Lair",
+	
+	FIRE_DEPTHS_ADJS1 = "Burning",
+	FIRE_DEPTHS_ADJS2 = "Fire",
+	FIRE_DEPTHS_ADJS3 = "Scorching",
+	FIRE_DEPTHS_ADJS4 = "Heating",
+	
+	CITY_NOUNS1 = "Ruins",
+	CITY_NOUNS2 = "Chambers",
+	CITY_NOUNS3 = "Halls",
+	CITY_NOUNS4 = "Quarters",
+	CITY_NOUNS5 = "Labyrinth",
+	
+	CITY_ADJS1 = "Dark",
+	CITY_ADJS2 = "Distant",
+	CITY_ADJS3 = "Red",
+	CITY_ADJS4 = "Blue",
+	CITY_ADJS5 = "Black",
+	CITY_ADJS6 = "Lower",
+	CITY_ADJS7 = "Deep",
+	CITY_ADJS8 = "Heavy",
+	CITY_ADJS9 = "Crystal",
+	CITY_ADJS10 = "Rocking",
+	
+	ANCIENT_JUNGLES_NOUNS1 = "Thicket",
+	ANCIENT_JUNGLES_NOUNS2 = "Jungle",
+	ANCIENT_JUNGLES_NOUNS3 = "Rainforest",
+	ANCIENT_JUNGLES_NOUNS4 = "Wilds",
+	ANCIENT_JUNGLES_NOUNS5 = "Wildwood",
+	ANCIENT_JUNGLES_NOUNS6 = "Hedge",
+	ANCIENT_JUNGLES_NOUNS7 = "Chaparral",
+	ANCIENT_JUNGLES_NOUNS8 = "Morass",
+	ANCIENT_JUNGLES_NOUNS9 = "Tangle",
+	
+	ANCIENT_JUNGLES_ADJS1 = "Green",
+	ANCIENT_JUNGLES_ADJS2 = "Dark",
+	ANCIENT_JUNGLES_ADJS3 = "Dense",
+	ANCIENT_JUNGLES_ADJS4 = "Thick",
+	ANCIENT_JUNGLES_ADJS5 = "Overgrown",
+	ANCIENT_JUNGLES_ADJS6 = "Bushy",
+	ANCIENT_JUNGLES_ADJS7 = "Living",
+	ANCIENT_JUNGLES_ADJS8 = "Ancient",
+	ANCIENT_JUNGLES_ADJS9 = "Old",
+	ANCIENT_JUNGLES_ADJS10 = "Great",
+	ANCIENT_JUNGLES_ADJS11 = "Red",
+	ANCIENT_JUNGLES_ADJS12 = "Gloomy",
+	
+	#dungeonnoun
+	
+	DUNGEONNOUN1 = "Tunnels",
+	DUNGEONNOUN2 = "Quarters",
+	DUNGEONNOUN3 = "Caves",
+	DUNGEONNOUN4 = "Halls",
+	DUNGEONNOUN5 = "Delves",
+	DUNGEONNOUN6 = "Burrows",
+	DUNGEONNOUN7 = "Vault",
+	DUNGEONNOUN8 = "Labyrinth",
+	DUNGEONNOUN9 = "Chambers",
+	DUNGEONNOUN10 = "Crypt",
+	DUNGEONNOUN11 = "Tombs",
+	DUNGEONNOUN12 = "Catacombs",
+	DUNGEONNOUN13 = "Lair",
+	DUNGEONNOUN14 = "Dungeon",
+	DUNGEONNOUN15 = "Caverns",
+	
+	#dungeonadj
+	
+	DUNGEONADJ1 = "Dark",
+	DUNGEONADJ2 = "White",
+	DUNGEONADJ3 = "Red",
+	DUNGEONADJ4 = "Black",
+	DUNGEONADJ5 = "Molten",
+	DUNGEONADJ6 = "Distant",
+	DUNGEONADJ7 = "Eternal",
+	DUNGEONADJ8 = "Gloomy",
+	DUNGEONADJ9 = "Lower",
+	DUNGEONADJ10 = "Moaning",
+	DUNGEONADJ11 = "Demonic",
+	DUNGEONADJ12 = "Rocking",
+	DUNGEONADJ13 = "Living",
+	DUNGEONADJ14 = "Crystal",
+	DUNGEONADJ15 = "Deadly",
+	DUNGEONADJ16 = "Roaring",
+	
+	#dungeons
+	
+	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
+	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
+	
+	QUEST_MAGES_XARI_TEXT = "Xari's Location",
+	QUEST_MAGES_XARI_DESC = "",
+	
+	QUEST_MAGES_FRED_TEXT = "Fred's Location",
+	QUEST_MAGES_FRED_DESC = "",
+	
+	BASIC_THREAT_WOLVES_TEXT = "Threat - Wild wolves",
+	BASIC_THREAT_WOLVES_DESC = "Farmers report a pack of wild wolves attacking their flock.",
+	
+	BASIC_THREAT_REBELS_TEXT = "Threat - Rebels",
+	BASIC_THREAT_REBELS_DESC = "A group of rebels terrorize local villagers.",
+	
+	BASIC_THREAT_GOBLINS_TEXT = "Threat - Goblins",
+	BASIC_THREAT_GOBLINS_DESC = "A group of wild goblins attacking passing travelers.",
+	
+	BASIC_THREAT_OGRE_TEXT = "Threat - Ogre",
+	BASIC_THREAT_OGRE_DESC = "An angry ogre attacking passing travelers.",
+	
+	BASIC_THREAT_TROLL_TEXT = "Threat - Troll",
+	BASIC_THREAT_TROLL_DESC = "An angry troll attacking passing travelers.",
+	
+	DUNGEON_BANDIT_DEN_TEXT = "bandit_den",
+	DUNGEON_BANDIT_DEN_DESC = "",
+	
+	DUNGEON_BANDIT_FORT_TEXT = "bandit_fort",
+	DUNGEON_BANDIT_FORT_DESC = "",
+	
+	DUNGEON_UNDEAD_CRYPT_TEXT = "crypt",
+	DUNGEON_UNDEAD_CRYPT_DESC = "",
+	
+	DUNGEON_GOBLIN_CAVE_TEXT = "goblin_cave",
+	DUNGEON_GOBLIN_CAVE_DESC = "",
+	
+	DUNGEON_GROVE_TEXT = "grove",
+	DUNGEON_GROVE_DESC = "",
+	
+	DUNGEON_ANCIENT_JUNGLES_TEXT = "ancient_jungles",
+	DUNGEON_ANCIENT_JUNGLES_DESC = "",
+	
+	DUNGEON_FIRE_DEPTHS_TEXT = "fire_depths",
+	DUNGEON_FIRE_DEPTHS_DESC = "",
+	
+	QUEST_CALI_BANDITS_LOCATION_TEXT = "Bandit's Hideout",
+	QUEST_CALI_BANDITS_LOCATION_DESC = "",
+	
+	QUEST_CALI_VILLAGE_TEXT = "Cali's Home Village",
+	QUEST_CALI_VILLAGE_DESC = ".",
+	
+	QUEST_MINES_DUNGEON_TEXT = "Mines",
+	QUEST_MINES_DUNGEON_DESC = "",
+	
+	QUEST_FINAL_OPERATION_LOCATION_TEXT = "Rebels' Hideout",
+	QUEST_FINAL_OPERATION_LOCATION_DESC = "",
+	
+	QUEST_DAISY_ADMIRER_LOCATION_TEXT = "Ramont's Estate",
+	QUEST_DAISY_ADMIRER_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_FOREST_LOCATION_TEXT = "Gryphon Thicket",
+	QUEST_GRYPHON_FOREST_LOCATION_DESC = "",
+	
+	QUEST_GRYPHON_CAVE_LOCATION_TEXT = "Elder Gryphon Lair",
+	QUEST_GRYPHON_CAVE_LOCATION_DESC = "",
+	
+	QUEST_RITUAL_LOCATION_TEXT = "Herbs Field",
+	QUEST_RITUAL_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_DESC = "",
+	
+	QUEST_CALI_CAVE_LOCATION_TEXT = "Small Slavers Cave",
+	QUEST_CALI_CAVE_LOCATION_DESC = "",
+	
+	QUEST_LEON_FOREST_2_TEXT = "Leon's location",
+	QUEST_LEON_FOREST_2_DESC = "",
+	
+	QUEST_WHITE_STAG_LOCATION_TEXT = "White Stag Location",
+	QUEST_WHITE_STAG_LOCATION_DESC = "",
+	
+	QUEST_TEMPLE_LOCATION_TEXT = "Temple",
+	QUEST_TEMPLE_LOCATION_DESC = "",
+	
+	QUEST_ERLEN_LOCATION_TEXT = "Erlens location",
+	QUEST_ERLEN_LOCATION_DESC = "",
+	
+	QUEST_CALI_GOBLINS_LOCATION_TEXT = "Threatened Village",
+	QUEST_CALI_GOBLINS_LOCATION_DESC = "",
+	
+	QUEST_TROLL_CAVE_LOCATION_TEXT = "Troll's Cave",
+	QUEST_TROLL_CAVE_LOCATION_DESC = "",
+	
+	QUEST_DUNGEON_GROVE_TEXT = "grove",
+	QUEST_DUNGEON_GROVE_DESC = "",
+	
+	#eventscrits
+	
+	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
+	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
+	
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
+	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Attack",
+	
+	#fixed_location_options
+	
+	ALIRON1 = "Check the streets",
+	ALIRON2 = "Search for Reim",
+	ALIRON3 = "Visit Fred's Dormitory",
+	ALIRON4 = "Visit Fred's Dormitory",
+	ALIRON5 = "Aliron Church",
+	ALIRON6 = "Aliron Church",
+	ALIRON7 = "Lead the convoy",
+	ALIRON8 = "Visit Jail",
+	ALIRON9 = "Meet princess in jail",
+	ALIRON10 = "Meet princess in jail",
+	ALIRON11 = "Meet Hunter Veteran",
+	ALIRON12 = "Aliron Church",
+	ALIRON13 = "Search for collectioner",
+	ALIRON14 = "William's mansion",
+	ALIRON15 = "William's mansion",
+	ALIRON16 = "Merchant Stalls",
+	ALIRON17 = "Merchant Stalls",
+	ALIRON18 = "Pet Shop",
+	ALIRON19 = "Check the streets",
+	
+	ELF_CAPITAL1 = "Meet Priestess",
+	ELF_CAPITAL2 = "Look For Smuggler",
+	ELF_CAPITAL3 = "Look For Smuggler",
+	ELF_CAPITAL4 = "Look For Smuggler",
+	ELF_CAPITAL5 = "Meet High Priestess",
+	ELF_CAPITAL6 = "Visit Erlen",
+	ELF_CAPITAL7 = "Meet High Priestess",
+	ELF_CAPITAL8 = "Meet High Priestess",
+	ELF_CAPITAL9 = "Search For Lira",
+	ELF_CAPITAL10 = "Find Lira",
+	ELF_CAPITAL11 = "Initiate",
+	
+	BEASTKIN_CAPITAL1 = "Find Chieftain",
+	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
+	BEASTKIN_CAPITAL3 = "Visit Savra",
+	BEASTKIN_CAPITAL4 = "Visit Savra",
+	BEASTKIN_CAPITAL5 = "Begin The Ritual",
+	BEASTKIN_CAPITAL6 = "Visit Leon",
+	BEASTKIN_CAPITAL7 = "Visit Leon",
+	BEASTKIN_CAPITAL8 = "Ask Around",
+	BEASTKIN_CAPITAL9 = "Visit Savra",
+	BEASTKIN_CAPITAL10 = "Visit Savra",
+	BEASTKIN_CAPITAL11 = "Visit Savra",
+	BEASTKIN_CAPITAL12 = "Visit Savra",
+	BEASTKIN_CAPITAL13 = "Check Surroundings",
+	
+	SETTLEMENT_PLAINS1_1 = "Combat",
+	SETTLEMENT_PLAINS1_2 = "Meet Duncan",
+	
+	SETTLEMENT_PLAINS2_1 = "Farmer",
+	SETTLEMENT_PLAINS2_2 = "Farmer",
+	
+	SETTLEMENT_FOREST1_1 = "Check Surroundings",
+	SETTLEMENT_FOREST1_2 = "Check Surroundings",
+	
+	QUEST_FIGHTERS_LICH1 = "Proceed",
+	
+	QUEST_MAGES_XARI1 = "Search for Xari",
+	QUEST_MAGES_XARI2 = "See Xari",
+	QUEST_MAGES_XARI3 = "Enter",
+	QUEST_MAGES_XARI4 = "Find Xari",
+	QUEST_MAGES_XARI5 = "Find Xari",
+	
+	QUEST_MAGES_FRED1 = "Search for Fred",
+	
+	BASIC_THREAT_WOLVES1 = "Proceed",
+	
+	BASIC_THREAT_REBELS1 = "Proceed",
+	
+	BASIC_THREAT_GOBLINS1 = "Proceed",
+	
+	BASIC_THREAT_OGRE1 = "Proceed",
+	
+	BASIC_THREAT_TROLL1 = "Proceed",
+	
+	QUEST_CALI_CAVE_LOCATION1 = "Search Cave",
+	
+	QUEST_CALI_GOBLINS_LOCATION1 = "Search surroundings",
+	
+	QUEST_CALI_VILLAGE1 = "Follow Cali",
+	
+	QUEST_FINAL_OPERATION_LOCATION1 = "Search",
+	QUEST_FINAL_OPERATION_LOCATION2 = "Search",
+	
+	quest_daisy_admirer_location1 = "Approach",
+	
+	quest_gryphon_cave_location1 = "Approach Cave",
+	
+	quest_leon_forest_2_1 = "Search For Leon",
+	
+	quest_white_stag_location1 = "Search For Leon",
+	
+	QUEST_TEMPLE_LOCATION1 = "Approach",
+	QUEST_TEMPLE_LOCATION2 = "Approach",
+	
+	QUEST_ERLEN_LOCATION1 = "Search Around",
+	QUEST_ERLEN_LOCATION2 = "Meet Erlen",
+	QUEST_ERLEN_LOCATION3 = "Meet Erlen",
+	
+	QUEST_TROLL_CAVE_LOCATION1 = "Find troll",
+	
+	
 }
 
 

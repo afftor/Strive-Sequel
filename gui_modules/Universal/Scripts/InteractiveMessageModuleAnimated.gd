@@ -77,9 +77,7 @@ func open(scene):
 #		print_debug("finished WAIT")
 		doing_transition = false
 #	print(self.visible)
-	$CharacterImage.hide()
-	if get_node_or_null("CharacterImage2") != null:
-		$CharacterImage2.hide()
+	clear_character_images()
 	$ImagePanel.hide()
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
@@ -635,7 +633,6 @@ func handle_scene_transition_fx(scene):
 		ResourceScripts.core_animations.WhiteScreenTransition(1)
 		doing_transition = true
 		yield(get_tree().create_timer(1), "timeout")
-#		print("handle transition end")
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		doing_transition = true
@@ -648,7 +645,10 @@ func handle_scene_transition_fx(scene):
 		yield(get_tree().create_timer(0.2), "timeout")
 	emit_signal("TransitionFinished")
 
-
+func clear_character_images():
+	$CharacterImage.hide()
+	if get_node_or_null("CharacterImage2") != null:
+		$CharacterImage2.hide()
 
 func handle_scene_backgrounds(scene):
 	var node = $CustomBackground
@@ -792,6 +792,24 @@ func handle_characters_sprites(scene):
 					$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
 				ch1_shade = false
+				ch1 = person.get_stat("name").to_lower()
+				return
+	if scene.has("unique_character2"):
+		for i in ResourceScripts.game_party.characters: 
+			var person = ResourceScripts.game_party.characters[i]
+			if person.get_stat("name").to_lower() == scene.unique_character2.to_lower():
+				$CharacterImage2.show()
+				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				var image = input_handler.loadimage(images.sprites[non_body], 'shades')
+				if $CharacterImage2.texture != image:
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
+				if images.sprites.has(non_body):
+					$CharacterImage2.texture = image
+				else:
+					$CharacterImage2.texture = person.get_body_image()
+				$CharacterImage2.material.set_shader_param('opacity', 0.0)
+				ch2_shade = false
+				ch2 = person.get_stat("name").to_lower()
 				return
 #	if !scene.has("character"):
 #		$ImagePanel.show()

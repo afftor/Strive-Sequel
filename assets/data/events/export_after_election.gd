@@ -3,7 +3,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		character2 = "myr",
-		tags = ["dialogue_scene", "master_translate",'blackscreen_transition_slow'],
+		tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_slow'],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE1", reqs = []}
 		],
@@ -105,7 +105,7 @@ var data = {
 			{text = "ALIRONELECTIONSFINISH_ANSWER3", reqs = []}
 		],
 		options = [
-			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2}
+			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2, tags = ["blackscreen_transition_slow"]}
 		]
 	},
 	
@@ -117,7 +117,7 @@ var data = {
 			{text = "ALIRONELECTIONSFINISH_ANSWER4", reqs = []}
 		],
 		options = [
-			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2}
+			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2, tags = ["blackscreen_transition_common"]}
 		]
 	},
 	
@@ -129,7 +129,7 @@ var data = {
 			{text = "ALIRONELECTIONSFINISH_ANSWER5", reqs = []}
 		],
 		options = [
-			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2}
+			{code = "act1_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2, tags = ["blackscreen_transition_common"]}
 		]
 	},
 }
