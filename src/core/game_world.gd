@@ -25,19 +25,19 @@ func serialize():
 
 func fix_serialization():
 	update_guilds_data()
-	for area in areas.values():
-		for guild in area.factions.values():
-			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
-				guild.questsetting.total = globals.get_nquest_for_rep(guild.totalreputation)
-				print("questnumber fixed for %s - set to %d" % [guild.name, guild.questsetting.total])
-			if guild.questsetting.total < guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
-#                guild.questsetting.total = guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard
-				guild.questsetting.easy = 1
-				guild.questsetting.medium = 0
-				guild.questsetting.hard = 0
-				print("wrong questnumber for %s - counters resetted" % [guild.name])
-			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
-				print("wrong questnumber for %s - unallocated quests" % [guild.name])
+#	for area in areas.values():
+#		for guild in area.factions.values():
+#			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
+#				guild.questsetting.total = globals.get_nquest_for_rep(guild.totalreputation)
+#				print("questnumber fixed for %s - set to %d" % [guild.name, guild.questsetting.total])
+#			if guild.questsetting.total < guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
+##                guild.questsetting.total = guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard
+#				guild.questsetting.easy = 1
+#				guild.questsetting.medium = 0
+#				guild.questsetting.hard = 0
+#				print("wrong questnumber for %s - counters resetted" % [guild.name])
+#			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
+#				print("wrong questnumber for %s - unallocated quests" % [guild.name])
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
 	if tmp != null and tmp.type != 'dungeon': 
 		tmp.type = 'dungeon'
@@ -159,6 +159,7 @@ func update_guilds(area):
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
 			area.quests.factions[faction].erase(i)
+		ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
 	if int(ResourceScripts.game_globals.date) % variables.guild_slave_update_time == 1 or variables.guild_slave_update_time == 1:
 		for i in area.factions.values():
 			for k in i.slaves:
@@ -168,9 +169,9 @@ func update_guilds(area):
 #			while i.slaves.size() < i.slavenumber:
 #				ResourceScripts.world_gen.make_slave_for_guild(i)
 	
-	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1 or variables.guild_quest_update_time == 1:
-		for faction in area.quests.factions:
-			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
+#	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 1 or variables.guild_quest_update_time == 1:
+#		for faction in area.quests.factions:
+#			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
 
 
 func take_quest(quest, area):
