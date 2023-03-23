@@ -165,6 +165,7 @@ editor_core="*res://editor tools/editor_core.gd"
 gui_controller="*res://src/core/gui_controller.gd"
 Gallery="*res://src/core/gallery.gd"
 rnd_settings="*res://src/randomportraits/settings.gd"
+GeneratorData="*res://Character_generator/generator_data.gd"
 
 [debug]
 
