@@ -2088,7 +2088,18 @@ var quests = {
 			stage1 = {code = 'stage1', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_1"}, # build and visit bath
 			stage2 = {code = 'stage2', name = "ZEPHYRA_BATH_QUEST_NAME", descript = "ZEPHYRA_BATH_QUEST_STAGE_2"}, # visit bath
 		},
-		
+	},
+	
+	goblin_quest = {
+		code = "goblin_quest",
+		summary = "GOBLIN_QUEST_SUMMARY",
+		stages = {
+			stage1 = {code = 'stage1', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_1"}, # go to location
+			stage2 = {code = 'stage2', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_2"}, # search for tracks
+			stage3 = {code = 'stage3', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_3"}, # go to sigmund
+			stage4 = {code = 'stage4', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_4"}, # return to find goblins
+			stage5 = {code = 'stage5', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_5"}, # go to white stag
+		},
 	},
 }
 

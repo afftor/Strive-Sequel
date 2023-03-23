@@ -2458,6 +2458,31 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_goblin_location = {
+		code = 'quest_goblin_location',
+		type = 'encounter',
+		name = tr("QUEST_GOBLIN_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_GOBLIN_LOCATION_DESC"),
+		difficulty = 'easy',
+		background_pool = ['cave_4'],
+		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2.5,4], 
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', 
+		events = [],
+		quest = true,
+		area = 'mountains',
+		travel_time = [1,1],
+		scripteventdata = []
+	},
 	quest_dungeon_grove = {
 		code = 'quest_dungeon_grove',
 		type = 'dungeon',
@@ -2684,6 +2709,14 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'lilia_search_start', args = []}]
 		},
+		{
+			text = tr("ALIRON20"), 
+			reqs = [
+				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_HARA_1'},
+				{type = 'quest_completed', name = 'goblin_quest', check = true}
+			], 
+			args = [{code = 'start_event', data = 'goblin_quest_hara_1', args = []}]
+		},
 	],
 	elf_capital = [
 		{
@@ -2843,6 +2876,12 @@ var fixed_location_options = { #override serialized data
 			text = tr("BEASTKIN_CAPITAL13"), 
 			reqs = [{type = 'decision', value = 'got_excalibur', check = false}], 
 			args = [{code = 'start_event', data = 'excalibur_quest_1', args = []}]
+		},
+		{
+			text = tr("BEASTKIN_CAPITAL14"), 
+			reqs = [{type = "quest_completed", name = "getting_lira_quest", check = true},
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}], 
+			args = [{code = 'start_event', data = 'goblin_quest_1', args = []}]
 		},
 	],
 	settlement_plains1 = [ 
@@ -3090,6 +3129,28 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_TROLL_CAVE_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
 			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
+		},
+	],
+	quest_goblin_location = [
+		{
+			text = tr("QUEST_GOBLIN_LOCATION1"), 
+			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage1', state = true}],
+			args = [{code = 'start_event', data = 'goblin_quest_3', args = []}]
+		},
+		{
+			text = tr("QUEST_GOBLIN_LOCATION2"), 
+			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage2', state = true}],
+			args = [{code = 'start_event', data = 'goblin_quest_track_1', args = []}]
+		},
+		{
+			text = tr("QUEST_GOBLIN_LOCATION3"), 
+			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage4', state = true}],
+			args = [{code = 'start_event', data = 'goblin_quest_8', args = []}]
+		},
+		{
+			text = tr("QUEST_GOBLIN_LOCATION4"), 
+			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage5', state = true}],
+			args = [{code = 'start_event', data = 'goblin_quest_14', args = []}]
 		},
 	],
 }

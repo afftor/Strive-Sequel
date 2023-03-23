@@ -9944,9 +9944,122 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 
 - Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
 	
-	
-	
-	
+	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. So you've received my message and came to us, very responsible of you. In fact I'm only a mediator here, and I've received a sign from spirits who wanted an outsider's help. """,
+	GOBLIN_QUEST_1_OPTION_1 = "Who is it from exactly?",
+	GOBLIN_QUEST_1_OPTION_2 = "What a pain...",
+	GOBLIN_QUEST_2_1 = """- Who knows. You are the one to figure this out once you go there.
+
+Savra explains to you how to get where she wants you to and you add a mark on your map.""",
+	GOBLIN_QUEST_2_2 = """- Oy, don't you dare neglect a spirit call. You do know, spirits are known to bless their benefactors.
+
+Savra explains to you how to get where she wants you to and you add a mark on your map.""",
+	GOBLIN_QUEST_3 = """Once you arrive at the small cliff, you notice that air is different at this spot. Before you are able to take a look around it, a white figure materializes right in front of you, nearly making you jump from surprise.""",
+	GOBLIN_QUEST_4 = """- I knew you'd come, Mortal. Fear not, I'm not planning to fight against you. Not this time. """,
+	GOBLIN_QUEST_4_OPTION_1 = """Y-you've scared me""",
+	GOBLIN_QUEST_4_OPTION_2 = """I wouldn't like us to fight again...""",
+	GOBLIN_QUEST_4_OPTION_3 = """What do you want, spirit?""",
+	GOBLIN_QUEST_5_1 = """- I remember you being more brave than this, mortal. I hope your soul has not been enfeebled, I might take it from you then. 
+
+- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
+	GOBLIN_QUEST_5_2 = """- I mean you no harm, at least not when I wanted you to come, so you can rest assured. 
+
+- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
+	GOBLIN_QUEST_5_3 = """- Hmm, I remember mortals being more formal about their communications. Very well. 
+
+- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
+	GOBLIN_QUEST_5_OPTION_1 = """Why would I do this?""",
+	GOBLIN_QUEST_5_OPTION_2 = """Alright, where do I start then?""",
+	GOBLIN_QUEST_5_OPTION_3 = """I currently don't have time for this.""",
+	GOBLIN_QUEST_6_1 = """- Hmh. How about I won't destroy your furry friends? This is beneficial for you as much as it is for us, I don't believe you want harm done to these woods. Fine, I know mortals rarely even scratch with no reward, I'll give you one once you deal with this.""",
+	GOBLIN_QUEST_6_2 = """- It's not far from here. 
+
+The White Stag shows you direction and disappears as quietly as she appeared in first place. You feel like you're gonna need to spend some time searching for tracks at this place.""",
+	GOBLIN_QUEST_6_3 = """- What a carefree being you are. You know where to find me if you change your mind.""",
+	GOBLIN_QUEST_TRACK_1 = """After a few hours of looking around all you find is some metal scraps from what looks like exquisite trap devices. With no other option left, you pack them up and decide to find someone who can perhaps identify them.""",
+	GOBLIN_QUEST_7_OPTION_1 = """There's something I could use your help with...""",
+	GOBLIN_QUEST_7 = """You show Sigmund the trap remnants that you found asking for his assistance. 
+
+- Yah, dis ain't common stuff ya find anywhere. I neva seen somethin' like dis. It surely be traps and its design be really somethin' innovative, too bad mechanism's broken beyond recognition. Sadly, I know no one who be capable of such craftsmanship...
+
+Sigmund takes a long pause before continuing.
+
+- But one thing stands out, da metal is of very poor quality. I think I've only seen somethin' like dis bein' used by goblins.
+
+You realize that now you have a better clue about what you should be looking for. You decide on the location where you found them once again.""",
+	GOBLIN_QUEST_8 = """You check the spot where you found the broken parts and soon you manage to find a couple of extensively hidden small tracks. After following it for a while you come across a small camp. You notice a few goblins on standby, likely the culprits of poaching the woods and laying the traps.""",
+	GOBLIN_QUEST_8_OPTION_1 = """Approach them""",
+	GOBLIN_QUEST_8_OPTION_2 = """Sneak in""",
+	GOBLIN_QUEST_9_1 = """As you come out to the goblins in full view, they act openly hostile and grab their weapons. It seems there's no choice but to fight them.""",
+	GOBLIN_QUEST_9_2_BAD = """{color=red|Failure}
+
+You try to sneak in closer but you stumble on a tree branch and get discovered. The goblins quickly grab their weapons preparing to attack you.""",
+	GOBLIN_QUEST_9_2_GOOD = """{color=green|Success}
+
+You manage to get close enough to the goblins without being discovered. You jump out at the last moment pointing your weapon, making them stumble in shock. """,
+	GOBLIN_QUEST_10 = """Once you set your dominance, a goblin girl comes out and waves at you. She drastically stand out from the rest and appears to be the boss around here. 
+
+- Hey, big [boy], no need for violence. We only thought these woods were free or we wouldn't be here. No need to point that big fat stick at me.""",
+	GOBLIN_QUEST_10_OPTION_1 = """What are you doing here?""",
+	GOBLIN_QUEST_10_OPTION_2 = """Nothing is ever free""",
+	GOBLIN_QUEST_10_OPTION_3 = """You must leave if you don't want anything worse to happen""",
+	GOBLIN_QUEST_11_1 = """- Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods.
+
+But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_2 = """- Hah, true dat. You aren't here to rob us naked, are you? I take it, we'll leave.
+
+But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_3 = """- Right, right, we need no problems, okay? We'll leave before the sunset.
+
+But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_OPTION_1 = """I'm here on my own actually""",
+	GOBLIN_QUEST_11_OPTION_2 = """The forest spirit is angry at your activities""",
+	GOBLIN_QUEST_11_OPTION_3 = """This is none of your business""",
+	GOBLIN_QUEST_12_1 = """- All alone you say? Must be lonely, ha-ha, I'm kidding. If you don't mind, we'll be on our way then.""",
+	GOBLIN_QUEST_12_2 = """- Huh, you aren't serious?... You are... Okay then, I don't like where this conversation is going, so I'll be going back to dwarven lands. Bye.""",
+	GOBLIN_QUEST_12_3 = """- I see... We'll be on our way then?""",
+	GOBLIN_QUEST_12_OPTION_1 = """You can go now""",
+	GOBLIN_QUEST_12_OPTION_2 = """Actually, why don't you compensate for the harm you've done?""",
+	GOBLIN_QUEST_13 = """- Goddamit... Fine, take what we have left.
+
+After the goblins leave you search their camp for what valuables they have left, obtaining about a thousand worth of gold. """,
+	GOBLIN_QUEST_14_OPTION_0 = """Report back""",
+	GOBLIN_QUEST_14 = """As you give a call, the white stag appears before you in its human form.
+
+- You have completed your task. No wonder, considering your resourcefulness, but I still give you my gratitude. I suppose you deserve some reward for it. Tell me, what do you seek?""",
+	GOBLIN_QUEST_14_OPTION_1 = """Wealth""",
+	GOBLIN_QUEST_14_OPTION_2 = """Power""",
+	GOBLIN_QUEST_14_OPTION_3 = """Pleasure""",
+	GOBLIN_QUEST_15_1 = """- Huh, I never understood mortals' fascination with money but so be it. There's been many fools coming into these forests so I can share some of the possessions they've left. Take their gold and leave.
+
+You look behind, finding a sizable stash of treasures. As you turn around, you realize that white stag is already gone. After getting through it you are able to net 5.000 gold from it.""",
+	GOBLIN_QUEST_15_2 = """- You've helped us and I can take you for an ally. Very well, you can have this ancient weapon which you should find useful in your hunts and battles.
+
+The White Stag has a spear materialized in her hands which she passes to you. Despite its obvious elder age, it feels better than new. Without further continuation, the spirit disappears leaving you alone.""",
+	GOBLIN_QUEST_15_3 = """- ... Did I hear that right? Do you really lust after my body? 
+
+Despite your rather outrageous suggestion, the White Stag does not seem to be turned off by it.""",
+	GOBLIN_QUEST_15_3_OPTION_1 = """Yes, I find you very appealing""",
+	GOBLIN_QUEST_15_3_OPTION_2 = """No, I think I changed my mind""",
+	GOBLIN_QUEST_HARA_1 = """- Hey ya, its you. Knew I would find you here. This might be a bit sudden, but I figured you are a big head over here, and I could use someone like you. This is only a temporary offer which might not happen after some time, but I decided to give you a special treatment. What do you say?""",
+	GOBLIN_QUEST_HARA_1_OPTION_1 = """I surely could use someone of your... talent""",
+	GOBLIN_QUEST_HARA_1_OPTION_2 = """Nah""",
+	GOBLIN_QUEST_HARA_2_1 = """- Great, name's Hara, by the way. I will look forward to the time I'll fit more in place, but at that point I'll not be as easy to get, just so you know.""",
+	GOBLIN_QUEST_HARA_2_2 = """- Too bad. Well, maybe you'll change your mind once I have something else to offer, but mind you, it's not going to be as simple to get me at that time.""",
+	GOBLIN_QUEST_SEX_1 = """The White Stag seems amused by your request, and her expression softens for the first time since you met her. Without warning, she pushes you down, straddling you with her powerful thighs. You marvel at her beauty as she towers above you, her long white hair cascading around her shoulders. It does not take long for her to feel your erection.
+
+- It seems you are already in the mood.
+
+With a swift motion, The White Stag impales herself on your cock, taking you deep inside her. She takes her time, savoring each moment as she moves with a fierce grace. You aren't sure if it's her otherworldly nature or just the surroundings but this feeling is nothing you've ever experienced before.""",
+	GOBLIN_QUEST_SEX_2 = """The White Stag picks up the pace, riding you harder and faster. You can hear the sound of your bodies slapping together, echoing throughout the trees. 
+
+You can't hold back any longer, and you come inside of her, a wave of ecstasy washing over you. The woman on top of you gives out a deep moan in unison as she closes her eyes. 
+
+- Hah... hah... Mortals are still... intriguing...""",
+	GOBLIN_QUEST_SEX_3 = """As you are done, she rises up and gives you a mysterious look. 
+
+- We'll meet another time. Until then...
+
+You aren't able to hear her last words as your exhaustion gets over making you fall asleep on spot. Once you come back to your senses there's no track of her. You decide to move on.""",
 	
 	
 	
@@ -10112,6 +10225,14 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	ZEPHYRA_BATH_QUEST_STAGE_0 = "",
 	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
 	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
+	
+	GOBLIN_QUEST_NAME = "",
+	GOBLIN_QUEST_SUMMARY = "",
+	GOBLIN_QUEST_STAGE_1 = "", # go to location
+	GOBLIN_QUEST_STAGE_2 = "", # search for tracks
+	GOBLIN_QUEST_STAGE_3 = "", # go to sigmund
+	GOBLIN_QUEST_STAGE_4 = "", # return to find goblins
+	GOBLIN_QUEST_STAGE_5 = "", # go to white stag
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- “H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
@@ -11324,6 +11445,9 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	QUEST_DUNGEON_GROVE_TEXT = "grove",
 	QUEST_DUNGEON_GROVE_DESC = "",
 	
+	QUEST_GOBLIN_LOCATION_TEXT = "Disturbed Cliff",
+	QUEST_GOBLIN_LOCATION_DESC = "",
+	
 	#eventscrits
 	
 	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
@@ -11353,6 +11477,7 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	ALIRON17 = "Merchant Stalls",
 	ALIRON18 = "Pet Shop",
 	ALIRON19 = "Check the streets",
+	ALIRON20 = "Search surroundings",
 	
 	ELF_CAPITAL1 = "Meet Priestess",
 	ELF_CAPITAL2 = "Look For Smuggler",
@@ -11379,6 +11504,7 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	BEASTKIN_CAPITAL11 = "Visit Savra",
 	BEASTKIN_CAPITAL12 = "Visit Savra",
 	BEASTKIN_CAPITAL13 = "Check Surroundings",
+	BEASTKIN_CAPITAL14 = "Talk to Savra",
 	
 	SETTLEMENT_PLAINS1_1 = "Combat",
 	SETTLEMENT_PLAINS1_2 = "Meet Duncan",
@@ -11434,6 +11560,10 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 	QUEST_ERLEN_LOCATION3 = "Meet Erlen",
 	
 	QUEST_TROLL_CAVE_LOCATION1 = "Find troll",
+	QUEST_GOBLIN_LOCATION1 = "Search around",
+	QUEST_GOBLIN_LOCATION2 = "Search for tracks",
+	QUEST_GOBLIN_LOCATION3 = "Search for goblin tracks",
+	QUEST_GOBLIN_LOCATION4 = "Report back",
 	
 	
 }
