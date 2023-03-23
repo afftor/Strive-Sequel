@@ -82,6 +82,7 @@ var data = {
 		], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'gryphon_workers_start', text = "GRYPHON_WORKERS_START_OPTION", reqs = [{type = 'active_quest_stage', value = 'gryphon_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'cali_act2_workers_1', text = "CALI_ACT2_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'goblin_quest_7', text = "GOBLIN_QUEST_7_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage3'}], dialogue_argument = 1, type = 'next_dialogue'},
 
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

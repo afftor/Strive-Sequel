@@ -205,6 +205,10 @@ var backgrounds = {
 	zephyra_bath_3 = load("res://assets/images/fullscreen scenes/ZephyraBathCG003.png"), 
 	zephyra_bath_4 = load("res://assets/images/fullscreen scenes/ZephyraBathCG004.png"),
 	
+	stag_sex_1 = load("res://assets/images/fullscreen scenes/StagCG001.png"),
+	stag_sex_2 = load("res://assets/images/fullscreen scenes/StagCG002.png"),
+	stag_sex_3 = load("res://assets/images/fullscreen scenes/StagCG003.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 

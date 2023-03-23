@@ -1522,7 +1522,11 @@ func common_effects(effects):
 				for k in array:
 					ResourceScripts.game_progress.stored_events.timed_events.erase(k)
 			'unique_character_changes':
-				var character = ResourceScripts.game_party.get_unique_slave(i.value)
+				var character
+				if i.value == "master":
+					character = ResourceScripts.game_party.get_master()
+				else:
+					character = ResourceScripts.game_party.get_unique_slave(i.value)
 				if character == null:
 					continue
 				for k in i.args:
@@ -1704,7 +1708,7 @@ func common_effects(effects):
 						args["label"] = "Quest Updated"
 						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
 						args["sound"] = "class_aquired"
-						input_handler.imation("quest", args)
+						input_handler.play_animation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
 					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
