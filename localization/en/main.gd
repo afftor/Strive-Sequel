@@ -3340,7 +3340,7 @@ The trio quickly escape without realizing your bluff, leaving you with their pri
 	FINDFRED_TALK1_IF_GREG2 = "As the bandits leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
 	FINDFRED_ATTACK = """Deciding there's no point in negotiations you prepare to attack the bandits.
-	
+
 {color=aqua|Fat Bandit: — Huh, you think you are so tough? Bring it on!}
 
 {color=yellow|Small Bandit: — Yah, show 'em fatso. }""",
