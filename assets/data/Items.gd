@@ -79,6 +79,7 @@ var Parts = {
 	ArmorEnc = {name = tr("ARMORENC"), code = "ArmorEnc", icon = load("res://assets/images/iconsitems/parts/rod.png")},
 	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem', icon = load("res://assets/images/iconsitems/parts/rod.png")},
 	WeaponEnc = {name = tr("WEAPONENC"), code = "WeaponEnc", icon = load("res://assets/images/iconsitems/parts/rod.png")},
+	ShieldBase = {name = tr("SHIELDBASE"), code = "ShieldBase", icon = load("res://assets/images/iconsitems/parts/head.png")},
 }
 
 
@@ -169,10 +170,10 @@ var partmaterials = {
 		bonedragon = {atk = 24, matk = 16},
 	},
 	ShieldBase = {
-		wood = {evasion = 5, critrate = 3},
-		woodmagic = {evasion = 5, mdef = 5, critrate = 3},
-		woodiron = {evasion = 10, armor = 3, critrate = 5},
-		woodancient = {evasion = 10, mdef = 5, critrate = 7},
+		wood = {evasion = 5, critchance = 3},
+		woodmagic = {evasion = 5, mdef = 5, critchance = 3},
+		woodiron = {evasion = 10, armor = 3, critchance = 5},
+		woodancient = {evasion = 10, mdef = 5, critchance = 7},
 		iron = {armor = 4},
 		steel = {armor = 5},
 		mithril = {armor = 8, mpmaxmod = 0.1},
@@ -1559,6 +1560,25 @@ var itemlist = {
 		tags = ['no_random'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5},
 	},
+	holy_spear = {
+		code = 'holy_spear',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'weapon',
+		geartype = 'spear',
+		crafttype = 'basic',
+		weaponrange = 'melee',
+		slots = ['rhand','lhand'],
+		price = 1000,
+		icon = load("res://assets/images/iconsitems/holy_lance.png"),
+		tier = 'hard',
+		reqs = [],
+		effects = [],
+		tags = ['no_random'],
+		basestats = {atk = 45, hitrate = 25, damage_mod_air = 20, armor = 20},
+	},
+	
 	aire_bow = {
 		code = 'aire_bow',
 		name = '',
@@ -1849,10 +1869,11 @@ var itemlist = {
 		itemtype = 'armor',
 		geartype = 'shield',
 		weaponrange = 'melee',
+		statmod = 0.5,
 		reqs = [{code = 'trait', trait = 'basic_combat', check = true}],
 		parts = {ShieldBase = 12, ArmorTrim = 4},
 		partcolororder = {ShieldBase = 1, ArmorTrim = 2},
-		partmaterialname = "Blade",
+		partmaterialname = "ShieldBase",
 		tags = ['recipe'],
 		slots = ['lhand'],
 		hitsound = 'blade',
@@ -3419,6 +3440,18 @@ var recipes = {
 		resultitemtype = 'item',
 		resultitem = 'dagger',
 		workunits = 2,
+		worktype = 'smith'
+	},
+	shield = {
+		code = 'shield',
+		materials = {},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'modular',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'shield',
+		workunits = 4,
 		worktype = 'smith'
 	},
 	sword = {

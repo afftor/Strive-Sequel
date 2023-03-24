@@ -293,6 +293,7 @@ var TranslationDict = {
 	ITEMFISHINGTOOLS = "Fishing Tools",
 	ITEMHAMMER = "Forge Hammer",
 	ITEMHUNT_KNIFE = "Hunting Knife",
+	ITEMSHIELD = "Shield",
 
 
 	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
@@ -399,6 +400,7 @@ var TranslationDict = {
 	TOOLCLOTHWORK = "Clothwork",
 	ROD = 'Knub',
 	BOWBASE = 'Bow Limb',
+	SHIELDBASE = "Base",
 	ARMORBASE = 'Base',
 	ARMORPLATE = 'Plate',
 	ARMORTRIM = 'Trim',
@@ -5675,6 +5677,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	
 	ITEMHOLY_SWORD = "Sword from the stone",
 	ITEMHOLY_SWORDDESCRIPT = "A holy sword obtained from the stone. Required titanic strength to obtain.",
+	ITEMHOLY_SPEAR = "Vel",
+	ITEMHOLY_SPEARDESCRIPT = "A divine spear imbued with an element of wind. Received from a forest spirit.",
 	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 
@@ -10226,13 +10230,13 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
 	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
 	
-	GOBLIN_QUEST_NAME = "",
-	GOBLIN_QUEST_SUMMARY = "",
-	GOBLIN_QUEST_STAGE_1 = "", # go to location
-	GOBLIN_QUEST_STAGE_2 = "", # search for tracks
-	GOBLIN_QUEST_STAGE_3 = "", # go to sigmund
-	GOBLIN_QUEST_STAGE_4 = "", # return to find goblins
-	GOBLIN_QUEST_STAGE_5 = "", # go to white stag
+	GOBLIN_QUEST_NAME = "Greens in the woods",
+	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
+	GOBLIN_QUEST_STAGE_1 = "Travel to Desolated Woods",
+	GOBLIN_QUEST_STAGE_2 = "Search for the culprits at Desolated Woods",
+	GOBLIN_QUEST_STAGE_3 = "Ask guild leaders for the clues for traps",
+	GOBLIN_QUEST_STAGE_4 = "Search for the culprits at Desolated Woods one more time",
+	GOBLIN_QUEST_STAGE_5 = "Return to The White Stag for your reward", 
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- “H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
@@ -11397,6 +11401,9 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	QUEST_CALI_BANDITS_LOCATION_TEXT = "Bandit's Hideout",
 	QUEST_CALI_BANDITS_LOCATION_DESC = "",
 	
+	QUEST_GOBLIN_LOCATION_TEXT = "Desolated Woods",
+	QUEST_GOBLIN_LOCATION_DESC = "",
+	
 	QUEST_CALI_VILLAGE_TEXT = "Cali's Home Village",
 	QUEST_CALI_VILLAGE_DESC = ".",
 	
@@ -11445,8 +11452,6 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	QUEST_DUNGEON_GROVE_TEXT = "grove",
 	QUEST_DUNGEON_GROVE_DESC = "",
 	
-	QUEST_GOBLIN_LOCATION_TEXT = "Disturbed Cliff",
-	QUEST_GOBLIN_LOCATION_DESC = "",
 	
 	#eventscrits
 	
