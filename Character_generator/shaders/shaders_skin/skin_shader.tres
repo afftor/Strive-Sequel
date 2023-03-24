@@ -182,5 +182,5 @@ shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
 shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
 shader_param/part1color = Color( 0.654902, 0.380392, 0.266667, 1 )
 shader_param/part2color = Color( 0.254902, 0.305882, 0.168627, 1 )
-shader_param/part3color = Color( 0.713726, 0.247059, 0.247059, 1 )
+shader_param/part3color = Color( 0.603922, 0.741176, 0.615686, 1 )
 shader_param/overlay = 0.999
