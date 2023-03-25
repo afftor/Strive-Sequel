@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_unactive.png" type="Texture" id=27]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_30px.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=29]
+[ext_resource path="res://src/scenes/CloseButton.tscn" type="PackedScene" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 15 )
@@ -302,7 +303,6 @@ margin_bottom = 289.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-text = "Description"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -319,7 +319,6 @@ custom_fonts/bold_font = ExtResource( 28 )
 custom_fonts/normal_font = ExtResource( 28 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-text = "Name quest"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -485,9 +484,14 @@ texture = ExtResource( 17 )
 
 [node name="NoQuests" type="Label" parent="."]
 visible = false
-margin_left = 125.842
-margin_top = 16.6555
-margin_right = 546.842
-margin_bottom = 58.6555
+margin_left = 126.0
+margin_top = 799.0
+margin_right = 1043.0
+margin_bottom = 841.0
 custom_fonts/font = ExtResource( 13 )
 text = "There are no quests available"
+
+[node name="CloseButton" parent="." instance=ExtResource( 30 )]
+margin_left = 1518.0
+margin_right = 1548.0
+toggle_mode = true
