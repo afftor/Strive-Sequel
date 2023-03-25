@@ -746,7 +746,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
-				{code = 'make_story_character', value = 'Heleviel'},
+				{code = 'make_story_character', value = 'Hara'},
 			]
 		)
 
@@ -874,7 +874,7 @@ func test_mode():
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-#		input_handler.interactive_message('generic_lose_scene', '', {})
+		#input_handler.interactive_message('goblin_quest_8', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

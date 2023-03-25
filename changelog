@@ -1,3 +1,7 @@
+0.6.9
+Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
+Added new minor quest and recruitable character
+Added shield item into the game
 0.6.8c
 Fixed a critical issue with scene clearing on leaving to main menu
 Fixed some more bugs related to events
