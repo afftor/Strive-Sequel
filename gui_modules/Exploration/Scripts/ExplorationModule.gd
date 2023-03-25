@@ -1488,9 +1488,9 @@ func faction_upgrade(pressed, pressed_button, guild):
 			continue
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
-			"Price: "
+			"Cost: "
 			+ str(i.cost[currentupgradelevel])
-			+ " faction points."
+			+ " points"
 		)
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
@@ -2080,7 +2080,6 @@ func change_texture(button, state):
 			)
 		"out":
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
-
 
 
 func location_purchase(pressed, pressed_button):

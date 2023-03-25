@@ -2094,6 +2094,7 @@ var quests = {
 		code = "goblin_quest",
 		summary = "GOBLIN_QUEST_SUMMARY",
 		stages = {
+			stage0 = {code = 'stage0', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_0"}, # talk to savra
 			stage1 = {code = 'stage1', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_1"}, # go to location
 			stage2 = {code = 'stage2', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_2"}, # search for tracks
 			stage3 = {code = 'stage3', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_3"}, # go to sigmund

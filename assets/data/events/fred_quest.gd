@@ -9,8 +9,8 @@ var data = {
 			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
 				bonus_effects = [
 					{code = 'progress_quest', value = 'civil_war_start', stage = 'stage3'},
-					{code = 'make_quest_location', value = 'quest_mages_fred'},
 					{code = 'update_city'},
+					{code = 'make_quest_location', value = 'quest_mages_fred'},
 					]},
 
 			]

@@ -368,7 +368,9 @@ var TranslationDict = {
 	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
 	TOOLWORKCATEGORY = "Tool",
-
+	
+	QUESTCOMPLETETASK = "Complete one time task",
+	
 	#stat tooltips
 	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
 	TOOLTIPARMOR = "Reduces skill damage taken by this percent",
@@ -3344,7 +3346,7 @@ The trio quickly escape without realizing your bluff, leaving you with their pri
 	FINDFRED_TALK1_IF_GREG2 = "As the bandits leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
 	FINDFRED_ATTACK = """Deciding there's no point in negotiations you prepare to attack the bandits.
-	
+
 {color=aqua|Fat Bandit: — Huh, you think you are so tough? Bring it on!}
 
 {color=yellow|Small Bandit: — Yah, show 'em fatso. }""",
@@ -8973,134 +8975,135 @@ Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing 
 
 After a few minutes you notice the small female is asleep, lying there as she would still occasionally shudder. Noting that keeping her warm might be in her best interest, you lay her down next to you as you decide to let her sleep with you tonight.""",
 	
-	CALI_ACT1_1 = """Visiting your captive, Cali you stand there in silence, the girl looking up at you with a tired rage behind her eyes now.
+	CALI_ACT1_1 = """You visit your captive, Cali. As you stand in silence, the girl looks up at you with a tired rage behind her eyes.
 
 - W-what do you want now!?... Haven't you done enough?! Let me go!
 
-Staring her down you take a good look at her. Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
+Staring her down, you take a good look at her. Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
 
 - You think I'll work for you? After what you've done?""",
 	CALI_ACT1_1_OPTION_1 = "Whomever does not work shall not eat.",
-	CALI_ACT1_1_OPTION_2 = "Surely you don't want to be sold to the slavers? Your new Master's will be far less kind.",
-	CALI_ACT1_1_OPTION_3 = "Perhaps you need another reminder like the one at caves?",
-	CALI_ACT1_2_1 = """Cali looks at you with her ears lowered as she averts her gaze. Her eyes look around the building now, taking in everything as she seems to submit for now. 
+	CALI_ACT1_1_OPTION_2 = "Surely you don't want to be sold to the slavers? Your new Masters will be far less kind.",
+	CALI_ACT1_1_OPTION_3 = "Perhaps you need another reminder like the one at the caves?",
+	CALI_ACT1_2_1 = """Cali looks at you with her ears lowered as she averts her gaze. Her eyes look around the building, taking in everything as she seems to submit for now. 
 
 - Whatever, fine...""",
-	CALI_ACT1_2_2 = """Cali's eyes turn cold as she seems to look through you. Nodding after you finish telling her, she says nothing for the remainder of the day as her new duties begin.""",
-	CALI_ACT1_2_3 = """The girl lunges at you as you catch her by the throat, pinning her back firmly to the wall of the room. Tears pour from the girl's eyes as she looks at you with fury, her arms flailing at you in rage.
+	CALI_ACT1_2_2 = """Cali's eyes turn cold as she seems to look through you. She nods after you finish talking to her, saying nothing for the remainder of the day while she learns her duties.""",
+	CALI_ACT1_2_3 = """The girl lunges forward as you catch her by the throat, her back now pinned firmly to the wall of the room. Tears pour from the girl's eyes as she looks at you with fury, her arms flailing at you in rage.
 
 - You fucking bastard! I'm not your whore!""",
 	CALI_ACT1_2_3_OPTION_1 = """You can certainly be treated like one, or you can work.""",
 	CALI_ACT1_2_3_OPTION_2 = """Serve with your labor, or serve with your body, Cali.""",
 	CALI_ACT1_3 = """The girl's eyes well with tears as she nods. For now she doesn't fight you as she's put to her new duties.""",
 	
-	CALI_ACT2_GONE = """You awake one morning to find your manor's back door open. Your confusion is short-lived as you go down to check on Cali, finding her room empty. Finding the door's lock picked, you curse aloud as it seems in her desperation she was able to escape.""",
-	CALI_ACT2_1 = """You're going through your daily tasks as you check on your mansion. Checking on Cali's work now, her task is an arduous one. The girl is sweating profusely, her white shirt all but see-through now, the view of her breasts quite nice considering.
+	CALI_ACT2_GONE = """You awake one morning to find your manor's back door open. Your confusion is short-lived as you go down to check on Cali, finding her room empty. Finding the door's lock picked, you curse aloud as it seems, in her desperation, she was able to escape.""",
+	CALI_ACT2_1 = """As you complete your daily errands throughout your mansion you spot Cali, performing the arduous task you assigned her. Stopping to check on her work, you find her sweating profusely in exertion. Her white shirt has become damp and is all but see-through. You consider her a moment, and the nice view of her breasts.
 
-The girl seeing you looks far from pleased, her eyes unfocusing as she can't even seem to look at you.
+The girl looks far from pleased upon your approach. Her tired eyes are unfocused, she can’t even seem to look directly at you.
 
-- What are you looking at, huh?! Did you not see enough already?!""",
+- What are you staring at, huh?! Haven’t you seen enough already?!""",
 	CALI_ACT2_1_OPTION_1 = "I look where I please, slave.",
-	CALI_ACT2_1_OPTION_2 = "Keep up the hostility, Cali, it'll make it all the sweeter when I take you again.",
+	CALI_ACT2_1_OPTION_2 = "Keep up the hostility Cali, it'll make it all the sweeter when I take you again.",
 	CALI_ACT2_1_OPTION_3 = "I simply enjoy the view.",
-	CALI_ACT2_2_1 = """Cali growls at you now, her eyes showing a hatred that was rare to find.
+	CALI_ACT2_2_1 = """Cali growls at you, her eyes burning with revitalized hatred.
 
 - You bastard! I'm not some dog on a leash!
 
-As you leave her be for now, you can't help but muse at the thought “dog on a leash.”""",
-	CALI_ACT2_2_2 = """The girl turns her nose up at you defiantly instead focusing on her work now.
+As you leave her be, you can't help but muse at the phrase, "dog on a leash.""",
+	CALI_ACT2_2_2 = """The girl turns her nose up at you defiantly instead of focusing on her work.
 
 - I'm not some mindless pet, asshole!
 
-You leave her to her work, thinking intently about making her into that very pet that she seemed so scared to become.""",
-	CALI_ACT2_2_3 = """Cali wasn't expecting that reply as her face turned blood red. Trying to hide it by getting back the girl was only partially successful.
+You leave her to her work, thinking intently about how to make her into that very pet.""",
+	CALI_ACT2_2_3 = """Cali's face turns blood red at that reply. She tries to hide it by turning away but you've already seen enough.
 
 You decide to leave her alone for now. Perhaps something could make her more pliable to your will?""",
-	CALI_ACT2_3 = """Your thoughts have been increasingly focused on taming your new slave, Cali. Cali has been difficult, the girl intent on refusing you. After careful deliberation you come to the conclusion that just calling her your property is one thing, but she should look the part as well.
+	CALI_ACT2_3 = """Your thoughts have been increasingly focused on taming your new slave, Cali. Cali has been difficult, the girl is intent on refusing you. After careful deliberation, you come to the conclusion that just calling her your property isn't enough. She should look the part.
 
-A collar seems the most logical first step but a regular collar seems insufficient. You decide it might be a better idea to head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
+A collar is the most logical first step, but a regular collar would be insufficient. You decide it might be a good idea to head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
 	CALI_ACT2_WORKERS_OPTION_1 = "Ask Sigmund about a specialist",
-	CALI_ACT2_WORKERS_1 = """{color=yellow|Sigmund: — Wha? Someone to make a collar? Are the ones at the market not good enough?}
+	CALI_ACT2_WORKERS_1 = """Sigmund:- Wha? Someone to make a collar? Are the ones at the market not good enough?
 
-You explain to the dwarf that the ones in the market are indeed fine, but what you're looking for is a custom piece. The burly male thinks for a few moments while scratching his beard before nodding.
+You explain to the dwarf that those are indeed fine, but what you're looking for is a custom piece. The burly male thinks for a few moments while scratching his beard before nodding.
 
-{color=yellow|Sigmund: — Limnrov is who you'd want to find. Ask up at the front for him, the receptionist can take you to 'em.}
+Sigmund:- Limnrov is who you'd want to find. Ask up at the front, the receptionist can take you to ‘em.
 
 With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
-	CALI_ACT2_WORKERS_2 = """Once you bring up the name of the craftsman with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Limnrov himself, is an older Dark Elf, his eyes sharp as he looks up at you from the excellent piece he's currently working on.
+	CALI_ACT2_WORKERS_2 = """Once you bring up the name with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Meeting Limnrov, you see he is an older Dark Elf. His sharp eyes look up at you from the excellent piece he’s currently working on.
 
-{color=aqua|Limnrov: — I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.}""",
+Limnrov: — I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.""",
 	CALI_ACT2_WORKERS_2_OPTION_1 = "I'm not a courier, I'm a customer.",
 	CALI_ACT2_WORKERS_2_OPTION_2 = "I'm here to hire you for your services.",
-	CALI_ACT2_WORKERS_3 = """The Dark Elf looks you up and down for a few more moments before giving a nod.
+	CALI_ACT2_WORKERS_3 = """The Dark Elf looks you up and down for a few moments before giving a nod.
 
-{color=aqua|Limnrov: — Ah, my mistake. What can I do for you?}
+Limnrov: — Ah, my mistake. What can I do for you?
 
-You explain to Limnrov your desire to commission a custom piece for a recently acquired slave. After asking you details he will need, the elf gives a stoic nod before looking at you. Two sketches are then laid out before you.
+You explain to Limnrov your desire to commission a custom piece for a recently acquired slave. After you give him the required details, the elf gives a stoic nod before scribbling something on a piece of paper. He then hands you two sketches.
 
-{color=aqua|Limnrov: — I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.}""",
+Limnrov:- I've two designs I might suggest. The former is your standard affair, however, the engravings on the outside would leave no question as to who the Master of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
 	CALI_ACT2_WORKERS_3_OPTION_1 = "What will you need to produce the simple collar?",
 	CALI_ACT2_WORKERS_3_OPTION_2 = "What will you need to produce the extravagant collar?",
 	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this",
-	CALI_ACT2_WORKERS_4_1 = """Limrov starts to jot down a list of items that he will need you to procure before handing it over to you: 10 Thick Leather""",
-	CALI_ACT2_WORKERS_4_2 = """Limrov starts to jot down a list of items that he will need you to procure before handing it over to you: 10 Thick Leather, 10 Silk""",
-#	CALI_ACT2_WORKERS_4_2 = """Limrov looks rather excited as he produces a list of items, most notable of all being a large gem and hands it over to you.""",
+	CALI_ACT2_WORKERS_4_1 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather""",
+	CALI_ACT2_WORKERS_4_2 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather, 10 Silk""",
+#	CALI_ACT2_WORKERS_4_2 = """Limnrov looks rather excited as he produces a list of items, most notable of all being a large gem, and hands it over to you.""",
 	CALI_ACT2_WORKERS_4_1_OPTION_1 = "Here are the materials for the Simple collar",
 	CALI_ACT2_WORKERS_4_2_OPTION_1 = "Here are the materials for the Extravagant collar",
-	CALI_ACT2_WORKERS_4_3 = """{color=aqua|Limnrov: — Very well, I'll be here.}
+	CALI_ACT2_WORKERS_4_3 = """Limnrov:- Very well, I'll be here.
 
 Limnrov accompanies you to the entrance of the Guild.""",
-	CALI_ACT2_WORKERS_5_1 = """Limrov looks the materials and payment over intently before nodding. 
+	CALI_ACT2_WORKERS_5_1 = """Limnrov looks the materials and payment over intently, before nodding. 
 
-{color=aqua|Limnrov: — Ah yes, this will do. Give me a few days and I'll have it delivered by courier.}""",
-	CALI_ACT2_WORKERS_5_2 = """Limnrov is intent as he checks over every detail of the materials. Eventually satisfied, the man takes the coin and components needed before looking at you with a grin. 
+Limnrov: — Ah yes, this will do. Give me a few days and I'll have it delivered by courier.""",
+	CALI_ACT2_WORKERS_5_2 = """Limnrov intently checks over every detail of the materials. Eventually satisfied, the man takes the coin and components needed before looking at you with a grin. 
 
-{color=aqua|Limnrov: — Excellent, most excellent. Very well, I'll make sure your slave has a collar all others will pale compared to. Give me a few days and I'll have a courier deliver it.}""",
-	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the simple collar. Though its design lacks much ornamentation the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
-#	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror and gleams back to you.""",
-	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier is at your home early in the morning on the appointed day. Looking over the package you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details flawless, each detail applied with fine care.""",
-	CALI_ACT2_LIMNROV = """{color=aqua|Limnrov: — I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to the Master of your slave. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.}""",
-	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+Limnrov: — Excellent, most excellent. Very well, I'll make sure your slave has a collar all others will feel pale in comparison to. Give me a few days and I'll have a courier deliver it.""",
+	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the simple collar. Though its design lacks much ornamentation, the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
+#	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror-like reflection and gleams back at you.""",
+	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care.""",
+	CALI_ACT2_LIMNROV = """Limnrov:- I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to who the Master of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
 
-You pull the simple collar out, showing it to the girl. Cali's eyes initially show hints of fear, then denial as the girl shakes her head now vigorously, moving away from you now. 
+You pull the simple collar out, showing it to the girl. Cali's eyes initially show hints of fear, then denial as the girl shakes her head vigorously, moving away from you. 
 
 - Are you serious? Y-you want me to wear this!?""",
 	CALI_ACT2_SIMPLE_COLLAR_1_OPTION_1 = "There's nothing to fear, Cali, it's a common sign of ownership.",
 	CALI_ACT2_SIMPLE_COLLAR_1_OPTION_2 = "I'm not asking, slave. Now do as you're told before I need to get creative.",
-	CALI_ACT2_SIMPLE_COLLAR_2_1 = """Cali sits there frozen for a moment before taking a long, steadying breath. Her posture relaxes somewhat and she doesn't fight you as you put the collar on her. After a few moments, your hand rests on the top of her head as she shudders uncomfortably.
+	CALI_ACT2_SIMPLE_COLLAR_2_1 = """Cali sits there frozen for a moment. She takes a long, steadying breath then relaxes her posture somewhat. She doesn't fight you as you put the collar on her. After a few moments, you rest your hand on top of her head. She shudders uncomfortably in response.
 
 - You think I'm some kind of a pet!?""",
 	CALI_ACT2_SIMPLE_COLLAR_2_1_OPTION_1 = "Pets are looked after, are they not?",
 	CALI_ACT2_SIMPLE_COLLAR_2_1_OPTION_2 = "Pet or slave, which one sounds better?",
 	CALI_ACT2_SIMPLE_COLLAR_3 = """Cali fails to find a proper response and stays quiet. Finally you dismiss the girl for the day and carry on with your work.""",
-	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali shudders as fresh tears hit the floor. The girl's posture seems to relax, her eyes staring ahead as she shakes now. The girl doesn't fight you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
+	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali trembles as fresh tears hit the floor. The girl's posture seems to relax, her eyes staring ahead as she lightly shakes. The girl doesn't resist you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
 
-Once the collar is around her neck, Cali looks at you, her face blank but her body shaking. Eventually you dismiss the girl so you can carry on with your work.""",
-	CALI_ACT2_EXQUISITE_COLLAR_1_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+Once the collar is around her neck, Cali looks at you, her face blank but her body quivering. Eventually you dismiss the girl so you can carry on with your work.""",
+	CALI_ACT2_EXQUISITE_COLLAR_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
 
-When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes tracking the item as she looked it over. 
+When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes lock onto the item as she looks it over. 
 
-- It's pretty...""",
-	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
+- It's pretty...
 
-- This is for me..? I don't dislike it, but you really think this is enough after what you've done...
+You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
 
-As you place the collar around Cali's neck, the girl's hand instinctively rests upon the jewel for a moment. Though she doesn't run, her body still goes rigid as you rest your hand atop of her head.""",
-	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "Here there are no bandits. No one to lay a hand on you, save me.",
+- …Well at least it’s comfortable. But don’t think this changes anything! Especially after what you’ve done…
+
+The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn’t move away .""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "There are no bandits here. No one’s going to lay a hand on you. Save for me.",
 	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_2 = "You're far better off than when I found you.",
 	CALI_ACT2_EXQUISITE_COLLAR_2 = """Cali opens her mouth as if to argue against what you've said but stops. She eventually concedes the point with a soft shrug. With that settled you dismiss the girl for the day, leaving her to her duties.""",
 	
-	CALI_ACT3_MAGIC_1 = """Your slave, Cali, has relented and no longer fights your orders. You can't help but feel the girl and you are at an impasse. Cali remains unbroken through it all, willful as ever.
+	CALI_ACT3_MAGIC_1 = """Your slave, Cali, has relented and no longer fights your orders.  However, Cali remains unbroken and willful as ever. You can't help but feel the girl and you are at an impasse.
 
-One morning Cali approaches you now, clearly tired. 
+One morning Cali approaches you, clearly tired. 
 
 - [name], I was wondering if I could have a break today.
 
-The girl does look worn out. Clearly life working at the mansion is more strenuous than she is used to. After considering it for a moment you decide that you could let her take a break for today, but now seems like a good time to have her loosen up a bit for you in exchange.""",
+The girl does look worn out. Clearly life working at the mansion is more strenuous than she is used to. After considering it for a moment, you decide that you could let her take a break for today, but now also seems like a good time to have her loosen up a bit.""",
 	CALI_ACT3_MAGIC_1_OPTION_1 = "Sure, but I want you to lift up your shirt in exchange.",
 	CALI_ACT3_MAGIC_1_OPTION_2 = "Maybe if you let me feel you up.",
 	CALI_ACT3_MAGIC_1_OPTION_3 = "Very well, just for today.",
@@ -9108,206 +9111,204 @@ The girl does look worn out. Clearly life working at the mansion is more strenuo
 
 - You really are a fucking pervert! 
 
-Before you can respond, the girl leaves half-slamming the door as she gets to work. Clearly deciding that would be a better alternative than giving into your base needs.""",
+Before you can respond, the girl leaves half-slamming the door as she gets to work, clearly deciding that would be a better alternative than giving into your base needs.""",
 	CALI_ACT3_MAGIC_2_3 = """Cali looks relieved at you before nodding.
 
-{color=yellow|Cali: Ok then, um... thank you.}""",
-	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders. You could force the girl into bed. It wouldn't be hard, but seems far less satisfying. You eventually decide there must be something you can do to sway her. You think about the dominators you've heard of mages who can influence the mind of others. Perhaps a mage might be able to assist you in this endeavor.""",
-	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders. You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise. Knowing magics are wide and varied though you decide to ask another mage. Perhaps they have some knowledge you're lacking.""",
+Cali: Ok then, um... thank you.""",
+	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders. You could force the girl into bed. It wouldn't be hard, but seems far less satisfying. You eventually decide there must be something you can do to sway her. You think about the dominators. You've heard of mages who can influence the mind of others. Perhaps a mage might be able to assist you in this endeavor.""",
+	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders. You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise. However, since magic has a wide and varied range of uses, you decide to ask another mage. Perhaps they have some knowledge you're lacking.""",
 	CALI_ACT3_JEAN_START_OPTION = "Approach Jean about the issue",
-	CALI_ACT3_JEAN_1 = """Talking to Jean, you explain the issue in depth to her. The girl's nose scrunching up as if she's going to tell you to do something impolite with your issue, before instead realizing who she works for.
+	CALI_ACT3_JEAN_1 = """Talking to Jean, you explain the issue in depth to her. The girl's nose scrunches up as if she's going to tell you to do something impolite with your issue, before realizing who she works for.
 
-Jean goes to respond to you multiple times before finally asking you a question
+Jean seems to carefully collect her thoughts before finally asking you a question
 
-{color=aqua|Jean: — Why not get another one then? It's not like she's anything special, just a half-wolf.}""",
+Jean:- Why not get another one then? It's not like she's anything special, just a half-wolf.""",
 	CALI_ACT3_JEAN_1_OPTION_1 = "I've grown rather fond of her.",
 	CALI_ACT3_JEAN_1_OPTION_2 = "I'm rather enjoying the challenge.",
-	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up before shaking her head.
+	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up then shakes her head,  giving you a partial look of disgust before her face quickly recovers its professionalism. Obviously she was about to say something, but decided it's better Cali than her.
 
-Jean gives you a partial look of disgust. Obviously she was about to say something before she decides it's better Cali, than her.
+The girl thinks about your answer for a moment before finally giving you a response. 
 
-The girl considers your answer for a moment before finally giving you an answer. 
+Jean:- Why don't you just have the beast's collar enchanted?
 
-{color=aqua|Jean: — Why don't you just have the beast's collar enchanted?}
+You stop for a moment to ponder the question. True, you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean, while watching you, finally huffs out a sigh.
 
-You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean watching you finally huffs out a sigh, looking at you.
-
-{color=aqua|Jean: — You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.}""",
+Jean:- You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
 	CALI_ACT3_JEAN_2_2 = """Jean sighs, then gives you a knowing nod.
 
-{color=aqua|Jean: — Of course you'd say that. Pervert.}
+Jean: — Of course you'd say that. Pervert.
 
-The girl considers your answer for a moment before finally giving you an answer. 
+The girl thinks about your answer for a moment before finally giving you a response. 
 
-{color=aqua|Jean: — Why don't you just have the beast's collar enchanted?}
+Jean:- Why don't you just have the beast's collar enchanted?
 
-You stop for a moment considering that. True you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean watching you finally huffs out a sigh, looking at you.	
+You stop for a moment to ponder the question. True, you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean, while watching you, finally huffs out a sigh.
 
-{color=aqua|Jean: — You're hopeless, [name]. You could ask Mages Guild for help, you know... I guess I could do something like that, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.}""",
-	CALI_ACT3_JEAN_3 = """You get to the spot which was marked by Jean and find a dimly glowing water spring. You scoop some water from it which should be enough to provide Jean with what she needs.""",
+Jean:- You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+	CALI_ACT3_JEAN_3 = """You get to the spot which was marked by Jean and find a dimly glowing water spring. You scoop enough water from it to provide Jean with what she needs.""",
 	CALI_ACT3_JEAN_3_OPTION_1 = "Give Rare Magical Essence",
-	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent(s) required, Jean gets to work. After you retrieve Cali's collar under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
+	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent(s) required, Jean gets to work. After you retrieve Cali's collar, under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
 
-{color=aqua|Jean: — There, done. Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...}""",
-	CALI_ACT3_JEAN_5 = """Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again.""",
+Jean: — There, done. Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...""",
+	CALI_ACT3_JEAN_5 = """Taking the collar back to Cali, the girl gives no complaint as you clasp it back on her once again.""",
 	CALI_ACT3_MAGES_OPTION_INIT = "Ask about mind altering spells",
-	CALI_ACT3_MAGES_1 = """Myr isn't available for your request today it seems. After inquiring around the guild you eventually find an apprentice wearing a bored expression on his face to make your inquiry to.
+	CALI_ACT3_MAGES_1 = """It seems Myr isn't available for your request today. After inquiring around the guild you eventually find an apprentice wearing a bored expression on his face to make your inquiry to.
 
-{color=aqua|Apprentice: — Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we could help with that. Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.}""",
+Apprentice: — Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we can help with that. Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.""",
 	CALI_ACT3_MAGES_1_OPTION_1 = "I'm sure I can afford it.",
 	CALI_ACT3_MAGES_1_OPTION_2 = "What's the rate?",
 	CALI_ACT3_MAGES_2 = """The young mage pulls out a large chart, looking it over before telling you the service will be 500 gold.""",
 	CALI_ACT3_MAGES_2_OPTION_1 = "Fine, if I've no other choice (500 Gold)",
 	CALI_ACT3_MAGES_2_OPTION_2 = "Is there any way to earn a discount?",
 	CALI_ACT3_MAGES_2_OPTION_3 = "I'll come back later.",
-	CALI_ACT3_MAGES_3_1 = """After you retrieve Cali's collar under the guise of the article needing to be cleaned, the apprentice makes quick work of applying the enchantment to it all while taking a heavy amount of your coin.
+	CALI_ACT3_MAGES_3_1 = """After you retrieve Cali's collar, under the guise of the article needing to be cleaned, the apprentice makes quick work of applying the enchantment to it all while taking a heavy amount of your coin.
 
-{color=aqua|Apprentice: — Good it's done. Do know this won't make her blindly obedient, only more willing to do what you ask...}
+Apprentice: — Good it's done. Do know this won't make her blindly obedient, only more willing to do what you ask...
 
-Taking the collar back to Cali, the girl gives no complaint as you put her collar back on her once again""",
+Taking the collar back to Cali, the girl gives no complaint as you clasp it back on her once again""",
 	CALI_ACT3_MAGES_3_2 = """The young mage shakes his head.
 
-{color=aqua|Apprentice: — Absolutely not, Guildmaster Myr would have my head!}""",
-	CALI_ACT3_MAGES_3_3 = """{color=aqua|Apprentice: — Very well, I'll be here when you return.}""",
-	CALI_ACT3_MAGES_4 = """{color=aqua|Apprentice: Welcome back, you have the fee I trust?}""",
+Apprentice: — Absolutely not, Guildmaster Myr would have my head!""",
+	CALI_ACT3_MAGES_3_3 = """Apprentice: — Very well, I'll be here when you return.""",
+	CALI_ACT3_MAGES_4 = """Apprentice: Welcome back, you have the fee I trust?""",
 	CALI_ACT3_BLOW_OPTION_INIT = "Talk to Cali",
-	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance. Unbeknownst to her the enchantment seems to be doing it's job quite well, the girl's resolve slowly weakening.
+	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance. Unbeknownst to her, the enchantment seems to be doing it's job quite well, the girl's resolve slowly weakening.
 
 Eventually, you confront the girl about her peeking upon you, only for her face to turn a dark shade of red.
 
 - What? No! I wasn't staring at you. I just don't like having you in the same room as me.
 
-You say nothing for now, just letting the girl talk. Your eyes locked on her as she continued to blush, her frustration evident.
+You say nothing for now, just letting the girl talk. Your eyes lock onto her as she continues to blush, her frustration evident.
 
 - I'm on a break right now! What do you even want from me?!""",
-	CALI_ACT3_BLOW_2 = """Cali looks nervously at you after your confrontation, moving a bit too eagerly as you motion her to get to the floor. Each step seems conflicted, but needy as the girl is down on her knees in front of you.
+	CALI_ACT3_BLOW_2 = """Cali looks nervously at you after your confrontation, moving a bit too eagerly as you motion her to get to the floor. Each step seems conflicted, but needy as the girl gets down on her knees in front of you.
 
-As you open your pants in front of her, she gulps now, shaking as she speaks.
+As you open your pants in front of her, she gulps, shaking as she speaks.
 
 - F-fine... You damn pervert... Just this once!""",
-	CALI_ACT3_BLOW_3 = """Cali doesn't say anything at first as she gets down on her knees, looking up at you now. Her face is a mask of an embarrassed blush. Despite this she doesn't complain now as she undoes your trousers, her face darkening even more as she sees your member.
+	CALI_ACT3_BLOW_3 = """Cali doesn't say anything at first as she gets down on her knees, looking up at you now. Her face is covered in an embarrassed blush. Despite this she doesn't complain now as she undoes your trousers, her face darkening even more as she sees your member.
 
 - Wha...it's bigger than I remember.""",
-	CALI_ACT3_BLOW_4 = """Cali seeing the lewd look on your face after commenting on the size rolls her eyes a bit.
+	CALI_ACT3_BLOW_4 = """Cali, seeing the lewd look on your face after commenting on the size, rolls her eyes a bit.
 
 - It just is! Don't take that as a compliment.""",
-	CALI_ACT3_BLOW_5 = """The girl would wrap her hand around your shaft now, gently pumping her fingers around the base as she looked down at it. Once it showed a dot of precum on the tip, she'd wince; almost as if expecting you to cum right there as her inexperience showed.
+	CALI_ACT3_BLOW_5 = """The girl wraps her hand around your shaft, gently pumping her fingers around the base as she looks down at it. Once it shows a dot of precum on the tip, she winces; almost as if expecting you to cum right there.
 
-You consider telling the girl to hurry up, but relent now, watching her as she finally opens her mouth. She started suckling quite nicely on just the head, her hand pumping up and down before she looked up at you gauging your reaction.""",
-	CALI_ACT3_BLOW_6 = """Cali only hesitates for a moment longer before pushing her face back down deeper onto your shaft now, a few pumps before she'd resume just pumping on your member with her hand. Her mouth sucking on the head.""",
-	CALI_ACT3_BLOW_7 = """Cali seems eager as she repeats this process now, her hips swaying back and forth for a moment before she stops herself. Pumping her hands faster on your length now, she notices the base pulsing as you get closer. Although the girl doesn't pull away, pushing you over the edge as you start to cum soon. """,
-	CALI_ACT3_BLOW_8 = """Cali lets a surprised little squeak as you start to cum into the girl's mouth, her eyes wide as you finish. To your surprise, she doesn't pull away. Swallowing every drop though her face shows a mask of embarrassment at the act.
-
-The two of you sit there for a few moments now. Cali said nothing before standing up abruptly now, looking away from you; her face red now. """,
+You consider telling the girl to hurry up, but relent as she finally opens her mouth. She starts suckling quite nicely on just the head, her hand pumping up and down before she looks up at you, gauging your reaction.""",
+	CALI_ACT3_BLOW_6 = """Cali only hesitates for a moment longer before pushing her face down even deeper onto your shaft. She pumps her head a few times, her lips gliding up and down your dick before returning to jacking your member with her hand while her mouth still sucks on the head.""",
+	CALI_ACT3_BLOW_7 = """Cali seems eager as she repeats the process, her hips swaying back and forth for a moment before she stops herself. Pumping her hands faster, she notices the base pulsing as you get closer. She looks up at you with wide eyes, her innocent face pushing you over the edge as you start to cum. """,
+	CALI_ACT3_BLOW_8 = """Cali lets out a surprised little squeak as you jizz into the girl's mouth, her eyes wide as you finish. To your surprise, she doesn't pull away and begins swallowing every drop, though her face turns a darker shade of red with every swallow.
+The two of you sit there for a few moments. Cali says nothing before standing up abruptly , looking away from you; her face crimson. """,
 	CALI_ACT3_BLOW_9 = """- I...I'm going to go back to my break...
 
-Cali doesn't give you any time to respond. She was practically running out of the room as you sat there quite impressed with the work she did.""",
+Cali doesn't give you any time to respond. She was practically running out of the room as you sit there, quite impressed with the work she did.""",
 	CALI_ACT4_MERCHANT_START = """The enchantment has proven to be of excellent quality, yet you can't help but wonder if there is more that could be done. Cali has been willing to offer her mouth at least, but the resistance is still there. 
 
 Thinking over your predicament, you decide to muse over the idea while doing some shopping in town. Perhaps one of the merchants will have something that can assist you?""",
-	CALI_ACT4_MERCHANT_1 = """Rows of toys, food, and exotic luxuries line the isles of Aliron's Market, but none seem quite suited to your needs currently. While you lunch at one of the stalls, a bookseller across from the food cart catches your eye. 
+	CALI_ACT4_MERCHANT_1 = """Rows of toys, food, and exotic luxuries line the isles of Aliron's Market, but none seem quite suited to your current needs. While you lunch at one of the stalls, a bookseller across from the food cart catches your attention. 
 
 The merchant is quick to spot one eyeing his wares. He waves to you, calling out.
 
-Merchant: — Greetings, good sir! I see you've an eye for quality. Perhaps you'd like a tome on how to enjoy a Seraph's curves or -
+Merchant:- Greetings, good sir! I see you've an eye for quality. Perhaps you'd like a tome on how to enjoy a Seraph's curves or -
 
 It seems the merchant will prattle on forever if you don't stop him.""",
 	CALI_ACT4_MERCHANT_1_OPTION_1 = "I'm just browsing",
 	CALI_ACT4_MERCHANT_1_OPTION_2 = "Do you have any books relating to Wolfkin? Or the half-breeds?",
 	CALI_ACT4_MERCHANT_2_1 = """The merchant looks at you with a knowing smile, shaking his head. 
 
-{color=yellow|Merchant: — Ah, but that is not the look of a man who is just browsing. Tell me, what do you need sir?}""",
+Merchant:- Ah, but that is not the look of a man who is just browsing. Tell me, what do you need sir?""",
 	CALI_ACT4_MERCHANT_3 = """Relenting, you tell the merchant you're in the market for a book on Wolfkin, or their half-breeds.
 
-{color=yellow|Merchant: — Ah, yes yes I do have something of its like. }
+Merchant:- Ah, yes yes I do have something of its like. 
 
 The man reaches onto one of the shelves in the cart and hands you a small tome, no thicker than your thumb. A quick glance at its contents shows you that this is a book on wolfkin mating habits. 
 
-Though the book itself is not that large, the information is extensive. There are pro taming arguments listed, illustrations of sexual positions her kind would be suited best for, and even a section of best practices.
+Though the book itself is not that large, the information is extensive. There are pro taming arguments listed, illustrations of sexual positions her kind would be best suited for, and even a section on best practices.
 
 The price tag on the book states it costs a measly 50 gold.""",
 	CALI_ACT4_MERCHANT_3_OPTION_1 = "Here is the coin (50 Gold)",
 	CALI_ACT4_MERCHANT_3_OPTION_2 = "I'm not quite sure yet",
-	CALI_ACT4_MERCHANT_4_1 = """The merchant takes your coin with a smile. Leaving the man to manage his cart, you head home now. Eager to see how this will unfold.""",
+	CALI_ACT4_MERCHANT_4_1 = """The merchant takes your coin with a smile. Leaving the man to manage his cart, you head home now,eager to see how this will unfold.""",
 	CALI_ACT4_MERCHANT_4_2 = """The man nods before turning to another customer as you leave.""",
 	CALI_ACT4_MERCHANT_5 = """The man welcomes you eagerly now, hammering you with questions and suggestions as you pick the book on Wolfkin off the shelf.""",
 	CALI_ACT4_MERCHANT_6 = """Returning home, you leave the book in Cali's room. Perhaps some inspiration into her kind's mating habits will soften her to the idea.""",
-	CALI_ACT4_MAST_1 = """Deciding to check on Cali, you move down to her room, hearing soft sighs through the door.""",
-	CALI_ACT4_MAST_2 = """Moving closer you stay as silent as possible, though the only noise one could hear now is the softly growling and moaning sounds coming from her room. Moving closer you can indeed make out Cali's voice, a tremble to it as the girl is laid there on her bed, the book beside her as she looks down at it.
+	CALI_ACT4_MAST_1 = """Deciding to check on Cali, you move down to her room and hear soft sighs through the door.""",
+	CALI_ACT4_MAST_2 = """Inching closer, you stay as silent as possible, though the only noise one could hear now is the soft growling and moaning sounds coming from her room. Moving even closer, you can indeed make out Cali's voice as it trembles. You peek inside to see the girl laying on her bed with the book open beside her and a hand down her pants. As Cali’s voice calms, she rolls over to look at the book again..
 
-Whatever image in the book sparked her need seems to reignite it now as you're able to hear the girl's voice, her words accompanied with a pant.
+Whatever image in the book sparked her need seems to reignite it, the girl's voice quivering and panting as she says,
 
-- Why am I doing this...
+- Why…am I doing this...
 
-Cali continued to try for a few moments, eventually eliciting a soft moan as she touched herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan. Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself; her hips rolling now. """,
+Cali continues to read for a few moments, eventually eliciting a soft moan as she touches herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan. Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself; her hips rolling now. """,
 	CALI_ACT4_MAST_3 = """- I might have liked it...
 
-Cali continues to masturbate, occasionally looking at the book as she panted and moaned softly. Eventually she would seize up as she came, her face buried in her pillow as she let out a little scream.""",
+Cali continues to masturbate, occasionally looking at the book as she breathes and moans softly. Eventually she seizes up as she comes, her face buried in her pillow as she lets out a little scream.""",
 	CALI_ACT4_MAST_3_OPTION_1 = "Walk in",
-	CALI_ACT4_MAST_4_LEAVE = """You quietly leave, allowing her to bask in the afterglow of her orgasm admiring her change in behavior. It would seem Cali's resistance is starting to wane, her natural urges starting to take over.""",
+	CALI_ACT4_MAST_4_LEAVE = """You quietly leave, allowing her to bask in the afterglow of her orgasm, admiring her change in behavior. It would seem Cali's resistance is starting to wane, her natural urges starting to take over.""",
 	CALI_ACT4_MAST_4 = """As you walk in Cali makes an embarrassed squeak, her face turning blood red.
 
 - [name]! W-what are you doing here!
 
-You don't say anything for now, only giving Cali a knowing smile. Letting her stumble over her words as it became clear to her she'd been caught in the act.
+You don't say anything for now, only giving Cali a knowing smile. You let her stumble over her words as it becomes clear she’s been caught in the act.
 
 - Pervert...
 
-Cali looks away from you now, embarrassed more than angry. Her face still blushing hard.""",
-	CALI_ACT4_MAST_4_OPTION_1 = "Everyone in the mansion would have been able to hear you, Cali.",
+Cali looks away from you now, more embarrassed than angry, her face still blushing hard.""",
+	CALI_ACT4_MAST_4_OPTION_1 = "Everyone in the mansion could have heard you, Cali.",
 	CALI_ACT4_MAST_4_OPTION_2 = "Is that any way to act Cali? Why don't you show me what you were doing?",
 	CALI_ACT4_MAST_5 = """Cali's blush darkens as she soon wraps herself up in her blankets now, not even her face visible as she mumbles out a barely audible reply.
 
 - I can't help it...
 
-The girl only blushes more as you move towards her on the bed now. Looking away as her face is a solid sheet of red, whimpers are heard from her as you toss her blankets aside, leaving her exposed figure under you.
+The girl only blushes more as you move towards her on the bed. She looks away, her face a solid sheet of red, whimpering as you toss her blankets aside, leaving her exposed figure under you.
 
 - W-wait I'm not...
 
-The girl's eyes go wide seeing your length as you open your pants now, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
-	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning as a reply as you push into her.  Eyes rolling back all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
+The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
+	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning in reply as you push into her.  Eyes rolling back, all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
 
-The sight of the teen squirming around as you pumped into her was perfect as she served you willingly, eagerly now.  Soon the matting became rougher as you naturally escalated with her, your grip tight on her hips as you thrust into her.  """,
+The sight of the teen squirming around as you pump into her is perfect. She’s serving you willingly, even eagerly now.  Soon the mating becomes rougher as you naturally escalate, your grip tight on her hips as you thrust into her.  
+""",
 	CALI_ACT4_FUCK_2 = """- R-right there...
 
-The girl's body would eventually go rigid on you as she climaxes, a seductive little moan bubbling out of her throat as you soon join her. Cali doesn't protest as you bury yourself deep into her body, your cum filling her.
+The girl's body eventually goes rigid as she climaxes, a seductive little moan bubbling out of her throat as you soon join her. Cali doesn't protest as you bury yourself deep inside her, your cum filling the small teen.
 
-Cali stay quiet as you pull out of her afterward, the girl left laying there as you look her body over, a smirk on your lips as you make sure to close the door behind you.""",
-	CALI_ACT4_MAST_6 = """Cali's face is red still as she looks at you, then the book. It's quite obvious what she was masterbating to, the illustration of a male of your face inserted into a half wolf from behind is quite well drawn. She snaps the book closed now, stuffing it under her pillow as she says nothing for now.
+Afterwards, Cali stays quiet as you pull out of her, get off the bed and head towards the door. The girl lays still, panting heavily, as you look her body over one last time, a smirk on your lips as you make sure to close the door behind you.""",
+	CALI_ACT4_MAST_6 = """Cali's face is still red as she looks at you, then the book. It's quite obvious what she was masterbating to, a well drawn illustration of a male of your visage inserted into a half wolf from behind. She snaps the book closed, stuffing it under her pillow silently.
 
-Looking at you, then where she hid the book she finally relented, moving the cover aside and showing you, her pussy soaked from her recent orgasm. 
+Looking at you, then where she hid the book, she finally relents, moving her cover aside and showing you her pussy soaked from her recent orgasm. 
 
 - T-there! Happy? You're not getting anymore to-""",
-	CALI_ACT4_MAST_7 = """Her words were cut off as you moved onto the bed with her, her little body pressed down fully. Cali doesn't fight you to position her now, if anything the girl willingly moves where you want her. 
+	CALI_ACT4_MAST_7 = """Her words are cut off as you move on top of her, her little body pressed down fully. Cali doesn't fight you as you position her. If anything, the girl willingly moves where you want her. 
 
 - W-wait I'm not...
 
 The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
 	CALI_ACT5_PET_START = """Cali has been surprisingly tolerant as of late. Though not eager to serve, the girl's training has gone well even if you've been mostly subtle about it. Despite this though, she still has not turned into a proper pet, something you desire to remedy.
 
-You consider your options, and though she might very well just accept your orders now, you decide that it is time to move onto the next step.
+You consider your options, and though she might very well accept your orders now, you decide that it is time to move onto the next step.
 
-This resolution in hand you leave the manor that afternoon to search for the proper accessories for your “pet”.""",
-	CALI_ACT5_PET_1 = """The shop smells like... well, animals. You're not quite sure what you expected as you pass rows of items ranging from large dog collars, to hand made treats. One sight catches your eye as you turn a corner, an employee and dog are walking down the aisle. The dog stops on command, sits on command, and even seems eager. Eventually the hounds' work is rewarded with food, a dog dish is placed down that the beast eagerly eats from.""",
+This resolution in hand, you leave the manor that afternoon to search for the proper accessories for your “pet”.""",
+	CALI_ACT5_PET_1 = """The pet shop smells like... well, animals. You're not quite sure what you expected as you pass rows of items ranging from large dog collars to hand made treats. One sight catches your eye as you turn a corner, an employee and dog walking down the aisle. The dog stops on command, sits on command, and even seems eager to do so. Eventually the hounds' work is rewarded with food, a dog dish is placed down that the beast fervently eats from.""",
 	CALI_ACT5_PET_2 = """The obedience of the dog is impressive, so much so you decide to ask the employee about it.
 
-Employee: — How did I get him to behave so well? Well, look for yourself now.
+Employee: — How did I get him to behave so well? Well, look for yourself.
 
 The dog is hungry, though obviously not starved as the beast has ample meat on its bones.
 
-Employee: — He knows that if he does what he's told he gets to eat. Food is the great motivator after all.
+Employee: — He knows that if he does what he's told he gets to eat. Food is a great motivator after all.
 
-You thank the employee for his insight. Heading back to your mansion to put the newfound knowledge to use.""",
-	CALI_ACT5_PET_3 = """Breakfast and lunch today have been sparse for Cali. In addition to that, the girl's labor was especially strenuous today; a perfect mix for a strong appetite. Going about your day as normal you eventually call for Cali right before dinner is to be started.
+You thank the employee for his insight and head back to your mansion to put the newfound knowledge to use.""",
+	CALI_ACT5_PET_3 = """Today you ensure breakfast and lunch have been sparse for Cali. In addition to that, the girl's labor was especially strenuous today; a perfect mix for a strong appetite. After going about your day as normal, you eventually call for Cali right before dinner is to be started.
 
-The girl comes as told now, though she looks far from pleased by the prospect. 
+The girl comes as told, though she looks far from pleased by the prospect. 
 
 - Can this wait, [name]? It's dinner time and I'm starving...
 
-After a moment, you sit her dinner in a dog bowl beside you. Her eyes traveled up to you with a look of frustration, but it was obvious her hunger was winning as she stared down at the food in the bowl. """,
+After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up to you with a look of frustration, but it’s obvious her hunger is winning as she stares down at the food in the bowl. """,
 	CALI_ACT5_PET_3_OPTION_1 = "I have your food right here.",
-	CALI_ACT5_PET_3_OPTION_2 = "Because I think you should be eating right here, Cali. Like a good girl.",
-	CALI_ACT5_PET_4 = """Cali looks up at you with a mild shock, then resignation. It is clear the girl might have expected you were using her food to coerce her into something.
+	CALI_ACT5_PET_3_OPTION_2 = "I think you should be eating right here Cali. Like a good girl.",
+	CALI_ACT5_PET_4 = """Cali looks up at you with mild shock, then resignation. It’s clear the girl might have expected you were using her food to coerce her into something.
 
 - I... no. Why? I'd look like an animal... This is weird!""",
 	CALI_ACT5_PET_4_OPTION_1 = "Why are you so worried about what you look like?",
@@ -9317,45 +9318,46 @@ After a moment, you sit her dinner in a dog bowl beside you. Her eyes traveled u
 	CALI_ACT5_PET_5_2 = """Cali looks at you with an embarrassed expression, her ears drooping lower.
 
 - Hey, it's not like it's my fault...""",
-	CALI_ACT5_PET_5_3 = """Cali takes a long look at the bowl now, your ultimatum obviously hitting a nerve with her. Chin sticking up the girl soon turns right around and walks out. Perhaps you should try again later.""",
-	CALI_ACT5_PET_6 = """Cali unbeknownst to her while she refuted you, has stepped closer to the bowl now. Her stomach obviously has a vote on this issue.""",
+	CALI_ACT5_PET_5_3 = """Cali takes a long look at the bowl now, your ultimatum obviously hitting a nerve with her. Chin sticking up, the girl soon turns right around and walks out. Perhaps you should try again later.""",
+	CALI_ACT5_PET_6 = """Almost unknowingly, Cali has stepped closer to the bowl. Her stomach has obviously weighed in on this issue.""",
 	CALI_ACT5_PET_6_OPTION_1 = "Aren't you hungry?",
 	CALI_ACT5_PET_6_OPTION_2 = "You might just like it if you try.",
 	CALI_ACT5_PET_6_OPTION_3 = "You ungrateful little bitch, do as you're told..NOW!",
-	CALI_ACT5_PET_7_GONE = """Cali's face turns cold to you as she moves over to the bowl, getting down to eat out of it like she was told. You were just thinking to yourself on how you finally might have broken the girl when you catch a glimpse of something coming towards you, a loud crash as the food bowl bounces off your forehead.
+	CALI_ACT5_PET_7_GONE = """Cali's face turns cold to you as she moves over to the bowl, getting down to eat out of it like she was told. You were just thinking to yourself on how you finally might have broken the girl when you catch a glimpse of something coming towards you, a loud crash ringing out as the food bowl bounces off your forehead.
 
 - I am NOT your bitch, you monster!
 
-Dazed from the object colliding with your face, by the time you realize what has happened, the girl has your keys in hand. Escaping through the mansion's front door.
+Dazed from the object colliding with your face, by the time you realize what has happened, the girl has your keys in hand and is escaping through the mansion's front door.
 
 Perhaps it was too much for her...""",
-	CALI_ACT5_PET_7 = """Cali looks at you for a few moments, shaking before hunger wins out. The girl goes to pick up the bowl looking at you, realizing she'd have to eat out of it like an animal. 
+	CALI_ACT5_PET_7 = """Cali looks at you for a few moments, shaking as hunger wins out. The girl goes to pick up the bowl while looking at you, before you stop her. Her face burns with embarrassment as she realizes she'd have to eat out of it like an animal. 
 
-Kneeling down, the girl soon was on all fours. Her ass slightly in the air as she tasted the food. Soon, she gives in as she starts to eat.""",
-	CALI_ACT5_PET_8 = """Her panties were visibly wet as she ate now. A grunt was heard from her as your hand finds them now, sliding over her backside while you sit beside your feeding pet.  Cali stops her eating now, looking back with dark blush creeping over her face.
+The girl kneels down on all fours and hovers above the bowl. Her ass is raised slightly in the air as she tastes the food. Soon, she gives in to her base instincts, eating vigorously.""",
+	CALI_ACT5_PET_8 = """Her panties are visibly wet as she eats. A moan barks out from her as your hand finds her slick underwear, sliding them over her backside while you sit beside your feeding pet.  Cali stops her eating, looking backwards as a dark blush creeps over her face.
 
-Cali: — [Name], what are you doing?
+Cali:- [Name], what are you doing?
 
-A light touch to her chin is all the girl would receive in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
+A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she’s unable to focus on her meal for much longer.
 
-Cali: — W-wait not th-""",
-	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+Cali:- W-wait not th-""",
+	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
-Cali: — Nhhh...
+Cali:- Nhhh...
 
-The girl withdrew her protests giving into your caress, finally buckling as her legs closed hard around your hand as he soaked her panties, a shrill cry coming from her throat as she nearly collapsed onto her bowl, her eyes looking ahead a bit dazed now.   
+The girl withdraws her protests as she gives into your caress, finally buckling as her legs close hard around your hand and she soaks her panties. A shrill cry comes from her throat as she nearly collapses onto her bowl, her unfocused eyes looking into the distance.   
 
-- Why... doesn't this feel wrong...? """,
-	CALI_ACT5_PET_9_2 = """Cali seems conflicted before sighing, her body relaxing now there on the floor as your hand slides through her hair. It seems she has completely forgotten her initial grudge despite everything.
+- Why... doesn't this feel wrong...?
 
-The girl doesn't fight you as you slide your hands over her back and shoulders, her head hanging down in contemplation as you barely can hear what she whispers.
+Cali seems conflicted before sighing, her body relaxing on the floor as your hand slips through her hair. It seems she has completely forgotten her initial grudge.
+
+The girl doesn't fight you as you slide your hands over her back and shoulders. Her head hangs down in contemplation as you barely hear what she whispers.
 
 - I liked it... """,
 	CALI_ACT5_PET_9_OPTION_1 = """That wasn't so hard, was it?""",
 	CALI_ACT5_PET_9_OPTION_2 = """Good girl. Now sit.""",
-	CALI_ACT5_PET_10_1 = """Cali shakes her head, her face a blood red blush as she just sat there now. Your hand sliding over the top of her head, petting her. Spending the evening just stroking her, she eagerly leans into the petting, relaxing.""",
-	CALI_ACT5_PET_10_2 = """Cali sits without even realizing it at first, her expression somewhat shocked as she dares not to move as your hand slides over the top of her head, petting her for now. Spending the evening just stroking her, she soon leans into your petting, relaxing before being dismissed for the day.""",
-	CALI_ACT6_NAKED_1 = """Just as the day before, today Cali meets you in your chambers. This time the girl seems more relaxed, the meal yesterday did much to lift her spirits.
+	CALI_ACT5_PET_10_1 = """Cali shakes her head, her face a blood red as she just sits there. Your hand rubs the top of her head, petting her. Spending the evening just stroking her, she eagerly leans into the petting, relaxing.""",
+	CALI_ACT5_PET_10_2 = """Cali sits without even realizing it at first, her expression somewhat shocked as she dares not move. Your hand rubs the top of her head, petting her gently. As you spend the evening stroking her, she soon leans into your petting, relaxing before being dismissed for the day.""",
+	CALI_ACT6_NAKED_1 = """Just like the day before, today Cali meets you in your chambers. This time the girl seems more relaxed, the meal yesterday doing much to lift her spirits.
 
 - I have been a good pet today...
 
@@ -9363,33 +9365,34 @@ The girl states, looking at you expectantly, then down at the bowl. Her eyes wid
 	CALI_ACT6_NAKED_1_OPTION_1 = "You've been a good girl Cali, but you can be even better. I want you to undress while you eat today.",
 	CALI_ACT6_NAKED_1_OPTION_2 = "A good pet doesn't wear clothing, do they Cali?",
 	CALI_ACT6_NAKED_1_OPTION_3 = "Not good enough Cali, I want you nude while you eat this time to make up for it. ",
-	CALI_ACT6_NAKED_2_1 = """Cali hesitates for a single moment, but her resolve is in shreds. The girl undresses now as she moves down to eat beside you.""",
-	CALI_ACT6_NAKED_2_2 = """Cali looks at you then her clothing. She goes to argue but stops, considering it before stripping herself of her garments. The girl still blushes, but doesn't further object as she kneels down to eat beside you.""",
+	CALI_ACT6_NAKED_2_1 = """Cali hesitates for a single moment, but her resolve is in shreds. The girl undresses as she moves down to eat beside you.""",
+	CALI_ACT6_NAKED_2_2 = """Cali looks at you then her clothing. She goes to argue but stops, considering something before stripping herself of her garments. The girl blushes, but doesn't further object as she kneels down to eat beside you.""",
 	CALI_ACT6_NAKED_2_3 = """Cali's eyes show a hint of tears as you chastise her now. 
 
 - Nothing's ever good enough for you...
 
-Cali leaves you there now, it is quite clear you've hurt her feelings with your statement.""",
-	CALI_ACT6_NAKED_3 = """Eating there, the girl gives no complaints to your eyes moving over her. Though it is quite clear her entrance is soaked, getting even wetter as her ass is lifted invitingly into the air, whether she's aware of it or not.""",
-	CALI_ACT6_NAKED_4 = """When the girl is getting close to the end of her meal, you decide now is the time that she shows you how grateful she is for the food.
+Cali leaves you there. It is quite clear you've hurt her feelings with your statement.""",
+	CALI_ACT6_NAKED_3 = """While eating, the girl gives no complaints to your eyes moving over her. It is quite clear her entrance is soaked, getting even wetter as her ass lifts invitingly into the air, whether she's aware of it or not.""",
+	CALI_ACT6_NAKED_4 = """When the girl is getting close to the end of her meal, you decide now is the time for her to show you how grateful she is for the food.
 
 Hand sliding down her bare backside, you say nothing, but the soft squeak followed by a light moan is all you need to hear. As your hand slides lower, rubbing her warm petals, the slickness invites you to enjoy more than just a touch.
 
-Cali's eyes widen as you move around fully behind her, undoing your pants as you grip her hip tightly now.""",
+Cali's eyes widen as you move around fully behind her, undoing your pants as you grip her hip tightly with your other hand.""",
 	CALI_ACT6_NAKED_5 = """- W-what are you doi-
 
-The girl's question is cut short as you slide deep into her body, your shaft pressing down into the tight pussy. Not fighting you, Cali just lets out a long moan, her body shaking under your grip as you begin to pump into her. 
+The girl's question is cut short as you slide deep into her body, your shaft pressing down into her tight pussy. Not fighting you, Cali just lets out a long moan, her body shaking under your grip as you begin to pump into her. 
 
-Soon the thrusting of your member was joined by Cali needily pumping her hips back into yours. Her unfulfilled need taking over as she wordlessly begged you to take her harder, needing the release as you feel yourself getting close soon.""",
-	CALI_ACT6_NAKED_6 = """Finally filling the girl, you pin your shaft deep inside of her as she openly moans. Both of you cumming together while she clamps down on your shaft. The half-wolf refuses, or is unable to release her hold as she takes every drop eagerly. 
+Soon the thrusting of your member was joined by Cali needily pumping her hips back into yours. Her unfulfilled need takes over as she wordlessly begs you to take her harder. She clearly needs the release and you feel both of you getting close.""",
+	CALI_ACT6_NAKED_6 = """Finally, you begin filling the girl, your shaft pinned deep inside of her as she openly moans. Both of you cum together while she clamps down on your dick. The half-wolf refuses, or is unable to release your hold on her as she takes every drop eagerly. 
 
 - I... ugh... I'll be a good girl...
 
-You remind her as you're still deep inside of her that she should call you what you are. Your hand is still tight on her hip as she shudders under you.
+You remind her as you're still deep inside that she should call you what you are. Your hand is still tight on her hip as she shudders under you.
 
 - [Master]... I'll be a good girl, [Master]...""",
-	CALI_ACT6_NAKED_7 = """With your training complete, Cali sitting down beside you like before. Her eyes observe you with a blind acceptance.""",
+	CALI_ACT6_NAKED_7 = """With your training complete, Cali sits down beside you like before. Her eyes observe you with a blind acceptance.""",
 	CALI_ACT6_NAKED_7_OPTION_1 = "Good girl",
+
 	
 	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: — Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
 
@@ -9735,40 +9738,40 @@ You feel relieved it all turned out well. The girls went to rest soon after you 
 - Great, let's not waste time then! She said she wanted to see me.""",
 	ZEPHYRA_QUEST_3 = """You find the church nearly empty at this time of day with Ginny coming out to greet you.
 
-Ginny: - Ah, Zephyra... And you brought the Mayor with you?
+Ginny: — Ah, Zephyra... And you brought the Mayor with you?
 
-Zephyra: - I couldn't hold him back from tagging along. It's not a girls only club after all, right?
+Zephyra: — I couldn't hold him back from tagging along. It's not a girls only club after all, right?
 
-Ginny: - No, of course not. It's a pleasure, Mayor. 
+Ginny: — No, of course not. It's a pleasure, Mayor. 
 
-Zephyra: - So, what do you have on your mind?""",
-	ZEPHYRA_QUEST_4 = """Ginny: - Right... Uh, actually I have to ask you for a favor, I really need to leave the church for a few hours. My friend has gotten sick and needs my help. Would you watch over it for me?
+Zephyra: — So, what do you have on your mind?""",
+	ZEPHYRA_QUEST_4 = """Ginny: — Right... Uh, actually I have to ask you for a favor, I really need to leave the church for a few hours. My friend has gotten sick and needs my help. Would you watch over it for me?
 
-Zephyra: - Say no more, I always wanted to try out a nun's role. 
+Zephyra: — Say no more, I always wanted to try out a nun's role. 
 
 Zephyra seems rather relaxed about the whole situation, but you suppose Ginny wouldn't trust it to just about anyone.""",
 	ZEPHYRA_QUEST_4_OPTION_1 = """I guess I can stick around to keep you company""",
 	ZEPHYRA_QUEST_4_OPTION_2 = """Is it really a good idea to let someone take your role?""",
-	ZEPHYRA_QUEST_5_1 = """Ginny: - Ah, I wouldn't have to worry about anything with the Mayor here too. Thank you!
+	ZEPHYRA_QUEST_5_1 = """Ginny: — Ah, I wouldn't have to worry about anything with the Mayor here too. Thank you!
 
-Zephyra: - I wouldn't trust [him] on [his] own, but with me here you have nothing to fear about. 
+Zephyra: — I wouldn't trust [him] on [his] own, but with me here you have nothing to fear about. 
 
-Ginny: - That... seemed a bit rude. Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
-	ZEPHYRA_QUEST_5_2 = """Ginny: - I'm sure Zephyra is very capable. I've never met someone like her who is as kind and as genuinely compassionate as Celena's teachings guide us to be.
+Ginny: — That... seemed a bit rude. Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+	ZEPHYRA_QUEST_5_2 = """Ginny: — I'm sure Zephyra is very capable. I've never met someone like her who is as kind and as genuinely compassionate as Celena's teachings guide us to be.
 
-Zephyra: - Please, I'm weak to flattering.
+Zephyra: — Please, I'm weak to flattering.
 
-Ginny: - I'm not! Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
+Ginny: — I'm not! Anyway, I better run now. Ah, and don't let stray cats walk inside.""",
 	ZEPHYRA_QUEST_6 = """You and Zephyra are left alone to monitor the church. It seems to be a slow day and visitors are quite rare and undemanding. You are surprised by how naturally Zephyra takes up Ginny's role of helping visitors. That is until one visitor, a young, poor looking woman, approaches Zephyra.
 
-Woman: - I'm sorry, I really need some help...
+Woman: — I'm sorry, I really need some help...
 
-Zephyra: - Tell us what happened.
+Zephyra: — Tell us what happened.
 
-Woman: - I... Lost my wallet and my children have nothing to eat until my next payment... I know that Celena helps people in need.""",
-	ZEPHYRA_QUEST_7 = """Zephyra: - Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides she can tell if you have already received some help ea...
+Woman: — I... Lost my wallet and my children have nothing to eat until my next payment... I know that Celena helps people in need.""",
+	ZEPHYRA_QUEST_7 = """Zephyra: — Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides she can tell if you have already received some help ea...
 
-Woman: - No, please, I can't stay here for long, I have to return home soon or my husband will get mad, I beg you!
+Woman: — No, please, I can't stay here for long, I have to return home soon or my husband will get mad, I beg you!
 
 Zephyra is unsure what to do and seems to seek your input.""",
 	ZEPHYRA_QUEST_7_OPTION_1 = "Zephyra's right, we can't just give church's money to anyone",
@@ -9779,153 +9782,153 @@ Zephyra is unsure what to do and seems to seek your input.""",
 
 Zephyra reluctantly agrees that this is her responsibility. She passes the woman some coins from the church's donation box.
 
-Woman: - Thank you! I won't forget your generosity. 
+Woman: — Thank you! I won't forget your generosity. 
 
 As the woman leaves Zephyra looks at you with a hint of newly acquired respect. 
 
-Zephyra: - Hehe, I didn't expect someone of your status to be so thoughtful.""",
+Zephyra: — Hehe, I didn't expect someone of your status to be so thoughtful.""",
 	ZEPHYRA_QUEST_8_2_BAD = """{color=red|Failure}
 
 Zephyra does not seem convinced by your words and the woman turns to leave with no money. Zephyra looks a bit stern but quickly gets over it.""",
 	ZEPHYRA_QUEST_8_3 = """Both Zephyra and the woman are shocked by your decision. As you give money to the woman and she leaves, Zephyra looks at you with respect. 
 
-Zephyra: - Wow, I didn't expect someone of your status to be so generous. Are you trying to win my heart all over again? He-he.""",
+Zephyra: — Wow, I didn't expect someone of your status to be so generous. Are you trying to win my heart all over again? He-he.""",
 	
 	ZEPHYRA_DAISY_1 = """A new visitor appears... It's no other than your slave bunny girl Daisy. You decide to stay hidden, letting Zephyra take care of this alone. 
 
-Daisy: - H-hello, Zephyra, why are you here? Where's Ginny? 
+Daisy: — H-hello, Zephyra, why are you here? Where's Ginny? 
 
-Zephyra: - She's out for quite some time. She left her role to me while she's away.
+Zephyra: — She's out for quite some time. She left her role to me while she's away.
 
-Daisy: - O-oh... I was hoping to make a confession. I'm not sure if I should come back later...
+Daisy: — O-oh... I was hoping to make a confession. I'm not sure if I should come back later...
 
-Zephyra: - I assure you, I can help with this no worse than her. 
+Zephyra: — I assure you, I can help with this no worse than her. 
 
 Daisy seems unsure about this, but somehow she's unable to deny Zephyra's predatory interest.""",
-	ZEPHYRA_DAISY_2_1 = """Daisy: - *Sigh* I feel sinful and very dirty. I've been doing very inappropriate things I would never normally agree to if not for my [Master]. 
+	ZEPHYRA_DAISY_2_1 = """Daisy: — *Sigh* I feel sinful and very dirty. I've been doing very inappropriate things I would never normally agree to if not for my [Master]. 
 
-Zephyra: - That's terrible to hear. But as I take it, it wasn't your choice. How bad were these actions?
+Zephyra: — That's terrible to hear. But as I take it, it wasn't your choice. How bad were these actions?
 
-Daisy: - They were lewd, shameful things... What should I do?
+Daisy: — They were lewd, shameful things... What should I do?
 
-Zephyra: - Your sins will be forgiven given your innocent soul. After all, you aren't responsible for them, unlike someone who should be confessing here instead.
+Zephyra: — Your sins will be forgiven given your innocent soul. After all, you aren't responsible for them, unlike someone who should be confessing here instead.
 
-Daisy: - I see... Thank you, I do feel a bit better now. You are quite natural at this... You won't tell anyone about it?
+Daisy: — I see... Thank you, I do feel a bit better now. You are quite natural at this... You won't tell anyone about it?
 
-Zephyra: - Of course not, do I really look like someone who would rat people out? I would only outfox them. 
+Zephyra: — Of course not, do I really look like someone who would rat people out? I would only outfox them. 
 
 Daisy leaves the chapel and returns to her duty.""",
-	ZEPHYRA_DAISY_2_2 = """Daisy: - I wanted to pray and make a donation for all the good things that happened to me...
+	ZEPHYRA_DAISY_2_2 = """Daisy: — I wanted to pray and make a donation for all the good things that happened to me...
 
-Zephyra: - Ooh? You think it was divine guidance?
+Zephyra: — Ooh? You think it was divine guidance?
 
-Daisy: - I-I like to think so... After all, I'm lucky to have a kind caring [Master]. 
+Daisy: — I-I like to think so... After all, I'm lucky to have a kind caring [Master]. 
 
-Zephyra: - You are right. But you shouldn't treat our [Master] too acceptingly. I've heard [he] might not be an ideal person. [He] could be up for doing some bad things. For example, [he] might even be eavesdropping on us right now...
+Zephyra: — You are right. But you shouldn't treat our [Master] too acceptingly. I've heard [he] might not be an ideal person. [He] could be up for doing some bad things. For example, [he] might even be eavesdropping on us right now...
 
-Daisy: - No way, I trust my [Master]! And it's not like I'd be embarrassed if he heard.
+Daisy: — No way, I trust my [Master]! And it's not like I'd be embarrassed if he heard.
 
 Thankfully, Daisy seems to be too dim to notice Zephyra's sneer. As she's done with the prayer, she leaves the chapel.""",
 	ZEPHYRA_VISITOR_1 = """After some time a gaudy looking man appears in the church, seeming quite out of place. As he looks around, it's obvious he's searching for someone. 
 
-Zephyra: - May I help you, good sir? 
+Zephyra: — May I help you, good sir? 
 
-Visitor: - I was hoping to see Ginny. Is she not around today?
+Visitor: — I was hoping to see Ginny. Is she not around today?
 
-Zephyra: - I'm afraid she's away for a while. 
+Zephyra: — I'm afraid she's away for a while. 
 
-Visitor: - Darn, that's terrible. I've only come to see her. You know, she's so innocent and a nun uniform looks great on her. I've actually been asking her out for a while...
+Visitor: — Darn, that's terrible. I've only come to see her. You know, she's so innocent and a nun uniform looks great on her. I've actually been asking her out for a while...
 
-Zephyra: - Uh-huh...
+Zephyra: — Uh-huh...
 
 Zephyra seems to be trying to avoid this conversation going any further.""",
-	ZEPHYRA_VISITOR_2 = """Zephyra: - Pardon me, I feel like I should get to work.
+	ZEPHYRA_VISITOR_2 = """Zephyra: — Pardon me, I feel like I should get to work.
 
-Visitor: - Wait, you look very kind and pure as well...
+Visitor: — Wait, you look very kind and pure as well...
 
-Zephyra: - No-no, you are mistaken. In fact I'm the opposite of pure.
+Zephyra: — No-no, you are mistaken. In fact I'm the opposite of pure.
 
-Visitor: - Huh? How can this be?
+Visitor: — Huh? How can this be?
 
-Zephyra: - You see... I have a [Master]. And [he] has already defiled every inch of my body.
+Zephyra: — You see... I have a [Master]. And [he] has already defiled every inch of my body.
 
-Visitor: - S-Such insolence!""",
+Visitor: — S-Such insolence!""",
 	ZEPHYRA_VISITOR_2_OPTION_1 = """Wait a second, I did not do that""",
 	ZEPHYRA_VISITOR_2_OPTION_2 = """That's an understatement, I've gone much further than just her body""",
-	ZEPHYRA_VISITOR_3_1 = """Zephyra: - S-stupid, just play along with me!
+	ZEPHYRA_VISITOR_3_1 = """Zephyra: — S-stupid, just play along with me!
 
 But it seems the problematic visitor has already been turned off. 
 
-Visitor: - No matter! Even if it's a lie, I can't admire a lady who can spout such obscene things so easily.
+Visitor: — No matter! Even if it's a lie, I can't admire a lady who can spout such obscene things so easily.
 
 Visitor:  - I guess I'll be returning when Ginny is back. 
 
 Saying that, the man leaves the church and you alone.""",
-	ZEPHYRA_VISITOR_3_2 = """Visitor: - Nuoooooh! This is truly evil, the worst of our time! I can't admire someone so defiled! 
+	ZEPHYRA_VISITOR_3_2 = """Visitor: — Nuoooooh! This is truly evil, the worst of our time! I can't admire someone so defiled! 
 
-Zephyra: - Y-yes, it is most regrettable I can't meet your standards.
+Zephyra: — Y-yes, it is most regrettable I can't meet your standards.
 
 Visitor:  - I guess I'll be returning when Ginny is back. 
 
 Saying that, the man leaves the church and you alone.""",
 	ZEPHYRA_MAN_1 = """A man enters the church. His lifeless eyes and sullen expression give the appearance of a walking corpse. He seems to be suffering from depression. Zephyra calmly approaches him.  
 
-Zephyra: - Hello. You seem like something is weighing on you. 
+Zephyra: — Hello. You seem like something is weighing on you. 
 
 The man stays quiet for some time grasping his thoughts. Finally he speaks up.""",
-	ZEPHYRA_MAN_2 = """Man: - ...Say, do you really believe in Celena? In gods at all? With all the pain and suffering around us can you say with a straight face that there's some deep meaning in life?
+	ZEPHYRA_MAN_2 = """Man: — ...Say, do you really believe in Celena? In gods at all? With all the pain and suffering around us can you say with a straight face that there's some deep meaning in life?
 
 Zephyra - I agree. There are no gods and it's all probably just made up to make you give up your money in our favor. Nobody watches over your life and you are the only one responsible for it.
 
 The man looks at her with unexpected liveliness in his eyes.""",
-	ZEPHYRA_MAN_3 = """Man: - Then... What should I do?
+	ZEPHYRA_MAN_3 = """Man: — Then... What should I do?
 
-Zephyra: - Maybe just do what you feel is right? You don't seem to be a bad person since you've come here for advice. I believe you can perhaps arrive at your own conclusions that are unlike anyone else's.
+Zephyra: — Maybe just do what you feel is right? You don't seem to be a bad person since you've come here for advice. I believe you can perhaps arrive at your own conclusions that are unlike anyone else's.
 
 The man takes a long pause, after which, he starts nodding his head furiously.""",
-	ZEPHYRA_MAN_4 = """Man: - T-thank you... You've really helped me. 
+	ZEPHYRA_MAN_4 = """Man: — T-thank you... You've really helped me. 
 
 Saying this, he leaves. 
 
-Zephyra: - Haah, he didn't even leave a donation.""",
+Zephyra: — Haah, he didn't even leave a donation.""",
 	ZEPHYRA_MAN_4_OPTION_1 = "\"There are no gods\"?",
 	ZEPHYRA_MAN_4_OPTION_2 = "You've dealt with him rather creatively",
 	ZEPHYRA_QUEST_9_1 = """Zephyra smirks at your question. She clearly realizes the absurdity of the situation but that only makes her smile wider.
 
-Zephyra: - Did you really expect I could prove him wrong? He made up his mind before he came here. I doubt it will be his final decision though.
+Zephyra: — Did you really expect I could prove him wrong? He made up his mind before he came here. I doubt it will be his final decision though.
 
-Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
-	ZEPHYRA_QUEST_9_2 = """Zephyra: - Why, thank you. I consider myself a primarily diplomatic person after all. But, to tell you the truth, he reminded me of my younger sister. If not for that, I wouldn't have even tried to help him. I still have no idea what's on her mind most of the time...
+Zephyra: — Say, [Master], did you perhaps find his logic relatable?""",
+	ZEPHYRA_QUEST_9_2 = """Zephyra: — Why, thank you. I consider myself a primarily diplomatic person after all. But, to tell you the truth, he reminded me of my younger sister. If not for that, I wouldn't have even tried to help him. I still have no idea what's on her mind most of the time...
 
-Zephyra: - Say, [Master], did you perhaps find his logic relatable?""",
+Zephyra: — Say, [Master], did you perhaps find his logic relatable?""",
 	ZEPHYRA_QUEST_9_OPTION_1 = "Sometimes I share these thoughts",
 	ZEPHYRA_QUEST_9_OPTION_2 = "He's a lost person deserving a pity",
 	ZEPHYRA_QUEST_9_OPTION_3 = "I prefer not to think about these things",
-	ZEPHYRA_QUEST_10_1 = """Zephyra: - Ah, is that so? Perhaps you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you?.. Just kidding, I'm a terrible preacher.""",
-	ZEPHYRA_QUEST_10_2 = """Zephyra: - Yep, yep. That's right.
+	ZEPHYRA_QUEST_10_1 = """Zephyra: — Ah, is that so? Perhaps you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you?.. Just kidding, I'm a terrible preacher.""",
+	ZEPHYRA_QUEST_10_2 = """Zephyra: — Yep, yep. That's right.
 
 Zephyra nods in agreement to your statement.
 
-Zephyra: - Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
-	ZEPHYRA_QUEST_10_3 = """Zephyra: - Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...""",
+Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I lucky to find you? He-he.""",
+	ZEPHYRA_QUEST_10_3 = """Zephyra: — Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...""",
 	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today's events, she thanks the both of you.
 
-Ginny: - I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the mayor.
+Ginny: — I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the mayor.
 
-Zephyra : - Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
+Zephyra : — Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
 
-Ginny: - I'm afraid it was a gift to the mayor specifically when I mentioned him... Do you want to give your candies back then?
+Ginny: — I'm afraid it was a gift to the mayor specifically when I mentioned him... Do you want to give your candies back then?
 
-Zephyra: - ...Don't make me more sad than necessary.
+Zephyra: — ...Don't make me more sad than necessary.
 
 In the end you didn't get to do much else with Zephyra today but it seems like you still grew closer.""",
 	ZEPHYRA_BATH_1 = """In the evening, you prepare to take a bath after a long day. Once you get inside you realize that you aren't quite alone. There's another person hiding in there who has clearly been waiting for you.
 
-Zephyra: - Ahhh, your spacious bath is just great, [Master]. What a coincidence we both decided to get in here at the same time after such a tiresome day.
+Zephyra: — Ahhh, your spacious bath is just great, [Master]. What a coincidence we both decided to get in here at the same time after such a tiresome day.
 
 As you give her a wary look, she starts spilling the beans. 
 
-Zephyra: - W-well, don't look at me like this, I've been preparing to make the first move after being here for so long. You can't expect a cute girl like me to join you and be just a work drone. 
+Zephyra: — W-well, don't look at me like this, I've been preparing to make the first move after being here for so long. You can't expect a cute girl like me to join you and be just a work drone. 
 
 Zephyra, fully naked, casually moves next to you sitting in water.""",
 	ZEPHYRA_BATH_1_OPTION_1 = "I didn't take you for such a bold girl",
@@ -9950,40 +9953,41 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 
 - Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
 	
-	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. So you've received my message and came to us, very responsible of you. In fact I'm only a mediator here, and I've received a sign from spirits who wanted an outsider's help. """,
+	GOBLIN_QUEST_0 = """In the morning you receive a letter which, unlike what you usually get, seems quite crudely made, seemingly crafted with home-made paper and ink. You realize it's from a beastkin settlement asking for your help so you decide it might be a good idea to visit it.""",
+	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. I see you’ve received my message. Good, then let me tell you why you’re here. I’ve received a sign from some spirits who want an outsider’s help.""",
 	GOBLIN_QUEST_1_OPTION_1 = "Who is it from exactly?",
 	GOBLIN_QUEST_1_OPTION_2 = "What a pain...",
-	GOBLIN_QUEST_2_1 = """- Who knows. You are the one to figure this out once you go there.
+	GOBLIN_QUEST_2_1 = """- Who knows. You will have to figure that out once you get there.
 
-Savra explains to you how to get where she wants you to and you add a mark on your map.""",
-	GOBLIN_QUEST_2_2 = """- Oy, don't you dare neglect a spirit call. You do know, spirits are known to bless their benefactors.
+Savra explains to you how to find the mysterious spirits in need and adds a mark on your map.""",
+	GOBLIN_QUEST_2_2 = """- Oy, don't you dare neglect a spirit call. You do know, spirits are known to bless their benefactors. 
 
-Savra explains to you how to get where she wants you to and you add a mark on your map.""",
-	GOBLIN_QUEST_3 = """Once you arrive at the small cliff, you notice that air is different at this spot. Before you are able to take a look around it, a white figure materializes right in front of you, nearly making you jump from surprise.""",
-	GOBLIN_QUEST_4 = """- I knew you'd come, Mortal. Fear not, I'm not planning to fight against you. Not this time. """,
+Savra explains to you how to find the mysterious spirits in need and adds a mark on your map.""",
+	GOBLIN_QUEST_3 = """Once you arrive at the small cliff, you notice the air feels different in this spot. Before you are able to take a look around, a white figure materializes right in front of you, nearly making you jump out of surprise.""",
+	GOBLIN_QUEST_4 = """- I knew you'd come, Mortal. Fear not, I'm not planning to fight against you. Not this time.""",
 	GOBLIN_QUEST_4_OPTION_1 = """Y-you've scared me""",
 	GOBLIN_QUEST_4_OPTION_2 = """I wouldn't like us to fight again...""",
 	GOBLIN_QUEST_4_OPTION_3 = """What do you want, spirit?""",
-	GOBLIN_QUEST_5_1 = """- I remember you being more brave than this, mortal. I hope your soul has not been enfeebled, I might take it from you then. 
+	GOBLIN_QUEST_5_1 = """- I remember you being more brave than this, mortal. If your soul has become too enfeebled, I might have to take it and put it to better use. 
 
-- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
-	GOBLIN_QUEST_5_2 = """- I mean you no harm, at least not when I wanted you to come, so you can rest assured. 
+- I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
+	GOBLIN_QUEST_5_2 = """- I mean you no harm, mortal. I sincerely am in need of your expertise, so you can rest assured.
 
-- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
+- I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
 	GOBLIN_QUEST_5_3 = """- Hmm, I remember mortals being more formal about their communications. Very well. 
 
-- I have a task for you. From not long ago I've noticed a strange activity in a part of these forests. The animals are disturbed and there's uncommon energy I can feel. I went there but couldn't find who was causing this. But I'm sure these are other mortals, not beastkin or elves, someone foreign, so I believe it's something you are better at dealing with.""",
-	GOBLIN_QUEST_5_OPTION_1 = """Why would I do this?""",
+- I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
+	GOBLIN_QUEST_5_OPTION_1 = """Why should I do this for you?""",
 	GOBLIN_QUEST_5_OPTION_2 = """Alright, where do I start then?""",
 	GOBLIN_QUEST_5_OPTION_3 = """I currently don't have time for this.""",
-	GOBLIN_QUEST_6_1 = """- Hmh. How about I won't destroy your furry friends? This is beneficial for you as much as it is for us, I don't believe you want harm done to these woods. Fine, I know mortals rarely even scratch with no reward, I'll give you one once you deal with this.""",
+	GOBLIN_QUEST_6_1 = """- Hmh. How about I won't destroy your furry friends? This is as beneficial for you as it is for us. I don't believe you want harm done to these woods and the mortals that reside near them. But fine, I know mortals rarely even scratch with no reward, so I'll give you one once you deal with this.""",
 	GOBLIN_QUEST_6_2 = """- It's not far from here. 
 
-The White Stag shows you direction and disappears as quietly as she appeared in first place. You feel like you're gonna need to spend some time searching for tracks at this place.""",
-	GOBLIN_QUEST_6_3 = """- What a carefree being you are. You know where to find me if you change your mind.""",
-	GOBLIN_QUEST_TRACK_1 = """After a few hours of looking around all you find is some metal scraps from what looks like exquisite trap devices. With no other option left, you pack them up and decide to find someone who can perhaps identify them.""",
+The White Stag shows you a direction and disappears as quietly as she appeared in the first place. You feel like you're gonna need to spend some time searching for tracks in this place.""",
+	GOBLIN_QUEST_6_3 = """- How... annoyingly carefree you are. Know that I will make this an issue for more than just the forest if not solved soon. You know where to find me if you change your mind.""",
+	GOBLIN_QUEST_TRACK_1 = """After a few hours of looking around, all you find is some metal scraps from what looks like exquisite trap devices. With no other option left, you pack them up and decide to find someone who can perhaps identify them.""",
 	GOBLIN_QUEST_7_OPTION_1 = """There's something I could use your help with...""",
-	GOBLIN_QUEST_7 = """You show Sigmund the trap remnants that you found asking for his assistance. 
+	GOBLIN_QUEST_7 = """You show Sigmund the trap remnants that you found. 
 
 - Yah, dis ain't common stuff ya find anywhere. I neva seen somethin' like dis. It surely be traps and its design be really somethin' innovative, too bad mechanism's broken beyond recognition. Sadly, I know no one who be capable of such craftsmanship...
 
@@ -9991,32 +9995,32 @@ Sigmund takes a long pause before continuing.
 
 - But one thing stands out, da metal is of very poor quality. I think I've only seen somethin' like dis bein' used by goblins.
 
-You realize that now you have a better clue about what you should be looking for. You decide on the location where you found them once again.""",
-	GOBLIN_QUEST_8 = """You check the spot where you found the broken parts and soon you manage to find a couple of extensively hidden small tracks. After following it for a while you come across a small camp. You notice a few goblins on standby, likely the culprits of poaching the woods and laying the traps.""",
+You realize that now you have a better clue about what you should be looking for. You decide to go back to the location where you found the traps once again.""",
+	GOBLIN_QUEST_8 = """You check the spot where you found the broken parts and soon you manage to find a couple of extensively hidden small tracks. After following it for a while you come across a small camp. You notice a few goblins on standby, likely the culprits who laid the traps.""",
 	GOBLIN_QUEST_8_OPTION_1 = """Approach them""",
 	GOBLIN_QUEST_8_OPTION_2 = """Sneak in""",
 	GOBLIN_QUEST_9_1 = """As you come out to the goblins in full view, they act openly hostile and grab their weapons. It seems there's no choice but to fight them.""",
 	GOBLIN_QUEST_9_2_BAD = """{color=red|Failure}
 
-You try to sneak in closer but you stumble on a tree branch and get discovered. The goblins quickly grab their weapons preparing to attack you.""",
+You try to sneak in closer but you stumble on a tree branch and get discovered. The goblins quickly grab their weapons, preparing to attack you.""",
 	GOBLIN_QUEST_9_2_GOOD = """{color=green|Success}
 
-You manage to get close enough to the goblins without being discovered. You jump out at the last moment pointing your weapon, making them stumble in shock. """,
-	GOBLIN_QUEST_10 = """Once you set your dominance, a goblin girl comes out and waves at you. She drastically stand out from the rest and appears to be the boss around here. 
+You manage to get close enough to the goblins without being discovered. You jump out at the last moment with your weapon drawn, making them stumble in shock.""",
+	GOBLIN_QUEST_10 = """Once you’ve established your dominance, you demand to know why they are trespassing here. In response, a goblin girl comes out and waves at you. She drastically stands out from the rest and appears to be the boss around here. 
 
-- Hey, big [boy], no need for violence. We only thought these woods were free or we wouldn't be here. No need to point that big fat stick at me.""",
+- Hey, big [boy], no need for violence. We just thought these woods were free otherwise we wouldn't be here. No need to point that big fat stick at me.""",
 	GOBLIN_QUEST_10_OPTION_1 = """What are you doing here?""",
 	GOBLIN_QUEST_10_OPTION_2 = """Nothing is ever free""",
 	GOBLIN_QUEST_10_OPTION_3 = """You must leave if you don't want anything worse to happen""",
-	GOBLIN_QUEST_11_1 = """- Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods.
+	GOBLIN_QUEST_11_1 = """- Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods. 
 
-But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
-	GOBLIN_QUEST_11_2 = """- Hah, true dat. You aren't here to rob us naked, are you? I take it, we'll leave.
+But...whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_2 = """- Hah, true dat. You aren't here to rob us naked, I take it? We'll be leavin’ then. 
 
-But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
+But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
 	GOBLIN_QUEST_11_3 = """- Right, right, we need no problems, okay? We'll leave before the sunset.
 
-But... Whose lands are these exactly? It is pretty distant from elven lands and can swear with my ass you aren't local either.""",
+But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
 	GOBLIN_QUEST_11_OPTION_1 = """I'm here on my own actually""",
 	GOBLIN_QUEST_11_OPTION_2 = """The forest spirit is angry at your activities""",
 	GOBLIN_QUEST_11_OPTION_3 = """This is none of your business""",
@@ -10027,7 +10031,7 @@ But... Whose lands are these exactly? It is pretty distant from elven lands and 
 	GOBLIN_QUEST_12_OPTION_2 = """Actually, why don't you compensate for the harm you've done?""",
 	GOBLIN_QUEST_13 = """- Goddamit... Fine, take what we have left.
 
-After the goblins leave you search their camp for what valuables they have left, obtaining about a thousand worth of gold. """,
+After the goblins leave you search their camp for what valuables they have left, obtaining about a thousand worth of gold.""",
 	GOBLIN_QUEST_14_OPTION_0 = """Report back""",
 	GOBLIN_QUEST_14 = """As you give a call, the white stag appears before you in its human form.
 
@@ -10035,37 +10039,37 @@ After the goblins leave you search their camp for what valuables they have left,
 	GOBLIN_QUEST_14_OPTION_1 = """Wealth""",
 	GOBLIN_QUEST_14_OPTION_2 = """Power""",
 	GOBLIN_QUEST_14_OPTION_3 = """Pleasure""",
-	GOBLIN_QUEST_15_1 = """- Huh, I never understood mortals' fascination with money but so be it. There's been many fools coming into these forests so I can share some of the possessions they've left. Take their gold and leave.
+	GOBLIN_QUEST_15_1 = """- Huh, I never understood mortals' fascination with money but so be it. There've been many fools who have come into these forests, so I can share some of the possessions they've left behind. Take their gold and leave.
 
-You look behind, finding a sizable stash of treasures. As you turn around, you realize that white stag is already gone. After getting through it you are able to net 5.000 gold from it.""",
+You look behind yourself and find a sizable stash of treasures. As you turn back around, you realize that the white stag is already gone. After going through it you are able to net 5.000 gold from it.""",
 	GOBLIN_QUEST_15_2 = """- You've helped us and I can take you for an ally. Very well, you can have this ancient weapon which you should find useful in your hunts and battles.
 
-The White Stag has a spear materialized in her hands which she passes to you. Despite its obvious elder age, it feels better than new. Without further continuation, the spirit disappears leaving you alone.""",
+The White Stag materializes a spear in her hands which she passes to you. Despite its obvious elder age, it feels better than new. Without further continuation, the spirit disappears leaving you alone.""",
 	GOBLIN_QUEST_15_3 = """- ... Did I hear that right? Do you really lust after my body? 
 
 Despite your rather outrageous suggestion, the White Stag does not seem to be turned off by it.""",
 	GOBLIN_QUEST_15_3_OPTION_1 = """Yes, I find you very appealing""",
 	GOBLIN_QUEST_15_3_OPTION_2 = """No, I think I changed my mind""",
-	GOBLIN_QUEST_HARA_1 = """- Hey ya, its you. Knew I would find you here. This might be a bit sudden, but I figured you are a big head over here, and I could use someone like you. This is only a temporary offer which might not happen after some time, but I decided to give you a special treatment. What do you say?""",
+	GOBLIN_QUEST_HARA_1 = """- Hey ya, it’s you. Knew I would find you here. This might be a bit sudden, but I figured since you’re a big wig over here, I could use someone like you. I wouldn’t mind joining your group, at least for a little while. I’ll even give you some special treatment while I’m with you. What do you say?""",
 	GOBLIN_QUEST_HARA_1_OPTION_1 = """I surely could use someone of your... talent""",
 	GOBLIN_QUEST_HARA_1_OPTION_2 = """Nah""",
-	GOBLIN_QUEST_HARA_2_1 = """- Great, name's Hara, by the way. I will look forward to the time I'll fit more in place, but at that point I'll not be as easy to get, just so you know.""",
-	GOBLIN_QUEST_HARA_2_2 = """- Too bad. Well, maybe you'll change your mind once I have something else to offer, but mind you, it's not going to be as simple to get me at that time.""",
+	GOBLIN_QUEST_HARA_2_1 = """- Great, name's Hara, by the way. I look forward to our future relations. You’re a lucky [guy] to have me by your side. I’ve got plans in the workings that will blow you away.""",
+	GOBLIN_QUEST_HARA_2_2 = """- Too bad. Well, maybe you'll change your mind once I have something else to offer, but mind you, it's not going to be as simple to get me then.""",
 	GOBLIN_QUEST_SEX_1 = """The White Stag seems amused by your request, and her expression softens for the first time since you met her. Without warning, she pushes you down, straddling you with her powerful thighs. You marvel at her beauty as she towers above you, her long white hair cascading around her shoulders. It does not take long for her to feel your erection.
 
 - It seems you are already in the mood.
 
-With a swift motion, The White Stag impales herself on your cock, taking you deep inside her. She takes her time, savoring each moment as she moves with a fierce grace. You aren't sure if it's her otherworldly nature or just the surroundings but this feeling is nothing you've ever experienced before.""",
+With a swift motion, The White Stag frees your cock and impales herself on it, taking you deep inside her. She takes her time, relishing each stroke as she moves her hips with a fierce grace. You aren't sure if it's her otherworldly nature or just the open surroundings but this feeling is like nothing you've ever experienced before. """,
 	GOBLIN_QUEST_SEX_2 = """The White Stag picks up the pace, riding you harder and faster. You can hear the sound of your bodies slapping together, echoing throughout the trees. 
 
-You can't hold back any longer, and you come inside of her, a wave of ecstasy washing over you. The woman on top of you gives out a deep moan in unison as she closes her eyes. 
+You can't hold back any longer, and you come inside of her, a wave of ecstasy washing over you. The woman on top of you gives out a deep moan as you fill her with seed, her eyes closing as she savors the moment.. 
 
 - Hah... hah... Mortals are still... intriguing...""",
 	GOBLIN_QUEST_SEX_3 = """As you are done, she rises up and gives you a mysterious look. 
 
 - We'll meet another time. Until then...
 
-You aren't able to hear her last words as your exhaustion gets over making you fall asleep on spot. Once you come back to your senses there's no track of her. You decide to move on.""",
+You aren't able to hear her last words as your exhaustion takes over, making you fall asleep on the spot. Once you come back to your senses, there's no trace of her. You decide to move on.""",
 	
 	
 	
@@ -10234,6 +10238,7 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	
 	GOBLIN_QUEST_NAME = "Greens in the woods",
 	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
+	GOBLIN_QUEST_STAGE_0 = "", 
 	GOBLIN_QUEST_STAGE_1 = "Travel to Desolated Woods",
 	GOBLIN_QUEST_STAGE_2 = "Search for the culprits at Desolated Woods",
 	GOBLIN_QUEST_STAGE_3 = "Ask guild leaders for the clues for traps",

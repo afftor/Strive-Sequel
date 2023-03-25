@@ -1427,9 +1427,6 @@ margin_right = 70.0
 margin_bottom = 69.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="amount" type="Label" parent="QuestBoard/QuestDetails/questrewards/Button"]
 visible = false
@@ -1488,7 +1485,6 @@ custom_fonts/font = ExtResource( 9 )
 text = "There are no quests available"
 
 [node name="FactionDetails" type="Panel" parent="."]
-visible = false
 margin_left = 560.0
 margin_top = 138.0
 margin_right = 1360.0
@@ -1509,10 +1505,10 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="Label" parent="FactionDetails"]
-margin_left = 12.0
-margin_top = 679.0
-margin_right = 791.0
-margin_bottom = 712.0
+margin_left = 10.5858
+margin_top = 735.569
+margin_right = 789.586
+margin_bottom = 770.569
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Reputation Earned : 10000"
@@ -1534,15 +1530,11 @@ margin_top = 106.0
 margin_right = 750.0
 margin_bottom = 686.0
 custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Panel" parent="FactionDetails/VBoxContainer"]
-visible = false
 margin_right = 700.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 180 )
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
 custom_styles/panel = SubResource( 9 )
 
 [node name="FactionBG2" type="Panel" parent="FactionDetails/VBoxContainer/Button"]
@@ -1552,22 +1544,16 @@ margin_left = 3.0
 margin_right = 700.0
 margin_bottom = 200.0
 custom_styles/panel = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="text" type="RichTextLabel" parent="FactionDetails/VBoxContainer/Button"]
 margin_left = 25.0
 margin_top = 29.0
 margin_right = 444.0
-margin_bottom = 136.0
+margin_bottom = 179.0
 theme = ExtResource( 19 )
 custom_fonts/normal_font = ExtResource( 8 )
 text = "Upgrade Description
 "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="confirm" type="Button" parent="FactionDetails/VBoxContainer/Button"]
 margin_left = 460.0
@@ -1584,16 +1570,13 @@ __meta__ = {
 }
 
 [node name="Price" type="Label" parent="FactionDetails/VBoxContainer/Button"]
-margin_left = 25.2283
-margin_top = 141.127
-margin_right = 81.2283
-margin_bottom = 176.127
+margin_left = 457.489
+margin_top = 147.484
+margin_right = 513.489
+margin_bottom = 182.484
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Price"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="FactionDetails"]
 visible = false
@@ -2524,7 +2507,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuyLocation/ScrollContainer"]
-margin_right = 315.0
+margin_right = 300.0
 rect_min_size = Vector2( 300, 0 )
 
 [node name="Button" type="Button" parent="BuyLocation/ScrollContainer/VBoxContainer"]
@@ -2671,6 +2654,9 @@ margin_left = 530.0
 margin_top = 177.0
 margin_right = 1390.0
 margin_bottom = 977.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TestButton" type="Button" parent="."]
 visible = false

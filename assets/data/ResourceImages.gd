@@ -287,6 +287,7 @@ var scenes = {
 	wedding = load("res://assets/images/scenes/marriage.png"),
 	stone_sword = load("res://assets/images/scenes/stone_sword.png"),
 	stone_sword2 = load("res://assets/images/scenes/stone_sword2.png"),
+	goblins_traps = load("res://assets/images/scenes/goblins_traps.png"),
 	
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
