@@ -9944,6 +9944,7 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 
 - Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
 	
+	GOBLIN_QUEST_0 = """In the morning you receive a letter which, unlike what you usually get, seems quite crudely made, seemingly crafted with home-made paper and ink. You realize it's from a beastkin settlement asking for your help so you decide it might be a good idea to visit it.""",
 	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. So you've received my message and came to us, very responsible of you. In fact I'm only a mediator here, and I've received a sign from spirits who wanted an outsider's help. """,
 	GOBLIN_QUEST_1_OPTION_1 = "Who is it from exactly?",
 	GOBLIN_QUEST_1_OPTION_2 = "What a pain...",
@@ -10228,6 +10229,7 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	
 	GOBLIN_QUEST_NAME = "",
 	GOBLIN_QUEST_SUMMARY = "",
+	GOBLIN_QUEST_STAGE_0 = "", # talk to Savra
 	GOBLIN_QUEST_STAGE_1 = "", # go to location
 	GOBLIN_QUEST_STAGE_2 = "", # search for tracks
 	GOBLIN_QUEST_STAGE_3 = "", # go to sigmund

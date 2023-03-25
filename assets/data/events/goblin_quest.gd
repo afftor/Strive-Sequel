@@ -1,4 +1,14 @@
 var data = {
+	 goblin_quest_0 = {
+		image = 'letter', tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "GOBLIN_QUEST_0", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'progress_quest', value = 'goblin_quest', stage = 'stage0'}]
+		}, ]
+	},
+	
 	 goblin_quest_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "savra", 
