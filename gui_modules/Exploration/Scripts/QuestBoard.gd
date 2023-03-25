@@ -5,12 +5,15 @@ var category = "all"
 
 func _ready():
 	$QuestDetails/AcceptQuest.connect("pressed", self, "accept_quest")
+	$CloseButton.connect("pressed",self,"close_board")
 	
 	for i in $guildsortVScroll.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
 		
 	quest_board()
-	
+func close_board():
+	queue_free()
+	pass
 func selectcategory(button):
 	category = button.name
 	for i in $guildsortVScroll.get_children():
@@ -32,7 +35,6 @@ func quest_board():
 #	# $QuestBoard.visible = pressed
 	var counter = 0
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer2)
-	$QuestDetails.hide()
 	for i in input_handler.active_area.quests.factions:
 		for k in input_handler.active_area.quests.factions[i].values():
 			if k.state == 'free' and (k.source == category or category == "all"):
@@ -63,7 +65,6 @@ func see_quest_info(quest):
 	input_handler.ghost_items.clear()
 	selectedquest = quest
 	input_handler.selectedquest = quest
-	$QuestDetails.show()
 	input_handler.ClearContainer($QuestDetails/questreqs)
 	input_handler.ClearContainer($QuestDetails/questrewards)
 	var text_name = '[center]' + tr(quest.name) + '[/center]\n'
