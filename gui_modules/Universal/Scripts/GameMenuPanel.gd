@@ -11,6 +11,7 @@ func _ready():
 	$VBoxContainer/Load.connect('pressed', self, 'append_saveload')
 	$VBoxContainer/Save.connect('pressed', self, 'append_saveload')
 	$VBoxContainer/Options.connect('pressed', self, 'OptionsOpen')
+	$VBoxContainer/Gallery.connect('pressed', self, "gallery")
 	$VBoxContainer/Exit.connect('pressed', self, 'Exit')
 	move_child($InputBlock, 0)
 	for i in $VBoxContainer.get_children():
@@ -77,7 +78,7 @@ func hide():
 	.hide()
 
 
-func _on_Button_button_down():
+func gallery():
 	var gallery_scene = preload("res://gui_modules/Universal/Modules/Gallery.tscn").instance()
 	get_tree().root.add_child(gallery_scene)
 	gallery_scene.close_state = true

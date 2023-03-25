@@ -2072,7 +2072,7 @@ var TranslationDict = {
 	BODYPARTTITS_SIZESMALLDESCRIPT = "[He] has [color=yellow]small[/color], round boobs.",
 	BODYPARTTITS_SIZEAVERAGEDESCRIPT = "[His] nice, [color=yellow]perky[/color] breasts are firm and inviting.",
 	BODYPARTTITS_SIZEBIGDESCRIPT = "[His] [color=yellow]big[/color] tits are pleasantly soft, but still have a nice spring to them.",
-	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big.",
+	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big fpr [his] size.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] chest is of definitive [color=yellow]masculine[/color] shape.",
 
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] butt is skinny and [color=yellow]flat[/color].",
@@ -2437,6 +2437,8 @@ var TranslationDict = {
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
 	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",
 	ENEMYCAVE_GOBLIN_BOSS = "Cave Goblin Boss",
+	ENEMYQUEST_GOBLIN_BOSS = "Goblin Thug",
+	ENEMYQUEST_GOBLIN_SHAMAN = "Goblin Mage",
 	ENEMYOGRE_MELEE = "Ogre",
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
@@ -11549,13 +11551,13 @@ You aren't able to hear her last words as your exhaustion gets over making you f
 	QUEST_FINAL_OPERATION_LOCATION1 = "Search",
 	QUEST_FINAL_OPERATION_LOCATION2 = "Search",
 	
-	quest_daisy_admirer_location1 = "Approach",
+	QUEST_DAISY_ADMIRER_LOCATION1 = "Approach",
 	
-	quest_gryphon_cave_location1 = "Approach Cave",
+	QUEST_GRYPHON_CAVE_LOCATION1 = "Approach Cave",
 	
-	quest_leon_forest_2_1 = "Search For Leon",
+	QUEST_LEON_FOREST_2_1 = "Search For Leon",
 	
-	quest_white_stag_location1 = "Search For Leon",
+	QUEST_WHITE_STAG_LOCATION1 = "Search For Leon",
 	
 	QUEST_TEMPLE_LOCATION1 = "Approach",
 	QUEST_TEMPLE_LOCATION2 = "Approach",

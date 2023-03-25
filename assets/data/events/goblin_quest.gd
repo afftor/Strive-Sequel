@@ -97,7 +97,7 @@ var data = {
 	},
 	
 	goblin_quest_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = "mae_camp", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "GOBLIN_QUEST_8", reqs = []}],
 		options = [ {
@@ -108,7 +108,7 @@ var data = {
 	},
 	
 	goblin_quest_9 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = "mae_camp", tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "GOBLIN_QUEST_9_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GOBLIN_QUEST_9_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 70}]}], previous_dialogue_option = 2},

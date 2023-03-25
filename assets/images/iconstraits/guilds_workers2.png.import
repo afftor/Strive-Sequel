@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guilds_warriors2.png-51755c2cfde4f299522d9076e2ee7ce5.stex"
+path="res://.import/guilds_workers2.png-e780df14cfeceee6fc1dc6cda04f164c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconstraits/guilds_warriors2.png"
-dest_files=[ "res://.import/guilds_warriors2.png-51755c2cfde4f299522d9076e2ee7ce5.stex" ]
+source_file="res://assets/images/iconstraits/guilds_workers2.png"
+dest_files=[ "res://.import/guilds_workers2.png-e780df14cfeceee6fc1dc6cda04f164c.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

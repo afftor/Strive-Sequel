@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guilds_blacksmith2.png-2b3575aacd84e19d85cd5fae56c540b7.stex"
+path="res://.import/guilds_workers.png-ff01cd39e5901a35347b4eb6d43d7b90.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconstraits/guilds_blacksmith2.png"
-dest_files=[ "res://.import/guilds_blacksmith2.png-2b3575aacd84e19d85cd5fae56c540b7.stex" ]
+source_file="res://assets/images/iconstraits/guilds_workers.png"
+dest_files=[ "res://.import/guilds_workers.png-ff01cd39e5901a35347b4eb6d43d7b90.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

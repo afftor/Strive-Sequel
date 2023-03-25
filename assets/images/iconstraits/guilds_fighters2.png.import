@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guilds_courtisan2.png-f144b1a9d166d1dc4da89fc969d3dedd.stex"
+path="res://.import/guilds_fighters2.png-9748b4920ace5d84d6dae16d57be0c44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconstraits/guilds_courtisan2.png"
-dest_files=[ "res://.import/guilds_courtisan2.png-f144b1a9d166d1dc4da89fc969d3dedd.stex" ]
+source_file="res://assets/images/iconstraits/guilds_fighters2.png"
+dest_files=[ "res://.import/guilds_fighters2.png-9748b4920ace5d84d6dae16d57be0c44.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

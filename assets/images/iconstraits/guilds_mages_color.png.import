@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guilds_courtisan_color2.png-795b6f845ab8b4a0a364b8d5a0d85b97.stex"
+path="res://.import/guilds_mages_color.png-eccc3b0306d271f460a4b10b9095a525.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconstraits/guilds_courtisan_color2.png"
-dest_files=[ "res://.import/guilds_courtisan_color2.png-795b6f845ab8b4a0a364b8d5a0d85b97.stex" ]
+source_file="res://assets/images/iconstraits/guilds_mages_color.png"
+dest_files=[ "res://.import/guilds_mages_color.png-eccc3b0306d271f460a4b10b9095a525.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
