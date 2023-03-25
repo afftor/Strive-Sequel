@@ -470,6 +470,16 @@ var icons = {
 	travel_dungeon = load("res://assets/Textures_v2/Universal/Icons/icon_travel_dungeon.png"),
 	travel_event = load("res://assets/Textures_v2/Universal/Icons/icon_travel_event.png"),
 	travel_village = load("res://assets/Textures_v2/Universal/Icons/icon_travel_village.png"),
+	
+	guilds_fighters = load("res://assets/images/iconstraits/guilds_fighters.png"),
+	guilds_fighters_colored = load("res://assets/images/iconstraits/guilds_fighters_color.png"),
+	guilds_mages = load("res://assets/images/iconstraits/guilds_mages.png"),
+	guilds_mages_colored = load("res://assets/images/iconstraits/guilds_mages_color.png"),
+	guilds_workers = load("res://assets/images/iconstraits/guilds_workers.png"),
+	guilds_workers_colored = load("res://assets/images/iconstraits/guilds_workers_color.png"),
+	guilds_servants = load("res://assets/images/iconstraits/guilds_servants.png"),
+	guilds_servants_colored = load("res://assets/images/iconstraits/guilds_servants_color.png"),
+	
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",

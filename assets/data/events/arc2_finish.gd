@@ -620,7 +620,7 @@ var data = {
 		options = [ {
 			code = 'erlern_encounter_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'},
-		{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [14,1], hour = 1}]}],
+		{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}],
 		}, ]
 	},
 	

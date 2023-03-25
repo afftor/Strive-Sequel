@@ -161,22 +161,22 @@ void vertex(){
 
 [resource]
 shader = SubResource( 1 )
-shader_param/anchor1 = Vector2( 381, 467 )
-shader_param/anchor2 = Vector2( 359, 398 )
+shader_param/anchor1 = Vector2( 361, 478 )
+shader_param/anchor2 = Vector2( 520, 478 )
 shader_param/anchor3 = Vector2( 504, 466 )
 shader_param/anchor4 = Vector2( 533, 398 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 36, 74 )
-shader_param/move2 = Vector2( -17, 10 )
-shader_param/move3 = Vector2( -37, 75 )
-shader_param/move4 = Vector2( 10, 9 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
 shader_param/range1 = 200.0
 shader_param/range2 = 200.0
-shader_param/range3 = 200.0
-shader_param/range4 = 200.0
+shader_param/range3 = 0
+shader_param/range4 = 0
 shader_param/range5 = 0
 shader_param/range6 = 0
 shader_param/power = 1.0

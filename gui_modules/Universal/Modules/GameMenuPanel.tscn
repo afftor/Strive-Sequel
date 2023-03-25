@@ -9,9 +9,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletPressed.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletNormal.tres" type="StyleBox" id=8]
 
-[node name="GameMenuPanel" type="Panel" groups=[
-"pauseprocess",
-]]
+[node name="GameMenuPanel" type="Panel" groups=["pauseprocess"]]
 self_modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 730.0
 margin_top = 265.0
@@ -28,9 +26,6 @@ self_modulate = Color( 0, 0, 0, 0.823529 )
 show_behind_parent = true
 margin_right = 460.0
 margin_bottom = 550.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InputBlock" type="Control" parent="."]
 margin_left = -872.0
@@ -43,9 +38,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 76.0
-margin_top = 98.0
+margin_top = 66.0
 margin_right = 476.0
-margin_bottom = 540.0
+margin_bottom = 583.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_constants/separation = 38
 __meta__ = {
@@ -63,8 +58,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Save"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Save"
 align = 1
 valign = 1
@@ -84,8 +79,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Load"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Load"
 align = 1
 valign = 1
@@ -105,8 +100,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Options"
 align = 1
 valign = 1
@@ -114,10 +109,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Gallery" type="Button" parent="VBoxContainer"]
 margin_top = 333.0
 margin_right = 400.0
 margin_bottom = 406.0
+rect_min_size = Vector2( 344, 73 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Gallery"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 61.5, 22 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Gallery"
+align = 1
+valign = 1
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 444.0
+margin_right = 400.0
+margin_bottom = 517.0
 rect_min_size = Vector2( 344, 73 )
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 7 )
@@ -126,34 +143,9 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Exit"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Exit"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TestButton" type="Button" parent="VBoxContainer"]
-margin_top = 444.0
-margin_right = 400.0
-margin_bottom = 517.0
-rect_min_size = Vector2( 344, 73 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/normal = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="VBoxContainer/TestButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 61.5, 22 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Gallery"
 align = 1
 valign = 1
 __meta__ = {
@@ -171,5 +163,3 @@ margin_left = -40.42
 margin_top = -78.0
 margin_right = 608.58
 margin_bottom = 710.0
-
-[connection signal="button_down" from="VBoxContainer/TestButton" to="." method="_on_Button_button_down"]
