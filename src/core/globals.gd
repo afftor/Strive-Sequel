@@ -657,6 +657,8 @@ func LoadGame(filename):
 		ResourceScripts.game_progress.planned_mansion_events.erase("ZCEvent_1")
 	if !ResourceScripts.game_progress.seen_events.has("ZCEvent_1") && !ResourceScripts.game_progress.planned_mansion_events.has("ZCEvent_1") && (ResourceScripts.game_progress.completed_quests.has('cali_heirloom_quest') || ResourceScripts.game_progress.completed_quests.has('cali_taming_quest')):
 		ResourceScripts.game_progress.planned_mansion_events.append("ZCEvent_1")
+	if !ResourceScripts.game_progress.seen_events.has("goblin_quest_0") && !ResourceScripts.game_progress.stored_events.timed_events.has("goblin_quest_0") && ResourceScripts.game_progress.completed_quests.has('sword_artifact_quest'):
+		common_effects([{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	
 
 
