@@ -1,0 +1,493 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_task_panel.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_panel.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_paper.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_universal.png" type="Texture" id=15]
+[ext_resource path="res://gui_modules/Exploration/Scripts/QuestBoard.gd" type="Script" id=16]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_paper_small_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/quest_paper_small.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_active.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/iconstraits/guilds_servants.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/iconstraits/guilds_workers.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconstraits/guilds_mages.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_active2var.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/iconstraits/guilds_fighters.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/all guild.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_unactive.png" type="Texture" id=27]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_30px.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=29]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 800, 800 )
+margin_left = 80.0
+margin_right = 80.0
+margin_top = 80.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 1548, 900 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+use_filter = true
+font_data = ExtResource( 29 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 505, 762 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 469, 719 )
+
+[node name="QuestBoard" type="Panel"]
+margin_left = 320.0
+margin_top = 140.0
+margin_right = 1868.0
+margin_bottom = 1040.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestBoardBG" type="Panel" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="guildsortVScroll" type="HBoxContainer" parent="."]
+margin_left = 260.0
+margin_top = 40.0
+margin_right = 746.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fighters" type="TextureButton" parent="guildsortVScroll"]
+margin_right = 94.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Fighters"
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/fighters"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = -9.0
+margin_bottom = -9.0
+texture = ExtResource( 25 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="workers" type="TextureButton" parent="guildsortVScroll"]
+margin_left = 98.0
+margin_right = 192.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Workers"
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/workers"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.5
+margin_top = 9.5
+margin_right = -9.5
+margin_bottom = -9.5
+texture = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="servants" type="TextureButton" parent="guildsortVScroll"]
+margin_left = 196.0
+margin_right = 290.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Servants"
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/servants"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.5
+margin_top = 9.5
+margin_right = -9.5
+margin_bottom = -9.5
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mages" type="TextureButton" parent="guildsortVScroll"]
+margin_left = 294.0
+margin_right = 388.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Mages"
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/mages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.5
+margin_top = 9.5
+margin_right = -9.5
+margin_bottom = -9.5
+texture = ExtResource( 23 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="guildsortVScroll"]
+margin_left = 392.0
+margin_right = 486.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "All"
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/all"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.5
+margin_top = 9.5
+margin_right = -9.5
+margin_bottom = -9.5
+texture = ExtResource( 26 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 30.0
+margin_top = 150.0
+margin_right = 1068.0
+margin_bottom = 776.0
+mouse_filter = 1
+theme = ExtResource( 1 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="GridContainer" parent="ScrollContainer"]
+margin_right = 1038.0
+size_flags_horizontal = 3
+custom_constants/hseparation = 20
+columns = 4
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer2"]
+visible = false
+margin_right = 237.0
+margin_bottom = 101.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_hover = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer2/Button"]
+margin_left = 24.0
+margin_top = 10.0
+margin_right = 205.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Quest Title111 111111"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Requester" type="Label" parent="ScrollContainer/VBoxContainer2/Button"]
+margin_left = 96.0
+margin_top = 52.0
+margin_right = 205.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Requester"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOverlay" type="Button" parent="ScrollContainer/VBoxContainer2/Button"]
+margin_right = 237.0
+margin_bottom = 101.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestDetails" type="Panel" parent="."]
+show_behind_parent = true
+margin_left = 1042.96
+margin_top = 58.6555
+margin_right = 1542.96
+margin_bottom = 798.656
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="QuestDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="QuestDetails/Panel"]
+margin_left = 41.0
+margin_top = 91.0
+margin_right = 425.0
+margin_bottom = 289.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+text = "Description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="QuestDetails/Panel"]
+margin_left = 39.0
+margin_top = 42.0
+margin_right = 425.0
+margin_bottom = 91.0
+custom_fonts/mono_font = ExtResource( 28 )
+custom_fonts/bold_italics_font = ExtResource( 28 )
+custom_fonts/italics_font = ExtResource( 28 )
+custom_fonts/bold_font = ExtResource( 28 )
+custom_fonts/normal_font = ExtResource( 28 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+text = "Name quest"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label2" type="Label" parent="QuestDetails"]
+margin_left = 54.0
+margin_top = 342.501
+margin_right = 216.0
+margin_bottom = 377.501
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Requirements"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="QuestDetails"]
+margin_left = 54.0
+margin_top = 442.652
+margin_right = 162.0
+margin_bottom = 477.652
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rewards"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptQuest" type="Button" parent="QuestDetails"]
+margin_left = 131.0
+margin_top = 740.842
+margin_right = 377.0
+margin_bottom = 808.842
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Accept"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="questreqs" type="HBoxContainer" parent="QuestDetails"]
+margin_left = 216.0
+margin_top = 327.0
+margin_right = 449.0
+margin_bottom = 402.0
+theme = ExtResource( 7 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="QuestDetails/questreqs"]
+visible = false
+margin_left = 79.0
+margin_right = 154.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+theme = ExtResource( 7 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="QuestDetails/questreqs/Button"]
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 70.0
+margin_bottom = 69.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="QuestDetails/questreqs/Button"]
+visible = false
+margin_left = 3.0
+margin_top = 46.0
+margin_right = 70.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 2
+
+[node name="questrewards" type="HBoxContainer" parent="QuestDetails"]
+margin_left = 216.0
+margin_top = 422.0
+margin_right = 449.0
+margin_bottom = 497.0
+theme = ExtResource( 7 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="QuestDetails/questrewards"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="QuestDetails/questrewards/Button"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 70.0
+margin_bottom = 69.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="QuestDetails/questrewards/Button"]
+visible = false
+margin_left = 3.0
+margin_top = 46.0
+margin_right = 72.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 2
+
+[node name="time" type="Label" parent="QuestDetails"]
+margin_left = 91.304
+margin_top = 592.918
+margin_right = 199.304
+margin_bottom = 627.918
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Limit:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="QuestDetails/time"]
+margin_left = 125.0
+margin_top = -11.0
+margin_right = 319.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="QuestDetails/time"]
+margin_left = -35.304
+margin_top = -11.1118
+margin_right = 4.69604
+margin_bottom = 46.8882
+texture = ExtResource( 17 )
+
+[node name="NoQuests" type="Label" parent="."]
+visible = false
+margin_left = 125.842
+margin_top = 16.6555
+margin_right = 546.842
+margin_bottom = 58.6555
+custom_fonts/font = ExtResource( 13 )
+text = "There are no quests available"
