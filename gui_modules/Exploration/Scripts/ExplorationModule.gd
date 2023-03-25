@@ -1488,9 +1488,9 @@ func faction_upgrade(pressed, pressed_button, guild):
 			continue
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
-			"Price: "
+			"Cost: "
 			+ str(i.cost[currentupgradelevel])
-			+ " faction points."
+			+ " points"
 		)
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
@@ -2265,7 +2265,7 @@ func see_quest_info(quest):
 				globals.connecttexttooltip(newbutton, tooltiptext)
 				text += "\nWork duration: " + time + ' days.'
 			'special_task':
-				var t_text = "Complete one time task"
+				var t_text = tr("QUESTCOMPLETETASK")
 				if i.has('name'):
 					t_text += ": " + tr(i.name)
 				if i.has('icon'):
@@ -2351,10 +2351,11 @@ func see_quest_info(quest):
 						)
 					)
 				)
-				newbutton.get_node("Icon").texture = images.icons[i.code]
+				newbutton.get_node("Icon").texture = images.icons["guilds_" + quest.source + "_colored"]
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = (
+				
+				globals.connecttexttooltip(newbutton, (
 					"Reputation ("
 					+ quest.source
 					+ "): "
@@ -2371,7 +2372,7 @@ func see_quest_info(quest):
 						)
 					)
 					+ "(Master Charm Bonus)"
-				)
+				))
 	$QuestBoard/QuestDetails/Requester.text = ""
 	$QuestBoard/QuestDetails/Requester.text += tr(input_handler.active_area.factions[quest.source].name) + " "
 
