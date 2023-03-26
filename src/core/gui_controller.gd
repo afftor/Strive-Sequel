@@ -18,6 +18,7 @@ var char_creation
 var dialogue
 var travel
 var upgrades
+var combat
 
 
 var current_screen #reference to the current scene visible (Mansion, Exploration, Inventory, etc.).
@@ -95,6 +96,8 @@ func revert_scenes_data():
 
 func update_modules():
 	if current_screen == null:
+		return
+	if current_screen == combat:
 		return
 	if dialogue != null && dialogue.is_visible_in_tree():
 		dialogue.raise()
