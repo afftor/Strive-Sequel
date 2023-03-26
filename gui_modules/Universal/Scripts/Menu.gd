@@ -153,8 +153,9 @@ func options(pressed, pressed_button):
 	$Options.open()
 
 func gallery():
+	$Gallery.close_state = false
 	$Gallery.set_state("story")
-	$Gallery.open_galery()
+	$Gallery.open_gallery()
 
 
 func credits(pressed, pressed_button):

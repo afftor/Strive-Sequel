@@ -26,7 +26,7 @@ func _ready():
 	$EroButton.set_meta("type", "ero")
 	$SceneButton.connect("pressed", self, "set_state", ["scenes"])
 	$SceneButton.set_meta("type", "scenes")
-	$CloseButton.connect("pressed", self, "close_galery")
+	$CloseButton.connect("pressed", self, "close_gallery")
 	set_state("story")
 #	load_images("story")
 #	show_scene_images() 
@@ -126,14 +126,14 @@ func show_fullscreen(image): # image:string
 		gui_controller.windows_opened.append($FullScreenImage)
 
 
-func open_galery():
+func open_gallery():
 	ResourceScripts.core_animations.UnfadeAnimation(self)
 	yield(get_tree().create_timer(0.3), "timeout")
 	gui_controller.current_screen = self
 	show()
 
 
-func close_galery():
+func close_gallery():
 	
 	if close_state == true:
 		gui_controller.close_scene(self)
