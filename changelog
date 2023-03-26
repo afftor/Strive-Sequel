@@ -1,7 +1,11 @@
 0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
+Added option to see gallery from mansion screen
 Added shield item into the game
+Fixed issues with quests triggering fights at wrong places/switching screens
+Fixed some quest texts
+Fixed characters with max growth factor not generating
 0.6.8c
 Fixed a critical issue with scene clearing on leaving to main menu
 Fixed some more bugs related to events

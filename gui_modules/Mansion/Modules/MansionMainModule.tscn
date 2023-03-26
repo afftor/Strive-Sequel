@@ -179,9 +179,6 @@ margin_bottom = 69.0
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="MenuButton"]
 margin_right = 116.0

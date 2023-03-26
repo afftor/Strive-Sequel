@@ -46,6 +46,7 @@ func _ready():
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
+	gui_controller.add_close_button($QuestBoard)
 
 	
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
@@ -2067,9 +2068,14 @@ func item_sell_confirm(value):
 	update_buy_list()
 
 
-func quest_board(plug , plug1):
-	var gallery_scene = preload("res://gui_modules/Exploration/Modules/QuestBoard.tscn").instance()
-	add_child(gallery_scene)
+func quest_board(pressed, pressed_button):
+	$QuestBoard.show()
+	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
+	self.current_pressed_area_btn = pressed_button
+	if pressed:
+		unfade($QuestBoard)
+	else:
+		fade($QuestBoard)
 
 
 func change_texture(button, state):
