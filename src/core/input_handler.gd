@@ -1654,3 +1654,11 @@ func import_deform_parameter(to_mat, from_mat):
 			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
 	to_mat.set_shader_param('power', from_mat.get_shader_param('power'))
 
+func is_descendant_of_current_screen(nd):
+	if gui_controller.current_screen == null:
+		return true
+	while nd != null:
+		if nd == gui_controller.current_screen:
+			return true
+		nd = nd.get_parent()
+	return false

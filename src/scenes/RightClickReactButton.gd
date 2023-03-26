@@ -24,7 +24,8 @@ func _input(event):
 
 func disable():
 	if !indialog and gui_controller.dialogue != null and gui_controller.dialogue.is_visible() || \
-		gui_controller.inventory != null && gui_controller.inventory.is_visible():
+		gui_controller.inventory != null && gui_controller.inventory.is_visible() || \
+		!input_handler.is_descendant_of_current_screen(self):
 		return true
 	return false
 
