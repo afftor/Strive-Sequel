@@ -60,8 +60,9 @@ var ero_scenes = [
  'aire_ana4',
  'force_cali1',
  'mae_scene1',
+ 'mae_scene3',
  'heleviel1',
-'lilia_sex_1_3',
+ 'lilia_sex_1_3',
 'cali_touching_1',
 'cali_bj_happy_1',
 #'amelia_cali_1','amelia_cali_2','amelia_cali_3',
@@ -72,11 +73,7 @@ var ero_scenes = [
 'cali_bowl_1',
 'cali_bowl_naked_1',
 'zephyra_bath_1',
-'zephyra_bath_2',
-'zephyra_bath_4',
-'stag_sex_1',
-'stag_sex_2',
-'stag_sex_3',] 
+'stag_sex_1',] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -95,7 +92,8 @@ var ero_scenes_collection = {
 	"anastasia_aire":['anastasia_aire1', 'anastasia_aire2', 'anastasia_aire3'],
 	"aire_ana":['aire_ana1', 'aire_ana2', 'aire_ana3','aire_ana4', 'aire_ana5', 'aire_ana6'],
 	"force_cali":['force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6'],
-	"mae_scene":['mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10'],
+	"mae_scene":['mae_scene1', 'mae_scene2'],
+	"mae_scene_ritual":['mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7'],
 	"heleviel":[ 'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4'],
 	"lilia_sex_1_":['lilia_sex_1_3'],
 	"cali_touching_":['cali_touching_1','cali_touching_2','cali_touching_3','cali_touching_4'],
@@ -105,7 +103,9 @@ var ero_scenes_collection = {
 	"halloween_scene":["halloween_scene"],
 	"lira_sex_":["lira_sex_1","lira_sex_2","lira_sex_3"],
 	"cali_bowl_":["cali_bowl_1","cali_bowl_2"],
-	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"]
+	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
+	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
+	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"]
 }
 #so these arrays are needed for storing order 
 
