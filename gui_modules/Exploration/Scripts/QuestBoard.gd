@@ -61,7 +61,8 @@ func quest_board():
 	
 
 
-func see_quest_info(quest): 
+func see_quest_info(quest):
+	var req_counter : int = 0
 	for i in $ScrollContainer/VBoxContainer2.get_children():
 		if i.name == 'Button':
 			continue
@@ -70,12 +71,13 @@ func see_quest_info(quest):
 	input_handler.ghost_items.clear()
 	selectedquest = quest
 	input_handler.selectedquest = quest
-	input_handler.ClearContainer($QuestDetails/Panel/questreqs)
-	input_handler.ClearContainer($QuestDetails/Panel/questrewards)
+	input_handler.ClearContainer($QuestDetails/Panel/VBoxContainer/req/questreqs)
+	input_handler.ClearContainer($QuestDetails/Panel/VBoxContainer/Label/questrewards)
 	var text_name = '[center]' + tr(quest.name) + '[/center]\n'
 	var text =  tr(quest.descript)
 	for i in quest.requirements:
-		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/Panel/questreqs)
+		req_counter += 1
+		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/Panel/VBoxContainer/req/questreqs)
 		match i.code:
 			'kill_monsters':
 #				newbutton.texture = images.icons.quest_enemy
@@ -176,7 +178,8 @@ func see_quest_info(quest):
 						stats[r.stat] = r.value
 					if r.code == "has_profession" && r.check:
 						prof = r.profession
-						var profbutton = input_handler.DuplicateContainerTemplate($QuestDetails/Panel/questreqs)
+						var profbutton = input_handler.DuplicateContainerTemplate($QuestDetails/Panel/VBoxContainer/req/questreqs)
+						req_counter += 1
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon
 						var profname = classesdata.professions[prof].name
@@ -210,11 +213,15 @@ func see_quest_info(quest):
 					newbutton.get_node("Icon").texture = load(i.icon)
 				text += t_text
 				globals.connecttexttooltip(newbutton, t_text)
-
+	
+	if req_counter > 2:
+		$QuestDetails/Panel/VBoxContainer/req.rect_min_size = Vector2(0,150)
+	else:
+		$QuestDetails/Panel/VBoxContainer/req.rect_min_size = Vector2(0,75)
 
 	for i in quest.rewards:
 		var newbutton = input_handler.DuplicateContainerTemplate(
-			$QuestDetails/Panel/questrewards
+			$QuestDetails/Panel/VBoxContainer/Label/questrewards
 		)
 		match i.code:
 			'gear':
@@ -329,3 +336,8 @@ func accept_quest():
 	category = "all"
 	quest_board()
 	
+
+
+func _on_Button_pressed():
+	var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/Panel/VBoxContainer/req/questreqs)
+	pass # Replace with function body.

@@ -62,6 +62,9 @@ margin_right = 1868.0
 margin_bottom = 1040.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="QuestBoardBG" type="Panel" parent="."]
 show_behind_parent = true
@@ -235,8 +238,8 @@ margin_left = 24.0
 margin_top = 10.0
 margin_right = 205.0
 margin_bottom = 83.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Quest Title111 111111"
 autowrap = true
 __meta__ = {
@@ -248,8 +251,8 @@ margin_left = 96.0
 margin_top = 52.0
 margin_right = 205.0
 margin_bottom = 82.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Requester"
 align = 2
 valign = 1
@@ -287,8 +290,8 @@ margin_left = 41.0
 margin_top = 91.0
 margin_right = 425.0
 margin_bottom = 289.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="QuestDetails/Panel"]
@@ -296,93 +299,50 @@ margin_left = 39.0
 margin_top = 42.0
 margin_right = 425.0
 margin_bottom = 91.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 28 )
 custom_fonts/bold_italics_font = ExtResource( 28 )
 custom_fonts/italics_font = ExtResource( 28 )
 custom_fonts/bold_font = ExtResource( 28 )
 custom_fonts/normal_font = ExtResource( 28 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label2" type="Label" parent="QuestDetails/Panel"]
-margin_left = 39.0
-margin_top = 327.501
-margin_right = 201.0
-margin_bottom = 362.501
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestDetails/Panel"]
+margin_left = 41.0
+margin_top = 289.0
+margin_right = 425.0
+margin_bottom = 567.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="req" type="Label" parent="QuestDetails/Panel/VBoxContainer"]
+margin_right = 384.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Requirements"
 
-[node name="Label" type="Label" parent="QuestDetails/Panel"]
-margin_left = 39.0
-margin_top = 427.652
-margin_right = 147.0
-margin_bottom = 462.652
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "Rewards"
-
-[node name="questrewards" type="HBoxContainer" parent="QuestDetails/Panel"]
-margin_left = 201.0
-margin_top = 407.0
-margin_right = 434.0
-margin_bottom = 482.0
+[node name="questreqs" type="GridContainer" parent="QuestDetails/Panel/VBoxContainer/req"]
+margin_left = 162.0
+margin_right = 395.0
+margin_bottom = 75.0
 theme = ExtResource( 7 )
-alignment = 1
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Button" type="TextureButton" parent="QuestDetails/Panel/questrewards"]
+[node name="Button" type="TextureButton" parent="QuestDetails/Panel/VBoxContainer/req/questreqs"]
 visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-
-[node name="Icon" type="TextureRect" parent="QuestDetails/Panel/questrewards/Button"]
-margin_left = 5.0
-margin_top = 6.0
-margin_right = 70.0
-margin_bottom = 69.0
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="amount" type="Label" parent="QuestDetails/Panel/questrewards/Button"]
-visible = false
-margin_left = 3.0
-margin_top = 46.0
-margin_right = 72.0
-margin_bottom = 75.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "100"
-align = 2
-
-[node name="questreqs" type="HBoxContainer" parent="QuestDetails/Panel"]
-margin_left = 201.0
-margin_top = 312.0
-margin_right = 434.0
-margin_bottom = 387.0
-theme = ExtResource( 7 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="QuestDetails/Panel/questreqs"]
-visible = false
-margin_left = 79.0
-margin_right = 154.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
 theme = ExtResource( 7 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 12 )
@@ -390,7 +350,7 @@ texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="Icon" type="TextureRect" parent="QuestDetails/Panel/questreqs/Button"]
+[node name="Icon" type="TextureRect" parent="QuestDetails/Panel/VBoxContainer/req/questreqs/Button"]
 margin_left = 6.0
 margin_top = 7.0
 margin_right = 70.0
@@ -401,24 +361,84 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="amount" type="Label" parent="QuestDetails/Panel/questreqs/Button"]
+[node name="amount" type="Label" parent="QuestDetails/Panel/VBoxContainer/req/questreqs/Button"]
 visible = false
 margin_left = 3.0
 margin_top = 46.0
 margin_right = 70.0
 margin_bottom = 75.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 2
+
+[node name="Label" type="Label" parent="QuestDetails/Panel/VBoxContainer"]
+margin_top = 85.0
+margin_right = 384.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 75 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rewards"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="questrewards" type="GridContainer" parent="QuestDetails/Panel/VBoxContainer/Label"]
+margin_left = 162.0
+margin_right = 395.0
+margin_bottom = 75.0
+theme = ExtResource( 7 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="QuestDetails/Panel/VBoxContainer/Label/questrewards"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="QuestDetails/Panel/VBoxContainer/Label/questrewards/Button"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 70.0
+margin_bottom = 69.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="QuestDetails/Panel/VBoxContainer/Label/questrewards/Button"]
+visible = false
+margin_left = 3.0
+margin_top = 46.0
+margin_right = 72.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 2
+
+[node name="GridContainer" type="GridContainer" parent="QuestDetails/Panel/VBoxContainer"]
+margin_top = 170.0
+margin_right = 384.0
+margin_bottom = 170.0
 
 [node name="time" type="Label" parent="QuestDetails/Panel"]
 margin_left = 76.304
 margin_top = 577.918
 margin_right = 184.304
 margin_bottom = 612.918
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Limit:"
 
 [node name="Label" type="Label" parent="QuestDetails/Panel/time"]
@@ -426,8 +446,8 @@ margin_left = 125.0
 margin_top = -11.0
 margin_right = 319.0
 margin_bottom = 35.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="QuestDetails/Panel/time"]
 margin_left = -35.304
@@ -442,10 +462,10 @@ margin_top = 740.842
 margin_right = 377.0
 margin_bottom = 808.842
 theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 5 )
 text = "Accept"
 
 [node name="NoQuests" type="Label" parent="."]
@@ -455,3 +475,12 @@ margin_right = 1005.58
 margin_bottom = 238.752
 custom_fonts/font = ExtResource( 13 )
 text = "There are no suitable quests available"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1425.0
+margin_top = 867.0
+margin_right = 1548.0
+margin_bottom = 900.0
+text = "test"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
