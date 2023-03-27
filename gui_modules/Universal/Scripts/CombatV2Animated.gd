@@ -166,6 +166,9 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	# input_handler.ActivateTutorial("combat")
 	show()
 	input_handler.combat_node = self
+	gui_controller.combat = self
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = self
 	autoskill = null
 	turns = 0
 	$Combatlog/RichTextLabel.clear()
@@ -206,7 +209,7 @@ func FinishCombat(victory = true):
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.skills.combat_cooldowns.clear()
-
+	
 	for p in playergroup.values():
 		var ch = characters_pool.get_char_by_id(p)
 		if ch.hp <=0:
@@ -243,6 +246,8 @@ func FinishCombat(victory = true):
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.is_active = false
 	input_handler.combat_node = null
+	gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.combat = null
 
 
 func select_actor():
