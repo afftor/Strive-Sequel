@@ -82,3 +82,5 @@ func gallery():
 	var gallery_scene = preload("res://gui_modules/Universal/Modules/Gallery.tscn").instance()
 	get_tree().root.add_child(gallery_scene)
 	gallery_scene.close_state = true
+	gallery_scene.open_gallery()
+	hide()

@@ -35,7 +35,6 @@ anchor_bottom = 1.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 153.037 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 960.151, 74.0, 1845.74 ]
 }
 test_mode = true
@@ -43,13 +42,14 @@ test_mode = true
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 0
 texture = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="."]
 margin_right = 1920.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Gallery"
 align = 1
 valign = 1
@@ -73,8 +73,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="StoryButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Story"
 align = 1
 valign = 1
@@ -98,8 +98,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="EroButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Ero"
 align = 1
 valign = 1
@@ -120,8 +120,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="SceneButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Scenes"
 align = 1
 valign = 1

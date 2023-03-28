@@ -53,8 +53,8 @@ margin_left = 74.2
 margin_top = 29.136
 margin_right = 308.2
 margin_bottom = 80.136
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Active Tasks"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,8 +106,8 @@ margin_right = 397.0
 margin_bottom = 508.0
 size_flags_vertical = 3
 theme = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 13 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,8 +162,8 @@ margin_left = 32.5641
 margin_top = 48.7934
 margin_right = 72.5641
 margin_bottom = 72.7934
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 23 )
 text = "1"
 align = 2
 
@@ -217,8 +217,8 @@ margin_left = 30.6155
 margin_top = 46.5347
 margin_right = 70.6155
 margin_bottom = 70.5347
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 23 )
 text = "1"
 align = 2
 
@@ -253,11 +253,11 @@ margin_left = 382.0
 margin_top = 716.948
 margin_right = 599.002
 margin_bottom = 761.948
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 13 )
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
-custom_fonts/font = ExtResource( 13 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Complete"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -269,11 +269,11 @@ margin_left = 382.0
 margin_top = 716.948
 margin_right = 599.002
 margin_bottom = 761.948
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 13 )
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
-custom_fonts/font = ExtResource( 13 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Select Character"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -284,11 +284,11 @@ margin_left = 599.002
 margin_top = 716.948
 margin_right = 816.004
 margin_bottom = 761.948
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 13 )
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
-custom_fonts/font = ExtResource( 13 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Forfeit"
 
 [node name="Main" type="TextureButton" parent="."]

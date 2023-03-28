@@ -84,9 +84,6 @@ region_rect = Rect2( 0, 0, 210, 58 )
 
 [node name="Menu" type="Control"]
 script = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="TextureRect" parent="."]
 margin_right = 2160.0
@@ -661,7 +658,15 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.8b
+bbcode_text = "0.6.9
+Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
+Added new minor quest and recruitable character
+Added option to see gallery from mansion screen
+Added shield item into the game
+Fixed issues with quests triggering fights at wrong places/switching screens
+Fixed some quest texts
+Fixed characters with max growth factor not generating
+0.6.8b
 Fixed some gui issues
 Fixed multiple text errors where translation didn't trigger
 0.6.8a
@@ -1431,7 +1436,15 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.8b
+text = "0.6.9
+Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
+Added new minor quest and recruitable character
+Added option to see gallery from mansion screen
+Added shield item into the game
+Fixed issues with quests triggering fights at wrong places/switching screens
+Fixed some quest texts
+Fixed characters with max growth factor not generating
+0.6.8b
 Fixed some gui issues
 Fixed multiple text errors where translation didn't trigger
 0.6.8a
