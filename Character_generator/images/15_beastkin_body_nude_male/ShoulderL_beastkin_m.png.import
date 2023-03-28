@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quest_paper_small_hover.png-c2fcb0f3ccde4ca065e7e38099a8b883.stex"
+path="res://.import/ShoulderL_beastkin_m.png-9309cf47b6a0500e1628c592a1398df0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/explore/QuestBoard/quest_paper_small_hover.png"
-dest_files=[ "res://.import/quest_paper_small_hover.png-c2fcb0f3ccde4ca065e7e38099a8b883.stex" ]
+source_file="res://Character_generator/images/15_beastkin_body_nude_male/ShoulderL_beastkin_m.png"
+dest_files=[ "res://.import/ShoulderL_beastkin_m.png-9309cf47b6a0500e1628c592a1398df0.stex" ]
 
 [params]
 

@@ -1343,7 +1343,7 @@ script = ExtResource( 61 )
 
 [node name="Hairs_mesh" type="Polygon2D" parent="HumanF1/Spine/Head/Hair"]
 material = ExtResource( 63 )
-position = Vector2( -198.419, 428.001 )
+position = Vector2( -197.998, 428.002 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
 texture = ExtResource( 24 )
@@ -1409,6 +1409,13 @@ texture = ExtResource( 44 )
 [node name="Head_armor_tex" type="Sprite" parent="HumanF1/Spine/Head"]
 rotation = -1.5708
 
+[node name="Ears_humanoid_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+material = SubResource( 8 )
+position = Vector2( 591, -17.0011 )
+rotation = -1.58825
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 29 )
+
 [node name="Horns_tex" type="Sprite" parent="HumanF1/Spine/Head"]
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 material = ExtResource( 42 )
@@ -1418,11 +1425,3 @@ texture = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Ears_humanoid_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-visible = false
-material = SubResource( 8 )
-position = Vector2( 567, -10.002 )
-rotation = -1.5708
-scale = Vector2( 0.95, 0.95 )
-texture = ExtResource( 29 )
