@@ -3057,35 +3057,35 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_daisy_admirer_location = [
 		{
-			text = tr("quest_daisy_admirer_location1"), 
+			text = tr("QUEST_DAISY_ADMIRER_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]
 		}
 	],
 	quest_gryphon_cave_location = [
 		{
-			text = tr("quest_gryphon_cave_location1"), 
+			text = tr("QUEST_GRYPHON_CAVE_LOCATION1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
 	quest_leon_forest = [
 		{
-			text = 'Search For Leon', 
+			text = tr("QUEST_LEON_FOREST_2_1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}],
 			args = [{code = 'start_event', data = 'leon_fight_1', args = []}]
 		},
 	],
 	quest_leon_forest_2 = [
 		{
-			text = tr("quest_leon_forest_2_1"), 
+			text = tr("QUEST_LEON_FOREST_2_1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
-			text = tr("quest_white_stag_location1"), 
+			text = tr("QUEST_WHITE_STAG_LOCATION1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},
