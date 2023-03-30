@@ -1834,6 +1834,8 @@ func update_queue(queue, current): #don't call in asynchroned state
 
 var active_position
 func select_skill_for_position(position):
+	if !allowaction: 
+		return
 	active_position = position
 	var person = activecharacter
 	var active_panel = 1
