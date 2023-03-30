@@ -2018,6 +2018,8 @@ func valuecheck(dict):
 			return false
 		"has_money":
 			return ResourceScripts.game_res.if_has_money(dict['value'])
+		"has_loan_money":
+			return ResourceScripts.game_res.if_has_money(get_loan_sum(dict.stage - 1))
 #		"has_property":
 #			return if_has_property(dict['prop'], dict['value'])
 		"has_hero":
