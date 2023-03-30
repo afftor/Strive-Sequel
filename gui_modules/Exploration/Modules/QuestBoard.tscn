@@ -25,7 +25,7 @@
 [ext_resource path="res://assets/images/iconstraits/guilds_mages.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_active2var.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/iconstraits/guilds_fighters.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/explore/QuestBoard/all guild.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/dynamicfont_ledger.tres" type="DynamicFont" id=26]
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_unactive.png" type="Texture" id=27]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_30px.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=29]
@@ -193,15 +193,14 @@ texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 24 )
 
-[node name="TextureRect" type="TextureRect" parent="guildsortVScroll/all"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 9.5
-margin_top = 9.5
-margin_right = -9.5
-margin_bottom = -9.5
-texture = ExtResource( 26 )
-expand = true
+[node name="Label" type="Label" parent="guildsortVScroll/all"]
+margin_left = 7.0
+margin_top = 15.0
+margin_right = 85.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 1, 0.894118, 0.337255, 1 )
+text = "All"
 __meta__ = {
 "_edit_use_anchors_": false
 }
