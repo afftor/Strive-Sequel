@@ -51,22 +51,22 @@ var preset_data = {
 		completed_quests = [],
 		difficulty = 'hard'
 	},
-#	solo = {
-#		code = 'solo',
-#		name = 'solo',
-#		mc = 'custom',
-#		start = 'default_solo',
-#		free_slave_number = 0,
-#		descript = "Start with only a Master. ",
-#		gold = 500,
-#		materials = {meat = 25,fish = 25,bread = 25,vegetables = 25},
-#		items = {},
-#		upgrades = {},
-#		decisions = [],
-#		active_quests = [],
-#		completed_quests = [],
-#		tags = ['solo']
-#	},
+	import = { #don't remove, for import purpose
+		code = 'import',
+		name = 'import',
+		mc = 'custom',
+		start = 'default_solo',
+		free_slave_number = 0,
+		descript = "Start with only a Master. ",
+		gold = 500,
+		materials = {meat = 25,fish = 25,bread = 25,vegetables = 25},
+		items = {},
+		upgrades = {},
+		decisions = [],
+		active_quests = [],
+		completed_quests = [],
+		tags = ['solo', 'hidden']
+	},
 #	sandbox = {
 #		code = 'sandbox',
 #		name = 'sandbox',
