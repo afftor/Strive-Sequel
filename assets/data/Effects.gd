@@ -93,7 +93,7 @@ var effect_table = {
 		type = 'c_static',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'sex', operant = 'eq', value = 'female'},
+			{code = 'stat', stat = 'sex', operant = 'neq', value = 'male'},
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
 		tags = ['recheck_stats'],
