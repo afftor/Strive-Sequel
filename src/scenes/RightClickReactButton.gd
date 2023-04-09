@@ -7,19 +7,31 @@ signal signal_LMB
 var RMBpressed = false
 var indialog = false
 
-func _input(event):
-	if !self.is_visible_in_tree() || disable():
-		return
-	if get_global_rect().has_point(get_global_mouse_position()):
-		if event.is_pressed() && event.is_echo() == false:
-			if event.is_action("RMB"):
-				emit_signal("signal_RMB")
-				RMBpressed = true
-			elif event.is_action('LMB'):
+#func _input(event):
+#	if !self.is_visible_in_tree() || disable():
+#		return
+#	if get_global_rect().has_point(get_global_mouse_position()):
+#		if event.is_pressed() && event.is_echo() == false:
+#			if event.is_action("RMB"):
+#				emit_signal("signal_RMB")
+#				RMBpressed = true
+#			elif event.is_action('LMB'):
+#				emit_signal("signal_LMB")
+#	if event.is_action_released("RMB") && RMBpressed == true:
+#		emit_signal("signal_RMB_release")
+#		RMBpressed = false
+
+func _ready():
+	connect("gui_input", self, "_on_Button_gui_input")
+
+func _on_Button_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_LEFT:
 				emit_signal("signal_LMB")
-	if event.is_action_released("RMB") && RMBpressed == true:
-		emit_signal("signal_RMB_release")
-		RMBpressed = false
+			BUTTON_RIGHT:
+				emit_signal("signal_RMB_release")
+				emit_signal("signal_RMB")
 
 
 func disable():

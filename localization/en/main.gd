@@ -3627,7 +3627,7 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALCRYSTALIZED_ETHERADJ = "Air",
 	MATERIALCRYSTALIZED_ETHERDESCRIPT = "Dull round gems possessing the element of Air. Can be used in craft",
 	MATERIALEARTH_SHARD = "Earth Shard",
-	MATERIALEARTH_SHARDEARTH = "Earth",
+	MATERIALEARTH_SHARDADJ = "Earth",
 	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
 
 	QUESTREQSCOMPLETE = "Quest subtask complete",

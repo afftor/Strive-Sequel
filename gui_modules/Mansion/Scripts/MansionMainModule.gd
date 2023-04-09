@@ -883,7 +883,7 @@ func test_mode():
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
-			i.totalreputation += 5000
+			i.totalreputation += 500
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 		

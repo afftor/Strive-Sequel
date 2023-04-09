@@ -93,7 +93,7 @@ var effect_table = {
 		type = 'c_static',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'sex', operant = 'eq', value = 'female'},
+			{code = 'stat', stat = 'sex', operant = 'neq', value = 'male'},
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
 		tags = ['recheck_stats'],
@@ -2196,7 +2196,7 @@ var effect_table = {
 		target = 'target',
 		name = 'devour',
 		stack = 1,
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		rem_event = [variables.TR_COMBAT_F],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "Spirit devoured",
