@@ -32,6 +32,31 @@ func rebuild(character):
 			apply_transform(transform)
 
 
+func rebuild_cloth(value):
+	#first pass - textures
+	for stat in ['cloth']:
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = value
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if !(transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+	#second pass - all others
+	for stat in ['cloth']:
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = value
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if (transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+
+
 func apply_transform(transform):
 	match transform.type:
 		'texture':
