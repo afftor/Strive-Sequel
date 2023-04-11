@@ -1839,7 +1839,7 @@ var quests = {
 
 	princess_persuasion = {
 		code = 'princess_persuasion',
-		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputaiton, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
+		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputation, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
 		stages = {
 			stage1 = {code ='stage1', name = 'Distressed Damsel', descript = """You've been allowed to persuade Anastasia to succumb to the guilds. Find a way to do so, or agree to her execution."""},
 		},

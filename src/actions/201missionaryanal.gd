@@ -27,7 +27,6 @@ func requirements():
 	for i in takers:
 		if !i.person.has_status('sex_anal'):
 			valid = false
-	
 	return valid
 
 func getname(state = null):

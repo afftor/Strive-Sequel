@@ -114,6 +114,9 @@ margin_top = 1.0
 margin_right = 2157.0
 margin_bottom = 1081.0
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="char_sprite" type="TextureRect" parent="."]
 visible = false
@@ -658,7 +661,11 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.9
+bbcode_text = "0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
+0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
 Added option to see gallery from mansion screen
@@ -1436,7 +1443,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.9
+text = "0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
+0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
 Added option to see gallery from mansion screen

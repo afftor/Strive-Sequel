@@ -274,7 +274,7 @@ var TranslationDict = {
 	ITEMENSLAVING_COLLARDESCRIPT = "Magical slave collar which slowly mends will of the wearer.",
 	ITEMEARRINGS = "Earrings", 
 	ITEMEARRINGSDESCRIPT = "A pair of fancy jewelry.", 
-	ITEMAIRE_BOW = "Aire's Bow",
+	ITEMAIRE_BOW = "",
 	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
@@ -1190,7 +1190,7 @@ var TranslationDict = {
 	RACEHALFKINTANUKIADJ = "Half-Breed Tanuki",
 
 	RACEHUMANDESCRIPT = "Humans are one of the most common races. Their strength comes in their numbers and flexibility, but they generally are rather weak in magic and have low potential growth. Only a few exceptional humans have shown outstanding feats. \n\nHuman society is rather open to others but also quick to anger and start wars even among themselves. While some might act prudish, especially in public, humans in general are very sexually active and do not stray from other humanoid races. ",
-	RACEELFDESCRIPT = "Elves prefer living in the forest and being close to nature with other naturistic races like Dryads and Fairies. They are adept in magic, but their physical strength is fairly mediocre. \n\nElven society is fairly secluded but isn't above contact and trading with other races. Elves rarely show an active interset in sex outside of their social group, often preferring life-long relationships. Still they are considered very appealing and attractive by other races making them in popular demand as slaves.",
+	RACEELFDESCRIPT = "Elves prefer living in the forest and being close to nature with other naturistic races like Dryads and Fairies. They are adept in magic, but their physical strength is fairly mediocre. \n\nElven society is fairly secluded but isn't above contact and trading with other races. Elves rarely show an active interest in sex outside of their social group, often preferring life-long relationships. Still they are considered very appealing and attractive by other races making them in popular demand as slaves.",
 	RACETRIBALELFDESCRIPT = "A rarer version of elves with distinct dark skin. Tribal elves mostly inhabit southern regions and show numerous differences to their common counterparts. They are less prone to magic but possess stronger bodies.\n\nHowever, their society (often separated into tribes) is more secluded and hostile to outsiders, but they are also more open to sex than normal elves.",
 	RACEDARKELFDESCRIPT = "A rare subspecies of elves propagated and trained for combat. Their bluish skin and rare eye colors make them very noticeable and force them to hide their bodies in clothes. Being adepts in both physical techniques and magic, they often happen to be trained assassins, combatants and sellswords. ",
 	RACEORCDESCRIPT = "Orcs are a semi-sapient race of brutes inhabiting many desert and badland regions. Orcs resemble large, greenish humanoids with strong bodies and bad tempers. Despite that, some orcs are rather capable of fitting into normal society to work as simple bodyguards and soldiers. \n\nCommonly orcs form tribes and aren't above killing each other or any stray groups they deem dangerous. They are also rather fond of forcefully using members of other races for sex but aren't capable of interbreeding with them. ",
@@ -8999,9 +8999,9 @@ Staring her down, you take a good look at her. Slender and bruised, her body isn
 	CALI_ACT2_GONE = """You awake one morning to find your manor's back door open. Your confusion is short-lived as you go down to check on Cali, finding her room empty. Finding the door's lock picked, you curse aloud as it seems, in her desperation, she was able to escape.""",
 	CALI_ACT2_1 = """As you complete your daily errands throughout your mansion you spot Cali, performing the arduous task you assigned her. Stopping to check on her work, you find her sweating profusely in exertion. Her white shirt has become damp and is all but see-through. You consider her a moment, and the nice view of her breasts.
 
-The girl looks far from pleased upon your approach. Her tired eyes are unfocused, she can’t even seem to look directly at you.
+The girl looks far from pleased upon your approach. Her tired eyes are unfocused, she can't even seem to look directly at you.
 
-- What are you staring at, huh?! Haven’t you seen enough already?!""",
+- What are you staring at, huh?! Haven't you seen enough already?!""",
 	CALI_ACT2_1_OPTION_1 = "I look where I please, slave.",
 	CALI_ACT2_1_OPTION_2 = "Keep up the hostility Cali, it'll make it all the sweeter when I take you again.",
 	CALI_ACT2_1_OPTION_3 = "I simply enjoy the view.",
@@ -9029,7 +9029,7 @@ You explain to the dwarf that those are indeed fine, but what you're looking for
 Sigmund:- Limnrov is who you'd want to find. Ask up at the front, the receptionist can take you to ‘em.
 
 With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
-	CALI_ACT2_WORKERS_2 = """Once you bring up the name with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Meeting Limnrov, you see he is an older Dark Elf. His sharp eyes look up at you from the excellent piece he’s currently working on.
+	CALI_ACT2_WORKERS_2 = """Once you bring up the name with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Meeting Limnrov, you see he is an older Dark Elf. His sharp eyes look up at you from the excellent piece he's currently working on.
 
 Limnrov: — I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.""",
 	CALI_ACT2_WORKERS_2_OPTION_1 = "I'm not a courier, I'm a customer.",
@@ -9090,10 +9090,10 @@ When you pull out the collar Cali's eyes light up for the faintest moment. The g
 
 You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
 
-- …Well at least it’s comfortable. But don’t think this changes anything! Especially after what you’ve done…
+- …Well at least it's comfortable. But don't think this changes anything! Especially after what you've done…
 
-The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn’t move away .""",
-	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "There are no bandits here. No one’s going to lay a hand on you. Save for me.",
+The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn't move away .""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "There are no bandits here. No one's going to lay a hand on you. Save for me.",
 	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_2 = "You're far better off than when I found you.",
 	CALI_ACT2_EXQUISITE_COLLAR_2 = """Cali opens her mouth as if to argue against what you've said but stops. She eventually concedes the point with a soft shrug. With that settled you dismiss the girl for the day, leaving her to her duties.""",
 	
@@ -9233,7 +9233,7 @@ The price tag on the book states it costs a measly 50 gold.""",
 	CALI_ACT4_MERCHANT_5 = """The man welcomes you eagerly now, hammering you with questions and suggestions as you pick the book on Wolfkin off the shelf.""",
 	CALI_ACT4_MERCHANT_6 = """Returning home, you leave the book in Cali's room. Perhaps some inspiration into her kind's mating habits will soften her to the idea.""",
 	CALI_ACT4_MAST_1 = """Deciding to check on Cali, you move down to her room and hear soft sighs through the door.""",
-	CALI_ACT4_MAST_2 = """Inching closer, you stay as silent as possible, though the only noise one could hear now is the soft growling and moaning sounds coming from her room. Moving even closer, you can indeed make out Cali's voice as it trembles. You peek inside to see the girl laying on her bed with the book open beside her and a hand down her pants. As Cali’s voice calms, she rolls over to look at the book again..
+	CALI_ACT4_MAST_2 = """Inching closer, you stay as silent as possible, though the only noise one could hear now is the soft growling and moaning sounds coming from her room. Moving even closer, you can indeed make out Cali's voice as it trembles. You peek inside to see the girl laying on her bed with the book open beside her and a hand down her pants. As Cali's voice calms, she rolls over to look at the book again..
 
 Whatever image in the book sparked her need seems to reignite it, the girl's voice quivering and panting as she says,
 
@@ -9249,7 +9249,7 @@ Cali continues to masturbate, occasionally looking at the book as she breathes a
 
 - [name]! W-what are you doing here!
 
-You don't say anything for now, only giving Cali a knowing smile. You let her stumble over her words as it becomes clear she’s been caught in the act.
+You don't say anything for now, only giving Cali a knowing smile. You let her stumble over her words as it becomes clear she's been caught in the act.
 
 - Pervert...
 
@@ -9267,7 +9267,7 @@ The girl only blushes more as you move towards her on the bed. She looks away, h
 The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
 	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning in reply as you push into her.  Eyes rolling back, all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
 
-The sight of the teen squirming around as you pump into her is perfect. She’s serving you willingly, even eagerly now.  Soon the mating becomes rougher as you naturally escalate, your grip tight on her hips as you thrust into her.  
+The sight of the teen squirming around as you pump into her is perfect. She's serving you willingly, even eagerly now.  Soon the mating becomes rougher as you naturally escalate, your grip tight on her hips as you thrust into her.  
 """,
 	CALI_ACT4_FUCK_2 = """- R-right there...
 
@@ -9305,10 +9305,10 @@ The girl comes as told, though she looks far from pleased by the prospect.
 
 - Can this wait, [name]? It's dinner time and I'm starving...
 
-After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up to you with a look of frustration, but it’s obvious her hunger is winning as she stares down at the food in the bowl. """,
+After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up to you with a look of frustration, but it's obvious her hunger is winning as she stares down at the food in the bowl. """,
 	CALI_ACT5_PET_3_OPTION_1 = "I have your food right here.",
 	CALI_ACT5_PET_3_OPTION_2 = "I think you should be eating right here Cali. Like a good girl.",
-	CALI_ACT5_PET_4 = """Cali looks up at you with mild shock, then resignation. It’s clear the girl might have expected you were using her food to coerce her into something.
+	CALI_ACT5_PET_4 = """Cali looks up at you with mild shock, then resignation. It's clear the girl might have expected you were using her food to coerce her into something.
 
 - I... no. Why? I'd look like an animal... This is weird!""",
 	CALI_ACT5_PET_4_OPTION_1 = "Why are you so worried about what you look like?",
@@ -9337,10 +9337,10 @@ The girl kneels down on all fours and hovers above the bowl. Her ass is raised s
 
 Cali:- [Name], what are you doing?
 
-A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she’s unable to focus on her meal for much longer.
+A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
 Cali:- W-wait not th-""",
-	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn’t long before she’d lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
 Cali:- Nhhh...
 
@@ -9954,7 +9954,7 @@ However, you don't feel quite satisfied yet. You resume slamming into her backsi
 - Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
 	
 	GOBLIN_QUEST_0 = """In the morning you receive a letter which, unlike what you usually get, seems quite crudely made, seemingly crafted with home-made paper and ink. You realize it's from a beastkin settlement asking for your help so you decide it might be a good idea to visit it.""",
-	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. I see you’ve received my message. Good, then let me tell you why you’re here. I’ve received a sign from some spirits who want an outsider’s help.""",
+	GOBLIN_QUEST_1 = """- Oh, it's you, [name]. I see you've received my message. Good, then let me tell you why you're here. I've received a sign from some spirits who want an outsider's help.""",
 	GOBLIN_QUEST_1_OPTION_1 = "Who is it from exactly?",
 	GOBLIN_QUEST_1_OPTION_2 = "What a pain...",
 	GOBLIN_QUEST_2_1 = """- Who knows. You will have to figure that out once you get there.
@@ -10006,7 +10006,7 @@ You try to sneak in closer but you stumble on a tree branch and get discovered. 
 	GOBLIN_QUEST_9_2_GOOD = """{color=green|Success}
 
 You manage to get close enough to the goblins without being discovered. You jump out at the last moment with your weapon drawn, making them stumble in shock.""",
-	GOBLIN_QUEST_10 = """Once you’ve established your dominance, you demand to know why they are trespassing here. In response, a goblin girl comes out and waves at you. She drastically stands out from the rest and appears to be the boss around here. 
+	GOBLIN_QUEST_10 = """Once you've established your dominance, you demand to know why they are trespassing here. In response, a goblin girl comes out and waves at you. She drastically stands out from the rest and appears to be the boss around here. 
 
 - Hey, big [boy], no need for violence. We just thought these woods were free otherwise we wouldn't be here. No need to point that big fat stick at me.""",
 	GOBLIN_QUEST_10_OPTION_1 = """What are you doing here?""",
@@ -10015,7 +10015,7 @@ You manage to get close enough to the goblins without being discovered. You jump
 	GOBLIN_QUEST_11_1 = """- Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods. 
 
 But...whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
-	GOBLIN_QUEST_11_2 = """- Hah, true dat. You aren't here to rob us naked, I take it? We'll be leavin’ then. 
+	GOBLIN_QUEST_11_2 = """- Hah, true dat. You aren't here to rob us naked, I take it? We'll be leavin' then. 
 
 But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
 	GOBLIN_QUEST_11_3 = """- Right, right, we need no problems, okay? We'll leave before the sunset.
@@ -10050,10 +10050,10 @@ The White Stag materializes a spear in her hands which she passes to you. Despit
 Despite your rather outrageous suggestion, the White Stag does not seem to be turned off by it.""",
 	GOBLIN_QUEST_15_3_OPTION_1 = """Yes, I find you very appealing""",
 	GOBLIN_QUEST_15_3_OPTION_2 = """No, I think I changed my mind""",
-	GOBLIN_QUEST_HARA_1 = """- Hey ya, it’s you. Knew I would find you here. This might be a bit sudden, but I figured since you’re a big wig over here, I could use someone like you. I wouldn’t mind joining your group, at least for a little while. I’ll even give you some special treatment while I’m with you. What do you say?""",
+	GOBLIN_QUEST_HARA_1 = """- Hey ya, it's you. Knew I would find you here. This might be a bit sudden, but I figured since you're a big wig over here, I could use someone like you. I wouldn't mind joining your group, at least for a little while. I'll even give you some special treatment while I'm with you. What do you say?""",
 	GOBLIN_QUEST_HARA_1_OPTION_1 = """I surely could use someone of your... talent""",
 	GOBLIN_QUEST_HARA_1_OPTION_2 = """Nah""",
-	GOBLIN_QUEST_HARA_2_1 = """- Great, name's Hara, by the way. I look forward to our future relations. You’re a lucky [guy] to have me by your side. I’ve got plans in the workings that will blow you away.""",
+	GOBLIN_QUEST_HARA_2_1 = """- Great, name's Hara, by the way. I look forward to our future relations. You're a lucky [guy] to have me by your side. I've got plans in the workings that will blow you away.""",
 	GOBLIN_QUEST_HARA_2_2 = """- Too bad. Well, maybe you'll change your mind once I have something else to offer, but mind you, it's not going to be as simple to get me then.""",
 	GOBLIN_QUEST_SEX_1 = """The White Stag seems amused by your request, and her expression softens for the first time since you met her. Without warning, she pushes you down, straddling you with her powerful thighs. You marvel at her beauty as she towers above you, her long white hair cascading around her shoulders. It does not take long for her to feel your erection.
 
