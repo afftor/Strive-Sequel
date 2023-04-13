@@ -616,11 +616,11 @@ var data = {
 	erlern_encounter_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
-		text = [{text = 'ERLERN_ENCOUNTER_START', reqs = [],}], 
+		text = [{text = 'ERLERN_ENCOUNTER_START', reqs = []},
+		{text = '', reqs = [{type = 'dialogue_seen', check = false, value = 'ERLERN_ENCOUNTER_1'}], bonus_effects = [{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}]} ], 
 		options = [ {
 			code = 'erlern_encounter_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-		bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'},
-		{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}],
+		bonus_effects = [{code = 'complete_quest', value = 'sword_artifact_quest'}],
 		}, ]
 	},
 	
@@ -655,7 +655,7 @@ var data = {
 		text = [{text = 'ERLERN_ENCOUNTER_3_1', reqs = []} ], 
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage2'}, {code = 'update_location'} ]
+			bonus_effects = [ {code = 'progress_quest', value = 'getting_lira_quest', stage = 'stage2'}, {code = 'update_location'}]
 		}, ]
 	},
 	

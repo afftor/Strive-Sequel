@@ -10238,7 +10238,7 @@ You aren't able to hear her last words as your exhaustion takes over, making you
 	
 	GOBLIN_QUEST_NAME = "Greens in the woods",
 	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
-	GOBLIN_QUEST_STAGE_0 = "", 
+	GOBLIN_QUEST_STAGE_0 = "", # go to tribe
 	GOBLIN_QUEST_STAGE_1 = "Travel to Desolated Woods",
 	GOBLIN_QUEST_STAGE_2 = "Search for the culprits at Desolated Woods",
 	GOBLIN_QUEST_STAGE_3 = "Ask guild leaders for the clues for traps",
