@@ -30,6 +30,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'goblin_quest', stage = 'stage1'},
+			{code = 'update_city'},
 			{code = 'make_quest_location', value = 'quest_goblin_location'}] 
 		}, ]
 	},

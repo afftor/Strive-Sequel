@@ -1312,6 +1312,7 @@ func faction_disassemble(pressed, pressed_button, guild):
 
 func faction_guild_shop(pressed, pressed_button, guild):
 	hide_guild_panels()
+	$GuildShop/NumberSelection2/ItemIcon.texture = null
 	$GuildShop/NumberSelection2.hide()
 	gui_controller.win_btn_connections_handler(pressed, $GuildShop, pressed_button)
 	active_faction = guild
@@ -1334,6 +1335,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.get_node("Amount").show()
 		newbutton.get_node("Amount").text = str(guild.reputation_shop.items[item][0])
 		newbutton.connect("pressed", self, "buy_item", [item_ref, guild.reputation_shop.items[item][1], guild.reputation_shop.items[item][0]])
+		newbutton.connect("pressed", self, "guild_shop_item_selected", [newbutton])
 		if Items.itemlist.has(item):
 			globals.connecttempitemtooltip(newbutton, item_ref, 'geartemplate')
 		else:
@@ -1348,6 +1350,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
+		newbutton.connect("pressed", self, "guild_shop_item_selected", [newbutton])
 		var person = ResourceScripts.game_party.get_master()
 		var prof = classesdata.professions[cls]
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)
@@ -1376,10 +1379,15 @@ func faction_guild_shop(pressed, pressed_button, guild):
 	elif !pressed && $GuildShop.is_visible():
 		fade($GuildShop, 0.3)
 
+func guild_shop_item_selected(button):
+	for ch in $GuildShop/ScrollContainer/VBoxContainer.get_children():
+		ch.pressed = button == ch
+
 var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
 
 func buy_item(item_ref, price, amount, type = "item"):
 	var item_name = ''
+	var item_icon = null
 	if type == "class":
 		item_name = item_ref.capitalize()
 		if ResourceScripts.game_progress.unlocked_classes.has(item_ref):
@@ -1389,6 +1397,10 @@ func buy_item(item_ref, price, amount, type = "item"):
 			return
 	if type == "item":
 		item_name = item_ref.name
+		item_icon = item_ref.icon
+	elif type == "class":
+		if classesdata.professions.has(item_ref):
+			item_icon = classesdata.professions[item_ref].icon
 	item_to_buy = item_ref
 	for node in $GuildShop/NumberSelection2.get_children():
 		if node.name in hide_elems_arr:
@@ -1400,7 +1412,8 @@ func buy_item(item_ref, price, amount, type = "item"):
 		price,
 		amount,
 		10 * amount,
-		true
+		true,
+		item_icon
 	)
 
 

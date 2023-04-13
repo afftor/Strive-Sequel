@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -239,8 +239,8 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="GuildBG"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1890.0
+margin_bottom = 1050.0
 texture = ExtResource( 84 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2261,6 +2261,7 @@ __meta__ = {
 visible = false
 margin_right = 514.0
 margin_bottom = 108.0
+toggle_mode = true
 texture_normal = ExtResource( 109 )
 texture_pressed = ExtResource( 108 )
 texture_hover = ExtResource( 106 )
@@ -2394,11 +2395,23 @@ text = "Item Name"
 align = 1
 valign = 1
 
+[node name="ItemIcon" type="TextureRect" parent="GuildShop/NumberSelection2"]
+margin_left = 41.97
+margin_top = 40.535
+margin_right = 91.97
+margin_bottom = 90.535
+texture = ExtResource( 71 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ItemAmount" type="Label" parent="GuildShop/NumberSelection2"]
-margin_left = 36.9699
+margin_left = 106.97
 margin_top = 56.0
-margin_right = 78.9699
-margin_bottom = 88.0
+margin_right = 148.97
+margin_bottom = 91.0
 custom_fonts/font = ExtResource( 8 )
 text = "x 1"
 align = 1

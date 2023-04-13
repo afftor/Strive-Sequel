@@ -56,6 +56,7 @@ func update():
 			$ItemIcon.material = null
 	if get_parent().name == "GuildShop":
 		$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - (cost / $HSlider.step) * $HSlider.value) < 0
+		$ItemIcon.texture = icon
 	if get_parent().name in ["AreaShop", "GuildShop"]:
 		$ItemPrice.text = "x " + str($HSlider.value * (cost / $HSlider.step)) 
 	$ItemAmount.text = "x " + str($HSlider.value) 

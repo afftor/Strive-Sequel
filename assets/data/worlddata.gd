@@ -2880,8 +2880,8 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("BEASTKIN_CAPITAL14"), 
 			reqs = [#{type = "quest_completed", name = "getting_lira_quest", check = true},
-			{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage0', state = true},
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}], 
+#			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}
+			{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage0', state = true},], 
 			args = [{code = 'start_event', data = 'goblin_quest_1', args = []}]
 		},
 	],
