@@ -37,7 +37,7 @@ func _ready():
 	globals.connecttexttooltip($SkillPanel/Categories/combat, "Combat")
 	globals.connecttexttooltip($SkillPanel/Categories/spells, "Spell")
 	globals.connecttexttooltip($SkillPanel/Categories/support, "Support")
-	globals.connecttexttooltip($SkillPanel/Categories/aoe, "AoE")
+	globals.connecttexttooltip($SkillPanel/Categories/aoe, "Area Of Effect")
 	globals.connecttexttooltip($SkillPanel/Categories/heal, "Heal")
 	globals.connecttexttooltip($SkillTooltip/icon_cooldown, "Cooldown")
 	globals.connecttexttooltip($SkillTooltip/icon_usage, "Manacost")

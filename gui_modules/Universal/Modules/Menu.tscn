@@ -40,14 +40,6 @@
 [ext_resource path="res://assets/images/buttons/mainmenu/button_itch.png" type="Texture" id=60]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_fandom.png" type="Texture" id=61]
 
-[sub_resource type="DynamicFont" id=5]
-size = 64
-outline_size = 3
-outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 29 )
-
 [sub_resource type="StyleBoxTexture" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -55,6 +47,14 @@ font_data = ExtResource( 29 )
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxTexture" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+outline_size = 3
+outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 128
@@ -114,6 +114,9 @@ margin_top = 1.0
 margin_right = 2157.0
 margin_bottom = 1081.0
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="char_sprite" type="TextureRect" parent="."]
 visible = false
@@ -139,13 +142,13 @@ margin_right = 319.0
 margin_bottom = 90.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Continue"
 
@@ -155,13 +158,13 @@ margin_right = 345.0
 margin_bottom = 188.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "New game"
 __meta__ = {
@@ -175,13 +178,13 @@ margin_right = 252.0
 margin_bottom = 286.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Load"
 __meta__ = {
@@ -195,13 +198,13 @@ margin_right = 296.0
 margin_bottom = 384.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Options"
 __meta__ = {
@@ -215,13 +218,13 @@ margin_right = 287.0
 margin_bottom = 482.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Credits"
 __meta__ = {
@@ -235,13 +238,13 @@ margin_right = 262.0
 margin_bottom = 580.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Mods"
 __meta__ = {
@@ -255,13 +258,13 @@ margin_right = 291.0
 margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Gallery"
 __meta__ = {
@@ -275,13 +278,13 @@ margin_right = 241.0
 margin_bottom = 776.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
-custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
-custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.913725, 0.894118, 0.737255, 1 )
+custom_colors/font_color_pressed = Color( 0.733333, 0.74902, 0.545098, 1 )
 toggle_mode = true
 text = "Quit"
 __meta__ = {
@@ -352,8 +355,8 @@ margin_left = 563.0
 margin_top = 59.0
 margin_right = 1413.0
 margin_bottom = 210.0
-custom_colors/font_color = Color( 0.980392, 0.960784, 0.772549, 1 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.980392, 0.960784, 0.772549, 1 )
 text = "Strive: Conquest"
 align = 1
 
@@ -375,8 +378,8 @@ margin_top = 1037.0
 margin_right = 115.0
 margin_bottom = 1072.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.909804, 0.898039, 0.756863, 1 )
 custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.909804, 0.898039, 0.756863, 1 )
 text = "ver. 0.1.0"
 __meta__ = {
 "_editor_description_": ""
@@ -440,8 +443,8 @@ __meta__ = {
 [node name="NewGameLabel" type="Label" parent="NewGamePanel"]
 margin_right = 709.0
 margin_bottom = 85.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "New game"
 align = 1
 valign = 1
@@ -454,8 +457,8 @@ margin_left = 8.0
 margin_top = 482.0
 margin_right = 296.0
 margin_bottom = 567.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Settings"
 align = 1
 valign = 1
@@ -505,8 +508,8 @@ margin_left = 72.0
 margin_top = 9.0
 margin_right = 264.0
 margin_bottom = 41.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -538,8 +541,8 @@ margin_left = 310.0
 margin_top = 119.0
 margin_right = 629.0
 margin_bottom = 447.0
-custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/normal_font = SubResource( 7 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
 
 [node name="Label" type="Label" parent="NewGamePanel"]
@@ -548,8 +551,8 @@ margin_left = 736.036
 margin_top = 42.9593
 margin_right = 831.036
 margin_bottom = 66.9593
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Settings"
 
 [node name="StartButton" type="Button" parent="NewGamePanel"]
@@ -558,12 +561,12 @@ margin_top = 672.097
 margin_right = 598.21
 margin_bottom = 735.097
 theme = ExtResource( 13 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 7 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Start Game"
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
@@ -580,8 +583,8 @@ margin_left = 51.0
 margin_top = 16.0
 margin_right = 176.0
 margin_bottom = 48.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
 
@@ -623,8 +626,8 @@ margin_left = 2.0
 margin_top = 43.0
 margin_right = 77.0
 margin_bottom = 78.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -637,9 +640,9 @@ margin_top = 990.0
 margin_right = 153.0
 margin_bottom = 1038.0
 theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.941176, 0.92549, 0.741176, 1 )
 custom_colors/font_color_pressed = Color( 0.655824, 0.660156, 0.521523, 1 )
-custom_fonts/font = ExtResource( 26 )
 text = "Change log"
 
 [node name="Changelogpanel" type="Panel" parent="."]
@@ -658,7 +661,11 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.9
+bbcode_text = "0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
+0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
 Added option to see gallery from mansion screen
@@ -1436,7 +1443,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.9
+text = "0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
+0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
 Added option to see gallery from mansion screen
@@ -2233,8 +2244,8 @@ texture = ExtResource( 19 )
 [node name="Label" type="Label" parent="Credits/Background"]
 margin_right = 649.0
 margin_bottom = 81.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Credits"
 align = 1
 valign = 1

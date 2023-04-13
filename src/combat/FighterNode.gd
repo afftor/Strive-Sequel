@@ -33,18 +33,31 @@ var buffs = []
 #			damageeffectsarray.erase(i)
 #			break
 
-func _input(event):
-	if fighter == null: return
-	if get_global_rect().has_point(get_global_mouse_position()):
-		if event.is_pressed():
-			if event.is_action("RMB"):
-				emit_signal("signal_RMB", fighter)
-				RMBpressed = true
-			elif event.is_action('LMB'):
+#func _input(event):
+#	if fighter == null: return
+#	if get_global_rect().has_point(get_global_mouse_position()):
+#		if event.is_pressed():
+#			if event.is_action("RMB"):
+#				emit_signal("signal_RMB", fighter)
+#				RMBpressed = true
+#			elif event.is_action('LMB'):
+#				emit_signal("signal_LMB", position)
+#	if event.is_action_released("RMB") && RMBpressed == true:
+#		emit_signal("signal_RMB_release")
+#		RMBpressed = false
+
+func _ready():
+	connect("gui_input", self, "_on_Button_gui_input")
+
+func _on_Button_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_LEFT:
 				emit_signal("signal_LMB", position)
-	if event.is_action_released("RMB") && RMBpressed == true:
-		emit_signal("signal_RMB_release")
-		RMBpressed = false
+			BUTTON_RIGHT:
+				emit_signal("signal_RMB_release")
+				emit_signal("signal_RMB", fighter)
+
 
 func get_attack_vector():
 	if fighter.combatgroup == 'ally': return Vector2(100, 0)

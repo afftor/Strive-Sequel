@@ -874,7 +874,7 @@ func test_mode():
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('goblin_quest_8', '', {})
+		input_handler.interactive_message('freya_shrine_find', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
@@ -883,7 +883,7 @@ func test_mode():
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
-			i.totalreputation += 5000
+			i.totalreputation += 500
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 		

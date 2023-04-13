@@ -298,9 +298,7 @@ tracks/13/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="combat_v2" type="Control" groups=[
-"pauseprocess",
-]]
+[node name="combat_v2" type="Control" groups=["pauseprocess"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -379,9 +377,6 @@ margin_bottom = 183.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HP" type="TextureProgress" parent="Panel/PlayerGroup/Back/left/Template"]
 show_behind_parent = true
@@ -416,12 +411,12 @@ margin_left = 9.0
 margin_top = 5.0
 margin_right = 173.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
+custom_fonts/font = SubResource( 1 )
 text = "Goblin Mage"
 align = 1
 valign = 1
@@ -433,8 +428,8 @@ margin_left = 9.0
 margin_top = 156.0
 margin_right = 173.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10/100"
 align = 1
 valign = 1
@@ -444,8 +439,8 @@ margin_left = 9.0
 margin_top = 176.0
 margin_right = 173.0
 margin_bottom = 196.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10/100"
 align = 1
 valign = 1
@@ -480,6 +475,7 @@ margin_left = 9.0
 margin_top = 9.43697
 margin_right = 171.0
 margin_bottom = 39.437
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -508,9 +504,9 @@ margin_left = 3.17221
 margin_top = 25.7773
 margin_right = 75.1722
 margin_bottom = 57.7773
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "555"
 align = 1
 
@@ -769,8 +765,8 @@ __meta__ = {
 margin_top = -1.33484
 margin_right = 503.0
 margin_bottom = 100.665
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Char Name"
 align = 1
 valign = 1
@@ -843,8 +839,8 @@ margin_left = 2.0
 margin_top = 52.6796
 margin_right = 77.0
 margin_bottom = 84.6796
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 23 )
 text = "10"
 align = 1
 valign = 1
@@ -905,10 +901,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SkillPanel" type="HBoxContainer" parent="." groups=[
-"hide_stranger",
-"hide_traveler",
-]]
+[node name="SkillPanel" type="HBoxContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
 margin_left = 437.95
 margin_top = 943.023
 margin_right = 1481.95
@@ -962,9 +955,9 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "1"
 align = 2
 __meta__ = {
@@ -977,9 +970,9 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "1"
 
 [node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
@@ -1113,8 +1106,8 @@ margin_top = 828.221
 margin_right = 585.05
 margin_bottom = 900.221
 theme = ExtResource( 52 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Collect"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1162,8 +1155,8 @@ self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 191.0
 margin_right = 441.0
 margin_bottom = 266.0
-custom_fonts/font = ExtResource( 47 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 47 )
 text = "Loot"
 align = 1
 valign = 1
@@ -1174,8 +1167,8 @@ margin_left = 441.0
 margin_top = 191.0
 margin_right = 880.0
 margin_bottom = 265.0
-custom_fonts/font = ExtResource( 47 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 47 )
 text = "Experience"
 align = 1
 valign = 1
@@ -1394,9 +1387,9 @@ margin_left = 307.027
 margin_top = 9.0
 margin_right = 377.027
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 23 )
 text = "1"
 align = 2
 __meta__ = {
@@ -1452,9 +1445,9 @@ margin_left = 310.027
 margin_top = 9.0
 margin_right = 380.027
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 23 )
 text = "1"
 align = 2
 __meta__ = {

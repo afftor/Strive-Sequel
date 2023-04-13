@@ -56,6 +56,8 @@ func fix_import():
 	date = 1
 	hour = 1
 	original_version = globals.gameversion
+#	if !starting_presets.preset_data.has(starting_preset):
+	starting_preset = 'import'
 
 
 func serialize():
