@@ -1004,7 +1004,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'body_image':
 			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
 		'in_combat_party':
-			return (combat_position in range(1, 7)) == i.value
+			if variables.allow_remote_intereaction == true and i.value: check = true
+			else: check = (combat_position in range(1, 7)) == i.value
 		'setting':
 			return input_handler.globalsettings[i.type] == i.value
 

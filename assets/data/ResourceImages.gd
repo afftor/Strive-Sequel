@@ -58,8 +58,8 @@ var backgrounds = {
 	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
 	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
 	#events
-	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
-	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
+	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
+	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
 	anastasia_execution1 = load("res://assets/images/fullscreen scenes/AnastasiaCG006.png"),
 	anastasia_execution2 = load("res://assets/images/fullscreen scenes/AnastasiaCG007.png"),
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),

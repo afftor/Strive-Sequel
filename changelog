@@ -1,3 +1,7 @@
+0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
 0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character

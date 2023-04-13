@@ -1576,7 +1576,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {atk = 45, hitrate = 25, damage_mod_air = 20, armor = 20},
+		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20},
 	},
 	
 	aire_bow = {
@@ -1584,9 +1584,9 @@ var itemlist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsgear/airesbow.png"),
-		tier = 'medium',
+		tier = 'hard',
 		price = 1000,
-		basestats = {atk = 20, critchance = 10, hitrate = 20, mod_hunt = 0.2},
+		basestats = {atk = 25, critchance = 10, hitrate = 20, mod_hunt = 0.2},
 		crafttype = 'basic',
 		type = 'gear',
 		itemtype = 'weapon',

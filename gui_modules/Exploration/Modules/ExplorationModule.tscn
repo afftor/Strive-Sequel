@@ -70,7 +70,7 @@
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=68]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=69]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=70]
-[ext_resource path="res://assets/images/iconsitems/bandage.png" type="Texture" id=71]
+[ext_resource path="res://assets/images/iconstraits/guilds_fighters.png" type="Texture" id=71]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=72]
 [ext_resource path="res://src/scenes/NumberSelection.gd" type="Script" id=73]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=74]
@@ -106,7 +106,6 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=107]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_pressed.png" type="Texture" id=108]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop.png" type="Texture" id=109]
-[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_warriorsguild.png" type="Texture" id=110]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=111]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=112]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_buydungeonlocation.png" type="Texture" id=113]
@@ -2231,7 +2230,6 @@ __meta__ = {
 }
 
 [node name="GuildShop" type="Control" parent="."]
-visible = false
 margin_left = 655.0
 margin_top = 77.0
 margin_right = 1265.0
@@ -2442,28 +2440,32 @@ __meta__ = {
 }
 
 [node name="GuildIcon" type="TextureRect" parent="GuildShop"]
-margin_left = 50.0
-margin_top = 837.459
-margin_right = 122.0
-margin_bottom = 909.459
-texture = ExtResource( 110 )
+margin_left = 51.0
+margin_top = 836.0
+margin_right = 131.0
+margin_bottom = 916.0
+texture = ExtResource( 71 )
+expand = true
+stretch_mode = 6
 
 [node name="GuildName" type="Label" parent="GuildShop"]
-margin_left = 9.0
-margin_top = 861.0
-margin_right = 603.0
-margin_bottom = 893.0
+margin_left = 158.0
+margin_top = 860.0
+margin_right = 430.0
+margin_bottom = 895.0
 theme = ExtResource( 111 )
 text = "Guild Name"
 align = 1
 valign = 1
 
 [node name="TextureRect3" type="TextureRect" parent="GuildShop"]
-margin_left = 418.497
-margin_top = 847.0
-margin_right = 468.497
-margin_bottom = 897.0
+margin_left = 411.636
+margin_top = 844.879
+margin_right = 474.636
+margin_bottom = 909.879
 texture = ExtResource( 107 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

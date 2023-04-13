@@ -1149,7 +1149,7 @@ var scenedict = {
 	},
 	loan_event1 = {
 		variations = [{
-			reqs = [{type = 'has_money', value = 1000}],
+			reqs = [{type = 'has_loan_money', stage = 1}],
 			image = null,
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS1", reqs = []}],
@@ -1185,7 +1185,7 @@ var scenedict = {
 	},
 	loan_event2 = {
 		variations = [{
-			reqs = [{type = 'has_money', value = 3000}],
+			reqs = [{type = 'has_loan_money', stage = 2}],
 			image = null,
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS2", reqs = []}],
@@ -1220,7 +1220,7 @@ var scenedict = {
 	},
 	loan_event3 = {
 		variations = [{
-			reqs = [{type = 'has_money', value = 10000}],
+			reqs = [{type = 'has_loan_money', stage = 3}],
 			image = null,
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS3", reqs = []}],
@@ -1255,7 +1255,7 @@ var scenedict = {
 	},
 	loan_event4 = {
 		variations = [{
-			reqs = [{type = 'has_money', value = 86000}],
+			reqs = [{type = 'has_loan_money', stage = 4}],
 			image = null,
 			tags = ['dialogue_scene'],
 			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS4", reqs = []}],
@@ -1839,7 +1839,7 @@ var quests = {
 
 	princess_persuasion = {
 		code = 'princess_persuasion',
-		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputaiton, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
+		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputation, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
 		stages = {
 			stage1 = {code ='stage1', name = 'Distressed Damsel', descript = """You've been allowed to persuade Anastasia to succumb to the guilds. Find a way to do so, or agree to her execution."""},
 		},

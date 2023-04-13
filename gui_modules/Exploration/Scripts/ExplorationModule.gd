@@ -2082,9 +2082,9 @@ func item_sell_confirm(value):
 
 
 func quest_board(pressed, pressed_button):
-	$QuestBoard.show()
 	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 	self.current_pressed_area_btn = pressed_button
+	$QuestBoard.selectcategory($QuestBoard/guildsortVScroll/all)
 	if pressed:
 		unfade($QuestBoard)
 	else:
