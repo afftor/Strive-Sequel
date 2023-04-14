@@ -9054,15 +9054,15 @@ You pull the simple collar out, showing it to the girl. Cali's eyes initially sh
 	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali shudders as fresh tears hit the floor. The girl's posture seems to relax, her eyes staring ahead as she shakes now. The girl doesn't fight you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
 
 Once the collar is around her neck, Cali looks at you, her face blank but her body shaking. Eventually you dismiss the girl so you can carry on with your work.""",
-	CALI_ACT2_EXQUISITE_COLLAR_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
+	CALI_ACT2_EXQUISITE_COLLAR_1_1 = """You call Cali to you the next morning, the girl is quiet, but staring at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
 
 When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes tracking the item as she looked it over. 
 
-- It's pretty...
+- It's pretty...""",
 
-Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
+	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """Looking as if she might bolt once you get behind her, she stops herself upon realizing it was meant for her.
 
 - This is for me..? I don't dislike it, but you really think this is enough after what you've done...
 

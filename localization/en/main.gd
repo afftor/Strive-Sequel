@@ -274,7 +274,7 @@ var TranslationDict = {
 	ITEMENSLAVING_COLLARDESCRIPT = "Magical slave collar which slowly mends will of the wearer.",
 	ITEMEARRINGS = "Earrings", 
 	ITEMEARRINGSDESCRIPT = "A pair of fancy jewelry.", 
-	ITEMAIRE_BOW = "",
+	ITEMAIRE_BOW = "Tree Heartstring",
 	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
@@ -10238,7 +10238,7 @@ You aren't able to hear her last words as your exhaustion takes over, making you
 	
 	GOBLIN_QUEST_NAME = "Greens in the woods",
 	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
-	GOBLIN_QUEST_STAGE_0 = "", # go to tribe
+	GOBLIN_QUEST_STAGE_0 = "Visit Beastkin Tribe",
 	GOBLIN_QUEST_STAGE_1 = "Travel to Desolated Woods",
 	GOBLIN_QUEST_STAGE_2 = "Search for the culprits at Desolated Woods",
 	GOBLIN_QUEST_STAGE_3 = "Ask guild leaders for the clues for traps",

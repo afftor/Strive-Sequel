@@ -116,7 +116,7 @@ func see_quest_info(quest):
 				newbutton.get_node("Icon").texture = images.icons.quest_encounter
 				globals.connecttexttooltip(newbutton, (
 					"Complete quest location: "
-					+ worlddata.dungeons[i.type].name
+					+ tr(worlddata.dungeons[i.type].name)
 				))
 				text += (
 					"\n"
@@ -126,7 +126,7 @@ func see_quest_info(quest):
 				)
 			'complete_dungeon':
 				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
-				globals.connecttexttooltip(newbutton, "Complete quest dungeon: ") #todo add dungeon name
+				globals.connecttexttooltip(newbutton, "Complete quest dungeon: " + tr("LOCATIONNAME" + i.type.to_upper())) #todo add dungeon name
 			'random_material':
 				newbutton.get_node("Icon").texture = Items.materiallist[i.type].icon
 				newbutton.get_node("amount").show()
@@ -301,7 +301,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				globals.connecttexttooltip(newbutton, (
 					"Reputation ("
-					+ quest.source
+					+ quest.source.capitalize()
 					+ "): "
 					+ str(i.value)
 					+ " + "

@@ -2230,6 +2230,7 @@ __meta__ = {
 }
 
 [node name="GuildShop" type="Control" parent="."]
+visible = false
 margin_left = 655.0
 margin_top = 77.0
 margin_right = 1265.0
