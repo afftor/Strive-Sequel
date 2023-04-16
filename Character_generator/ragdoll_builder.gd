@@ -16,7 +16,7 @@ func rebuild(character):
 		if !GeneratorData.transforms[stat].has(st_val):
 			continue
 		for transform in GeneratorData.transforms[stat][st_val]:
-			if !(transform.type in ['texture']):
+			if !(transform.type in ['texture', 'texture_set']):
 				continue
 			apply_transform(transform)
 	#second pass - all others
@@ -27,7 +27,7 @@ func rebuild(character):
 		if !GeneratorData.transforms[stat].has(st_val):
 			continue
 		for transform in GeneratorData.transforms[stat][st_val]:
-			if (transform.type in ['texture']):
+			if (transform.type in ['texture', 'texture_set']):
 				continue
 			apply_transform(transform)
 
@@ -62,6 +62,10 @@ func apply_transform(transform):
 		'texture':
 			var nd = get_node(transform.node)
 			nd.texture = load(transform.texture)
+		'texture_set':
+			var arr_tr = GeneratorData.texture_sets[transform.set]
+			for sub_transform in arr_tr:
+				apply_transform(sub_transform)
 		'node_attr':
 			var nd = get_node(transform.node)
 			nd.set(transform.attr, transform.value)
@@ -88,3 +92,10 @@ func apply_transform(transform):
 				input_handler.import_recolor_parameter(nd.material, load(transform.material), transform.ids)
 			else:
 				input_handler.import_recolor_parameter(nd.material, load(transform.material))
+		'import_recolor_group':
+			var nodes = get_tree().get_nodes_in_group(transform.group)
+			for nd in nodes:
+				if transform.has('ids'):
+					input_handler.import_recolor_parameter(nd.material, load(transform.material), transform.ids)
+				else:
+					input_handler.import_recolor_parameter(nd.material, load(transform.material))

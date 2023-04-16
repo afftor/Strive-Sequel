@@ -1,6 +1,7 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=113 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
+[ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_big.png" type="Texture" id=4]
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=5]
 [ext_resource path="res://Character_generator/images/00_body_nude/ArmL1.png" type="Texture" id=6]
@@ -664,9 +665,6 @@ shader = ExtResource( 1 )
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 1 )
 
-[sub_resource type="ShaderMaterial" id=13]
-shader = ExtResource( 1 )
-
 [sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
 
@@ -1049,6 +1047,9 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 1 )
+
 [sub_resource type="Shader" id=21]
 code = "shader_type canvas_item;
 
@@ -1244,7 +1245,6 @@ shader = ExtResource( 1 )
 script = ExtResource( 89 )
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
-visible = false
 
 [node name="HumanF1" type="Skeleton2D" parent="male_pose"]
 scale = Vector2( 1.05, 1.05 )
@@ -1267,7 +1267,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
 internal_vertex_count = 171
 
-[node name="Animal_body" type="Sprite" parent="male_pose/HumanF1/Spine"]
+[node name="Animal_body" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["l_body_alter", "nonhuman"]]
 visible = false
 material = SubResource( 4 )
 position = Vector2( 205.814, 1.4191 )
@@ -1284,7 +1284,7 @@ material = SubResource( 4 )
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
-[node name="Wings_tex" type="Sprite" parent="male_pose/HumanF1/Spine"]
+[node name="Wings_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
 visible = false
 material = SubResource( 6 )
 position = Vector2( 174.243, -14.1279 )
@@ -1292,7 +1292,7 @@ rotation = -1.5708
 scale = Vector2( 1, 0.8 )
 texture = ExtResource( 5 )
 
-[node name="Tail_tex" type="Sprite" parent="male_pose/HumanF1/Spine"]
+[node name="Tail_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
 material = ExtResource( 27 )
 position = Vector2( 255.454, 2.99905 )
 rotation = -1.5708
@@ -1303,7 +1303,7 @@ position = Vector2( -90.1676, -144.438 )
 rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="ShoulderR_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR"]
+[node name="ShoulderR_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( 327, 100.999 )
@@ -1320,7 +1320,7 @@ position = Vector2( 178.784, -35.0601 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR"]
+[node name="HandR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
@@ -1332,7 +1332,7 @@ position = Vector2( -255.421, 154.264 )
 rotation = -1.5708
 texture = ExtResource( 32 )
 
-[node name="ArmR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR"]
+[node name="ArmR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 306.509, 144.969 )
 rotation = -1.5708
@@ -1343,7 +1343,7 @@ position = Vector2( 304.8, 142.844 )
 rotation = -1.5708
 texture = ExtResource( 67 )
 
-[node name="ShoulderR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR"]
+[node name="ShoulderR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
@@ -1359,7 +1359,7 @@ position = Vector2( -86.5238, 130.368 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="ShoulderL_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL"]
+[node name="ShoulderL_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( 318, -105.001 )
@@ -1376,7 +1376,7 @@ position = Vector2( 188.756, 27.4087 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL"]
+[node name="HandL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
@@ -1388,7 +1388,7 @@ position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 14 )
 
-[node name="ArmL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL"]
+[node name="ArmL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 82.2014, -137.772 )
 rotation = -1.5708
@@ -1399,7 +1399,7 @@ position = Vector2( 83.8275, -136.94 )
 rotation = -1.5708
 texture = ExtResource( 69 )
 
-[node name="ShoulderL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL"]
+[node name="ShoulderL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
@@ -1410,13 +1410,13 @@ position = Vector2( 309.686, -124.736 )
 rotation = -1.5708
 texture = ExtResource( 87 )
 
-[node name="Torso_tex2" type="Sprite" parent="male_pose/HumanF1/Spine"]
+[node name="Torso_tex2" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 81 )
 
-[node name="Torso_races" type="Sprite" parent="male_pose/HumanF1/Spine"]
+[node name="Torso_races" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["dryad", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( 222, 1.05865 )
@@ -1435,7 +1435,7 @@ position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 71 )
 
-[node name="Taz" type="Bone2D" parent="male_pose/HumanF1/Spine"]
+[node name="Taz" type="Bone2D" parent="male_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 222.449, -0.19342 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -1446,14 +1446,14 @@ scale = Vector2( 1, 0.97 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="LegL_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL"]
+[node name="LegL_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL"]
+[node name="LegL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
@@ -1470,14 +1470,14 @@ scale = Vector2( 1, 0.95 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="LegR_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR"]
+[node name="LegR_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR"]
+[node name="LegR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
@@ -1488,13 +1488,13 @@ position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 82 )
 
-[node name="Taz_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz"]
+[node name="Taz_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 86 )
 
-[node name="Taz_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz"]
+[node name="Taz_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["nonhuman", "slime"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( -1.15967, 0.226257 )
@@ -1532,7 +1532,7 @@ position = Vector2( -53, 10.0002 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits"]
+[node name="Tits_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -1572,13 +1572,13 @@ scale = Vector2( 0.98, 0.98 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="Head_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Head_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Chin_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
@@ -1603,7 +1603,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Face_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+[node name="Face_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
 material = SubResource( 8 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
@@ -1615,7 +1615,7 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 80 )
 
-[node name="Nose_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+[node name="Nose_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
 material = SubResource( 3 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
@@ -1655,7 +1655,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
 internal_vertex_count = 171
 
-[node name="Ears_furry_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Ears_furry_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["nonhuman"]]
 visible = false
 material = ExtResource( 60 )
 position = Vector2( 588, -2.00217 )
@@ -1665,7 +1665,7 @@ texture = ExtResource( 40 )
 [node name="Head_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
 rotation = -1.5708
 
-[node name="Horns_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Horns_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 material = ExtResource( 27 )
 position = Vector2( 573, -9.00204 )
@@ -1675,7 +1675,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Ears_humanoid_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Ears_humanoid_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["human", "skin_main"]]
 visible = false
 material = SubResource( 8 )
 position = Vector2( 567, -10.002 )
@@ -1688,7 +1688,6 @@ texture = ExtResource( 24 )
 [node name="HumanF1" type="Skeleton2D" parent="Female_pose"]
 
 [node name="Spine" type="Bone2D" parent="Female_pose/HumanF1"]
-material = SubResource( 13 )
 rotation = 1.5708
 rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -1716,7 +1715,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
 internal_vertex_count = 171
 
-[node name="Animal_body" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+[node name="Animal_body" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["l_body_alter", "nonhuman"]]
 visible = false
 material = SubResource( 16 )
 position = Vector2( 205.814, 1.4191 )
@@ -1733,7 +1732,7 @@ material = SubResource( 16 )
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
-[node name="Wings_tex" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+[node name="Wings_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
 visible = false
 material = SubResource( 18 )
 position = Vector2( 174.243, -14.1279 )
@@ -1741,7 +1740,7 @@ rotation = -1.5708
 scale = Vector2( 1, 0.8 )
 texture = ExtResource( 5 )
 
-[node name="Tail_tex" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+[node name="Tail_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
 material = ExtResource( 27 )
 position = Vector2( 205, 2.99924 )
 rotation = -1.5708
@@ -1752,7 +1751,7 @@ position = Vector2( -105, -101 )
 rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="ShoulderR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR"]
+[node name="ShoulderR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( 327, 100.999 )
@@ -1769,7 +1768,7 @@ position = Vector2( 147, -34.0005 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR"]
+[node name="HandR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -36.9996, 145.789 )
 rotation = -1.5708
@@ -1780,7 +1779,7 @@ position = Vector2( -255.421, 154.264 )
 rotation = -1.5708
 texture = ExtResource( 32 )
 
-[node name="ArmR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR"]
+[node name="ArmR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
@@ -1791,7 +1790,7 @@ position = Vector2( -111.421, 120.474 )
 rotation = -1.5708
 texture = ExtResource( 30 )
 
-[node name="ShoulderR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR"]
+[node name="ShoulderR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
@@ -1807,7 +1806,7 @@ position = Vector2( -94.9996, 106 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="ShoulderL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL"]
+[node name="ShoulderL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( 318, -105.001 )
@@ -1824,7 +1823,7 @@ position = Vector2( 136.842, 21.0521 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL"]
+[node name="HandL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
@@ -1835,7 +1834,7 @@ position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 14 )
 
-[node name="ArmL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL"]
+[node name="ArmL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
@@ -1846,7 +1845,7 @@ position = Vector2( 92.7366, -98.6318 )
 rotation = -1.5708
 texture = ExtResource( 18 )
 
-[node name="ShoulderL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL"]
+[node name="ShoulderL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
@@ -1857,13 +1856,13 @@ position = Vector2( 319, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 25 )
 
-[node name="Torso_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+[node name="Torso_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 8 )
 
-[node name="Torso_races" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+[node name="Torso_races" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["dryad", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( 222, 1.05865 )
@@ -1877,7 +1876,7 @@ position = Vector2( 219, -1.00079 )
 rotation = -1.5708
 texture = ExtResource( 15 )
 
-[node name="Taz" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
+[node name="Taz" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 206.403, -2.08107 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -1888,14 +1887,14 @@ scale = Vector2( 1, 0.97 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="LegL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL"]
+[node name="LegL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL"]
+[node name="LegL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
@@ -1912,14 +1911,14 @@ scale = Vector2( 1, 0.95 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="LegR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR"]
+[node name="LegR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["dryad", "nereid", "nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR"]
+[node name="LegR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
@@ -1930,13 +1929,13 @@ position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 17 )
 
-[node name="Taz_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz"]
+[node name="Taz_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 13 )
 
-[node name="Taz_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz"]
+[node name="Taz_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["nonhuman", "slime"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( -1.15967, 0.226257 )
@@ -1982,11 +1981,18 @@ rotation = -1.5708
 texture = ExtResource( 35 )
 
 [node name="Pregnancy" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
-visible = false
 position = Vector2( 135, 12.9995 )
 rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
 
-[node name="Belly_pregnancy_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy"]
+[node name="Belly_pregnancy_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
+visible = false
+material = SubResource( 20 )
+position = Vector2( 59.9999, -13.0002 )
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="Belly_pregnancy_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
+visible = false
 material = SubResource( 20 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
@@ -2003,7 +2009,7 @@ position = Vector2( -53, 10.0002 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits"]
+[node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -2042,13 +2048,13 @@ position = Vector2( -361, 9.00003 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
-[node name="Head_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head"]
+[node name="Head_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head"]
+[node name="Chin_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
@@ -2073,7 +2079,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Face_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+[node name="Face_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
 material = SubResource( 20 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
@@ -2085,7 +2091,7 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 44 )
 
-[node name="Nose_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+[node name="Nose_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
 material = SubResource( 15 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
@@ -2125,7 +2131,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
 internal_vertex_count = 171
 
-[node name="Ears_furry_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head"]
+[node name="Ears_furry_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["nonhuman"]]
 visible = false
 material = ExtResource( 60 )
 position = Vector2( 588, -2.00217 )
@@ -2135,7 +2141,7 @@ texture = ExtResource( 40 )
 [node name="Head_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["cloth"]]
 rotation = -1.5708
 
-[node name="Horns_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head"]
+[node name="Horns_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 material = ExtResource( 27 )
 position = Vector2( 573, -9.00204 )
@@ -2145,7 +2151,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Ears_humanoid_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head"]
+[node name="Ears_humanoid_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["human", "skin_main"]]
 visible = false
 material = SubResource( 20 )
 position = Vector2( 567, -10.002 )
