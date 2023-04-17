@@ -199,9 +199,18 @@ func make_slave_for_guild_old(guild):#obsolete
 	newslave.is_known_to_player = true
 
 
-func make_slave_for_guild(slavetype):
+func make_slave_for_guild(slavetype, rare_races_upgarde = 0):
 	var newslave = ResourceScripts.scriptdict.class_slave.new("guild_slave")
-	var race = input_handler.weightedrandom(slavetype.slave_races)
+	var race_arr = slavetype.slave_races
+	match int(rare_races_upgarde):
+		1:
+			race_arr = [['common', 10], ['uncommon', 2]]
+		2:
+			race_arr = [['common', 10], ['uncommon', 4]]
+		3:
+			race_arr = [['common', 10], ['uncommon', 4], ['rare', 2]]
+	var race = input_handler.weightedrandom(race_arr)
+	print(race)
 	var slaveclass = null
 	if slavetype.preference.size() > 0:
 		slaveclass = input_handler.random_from_array(slavetype.preference)
@@ -239,11 +248,14 @@ func make_slave_for_guild(slavetype):
 
 func rebuild_guild_slaves(guilddata):
 	var num = guilddata.slavenumber
+	var race_upgrade = 0
+	if guilddata.upgrades.has('slaveraces'):
+		race_upgrade = guilddata.upgrades.slaveraces
 	for type in guilddata.hireable_characters:
 		for i in range(type.slavenumber[0]):
 			if num <= 0: return
 			num -= 1
-			guilddata.slaves.push_back(make_slave_for_guild(type).id)
+			guilddata.slaves.push_back(make_slave_for_guild(type, race_upgrade).id)
 	
 	var rand_types_array = []
 	for t in range(guilddata.hireable_characters.size()):
@@ -255,7 +267,7 @@ func rebuild_guild_slaves(guilddata):
 		var rtype = input_handler.random_from_array(rand_types_array)
 		num -= 1
 		rand_types_array.erase(rtype)
-		guilddata.slaves.push_back(make_slave_for_guild(guilddata.hireable_characters[rtype]).id)
+		guilddata.slaves.push_back(make_slave_for_guild(guilddata.hireable_characters[rtype], race_upgrade).id)
 
 
 

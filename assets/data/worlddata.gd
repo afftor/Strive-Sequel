@@ -199,11 +199,20 @@ var guild_upgrades = {
 	slavequality = {
 		code = 'slavequality',
 		descript = "SLAVEQUALITY_DISC",
-		name = "SLAVEQUALITY_DISC",
+		name = "SLAVEQUALITY_DISC", #not name?
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
 		effects = [{code = 'slavelevel', operant = '+', value = 1}],
+	},
+	slaveraces = {
+		code = 'slaveraces',
+		descript = "SLAVERACES_DISC",
+		name = "SLAVERACES_DISC", #not name?
+		cost = [1000,2000,3000],
+		reqs = [],
+		maxlevel = 3,
+		effects = [],
 	},
 	# questnumberupgrade = {
 	# 	code = 'questnumberupgrade',
