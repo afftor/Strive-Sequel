@@ -233,6 +233,26 @@ func clean_task(task):
 #			task.workers.erase(id)
 
 
+func find_task_for_quest(q_id):
+	for task in active_tasks:
+		if !task.has('args'): 
+			continue
+		for dir in task.args:
+			if dir.code != 'finish_worktask':
+				continue
+			if dir.value == q_id:
+				return task
+	return null
+
+
+func remove_quest_task(q_id):
+	var task = find_task_for_quest(q_id)
+	if task != null:
+		clean_task(task)
+		active_tasks.erase(task)
+		globals.emit_signal("task_removed")
+
+
 func calculate_food_consumption():
 	var res = {}
 	for i in characters.values():
