@@ -210,7 +210,6 @@ func make_slave_for_guild(slavetype, rare_races_upgarde = 0):
 		3:
 			race_arr = [['common', 10], ['uncommon', 4], ['rare', 2]]
 	var race = input_handler.weightedrandom(race_arr)
-	print(race)
 	var slaveclass = null
 	if slavetype.preference.size() > 0:
 		slaveclass = input_handler.random_from_array(slavetype.preference)
