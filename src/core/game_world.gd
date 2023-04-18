@@ -253,6 +253,7 @@ func get_worker_count_for_task(worktask):
 
 func complete_quest(quest, state = 'failed'):
 	quest.state = state
+	ResourceScripts.game_party.remove_quest_task(quest.id)
 	for i in quest.requirements:
 		if i.code in ['complete_location','complete_dungeon']:
 			#maybe here should be difference (remove or unquest) between quest dungeons and encounters or complete_location and complete_dungeon - its up to you

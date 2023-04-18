@@ -11,6 +11,7 @@ onready var WorkersContainer = $Tooltip/VBoxContainer
 func _ready():
 	$Button.connect("pressed", self, "change_button")
 	globals.connect("hour_tick", self, "update_progresses")
+	globals.connect("task_removed", self, "update_progresses")
 
 
 func update_progresses():
