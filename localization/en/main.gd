@@ -10072,7 +10072,88 @@ You can't hold back any longer, and you come inside of her, a wave of ecstasy wa
 You aren't able to hear her last words as your exhaustion takes over, making you fall asleep on the spot. Once you come back to your senses, there's no trace of her. You decide to move on.""",
 	
 	
-	
+	ZEPHYRA_LILIA_1 = """As you walk through the mansion you hear a quarrel between your two residents: Zephyra and Lilia. 
+
+{color=aqua|Lilia: - Come on, it should be mine!}
+
+{color=yellow|Zephyra: - No, I want it too.}""",
+	ZEPHYRA_LILIA_2 = """As you ask what's going on, you get explained how Lilia demands Zephyra to give her a share of the cake she just brought from the city. A wandering merchant from far lands brought it so it's really popular with girls.
+
+{color=yellow|Zephyra: - But you already got your part, I want it too...}
+
+{color=aqua|Lilia: - But you only brought half to begin with!} 
+
+{color=yellow|Zephyra: - I've told you, I shared it with some hungry kids.}""",
+	ZEPHYRA_LILIA_3 = """{color=aqua|Lilia: - You've asked for my money to buy it! It's only your fault.}
+
+{color=yellow|Zephyra: - T-that's true, but that's not fair by you.}
+
+{color=aqua|Lilia: - [Master], tell her I'm right here.}
+
+{color=yellow|Zephyra: - You may be in your right, but that does not make things fair to me.}
+
+It seems Zephyra had to borrow money from Lilia and promised to share with her, so despite getting some of it the fairy wants all that is left now... It seems you'll have to solve this dispute. """,
+	ZEPHYRA_LILIA_3_OPTION_1 = """Lilia, you should share with Zephyra and not be too greedy""",
+	ZEPHYRA_LILIA_3_OPTION_2 = """Since it was Lilia's pocket money, she can have it.""",
+	ZEPHYRA_LILIA_3_OPTION_3 = """I'll buy you two another cake... (100 gold)""",
+	ZEPHYRA_LILIA_4_1 = """Lilia pouts upon hearing your words.
+
+{color=aqua|Lilia: - Fine... Next time I'm not going to give you any money!} 
+
+As the fairy retreats to her room, you realize it is an empty threat.
+
+{color=yellow|Zephyra: - Thank you, [Master], I knew you'd make the correct choice.} 
+
+You wonder if it was the right choice after all though.""",
+	ZEPHYRA_LILIA_4_2 = """Zephyra is forced to give up on her share with a sad face.
+
+{color=aqua|Lilia: - Hooray! I knew [Master] is fair.} 
+
+Lilia grabs her share and dash away from the room, making Zephyra soon follow her example.""",
+	ZEPHYRA_LILIA_4_3 = """Both girls give you a surprised look but neither reject it.
+
+{color=aqua|Lilia: - Well then, there's no problem, right?} 
+
+{color=yellow|Zephyra: - Y-yeah... Thanks, [Master].}""",
+	ZEPHYRA_LILIA_5 = """After some time Zephyra returns with a second cake with a puzzling expression on her face.
+
+Zephyra: - Uh... I don't feel right.
+
+{color=aqua|Lilia: - What? We got one more free cake. Life's great!}
+
+{color=yellow|Zephyra: - I mean, I don't think we deserved it. We shouldn't abuse [Master]'s kindness like this.} 
+
+Lilia frowns in consideration, something Zephyra hardly ever saw from her. 
+
+{color=aqua|Lilia: - Why don't we pay it back then? I know of something [he] wouldn't refuse...}""",
+	ZEPHYRA_LILIA_6 = """Later at night both Lilia and Zephyra both end up in your room as you sleep soundly.
+
+{color=yellow|Zephyra: - [Master]'s not going to wake up...?}
+
+{color=aqua|Lilia: - Don't worry, I've casted a sleep magic on [him] so [he] won't wake up as easily.}
+
+{color=yellow|Zephyra: - I... didn't really take you for such a girl.}""",
+	ZEPHYRA_LILIA_7 = """As you slowly begin to wake up you feel excessive weight over you. It seems both girls you reconciled are above you with their clothes off.
+
+{color=yellow|Zephyra: - [Master], we decided to thank you for today.} 
+
+{color=aqua|Lilia: - It was my idea!}
+
+Without further delay Lilia straddles your face, her hips grinding into your mouth revealing her pussy. You feel her fingers grasping in your hair, pulling your head closer to her.
+
+Meanwhile Zephyra straddles your waist, her warm, naked body rubbing against your cock. Her large tail brushes against your legs, sending shivers down your spine as she works her hips, slowly, teasingly grinding against you. """,
+	ZEPHYRA_LILIA_8 = """{color=yellow|Zephyra: - [Master], you are so hard already... It seems our reward is to your liking.}
+
+Zephyra lowers herself onto your penis moaning as it enters her. As Lilia sees this she can't help but feel a bit of envy but your tongue makes her get back on track. 
+
+Both girls increase their pace along with their moans getting closer to climax.""",
+	ZEPHYRA_LILIA_9 = """{color=yellow|Zephyra: - Aahh... NNhhh....}
+
+{color=aqua|Lilia: - Aaah!..}
+
+You can feel both girls gasping and clenching together as you cum in unison filling Zephyra's pussy with your semen. Lilia's juices flow all over your face as she whimpers over you. You can feel their weight as they slowly collapse on you after this passionate encounter. 
+
+You lay there for a long time, the three of you lost in the afterglow of pleasure. You feel Lilia's lips against your neck, kissing you gently as Zephyra cuddles up next to you, her tail wrapping around your leg. It seems both girls are falling into their sleep and aren't going to let you leave like selfish cats.""",
 	
 	
 	

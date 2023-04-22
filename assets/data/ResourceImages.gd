@@ -209,8 +209,13 @@ var backgrounds = {
 	stag_sex_2 = load("res://assets/images/fullscreen scenes/StagCG002.png"),
 	stag_sex_3 = load("res://assets/images/fullscreen scenes/StagCG003.png"),
 	
+	zephyra_lilia_1 = load("res://assets/images/fullscreen scenes/zefira_lila1.png"),
+	zephyra_lilia_2 = load("res://assets/images/fullscreen scenes/zefira_lila3.png"),
+	zephyra_lilia_3 = load("res://assets/images/fullscreen scenes/zefira_lila4.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
+	blackscreen = load("res://assets/sfx/black.png"),
 
 	}
 
