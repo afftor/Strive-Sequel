@@ -328,4 +328,113 @@ var data = {
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_bath_quest'}]
 		}, ]
 	},
+	
+	
+	zephyra_lilia_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_1", reqs = []}],
+		options = [ {
+			code = 'zephyra_lilia_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	zephyra_lilia_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_2", reqs = []}],
+		options = [ {
+			code = 'zephyra_lilia_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	zephyra_lilia_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_3", reqs = []}],
+		options = [ {
+			code = 'zephyra_lilia_4_1', text = "ZEPHYRA_LILIA_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, 
+		{
+			code = 'zephyra_lilia_4_2', text = "ZEPHYRA_LILIA_3_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, 
+		{
+			code = 'zephyra_lilia_4_3', text = "ZEPHYRA_LILIA_3_OPTION_3", reqs = [{type = 'has_money', value = 100}], dialogue_argument = 1, type = 'next_dialogue', 
+		}, 
+		]
+	},
+	zephyra_lilia_4_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_4_1", reqs = [], bonus_effects = [{code = 'money_change', operant = '-', value = 100}],}],
+		options = [{ 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+				{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'loyalty', operant = '+', value = 50},
+			]}]
+		}, ]
+	},
+	zephyra_lilia_4_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_4_2", reqs = []}],
+		options = [{ 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+				{code = 'unique_character_changes', value = 'lilia', args = [{code = 'loyalty', operant = '+', value = 50},
+			]}]
+		}, ]
+	},
+	zephyra_lilia_4_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_4_3", reqs = []}],
+		options = [ {
+			code = 'zephyra_lilia_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ]
+	},
+	zephyra_lilia_5 = {
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], character = "zephyra", character2 = "lilia",
+		text = [{text = "ZEPHYRA_LILIA_5", reqs = []}],
+		options = [ {
+			code = 'zephyra_lilia_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		}, ]
+	},
+	zephyra_lilia_6 = {
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_LILIA_6", reqs = []}],
+		custom_background = "blackscreen",
+		options = [ {
+			code = 'zephyra_lilia_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, ]
+	},
+	zephyra_lilia_7 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [],
+		text = [{text = "ZEPHYRA_LILIA_7", reqs = []}],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "zephyra_lilia_1",
+		options = [ {
+			code = 'zephyra_lilia_8', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1,
+		}, ]
+	},
+	zephyra_lilia_8 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
+		text = [{text = "ZEPHYRA_LILIA_8", reqs = []}],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "zephyra_lilia_2",
+		options = [ {
+			code = 'zephyra_lilia_9', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1,
+		}, ]
+	},
+	zephyra_lilia_9 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
+		text = [{text = "ZEPHYRA_LILIA_9", reqs = []}],
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		custom_background = "zephyra_lilia_3",
+		options = [ {code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'} ]
+	},
 }
