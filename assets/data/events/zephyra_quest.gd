@@ -325,14 +325,18 @@ var data = {
 		} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'zephyra_bath_quest'}]
-		}, ]
+			bonus_effects = [
+				{code = 'complete_quest', value = 'zephyra_bath_quest'},
+				{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}
+				]
+			}],
 	},
 	
 	
 	zephyra_lilia_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "zephyra", character2 = "lilia",
+		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
+		character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_1", reqs = []}],
 		options = [ {
 			code = 'zephyra_lilia_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
