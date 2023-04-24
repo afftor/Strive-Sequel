@@ -395,6 +395,8 @@ var data = {
 	},
 	zephyra_lilia_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		unlocked_gallery_seq = "zephyra_lilia",
+		save_scene_to_gallery = true,
 		reqs = [], character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_5", reqs = []}],
 		options = [ {
