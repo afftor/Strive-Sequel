@@ -817,6 +817,9 @@ margin_bottom = 328.0
 theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
 script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="GridContainer" parent="PresentedSlavesPanel/ScrollContainer"]
 margin_right = 536.0

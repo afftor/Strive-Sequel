@@ -524,8 +524,8 @@ var data = {
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'}, 
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'},
-			{code = "update_city"},]
+			{code = "update_city"},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'},]
 		} ] 
 	},
 	

@@ -89,7 +89,15 @@ func _ready():
 	$Menu/Items.connect("toggled", self, "open_items")
 	$Menu/Run.connect("pressed", self, "run")
 	$ItemPanel.hide()
+	
+	$Button.connect("pressed", self, "on_skillbook_click")
 
+func on_skillbook_click():
+	$SkillBook.visible = !$SkillBook.visible 
+	if $SkillBook.visible:
+		$SkillBook.clear_skillinfo()
+		$SkillBook.RebuildSkillBook()
+	RebuildSkillPanel()
 
 func _input(event):
 	#simple version based on legacy code and without proper keybinding
@@ -905,9 +913,14 @@ func FighterShowStats(fighter):
 	var panel = fighter.displaynode
 	panel.get_node("hplabel").show()
 	panel.get_node("mplabel").show()
+	
+	$StatsPanelLeft.fill(fighter)
+	$StatsPanelRight.fill(fighter)
 
 func FighterMouseOver(fighter, no_press = false):
 	FighterShowStats(fighter)
+	$StatsPanelLeft.visible = fighter.combatgroup != 'enemy'
+	$StatsPanelRight.visible = fighter.combatgroup == 'enemy'
 	if allowaction == true && no_press == false && (allowedtargets.enemy.has(fighter.position) || allowedtargets.ally.has(fighter.position)):
 		if customcursor != null:
 			Input.set_custom_mouse_cursor(images.cursors[customcursor])
@@ -928,6 +941,8 @@ func FighterMouseOver(fighter, no_press = false):
 func FighterMouseOverFinish(fighter):
 	var panel = fighter.displaynode
 	fighterhighlighted = false
+	$StatsPanelRight.visible = false
+	$StatsPanelLeft.visible = false
 	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
 		panel.get_node("hplabel").hide()
 		panel.get_node("mplabel").hide()
@@ -1641,7 +1656,7 @@ func RebuildSkillPanel():
 	ClearSkillPanel()
 #	var counter = 0
 	var src = activecharacter.skills.combat_skill_panel
-	for i in range(1,11):
+	for i in range(1,21):
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		if src.has(i):
 			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
