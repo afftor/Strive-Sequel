@@ -1470,7 +1470,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 	self.current_pressed_area_btn = pressed_button
 	var text = ''
 	# $FactionDetails.visible = pressed
-	input_handler.ClearContainer($FactionDetails/VBoxContainer)
+	input_handler.ClearContainer($FactionDetails/Scroll/VBoxContainer)
 	text = infotext
 	$FactionDetails/RichTextLabel.text = text
 	$FactionDetails/FactionPoints.text = "Faction points: " + str(active_faction.totalreputation)
@@ -1485,7 +1485,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 					break
 		if !check:
 			continue
-		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/Scroll/VBoxContainer)
 		text = tr(i.name) + ": " + tr(i.descript)
 		var currentupgradelevel
 		if active_faction.upgrades.has(i.code):

@@ -37,7 +37,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 153.037 ],
 "_edit_vertical_guides_": [ 960.151, 74.0, 1845.74 ]
 }
-test_mode = true
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 40.0
