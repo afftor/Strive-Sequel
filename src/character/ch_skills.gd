@@ -73,8 +73,8 @@ func learn_c_skill(skill, free = false):
 		if skilldata.has('learn_cost') and !free:
 			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		combat_skills.append(skill)
-		if combat_skill_panel.size() < 11:
-			for i in range(1,12):
+		if combat_skill_panel.size() < 21:
+			for i in range(1,22):
 				if combat_skill_panel.has(i) == false:
 					combat_skill_panel[i] = skill
 					break
@@ -99,7 +99,7 @@ func unlearn_c_skill(skill):
 		combat_cooldowns.erase(skill)
 		daily_cooldowns.erase(skill)
 #		combat_skills_charges.erase(skill)
-		for i in range(1,12):
+		for i in range(1,22):
 			if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
 
 
