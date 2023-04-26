@@ -2,6 +2,35 @@ extends Node
 
 var activecharacter
 
+func _ready():
+	$CloseButton.connect("pressed", self, "hide")
+	$TextureButton.connect("pressed", self, "hide")
+	for ch in $Categories.get_children():
+		ch.connect("pressed", self, "category_pressed", [ch])
+
+func category_pressed(button):
+	for bt in $Categories.get_children():
+		bt.pressed = false
+	button.pressed = true
+	for ch in $ScrollContainer/GridContainer.get_children():
+		if ch.has_meta("skill"):
+			var skill = ch.get_meta("skill")
+			ch.visible = skill.tags.has(button.name)
+			if button.name == "all":
+				ch.visible = true
+
+func update_filter():
+	var button
+	for bt in $Categories.get_children():
+		if bt.pressed:
+			button = bt
+	for ch in $ScrollContainer/GridContainer.get_children():
+		if ch.has_meta("skill"):
+			var skill = ch.get_meta("skill")
+			ch.visible = skill.tags.has(button.name)
+			if button.name == "all":
+				ch.visible = true
+
 func RebuildSkillBook():
 	activecharacter = get_parent().activecharacter 
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
@@ -21,12 +50,13 @@ func RebuildSkillBook():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer2/GridContainer)
 		newbutton.target_node = self
 		newbutton.target_function = 'update_combat_skill_panel'
+		newbutton.dragdata = newbutton
 		if src.has(i):
 			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 			newbutton.get_node("Icon").texture = skill.icon
 			newbutton.set_meta('skill', skill.code)
 			newbutton.connect("pressed", self, "on_skill_pressed", [skill])
-			newbutton.connect("signal_RMB", self, "on_skill_RMB", [skill])
+	update_filter()
 
 func update_combat_skill_panel(skill): # do actions in skill_drop_node
 	for i in range(1,21):
