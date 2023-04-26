@@ -14,7 +14,7 @@ func can_drop_data(position, data):
 func drop_data(position, data):
 	if target_node != null && target_function != null && !metadata is Dictionary:
 		self.get_node("Icon").texture = data.icon
-		self.set_meta("Skill", data)
+		self.set_meta("skill", data)
 		if metadata != null:
 			target_node.call(target_function, metadata, data)
 		else:
