@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
@@ -47,6 +47,10 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=45]
 [ext_resource path="res://gui_modules/Universal/Scripts/SkillBook.gd" type="Script" id=46]
 [ext_resource path="res://drag_node.gd" type="Script" id=47]
+[ext_resource path="res://skillbook_dead_zone.gd" type="Script" id=48]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_hover.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_pressed.png" type="Texture" id=51]
 
 [node name="SkillBook" type="TextureRect"]
 margin_left = 207.31
@@ -273,9 +277,10 @@ margin_top = 125.0
 margin_right = 1065.0
 margin_bottom = 394.0
 rect_pivot_offset = Vector2( 412.214, 134.5 )
-mouse_filter = 2
+mouse_filter = 1
 theme = ExtResource( 1 )
 scroll_horizontal_enabled = false
+script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -358,7 +363,6 @@ light_mask = 0
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
-toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 35 )
@@ -576,3 +580,12 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 1444.0
+margin_top = 44.0
+margin_right = 1473.0
+margin_bottom = 73.0
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 49 )
