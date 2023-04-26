@@ -46,7 +46,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_quest_pressed.png" type="Texture" id=44]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=45]
 [ext_resource path="res://gui_modules/Universal/Scripts/SkillBook.gd" type="Script" id=46]
-[ext_resource path="res://drag_node.gd" type="Script" id=47]
+[ext_resource path="res://skillbook_drag_node.gd" type="Script" id=47]
 [ext_resource path="res://skillbook_dead_zone.gd" type="Script" id=48]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_hover.png" type="Texture" id=49]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2.png" type="Texture" id=50]
@@ -90,6 +90,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,12 +101,13 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="combat" type="TextureButton" parent="Categories"]
+[node name="skill" type="TextureButton" parent="Categories"]
 light_mask = 0
 margin_left = 71.0
 margin_right = 125.0
@@ -117,28 +119,30 @@ texture_pressed = ExtResource( 17 )
 texture_hover = ExtResource( 20 )
 expand = true
 
-[node name="Off" type="TextureRect" parent="Categories/combat"]
+[node name="Off" type="TextureRect" parent="Categories/skill"]
 margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="On" type="TextureRect" parent="Categories/combat"]
+[node name="On" type="TextureRect" parent="Categories/skill"]
 visible = false
 margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="spells" type="TextureButton" parent="Categories"]
+[node name="spell" type="TextureButton" parent="Categories"]
 light_mask = 0
 margin_left = 142.0
 margin_right = 196.0
@@ -150,22 +154,24 @@ texture_pressed = ExtResource( 26 )
 texture_hover = ExtResource( 21 )
 expand = true
 
-[node name="Off" type="TextureRect" parent="Categories/spells"]
+[node name="Off" type="TextureRect" parent="Categories/spell"]
 margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="On" type="TextureRect" parent="Categories/spells"]
+[node name="On" type="TextureRect" parent="Categories/spell"]
 visible = false
 margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -188,6 +194,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,6 +206,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,6 +229,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,6 +241,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -254,6 +264,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -265,6 +276,7 @@ margin_left = -5.51602
 margin_top = -6.21725
 margin_right = 60.484
 margin_bottom = 63.7827
+mouse_filter = 2
 texture = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -460,6 +472,7 @@ __meta__ = {
 }
 
 [node name="frame" type="TextureRect" parent="SkillInfo"]
+visible = false
 margin_left = 20.0
 margin_top = 65.0
 margin_right = 60.0
@@ -535,6 +548,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="SkillInfo"]
+visible = false
 margin_left = 17.0
 margin_top = 207.0
 margin_right = 35.0
@@ -547,6 +561,7 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="SkillInfo"]
+visible = false
 margin_left = 79.0
 margin_top = 207.0
 margin_right = 97.0
