@@ -93,10 +93,7 @@ func _ready():
 	$Button.connect("pressed", self, "on_skillbook_click")
 
 func on_skillbook_click():
-	$SkillBook.visible = !$SkillBook.visible 
-	if $SkillBook.visible:
-		$SkillBook.clear_skillinfo()
-		$SkillBook.RebuildSkillBook()
+	$SkillBook.toggle()
 	RebuildSkillPanel()
 
 func _input(event):

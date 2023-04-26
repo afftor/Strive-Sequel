@@ -15,9 +15,24 @@ func _ready():
 	globals.connecttexttooltip($Categories/aoe, "Area Of Effect")
 	globals.connecttexttooltip($Categories/heal, "Heal")
 
+
+func toggle():
+	if visible:
+		close_skillbook()
+	else:
+		open_skillbook()
+
+
 func close_skillbook():
-	get_parent().RebuildSkillPanel()
+	gui_controller.windows_opened.erase(self)
 	hide()
+
+func open_skillbook():
+	show()
+	gui_controller.windows_opened.push_back(self)
+	clear_skillinfo()
+	RebuildSkillBook()
+
 
 func category_pressed(button):
 	for bt in $Categories.get_children():
@@ -107,3 +122,7 @@ func clear_skillinfo():
 	$SkillInfo/name.text = ""
 	$SkillInfo/Cost.text = ""
 	$SkillInfo/Cooldown.text = ""
+
+func hide():
+	get_parent().RebuildSkillPanel()
+	.hide()
