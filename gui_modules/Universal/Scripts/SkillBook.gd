@@ -1,12 +1,16 @@
-extends Node
+extends TextureRect
 
 var activecharacter
 
 func _ready():
-	$CloseButton.connect("pressed", self, "hide")
-	$TextureButton.connect("pressed", self, "hide")
+	$CloseButton.connect("pressed", self, "close_skillbook")
+	$TextureButton.connect("pressed", self, "close_skillbook")
 	for ch in $Categories.get_children():
 		ch.connect("pressed", self, "category_pressed", [ch])
+
+func close_skillbook():
+	get_parent().RebuildSkillPanel()
+	hide()
 
 func category_pressed(button):
 	for bt in $Categories.get_children():
@@ -54,15 +58,17 @@ func RebuildSkillBook():
 		if src.has(i):
 			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 			newbutton.get_node("Icon").texture = skill.icon
-			newbutton.set_meta('skill', skill.code)
+			newbutton.set_meta('skill', skill)
 			newbutton.connect("pressed", self, "on_skill_pressed", [skill])
 	update_filter()
 
-func update_combat_skill_panel(skill): # do actions in skill_drop_node
+func update_combat_skill_panel(skill):
 	for i in range(1,21):
 		var ch = $ScrollContainer2/GridContainer.get_child(i-1)
-		if ch.has_meta("Skill"):
-			activecharacter.skills.combat_skill_panel[i] = ch.get_meta("Skill").code
+		if ch.has_meta("skill"):
+			activecharacter.skills.combat_skill_panel[i] = ch.get_meta("skill").code
+		else:
+			activecharacter.skills.combat_skill_panel.erase(i)
 	RebuildSkillBook()
 
 func on_skill_pressed(skill):

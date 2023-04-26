@@ -12,4 +12,4 @@ func drop_data(position, data):
 #		data.get_node("Icon").texture = null
 		data.set_meta("skill", null)
 		data.get_node("Icon").texture = null
-#		get_parent().update_combat_skill_panel(null)
+		get_parent().update_combat_skill_panel(null)
