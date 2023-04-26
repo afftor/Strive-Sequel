@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/recolor shader.shader" type="Shader" id=1]
 [ext_resource path="res://assets/RecolorShaderMasks.tres" type="Material" id=2]
 [ext_resource path="res://assets/images/iconsgear/item_leather_chest_adv.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsgear/ArmorBasicCloth.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sprites/Erlen.png" type="Texture" id=5]
+[ext_resource path="res://assets/book_shader.tres" type="Material" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -118,9 +120,6 @@ shader_param/lmod = 0.6
 [node name="Panel" type="Panel"]
 margin_right = 782.0
 margin_bottom = 443.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="main_artefact_detector" type="TextureRect" parent="."]
 material = SubResource( 2 )
@@ -154,3 +153,13 @@ margin_right = 440.0
 margin_bottom = 431.0
 texture = ExtResource( 4 )
 expand = true
+
+[node name="sprite_book_shader" type="TextureRect" parent="."]
+material = ExtResource( 6 )
+margin_left = 458.813
+margin_top = 26.727
+margin_right = 802.813
+margin_bottom = 431.727
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6

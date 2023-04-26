@@ -30,7 +30,8 @@ var scenes = {
 	lira_mansion = ["lira_mansion_1","lira_mansion_2","lira_mansion_3","lira_mansion_4","lira_mansion_5","lira_mansion_6","lira_mansion_7","lira_mansion_8","lira_mansion_9"],
 	cali_act5_pet = ["cali_act5_pet_1","cali_act5_pet_2","cali_act5_pet_3","cali_act5_pet_4","cali_act5_pet_5","cali_act5_pet_6","cali_act5_pet_7","cali_act5_pet_8","cali_act5_pet_9_1","cali_act5_pet_9_2","cali_act5_pet_10"],
 	cali_act6_naked = ["cali_act6_naked_1","cali_act6_naked_2","cali_act6_naked_3","cali_act6_naked_4","cali_act6_naked_5","cali_act6_naked_6","cali_act6_naked_7"],
-	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"]
+	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"],
+	zephyra_lilia = ['zephyra_lilia_5', 'zephyra_lilia_6', 'zephyra_lilia_7', 'zephyra_lilia_8', 'zephyra_lilia_9']
 }	
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -38,7 +39,8 @@ var scenes_order = [
 	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
 	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
-	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow"
+	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
+	"zephyra_lilia"
 	]
 var story_scenes = ['anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -73,7 +75,8 @@ var ero_scenes = [
 'cali_bowl_1',
 'cali_bowl_naked_1',
 'zephyra_bath_1',
-'stag_sex_1',] 
+'stag_sex_1',
+'zephyra_lilia_1'] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -105,7 +108,8 @@ var ero_scenes_collection = {
 	"cali_bowl_":["cali_bowl_1","cali_bowl_2"],
 	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
 	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
-	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"]
+	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"],
+	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3']
 }
 #so these arrays are needed for storing order 
 
@@ -221,6 +225,8 @@ func get_image_for_seq(id):
 			data = scenedata.scenedict[scname + "_gallery"].duplicate(true)
 		else: continue
 		if data.has("custom_background"):
+			if data.custom_background in ['whitescreen', 'blackscreen']:
+				continue
 			return data.custom_background
 	return res
 

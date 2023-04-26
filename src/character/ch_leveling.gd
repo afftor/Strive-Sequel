@@ -568,6 +568,7 @@ func select_brothel_activity():
 				tmpchar.create('random', 'male', 'random')
 				if randf() < variables.brothel_pregnancy_chance:
 					globals.impregnate(tmpchar, parent.get_ref())
+				tmpchar.is_active = false
 			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
