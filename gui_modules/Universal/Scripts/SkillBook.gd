@@ -14,6 +14,7 @@ func _ready():
 	globals.connecttexttooltip($Categories/support, "Support")
 	globals.connecttexttooltip($Categories/aoe, "Area Of Effect")
 	globals.connecttexttooltip($Categories/heal, "Heal")
+	$ScrollContainer.target_node = self
 
 
 func toggle():
@@ -29,6 +30,7 @@ func close_skillbook():
 
 func open_skillbook():
 	show()
+	activecharacter = get_parent().activecharacter 
 	gui_controller.windows_opened.push_back(self)
 	clear_skillinfo()
 	RebuildSkillBook()
@@ -63,12 +65,12 @@ func update_filter():
 				ch.visible = true
 
 func RebuildSkillBook():
-	activecharacter = get_parent().activecharacter 
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	for i in activecharacter.skills.combat_skills:
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		var skill = Skilldata.Skilllist[i]
-		newbutton.dragdata = skill
+		newbutton.dragdata = {skill = i}
+		newbutton.target_node = self
 		newbutton.set_meta('skill', skill)
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
@@ -81,8 +83,7 @@ func RebuildSkillBook():
 	for i in range(1,21):
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer2/GridContainer)
 		newbutton.target_node = self
-		newbutton.target_function = 'update_combat_skill_panel'
-		newbutton.dragdata = newbutton
+		newbutton.dragdata = {position = i}
 		if src.has(i):
 			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 			newbutton.get_node("Icon").texture = skill.icon
@@ -91,14 +92,45 @@ func RebuildSkillBook():
 			newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	update_filter()
 
-func update_combat_skill_panel(skill):
-	for i in range(1,21):
-		var ch = $ScrollContainer2/GridContainer.get_child(i-1)
-		if ch.has_meta("skill"):
-			activecharacter.skills.combat_skill_panel[i] = ch.get_meta("skill").code
-		else:
-			activecharacter.skills.combat_skill_panel.erase(i)
+#func update_combat_skill_panel(skill):
+#	for i in range(1,21):
+#		var ch = $ScrollContainer2/GridContainer.get_child(i-1)
+#		if ch.has_meta("skill"):
+#			activecharacter.skills.combat_skill_panel[i] = ch.get_meta("skill").code
+#		else:
+#			activecharacter.skills.combat_skill_panel.erase(i)
+#	RebuildSkillBook()
+
+func set_skill_to_pos(skill, pos):
+	var src = activecharacter.skills.combat_skill_panel
+	var oldpos = []
+	for ps in src:
+		if src[ps] == skill:
+			oldpos.push_back(ps)
+	for ps in oldpos:
+		src.erase(ps)
+	src[pos] = skill
 	RebuildSkillBook()
+
+func swap_positions(pos1, pos2):
+	var src = activecharacter.skills.combat_skill_panel
+	if !src.has(pos1):
+		src[pos1] = src[pos2]
+		src.erase(pos2)
+	elif !src.has(pos2):
+		src[pos2] = src[pos1]
+		src.erase(pos1)
+	else:
+		var tmp = src[pos1]
+		src[pos1] = src[pos2]
+		src[pos2] = tmp
+	RebuildSkillBook()
+
+func remove_skill_from_pos(pos):
+	var src = activecharacter.skills.combat_skill_panel
+	src.erase(pos)
+	RebuildSkillBook()
+
 
 func update_skillinfo(skill):
 	$SkillInfo/frame.visible = true

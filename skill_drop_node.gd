@@ -1,24 +1,20 @@
 extends Control
 
 var target_node
-var target_function
 var metadata
 var dragdata
 
 func can_drop_data(position, data):
-	if data != null and not data is TextureButton:
+	if data != null:
 		return true
 	else:
 		return false
 
 func drop_data(position, data):
-	if target_node != null && target_function != null && !metadata is Dictionary:
-		self.get_node("Icon").texture = data.icon
-		self.set_meta("skill", data)
-		if metadata != null:
-			target_node.call(target_function, metadata, data)
-		else:
-			target_node.call(target_function, data)
+	if data.has('position'):
+		target_node.swap_positions(data.position, dragdata.position)
+	if data.has('skill'):
+		target_node.set_skill_to_pos(data.skill, dragdata.position)
 
 
 func get_drag_data(position):
