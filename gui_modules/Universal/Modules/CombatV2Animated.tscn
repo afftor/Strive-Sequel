@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -69,6 +69,10 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero.png" type="Texture" id=67]
 [ext_resource path="res://gui_modules/Universal/Modules/CharSmallStatsPanel.tscn" type="PackedScene" id=68]
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_board_deployed.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_disabled.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_hover.png" type="Texture" id=71]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_pressed.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook.png" type="Texture" id=73]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -911,13 +915,13 @@ __meta__ = {
 "hide_stranger",
 "hide_traveler",
 ]]
-margin_left = 470.0
+margin_left = 544.0
 margin_top = 870.0
-margin_right = 1450.0
+margin_right = 1482.0
 margin_bottom = 1060.0
 rect_min_size = Vector2( 0, 96 )
 custom_constants/vseparation = 10
-custom_constants/hseparation = 20
+custom_constants/hseparation = 15
 columns = 10
 __meta__ = {
 "_edit_use_anchors_": false
@@ -928,7 +932,6 @@ visible = false
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
-toggle_mode = true
 texture_normal = ExtResource( 69 )
 texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 32 )
@@ -1034,11 +1037,17 @@ texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 40 )
 texture_disabled = ExtResource( 4 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 31.0
-margin_top = 880.0
-margin_right = 226.0
-margin_bottom = 938.0
+[node name="Button" type="TextureButton" parent="."]
+margin_left = 449.0
+margin_top = 911.0
+margin_right = 532.0
+margin_bottom = 993.0
+texture_normal = ExtResource( 73 )
+texture_pressed = ExtResource( 72 )
+texture_hover = ExtResource( 71 )
+texture_disabled = ExtResource( 70 )
+expand = true
+stretch_mode = 5
 
 [node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
 visible = false

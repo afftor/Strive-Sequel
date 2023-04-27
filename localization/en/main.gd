@@ -1515,7 +1515,7 @@ var TranslationDict = {
 	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
 	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
-	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnel pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
 	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn't take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_ORAL = "Sex:Oral",
@@ -3155,7 +3155,8 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	REPLACETATTOO = "Replace this tattoo?",
 
 	NOTCOMPATIBLE = "This save file is not compatible with the current version of the game.\nHowever, you can update the file.\nWARNING! All characters will be returned to Mansion. Some progress might be lost.\nProceed? (original save file will stay untouched, but won't work with the current version)",
-	CREATECHARQUESTION = "Create this character?",
+	CREATECHARQUESTION = "Confirm creation of this character?",
+	CREATECHARACTERFEMALE = "Warning: You've selected a female character. Most of the game scripted events are played from male perspective but will be shown regardless. Confirm?",
 	RETURNTOMAINMENUQUESTION = "Return to Main Menu?",
 	FORGETLOCATIONQUESTION = "Forget this location? All present characters will be sent back to Mansion. This action can't be undone.",
 
@@ -10311,11 +10312,10 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	CALI_TAMING_QUEST_STAGE_16 = "Talk to Cali",
 	CALI_TAMING_QUEST_STAGE_17 = "Talk to Cali",
 	
-	ZEPHYRA_BATH_QUEST_NAME = "",
-	ZEPHYRA_BATH_QUEST_SUMMARY = "",
-	ZEPHYRA_BATH_QUEST_STAGE_0 = "",
-	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
-	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
+	ZEPHYRA_BATH_QUEST_NAME = "Zephyra: Half-time nun",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is sceheming on something...",
+	ZEPHYRA_BATH_QUEST_STAGE_1 = "Upgrade your mansion to host a bath.",
+	ZEPHYRA_BATH_QUEST_STAGE_2 = "Wait for something to happen.",
 	
 	GOBLIN_QUEST_NAME = "Greens in the woods",
 	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
@@ -11089,6 +11089,8 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	
 	SLAVEQUALITY_NAME = "Hirelings quality",
 	SLAVEQUALITY_DISC = "Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher.",
+	SLAVERACES_NAME = "Hireling Rarity",
+	SLAVERACES_DISC = "Increases racial rarity of characters available for hire. Rarer races might have better attributes and passive effects.",
 	
 	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
 	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",

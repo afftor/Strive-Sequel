@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zefira_lila4.png-e46a5917c83b9c4c86e171dba4c1f4bb.stex"
+path="res://.import/button_skillbook_disabled.png-e7a6b3df43cc21831ffa509ba206e4a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/zefira_lila4.png"
-dest_files=[ "res://.import/zefira_lila4.png-e46a5917c83b9c4c86e171dba4c1f4bb.stex" ]
+source_file="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_disabled.png"
+dest_files=[ "res://.import/button_skillbook_disabled.png-e7a6b3df43cc21831ffa509ba206e4a4.stex" ]
 
 [params]
 
