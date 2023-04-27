@@ -187,6 +187,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	fightover = false
 	$Rewards.visible = false
 	allowaction = false
+	$Button.disabled = true
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
 	for i in range(1,13):
@@ -606,8 +607,8 @@ func player_turn(pos):
 	selected_character.process_event(variables.TR_TURN_GET)
 	selected_character.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
-	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
-	$Panel3/Label.text = selected_character.get_short_name()
+#	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
+#	$Panel3/Label.text = selected_character.get_short_name()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	if !selected_character.can_act():
@@ -632,6 +633,7 @@ func player_turn(pos):
 			selected_character.process_event(variables.TR_TAUNT_FAIL)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	$Panel3.visible = true
 	$Menu/Run.disabled = norun_mode
 	#allowaction = true
 	RebuildSkillPanel()
@@ -747,8 +749,9 @@ func enemy_turn(pos):
 	$Menu/Run.disabled = true
 	turns += 1
 	var fighter = characters_pool.get_char_by_id(enemygroup[pos])
-	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
-	$Panel3/Label.text = fighter.get_short_name()
+	$Panel3.visible = false
+#	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
+#	$Panel3/Label.text = fighter.get_short_name()
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
 	fighter.displaynode.rebuildbuffs()
@@ -1075,6 +1078,7 @@ func use_skill(skill_code, caster, target):
 	#to add code for different costs
 	#and various limits and cooldowns
 	allowaction = false
+	$Button.disabled = true
 
 	var skill = Skilldata.Skilllist[skill_code]
 	var fa = true
@@ -1719,8 +1723,11 @@ func RebuildSkillPanel():
 
 func SelectSkill(skill):
 	if activecharacter == null: return
+	
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	skill = Skilldata.Skilllist[skill]
+	$Panel3/TextureRect.texture = skill.icon
+	$Panel3/Label.text = skill.name
 	#need to add daily restriction check
 	if !activecharacter.can_use_skill(skill)  :
 		#SelectSkill('attack')
@@ -1740,6 +1747,7 @@ func SelectSkill(skill):
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)
 	allowaction = true
+	$Button.disabled = false
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
 		checkwinlose();
 	if skill.has('cursor'): customcursor = skill.cursor
