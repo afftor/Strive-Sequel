@@ -518,41 +518,16 @@ __meta__ = {
 
 [node name="desc" type="RichTextLabel" parent="SkillInfo"]
 margin_left = 15.0
-margin_top = 228.0
+margin_top = 248.0
 margin_right = 279.0
-margin_bottom = 379.0
+margin_bottom = 399.0
 custom_fonts/normal_font = ExtResource( 41 )
 
-[node name="Cooldown" type="Label" parent="SkillInfo"]
-margin_left = 46.0
-margin_top = 202.0
-margin_right = 73.0
-margin_bottom = 226.0
-custom_fonts/font = ExtResource( 41 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Cost" type="Label" parent="SkillInfo"]
-margin_left = 109.0
-margin_top = 202.0
-margin_right = 136.0
-margin_bottom = 226.0
-custom_fonts/font = ExtResource( 41 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="SkillInfo"]
-visible = false
-margin_left = 17.0
-margin_top = 207.0
-margin_right = 35.0
-margin_bottom = 225.0
+[node name="CooldownIcon" type="TextureRect" parent="SkillInfo"]
+margin_left = 91.0
+margin_top = 223.0
+margin_right = 109.0
+margin_bottom = 241.0
 texture = ExtResource( 38 )
 expand = true
 stretch_mode = 6
@@ -560,15 +535,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect3" type="TextureRect" parent="SkillInfo"]
-visible = false
-margin_left = 79.0
-margin_top = 207.0
-margin_right = 97.0
-margin_bottom = 225.0
+[node name="Cooldown" type="Label" parent="SkillInfo"]
+margin_left = 110.85
+margin_top = 219.0
+margin_right = 137.85
+margin_bottom = 243.0
+custom_fonts/font = ExtResource( 41 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostIcon" type="TextureRect" parent="SkillInfo"]
+margin_left = 153.0
+margin_top = 223.0
+margin_right = 171.0
+margin_bottom = 241.0
 texture = ExtResource( 37 )
 expand = true
 stretch_mode = 6
+
+[node name="Cost" type="Label" parent="SkillInfo"]
+margin_left = 174.0
+margin_top = 219.0
+margin_right = 201.0
+margin_bottom = 243.0
+custom_fonts/font = ExtResource( 41 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 1147.94
