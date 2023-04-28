@@ -459,6 +459,7 @@ func use_item_on_character(character, item):
 
 func use_e_combat_skill(caster, target, skill):
 	caster.pay_cost(skill.cost)
+	caster.combatgroup = 'ally'
 	if !caster.has_status('ignore_catalysts_for_%s' % skill.code):
 		for i in skill.catalysts:
 			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
@@ -506,6 +507,7 @@ func use_e_combat_skill(caster, target, skill):
 					input_handler.calculate_number_from_string_array(skill.value[0], caster, target)
 				)
 			else:
+				target.combatgroup = 'ally'
 				var s_skill2 = s_skill1.clone()
 				s_skill2.setup_target(i)
 				s_skill2.setup_final()
