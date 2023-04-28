@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex"
+path="res://.import/taz_armor_cloth.png-897be1ff0693f8b6915c5aeec8718084.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/01_body_nude_male/ShoulderL_m.png"
-dest_files=[ "res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth_female/taz_armor_cloth.png"
+dest_files=[ "res://.import/taz_armor_cloth.png-897be1ff0693f8b6915c5aeec8718084.stex" ]
 
 [params]
 

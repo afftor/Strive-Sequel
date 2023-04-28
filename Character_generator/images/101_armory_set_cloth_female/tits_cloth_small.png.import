@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex"
+path="res://.import/tits_cloth_small.png-ba9d1411a19ef7bc52a4e925c563e62a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/01_body_nude_male/ShoulderL_m.png"
-dest_files=[ "res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_small.png"
+dest_files=[ "res://.import/tits_cloth_small.png-ba9d1411a19ef7bc52a4e925c563e62a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex"
+path="res://.import/ShoulderR_armor_cloth.png-cd185228e2a0f9a3e9c7c97eded5ccb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/01_body_nude_male/ShoulderL_m.png"
-dest_files=[ "res://.import/ShoulderL_m.png-e30cbac19d6b7dcbe710dbc80cc0799e.stex" ]
+source_file="res://Character_generator/images/121_armory_set_cloth_male/ShoulderR_armor_cloth.png"
+dest_files=[ "res://.import/ShoulderR_armor_cloth.png-cd185228e2a0f9a3e9c7c97eded5ccb9.stex" ]
 
 [params]
 
