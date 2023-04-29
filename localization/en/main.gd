@@ -2074,7 +2074,7 @@ var TranslationDict = {
 	BODYPARTTITS_SIZESMALLDESCRIPT = "[He] has [color=yellow]small[/color], round boobs.",
 	BODYPARTTITS_SIZEAVERAGEDESCRIPT = "[His] nice, [color=yellow]perky[/color] breasts are firm and inviting.",
 	BODYPARTTITS_SIZEBIGDESCRIPT = "[His] [color=yellow]big[/color] tits are pleasantly soft, but still have a nice spring to them.",
-	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big fpr [his] size.",
+	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big for [his] size.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] chest is of definitive [color=yellow]masculine[/color] shape.",
 
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] butt is skinny and [color=yellow]flat[/color].",
@@ -5139,7 +5139,7 @@ Anastasia is displayed in the main square for a week, during which time there is
 As you finish, she drops to the ground coughing heavily and clinging to her throat. For the last time her eyes display fear and hatred towards you, still not fully realizing what's happening to her. A moment later she loses consciousness.
 """,
 	ANASTASIA_PERSUASION_3 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
-	ANASTASIA_PERSUASION_4 = """You put the enchanted ring over her finger. The ring gives off a dim light, then tightly secures itself such that it can never be removed.""",
+	ANASTASIA_PERSUASION_4 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
 	ANASTASIA_PERSUASION_5 = """After another minute the princess starts moving and slowly rises up. Her eyes are devoid of consciousness and she only barely manages to focus on you standing before her. As you give her a couple of simple orders and she follows them, you decide the work is finished.""",
 	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess""",
 	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend""",

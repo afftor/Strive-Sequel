@@ -1053,14 +1053,12 @@ expand = true
 stretch_mode = 5
 
 [node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
-visible = false
 margin_left = 100.0
 margin_top = 845.0
 margin_right = 409.0
 margin_bottom = 1039.0
 
 [node name="StatsPanelRight" parent="." instance=ExtResource( 68 )]
-visible = false
 margin_left = 1514.0
 margin_top = 845.0
 margin_right = 1823.0

@@ -34,17 +34,17 @@ func fill(fighter):
 	for res in variables.resists_list:
 		if res == 'all': continue
 		var res_panel = input_handler.DuplicateContainerTemplate($stats, 'resist')
-		res_panel.get_node('label').text = tr(statdata.statdata['resist_' + res].name)
+		res_panel.get_node('label').text = tr(statdata.statdata['resist_' + res].name).replace(" Resist", "")
 		var val = fighter.get_stat('resists')[res]
 		if val == null or val == 0:
 			res_panel.get_node("icon/subicon").visible = false
 			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/yellow_icon.png")
 		elif val > 0:
 			res_panel.get_node("icon/subicon").visible = true
-			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/blue_icon.png")
+			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/red_icon.png")
 			res_panel.get_node("icon/subicon").texture = load("res://assets/Textures_v2/BATTLE/Icons/minus.png")
 		elif val < 0:
 			res_panel.get_node("icon/subicon").visible = true
-			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/red_icon.png")
+			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/blue_icon.png")
 			res_panel.get_node("icon/subicon").texture = load("res://assets/Textures_v2/BATTLE/Icons/plus.png")
 		
