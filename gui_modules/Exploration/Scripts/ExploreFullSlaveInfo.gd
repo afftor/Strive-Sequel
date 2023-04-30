@@ -72,7 +72,7 @@ func show_summary(person, from_dialogue = false):
 	
 	for i in SummaryModule.get_node("factors").get_children():
 		# if i.name in ['food_consumption', 'base_exp']:
-		if i.name in ['base_exp']:
+		if i.name in ['base_exp', 'food_consumption']:
 			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			continue
 		if input_handler.globalsettings.factors_as_words:
