@@ -1515,7 +1515,7 @@ var TranslationDict = {
 	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
 	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
-	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnel pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
 	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn't take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_ORAL = "Sex:Oral",
@@ -2074,7 +2074,7 @@ var TranslationDict = {
 	BODYPARTTITS_SIZESMALLDESCRIPT = "[He] has [color=yellow]small[/color], round boobs.",
 	BODYPARTTITS_SIZEAVERAGEDESCRIPT = "[His] nice, [color=yellow]perky[/color] breasts are firm and inviting.",
 	BODYPARTTITS_SIZEBIGDESCRIPT = "[His] [color=yellow]big[/color] tits are pleasantly soft, but still have a nice spring to them.",
-	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big fpr [his] size.",
+	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big for [his] size.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] chest is of definitive [color=yellow]masculine[/color] shape.",
 
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] butt is skinny and [color=yellow]flat[/color].",
@@ -3155,7 +3155,8 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	REPLACETATTOO = "Replace this tattoo?",
 
 	NOTCOMPATIBLE = "This save file is not compatible with the current version of the game.\nHowever, you can update the file.\nWARNING! All characters will be returned to Mansion. Some progress might be lost.\nProceed? (original save file will stay untouched, but won't work with the current version)",
-	CREATECHARQUESTION = "Create this character?",
+	CREATECHARQUESTION = "Confirm creation of this character?",
+	CREATECHARACTERFEMALE = "Warning: You've selected a female character. Most of the game scripted events are played from male perspective but will be shown regardless. Confirm?",
 	RETURNTOMAINMENUQUESTION = "Return to Main Menu?",
 	FORGETLOCATIONQUESTION = "Forget this location? All present characters will be sent back to Mansion. This action can't be undone.",
 
@@ -5138,7 +5139,7 @@ Anastasia is displayed in the main square for a week, during which time there is
 As you finish, she drops to the ground coughing heavily and clinging to her throat. For the last time her eyes display fear and hatred towards you, still not fully realizing what's happening to her. A moment later she loses consciousness.
 """,
 	ANASTASIA_PERSUASION_3 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
-	ANASTASIA_PERSUASION_4 = """You put the enchanted ring over her finger. The ring gives off a dim light, then tightly secures itself such that it can never be removed.""",
+	ANASTASIA_PERSUASION_4 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
 	ANASTASIA_PERSUASION_5 = """After another minute the princess starts moving and slowly rises up. Her eyes are devoid of consciousness and she only barely manages to focus on you standing before her. As you give her a couple of simple orders and she follows them, you decide the work is finished.""",
 	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess""",
 	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend""",
@@ -10311,11 +10312,10 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	CALI_TAMING_QUEST_STAGE_16 = "Talk to Cali",
 	CALI_TAMING_QUEST_STAGE_17 = "Talk to Cali",
 	
-	ZEPHYRA_BATH_QUEST_NAME = "",
-	ZEPHYRA_BATH_QUEST_SUMMARY = "",
-	ZEPHYRA_BATH_QUEST_STAGE_0 = "",
-	ZEPHYRA_BATH_QUEST_STAGE_1 = "",
-	ZEPHYRA_BATH_QUEST_STAGE_2 = "",
+	ZEPHYRA_BATH_QUEST_NAME = "Zephyra: Half-time nun",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is sceheming on something...",
+	ZEPHYRA_BATH_QUEST_STAGE_1 = "Upgrade your mansion to host a bath.",
+	ZEPHYRA_BATH_QUEST_STAGE_2 = "Wait for something to happen.",
 	
 	GOBLIN_QUEST_NAME = "Greens in the woods",
 	GOBLIN_QUEST_SUMMARY = "You've received an unusual request from a forest spirit you've fought with before, to figure out who disrupting the woods.",
@@ -11089,6 +11089,8 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	
 	SLAVEQUALITY_NAME = "Hirelings quality",
 	SLAVEQUALITY_DISC = "Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher.",
+	SLAVERACES_NAME = "Hireling Rarity",
+	SLAVERACES_DISC = "Increases racial rarity of characters available for hire. Rarer races might have better attributes and passive effects.",
 	
 	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
 	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",

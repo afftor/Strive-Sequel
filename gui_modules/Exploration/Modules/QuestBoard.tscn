@@ -476,6 +476,7 @@ custom_fonts/font = ExtResource( 13 )
 text = "There are no suitable quests available"
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 1425.0
 margin_top = 867.0
 margin_right = 1548.0

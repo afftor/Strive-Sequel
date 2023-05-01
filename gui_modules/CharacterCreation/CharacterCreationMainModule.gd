@@ -311,7 +311,16 @@ func apply_preserved_settings():
 
 func confirm_character():
 	if check_confirm_possibility():
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
+		if mode == 'master' && person.get_stat('sex') == 'female':
+			confirm_female()
+		else:
+			confirm_final()
+
+func confirm_female():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'confirm_final', tr('CREATECHARACTERFEMALE')])
+
+func confirm_final():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
 
 
 func finish_character():

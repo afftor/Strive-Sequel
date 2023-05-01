@@ -497,7 +497,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/firedamagebonus.png",
-				description = "Rare: Strong\nIncreased Damage and Maximum Healt",
+				description = "Rare: Strong\nIncreased Damage and Maximum Health",
 				limit = 1,
 				t_name = 'rare_strong'
 			}

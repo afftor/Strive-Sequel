@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=2]
@@ -63,6 +63,7 @@
 [ext_resource path="res://Character_generator/images/08_horns/Horn_straight_top.png" type="Texture" id=61]
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=62]
 [ext_resource path="res://Character_generator/images/06_hairs_back/hair_back_verylong1.png" type="Texture" id=63]
+[ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=64]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -450,7 +451,10 @@ shader = ExtResource( 1 )
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 1 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 1 )
+
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -606,8 +610,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 365, 539 )
 shader_param/anchor3 = Vector2( 519, 539 )
@@ -636,7 +640,7 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 7 )
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -792,8 +796,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 346, 561 )
 shader_param/anchor3 = Vector2( 535, 561 )
@@ -822,7 +826,7 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 7 )
 
-[sub_resource type="Shader" id=13]
+[sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -978,8 +982,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 13 )
+[sub_resource type="ShaderMaterial" id=15]
+shader = SubResource( 14 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 346, 561 )
 shader_param/anchor3 = Vector2( 535, 561 )
@@ -1007,7 +1011,7 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 0.282353, 0.352941, 0.231373, 1 )
 shader_param/overlay = 1.0
 
-[sub_resource type="Shader" id=15]
+[sub_resource type="Shader" id=16]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -1163,8 +1167,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=16]
-shader = SubResource( 15 )
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
 shader_param/anchor1 = Vector2( 436, 590 )
 shader_param/anchor2 = Vector2( 346, 561 )
 shader_param/anchor3 = Vector2( 535, 561 )
@@ -1193,10 +1197,10 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 7 )
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=18]
 shader = ExtResource( 1 )
 
-[sub_resource type="Shader" id=18]
+[sub_resource type="Shader" id=19]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -1352,8 +1356,8 @@ void vertex(){
 	VERTEX += offset;
 }"
 
-[sub_resource type="ShaderMaterial" id=19]
-shader = SubResource( 18 )
+[sub_resource type="ShaderMaterial" id=20]
+shader = SubResource( 19 )
 shader_param/anchor1 = Vector2( 328.001, 387.999 )
 shader_param/anchor2 = Vector2( 567.001, 387.998 )
 shader_param/anchor3 = Vector2( 0, 0 )
@@ -1383,7 +1387,7 @@ shader_param/overlay = 0.7
 shader_param/part2 = ExtResource( 26 )
 shader_param/part3 = ExtResource( 48 )
 
-[sub_resource type="ShaderMaterial" id=20]
+[sub_resource type="ShaderMaterial" id=21]
 shader = ExtResource( 1 )
 
 [node name="Female_pose1" type="Node2D"]
@@ -1540,6 +1544,13 @@ rotation = -1.5708
 scale = Vector2( 1, 0.8 )
 texture = ExtResource( 2 )
 
+[node name="Raincoat_tex" type="Sprite" parent="HumanF1/Spine"]
+visible = false
+material = SubResource( 9 )
+position = Vector2( 214, -8.00082 )
+rotation = -1.5708
+texture = ExtResource( 64 )
+
 [node name="Tail_tex" type="Sprite" parent="HumanF1/Spine"]
 material = ExtResource( 25 )
 position = Vector2( 205, 2.99924 )
@@ -1554,7 +1565,7 @@ default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 45 )
@@ -1572,7 +1583,7 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR/HandR"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -36.9996, 145.789 )
 rotation = -1.5708
 texture = ExtResource( 12 )
@@ -1583,7 +1594,7 @@ rotation = -1.5708
 texture = ExtResource( 23 )
 
 [node name="ArmR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
 texture = ExtResource( 6 )
@@ -1594,7 +1605,7 @@ rotation = -1.5708
 texture = ExtResource( 8 )
 
 [node name="ShoulderR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 3 )
@@ -1612,7 +1623,7 @@ default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 54 )
@@ -1629,7 +1640,7 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL/HandL"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 5 )
@@ -1640,7 +1651,7 @@ rotation = -1.5708
 texture = ExtResource( 20 )
 
 [node name="ArmL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
 texture = ExtResource( 4 )
@@ -1651,7 +1662,7 @@ rotation = -1.5708
 texture = ExtResource( 56 )
 
 [node name="ShoulderL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 35 )
@@ -1662,21 +1673,21 @@ rotation = -1.5708
 texture = ExtResource( 52 )
 
 [node name="Torso_tex2" type="Sprite" parent="HumanF1/Spine"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 15 )
 
 [node name="Torso_races" type="Sprite" parent="HumanF1/Spine"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 38 )
 
 [node name="Belly_default_tex" type="Sprite" parent="HumanF1/Spine"]
 light_mask = 0
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 219, -1.00079 )
 rotation = -1.5708
 texture = ExtResource( 13 )
@@ -1696,13 +1707,13 @@ default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="HumanF1/Spine/Taz/LegL"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 55 )
 
 [node name="LegL_tex" type="Sprite" parent="HumanF1/Spine/Taz/LegL"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 30 )
@@ -1721,13 +1732,13 @@ default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="HumanF1/Spine/Taz/LegR"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 41 )
 
 [node name="LegR_tex" type="Sprite" parent="HumanF1/Spine/Taz/LegR"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 39 )
@@ -1738,14 +1749,14 @@ rotation = -1.5708
 texture = ExtResource( 21 )
 
 [node name="Taz_tex" type="Sprite" parent="HumanF1/Spine/Taz"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 36 )
 
 [node name="Taz_races" type="Sprite" parent="HumanF1/Spine/Taz"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
 texture = ExtResource( 34 )
@@ -1777,7 +1788,7 @@ rotation = -1.5708
 texture = ExtResource( 14 )
 
 [node name="Torso_nipple_tex" type="Sprite" parent="HumanF1/Spine"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
 texture = ExtResource( 43 )
@@ -1794,7 +1805,7 @@ position = Vector2( 135, 12.9995 )
 rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
 
 [node name="Belly_pregnancy_tex" type="Sprite" parent="HumanF1/Spine/Pregnancy"]
-material = SubResource( 10 )
+material = SubResource( 11 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 19 )
@@ -1810,7 +1821,7 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
-material = SubResource( 12 )
+material = SubResource( 13 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1863,7 +1874,7 @@ visible = false
 script = ExtResource( 60 )
 
 [node name="Nipples_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
-material = SubResource( 14 )
+material = SubResource( 15 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1917,7 +1928,7 @@ script = ExtResource( 60 )
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="HumanF1/Spine/Tits"]
 visible = false
-material = SubResource( 14 )
+material = SubResource( 15 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1975,13 +1986,13 @@ rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-material = SubResource( 16 )
+material = SubResource( 17 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 27 )
 
 [node name="Chin_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-material = SubResource( 16 )
+material = SubResource( 17 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 31 )
@@ -1997,7 +2008,7 @@ rotation = -1.5708
 texture = ExtResource( 58 )
 
 [node name="Eyes_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 17 )
+material = SubResource( 18 )
 position = Vector2( 499, -8.98611 )
 rotation = -1.5708
 texture = ExtResource( 62 )
@@ -2006,25 +2017,25 @@ __meta__ = {
 }
 
 [node name="Face_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 16 )
+material = SubResource( 17 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
 texture = ExtResource( 47 )
 
 [node name="Eyebrows_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 19 )
+material = SubResource( 20 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 16 )
 
 [node name="Nose_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 19 )
+material = SubResource( 20 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 17 )
 
 [node name="Lips_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
-material = SubResource( 20 )
+material = SubResource( 21 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 texture = ExtResource( 22 )
@@ -2175,7 +2186,7 @@ __meta__ = {
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="HumanF1/Spine/Head"]
 visible = false
-material = SubResource( 16 )
+material = SubResource( 17 )
 position = Vector2( 567, -10.002 )
 rotation = -1.5708
 scale = Vector2( 0.95, 0.95 )

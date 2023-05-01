@@ -1052,7 +1052,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {obedience_drain = -1, loyalty_gain = 1, timid_factor = 1},
+		basestats = {obedience_drain = -1, loyalty_gain = 1, sexuals_bonus = 5},
 	},
 	steel_collar = {
 		code = 'steel_collar',

@@ -134,8 +134,8 @@ func remove_skill_from_pos(pos):
 
 func update_skillinfo(skill):
 	$SkillInfo/frame.visible = true
-	$SkillInfo/TextureRect2.visible = true
-	$SkillInfo/TextureRect3.visible = true
+	$SkillInfo/CooldownIcon.visible = true
+	$SkillInfo/CostIcon.visible = true
 	$SkillInfo/frame/icon.texture = skill.icon
 	$SkillInfo/name.text = tr("SKILL" + skill.code.to_upper())
 	$SkillInfo/desc.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
@@ -147,8 +147,8 @@ func update_skillinfo(skill):
 
 func clear_skillinfo():
 	$SkillInfo/frame.visible = false
-	$SkillInfo/TextureRect2.visible = false
-	$SkillInfo/TextureRect3.visible = false
+	$SkillInfo/CooldownIcon.visible = false
+	$SkillInfo/CostIcon.visible = false
 	$SkillInfo/frame/icon.texture = null
 	$SkillInfo/desc.text = ""
 	$SkillInfo/name.text = ""

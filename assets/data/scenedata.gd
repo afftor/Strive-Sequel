@@ -1733,7 +1733,7 @@ var quests = {
 
 	mages_election_quest = {
 		code = 'mages_election_quest',
-		summary = "In your attempt to get Fighters Guild support for future election Myr gave you a personal order.",
+		summary = "In your attempt to get Mages Guild support for future election Myr gave you a personal order.",
 		stages = {
 			start = {code = 'start', name = "Dark Elf Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
 			stage1 = {code = 'stage1', name = "Dark Elf Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
@@ -1743,7 +1743,7 @@ var quests = {
 
 	workers_election_quest = {
 		code = 'workers_election_quest',
-		summary = "In your attempt to get Fighters Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
+		summary = "In your attempt to get Workers Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
 		stages = {
 			start = {code = 'start', name = "Missing Payment", descript = "Sigmund, from Worker's Guild asked me to visit Duncan from Fighters Guild and retrieve the payment from previous shipment."},
 			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me that Reim was the courier, who should've brought Workers their payment. I should search for him at Aliron and figure out what happened."},
