@@ -311,7 +311,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 #		dialogue_type = 2,
-		character = 'xari',
+#		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
