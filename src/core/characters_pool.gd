@@ -29,7 +29,7 @@ func get_char_by_id(id):
 
 func cleanup(on_exit = false):
 	for id in characters.keys():
-		if !characters[id].is_active or on_exit:
+		if !characters[id].is_active or characters[id].src == 'test_main' or on_exit:
 			characters[id].clean_effects()
 #			if state.characters.has(id):
 #				state.character_order.erase(id)

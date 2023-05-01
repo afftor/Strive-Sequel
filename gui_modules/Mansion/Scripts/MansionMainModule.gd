@@ -532,7 +532,7 @@ func test_mode():
 	ResourceScripts.game_world.make_world()
 	if true:
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
-		var character = ResourceScripts.scriptdict.class_slave.new("test_main")
+		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Dryad', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
@@ -620,7 +620,7 @@ func test_mode():
 #		globals.impregnate(character, character)
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
-		character = ResourceScripts.scriptdict.class_slave.new("test_main")
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Centaur', 'futa', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
@@ -861,7 +861,7 @@ func test_mode():
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message('savra_talk_3', '', {})
+#		input_handler.interactive_message('savra_talk_3', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -874,7 +874,7 @@ func test_mode():
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('freya_shrine_find', '', {})
+		input_handler.interactive_message('xari_encounter1', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
