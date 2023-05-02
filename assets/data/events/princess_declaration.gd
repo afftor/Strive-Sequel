@@ -246,7 +246,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}],
 				image = null,
-				character = "AnastasiaBroken",
+				character = "anastasia",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 #					{text = "AFTER_ELECTION_PRINCESS_17", reqs = []},

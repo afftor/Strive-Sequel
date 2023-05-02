@@ -5256,8 +5256,9 @@ Amelia gives you a sign to comply with this request and you both leave the room.
 
 Amelia gives you a playful smile and leaves to go about her business""",
 	ANASTASIA_PERSUASION_39 = """You enter the princess's cell. She seems in better spirits than you left her in. She must've made up her mind.""",
-	ANASTASIA_PERSUASION_40 = """— Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor.
-
+	ANASTASIA_PERSUASION_40 = """— Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor.""",
+	ANASTASIA_PERSUASION_40_1 = """
+	
 You realize there's nothing you can say to change Anastasia's mind at this point, so your only option is to leave.""",
 	ANASTASIA_PERSUASION_41 = """You leave the jail cell and find Amelia waiting for you.
 
