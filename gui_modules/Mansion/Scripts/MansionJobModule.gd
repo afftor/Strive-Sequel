@@ -686,8 +686,8 @@ func show_brothel_options():
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
-		if person.get_work() == '':
-			newbutton.disabled = true
+#		if person.get_work() == '':
+#			newbutton.disabled = true
 	for i in brothel_rules.sexual:
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
 			continue
@@ -737,15 +737,15 @@ func update_brothel_text():
 					can_get_pregnant = true
 	
 	if person.get_work() == '':
-		text = "{color=yellow|[name] will rest.}"
+		text = "{color=yellow|[name] will rest. Toggle [color=aqua]Rest[/color] to disable.}"
 	elif can_do_sex && can_do_penetrative:
-		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if they find [him] appealing.}"
+		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if they find [him] appealing. }"
 		if can_get_pregnant:
-			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration.}"
+			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration. }"
 	elif can_do_sex:
-		text = "{color=yellow|[name] will entertain clients by serving them and provide them with light sexual services not involving penetration.}"
+		text = "{color=yellow|[name] will entertain clients by serving them and provide them with light sexual services not involving penetration. }"
 	else:
-		text = "{color=green|[name] will serve and entertain clients but will refuse any sexual services.}"
+		text = "{color=green|[name] will serve and entertain clients but will refuse any sexual services. }"
 	
 	$BrothelRules/brothel_descript.bbcode_text = globals.TextEncoder(person.translate(text))
 
@@ -758,8 +758,8 @@ func switch_rest(button):
 		set_rest(null, person)
 		update_brothel_text()
 		restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
-		for nd in get_tree().get_nodes_in_group('sex_option'):
-			nd.disabled = true
+#		for nd in get_tree().get_nodes_in_group('sex_option'):
+#			nd.disabled = true
 	else:
 		person.assign_to_task('brothel', 'brothel')
 		update_characters()
