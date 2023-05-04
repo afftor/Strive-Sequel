@@ -586,7 +586,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
 		tags = [],
-		race_tags = ['commons'],
+		race_tags = ['common'],
 		bodyparts = {
 			height = ['petite','short','average','tall','towering'],
 			ears = ['normal'],

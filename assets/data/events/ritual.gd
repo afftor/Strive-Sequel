@@ -523,9 +523,9 @@ var data = {
 			code = 'savra_talk_6_2', text = "SAVRA_TALK_6_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'},
-			{code = "update_city"}]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'}, 
+			{code = "update_city"},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'},]
 		} ] 
 	},
 	
@@ -540,8 +540,8 @@ var data = {
 		},  {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = 'make_quest_location', value = 'quest_leon_forest_2'},
-			{code = "update_city"}]
+			{code = "update_city"},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'},]
 		} ]
 	},
 	
@@ -555,8 +555,9 @@ var data = {
 			code = 'savra_talk_6_2', text = "SAVRA_TALK_6_OPTION_1", reqs = [], dialogue_argument = 1, remove_after_first_use = true
 		}, {
 			code = 'close', text = "SAVRA_TALK_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
-			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'},
-			{code = "update_city"}, {code = 'make_quest_location', value = 'quest_leon_forest_2'}, ]
+			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage14'}, 
+			{code = "update_city"},
+			{code = 'make_quest_location', value = 'quest_leon_forest_2'}]
 		} ]
 	},
 	

@@ -1,0 +1,603 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18_special.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_24px.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_aoe_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_aoe.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_aoe_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_all.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_support_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_weapon.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_heal_pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_learned.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_heal_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_support.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_weapon_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_all_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_weapon_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_support_pressed.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_all_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_skill_info.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_heal.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_pressed.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/skill_book_paper_bg.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/border_skills.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/border_hotbar.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_skill_info_bg.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/iconsskills/defaultattack.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_unactive.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=33]
+[ext_resource path="res://skill_drop_node.gd" type="Script" id=34]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_info.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_usagecost.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_cooldown.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/button_bookmark_categories.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/button_bookmark_categories_active.png" type="Texture" id=40]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_16px.tres" type="DynamicFont" id=41]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_quest.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_quest_hover.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_quest_pressed.png" type="Texture" id=44]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=45]
+[ext_resource path="res://gui_modules/Universal/Scripts/SkillBook.gd" type="Script" id=46]
+[ext_resource path="res://skillbook_drag_node.gd" type="Script" id=47]
+[ext_resource path="res://skillbook_dead_zone.gd" type="Script" id=48]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_hover.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/cross2_pressed.png" type="Texture" id=51]
+
+[node name="SkillBook" type="TextureRect"]
+margin_left = 207.31
+margin_top = 69.0644
+margin_right = 1707.31
+margin_bottom = 875.065
+texture = ExtResource( 27 )
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Categories" type="HBoxContainer" parent="."]
+margin_left = 140.0
+margin_top = 50.0
+margin_right = 484.0
+margin_bottom = 104.0
+custom_constants/separation = 17
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 18 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/all"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/all"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="skill" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_left = 71.0
+margin_right = 125.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 20 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/skill"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/skill"]
+visible = false
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spell" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_left = 142.0
+margin_right = 196.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 21 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/spell"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/spell"]
+visible = false
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="support" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_left = 213.0
+margin_right = 267.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 11 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/support"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/support"]
+visible = false
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="aoe" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_left = 284.0
+margin_right = 338.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 7 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/aoe"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/aoe"]
+visible = false
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heal" type="TextureButton" parent="Categories"]
+light_mask = 0
+margin_left = 355.0
+margin_right = 409.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 15 )
+expand = true
+
+[node name="Off" type="TextureRect" parent="Categories/heal"]
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="On" type="TextureRect" parent="Categories/heal"]
+visible = false
+margin_left = -5.51602
+margin_top = -6.21725
+margin_right = 60.484
+margin_bottom = 63.7827
+mouse_filter = 2
+texture = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+light_mask = 0
+margin_left = 105.0
+margin_top = 125.0
+margin_right = 1065.0
+margin_bottom = 394.0
+rect_pivot_offset = Vector2( 412.214, 134.5 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+scroll_horizontal_enabled = false
+script = ExtResource( 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+light_mask = 0
+mouse_filter = 2
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 10
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+visible = false
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 14 )
+expand = true
+script = ExtResource( 47 )
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 31 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
+light_mask = 0
+margin_left = -4.0
+margin_top = -1.0
+margin_right = 84.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="."]
+light_mask = 0
+margin_left = 105.0
+margin_top = 485.0
+margin_right = 1065.0
+margin_bottom = 754.0
+rect_pivot_offset = Vector2( 412.214, 134.5 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer2"]
+light_mask = 0
+mouse_filter = 2
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 10
+
+[node name="Button" type="TextureButton" parent="ScrollContainer2/GridContainer"]
+visible = false
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 35 )
+texture_disabled = ExtResource( 14 )
+expand = true
+script = ExtResource( 34 )
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer2/GridContainer/Button"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="ScrollContainer2/GridContainer/Button/Icon"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.207843, 0.172549, 0.172549, 0.603922 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ScrollContainer2/GridContainer/Button"]
+light_mask = 0
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 94.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect1" type="TextureRect" parent="."]
+margin_left = 80.0
+margin_top = 100.0
+margin_right = 1100.0
+margin_bottom = 426.0
+mouse_filter = 2
+texture = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 80.0
+margin_top = 460.0
+margin_right = 1100.0
+margin_bottom = 786.0
+mouse_filter = 2
+texture = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 544.502
+margin_top = 430.939
+margin_right = 636.502
+margin_bottom = 465.939
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.239216, 0.211765, 0.211765, 1 )
+text = "Skill Bar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillInfo" type="TextureRect" parent="."]
+margin_left = 1110.0
+margin_top = 221.0
+margin_right = 1406.0
+margin_bottom = 631.0
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="SkillInfo"]
+margin_right = 296.0
+margin_bottom = 410.0
+texture = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="frame" type="TextureRect" parent="SkillInfo"]
+margin_left = 95.0
+margin_top = 113.0
+margin_right = 195.0
+margin_bottom = 213.0
+texture = ExtResource( 36 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="SkillInfo/frame"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SkillInfo"]
+margin_right = 296.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Skill info"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="SkillInfo"]
+margin_left = 30.0
+margin_top = 57.0
+margin_right = 275.0
+margin_bottom = 92.0
+custom_fonts/font = ExtResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="RichTextLabel" parent="SkillInfo"]
+margin_left = 15.0
+margin_top = 248.0
+margin_right = 279.0
+margin_bottom = 399.0
+custom_fonts/normal_font = ExtResource( 41 )
+
+[node name="CooldownIcon" type="TextureRect" parent="SkillInfo"]
+margin_left = 91.0
+margin_top = 223.0
+margin_right = 109.0
+margin_bottom = 241.0
+texture = ExtResource( 38 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cooldown" type="Label" parent="SkillInfo"]
+margin_left = 110.85
+margin_top = 219.0
+margin_right = 137.85
+margin_bottom = 243.0
+custom_fonts/font = ExtResource( 41 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostIcon" type="TextureRect" parent="SkillInfo"]
+margin_left = 153.0
+margin_top = 223.0
+margin_right = 171.0
+margin_bottom = 241.0
+texture = ExtResource( 37 )
+expand = true
+stretch_mode = 6
+
+[node name="Cost" type="Label" parent="SkillInfo"]
+margin_left = 174.0
+margin_top = 219.0
+margin_right = 201.0
+margin_bottom = 243.0
+custom_fonts/font = ExtResource( 41 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 1147.94
+margin_top = 711.0
+margin_right = 1367.94
+margin_bottom = 769.0
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 44 )
+texture_hover = ExtResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 45 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Accept"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 1444.0
+margin_top = 44.0
+margin_right = 1473.0
+margin_bottom = 73.0
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 49 )

@@ -93,7 +93,7 @@ var effect_table = {
 		type = 'c_static',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'sex', operant = 'eq', value = 'female'},
+			{code = 'stat', stat = 'sex', operant = 'neq', value = 'male'},
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
 		tags = ['recheck_stats'],
@@ -497,7 +497,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/firedamagebonus.png",
-				description = "Rare: Strong\nIncreased Damage and Maximum Healt",
+				description = "Rare: Strong\nIncreased Damage and Maximum Health",
 				limit = 1,
 				t_name = 'rare_strong'
 			}

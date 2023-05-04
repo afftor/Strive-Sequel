@@ -80,7 +80,7 @@ font_data = ExtResource( 2 )
 
 [node name="LocationGui" type="Panel"]
 margin_right = 1920.0
-margin_bottom = 1079.0
+margin_bottom = 1080.0
 custom_styles/panel = ExtResource( 8 )
 script = ExtResource( 16 )
 __meta__ = {
@@ -817,6 +817,9 @@ margin_bottom = 328.0
 theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
 script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="GridContainer" parent="PresentedSlavesPanel/ScrollContainer"]
 margin_right = 536.0

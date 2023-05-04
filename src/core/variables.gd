@@ -213,7 +213,7 @@ var basestat_factor_upgrade = {
 #slave & quest timings
 
 var guild_slave_update_time = 7
-var guild_quest_update_time = 7
+var guild_quest_update_time = 3
 
 
 #mansion & ugprades

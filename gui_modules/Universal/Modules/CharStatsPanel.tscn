@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=9]
-[ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanel.gd" type="Script" id=10]
+[ext_resource path="res://gui_modules/Universal/Scripts/CharSmallStatsPanel.gd" type="Script" id=10]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]

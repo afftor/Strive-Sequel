@@ -58,8 +58,8 @@ var backgrounds = {
 	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
 	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
 	#events
-	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
-	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
+	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
+	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
 	anastasia_execution1 = load("res://assets/images/fullscreen scenes/AnastasiaCG006.png"),
 	anastasia_execution2 = load("res://assets/images/fullscreen scenes/AnastasiaCG007.png"),
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
@@ -209,8 +209,13 @@ var backgrounds = {
 	stag_sex_2 = load("res://assets/images/fullscreen scenes/StagCG002.png"),
 	stag_sex_3 = load("res://assets/images/fullscreen scenes/StagCG003.png"),
 	
+	zephyra_lilia_1 = load("res://assets/images/fullscreen scenes/zefira_lila1.png"),
+	zephyra_lilia_2 = load("res://assets/images/fullscreen scenes/zefira_lila3.png"),
+	zephyra_lilia_3 = load("res://assets/images/fullscreen scenes/zefira_lila4.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
+	blackscreen = load("res://assets/sfx/black.png"),
 
 	}
 
@@ -287,6 +292,7 @@ var scenes = {
 	wedding = load("res://assets/images/scenes/marriage.png"),
 	stone_sword = load("res://assets/images/scenes/stone_sword.png"),
 	stone_sword2 = load("res://assets/images/scenes/stone_sword2.png"),
+	goblins_traps = load("res://assets/images/scenes/goblins_traps.png"),
 	
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),

@@ -199,11 +199,20 @@ var guild_upgrades = {
 	slavequality = {
 		code = 'slavequality',
 		descript = "SLAVEQUALITY_DISC",
-		name = "SLAVEQUALITY_DISC",
+		name = "SLAVEQUALITY_DISC", #not name?
 		cost = [100,500,1000,2000],
 		reqs = [],
 		maxlevel = 4,
 		effects = [{code = 'slavelevel', operant = '+', value = 1}],
+	},
+	slaveraces = {
+		code = 'slaveraces',
+		descript = "SLAVERACES_DISC",
+		name = "SLAVERACES_DISC", #not name?
+		cost = [1000,2000,3000],
+		reqs = [],
+		maxlevel = 3,
+		effects = [],
 	},
 	# questnumberupgrade = {
 	# 	code = 'questnumberupgrade',
@@ -681,12 +690,12 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("FIGHTERS_TASK_EASY_RNDCND_NAME")],
+			name = [tr("FIGHTERS_TASK_EASY_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = tr("FIGHTERS_TASK_EASY_RNDCND_DESC"),
+			descript = tr("FIGHTERS_TASK_EASY_DESC"),
 			function = ['fighters_task_easy']
 			}],
 		unlockreqs = [],
@@ -703,12 +712,12 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("FIGHTERS_TASK_MEDIUM_RNDCND_NAME")],
+			name = [tr("FIGHTERS_TASK_MEDIUM_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = tr("FIGHTERS_TASK_MEDIUM_RNDCND_DESC"),
+			descript = tr("FIGHTERS_TASK_MEDIUM_DESC"),
 			function = ['fighters_task_medium']
 			}],
 		unlockreqs = [],
@@ -725,12 +734,12 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("FIGHTERS_TASK_HARD_RNDCND_NAME")],
+			name = [tr("FIGHTERS_TASK_HARD_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
-			descript = tr("FIGHTERS_TASK_HARD_RNDCND_DESC"),
+			descript = tr("FIGHTERS_TASK_HARD_DESC"),
 			function = ['fighters_task_hard']
 			}],
 		unlockreqs = [],
@@ -747,11 +756,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("MAGES_TASK_EASY_RNDCND_NAME")],
+			name = [tr("MAGES_TASK_EASY_NAME")],
 			amount = [12, 15],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = tr("MAGES_TASK_EASY_RNDCND_DESC"),
+			descript = tr("MAGES_TASK_EASY_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_easy']
 			}],
@@ -769,11 +778,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("MAGES_TASK_MEDIUM_RNDCND_NAME")],
+			name = [tr("MAGES_TASK_MEDIUM_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = tr("MAGES_TASK_MEDIUM_RNDCND_DESC"),
+			descript = tr("MAGES_TASK_MEDIUM_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_medium']
 			}],
@@ -791,11 +800,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("MAGES_TASK_HARD_RNDCND_NAME")],
+			name = [tr("MAGES_TASK_HARD_NAME")],
 			amount = [35, 50],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = tr("MAGES_TASK_HARD_RNDCND_DESC"),
+			descript = tr("MAGES_TASK_HARD_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['mages_task_hard']
 			}],
@@ -813,10 +822,10 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("WORKERS_TASK_EASY_RNDCND_NAME")],
+			name = [tr("WORKERS_TASK_EASY_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 2],
-			descript = tr("WORKERS_TASK_EASY_RNDCND_DESC"),
+			descript = tr("WORKERS_TASK_EASY_DESC"),
 			workstat = 'physics',
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_easy']
@@ -835,11 +844,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("WORKERS_TASK_MEDIUM_RNDCND_NAME")],
+			name = [tr("WORKERS_TASK_MEDIUM_NAME")],
 			amount = [20, 25],
 			max_workers = [2, 3],
 			workstat = 'wits',
-			descript = tr("WORKERS_TASK_MEDIUM_RNDCND_DESC"),
+			descript = tr("WORKERS_TASK_MEDIUM_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_wits64.png",
 			function = ['workers_task_medium']
 			}],
@@ -857,11 +866,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("WORKERS_TASK_HARD_RNDCND_NAME")],
+			name = [tr("WORKERS_TASK_HARD_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'physics',
-			descript = tr("WORKERS_TASK_HARD_RNDCND_NAME"),
+			descript = tr("WORKERS_TASK_HARD_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_physics64.png",
 			function = ['workers_task_hard']
 			}],
@@ -881,10 +890,10 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("SERVANTS_TASK_EASY_RNDCND_NAME")],
+			name = [tr("SERVANTS_TASK_EASY_NAME")],
 			amount = [11, 13],
 			max_workers = [1, 1],
-			descript = tr("SERVANTS_TASK_EASY_RNDCND_DESC"),
+			descript = tr("SERVANTS_TASK_EASY_DESC"),
 			workstat = 'charm',
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_easy']
@@ -925,11 +934,11 @@ var questdata = {
 		randomconditions = [{
 			code = 'special_task', 
 			location = 'aliron',
-			name = [tr("SERVANTS_TASK_HARD_RNDCND_NAME")],
+			name = [tr("SERVANTS_TASK_HARD_NAME")],
 			amount = [45, 60],
 			max_workers = [2, 3],
 			workstat = 'charm',
-			descript = tr("SERVANTS_TASK_HARD_RNDCND_DESC"),
+			descript = tr("SERVANTS_TASK_HARD_DESC"),
 			icon = "res://assets/images/gui/gui icons/icon_charm64.png",
 			function = ['servants_task_hard']
 			}],
@@ -1629,8 +1638,8 @@ var locationnames = {
 	fire_depths_adjs = [tr("FIRE_DEPTHS_ADJS1"),tr("FIRE_DEPTHS_ADJS2"),tr("FIRE_DEPTHS_ADJS3"),tr("FIRE_DEPTHS_ADJS4")],
 	city_nouns = [tr("CITY_NOUNS1"),tr("CITY_NOUNS2"),tr("CITY_NOUNS3"),tr("CITY_NOUNS4"),tr("CITY_NOUNS5")],
 	city_adjs =  [tr("CITY_ADJS1"),tr("CITY_ADJS2"),tr("CITY_ADJS3"),tr("CITY_ADJS4"),tr("CITY_ADJS5"),tr("CITY_ADJS6"),tr("CITY_ADJS7"),tr("CITY_ADJS8"),tr("CITY_ADJS9"),tr("CITY_ADJS10")],
-	ancient_jungles_nouns = [tr("ANCIENT_JUNGLES_NOUNS1"),tr("ANCIENT_JUNGLES_NOUNS2"),tr("ANCIENT_JUNGLES_NOUNS3"),tr("ANCIENT_JUNGLES_NOUNS4"),tr("ANCIENT_JUNGLES_NOUNS5"),tr("ANCIENT_JUNGLES_NOUNS6"),tr("ANCIENT_JUNGLES_NOUNS7"),tr("ANCIENT_JUNGLES_NOUNS8"),tr("ANCIENT_JUNGLES_NOUNS9")],
-	ancient_jungles_adjs = [tr("ANCIENT_JUNGLES_ADJS1"),tr("ANCIENT_JUNGLES_ADJS2"),tr("ANCIENT_JUNGLES_ADJS3"),tr("ANCIENT_JUNGLES_ADJS4"),tr("ANCIENT_JUNGLES_ADJS5"),tr("ANCIENT_JUNGLES_ADJS6"),tr("ANCIENT_JUNGLES_ADJS7"),tr("ANCIENT_JUNGLES_ADJS8"),tr("ANCIENT_JUNGLES_ADJS9"),tr("ANCIENT_JUNGLES_ADJS10"),tr("ANCIENT_JUNGLES_ADJS11"),tr("ANCIENT_JUNGLES_ADJS12")],
+	ancient_jungle_nouns = [tr("ANCIENT_JUNGLES_NOUNS1"),tr("ANCIENT_JUNGLES_NOUNS2"),tr("ANCIENT_JUNGLES_NOUNS3"),tr("ANCIENT_JUNGLES_NOUNS4"),tr("ANCIENT_JUNGLES_NOUNS5"),tr("ANCIENT_JUNGLES_NOUNS6"),tr("ANCIENT_JUNGLES_NOUNS7"),tr("ANCIENT_JUNGLES_NOUNS8"),tr("ANCIENT_JUNGLES_NOUNS9")],
+	ancient_jungle_adjs = [tr("ANCIENT_JUNGLES_ADJS1"),tr("ANCIENT_JUNGLES_ADJS2"),tr("ANCIENT_JUNGLES_ADJS3"),tr("ANCIENT_JUNGLES_ADJS4"),tr("ANCIENT_JUNGLES_ADJS5"),tr("ANCIENT_JUNGLES_ADJS6"),tr("ANCIENT_JUNGLES_ADJS7"),tr("ANCIENT_JUNGLES_ADJS8"),tr("ANCIENT_JUNGLES_ADJS9"),tr("ANCIENT_JUNGLES_ADJS10"),tr("ANCIENT_JUNGLES_ADJS11"),tr("ANCIENT_JUNGLES_ADJS12")],
 }
 
 
@@ -2879,8 +2888,9 @@ var fixed_location_options = { #override serialized data
 		},
 		{
 			text = tr("BEASTKIN_CAPITAL14"), 
-			reqs = [{type = "quest_completed", name = "getting_lira_quest", check = true},
-			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}], 
+			reqs = [#{type = "quest_completed", name = "getting_lira_quest", check = true},
+#			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}
+			{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage0', state = true},], 
 			args = [{code = 'start_event', data = 'goblin_quest_1', args = []}]
 		},
 	],
@@ -3056,35 +3066,35 @@ var fixed_location_options = { #override serialized data
 	],
 	quest_daisy_admirer_location = [
 		{
-			text = tr("quest_daisy_admirer_location1"), 
+			text = tr("QUEST_DAISY_ADMIRER_LOCATION1"), 
 			reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'daisy_lost_3', args = []}]
 		}
 	],
 	quest_gryphon_cave_location = [
 		{
-			text = tr("quest_gryphon_cave_location1"), 
+			text = tr("QUEST_GRYPHON_CAVE_LOCATION1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
 	quest_leon_forest = [
 		{
-			text = 'Search For Leon', 
+			text = tr("QUEST_LEON_FOREST_2_1"), 
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LEON_FIGHT_1'}],
 			args = [{code = 'start_event', data = 'leon_fight_1', args = []}]
 		},
 	],
 	quest_leon_forest_2 = [
 		{
-			text = tr("quest_leon_forest_2_1"), 
+			text = tr("QUEST_LEON_FOREST_2_1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
-			text = tr("quest_white_stag_location1"), 
+			text = tr("QUEST_WHITE_STAG_LOCATION1"), 
 			reqs = [],
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},

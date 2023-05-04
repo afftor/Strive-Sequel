@@ -88,7 +88,7 @@ func show_quest_info(quest):
 					#print(i.location)
 				'complete_dungeon':
 					newbutton.texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + ResourceScripts.game_world.areas[i.area].name + "[/color]: [color=yellow]" + i.locationname + "[/color]")
+					globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
 				'random_material':
 					newbutton.texture = Items.materiallist[i.type].icon
 					newbutton.get_node("amount").show()
@@ -135,7 +135,7 @@ func show_quest_info(quest):
 					newbutton.texture = images.icons[i.code]
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ "(Master Charm Bonus)"
+					newbutton.hint_tooltip = "Reputation (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ "(Master Charm Bonus)"
 				'material':
 					var material = Items.materiallist[i.item]
 					newbutton.texture = material.icon

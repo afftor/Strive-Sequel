@@ -31,7 +31,6 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 18 )
 
 [node name="BodyImage" type="TextureRect" parent="."]
-visible = false
 show_behind_parent = true
 light_mask = 2
 margin_left = -139.051

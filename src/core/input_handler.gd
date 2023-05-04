@@ -382,7 +382,8 @@ func _input(event):
 				for subscene in gui_controller.current_screen.get_children():
 					if subscene.get_class() == "Tween":
 						continue
-					subscene.update()
+					if subscene.has_method('update'):#stub
+						subscene.update()
 				return
 			else:
 				match gui_controller.current_screen:

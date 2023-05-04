@@ -19,6 +19,7 @@ const BUTTON_HEIGHT = 64
 func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
+	globals.connect("task_removed", self, "rebuild")
 	globals.connect("hour_tick", self, "update_dislocations")
 	globals.connecttexttooltip($BedroomIcon, tr("BEDROOMTOOLTIP"))
 	globals.connecttexttooltip($DateIcon, tr("DATETOOLTIP"))

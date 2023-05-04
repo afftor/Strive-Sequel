@@ -741,8 +741,17 @@ var data = {
 				text = [
 					{text = "ANASTASIA_PERSUASION_39", reqs = []},
 					{text = "ANASTASIA_PERSUASION_40", reqs = []},
+					{text = "ANASTASIA_PERSUASION_40_1", reqs = [{type = 'decision', value = 'mindbreak_enabled', check = false}]},
 				],
 				options = [
+					{
+						code = 'princess_mindbreak_1',
+						text = "ANASTASIA_PERSUASION_OPTION_2",
+						reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}],
+						dialogue_argument = 1,
+						type = 'next_dialogue',
+						remove_after_first_use = true
+					},
 					{
 						code = 'princess_persuation_2_fail',
 						text = "DIALOGUECONTINUE",

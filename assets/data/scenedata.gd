@@ -1733,7 +1733,7 @@ var quests = {
 
 	mages_election_quest = {
 		code = 'mages_election_quest',
-		summary = "In your attempt to get Fighters Guild support for future election Myr gave you a personal order.",
+		summary = "In your attempt to get Mages Guild support for future election Myr gave you a personal order.",
 		stages = {
 			start = {code = 'start', name = "Dark Elf Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
 			stage1 = {code = 'stage1', name = "Dark Elf Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
@@ -1743,7 +1743,7 @@ var quests = {
 
 	workers_election_quest = {
 		code = 'workers_election_quest',
-		summary = "In your attempt to get Fighters Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
+		summary = "In your attempt to get Workers Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
 		stages = {
 			start = {code = 'start', name = "Missing Payment", descript = "Sigmund, from Worker's Guild asked me to visit Duncan from Fighters Guild and retrieve the payment from previous shipment."},
 			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me that Reim was the courier, who should've brought Workers their payment. I should search for him at Aliron and figure out what happened."},
@@ -1839,7 +1839,7 @@ var quests = {
 
 	princess_persuasion = {
 		code = 'princess_persuasion',
-		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputaiton, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
+		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputation, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
 		stages = {
 			stage1 = {code ='stage1', name = 'Distressed Damsel', descript = """You've been allowed to persuade Anastasia to succumb to the guilds. Find a way to do so, or agree to her execution."""},
 		},
@@ -2094,6 +2094,7 @@ var quests = {
 		code = "goblin_quest",
 		summary = "GOBLIN_QUEST_SUMMARY",
 		stages = {
+			stage0 = {code = 'stage0', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_0"}, # talk to savra
 			stage1 = {code = 'stage1', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_1"}, # go to location
 			stage2 = {code = 'stage2', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_2"}, # search for tracks
 			stage3 = {code = 'stage3', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_3"}, # go to sigmund

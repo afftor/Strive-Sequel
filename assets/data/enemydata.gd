@@ -2156,7 +2156,8 @@ func freya_item(code):
 	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
 	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-
+	
+	
 	if item.type in ['cloth']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}"
 		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless'}]
@@ -2174,18 +2175,26 @@ func freya_character(person):
 
 	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
-
-
-	if person.checkreqs([{code = 'has_wooden_gear'}]):
-		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}"
-		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
+	if person.get_stat('unique') == 'aire' && globals.checkreqs([{type = 'decision', value = 'aire_got_bow', check = false}]):
+		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. Before Aire can realize it, a bow materializes in her hands...}"
+		dict.common_effects.append({code = 'unique_character_changes',
+					value = 'aire',
+					args = [
+						{code = 'create_and_equip', item = "aire_bow", parts = {}}
+						],
+			})
+		ResourceScripts.game_progress.decisions.append('aire_got_bow')
 	else:
-		if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
-			dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
-
-			dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
+		if person.checkreqs([{code = 'has_wooden_gear'}]):
+			dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}"
+			dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 		else:
-			dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
+			if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
+				dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+
+				dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
+			else:
+				dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 

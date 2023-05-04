@@ -200,7 +200,7 @@ var data = {
 		options = [ {
 			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_1", reqs = [], dialogue_argument = 1, remove_after_first_use = true
 		}, {
-			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_2", reqs = [], dialogue_argument = 2, emove_after_first_use = true
+			code = 'priestess_sword_talk_4_1', text = "PRIESTESS_SWORD_TALK_4_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		}, {
 			code = 'priestess_sword_talk_5', text = "PRIESTESS_SWORD_TALK_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, ]
@@ -439,9 +439,9 @@ var data = {
 			]
 		}, {
 			code = 'close', text = "SAVRA_RITUAL_START_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [{code = 'make_quest_location', value = 'quest_ritual_location'},
-			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},
-			{code = 'update_city'}]
+			bonus_effects = [{code = 'update_city'},
+			{code = 'make_quest_location', value = 'quest_ritual_location'},
+			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},]
 		} ] 
 	},
 	

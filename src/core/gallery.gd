@@ -5,7 +5,7 @@ var scenes = {
 	anastasia_execution = ["anastasia_execution_start","anastasia_execution_1","anastasia_execution_2","anastasia_execution_3","anastasia_execution_4","anastasia_execution_5","anastasia_execution_6","anastasia_execution_7","anastasia_execution_8"],
 	lich_aire_talk = ["lich_aire_talk1","lich_aire_talk2","lich_aire_talk5","lich_aire_talk6_1","lich_aire_talk6_2","lich_aire_talk6_3","lich_aire_talk6_4","lich_aire_talk6_5","lich_aire_talk6_6","lich_aire_talk7"],
 	lich_aire_talkk = ["lich_aire_talk1","lich_aire_talk2","lich_aire_talk3",{scene = "lich_aire_talk4",variant = 0},"lich_aire_talk4_1","lich_aire_talk4_2","lich_aire_talk4_3","lich_aire_talk4_4"],
-	xari_encounter = ["xari_encounter1","xari_encounter2","xari_encounter3","xari_encounter4","xari_encounter5","xari_encounter6",{scene = "xari_encounter7", variant = 3},"xari_encounter8"],
+	xari_encounter = ["xari_encounter1","xari_encounter2","xari_encounter3","xari_encounter4","xari_encounter5","xari_encounter6",{scene = "xari_encounter7", variant = 1},"xari_encounter8"],
 	daisy_admirer = ["daisy_admirer_message","daisy_admirer_message_1_3",{scene = "daisy_admirer_first_event_1",variant = 0},"daisy_admirer_first_event_2","daisy_admirer_first_event_3","daisy_admirer_first_event_4","daisy_admirer_first_event_5"],
 	daisy_dress_acquired_normal = ["daisy_dress_acquired_normal_1","daisy_dress_acquired_normal_2",{scene = "daisy_dress_acquired_normal_3",variant = 0},"daisy_dress_acquired_normal_4_1","daisy_dress_acquired_normal_4_2","daisy_dress_acquired_normal_4_3","daisy_dress_acquired_normal_4_4","daisy_dress_acquired_normal_4_5"],
 	daisy_training = ["daisy_training_intermission_1","daisy_training_intermission_2","daisy_training_intermission_3","daisy_training_intermission_4","daisy_training_intermission_5","daisy_training_intermission_6","daisy_training_intermission_7"],
@@ -30,7 +30,8 @@ var scenes = {
 	lira_mansion = ["lira_mansion_1","lira_mansion_2","lira_mansion_3","lira_mansion_4","lira_mansion_5","lira_mansion_6","lira_mansion_7","lira_mansion_8","lira_mansion_9"],
 	cali_act5_pet = ["cali_act5_pet_1","cali_act5_pet_2","cali_act5_pet_3","cali_act5_pet_4","cali_act5_pet_5","cali_act5_pet_6","cali_act5_pet_7","cali_act5_pet_8","cali_act5_pet_9_1","cali_act5_pet_9_2","cali_act5_pet_10"],
 	cali_act6_naked = ["cali_act6_naked_1","cali_act6_naked_2","cali_act6_naked_3","cali_act6_naked_4","cali_act6_naked_5","cali_act6_naked_6","cali_act6_naked_7"],
-	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"]
+	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"],
+	zephyra_lilia = ['zephyra_lilia_5', 'zephyra_lilia_6', 'zephyra_lilia_7', 'zephyra_lilia_8', 'zephyra_lilia_9']
 }	
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -38,7 +39,8 @@ var scenes_order = [
 	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
 	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
-	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow"
+	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
+	"zephyra_lilia"
 	]
 var story_scenes = ['anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -60,8 +62,9 @@ var ero_scenes = [
  'aire_ana4',
  'force_cali1',
  'mae_scene1',
+ 'mae_scene3',
  'heleviel1',
-'lilia_sex_1_3',
+ 'lilia_sex_1_3',
 'cali_touching_1',
 'cali_bj_happy_1',
 #'amelia_cali_1','amelia_cali_2','amelia_cali_3',
@@ -72,11 +75,8 @@ var ero_scenes = [
 'cali_bowl_1',
 'cali_bowl_naked_1',
 'zephyra_bath_1',
-'zephyra_bath_2',
-'zephyra_bath_4',
 'stag_sex_1',
-'stag_sex_2',
-'stag_sex_3',] 
+'zephyra_lilia_1'] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -95,7 +95,8 @@ var ero_scenes_collection = {
 	"anastasia_aire":['anastasia_aire1', 'anastasia_aire2', 'anastasia_aire3'],
 	"aire_ana":['aire_ana1', 'aire_ana2', 'aire_ana3','aire_ana4', 'aire_ana5', 'aire_ana6'],
 	"force_cali":['force_cali1', 'force_cali2', 'force_cali3', 'force_cali4', 'force_cali5', 'force_cali6'],
-	"mae_scene":['mae_scene1', 'mae_scene2', 'mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7', 'mae_scene8', 'mae_scene9', 'mae_scene10'],
+	"mae_scene":['mae_scene1', 'mae_scene2'],
+	"mae_scene_ritual":['mae_scene3', 'mae_scene4', 'mae_scene5', 'mae_scene6', 'mae_scene7'],
 	"heleviel":[ 'heleviel1', 'heleviel2', 'heleviel3', 'heleviel4'],
 	"lilia_sex_1_":['lilia_sex_1_3'],
 	"cali_touching_":['cali_touching_1','cali_touching_2','cali_touching_3','cali_touching_4'],
@@ -105,7 +106,10 @@ var ero_scenes_collection = {
 	"halloween_scene":["halloween_scene"],
 	"lira_sex_":["lira_sex_1","lira_sex_2","lira_sex_3"],
 	"cali_bowl_":["cali_bowl_1","cali_bowl_2"],
-	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"]
+	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
+	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
+	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"],
+	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3']
 }
 #so these arrays are needed for storing order 
 
@@ -221,6 +225,8 @@ func get_image_for_seq(id):
 			data = scenedata.scenedict[scname + "_gallery"].duplicate(true)
 		else: continue
 		if data.has("custom_background"):
+			if data.custom_background in ['whitescreen', 'blackscreen']:
+				continue
 			return data.custom_background
 	return res
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/images/backgrounds/dungeon.png" type="Texture" id=12]
 [ext_resource path="res://gui_modules/Universal/Scripts/CombatV2Animated.gd" type="Script" id=13]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/diamond.png" type="Texture" id=14]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_outer.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/board_skill_deployed.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_log.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/mana_p.png" type="Texture" id=18]
@@ -27,12 +27,12 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/effect_battle_portrait.png" type="Texture" id=26]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=27]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/background_panel_deployed.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=30]
-[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=31]
-[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_board_choosen_deployed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_background_deployed.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_board_over_deployed.png" type="Texture" id=32]
+[ext_resource path="res://gui_modules/Universal/Modules/SkillBook.tscn" type="PackedScene" id=33]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait_hover.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=36]
@@ -67,6 +67,12 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_hover.png" type="Texture" id=65]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero_unactive.png" type="Texture" id=66]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/icon_hero.png" type="Texture" id=67]
+[ext_resource path="res://gui_modules/Universal/Modules/CharSmallStatsPanel.tscn" type="PackedScene" id=68]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_board_deployed.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_hover.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_block.png" type="Texture" id=71]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_active.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon.png" type="Texture" id=73]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -312,8 +318,9 @@ __meta__ = {
 
 [node name="Background" type="TextureRect" parent="."]
 material = ExtResource( 6 )
+margin_top = -0.847595
 margin_right = 1920.0
-margin_bottom = 1080.0
+margin_bottom = 1079.15
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -353,7 +360,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -364,7 +371,7 @@ pause_mode = 2
 visible = false
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -520,7 +527,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -536,7 +543,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -557,7 +564,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -573,7 +580,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -589,7 +596,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -643,7 +650,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -659,7 +666,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -675,7 +682,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -696,7 +703,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -712,7 +719,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -728,7 +735,7 @@ rect_min_size = Vector2( 182, 202 )
 pause_mode = 2
 margin_right = 182.0
 margin_bottom = 202.0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 34 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
@@ -762,9 +769,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel3"]
-margin_top = -1.33484
-margin_right = 503.0
-margin_bottom = 100.665
+margin_left = 132.0
+margin_top = -1.0
+margin_right = 497.0
+margin_bottom = 101.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Char Name"
@@ -773,6 +781,13 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="Panel3"]
+margin_left = 87.7027
+margin_top = 18.7027
+margin_right = 151.703
+margin_bottom = 82.7027
+expand = true
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -892,35 +907,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource( 15 )
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 423.0
+margin_top = 854.0
+margin_right = 1497.0
+margin_bottom = 1051.0
+texture = ExtResource( 28 )
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
 
-[node name="SkillPanel" type="HBoxContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
-margin_left = 437.95
-margin_top = 943.023
-margin_right = 1481.95
-margin_bottom = 1043.02
+[node name="SkillPanel" type="GridContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
+margin_left = 544.0
+margin_top = 870.0
+margin_right = 1482.0
+margin_bottom = 1060.0
 rect_min_size = Vector2( 0, 96 )
-custom_constants/separation = 5
+custom_constants/vseparation = 10
+custom_constants/hseparation = 15
+columns = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="TextureButton" parent="SkillPanel"]
 visible = false
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-toggle_mode = true
-texture_normal = ExtResource( 31 )
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 69 )
 texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 28 )
+texture_hover = ExtResource( 32 )
 texture_disabled = ExtResource( 29 )
 expand = true
 stretch_mode = 6
@@ -928,33 +945,36 @@ script = ExtResource( 27 )
 
 [node name="Icon" type="TextureRect" parent="SkillPanel/Button"]
 show_behind_parent = true
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 96, 96 )
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
 mouse_filter = 2
-texture = ExtResource( 32 )
+texture = ExtResource( 31 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="charge" type="Label" parent="SkillPanel/Button"]
 visible = false
-margin_left = 53.0
-margin_top = 1.0
-margin_right = 93.0
-margin_bottom = 33.0
+margin_left = 31.0
+margin_top = 2.0
+margin_right = 71.0
+margin_bottom = 34.0
 custom_fonts/font = SubResource( 8 )
 text = "1"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="cooldown" type="Label" parent="SkillPanel/Button"]
 visible = false
-margin_left = 53.0
-margin_top = 65.767
-margin_right = 93.0003
-margin_bottom = 97.767
+margin_left = 31.0
+margin_top = 45.0
+margin_right = 71.0003
+margin_bottom = 77.0
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
@@ -966,65 +986,23 @@ __meta__ = {
 
 [node name="manacost" type="Label" parent="SkillPanel/Button"]
 visible = false
-margin_left = 5.62131
-margin_top = 65.767
-margin_right = 45.6213
-margin_bottom = 97.767
+margin_left = 7.0
+margin_top = 45.0
+margin_right = 47.0
+margin_bottom = 77.0
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "1"
 
-[node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = 613.0
-margin_top = 136.0
-margin_right = 1307.0
-margin_bottom = 640.0
-
-[node name="Panel4" type="TextureRect" parent="."]
-margin_left = 597.0
-margin_top = 45.0
-margin_right = 1319.0
-margin_bottom = 125.0
-texture = ExtResource( 58 )
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-custom_constants/separation = 10
-
-[node name="Button" type="TextureButton" parent="Panel4/VBoxContainer"]
-visible = false
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 64 )
-texture_hover = ExtResource( 65 )
-texture_disabled = ExtResource( 66 )
-
-[node name="icon" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 67 )
-expand = true
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 15.7715
+margin_top = 14.3273
+margin_right = 1905.77
+margin_bottom = 1064.33
+mouse_filter = 2
+texture = ExtResource( 15 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
-margin_left = 5.29205
-margin_top = 48.6518
-margin_right = 53.292
-margin_bottom = 53.6518
-value = 50.0
-texture_progress = ExtResource( 63 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1061,6 +1039,91 @@ texture_normal = ExtResource( 45 )
 texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 40 )
 texture_disabled = ExtResource( 4 )
+
+[node name="Button" type="TextureButton" parent="."]
+margin_left = 449.0
+margin_top = 911.0
+margin_right = 532.0
+margin_bottom = 993.0
+texture_normal = ExtResource( 73 )
+texture_pressed = ExtResource( 72 )
+texture_hover = ExtResource( 70 )
+texture_disabled = ExtResource( 71 )
+expand = true
+stretch_mode = 5
+
+[node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
+margin_left = 100.0
+margin_top = 845.0
+margin_right = 409.0
+margin_bottom = 1039.0
+
+[node name="StatsPanelRight" parent="." instance=ExtResource( 68 )]
+margin_left = 1514.0
+margin_top = 845.0
+margin_right = 1823.0
+margin_bottom = 1039.0
+
+[node name="StatsPanel_v2" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 613.0
+margin_top = 136.0
+margin_right = 1307.0
+margin_bottom = 640.0
+
+[node name="Panel4" type="TextureRect" parent="."]
+margin_left = 597.0
+margin_top = 45.0
+margin_right = 1319.0
+margin_bottom = 125.0
+texture = ExtResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 10
+
+[node name="Button" type="TextureButton" parent="Panel4/VBoxContainer"]
+visible = false
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 64 )
+texture_hover = ExtResource( 65 )
+texture_disabled = ExtResource( 66 )
+
+[node name="icon" type="TextureRect" parent="Panel4/VBoxContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 67 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hpbar" type="TextureProgress" parent="Panel4/VBoxContainer/Button"]
+margin_left = 5.29205
+margin_top = 48.6518
+margin_right = 53.292
+margin_bottom = 53.6518
+value = 50.0
+texture_progress = ExtResource( 63 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillBook" parent="." instance=ExtResource( 33 )]
+visible = false
 
 [node name="Rewards_old" type="TextureRect" parent="."]
 visible = false

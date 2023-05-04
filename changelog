@@ -1,7 +1,26 @@
+Revamped combat menu and skill assignment
+Added new guild upgrade for character race rarity
+Added unique bow for Aire (obtained from shrine)
+Added some new offhand items for casters
+Added new event and sccene for Lilia and Zephyra
+Added content warning when creating female master
+Fixed some quest typos
+Fixed ancinent jungles not recieving random names
+Fixed some characters not clearing from game state bloating the save files
+Fixed quest tasks not clearing when quests were failed
+Fixed virginity state not applied to futa
+0.6.9a
+Fixed some missing text errors
+Fixed easy mode loan giving gameover if you didn't have enough
+Fixed skill switching not working in combat and causing some issues
 0.6.9
 Rebalanced repeatable quest generation and board: now quests updated every 3 days and unlocked automatically
 Added new minor quest and recruitable character
+Added option to see gallery from mansion screen
 Added shield item into the game
+Fixed issues with quests triggering fights at wrong places/switching screens
+Fixed some quest texts
+Fixed characters with max growth factor not generating
 0.6.8c
 Fixed a critical issue with scene clearing on leaving to main menu
 Fixed some more bugs related to events

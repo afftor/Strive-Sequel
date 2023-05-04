@@ -46,8 +46,9 @@ func _ready():
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
+	gui_controller.add_close_button($QuestBoard)
 
-	$QuestBoard/QuestDetails/AcceptQuest.connect("pressed", self, "accept_quest")
+	
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
@@ -458,6 +459,7 @@ func use_item_on_character(character, item):
 
 func use_e_combat_skill(caster, target, skill):
 	caster.pay_cost(skill.cost)
+	caster.combatgroup = 'ally'
 	if !caster.has_status('ignore_catalysts_for_%s' % skill.code):
 		for i in skill.catalysts:
 			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
@@ -505,6 +507,7 @@ func use_e_combat_skill(caster, target, skill):
 					input_handler.calculate_number_from_string_array(skill.value[0], caster, target)
 				)
 			else:
+				target.combatgroup = 'ally'
 				var s_skill2 = s_skill1.clone()
 				s_skill2.setup_target(i)
 				s_skill2.setup_final()
@@ -1311,6 +1314,7 @@ func faction_disassemble(pressed, pressed_button, guild):
 
 func faction_guild_shop(pressed, pressed_button, guild):
 	hide_guild_panels()
+	$GuildShop/NumberSelection2/ItemIcon.texture = null
 	$GuildShop/NumberSelection2.hide()
 	gui_controller.win_btn_connections_handler(pressed, $GuildShop, pressed_button)
 	active_faction = guild
@@ -1333,6 +1337,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.get_node("Amount").show()
 		newbutton.get_node("Amount").text = str(guild.reputation_shop.items[item][0])
 		newbutton.connect("pressed", self, "buy_item", [item_ref, guild.reputation_shop.items[item][1], guild.reputation_shop.items[item][0]])
+		newbutton.connect("pressed", self, "guild_shop_item_selected", [newbutton])
 		if Items.itemlist.has(item):
 			globals.connecttempitemtooltip(newbutton, item_ref, 'geartemplate')
 		else:
@@ -1347,6 +1352,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
+		newbutton.connect("pressed", self, "guild_shop_item_selected", [newbutton])
 		var person = ResourceScripts.game_party.get_master()
 		var prof = classesdata.professions[cls]
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)
@@ -1375,10 +1381,15 @@ func faction_guild_shop(pressed, pressed_button, guild):
 	elif !pressed && $GuildShop.is_visible():
 		fade($GuildShop, 0.3)
 
+func guild_shop_item_selected(button):
+	for ch in $GuildShop/ScrollContainer/VBoxContainer.get_children():
+		ch.pressed = button == ch
+
 var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
 
 func buy_item(item_ref, price, amount, type = "item"):
 	var item_name = ''
+	var item_icon = null
 	if type == "class":
 		item_name = item_ref.capitalize()
 		if ResourceScripts.game_progress.unlocked_classes.has(item_ref):
@@ -1388,6 +1399,10 @@ func buy_item(item_ref, price, amount, type = "item"):
 			return
 	if type == "item":
 		item_name = item_ref.name
+		item_icon = item_ref.icon
+	elif type == "class":
+		if classesdata.professions.has(item_ref):
+			item_icon = classesdata.professions[item_ref].icon
 	item_to_buy = item_ref
 	for node in $GuildShop/NumberSelection2.get_children():
 		if node.name in hide_elems_arr:
@@ -1399,7 +1414,8 @@ func buy_item(item_ref, price, amount, type = "item"):
 		price,
 		amount,
 		10 * amount,
-		true
+		true,
+		item_icon
 	)
 
 
@@ -1456,7 +1472,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 	self.current_pressed_area_btn = pressed_button
 	var text = ''
 	# $FactionDetails.visible = pressed
-	input_handler.ClearContainer($FactionDetails/VBoxContainer)
+	input_handler.ClearContainer($FactionDetails/Scroll/VBoxContainer)
 	text = infotext
 	$FactionDetails/RichTextLabel.text = text
 	$FactionDetails/FactionPoints.text = "Faction points: " + str(active_faction.totalreputation)
@@ -1471,7 +1487,7 @@ func faction_upgrade(pressed, pressed_button, guild):
 					break
 		if !check:
 			continue
-		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/Scroll/VBoxContainer)
 		text = tr(i.name) + ": " + tr(i.descript)
 		var currentupgradelevel
 		if active_faction.upgrades.has(i.code):
@@ -1488,9 +1504,9 @@ func faction_upgrade(pressed, pressed_button, guild):
 			continue
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
-			"Price: "
+			"Cost: "
 			+ str(i.cost[currentupgradelevel])
-			+ " faction points."
+			+ " points"
 		)
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
@@ -2068,51 +2084,13 @@ func item_sell_confirm(value):
 
 
 func quest_board(pressed, pressed_button):
-	input_handler.ActivateTutorial("quest")
 	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 	self.current_pressed_area_btn = pressed_button
-	# $QuestBoard.visible = pressed
-	var counter = 0
-	input_handler.ClearContainer($QuestBoard/ScrollContainer/VBoxContainer)
-	$QuestBoard/QuestDetails.hide()
-	for i in input_handler.active_area.quests.factions:
-		for k in input_handler.active_area.quests.factions[i].values():
-			if k.state == 'free':
-				counter += 1
-				var newbutton = input_handler.DuplicateContainerTemplate(
-					$QuestBoard/ScrollContainer/VBoxContainer
-				)
-				newbutton.get_node("Label").text = tr(k.name)
-				newbutton.get_node("Requester").text = tr(k.source.capitalize())
-				var text = tr(k.descript)
-				newbutton.get_node("RichTextLabel2").bbcode_text = globals.TextEncoder(text)
-				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
-				newbutton.get_node("ButtonOverlay").connect(
-					"mouse_entered", self, "change_texture", [newbutton, "in"]
-				)
-				newbutton.get_node("ButtonOverlay").connect(
-					"mouse_exited", self, "change_texture", [newbutton, "out"]
-				)
-				newbutton.set_meta("quest", k)
-	$QuestBoard/NoQuests.visible = counter == 0
+	$QuestBoard.selectcategory($QuestBoard/guildsortVScroll/all)
 	if pressed:
 		unfade($QuestBoard)
 	else:
 		fade($QuestBoard)
-
-
-func accept_quest():
-	ResourceScripts.game_world.take_quest(selectedquest, input_handler.active_area)
-	for i in selectedquest.requirements:
-		if i.code in ['complete_dungeon', 'complete_location']:
-			break
-	input_handler.interactive_message('quest_accept', '', {})
-	var args = {}
-	args["label"] = "Task aсquired"
-	args["info"] = selectedquest.name
-	args["sound"] = "quest_aquired"
-	input_handler.play_animation("quest", args)
-	quest_board(true, current_pressed_area_btn)
 
 
 func change_texture(button, state):
@@ -2123,260 +2101,6 @@ func change_texture(button, state):
 			)
 		"out":
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
-
-
-func see_quest_info(quest): 
-	for i in $QuestBoard/ScrollContainer/VBoxContainer.get_children():
-		if i.name == 'Button':
-			continue
-		i.pressed = i.get_meta('quest') == quest
-	input_handler.ghost_items.clear()
-	selectedquest = quest
-	input_handler.selectedquest = quest
-	$QuestBoard/QuestDetails.show()
-	input_handler.ClearContainer($QuestBoard/QuestDetails/questreqs)
-	input_handler.ClearContainer($QuestBoard/QuestDetails/questrewards)
-	var text = '[center]' + tr(quest.name) + '[/center]\n' + tr(quest.descript)
-	for i in quest.requirements:
-		var newbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
-		match i.code:
-			'kill_monsters':
-#				newbutton.texture = images.icons.quest_enemy
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-				newbutton.get_node("Icon").texture = images.icons.quest_enemy
-				newbutton.hint_tooltip = (
-					"Defeat: "
-					+ tr(variables.enemy_types[i.type])
-					+ " - "
-					+ str(i.value)
-				)
-			'random_item':
-				var itemtemplate = Items.itemlist[i.type]
-				newbutton.get_node("Icon").texture = itemtemplate.icon
-				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
-				if itemtemplate.has('parts'):
-					#newbutton.material = load("res://src/ItemShader.tres").duplicate()
-					var showcase_item = globals.CreateGearItem(i.type, i.parts)
-					# input_handler.itemshadeimage(newbutton, showcase_item)
-					showcase_item.set_icon(newbutton.get_node("Icon"))
-					globals.connectitemtooltip_v2(newbutton, showcase_item)
-					if i.has('parts'):
-						newbutton.hint_tooltip += "\nPart Requirements: "
-						for k in i.parts:
-							newbutton.hint_tooltip += (
-								"\n"
-								+ tr(Items.Parts[k].name)
-								+ ": "
-								+ str(Items.materiallist[i.parts[k]].name)
-							)
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-			'complete_location':
-				newbutton.get_node("Icon").texture = images.icons.quest_encounter
-				newbutton.hint_tooltip = (
-					"Complete quest location: "
-					+ worlddata.dungeons[i.type].name
-				)
-				text += (
-					"\n"
-					+ tr(worlddata.dungeons[i.type].name)
-					+ ": "
-					+ tr(worlddata.dungeons[i.type].descript)
-				)
-			'complete_dungeon':
-				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
-				newbutton.hint_tooltip = "Complete quest dungeon: "
-			'random_material':
-				newbutton.get_node("Icon").texture = Items.materiallist[i.type].icon
-				newbutton.get_node("amount").show()
-				newbutton.get_node("amount").text = str(i.value)
-				globals.connectmaterialtooltip(
-					newbutton,
-					Items.materiallist[i.type],
-					'\n\n[color=yellow]Required: ' + str(i.value) + "[/color]"
-				)
-			'slave_delivery':
-				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
-				var tooltiptext = "Slave Required:\n"
-				for k in i.statreqs:
-					if k.code in ['is_master', 'is_free']:
-						continue
-					match k.code:
-						'stat':
-							if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
-								tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  ResourceScripts.descriptions.factor_descripts[int(k.value)] + " "  + "\n"
-							else:
-								tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
-#							tooltiptext += (
-#								statdata.statdata[k.stat].name
-#								+ ": "
-#								+ input_handler.operant_translation(k.operant)
-#								+ " "
-#								+ str(k.value)
-#								+ " "
-#								+ "\n"
-#							)
-						'sex':
-							tooltiptext += "Sex: " + tr('SLAVESEX' + k.value.to_upper()) + "\n"
-				globals.connecttexttooltip(newbutton, tooltiptext)
-			'slave_work':
-				var time = ''
-				var reqs = {}
-				for  req in quest.requirements:
-					if req.has("statreqs"):
-						reqs = req.statreqs
-					if req.has("work_time"):
-						time = str(req.work_time)
-				var sex = ''
-				var prof = ''
-				var stats = {}
-				for r in reqs:
-					if r.code == "sex":
-						sex = r.value
-					if r.code == "stat":
-						stats[r.stat] = r.value
-					if r.code == "has_profession" && r.check:
-						prof = r.profession
-						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
-						var prof_icon = classesdata.professions[prof].icon
-						profbutton.get_node("Icon").texture = prof_icon
-						var profname = classesdata.professions[prof].name
-						if classesdata.professions[prof].has('altnamereqs'):
-							for req in classesdata.professions[prof].altnamereqs:
-								if req.code == 'sex':
-									if sex != '':
-										if input_handler.operate(req.operant, req.value, sex):
-											profname = classesdata.professions[prof].altname
-									else:
-										profname += "/" + classesdata.professions[prof].altname
-									break
-						var prof_name = "Required Class:\n" + profname
-						globals.connecttexttooltip(profbutton, prof_name)
-				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
-				var stats_text = "\nStats:\n"
-				var tooltiptext = "Slave Required:\n"
-				if sex != "":
-					tooltiptext += "Sex: " + sex
-				if !stats.empty():
-					for st in stats:
-						stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
-					tooltiptext += stats_text
-				globals.connecttexttooltip(newbutton, tooltiptext)
-				text += "\nWork duration: " + time + ' days.'
-			'special_task':
-				var t_text = "Complete one time task"
-				if i.has('name'):
-					t_text += ": " + tr(i.name)
-				if i.has('icon'):
-					newbutton.get_node("Icon").texture = load(i.icon)
-				text += t_text
-				globals.connecttexttooltip(newbutton, t_text)
-
-
-	for i in quest.rewards:
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$QuestBoard/QuestDetails/questrewards
-		)
-		match i.code:
-			'gear':
-				var item = globals.CreateGearItem(i.item, i.itemparts)
-				item.set_icon(newbutton.get_node("Icon"))
-				input_handler.ghost_items.append(item)
-				globals.connectitemtooltip_v2(newbutton, item)
-			'gear_static':
-				newbutton.get_node("Icon").texture = Items.itemlist[i.item].icon
-				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-			'usable':
-				var item = Items.itemlist[i.item]
-				input_handler.itemshadeimage(newbutton.get_node("Icon"), item)
-				newbutton.get_node("Icon").texture = item.icon
-				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-			'material':
-				var material = Items.materiallist[i.item]
-				newbutton.get_node("Icon").texture = material.icon
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-				globals.connectmaterialtooltip(newbutton, material)
-			'gold':
-				if i.value is Array:
-					newbutton.get_node("amount").show()
-					newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
-					newbutton.get_node("Icon").texture = images.icons.quest_gold
-					globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
-				else:
-					var value = round(
-						(
-							i.value
-							+ (
-								i.value
-								* variables.master_charm_quests_gold_bonus[int(
-									ResourceScripts.game_party.get_master().get_stat('charm_factor')
-								)]
-							)
-						)
-					)
-					newbutton.get_node("Icon").texture = images.icons.quest_gold
-					newbutton.get_node("amount").text = str(value)
-					newbutton.get_node("amount").show()
-					globals.connecttexttooltip(newbutton, (
-						"Gold: "
-						+ str(i.value)
-						+ " + "
-						+ str(
-							round(
-								(
-									i.value
-									* variables.master_charm_quests_gold_bonus[int(
-										ResourceScripts.game_party.get_master().get_stat('charm_factor')
-									)]
-								)
-							)
-						)
-						+ "(Master Charm Bonus)")
-					)
-			'reputation':
-				var value = round(
-					(
-						i.value
-						+ (
-							i.value
-							* variables.master_charm_quests_rep_bonus[int(
-								ResourceScripts.game_party.get_master().get_stat('charm_factor')
-							)]
-						)
-					)
-				)
-				newbutton.get_node("Icon").texture = images.icons[i.code]
-				newbutton.get_node("amount").text = str(value)
-				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = (
-					"Reputation ("
-					+ quest.source
-					+ "): "
-					+ str(i.value)
-					+ " + "
-					+ str(
-						round(
-							(
-								i.value
-								* variables.master_charm_quests_rep_bonus[int(
-									ResourceScripts.game_party.get_master().get_stat('charm_factor')
-								)]
-							)
-						)
-					)
-					+ "(Master Charm Bonus)"
-				)
-	$QuestBoard/QuestDetails/Requester.text = ""
-	$QuestBoard/QuestDetails/Requester.text += tr(input_handler.active_area.factions[quest.source].name) + " "
-
-	$QuestBoard/QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)
-	$QuestBoard/QuestDetails/time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 
 
 func location_purchase(pressed, pressed_button):
