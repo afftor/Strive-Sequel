@@ -3449,7 +3449,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Satisfacted: +10%% Productivity.",
+				description = "Satisfied: +10%% Productivity.",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,
@@ -3471,7 +3471,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Satisfacted: +20%% Productivity.",
+				description = "Satisfied: +20%% Productivity.",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,

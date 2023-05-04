@@ -107,22 +107,23 @@ custom_fonts/font = ExtResource( 7 )
 text = "100/100"
 align = 2
 
-[node name="stats" type="VBoxContainer" parent="."]
+[node name="stats" type="GridContainer" parent="."]
 margin_left = 30.0
 margin_top = 70.0
-margin_right = 145.0
+margin_right = 280.0
 margin_bottom = 180.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_constants/vseparation = 10
+custom_constants/hseparation = 20
+columns = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="stats"]
+[node name="resist" type="HBoxContainer" parent="stats"]
+visible = false
 margin_right = 115.0
 margin_bottom = 22.0
+rect_min_size = Vector2( 115, 22 )
 
-[node name="label_atk" type="Label" parent="stats/HBoxContainer"]
-margin_right = 95.0
+[node name="label" type="Label" parent="stats/resist"]
+margin_right = 111.0
 margin_bottom = 22.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -131,246 +132,13 @@ custom_fonts/font = ExtResource( 7 )
 text = "ATK:"
 valign = 1
 
-[node name="atk" type="Label" parent="stats/HBoxContainer"]
-margin_left = 99.0
+[node name="icon" type="TextureRect" parent="stats/resist"]
+margin_left = 115.0
 margin_right = 115.0
 margin_bottom = 22.0
-mouse_filter = 1
 theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "25"
-valign = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="stats"]
-margin_top = 22.0
-margin_right = 115.0
-margin_bottom = 44.0
-
-[node name="label_armor" type="Label" parent="stats/HBoxContainer2"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "DEF:"
-valign = 1
-
-[node name="armor" type="Label" parent="stats/HBoxContainer2"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "15"
-valign = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="stats"]
-margin_top = 44.0
-margin_right = 115.0
-margin_bottom = 66.0
-
-[node name="label_mdef" type="Label" parent="stats/HBoxContainer3"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "MDEF:"
-valign = 1
-
-[node name="mdef" type="Label" parent="stats/HBoxContainer3"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "20"
-valign = 1
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="stats"]
-margin_top = 66.0
-margin_right = 115.0
-margin_bottom = 88.0
-
-[node name="label_matk" type="Label" parent="stats/HBoxContainer4"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "MATK:"
-valign = 1
-
-[node name="matk" type="Label" parent="stats/HBoxContainer4"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "20"
-valign = 1
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="stats"]
-margin_top = 88.0
-margin_right = 115.0
-margin_bottom = 110.0
-
-[node name="label_speed" type="Label" parent="stats/HBoxContainer5"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Speed:"
-valign = 1
-
-[node name="speed" type="Label" parent="stats/HBoxContainer5"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "15"
-valign = 1
-
-[node name="stats2" type="VBoxContainer" parent="."]
-margin_left = 170.0
-margin_top = 70.0
-margin_right = 285.0
-margin_bottom = 180.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="stats2"]
-margin_right = 115.0
-margin_bottom = 22.0
-
-[node name="label_critchance" type="Label" parent="stats2/HBoxContainer5"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Critical:"
-valign = 1
-
-[node name="critchance" type="Label" parent="stats2/HBoxContainer5"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "15"
-valign = 1
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="stats2"]
-margin_top = 22.0
-margin_right = 115.0
-margin_bottom = 44.0
-
-[node name="label_hitrate" type="Label" parent="stats2/HBoxContainer6"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Hit Rate:"
-valign = 1
-
-[node name="hitrate" type="Label" parent="stats2/HBoxContainer6"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "15"
-valign = 1
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="stats2"]
-margin_top = 44.0
-margin_right = 115.0
-margin_bottom = 66.0
-
-[node name="label_evasion" type="Label" parent="stats2/HBoxContainer7"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Evasion:"
-valign = 1
-
-[node name="evasion" type="Label" parent="stats2/HBoxContainer7"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "20"
-valign = 1
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="stats2"]
-margin_top = 66.0
-margin_right = 115.0
-margin_bottom = 88.0
-
-[node name="label_armorpenetration" type="Label" parent="stats2/HBoxContainer8"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Armor Pen.:"
-valign = 1
-
-[node name="armorpenetration" type="Label" parent="stats2/HBoxContainer8"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "20"
-valign = 1
-
-[node name="HBoxContainer9" type="HBoxContainer" parent="stats2"]
-margin_top = 88.0
-margin_right = 115.0
-margin_bottom = 110.0
-
-[node name="label_critmod" type="Label" parent="stats2/HBoxContainer9"]
-margin_right = 95.0
-margin_bottom = 22.0
-mouse_filter = 1
-size_flags_horizontal = 3
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "Critical Mod:"
-valign = 1
-
-[node name="critmod" type="Label" parent="stats2/HBoxContainer9"]
-margin_left = 99.0
-margin_right = 115.0
-margin_bottom = 22.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 7 )
-text = "20"
-valign = 1
+[node name="subicon" type="TextureRect" parent="stats/resist/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 4

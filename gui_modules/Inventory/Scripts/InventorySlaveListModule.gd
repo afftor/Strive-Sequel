@@ -17,3 +17,5 @@ func update():
 			newnode.disabled = true
 			newnode.set("modulate", Color(1,0,0,1))
 		newnode.connect("pressed", get_parent(), "set_active_hero", [i])
+		newnode.get_node("ToolIcon").texture
+		newnode.get_node("TaskIcon")

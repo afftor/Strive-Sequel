@@ -2074,7 +2074,7 @@ var TranslationDict = {
 	BODYPARTTITS_SIZESMALLDESCRIPT = "[He] has [color=yellow]small[/color], round boobs.",
 	BODYPARTTITS_SIZEAVERAGEDESCRIPT = "[His] nice, [color=yellow]perky[/color] breasts are firm and inviting.",
 	BODYPARTTITS_SIZEBIGDESCRIPT = "[His] [color=yellow]big[/color] tits are pleasantly soft, but still have a nice spring to them.",
-	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big fpr [his] size.",
+	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]giant[/color] tits are mind-blowingly big for [his] size.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] chest is of definitive [color=yellow]masculine[/color] shape.",
 
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] butt is skinny and [color=yellow]flat[/color].",
@@ -5139,7 +5139,7 @@ Anastasia is displayed in the main square for a week, during which time there is
 As you finish, she drops to the ground coughing heavily and clinging to her throat. For the last time her eyes display fear and hatred towards you, still not fully realizing what's happening to her. A moment later she loses consciousness.
 """,
 	ANASTASIA_PERSUASION_3 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
-	ANASTASIA_PERSUASION_4 = """You put the enchanted ring over her finger. The ring gives off a dim light, then tightly secures itself such that it can never be removed.""",
+	ANASTASIA_PERSUASION_4 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
 	ANASTASIA_PERSUASION_5 = """After another minute the princess starts moving and slowly rises up. Her eyes are devoid of consciousness and she only barely manages to focus on you standing before her. As you give her a couple of simple orders and she follows them, you decide the work is finished.""",
 	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess""",
 	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend""",
@@ -5256,8 +5256,9 @@ Amelia gives you a sign to comply with this request and you both leave the room.
 
 Amelia gives you a playful smile and leaves to go about her business""",
 	ANASTASIA_PERSUASION_39 = """You enter the princess's cell. She seems in better spirits than you left her in. She must've made up her mind.""",
-	ANASTASIA_PERSUASION_40 = """— Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor.
-
+	ANASTASIA_PERSUASION_40 = """— Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor.""",
+	ANASTASIA_PERSUASION_40_1 = """
+	
 You realize there's nothing you can say to change Anastasia's mind at this point, so your only option is to leave.""",
 	ANASTASIA_PERSUASION_41 = """You leave the jail cell and find Amelia waiting for you.
 
@@ -5883,7 +5884,7 @@ You order Daisy down to her knees and she complies reluctantly. Her sleek tits q
 
 Curtly, you order Daisy to open her mouth and after a moment of insubordinate hesitation she does. Her full lips form a perfect 'O' framing her small red tongue. Your cock twitches in anticipation and she flinches.
 
-You explain to the kneeling, half-naked bunny girl how you are going to use her mouth until you cum. She cowers a little and looks away, while not daring to remove her hands from your cock.""",
+You explain to the kneeling, half-naked bunny girl how you are going to use her mouth until you cum. She covers a little and looks away, while not daring to remove her hands from your cock.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_4 = """You order Daisy to look at you again, and not to take her eyes from yours until she feels your cum on her skin. As she strokes your penis you step a little closer so your cock is pressing up against her pretty face. 
 
 You instruct her to touch herself while she serves you. Without breaking eye contact, her hand slips between her thighs and she starts to massage her clit through the panties. 
@@ -8094,7 +8095,7 @@ As she turns to you, she realizes you've been looking at her for some time. Her 
 	CALI_SEX_2_3 = """You decide to ignore it and close the door...""",
 	CALI_SEX_2_3_OPTION_1 = "This isn't the time...",
 	CALI_SEX_2_3_OPTION_2 = "I'd rather not at all.",
-	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still cowers her private parts from you.
+	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still covers her private parts from you.
 
 - I'm... um... not sure what to say now.""",
 	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
