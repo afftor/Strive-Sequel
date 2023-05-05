@@ -58,6 +58,7 @@ var active_character
 var scene_characters = []
 var scene_loot
 var active_area
+var selected_area
 var active_location
 var selected_location
 var active_faction = {}
@@ -989,7 +990,8 @@ func start_event(code, type, args):
 					active_area.events.erase(i)
 					break
 		'location_purchase_event':
-			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
+			data.text = tr(data.text)
+			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(selected_location.name)).replace('[locationdescript]',tr(selected_location.descript)).replace("[locationtypename]", tr(selected_location.classname))
 
 	scene.open(data)
 

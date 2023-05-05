@@ -889,9 +889,9 @@ func generate_scene_text(scene):
 		globals.common_effects(scene.bonus_effects)
 
 	if scenetext.find("[locationname]") >= 0:
-		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
-		scenetext = scenetext.replace("[areaname]", input_handler.active_area.name)
-		scenetext = scenetext.replace("[locationtypename]", input_handler.active_location.classname)
+		scenetext = scenetext.replace("[locationname]", input_handler.selected_location.name)
+		scenetext = scenetext.replace("[areaname]", input_handler.selected_area.name)
+		scenetext = scenetext.replace("[locationtypename]", input_handler.selected_location.classname)
 	if scene.tags.has("master_translate"):
 		if ResourceScripts.game_party.get_master() == null:
 			print("Error: Master not found")
