@@ -949,18 +949,20 @@ margin_bottom = 379.906
 
 [node name="SkillBook" parent="." instance=ExtResource( 62 )]
 visible = false
-margin_left = 100.0
-margin_top = 60.0
-margin_right = 1600.0
-margin_bottom = 866.001
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1500.0
+margin_bottom = 806.001
 
 [node name="SkillBookButton" type="TextureButton" parent="."]
 margin_left = 1085.4
 margin_top = 831.6
 margin_right = 1139.4
 margin_bottom = 885.6
-disabled = true
 texture_normal = ExtResource( 59 )
 texture_pressed = ExtResource( 60 )
 texture_hover = ExtResource( 61 )
 texture_disabled = ExtResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
