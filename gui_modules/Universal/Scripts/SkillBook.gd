@@ -76,7 +76,7 @@ func RebuildSkillBook():
 		newbutton.set_meta('skill', skill)
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
-		newbutton.connect("mouse_exited", self, "clear_skillinfo")
+		#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	
 	if activecharacter == null: return
 	input_handler.ClearContainer($ScrollContainer2/GridContainer)
@@ -91,7 +91,7 @@ func RebuildSkillBook():
 			newbutton.get_node("Icon").texture = skill.icon
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
-			newbutton.connect("mouse_exited", self, "clear_skillinfo")
+			#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	update_filter()
 
 #func update_combat_skill_panel(skill):

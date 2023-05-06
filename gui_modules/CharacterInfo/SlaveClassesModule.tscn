@@ -955,14 +955,17 @@ margin_right = 1500.0
 margin_bottom = 806.001
 
 [node name="SkillBookButton" type="TextureButton" parent="."]
-margin_left = 1085.4
-margin_top = 831.6
-margin_right = 1139.4
-margin_bottom = 885.6
+margin_left = 979.421
+margin_top = 835.546
+margin_right = 1057.42
+margin_bottom = 913.546
+hint_tooltip = "Set Abilitites for combat"
 texture_normal = ExtResource( 59 )
 texture_pressed = ExtResource( 60 )
 texture_hover = ExtResource( 61 )
 texture_disabled = ExtResource( 58 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }

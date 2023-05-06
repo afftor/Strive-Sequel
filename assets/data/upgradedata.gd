@@ -901,11 +901,11 @@ var upgradelist = {
 			},
 		}
 	},
-	tool_swapper = { #2fix
+	tool_swapper = { 
 		code = 'tool_swapper',
 		name = '',
 		icon = "academy",
-		tree_position = {tab = 1, x = 9, y = 9},
+		tree_position = {tab = 1, x = 1, y = 9},
 		descript = '',
 		category = 'facilitiy',
 		levels = {
@@ -913,8 +913,8 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr(""),
 				taskprogress = 50,
-				cost = {stone = 500, woodiron = 150, leatherthick = 50, obsidian = 25},
-				tax = 100
+				cost = {leather = 50, wood = 100, obsidian = 15},
+				tax = 0
 			},
 		}
 	},
