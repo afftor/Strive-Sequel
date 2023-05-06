@@ -777,13 +777,13 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
+	if item != null && task.has('worktool') && (task.worktool in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	
 	var bonus_tool = false
-	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
+	if item != null && task.has('worktool') && (task.worktool in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
 		bonus_tool = true
 	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
 		value = value * 2
@@ -800,13 +800,13 @@ func get_progress_resource(tempresource, count_crit = false):
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
+	if item != null && resource.has('tool_type') && (resource.tool_type in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
 	
 	var bonus_tool = false
-	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
+	if item != null && resource.has('tool_type') && (resource.tool_type in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
 		bonus_tool = true
 	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
 		value = value * 2
