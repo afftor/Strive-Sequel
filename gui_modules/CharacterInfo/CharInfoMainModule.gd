@@ -141,6 +141,7 @@ func match_state():
 			SlaveInfo.show()
 			$TalkButton.show()
 			$SlaveBodyModule/Body.show()
+			$SlaveBodyModule/StatsButton.show()
 			$SlaveBodyModule/buffscontainer.show()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"skills":
@@ -153,6 +154,7 @@ func match_state():
 			ClassesModule.show()
 #			ClassesModule.open(active_person)
 			$SlaveBodyModule/Body.hide()
+			$SlaveBodyModule/StatsButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
 			$SlaveBodyModule/buffscontainer.hide()
@@ -168,6 +170,7 @@ func match_state():
 			SummaryModule.get_node("GridContainer/DetailsButton").set_pressed(true)
 			$TalkButton.show()
 			$SlaveBodyModule/Body.show()
+			$SlaveBodyModule/StatsButton.show()
 			$SlaveBodyModule/buffscontainer.show() #or hide? it's all good @Sphinx
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"gear":
@@ -181,6 +184,7 @@ func match_state():
 			$TalkButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule/Body.hide()
+			$SlaveBodyModule/StatsButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0
 			SlaveInfo.hide()

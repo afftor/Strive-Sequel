@@ -19,6 +19,7 @@ var data = {
 			bonus_effects = [
 			{code = 'remove_quest_location', value = 'quest_leon_forest_2'}, 
 			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
+#			{code = 'open_city', city = "beastkin_capital", area = "beastkin_tribe"}]
 		},  ]
 	},
 	
