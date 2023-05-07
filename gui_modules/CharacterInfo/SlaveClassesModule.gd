@@ -51,6 +51,7 @@ func _ready():
 	$SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
 
 func SkillBookButtonPress():
+	$SkillBook.activecharacter = person
 	$SkillBook.toggle()
 
 func _process(delta):

@@ -1810,6 +1810,10 @@ var TranslationDict = {
 	UPGRADERESTINGBONUS1 = "",
 	UPGRADEACADEMY = "Academy",
 	UPGRADEACADEMYDESCRIPT = "Allows to send newborn children for Academy training.",
+	
+	
+	UPGRADETOOL_SWAPPER = "Multitool",
+	UPGRADETOOL_SWAPPERDESCRIPT = "When characters harvest materials at dungeons or doing one time tasks their equipped tool will always apply its bonus regardless of type.",
 
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",

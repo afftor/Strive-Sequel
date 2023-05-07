@@ -2,6 +2,8 @@ extends TextureRect
 
 var activecharacter
 
+signal closing
+
 func _ready():
 	$CloseButton.connect("pressed", self, "close_skillbook")
 	$TextureButton.connect("pressed", self, "close_skillbook")
@@ -30,7 +32,7 @@ func close_skillbook():
 
 func open_skillbook():
 	show()
-	activecharacter = get_parent().activecharacter 
+#	activecharacter = get_parent().activecharacter 
 	gui_controller.windows_opened.push_back(self)
 	clear_skillinfo()
 	RebuildSkillBook()
@@ -74,9 +76,9 @@ func RebuildSkillBook():
 		newbutton.set_meta('skill', skill)
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
-		newbutton.connect("mouse_exited", self, "clear_skillinfo")
+		#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 	
-	if get_parent().activecharacter == null: return
+	if activecharacter == null: return
 	input_handler.ClearContainer($ScrollContainer2/GridContainer)
 
 	var src = activecharacter.skills.combat_skill_panel
@@ -89,7 +91,7 @@ func RebuildSkillBook():
 			newbutton.get_node("Icon").texture = skill.icon
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
-			newbutton.connect("mouse_exited", self, "clear_skillinfo")
+			#newbutton.connect("mouse_exited", self, "clear_skillinfo")
 		else:
 			newbutton.draggable = false
 	update_filter()
@@ -158,5 +160,7 @@ func clear_skillinfo():
 	$SkillInfo/Cooldown.text = ""
 
 func hide():
-	get_parent().RebuildSkillPanel()
+#	get_parent().RebuildSkillPanel()
+	activecharacter = null
+	emit_signal("closing")
 	.hide()
