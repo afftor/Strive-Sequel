@@ -92,6 +92,8 @@ func RebuildSkillBook():
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])
 			#newbutton.connect("mouse_exited", self, "clear_skillinfo")
+		else:
+			newbutton.draggable = false
 	update_filter()
 
 #func update_combat_skill_panel(skill):
