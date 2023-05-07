@@ -278,7 +278,7 @@ func see_quest_info(quest):
 								)
 							)
 						)
-						+ "(Master Charm Bonus)")
+						+ " (Master Charm Bonus)")
 					)
 			'reputation':
 				var value = round(
@@ -311,7 +311,7 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					+ "(Master Charm Bonus)"
+					+ " (Master Charm Bonus)"
 				))
 		
 	$QuestDetails/Panel/RichTextLabel.bbcode_text = globals.TextEncoder(text_name)
