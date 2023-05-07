@@ -4005,3 +4005,13 @@ func get_materials_by_grade(grade):
 	for i in materiallist.values():
 		array.append(i.code)
 	return array
+
+
+func get_item_by_tooltype(t_type):
+	for key in itemlist:
+		var titem = itemlist[key]
+		if !titem.has('tool_category'):
+			continue
+		if titem.tool_category.has(t_type):
+			return key
+	return null

@@ -57,8 +57,13 @@ func update():
 				newnode.get_node("TaskIcon").texture = null
 			if task.has('worktool'):
 				#stub
-				var worktool = Items.itemlist[task.worktool]
-				newnode.get_node("ToolIcon").texture = worktool.icon
-				globals.connecttexttooltip(newnode.get_node("ToolIcon"), tr(worktool.name))
+				var worktool = Items.get_item_by_tooltype(task.worktool)
+				if worktool != null:
+					var i_worktool = Items.itemlist[worktool]
+					newnode.get_node("ToolIcon").texture = i_worktool.icon
+					globals.connecttexttooltip(newnode.get_node("ToolIcon"), tr(i_worktool.name))
+				else:
+					#even greater stub
+					newnode.get_node("ToolIcon").texture = null
 			else:
 				newnode.get_node("ToolIcon").texture = null
