@@ -19,7 +19,7 @@ func update():
 		newnode.connect("pressed", get_parent(), "set_active_hero", [i])
 		var work = i.get_work()
 		var gatherable = Items.materiallist.has(work)
-		if work in ['', 'Assignment', 'disabled']:
+		if work in ['', 'Assignment', 'disabled', 'learning']:
 			if i.is_on_quest():
 				pass
 				#stub
@@ -39,10 +39,12 @@ func update():
 			newnode.get_node("TaskIcon").texture = res.icon
 			globals.connecttexttooltip(newnode.get_node("TaskIcon"), tr(res.name))
 			if res.has('tool_type'):
-				#stub
-				var worktool = Items.itemlist[res.tool_type]
-				newnode.get_node("ToolIcon").texture = worktool.icon
-				globals.connecttexttooltip(newnode.get_node("ToolIcon"), tr(worktool.name))
+				var worktool = "res://assets/images/gui/inventory/tool_%s.png" % res.tool_type
+				newnode.get_node("ToolIcon").texture = load(worktool)
+				var i_worktool = Items.get_item_by_tooltype(res.tool_type)
+				if i_worktool != null:
+					i_worktool = Items.itemlist[i_worktool]
+					globals.connecttexttooltip(newnode.get_node("ToolIcon"), tr(i_worktool.name))
 			else:
 				newnode.get_node("ToolIcon").texture = null
 		else:
@@ -56,14 +58,11 @@ func update():
 			else:
 				newnode.get_node("TaskIcon").texture = null
 			if task.has('worktool'):
-				#stub
-				var worktool = Items.get_item_by_tooltype(task.worktool)
-				if worktool != null:
-					var i_worktool = Items.itemlist[worktool]
-					newnode.get_node("ToolIcon").texture = i_worktool.icon
+				var worktool = "res://assets/images/gui/inventory/tool_%s.png" % task.worktool
+				newnode.get_node("ToolIcon").texture = load(worktool)
+				var i_worktool = Items.get_item_by_tooltype(task.worktool)
+				if i_worktool != null:
+					i_worktool = Items.itemlist[i_worktool]
 					globals.connecttexttooltip(newnode.get_node("ToolIcon"), tr(i_worktool.name))
-				else:
-					#even greater stub
-					newnode.get_node("ToolIcon").texture = null
 			else:
 				newnode.get_node("ToolIcon").texture = null
