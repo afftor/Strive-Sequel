@@ -1,7 +1,7 @@
 var data = {
 	 goblin_quest_0 = {
 		image = 'letter', tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [{type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_0'}], 
 		text = [{text = "GOBLIN_QUEST_0", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -11,7 +11,7 @@ var data = {
 	
 	 goblin_quest_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = "savra", 
+		reqs = [{type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}], character = "savra", 
 		text = [{text = "GOBLIN_QUEST_1", reqs = []}],
 		options = [ {
 			code = 'goblin_quest_2', text = "GOBLIN_QUEST_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
