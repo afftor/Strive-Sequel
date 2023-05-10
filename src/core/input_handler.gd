@@ -569,6 +569,7 @@ func Open(node):
 
 func ChangeScene(name):
 	CloseableWindowsArray.clear()
+	dialogue_array.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
 	get_tree().get_root().add_child(loadscreen)
 	CurrentScene = loadscreen
