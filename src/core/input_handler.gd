@@ -367,6 +367,7 @@ func _input(event):
 		if input_handler.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
+#		get_tree().get_root().print_tree_pretty()
 		for i in get_tree().get_nodes_in_group("disable_rmb_esc"):
 			if i.is_visible_in_tree():
 				if gui_controller.windows_opened.size() > 0:
@@ -1666,3 +1667,8 @@ func is_descendant_of_current_screen(nd):
 			return true
 		nd = nd.get_parent()
 	return false
+
+
+func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
+	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_OUT)
+	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)
