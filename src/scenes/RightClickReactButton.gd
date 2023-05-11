@@ -25,6 +25,8 @@ func _ready():
 	connect("gui_input", self, "_on_Button_gui_input")
 
 func _on_Button_gui_input(event):
+	if !get_global_rect().has_point(get_global_mouse_position()):
+		return
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_LEFT:

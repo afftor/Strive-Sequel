@@ -49,6 +49,8 @@ func fix_serialization():
 	weekly_dates_max = int(weekly_dates_max)
 	if original_version == null: #stub, technically not correct
 		original_version = globals.gameversion
+	if difficulty == 'normal':
+		difficulty = 'medium'
 
 
 func fix_import():
