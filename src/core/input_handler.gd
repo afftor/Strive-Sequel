@@ -1648,6 +1648,24 @@ func import_recolor_parameter(to_mat, from_mat, ids = [1,2,3]):
 	to_mat.set_shader_param('overlay', from_mat.get_shader_param('overlay'))
 
 
+func import_recolor_mask(to_mat, from_mat, ids = [1,2,3]):
+	for param in ["part%d"]:
+		for i in ids:
+			var parname = param % (i)
+			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
+
+
+func import_recolor_mask_path(to_mat, mask, ids = [1,2,3]):
+	for param in ["part%d"]:
+		for i in ids:
+			if mask == null:
+				var oldcolorparam = "target%dcolor" % (i)
+				var newcolorparam = "part%dcolor" % (i)
+				to_mat.set_shader_param(newcolorparam, oldcolorparam)
+			var parname = param % (i)
+			to_mat.set_shader_param(parname, mask)
+
+
 func import_deform_parameter(to_mat, from_mat, ids = [1,2,3,4,5,6]):
 	for param in ["anchor%d", "move%d", "range%d"]:
 		for i in ids:

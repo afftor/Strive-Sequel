@@ -48,6 +48,12 @@ func check_wooden_gear_equipped():
 func get_gear(slot):
 	return gear[slot]
 
+func get_gear_type(slot):
+	var item = get_gear(slot)
+	if item == null:
+		return null
+	return item.code
+
 func equip(item, item_prev_id = null):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
 	#if duplicate != null:

@@ -50,7 +50,7 @@ var params_to_save = [
 	"tail",
 	"arms",
 	"legs",
-	"lower_body",
+	"body_lower",
 	"body_shape",
 	"penis_size",
 	"penis_type",

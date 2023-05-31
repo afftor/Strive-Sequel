@@ -216,6 +216,23 @@ func set_icon(node):
 			node.material.set_shader_param(part, color)
 
 
+func color_ragdoll_parts(ragdoll_root):
+	var nodes = GeneratorData.itemparts[itembase]
+	for path in nodes:
+		var node = ragdoll_root.get_node(path)
+		node.material = null
+		if parts.size() > 0:
+			var shader = load("res://assets/ItemShader.tres").duplicate()
+			if node.material != shader:
+				node.material = shader
+			else:
+				shader = node.material
+			for i in parts:
+				var part = 'part' +  str(partcolororder[i]) + 'color'
+				var color = Items.materiallist[parts[i]].color
+				node.material.set_shader_param(part, color)
+
+
 func tooltiptext():
 	var text = ''
 	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
