@@ -33,7 +33,7 @@ var preset_data = {
 		decisions = [],
 		active_quests = [],
 		completed_quests = [],
-		difficulty = 'normal'
+		difficulty = 'medium'
 	},
 	hard = {
 		code = 'hard',
