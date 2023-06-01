@@ -58,6 +58,7 @@ var active_character
 var scene_characters = []
 var scene_loot
 var active_area
+var selected_area
 var active_location
 var selected_location
 var active_faction = {}
@@ -366,6 +367,7 @@ func _input(event):
 		if input_handler.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
+#		get_tree().get_root().print_tree_pretty()
 		for i in get_tree().get_nodes_in_group("disable_rmb_esc"):
 			if i.is_visible_in_tree():
 				if gui_controller.windows_opened.size() > 0:
@@ -568,6 +570,7 @@ func Open(node):
 
 func ChangeScene(name):
 	CloseableWindowsArray.clear()
+	dialogue_array.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
 	get_tree().get_root().add_child(loadscreen)
 	CurrentScene = loadscreen
@@ -989,7 +992,8 @@ func start_event(code, type, args):
 					active_area.events.erase(i)
 					break
 		'location_purchase_event':
-			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
+			data.text = tr(data.text)
+			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(selected_location.name)).replace('[locationdescript]',tr(selected_location.descript)).replace("[locationtypename]", tr(selected_location.classname))
 
 	scene.open(data)
 
@@ -1681,3 +1685,8 @@ func is_descendant_of_current_screen(nd):
 			return true
 		nd = nd.get_parent()
 	return false
+
+
+func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
+	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_OUT)
+	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)

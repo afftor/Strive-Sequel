@@ -91,8 +91,10 @@ func _ready():
 	$ItemPanel.hide()
 	
 	$Button.connect("pressed", self, "on_skillbook_click")
+	$SkillBook.connect("closing", self, "RebuildSkillPanel")
 
 func on_skillbook_click():
+	$SkillBook.activecharacter = activecharacter
 	$SkillBook.toggle()
 	RebuildSkillPanel()
 

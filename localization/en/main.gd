@@ -1810,6 +1810,10 @@ var TranslationDict = {
 	UPGRADERESTINGBONUS1 = "",
 	UPGRADEACADEMY = "Academy",
 	UPGRADEACADEMYDESCRIPT = "Allows to send newborn children for Academy training.",
+	
+	
+	UPGRADETOOL_SWAPPER = "Multitool",
+	UPGRADETOOL_SWAPPERDESCRIPT = "When characters harvest materials at dungeons or doing one time tasks their equipped tool will always apply its bonus regardless of type.",
 
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
@@ -5884,7 +5888,7 @@ You order Daisy down to her knees and she complies reluctantly. Her sleek tits q
 
 Curtly, you order Daisy to open her mouth and after a moment of insubordinate hesitation she does. Her full lips form a perfect 'O' framing her small red tongue. Your cock twitches in anticipation and she flinches.
 
-You explain to the kneeling, half-naked bunny girl how you are going to use her mouth until you cum. She cowers a little and looks away, while not daring to remove her hands from your cock.""",
+You explain to the kneeling, half-naked bunny girl how you are going to use her mouth until you cum. She covers a little and looks away, while not daring to remove her hands from your cock.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_4 = """You order Daisy to look at you again, and not to take her eyes from yours until she feels your cum on her skin. As she strokes your penis you step a little closer so your cock is pressing up against her pretty face. 
 
 You instruct her to touch herself while she serves you. Without breaking eye contact, her hand slips between her thighs and she starts to massage her clit through the panties. 
@@ -8095,7 +8099,7 @@ As she turns to you, she realizes you've been looking at her for some time. Her 
 	CALI_SEX_2_3 = """You decide to ignore it and close the door...""",
 	CALI_SEX_2_3_OPTION_1 = "This isn't the time...",
 	CALI_SEX_2_3_OPTION_2 = "I'd rather not at all.",
-	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still cowers her private parts from you.
+	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still covers her private parts from you.
 
 - I'm... um... not sure what to say now.""",
 	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",

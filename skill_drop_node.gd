@@ -3,6 +3,7 @@ extends Control
 var target_node
 var metadata
 var dragdata
+var draggable = true
 
 func can_drop_data(position, data):
 	if data != null:
@@ -18,5 +19,8 @@ func drop_data(position, data):
 
 
 func get_drag_data(position):
-	set_drag_preview(self.duplicate())
-	return dragdata
+	if draggable:
+		set_drag_preview(self.duplicate())
+		return dragdata
+	else:
+		return null

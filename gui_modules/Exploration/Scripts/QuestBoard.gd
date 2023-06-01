@@ -34,6 +34,7 @@ func _show():
 func quest_board():
 	input_handler.ActivateTutorial("quest")
 	$QuestDetails/Panel.hide()
+	$QuestDetails/AcceptQuest.hide()
 #	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 #	self.current_pressed_area_btn = pressed_button
 #	# $QuestBoard.visible = pressed
@@ -49,12 +50,6 @@ func quest_board():
 				newbutton.get_node("Label").text = tr(k.name)
 				newbutton.get_node("Requester").text = tr(k.difficulty)
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
-#				newbutton.get_node("ButtonOverlay").connect(
-#					"mouse_entered", self, "change_texture", [newbutton, "in"]
-#				)
-#				newbutton.get_node("ButtonOverlay").connect(
-#					"mouse_exited", self, "change_texture", [newbutton, "out"]
-#				)
 				newbutton.set_meta("quest", k)
 				newbutton.get_node("ButtonOverlay").connect('pressed',self,'selectquest', [newbutton])
 	$NoQuests.visible = counter == 0
@@ -73,6 +68,7 @@ func see_quest_info(quest):
 	input_handler.selectedquest = quest
 	input_handler.ClearContainer($QuestDetails/Panel/VBoxContainer/req/questreqs)
 	input_handler.ClearContainer($QuestDetails/Panel/VBoxContainer/Label/questrewards)
+	$QuestDetails/AcceptQuest.show()
 	var text_name = '[center]' + tr(quest.name) + '[/center]\n'
 	var text =  tr(quest.descript)
 	for i in quest.requirements:
@@ -282,7 +278,7 @@ func see_quest_info(quest):
 								)
 							)
 						)
-						+ "(Master Charm Bonus)")
+						+ " (Master Charm Bonus)")
 					)
 			'reputation':
 				var value = round(
@@ -315,7 +311,7 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					+ "(Master Charm Bonus)"
+					+ " (Master Charm Bonus)"
 				))
 		
 	$QuestDetails/Panel/RichTextLabel.bbcode_text = globals.TextEncoder(text_name)

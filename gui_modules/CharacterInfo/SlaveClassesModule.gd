@@ -48,6 +48,11 @@ func _ready():
 	globals.connecttexttooltip($categories/combat, "Combat")
 	globals.connecttexttooltip($categories/magic, "Magic")
 	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
+	$SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
+
+func SkillBookButtonPress():
+	$SkillBook.activecharacter = person
+	$SkillBook.toggle()
 
 func _process(delta):
 	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):

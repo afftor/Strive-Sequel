@@ -1288,7 +1288,6 @@ func remove_location(locationid):
 	area.questlocations.erase(location.id)
 	ResourceScripts.game_world.location_links.erase(location.id)
 	
-	
 	input_handler.update_slave_list()
 	gui_controller.nav_panel.build_accessible_locations()
 	if gui_controller.current_screen == gui_controller.mansion:
@@ -1677,7 +1676,8 @@ func common_effects(effects):
 #					location = {id = location, area = area}
 					location = ResourceScripts.world_gen.get_location_from_code(location)
 					input_handler.active_location = location
-					input_handler.exploration_node.open_city(location.id)
+#					input_handler.exploration_node.open_city(location.id)
+					gui_controller.nav_panel.select_location(location.id)
 					continue
 				
 				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired

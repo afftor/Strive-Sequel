@@ -389,6 +389,7 @@ var portraits = {
 	heleviel = "res://assets/images/portraits/heleviel_prt.png",
 	lira = "res://assets/images/portraits/lira_prt.png",
 	cali_halloween = "res://assets/images/portraits/cali_halloween_prt.png",
+	cali_collar = "res://assets/images/portraits/cali_collar_prt.png",
 	anastasia_halloween = "res://assets/images/portraits/anastasia_halloween_prt.png",
 }
 

@@ -229,11 +229,12 @@ func show_class_info(classcode, person = null):
 		person = mansion.active_person
 	var node = input_handler.get_spec_node(input_handler.NODE_CLASSINFO)  #get_class_info_panel()
 	node.open(classcode, person)
-	get_viewport().set_disable_input(true)
+	get_tree().get_root().set_disable_input(true)
 	ResourceScripts.core_animations.UnfadeAnimation(node, 0.3)
 	yield(get_tree().create_timer(0.15), "timeout")
 	node.show()
-	get_viewport().set_disable_input(false)
+	get_tree().get_root().set_disable_input(false)
+	input_handler._reset_mouse_events()
 	if ! windows_opened.has(node):
 		windows_opened.append(node)
 	classinfo = node
