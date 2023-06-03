@@ -914,7 +914,6 @@ var upgradelist = {
 				bonusdescript = tr(""),
 				taskprogress = 50,
 				cost = {leather = 50, wood = 100, obsidian = 15},
-				tax = 0
 			},
 		}
 	},

@@ -197,6 +197,8 @@ var TranslationDict = {
 	ITEMANAL_PLUGDESCRIPT = "A plug shaped piece of wood. Designed for rear usage. ",
 	ITEMSTRAPON = "Strapon",
 	ITEMSTRAPONDESCRIPT = "Allows girls to pass for boys, but only in bed. ",
+	ITEMOFFHAND_BOOK = "Magic Tome",
+	ITEMOFFHAND_BOOKDESCRIPT = "A rare and valuable magic item. It contains powerful spells and knowledge that can greatly aid any adventurer on their quest.",
 
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = "A strong potion bringing out a person's inner lust. \n\nTurns character Horny during sex interactions. ",
@@ -390,6 +392,7 @@ var TranslationDict = {
 	TOOLTIPSKIPPROLOGUE = "Skips prologue quests and starts first story arc. The loan mission is disabled. ",
 	
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
+	
 
 	SAVENAME = "Save Name",
 	SAVETEMPLATEDESCRIPT = "You can save existing character template for the repeated use.",
@@ -653,7 +656,7 @@ var TranslationDict = {
 	SKILLSHADOWSTRIKE = "Shadow Strike",
 	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as Dark damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.",
 	SKILLFIREARR = "Fire Arrow",
-	SKILLFIREARRDESCRIPT = "Deals 120% of ATK as Fire damage. Has 50% chance to burn target for 2 turns, dealing damage (20% of MATK) every turn.",
+	SKILLFIREARRDESCRIPT = "Deals 120% of MATK as Fire damage. Has 50% chance to burn target for 2 turns, dealing damage (20% of MATK) every turn.",
 	SKILLLIGHTNING = "Lightning",
 	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as Air damage to a target. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
@@ -815,6 +818,10 @@ var TranslationDict = {
 	CAPTUREADDTOOLTIP = "Add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
 	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character. You won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
+	
+	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
+	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
+	
 	
 	FACTOR_INCREASE_TOOLTIP = "By sacrificing unneeded characters you can boost factors of other characters as long as donor character's stat is higher than receiver's. Growth Factor only can be increased by 1 per donor. End price is defined by receiver's value.",
 	COMBAT_CHARACTER_CAPTURED = "Character",
@@ -2441,7 +2448,7 @@ var TranslationDict = {
 	ENEMYREBEL_HEALER = "Rebel Healer",
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
-	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",
+	ENEMYCAVE_GOBLIN_SHAMAN = "Cave Goblin Shaman",
 	ENEMYCAVE_GOBLIN_BOSS = "Cave Goblin Boss",
 	ENEMYQUEST_GOBLIN_BOSS = "Goblin Thug",
 	ENEMYQUEST_GOBLIN_SHAMAN = "Goblin Mage",
@@ -3634,7 +3641,25 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALEARTH_SHARD = "Earth Shard",
 	MATERIALEARTH_SHARDADJ = "Earth",
 	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
-
+	
+	MATERIALMILK = "Milk", #TODO add descriptions
+	MATERIALMILKDESCRIPT = "Milk",
+	MATERIALSEED = "Seed",
+	MATERIALSEEDDESCRIPT = "Seed",
+	MATERIALPHEROMONES = "Pheromones",
+	MATERIALPHEROMONESDESCRIPT = "Pheromones",
+	MATERIALEGGS = "Eggs",
+	MATERIALEGGSDESCRIPT = "Eggs",
+	MATERIALMAGIC_DUST = "Magic Dust",
+	MATERIALMAGIC_DUSTDESCRIPT = "Magic Dust",
+	MATERIALuLE_BLOOD = "Reptile Blood",
+	MATERIALREPTILE_BLOODDESCRIPT = "Reptile Blood",
+	MATERIALLIGHT_ESSENCE = "Light Essence",
+	MATERIALLIGHT_ESSENCEDESCRIPT = "Light Essence",
+	MATERIALDARK_ESSENCE = "Dark Essence",
+	MATERIALDARK_ESSENCEDESCRIPT = "Dark Essence",
+	
+	
 	QUESTREQSCOMPLETE = "Quest subtask complete",
 
 	ENEMYTYPEBANDITS = "Bandits",
@@ -8451,6 +8476,7 @@ As Cali is speechless to the proposition, But as her master it falls to you to d
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
 {color=aqua|William: — Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? }""",
+	CALI_WILLIAM_3_2 = """""",
 	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
 	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
 	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
@@ -10262,7 +10288,7 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	
 	CALI_FIGHTERS_QUEST_NAME = "Cali: Small and Brave",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Your member, Cali, wants to be more useful and decided to join fighters guild",
-	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to registrate Cali",
+	CALI_FIGHTERS_QUEST_STAGE_1 = "Visit fighters guild to register Cali",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Go to the village to help Cali get rid of goblins",
 	CALI_FIGHTERS_QUEST_STAGE_3 = "Report back to Fighters Guild",
 	CALI_SERVANTS_QUEST_SUMMARY = "Your member, Cali, wants to get more feminine and wishes to attend Servants classes.",
@@ -11097,8 +11123,8 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	SLAVERACES_NAME = "Hireling Rarity",
 	SLAVERACES_DISC = "Increases racial rarity of characters available for hire. Rarer races might have better attributes and passive effects.",
 	
-	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassembe",
-	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase base amount of materials recovered.",
+	WORKERS_DISASSAMBY_UPGRADE_NAME = "Disassemble",
+	WORKERS_DISASSAMBY_UPGRADE_DISC = "Allows disassembling gear to get some of materials back. Higher level increase the base amount of materials recovered.",
 	
 	#factiondata
 	

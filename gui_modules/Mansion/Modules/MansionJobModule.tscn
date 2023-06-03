@@ -403,9 +403,9 @@ __meta__ = {
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
 margin_left = 68.0
-margin_top = 781.0
+margin_top = 779.665
 margin_right = 1309.0
-margin_bottom = 882.0
+margin_bottom = 880.665
 custom_fonts/normal_font = ExtResource( 15 )
 bbcode_enabled = true
 __meta__ = {
@@ -572,6 +572,7 @@ __meta__ = {
 }
 
 [node name="Modlabel" type="Label" parent="."]
+visible = false
 margin_left = 734.0
 margin_top = 982.0
 margin_right = 810.0

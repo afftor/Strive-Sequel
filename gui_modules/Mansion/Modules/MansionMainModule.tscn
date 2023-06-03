@@ -50,9 +50,8 @@ size = 36
 font_data = ExtResource( 19 )
 
 [node name="MansionMainModule" type="Panel"]
-margin_top = -2.24493
-margin_right = 1921.0
-margin_bottom = 1077.76
+margin_right = 1920.0
+margin_bottom = 1080.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -184,6 +183,9 @@ margin_bottom = 69.0
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="MenuButton"]
 margin_right = 116.0

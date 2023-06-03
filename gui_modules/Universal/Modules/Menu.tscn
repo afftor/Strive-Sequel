@@ -664,7 +664,15 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.10
+bbcode_text = "0.6.10a
+Added icon indication for tasks and tools to character inventory
+Added new upgrade which makes tools at dungeons ignore task type
+Added skillbook button to character skill learning menu
+Fixed some dungeon chests not being openable and new book item not generating
+Fixed scene changing sometimes going into wrong locations
+Fixed a bug with high food consumption making character selling behave weirdly
+Fixed some event bugs
+0.6.10
 Revamped combat menu and skill assignment
 Added new guild upgrade for character race rarity
 Added unique bow for Aire (obtained from shrine)
@@ -1458,7 +1466,15 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.10
+text = "0.6.10a
+Added icon indication for tasks and tools to character inventory
+Added new upgrade which makes tools at dungeons ignore task type
+Added skillbook button to character skill learning menu
+Fixed some dungeon chests not being openable and new book item not generating
+Fixed scene changing sometimes going into wrong locations
+Fixed a bug with high food consumption making character selling behave weirdly
+Fixed some event bugs
+0.6.10
 Revamped combat menu and skill assignment
 Added new guild upgrade for character race rarity
 Added unique bow for Aire (obtained from shrine)

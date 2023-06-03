@@ -14,7 +14,9 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble_hover.png" type="Texture" id=13]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.tscn" type="PackedScene" id=14]
 
-[node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
+[node name="CharInfoMainModule" type="Panel" groups=[
+"pauseprocess",
+]]
 light_mask = 0
 margin_right = 1920.0
 margin_bottom = 1080.0

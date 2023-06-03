@@ -939,7 +939,11 @@ var materiallist = {
 		tier = 'easy',
 		tags = [],
 	},
-
+	
+	
+	
+	
+	
 
 	#Complex materials
 	trap = {
@@ -993,6 +997,90 @@ var materiallist = {
 		tier = 'medium',
 		tags = ['no_random'],
 	},
+	
+	
+	milk = {
+		code = 'milk',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 3,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	seed = {
+		code = 'seed',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 2,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	pheromones = {
+		code = 'pheromones',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 3,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	eggs = {
+		code = 'eggs',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 4,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	magic_dust = {
+		code = 'magic_dust',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 5,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	reptile_blood = {
+		code = 'reptile_blood',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 4,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	light_essence = {
+		code = 'light_essence',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 7,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	dark_essence = {
+		code = 'dark_essence',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsgear/item_blood.png"),
+		price = 7,
+		type = 'service_boost',
+		tier = 'easy',
+		tags = ['no_random'],
+	},
+	
+	
 	bandage = {
 		code = 'bandage',
 		name = '',
