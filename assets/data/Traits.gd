@@ -278,6 +278,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_breeder'],
+		tags = ['breeder']
 	}, #second and third effects need to be hardcoded
 	harlot = {#+50% gold from prostitution
 		code = 'harlot',

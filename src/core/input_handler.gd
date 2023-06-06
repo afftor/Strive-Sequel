@@ -1665,7 +1665,7 @@ func import_recolor_mask_path(to_mat, mask, ids = [1,2,3]):
 			if mask == null:
 				var oldcolorparam = "target%dcolor" % (i)
 				var newcolorparam = "part%dcolor" % (i)
-				to_mat.set_shader_param(newcolorparam, oldcolorparam)
+				to_mat.set_shader_param(newcolorparam, to_mat.get_shader_param(oldcolorparam))
 			var parname = param % (i)
 			to_mat.set_shader_param(parname, mask)
 
