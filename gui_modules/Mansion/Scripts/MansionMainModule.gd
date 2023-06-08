@@ -563,7 +563,7 @@ func test_mode():
 		character.add_stat('charm', 100)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
-		character.set_stat('hair_length','bald')
+		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")

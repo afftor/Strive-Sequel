@@ -84,6 +84,21 @@ func get_stat(statname, ref = false):
 		return effects.counters
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
 		return food.get(statname)
+	if statname == 'pregnancy_status':
+		if has_status('heavy_pregnant'):
+			return 'heavy'
+		elif has_status('pregnant'):
+			return 'early'
+		else:
+			return 'no'
+	if statname.begins_with('armor_'):
+		match statname:
+			'armor_base':
+				return ('servant') #temporal, until correct recolor of armor
+				return equipment.get_gear_type('chest')
+			'armor_lower':
+				return ('servant') #temporal, until correct recolor of armor
+				return equipment.get_gear_type('legs')
 	return statlist.get_stat(statname, ref)
 
 
@@ -683,6 +698,9 @@ func get_icon_small():
 
 func get_body_image():
 	return statlist.get_body_image()
+
+func get_stored_body_image():
+	return statlist.get_stored_body_image()
 
 func get_stat_data():
 	return statlist.get_stat_data()

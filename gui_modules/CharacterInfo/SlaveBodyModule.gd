@@ -17,7 +17,17 @@ func update(person = null):
 		):
 			person = gui_controller.exploration.person_to_hire
 	# if person != null:
-	$Body.texture = person.get_body_image()
+	var stored_image = person.get_stored_body_image()
+	if stored_image != null:
+		$Body.texture = stored_image
+		$Body.visible = true
+		$ragdoll.visible = false
+	else:
+		$Body.visible = false
+		$ragdoll.visible = true
+		$ragdoll.test_mode = false
+		$ragdoll.rebuild(person)
+		$ragdoll.rebuild_cloth(true)
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	
