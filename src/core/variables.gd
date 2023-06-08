@@ -1,7 +1,4 @@
 extends Node
-#those should be stored in modding_core, but this change is up to you now
-var globals_extend = false
-var input_handler_extend = false
 
 #Game Settings
 #timeflow
