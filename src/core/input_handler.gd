@@ -308,15 +308,12 @@ func quit():
 
 
 func _init():
-	if variables.get('input_handler_extend'):
-		variables.set('input_handler_extend', false)
-		OS.window_size = globalsettings.window_size
-		OS.window_position = globalsettings.window_pos
-		settings_load()
-		load_progress_data()
-		return
-		
 	settings_load()
+	OS.window_size = globalsettings.window_size
+	OS.window_position = globalsettings.window_pos
+	settings_load()
+	load_progress_data()
+	
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
 		for ifile in dir_contents(i):
@@ -334,14 +331,14 @@ func _init():
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
 	TranslationServer.set_locale(globalsettings.ActiveLocalization)
-#	connect("EventFinished", self, "event_finished")
+
 
 func _ready():
-	OS.window_size = globalsettings.window_size
-	OS.window_position = globalsettings.window_pos
-	#settings_load() Egodgorn
-	load_progress_data()
-
+	#Storing available translations
+	for i in scanfolder(variables.LocalizationFolder):
+		for ifile in dir_contents(i):
+			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
+	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 
 func _input(event):
