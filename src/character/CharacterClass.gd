@@ -699,6 +699,9 @@ func get_icon_small():
 func get_body_image():
 	return statlist.get_body_image()
 
+func get_stored_body_image():
+	return statlist.get_stored_body_image()
+
 func get_stat_data():
 	return statlist.get_stat_data()
 

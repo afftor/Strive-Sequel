@@ -1536,12 +1536,16 @@ func get_icon_path():
 		return ""
 	return statlist.icon_image
 
-func get_body_image(): 
+func get_stored_body_image(): 
 	var tmp 
 	if images.sprites.has(statlist.body_image):
 		tmp = input_handler.loadimage(images.sprites[statlist.body_image], 'shades')
 	else:
 		tmp = input_handler.loadimage(statlist.body_image, 'shades')
+	return tmp
+
+func get_body_image(): 
+	var tmp = get_stored_body_image()
 	if tmp != null:
 		return tmp
 	else:
