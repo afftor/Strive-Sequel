@@ -85,7 +85,7 @@ margin_right = 585.0
 margin_bottom = 741.057
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-placeholder_text = "savename"
+placeholder_text = "LSPSAVENAME"
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,6 +96,9 @@ margin_top = 89.0
 margin_right = 643.0
 margin_bottom = 246.0
 custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DetailsPanel"]
 margin_left = 17.0
@@ -145,7 +148,7 @@ margin_left = 272.075
 margin_top = 20.0476
 margin_right = 393.912
 margin_bottom = 48.2985
-text = "Update Save File"
+text = "LSPUPDATESAVEFILE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -213,6 +216,6 @@ custom_colors/font_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 shortcut_in_tooltip = false
-text = "Import mode"
+text = "LSPIMPORTMODE"
 
 [connection signal="pressed" from="ImportMode" to="." method="_on_ImportMode_pressed"]

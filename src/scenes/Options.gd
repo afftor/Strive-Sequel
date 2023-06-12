@@ -24,6 +24,7 @@ func _ready():
 	ReloadPanel = $ReloadGameLanguage
 	SwitchLanguage = $TabContainer/Gameplay/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
+	
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
@@ -39,6 +40,7 @@ func _ready():
 	$TabContainer/Cheats/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
 	$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
+	
 
 func enable_tutorials(pressed):
 	ResourceScripts.game_progress.show_tutorial = pressed

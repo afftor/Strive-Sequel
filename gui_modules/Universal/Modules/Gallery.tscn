@@ -47,9 +47,9 @@ texture = ExtResource( 5 )
 [node name="Title" type="Label" parent="."]
 margin_right = 1920.0
 margin_bottom = 76.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Gallery"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "GALLERYNAME"
 align = 1
 valign = 1
 __meta__ = {
@@ -72,9 +72,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="StoryButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Story"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "GALLERYSTORY"
 align = 1
 valign = 1
 __meta__ = {
@@ -97,9 +97,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="EroButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Ero"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "GALLERYERO"
 align = 1
 valign = 1
 
@@ -119,9 +119,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="SceneButton"]
 margin_right = 196.0
 margin_bottom = 50.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Scenes"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "GALLERYSCENES"
 align = 1
 valign = 1
 
@@ -189,7 +189,7 @@ margin_top = 1004.0
 margin_right = 1046.08
 margin_bottom = 1056.0
 theme = ExtResource( 2 )
-text = "Return"
+text = "GALLERYRETURN"
 __meta__ = {
 "_edit_use_anchors_": false
 }

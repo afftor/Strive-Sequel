@@ -49,9 +49,9 @@ margin_left = 29.0
 margin_top = 99.0
 margin_right = 616.0
 margin_bottom = 668.0
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,8 +68,8 @@ margin_top = 563.0
 margin_right = 206.0
 margin_bottom = 605.0
 focus_mode = 2
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Switch Language"
 flat = false
 script = ExtResource( 19 )
@@ -80,11 +80,11 @@ margin_top = 182.0
 margin_right = 532.0
 margin_bottom = 212.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Furries"
+text = "OPTGAMEPLAYFURRIES"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,11 +95,11 @@ margin_top = 220.0
 margin_right = 532.0
 margin_bottom = 250.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Multiple Nipples on Furries"
+text = "OPTGAMEPLAYFURRMULT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,11 +110,11 @@ margin_top = 258.0
 margin_right = 532.0
 margin_bottom = 288.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Futas with balls"
+text = "OPTGAMEPLAYFUTA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,10 +126,10 @@ margin_top = 298.0
 margin_right = 532.0
 margin_bottom = 328.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
 text = "Turn Based Time Flow"
 
 [node name="show_full_consent" type="CheckBox" parent="TabContainer/Gameplay"]
@@ -138,11 +138,11 @@ margin_top = 298.0
 margin_right = 532.0
 margin_bottom = 338.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Show Consent Details"
+text = "OPTGAMEPLAYSHOWDETAILES"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -154,11 +154,11 @@ margin_right = 532.0
 margin_bottom = 378.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Enable Tutorials"
+text = "OPTGAMEPLAYTUTOR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -184,9 +184,9 @@ margin_left = 11.0
 margin_top = -24.0
 margin_right = 476.0
 margin_bottom = 11.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "MALERATE"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTGAMEPLAYMALERATE"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -202,9 +202,9 @@ ticks_on_borders = true
 margin_left = 11.0
 margin_top = -24.0
 margin_right = 482.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "FUTARATE"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTGAMEPLAYFUTARATE"
 align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Gameplay"]
@@ -228,9 +228,9 @@ margin_left = 11.0
 margin_top = -24.0
 margin_right = 476.0
 margin_bottom = 11.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Autasaves amount"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTFAMEPLAYAUTOSAVEAMOUNT"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -246,9 +246,9 @@ ticks_on_borders = true
 margin_left = 11.0
 margin_top = -24.0
 margin_right = 482.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Days per autosave"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTGAMEPLAYAUTOSAVETIME"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -297,9 +297,9 @@ margin_left = 124.0
 margin_top = -30.0
 margin_right = 308.0
 margin_bottom = 2.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "MASTERSOUND"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTAUDIOMASTERSOUND"
 align = 1
 
 [node name="music" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
@@ -326,9 +326,9 @@ margin_left = 124.0
 margin_top = -30.0
 margin_right = 296.0
 margin_bottom = 2.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "MUSIC"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTAUDIOMUSIC"
 align = 1
 
 [node name="sound" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
@@ -355,9 +355,9 @@ margin_left = 124.0
 margin_top = -30.0
 margin_right = 308.0
 margin_bottom = 2.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "SOUND"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTAUDIOSOUND"
 align = 1
 
 [node name="Label" type="Label" parent="TabContainer/Audio"]
@@ -365,9 +365,9 @@ margin_left = 485.0
 margin_top = 40.0
 margin_right = 554.0
 margin_bottom = 64.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "MUTE"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTAUDIOMUTE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -384,11 +384,11 @@ margin_top = 14.0
 margin_right = 293.0
 margin_bottom = 58.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Full Screen"
+text = "OPTGRAPHICFULLSCREEN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -400,11 +400,11 @@ margin_right = 293.0
 margin_bottom = 98.0
 hint_tooltip = "Toggle to display factors as words or numbers"
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Factors as words"
+text = "OPTGRAPHICFACTOR"
 
 [node name="generate_portraits" type="CheckBox" parent="TabContainer/Graphics"]
 margin_left = 26.0
@@ -412,11 +412,11 @@ margin_top = 96.0
 margin_right = 518.0
 margin_bottom = 136.0
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Random Portraits"
+text = "OPTGRAPHICRANDOMPORTRAIT"
 
 [node name="DisableAnimations" type="CheckBox" parent="TabContainer/Graphics"]
 margin_left = 26.0
@@ -425,11 +425,11 @@ margin_right = 518.0
 margin_bottom = 179.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Disable Animation backgrounds"
+text = "OPTGRAPHICDISABLEANIMATIONBACKGROUNDS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -452,9 +452,9 @@ margin_left = -29.0
 margin_top = 42.0
 margin_right = 620.0
 margin_bottom = 74.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Enter Code"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTCHEATENTERCODE"
 align = 1
 valign = 1
 __meta__ = {
@@ -466,11 +466,11 @@ margin_left = 137.0
 margin_top = 76.0
 margin_right = 453.0
 margin_bottom = 116.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
-placeholder_text = "Password"
+placeholder_text = "OPTCHEATPASSWORD"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -492,9 +492,9 @@ __meta__ = {
 margin_top = -2.0
 margin_right = 220.0
 margin_bottom = 61.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "Activate"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTCHEATACTIVATE"
 align = 1
 valign = 1
 __meta__ = {
@@ -517,9 +517,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="TabContainer/Cheats/EnterCodeMenu/GetCode"]
 margin_right = 272.0
 margin_bottom = 58.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "Get Code"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTCHEATGETCODE"
 align = 1
 valign = 1
 __meta__ = {
@@ -544,9 +544,9 @@ custom_styles/panel = ExtResource( 18 )
 margin_top = 42.0
 margin_right = 587.0
 margin_bottom = 116.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Supporter Code Activated"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTCHEATCODEACTIVATE"
 align = 1
 valign = 1
 
@@ -567,9 +567,9 @@ __meta__ = {
 margin_top = -2.0
 margin_right = 220.0
 margin_bottom = 61.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "Cheats Menu"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTCHEATCHEATMENU"
 align = 1
 valign = 1
 __meta__ = {
@@ -589,15 +589,15 @@ margin_top = 26.432
 margin_right = 124.0
 margin_bottom = 50.432
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "CLOSE"
+text = "OPTCLOSE"
 align = 1
 
 [node name="Label" type="Label" parent="."]
 margin_right = 649.0
 margin_bottom = 83.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Options"
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "OPTOPT"
 align = 1
 valign = 1
 __meta__ = {
@@ -619,7 +619,7 @@ margin_right = 415.149
 margin_bottom = 673.0
 rect_pivot_offset = Vector2( 100, 25 )
 custom_fonts/font = SubResource( 2 )
-text = "Ok"
+text = "OPTOK"
 
 [node name="Label" type="Label" parent="ReloadGameLanguage"]
 margin_left = 69.0
@@ -627,7 +627,7 @@ margin_top = 298.0
 margin_right = 583.0
 margin_bottom = 567.0
 custom_fonts/font = SubResource( 3 )
-text = "To change the language, you need to restart the game"
+text = "OPTCHANGELANGUAGE"
 align = 1
 valign = 1
 autowrap = true
