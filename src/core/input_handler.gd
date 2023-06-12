@@ -316,8 +316,9 @@ func _init():
 	
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
-		for ifile in dir_contents(i):
-			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
+		var loc_code = i.replace(variables.LocalizationFolder, '')
+		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
+		
 #			file.open(ifile, File.READ)
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
@@ -325,12 +326,15 @@ func _init():
 
 	#Applying active translation
 	var activetranslation = Translation.new()
-	var translationscript = load(TranslationData[globalsettings.ActiveLocalization]).new()
+	var translationscript = load(TranslationData[globalsettings.ActiveLocalization].data).new()
 	activetranslation.set_locale(globalsettings.ActiveLocalization)
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
-	TranslationServer.set_locale(globalsettings.ActiveLocalization)
+	change_locale()
+
+func change_locale(locale = globalsettings.ActiveLocalization):
+	TranslationServer.set_locale(locale)
 
 
 func _ready():

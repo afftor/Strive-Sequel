@@ -51,6 +51,7 @@ func load_mods():
 	modding_core.process_translation_mods()
 	#load CEScripts, extend scripts in ResourceScripts.scriptdict
 	process_script_extensions_mods()
+	modding_core.fix_main_data()
 	#wait for an idle frame to edit nodes
 	yield(get_tree(), 'idle_frame')
 	#handle extensions of globals/input_handler
@@ -60,7 +61,6 @@ func load_mods():
 	#run load_tables on .gd modules and load tables from .json files
 	modding_core.process_data_mods()
 	emit_signal("after_mods_loaded")
-	modding_core.fix_main_data()
 	
 	globals.reset_roll_data()
 

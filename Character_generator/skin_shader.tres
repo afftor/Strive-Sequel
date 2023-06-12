@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=27]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
@@ -157,7 +157,7 @@ void vertex(){
 }"
 
 [resource]
-shader = SubResource( 27 )
+shader = SubResource( 1 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
 shader_param/anchor2 = Vector2( 363.573, 503.999 )
 shader_param/anchor3 = Vector2( 515.573, 503.998 )

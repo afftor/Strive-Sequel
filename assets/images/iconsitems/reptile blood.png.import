@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex"
+path="res://.import/reptile blood.png-49f0ff7562c15e59ef6d5ef2dcb6b107.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/LegR.png"
-dest_files=[ "res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex" ]
+source_file="res://assets/images/iconsitems/reptile blood.png"
+dest_files=[ "res://.import/reptile blood.png-49f0ff7562c15e59ef6d5ef2dcb6b107.stex" ]
 
 [params]
 

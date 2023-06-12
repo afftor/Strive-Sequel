@@ -78,6 +78,7 @@ var always_show = [
 func _ready():
 #	input_handler.CurrentScene = self
 	if test_mode:
+		races.fill_racegroups()
 		test_mode()
 		mansion_state_set("default")
 	add_season_events()

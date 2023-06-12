@@ -76,8 +76,8 @@ margin_left = 52.5601
 margin_top = 74.947
 margin_right = 101.56
 margin_bottom = 101.947
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
 __meta__ = {
@@ -140,7 +140,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="ScrollContainer/professions" groups=["ignore_rightclicks"]]
+[node name="Button" type="TextureButton" parent="ScrollContainer/professions" groups=[
+"ignore_rightclicks",
+]]
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
