@@ -2309,6 +2309,7 @@ shader_param/overlay = 0.999
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
+test_mode = true
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
 visible = false
@@ -2320,7 +2321,7 @@ scale = Vector2( 1.05, 1.05 )
 [node name="Spine" type="Bone2D" parent="male_pose/HumanF1"]
 material = SubResource( 1 )
 rotation = 1.5708
-rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
+rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine"]
@@ -2379,7 +2380,7 @@ texture = ExtResource( 58 )
 
 [node name="ShoulderR" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -90.1676, -144.438 )
-rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -90.1676, -144.438 )
 default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["nereid", "nonhuman"]]
@@ -2413,7 +2414,7 @@ texture = ExtResource( 78 )
 
 [node name="ArmR" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderR"]
 position = Vector2( 220, -11.0008 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
 [node name="ArmR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
@@ -2431,7 +2432,7 @@ texture = ExtResource( 69 )
 
 [node name="HandR" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR"]
 position = Vector2( 178.784, -35.0601 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
@@ -2449,7 +2450,7 @@ texture = ExtResource( 98 )
 
 [node name="ShoulderL" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -86.5238, 130.368 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -86.5238, 130.368 )
 default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["nereid", "nonhuman"]]
@@ -2483,7 +2484,7 @@ texture = ExtResource( 87 )
 
 [node name="ArmL" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderL"]
 position = Vector2( 225.263, 9.58202 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 225.263, 9.58202 )
 default_length = 100.0
 
 [node name="ArmL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
@@ -2501,7 +2502,7 @@ texture = ExtResource( 91 )
 
 [node name="HandL" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL"]
 position = Vector2( 188.756, 27.4087 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
@@ -2548,13 +2549,13 @@ texture = ExtResource( 71 )
 
 [node name="Taz" type="Bone2D" parent="male_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 222.449, -0.19342 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 222.449, -0.19342 )
 default_length = 100.0
 
 [node name="LegL" type="Bone2D" parent="male_pose/HumanF1/Spine/Taz"]
 position = Vector2( 94.4412, 77.5042 )
 scale = Vector2( 1, 0.97 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.97, 94.4412, 77.5042 )
 default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman"]]
@@ -2589,7 +2590,7 @@ texture = ExtResource( 68 )
 [node name="LegR" type="Bone2D" parent="male_pose/HumanF1/Spine/Taz"]
 position = Vector2( 96.9026, -45.614 )
 scale = Vector2( 1, 0.95 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.95, 96.9026, -45.614 )
 default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["nereid", "nonhuman"]]
@@ -2640,7 +2641,7 @@ texture = ExtResource( 48 )
 position = Vector2( 54.891, 2.05307 )
 rotation = 0.153589
 scale = Vector2( 1, 0.952381 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
 [node name="Testicles_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
@@ -2666,7 +2667,7 @@ texture = ExtResource( 66 )
 [node name="Tits" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["skin_main"]]
@@ -2709,7 +2710,7 @@ internal_vertex_count = 142
 [node name="Head" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -361.002, 9 )
 scale = Vector2( 0.98, 0.98 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.98, 0, 0, 0.98, -361.002, 9 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
@@ -2728,7 +2729,7 @@ texture = ExtResource( 88 )
 
 [node name="Face" type="Bone2D" parent="male_pose/HumanF1/Spine/Head"]
 position = Vector2( 91, -2.00031 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 91, -2.00031 )
 default_length = 100.0
 
 [node name="Sklera_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
@@ -2785,7 +2786,7 @@ texture = ExtResource( 64 )
 
 [node name="Hair" type="Bone2D" parent="male_pose/HumanF1/Spine/Head"]
 position = Vector2( 31, 1.00001 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
 [node name="Hairs_assist_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Head/Hair"]
@@ -2850,7 +2851,7 @@ texture = ExtResource( 24 )
 
 [node name="Spine" type="Bone2D" parent="Female_pose/HumanF1"]
 rotation = 1.5708
-rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
+rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_long_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine"]
@@ -2921,7 +2922,7 @@ texture = ExtResource( 58 )
 
 [node name="ShoulderR" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -105, -101 )
-rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -105, -101 )
 default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["nereid", "nonhuman"]]
@@ -2934,12 +2935,12 @@ texture = ExtResource( 42 )
 
 [node name="ArmR" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderR"]
 position = Vector2( 220, -11.0008 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR"]
 position = Vector2( 147, -34.0005 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
@@ -2991,7 +2992,7 @@ texture = ExtResource( 100 )
 
 [node name="ShoulderL" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -94.9996, 106 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -94.9996, 106 )
 default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["nereid", "nonhuman"]]
@@ -3004,12 +3005,12 @@ texture = ExtResource( 28 )
 
 [node name="ArmL" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderL"]
 position = Vector2( 225.263, -7.36938 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 225.263, -7.36938 )
 default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL"]
 position = Vector2( 136.842, 21.0521 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
@@ -3083,13 +3084,13 @@ texture = ExtResource( 15 )
 
 [node name="Taz" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 206.403, -2.08107 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 206.403, -2.08107 )
 default_length = 100.0
 
 [node name="LegL" type="Bone2D" parent="Female_pose/HumanF1/Spine/Taz"]
 position = Vector2( 94.4412, 82.1382 )
 scale = Vector2( 1, 0.97 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.97, 94.4412, 82.1382 )
 default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman"]]
@@ -3124,7 +3125,7 @@ texture = ExtResource( 41 )
 [node name="LegR" type="Bone2D" parent="Female_pose/HumanF1/Spine/Taz"]
 position = Vector2( 96.9026, -45.614 )
 scale = Vector2( 1, 0.95 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.95, 96.9026, -45.614 )
 default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["nereid", "nonhuman"]]
@@ -3176,7 +3177,7 @@ visible = false
 position = Vector2( 54.891, 2.05307 )
 rotation = 0.153589
 scale = Vector2( 1, 0.952381 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
 [node name="Testicles_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
@@ -3214,7 +3215,7 @@ texture = ExtResource( 30 )
 
 [node name="Pregnancy" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( 135, 12.9995 )
-rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 135, 12.9995 )
 
 [node name="Belly_pregnancy_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
 light_mask = 4
@@ -3247,7 +3248,7 @@ texture = ExtResource( 38 )
 [node name="Tits_big" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["skin_main", "tits_big"]]
@@ -3289,7 +3290,7 @@ internal_vertex_count = 142
 [node name="Tits_normal" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["skin_main", "tits_normal"]]
@@ -3331,7 +3332,7 @@ internal_vertex_count = 142
 [node name="Tits_small" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small" groups=["skin_main"]]
@@ -3373,7 +3374,7 @@ internal_vertex_count = 142
 [node name="Tits_zero" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_zero" groups=["cloth"]]
@@ -3391,7 +3392,7 @@ internal_vertex_count = 142
 
 [node name="Head" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -361, 9.00003 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -361, 9.00003 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
@@ -3410,7 +3411,7 @@ texture = ExtResource( 26 )
 
 [node name="Face" type="Bone2D" parent="Female_pose/HumanF1/Spine/Head"]
 position = Vector2( 91, -2.00031 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 91, -2.00031 )
 default_length = 100.0
 
 [node name="Sklera_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
@@ -3467,7 +3468,7 @@ texture = ExtResource( 21 )
 
 [node name="Hair" type="Bone2D" parent="Female_pose/HumanF1/Spine/Head"]
 position = Vector2( 31, 1.00001 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
 [node name="Hairs_assist_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Head/Hair"]
