@@ -49,7 +49,8 @@ var test_template = {
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
 	armor_base = 'chest_base_metal', 
-	armor_lower = 'legs_base_metal'
+	armor_lower = 'legs_base_metal',
+	height = 'average'
 }
 
 func _ready():
