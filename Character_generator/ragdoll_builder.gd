@@ -56,7 +56,7 @@ var test_template = {
 func _ready():
 	_position = position
 	if test_mode:
-		position = Vector2(400, 300)
+		_position = Vector2(400, 300)
 		_scale_x = 0.5
 		_scale_y = 0.5
 		rebuild(null)
