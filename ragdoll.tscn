@@ -2307,11 +2307,13 @@ shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
 
 [node name="ragdoll" type="Node2D"]
+light_mask = 4
 script = ExtResource( 89 )
 test_mode = true
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
 visible = false
+light_mask = 4
 
 [node name="HumanF1" type="Skeleton2D" parent="male_pose"]
 scale = Vector2( 1.05, 1.05 )
@@ -2319,7 +2321,7 @@ scale = Vector2( 1.05, 1.05 )
 [node name="Spine" type="Bone2D" parent="male_pose/HumanF1"]
 material = SubResource( 1 )
 rotation = 1.5708
-rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
+rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine"]
@@ -2334,6 +2336,7 @@ polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84
 internal_vertex_count = 171
 
 [node name="Wings_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
+light_mask = 4
 material = SubResource( 29 )
 position = Vector2( 174.243, -14.1279 )
 rotation = -1.5708
@@ -2342,29 +2345,34 @@ texture = ExtResource( 5 )
 
 [node name="Raincoat_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth"]]
 visible = false
+light_mask = 4
 position = Vector2( 214, -8.00079 )
 rotation = -1.5708
 texture = ExtResource( 92 )
 
 [node name="Animal_body" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["l_body_alter", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 28 )
 position = Vector2( 205.814, 1.4191 )
 rotation = -1.5708
 texture = ExtResource( 63 )
 
 [node name="Animal_taz" type="Sprite" parent="male_pose/HumanF1/Spine/Animal_body" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 44 )
 position = Vector2( 3.05176e-05, 0 )
 texture = ExtResource( 86 )
 
 [node name="Animal_body_assist" type="Sprite" parent="male_pose/HumanF1/Spine/Animal_body"]
+light_mask = 4
 material = SubResource( 4 )
 use_parent_material = true
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
 [node name="Tail_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
+light_mask = 4
 material = SubResource( 30 )
 position = Vector2( 255.454, 2.99905 )
 rotation = -1.5708
@@ -2372,17 +2380,19 @@ texture = ExtResource( 58 )
 
 [node name="ShoulderR" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -90.1676, -144.438 )
-rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -90.1676, -144.438 )
 default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
 [node name="ShoulderR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
@@ -2390,61 +2400,69 @@ texture = ExtResource( 73 )
 
 [node name="ShoulderR_races_over" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
 [node name="ShoulderR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 315.302, 141.497 )
 rotation = -1.5708
 texture = ExtResource( 78 )
 
 [node name="ArmR" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderR"]
 position = Vector2( 220, -11.0008 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
 [node name="ArmR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 86.509, 155.97 )
 rotation = -1.5708
 texture = ExtResource( 79 )
 
 [node name="ArmR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 84.8, 153.845 )
 rotation = -1.5708
 texture = ExtResource( 69 )
 
 [node name="HandR" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR"]
 position = Vector2( 178.784, -35.0601 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
 texture = ExtResource( 75 )
 
 [node name="HandR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -94.5127, 187.524 )
 rotation = -1.5708
 texture = ExtResource( 98 )
 
 [node name="ShoulderL" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -86.5238, 130.368 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -86.5238, 130.368 )
 default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
 [node name="ShoulderL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
@@ -2452,49 +2470,56 @@ texture = ExtResource( 70 )
 
 [node name="ShoulderL_races_over" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
 [node name="ShoulderL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 309.686, -124.736 )
 rotation = -1.5708
 texture = ExtResource( 87 )
 
 [node name="ArmL" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderL"]
 position = Vector2( 225.263, 9.58202 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 225.263, 9.58202 )
 default_length = 100.0
 
 [node name="ArmL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 82.2014, -137.772 )
 rotation = -1.5708
 texture = ExtResource( 65 )
 
 [node name="ArmL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 83.8275, -136.94 )
 rotation = -1.5708
 texture = ExtResource( 91 )
 
 [node name="HandL" type="Bone2D" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL"]
 position = Vector2( 188.756, 27.4087 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
 texture = ExtResource( 76 )
 
 [node name="HandL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -104.846, -164.526 )
 rotation = -1.5708
 texture = ExtResource( 67 )
 
 [node name="Torso_tex2" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["skin_main"]]
+light_mask = 4
 material = ExtResource( 90 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
@@ -2502,12 +2527,14 @@ texture = ExtResource( 81 )
 
 [node name="Torso_races" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
 [node name="Torso_nipple_tex" type="Sprite" parent="male_pose/HumanF1/Spine"]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
@@ -2515,29 +2542,32 @@ texture = ExtResource( 72 )
 
 [node name="Torso_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth"]]
 visible = false
+light_mask = 4
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 71 )
 
 [node name="Taz" type="Bone2D" parent="male_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 222.449, -0.19342 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 222.449, -0.19342 )
 default_length = 100.0
 
 [node name="LegL" type="Bone2D" parent="male_pose/HumanF1/Spine/Taz"]
 position = Vector2( 94.4412, 77.5042 )
 scale = Vector2( 1, 0.97 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.97, 94.4412, 77.5042 )
 default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
 [node name="LegL_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
@@ -2545,12 +2575,14 @@ texture = ExtResource( 84 )
 
 [node name="LegL_races_over" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
 [node name="LegL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -103.001, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 68 )
@@ -2558,17 +2590,19 @@ texture = ExtResource( 68 )
 [node name="LegR" type="Bone2D" parent="male_pose/HumanF1/Spine/Taz"]
 position = Vector2( 96.9026, -45.614 )
 scale = Vector2( 1, 0.95 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.95, 96.9026, -45.614 )
 default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
 [node name="LegR_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
@@ -2576,17 +2610,20 @@ texture = ExtResource( 83 )
 
 [node name="LegR_races_over" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
 [node name="LegR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 82 )
 
 [node name="Taz_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
@@ -2594,6 +2631,7 @@ texture = ExtResource( 86 )
 
 [node name="Taz_races" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
@@ -2603,22 +2641,25 @@ texture = ExtResource( 48 )
 position = Vector2( 54.891, 2.05307 )
 rotation = 0.153589
 scale = Vector2( 1, 0.952381 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
 [node name="Testicles_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+light_mask = 4
 material = ExtResource( 27 )
 position = Vector2( -70.026, -12.1006 )
 rotation = -1.5708
 texture = ExtResource( 97 )
 
 [node name="Penis_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 46 )
 position = Vector2( -70.7006, -13.7388 )
 rotation = -1.5708
 texture = ExtResource( 46 )
 
 [node name="Taz_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -0.326538, -0.122406 )
 rotation = -1.5708
 texture = ExtResource( 66 )
@@ -2626,10 +2667,11 @@ texture = ExtResource( 66 )
 [node name="Tits" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -2641,6 +2683,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Nipples_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits"]
+light_mask = 4
 material = SubResource( 10 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
@@ -2653,6 +2696,7 @@ internal_vertex_count = 142
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["cloth"]]
 visible = false
+light_mask = 4
 material = SubResource( 10 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
@@ -2666,16 +2710,18 @@ internal_vertex_count = 142
 [node name="Head" type="Bone2D" parent="male_pose/HumanF1/Spine"]
 position = Vector2( -361.002, 9 )
 scale = Vector2( 0.98, 0.98 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.98, 0, 0, 0.98, -361.002, 9 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
 [node name="Chin_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
@@ -2683,15 +2729,17 @@ texture = ExtResource( 88 )
 
 [node name="Face" type="Bone2D" parent="male_pose/HumanF1/Spine/Head"]
 position = Vector2( 91, -2.00031 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 91, -2.00031 )
 default_length = 100.0
 
 [node name="Sklera_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 position = Vector2( 499.062, -3.76767 )
 rotation = -1.5708
 texture = ExtResource( 49 )
 
 [node name="Eyes_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 48 )
 position = Vector2( 498.666, -9.33783 )
 rotation = -1.5708
@@ -2701,6 +2749,7 @@ __meta__ = {
 }
 
 [node name="Face_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face" groups=["human", "skin_main"]]
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
@@ -2708,24 +2757,28 @@ texture = ExtResource( 85 )
 
 [node name="Face_tex_furry" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face" groups=["nonhuman", "skin_main"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
 texture = ExtResource( 85 )
 
 [node name="Eyebrows_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 3 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 80 )
 
 [node name="Nose_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 3 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 23 )
 
 [node name="Lips_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 12 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
@@ -2733,10 +2786,11 @@ texture = ExtResource( 64 )
 
 [node name="Hair" type="Bone2D" parent="male_pose/HumanF1/Spine/Head"]
 position = Vector2( 31, 1.00001 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
 [node name="Hairs_assist_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Head/Hair"]
+light_mask = 4
 material = SubResource( 38 )
 position = Vector2( -196.998, 429 )
 rotation = -1.5708
@@ -2748,6 +2802,7 @@ polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84
 internal_vertex_count = 171
 
 [node name="Hairs_mesh" type="Polygon2D" parent="male_pose/HumanF1/Spine/Head/Hair"]
+light_mask = 4
 material = SubResource( 39 )
 position = Vector2( -198.419, 428.001 )
 rotation = -1.5708
@@ -2760,16 +2815,19 @@ internal_vertex_count = 171
 
 [node name="Ears_furry_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["nonhuman"]]
 visible = false
+light_mask = 4
 material = ExtResource( 60 )
 position = Vector2( 588, -2.00217 )
 rotation = -1.5708
 texture = ExtResource( 40 )
 
 [node name="Head_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+light_mask = 4
 rotation = -1.5708
 
 [node name="Horns_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
 modulate = Color( 0.901961, 0.901961, 1, 1 )
+light_mask = 4
 material = SubResource( 31 )
 position = Vector2( 573, -9.00204 )
 rotation = -1.5708
@@ -2780,6 +2838,7 @@ __meta__ = {
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["human", "skin_main"]]
 visible = false
+light_mask = 4
 material = SubResource( 8 )
 position = Vector2( 567, -10.002 )
 rotation = -1.5708
@@ -2792,10 +2851,11 @@ texture = ExtResource( 24 )
 
 [node name="Spine" type="Bone2D" parent="Female_pose/HumanF1"]
 rotation = 1.5708
-rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
+rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_long_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine"]
+light_mask = 4
 material = SubResource( 40 )
 position = Vector2( -530.237, 433.288 )
 rotation = -1.5708
@@ -2807,6 +2867,7 @@ polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84
 internal_vertex_count = 171
 
 [node name="Hairs_back_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine"]
+light_mask = 4
 material = SubResource( 41 )
 position = Vector2( -534.998, 435.002 )
 rotation = -1.5708
@@ -2818,6 +2879,7 @@ polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84
 internal_vertex_count = 171
 
 [node name="Wings_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
+light_mask = 4
 material = SubResource( 36 )
 position = Vector2( 174.243, -14.1279 )
 rotation = -1.5708
@@ -2826,28 +2888,33 @@ texture = ExtResource( 5 )
 
 [node name="Raincoat_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth"]]
 visible = false
+light_mask = 4
 position = Vector2( 214, -8.00079 )
 rotation = -1.5708
 texture = ExtResource( 92 )
 
 [node name="Animal_body" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["l_body_alter", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 32 )
 position = Vector2( 205.814, 1.4191 )
 rotation = -1.5708
 texture = ExtResource( 63 )
 
 [node name="Animal_taz" type="Sprite" parent="Female_pose/HumanF1/Spine/Animal_body" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 45 )
 position = Vector2( 3.05176e-05, 0 )
 texture = ExtResource( 52 )
 
 [node name="Animal_body_assist" type="Sprite" parent="Female_pose/HumanF1/Spine/Animal_body"]
+light_mask = 4
 use_parent_material = true
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
 [node name="Tail_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
+light_mask = 4
 material = SubResource( 33 )
 position = Vector2( 205, 2.99924 )
 rotation = -1.5708
@@ -2855,11 +2922,12 @@ texture = ExtResource( 58 )
 
 [node name="ShoulderR" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -105, -101 )
-rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -105, -101 )
 default_length = 100.0
 
 [node name="ShoulderR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
@@ -2867,37 +2935,42 @@ texture = ExtResource( 42 )
 
 [node name="ArmR" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderR"]
 position = Vector2( 220, -11.0008 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR"]
 position = Vector2( 147, -34.0005 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
 [node name="HandR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -36.9996, 145.789 )
 rotation = -1.5708
 texture = ExtResource( 11 )
 
 [node name="HandR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -40.9886, 145.074 )
 rotation = -1.5708
 texture = ExtResource( 33 )
 
 [node name="ArmR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
 texture = ExtResource( 7 )
 
 [node name="ArmR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 104.636, 111.96 )
 rotation = -1.5708
 texture = ExtResource( 35 )
 
 [node name="ShoulderR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
@@ -2905,23 +2978,26 @@ texture = ExtResource( 20 )
 
 [node name="ShoulderR_races_over" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
 [node name="ShoulderR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 324.246, 100.486 )
 rotation = -1.5708
 texture = ExtResource( 100 )
 
 [node name="ShoulderL" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -94.9996, 106 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -94.9996, 106 )
 default_length = 100.0
 
 [node name="ShoulderL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
@@ -2929,37 +3005,42 @@ texture = ExtResource( 28 )
 
 [node name="ArmL" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderL"]
 position = Vector2( 225.263, -7.36938 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 225.263, -7.36938 )
 default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL"]
 position = Vector2( 136.842, 21.0521 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 10 )
 
 [node name="HandL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 14 )
 
 [node name="ArmL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
 texture = ExtResource( 6 )
 
 [node name="ArmL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 92.7366, -98.6318 )
 rotation = -1.5708
 texture = ExtResource( 18 )
 
 [node name="ShoulderL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
@@ -2967,17 +3048,20 @@ texture = ExtResource( 12 )
 
 [node name="ShoulderL_races_over" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
 [node name="ShoulderL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 318, -106.001 )
 rotation = -1.5708
 texture = ExtResource( 25 )
 
 [node name="Torso_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
@@ -2985,13 +3069,14 @@ texture = ExtResource( 8 )
 
 [node name="Torso_races" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
 [node name="Belly_default_tex" type="Sprite" parent="Female_pose/HumanF1/Spine"]
-light_mask = 0
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 219, -1.00079 )
 rotation = -1.5708
@@ -2999,23 +3084,25 @@ texture = ExtResource( 15 )
 
 [node name="Taz" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 206.403, -2.08107 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 206.403, -2.08107 )
 default_length = 100.0
 
 [node name="LegL" type="Bone2D" parent="Female_pose/HumanF1/Spine/Taz"]
 position = Vector2( 94.4412, 82.1382 )
 scale = Vector2( 1, 0.97 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.97, 94.4412, 82.1382 )
 default_length = 100.0
 
 [node name="LegL_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
 [node name="LegL_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
@@ -3023,12 +3110,14 @@ texture = ExtResource( 9 )
 
 [node name="LegL_races_over" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
 [node name="LegL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -103.001, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 41 )
@@ -3036,17 +3125,19 @@ texture = ExtResource( 41 )
 [node name="LegR" type="Bone2D" parent="Female_pose/HumanF1/Spine/Taz"]
 position = Vector2( 96.9026, -45.614 )
 scale = Vector2( 1, 0.95 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 0.95, 96.9026, -45.614 )
 default_length = 100.0
 
 [node name="LegR_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["nereid", "nonhuman"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
 [node name="LegR_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
@@ -3054,17 +3145,20 @@ texture = ExtResource( 47 )
 
 [node name="LegR_races_over" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["dryad", "nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
 [node name="LegR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 17 )
 
 [node name="Taz_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
@@ -3072,6 +3166,7 @@ texture = ExtResource( 13 )
 
 [node name="Taz_races" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["nonhuman", "slime"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
@@ -3082,54 +3177,62 @@ visible = false
 position = Vector2( 54.891, 2.05307 )
 rotation = 0.153589
 scale = Vector2( 1, 0.952381 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
 [node name="Testicles_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 17 )
 position = Vector2( -62.5528, -7.78117 )
 rotation = -1.5708
 texture = ExtResource( 97 )
 
 [node name="Penis_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 47 )
 position = Vector2( -70.7006, -13.7388 )
 rotation = -1.5708
 texture = ExtResource( 57 )
 
 [node name="Taz_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["cloth"]]
+light_mask = 4
 position = Vector2( -8.49051, 2.18629 )
 rotation = -1.5708
 texture = ExtResource( 101 )
 
 [node name="Torso_nipple_tex" type="Sprite" parent="Female_pose/HumanF1/Spine"]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
 texture = ExtResource( 16 )
 
 [node name="Torso_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 208, 0.999176 )
 rotation = -1.5708
 texture = ExtResource( 30 )
 
 [node name="Pregnancy" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( 135, 12.9995 )
-rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 135, 12.9995 )
 
 [node name="Belly_pregnancy_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 2 )
 
 [node name="pregnancy_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 61.8801, -12.7554 )
 rotation = -1.5708
 texture = ExtResource( 102 )
 
 [node name="Belly_pregnancy_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
@@ -3137,6 +3240,7 @@ texture = ExtResource( 45 )
 
 [node name="pregnancy_armor_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth"]]
 visible = false
+light_mask = 4
 position = Vector2( 62.8801, -11.8779 )
 rotation = -1.5708
 texture = ExtResource( 38 )
@@ -3144,10 +3248,11 @@ texture = ExtResource( 38 )
 [node name="Tits_big" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["skin_main", "tits_big"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -3159,6 +3264,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Nipples_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["tits_big"]]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
@@ -3170,6 +3276,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["cloth", "tits_big"]]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
@@ -3183,10 +3290,11 @@ internal_vertex_count = 142
 [node name="Tits_normal" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["skin_main", "tits_normal"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -3198,6 +3306,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Nipples_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["tits_normal"]]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
@@ -3209,6 +3318,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["cloth", "tits_normal"]]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
@@ -3222,10 +3332,11 @@ internal_vertex_count = 142
 [node name="Tits_small" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( -481.243, 429.38 )
 rotation = -1.5708
@@ -3237,6 +3348,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Nipples_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small"]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
@@ -3248,6 +3360,7 @@ polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22,
 internal_vertex_count = 142
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small" groups=["cloth"]]
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
@@ -3261,11 +3374,12 @@ internal_vertex_count = 142
 [node name="Tits_zero" type="Bone2D" parent="Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
 [node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_zero" groups=["cloth"]]
 visible = false
+light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
@@ -3278,16 +3392,18 @@ internal_vertex_count = 142
 
 [node name="Head" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
 position = Vector2( -361, 9.00003 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, -361, 9.00003 )
 default_length = 100.0
 
 [node name="Head_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
 [node name="Chin_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
@@ -3295,15 +3411,17 @@ texture = ExtResource( 26 )
 
 [node name="Face" type="Bone2D" parent="Female_pose/HumanF1/Spine/Head"]
 position = Vector2( 91, -2.00031 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 91, -2.00031 )
 default_length = 100.0
 
 [node name="Sklera_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 position = Vector2( 499.062, -3.76767 )
 rotation = -1.5708
 texture = ExtResource( 49 )
 
 [node name="Eyes_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 50 )
 position = Vector2( 498.666, -9.33783 )
 rotation = -1.5708
@@ -3313,6 +3431,7 @@ __meta__ = {
 }
 
 [node name="Face_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face" groups=["human", "skin_main"]]
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
@@ -3320,24 +3439,28 @@ texture = ExtResource( 62 )
 
 [node name="Face_tex_furry" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face" groups=["nonhuman", "skin_main"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
 texture = ExtResource( 62 )
 
 [node name="Eyebrows_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 15 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 44 )
 
 [node name="Nose_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
+light_mask = 4
 material = SubResource( 15 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 23 )
 
 [node name="Lips_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
+light_mask = 4
 material = SubResource( 24 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
@@ -3345,10 +3468,11 @@ texture = ExtResource( 21 )
 
 [node name="Hair" type="Bone2D" parent="Female_pose/HumanF1/Spine/Head"]
 position = Vector2( 31, 1.00001 )
-rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
+rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
 [node name="Hairs_assist_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Head/Hair"]
+light_mask = 4
 material = SubResource( 42 )
 position = Vector2( -196.998, 429 )
 rotation = -1.5708
@@ -3360,6 +3484,7 @@ polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84
 internal_vertex_count = 171
 
 [node name="Hairs_mesh" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Head/Hair"]
+light_mask = 4
 material = SubResource( 43 )
 position = Vector2( -198.419, 428.001 )
 rotation = -1.5708
@@ -3372,18 +3497,21 @@ internal_vertex_count = 171
 
 [node name="Ears_furry_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["nonhuman"]]
 visible = false
+light_mask = 4
 material = ExtResource( 60 )
 position = Vector2( 588, -2.00217 )
 rotation = -1.5708
 texture = ExtResource( 40 )
 
 [node name="Head_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["cloth"]]
+light_mask = 4
 position = Vector2( 587.11, -4.75896 )
 rotation = -1.5708
 texture = ExtResource( 32 )
 
 [node name="Horns_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
 modulate = Color( 0.901961, 0.901961, 1, 1 )
+light_mask = 4
 material = SubResource( 34 )
 position = Vector2( 573, -9.00204 )
 rotation = -1.5708
@@ -3394,6 +3522,7 @@ __meta__ = {
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["human", "skin_main"]]
 visible = false
+light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 567, -10.002 )
 rotation = -1.5708

@@ -7,7 +7,8 @@ var stats_to_look = ['sex', 'race',
 'hair_base', 'hair_assist', 
 'hair_back', 
 'hair_base_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 
-'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_back_lenght', 'hair_assist_lenght'
+'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_back_lenght', 'hair_assist_lenght',
+'height'
 ]
 
 
@@ -124,6 +125,7 @@ var transforms = {
 	sex = {
 		male = [
 			{type = 'node_group_select', group = 'sex', select = 'male_pose'},
+			{type = 'offset', value_x = 0.0, value_y = 30},
 		],
 		female = [
 			{type = 'node_group_select', group = 'sex', select = 'Female_pose'},
@@ -2536,7 +2538,32 @@ var transforms = {
 		],
 	},
 	
-	
+	height = {
+		tiny = [
+			{type = 'scale', value = 0.69},
+			{type = 'offset', value_x = 0.0, value_y = 50},
+		],
+		petite = [
+			{type = 'scale', value = 0.81},
+			{type = 'offset', value_x = 0.0, value_y = 30},
+		],
+		short = [
+			{type = 'scale', value = 0.88},
+			{type = 'offset', value_x = 0.0, value_y = 30},
+		],
+		average = [
+			{type = 'scale', value = 1.0},
+			{type = 'offset', value_x = 0.0, value_y = 0},
+		],
+		tall = [
+			{type = 'scale', value = 1.13},
+			{type = 'offset', value_x = 0.0, value_y = -20},
+		],
+		towering = [
+			{type = 'scale', value = 1.25},
+			{type = 'offset', value_x = 0.0, value_y = -70},
+		],
+	},
 	
 	
 	#other new parts

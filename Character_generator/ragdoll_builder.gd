@@ -3,6 +3,15 @@ extends Node2D
 export var clothes = true
 export var test_mode = false
 
+var _scale_x
+var _scale_y
+
+var __scale_x
+var __scale_y
+
+var _position
+var _offset
+
 var character
 var test_template = {
 	sex = 'female', 
@@ -40,15 +49,21 @@ var test_template = {
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
 	armor_base = 'chest_base_metal', 
-	armor_lower = 'legs_base_metal'
+	armor_lower = 'legs_base_metal',
+	height = 'average'
 }
 
 func _ready():
+	_position = position
 	if test_mode:
-		position = Vector2(400, 300)
-		scale = Vector2(0.5, 0.5)
+		_position = Vector2(400, 300)
+		_scale_x = 0.5
+		_scale_y = 0.5
 		rebuild(null)
 		rebuild_cloth(clothes)
+	else:
+		_scale_x = scale.x
+		_scale_y = scale.y
 
 
 func _get_stat(stat):
@@ -59,6 +74,12 @@ func _get_stat(stat):
 
 
 func rebuild(character_to_build):
+	#setup
+	__scale_x = _scale_x
+	__scale_y = _scale_y
+	position = _position
+	_offset = Vector2(0.0, 0.0)
+	
 	character = character_to_build
 	#first pass - textures
 	for stat in GeneratorData.stats_to_look:
@@ -82,6 +103,9 @@ func rebuild(character_to_build):
 			if (transform.type in ['texture', 'texture_set']):
 				continue
 			apply_transform(transform)
+	#apply scale & offset
+	scale = Vector2(__scale_x, __scale_y)
+	position += _offset
 
 
 func rebuild_cloth(value):
@@ -215,6 +239,11 @@ func apply_transform(transform):
 					input_handler.import_recolor_mask_path(nd.material, mat, transform.ids)
 				else:
 					input_handler.import_recolor_mask_path(nd.material, mat)
+		'scale':
+			__scale_x *= transform.value
+			__scale_y *= transform.value
+		'offset':
+			_offset += Vector2(transform.value_x, transform.value_y)
 		#reworked
 		'item_recolor':
 			var nd = get_node(transform.node)
