@@ -15,9 +15,9 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'BeastkinWolf', 
+	race = 'Human', 
 	horns = '', 
-	ears = 'elven', 
+	ears = 'human', 
 	eyeshape = 'face2', 
 	eye_tex = 'eyes2', 
 	eye_color = 'green', 
@@ -26,12 +26,12 @@ var test_template = {
 	wings = '', 
 	tail = 'wolf', 
 	penis_type = 'furry', 
-	chin = 'beastkin', 
+	chin = 'default', 
 	nose = 'default', 
 	pregnancy_status = 'no', 
 	tits_size = 'average_narrow', 
-	skin_coverage = 'fur_orange_white', 
-	body_color_skin = 'blue1', 
+	skin_coverage = '', 
+	body_color_skin = 'human5', 
 	body_color_wings = 'yellow3', 
 	body_color_tail = 'yellow2', 
 	body_color_horns = 'yellow1', 
@@ -50,10 +50,11 @@ var test_template = {
 	hair_assist_lenght = 'long', 
 	armor_base = 'chest_base_metal', 
 	armor_lower = 'legs_base_metal',
-	height = 'average'
+	height = 'towering'
 }
 
 func _ready():
+#	var shader = load("res://assets/ItemShader.tres").duplicate()
 	_position = position
 	if test_mode:
 		_position = Vector2(400, 300)

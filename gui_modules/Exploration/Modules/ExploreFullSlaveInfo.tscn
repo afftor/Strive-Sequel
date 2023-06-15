@@ -96,7 +96,7 @@ __meta__ = {
 [node name="ragdoll" parent="SlaveBodyModule" instance=ExtResource( 30 )]
 show_behind_parent = true
 position = Vector2( 333.474, 268.064 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.6, 0.6 )
 
 [node name="buffscontainer" type="HBoxContainer" parent="SlaveBodyModule"]
 visible = false
