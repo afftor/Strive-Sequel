@@ -1,6 +1,7 @@
 extends Node
 
-var stats_to_look = ['sex', 'race',
+var stats_to_look = [
+'sex', 'race',
 'horns', 'ears', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'tail', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size', 
 'body_color_skin', 'skin_coverage', 
 'body_color_wings','body_color_tail', 'body_color_horns', 'body_color_animal',
@@ -3008,3 +3009,9 @@ var transforms = {
 		],
 	}
 }
+
+#func _ready():
+#	fix_data()
+#
+#func fix_data():
+#	var shader = load("res://assets/ItemShader.tres").duplicate()
