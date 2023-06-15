@@ -287,6 +287,20 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/kentaur_body.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/kentaur_body.png"},
 		],
+		Harpy = [
+			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
+			{type = 'node_group_attr', group = 'nonhuman', attr = 'visible', value = false},
+			{type = 'node_group_attr', group = 'hands', attr = 'visible', value = false},
+			{type = 'node_group_attr', group = 'l_body_alter', attr = 'visible', value = true},
+			{type = 'texture_set', set = 'default_male'},
+			{type = 'texture_set', set = 'default_female'},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Animal_body/Animal_taz', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Animal_body/Animal_body_assist', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body/Animal_taz', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body/Animal_body_assist', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/harpia_body.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/harpia_body.png"},
+		],
 		#zero support for taurus race
 		#half support for harpies - mb no tail, no legs, no ears
 		Slime = [ #don't think that shoulder additional parts are positioned correctly

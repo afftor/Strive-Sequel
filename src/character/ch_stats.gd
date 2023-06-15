@@ -691,6 +691,8 @@ func get_stat(statname, ref = false):
 						return 'pink3'
 					'tentacle':
 						return 'purple3'
+					'avian':
+						return 'blue3'
 					_:
 						return 'white2'
 	if statname.begins_with('sex_skills_'):
