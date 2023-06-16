@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=9]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo_hover.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
@@ -40,9 +43,20 @@ margin_bottom = 1049.76
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="ragdoll" type="Node2D" parent="." instance=ExtResource( 17 )]
+show_behind_parent = true
+light_mask = 4
+position = Vector2( 340, 390 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 9 )
+
+[node name="bodymask" type="Light2D" parent="."]
+position = Vector2( 353.676, 537.294 )
+scale = Vector2( 1.13454, 1.13454 )
+texture = ExtResource( 15 )
+mode = 3
+range_item_cull_mask = 4
 
 [node name="InventorySlots" type="Control" parent="."]
 visible = false

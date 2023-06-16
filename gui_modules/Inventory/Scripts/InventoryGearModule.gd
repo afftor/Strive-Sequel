@@ -114,7 +114,18 @@ func highlight_avalible_slots(slots: Array):
 func build_gear_panel():
 	var selectedhero = input_handler.interacted_character
 	if selectedhero != null:
-		$BodyImage.texture = selectedhero.get_body_image()
+		var stored_image = selectedhero.get_stored_body_image()
+		if stored_image != null:
+			$BodyImage.texture = stored_image
+			$BodyImage.visible = true
+			$ragdoll.visible = false
+		else:
+			$BodyImage.visible = false
+			$ragdoll.visible = true
+			$ragdoll.test_mode = false
+			$ragdoll.rebuild(selectedhero)
+			$ragdoll.rebuild_cloth(true)
+#		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
 			if selectedhero.equipment.gear[i] == null:
 				$InventorySlots.get_node(i + "/icon").texture = null

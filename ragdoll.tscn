@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=176 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -102,6 +102,7 @@
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Shoulder_armorR1.png" type="Texture" id=100]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/yubka.png" type="Texture" id=101]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_small.png" type="Texture" id=102]
+[ext_resource path="res://Character_generator/armor_shader.shader" type="Shader" id=103]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -318,6 +319,36 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=51]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="ShaderMaterial" id=28]
 shader = SubResource( 27 )
@@ -594,6 +625,276 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=52]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=53]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=54]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=55]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=56]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=57]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=58]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=59]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=60]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
 [sub_resource type="ShaderMaterial" id=46]
 shader = SubResource( 27 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -622,6 +923,36 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=61]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -807,6 +1138,36 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 0.282353, 0.352941, 0.231373, 1 )
 shader_param/overlay = 1.0
+
+[sub_resource type="ShaderMaterial" id=62]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -1241,6 +1602,36 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
 
+[sub_resource type="ShaderMaterial" id=63]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
 [sub_resource type="ShaderMaterial" id=31]
 shader = SubResource( 27 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -1356,6 +1747,36 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=64]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = SubResource( 27 )
@@ -1630,6 +2051,246 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=65]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=66]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=67]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=68]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=69]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=70]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=71]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=72]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
 [sub_resource type="ShaderMaterial" id=17]
 
 [sub_resource type="ShaderMaterial" id=47]
@@ -1660,6 +2321,126 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=73]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=74]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=75]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=76]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="Shader" id=21]
 code = "shader_type canvas_item;
@@ -1845,6 +2626,126 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.0
+
+[sub_resource type="ShaderMaterial" id=77]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=78]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.0
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=79]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
+[sub_resource type="ShaderMaterial" id=80]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
 
 [sub_resource type="Shader" id=49]
 code = "shader_type canvas_item;
@@ -2279,6 +3180,36 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
 
+[sub_resource type="ShaderMaterial" id=81]
+shader = ExtResource( 103 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.980392, 0, 1, 1 )
+shader_param/target2color = Color( 0.498039, 1, 0, 1 )
+shader_param/target3color = Color( 0, 1, 0.6, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/range = 0.1
+shader_param/lmod = 0.6
+
 [sub_resource type="ShaderMaterial" id=34]
 shader = SubResource( 27 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -2311,7 +3242,6 @@ shader_param/overlay = 0.999
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
-clothes = false
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
 visible = false
@@ -2345,9 +3275,10 @@ rotation = -1.5708
 scale = Vector2( 1, 0.8 )
 texture = ExtResource( 5 )
 
-[node name="Raincoat_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth"]]
+[node name="Raincoat_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
+material = SubResource( 51 )
 position = Vector2( 214, -8.00079 )
 rotation = -1.5708
 texture = ExtResource( 92 )
@@ -2408,8 +3339,9 @@ position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
-[node name="ShoulderR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["cloth"]]
+[node name="ShoulderR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 52 )
 position = Vector2( 315.302, 141.497 )
 rotation = -1.5708
 texture = ExtResource( 78 )
@@ -2426,8 +3358,9 @@ position = Vector2( 86.509, 155.97 )
 rotation = -1.5708
 texture = ExtResource( 79 )
 
-[node name="ArmR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth"]]
+[node name="ArmR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 53 )
 position = Vector2( 84.8, 153.845 )
 rotation = -1.5708
 texture = ExtResource( 69 )
@@ -2444,8 +3377,9 @@ position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
 texture = ExtResource( 75 )
 
-[node name="HandR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth"]]
+[node name="HandR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 54 )
 position = Vector2( -94.5127, 187.524 )
 rotation = -1.5708
 texture = ExtResource( 98 )
@@ -2478,8 +3412,9 @@ position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
-[node name="ShoulderL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["cloth"]]
+[node name="ShoulderL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 55 )
 position = Vector2( 309.686, -124.736 )
 rotation = -1.5708
 texture = ExtResource( 87 )
@@ -2496,8 +3431,9 @@ position = Vector2( 82.2014, -137.772 )
 rotation = -1.5708
 texture = ExtResource( 65 )
 
-[node name="ArmL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth"]]
+[node name="ArmL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 56 )
 position = Vector2( 83.8275, -136.94 )
 rotation = -1.5708
 texture = ExtResource( 91 )
@@ -2514,8 +3450,9 @@ position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
 texture = ExtResource( 76 )
 
-[node name="HandL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth"]]
+[node name="HandL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 57 )
 position = Vector2( -104.846, -164.526 )
 rotation = -1.5708
 texture = ExtResource( 67 )
@@ -2542,9 +3479,10 @@ position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
 texture = ExtResource( 72 )
 
-[node name="Torso_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth"]]
+[node name="Torso_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
+material = SubResource( 58 )
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 71 )
@@ -2583,8 +3521,9 @@ position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["cloth"]]
+[node name="LegL_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegL" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 59 )
 position = Vector2( -103.001, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 68 )
@@ -2618,8 +3557,9 @@ position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["cloth"]]
+[node name="LegR_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz/LegR" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 60 )
 position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 82 )
@@ -2660,8 +3600,9 @@ position = Vector2( -70.7006, -13.7388 )
 rotation = -1.5708
 texture = ExtResource( 46 )
 
-[node name="Taz_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["cloth"]]
+[node name="Taz_armor" type="Sprite" parent="male_pose/HumanF1/Spine/Taz" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 61 )
 position = Vector2( -0.326538, -0.122406 )
 rotation = -1.5708
 texture = ExtResource( 66 )
@@ -2696,10 +3637,10 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Tits_armor_mesh2" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["cloth"]]
+[node name="Tits_armor_mesh2" type="Polygon2D" parent="male_pose/HumanF1/Spine/Tits" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
-material = SubResource( 10 )
+material = SubResource( 62 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -2823,8 +3764,9 @@ position = Vector2( 588, -2.00217 )
 rotation = -1.5708
 texture = ExtResource( 40 )
 
-[node name="Head_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head"]
+[node name="Head_armor_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 63 )
 rotation = -1.5708
 
 [node name="Horns_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
@@ -2888,9 +3830,10 @@ rotation = -1.5708
 scale = Vector2( 1, 0.8 )
 texture = ExtResource( 5 )
 
-[node name="Raincoat_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth"]]
+[node name="Raincoat_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
+material = SubResource( 64 )
 position = Vector2( 214, -8.00079 )
 rotation = -1.5708
 texture = ExtResource( 92 )
@@ -2951,8 +3894,9 @@ position = Vector2( -36.9996, 145.789 )
 rotation = -1.5708
 texture = ExtResource( 11 )
 
-[node name="HandR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth"]]
+[node name="HandR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 65 )
 position = Vector2( -40.9886, 145.074 )
 rotation = -1.5708
 texture = ExtResource( 33 )
@@ -2964,8 +3908,9 @@ position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
 texture = ExtResource( 7 )
 
-[node name="ArmR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth"]]
+[node name="ArmR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 66 )
 position = Vector2( 104.636, 111.96 )
 rotation = -1.5708
 texture = ExtResource( 35 )
@@ -2985,8 +3930,9 @@ position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
-[node name="ShoulderR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["cloth"]]
+[node name="ShoulderR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderR" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 67 )
 position = Vector2( 324.246, 100.486 )
 rotation = -1.5708
 texture = ExtResource( 100 )
@@ -3021,8 +3967,9 @@ position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 10 )
 
-[node name="HandL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth"]]
+[node name="HandL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 68 )
 position = Vector2( -42.1053, -120.684 )
 rotation = -1.5708
 texture = ExtResource( 14 )
@@ -3034,8 +3981,9 @@ position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
 texture = ExtResource( 6 )
 
-[node name="ArmL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth"]]
+[node name="ArmL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 69 )
 position = Vector2( 92.7366, -98.6318 )
 rotation = -1.5708
 texture = ExtResource( 18 )
@@ -3055,8 +4003,9 @@ position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
-[node name="ShoulderL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["cloth"]]
+[node name="ShoulderL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/ShoulderL" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 70 )
 position = Vector2( 318, -106.001 )
 rotation = -1.5708
 texture = ExtResource( 25 )
@@ -3117,8 +4066,9 @@ position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["cloth"]]
+[node name="LegL_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegL" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 71 )
 position = Vector2( -103.001, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 41 )
@@ -3152,8 +4102,9 @@ position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["cloth"]]
+[node name="LegR_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz/LegR" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 72 )
 position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 17 )
@@ -3195,8 +4146,9 @@ position = Vector2( -70.7006, -13.7388 )
 rotation = -1.5708
 texture = ExtResource( 57 )
 
-[node name="Taz_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["cloth"]]
+[node name="Taz_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
+material = SubResource( 73 )
 position = Vector2( -8.49051, 2.18629 )
 rotation = -1.5708
 texture = ExtResource( 101 )
@@ -3208,8 +4160,9 @@ position = Vector2( 221, -0.000854492 )
 rotation = -1.5708
 texture = ExtResource( 16 )
 
-[node name="Torso_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth"]]
+[node name="Torso_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 74 )
 position = Vector2( 208, 0.999176 )
 rotation = -1.5708
 texture = ExtResource( 30 )
@@ -3225,8 +4178,9 @@ position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 2 )
 
-[node name="pregnancy_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth"]]
+[node name="pregnancy_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 75 )
 position = Vector2( 61.8801, -12.7554 )
 rotation = -1.5708
 texture = ExtResource( 102 )
@@ -3239,9 +4193,10 @@ position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 45 )
 
-[node name="pregnancy_armor_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth"]]
+[node name="pregnancy_armor_tex2" type="Sprite" parent="Female_pose/HumanF1/Spine/Pregnancy" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
+material = SubResource( 76 )
 position = Vector2( 62.8801, -11.8779 )
 rotation = -1.5708
 texture = ExtResource( 38 )
@@ -3276,9 +4231,9 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["cloth", "tits_big"]]
+[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_big" groups=["cloth", "cloth_top", "tits_big"]]
 light_mask = 4
-material = SubResource( 22 )
+material = SubResource( 77 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -3317,9 +4272,9 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["cloth", "tits_normal"]]
+[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_normal" groups=["cloth", "cloth_top", "tits_normal"]]
 light_mask = 4
-material = SubResource( 22 )
+material = SubResource( 78 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -3359,9 +4314,9 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small" groups=["cloth"]]
+[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_small" groups=["cloth", "cloth_top"]]
 light_mask = 4
-material = SubResource( 22 )
+material = SubResource( 79 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -3377,10 +4332,10 @@ position = Vector2( -53, 10.0002 )
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_zero" groups=["cloth"]]
+[node name="Tits_armor_mesh2" type="Polygon2D" parent="Female_pose/HumanF1/Spine/Tits_zero" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
-material = SubResource( 22 )
+material = SubResource( 80 )
 position = Vector2( -481.625, 428.852 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -3503,8 +4458,9 @@ position = Vector2( 588, -2.00217 )
 rotation = -1.5708
 texture = ExtResource( 40 )
 
-[node name="Head_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["cloth"]]
+[node name="Head_armor_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head" groups=["cloth", "cloth_top"]]
 light_mask = 4
+material = SubResource( 81 )
 position = Vector2( 587.11, -4.75896 )
 rotation = -1.5708
 texture = ExtResource( 32 )

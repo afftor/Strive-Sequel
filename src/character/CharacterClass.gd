@@ -94,10 +94,10 @@ func get_stat(statname, ref = false):
 	if statname.begins_with('armor_'):
 		match statname:
 			'armor_base':
-				return ('servant') #temporal, until correct recolor of armor
+#				return ('servant') #temporal, until correct recolor of armor
 				return equipment.get_gear_type('chest')
 			'armor_lower':
-				return ('servant') #temporal, until correct recolor of armor
+#				return ('servant') #temporal, until correct recolor of armor
 				return equipment.get_gear_type('legs')
 	return statlist.get_stat(statname, ref)
 
