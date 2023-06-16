@@ -48,8 +48,9 @@ var test_template = {
 	hair_base_lenght = 'short', 
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
-	armor_base = 'chest_base_metal', 
-	armor_lower = 'legs_base_metal',
+	armor_base = null, 
+	armor_lower = null,
+	armor_color = 'default',
 	height = 'towering'
 }
 
@@ -144,7 +145,7 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_base', 'armor_lower']:
+	for stat in ['armor_color', 'armor_base', 'armor_lower']:
 		if !GeneratorData.transforms.has(stat):
 			continue
 		var st_val = _get_stat(stat)
@@ -245,13 +246,13 @@ func apply_transform(transform):
 			__scale_y *= transform.value
 		'offset':
 			_offset += Vector2(transform.value_x, transform.value_y)
-		#reworked
 		'item_recolor':
 			var nd = get_node(transform.node)
 			var mat = nd.material
-			mat.set_hader_param(transform.part, transform.color)
+			mat.set_shader_param(transform.part, transform.color)
 		'item_recolor_group':
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
 				var mat = nd.material
-				mat.set_hader_param(transform.part, transform.color)
+				mat.set_shader_param(transform.part, transform.color)
+		
