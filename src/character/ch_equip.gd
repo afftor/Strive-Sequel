@@ -52,7 +52,8 @@ func get_gear_type(slot):
 	var item = get_gear(slot)
 	if item == null:
 		return null
-	return item.code
+	item = ResourceScripts.game_res.items[item]
+	return item.itembase
 
 func equip(item, item_prev_id = null):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)

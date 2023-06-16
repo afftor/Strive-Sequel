@@ -132,6 +132,8 @@ var template = {
 	eyebrows = 'style1',
 	lips = 'style1',
 	
+	armor_color = 'default',
+	
 	#new skin, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	body_color_skin = '', 
 	body_color_wings = '', 
