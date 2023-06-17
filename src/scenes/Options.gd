@@ -24,6 +24,7 @@ func _ready():
 	ReloadPanel = $ReloadGameLanguage
 	SwitchLanguage = $TabContainer/Visuals/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
+	$TabContainer/Visuals/SwitchLanguage.text = tr("OPTIONSWITCHLANGUAGE") + ": " + input_handler.globalsettings.ActiveLocalization
 	$ReloadGameLanguage/Button.connect('pressed', self, 'language_restart')
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:

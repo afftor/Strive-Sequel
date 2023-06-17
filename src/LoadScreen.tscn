@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/LoadScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Load_scene/ornament.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/images/Load_scene/zakladka.png" type="Texture" id=9]
 [ext_resource path="res://assets/book_shader.tres" type="Material" id=10]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loading"
@@ -27,6 +28,11 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 626, 285 ), Vector2( 624, 166 ), Vector2( 621, 437 ) ]
 }
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+use_filter = true
+font_data = ExtResource( 12 )
 
 [node name="LoadScreen" type="Node"]
 script = ExtResource( 1 )
@@ -78,9 +84,9 @@ texture = ExtResource( 9 )
 
 [node name="ProgressBar" type="TextureProgress" parent="loading/ProgressTexture"]
 margin_left = 2.74683
-margin_top = -16.4814
+margin_top = -18.3692
 margin_right = 1924.75
-margin_bottom = 1065.52
+margin_bottom = 1063.63
 value = 50.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 8 )
@@ -90,10 +96,10 @@ __meta__ = {
 }
 
 [node name="HintText" type="Label" parent="loading"]
-margin_left = 154.306
-margin_top = 647.49
-margin_right = 937.306
-margin_bottom = 767.49
+margin_left = 146.755
+margin_top = 715.449
+margin_right = 929.755
+margin_bottom = 835.449
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.92549, 0.819608, 0.12549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -101,14 +107,26 @@ text = "Tip: Some races can achieve exclusive classes"
 align = 1
 autowrap = true
 
+[node name="Lorelabel" type="Label" parent="loading"]
+margin_left = 150.53
+margin_top = 45.2986
+margin_right = 933.531
+margin_bottom = 165.299
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.764706, 0.364706, 0.729412, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Lore Label"
+align = 1
+autowrap = true
+
 [node name="Loretext" type="RichTextLabel" parent="loading"]
-margin_left = 162.855
-margin_top = 137.836
-margin_right = 921.855
-margin_bottom = 584.836
+margin_left = 164.776
+margin_top = 132.327
+margin_right = 923.776
+margin_bottom = 683.327
 custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Hint Textdsahjsdajasjjsa"
+text = "Lore Text"
 __meta__ = {
 "_edit_use_anchors_": false
 }

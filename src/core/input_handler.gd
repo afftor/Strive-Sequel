@@ -326,6 +326,8 @@ func _init():
 
 	#Applying active translation
 	var activetranslation = Translation.new()
+	if TranslationData.has(globalsettings.ActiveLocalization) == false:
+		globalsettings.ActiveLocalization = 'en'
 	var translationscript = load(TranslationData[globalsettings.ActiveLocalization].data).new()
 	activetranslation.set_locale(globalsettings.ActiveLocalization)
 	for i in translationscript.TranslationDict:

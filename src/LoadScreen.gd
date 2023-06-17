@@ -7,6 +7,16 @@ var current_scene
 
 var loadingtipnumber = 14
 
+var load_lore = [
+	{name = "LOADLORE1NAME", text = "LOADLORE1", characters = ['duncan','myr']},
+	{name = "LOADLORE2NAME", text = "LOADLORE2", characters = ['amelia','sigmund']},
+	{name = "LOADLORE3NAME", text = "LOADLORE3", characters = ['anastasia']},
+	{name = "LOADLORE4NAME", text = "LOADLORE4", characters = ['daisy_default','cali','leon']},
+	{name = "LOADLORE5NAME", text = "LOADLORE5", characters = ['lilia']},
+	{name = "LOADLORE6NAME", text = "LOADLORE6", characters = ['zephyra']},
+	{name = "LOADLORE7NAME", text = "LOADLORE7", characters = ['amelia','duncan','daisy_default']}
+	
+]
 
 var scene_loaded = false
 
@@ -28,6 +38,12 @@ func goto_scene(path): # game requests to switch to this scene
 	$loading/HintText.text = tr("TIPLABEL") + ": " + tr(
 		"LOADINGTIP"+str(round(rand_range(1, loadingtipnumber)))
 	)
+	
+	var lore_data = load_lore[rand_range(0, load_lore.size())]
+	$loading/Loretext.bbcode_text = tr(lore_data.text)
+	$loading/Lorelabel.text = tr(lore_data.name)
+	$loading/Sprite.texture = images.sprites[lore_data.characters[rand_range(0, lore_data.characters.size())]]
+	
 	set_process(true)
 	#current_scene.queue_free() # get rid of the old scene
 	
