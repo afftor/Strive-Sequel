@@ -255,4 +255,3 @@ func apply_transform(transform):
 			for nd in nodes:
 				var mat = nd.material
 				mat.set_shader_param(transform.part, transform.color)
-		

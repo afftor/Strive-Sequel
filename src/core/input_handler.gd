@@ -570,6 +570,7 @@ func Open(node):
 	CloseableWindowsArray.append(node)
 
 func ChangeScene(name):
+	ResourceScripts.core_animations.BlackScreenTransition(0.3)
 	CloseableWindowsArray.clear()
 	dialogue_array.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()

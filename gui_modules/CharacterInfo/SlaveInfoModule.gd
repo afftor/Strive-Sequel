@@ -127,6 +127,7 @@ func confirm_hairstyle(style):
 	person.set_stat('hair_style', style)
 	$HairChange.visible = false
 	update()
+	get_parent().update()
 
 
 func close_hairstyle():

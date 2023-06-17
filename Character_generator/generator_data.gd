@@ -2557,11 +2557,11 @@ var transforms = {
 	height = {
 		tiny = [
 			{type = 'scale', value = 0.69},
-			{type = 'offset', value_x = 0.0, value_y = 50},
+			{type = 'offset', value_x = 0.0, value_y = 120},
 		],
 		petite = [
-			{type = 'scale', value = 0.81},
-			{type = 'offset', value_x = 0.0, value_y = 30},
+			{type = 'scale', value = 0.75},
+			{type = 'offset', value_x = 0.0, value_y = 80},
 		],
 		short = [
 			{type = 'scale', value = 0.88},
@@ -2576,8 +2576,8 @@ var transforms = {
 			{type = 'offset', value_x = 0.0, value_y = -20},
 		],
 		towering = [
-			{type = 'scale', value = 1.25},
-			{type = 'offset', value_x = 0.0, value_y = -70},
+			{type = 'scale', value = 1.2},
+			{type = 'offset', value_x = 0.0, value_y = -50},
 		],
 	},
 	

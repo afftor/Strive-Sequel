@@ -38,6 +38,9 @@ mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ragdoll" parent="." instance=ExtResource( 17 )]
 show_behind_parent = true

@@ -3,6 +3,23 @@ var TranslationDict = {
 	#test string
 	TESTNAMELOCALIZATION = "en_test",
 	#Time
+	
+	TIPLABEL = "Tip",
+	LOADINGTIP1 = "Some races can achieve exclusive classes",
+	LOADINGTIP2 = "Character initial possible stats are defined by their race",
+	LOADINGTIP3 = "Character value has great impact on service tasks",
+	LOADINGTIP4 = "You can purchase necessary materials and items for quests at shops. Selling excessive materials for gold is also an option",
+	LOADINGTIP5 = "Some CG scenes require you to experiment with your dialogue choices",
+	LOADINGTIP6 = "Dungeons are your best source of income on short time periods",
+	LOADINGTIP7 = "Selecting correct type of attack for each enemy will greatly improve your damage output",
+	LOADINGTIP8 = "Don't hold back on using healing items and spells for patching up during dungeon exploring",
+	LOADINGTIP9 = "Injured characters recover faster when resting",
+	LOADINGTIP10 = "Only few human related races can interbred with each other, the rest will only be able to breed with their own race with no adjustments",
+	LOADINGTIP11 = "Babies will inherit their parent stats at random",
+	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits)",
+	LOADINGTIP13 = "Dismantling gear at Workers guild can allow you to extract rare resources from it",
+	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks.",
+	
 	NIGHT = "Night",
 	MORNING = "Morning",
 	NOON = "Noon",
