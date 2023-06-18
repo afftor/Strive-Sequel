@@ -47,7 +47,7 @@ stretch_mode = 6
 [node name="ragdoll" type="Node2D" parent="." instance=ExtResource( 17 )]
 show_behind_parent = true
 light_mask = 4
-position = Vector2( 340, 390 )
+position = Vector2( 340, 450 )
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 9 )
 

@@ -175,10 +175,14 @@ func apply_transform(transform):
 		'node_group_attr': #group hide or unhide mostly
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				nd.set(transform.attr, transform.value)
 		'node_group_select': #show one from group, == group hide + single show
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				if nd.name == transform.select:
 					nd.visible = true
 				else:
@@ -192,6 +196,8 @@ func apply_transform(transform):
 		'import_deform_group':
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				if transform.has('ids'):
 					input_handler.import_deform_parameter(nd.material, load(transform.material), transform.ids)
 				else:
@@ -205,6 +211,8 @@ func apply_transform(transform):
 		'import_recolor_group':
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				if transform.has('ids'):
 					input_handler.import_recolor_parameter(nd.material, load(transform.material), transform.ids)
 				else:
@@ -218,6 +226,8 @@ func apply_transform(transform):
 		'import_mask_group':
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				if transform.has('ids'):
 					input_handler.import_recolor_mask(nd.material, load(transform.material), transform.ids)
 				else:
@@ -237,6 +247,8 @@ func apply_transform(transform):
 			if transform.material != null:
 				mat = load(transform.material)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				if transform.has('ids'):
 					input_handler.import_recolor_mask_path(nd.material, mat, transform.ids)
 				else:
@@ -253,5 +265,7 @@ func apply_transform(transform):
 		'item_recolor_group':
 			var nodes = get_tree().get_nodes_in_group(transform.group)
 			for nd in nodes:
+				if !self.is_a_parent_of(nd):
+					continue
 				var mat = nd.material
 				mat.set_shader_param(transform.part, transform.color)
