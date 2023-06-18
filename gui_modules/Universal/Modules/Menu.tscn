@@ -362,6 +362,9 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.980392, 0.960784, 0.772549, 1 )
 text = "Strive: Conquest"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Options" parent="." instance=ExtResource( 18 )]
 visible = false
