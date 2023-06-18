@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/LoadScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Load_scene/ornament.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/book_shader.tres" type="Material" id=10]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/images/Load_scene/book_top.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loading"
@@ -57,6 +58,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="loading"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 4 )
@@ -73,6 +75,14 @@ margin_bottom = 955.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="loading"]
+margin_right = 1922.0
+margin_bottom = 1082.0
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
