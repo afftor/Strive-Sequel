@@ -27,7 +27,7 @@ func update(person = null):
 		$ragdoll.visible = true
 		$ragdoll.test_mode = false
 		$ragdoll.rebuild(person)
-		$ragdoll.rebuild_cloth(false)
+		$ragdoll.rebuild_cloth(true)
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	
