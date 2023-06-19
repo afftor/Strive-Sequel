@@ -9,7 +9,7 @@ var stats_to_look = [
 'hair_back', 
 'hair_base_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_back_lenght', 'hair_assist_lenght',
-'height'
+'height', 'ass_size'
 ]
 
 
@@ -849,38 +849,59 @@ var transforms = {
 		],
 		average = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_normal.tres"}
 		],
 		average_high = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_high.tres"}
 		],
 		average_narrow = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_narrow.tres"}
 		],
 		average_wide = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_wide.tres"}
 		],
 		big = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_normal.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
+			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_normal.tres"}
 		],
 		big_high = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_high.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
+			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_high.tres"}
 		],
 		big_narrow = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_narrow.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
+			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_narrow.tres"}
 		],
 		big_wide = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_wide.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
+			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
+			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_wide.tres"}
 		],
 		huge = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_normal.tres"}
+		],
+		huge_high = [
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_high.tres"}
+		],
+		huge_narrow = [
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_narrow.tres"}
+		],
+		huge_wide = [
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_wide.tres"}
 		],
 		masculine = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_small'}, #actually not needed - for it do not use female ragdoll
@@ -2509,30 +2530,203 @@ var transforms = {
 		],
 	},
 	
+	#base version
+	#looks weird
+#	height = {
+#		tiny = [
+#			{type = 'scale', value = 0.69},
+#			{type = 'offset', value_x = 0.0, value_y = 120},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.68, 0.68)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.32, 1.32)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.68, 0.68)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.32, 1.32)},
+#		],
+#		petite = [
+#			{type = 'scale', value = 0.75},
+#			{type = 'offset', value_x = 0.0, value_y = 80},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.68, 0.68)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.32, 1.32)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.68, 0.68)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.32, 1.32)},
+#		],
+#		short = [
+#			{type = 'scale', value = 0.88},
+#			{type = 'offset', value_x = 0.0, value_y = 30},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.76, 0.76)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.24, 1.24)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.76, 0.76)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.24, 1.24)},
+#		],
+#		average = [
+#			{type = 'scale', value = 1.0},
+#			{type = 'offset', value_x = 0.0, value_y = 0},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.84, 0.84)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.16, 1.16)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.84, 0.84)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.16, 1.16)},
+#		],
+#		tall = [
+#			{type = 'scale', value = 1.13},
+#			{type = 'offset', value_x = 0.0, value_y = -20},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.92, 0.92)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.08, 1.08)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(0.92, 0.92)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.08, 1.08)},
+#		],
+#		towering = [
+#			{type = 'scale', value = 1.2},
+#			{type = 'offset', value_x = 0.0, value_y = -50},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.0, 1.0)},
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.0, 1.0)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.0, 1.0)},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1.0, 1.0)},
+#		],
+#	},
+#
+	#adv version
+	#i corrected values to add sixth value
+	#overall height and head scale are wrong
 	height = {
 		tiny = [
-			{type = 'scale', value = 0.69},
-			{type = 'offset', value_x = 0.0, value_y = 120},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-361, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-361, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(1, 1)},
 		],
 		petite = [
-			{type = 'scale', value = 0.75},
-			{type = 'offset', value_x = 0.0, value_y = 80},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.025, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-358, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.025, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-358, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(0.975, 1)},
 		],
 		short = [
-			{type = 'scale', value = 0.88},
-			{type = 'offset', value_x = 0.0, value_y = 30},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.05, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-355, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.05, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-355, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(0.95, 1)},
 		],
 		average = [
-			{type = 'scale', value = 1.0},
-			{type = 'offset', value_x = 0.0, value_y = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.075, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-352, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.075, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-352, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(0.925, 1)},
 		],
 		tall = [
-			{type = 'scale', value = 1.13},
-			{type = 'offset', value_x = 0.0, value_y = -20},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.1, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-349, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-349, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(0.9, 1)},
 		],
 		towering = [
-			{type = 'scale', value = 1.2},
-			{type = 'offset', value_x = 0.0, value_y = -50},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-346, 9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-346, 9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero', attr = 'scale', value = Vector2(0.875, 1)},
+		],
+	},
+	
+	ass_size = {
+		flat = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.0)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.0)},
+		],
+		small = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.04)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.04)},
+		],
+		average = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.08)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.08)},
+		],
+		big = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.12)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.12)},
+		],
+		huge = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.15)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.15)},
+		],
+		masculine = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.0)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1.0, 1.0)},
 		],
 	},
 	
