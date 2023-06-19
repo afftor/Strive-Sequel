@@ -29,7 +29,7 @@ var test_template = {
 	chin = 'default', 
 	nose = 'default', 
 	pregnancy_status = 'no', 
-	tits_size = 'average_narrow', 
+	tits_size = 'big', 
 	skin_coverage = '', 
 	body_color_skin = 'human5', 
 	body_color_wings = 'yellow3', 
@@ -48,10 +48,11 @@ var test_template = {
 	hair_base_lenght = 'short', 
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
-	armor_base = null, 
-	armor_lower = null,
+	armor_base = 'servant', 
+	armor_lower = 'servant',
 	armor_color = 'default',
-	height = 'towering'
+	height = 'tiny',
+	ass_size = 'small',
 }
 
 func _ready():
