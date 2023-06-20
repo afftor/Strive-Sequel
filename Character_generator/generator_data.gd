@@ -77,8 +77,10 @@ var texture_sets = {
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', texture = "res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', texture = "res://Character_generator/images/00_body_nude/pregnancy_belly_big.png"},
 		
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_big.png"},
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_large.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_large.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_normal.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_normal.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_small.png"},
@@ -103,8 +105,10 @@ var texture_sets = {
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_belly_mid1.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_belly_big1.png"},
 		
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_big.png"},
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_nipples_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_nipples_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_large.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_nipples_large.png"}, 
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_normal.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_nipples.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_small.png"},
@@ -849,59 +853,47 @@ var transforms = {
 		],
 		average = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_normal.tres"}
 		],
 		average_high = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_high.tres"}
 		],
 		average_narrow = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_narrow.tres"}
 		],
 		average_wide = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.0, 1.0)},
 			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_wide.tres"}
 		],
 		big = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
-			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_normal.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_large_tits_normal.tres"}
 		],
 		big_high = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
-			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_high.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_large_tits_high.tres"}
 		],
 		big_narrow = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
-			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_narrow.tres"}
-		],
-		big_wide = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_normal'},
-			{type = 'node_group_attr', group = 'tits_normal', attr = 'scale', value = Vector2(1.2, 1.2)},
-			{type = 'import_deform_group', group = 'tits_normal', material = "res://Character_generator/shaders/shaders_deform_tits/Female_normal_tits_wide.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
+			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_large_tits_narrow.tres"}
 		],
 		huge = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_normal.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_huge'},
+			{type = 'import_deform_group', group = 'tits_huge', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_normal.tres"}
 		],
 		huge_high = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_high.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_huge'},
+			{type = 'import_deform_group', group = 'tits_huge', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_high.tres"}
 		],
 		huge_narrow = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_narrow.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_huge'},
+			{type = 'import_deform_group', group = 'tits_huge', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_narrow.tres"}
 		],
 		huge_wide = [
-			{type = 'node_group_select', group = 'tits', select = 'Tits_big'},
-			{type = 'import_deform_group', group = 'tits_big', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_wide.tres"}
+			{type = 'node_group_select', group = 'tits', select = 'Tits_huge'},
+			{type = 'import_deform_group', group = 'tits_huge', material = "res://Character_generator/shaders/shaders_deform_tits/Female_big_tits_wide.tres"}
 		],
 		masculine = [
 			{type = 'node_group_select', group = 'tits', select = 'Tits_small'}, #actually not needed - for it do not use female ragdoll
@@ -2605,6 +2597,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(1, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(1, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(1, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(1, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(1, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(1, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(1, 1)},
@@ -2628,6 +2621,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.975, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.975, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.975, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(0.975, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.975, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.975, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.975, 1)},
@@ -2651,6 +2645,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.95, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.95, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.95, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(0.95, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.95, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.95, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.95, 1)},
@@ -2674,6 +2669,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.925, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.925, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.925, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(0.925, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.925, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.925, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.925, 1)},
@@ -2697,6 +2693,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.9, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.9, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.9, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(0.9, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.9, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.9, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.9, 1)},
@@ -2723,6 +2720,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.875, 1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small', attr = 'scale', value = Vector2(0.875, 1)},
@@ -2935,6 +2933,7 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', attr = 'visible', value = false},
@@ -2963,7 +2962,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Arm_armorL1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Shoulder_armorL1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/99_armory_set_maidu/bluza.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_maid_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_small.png"},
@@ -2991,7 +2991,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorL_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/torso_armor_cloth.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_0.png"},
@@ -3019,7 +3020,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorL_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/torso_armor_cloth.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_0.png"},
@@ -3046,7 +3048,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorL_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/torso_armor_leather.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_0.png"},
@@ -3074,7 +3077,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorL_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/torso_armor_leather.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_0.png"},
@@ -3102,7 +3106,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorL_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/torso_armor_plate.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_0.png"},
@@ -3130,7 +3135,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorL_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/torso_armor_plate.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_0.png"},
