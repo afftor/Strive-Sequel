@@ -232,6 +232,7 @@ var statdata = {
 	},
 	exp_gain_mod = {
 		code = 'exp_gain_mod',
+		percent = true,
 		name = '',
 		descript = '',
 		baseicon = 'stat_cf',

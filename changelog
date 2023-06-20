@@ -1,3 +1,10 @@
+0.7.0
+Added paperdoll visaul to characters
+Added Sacred Bowl item received by completing arc 2
+Added Russian translation and fixed missing translation entries
+Added loading screen with bits of lore and tips
+
+0.6.10a
 Added icon indication for tasks and tools to character inventory
 Added new upgrade which makes tools at dungeons ignore task type
 Added skillbook button to character skill learning menu

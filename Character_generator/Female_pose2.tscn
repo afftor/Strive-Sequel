@@ -65,7 +65,6 @@
 [ext_resource path="res://Character_generator/images/06_hairs_back/hair_back_verylong1.png" type="Texture" id=63]
 [ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=64]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 

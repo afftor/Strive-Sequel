@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cup.png-a20d107baea998d44348c03db622833d.stex"
+path="res://.import/sacred_bowl.png-c0fb43b10da41f0439dc33b527247e7f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsitems/cup.png"
-dest_files=[ "res://.import/cup.png-a20d107baea998d44348c03db622833d.stex" ]
+source_file="res://assets/images/iconsitems/sacred_bowl.png"
+dest_files=[ "res://.import/sacred_bowl.png-c0fb43b10da41f0439dc33b527247e7f.stex" ]
 
 [params]
 

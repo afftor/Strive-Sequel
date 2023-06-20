@@ -683,7 +683,7 @@ var racelist = {
 			ears = ['elven'],
 			skin = ['grey','purple','teal'],
 			hair_color = ['purple','green','white'],
-			eye_color = ['red','amber'],
+			eye_color = ['red','yellow'],
 			},
 		global_weight = 10,
 	},
@@ -860,7 +860,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],
-			eye_color = ['red', 'amber', 'blue', 'green', 'purple'],
+			eye_color = ['red', 'yellow', 'blue', 'green', 'purple'],
 			height = ['tiny','petite'],
 			wings = ['fairy'],
 			body_shape = ['shortstack'],
@@ -981,7 +981,7 @@ var racelist = {
 		race_tags = ['rare','top'],
 		bodyparts = {
 			eye_shape = ['slit'],
-			eye_color = ['red','amber'],
+			eye_color = ['red','yellow'],
 			ears = ['elven'],
 			skin_coverage = ['scale'],
 			tail = ['dragon'],

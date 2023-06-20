@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/magic book.png-dd8d3489a9970b487d642ef46db5fc2c.stex"
+path="res://.import/magicbook.png-a14ef51f9a084fb476edbca7c6c1c3ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsitems/magic book.png"
-dest_files=[ "res://.import/magic book.png-dd8d3489a9970b487d642ef46db5fc2c.stex" ]
+source_file="res://assets/images/iconsitems/magicbook.png"
+dest_files=[ "res://.import/magicbook.png-a14ef51f9a084fb476edbca7c6c1c3ec.stex" ]
 
 [params]
 
