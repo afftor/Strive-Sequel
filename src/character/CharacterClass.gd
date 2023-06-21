@@ -95,10 +95,16 @@ func get_stat(statname, ref = false):
 		match statname:
 			'armor_base':
 #				return ('servant') #temporal, until correct recolor of armor
-				return equipment.get_gear_type('chest')
+				var res =  equipment.get_gear_type('chest')
+				if res == null and !has_work_rule('nudity'):
+					res = 'underwear'
+				return res
 			'armor_lower':
 #				return ('servant') #temporal, until correct recolor of armor
-				return equipment.get_gear_type('legs')
+				var res = equipment.get_gear_type('legs')
+				if res == null and !has_work_rule('nudity'):
+					res = 'underwear'
+				return res
 	return statlist.get_stat(statname, ref)
 
 

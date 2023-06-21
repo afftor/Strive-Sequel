@@ -100,7 +100,7 @@
 [ext_resource path="res://Character_generator/images/122_armory_set_leather_male/HandR1_armor_leather.png" type="Texture" id=98]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/tits_armor1_normal.png" type="Texture" id=99]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Shoulder_armorR1.png" type="Texture" id=100]
-[ext_resource path="res://Character_generator/images/99_armory_set_maidu/yubka.png" type="Texture" id=101]
+[ext_resource path="res://Character_generator/images/102_armory_set_leather_female/taz_armor_leather.png" type="Texture" id=101]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_small.png" type="Texture" id=102]
 [ext_resource path="res://Character_generator/armor_shader.shader" type="Shader" id=103]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_large.png" type="Texture" id=104]
@@ -3245,7 +3245,6 @@ shader_param/overlay = 0.999
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
-clothes = false
 test_mode = true
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
@@ -4163,7 +4162,7 @@ texture = ExtResource( 57 )
 [node name="Taz_armor" type="Sprite" parent="Female_pose/HumanF1/Spine/Taz" groups=["cloth", "cloth_bottom"]]
 light_mask = 4
 material = SubResource( 73 )
-position = Vector2( -8.49051, 2.18629 )
+position = Vector2( -3.49051, 0.186279 )
 rotation = -1.5708
 texture = ExtResource( 101 )
 
