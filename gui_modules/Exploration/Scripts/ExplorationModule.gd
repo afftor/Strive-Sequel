@@ -1877,7 +1877,7 @@ func update_sell_list():
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
 	for item in ResourceScripts.game_res.items.values():
-		if item.amount <= 0:
+		if item.amount <= 0 || item.tags.has('unsellable'):
 			continue
 		var type = get_item_category(item)
 		if item.owner != null:

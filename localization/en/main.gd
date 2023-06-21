@@ -343,6 +343,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMBELL_COLLARDESCRIPT = "Despite its nature, this collar considered more of an object of fashion came from distant land.",
 	ITEMRIBBONDESCRIPT = "A bright red ribbon of unknown nature. ",
 	
+	ITEMSACRED_BOWL = "Sacred Bowl",
+	ITEMSACRED_BOWLDESCRIPT = "An ancient artifact which used to belong to elven kingdom.",
 	
 	ITEMJACKET = "Jacket",
 	ITEMJACKETDESCRIPT = "A lightweight clothing which offers no protecting.",
@@ -1117,7 +1119,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATPRODUCTIVITYDESCRIPT = "Affects all productive tasks. Total productivity applies to all occupations, while efficiency will boost specific tasks.",
 	STATCONSENT = "Consent",
 	STATCONSENTDESCRIPT = "Affects consent for actions during sex interactions. Each action has different consent based on traits, partners and other factors. This number represents only the unaltered value. Basic consent grows when having positive results, trying new actions and partners. Also slightly increased from discipline skills. ",
-
+	
+	STATEXP_GAIN_MOD = "Experience Bonus",
+	
 	STATLOYALTY_GAIN_MOD = "Loyalty Gain",
 	STATLOYALTY_GAIN = "Loyalty Gain",
 	STATLUSTTICK = "Lust Growth",
