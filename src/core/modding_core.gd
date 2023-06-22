@@ -32,6 +32,8 @@ signal node_extensions_loaded
 signal after_mods_loaded
 signal after_data_fixed
 
+var test_mode_enabled = false
+
 
 func _ready():
 	pass
@@ -51,9 +53,11 @@ func load_mods():
 	modding_core.process_translation_mods()
 	#load CEScripts, extend scripts in ResourceScripts.scriptdict
 	process_script_extensions_mods()
-	modding_core.fix_main_data()
 	#wait for an idle frame to edit nodes
 	yield(get_tree(), 'idle_frame')
+	#core script mods won't work in test mode
+	if test_mode_enabled:
+		return
 	#handle extensions of globals/input_handler
 	process_core_extensions_mods()
 	#run extend_nodes() on chosen modules
@@ -61,8 +65,13 @@ func load_mods():
 	#run load_tables on .gd modules and load tables from .json files
 	modding_core.process_data_mods()
 	emit_signal("after_mods_loaded")
-	
+	modding_core.fix_main_data()
 	globals.reset_roll_data()
+
+func handle_test_mode():
+	modding_core.fix_main_data()
+	globals.reset_roll_data()
+	test_mode_enabled = true
 
 func process_modules_mods():
 	for m in mods_list:
