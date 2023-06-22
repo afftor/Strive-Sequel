@@ -282,8 +282,9 @@ func save_portrait(name):
 		dir.make_dir(variables.portraits_folder)
 	var path = variables.portraits_folder + name + '.png'
 	
-	yield(get_tree(), 'idle_frame')
-	yield(get_tree(), 'idle_frame')
+#	yield(get_tree(), 'idle_frame')
+#	yield(get_tree(), 'idle_frame')
+	yield(get_tree().create_timer(0.3), "timeout")
 	var texture = get_tree().get_root().get_texture()
 	var image = texture.get_data()
 #	image.resize(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"), 3)
