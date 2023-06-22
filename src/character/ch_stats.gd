@@ -1131,7 +1131,8 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
-	
+	if chardata.has('icon_image'):
+		statlist.dynamic_portrait = false
 	set_virginity_data()
 
 
@@ -1522,6 +1523,7 @@ func random_icon():
 #				continue
 	if array.size() > 0:
 		statlist.icon_image = array[randi()%array.size()]
+		statlist.dynamic_portrait = false
 
 func get_icon():
 	if statlist.icon_image in ['', null]:
@@ -1754,6 +1756,7 @@ func remove_tattoo(slot):
 func make_random_portrait():
 	statlist.icon_image = ResourceScripts.rnd_main.setrandom(statlist) 
 	if statlist != null && statlist.icon_image != null && !statlist.icon_image.empty(): # this if sets the matching body image
+		statlist.dynamic_portrait = false
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)
 		if File.new().file_exists(fullImagePath):
 			statlist.body_image = fullImagePath 

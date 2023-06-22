@@ -110,6 +110,9 @@ func rebuild(character_to_build):
 	#apply scale & offset
 	scale = Vector2(__scale_x, __scale_y)
 	position += _offset
+	
+	if character != null:
+		character.update_portrait(self)
 
 
 func rebuild_cloth(value):
