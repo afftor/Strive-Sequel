@@ -132,6 +132,9 @@ var LocalizationFolder = "res://localization/"
 #var state
 
 var userfolder = 'user://'
+var portraits_folder = 'user://userportraits/'
+var portrait_width = 250
+var portrait_height = 250
 
 #mode for applying absolute random damage mod
 const relative_random_add = true
