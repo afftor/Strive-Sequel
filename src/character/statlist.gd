@@ -5,7 +5,11 @@ var template = {
 	is_hirable = false, #allows character to be hired from its tab
 	hire_scene = '',
 	unique = null,
+	
 	icon_image = '', #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+	dynamic_portrait = true,
+	portrait_update = true,
+	
 	body_image = 'default',
 	name = '',
 	surname = '',

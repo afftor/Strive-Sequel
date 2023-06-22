@@ -28,8 +28,8 @@ var test_template = {
 	penis_type = 'furry', 
 	chin = 'default', 
 	nose = 'default', 
-	pregnancy_status = 'no', 
-	tits_size = 'big', 
+	pregnancy_status = 'heavy', 
+	tits_size = 'small', 
 	skin_coverage = '', 
 	body_color_skin = 'human5', 
 	body_color_wings = 'yellow3', 
@@ -48,8 +48,8 @@ var test_template = {
 	hair_base_lenght = 'short', 
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
-	armor_base = 'servant', 
-	armor_lower = 'servant',
+	armor_base = 'lacy_2', 
+	armor_lower = 'lacy_2',
 	armor_color = 'default',
 	height = 'tiny',
 	ass_size = 'small',
@@ -64,6 +64,7 @@ func _ready():
 		_scale_y = 0.5
 		rebuild(null)
 		rebuild_cloth(clothes)
+		save_portrait('test')
 	else:
 		_scale_x = scale.x
 		_scale_y = scale.y
@@ -109,6 +110,9 @@ func rebuild(character_to_build):
 	#apply scale & offset
 	scale = Vector2(__scale_x, __scale_y)
 	position += _offset
+	
+	if character != null:
+		character.update_portrait(self)
 
 
 func rebuild_cloth(value):
@@ -270,3 +274,28 @@ func apply_transform(transform):
 					continue
 				var mat = nd.material
 				mat.set_shader_param(transform.part, transform.color)
+
+
+func save_portrait(name):
+	var dir = Directory.new()
+	if !dir.dir_exists(variables.portraits_folder):
+		dir.make_dir(variables.portraits_folder)
+	var path = variables.portraits_folder + name + '.png'
+	
+	yield(get_tree(), 'idle_frame')
+	yield(get_tree(), 'idle_frame')
+	var texture = get_tree().get_root().get_texture()
+	var image = texture.get_data()
+#	image.resize(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"), 3)
+	image.flip_y()
+#	image.save_png(path)
+
+	for nd in get_tree().get_nodes_in_group('portrait'):
+		if !self.is_a_parent_of(nd) or !nd.is_visible_in_tree():
+			continue
+#		print(input_handler.get_real_global_rect(nd))
+		image = image.get_rect(input_handler.get_real_global_rect(nd))
+#		nd.texture = texture
+#		image.flip_y()
+#		image.resize(variables.portrait_width, variables.portrait_height)
+		image.save_png(path)

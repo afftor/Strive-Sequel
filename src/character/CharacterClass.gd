@@ -323,12 +323,15 @@ func get_short_race():
 	return race.capitalize()
 
 func equip(item, item_prev_id = null):
+	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
 
 func unequip(item):
+	set_stat('portrait_update', true)
 	equipment.unequip(item)
 
 func unequip_all():
+	set_stat('portrait_update', true)
 	equipment.clear_equip()
 
 
@@ -1555,3 +1558,15 @@ func get_ability_experience():
 
 func get_combat_skills():
 	return skills.get_combat_skills()
+
+
+func update_portrait(ragdoll):
+	if !get_stat('dynamic_portrait'):
+		return
+	if !get_stat('portrait_update'):
+		return
+	
+	var path = 'portrait_' + id
+	set_stat('portrait_update', false)
+	set_stat('icon_image', variables.portraits_folder + path + '.png')
+	ragdoll.save_portrait(path)
