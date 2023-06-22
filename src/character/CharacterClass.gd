@@ -323,12 +323,15 @@ func get_short_race():
 	return race.capitalize()
 
 func equip(item, item_prev_id = null):
+	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
 
 func unequip(item):
+	set_stat('portrait_update', true)
 	equipment.unequip(item)
 
 func unequip_all():
+	set_stat('portrait_update', true)
 	equipment.clear_equip()
 
 
