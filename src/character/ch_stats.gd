@@ -579,6 +579,15 @@ func get_stat(statname, ref = false):
 			return statlist[statname]
 		else:
 			return get_hairs_data()[statname]
+	if statname.begins_with('armor_color_'):
+		var partname = statname.trim_prefix('armor_color_')
+		statname = 'armor_color'
+		var part = parent.get_ref().get_stat('armor_' + partname)
+		if statlist[statname] is Dictionary and statlist[statname].has(part):
+			return statlist[statname][part]
+		if statlist[statname] is String and statlist[statname] != "":
+			return statlist[statname]
+		return 'default'
 	if statname.begins_with('body_color'): #compart actions, null values should not be returned
 		match statname:
 			'body_color_skin':
@@ -620,7 +629,9 @@ func get_stat(statname, ref = false):
 					return statlist[statname]
 				return 'yellow3' #any can go, feel free to add stat matching
 			'body_color_wings':
-				if statlist[statname] != "":
+				if statlist[statname] is Dictionary and statlist[statname].has(statlist.wings):
+					return statlist[statname][statlist.wings]
+				if statlist[statname] is String and statlist[statname] != "":
 					return statlist[statname]
 				match statlist.wings: #feel free to change values and stat
 					'':

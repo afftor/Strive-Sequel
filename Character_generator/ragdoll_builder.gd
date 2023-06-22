@@ -50,7 +50,8 @@ var test_template = {
 	hair_assist_lenght = 'long', 
 	armor_base = 'lacy_2', 
 	armor_lower = 'lacy_2',
-	armor_color = 'default',
+	armor_color_base = 'default',
+	armor_color_lower = 'default',
 	height = 'tiny',
 	ass_size = 'small',
 }
@@ -150,7 +151,7 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_color', 'armor_base', 'armor_lower']:
+	for stat in ['armor_color_base', 'armor_color_lower', 'armor_base', 'armor_lower']:
 		if !GeneratorData.transforms.has(stat):
 			continue
 		var st_val = _get_stat(stat)

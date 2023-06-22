@@ -3401,6 +3401,20 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('a88ac6')},
 		],
 	},
+	
+	armor_color_base = {
+		default = [
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('98b8c6')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('a88ac6')},
+		],
+	},
+	
+	armor_color_lower = {
+		default = [
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('98b8c6')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('a88ac6')},
+		],
+	},
 }
 
 #func _ready():
