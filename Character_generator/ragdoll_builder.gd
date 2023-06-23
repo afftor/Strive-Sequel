@@ -28,7 +28,7 @@ var test_template = {
 	penis_type = 'furry', 
 	chin = 'default', 
 	nose = 'default', 
-	pregnancy_status = 'heavy', 
+	pregnancy_status = 'no', 
 	tits_size = 'small', 
 	skin_coverage = '', 
 	body_color_skin = 'human5', 
@@ -48,12 +48,13 @@ var test_template = {
 	hair_base_lenght = 'short', 
 	hair_back_lenght = 'short', 
 	hair_assist_lenght = 'long', 
-	armor_base = 'lacy_2', 
-	armor_lower = 'lacy_2',
+	armor_base = 'chest_adv_metal', 
+	armor_lower = 'legs_adv_metal',
 	armor_color_base = 'default',
 	armor_color_lower = 'default',
 	height = 'tiny',
 	ass_size = 'small',
+	pose = 'test',
 }
 
 func _ready():

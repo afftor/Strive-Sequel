@@ -1,6 +1,7 @@
 extends Node
 
 var stats_to_look = [
+'pose',
 'sex', 'race',
 'horns', 'ears', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'tail', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size', 
 'body_color_skin', 'skin_coverage', 
@@ -9,7 +10,7 @@ var stats_to_look = [
 'hair_back', 
 'hair_base_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_back_lenght', 'hair_assist_lenght',
-'height', 'ass_size'
+'height', 'ass_size',
 ]
 
 
@@ -3413,6 +3414,35 @@ var transforms = {
 		default = [
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('98b8c6')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('a88ac6')},
+		],
+	},
+	
+	pose = {
+		default = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = 8.8},
+		],
+		test = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 94.6},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 3.2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = -8.8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = -8.8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -2.4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 4.3},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = 8.8},
 		],
 	},
 }
