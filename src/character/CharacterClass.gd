@@ -80,6 +80,8 @@ func get_stat(statname, ref = false):
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
+	if statname == 'pose':
+		return 'default' #temporal stub
 	if statname == 'counters':
 		return effects.counters
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
