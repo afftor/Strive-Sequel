@@ -50,7 +50,8 @@ var test_template = {
 	hair_assist_lenght = 'long', 
 	armor_base = 'lacy_2', 
 	armor_lower = 'lacy_2',
-	armor_color = 'default',
+	armor_color_base = 'default',
+	armor_color_lower = 'default',
 	height = 'tiny',
 	ass_size = 'small',
 }
@@ -150,7 +151,7 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_color', 'armor_base', 'armor_lower']:
+	for stat in ['armor_color_base', 'armor_color_lower', 'armor_base', 'armor_lower']:
 		if !GeneratorData.transforms.has(stat):
 			continue
 		var st_val = _get_stat(stat)
@@ -282,8 +283,9 @@ func save_portrait(name):
 		dir.make_dir(variables.portraits_folder)
 	var path = variables.portraits_folder + name + '.png'
 	
-	yield(get_tree(), 'idle_frame')
-	yield(get_tree(), 'idle_frame')
+#	yield(get_tree(), 'idle_frame')
+#	yield(get_tree(), 'idle_frame')
+	yield(get_tree().create_timer(0.3), "timeout")
 	var texture = get_tree().get_root().get_texture()
 	var image = texture.get_data()
 #	image.resize(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"), 3)

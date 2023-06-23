@@ -6,6 +6,25 @@ var person
 #	update()
 
 
+func body_show(value):
+	if person == null:
+		person = input_handler.interacted_character
+		if get_parent().SummaryModule.selected_person != null:
+			person = get_parent().SummaryModule.selected_person
+		if (
+			gui_controller.previous_screen != null
+			&& gui_controller.previous_screen == gui_controller.exploration
+		):
+			person = gui_controller.exploration.person_to_hire
+	var stored_image = person.get_stored_body_image()
+	if stored_image != null:
+		$Body.visible = value
+		$ragdoll.visible = false
+	else:
+		$Body.visible = false
+		$ragdoll.visible = value
+
+
 func update(person = null):
 	if person == null:
 		person = input_handler.interacted_character
@@ -20,11 +39,11 @@ func update(person = null):
 	var stored_image = person.get_stored_body_image()
 	if stored_image != null:
 		$Body.texture = stored_image
-		$Body.visible = true
-		$ragdoll.visible = false
+#		$Body.visible = true
+#		$ragdoll.visible = false
 	else:
-		$Body.visible = false
-		$ragdoll.visible = true
+#		$Body.visible = false
+#		$ragdoll.visible = true
 		$ragdoll.test_mode = false
 		$ragdoll.rebuild(person)
 		$ragdoll.rebuild_cloth(true)

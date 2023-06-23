@@ -66,9 +66,6 @@ uniform vec4 part3color : hint_color;
 uniform float range = 0.7;
 uniform float lmod = 0.6;
 
-uniform float midpoint = 0.5;
-uniform float steepness = 2.0;
-
 void fragment(){
     vec4 color = texture(TEXTURE, UV);
 	float a = color.a;
@@ -82,12 +79,11 @@ void fragment(){
 		float rot = dcolor.x - t1.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
-		if (k.z > midpoint){
-			k.z = ((steepness - 1.0) * k.z / midpoint + (2.0 - steepness)) * k.z;
+		if (dcolor.z > 0.5){
+			k.z = 2.0 * (dcolor.z + k.z - dcolor.z * k.z) - 1.0;
 		} else {
-			k.z = ((steepness - 1.0) * k.z * k.z  + (2.0 * midpoint - midpoint * steepness - steepness) * k.z + midpoint * (steepness - 1.0)) / (midpoint - 1.0);
+			k.z *= 2.0 * dcolor.z;
 		}
-		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}
@@ -96,12 +92,11 @@ void fragment(){
 		float rot = dcolor.x - t2.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
-		if (k.z > midpoint){
-			k.z = ((steepness - 1.0) * k.z / midpoint + (2.0 - steepness)) * k.z;
+		if (dcolor.z > 0.5){
+			k.z = 2.0 * (dcolor.z + k.z - dcolor.z * k.z) - 1.0;
 		} else {
-			k.z = ((steepness - 1.0) * k.z * k.z  + (2.0 * midpoint - midpoint * steepness - steepness) * k.z + midpoint * (steepness - 1.0)) / (midpoint - 1.0);
+			k.z *= 2.0 * dcolor.z;
 		}
-		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}
@@ -110,12 +105,11 @@ void fragment(){
 		float rot = dcolor.x - t3.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
-		if (k.z > midpoint){
-			k.z = ((steepness - 1.0) * k.z / midpoint + (2.0 - steepness)) * k.z;
+		if (dcolor.z > 0.5){
+			k.z = 2.0 * (dcolor.z + k.z - dcolor.z * k.z) - 1.0;
 		} else {
-			k.z = ((steepness - 1.0) * k.z * k.z  + (2.0 * midpoint - midpoint * steepness - steepness) * k.z + midpoint * (steepness - 1.0)) / (midpoint - 1.0);
+			k.z *= 2.0 * dcolor.z;
 		}
-		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}

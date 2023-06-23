@@ -374,7 +374,7 @@ custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
 text = "Contraceptive"
 
-[node name="nuduty" type="CheckBox" parent="work_rules"]
+[node name="nudity" type="CheckBox" parent="work_rules"]
 margin_left = 219.0
 margin_top = 104.0
 margin_right = 420.0
