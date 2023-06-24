@@ -14,7 +14,7 @@ func _ready():
 	update()
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
-		globals.connecttexttooltip(i,tr("WORKRULE" + i.name.to_upper() + "DESCRIPT"))
+		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))

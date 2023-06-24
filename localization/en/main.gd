@@ -1598,7 +1598,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_SOULBIND = "Soulbind",
 	TRAITLOYALTY_SOULBINDDESCRIPT = "{color=green|Obedience Drain: 0\nLoyalty Gain: 0}\n\nThe mind is such a fickle thing, a proper mage can exploit this as has been shown in this now exceptionally obedient specimen.\n\nRequires: Dominator Class on Master",
 	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
-	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "{color=green|Unlocks Nudity}\n\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
 	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
@@ -2681,6 +2681,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
+	
+	WORKRULENUDITY = "Nudity",
+	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponsding sprite). This effect is cosmetic.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
