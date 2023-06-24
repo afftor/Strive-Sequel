@@ -19,6 +19,7 @@ func _ready():
 #	update()
 	$TalkButton.connect("pressed", self, 'talk', [])
 	$SlaveBodyModule/StatsButton.connect('pressed', self, 'displaymetrics',[])
+	input_handler.connect('PortraitUpdate', self, 'update')
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
 	kurdan = {

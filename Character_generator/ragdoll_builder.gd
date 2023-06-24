@@ -302,3 +302,4 @@ func save_portrait(name):
 #		image.flip_y()
 #		image.resize(variables.portrait_width, variables.portrait_height)
 		image.save_png(path)
+	input_handler.emit_signal("PortraitUpdate")

@@ -3064,7 +3064,7 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_normal.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_normal.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_o.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/106_armory_set_gipure2_female/Pregnancy_gipure2_small.png"},
