@@ -200,7 +200,7 @@ margin_right = 85.0
 margin_bottom = 82.0
 custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 1, 0.894118, 0.337255, 1 )
-text = "All"
+text = "QBALL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -325,7 +325,7 @@ margin_bottom = 75.0
 rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Requirements"
+text = "QBREQ"
 
 [node name="questreqs" type="GridContainer" parent="QuestDetails/Panel/VBoxContainer/req"]
 margin_left = 162.0
@@ -378,7 +378,7 @@ margin_bottom = 160.0
 rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Rewards"
+text = "QBREW"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -438,7 +438,10 @@ margin_right = 184.304
 margin_bottom = 612.918
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Limit:"
+text = "QBLIM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="QuestDetails/Panel/time"]
 margin_left = 125.0
@@ -465,7 +468,7 @@ custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Accept"
+text = "QBACCEPT"
 
 [node name="NoQuests" type="Label" parent="."]
 margin_left = 88.5822

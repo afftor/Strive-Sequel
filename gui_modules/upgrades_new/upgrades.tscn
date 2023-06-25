@@ -58,7 +58,7 @@ margin_right = 674.0
 margin_bottom = 101.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Upgrades"
+text = "UPGRADEUPGR"
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 1398.0
@@ -67,7 +67,7 @@ margin_right = 1635.0
 margin_bottom = 101.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Upgrade info"
+text = "UPGRADEINFO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -97,7 +97,7 @@ margin_right = 225.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Upgrades"
+text = "UPGRADEUPGR"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -118,7 +118,7 @@ margin_right = 252.842
 margin_bottom = 48.0561
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Upgrade Schedule"
+text = "UPGRADESHED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -138,7 +138,7 @@ margin_right = 203.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Characters"
+text = "UPGRADECHAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -168,7 +168,7 @@ margin_right = 225.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Crafting"
+text = "UPGRADECRAFT"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -189,7 +189,7 @@ margin_right = 252.842
 margin_bottom = 48.0561
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Resources"
+text = "UPGRADERES"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -472,7 +472,7 @@ margin_right = 704.0
 margin_bottom = 135.0
 custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Resources"
+text = "UPGRADERES"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="description/VBoxContainer"]
@@ -614,7 +614,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Confirm"
+text = "CONFIRM"
 align = 1
 valign = 1
 __meta__ = {
@@ -638,7 +638,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 35 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Close"
+text = "CLOSE"
 align = 1
 valign = 1
 __meta__ = {

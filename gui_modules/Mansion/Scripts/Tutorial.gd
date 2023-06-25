@@ -2,16 +2,16 @@ extends Control
 
 
 var tutorials = [
-	"introduction",
+	"TUTORIALLIST1",
 	# "levelup",
 	# "character_list",
-	"crafting",
-	"traveling",
-	"job",
-	"quest",
-	"exploration",
-	"skills",
-	"tattoo"
+	"TUTORIALLIST2",
+	"TUTORIALLIST3",
+	"TUTORIALLIST4",
+	"TUTORIALLIST5",
+	"TUTORIALLIST6",
+	"TUTORIALLIST7",
+	"TUTORIALLIST8"
 ]
 
 var introduction_images = {
@@ -152,7 +152,7 @@ func open(tutorial = null):
 		var newbutton = input_handler.DuplicateContainerTemplate(TutList)
 		# newbutton.hide()
 		# unfade(newbutton, 0.3)
-		newbutton.get_node("Label").text = tut.capitalize()
+		newbutton.get_node("Label").text = tr(tut).capitalize()
 		newbutton.set_meta("tut", tut)
 		newbutton.connect("pressed", self, "show_tutorial_list", [tut])
 	if tutorial != null:

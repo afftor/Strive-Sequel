@@ -108,7 +108,7 @@ func show_slave_info():
 				# 	text += "∞}"
 		#$job.bbcode_text = globals.TextEncoder(text)
 		
-		$growth.text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))]
+		$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
 		for i in ['physics','wits','charm']:
 			var color = set_color(person.get_stat(i+"_bonus"))
