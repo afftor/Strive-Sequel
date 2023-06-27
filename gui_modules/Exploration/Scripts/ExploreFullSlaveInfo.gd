@@ -8,6 +8,7 @@ onready var traitlist = $ScrollContainer/HBoxContainer
 onready var traitlist2 = $ScrollContainer2/HBoxContainer
 var submodules = []
 
+var selected_char
 
 func _ready():
 	gui_controller.add_close_button(self)
@@ -19,6 +20,7 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connecttexttooltip(SummaryModule.get_node("VBoxContainer2/TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
 	SummaryModule.get_node("VBoxContainer2/TextureRect4/NextClassExp").hint_tooltip = tr("NEXTCLASSEXP")# + str(person.get_next_class_exp())
+	input_handler.connect('PortraitUpdate', self, 'show_summary')
 
 	for i in base_stats_container.get_children():
 		if i.name == "Exp":
@@ -41,7 +43,8 @@ func hire_sell():
 		sell_slave()
 
 
-func show_summary(person, from_dialogue = false):
+func show_summary(person = selected_char, from_dialogue = false):
+	selected_char = person
 	if !from_dialogue:
 		$PurchaseButton.visible = true
 		$Price.visible = true
