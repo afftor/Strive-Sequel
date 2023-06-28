@@ -40,6 +40,7 @@ signal EnemyKilled
 signal ButtonUpdated (node)
 signal LootGathered
 signal LocationSlavesUpdate
+signal PortraitUpdate
 
 var last_action_data = {}
 var text_characters = []

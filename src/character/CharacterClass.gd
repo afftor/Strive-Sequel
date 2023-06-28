@@ -602,6 +602,7 @@ func can_evade():
 func can_use_skill(skill):
 	if !check_cost(skill.cost): return false
 	if skill.type == 'auto': return false
+	if skill.has('reqs') and !checkreqs(skill.reqs): return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -1196,6 +1197,9 @@ func escape():
 
 
 func escape_actions():
+	remove_from_work_quest()
+	remove_from_task()
+	remove_from_travel()
 	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
 	is_active = false #for now, to replace with corresponding mechanic
 	characters_pool.cleanup()

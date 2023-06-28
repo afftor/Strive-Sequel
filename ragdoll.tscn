@@ -29,7 +29,7 @@
 [ext_resource path="res://Character_generator/skin_shader.tres" type="Material" id=27]
 [ext_resource path="res://Character_generator/images/21_nereid/Nereid_armL.png" type="Texture" id=28]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_helicere.png" type="Texture" id=29]
-[ext_resource path="res://Character_generator/images/99_armory_set_maidu/bluza.png" type="Texture" id=30]
+[ext_resource path="res://Character_generator/images/103_armory_set_plate_female/torso_armor_plate.png" type="Texture" id=30]
 [ext_resource path="res://Character_generator/images/04_hairs_base/hair_base_default.png" type="Texture" id=31]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/hair_armor_maid.png" type="Texture" id=32]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Hand1_armorR1.png" type="Texture" id=33]
@@ -100,7 +100,7 @@
 [ext_resource path="res://Character_generator/images/122_armory_set_leather_male/HandR1_armor_leather.png" type="Texture" id=98]
 [ext_resource path="res://Character_generator/images/105_armory_set_gipure1_female/tits_gipure1_normal.png" type="Texture" id=99]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Shoulder_armorR1.png" type="Texture" id=100]
-[ext_resource path="res://Character_generator/images/102_armory_set_leather_female/taz_armor_leather.png" type="Texture" id=101]
+[ext_resource path="res://Character_generator/images/103_armory_set_plate_female/taz_armor_plate.png" type="Texture" id=101]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_small.png" type="Texture" id=102]
 [ext_resource path="res://Character_generator/armor_shader.shader" type="Shader" id=103]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_large.png" type="Texture" id=104]
@@ -352,6 +352,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=28]
 shader = SubResource( 27 )
@@ -657,6 +659,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 103 )
@@ -687,6 +691,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=54]
 shader = ExtResource( 103 )
@@ -717,6 +723,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=55]
 shader = ExtResource( 103 )
@@ -747,6 +755,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=56]
 shader = ExtResource( 103 )
@@ -777,6 +787,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=57]
 shader = ExtResource( 103 )
@@ -807,6 +819,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=58]
 shader = ExtResource( 103 )
@@ -837,6 +851,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=59]
 shader = ExtResource( 103 )
@@ -867,6 +883,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=60]
 shader = ExtResource( 103 )
@@ -897,6 +915,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=46]
 shader = SubResource( 27 )
@@ -956,6 +976,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -1171,6 +1193,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -1634,6 +1658,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=31]
 shader = SubResource( 27 )
@@ -1780,6 +1806,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = SubResource( 27 )
@@ -2083,6 +2111,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=66]
 shader = ExtResource( 103 )
@@ -2113,6 +2143,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=67]
 shader = ExtResource( 103 )
@@ -2143,6 +2175,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=68]
 shader = ExtResource( 103 )
@@ -2173,6 +2207,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=69]
 shader = ExtResource( 103 )
@@ -2203,6 +2239,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=70]
 shader = ExtResource( 103 )
@@ -2233,6 +2271,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=71]
 shader = ExtResource( 103 )
@@ -2263,6 +2303,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=72]
 shader = ExtResource( 103 )
@@ -2293,6 +2335,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=17]
 
@@ -2354,6 +2398,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=74]
 shader = ExtResource( 103 )
@@ -2379,11 +2425,13 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 0.980392, 0, 1, 1 )
 shader_param/target2color = Color( 0.498039, 1, 0, 1 )
 shader_param/target3color = Color( 0, 1, 0.6, 1 )
-shader_param/part1color = Color( 1, 0, 0, 1 )
-shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.313726, 0.376471, 0.47451, 1 )
+shader_param/part2color = Color( 0.431373, 0.141176, 0.141176, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=75]
 shader = ExtResource( 103 )
@@ -2414,6 +2462,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=76]
 shader = ExtResource( 103 )
@@ -2444,6 +2494,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="Shader" id=21]
 code = "shader_type canvas_item;
@@ -2659,6 +2711,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=78]
 shader = ExtResource( 103 )
@@ -2689,6 +2743,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.0
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=79]
 shader = ExtResource( 103 )
@@ -2719,6 +2775,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=80]
 shader = ExtResource( 103 )
@@ -2749,6 +2807,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="Shader" id=49]
 code = "shader_type canvas_item;
@@ -3212,6 +3272,8 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
+shader_param/midpoint = 0.5
+shader_param/steepness = 2.0
 
 [sub_resource type="ShaderMaterial" id=34]
 shader = SubResource( 27 )
@@ -4189,6 +4251,7 @@ rotation = -1.5708
 texture = ExtResource( 30 )
 
 [node name="Pregnancy" type="Bone2D" parent="Female_pose/HumanF1/Spine"]
+visible = false
 position = Vector2( 135, 12.9995 )
 rest = Transform2D( 1, 0, 0, 1, 135, 12.9995 )
 

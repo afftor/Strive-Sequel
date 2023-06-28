@@ -625,6 +625,7 @@ func test_mode():
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Fairy', 'female', 'random')
 		character.set_stat('height', 'tiny')
+		character.set_stat('hairstyle', 'ponytail')
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Fairy', 'female', 'random')

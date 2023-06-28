@@ -15,9 +15,9 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'Human', 
+	race = 'HalfkinBunny', 
 	horns = '', 
-	ears = 'human', 
+	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
 	eye_tex = 'eyes2', 
 	eye_color = 'green', 
@@ -52,9 +52,9 @@ var test_template = {
 	armor_lower = 'legs_adv_metal',
 	armor_color_base = 'default',
 	armor_color_lower = 'default',
-	height = 'tiny',
+	height = 'towering',
 	ass_size = 'small',
-	pose = 'test',
+	pose = 'pose2',
 }
 
 func _ready():
@@ -80,6 +80,8 @@ func _get_stat(stat):
 
 
 func rebuild(character_to_build):
+	if !is_visible_in_tree():
+		return
 	#setup
 	__scale_x = _scale_x
 	__scale_y = _scale_y
@@ -118,6 +120,8 @@ func rebuild(character_to_build):
 
 
 func rebuild_cloth(value):
+	if !is_visible_in_tree():
+		return
 	if value == null:
 		value = clothes
 	#first pass - textures
@@ -302,3 +306,4 @@ func save_portrait(name):
 #		image.flip_y()
 #		image.resize(variables.portrait_width, variables.portrait_height)
 		image.save_png(path)
+	input_handler.emit_signal("PortraitUpdate")

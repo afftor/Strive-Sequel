@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tits_leather_0.png-d4b5de4e00e3cf2baff66e53097d9bbc.stex"
+path="res://.import/tail_kobold.png-4687f999def2a26e53b790c83cdbe1fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/102_armory_set_leather_female/tits_leather_0.png"
-dest_files=[ "res://.import/tits_leather_0.png-d4b5de4e00e3cf2baff66e53097d9bbc.stex" ]
+source_file="res://Character_generator/images/07_tails/tail_kobold.png"
+dest_files=[ "res://.import/tail_kobold.png-4687f999def2a26e53b790c83cdbe1fc.stex" ]
 
 [params]
 
