@@ -1,10 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
-
-[ext_resource path="res://Character_generator/images/98_masks/mask_hair2.png" type="Texture" id=1]
-[ext_resource path="res://Character_generator/images/98_masks/mask_hair1.png" type="Texture" id=2]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
 uniform vec2 anchor2 = vec2(0.0);
@@ -44,6 +38,7 @@ uniform sampler2D part3;
 
 uniform float overlay = 0.7;
 
+
 vec3 rgb2hsl(vec3 c )
 {
     float epsilon = 0.00000001;
@@ -75,6 +70,13 @@ vec3 hsl2rgb(vec3 HSL)
   return (RGB - 0.5) * C + HSL.z;
 }
 
+float a_transform(float a){
+	float res = (2.0 - a) * a;
+	res = clamp(res, 0.0, 1.0);
+	res *= overlay;
+	return res;
+}
+
 void fragment(){
     vec4 color = texture(TEXTURE, UV);
 	float a = color.a;
@@ -82,50 +84,50 @@ void fragment(){
 	vec3 t2 = rgb2hsl(target2color.rgb);
 	vec3 t3 = rgb2hsl(target3color.rgb);
 	vec3 k = rgb2hsl(color.rgb);
-	if (texture(part1, UV).a > 0.0){
+	vec3 k_temp = color.rgb;
+	if ((texture(part1, UV).a > 0.0) && (target1color != part1color)) {
 		vec3 dcolor = rgb2hsl(part1color.rgb);
+		float pt = texture(part1, UV).a;
+		pt = a_transform(pt);
 		float rot = dcolor.x - t1.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z/t1.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay * texture(part1, UV).a);
-		color = vec4(k.xyz, a);
+		vec3 tres = k;
+		tres.x = k.x + rot;
+		tres.y = dcolor.y;
+		tres.z *= dcolor.z/t1.z;
+		tres.z = clamp(tres.z, 0.0, 1.0);
+		if (tres.x > 1.0) tres.x -= 1.0;
+		if (tres.x < 0.0) tres.x += 1.0;
+		k_temp = mix(k_temp, hsl2rgb(tres), pt);
 	}
-	k = rgb2hsl(color.rgb);
-	if (texture(part2, UV).a > 0.0){
+	if ((texture(part2, UV).a > 0.0) && (target2color != part2color)) {
 		vec3 dcolor = rgb2hsl(part2color.rgb);
+		float pt = texture(part2, UV).a;
+		pt = a_transform(pt);
 		float rot = dcolor.x - t2.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z / t2.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay* texture(part2, UV).a);
-		color = vec4(k.xyz, a);
+		vec3 tres = k;
+		tres.x = k.x + rot;
+		tres.y = dcolor.y;
+		tres.z *= dcolor.z/t1.z;
+		tres.z = clamp(tres.z, 0.0, 1.0);
+		if (tres.x > 1.0) tres.x -= 1.0;
+		if (tres.x < 0.0) tres.x += 1.0;
+		k_temp = mix(k_temp, hsl2rgb(tres), pt);
 	}
-	k = rgb2hsl(color.rgb);
-	if (texture(part3, UV).a > 0.0){
+	if ((texture(part3, UV).a > 0.0) && (target3color != part3color)){
 		vec3 dcolor = rgb2hsl(part3color.rgb);
+		float pt = texture(part3, UV).a;
+		pt = a_transform(pt);
 		float rot = dcolor.x - t3.x;
-		k.x = k.x + rot;
-		if (k.x > 1.0) k.x -= 1.0;
-		if (k.x < 0.0) k.x += 1.0;
-		k.y = dcolor.y;
-		k.z *= dcolor.z / t3.z;
-		k.z = clamp(k.z, 0.0, 1.0);
-//		k.z *= dcolor.z;
-		k = hsl2rgb(k);
-		k = mix(color.rgb, k, overlay * texture(part3, UV).a);
-		color = vec4(k.xyz, a);
+		vec3 tres = k;
+		tres.x = k.x + rot;
+		tres.y = dcolor.y;
+		tres.z *= dcolor.z/t1.z;
+		tres.z = clamp(tres.z, 0.0, 1.0);
+		if (tres.x > 1.0) tres.x -= 1.0;
+		if (tres.x < 0.0) tres.x += 1.0;
+		k_temp = mix(k_temp, hsl2rgb(tres), pt);
 	}
+	color = vec4(k_temp, a);
 	COLOR = color;
 }
 
@@ -157,35 +159,4 @@ void vertex(){
 		offset += move6 * (range6 - dist) * power / range6;
 	}
 	VERTEX += offset;
-}"
-
-[resource]
-shader = SubResource( 1 )
-shader_param/anchor1 = Vector2( 328.001, 387.999 )
-shader_param/anchor2 = Vector2( 567.001, 387.998 )
-shader_param/anchor3 = Vector2( 0, 0 )
-shader_param/anchor4 = Vector2( 0, 0 )
-shader_param/anchor5 = Vector2( 0, 0 )
-shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 0, 0 )
-shader_param/move4 = Vector2( 0, 0 )
-shader_param/move5 = Vector2( 0, 0 )
-shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 200.0
-shader_param/range2 = 200.0
-shader_param/range3 = 0
-shader_param/range4 = 0
-shader_param/range5 = 0
-shader_param/range6 = 0
-shader_param/power = 1.0
-shader_param/target1color = Color( 1, 0, 0, 1 )
-shader_param/target2color = Color( 1, 0, 0, 1 )
-shader_param/target3color = Color( 1, 0, 0, 1 )
-shader_param/part1color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/part2color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/part3color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/overlay = 1.0
-shader_param/part2 = ExtResource( 2 )
-shader_param/part3 = ExtResource( 1 )
+}
