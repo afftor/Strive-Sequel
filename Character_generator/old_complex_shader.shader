@@ -1,10 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
-
-[ext_resource path="res://Character_generator/images/98_masks/mask_hair2.png" type="Texture" id=1]
-[ext_resource path="res://Character_generator/images/98_masks/mask_hair1.png" type="Texture" id=2]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec2 anchor1 = vec2(0.0);
 uniform vec2 anchor2 = vec2(0.0);
@@ -157,35 +151,4 @@ void vertex(){
 		offset += move6 * (range6 - dist) * power / range6;
 	}
 	VERTEX += offset;
-}"
-
-[resource]
-shader = SubResource( 1 )
-shader_param/anchor1 = Vector2( 328.001, 387.999 )
-shader_param/anchor2 = Vector2( 567.001, 387.998 )
-shader_param/anchor3 = Vector2( 0, 0 )
-shader_param/anchor4 = Vector2( 0, 0 )
-shader_param/anchor5 = Vector2( 0, 0 )
-shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 0, 0 )
-shader_param/move4 = Vector2( 0, 0 )
-shader_param/move5 = Vector2( 0, 0 )
-shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 200.0
-shader_param/range2 = 200.0
-shader_param/range3 = 0
-shader_param/range4 = 0
-shader_param/range5 = 0
-shader_param/range6 = 0
-shader_param/power = 1.0
-shader_param/target1color = Color( 1, 0, 0, 1 )
-shader_param/target2color = Color( 1, 0, 0, 1 )
-shader_param/target3color = Color( 1, 0, 0, 1 )
-shader_param/part1color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/part2color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/part3color = Color( 0, 0.415686, 0.141176, 1 )
-shader_param/overlay = 1.0
-shader_param/part2 = ExtResource( 2 )
-shader_param/part3 = ExtResource( 1 )
+}

@@ -943,17 +943,17 @@ var transforms = {
 	
 	skin_coverage = {
 		null : [
-			{type = 'import_mask_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/shaders_color_human_skin/skin_shader.tres"}
+			{type = 'import_recolor_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/recolor_none.tres"}
 		], #clear mask without removing color change 
 		"" : [
-			{type = 'import_mask_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/shaders_color_human_skin/skin_shader.tres"}
+			{type = 'import_recolor_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/recolor_none.tres"}
 		],
 		#old ones 2fix
 		feathers = [
-			{type = 'import_mask_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/shaders_color_human_skin/skin_shader.tres"}
+			{type = 'import_recolor_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/recolor_none.tres"}
 		],
 		plant = [
-			{type = 'import_mask_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/shaders_color_human_skin/skin_shader.tres"}
+			{type = 'import_recolor_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/recolor_none.tres"}
 		],
 		fur_orange = [ #wrong colors
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [2]},
