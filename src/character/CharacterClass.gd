@@ -81,6 +81,16 @@ func get_stat(statname, ref = false):
 	if statname == 'base_exp':
 		return xp_module.base_exp
 	if statname == 'pose':
+		match get_stat('personality'):
+			'shy':
+				return 'shy'
+			'kind':
+				return 'kind'
+			'serious':
+				return 'kind'
+			'bold':
+				return 'bold'
+		
 		return 'default' #temporal stub
 	if statname == 'counters':
 		return effects.counters

@@ -127,6 +127,7 @@ func build_gear_panel():
 			$ragdoll.rebuild_cloth(true)
 #		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
+			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null
 			if selectedhero.equipment.gear[i] == null:
 				$InventorySlots.get_node(i + "/icon").texture = null
 			else:

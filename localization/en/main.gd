@@ -1273,7 +1273,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RACEHALFKINBUNNYADJ = "Half-Breed Bunny",
 	RACEHALFKINTANUKI = "Half-Breed Tanuki",
 	RACEHALFKINTANUKIADJ = "Half-Breed Tanuki",
-
+	
+	RACERATKIN = "Ratkin",
+	RACERATKINADJ = "Ratkin",
+	
+	
 	RACEHUMANDESCRIPT = "Humans are one of the most common races. Their strength comes in their numbers and flexibility, but they generally are rather weak in magic and have low potential growth. Only a few exceptional humans have shown outstanding feats. \n\nHuman society is rather open to others but also quick to anger and start wars even among themselves. While some might act prudish, especially in public, humans in general are very sexually active and do not stray from other humanoid races. ",
 	RACEELFDESCRIPT = "Elves prefer living in the forest and being close to nature with other naturistic races like Dryads and Fairies. They are adept in magic, but their physical strength is fairly mediocre. \n\nElven society is fairly secluded but isn't above contact and trading with other races. Elves rarely show an active interest in sex outside of their social group, often preferring life-long relationships. Still they are considered very appealing and attractive by other races making them in popular demand as slaves.",
 	RACETRIBALELFDESCRIPT = "A rarer version of elves with distinct dark skin. Tribal elves mostly inhabit southern regions and show numerous differences to their common counterparts. They are less prone to magic but possess stronger bodies.\n\nHowever, their society (often separated into tribes) is more secluded and hostile to outsiders, but they are also more open to sex than normal elves.",
@@ -1308,7 +1312,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RACEHALFKINFOXDESCRIPT = "Fox folk are a rare and relatively mysterious breed of Beastkin. They display high intelligence, a tendency towards lifelong monogamy, and congregate in small, close-knit communities.",
 	RACEHALFKINBUNNYDESCRIPT = "Bunnies are one of the least self-sufficient, but nonetheless common beast races. They are not aggressive and can be quite timid. They are quite well liked due to their comforting appearance and their natural lewdness which make them a popular choice for slave pets.",
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
-
+	RACERATKIDESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places. ",
+	
+	
 	SKILLPRAISE = "Praise",
 	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience.",
 	SKILLWARN = "Warn",
@@ -1944,6 +1950,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTEARSCOW = "cow",
 	BODYPARTEARSFEATHERED = "feathered",
 	BODYPARTEARSFISH = "fish",
+	BODYPARTEARSRAT = "rat",
 	BODYPARTSKINPALE = "pale",
 	BODYPARTSKINGREY = "grey",
 	BODYPARTSKINFAIR = "fair",
@@ -2101,6 +2108,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTEARSCOWDESCRIPT = "[He] has a pair of fluffy [color=aqua]cow[/color] ears.",
 	BODYPARTEARSFEATHEREDDESCRIPT = "There's a pair of clutched [color=aqua]feathery ears[/color] on the sides of [His] head.",
 	BODYPARTEARSFISHDESCRIPT = "[His] ears look like a pair of [color=aqua]fins[/color].",
+	BODYPARTEARSRATDESCRIPT = "[He] as a pair of large mouse-like ears.",
 
 	BODYPARTSKINPALEDESCRIPT = "[His] skin is a [color=aqua]pale[/color] white.",
 	BODYPARTSKINGREYDESCRIPT = "[His] skin is a stone [color=aqua]grey[/color].",
@@ -3724,21 +3732,21 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
 	
 	MATERIALMILK = "Milk", #TODO add descriptions
-	MATERIALMILKDESCRIPT = "Milk",
+	MATERIALMILKDESCRIPT = "Freshly obtained milk, not of completely common origin. Commonly obtained from females after pregnancy. ",
 	MATERIALSEED = "Seed",
-	MATERIALSEEDDESCRIPT = "Seed",
+	MATERIALSEEDDESCRIPT = "Essence of male virility. Commonly obtained from males.",
 	MATERIALPHEROMONES = "Pheromones",
-	MATERIALPHEROMONESDESCRIPT = "Pheromones",
+	MATERIALPHEROMONESDESCRIPT = "A vial fo clear fluid often used in cosmetics and perfume. Commonly obtained from beast folk.",
 	MATERIALEGGS = "Eggs",
-	MATERIALEGGSDESCRIPT = "Eggs",
+	MATERIALEGGSDESCRIPT = "A batch of unfertilized eggs of slightly larger size than usual. Commonly obtained from Harpies and Lamias",
 	MATERIALMAGIC_DUST = "Magic Dust",
-	MATERIALMAGIC_DUSTDESCRIPT = "Magic Dust",
+	MATERIALMAGIC_DUSTDESCRIPT = "Residues enriched with magical power. Commonly obtained from Elves and Fairies",
 	MATERIALuLE_BLOOD = "Reptile Blood",
-	MATERIALREPTILE_BLOODDESCRIPT = "Reptile Blood",
+	MATERIALREPTILE_BLOODDESCRIPT = "A vial of red fluid from cold-blooded creatures. Commonly obtained from Kobolds and Dragonkin.",
 	MATERIALLIGHT_ESSENCE = "Light Essence",
-	MATERIALLIGHT_ESSENCEDESCRIPT = "Light Essence",
+	MATERIALLIGHT_ESSENCEDESCRIPT = "A light fluffy substance smelling of soap. Commonly obtained from Seraphs.",
 	MATERIALDARK_ESSENCE = "Dark Essence",
-	MATERIALDARK_ESSENCEDESCRIPT = "Dark Essence",
+	MATERIALDARK_ESSENCEDESCRIPT = "Commonly obtained from Demons.",
 	
 	
 	QUESTREQSCOMPLETE = "Quest subtask complete",

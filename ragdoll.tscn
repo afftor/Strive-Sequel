@@ -4616,7 +4616,7 @@ light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 567, -10.002 )
 rotation = -1.5708
-scale = Vector2( 0.95, 0.95 )
+scale = Vector2( 1, 0.95 )
 texture = ExtResource( 1 )
 
 [node name="portrait" type="TextureRect" parent="Female_pose/HumanF1/Spine/Head" groups=["portrait"]]

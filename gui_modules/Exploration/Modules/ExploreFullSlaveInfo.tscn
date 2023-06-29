@@ -89,14 +89,11 @@ mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ragdoll" parent="SlaveBodyModule" instance=ExtResource( 30 )]
 show_behind_parent = true
-position = Vector2( 333.474, 268.064 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 333.474, 324.064 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="BodyMask" type="Light2D" parent="SlaveBodyModule"]
 light_mask = 8

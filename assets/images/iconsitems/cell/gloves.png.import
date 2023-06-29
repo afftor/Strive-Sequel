@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyebrows4.png-b47d7a9c9fda328f076dd94586789aee.stex"
+path="res://.import/gloves.png-10d30e6bb158a36aecd94021047e0b8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/11_eyebrows/eyebrows4.png"
-dest_files=[ "res://.import/eyebrows4.png-b47d7a9c9fda328f076dd94586789aee.stex" ]
+source_file="res://assets/images/iconsitems/cell/gloves.png"
+dest_files=[ "res://.import/gloves.png-10d30e6bb158a36aecd94021047e0b8a.stex" ]
 
 [params]
 
