@@ -51,7 +51,7 @@ func rebuild():
 	$DateIcon.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
 
-	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + tr("MSLMDAY")
+	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
 	input_handler.ClearContainer(SlaveContainer)
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
@@ -480,7 +480,7 @@ func update_button(newbutton):
 		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = tr("MSLMRELOC") + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN")
+		newbutton.get_node('Location').text = tr("MSLMRELOC") ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		newbutton.get_node('Location').text = tr("MSLMMANSION")#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:
