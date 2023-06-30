@@ -583,6 +583,7 @@ func get_stat(statname, ref = false):
 		var partname = statname.trim_prefix('armor_color_')
 		statname = 'armor_color'
 		var part = parent.get_ref().get_stat('armor_' + partname)
+		part = part.trim_prefix('legs_').trim_prefix('chest_')
 		if statlist[statname] is Dictionary and statlist[statname].has(part):
 			return statlist[statname][part]
 		if statlist[statname] is String and statlist[statname] != "":
@@ -1372,6 +1373,7 @@ func create(temp_race, temp_gender, temp_age):
 
 	get_racial_features()
 	get_random_name()
+	get_random_colors()
 	random_icon()
 
 	statlist.personality = variables.personality_array[randi()%variables.personality_array.size()]
@@ -1522,6 +1524,11 @@ func get_random_name(keep_surname = false):
 		statlist.surname = Namedata.namelist[statlist.race.to_lower() + "surname"][randi() % Namedata.namelist[statlist.race.to_lower() + "surname"].size()]
 	elif statlist.race.find("Halfkin") >= 0 || statlist.race.find("Beastkin") >= 0:
 		statlist.surname = Namedata.getRandomFurrySurname()
+
+func get_random_colors():
+	statlist.armor_color = {}
+	for base in Items.armor_colors:
+		statlist.armor_color[base] = input_handler.random_from_array(Items.armor_colors[base])
 
 func random_icon():
 	var array = []

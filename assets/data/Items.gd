@@ -4105,6 +4105,32 @@ var tattoolist = {
 }
 
 
+var armor_colors = {
+		underwear = ['default'],
+		lacy_1 = ['default'],
+		lacy_2 = ['default'],
+		servant = ['default'],
+		base_cloth = ['default'],
+		adv_cloth = ['default'],
+		base_leather = ['default'],
+		adv_leather = ['default'],
+		base_metal = ['default'],
+		adv_metal = ['default'],
+#		chest_base_cloth = ['default'],
+#		chest_adv_cloth = ['default'],
+#		chest_base_leather = ['default'],
+#		chest_adv_leather = ['default'],
+#		chest_base_metal = ['default'],
+#		chest_adv_metal = ['default'],
+#		legs_base_cloth = ['default'],
+#		legs_adv_cloth = ['default'],
+#		legs_base_leather = ['default'],
+#		legs_adv_leather = ['default'],
+#		legs_base_metal = ['default'],
+#		legs_adv_metal = ['default'],
+}
+
+
 func get_materials_by_grade(grade):
 	var array = []
 	for i in materiallist.values():
