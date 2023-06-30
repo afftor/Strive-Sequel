@@ -2,6 +2,253 @@ extends Reference
 var TranslationDict = {
 	#test string
 	TESTNAMELOCALIZATION = "en_test",
+
+	
+	VARIABLESTIMEWORDMORNING = "MORNING",
+	VARIABLESTIMEWORDNOON = "NOON",
+	VARIABLESTIMEWORDEVENING = "EVENING",
+	VARIABLESTIMEWORDNIGHT = "NIGHT",
+	##UI
+	#Menu
+	MENUCONTINUE = "Continue",
+	MENUNEWGAME = "New game",
+	MENULOAD = "Load",
+	MENUOPTIONS = "Options",
+	MENUCREDITS = "Credits",
+	MENUMODS = "Mods",
+	MENUGALLERY = "Gallery",
+	MENUQUIT = "Quit",
+	MENUCHANGELOG = "Change log",
+	#Gallery
+	GALLERYNAME = "Gallery",
+	GALLERYSTORY = "Story",
+	GALLERYERO = "Ero",
+	GALLERYSCENES = "Scenes",
+	GALLERYRETURN = "Return",
+	#ModPanel
+	MODLOAD = "Loaded mods",
+	MODLOAD1 = "these mods will be applied to game and avaliable in editor at next game start.",
+	MODLIST = "List of mods avaliable to load",
+	MODUP = "Up",
+	MODDOWN = "Down",
+	MODOK = "Ok",
+	MODCLOSE = "Close",
+	MODSORT =  "Sort",
+	MODOPENEDITOR = "Open Editor (Alpha Version)",
+	#MENUCREDITS
+	MENUCREDITSNAME = "Credits",
+	MENUCREDITSDESC = """Game design, writing, programming: Maverik /
+
+						Combat and skil programming: ykoc
+
+						GUI programming: Gerakena
+						Helper Programming: SphinxKingStone
+						Extended modding core/support: zeltop
+
+						Character design: Nightigall
+						Character design: @naisk47
+						Scene art: Allanheil
+						Background art: Laynesis, OMA(Olga Morozova)
+						Icon art: Persich
+
+						Writing: ralphomayo
+						Writing: plumpjack
+						Writing: S[Mutt]
+
+						Proofreading: Dorant, ralphomayo, Khuja
+
+						Also thanks to: negtize724
+
+						Ambient battle noise: swords and shouting - pfranzen
+						https://freesound.org/people/pfranzen/sounds/192072/""",
+	#Options
+	OPTNAME1 = "Gameplay",
+	OPTNAME2 = "Audio",
+	OPTNAME3 = "Graphics",
+	OPTNAME4 = "Cheats",
+	
+	OPTOPT = "Options",
+	OPTCLOSE = "CLOSE",
+	OPTGAMEPLAYFURRIES = "Furries",
+	OPTGAMEPLAYFURRMULT = "Multiple Nipples on Furries",
+	OPTGAMEPLAYFUTA = "Futas with balls",
+	OPTGAMEPLAYSHOWDETAILES = "Show Consent Details",
+	OPTGAMEPLAYTUTOR = "Enable Tutorials",
+	OPTGAMEPLAYMALERATE = "MALERATE",
+	OPTGAMEPLAYFUTARATE = "FUTARATE",
+	OPTFAMEPLAYAUTOSAVEAMOUNT = "Autasaves amount",
+	OPTGAMEPLAYAUTOSAVETIME = "Days per autosave",
+	
+	OPTCHANGELANGUAGE = "To change the language, you need to restart the game",
+	OPTOK = "Ok",
+	
+	OPTAUDIOMASTERSOUND = "MASTERSOUND",
+	OPTAUDIOMUSIC = "MUSIC",
+	OPTAUDIOSOUND = "SOUND",
+	OPTAUDIOMUTE = "MUTE",
+	
+	OPTGRAPHICFULLSCREEN = "Full Screen",
+	OPTGRAPHICFACTOR = "Factors as words",
+	OPTGRAPHICRANDOMPORTRAIT = "Random Portraits",
+	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Disable Animation backgrounds",
+	
+	OPTCHEATENTERCODE = "Enter Code",
+	OPTCHEATACTIVATE = "Activate",
+	OPTCHEATGETCODE = "Get Code",
+	OPTCHEATPASSWORD = "Password",
+	OPTCHEATCODEACTIVATE = "Supporter Code Activated",
+	OPTCHEATCHEATMENU = "Cheats Menu",
+	#loadsavepanel
+	LSPMODE = "Mode",
+	LSPVER = "Version",
+	LSPGOLD = "Gold",
+	LSPPOPULATION = "Population",
+	LSPMASTER = "Master",
+	LSPDAY = "Day",
+	LSPHOUR = " Hour",
+	LSPIMPORTMODE = "Import mode",
+	LSPSAVENAME = "savename",
+	LSPUPDATESAVEFILE = "Update Save File",
+	LSPOUTDATED = "{color=red| (Outdated - use import mode)}",
+	#newgame
+	NEWGAMENAME = "New game",
+	NEWGAMESETTING = "Settings",
+	NEWGAMESKIPPROL = "Skip prologue",
+	NEWGAMESTART = "Start Game",
+	
+	PRESETDATADEBUGEASYNAME = "easy",
+	PRESETDATADEBUGEASYDIS = "Easier difficulty, you start with more gold and resources. Obedience drain is reduced. (WIP) Loan payments are reduced",
+	
+	PRESETDATADEBUGNORMALNAME = "normal",
+	PRESETDATADEBUGNORMALDIS = "Standard difficulty for players with a reasonable grasp at management games.",
+	
+	PRESETDATADEBUGHARDNAME = "hard",
+	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. (WIP) Loan payments aren't cancelled with prologue completion",
+	
+	PRESETDATADEBUGIMPORTNAME = "import",
+	PRESETDATADEBUGIMPORTDIS = "Start with only a Master. ",
+	
+	PRESETDATADEBUGADVANCEDNAME = "advanced",
+	PRESETDATADEBUGADVANCEDDIS = "Start while skipping the introduction to Civil War arc. Only recommended for those who completed the prologue before. - obsolete",
+	
+	NEWGAMEADDITIONAL = "Additional Characters",
+	NEWGAMESETTINGFUTA = "futa",
+	NEWGAMESETTINGFURRY = "furry",
+	#TutorialInfo
+	TUTORIALINFONAME = "Introduction",
+	TUTORIALINFOQUESTION = "Is it your first time playing Strive: Conquest?",
+	TUTORIALINFOEXPLANATION = """You can open tutorial any time you wish,
+using       button.""",
+	TUTORIALINFODISMISS = "Dismiss",
+	TUTORIALINFOENABLE = "Enable Tutorial",
+	#Tutorial
+	TUTORIALNAME = "Help",
+	TUTORIALPREV = "< Previous",
+	TUTORIALNEXT = "Next >",
+	TUTORIALLIST1 = "introduction",
+	TUTORIALLIST2 = "crafting",
+	TUTORIALLIST3 = "traveling",
+	TUTORIALLIST4 = "job",
+	TUTORIALLIST5 = "quest",
+	TUTORIALLIST6 = "exploration",
+	TUTORIALLIST7 = "skills",
+	TUTORIALLIST8 = "tattoo",
+	##Mansion
+	#LeftMenuModule
+	LMMTRAVEL = "Travels",
+	LMMUPGRADES = "Upgareds",
+	LMMDATE = "Date",
+	LMMINVENTORY = "Inventory",
+	LMMCRAFT = "Craft",
+	LMMJOURNAL = "Journal",
+	#MansionSlaveListModule
+	MSLMNAME = "Character List",
+	MSLMSex = "Sex",
+	MSLMNNAME = "Name ",
+	MSLMSTAT = "HP/MP",
+	MSLMOCCU = "Occupation",
+	MSLMOB = "Obed",
+	MSLMEXP = "Exp",
+	MSLMLOC = "Location",
+	MSLMTYPE = "Type",
+	
+	MSLMRELOC = "Relocating",
+	MSLMRE = "in",
+	MSLMTURN = " turns",
+	MSLMMANSION = "Mansion",
+	MSLMDAY = "day",
+	MSLMSHOWALL = "Show All",
+	#MansionSlaveModule
+	MSMNAME = "Character Info",
+	MSMEXP = "EXP",
+	
+	#factor_descripts
+	FACTORDESCRIPTS1 = "Terrible",
+	FACTORDESCRIPTS2 = "Poor",
+	FACTORDESCRIPTS3 = "Average",
+	FACTORDESCRIPTS4 = "Good",
+	FACTORDESCRIPTS5 = "Great",
+	FACTORDESCRIPTS6 = "Excellent",
+	#SlaveInfoModule
+	SLAVE = "Slave",
+	SLAVEINFOMODULEOBEDIENCE = "Obedience",
+	SIMRESIST = "Resists",
+	SIMLOYALTYGAIN = "Loyalty Gain",
+	SIMOBEDIENCEDRAIN = "Obedience Drain",
+	SIMATK = "ATK:",
+	SIMDEF = "DEF:",
+	SIMHITRATE = "Hit Rate:",
+	SIMSPEED = "Speed:",
+	SIMCRITICAL = "Critical:",
+	SIMMATK = "MATK:",
+	SIMMDEF = "MDEF:",
+	SIMEVASION = "Evasion:",
+	SIMARMORPEN = "Armor Pen.:",
+	SIMCRITICALMOD = "Critical Mod:",
+	
+	NORMALRESIST = "normal",
+	FIRERESIST = "fire",
+	EARTHRESIST = "earth",
+	AIRRESIST = "air",
+	WATERRESIST = "water",
+	LIGHTRESIST = "light",
+	DARKRESIST = "dark",
+	MINDRESIST = "mind",
+	ALLRESIST = "all",
+	#
+	HEALTHP = "Health: ",
+	MANAP = "Mana:",
+	#mansionjournal 
+	JOURNALLABLE = "Active Tasks",
+	JOURNALMAIN = "Main",
+	JOURNALMINOR = "Minor",
+	
+	QBALL = "All",
+	QBREQ = "Requirements",
+	QBREW = "Rewards",
+	QBDAY = " days",
+	QBLIM = "Limit:",
+	QBACCEPT = "Accept",
+	
+	MONEYTOOLTIP = "Money in Posession",
+	MONEYTOOLTIP2 = "Weekly Taxes",
+	
+	PAUSEMENUSAVE = "Save",
+	PAUSEMENULOAD = "Load",
+	PAUSEMENUOPT = "Options",
+	PAUSEMENUGALLERY = "Gallery",
+	PAUSEMENUEXIT = "Exit",
+	
+	UPGRADEUPGR = "Upgrades",
+	UPGRADEINFO = "Upgrade info",
+	UPGRADESHED = "Upgrade Schedule",
+	UPGRADECHAR = "Characters",
+	UPGRADECRAFT = "Crafting",
+	UPGRADERES = "Resources",
+	##
+	
+	#Time
+
 	OPTIONSWITCHLANGUAGE = "Change Language",
 	
 	TIPLABEL = "Tip",
@@ -76,7 +323,7 @@ In order to maintain these properties in an efficient manner, Landowners frequen
 Despite working under harsh conditions beyond human endurance long hours with minimal rest- they are considered indispensable in keeping the economy running smoothly. Their work productivity allowed control over market prices and competing guilds.
 
 However, while it might seem that Landowners have nothing but contempt for those below them- there have been cases where some have shown unexpected kindness towards their slaves depending on rare compassionate nature or personal beliefs systems not common among majority owner population.""",
-	
+
 	NIGHT = "Night",
 	MORNING = "Morning",
 	NOON = "Noon",

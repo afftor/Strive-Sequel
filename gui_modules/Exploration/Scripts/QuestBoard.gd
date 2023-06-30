@@ -316,7 +316,7 @@ func see_quest_info(quest):
 		
 	$QuestDetails/Panel/RichTextLabel.bbcode_text = globals.TextEncoder(text_name)
 	$QuestDetails/Panel/RichTextLabel2.bbcode_text = globals.TextEncoder(text)
-	$QuestDetails/Panel/time/Label.text = str(quest.time_limit) + " days."
+	$QuestDetails/Panel/time/Label.text = str(quest.time_limit) + tr("QBDAY") + "."
 
 func accept_quest():
 	ResourceScripts.game_world.take_quest(selectedquest, input_handler.active_area)

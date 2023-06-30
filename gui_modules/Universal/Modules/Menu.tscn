@@ -140,8 +140,8 @@ __meta__ = {
 }
 
 [node name="continuebutton" type="Button" parent="VBoxContainer"]
-margin_left = 25.0
-margin_right = 319.0
+margin_left = 6.0
+margin_right = 645.0
 margin_bottom = 90.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -153,11 +153,11 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Continue"
+text = "MENUCONTINUE"
 
 [node name="newgamebutton" type="Button" parent="VBoxContainer"]
 margin_top = 98.0
-margin_right = 345.0
+margin_right = 652.0
 margin_bottom = 188.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -169,15 +169,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "New game"
+text = "MENUNEWGAME"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="loadbutton" type="Button" parent="VBoxContainer"]
-margin_left = 93.0
+margin_left = 102.0
 margin_top = 196.0
-margin_right = 252.0
+margin_right = 550.0
 margin_bottom = 286.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -189,15 +189,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Load"
+text = "MENULOAD"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="optionsbutton" type="Button" parent="VBoxContainer"]
-margin_left = 48.0
+margin_left = 43.0
 margin_top = 294.0
-margin_right = 296.0
+margin_right = 608.0
 margin_bottom = 384.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -209,15 +209,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Options"
+text = "MENUOPTIONS"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="creditsbutton" type="Button" parent="VBoxContainer"]
-margin_left = 58.0
+margin_left = 48.0
 margin_top = 392.0
-margin_right = 287.0
+margin_right = 603.0
 margin_bottom = 482.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -229,15 +229,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Credits"
+text = "MENUCREDITS"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="modsbutton" type="Button" parent="VBoxContainer"]
-margin_left = 82.0
+margin_left = 98.0
 margin_top = 490.0
-margin_right = 262.0
+margin_right = 554.0
 margin_bottom = 580.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -249,15 +249,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Mods"
+text = "MENUMODS"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="gallery" type="Button" parent="VBoxContainer"]
-margin_left = 54.0
+margin_left = 33.0
 margin_top = 588.0
-margin_right = 291.0
+margin_right = 619.0
 margin_bottom = 678.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -269,15 +269,15 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Gallery"
+text = "MENUGALLERY"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="quitbutton" type="Button" parent="VBoxContainer"]
-margin_left = 104.0
+margin_left = 115.0
 margin_top = 686.0
-margin_right = 241.0
+margin_right = 537.0
 margin_bottom = 776.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -289,7 +289,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Quit"
+text = "MENUQUIT"
 __meta__ = {
 "_editor_description_": ""
 }
@@ -450,8 +450,11 @@ __meta__ = {
 margin_right = 709.0
 margin_bottom = 85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+text = "NEWGAMENAME"
+
 custom_fonts/font = ExtResource( 15 )
-text = "New game"
+
 align = 1
 valign = 1
 __meta__ = {
@@ -464,8 +467,11 @@ margin_top = 482.0
 margin_right = 296.0
 margin_bottom = 567.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+text = "NEWGAMESETTING"
+
 custom_fonts/font = SubResource( 7 )
-text = "Settings"
+
 align = 1
 valign = 1
 __meta__ = {
@@ -527,7 +533,7 @@ margin_right = 269.02
 margin_bottom = 745.391
 theme = ExtResource( 12 )
 custom_fonts/font = ExtResource( 28 )
-text = "Skip prologue"
+text = "NEWGAMESKIPPROL"
 
 [node name="tip" type="TextureRect" parent="NewGamePanel"]
 visible = false
@@ -573,7 +579,11 @@ custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
-text = "Start Game"
+
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "NEWGAMESTART"
+
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
 margin_left = 407.71
@@ -648,8 +658,14 @@ margin_bottom = 1038.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.941176, 0.92549, 0.741176, 1 )
 custom_colors/font_color_pressed = Color( 0.655824, 0.660156, 0.521523, 1 )
+
+text = "MENUCHANGELOG"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 custom_fonts/font = ExtResource( 26 )
-text = "Change log"
+
 
 [node name="Changelogpanel" type="Panel" parent="."]
 visible = false
@@ -2291,8 +2307,11 @@ texture = ExtResource( 19 )
 margin_right = 649.0
 margin_bottom = 81.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+text = "MENUCREDITSNAME"
+
 custom_fonts/font = ExtResource( 15 )
-text = "Credits"
+
 align = 1
 valign = 1
 __meta__ = {

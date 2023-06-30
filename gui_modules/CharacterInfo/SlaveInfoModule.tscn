@@ -109,7 +109,7 @@ margin_right = 82.991
 margin_bottom = 0.225601
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Obedience"
+text = "SLAVEINFOMODULEOBEDIENCE"
 align = 1
 valign = 1
 
@@ -134,12 +134,12 @@ __meta__ = {
 light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 162.0
+margin_right = 163.0
 margin_bottom = 84.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Slave"
+text = "SLAVE"
 align = 1
 valign = 1
 __meta__ = {
@@ -197,19 +197,19 @@ __meta__ = {
 
 [node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_right = 105.0
+margin_right = 141.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "ATK:"
+text = "SIMATK"
 align = 2
 
 [node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 119.0
-margin_right = 145.0
+margin_left = 155.0
+margin_right = 181.0
 margin_bottom = 35.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -218,20 +218,20 @@ text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 159.0
-margin_right = 300.0
+margin_left = 195.0
+margin_right = 389.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "MATK:"
+text = "SIMMATK"
 align = 2
 
 [node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 314.0
-margin_right = 340.0
+margin_left = 403.0
+margin_right = 429.0
 margin_bottom = 35.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -241,20 +241,20 @@ text = "20"
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
 margin_top = 36.0
-margin_right = 105.0
+margin_right = 141.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "DEF:"
+text = "SIMDEF"
 align = 2
 
 [node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 119.0
+margin_left = 155.0
 margin_top = 36.0
-margin_right = 145.0
+margin_right = 181.0
 margin_bottom = 71.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -263,22 +263,22 @@ text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 159.0
+margin_left = 195.0
 margin_top = 36.0
-margin_right = 300.0
+margin_right = 389.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "MDEF:"
+text = "SIMMDEF"
 align = 2
 
 [node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 314.0
+margin_left = 403.0
 margin_top = 36.0
-margin_right = 340.0
+margin_right = 429.0
 margin_bottom = 71.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -288,20 +288,20 @@ text = "20"
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
 margin_top = 72.0
-margin_right = 105.0
+margin_right = 141.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Hit Rate:"
+text = "SIMHITRATE"
 align = 2
 
 [node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 119.0
+margin_left = 155.0
 margin_top = 72.0
-margin_right = 145.0
+margin_right = 181.0
 margin_bottom = 107.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -310,22 +310,22 @@ text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 159.0
+margin_left = 195.0
 margin_top = 72.0
-margin_right = 300.0
+margin_right = 389.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Evasion:"
+text = "SIMEVASION"
 align = 2
 
 [node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 314.0
+margin_left = 403.0
 margin_top = 72.0
-margin_right = 340.0
+margin_right = 429.0
 margin_bottom = 107.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -335,20 +335,20 @@ text = "20"
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
 margin_top = 108.0
-margin_right = 105.0
+margin_right = 141.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Speed:"
+text = "SIMSPEED"
 align = 2
 
 [node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 119.0
+margin_left = 155.0
 margin_top = 108.0
-margin_right = 145.0
+margin_right = 181.0
 margin_bottom = 143.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -357,22 +357,22 @@ text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 159.0
+margin_left = 195.0
 margin_top = 108.0
-margin_right = 300.0
+margin_right = 389.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Armor Pen.:"
+text = "SIMARMORPEN"
 align = 2
 
 [node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 314.0
+margin_left = 403.0
 margin_top = 108.0
-margin_right = 340.0
+margin_right = 429.0
 margin_bottom = 143.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -382,20 +382,20 @@ text = "20"
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
 margin_top = 144.0
-margin_right = 105.0
+margin_right = 141.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Critical:"
+text = "SIMCRITICAL"
 align = 2
 
 [node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 119.0
+margin_left = 155.0
 margin_top = 144.0
-margin_right = 145.0
+margin_right = 181.0
 margin_bottom = 179.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -404,22 +404,22 @@ text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 159.0
+margin_left = 195.0
 margin_top = 144.0
-margin_right = 300.0
+margin_right = 389.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Critical Mod:"
+text = "SIMCRITICALMOD"
 align = 2
 
 [node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 314.0
+margin_left = 403.0
 margin_top = 144.0
-margin_right = 340.0
+margin_right = 429.0
 margin_bottom = 179.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 20 )
@@ -442,8 +442,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BaseStatsPanel/resists"]
 visible = false
 light_mask = 0
-margin_right = 70.0
-margin_bottom = 32.0
+margin_right = 79.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -453,8 +453,9 @@ align = 2
 [node name="Value" type="Label" parent="BaseStatsPanel/resists"]
 visible = false
 light_mask = 0
-margin_right = 28.0
-margin_bottom = 24.0
+margin_left = 84.0
+margin_right = 110.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
@@ -467,7 +468,7 @@ margin_right = 660.0
 margin_bottom = 61.2793
 custom_fonts/font = ExtResource( 21 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Resists"
+text = "SIMRESIST"
 align = 1
 valign = 1
 __meta__ = {

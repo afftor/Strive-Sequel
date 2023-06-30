@@ -21,7 +21,7 @@ func _ready():
 		var newvalue = $BaseStatsPanel/resists/Value.duplicate()
 		$BaseStatsPanel/resists.add_child(newlabel)
 		$BaseStatsPanel/resists.add_child(newvalue)
-		newlabel.text = i.capitalize() + ":"
+		newlabel.text = tr(i).capitalize() + ":"
 		newvalue.name = i
 		newlabel.show()
 		newvalue.show()
@@ -60,7 +60,7 @@ func update():
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 	
 	
-		$Panel/loyaltylabel.text = "Loyalty Gain: " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\nObedience Drain: " + str(person.get_stat("obedience_drain"))
+		$Panel/loyaltylabel.text = tr("SIMLOYALTYGAIN") + ": " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\n" + tr("SIMOBEDIENCEDRAIN") + ": " + str(person.get_stat("obedience_drain"))
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
 		$Panel/valuelabel.text = str(person.calculate_price())
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
