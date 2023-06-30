@@ -60,7 +60,7 @@ func update():
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
 	
 	
-		$Panel/loyaltylabel.text = tr("SIMLOYALTYGAIN") + str(stepify(person.get_stat('loyalty_gain'),0.1)) + tr("SIMOBEDIENCEDRAIN") + str(person.get_stat("obedience_drain"))
+		$Panel/loyaltylabel.text = tr("SIMLOYALTYGAIN") + ": " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\n" + tr("SIMOBEDIENCEDRAIN") + ": " + str(person.get_stat("obedience_drain"))
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
 		$Panel/valuelabel.text = str(person.calculate_price())
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
