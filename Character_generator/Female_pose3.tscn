@@ -1548,7 +1548,6 @@ texture = ExtResource( 3 )
 material = SubResource( 9 )
 position = Vector2( 214, -8.00082 )
 rotation = -1.5708
-scale = Vector2( 1, 1 )
 texture = ExtResource( 64 )
 
 [node name="Tail_tex" type="Sprite" parent="HumanF1/Spine"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits_detail.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/scrollbar_traits_detail_hover.png" type="Texture" id=29]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -76,9 +77,6 @@ margin_bottom = 1050.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 13 )
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Body" type="TextureRect" parent="SlaveBodyModule"]
 show_behind_parent = true
@@ -91,9 +89,18 @@ mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="ragdoll" parent="SlaveBodyModule" instance=ExtResource( 30 )]
+show_behind_parent = true
+position = Vector2( 333.474, 324.064 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="BodyMask" type="Light2D" parent="SlaveBodyModule"]
+light_mask = 8
+position = Vector2( 345, 351 )
+texture = ExtResource( 22 )
+mode = 3
+range_item_cull_mask = 12
 
 [node name="buffscontainer" type="HBoxContainer" parent="SlaveBodyModule"]
 visible = false
@@ -222,13 +229,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="BodyMask" type="Light2D" parent="SlaveBodyModule"]
-light_mask = 8
-position = Vector2( 345, 351 )
-texture = ExtResource( 22 )
-mode = 3
-range_item_cull_mask = 8
 
 [node name="Button" type="Button" parent="."]
 visible = false

@@ -80,10 +80,43 @@ func get_stat(statname, ref = false):
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
+	if statname == 'pose':
+		match get_stat('personality'):
+			'shy':
+				return 'shy'
+			'kind':
+				return 'kind'
+			'serious':
+				return 'kind'
+			'bold':
+				return 'bold'
+		
+		return 'default' #temporal stub
 	if statname == 'counters':
 		return effects.counters
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
 		return food.get(statname)
+	if statname == 'pregnancy_status':
+		if has_status('heavy_pregnant'):
+			return 'heavy'
+		elif has_status('pregnant'):
+			return 'early'
+		else:
+			return 'no'
+	if statname.begins_with('armor_'):
+		match statname:
+			'armor_base':
+#				return ('servant') #temporal, until correct recolor of armor
+				var res =  equipment.get_gear_type('chest')
+				if res == null and !has_work_rule('nudity'):
+					res = 'underwear'
+				return res
+			'armor_lower':
+#				return ('servant') #temporal, until correct recolor of armor
+				var res = equipment.get_gear_type('legs')
+				if res == null and !has_work_rule('nudity'):
+					res = 'underwear'
+				return res
 	return statlist.get_stat(statname, ref)
 
 
@@ -302,12 +335,15 @@ func get_short_race():
 	return race.capitalize()
 
 func equip(item, item_prev_id = null):
+	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
 
 func unequip(item):
+	set_stat('portrait_update', true)
 	equipment.unequip(item)
 
 func unequip_all():
+	set_stat('portrait_update', true)
 	equipment.clear_equip()
 
 
@@ -576,6 +612,7 @@ func can_evade():
 func can_use_skill(skill):
 	if !check_cost(skill.cost): return false
 	if skill.type == 'auto': return false
+	if skill.has('reqs') and !checkreqs(skill.reqs): return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -683,6 +720,9 @@ func get_icon_small():
 
 func get_body_image():
 	return statlist.get_body_image()
+
+func get_stored_body_image():
+	return statlist.get_stored_body_image()
 
 func get_stat_data():
 	return statlist.get_stat_data()
@@ -1167,6 +1207,9 @@ func escape():
 
 
 func escape_actions():
+	remove_from_work_quest()
+	remove_from_task()
+	remove_from_travel()
 	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
 	is_active = false #for now, to replace with corresponding mechanic
 	characters_pool.cleanup()
@@ -1531,3 +1574,15 @@ func get_ability_experience():
 
 func get_combat_skills():
 	return skills.get_combat_skills()
+
+
+func update_portrait(ragdoll):
+	if !get_stat('dynamic_portrait'):
+		return
+	if !get_stat('portrait_update'):
+		return
+	
+	var path = 'portrait_' + id
+	set_stat('portrait_update', false)
+	set_stat('icon_image', variables.portraits_folder + path + '.png')
+	ragdoll.save_portrait(path)

@@ -66,6 +66,7 @@
 [ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=64]
 [ext_resource path="res://Character_generator/shaders/shaders_eyes_color/eyes_pink.tres" type="Material" id=65]
 
+
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 39 )
 

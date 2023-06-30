@@ -4,6 +4,26 @@ var person
 
 #func _ready():
 #	update()
+var body_visible = true
+
+func body_show(value):
+	body_visible = value
+#	if person == null:
+#		person = input_handler.interacted_character
+#		if get_parent().SummaryModule.selected_person != null:
+#			person = get_parent().SummaryModule.selected_person
+#		if (
+#			gui_controller.previous_screen != null
+#			&& gui_controller.previous_screen == gui_controller.exploration
+#		):
+#			person = gui_controller.exploration.person_to_hire
+#	var stored_image = person.get_stored_body_image()
+#	if stored_image != null:
+#		$Body.visible = value
+#		$ragdoll.visible = false
+#	else:
+#		$Body.visible = false
+#		$ragdoll.visible = value
 
 
 func update(person = null):
@@ -17,7 +37,17 @@ func update(person = null):
 		):
 			person = gui_controller.exploration.person_to_hire
 	# if person != null:
-	$Body.texture = person.get_body_image()
+	var stored_image = person.get_stored_body_image()
+	if stored_image != null:
+		$Body.texture = stored_image
+		$Body.visible = body_visible
+		$ragdoll.visible = false
+	else:
+		$Body.visible = false
+		$ragdoll.visible = body_visible
+		$ragdoll.test_mode = false
+		$ragdoll.rebuild(person)
+		$ragdoll.rebuild_cloth(true)
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	

@@ -2,6 +2,7 @@ extends Reference
 var TranslationDict = {
 	#test string
 	TESTNAMELOCALIZATION = "en_test",
+
 	
 	VARIABLESTIMEWORDMORNING = "MORNING",
 	VARIABLESTIMEWORDNOON = "NOON",
@@ -246,6 +247,82 @@ using       button.""",
 	##
 	
 	#Time
+
+	OPTIONSWITCHLANGUAGE = "Change Language",
+	
+	TIPLABEL = "Tip",
+	LOADINGTIP1 = "Some races can achieve exclusive classes",
+	LOADINGTIP2 = "Character initial possible stats are defined by their race",
+	LOADINGTIP3 = "Character value has great impact on service tasks",
+	LOADINGTIP4 = "You can purchase necessary materials and items for quests at shops. Selling excessive materials for gold is also an option",
+	LOADINGTIP5 = "Some CG scenes require you to experiment with your dialogue choices",
+	LOADINGTIP6 = "Dungeons are your best source of income on short time periods",
+	LOADINGTIP7 = "Selecting correct type of attack for each enemy will greatly improve your damage output",
+	LOADINGTIP8 = "Don't hold back on using healing items and spells for patching up during dungeon exploring",
+	LOADINGTIP9 = "Injured characters recover faster when resting",
+	LOADINGTIP10 = "Only few human related races can interbred with each other, the rest will only be able to breed with their own race with no adjustments",
+	LOADINGTIP11 = "Babies will inherit their parent stats at random",
+	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits)",
+	LOADINGTIP13 = "Dismantling gear at Workers guild can allow you to extract rare resources from it",
+	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks.",
+	
+	
+	LOADLORE1NAME = "Guilds",
+	LOADLORE2NAME = "Guild Leaders",
+	LOADLORE3NAME = "The Mad King",
+	LOADLORE4NAME = "Beastfolk",
+	LOADLORE5NAME = "Fairies",
+	LOADLORE6NAME = "Champions",
+	LOADLORE7NAME = "Landowners",
+	
+	LOADLORE1 = """Guilds are an essential part of the society in the kingdom of Aliron. They serve as governing bodies that oversee and manage various trades and professions, from Fighters to Mages, Workers to Servants. Each guild holds a significant amount of power, as they compete for the support and favor of landowners and work towards gaining dominance over one another.
+
+Guilds often have their own set of rules that members must adhere to, in order to maintain good standing within their respective guild. These rules vary between different guilds but typically revolve around fair conduct in business dealings, respect for other guild members, and loyalty towards the guild's common goals.
+
+As guilds continue to strive for success and dominance in Aliron's capital city, conflicts can arise when opposing interests clash. However, despite these rivalries it's important to note that when faced with danger or threats towards the safety of citizens or stability of the kingdom itself; these powerful organizations stand united against any outside forces aiming to cause harm.""",
+
+	LOADLORE2 = """Guild leaders are the individuals who serve as the head of their respective guild, and hold immense power and responsibility within Aliron's society. They are usually chosen from among the most prominent members of their guild, and have proven themselves capable in both their trade and leadership abilities.
+
+The title of Guild Leader is not only one of honor but also carries with it a heavy burden. These individuals are tasked with managing all aspects of their guild; from resolving internal disputes to establishing alliances with other factions or negotiating contracts with landowners.
+
+Guild Leaders have a reputation for being fierce negotiators, skilled tacticians, and wise rulers. It is said that nothing happens in the capital city without the involvement or approval of at least one Guild Leader. However, despite holding such great power they are still accountable to their members, who can remove them from office should they fail to fulfill their duties as leader.""",
+
+	LOADLORE3 = """The Mad King, whose name is now feared and whispered amongst the people of Aliron, was once the ruler of the kingdom but was eventually overthrown by the guilds. The Mad King's reign was characterized by his unpredictable behavior and madness which led those around him to fear for their lives.
+
+Over the 20 years of his reign, there were rumors that he had set fire to entire communities in fits of rage or ordered for executions without trial. He became widely despised among both commoners and nobles alike due to his frequent outbursts and unprovoked acts of violence.
+
+As discontent with King's rule grew among citizens and even landowners who felt threatened by his unpredictable ways; at that point the four major guilds have united to stop his rule and abdicate the monarchy. It was believed there were no descendants of him surviving until recently...""",
+
+	LOADLORE4 = """Among the many races that populate the world are the Beastkin and Halfkin. Beastkin are humanoid beings with thick fur covering their body, resembling various animals; while Halfkin only possess animal-like features in their ears and tails.
+
+Beastkin are known to exist primarily in tribes outside of urban areas, valuing community and harmony over individualism. They lead a nomadic way of life, often following herds of wild prey and engaging in shamanistic rituals praising local beings. Often viewed as primal or 'less civilized' by other races due to their simpler way of living compared to society within Kingdom's borders.
+
+Halfkins on the other hand are descendants born from a union between Beastkin and other races; primarily humans, therefore more they are considerably more common at large cities. 
+
+In Aliron, however, all races coexist peacefully for the most part, though prejudice is common. Despite these challenges both Beastkins and Halfkins have attained various positions of power within guilds and across the kingdom.""",
+
+	LOADLORE5 = """The Fairies are a peculiar race known for their small size - being about half the height of humans. This, coupled with their wings and natural magic abilities, makes them an enchanting sight to behold. They live primarily in areas of rich magic, such as dense forests or near ancient ruins.
+
+Fairies are characterized by their childlike behavior and curious nature; they possess innocent personalities that often endear them to others but also lead to naivety when dealing with more harsh aspects of reality. 
+
+However, this playful demeanor is accompanied by an extreme sexual drive which Fairies express with little reserve or shame. This makes them one of the most attractive and rare trained slaves among many.""",
+
+	LOADLORE6 = """Gods play an important and influential role in the lives of mortals. These divine entities are worshiped for their power and wisdom, with each God having specific domains they preside over.
+
+To help carry out their wishes within the mortal realm, certain rare individuals are chosen as Champions by these various deities. These Champions are granted exceptional abilities above that of normal humans in order to carry out tasks most believe impossible or beyond comprehension.
+
+Champions can come from any race or background and may be granted powers ranging from control of elements/magic to physical prowess beyond human limits; often referred to as "divine blessings". They're usually called upon directly by their patron god through visions or divinations. This divine guidance is absolute but not without costs for continuous service deed.
+
+There's no shortage of myths surrounding these individuals; often spoken highly because they've been champions for various causes throughout history- both good and bad- either punished or rewarded accordingly depending on how well they fulfill divine instructions.""",
+
+	LOADLORE7 = """Landowners in Aliron hold a considerable deal of wealth and social status within the kingdom. This is due to their ownership of large swaths of land that are used to cultivate crops, mine for resources, or build on in various ways.
+
+In order to maintain these properties in an efficient manner, Landowners frequently employ slaves. These slaves are often treated poorly and viewed as little more than property by those who own them; their freedom denied on account of their servitude.
+
+Despite working under harsh conditions beyond human endurance long hours with minimal rest- they are considered indispensable in keeping the economy running smoothly. Their work productivity allowed control over market prices and competing guilds.
+
+However, while it might seem that Landowners have nothing but contempt for those below them- there have been cases where some have shown unexpected kindness towards their slaves depending on rare compassionate nature or personal beliefs systems not common among majority owner population.""",
+
 	NIGHT = "Night",
 	MORNING = "Morning",
 	NOON = "Noon",
@@ -512,6 +589,8 @@ using       button.""",
 	ITEMBELL_COLLARDESCRIPT = "Despite its nature, this collar considered more of an object of fashion came from distant land.",
 	ITEMRIBBONDESCRIPT = "A bright red ribbon of unknown nature. ",
 	
+	ITEMSACRED_BOWL = "Sacred Bowl",
+	ITEMSACRED_BOWLDESCRIPT = "An ancient artifact which used to belong to elven kingdom.",
 	
 	ITEMJACKET = "Jacket",
 	ITEMJACKETDESCRIPT = "A lightweight clothing which offers no protecting.",
@@ -1286,7 +1365,9 @@ using       button.""",
 	STATPRODUCTIVITYDESCRIPT = "Affects all productive tasks. Total productivity applies to all occupations, while efficiency will boost specific tasks.",
 	STATCONSENT = "Consent",
 	STATCONSENTDESCRIPT = "Affects consent for actions during sex interactions. Each action has different consent based on traits, partners and other factors. This number represents only the unaltered value. Basic consent grows when having positive results, trying new actions and partners. Also slightly increased from discipline skills. ",
-
+	
+	STATEXP_GAIN_MOD = "Experience Bonus",
+	
 	STATLOYALTY_GAIN_MOD = "Loyalty Gain",
 	STATLOYALTY_GAIN = "Loyalty Gain",
 	STATLUSTTICK = "Lust Growth",
@@ -1438,7 +1519,11 @@ using       button.""",
 	RACEHALFKINBUNNYADJ = "Half-Breed Bunny",
 	RACEHALFKINTANUKI = "Half-Breed Tanuki",
 	RACEHALFKINTANUKIADJ = "Half-Breed Tanuki",
-
+	
+	RACERATKIN = "Ratkin",
+	RACERATKINADJ = "Ratkin",
+	
+	
 	RACEHUMANDESCRIPT = "Humans are one of the most common races. Their strength comes in their numbers and flexibility, but they generally are rather weak in magic and have low potential growth. Only a few exceptional humans have shown outstanding feats. \n\nHuman society is rather open to others but also quick to anger and start wars even among themselves. While some might act prudish, especially in public, humans in general are very sexually active and do not stray from other humanoid races. ",
 	RACEELFDESCRIPT = "Elves prefer living in the forest and being close to nature with other naturistic races like Dryads and Fairies. They are adept in magic, but their physical strength is fairly mediocre. \n\nElven society is fairly secluded but isn't above contact and trading with other races. Elves rarely show an active interest in sex outside of their social group, often preferring life-long relationships. Still they are considered very appealing and attractive by other races making them in popular demand as slaves.",
 	RACETRIBALELFDESCRIPT = "A rarer version of elves with distinct dark skin. Tribal elves mostly inhabit southern regions and show numerous differences to their common counterparts. They are less prone to magic but possess stronger bodies.\n\nHowever, their society (often separated into tribes) is more secluded and hostile to outsiders, but they are also more open to sex than normal elves.",
@@ -1473,7 +1558,9 @@ using       button.""",
 	RACEHALFKINFOXDESCRIPT = "Fox folk are a rare and relatively mysterious breed of Beastkin. They display high intelligence, a tendency towards lifelong monogamy, and congregate in small, close-knit communities.",
 	RACEHALFKINBUNNYDESCRIPT = "Bunnies are one of the least self-sufficient, but nonetheless common beast races. They are not aggressive and can be quite timid. They are quite well liked due to their comforting appearance and their natural lewdness which make them a popular choice for slave pets.",
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
-
+	RACERATKIDESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places. ",
+	
+	
 	SKILLPRAISE = "Praise",
 	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience.",
 	SKILLWARN = "Warn",
@@ -1763,7 +1850,7 @@ using       button.""",
 	TRAITLOYALTY_SOULBIND = "Soulbind",
 	TRAITLOYALTY_SOULBINDDESCRIPT = "{color=green|Obedience Drain: 0\nLoyalty Gain: 0}\n\nThe mind is such a fickle thing, a proper mage can exploit this as has been shown in this now exceptionally obedient specimen.\n\nRequires: Dominator Class on Master",
 	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
-	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "{color=green|Unlocks Nudity}\n\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
 	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
@@ -2109,6 +2196,7 @@ using       button.""",
 	BODYPARTEARSCOW = "cow",
 	BODYPARTEARSFEATHERED = "feathered",
 	BODYPARTEARSFISH = "fish",
+	BODYPARTEARSRAT = "rat",
 	BODYPARTSKINPALE = "pale",
 	BODYPARTSKINGREY = "grey",
 	BODYPARTSKINFAIR = "fair",
@@ -2266,6 +2354,7 @@ using       button.""",
 	BODYPARTEARSCOWDESCRIPT = "[He] has a pair of fluffy [color=aqua]cow[/color] ears.",
 	BODYPARTEARSFEATHEREDDESCRIPT = "There's a pair of clutched [color=aqua]feathery ears[/color] on the sides of [His] head.",
 	BODYPARTEARSFISHDESCRIPT = "[His] ears look like a pair of [color=aqua]fins[/color].",
+	BODYPARTEARSRATDESCRIPT = "[He] as a pair of large mouse-like ears.",
 
 	BODYPARTSKINPALEDESCRIPT = "[His] skin is a [color=aqua]pale[/color] white.",
 	BODYPARTSKINGREYDESCRIPT = "[His] skin is a stone [color=aqua]grey[/color].",
@@ -2846,6 +2935,9 @@ using       button.""",
 	
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",
+	
+	WORKRULENUDITY = "Nudity",
+	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponsding sprite). This effect is cosmetic.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
@@ -3886,21 +3978,21 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
 	
 	MATERIALMILK = "Milk", #TODO add descriptions
-	MATERIALMILKDESCRIPT = "Milk",
+	MATERIALMILKDESCRIPT = "Freshly obtained milk, not of completely common origin. Commonly obtained from females after pregnancy. ",
 	MATERIALSEED = "Seed",
-	MATERIALSEEDDESCRIPT = "Seed",
+	MATERIALSEEDDESCRIPT = "Essence of male virility. Commonly obtained from males.",
 	MATERIALPHEROMONES = "Pheromones",
-	MATERIALPHEROMONESDESCRIPT = "Pheromones",
+	MATERIALPHEROMONESDESCRIPT = "A vial fo clear fluid often used in cosmetics and perfume. Commonly obtained from beast folk.",
 	MATERIALEGGS = "Eggs",
-	MATERIALEGGSDESCRIPT = "Eggs",
+	MATERIALEGGSDESCRIPT = "A batch of unfertilized eggs of slightly larger size than usual. Commonly obtained from Harpies and Lamias",
 	MATERIALMAGIC_DUST = "Magic Dust",
-	MATERIALMAGIC_DUSTDESCRIPT = "Magic Dust",
+	MATERIALMAGIC_DUSTDESCRIPT = "Residues enriched with magical power. Commonly obtained from Elves and Fairies",
 	MATERIALuLE_BLOOD = "Reptile Blood",
-	MATERIALREPTILE_BLOODDESCRIPT = "Reptile Blood",
+	MATERIALREPTILE_BLOODDESCRIPT = "A vial of red fluid from cold-blooded creatures. Commonly obtained from Kobolds and Dragonkin.",
 	MATERIALLIGHT_ESSENCE = "Light Essence",
-	MATERIALLIGHT_ESSENCEDESCRIPT = "Light Essence",
+	MATERIALLIGHT_ESSENCEDESCRIPT = "A light fluffy substance smelling of soap. Commonly obtained from Seraphs.",
 	MATERIALDARK_ESSENCE = "Dark Essence",
-	MATERIALDARK_ESSENCEDESCRIPT = "Dark Essence",
+	MATERIALDARK_ESSENCEDESCRIPT = "Commonly obtained from Demons.",
 	
 	
 	QUESTREQSCOMPLETE = "Quest subtask complete",

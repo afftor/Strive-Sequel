@@ -1,23 +1,35 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/iconsitems/cell/neck.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/raceshades/Human_F.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_slavebody.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/iconsitems/cell/pelvis.png" type="Texture" id=9]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo_hover.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/iconsitems/cell/legs.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconsitems/cell/hand right.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/iconsitems/cell/hand left.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/iconsitems/cell/body.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/iconsitems/cell/head.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/iconsitems/cell/gloves.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/iconsitems/cell/tool.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/iconsitems/cell/booty.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/iconsitems/cell/underwear.png" type="Texture" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -40,12 +52,21 @@ margin_bottom = 1049.76
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="ragdoll" parent="." instance=ExtResource( 17 )]
+show_behind_parent = true
+position = Vector2( 340, 450 )
+scale = Vector2( 0.8, 0.8 )
+test_mode = false
+
+[node name="bodymask" type="Light2D" parent="."]
+position = Vector2( 353.676, 537.294 )
+scale = Vector2( 1.13454, 1.13454 )
+texture = ExtResource( 15 )
+mode = 3
+range_item_cull_mask = 4
 
 [node name="InventorySlots" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -54,10 +75,10 @@ __meta__ = {
 
 [node name="chest" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 377.451
-margin_right = 395.568
-margin_bottom = 477.451
+margin_left = 551.568
+margin_top = 299.451
+margin_right = 651.568
+margin_bottom = 399.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -74,18 +95,34 @@ margin_top = -0.546295
 margin_right = 100.0
 margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 1 )
+texture = ExtResource( 25 )
 expand = true
 stretch_mode = 6
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/chest"]
+show_behind_parent = true
+light_mask = 0
+margin_top = -0.546295
+margin_right = 100.0
+margin_bottom = 99.4537
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="underwear" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 295.568
+margin_left = 551.568
 margin_top = 562.451
-margin_right = 395.568
+margin_right = 651.568
 margin_bottom = 662.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
@@ -102,19 +139,34 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 30 )
 expand = true
 stretch_mode = 6
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/underwear"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="legs" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 812.451
-margin_right = 395.568
-margin_bottom = 912.451
+margin_left = 551.568
+margin_top = 409.451
+margin_right = 651.568
+margin_bottom = 509.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -131,27 +183,40 @@ margin_top = -1.22778
 margin_right = 100.0
 margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 6
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/legs"]
+show_behind_parent = true
+light_mask = 0
+margin_top = -1.22778
+margin_right = 100.0
+margin_bottom = 98.7722
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="hands" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 55.5678
-margin_top = 392.451
-margin_right = 155.568
-margin_bottom = 492.451
+margin_left = 55.0
+margin_top = 305.451
+margin_right = 155.0
+margin_bottom = 405.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="InventorySlots/hands"]
 show_behind_parent = true
@@ -159,27 +224,37 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 27 )
 expand = true
 stretch_mode = 6
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/hands"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="rhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 55.5678
-margin_top = 512.451
+margin_top = 87.451
 margin_right = 155.568
-margin_bottom = 612.451
+margin_bottom = 187.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="InventorySlots/rhand"]
 show_behind_parent = true
@@ -187,27 +262,39 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/rhand"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="lhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 555.568
-margin_top = 512.451
-margin_right = 655.568
-margin_bottom = 612.451
+margin_left = 54.568
+margin_top = 197.451
+margin_right = 154.568
+margin_bottom = 297.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="InventorySlots/lhand"]
 show_behind_parent = true
@@ -215,19 +302,34 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 24 )
 expand = true
 stretch_mode = 6
 __meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/lhand"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="neck" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 295.568
-margin_top = 262.451
-margin_right = 395.568
-margin_bottom = 362.451
+margin_left = 552.568
+margin_top = 193.451
+margin_right = 652.568
+margin_bottom = 293.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -250,11 +352,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="icon2" type="TextureRect" parent="InventorySlots/neck"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="head" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 295.568
+margin_left = 551.568
 margin_top = 82.4508
-margin_right = 395.568
+margin_right = 651.568
 margin_bottom = 182.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
@@ -271,7 +386,20 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/head"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -280,10 +408,10 @@ __meta__ = {
 
 [node name="ass" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 355.568
-margin_top = 672.451
-margin_right = 455.568
-margin_bottom = 772.451
+margin_left = 551.568
+margin_top = 776.451
+margin_right = 651.568
+margin_bottom = 876.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -299,18 +427,31 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 29 )
 expand = true
 stretch_mode = 6
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/ass"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="crotch" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 245.568
+margin_left = 551.568
 margin_top = 672.451
-margin_right = 345.568
+margin_right = 651.568
 margin_bottom = 772.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
@@ -327,7 +468,20 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/crotch"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -336,10 +490,10 @@ __meta__ = {
 
 [node name="tool" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
-margin_left = 555.568
-margin_top = 392.451
-margin_right = 655.568
-margin_bottom = 492.451
+margin_left = 56.568
+margin_top = 413.451
+margin_right = 156.568
+margin_bottom = 513.451
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
@@ -352,15 +506,27 @@ __meta__ = {
 [node name="icon" type="TextureRect" parent="InventorySlots/tool"]
 show_behind_parent = true
 light_mask = 0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 2 )
+texture = ExtResource( 28 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="icon2" type="TextureRect" parent="InventorySlots/tool"]
+show_behind_parent = true
+light_mask = 0
+margin_left = -1.0
+margin_right = 99.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
 
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )
@@ -413,6 +579,7 @@ __meta__ = {
 }
 
 [node name="TattooSlots" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

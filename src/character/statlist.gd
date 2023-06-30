@@ -5,7 +5,11 @@ var template = {
 	is_hirable = false, #allows character to be hired from its tab
 	hire_scene = '',
 	unique = null,
+	
 	icon_image = '', #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+	dynamic_portrait = true,
+	portrait_update = true,
+	
 	body_image = 'default',
 	name = '',
 	surname = '',
@@ -32,7 +36,7 @@ var template = {
 	lusttick = variables.basic_lust_per_tick,
 	hpmax = 100,
 	mpmax = 50,
-	exp_mod = 1,
+#	exp_mod = 1,
 	hp_reg_mod = 1.0,
 	mp_reg_mod = 1.0,
 	hp_reg_add = 0.0,
@@ -119,11 +123,41 @@ var template = {
 	tail = '',
 	arms = 'normal',
 	legs = 'normal',
-	lower_body = '',
+	body_lower = '',
 	body_shape = 'humanoid',
 	skin_coverage = '',
 	fur = '',
 	facial_hair = '',
+	#new ones
+	chin = 'default',
+	eye_tex = 'eyes1',
+	eyeshape = 'face1',
+	nose = 'default',
+	eyebrows = 'style1',
+	lips = 'style1',
+	
+	armor_color = 'default',
+	
+	#new skin, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
+	body_color_skin = '', 
+	body_color_wings = '', 
+	body_color_tail = '', 
+	body_color_horns = '', 
+	body_color_animal = '', 
+	#new hair, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
+	hair_base = '', 
+	hair_assist = '', 
+	hair_back = '', 
+	hair_base_color_1 = '', 
+	hair_back_color_1 = '', 
+	hair_assist_color_1 = '', 
+	hair_base_color_2 = '', 
+	hair_back_color_2 = '', 
+	hair_assist_color_2 = '', 
+	hair_base_lenght = '', 
+	hair_back_lenght = '', 
+	hair_assist_lenght = '',
+	
 	#genitals
 	penis_size = '',
 	penis_type = 'human',

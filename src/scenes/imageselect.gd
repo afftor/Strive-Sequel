@@ -118,6 +118,7 @@ func resort():
 func setslaveimage(path):
 	if mode == 'portrait':
 		person.set_stat('icon_image', path)
+		person.set_stat('dynamic_portrait', false)
 		if $assignboth.pressed && input_handler.loadimage(path.replace("portraits", 'bodies')) != null:
 			person.set_stat('body_image', path.replace("portraits",'bodies'))
 	elif mode == 'body':

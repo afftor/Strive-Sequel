@@ -595,7 +595,13 @@ var racelist = {
 			eye_color = ['blue','green','grey','brown','black'],
 			hair_length = ['bald','ear','neck','shoulder','waist','hips'],
 			eye_shape = ['normal'],
-			penis_type = ['human']
+			penis_type = ['human'],
+			chin = ['default', 'curve', 'loli', 'skinny', 'short'],
+			eye_tex = ['eyes1', 'eyes2', 'eyes3', 'eyes4', 'eyes5'],
+			eyeshape = ['face1','face2','face3','face4','face5',],
+			nose = ['default', 'loli', 'straight'],
+			eyebrows = ['style1', 'style2', 'style3', 'style4', 'style5'],
+			lips = ['style1', 'style2', 'style3', 'style4', 'style5'],
 			},
 		global_weight = 100,
 	},
@@ -683,7 +689,7 @@ var racelist = {
 			ears = ['elven'],
 			skin = ['grey','purple','teal'],
 			hair_color = ['purple','green','white'],
-			eye_color = ['red','amber'],
+			eye_color = ['red','yellow'],
 			},
 		global_weight = 10,
 	},
@@ -860,9 +866,10 @@ var racelist = {
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],
-			eye_color = ['red', 'amber', 'blue', 'green', 'purple'],
+			eye_color = ['red', 'yellow', 'blue', 'green', 'purple'],
 			height = ['tiny','petite'],
 			wings = ['fairy'],
+			body_color_wings = ['cyan1','pink1'],
 			body_shape = ['shortstack'],
 			},
 		global_weight = 10,
@@ -981,7 +988,7 @@ var racelist = {
 		race_tags = ['rare','top'],
 		bodyparts = {
 			eye_shape = ['slit'],
-			eye_color = ['red','amber'],
+			eye_color = ['red','yellow'],
 			ears = ['elven'],
 			skin_coverage = ['scale'],
 			tail = ['dragon'],
@@ -1535,6 +1542,39 @@ var racelist = {
 			},
 		global_weight = 10,
 	},
+	
+	
+	Ratkin = {
+		code = "Ratkin",
+		name = '',
+		descript = '',
+		adjective = '',
+		icon = "res://assets/images/iconsraces/rat.png",
+		basestats = {
+			food_consumption = [1,3],
+			physics_factor = [1,34],
+			magic_factor = [2,4],
+			tame_factor = [2,4],
+			timid_factor = [3,5],
+			sexuals_factor = [2,4],
+			charm_factor = [2,3],
+			wits_factor = [3,4],
+		},
+		race_bonus = {hpfactor = 0.9, resist_water = 10, evasion = 25, price = 90},
+		personality = {kind = 0.4, bold = 0.1, shy = 1, serious = 0.2},
+		diet_love = {vege = 1, meat = 1, fish = 0.5, grain = 3},
+		diet_hate = {vege = 2, meat = 1, fish = 3, grain = 0.5},
+		tags = [],
+		race_tags = ['uncommon'],
+		bodyparts = {
+			ears = ['rat'],
+			tail = ['rat'],
+			height = ['tiny','petite', 'short'],
+			body_shape = ['shortstack'],
+			},
+		global_weight = 8,
+	},
+	
 }
 
 var short_race_names = {
@@ -1570,5 +1610,6 @@ var short_race_names = {
 	HalfkinBunny = ['bunny'],
 	HalfkinTanuki = ['tanuki','raccoon'],
 	HalfkinCat = ['cat','feline'],
+	Ratkin = ['rat']
 
 }

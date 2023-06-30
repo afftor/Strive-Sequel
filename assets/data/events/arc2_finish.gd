@@ -944,7 +944,7 @@ var data = {
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
 		common_effects = [ {code = 'play_sound', value = 'doorsmash'} ,
-			{code = 'screen_shake', strength = 3, length = 0.3},],
+			{code = 'screen_shake', strength = 3, length = 0.3},{code = 'add_item', item = 'sacred_bowl', number = 1}],
 		text = [{text = 'CEREMONY_2', reqs = []},],
 		options = [ {
 			code = 'ceremony_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 

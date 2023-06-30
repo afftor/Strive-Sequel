@@ -53,25 +53,25 @@ signal scene_change_start
 
 
 func _init():
-	if dir.dir_exists(variables.userfolder + 'saves') == false:
-		dir.make_dir(variables.userfolder + 'saves')
-
-	if !dir.dir_exists(variables.userfolder + 'savedcharacters'):
-		dir.make_dir(variables.userfolder + 'savedcharacters')
-
+	#load sex actions
 	for i in input_handler.dir_contents('res://src/actions'):
 		if i.ends_with('.gd'):
 			var newaction = load(i).new()
 			sex_actions_dict[newaction.code] = newaction
-	
-	#quit if extending
-	if variables.get('globals_extend'):
-		variables.set('globals_extend', false)
-		return
+	#crash bypass
+	#reset_roll_data will crash here
+	char_roll_data.no_roll = false
+
+func _ready():
 	#for logging purposes
 	print("Game Version: " + str(gameversion))
 	print("OS: " +  OS.get_name())
-	
+	#make saves dirs
+	if dir.dir_exists(variables.userfolder + 'saves') == false:
+		dir.make_dir(variables.userfolder + 'saves')
+	if !dir.dir_exists(variables.userfolder + 'savedcharacters'):
+		dir.make_dir(variables.userfolder + 'savedcharacters')
+	#init scenedata
 	for i in input_handler.dir_contents("res://assets/data/events"):
 		if i.find('.gd') < 0:
 			continue
@@ -82,20 +82,13 @@ func _init():
 			else:
 				print("Error: Scene data key already exists: " + k)
 
-
-func _ready():
 	randomize() #for legacy code sake
 	rng.randomize()
+
 	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
 	modding_core.load_mods()
-	modding_core.process_data_mods()
-	modding_core.process_translation_mods()
-	races.fill_racegroups()
-	modding_core.fix_main_data()
-
-	reset_roll_data()
 
 
 #not used

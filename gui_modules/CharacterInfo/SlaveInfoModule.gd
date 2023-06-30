@@ -125,8 +125,10 @@ func text_url_click(meta):
 
 func confirm_hairstyle(style):
 	person.set_stat('hair_style', style)
+	person.set_stat('portrait_update', true)
 	$HairChange.visible = false
 	update()
+	get_parent().update()
 
 
 func close_hairstyle():

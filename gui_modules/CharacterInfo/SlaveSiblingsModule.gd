@@ -14,7 +14,7 @@ func _ready():
 	update()
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
-		globals.connecttexttooltip(i,tr("WORKRULE" + i.name.to_upper() + "DESCRIPT"))
+		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
@@ -79,6 +79,7 @@ func update():
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
+	$work_rules/nudity.disabled = !person.has_status('exhibit')
 	if person != null:
 		for i in $work_rules.get_children():
 			var t = person.check_work_rule(i.name)

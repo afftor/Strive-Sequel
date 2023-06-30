@@ -40,6 +40,7 @@ signal EnemyKilled
 signal ButtonUpdated (node)
 signal LootGathered
 signal LocationSlavesUpdate
+signal PortraitUpdate
 
 var last_action_data = {}
 var text_characters = []
@@ -308,19 +309,17 @@ func quit():
 
 
 func _init():
-	if variables.get('input_handler_extend'):
-		variables.set('input_handler_extend', false)
-		OS.window_size = globalsettings.window_size
-		OS.window_position = globalsettings.window_pos
-		settings_load()
-		load_progress_data()
-		return
-		
 	settings_load()
+	OS.window_size = globalsettings.window_size
+	OS.window_position = globalsettings.window_pos
+	settings_load()
+	load_progress_data()
+	
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
-		for ifile in dir_contents(i):
-			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
+		var loc_code = i.replace(variables.LocalizationFolder, '')
+		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
+		
 #			file.open(ifile, File.READ)
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
@@ -328,20 +327,25 @@ func _init():
 
 	#Applying active translation
 	var activetranslation = Translation.new()
-	var translationscript = load(TranslationData[globalsettings.ActiveLocalization]).new()
+	if TranslationData.has(globalsettings.ActiveLocalization) == false:
+		globalsettings.ActiveLocalization = 'en'
+	var translationscript = load(TranslationData[globalsettings.ActiveLocalization].data).new()
 	activetranslation.set_locale(globalsettings.ActiveLocalization)
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
-	TranslationServer.set_locale(globalsettings.ActiveLocalization)
-#	connect("EventFinished", self, "event_finished")
+	change_locale()
+
+func change_locale(locale = globalsettings.ActiveLocalization):
+	TranslationServer.set_locale(locale)
+
 
 func _ready():
-	OS.window_size = globalsettings.window_size
-	OS.window_position = globalsettings.window_pos
-	#settings_load() Egodgorn
-	load_progress_data()
-
+	#Storing available translations
+	for i in scanfolder(variables.LocalizationFolder):
+		for ifile in dir_contents(i):
+			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
+	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 
 func _input(event):
@@ -569,6 +573,7 @@ func Open(node):
 	CloseableWindowsArray.append(node)
 
 func ChangeScene(name):
+	ResourceScripts.core_animations.BlackScreenTransition(0.3)
 	CloseableWindowsArray.clear()
 	dialogue_array.clear()
 	var loadscreen = load(ResourceScripts.scenedict.loadscreen).instance()
@@ -1644,18 +1649,36 @@ func print_order():
 #	node.focus_neighbour_top = node.get_path()
 #	node.grab_focus()
 
-func import_recolor_parameter(to_mat, from_mat):
+func import_recolor_parameter(to_mat, from_mat, ids = [1,2,3]):
 	for param in ["target%dcolor", "part%dcolor", "part%d"]:
-		for i in range(3):
-			var parname = param % (i + 1)
+		for i in ids:
+			var parname = param % (i)
 			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
 	to_mat.set_shader_param('overlay', from_mat.get_shader_param('overlay'))
 
 
-func import_deform_parameter(to_mat, from_mat):
+func import_recolor_mask(to_mat, from_mat, ids = [1,2,3]):
+	for param in ["part%d"]:
+		for i in ids:
+			var parname = param % (i)
+			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
+
+
+func import_recolor_mask_path(to_mat, mask, ids = [1,2,3]):
+	for param in ["part%d"]:
+		for i in ids:
+			if mask == null:
+				var oldcolorparam = "target%dcolor" % (i)
+				var newcolorparam = "part%dcolor" % (i)
+				to_mat.set_shader_param(newcolorparam, to_mat.get_shader_param(oldcolorparam))
+			var parname = param % (i)
+			to_mat.set_shader_param(parname, mask)
+
+
+func import_deform_parameter(to_mat, from_mat, ids = [1,2,3,4,5,6]):
 	for param in ["anchor%d", "move%d", "range%d"]:
-		for i in range(6):
-			var parname = param % (i + 1)
+		for i in ids:
+			var parname = param % (i)
 			to_mat.set_shader_param(parname, from_mat.get_shader_param(parname))
 	to_mat.set_shader_param('power', from_mat.get_shader_param('power'))
 
@@ -1672,3 +1695,18 @@ func is_descendant_of_current_screen(nd):
 func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_OUT)
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)
+
+
+func get_real_global_rect(nd):
+	var rect = nd.get_global_rect()
+	var transform = nd.get_global_transform()
+	var transform2 = nd.get_viewport_transform()
+	
+	transform.origin = transform2.basis_xform(transform.origin)
+	transform.x = transform2.basis_xform(transform.x)
+	transform.y = transform2.basis_xform(transform.y)
+	
+	var res: Rect2
+	res.position = transform.get_origin()
+	res.size = transform.basis_xform(rect.size)
+	return res

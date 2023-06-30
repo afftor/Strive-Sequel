@@ -78,6 +78,7 @@ var always_show = [
 func _ready():
 #	input_handler.CurrentScene = self
 	if test_mode:
+		modding_core.handle_test_mode()
 		test_mode()
 		mansion_state_set("default")
 	add_season_events()
@@ -563,12 +564,13 @@ func test_mode():
 		character.add_stat('charm', 100)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
-		character.set_stat('hair_length','bald')
+		character.set_stat('eye_color','green')
 		character.unlock_class("master")
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
 		character.unlock_class("valkyrie")
+		character.set_stat('height', 'average')
 		character.xp_module.base_exp = 1500
 		character.add_stat('abil_exp', 1500)
 		# character.unlock_class("ruler")
@@ -621,16 +623,36 @@ func test_mode():
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Centaur', 'futa', 'random')
-		character.set_stat("penis_virgin", false)
-		character.set_stat('consent', 100)
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'tiny')
+		character.set_stat('hairstyle', 'ponytail')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'petite')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'short')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'average')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'tall')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
+		character.create('Fairy', 'female', 'random')
+		character.set_stat('height', 'towering')
+		characters_pool.move_to_state(character.id)
 		# character.assign_to_quest_and_make_unavalible()
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 #		character.set_slave_category('heir')
 #		character.set_stat('obedience', 0)
-		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
 		character.unlock_class("apprentice")
@@ -765,7 +787,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("holy_sword", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
@@ -811,6 +833,11 @@ func test_mode():
 		globals.AddItemToInventory(
 			globals.CreateGearItem(
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
+			)
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem(
+				"legs_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
 		# ResourceScripts.game_progress.show_tutorial = true

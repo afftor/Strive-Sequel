@@ -1,6 +1,6 @@
 extends Node
-#3.1 version for data modding
-#script modding to be added in 3.2 version 
+
+var version = '4.0'
 
 var modconfig_path = "user://mods.ini"
 var modfolder_path = "user://mods"
@@ -8,51 +8,70 @@ var modfolder_path = "user://mods"
 var debug = false
 
 var mods_list = [] #name, data_file, config_file
-var modules = {}
+var modules = {} #children of modding_core
+var gui_nodes = [] #tmp ResourceScripts.node_data instances
+var scripts = [] #initial scriptdict resources
+
 var mod_tables = {} #table, mod
 var tables = {} #table, parsed content 
-var gui_nodes = []
 
 var current_mod = ""
 
 
 signal before_mods_loaded
 
+signal data_loaded
+signal translations_loaded
 signal patches_loaded
 signal modules_loaded
-signal extensions_loaded
+signal script_extensions_loaded
+signal script_extensions_applied
+signal core_extensions_loaded
+signal node_extensions_loaded
 
 signal after_mods_loaded
 signal after_data_fixed
 
+var test_mode_enabled = false
+
 
 func _ready():
-	get_mods_list()
+	pass
 
 #EP globals._ready()
 #process_translation_mods called from globals._ready()
 #process_data_mods called from globals._ready()
 func load_mods():
+	print("Mod Loader: ", version)
+	get_mods_list()
 	emit_signal("before_mods_loaded")
-	
-	#load .pck files
+	#load scriptdict replacements
 	process_patches_mods()
-	emit_signal("patches_loaded")
-	
 	#load .gd modules (_init + _ready)
 	process_modules_mods()
-	emit_signal("modules_loaded")
-	
+	#run load_translation on .gd modules
+	modding_core.process_translation_mods()
 	#load CEScripts, extend scripts in ResourceScripts.scriptdict
 	process_script_extensions_mods()
+	#wait for an idle frame to edit nodes
 	yield(get_tree(), 'idle_frame')
-	
+	#core script mods won't work in test mode
+	if test_mode_enabled:
+		return
 	#handle extensions of globals/input_handler
 	process_core_extensions_mods()
-	
 	#run extend_nodes() on chosen modules
 	process_node_extensions_mods()
+	#run load_tables on .gd modules and load tables from .json files
+	modding_core.process_data_mods()
 	emit_signal("after_mods_loaded")
+	modding_core.fix_main_data()
+	globals.reset_roll_data()
+
+func handle_test_mode():
+	modding_core.fix_main_data()
+	globals.reset_roll_data()
+	test_mode_enabled = true
 
 func process_modules_mods():
 	for m in mods_list:
@@ -60,13 +79,14 @@ func process_modules_mods():
 		if !mconf.has_section('Modules'): continue
 		process_modules_init(m)
 	process_modules_ready()
+	emit_signal("modules_loaded")
 
 func process_data_mods():
 	for m in mods_list:
-		current_mod = m.name
 		var mconf = m.config
 		if !mconf.has_section('Data'): continue
 		process_data_mod(m)
+	emit_signal("data_loaded")
 
 func process_translation_mods():
 	var activetranslation = Translation.new()
@@ -86,30 +106,62 @@ func process_translation_mods():
 		
 	TranslationServer.clear()
 	TranslationServer.add_translation(activetranslation)
+	
+	emit_signal("translations_loaded")
 
 func process_patches_mods():
 	for m in mods_list:
 		var mconf = m.config
 		if !mconf.has_section('Patches'): continue
 		process_patches(m)
+	emit_signal("patches_loaded")
 
+
+var extensions_queue = {}
 func process_script_extensions_mods():
 	for m in mods_list:
 		var mconf = m.config
 		if !mconf.has_section('CEScripts'): continue
 		process_script_extensions(m)
+	emit_signal("script_extensions_loaded")
+	#rename last extension, to alleviate serialization issues
+	var dir = Directory.new()
+	for name in extensions_queue:
+		var old_filepath = extensions_queue[name]
+		var new_filepath = old_filepath.get_base_dir() + '/modded_' + name + '.gd'
+		dir.rename(old_filepath, new_filepath)
+		ResourceScripts.scriptdict[name] = load(new_filepath)
+	#redo singletones
+	for name in extensions_queue:
+		if name in ResourceScripts.singletones + ResourceScripts.gamestate:
+			var oldc = ResourceScripts.get(name)
+			var newc = ResourceScripts.scriptdict[name].new()
+			if oldc is Node:
+				ResourceScripts.remove_child(oldc)
+				oldc.free()
+			ResourceScripts.set(name, newc)
+			if newc is Node:
+				ResourceScripts.add_child(newc)
+			if name == "game_world":
+				input_handler.disconnect("EnemyKilled", oldc, "quest_kill_receiver")
+				input_handler.connect("EnemyKilled", newc, "quest_kill_receiver")	
+	extensions_queue.clear()
+	emit_signal("script_extensions_applied")
+	
 		
 func process_core_extensions_mods():
 	for m in mods_list:
 		var mconf = m.config
 		if !mconf.has_section('CoreScripts'): continue
 		process_core_extensions(m)
+	emit_signal("core_extensions_loaded")
 
 func process_node_extensions_mods():
 	for m in mods_list:
 		var mconf = m.config
 		if !mconf.has_section('NodeScripts'): continue
 		process_node_extensions(m)
+	emit_signal("node_extensions_loaded")
 
 func get_mods_list():
 	var f := File.new()
@@ -187,7 +239,7 @@ func fill_mod_data(mconf, configpath):
 		replacedMethods = {}, 
 		required = [], 
 		optional = []
-		}
+	}
 	#load description
 	if mconf.has_section_key('General','Description'): 
 		temp.desc = mconf.get_value('General','Description')
@@ -217,21 +269,22 @@ func process_data_mod(data):
 	if debug: print("process_data_mod from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Data')
 	var dir = data.dir
-	match datatype:
-		"json":
-			for table in datafiles:
-				process_json_data_file(dir, mconf.get_value('Data', table), table)
-		"gd":
-			for table in datafiles:
-				process_gd_data_file(dir, mconf.get_value('Data', table), table)
+	for table in datafiles:
+		var tpath = mconf.get_value('Data', table)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
+		match datatype:
+			"json":
+				process_json_data_file(tpath, table)
+			"gd":
+				process_gd_data_file(tpath, table)
 
 func process_modules_init(data):
 	var mconf = data.config
-	
 	var modulenames = mconf.get_section_keys('Modules')
-	
 	for mname in modulenames:
-		modules[mname] = load(data.dir + '/' + mconf.get_value('Modules', mname)).new()
+		var tpath = mconf.get_value('Modules', mname)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
+		modules[mname] = load(tpath).new()
 
 func process_modules_ready():
 	for module in modules.values():
@@ -239,45 +292,47 @@ func process_modules_ready():
 
 func process_translation_mod(data, activetranslation):
 	var mconf = data.config
-	
 	if debug: print("process_translation_mod from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Translations')
 	var dir = data.dir
-	
 	for alias in datafiles:
-		process_translation_data_file(data.dir + '/' + mconf.get_value('Translations', alias), activetranslation)
+		var tpath = mconf.get_value('Translations', alias)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
+		process_translation_data_file(tpath, activetranslation)
 
 func process_patches(data):
 	var mconf = data.config
-#	mconf.load(path)
 	if debug: print("process_patches from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Patches')
 	for script in datafiles:
 		var tpath =  mconf.get_value('Patches', script)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
 		if tpath.ends_with('.gd'):
-			ResourceScripts.scriptdict[script] = tpath
+			ResourceScripts.scriptdict[script] = load(tpath).new()
 		if tpath.ends_with('.tscn'):
-			ResourceScripts.scenedict[script] = tpath
+			ResourceScripts.scenedict[script] = load(tpath).new()
 
 func process_script_extensions(data):
 	var mconf = data.config
 	if debug: print("process_script_extensions from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('CEScripts')
 	for script in datafiles:
-		process_script_extend(script, data.dir + '/' + mconf.get_value('CEScripts', script))
+		var tpath =  mconf.get_value('CEScripts', script)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
+		process_script_extend(script, tpath)
 
 		
 func process_core_extensions(data):
 	var mconf = data.config
-#	mconf.load(path)
 	if debug: print("process_core_extensions from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('CoreScripts')
 	for corefile in datafiles:
-		process_core_extend(data.dir + '/' + mconf.get_value('CoreScripts', corefile), corefile)
+		var tpath =  mconf.get_value('CoreScripts', corefile)
+		if not tpath.begins_with('user://'): tpath = data.dir + '/' + tpath
+		process_core_extend(tpath, corefile)
 		
 func process_node_extensions(data):
 	var mconf = data.config
-#	mconf.load(path)
 	if debug: print("process_node_extensions from mod %s" % mconf.get_value('General','Name'))
 	var modulenames = mconf.get_section_keys('NodeScripts')
 	for m in modulenames:
@@ -301,7 +356,7 @@ func make_desc(mod):
 			str_conflicts += "\n"
 		ret = ret % str_conflicts
 	
-	if !mod.required.empty() || !mod.required.empty():
+	if !mod.required.empty() || !mod.optional.empty():
 		ret += "\nDependecies:\n"
 		if !mod.required.empty():
 			ret += "Required:%s" % str(mod.required)
@@ -309,16 +364,16 @@ func make_desc(mod):
 			ret += "\n Optional%s" % str(mod.optional)
 	return ret
 
-func process_json_data_file(path : String, file: String, tablename : String):
+func process_json_data_file(filepath : String, tablename : String):
 	if mod_tables.has(tablename): 
 		print("ERROR: table %s has been already loaded" % tablename)
 		return #the same table in different mods do not load
 	var f := File.new()
-	if !f.file_exists(path + "/" + file):
+	if !f.file_exists(filepath):
 		print('ERROR: in %s table path' % tablename)
 		return
 	if debug: print("processing table %s" % tablename)
-	f.open(path + "/" + file, File.READ)
+	f.open(filepath, File.READ)
 	var tmp = f.get_as_text()
 	f.close()
 	var tmp1 = parse_json(tmp)
@@ -395,8 +450,8 @@ func process_translation_data_file(filepath, activetranslation):
 			return
 	script.new().load_translations(activetranslation)
 
-func process_gd_data_file(path : String, file: String, alias : String):
-	var script = load(path + '/' + file)
+func process_gd_data_file(filepath: String, alias : String):
+	var script = load(filepath)
 	for module in modules.values():
 		#if module uses this loadpath just call the module
 		if module.get_script().get_path() == script.resource_path:
@@ -407,6 +462,9 @@ func process_gd_data_file(path : String, file: String, alias : String):
 func fix_main_data():
 	#load images
 	images.loadimages()
+	
+	#fix racegroups
+	races.fill_racegroups()
 
 	#fix skills
 	for i in Skilldata.Skilllist.values():
@@ -634,6 +692,11 @@ func process_script_extend(name, path):
 		return
 	if !path.begins_with('user:'):
 		print('WARNING: possibility of access denial to %s' % path)
+		
+	#runtime injections hack
+	if !extensions_queue.has(name):
+		var tmp_res = tmp_save_script(ResourceScripts.scriptdict[name])
+		ResourceScripts.scriptdict[name] = load(tmp_res)
 	
 	path = tmp_save_file(path)
 	
@@ -642,34 +705,30 @@ func process_script_extend(name, path):
 	var pars = tmp.split('\n')
 	file.close()
 	file.open(path, File.WRITE)
+	
+	#set extension target
+	var extension = ''
+	if extensions_queue.has(name): 
+		extension = ResourceScripts.scriptdict[name].resource_path
+	else: 
+		extension = ResourceScripts.scriptdict[name]
+		scripts.append(extension)
+	
 	if pars[0].begins_with("extends"):
 		pars[0] = 'extends "%s"' % ResourceScripts.scriptdict[name].resource_path
-	else: file.store_line('extends "%s"' % ResourceScripts.scriptdict[name])
-	for s in pars:
-		file.store_line(s)
+	else: pars.append('extends "%s"' % ResourceScripts.scriptdict[name])
+	file.store_string(pars.join('\n'))
 	file.close()
 	ResourceScripts.scriptdict[name] = load(path)
 	
-	if name in ResourceScripts.singletones + ResourceScripts.gamestate:
-		var oldc = ResourceScripts.get(name)
-		var newc = ResourceScripts.scriptdict[name].new()
-		if oldc is Node:
-			ResourceScripts.remove_child(oldc)
-		ResourceScripts.set(name, newc)
-		if newc is Node:
-			ResourceScripts.add_child(newc)
-
-		if name == "game_world":
-			input_handler.disconnect("EnemyKilled", oldc, "quest_kill_receiver")
-			input_handler.connect("EnemyKilled", newc, "quest_kill_receiver")
+	extensions_queue[name] = path
+	
 
 func process_core_extend(path, core):
 	match core:
 		"globals":
-			variables.globals_extend = true
 			extend_node(globals, path)
 		"input_handler":
-			variables.input_handler_extend = true
 			extend_node(input_handler, path)
 
 func create_empty_mod():
@@ -708,11 +767,12 @@ func create_empty_mod():
 #	save_mod_list()
 
 func get_spec_node(type):
+	#return node from gui_nodes if possible
 	var nodename = ResourceScripts.node_data[type].name
 	for n in gui_nodes:
 		if n.name == nodename:
 			return n
-	
+	#otherwise make an instance and return that
 	var node = ResourceScripts.node_data[type].scene.instance()
 	node.name = nodename
 	gui_nodes.append(node)
@@ -731,31 +791,26 @@ func replace_node(dst, src):
 	dst.queue_free()
 
 func extend_node(node, script, no_ext = false):
-	var src
-	var fstr = File.new()
-
-	fstr.open(script,File.READ) 
-	src = fstr.get_as_text().split('\n')
-	fstr.close()
-
+	var source
+	var fstream = File.new()
+	#load new script to source
+	fstream.open(script,File.READ) 
+	source = fstream.get_as_text().split('\n')
+	fstream.close()
+	#add extends to new script
 	var old_script = node.get_script()
-	#scriptdict[str(old_script)] = old_script #just to make sure it doesn't get collected, probably not needed
-	src[0] = 'extends "%s"' % old_script.resource_path #should be dynn... dunno why it fails tho i'll change that later
-
+	source[0] = 'extends "%s"' % old_script.resource_path #should be dynn... dunno why it fails tho i'll change that later
+	#don't save if flag is set
 	if !no_ext:
-		fstr.open(script,File.WRITE)
-		for line in src:
-			fstr.store_line(line)
-		fstr.close()
-
-	
+		fstream.open(script,File.WRITE)
+		fstream.store_string(source.join('\n'))
+		fstream.close()
+	#set new script on node, _init will run on each inheritance level
 	var newscript = GDScript.new()
-	newscript.source_code = src.join('\n')
+	newscript.source_code = source.join('\n')
 	newscript.reload()
-	
 	if !no_ext:
 		newscript.resource_path = script
-	
 	node.set_script(newscript)
 	
 func load_translation(src, activetranslation):	
@@ -770,11 +825,12 @@ func load_table(dst,src):
 		else:
 			dst[e] = src[e]
 
-func runtime_injection(script,data,reload = false):
+func runtime_injection(script,data,reload = true):
 	#dprint("!rti: " + script.resource_path.get_file())
 	#setup
 	#works but far from perfect
 	var src = script.source_code.split('\n')
+	src.remove(src.size()-1)
 	var opcs = data.operations.split(' ')
 	var inj = data.injection.split('\n')
 	inj.invert()
@@ -836,6 +892,25 @@ func tmp_save_file(filepath):
 	var filebase = filepath.get_base_dir()
 	var tmp_file_path = filepath.replace(filebase, tmp_path)
 	#save new file
+	f.open(tmp_file_path, File.WRITE)
+	f.store_string(old_text)
+	f.close()
+	return tmp_file_path
+
+func tmp_save_script(script):
+	var filepath = script.resource_path
+	#check dir
+	var tmp_path = 'res://tmp'
+	var dir = Directory.new()
+	if dir.open(tmp_path) != OK:
+		dir.make_dir(tmp_path)
+	#get source from script
+	var old_text = script.source_code
+	#get new filepath
+	var filebase = filepath.get_base_dir()
+	var tmp_file_path = filepath.replace(filebase, tmp_path)
+	#save new file
+	var f = File.new()
 	f.open(tmp_file_path, File.WRITE)
 	f.store_string(old_text)
 	f.close()

@@ -9,9 +9,9 @@ func _ready():
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
-	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
+	$TabContainer/Visuals/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
-	$TabContainer/Graphics/fullscreen.pressed = input_handler.globalsettings.fullscreen
+	$TabContainer/Visuals/fullscreen.pressed = input_handler.globalsettings.fullscreen
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
@@ -20,18 +20,21 @@ func _ready():
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
-	$TabContainer/Graphics/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
+	$TabContainer/Visuals/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
 	ReloadPanel = $ReloadGameLanguage
-	SwitchLanguage = $TabContainer/Gameplay/SwitchLanguage
+	SwitchLanguage = $TabContainer/Visuals/SwitchLanguage
 	SwitchLanguage.OkPanel = ReloadPanel
-	
+
+	$TabContainer/Visuals/SwitchLanguage.text = tr("OPTIONSWITCHLANGUAGE") + ": " + input_handler.globalsettings.ActiveLocalization
+	$ReloadGameLanguage/Button.connect('pressed', self, 'language_restart')
+
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
 	for i in ['generate_portraits', 'factors_as_words']:
-		get_node("TabContainer/Graphics/" + i).connect("pressed", self, "gameplay_rule", ['Graphics', i])
-		get_node("TabContainer/Graphics/" + i).pressed = input_handler.globalsettings[i]
+		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
+		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
 
 	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
 
@@ -86,7 +89,7 @@ func open():
 	futa_rate_change(input_handler.globalsettings.futachance)
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
-	$TabContainer/Graphics/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
+	$TabContainer/Visuals/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
 
 
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
@@ -95,7 +98,7 @@ func open():
 		i.editable = !i.get_node("CheckBox").pressed
 
 func togglefullscreen():
-	input_handler.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
+	input_handler.globalsettings.fullscreen = $TabContainer/Visuals/fullscreen.pressed
 	OS.window_fullscreen = input_handler.globalsettings.fullscreen
 	if input_handler.globalsettings.fullscreen == false:
 		OS.window_position = Vector2(0,0)
@@ -170,6 +173,5 @@ func gameplay_rule(tab, rule):
 
 
 
-func _on_Button_pressed():
+func language_restart():
 	get_tree().quit()
-	pass # Replace with function body.

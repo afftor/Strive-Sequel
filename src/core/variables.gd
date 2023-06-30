@@ -1,7 +1,4 @@
 extends Node
-#those should be stored in modding_core, but this change is up to you now
-var globals_extend = false
-var input_handler_extend = false
 
 #Game Settings
 #timeflow
@@ -80,7 +77,7 @@ var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','ta
 var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
-var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings']
+var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity']
 var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
 var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 
@@ -135,6 +132,9 @@ var LocalizationFolder = "res://localization/"
 #var state
 
 var userfolder = 'user://'
+var portraits_folder = 'user://userportraits/'
+var portrait_width = 250
+var portrait_height = 250
 
 #mode for applying absolute random damage mod
 const relative_random_add = true
@@ -422,7 +422,7 @@ var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_s
 var argtypes = ['self','parent','template','app_obj','parent_args','parent_arg_get']
 var argtypesdesc = ['outside assigned argument of effect instance',"parameter of effect's parent",'argument defined in effect template','parameter of object effect applied to','runtime argument of parent effect','parameter of runtime argument of parent effect']
 var receiver_list = ['target', 'caster', 'all']
-var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'lower_body', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin', 'vaginal_virgin', 'anal_virgin', 'mouth_virgin']
+var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'body_lower', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin', 'vaginal_virgin', 'anal_virgin', 'mouth_virgin']
 var slots = ["chest","underwear", "legs", "hands", "rhand", "lhand", "neck", "head", "ass", "croach"]
 var interactioneffs = ['alcohol','aphrodisiac','sensitivity_pot']
 

@@ -315,6 +315,9 @@ var bodypartsdata = {
 			{code = 'has_pussy', value = [[false,1]], reqs = []},
 			{code = 'penis_size', value = [['small', 1], ['average', 5], ['big',1]], reqs = []},
 			{code = 'balls_size', value = [['small', 1], ['average', 5], ['big',1]], reqs = []},
+			{code = 'eye_tex', value = [['eyes1m', 1],['eyes2m', 1],['eyes3m', 1],['eyes4m', 1],['eyes5m', 1],], reqs = []},
+			{code = 'chin', value = [['default', 1],['male', 1],['muscle', 1]], reqs = []},
+			{code = 'eyebrows', value = [['style1', 1],['style6', 1],['style7', 1]], reqs = []},
 		]},
 		female = {code = 'female', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
@@ -327,6 +330,9 @@ var bodypartsdata = {
 			{code = 'has_pussy', value = [[true,1]], reqs = []},
 			{code = 'penis_size', value = [['',1]], reqs = []},
 			{code = 'balls_size', value = [['',1]], reqs = []},
+			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
+			{code = 'chin', value = [['default', 1],['curve', 1],['loli', 1],['skinny', 1]], reqs = []},
+			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
@@ -340,6 +346,9 @@ var bodypartsdata = {
 			{code = 'penis_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = []},
 			{code = 'balls_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = [{code = 'setting', type = 'futa_balls', value = true}]},
 			{code = 'balls_size', value = [['',1]], reqs = [{code = 'setting', type = 'futa_balls', value = false}]},
+			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
+			{code = 'chin', value = [['default', 1],['curve', 1],['loli', 1],['skinny', 1]], reqs = []},
+			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 	},
 	age = {

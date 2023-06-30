@@ -441,7 +441,7 @@ func victory():
 	var exp_per_character = ceil(rewardsdict.xp/playergroup.size())
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
-		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
+		var gained_exp = exp_per_character# * tchar.get_stat('exp_gain_mod')
 		tchar.add_stat('base_exp', gained_exp)
 		tchar.add_stat('abil_exp', gained_exp)
 		tchar.add_stat('metrics_win', 1)

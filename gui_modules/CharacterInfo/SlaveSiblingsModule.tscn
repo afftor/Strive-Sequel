@@ -115,7 +115,6 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveDietModule/ScrollContainer"]
-margin_right = 436.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SlaveDietModule/ScrollContainer/VBoxContainer"]
@@ -132,8 +131,8 @@ margin_left = 18.2053
 margin_top = -6.99472
 margin_right = 110.459
 margin_bottom = 13.1653
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "Food Name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,8 +143,8 @@ margin_left = 320.848
 margin_top = 2.66974
 margin_right = 412.848
 margin_bottom = 37.6697
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "High"
 align = 1
 __meta__ = {
@@ -155,8 +154,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="SlaveDietModule"]
 margin_right = 504.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Food Filter"
 align = 1
 valign = 1
@@ -191,10 +190,10 @@ margin_left = 12.4998
 margin_top = 5.88629
 margin_right = 175.5
 margin_bottom = 40.8863
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 4 )
 text = "Penetration"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,11 +216,11 @@ light_mask = 0
 margin_top = -2.0
 margin_right = 128.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 5 )
 text = "1/100"
 align = 1
 __meta__ = {
@@ -266,8 +265,8 @@ margin_left = 29.3008
 margin_top = 16.8252
 margin_right = 255.301
 margin_bottom = 72.8252
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Sex Skills"
 align = 1
 valign = 1
@@ -280,8 +279,8 @@ margin_left = 342.0
 margin_top = 20.0
 margin_right = 740.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Rules and Conditions"
 align = 1
 valign = 1
@@ -302,45 +301,45 @@ __meta__ = {
 [node name="ration" type="CheckBox" parent="work_rules"]
 margin_right = 215.0
 margin_bottom = 48.0
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 7 )
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 7 )
 text = "Extra rations"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
 margin_left = 219.0
 margin_right = 420.0
 margin_bottom = 48.0
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 8 )
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 8 )
 text = "Longer shifts"
 
 [node name="constrain" type="CheckBox" parent="work_rules"]
 margin_top = 52.0
 margin_right = 215.0
 margin_bottom = 100.0
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 9 )
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 9 )
 text = "Coerced Labor"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
@@ -348,31 +347,47 @@ margin_left = 219.0
 margin_top = 52.0
 margin_right = 420.0
 margin_bottom = 100.0
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 9 )
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 9 )
 text = "Luxury Room"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
 margin_top = 104.0
 margin_right = 215.0
 margin_bottom = 152.0
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 9 )
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 9 )
 text = "Contraceptive"
+
+[node name="nudity" type="CheckBox" parent="work_rules"]
+margin_left = 219.0
+margin_top = 104.0
+margin_right = 420.0
+margin_bottom = 152.0
+custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 9 )
+text = "Nudity"
 
 [node name="food_love" type="TextureRect" parent="."]
 light_mask = 0
@@ -442,8 +457,8 @@ light_mask = 0
 margin_left = 18.126
 margin_right = 210.126
 margin_bottom = 42.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Sex traits"
 align = 1
 valign = 1
@@ -464,7 +479,6 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
 light_mask = 0
-margin_right = 230.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -495,8 +509,8 @@ margin_left = 5.53214
 margin_top = 461.458
 margin_right = 160.532
 margin_bottom = 496.458
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "TraitCapacity"
 align = 1
 valign = 1
@@ -518,8 +532,8 @@ margin_left = 824.0
 margin_top = 25.0
 margin_right = 1663.0
 margin_bottom = 100.0
-custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 22 )
 text = "Relatives"
 align = 1
 __meta__ = {
@@ -685,8 +699,8 @@ margin_left = 1432.0
 margin_top = 848.0
 margin_right = 1601.0
 margin_bottom = 888.0
-custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
 text = "100"
 align = 1
 __meta__ = {
@@ -698,8 +712,8 @@ margin_left = 995.938
 margin_top = 21.551
 margin_right = 1498.94
 margin_bottom = 75.551
-custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 22 )
 text = "Trainings"
 align = 1
 __meta__ = {
@@ -721,8 +735,8 @@ margin_left = 542.0
 margin_top = 860.0
 margin_right = 809.0
 margin_bottom = 892.0
-custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 10 )
 text = "Daily Consumption"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -732,8 +746,8 @@ __meta__ = {
 margin_left = 231.0
 margin_right = 271.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 11 )
 text = "25"
 align = 1
 __meta__ = {
@@ -784,9 +798,6 @@ margin_bottom = 409.086
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="change_button" type="TextureButton" parent="."]
 margin_left = 892.88

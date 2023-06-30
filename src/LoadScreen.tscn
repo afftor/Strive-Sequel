@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/LoadScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/backgrounds/loading.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/universal/progress_bar.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/universal/loading.png" type="Texture" id=4]
-
+[ext_resource path="res://assets/images/Load_scene/ornament.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/sprites/cali.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Load_scene/mask.png" type="Texture" id=4]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/images/Load_scene/book.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/Load_scene/back.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/Load_scene/load.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/Load_scene/zakladka.png" type="Texture" id=9]
+[ext_resource path="res://assets/book_shader.tres" type="Material" id=10]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/images/Load_scene/book_top.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loading"
@@ -22,6 +30,11 @@ tracks/0/keys = {
 "values": [ Vector2( 626, 285 ), Vector2( 624, 166 ), Vector2( 621, 437 ) ]
 }
 
+[sub_resource type="DynamicFont" id=2]
+size = 36
+use_filter = true
+font_data = ExtResource( 12 )
+
 [node name="LoadScreen" type="Node"]
 script = ExtResource( 1 )
 
@@ -31,22 +44,122 @@ anims/loading = SubResource( 1 )
 [node name="loading" type="TextureRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="loading"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="loading"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="TextureRect" parent="loading"]
+material = ExtResource( 10 )
+margin_left = 1224.0
+margin_top = 40.0
+margin_right = 1785.0
+margin_bottom = 955.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="loading"]
+margin_right = 1922.0
+margin_bottom = 1082.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressTexture" type="TextureRect" parent="loading"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+
+[node name="ProgressBar" type="TextureProgress" parent="loading/ProgressTexture"]
+margin_left = 2.74683
+margin_top = -18.3692
+margin_right = 1924.75
+margin_bottom = 1063.63
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 8 )
+fill_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintText" type="Label" parent="loading"]
+margin_left = 146.755
+margin_top = 715.449
+margin_right = 929.755
+margin_bottom = 835.449
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.92549, 0.819608, 0.12549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Tip: Some races can achieve exclusive classes"
+align = 1
+autowrap = true
+
+[node name="Lorelabel" type="Label" parent="loading"]
+margin_left = 150.53
+margin_top = 45.2986
+margin_right = 933.531
+margin_bottom = 165.299
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.764706, 0.364706, 0.729412, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Lore Label"
+align = 1
+autowrap = true
+
+[node name="Loretext" type="RichTextLabel" parent="loading"]
+margin_left = 164.776
+margin_top = 132.327
+margin_right = 923.776
+margin_bottom = 683.327
+custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Lore Text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_left = 626.0
 margin_top = 285.0
 margin_right = 1242.0
-margin_bottom = 516.0
+margin_bottom = 515.999
 text = "Loading..."
 align = 1
 valign = 1
 
-[node name="progress" type="TextureProgress" parent="."]
-margin_left = 713.526
-margin_top = 795.789
-margin_right = 1213.53
-margin_bottom = 849.789
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+[node name="loading_finished_label" type="Label" parent="."]
+margin_left = 323.986
+margin_top = 891.673
+margin_right = 680.988
+margin_bottom = 937.673
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.337255, 0.858824, 0.796078, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Loading FInished, press any key"
+__meta__ = {
+"_edit_use_anchors_": false
+}

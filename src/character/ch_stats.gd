@@ -286,8 +286,426 @@ func set_stat(statname, value): #for direct access only
 #	 self.statlist[stat] = value
 	custom_stats_set(statname, value)
 
+#compat getter - stub
+func get_hairs_data():
+	var res = {
+		hair_base = 'dopple', 
+		hair_assist = 'bun', 
+		hair_back = 'very_long', 
+		hair_base_color_1 = 'blue_2', 
+		hair_back_color_1 = 'blue_2', 
+		hair_assist_color_1 = 'blue_2', 
+		hair_base_color_2 = 'blue_2', 
+		hair_back_color_2 = 'blue_2', 
+		hair_assist_color_2 = 'blue_2', 
+		hair_base_lenght = 'long', 
+		hair_back_lenght = 'long', 
+		hair_assist_lenght = 'long',
+	}
+	match statlist.hair_color:
+		'blond':
+			res.hair_back_color_1 = 'yellow_2'
+			res.hair_back_color_2 = 'yellow_1'
+			res.hair_assist_color_1 = 'yellow_2'
+			res.hair_assist_color_2 = 'yellow_1'
+			res.hair_base_color_1 = 'yellow_2'
+			res.hair_base_color_2 = 'yellow_1'
+		'green':
+			res.hair_back_color_1 = 'green_2'
+			res.hair_back_color_2 = 'green_1'
+			res.hair_assist_color_1 = 'green_2'
+			res.hair_assist_color_2 = 'green_1'
+			res.hair_base_color_1 = 'green_2'
+			res.hair_base_color_2 = 'green_1'
+		'brown':
+			res.hair_back_color_1 = 'red_3'
+			res.hair_back_color_2 = 'dark_1'
+			res.hair_assist_color_1 = 'red_3'
+			res.hair_assist_color_2 = 'dark_1'
+			res.hair_base_color_1 = 'red_3'
+			res.hair_base_color_2 = 'dark_1'
+		'white':
+			res.hair_back_color_1 = 'white_2'
+			res.hair_back_color_2 = 'white_1'
+			res.hair_assist_color_1 = 'white_2'
+			res.hair_assist_color_2 = 'white_1'
+			res.hair_base_color_1 = 'white_2'
+			res.hair_base_color_2 = 'white_1'
+		'red':
+			res.hair_back_color_1 = 'red_3'
+			res.hair_back_color_2 = 'red_2'
+			res.hair_assist_color_1 = 'red_3'
+			res.hair_assist_color_2 = 'red_2'
+			res.hair_base_color_1 = 'red_3'
+			res.hair_base_color_2 = 'red_2'
+		'orange':
+			res.hair_back_color_2 = 'red_1'
+			res.hair_back_color_1 = 'yellow_3'
+			res.hair_assist_color_2 = 'red_1'
+			res.hair_assist_color_1 = 'yellow_3'
+			res.hair_base_color_2 = 'red_1'
+			res.hair_base_color_1 = 'yellow_3'
+		'auburn':
+			res.hair_back_color_1 = 'dark_1'
+			res.hair_back_color_2 = 'red_3'
+			res.hair_assist_color_1 = 'dark_1'
+			res.hair_assist_color_2 = 'red_3'
+			res.hair_base_color_1 = 'dark_1'
+			res.hair_base_color_2 = 'red_3'
+		'black':
+			res.hair_back_color_1 = 'dark_3'
+			res.hair_back_color_2 = 'dark_3'
+			res.hair_assist_color_1 = 'dark_3'
+			res.hair_assist_color_2 = 'dark_3'
+			res.hair_base_color_1 = 'dark_3'
+			res.hair_base_color_2 = 'dark_3'
+		'purple':
+			res.hair_back_color_1 = 'purple_2'
+			res.hair_back_color_2 = 'purple_3'
+			res.hair_assist_color_1 = 'purple_2'
+			res.hair_assist_color_2 = 'purple_3'
+			res.hair_base_color_1 = 'purple_2'
+			res.hair_base_color_2 = 'purple_3'
+		'green':
+			res.hair_back_color_1 = 'green_3'
+			res.hair_back_color_2 = 'green_1'
+			res.hair_assist_color_1 = 'green_3'
+			res.hair_assist_color_2 = 'green_1'
+			res.hair_base_color_1 = 'green_3'
+			res.hair_base_color_2 = 'green_1'
+		'gradient':
+			res.hair_back_color_1 = 'red_1'
+			res.hair_back_color_2 = 'green_2'
+			res.hair_assist_color_1 = 'red_2'
+			res.hair_assist_color_2 = 'blue_3'
+			res.hair_base_color_1 = 'red_3'
+			res.hair_base_color_2 = 'purple_1'
+		_:
+			res.hair_back_color_1 = 'blue_1'
+			res.hair_back_color_2 = 'blue_1'
+			res.hair_assist_color_1 = 'blue_1'
+			res.hair_assist_color_2 = 'blue_1'
+			res.hair_base_color_1 = 'blue_1'
+			res.hair_base_color_2 = 'blue_1'
+	if statlist.hair_length == 'bald':
+		res.hair_base_lenght = 'bald'
+		res.hair_assist = ''
+		res.hair_back = ''
+	else:
+		match statlist.hair_style:
+			'straight':
+				match statlist.hair_length:
+					'ear':
+						res.hair_base = 'undercut'
+						res.hair_assist = ''
+						res.hair_back = 'care'
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'neck':
+						res.hair_base = 'dopple'
+						res.hair_assist = ''
+						res.hair_back = 'straight'
+						res.hair_base_lenght = 'middle'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'shoulder':
+						res.hair_base = 'default'
+						res.hair_assist = ''
+						res.hair_back = 'straight'
+						res.hair_base_lenght = 'middle'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'waist':
+						res.hair_base = 'default'
+						res.hair_assist = ''
+						res.hair_back = 'straight'
+						res.hair_base_lenght = 'long'
+						res.hair_assist_lenght = 'middle'
+						res.hair_back_lenght = 'middle'
+					'hips':
+						res.hair_base = 'straight'
+						res.hair_assist = ''
+						res.hair_back = 'very_long'
+						res.hair_base_lenght = 'long'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					_:
+						res.hair_base = 'undercut'
+						res.hair_assist = ''
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+			'ponytail':
+				res.hair_base = 'back'
+				match statlist.hair_length:
+					'ear':
+						res.hair_assist = 'ponytail'
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'neck':
+						res.hair_assist = 'ponytail'
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'shoulder':
+						res.hair_assist = 'ponytail'
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'waist':
+						res.hair_assist = 'ponytail'
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'middle'
+						res.hair_back_lenght = 'middle'
+					'hips':
+						res.hair_assist = 'ponytail'
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					_:
+						res.hair_assist = ''
+						res.hair_back = ''
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+			'pigtails':
+				res.hair_base = 'lamb'
+				res.hair_assist = 'pigtails'
+				res.hair_back = ''
+				match statlist.hair_length:
+					'ear':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'neck':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'shoulder':
+						res.hair_base_lenght = 'middle'
+						res.hair_assist_lenght = 'middle'
+						res.hair_back_lenght = 'middle'
+					'waist':
+						res.hair_base_lenght = 'long'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					'hips':
+						res.hair_base_lenght = 'long'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					_:
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+			'braid':
+				res.hair_base = 'back'
+				res.hair_assist = 'braid'
+				res.hair_back = ''
+				match statlist.hair_length:
+					'ear':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'neck':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'shoulder':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'middle'
+						res.hair_back_lenght = 'middle'
+					'waist':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					'hips':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					_:
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+			'twinbraids':
+				res.hair_base = 'braids'
+				res.hair_assist = ''
+				res.hair_back = 'twin_braids'
+				match statlist.hair_length:
+					'ear':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'neck':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+					'shoulder':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'middle'
+						res.hair_back_lenght = 'middle'
+					'waist':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					'hips':
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'long'
+						res.hair_back_lenght = 'long'
+					_:
+						res.hair_base_lenght = 'short'
+						res.hair_assist_lenght = 'short'
+						res.hair_back_lenght = 'short'
+			'bun':
+				res.hair_base = 'back'
+				res.hair_assist = 'bun'
+				res.hair_back = ''
+				res.hair_base_lenght = 'short'
+				res.hair_assist_lenght = 'short'
+				res.hair_back_lenght = 'short'
+	return res
+
 #bonus system
 func get_stat(statname, ref = false):
+	if statname.begins_with('hair_'): #compart actions, null values should not be returned
+		if statlist[statname] != "":
+			return statlist[statname]
+		else:
+			return get_hairs_data()[statname]
+	if statname.begins_with('armor_color_'):
+		var partname = statname.trim_prefix('armor_color_')
+		statname = 'armor_color'
+		var part = parent.get_ref().get_stat('armor_' + partname)
+		if statlist[statname] is Dictionary and statlist[statname].has(part):
+			return statlist[statname][part]
+		if statlist[statname] is String and statlist[statname] != "":
+			return statlist[statname]
+		return 'default'
+	if statname.begins_with('body_color'): #compart actions, null values should not be returned
+		match statname:
+			'body_color_skin':
+				if statlist[statname] != "":
+					return statlist[statname]
+				match statlist.skin: #feel free to change values
+					'pale':
+						return 'human1'
+					'grey':
+						return 'human2'
+					'fair':
+						return 'human3'
+					'olive':
+						return 'human4'
+					'tan':
+						return 'human4'
+					'brown':
+						return 'human5'
+					'dark':
+						return 'human5'
+					'slime':
+						return 'green1'
+					'blue':
+						return 'blue3'
+					'paleblue':
+						return 'blue1'
+					'green':
+						return 'green3'
+					'red':
+						return 'red3'
+					'purple':
+						return 'purple3'
+					'teal':
+						return 'blue2'
+					_:
+						return 'human2'
+			'body_color_horns':
+				if statlist[statname] != "":
+					return statlist[statname]
+				return 'yellow3' #any can go, feel free to add stat matching
+			'body_color_wings':
+				if statlist[statname] is Dictionary and statlist[statname].has(statlist.wings):
+					return statlist[statname][statlist.wings]
+				if statlist[statname] is String and statlist[statname] != "":
+					return statlist[statname]
+				match statlist.wings: #feel free to change values and stat
+					'':
+						return 'pink1'
+					'feathered_black':
+						return 'dark2'
+					'seraph':
+						return 'white1'
+					'feathered_brown':
+						return 'dark1'
+					'fairy':
+						return 'blue1'
+					'demon':
+						return 'red3'
+					'dragon':
+						return 'yellow3'
+					'leather_black':
+						return 'dark3'
+					'leather_red':
+						return 'red1'
+					_:
+						return 'pink1'
+			'body_color_tail':
+				if statlist[statname] != "":
+					return statlist[statname]
+				match statlist.skin: #feel free to change values and stat
+					'pale':
+						return 'white2'
+					'grey':
+						return 'white3'
+					'fair':
+						return 'pink1'
+					'olive':
+						return 'dark1'
+					'tan':
+						return 'dark2'
+					'brown':
+						return 'dark3'
+					'dark':
+						return 'dark3'
+					'slime':
+						return 'green1'
+					'blue':
+						return 'blue2'
+					'paleblue':
+						return 'blue1'
+					'green':
+						return 'green2'
+					'red':
+						return 'red2'
+					'purple':
+						return 'purple2'
+					'teal':
+						return 'cyan2'
+					_:
+						return 'yellow2'
+			'body_color_animal':
+				if statlist[statname] != "":
+					return statlist[statname]
+				match statlist.body_lower: #feel free to change values and stat
+					'horse':
+						return 'red3'
+					'avian':
+						return 'blue1'
+					'snake':
+						return 'green2'
+					'spider':
+						return 'pink3'
+					'tentacle':
+						return 'purple3'
+					'avian':
+						return 'blue3'
+					_:
+						return 'white2'
 	if statname.begins_with('sex_skills_'):
 		var tmp = statlist.sex_skills
 		var stat = statname.trim_prefix('sex_skills_')
@@ -724,7 +1142,8 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
-	
+	if chardata.has('icon_image'):
+		statlist.dynamic_portrait = false
 	set_virginity_data()
 
 
@@ -956,7 +1375,8 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 
 	statlist.personality = variables.personality_array[randi()%variables.personality_array.size()]
-
+	
+	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
 			if ResourceScripts.descriptions.bodypartsdata[i][statlist[i]].bodychanges.size() > 0:
@@ -1115,6 +1535,7 @@ func random_icon():
 #				continue
 	if array.size() > 0:
 		statlist.icon_image = array[randi()%array.size()]
+		statlist.dynamic_portrait = false
 
 func get_icon():
 	if statlist.icon_image in ['', null]:
@@ -1131,12 +1552,16 @@ func get_icon_path():
 		return ""
 	return statlist.icon_image
 
-func get_body_image(): 
+func get_stored_body_image(): 
 	var tmp 
 	if images.sprites.has(statlist.body_image):
 		tmp = input_handler.loadimage(images.sprites[statlist.body_image], 'shades')
 	else:
 		tmp = input_handler.loadimage(statlist.body_image, 'shades')
+	return tmp
+
+func get_body_image(): 
+	var tmp = get_stored_body_image()
 	if tmp != null:
 		return tmp
 	else:
@@ -1343,6 +1768,7 @@ func remove_tattoo(slot):
 func make_random_portrait():
 	statlist.icon_image = ResourceScripts.rnd_main.setrandom(statlist) 
 	if statlist != null && statlist.icon_image != null && !statlist.icon_image.empty(): # this if sets the matching body image
+		statlist.dynamic_portrait = false
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)
 		if File.new().file_exists(fullImagePath):
 			statlist.body_image = fullImagePath 

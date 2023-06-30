@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'sex_anal', 'combatant', 'keep_baby', 'body_mod', 'basic_servitude', 'prostitution', ],
+		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'sex_anal', 'combatant', 'keep_baby', 'body_mod', 'basic_servitude', 'prostitution', 'exhibit'],
 		effects = ['e_tr_master']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
@@ -278,6 +278,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_breeder'],
+		tags = ['breeder']
 	}, #second and third effects need to be hardcoded
 	harlot = {#+50% gold from prostitution
 		code = 'harlot',
