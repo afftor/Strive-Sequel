@@ -188,7 +188,7 @@ func start_preset_set(button):
 	if data.start in ['advanced']:
 		text += "\n[color=yellow]Skips prologue.[/color]"
 	text += "\n\n"
-	text += tr("NEWGAMEADDITIONAL") + str(data.free_slave_number) + "\n"
+	text += tr("NEWGAMEADDITIONAL") + ": " + str(data.free_slave_number) + "\n"
 	if data.upgrades.size() > 0:
 		text += "Upgrades: " #+ data.upgrades
 		for i in data.upgrades:
