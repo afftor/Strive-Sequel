@@ -552,6 +552,11 @@ var gold_tasks_data = {
 	},
 }
 
+
+var farm_tasks = {
+	
+}
+
 func fill_racegroups():
 	for i in racelist:
 		for tag in racelist[i].race_tags:

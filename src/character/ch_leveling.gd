@@ -29,6 +29,11 @@ var brothel_rules = {
 		females = false,
 		futa = false
 	}
+
+var farming_rules = {
+	
+}
+
 var messages = []
 
 
@@ -50,6 +55,9 @@ func fix_rules():
 	for rule in variables.brothel_rules:
 		if !brothel_rules.has(rule):
 			brothel_rules[rule] = false
+	for rule in variables.farming_rules:
+		if !farming_rules.has(rule):
+			farming_rules[rule] = false
 
 
 func check_work_rule(rule):
@@ -655,6 +663,12 @@ func special_tick(task): #maybe incomplete
 		ResourceScripts.game_party.active_tasks.erase(task)
 		globals.text_log_add('work', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
 		input_handler.PlaySound("ding")
+
+func farm_tick():
+	for res in farming_rules:
+		if !farming_rules[res]: continue
+		var task = races.farm_tasks[res]
+		
 
 
 func work_tick():

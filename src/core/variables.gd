@@ -80,6 +80,7 @@ var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_fact
 var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity']
 var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
 var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
+var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptile_blood', 'spider_silk', 'draconic_scales', 'light_essence', 'dark_essence']
 
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
