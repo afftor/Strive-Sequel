@@ -480,7 +480,7 @@ func update_button(newbutton):
 		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = tr("MSLMRELOC") ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
+		newbutton.get_node('Location').text = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		newbutton.get_node('Location').text = tr("MSLMMANSION")#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:

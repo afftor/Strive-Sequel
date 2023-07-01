@@ -450,11 +450,8 @@ __meta__ = {
 margin_right = 709.0
 margin_bottom = 85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-
-text = "NEWGAMENAME"
-
 custom_fonts/font = ExtResource( 15 )
-
+text = "NEWGAMENAME"
 align = 1
 valign = 1
 __meta__ = {
@@ -467,11 +464,8 @@ margin_top = 482.0
 margin_right = 296.0
 margin_bottom = 567.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-
-text = "NEWGAMESETTING"
-
 custom_fonts/font = SubResource( 7 )
-
+text = "NEWGAMESETTING"
 align = 1
 valign = 1
 __meta__ = {
@@ -579,11 +573,7 @@ custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
-
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "NEWGAMESTART"
-
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
 margin_left = 407.71
@@ -658,14 +648,11 @@ margin_bottom = 1038.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.941176, 0.92549, 0.741176, 1 )
 custom_colors/font_color_pressed = Color( 0.655824, 0.660156, 0.521523, 1 )
-
+custom_fonts/font = ExtResource( 26 )
 text = "MENUCHANGELOG"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-custom_fonts/font = ExtResource( 26 )
-
 
 [node name="Changelogpanel" type="Panel" parent="."]
 visible = false
@@ -2307,11 +2294,8 @@ texture = ExtResource( 19 )
 margin_right = 649.0
 margin_bottom = 81.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-
-text = "MENUCREDITSNAME"
-
 custom_fonts/font = ExtResource( 15 )
-
+text = "MENUCREDITSNAME"
 align = 1
 valign = 1
 __meta__ = {
