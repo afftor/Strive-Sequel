@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/mask_besatkin 2 ext.png-49bb22b3008257a63de18481aafa615f.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Character_generator/images/98_masks/mask_besatkin 2 ext.png"
+dest_files=[ "res://.import/mask_besatkin 2 ext.png-49bb22b3008257a63de18481aafa615f.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
