@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex"
+path="res://.import/beastkin_HandL3.png-9804b334505b0c6d967c2149968cb331.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/legR.png"
-dest_files=[ "res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex" ]
+source_file="res://Character_generator/images/15_beastkin_body_nude/beastkin_HandL3.png"
+dest_files=[ "res://.import/beastkin_HandL3.png-9804b334505b0c6d967c2149968cb331.stex" ]
 
 [params]
 
