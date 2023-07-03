@@ -46,7 +46,7 @@
 [ext_resource path="res://Character_generator/images/00_body_nude/LegL.png" type="Texture" id=44]
 [ext_resource path="res://Character_generator/images/00_body_nude/HandL2.png" type="Texture" id=45]
 [ext_resource path="res://Character_generator/images/00_body_nude/ArmR1.png" type="Texture" id=46]
-[ext_resource path="res://Character_generator/images/00_body_nude/HandR2.png" type="Texture" id=47]
+[ext_resource path="res://Character_generator/images/00_body_nude/HandR3.png" type="Texture" id=47]
 [ext_resource path="res://Character_generator/images/00_body_nude/ArmL1.png" type="Texture" id=48]
 [ext_resource path="res://Character_generator/images/00_body_nude/torso.png" type="Texture" id=49]
 [ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=50]
@@ -1164,13 +1164,13 @@ script = ExtResource( 63 )
 
 [node name="ArmR" type="Bone2D" parent="HumanF1/Spine"]
 position = Vector2( 110, -106 )
-rotation = 0.509636
+rotation = 0.329867
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="HumanF1/Spine/ArmR"]
-position = Vector2( 139.978, -32.4083 )
-rotation = -0.0959931
+position = Vector2( 143.296, -34.9724 )
+rotation = 0.115192
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -1200,13 +1200,13 @@ texture = ExtResource( 58 )
 
 [node name="ArmL" type="Bone2D" parent="HumanF1/Spine"]
 position = Vector2( 113, 91.9996 )
-rotation = -1.67377
+rotation = -1.57603
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="HumanF1/Spine/ArmL"]
-position = Vector2( 141.149, 17.025 )
-rotation = 0.218166
+position = Vector2( 141.934, 17.6832 )
+rotation = 0.0436332
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
