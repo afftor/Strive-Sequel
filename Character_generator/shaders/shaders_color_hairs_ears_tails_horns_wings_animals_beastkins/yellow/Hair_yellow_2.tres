@@ -6,8 +6,8 @@
 
 [resource]
 shader = ExtResource( 3 )
-shader_param/anchor1 = Vector2( 328.001, 387.999 )
-shader_param/anchor2 = Vector2( 567.001, 387.998 )
+shader_param/anchor1 = Vector2( 361, 478 )
+shader_param/anchor2 = Vector2( 520, 478 )
 shader_param/anchor3 = Vector2( 0, 0 )
 shader_param/anchor4 = Vector2( 0, 0 )
 shader_param/anchor5 = Vector2( 0, 0 )
