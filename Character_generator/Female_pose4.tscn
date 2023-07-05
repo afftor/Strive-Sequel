@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_big.png" type="Texture" id=2]
@@ -10,14 +10,14 @@
 [ext_resource path="res://Character_generator/images/22_slime/slime_body.png" type="Texture" id=8]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_helicere.png" type="Texture" id=9]
 [ext_resource path="res://Character_generator/images/05_hairs_assist/hair_assist_pigtails.png" type="Texture" id=10]
-[ext_resource path="res://Character_generator/images/98_masks/mask_kobold.png" type="Texture" id=11]
+[ext_resource path="res://Character_generator/images/07_tails/tail_cat.png" type="Texture" id=11]
 [ext_resource path="res://Character_generator/images/03_noses/nose_kobold.png" type="Texture" id=12]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_big.png" type="Texture" id=13]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_big.png" type="Texture" id=14]
 [ext_resource path="res://Character_generator/images/00_body_nude/torso_nipples_mask.png" type="Texture" id=15]
 [ext_resource path="res://Character_generator/images/01_heads/head_chin_default.png" type="Texture" id=16]
 [ext_resource path="res://Character_generator/images/00_body_nude/ShoulderL.png" type="Texture" id=17]
-[ext_resource path="res://Character_generator/images/03_ears/ears_fox.png" type="Texture" id=18]
+[ext_resource path="res://Character_generator/shaders/shaders_skin/human/skin_human3.tres" type="Material" id=18]
 [ext_resource path="res://Character_generator/images/22_slime/slime_taz.png" type="Texture" id=19]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/tits_armor1_big.png" type="Texture" id=20]
 [ext_resource path="res://Character_generator/images/21_nereid/Nereid_armL.png" type="Texture" id=21]
@@ -34,7 +34,7 @@
 [ext_resource path="res://Character_generator/images/21_nereid/nereid_LegL.png" type="Texture" id=32]
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=33]
 [ext_resource path="res://Character_generator/images/21_nereid/nereid_LegR.png" type="Texture" id=34]
-[ext_resource path="res://Character_generator/images/06_tails/Kobold_tail.png" type="Texture" id=35]
+[ext_resource path="res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_2.tres" type="Material" id=35]
 [ext_resource path="res://Character_generator/images/02_faces/face1.png" type="Texture" id=36]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_body.png" type="Texture" id=37]
 [ext_resource path="res://Character_generator/images/04_hairs_base/hair_base_default.png" type="Texture" id=38]
@@ -61,10 +61,12 @@
 [ext_resource path="res://Character_generator/shaders/shaders_hair_length/hair_lengh_long.tres" type="Material" id=59]
 [ext_resource path="res://Character_generator/images/010_armory_set_maidu/Hand1_armorR1.png" type="Texture" id=60]
 [ext_resource path="res://Character_generator/images/010_armory_set_maidu/bluza.png" type="Texture" id=61]
-[ext_resource path="res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres" type="Material" id=62]
+[ext_resource path="res://Character_generator/images/98_masks/mask_cat 2.png" type="Texture" id=62]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=63]
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=64]
-[ext_resource path="res://Character_generator/shaders/shaders_skin/green/skin_green5.tres" type="Material" id=65]
+[ext_resource path="res://Character_generator/images/98_masks/mask_cat2 2 ext.png" type="Texture" id=65]
+[ext_resource path="res://Character_generator/images/03_ears/ears_cat.png" type="Texture" id=66]
+[ext_resource path="res://Character_generator/shaders/shaders_color_eyes/eyes_yellow.tres" type="Material" id=68]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -443,11 +445,12 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 0.65098, 0.411765, 0.313726, 1 )
 shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
 shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part1color = Color( 0.654902, 0.380392, 0.266667, 1 )
-shader_param/part2color = Color( 0.27451, 0.317647, 0.2, 1 )
-shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
+shader_param/part1color = Color( 0.541176, 0.470588, 0.380392, 1 )
+shader_param/part2color = Color( 0.945098, 0.462745, 0.168627, 1 )
+shader_param/part3color = Color( 0.407843, 0.184314, 0.109804, 1 )
 shader_param/overlay = 0.999
-shader_param/part3 = ExtResource( 11 )
+shader_param/part2 = ExtResource( 62 )
+shader_param/part3 = ExtResource( 65 )
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -640,7 +643,7 @@ shader = ExtResource( 64 )
 [node name="Female_pose1" type="Node2D"]
 
 [node name="HumanF1" type="Skeleton2D" parent="."]
-position = Vector2( 219, 5 )
+position = Vector2( 271, 3 )
 
 [node name="Spine" type="Bone2D" parent="HumanF1"]
 material = SubResource( 1 )
@@ -650,7 +653,7 @@ rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="Hairs_back_long_mesh" type="Polygon2D" parent="HumanF1/Spine"]
-material = ExtResource( 62 )
+material = ExtResource( 35 )
 position = Vector2( -529.999, 433.002 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -799,14 +802,14 @@ rotation = -1.5708
 texture = ExtResource( 50 )
 
 [node name="Tail_tex" type="Sprite" parent="HumanF1/Spine"]
-material = ExtResource( 55 )
+material = ExtResource( 35 )
 position = Vector2( 205, 2.99924 )
 rotation = -1.5708
-texture = ExtResource( 35 )
+texture = ExtResource( 11 )
 
 [node name="ShoulderR" type="Bone2D" parent="HumanF1/Spine"]
 position = Vector2( -105, -101 )
-rotation = -0.00174533
+rotation = 0.0139626
 rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -831,7 +834,7 @@ texture = ExtResource( 56 )
 
 [node name="ShoulderL" type="Bone2D" parent="HumanF1/Spine"]
 position = Vector2( -94.9996, 106 )
-rotation = -0.0279253
+rotation = -0.0593412
 scale = Vector2( 1.04, 1 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -901,6 +904,7 @@ rotation = -1.5708
 texture = ExtResource( 44 )
 
 [node name="LegL_armor" type="Sprite" parent="HumanF1/Spine/Taz/LegL"]
+visible = false
 position = Vector2( -103.001, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 31 )
@@ -926,6 +930,7 @@ rotation = -1.5708
 texture = ExtResource( 25 )
 
 [node name="LegR_armor" type="Sprite" parent="HumanF1/Spine/Taz/LegR"]
+visible = false
 position = Vector2( -102.155, 43.3673 )
 rotation = -1.5708
 texture = ExtResource( 30 )
@@ -1056,7 +1061,7 @@ visible = false
 script = ExtResource( 63 )
 
 [node name="Nipples_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
-material = ExtResource( 65 )
+material = ExtResource( 18 )
 position = Vector2( -482.143, 427.535 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1163,14 +1168,14 @@ visible = false
 script = ExtResource( 63 )
 
 [node name="ArmR" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( 110, -106 )
-rotation = 0.329867
+position = Vector2( 111, -106 )
+rotation = 0.312414
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="HumanF1/Spine/ArmR"]
-position = Vector2( 143.296, -34.9724 )
-rotation = 0.115192
+position = Vector2( 140.447, -34.3457 )
+rotation = 0.139626
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -1199,13 +1204,13 @@ rotation = -1.5708
 texture = ExtResource( 58 )
 
 [node name="ArmL" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( 113, 91.9996 )
-rotation = -1.57603
+position = Vector2( 113.25, 86.2495 )
+rotation = -1.73835
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="HumanF1/Spine/ArmL"]
-position = Vector2( 141.934, 17.6832 )
+position = Vector2( 140.904, 18.7375 )
 rotation = 0.0436332
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -1262,6 +1267,7 @@ rotation = -1.5708
 texture = ExtResource( 40 )
 
 [node name="Eyes_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
+material = ExtResource( 68 )
 position = Vector2( 498.666, -9.33783 )
 rotation = -1.5708
 texture = ExtResource( 33 )
@@ -1276,6 +1282,7 @@ rotation = -1.5708
 texture = ExtResource( 36 )
 
 [node name="Eyebrows_tex" type="Sprite" parent="HumanF1/Spine/Head/Face"]
+material = ExtResource( 35 )
 position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 7 )
@@ -1358,7 +1365,7 @@ visible = false
 script = ExtResource( 63 )
 
 [node name="Hairs_mesh" type="Polygon2D" parent="HumanF1/Spine/Head/Hair"]
-material = ExtResource( 62 )
+material = ExtResource( 35 )
 position = Vector2( -197.998, 428.002 )
 rotation = -1.5708
 offset = Vector2( 0, -1 )
@@ -1416,16 +1423,16 @@ visible = false
 script = ExtResource( 63 )
 
 [node name="Ears_furry_tex" type="Sprite" parent="HumanF1/Spine/Head"]
-visible = false
-material = ExtResource( 59 )
+material = ExtResource( 35 )
 position = Vector2( 588, -2.00217 )
 rotation = -1.5708
-texture = ExtResource( 18 )
+texture = ExtResource( 66 )
 
 [node name="Head_armor_tex" type="Sprite" parent="HumanF1/Spine/Head"]
 rotation = -1.5708
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+visible = false
 material = SubResource( 6 )
 position = Vector2( 591, -17.0011 )
 rotation = -1.58825
@@ -1433,6 +1440,7 @@ scale = Vector2( 0.98, 1 )
 texture = ExtResource( 42 )
 
 [node name="Horns_tex" type="Sprite" parent="HumanF1/Spine/Head"]
+visible = false
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 material = ExtResource( 55 )
 position = Vector2( 573, -9.00204 )

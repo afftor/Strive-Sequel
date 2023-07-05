@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/torso_nipples_mask.png-fce3388d2dc0a715c56d89b157f61337.stex"
+path="res://.import/mask_besatkin cat_tricolor.png-6bb44089d4ea00bef1061cb1ec1a7664.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/torso_nipples_mask.png"
-dest_files=[ "res://.import/torso_nipples_mask.png-fce3388d2dc0a715c56d89b157f61337.stex" ]
+source_file="res://Character_generator/images/98_masks/mask_besatkin cat_tricolor.png"
+dest_files=[ "res://.import/mask_besatkin cat_tricolor.png-6bb44089d4ea00bef1061cb1ec1a7664.stex" ]
 
 [params]
 
