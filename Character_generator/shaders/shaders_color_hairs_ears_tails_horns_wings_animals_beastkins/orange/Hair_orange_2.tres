@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Character_generator/images/98_masks/mask_hair2.png" type="Texture" id=1]
+[ext_resource path="res://Character_generator/images/98_masks/mask_hair1.png" type="Texture" id=2]
+[ext_resource path="res://Character_generator/new_complex_shader.shader" type="Shader" id=3]
+
+[resource]
+shader = ExtResource( 3 )
+shader_param/anchor1 = Vector2( 361, 478 )
+shader_param/anchor2 = Vector2( 520, 478 )
+shader_param/anchor3 = Vector2( 0, 0 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 200.0
+shader_param/range2 = 200.0
+shader_param/range3 = 0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.254902, 0.705882, 0.109804, 1 )
+shader_param/part2color = Color( 0.254902, 0.705882, 0.109804, 1 )
+shader_param/part3color = Color( 0.254902, 0.705882, 0.109804, 1 )
+shader_param/overlay = 1.0
+shader_param/part2 = ExtResource( 2 )
+shader_param/part3 = ExtResource( 1 )

@@ -441,13 +441,13 @@ func get_hairs_data():
 				res.hair_base = 'back'
 				match statlist.hair_length:
 					'ear':
-						res.hair_assist = ''
+						res.hair_assist = 'ponytail'
 						res.hair_back = ''
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
-						res.hair_assist = ''
+						res.hair_assist = 'ponytail'
 						res.hair_back = ''
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
@@ -1377,7 +1377,8 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 
 	statlist.personality = variables.personality_array[randi()%variables.personality_array.size()]
-
+	
+	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
 			if ResourceScripts.descriptions.bodypartsdata[i][statlist[i]].bodychanges.size() > 0:

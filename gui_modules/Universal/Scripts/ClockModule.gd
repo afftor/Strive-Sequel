@@ -42,9 +42,9 @@ func update_food_tooltip():
 
 
 func update_gold_tooltip():
-	var text = tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " + str(ResourceScripts.game_res.money)
+	var text = tr("TOOLTIPGOLD") + "\n\n" + tr("MONEYTOOLTIP") + ": " + str(ResourceScripts.game_res.money)
 	if ResourceScripts.game_res.tax > 0:
-		text += '\nWeekly Taxes: ' + str(ResourceScripts.game_res.tax)
+		text += "\n" + tr("MONEYTOOLTIP2") + ": " + str(ResourceScripts.game_res.tax)
 		
 	globals.connecttexttooltip($TimeNode/gold, text) 
 

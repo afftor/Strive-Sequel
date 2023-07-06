@@ -78,7 +78,7 @@ var always_show = [
 func _ready():
 #	input_handler.CurrentScene = self
 	if test_mode:
-		races.fill_racegroups()
+		modding_core.handle_test_mode()
 		test_mode()
 		mansion_state_set("default")
 	add_season_events()
@@ -627,6 +627,7 @@ func test_mode():
 		character.create('Fairy', 'female', 'random')
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
+		character.set_stat('hairstyle', 'ponytail')
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Fairy', 'female', 'random')

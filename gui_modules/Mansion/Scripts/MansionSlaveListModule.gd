@@ -51,7 +51,7 @@ func rebuild():
 	$DateIcon.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
 
-	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
+	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/" + tr("MSLMDAY")
 	input_handler.ClearContainer(SlaveContainer)
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
@@ -187,7 +187,7 @@ func build_locations_list():
 	input_handler.ClearContainer(LocationsList)
 	var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 	newbutton.set_meta("location", "show_all")
-	newbutton.text = "Show All"
+	newbutton.text = tr("MSLMSHOWALL")
 	newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 	var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 	LocationsList.add_child(newseparator)
@@ -199,7 +199,7 @@ func build_locations_list():
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		if loca == 'aliron':
-			newbutton.text = "Mansion"
+			newbutton.text = tr("MSLMMANSION")
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
@@ -480,9 +480,9 @@ func update_button(newbutton):
 		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " turns. "
+		newbutton.get_node('Location').text = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
-		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
+		newbutton.get_node('Location').text = tr("MSLMMANSION")#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 	else:
 		### Temporary
 		if person.get_location() == "mansion":
@@ -494,6 +494,7 @@ func update_button(newbutton):
 		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
 		if ploc != null: 
 			newbutton.get_node('Location').text = ploc.name
+			#newbutton.get_node('Location').text = tr(ploc.name)
 	newbutton.get_node("job").disabled = false
 	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
 	if !person.has_status('basic_servitude'):

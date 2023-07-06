@@ -1,6 +1,7 @@
 0.7.0
 Added paperdoll visaul to characters
 Added Sacred Bowl item received by completing arc 2
+Added missing translation lines to main.gd 
 Added Russian translation and fixed missing translation entries
 Added loading screen with bits of lore and tips
 

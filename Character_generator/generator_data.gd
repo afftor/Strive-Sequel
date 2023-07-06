@@ -2744,7 +2744,7 @@ var transforms = {
 			{type = 'scale', value = 1.3},
 			{type = 'offset', value_x = 0.0, value_y = -20},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.79, 0.9)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.85, 0.9)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(0.9, 0.79)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-445, 395)},
 #			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'position', value = Vector2(-490, 355)},
@@ -2756,7 +2756,7 @@ var transforms = {
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tits', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.79, 0.9)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.85, 0.9)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head', attr = 'position', value = Vector2(-316, 9)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'scale', value = Vector2(0.875, 1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'scale', value = Vector2(0.875, 1)},
@@ -3397,9 +3397,22 @@ var transforms = {
 	},
 	
 	armor_color = {
-		default = [
-			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('98b8c6')},
-			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('a88ac6')},
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'cloth', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'cloth', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -3418,7 +3431,7 @@ var transforms = {
 	},
 	
 	pose = {
-		default = [
+		kind = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
@@ -3442,7 +3455,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -45.6)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(54.9, 2)},
 		],
-		test = [
+		shy = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 94.6},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 3.2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
@@ -3466,7 +3479,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -44.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(54.9, 2.1)},
 		],
-		pose2 = [
+		bold = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = -44.9},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 107.2},

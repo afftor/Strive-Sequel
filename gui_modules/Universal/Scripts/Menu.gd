@@ -49,7 +49,7 @@ func _ready():
 	input_handler.ClearContainer($NewGamePanel/Settings)
 	for i in settingarray:
 		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings)
-		newbutton.get_node("Label").text = tr("SETTING"+i.to_upper() + '_NAME')
+		newbutton.get_node("Label").text = tr("NEWGAMESETTING"+i.to_upper())
 		newbutton.name = i
 		newbutton.pressed = input_handler.globalsettings[i]
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.to_upper() + '_DESCRIPT'))
@@ -182,13 +182,13 @@ var settingarray = ['futa','furry']#,'turn_based_time_flow']
 
 func start_preset_set(button):
 	var data = starting_presets.preset_data[button.name]
-	var text = data.descript
+	var text = tr(data.descript)
 	for i in $NewGamePanel/PresetContainer/VBoxContainer.get_children():
 		i.pressed = i == button
 	if data.start in ['advanced']:
 		text += "\n[color=yellow]Skips prologue.[/color]"
 	text += "\n\n"
-	text += 'Additional Characters: ' + str(data.free_slave_number) + "\n"
+	text += tr("NEWGAMEADDITIONAL") + ": " + str(data.free_slave_number) + "\n"
 	if data.upgrades.size() > 0:
 		text += "Upgrades: " #+ data.upgrades
 		for i in data.upgrades:

@@ -241,14 +241,14 @@ func show_save_details(save):
 	var text
 	var text2 = ""
 	if starting_presets.preset_data.has(save.preset):
-		text2 += "Mode: " + starting_presets.preset_data[save.preset].name
-	text2 +=  "\nVersion: " + save.version 
+		text2 += tr("LSPMODE") + ": " + tr(starting_presets.preset_data[save.preset].name)
+	text2 +=  "\n" +tr("LSPVER") + ": " + save.version 
 	# text += "\n\n\nVersion: " + save.version
 	if !globals.compare_version(save.version, '0.5.5b'):
-		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
-		text2 += "{color=red| (Outdated - use import mode)}"
+		text = tr("LSPGOLD") + ": " + str(save.gold) + "\n" + tr("LSPPOPULATION") + ": " + str(save.population) + "\n" + tr("LSPMASTER") + ": " + save.master_name + "\n" + tr("LSPDAY") + ": " + str(save.day) + tr("LSPHOUR") + ": " + str(save.hour)
+		text2 += tr("LSPOUTDATED")
 	else:
-		text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nW: " + str(int(save.day - 1) / 7 + 1) + " D: " + str(int(save.day - 1) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
+		text = tr("LSPGOLD") + ": " + str(save.gold) + "\n" + tr("LSPPOPULATION") + ": " + str(save.population) + "\n" + tr("LSPMASTER") + ": " + save.master_name + "\nW: " + str(int(save.day - 1) / 7 + 1) + " D: " + str(int(save.day - 1) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
 		if save.version != globals.gameversion:
 			text2 += "{color=red| (Outdated)}"
 #	text += "\n" 
