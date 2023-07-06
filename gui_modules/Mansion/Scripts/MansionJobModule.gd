@@ -6,21 +6,42 @@ var selected_job = {}
 var stored_spec_job = {}
 var selected_location = "aliron"
 
-
+var mode_farm = false
 
 func _ready():
 	$CloseButton.connect("pressed", self, 'close_job_pannel')
 	globals.connecttexttooltip($BrothelRules/rulestooltip, tr("BROTHELTOOLTIP"))
 	gui_controller.add_close_button(self, "bigger_offset")#.connect("pressed", self, 'close_job_pannel')
+	$mod_select/occupation.connect('pressed', self, 'build_occupation')
+	$mod_select/farm.connect('pressed', self, 'build_farm')
 	for i in $BrothelRules/sexes_container.get_children():
 		var name = i.get_name()
 		i.connect('pressed', self, 'switch_brothel_option',[i, name])
+	
+	$Frame_farm/char_panel/Remove.connect("pressed", self, 'remove_from_farm')
+	$Frame_farm/char_panel/Choose.connect("pressed", self, 'set_to_farm')
 
 #func raise_clock():
 #	gui_controller.clock.raise()
 #	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
 
 func rebuild():
+	build_occupation()
+
+
+func build_occupation():
+	mode_farm = false
+	$Frame.visible = true
+	$Frame_farm.visible = false
+	$mod_select/occupation.pressed = true
+	$mod_select/farm.pressed = false
+	$Resourses.visible = true
+	$Landscape.visible = true
+	$LandscapeFrame.visible = true
+	$DescriptionLabel.visible = true
+	$gridcontainerpanel.visible = true
+	$GridContainer2.visible = true
+	
 	$DescriptionLabel.bbcode_text = ""
 	$ToolLabel.text = ""
 	$WorkunitLabel.text = ""
@@ -36,6 +57,26 @@ func rebuild():
 	update_characters()
 	update_resources()
 
+
+func build_farm():
+	mode_farm = true
+	$Frame.visible = false
+	$Frame_farm.visible = true
+	$mod_select/occupation.pressed = false
+	$mod_select/farm.pressed = true
+	$Resourses.visible = false
+	$Landscape.visible = false
+	$LandscapeFrame.visible = false
+	$DescriptionLabel.visible = false
+	$gridcontainerpanel.visible = false
+	$GridContainer2.visible = false
+	
+	update_characters()
+	build_accessible_locations()
+	build_farm_slots()
+	build_char_farm(null)
+
+
 func update_characters():
 	input_handler.ClearContainer($CharacterList/GridContainer)
 	for i in ResourceScripts.game_party.character_order: 
@@ -47,7 +88,7 @@ func update_characters():
 		newbutton.get_node("Name").text = person.get_stat("name")
 		newbutton.get_node("Icon").texture = person.get_icon_small()
 		newbutton.disabled = false
-		if selected_job == null or selected_resource == null:
+		if (selected_job == null or selected_resource == null) and !mode_farm:
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, "Select Resource first")
 		if !person.has_status('basic_servitude') and !person.is_master():
@@ -115,6 +156,9 @@ func update_status(newbutton, person):
 			newbutton.get_node("Status").texture = Items.materiallist[person.get_work()].icon
 
 func character_selected(button, person):
+	if mode_farm:
+		build_char_farm(person.id)
+		return
 	get_parent().active_person = person
 	select_job(button, person)
 	
@@ -721,6 +765,12 @@ func show_brothel_options():
 #		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 	
 	update_brothel_text()
+	if true: #add condition for boosters
+		$BrothelRules/boosters.visible = true
+		build_boosters()
+	else:
+		$BrothelRules/boosters.visible = false
+
 
 func update_brothel_text():
 	var text = ''
@@ -794,3 +844,107 @@ func character_hovered(button, person):
 			req_tool = selected_job.tool_type
 		if req_tool == item_base:
 			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
+
+
+func build_farm_slots():
+	input_handler.ClearContainer($Frame_farm/Farm_scroll/FarmSlots, ['Button'])
+	var n = ResourceScripts.game_res.get_farm_slots()
+	for i in ResourceScripts.game_party.character_order: 
+		var person = ResourceScripts.game_party.characters[i]
+		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
+			continue
+		if person.get_work() != 'farming': 
+			continue
+		n -= 1
+		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
+		newbutton.connect('pressed', self, 'build_char_farm', [i])
+		newbutton.get_node('icon').texture = person.get_icon_small()
+	for i in range(n):
+		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
+		newbutton.disabled = true
+
+var farming_char
+func build_char_farm(char_id):
+	if char_id == null:
+		$Frame_farm/char_panel.visible = false
+		return
+	$Frame_farm/char_panel.visible = true
+	var ch = characters_pool.get_char_by_id(char_id)
+	farming_char = ch
+	if ch.get_work() == 'farming':
+		$Frame_farm/char_panel/Choose.visible = false
+		$Frame_farm/char_panel/Remove.visible = true
+	else:
+		$Frame_farm/char_panel/Choose.visible = true
+		$Frame_farm/char_panel/Remove.visible = false
+	
+	input_handler.ClearContainer($Frame_farm/char_panel/ScrollContainer/farm_rules, ['Button'])
+	for res in variables.farming_rules:
+		var task = races.farm_tasks[res]
+		var rdata = Items.materiallist[res]
+		if !ch.checkreqs(task.reqs):
+			ch.set_farm_res(res, false)
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/char_panel/ScrollContainer/farm_rules, 'Button')
+		newbutton.get_node('icon').texture = rdata.icon
+		newbutton.get_node('HBoxContainer/res_name').text = tr(rdata.name)
+		newbutton.get_node('HBoxContainer/amount').text = tr("Progress: %.1f per turn") % ch.get_progress_farm(res)
+		if ch.get_farm_res(res):
+			newbutton.pressed = true
+			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, false])
+		else:
+			newbutton.pressed = false
+			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, true])
+			newbutton.disabled = !ch.can_add_farming()
+
+
+func set_to_farm():
+	farming_char.set_work('farming')
+	build_farm()
+
+
+func remove_from_farm():
+	farming_char.remove_from_task()
+	build_farm()
+
+
+func toggle_farm_res (person, res, value):
+	person.set_farm_res(res, value)
+	build_char_farm(person.id)
+
+
+func build_boosters():
+	$DescriptionLabel.visible = false
+	input_handler.ClearContainer($BrothelRules/boosters/VBoxContainer, ['Button'])
+	var boosters = person.xp_module.service_boosters
+	var f = true
+	for id in range(1, 4):
+		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/boosters/VBoxContainer, 'Button')
+		var boost_data = boosters['boost%d' % id]
+		var rdata = Items.materiallist[boost_data.res]
+		newbutton.get_node('icon').texture = rdata.icon
+		var text = "Resource %d: " % id
+		text += tr(rdata.name)
+		#free to add any more data
+		newbutton.get_node('Label').text = text
+		newbutton.pressed = boost_data.value
+		if f:
+			if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
+				newbutton.disabled = false
+				newbutton.connect('pressed', self, 'set_booster', [id, !boost_data.value])
+			else:
+				newbutton.disabled = true
+				f = false
+		else:
+			newbutton.disabled = true
+
+func set_booster(id, value, rebuild = true):
+	var boosters = person.xp_module.service_boosters
+	var boost_data = boosters['boost%d' % id]
+	boost_data.value = value
+	if value and id > 1:
+		set_booster(id - 1, true, false)
+	if !value and id < 3:
+		set_booster(id + 1, false, false)
+	if rebuild:
+		build_boosters()

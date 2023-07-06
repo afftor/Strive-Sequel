@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -44,6 +44,18 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=42]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=43]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=44]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/panel_farm.png" type="Texture" id=45]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_pressed.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_hover.png" type="Texture" id=48]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=49]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_product.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_product_hover.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_product_pressed.png" type="Texture" id=52]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=53]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/occupation/button_resource_hover.png" type="Texture" id=54]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/occupation/button_resource.png" type="Texture" id=55]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=56]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -75,9 +87,6 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Frame" type="TextureRect" parent="."]
 margin_left = 30.0
@@ -98,7 +107,166 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Frame_farm" type="TextureRect" parent="."]
+visible = false
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1890.0
+margin_bottom = 1050.0
+texture = ExtResource( 45 )
+
+[node name="Farm_scroll" type="ScrollContainer" parent="Frame_farm"]
+margin_left = 44.0
+margin_top = 204.0
+margin_right = 1281.0
+margin_bottom = 347.0
+theme = ExtResource( 56 )
+scroll_vertical_enabled = false
+
+[node name="FarmSlots" type="HBoxContainer" parent="Frame_farm/Farm_scroll"]
+
+[node name="Button" type="TextureButton" parent="Frame_farm/Farm_scroll/FarmSlots"]
+visible = false
+margin_right = 135.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 135, 135 )
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 48 )
+texture_disabled = ExtResource( 46 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="Frame_farm/Farm_scroll/FarmSlots/Button"]
+margin_left = 14.0
+margin_top = 13.0
+margin_right = 121.0
+margin_bottom = 120.0
+expand = true
+
+[node name="char_panel" type="Control" parent="Frame_farm"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Frame_farm/char_panel"]
+margin_left = 47.6603
+margin_top = 385.754
+margin_right = 333.66
+margin_bottom = 422.754
+custom_fonts/font = ExtResource( 49 )
+text = "Avaliable productions"
+
+[node name="Choose" type="TextureButton" parent="Frame_farm/char_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 543.5
+margin_top = 901.0
+margin_right = 740.5
+margin_bottom = 960.0
+theme = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+
+[node name="Label" type="Label" parent="Frame_farm/char_panel/Choose"]
+margin_top = -2.0
+margin_right = 197.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "Choose"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Remove" type="TextureButton" parent="Frame_farm/char_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 543.5
+margin_top = 901.0
+margin_right = 740.5
+margin_bottom = 960.0
+theme = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+
+[node name="Label" type="Label" parent="Frame_farm/char_panel/Remove"]
+margin_top = -2.0
+margin_right = 197.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "Remove"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Frame_farm/char_panel"]
+margin_left = 45.0
+margin_top = 435.0
+margin_right = 703.0
+margin_bottom = 900.0
+theme = ExtResource( 8 )
+scroll_horizontal_enabled = false
+
+[node name="farm_rules" type="VBoxContainer" parent="Frame_farm/char_panel/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="Frame_farm/char_panel/ScrollContainer/farm_rules"]
+visible = false
+margin_right = 630.0
+margin_bottom = 100.0
+toggle_mode = true
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 51 )
+
+[node name="icon" type="TextureRect" parent="Frame_farm/char_panel/ScrollContainer/farm_rules/Button"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 94.0
+margin_bottom = 92.0
+mouse_filter = 2
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Frame_farm/char_panel/ScrollContainer/farm_rules/Button"]
+margin_left = 102.0
+margin_top = 5.0
+margin_right = 623.0
+margin_bottom = 90.0
+
+[node name="res_name" type="Label" parent="Frame_farm/char_panel/ScrollContainer/farm_rules/Button/HBoxContainer"]
+margin_top = 26.0
+margin_right = 258.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 49 )
+text = "res_name"
+
+[node name="amount" type="Label" parent="Frame_farm/char_panel/ScrollContainer/farm_rules/Button/HBoxContainer"]
+margin_left = 262.0
+margin_top = 26.0
+margin_right = 521.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 49 )
+text = "production: 25 per turn"
+align = 2
+
+[node name="desc" type="RichTextLabel" parent="Frame_farm/char_panel"]
+margin_left = 823.0
+margin_top = 436.0
+margin_right = 1273.0
+margin_bottom = 878.0
+custom_fonts/normal_font = ExtResource( 53 )
+text = "Farming Description"
+
 [node name="Resourses" type="ScrollContainer" parent="."]
+visible = false
 light_mask = 0
 margin_left = 923.0
 margin_top = 265.0
@@ -106,9 +274,6 @@ margin_right = 1316.0
 margin_bottom = 725.0
 theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="Resourses"]
 light_mask = 0
@@ -158,10 +323,10 @@ margin_left = 21.0181
 margin_top = 2.97345
 margin_right = 95.0181
 margin_bottom = 34.9734
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 2 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,19 +397,20 @@ visible = false
 margin_right = 128.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )
 custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
 [node name="Landscape" type="TextureRect" parent="."]
+visible = false
 margin_left = 68.0
 margin_top = 270.0
 margin_right = 868.0
@@ -257,6 +423,7 @@ __meta__ = {
 }
 
 [node name="LandscapeFrame" type="TextureRect" parent="."]
+visible = false
 margin_left = 68.0
 margin_top = 270.0
 margin_right = 868.0
@@ -302,8 +469,8 @@ margin_left = 104.0
 margin_top = 8.0
 margin_right = 248.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 align = 1
 clip_text = true
 __meta__ = {
@@ -382,8 +549,8 @@ margin_left = 564.0
 margin_top = 45.0
 margin_right = 802.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Occupation"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -394,14 +561,15 @@ margin_left = 1480.0
 margin_top = 45.0
 margin_right = 1763.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Character list"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 68.0
 margin_top = 779.665
 margin_right = 1309.0
@@ -426,6 +594,7 @@ __meta__ = {
 }
 
 [node name="GridContainer2" type="GridContainer" parent="."]
+visible = false
 light_mask = 0
 margin_left = 84.0
 margin_top = 629.0
@@ -465,10 +634,10 @@ margin_left = 4.05946
 margin_top = 56.7953
 margin_right = 78.0595
 margin_bottom = 78.7953
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 7 )
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -491,8 +660,8 @@ __meta__ = {
 margin_top = -2.0
 margin_right = 197.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 29 )
 text = "Close"
 align = 1
 valign = 1
@@ -554,8 +723,8 @@ margin_left = 236.0
 margin_top = 982.0
 margin_right = 320.0
 margin_bottom = 1033.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -565,8 +734,8 @@ margin_left = 523.0
 margin_top = 982.0
 margin_right = 599.0
 margin_bottom = 1033.0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -578,8 +747,8 @@ margin_top = 982.0
 margin_right = 810.0
 margin_bottom = 1033.0
 mouse_filter = 0
-custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -617,9 +786,6 @@ margin_left = 368.0
 margin_top = 368.0
 margin_right = 757.0
 margin_bottom = 428.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="males" type="CheckBox" parent="BrothelRules/sexes_container"]
 margin_right = 112.0
@@ -689,3 +855,66 @@ bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="boosters" type="Control" parent="BrothelRules"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BrothelRules/boosters"]
+margin_left = 7.0
+margin_top = 511.0
+margin_right = 529.0
+margin_bottom = 673.0
+
+[node name="Button" type="TextureButton" parent="BrothelRules/boosters/VBoxContainer"]
+visible = false
+margin_right = 522.0
+margin_bottom = 52.0
+toggle_mode = true
+texture_normal = ExtResource( 55 )
+texture_hover = ExtResource( 54 )
+
+[node name="icon" type="TextureRect" parent="BrothelRules/boosters/VBoxContainer/Button"]
+margin_left = 5.66325
+margin_top = 5.19128
+margin_right = 45.6632
+margin_bottom = 45.1913
+expand = true
+
+[node name="Label" type="Label" parent="BrothelRules/boosters/VBoxContainer/Button"]
+margin_left = 55.0
+margin_top = 15.0
+margin_right = 508.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 53 )
+text = "res_name"
+
+[node name="desc" type="RichTextLabel" parent="BrothelRules/boosters"]
+margin_left = 604.0
+margin_top = 507.0
+margin_right = 1253.0
+margin_bottom = 660.0
+custom_fonts/normal_font = ExtResource( 53 )
+text = "add description"
+
+[node name="mod_select" type="HBoxContainer" parent="."]
+margin_left = 827.446
+margin_top = 52.2182
+margin_right = 1286.45
+margin_bottom = 99.2182
+
+[node name="occupation" type="Button" parent="mod_select"]
+margin_right = 227.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+toggle_mode = true
+pressed = true
+text = "occupation"
+
+[node name="farm" type="Button" parent="mod_select"]
+margin_left = 231.0
+margin_right = 459.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+toggle_mode = true
+text = "farm"

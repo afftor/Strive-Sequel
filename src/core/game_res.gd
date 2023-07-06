@@ -329,6 +329,7 @@ func add_build_value(currenttask, value, character, tres = false):
 			return add_build_value(currenttask, newval, character, true)
 		return true
 
-
-
-
+func get_farm_slots():
+	#stub for farm upgrade
+	#2fix
+	return 10

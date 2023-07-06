@@ -449,6 +449,17 @@ var tasklist = {
 		icon = null,
 		tags = ['hide_progress_ratio'],
 	},
+	farming = { #dummy task for farming
+		code = 'farming',
+		reqs = [{type = 'disabled'}],
+		name = '',
+		descript = tr("TASKTRAVELDESCRIPT"),
+		workstat = '',
+		production = {},
+		icon = null,
+		tags = ['hide_progress_ratio'],
+		production_icon = load("res://assets/images/gui/gui icons/icon_rest_brothel.png"),
+	},
 }
 
 
@@ -550,6 +561,61 @@ var gold_tasks_data = {
 		req_training = 'loyalty_sex_adv',
 		tags = ['virginity','impregnation'],
 	},
+}
+
+
+var farm_tasks = {
+	milk = {
+		code = 'milk',
+		formula = 'farm_milk',
+		reqs = [{code = 'stat', stat = 'lactation', operant = 'eq', value = true}],
+	},
+	pheromones = {
+		code = 'pheromones',
+		formula = 'farm_pheromones',
+		reqs = [{code = 'race_is_beast', check = true}],
+	},
+	seed = {
+		code = 'seed',
+		formula = 'farm_seed',
+		reqs = [{code = 'stat', stat = 'balls_size', operant = 'neq', value = ''}],
+	},
+	eggs = {
+		code = 'eggs',
+		formula = 'farm_eggs',
+		reqs = [{code = 'race', race = 'Harpy', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
+	},
+	magic_dust = {
+		code = 'magic_dust',
+		formula = 'farm_dust',
+		reqs = [{code = 'race', race = 'Fairy', check = true}, {orflag = true, code= 'race', race = 'Elf', check = true}, {orflag = true, code= 'race', race = 'DarkElf', check = true}, {orflag = true, code= 'race', race = 'TribalElf', check = true}, {orflag = true, code= 'stat', stat = 'magic_factor', operant = 'gte', value = 5}],
+	},
+	reptile_blood = {
+		code = 'reptile_blood',
+		formula = 'farm_blood',
+		reqs = [{code = 'race', race = 'Kobold', check = true}, {orflag = true, code= 'race', race = 'Dragonkin', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}],
+	},
+	spider_silk = {
+		code = 'spider_silk',
+		formula = 'farm_silk',
+		reqs = [{code = 'race', race = 'Arachna', check = true}],
+	},
+	light_essence = {
+		code = 'light_essence',
+		formula = 'farm_light',
+		reqs = [{code = 'race', race = 'Seraph', check = true}],
+	},
+	draconic_scales = {
+		code = 'draconic_scales',
+		formula = 'farm_scales',
+		reqs = [{code = 'race', race = 'Dragonkin', check = true}],
+	},
+	dark_essence = {
+		code = 'dark_essence',
+		formula = 'farm_dark',
+		reqs = [{code = 'race', race = 'Demon', check = true}],
+	},
+	
 }
 
 func fill_racegroups():

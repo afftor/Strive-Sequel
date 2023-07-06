@@ -276,6 +276,7 @@ func generate_ea_character(gendata, desired_class):
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
 	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty, trait_blacklist)
+	xp_module.set_service_boost()
 
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)
@@ -302,6 +303,10 @@ func generate_predescribed_character(data):
 	xp_module.process_chardata(data) #for testing
 	tags = data.tags.duplicate()
 	skills.setup_skills(data)
+	if data.has('service_boosters'):
+		xp_module.set_service_boost(data.service_boosters)
+	else:
+		xp_module.set_service_boost()
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
@@ -309,6 +314,9 @@ func create(temp_race, temp_gender, temp_age):
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
 	add_trait('core_trait')
+
+func fill_boosters():
+	xp_module.set_service_boost()
 
 func make_random_portrait():
 	statlist.make_random_portrait()
@@ -462,6 +470,8 @@ func recruit_and_return():
 func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
+	if task == 'farming':
+		xp_module.setup_farm()
 
 func set_work_rule(rule, value):
 	xp_module.set_work_rule(rule, value)
@@ -474,6 +484,12 @@ func set_brothel_rule(rule, value):
 
 func check_brothel_rule(rule):
 	return xp_module.check_brothel_rule(rule)
+
+func set_farm_res(res, value):
+	xp_module.set_farm_res(res, value)
+
+func get_farm_res(res):
+	return xp_module.check_farm_res(res)
 
 func find_worktask():
 	return xp_module.find_worktask(get_location())
@@ -763,6 +779,15 @@ func play_sfx(code):
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
 	return xp_module.get_progress_task(temptask, tempsubtask, count_crit)
+
+
+func get_progress_farm(res):
+	return xp_module.get_progress_farm(res)
+
+
+func can_add_farming():
+	return xp_module.can_add_farming()
+
 
 func act_prepared():
 	skills.act_prepared()

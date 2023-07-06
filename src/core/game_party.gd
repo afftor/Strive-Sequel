@@ -208,6 +208,13 @@ func get_output_for_task(tsk, loc_id, predict = false):
 	return res
 
 
+func get_characters_for_task(tsk):
+	var res = 0
+	for i in characters.values():
+		if i.get_work() == tsk:
+			res += 1
+	return res
+
 func clean_tasks(loc_id):
 	var tarr = []
 	for i in active_tasks:
@@ -261,6 +268,7 @@ func calculate_food_consumption():
 			if res.has(food): res[food] += tmp[food]
 			else: res[food] = tmp[food]
 	return res
+
 
 #reworked from globals
 func get_relatives_data(id):

@@ -29,6 +29,13 @@ var brothel_rules = {
 		females = false,
 		futa = false
 	}
+
+var farming_rules = {
+	
+}
+
+var service_boosters = {} 
+
 var messages = []
 
 
@@ -50,6 +57,9 @@ func fix_rules():
 	for rule in variables.brothel_rules:
 		if !brothel_rules.has(rule):
 			brothel_rules[rule] = false
+	for rule in variables.farming_rules:
+		if !farming_rules.has(rule):
+			farming_rules[rule] = false
 
 
 func check_work_rule(rule):
@@ -87,11 +97,37 @@ func set_brothel_rule(rule, value):
 		brothel_rules[rule] = value
 
 
+func set_farm_res(res, value):
+	if variables.farming_rules.has(res):
+		farming_rules[res] = value
+
+
+func check_farm_res(res):
+	if !variables.farming_rules.has(res):
+		return false
+	if !farming_rules.has(res):
+		return false
+	return farming_rules[res]
+
+
+func set_service_boost(value = null):
+	var tvalue
+	if value != null:
+		tvalue = value.duplicate()
+	else:
+		tvalue = variables.farming_rules.duplicate()
+		tvalue.shuffle()
+		tvalue.resize(3)
+	for id in range(1, 4):
+		service_boosters['boost%d' % id] = {res = tvalue[id - 1], value = false}
+
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent.get_ref(), 'exp_for_level')
 		# input_handler.ActivateTutorial("levelup")
 	base_exp = value
+
 
 func update_exp(value, is_set):
 	if is_set:
@@ -354,11 +390,50 @@ func assign_to_special_task(worktask):
 	worktask.workers.append(parent.get_ref().id)
 
 
+func assign_to_farm_task(res):
+	var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+	if currenttask != null:
+		if currenttask.workers.has(parent.get_ref().id):
+			return
+		currenttask.workers.push_back(parent.get_ref().id)
+		globals.emit_signal("task_added")
+		return
+	var dict = {code = 'farming',
+	product = res,
+	progress = 0,
+	threshold = 1,
+	workers = [],
+	task_location = parent.get_ref().get_location(),
+	messages = [],
+	mod = ""}
+	dict.workers.append(parent.get_ref().id)
+	ResourceScripts.game_party.active_tasks.append(dict)
+	globals.emit_signal("task_added")
+
+
+func remove_from_farm(res):
+	var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+	if currenttask != null:
+		if currenttask.workers.has(parent.get_ref().id):
+			currenttask.workers.erase(parent.get_ref().id)
+		else:
+			print("error - %s is not in it's farmtask's workers at %s" % [parent.get_ref().id, res])
+	else:
+		print("error - %s is not farming %s" % [parent.get_ref().id, res])
+
+
 func remove_from_task():
+	if work == 'farming':
+		for res in farming_rules:
+			if !farming_rules[res]: continue
+			remove_from_farm(res)
+		work = ''
+		return
 	var task = find_worktask(parent.get_ref().get_location())
 	if task == null: 
 		work = ''
 		return
+	
 	if task.workers.has(parent.get_ref().id):
 		task.workers.erase(parent.get_ref().id)
 	else:
@@ -580,6 +655,8 @@ func select_brothel_activity():
 			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
 			if no_training == true:
 				goldearned = goldearned - goldearned/3
+			
+			goldearned = apply_boosters(goldearned)
 			goldearned = round(goldearned)
 			
 			
@@ -599,6 +676,7 @@ func select_brothel_activity():
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
+		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
 		
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
@@ -607,6 +685,19 @@ func select_brothel_activity():
 	else:
 		remove_from_task()
 		parent.get_ref().rest_tick()
+
+
+func apply_boosters(value):
+	for id in service_boosters:
+		var res = service_boosters[id].res
+		if !service_boosters[id].value:
+			break
+		if ResourceScripts.game_res.materials.has(res) and ResourceScripts.game_res.materials[res] > 1:
+			ResourceScripts.game_res.materials[res] -= 1
+			value *= 2.0
+		else:
+			break
+	return value
 
 
 func get_highest_value(array):#find highest profit option
@@ -657,9 +748,43 @@ func special_tick(task): #maybe incomplete
 		input_handler.PlaySound("ding")
 
 
+func setup_farm():
+	for res in farming_rules:
+		if !farming_rules[res]:
+			continue
+		var task = races.farm_tasks[res]
+		if !parent.get_ref().checkreqs(task.reqs):
+			farming_rules[res] = false
+			remove_from_farm(res)
+		else:
+			assign_to_farm_task(res)
+
+
+func farm_tick():
+	for res in farming_rules:
+		if !farming_rules[res]:
+			continue
+		var task = races.farm_tasks[res]
+		var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+		if !parent.get_ref().checkreqs(task.reqs):
+			farming_rules[res] = false
+			remove_from_farm(res)
+		else:
+			var val = call(task.formula)
+			currenttask.progress += val
+			while currenttask.progress >= currenttask.threshold: 
+				currenttask.progress -= currenttask.threshold
+				ResourceScripts.game_res.materials[res] += 1
+
+
 func work_tick():
 	if is_on_quest:
 		return
+	
+	if work == 'farming':
+		farm_tick()
+		return
+	
 	var currenttask = find_worktask(parent.get_ref().get_location())
 	
 	if currenttask == null:
@@ -813,6 +938,20 @@ func get_progress_resource(tempresource, count_crit = false):
 	if location.has('gather_mod'):
 		value *= location.gather_mod
 	return value
+
+
+func get_progress_farm(res):
+	var task = races.farm_tasks[res]
+	return call(task.formula)
+
+
+func can_add_farming():
+	var n = parent.get_ref().get_stat('growth_factor') - 2
+	for res in variables.farming_rules:
+		if farming_rules[res]:
+			n -= 1
+	return (n > 0)
+
 
 func get_ability_experience():
 	return abil_exp
