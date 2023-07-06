@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/scrollbar_horizontal_detail.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/scrollbar_horizontal_detail_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/scrollbar_horizontal.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 40, 15 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 40, 15 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 40, 15 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 1227, 19 )
+
+[resource]
+HScrollBar/styles/grabber = SubResource( 1 )
+HScrollBar/styles/grabber_highlight = SubResource( 2 )
+HScrollBar/styles/grabber_pressed = SubResource( 3 )
+HScrollBar/styles/scroll = SubResource( 4 )
