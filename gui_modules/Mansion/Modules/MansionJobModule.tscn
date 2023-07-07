@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -56,6 +56,7 @@
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/occupation/button_resource_hover.png" type="Texture" id=54]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/occupation/button_resource.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=56]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled_1.png" type="Texture" id=57]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -108,7 +109,6 @@ __meta__ = {
 }
 
 [node name="Frame_farm" type="TextureRect" parent="."]
-visible = false
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 1890.0
@@ -130,10 +130,12 @@ visible = false
 margin_right = 135.0
 margin_bottom = 135.0
 rect_min_size = Vector2( 135, 135 )
-texture_normal = ExtResource( 46 )
+toggle_mode = true
+texture_normal = ExtResource( 57 )
 texture_pressed = ExtResource( 47 )
 texture_hover = ExtResource( 48 )
 texture_disabled = ExtResource( 46 )
+expand = true
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Frame_farm/Farm_scroll/FarmSlots/Button"]
@@ -754,6 +756,7 @@ __meta__ = {
 }
 
 [node name="BrothelRules" type="Panel" parent="."]
+visible = false
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0

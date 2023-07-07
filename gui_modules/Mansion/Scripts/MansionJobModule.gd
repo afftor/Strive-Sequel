@@ -70,6 +70,7 @@ func build_farm():
 	$DescriptionLabel.visible = false
 	$gridcontainerpanel.visible = false
 	$GridContainer2.visible = false
+	$BrothelRules.visible = false
 	
 	update_characters()
 	build_accessible_locations()
@@ -846,7 +847,7 @@ func character_hovered(button, person):
 			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
 
 
-func build_farm_slots():
+func build_farm_slots(selected = null):
 	input_handler.ClearContainer($Frame_farm/Farm_scroll/FarmSlots, ['Button'])
 	var n = ResourceScripts.game_res.get_farm_slots()
 	for i in ResourceScripts.game_party.character_order: 
@@ -859,6 +860,10 @@ func build_farm_slots():
 		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
 		newbutton.connect('pressed', self, 'build_char_farm', [i])
 		newbutton.get_node('icon').texture = person.get_icon_small()
+		if selected != null:
+			newbutton.pressed = (i == selected)
+		else:
+			newbutton.pressed = false
 	for i in range(n):
 		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
 		newbutton.disabled = true
@@ -868,6 +873,7 @@ func build_char_farm(char_id):
 	if char_id == null:
 		$Frame_farm/char_panel.visible = false
 		return
+	build_farm_slots(char_id)
 	$Frame_farm/char_panel.visible = true
 	var ch = characters_pool.get_char_by_id(char_id)
 	farming_char = ch
