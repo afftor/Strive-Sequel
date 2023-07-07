@@ -1741,6 +1741,32 @@ var transforms = {
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
 		],
 		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+		],
+		
 		dark_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
@@ -1861,6 +1887,38 @@ var transforms = {
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
+		],
+		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
 		],
 		
 		dark_1 = [
@@ -2006,6 +2064,32 @@ var transforms = {
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
 		],
 		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+		],
+		
 		dark_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
@@ -2123,6 +2207,32 @@ var transforms = {
 		blue_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
+		],
+		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
 		],
 		
 		dark_1 = [
@@ -2245,6 +2355,38 @@ var transforms = {
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
+		],
+		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
 		],
 		
 		dark_1 = [
@@ -2388,6 +2530,32 @@ var transforms = {
 		blue_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [3]},
+		],
+		
+		brown_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
+		],
+		brown_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [3]},
+		],
+		brown_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [3]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
+		],
+		orange_2 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [3]},
+		],
+		orange_3 = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [3]},
 		],
 		
 		dark_1 = [
