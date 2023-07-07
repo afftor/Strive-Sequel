@@ -956,22 +956,22 @@ var transforms = {
 		plant = [
 			{type = 'import_recolor_group', group = 'skin_main', ids = [3], material = "res://Character_generator/shaders/recolor_none.tres"}
 		],
-		fur_orange = [ #wrong colors
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red.tres", ids = [3]},
+		fur_orange = [ 
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [3]},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_besatkin_ext.png"},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_besatkin.png"},
 		],
-		fur_orange_white = [ #the same
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [2]},
+		fur_orange_white = [ 
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white.tres", ids = [3]},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_besatkin_ext.png"},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_besatkin.png"},
 		],
-		fur_striped = [ #same as + wrong masks (no stripes masks)
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [2]},
+		fur_striped = [ #wrong masks (no stripes masks)
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [3]},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_besatkin_ext.png"},
@@ -996,8 +996,8 @@ var transforms = {
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_besatkin.png"},
 		],
 		fur_brown = [
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [3]},
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [3]},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_besatkin_ext.png"},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_besatkin.png"},
