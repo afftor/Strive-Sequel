@@ -3,13 +3,14 @@ extends Node
 var stats_to_look = [
 'pose',
 'sex', 'race',
-'horns', 'ears', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'tail', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size', 
-'body_color_skin', 'skin_coverage', 
+'horns', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size',  
 'body_color_wings','body_color_tail', 'body_color_horns', 'body_color_animal',
 'hair_base', 'hair_assist', 
 'hair_back', 
 'hair_base_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_back_lenght', 'hair_assist_lenght',
+'body_color_skin', 'skin_coverage',
+'ears', 'tail',
 'height', 'ass_size',
 ]
 
@@ -2871,6 +2872,10 @@ var transforms = {
 	},
 	
 	nose = {
+		beastkin = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = null},
+		],
 		default = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_default.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_default.png"},
