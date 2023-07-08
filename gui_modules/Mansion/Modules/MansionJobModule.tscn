@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/occupation/button_resource.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=56]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled_1.png" type="Texture" id=57]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=58]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -756,7 +757,6 @@ __meta__ = {
 }
 
 [node name="BrothelRules" type="Panel" parent="."]
-visible = false
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0
@@ -860,14 +860,23 @@ __meta__ = {
 }
 
 [node name="boosters" type="Control" parent="BrothelRules"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -39.0
+margin_top = 496.0
+margin_right = 1257.0
+margin_bottom = 680.0
+
+[node name="boosterstip" type="TextureRect" parent="BrothelRules/boosters"]
+margin_left = 5.18953
+margin_top = 4.61066
+margin_right = 51.1895
+margin_bottom = 50.6107
+texture = ExtResource( 58 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BrothelRules/boosters"]
-margin_left = 7.0
-margin_top = 511.0
-margin_right = 529.0
-margin_bottom = 673.0
+margin_left = 54.1225
+margin_top = 6.02032
+margin_right = 576.122
+margin_bottom = 168.02
 
 [node name="Button" type="TextureButton" parent="BrothelRules/boosters/VBoxContainer"]
 visible = false
@@ -893,10 +902,10 @@ custom_fonts/font = ExtResource( 53 )
 text = "res_name"
 
 [node name="desc" type="RichTextLabel" parent="BrothelRules/boosters"]
-margin_left = 604.0
-margin_top = 507.0
-margin_right = 1253.0
-margin_bottom = 660.0
+margin_left = 619.709
+margin_top = 9.21826
+margin_right = 1268.71
+margin_bottom = 162.218
 custom_fonts/normal_font = ExtResource( 53 )
 text = "add description"
 

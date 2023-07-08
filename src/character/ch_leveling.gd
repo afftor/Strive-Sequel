@@ -100,7 +100,7 @@ func set_brothel_rule(rule, value):
 func set_farm_res(res, value):
 	if variables.farming_rules.has(res):
 		farming_rules[res] = value
-		if value and work == 'farming':
+		if value and work == 'produce':
 			assign_to_farm_task(res)
 
 
@@ -393,14 +393,14 @@ func assign_to_special_task(worktask):
 
 
 func assign_to_farm_task(res):
-	var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+	var currenttask = find_worktask(parent.get_ref().get_location(), 'produce', res)
 	if currenttask != null:
 		if currenttask.workers.has(parent.get_ref().id):
 			return
 		currenttask.workers.push_back(parent.get_ref().id)
 		globals.emit_signal("task_added")
 		return
-	var dict = {code = 'farming',
+	var dict = {code = 'produce',
 	product = res,
 	progress = 0,
 	threshold = 1,
@@ -414,7 +414,7 @@ func assign_to_farm_task(res):
 
 
 func remove_from_farm(res):
-	var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+	var currenttask = find_worktask(parent.get_ref().get_location(), 'produce', res)
 	if currenttask != null:
 		if currenttask.workers.has(parent.get_ref().id):
 			currenttask.workers.erase(parent.get_ref().id)
@@ -425,7 +425,7 @@ func remove_from_farm(res):
 
 
 func remove_from_task():
-	if work == 'farming':
+	if work == 'produce':
 		for res in farming_rules:
 			if !farming_rules[res]: continue
 			remove_from_farm(res)
@@ -769,7 +769,7 @@ func farm_tick():
 		if !farming_rules[res]:
 			continue
 		var task = races.farm_tasks[res]
-		var currenttask = find_worktask(parent.get_ref().get_location(), 'farming', res)
+		var currenttask = find_worktask(parent.get_ref().get_location(), 'produce', res)
 		if !parent.get_ref().checkreqs(task.reqs):
 			farming_rules[res] = false
 			remove_from_farm(res)
@@ -785,7 +785,7 @@ func work_tick():
 	if is_on_quest:
 		return
 	
-	if work == 'farming':
+	if work == 'produce':
 		farm_tick()
 		return
 	

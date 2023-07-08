@@ -20,6 +20,8 @@ func _ready():
 	
 	$Frame_farm/char_panel/Remove.connect("pressed", self, 'remove_from_farm')
 	$Frame_farm/char_panel/Choose.connect("pressed", self, 'set_to_farm')
+	
+	globals.connecttexttooltip($BrothelRules/boosters/boosterstip, tr("SERVICEBOOSTTOOLTIP"))
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -854,7 +856,7 @@ func build_farm_slots(selected = null):
 		var person = ResourceScripts.game_party.characters[i]
 		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
 			continue
-		if person.get_work() != 'farming': 
+		if person.get_work() != 'produce': 
 			continue
 		n -= 1
 		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
@@ -877,7 +879,7 @@ func build_char_farm(char_id):
 	$Frame_farm/char_panel.visible = true
 	var ch = characters_pool.get_char_by_id(char_id)
 	farming_char = ch
-	if ch.get_work() == 'farming':
+	if ch.get_work() == 'produce':
 		$Frame_farm/char_panel/Choose.visible = false
 		$Frame_farm/char_panel/Remove.visible = true
 	else:
@@ -905,7 +907,7 @@ func build_char_farm(char_id):
 
 
 func set_to_farm():
-	farming_char.set_work('farming')
+	farming_char.set_work('produce')
 	build_farm()
 
 
@@ -929,11 +931,21 @@ func build_boosters():
 		var boost_data = boosters['boost%d' % id]
 		var rdata = Items.materiallist[boost_data.res]
 		newbutton.get_node('icon').texture = rdata.icon
-		var text = "Resource %d: " % id
-		text += tr(rdata.name)
+		var text = ""#"Tier %d: " % id
+		
+		text += tr(rdata.name) + " "
+		
+		#if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
+		text += "(" + str(ResourceScripts.game_res.materials[boost_data.res])  + ")"
+		
+		text += ": " + str(variables.booster_value[id-1]) + "00%"
+		
 		#free to add any more data
-		newbutton.get_node('Label').text = text
 		newbutton.pressed = boost_data.value
+		if boost_data.value:
+			text += " - Activated"
+		
+		newbutton.get_node('Label').text = text
 		if f:
 			if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
 				newbutton.disabled = false
