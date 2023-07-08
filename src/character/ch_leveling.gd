@@ -100,6 +100,8 @@ func set_brothel_rule(rule, value):
 func set_farm_res(res, value):
 	if variables.farming_rules.has(res):
 		farming_rules[res] = value
+		if value and work == 'farming':
+			assign_to_farm_task(res)
 
 
 func check_farm_res(res):
