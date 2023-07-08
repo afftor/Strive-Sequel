@@ -115,9 +115,9 @@ func set_service_boost(value = null):
 	if value != null:
 		tvalue = value.duplicate()
 	else:
-		tvalue = variables.farming_rules.duplicate()
-		tvalue.shuffle()
-		tvalue.resize(3)
+		tvalue = []
+		for tier_res in variables.booster_tiers.values():
+			tvalue.push_back(input_handler.random_from_array(tier_res))
 	for id in range(1, 4):
 		service_boosters['boost%d' % id] = {res = tvalue[id - 1], value = false}
 
@@ -688,16 +688,18 @@ func select_brothel_activity():
 
 
 func apply_boosters(value):
-	for id in service_boosters:
+	var mul = 1.0
+	for i in range(3):
+		var id = 'boost%d' % (i + 1)
 		var res = service_boosters[id].res
 		if !service_boosters[id].value:
 			break
 		if ResourceScripts.game_res.materials.has(res) and ResourceScripts.game_res.materials[res] > 1:
 			ResourceScripts.game_res.materials[res] -= 1
-			value *= 2.0
+			mul = variables.booster_value[i]
 		else:
 			break
-	return value
+	return value * mul
 
 
 func get_highest_value(array):#find highest profit option
