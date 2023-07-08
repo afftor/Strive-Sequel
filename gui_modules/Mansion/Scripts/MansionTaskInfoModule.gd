@@ -144,6 +144,10 @@ func show_resources_info():
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.code])
+			elif task.code == 'farming':
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.product].icon
+				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
+				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.product])
 			else:
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production_item].icon
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[races.tasklist[task_name].production_item])
