@@ -574,6 +574,9 @@ func get_hairs_data():
 
 #bonus system
 func get_stat(statname, ref = false):
+	if statname in ['nose', 'chin']: #possibly temporal
+		if statlist.race.begins_with('Beastkin'):
+			return 'beastkin'
 	if statname.begins_with('hair_'): #compart actions, null values should not be returned
 		if statlist[statname] != "":
 			return statlist[statname]
