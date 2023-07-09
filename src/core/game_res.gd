@@ -211,7 +211,10 @@ func add_upgrade_to_queue(upgrade_id):
 		return
 	if ResourceScripts.game_progress.free_upgrades == false and !upgrade_progresses.has(upgrade_id):
 		for i in upgrade_next_state.cost:
-			materials[i] -= int(upgrade_next_state.cost[i])
+			if i == 'gold':
+				money -= int(upgrade_next_state.cost[i])
+			else:
+				materials[i] -= int(upgrade_next_state.cost[i])
 
 	if ResourceScripts.game_progress.instant_upgrades == false:
 		upgrades_queue.append(upgrade_id)

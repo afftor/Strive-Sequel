@@ -658,39 +658,65 @@ func get_stat(statname, ref = false):
 						return 'red1'
 					_:
 						return 'pink1'
+			'body_color_ears':
+				match statlist.ears: 
+					'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping':
+						var res = get_hairs_data().hair_base_color_1
+						res = res.replace('_', '')
+						if statlist.skin_coverage.begins_with('fur'):
+							match statlist.skin_coverage:
+								'fur_orange':
+									return 'orange3'
+								'fur_orange_white':
+									return 'orange2'
+								'fur_striped':
+									return 'orange3'
+								'fur_white':
+									return 'white2'
+								'fur_grey':
+									return 'white3'
+								'fur_brown':
+									return 'brown3'
+								'fur_black':
+									return 'dark3'
+						return res
+					'nereid': 
+						return 'blue1'
+					_: 
+						return 'yellow2'
 			'body_color_tail':
 				if statlist[statname] != "":
 					return statlist[statname]
-				match statlist.skin: #feel free to change values and stat
-					'pale':
-						return 'white2'
-					'grey':
-						return 'white3'
-					'fair':
-						return 'pink1'
-					'olive':
-						return 'dark1'
-					'tan':
+				match statlist.tail: 
+					'cat', 'fox', 'tanuki', 'wolf':
+						var res = get_hairs_data().hair_base_color_1
+						res = res.replace('_', '')
+						if statlist.skin_coverage.begins_with('fur'):
+							match statlist.skin_coverage:
+								'fur_orange':
+									return 'orange3'
+								'fur_orange_white':
+									return 'orange2'
+								'fur_striped':
+									return 'orange3'
+								'fur_white':
+									return 'white2'
+								'fur_grey':
+									return 'white3'
+								'fur_brown':
+									return 'brown3'
+								'fur_black':
+									return 'dark3'
+						return res
+					'demon':
 						return 'dark2'
-					'brown':
-						return 'dark3'
-					'dark':
-						return 'dark3'
-					'slime':
-						return 'green1'
-					'blue':
-						return 'blue2'
-					'paleblue':
-						return 'blue1'
-					'green':
-						return 'green2'
-					'red':
+					'dragon':
 						return 'red2'
-					'purple':
-						return 'purple2'
-					'teal':
-						return 'cyan2'
-					_:
+					'mouse':
+						return 'white2'
+					'kobold':
+						return 'green2'
+					_: 
 						return 'yellow2'
 			'body_color_animal':
 				if statlist[statname] != "":

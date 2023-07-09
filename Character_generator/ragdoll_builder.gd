@@ -36,6 +36,7 @@ var test_template = {
 	body_color_tail = 'yellow1', 
 	body_color_horns = 'yellow1', 
 	body_color_animal = 'red3', 
+	body_color_ears = 'red3', 
 	hair_base = 'dopple', 
 	hair_assist = 'braid', 
 	hair_back = 'very_long', 

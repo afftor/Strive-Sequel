@@ -31,9 +31,14 @@ func setup_upgrade(upgrade_id):
 		$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
 		var can_upg = true
 		for res in upgrade_next_state.cost:
-			if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
-				can_upg = false
-				break
+			if res == 'gold':
+				if ResourceScripts.game_res.money < upgrade_next_state.cost[res]:
+					can_upg = false
+					break
+			else:
+				if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
+					can_upg = false
+					break
 		if can_upg:
 			$Image2.modulate = Color(variables.hexcolordict.green)
 	else:
