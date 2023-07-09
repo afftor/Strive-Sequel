@@ -5,6 +5,9 @@ extends Reference
 var characters = {}
 var babies = {}
 var active_tasks = []
+
+var farming_slots = {}
+
 var relativesdata = {}
 var global_skills_used = {}
 
@@ -268,6 +271,32 @@ func calculate_food_consumption():
 			if res.has(food): res[food] += tmp[food]
 			else: res[food] = tmp[food]
 	return res
+
+
+func get_farm():
+	for i in range(ResourceScripts.game_res.get_farm_slots()):
+		var slot = 'slot%d' % i
+		if !farming_slots.has(slot):
+			farming_slots[slot] = null
+		if farming_slots[slot] == null:
+			continue
+		if !characters.has(farming_slots[slot]):
+			farming_slots[slot] = null
+			continue
+		var person = characters[farming_slots[slot]]
+		if !person.is_active:
+			farming_slots[slot] = null
+			continue
+		if person.get_work() != 'farming':
+			farming_slots[slot] = null
+			continue
+	return farming_slots
+
+
+func remove_char_from_farm(ch_id):
+	for slot in farming_slots:
+		if farming_slots[slot] == ch_id:
+			farming_slots[slot] = null
 
 
 #reworked from globals

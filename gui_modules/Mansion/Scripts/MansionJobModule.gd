@@ -26,6 +26,7 @@ func _ready():
 #	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)
 
 func rebuild():
+	selected_slot = null
 	build_occupation()
 
 
@@ -41,6 +42,7 @@ func build_occupation():
 	$DescriptionLabel.visible = true
 	$gridcontainerpanel.visible = true
 	$GridContainer2.visible = true
+	$NavigationModule.visible = true
 	
 	$DescriptionLabel.bbcode_text = ""
 	$ToolLabel.text = ""
@@ -71,6 +73,7 @@ func build_farm():
 	$gridcontainerpanel.visible = false
 	$GridContainer2.visible = false
 	$BrothelRules.visible = false
+	$NavigationModule.visible = false
 	
 	update_characters()
 	build_accessible_locations()
@@ -92,7 +95,10 @@ func update_characters():
 		if (selected_job == null or selected_resource == null) and !mode_farm:
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, "Select Resource first")
-		if !person.has_status('basic_servitude') and !person.is_master():
+		if (selected_slot == null) and mode_farm:
+			newbutton.disabled = true 
+			globals.connecttexttooltip(newbutton, "Select Slot first")
+		if !person.has_status('basic_servitude') and !person.is_master() and !mode_farm:
 			newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, person.translate("[name] lacks Training: Basic Servitude"))
 		if selected_job != null and selected_job.has("code"):
@@ -158,7 +164,7 @@ func update_status(newbutton, person):
 
 func character_selected(button, person):
 	if mode_farm:
-		build_char_farm(person.id)
+		select_farm_char(person.id)
 		return
 	get_parent().active_person = person
 	select_job(button, person)
@@ -847,43 +853,79 @@ func character_hovered(button, person):
 			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
 
 
-func build_farm_slots(selected = null):
+func build_farm_slots():
 	input_handler.ClearContainer($Frame_farm/Farm_scroll/FarmSlots, ['Button'])
-	var n = ResourceScripts.game_res.get_farm_slots()
-	for i in ResourceScripts.game_party.character_order: 
-		var person = ResourceScripts.game_party.characters[i]
-		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
-			continue
-		if person.get_work() != 'farming': 
-			continue
-		n -= 1
+#	var n = ResourceScripts.game_res.get_farm_slots()
+#	for i in ResourceScripts.game_party.character_order: 
+#		var person = ResourceScripts.game_party.characters[i]
+#		if person.get_location() != ResourceScripts.world_gen.get_location_from_code(selected_location).id or person.is_on_quest():
+#			continue
+#		if person.get_work() != 'farming': 
+#			continue
+#		n -= 1
+#		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
+#		newbutton.connect('pressed', self, 'build_char_farm', [i])
+#		newbutton.get_node('icon').texture = person.get_icon_small()
+#		if selected != null:
+#			newbutton.pressed = (i == selected)
+#		else:
+#			newbutton.pressed = false
+#	for i in range(n):
+#		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
+#		newbutton.disabled = true
+	var slots = ResourceScripts.game_party.get_farm()
+	for slot in slots:
 		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
-		newbutton.connect('pressed', self, 'build_char_farm', [i])
-		newbutton.get_node('icon').texture = person.get_icon_small()
-		if selected != null:
-			newbutton.pressed = (i == selected)
+		newbutton.pressed = (slot == selected_slot)
+		newbutton.connect('pressed', self, 'select_slot', [slot]) 
+		if slots[slot] == null:
+			newbutton.texture_normal = load("res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled.png")
+			newbutton.get_node('icon').texture = null
 		else:
-			newbutton.pressed = false
-	for i in range(n):
-		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/Farm_scroll/FarmSlots, 'Button')
-		newbutton.disabled = true
+			var person = ResourceScripts.game_party.characters[slots[slot]]
+			newbutton.texture_normal = load("res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled_1.png")
+			newbutton.get_node('icon').texture = person.get_icon_small()
+
 
 var farming_char
+var selected_slot = null
+
+func select_slot(slot):
+	selected_slot = slot
+	build_char_farm(ResourceScripts.game_party.farming_slots[selected_slot])
+	build_farm_slots()
+	update_characters()
+
+
+func select_farm_char(char_id):
+	if selected_slot == null:
+		return
+	if ResourceScripts.game_party.farming_slots[selected_slot] != null:
+		var ch = characters_pool.get_char_by_id(ResourceScripts.game_party.farming_slots[selected_slot])
+		ch.remove_from_task()
+	build_char_farm(char_id)
+
+
 func build_char_farm(char_id):
 	if char_id == null:
 		$Frame_farm/char_panel.visible = false
 		return
-	build_farm_slots(char_id)
+	
 	$Frame_farm/char_panel.visible = true
 	var ch = characters_pool.get_char_by_id(char_id)
 	farming_char = ch
 	if ch.get_work() == 'farming':
-		$Frame_farm/char_panel/Choose.visible = false
-		$Frame_farm/char_panel/Remove.visible = true
-	else:
-		$Frame_farm/char_panel/Choose.visible = true
-		$Frame_farm/char_panel/Remove.visible = false
-	
+		ResourceScripts.game_party.remove_char_from_farm(char_id)
+#		$Frame_farm/char_panel/Choose.visible = false
+#		$Frame_farm/char_panel/Remove.visible = true
+#	else:
+#		$Frame_farm/char_panel/Choose.visible = true
+#		$Frame_farm/char_panel/Remove.visible = false
+	ch.set_work('farming')
+	ResourceScripts.game_party.farming_slots[selected_slot] = char_id
+	build_farm_slots()
+	$Frame_farm/char_panel/Choose.visible = false
+	$Frame_farm/char_panel/Remove.visible = true
 	input_handler.ClearContainer($Frame_farm/char_panel/ScrollContainer/farm_rules, ['Button'])
 	for res in variables.farming_rules:
 		var task = races.farm_tasks[res]
@@ -901,16 +943,22 @@ func build_char_farm(char_id):
 		else:
 			newbutton.pressed = false
 			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, true])
-			newbutton.disabled = !ch.can_add_farming()
+			if ch.can_add_farming():
+				newbutton.disabled = false
+			else:
+				newbutton.disabled = true
+				globals.connecttexttooltip(newbutton, "Growth factor too low")
 
 
-func set_to_farm():
+func set_to_farm(): 
 	farming_char.set_work('farming')
 	build_farm()
 
 
 func remove_from_farm():
 	farming_char.remove_from_task()
+	if selected_slot != null:
+		ResourceScripts.game_party.farming_slots[selected_slot] = null
 	build_farm()
 
 

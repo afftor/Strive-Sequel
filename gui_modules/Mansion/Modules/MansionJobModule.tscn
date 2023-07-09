@@ -139,10 +139,11 @@ expand = true
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Frame_farm/Farm_scroll/FarmSlots/Button"]
-margin_left = 14.0
-margin_top = 13.0
-margin_right = 121.0
-margin_bottom = 120.0
+show_behind_parent = true
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 124.0
+margin_bottom = 124.0
 expand = true
 
 [node name="char_panel" type="Control" parent="Frame_farm"]
