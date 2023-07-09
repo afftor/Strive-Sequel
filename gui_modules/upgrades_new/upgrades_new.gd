@@ -125,18 +125,29 @@ func build_description(upgrade_id):
 		input_handler.ClearContainer(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
 		for res in upgrade_next_state.cost:
 			var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
-			var resdata = Items.materiallist[res]
 			panel.set_meta("exploration", true)
-			globals.connectmaterialtooltip(panel, resdata)
-			panel.get_node("Icon").texture = resdata.icon
-			panel.get_node("name").text = resdata.name
-			panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
-			if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
-				panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.red)
-				panel.disabled = true
-				can_upgrade = false
+			if res != 'gold':
+				var resdata = Items.materiallist[res]
+				globals.connectmaterialtooltip(panel, resdata)
+				panel.get_node("Icon").texture = resdata.icon
+				panel.get_node("name").text = resdata.name
+				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.materials[res], upgrade_next_state.cost[res]]
+				if ResourceScripts.game_res.materials[res] < upgrade_next_state.cost[res]:
+					panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.red)
+					panel.disabled = true
+					can_upgrade = false
+				else:
+					panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.green)
 			else:
-				panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.green)
+				panel.get_node("Icon").texture = load("res://assets/images/iconsitems/gold.png")
+				panel.get_node("name").text = tr('GOLD')
+				panel.get_node("count").text = "%d / %d" % [ResourceScripts.game_res.money, upgrade_next_state.cost[res]]
+				if ResourceScripts.game_res.money < upgrade_next_state.cost[res]:
+					panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.red)
+					panel.disabled = true
+					can_upgrade = false
+				else:
+					panel.get_node("count").set("custom_colors/font_color", variables.hexcolordict.green)
 		#add working res
 		work_cost.text = "%d" % [upgrade_next_state.taskprogress]
 #		var panel = input_handler.DuplicateContainerTemplate(desc_panel.get_node("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"))
