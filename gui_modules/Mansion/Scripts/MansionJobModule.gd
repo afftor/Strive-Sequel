@@ -914,14 +914,14 @@ func build_char_farm(char_id):
 	$Frame_farm/char_panel.visible = true
 	var ch = characters_pool.get_char_by_id(char_id)
 	farming_char = ch
-	if ch.get_work() == 'farming':
+	if ch.get_work() == 'produce':
 		ResourceScripts.game_party.remove_char_from_farm(char_id)
 #		$Frame_farm/char_panel/Choose.visible = false
 #		$Frame_farm/char_panel/Remove.visible = true
 #	else:
 #		$Frame_farm/char_panel/Choose.visible = true
 #		$Frame_farm/char_panel/Remove.visible = false
-	ch.set_work('farming')
+	ch.set_work('produce')
 	ResourceScripts.game_party.farming_slots[selected_slot] = char_id
 	build_farm_slots()
 	$Frame_farm/char_panel/Choose.visible = false
@@ -951,7 +951,7 @@ func build_char_farm(char_id):
 
 
 func set_to_farm(): 
-	farming_char.set_work('farming')
+	farming_char.set_work('produce')
 	build_farm()
 
 

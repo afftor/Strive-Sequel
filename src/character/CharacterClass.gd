@@ -470,7 +470,7 @@ func recruit_and_return():
 func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
-	if task == 'farming':
+	if task == 'produce':
 		xp_module.setup_farm()
 
 func set_work_rule(rule, value):

@@ -449,8 +449,8 @@ var tasklist = {
 		icon = null,
 		tags = ['hide_progress_ratio'],
 	},
-	farming = { #dummy task for farming
-		code = 'farming',
+	produce = { #dummy task for farming
+		code = 'produce',
 		reqs = [{type = 'disabled'}],
 		name = '',
 		descript = tr("TASKTRAVELDESCRIPT"),
