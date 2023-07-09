@@ -1411,7 +1411,8 @@ func get_racial_features():
 			statlist[i] = race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()]
 		else:
 			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
-
+	
+	
 
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number

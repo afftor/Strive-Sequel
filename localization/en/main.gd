@@ -1118,6 +1118,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKMISSION = "Mission",
 	TASKRONMISSIONCOMPLETE = "When this task is finished receive your reward from Journal.",
 	
+	TASKPRODUCE = "Produce",
+	TASKPRODUCEDESCRIPT = "Assigned to produce materials",
+	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
@@ -3988,7 +3991,7 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALEGGSDESCRIPT = "A batch of unfertilized eggs of slightly larger size than usual. Commonly obtained from Harpies and Lamias",
 	MATERIALMAGIC_DUST = "Magic Dust",
 	MATERIALMAGIC_DUSTDESCRIPT = "Residues enriched with magical power. Commonly obtained from Elves and Fairies",
-	MATERIALuLE_BLOOD = "Reptile Blood",
+	MATERIALREPTILE_BLOOD = "Reptile Blood",
 	MATERIALREPTILE_BLOODDESCRIPT = "A vial of red fluid from cold-blooded creatures. Commonly obtained from Kobolds and Dragonkin.",
 	MATERIALLIGHT_ESSENCE = "Light Essence",
 	MATERIALLIGHT_ESSENCEDESCRIPT = "A light fluffy substance smelling of soap. Commonly obtained from Seraphs.",

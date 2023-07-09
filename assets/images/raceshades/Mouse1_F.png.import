@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex"
+path="res://.import/Mouse1_F.png-4c6de89d06d0128e6ab1286a76b916a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/LegR.png"
-dest_files=[ "res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex" ]
+source_file="res://assets/images/raceshades/Mouse1_F.png"
+dest_files=[ "res://.import/Mouse1_F.png-4c6de89d06d0128e6ab1286a76b916a7.stex" ]
 
 [params]
 

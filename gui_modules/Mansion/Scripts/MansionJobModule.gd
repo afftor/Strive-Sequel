@@ -20,6 +20,8 @@ func _ready():
 	
 	$Frame_farm/char_panel/Remove.connect("pressed", self, 'remove_from_farm')
 	$Frame_farm/char_panel/Choose.connect("pressed", self, 'set_to_farm')
+	
+	globals.connecttexttooltip($BrothelRules/boosters/boosterstip, tr("SERVICEBOOSTTOOLTIP"))
 
 #func raise_clock():
 #	gui_controller.clock.raise()
@@ -950,7 +952,7 @@ func build_char_farm(char_id):
 				globals.connecttexttooltip(newbutton, "Growth factor too low")
 
 
-func set_to_farm(): 
+func set_to_farm():
 	farming_char.set_work('produce')
 	build_farm()
 
@@ -977,11 +979,21 @@ func build_boosters():
 		var boost_data = boosters['boost%d' % id]
 		var rdata = Items.materiallist[boost_data.res]
 		newbutton.get_node('icon').texture = rdata.icon
-		var text = "Resource %d: " % id
-		text += tr(rdata.name)
+		var text = ""#"Tier %d: " % id
+		
+		text += tr(rdata.name) + " "
+		
+		#if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
+		text += "(" + str(ResourceScripts.game_res.materials[boost_data.res])  + ")"
+		
+		text += ": " + str(variables.booster_value[id-1]) + "00%"
+		
 		#free to add any more data
-		newbutton.get_node('Label').text = text
 		newbutton.pressed = boost_data.value
+		if boost_data.value:
+			text += " - Activated"
+		
+		newbutton.get_node('Label').text = text
 		if f:
 			if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
 				newbutton.disabled = false

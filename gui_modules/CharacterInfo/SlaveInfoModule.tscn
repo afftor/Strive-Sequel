@@ -57,9 +57,6 @@ margin_bottom = 920.0
 theme = ExtResource( 12 )
 custom_styles/panel = ExtResource( 19 )
 script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -70,18 +67,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obedlabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="obedlabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 light_mask = 0
 margin_left = 233.571
 margin_top = 34.115
 margin_right = 312.571
 margin_bottom = 90.115
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "25"
 align = 1
 __meta__ = {
@@ -107,16 +101,13 @@ margin_left = -104.009
 margin_top = -41.7744
 margin_right = 82.991
 margin_bottom = 0.225601
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "SLAVEINFOMODULEOBEDIENCE"
 align = 1
 valign = 1
 
-[node name="loyaltylabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="loyaltylabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 light_mask = 0
 margin_left = 26.0
 margin_top = 143.0
@@ -128,17 +119,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="character_class" type="Label" parent="Panel" groups=[
-"hide_master",
-]]
+[node name="character_class" type="Label" parent="Panel" groups=["hide_master"]]
 light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 163.0
 margin_bottom = 84.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "SLAVE"
 align = 1
 valign = 1
@@ -146,26 +135,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="valuelabel" type="Label" parent="Panel" groups=[
-"hide_master",
-]]
+[node name="valuelabel" type="Label" parent="Panel" groups=["hide_master"]]
 light_mask = 0
 margin_left = 138.636
 margin_top = 93.8409
 margin_right = 265.636
 margin_bottom = 135.841
 mouse_filter = 1
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Slave"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="valueicon" type="TextureRect" parent="Panel" groups=[
-"hidemaster",
-]]
+[node name="valueicon" type="TextureRect" parent="Panel" groups=["hidemaster"]]
 margin_left = 95.9311
 margin_top = 91.6577
 margin_right = 139.931
@@ -201,8 +186,8 @@ margin_right = 141.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMATK"
 align = 2
 
@@ -212,8 +197,8 @@ margin_left = 155.0
 margin_right = 181.0
 margin_bottom = 35.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -223,8 +208,8 @@ margin_right = 389.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMMATK"
 align = 2
 
@@ -234,8 +219,8 @@ margin_left = 403.0
 margin_right = 429.0
 margin_bottom = 35.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -245,8 +230,8 @@ margin_right = 141.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMDEF"
 align = 2
 
@@ -257,8 +242,8 @@ margin_top = 36.0
 margin_right = 181.0
 margin_bottom = 71.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -269,8 +254,8 @@ margin_right = 389.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMMDEF"
 align = 2
 
@@ -281,8 +266,8 @@ margin_top = 36.0
 margin_right = 429.0
 margin_bottom = 71.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -292,8 +277,8 @@ margin_right = 141.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMHITRATE"
 align = 2
 
@@ -304,8 +289,8 @@ margin_top = 72.0
 margin_right = 181.0
 margin_bottom = 107.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -316,8 +301,8 @@ margin_right = 389.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMEVASION"
 align = 2
 
@@ -328,8 +313,8 @@ margin_top = 72.0
 margin_right = 429.0
 margin_bottom = 107.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -339,8 +324,8 @@ margin_right = 141.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMSPEED"
 align = 2
 
@@ -351,8 +336,8 @@ margin_top = 108.0
 margin_right = 181.0
 margin_bottom = 143.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -363,8 +348,8 @@ margin_right = 389.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMARMORPEN"
 align = 2
 
@@ -375,8 +360,8 @@ margin_top = 108.0
 margin_right = 429.0
 margin_bottom = 143.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -386,8 +371,8 @@ margin_right = 141.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMCRITICAL"
 align = 2
 
@@ -398,8 +383,8 @@ margin_top = 144.0
 margin_right = 181.0
 margin_bottom = 179.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -410,8 +395,8 @@ margin_right = 389.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "SIMCRITICALMOD"
 align = 2
 
@@ -422,8 +407,8 @@ margin_top = 144.0
 margin_right = 429.0
 margin_bottom = 179.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="BaseStatsPanel"]
@@ -445,8 +430,8 @@ light_mask = 0
 margin_right = 79.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "Attack:"
 align = 2
 
@@ -456,8 +441,8 @@ light_mask = 0
 margin_left = 84.0
 margin_right = 110.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "25"
 
 [node name="ResistsLabel" type="Label" parent="BaseStatsPanel"]
@@ -466,8 +451,8 @@ margin_left = 372.0
 margin_top = 5.27927
 margin_right = 660.0
 margin_bottom = 61.2793
-custom_fonts/font = ExtResource( 21 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 21 )
 text = "SIMRESIST"
 align = 1
 valign = 1
@@ -482,8 +467,8 @@ margin_top = 264.0
 margin_right = 937.0
 margin_bottom = 747.0
 theme = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 20 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = ExtResource( 20 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -567,8 +552,8 @@ margin_left = 28.5601
 margin_top = 81.947
 margin_right = 77.5601
 margin_bottom = 105.947
-custom_fonts/font = ExtResource( 24 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
 text = "5"
 align = 1
 __meta__ = {
@@ -598,8 +583,8 @@ light_mask = 0
 margin_left = -161.103
 margin_right = -53.1026
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Master"
 
 [node name="HairChange" type="Control" parent="."]
