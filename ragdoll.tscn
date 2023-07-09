@@ -2179,11 +2179,9 @@ shader_param/target1color = Color( 1, 0, 0, 1 )
 shader_param/target2color = Color( 1, 0, 0, 1 )
 shader_param/target3color = Color( 1, 0, 0, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
-shader_param/part2color = Color( 0.423529, 0.631373, 0.635294, 1 )
-shader_param/part3color = Color( 0.0941176, 0.101961, 0.227451, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.7
-shader_param/part2 = ExtResource( 56 )
-shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=63]
 shader = ExtResource( 103 )
@@ -4746,11 +4744,9 @@ shader_param/target1color = Color( 1, 0, 0, 1 )
 shader_param/target2color = Color( 1, 0, 0, 1 )
 shader_param/target3color = Color( 1, 0, 0, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
-shader_param/part2color = Color( 0.423529, 0.631373, 0.635294, 1 )
-shader_param/part3color = Color( 0.0941176, 0.101961, 0.227451, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.7
-shader_param/part2 = ExtResource( 56 )
-shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=81]
 shader = ExtResource( 103 )
@@ -4849,7 +4845,6 @@ script = ExtResource( 89 )
 clothes = false
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
-visible = false
 light_mask = 4
 
 [node name="HumanF1" type="Skeleton2D" parent="male_pose"]
@@ -5341,7 +5336,7 @@ rotation = -1.5708
 texture = ExtResource( 24 )
 
 [node name="Hair" type="Bone2D" parent="male_pose/HumanF1/Spine/Head"]
-position = Vector2( 31, 1.00001 )
+position = Vector2( 31, -3.85908 )
 rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
@@ -6093,7 +6088,7 @@ rotation = -1.5708
 texture = ExtResource( 1 )
 
 [node name="Hair" type="Bone2D" parent="Female_pose/HumanF1/Spine/Head"]
-position = Vector2( 31, 1.00001 )
+position = Vector2( 31, -2.99999 )
 rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
