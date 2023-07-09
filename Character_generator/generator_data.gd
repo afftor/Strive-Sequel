@@ -586,7 +586,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_goblin.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_goblin.png"},
 		],
-		orc = [
+		orcish = [
 			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'}, #or not
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_orc.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_orc.png"},
