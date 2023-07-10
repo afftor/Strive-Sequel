@@ -15,7 +15,7 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'Elf', 
+	race = 'Nereid', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -30,7 +30,7 @@ var test_template = {
 	nose = 'default', 
 	pregnancy_status = 'no', 
 	tits_size = 'small', 
-	skin_coverage = 'kibold', 
+	skin_coverage = '', 
 	body_color_skin = 'blue5', 
 	body_color_wings = 'red3', 
 	body_color_tail = 'yellow1', 
@@ -44,7 +44,7 @@ var test_template = {
 	hair_back_color_2 = 'red_3',
 	hair_assist_color_1 = 'yellow_1',
 	hair_assist_color_2 = 'pink_3',
-	hair_base_color_1 = 'blue_2',
+	hair_base_color_1 = 'red_2',
 	hair_base_color_2 = 'dark_3',
 	hair_base_lenght = 'long', 
 	hair_back_lenght = 'long', 
