@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ArmL1_beastkin_m.png-495721032c5441d1b28ce83f9e96cc3e.stex"
+path="res://.import/hairs_fringe_lion.png-a321ec716ddd09a75df3df91f600a5c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/15_beastkin_body_nude_male/ArmL1_beastkin_m.png"
-dest_files=[ "res://.import/ArmL1_beastkin_m.png-495721032c5441d1b28ce83f9e96cc3e.stex" ]
+source_file="res://Character_generator/images/04_hairs_fringe/hairs_fringe_lion.png"
+dest_files=[ "res://.import/hairs_fringe_lion.png-a321ec716ddd09a75df3df91f600a5c0.stex" ]
 
 [params]
 
