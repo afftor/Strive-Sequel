@@ -290,15 +290,19 @@ func set_stat(statname, value): #for direct access only
 func get_hairs_data():
 	var res = {
 		hair_base = 'dopple', 
+		hair_fringe = 'dopple', 
 		hair_assist = 'bun', 
 		hair_back = 'very_long', 
 		hair_base_color_1 = 'blue_2', 
+		hair_fringe_color_1 = 'blue_2', 
 		hair_back_color_1 = 'blue_2', 
 		hair_assist_color_1 = 'blue_2', 
 		hair_base_color_2 = 'blue_2', 
+		hair_fringe_color_2 = 'blue_2', 
 		hair_back_color_2 = 'blue_2', 
 		hair_assist_color_2 = 'blue_2', 
 		hair_base_lenght = 'long', 
+		hair_fringe_lenght = 'long', 
 		hair_back_lenght = 'long', 
 		hair_assist_lenght = 'long',
 	}
@@ -570,6 +574,10 @@ func get_hairs_data():
 				res.hair_base_lenght = 'short'
 				res.hair_assist_lenght = 'short'
 				res.hair_back_lenght = 'short'
+	res.hair_fringe = res.hair_base #temp, 2fix
+	res.hair_fringe_lenght = res.hair_base_lenght #possibly 2fix
+	res.hair_fringe_color_1 = res.hair_base_color_1 #keep this
+	res.hair_fringe_color_2 = res.hair_base_color_2 #keep this
 	return res
 
 #bonus system
