@@ -724,6 +724,8 @@ func get_stat(statname, ref = false):
 						return 'white2'
 					'kobold':
 						return 'green2'
+					'nereid':
+						return 'blue2'
 					_: 
 						return 'yellow2'
 			'body_color_animal':
