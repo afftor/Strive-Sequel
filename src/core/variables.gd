@@ -87,6 +87,8 @@ var booster_tiers = {
 	3:['draconic_scales', 'light_essence', 'dark_essence']
 }
 var booster_value = [2.0, 4.0, 8.0]
+var farm_produce_slots = 2
+var farm_produce_slots_per_upgrade = 1
 
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",

@@ -156,7 +156,7 @@ using       button.""",
 	##Mansion
 	#LeftMenuModule
 	LMMTRAVEL = "Travels",
-	LMMUPGRADES = "Upgareds",
+	LMMUPGRADES = "Upgrades",
 	LMMDATE = "Date",
 	LMMINVENTORY = "Inventory",
 	LMMCRAFT = "Craft",
@@ -869,10 +869,28 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
 	NORMALBUTTONTOOLTIP = 'Normal Speed\nHotkey: 2',
 	FASTBUTTONTOOLTIP = 'Fast Speed\nHotkey: 3',
-
-
-
-
+	
+	
+	QUESTPARTREQUIREMENTS = "Part Requirements",
+	QUESTCOMPLETEQUESTLOC = "Complete quest dungeon",
+	QUESTCOMPLETEQUESTLOC2 = "Complete quest dungeon at",
+	QUESTREQUIRED = "Required",
+	QUESTSLAVEREQUIRED = "Slave Required",
+	QUESTSTATS = "Stats",
+	QUESTSEX = "Sex",
+	QUESTWORKDURATION = "Work duration",
+	QUESTDAYS = "Days",
+	QUESTONETIMETASK = "Complete one time task",
+	QUESTGOLDREWARD = "Gold reward will be determined based on end item value.",
+	QUESTMASTERCHARMBONUS = "Master Charm Bonus",
+	QUESTGOLD = "Gold",
+	QUESTREPUTATION = "Reputation",
+	QUESTTASKACQ = "Task aсquired",
+	REQUIREMENTSARENTMET = "Requirements are not met.",
+	NOTENOUGHLOYALTY = "Not enough Loyalty",
+	QUESTCOMPLETEMESSAGE = "Quest Complete",
+	QUESTDAYSLEFT = "days left",
+	
 	#Skills
 	SKILLATTACK = "Attack",
 	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon.",
@@ -2155,7 +2173,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	UPGRADETOOL_SWAPPER = "Multitool",
 	UPGRADETOOL_SWAPPERDESCRIPT = "When characters harvest materials at dungeons or doing one time tasks their equipped tool will always apply its bonus regardless of type.",
-
+	
+	UPGRADEFARM_SLOTS = "Farm slots",
+	UPGRADEFARM_SLOTSDESCRIPT = "Provides additional slots for farm produce.",
+	
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
 	BODYPARTAGEMATURE = "mature",

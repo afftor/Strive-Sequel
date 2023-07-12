@@ -51,12 +51,12 @@ func setup_upgrade(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock2
 		set_inactive()
-		hint_tooltip += "\nRequirements are not met"
+		hint_tooltip += "\n"+tr("REQUIREMENTSARENTMET")
 	elif  person.get_stat('loyalty') < person.get_price_for_trait(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock1
 		set_inactive()
-		hint_tooltip += "\nNot enough Loyalty"
+		hint_tooltip += "\n"+tr("NOTENOUGHLOYALTY")
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()

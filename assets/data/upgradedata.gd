@@ -917,6 +917,42 @@ var upgradelist = {
 			},
 		}
 	},
+	
+	farm_slots = { 
+		code = 'farm_slots',
+		name = '',
+		icon = "academy",
+		tree_position = {tab = 2, x = 12, y = 13},
+		descript = '',
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 50,
+				cost = {leather = 50, wood = 100, obsidian = 15},
+			},
+			2:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 50,
+				cost = {leather = 50, wood = 100, obsidian = 15},
+			},
+			3:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 50,
+				cost = {leather = 50, wood = 100, obsidian = 15},
+			},
+			4:{
+				unlockreqs = [],
+				bonusdescript = tr(""),
+				taskprogress = 50,
+				cost = {leather = 50, wood = 100, obsidian = 15},
+			},
+			
+		}
+	},
 
 
 }

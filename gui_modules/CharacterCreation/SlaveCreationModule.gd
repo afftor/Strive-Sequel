@@ -59,7 +59,13 @@ func build_bodyparts():
 		elif races.racelist.Human.bodyparts.has(i):
 			workarray = races.racelist.Human.bodyparts[i]
 		var preserved_option_exists = false
-		for k in workarray:
+		var temparray = []
+		if workarray.size() > 0 && typeof(workarray[0]) == TYPE_ARRAY:
+			for item in workarray:
+				temparray.append(item[0])
+		else:
+			temparray = workarray
+		for k in temparray:
 			$ScrollContainer/HBoxContainer/bodyparts.get_node(i).add_item(k)
 			if get_parent().preservedsettings.has(i) and get_parent().preservedsettings[i] == k:
 				preserved_option_exists = true

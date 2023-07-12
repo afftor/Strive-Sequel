@@ -783,8 +783,9 @@ var racelist = {
 		race_tags = ['common'],
 		bodyparts = {
 			ears = ['orcish'],
-			skin = ['green','grey','brown'],
+			skin = [['green',8],['grey',1],['brown',1]],
 			height = ['average','tall','towering'],
+			lips = ['orcish']
 			},
 		global_weight = 45,
 	},
@@ -812,9 +813,10 @@ var racelist = {
 		race_tags = ['midget','common'],
 		bodyparts = {
 			ears = ['orcish'],
-			skin = ['green','grey','brown'],
+			skin = [['green',8],['grey',1],['brown',1]],
 			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
+			lips = ['orcish']
 			},
 		global_weight = 20,
 	},
@@ -841,7 +843,7 @@ var racelist = {
 		tags = [],
 		race_tags = ['midget','uncommon'],
 		bodyparts = {
-			skin = ['green','grey','brown'],
+			skin = ['green','brown'],
 			height = ['tiny','petite'],
 			skin_coverage = ['scale'],
 			tail = ['dragon'],
@@ -1336,6 +1338,7 @@ var racelist = {
 			penis_type = ['feline'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 	},
@@ -1371,6 +1374,7 @@ var racelist = {
 			penis_type = ['canine'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 	},
@@ -1406,6 +1410,7 @@ var racelist = {
 			penis_type = ['canine'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 	},
@@ -1439,6 +1444,7 @@ var racelist = {
 			legs = ['fur'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 	},
@@ -1472,6 +1478,7 @@ var racelist = {
 			legs = ['fur'],
 			chin = ['beastkin'],
 			nose = ['beastkin'],
+			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
 	},
