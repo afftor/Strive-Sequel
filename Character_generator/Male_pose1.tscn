@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/03_noses/nose_kobold.png" type="Texture" id=2]
@@ -58,6 +58,7 @@
 [ext_resource path="res://Character_generator/images/06_tails/Kobold_tail.png" type="Texture" id=56]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_body.png" type="Texture" id=57]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_taz.png" type="Texture" id=58]
+[ext_resource path="res://Character_generator/images/150_armory_acces_collars/collar_bell.png" type="Texture" id=59]
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=60]
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=61]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=62]
@@ -886,6 +887,12 @@ texture = ExtResource( 15 )
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 14 )
+
+[node name="Torso_collars_tex" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 304.854, 6.33234 )
+rotation = -1.5708
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 59 )
 
 [node name="Taz" type="Bone2D" parent="HumanF1/Spine"]
 position = Vector2( 222.449, -0.19342 )

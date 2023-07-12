@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/ShoulderR.png" type="Texture" id=2]
@@ -64,6 +64,7 @@
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=62]
 [ext_resource path="res://Character_generator/shaders/shaders_hair_length/hair_lengh_long.tres" type="Material" id=63]
 [ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=64]
+[ext_resource path="res://Character_generator/images/150_armory_acces_collars/collar_bell.png" type="Texture" id=65]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 39 )
@@ -1034,6 +1035,11 @@ texture = ExtResource( 14 )
 position = Vector2( 6.00006, 10.9999 )
 rotation = -1.5708
 texture = ExtResource( 34 )
+
+[node name="Torso_collars_tex" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 224, 0.999146 )
+rotation = -1.5708
+texture = ExtResource( 65 )
 
 [node name="Pregnancy" type="Bone2D" parent="HumanF1/Spine"]
 visible = false
