@@ -5103,7 +5103,6 @@ shader_param/part3 = ExtResource( 19 )
 light_mask = 4
 script = ExtResource( 89 )
 clothes = false
-test_mode = true
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
 light_mask = 4
@@ -5632,7 +5631,7 @@ texture = ExtResource( 23 )
 [node name="Lips_tex" type="Sprite" parent="male_pose/HumanF1/Spine/Head/Face"]
 light_mask = 4
 material = SubResource( 12 )
-position = Vector2( 499.474, -5.8439 )
+position = Vector2( 499.474, -7.78754 )
 rotation = -1.5708
 texture = ExtResource( 64 )
 
@@ -6445,7 +6444,7 @@ texture = ExtResource( 23 )
 [node name="Lips_tex" type="Sprite" parent="Female_pose/HumanF1/Spine/Head/Face"]
 light_mask = 4
 material = SubResource( 24 )
-position = Vector2( 499.474, -5.8439 )
+position = Vector2( 499.474, -7.8439 )
 rotation = -1.5708
 texture = ExtResource( 21 )
 
