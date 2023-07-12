@@ -110,12 +110,16 @@ func get_stat(statname, ref = false):
 				var res =  equipment.get_gear_type('chest')
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
+				if !GeneratorData.transforms[statname].has(res):
+					res = 'servant'
 				return res
 			'armor_lower':
 #				return ('servant') #temporal, until correct recolor of armor
 				var res = equipment.get_gear_type('legs')
 				if res == null and !has_work_rule('nudity'):
 					res = 'underwear'
+				if !GeneratorData.transforms[statname].has(res):
+					res = 'servant'
 				return res
 	return statlist.get_stat(statname, ref)
 
