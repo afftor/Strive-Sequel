@@ -2,6 +2,7 @@ extends Panel
 
 
 func _ready():
+	input_handler.connect('update_ragdoll', self, 'build_gear_panel')
 	for i in $InventorySlots.get_children():
 		i.connect("pressed", self, 'unequip', [i.name])
 		i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])

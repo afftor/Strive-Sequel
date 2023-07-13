@@ -10,6 +10,8 @@ func hairdye(character):
 
 func set_hair_color(text):
 	person.set_stat('hair_color', text)
+	person.set_stat('portrait_update', true)
+	input_handler.emit_signal('update_ragdoll')
 
 func minorus_potion(character):
 	person = character

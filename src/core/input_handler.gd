@@ -41,6 +41,7 @@ signal ButtonUpdated (node)
 signal LootGathered
 signal LocationSlavesUpdate
 signal PortraitUpdate
+signal update_ragdoll
 
 var last_action_data = {}
 var text_characters = []
