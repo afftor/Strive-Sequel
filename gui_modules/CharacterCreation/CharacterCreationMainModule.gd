@@ -247,6 +247,7 @@ func rebuild_slave():
 	var age = person.get_stat('age')
 	var t_person = ResourceScripts.scriptdict.class_slave.new("char_creation_rebuild")
 	t_person.create(race, sex, age)
+	t_person.fill_boosters()
 	t_person.is_active = false
 	t_person.is_known_to_player = true
 	if mode == 'master':
