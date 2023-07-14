@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tits_armor1_normal.png-3320d073f17aba0e0a2b7a430faafa74.stex"
+path="res://.import/tits_armor1_large.png-1db087aede83c9ecf3b966cdb23538db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/99_armory_set_maidu/tits_armor1_normal.png"
-dest_files=[ "res://.import/tits_armor1_normal.png-3320d073f17aba0e0a2b7a430faafa74.stex" ]
+source_file="res://Character_generator/images/99_armory_set_maidu/tits_armor1_large.png"
+dest_files=[ "res://.import/tits_armor1_large.png-1db087aede83c9ecf3b966cdb23538db.stex" ]
 
 [params]
 
