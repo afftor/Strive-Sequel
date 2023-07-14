@@ -3,6 +3,8 @@ extends Node2D
 export var clothes = true
 export var test_mode = false
 
+onready var _root = $VPC/VP
+
 var _scale_x
 var _scale_y
 
@@ -15,7 +17,7 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'Nereid', 
+	race = 'Human', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -28,9 +30,9 @@ var test_template = {
 	penis_type = 'furry', 
 	chin = 'thin', 
 	nose = 'default', 
-	pregnancy_status = 'no', 
-	tits_size = 'small', 
-	skin_coverage = '', 
+	pregnancy_status = 'heavy', 
+	tits_size = 'huge', 
+	skin_coverage = 'fur_white', 
 	body_color_skin = 'blue5', 
 	body_color_wings = 'red3', 
 	body_color_tail = 'yellow1', 
@@ -53,13 +55,15 @@ var test_template = {
 	hair_fringe_lenght = 'long', 
 	hair_back_lenght = 'long', 
 	hair_assist_lenght = 'long', 
-	armor_base = 'chest_adv_metal', 
-	armor_lower = 'legs_adv_metal',
+#	armor_base = 'chest_adv_metal', 
+	armor_base = 'servant', 
+#	armor_lower = 'legs_adv_metal',
+	armor_lower = 'servant',
 	armor_color_base = 'default',
 	armor_color_lower = 'default',
 	height = 'towering',
 	ass_size = 'small',
-	pose = 'pose2',
+	pose = 'pose4',
 }
 
 func _ready():
@@ -90,7 +94,8 @@ func rebuild(character_to_build):
 	#setup
 	__scale_x = _scale_x
 	__scale_y = _scale_y
-	position = _position
+#	position = _position
+	set_position(Vector2(0, 0))
 	_offset = Vector2(0.0, 0.0)
 	
 	character = character_to_build
@@ -117,8 +122,14 @@ func rebuild(character_to_build):
 				continue
 			apply_transform(transform)
 	#apply scale & offset
-	scale = Vector2(__scale_x, __scale_y)
-	position += _offset
+#	scale = Vector2(__scale_x, __scale_y)
+#	position += _offset
+	
+	scale = Vector2(1, 1)
+	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
+	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
+	_root.get_node('male_pose').position = _position + _offset
+	_root.get_node('Female_pose').position = _position + _offset
 	
 	if character != null:
 		character.update_portrait(self)
@@ -176,7 +187,7 @@ func rebuild_cloth(value):
 func apply_transform(transform):
 	match transform.type:
 		'texture':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			if transform.texture != null:
 				nd.texture = load(transform.texture)
 			else:
@@ -186,7 +197,7 @@ func apply_transform(transform):
 			for sub_transform in arr_tr:
 				apply_transform(sub_transform)
 		'node_attr':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			nd.set(transform.attr, transform.value)
 		'node_group_attr': #group hide or unhide mostly
 			var nodes = get_tree().get_nodes_in_group(transform.group)
@@ -204,7 +215,7 @@ func apply_transform(transform):
 				else:
 					nd.visible = false
 		'import_deform':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			if transform.has('ids'):
 				input_handler.import_deform_parameter(nd.material, load(transform.material), transform.ids)
 			else:
@@ -219,7 +230,7 @@ func apply_transform(transform):
 				else:
 					input_handler.import_deform_parameter(nd.material, load(transform.material))
 		'import_recolor':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			if transform.has('ids'):
 				input_handler.import_recolor_parameter(nd.material, load(transform.material), transform.ids)
 			else:
@@ -234,7 +245,7 @@ func apply_transform(transform):
 				else:
 					input_handler.import_recolor_parameter(nd.material, load(transform.material))
 		'import_mask':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			if transform.has('ids'):
 				input_handler.import_recolor_mask(nd.material, load(transform.material), transform.ids)
 			else:
@@ -249,7 +260,7 @@ func apply_transform(transform):
 				else:
 					input_handler.import_recolor_mask(nd.material, load(transform.material))
 		'import_mask_path':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			var mat = null
 			if transform.material != null: #if else - effectively block slot
 				mat = load(transform.material)
@@ -275,7 +286,7 @@ func apply_transform(transform):
 		'offset':
 			_offset += Vector2(transform.value_x, transform.value_y)
 		'item_recolor':
-			var nd = get_node(transform.node)
+			var nd = _root.get_node(transform.node)
 			var mat = nd.material
 			mat.set_shader_param(transform.part, transform.color)
 		'item_recolor_group':
@@ -293,10 +304,11 @@ func save_portrait(name):
 		dir.make_dir(variables.portraits_folder)
 	var path = variables.portraits_folder + name + '.png'
 	
-#	yield(get_tree(), 'idle_frame')
-#	yield(get_tree(), 'idle_frame')
-	yield(get_tree().create_timer(0.3), "timeout")
-	var texture = get_tree().get_root().get_texture()
+	yield(get_tree(), 'idle_frame')
+	yield(get_tree(), 'idle_frame')
+#	yield(get_tree().create_timer(0.3), "timeout")
+	var texture = $VPC/VP.get_texture()
+#	var texture = get_tree().get_root().get_texture()
 	var image = texture.get_data()
 #	image.resize(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"), 3)
 	image.flip_y()
