@@ -5101,8 +5101,8 @@ shader_param/part3 = ExtResource( 19 )
 
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
+z_index = 5
 script = ExtResource( 89 )
-test_mode = true
 
 [node name="male_pose" type="Node2D" parent="." groups=["sex"]]
 visible = false
