@@ -327,6 +327,7 @@ func make_random_portrait():
 
 func setup_baby(mother, father):
 	statlist.setup_baby(mother, father)
+	xp_module.set_service_boost()
 
 func get_baby_or_null():
 	var tmp = get_stat('pregnancy')
