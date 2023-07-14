@@ -33,7 +33,7 @@ func create_character_description(character):
 	return new_charcter_description(character)
 
 var descriptionorder = [
-'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', 'skin', 'skin_coverage','wings', 'tail', 'height', 
+'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'skin', 'skin_coverage','wings', 'tail', 'height', 
 '[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
@@ -42,6 +42,7 @@ func new_charcter_description(character):
 
 	var check_allowed_sex = false
 	var add_no_sex_descript = false
+	var check_skin_coverage = false
 
 	for i in descriptionorder:
 		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo','slave_status']:
@@ -56,10 +57,17 @@ func new_charcter_description(character):
 		elif i == '[allowed_sex]':
 			check_allowed_sex = true
 			continue
+		elif i == '[skin_coverage]':
+			check_skin_coverage = true
+			continue
 		elif i == '[bonus]':
 			if !character.get_stat('bonus_description').begins_with("#"):
 				text += character.get_stat('bonus_description')
 			continue
+		elif check_skin_coverage == true:
+			check_skin_coverage = false
+			if character.get_stat("skin_coverage") in variables.skin_coverage_false:
+				continue
 		elif check_allowed_sex == true && (person.has_status("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
 			check_allowed_sex = false
 			if add_no_sex_descript == false:
@@ -106,20 +114,20 @@ func multiple_tits():
 	return text
 
 func slave_status():
-	if person.is_players_character == false:
+	if person.is_players_character == false || person.get_stat('slave_class') == 'master':
 		return ''
 	
-	var text = ""
-	match person.get_stat("slave_class"):
-		'slave':
-			text = "[name] is your slave and must obey your orders by law."
-		'peon':
-			text = '[name] is your servant and has to follow your commands .'
-		'merc':
-			text = '[name] was hired by you and costs you gold. '
-	
+	var text = tr("DESCRIPTCLASS" + person.get_stat("slave_class").to_upper()) 
+#	match person.get_stat("slave_class"):
+#		'slave':
+#			text = tr("DESCRIPTCLASSSLAVE")
+#		'peon':
+#			text = ''
+#		'merc':
+#			text = ''
 	#elif person.
 	return text
+
 
 #func genitals():
 #	var text = '\n'
@@ -151,7 +159,7 @@ func pregnancy():
 
 	return text
 
-func piercing():
+func piercing(): #currently unused
 	var text = ""
 	#add later
 	var tmp = person.get_stat('piercing')
@@ -201,31 +209,33 @@ func piercing():
 			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
 	return text
 
-var tattoo_descripts = {
-	face_makeup = "[His] face has permanent makeup accentuating on [his] beauty.",
-	face_tribal = "[His] face is painted with tribal markings.",
-	neck_branding = "[His] neck features a slave brand with your name on it.",
-	chest_lust = "[His] chest is decorated with a lewd marks emphasizing [his] nipples.",
-	chest_tribal = "[His] chest is camouflaged with tribal markings.",
-	waist_hp = "Back of [his] waist holds an delicate plant tattoo.",
-	waist_mp = "Back of [his] waist is decorated with glowing energy lines.",
-	arms_hp = "[His] arms are decorated with elegant plant tattoos.",
-	arms_mp = "[His] arms feature glowing energy lines.",
-	arms_tribal = "[His] arms are painted with tribal markings.",
-	ass_branding = "[His] ass cheek has a slave brand with your name on it.",
-	ass_lust = "[His] rear is decorated with a lewd crest.",
-	crotch_branding = "[His] crotch has a slave brand with your name on it.",
-	crotch_lust = "[His] crotch is tattooed with a lewd crest.",
-	legs_hp = "[His] legs are decorated with a elegant plant tattoos.",
-	legs_mp = "[His] legs feature glowing energy lines.",
-	legs_tribal = "[His] legs are painted with tribal markings.",
-}
+#var tattoo_descripts = {
+#	face_makeup = "[His] face has permanent makeup accentuating on [his] beauty.",
+#	face_tribal = "[His] face is painted with tribal markings.",
+#	neck_branding = "[His] neck features a slave brand with your name on it.",
+#	chest_lust = "[His] chest is decorated with a lewd marks emphasizing [his] nipples.",
+#	chest_tribal = "[His] chest is camouflaged with tribal markings.",
+#	waist_hp = "Back of [his] waist holds an delicate plant tattoo.",
+#	waist_mp = "Back of [his] waist is decorated with glowing energy lines.",
+#	arms_hp = "[His] arms are decorated with elegant plant tattoos.",
+#	arms_mp = "[His] arms feature glowing energy lines.",
+#	arms_tribal = "[His] arms are painted with tribal markings.",
+#	ass_branding = "[His] ass cheek has a slave brand with your name on it.",
+#	ass_lust = "[His] rear is decorated with a lewd crest.",
+#	crotch_branding = "[His] crotch has a slave brand with your name on it.",
+#	crotch_lust = "[His] crotch is tattooed with a lewd crest.",
+#	legs_hp = "[His] legs are decorated with a elegant plant tattoos.",
+#	legs_mp = "[His] legs feature glowing energy lines.",
+#	legs_tribal = "[His] legs are painted with tribal markings.",
+#}
+
+
 
 func tattoo():
 	var text = ''
 	for slot in person.statlist.tattoo:
 		if person.statlist.tattoo[slot] != null:
-			text += tattoo_descripts[slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')] + " "
+			text += tr("DESCRIPTTATOO" + (slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')).to_upper()) + " "
 	if text.length()> 0:
 		return "{color=magenta|" + text + "}"
 	else:
@@ -575,12 +585,12 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
 		if classdata.skills.size() > 0:
-			text += "\n{color=yellow|Skills: "
+			text += "\n{color=yellow|"+tr("CLASSDETAILSKILLS")+": "
 			for i in classdata.skills:
 				text += Skilldata.Skilllist[i].name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
 		if classdata.combatskills.size() > 0:
-			text += "\n{color=yellow|Combat Skills: "
+			text += "\n{color=yellow|"+tr("CLASSDETAILCOMBATSKILLS")+": "
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
 			text = text.substr(0, text.length() - 2) + "}"

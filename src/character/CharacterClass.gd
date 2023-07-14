@@ -1099,6 +1099,7 @@ func decipher_reqs(reqs, colorcode = false, purestat = false):
 		text += text2 + '\n'
 	return globals.TextEncoder(text.substr(0, text.length()-1))
 
+
 func decipher_single(ch):
 	var i = ch.duplicate()
 	var text2 = ''
@@ -1106,56 +1107,58 @@ func decipher_single(ch):
 		'stat':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			if i.stat.find("factor") > 0:
-				text2 += statdata.statdata[i.stat].name + ': ' + ResourceScripts.descriptions.factor_descripts[i.value] + " "
+				text2 += statdata.statdata[i.stat].name + ': ' + tr(ResourceScripts.descriptions.factor_descripts[i.value]) + " "
 			else:
 				text2 += statdata.statdata[i.stat].name + ': ' + str(i.value) + " "
 			match i.operant:
 				'gte':
-					text2 += "or higher"
+					text2 += tr("REQORHIGHER")
 				'lte':
-					text2 += "or lower"
+					text2 += tr("REQORLOWER")
 		'has_profession':
 			if i.check == true:
-				text2 += 'Has Class: ' + classesdata.professions[i.profession].name
+				text2 += tr("REQHASCLASS")+': ' + classesdata.professions[i.profession].name
 			else:
-				text2 += 'Conflicting Class: ' + classesdata.professions[i.profession].name
+				text2 += tr("REQCONFLICTCLASS")+': ' + classesdata.professions[i.profession].name
 		'has_any_profession':
-			text2 += "Has any of Classes: "
+			text2 += tr('REQHASANYCLASS')+": "
 			for k in i.value:
 				text2 += classesdata.professions[k].name + ", "
 			text2 = text2.substr(0, text2.length()-2)
 		'race':
 			if i.check:
-				text2 += 'Race: ' + races.racelist[i.race].name
+				text2 += tr("REQRACE") + ': ' + races.racelist[i.race].name
 			else:
 				continue
 		'race_is_beast':
 			if i.check == true:
-				text2 += 'Only for Bestial races.'
+				text2 += tr("REQRACEISBEAST")+''
 			else:
 				continue
 		'gear_equiped': #to fix non-default param
-			text2 += 'Must have ' + Items.itemlist[i.value].name + "."
+			text2 += tr("REQMUSTHAVEGEAR")+' ' + Items.itemlist[i.value].name + "."
 		'global_profession_limit':
-			text2 += 'Only ' + str(i.value) + " " + classesdata.professions[i.profession].name + " allowed."
+			text2 += tr("REQPROFLIMIT")+' ' + str(i.value) + " " + classesdata.professions[i.profession].name + " "+tr("REQPROFLIMIT2")+"."
 		'one_of_races':
-			text2 += "Only for: "
+			text2 += tr("REQONEOFRACES")+": "
 			for k in i.value:
 				text2 += races.racelist[k.replace(" ","")].name + ', '
 			text2 = text2.substr(0, text2.length()-2) + '. '
 		'trait':
-			text2 += "Requires: " + Traitdata.traits[i.trait].name
+			text2 += tr("REQTRAIT")+": " + Traitdata.traits[i.trait].name
 		'population':
-			text2 += "Must have Population: " + str(i.value)
+			text2 += tr("REQPOPULATION")+": " + str(i.value)
 		'sex':
 			match i.operant:
 				'neq':
-					text2 += "Not allowed for: " + i.value.capitalize() + "s."
+					text2 += tr("REQSEX")+": " + i.value.capitalize() + "."
 		'virgin':
 			match i.check:
 				false:
-					text2 += "Not a virgin"
+					text2 += tr("REQVIRGINFALSE")
 	return text2
+
+
 
 
 #never used

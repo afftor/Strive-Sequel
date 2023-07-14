@@ -1723,30 +1723,32 @@ func is_uncontrollable():
 func is_controllable():#not sure - either this or previous is wrong cause of obedience check, nvn, rework both!
 	return statlist.loyalty >= 100
 
+var sex_nouns = {male = tr("PRONOUNMALE"), female = tr("PRONOUNMALEF"), futa = tr("PRONOUNMALEH")}
+
 func translate(text):
 	var rtext = ''
-	text = text.replace("[He]", globals.fastif(statlist.sex == 'male', 'He', 'She'))
-	text = text.replace("[he]", globals.fastif(statlist.sex == 'male', 'he', 'she'))
-	text = text.replace("[his]", globals.fastif(statlist.sex == 'male', 'his', 'her'))
-	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', 'him', 'her'))
-	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', 'His', 'Her'))
-	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', 'Sir', 'Miss'))
-	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', 'son', 'daughter'))
-	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', 'father', 'mother'))
-	text = text.replace("[brother]", globals.fastif(statlist.sex == 'male', 'brother', 'sister'))
-	text = text.replace("[gentleman]", globals.fastif(statlist.sex == 'male', 'gentleman', 'lady'))
+	text = text.replace("[He]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHE'), tr("PRONOUNHEF"))) # PRONOUNHE = "He", 
+	text = text.replace("[he]", globals.fastif(statlist.sex == 'male',  tr('PRONOUNHEL'), tr("PRONOUNHELF")))
+	text = text.replace("[his]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHISL'), tr("PRONOUNHISLF")))
+	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIML'), tr("PRONOUNHIMLF")))
+	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIS'), tr("PRONOUNHISF")))
+	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
+	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF")))
+	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF")))
+	text = text.replace("[brother]", globals.fastif(statlist.sex == 'male', tr('PRONOUNBROTHER'), tr("PRONOUNBROTHERF")))
+	text = text.replace("[gentleman]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGENTLEMAN'), tr("PRONOUNGENTLEMANF")))
 	text = text.replace("[raceadj]", races.racelist[statlist.race].adjective if statlist.race != "" else "")
 	text = text.replace("[race]", races.racelist[statlist.race].name if statlist.race != "" else "")
 	text = text.replace("[race_short]",input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]) if statlist.race != "" else "")
 	text = text.replace("[name]", get_short_name())
 	text = text.replace("[surname]",globals.fastif(statlist.surname != '', statlist.surname, get_short_name()))
 	text = text.replace("[age]", statlist.age.capitalize())
-	text = text.replace("[male]", statlist.sex)
+	text = text.replace("[male]", sex_nouns[statlist.sex])
 	text = text.replace("[eye_color]", statlist.eye_color)
 	text = text.replace("[hair_color]", statlist.hair_color)
-	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', 'man', 'woman'))
-	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', 'husband', 'wife'))
-	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', 'groom', 'bride'))
+	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
+	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
+	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF")))
 
 #	var masternoun = 'master'
 	var tempmasternoun = statlist.masternoun

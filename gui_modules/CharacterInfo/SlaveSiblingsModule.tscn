@@ -91,9 +91,6 @@ margin_right = 817.0
 margin_bottom = 916.0
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="SlaveDietModule"]
 show_behind_parent = true
@@ -115,6 +112,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveDietModule/ScrollContainer"]
+margin_right = 436.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SlaveDietModule/ScrollContainer/VBoxContainer"]
@@ -156,12 +154,10 @@ margin_right = 504.0
 margin_bottom = 78.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Food Filter"
+text = "SIBLINGMODULEFOODFILTER"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+clip_text = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 light_mask = 0
@@ -232,8 +228,9 @@ margin_left = 31.1127
 margin_top = 301.228
 margin_right = 269.113
 margin_bottom = 333.228
-text = "Consent: "
+text = "SIBLINGMODULECONSENT"
 align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -267,9 +264,10 @@ margin_right = 255.301
 margin_bottom = 72.8252
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Sex Skills"
+text = "SIBLINGMODULESKILLSKILLS"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,9 +279,10 @@ margin_right = 740.0
 margin_bottom = 76.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 6 )
-text = "Rules and Conditions"
+text = "SIBLINGMODULERULES"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -294,9 +293,6 @@ margin_top = 86.8252
 margin_right = 764.0
 margin_bottom = 309.0
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ration" type="CheckBox" parent="work_rules"]
 margin_right = 215.0
@@ -307,6 +303,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 7 )
@@ -322,6 +319,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 8 )
@@ -337,6 +335,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
@@ -353,6 +352,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
@@ -368,6 +368,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
@@ -384,6 +385,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
@@ -459,9 +461,10 @@ margin_right = 210.126
 margin_bottom = 42.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Sex traits"
+text = "SIBLINGMODULESEXTRAITS"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -479,6 +482,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
 light_mask = 0
+margin_right = 230.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -511,9 +515,10 @@ margin_right = 160.532
 margin_bottom = 496.458
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
-text = "TraitCapacity"
+text = "SIBLINGMODULETRAITCAPACITY"
 align = 1
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -534,8 +539,9 @@ margin_right = 1663.0
 margin_bottom = 100.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 22 )
-text = "Relatives"
+text = "SIBLINGMODULERELATIVES"
 align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -558,8 +564,9 @@ size_flags_horizontal = 3
 margin_right = 275.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 23 )
-text = "Parents"
+text = "SIBLINGMODULEPARENTS"
 align = 1
+clip_text = true
 
 [node name="panel" type="Control" parent="RelativesPanel/Relatives/Parents"]
 visible = false
@@ -605,8 +612,9 @@ size_flags_horizontal = 3
 margin_right = 276.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 23 )
-text = "Siblings"
+text = "SIBLINGMODULESIBLINGS"
 align = 1
+clip_text = true
 
 [node name="panel" type="Control" parent="RelativesPanel/Relatives/ScrollContainer/Siblings"]
 visible = false
@@ -652,8 +660,9 @@ size_flags_horizontal = 3
 margin_right = 276.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 23 )
-text = "Children"
+text = "SIBLINGMODULECHILDDREN"
 align = 1
+clip_text = true
 
 [node name="panel" type="Control" parent="RelativesPanel/Relatives/ScrollContainer2/Children"]
 visible = false
@@ -714,8 +723,9 @@ margin_right = 1498.94
 margin_bottom = 75.551
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 22 )
-text = "Trainings"
+text = "SIBLINGMODULETRAININGS"
 align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -737,7 +747,8 @@ margin_right = 809.0
 margin_bottom = 892.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 10 )
-text = "Daily Consumption"
+text = "SIBLINGMODULEFOODCONSUMPTION"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -815,9 +826,10 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Relatives"
+text = "SIBLINGMODULERELATIVES"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="change_button2" type="TextureButton" parent="."]
 margin_left = 1086.51
@@ -836,9 +848,10 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Main"
+text = "SIBLINGMODULEMAIN"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="change_button3" type="TextureButton" parent="."]
 margin_left = 1246.51
@@ -854,6 +867,7 @@ texture_hover = ExtResource( 30 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Sex"
+text = "SIBLINGMODULESEX"
 align = 1
 valign = 1
+clip_text = true

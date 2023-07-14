@@ -18,7 +18,7 @@ var TranslationDict = {
 	MENUMODS = "Моды",
 	MENUGALLERY = "Галерея",
 	MENUQUIT = "Выход",
-	MENUCHANGELOG = "Изменения",
+	MENUCHANGELOG = "Список изменений",
 	#Gallery
 	GALLERYNAME = "Галерея",
 	GALLERYSTORY = "Сюжет",
@@ -56,7 +56,7 @@ var TranslationDict = {
 						Текст: S[Mutt]
 
 						Вычитка: Dorant, ralphomayo, Khuja
-
+						Перевод на русский: LordKrogaton
 						Также спасибо: negtize724
 
 						Окружающий шум битвы: мечи и крики - pfranzen
@@ -143,8 +143,8 @@ var TranslationDict = {
 	TUTORIALINFOENABLE = "Включить обучение",
 	#Учебник
 	TUTORIALNAME = "Помощь",
-	TUTORIALPREV = "< Предыдущий",
-	TUTORIALNEXT = "Следующий >",
+	TUTORIALPREV = "< Предыдущая",
+	TUTORIALNEXT = "Следующая >",
 	TUTORIALLIST1 = "введение",
 	TUTORIALLIST2 = "крафт",
 	TUTORIALLIST3 = "путешествие",
@@ -771,7 +771,7 @@ var TranslationDict = {
 	ENERGY = "Энергия",
 	TIME = "Время",
 	CRAFT = "Крафт",
-	BLACKSMITH = "Кузня",
+	BLACKSMITH = "Кузница",
 	PROGRESS = "Прогресс",
 	REPAIR = "Починить",
 	REPAIRALL = "Починить все",
@@ -1223,14 +1223,14 @@ var TranslationDict = {
 	SLAVESTARTINGCLASS = "Стартовый класс",
 	#Bodyparts
 
-	SIZETINY = "Крошечный",
+	SIZETINY = "Крошечный/ая",
 	SIZEPETITE = "Миниатюрный/ая",
 	SIZESHORT = "Низкий/ая",
 	SIZEAVERAGE = "Средний/яя",
 	SIZETALL = "Высокий/ая",
 	SIZETOWERING = "Высоченный/ая",
-	SIZESMALL = "Маленьки",
-	SIZEBIG = "Большой",
+	SIZESMALL = "Маленький/ая",
+	SIZEBIG = "Большой/ая",
 
 	SLAVESEXMALE = "Мужчина",
 	SLAVESEXFEMALE = "Женщина",
@@ -1832,9 +1832,9 @@ var TranslationDict = {
 	TRAITLOYALTY_BASIC_SERVITUDE = "Базовое служение",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = "{color=green|Позволяет назначать профессии}\n\n\nПолный контроль начинается с самых маленьких шагов. Манерность, протокол и этикет должны быть установлены, чтобы получить свои плоды. ",
 	TRAITLOYALTY_DATING = "Свидания",
-	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Unlocks Dating}\n\nВечные традиции, переработанные для ваших нужд. Доброе слово, тонкий намек и социальные удобства - все это поможет установить полезную связь",
+	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Разблокирует свидание}\n\nВечные традиции, переработанные для ваших нужд. Доброе слово, тонкий намек и социальные удобства - все это поможет установить полезную связь",
 	TRAITLOYALTY_COMBATANT = "Боец",
-	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Unlock Combat Assignment}\n\nРабы в цепях имеют мало применения. Те, кто заслужил доверие своих хозяев и защищает их, гораздо ценнее.",
+	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Разблокирует участие в бою}\n\nРабы в цепях имеют мало применения. Те, кто заслужил доверие своих хозяев и защищает их, гораздо ценнее.",
 	TRAITLOYALTY_DRESS_LEWD = "Развратная одежда",
 	TRAITLOYALTY_DRESS_LEWDDESCRIPT = "{color=green|Разблокирует более экстравагантное снаряжение}\n\nНасыщенная кожа, мягкая ткань, охотно демонстрируют свои достоинства - все для блага своих хозяев. Хорошая рабыня может быть произведением искусства физически, эта знает об этом.\n\nРаботает: Базовое служение" ,
 	TRAITLOYALTY_DRESS_WORK = "Рабочая одежда",
@@ -1874,7 +1874,7 @@ var TranslationDict = {
 	
 	PROFMASTER = "Мастер",
 	PROFMASTERALT = "Госпожа",
-	PROFMASTERDESCRIPT = "Единственный правитель домена. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг",
+	PROFMASTERDESCRIPT = "Единственный правитель владения. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг",
 	PROFRULER = "Правитель",
 	PROFRULERDESCRIPT = "На ступень выше, чем просто [master]. Правитель - это высшая личность, не только обладающая полной властью, но и вдохновляющая других на более великие дела.",
 	PROFDIRECTOR = "Директор",
@@ -1903,7 +1903,7 @@ var TranslationDict = {
 	PROFALCHEMIST = "Алхимик",
 	PROFALCHEMISTDESCRIPT = "Алхимики специализируются на процессах варки, что очень важно для постоянного снабжения зельями.",
 	PROFFARMER = "Фермер",
-	PROFFARMERDESCRIPT = "Фермеры обучены работе с сельскохозяйственными культурами. ",
+	PROFFARMERDESCRIPT = "Фермеры обучены работе с сельскохозяйственными культурами.",
 	PROFBREEDER = "Матка для разведения",
 	PROFBREEDERDESCRIPT = "Тот, кто находит цель в появлении на свет нового поколения. Они могут принять любого партнера, но их дети будут продолжать их род",
 	PROFHARLOT = "Блудница",
@@ -1911,7 +1911,7 @@ var TranslationDict = {
 	PROFGEISHA = "Гейша",
 	PROFGEISHADESCRIPT = "Непревзойденные артисты, которые развлекают посетителей песнями, танцами и разговорами",
 	PROFDANCER = "Танцовщица",
-	PROFDANCERDESCRIPT = "Танцовщицы могут завлечь своим видом и движениями. Эффективны для развлечений. ",
+	PROFDANCERDESCRIPT = "Танцовщицы могут завлечь своим видом и движениями. Эффективны для развлечений.",
 	PROFSUCCUBUS = "Суккуб",
 	PROFSUCCUBUSALT = "Инкуб",
 	PROFSUCCUBUSDESCRIPT = "Плотские удовольствия превратились в искусство. Они научились не только доставлять удовольствие другим, но и использовать свою похоть для собственной выгоды",
@@ -2083,9 +2083,9 @@ var TranslationDict = {
 	UPGRADEALCHEMYBONUS2 = "Разблокирует продвинутые алхимические и лечебные рецепты предметов. Разблокирует рецепты зачарованного дерева и адамантина. Увеличивает количество назначаемых персонажей до 2",
 	UPGRADEALCHEMYBONUS3 = "Разблокирует улучшенный посох и некоторые улучшенные рецепты чернил. Увеличивает количество назначаемых персонажей до 3",
 	UPGRADEMASTER_BEDROOM = "Спальня хозяина",
-	UPGRADEMASTER_BEDROOMDESCRIPT = "Обновление спальни хозяина",
+	UPGRADEMASTER_BEDROOMDESCRIPT = "Улучшение спальни хозяина",
 	UPGRADERESOURCE_GATHER_LEATHER = "Сбор кожи",
-	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Обновление задания охоты",
+	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Улучшение задания охоты",
 	UPGRADELEATHERBONUS1 = "Позволяет собирать толстую кожу",
 	UPGRADELEATHERBONUS2 = "Позволяет собирать мифическую кожу",
 	UPGRADEGATHERCLOTHBONUS = "Позволяет собирать ткань в особняке",
@@ -2102,18 +2102,18 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS5 = "Увеличивает максимальное количество размещаемых персонажей до 30",
 	UPGRADELUXURY_ROOMS = "Роскошные комнаты",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Увеличивает максимальное количество доступных роскошных комнат. Роскошные комнаты уменьшают отток послушания и повышают лояльность их обитателей. ",
-	UPGRADELUXURYROOMSBONUS1 = "Увеличивает максимальное количество доступных комнат класса люкс до 2.",
+	UPGRADELUXURYROOMSBONUS1 = "Увеличивает максимальное количество доступных роскошных комнат до 2.",
 	UPGRADELUXURYROOMSBONUS2 = "Увеличивает максимальное количество доступных роскошных комнат до 3.",
-	UPGRADELUXURYROOMSBONUS3 = "Увеличивает максимальное количество доступных номеров класса люкс до 4",
-	UPGRADELUXURYROOMSBONUS4 = "Увеличивает максимальное количество доступных номеров класса люкс до 5",
-	UPGRADELUXURYROOMSBONUS5 = "Увеличивает максимальное количество доступных номеров класса люкс до 6",
-	UPGRADELUXURYROOMSBONUS6 = "Увеличивает максимальное количество доступных номеров класса люкс до 7",
-	UPGRADELUXURYROOMSBONUS7 = "Увеличивает максимальное количество доступных номеров класса люкс до 8",
+	UPGRADELUXURYROOMSBONUS3 = "Увеличивает максимальное количество доступных роскошных комнат до 4",
+	UPGRADELUXURYROOMSBONUS4 = "Увеличивает максимальное количество доступных роскошных комнат до 5",
+	UPGRADELUXURYROOMSBONUS5 = "Увеличивает максимальное количество доступных роскошных комнат до 6",
+	UPGRADELUXURYROOMSBONUS6 = "Увеличивает максимальное количество доступных роскошных комнат до 7",
+	UPGRADELUXURYROOMSBONUS7 = "Увеличивает максимальное количество доступных роскошных комнат до 8",
 
 
-	UPGRADEMASTERBEDROOMBONUS1 = "Увеличивает количество участников сексуальных отношений до 3",
-	UPGRADEMASTERBEDROOMBONUS2 = "Увеличивает количество участников сексуальных отношений до 4",
-	UPGRADEMASTERBEDROOMBONUS3 = "Увеличивает количество участников сексуального взаимодействия до 5",
+	UPGRADEMASTERBEDROOMBONUS1 = "Увеличивает количество участников сексуальных взаимодействий до 3",
+	UPGRADEMASTERBEDROOMBONUS2 = "Увеличивает количество участников сексуальных взаимодействий до 4",
+	UPGRADEMASTERBEDROOMBONUS3 = "Увеличивает количество участников сексуальных взаимодействий до 5",
 
 	UPGRADESTABLES = "Конюшни",
 	UPGRADESTABLESDESCRIPT = "Ускоряет передвижение",
@@ -2137,12 +2137,12 @@ var TranslationDict = {
 	NOSEXDETAILSDESCRIPT = "{color=green|К сожалению, вы не можете проверить [him] приватные части.}",
 
 	UPGRADEEXOTIC_TRADER = "Экзотический торговец",
-	UPGRADEEXOTIC_TRADERDESCRIPT = "Улучшает рабов, предлагаемых Экзотическим работорговцем.",
+	UPGRADEEXOTIC_TRADERDESCRIPT = "Улучшает рабов, предлагаемых Экзотическим работорговцем Авермиком.",
 	UPGRADEEXOTICBONUS = "Рабы от Экзотического работорговца будут иметь более высокие базовые статы и больше классов.",
 	UPGRADESEX_TIMES = "Выносливость в спальне",
 	UPGRADESEX_TIMESDESCRIPT = "Увеличивает количество раз в день, когда вы можете заниматься сексом",
-	UPGRADESEX_TIMEBONUS1 = "Увеличить количество ежедневных сексуальных взаимодействий до 2",
-	UPGRADESEX_TIMEBONUS2 = "Увеличить количество ежедневных сексуальных взаимодействий до 3",
+	UPGRADESEX_TIMEBONUS1 = "Увеличивает количество ежедневных сексуальных взаимодействий до 2",
+	UPGRADESEX_TIMEBONUS2 = "Увеличивает количество ежедневных сексуальных взаимодействий до 3",
 	UPGRADERESTING = "Баня",
 	UPGRADERESTINGDESCRIPT = "Персонажи, отдыхающие в особняке, будут истощать свое Повиновение с половинной скоростью",
 	UPGRADEESTINGBONUS1 = "",
@@ -2159,7 +2159,7 @@ var TranslationDict = {
 	BODYPARTBODY_SHAPEHUMANOID = "гуманоид",
 	BODYPARTBODY_SHAPEBESTIAL = "звероподобный",
 	BODYPARTBODY_SHAPESHORTSTACK = "малорослик",
-	BODYPARTBODY_SHAPEJELLY = "желе",
+	BODYPARTBODY_SHAPEJELLY = "желейный",
 	BODYPARTBODY_SHAPEHALFBIRD = "полуптица",
 	BODYPARTBODY_SHAPEHALFSNAKE = "полузмея",
 	BODYPARTBODY_SHAPEHALFFISH = "полурыба",
@@ -2182,7 +2182,7 @@ var TranslationDict = {
 	BODYPARTEYE_SHAPENORMAL = "нормальный",
 	BODYPARTEYE_SHAPESLIT = "щель",
 	BODYPARTHORNSSHORT = "короткий",
-	BODYPARTHORNSSTRAIGHT = "прямо",
+	BODYPARTHORNSSTRAIGHT = "прямой",
 	BODYPARTHORNSCURVED = "изогнутый",
 	BODYPARTEARSHUMAN = "человек",
 	BODYPARTEARSELVEN = "эльфийский",
@@ -2190,7 +2190,7 @@ var TranslationDict = {
 	BODYPARTEARSCAT = "кошка",
 	BODYPARTEARSWOLF = "волк",
 	BODYPARTEARSFOX = "лиса",
-	BODYPARTEARSBUNNY_STANDING = "заячьи стоящие ",
+	BODYPARTEARSBUNNY_STANDING = "заячьи стоячие ",
 	BODYPARTEARSBUNNY_DROOPING = "зайчьи поникшие ",
 	BODYPARTEARSTANUKI = "тануки",
 	BODYPARTEARSDEMON = "демон",
@@ -2221,7 +2221,7 @@ var TranslationDict = {
 	BODYPARTSKIN_COVERAGEFUR_STRIPED = "полосатый мех",
 	BODYPARTSKIN_COVERAGEFUR_BLACK = "черный мех",
 	BODYPARTSKIN_COVERAGEFUR_ORANGE = "оранжевый мех",
-	BODYPARTSKIN_COVERAGEFUR_ORANGE_WHITE = "мех лисы",
+	BODYPARTSKIN_COVERAGEFUR_ORANGE_WHITE = "лисий мех",
 	BODYPARTWINGSFEATHERED_BLACK = "черное оперение",
 	BODYPARTWINGSSERAPH = "серафим",
 	BODYPARTWINGSFEATHERED_BROWN = "коричневое оперение",
@@ -2391,7 +2391,7 @@ var TranslationDict = {
 	BODYPARTWINGSLEATHER_BLACKDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]черных кожаных крыльев[/color].",
 	BODYPARTWINGSLEATHER_REDDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]красных кожаных крыльев[/color].",
 
-	BODYPARTTAILCATDESCRIPT = "Ниже [his] талии вы заметите тонкий [color=aqua]кошачий хвост[/color], покрытый мехом.",
+	BODYPARTTAILCATDESCRIPT = "Ниже [his] талии вы замечаете тонкий [color=aqua]кошачий хвост[/color], покрытый мехом.",
 	BODYPARTTAILFOXDESCRIPT = '[He] большой, пушистый [color=aqua]лисий хвост[/color].',
 	BODYPARTTAILWOLFDESCRIPT = "Ниже [his] талии есть короткий, пушистый [color=aqua]волчий хвост[/color]",
 	BODYPARTTAILBUNNYDESCRIPT = '[He] имеет [color=aqua]маленький пушистый шарик[/color] за [his] спиной.',
@@ -2420,13 +2420,6 @@ var TranslationDict = {
 	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]огромные[/color] сиськи умопомрачительно большие для [his] размера.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] грудь имеет определенно [color=yellow]мужественную[/color] форму.",
 
-	BODYPARTASS_SIZEFLATDESCRIPT = "[His] зад тощий и [color=yellow]плоский[/color].",
-	BODYPARTASS_SIZESMALLDESCRIPT = "[He] имеет небольшой [color=yellow]маленький[/color], упругий зад.",
-	BODYPARTASS_SIZEAVERAGEDESCRIPT = "[He] имеет красивую, [color=yellow]упругую[/color] попку , от которой можно отскочить монеткой.",
-	BODYPARTASS_SIZEBIGDESCRIPT = "[He] имеет приятную [color=yellow]пухлую[/color], сердцевидную попку, которая соблазнительно покачивается при каждом шаге.",
-	BODYPARTASS_SIZEHUGEDESCRIPT = "[He] имеет [color=yellow]огромный[/color], привлекающий внимание зад.",
-	BODYPARTASS_SIZEMASCULINEDESCRIPT = "[His] задница определенно имеет [color=yellow]мужественную[/color] форму.",
-
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] задница тощая и [color=yellow]плоская[/color].",
 	BODYPARTASS_SIZESMALLDESCRIPT = "[He] имеет небольшую [color=yellow]маленькую[/color], упругая попку.",
 	BODYPARTASS_SIZEAVERAGEDESCRIPT = "[He] имеет красивую, [color=yellow]упругую[/color] попку, от которой может отскочить монета.",
@@ -2434,12 +2427,12 @@ var TranslationDict = {
 	BODYPARTASS_SIZEHUGEDESCRIPT = "[He] обладает [color=yellow]огромным[/color], привлекающим внимание задом.",
 	BODYPARTASS_SIZEMASCULINEDESCRIPT = "[His] задница определенно имеет [color=yellow]мужественную[/color] форму.",
 
-	BODYPARTBALLS_SIZESMALLDESCRIPT = "[He] has a pair of [color=yellow]tiny[/color] balls.",
-	BODYPARTBALLS_SIZEAVERAGEDESCRIPT = "[He] has an [color=yellow]average-sized[/color] ballsack.",
-	BODYPARTBALLS_SIZEBIGDESCRIPT = "[He] has a [color=yellow]huge[/color] pair of balls weighing down [his] scrotum.",
+	BODYPARTBALLS_SIZESMALLDESCRIPT = "[He] имеет пару [color=yellow]маленьких[/color] шаров.",
+	BODYPARTBALLS_SIZEAVERAGEDESCRIPT = "[He] имеет [color=yellow]средних размеров[/color] мошонку.",
+	BODYPARTBALLS_SIZEBIGDESCRIPT = "[He] имеет [color=yellow]огромные[/color] яйца, отягощающие [his] мошонку.",
 
-	BODYPARTVAGINAL_VIRGINTRUE_TRUEDESCRIPT = '[He] имеет тугую, [color=yellow]девственную киску[/color].',
-	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] имеет [color=yellow]нормальная киска[/color] ниже [his] талии.",
+	BODYPARTVAGINAL_VIRGINTRUE_TRUEDESCRIPT = '[He] имеет тугую, [color=yellow]девственную вагину[/color].',
+	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] имеет [color=yellow]нормальную вагину[/color] ниже [his] талии.",
 	BODYPARTHAS_PUSSYFALSEDESCRIPT = " ",
 
 	BODYPARTPREGLINELATE = "[His] {color=yellow|неродившийся} ребенок заставляет [his] живот сильно выпирать; [he] скоро родит",
@@ -2489,7 +2482,7 @@ var TranslationDict = {
 	SEXTRAITDISLIKE_PETTING = "Не нравится петтинг",
 	SEXTRAITDISLIKE_FINGERING = "Не нравится фингеринг",
 	SEXTRAITDISLIKE_TITS = "Не нравится грудь",
-	SEXTRAITDISLIKE_ORAL = "Не нравится орал",
+	SEXTRAITDISLIKE_ORAL = "Не нравится оральный секс",
 	SEXTRAITDISLIKE_MISSIONARY = "Не нравятся миссионерские позы",
 	SEXTRAITDISLIKE_DOGGY = "Не нравятся позы по-собачьи",
 	SEXTRAITDISLIKE_SITTING = "Не нравятся позы сидя",
@@ -2730,8 +2723,8 @@ var TranslationDict = {
 	LOCAL_SHOP = "Магазин",
 	LOCAL_EVENTS_SEARCH = "Поиск",
 
-	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в особняк",
-	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в особняк?",
+	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в поместье",
+	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в поместье?",
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Лагерь разбойников",
@@ -2899,7 +2892,7 @@ var TranslationDict = {
 	ITEMMAJORUS_POTION = "Зелье Маджоруса",
 	ITEMMAJORUS_POTIONDESCRIPT = "Специальное зелье, которое можно использовать для увеличения размера определенной части тела человека. Можно использовать для груди, зада, пениса и яиц",
 	ITEMEXP_SCROLL = "Свиток знаний",
-	ITEMEXP_SCROLLDESCRIPT = "Дает пользователю 100 очков опыта.",
+	ITEMEXP_SCROLLDESCRIPT = "Дает использующему 100 очков опыта.",
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Выберите, какая часть тела [name] должна быть уменьшена.",
@@ -2930,7 +2923,7 @@ var TranslationDict = {
 	DIALOGUEBALLSSELECT = "Яйца",
 	DIALOGUEPENISSELECT = "Пенис",
 
-	WORKRULERATION = "Дополнительные пайки",
+	WORKRULERATION = "Дополнительный рацион",
 	WORKRULERATIONDESCRIPT = "Увеличивает потребление пищи на 3. Повышает производительность на 15%.",
 	WORKRULESHIFTS = "Более длинные смены",
 	WORKRULESHIFTSDESCRIPT = "Персонаж работает на пределе своих возможностей ценой будущих улучшений. \nПовышает производительность на 25%. Персонаж не получает опыт или рабочие характеристики (физические и т.д.) во время работы. ",

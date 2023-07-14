@@ -81,6 +81,8 @@ var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'b
 var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
 var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptile_blood', 'spider_silk', 'draconic_scales', 'light_essence', 'dark_essence']
+
+var skin_coverage_false = ['scale','fur_white','fur_grey','fur_brown','fur_stripped','fur_black','fur_orange','fur_orange_white'] #list of skincoverage blocking skin desription
 var booster_tiers = {
 	1:['milk', 'pheromones', 'seed'],
 	2:['eggs', 'magic_dust', 'reptile_blood', 'spider_silk'],

@@ -202,13 +202,14 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/growth_factor"]
 light_mask = 0
-margin_left = 69.2385
+margin_left = 69.0
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 35 )
-text = "Excellent"
+text = "25"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -230,10 +231,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="magic_factor" type="TextureRect" parent="factors"]
 light_mask = 0
@@ -252,10 +254,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="wits_factor" type="TextureRect" parent="factors"]
 light_mask = 0
@@ -274,10 +277,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="charm_factor" type="TextureRect" parent="factors"]
 light_mask = 0
@@ -296,10 +300,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="sexuals_factor" type="TextureRect" parent="factors"]
 light_mask = 0
@@ -318,10 +323,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="tame_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
@@ -340,10 +346,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 
 [node name="timid_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
@@ -362,10 +369,11 @@ stretch_mode = 6
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0
-margin_right = 229.239
+margin_right = 180.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 35 )
 text = "25"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
