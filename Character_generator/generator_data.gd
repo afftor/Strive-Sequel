@@ -60,9 +60,13 @@ var texture_sets = {
 	],
 	default_female = [
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/00_body_nude/HandR1.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/00_body_nude/HandR2.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_tex', texture = "res://Character_generator/images/00_body_nude/HandR3.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_tex', texture = "res://Character_generator/images/00_body_nude/ArmR1.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_tex', texture = "res://Character_generator/images/00_body_nude/ShoulderR.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_tex', texture = "res://Character_generator/images/00_body_nude/HandL1.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/00_body_nude/HandL2.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_tex', texture = "res://Character_generator/images/00_body_nude/HandL3.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_tex', texture = "res://Character_generator/images/00_body_nude/ArmL1.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_tex', texture = "res://Character_generator/images/00_body_nude/ShoulderL.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_tex2', texture = "res://Character_generator/images/00_body_nude/torso.png"},
@@ -79,7 +83,7 @@ var texture_sets = {
 		
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Belly_default_tex', texture = "res://Character_generator/images/00_body_nude/default_belly.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', texture = "res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png"},
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', texture = "res://Character_generator/images/00_body_nude/pregnancy_belly_big.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/Belly_pregnancy_tex2', texture = "res://Character_generator/images/00_body_nude/pregnancy_belly_big.png"},
 		
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_mesh', texture = "res://Character_generator/images/00_body_nude/tits_big.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Nipples_mesh', texture = "res://Character_generator/images/00_body_nude/tits_nipples_big.png"},
@@ -92,9 +96,13 @@ var texture_sets = {
 	],
 	beastkin_female = [
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandR1.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandR2.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandR3.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_ArmR1.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_ShoulderR.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandL1.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandL2.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_HandL3.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_ArmL1.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_ShoulderL.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_torso1.png"},
@@ -107,7 +115,7 @@ var texture_sets = {
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Belly_default_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_belly1.png"},
 		
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_belly_mid1.png"},
-		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_belly_big1.png"},
+		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/Belly_pregnancy_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_belly_big1.png"},
 		
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_big.png"},
 		{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Nipples_mesh', texture = "res://Character_generator/images/15_beastkin_body_nude/beastkin_tits_nipples_big.png"},
@@ -125,9 +133,13 @@ var transforms = {
 	cloth = {
 		true:[
 			{type = 'node_group_attr', group = 'cloth', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'z_index', value = 6},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'z_index', value = 6},
 		],
 		false:[
 			{type = 'node_group_attr', group = 'cloth', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'z_index', value = 0},
 		]
 	},
 	
@@ -876,21 +888,16 @@ var transforms = {
 	
 	pregnancy_status = {
 		no = [
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = false}
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'visible', value = false}
 		],
 		early = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', attr = 'visible', value = false},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'visible', value = false},
 		],
 		heavy = [
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex', attr = 'visible', value = false},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/Belly_pregnancy_tex2', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', attr = 'visible', value = false},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'visible', value = true},
 		],
 	},
 	
@@ -3853,9 +3860,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -3866,7 +3877,10 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', attr = 'visible', value = false},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = null},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = null},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		underwear = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -3882,9 +3896,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -3895,7 +3913,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/104_armory_set_slave_female/tits_slave_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/104_armory_set_slave_female/pregnancy_slave_mid.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/104_armory_set_slave_female/Pregnancy_slave_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/104_armory_set_slave_female/Pregnancy_slave_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		lacy_1 = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -3911,9 +3932,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/105_armory_set_gipure1_female/torso_armor_gipure1.png"},
@@ -3924,7 +3949,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/105_armory_set_gipure1_female/tits_gipure1_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/105_armory_set_gipure1_female/Pregnancy_gipure1_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/105_armory_set_gipure1_female/Pregnancy_gipure1_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/105_armory_set_gipure1_female/Pregnancy_gipure1_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		lacy_2 = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -3940,9 +3968,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tirso_armor_gipure2.png"},
@@ -3953,7 +3985,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/tits_gipure2_o.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/106_armory_set_gipure2_female/Pregnancy_gipure2_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/Pregnancy_gipure2_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/106_armory_set_gipure2_female/Pregnancy_gipure2_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		servant = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.0},
@@ -3969,9 +4004,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand1_armorR1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand2_armorR2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand_armorR3.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Arm_armorR1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Shoulder_armorR1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand1_armorL1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand2_armorL2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Hand_armorL3.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Arm_armorL1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Shoulder_armorL1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/99_armory_set_maidu/bluza.png"},
@@ -3982,7 +4021,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = "res://Character_generator/images/99_armory_set_maidu/hair_armor_maid.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 0},
 		],
 		chest_base_cloth = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -3998,9 +4040,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null },
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorR_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorL_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/torso_armor_cloth.png"},
@@ -4011,7 +4057,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null },
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		chest_adv_cloth = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -4027,9 +4076,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null },
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorR_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/Shoulder_armorL_cloth.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/torso_armor_cloth.png"},
@@ -4039,7 +4092,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/101_armory_set_cloth_female/tits_cloth_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/101_armory_set_cloth_female/Pregnancy_cloth_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		chest_base_leather = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -4055,9 +4111,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorR_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorL_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/torso_armor_leather.png"},
@@ -4068,7 +4128,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_leather.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_leather.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		chest_adv_leather = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -4084,9 +4147,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorR_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/Arm_armorL_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/torso_armor_leather.png"},
@@ -4097,7 +4164,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/102_armory_set_leather_female/tits_leather_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_leather.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/102_armory_set_leather_female/Pregnancy_skin_leather.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		chest_base_metal = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -4113,9 +4183,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorR_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorL_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/torso_armor_plate.png"},
@@ -4126,7 +4200,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 		chest_adv_metal = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
@@ -4142,9 +4219,13 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/raincoat_cloth2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3/HandR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorR_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3/HandL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/Arm_armorL_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/torso_armor_plate.png"},
@@ -4155,7 +4236,10 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/103_armory_set_plate_female/tits_plate_0.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_small.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex2', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_big.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/103_armory_set_plate_female/Pregnancy_plate_big.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
 	},
 	
@@ -4168,6 +4252,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = null},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4179,6 +4266,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/104_armory_set_slave_female/taz_armor_slave.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		lacy_1 = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4190,6 +4280,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/105_armory_set_gipure1_female/LegL_armor_gipure1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/105_armory_set_gipure1_female/LegR_armor_gipure1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/105_armory_set_gipure1_female/taz_armor_gipure1.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		lacy_2 = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4201,6 +4294,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/106_armory_set_gipure2_female/taz_armor_gipure2.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		servant = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4212,6 +4308,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/LegL_armor1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/99_armory_set_maidu/LegR_armor1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/99_armory_set_maidu/yubka.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
 		],
 		legs_base_cloth = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4223,6 +4322,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/taz_armor_cloth.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_cloth = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4234,6 +4336,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/101_armory_set_cloth_female/taz_armor_cloth.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		legs_base_leather = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4245,6 +4350,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/LegL_armor_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/LegR_armor_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/taz_armor_leather.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_leather = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4256,6 +4364,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/LegL_armor_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/LegR_armor_leather.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/102_armory_set_leather_female/taz_armor_leather.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		legs_base_metal = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4267,6 +4378,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/LegL_armor_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/LegR_armor_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/taz_armor_plate.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_metal = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4278,6 +4392,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/LegL_armor_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/LegR_armor_plate.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/103_armory_set_plate_female/taz_armor_plate.png"},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 	},
 	
@@ -4321,9 +4438,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 0},
@@ -4339,15 +4460,25 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(94.4, 82.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -45.6)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(54.9, 2)},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
 		],
 		shy = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 94.6},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 3.2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = -8.8},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = -8.8},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -2.4},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 4.3},
@@ -4363,15 +4494,25 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(94.4, 80.7)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -44.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(54.9, 2.1)},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
 		],
 		bold = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = -44.9},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 107.2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = -7.3},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = -7.3},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'rotation_degrees', value = -7.3},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = 50.3},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = -105.4},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 8.4},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -7.5},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = -23.9},
@@ -4387,6 +4528,42 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(93.4, 77.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(88.3, -45.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(61.2, 9.9)},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL3'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},
+		],
+		pose4 = [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0.8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 17.1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = -8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = -3.4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = -96},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 2.5},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -6},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 5.1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = -8.4},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-105, -101)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(215, -8)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(140, -34.3)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-95, 106)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(201, -7.4)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(140.1, 18.7)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206.4, -2.1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(92.6, 77.8)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.6, -44.6)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(61.2, 9.9)},
+			
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = 14},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = 4},
+			
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL2'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},
 		],
 	},
 }
