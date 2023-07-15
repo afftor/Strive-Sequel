@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=2]
+[gd_scene load_steps=256 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -59,6 +59,7 @@
 [ext_resource path="res://Character_generator/images/13_dicks/Dick_furry_up.png" type="Texture" id=57]
 [ext_resource path="res://Character_generator/images/06_tails/Kobold_tail.png" type="Texture" id=58]
 [ext_resource path="res://Character_generator/images/06_hairs_back/hair_back_straight.png" type="Texture" id=59]
+[ext_resource path="res://Character_generator/images/98_masks/mask_tale1.png" type="Texture" id=60]
 [ext_resource path="res://Character_generator/images/98_masks/mask_hair2.png" type="Texture" id=61]
 [ext_resource path="res://Character_generator/images/02_faces/face1.png" type="Texture" id=62]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_body.png" type="Texture" id=63]
@@ -2495,6 +2496,7 @@ shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
+shader_param/part1 = ExtResource( 60 )
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 27 )
@@ -5102,6 +5104,7 @@ shader_param/part3 = ExtResource( 19 )
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
+test_mode = true
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
