@@ -5219,7 +5219,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 86 )
 position = Vector2( -94.2105, 190.287 )
@@ -5234,7 +5234,7 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 98 )
 
-[node name="ArmR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
+[node name="ArmR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 85 )
 position = Vector2( 86.509, 155.97 )
@@ -5249,14 +5249,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 69 )
 
-[node name="ShoulderR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
+[node name="ShoulderR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 83 )
 position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
 texture = ExtResource( 73 )
 
-[node name="ShoulderR_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["nonhuman", "skin_main", "slime"]]
+[node name="ShoulderR_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["fur_nonmask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 153 )
@@ -5304,7 +5304,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 91 )
 position = Vector2( -108.852, -164.122 )
@@ -5319,7 +5319,7 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 67 )
 
-[node name="ArmL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
+[node name="ArmL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 90 )
 position = Vector2( 82.2014, -137.772 )
@@ -5334,14 +5334,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 91 )
 
-[node name="ShoulderL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
+[node name="ShoulderL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 88 )
 position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
 texture = ExtResource( 70 )
 
-[node name="ShoulderL_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["nonhuman", "skin_main", "slime"]]
+[node name="ShoulderL_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["fur_nonmask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 156 )
@@ -5365,14 +5365,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 87 )
 
-[node name="Torso_tex2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["skin_main"]]
+[node name="Torso_tex2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 92 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 81 )
 
-[node name="Torso_races" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["nonhuman", "skin_main", "slime"]]
+[node name="Torso_races" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 158 )
@@ -5388,7 +5388,7 @@ position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
-[node name="Torso_nipple_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["skin_main"]]
+[node name="Torso_nipple_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 94 )
 position = Vector2( 221, -0.000854492 )
@@ -5423,14 +5423,14 @@ position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
+[node name="LegL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 96 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 84 )
 
-[node name="LegL_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["nonhuman", "skin_main", "slime"]]
+[node name="LegL_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 161 )
@@ -5468,14 +5468,14 @@ position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
+[node name="LegR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 99 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 83 )
 
-[node name="LegR_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["nonhuman", "skin_main", "slime"]]
+[node name="LegR_races_over" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 164 )
@@ -5499,14 +5499,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 82 )
 
-[node name="Taz_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
+[node name="Taz_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 101 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 86 )
 
-[node name="Taz_races" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["nonhuman", "skin_main", "slime"]]
+[node name="Taz_races" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 166 )
@@ -5529,14 +5529,14 @@ scale = Vector2( 1, 0.952381 )
 rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
-[node name="Testicles_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+[node name="Testicles_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/Dick" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 103 )
 position = Vector2( -70.026, -12.1006 )
 rotation = -1.5708
 texture = ExtResource( 97 )
 
-[node name="Penis_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+[node name="Penis_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/Dick" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 104 )
 position = Vector2( -70.7006, -13.7388 )
@@ -5557,7 +5557,7 @@ position = Vector2( -53, 10.0002 )
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/male_pose/HumanF1/Spine/Tits" groups=["skin_main"]]
+[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/male_pose/HumanF1/Spine/Tits" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 8 )
 position = Vector2( -481.243, 429.38 )
@@ -5601,14 +5601,14 @@ scale = Vector2( 0.98, 0.98 )
 rest = Transform2D( 0.98, 0, 0, 0.98, -361.002, 9 )
 default_length = 100.0
 
-[node name="Head_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+[node name="Head_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 105 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+[node name="Chin_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 106 )
 position = Vector2( 590, -9.00214 )
@@ -5636,14 +5636,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Face_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["human", "skin_main"]]
+[node name="Face_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 107 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
 texture = ExtResource( 85 )
 
-[node name="Face_tex_furry" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["nonhuman", "skin_main"]]
+[node name="Face_tex_furry" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "nonhuman", "skin_main"]]
 visible = false
 light_mask = 4
 material = SubResource( 108 )
@@ -5658,7 +5658,7 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 80 )
 
-[node name="Nose_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
+[node name="Nose_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 110 )
 position = Vector2( 494.474, -6.8439 )
@@ -5672,7 +5672,7 @@ position = Vector2( 499.474, -7.78754 )
 rotation = -1.5708
 texture = ExtResource( 64 )
 
-[node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "human", "skin_main"]]
+[node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
 light_mask = 4
 material = SubResource( 111 )
@@ -5749,7 +5749,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Ears_humanoid_tex_long" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "human", "skin_main"]]
+[node name="Ears_humanoid_tex_long" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
 light_mask = 4
 material = SubResource( 113 )
@@ -5871,7 +5871,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["skin_main"]]
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 114 )
 position = Vector2( -36.9996, 145.789 )
@@ -5892,7 +5892,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["skin_main"]]
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 114 )
 position = Vector2( -36.9996, 145.789 )
@@ -5913,7 +5913,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
-[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3" groups=["skin_main"]]
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 114 )
 position = Vector2( -36.9996, 145.789 )
@@ -5928,7 +5928,7 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 33 )
 
-[node name="ArmR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["skin_main"]]
+[node name="ArmR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 115 )
 position = Vector2( 105.579, 111.473 )
@@ -5943,14 +5943,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 35 )
 
-[node name="ShoulderR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["skin_main"]]
+[node name="ShoulderR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 116 )
 position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 20 )
 
-[node name="ShoulderR_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["nonhuman", "skin_main", "slime"]]
+[node name="ShoulderR_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["fur_nonmask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 169 )
@@ -5998,7 +5998,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["skin_main"]]
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 119 )
 position = Vector2( -42.1053, -120.684 )
@@ -6019,7 +6019,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["skin_main"]]
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 119 )
 position = Vector2( -42.1053, -120.684 )
@@ -6040,7 +6040,7 @@ z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
-[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3" groups=["skin_main"]]
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 119 )
 position = Vector2( -42.1053, -120.684 )
@@ -6055,7 +6055,7 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 14 )
 
-[node name="ArmL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["skin_main"]]
+[node name="ArmL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 120 )
 position = Vector2( 91.7367, -99.6318 )
@@ -6070,14 +6070,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 18 )
 
-[node name="ShoulderL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["skin_main"]]
+[node name="ShoulderL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["fur_nonmask", "skin_main"]]
 light_mask = 4
 material = SubResource( 121 )
 position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 12 )
 
-[node name="ShoulderL_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["nonhuman", "skin_main", "slime"]]
+[node name="ShoulderL_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["fur_nonmask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 172 )
@@ -6101,14 +6101,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 25 )
 
-[node name="Torso_tex2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["skin_main"]]
+[node name="Torso_tex2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 123 )
 position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 texture = ExtResource( 8 )
 
-[node name="Torso_races" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["nonhuman", "skin_main", "slime"]]
+[node name="Torso_races" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 174 )
@@ -6124,7 +6124,7 @@ position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
-[node name="Belly_default_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["skin_main"]]
+[node name="Belly_default_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 20 )
 position = Vector2( 219, -1.00079 )
@@ -6150,14 +6150,14 @@ position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegL" groups=["skin_main"]]
+[node name="LegL_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegL" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 126 )
 position = Vector2( -102.019, -82.549 )
 rotation = -1.5708
 texture = ExtResource( 9 )
 
-[node name="LegL_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegL" groups=["nonhuman", "skin_main", "slime"]]
+[node name="LegL_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegL" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 177 )
@@ -6195,14 +6195,14 @@ position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegR" groups=["skin_main"]]
+[node name="LegR_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegR" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 129 )
 position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 47 )
 
-[node name="LegR_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegR" groups=["nonhuman", "skin_main", "slime"]]
+[node name="LegR_races_over" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/LegR" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 180 )
@@ -6226,14 +6226,14 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 17 )
 
-[node name="Taz_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["skin_main"]]
+[node name="Taz_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 131 )
 position = Vector2( -2, 0 )
 rotation = -1.5708
 texture = ExtResource( 13 )
 
-[node name="Taz_races" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["nonhuman", "skin_main", "slime"]]
+[node name="Taz_races" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["fur_mask", "nonhuman", "skin_main", "slime"]]
 visible = false
 light_mask = 4
 material = SubResource( 182 )
@@ -6257,14 +6257,14 @@ scale = Vector2( 1, 0.952381 )
 rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
-[node name="Testicles_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+[node name="Testicles_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 17 )
 position = Vector2( -62.5528, -7.78117 )
 rotation = -1.5708
 texture = ExtResource( 97 )
 
-[node name="Penis_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick" groups=["skin_main"]]
+[node name="Penis_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 133 )
 position = Vector2( -70.7006, -13.7388 )
@@ -6279,7 +6279,7 @@ rotation = -1.5708
 z_index = 1
 texture = ExtResource( 101 )
 
-[node name="Torso_nipple_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["skin_main"]]
+[node name="Torso_nipple_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 134 )
 position = Vector2( 221, -0.000854492 )
@@ -6299,7 +6299,7 @@ position = Vector2( 140, 11.9995 )
 z_index = 6
 rest = Transform2D( 1, 0, 0, 1, 135, 12.9995 )
 
-[node name="Belly_pregnancy_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Pregnancy" groups=["skin_main"]]
+[node name="Belly_pregnancy_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Pregnancy" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 135 )
 position = Vector2( 59.9999, -13.0002 )
@@ -6320,7 +6320,7 @@ position = Vector2( 138, 11.9995 )
 z_index = 6
 rest = Transform2D( 1, 0, 0, 1, 135, 12.9995 )
 
-[node name="Belly_pregnancy_tex2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Pregnancy2" groups=["skin_main"]]
+[node name="Belly_pregnancy_tex2" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Pregnancy2" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 136 )
 position = Vector2( 59.9999, -13.0002 )
@@ -6342,7 +6342,7 @@ z_index = 4
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_huge" groups=["skin_main", "tits_huge"]]
+[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_huge" groups=["fur_mask", "skin_main", "tits_huge"]]
 light_mask = 4
 material = SubResource( 137 )
 position = Vector2( -481.243, 429.38 )
@@ -6354,7 +6354,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_huge" groups=["skin_main", "tits_huge"]]
+[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_huge" groups=["fur_mask", "skin_main", "tits_huge"]]
 light_mask = 4
 material = SubResource( 22 )
 position = Vector2( -482.143, 427.535 )
@@ -6386,7 +6386,7 @@ z_index = 4
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_big" groups=["skin_main", "tits_big"]]
+[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_big" groups=["fur_mask", "skin_main", "tits_big"]]
 light_mask = 4
 material = SubResource( 138 )
 position = Vector2( -481.243, 429.38 )
@@ -6398,7 +6398,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_big" groups=["skin_main", "tits_big"]]
+[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_big" groups=["fur_mask", "skin_main", "tits_big"]]
 light_mask = 4
 material = SubResource( 139 )
 position = Vector2( -482.143, 427.535 )
@@ -6430,7 +6430,7 @@ z_index = 4
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_normal" groups=["skin_main", "tits_normal"]]
+[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_normal" groups=["fur_mask", "skin_main", "tits_normal"]]
 light_mask = 4
 material = SubResource( 140 )
 position = Vector2( -481.243, 429.38 )
@@ -6442,7 +6442,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_normal" groups=["skin_main", "tits_normal"]]
+[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_normal" groups=["fur_mask", "skin_main", "tits_normal"]]
 light_mask = 4
 material = SubResource( 141 )
 position = Vector2( -482.143, 427.535 )
@@ -6474,7 +6474,7 @@ z_index = 4
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
-[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_small" groups=["skin_main"]]
+[node name="Tits_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_small" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 142 )
 position = Vector2( -481.243, 429.38 )
@@ -6486,7 +6486,7 @@ uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 polygons = [ [ 3, 2, 4 ], [ 6, 5, 7 ], [ 11, 10, 12 ], [ 23, 22, 24 ], [ 24, 22, 25 ], [ 22, 21, 27 ], [ 25, 22, 27 ], [ 26, 25, 27 ], [ 27, 21, 29 ], [ 28, 27, 29 ], [ 21, 20, 30 ], [ 29, 21, 30 ], [ 30, 20, 31 ], [ 31, 20, 32 ], [ 46, 45, 47 ], [ 56, 55, 58 ], [ 57, 56, 58 ], [ 59, 58, 61 ], [ 60, 59, 61 ], [ 65, 66, 67 ], [ 65, 67, 68 ], [ 65, 68, 70 ], [ 68, 69, 70 ], [ 65, 70, 71 ], [ 65, 71, 72 ], [ 41, 42, 73 ], [ 72, 41, 73 ], [ 65, 72, 73 ], [ 42, 43, 74 ], [ 73, 42, 74 ], [ 43, 44, 74 ], [ 65, 73, 74 ], [ 74, 44, 75 ], [ 65, 74, 75 ], [ 66, 65, 76 ], [ 65, 75, 76 ], [ 7, 8, 78 ], [ 64, 77, 78 ], [ 8, 9, 79 ], [ 78, 8, 79 ], [ 64, 78, 79 ], [ 9, 10, 80 ], [ 79, 9, 80 ], [ 64, 79, 80 ], [ 64, 80, 81 ], [ 64, 81, 82 ], [ 64, 82, 83 ], [ 64, 83, 84 ], [ 64, 84, 85 ], [ 64, 85, 86 ], [ 77, 64, 87 ], [ 64, 86, 87 ], [ 5, 6, 88 ], [ 6, 7, 88 ], [ 7, 78, 88 ], [ 78, 77, 88 ], [ 4, 5, 89 ], [ 5, 88, 89 ], [ 88, 77, 89 ], [ 77, 87, 90 ], [ 89, 77, 90 ], [ 87, 86, 91 ], [ 90, 87, 91 ], [ 91, 86, 92 ], [ 86, 85, 93 ], [ 92, 86, 93 ], [ 93, 85, 94 ], [ 85, 84, 95 ], [ 94, 85, 95 ], [ 95, 84, 96 ], [ 84, 83, 97 ], [ 96, 84, 97 ], [ 83, 82, 98 ], [ 97, 83, 98 ], [ 98, 82, 99 ], [ 12, 13, 100 ], [ 82, 81, 100 ], [ 99, 82, 100 ], [ 10, 11, 101 ], [ 80, 10, 101 ], [ 81, 80, 101 ], [ 11, 12, 101 ], [ 12, 100, 101 ], [ 100, 81, 101 ], [ 3, 4, 102 ], [ 4, 89, 102 ], [ 89, 90, 102 ], [ 2, 3, 103 ], [ 90, 91, 103 ], [ 102, 90, 103 ], [ 3, 102, 103 ], [ 103, 91, 104 ], [ 91, 92, 105 ], [ 104, 91, 105 ], [ 92, 93, 106 ], [ 105, 92, 106 ], [ 93, 94, 107 ], [ 106, 93, 107 ], [ 107, 94, 108 ], [ 94, 95, 109 ], [ 108, 94, 109 ], [ 95, 96, 110 ], [ 109, 95, 110 ], [ 110, 96, 111 ], [ 96, 97, 112 ], [ 111, 96, 112 ], [ 18, 19, 113 ], [ 19, 20, 113 ], [ 20, 112, 113 ], [ 97, 98, 113 ], [ 112, 97, 113 ], [ 16, 17, 114 ], [ 15, 16, 114 ], [ 98, 99, 114 ], [ 17, 18, 114 ], [ 18, 113, 114 ], [ 113, 98, 114 ], [ 14, 15, 115 ], [ 13, 14, 115 ], [ 100, 13, 115 ], [ 99, 100, 115 ], [ 15, 114, 115 ], [ 114, 99, 115 ], [ 60, 61, 116 ], [ 59, 60, 116 ], [ 23, 24, 125 ], [ 21, 22, 126 ], [ 22, 23, 126 ], [ 23, 125, 126 ], [ 20, 21, 127 ], [ 112, 20, 127 ], [ 55, 56, 128 ], [ 56, 57, 128 ], [ 119, 120, 132 ], [ 131, 119, 132 ], [ 120, 121, 133 ], [ 132, 120, 133 ], [ 133, 121, 134 ], [ 29, 30, 138 ], [ 28, 29, 138 ], [ 137, 28, 138 ], [ 30, 31, 139 ], [ 138, 30, 139 ], [ 44, 45, 140 ], [ 75, 44, 140 ], [ 45, 46, 140 ], [ 76, 75, 140 ], [ 76, 140, 141 ], [ 140, 46, 141 ], [ 66, 76, 142 ], [ 76, 141, 142 ], [ 66, 142, 143 ], [ 67, 66, 144 ], [ 66, 143, 144 ], [ 68, 67, 145 ], [ 67, 144, 145 ], [ 69, 68, 146 ], [ 68, 145, 146 ], [ 69, 146, 147 ], [ 70, 69, 148 ], [ 69, 147, 148 ], [ 71, 70, 149 ], [ 70, 148, 149 ], [ 71, 149, 150 ], [ 38, 39, 151 ], [ 72, 71, 151 ], [ 71, 150, 151 ], [ 37, 38, 151 ], [ 150, 37, 151 ], [ 40, 41, 152 ], [ 41, 72, 152 ], [ 39, 40, 152 ], [ 151, 39, 152 ], [ 72, 151, 152 ], [ 47, 48, 153 ], [ 46, 47, 153 ], [ 141, 46, 153 ], [ 142, 141, 153 ], [ 143, 142, 154 ], [ 142, 153, 154 ], [ 153, 48, 154 ], [ 143, 154, 155 ], [ 143, 155, 156 ], [ 144, 143, 157 ], [ 143, 156, 157 ], [ 144, 157, 158 ], [ 145, 144, 159 ], [ 144, 158, 159 ], [ 146, 145, 160 ], [ 145, 159, 160 ], [ 147, 146, 161 ], [ 146, 160, 161 ], [ 147, 161, 162 ], [ 148, 147, 163 ], [ 147, 162, 163 ], [ 149, 148, 164 ], [ 148, 163, 164 ], [ 34, 35, 165 ], [ 149, 164, 165 ], [ 36, 37, 166 ], [ 37, 150, 166 ], [ 35, 36, 166 ], [ 165, 35, 166 ], [ 150, 149, 166 ], [ 149, 165, 166 ], [ 48, 49, 167 ], [ 154, 48, 167 ], [ 49, 50, 167 ], [ 155, 154, 167 ], [ 50, 53, 168 ], [ 156, 155, 168 ], [ 155, 167, 168 ], [ 167, 50, 168 ], [ 52, 54, 169 ], [ 157, 156, 169 ], [ 53, 52, 169 ], [ 168, 53, 169 ], [ 156, 168, 169 ], [ 55, 128, 170 ], [ 54, 55, 170 ], [ 169, 54, 170 ], [ 157, 169, 170 ], [ 129, 130, 171 ], [ 128, 129, 171 ], [ 170, 128, 171 ], [ 158, 157, 171 ], [ 157, 170, 171 ], [ 159, 158, 172 ], [ 130, 131, 172 ], [ 171, 130, 172 ], [ 158, 171, 172 ], [ 132, 133, 173 ], [ 131, 132, 173 ], [ 172, 131, 173 ], [ 159, 172, 173 ], [ 133, 134, 174 ], [ 173, 133, 174 ], [ 160, 159, 174 ], [ 159, 173, 174 ], [ 135, 136, 175 ], [ 134, 135, 175 ], [ 174, 134, 175 ], [ 161, 160, 175 ], [ 160, 174, 175 ], [ 136, 137, 176 ], [ 175, 136, 176 ], [ 162, 161, 176 ], [ 161, 175, 176 ], [ 163, 162, 177 ], [ 137, 138, 177 ], [ 176, 137, 177 ], [ 162, 176, 177 ], [ 138, 139, 178 ], [ 177, 138, 178 ], [ 163, 177, 178 ], [ 31, 32, 179 ], [ 139, 31, 179 ], [ 178, 139, 179 ], [ 164, 163, 179 ], [ 163, 178, 179 ], [ 32, 33, 180 ], [ 33, 34, 180 ], [ 34, 165, 180 ], [ 165, 164, 180 ], [ 164, 179, 180 ], [ 179, 32, 180 ], [ 1, 2, 181 ], [ 2, 103, 181 ], [ 0, 1, 181 ], [ 103, 104, 181 ], [ 62, 63, 182 ], [ 63, 0, 182 ], [ 0, 181, 182 ], [ 181, 104, 182 ], [ 61, 62, 183 ], [ 62, 182, 183 ], [ 104, 105, 183 ], [ 182, 104, 183 ], [ 183, 105, 184 ], [ 116, 61, 184 ], [ 61, 183, 184 ], [ 105, 106, 185 ], [ 184, 105, 185 ], [ 117, 116, 185 ], [ 116, 184, 185 ], [ 118, 117, 185 ], [ 185, 106, 186 ], [ 119, 118, 186 ], [ 118, 185, 186 ], [ 106, 107, 187 ], [ 186, 106, 187 ], [ 120, 119, 187 ], [ 119, 186, 187 ], [ 107, 108, 188 ], [ 187, 107, 188 ], [ 121, 120, 188 ], [ 120, 187, 188 ], [ 108, 109, 189 ], [ 123, 122, 189 ], [ 188, 108, 189 ], [ 122, 121, 189 ], [ 121, 188, 189 ], [ 124, 123, 190 ], [ 123, 189, 190 ], [ 189, 109, 190 ], [ 125, 124, 191 ], [ 109, 110, 191 ], [ 190, 109, 191 ], [ 124, 190, 191 ], [ 126, 125, 192 ], [ 110, 111, 192 ], [ 191, 110, 192 ], [ 125, 191, 192 ], [ 111, 112, 193 ], [ 112, 127, 193 ], [ 21, 126, 193 ], [ 127, 21, 193 ], [ 126, 192, 193 ], [ 192, 111, 193 ], [ 58, 59, 194 ], [ 59, 116, 194 ], [ 116, 117, 194 ], [ 57, 58, 194 ], [ 128, 57, 194 ], [ 129, 128, 194 ], [ 117, 118, 195 ], [ 130, 129, 195 ], [ 129, 194, 195 ], [ 194, 117, 195 ], [ 118, 119, 196 ], [ 119, 131, 196 ], [ 131, 130, 196 ], [ 130, 195, 196 ], [ 195, 118, 196 ], [ 121, 122, 197 ], [ 134, 121, 197 ], [ 135, 134, 197 ], [ 136, 135, 198 ], [ 122, 123, 198 ], [ 197, 122, 198 ], [ 135, 197, 198 ], [ 198, 123, 199 ], [ 136, 198, 199 ], [ 25, 26, 201 ], [ 26, 27, 201 ], [ 137, 136, 202 ], [ 136, 199, 202 ], [ 199, 200, 202 ], [ 27, 28, 203 ], [ 28, 137, 203 ], [ 201, 27, 203 ], [ 200, 201, 203 ], [ 202, 200, 203 ], [ 137, 202, 203 ], [ 123, 124, 204 ], [ 199, 123, 204 ], [ 200, 199, 204 ], [ 201, 200, 204 ], [ 124, 125, 205 ], [ 125, 24, 205 ], [ 24, 25, 205 ], [ 204, 124, 205 ], [ 25, 201, 205 ], [ 201, 204, 205 ] ]
 internal_vertex_count = 142
 
-[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_small" groups=["skin_main"]]
+[node name="Nipples_mesh" type="Polygon2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Tits_small" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 143 )
 position = Vector2( -482.143, 427.535 )
@@ -6535,14 +6535,14 @@ position = Vector2( -361, 9.00003 )
 rest = Transform2D( 1, 0, 0, 1, -361, 9.00003 )
 default_length = 100.0
 
-[node name="Head_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+[node name="Head_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 144 )
 position = Vector2( 590, -9.00214 )
 rotation = -1.5708
 texture = ExtResource( 39 )
 
-[node name="Chin_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["skin_main"]]
+[node name="Chin_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 145 )
 position = Vector2( 590, -9.00214 )
@@ -6570,14 +6570,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Face_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["human", "skin_main"]]
+[node name="Face_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 146 )
 position = Vector2( 499.474, -5.84393 )
 rotation = -1.5708
 texture = ExtResource( 62 )
 
-[node name="Face_tex_furry" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["nonhuman", "skin_main"]]
+[node name="Face_tex_furry" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "nonhuman", "skin_main"]]
 visible = false
 light_mask = 4
 material = SubResource( 147 )
@@ -6592,7 +6592,7 @@ position = Vector2( 494.474, -6.8439 )
 rotation = -1.5708
 texture = ExtResource( 44 )
 
-[node name="Nose_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["skin_main"]]
+[node name="Nose_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head/Face" groups=["fur_mask", "skin_main"]]
 light_mask = 4
 material = SubResource( 15 )
 position = Vector2( 494.474, -6.8439 )
@@ -6606,7 +6606,7 @@ position = Vector2( 499.474, -7.8439 )
 rotation = -1.5708
 texture = ExtResource( 21 )
 
-[node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "human", "skin_main"]]
+[node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 149 )
 position = Vector2( 567, -10.002 )
@@ -6684,7 +6684,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Ears_humanoid_tex_long" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "human", "skin_main"]]
+[node name="Ears_humanoid_tex_long" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
 light_mask = 4
 material = SubResource( 151 )
