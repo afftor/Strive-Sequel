@@ -322,7 +322,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/harpia_body.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Animal_body', texture = "res://Character_generator/images/14_animals_body/harpia_body.png"},
 		],
-		#zero support for taurus race
+		Taurus = [
+			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
+			{type = 'node_group_attr', group = 'nonhuman', attr = 'visible', value = false},
+			{type = 'texture_set', set = 'default_male'},
+			{type = 'texture_set', set = 'default_female'},
+		],
 		#half support for harpies - mb no tail, no legs, no ears
 		Slime = [ #don't think that shoulder additional parts are positioned correctly
 			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
