@@ -691,6 +691,10 @@ var transforms = {
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_yellow.tres"},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_yellow.tres"},
 		],
+		grey = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_grey.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_grey.tres"},
+		],
 	},
 	
 	horns = {
