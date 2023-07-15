@@ -997,7 +997,7 @@ var transforms = {
 		fur_striped = [ 
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [1, 2]},
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [3]},
-			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
+#			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = null},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_cat 2.png"},
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_cat2 2 ext.png"},
 		],
@@ -1039,6 +1039,14 @@ var transforms = {
 		],
 		kobold = [
 			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_kobold.png"}
+		],
+		fur_tricolor = [ 
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_2.tres", ids = [1]},
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_2.tres", ids = [2]},
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [3]},
+			{type = 'import_mask_group_path', group = 'skin_main', ids = [1], material = "res://Character_generator/images/98_masks/mask_besatkin cat_tricolor_black.png"},
+			{type = 'import_mask_group_path', group = 'skin_main', ids = [2], material = "res://Character_generator/images/98_masks/mask_besatkin cat_tricolor_white.png"},
+			{type = 'import_mask_group_path', group = 'skin_main', ids = [3], material = "res://Character_generator/images/98_masks/mask_besatkin cat_tricolor_yellow.png"},
 		],
 	},
 	
