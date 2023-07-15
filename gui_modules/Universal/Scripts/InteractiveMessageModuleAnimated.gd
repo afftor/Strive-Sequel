@@ -780,7 +780,7 @@ func handle_characters_sprites(scene):
 	if scene.has("unique_character"):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
-			if person.get_stat("name").to_lower() == scene.unique_character.to_lower():
+			if person.get_stat("unique") == scene.unique_character:
 				$CharacterImage.show()
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades')
@@ -792,12 +792,12 @@ func handle_characters_sprites(scene):
 					$CharacterImage.texture = person.get_body_image()
 				$CharacterImage.material.set_shader_param('opacity', 0.0)
 				ch1_shade = false
-				ch1 = person.get_stat("name").to_lower()
+				ch1 = person.get_stat("unique").to_lower()
 				return
 	if scene.has("unique_character2"):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
-			if person.get_stat("name").to_lower() == scene.unique_character2.to_lower():
+			if person.get_stat("unique") == scene.unique_character2:
 				$CharacterImage2.show()
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades')
@@ -809,7 +809,7 @@ func handle_characters_sprites(scene):
 					$CharacterImage2.texture = person.get_body_image()
 				$CharacterImage2.material.set_shader_param('opacity', 0.0)
 				ch2_shade = false
-				ch2 = person.get_stat("name").to_lower()
+				ch2 = person.get_stat("unique")
 				return
 #	if !scene.has("character"):
 #		$ImagePanel.show()

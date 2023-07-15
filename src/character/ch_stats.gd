@@ -267,7 +267,7 @@ func predict_preg_time():
 func get_short_name():
 	var text = ''
 	if statlist.nickname == '':
-		text = statlist.name
+		text = tr(statlist.name)
 	else:
 		text = statlist.nickname
 	return text
@@ -1723,7 +1723,7 @@ func is_uncontrollable():
 func is_controllable():#not sure - either this or previous is wrong cause of obedience check, nvn, rework both!
 	return statlist.loyalty >= 100
 
-var sex_nouns = {male = tr("PRONOUNMALE"), female = tr("PRONOUNMALEF"), futa = tr("PRONOUNMALEH")}
+var sex_nouns = {male = tr("PRONOUNSEX"), female = tr("PRONOUNSEXF"), futa = tr("PRONOUNSEXH")}
 
 func translate(text):
 	var rtext = ''

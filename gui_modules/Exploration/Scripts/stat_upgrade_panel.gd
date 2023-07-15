@@ -167,7 +167,7 @@ func show_stat_info(stat):
 #		stat_next_level = int(person2.get_stat(stat))
 	$StatsPanel/StatInfoNameValue.text = stats_dict[stat]
 	if input_handler.globalsettings.factors_as_words:
-		$StatsPanel/StatInfoCurrentValue.text =  ResourceScripts.descriptions.factor_descripts[stat_cur_level] + "->" + ResourceScripts.descriptions.factor_descripts[stat_next_level]
+		$StatsPanel/StatInfoCurrentValue.text = ResourceScripts.descriptions.factor_descripts[stat_cur_level] + "->" + ResourceScripts.descriptions.factor_descripts[stat_next_level]
 	else:
 		$StatsPanel/StatInfoCurrentValue.text = str(stat_cur_level) + "->" + str(stat_next_level)
 

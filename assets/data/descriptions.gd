@@ -548,12 +548,12 @@ var bodypartsdata = {
 }
 
 var factor_descripts = {
-	1:'FACTORDESCRIPTS1',
-	2:"FACTORDESCRIPTS2",
-	3:"FACTORDESCRIPTS3",
-	4:"FACTORDESCRIPTS4",
-	5:"FACTORDESCRIPTS5",
-	6:"FACTORDESCRIPTS6"
+	1:tr('FACTORDESCRIPTS1'),
+	2:tr("FACTORDESCRIPTS2"),
+	3:tr("FACTORDESCRIPTS3"),
+	4:tr("FACTORDESCRIPTS4"),
+	5:tr("FACTORDESCRIPTS5"),
+	6:tr("FACTORDESCRIPTS6")
 }
 
 func get_class_name(prof, newperson):

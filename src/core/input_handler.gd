@@ -739,13 +739,14 @@ func operate(operation, value1, value2):
 			result = (int(value1) & int(value2)) != 0
 	return result
 
+
 func operant_translation(operant):
 	var text = ''
 	match operant:
 		'gte':
-			text = 'At least'
+			text = tr("OPERANTATLEAST")
 		'lte':
-			text = 'At most'
+			text = tr("OPERANTATMOST")
 	return text
 
 func math(operation, value1, value2):

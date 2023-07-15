@@ -27,9 +27,6 @@ margin_bottom = 1080.0
 rect_min_size = Vector2( 649, 788 )
 theme = ExtResource( 15 )
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InventoryBG" type="Panel" parent="."]
 margin_right = 1920.0

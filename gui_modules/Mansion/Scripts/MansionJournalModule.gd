@@ -152,7 +152,7 @@ func show_quest_info(quest):
 						match k.code:
 							'stat':
 								if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
-									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  ResourceScripts.descriptions.factor_descripts[int(k.value)] + " "  + "\n"
+									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  tr(ResourceScripts.descriptions.factor_descripts[int(k.value)]) + " "  + "\n"
 								else:
 									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 							'sex':
