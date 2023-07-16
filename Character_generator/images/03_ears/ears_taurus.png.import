@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex"
+path="res://.import/ears_taurus.png-e8876be6dd35af03656e7de9259ad6e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/legR.png"
-dest_files=[ "res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex" ]
+source_file="res://Character_generator/images/03_ears/ears_taurus.png"
+dest_files=[ "res://.import/ears_taurus.png-e8876be6dd35af03656e7de9259ad6e4.stex" ]
 
 [params]
 
