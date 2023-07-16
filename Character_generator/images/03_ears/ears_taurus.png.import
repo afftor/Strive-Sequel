@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShoulderR.png-d40ded93956ddfe44a18ef25bb902e0e.stex"
+path="res://.import/ears_taurus.png-e8876be6dd35af03656e7de9259ad6e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/ShoulderR.png"
-dest_files=[ "res://.import/ShoulderR.png-d40ded93956ddfe44a18ef25bb902e0e.stex" ]
+source_file="res://Character_generator/images/03_ears/ears_taurus.png"
+dest_files=[ "res://.import/ears_taurus.png-e8876be6dd35af03656e7de9259ad6e4.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -280,7 +280,7 @@ func get_full_name():
 		text = statlist.name + ' "' + statlist.nickname + '"'
 	if statlist.surname != '':
 		text += " " + statlist.surname
-	return text
+	return tr(text)
 
 func set_stat(statname, value): #for direct access only
 #	 self.statlist[stat] = value

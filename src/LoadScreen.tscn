@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/LoadScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Load_scene/ornament.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://assets/images/Load_scene/book_top.png" type="Texture" id=13]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loading"
@@ -34,6 +35,12 @@ tracks/0/keys = {
 size = 36
 use_filter = true
 font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+use_filter = true
+extra_spacing_bottom = -4
+font_data = ExtResource( 14 )
 
 [node name="LoadScreen" type="Node"]
 script = ExtResource( 1 )
@@ -110,9 +117,9 @@ margin_left = 146.755
 margin_top = 715.449
 margin_right = 929.755
 margin_bottom = 835.449
-custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.92549, 0.819608, 0.12549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "Tip: Some races can achieve exclusive classes"
 align = 1
 autowrap = true
@@ -122,9 +129,9 @@ margin_left = 150.53
 margin_top = 45.2986
 margin_right = 933.531
 margin_bottom = 165.299
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.764706, 0.364706, 0.729412, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Lore Label"
 align = 1
 autowrap = true
@@ -134,12 +141,9 @@ margin_left = 164.776
 margin_top = 132.327
 margin_right = 923.776
 margin_bottom = 683.327
-custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Lore Text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -156,10 +160,10 @@ margin_left = 323.986
 margin_top = 891.673
 margin_right = 680.988
 margin_bottom = 937.673
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.337255, 0.858824, 0.796078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Loading FInished, press any key"
+custom_fonts/font = ExtResource( 5 )
+text = "TIPLOADFINISHED"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -174,7 +174,7 @@ var TranslationDict = {
 	
 	OPERANTATLEAST = "At least",
 	OPERANTATMOST = "At most",
-		
+	
 	CHARNAMEDAISY = "Daisy",
 	CHARNAMECALI = "Cali",
 	CHARNAMEZEPHYRA = "Zephyra",
@@ -189,6 +189,8 @@ var TranslationDict = {
 	CHARNAMEHELEVIEL = "Heleviel",
 	CHARNAMELIRA = "Lira",
 	
+	LOCATIONTHE = "The ",
+	TOTALPRODUCTIVITY = "Total Productivity",
 	
 	INVENTORYCHARACTERLIST = "Character List",
 	INVENTORYSTASH = "Stash",
@@ -2816,11 +2818,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
 	LOSE_MESSAGE = "Sadly, it seems that your reign is over.",
 	LOSE_MONEY_MESSAGE = "You've ran out of gold. Sadly, it seems that your reign is over.",
-
+	
+	TOOLTIPRIGHTCLICKABILITY = "Right Click to assign another ability",
+	TIPLOADFINISHED = "Loading FInished, press any key",
+	
 	DIALOGUECLOSE = "Close",
 	DIALOGUECONFIRM = "Confirm",
 	DIALOGUECONTINUE = "Continue",
 	DIALOGUECANCEL = "Cancel",
+	
+	DIALOGUEMEETLEADER = "Meet Leader",
 
 	DIALOGUECHILDBIRTHTEXT = "[name] has given birth to a healthy child. Do you wish to keep it?",
 	DIALOGUEKEEPBABY = "Keep baby",

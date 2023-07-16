@@ -902,6 +902,7 @@ custom_fonts/font = ExtResource( 53 )
 text = "res_name"
 
 [node name="desc" type="RichTextLabel" parent="BrothelRules/boosters"]
+visible = false
 margin_left = 619.709
 margin_top = 9.21826
 margin_right = 1268.71
