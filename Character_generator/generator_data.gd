@@ -328,6 +328,12 @@ var transforms = {
 			{type = 'texture_set', set = 'default_male'},
 			{type = 'texture_set', set = 'default_female'},
 		],
+		Ratkin = [
+			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
+			{type = 'node_group_attr', group = 'nonhuman', attr = 'visible', value = false},
+			{type = 'texture_set', set = 'default_male'},
+			{type = 'texture_set', set = 'default_female'},
+		],
 		#half support for harpies - mb no tail, no legs, no ears
 		Slime = [ #don't think that shoulder additional parts are positioned correctly
 			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
@@ -573,7 +579,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_furry_tex', texture = "res://Character_generator/images/03_ears/ears_tanuk.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_furry_tex', texture = "res://Character_generator/images/03_ears/ears_tanuk.png"},
 		],
-		mouse = [#not used
+		rat = [
 			{type = 'node_group_select', group = 'ears', select = 'Ears_furry_tex'},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_furry_tex', texture = "res://Character_generator/images/03_ears/ears_mouse.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_furry_tex', texture = "res://Character_generator/images/03_ears/ears_mouse.png"},
@@ -830,7 +836,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_fox.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_fox.png"},
 		],
-		mouse = [
+		rat = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_mouse.png"},
