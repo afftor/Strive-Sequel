@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Character_generator/images/98_masks/mask_kobold.png" type="Texture" id=1]
+[ext_resource path="res://Character_generator/new_complex_shader.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 0.65098, 0.411765, 0.313726, 1 )
+shader_param/target2color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/target3color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/part1color = Color( 0.235294, 0.235294, 0.235294, 1 )
+shader_param/part2color = Color( 0.235294, 0.235294, 0.235294, 1 )
+shader_param/part3color = Color( 0.235294, 0.235294, 0.235294, 1 )
+shader_param/overlay = 0.999
+shader_param/part3 = ExtResource( 1 )
