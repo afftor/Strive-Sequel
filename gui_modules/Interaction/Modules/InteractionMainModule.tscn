@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -65,6 +65,9 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/ItemSelect.gd" type="Script" id=63]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=64]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=65]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=67]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/mask2.png" type="Texture" id=68]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -95,18 +98,12 @@ font_data = ExtResource( 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 38 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
 margin_right = 1920.0
 margin_bottom = 1080.0
 custom_styles/panel = ExtResource( 36 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 0, 0, 0, 0.717647 )
@@ -221,13 +218,13 @@ margin_bottom = 52.0
 rect_min_size = Vector2( 184, 46 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/hover = ExtResource( 35 )
-custom_styles/pressed = ExtResource( 33 )
-custom_styles/normal = ExtResource( 43 )
-custom_fonts/font = ExtResource( 56 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.517647, 1 )
+custom_fonts/font = ExtResource( 56 )
+custom_styles/hover = ExtResource( 35 )
+custom_styles/pressed = ExtResource( 33 )
+custom_styles/normal = ExtResource( 43 )
 
 [node name="continue" type="Button" parent="Panel/GridContainer/GridContainer/Button"]
 visible = false
@@ -239,11 +236,11 @@ hint_tooltip = "Continue (continuing actions are only half as effective)"
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 65 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 32 )
 custom_styles/pressed = ExtResource( 44 )
 custom_styles/normal = ExtResource( 39 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "∞"
 __meta__ = {
@@ -256,8 +253,8 @@ margin_left = 144.0
 margin_top = 11.0
 margin_right = 164.0
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "A"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -325,8 +322,8 @@ margin_left = 144.0
 margin_top = 11.0
 margin_right = 164.0
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "A"
 
 [node name="CharList" type="Panel" parent="Panel"]
@@ -499,9 +496,9 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 3 )
 text = "Name"
 valign = 1
 clip_text = true
@@ -672,6 +669,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ragdoll" type="Node2D" parent="Panel" instance=ExtResource( 66 )]
+light_mask = 4
+position = Vector2( 688.483, 402.746 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 67 )
+clothes = false
+
+[node name="bodymask" type="Light2D" parent="Panel"]
+position = Vector2( 703.413, 528.502 )
+scale = Vector2( 1.32883, 1.32883 )
+texture = ExtResource( 68 )
+mode = 3
+range_item_cull_mask = 4
+
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -814,8 +825,8 @@ margin_left = 7.0
 margin_top = 4.0
 margin_right = 239.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Actors"
 align = 1
 valign = 1
@@ -828,8 +839,8 @@ margin_left = 250.0
 margin_top = 4.0
 margin_right = 497.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Receivers"
 align = 1
 valign = 1
@@ -889,8 +900,8 @@ margin_right = 907.0
 margin_bottom = 605.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -914,8 +925,8 @@ margin_left = 459.0
 margin_top = 19.0
 margin_right = 903.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Portrait"
 align = 1
 valign = 1
@@ -975,8 +986,8 @@ margin_left = 76.0
 margin_top = 19.0
 margin_right = 382.0
 margin_bottom = 85.0
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "You can hide unwanted actions by unchecking them."
 text = "You can hide unwanted actions by unchecking them."
@@ -1007,9 +1018,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OrgasmDenial" type="Panel" parent="." groups=[
-"pauseprocess",
-]]
+[node name="OrgasmDenial" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false
 margin_left = 571.84
 margin_top = 153.601
@@ -1028,8 +1037,8 @@ margin_left = 85.3445
 margin_top = 40.5518
 margin_right = 672.344
 margin_bottom = 408.552
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1072,8 +1081,8 @@ margin_left = 15.0
 margin_top = 19.0
 margin_right = 459.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "List Of Characters"
 align = 1
 valign = 1
@@ -1128,8 +1137,8 @@ margin_left = 56.0
 margin_top = 75.0
 margin_right = 106.0
 margin_bottom = 102.0
-custom_fonts/font = ExtResource( 57 )
 custom_colors/font_color = Color( 1, 0.0234375, 0.0234375, 1 )
+custom_fonts/font = ExtResource( 57 )
 text = "100%"
 align = 2
 
@@ -1154,8 +1163,8 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="ItemSelectSex"]
 margin_right = 446.0
 margin_bottom = 101.0
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+custom_fonts/font = SubResource( 7 )
 text = "SELECTITEM"
 align = 1
 valign = 1

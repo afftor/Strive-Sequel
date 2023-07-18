@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -41,6 +41,9 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=40]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=41]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=43]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=44]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -56,9 +59,6 @@ font_data = ExtResource( 14 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="TextureRect" parent="."]
 margin_left = -1.0
@@ -72,6 +72,7 @@ __meta__ = {
 }
 
 [node name="fullbody" type="TextureRect" parent="."]
+visible = false
 margin_left = 1005.0
 margin_top = 27.0
 margin_right = 1913.0
@@ -80,17 +81,24 @@ mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="ragdoll" type="Node2D" parent="." instance=ExtResource( 42 )]
+light_mask = 4
+position = Vector2( 1464.03, 587.303 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 43 )
+clothes = false
+
+[node name="bodymask" type="Light2D" parent="."]
+position = Vector2( 1476.03, 605.303 )
+texture = ExtResource( 44 )
+mode = 3
+range_item_cull_mask = 4
 
 [node name="MainPanel" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="textfield" type="Panel" parent="."]
 margin_left = 72.0
@@ -160,9 +168,6 @@ margin_right = 182.0
 margin_bottom = -85.0
 texture = ExtResource( 31 )
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
 show_behind_parent = true

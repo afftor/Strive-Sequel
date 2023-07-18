@@ -3587,7 +3587,7 @@ var transforms = {
 	height = {
 		tiny = [
 			{type = 'scale', value = 0.75},
-			{type = 'offset', value_x = 0.0, value_y = 80},
+			{type = 'offset', value_x = 0.0, value_y = 60},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1.25, 1.25)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-560, 545)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1, 1)},
@@ -3611,7 +3611,7 @@ var transforms = {
 		],
 		petite = [
 			{type = 'scale', value = 0.85},
-			{type = 'offset', value_x = 0.0, value_y = 60},
+			{type = 'offset', value_x = 0.0, value_y = 50},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1.1, 1.07)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-520, 480)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.025, 1)},
@@ -3635,7 +3635,7 @@ var transforms = {
 		],
 		short = [
 			{type = 'scale', value = 1},
-			{type = 'offset', value_x = 0.0, value_y = 50},
+			{type = 'offset', value_x = 0.0, value_y = 40},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1, 0.95)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-505, 438)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.05, 1)},
@@ -3659,7 +3659,7 @@ var transforms = {
 		],
 		average = [
 			{type = 'scale', value = 1.1},
-			{type = 'offset', value_x = 0.0, value_y = 40},
+			{type = 'offset', value_x = 0.0, value_y = 30},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1, 0.925)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-495, 438)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.075, 1)},
@@ -3707,7 +3707,7 @@ var transforms = {
 		],
 		towering = [
 			{type = 'scale', value = 1.3},
-			{type = 'offset', value_x = 0.0, value_y = -20},
+			{type = 'offset', value_x = 0.0, value_y = -30},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.85, 0.9)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(0.9, 0.79)},

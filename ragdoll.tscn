@@ -4972,13 +4972,13 @@ shader_param/part3 = ExtResource( 19 )
 light_mask = 4
 script = ExtResource( 89 )
 clothes = false
-test_mode = true
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 10, 10 )
+mouse_filter = 2
 
 [node name="VP" type="Viewport" parent="VPC"]
 size = Vector2( 1920, 1500 )

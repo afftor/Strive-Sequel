@@ -947,12 +947,28 @@ func slavedescription(member):
 var nakedspritesdict = [] #globals.gallery.nakedsprites
 
 func showbody(i):
-	if i.person.get_body_image() != null:
+	var stored_image = i.person.get_stored_body_image()
+	if stored_image != null:
+		$Panel/bodyimage.texture = stored_image
 		$Panel/bodyimage.visible = true
+		$Panel/ragdoll.visible = false
+	elif !input_handler.globalsettings.disable_paperdoll:
+		$Panel/bodyimage.visible = false
+		$Panel/ragdoll.visible = true
+		$Panel/ragdoll.test_mode = false
+		$Panel/ragdoll.rebuild(i.person)
+		$Panel/ragdoll.rebuild_cloth(true)
+	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
+		$Panel/bodyimage.visible = true
+		$Panel/ragdoll.visible = false
+#	if i.person.get_body_image() != null:
+#		$Panel/bodyimage.visible = true
+#		$Panel/bodyimage.texture = i.person.get_body_image()
 
 func hidebody():
 	$Panel/bodyimage.visible = false
+	$Panel/ragdoll.visible = false
 
 
 func switchsides(panel, side):

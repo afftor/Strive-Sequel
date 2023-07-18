@@ -165,19 +165,34 @@ func initiate(tempperson):
 
 
 	self.fear = 0#person.fear
-	$fullbody.set_texture(null)
-	if person.get_body_image() != null:
-#		var image = person.get_body_image()
-#		if images.sprites.has(person.get_stat("unique")):
-#			image = images.sprites[person.get_stat("unique")]
-#			pass #print(image.get_path())
-		var image
-		var non_body = person.statlist.statlist.body_image.replace("_body", "")
-		if images.sprites.has(non_body):
-			image = input_handler.loadimage(images.sprites[non_body], 'shades')
-		else:
-			image = person.get_body_image()
-		$fullbody.set_texture(image)
+	var stored_image = person.get_stored_body_image()
+	if stored_image != null:
+		$fullbody.texture = stored_image
+		$fullbody.visible = true
+		$ragdoll.visible = false
+	elif !input_handler.globalsettings.disable_paperdoll:
+		$fullbody.visible = false
+		$ragdoll.visible = true
+		$ragdoll.test_mode = false
+		$ragdoll.rebuild(person)
+		$ragdoll.rebuild_cloth(true)
+	else:
+		$fullbody.texture = person.get_body_image()
+		$fullbody.visible = true
+		$ragdoll.visible = false
+#	$fullbody.set_texture(null)
+#	if person.get_body_image() != null:
+##		var image = person.get_body_image()
+##		if images.sprites.has(person.get_stat("unique")):
+##			image = images.sprites[person.get_stat("unique")]
+##			pass #print(image.get_path())
+#		var image
+#		var non_body = person.statlist.statlist.body_image.replace("_body", "")
+#		if images.sprites.has(non_body):
+#			image = input_handler.loadimage(images.sprites[non_body], 'shades')
+#		else:
+#			image = person.get_body_image()
+#		$fullbody.set_texture(image)
 	# $textfield/slaveportrait.texture = null
 
 	if person.get_icon_small() != null:

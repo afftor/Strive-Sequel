@@ -126,10 +126,13 @@ func rebuild(character_to_build):
 #	position += _offset
 	
 	scale = Vector2(1, 1)
-	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
-	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
+#	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
+#	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
 	_root.get_node('male_pose').position = _position + _offset
 	_root.get_node('Female_pose').position = _position + _offset
+	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
+	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
+
 	
 	if character != null:
 		character.update_portrait(self)
