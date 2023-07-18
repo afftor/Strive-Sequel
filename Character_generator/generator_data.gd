@@ -1102,6 +1102,21 @@ var transforms = {
 		blue5 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/blue/skin_blue5.tres"},
 		],
+		grey1 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey1.tres"},
+		],
+		grey2 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey2.tres"},
+		],
+		grey3 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey3.tres"},
+		],
+		grey4 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey4.tres"},
+		],
+		grey5 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey5.tres"},
+		],
 		green1 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/green/skin_green1.tres"},
 		],
