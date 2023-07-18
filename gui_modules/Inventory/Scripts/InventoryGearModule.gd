@@ -120,12 +120,16 @@ func build_gear_panel():
 			$BodyImage.texture = stored_image
 			$BodyImage.visible = true
 			$ragdoll.visible = false
-		else:
+		elif !input_handler.globalsettings.disable_paperdoll:
 			$BodyImage.visible = false
 			$ragdoll.visible = true
 			$ragdoll.test_mode = false
 			$ragdoll.rebuild(selectedhero)
 			$ragdoll.rebuild_cloth(true)
+		else:
+			$Body.texture = selectedhero.get_body_image()
+			$Body.visible = true
+			$ragdoll.visible = false
 #		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
 			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null

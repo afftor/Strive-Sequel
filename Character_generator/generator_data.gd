@@ -604,6 +604,11 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 		],
+		cow = [
+			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_taurus.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_taurus.png"},
+		],
 		goblin = [
 			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'}, #or not
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_goblin.png"},
@@ -735,6 +740,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
 		],
+		dragon = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_dragon2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_dragon2.png"},
+		],
 		#stub types
 		curved_top = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
@@ -804,6 +815,7 @@ var transforms = {
 	},
 	
 	tail = { #there is some misplacing for sure
+		#pls fix duplicating between 06_tails and 07_tails and pathes
 		null: [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = false},
@@ -829,6 +841,18 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon.png"},
+		],
+		dragon2 = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon2.png"},
+		],
+		cow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/tail_cow.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/tail_cow.png"},
 		],
 		fox = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
@@ -860,7 +884,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/Kobold_tail.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/Kobold_tail.png"},
 		],
-		nereid = [
+		fish = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_nereid.png"},
@@ -1077,6 +1101,21 @@ var transforms = {
 		],
 		blue5 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/blue/skin_blue5.tres"},
+		],
+		grey1 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey1.tres"},
+		],
+		grey2 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey2.tres"},
+		],
+		grey3 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey3.tres"},
+		],
+		grey4 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey4.tres"},
+		],
+		grey5 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/grey/skin_grey5.tres"},
 		],
 		green1 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/green/skin_green1.tres"},
@@ -3563,7 +3602,7 @@ var transforms = {
 	height = {
 		tiny = [
 			{type = 'scale', value = 0.75},
-			{type = 'offset', value_x = 0.0, value_y = 80},
+			{type = 'offset', value_x = 0.0, value_y = 60},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1.25, 1.25)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-560, 545)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1, 1)},
@@ -3587,7 +3626,7 @@ var transforms = {
 		],
 		petite = [
 			{type = 'scale', value = 0.85},
-			{type = 'offset', value_x = 0.0, value_y = 60},
+			{type = 'offset', value_x = 0.0, value_y = 50},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1.1, 1.07)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-520, 480)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.025, 1)},
@@ -3611,7 +3650,7 @@ var transforms = {
 		],
 		short = [
 			{type = 'scale', value = 1},
-			{type = 'offset', value_x = 0.0, value_y = 50},
+			{type = 'offset', value_x = 0.0, value_y = 40},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1, 0.95)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-505, 438)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.05, 1)},
@@ -3635,7 +3674,7 @@ var transforms = {
 		],
 		average = [
 			{type = 'scale', value = 1.1},
-			{type = 'offset', value_x = 0.0, value_y = 40},
+			{type = 'offset', value_x = 0.0, value_y = 30},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(1, 0.925)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'position', value = Vector2(-495, 438)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.075, 1)},
@@ -3683,7 +3722,7 @@ var transforms = {
 		],
 		towering = [
 			{type = 'scale', value = 1.3},
-			{type = 'offset', value_x = 0.0, value_y = -20},
+			{type = 'offset', value_x = 0.0, value_y = -30},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'scale', value = Vector2(1.125, 1)},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head', attr = 'scale', value = Vector2(0.85, 0.9)},
 			{type = 'node_group_attr', group = 'hairs_back', attr = 'scale', value = Vector2(0.9, 0.79)},

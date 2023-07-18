@@ -42,6 +42,7 @@ signal LootGathered
 signal LocationSlavesUpdate
 signal PortraitUpdate
 signal update_ragdoll
+signal update_itemlist
 
 var last_action_data = {}
 var text_characters = []
@@ -151,6 +152,7 @@ var globalsettings = {
 
 	factors_as_words = true,
 	show_full_consent = false,
+	disable_paperdoll = false,
 
 	textspeed = 60,
 	skipread = false,

@@ -609,7 +609,7 @@ func get_stat(statname, ref = false):
 					'pale':
 						return 'human1'
 					'grey':
-						return 'human2'
+						return 'grey2'
 					'fair':
 						return 'human3'
 					'olive':

@@ -42,12 +42,16 @@ func update(person = null):
 		$Body.texture = stored_image
 		$Body.visible = body_visible
 		$ragdoll.visible = false
-	else:
+	elif !input_handler.globalsettings.disable_paperdoll:
 		$Body.visible = false
 		$ragdoll.visible = body_visible
 		$ragdoll.test_mode = false
 		$ragdoll.rebuild(person)
 		$ragdoll.rebuild_cloth(true)
+	else:
+		$Body.texture = person.get_body_image()
+		$Body.visible = body_visible
+		$ragdoll.visible = false
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	
