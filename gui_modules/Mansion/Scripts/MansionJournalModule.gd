@@ -129,30 +129,30 @@ func show_quest_info(quest):
 						showcase_item.set_icon(newbutton.get_node("TextureRect"))
 						globals.connectitemtooltip_v2(newbutton, showcase_item)
 						if i.has('parts'):
-							newbutton.hint_tooltip += "\nPart Requirements: "
+							newbutton.hint_tooltip += "\n" + tr("QUESTPARTREQUIREMENTS") + ": "
 							for k in i.parts:
 								newbutton.hint_tooltip += "\n"+ tr(Items.Parts[k].name)  + ": " +str(Items.materiallist[i.parts[k]].name)
 				'complete_location':
 					newbutton.get_node("TextureRect").texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, "Complete quest location: " + tr(worlddata.dungeons[i.type].name))
+					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr(worlddata.dungeons[i.type].name))
 				'complete_dungeon':
 					newbutton.get_node("TextureRect").texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
+					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC2") +  "[color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
 				'random_material':
 					newbutton.get_node("TextureRect").texture = Items.materiallist[i.type].icon
 					newbutton.get_node("amount").show()
 					newbutton.get_node("amount").text = str(i.value)
-					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
+					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]' + tr("QUESTREQUIRED") + ': ' + str(i.value) + "[/color]")
 				'slave_delivery':
 					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
-					var tooltiptext = "Slave Required:\n"
+					var tooltiptext = tr("QUESTSLAVEREQUIRED")+":\n"
 					for k in i.statreqs:
 						if k.code in ['is_master', 'is_free']:
 							continue
 						match k.code:
 							'stat':
 								if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
-									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  ResourceScripts.descriptions.factor_descripts[int(k.value)] + " "  + "\n"
+									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  tr(ResourceScripts.descriptions.factor_descripts[int(k.value)]) + " "  + "\n"
 								else:
 									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 							'sex':
@@ -200,15 +200,15 @@ func show_quest_info(quest):
 							var prof_name = "Required Class:\n" + profname
 							globals.connecttexttooltip(profbutton, prof_name)
 					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
-					var stats_text = "\nStats:\n"
-					var tooltiptext = "Slave Required:\n"
+					var stats_text = "\n"+tr("QUESTSTATS")+":\n"
+					var tooltiptext = tr("QUESTSLAVEREQUIRED")+":\n"
 					tooltiptext += "Sex: " + sex
 					if !stats.empty():
 						for st in stats:
 							stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
 						tooltiptext += stats_text
 					globals.connecttexttooltip(newbutton, tooltiptext)
-					quest_descript += "\nWork duration: " + time + ' days.'
+					quest_descript += "\n"+tr("QUESTWORKDURATION")+": " + time + ' '+tr("QUESTDAYS")+'.'
 				'special_task':
 					$CompleteButton.hide()
 					if quest.id in ResourceScripts.game_progress.work_quests_finished:
@@ -244,14 +244,14 @@ func show_quest_info(quest):
 					else:
 						var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 						newbutton.get_node("amount").text = str(value)
-						globals.connecttexttooltip(newbutton, "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + " (Master Charm Bonus)")
+						globals.connecttexttooltip(newbutton, tr("QUESTGOLD")+": " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + " ("+tr("QUESTMASTERCHARMBONUS")+")")
 						newbutton.get_node("amount").show()
 				'reputation':
 					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.get_node("TextureRect").texture = images.icons["guilds_" + quest.source + "_colored"]
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					globals.connecttexttooltip(newbutton, ("Reputation (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ " (Master Charm Bonus)"))
+					globals.connecttexttooltip(newbutton, (tr("QUESTREPUTATION")+" (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ " ("+tr("QUESTMASTERCHARMBONUS")+")"))
 				'material':
 					var material = Items.materiallist[i.item]
 					newbutton.get_node("TextureRect").texture = material.icon
@@ -266,7 +266,7 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").show()
 
 		$RightPanel/QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
-		$RightPanel/CenterContainer/Time/Label.text = str(quest.time_limit) + " days left."
+		$RightPanel/CenterContainer/Time/Label.text = str(quest.time_limit) + " "+ tr("QUESTDAYSLEFT") + "."
 	else:
 		$RightPanel/rewards.hide()
 		$RightPanel/reqs.hide()
@@ -314,7 +314,7 @@ func CompleteQuest():
 			if check == false:
 				break
 		if check == false:
-			input_handler.SystemMessage("Requirements are not met.")
+			input_handler.SystemMessage(tr("REQUIREMENTSARENTMET"))
 			input_handler.PlaySound("error")
 			return
 		else:
@@ -346,7 +346,7 @@ func CompleteReqs():
 			"random_material":
 				ResourceScripts.game_res.set_material(i.type, '-', i.value)
 	selectedquest.state = 'complete'
-	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
+	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + selectedquest.name)
 	Reward()
 
 var char_reqs

@@ -358,7 +358,7 @@ func tooltipeffects():
 	var text = ''
 	for i in effects:
 		if Effectdata.effect_table[i].descript != '':
-			text += Effectdata.effect_table[i].descript + "\n"
+			text += tr(Effectdata.effect_table[i].descript) + "\n"
 #		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
 #		text += '}\n'
 	if text != "":

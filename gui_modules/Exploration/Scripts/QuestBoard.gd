@@ -97,7 +97,7 @@ func see_quest_info(quest):
 					showcase_item.set_icon(newbutton.get_node("Icon"))
 					globals.connectitemtooltip_v2(newbutton, showcase_item)
 					if i.has('parts'):
-						subtext +=  "\nPart Requirements: "
+						subtext +=  "\n" + tr("QUESTPARTREQUIREMENTS") + ": "
 						for k in i.parts:
 							subtext += (
 								"\n"
@@ -122,19 +122,19 @@ func see_quest_info(quest):
 				)
 			'complete_dungeon':
 				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
-				globals.connecttexttooltip(newbutton, "Complete quest dungeon: " + tr("LOCATIONNAME" + i.type.to_upper())) #todo add dungeon name
-			'random_material':
+				globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr("LOCATIONNAME" + i.type.to_upper())) #todo add dungeon name 
+			'random_material': 
 				newbutton.get_node("Icon").texture = Items.materiallist[i.type].icon
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
 				globals.connectmaterialtooltip(
 					newbutton,
 					Items.materiallist[i.type],
-					'\n\n[color=yellow]Required: ' + str(i.value) + "[/color]"
+					'\n\n[color=yellow]' + tr("QUESTREQUIRED") + ":" + str(i.value) + "[/color]"
 				)
 			'slave_delivery':
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
-				var tooltiptext = "Slave Required:\n"
+				var tooltiptext = tr("QUESTSLAVEREQUIRED") + ":\n"
 				for k in i.statreqs:
 					if k.code in ['is_master', 'is_free']:
 						continue
@@ -191,18 +191,18 @@ func see_quest_info(quest):
 						var prof_name = "Required Class:\n" + profname
 						globals.connecttexttooltip(profbutton, prof_name)
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
-				var stats_text = "\nStats:\n"
-				var tooltiptext = "Slave Required:\n"
+				var stats_text = "\n"+tr("QUESTSTATS")+":\n"
+				var tooltiptext = tr("QUESTSLAVEREQUIRED") + ":\n"
 				if sex != "":
-					tooltiptext += "Sex: " + sex
+					tooltiptext += tr("QUESTSEX")+": " + sex
 				if !stats.empty():
 					for st in stats:
 						stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
 					tooltiptext += stats_text
 				globals.connecttexttooltip(newbutton, tooltiptext)
-				text += "\nWork duration: " + time + ' days.'
+				text += "\n" + tr("QUESTWORKDURATION") + ": " + time + ' '+ tr("QUESTDAYS") + '. '
 			'special_task':
-				var t_text = "Complete one time task"
+				var t_text = tr("QUESTONETIMETASK")
 				if i.has('name'):
 					t_text += ": " + tr(i.name)
 				if i.has('icon'):
@@ -248,7 +248,7 @@ func see_quest_info(quest):
 					newbutton.get_node("amount").show()
 					newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
 					newbutton.get_node("Icon").texture = images.icons.quest_gold
-					globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
+					globals.connecttexttooltip(newbutton, tr("QUESTGOLDREWARD"))
 				else:
 					var value = round(
 						(
@@ -265,7 +265,7 @@ func see_quest_info(quest):
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
 					globals.connecttexttooltip(newbutton, (
-						"Gold: "
+						tr("QUESTGOLD")+": "
 						+ str(i.value)
 						+ " + "
 						+ str(
@@ -278,7 +278,7 @@ func see_quest_info(quest):
 								)
 							)
 						)
-						+ " (Master Charm Bonus)")
+						+ " ("+ tr("QUESTMASTERCHARMBONUS")+")")
 					)
 			'reputation':
 				var value = round(
@@ -296,7 +296,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				globals.connecttexttooltip(newbutton, (
-					"Reputation ("
+					" " +tr("QUESTREPUTATION") +"("
 					+ quest.source.capitalize()
 					+ "): "
 					+ str(i.value)
@@ -311,8 +311,8 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					+ " (Master Charm Bonus)"
-				))
+					+ " ("+ tr("QUESTMASTERCHARMBONUS")+")")
+				)
 		
 	$QuestDetails/Panel/RichTextLabel.bbcode_text = globals.TextEncoder(text_name)
 	$QuestDetails/Panel/RichTextLabel2.bbcode_text = globals.TextEncoder(text)
@@ -325,7 +325,7 @@ func accept_quest():
 			break
 	input_handler.interactive_message('quest_accept', '', {})
 	var args = {}
-	args["label"] = "Task aсquired"
+	args["label"] = tr("QUESTTASKACQ")
 	args["info"] = selectedquest.name
 	args["sound"] = "quest_aquired"
 	input_handler.play_animation("quest", args)

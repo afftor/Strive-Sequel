@@ -210,7 +210,7 @@ func geartemplete_tooltip(data):
 
 
 	for i in item.effects:
-		text += Effectdata.effect_table[i].descript + "\n"
+		text += tr(Effectdata.effect_table[i].descript) + "\n"
 
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(data.price)

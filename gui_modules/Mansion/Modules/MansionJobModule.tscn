@@ -140,11 +140,10 @@ expand = true
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Frame_farm/Farm_scroll/FarmSlots/Button"]
-show_behind_parent = true
-margin_left = 11.0
-margin_top = 10.0
-margin_right = 124.0
-margin_bottom = 124.0
+margin_left = 14.0
+margin_top = 13.0
+margin_right = 121.0
+margin_bottom = 120.0
 expand = true
 
 [node name="char_panel" type="Control" parent="Frame_farm"]
@@ -903,6 +902,7 @@ custom_fonts/font = ExtResource( 53 )
 text = "res_name"
 
 [node name="desc" type="RichTextLabel" parent="BrothelRules/boosters"]
+visible = false
 margin_left = 619.709
 margin_top = 9.21826
 margin_right = 1268.71

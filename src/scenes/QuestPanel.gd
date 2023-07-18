@@ -129,13 +129,13 @@ func show_quest_info(quest):
 					newbutton.texture = images.icons.quest_gold
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + " (Master Charm Bonus)"
+					newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + " ("+tr("QUESTMASTERCHARMBONUS")+")"
 				'reputation':
 					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.texture = images.icons[i.code]
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Reputation (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ " (Master Charm Bonus)"
+					newbutton.hint_tooltip = tr("QUESTREPUTATION") + " (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ " ("+tr("QUESTMASTERCHARMBONUS")+")"
 				'material':
 					var material = Items.materiallist[i.item]
 					newbutton.texture = material.icon
@@ -196,7 +196,7 @@ func CompleteQuest():
 			if check == false:
 				break
 		if check == false:
-			input_handler.SystemMessage("Requirements are not met.")
+			input_handler.SystemMessage(tr("REQUIREMENTSARENTMET"))
 			input_handler.PlaySound("error")
 			return
 		else:

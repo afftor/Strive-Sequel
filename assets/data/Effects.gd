@@ -100,7 +100,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.25}],
 		buffs = [{
 			icon = "res://assets/images/iconstraits/lotus.png",
-			description = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
+			description = "TRAITEFFECTVIRGIN",
 			limit = 1,
 			t_name = 'b_virgin',
 			mansion_only = true,
@@ -464,7 +464,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/hitrate.png",
-				description = "Rare: Sturdy\nIncreased Health and Armor Penetration",
+				description = "TRAITEFFECTRARESTURDY",
 				limit = 1,
 				t_name = 'rare_sturdy'
 			}
@@ -481,7 +481,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speed.png",
-				description = "Rare: Nimble\nIncreased Evasion and Speed",
+				description = "TRAITEFFECTRARENIMBLE",
 				limit = 1,
 				t_name = 'rare_nimble'
 			}
@@ -497,7 +497,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/firedamagebonus.png",
-				description = "Rare: Strong\nIncreased Damage and Maximum Health",
+				description = "TRAITEFFECTRARESTRONG",
 				limit = 1,
 				t_name = 'rare_strong'
 			}
@@ -513,7 +513,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/critrate.png",
-				description = "Rare: Deadly\nIncreased Damage and Hitrate",
+				description = "TRAITEFFECTRAREDEADLY",
 				limit = 1,
 				t_name = 'rare_deadly'
 			}
@@ -530,7 +530,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/bowextradamage.png",
-				description = "Rare: Precise\nIncreased Evasion, Hitrate and MDEF",
+				description = "TRAITEFFECTRAREPRECISE",
 				limit = 1,
 				t_name = 'rare_precise'
 			}
@@ -547,7 +547,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/bowextradamage.png",
-				description = "Rare: Tough\nIncreased Health, DEF and MDEF",
+				description = "TRAITEFFECTRARETOUGH",
 				limit = 1,
 				t_name = 'rare_tough'
 			}
@@ -693,30 +693,9 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "Hard Work: +50%% Productivity",
+				description = "TRAITEFFECTHARDWORK",
 				limit = 1,
 				t_name = 'hardwork',
-				mansion_only = true,
-			}
-		],
-	},
-	e_celena_bless = {
-		type = 'temp_s',
-		name = 'celena_bless',
-		tick_event = variables.TR_TICK,
-		duration = 4,
-		stack = 1,
-		sub_effects = [],
-		tags = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "Celena's Blessing: Reduce damage taken by 30%%.",
-				limit = 1,
-				t_name = 'celena_bless',
 				mansion_only = true,
 			}
 		],
@@ -738,7 +717,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_love.png",
-				description = "Favorite Food: -1 Obedience Drain, +0.5 Loyalty Gain.", 
+				description = "TRAITEFFECTFAVFOOD",
 				limit = 1,
 				t_name = 'food_like',
 				mansion_only = true,
@@ -759,7 +738,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_hate.png",
-				description = "Hated Food: -10%% Productivity.",
+				description = "TRAITEFFECTHATEDFOOD",
 				limit = 1,
 				t_name = 'food_hate',
 				mansion_only = true,
@@ -805,7 +784,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png",
-				description = "Starvation: -50%% Productivity, -50%% Damage.",
+				description = "TRAITEFFECTSTARVE", 
 				limit = 1,
 				t_name = 'starvation',
 #				mansion_only = true,
@@ -863,7 +842,7 @@ var effect_table = {
 		buffs = [
 			{#to fix
 				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",
-				description = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat.",
+				description = "TRAITEFFECTGRAVEINJ", 
 				limit = 1,
 				t_name = 'grave_injury',
 #				mansion_only = true,
@@ -892,7 +871,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline2.png",
-				description = "Discipline: +50%% Labor and craft efficiencies.",
+				description = "TRAITEFFECTDISCIPLINE",
 				limit = 1,
 				t_name = 'discipline',
 				mansion_only = true,
@@ -915,7 +894,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Seduce: -7 Obedience drain", #2fix
+				description = "TRAITEFFECTSEDUCE",  #2fix
 				limit = 1,
 				t_name = 'seduce',
 				mansion_only = true,
@@ -936,7 +915,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth.", #2fix
+				description = "TRAITEFFECTGREATSEDUCE", #2fix
 				limit = 1,
 				t_name = 'seduce',
 				mansion_only = true,
@@ -959,7 +938,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "Allure: -5 Obedience drain, +1 Loyalty gain.",#2fix
+				description = "TRAITEFFECTALLURE",#2fix
 				limit = 1,
 				t_name = 'allure',
 				mansion_only = true,
@@ -981,7 +960,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "Sedated: -10 Obedience drain",#2fix
+				description = "TRAITEFFECTSEDATED",#2fix
 				limit = 1,
 				t_name = 'sedate',
 				mansion_only = true,
@@ -1004,7 +983,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "Fear: -6 Obedience drain, -1 Loyalty gain.",#2fix
+				description = "TRAITEFFECTFEAR", #2fix
 				limit = 1,
 				t_name = 'fear',
 				mansion_only = true,
@@ -1036,7 +1015,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mind_Control.png",
-				description = "Mind Controlled",
+				description = "TRAITEFFECTMINDCONTROLLED",
 				limit = 1,
 				t_name = '',
 				mansion_only = true,
@@ -1107,7 +1086,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Praise.png",
-				description = "Inspired: +20%% damage, DEF and MDEF.",
+				description = "TRAITEFFECTINSPIRED",
 				limit = 1,
 				t_name = 'inspire'
 			}
@@ -1130,7 +1109,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Trainer.png",
-				description = "Commanded: +50%% ATK and MATK.",
+				description = "TRAITEFFECTCOMMANDED",
 				limit = 1,
 				t_name = 'command'
 			}
@@ -1151,7 +1130,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "Serving: +1 Loyalty gain.",#2fix
+				description = "TRAITEFFECTSERVING",#2fix
 				limit = 1,
 				t_name = 'serve',
 				mansion_only = true,
@@ -1224,7 +1203,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/WeaponRefine.png",
-				description = "Weapon refined: +30%% ATK.",
+				description = "TRAITEFFECTREFINE",
 				limit = 1,
 				t_name = 'refine'
 			}
@@ -1246,7 +1225,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/miscarriagepot.png",
-				description = "Acid: -25 DEF.",
+				description = "TRAITEFFECTACID",
 				limit = 1,
 				t_name = 'acid_bomb'
 			}
@@ -1309,7 +1288,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Whore.png",
-				description = "Attracted: -30%% Damage",
+				description = "TRAITEFFECTATTRACTED",
 				limit = 1,
 				t_name = 'attract'
 			}
@@ -1395,7 +1374,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
-				description = "Protection: +25 DEF.",
+				description = "TRAITEFFECTPROTECTION",
 				limit = 1,
 				t_name = 'protect_c'
 			}
@@ -1430,7 +1409,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
-				description = "Is protected",
+				description = "TRAITEFFECTISPROTECTED",
 				limit = 1,
 				t_name = 'protect_t'
 			}
@@ -1467,7 +1446,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Dragon_Knight.png",
-				description = "Dragon's Might: +25%% Damage and DEF.",
+				description = "TRAITEFFECTDRAGONSMIGHT",
 				limit = 1,
 				t_name = 'dragonmight'
 			}
@@ -1526,7 +1505,7 @@ var effect_table = {
 				buffs = [
 					{
 						icon = "res://assets/images/traits/armor.png",
-						description = "Damage-absorbing shield, blocks 100 damage (%d remains)",
+						description = "TRAITEFFECTBARRIER",
 						args = [{obj = 'parent_args', param = 0}],
 						t_name = 'shield'
 					}
@@ -1552,7 +1531,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png",
-				description = "Blizzard: -20 Speed.",
+				description = "TRAITEFFECTBLIZZARD",
 				limit = 1,
 				t_name = 'blizzard'
 			}
@@ -1574,7 +1553,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png",
-				description = "Blessed: +25%% ATK.",
+				description = "TRAITEFFECTBLESSED",
 				limit = 1,
 				t_name = 'bless'
 			}
@@ -1601,7 +1580,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png",
-				description = "Mentally Blessed: +25%% MATK.",
+				description = "TRAITEFFECTMENTALBLESS",
 				limit = 1,
 				t_name = 'mental_bless'
 			}
@@ -1639,7 +1618,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Fear.png",
-				description = "Flying: +65 Evasion.",
+				description = "TRAITEFFECTFLY",
 				limit = 1,
 				t_name = 'fly'
 			}
@@ -1671,7 +1650,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Debilitate.png",
-				description = "Shattered: -25 Evasion.",
+				description = "TRAITEFFECTSHATTERED",
 				limit = 1,
 				t_name = 'eshatter'
 			}
@@ -1707,7 +1686,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png",
-				description = "Fire Burst: -20 Hit Rate.",
+				description = "TRAITEFFECTFIREBURST",
 				limit = 1,
 				t_name = 'fireburst'
 			}
@@ -1728,7 +1707,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Acid-spit.png",
-				description = "Swipe: -20 DEF.",
+				description = "TRAITEFFECTSWIPE",
 				limit = 1,
 				t_name = 'swipe'
 			}
@@ -1749,7 +1728,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/arrowshower.png",
-				description = "Arraow Rain: -20 MDEF.",
+				description = "TRAITEFFECTARROWRAIN",
 				limit = 1,
 				t_name = 'arrowrain'
 			}
@@ -1771,7 +1750,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Sedate.png",
-				description = "-20 ATK and MATK.",
+				description = "TRAITEFFECTSSTRIKE",
 				limit = 1,
 				t_name = 'sstrike'
 			}
@@ -1800,7 +1779,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png",
-				description = "Endure: +20 All resists.",
+				description = "TRAITEFFECTENDURE",
 				limit = 1,
 				t_name = 'endure',
 				combat_only = true,
@@ -1852,7 +1831,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Hymn: +20 Hit Rate, Evasion and Speed.",
+				description = "TRAITEFFECTBARD1",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -1876,7 +1855,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Warmarch: +20%% ATK and MATK.",
+				description = "TRAITEFFECTBARD3",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -1900,7 +1879,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
-				description = "Soothe: +15 DEF and MDEF, dispel 1 negative effect every turn",
+				description = "TRAITEFFECTBARD2",
 				limit = 1,
 				t_name = 'bard',
 				combat_only = true,
@@ -2076,7 +2055,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Elemental Weakness: -40 Fire, Earth, Water and Air Resistances.",
+				description = "TRAITEFFECTELEMENTALWEAK",
 				limit = 1,
 				t_name = 'elweak',
 				combat_only = true,
@@ -2102,7 +2081,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Elemental Protection: +40 Fire, Earth, Water and Air Resistances.",
+				description = "TRAITEFFECTELEMENTALPROTECT",
 				limit = 1,
 				t_name = 'elweak',
 				combat_only = true,
@@ -2123,7 +2102,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Fear.png",
-				description = "Camouflage: +20 Evasion.",
+				description = "TRAITEFFECTCAMO",
 				limit = 1,
 				t_name = 'camo'
 			}
@@ -2143,7 +2122,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Hunter's Mark: Receives 15%% more damage",
+				description = "TRAITEFFECTHMARK",
 				limit = 1,
 				t_name = 'huntersmark',
 				combat_only = true,
@@ -2199,7 +2178,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Spirit devoured",
+				description = "TRAITEFFECTDEVOUR",
 				limit = 1,
 				t_name = 'devour',
 			}],
@@ -2302,7 +2281,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Spirit - Hare: +30 Speed, +25 Evasion.",
+				description = "TRAITEFFECTSPIRIT1",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2324,7 +2303,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Spirit - Eagle: +20%% Skill damage, +30 Hit Rate.",
+				description = "TRAITEFFECTSPIRIT3",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2343,7 +2322,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
-				description = "Spirit - Turtle: -25%% Skill Damage taken, -15%% Spell Damage taken",
+				description = "TRAITEFFECTSPIRIT2",
 				limit = 1,
 				t_name = 'spirit',
 				combat_only = true,
@@ -2396,7 +2375,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/icon_eyes.png",
-				description = "Hidden",
+				description = "TRAITEFFECTHIDE",
 				t_name = 'hide'
 			}
 		],
@@ -2413,7 +2392,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/icon_eyes.png",
-				description = "Hidden",
+				description = "TRAITEFFECTHIDE",
 				t_name = 'hide'
 			}
 		],
@@ -2430,7 +2409,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Innervate.png",
-				description = "Will be reborn on death",
+				description = "TRAITEFFECTREINCARNATE",
 				t_name = 'reincarnate'
 			}
 		],
@@ -2452,7 +2431,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/light_spell_aoe.png",
-				description = "Divine Radiance: -20 MDEF.",
+				description = "TRAITEFFECTHOLY",
 				limit = 1,
 				t_name = 'holydebuff'
 			}
@@ -3092,7 +3071,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/takeposition.png",
-			description = "Position Taken: +50 Armor Penetration; +20%% Damage.",
+			description = "TRAITEFFECTPOSITIONTAKEN",
 			args = [],
 			limit = 1,
 			t_name = 'takeposition',
@@ -3113,7 +3092,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/windwall.png",
-			description = "Wind Wall: -50%% Randged Damage.",
+			description = "TRAITEFFECTWINDWALL",
 			args = [],
 			limit = 1,
 			t_name = 'windwall',
@@ -3155,7 +3134,7 @@ var effect_table = {
 	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{code = 'has_profession', profession = 'pet', check = true}],
-		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
+		descript = "TRAITEFFECTPETSUIT",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],
@@ -3186,7 +3165,7 @@ var effect_table = {
 	e_worker_outfit_effect = {
 		type = 'static',
 #		conditions = [],
-		descript = "Hunting, Fishing and Collecting Tasks: +25%",
+		descript = "TRAITEFFECTWORKEROUTFIT",
 		tags = [],
 		atomic = [
 		{type = 'stat_add_p', stat = 'mod_hunt', value = 0.25},
@@ -3201,7 +3180,7 @@ var effect_table = {
 	e_craftman_suit_effect = {
 		type = 'static',
 #		conditions = [],
-		descript = "Cooking, Smithing, Alchemy, Tailor and Upgrading Tasks: +25%",
+		descript = "TRAITEFFECTCRAFTSMANSUIT",
 		tags = [],
 		atomic = [
 		{type = 'stat_add_p', stat = 'mod_cook', value = 0.25},
@@ -3218,7 +3197,7 @@ var effect_table = {
 		type = 'c_static',
 		conditions = [{code = 'trait', trait = 'anal', check = true}],
 		tags = ['recheck_trait', 'recheck_item'],
-		descript = 'If wearer has "Likes Anal" trait: Lust growth + 15%.',
+		descript = "TRAITEFFECTANAL",
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
 		buffs = [],
 		sub_effects = [],
@@ -3244,7 +3223,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
-		descript = 'Prolonged wearing might cause wearer to become Submissive.',
+		descript = "TRAITEFFECTHANDCUFFS",
 		req_skill = false,
 		sub_effects = [
 			{
@@ -3271,7 +3250,7 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
-		descript = 'Prolonged wearing makes wearer more responsive to Anal.',
+		descript = "TRAITEFFECTANALCOUNT",
 		req_skill = false,
 		args = [{obj = 'app_obj', param = 'sexuals_factor'}],
 		sub_effects = [
@@ -3329,7 +3308,7 @@ var effect_table = {
 	e_tail_plug_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.1}],
-		descript = 'Increases Lust growth by 10%.',
+		descript = "TRAITEFFECTTAILPLUG",
 		buffs = [],
 		sub_effects = [],
 	},
@@ -3338,7 +3317,7 @@ var effect_table = {
 		tags = ['recheck_item'],
 		conditions = [{code = 'gear_equiped', value = 'pet_suit', check = true}],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
-		descript = 'Increases Charm by 10 if Pet Suit equipped.',
+		descript = "TRAITEFFECTTAILPLUGBONUS",
 		buffs = [],
 		sub_effects = [],
 	},
@@ -3346,14 +3325,14 @@ var effect_table = {
 	e_sunderwear_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.25}],
-		descript = 'Increases Lust growth by 25%.',
+		descript = "TRAITEFFECTUNDERWEAR",
 		buffs = [],
 		sub_effects = [],
 	},
 	e_tentacle_suit_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 1}],
-		descript = 'Increases Lust growth by 100%%.',
+		descript = "TRAITEFFECTTENTACLESUIT",
 		buffs = [],
 		sub_effects = [],
 	},
@@ -3364,7 +3343,7 @@ var effect_table = {
 			{code = 'stat', stat = 'sex_factor', operant = 'lt', value = 5}
 		],
 		tags = ['recheck_trait', 'recheck_item'],
-		descript = 'Reduces Physics and Wits by 25 if character has less than 5 Sex Factor and no Deviant trait.',
+		descript = "TRAITEFFECTTENTACLESUB",
 		atomic = [
 			{type = 'stat_add', stat = 'wits_bonus', value = -25},
 			{type = 'stat_add', stat = 'physics_bonus', value = -25}
@@ -3407,7 +3386,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
-				description = "ATK and MATK are increased by 15%%",
+				description = "TRAITEFFECTMASTERCOMBAT",
 				limit = 1,
 				t_name = "Master's Morale",
 			}
@@ -3428,7 +3407,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "+20%% Productivity.",
+				description = "TRAITEFFECTMASTERPRODUCT",
 				limit = 1,
 				t_name = "Master's Morale",
 			}
@@ -3449,7 +3428,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Satisfied: +10%% Productivity.",
+				description = "TRAITEFFECTSATISFIED",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,
@@ -3471,7 +3450,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "Satisfied: +20%% Productivity.",
+				description = "TRAITEFFECTSATISFIED2",
 				limit = 1,
 				t_name = "Satisfaction",
 				mansion_only = true,
@@ -3494,7 +3473,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
-				description = "Lust Drained: +25%% ATK and MATK.",
+				description = "TRAITEFFECTSUCCOMBAT",
 				limit = 1,
 				t_name = "Lust Drain",
 			}
@@ -3567,7 +3546,7 @@ var effect_table = {
 		],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/icon_protective_shell.png",
-			description = "Celena's Blessing: +30%% All resistances.",
+			description = "TRAITEFFECTCELENABLESS",
 			args = [],
 			limit = 1,
 			t_name = 'celena_bless',
@@ -3587,7 +3566,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/heavyshot.png",
-			description = "Freya's Blessing: +30 Armor Penetration, +25 Hit Rate",
+			description = "TRAITEFFECTFREYABLESS",
 			args = [],
 			limit = 1,
 			t_name = 'freya_bless',
@@ -3606,7 +3585,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/BloodMagic.png",
-			description = "Celena's Curse: -50%% Max. Health.",
+			description = "TRAITEFFECTCELENACURSE",
 			args = [],
 			limit = 1,
 			t_name = 'celena_curse',
@@ -3627,7 +3606,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/BloodMagic.png",
-			description = "Freya's Curse: -50 Evasion and Hit Rate.",
+			description = "TRAITEFFECTFREYACURSE",
 			args = [],
 			limit = 1,
 			t_name = 'freya_curse',
@@ -3645,7 +3624,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.5}],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "Loyalty gain increased by.",
+			description = "TRAITEFFECTDATEBONUS",
 			args = [],
 			limit = 1,
 			t_name = 'date_effect',
@@ -3665,7 +3644,7 @@ var effect_table = {
 		tags = ['no_obed_gain'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Shackle.png",
-			description = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
+			description = "TRAITEFFECTRESISTSTATE",
 			args = [],
 			limit = 1,
 			t_name = 'resist_state',
@@ -3684,7 +3663,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/preg_icon1.png",
-			description = "Is pregnant: -10 Speed, -20 Physics",
+			description = "TRAITEFFECTISPREGNANT",
 			args = [],
 			limit = 1,
 			t_name = 'preg',
@@ -3702,7 +3681,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/preg_icon2.png",
-			description = "Is heavily pregnant: -20 Speed, -40 Physics",
+			description = "TRAITEFFECTISPREGNANT2",
 			args = [],
 			limit = 1,
 			t_name = 'preg',
@@ -3805,21 +3784,21 @@ var buffs = {
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_shackles = {
 		icon = "res://assets/images/iconsskills/Magic Shackles.png",
-		description = "Shackles",
+		description = "BUFFDESCRIPTSHACKLES",
 		limit = 1,
 		t_name = 'shackles',
 		mansion_only = true,
 	},
 	b_great_shackles = {
 		icon = "res://assets/images/iconsskills/Strong Magic Shackles.png",
-		description = "Great Shackles",
+		description = "BUFFDESCRIPTGREATSHACKLES",
 		limit = 1,
 		t_name = 'shackles',
 		mansion_only = true,
 	},
 	b_charm = {
 		icon = "res://assets/images/iconsskills/Charm.png",
-		description = "Is charmed. %d hours remains",
+		description = "BUFFDESCRIPTCHARM",
 		args = [{obj = 'parent', param = 'remains'}],
 		limit = 1,
 		t_name = 'charmed',
@@ -3827,171 +3806,171 @@ var buffs = {
 	},
 	b_stun = {
 		icon = "res://assets/images/traits/experience.png", #?? mb to fix
-		description = "Stunned: Cannot act",
+		description = "BUFFDESCRIPTSTUN",
 		limit = 1,
 		t_name = 'stun'
 	},
 	b_charm_c = {
 		icon = "res://assets/images/iconsskills/Charm.png", #?? mb to fix
-		description = "Charmed: Cannot act",
+		description = "BUFFDESCRIPTCHARM2",
 		limit = 1,
 		t_name = 'charm'
 	},
 	b_trap = {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Trapped: Cannot act",
+		description = "BUFFDESCRIPTTRAP",
 		limit = 1,
 		t_name = 'trap'
 	},
 	b_mirror = {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Mirror Image: Chance to evade damage from skills",
+		description = "BUFFDESCRIPTMIRROR",
 		limit = 1,
 		t_name = 'mirror'
 	},
 	b_field= {
 		icon = "res://assets/images/iconsskills/Barrier.png",
-		description = "Energy Field: Chance to deal Air Spell damage to attacker",
+		description = "BUFFDESCRIPTFIELD", 
 		limit = 1,
 		t_name = 'field'
 	},
 	b_shell= {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Protective Shell: Incoming damage reduced by 35%%",
+		description = "BUFFDESCRIPTSHELL",
 		limit = 1,
 		t_name = 'shell'
 	},
 	b_taunt= {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Taunted",
+		description = "BUFFDESCRIPTTAUNT",
 		limit = 1,
 		t_name = 'taunt'
 	},
 	b_distract = {
 		icon = "res://assets/images/iconsskills/distract.png",
-		description = "Distracted: -30 Hit Rate and Evasion",
+		description = "BUFFDESCRIPTDISTRACT",
 		limit = 1,
 		t_name = 'distract'
 	},
 	b_silence = {
 		icon = "res://assets/images/iconsskills/Seduce.png",
-		description = "Silenced",
+		description = "BUFFDESCRIPTSILENCE",
 		t_name = 'silence'
 	},
 	b_freeze = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
-		description = "Frozen: Cannot act, receives 100%% more Air damage",
+		description = "BUFFDESCRIPTFROZEN", 
 		t_name = 'freeze'
 	},
 	b_disarm = {
 		icon = "res://assets/images/iconsskills/Shackle.png",
-		description = "Disarmed: Can't use Skill type abilities",
+		description = "BUFFDESCRIPTDISARM",
 		t_name = 'disarm'
 	},
 	b_banish = {
 		icon = "res://assets/images/iconsclasses/Cattle.png",
-		description = "Banish",
+		description = "BUFFDESCRIPTBANISH",
 		t_name = 'banish'
 	},
 	b_void = {
 		icon = "res://assets/images/iconsclasses/Headman.png",
-		description = "Void",
+		description = "BUFFDESCRIPTVOID",
 		t_name = 'void'
 	},
 	b_defend = {
 		icon = "res://assets/images/iconsclasses/Knight.png",
-		description = "Defend",
+		description = "BUFFDESCRIPTDEFEND",
 		t_name = 'defend'
 	},
 	b_regen = {
 		icon = "res://assets/images/iconsskills/lesserheal.png",
-		description = "Health regeneration",
+		description = "BUFFDESCRIPTREGEN",
 		t_name = 'regen'
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsskills/firebolt.png",
-		description = "Burning",
+		description = "BUFFDESCRIPTBURNING",
 		t_name = 'burn'
 	},
 	b_poison = {
 		icon = "res://assets/images/iconsskills/Heal.png",
-		description = "Poisoned",
+		description = "BUFFDESCRIPTPOISON",
 		t_name = 'poison'
 	},
 	b_bleed = {
 		icon = "res://assets/images/iconsskills/Debilitate.png",
-		description = "Bleeding",
+		description = "BUFFDESCRIPTBLEEDING",
 		t_name = 'bleed'
 	},
 	b_confuse = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Confusion",
+		description = "BUFFDESCRIPTCONFUSE",
 		t_name = 'confuse'
 	},
 	b_free_use = {
 		icon = "res://assets/images/iconsclasses/Attendant.png",
-		description = "Allows to use an item without taking a turn",
+		description = "BUFFDESCRIPTFREEUSE",
 		t_name = 'freuse',
 		combat_only = true
 	},
 	b_shred = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Armor reduced",
+		description = "BUFFDESCRIPTSHRED",
 		t_name = 'shred',
 		combat_only = true
 	},
 	b_growl = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Speed and evasion decreased",
+		description = "BUFFDESCRIPTGROWL",
 		t_name = 'shrgrowled',
 		combat_only = true
 	},
 	b_curseatk = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Attack decreased",
+		description = "BUFFDESCRIPTCURSEATTACK",
 		t_name = 'curseatk',
 		combat_only = true
 	},
 	tr_curseatk = {
 		icon = "res://assets/images/iconsskills/icon_turtle.png",
-		description = "Attacking this target causes ATK decreased",
+		description = "BUFFDESRIPTCURSEATTACKTR",
 		t_name = 'curseatk_src',
 	},
 	b_magicward = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Attack and MFED increased",
+		description = "BUFFDESCRIPTMAGICWARD",
 		t_name = 'magicward',
 		combat_only = true
 	},
 	b_slam = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Healing reduced",
+		description = "BUFFDESCRIPTSLAM",
 		t_name = 'slam',
 		combat_only = true
 	},
 	b_fireshield = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Fire shield",
+		description = "BUFFDESCRIPTFIRESHIELD",
 		t_name = 'fireshield',
 		combat_only = true
 	},
 	b_atkpass = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Damage increased",
+		description = "BUFFDESCRIPTATKPAS",
 		t_name = 'atkpass',
 		limit = -1,
 		combat_only = true
 	},
 	b_atkpass_src = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
-		description = "Increases ATK and MATK of allies by 10 every other turn. Clear when defeated.",
+		description = "BUFFDESCRIPTATTACKPASSSRC",
 		t_name = 'atkpass_s',
 		limit = 1,
 		combat_only = true
 	},
 	b_resto= {
 		icon = "res://assets/images/traits/hitrate.png",
-		description = "Resting: physical resist increased by 20%%",
+		description = "BUFFDESCRIPTRESTO",
 		limit = 1,
 		t_name = 'resto'
 	},

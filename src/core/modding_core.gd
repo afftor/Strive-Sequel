@@ -549,6 +549,7 @@ func fix_main_data():
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
 	
+	
 	#fix tasks
 	for i in races.tasklist.values():
 		i.name = tr("TASK" + i.code.to_upper())

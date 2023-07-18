@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=30]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=32]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_items.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=34]
@@ -52,9 +52,7 @@ use_filter = true
 extra_spacing_top = 1
 font_data = ExtResource( 14 )
 
-[node name="date" type="Control" groups=[
-"pauseprocess",
-]]
+[node name="date" type="Control" groups=["pauseprocess"]]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
@@ -150,8 +148,8 @@ __meta__ = {
 margin_top = 149.0
 margin_right = 182.0
 margin_bottom = 196.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Name"
 align = 1
 valign = 1
@@ -190,8 +188,8 @@ margin_left = 1.0
 margin_top = 148.0
 margin_right = 183.0
 margin_bottom = 195.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Name"
 align = 1
 valign = 1
@@ -309,8 +307,8 @@ margin_left = 269.0
 margin_top = 70.0
 margin_right = 1138.0
 margin_bottom = 160.0
-custom_fonts/font = ExtResource( 32 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 32 )
 text = "Test"
 align = 1
 valign = 1
@@ -353,8 +351,8 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "+"
 align = 1
 valign = 1
@@ -388,8 +386,8 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "+"
 align = 1
 valign = 1
@@ -470,8 +468,8 @@ texture = ExtResource( 33 )
 [node name="Label" type="Label" parent="Items"]
 margin_right = 450.0
 margin_bottom = 90.0
-custom_fonts/font = ExtResource( 32 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 32 )
 text = "Items"
 align = 1
 valign = 1

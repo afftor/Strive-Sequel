@@ -3007,7 +3007,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['unsellable'],
+		tags = ['unsellable','no_random'],
 		basestats = {wits_bonus = 10, exp_gain_mod = 1},
 	},
 }

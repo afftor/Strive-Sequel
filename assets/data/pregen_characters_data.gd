@@ -3,7 +3,7 @@ extends Node
 var pregen_characters = {
 	Daisy = {
 		code = 'daisy',
-		name = 'Daisy',
+		name = tr('CHARNAMEDAISY'),
 		unique = 'daisy',
 		surname = '',
 		race = 'HalfkinBunny',
@@ -49,7 +49,7 @@ var pregen_characters = {
 
 	Kurdan = {
 		code = 'kurdan',
-		name = 'Kurdan',
+		name = tr('CHARNAMEKURDAN'),
 		unique = 'kurdan',
 		surname = '',
 		race = 'Orc',
@@ -89,7 +89,7 @@ var pregen_characters = {
 	},
 	Aire = {
 		code = 'aire',
-		name = 'Aire',
+		name = tr('CHARNAMEAIRE'),
 		#unique = 'aire',
 		surname = '',
 		race = 'Elf',
@@ -135,7 +135,7 @@ var pregen_characters = {
 	},
 	Anastasia = {
 		code = 'anastasia',
-		name = 'Anastasia',
+		name = tr('CHARNAMEANASTASIA'),
 		unique = 'anastasia',
 		surname = '',
 		race = 'Human',
@@ -180,7 +180,7 @@ var pregen_characters = {
 	},
 	AnastasiaBroken = {
 		code = 'anastasiaBroken',
-		name = 'Anastasia',
+		name = tr('CHARNAMEANASTASIA'),
 		unique = 'AnastasiaBroken',
 		surname = '',
 		race = 'Human',
@@ -225,7 +225,7 @@ var pregen_characters = {
 	},
 	Zephyra = {
 		code = 'zephyra',
-		name = 'Zephyra',
+		name = tr('CHARNAMEZEPHYRA'),
 		unique = 'zephyra',
 		surname = '',
 		race = 'HalfkinFox',
@@ -270,7 +270,7 @@ var pregen_characters = {
 	},
 	Mae = {
 		code = 'mae',
-		name = 'Mae',
+		name = tr('CHARNAMEMAE'),
 		unique = 'mae',
 		surname = '',
 		race = 'BeastkinTanuki',
@@ -317,7 +317,7 @@ var pregen_characters = {
 	},
 	Lilia = {
 		code = 'lilia',
-		name = 'Lilia',
+		name = tr('CHARNAMELILIA'),
 		unique = 'lilia',
 		surname = '',
 		race = 'Fairy',
@@ -363,7 +363,7 @@ var pregen_characters = {
 	},
 	Lilith = {
 		code = 'lilith',
-		name = 'Lilith',
+		name = tr('CHARNAMELILITH'),
 		unique = 'lilith',
 		surname = '',
 		race = 'Fairy',
@@ -410,7 +410,7 @@ var pregen_characters = {
 	},
 	Cali = {
 		code = 'cali',
-		name = 'Cali',
+		name = tr('CHARNAMECALI'),
 		unique = 'cali',
 		surname = '',
 		race = 'HalfkinWolf',
@@ -455,7 +455,7 @@ var pregen_characters = {
 	},
 	Jean = {
 		code = 'jean',
-		name = 'Jean',
+		name = tr('CHARNAMEJEAN'),
 		unique = 'jean',
 		surname = '',
 		race = 'Human',
@@ -500,7 +500,7 @@ var pregen_characters = {
 	},
 	Hara = {
 		code = 'hara',
-		name = 'Hara',
+		name = tr('CHARNAMEHARA'),
 		unique = 'hara',
 		surname = '',
 		race = 'Goblin',
@@ -545,7 +545,7 @@ var pregen_characters = {
 	
 	Heleviel = {
 		code = 'heleviel',
-		name = 'Heleviel',
+		name = tr('CHARNAMEHELEVIEL'),
 		unique = 'heleviel',
 		surname = '',
 		race = 'Elf',
@@ -591,7 +591,7 @@ var pregen_characters = {
 	
 	Lira = {
 		code = 'lira',
-		name = 'Lira',
+		name = tr('CHARNAMELIRA'),
 		unique = 'lira',
 		surname = '',
 		race = 'TribalElf',

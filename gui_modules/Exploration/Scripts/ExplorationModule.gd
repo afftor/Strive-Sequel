@@ -18,17 +18,17 @@ var person_to_hire
 var selectedquest
 
 var city_options = {
-	location_purchase = "Buy Dungeon",
-	quest_board = "Notice Board",
+	location_purchase = "EXPLORBUYDUNGEON",
+	quest_board = "EXPLORENOTICEBOARD",
 }
 
 var faction_actions = {
-	hire = 'Hire',
-	sellslaves = "Sell Characters",
-	quests = 'Quests',
-	upgrade = "Upgrades",
-	services = "Service",
-	guild_shop = "Guild Shop"
+	hire = "EXPLOREHIRE",
+	sellslaves = "EXPLORESELLCHR",
+	quests = "EXPLOREQUESTS",
+	upgrade = "EXPLOREUPGRADES",
+	services = "EXPLORESERVICE",
+	guild_shop = "EXPLOREGUILDSHOP",
 }
 
 var positiondict = {
@@ -199,7 +199,7 @@ func build_area_menu(area_actions):
 	var has_exotic_slaver = false
 	for option in input_handler.active_area.capital_options:
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = city_options[option]
+		newbutton.get_node("Label").text = tr(city_options[option])
 		newbutton.connect("toggled", self, option, [newbutton])
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
@@ -236,7 +236,7 @@ func build_area_menu(area_actions):
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-	newbutton.get_node("Label").text = "Shop"
+	newbutton.get_node("Label").text = tr("EXPLORESHOP")
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
 	if has_exotic_slaver:
 		newbutton.get_parent().move_child(newbutton, newbutton.get_position_in_parent()-1)
@@ -1229,7 +1229,7 @@ func update_guild_actions(guild):
 			)
 	for i in guild.actions:
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = faction_actions[i]
+		newbutton.get_node("Label").text = tr(faction_actions[i])
 		newbutton.connect("toggled", self, "faction_" + i, [newbutton, guild])
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 		newbutton.texture_pressed = load(

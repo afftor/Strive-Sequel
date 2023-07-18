@@ -219,7 +219,7 @@ func rebuild_traits():
 
 func update_trait_capacity():
 	person = input_handler.interacted_character
-	var text = 'Current Capacity: ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
+	var text = tr("SIBLINGMODULECURRENTCAPACITY")+': ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
 	$SexTraitsPanel/TraitCapacity.text = text
 	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta("always_disabled") && i.get_meta("always_disabled") == true:

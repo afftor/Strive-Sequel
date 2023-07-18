@@ -74,7 +74,7 @@ func build_location_group():
 
 func start_combat():
 	if globals.check_location_group() == false:
-		input_handler.SystemMessage("Select at least 1 character to fight. ")
+		input_handler.SystemMessage(tr("SYSMESSAGEATLEAST1CHAR"))#)
 		return
 	hide()
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close({finish_scene = false})

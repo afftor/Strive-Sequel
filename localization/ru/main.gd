@@ -18,7 +18,7 @@ var TranslationDict = {
 	MENUMODS = "Моды",
 	MENUGALLERY = "Галерея",
 	MENUQUIT = "Выход",
-	MENUCHANGELOG = "Изменения",
+	MENUCHANGELOG = "Список изменений",
 	#Gallery
 	GALLERYNAME = "Галерея",
 	GALLERYSTORY = "Сюжет",
@@ -56,7 +56,7 @@ var TranslationDict = {
 						Текст: S[Mutt]
 
 						Вычитка: Dorant, ralphomayo, Khuja
-
+						Перевод на русский: LordKrogaton
 						Также спасибо: negtize724
 
 						Окружающий шум битвы: мечи и крики - pfranzen
@@ -99,7 +99,7 @@ var TranslationDict = {
 	OPTCHEATCODEACTIVATE = "Код поддержки активирован",
 	OPTCHEATCHEATMENU = "Меню читов",
 	#loadsavepanel
-	LSPMODE = "Мод",
+	LSPMODE = "Режим",
 	LSPVER = "Версия",
 	LSPGOLD = "Золото",
 	LSPPOPULATION = "Население",
@@ -107,9 +107,92 @@ var TranslationDict = {
 	LSPDAY = "День",
 	LSPHOUR = "Час",
 	LSPIMPORTMODE = "Режим импорта",
-	LSPSAVENAME = "savename",
-	LSPUPDATESAVEFILE = "Обновить файл сохранения",
+	LSPSAVENAME = "сохранение",
+	LSPUPDATESAVEFILE = "Обновление файла сохранения",
 	LSPOUTDATED = "{color=red| (Устарело - используйте режим импорта)}",
+
+	PRONOUNHE = "Он",
+	PRONOUNHEF = "Она",
+	PRONOUNHEL = "он",
+	PRONOUNHELF = "она",
+	PRONOUNHIS = "Его",
+	PRONOUNHISF = "Ее",
+	PRONOUNHISL = "его",
+	PRONOUNHISLF = "ее",
+	PRONOUNHIML = "его",
+	PRONOUNHIMLF = "её",
+	PRONOUNSIR = "Господин",
+	PRONOUNSIRF = "Мисс",
+	PRONOUNSON = "сын",
+	RPONOUNSONF = "дочь",
+	PRONOUNFATHER = "отец",
+	PRONOUNFATHERF = "мать",
+	PRONOUNBROTHER = "брат",
+	PRONOUNBROTHERF = "сестра",
+	PRONOUNGENTLEMAN = "джентльмен",
+	PRONOUNGENTLEMANF = "леди",
+	PRONOUNSEX = "мужчина",
+	PRONOUNSEXF = "женщина",
+	PRONOUNSEXH = "фута",
+	PRONOUNMAN = "мужчина",
+	PRONOUNMANF = "женщина",
+	PRONOUNHUSBAND = "муж",
+	PRONOUNHUSBANDF = "жена",
+	PRONOUNGROOM = "жених",
+	PRONOUNGROOMF = "невеста",
+	
+	
+	
+	BUTTONMENU = "Меню",
+	FINISHTURNBUTTON = "Конец хода",
+	EXPLORESHOP = "Магазин",
+	EXPLORBUYDUNGEON = "Купить подземелье",
+	EXPLORENOTICEBOARD = "Доска объявлений",
+	EXPLOREHIRE = "Нанять",
+	EXPLORESELLCHR = "Продать персонажей",
+	EXPLOREQUESTS = "Квесты",
+	EXPLOREUPGRADES = "Улучшения",
+	EXPLORESERVICE = "Сервис",
+	EXPLOREGUILDSHOP = "Магазин гильдии",
+	
+	SIBLINGMODULESKILLSKILLS = "Навыки секса",
+	SIBLINGMODULECONSENT = "Согласие: ",
+	SIBLINGMODULERULES = "Правила и условия",
+	SIBLINGMODULESEXTRAITS = "Сексуальные черты",
+	SIBLINGMODULERELATIVES = "Родственники",
+	SIBLINGMODULETRAININGS = "Обучение",
+	SIBLINGMODULEFOODCONSUMPTION = "Суточное потребление",
+	SIBLINGMODULEMAIN = "Главный",
+	SIBLINGMODULESEX = "Пол",
+	SIBLINGMODULETRAITCAPACITY = "Емкость черт",
+	SIBLINGMODULEFOODFILTER = "Пищевой фильтр",
+	SIBLINGMODULEPARENTS = "Родители",
+	SIBLINGMODULESIBLINGS = "Братья и сестры",
+	SIBLINGMODULECHILDDREN = "Дети",
+	SIBLINGMODULECURRENTCAPACITY = "Текущая емкость",
+	SYSMESSAGEATLEAST1CHAR = "Выберите хотя бы 1 персонажа для боя.",
+	
+	OPERANTATLEAST = "По крайней мере",
+	OPERANTATMOST = "Максимум",
+	
+	CHARNAMEDAISY = "Дейзи",
+	CHARNAMECALI = "Кали",
+	CHARNAMEZEPHYRA = "Зефира",
+	CHARNAMEAIRE = "Эйра",
+	CHARNAMEANASTASIA = "Анастасия",
+	CHARNAMEKURDAN = "Курдан",
+	CHARNAMEMAE = "Мэй",
+	CHARNAMELILIA = "Лилия",
+	CHARNAMELILITH = "Лилит",
+	CHARNAMEJEAN = "Жанна",
+	CHARNAMEHARA = "Хара",
+	CHARNAMEHELEVIEL = "Хелевиэль",
+	CHARNAMELIRA = "Лира",
+	
+	
+	INVENTORYCHARACTERLIST = "Список персонажей",
+	INVENTORYSTASH = "Тайник",
+	INVENTORYFILTER = "Фильтр",
 	#newgame
 	NEWGAMENAME = "Новая игра",
 	NEWGAMESETTING = "Настройки",
@@ -143,8 +226,8 @@ var TranslationDict = {
 	TUTORIALINFOENABLE = "Включить обучение",
 	#Учебник
 	TUTORIALNAME = "Помощь",
-	TUTORIALPREV = "< Предыдущий",
-	TUTORIALNEXT = "Следующий >",
+	TUTORIALPREV = "< Предыдущая",
+	TUTORIALNEXT = "Следующая >",
 	TUTORIALLIST1 = "введение",
 	TUTORIALLIST2 = "крафт",
 	TUTORIALLIST3 = "путешествие",
@@ -157,7 +240,7 @@ var TranslationDict = {
 	#LeftMenuModule
 	LMMTRAVEL = "Путешествия",
 	LMMUPGRADES = "Улучшения",
-	LMMDATE = "Дата",
+	LMMDATE = "Свидания",
 	LMMINVENTORY = "Инвентарь",
 	LMMCRAFT = "Крафт",
 	LMMJOURNAL = "Журнал",
@@ -167,12 +250,12 @@ var TranslationDict = {
 	MSLMNNAME = "Имя",
 	MSLMSTAT = "HP/MP",
 	MSLMOCCU = "Занятие",
-	MSLMOB = "Повин",
+	MSLMOB = "Повин.,",
 	MSLMEXP = "Опыт",
-	MSLMLOC = "Сейчас в",
+	MSLMLOC = "Локация",
 	MSLMTYPE = "Тип",
 	
-	MSLMRELOC = "В поездке",
+	MSLMRELOC = "В пути",
 	MSLMRE = "через",
 	MSLMTURN = "ходов",
 	MSLMMANSION = "Поместье",
@@ -184,11 +267,30 @@ var TranslationDict = {
 	
 	#factor_descripts
 	FACTORDESCRIPTS1 = "Ужасно",
-	FACTORDESCRIPTS2 = "Бедно",
+	FACTORDESCRIPTS2 = "Слабо",
 	FACTORDESCRIPTS3 = "Средне",
 	FACTORDESCRIPTS4 = "Хорошо",
 	FACTORDESCRIPTS5 = "Отлично",
-	FACTORDESCRIPTS6 = "Великолепно",
+	FACTORDESCRIPTS6 = "Шикарно",
+	
+	
+	
+	REQORHIGHER = "или выше",
+	REQORLOWER = "или ниже",
+	REQHASCLASS = "Нужен класс",
+	REQCONFLICTCLASS = "Конфликтующий класс",
+	REQHASANYCLASS = "Нужна любая раса из",
+	REQRACE = "Раса",
+	REQRACEISBEAST = "Только для зверорас",
+	REQMUSTHAVEGEAR = "Должен владеть",
+	REQPROFLIMIT = "Только",
+	REQPROFLIMIT2 = "разрешено",
+	REQONEOFRACES = "Только для",
+	REQTRAIT = "Требуется",
+	REQPOPULATION = "Не хватает Места",
+	REQSEX = "Не разрешено для",
+	REQVIRGINFALSE = "Не девственник/ца",
+	
 	#SlaveInfoModule
 	SLAVE = "Раб",
 	SLAVEINFOMODULEOBEDIENCE = "Повиновение",
@@ -197,14 +299,14 @@ var TranslationDict = {
 	SIMOBEDIENCEDRAIN = "Утечка повиновения",
 	SIMATK = "АТК:",
 	SIMDEF = "ЗАЩ:",
-	SIMHITRATE = "Точность:",
-	SIMSPEED = "Скорость:",
-	SIMCRITICAL = "Шанс крита:",
+	SIMHITRATE = "Точн:",
+	SIMSPEED = "Скр.:",
+	SIMCRITICAL = "Шанс кр.:",
 	SIMMATK = "MATK:",
 	SIMMDEF = "MЗАЩ:",
 	SIMEVASION = "Уворот:",
-	SIMARMORPEN = "Проб. брони:",
-	SIMCRITICALMOD = "Мод. крита:",
+	SIMARMORPEN = "Проб. бр.:",
+	SIMCRITICALMOD = "Мод. кр.:",
 	
 	NORMALRESIST = "обычный",
 	FIRERESIST = "огонь",
@@ -255,7 +357,7 @@ var TranslationDict = {
 	LOADINGTIP1 = "Некоторые расы могут получить эксклюзивные классы",
 	LOADINGTIP2 = "Начальные возможные статы персонажа определяются его расой",
 	LOADINGTIP3 = "Цена персонажа оказывает большое влияние на сервисные задания",
-	LOADINGTIP4 = "В магазинах можно приобрести необходимые материалы и предметы для квестов. Также можно продать излишние материалы за золото",
+	LOADINGTIP4 = "В магазинах можно приобрести необходимые материалы и предметы для квестов. Там же можно продать излишние материалы за золото",
 	LOADINGTIP5 = "Некоторые сцены потребуют от вас экспериментов с выбором диалогов",
 	LOADINGTIP6 = "Подземелья - ваш лучший источник дохода на коротких временных отрезках",
 	LOADINGTIP7 = "Выбор правильного типа атаки для каждого врага значительно повысит ваш урон",
@@ -380,7 +482,7 @@ var TranslationDict = {
 	MATERIALOBSIDIAN = "Обсидиан",
 	MATERIALOBSIDIANADJ = "Из обсидиана",
 	MATERIALOBSIDIANDESCRIPT = "Черный блестящий камень, найденный вблизи действующих вулканов. Он может служить высококачественным украшением во многих конструкциях, ювелирных изделиях или качественных инструментах..",
-	MATERIALWOOD = "Необработанная древесина",
+	MATERIALWOOD = "Древесина",
 	MATERIALWOODADJ = "Из древесины",
 	MATERIALWOODDESCRIPT = "Прочная древесина для общих строительных и мебельных целей. Приобретается при распиловке древесины. ",
 	MATERIALWOODMAGIC = "Магическая древесина",
@@ -390,8 +492,8 @@ var TranslationDict = {
 	MATERIALWOODIRONADJ = "Из железной древесины",
 	MATERIALWOODIRONDESCRIPT = "Плотный и прочный кусок дерева, подходящий даже для оборонительных целей.",
 	MATERIALWOODANCIENT = "Древняя древесина",
-	MATERIALWOODANCIENTADJ = "Из древней превесины",
-	MATERIALWOODANCIENTDESCRIPT = "Древесина древнего растения. Его стойкость на протяжении веков свидетельствует о его достоинствах.",
+	MATERIALWOODANCIENTADJ = "Из древней древесины",
+	MATERIALWOODANCIENTDESCRIPT = "Древесина древнего растения. Её стойкость на протяжении веков свидетельствует о её достоинствах.",
 	MATERIALLEATHER = "Кожа",
 	MATERIALLEATHERADJ = "Из кожи",
 	MATERIALLEATHERDESCRIPT = "Обычная кожа животных. Может использоваться для изготовления легких доспехов и аксессуаров. Добывается путем охоты и убийства слабых монстров. ",
@@ -493,17 +595,17 @@ var TranslationDict = {
 	ITEMELEGANT_CHOKER = "Изящный чокер",
 	ITEMELEGANT_CHOKERDESCRIPT = "Верный признак вашего владения.",
 	ITEMSTEEL_COLLAR = "Стальной ошейник",
-	ITEMSTEEL_COLLARDESCRIPT = "Холодный, неудобный металлический ошейник, часто используемый для наказания рабов...",
+	ITEMSTEEL_COLLARDESCRIPT = "Холодный, неудобный металлический ошейник, часто используемый для наказания рабов.",
 	ITEMAMULET_OF_RECOGNITION = "Амулет признания",
 	ITEMAMULET_OF_RECOGNITIONDESCRIPT = "Свидетельство о признании Гильдией, которое было подарено Амелией. ",
 	ITEMANIMAL_EARS = "Животные ушки",
 	ITEMANIMAL_EARSDESCRIPT = "Выполненные в форме определенных звериных черт, они могут обмануть неопытного зрителя. Хотя на самом деле они движутся не так, как вы ожидаете, вторая пара обычно является приманкой.",
 	ITEMTAIL_PLUG = "Хвостовая затычка",
-	ITEMTAIL_PLUGDESCRIPT = "Хвост, похожий на кошачий, обычно ассоциируется со звериным родом, однако его чувствительность отсутствует, если его не дергать....",
+	ITEMTAIL_PLUGDESCRIPT = "Хвост, похожий на кошачий, обычно ассоциируется со звериным родом, однако его чувствительность отсутствует, если его не дергать...",
 	ITEMANIMAL_GLOVES = "Животные перчатки",
 	ITEMANIMAL_GLOVESDESCRIPT = "Пара перчаток, похожих на лапы. Очень неудобны в ручном труде, но почему-то до сих пор популярны среди определенных энтузиастов.",
 	ITEMPET_SUIT = "Костюм для питомца",
-	ITEMPET_SUITDESCRIPT = "Костюм для животных, часто используемый для интимных игр. Делает владельца симпатичнее за счет маневренности..",
+	ITEMPET_SUITDESCRIPT = "Костюм для животных, часто используемый для интимных игр. Делает владельца симпатичнее за счет маневренности.",
 	ITEMSHACKLES = "Кандалы",
 	ITEMSHACKLESDESCRIPT = "Тяжелые цепи для опасных личностей.",
 	ITEMCHASTITY_BELT = "Пояс целомудрия",
@@ -518,11 +620,13 @@ var TranslationDict = {
 	ITEMANAL_PLUGDESCRIPT = "Дерево в форме пробки. Предназначен для использования сзади. ",
 	ITEMSTRAPON = "Страпон",
 	ITEMSTRAPONDESCRIPT = "Позволяет девочкам выдавать себя за мальчиков, но только в постели. ",
+	ITEMOFFHAND_BOOK = "Магический том",
+	ITEMOFFHAND_BOOKDESCRIPT = "Редкий и ценный магический предмет. В нем содержатся мощные заклинания и знания, которые могут существенно помочь любому искателю приключений в его путешествии.",
 
 	ITEMAPHRODISIAC = "Афродизиак",
 	ITEMAPHRODISIACDESCRIPT = "Сильное зелье, пробуждающее внутреннюю похоть человека. \n\nПревращает персонажа в возбужденного во время сексуального взаимодействия. ",
 	ITEMALCOHOL = "Виски",
-	ITEMALCOHOLDESCRIPT = "Простой крепкий напиток, изготовленный из различных зерен. \n\nУлучшает повиновение при обычном употреблении. Повышает возбудимость и чувствительность во время секса, но может быть отвергнут слабым телом..",
+	ITEMALCOHOLDESCRIPT = "Простой крепкий напиток, изготовленный из различных зерен. \n\nУлучшает повиновение при обычном употреблении. Повышает возбудимость и чувствительность во время секса, но может быть отвергнут слабым телом.",
 	ITEMBEER = "Пиво",
 	ITEMBEERDESCRIPT = "Нектар богов. \n\nУлучшает повиновение при обычном употреблении. Повышает возбудимость и чувствительность во время секса.",
 	ITEMTAMEDRUG = "Наркотик приручения",
@@ -583,7 +687,7 @@ var TranslationDict = {
 	ITEMRIBBON = "Ленточка",
 	ITEMWORKER_GLOVESDESCRIPT = "Пара толстых перчаток, подходящих для тяжелой работы. Лучше снять их перед спальней",
 	ITEMGAUNTLETSDESCRIPT = "Перчатки из прочного металла, предназначенные для защиты рук. Как правило, не подходят для эротических ролевых игр",
-	ITEMCIRCLETDESCRIPT = "Хорошо сделанное металлическое украшение, усиливающее магическую силу владельца..",
+	ITEMCIRCLETDESCRIPT = "Хорошо сделанное металлическое украшение, усиливающее магическую силу владельца.",
 	ITEMCROWNDESCRIPT = "Старая корона неизвестного происхождения",
 	ITEMBELL_COLLARDESCRIPT = "Несмотря на свою природу, этот воротник, считающийся скорее предметом моды, пришел из далекой страны.",
 	ITEMRIBBONDESCRIPT = "Ярко-красная лента неизвестной природы. ",
@@ -598,7 +702,7 @@ var TranslationDict = {
 	ITEMEARRINGS = "Серьги", 
 	ITEMEARRINGSDESCRIPT = "Пара модных украшений.", 
 	ITEMAIRE_BOW = "Сердечная нить древа",
-	ITEMAIRE_BOWDESCRIPT = "Сильный лук, предположительно эльфийского происхождения..",
+	ITEMAIRE_BOWDESCRIPT = "Сильный лук, предположительно эльфийского происхождения.",
 	ITEMWITCH_HAT = "Шляпа ведьмы",
 	ITEMWITCH_HATDESCRIPT = "Каноническая шляпа с волшебными свойствами.",
 	
@@ -713,7 +817,6 @@ var TranslationDict = {
 	TOOLTIPSKIPPROLOGUE = "Пропускает квесты пролога и начинает первую сюжетную арку. Задание по займу отключено. ",
 	
 	TOOLTIPSKILLPOINTS = "Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.",
-
 	
 
 	SAVENAME = "Сохранение",
@@ -771,7 +874,7 @@ var TranslationDict = {
 	ENERGY = "Энергия",
 	TIME = "Время",
 	CRAFT = "Крафт",
-	BLACKSMITH = "Кузня",
+	BLACKSMITH = "Кузница",
 	PROGRESS = "Прогресс",
 	REPAIR = "Починить",
 	REPAIRALL = "Починить все",
@@ -783,7 +886,7 @@ var TranslationDict = {
 	SELECTREPAIR = "Выберите предмет(ы) для ремонта",
 	TOTALPRICE = "Общая стоимость",
 	SELECTMATERIAL = "Выберите материалы для всех частей.",
-	INPOSESSION = "Во наличии",
+	INPOSESSION = "В наличии",
 	BASECHANCE = "Базовый шанс",
 	CANTREPAIREFFECT = "Этот предмет не подлежит ремонту.",
 	NOTENOUGH = "Недостаточно",
@@ -814,8 +917,8 @@ var TranslationDict = {
 	CHAR_UNAVALIABLE = "Недоступен",
 	NO_FREE_SLOTS = "Для этой задачи не осталось свободных мест",
 
-	LOGREPORTPREGNANCY = "[name] говорит вам, что [he], кажется, беременный.",
-	LOGREPORTPREGNANCYMASTER = "Похоже, что вы ([name]), беременны..",
+	LOGREPORTPREGNANCY = "[name] говорит вам, что [he], кажется, беременна.",
+	LOGREPORTPREGNANCYMASTER = "Похоже, что вы ([name]), беременны.",
 
 	SELECT = "Выбрать",
 	SELECTTOOL = "Выбрать инструмент",
@@ -868,10 +971,28 @@ var TranslationDict = {
 	PAUSEBUTTONTOOLTIP = 'Пауза\nГорячая клавиша: 1',
 	NORMALBUTTONTOOLTIP = 'Нормальная скорость\nHotkey: 2',
 	FASTBUTTONTOOLTIP = 'Быстрая скорость\nHotkey: 3',
-
-
-
-
+	
+	
+	QUESTPARTREQUIREMENTS = "Требования к частям",
+	QUESTCOMPLETEQUESTLOC = "Завершить квестовое подземелье",
+	QUESTCOMPLETEQUESTLOC2 = "Завершить квестовое подземелье в",
+	QUESTREQUIRED = "Требуется",
+	QUESTSLAVEREQUIRED = "Требуется раб",
+	QUESTSTATS = "Статистика",
+	QUESTSEX = "Пол",
+	QUESTWORKDURATION = "Продолжительность работы",
+	QUESTDAYS = "Дней",
+	QUESTONETIMETASK = "Выполнить одноразовое задание",
+	QUESTGOLDREWARD = "Плата будет определена в зависимости от стоимости конечного предмета",
+	QUESTTMASTERCHARMBONUS = "Бонус обаяния Мастера",
+	QUESTGOLD = "Золото",
+	QUESTREPUTATION = "Репутация",
+	QUESTTASKACQ = "Задание получено",
+	REQUIREMENTSARENTMET = "Требования не выполнены",
+	NOTENOUGHLOYALTY = "Недостаточно лояльности",
+	QUESTCOMPLETEMESSAGE = "Квест завершен",
+	QUESTDAYSLEFT = "дней осталось",
+	
 	#Skills
 	SKILLATTACK = "Атака",
 	SKILLATTACKDESCRIPT = "Атакует цель с помощью экипированного оружия.",
@@ -934,11 +1055,11 @@ var TranslationDict = {
 	SKILLENTANGLE = "Запутать",
 	SKILLENTANGLEDESCRIPT = "Наносит 130% от MATK как урон землей и оглушает цель на 1 ход.",
 	SKILLSERRATED_SHOT = "Зазубренный выстрел",
-	SKILLSERRATED_SHOTDESCRIPT = "Наносит 90% ATK физического урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход..",
+	SKILLSERRATED_SHOTDESCRIPT = "Наносит 90% ATK физического урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход.",
 	SKILLMASS_LESSER_HEAL = "Массовое малое исцеление",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Лечит колонну на 100% от MATK.",
 	SKILLBLIZZARD = "Метель",
-	SKILLBLIZZARDDESCRIPT = "Наносит всем противникам 45% от МАТК в виде урона водой. С вероятностью 30% снижает скорость цели на 20. С вероятностью 50% замораживает цель на 2 хода..",
+	SKILLBLIZZARDDESCRIPT = "Наносит всем противникам 45% от МАТК в виде урона водой. С вероятностью 30% снижает скорость цели на 20. С вероятностью 50% замораживает цель на 2 хода.",
 	SKILLBLESS = "Благословление",
 	SKILLBLESSDESCRIPT = "Увеличивает АТК цели на 25% на 3 хода.",
 	SKILLMENTAL_BLESS = "Ментальное благословение",
@@ -953,11 +1074,11 @@ var TranslationDict = {
 	SKILLWIND_ATK = "Порыв ветра",
 	SKILLWIND_ATKDESCRIPT = "Наносит 80% АТК в виде урона воздухом одной цели и случайному противнику.",
 	SKILLWATER_ATK = "Водяной клинок",
-	SKILLWATER_ATKDESCRIPT = "Наносит 110% АТК урона водой. Вызывает у цели кровотечение на 2 хода, нанося урон (30% от ATK) каждый ход..",
+	SKILLWATER_ATKDESCRIPT = "Наносит 110% АТК урона водой. Вызывает у цели кровотечение на 2 хода, нанося урон (30% от ATK) каждый ход.",
 	SKILLHOLY_ATK = "Святая атака",
 	SKILLHOLY_ATKDESCRIPT = "Наносит 120% АТК урона светом. С вероятностью 20% сбивает цель с толку.",
 	SKILLFIRE_CLEAVE = "Огненное рассечение",
-	SKILLFIRE_CLEAVEDESCRIPT = "Наносит 70% ATK урона огнем колонне. С вероятностью 20% сжигает цель на 2 хода, нанося урон (20% от ATK) каждый ход..",
+	SKILLFIRE_CLEAVEDESCRIPT = "Наносит 70% ATK урона огнем колонне. С вероятностью 20% сжигает цель на 2 хода, нанося урон (20% от ATK) каждый ход.",
 	SKILLEARTH_SHATTER = "Сокрушение земли",
 	SKILLEARTH_SHATTERDESCRIPT = "Наносит всем врагам урон землей в размере 60% от ATK. Снижает уклонение на 25 на 2 хода.",
 	SKILLREVENGE = "Возмездие",
@@ -965,10 +1086,10 @@ var TranslationDict = {
 	SKILLFIRE_BURST = "Огненный взрыв",
 	SKILLFIRE_BURSTDESCRIPT = "Наносит всем врагам 50% от MATK в виде урона огнем. Снижает точность цели на 20 на 3 хода.",
 	SKILLAIR_CUTTER = "Воздушный разрез",
-	SKILLAIR_CUTTERDESCRIPT = "Наносит 85% от ATK в виде урона воздухом одной цели и 2 случайным врагам. С вероятностью 50% вызывает у цели кровотечение на 2 хода, нанося урон (20% от ATK) каждый ход..",
+	SKILLAIR_CUTTERDESCRIPT = "Наносит 85% от ATK в виде урона воздухом одной цели и 2 случайным врагам. С вероятностью 50% вызывает у цели кровотечение на 2 хода, нанося урон (20% от ATK) каждый ход.",
 	SKILLHOLY_LANCE = "Святое копье",
 	SKILLHOLY_LANCEDESCRIPT = "Наносит 100% АТК урона Светом по ряду.",
-	SKILLSWIPE = "Взмахнуть",
+	SKILLSWIPE = "Взмах",
 	SKILLSWIPE_EN = "Swipe",
 	SKILLSWIPEDESCRIPT = "Наносит колонне 70% от ATK в качестве урона воздухом. С вероятностью 30% снижает защиту цели на 20 на 2 хода.",
 	SKILLARROWRAIN = "Дождь из стрел",
@@ -978,7 +1099,7 @@ var TranslationDict = {
 	SKILLSHADOWSTRIKE = "Теневой удар",
 	SKILLSHADOWSTRIKEDESCRIPT = "Наносит цели 130% от ATK как Темный урон. Снижает ATK и MATK цели на 20 на 2 хода.",
 	SKILLFIREARR = "Огненная стрела",
-	SKILLFIREARRDESCRIPT = "Наносит 120% от ATK как урон от огня. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход..",
+	SKILLFIREARRDESCRIPT = "Наносит 120% от ATK как урон от огня. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход.",
 	SKILLLIGHTNING = "Молния",
 	SKILLLIGHTNINGDESCRIPT = "Наносит цели 125% от МАТК в виде урона воздухом. Оглушает цель на 1 ход.",
 	SKILLMINDBLAST = "Взрыв разума",
@@ -998,7 +1119,7 @@ var TranslationDict = {
 	SKILLLIGHT_SPELL_AOE = "Божественное сияние",
 	SKILLLIGHT_SPELL_AOEDESCRIPT = "Наносит 30% от MATK в виде урона светом всем врагам. Снижает MЗАЩ на 20 на 3 хода.",
 
-	SKILLENDURE = "Выдержать",
+	SKILLENDURE = "Выносливость",
 	SKILLENDUREDESCRIPT = "Увеличивает все сопротивления на 20% на 2 хода.",
 	SKILLMIRROR_IMAGE = "Зеркальное отражение",
 	SKILLMIRROR_IMAGEDESCRIPT = "Баффы для всех союзников: 25% шанс избежать любого урона от способностей на 2 хода (кроме разума). Заменяет Энергетическое поле.",
@@ -1042,7 +1163,7 @@ var TranslationDict = {
 	SKILLEARTHQUAKEDESCRIPT = "Наносит 40% от MATK в виде урона землей всем врагам в течение 3 ходов.",
 	SKILLEARTHQUAKE_GLOB = "Землетрясение",
 	SKILLL_ORB = "Сфера молнии",
-	SKILLL_ORBDESCRIPT = "Наносит цели 250% от MATK в виде урона воздухом. Если цель выживает, наносит половину урона случайному противнику..",
+	SKILLL_ORBDESCRIPT = "Наносит цели 250% от MATK в виде урона воздухом. Если цель выживает, наносит половину урона случайному противнику.",
 	
 	SKILLFLY_EVASION = "Полет",
 	SKILLFLY_EVASIONDESCRIPT = "Увеличивает уворот на 65 на 3 хода.",
@@ -1064,7 +1185,6 @@ var TranslationDict = {
 	WORKERS_PER_UPGRADE = "Рабочих на улучшение",
 
 	CORRECTTOOLEQUIPPED = "Правильно выбранный инструмент: применяется его бонус. ",
-
 
 	
 	TASKHUNTING = "Охота",
@@ -1117,6 +1237,9 @@ var TranslationDict = {
 	TASKRECRUIT_HARDDESCRIPT = "Поиск рекрутов в текущем местоположении. После завершения поиска вы сможете уговорить их присоединиться к вам в случае успеха.",
 	TASKMISSION = "Поручение",
 	TASKRONMISSIONCOMPLETE = "Когда задание будет выполнено, заберите награду из журнала.",
+
+	TASKPRODUCE = "Производство",
+	TASKPRODUCEDESCRIPT = "Назначен производить материалы",
 	
 	BEDROOMTOOLTIP = "Доступное количество персонажей для сексуальных взаимодействий. Увеличивается при улучшении спальни",
 	DATETOOLTIP = "Даты, оставшиеся на этой неделе. Увеличивается с фактором обаяния мастера и сбрасывается в начале недели.",
@@ -1134,7 +1257,7 @@ var TranslationDict = {
 	JOBTAILORCRAFTDESCRIPT = "Изготовление предметов в мастерской портного.",
 	JOBALCHEMYCRAFTDESCRIPT = "Изготовление предметов в алхимической мастерской.",
 	
-	BROTHELTOOLTIP = "Вы можете выбрать, какие задания будет разрешено выполнять персонажу во время работы в борделе. Переключая определенные задания, вы можете выбрать только те, которые будут разрешены. Пол клиента влияет только на сексуальные задания.\nБольшая ценность персонажа увеличивает заработок, большее обаяние увеличивает вероятность того, что вас попросят о сексе.\nРазличные задания улучшают и увеличивают разные характеристика.\nСервис - глобальный модификатор для этого задания..",
+	BROTHELTOOLTIP = "Вы можете выбрать, какие задания будет разрешено выполнять персонажу во время работы в борделе. Переключая определенные задания, вы можете выбрать только те, которые будут разрешены. Пол клиента влияет только на сексуальные задания.\nБольшая ценность персонажа увеличивает заработок, большее обаяние увеличивает вероятность того, что вас попросят о сексе.\nРазличные задания улучшают и увеличивают разные характеристика.\nСервис - глобальный модификатор для этого задания.",
 	
 	CAPTURETOOLTIP = "Эти персонажи были найдены вашей группой и могут быть завербованы в ваш поместье или проданы за быстрые деньги, как если бы вы продавали их вручную. Если местоположение было забыто, все персонажи продаются автоматически.",
 	CAPTURESELLTOOLTIP = "Продать этого персонажа за %d золота. Это равносильно продаже персонажа на рынке, но не позволит вам его выкупить.. ",
@@ -1144,7 +1267,6 @@ var TranslationDict = {
 	
 	SERVICEBOOSTTOOLTIP = "Здесь вы можете назначить дополнительное потребление предметов, которое увеличит производство от услуг. Эти предметы могут быть произведены на Ферме. ",
 	FARMTOOLTIP = "Вы можете назначить персонажа на ферму для производства дополнительных материалов, которые могут быть использованы для увеличения производства от услуг или проданы.",
-	
 	
 	FACTOR_INCREASE_TOOLTIP = "Пожертвовав ненужными персонажами, вы можете увеличить факторы роста других персонажей, если статистика персонажа-донора выше, чем у персонажа-получателя. Фактор роста может быть увеличен только на 1 за донора. Конечная цена определяется значением получателя.",
 	COMBAT_CHARACTER_CAPTURED = "Персонаж",
@@ -1156,7 +1278,7 @@ var TranslationDict = {
 	BROTHELHOSTESSDESCRIPT = "[name] будет развлекать клиентов болтовней и флиртом. Зависит от мудрости",
 	BROTHELDANCER = "Танцор/Танцовщица",
 	BROTHELDANCERDESCRIPT = "[name] будут ставить танцы и спектакли перед аудиторией. Зависит от физ. возможностей",
-	BROTHELSTRIPPER = "Stripper",
+	BROTHELSTRIPPER = "Стриптиз",
 	BROTHELSTRIPPERDESCRIPT = "[name] будет показывать [his] приватные места, не доходя до конца. Зависит от обаяния",
 	
 	BROTHELPETTING = "Без проникновения",
@@ -1178,14 +1300,14 @@ var TranslationDict = {
 	BROTHELMALESDESCRIPT = "[name] будут обслуживать клиентов-мужчин. Это может привести к беременности. Переключите, чтобы отключить.",
 	BROTHELFEMALES = "Женщины",
 	BROTHELFEMALESDESCRIPT = "[name]  будет обслуживать клиентов женского пола. Переключите, чтобы отключить.",
-	BROTHELFUTA = "Futas",
+	BROTHELFUTA = "Фута",
 	BROTHELFUTADESCRIPT = "[name] будет обслуживать клиентов-футанари. Это может привести к беременности. Переключите, чтобы отключить.",
 	
 	
 	BUTTONCLASS = "Классы и навыки",
 	BUTTONTRAINING = "Обучение и правила",
 	BUTTONGEAR = "Экипировка",
-	BUTTONCUSTOMIZATION = "Персонализация",
+	BUTTONCUSTOMIZATION = "Кастомизация",
 
 	SLAVEPARTNAME = "Имя",
 	SLAVEPARTSURNAME = "Фамилия",
@@ -1223,14 +1345,14 @@ var TranslationDict = {
 	SLAVESTARTINGCLASS = "Стартовый класс",
 	#Bodyparts
 
-	SIZETINY = "Крошечный",
+	SIZETINY = "Крошечный/ая",
 	SIZEPETITE = "Миниатюрный/ая",
 	SIZESHORT = "Низкий/ая",
 	SIZEAVERAGE = "Средний/яя",
 	SIZETALL = "Высокий/ая",
 	SIZETOWERING = "Высоченный/ая",
-	SIZESMALL = "Маленьки",
-	SIZEBIG = "Большой",
+	SIZESMALL = "Маленький/ая",
+	SIZEBIG = "Большой/ая",
 
 	SLAVESEXMALE = "Мужчина",
 	SLAVESEXFEMALE = "Женщина",
@@ -1269,15 +1391,23 @@ var TranslationDict = {
 
 
 
-
-	CLASSRIGHTCLICKDETAILS = "Щелкните правой кнопкой мыши для получения подробной информации",
-
-	TOOLTIPSEXTRAITS = "Сексуальные признаки - это особые бонусы, которые дают преимущества во время взаимодействий.. ",
-	TOOLTIPTAX = "Налоги - это золото, которое вы платите в начале каждой недели. Получение лучших улучшений увеличит стоимость вашего налога. Если ваше золото станет отрицательным, вы проиграете. ",
 	
 	
+	DESCRIPTCLASSSLAVE = "[name] является вашим рабом и должен подчиняться вашим приказам по закону.",
+	DESCRIPTCLASSPEON = "[name] - ваш слуга и должен выполнять ваши приказы",
+	DESCRIPTCLASSMERC = "[name] было нанят/а вами и стоит вам золота.",
+	
+	CLASSDETAILSKILLS = "Навыки",
+	CLASSDETAILCOMBATSKILLS = "Боевые навыки",
+	CLASSRIGHTCLICKDETAILS = "ПКМ для подробностей",
+	
+	
+	TOOLTIPSEXTRAITS = "Половые черты - это специальные бонусы, дающие преимущества при взаимодействии. ",
+	TOOLTIPTAX = "Налоги - это золото, которое вы платите в начале каждой недели. Получение улучшений увеличивает стоимость налога. Если ваше золото становится отрицательным, вы проиграете. ",
+	
+		
 	STATHP = "Здоровье",
-	STATHPDESCRIPT = "Здоровье уменьшается в бою, а также от некоторых умений и событий. Когда здоровье уменьшается до 0, персонаж умирает..",
+	STATHPDESCRIPT = "Здоровье уменьшается в бою, а также от некоторых умений и событий. Когда здоровье уменьшается до 0, персонаж умирает.",
 	STATENERGY = "Энергия",
 	STATENERGYDESCRIPT = "Энергия восстанавливается во время сна и требуется для выполнения заданий. Когда персонаж вынужден работать без остатка энергии, он накапливает Истощение. ",
 	STATHPMAX = "Макс. Здоровье",
@@ -1291,7 +1421,7 @@ var TranslationDict = {
 	STATMPMAX = "Макс. Мана",
 	STATMPMAXMOD = "Макс. Мана",
 	STATHITRATE = "Точность",
-	STATHITRATEDESCRIPT = "Шанс поразить противника. Уменьшается уворотом цели..",
+	STATHITRATEDESCRIPT = "Шанс поразить противника. Уменьшается уворотом цели.",
 	STATEVASION = "Уворот",
 	STATEVASIONDESCRIPT = "Шанс уклониться от вражеских атак.",
 	STATSPEED = "Скорость",
@@ -1355,7 +1485,7 @@ var TranslationDict = {
 	STATOBEDIENCE = "Повиновение",
 	STATOBEDIENCEDESCRIPT = "Повиновение - это готовность персонажа подчиняться вашим приказам. Повиновение приобретается с помощью социальных навыков. При истощении персонаж может сбежать и будет потерян, если это произойдет. ",
 	STATLOYALTY = "Верность",
-	STATLOYALTYDESCRIPT = "Очки верности позволяют открывать новые способности для ваших слуг. Верность приобретается пассивно на основе фактора приручения персонажа, но также может быть улучшена на свиданиях и при использовании социальных навыков..",
+	STATLOYALTYDESCRIPT = "Очки верности позволяют открывать новые способности для ваших слуг. Верность приобретается пассивно на основе фактора приручения персонажа, но также может быть улучшена на свиданиях и при использовании социальных навыков.",
 	STATSUBMISSION = "Подчинение",#Obsolete
 	STATSUBMISSIONDESCRIPT = "Подчинение создается с помощью наказывающих умений. Со временем оно будет уменьшаться, пока не достигнет минимума. Максимально развитое Подчинение больше не требует Повиновение для работы и останавливает побег.",
 	STATAUTHORITY = "Авторитет",#Obsolete
@@ -1366,10 +1496,12 @@ var TranslationDict = {
 	STATPRODUCTIVITYDESCRIPT = "Влияет на все производственные задачи. Общая производительность относится ко всем профессиям, в то время как эффективность повышает конкретные задачи.",
 	STATCONSENT = "Согласие",
 	STATCONSENTDESCRIPT = "Влияет на согласие на действия во время сексуального взаимодействия. Каждое действие имеет разное согласие в зависимости от черт характера, партнеров и других факторов. Это число отражает только неизменное значение. Базовое согласие увеличивается при положительных результатах, попытках новых действий и партнеров. Также немного увеличивается от навыков дисциплины. ",
-
-	STATLOYALTY_GAIN_MOD = "Прирост верности",
-	STATLOYALTY_GAIN = "Прирост верности",
-	STATLUSTTICK = "Рост похоти",
+	
+	STATEXP_GAIN_MOD = "Бонус к опыту",
+	
+	STATLOYALTY_GAIN_MOD = "Прирост лояльности",
+	STATLOYALTY_GAIN = "Прирост лояльности",
+	STATLUSTTICK = "Прирост похоти",
 	STATOBEDIENCE_DRAIN = "Утечка повиновения",
 
 	STATMOD_BUILD = "Улучшение",
@@ -1403,8 +1535,8 @@ var TranslationDict = {
 	STATFOOD_CONSUMPTIONDESCRIPT = "Количество продуктов питания, необходимое человеку каждый день. Недостаток пищи приводит к голоду, истощению и в конечном итоге к смерти.",
 
 	TOOLTIPENERGY = "Энергия восстанавливается во время сна и требуется для выполнения задач. Когда персонаж вынужден работать без энергии, его Истощение увеличивается. ",
-	TOOLTIPFATIGUE = "Усталость возрастает со временем и рассеивается при развлечении. При отсутствии управления она может привести к снижению производительности.",
-	TOOLTIPEXHAUSTION = "Истощение развивается, когда персонаж вынужден работать без остатка энергии. Истощение вызывает штрафы к максимальному здоровью и производству, и может привести к смерти, если долгое время о нем не заботиться..",
+	TOOLTIPFATIGUE = "Усталость возрастает со временем и рассеивается при развлечении. Если за ней не следить, она может привести к снижению производительности.",
+	TOOLTIPEXHAUSTION = "Истощение развивается, когда персонаж вынужден работать без остатка энергии. Истощение вызывает штрафы к максимальному здоровью и производству, и может привести к смерти, если долгое время о нем не заботиться.",
 
 	TOOLTIPSIMPLEBEHAVIOR = "При активном 'Простом поведении' персонаж будет работать, пока не иссякнет энергия, отдыхать, пока энергия не иссякнет, и искать развлечение, пока не исчезнет усталость. Рекомендуется для начинающих.",
 	TOOLTIPPBASEPRODUCTIVITY = "Базовая продуктивность. Снижается при усталости и истощении.",
@@ -1716,7 +1848,7 @@ var TranslationDict = {
 	TRAITDIRECTORDESCRIPT = "Социальные навыки на 50% эффективнее. ",
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 скорости при использовании копья",
 	TRAITAUTOHIDE = "Скрытность",
-	TRAITAUTOHIDEDESCRIPT = "Начинает бой в укрытии, если не одета тяжелая или средняя броня",
+	TRAITAUTOHIDEDESCRIPT = "Начинает бой в укрытии, если не надета тяжелая или средняя броня",
 	
 	TRAITBASIC_COMBAT = "Базовый бой",
 	TRAITADVANCED_COMBAT = "Продвинутый бой",
@@ -1828,13 +1960,12 @@ var TranslationDict = {
 	TRAITMENIALDESCRIPT = "Шанс крита поручения установлен на 0.",
 	TRAITSTURDYDESCRIPT = "+10 ЗАЩИТЫ",
 	TRAITFRAILDESCRIPT = "-10 ЗАЩИТЫ.",
-
 	TRAITLOYALTY_BASIC_SERVITUDE = "Базовое служение",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = "{color=green|Позволяет назначать профессии}\n\n\nПолный контроль начинается с самых маленьких шагов. Манерность, протокол и этикет должны быть установлены, чтобы получить свои плоды. ",
 	TRAITLOYALTY_DATING = "Свидания",
-	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Unlocks Dating}\n\nВечные традиции, переработанные для ваших нужд. Доброе слово, тонкий намек и социальные удобства - все это поможет установить полезную связь",
+	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Разблокирует свидание}\n\nВечные традиции, переработанные для ваших нужд. Доброе слово, тонкий намек и социальные удобства - все это поможет установить полезную связь",
 	TRAITLOYALTY_COMBATANT = "Боец",
-	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Unlock Combat Assignment}\n\nРабы в цепях имеют мало применения. Те, кто заслужил доверие своих хозяев и защищает их, гораздо ценнее.",
+	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Разблокирует участие в бою}\n\nРабы в цепях имеют мало применения. Те, кто заслужил доверие своих хозяев и защищает их, гораздо ценнее.",
 	TRAITLOYALTY_DRESS_LEWD = "Развратная одежда",
 	TRAITLOYALTY_DRESS_LEWDDESCRIPT = "{color=green|Разблокирует более экстравагантное снаряжение}\n\nНасыщенная кожа, мягкая ткань, охотно демонстрируют свои достоинства - все для блага своих хозяев. Хорошая рабыня может быть произведением искусства физически, эта знает об этом.\n\nРаботает: Базовое служение" ,
 	TRAITLOYALTY_DRESS_WORK = "Рабочая одежда",
@@ -1870,11 +2001,130 @@ var TranslationDict = {
 	TRAITLOYALTY_INTERBREED = "Беременность:Скрещивание",
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Позволяет персонажу оплодотворить или быть оплодотворенным обычно несовместимым расовым партнером}\n\nRequires: Секс:Продвинутый",
 
+
+
+	TRAITEFFECTVIRGIN = "[center]{color=yellow|Девственность}[/center]\nПоскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных задач и людей. \n{color=yellow|Ценность увеличена на 25%%}",
+	TRAITEFFECTRARESTURDY = "Особый: Твердый\nУвеличение здоровья и бронепробиваемости",
+	TRAITEFFECTRARENIMBLE = "Особый: Ловкий\nУвеличены уклонение и скорость",
+	TRAITEFFECTRARESTRONG = "Особый: Сильный\nУвеличение урона и максимального здоровья",
+	TRAITEFFECTRAREDEADLY = "Особый: Смертельный\nУвеличение урона и скорости",
+	TRAITEFFECTRAREPRECISE = "Особый: Точный\nУвеличение уклонения, точности и MЗАЩ",
+	TRAITEFFECTRARETOUGH = "Особый: Жесткий\nУвеличение здоровья, ЗАЩ и МЗАЩ",
+	TRAITEFFECTHARDWORK = "Усердие: +50%% производительности",
+	TRAITEFFECTFAVFOOD = "Любимая еда: -1 утечка повиновения, +0.5 прироста лояльности", 
+	TRAITEFFECTHATEDFOOD = "Ненавистная еда: -10% производительности",
+	TRAITEFFECTSTARVE = "Голодание: -50%% производительности, -50%% урона.",
+	TRAITEFFECTGRAVEINJ = "Тяжелое ранение: -25%% Производительность, -50%% Сексуальность. Не может участвовать в бою.",
+	TRAITEFFECTDISCIPLINE = "Дисциплина: +50%% эффективности труда и ремесла.",
+	TRAITEFFECTSEDUCE = "Соблазнение: -7 утечка повиновения",
+	TRAITEFFECTGREATSEDUCE = "Великое соблазнение: Предотвращает побеги; -9 утечка повиновения, +50%% роста похоти",
+	TRAITEFFECTALLURE = "Отвлечение: -5 утечка повиновения, +1 прироста лояльности.",
+	TRAITEFFECTSEDATED = "Успокоенный: -10 утечка повиновения",
+	TRAITEFFECTFEAR = "Страх: -6 утечка повиновения, -1 прироста лояльности",
+	TRAITEFFECTMINDCONTROLLED = "Контролируемый разум",
+	TRAITEFFECTINSPIRED = "Вдохновение: +20%% урона, ЗАЩ и MЗАЩ",
+	TRAITEFFECTCOMMANDED = "Командуемый: +50%% ATK и MATK",
+	TRAITEFFECTSERVING = "Услужен: +1 прирост лояльности",
+	TRAITEFFECTREFINE = "Оружие закалено: +30%% ATK.",
+	TRAITEFFECTACID = "Кислота: -25 DEF.",
+	TRAITEFFECTATTRACTED = "Притяжение: -30%% урона",
+	TRAITEFFECTPROTECTION = "Защита: +25 DEF.",
+	TRAITEFFECTISPROTECTED = "Защищен",
+	TRAITEFFECTDRAGONSMIGHT = "Могущество дракона: +25%% урона и ЗАЩ",
+	TRAITEFFECTBARRIER = "Поглощающий урон щит, блокирует 100 ед. урона (осталось %d)",
+	TRAITEFFECTBLIZZARD = "Вьюга: -20 скорости",
+	TRAITEFFECTBLESSED = "Благословенный: +25%% ATK.",
+	TRAITEFFECTMENTALBLESSED = "Ментально благословенный: +25%% MATK.",
+	TRAITEFFECTFLY = "Полет: +65 уворота.",
+	TRAITEFFECTSHATTERED = "Раскол: -25 уворота",
+	TRAITEFFECTFIREBURST = "Огненный взрыв: -20 точности",
+	TRAITEFFECTSWIPE = "Разрез: -20 ЗАЩ.",
+	TRAITEFFECTARROWRAIN = "Дождь из стрел: -20 MЗАЩ",
+	TRAITEFFECTSSTRIKE = "-20 ATK и MATK",
+	TRAITEFFECTENDURE = "Выносливость: +20 ко всем сопротивлениям",
+	TRAITEFFECTBARD1 = "Гимн: +20 Точность, Уворот и Скорость",
+	TRAITEFFECTBARD2 = "Успокоение: +15 ЗАЩ и MЗАЩ, рассеивает 1 негативный эффект каждый ход",
+	TRAITEFFECTBARD3 = "Боевой марш: +20%% ATK и MATK",
+	TRAITEFFECTELEMENTALWEAK = "Элементальная слабость: -40 сопротивлений огню, земле, воде и воздуху",
+	TRAITEFFECTELEMENTALPROTECT = "Элементальная защита: +40 сопротивлений огню, земле, воде и воздуху",
+	TRAITEFFECTCAMO = "Камуфляж: +20 уворота",
+	TRAITEFFECTHMARK = "Знак охотника: получает на 15% больше урона",
+	TRAITEFFECTDEVOUR = "Пожирание духа",
+	TRAITEFFECTSPIRIT1 = "Дух - Заяц: +30 скорости, +25 уворота",
+	TRAITEFFECTSPIRIT2 = "Дух - Черепаха: -25%% получаемого урона от умений, -15%% получаемого урона от заклинаний",
+	TRAITEFFECTSPIRIT3 = "Дух - Орел: +20%% урона от умений, +30 Точности",
+	TRAITEFFECTHIDE = "Скрытый",
+	TRAITEFFECTREINCARNATE = "Возродится после смерти",
+	TRAITEFFECTHOLY = "Божественное сияние: -20 MЗАЩ",
+	TRAITEFFECTPOSITIONTAKEN = "Занятая позиция: +50 бронепробиваемость; +20%% урона",
+	TRAITEFFECTWINDWALL = "Стена ветра: -50% дистанционного урона.",
+	TRAITEFEFCTPETSUIT = "Если у владельца есть класс питомец:\nОбаяние: +10\nЭффект социальных навыков: +10%.",
+	TRAITEFFECTWORKEROUTFIT = "Задания по охоте, рыбалке и собирательству: +25%",
+	TRAITEFFECTCRAFTSMANSUIT = "Кулинария, кузнечное дело, алхимия, портной и улучшения: +25%",
+	TRAITEFFECTANAL = 'Если у владельца есть черта "Любит анал": Рост похоти + 15%.',
+	TRAITEFFECTHANDCUFFS = 'Длительное ношение может привести к тому, что пользователь станет покорным',
+	TRAITEFFECTANALCOUNT = 'Длительное ношение делает пользователя более восприимчивым к аналу',
+	TRAITEFFECTTAILPLUG = 'Увеличивает рост похоти на 10%',
+	TRAITEFFECTTAILPLUGBONUS = "Увеличивает обаяние на 10, если экипирован костюм питомца.",
+	TRAITEFFECTUNDERWEAR = "Увеличивает рост похоти на 25%",
+	TRAITEFFECTTENTACLESUIT = "Увеличивает рост похоти на 100%%",
+	TRAITEFFECTTENTACLESUB = "Уменьшает физ. возможности и мудрость на 25, если у персонажа меньше 5 секс-фактора и нет черты Девианта",
+	TRAITEFFECTMASTERCOMBAT = "ATK и MATK увеличены на 15%%",
+	TRAITEFFECTMASTERPRODUCT = "Производительность +20%%",
+	TRAITEFFECTSATISFIED = "Удовлетворен: +10%% Производительность.",
+	TRAITEFFECTSATISFIED2 = "Удовлетворен: +20%% Производительность",
+	TRAITEFFECTSUCCOMBAT = "Похоть поглощена: +25% ATK и MATK",
+	TRAITEFFECTCELENABLESS = "Благословение Селены: +30% всех сопротивлений.",
+	TRAITEFFECTFREYABLESS = "Благословение Фрейи: +30 бронепробиваемость, +25 точность",
+	TRAITEFFECTCELENACURSE = "Проклятие Селены: -50%% Макс. Здоровья.",
+	TRAITEFFECTFREYACURSE = "Проклятие Фрейи: -50 уворота и точности",
+	TRAITEFFECTDATEBONUS = "Прирост лояльности увеличен на 0,5",
+	TRAITEFFECTRESISTSTATE = "Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.",
+	TRAITEFFECTISPREGNANT = "Беременна: -10 Скорости, -20 физ. возможностей",
+	TRAITEFFECTISPREGNANT2 = "Глубоко беременная: -20 Скорость, -40 физ. возможностей",
+	BUFFDESCRIPTSHACKLES = "Оковы",
+	BUFFDESCRIPTGREATSHACKLES = "Великие оковы",
+	BUFFDESCRIPTCHARM = "Зачарован. Осталось %d ходов",
+	BUFFDESCRIPTSTUN = "Оглушен: Не может действовать",
+	BUFFDESCRIPTCHARM2 = "Зачарован: Не может действовать",
+	BUFFDESCRIPTTRAP = "В ловушке: Не может действовать",
+	BUFFDESCRIPTMIRROR = "Зеркальное отражение: Шанс уклониться от урона, наносимого умениями",
+	BUFFDESCRIPTFIELD = "Энергетическое поле: Шанс нанести атакующему урон от стихии воздуха",
+	BUFFDESCRIPTSHELL = "Защитная оболочка: Входящий урон снижен на 35%%",
+	BUFFDESCRIPTTAUNT = "Насмешка",
+	BUFFDESCRIPTDISTRACT = "Отвлечен: -30 скорости попадания и уклонения",
+	BUFFDESCRIPTSILENCE = "Заглушен",
+	BUFFDESCRIPTFROZEN = "Заморожен: Не может действовать, получает на 100%% больше урона от воздуха",
+	BUFFDESCRIPTDISARM = "Обезоружен: Не может использовать способности Умений",
+	BUFFDESCRIPTBANISH = "Изгнание",
+	BUFFDESCRIPTVOID = "Пустота",
+	BUFFDESCRIPTDEFEND = "Защита",
+	BUFFDESCRIPTREGEN = "Регенерация здоровья",
+	BUFFDESCRIPTBURNING = "Горение",
+	BUFFDESCRIPTPOISON = "Отравление",
+	BUFFDESCRIPTBLEEDING = "Кровотечение",
+	BUFFDESCRIPTCONFUSE = "Замешательство",
+	BUFFDESCRIPTFREEUSE = "Позволяет использовать предмет, не делая хода",
+	BUFFDESCRIPTSHRED = "Снижение брони",
+	BUFFDESCRIPTGROWL = "Скорость и уворот уменьшены",
+	BUFFDESCRIPTCURSEATTACK = "Атака снижена",
+	BUFFDESRIPTCURSEATTACKTR = "Атака этой цели приводит к снижению ATK",
+	BUFFDESCRIPTMAGICWARD = "Атака и MЗАЩ увеличены",
+	BUFFDESCRIPTSLAM = "Уменьшено лечение",
+	BUFFDESCRIPTFIRESHIELD = "Огненный щит",
+	BUFFDESCRIPTATKPAS = "Урон увеличен",
+	BUFFDESCRIPTATTACKPASSSRC = "Увеличивает ATK и MATK союзников на 10 каждый второй ход. Снимается при поражении",
+	BUFFDESCRIPTRESTO = "Отдых: физическое сопротивление увеличено на 20%%",
+	
+	
+	
+	
+	
 	
 	
 	PROFMASTER = "Мастер",
 	PROFMASTERALT = "Госпожа",
-	PROFMASTERDESCRIPT = "Единственный правитель домена. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг",
+	PROFMASTERDESCRIPT = "Единственный правитель владения. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг",
 	PROFRULER = "Правитель",
 	PROFRULERDESCRIPT = "На ступень выше, чем просто [master]. Правитель - это высшая личность, не только обладающая полной властью, но и вдохновляющая других на более великие дела.",
 	PROFDIRECTOR = "Директор",
@@ -1903,7 +2153,7 @@ var TranslationDict = {
 	PROFALCHEMIST = "Алхимик",
 	PROFALCHEMISTDESCRIPT = "Алхимики специализируются на процессах варки, что очень важно для постоянного снабжения зельями.",
 	PROFFARMER = "Фермер",
-	PROFFARMERDESCRIPT = "Фермеры обучены работе с сельскохозяйственными культурами. ",
+	PROFFARMERDESCRIPT = "Фермеры обучены работе с сельскохозяйственными культурами.",
 	PROFBREEDER = "Матка для разведения",
 	PROFBREEDERDESCRIPT = "Тот, кто находит цель в появлении на свет нового поколения. Они могут принять любого партнера, но их дети будут продолжать их род",
 	PROFHARLOT = "Блудница",
@@ -1911,7 +2161,7 @@ var TranslationDict = {
 	PROFGEISHA = "Гейша",
 	PROFGEISHADESCRIPT = "Непревзойденные артисты, которые развлекают посетителей песнями, танцами и разговорами",
 	PROFDANCER = "Танцовщица",
-	PROFDANCERDESCRIPT = "Танцовщицы могут завлечь своим видом и движениями. Эффективны для развлечений. ",
+	PROFDANCERDESCRIPT = "Танцовщицы могут завлечь своим видом и движениями. Эффективны для развлечений.",
 	PROFSUCCUBUS = "Суккуб",
 	PROFSUCCUBUSALT = "Инкуб",
 	PROFSUCCUBUSDESCRIPT = "Плотские удовольствия превратились в искусство. Они научились не только доставлять удовольствие другим, но и использовать свою похоть для собственной выгоды",
@@ -1991,8 +2241,8 @@ var TranslationDict = {
 	PROFBROKEN_ROYALTYDESCRIPT = "Когда-то знаменитая королевская особа, а теперь - сломленная личность, способная на очень малое... По крайней мере, ее тело все еще пользуется большим спросом",
 	
 	
-	PROFACOLYT = "Аколит",
-	PROFACOLYTEDESCRIPT = "Человек посвятил свою жизнь исправлению других. ",
+	PROFACOLYTE = "Аколит",
+	PROFACOLYTEDESCRIPT = "Человек, посвятивший свою жизнь исправлению других. ",
 	PROFPRIEST = "Священник",
 	PROFPRIESTDESCRIPT = "Преданные своей вере и помощи другим, священники - сильные целители, способные лечить серьезные раны",
 	PROFMONK = "Монах",
@@ -2001,8 +2251,7 @@ var TranslationDict = {
 	PROFBISHOPDESCRIPT = "Только избранным удается достичь этого ранга. Высшие члены церкви, способные высвобождать божественные силы.",
 	PROFSPOUSE = "Муж",
 	PROFSPOUSEALT = "Жена",
-	PROFSPOUSEDESCRIPT = "Официально обрученная супруга [Master] поместья. Утечка Повиновения равна 0. Прирост верности +3",
-
+	PROFSPOUSEDESCRIPT = "Официально обрученная супруга [Master]а поместья. Утечка Повиновения равна 0. Прирост верности +3",
 	
 	PROFFREYAS_PRIESTESS = "Бывшая жрица Фрейи",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Когда-то она была верховной жрицей эльфов, но теперь в этом титуле больше блеска, чем силы",
@@ -2083,9 +2332,9 @@ var TranslationDict = {
 	UPGRADEALCHEMYBONUS2 = "Разблокирует продвинутые алхимические и лечебные рецепты предметов. Разблокирует рецепты зачарованного дерева и адамантина. Увеличивает количество назначаемых персонажей до 2",
 	UPGRADEALCHEMYBONUS3 = "Разблокирует улучшенный посох и некоторые улучшенные рецепты чернил. Увеличивает количество назначаемых персонажей до 3",
 	UPGRADEMASTER_BEDROOM = "Спальня хозяина",
-	UPGRADEMASTER_BEDROOMDESCRIPT = "Обновление спальни хозяина",
+	UPGRADEMASTER_BEDROOMDESCRIPT = "Улучшение спальни хозяина",
 	UPGRADERESOURCE_GATHER_LEATHER = "Сбор кожи",
-	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Обновление задания охоты",
+	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Улучшение задания охоты",
 	UPGRADELEATHERBONUS1 = "Позволяет собирать толстую кожу",
 	UPGRADELEATHERBONUS2 = "Позволяет собирать мифическую кожу",
 	UPGRADEGATHERCLOTHBONUS = "Позволяет собирать ткань в особняке",
@@ -2102,18 +2351,18 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS5 = "Увеличивает максимальное количество размещаемых персонажей до 30",
 	UPGRADELUXURY_ROOMS = "Роскошные комнаты",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Увеличивает максимальное количество доступных роскошных комнат. Роскошные комнаты уменьшают отток послушания и повышают лояльность их обитателей. ",
-	UPGRADELUXURYROOMSBONUS1 = "Увеличивает максимальное количество доступных комнат класса люкс до 2.",
+	UPGRADELUXURYROOMSBONUS1 = "Увеличивает максимальное количество доступных роскошных комнат до 2.",
 	UPGRADELUXURYROOMSBONUS2 = "Увеличивает максимальное количество доступных роскошных комнат до 3.",
-	UPGRADELUXURYROOMSBONUS3 = "Увеличивает максимальное количество доступных номеров класса люкс до 4",
-	UPGRADELUXURYROOMSBONUS4 = "Увеличивает максимальное количество доступных номеров класса люкс до 5",
-	UPGRADELUXURYROOMSBONUS5 = "Увеличивает максимальное количество доступных номеров класса люкс до 6",
-	UPGRADELUXURYROOMSBONUS6 = "Увеличивает максимальное количество доступных номеров класса люкс до 7",
-	UPGRADELUXURYROOMSBONUS7 = "Увеличивает максимальное количество доступных номеров класса люкс до 8",
+	UPGRADELUXURYROOMSBONUS3 = "Увеличивает максимальное количество доступных роскошных комнат до 4",
+	UPGRADELUXURYROOMSBONUS4 = "Увеличивает максимальное количество доступных роскошных комнат до 5",
+	UPGRADELUXURYROOMSBONUS5 = "Увеличивает максимальное количество доступных роскошных комнат до 6",
+	UPGRADELUXURYROOMSBONUS6 = "Увеличивает максимальное количество доступных роскошных комнат до 7",
+	UPGRADELUXURYROOMSBONUS7 = "Увеличивает максимальное количество доступных роскошных комнат до 8",
 
 
-	UPGRADEMASTERBEDROOMBONUS1 = "Увеличивает количество участников сексуальных отношений до 3",
-	UPGRADEMASTERBEDROOMBONUS2 = "Увеличивает количество участников сексуальных отношений до 4",
-	UPGRADEMASTERBEDROOMBONUS3 = "Увеличивает количество участников сексуального взаимодействия до 5",
+	UPGRADEMASTERBEDROOMBONUS1 = "Увеличивает количество участников сексуальных взаимодействий до 3",
+	UPGRADEMASTERBEDROOMBONUS2 = "Увеличивает количество участников сексуальных взаимодействий до 4",
+	UPGRADEMASTERBEDROOMBONUS3 = "Увеличивает количество участников сексуальных взаимодействий до 5",
 
 	UPGRADESTABLES = "Конюшни",
 	UPGRADESTABLESDESCRIPT = "Ускоряет передвижение",
@@ -2132,17 +2381,17 @@ var TranslationDict = {
 	UPGRADEBUILDERTOOLSBONUS3 = "Максимальное количество слотов для улучшения: 4",
 	
 	
-	INTERACTIONSNOSEXTAG = "[name] его личная история не продвинулась настолько, чтобы позволить [him] участвовать в подобных действиях.",
+	INTERACTIONSNOSEXTAG = "Для [name] личная жизнь не продвинулась настолько, чтобы позволить [him] участвовать в подобных действиях.",
 
 	NOSEXDETAILSDESCRIPT = "{color=green|К сожалению, вы не можете проверить [him] приватные части.}",
 
 	UPGRADEEXOTIC_TRADER = "Экзотический торговец",
-	UPGRADEEXOTIC_TRADERDESCRIPT = "Улучшает рабов, предлагаемых Экзотическим работорговцем.",
+	UPGRADEEXOTIC_TRADERDESCRIPT = "Улучшает рабов, предлагаемых Экзотическим работорговцем Авермиком.",
 	UPGRADEEXOTICBONUS = "Рабы от Экзотического работорговца будут иметь более высокие базовые статы и больше классов.",
 	UPGRADESEX_TIMES = "Выносливость в спальне",
 	UPGRADESEX_TIMESDESCRIPT = "Увеличивает количество раз в день, когда вы можете заниматься сексом",
-	UPGRADESEX_TIMEBONUS1 = "Увеличить количество ежедневных сексуальных взаимодействий до 2",
-	UPGRADESEX_TIMEBONUS2 = "Увеличить количество ежедневных сексуальных взаимодействий до 3",
+	UPGRADESEX_TIMEBONUS1 = "Увеличивает количество ежедневных сексуальных взаимодействий до 2",
+	UPGRADESEX_TIMEBONUS2 = "Увеличивает количество ежедневных сексуальных взаимодействий до 3",
 	UPGRADERESTING = "Баня",
 	UPGRADERESTINGDESCRIPT = "Персонажи, отдыхающие в особняке, будут истощать свое Повиновение с половинной скоростью",
 	UPGRADEESTINGBONUS1 = "",
@@ -2152,14 +2401,17 @@ var TranslationDict = {
 	
 	UPGRADETOOL_SWAPPER = "Мультиинструмент",
 	UPGRADETOOL_SWAPPERDESCRIPT = "Когда персонажи собирают материалы в подземельях или выполняют одноразовые задания, их экипированный инструмент всегда будет применять свой бонус, независимо от типа.",
-
+	
+	UPGRADEFARM_SLOTS = "Слоты для фермы",
+	UPGRADEFARM_SLOTSDESCRIPT = "Предоставляет дополнительные места для производства на ферме",
+	
 	BODYPARTAGETEEN = "подросток",
 	BODYPARTAGEADULT = "взрослый",
 	BODYPARTAGEMATURE = "зрелый",
 	BODYPARTBODY_SHAPEHUMANOID = "гуманоид",
 	BODYPARTBODY_SHAPEBESTIAL = "звероподобный",
 	BODYPARTBODY_SHAPESHORTSTACK = "малорослик",
-	BODYPARTBODY_SHAPEJELLY = "желе",
+	BODYPARTBODY_SHAPEJELLY = "желейный",
 	BODYPARTBODY_SHAPEHALFBIRD = "полуптица",
 	BODYPARTBODY_SHAPEHALFSNAKE = "полузмея",
 	BODYPARTBODY_SHAPEHALFFISH = "полурыба",
@@ -2182,7 +2434,7 @@ var TranslationDict = {
 	BODYPARTEYE_SHAPENORMAL = "нормальный",
 	BODYPARTEYE_SHAPESLIT = "щель",
 	BODYPARTHORNSSHORT = "короткий",
-	BODYPARTHORNSSTRAIGHT = "прямо",
+	BODYPARTHORNSSTRAIGHT = "прямой",
 	BODYPARTHORNSCURVED = "изогнутый",
 	BODYPARTEARSHUMAN = "человек",
 	BODYPARTEARSELVEN = "эльфийский",
@@ -2190,7 +2442,7 @@ var TranslationDict = {
 	BODYPARTEARSCAT = "кошка",
 	BODYPARTEARSWOLF = "волк",
 	BODYPARTEARSFOX = "лиса",
-	BODYPARTEARSBUNNY_STANDING = "заячьи стоящие ",
+	BODYPARTEARSBUNNY_STANDING = "заячьи стоячие ",
 	BODYPARTEARSBUNNY_DROOPING = "зайчьи поникшие ",
 	BODYPARTEARSTANUKI = "тануки",
 	BODYPARTEARSDEMON = "демон",
@@ -2221,7 +2473,7 @@ var TranslationDict = {
 	BODYPARTSKIN_COVERAGEFUR_STRIPED = "полосатый мех",
 	BODYPARTSKIN_COVERAGEFUR_BLACK = "черный мех",
 	BODYPARTSKIN_COVERAGEFUR_ORANGE = "оранжевый мех",
-	BODYPARTSKIN_COVERAGEFUR_ORANGE_WHITE = "мех лисы",
+	BODYPARTSKIN_COVERAGEFUR_ORANGE_WHITE = "лисий мех",
 	BODYPARTWINGSFEATHERED_BLACK = "черное оперение",
 	BODYPARTWINGSSERAPH = "серафим",
 	BODYPARTWINGSFEATHERED_BROWN = "коричневое оперение",
@@ -2281,7 +2533,7 @@ var TranslationDict = {
 	BODYPARTPENIS_SIZEEQUINE_SMALL = "лошадиный маленький ",
 	BODYPARTPENIS_SIZEEQUINE_AVERAGE = "лошадиный средний ",
 	BODYPARTPENIS_SIZEEQUINE_BIG = "лошадиный большой ",
-	BODYPARTHAS_PUSSYTRUE = "имеет киску",
+	BODYPARTHAS_PUSSYTRUE = "имеет вагину",
 	BODYPARTHAS_PUSSYFALSE = " ",
 	BODYPARTVAGINAL_VIRGINTRUE_TRUE = "девственник/ца",
 	BODYPARTVAGINAL_VIRGINTRUE_FALSE = "не девственник/ца",
@@ -2311,7 +2563,7 @@ var TranslationDict = {
 	BODYPARTBODY_SHAPEBESTIALDESCRIPT = " ",
 	BODYPARTBODY_SHAPESHORTSTACKDESCRIPT = "[His] тело довольно [color=yellow]маленькое[/color], примерно в два раза меньше среднего человека.",
 	BODYPARTBODY_SHAPEJELLYDESCRIPT = "[His] тело [color=yellow]желеобразное[/color] и частично прозрачное.",
-	BODYPARTBODY_SHAPEHALFBIRDESCRIPT = "[His] тело имеет [color=yellow]крылья для рук и птичьи ноги[/color], что затрудняет выполнение повседневных задач.",
+	BODYPARTBODY_SHAPEHALFBIRDDESCRIPT = "[His] тело имеет [color=yellow]крылья для рук и птичьи ноги[/color], что затрудняет выполнение повседневных задач.",
 	BODYPARTBODY_SHAPEHALFSNAKEDESCRIPT = "Нижняя часть [His] тела состоит из длинного извивающегося [color=yellow]змеиного хвоста[/color].",
 	BODYPARTBODY_SHAPEHALFFISHDESCRIPT = "[His] тело [color=yellow]чешуйчатое и гладкое[/color], с плавниками и перепончатыми пальцами.",
 	BODYPARTBODY_SHAPEHALFSPIDERDESCRIPT = "Нижняя часть [His] тела состоит из [color=yellow]паучьих ног и брюшка[/color].",
@@ -2333,6 +2585,7 @@ var TranslationDict = {
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "Она зачесана в одну [url=hair][color=aqua]косу[/color][/url]",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "Она зачесана в [url=hair][color=aqua]две косы[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "Она завязана в аккуратный [url=hair][color=aqua]пучок[/color][/url].",
+
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] глаза [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
 	BODYPARTEYE_SHAPESLITDESCRIPT = "[He] имеет вертикальные зрачки [color=aqua]звериного цвета[/color]",
@@ -2386,12 +2639,12 @@ var TranslationDict = {
 	BODYPARTWINGSSERAPHDESCRIPT = "На [his] спине, [he] сложил, [color=aqua]белые, пернатые крылья[/color].",
 	BODYPARTWINGSFEATHERED_BROWNDESCRIPT = "На [his] спине, [he] сложены, [color=aqua]коричневые, пернатые крылья[/color].",
 	BODYPARTWINGSFAIRYDESCRIPT = "На [his] спине покоятся полупрозрачные [color=aqua]крылья феи[/color].",
-	BODYPARTWINGSSDEMONDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]крыльев демона[/color].",
+	BODYPARTWINGSDEMONDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]крыльев демона[/color].",
 	BODYPARTWINGSDRAGONDESCRIPT = "На [his] спине скрыта пара толстых, [color=aqua]драконьих[/color] крыльев.",
 	BODYPARTWINGSLEATHER_BLACKDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]черных кожаных крыльев[/color].",
 	BODYPARTWINGSLEATHER_REDDESCRIPT = "На [his] спине спрятана пара похожих на крылья летучей мыши [color=aqua]красных кожаных крыльев[/color].",
 
-	BODYPARTTAILCATDESCRIPT = "Ниже [his] талии вы заметите тонкий [color=aqua]кошачий хвост[/color], покрытый мехом.",
+	BODYPARTTAILCATDESCRIPT = "Ниже [his] талии вы замечаете тонкий [color=aqua]кошачий хвост[/color], покрытый мехом.",
 	BODYPARTTAILFOXDESCRIPT = '[He] большой, пушистый [color=aqua]лисий хвост[/color].',
 	BODYPARTTAILWOLFDESCRIPT = "Ниже [his] талии есть короткий, пушистый [color=aqua]волчий хвост[/color]",
 	BODYPARTTAILBUNNYDESCRIPT = '[He] имеет [color=aqua]маленький пушистый шарик[/color] за [his] спиной.',
@@ -2420,13 +2673,6 @@ var TranslationDict = {
 	BODYPARTTITS_SIZEHUGEDESCRIPT = "[His] [color=yellow]огромные[/color] сиськи умопомрачительно большие для [his] размера.",
 	BODYPARTTITS_SIZEMASCULINEDESCRIPT = "[His] грудь имеет определенно [color=yellow]мужественную[/color] форму.",
 
-	BODYPARTASS_SIZEFLATDESCRIPT = "[His] зад тощий и [color=yellow]плоский[/color].",
-	BODYPARTASS_SIZESMALLDESCRIPT = "[He] имеет небольшой [color=yellow]маленький[/color], упругий зад.",
-	BODYPARTASS_SIZEAVERAGEDESCRIPT = "[He] имеет красивую, [color=yellow]упругую[/color] попку , от которой можно отскочить монеткой.",
-	BODYPARTASS_SIZEBIGDESCRIPT = "[He] имеет приятную [color=yellow]пухлую[/color], сердцевидную попку, которая соблазнительно покачивается при каждом шаге.",
-	BODYPARTASS_SIZEHUGEDESCRIPT = "[He] имеет [color=yellow]огромный[/color], привлекающий внимание зад.",
-	BODYPARTASS_SIZEMASCULINEDESCRIPT = "[His] задница определенно имеет [color=yellow]мужественную[/color] форму.",
-
 	BODYPARTASS_SIZEFLATDESCRIPT = "[His] задница тощая и [color=yellow]плоская[/color].",
 	BODYPARTASS_SIZESMALLDESCRIPT = "[He] имеет небольшую [color=yellow]маленькую[/color], упругая попку.",
 	BODYPARTASS_SIZEAVERAGEDESCRIPT = "[He] имеет красивую, [color=yellow]упругую[/color] попку, от которой может отскочить монета.",
@@ -2434,16 +2680,35 @@ var TranslationDict = {
 	BODYPARTASS_SIZEHUGEDESCRIPT = "[He] обладает [color=yellow]огромным[/color], привлекающим внимание задом.",
 	BODYPARTASS_SIZEMASCULINEDESCRIPT = "[His] задница определенно имеет [color=yellow]мужественную[/color] форму.",
 
-	BODYPARTBALLS_SIZESMALLDESCRIPT = "[He] has a pair of [color=yellow]tiny[/color] balls.",
-	BODYPARTBALLS_SIZEAVERAGEDESCRIPT = "[He] has an [color=yellow]average-sized[/color] ballsack.",
-	BODYPARTBALLS_SIZEBIGDESCRIPT = "[He] has a [color=yellow]huge[/color] pair of balls weighing down [his] scrotum.",
+	BODYPARTBALLS_SIZESMALLDESCRIPT = "[He] имеет пару [color=yellow]маленьких[/color] шаров.",
+	BODYPARTBALLS_SIZEAVERAGEDESCRIPT = "[He] имеет [color=yellow]средних размеров[/color] мошонку.",
+	BODYPARTBALLS_SIZEBIGDESCRIPT = "[He] имеет [color=yellow]огромные[/color] яйца, отягощающие [his] мошонку.",
 
-	BODYPARTVAGINAL_VIRGINTRUE_TRUEDESCRIPT = '[He] имеет тугую, [color=yellow]девственную киску[/color].',
-	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] имеет [color=yellow]нормальная киска[/color] ниже [his] талии.",
+	BODYPARTVAGINAL_VIRGINTRUE_TRUEDESCRIPT = '[He] имеет тугую, [color=yellow]девственную вагину[/color].',
+	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] имеет [color=yellow]нормальную вагину[/color] ниже [his] талии.",
 	BODYPARTHAS_PUSSYFALSEDESCRIPT = " ",
 
 	BODYPARTPREGLINELATE = "[His] {color=yellow|неродившийся} ребенок заставляет [his] живот сильно выпирать; [he] скоро родит",
 	BODYPARTPREGLINEEARLY = "[His] {color=yellow|неродившийся плод} заставляет [his] живот слегка выпячиваться. ",
+	
+	
+	DESCRIPTTATOOFACE_MAKEUP = "На [his] лицо нанесен перманентный макияж, подчеркивающий [his] красоту.",
+	DESCRIPTTATOOFACE_TRIBAL = "[His] лицо разрисовано племенными знаками",
+	DESCRIPTTATOONECK_BRANDING = "На [His] шее имеется рабское клеймо с вашим именем",
+	DESCRIPTTATOOCHEST_LUST = "[His] грудь украшена развратными знаками, подчеркивающими [his] соски.",
+	DESCRIPTTATOOCHEST_TRIBAL = "[His] грудь замаскирована племенными отметинами",
+	DESCRIPTTATOOWAIST_HP = "На [his] талии есть татуировка в виде нежного растения",
+	DESCRIPTTATOOWAIST_MP = "Задняя часть [his] талии украшена светящимися энергетическими линиями",
+	DESCRIPTTATOOARMS_HP = "[His] руки украшены изящными татуировками растений.",
+	DESCRIPTTATOOARMS_MP = "[His] руки украшены светящимися энергетическими линиями.",
+	DESCRIPTTATOOARMS_TRIBAL = "[His] руки расписаны племенными знаками",
+	DESCRIPTTATOOASS_BRANDING = "На [his] заднице красуется рабское клеймо с вашим именем",
+	DESCRIPTTATOOASS_LUST = "[His] зад украшен развратным символом.",
+	DESCRIPTTATOOCROTCH_BRANDING = "[His] промежность содержит рабское клеймо с вашим именем",
+	DESCRIPTTATOOCROTCH_LUST = "На [his] промежности вытатуирован развратный символ",
+	DESCRIPTTATOOLEGS_HP = "[His] ноги украшены изящными растительными татуировками.",
+	DESCRIPTTATOOLEGS_MP = "[His] ноги украшают светящиеся энергетические линии.",
+	DESCRIPTTATOOLEGS_TRIBAL = "[His] ноги разрисованы племенными метками",
 
 	SEXTRAITORAL = "Любитель орального секса",
 	SEXTRAITLIKES_SHORTSTACKS = "Любитель малоросликов",
@@ -2486,10 +2751,10 @@ var TranslationDict = {
 	SEXSKILLTAILDESCRIPT = "Увеличивает эффект от действий с хвостом",
 	SEXSKILLPUSSYDESCRIPT = "Увеличивает эффект действий при проникновении во влагалище [name].",
 
-	SEXTRAITDISLIKE_PETTING = "Не нравится петтинг",
+	SEXTRAITDISLIKE_PETTING = "Не нравятся ласки",
 	SEXTRAITDISLIKE_FINGERING = "Не нравится фингеринг",
 	SEXTRAITDISLIKE_TITS = "Не нравится грудь",
-	SEXTRAITDISLIKE_ORAL = "Не нравится орал",
+	SEXTRAITDISLIKE_ORAL = "Не нравится оральный секс",
 	SEXTRAITDISLIKE_MISSIONARY = "Не нравятся миссионерские позы",
 	SEXTRAITDISLIKE_DOGGY = "Не нравятся позы по-собачьи",
 	SEXTRAITDISLIKE_SITTING = "Не нравятся позы сидя",
@@ -2574,7 +2839,7 @@ var TranslationDict = {
 	DIALOGUEMEET = "Ваши слуги нашли потенциального рекрута, [name], который, кажется, заинтересован в том, чтобы присоединиться к вашему дому. ",
 	DIALOGUEMEETBAD = "Вы не смогли убедить [name], и [he] прощается с вами.",
 	DIALOGUEMEETGOOD = "После обсуждения [name] соглашается стать вашим последователем. ",
-	DIALOGUEMEETGOODDEFAULT = "Добавить в реестр как пеона",
+	DIALOGUEMEETGOODDEFAULT = "Добавить в состав как пеона",
 	DIALOGUEMEETGOODHIRELING = "",
 	
 	
@@ -2613,8 +2878,8 @@ var TranslationDict = {
 	DIALOGUESHRINEDESTROY = "Разрушить святилище",
 	DIALOGUECHESTLOCKPICK = "Попытка взлома замка",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] не смог взломать сундук замка, и механизм заклинило. Нет другого выхода, кроме как оставить его сейчас...",
-	DIALOGUELOCKPICKPICKALARMFAILURE = "[name] не смог взломать замок и вызвал срабатывание сигнализации. Через несколько мгновений враги нападут на вашу позицию.",
-	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] привело в действие механизм бомбы-ловушки, вызвав взрыв и повредив всех в комнате. Сундук уничтожен вместе с его содержимым...",
+	DIALOGUELOCKPICKALARMFAILURE = "[name] не смог взломать замок и вызвал срабатывание сигнализации. Через несколько мгновений враги нападут на вашу позицию.",
+	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] привел в действие механизм бомбы-ловушки, вызвав взрыв и повредив всех в комнате. Сундук уничтожен вместе с его содержимым...",
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] запустило механизм ловушки. Комната наполняется ядовитым газом, и группа быстро отступает от нее. Однако [name] все же вдохнул слишком много газа из-за того, что находился слишком близко к груди...",
 	DIALOGUECHESTMIMICDISCOVERED = "Когда [name] в последний момент приближается к сундуку, [he] замечает в нем что-то необычное. Еще через мгновение [he] сообщает, что это, скорее всего, не сундук, а Мимик. ",
 	DIALOGUECHESTMIMICTRAPPED = "Когда [name] наклоняется к сундуку, [he] быстро понимает, что это не сундук, а Мимик, который вот-вот пожрет [him]. Застряв в слизи, [he] не сможет выбраться, если ему не помочь. \n\n{color=aqua|[name]} - {random_chat_active|mimic_eat}\n\n[he] будет непременно съеден, если останется в таком состоянии.",
@@ -2624,7 +2889,7 @@ var TranslationDict = {
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] умело взломал замок сундука, и теперь его содержимое принадлежит вам. ",
 
 	DIALOGUECHESTMIMICFIGHT = "Бой с мимиком",
-	DIALOGUECHESTMIMICLEAVE = "Оставить Мимика в покое",
+	DIALOGUECHESTMIMICLEAVE = "Оставить мимика в покое",
 
 	DIALOGUEEVENTTRAP = "Вы наткнулись на коридор с ловушкой. Кто-то должен будет обезвредить ее, с помощью навыков или своего здоровья...",
 
@@ -2706,8 +2971,8 @@ var TranslationDict = {
 	DIALOGUETUTELAGETEXT = "Вы решили оставить новорожденного ребенка, однако вам предстоит решить вопрос о его дальнейшем воспитании, которое может улучшить или исправить его потенциал. В любом случае, взросление займет 2 недели. \n\n{color=aqua|Нет обучения}- {color=yellow|Нет затрат}, но есть шанс получить новую отрицательную черту;\n{color=aqua|Обучение раба}- {color=yellow|500 золотых}, дает большой прирост к лояльности с шансом улучшить факторы 'Приручения' или 'Робкости'; \n{color=aqua|Academy}- {color=yellow|1500 золотых}, дает прибавку к фактору физики и мудрости и хорошее количество EXP;\n{color=aqua|Обучение наследника} (только для потенциальных наследников) - {color=yellow|5000 золотых}, дает прибавку ко всем статам и факторам, большое количество EXP и 1 случайную положительную черту. ",
 	
 	DIALOGUETUTNOTHING = "Без обучения (бесплатно)",
-	DIALOGUETUTSLAVE = "Обучение раба (500 золотых)",
-	DIALOGUETUTACADEMY = "Академия (1500 золотых)",
+	DIALOGUETUTSLAVE = "Обучить как раба (500 золотых)",
+	DIALOGUETUTACADEMY = "Академическое обучение (1500 золотых)",
 	DIALOGUETUTHEIR = "Обучение наследника (5000 золотых)",
 	
 	SPRINGTEXT = "Вы нашли небольшую поляну с родником. Самое время сделать перерыв и отдохнуть",
@@ -2717,7 +2982,7 @@ var TranslationDict = {
 	DIALOGUE_SPRING_LOOT = "Осмотревшись, вы находите небольшой зарытый тайник. Вы решили забрать его содержимое себе",
 	DIALOGUE_SPRING_NO_LOOT = "Вы обыскали все вокруг, но не смогли найти ничего полезного",
 	TRIBALELVES = "Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...",
-	TRIBALELELVES_WIN = "Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.",
+	TRIBALELVES_WIN = "Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.",
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = "Вы наткнулись на небольшую группу повстанцев, которые поймали [race] [male], который, вероятно, сбежал с их родных земель. Учитывая отношение повстанцев к [him], легко понять, что они замышляют недоброе...",
@@ -2730,8 +2995,8 @@ var TranslationDict = {
 	LOCAL_SHOP = "Магазин",
 	LOCAL_EVENTS_SEARCH = "Поиск",
 
-	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в особняк",
-	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в особняк?",
+	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в поместье",
+	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в поместье?",
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Лагерь разбойников",
@@ -2899,7 +3164,7 @@ var TranslationDict = {
 	ITEMMAJORUS_POTION = "Зелье Маджоруса",
 	ITEMMAJORUS_POTIONDESCRIPT = "Специальное зелье, которое можно использовать для увеличения размера определенной части тела человека. Можно использовать для груди, зада, пениса и яиц",
 	ITEMEXP_SCROLL = "Свиток знаний",
-	ITEMEXP_SCROLLDESCRIPT = "Дает пользователю 100 очков опыта.",
+	ITEMEXP_SCROLLDESCRIPT = "Дает использующему 100 очков опыта.",
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Выберите, какая часть тела [name] должна быть уменьшена.",
@@ -2930,7 +3195,7 @@ var TranslationDict = {
 	DIALOGUEBALLSSELECT = "Яйца",
 	DIALOGUEPENISSELECT = "Пенис",
 
-	WORKRULERATION = "Дополнительные пайки",
+	WORKRULERATION = "Дополнительный рацион",
 	WORKRULERATIONDESCRIPT = "Увеличивает потребление пищи на 3. Повышает производительность на 15%.",
 	WORKRULESHIFTS = "Более длинные смены",
 	WORKRULESHIFTSDESCRIPT = "Персонаж работает на пределе своих возможностей ценой будущих улучшений. \nПовышает производительность на 25%. Персонаж не получает опыт или рабочие характеристики (физические и т.д.) во время работы. ",
@@ -2941,9 +3206,10 @@ var TranslationDict = {
 	
 	WORKRULECONTRACEPTIVE = "Противозачаточное средство",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Предотвращает беременность и оплодотворение для выбранного персонажа.",
+
 	WORKRULENUDITY = "Нагота",
 	WORKRULENUDITYDESCRIPT = "Заставляет [name] оставаться голым в особняке (если есть соответствующий спрайт). Этот эффект является косметическим",
-		
+	
 	SERVICEENSLAVE = "Поработить",
 	SERVICEENSLAVEDESCRIPT = "Превращает выбранного персонажа в раба.\n\n[color=aqua]У рабов снижается урон на 10%, но они получают различные бонусы к сбору урона, а их Верность может быть увеличена карающими навыками.[/color]",
 
@@ -3316,9 +3582,9 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	MAGESELECTION1REPLY1 = "Да.",
 	MAGESELECTION1REPLY2 = "Как вы узнали?",
 	MAGESELECTION2_1 = "- Так и предполагала.",
-	MAGESELECTION2_2 = "- Я не говорила, что чтобы быть магом, нужно хоть немного мозгов?",
+	MAGESELECTION2_2 = "- Я разве не говорила, что чтобы быть магом, нужно хоть немного мозгов?",
 	MAGESELECTION2_ANY = "- Ладно, думаю, почему бы и нет. Но сначала я хочу, чтобы ты кое-что сделал для меня. Я хочу, чтобы ты навестил мою сестру, Ксари, и вернул книги, которые она украла. Она живет недалеко от Элирона",
-	MAGESELECTION2REPLY1 = "Итак, должен ли я одолеть ее?",
+	MAGESELECTION2REPLY1 = "Итак, должен ли я заставить ее силой?",
 	MAGESELECTION2REPLY2 = "Почему твоя сестра не живет здесь?",
 	MAGESELECTION3_1 = "- Нет... Может быть. Делай, что хочешь, наверное... Вообще-то нет, не причиняйте ей вреда",
 	MAGESELECTION3_2 = "- Она ненавидит толпы и не любит наземные города, я думаю. Не могу сказать, что я сильно отличаюсь, просто более выносливая. В Гильдии магов все не так уж плохо.",
@@ -3627,8 +3893,8 @@ ALIRONELECTIONSFINISH_QUESTION2 = "Мне показалось, что гиль�
 	MAGESAFTERELLECTION1_QUESTION6 = "Что это за источник энергии, который был украден?",
 	MAGESAFTERELLECTION1_QUESTION7 = "Вы подозреваете, что он мертв?",
 	MAGESAFTERELLECTION1_QUESTION8 = "Я дам вам знать, как только что-то узнаю.",
-MAGESAFTERELLECTION1_ANSWER4 = """- Это артефакт, меч бывшего короля Николаса. Формально он принадлежал королевской семье, но после революции гильдии решили использовать его для всеобщего блага.""",
-MAGESAFTERELLECTION1_ANSWER5 = """- Я бы на его месте предпочла быть мертвой. Иначе смерть, которую Дункан с радостью пропишет, будет медленной. Он не относится к предательству легкомысленно""",
+	MAGESAFTERELLECTION1_ANSWER4 = """- Это артефакт, меч бывшего короля Николаса. Формально он принадлежал королевской семье, но после революции гильдии решили использовать его для всеобщего блага.""",
+	MAGESAFTERELLECTION1_ANSWER5 = """- Я бы на его месте предпочла быть мертвой. Иначе смерть, которую Дункан с радостью пропишет, будет медленной. Он не относится к предательству легкомысленно""",
 	MAGESAFTERELLECTION1_ANSWER6 = """- Найди его, или то, что от него осталось. Если он еще жив, я не ожидаю, что он будет рад вас видеть, так что не стесняйтесь расправиться с ним, если понадобится... или даже если нет.""",
 
 	# Visit Fred's home
@@ -3995,7 +4261,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	MATERIALREPTILE_BLOODDESCRIPT = "Пузырек с красной жидкостью из холоднокровных существ. Обычно добывается с кобольдов и драконов",
 	MATERIALLIGHT_ESSENCE = "Эссенция света",
 	MATERIALLIGHT_ESSENCEDESCRIPT = "Легкая пушистая субстанция, пахнущая мылом. Обычно добывается с серафимов",
-	MATERIALDARK_ESSENCE = "Темная эссенция",
+	MATERIALDARK_ESSENCE = "Эссенция тьмы",
 	MATERIALDARK_ESSENCEDESCRIPT = "Обычно добывается с демонов",
 	
 	
@@ -4025,7 +4291,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_EARTH = "Урон землей",
 	STATDAMAGE_MOD_LIGHT = "Урон светом",
 	STATDAMAGE_MOD_DARK = "Урон тьмой",
-	STATDAMAGE_MOD_MIND = "Повреждение разума",
+	STATDAMAGE_MOD_MIND = "Урон разуму",
 	STATDAMAGE_MOD_MELEE = "Урон в ближнем бою",
 
 	ENEMYMANEATER_PLANT = "Растение-людоед",
@@ -4134,7 +4400,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	HELP_SIGMUND_3 = """- Отлично, я отмечу это на вашей карте.""",
 	HELP_SIGMUND_4 = """- Аргх, черт, верно смекаешь, если справишься конечно.""",
 
-	# ПРИБЫТИЕ ШАХТ
+	# MINES ARRIVAL
 	MINES_ARRIVAL_START = """В нескольких сотнях футов от него вы найдете полузаброшенный пост. Когда вы подходите к нему, вас встречает один из мужчин, который, похоже, является местным шахтером и, кажется, с облегчением встречает вас.
 
 - Здравствуйте, [Sir]! Вас, должно быть, прислала гильдия. Мне очень жаль, но несколько дней назад шахту захватили повстанцы, и нас изгнали, а нескольких человек, отказавшихся уходить, взяли в плен.""",
@@ -4151,7 +4417,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	MINES_ARRIVAL_5 = """- Да, чем быстрее вы с ними разберетесь, тем лучше.""",
 	MINES_ARRIVAL_6 = """- Это здорово, я знал, что мы можем на тебя положиться. Я сообщу остальным, если вы не возражаете.
 
-Человек исчезнет в противоположном направлении, а вы пройдете к входу в шахту.""",
+Человек исчезает в противоположном направлении, а вы проходите к входу в шахту.""",
 
 	# ПОЛОВИНА ПОДЗЕМЕЛЬЯ ИССЛЕДОВАНА
 	HALF_DUNGEON_EXPLORED_START = """Когда вы проходите по шахте, вы вдруг понимаете, что кто-то идет сзади. Пока вы сидите в засаде, чтобы встретить нового врага, мимо вас проходит одинокий орк, выглядящий очень неуместно.
@@ -4202,7 +4468,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 
 - Я полагаю, вы пришли сюда, чтобы восстановить производство на шахте, и вам не повезло найти меня здесь. Однако, у меня есть к вам предложение. Я пока не хочу сражаться, поэтому, если вы позволите мне забрать шахтеров, которых мы держали в плену, я уйду с миром, и вы сможете делать с остальными мятежниками все, что захотите.
 
-{color=aqua|Повстанец: - Эй, ты, предательская су...}
+{color=aqua|Повстанец: - Эй, ты предательская су...}
 
 - Молчать, щенки.
 
@@ -5444,7 +5710,6 @@ PRE_ANASTASIA_EXECUTION_15 = """{color=aqua|Майра: - Я согласна. �
 
 Вы удивленно поворачиваетесь к Амелии, на мгновение отвлекшись от судьбы обнаженной принцессы.
 
-
 {color=yellow|Амелия: - Не смотри так потрясенно! Я просто убедила Дункана и остальных, что после этого никто больше не примет ее как королевскую особу. Она будет нейтрализована, в безопасности. Во всяком случае, физически, не гарантирую, в каком состоянии будет ее разум после того, как ее оттрахает каждый член в городе...}
 
 На платформе первый мужчина поднялся по лестнице и исследует своими грязными пальцами девственное влагалище принцессы, в то время как толпа кричит и издевается. Анастасия сжимает свои бедра вместе в обреченной попытке остановить грубый осмотр мужчиной ее неиспользованной киски. Вместо этого мужчина с силой засовывает палец в ее задницу, заставляя принцессу кричать от боли.""",
@@ -5900,14 +6165,14 @@ PRE_ANASTASIA_EXECUTION_15 = """{color=aqua|Майра: - Я согласна. �
 - Понятно... Похоже, теперь я в вашей власти.""",
 	AFTER_ELECTION_PRINCESS_OPTION_6 = """Я заберу свою награду сегодня""",
 	AFTER_ELECTION_PRINCESS_OPTION_7 = """Мне не хочется этого делать""",
-	# AFTER_ELECTION_PRINCESS_14 = """Вы приказываете принцессе присоединиться к вам в вашей спальне, решив, что это будет отличным способом закончить вечер.""",
-	# AFTER_ELECTION_PRINCESS_15 = """По вашей команде Анастасия снимает одежду, и вы располагаете ее на кровати на четвереньках. Решив, что это подходящая позиция для завершения вашего завоевания, вы быстро садитесь на нее сзади, требуя девственности девушки. Несмотря на рыдания, она не умоляет вас остановиться, стоически перенося боль и унижение всю оставшуюся ночь.""",
-	# AFTER_ELECTION_PRINCESS_16 = """Анастасия выглядит озадаченной вашим ответом, но не протестует. Однако она выглядит нервной. События развиваются не так, как она ожидала.""",
+#	AFTER_ELECTION_PRINCESS_14 = """Вы приказываете принцессе присоединиться к вам в вашей спальне, решив, что это будет отличным способом закончить вечер.""",
+#	AFTER_ELECTION_PRINCESS_15 = """По вашей команде Анастасия снимает одежду, и вы располагаете ее на кровати на четвереньках. Решив, что это подходящая позиция для завершения вашего завоевания, вы быстро садитесь на нее сзади, требуя девственности девушки. Несмотря на рыдания, она не умоляет вас остановиться, стоически перенося боль и унижение всю оставшуюся ночь.""",
+#	AFTER_ELECTION_PRINCESS_16 = """Анастасия выглядит озадаченной вашим ответом, но не протестует. Однако она выглядит нервной. События развиваются не так, как она ожидала.""",
 	AFTER_ELECTION_PRINCESS_16_OLD = """Анастасия выглядит озадаченной вашим ответом, но не протестует. Однако она выглядит нервной. События развиваются не так, как она ожидала.""",
-	# AFTER_ELECTION_PRINCESS_17 = """После пира вы нашли свою сломленную разумом Анастасию, которая, кажется, терпеливо ждет вас с несколько пустым выражением глаз.""",
+#	AFTER_ELECTION_PRINCESS_17 = """После пира вы нашли свою сломленную разумом Анастасию, которая, кажется, терпеливо ждет вас с несколько пустым выражением глаз.""",
 	AFTER_ELECTION_PRINCESS_OPTION_8 = """Испытать её """,
 	AFTER_ELECTION_PRINCESS_OPTION_9 = """Может быть, в другой раз""",
-	# AFTER_ELECTION_PRINCESS_18 = """По вашему приказу Анастасия снимает одежду, и вы опускаете ее на кровать на четвереньках. Решив, что это подходящая позиция для завершения вашего завоевания, вы быстро овладеваете ею сзади, требуя девственности девушки. Несмотря на ее состояние, она предлагает приятное тепло и упругость, так что у вас будет вполне удовлетворительная ночь.""",
+#	AFTER_ELECTION_PRINCESS_18 = """По вашему приказу Анастасия снимает одежду, и вы опускаете ее на кровать на четвереньках. Решив, что это подходящая позиция для завершения вашего завоевания, вы быстро овладеваете ею сзади, требуя девственности девушки. Несмотря на ее состояние, она предлагает приятное тепло и упругость, так что у вас будет вполне удовлетворительная ночь.""",
 	AFTER_ELECTION_PRINCESS_PRE_14 = "Вы приказываете принцессе взять вас за руку и ведете ее в спальню",
 	AFTER_ELECTION_PRINCESS_14 = """В спальне вы приказываете Анастасии закрыть дверь и встаете перед вами. Вы устанавливаете некоторые основные правила. Как ваша рабыня она должна будет всегда называть вас господином и делать все, что вы потребуете. 
 
@@ -6119,7 +6384,7 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 
 
 
-	# КВЕСТ ДЭЙЗИ
+	# DAISY QUESTLINE
 	DAISY_RECRUITMENT_START = """Когда вы приводите Дейзи в свой особняк, она смотрит на него с благоговением. Похоже, она не ожидала, что вы окажетесь землевладельцем. Как только вы вошли внутрь, она отвесила вам глубокий поклон.
 
 - Спасибо, [master]. Я сделаю все возможное, чтобы служить вам! """,
@@ -6642,7 +6907,6 @@ DAISY_LOST_MESSAGE = """Сегодня вечером вы заметили, ч�
 Голос Амелии становится мягче и шелковистее, когда она начинает прикасаться к вам по-другому. Мягкое надавливание здесь, сильное поглаживание там. Словно околдованный ее ласками, вы чувствуете, как ваше возбуждение перерастает в сильное вожделение. Руки Амелии бегут по вашим бокам к бедрам и по выпуклому паху. Она соблазнительно хихикает, ощущая твердость в ваших брюках.
 
 {color=yellow|Амелия: - О, я вижу, вам нравится это маленькое угощение. Это большая честь, когда тебя обслуживает сама глава гильдии, разве ты не знаешь?}""",
-
 	AMELIA_SILK_REPLY_1_1_5 = """Вы поднимаете бедра и спускаете штаны вниз по ногам, обнажая свой полностью эрегированный пенис. Амелия мурлычет от нескрываемого удовольствия.
 
 {color=yellow|Амелия: - О, так же впечатляет, как и все остальное! У тебя прекрасное и дерзкое мужское достоинство. Мне будет приятно служить вам, сэр}.
@@ -8716,7 +8980,7 @@ CALI_SEX_4_1 = """- Да, это было немного странно. Изв�
 Фермер игнорирует замечание Кали и продолжает уговаривать вас помочь ему.
 
 {color=aqua|Фермер: - Мне нужны пиломатериалы для ремонта. Ты дашь мне 200 древесины. Я скажу тебе, где ты можешь их найти, так как я подслушал, куда они сказали, что направляются.}""",
-CALI_FARMER_4_OPTION_1 = "Вы можете взять древесину для вашего забора (-200 дерева)",
+	CALI_FARMER_4_OPTION_1 = "Вы можете взять древесину для вашего забора (-200 дерева)",
 	CALI_FARMER_4_OPTION_1_1 = "Вы можете взять древесину для вашего забора (-100 дерева)",
 	CALI_FARMER_4_OPTION_2 = "Ваш забор кажется не таким уж плохим. (Рабочий)",
 	CALI_FARMER_4_OPTION_3 = "У нас сейчас нет такой возможности",
@@ -8742,7 +9006,7 @@ CALI_FARMER_4_OPTION_1 = "Вы можете взять древесину для
 	CALI_BANDITS_2_2 = "- Точно, извини, в прошлый раз я усвоила урок",
 	CALI_BANDITS_2_3 = """Кали заметно краснеет от вашего защитного заявления, но только кивает в знак согласия.
 
-- Д-да, давай сделаем это...""",
+- Д-да, давай покончим с этим...""",
 	CALI_BANDITS_3 = """Когда лидер группы падает на землю, вы связываете его, чтобы начать допрос. 
 
 {color=aqua|Главарь: - Зачем вы, ублюдки, пришли сюда? Что вам от меня нужно?}
@@ -8846,7 +9110,7 @@ CALI_FARMER_4_OPTION_1 = "Вы можете взять древесину для
 
 Кали краснеет от вашего внезапного проявления заботы, ее мнение о вас заметно улучшается.""",
 	CALI_WILLIAM_9 = """{color=aqua|Уильям: - Очень хорошо, этого будет достаточно. В таком случае, приятно иметь с вами дело.}""",
-	CALI_REPLACEMENT_RETURNS = """В назначенный день [name], которое вы послали Уильяму, возвращается обратно в ваш особняк. """, 
+	CALI_REPLACEMENT_RETURNS = """В назначенный день [name], которого/ую вы послали Уильяму, возвращается обратно в ваш особняк. """, 
 	CALI_WILLIAM_10 = """Кали покорно кивает, принимая ваше решение, и пока вы готовите бумаги. Она пока останется в поместье Уильяма, в то время как вы возвращаетесь домой.""", 
 	CALI_RETURNS = """В назначенный день Кали возвращается в ваш особняк. Несмотря на то, что она вернула свою реликвию, она категорически отказывается говорить о том, что произошло во время ее пребывания там.""",
 	CALI_WILLIAM_11_1 = """Мужчина еще раз пристально смотрит на Кали, когда она улавливает подтекст, делая все возможное, чтобы выглядеть женственно привлекательной. 
@@ -9358,10 +9622,10 @@ LILIA_SEX_SCENE_1_1 = """Лилия заканчивает эту фразу, к
 - Думаешь, я буду работать на тебя? После того, что ты сделал?""",
 	CALI_ACT1_1_OPTION_1 = "Кто не работает, тот не ест",
 	CALI_ACT1_1_OPTION_2 = "Конечно, ты не хочешь быть проданной рабовладельцам? Твои новые хозяева будут гораздо менее добрыми.",
-	CALI_ACT1_1_1_OPTION_3 = "Возможно, тебе нужно еще одно напоминание, как в пещерах?",
+	CALI_ACT1_1_OPTION_3 = "Возможно, тебе нужно еще одно напоминание, как в пещерах?",
 	CALI_ACT1_2_1 = """Кали смотрит на вас, опустив уши и отводя взгляд. Ее глаза оглядывают здание, рассматривая все вокруг, пока она, кажется, подчиняется. 
 
-- Неважно, ладно...""",
+- Черт, ладно...""",
 	CALI_ACT1_2_2 = """Глаза Кали становятся холодными, кажется, что она смотрит сквозь вас. Она кивает после того, как вы заканчиваете разговор с ней, и ничего не говорит до конца дня, пока она изучает свои обязанности.""",
 	CALI_ACT1_2_3 = """Девушка делает выпад вперед, когда вы ловите ее за горло, и теперь она прижата спиной к стене комнаты. Слезы льются из глаз девушки, она смотрит на вас с яростью, ее руки размахивают в ярости.
 
@@ -10039,7 +10303,7 @@ CHRISTMAS_EVENT_2 = """{color=aqua|Рудольф: - Эй, ты действит
 {color=aqua|Зефира: - Хммм... То-то и видно. }
 
 {color=yellow|Кали: - Что ты хочешь этим сказать?}""",
-ZCEVENT_4 = """{color=aqua|Зефира: - Похоже, ты гордишься этим заявлением. }
+ZCEVENT_4 = """{color=aqua|Зефира: - Похоже, ты гордишься своим заявлением. }
 
 {color=yellow|Кали: - И что? Кому вообще нужны книги? Если уж на то пошло, книжные черви создают больше проблем для нормальных людей}.
 
@@ -10055,7 +10319,7 @@ ZCEVENT_4 = """{color=aqua|Зефира: - Похоже, ты гордишься
 {color=aqua|Зефира: - Ч-чт...}
 
 Пока не поздно, вы заставляете обеих девушек замолчать и приказываете им молчать, что они и делают с явным признаком ненависти друг к другу.""",
-ZCEVENT_6 = """Когда вы переводите дух на улице, к вам подходит одна из девушек-официанток и приватно сообщает, что видела напряжение между вашей компанией и советует вам одну из популярных марок безалкогольного вина, популярного среди зверолюдей и полукровок. Не имея лучшей идеи, вы решаете, что это может помочь успокоить девушек.""",
+	ZCEVENT_6 = """Когда вы переводите дух на улице, к вам подходит одна из девушек-официанток и приватно сообщает, что видела напряжение между вашей компанией и советует вам одну из популярных марок безалкогольного вина, популярного среди зверолюдей и полукровок. Не имея лучшей идеи, вы решаете, что это может помочь успокоить девушек.""",
 	ZCEVENT_7 = """Вы возвращаетесь к девушкам, которые явно не в лучшем настроении. Когда вы преподносите им полученное вино, их любопытство возрастает. 
 
 {color=aqua|Зефира: - Это кажется довольно восхитительным напитком. Кали, ты справишься хотя бы с этим?}
@@ -10330,7 +10594,7 @@ ZEPHYRA_VISITOR_3_2 = """Посетитель: - Нееееет! Это дейс
 	GOBLIN_QUEST_0 = """Утром вы получаете письмо, которое, в отличие от тех, что вы обычно получаете, кажется довольно грубо сделанным, похоже, из самодельной бумаги и чернил. Вы понимаете, что это письмо из поселения зверолюдей, которые просят вас о помощи, и решаете, что неплохо было бы его посетить.""",
 	GOBLIN_QUEST_1 = """- А, это ты, [name]. Я вижу, вы получили мое сообщение. Хорошо, тогда позволь мне рассказать тебе, почему ты здесь. Я получила знак от духов, которым нужна помощь постороннего.""",
 	GOBLIN_QUEST_1_OPTION_1 = "От кого именно?",
-	GOBLIN_QUEST_1_OPTION_2 = "Какая боль...",
+	GOBLIN_QUEST_1_OPTION_2 = "Какая досада...",
 	GOBLIN_QUEST_2_1 = """- Кто знает. Вам придется выяснить это, когда вы туда попадете.
 
 Савра объясняет вам, как найти таинственных духов, нуждающихся в помощи, и добавляет отметку на вашу карту.""",
@@ -10531,7 +10795,7 @@ GOBLIN_QUEST_14 = """Как только вы подаете клич, белы�
 	
 	
 	
-	# QUESTS.
+	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "Кредит",
 	MAIN_QUEST_LOAN_SUMMARY = "Ваш поместье поставляется с кредитом. Вы должны найти достаточно денег, чтобы расплатиться с банком, иначе вас вышвырнут из только что приобретенного дома. Или, возможно, вы найдете другой способ справиться с этим...",
 	MAIN_QUEST_LOAN_STAGE0 = "Вы должны иметь более {custom_text_function=GetLoanSum#0|} золота к {custom_text_function=GetLoanDayDetailed#0|}.",
@@ -10628,13 +10892,13 @@ GOBLIN_QUEST_14 = """Как только вы подаете клич, белы�
 	GETTING_LIRA_QUEST_STAGE_4 = "Вернуться в Эрлен с Лирой",
 	GETTING_LIRA_QUEST_STAGE_5 = "Встретиться с Эрленом в столице эльфов",
 	
-	CALI_FIGHTERS_QUEST_NAME = "Кали: маленькая и храбрая",
+	CALI_FIGHTERS_QUEST_NAME = "Кали: Маленькая и Храбрая",
 	CALI_FIGHTERS_QUEST_SUMMARY = "Ваш подопечная, Кали, хочет быть более полезной и решила вступить в гильдию бойцов",
 	CALI_FIGHTERS_QUEST_STAGE_1 = "Посетите гильдию бойцов, чтобы зарегистрировать Кали",
 	CALI_FIGHTERS_QUEST_STAGE_2 = "Отправляйтесь в деревню, чтобы помочь Кали избавиться от гоблинов",
 	CALI_FIGHTERS_QUEST_STAGE_3 = "Сообщить в гильдию бойцов",
 	CALI_SERVANTS_QUEST_SUMMARY = "Ваша подопечная, Кали, хочет стать более женственной и желает посещать занятия для слуг.",
-	CALI_SERVANTS_QUEST_NAME = "Кали - девушка",
+	CALI_SERVANTS_QUEST_NAME = "Кали - Девушка",
 	CALI_SERVANTS_QUEST_STAGE_1 = "Посетить гильдию Слуг от имени Кали",
 	CALI_HEIRLOOM_QUEST_SUMMARY = "Прошлое Кали наконец-то настигло ее. Вам придется помочь ей разобраться с этим, если вы хотите, чтобы она осталась на вашей стороне...",
 	CALI_HEIRLOOM_QUEST_NAME = "Кали: Изгой",
@@ -10700,7 +10964,7 @@ GOBLIN_QUEST_14 = """Как только вы подаете клич, белы�
 	GOBLIN_QUEST_STAGE_5 = "Вернуться к Белому Оленю за наградой", 
 	
 	DIALOGUEANAINITIATELP = "Анастасия приветствует вас с застенчивым лицом. Похоже, она еще не совсем привыкла к этой новой роли.\n\n- -Здравствуйте, [Master]... Как прошел день?",
-	DIALOGUEANAINITIATELN = "Анастасия посещает вас с мрачным видом. Возможно, вам придется поработать над ее мотивацией. Она молчит, не имея слов для вас.\n\n\n- ......",
+	DIALOGUEANAINITIATELN = "Анастасия посещает вас с мрачным видом. Возможно, вам придется поработать над ее мотивацией. Она молчит, не имея слов для вас.\n\n\n- ...",
 	DIALOGUEANAINITIATEHP = "Анастасия приветствует вас с улыбкой. Хотя она не показывает этого, она выглядит вполне довольной.\n\n- [Master]. Вы хорошо себя чувствуете? Что я могу для вас сделать?",
 	DIALOGUEANAINITIATEHN = "Анастасия приветствует вас с покорным поведением. Похоже, она наконец-то отказалась от своей прежней жизни и приняла эту роль.\n\n-[Master]! Чем я могу служить вам?",
 	DIALOGUEANAINITIATEM = "Ваша жена, Анастасия тепло улыбается вам.\n\n- Дорогой, ты звал меня?",
@@ -11379,7 +11643,7 @@ GOBLIN_QUEST_14 = """Как только вы подаете клич, белы�
 	DATE_SCOLD1 = "Мне жаль, [Master]. ",
 	DATE_SCOLD2 = "Не нужно на меня кричать. ",
 	DATE_SCOLD3 = "Прости, пожалуйста, не сердись. ",
-	DATE_SCOLD4 = "Прекрати, я это незаслужено! ",
+	DATE_SCOLD4 = "Прекрати, это незаслуженно! ",
 	DATE_SCOLD5 = "Мне жаль, что ты так себя чувствуешь",
 	
 	MIMIC_EAT1 = "О нет! Он живой!",

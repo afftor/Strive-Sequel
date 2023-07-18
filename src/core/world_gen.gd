@@ -318,7 +318,7 @@ func make_location(code, area):
 	var location = worlddata.dungeons[code].duplicate(true)
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
-		text = "The " + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
+		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
 	if location.has('singlename'):
 		text = location.singlename
 	location.name = text
