@@ -47,7 +47,6 @@ func _ready():
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
 	gui_controller.add_close_button($QuestBoard)
-
 	
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
@@ -85,6 +84,7 @@ func _ready():
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
+	input_handler.connect("update_itemlist", self, 'update_sell_list')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
 

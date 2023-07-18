@@ -500,7 +500,8 @@ func turn_in_quest_items():
 		else:
 			i.amount -= amount
 			selectedquest.turned_value += i.calculateprice() * amount
-
+	
+	input_handler.emit_signal("update_itemlist")
 	selected_req.completed = true
 	$ItemSelectionPanel.hide()
 	CompleteQuest()
