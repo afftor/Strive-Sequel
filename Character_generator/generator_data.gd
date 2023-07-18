@@ -604,6 +604,11 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 		],
+		cow = [
+			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_taurus.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_taurus.png"},
+		],
 		goblin = [
 			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'}, #or not
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_goblin.png"},
@@ -735,6 +740,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
 		],
+		dragon = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_dragon2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_dragon2.png"},
+		],
 		#stub types
 		curved_top = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
@@ -804,6 +815,7 @@ var transforms = {
 	},
 	
 	tail = { #there is some misplacing for sure
+		#pls fix duplicating between 06_tails and 07_tails and pathes
 		null: [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = false},
@@ -829,6 +841,18 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon.png"},
+		],
+		dragon2 = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/07_tails/tail_dragon2.png"},
+		],
+		cow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/tail_cow.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tail_tex', texture = "res://Character_generator/images/06_tails/tail_cow.png"},
 		],
 		fox = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Tail_tex', attr = 'visible', value = true},
