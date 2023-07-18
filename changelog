@@ -1,3 +1,7 @@
+Fixed Cali's bad route having some text entries broken
+Fixed Ratkin desccription
+Added bat to run game with console to windows version
+Presumably fixed linux and mac versions
 Fixed sacred bowl being dropped randomly
 0.7.0
 Added paperdoll visaul to characters (many parts are still wip)

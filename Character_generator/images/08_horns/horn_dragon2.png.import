@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex"
+path="res://.import/horn_dragon2.png-da036791664ecd83e3a61d2483e357e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/LegR.png"
-dest_files=[ "res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex" ]
+source_file="res://Character_generator/images/08_horns/horn_dragon2.png"
+dest_files=[ "res://.import/horn_dragon2.png-da036791664ecd83e3a61d2483e357e4.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

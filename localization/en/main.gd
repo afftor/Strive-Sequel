@@ -1692,7 +1692,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RACEHALFKINFOXDESCRIPT = "Fox folk are a rare and relatively mysterious breed of Beastkin. They display high intelligence, a tendency towards lifelong monogamy, and congregate in small, close-knit communities.",
 	RACEHALFKINBUNNYDESCRIPT = "Bunnies are one of the least self-sufficient, but nonetheless common beast races. They are not aggressive and can be quite timid. They are quite well liked due to their comforting appearance and their natural lewdness which make them a popular choice for slave pets.",
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
-	RACERATKIDESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places. ",
+	RACERATKINESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places. ",
 	
 	
 	SKILLPRAISE = "Praise",
@@ -6887,7 +6887,7 @@ Daisy nonchalantly fixes her dress and awaits your further orders.""",
 	AMELIA_SILK_OPTION_START = "I've got the silk you need",
 	AMELIA_SILK_REPLY_START = "— I knew I could rely on you, [name]. Here's the reward I've promised. You know, since you are so resourceful, I'd like to provide you with an additional reward for this. How does a special massage sounds to you?",
 	AMELIA_SILK_OPTION_1_1 = "Sure, why not",
-	AMELIA_SILK_OPTION_1_2 = "I think I gonna refuse",
+	AMELIA_SILK_OPTION_1_2 = "I think, I'm gonna refuse",
 	AMELIA_SILK_REPLY_1_2 = """Amelia looks somewhat disappointed at your response.
 
 — That's too bad. Alright then, good luck with your day.""",
@@ -7226,7 +7226,7 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_NIGHT_GROUP_1_1 = """With night falling and guests starting to leave, you approach [spousename] and lead [spouseher] to your bedroom. As you enter, you find the group of men waiting, whose deal you accepted.
 [spousename] shouts in surprise, but after looking at you, realizes this is no coincidence.""",
 	MARRIAGE_NIGHT_GROUP_1_2 = """As you order [spousehim] to serve these men, [spousehe] seems rather agreeable to it.""",
-	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, and [spousehe/she(?)] looks at you with disbelief and horror. However, realizing there's no way for her to escape this now, [she] resentfully nods.""",
+	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, and [spousehe] looks at you with disbelief and horror. However, realizing there's no way for her to escape this now, [she] resentfully nods.""",
 	MARRIAGE_NIGHT_GROUP_1_4 = """Now all that's left is to choose what you're gonna do...""",
 	MARRIAGE_NIGHT_GROUP_OPTION_1 = """Join""",
 	MARRIAGE_NIGHT_GROUP_OPTION_2 = """Leave""",
@@ -9728,15 +9728,14 @@ You pull the simple collar out, showing it to the girl. Cali's eyes initially sh
 	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Cali trembles as fresh tears hit the floor. The girl's posture seems to relax, her eyes staring ahead as she lightly shakes. The girl doesn't resist you, but it's clear from her body language that if she thought she could get away from you she would bolt in an instant.
 
 Once the collar is around her neck, Cali looks at you, her face blank but her body quivering. Eventually you dismiss the girl so you can carry on with your work.""",
-	CALI_ACT2_EXQUISITE_COLLAR_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
+	CALI_ACT2_EXQUISITE_COLLAR_1_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
 
 - What do you want? I've been behaving, [name].
 
 When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes lock onto the item as she looks it over. 
 
-- It's pretty...
-
-You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
+- It's pretty...""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
 
 - …Well at least it's comfortable. But don't think this changes anything! Especially after what you've done…
 
@@ -9988,13 +9987,12 @@ Cali:- [Name], what are you doing?
 A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
 Cali:- W-wait not th-""",
-	CALI_ACT5_PET_9 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
 Cali:- Nhhh...
 
-The girl withdraws her protests as she gives into your caress, finally buckling as her legs close hard around your hand and she soaks her panties. A shrill cry comes from her throat as she nearly collapses onto her bowl, her unfocused eyes looking into the distance.   
-
-- Why... doesn't this feel wrong...?
+The girl withdraws her protests as she gives into your caress, finally buckling as her legs close hard around your hand and she soaks her panties. A shrill cry comes from her throat as she nearly collapses onto her bowl, her unfocused eyes looking into the distance.""",
+CALI_ACT5_PET_9_2 = """- Why... doesn't this feel wrong...?
 
 Cali seems conflicted before sighing, her body relaxing on the floor as your hand slips through her hair. It seems she has completely forgotten her initial grudge.
 
