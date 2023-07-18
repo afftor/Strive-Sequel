@@ -151,6 +151,7 @@ var globalsettings = {
 
 	factors_as_words = true,
 	show_full_consent = false,
+	disable_paperdoll = false,
 
 	textspeed = 60,
 	skipread = false,

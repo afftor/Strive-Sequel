@@ -32,7 +32,7 @@ func _ready():
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
-	for i in ['generate_portraits', 'factors_as_words']:
+	for i in ['generate_portraits', 'factors_as_words', 'disable_paperdoll']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
 
