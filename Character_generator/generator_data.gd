@@ -4116,7 +4116,7 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/99_armory_set_maidu/Shoulder_armorL1.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/99_armory_set_maidu/bluza.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_huge/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_big.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_maid_large.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_big/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_large.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_normal/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_normal.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/99_armory_set_maidu/tits_armor1_small.png"},

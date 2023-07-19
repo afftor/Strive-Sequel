@@ -133,7 +133,8 @@ func rebuild(character_to_build):
 	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
 	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
 
-	
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
 	if character != null:
 		character.update_portrait(self)
 
@@ -185,6 +186,9 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
+	
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
 
 
 func apply_transform(transform):
