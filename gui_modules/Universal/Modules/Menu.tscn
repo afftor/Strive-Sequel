@@ -670,7 +670,13 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.7.0
+bbcode_text = "Fixed Cali's bad route having some text entries broken
+Fixed Ratkin desccription
+Fixed gray skin color
+Added bat to run game with console to windows version
+Presumably fixed linux and mac versions
+Fixed sacred bowl being dropped randomly
+0.7.0
 Added paperdoll visaul to characters (many parts are still wip)
 Added Sacred Bowl item received by completing arc 2
 Added new booster and farm systems to service production
@@ -1480,7 +1486,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.7.0
+text = "Fixed Cali's bad route having some text entries broken
+Fixed Ratkin desccription
+Fixed gray skin color
+Added bat to run game with console to windows version
+Presumably fixed linux and mac versions
+Fixed sacred bowl being dropped randomly
+0.7.0
 Added paperdoll visaul to characters (many parts are still wip)
 Added Sacred Bowl item received by completing arc 2
 Added new booster and farm systems to service production
