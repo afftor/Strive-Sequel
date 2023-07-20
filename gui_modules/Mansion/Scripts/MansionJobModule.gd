@@ -973,7 +973,7 @@ func build_boosters():
 	$DescriptionLabel.visible = false
 	input_handler.ClearContainer($BrothelRules/boosters/VBoxContainer, ['Button'])
 	var boosters = person.xp_module.service_boosters
-	var f = true
+#	var f = true
 	for id in range(1, 4):
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/boosters/VBoxContainer, 'Button')
 		var boost_data = boosters['boost%d' % id]
@@ -994,15 +994,17 @@ func build_boosters():
 			text += " - Activated"
 		
 		newbutton.get_node('Label').text = text
-		if f:
-			if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
-				newbutton.disabled = false
-				newbutton.connect('pressed', self, 'set_booster', [id, !boost_data.value])
-			else:
-				newbutton.disabled = true
-				f = false
-		else:
-			newbutton.disabled = true
+#		if f:
+#			if ResourceScripts.game_res.materials.has(boost_data.res) and ResourceScripts.game_res.materials[boost_data.res] > 1:
+#				newbutton.disabled = false
+#				newbutton.connect('pressed', self, 'set_booster', [id, !boost_data.value])
+#			else:
+#				newbutton.disabled = true
+#				f = false
+#		else:
+#			newbutton.disabled = true
+		newbutton.connect('pressed', self, 'set_booster', [id, !boost_data.value])
+
 
 func set_booster(id, value, rebuild = true):
 	var boosters = person.xp_module.service_boosters
