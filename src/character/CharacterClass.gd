@@ -342,7 +342,7 @@ func get_full_name():
 	return statlist.get_full_name()
 
 func get_short_race():
-	var race = get_stat('race')
+	var race = races.racelist[get_stat('race')].name
 	if race.findn('Beastkin '): race = race.replace('Beastkin ','B.')
 	if race.findn('Halfkin '): race = race.replace('Halfkin ','H.')
 	return race.capitalize()

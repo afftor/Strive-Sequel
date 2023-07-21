@@ -670,7 +670,15 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.6.10a
+bbcode_text = "0.7.0
+Added paperdoll visaul to characters (many parts are still wip)
+Added Sacred Bowl item received by completing arc 2
+Added new booster and farm systems to service production
+Added multiple missing translation lines to main.gd 
+Added Russian translation and fixed missing translation entries
+Added loading screen with bits of lore and tips
+Fixed some minor bugs and quest issues
+0.6.10a
 Added icon indication for tasks and tools to character inventory
 Added new upgrade which makes tools at dungeons ignore task type
 Added skillbook button to character skill learning menu
@@ -1472,7 +1480,15 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.6.10a
+text = "0.7.0
+Added paperdoll visaul to characters (many parts are still wip)
+Added Sacred Bowl item received by completing arc 2
+Added new booster and farm systems to service production
+Added multiple missing translation lines to main.gd 
+Added Russian translation and fixed missing translation entries
+Added loading screen with bits of lore and tips
+Fixed some minor bugs and quest issues
+0.6.10a
 Added icon indication for tasks and tools to character inventory
 Added new upgrade which makes tools at dungeons ignore task type
 Added skillbook button to character skill learning menu

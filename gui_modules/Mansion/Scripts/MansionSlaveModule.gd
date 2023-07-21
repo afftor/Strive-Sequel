@@ -117,7 +117,7 @@ func show_slave_info():
 			get_node(i+'2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
 			get_node(i+'2').set("custom_colors/font_color", color)
 
-		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity')))
+		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\n"+tr("TOTALPRODUCTIVITY")+": " + str(floor(person.get_stat('productivity')))
 		for i in variables.productivity_mods:
 			if person.get_stat(i) > 1:
 				text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name + "}"

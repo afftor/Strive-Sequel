@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.7.0 experimental-3'
+const gameversion = '0.7.0'
 
 #time
 signal hour_tick
@@ -84,7 +84,7 @@ func _ready():
 
 	randomize() #for legacy code sake
 	rng.randomize()
-
+	
 	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
