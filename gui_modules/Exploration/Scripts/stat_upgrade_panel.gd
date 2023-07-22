@@ -86,6 +86,8 @@ func show_stats():
 	for stat in stats_dict:
 		# if character.get_stat(stat) == 6:
 		# 	continue
+		if stat != 'growth_factor' and ResourceScripts.game_globals.difficulty == 'hard':
+			continue
 		if person.is_master() && stat in ["timid_factor", "tame_factor"]:
 			continue
 		else:
