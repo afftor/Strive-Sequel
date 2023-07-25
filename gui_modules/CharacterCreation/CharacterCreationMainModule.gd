@@ -730,7 +730,7 @@ func build_class():
 			$VBoxContainer/class/icon.texture = null
 	else:
 		$VBoxContainer/class/icon.texture = null
-		$VBoxContainer/class/Label.text = "Class"
+		$VBoxContainer/class/Label.text = tr("CLASS_LABEL")
 
 
 

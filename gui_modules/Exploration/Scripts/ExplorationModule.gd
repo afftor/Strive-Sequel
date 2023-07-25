@@ -384,15 +384,15 @@ func build_location_description():
 			)
 			if active_location.completed == false:
 				text += (
-					"\nProgress: Levels - "
+					"\n" + tr("PROGRESS" + ": " + "LEVELS" + " - ")
 					+ str(progress.level)
 					+ "/"
 					+ str(active_location.levels.size())
 					+ ", "
 				)
-				text += "Stage - " + str(progress.stage)
+				text += tr("STAGE") + " - " + str(progress.stage)
 			else:
-				text += "\n{color=aqua|Location complete}"
+				text += "\n{color=aqua|" + tr("LOC_COMPLETE") + "}"
 		'settlement':
 			text = tr(active_location.classname) + ": " + active_location.name
 		'skirmish':
@@ -804,7 +804,7 @@ func enter_level(level, skip_to_end = false):
 			newbutton = input_handler.DuplicateContainerTemplate(
 				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 			)
-			newbutton.text = 'Skip to last room'
+			newbutton.text = tr('SKIP_TO_LAST_ROOM_LABEL')
 			newbutton.connect("pressed", self, "enter_level", [level, true])
 
 	build_location_group()
@@ -994,7 +994,7 @@ func build_item_panel():
 		i.set_icon(newnode.get_node("Icon"))
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
-		newnode.get_node("Name").text = str(i.name)
+		newnode.get_node("Name").text = tr("ITEM" + str(i.name).to_upper())
 		newnode.dragdata = i
 		globals.connectitemtooltip_v2(newnode, i)
 		tutorial_items = true
@@ -1163,13 +1163,13 @@ func enter_dungeon():
 		newbutton = input_handler.DuplicateContainerTemplate(
 			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 		)
-		newbutton.text = 'Advance'
+		newbutton.text = tr("ADVANCE_LABEL")
 		newbutton.connect("pressed", self, "area_advance", ['advance'])
 		if ResourceScripts.game_progress.allow_skip_fights:
 			newbutton = input_handler.DuplicateContainerTemplate(
 				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 			)
-			newbutton.text = 'Skip to last room'
+			newbutton.text = tr("SKIP_TO_LAST_ROOM_LABEL")
 			newbutton.connect("pressed", self, "skip_to_boss")
 	if gui_controller.mansion.test_mode:
 		newbutton = input_handler.DuplicateContainerTemplate(
@@ -1257,7 +1257,7 @@ func update_guild_actions(guild):
 			"res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png"
 		)
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-	newbutton.get_node("Label").text = "Leave"
+	newbutton.get_node("Label").text = tr("DIALOGUELEAVE")
 	newbutton.connect("pressed", self, "open_city", [selected_location])
 
 
@@ -1331,7 +1331,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			item_ref = Items.materiallist[item]
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = item_ref.name
-		newbutton.get_node("Type").text = "Item"
+		newbutton.get_node("Type").text = tr("ITEM_LABEL")
 		newbutton.get_node("Icon").texture = item_ref.icon
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.items[item][1])
 		newbutton.get_node("Amount").show()
@@ -1348,7 +1348,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = str(cls.capitalize())
-		newbutton.get_node("Type").text = "Class"
+		newbutton.get_node("Type").text = tr("CLASS_LABEL")
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
@@ -1361,13 +1361,13 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		var social_skills = ''
 		var combat_skills = ''
 		if classesdata.professions[cls].has("skills") && !classesdata.professions[cls].skills.empty():
-			temptext += "\nSocial Skills - "
+			temptext += tr("\n" + "SOCIAL_SKILLS" + " - ")
 			for skill in classesdata.professions[cls].skills:
 				social_skills += Skilldata.Skilllist[skill].name + ", "
 			social_skills = social_skills.substr(0, social_skills.length() - 2)
 		temptext += social_skills
 		if classesdata.professions[cls].has("combatskills") && !classesdata.professions[cls].combatskills.empty():
-			temptext += "\nCombat Skills - "
+			temptext += tr("\n" + "COMBAT_SKILLS" + " - ")
 			for skill in classesdata.professions[cls].combatskills:
 				combat_skills += Skilldata.Skilllist[skill].name + ", "
 			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
@@ -1717,7 +1717,7 @@ func show_slave_info(person):
 			+ str(floor(person.get_stat(i + 'max')))
 		)
 	text = (
-		"Type: [color=yellow]"
+		tr('TYPE_LABEL' + ': ' + "[color=yellow]")
 		+ person.translate(statdata.slave_class_names[person.get_stat('slave_class')])
 		+ "[/color]\n"
 	)

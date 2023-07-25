@@ -76,14 +76,14 @@ func tick():
 				# parent.get_ref().return_to_task()
 				parent.get_ref().remove_from_task()
 				input_handler.update_slave_list()
-				globals.text_log_add("travel", parent.get_ref().get_short_name() + " returned to mansion. ")
+				globals.text_log_add(tr("TRAVEL_LABEL"), parent.get_ref().get_short_name() + tr(" " + "RETURNED_TO_MANSION_LABEL" + ". "))
 			else:
 				parent.get_ref().remove_from_task()
 				input_handler.update_slave_list()
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
-				globals.text_log_add("travel", parent.get_ref().get_short_name() + " arrived at location: " + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
+				globals.text_log_add(tr("TRAVEL_LABEL"), parent.get_ref().get_short_name() + tr(" " + "ARRIVED_AT_LOC_LABEL" + ": ") + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location].name)
 			parent.get_ref().return_to_task()
 
 func make_location_description():

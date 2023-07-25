@@ -35,7 +35,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=33]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=34]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.054902, 0.0823529, 1 )
 
@@ -86,13 +85,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="area/from_panel/CenterContainer"]
-margin_left = 100.0
 margin_top = 17.0
-margin_right = 492.0
+margin_right = 635.0
 margin_bottom = 84.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Starting location"
+custom_fonts/font = ExtResource( 3 )
+text = "STARTING_LOC_LABEL"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="area/from_panel"]
 margin_left = 30.0
@@ -124,8 +122,8 @@ anchor_right = 0.977
 anchor_bottom = 1.0
 margin_left = -0.741028
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "30"
 align = 2
 valign = 1
@@ -200,8 +198,8 @@ margin_right = 229.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 175, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Name "
 align = 1
 valign = 1
@@ -283,13 +281,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="area/to_panel/CenterContainer"]
-margin_left = 116.0
+margin_left = 10.0
 margin_top = 17.0
-margin_right = 478.0
+margin_right = 584.0
 margin_bottom = 84.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Travel location"
+custom_fonts/font = ExtResource( 3 )
+text = "TRAVEL_LOC_LABEL"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="area/to_panel"]
 margin_left = 30.0
@@ -320,8 +318,8 @@ anchor_left = 0.977
 anchor_right = 0.977
 anchor_bottom = 1.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "30"
 align = 2
 valign = 1
@@ -343,10 +341,6 @@ __meta__ = {
 anchor_top = 0.106
 anchor_right = 1.0
 anchor_bottom = 0.265
-margin_top = -7.62939e-06
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="area/to_panel/HBoxContainer2"]
 margin_left = 61.0
@@ -386,9 +380,6 @@ anchor_left = -2.083
 anchor_top = -1.037
 anchor_right = 3.301
 anchor_bottom = 4.476
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel"]
 anchor_right = 1.0
@@ -402,14 +393,14 @@ __meta__ = {
 visible = false
 margin_right = 340.0
 margin_bottom = 51.0
+custom_colors/font_color_disabled = Color( 0.490196, 0.490196, 0.490196, 1 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 28 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 28 )
-custom_colors/font_color_disabled = Color( 0.490196, 0.490196, 0.490196, 1 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "All"
 
 [node name="SelectorRight" type="TextureButton" parent="area/to_panel/HBoxContainer2/HBoxContainer"]
@@ -446,9 +437,9 @@ texture_hover = ExtResource( 15 )
 [node name="Label" type="Label" parent="area/to_panel/HBoxContainer/CenterContainer/CancelButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Close"
+custom_fonts/font = ExtResource( 17 )
+text = "CLOSE"
 align = 1
 valign = 1
 __meta__ = {
@@ -476,9 +467,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.78186
 margin_right = -1.78186
-custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Confirm"
+custom_fonts/font = ExtResource( 17 )
+text = "CONFIRM"
 align = 1
 valign = 1
 __meta__ = {
@@ -501,13 +492,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="area/info_panel/CenterContainer"]
-margin_left = 187.0
+margin_left = 18.0
 margin_top = 17.0
-margin_right = 481.0
+margin_right = 651.0
 margin_bottom = 84.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Information"
+custom_fonts/font = ExtResource( 3 )
+text = "INFORMATION_LABEL"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="area/info_panel"]
 margin_left = 40.0
@@ -553,14 +544,11 @@ texture_hover = ExtResource( 15 )
 [node name="Label" type="Label" parent="area/info_panel/VBoxContainer/CenterContainer/forgetButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Forget"
+custom_fonts/font = ExtResource( 17 )
+text = "FORGET_LABEL"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="resources" type="VBoxContainer" parent="area/info_panel"]
 anchor_top = 0.668
@@ -573,9 +561,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="area/info_panel/resources"]
 margin_right = 669.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Avaliable Resources"
+custom_fonts/font = ExtResource( 4 )
+text = "AVAIL_RES_LABEL"
 align = 1
 valign = 1
 __meta__ = {
@@ -625,8 +613,8 @@ margin_left = 2.0
 margin_top = 53.0
 margin_right = 77.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "2/3"
 align = 1
 valign = 1

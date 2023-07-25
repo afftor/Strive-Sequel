@@ -231,9 +231,6 @@ margin_bottom = 333.228
 text = "SIBLINGMODULECONSENT"
 align = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SexSkillsControl" type="Control" parent="."]
 visible = false
@@ -295,7 +292,7 @@ margin_bottom = 309.0
 columns = 2
 
 [node name="ration" type="CheckBox" parent="work_rules"]
-margin_right = 215.0
+margin_right = 368.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -307,11 +304,11 @@ custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 7 )
-text = "Extra rations"
+text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
-margin_left = 219.0
-margin_right = 420.0
+margin_left = 372.0
+margin_right = 719.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -323,11 +320,11 @@ custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 8 )
-text = "Longer shifts"
+text = "WORKRULESHIFTS"
 
 [node name="constrain" type="CheckBox" parent="work_rules"]
 margin_top = 52.0
-margin_right = 215.0
+margin_right = 368.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -339,12 +336,12 @@ custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
-text = "Coerced Labor"
+text = "WORKRULECONSTRAIN"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
-margin_left = 219.0
+margin_left = 372.0
 margin_top = 52.0
-margin_right = 420.0
+margin_right = 719.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -356,11 +353,11 @@ custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
-text = "Luxury Room"
+text = "UPGRADELUXURY_ROOMS"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
 margin_top = 104.0
-margin_right = 215.0
+margin_right = 368.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -372,12 +369,12 @@ custom_icons/checked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
-text = "Contraceptive"
+text = "WORKRULECONTRACEPTIVE"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
-margin_left = 219.0
+margin_left = 372.0
 margin_top = 104.0
-margin_right = 420.0
+margin_right = 719.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -394,7 +391,7 @@ custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 disabled = true
-text = "Nudity"
+text = "WORKRULENUDITY"
 
 [node name="food_love" type="TextureRect" parent="."]
 light_mask = 0
@@ -754,9 +751,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "SIBLINGMODULEFOODCONSUMPTION"
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="food_consumption"]
 margin_left = 231.0

@@ -569,7 +569,7 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 
 
 	if showreqs == true:
-		text += 'Requirements: '
+		text += tr('REQUIREMENTS_TOOLTIP' + ': ')
 		if classdata.reqs.size() > 0:
 			text += '\n' + get_class_reqs(person, classdata)
 		else:

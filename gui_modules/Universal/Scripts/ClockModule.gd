@@ -22,7 +22,7 @@ func _ready():
 	update_labels()
 	update_food_tooltip()
 	update_gold_tooltip()
-	globals.connecttexttooltip($TimeNode/timetooltip, "Current Week, Day and time. Some quests may have time limits.")
+	globals.connecttexttooltip($TimeNode/timetooltip, tr("TIME_TOOLTIP"))
 	globals.connect("update_clock", self, 'update_labels')
 #	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
@@ -35,7 +35,7 @@ func hotkey_pressed(number):
 
 func update_food_tooltip():
 	var resources = ResourceScripts.game_party.calculate_food_consumption()
-	var text = "\n\nCurrent Preferred Food Consumption:"
+	var text = "\n\n" + tr('CURRENT_PREFERRED_FOOD_CONSUMPTION') + ":"
 	for i in resources.keys():
 		text +=  "\n" + tr('FOODTYPE' + i.to_upper()) + ": " + str(resources[i])
 	globals.connecttexttooltip($TimeNode/food, tr("TOOLTIPFOOD") + text)

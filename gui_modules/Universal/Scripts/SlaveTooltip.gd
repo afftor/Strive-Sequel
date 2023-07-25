@@ -55,7 +55,7 @@ func showup(node, person):
 			get_node("base_stats/"+ i ).max_value = person.get_stat(i+'max')
 			get_node("base_stats/"+ i ).value = person.get_stat(i)
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-		text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
+		text = tr('TYPE_LABEL' + ': ' + "[color=yellow]") + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
 		var gatherable = Items.materiallist.has(person.get_work())
 		if person.is_players_character == true:
 			if person.get_work() != 'disabled' and person.get_work() != '' and person.get_work() != 'Assignment' and person.get_work() != 'learning':
