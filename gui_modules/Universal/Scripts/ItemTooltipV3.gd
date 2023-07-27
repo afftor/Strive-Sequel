@@ -72,7 +72,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'materialowned':
 			var workers_data = {}
 			$LowPanel/HBoxContainer/HoldShift.visible = true
-			$LowPanel/HBoxContainer/HoldShift.text = tr('OWNED_LABEL' + ': ') + str(data.amount)
+			$LowPanel/HBoxContainer/HoldShift.text = tr('OWNED_LABEL') + ': ' + str(data.amount)
 			if node.has_meta("max_workers"):
 				workers_data = {
 					max = node.get_meta("max_workers"),
@@ -133,10 +133,10 @@ func material_tooltip(data, workers_data = {}):
 	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):
-		text += tr("\n" + "MAX_WORKERS_LABEL" + ": ") + str(workers_data.max)
-		text += tr("\n" + "CURRENT_WORKERS_LABEL" + ": ") + str(workers_data.current)
+		text += "\n" + tr("MAX_WORKERS_LABEL") + ": " + str(workers_data.max)
+		text += "\n" + tr("CURRENT_WORKERS_LABEL") + ": " + str(workers_data.current)
 	if workers_data.has("gather_mod"):
-		text += tr("\n" + "GATHERING_MOD_LABEL" + ": ") + str(workers_data.gather_mod) + "%"
+		text += "\n" + tr("GATHERING_MOD_LABEL") + ": " + str(workers_data.gather_mod) + "%"
 #	if data.has('amount'):
 #		text += "\nOwned: " + str(data.amount)
 	iconnode.texture = item.icon

@@ -12542,6 +12542,15 @@ Hotkey: 3""",
 	CANT_USE_TODAY_LABEL = "Can't use this skill today anymore",
 	REQS_NOT_MET_LABEL = "Requirements aren't met",
 	TARGET_REQS_NOT_MET_LABEL = "Target requirements aren't met",
+	FARM_LABEL = "Farm",
+	SELECT_RES_FIRST_LABEL = "Select Resource first",
+	SELECT_SLOT_FIRST_LABEL = "Select Slot first",
+	LACKS_BASIC_SERV_LABEL = "lacks Training: Basic Servitude",
+	REFUSE_TO_WHORE_LABEL = "refuses to perfrorm sexual tasks",
+	REFUSE_THIS_TASK_LABEL = "refuses to perfrorm this task",
+	LACKS_PROSTITUTUION_LABEL = "lacks Training: Prostitution",
+	SPEND_REP_QUESTION_LABEL = "Are you sure you want to spend",
+	REP_POINTS_LABEL = "reputation points for"
 }
 
 

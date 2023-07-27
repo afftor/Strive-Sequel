@@ -94,7 +94,7 @@ func GetLoanDay(stage):
 
 func GetLoanDayDetailed(stage):
 	var day = variables.base_loan_dates[int(stage)]
-	var res = tr("WEEK_LABEL" + " %d " + "DAY_LABEL" + " %d")
+	var res = tr("WEEK_LABEL") + " %d " + tr("DAY_LABEL") + " %d"
 	day = ResourceScripts.game_globals.get_week_and_day_custom(day)
 	day[0] += 1 #or not if function above is incorrect
 	return res % day

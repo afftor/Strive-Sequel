@@ -511,11 +511,11 @@ func select_filter(value):
 func build_location_info():
 	var text = ""
 	if from_location_selected != null:
-		text += tr("CHARS_SELECTED_LABEL" + ": %d\n\n") % characters.size()
+		text += tr("CHARS_SELECTED_LABEL") + ": %d\n\n" % characters.size()
 	if location_selected != null:
 		var location = ResourceScripts.world_gen.get_location_from_code(location_selected.id)
-		text += tr("TARGET_LOC_LABEL" + ": %s\n") % location.name
-		text += tr('TYPE_LABEL' + ': ' + "%s") % tr(selector_meta_bindings[location_selected.type].trim_suffix("S"))
+		text += tr("TARGET_LOC_LABEL") + ": %s\n" % location.name
+		text += tr('TYPE_LABEL') + ': ' + "%s" % tr(selector_meta_bindings[location_selected.type].trim_suffix("S"))
 		if location.type == 'dungeon':
 			text += " (" + tr(location.classname) + ")"
 		text += "\n"
@@ -526,13 +526,13 @@ func build_location_info():
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0:
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
-				text += tr("TRAVEL_TIME_LABEL" + ": %d " + "CYCLES_LABEL" + "\n") % ceil(travel_time.time / tmp)
+				text += tr("TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time / tmp)
 				#text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
-				text += tr("EST_TRAVEL_TIME_LABEL" + ": %d " + "CYCLES_LABEL" + "\n") % ceil(travel_time.time)
+				text += tr("EST_TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time)
 				#text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
 		if location_selected.has('captured') && location_selected.captured == true:
-			text += globals.TextEncoder(tr("{color=red|" + "LOC_UNACCEPT_LABEL" + "}"))
+			text += globals.TextEncoder("{color=red|" + tr("LOC_UNACCEPT_LABEL") + "}")
 	else:
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text

@@ -101,9 +101,9 @@ func update():
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
-			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + tr("\n" + "CUR_LEVEL_LABEL" + ":") + str(floor(s_skills[i])))
+			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
 		
-		$ConsentLabel.text = tr("SIBLINGMODULECONSENT" + ": ") + str(person.get_stat('consent'))
+		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + ": " + str(person.get_stat('consent'))
 		
 		globals.connecttexttooltip($food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)

@@ -275,12 +275,12 @@ func gear_detailed_tooltip(data, item = null):
 	if item.geartype != null:
 		text += tr('TYPE_LABEL' + ': ') + item.geartype + "\n"
 	else:
-		text += tr("TYPE_USABLE_LABEL" + "\n")
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	if item.slots.size() > 0:
-		text += tr("SLOTS_LABEL" + ": ")
+		text += tr("SLOTS_LABEL") + ": "
 		for i in item.slots:
-			text += tr("ITEMSLOT"+i.to_upper()) + ", "
+			text += tr("ITEMSLOT")+i.to_upper() + ", "
 		text = text.substr(0, text.length() -2)
 
 	if item.toolcategory != null:
@@ -321,14 +321,14 @@ func geartemplete_tooltip(data):
 	var text = '[center]' + item.name + '[/center]\n'
 
 	if item.has('geartype'):
-		text += tr('TYPE_LABEL' + ': ') + item.geartype + "\n"
+		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 		if item.slots.size() > 0:
-			text += tr("SLOTS_LABEL" + ": ")
+			text += tr("SLOTS_LABEL") + ": "
 			for i in item.slots:
-				text += tr("ITEMSLOT"+i.to_upper()) + ", "
+				text += tr("ITEMSLOT")+i.to_upper() + ", "
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
-		text += tr("TYPE_USABLE_LABEL" + "\n")
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	text += item.descript
 
@@ -360,7 +360,7 @@ func geartemplete_tooltip(data):
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 
-		text += tr("\n\n{color=yellow|" + "INFOHOLDSHIFT" + "}")
+		text += "\n\n{color=yellow|" + tr("INFOHOLDSHIFT") + "}"
 	textnode.bbcode_text = globals.TextEncoder(text)
 
 
