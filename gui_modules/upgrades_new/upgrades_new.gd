@@ -157,7 +157,7 @@ func build_description(upgrade_id):
 
 	desc_panel.get_node("Confirm").disabled = !can_upgrade
 	desc_panel.get_node("VBoxContainer/description").bbcode_text = globals.TextEncoder(text)
-	$TaxLabel.text = "Weekly Taxes: %d" % ResourceScripts.game_res.tax
+	$TaxLabel.text = tr("MONEYTOOLTIP2" + ": %d" % ResourceScripts.game_res.tax)
 	#2add here building bonuses list not existing for now
 
 

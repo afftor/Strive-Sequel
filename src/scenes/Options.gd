@@ -6,6 +6,10 @@ var SwitchLanguage
 #warning-ignore-all:return_value_discarded
 # var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
 func _ready():
+	$TabContainer.set_tab_title(0, tr("OPTNAME1"))
+	$TabContainer.set_tab_title(1, tr("OPTNAME2"))
+	$TabContainer.set_tab_title(2, tr("OPTNAME3"))
+	$TabContainer.set_tab_title(3, tr("OPTNAME4"))
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
@@ -140,20 +144,20 @@ func disable_animations_backgrounds(value):
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	input_handler.globalsettings.malechance = value
-	var text = 'Male generation chance: ' + str(value) + "%"
+	var text = tr('OPTGAMEPLAYMALERATE') + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
 	input_handler.globalsettings.futachance = value
-	var text = 'Futa generation chance: ' + str(value) + "%"
+	var text = tr('OPTGAMEPLAYFUTARATE') + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
 
 
 func autosave_amount_change(value):
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.value = value
 	input_handler.globalsettings.autosave_number = int(value)
-	var text = 'Autosaves amount: ' + str(value)
+	var text = tr('OPTFAMEPLAYAUTOSAVEAMOUNT') + str(value)
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/Label.text = text
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.visible = (int(value) != 0)
 
@@ -161,7 +165,7 @@ func autosave_amount_change(value):
 func autosave_frequency_change(value):
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.value = value
 	input_handler.globalsettings.autosave_frequency = int(value)
-	var text = 'Days per autosave: ' + str(value)
+	var text = tr('OPTGAMEPLAYAUTOSAVETIME') + str(value)
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/Label.text = text
 
 

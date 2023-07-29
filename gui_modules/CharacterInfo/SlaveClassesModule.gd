@@ -21,6 +21,7 @@ var Panel_x = 598
 var Text_x = 565
 
 func _ready():
+	$SkillPanel/skillpoints_label.text += ": "
 	for i in $categories.get_children():
 		i.connect("pressed",self,'class_category', [i.name])
 	for i in $SkillPanel/Categories.get_children():
@@ -33,20 +34,12 @@ func _ready():
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
-	globals.connecttexttooltip($SkillPanel/Categories/all, "All")
-	globals.connecttexttooltip($SkillPanel/Categories/combat, "Combat")
-	globals.connecttexttooltip($SkillPanel/Categories/spells, "Spell")
-	globals.connecttexttooltip($SkillPanel/Categories/support, "Support")
-	globals.connecttexttooltip($SkillPanel/Categories/aoe, "Area Of Effect")
-	globals.connecttexttooltip($SkillPanel/Categories/heal, "Heal")
-	globals.connecttexttooltip($SkillTooltip/icon_cooldown, "Cooldown")
-	globals.connecttexttooltip($SkillTooltip/icon_usage, "Manacost")
-	globals.connecttexttooltip($categories/all, "All")
-	globals.connecttexttooltip($categories/social, "Social")
-	globals.connecttexttooltip($categories/labor, "Labor")
-	globals.connecttexttooltip($categories/sexual, "Sexual")
-	globals.connecttexttooltip($categories/combat, "Combat")
-	globals.connecttexttooltip($categories/magic, "Magic")
+	globals.connecttexttooltip($SkillTooltip/icon_cooldown, "TOOLTIP_COOLDOWN")
+	globals.connecttexttooltip($SkillTooltip/icon_usage, "TOOLTIP_MANACOST")
+	for ch in $SkillPanel/Categories.get_children():
+		globals.connecttexttooltip(ch, tr("SKILLS_CAT_" + str(ch.name).to_upper()) + "_DESC")
+	for ch in $categories.get_children():
+		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper()) + "_DESC")
 	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
 	$SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
 
@@ -247,7 +240,7 @@ func build_skills():
 			newbutton.material = load("res://assets/sfx/bw_shader.tres")
 		globals.connecttexttooltip(newbutton, text)
 	sort_skills()
-	$SkillPanel/skillpoints_label.text = "Skill Points: " + str(person.get_ability_experience())
+	$SkillPanel/skillpoints_label.text = tr("SKILL_POINTS_LABEL") + ": " + str(person.get_ability_experience())
 	
 
 func is_skill_locked(skill):

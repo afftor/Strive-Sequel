@@ -478,13 +478,15 @@ var data = {
 		{text = "LICHAIRETALK6_1", reqs = []},
 		],
 		options = [
-		{code = 'lich_aire_talk6_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'lich_aire_talk6_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2}
 		],
 	},
 	
 	lich_aire_talk6_2 = {
 		image = null,
-		character = 'aire',
+		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_2", reqs = []},
@@ -496,7 +498,9 @@ var data = {
 	
 	lich_aire_talk6_3 = {
 		image = null,
-		character = 'aire',
+		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_3", reqs = []},
@@ -508,7 +512,9 @@ var data = {
 	
 	lich_aire_talk6_4 = {
 		image = null,
-		character = 'aire',
+		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_4", reqs = []},
@@ -520,7 +526,9 @@ var data = {
 	
 	lich_aire_talk6_5 = {
 		image = null,
-		character = 'aire',
+		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_5", reqs = []},
@@ -532,24 +540,23 @@ var data = {
 	
 	lich_aire_talk6_6 = {
 		image = null,
-		character = 'aire',
+		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6_6", reqs = []},
 		],
 		options = [
 		{code = 'lich_aire_talk7', text = "LICHAIRETALK6REPLY1", reqs = [],
-		bonus_effects = [{code = 'decision', value = 'aire_is_dead'}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2},
-		{code = 'lich_aire_leave', text = "LICHAIRETALK6REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'aire_raped'}]},
+		bonus_effects = [{code = 'decision', value = 'aire_is_dead'}], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1},
+		{code = 'lich_aire_leave', text = "LICHAIRETALK6REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', change_dialogue_type = 1, bonus_effects = [{code = 'decision', value = 'aire_raped'}]},
 		],
 	},
 	
 
 	lich_aire_talk7 = {
 		image = null,
-		custom_background = "lich_aire_talk7",
-		scene_type = "ero_scene",
-		save_scene_to_gallery = true,
 		tags = [],
 		text = [
 		{text = "LICHAIRETALK7", reqs = []},
@@ -563,7 +570,6 @@ var data = {
 
 	lich_aire_leave = {
 		image = null,
-		character = 'aire',
 		tags = [],
 		text = [
 		{text = "LICHAIRELEAVE", reqs = [], },

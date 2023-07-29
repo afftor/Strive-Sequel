@@ -40,10 +40,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkillPanelBG" type="TextureRect" parent="." groups=[
-"hide_stranger",
-"hide_traveler",
-]]
+[node name="SkillPanelBG" type="TextureRect" parent="." groups=["hide_stranger", "hide_traveler"]]
 visible = false
 margin_right = 1100.0
 margin_bottom = 138.0
@@ -54,21 +51,15 @@ margin_left = 9.0
 margin_top = 10.0
 margin_right = 41.0
 margin_bottom = 106.0
-hint_tooltip = "Social/Combat Skills"
+hint_tooltip = "SKILL_SWITCH_TOOLTIP"
 theme = ExtResource( 13 )
 toggle_mode = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 8 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SkillPanel" type="HBoxContainer" parent="." groups=[
-"hide_stranger",
-"hide_traveler",
-]]
+[node name="SkillPanel" type="HBoxContainer" parent="." groups=["hide_stranger", "hide_traveler"]]
 margin_left = 46.0
 margin_top = 8.0
 margin_right = 1090.0
@@ -122,8 +113,8 @@ margin_left = 7.0
 margin_top = 6.0
 margin_right = 96.0
 margin_bottom = 94.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.968627, 1, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "1"
 align = 1
 valign = 1
@@ -134,9 +125,9 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 2
 __meta__ = {
@@ -149,7 +140,7 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "1"

@@ -16,7 +16,7 @@ func _ready():
 	$VBoxContainer/icon2.connect("pressed", self, "make_random_portrait")
 	$VBoxContainer/body.connect("pressed", self, "custom_icon_open", ["body"])
 	$VBoxContainer/uniquesprite.connect("pressed", self, 'unique_sprite_choose')
-	$Label.text = "Add Custom Description"
+	$Label.text = tr("DESCRIPT_BUTTON_TEXT")
 	$ConfirmButton.connect("pressed", self, "confirm")
 	custom_description_open()
 
@@ -44,8 +44,8 @@ func custom_description_open():
 	person = input_handler.interacted_character
 	if person != null:
 		show_text_edit()
-		$Label.text = "Add Custom Description (start with # to hide)"
-		details_state = "description"
+		$Label.text = tr("DESCRIPT2_BUTTON_TEXT")
+		details_state = tr("DESCRIPT_LABEL")
 		$TextEdit.text = person.get_stat('bonus_description')
 
 func custom_nickname_open():
@@ -54,7 +54,7 @@ func custom_nickname_open():
 	$ConfirmButton.show()
 	person = input_handler.interacted_character
 	show_text_edit()
-	$Label.text = "Add Custom Nickname"
+	$Label.text = tr("CUSTOM_NICK_LABEL")
 	details_state = "nickname"
 	$TextEdit.text = person.get_stat('nickname')
 
@@ -64,7 +64,7 @@ func custom_masternoun_open():
 	$ConfirmButton.show()
 	person = input_handler.interacted_character
 	show_text_edit()
-	$Label.text = "Add Custom Masternoun"
+	$Label.text = tr("CUSTOM_MNOUN_LABEL")
 	details_state = "masternoun"
 	$TextEdit.text = person.get_stat('masternoun')
 

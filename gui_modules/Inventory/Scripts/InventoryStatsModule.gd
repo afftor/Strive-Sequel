@@ -14,7 +14,7 @@ func _ready():
 		var newvalue = $resists/Value.duplicate()
 		$resists.add_child(newlabel)
 		$resists.add_child(newvalue)
-		newlabel.text = i.capitalize() + ":"
+		newlabel.text = tr(i.to_upper() + "RESIST") + ":"
 		newvalue.name = i
 		newlabel.show()
 		newvalue.show()

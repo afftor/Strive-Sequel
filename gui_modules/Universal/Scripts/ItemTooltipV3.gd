@@ -72,7 +72,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'materialowned':
 			var workers_data = {}
 			$LowPanel/HBoxContainer/HoldShift.visible = true
-			$LowPanel/HBoxContainer/HoldShift.text = 'Owned: ' + str(data.amount)
+			$LowPanel/HBoxContainer/HoldShift.text = tr('OWNED_LABEL') + ': ' + str(data.amount)
 			if node.has_meta("max_workers"):
 				workers_data = {
 					max = node.get_meta("max_workers"),
@@ -87,7 +87,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			if mode == 'default':
 				gear_tooltip(data)
 				$LowPanel/HBoxContainer/HoldShift.visible = true
-				$LowPanel/HBoxContainer/HoldShift.text = "Hold Shift for details"
+				$LowPanel/HBoxContainer/HoldShift.text = tr("INFOHOLDSHIFT")
 			elif mode == 'advanced':
 				$LowPanel/HBoxContainer/HoldShift.visible = false
 				gear_detailed_tooltip(data)
@@ -129,14 +129,14 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 func material_tooltip(data, workers_data = {}):
 	var item = data.item
 	var text = data.text
-	$TopPanel/Title.text = item.name
+	$TopPanel/Title.text = tr("ITEM" + str(item.name).to_upper())
 	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):
-		text += "\nMax Workers: " + str(workers_data.max)
-		text += "\nCurrent Workers: " + str(workers_data.current)
+		text += "\n" + tr("MAX_WORKERS_LABEL") + ": " + str(workers_data.max)
+		text += "\n" + tr("CURRENT_WORKERS_LABEL") + ": " + str(workers_data.current)
 	if workers_data.has("gather_mod"):
-		text += "\nGathering Mod: " + str(workers_data.gather_mod) + "%"
+		text += "\n" + tr("GATHERING_MOD_LABEL") + ": " + str(workers_data.gather_mod) + "%"
 #	if data.has('amount'):
 #		text += "\nOwned: " + str(data.amount)
 	iconnode.texture = item.icon
@@ -253,14 +253,14 @@ func geartemplete_tooltip(data):
 	var text = '[center]' + item.name + '[/center]\n'
 
 	if item.has('geartype'):
-		text += 'Type: ' + item.geartype + "\n"
+		text += tr('TYPE_LABEL' + ': ') + item.geartype + "\n"
 		if item.slots.size() > 0:
-			text += "Slots: "
+			text += tr('SLOTS_LABEL' + ': ')
 			for i in item.slots:
 				text += tr("ITEMSLOT"+i.to_upper()) + ", "
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
-		text += "Type: Usable\n"
+		text += tr("TYPE_USABLE_LABEL" + "\n")
 
 	text += item.descript
 

@@ -80,17 +80,17 @@ func toggle_selector(outside = false):
 
 
 var selector_meta_bindings = {
-	all = "All",
-	'plains':"Plains",
-	'forests':"Forests",
-	'mountains':"Mountains",
-	'steppe':"Steppe",
-	'seas':"Seas",
-	'capital':"Capitals",
-	'settlement':"Villages",
-	'quest_location':"Quests",
-	'dungeon':"Dungeons",
-	'encounter':"Encounters"
+	all = "CAT_ALL",
+	'plains':"AREAPLAINS",
+	'forests':"AREAFORESTS",
+	'mountains':"AREAMOUNTAINS",
+	'steppe':"AREASTEPPE",
+	'seas':"AREASEAS",
+	'capital':"AREACAPITALS",
+	'settlement':"AREASETTLEMENTS",
+	'quest_location':"AREAQUESTS",
+	'dungeon':"AREADUNGEONS",
+	'encounter':"AREAENCOUNTERS"
 }
 
 func build_sel_panel(is_open):
@@ -99,11 +99,11 @@ func build_sel_panel(is_open):
 
 	if is_open:
 		var button = input_handler.DuplicateContainerTemplate(selector_list)
-		button.text = selector_meta_bindings[loc_filter]
+		button.text = tr(selector_meta_bindings[loc_filter])
 		button.connect('pressed', self, 'toggle_selector', [true])
 		if loc_filter != 'all':
 			var tbutton = input_handler.DuplicateContainerTemplate(selector_list)
-			tbutton.text = selector_meta_bindings['all']
+			tbutton.text = tr(selector_meta_bindings['all'])
 			tbutton.set_meta('value', 'all')
 			tbutton.connect('pressed', self, 'select_filter', ['all'])
 
@@ -117,7 +117,7 @@ func build_sel_panel(is_open):
 			if !ResourceScripts.game_world.areas.has(loc): continue
 			if !ResourceScripts.game_world.areas[loc].unlocked: continue
 			var tbutton = input_handler.DuplicateContainerTemplate(selector_list)
-			tbutton.text = selector_meta_bindings[loc]
+			tbutton.text = tr(selector_meta_bindings[loc])
 			tbutton.set_meta('value', loc)
 			tbutton.connect('pressed', self, 'select_filter', [loc])
 			if !lands_count.has(loc) or lands_count[loc] <= 0 or loc_filter == loc:
@@ -138,7 +138,7 @@ func build_sel_panel(is_open):
 #				tbutton.disabled = true
 	else:
 		var button = input_handler.DuplicateContainerTemplate(selector_list)
-		button.text = selector_meta_bindings[loc_filter]
+		button.text = tr(selector_meta_bindings[loc_filter])
 		button.mouse_filter = MOUSE_FILTER_IGNORE
 	selector_list.update()
 	selector.get_node("SelectorMain/SelectorPanel").rect_size.y = input_handler.get_actual_size_for_container(selector_list).y + 10
@@ -511,11 +511,11 @@ func select_filter(value):
 func build_location_info():
 	var text = ""
 	if from_location_selected != null:
-		text += "Characters selected: %d\n\n" % characters.size()
+		text += tr("CHARS_SELECTED_LABEL") + ": %d\n\n" % characters.size()
 	if location_selected != null:
 		var location = ResourceScripts.world_gen.get_location_from_code(location_selected.id)
-		text += "Target location: %s\n" % location.name
-		text += "Type: %s" % selector_meta_bindings[location_selected.type].trim_suffix("s")
+		text += tr("TARGET_LOC_LABEL") + ": %s\n" % location.name
+		text += tr('TYPE_LABEL') + ': ' + "%s" % tr(selector_meta_bindings[location_selected.type].trim_suffix("S"))
 		if location.type == 'dungeon':
 			text += " (" + tr(location.classname) + ")"
 		text += "\n"
@@ -526,13 +526,13 @@ func build_location_info():
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0:
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
-				text += "Travel time: %d cycles\n" % ceil(travel_time.time / tmp)
+				text += tr("TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time / tmp)
 				#text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
-				text += "Estimated travel time: %d cycles\n" % ceil(travel_time.time)
+				text += tr("EST_TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time)
 				#text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
 		if location_selected.has('captured') && location_selected.captured == true:
-			text += globals.TextEncoder("{color=red|Location unaccessible}")
+			text += globals.TextEncoder("{color=red|" + tr("LOC_UNACCEPT_LABEL") + "}")
 	else:
 		info_text_icon.texture = null
 	info_text_node.bbcode_text = text
@@ -656,5 +656,5 @@ func forget_location():
 
 func clear_dungeon_confirm():
 	globals.remove_location(location_selected.id)
-	input_handler.SystemMessage("Location has been removed")
+	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
 	update_lists()

@@ -46,7 +46,6 @@ __meta__ = {
 show_behind_parent = true
 position = Vector2( 340, 450 )
 scale = Vector2( 0.8, 0.8 )
-test_mode = false
 
 [node name="bodymask" type="Light2D" parent="."]
 position = Vector2( 352, 468 )
@@ -80,8 +79,8 @@ margin_left = 52.5601
 margin_top = 74.947
 margin_right = 101.56
 margin_bottom = 101.947
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "5"
 align = 1
 __meta__ = {
@@ -144,9 +143,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="ScrollContainer/professions" groups=[
-"ignore_rightclicks",
-]]
+[node name="Button" type="TextureButton" parent="ScrollContainer/professions" groups=["ignore_rightclicks"]]
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
@@ -209,7 +206,7 @@ margin_left = 635.427
 margin_top = 13.8653
 margin_right = 685.427
 margin_bottom = 63.8653
-hint_tooltip = "Personal Statistics"
+hint_tooltip = "PERSONAL_STAT"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )

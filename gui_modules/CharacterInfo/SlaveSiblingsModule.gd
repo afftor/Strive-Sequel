@@ -68,14 +68,14 @@ func update():
 			swap_mode()
 		input_handler.ActivateTutorial("training")
 
-	$UpgradesPanel/Label.text = "Loyalty: " + str(floor(person.get_stat("loyalty")))
+	$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY" + ": ") + str(floor(person.get_stat("loyalty")))
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
 		if p.check_work_rule("luxury"):
 			luxury_rooms_taken += 1
-	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
+	$work_rules/luxury.text = tr("UPGRADELUXURY_ROOMS" + ": ") + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
@@ -101,9 +101,9 @@ func update():
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
-			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\nCurrent level:" + str(floor(s_skills[i])))
+			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
 		
-		$ConsentLabel.text = "Consent: " + str(person.get_stat('consent'))
+		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + ": " + str(person.get_stat('consent'))
 		
 		globals.connecttexttooltip($food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
@@ -243,7 +243,7 @@ func swap_mode():
 		loyalty_mode = false
 		$UpgradesPanel.visible = false
 		$RelativesPanel.visible = true
-		$change_button/Label.text = "Trainings"
+		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
 		$change_button2.visible = false
 		$change_button3.visible = false
 	else:
@@ -252,7 +252,7 @@ func swap_mode():
 		$RelativesPanel.visible = false
 		$change_button2.visible = true
 		$change_button3.visible = true
-		$change_button/Label.text = "Relatives"
+		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
 func swap_tab(tab):

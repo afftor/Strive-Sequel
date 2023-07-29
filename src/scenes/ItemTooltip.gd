@@ -138,7 +138,7 @@ func gear_tooltip(data, item = null):
 
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-		text += "\n\n[color=yellow]Hold shift for details[/color]"
+		text += tr("\n\n{color=yellow|" + "INFOHOLDSHIFT" + "[/color]")
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
 
@@ -178,14 +178,14 @@ func geartemplete_tooltip(data):
 	var text = '[center]' + item.name + '[/center]\n'
 
 	if item.has('geartype'):
-		text += 'Type: ' + item.geartype + "\n"
+		text += tr('TYPE_LABEL' + ': ') + item.geartype + "\n"
 		if item.slots.size() > 0:
-			text += "Slots: "
+			text += tr("SLOTS_LABEL" + ": ")
 			for i in item.slots:
 				text += tr("ITEMSLOT"+i.to_upper()) + ", "
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
-		text += "Type: Usable\n"
+		text += tr("TYPE_USABLE_LABEL" + "\n")
 
 	text += item.descript
 
@@ -226,7 +226,7 @@ func geartemplete_tooltip(data):
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 
-		text += "\n\n{color=yellow|Hold shift for details}"
+		text += tr("\n\n{color=yellow|" + "INFOHOLDSHIFT" + "}")
 	textnode.bbcode_text = globals.TextEncoder(text)
 
 

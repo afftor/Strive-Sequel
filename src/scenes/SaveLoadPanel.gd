@@ -250,7 +250,7 @@ func show_save_details(save):
 	else:
 		text = tr("LSPGOLD") + ": " + str(save.gold) + "\n" + tr("LSPPOPULATION") + ": " + str(save.population) + "\n" + tr("LSPMASTER") + ": " + save.master_name + "\nW: " + str(int(save.day - 1) / 7 + 1) + " D: " + str(int(save.day - 1) % 7 + 1) + " - " + tr(variables.timeword[save.hour])
 		if save.version != globals.gameversion:
-			text2 += "{color=red| (Outdated)}"
+			text2 += tr(" LSPOUTDATED2")
 #	text += "\n" 
 	text2 += "\n" + get_date_time(save)
 	# text += get_date_time(save)
