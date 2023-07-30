@@ -186,7 +186,7 @@ var data = {
 		],
 		common_effects = [{code = 'complete_quest', value = 'final_operation'}],
 		options = [
-			{code = 'leave', type = 'next_dialogue', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}, {code = 'set_completed_active_location'}, {code = 'update_location'}]},
+			{code = 'leave', type = 'next_dialogue', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}, {code = 'set_completed_active_location'}, {code = 'remove_quest_location', value = 'quest_final_operation_location'},{code = 'update_location'}]},
 		],
 	},
 }
