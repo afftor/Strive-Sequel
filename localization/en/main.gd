@@ -128,7 +128,7 @@ var TranslationDict = {
 	PRONOUNSIR = "Sir",
 	PRONOUNSIRF = "Miss",
 	PRONOUNSON = "son",
-	RPONOUNSONF = "daughter",
+	PRONOUNSONF = "daughter",
 	PRONOUNFATHER = "father",
 	PRONOUNFATHERF = "mother",
 	PRONOUNBROTHER = "brother",
@@ -8239,7 +8239,7 @@ After taking a long pause and pondering the letter, he finally speaks up.
  — I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
 	LIRA_ENCOUNTER_2_OPTION_1 = "Maybe we could think of some other way... (Wits Factor Check)",
 	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then",
-	LIRA_ENCOUNTER_3_1_GOOD = """{color=red|Failure}
+	LIRA_ENCOUNTER_3_1_GOOD = """{color=green|Success}
 
  — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.""",
 	LIRA_ENCOUNTER_3_1_GOOD_OPTION_1 = "I'll be back once I get one of those",
