@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=2]
@@ -66,6 +66,8 @@
 [ext_resource path="res://Character_generator/images/101_armory_set_cloth_female/raincoat_cloth2.png" type="Texture" id=64]
 [ext_resource path="res://Character_generator/images/04_hairs_fringe/hair_fringe_straight.png" type="Texture" id=65]
 [ext_resource path="res://Character_generator/images/150_armory_acces_collars/collar_bell.png" type="Texture" id=66]
+[ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_titsmany_small6.png" type="Texture" id=67]
+[ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_torso_many_nipples6.png" type="Texture" id=68]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -1826,6 +1828,16 @@ texture = ExtResource( 9 )
 position = Vector2( -53, 10.0002 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
+
+[node name="Beastkin_tits" type="Sprite" parent="HumanF1/Spine/Tits"]
+position = Vector2( 288, -6.00104 )
+rotation = -1.5708
+texture = ExtResource( 67 )
+
+[node name="Beastkin_nipples" type="Sprite" parent="HumanF1/Spine/Tits"]
+position = Vector2( 291, -7.00107 )
+rotation = -1.5708
+texture = ExtResource( 68 )
 
 [node name="Tits_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
 material = SubResource( 13 )
