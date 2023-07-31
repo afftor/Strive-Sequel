@@ -25,22 +25,22 @@ func showup(node, skillcode):
 	
 	var charges = Skilldata.get_charges(skill, character)
 	if charges > 0 and skill.cooldown > 0:
-		text += tr("\n\n" + "MAX_CHARGES" + ": {color=yellow|") + str(charges) + tr("}. " + "TOOLTIP_COOLDOWN" + ": ") + str(skill.cooldown) + tr(" " + "TOOLTIP_DAY_S")
+		text += tr("\n\n" + tr("MAX_CHARGES") + ": {color=yellow|") + str(charges) + "}. " + tr("TOOLTIP_COOLDOWN") + ": " + str(skill.cooldown) + " " + tr("TOOLTIP_DAY_S")
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
-		text += tr("\n\n" + "TOOLTIP_COOLDOWN" + ": {color=yellow|") + str(skill.combatcooldown) + "}"
+		text += "\n\n" + tr("TOOLTIP_COOLDOWN") + ": {color=yellow|" + str(skill.combatcooldown) + "}"
 	
 	text += "\n\n{color=yellow|"+tr("TOOLTIPRIGHTCLICKABILITY")+"}"
 	
 	$descript.bbcode_text = globals.TextEncoder(text)
 	
-	text = tr("USAGE_COST" + ": ")
+	text = tr("USAGE_COST") + ": "
 	for st in skill.cost:
 		text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st])]
 	if skill.has('catalysts') && skill.catalysts.size() > 0:
 		for i in skill.catalysts:
 			text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "
 		text = text.substr(0, text.length() - 2) + ". "
-	if text == tr("USAGE_COST" + ": "):
+	if text == tr("USAGE_COST") + ": ":
 		text += tr("TOOLTIP_NONE")
 	
 	$cost.text = text

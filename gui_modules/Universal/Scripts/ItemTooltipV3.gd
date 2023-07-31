@@ -129,7 +129,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 func material_tooltip(data, workers_data = {}):
 	var item = data.item
 	var text = data.text
-	$TopPanel/Title.text = tr("ITEM" + str(item.name).to_upper())
+	$TopPanel/Title.text = tr("MATERIAL" + str(item.code).to_upper())
 	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):
@@ -253,14 +253,14 @@ func geartemplete_tooltip(data):
 	var text = '[center]' + item.name + '[/center]\n'
 
 	if item.has('geartype'):
-		text += tr('TYPE_LABEL' + ': ') + item.geartype + "\n"
+		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 		if item.slots.size() > 0:
 			text += tr('SLOTS_LABEL' + ': ')
 			for i in item.slots:
 				text += tr("ITEMSLOT"+i.to_upper()) + ", "
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
-		text += tr("TYPE_USABLE_LABEL" + "\n")
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	text += item.descript
 

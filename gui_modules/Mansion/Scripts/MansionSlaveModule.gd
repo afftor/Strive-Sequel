@@ -66,13 +66,13 @@ func show_slave_info():
 			var social_skills = ''
 			var combat_skills = ''
 			if classesdata.professions[i].has("skills") && !classesdata.professions[i].skills.empty():
-				temptext += tr("\n" + "SOCIAL_SKILLS" + " - ")
+				temptext += "\n" + tr("SOCIAL_SKILLS") + " - "
 				for skill in classesdata.professions[i].skills:
 					social_skills += Skilldata.Skilllist[skill].name + ", "
 				social_skills = social_skills.substr(0, social_skills.length() - 2)
 			temptext += social_skills
 			if classesdata.professions[i].has("combatskills") && !classesdata.professions[i].combatskills.empty():
-				temptext += tr("\n" + "COMBAT_SKILLS" + " - ")
+				temptext += "\n" + tr("COMBAT_SKILLS") + " - "
 				for skill in classesdata.professions[i].combatskills:
 					combat_skills += Skilldata.Skilllist[skill].name + ", "
 				combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
@@ -146,7 +146,7 @@ func show_slave_info():
 
 		var authority
 
-		$Panel/authoritylabel2.text = tr("SLAVE_LOYALTY" + ": ") + str(floor(person.get_stat('loyalty')))
+		$Panel/authoritylabel2.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat('loyalty')))
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
