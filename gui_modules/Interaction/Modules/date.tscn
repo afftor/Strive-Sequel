@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -42,7 +42,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=40]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=41]
 [ext_resource path="res://ragdoll.tscn" type="PackedScene" id=42]
-[ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=43]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=44]
 
 [sub_resource type="DynamicFont" id=1]
@@ -82,12 +81,9 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="ragdoll" type="Node2D" parent="." instance=ExtResource( 42 )]
-light_mask = 4
+[node name="ragdoll" parent="." instance=ExtResource( 42 )]
 position = Vector2( 1464.03, 587.303 )
 scale = Vector2( 0.8, 0.8 )
-script = ExtResource( 43 )
-clothes = false
 
 [node name="bodymask" type="Light2D" parent="."]
 position = Vector2( 1476.03, 605.303 )
