@@ -384,7 +384,7 @@ func build_location_description():
 			)
 			if active_location.completed == false:
 				text += (
-					"\n" + tr("PROGRESS" + ": " + "LEVELS" + " - ")
+					"\n" + tr("PROGRESS") + ": " + tr("LEVELS") + " - "
 					+ str(progress.level)
 					+ "/"
 					+ str(active_location.levels.size())
@@ -1717,7 +1717,7 @@ func show_slave_info(person):
 			+ str(floor(person.get_stat(i + 'max')))
 		)
 	text = (
-		tr('TYPE_LABEL' + ': ' + "[color=yellow]")
+		tr('TYPE_LABEL') + ': ' + "[color=yellow]"
 		+ person.translate(statdata.slave_class_names[person.get_stat('slave_class')])
 		+ "[/color]\n"
 	)
@@ -1989,7 +1989,7 @@ func item_purchase(item, amount):
 	$AreaShop/NumberSelection.open(
 		self,
 		'item_puchase_confirm',
-		"Buy " + str(item.name),
+		tr("BUY") + " " + str(item.name),
 		price,
 		1,
 		amount,
@@ -2055,7 +2055,7 @@ func item_sell(item):
 	$AreaShop/NumberSelection.open(
 		self,
 		'item_sell_confirm',
-		"Sell " + str(item.name),
+		tr("SELL") + " " + str(item.name),
 		price,
 		1,
 		sellingamount,

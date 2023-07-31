@@ -427,7 +427,7 @@ var data = {
 		],
 		options = [ {
 				code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'update_city'},{code = 'rewrite_save'}]
+				bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}, {code = 'complete_quest', value = 'pre_sword_artifact_quest'}, {code = 'update_city'},{code = 'rewrite_save'}]
 			}
 		]
 	},

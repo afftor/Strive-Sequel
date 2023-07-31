@@ -34,8 +34,8 @@ func _ready():
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
-	globals.connecttexttooltip($SkillTooltip/icon_cooldown, "TOOLTIP_COOLDOWN")
-	globals.connecttexttooltip($SkillTooltip/icon_usage, "TOOLTIP_MANACOST")
+	globals.connecttexttooltip($SkillTooltip/icon_cooldown, tr("TOOLTIP_COOLDOWN"))
+	globals.connecttexttooltip($SkillTooltip/icon_usage, tr("TOOLTIP_MANACOST"))
 	for ch in $SkillPanel/Categories.get_children():
 		globals.connecttexttooltip(ch, tr("SKILLS_CAT_" + str(ch.name).to_upper()) + "_DESC")
 	for ch in $categories.get_children():

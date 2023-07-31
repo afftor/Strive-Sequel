@@ -98,16 +98,15 @@ func fix_serialization():
 			if line.begins_with("MARRIAGE"):
 				print("removed dialogue: " + line)
 				selected_dialogues.erase(line)
-#Commented until fixed timed event checks or to delete
-#	while planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
-#		planned_mansion_events.erase("ZCEvent_1")
-#	if !seen_events.has("ZCEvent_1") && !planned_mansion_events.has("ZCEvent_1") && (completed_quests.has('cali_heirloom_quest') || completed_quests.has('cali_taming_quest')):
-#		planned_mansion_events.append("ZCEvent_1")
-#	if !seen_events.has("goblin_quest_0") && !stored_events.timed_events.has("goblin_quest_0") && !seen_events.has("goblin_quest_1") && !stored_events.timed_events.has("goblin_quest_1") && completed_quests.has('sword_artifact_quest'):
-#		globals.common_effects([{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-#	if !seen_events.has("zephyra_lilia_1") && !stored_events.timed_events.has("zephyra_lilia_1") && completed_quests.has('zephyra_bath_quest'):
-#		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
-
+	
+	while planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
+		planned_mansion_events.erase("ZCEvent_1")
+	if !seen_events.has("ZCEvent_1") && !planned_mansion_events.has("ZCEvent_1") && (completed_quests.has('cali_heirloom_quest') || completed_quests.has('cali_taming_quest')):
+		planned_mansion_events.append("ZCEvent_1")
+	if !seen_events.has("goblin_quest_0") && !timed_event_exists("goblin_quest_0") && !seen_events.has("goblin_quest_1") && !timed_event_exists("goblin_quest_1") && completed_quests.has('sword_artifact_quest'):
+		globals.common_effects([{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+	if !seen_events.has("zephyra_lilia_1") && !timed_event_exists("zephyra_lilia_1") && completed_quests.has('zephyra_bath_quest'):
+		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
 
 func fix_import():#this is the most questionable fix
 	var tmp = []
@@ -211,6 +210,11 @@ func check_timed_events():
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
 
+func timed_event_exists(event):
+	for i in stored_events.timed_events:
+		if i.has("code") and i.code == event:
+			return true
+	return false
 
 func if_has_area_progress(value, operant, area):
 	if !areaprogress.has(area):return false

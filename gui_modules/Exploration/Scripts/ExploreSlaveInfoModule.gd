@@ -163,7 +163,7 @@ func rebuild_traits():
 			var traittext = current_person.translate(trait.descript)
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
-					traittext += "\n\nDisliked actions:[color=aqua] "
+					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "
 					for k in j.value:
 						globals.sex_actions_dict[k].givers = []
 						globals.sex_actions_dict[k].takers = []

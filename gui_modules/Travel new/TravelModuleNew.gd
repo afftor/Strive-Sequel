@@ -526,10 +526,10 @@ func build_location_info():
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0:
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
-				text += tr("TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time / tmp)
+				text += str(tr("TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n") % ceil(travel_time.time / tmp)
 				#text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
-				text += tr("EST_TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n" % ceil(travel_time.time)
+				text += str(tr("EST_TRAVEL_TIME_LABEL") + ": %d " + tr("CYCLES_LABEL") + "\n") % ceil(travel_time.time)
 				#text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
 		if location_selected.has('captured') && location_selected.captured == true:
 			text += globals.TextEncoder("{color=red|" + tr("LOC_UNACCEPT_LABEL") + "}")

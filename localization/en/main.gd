@@ -443,6 +443,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RETURNTOMANSION = "Return to Mansion",
 	WORKERMARKET = "Market",
 	PURCHASE = "Purchase",
+	BUY = "Buy",
 	SELL = "Sell",
 	TASKS = "Tasks",
 
@@ -12550,7 +12551,9 @@ Hotkey: 3""",
 	REFUSE_THIS_TASK_LABEL = "refuses to perfrorm this task",
 	LACKS_PROSTITUTUION_LABEL = "lacks Training: Prostitution",
 	SPEND_REP_QUESTION_LABEL = "Are you sure you want to spend",
-	REP_POINTS_LABEL = "reputation points for"
+	REP_POINTS_LABEL = "reputation points for",
+	DISLIKED_ACTIONS_LABEL = "Disliked actions",
+	COMBAT_ABILS_LABEL = "Combat Abilitites"
 }
 
 

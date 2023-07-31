@@ -41,7 +41,7 @@ func luxury_room():
 	for p in ResourceScripts.game_party.characters.values():
 		if p.check_work_rule("luxury"):
 			luxury_rooms_taken += 1
-	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
+	$work_rules/luxury.text = tr("UPGRADELUXURY_ROOMS") + ": " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 
@@ -68,14 +68,14 @@ func update():
 			swap_mode()
 		input_handler.ActivateTutorial("training")
 
-	$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY" + ": ") + str(floor(person.get_stat("loyalty")))
+	$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
 		if p.check_work_rule("luxury"):
 			luxury_rooms_taken += 1
-	$work_rules/luxury.text = tr("UPGRADELUXURY_ROOMS" + ": ") + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
+	$work_rules/luxury.text = tr("UPGRADELUXURY_ROOMS") + ": " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
@@ -197,7 +197,7 @@ func rebuild_traits():
 			var traittext = person.translate(trait.descript)
 			for j in trait.reqs:
 				if j.has('code') && j.code == 'action_type':
-					traittext += "\n\nDisliked actions:[color=aqua] "
+					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "
 					for k in j.value:
 						globals.sex_actions_dict[k].givers = []
 						globals.sex_actions_dict[k].takers = []
