@@ -237,12 +237,12 @@ func tooltiptext():
 	var text = ''
 	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
 	if geartype != null:
-		text += tr('TYPE_LABEL' + ': ') + geartype + "\n"
+		text += tr('TYPE_LABEL') + ': ' + geartype + "\n"
 	else:
-		text += tr("TYPE_USABLE_LABEL" + "\n")
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	if slots.size() > 0:
-		text += tr("SLOTS_LABEL" + ": ")
+		text += tr("SLOTS_LABEL") + ": "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2) + "\n"
@@ -288,10 +288,10 @@ func tooltiptext_1():
 	if geartype != null:
 		text += tr('TYPE_LABEL') + ': ' + geartype + "\n"
 	else:
-		text += tr("TYPE_USABLE_LABEL" + "\n")
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	if slots.size() > 0:
-		text += tr("SLOTS_LABEL" + ": ")
+		text += tr("SLOTS_LABEL") + ": "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2) + "\n"

@@ -42,7 +42,7 @@ func show_race_info(temprace):
 	var image
 	var text = race.descript
 	
-	text += tr("\n\n{color=yellow|" + "RACE_BONUSES" + ": ")
+	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": "
 	for i in race.race_bonus:
 		if (i as String).begins_with('resist'):
 			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "

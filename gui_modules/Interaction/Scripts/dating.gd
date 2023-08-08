@@ -320,7 +320,7 @@ func updatelist():
 				newnode.disabled = true
 
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = "Consent: " + str(floor(person.get_stat("consent"))) 
+	var text = tr("SIBLINGMODULECONSENT") + str(floor(person.get_stat("consent"))) 
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
