@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -9,18 +9,18 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=7]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Diet_Panel.tres" type="Theme" id=8]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Panels/frame_charactercreation.png" type="Texture" id=9]
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats.png" type="Texture" id=10]
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/arrowstat_r.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_stats.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=13]
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_hover.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/arrowstats_l.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/buttoоn food.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button_backtomenu_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button_backtomenu.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/triangles_selection.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_food.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/icon_save.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button_backtomenu_pressed.png" type="Texture" id=24]
@@ -35,9 +35,9 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=33]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=34]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=35]
-[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Middle_Panel_Full.tres" type="Theme" id=36]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=36]
 [ext_resource path="res://gui_modules/CharacterCreation/ClassSelectionModule.tscn" type="PackedScene" id=37]
-[ext_resource path="res://gui_modules/CharacterCreation/SlaveCreationModule.tscn" type="PackedScene" id=38]
+[ext_resource path="res://ragdoll.tscn" type="PackedScene" id=38]
 [ext_resource path="res://gui_modules/CharacterCreation/RaceSelectionModule.tscn" type="PackedScene" id=39]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=40]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection_disabled.png" type="Texture" id=41]
@@ -51,18 +51,47 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_c.png" type="Texture" id=49]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_disabled_c.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_frame_hover_c.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_sprite_bg.png" type="Texture" id=52]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_sprite.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_left.png" type="Texture" id=54]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_choose_basic.png" type="Texture" id=55]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_right.png" type="Texture" id=56]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection food_l.png" type="Texture" id=57]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_food_r.png" type="Texture" id=58]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/divider_add_upgrades.png" type="Texture" id=59]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_hover.png" type="Texture" id=60]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_default.png" type="Texture" id=61]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_choose_ap.png" type="Texture" id=62]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/buttоn_choose_appearance.png" type="Texture" id=63]
+[ext_resource path="res://Character_generator/new_simple_recolor_shader.shader" type="Shader" id=64]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_active1.png" type="Texture" id=65]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_hover2.png" type="Texture" id=66]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_hover1.png" type="Texture" id=67]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/triangles_selection_active2.png" type="Texture" id=68]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_active.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_default.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_hover.png" type="Texture" id=71]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_active.png" type="Texture" id=72]
 
-[node name="CharacterCreationMainModule" type="Panel" groups=[
-"ignore_rightclicks",
-]]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 64 )
+shader_param/target1color = Color( 0.654902, 0.380392, 0.266667, 1 )
+shader_param/part1color = Color( 0.243137, 0.262745, 0.482353, 1 )
+shader_param/origin = Color( 1, 0.890196, 0.819608, 1 )
+shader_param/overlay = 0.7
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 64 )
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.219608, 0.694118, 0.647059, 1 )
+shader_param/origin = Color( 0.505882, 0.25098, 0.709804, 1 )
+shader_param/overlay = 0.7
+
+[node name="CharacterCreationMainModule" type="Panel" groups=["ignore_rightclicks"]]
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="TextureRect" parent="."]
 margin_left = 30.0
@@ -79,12 +108,51 @@ margin_left = 78.0
 margin_top = 82.0
 margin_right = 546.0
 margin_bottom = 199.0
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="modes" type="HBoxContainer" parent="."]
+margin_left = 690.0
+margin_top = 153.0
+margin_right = 1180.0
+margin_bottom = 193.0
+custom_constants/separation = 30
+
+[node name="Stats" type="TextureButton" parent="modes"]
+margin_right = 228.0
+margin_bottom = 40.0
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 61 )
+texture_pressed = ExtResource( 72 )
+texture_hover = ExtResource( 60 )
+
+[node name="label" type="Label" parent="modes/Stats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 35 )
+text = "Stats"
+align = 1
+
+[node name="Visuals" type="TextureButton" parent="modes"]
+margin_left = 258.0
+margin_right = 486.0
+margin_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource( 70 )
+texture_pressed = ExtResource( 69 )
+texture_hover = ExtResource( 71 )
+
+[node name="label" type="Label" parent="modes/Visuals"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 35 )
+text = "Visuals"
+align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 132.0
@@ -93,15 +161,12 @@ margin_right = 565.0
 margin_bottom = 871.0
 theme = ExtResource( 7 )
 custom_constants/separation = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 433.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTNAME"
 align = 1
 
@@ -110,16 +175,16 @@ margin_top = 41.0
 margin_right = 433.0
 margin_bottom = 81.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "SLAVEPARTNAME"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 margin_top = 87.0
 margin_right = 433.0
 margin_bottom = 122.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSURNAME"
 align = 1
 
@@ -128,16 +193,16 @@ margin_top = 128.0
 margin_right = 433.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Surname"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 margin_top = 174.0
 margin_right = 433.0
 margin_bottom = 209.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTNICKNAME"
 align = 1
 
@@ -146,73 +211,134 @@ margin_top = 215.0
 margin_right = 433.0
 margin_bottom = 255.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Optional"
 placeholder_alpha = 0.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 261.0
 margin_right = 433.0
-margin_bottom = 350.0
+margin_bottom = 352.0
 custom_constants/separation = 30
 
-[node name="SexVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="sex" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 89.0
+margin_bottom = 91.0
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/SexVBox"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/sex"]
 margin_right = 200.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
-[node name="sex" type="OptionButton" parent="VBoxContainer/HBoxContainer/SexVBox"]
+[node name="button" type="TextureRect" parent="VBoxContainer/HBoxContainer/sex"]
 margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 89.0
+margin_bottom = 91.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
-custom_fonts/font = ExtResource( 2 )
+texture = ExtResource( 55 )
+
+[node name="LArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/sex/button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+grow_vertical = 2
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 68 )
+texture_hover = ExtResource( 66 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/sex/button"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-custom_constants/arrow_margin = 5
-text = "SLAVEPARTSEX"
+custom_fonts/font = ExtResource( 2 )
+text = "sex"
 align = 1
 
-[node name="AgeVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="RArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/sex/button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = -5.0
+margin_bottom = 7.0
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 67 )
+
+[node name="age" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 230.0
 margin_right = 430.0
-margin_bottom = 89.0
+margin_bottom = 91.0
 
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/AgeVBox"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/age"]
 margin_right = 200.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTAGE"
 align = 1
 
-[node name="age" type="OptionButton" parent="VBoxContainer/HBoxContainer/AgeVBox"]
+[node name="button" type="TextureRect" parent="VBoxContainer/HBoxContainer/age"]
 margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 89.0
+margin_bottom = 91.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
-custom_fonts/font = ExtResource( 2 )
+texture = ExtResource( 55 )
+
+[node name="LArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/age/button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+grow_vertical = 2
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 68 )
+texture_hover = ExtResource( 66 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/age/button"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Age"
+custom_fonts/font = ExtResource( 2 )
+text = "age"
 align = 1
 
+[node name="RArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/age/button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = -5.0
+margin_bottom = 7.0
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 67 )
+
 [node name="race" type="TextureButton" parent="VBoxContainer"]
-margin_top = 356.0
+margin_top = 358.0
 margin_right = 433.0
-margin_bottom = 422.0
+margin_bottom = 424.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -243,9 +369,9 @@ __meta__ = {
 }
 
 [node name="trait" type="TextureButton" parent="VBoxContainer"]
-margin_top = 428.0
+margin_top = 430.0
 margin_right = 433.0
-margin_bottom = 494.0
+margin_bottom = 496.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -286,9 +412,9 @@ __meta__ = {
 }
 
 [node name="class" type="TextureButton" parent="VBoxContainer"]
-margin_top = 500.0
+margin_top = 502.0
 margin_right = 433.0
-margin_bottom = 566.0
+margin_bottom = 568.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -319,9 +445,9 @@ __meta__ = {
 }
 
 [node name="sextrait" type="TextureButton" parent="VBoxContainer"]
-margin_top = 572.0
+margin_top = 574.0
 margin_right = 433.0
-margin_bottom = 638.0
+margin_bottom = 640.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -351,18 +477,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RagdollPanel" type="TextureRect" parent="."]
+margin_left = 1280.0
+margin_top = 140.0
+margin_right = 1830.0
+margin_bottom = 883.0
+texture = ExtResource( 52 )
+
+[node name="ragdoll" parent="RagdollPanel" instance=ExtResource( 38 )]
+position = Vector2( 296.377, 390.764 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="bodymask" type="Light2D" parent="RagdollPanel"]
+position = Vector2( 293.48, 390.602 )
+scale = Vector2( 0.75, 0.78 )
+texture = ExtResource( 36 )
+mode = 3
+range_item_cull_mask = 4
+
+[node name="frame" type="TextureRect" parent="RagdollPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 53 )
+
 [node name="TestButton" type="Button" parent="."]
 visible = false
 margin_right = 12.0
 margin_bottom = 30.0
 text = "Test"
-
-[node name="SlaveCreationModule" parent="." instance=ExtResource( 38 )]
-margin_left = 580.0
-margin_top = 130.0
-margin_right = -560.0
-margin_bottom = -120.0
-theme = ExtResource( 36 )
 
 [node name="ConfirmButton" type="TextureButton" parent="."]
 margin_left = 1585.21
@@ -373,15 +515,12 @@ texture_normal = ExtResource( 15 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 22 )
 texture_disabled = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ConfirmButton"]
 margin_right = 220.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "CONFIRM"
 align = 1
 valign = 1
@@ -415,78 +554,63 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="StatsModule" type="Panel" parent="."]
-margin_left = 1442.0
-margin_top = 143.0
-margin_right = 1812.0
-margin_bottom = 473.0
+[node name="StatsModule" type="TextureRect" parent="."]
+margin_left = 675.348
+margin_top = 140.0
+margin_right = 1198.35
+margin_bottom = 482.099
+mouse_filter = 2
 theme = ExtResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 11 )
 
 [node name="StatsContainer" type="GridContainer" parent="StatsModule"]
-margin_left = 14.0497
-margin_top = 16.5942
-margin_right = 360.05
-margin_bottom = 284.594
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 93.0
+margin_right = -30.0
+margin_bottom = -52.0
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Control" parent="StatsModule/StatsContainer"]
 visible = false
 margin_right = 150.0
-margin_bottom = 267.0
-rect_min_size = Vector2( 150, 0 )
-size_flags_vertical = 3
-
-[node name="up" type="TextureButton" parent="StatsModule/StatsContainer/Button"]
-margin_left = 97.1703
-margin_top = 3.57628e-07
-margin_right = 137.17
-margin_bottom = 39.9999
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 14 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="down" type="TextureButton" parent="StatsModule/StatsContainer/Button"]
-margin_left = 88.4158
-margin_top = 40.0
-margin_right = 128.415
-margin_bottom = 80.0
-rect_rotation = 180.0
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 14 )
-expand = true
-stretch_mode = 5
+margin_bottom = 40.0
+rect_min_size = Vector2( 150, 40 )
+mouse_filter = 2
 
 [node name="icon" type="TextureRect" parent="StatsModule/StatsContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="StatsModule/StatsContainer/Button"]
-margin_left = 74.4177
-margin_top = 2.87262
-margin_right = 111.418
-margin_bottom = 34.8726
-custom_fonts/font = ExtResource( 2 )
+[node name="button" type="HBoxContainer" parent="StatsModule/StatsContainer/Button"]
+margin_left = 50.2379
+margin_top = 0.420441
+margin_right = 121.238
+margin_bottom = 40.4204
+
+[node name="LArr" type="TextureButton" parent="StatsModule/StatsContainer/Button/button"]
+margin_right = 25.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 13 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="StatsModule/StatsContainer/Button/button"]
+margin_left = 29.0
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 37.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 1
+
+[node name="RArr" type="TextureButton" parent="StatsModule/StatsContainer/Button/button"]
+margin_left = 46.0
+margin_right = 71.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 10 )
+stretch_mode = 5
 
 [node name="totalstatlabel" type="Label" parent="StatsModule"]
 margin_left = 10.0
@@ -496,134 +620,371 @@ margin_bottom = 323.0
 theme = ExtResource( 35 )
 text = "Total Stats"
 
-[node name="DietPanel" type="Panel" parent="."]
-margin_left = 1442.0
-margin_top = 531.0
-margin_right = 1812.0
-margin_bottom = 861.0
+[node name="TextureRect" type="TextureRect" parent="StatsModule"]
+margin_left = 3.0
+margin_top = 60.0
+margin_right = 520.0
+margin_bottom = 66.0
+texture = ExtResource( 59 )
+expand = true
+
+[node name="VisualsModule" type="TextureRect" parent="."]
+visible = false
+margin_left = 675.348
+margin_top = 140.0
+margin_right = 1198.35
+margin_bottom = 482.099
+mouse_filter = 2
+texture = ExtResource( 62 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VisualsModule"]
+margin_left = 10.0
+margin_top = 288.0
+margin_right = 515.0
+margin_bottom = 730.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VisualsModule/ScrollContainer"]
+margin_bottom = 4.0
+
+[node name="StatsContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
+columns = 2
+
+[node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
+visible = false
+margin_right = 236.0
+margin_bottom = 79.0
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+margin_right = 236.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SLAVEPARTSEX"
+align = 1
+
+[node name="button" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+margin_top = 39.0
+margin_right = 236.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 200, 36 )
+theme = ExtResource( 28 )
+texture = ExtResource( 63 )
+
+[node name="LArr" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+grow_vertical = 2
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 68 )
+texture_hover = ExtResource( 66 )
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+margin_left = 24.0
+margin_top = 2.0
+margin_right = 209.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "sex"
+align = 1
+
+[node name="RArr" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = -5.0
+margin_bottom = 7.0
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 67 )
+
+[node name="StatsContainer2" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
+margin_top = 4.0
+margin_bottom = 4.0
+columns = 2
+
+[node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2"]
+visible = false
+margin_right = 236.0
+margin_bottom = 39.0
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
+margin_right = 236.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 236, 0 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SLAVEPARTSEX"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
+margin_top = 39.0
+margin_right = 236.0
+margin_bottom = 39.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 9
+columns = 5
+
+[node name="Button" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 40, 30 )
+toggle_mode = true
+
+[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer/Button"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+color = Color( 1, 0.890196, 0.819608, 1 )
+
+[node name="Button2" type="Button" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 40, 30 )
+toggle_mode = true
+
+[node name="ColorRect" type="ColorRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/GridContainer/Button2"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+mouse_filter = 2
+color = Color( 0.505882, 0.25098, 0.709804, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="VisualsModule"]
+margin_left = 3.0
+margin_top = 60.0
+margin_right = 520.0
+margin_bottom = 66.0
+texture = ExtResource( 59 )
+expand = true
+
+[node name="Desc" type="RichTextLabel" parent="VisualsModule"]
+margin_left = 14.0
+margin_top = 79.0
+margin_right = 508.0
+margin_bottom = 286.0
+bbcode_enabled = true
+
+[node name="DietPanel" type="TextureRect" parent="."]
+margin_left = 674.045
+margin_top = 541.363
+margin_right = 1197.05
+margin_bottom = 880.363
+mouse_filter = 2
 theme = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 21 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DietPanel"]
-margin_left = 27.0
-margin_top = 116.0
-margin_right = 308.0
-margin_bottom = 271.0
-custom_constants/separation = 11
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -223.0
+margin_right = -30.0
+margin_bottom = -30.0
+custom_constants/separation = 50
 
-[node name="meat" type="Label" parent="DietPanel/VBoxContainer"]
-margin_right = 281.0
-margin_bottom = 35.0
-theme = ExtResource( 35 )
+[node name="meat" type="Control" parent="DietPanel/VBoxContainer"]
+margin_right = 453.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="icon" type="Label" parent="DietPanel/VBoxContainer/meat"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Meat"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/meat"]
-margin_left = 137.05
-margin_top = -3.095
-margin_right = 282.05
-margin_bottom = 26.905
-rect_min_size = Vector2( 145, 0 )
-theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Like"
-align = 1
-items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
-selected = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="button" type="TextureRect" parent="DietPanel/VBoxContainer/meat"]
+show_behind_parent = true
+margin_left = 154.0
+margin_right = 454.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
 
-[node name="fish" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 46.0
-margin_right = 281.0
-margin_bottom = 81.0
-theme = ExtResource( 35 )
+[node name="RArr" type="TextureButton" parent="DietPanel/VBoxContainer/meat/button"]
+margin_left = 277.0
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 58 )
+stretch_mode = 5
+
+[node name="LArr" type="TextureButton" parent="DietPanel/VBoxContainer/meat/button"]
+margin_left = 6.91272
+margin_top = 14.0698
+margin_right = 21.9127
+margin_bottom = 28.0698
+texture_normal = ExtResource( 57 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DietPanel/VBoxContainer/meat/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Neutral"
+align = 1
+
+[node name="fish" type="Control" parent="DietPanel/VBoxContainer"]
+margin_top = 50.0
+margin_right = 453.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="icon" type="Label" parent="DietPanel/VBoxContainer/fish"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Fish"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/fish"]
-margin_left = 137.05
-margin_top = -3.095
-margin_right = 282.05
-margin_bottom = 26.905
-rect_min_size = Vector2( 145, 0 )
-theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Like"
-align = 1
-items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
-selected = 1
+[node name="button" type="TextureRect" parent="DietPanel/VBoxContainer/fish"]
+show_behind_parent = true
+margin_left = 154.0
+margin_right = 454.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
 
-[node name="vege" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 92.0
-margin_right = 281.0
-margin_bottom = 127.0
-theme = ExtResource( 35 )
+[node name="RArr" type="TextureButton" parent="DietPanel/VBoxContainer/fish/button"]
+margin_left = 277.0
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 58 )
+stretch_mode = 5
+
+[node name="LArr" type="TextureButton" parent="DietPanel/VBoxContainer/fish/button"]
+margin_left = 6.91272
+margin_top = 14.0698
+margin_right = 21.9127
+margin_bottom = 28.0698
+texture_normal = ExtResource( 57 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DietPanel/VBoxContainer/fish/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Neutral"
+align = 1
+
+[node name="vege" type="Control" parent="DietPanel/VBoxContainer"]
+margin_top = 100.0
+margin_right = 453.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="icon" type="Label" parent="DietPanel/VBoxContainer/vege"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Vegetables"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/vege"]
-margin_left = 137.05
-margin_top = -3.095
-margin_right = 282.05
-margin_bottom = 26.905
-rect_min_size = Vector2( 145, 0 )
-theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Like"
-align = 1
-items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
-selected = 1
+[node name="button" type="TextureRect" parent="DietPanel/VBoxContainer/vege"]
+show_behind_parent = true
+margin_left = 154.0
+margin_right = 454.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
 
-[node name="grain" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 138.0
-margin_right = 281.0
-margin_bottom = 173.0
-theme = ExtResource( 35 )
+[node name="RArr" type="TextureButton" parent="DietPanel/VBoxContainer/vege/button"]
+margin_left = 277.0
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 58 )
+stretch_mode = 5
+
+[node name="LArr" type="TextureButton" parent="DietPanel/VBoxContainer/vege/button"]
+margin_left = 6.91272
+margin_top = 14.0698
+margin_right = 21.9127
+margin_bottom = 28.0698
+texture_normal = ExtResource( 57 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DietPanel/VBoxContainer/vege/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Neutral"
+align = 1
+
+[node name="grain" type="Control" parent="DietPanel/VBoxContainer"]
+margin_top = 150.0
+margin_right = 453.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="icon" type="Label" parent="DietPanel/VBoxContainer/grain"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Grains"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/grain"]
-margin_left = 137.05
-margin_top = -3.095
-margin_right = 282.05
-margin_bottom = 26.905
-rect_min_size = Vector2( 145, 0 )
-theme = ExtResource( 28 )
-custom_icons/arrow = ExtResource( 21 )
-custom_fonts/font = ExtResource( 2 )
+[node name="button" type="TextureRect" parent="DietPanel/VBoxContainer/grain"]
+show_behind_parent = true
+margin_left = 154.0
+margin_right = 454.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
+
+[node name="RArr" type="TextureButton" parent="DietPanel/VBoxContainer/grain/button"]
+margin_left = 277.0
+margin_top = 14.0
+margin_right = 292.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 58 )
+stretch_mode = 5
+
+[node name="LArr" type="TextureButton" parent="DietPanel/VBoxContainer/grain/button"]
+margin_left = 6.91272
+margin_top = 14.0698
+margin_right = 21.9127
+margin_bottom = 28.0698
+texture_normal = ExtResource( 57 )
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DietPanel/VBoxContainer/grain/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
-text = "Like"
+custom_fonts/font = ExtResource( 2 )
+text = "Neutral"
 align = 1
-items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
-selected = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DietPanel"]
 margin_left = 26.8948
 margin_top = 24.0
 margin_right = 330.895
 margin_bottom = 116.0
-custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
 text = "Select 1 Liked and at least 1 Hated food types."
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -641,8 +1002,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BackButton"]
 margin_right = 260.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back to Menu"
 align = 1
 valign = 1
@@ -651,6 +1012,7 @@ __meta__ = {
 }
 
 [node name="BackButtonCheats" type="TextureButton" parent="."]
+visible = false
 margin_left = 830.0
 margin_top = 977.0
 margin_right = 1090.0
@@ -665,8 +1027,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="BackButtonCheats"]
 margin_right = 260.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back"
 align = 1
 valign = 1
@@ -729,8 +1091,8 @@ margin_left = 17.0
 margin_top = 9.0
 margin_right = 427.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Savename"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -766,10 +1128,6 @@ margin_left = 31.0
 margin_top = 516.0
 margin_right = 589.0
 margin_bottom = 558.0
-custom_styles/read_only = ExtResource( 40 )
-custom_styles/focus = ExtResource( 40 )
-custom_styles/normal = ExtResource( 40 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -777,6 +1135,10 @@ custom_colors/font_color_selected = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_uneditable = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/read_only = ExtResource( 40 )
+custom_styles/focus = ExtResource( 40 )
+custom_styles/normal = ExtResource( 40 )
 placeholder_text = "SAVENAME"
 
 [node name="SaveLoadButton" type="Button" parent="SaveLoadCharPanel"]
@@ -815,13 +1177,6 @@ texture_normal = ExtResource( 45 )
 texture_pressed = ExtResource( 47 )
 texture_hover = ExtResource( 46 )
 
-[node name="RaceSelectionModule" parent="." instance=ExtResource( 39 )]
-visible = false
-margin_left = 580.0
-margin_top = 130.0
-margin_right = -573.0
-margin_bottom = -120.0
-
 [node name="TraitSelection" type="Panel" parent="."]
 visible = false
 margin_left = 754.0
@@ -858,18 +1213,21 @@ margin_left = 110.901
 margin_top = 724.068
 margin_right = 305.901
 margin_bottom = 780.068
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/normal = ExtResource( 34 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 32 )
+custom_styles/pressed = ExtResource( 31 )
+custom_styles/normal = ExtResource( 34 )
 text = "Cancel"
+
+[node name="RaceSelectionModule" parent="." instance=ExtResource( 39 )]
+visible = false
+margin_left = 571.988
+margin_top = 122.704
+margin_right = -568.012
+margin_bottom = -127.296
 
 [node name="ClassSelectionModule" parent="." instance=ExtResource( 37 )]
 visible = false
-margin_left = 140.338
-margin_top = 16.8629
-margin_right = -119.662
-margin_bottom = -23.1371

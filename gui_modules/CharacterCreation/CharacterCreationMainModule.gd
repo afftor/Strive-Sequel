@@ -1,24 +1,68 @@
 extends Panel
 
 var person
-var mode
+var mode #added freemode - to EDIT existing chars
 var total_stat_points
 var unassigned_points
 
 var preservedsettings = {}
-var valid_preservedsettings = {}
+#var valid_preservedsettings = {}
 
 var agearray = ['teen','adult','mature']
 var sexarray = ['male','female','futa']
-var malesizes = ['masculine','flat']
-var sizes = ['flat','small','average','big','huge']
-var short_sizes = ['small','average','big']
+#var malesizes = ['masculine','flat']
+#var sizes = ['flat','small','average','big','huge']
+#var short_sizes = ['small','average','big']
 var guild = 'none'
 
-var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
-var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
+#var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
+#var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
 var slave_classes = ['slave','servant']
+
+var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
+var free_stats = [
+	'personality',
+	'body_color_skin', 
+	'body_color_wings', 
+	'body_color_tail', 
+	'body_color_horns', 
+	'body_color_animal', 
+	'hair_base', 
+	'hair_fringe', 
+	'hair_assist', 
+	'hair_back', 
+#	'hair_back_color_1',
+#	'hair_back_color_2',
+#	'hair_assist_color_1',
+#	'hair_assist_color_2',
+#	'hair_base_color_1',
+#	'hair_base_color_2',
+	'hair_base_lenght', 
+	'hair_fringe_lenght', 
+	'hair_back_lenght' , 
+	'hair_assist_lenght' , ] #for testing, remove those after filling racedata
+
+
+var freemode_fixed_stats = [
+	"slave_class",
+#	"name", or not
+#	"surname",
+#	"nickname",
+	"sex",
+	"age",
+	"body_lower",
+#	"personality", or not,
+	"physics_factor",
+	"magic_factor",
+	"tame_factor",
+	"timid_factor",
+	"growth_factor",
+	"charm_factor",
+	"wits_factor",
+	"sexuals_factor",
+]
+
 var selected_class = ''
 
 var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
@@ -26,7 +70,7 @@ var introduction_text = {master = "Create your Master Character", 'slave' : 'Cre
 var savefilename
 var saveloadstate
 
-var params_to_save = [
+var params_to_save = [ #memo mostly
 	"slave_class",
 	"name",
 	"surname",
@@ -37,11 +81,7 @@ var params_to_save = [
 	"traits",
 	"sex_traits",
 	"personality",
-	"skin",
 	"height",
-	"hair_length",
-	"hair_color",
-	"hair_style",
 	"ears",
 	"eye_color",
 	"eye_shape",
@@ -56,38 +96,63 @@ var params_to_save = [
 	"penis_type",
 	"balls_size",
 	"tits_size",
-#	"vagina",
 	"ass_size",
-#	"has_pussy",
 	"multiple_tits",
 	"multiple_tits_developed",
-#	"has_womb",
 	"penis_virgin",
 	"vaginal_virgin",
 	"anal_virgin",
 	"mouth_virgin",
-	"masternoun",
-#	"food_filter",
-	"food_hate",
-	"food_love",
+	"food_filter",
 	"physics_factor",
 	"magic_factor",
 	"tame_factor",
 	"timid_factor",
-	"growth_factor",
+#	"growth_factor", idk why
 	"charm_factor",
 	"wits_factor",
 	"sexuals_factor",
 	"professions",
-	"type"
+	#added
+	"skin_coverage",
+	'eyeshape' , 
+	'eye_tex', 
+	'eyebrows', 
+	'lips' , 
+	'chin', 
+	'nose', 
+	'body_color_skin', 
+	'body_color_wings', 
+	'body_color_tail', 
+	'body_color_horns', 
+	'body_color_animal', 
+	'hair_base', 
+	'hair_fringe', 
+	'hair_assist', 
+	'hair_back', 
+	'hair_back_color_1',
+	'hair_back_color_2',
+	'hair_assist_color_1',
+	'hair_assist_color_2',
+	'hair_base_color_1',
+	'hair_base_color_2',
+	'hair_base_lenght', 
+	'hair_fringe_lenght', 
+	'hair_back_lenght' , 
+	'hair_assist_lenght' , 
 ]
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
-onready var SlaveInfo = $SlaveCreationModule
 onready var TraitSelection = $TraitSelection
+onready var ragdoll = $RagdollPanel/ragdoll
+
+var possible_vals = {}
+
 
 func _ready():
+	modding_core.handle_test_mode() #for test
+	RebuildStatsContainer()
 	$SaveButton.connect("pressed", self, "SaveLoadCharPanel", ["save"])
 	$LoadButton.connect("pressed", self, "SaveLoadCharPanel", ["load"])
 	$SaveLoadCharPanel/LineEdit.connect("text_changed",self,'set_savefilename')
@@ -97,34 +162,457 @@ func _ready():
 	# input_handler.AddPanelOpenCloseAnimation($TraitSelection)
 	# input_handler.AddPanelOpenCloseAnimation($DietPanel)
 	# input_handler.AddPanelOpenCloseAnimation($ClassPanel)
-	$TestButton.connect("pressed", self, "test")
-	for i in agearray:
-		$VBoxContainer/HBoxContainer/AgeVBox/age.add_item(i.capitalize())
-	for i in sexarray:
-		if input_handler.globalsettings.futa == false && i == 'futa':
-			continue
-		$VBoxContainer/HBoxContainer/SexVBox/sex.add_item(i.capitalize())
+#	$TestButton.connect("pressed", self, "test")
+	
 	$VBoxContainer/race.connect("pressed", RaceSelection, "select_race")
-	$VBoxContainer/HBoxContainer/AgeVBox/age.connect("item_selected", self, "select_age")
-	$VBoxContainer/HBoxContainer/SexVBox/sex.connect("item_selected", self, "select_sex")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	$VBoxContainer/trait.connect('pressed', self, "open_traits")
-
-
+	
+	$modes/Stats.connect("pressed", self, 'build_stats')
+	$modes/Visuals.connect("pressed", self, 'build_visuals')
+	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
-#	$CancelButton.connect("pressed", self, "confirm_return")
+	#$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
-
+	
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
-
-
+	
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
-	for i in $DietPanel/VBoxContainer.get_children():
-		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
 	open()
+
+
+func build_stats():
+	$modes/Stats.pressed = true
+	$modes/Visuals.pressed = false
+	
+	$StatsModule.visible = true
+	$DietPanel.visible = true
+	$VisualsModule.visible = false
+
+
+func build_visuals():
+	$modes/Stats.pressed = false
+	$modes/Visuals.pressed = true
+	
+	$StatsModule.visible = false
+	$DietPanel.visible = false
+	$VisualsModule.visible = true
+
+
+func if_can_assign(stat, value):
+	if stat in ["name", "surname", "nickname"]:
+		return true
+	if !possible_vals.has(stat):
+		print ("warning - assigning of unknown stat %s" % stat)
+		return false
+	return possible_vals[stat].has(value)
+
+
+func apply_preserved_settings(): #on regenerating char
+	for i in preservedsettings:
+#		if i == "food_love":
+#			person.food.food_love = preservedsettings["food_love"]
+#			build_node_for_stat('food')
+#		elif i == "food_hate":
+#			person.food.food_hate = preservedsettings["food_hate"]
+#			build_node_for_stat('food')
+		if i in ['food_filter', 'sex', 'race', 'professions', 'sex_traits', 'traits']:
+			continue
+		if i == 'slave_class':
+			continue
+#			person.set_slave_category(preservedsettings[i])
+#			build_node_for_stat(i) #mb not
+		elif if_can_assign(i, preservedsettings[i]):
+			person.set_stat(i, preservedsettings[i])
+			build_node_for_stat(i)
+	rebuild_ragdoll()
+
+
+func build_possible_vals():
+	for stat in params_to_save:
+		if stat in ['food_like', 'food_hate', 'food_filter']:
+			continue
+		if stat in ["name", "surname", "nickname", "race", "traits", "sex_traits", "professions",]:
+			continue
+		build_possible_val_for_stat(stat)
+
+
+func build_possible_val_for_stat(stat):
+	if stat.ends_with('factor'):
+		possible_vals[stat] = [1, 2, 3, 4, 5]
+		if stat in ['timid_factor','tame_factor'] and mode == 'master':
+			possible_vals[stat] = []
+		return
+	if stat == 'slave_class':
+		possible_vals[stat] = ['slave', 'servant']
+		if mode == 'master':
+			possible_vals[stat] = []
+		return
+	if possible_vals.has(stat):
+		possible_vals[stat].clear()
+	else:
+		possible_vals[stat] = []
+	if stat == 'sex':
+		for val in sexarray:
+			if input_handler.globalsettings.futa == false and val == 'futa':
+				continue
+			possible_vals.sex.push_back(val)
+		return
+	if stat == 'age':
+		possible_vals.age = agearray.duplicate()
+		return
+	if stat == 'personality':
+		possible_vals.personality = variables.personality_array.duplicate()
+		return
+	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
+		if GeneratorData.transforms.has(stat):
+			for val in GeneratorData.transforms[stat]:
+				possible_vals[stat].push_back(val)
+		else:
+			print ('warninig - possible obsolete stat %s' % stat)
+			if ResourceScripts.descriptions.bodypartsdata.has(stat):
+				for val in ResourceScripts.descriptions.bodypartsdata[stat]:
+					possible_vals[stat].push_back(val)
+			else:
+				print ('error - unknown stat %s' % stat)
+	else:
+		var t_stat = stat
+		if stat.begins_with('hair_') and stat.find('color') != -1:
+			t_stat = 'hair_base_color_1' #stub
+		var race = person.get_stat('race')
+		var sex = person.get_stat('sex')
+		#race filter
+		var race_vals = []
+		var racedata = races.racelist[race] #if this is unsafe - than we REALLY need to fill data. i won't add a check here for sanity reasons
+		if racedata.has('bodyparts') and racedata.bodyparts.has(t_stat):
+			for val in racedata.bodyparts[t_stat]:
+				if val is Array:
+					race_vals.push_back(val[0])
+				else:
+					race_vals.push_back(val)
+		else:
+			racedata = races.racelist['Human'] #we should definitely move this data to isolated record
+			if racedata.bodyparts.has(t_stat):
+				for val in racedata.bodyparts[t_stat]:
+					if val is Array:
+						race_vals.push_back(val[0])
+					else:
+						race_vals.push_back(val)
+		if race_vals.empty(): #no need to filter more
+			return
+		#sex filter
+		var sexdata = ResourceScripts.descriptions.bodypartsdata.sex[sex] #same assumption
+		var sex_vals = []
+		if sexdata.has('bodychanges'):
+			for change in sexdata.bodychanges:
+				if change.code != t_stat:
+					continue
+				if change.has('reqs') and !person.checkreqs(change.reqs):
+					continue
+				sex_vals.clear()
+				for val in change.value:
+					if val is Array:
+						sex_vals.push_back(val[0])
+					else:
+						sex_vals.push_back(val)
+		#merge
+		for val in race_vals:
+			if !sex_vals.empty() and !sex_vals.has(val):
+				continue
+			#there shoud be possible check for having transform in ragdoll builder - but it's not critical
+			possible_vals[stat].push_back(val)
+
+
+func find_stat_value_id(stat, value):
+	if !possible_vals.has(stat):
+		print('error - no stat %s' % stat)
+		return 0
+	var res = possible_vals[stat].find(value)
+	if res == -1:
+		print('error - no value %s for stat %s' % [str(value), stat])
+		return 0
+	return res
+
+
+func find_node_for_stat(stat):
+	var par_node = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer
+	if stat in ['sex', 'age']:
+		par_node = $VBoxContainer/HBoxContainer
+	if stat in [ "name", "surname", "nickname"]:
+		par_node = $VBoxContainer
+	if stat.ends_with('_factor'):
+		par_node = $StatsModule/StatsContainer
+	if stat.begins_with('food_filter_'):
+		par_node = $DietPanel/VBoxContainer
+		stat = stat.trim_prefix('food_filter_')
+	if stat.find('color') != -1:
+		par_node = $VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2
+	#incomplete ?
+	
+	return par_node.get_node(stat)
+
+
+func build_selectable_node(stat):
+	if stat.find('color') == -1:
+		print('stat node not selectable - %s' % stat)
+		return
+	var node = find_node_for_stat(stat)
+	if possible_vals[stat].empty():
+		node.visible = false
+		return
+	node.visible = true
+	input_handler.ClearContainer(node.get_node('GridContainer'), ['Button', 'Button2'])
+	var template = 'Button2'
+	if stat == 'body_color_skin':
+		template = 'Button'
+	for val in possible_vals[stat]:
+		if !GeneratorData.transforms[stat].has(val):
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate(node.get_node('GridContainer'), template)
+		newbutton.get_node('ColorRect').material = newbutton.get_node('ColorRect').material.duplicate()
+		newbutton.set_meta('value', val)
+		var transform_data = GeneratorData.transforms[stat][val]
+		newbutton.connect('pressed', self, 'change_value_node_selectable', [stat, val])
+		for transform in transform_data:
+			if !(transform.type in ['import_recolor', 'import_recolor_group']):
+				continue
+			var sh = load(transform.material)
+			newbutton.get_node('ColorRect').material.set_shader_param('target1color', sh.get_shader_param('target2color'))
+			newbutton.get_node('ColorRect').material.set_shader_param('part1color', sh.get_shader_param('part2color'))
+			break
+
+
+func build_node_for_stat(stat):
+	var val = person.get_stat(stat)
+	if preservedsettings.has(stat) and preservedsettings[stat] != val:
+		if if_can_assign(stat, preservedsettings[stat]):
+			val = preservedsettings[stat]
+			person.set_stat(stat, val)
+	
+	var node = find_node_for_stat(stat)
+	
+	if stat in ['food_like', 'food_hate']:
+		pass
+		return
+	
+	if stat == 'food_filter':
+		build_food_filter()
+		return
+	
+	if stat in ["name", "surname", "nickname"]:
+		node.text = val
+		return
+	
+	node.visible = possible_vals[stat].size() > 1
+	
+	if stat.find('color') != -1:
+		for nd in node.get_node('GridContainer').get_children():
+			if nd.has_meta('value') and nd.get_meta('value') == val:
+				nd.pressed = true
+			else:
+				nd.pressed = false
+		return
+	
+	if stat in freemode_fixed_stats:
+		node.get_node('button/LArr').visible = (mode != 'freemode')
+		node.get_node('button/RArr').visible = (mode != 'freemode')
+	
+	var text = ''
+	if ResourceScripts.descriptions.bodypartsdata.has(stat):
+		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
+			text = tr(ResourceScripts.descriptions.bodypartsdata[stat][val].name)
+		else:
+			print ("warning - no description record for %s - %s" % [str(stat), str(val)])
+			text = str(val)
+	else:
+#		print ("warning - no description record for %s" % str(stat))
+		text = str(val)
+	node.get_node('button/Label').text = text
+	#set nodes
+	if !node.has_meta('signals_built'):
+		node.get_node('button/LArr').connect('pressed', self, 'change_value_node', [stat, -1])
+		node.get_node('button/RArr').connect('pressed', self, 'change_value_node', [stat, 1])
+		node.set_meta('signals_built', true)
+	node.set_meta('current_val', val)
+	node.get_node('button/Label').text = text
+
+
+func rebuild_ragdoll(stat = null):
+	#temp
+	if stat == null:
+		ragdoll.rebuild(person)
+		ragdoll.rebuild_cloth(true)
+	else:
+		ragdoll.rebuild_stat(stat)
+
+
+func change_value_node(stat, value): #for scrollable nodes
+	if !possible_vals.has(stat):
+		print('error - no stat %s' % stat)
+		return
+	var id = find_stat_value_id(stat, person.get_stat(stat)) 
+	if stat.ends_with('factor'):
+		if unassigned_points() < value:
+			return
+	
+	id += value
+	if id < 0:
+		id = 0
+	if id >= possible_vals[stat].size():
+		id = possible_vals[stat].size() - 1
+	var newval = possible_vals[stat][id]
+	if stat != 'slave_class':
+		person.set_stat(stat, newval)
+	preservedsettings[stat] = newval
+	if stat.ends_with('factor'):
+		$ClassSelectionModule.update_class_buttons()
+		build_class()
+		update_points()
+	
+	if stat == 'sex':
+		#recreate char
+		preservedsettings.erase('name') #think it is right
+		rebuild_slave()
+		FillStats()
+		return
+	rebuild_ragdoll(stat)
+	build_node_for_stat(stat)
+	build_description()
+
+
+func change_value_node_selectable(stat, newvalue): #for selectable nodes
+	if !possible_vals.has(stat):
+		print('error - no stat %s' % stat)
+		return
+	person.set_stat(stat, newvalue)
+	preservedsettings[stat] = newvalue
+	rebuild_ragdoll(stat)
+	build_node_for_stat(stat)
+	build_description()
+
+
+func unassigned_points():
+	var points
+	if mode == 'master':
+		points = variables.master_starting_stats + 5
+		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', "magic_factor"]:
+			points -= int(person.get_stat(st))
+	
+	else:
+		points = variables.slave_starting_stats + 7
+		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor', "magic_factor"]:
+			points -= int(person.get_stat(st))
+	return points
+
+
+func update_points(): #visual only
+	if unassigned_points() < 0: 
+		reset_points()
+		$ClassSelectionModule.update_class_buttons()
+		FillStats()
+		build_class()
+	
+	$StatsModule/totalstatlabel.text = "Unassigned stats: %d" % unassigned_points()
+
+
+func reset_points():
+	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor']:
+		person.set_stat(st, 1)
+		preservedsettings.erase(st)
+
+
+#food_filter
+var foods = ['meat', 'fish', 'vege', 'grain']
+var food_vals = ['like', 'neutral', 'hate']
+
+var reverse_filter = {}
+
+func clear_food_filter():
+	preservedsettings.erase('food_filter')
+
+
+func check_food_filter():
+	reverse_filter.clear()
+	for val in food_vals:
+		reverse_filter[val] = []
+	if preservedsettings.has('food_filter'):
+		for food in foods:
+			if preservedsettings.food_filter.has(food):
+				if !food_vals.has(preservedsettings.food_filter[food]):
+					print ('warning - wrong value for food filter $s - %s removed' % [food, preservedsettings.food_filter[food]])
+					preservedsettings.food_filter.erase(food)
+					continue
+				reverse_filter[preservedsettings.food_filter[food]].push_back(food)
+	if reverse_filter.like.size() != 1: 
+		return false
+	if reverse_filter.hate.size() < 1:
+		return false
+	return true
+
+
+func build_food_filter():
+	var val = {}
+	if mode == 'freemode':
+		for food in foods:
+			val[food] = 'neutral'
+			preservedsettings.food_filter[food] = 'neutral'
+		val[person.food.food_love] = 'like'
+		preservedsettings.food_filter[person.food.food_love] = 'like'
+		for food in person.food.food_hate:
+			val[food] = 'hate'
+			preservedsettings.food_filter[food] = 'hate'
+	else: #read from preservedsettings
+		for food in foods:
+			val[food] = 'neutral'
+			if preservedsettings.has('food_filter') and preservedsettings.food_filter.has(food):
+				val[food] = preservedsettings.food_filter[food]
+	
+	for food in foods:
+		var node = find_node_for_stat('food_filter_' + food)
+		if !node.has_meta('signals_built'):
+			node.get_node('button/LArr').connect('pressed', self, 'change_food_filter_value', [food, -1])
+			node.get_node('button/RArr').connect('pressed', self, 'change_food_filter_value', [food, 1])
+			node.set_meta('signals_built', true)
+		
+		node.get_node('button/LArr').visible = (mode != 'freemode')
+		node.get_node('button/RArr').visible = (mode != 'freemode')
+		
+		node.get_node('button/Label').text = val[food]
+	
+
+
+func apply_food_filter():
+	if !check_food_filter():
+		return
+	person.food.food_hate = reverse_filter.hate.duplicate()
+	person.food.food_love = reverse_filter.like[0]
+
+
+func change_food_filter_value(food, value):
+	if !foods.has(food):
+		print ('error - unknown food %s' % food)
+		return
+	var id
+	if !preservedsettings.has('food_filter'):
+		preservedsettings.food_filter = {}
+		id = 1 #food_vals.find('neutral')
+	elif preservedsettings.food_filter.has(food):
+		id = food_vals.find(preservedsettings.food_filter[food])
+	else:
+		id = 1 #food_vals.find('neutral')
+	
+	id += value
+	if id < 0:
+		id = 2
+	if id >= 3:
+		id = 0
+	
+	preservedsettings.food_filter[food] = food_vals[id]
+	build_food_filter()
+
 
 func Exit():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
@@ -133,115 +621,59 @@ func Exit():
 func MainMenu():
 	globals.return_to_main_menu()
 
-func select_age(value):
-	person.set_stat('age', agearray[value])
-	preservedsettings['age'] = agearray[value]
-	valid_preservedsettings['age'] = true
-	rebuild_slave()
 
-func select_sex(value):
-	person.set_stat('sex', sexarray[value])
-	preservedsettings['sex'] = sexarray[value]
-	valid_preservedsettings['sex'] = true
-	if preservedsettings.has("tits_size"):
-		valid_preservedsettings['tits_size'] = false
-#		preservedsettings.erase("tits_size")
-	if preservedsettings.has("has_pussy"):
-		valid_preservedsettings['has_pussy'] = false
-#		preservedsettings.erase("has_pussy")
-	if preservedsettings.has("has_womb"):
-		valid_preservedsettings['has_womb'] = false
-#		preservedsettings.erase("has_womb")
-	if preservedsettings.has("vagina"):
-		valid_preservedsettings['vagina'] = false
-#		preservedsettings.erase("vagina")
-	rebuild_slave()
-
-
-func select_food_pref(selected_id, type):
-	var food_hate = person.food.food_hate
-	match selected_id:
-		0:
-			if person.food.food_love == type:
-				person.food.food_love = ""
-			if food_hate.has(type):
-				food_hate.erase(type)
-		1:
-			person.food.food_love = type
-			if food_hate.has(type):
-				food_hate.erase(type)
-		2:
-			if !food_hate.has(type):
-				food_hate.append(type)
-			if person.food.food_love == type:
-				person.food.food_love = ""
-	select_diet()
-
-
-func select_diet():
-	var array = ['Neutral', "Like", "Hate"]
-	for i in $DietPanel/VBoxContainer.get_children():
-		i.get_node("OptionButton").set_item_disabled(1, person.food.food_love != '')
-		if  person.food.food_love == i.name:
-			i.get_node("OptionButton").selected = 1
-		elif person.food.food_hate.has(i.name):
-			i.get_node("OptionButton").selected = 2
-		else:
-			i.get_node("OptionButton").selected = 0
-
-	finish_diet_selection()
-
-#	$DietPanel/Button.disabled = !(person.get_stat('food_love') != '' && person.get_stat('food_hate').size() > 0)
-
-
-func finish_diet_selection():
-	preservedsettings['food_love'] = person.food.food_love
-	valid_preservedsettings.food_love = true
-	preservedsettings['food_hate'] = person.food.food_hate
-	valid_preservedsettings.food_hate = true
-	var text = person.food.food_love + "|"
-	for i in person.food.food_hate:
-		text += i + " "
-#	$bodyparts2/diet.text = text
-
+#
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
-	valid_preservedsettings.clear()
-	build_class()
-	build_race()
-	build_sex_trait()
-	build_trait()
+#	build_class()
+#	build_race()
+#	build_sex_trait()
+#	build_trait()
 	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
 	if type == 'slave':
 		$introduction.bbcode_text += " " + str(ResourceScripts.game_party.characters.size())
-	selected_class = ''
-
-	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
 	mode = type
+	if type == 'freemode':
+		return
+	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
+	selected_class = ''
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
 	match mode:
 		'master':
 			person.set_stat('sex', 'male')
-			total_stat_points = variables.master_starting_stats
 		'slave':
 			person.set_stat('sex', 'female')
-			total_stat_points = variables.slave_starting_stats
 
-#	$bodyparts2/type_label.visible = mode == 'slave'
-#	$bodyparts2/slave_class.visible = mode == 'slave'
-#	$bodyparts2/slave_class.select(0)
-	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+#	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	$BackButton.visible = type != 'slave' || is_from_cheats
 	$BackButtonCheats.visible = is_from_cheats
+	build_food_filter()
 	rebuild_slave()
 
 
+func open_freemode(char_to_open):
+	preservedsettings.clear()
+	show()
+	$introduction.bbcode_text = introduction_text['freemode']
+	mode = 'freemode'
+	build_possible_vals()
+	FillStats()
+	build_class()
+	build_food_filter()
+	build_race()
+	build_trait()
+	build_sex_trait()
+
+
+
 func rebuild_slave():
-	SlaveInfo.build_bodyparts()
+	if mode == 'freemode':
+		print('error - invalid recreation')
+		return
 	var race = person.get_stat('race')
 	var sex = person.get_stat('sex')
 	var age = person.get_stat('age')
@@ -252,62 +684,15 @@ func rebuild_slave():
 	t_person.is_known_to_player = true
 	if mode == 'master':
 		t_person.unlock_class('master')
-	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
-	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
-	build_class()
-	build_race()
-	build_sex_trait()
-	build_trait()
-	if preservedsettings.has("food_love") and valid_preservedsettings.food_love:
-		if preservedsettings.food_love != '':
-			t_person.food.food_love = preservedsettings["food_love"]
-	else:
-		t_person.set_stat('food_love',  '')
-	if preservedsettings.has("food_hate") and valid_preservedsettings.food_hate:
-		if !preservedsettings.food_hate.empty():
-			t_person.food.food_hate = preservedsettings["food_hate"]
-	else:
-		t_person.set_stat('food_hate', [])
-	for i in ['name','surname','nickname']:
-		if preservedsettings.has(i) and valid_preservedsettings[i]:
-			$VBoxContainer.get_node(i).text = preservedsettings[i]
-		else:
-			$VBoxContainer.get_node(i).text = t_person.get_stat(i)
 	
 	person = t_person
-	select_diet()
-	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
-		select_sex_trait(preservedsettings.sex_traits)
 	
-	RebuildStatsContainer()
-	SlaveInfo.build_bodyparts()
-	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
-
-
-func delete_keys_from_preservedsettings(keys):
-	for key in keys:
-		preservedsettings.erase(key)
-		valid_preservedsettings[key] = false
-
-
-func apply_preserved_settings():
-	var racedata = races.racelist[person.get_stat('race')].bodyparts
-	var keys_to_delete = []
-	for i in bodypartsarray:
-		if !races.racelist.Human.bodyparts.has(i) && preservedsettings.has(i) && preservedsettings[i] != '' && !racedata.has(i):
-			keys_to_delete.append(i)
-	delete_keys_from_preservedsettings(keys_to_delete)
-	for i in preservedsettings:
-		if !valid_preservedsettings.has(i): continue
-		if !valid_preservedsettings[i]: continue
-		if i == "food_love":
-			person.food.food_love = preservedsettings["food_love"]
-		elif i == "food_hate":
-			person.food.food_hate = preservedsettings["food_hate"]
-		elif i == 'slave_class':
-			person.set_slave_category(preservedsettings[i])
-		else:
-			person.set_stat(i, preservedsettings[i])
+	build_possible_vals()
+	apply_preserved_settings()
+	FillStats()
+#	build_class()
+#	build_sex_trait()
+#	build_trait()
 
 
 func confirm_character():
@@ -317,70 +702,80 @@ func confirm_character():
 		else:
 			confirm_final()
 
+
 func confirm_female():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'confirm_final', tr('CREATECHARACTERFEMALE')])
+
 
 func confirm_final():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
 
 
 func finish_character():
-	apply_preserved_settings()
+#	apply_preserved_settings()
 #	$TraitSelection.hide()
 #	$ClassPanel.hide()
-	person.is_active = true
-	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
-		person.create_s_trait_select(preservedsettings.sex_traits)
-	if preservedsettings.has("traits") && preservedsettings.traits != null:
-		person.add_trait(preservedsettings.traits)
-	person.unlock_class(selected_class)
-	person.set_stat('food_consumption', 3)
-	person.hp = person.get_stat('hpmax')
-	person.mp = person.get_stat('mpmax')
-	person.food.create() #rebuild food filter
-	#i don't like handle starting eqipment here. but this is the only point where newly created characters are accessible - and we need to do this for the characters created during prologue
-	globals.equip_char(person, 'club', {WeaponMace = 'wood'})
-	if mode != 'master':
-		if !preservedsettings.has('slave_class'):
-			preservedsettings.slave_class = 'slave'
-		person.set_slave_category(preservedsettings.slave_class.to_lower())
-		person.set_stat('obedience', 48)
-		person.set_stat('growth_factor', 5)
-		if guild == 'fighters':
-			person.add_trait('loyalty_combatant')
-		if guild in ['servants', 'workers']:
-			person.add_trait('loyalty_dress_work')
+	if mode != 'freemode':
+		person.is_active = true
+		
+		#apply delayed preservedsettings
+		apply_food_filter()
+		person.unlock_class(selected_class)
+		if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
+			person.create_s_trait_select(preservedsettings.sex_traits)
+		if preservedsettings.has("traits") && preservedsettings.traits != null:
+			person.add_trait(preservedsettings.traits)
+		#basic setup
+		person.set_stat('food_consumption', 3)
+		person.hp = person.get_stat('hpmax')
+		person.mp = person.get_stat('mpmax')
+		person.food.create() #rebuild food filter
+		#i don't like handle starting eqipment here. but this is the only point where newly created characters are accessible - and we need to do this for the characters created during prologue
+		globals.equip_char(person, 'club', {WeaponMace = 'wood'})
+		if mode != 'master':
+			#apply delayed slave class
+			if !preservedsettings.has('slave_class'):
+				preservedsettings.slave_class = 'slave'
+			person.set_slave_category(preservedsettings.slave_class.to_lower())
+			#basic slave setup
+			person.set_stat('obedience', 48)
+			person.set_stat('growth_factor', 5)
+			if guild == 'fighters':
+				person.add_trait('loyalty_combatant')
+			if guild in ['servants', 'workers']:
+				person.add_trait('loyalty_dress_work')
+		else:
+			person.set_slave_category('master')
+			person.set_stat('consent', 1000)
+			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
+			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
+		ResourceScripts.game_party.add_slave(person)
+		
+		input_handler.emit_signal("CharacterCreated")
+		input_handler.add_random_chat_message(person, 'hire')
 	else:
-		person.set_slave_category('master')
-		person.set_stat('consent', 1000)
-		globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
-		globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
-	ResourceScripts.game_party.add_slave(person)
-	
+		#add here recheck for upgrades later
+		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
-	input_handler.emit_signal("CharacterCreated")
-	input_handler.add_random_chat_message(person, 'hire')
+
 
 func text_changed(text, value):
 	# if text != '':
 	preservedsettings[value] = text
-	valid_preservedsettings[value] = true
-	apply_preserved_settings()
-	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
+	person.set_stat(value, text)
+#	apply_preserved_settings()
+	build_description()
 
 
 func check_confirm_possibility():
-	if !preservedsettings.has('food_love') or !valid_preservedsettings.food_love:
-		input_handler.SystemMessage("You must select a liked food type")
-		return false
-	if preservedsettings['food_love'] == '' or preservedsettings['food_hate'].empty() or !valid_preservedsettings.food_hate:
+	if !check_food_filter():
 		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
 		return false
-
-	if selected_class == '':
-		input_handler.SystemMessage("You must select a starting Class")
+	
+	if !check_class_possibility():
+		input_handler.SystemMessage("You must select a correct starting Class")
 		return false
-
+	
 	return true
 
 func set_savefilename(text):
@@ -439,16 +834,14 @@ func PressSaveCharacter(savename = null):
 
 
 func SaveCharacter():
-	apply_preserved_settings()
+#	apply_preserved_settings()
 	var character_to_save = {}
 	for i in params_to_save:
-		character_to_save[i] = person.get_stat(i)
-		if preservedsettings.has(i) and valid_preservedsettings[i] and !i in ["professions", "food_love", "food_hate"]: # && !preservedsettings in except_array:
-			character_to_save[i] = preservedsettings[i]
-	character_to_save.professions = selected_class
-	character_to_save["tits_size"] = person.get_stat("tits_size")
-	character_to_save["ass_size"] = person.get_stat("ass_size")
-	character_to_save["balls_size"] = person.get_stat("balls_size")
+		if i in ["traits", "sex_traits", "professions", 'food_filter', 'slave_class']:
+			if preservedsettings.has(i):
+				character_to_save[i] = preservedsettings[i]
+		else:
+			character_to_save[i] = person.get_stat(i)
 	character_to_save.type = str(mode)
 	var file = File.new()
 	file.open(variables.userfolder + 'savedcharacters/' + savefilename, file.WRITE)
@@ -458,7 +851,6 @@ func SaveCharacter():
 	file.close()
 	input_handler.SystemMessage("Character Template Saved")
 	hideSaveLoadPanel()
-
 
 
 func PressDeleteCharacter(savename):
@@ -471,11 +863,6 @@ func PressLoadCharacter(savename = null):
 	else:
 		$SaveLoadCharPanel/LineEdit.text = savename
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
-
-var temp_character
-func reset_profession():
-	temp_character.professions = ''
-	LoadCharacter(temp_character)
 
 
 func LoadCharacter(updated_char_to_load = null):
@@ -490,7 +877,7 @@ func LoadCharacter(updated_char_to_load = null):
 		character_to_load = parse_result.result
 	else:
 		character_to_load = updated_char_to_load
-	temp_character = character_to_load
+	
 	# Load availability checking
 	if character_to_load != null && character_to_load.type != mode:
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("TEMPLATETYPENOTMATCH")])
@@ -499,73 +886,29 @@ func LoadCharacter(updated_char_to_load = null):
 		if character_to_load != null && character_to_load.professions != '' && !character_to_load.professions in variables.get(guild+'_starting_classes'):
 			input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'reset_profession', tr("RESETLOADCHARPROFESSION")])
 			return
-	var check_stats = 0
-	var stats_array = []
+	
+	preservedsettings.clear()
 	for i in character_to_load:
-		if i.ends_with("_factor") && !i in ['growth_factor', 'timid_factor', 'tame_factor']:
-			check_stats += character_to_load[i]
-			stats_array.append(i)
-	if check_stats > 15:
-		for i in stats_array:
-			character_to_load[i] = 1
-	selected_class = character_to_load.professions
-	build_class()
-	for i in character_to_load:
-		if !(i in params_to_save): continue
-		if i == "food_love":
-			person.food.food_love = character_to_load["food_love"]
-			preservedsettings[i] = character_to_load["food_love"]
-			valid_preservedsettings[i] = true
+		if !(i in params_to_save): 
 			continue
-		elif i == "food_hate":
-			person.food.food_hate = character_to_load["food_hate"]
-			preservedsettings[i] = character_to_load["food_hate"]
-			valid_preservedsettings[i] = true
-			continue
-		elif i == 'sex_traits':
-			preservedsettings.erase(i)
-			valid_preservedsettings[i] = false
-			if Traitdata.sex_traits.has(character_to_load.sex_traits):
-				preservedsettings.sex_traits = character_to_load.sex_traits
-				valid_preservedsettings[i] = true
-			continue
-		person.set_stat(i, character_to_load[i])
 		preservedsettings[i] = character_to_load[i]
-		valid_preservedsettings[i] = true
-
-	for i in ['name','surname','nickname']:
-		if preservedsettings.has(i) and valid_preservedsettings[i]:
-#			valid_preservedsettings[i] = false
-			$VBoxContainer.get_node(i).text = preservedsettings[i]
-		else:
-			$VBoxContainer.get_node(i).text = person.get_stat(i)
-	# apply_preserved_settings()
-	SlaveInfo.build_bodyparts()
-	SlaveInfo.get_node("descript").bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
-	# if person.statlist.sex_traits.size() == 0:
-	# 	$VBoxContainer/sextrait.text = "Select Sex Trait"
-	# else:
-	# 	$VBoxContainer/sextrait.text = Traitdata.sex_traits[person.statlist.sex_traits[0]].name
-	for node in get_children():
-		if node.get_child_count() != 0:
-			for i in node.get_children():
-				if i.get_name() in person:
-					if i.get_class() == "CheckBox":
-						i.pressed = person[i.get_name()]
-					elif i.get_class() == "OptionButton":
-						continue
-						# for i in $DietPanel/VBoxContainer.get_children():
-						# 	i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
-					else:
-						i.text = person[i.get_name()].capitalize()
-	RebuildStatsContainer()
+	
+	#setup rebuild
+	if preservedsettings.has('race'):
+		person.set_stat('race', preservedsettings.race)
+	if preservedsettings.has('sex'):
+		person.set_stat('sex', preservedsettings.sex)
+	if preservedsettings.has('age'):
+		person.set_stat('age', preservedsettings.age)
+	
 	rebuild_slave()
-	select_diet()
-	finish_diet_selection()
+	build_food_filter()
+	build_class()
+	build_sex_trait()
+	build_trait()
+	
 	hideSaveLoadPanel()
 	input_handler.SystemMessage("Character Template Loaded")
-	# person.create_s_trait_select(character_to_load.sex_traits)
-	temp_character = null
 
 
 func DeleteCharacter():
@@ -577,65 +920,60 @@ func DeleteCharacter():
 
 
 
-func RebuildStatsContainer():
+func RebuildStatsContainer(): #onready scheme build, not values
 	input_handler.ClearContainer($StatsModule/StatsContainer)
-	var array = []
-	for i in statdata.statdata.values():
-		if i.has('type') && i.type == 'factor':
-			array.append(i)
-			if preservedsettings.has(i.code) == false or !valid_preservedsettings[i.code]:
-				preservedsettings[i.code] = 1
-				valid_preservedsettings[i.code] = true
+	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
+	input_handler.ClearContainer($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
+	for stat in params_to_save:
+		if stat in ["name", "surname", "nickname", "sex", "age", "race", "traits", "sex_traits", "professions", "food_filter"]:
+			continue
+		if stat.ends_with('factor'):
+			var i = statdata.statdata[stat]
+			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
+			if i.baseicon is String:
+				newnode.get_node("icon").texture = load(images.icons[i.baseicon])
 			else:
-				person.set_stat(i.code, preservedsettings[i.code])
-			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
-				preservedsettings[i.code] = 5
-				valid_preservedsettings[i.code] = true
-	
-	var counter = total_stat_points
-	
-	build_sex_trait()
-	for i in array:
-		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
+				newnode.get_node("icon").texture = i.baseicon
+			newnode.name = i.code
+			var text = i.descript
+			if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
+				text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
+			globals.connecttexttooltip(newnode.get_node("icon"), text)
+		elif stat.find('color') != -1: #create selectable, not build it
+			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2)
+			newnode.name = stat
+			var text = ''
+			if statdata.statdata.has(stat):
+				text = tr(statdata.statdata[stat].name)
+			else:
+				text = stat.replace('_', ' ')
+			newnode.get_node('Label').text = text
+		else:
+			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
+			newnode.name = stat
+			var text = ''
+			if statdata.statdata.has(stat):
+				text = tr(statdata.statdata[stat].name)
+			else:
+				text = stat.replace('_', ' ')
+			newnode.get_node('Label').text = text
+
+
+func FillStats():
+#	build_possible_vals()
+	for stat in params_to_save:
+		if stat in ["race", "traits", "sex_traits", "professions", 'food_filter']:
 			continue
-		if mode != 'master' && i.code in ["growth_factor"]:
-			continue
-		var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
-		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
-		newnode.get_node("down").connect("pressed", self, 'stat_down', [i])
-		newnode.get_node("Label").text = str(preservedsettings[i.code])
-		counter -= preservedsettings[i.code]-1
-		newnode.get_node("icon").texture = i.baseicon
-		var text = i.descript
-		if i.code in ['physics_factor','wits_factor','charm_factor','sexuals_factor']:
-			text += '\n\n' + statdata.statdata[i.code.replace('_factor', '')].descript
-		globals.connecttexttooltip(newnode.get_node("icon"), text)
+		if stat.find('color') != -1:
+			build_selectable_node(stat)
+		build_node_for_stat(stat)
+#	build_class()
+	build_description()
+	build_race()
+	update_points()
+#	build_food_filter()
 
-	unassigned_points = counter
-	$StatsModule/totalstatlabel.text = 'Free points left: ' + str(counter)
 
-	apply_preserved_settings()
-	if selected_class != '' && !person.checkreqs(classesdata.professions[selected_class].reqs):
-		selected_class = ''
-		build_class()
-
-func stat_up(stat):
-	if preservedsettings[stat.code] >= 6 || unassigned_points == 0:
-		return
-	else:
-		preservedsettings[stat.code] += 1
-		valid_preservedsettings[stat.code] = true
-		RebuildStatsContainer()
-		$ClassSelectionModule.update_class_buttons()
-
-func stat_down(stat):
-	if preservedsettings[stat.code] <= 1:
-		return
-	else:
-		preservedsettings[stat.code] -= 1
-		valid_preservedsettings[stat.code] = true
-		RebuildStatsContainer()
-		$ClassSelectionModule.update_class_buttons()
 
 func open_sex_traits():
 	hide_all_dialogues()
@@ -648,22 +986,18 @@ func open_traits():
 
 
 func select_sex_trait(trait_id):
-#	person.create_s_trait_select(trait_id)
 	preservedsettings["sex_traits"] = trait_id
-	valid_preservedsettings["sex_traits"] = true
 	$TraitSelection.hide()
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-	RebuildStatsContainer()
+#	RebuildStatsContainer()
 	build_sex_trait()
 
 
 func select_trait(trait_id):
-#	person.add_trait(trait_id)
 	preservedsettings["traits"] = trait_id
-	valid_preservedsettings["traits"] = true
 	$TraitSelection.hide()
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-	RebuildStatsContainer()
+#	RebuildStatsContainer()
 	build_trait()
 
 
@@ -692,6 +1026,7 @@ func build_trait():
 		$VBoxContainer/trait/bg.texture = null
 		$VBoxContainer/trait/icon.texture = null
 		$VBoxContainer/trait/Label.text = "Trait"
+	$VBoxContainer/trait.disabled = (mode == 'freemode')
 
 
 func build_sex_trait():
@@ -700,24 +1035,46 @@ func build_sex_trait():
 		$VBoxContainer/sextrait/Label.text = tr(trdata.name)
 	else:
 		$VBoxContainer/sextrait/Label.text = "Sex Trait"
+	$VBoxContainer/sextrait.disabled = (mode == 'freemode')
 
 
 func build_race():
-	if preservedsettings.has("race") && preservedsettings.race != null:
-		var rdata = races.racelist[preservedsettings.race]
-		$VBoxContainer/race/Label.text = tr(rdata.name)
-		if rdata.icon is String:
-			$VBoxContainer/race/icon.texture = load(rdata.icon)
-		else:
-			$VBoxContainer/race/icon.texture = rdata.icon
+#	if preservedsettings.has("race") && preservedsettings.race != null:
+#		var rdata = races.racelist[preservedsettings.race]
+#		$VBoxContainer/race/Label.text = tr(rdata.name)
+#		if rdata.icon is String:
+#			$VBoxContainer/race/icon.texture = load(rdata.icon)
+#		else:
+#			$VBoxContainer/race/icon.texture = rdata.icon
+#	else:
+#		if !preservedsettings.empty():
+#			print('warn - race selection not valid')
+#		$VBoxContainer/race/Label.text = "Race"
+#		$VBoxContainer/race/icon.texture = null
+	var rdata = races.racelist[person.get_stat('race')]
+	$VBoxContainer/race/Label.text = tr(rdata.name)
+	if rdata.icon is String:
+		$VBoxContainer/race/icon.texture = load(rdata.icon)
 	else:
-		if !preservedsettings.empty():
-			print('warn - race selection not valid')
-		$VBoxContainer/race/Label.text = "Race"
-		$VBoxContainer/race/icon.texture = null
+		$VBoxContainer/race/icon.texture = rdata.icon
+	$VBoxContainer/race.disabled = (mode == 'freemode')
+
+
+func check_class_possibility():
+	if selected_class == "":
+		return false
+	var data = classesdata.professions[selected_class]
+	return person.checkreqs(data.reqs)
 
 
 func build_class():
+	if preservedsettings.has('professions'):
+		var trdata = classesdata.professions[preservedsettings.professions]
+		if person.checkreqs(trdata.reqs):
+			selected_class = preservedsettings.professions
+		else: selected_class = ""
+	if !check_class_possibility():
+		selected_class = ""
 	if selected_class != "":
 		var trdata = classesdata.professions[selected_class]
 		$VBoxContainer/class/Label.text = tr(trdata.name)
@@ -731,7 +1088,11 @@ func build_class():
 	else:
 		$VBoxContainer/class/icon.texture = null
 		$VBoxContainer/class/Label.text = "Class"
+	$VBoxContainer/class.disabled = (mode == 'freemode')
 
+
+func build_description():
+	$VisualsModule/Desc.bbcode_text = ResourceScripts.descriptions.trim_tag(person.make_description(), 'url', 'hair')
 
 
 func confirm_return():
@@ -739,13 +1100,13 @@ func confirm_return():
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
 
-func test():
-#	print("Preserved Settings:", preservedsettings)
-#	print(person.get_stat("sex"))
-#	print(person.get_stat("age"))
-#	print(person.get_stat("race"))
-#	print(person.get_full_name())
-	print("Sex Traits:", person.statlist.sex_traits)
+#func test():
+##	print("Preserved Settings:", preservedsettings)
+##	print(person.get_stat("sex"))
+##	print(person.get_stat("age"))
+##	print(person.get_stat("race"))
+##	print(person.get_full_name())
+#	print("Sex Traits:", person.statlist.sex_traits)
 
 
 func hide_all_dialogues():

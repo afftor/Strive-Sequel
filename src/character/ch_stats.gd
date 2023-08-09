@@ -74,6 +74,9 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
+		statlist[st] = value
+		statlist[st.replace('base', 'fringe')] = value
 	if st.begins_with('metrics_'):
 		var stat = st.trim_prefix('metrics_')
 		statlist.metrics[stat] = value
@@ -670,6 +673,8 @@ func get_stat(statname, ref = false):
 				match statlist.ears: 
 					'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping':
 						var res = get_hairs_data().hair_base_color_1
+						if statlist.hair_base_color_1 != "":
+							res = statlist.hair_base_color_1
 						res = res.replace('_', '')
 						if statlist.skin_coverage.begins_with('fur'):
 							match statlist.skin_coverage:
@@ -1439,12 +1444,12 @@ func get_racial_features():
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
 		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
-			statlist[i] = races.racelist.Human.bodyparts[i][randi()%races.racelist.Human.bodyparts[i].size()]
+			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
 	for i in race_template.bodyparts:
 		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
-			statlist[i] = race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()]
+			statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
 	
@@ -1531,7 +1536,7 @@ func apply_custom_bodychange(target, part):
 				if typeof(newvalue[0]) == TYPE_ARRAY:
 					newvalue = input_handler.weightedrandom(newvalue)
 				else:
-					newvalue = newvalue[randi()%newvalue.size()]
+					newvalue = input_handler.random_from_array(newvalue)
 			statlist[i.code] = newvalue
 
 func get_random_race():

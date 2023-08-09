@@ -17,7 +17,7 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'Human', 
+	race = 'Lamia', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -30,7 +30,7 @@ var test_template = {
 	penis_type = 'furry', 
 	chin = 'thin', 
 	nose = 'default', 
-	pregnancy_status = 'heavy', 
+	pregnancy_status = 'no', 
 	tits_size = 'huge', 
 	skin_coverage = 'fur_white', 
 	body_color_skin = 'blue5', 
@@ -133,6 +133,47 @@ func rebuild(character_to_build):
 	_root.get_node('male_pose').scale = Vector2(__scale_x, __scale_y)
 	_root.get_node('Female_pose').scale = Vector2(__scale_x, __scale_y)
 
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+	if character != null:
+		character.update_portrait(self)
+
+
+func rebuild_stat(statname):
+	if !is_visible_in_tree():
+		return
+	
+	var stats = []
+	if GeneratorData.stats_links.has(statname):
+		stats = GeneratorData.stats_links[statname]
+	else:
+		stats = [statname]
+	#first pass - textures
+	for stat in stats:
+		if stat == 'full':
+			rebuild(character)
+			return
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = _get_stat(stat)
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if !(transform.type in ['texture', 'texture_set']):
+				continue
+			apply_transform(transform)
+	#second pass - all others
+	for stat in stats:
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = _get_stat(stat)
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if (transform.type in ['texture', 'texture_set']):
+				continue
+			apply_transform(transform)
+	
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
 	if character != null:
