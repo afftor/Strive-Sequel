@@ -41,9 +41,6 @@ margin_right = 1251.0
 margin_bottom = 926.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_left = 29.0
@@ -53,9 +50,6 @@ margin_bottom = 668.0
 custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Visuals" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
@@ -73,12 +67,9 @@ focus_mode = 2
 theme = ExtResource( 21 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Change Language"
+text = "OPTIONSWITCHLANGUAGE"
 flat = false
 script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fullscreen" type="CheckBox" parent="TabContainer/Visuals"]
 margin_left = 26.0
@@ -90,7 +81,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Full Screen"
+text = "OPTGRAPHICFULLSCREEN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +97,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Factors as words"
+text = "OPTGRAPHICFACTOR"
 
 [node name="generate_portraits" type="CheckBox" parent="TabContainer/Visuals"]
 margin_left = 26.0
@@ -118,7 +109,7 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Random Portraits"
+text = "OPTGRAPHICRANDOMPORTRAIT"
 
 [node name="DisableAnimations" type="CheckBox" parent="TabContainer/Visuals"]
 margin_left = 26.0
@@ -131,7 +122,7 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Disable Animation backgrounds"
+text = "OPTGRAPHICDISABLEANIMATIONBACKGROUNDS"
 
 [node name="disable_paperdoll" type="CheckBox" parent="TabContainer/Visuals"]
 margin_left = 26.0
@@ -144,7 +135,7 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Disable generated sprites"
+text = "OPTDISABLEPAPERDOLL"
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
 visible = false

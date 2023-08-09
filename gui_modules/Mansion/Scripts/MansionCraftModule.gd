@@ -513,12 +513,12 @@ func multipart_item_text(item):
 	var text = ''
 	text += '{color=k_yellow|' + item.name + '}\n'
 	if item.geartype != null:
-		text += 'Type: ' + item.geartype + "\n"
+		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 	else:
-		text += "Type: Usable\n"
+		text += tr("TYPE_USABLE_LABEL") + "\n"
 
 	if item.slots.size() > 0:
-		text += "Slots: "
+		text += tr("SLOTS_LABEL") + ": "
 		for i in item.slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
 		text = text.substr(0, text.length() -2)
