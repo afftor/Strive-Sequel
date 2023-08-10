@@ -14,6 +14,14 @@ var stats_to_look = [
 'height', 'ass_size',
 ]
 
+var stats_links = {
+	height = ['full'],
+	body_color_skin = ['body_color_skin', 'skin_coverage'],
+	hair_base_color_1 = ['hair_base_color_1', 'hair_fringe_color_1', 'body_color_ears'],
+	hair_base_color_2 = ['hair_base_color_2', 'hair_fringe_color_2'],
+	personality = ['pose'],
+	skin_coverage = ['body_color_ears', 'skin_coverage'],
+}
 
 var itemparts = {}
 

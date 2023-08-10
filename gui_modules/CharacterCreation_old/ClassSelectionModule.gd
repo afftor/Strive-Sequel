@@ -20,6 +20,24 @@ func open_class_list():
 		else:
 			class_array = variables.get(get_parent().guild+'_starting_classes')
 	update_class_buttons()
+	# for i in array:
+	# 	var tempclass = classesdata.professions[i]
+	# 	if person.checkreqs(tempclass.showupreqs) == false:
+	# 		continue
+	# 	var newbutton = input_handler.DuplicateContainerTemplate($ClassPanel/ScrollContainer/VBoxContainer)
+	# 	newbutton.get_node("icon").texture = tempclass.icon
+	# 	newbutton.get_node("name").text = tempclass.name
+	# 	var text = ResourceScripts.descriptions.get_class_details(person, tempclass, true, true)
+	# 	newbutton.connect('pressed', self, "show_class_info", [text, tempclass, person])
+	# 	newbutton.set_meta('class', tempclass.code)
+	# 	# newbutton.connect('pressed', self, "select_class", [tempclass.code])
+	# 	# newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code, person])
+	# 	# globals.connecttexttooltip(newbutton, text)
+	# 	var reqs_text = ""
+	# 	for i in tempclass.reqs:
+	# 		reqs_text += str(statdata.statdata[i.stat].abb) + ":" + str(i.value)
+	# 	newbutton.get_node("Reqs").text = reqs_text
+	# 	newbutton.disabled = !person.checkreqs(tempclass.reqs)
 	input_handler.active_character = person
 	update_pressed_buttons()
 
@@ -80,11 +98,11 @@ func cancel_class_selection():
 
 func select_class():
 	is_class_selected = false
-	get_parent().preservedsettings.professions = selected_class
+	get_parent().selected_class = selected_class
 	get_parent().build_class()
 	hide()
 	# get_parent().rebuild_slave()
-#	get_parent().check_confirm_possibility()
+	get_parent().check_confirm_possibility()
 
 
 

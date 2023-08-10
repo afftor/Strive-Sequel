@@ -36,6 +36,7 @@ signal EventFinished
 signal QuestStarted
 signal QuestCompleted
 signal CharacterCreated
+signal CharacterUpdated
 signal EnemyKilled
 signal ButtonUpdated (node)
 signal LootGathered

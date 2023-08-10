@@ -28,12 +28,11 @@ func select_race():
 func select_character_race():
 	hide()
 	# var person = get_parent().person
-	if get_parent().person.get_stat('race') != selected_race:
-		get_parent().person.set_stat('race', selected_race)
-		get_parent().preservedsettings["race"] = selected_race
-		get_parent().preservedsettings.erase('surname') #think it is right
-		get_parent().rebuild_slave()
-		get_parent().build_race()
+	get_parent().person.set_stat('race', selected_race)
+	get_parent().preservedsettings["race"] = selected_race
+	get_parent().valid_preservedsettings['race'] = true
+	get_parent().rebuild_slave()
+	get_parent().build_race()
 
 
 func show_race_info(temprace):
@@ -43,7 +42,7 @@ func show_race_info(temprace):
 	var image
 	var text = race.descript
 	
-	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": "
+	text += "\n\n{color=yellow|Race bonuses: "
 	for i in race.race_bonus:
 		if (i as String).begins_with('resist'):
 			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
