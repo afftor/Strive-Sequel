@@ -488,7 +488,8 @@ texture = ExtResource( 52 )
 
 [node name="ragdoll" parent="RagdollPanel" instance=ExtResource( 38 )]
 position = Vector2( 296.377, 390.764 )
-scale = Vector2( 0.6, 0.6 )
+scale = Vector2( 0.8, 0.8 )
+clothes = true
 
 [node name="bodymask" type="Light2D" parent="RagdollPanel"]
 position = Vector2( 293.48, 390.602 )
