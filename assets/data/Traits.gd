@@ -1114,7 +1114,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mdef = 10}, 
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	upgrade_thick_coverage = {
 		name = '',
@@ -1123,7 +1123,7 @@ var traits = {
 		effects = [],
 		bonusstats = {def = 10}, 
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	upgrade_nipples = {
 		name = '',
@@ -1132,7 +1132,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_pros = 0.1}, 
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	upgrade_tongue = {
 		name = '',
@@ -1141,7 +1141,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_pros = 0.1}, 
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	upgrade_eggs = {
 		name = '',
@@ -1149,7 +1149,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
 		reqs = [],  
-		tags = ['body_upgarde', 'oviposition']
+		tags = ['body_upgrade', 'oviposition']
 	},
 	upgrade_silk = {
 		name = '',
@@ -1157,7 +1157,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
 		reqs = [],  
-		tags = ['body_upgarde', 'silksecretion']
+		tags = ['body_upgrade', 'silksecretion']
 	},
 	upgrade_strongarm = {
 		name = '',
@@ -1165,7 +1165,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
 		reqs = [],  
-		tags = ['body_upgarde', 'strongarm']
+		tags = ['body_upgrade', 'strongarm']
 	},
 	upgrade_resist = {
 		name = '',
@@ -1173,7 +1173,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = ['e_tr_resist'], #25% miss spells with damage, but all enemy spells have damage
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	upgrade_thickblood = {
 		name = '',
@@ -1182,7 +1182,7 @@ var traits = {
 		effects = [], 
 		bonusstats = {resist_bleed = 200, resist_poison = 200}, 
 		reqs = [],  
-		tags = ['body_upgarde']
+		tags = ['body_upgrade']
 	},
 	#racial
 	racial_oviposition = {
