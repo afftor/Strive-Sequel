@@ -18,12 +18,14 @@ var gear = {
 	underwear = null,
 }
 
+
 func get_weapon_range():
 	if gear.rhand == null:
 		return 'melee'
 	else:
 		var weapon = ResourceScripts.game_res.items[gear.rhand]
 		return weapon.weaponrange
+
 
 func check_gear_equipped(gearname, param = 'itembase'):
 	for i in gear.values():
@@ -33,6 +35,7 @@ func check_gear_equipped(gearname, param = 'itembase'):
 		if tempgear.get(param) == gearname:
 			return true
 	return false
+
 
 func check_wooden_gear_equipped():
 	for i in gear.values():
@@ -45,8 +48,10 @@ func check_wooden_gear_equipped():
 					return true
 	return false
 
+
 func get_gear(slot):
 	return gear[slot]
+
 
 func get_gear_type(slot):
 	var item = get_gear(slot)
@@ -54,6 +59,7 @@ func get_gear_type(slot):
 		return null
 	item = ResourceScripts.game_res.items[item]
 	return item.itembase
+
 
 func equip(item, item_prev_id = null):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
@@ -69,6 +75,9 @@ func equip(item, item_prev_id = null):
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
 	for i in item.slots:
+		if i == 'lhand' and item.slots.has('rhand'):
+			if parent.get_ref().has_status('strongarm'):
+				continue
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
 		gear[i] = item.id
@@ -80,6 +89,7 @@ func equip(item, item_prev_id = null):
 		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('item', item.id)
 	parent.get_ref().recheck_effect_tag('recheck_item')
+
 
 func unequip(item):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
@@ -108,11 +118,24 @@ func unequip(item):
 		eff.remove()
 	parent.get_ref().recheck_effect_tag('recheck_item')
 
+
 func clear_equip():
 	for i in gear:
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
 
+
 func get_weapon_element():
 	#for testing
 	return 'normal'
+
+
+func recheck_equip():
+	#check hands for conflict
+	if gear.rhand != null:
+		if gear.lhand != gear.rhand: 
+			var item = ResourceScripts.game_res.items[gear.rhand]
+			if item.slots.has('lhand') and !parent.get_ref().has_status('strongarm'):
+				var item2 = ResourceScripts.game_res.items[gear.lhand]
+				unequip(item2)
+				gear.lhand = gear.rhand

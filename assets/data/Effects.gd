@@ -109,6 +109,23 @@ var effect_table = {
 		sub_effects = [],
 	},
 	#traits
+	e_tr_resist = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['ability_type', 'eq', 'spell'] },
+			{type = 'random', value = 0.25}
+		],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS}]
+		}],
+		buffs = []
+	},
 	e_tr_hide = {
 		type = 'trigger',
 		trigger = [variables.TR_COMBAT_S],

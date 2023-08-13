@@ -319,6 +319,14 @@ var statdata = {
 		type = 'misc',
 		custom_get = true
 	},
+	upgrade_points_total = {
+		code = 'upgrade_points_total',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		custom_get = true
+	},
 	mpmaxmod = {
 		code = 'mpmaxmod',
 		name = '',

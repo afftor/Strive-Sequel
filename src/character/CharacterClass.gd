@@ -797,6 +797,31 @@ func can_add_farming():
 func act_prepared():
 	skills.act_prepared()
 
+
+func get_upgrade_points():
+	return statlist.get_upgrade_points()
+
+
+func add_upgrade(upg): #unsafe adding
+	statlist.add_upgrade(upg)
+
+
+func can_add_upgrade(upg):
+	return statlist.can_add_upgrade(upg)
+
+
+func remove_upgrade(upg):
+	statlist.remove_upgrade(upg)
+
+
+func recheck_upgrades():
+	statlist.recheck_upgrades()
+
+
+func recheck_equip():
+	equipment.recheck_equip()
+
+
 func serialize():
 	var res = inst2dict(self)
 	res.statlist = inst2dict(statlist)
@@ -995,6 +1020,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)
 			else:
 				check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
+		'stat_in_set':
+			check = i.value.has(get_stat(i.stat))
 		'stat_index':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = input_handler.operate(i.operant, get_stat(i.stat)[i.index], i.value)
@@ -1078,6 +1105,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			else: check = (combat_position in range(1, 7)) == i.value
 		'setting':
 			return input_handler.globalsettings[i.type] == i.value
+		'has_coverage':
+			var coverage = get_stat('skin_coverage')
+			return (coverage.find(i.coverage) != -1) == i.check
 
 	return check
 

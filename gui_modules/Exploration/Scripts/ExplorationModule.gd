@@ -53,6 +53,7 @@ func _ready():
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
 	$SlaveMarket/HBoxContainer/EnslaveButton.connect("pressed", self, "enslave_select")
 	$SlaveMarket/HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
+	$SlaveMarket/HBoxContainer/UpgradeButton2.connect("pressed", self, "show_bodyupgrade_window")
 	for i in $AreaShop/SellFilter.get_children():
 		i.connect('pressed', self, 'selectcategory', [i, "sell"])
 	for i in $AreaShop/BuyFilter.get_children():
@@ -1620,6 +1621,14 @@ func show_upgrade_window():
 	$StatsUpgrade.show_characters_panel()
 
 
+func show_bodyupgrade_window():
+	gui_controller.close_top_window()
+	$SlaveMarket.hide()
+	if !gui_controller.windows_opened.has($StatsUpgrade):
+		gui_controller.windows_opened.append($StatsUpgrade)
+	$BodyUpgrade.show()
+	$BodyUpgrade.show_characters_panel()
+
 
 func change_mode(mode):
 	hiremode = mode
@@ -1667,6 +1676,7 @@ func sell_slave():
 func show_slave_info(person):
 	person_to_hire = person
 	$SlaveMarket/HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
+	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue

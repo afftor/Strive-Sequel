@@ -583,7 +583,7 @@ var farm_tasks = {
 	eggs = {
 		code = 'eggs',
 		formula = 'farm_eggs',
-		reqs = [{code = 'race', race = 'Harpy', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
+		reqs = [{code = 'has_status', status = 'oviposition', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
 	},
 	magic_dust = {
 		code = 'magic_dust',
@@ -598,7 +598,7 @@ var farm_tasks = {
 	spider_silk = {
 		code = 'spider_silk',
 		formula = 'farm_silk',
-		reqs = [{code = 'race', race = 'Arachna', check = true}],
+		reqs = [{code = 'has_status', status = 'silksecretion', check = true}],
 	},
 	light_essence = {
 		code = 'light_essence',
@@ -1157,6 +1157,7 @@ var racelist = {
 			arms = ['wings'],
 			},
 		global_weight = 25,
+		traits = ['racial_oviposition']
 	},
 	Slime = {
 		code = "Slime",
@@ -1216,6 +1217,7 @@ var racelist = {
 			ears = ['elven'],
 			},
 		global_weight = 5,
+		traits = ['racial_oviposition']
 	},
 	Arachna = {
 		code = "Arachna",
@@ -1246,6 +1248,7 @@ var racelist = {
 			ears = ['elven'],
 			},
 		global_weight = 5,
+		traits = ['racial_silksecretion']
 	},
 	Scylla = {
 		code = "Scylla",
