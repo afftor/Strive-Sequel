@@ -82,9 +82,6 @@ margin_bottom = 920.0
 theme = ExtResource( 17 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
@@ -110,75 +107,75 @@ __meta__ = {
 
 [node name="all" type="Button" parent="categories"]
 light_mask = 0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "All"
+text = "CAT_ALL"
 
 [node name="social" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 44.0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "Soc"
+text = "CAT_SOCIAL"
 
 [node name="labor" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 88.0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "Lab"
+text = "CAT_LABOR"
 
 [node name="sexual" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 132.0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "Sex"
+text = "CAT_SEXUAL"
 
 [node name="combat" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 176.0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "Com"
+text = "CAT_COMBAT"
 
 [node name="magic" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 220.0
-margin_right = 109.0
+margin_right = 154.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Magic"
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 toggle_mode = true
-text = "Mag"
+text = "CAT_MAGIC"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 light_mask = 0
@@ -189,9 +186,6 @@ margin_bottom = 814.0
 rect_min_size = Vector2( 0, 760 )
 theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 light_mask = 0
@@ -225,10 +219,10 @@ margin_left = 4.0
 margin_top = 114.0
 margin_right = 146.0
 margin_bottom = 143.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 8 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -241,9 +235,9 @@ margin_left = 2.0
 margin_top = 12.0
 margin_right = 968.0
 margin_bottom = 50.0
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Classes"
+custom_fonts/font = ExtResource( 23 )
+text = "CLASSES_LABEL"
 align = 1
 valign = 1
 __meta__ = {
@@ -257,13 +251,10 @@ margin_top = 841.409
 margin_right = 931.923
 margin_bottom = 882.409
 theme = ExtResource( 15 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Locked"
+custom_fonts/font = ExtResource( 7 )
+text = "LOCKED_LABEL"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ClassPanel" type="Panel" parent="."]
 visible = false
@@ -295,8 +286,8 @@ margin_left = 30.0
 margin_top = 754.0
 margin_right = 670.0
 margin_bottom = 962.0
-custom_fonts/normal_font = ExtResource( 7 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -308,8 +299,8 @@ margin_left = 250.0
 margin_top = 14.0
 margin_right = 694.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "name"
 align = 1
 valign = 1
@@ -487,8 +478,8 @@ margin_top = 975.0
 margin_right = 670.0
 margin_bottom = 1039.0
 theme = ExtResource( 18 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Unlock"
 
 [node name="ExpLabel" type="Label" parent="ClassPanel"]
@@ -497,8 +488,8 @@ margin_left = 30.0
 margin_top = 994.0
 margin_right = 317.0
 margin_bottom = 1021.0
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Experience: "
 
 [node name="SkillPanel" type="Panel" parent="."]
@@ -602,9 +593,9 @@ light_mask = 0
 margin_top = 12.0
 margin_right = 700.0
 margin_bottom = 56.0
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Skills"
+custom_fonts/font = ExtResource( 23 )
+text = "SKILLS_LABEL"
 align = 1
 valign = 1
 __meta__ = {
@@ -620,9 +611,6 @@ margin_bottom = 798.0
 rect_min_size = Vector2( 0, 500 )
 theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="SkillPanel/ScrollContainer"]
 light_mask = 0
@@ -661,10 +649,10 @@ margin_left = 6.0
 margin_top = 8.0
 margin_right = 94.0
 margin_bottom = 90.0
-custom_fonts/font = ExtResource( 45 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 45 )
 align = 1
 valign = 2
 autowrap = true
@@ -678,9 +666,9 @@ margin_top = 836.0
 margin_right = 617.0
 margin_bottom = 880.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Skill Points: "
+custom_fonts/font = ExtResource( 23 )
+text = "SKILL_POINTS_LABEL"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -703,8 +691,8 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 650.0
 margin_bottom = 370.0
-custom_fonts/normal_font = ExtResource( 7 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -767,8 +755,8 @@ margin_left = 125.248
 margin_top = 5.66177
 margin_right = 264.248
 margin_bottom = 52.6618
-custom_fonts/font = ExtResource( 48 )
 custom_colors/font_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+custom_fonts/font = ExtResource( 48 )
 text = "Distract"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -779,8 +767,8 @@ margin_left = 281.495
 margin_top = 272.563
 margin_right = 420.495
 margin_bottom = 319.563
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "0 SP"
 align = 1
 __meta__ = {
@@ -792,9 +780,9 @@ margin_left = 67.8728
 margin_top = 136.0
 margin_right = 291.873
 margin_bottom = 183.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
-text = "Unlock Requirements"
+custom_fonts/font = ExtResource( 9 )
+text = "UNLOCK_REQS"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -843,8 +831,8 @@ margin_left = 455.0
 margin_top = 166.0
 margin_right = 506.0
 margin_bottom = 210.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 align = 1
 __meta__ = {
@@ -870,8 +858,8 @@ margin_left = 570.0
 margin_top = 166.0
 margin_right = 621.0
 margin_bottom = 210.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "0"
 align = 1
 __meta__ = {
@@ -896,9 +884,9 @@ margin_left = 13.0
 margin_top = 4.0
 margin_right = 197.0
 margin_bottom = 52.0
-custom_fonts/font = ExtResource( 52 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
-text = "Cancel"
+custom_fonts/font = ExtResource( 52 )
+text = "CANCEL"
 align = 1
 valign = 1
 
@@ -920,9 +908,9 @@ margin_left = 13.0
 margin_top = 4.0
 margin_right = 197.0
 margin_bottom = 52.0
-custom_fonts/font = ExtResource( 52 )
 custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
-text = "Unlock"
+custom_fonts/font = ExtResource( 52 )
+text = "UNLOCK"
 align = 1
 valign = 1
 
@@ -933,11 +921,11 @@ margin_top = 829.409
 margin_right = 555.253
 margin_bottom = 893.409
 theme = ExtResource( 18 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Upgrade"
 
 [node name="stats_upgrade" parent="." instance=ExtResource( 57 )]

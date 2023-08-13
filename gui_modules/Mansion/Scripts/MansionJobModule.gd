@@ -96,24 +96,24 @@ func update_characters():
 		newbutton.disabled = false
 		if (selected_job == null or selected_resource == null) and !mode_farm:
 			newbutton.disabled = true 
-			globals.connecttexttooltip(newbutton, "Select Resource first")
+			globals.connecttexttooltip(newbutton, tr("SELECT_RES_FIRST_LABEL"))
 		if (selected_slot == null) and mode_farm:
 			newbutton.disabled = true 
-			globals.connecttexttooltip(newbutton, "Select Slot first")
+			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
 		if !person.has_status('basic_servitude') and !person.is_master() and !mode_farm:
 			newbutton.disabled = true
-			globals.connecttexttooltip(newbutton, person.translate("[name] lacks Training: Basic Servitude"))
+			globals.connecttexttooltip(newbutton, person.translate("[name]" + tr("LACKS_BASIC_SERV_LABEL")))
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
 				if person.has_status('no_sex'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] refuses to perfrorm sexual tasks"))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("REFUSE_TO_WHORE_LABEL")))
 				if person.has_status('no_whoring'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] refuses to perfrorm this task"))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("REFUSE_THIS_TASK_LABEL")))
 				if !person.has_status('prostitution'): 
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] lacks Training: Prostitution"))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("LACKS_PROSTITUTUION_LABEL")))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":

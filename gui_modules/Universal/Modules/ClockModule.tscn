@@ -154,8 +154,7 @@ __meta__ = {
 [node name="finish_turn" type="TextureButton" parent="TimeNode/HBoxContainer"]
 margin_right = 180.0
 margin_bottom = 58.0
-hint_tooltip = "Advance Time
-Hotkey: 1"
+hint_tooltip = "TOOLTIP_CLOCK1"
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -176,8 +175,7 @@ __meta__ = {
 margin_left = 180.0
 margin_right = 235.0
 margin_bottom = 58.0
-hint_tooltip = "Advance Time for 12h
-Hotkey: 2"
+hint_tooltip = "TOOLTIP_CLOCK2"
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )
@@ -202,8 +200,7 @@ __meta__ = {
 margin_left = 235.0
 margin_right = 290.0
 margin_bottom = 58.0
-hint_tooltip = "Advance Time for a full day
-Hotkey: 3"
+hint_tooltip = "TOOLTIP_CLOCK3"
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 10 )

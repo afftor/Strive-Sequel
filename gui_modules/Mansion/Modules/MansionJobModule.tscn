@@ -554,10 +554,7 @@ margin_right = 802.0
 margin_bottom = 107.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Occupation"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "MSLMOCCU"
 
 [node name="CharacterListLabel" type="Label" parent="."]
 margin_left = 1480.0
@@ -566,10 +563,8 @@ margin_right = 1763.0
 margin_bottom = 107.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Character list"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "SWITCHLIST"
+align = 1
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -922,7 +917,7 @@ margin_bottom = 47.0
 size_flags_horizontal = 3
 toggle_mode = true
 pressed = true
-text = "occupation"
+text = "MSLMOCCU"
 
 [node name="farm" type="Button" parent="mod_select"]
 margin_left = 231.0
@@ -930,4 +925,4 @@ margin_right = 459.0
 margin_bottom = 47.0
 size_flags_horizontal = 3
 toggle_mode = true
-text = "farm"
+text = "FARM_LABEL"

@@ -67,8 +67,8 @@ margin_left = 45.0
 margin_top = 587.0
 margin_right = 670.0
 margin_bottom = 777.0
-custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 0.721569, 0.196078, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
 text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
@@ -81,8 +81,8 @@ margin_left = 261.0
 margin_top = 12.0
 margin_right = 676.0
 margin_bottom = 59.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.772549, 0.345098, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "name"
 align = 1
 valign = 1
@@ -136,8 +136,8 @@ margin_top = 365.0
 margin_right = 233.0
 margin_bottom = 533.0
 theme = ExtResource( 5 )
-custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,9 +222,9 @@ margin_left = 261.0
 margin_top = 414.684
 margin_right = 390.0
 margin_bottom = 446.684
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Social Skills"
+custom_fonts/font = ExtResource( 9 )
+text = "SOCIAL_SKILLS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,9 +234,6 @@ margin_left = 261.0
 margin_top = 265.0
 margin_right = 414.0
 margin_bottom = 297.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "Combat Skills"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 9 )
+text = "COMBAT_SKILLS"

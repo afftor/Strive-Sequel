@@ -71,11 +71,11 @@ func turn_set(value):
 	$turns/Label.text = str(turn)
 
 var locationdicts = {
-	livingroom = {code = 'livingroom',name = 'Living Room', background = 'mansion'},
-	bedroom = {code = 'bedroom',name = 'Bedroom', background = 'mansion'},
-	dungeon = {code = 'dungeon',name = 'Torture Room', background = 'dungeon'},
-	garden = {code = 'garden',name = 'Garden', background = 'garden'},
-	town = {code = 'town',name = 'Streets', background = 'aliron'},
+	livingroom = {code = 'livingroom',name = tr('DATING_LIVING_ROOM'), background = 'mansion'},
+	bedroom = {code = 'bedroom',name = tr('DATING_BEDROOM'), background = 'mansion'},
+	dungeon = {code = 'dungeon',name = tr('DATING_TORTURE_ROOM'), background = 'dungeon'},
+	garden = {code = 'garden',name = tr('DATING_GARDEN'), background = 'garden'},
+	town = {code = 'town',name = tr('DATING_STREETS'), background = 'aliron'},
 }
 
 
@@ -221,26 +221,26 @@ func initiate(tempperson):
 
 	if jail == true:
 		location = 'dungeon'
-		text = "You visit [name2] in [his2] cell and decide to spend some time with [him2]. "
+		text = tr("DATING_JAIL_TEST")
 		$panel/categories/Location.disabled = true
 	else:
 		$panel/categories/Location.disabled = false
 		location = 'livingroom'
-		text = "You meet {^[name2]:[race2] [boy2]} and order [him2] to keep you company. "
+		text = tr("DATING_LIVING_ROOM_TEXT_1")
 		if person.has_temp_effect('resist_state'):
 			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
 		elif person.get_stat('loyalty_total') >= 35:
-			text += "[he2] gladly accepts your order and is ready to follow you anywhere you take [him2]. "
+			text += tr("DATING_LIVING_ROOM_TEXT_2")
 			self.mood += 10
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
 		elif person.get_stat('obedience') >= 40:
 			self.mood += 4
-			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
+			text += tr("DATING_LIVING_ROOM_TEXT_3")
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 		else:
 
-			text += "Without great joy [he2] obeys your order and reluctantly joins you. "
+			text += tr("DATING_LIVING_ROOM_TEXT_4")
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 
 
@@ -314,13 +314,13 @@ func updatelist():
 			newnode.connect("pressed",self,'doaction', [i.effect])
 			var text = i.descript
 			if dislike_same_sex() == true && i.effect in ['flirt','kiss','propose']:
-				text += globals.TextEncoder("\n{color=yellow|Sexuality: [name] does not seem to be enthusiastic in having relationship with you. Mood required for positive response is increased.}")
+				text += globals.TextEncoder(tr("DATING_DISLIKE_SAME_SEX"))
 			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
 				newnode.disabled = true
 
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = "Consent: " + str(floor(person.get_stat("consent"))) 
+	var text = tr("SIBLINGMODULECONSENT") + str(floor(person.get_stat("consent"))) 
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -333,7 +333,7 @@ func moveto(newloc):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$panel/categories/Affection.emit_signal("pressed")
 	$background.texture = images.backgrounds[locationdicts[newloc].background]
-	self.showntext = 'You lead {^[name2]:[race2] [boy2]} to the [color=yellow]' + locationdicts[location].name + '[/color]. '
+	self.showntext = tr('DATING_MOVE_TO_TEXT') + locationdicts[location].name + '[/color]. '
 
 
 	updatelist()
@@ -368,16 +368,16 @@ func doaction(action):
 		if turn%2 == 0:
 			if location == 'garden' && person.get_stat('personality') == 'shy':
 				self.mood += 4
-				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather peaceful, [his2] mood improves.")
+				self.showntext += decoder(tr("DATING_LOC_INFLUENCE_1"))
 			elif location == 'town' && person.get_stat('personality') == 'bold':
 				self.mood += 4
-				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather joyful, [his2] mood improves")
+				self.showntext += decoder(tr("DATING_LOC_INFLUENCE_2"))
 			elif location == 'dungeon':
 				self.fear += 3
-				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather grim, [his2] fear grows.")
+				self.showntext += decoder(tr("DATING_LOC_INFLUENCE_3"))
 	if turn <= 0:
 		finish_encounter = true
-		self.showntext += "\n\nYou have no more time left."
+		self.showntext += tr("DATING_NO_TIME")
 	drunkness()
 	updatelist()
 
@@ -391,242 +391,113 @@ func checkhistory(action):
 
 var date_lines = {
 	chat_start = [
-		["You attempt to initiate a friendly chat with {^[name2]:[race2] [boy2]}. ", 1],
-		["You {^innocently:casually:friendly} {^discuss mundane thigns:chat} with {^[name2]:[race2] [boy2]}. ", 3],
-		["You make a small talk to {^[name2]:[race2] [boy2]}. ",1],
-		["You and [name2] discuss the weather. ",1],
+		[tr("DATING_CHAT_START_1"), 1],
+		[tr("DATING_CHAT_START_2"), 3],
+		[tr("DATING_CHAT_START_3"),1],
+		[tr("DATING_CHAT_START_4"),1],
 	],
 	chat_positive = [
-		["{^[name2]:[race2] [boy2]:[he2]} spends some time engaging in a friendly chat with you. ",1],
-		["{^[name2]:[race2] [boy2]:[he2]} responds to you in a friendly manner. ",1],
+		[tr("DATING_CHAT_POSITIVE_1"),1],
+		[tr("DATING_CHAT_POSITIVE_2"),1],
 	],
 	chat_negative = [
-		["{^[name2]:[race2] [boy2]:[he2]} replies, but does so reluctantly.",1],
-		["{^[name2]:[race2] [boy2]:[he2]} shows little interest in further chatting. ",1],
+		[tr("DATING_CHAT_NEGATIVE_1"),1],
+		[tr("DATING_CHAT_NEGATIVE_2"),1],
 	],
 	flirt_start = [
-		["You casually flirt with {^[name2]:[race2] [boy2]}.", 1],
-		["You start a lewd talk with {^[name2]:[race2] [boy2]}.", 1],
-		["You ask {^[name2]:[race2] [boy2]} about [his2] fantasies.", 1],
+		[tr("DATING_FLIRT_START_1"), 1],
+		[tr("DATING_FLIRT_START_2"), 1],
+		[tr("DATING_FLIRT_START_3"), 1],
 	],
 	flirt_positive = [
-		["{^[name2]:[race2] [boy2]:[he2]} responds to you positively. ", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} gives you a playful look. ", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} moves slightly closer to you. ", 1],
+		[tr("DATING_FLIRT_POSITIVE_1"), 1],
+		[tr("DATING_FLIRT_POSITIVE_2"), 1],
+		[tr("DATING_FLIRT_POSITIVE_3"), 1],
 	],
 	flirt_negative = [
-		["{^[name2]:[race2] [boy2]:[he2]} stays silent, showing [his2] disdain.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} gives you a stern look. ", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} moves away from you. ", 1],
+		[tr("DATING_FLIRT_NEGATIVE_1"), 1],
+		[tr("DATING_FLIRT_NEGATIVE_2"), 1],
+		[tr("DATING_FLIRT_NEGATIVE_3"), 1],
 	],
 
 	touch_start = [
-		["You {^casually:lightly} touch {^[name2]:[race2] [boy2]}.", 1],
+		[tr("DATING_TOUCH_START_1"), 1],
 	],
 	touch_positive = [
-		["{^[name2]:[race2] [boy2]:[he2]} reacts relaxingly to your affection. ", 1],
+		[tr("DATING_TOUCH_POSITIVE_1"), 1],
 	],
 	touch_negative = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks bored and reacts coldly.", 1],
+		[tr("DATING_TOUCH_NEGATIVE_1"), 1],
 	],
 	combhair_start = [
-		["You {^gently:slowly} comb {^[name2]:[race2] [boy2]}'s {^[hairlength]:}{^[haircolor]:}hair.", 1],
+		[tr("DATING_COMBHAIR_START_1"), 1],
 	],
 	combhair_positive = [
-		["{^[name2]:[race2] [boy2]} reacts relaxingly to your affection. ", 1],
+		[tr("DATING_COMBHAIR_POSITIVE_1"), 1],
 	],
 	combhair_negative = [
-		["{^[name2]:[race2] [boy2]} looks bored and reacts coldly.", 1],
+		[tr("DATING_COMBHAIR_NEGATIVE_1"), 1],
 	],
 
 
 
-	hug_start_samesize = [
-		["You give {^[name2]:[race2] [boy2]} a friendly hug.", 1],
-		["You hug {^[name2]:[race2] [boy2]} in a friendly manner.", 1],
-		["You embrace {^[name2]:[race2] [boy2]} in your arms.", 1],
-	],
-	hug_start_bigsize = [
-		["You {^hug:embrace} {^[name2]:[race2] [boy2]}'s small body.", 1],
-		["You lean down and {^hug:embrace} {^[name2]:[race2] [boy2]}.", 1],
-	],
-	hug_start_smallsize = [
-		["You make {^[name2]:[race2] [boy2]} to lean down and give [him2] a hug.", 1],
-	],
-	hug_positive_samesize = [
-		["{^[name2]:[race2] [boy2]} {^hugs:embraces} you back {^putting:resting} [his2] head on your shoulder.", 1],
-		["{^[name2]:[race2] [boy2]} accepts your {^hug:embrace} and smiles warmly.", 1],
-	],
-	hug_positive_bigsize = [
-		["{^[name2]:[race2] [boy2]} {^hugs:embraces} you back {^putting:resting} [his2] head on your chest.", 1],
-		["{^[name2]:[race2] [boy2]} feels {^overwhelmed:stunned} by your size and hugs you back. ", 0.5],
-	],
-	hug_positive_smallsize = [
-		["{^[name2]:[race2] [boy2]} is moved by your action and {^hugs:embraces} you back.", 1],
-		["{^[name2]:[race2] [boy2]} awkwardly hugs you back due to your size.", 0.5],
-	],
-	hug_negative = [
-		["{^[name2]:[race2] [boy2]} does not do anything waiting uncomfortably for you to finish.", 1],
-	],
-
-	kiss_start = [
-		["You {^slowly :}{^lean:tilt:bend} to {^[name2]:[race2] [boy2]}'s face.",1],
-	],
-	kiss_positive = [
-		["{^[name2]:[race2] [boy2]} {^tenderly:softly} kisses you back.",1],
-		["{^[name2]:[race2] [boy2]} returns your kiss{^ while closing [his2] eyes:}.",1],
-	],
-	kiss_erotic = [
-		["{^[name2]:[race2] [boy2]} {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
-	],
-	kiss_erotic_puclic = ["{^[name2]:[race2] [boy2]} {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}, ignoring {^gawking:ogling} {^people:crowd}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
-	kiss_negative = [
-		["[he2] uncomfortably {^turns:looks} away accepting your {^kiss:smooch} on the cheeck.",1],
-		["[he2] {^embarrassingly:awkwardly} moves away preventing your attempt.",1]
-	],
+	hug_start_samesize = [ [tr("DATING_HUG_START_SAMESIZE_1"), 1], [tr("DATING_HUG_START_SAMESIZE_2"), 1], ["DATING_HUG_START_SAMESIZE_3", 1], ],
+	hug_start_bigsize = [ [tr("DATING_HUG_START_BIGSIZE_1"), 1], [tr("DATING_HUG_START_BIGSIZE_2"), 1], ],
+	hug_start_smallsize = [ [tr("DATING_HUG_START_SMALLSIZE_1"), 1], ],
+	hug_positive_samesize = [ [tr("DATING_HUG_POSITIVE_SAMESIZE_1"), 1], [tr("DATING_HUG_POSITIVE_SAMESIZE_2"), 1], ],
+	hug_positive_bigsize = [ [tr("DATING_HUG_POSITIVE_BIGSIZE_1"), 1], [tr("DATING_HUG_POSITIVE_BIGSIZE_2"), 0.5], ],
+	hug_positive_smallsize = [ [tr("DATING_HUG_POSITIVE_SMALLSIZE_1"), 1], [tr("DATING_HUG_POSITIVE_SMALLSIZE_2"), 0.5], ],
+	hug_negative = [ [tr("DATING_HUG_NEGATIVE_1"), 1], ],
+	kiss_start = [ [tr("DATING_KISS_START_1"), 1], ],
+	kiss_positive = [ [tr("DATING_KISS_POSITIVE_1"), 1], [tr("DATING_KISS_POSITIVE_2"), 1], ],
+	kiss_erotic = [ ["DATING_KISS_EROTIC_1",1], ],
+	kiss_erotic_public = [tr("DATING_KISS_EROTIC_PUBLIC_1"), 1],
+	kiss_negative = [ [tr("DATING_KISS_NEGATIVE_1"), 1], [tr("DATING_KISS_NEGATIVE_2"), 1] ],
 	
-	marry_initiate = [
-		["You bow before [name2] and propose to marry [him2]",1]
-	],
-	
-	marry_same_sex = [
-		["{^[name2]:[race2] [boy2]} instantly points out that's not possible to marry someone of same sex in current customs.",1]
-		
-	],
-	agreed_to_marry_prev = [
-		["{^[name2]:[race2] [boy2]} looks at you slightly puzzled. [He2] already agreed to this before.",1],
-	],
-	agreed_to_marry = [
-		["{^[name2]:[race2] [boy2]}'s face reddens and shines up upon hearing your words.",1],
-	],
-	refused_to_marry = [
-		["{^[name2]:[race2] [boy2]:[he2]} hastily abrupts you.",1],
-	],
-	propose_initiate = [
-		["You ask {^[name2]:[race2] [boy2]} if [he2] would like to take your relationship to the next level. ",1]
-		],
-	propose_had_sex_before = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks at you sligtly puzzled, as you've already were having sex before and quickly agrees.",1]
-		],
-	propose_was_forced_before = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks at you with a sign of {^scorn:contempt}, as you've already {^made:forced} [him2] to have sex against [his2] will before. After a sigh [he2] gives you [his2] verbal agreement. ",1]
-	],
+	marry_initiate = [ [tr("DATING_MARRY_INITIATE_1"), 1] ],
+	marry_same_sex = [ [tr("DATING_MARRY_SAME_SEX_1"), 1] ],
+	agreed_to_marry_prev = [ [tr("DATING_AGREED_TO_MARRY_PREV_1"), 1] ],
+	agreed_to_marry = [ [tr("DATING_AGREED_TO_MARRY_1"), 1] ],
+	refused_to_marry = [ [tr("DATING_REFUSED_TO_MARRY_1"), 1] ],
+	propose_initiate = [ [tr("DATING_PROPOSE_INITIATE_1"), 1] ],
+	propose_had_sex_before = [ [tr("DATING_PROPOSE_HAD_SEX_BEFORE_1"), 1] ],
+	propose_was_forced_before = [ [tr("DATING_PROPOSE_WAS_FORCED_BEFORE_1"), 1] ],
+	propose_already_reached_consent = [ [tr("DATING_PROPOSE_ALREADY_REACHED_CONSENT_1"), 1], ["DATING_PROPOSE_ALREADY_REACHED_CONSENT_2", 1] ],
+	propose_reject = [ [tr("DATING_PROPOSE_REJECT_1"), 1] ],
+	propose_accept = [ [tr("DATING_PROPOSE_ACCEPT_1"), 1], [tr("DATING_PROPOSE_ACCEPT_2"), 1] ],
 
-	propose_already_reached_consent = [
-		["{^[name2]:[race2] [boy2]:[he2]} responds without second thought it if already made [his2] mind about this.",1],
-		["{^[name2]:[race2] [boy2]:[he2]} quickly agrees to your propose. It seems [he2] has already set up [his2] mind on this.",1]
-		],
+	praise_initiate = [ [tr("DATING_PRAISE_INITIATE_1"), 1], [tr("DATING_PRAISE_INITIATE_2"), 1], [tr("DATING_PRAISE_INITIATE_3"), 1] ],
+	praise_accept = [[tr("DATING_PRAISE_ACCEPT_1"), 1]],
+	praise_resist = [[tr("DATING_PRAISE_RESIST_1"), 1]],
 
-	propose_reject = [
-		["{^[name2]:[race2] [boy2]:[he2]} {^denies:rejects} your proposal{^ with a troubled face:}.",1]
-	],
-	propose_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} happily {^agrees:conrurs} to your {^request:proposal}.",1],
-		["After a moment {^[name2]:[race2] [boy2]:[he2]} {^agrees:concurs} to your {^request:proposal}.",1]
-	],
+	pathead_initiate = [[tr("DATING_PATHEAD_INITIATE_1"), 1]],
 
-	praise_initiate = [
-		["You praise {^[name2]:[race2] [boy2]:[he2]}'s efforts. ",1],
-		["You {^proclaim:express} your gratitude to {^[name2]:[race2] [boy2]:[he2]}. ",1],
-		["You praise {^[name2]:[race2] [boy2]:[he2]} for [his2] recent behavoir. ",1]
-		],
-	praise_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} listens to your praise with a joy evident on [his2] face. ",1]
-		],
-	praise_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} does not show any signs of accepting your praise.",1]
-		],
+	pathead_accept = [[tr("DATING_PATHEAD_ACCEPT_1"), 1], [tr("DATING_PATHEAD_ACCEPT_2"), 1], [tr("DATING_PATHEAD_ACCEPT_3"), 1]],
+	pathead_resist = [[tr("DATING_PATHEAD_RESIST_1"), 1], [tr("DATING_PATHEAD_RESIST_2"), 1]],
 
-	pathead_initiate = [
-		["You {^casually:lightly} {^pat:stroke} {^[name2]:[race2] [boy2]}'s head.", 1],
-	],
-
-	pathead_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} smiles back at you.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} embarrassingly {^shies:looks} away.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} takes it with joy evident on [his2] face.", 1],
-	],
-	pathead_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} gives you a disapproving {^glance:look}.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} seems to be offended by your gesture.", 1],
-	],
-
-	scold_initiate = [
-		["You scold {^[name2]:[race2] [boy2]} for [his2] recent faults. ",1]
-	],
-	scold_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} {^nods:looks down} in {^submission:acceptance}.", 1],
-	],
-	scold_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} give you an annoyed look.", 1],
-	],
-
-	rubears_initiate = [
-		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} behind [his2] [earadj]ears.", 1],
-		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} on [his2] [earadj]ears, moving down to [his2] {^[haircolor]:[hairlength]} hair.", 1],
-	],
-	rubears_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} seems {^pleased with it:to enjoy it}, as [his2] [earadj]ears {^joyfully:playfully} twitch.", 1],
-	],
-	rubears_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} {^looks:seems} {^annoyed:unpleased} by this{^.: and waits for it to over.}", 1],
-	],
-	stroketail_initiate = [
-		["You {^gently:affectionately} {^stroke:run your hand over} {^[name2]:[race2] [boy2]}'s [tailadj]tail.", 1],
-	],
-	stroketail_accept = [
-		["{^[name2]:[race2] [boy2]:[he2]} seems {^pleased with it:to enjoy it}, as [his2] [tailadj]tail {^joyfully:playfully} wags.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} {^twitches:jerks} {^in surprise:for a moment}, but then accepts your {^petting:caress:pumper}.", 1],
-	],
-	stroketail_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} {^looks:seems} {^agitated:annoyed} by this{^.: and waits until you finish.}", 1],
-	],
-	pullear_initiate = [
-		["You forcefully {^yank:stretch} {^[name2]:[race2] [boy2]}'s [earadj]ear making [him2] {^wince:let out a pleading cry}. ", 1],
-	],
-	pullear_accept = [
-		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
-	],
-	pullear_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:angry} and tries to break free.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} {^whines:cries} in protest{^:, begging for mercy}.", 1],
-	],
-	pulltail_initiate = [
-		["You forcefully {^yank:stretch} {^[name2]:[race2] [boy2]}{^'s: by [his2]} [tailadj]tail making [him2] {^wince:let out a pleading cry}. ", 1],
-	],
-	pulltail_accept = [
-		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
-	],
-	pulltail_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:angry} and tries to break free.", 1],
-		["{^[name2]:[race2] [boy2]:[he2]} {^whines:cries} in protest{^:, begging for mercy}.", 1],
-	],
-	slap_initiate = [
-		["You slap {^[name2]:[race2] [boy2]} across the face{: leaving a mark on [his2] cheek}. ", 1],
-	],
-	slap_accept = [
-		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
-	],
-	slap_resist = [
-		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:very agited}.", 1],
-	],
-
-
-	food_initiate = [
-		["You offer {^[name2]:[race2] [boy2]:[he2]} a treat of [food].",1],
-	],
-	food_resist = [
-		['{^[name2]:[race2] [boy2]:[he2]} rejects your offer demonstrating [his2] resistance.',1]
-	],
-	food_liked = [
-		["{^[name2]:[race2] [boy2]:[he2]} accepts it with enthusiasm and thanks you. ",1]
-	],
-	food_hated = [
-		["{^[name2]:[race2] [boy2]:[he2]} gives you a disdain look. ",1]
-	],
-	food_netural = [
-		["{^[name2]:[race2] [boy2]:[he2]} accepts it respectfully, but does not show much of a joy.",1]
-	],
+	scold_initiate = [[tr("DATING_SCOLD_INITIATE_1"), 1]],
+	scold_accept = [[tr("DATING_SCOLD_ACCEPT_1"), 1]],
+	scold_resist = [[tr("DATING_SCOLD_RESIST_1"), 1]],
+	rubears_initiate = [[tr("DATING_RUBEARS_INITIATE_1"), 1], [tr("DATING_RUBEARS_INITIATE_2"), 1]],
+	rubears_accept = [[tr("DATING_RUBEARS_ACCEPT_1"), 1]],
+	rubears_resist = [[tr("DATING_RUBEARS_RESIST_1"), 1]],
+	stroketail_initiate = [[tr("DATING_STROKETAIL_INITIATE_1"), 1]],
+	stroketail_accept = [[tr("DATING_STROKETAIL_ACCEPT_1"), 1], [tr("DATING_STROKETAIL_ACCEPT_2"), 1]],
+	stroketail_resist = [[tr("DATING_STROKETAIL_RESIST_1"), 1]],
+	pullear_initiate = [[tr("DATING_PULLEAR_INITIATE_1"), 1]],
+	pullear_accept = [[tr("DATING_PULLEAR_ACCEPT_1"), 1]],
+	pullear_resist = [[tr("DATING_PULLEAR_RESIST_1"), 1], [tr("DATING_PULLEAR_RESIST_2"), 1]],
+	pulltail_initiate = [[tr("DATING_PULLTAIL_INITIATE_1"), 1]],
+	pulltail_accept = [[tr("DATING_PULLTAIL_ACCEPT_1"), 1]],
+	pulltail_resist = [[tr("DATING_PULLTAIL_RESIST_1"), 1], [tr("DATING_PULLTAIL_RESIST_2"), 1]],
+	slap_initiate = [[tr("DATING_SLAP_INITIATE_1"), 1]],
+	slap_accept = [[tr("DATING_SLAP_ACCEPT_1"), 1]],
+	slap_resist = [[tr("DATING_SLAP_RESIST_1"), 1]],
+	food_initiate = [[tr("DATING_FOOD_INITIATE_1"), 1]],
+	food_resist = [[tr("DATING_FOOD_RESIST_1"), 1]],
+	food_liked = [[tr("DATING_FOOD_LIKED_1"), 1]],
+	food_hated = [[tr("DATING_FOOD_HATED_1"), 1]],
+	food_netural = [[tr("DATING_FOOD_NETURAL_1"), 1]],
 
 }
 
@@ -781,7 +652,7 @@ func flirt(person, counter):
 
 
 func intimate(person, counter):
-	var text = 'You {^cautiously:mindfully} ask [name2] about [his2] preferences in bed.'
+	var text = tr("DATING_INTIM_BED")
 
 	if mood >= 80 - master.get_stat('charm_factor') * 7:
 		var has_unknown_traits = false
@@ -794,14 +665,14 @@ func intimate(person, counter):
 		if has_unknown_traits == true:
 			var unlocking_trait = input_handler.random_from_array(unknown_trait_array)
 			person.make_trait_known(unlocking_trait)
-			text += "\n\n{color=green|[name2] opens up to you and you learn a bit about [his2] preferences. "
-			text += "\nYou have learned that [name2] possess a sex trait: " + Traitdata.sex_traits[unlocking_trait].name
+			text += tr("DATING_INTIM_BED_2")
+			text += tr("DATING_INTIM_BED_3") + Traitdata.sex_traits[unlocking_trait].name
 			text += "}"
 		else:
-			text += "\n\n{color=green|[name2] opens up to you but you don't learn anything new about [him2]. "
+			text += tr("DATING_INTIM_BED_4")
 			text += "}"
 	else:
-		text += "{color=red|You've failed to get [name2] into a mood to talk about [his2] sexual preferences}"
+		text += tr("DATING_INTIM_BED_5")
 		self.mood -= 8
 	return text
 
@@ -827,16 +698,16 @@ func touch(person, counter):
 func holdhands(person, counter):
 	var text = ''
 	if location != 'bedroom':
-		text += "You take [name2]'s hand into yours as you stroll around. "
+		text += tr("DATING_HOLDHANDS_1")
 	else:
-		text += "You take [name2]'s hand into yours and move closer. "
+		text += tr("DATING_HOLDHANDS_2")
 	if 8 - counter > 3 && self.mood >= 5:
-		text += "[he2] holds your hand firmly. "
+		text += tr("DATING_HOLDHANDS_3")
 		self.mood += 8 - counter
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		self.mood -= 2
-		text += "[he2] holds your hand, but looks reclusive. "
+		text += tr("DATING_HOLDHANDS_4")
 
 	return text
 
@@ -896,9 +767,9 @@ func kiss(person, counter):
 		text += input_handler.weightedrandom(date_lines.kiss_positive)
 
 		if person.get_stat('personality') in ['shy','kind']:
-			text += " {^[name2]:[race2] [boy2]:[he2]} blushes and looks away. "
+			text += tr("DATING_KISS_1")
 		else:
-			text += " {^[name2]:[race2] [boy2]:[he2]} giggles looking at you. "
+			text +=  tr("DATING_KISS_2")
 
 		text += "}"
 		if randf() > 0.5:
@@ -913,11 +784,11 @@ func kiss(person, counter):
 
 		match person.get_stat('personality'):
 			'serious', 'kind':
-				text += "{^[name2]:[race2] [boy2]:[he2]} smiles and looks at you with bedroom eyes."
+				text += tr("DATING_KISS_3")
 			'shy':
-				text += "{^[name2]:[race2] [boy2]:[he2]} looks slightly embarrassed, realizing what [he2] just did and looks away."
+				text +=  tr("DATING_KISS_4")
 			'bold':
-				text += "{^[name2]:[race2] [boy2]:[he2]} giggles in satisfaction{^:, grabbing your arm}. "
+				text +=  tr("DATING_KISS_5")
 
 		text += "}"
 		if randf() > 0.5:
@@ -1267,7 +1138,7 @@ func pulltail(person, counter):
 func punish_process(value):
 	var text = ''
 	if person.check_trait("Masochist") && randf() >= 0.8:
-		text += "[Masochist][name2] seems to take [his2] punishment with an uncommon enthusiasm... "
+		text += tr("DATING_PUNISH_1")
 		value.mood = -value.mood
 
 	if randf() >= 0.5:
@@ -1285,7 +1156,7 @@ func punish_process(value):
 		for i in observing_slaves:
 			array.append(i.get_short_name())
 		text += input_handler.text_form_recitation(array)
-		text += "[/color] watch over [name2]'s humiliation in awe. "
+		text += tr("DATING_PUNISH_2")
 
 
 		value.mood *= 1.2
@@ -1305,7 +1176,7 @@ func build_observing_slaves():
 
 func slap(person, counter):
 	var text = ''
-	text += "You slap [name2] across the face as punishment. [his2] cheek gets red. "
+	text += tr("DATING_SLAP_1")
 
 	var value = {mood = -3, fear = 12-counter, action = 'slap'}
 	text += punish_process(value)
@@ -1313,7 +1184,7 @@ func slap(person, counter):
 
 func flag(person, counter):
 	var text = ''
-	text += "You put [name2] on the punishment table, and after exposing [his2] rear, punish it with force. "
+	text += tr("DATING_FLAG_1")
 
 	var value = {mood = -5, fear = 16-counter, action = 'flag'}
 
@@ -1322,7 +1193,7 @@ func flag(person, counter):
 
 func whip(person, counter):
 	var text = ''
-	text += "You put [name2] on the punishment table, and after exposing [his2] rear, whip it with force. "
+	text += tr("DATING_WHIP_1")
 
 
 	var value = {mood = -5, fear = 20-counter, action = 'whip'}
@@ -1331,7 +1202,7 @@ func whip(person, counter):
 
 func horse(person, counter):
 	var text = ''
-	text += "You tie [name2] securely to the wooden horse with [his2] legs spread wide. [he2] cries with pain under [his2] own weight. "
+	text += tr("DATING_HORSE_1")
 
 
 	var value = {mood = -5, fear = 20-counter, action = 'horse'}
@@ -1341,7 +1212,7 @@ func horse(person, counter):
 
 func wax(person, counter):
 	var text = ''
-	text += "You put [name2] on the punishment table and after exposing [his2] body you drip hot wax over it making [him2] cry with pain. "
+	text += tr("DATING_WAX_1")
 
 	var value = {mood = -5, fear = 18-counter, action = 'wax'}
 
@@ -1355,7 +1226,7 @@ func train(person, counter):
 	var value2 = master.get_stat('physics_factor') * (turn/4.0)
 
 
-	text += ("You spend some time training with [name2], improving your Physics. \n"
+	text += (tr("DATING_TRAIN_1")
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	person.add_stat('physics', value)
@@ -1371,7 +1242,7 @@ func study(person, counter):
 	var value = person.get_stat('wits_factor') * (turn/4.0)
 	var value2 = master.get_stat('wits_factor') * (turn/4.0)
 
-	text += ("You spend some time studying with [name2], improving your Wits. \n"
+	text += (tr("DATING_STUDY_1")
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 
@@ -1388,7 +1259,7 @@ func charm(person, counter):
 	var value = person.get_stat('charm_factor') * (turn/4.0)
 	var value2 = master.get_stat('charm_factor') * (turn/4.0)
 
-	text += ("You spend some time practicing with [name2], improving your Charm. \n"
+	text += (tr("DATING_CHARM_1")
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 
@@ -1428,13 +1299,13 @@ func public(person, counter):
 	if public == false:
 		build_observing_slaves()
 		if observing_slaves.size() > 0:
-			text = "You bring everyone into torture room and make them watch over [name2]'s disgrace. "
+			text = tr("DATING_PUBLIC_1")
 			text += "\n\n[color=yellow]"
 			var array = []
 			for i in observing_slaves:
 				array.append(i.get_short_name())
 			text += input_handler.text_form_recitation(array)
-			text += "[/color] come over to observe [name2]'s punishment.\n"
+			text += tr("DATING_PUBLIC_2")
 			public = true
 			text += "{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_public')) + "\n"
 			for i in observing_slaves:
@@ -1443,9 +1314,9 @@ func public(person, counter):
 				text += "\n{color=yellow|" + i.get_short_name() + "}: " + temptext
 
 		else:
-			text += "\n\nYou wanted to bring everyone available to watch over [name2]'s humiliation, but nobody besides you is aroud."
+			text += tr("DATING_PUBLIC_3")
 	else:
-		text = "You order everyone to get back to their business leaving you and [name2] alone. "
+		text = tr("DATING_PUBLIC_4")
 		public = false
 		observing_slaves.clear()
 	return text
@@ -1578,11 +1449,11 @@ func item_selected(item):
 
 func alcohol(person):
 	var text = ''
-	text += "You present [name2] with a bottle of whiskey. "
+	text += tr("DATING_ALCO_1")
 	if self.mood < 15 || !person.has_status('basic_servitude'):
-		text += 'However, [he2] refuses to drink in your company. '
+		text += tr("DATING_ALCO_2")
 	else:
-		text += "[he2] accepts your invitation and you slowly consume it, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
+		text += tr("DATING_ALCO_3")
 		self.mood += 15
 
 		drunkness += 3
@@ -1594,11 +1465,11 @@ func alcohol(person):
 
 func beer(person):
 	var text = ''
-	text += "You present [name2] with a serving of beer. "
+	text += tr("DATING_ALCO_1")
 	if self.mood < 5:
-		text += 'However, [he2] refuses to drink in your company. '
+		text += tr("DATING_ALCO_2")
 	else:
-		text += "[he2] accepts your invitation and you casually drink together, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
+		text += tr("DATING_ALCO_3")
 		self.mood += 10
 
 		drunkness += 1
@@ -1614,7 +1485,7 @@ func drunkness():
 	var capacity = variables.slave_heights.find(person.get_stat('height'))
 	if drunkness > capacity + 3:
 		endencounter()
-		$end/RichTextLabel.bbcode_text += decoder('\n\n[color=yellow][name2] has passed out from alcohol overdose. [/color]')
+		$end/RichTextLabel.bbcode_text += decoder(tr("DATING_ALCO_OVERDOSE_1"))
 
 func strChange(value):
 	if value > 0:
@@ -1645,11 +1516,11 @@ func calculateresults():
 #		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
 		loyalty = 6 + master.get_stat('charm_factor') * 2 +  person.get_stat('tame_factor') * 2
 		consent = master.get_stat("sexuals_factor")*4
-		text += ("\n\n{color=green|Positive Mood}: "
-		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
-		+ "\nConsent: +" + str(consent) + " ([Master]'s Sex Factor: " + str(master.get_stat("sexuals_factor"))+")"
-		+ "\nAuthority: +" + str(authority)
-		+ "\n\nSatisfied by the time together, you and [name] grow closer."
+		text += (tr("DATING_POSITIVE_MODE_1")
+		+ tr("DATING_LOYALTY_1") + str(loyalty) + tr("DATING_CHARMF_BONUS_1") + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
+		+ tr("DATING_CONSENT_1") + str(consent) + tr("DATING_SEXF_BONUS_1") + str(master.get_stat("sexuals_factor"))+")"
+		+ tr("DATING_AUTHORITY_BONUS_1") + str(authority)
+		+ tr("DATING_AUTHORITY_BONUS_2")
 		)
 
 		person.add_stat("loyalty", loyalty)
@@ -1657,17 +1528,17 @@ func calculateresults():
 
 	else:
 		loyalty = 6 + master.get_stat('charm_factor') + person.get_stat('timid_factor') 
-		text += ("\n\n{color=red|Fearful Mood}: "
-		+ "\nObedience: +" + str(obedience)
-		+ "\nAuthority: +" + str(authority) + " ([Master]'s Physics Factor Bonus: +" + str(master.get_stat("physics_factor")*4)+")"
-		+ "\n\nWhile this was an unpleasant expirience for [name], it will certainly teach [him] to be afraid of your anger."
+		text += (tr("DATING_FEARFUL_1")
+		+ tr("DATING_OBEDIENCE_1") + str(obedience)
+		+ tr("DATING_AUTHORITY_1") + str(authority) + tr("DATING_PHYSF_BONUS_1") + str(master.get_stat("physics_factor")*4)+")"
+		+ tr("DATING_PHYSF_BONUS_2")
 		)
 		person.add_stat("loyalty", loyalty)
 	
 	person.add_stat("obedience", obedience)
 
 	if person.get_stat('consent') >= 30 or (person.has_status('sex_basic') and  person.get_stat('consent')*2 > 110 - 75):
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n\n{color=green|It seems [name] does not mind to continue this encounter...}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + tr("DATING_SEX_OFFER_1")
 		sex_offer = true
 
 	$end/sexbutton.visible = sex_offer && !person.has_status("no_sex")
@@ -1717,24 +1588,24 @@ func _on_confirmsex_pressed():
 var actionsdict = {
 	chat = {
 		group = 'Affection',
-		name = 'Chat',
+		name = tr("DATING_CHAT_1"),
 		reqs = [],
 		location = [],#empty = any
-		descript = 'Have a friendly chat. Will boost Mood slightly.',
+		descript = tr("DATING_CHAT_DESC_1"),
 		effect = 'chat',
 	},
 	flirt = {
 		group = 'Affection',
-		name = 'Flirt',
-		descript = 'Flirt with [name]. Will slightly improve Consent if Mood is high. Slightly increases Consent if mood is above low.',
+		name = tr("DATING_FLIRT_1"),
+		descript = tr("DATING_FLIRT_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'flirt',
 	},
 	intimate = {
 		group = 'Affection',
-		name = 'Intimate Talk',
-		descript = "Have an intimate talk in attempt to learn more about [name]'s preferences. Can only be used once.",
+		name = tr("DATING_INTIMATE_1"),
+		descript = tr("DATING_INTIMATE_DESC_1"),
 		reqs = [],
 		onetime = true,
 		location = [],
@@ -1742,24 +1613,24 @@ var actionsdict = {
 	},
 	touch = {
 		group = 'Affection',
-		name = 'Touch',
+		name = tr("DATING_TOUCH_1"),
 		reqs = [],
-		descript = 'Light physical contact',
+		descript = tr("DATING_TOUCH_DESC_1"),
 		location = [],
 		effect = 'touch',
 	},
 	holdhands = {
 		group = 'Affection',
-		name = 'Hold hands',
-		descript = "Take [name]'s hand into yours",
+		name = tr("DATING_HOLDHANDS_5"),
+		descript = tr("DATING_HOLDHANDS_DESC_5"),
 		reqs = [],
 		location = ['garden','town','bedroom'],
 		effect = 'holdhands',
 	},
 	praise = {
 		group = 'Affection',
-		name = 'Praise',
-		descript = "Praise [name] for [his] previous success to encourage further good behavior. Can only be used once.",
+		name = tr("DATING_PRAISE_1"),
+		descript = tr("DATING_PRAISE_DESC_1"),
 		reqs = [],
 		location = [],
 		onetime = true,
@@ -1767,32 +1638,32 @@ var actionsdict = {
 	},
 	pathead = {
 		group = 'Affection',
-		name = 'Pat head',
-		descript = "Praise [name] and pat [his] head for [his] previous success to encourage further good behavior",
+		name = tr("DATING_PATHEAD_1"),
+		descript = tr("DATING_PATHEAD_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'pathead',
 	},
 	combhair = {
 		group = 'Affection',
-		name = 'Comb Hair',
-		descript = "Comb [name]'s hair",
+		name = tr("DATING_COMBHAIR_1"),
+		descript = tr("DATING_COMBHAIR_DESC_1"),
 		reqs = [{code = 'hair_length', value = ['bald'], check = false}],
 		location = [],
 		effect = 'combhair',
 	},
 	hug = {
 		group = 'Affection',
-		name = 'Hug',
-		descript = "Prolonged close physical contact",
+		name = tr("DATING_HUG_1"),
+		descript = tr("DATING_HUG_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'hug',
 	},
 	kiss = {
 		group = 'Affection',
-		name = 'Kiss',
-		descript = "Attempt to kiss [name]. Can only be used once.",
+		name = tr("DATING_KISS_6"),
+		descript = tr("DATING_KISS_DESC_6"),
 		onetime = true,
 		reqs = [],
 		location = [],
@@ -1800,24 +1671,24 @@ var actionsdict = {
 	},
 	rubears = {
 		group = 'Affection',
-		name = 'Rub Ears',
-		descript = "Gently rub [name]'s long ears",
+		name = tr("DATING_RUBEARS_1"),
+		descript = tr("DATING_RUBEARS_DESC_1"),
 		reqs = [{code = 'long_ears', check = true}],
 		location = [],
 		effect = 'rubears',
 	},
 	stroketail = {
 		group = 'Affection',
-		name = 'Stroke Tail',
-		descript = "Gently stroke [name]'s tail",
+		name = tr("DATING_STROKETAIL_1"),
+		descript = tr("DATING_STROKETAIL_DESC_1"),
 		reqs = [{code = 'long_tail', check = true}],
 		location = [],
 		effect = 'stroketail',
 	},
 	ask_to_marry = {
 		group = 'Affection',
-		name = 'Ask to marry',
-		descript = "Make a proposal for [name], to officially marry [him].",
+		name = tr("DATING_ASK_TO_MARRY_1"),
+		descript = tr("DATING_ASK_TO_MARRY_DESC_1"),
 		reqs = [{code = 'master_is_marrried', value = false}],
 		onetime = true,
 		location = [],
@@ -1844,8 +1715,8 @@ var actionsdict = {
 #	},
 	propose = {
 		group = 'Affection',
-		name = 'Propose',
-		descript = "Ask [name] if [he] would consent to become more intimate with you. Boosts Consent greatly when successful. ",
+		name = tr("DATING_PROPOSE_1"),
+		descript = tr("DATING_PROPOSE_DESC_1"),
 		reqs = [{code = 'stat', stat = 'consent', operant = 'lt', value = 25}, {code = 'stat', stat = 'was_proposed', operant = 'eq', value = false}],
 		location = ['bedroom'],
 		effect = 'propose',
@@ -1853,72 +1724,72 @@ var actionsdict = {
 
 	scold = {
 		group = 'Discipline',
-		name = 'Scold',
-		descript = "Scold [name] for [his] previous mistakes to re-enforce obedience",
+		name = tr("DATING_SCOLD"),
+		descript = tr("DATING_SCOLD_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'scold',
 	},
 	slap = {
 		group = 'Discipline',
-		name = 'Slap',
-		descript = "Slap [name] across the face to reprimand [him].",
+		name = tr("DATING_SLAP"),
+		descript = tr("DATING_SLAP_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'slap',
 	},
 	pullear = {
 		group = 'Discipline',
-		name = 'Pull By Ear',
-		descript = "Forcefully pull [name] by ear as a mean of discipline. ",
+		name = tr("DATING_PULLEAR"),
+		descript = tr("DATING_PULLEAR_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'pullear',
 	},
 	pulltail = {
 		group = 'Discipline',
-		name = 'Pull Tail',
-		descript = "Forcefully yank [name]'s tail to teach [him] [his] place.",
+		name = tr("DATING_PULLTAIL"),
+		descript = tr("DATING_PULLTAIL_DESC_1"),
 		reqs = [{code = 'bodypart', part = 'tail', operant = 'neq', value = ''}],
 		location = [],
 		effect = 'pulltail',
 	},
 	flag = {
 		group = 'Discipline',
-		name = 'Flagellate',
-		descript = "Spank [name] as punishment",
+		name = tr("DATING_FLAG"),
+		descript = tr("DATING_FLAG_DESC_1"),
 		reqs = [],
 		location = ['dungeon'],
 		effect = 'flag',
 	},
 	whip = {
 		group = 'Discipline',
-		name = 'Whipping',
-		descript = "Whip [name] as punishment",
+		name = tr("DATING_WHIP"),
+		descript = tr("DATING_WHIP_DESC_1"),
 		reqs = [],
 		location = ['dungeon'],
 		effect = 'whip',
 	},
 	wax = {
 		group = 'Discipline',
-		name = 'Hot Wax',
-		descript = "Torture with hot wax",
+		name = tr("DATING_WAX"),
+		descript = tr("DATING_WAX_DESC_1"),
 		reqs = [],
 		location = ['dungeon'],
 		effect = 'wax',
 	},
 	horse = {
 		group = 'Discipline',
-		name = 'Wooden Horse',
-		descript = "Torture with a wooden horse",
+		name = tr("DATING_HORSE"),
+		descript = tr("DATING_HORSE_DESC_1"),
 		reqs = [],
 		location = ['dungeon'],
 		effect = 'horse',
 	},
 	public = {
 		group = 'Discipline',
-		name = 'Bring Public',
-		descript = "Invite other slaves to observe [name]'s punishments. It will slightly improve your autority among them and increase punishment effect. Use again to make them leave. Does not cost Time.  ",
+		name = tr("DATING_PUBLIC"),
+		descript = tr("DATING_PUBLIC_DESC_1"),
 		reqs = [],
 		date_reqs = [],
 		location = ['dungeon'],
@@ -1952,8 +1823,8 @@ var actionsdict = {
 
 	gift = {
 		group = "Items",
-		name = "Make Gift",
-		descript = "Make a small decorative gift for [name]. \n[color=yellow]Requires 10 gold.[/color]",
+		name = tr("DATING_GIFT"),
+		descript = tr("DATING_GIFT_DESC_1"),
 		reqs = [],
 		#reqs = "!location == 'dungeon'",
 		disablereqs = 'globals.resources.gold >= 10',
@@ -1963,8 +1834,8 @@ var actionsdict = {
 	},
 	sweets = {
 		group = "Items",
-		name = "Buy flowers",
-		descript = "Purchase flowers from street vendor for [name]\n[color=yellow]Requires 5 gold.[/color]",
+		name = tr("DATING_SWEETS"),
+		descript = tr("DATING_SWEETS_DESC_1"),
 		reqs = [],
 		#reqs = "location == 'town'",
 		disablereqs = 'globals.resources.gold >= 5',
@@ -1974,8 +1845,8 @@ var actionsdict = {
 	},
 	tea = {
 		group = "Items",
-		name = "Drink Tea",
-		descript = "Serve tea for you and [name]. [color=yellow]Requires 1 supply.[/color]",
+		name = tr("DATING_TEA"),
+		descript = tr("DATING_TEA_DESC_1"),
 		reqs = [],
 		location = ['livingroom','bedroom'],
 		#reqs = 'location in ["livingroom","bedroom"]',
@@ -1984,8 +1855,8 @@ var actionsdict = {
 	},
 	wine = {
 		group = "Items",
-		name = "Drink Wine",
-		descript = "Serve wine for you and [name] (Alcohol eases intimacy request but may cause a knockout). [color=yellow]Requires 2 supplies.[/color]",
+		name = tr("DATING_WINE"),
+		descript = tr("DATING_WINE_DESC_1"),
 		reqs = [],
 		location = ['livingroom','bedroom','garden','town'],
 		#reqs = 'location in ["livingroom","bedroom","garden","town"]',
@@ -1995,32 +1866,32 @@ var actionsdict = {
 
 	train = {
 		group = 'Training',
-		name = 'Train',
+		name = tr("DATING_TRAIN"),
 		reqs = [],
 		location = [],
-		descript = 'Do a paired training. Improves Physics for both based on Physics Factor and Time left. Ends encounter.',
+		descript = tr("DATING_TRAIN_DESC_1"),
 		effect = 'train',
 	},
 	study = {
 		group = 'Training',
-		name = 'Study',
+		name = tr("DATING_STUDY"),
 		reqs = [],
 		location = [],
-		descript = 'Do a paired study. Improves Wits for both based on Wits Factor and Time left. Ends encounter.',
+		descript = tr("DATING_STUDY_DESC_1"),
 		effect = 'study',
 	},
 	practice_charm = {
 		group = 'Training',
-		name = 'Practice Charm',
+		name = tr("DATING_PRACTICE_CHARM"),
 		reqs = [],
 		location = [],
-		descript = 'Practice Charm with [name]. Improves Charm for both based on Charm Factor and Time left. Ends encounter.',
+		descript = tr("DATING_PRACTICE_CHARM_DESC_1"),
 		effect = 'charm',
 	},
 	useitem = {
 		group = "Affection",
-		name = "Use Item",
-		descript = "Select an item from list to use with [name].",
+		name = tr("DATING_USE_ITEM"),
+		descript = tr("DATING_USE_ITEM_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'useitem',
@@ -2028,8 +1899,8 @@ var actionsdict = {
 
 	food = {
 		group = "Affection",
-		name = "Treat with food",
-		descript = "Treat [name] with food.",
+		name = tr("DATING_FOOD"),
+		descript = tr("DATING_FOOD_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'food',
@@ -2038,8 +1909,8 @@ var actionsdict = {
 
 	stop = {
 		group = "any",
-		name = "Stop",
-		descript = "Stop interaction and let [name] return to work.",
+		name = tr("DATING_STOP"),
+		descript = tr("DATING_STOP_DESC_1"),
 		reqs = [],
 		location = [],
 		effect = 'stop',

@@ -53,18 +53,18 @@ margin_left = 23.0
 margin_top = 9.0
 margin_right = 340.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.941176, 0.882353, 0.505882, 1 )
-text = "Savename"
+custom_fonts/font = ExtResource( 10 )
+text = "LSPSAVENAME"
 
 [node name="Date" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 340.0
 margin_top = 8.0
 margin_right = 522.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Savename"
+custom_fonts/font = ExtResource( 10 )
+text = "LSPSAVENAME"
 align = 2
 
 [node name="Delete" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
@@ -83,8 +83,8 @@ margin_left = 52.0
 margin_top = 700.0
 margin_right = 585.0
 margin_bottom = 741.057
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
 placeholder_text = "LSPSAVENAME"
 caret_blink = true
 __meta__ = {
@@ -105,8 +105,8 @@ margin_left = 17.0
 margin_top = 5.0
 margin_right = 252.0
 margin_bottom = 145.0
-custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -117,8 +117,8 @@ margin_left = 252.0
 margin_top = 5.0
 margin_right = 473.0
 margin_bottom = 145.0
-custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -181,8 +181,8 @@ margin_left = 23.0
 margin_top = 9.0
 margin_right = 340.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.941176, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "Savename"
 
 [node name="Date" type="Label" parent="UpdatePanel/VBoxContainer/Button"]
@@ -190,8 +190,8 @@ margin_left = 340.0
 margin_top = 8.0
 margin_right = 522.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "Savename"
 align = 2
 
@@ -209,12 +209,12 @@ margin_left = 49.0
 margin_top = 649.0
 margin_right = 342.0
 margin_bottom = 695.251
-hint_tooltip = "When this mode is on, game will recreate the world and reset all game progress on load, but still will keep all your characters, items and inventory. Use this mode to load outdated saves."
-custom_fonts/font = ExtResource( 10 )
+hint_tooltip = "LSIMPORTTOOLTIP"
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
 shortcut_in_tooltip = false
 text = "LSPIMPORTMODE"
 

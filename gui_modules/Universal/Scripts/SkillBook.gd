@@ -10,12 +10,12 @@ func _ready():
 	for ch in $Categories.get_children():
 		ch.connect("pressed", self, "category_pressed", [ch])
 	
-	globals.connecttexttooltip($Categories/all, "All")
-	globals.connecttexttooltip($Categories/skill, "Combat")
-	globals.connecttexttooltip($Categories/spell, "Spell")
-	globals.connecttexttooltip($Categories/support, "Support")
-	globals.connecttexttooltip($Categories/aoe, "Area Of Effect")
-	globals.connecttexttooltip($Categories/heal, "Heal")
+	globals.connecttexttooltip($Categories/all, tr("SKILLS_CAT_ALL_DESC"))
+	globals.connecttexttooltip($Categories/skill, tr("SKILLS_LABEL"))
+	globals.connecttexttooltip($Categories/spell, tr("SKILLS_CAT_SPELLS_DESC"))
+	globals.connecttexttooltip($Categories/support, tr("SKILLS_CAT_SUPPORT_DESC"))
+	globals.connecttexttooltip($Categories/aoe, tr("SKILLS_CAT_AOE_DESC"))
+	globals.connecttexttooltip($Categories/heal, tr("SKILLS_CAT_HEAL_DESC"))
 	$ScrollContainer.target_node = self
 
 

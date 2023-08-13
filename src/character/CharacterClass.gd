@@ -1219,7 +1219,7 @@ func show_race_description():
 		elif race.find("Halfkin") >= 0:
 			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
 	text += temprace.descript
-	text += "\n\nRace bonuses: "
+	text += "\n\n" + tr("RACE_BONUSES") + ": "
 	for i in temprace.race_bonus:
 		if statdata.statdata[i].percent == true:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
@@ -1227,7 +1227,7 @@ func show_race_description():
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	if temprace.has("combat_skills"):
-		text += "\nCombat Abilitites: "
+		text += "\n" + tr("COMBAT_ABILS_LABEL") + ": "
 		for i in temprace.combat_skills:
 			text += Skilldata.Skilllist[i].name + "; "
 		text = text.substr(0, text.length() - 2) + "."
@@ -1575,22 +1575,22 @@ func check_skill_availability(s_code, target):
 	var descript = ''
 
 	if !check_cost(template.cost):
-		descript = get_short_name() + ": Can't pay costs'"
+		descript = get_short_name() + ": " + tr("CANT_PAY_COSTS_LABEL") + "'"
 		check = false
 	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= template.charges:
-		descript = get_short_name() + ": " + template.name + " - No charges left."
+		descript = get_short_name() + ": " + template.name + " - " + tr("NO_CHARGES_LEFT_LABEL") + "."
 		check = false
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:
-		descript = get_short_name() + ": Can't use this skill today anymore."
+		descript = get_short_name() + ": " + tr("CANT_USE_TODAY_LABEL") + "."
 		check = false
 
 	if !checkreqs(template.reqs):
 		check = false
-		descript = get_short_name() + ": Requirements aren't met."
+		descript = get_short_name() + ": " + tr("REQS_NOT_MET_LABEL") + "."
 
 	if !target.checkreqs(template.targetreqs):
 		check = false
-		descript = target.get_short_name() + ": Target requirements aren't met."
+		descript = target.get_short_name() + ": " + tr("TARGET_REQS_NOT_MET_LABEL") + "."
 
 	return {check = check, descript = descript}
 

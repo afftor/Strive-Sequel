@@ -21,7 +21,7 @@ func _ready():
 		var newvalue = $BaseStatsPanel/resists/Value.duplicate()
 		$BaseStatsPanel/resists.add_child(newlabel)
 		$BaseStatsPanel/resists.add_child(newvalue)
-		newlabel.text = tr(i).capitalize() + ":"
+		newlabel.text = tr(i.to_upper() + "RESIST") + ":"
 		newvalue.name = i
 		newlabel.show()
 		newvalue.show()
@@ -94,7 +94,7 @@ func update():
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 		
 		if person != ResourceScripts.game_party.get_master():
-			$Panel/character_class.text = statdata.slave_class_names[person.get_stat('slave_class')]
+			$Panel/character_class.text = tr(statdata.slave_class_names[person.get_stat('slave_class')].to_upper())
 			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
 		else:
 			$Panel/character_class.text = ""
