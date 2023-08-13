@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -72,6 +72,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_default.png" type="Texture" id=70]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_hover.png" type="Texture" id=71]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_active.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_add_upgrades.png" type="Texture" id=73]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -155,6 +156,7 @@ text = "Visuals"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 132.0
 margin_top = 219.0
 margin_right = 565.0
@@ -986,6 +988,45 @@ margin_bottom = 116.0
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
 text = "Select 1 Liked and at least 1 Hated food types."
+
+[node name="UpgradesPanel" type="TextureRect" parent="."]
+margin_left = 129.588
+margin_top = 137.179
+margin_right = 564.588
+margin_bottom = 881.179
+texture = ExtResource( 73 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesPanel"]
+margin_left = 28.0
+margin_top = 103.0
+margin_right = 407.0
+margin_bottom = 702.0
+
+[node name="Button" type="Label" parent="UpgradesPanel/VBoxContainer"]
+visible = false
+margin_right = 379.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 2 )
+text = "updrade"
+
+[node name="TextureRect" type="TextureRect" parent="UpgradesPanel"]
+margin_left = 3.0
+margin_top = 60.0
+margin_right = 432.0
+margin_bottom = 66.0
+texture = ExtResource( 59 )
+expand = true
+
+[node name="Label" type="Label" parent="UpgradesPanel"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 423.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Additional upgrades"
+align = 1
+valign = 1
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_left = 830.0

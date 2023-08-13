@@ -36,6 +36,7 @@ var template = {
 	lusttick = variables.basic_lust_per_tick,
 	hpmax = 100,
 	mpmax = 50,
+	upgrade_points_total = 0, #does not matter
 #	exp_mod = 1,
 	hp_reg_mod = 1.0,
 	mp_reg_mod = 1.0,
