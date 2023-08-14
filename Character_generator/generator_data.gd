@@ -4528,16 +4528,42 @@ var transforms = {
 	},
 	
 	armor_color_base = {
-		default = [
-			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('98b8c6')},
-			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('a88ac6')},
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	
 	armor_color_lower = {
-		default = [
-			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('98b8c6')},
-			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('a88ac6')},
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	
