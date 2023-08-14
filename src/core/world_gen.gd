@@ -199,10 +199,10 @@ func make_slave_for_guild_old(guild):#obsolete
 	newslave.is_known_to_player = true
 
 
-func make_slave_for_guild(slavetype, rare_races_upgarde = 0):
+func make_slave_for_guild(slavetype, rare_races_upgrade = 0):
 	var newslave = ResourceScripts.scriptdict.class_slave.new("guild_slave")
 	var race_arr = slavetype.slave_races
-	match int(rare_races_upgarde):
+	match int(rare_races_upgrade):
 		1:
 			race_arr = [['common', 10], ['uncommon', 2]]
 		2:

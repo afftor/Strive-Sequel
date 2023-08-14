@@ -1137,7 +1137,7 @@ func hide_all_dialogues():
 func build_upgrades(): #check confirmation at the same time
 	var res = true
 	input_handler.ClearContainer($UpgradesPanel/VBoxContainer, ['Button'])
-	for upg in person.statlist.body_upgardes:
+	for upg in person.statlist.body_upgrades:
 		if !Traitdata.body_upgrades.has(upg):
 			continue
 		var upgdata = Traitdata.body_upgrades[upg]

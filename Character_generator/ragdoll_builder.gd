@@ -152,6 +152,7 @@ func rebuild_stat(statname):
 	for stat in stats:
 		if stat == 'full':
 			rebuild(character)
+			rebuild_cloth(null)
 			return
 		if !GeneratorData.transforms.has(stat):
 			continue
