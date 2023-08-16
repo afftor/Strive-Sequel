@@ -232,16 +232,7 @@ func FinishCombat(victory = true):
 				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
-
-	if victory:
-		CombatAnimations.force_end()
-		ResourceScripts.core_animations.BlackScreenTransition(0.5)
-		yield(get_tree().create_timer(0.5), 'timeout')
-		hide()
-		input_handler.finish_combat()
-	else:
-		hide()
-		input_handler.combat_defeat()
+	
 	for i in range(battlefield.size()):
 		if battlefield[i] != null:
 			var tchar = characters_pool.get_char_by_id(battlefield[i])
@@ -253,6 +244,16 @@ func FinishCombat(victory = true):
 		#mb to change this part when dealing with captured enemies
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.is_active = false
+	if victory:
+		CombatAnimations.force_end()
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+		hide()
+		input_handler.finish_combat()
+	else:
+		hide()
+		input_handler.combat_defeat()
+	
 	input_handler.combat_node = null
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null

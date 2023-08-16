@@ -742,7 +742,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_up.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_up.png"},
 		],
-		staright = [
+		straight = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
@@ -925,7 +925,19 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
 		],
-		horse = [
+		feline = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+		],
+		canine = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+		],
+		equine = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_horse_up.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_horse.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_horse_up.png"},
