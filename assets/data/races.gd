@@ -670,7 +670,12 @@ var racelist = {
 			lips = ['style1', 'style2', 'style3', 'style4', 'style5'],
 			tits_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'], #add variants
 			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3'],
+			body_color_wings = [], 
+			body_color_tail = [], 
+			body_color_horns = [], 
+			body_color_animal = [], 
 			},
+			
 		global_weight = 100,
 	},
 	Elf = {

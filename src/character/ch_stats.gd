@@ -1448,15 +1448,18 @@ func get_racial_features():
 	
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
+		if races.racelist.Human.bodyparts[i].empty():
+			continue
 		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
 			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
-	for i in race_template.bodyparts:
-		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
-			statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
-		else:
-			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
+	if statlist.race != 'Human':
+		for i in race_template.bodyparts:
+			if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
+				statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
+			else:
+				statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number
