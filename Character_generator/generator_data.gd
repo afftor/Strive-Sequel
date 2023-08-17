@@ -2026,7 +2026,7 @@ var transforms = {
 	},
 	
 	hair_assist = { #pls, do check, remove and fix pathes with all that duplicates in dir
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 		],
@@ -2099,7 +2099,7 @@ var transforms = {
 	},
 	
 	hair_back = { #pls, do check, remove and fix pathes with all that duplicates in dir and inbetween them
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', attr = 'visible', value = false},
@@ -3522,6 +3522,37 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', attr = 'visible', value = true},
 			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
 			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+		],
+	},
+	
+	hair_fringe_lenght = {
+		bald = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+		],
+		default = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+		],
+		long = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+		],
+		middle = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+		],
+		short = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
 		],
 	},
 	

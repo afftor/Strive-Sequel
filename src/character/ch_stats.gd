@@ -410,43 +410,43 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'care'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_base = 'dopple'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_base = 'straight'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'very_long'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
@@ -455,44 +455,44 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 			'pigtails':
 				res.hair_base = 'lamb'
 				res.hair_assist = 'pigtails'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -521,7 +521,7 @@ func get_hairs_data():
 			'braid':
 				res.hair_base = 'back'
 				res.hair_assist = 'braid'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -549,7 +549,7 @@ func get_hairs_data():
 						res.hair_back_lenght = 'short'
 			'twinbraids':
 				res.hair_base = 'braids'
-				res.hair_assist = ''
+				res.hair_assist = 'no'
 				res.hair_back = 'twin_braids'
 				match statlist.hair_length:
 					'ear':
@@ -579,7 +579,7 @@ func get_hairs_data():
 			'bun':
 				res.hair_base = 'back'
 				res.hair_assist = 'bun'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				res.hair_base_lenght = 'short'
 				res.hair_assist_lenght = 'short'
 				res.hair_back_lenght = 'short'
@@ -1448,15 +1448,18 @@ func get_racial_features():
 	
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
+		if races.racelist.Human.bodyparts[i].empty():
+			continue
 		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
 			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
-	for i in race_template.bodyparts:
-		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
-			statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
-		else:
-			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
+	if statlist.race != 'Human':
+		for i in race_template.bodyparts:
+			if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
+				statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
+			else:
+				statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number

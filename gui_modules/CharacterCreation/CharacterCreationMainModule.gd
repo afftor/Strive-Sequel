@@ -24,10 +24,10 @@ var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "b
 var free_stats = [
 	'personality',
 	'body_color_skin', 
-	'body_color_wings', 
-	'body_color_tail', 
-	'body_color_horns', 
-	'body_color_animal', 
+#	'body_color_wings', #don't forget to add proper data in corresponding races data - i only add empty lines for humans!!! 
+#	'body_color_tail', 
+#	'body_color_horns', 
+#	'body_color_animal', 
 	'hair_base', 
 	'hair_fringe', 
 	'hair_assist', 
@@ -38,10 +38,11 @@ var free_stats = [
 #	'hair_assist_color_2',
 #	'hair_base_color_1',
 #	'hair_base_color_2',
-	'hair_base_lenght', 
-	'hair_fringe_lenght', 
-	'hair_back_lenght' , 
-	'hair_assist_lenght' , ] #for testing, remove those after filling racedata
+#	'hair_base_lenght', 
+#	'hair_fringe_lenght', 
+#	'hair_back_lenght' , 
+#	'hair_assist_lenght' , 
+	] #for testing, remove those after filling racedata
 
 
 var freemode_fixed_stats = [
@@ -279,6 +280,8 @@ func build_possible_val_for_stat(stat):
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
 			for val in GeneratorData.transforms[stat]:
+				if val == "":
+					continue #can't set default value
 				possible_vals[stat].push_back(val)
 		else:
 			print ('warninig - possible obsolete stat %s' % stat)
@@ -429,6 +432,11 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (mode != 'freemode')
 		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
+	if stat == 'sex' and mode != 'freemode':
+		var id = possible_vals.sex.find(val)
+		node.get_node('button/LArr').visible = (id > 0)
+		node.get_node('button/RArr').visible = (id < possible_vals.sex.size() - 1)
+	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
 		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
@@ -469,9 +477,9 @@ func change_value_node(stat, value): #for scrollable nodes
 	
 	id += value
 	if id < 0:
-		id = 0
-	if id >= possible_vals[stat].size():
 		id = possible_vals[stat].size() - 1
+	if id >= possible_vals[stat].size():
+		id = 0
 	var newval = possible_vals[stat][id]
 	if stat != 'slave_class':
 		person.set_stat(stat, newval)
