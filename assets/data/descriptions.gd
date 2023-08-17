@@ -401,6 +401,13 @@ var bodypartsdata = {
 		twinbraids = {code = 'twinbraids', name = '', chardescript = '', bodychanges = []},
 		bun = {code = 'bun', name = '', chardescript = '', bodychanges = []},
 	},
+	#incomplete
+	hair_back = {
+		"": {code = "", name = 'no', chardescript = '', bodychanges = []}
+	}, 
+	hair_assist = {
+		"": {code = "", name = 'no', chardescript = '', bodychanges = []}
+	}, 
 	eye_color = {
 		default = {code = 'default', name = '', chardescript = '', bodychanges = []},
 	},

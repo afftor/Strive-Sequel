@@ -280,6 +280,8 @@ func build_possible_val_for_stat(stat):
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
 			for val in GeneratorData.transforms[stat]:
+				if val == "":
+					continue #can't set default value
 				possible_vals[stat].push_back(val)
 		else:
 			print ('warninig - possible obsolete stat %s' % stat)

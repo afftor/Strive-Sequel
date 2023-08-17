@@ -410,43 +410,43 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'care'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_base = 'dopple'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_base = 'straight'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'very_long'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
@@ -455,44 +455,44 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 			'pigtails':
 				res.hair_base = 'lamb'
 				res.hair_assist = 'pigtails'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -521,7 +521,7 @@ func get_hairs_data():
 			'braid':
 				res.hair_base = 'back'
 				res.hair_assist = 'braid'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -549,7 +549,7 @@ func get_hairs_data():
 						res.hair_back_lenght = 'short'
 			'twinbraids':
 				res.hair_base = 'braids'
-				res.hair_assist = ''
+				res.hair_assist = 'no'
 				res.hair_back = 'twin_braids'
 				match statlist.hair_length:
 					'ear':
@@ -579,7 +579,7 @@ func get_hairs_data():
 			'bun':
 				res.hair_base = 'back'
 				res.hair_assist = 'bun'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				res.hair_base_lenght = 'short'
 				res.hair_assist_lenght = 'short'
 				res.hair_back_lenght = 'short'

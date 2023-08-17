@@ -2026,7 +2026,7 @@ var transforms = {
 	},
 	
 	hair_assist = { #pls, do check, remove and fix pathes with all that duplicates in dir
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 		],
@@ -2099,7 +2099,7 @@ var transforms = {
 	},
 	
 	hair_back = { #pls, do check, remove and fix pathes with all that duplicates in dir and inbetween them
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', attr = 'visible', value = false},
