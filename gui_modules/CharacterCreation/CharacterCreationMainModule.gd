@@ -429,6 +429,11 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (mode != 'freemode')
 		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
+	if stat == 'sex' and mode != 'freemode':
+		var id = possible_vals.sex.find(val)
+		node.get_node('button/LArr').visible = (id > 0)
+		node.get_node('button/RArr').visible = (id < possible_vals.sex.size() - 1)
+	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
 		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
@@ -469,9 +474,9 @@ func change_value_node(stat, value): #for scrollable nodes
 	
 	id += value
 	if id < 0:
-		id = 0
-	if id >= possible_vals[stat].size():
 		id = possible_vals[stat].size() - 1
+	if id >= possible_vals[stat].size():
+		id = 0
 	var newval = possible_vals[stat][id]
 	if stat != 'slave_class':
 		person.set_stat(stat, newval)
