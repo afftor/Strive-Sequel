@@ -3525,6 +3525,37 @@ var transforms = {
 		],
 	},
 	
+	hair_fringe_lenght = {
+		bald = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+		],
+		default = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+		],
+		long = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+		],
+		middle = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+		],
+		short = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+		],
+	},
+	
 	hair_back_lenght = {
 		default = [
 			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},

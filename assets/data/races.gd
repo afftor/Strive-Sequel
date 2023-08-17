@@ -674,6 +674,10 @@ var racelist = {
 			body_color_tail = [], 
 			body_color_horns = [], 
 			body_color_animal = [], 
+			hair_base_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
+			hair_fringe_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
+			hair_back_lenght = ['short', 'default', 'middle', 'long'], 
+			hair_assist_lenght = ['short', 'default', 'middle', 'long'],
 			},
 			
 		global_weight = 100,
