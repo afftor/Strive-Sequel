@@ -647,18 +647,20 @@ margin_bottom = 730.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VisualsModule/ScrollContainer"]
-margin_bottom = 4.0
+margin_right = 171.0
+margin_bottom = 39.0
 
 [node name="StatsContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
+margin_right = 171.0
+margin_bottom = 35.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
-visible = false
-margin_right = 236.0
-margin_bottom = 79.0
+margin_right = 171.0
+margin_bottom = 35.0
 
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
-margin_right = 236.0
+margin_right = 171.0
 margin_bottom = 35.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -666,6 +668,7 @@ text = "SLAVEPARTSEX"
 align = 1
 
 [node name="button" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+visible = false
 margin_top = 39.0
 margin_right = 236.0
 margin_bottom = 79.0
@@ -710,8 +713,9 @@ texture_pressed = ExtResource( 65 )
 texture_hover = ExtResource( 67 )
 
 [node name="StatsContainer2" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
-margin_top = 4.0
-margin_bottom = 4.0
+margin_top = 39.0
+margin_right = 171.0
+margin_bottom = 39.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2"]

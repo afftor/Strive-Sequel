@@ -408,6 +408,25 @@ var bodypartsdata = {
 	hair_assist = {
 		"": {code = "", name = 'no', chardescript = '', bodychanges = []}
 	}, 
+	chin = {
+		default = {code = "default", name = 'style1', chardescript = '', bodychanges = []},
+		curve = {code = "curve", name = 'style2', chardescript = '', bodychanges = []},
+		kobold = {code = "kobold", name = 'kobold', chardescript = '', bodychanges = []},
+		loli = {code = "loli", name = 'style3', chardescript = '', bodychanges = []},
+		skinny = {code = "skinny", name = 'style4', chardescript = '', bodychanges = []},
+		male = {code = "male", name = 'style5', chardescript = '', bodychanges = []},
+		muscle = {code = "muscle", name = 'style6', chardescript = '', bodychanges = []},
+		short = {code = "short", name = 'style7', chardescript = '', bodychanges = []},
+		beastkin = {code = "beastkin", name = 'beastkin', chardescript = '', bodychanges = []},
+	},
+	nose = {
+		beastkin =  {code = "beastkin", name = 'beastkin', chardescript = '', bodychanges = []},
+		default =  {code = "default", name = 'style1', chardescript = '', bodychanges = []},
+		dwarf =  {code = "dwarf", name = 'dwarf', chardescript = '', bodychanges = []},
+		kobold =  {code = "kobold", name = 'kobold', chardescript = '', bodychanges = []},
+		loli =  {code = "loli", name = 'style2', chardescript = '', bodychanges = []},
+		straight =  {code = "straight", name = 'style3', chardescript = '', bodychanges = []},
+	},
 	eye_color = {
 		default = {code = 'default', name = '', chardescript = '', bodychanges = []},
 	},
