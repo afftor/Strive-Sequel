@@ -583,7 +583,7 @@ var farm_tasks = {
 	eggs = {
 		code = 'eggs',
 		formula = 'farm_eggs',
-		reqs = [{code = 'race', race = 'Harpy', check = true}, {orflag = true, code= 'race', race = 'Lamia', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
+		reqs = [{code = 'has_status', status = 'oviposition', check = true}, {code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
 	},
 	magic_dust = {
 		code = 'magic_dust',
@@ -598,7 +598,7 @@ var farm_tasks = {
 	spider_silk = {
 		code = 'spider_silk',
 		formula = 'farm_silk',
-		reqs = [{code = 'race', race = 'Arachna', check = true}],
+		reqs = [{code = 'has_status', status = 'silksecretion', check = true}],
 	},
 	light_essence = {
 		code = 'light_essence',
@@ -656,7 +656,7 @@ var racelist = {
 		bodyparts = {
 			height = [['petite',1],['short',3],['average',10],['tall',2],['towering',1]],
 			ears = ['normal'],
-			skin = [['pale',3],['fair',10],['olive',3],['tan',2],['brown',1]],
+			skin = [['pale',3],['fair',10],['olive',3],['tan',2],['brown',1]], 
 			hair_color = ['blond','red','auburn','brown','black'],
 			eye_color = ['blue','green','grey','brown','black'],
 			hair_length = ['bald','ear','neck','shoulder','waist','hips'],
@@ -670,7 +670,17 @@ var racelist = {
 			lips = ['style1', 'style2', 'style3', 'style4', 'style5'],
 			tits_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'], #add variants
 			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3'],
+			body_color_wings = [], 
+			body_color_tail = [], 
+			body_color_horns = [], 
+			body_color_animal = [], 
+			hair_base_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
+			hair_fringe_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
+			hair_back_lenght = ['short', 'default', 'middle', 'long'], 
+			hair_assist_lenght = ['short', 'default', 'middle', 'long'],
+			body_color_skin = ['human1', 'human2', 'human3', 'human4', 'human5', ]
 			},
+			
 		global_weight = 100,
 	},
 	Elf = {
@@ -1157,6 +1167,7 @@ var racelist = {
 			arms = ['wings'],
 			},
 		global_weight = 25,
+		traits = ['racial_oviposition']
 	},
 	Slime = {
 		code = "Slime",
@@ -1216,6 +1227,7 @@ var racelist = {
 			ears = ['elven'],
 			},
 		global_weight = 5,
+		traits = ['racial_oviposition']
 	},
 	Arachna = {
 		code = "Arachna",
@@ -1246,6 +1258,7 @@ var racelist = {
 			ears = ['elven'],
 			},
 		global_weight = 5,
+		traits = ['racial_silksecretion']
 	},
 	Scylla = {
 		code = "Scylla",

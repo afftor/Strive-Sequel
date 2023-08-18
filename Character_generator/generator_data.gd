@@ -742,7 +742,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_up.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_up.png"},
 		],
-		staright = [
+		straight = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/Horn_straight_diagonal.png"},
@@ -925,7 +925,19 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
 		],
-		horse = [
+		feline = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+		],
+		canine = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_furry_up.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_furry.png"},
+		],
+		equine = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_horse_up.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Dick/Testicles_tex', texture = "res://Character_generator/images/13_dicks/Testicle_horse.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Dick/Penis_tex', texture = "res://Character_generator/images/13_dicks/Dick_horse_up.png"},
@@ -2014,7 +2026,7 @@ var transforms = {
 	},
 	
 	hair_assist = { #pls, do check, remove and fix pathes with all that duplicates in dir
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', attr = 'visible', value = false},
 		],
@@ -2087,7 +2099,7 @@ var transforms = {
 	},
 	
 	hair_back = { #pls, do check, remove and fix pathes with all that duplicates in dir and inbetween them
-		'': [
+		'no': [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Hairs_back_long_mesh', attr = 'visible', value = false},
@@ -3513,6 +3525,37 @@ var transforms = {
 		],
 	},
 	
+	hair_fringe_lenght = {
+		bald = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
+		],
+		default = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
+		],
+		long = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_long.tres"},
+		],
+		middle = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_middle.tres"},
+		],
+		short = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = true},
+			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_short.tres"},
+		],
+	},
+	
 	hair_back_lenght = {
 		default = [
 			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
@@ -4528,16 +4571,42 @@ var transforms = {
 	},
 	
 	armor_color_base = {
-		default = [
-			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('98b8c6')},
-			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('a88ac6')},
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	
 	armor_color_lower = {
-		default = [
-			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('98b8c6')},
-			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('a88ac6')},
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	

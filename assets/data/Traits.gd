@@ -1106,6 +1106,103 @@ var traits = {
 		tree_position = {tab = 2, x = 7, y = 4},
 		tags = ['loyalty', 'breeder']
 	},
+	#body upgrades
+	upgrade_thick_skin = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mdef = 10}, 
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	upgrade_thick_coverage = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {def = 10}, 
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	upgrade_nipples = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mod_pros = 0.1}, 
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	upgrade_tongue = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mod_pros = 0.1}, 
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	upgrade_eggs = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		reqs = [],  
+		tags = ['body_upgrade', 'oviposition']
+	},
+	upgrade_silk = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		reqs = [],  
+		tags = ['body_upgrade', 'silksecretion']
+	},
+	upgrade_strongarm = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		reqs = [],  
+		tags = ['body_upgrade', 'strongarm']
+	},
+	upgrade_resist = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = ['e_tr_resist'], #25% miss spells with damage, but all enemy spells have damage
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	upgrade_thickblood = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [], 
+		bonusstats = {resist_bleed = 200, resist_poison = 200}, 
+		reqs = [],  
+		tags = ['body_upgrade']
+	},
+	#racial
+	racial_oviposition = {
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = [],
+		reqs = [],  
+		tags = ['oviposition']
+	},
+	racial_silksecretion = {
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = [],
+		reqs = [],  
+		tags = ['silksecretion']
+	},
 	#rare opps
 	rare_sturdy = {
 		code = 'rare_sturdy',
@@ -1156,6 +1253,93 @@ var traits = {
 		effects = ['e_miniboss'],
 	},
 }
+
+
+var body_upgrades = {
+	upgrade_thick_skin = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'has_coverage', coverage = 'fur', check = false}, {code = 'has_coverage', coverage = 'scales', check = false}],
+		cost = 40,
+		goldcost = 10000,
+		traits = ['upgrade_thick_skin']
+	},
+	upgrade_thick_coverage = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'has_coverage', coverage = 'fur', check = true}, {orflag = true, code = 'has_coverage', coverage = 'scales', check = true}],
+		cost = 30,
+		goldcost = 10000,
+		traits = ['upgrade_thick_coverage']
+	},
+	upgrade_nipples = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'stat_in_set', stat = 'tits_size', value = ['average', 'big', 'huge', 'average_high', 'big_high', 'huge_high', 'average_narrow', 'big_narrow', 'huge_narrow', 'average_wide', 'big_wide', 'huge_wide']}],
+		cost = 20,
+		goldcost = 5000,
+		traits = ['upgrade_nipples']
+	},
+	upgrade_tongue = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [],
+		cost = 20,
+		goldcost = 5000,
+		traits = ['upgrade_tongue']
+	},
+	upgrade_eggs = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'stat', stat = 'has_womb', operant = 'eq', value = true}],
+		cost = 30,
+		goldcost = 8000,
+		traits = ['upgrade_eggs']
+	},
+	upgrade_silk = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [],
+		cost = 40,
+		goldcost = 12500,
+		traits = ['upgrade_silk']
+	},
+	upgrade_strongarm = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
+		cost = 40,
+		goldcost = 10000,
+		traits = ['upgrade_strongarm']
+	},
+	upgrade_resist = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
+		cost = 60,
+		goldcost = 15000,
+		traits = ['upgrade_resist']
+	},
+	upgrade_thickblood = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
+		cost = 50,
+		goldcost = 15000,
+		traits = ['upgrade_thickblood']
+	},
+}
+
+
 var sex_traits = { #only for interaction tab
 	dislike_petting = {
 		code = "dislike_petting",
@@ -1914,6 +2098,9 @@ func _ready():
 		if !traits[tr].has('code'): traits[tr].code = tr
 		if !traits[tr].has('tags'): traits[tr].tags = []
 		if !traits[tr].has('bonusstats'): traits[tr].bonusstats = {}
+	for upg in body_upgrades:
+		body_upgrades[upg].name = 'BODYUPGRADENAME_' + upg.to_upper()
+		body_upgrades[upg].descript = 'BODYUPGRADEDESCRIPT_' + upg.to_upper()
 
 
 var tattoodata = {
@@ -2019,6 +2206,8 @@ var tattoodata = {
 		},
 	},
 }
+
+
 
 func get_tat_list_for_slot(slot):
 	var res = []

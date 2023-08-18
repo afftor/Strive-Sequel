@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -86,6 +86,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_guildbackground.png" type="Texture" id=84]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=85]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=86]
+[ext_resource path="res://gui_modules/Exploration/Modules/BodyUpgrades.tscn" type="PackedScene" id=87]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=88]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
@@ -1171,6 +1172,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="UpgradeButton2" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
+margin_left = 418.0
+margin_right = 612.0
+margin_bottom = 58.0
+theme = ExtResource( 31 )
+texture_normal = ExtResource( 41 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 36 )
+
+[node name="Label" type="Label" parent="SlaveMarket/HBoxContainer/UpgradeButton2"]
+margin_top = -2.0
+margin_right = 194.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 120 )
+text = "Upgrade body"
+align = 1
+valign = 1
+
 [node name="QuestBoard_old" type="Panel" parent="."]
 visible = false
 margin_left = 400.0
@@ -1618,6 +1638,13 @@ margin_left = 449.0
 margin_top = 157.0
 margin_right = 1685.0
 margin_bottom = 958.0
+
+[node name="BodyUpgrade" parent="." instance=ExtResource( 87 )]
+visible = false
+margin_left = 415.774
+margin_top = 136.071
+margin_right = 1651.77
+margin_bottom = 937.071
 
 [node name="LocationGui" parent="." instance=ExtResource( 98 )]
 visible = false

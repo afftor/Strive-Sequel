@@ -23,11 +23,11 @@ var slave_classes = ['slave','servant']
 var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
 	'personality',
-	'body_color_skin', 
-	'body_color_wings', 
-	'body_color_tail', 
-	'body_color_horns', 
-	'body_color_animal', 
+#	'body_color_skin', 
+#	'body_color_wings', #don't forget to add proper data in corresponding races data - i only add empty lines for humans!!! 
+#	'body_color_tail', 
+#	'body_color_horns', 
+#	'body_color_animal', 
 	'hair_base', 
 	'hair_fringe', 
 	'hair_assist', 
@@ -38,10 +38,11 @@ var free_stats = [
 #	'hair_assist_color_2',
 #	'hair_base_color_1',
 #	'hair_base_color_2',
-	'hair_base_lenght', 
-	'hair_fringe_lenght', 
-	'hair_back_lenght' , 
-	'hair_assist_lenght' , ] #for testing, remove those after filling racedata
+#	'hair_base_lenght', 
+#	'hair_fringe_lenght', 
+#	'hair_back_lenght' , 
+#	'hair_assist_lenght' , 
+	] #for testing, remove those after filling racedata
 
 
 var freemode_fixed_stats = [
@@ -171,6 +172,9 @@ func _ready():
 	$modes/Stats.connect("pressed", self, 'build_stats')
 	$modes/Visuals.connect("pressed", self, 'build_visuals')
 	
+	$UpgradesPanel.visible = false
+	$VBoxContainer.visible = true
+	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
 	#$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
@@ -191,6 +195,9 @@ func build_stats():
 	$StatsModule.visible = true
 	$DietPanel.visible = true
 	$VisualsModule.visible = false
+	if mode == 'freemode':
+		$UpgradesPanel.visible = false
+		$VBoxContainer.visible = true
 
 
 func build_visuals():
@@ -200,6 +207,9 @@ func build_visuals():
 	$StatsModule.visible = false
 	$DietPanel.visible = false
 	$VisualsModule.visible = true
+	if mode == 'freemode':
+		$UpgradesPanel.visible = true
+		$VBoxContainer.visible = false
 
 
 func if_can_assign(stat, value):
@@ -270,6 +280,8 @@ func build_possible_val_for_stat(stat):
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
 			for val in GeneratorData.transforms[stat]:
+				if val == "":
+					continue #can't set default value
 				possible_vals[stat].push_back(val)
 		else:
 			print ('warninig - possible obsolete stat %s' % stat)
@@ -420,6 +432,11 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (mode != 'freemode')
 		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
+	if stat == 'sex' and mode != 'freemode':
+		var id = possible_vals.sex.find(val)
+		node.get_node('button/LArr').visible = (id > 0)
+		node.get_node('button/RArr').visible = (id < possible_vals.sex.size() - 1)
+	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
 		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
@@ -460,9 +477,9 @@ func change_value_node(stat, value): #for scrollable nodes
 	
 	id += value
 	if id < 0:
-		id = 0
-	if id >= possible_vals[stat].size():
 		id = possible_vals[stat].size() - 1
+	if id >= possible_vals[stat].size():
+		id = 0
 	var newval = possible_vals[stat][id]
 	if stat != 'slave_class':
 		person.set_stat(stat, newval)
@@ -481,6 +498,7 @@ func change_value_node(stat, value): #for scrollable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	build_description()
+	build_upgrades()
 
 
 func change_value_node_selectable(stat, newvalue): #for selectable nodes
@@ -492,6 +510,7 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 	rebuild_ragdoll(stat)
 	build_node_for_stat(stat)
 	build_description()
+	build_upgrades()
 
 
 func unassigned_points():
@@ -699,6 +718,8 @@ func confirm_character():
 	if check_confirm_possibility():
 		if mode == 'master' && person.get_stat('sex') == 'female':
 			confirm_female()
+		elif mode == 'freemode' and !build_upgrades():
+			confirm_upgrades()
 		else:
 			confirm_final()
 
@@ -709,6 +730,10 @@ func confirm_female():
 
 func confirm_final():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
+
+
+func confirm_upgrades():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('UPDATECHARBROKENUPGRAES')])
 
 
 func finish_character():
@@ -754,7 +779,7 @@ func finish_character():
 		input_handler.emit_signal("CharacterCreated")
 		input_handler.add_random_chat_message(person, 'hire')
 	else:
-		#add here recheck for upgrades later
+		person.recheck_upgrades()
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
 
@@ -971,6 +996,7 @@ func FillStats():
 	build_description()
 	build_race()
 	update_points()
+	build_upgrades()
 #	build_food_filter()
 
 
@@ -1114,3 +1140,22 @@ func hide_all_dialogues():
 	RaceSelection.hide()
 	TraitSelection.hide()
 	ClassSelection.hide()
+
+
+func build_upgrades(): #check confirmation at the same time
+	var res = true
+	input_handler.ClearContainer($UpgradesPanel/VBoxContainer, ['Button'])
+	for upg in person.statlist.body_upgrades:
+		if !Traitdata.body_upgrades.has(upg):
+			continue
+		var upgdata = Traitdata.body_upgrades[upg]
+		var newnode = input_handler.DuplicateContainerTemplate($UpgradesPanel/VBoxContainer, 'Button')
+		globals.connecttexttooltip(newnode, tr(upgdata.descript))
+		newnode.text = tr(upgdata.name)
+		if person.checkreqs(upgdata.reqs):
+			newnode.set("custom_colors/font_color", Color(variables.hexcolordict.k_yellow))
+		else:
+			newnode.set("custom_colors/font_color", Color(variables.hexcolordict.k_red))
+			newnode.text += ' !'
+			res = false
+	return res

@@ -6,6 +6,7 @@ var traits = []
 var sex_traits = {}
 var negative_sex_traits = {}
 var unlocked_sex_traits = []
+var body_upgrades = []
 var parent: WeakRef = null
 var reported_pregnancy = false
 
@@ -138,6 +139,11 @@ func custom_stats_get(stat):
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
+		return tres
+	if stat == 'upgrade_points_total':
+		var tres = custom_stats_get('growth_factor') * 25
+		if bonuses.has('upgrade_points_total_add'): tres += bonuses.upgrade_points_total_add
+		if bonuses.has('upgrade_points_total_mul'): tres *= bonuses.upgrade_points_total_mul
 		return tres
 	if stat == 'obedience_max':
 		var tres = variables.basic_max_obed
@@ -404,43 +410,43 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'care'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_base = 'dopple'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'middle'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_base = 'default'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'straight'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_base = 'straight'
-						res.hair_assist = ''
+						res.hair_assist = 'no'
 						res.hair_back = 'very_long'
 						res.hair_base_lenght = 'long'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
 						res.hair_base = 'undercut'
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
@@ -449,44 +455,44 @@ func get_hairs_data():
 				match statlist.hair_length:
 					'ear':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'neck':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'shoulder':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 					'waist':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'middle'
 						res.hair_back_lenght = 'middle'
 					'hips':
 						res.hair_assist = 'ponytail'
-						res.hair_back = ''
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'long'
 						res.hair_back_lenght = 'long'
 					_:
-						res.hair_assist = ''
-						res.hair_back = ''
+						res.hair_assist = 'no'
+						res.hair_back = 'no'
 						res.hair_base_lenght = 'short'
 						res.hair_assist_lenght = 'short'
 						res.hair_back_lenght = 'short'
 			'pigtails':
 				res.hair_base = 'lamb'
 				res.hair_assist = 'pigtails'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -515,7 +521,7 @@ func get_hairs_data():
 			'braid':
 				res.hair_base = 'back'
 				res.hair_assist = 'braid'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
 						res.hair_base_lenght = 'short'
@@ -543,7 +549,7 @@ func get_hairs_data():
 						res.hair_back_lenght = 'short'
 			'twinbraids':
 				res.hair_base = 'braids'
-				res.hair_assist = ''
+				res.hair_assist = 'no'
 				res.hair_back = 'twin_braids'
 				match statlist.hair_length:
 					'ear':
@@ -573,7 +579,7 @@ func get_hairs_data():
 			'bun':
 				res.hair_base = 'back'
 				res.hair_assist = 'bun'
-				res.hair_back = ''
+				res.hair_back = 'no'
 				res.hair_base_lenght = 'short'
 				res.hair_assist_lenght = 'short'
 				res.hair_back_lenght = 'short'
@@ -1393,7 +1399,7 @@ func create(temp_race, temp_gender, temp_age):
 	statlist.race = temp_race
 	statlist.sex = temp_gender
 	statlist.age = temp_age
-
+	
 	if temp_race == 'random':
 		statlist.race = get_random_race()
 	elif races.race_groups.has(temp_race):
@@ -1402,26 +1408,25 @@ func create(temp_race, temp_gender, temp_age):
 		statlist.sex = get_random_sex()
 	if temp_age == 'random':
 		statlist.age = get_random_age()
-
+	
 #	for i in variables.resists_list:
 #		statlist.resists[i] = 0
 #	for i in variables.status_list:
 #		statlist.status_resists[i] = 0
 #	for i in variables.mods_list:
 #		statlist.damage_mods[i] = 1.0
-
+	
 	get_sex_features()
-
+	
 	if input_handler.globalsettings.furry == false && statlist.race.find("Beastkin") >= 0:
 		statlist.race = statlist.race.replace("Beastkin","Halfkin")
-
+	
 	get_racial_features()
 	get_random_name()
 	get_random_colors()
 	random_icon()
-
-	statlist.personality = variables.personality_array[randi()%variables.personality_array.size()]
 	
+	statlist.personality = input_handler.random_from_array(variables.personality_array)
 	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
@@ -1440,35 +1445,41 @@ func get_racial_features():
 	var race_template = races.racelist[statlist.race]
 	for i in race_template.basestats:
 		statlist[i] = round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1])) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
-
+	
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
+		if races.racelist.Human.bodyparts[i].empty():
+			continue
 		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
 			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
-	for i in race_template.bodyparts:
-		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
-			statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
-		else:
-			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
+	if statlist.race != 'Human':
+		for i in race_template.bodyparts:
+			if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
+				statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
+			else:
+				statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
 	
-	
-
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number
-
+	
 	if race_template.has("combat_skills"):
 		for i in race_template.combat_skills:
 			parent.get_ref().learn_c_skill(i)
-
+	
 	parent.get_ref().food.get_racial_features(statlist.race)
-
+	
 	var array = []
 	if race_template.has('personality'):
 		for i in race_template.personality:
 			array.append([i, race_template.personality[i]])
 		statlist.personality = input_handler.weightedrandom(array)
+	
+	if race_template.has('tarits'):
+		for trait in race_template.traits:
+			add_trait(trait)
+
 
 func get_sex_features():
 	match statlist.sex:
@@ -1826,3 +1837,68 @@ func make_random_portrait():
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)
 		if File.new().file_exists(fullImagePath):
 			statlist.body_image = fullImagePath 
+
+
+#body upgrades
+func get_upgrade_points():
+	var res = get_stat('upgrade_points_total')
+	for upg in body_upgrades:
+		if !Traitdata.body_upgrades.has(upg):
+			print ('unknown body upgrade - %s' % upg)
+			continue
+		var upgrade_data = Traitdata.body_upgrades[upg]
+		res -= upgrade_data.cost 
+	return res
+
+
+func add_upgrade(upg): #unsafe adding
+	if body_upgrades.has(upg):
+		return
+	if !Traitdata.body_upgrades.has(upg):
+		return
+	
+	body_upgrades.push_back(upg)
+	var upgrade_data = Traitdata.body_upgrades[upg]
+	if upgrade_data.has('traits'):
+		for tr in upgrade_data.traits:
+			add_trait(tr) #hope that there be no concurrent traits in upgrades
+
+
+func can_add_upgrade(upg):
+	if body_upgrades.has(upg):
+		return false
+	if !Traitdata.body_upgrades.has(upg):
+		return false
+	
+	var upgrade_data = Traitdata.body_upgrades[upg]
+	
+	if !parent.get_ref().checkreqs(upgrade_data.reqs):
+		return false
+	
+	if get_upgrade_points() < upgrade_data.cost:
+		return false
+	
+	return true
+
+
+func remove_upgrade(upg):
+	if !body_upgrades.has(upg):
+		return
+	body_upgrades.erase(upg)
+	if !Traitdata.body_upgrades.has(upg):
+		return
+	var upgrade_data = Traitdata.body_upgrades[upg]
+	if upgrade_data.has('traits'):
+		for tr in upgrade_data.traits:
+			remove_trait(tr)
+	parent.get_ref().recheck_equip()
+
+
+func recheck_upgrades():
+	for upg in body_upgrades.duplicate():
+		if !Traitdata.body_upgrades.has(upg):
+			body_upgrades.erase(upg)
+		else:
+			var upgrade_data = Traitdata.body_upgrades[upg]
+			if !parent.get_ref().checkreqs(upgrade_data.reqs):
+				remove_upgrade(upg) #hope that there would be no removal chaining
