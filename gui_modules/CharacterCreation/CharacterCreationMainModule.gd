@@ -23,7 +23,7 @@ var slave_classes = ['slave','servant']
 var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
 	'personality',
-	'body_color_skin', 
+#	'body_color_skin', 
 #	'body_color_wings', #don't forget to add proper data in corresponding races data - i only add empty lines for humans!!! 
 #	'body_color_tail', 
 #	'body_color_horns', 

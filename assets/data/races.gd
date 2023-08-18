@@ -656,7 +656,7 @@ var racelist = {
 		bodyparts = {
 			height = [['petite',1],['short',3],['average',10],['tall',2],['towering',1]],
 			ears = ['normal'],
-			skin = [['pale',3],['fair',10],['olive',3],['tan',2],['brown',1]],
+			skin = [['pale',3],['fair',10],['olive',3],['tan',2],['brown',1]], 
 			hair_color = ['blond','red','auburn','brown','black'],
 			eye_color = ['blue','green','grey','brown','black'],
 			hair_length = ['bald','ear','neck','shoulder','waist','hips'],
@@ -678,6 +678,7 @@ var racelist = {
 			hair_fringe_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
 			hair_back_lenght = ['short', 'default', 'middle', 'long'], 
 			hair_assist_lenght = ['short', 'default', 'middle', 'long'],
+			body_color_skin = ['human1', 'human2', 'human3', 'human4', 'human5', ]
 			},
 			
 		global_weight = 100,
