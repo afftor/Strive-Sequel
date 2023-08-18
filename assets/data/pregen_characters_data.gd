@@ -674,6 +674,20 @@ var unique_sprites = {
 			face_path = "daisy_christmas",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "daisy_nude", 
+			face_path = "daisy", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "daisy_wed", 
+			face_path = "daisy", # TODO change
+			unlock_reqs = []
+			},
 	},
 	cali = {
 		default = {
@@ -697,6 +711,20 @@ var unique_sprites = {
 			face_path = "cali_collar",
 			unlock_reqs = [{type = 'decision', value = 'cali_normal_collar', check = true}, {type = 'decision', value = 'cali_exquisite_collar', check = true, orflag = true}]
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "cali_nude", 
+			face_path = "cali", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "cali_wed", 
+			face_path = "cali", # TODO change
+			unlock_reqs = []
+			},
 	},
 	aire = {
 		default = {
@@ -706,6 +734,20 @@ var unique_sprites = {
 			face_path = "aire",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "aire_nude", 
+			face_path = "aire", # TODO change
+			unlock_reqs = []
+			},
+#		wed = {
+#			name = "Wed",
+#			descript = "",
+#			path = "aire_wed", 
+#			face_path = "aire", # TODO change
+#			unlock_reqs = []
+#			},
 	},
 	anastasia = {
 		default = {
@@ -722,6 +764,20 @@ var unique_sprites = {
 			face_path = "anastasia_halloween",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'halloween_start'}]
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "anastasia_nude", 
+			face_path = "anastasia", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "anastasia_wed", 
+			face_path = "anastasia", # TODO change
+			unlock_reqs = []
+			},
 	},
 	zephyra = {
 		default = {
@@ -729,6 +785,20 @@ var unique_sprites = {
 			descript = "",
 			path = "zephyra_body", 
 			face_path = "zephyra",
+			unlock_reqs = []
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "zephyra_nude", 
+			face_path = "zephyra", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "zephyra_wed", 
+			face_path = "zephyra", # TODO change
 			unlock_reqs = []
 			},
 	},
@@ -740,6 +810,13 @@ var unique_sprites = {
 			face_path = "mae",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "mae_nude", 
+			face_path = "mae", # TODO change
+			unlock_reqs = []
+			},
 	},
 	lilia = {
 		default = {
@@ -747,6 +824,20 @@ var unique_sprites = {
 			descript = "",
 			path = "lilia_body", 
 			face_path = "lilia",
+			unlock_reqs = []
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "lilia_nude", 
+			face_path = "lilia", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "lilia_wed", 
+			face_path = "lilia", # TODO change
 			unlock_reqs = []
 			},
 	},
@@ -758,6 +849,13 @@ var unique_sprites = {
 			face_path = "lilith",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "lilith_nude", 
+			face_path = "lilith", # TODO change
+			unlock_reqs = []
+			},
 	},
 	hara = {
 		default = {
@@ -765,6 +863,13 @@ var unique_sprites = {
 			descript = "",
 			path = "hara_body", 
 			face_path = "hara",
+			unlock_reqs = []
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "hara_nude", 
+			face_path = "hara", # TODO change
 			unlock_reqs = []
 			},
 	},
@@ -776,6 +881,20 @@ var unique_sprites = {
 			face_path = "jean",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "jean_nude", 
+			face_path = "jean", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "jean_wed", 
+			face_path = "jean", # TODO change
+			unlock_reqs = []
+			},
 	},
 	heleviel = {
 		default = {
@@ -785,6 +904,13 @@ var unique_sprites = {
 			face_path = "heleviel",
 			unlock_reqs = []
 			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "heleviel_nude", 
+			face_path = "heleviel", # TODO change
+			unlock_reqs = []
+			},
 	},
 	lira = {
 		default = {
@@ -792,6 +918,13 @@ var unique_sprites = {
 			descript = "",
 			path = "lira_body", 
 			face_path = "lira",
+			unlock_reqs = []
+			},
+		nude = {
+			name = "Nude",
+			descript = "",
+			path = "lira_nude", 
+			face_path = "lira", # TODO change
 			unlock_reqs = []
 			},
 	},

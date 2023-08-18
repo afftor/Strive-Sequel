@@ -390,7 +390,6 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-disabled = true
 text = "WORKRULENUDITY"
 
 [node name="food_love" type="TextureRect" parent="."]

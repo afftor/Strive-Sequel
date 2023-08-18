@@ -53,6 +53,17 @@ func update(person = null):
 		$Body.visible = body_visible
 		$ragdoll.visible = false
 	
+	# nudity check
+	if person != null && person.statlist.statlist.unique != null && person.has_work_rule('nudity'):
+		if worlddata.pregen_character_sprites[person.statlist.statlist.unique].has("nude"):
+			$Body.texture = images.sprites[worlddata.pregen_character_sprites[person.statlist.statlist.unique].nude.path + "_body"]
+	# wed check
+	if person != null && person.statlist.statlist.unique != null:
+		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) && !ResourceScripts.game_progress.marriage_completed:
+			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
+			if spouse_person.get_stat('unique') == person.get_stat('unique') and worlddata.pregen_character_sprites[person.statlist.statlist.unique].has("wed"):
+				$Body.texture = images.sprites[worlddata.pregen_character_sprites[person.statlist.statlist.unique].wed.path + "_body"]
+	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	
 	input_handler.ClearContainer($ScrollContainer/professions)

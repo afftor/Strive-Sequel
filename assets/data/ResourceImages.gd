@@ -363,6 +363,41 @@ var sprites = {
 	anastasia_halloween = load("res://assets/images/sprites/anastasia_halloween.png"),
 	anastasia_halloween_body = load("res://assets/images/sprites/anastasia_halloween_body.png"),
 	
+	daisy_nude = load("res://assets/images/sprites/daisy_nude.png"),
+	daisy_nude_body = load("res://assets/images/sprites/daisy_nude_body.png"),
+	daisy_wed = load("res://assets/images/sprites/daisy_wed.png"),
+	daisy_wed_body = load("res://assets/images/sprites/daisy_wed_body.png"),
+	cali_nude = load("res://assets/images/sprites/cali_nude.png"),
+	cali_nude_body = load("res://assets/images/sprites/cali_nude_body.png"),
+	cali_wed = load("res://assets/images/sprites/cali_wed.png"),
+	cali_wed_body = load("res://assets/images/sprites/cali_wed_body.png"),
+	aire_nude = load("res://assets/images/sprites/aire_nude.png"),
+	aire_nude_body = load("res://assets/images/sprites/aire_nude_body.png"),
+	anastasia_nude = load("res://assets/images/sprites/anastasia_nude_body.png"), # todo change to non-body
+	anastasia_nude_body = load("res://assets/images/sprites/anastasia_nude_body.png"),
+	anastasia_wed = load("res://assets/images/sprites/anastasia_wed_body.png"), # todo change to non-body
+	anastasia_wed_body = load("res://assets/images/sprites/anastasia_wed_body.png"),
+	zephyra_nude = load("res://assets/images/sprites/zephyra_nude.png"),
+	zephyra_nude_body = load("res://assets/images/sprites/zephyra_nude_body.png"),
+	zephyra_wed = load("res://assets/images/sprites/zephyra_wed.png"),
+	zephyra_wed_body = load("res://assets/images/sprites/zephyra_wed_body.png"),
+	mae_nude = load("res://assets/images/sprites/mae_nude.png"),
+	mae_nude_body = load("res://assets/images/sprites/mae_nude_body.png"),
+	lilia_nude = load("res://assets/images/sprites/lilia_nude.png"),
+	lilia_nude_body = load("res://assets/images/sprites/lilia_nude_body.png"),
+	lilia_wed = load("res://assets/images/sprites/lilia_wed.png"),
+	lilia_wed_body = load("res://assets/images/sprites/lilia_wed_body.png"),
+	hara_nude = load("res://assets/images/sprites/hara_nude.png"),
+	hara_nude_body = load("res://assets/images/sprites/hara_nude_body.png"),
+	jean_nude = load("res://assets/images/sprites/jean_nude.png"),
+	jean_nude_body = load("res://assets/images/sprites/jean_nude_body.png"),
+	jean_wed = load("res://assets/images/sprites/jean_wed.png"),
+	jean_wed_body = load("res://assets/images/sprites/jean_wed_body.png"),
+	heleviel_nude = load("res://assets/images/sprites/heleviel_nude.png"),
+	heleviel_nude_body = load("res://assets/images/sprites/heleviel_nude_body.png"),
+	lira_nude = load("res://assets/images/sprites/lira_nude.png"),
+	lira_nude_body = load("res://assets/images/sprites/lira_nude_body.png"),
+	
 	}
 
 var dynamic_backgrounds = {

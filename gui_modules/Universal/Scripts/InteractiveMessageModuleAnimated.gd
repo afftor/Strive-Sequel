@@ -776,6 +776,46 @@ func handle_characters_sprites(scene):
 #	if scene.has("character2_alpha"):
 #		$CharacterImage2.self_modulate.a = scene.character2_alpha
 	
+	# setting nude versions here
+	if scene.has("character"):
+		scene_char = scene.character
+		for i in ResourceScripts.game_party.characters: 
+			var person = ResourceScripts.game_party.characters[i]
+			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
+				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
+				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path]
+				if images.sprites.has(non_body):
+					$CharacterImage.texture = image
+				else:
+					$CharacterImage.texture = person.get_body_image()
+				ch1 = person.get_stat("unique").to_lower()
+	if scene.has("character2"):
+		scene_char = scene.character2
+		for i in ResourceScripts.game_party.characters: 
+			var person = ResourceScripts.game_party.characters[i]
+			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
+				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
+				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path]
+				if images.sprites.has(non_body):
+					$CharacterImage2.texture = image
+				else:
+					$CharacterImage2.texture = person.get_body_image()
+				ch1 = person.get_stat("unique").to_lower()
+			
+	# setting wed versions here
+	if scene.has("character"):
+		scene_char = scene.character
+		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) and !ResourceScripts.game_progress.marriage_completed:
+			# set wed sprite here
+			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
+			var spouse_unique_name = spouse_person.get_stat('unique')
+			if scene_char == spouse_unique_name and worlddata.pregen_character_sprites[scene_char].has("wed"):
+				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].wed.path]
+				$CharacterImage.texture = image
+	
+	
 	#handle unique character script
 	if scene.has("unique_character"):
 		for i in ResourceScripts.game_party.characters: 
