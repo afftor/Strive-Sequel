@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=2]
+[gd_scene load_steps=256 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -104,6 +104,7 @@
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Pregnancy_maidu_small.png" type="Texture" id=102]
 [ext_resource path="res://Character_generator/armor_shader.shader" type="Shader" id=103]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_large.png" type="Texture" id=104]
+[ext_resource path="res://Character_generator/images/150_armory_acces_collars/collar_heart.png" type="Texture" id=105]
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_large.png" type="Texture" id=106]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -4971,7 +4972,6 @@ shader_param/part3 = ExtResource( 19 )
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
-clothes = false
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
@@ -5269,6 +5269,14 @@ material = SubResource( 58 )
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 71 )
+
+[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["cloth", "collar"]]
+visible = false
+light_mask = 4
+material = SubResource( 58 )
+position = Vector2( 218.927, -0.34021 )
+rotation = -1.5708
+texture = ExtResource( 105 )
 
 [node name="Taz" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 222.449, -0.19342 )
@@ -6160,6 +6168,14 @@ position = Vector2( 226, 1.99918 )
 rotation = -1.5708
 z_index = 5
 texture = ExtResource( 30 )
+
+[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["cloth", "collar"]]
+light_mask = 4
+material = SubResource( 74 )
+position = Vector2( 226, 1.99918 )
+rotation = -1.5708
+z_index = 5
+texture = ExtResource( 105 )
 
 [node name="Pregnancy" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine"]
 visible = false

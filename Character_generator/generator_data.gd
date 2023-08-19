@@ -4549,6 +4549,40 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
 	},
+	armor_collar = {
+		null: [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
+		],
+		amulet_of_recognition = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
+		],
+		leather_collar = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+		],
+		elegant_choker  = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
+		],
+		steel_collar  = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+		],
+		pet_suit  = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+		],
+		enslaving_collar  = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+		],
+		bell_collar  = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
+		],
+	},
 	
 	armor_color = {
 		default = [ #cloth
@@ -4607,6 +4641,26 @@ var transforms = {
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+		],
+	},
+	
+	armor_color_collar = {
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	

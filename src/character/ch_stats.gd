@@ -603,7 +603,8 @@ func get_stat(statname, ref = false):
 		var partname = statname.trim_prefix('armor_color_')
 		statname = 'armor_color'
 		var part = parent.get_ref().get_stat('armor_' + partname)
-		part = part.trim_prefix('legs_').trim_prefix('chest_')
+		if part != null:
+			part = part.trim_prefix('legs_').trim_prefix('chest_')
 		if statlist[statname] is Dictionary and statlist[statname].has(part):
 			return statlist[statname][part]
 		if statlist[statname] is String and statlist[statname] != "":
