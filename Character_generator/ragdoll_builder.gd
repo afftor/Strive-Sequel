@@ -17,7 +17,7 @@ var _offset
 var character
 var test_template = {
 	sex = 'female', 
-	race = 'Lamia', 
+	race = 'BeastkinFox', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -59,8 +59,10 @@ var test_template = {
 	armor_base = 'servant', 
 #	armor_lower = 'legs_adv_metal',
 	armor_lower = 'servant',
+	armor_collar = 'leather_collar',
 	armor_color_base = 'default',
 	armor_color_lower = 'default',
+	armor_color_collar = 'default',
 	height = 'towering',
 	ass_size = 'small',
 	pose = 'pose4',
@@ -197,7 +199,7 @@ func rebuild_cloth(value):
 			if !(transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_base', 'armor_lower']:
+	for stat in ['armor_base', 'armor_lower', 'armor_collar']:
 		if !GeneratorData.transforms.has(stat):
 			continue
 		var st_val = _get_stat(stat)
@@ -218,7 +220,7 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_color_base', 'armor_color_lower', 'armor_base', 'armor_lower']:
+	for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar', 'armor_base', 'armor_lower', 'armor_collar']:
 		if !GeneratorData.transforms.has(stat):
 			continue
 		var st_val = _get_stat(stat)

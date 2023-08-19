@@ -121,6 +121,11 @@ func get_stat(statname, ref = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = 'servant'
 				return res
+			'armor_collar':
+				var res = equipment.get_gear_type('neck')
+				if !GeneratorData.transforms[statname].has(res):
+					res = null
+				return res
 	return statlist.get_stat(statname, ref)
 
 
