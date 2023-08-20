@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex"
+path="res://.import/tatoo_womb9_1.png-2ceb25ecabb966053f295626122aaeb8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/legR.png"
-dest_files=[ "res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex" ]
+source_file="res://Character_generator/images/97_tatoos/tatoo_womb9_1.png"
+dest_files=[ "res://.import/tatoo_womb9_1.png-2ceb25ecabb966053f295626122aaeb8.stex" ]
 
 [params]
 

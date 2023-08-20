@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Character_generator/images/05_hairs_assist/hair_assist_pigtails.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=2]
@@ -68,6 +68,8 @@
 [ext_resource path="res://Character_generator/images/150_armory_acces_collars/collar_bell.png" type="Texture" id=66]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_titsmany_small6.png" type="Texture" id=67]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_torso_many_nipples6.png" type="Texture" id=68]
+[ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_nipple_big.png" type="Texture" id=69]
+[ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_tits_big.png" type="Texture" id=70]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -1787,6 +1789,18 @@ position = Vector2( -221.937, 5.96686 )
 rotation = -1.5708
 texture = ExtResource( 15 )
 
+[node name="Beastkin_tits" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 221.045, -2.4346 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 67 )
+
+[node name="Beastkin_nipples" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 226.045, -0.434708 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 68 )
+
 [node name="Torso_nipple_tex" type="Sprite" parent="HumanF1/Spine"]
 material = SubResource( 11 )
 position = Vector2( 221, -0.000854492 )
@@ -1805,7 +1819,6 @@ rotation = -1.5708
 texture = ExtResource( 66 )
 
 [node name="Pregnancy" type="Bone2D" parent="HumanF1/Spine"]
-visible = false
 position = Vector2( 135, 12.9995 )
 rest = Transform2D( 0.017, 0, 0, 0, 0, 0 )
 
@@ -1814,6 +1827,18 @@ material = SubResource( 11 )
 position = Vector2( 59.9999, -13.0002 )
 rotation = -1.5708
 texture = ExtResource( 20 )
+
+[node name="Beastkin_pregnancy_tits" type="Sprite" parent="HumanF1/Spine/Pregnancy"]
+position = Vector2( 81.9999, -15.0003 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 70 )
+
+[node name="Beastkin_pregnancy_nipples" type="Sprite" parent="HumanF1/Spine/Pregnancy"]
+position = Vector2( 81.9999, -15.0003 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 69 )
 
 [node name="pregnancy_armor_tex" type="Sprite" parent="HumanF1/Spine/Pregnancy"]
 position = Vector2( -155, -12.9995 )
@@ -1824,16 +1849,6 @@ texture = ExtResource( 10 )
 position = Vector2( -53, 10.0002 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
-
-[node name="Beastkin_tits" type="Sprite" parent="HumanF1/Spine/Tits"]
-position = Vector2( 274.045, -12.4348 )
-rotation = -1.5708
-texture = ExtResource( 67 )
-
-[node name="Beastkin_nipples" type="Sprite" parent="HumanF1/Spine/Tits"]
-position = Vector2( 279.045, -10.4349 )
-rotation = -1.5708
-texture = ExtResource( 68 )
 
 [node name="Tits_mesh" type="Polygon2D" parent="HumanF1/Spine/Tits"]
 material = SubResource( 13 )

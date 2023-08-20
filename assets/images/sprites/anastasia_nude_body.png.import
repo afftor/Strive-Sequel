@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex"
+path="res://.import/anastasia_nude_body.png-ab14ac192bb138802a04b9767c49b5a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/legR.png"
-dest_files=[ "res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex" ]
+source_file="res://assets/images/sprites/anastasia_nude_body.png"
+dest_files=[ "res://.import/anastasia_nude_body.png-ab14ac192bb138802a04b9767c49b5a5.stex" ]
 
 [params]
 

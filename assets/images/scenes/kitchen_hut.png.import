@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex"
+path="res://.import/kitchen_hut.png-e1d6c71bfb0d188474e2f171b5e36699.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/legR.png"
-dest_files=[ "res://.import/legR.png-13d64f9b2b5eb9ba46cdc49cf55ca3e0.stex" ]
+source_file="res://assets/images/scenes/kitchen_hut.png"
+dest_files=[ "res://.import/kitchen_hut.png-e1d6c71bfb0d188474e2f171b5e36699.stex" ]
 
 [params]
 
