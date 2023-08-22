@@ -3,7 +3,7 @@ extends Node
 var stats_to_look = [
 'pose',
 'sex', 'race',
-'horns', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size',  
+'horns', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size', 'multiple_tits_developed',
 'body_color_wings', 'body_color_horns', 'body_color_animal', 'body_color_tail', 'body_color_ears',
 'hair_base', 'hair_assist', 
 'hair_back', 'hair_fringe',
@@ -957,6 +957,15 @@ var transforms = {
 		heavy = [
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'visible', value = true},
+		],
+	},
+	
+	multiple_tits_developed = {
+		true:[
+			{type = 'node_group_attr', group = 'multitits', attr = 'visible', value = true},
+		],
+		false:[
+			{type = 'node_group_attr', group = 'multitits', attr = 'visible', value = false},
 		],
 	},
 	
