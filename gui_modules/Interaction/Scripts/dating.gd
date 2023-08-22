@@ -497,7 +497,7 @@ var date_lines = {
 	food_resist = [[tr("DATING_FOOD_RESIST_1"), 1]],
 	food_liked = [[tr("DATING_FOOD_LIKED_1"), 1]],
 	food_hated = [[tr("DATING_FOOD_HATED_1"), 1]],
-	food_netural = [[tr("DATING_FOOD_NETURAL_1"), 1]],
+	food_netural = [[tr("DATING_FOOD_NEUTRAL_1"), 1]],
 
 }
 

@@ -929,6 +929,7 @@ func build_char_farm(char_id):
 	$Frame_farm/char_panel/Choose.visible = false
 	$Frame_farm/char_panel/Remove.visible = true
 	input_handler.ClearContainer($Frame_farm/char_panel/ScrollContainer/farm_rules, ['Button'])
+	var items_set = 0
 	for res in variables.farming_rules:
 		var task = races.farm_tasks[res]
 		var rdata = Items.materiallist[res]
@@ -936,12 +937,14 @@ func build_char_farm(char_id):
 			ch.set_farm_res(res, false)
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($Frame_farm/char_panel/ScrollContainer/farm_rules, 'Button')
+		globals.connectmaterialtooltip(newbutton, rdata)
 		newbutton.get_node('icon').texture = rdata.icon
 		newbutton.get_node('HBoxContainer/res_name').text = tr(rdata.name)
 		newbutton.get_node('HBoxContainer/amount').text = tr("Progress: %.1f per turn") % ch.get_progress_farm(res)
 		if ch.get_farm_res(res):
 			newbutton.pressed = true
 			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, false])
+			items_set += 1
 		else:
 			newbutton.pressed = false
 			newbutton.connect('pressed', self, 'toggle_farm_res', [ch, res, true])
@@ -949,8 +952,26 @@ func build_char_farm(char_id):
 				newbutton.disabled = false
 			else:
 				newbutton.disabled = true
-				globals.connecttexttooltip(newbutton, "Growth factor too low")
-
+				globals.connecttexttooltip(newbutton, "Growth factor is too low")
+	yield(get_tree(),"idle_frame")
+	if $Frame_farm/char_panel/ScrollContainer/farm_rules.get_children().size() > 1:
+		$Frame_farm/char_panel/Label.text = tr("FARMAVAILABLEPRDODUCTS") 
+	else:
+		$Frame_farm/char_panel/Label.text = tr("FARMAVAILABLEPRDODUCTSNO")
+	
+	
+	
+	var text = ""
+	
+	
+	text = (
+		"[center]Details[/center]"+
+		"\nNumber of items produced per character is based on their Growth Factor.\nItem Limit: "
+		+ str(items_set) + "/"
+		+ str(ch.get_farming_limit())
+	)
+	
+	$Frame_farm/char_panel/desc.bbcode_text = text
 
 func set_to_farm():
 	farming_char.set_work('produce')

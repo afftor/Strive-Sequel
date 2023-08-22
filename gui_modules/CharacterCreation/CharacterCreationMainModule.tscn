@@ -656,7 +656,6 @@ margin_bottom = 35.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
-visible = false
 margin_right = 171.0
 margin_bottom = 35.0
 
@@ -669,6 +668,7 @@ text = "SLAVEPARTSEX"
 align = 1
 
 [node name="button" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+visible = false
 margin_top = 39.0
 margin_right = 236.0
 margin_bottom = 79.0

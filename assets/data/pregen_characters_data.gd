@@ -677,14 +677,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "daisy_nude", 
+			path = "daisy_nude_body", 
 			face_path = "daisy", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "daisy_wed", 
+			path = "daisy_wed_body", 
 			face_path = "daisy", # TODO change
 			unlock_reqs = []
 			},
@@ -714,14 +714,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "cali_nude", 
+			path = "cali_nude_body", 
 			face_path = "cali", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "cali_wed", 
+			path = "cali_wed_body", 
 			face_path = "cali", # TODO change
 			unlock_reqs = []
 			},
@@ -737,7 +737,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "aire_nude", 
+			path = "aire_nude_body", 
 			face_path = "aire", # TODO change
 			unlock_reqs = []
 			},
@@ -767,14 +767,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "anastasia_nude", 
+			path = "anastasia_nude_body", 
 			face_path = "anastasia", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "anastasia_wed", 
+			path = "anastasia_wed_body", 
 			face_path = "anastasia", # TODO change
 			unlock_reqs = []
 			},
@@ -790,14 +790,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "zephyra_nude", 
+			path = "zephyra_nude_body", 
 			face_path = "zephyra", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "zephyra_wed", 
+			path = "zephyra_wed_body", 
 			face_path = "zephyra", # TODO change
 			unlock_reqs = []
 			},
@@ -813,7 +813,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "mae_nude", 
+			path = "mae_nude_body", 
 			face_path = "mae", # TODO change
 			unlock_reqs = []
 			},
@@ -829,14 +829,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "lilia_nude", 
+			path = "lilia_nude_body", 
 			face_path = "lilia", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "lilia_wed", 
+			path = "lilia_wed_body", 
 			face_path = "lilia", # TODO change
 			unlock_reqs = []
 			},
@@ -852,7 +852,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "lilith_nude", 
+			path = "lilith_nude_body", 
 			face_path = "lilith", # TODO change
 			unlock_reqs = []
 			},
@@ -868,7 +868,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "hara_nude", 
+			path = "hara_nude_body", 
 			face_path = "hara", # TODO change
 			unlock_reqs = []
 			},
@@ -884,14 +884,14 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "jean_nude", 
+			path = "jean_nude_body", 
 			face_path = "jean", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
-			path = "jean_wed", 
+			path = "jean_wed_body", 
 			face_path = "jean", # TODO change
 			unlock_reqs = []
 			},
@@ -907,7 +907,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "heleviel_nude", 
+			path = "heleviel_nude_body", 
 			face_path = "heleviel", # TODO change
 			unlock_reqs = []
 			},
@@ -923,7 +923,7 @@ var unique_sprites = {
 		nude = {
 			name = "Nude",
 			descript = "",
-			path = "lira_nude", 
+			path = "lira_nude_body", 
 			face_path = "lira", # TODO change
 			unlock_reqs = []
 			},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -61,6 +61,10 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 
+[sub_resource type="DynamicFont" id=13]
+size = 32
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
@@ -83,6 +87,16 @@ font_path = "res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf"
 [sub_resource type="DynamicFont" id=7]
 size = 18
 font_data = SubResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
 
 [node name="MansionJobModule" type="Panel"]
 margin_right = 1920.0
@@ -262,11 +276,11 @@ align = 2
 
 [node name="desc" type="RichTextLabel" parent="Frame_farm/char_panel"]
 margin_left = 823.0
-margin_top = 436.0
+margin_top = 410.0
 margin_right = 1273.0
 margin_bottom = 878.0
-custom_fonts/normal_font = ExtResource( 53 )
-text = "Farming Description"
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
 
 [node name="Resourses" type="ScrollContainer" parent="."]
 visible = false
@@ -548,6 +562,7 @@ expand = true
 stretch_mode = 6
 
 [node name="OccupationLabel" type="Label" parent="."]
+visible = false
 margin_left = 564.0
 margin_top = 45.0
 margin_right = 802.0
@@ -734,9 +749,6 @@ margin_right = 599.0
 margin_bottom = 1033.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Modlabel" type="Label" parent="."]
 visible = false
@@ -752,6 +764,7 @@ __meta__ = {
 }
 
 [node name="BrothelRules" type="Panel" parent="."]
+visible = false
 margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0
@@ -906,23 +919,47 @@ custom_fonts/normal_font = ExtResource( 53 )
 text = "add description"
 
 [node name="mod_select" type="HBoxContainer" parent="."]
-margin_left = 827.446
-margin_top = 52.2182
-margin_right = 1286.45
-margin_bottom = 99.2182
+margin_left = 427.446
+margin_top = 44.2182
+margin_right = 1047.45
+margin_bottom = 103.218
 
 [node name="occupation" type="Button" parent="mod_select"]
-margin_right = 227.0
-margin_bottom = 47.0
+margin_right = 308.0
+margin_bottom = 59.0
 size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_focus = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.772549, 0.772549, 0.772549, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 toggle_mode = true
 pressed = true
 text = "MSLMOCCU"
+clip_text = true
 
 [node name="farm" type="Button" parent="mod_select"]
-margin_left = 231.0
-margin_right = 459.0
-margin_bottom = 47.0
+margin_left = 312.0
+margin_right = 620.0
+margin_bottom = 59.0
 size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_focus = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.772549, 0.772549, 0.772549, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 toggle_mode = true
 text = "FARM_LABEL"
+clip_text = true
