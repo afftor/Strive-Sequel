@@ -48,6 +48,7 @@ func update(person = null):
 		$ragdoll.test_mode = false
 		$ragdoll.rebuild(person)
 		$ragdoll.rebuild_cloth(true)
+#		$ragdoll.rebuild_underwear()
 	else:
 		$Body.texture = person.get_body_image()
 		$Body.visible = body_visible

@@ -4079,7 +4079,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		lacy_1 = [
+		lacy_underwear = [ #for test
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
@@ -4115,7 +4115,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		lacy_2 = [
+		seethrough_underwear = [ #for test
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
@@ -4431,7 +4431,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
-		lacy_1 = [
+		lacy_underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},
@@ -4445,7 +4445,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
 		],
-		lacy_2 = [
+		seethrough_underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},

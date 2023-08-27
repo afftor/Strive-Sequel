@@ -236,6 +236,62 @@ func rebuild_cloth(value):
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
 
 
+func rebuild_underwear():
+	if !is_visible_in_tree():
+		return
+	#first pass - textures
+	for stat in ['cloth']:
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = true
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if !(transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+	for stat in [
+		'armor_base_underwear', 
+		'armor_lower_underwear', 'armor_collar']:
+		var st_val = _get_stat(stat)
+		stat = stat.trim_suffix('_underwear')
+		if !GeneratorData.transforms.has(stat):
+			continue
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if !(transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+	#second pass - all others
+	for stat in ['cloth']:
+		if !GeneratorData.transforms.has(stat):
+			continue
+		var st_val = true
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if (transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+	for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar',
+	 'armor_base_underwear', 
+	'armor_lower_underwear', 'armor_collar']:
+		var st_val = _get_stat(stat)
+		stat = stat.trim_suffix('_underwear')
+		if !GeneratorData.transforms.has(stat):
+			continue
+		if !GeneratorData.transforms[stat].has(st_val):
+			continue
+		for transform in GeneratorData.transforms[stat][st_val]:
+			if (transform.type in ['texture']):
+				continue
+			apply_transform(transform)
+	
+	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
+	_root.render_target_update_mode = Viewport.UPDATE_ONCE
+
+
 func apply_transform(transform):
 	match transform.type:
 		'texture':
