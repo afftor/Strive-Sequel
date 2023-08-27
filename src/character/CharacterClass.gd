@@ -121,6 +121,13 @@ func get_stat(statname, ref = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = 'servant'
 				return res
+			'armor_base_underwear', 'armor_lower_underwear':
+				var res = equipment.get_gear_type('underwear')
+				if res == null and !has_work_rule('nudity'):
+					res = 'underwear'
+				if res != null and has_work_rule('nudity'):
+					res = null
+				return res
 			'armor_collar':
 				var res = equipment.get_gear_type('neck')
 				if !GeneratorData.transforms[statname].has(res):
