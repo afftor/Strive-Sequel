@@ -584,6 +584,7 @@ mouse_filter = 2
 [node name="icon" type="TextureRect" parent="StatsModule/StatsContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
+stretch_mode = 4
 
 [node name="button" type="HBoxContainer" parent="StatsModule/StatsContainer/Button"]
 margin_left = 50.2379
