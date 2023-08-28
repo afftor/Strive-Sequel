@@ -2012,10 +2012,6 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_default.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_default.png"},
 		],
-		fringe2 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_fringe 2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_fringe 2.png"},
-		],
 		fringe = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_fringe.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', texture = "res://Character_generator/images/04_hairs_fringe/hair_fringe_fringe.png"},
