@@ -128,19 +128,19 @@ var params_to_save = [ #memo mostly
 	'body_color_horns', 
 	'body_color_animal', 
 	'hair_base', 
-	'hair_fringe', 
+	'hair_base_lenght', 
+	'hair_fringe',
+	'hair_fringe_lenght',  
 	'hair_assist', 
-	'hair_back', 
+	'hair_assist_lenght' , 
+	'hair_back',
+	'hair_back_lenght' ,  
 	'hair_back_color_1',
 	'hair_back_color_2',
 	'hair_assist_color_1',
 	'hair_assist_color_2',
 	'hair_base_color_1',
 	'hair_base_color_2',
-	'hair_base_lenght', 
-	'hair_fringe_lenght', 
-	'hair_back_lenght' , 
-	'hair_assist_lenght' , 
 ]
 
 onready var RaceSelection = $RaceSelectionModule
@@ -452,6 +452,7 @@ func build_node_for_stat(stat):
 	if !node.has_meta('signals_built'):
 		node.get_node('button/LArr').connect('pressed', self, 'change_value_node', [stat, -1])
 		node.get_node('button/RArr').connect('pressed', self, 'change_value_node', [stat, 1])
+		node.get_node('button').connect('pressed', self, 'change_value_node', [stat, 1])
 		node.set_meta('signals_built', true)
 	node.set_meta('current_val', val)
 	node.get_node('button/Label').text = text

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -73,6 +73,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_hover.png" type="Texture" id=71]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_active.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_add_upgrades.png" type="Texture" id=73]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=74]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -156,7 +157,6 @@ text = "Visuals"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 margin_left = 132.0
 margin_top = 219.0
 margin_right = 565.0
@@ -584,6 +584,7 @@ mouse_filter = 2
 [node name="icon" type="TextureRect" parent="StatsModule/StatsContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
+stretch_mode = 4
 
 [node name="button" type="HBoxContainer" parent="StatsModule/StatsContainer/Button"]
 margin_left = 50.2379
@@ -641,18 +642,16 @@ texture = ExtResource( 62 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VisualsModule"]
 margin_left = 10.0
-margin_top = 288.0
+margin_top = 299.0
 margin_right = 515.0
 margin_bottom = 730.0
+theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VisualsModule/ScrollContainer"]
-margin_right = 171.0
-margin_bottom = 39.0
+margin_bottom = 4.0
 
 [node name="StatsContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
-margin_right = 171.0
-margin_bottom = 35.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
@@ -660,7 +659,7 @@ margin_right = 171.0
 margin_bottom = 35.0
 
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
-margin_right = 171.0
+margin_right = 236.0
 margin_bottom = 35.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -674,7 +673,10 @@ margin_right = 236.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 200, 36 )
 theme = ExtResource( 28 )
-texture = ExtResource( 63 )
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 63 )
+texture_hover = ExtResource( 63 )
+texture_focused = ExtResource( 63 )
 
 [node name="LArr" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
 anchor_top = 0.5
@@ -713,9 +715,8 @@ texture_pressed = ExtResource( 65 )
 texture_hover = ExtResource( 67 )
 
 [node name="StatsContainer2" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer"]
-margin_top = 39.0
-margin_right = 171.0
-margin_bottom = 39.0
+margin_top = 4.0
+margin_bottom = 4.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2"]
@@ -789,7 +790,11 @@ margin_left = 14.0
 margin_top = 79.0
 margin_right = 508.0
 margin_bottom = 286.0
+theme = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 74 )
 bbcode_enabled = true
+bbcode_text = "test text"
+text = "test text"
 
 [node name="DietPanel" type="TextureRect" parent="."]
 margin_left = 674.045
@@ -994,6 +999,7 @@ custom_fonts/normal_font = ExtResource( 2 )
 text = "Select 1 Liked and at least 1 Hated food types."
 
 [node name="UpgradesPanel" type="TextureRect" parent="."]
+visible = false
 margin_left = 129.588
 margin_top = 137.179
 margin_right = 564.588
