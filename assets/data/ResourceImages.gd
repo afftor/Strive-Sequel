@@ -395,8 +395,8 @@ var sprites = {
 	jean_wed_body = load("res://assets/images/sprites/jean_wed_body.png"),
 	heleviel_nude = load("res://assets/images/sprites/heleviel_nude.png"),
 	heleviel_nude_body = load("res://assets/images/sprites/heleviel_nude_body.png"),
-	lira_nude = load("res://assets/images/sprites/lira_nude.png"),
-	lira_nude_body = load("res://assets/images/sprites/lira_nude_body.png"),
+	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
+	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	
 	}
 

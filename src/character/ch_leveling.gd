@@ -948,9 +948,11 @@ func get_progress_farm(res):
 	var task = races.farm_tasks[res]
 	return call(task.formula)
 
+func get_farming_limit():
+	return max(parent.get_ref().get_stat('growth_factor') - 2, 1)
 
 func can_add_farming():
-	var n = parent.get_ref().get_stat('growth_factor') - 2
+	var n = get_farming_limit()
 	for res in variables.farming_rules:
 		if farming_rules[res]:
 			n -= 1

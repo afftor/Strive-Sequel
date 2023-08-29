@@ -84,9 +84,6 @@ region_rect = Rect2( 0, 0, 210, 58 )
 
 [node name="Menu" type="Control"]
 script = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="TextureRect" parent="."]
 margin_right = 2160.0

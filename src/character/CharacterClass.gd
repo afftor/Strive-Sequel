@@ -801,6 +801,8 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 func get_progress_farm(res):
 	return xp_module.get_progress_farm(res)
 
+func get_farming_limit():
+	return xp_module.get_farming_limit()
 
 func can_add_farming():
 	return xp_module.can_add_farming()

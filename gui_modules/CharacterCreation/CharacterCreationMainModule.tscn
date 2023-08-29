@@ -655,9 +655,8 @@ margin_bottom = 4.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
-visible = false
-margin_right = 236.0
-margin_bottom = 79.0
+margin_right = 171.0
+margin_bottom = 35.0
 
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_right = 236.0
@@ -667,7 +666,8 @@ custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
-[node name="button" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+[node name="button" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+visible = false
 margin_top = 39.0
 margin_right = 236.0
 margin_bottom = 79.0
