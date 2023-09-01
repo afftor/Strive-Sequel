@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -74,6 +74,13 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_stats_active.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/panel_add_upgrades.png" type="Texture" id=73]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=74]
+[ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=75]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=76]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=77]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=78]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=79]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=80]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/icon_money.png" type="Texture" id=81]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -497,6 +504,13 @@ texture = ExtResource( 36 )
 mode = 3
 range_item_cull_mask = 4
 
+[node name="TextureRect" type="TextureRect" parent="RagdollPanel"]
+visible = false
+margin_right = 548.0
+margin_bottom = 738.0
+expand = true
+stretch_mode = 6
+
 [node name="frame" type="TextureRect" parent="RagdollPanel"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -655,8 +669,9 @@ margin_bottom = 4.0
 columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer"]
-margin_right = 171.0
-margin_bottom = 35.0
+visible = false
+margin_right = 236.0
+margin_bottom = 79.0
 
 [node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_right = 236.0
@@ -666,8 +681,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
-[node name="button" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
-visible = false
+[node name="button" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_top = 39.0
 margin_right = 236.0
 margin_bottom = 79.0
@@ -676,6 +690,7 @@ theme = ExtResource( 28 )
 texture_normal = ExtResource( 63 )
 texture_pressed = ExtResource( 63 )
 texture_hover = ExtResource( 63 )
+texture_disabled = ExtResource( 63 )
 texture_focused = ExtResource( 63 )
 
 [node name="LArr" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/button"]
@@ -1006,18 +1021,49 @@ margin_right = 564.588
 margin_bottom = 881.179
 texture = ExtResource( 73 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesPanel"]
+[node name="scroll" type="ScrollContainer" parent="UpgradesPanel"]
 margin_left = 28.0
 margin_top = 103.0
 margin_right = 407.0
-margin_bottom = 702.0
+margin_bottom = 632.0
+scroll_horizontal_enabled = false
 
-[node name="Button" type="Label" parent="UpgradesPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesPanel/scroll"]
+
+[node name="Button" type="TextureButton" parent="UpgradesPanel/scroll/VBoxContainer"]
 visible = false
-margin_right = 379.0
-margin_bottom = 35.0
+margin_right = 340.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 300, 51 )
+theme = ExtResource( 76 )
+toggle_mode = true
+texture_normal = ExtResource( 79 )
+texture_pressed = ExtResource( 77 )
+texture_hover = ExtResource( 78 )
+
+[node name="UpgradeName" type="Label" parent="UpgradesPanel/scroll/VBoxContainer/Button"]
+margin_left = 54.0
+margin_top = 6.0
+margin_right = 336.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "updrade"
+text = "Character Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="UpgradesPanel/scroll/VBoxContainer/Button"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 75 )
+expand = true
+stretch_mode = 6
 
 [node name="TextureRect" type="TextureRect" parent="UpgradesPanel"]
 margin_left = 3.0
@@ -1037,6 +1083,47 @@ custom_fonts/font = ExtResource( 2 )
 text = "Additional upgrades"
 align = 1
 valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesPanel"]
+margin_left = 21.0
+margin_top = 638.135
+margin_right = 418.0
+margin_bottom = 678.135
+
+[node name="Label" type="Label" parent="UpgradesPanel/HBoxContainer"]
+margin_top = 8.0
+margin_right = 129.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 80 )
+text = "Upgrade points: "
+
+[node name="Label2" type="Label" parent="UpgradesPanel/HBoxContainer"]
+margin_left = 133.0
+margin_top = 8.0
+margin_right = 159.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 80 )
+text = "0/0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradesPanel"]
+margin_left = 18.1716
+margin_top = 686.218
+margin_right = 415.172
+margin_bottom = 726.218
+custom_constants/separation = 20
+
+[node name="Label" type="TextureRect" parent="UpgradesPanel/HBoxContainer2"]
+margin_right = 45.0
+margin_bottom = 45.0
+texture = ExtResource( 81 )
+
+[node name="Label2" type="Label" parent="UpgradesPanel/HBoxContainer2"]
+margin_left = 65.0
+margin_top = 10.0
+margin_right = 91.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 80 )
+text = "0/0"
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_left = 830.0

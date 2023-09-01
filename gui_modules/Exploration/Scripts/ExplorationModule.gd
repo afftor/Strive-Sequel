@@ -1561,6 +1561,7 @@ func show_full_info(person = null):
 
 
 func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_anim = true):
+	person_to_hire = null
 	$SlaveMarket/HireMode.pressed = true
 	$SlaveMarket/SellMode.pressed = false
 	market_mode = mode
@@ -1622,8 +1623,15 @@ func show_upgrade_window():
 
 
 func show_bodyupgrade_window():
-	gui_controller.close_top_window()
-	$SlaveMarket.hide()
+#	if person_to_hire == null:
+#		return
+#	if !person_to_hire.is_players_character or !person_to_hire.is_active:
+#		return #should add here message
+#	var person = person_to_hire
+#	gui_controller.close_top_window()
+#	$SlaveMarket.hide()
+#	input_handler.get_spec_node(input_handler.NODE_CHAREDIT, [person])
+
 	if !gui_controller.windows_opened.has($StatsUpgrade):
 		gui_controller.windows_opened.append($StatsUpgrade)
 	$BodyUpgrade.show()
@@ -1638,6 +1646,7 @@ func change_mode(mode):
 		sell_slave()
 
 func sell_slave():
+	person_to_hire = null
 	$SlaveMarket/HireMode.pressed = false
 	$SlaveMarket/SellMode.pressed = true
 	if !active_faction.slaves.empty():
@@ -1676,7 +1685,7 @@ func sell_slave():
 func show_slave_info(person):
 	person_to_hire = person
 	$SlaveMarket/HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
-	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
+	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = (hiremode == 'sell') and true #add correct condition here
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue

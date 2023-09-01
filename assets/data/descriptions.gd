@@ -5,9 +5,10 @@ var person
 func _init():
 	for i in bodypartsdata:
 		for k in bodypartsdata[i].values():
-			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
-#			text += k.name + ' = "' + k.code + '",\n'
-			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+			if k.code != null:
+				k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+#				text += k.name + ' = "' + k.code + '",\n'
+				k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 #	var file = File.new()
 #	file.open(globals.userfolder + "storednames.ini", File.WRITE)
 #	file.store_line(text)
@@ -435,6 +436,8 @@ var bodypartsdata = {
 		slit = {code = 'slit', name = '', chardescript = '', bodychanges = []},
 	},
 	horns = {
+		"": {code = "", name = 'NO', chardescript = '', bodychanges = []},
+		null: {code = null, name = 'NO', chardescript = '', bodychanges = []},
 		short = {code = 'short', name = '', chardescript = '', bodychanges = []},
 		straight = {code = 'straight', name = '', chardescript = '', bodychanges = []},
 		curved = {code = 'curved', name = '', chardescript = '', bodychanges = []},
@@ -483,6 +486,8 @@ var bodypartsdata = {
 		fur_orange_white = {code = 'fur_orange_white', name = '', chardescript = '', bodychanges = []},
 	},
 	wings = {
+		"": {code = "", name = 'NO', chardescript = '', bodychanges = []},
+		null: {code = null, name = 'NO', chardescript = '', bodychanges = []},
 		feathered_black = {code = 'feathered_black', name = '', chardescript = '', bodychanges = []},
 		seraph = {code = 'seraph', name = '', chardescript = '', bodychanges = []},
 		feathered_brown = {code = 'feathered_brown', name = '', chardescript = '', bodychanges = []},
@@ -493,6 +498,8 @@ var bodypartsdata = {
 		leather_red = {code = 'leather_red', name = '', chardescript = '', bodychanges = []},
 	},
 	tail = {
+		"": {code = "", name = 'NO', chardescript = '', bodychanges = []},
+		null: {code = null, name = 'NO', chardescript = '', bodychanges = []},
 		cat = {code = 'cat', name = '', chardescript = '', bodychanges = []},
 		fox = {code = 'fox', name = '', chardescript = '', bodychanges = []},
 		wolf = {code = 'wolf', name = '', chardescript = '', bodychanges = []},
