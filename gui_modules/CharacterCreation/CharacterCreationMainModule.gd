@@ -1,5 +1,7 @@
 extends Panel
 
+export var testmode = false
+
 var person
 var mode #added freemode - to EDIT existing chars
 var total_stat_points
@@ -66,7 +68,7 @@ var freemode_fixed_stats = [
 
 var selected_class = ''
 
-var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
+var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave', freemode = ""}
 
 var savefilename
 var saveloadstate
@@ -185,7 +187,8 @@ func _ready():
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	$BackButton.connect("pressed", self, "Exit")
 	$BackButtonCheats.connect("pressed", self, "hide")
-	open()
+	if testmode:
+		open()
 
 
 func build_stats():
@@ -210,6 +213,7 @@ func build_visuals():
 	if mode == 'freemode':
 		$UpgradesPanel.visible = true
 		$VBoxContainer.visible = false
+
 
 
 func if_can_assign(stat, value):
@@ -251,6 +255,9 @@ func build_possible_vals():
 
 
 func build_possible_val_for_stat(stat):
+	if person.is_unique():
+		possible_vals[stat] = []
+		return
 	if stat.ends_with('factor'):
 		possible_vals[stat] = [1, 2, 3, 4, 5]
 		if stat in ['timid_factor','tame_factor'] and mode == 'master':
@@ -442,7 +449,7 @@ func build_node_for_stat(stat):
 		if ResourceScripts.descriptions.bodypartsdata[stat].has(val):
 			text = tr(ResourceScripts.descriptions.bodypartsdata[stat][val].name)
 		else:
-			print ("warning - no description record for %s - %s" % [str(stat), str(val)])
+#			print ("warning - no description record for %s - %s" % [str(stat), str(val)])
 			text = str(val)
 	else:
 #		print ("warning - no description record for %s" % str(stat))
@@ -459,6 +466,15 @@ func build_node_for_stat(stat):
 
 
 func rebuild_ragdoll(stat = null):
+	var stored_image = person.get_stored_body_image()
+	if stored_image != null:
+		$RagdollPanel/TextureRect.texture = stored_image
+		$RagdollPanel/TextureRect.visible = true
+		ragdoll.visible = false
+		return
+	else:
+		$RagdollPanel/TextureRect.visible = false
+		ragdoll.visible = true
 	#temp
 	if stat == null:
 		ragdoll.rebuild(person)
@@ -576,6 +592,7 @@ func check_food_filter():
 func build_food_filter():
 	var val = {}
 	if mode == 'freemode':
+		preservedsettings.food_filter = {}
 		for food in foods:
 			val[food] = 'neutral'
 			preservedsettings.food_filter[food] = 'neutral'
@@ -671,22 +688,30 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	$BackButton.visible = type != 'slave' || is_from_cheats
 	$BackButtonCheats.visible = is_from_cheats
+	$SaveButton.visible = true
+	$LoadButton.visible = true
 	build_food_filter()
 	rebuild_slave()
 
 
 func open_freemode(char_to_open):
+	person = char_to_open
 	preservedsettings.clear()
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
 	mode = 'freemode'
+	build_visuals()
 	build_possible_vals()
+	init_upgrades()
 	FillStats()
 	build_class()
 	build_food_filter()
 	build_race()
 	build_trait()
 	build_sex_trait()
+	rebuild_ragdoll()
+	$SaveButton.visible = false
+	$LoadButton.visible = false
 
 
 
@@ -780,6 +805,8 @@ func finish_character():
 		input_handler.emit_signal("CharacterCreated")
 		input_handler.add_random_chat_message(person, 'hire')
 	else:
+		ResourceScripts.game_res.money -= upgradecostgold
+		person.statlist.body_upgrades = cur_upgrades.duplicate()
 		person.recheck_upgrades()
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
@@ -794,12 +821,16 @@ func text_changed(text, value):
 
 
 func check_confirm_possibility():
-	if !check_food_filter():
-		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
-		return false
+	if mode != 'freemode':
+		if !check_food_filter():
+			input_handler.SystemMessage("You must select one liked and at least one hated food type.")
+			return false
+		
+		if !check_class_possibility():
+			input_handler.SystemMessage("You must select a correct starting Class")
+			return false
 	
-	if !check_class_possibility():
-		input_handler.SystemMessage("You must select a correct starting Class")
+	if !check_upgrades():
 		return false
 	
 	return true
@@ -1142,21 +1173,64 @@ func hide_all_dialogues():
 	TraitSelection.hide()
 	ClassSelection.hide()
 
+var upgradecost = 0
+var upgradecostgold = 0
+var cur_upgrades = []
+
+func init_upgrades():
+	upgradecost = 0
+	upgradecostgold = 0
+	cur_upgrades = person.statlist.body_upgrades.duplicate()
+
 
 func build_upgrades(): #check confirmation at the same time
 	var res = true
-	input_handler.ClearContainer($UpgradesPanel/VBoxContainer, ['Button'])
-	for upg in person.statlist.body_upgrades:
-		if !Traitdata.body_upgrades.has(upg):
-			continue
+	upgradecost = 0
+	upgradecostgold = 0
+	input_handler.ClearContainer($UpgradesPanel/scroll/VBoxContainer, ['Button'])
+	for upg in Traitdata.body_upgrades:
 		var upgdata = Traitdata.body_upgrades[upg]
-		var newnode = input_handler.DuplicateContainerTemplate($UpgradesPanel/VBoxContainer, 'Button')
+		var newnode = input_handler.DuplicateContainerTemplate($UpgradesPanel/scroll/VBoxContainer, 'Button')
 		globals.connecttexttooltip(newnode, tr(upgdata.descript))
-		newnode.text = tr(upgdata.name)
-		if person.checkreqs(upgdata.reqs):
-			newnode.set("custom_colors/font_color", Color(variables.hexcolordict.k_yellow))
+		newnode.get_node('UpgradeName').text = tr(upgdata.name)
+		newnode.connect('pressed', self, 'toggle_upgrade', [upg])
+		if upgdata.icon is String:
+			newnode.get_node('icon').texture = load(upgdata.icon)
 		else:
-			newnode.set("custom_colors/font_color", Color(variables.hexcolordict.k_red))
-			newnode.text += ' !'
-			res = false
+			newnode.get_node('icon').texture = upgdata.icon
+		if cur_upgrades.has(upg):
+			if !person.statlist.body_upgrades.has(upg):
+				upgradecost += upgdata.cost
+				upgradecostgold += upgdata.goldcost
+			newnode.pressed = true
+			if person.checkreqs(upgdata.reqs):
+				newnode.get_node('UpgradeName').set("custom_colors/font_color", Color(variables.hexcolordict.k_yellow))
+			else:
+				newnode.get_node('UpgradeName').set("custom_colors/font_color", Color(variables.hexcolordict.k_red))
+				newnode.get_node('UpgradeName').text += ' !'
+				res = false
+		else:
+			newnode.pressed = false
+			if !person.checkreqs(upgdata.reqs):
+				newnode.disabled = true
+	$UpgradesPanel/HBoxContainer/Label2.text = "%d/%d" % [upgradecost, person.get_upgrade_points()]
+	$UpgradesPanel/HBoxContainer2/Label2.text = "%d/%d" % [upgradecostgold, ResourceScripts.game_res.money]
 	return res
+
+
+func toggle_upgrade(upg):
+	if cur_upgrades.has(upg):
+		cur_upgrades.erase(upg)
+	else:
+		cur_upgrades.push_back(upg)
+	build_upgrades()
+
+
+func check_upgrades():
+	if upgradecost > person.get_upgrade_points():
+		input_handler.SystemMessage("Too much upgrades for this character")
+		return false
+	if upgradecostgold > ResourceScripts.game_res.money:
+		input_handler.SystemMessage("Not enough money")
+		return false
+	return true

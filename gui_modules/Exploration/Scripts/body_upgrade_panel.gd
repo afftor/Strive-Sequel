@@ -31,11 +31,12 @@ func show_characters_panel():
 
 
 func select_char(character):
-	person = character
-	active_upgrade = null
-	$UpgradeList.show()
-	$StatsPanel.hide()
-	update_buttons()
+#	person = character
+#	active_upgrade = null
+#	$UpgradeList.show()
+#	$StatsPanel.hide()
+#	update_buttons()
+	input_handler.get_spec_node(input_handler.NODE_CHAREDIT, [character])
 
 
 

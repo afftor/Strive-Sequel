@@ -586,6 +586,8 @@ func fix_main_data():
 	#fix descriptions bodypartsdata
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		for k in ResourceScripts.descriptions.bodypartsdata[i].values():
+			if k.code == null:
+				continue
 			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 		
