@@ -90,9 +90,6 @@ margin_right = 2160.0
 margin_bottom = 1080.0
 texture = ExtResource( 27 )
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = -3.0

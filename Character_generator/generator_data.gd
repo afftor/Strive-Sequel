@@ -3848,8 +3848,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_kobold2.png"},
 		],
 		loli = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_loli.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_loli.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
 		],
 		skinny = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_long_skinny.png"},
@@ -3920,9 +3920,9 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_kobold.png"},
 		],
-		loli = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_loli.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_loli.png"},
+		small = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_small.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_small.png"},
 		],
 		straight = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Nose_tex', texture = "res://Character_generator/images/03_noses/nose_straight.png"},

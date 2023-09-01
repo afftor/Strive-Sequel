@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/head_chin_loli.png-c31d85f14cddb3b95e5ede938b80940d.stex"
+path="res://.import/heleviel_wed.png-22c9c8e81df1d93c07fabc4b90b4e037.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/01_heads/head_chin_loli.png"
-dest_files=[ "res://.import/head_chin_loli.png-c31d85f14cddb3b95e5ede938b80940d.stex" ]
+source_file="res://assets/images/sprites/heleviel_wed.png"
+dest_files=[ "res://.import/heleviel_wed.png-22c9c8e81df1d93c07fabc4b90b4e037.stex" ]
 
 [params]
 

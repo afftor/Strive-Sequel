@@ -1191,7 +1191,9 @@ func build_upgrades(): #check confirmation at the same time
 	for upg in Traitdata.body_upgrades:
 		var upgdata = Traitdata.body_upgrades[upg]
 		var newnode = input_handler.DuplicateContainerTemplate($UpgradesPanel/scroll/VBoxContainer, 'Button')
-		globals.connecttexttooltip(newnode, tr(upgdata.descript))
+		
+		var text = person.translate(tr(upgdata.descript)) + "\nPrice: " + str(upgdata.goldcost) + "\nUpgrade Points: " + str(upgdata.cost) 
+		globals.connecttexttooltip(newnode, text)
 		newnode.get_node('UpgradeName').text = tr(upgdata.name)
 		newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 		if upgdata.icon is String:

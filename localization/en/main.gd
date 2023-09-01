@@ -2555,8 +2555,15 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTHAS_PUSSYFALSE = " ",
 	BODYPARTVAGINAL_VIRGINTRUE_TRUE = "is a virgin",
 	BODYPARTVAGINAL_VIRGINTRUE_FALSE = "is not a virgin",
-
-
+	BODYPARTNOSEDEFAULT = "nose1",
+	BODYPARTNOSESMALL = "nose2",
+	BODYPARTNOSESTRAIGHT = "nose3",
+	BODYPARTCHINDEFAULT = "chin1",
+	BODYPARTCHINCURVE = "chin2",
+	BODYPARTCHINSMALL = "chin3",
+	BODYPARTCHINSKINNY = "chin4",
+	BODYPARTCHINSHORT = "chin5",
+	
 	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] {color=yellow|anal virginity} has not been claimed by anyone yet.",
 	BODYPARTANAL_VIRGINFALSEDESCRIPT = "[His] ass is trained enough for penetration.",
 
@@ -12795,6 +12802,25 @@ Hotkey: 3""",
 	DISCIPLINE_LABEL = "Discipline",
 	TRAINING_LABEL = "Training",
 	LOCATION_LABEL = "Location",
+	
+	BODYUPGRADENAME_UPGRADE_THICK_SKIN = "Thick Skin",
+	BODYUPGRADEDESCRIPT_UPGRADE_THICK_SKIN = "[name]'s skin will be much more resilent to magical effects. MDEF +10. Incompatible with Fur/Scales.",
+	BODYUPGRADENAME_UPGRADE_THICK_COVERAGE = "Thick Coverage",
+	BODYUPGRADEDESCRIPT_UPGRADE_THICK_COVERAGE = "[name]'s fur or scales will be hardened at will for combat. DEF +10. Must have fur or scales.",
+	BODYUPGRADENAME_UPGRADE_NIPPLES = "Hollow Nipples",
+	BODYUPGRADEDESCRIPT_UPGRADE_NIPPLES = "[name]'s nipples will be modified to allow insertion of object into them, providing lubrication and act as erogenous zones. Must have above average breast size. Prositution Income + 10%",
+	BODYUPGRADENAME_UPGRADE_TONGUE = "Elongated Tongue",
+	BODYUPGRADEDESCRIPT_UPGRADE_TONGUE = "[name]'s tongue will be modified to much longer length allowing to be used in more advance sexual performances. Prositution Income + 10%",
+	BODYUPGRADENAME_UPGRADE_EGGS = "Oviposition",
+	BODYUPGRADEDESCRIPT_UPGRADE_EGGS = "[name]'s womb will be modified to allow production of eggs at the farm. Impregnation is still possible.",
+	BODYUPGRADENAME_UPGRADE_SILK = "Silk Secretion",
+	BODYUPGRADEDESCRIPT_UPGRADE_SILK = "[name]'s body will be modified to produce high quality silk at the farm.",
+	BODYUPGRADENAME_UPGRADE_STRONGARM = "Strong Arms",
+	BODYUPGRADEDESCRIPT_UPGRADE_STRONGARM = "[name]'s arms will be strong enough to wield two-handed melee weapons in one hand.",
+	BODYUPGRADENAME_UPGRADE_RESIST = "Magic Resist",
+	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "[name]'s magic resistance will allow to negate enemy spells with 25% chance.",
+	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Thick Blood",
+	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] will gain immunity to bleed and poison.",
 }
 
 

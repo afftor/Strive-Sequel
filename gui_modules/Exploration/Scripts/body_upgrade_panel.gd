@@ -1,6 +1,5 @@
 extends Control
 
-onready var StatsContainer = $StatsPanel/StatsVBox
 onready var CharList = $CharList/ScrollContainer/CharactersVBox
 onready var UpgList = $UpgradeList/ScrollContainer/upgrades
 

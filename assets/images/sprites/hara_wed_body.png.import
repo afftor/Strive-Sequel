@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/nose_loli.png-0309397c8b2348b16d07550c53a70dee.stex"
+path="res://.import/hara_wed_body.png-3edf58e611ac16a682e3a5ba8a307a5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/03_noses/nose_loli.png"
-dest_files=[ "res://.import/nose_loli.png-0309397c8b2348b16d07550c53a70dee.stex" ]
+source_file="res://assets/images/sprites/hara_wed_body.png"
+dest_files=[ "res://.import/hara_wed_body.png-3edf58e611ac16a682e3a5ba8a307a5b.stex" ]
 
 [params]
 
