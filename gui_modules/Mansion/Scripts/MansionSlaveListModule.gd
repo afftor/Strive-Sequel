@@ -463,7 +463,7 @@ func update_button(newbutton):
 		newbutton.get_node("job/Label").text = tr("TASKMISSION")
 	else:
 		if !gatherable:
-			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
+			newbutton.get_node("job/Label").text = tasks.tasklist[person.get_work()].name
 		else:
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 	

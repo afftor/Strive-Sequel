@@ -266,7 +266,7 @@ func update_button(newbutton, person):
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 	else:
 		if !gatherable:
-			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
+			newbutton.get_node("job/Label").text = tasks.tasklist[person.get_work()].name
 		else:
 			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
 
@@ -274,7 +274,7 @@ func update_button(newbutton, person):
 func can_add_worker():
 	var count = 0
 	var max_count
-	var task = races.tasklist.building
+	var task = tasks.tasklist.building
 	max_count = task.base_workers + task.workers_per_upgrade * ResourceScripts.game_res.findupgradelevel(task.upgrade_code)
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]

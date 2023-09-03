@@ -48,7 +48,7 @@ func update():
 			else:
 				newnode.get_node("ToolIcon").texture = null
 		else:
-			var task = races.tasklist[work]
+			var task = tasks.tasklist[work]
 			if task.has('production_icon'):
 				newnode.get_node("TaskIcon").texture = task.production_icon
 				globals.connecttexttooltip(newnode.get_node("TaskIcon"), tr(task.descript))

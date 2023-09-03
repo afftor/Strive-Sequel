@@ -144,6 +144,8 @@ var TranslationDict = {
 	PRONOUNHUSBANDF = "wife",
 	PRONOUNGROOM = "groom",
 	PRONOUNGROOMF = "bride",
+	PRONOUNBOY = "boy", 
+	PRONOUNBOYF = "girl",
 	
 	
 	
@@ -567,6 +569,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALINK_LUST = "Ink: Passion",
 	MATERIALINK_HP = "Ink: Nature",
 	MATERIALINK_MP = "Ink: Spiritual",
+	MATERIALSPIDER_SILK = "Spider Silk",
+	MATERIALSPIDER_SILKADJ = "Silk",
+	MATERIALSPIDER_SILkDESCRIPT = "Special quality silk usually obtained from arachnae race. ",
+	MATERIALDRACONIC_SCALES = "Draconic Scales",
+	MATERIALDRACONIC_SCALESDESCRIPT = "Dragon parts are adorned for both its prettiness and superior quality.",
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
 	MATERIALINK_TRIBAL = "Ink: Power",

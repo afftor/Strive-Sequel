@@ -47,7 +47,7 @@ func update_button(newbutton):
 	if person.get_work() == '':
 		newbutton.get_node("HBoxContainer/job").text = tr("TASKREST")
 	else:
-		newbutton.get_node("HBoxContainer/job").text = races.tasklist[person.get_work()].name
+		newbutton.get_node("HBoxContainer/job").text = tasks.tasklist[person.get_work()].name
 	
 	if !person.check_infinite_obedience():
 #		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.xp_module.predict_obed_time()))

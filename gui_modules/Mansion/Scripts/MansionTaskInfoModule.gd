@@ -1,7 +1,7 @@
 extends Control
 
 
-var tasks = ["resources", "upgrades"]
+var task_options = ["resources", "upgrades"]
 var task_index = 0
 
 onready var TaskContainer = $TaskList/ScrollContainer/VBoxContainer
@@ -19,16 +19,16 @@ func update_progresses():
 
 
 func change_button():
-	if task_index == tasks.size() - 1:
+	if task_index == task_options.size() - 1:
 		task_index = 0
 	else:
 		task_index += 1
-	$Button/Label.text = tasks[task_index].capitalize()
+	$Button/Label.text = task_options[task_index].capitalize()
 	# $Button.icon = icon # Should change Icon
 	show_task_info()
 
 func show_task_info():
-	match tasks[task_index]:
+	match task_options[task_index]:
 		"upgrades":
 			ClearContainerCustom(TaskContainer)
 			show_upgrades_info()
@@ -124,7 +124,7 @@ func show_resources_info():
 
 		elif task.product in ['recruiting']:
 			newtask.show()
-			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
+			newtask.get_node("Task/TaskIcon").texture = tasks.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
 			task_name = "recruiting"
@@ -135,7 +135,7 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").value = task.progress
 			task_name = task.name
 		elif task.product in ['gold']:
-			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production_icon
+			newtask.get_node("Task/TaskIcon").texture = tasks.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
 		else:
@@ -149,9 +149,9 @@ func show_resources_info():
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.product])
 			else:
-				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production_item].icon
-				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[races.tasklist[task_name].production_item])
-				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[races.tasklist[task_name].production_item])
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[tasks.tasklist[task_name].production_item].icon
+				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
+				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[tasks.tasklist[task_name].production_item])
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()

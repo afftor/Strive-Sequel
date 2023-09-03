@@ -405,7 +405,7 @@ func process_json_data_file(filepath : String, tablename : String):
 	process_dir(tablename, 'dialogues', scenedata.dialogue_inits)
 	process_dir(tablename, 'scene_quests',scenedata.quests)
 	process_dir(tablename, 'classes', classesdata.professions) #
-	process_dir(tablename, 'tasklist', races.tasklist)
+	process_dir(tablename, 'tasklist', tasks.tasklist)
 	process_dir(tablename, 'upgrades', upgradedata.upgradelist)
 #	process_dir(tablename, 'classes', classesdata.professions) #
 	
@@ -551,7 +551,7 @@ func fix_main_data():
 	
 	
 	#fix tasks
-	for i in races.tasklist.values():
+	for i in tasks.tasklist.values():
 		i.name = tr("TASK" + i.code.to_upper())
 		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
 

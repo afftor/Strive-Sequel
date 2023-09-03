@@ -204,11 +204,17 @@ func farm_blood():
 		res *= 0.5
 	return res
 
+func farm_lizard_skin():
+	return 2
+
 func farm_silk():
 	return 2.5
 
 func farm_scales():
 	return 3.0
+
+func farm_leatherdragon():
+	return 0.3
 
 func farm_light():
 	return (1.0 + 0.1 * parent.get_ref().get_stat('tame_factor'))

@@ -156,7 +156,7 @@ func update_status(newbutton, person):
 		newbutton.get_node("Status").texture = load(task.icon)
 	else:
 		if !gatherable:
-			var work = races.tasklist[person.get_work()]
+			var work = tasks.tasklist[person.get_work()]
 			if work.has("production_icon"):
 				newbutton.get_node("Status").texture = work.production_icon
 			elif work.has("production_item"):
@@ -297,7 +297,7 @@ func update_resources():
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-			var jobdata = races.tasklist[r_task]
+			var jobdata = tasks.tasklist[r_task]
 			if selected_job != null:
 				if selected_job.has("code"):
 					if selected_job.code == "recruiting":
@@ -324,7 +324,7 @@ func update_resources():
 		if (task.code == 'special') && (task.task_location == selected_location):
 			var current_workers_count = task.workers.size()
 			var newbutton = input_handler.DuplicateContainerTemplate($Resourses/GridContainer)
-			var jobdata = races.tasklist.special
+			var jobdata = tasks.tasklist.special
 			var max_workers_count = task.max_workers
 			var text = ""
 			text += str(current_workers_count) + "/" + str(max_workers_count)
@@ -366,7 +366,7 @@ func update_resources():
 				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 	else:
 		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
-		for i in races.tasklist.values():
+		for i in tasks.tasklist.values():
 			if i.code in ["rest", "brothel", "recruit_easy", "recruit_hard"] or i.tags.has('special'):
 				continue
 			if globals.checkreqs(i.reqs) == false:
@@ -432,7 +432,7 @@ func update_resources():
 		newbutton.set_meta("resource", resource)
 		
 		var t_job = item_dict
-		for i in races.tasklist.values():
+		for i in tasks.tasklist.values():
 			if i.has("production_item"):
 				if i.production_item == t_job.code:
 					t_job = i.duplicate(true)
@@ -731,7 +731,7 @@ func show_brothel_options():
 	
 	for i in brothel_rules.non_sex:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
-		if person.get_stat('sex') == "male" && races.gold_tasks_data[i].tags.has('has_alt_name'):
+		if person.get_stat('sex') == "male" && tasks.gold_tasks_data[i].tags.has('has_alt_name'):
 			newbutton.text = tr("BROTHEL"+i.to_upper() + "ALT")
 		else:
 			newbutton.text = tr("BROTHEL"+i.to_upper())
@@ -753,7 +753,7 @@ func show_brothel_options():
 		if person.get_work() == '':
 			newbutton.disabled = true
 		if person.is_master() == false:
-			if person.checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
+			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
 				if person.get_stat('slave_class') != 'slave':
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks training to be assigned to this task}"))
@@ -931,7 +931,7 @@ func build_char_farm(char_id):
 	input_handler.ClearContainer($Frame_farm/char_panel/ScrollContainer/farm_rules, ['Button'])
 	var items_set = 0
 	for res in variables.farming_rules:
-		var task = races.farm_tasks[res]
+		var task = tasks.farm_tasks[res]
 		var rdata = Items.materiallist[res]
 		if !ch.checkreqs(task.reqs):
 			ch.set_farm_res(res, false)

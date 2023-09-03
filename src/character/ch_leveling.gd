@@ -336,7 +336,7 @@ func assign_to_task(taskcode, taskproduct):
 	var gatherable = Items.materiallist.has(taskcode)
 	var task
 	if !gatherable:
-		task = races.tasklist[taskcode]
+		task = tasks.tasklist[taskcode]
 	else:
 		task = Items.materiallist[taskcode]
 	#check if task is existing and add slave to it if it does
@@ -614,7 +614,7 @@ func select_brothel_activity():
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
-			if parent.get_ref().checkreqs([{code = 'trait', trait = races.gold_tasks_data[i].req_training, check = false}]):
+			if parent.get_ref().checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
 					no_training = true
 	
 	if sex_rules.size() > 0:
@@ -632,7 +632,7 @@ func select_brothel_activity():
 				sex_rules.erase(i)
 			
 			var highest_value = get_highest_value(sex_rules)
-			var data = races.gold_tasks_data[highest_value.code]
+			var data = tasks.gold_tasks_data[highest_value.code]
 			var bonus_gold = 0
 			
 			
@@ -673,7 +673,7 @@ func select_brothel_activity():
 	elif non_sex_rules.size() > 0:
 		var highest_value = get_highest_value(non_sex_rules)
 		
-		var data = races.gold_tasks_data[highest_value.code]
+		var data = tasks.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
@@ -717,14 +717,14 @@ func get_highest_value(array):#find highest profit option
 
 
 func get_gold_value(task):
-	var value = call(races.gold_tasks_data[task].formula)
-	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(races.gold_tasks_data[task].workmod)/100.0)
+	var value = call(tasks.gold_tasks_data[task].formula)
+	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(tasks.gold_tasks_data[task].workmod)/100.0)
 	
 	return value
 
 
 func recruit_tick(task): #maybe incomplete
-	var taskdata = races.tasklist[task.code]
+	var taskdata = tasks.tasklist[task.code]
 	var val = 1
 	if taskdata.has('function'):
 		val = call(taskdata.function)
@@ -756,7 +756,7 @@ func setup_farm():
 	for res in farming_rules:
 		if !farming_rules[res]:
 			continue
-		var task = races.farm_tasks[res]
+		var task = tasks.farm_tasks[res]
 		if !parent.get_ref().checkreqs(task.reqs):
 			farming_rules[res] = false
 			remove_from_farm(res)
@@ -768,7 +768,7 @@ func farm_tick():
 	for res in farming_rules:
 		if !farming_rules[res]:
 			continue
-		var task = races.farm_tasks[res]
+		var task = tasks.farm_tasks[res]
 		var currenttask = find_worktask(parent.get_ref().get_location(), 'produce', res)
 		if !parent.get_ref().checkreqs(task.reqs):
 			farming_rules[res] = false
@@ -821,12 +821,12 @@ func work_tick():
 	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
 		if ResourceScripts.game_res.add_craft_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(races.tasklist[currenttask.code].workstat)
+			work_tick_values(tasks.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	elif currenttask.code == 'building':
 		if ResourceScripts.game_res.add_build_value(currenttask, prodvalue, parent.get_ref()):
-			work_tick_values(races.tasklist[currenttask.code].workstat)
+			work_tick_values(tasks.tasklist[currenttask.code].workstat)
 		else:
 			parent.get_ref().rest_tick()
 	else:
@@ -834,7 +834,7 @@ func work_tick():
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		if !gatherable:
-			work_tick_values(races.tasklist[currenttask.code].workstat)
+			work_tick_values(tasks.tasklist[currenttask.code].workstat)
 			currenttask.progress += prodvalue
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
@@ -842,12 +842,12 @@ func work_tick():
 		while currenttask.threshold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshold
 			if !gatherable:
-				if races.tasklist[currenttask.code].production_item == 'gold':
+				if tasks.tasklist[currenttask.code].production_item == 'gold':
 					ResourceScripts.game_res.money += 1
 					parent.get_ref().add_stat('metrics_goldearn', 1)
 				else:
-					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production_item] += 1
-					add_metric_for_outcome(races.tasklist[currenttask.code].production_item)
+					ResourceScripts.game_res.materials[tasks.tasklist[currenttask.code].production_item] += 1
+					add_metric_for_outcome(tasks.tasklist[currenttask.code].production_item)
 			else:
 				if person_location != "aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] > 0:
@@ -898,9 +898,9 @@ func get_task_crit_chance(bonus_tool = false):
 
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
-	if !races.tasklist.has(temptask): return null
+	if !tasks.tasklist.has(temptask): return null
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_ref().get_location())
-	var task = races.tasklist[temptask]
+	var task = tasks.tasklist[temptask]
 	#var subtask = task.production_code
 	var value = call(task.progress_function)
 	var item
@@ -945,7 +945,7 @@ func get_progress_resource(tempresource, count_crit = false):
 
 
 func get_progress_farm(res):
-	var task = races.farm_tasks[res]
+	var task = tasks.farm_tasks[res]
 	return call(task.formula)
 
 func get_farming_limit():

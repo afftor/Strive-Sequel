@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.7.0a'
+const gameversion = '0.7.1'
 
 #time
 signal hour_tick
@@ -1917,10 +1917,10 @@ func common_effects(effects):
 #					max_workers = i.max_workers
 #					function = "",
 					}
-				var template2 = races.tasklist.special
+				var template2 = tasks.tasklist.special
 				var template3 = {}
 				if i.has('template'):
-					template3 = races.tasklist[i.template]
+					template3 = tasks.tasklist[i.template]
 				#threshold
 				template.threshold = template2.progress_per_item
 				if template3.has('progress_per_item'):

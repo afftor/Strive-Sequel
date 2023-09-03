@@ -166,6 +166,7 @@ gui_controller="*res://src/core/gui_controller.gd"
 Gallery="*res://src/core/gallery.gd"
 rnd_settings="*res://src/randomportraits/settings.gd"
 GeneratorData="*res://Character_generator/generator_data.gd"
+tasks="*res://assets/data/tasks.gd"
 
 [debug]
 

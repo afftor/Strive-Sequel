@@ -430,7 +430,7 @@ func make_panel_for_character(panel, ch):
 		newbutton.get_node("job").text = "Travel - %s h." % ceil(ch.travel.travel_time/ch.travel_per_tick())
 	else:
 		if !gatherable:
-			newbutton.get_node("job").text = races.tasklist[ch.get_work()].name
+			newbutton.get_node("job").text = tasks.tasklist[ch.get_work()].name
 		else:
 			newbutton.get_node("job").text = "Gathering " + Items.materiallist[ch.get_work()].name
 
@@ -556,7 +556,7 @@ func build_location_resources():
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
-			var jobdata = races.tasklist[r_task]
+			var jobdata = tasks.tasklist[r_task]
 			newbutton.get_node("TextureRect").texture = jobdata.production_icon
 			var max_workers_count = jobdata.base_workers
 			var current_workers_count = 0

@@ -1,3 +1,12 @@
+0.7.1
+Paperdoll
+Added constructor to character creation menu and slave market for appearance customization
+Fixed multiple textures, poses, details, added more variety
+Added laboratory upgrades to slave market
+Fixed some missing descriptions to service boost and added more options to farm
+Fixed race traits not applying for farming purposes on generation
+Improved farm GUI
+0.7.0a
 Fixed Cali's bad route having some text entries broken
 Fixed Ratkin desccription
 Fixed gray skin color
