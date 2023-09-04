@@ -464,7 +464,8 @@ func build_node_for_stat(stat):
 	if !node.has_meta('signals_built'):
 		node.get_node('button/LArr').connect('pressed', self, 'change_value_node', [stat, -1])
 		node.get_node('button/RArr').connect('pressed', self, 'change_value_node', [stat, 1])
-		node.get_node('button').connect('pressed', self, 'change_value_node', [stat, 1])
+		if node.get_node('button') is TextureButton:
+			node.get_node('button').connect('pressed', self, 'change_value_node', [stat, 1])
 		node.set_meta('signals_built', true)
 	node.set_meta('current_val', val)
 	node.get_node('button/Label').text = text
@@ -617,6 +618,7 @@ func build_food_filter():
 		if !node.has_meta('signals_built'):
 			node.get_node('button/LArr').connect('pressed', self, 'change_food_filter_value', [food, -1])
 			node.get_node('button/RArr').connect('pressed', self, 'change_food_filter_value', [food, 1])
+			node.get_node('button').connect('pressed', self, 'change_food_filter_value', [food, 1])
 			node.set_meta('signals_built', true)
 		
 		node.get_node('button/LArr').visible = (mode != 'freemode')
