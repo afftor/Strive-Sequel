@@ -1451,13 +1451,13 @@ func get_racial_features():
 	for i in races.racelist.Human.bodyparts:
 		if races.racelist.Human.bodyparts[i].empty():
 			continue
-		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
+		if typeof(races.racelist.Human.bodyparts[i][0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
 			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
 		else:
 			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
 	if statlist.race != 'Human':
 		for i in race_template.bodyparts:
-			if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
+			if typeof(race_template.bodyparts[i][0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
 				statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
 			else:
 				statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
@@ -1477,7 +1477,7 @@ func get_racial_features():
 			array.append([i, race_template.personality[i]])
 		statlist.personality = input_handler.weightedrandom(array)
 	
-	if race_template.has('traits'):
+	if race_template.has('tarits'):
 		for trait in race_template.traits:
 			add_trait(trait)
 
@@ -1788,7 +1788,7 @@ func translate(text):
 		'futa':
 			rtext = 'futanari'
 	text = text.replace("[boygirlfuta]", rtext)
-	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', tr("PRONOUNBOY"),  tr("PRONOUNBOYF")))
+	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
 	return text
 
 #tatoo functional is here, though it can be moved to separate component

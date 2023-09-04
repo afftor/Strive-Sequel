@@ -63,7 +63,11 @@ var racelist = {
 			hair_fringe_lenght = ['bald', 'short', 'default', 'middle', 'long'], 
 			hair_back_lenght = ['short', 'default', 'middle', 'long'], 
 			hair_assist_lenght = ['short', 'default', 'middle', 'long'],
-			body_color_skin = ['human1', 'human2', 'human3', 'human4', 'human5', ]
+			body_color_skin = ['human1', 'human2', 'human3', 'human4', 'human5', ],
+			penis_virgin = [true, false],
+			vaginal_virgin = [true, false],
+			anal_virgin = [true, false],
+			mouth_virgin = [true, false],
 			},
 			
 		global_weight = 100,
