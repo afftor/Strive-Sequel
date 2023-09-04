@@ -439,8 +439,8 @@ func build_node_for_stat(stat):
 				nd.pressed = false
 		return
 	
-	if stat in freemode_fixed_stats:
-		node.visible = (mode != 'freemode')
+	if stat in freemode_fixed_stats and mode == 'freemode':
+		node.visible = false
 #		node.get_node('button/LArr').visible = (mode != 'freemode')
 #		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
