@@ -76,7 +76,7 @@ func equip(item, item_prev_id = null):
 			unequip(ResourceScripts.game_res.items[gear[i]])
 	for i in item.slots:
 		if i == 'lhand' and item.slots.has('rhand'):
-			if parent.get_ref().has_status('strongarm'):
+			if parent.get_ref().has_status('strongarm') and item.geartype != 'bow':
 				continue
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
@@ -135,7 +135,7 @@ func recheck_equip():
 	if gear.rhand != null:
 		if gear.lhand != gear.rhand: 
 			var item = ResourceScripts.game_res.items[gear.rhand]
-			if item.slots.has('lhand') and !parent.get_ref().has_status('strongarm'):
+			if item.slots.has('lhand') and !parent.get_ref().has_status('strongarm') or item.geartype == 'bow':
 				var item2 = ResourceScripts.game_res.items[gear.lhand]
 				unequip(item2)
 				gear.lhand = gear.rhand
