@@ -767,12 +767,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_down.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_curve_down.png"},
 		],
-		fibule = [
-			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_seraph_fibule.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_seraph_fibule.png"},
-		],
+#		fibule = [
+#			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+#			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_seraph_fibule.png"},
+#			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', texture = "res://Character_generator/images/08_horns/horn_seraph_fibule.png"},
+#		],
 		spiral = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Horns_tex', attr = 'visible', value = true},
@@ -4755,10 +4755,10 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = -23.9},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = -8.4},
 			
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-88, -93)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-93, -80)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(220, -11)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(138.3, -33.2)},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-92, 88)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-97, 88)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(198.4, -1.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(136.8, 21.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206, 5)},

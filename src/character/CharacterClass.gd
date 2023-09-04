@@ -87,7 +87,7 @@ func get_stat(statname, ref = false):
 			'kind':
 				return 'kind'
 			'serious':
-				return 'kind'
+				return 'pose4'
 			'bold':
 				return 'bold'
 		

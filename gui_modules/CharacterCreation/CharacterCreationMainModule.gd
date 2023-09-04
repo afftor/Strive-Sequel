@@ -64,6 +64,10 @@ var freemode_fixed_stats = [
 	"charm_factor",
 	"wits_factor",
 	"sexuals_factor",
+	"penis_virgin",
+	"vaginal_virgin",
+	"anal_virgin",
+	"mouth_virgin",
 ]
 
 var selected_class = ''
@@ -91,8 +95,8 @@ var params_to_save = [ #memo mostly
 	"horns",
 	"wings",
 	"tail",
-	"arms",
-	"legs",
+#	"arms",
+#	"legs",
 	"body_lower",
 	"body_shape",
 	"penis_size",
@@ -291,7 +295,7 @@ func build_possible_val_for_stat(stat):
 					continue #can't set default value
 				possible_vals[stat].push_back(val)
 		else:
-			print ('warninig - possible obsolete stat %s' % stat)
+#			print ('warninig - possible obsolete stat %s' % stat)
 			if ResourceScripts.descriptions.bodypartsdata.has(stat):
 				for val in ResourceScripts.descriptions.bodypartsdata[stat]:
 					possible_vals[stat].push_back(val)
@@ -436,8 +440,9 @@ func build_node_for_stat(stat):
 		return
 	
 	if stat in freemode_fixed_stats:
-		node.get_node('button/LArr').visible = (mode != 'freemode')
-		node.get_node('button/RArr').visible = (mode != 'freemode')
+		node.visible = (mode != 'freemode')
+#		node.get_node('button/LArr').visible = (mode != 'freemode')
+#		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
 	if stat == 'sex' and mode != 'freemode':
 		var id = possible_vals.sex.find(val)
@@ -712,6 +717,8 @@ func open_freemode(char_to_open):
 	rebuild_ragdoll()
 	$SaveButton.visible = false
 	$LoadButton.visible = false
+	$BackButton.visible = false
+	$BackButtonCheats.visible = false
 
 
 

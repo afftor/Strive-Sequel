@@ -41,17 +41,17 @@ func select_char(character):
 
 func build_upgrades():
 	input_handler.ClearContainer(UpgList)
-	for upg in Traitdata.body_upgrades:
-		var data = Traitdata.body_upgrades[upg]
-		var newnode = input_handler.DuplicateContainerTemplate(UpgList)
-		newnode.set_meta('upgrade', upg)
-		newnode.get_node('UpgradeName').text = tr(data.name)
-		if data.icon is String:
-			newnode.get_node('icon').texture = load(data.icon)
-		else:
-			newnode.get_node('icon').texture = data.icon
-		globals.connecttexttooltip(newnode, tr(data.descript))
-		newnode.connect('pressed', self, 'select_upgrade', [upg])
+#	for upg in Traitdata.body_upgrades:
+#		var data = Traitdata.body_upgrades[upg]
+#		var newnode = input_handler.DuplicateContainerTemplate(UpgList)
+#		newnode.set_meta('upgrade', upg)
+#		newnode.get_node('UpgradeName').text = tr(data.name)
+#		if data.icon is String:
+#			newnode.get_node('icon').texture = load(data.icon)
+#		else:
+#			newnode.get_node('icon').texture = data.icon
+#		globals.connecttexttooltip(newnode, tr(data.descript))
+#		newnode.connect('pressed', self, 'select_upgrade', [upg])
 
 
 func _ready():
