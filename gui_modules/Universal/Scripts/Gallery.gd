@@ -28,6 +28,8 @@ func _ready():
 	$SceneButton.set_meta("type", "scenes")
 	$CloseButton.connect("pressed", self, "close_gallery")
 	set_state("story")
+	
+	$FullScreenImage.connect("gui_input", self, '_on_FullScreenImage_gui_input')
 #	load_images("story")
 #	show_scene_images() 
 

@@ -144,20 +144,20 @@ func disable_animations_backgrounds(value):
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	input_handler.globalsettings.malechance = value
-	var text = tr('OPTGAMEPLAYMALERATE') + str(value) + "%"
+	var text = tr('OPTGAMEPLAYMALERATE') + ": " +  str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
 	input_handler.globalsettings.futachance = value
-	var text = tr('OPTGAMEPLAYFUTARATE') + str(value) + "%"
+	var text = tr('OPTGAMEPLAYFUTARATE') + ": " + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
 
 
 func autosave_amount_change(value):
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.value = value
 	input_handler.globalsettings.autosave_number = int(value)
-	var text = tr('OPTFAMEPLAYAUTOSAVEAMOUNT') + str(value)
+	var text = tr('OPTFAMEPLAYAUTOSAVEAMOUNT') + ": " + str(value)
 	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/Label.text = text
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.visible = (int(value) != 0)
 
@@ -165,7 +165,7 @@ func autosave_amount_change(value):
 func autosave_frequency_change(value):
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.value = value
 	input_handler.globalsettings.autosave_frequency = int(value)
-	var text = tr('OPTGAMEPLAYAUTOSAVETIME') + str(value)
+	var text = tr('OPTGAMEPLAYAUTOSAVETIME') + ": " + str(value)
 	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/Label.text = text
 
 

@@ -62,9 +62,9 @@ var TranslationDict = {
 						Ambient battle noise: swords and shouting - pfranzen
 						https://freesound.org/people/pfranzen/sounds/192072/""",
 	#Options
-	OPTNAME1 = "Gameplay",
-	OPTNAME2 = "Audio",
-	OPTNAME3 = "Graphics",
+	OPTNAME1 = "Graphics",
+	OPTNAME2 = "Gameplay",
+	OPTNAME3 = "Video",
 	OPTNAME4 = "Cheats",
 	
 	OPTOPT = "Options",
@@ -74,18 +74,18 @@ var TranslationDict = {
 	OPTGAMEPLAYFUTA = "Futas with balls",
 	OPTGAMEPLAYSHOWDETAILES = "Show Consent Details",
 	OPTGAMEPLAYTUTOR = "Enable Tutorials",
-	OPTGAMEPLAYMALERATE = "MALERATE",
-	OPTGAMEPLAYFUTARATE = "FUTARATE",
+	OPTGAMEPLAYMALERATE = "Male Rate",
+	OPTGAMEPLAYFUTARATE = "Futa Rate",
 	OPTFAMEPLAYAUTOSAVEAMOUNT = "Autasaves amount",
 	OPTGAMEPLAYAUTOSAVETIME = "Days per autosave",
 	
 	OPTCHANGELANGUAGE = "To change the language, you need to restart the game",
 	OPTOK = "Ok",
 	
-	OPTAUDIOMASTERSOUND = "MASTERSOUND",
-	OPTAUDIOMUSIC = "MUSIC",
-	OPTAUDIOSOUND = "SOUND",
-	OPTAUDIOMUTE = "MUTE",
+	OPTAUDIOMASTERSOUND = "Master Sound",
+	OPTAUDIOMUSIC = "Music",
+	OPTAUDIOSOUND = "Sound",
+	OPTAUDIOMUTE = "Mute",
 	
 	OPTGRAPHICFULLSCREEN = "Full Screen",
 	OPTGRAPHICFACTOR = "Factors as words",
@@ -208,13 +208,13 @@ var TranslationDict = {
 	NEWGAMESTART = "Start Game",
 	
 	PRESETDATADEBUGEASYNAME = "easy",
-	PRESETDATADEBUGEASYDIS = "Easier difficulty, you start with more gold and resources. Obedience drain is reduced. (WIP) Loan payments are reduced",
+	PRESETDATADEBUGEASYDIS = "Easier difficulty, you start with more gold and resources. Obedience drain is reduced. Loan payments are reduced",
 	
 	PRESETDATADEBUGNORMALNAME = "normal",
 	PRESETDATADEBUGNORMALDIS = "Standard difficulty for players with a reasonable grasp at management games.",
 	
 	PRESETDATADEBUGHARDNAME = "hard",
-	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. (WIP) Loan payments aren't cancelled with prologue completion",
+	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upraded at slave market (except growth). ",
 	
 	PRESETDATADEBUGIMPORTNAME = "import",
 	PRESETDATADEBUGIMPORTDIS = "Start with only a Master. ",
@@ -571,7 +571,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALINK_MP = "Ink: Spiritual",
 	MATERIALSPIDER_SILK = "Spider Silk",
 	MATERIALSPIDER_SILKADJ = "Silk",
-	MATERIALSPIDER_SILkDESCRIPT = "Special quality silk usually obtained from arachnae race. ",
+	MATERIALSPIDER_SILKDESCRIPT = "Special quality silk usually obtained from arachnae race. ",
 	MATERIALDRACONIC_SCALES = "Draconic Scales",
 	MATERIALDRACONIC_SCALESDESCRIPT = "Dragon parts are adorned for both its prettiness and superior quality.",
 	MATERIALHERBS = "",
@@ -1230,8 +1230,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKBUILDINGDESCRIPT = "Work on the current upgrade. Upgrade must be set in Upgrades menu. ",
 	TASKTRAVEL = "Travel",
 	TASKREST = "Rest",
-	TASKRESTSERVICE = "Rest/Service",
-	TASKRESTDESCRIPT = "Resting improves injury healing and health recovery. Will not do any work while resting.",
+	TASKRESTSERVICE = "Service",
+	TASKRESTDESCRIPT = "Select a service the character will provide at local facilities, or switch to rest when necessary.",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",
@@ -1266,6 +1266,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
+	
+	SERVICEREST = "[name] will rest. Toggle [color=aqua]Rest[/color] to disable.",
+	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
+	SERVICEPREGNANT = "[He] can lose virginity and get pregnant from penetration.",
+	SERVICESEXUALNONPENETRATIVE = "[name] will entertain clients by serving them and provide them with light sexual services not involving penetration.",
+	SERVICENOSEX = "[name] will serve and entertain clients but will refuse any sexual services.",
+	
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -8990,7 +8997,7 @@ Cali's protest sinks abruptly upon hearing it.
 	CALI_HEIRLOOM_8_2 = """Cali furiously shakes her head.
 
 - Of course not! I'm happy you're still on my side. Hopefully one day I'll be able to pay you back for this.""",
-	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near [settlement_name].""", # TODO ask about name
+	CALI_HEIRLOOM_8 = """Cali recalls the location where she believes the old bandit camp was and you realize it was near Stonevale.""",
 	CALI_FARMER_1 = """As you walk around searching for potential witnesses, one of the farmers spots you.
 
 {color=aqua|Farmer: — Bandits! A bandit scout!}
@@ -12815,9 +12822,9 @@ Hotkey: 3""",
 	BODYUPGRADENAME_UPGRADE_THICK_COVERAGE = "Thick Coverage",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICK_COVERAGE = "[name]'s fur or scales will be hardened at will for combat. DEF +10. Must have fur or scales.",
 	BODYUPGRADENAME_UPGRADE_NIPPLES = "Hollow Nipples",
-	BODYUPGRADEDESCRIPT_UPGRADE_NIPPLES = "[name]'s nipples will be modified to allow insertion of object into them, providing lubrication and act as erogenous zones. Must have above average breast size. Prositution Income + 10%",
+	BODYUPGRADEDESCRIPT_UPGRADE_NIPPLES = "[name]'s nipples will be modified to allow insertion of object into them, providing lubrication and act as erogenous zones. Must have above average breast size. Prostitution Income + 10%",
 	BODYUPGRADENAME_UPGRADE_TONGUE = "Elongated Tongue",
-	BODYUPGRADEDESCRIPT_UPGRADE_TONGUE = "[name]'s tongue will be modified to much longer length allowing to be used in more advance sexual performances. Prositution Income + 10%",
+	BODYUPGRADEDESCRIPT_UPGRADE_TONGUE = "[name]'s tongue will be modified to much longer length allowing to be used in more advance sexual performances. Prostitution Income + 10%",
 	BODYUPGRADENAME_UPGRADE_EGGS = "Oviposition",
 	BODYUPGRADEDESCRIPT_UPGRADE_EGGS = "[name]'s womb will be modified to allow production of eggs at the farm. Impregnation is still possible.",
 	BODYUPGRADENAME_UPGRADE_SILK = "Silk Secretion",

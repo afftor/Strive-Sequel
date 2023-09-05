@@ -42,7 +42,7 @@ var scenes_order = [
 	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
 	"zephyra_lilia"
 	]
-var story_scenes = ['anastasia_event_alive', 'anastasia_event_dead', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
+var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
  'anastasia_execution1',
  'lich_aire_talk4',

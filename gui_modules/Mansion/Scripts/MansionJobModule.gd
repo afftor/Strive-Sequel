@@ -150,7 +150,7 @@ func update_status(newbutton, person):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
 		if !person.is_on_quest():
-			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
 	elif person.get_work() == 'special':
 		var task = person.find_worktask()
 		newbutton.get_node("Status").texture = load(task.icon)
@@ -286,7 +286,7 @@ func update_resources():
 		if selected_job.has("code"):
 			if selected_job.code == "rest" or selected_job.code == "brothel":
 				restbutton.pressed = true
-	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+	restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/service.png")
 	restbutton.connect("pressed", self, "select_resource", [{code = "rest"}, "rest", restbutton])
 
 	globals.connecttexttooltip(restbutton, tr('TASKRESTSERVICE'))
@@ -796,15 +796,15 @@ func update_brothel_text():
 					can_get_pregnant = true
 	
 	if person.get_work() == '':
-		text = "{color=yellow|[name] will rest. Toggle [color=aqua]Rest[/color] to disable.}"
+		text = "{color=yellow|"+tr("SERVICEREST") + "}"#
 	elif can_do_sex && can_do_penetrative:
-		text = "{color=yellow|[name] will entertain clients by serving and sleeping with them if they find [him] appealing. }"
+		text = "{color=pink|"+tr("SERVICESEXUALPENETRATIVE")+"}"
 		if can_get_pregnant:
-			text += "{color=yellow|[He] can lose virginity and get pregnant from penetration. }"
+			text += "\n{color=pink|"+tr("SERVICEPREGNANT") + "}"
 	elif can_do_sex:
-		text = "{color=yellow|[name] will entertain clients by serving them and provide them with light sexual services not involving penetration. }"
+		text = "{color=pink|"+tr("SERVICESEXUALNONPENETRATIVE")+ "}"
 	else:
-		text = "{color=green|[name] will serve and entertain clients but will refuse any sexual services. }"
+		text = "{color=green|"+tr("SERVICENOSEX") + "}"
 	
 	$BrothelRules/brothel_descript.bbcode_text = globals.TextEncoder(person.translate(text))
 

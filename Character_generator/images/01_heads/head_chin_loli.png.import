@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttоn_choose_appearance.png-362c4fc50ed4013aecbd55cd444cc434.stex"
+path="res://.import/head_chin_loli.png-c31d85f14cddb3b95e5ede938b80940d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures_v2/CHAR_CREATION/new/buttоn_choose_appearance.png"
-dest_files=[ "res://.import/buttоn_choose_appearance.png-362c4fc50ed4013aecbd55cd444cc434.stex" ]
+source_file="res://Character_generator/images/01_heads/head_chin_loli.png"
+dest_files=[ "res://.import/head_chin_loli.png-c31d85f14cddb3b95e5ede938b80940d.stex" ]
 
 [params]
 

@@ -37,7 +37,7 @@ use_filter = true
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 20
 use_filter = true
 extra_spacing_bottom = -4
 font_data = ExtResource( 14 )
@@ -164,6 +164,3 @@ custom_colors/font_color = Color( 0.337255, 0.858824, 0.796078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "TIPLOADFINISHED"
-__meta__ = {
-"_edit_use_anchors_": false
-}

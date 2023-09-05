@@ -53,7 +53,7 @@ func goto_scene(path): # game requests to switch to this scene
 	wait_frames = 1
 
 func _input(event):
-	if !event.is_pressed():
+	if !event.is_pressed():# || (!event.button_index == BUTTON_LEFT && !event.button_index == BUTTON_RIGHT):
 		return
 	if scene_loaded == true:
 		set_new_scene()

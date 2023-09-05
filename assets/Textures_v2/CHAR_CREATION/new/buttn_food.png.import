@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttoоn food.png-06bc0c85dc1436475436d49b299cab60.stex"
+path="res://.import/buttn_food.png-84e3e472f5eb78c8776df6815888db40.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures_v2/CHAR_CREATION/new/buttoоn food.png"
-dest_files=[ "res://.import/buttoоn food.png-06bc0c85dc1436475436d49b299cab60.stex" ]
+source_file="res://assets/Textures_v2/CHAR_CREATION/new/buttn_food.png"
+dest_files=[ "res://.import/buttn_food.png-84e3e472f5eb78c8776df6815888db40.stex" ]
 
 [params]
 
