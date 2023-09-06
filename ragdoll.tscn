@@ -984,7 +984,7 @@ shader_param/target3color = Color( 0, 1, 0.6, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
-shader_param/range = 0.1
+shader_param/range = 0.3
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
@@ -3966,10 +3966,10 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 0.980392, 0, 1, 1 )
 shader_param/target2color = Color( 0.498039, 1, 0, 1 )
 shader_param/target3color = Color( 0, 1, 0.6, 1 )
-shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.0941176, 0, 1, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
-shader_param/range = 0.1
+shader_param/range = 0.3
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
@@ -5102,6 +5102,7 @@ shader_param/part3 = ExtResource( 19 )
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
+test_mode = true
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
@@ -5121,7 +5122,6 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
-visible = false
 light_mask = 4
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/male_pose"]
@@ -5603,6 +5603,7 @@ internal_vertex_count = 142
 [node name="Head" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine"]
 position = Vector2( -361.002, 9 )
 scale = Vector2( 0.98, 0.98 )
+z_index = 10
 rest = Transform2D( 0.98, 0, 0, 0.98, -361.002, 9 )
 default_length = 100.0
 
@@ -6590,6 +6591,7 @@ internal_vertex_count = 142
 
 [node name="Head" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine"]
 position = Vector2( -361, 9.00003 )
+z_index = 10
 rest = Transform2D( 1, 0, 0, 1, -361, 9.00003 )
 default_length = 100.0
 
@@ -6667,7 +6669,7 @@ texture = ExtResource( 21 )
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 149 )
-position = Vector2( 567, -10.002 )
+position = Vector2( 590, -10.002 )
 rotation = -1.5708
 texture = ExtResource( 1 )
 
