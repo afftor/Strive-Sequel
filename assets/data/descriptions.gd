@@ -586,6 +586,10 @@ var bodypartsdata = {
 	mouth_virgin = {
 		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
+	},
+	penis_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 	}
 }
 

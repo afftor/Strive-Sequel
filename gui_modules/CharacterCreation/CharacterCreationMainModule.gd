@@ -34,6 +34,7 @@ var free_stats = [
 	'hair_fringe', 
 	'hair_assist', 
 	'hair_back', 
+#	'body_color_skin', 
 #	'hair_back_color_1',
 #	'hair_back_color_2',
 #	'hair_assist_color_1',
@@ -263,7 +264,7 @@ func build_possible_val_for_stat(stat):
 		possible_vals[stat] = []
 		return
 	if stat.ends_with('factor'):
-		possible_vals[stat] = [1, 2, 3, 4, 5]
+		possible_vals[stat] = [1, 2, 3, 4, 5, 6]
 		if stat in ['timid_factor','tame_factor'] and mode == 'master':
 			possible_vals[stat] = []
 		return
@@ -747,6 +748,8 @@ func rebuild_slave():
 	person = t_person
 	
 	build_possible_vals()
+	for stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+		person.set_stat(stat, 1)
 	apply_preserved_settings()
 	FillStats()
 #	build_class()
