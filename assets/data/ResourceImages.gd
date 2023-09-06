@@ -293,7 +293,9 @@ var scenes = {
 	stone_sword = load("res://assets/images/scenes/stone_sword.png"),
 	stone_sword2 = load("res://assets/images/scenes/stone_sword2.png"),
 	goblins_traps = load("res://assets/images/scenes/goblins_traps.png"),
-	
+	kitchen_hut = load("res://assets/images/scenes/kitchen_hut.png"),
+	kitchen_hit = load("res://assets/images/scenes/ketch_hit.png"),
+	kitchen_trade = load("res://assets/images/scenes/ketch_trade.png"),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
@@ -389,12 +391,14 @@ var sprites = {
 	lilia_wed_body = load("res://assets/images/sprites/lilia_wed_body.png"),
 	hara_nude = load("res://assets/images/sprites/hara_nude.png"),
 	hara_nude_body = load("res://assets/images/sprites/hara_nude_body.png"),
+	hara_wed_body = load("res://assets/images/sprites/hara_wed_body.png"),
 	jean_nude = load("res://assets/images/sprites/jean_nude.png"),
 	jean_nude_body = load("res://assets/images/sprites/jean_nude_body.png"),
 	jean_wed = load("res://assets/images/sprites/jean_wed.png"),
 	jean_wed_body = load("res://assets/images/sprites/jean_wed_body.png"),
 	heleviel_nude = load("res://assets/images/sprites/heleviel_nude.png"),
 	heleviel_nude_body = load("res://assets/images/sprites/heleviel_nude_body.png"),
+	heleviel_wed = load("res://assets/images/sprites/heleviel_wed.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	

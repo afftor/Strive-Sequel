@@ -872,6 +872,13 @@ var unique_sprites = {
 			face_path = "hara", # TODO change
 			unlock_reqs = []
 			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "hara_wed_body", 
+			face_path = "hara", # TODO change
+			unlock_reqs = []
+			},
 	},
 	jean = {
 		default = {
@@ -908,6 +915,13 @@ var unique_sprites = {
 			name = "Nude",
 			descript = "",
 			path = "heleviel_nude_body", 
+			face_path = "heleviel", # TODO change
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "heleviel_wed_body", 
 			face_path = "heleviel", # TODO change
 			unlock_reqs = []
 			},
