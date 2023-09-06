@@ -753,7 +753,7 @@ rotation = -1.5708
 texture = ExtResource( 56 )
 
 [node name="ShoulderR" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -90.1676, -144.438 )
+position = Vector2( -89.4323, -143.19 )
 rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -809,7 +809,7 @@ rotation = -1.5708
 texture = ExtResource( 16 )
 
 [node name="ShoulderL" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -86.5238, 130.368 )
+position = Vector2( -87.5266, 124.429 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
