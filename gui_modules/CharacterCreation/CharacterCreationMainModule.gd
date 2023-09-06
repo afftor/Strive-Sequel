@@ -34,7 +34,7 @@ var free_stats = [
 	'hair_fringe', 
 	'hair_assist', 
 	'hair_back', 
-	'body_color_skin', 
+#	'body_color_skin', 
 #	'hair_back_color_1',
 #	'hair_back_color_2',
 #	'hair_assist_color_1',
