@@ -444,10 +444,15 @@ func build_node_for_stat(stat):
 #		node.get_node('button/LArr').visible = (mode != 'freemode')
 #		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
-	if stat == 'sex' and mode != 'freemode':
-		var id = possible_vals.sex.find(val)
+	if stat in ['sex', ]:
+		var id = possible_vals[stat].find(val)
 		node.get_node('button/LArr').visible = (id > 0)
-		node.get_node('button/RArr').visible = (id < possible_vals.sex.size() - 1)
+		node.get_node('button/RArr').visible = (id < possible_vals[stat].size() - 1)
+	
+	if stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+		var id = possible_vals[stat].find(val)
+		node.get_node('button/LArr').disabled = !(id > 0)
+		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)
 	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
