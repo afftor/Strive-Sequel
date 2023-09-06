@@ -567,16 +567,23 @@ var bodypartsdata = {
 		equine_big = {code = 'equine_big', name = '', chardescript = '', bodychanges = []},
 
 	},
+	#not sure if nonmatching ids and codes are correct
 	has_pussy = {
 		true : {code = 'true', combine = "vaginal_virgin", bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 
 	},
 	vaginal_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 		True_True = {code = 'true_true', name = '', chardescript = '', bodychanges = []},
 		True_False = {code = 'true_False', name = '', chardescript = '', bodychanges = []},
 	},
 	anal_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
+	},
+	mouth_virgin = {
 		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 	}
