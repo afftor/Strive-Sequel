@@ -203,7 +203,7 @@ func build_stats():
 	$StatsModule.visible = true
 	$DietPanel.visible = true
 	$VisualsModule.visible = false
-	if mode == 'freemode':
+	if mode != 'freemode':
 		$UpgradesPanel.visible = false
 		$VBoxContainer.visible = true
 
@@ -675,6 +675,7 @@ func MainMenu():
 #
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
+	selected_class = ''
 #	build_class()
 #	build_race()
 #	build_sex_trait()
@@ -689,7 +690,6 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	if type == 'freemode':
 		return
 	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
-	selected_class = ''
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
 	match mode:
@@ -705,6 +705,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	$LoadButton.visible = true
 	build_food_filter()
 	rebuild_slave()
+	build_stats()
 
 
 func open_freemode(char_to_open):
@@ -752,9 +753,9 @@ func rebuild_slave():
 		person.set_stat(stat, 1)
 	apply_preserved_settings()
 	FillStats()
-#	build_class()
-#	build_sex_trait()
-#	build_trait()
+	build_class()
+	build_sex_trait()
+	build_trait()
 
 
 func confirm_character():
