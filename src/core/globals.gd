@@ -2187,6 +2187,10 @@ func apply_starting_preset():
 	if ResourceScripts.game_globals.skip_prologue:
 		preset = starting_presets.preset_data['advanced']
 	
+	ResourceScripts.game_res.money = preset.gold
+	for res in preset.materials:
+		ResourceScripts.game_res.materials[res] = preset.materials[res]
+	
 	ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
 	ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
 	ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
