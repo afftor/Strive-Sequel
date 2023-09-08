@@ -92,6 +92,7 @@ func _ready():
 		self.visible = false
 		is_new_game = true
 		var newgame_node = Node.new()
+#		add_child(newgame_node)
 		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
 		newgame_node.start()
 		input_handler.GameStartNode = newgame_node
@@ -105,6 +106,7 @@ func _ready():
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
+#		remove_child(newgame_node)
 	
 	input_handler.CurrentScreen = 'mansion'
 	gui_controller.mansion = self
