@@ -801,6 +801,7 @@ func finish_character():
 		person.food.create() #rebuild food filter
 		#i don't like handle starting eqipment here. but this is the only point where newly created characters are accessible - and we need to do this for the characters created during prologue
 		globals.equip_char(person, 'club', {WeaponMace = 'wood'})
+		person.set_stat('growth_factor', 5)
 		if mode != 'master':
 			#apply delayed slave class
 			if !preservedsettings.has('slave_class'):
@@ -808,7 +809,6 @@ func finish_character():
 			person.set_slave_category(preservedsettings.slave_class.to_lower())
 			#basic slave setup
 			person.set_stat('obedience', 48)
-			person.set_stat('growth_factor', 5)
 			if guild == 'fighters':
 				person.add_trait('loyalty_combatant')
 			if guild in ['servants', 'workers']:
