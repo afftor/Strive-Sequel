@@ -957,8 +957,8 @@ func showbody(i):
 		$Panel/ragdoll.visible = true
 		$Panel/ragdoll.test_mode = false
 		$Panel/ragdoll.rebuild(i.person)
-#		$Panel/ragdoll.rebuild_cloth(true)
-		$Panel/ragdoll.rebuild_underwear()
+		$Panel/ragdoll.rebuild_cloth(false)
+#		$Panel/ragdoll.rebuild_underwear()
 	else:
 		$Panel/bodyimage.texture = i.person.get_body_image()
 		$Panel/bodyimage.visible = true
