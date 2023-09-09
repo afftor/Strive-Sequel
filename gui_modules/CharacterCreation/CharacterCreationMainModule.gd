@@ -441,7 +441,11 @@ func build_node_for_stat(stat):
 		return
 	
 	if stat in freemode_fixed_stats and mode == 'freemode':
-		node.visible = false
+		if stat.ends_with('factor'):
+			node.get_node('button/LArr').visible = false
+			node.get_node('button/RArr').visible = false
+		else:
+			node.visible = false
 #		node.get_node('button/LArr').visible = (mode != 'freemode')
 #		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
@@ -544,6 +548,8 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 
 func unassigned_points():
 	var points
+	if mode == 'freemode':
+		return 0
 	if mode == 'master':
 		points = variables.master_starting_stats + 5
 		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', "magic_factor"]:
@@ -564,10 +570,11 @@ func update_points(): #visual only
 		build_class()
 	
 	$StatsModule/totalstatlabel.text = "Unassigned stats: %d" % unassigned_points()
+	$StatsModule/totalstatlabel.visible = (mode != 'freemode')
 
 
 func reset_points():
-	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor']:
+	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor', 'magic_factor']:
 		person.set_stat(st, 1)
 		preservedsettings.erase(st)
 
