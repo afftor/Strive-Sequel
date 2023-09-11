@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/03_noses/nose_kobold.png" type="Texture" id=2]
@@ -62,6 +62,8 @@
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=60]
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=61]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=62]
+[ext_resource path="res://Character_generator/images/05_breads_moustackles/moustackle4.png" type="Texture" id=63]
+[ext_resource path="res://Character_generator/images/05_breads/bread2.png" type="Texture" id=64]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -804,7 +806,8 @@ rotation = -1.5708
 texture = ExtResource( 39 )
 
 [node name="ShoulderR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
-position = Vector2( 315.302, 141.497 )
+visible = false
+position = Vector2( 312.381, 144.761 )
 rotation = -1.5708
 texture = ExtResource( 16 )
 
@@ -860,7 +863,8 @@ rotation = -1.5708
 texture = ExtResource( 12 )
 
 [node name="ShoulderL_armor" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
-position = Vector2( 309.473, -128.797 )
+visible = false
+position = Vector2( 311.428, -129.525 )
 rotation = -1.5708
 texture = ExtResource( 18 )
 
@@ -884,6 +888,7 @@ rotation = -1.5708
 texture = ExtResource( 15 )
 
 [node name="Torso_armor_tex" type="Sprite" parent="HumanF1/Spine"]
+visible = false
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 14 )
@@ -1213,6 +1218,18 @@ position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 texture = ExtResource( 5 )
 
+[node name="Bread" type="Sprite" parent="HumanF1/Head/Face"]
+material = SubResource( 13 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
+texture = ExtResource( 64 )
+
+[node name="Moustackle" type="Sprite" parent="HumanF1/Head/Face"]
+material = SubResource( 13 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
+texture = ExtResource( 63 )
+
 [node name="Hair" type="Bone2D" parent="HumanF1/Head"]
 position = Vector2( 31, 1.00001 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
@@ -1280,6 +1297,7 @@ visible = false
 script = ExtResource( 62 )
 
 [node name="Hairs_mesh" type="Polygon2D" parent="HumanF1/Head/Hair"]
+visible = false
 material = ExtResource( 47 )
 position = Vector2( -198.419, 428.001 )
 rotation = -1.5708
@@ -1338,6 +1356,7 @@ visible = false
 script = ExtResource( 62 )
 
 [node name="fringe_mesh" type="Polygon2D" parent="HumanF1/Head/Hair"]
+visible = false
 material = ExtResource( 47 )
 position = Vector2( -197.998, 428.002 )
 rotation = -1.5708
