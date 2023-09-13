@@ -48,8 +48,8 @@
 [ext_resource path="res://Character_generator/images/11_eyebrows/eyebrows_m2.png" type="Texture" id=46]
 [ext_resource path="res://Character_generator/images/01_body_nude_male/LegL_m.png" type="Texture" id=47]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/taz_armor_m1.png" type="Texture" id=48]
-[ext_resource path="res://Character_generator/images/01_body_nude_male/HandL2_m.png" type="Texture" id=49]
-[ext_resource path="res://Character_generator/images/01_body_nude_male/HandR2_m.png" type="Texture" id=50]
+[ext_resource path="res://Character_generator/images/01_body_nude_male/HandL1_m.png" type="Texture" id=49]
+[ext_resource path="res://Character_generator/images/05_breads_moustackles/moustackle4.png" type="Texture" id=50]
 [ext_resource path="res://Character_generator/images/14_testickles/Testicle_furry.png" type="Texture" id=51]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmL1_armor_m1.png" type="Texture" id=52]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmR1_armor_m1.png" type="Texture" id=53]
@@ -798,7 +798,7 @@ default_length = 100.0
 material = SubResource( 9 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
-texture = ExtResource( 50 )
+texture = ExtResource( 64 )
 
 [node name="HandR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR/HandR"]
 visible = false
@@ -808,7 +808,7 @@ texture = ExtResource( 58 )
 
 [node name="ArmR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR"]
 material = SubResource( 9 )
-position = Vector2( 95.2248, 151.349 )
+position = Vector2( 102.508, 155.014 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
@@ -856,7 +856,7 @@ default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL/HandL"]
 material = SubResource( 9 )
-position = Vector2( -108.852, -164.122 )
+position = Vector2( -115.404, -161.422 )
 rotation = -1.5708
 texture = ExtResource( 49 )
 
@@ -868,7 +868,7 @@ texture = ExtResource( 23 )
 
 [node name="ArmL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL"]
 material = SubResource( 9 )
-position = Vector2( 85.7447, -129.863 )
+position = Vector2( 102.903, -129.017 )
 rotation = -1.5708
 texture = ExtResource( 33 )
 
@@ -1234,7 +1234,7 @@ texture = ExtResource( 28 )
 material = SubResource( 14 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
-texture = ExtResource( 64 )
+texture = ExtResource( 64 )r
 
 [node name="Moustackle" type="Sprite" parent="HumanF1/Head/Face"]
 material = SubResource( 14 )
