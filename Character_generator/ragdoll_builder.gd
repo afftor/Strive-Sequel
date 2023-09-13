@@ -16,8 +16,8 @@ var _offset
 
 var character
 var test_template = {
-	sex = 'female', 
-	race = 'BeastkinFox', 
+	sex = 'male', 
+	race = 'Kobold', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -33,8 +33,8 @@ var test_template = {
 	pregnancy_status = 'heavy', 
 	tits_size = 'huge', 
 	multiple_tits_developed = false,
-	skin_coverage = 'fur_white', 
-	body_color_skin = 'blue5', 
+	skin_coverage = 'kobold', 
+	body_color_skin = 'human2', 
 	body_color_wings = 'red3', 
 	body_color_tail = 'yellow1', 
 	body_color_horns = 'yellow1', 
@@ -67,6 +67,9 @@ var test_template = {
 	height = 'towering',
 	ass_size = 'small',
 	pose = 'pose4',
+	beard = 'beard3',
+	moustache = 'moustache1',
+	hair_facial_color = 'blue_2'
 }
 
 func _ready():
