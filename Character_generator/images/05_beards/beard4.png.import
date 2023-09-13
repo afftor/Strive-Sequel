@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moustackle3.png-5a484a39b3cf37bb80a73ead9dda99df.stex"
+path="res://.import/beard4.png-2cc2b90fa5e44904a16ee31bb527d639.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/05_breads_moustackles/moustackle3.png"
-dest_files=[ "res://.import/moustackle3.png-5a484a39b3cf37bb80a73ead9dda99df.stex" ]
+source_file="res://Character_generator/images/05_beards/beard4.png"
+dest_files=[ "res://.import/beard4.png-2cc2b90fa5e44904a16ee31bb527d639.stex" ]
 
 [params]
 

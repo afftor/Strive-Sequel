@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bread1.png-597b013527c6324faf94b786e44981b0.stex"
+path="res://.import/moustache3.png-392854ef2143218d1f61eaa3bfa26757.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/05_breads/bread1.png"
-dest_files=[ "res://.import/bread1.png-597b013527c6324faf94b786e44981b0.stex" ]
+source_file="res://Character_generator/images/05_beards_moustaches/moustache3.png"
+dest_files=[ "res://.import/moustache3.png-392854ef2143218d1f61eaa3bfa26757.stex" ]
 
 [params]
 

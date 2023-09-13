@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=2]
+[gd_scene load_steps=269 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -2268,6 +2268,68 @@ shader_param/part2 = ExtResource( 56 )
 shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=12]
+
+[sub_resource type="ShaderMaterial" id=194]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 328.001, 387.999 )
+shader_param/anchor2 = Vector2( 567.001, 387.998 )
+shader_param/anchor3 = Vector2( 0, 0 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 200.0
+shader_param/range2 = 200.0
+shader_param/range3 = 0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0.85098, 1 )
+shader_param/part2color = Color( 1, 0, 0.85098, 1 )
+shader_param/part3color = Color( 1, 0, 0.85098, 1 )
+shader_param/overlay = 0.7
+shader_param/part2 = ExtResource( 56 )
+shader_param/part3 = ExtResource( 61 )
+
+[sub_resource type="ShaderMaterial" id=195]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 328.001, 387.999 )
+shader_param/anchor2 = Vector2( 567.001, 387.998 )
+shader_param/anchor3 = Vector2( 0, 0 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 200.0
+shader_param/range2 = 200.0
+shader_param/range3 = 0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0.85098, 1 )
+shader_param/part2color = Color( 1, 0, 0.85098, 1 )
+shader_param/part3color = Color( 1, 0, 0.85098, 1 )
+shader_param/overlay = 0.7
+shader_param/part2 = ExtResource( 56 )
+shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=111]
 shader = ExtResource( 27 )
@@ -5210,7 +5272,7 @@ position = Vector2( 220, -11.0008 )
 rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
-[node name="HandR" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR"]
+[node name="HandR" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 178.784, -35.0601 )
 z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
@@ -5224,6 +5286,28 @@ rotation = -1.5708
 texture = ExtResource( 75 )
 
 [node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth", "cloth_top"]]
+light_mask = 4
+material = SubResource( 54 )
+position = Vector2( -94.5127, 187.524 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 98 )
+
+[node name="HandR2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
+position = Vector2( 178.784, -35.0601 )
+z_index = -2
+rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
+default_length = 100.0
+
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["fur_nonmask", "skin_main"]]
+light_mask = 4
+material = SubResource( 86 )
+position = Vector2( -94.2105, 190.287 )
+rotation = -1.5708
+texture = ExtResource( 75 )
+
+[node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["cloth", "cloth_top"]]
+visible = false
 light_mask = 4
 material = SubResource( 54 )
 position = Vector2( -94.5127, 187.524 )
@@ -5295,7 +5379,7 @@ position = Vector2( 225.263, 9.58202 )
 rest = Transform2D( 1, 0, 0, 1, 225.263, 9.58202 )
 default_length = 100.0
 
-[node name="HandL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL"]
+[node name="HandL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 188.756, 27.4087 )
 z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
@@ -5309,6 +5393,28 @@ rotation = -1.5708
 texture = ExtResource( 76 )
 
 [node name="HandL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth", "cloth_top"]]
+light_mask = 4
+material = SubResource( 57 )
+position = Vector2( -104.846, -164.526 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 67 )
+
+[node name="HandL2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
+position = Vector2( 188.756, 27.4087 )
+z_index = -2
+rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
+default_length = 100.0
+
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["fur_nonmask", "skin_main"]]
+light_mask = 4
+material = SubResource( 91 )
+position = Vector2( -108.852, -164.122 )
+rotation = -1.5708
+texture = ExtResource( 76 )
+
+[node name="HandL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["cloth", "cloth_top"]]
+visible = false
 light_mask = 4
 material = SubResource( 57 )
 position = Vector2( -104.846, -164.526 )
@@ -5677,6 +5783,18 @@ material = SubResource( 12 )
 position = Vector2( 499.474, -7.78754 )
 rotation = -1.5708
 texture = ExtResource( 64 )
+
+[node name="Beard" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
+light_mask = 4
+material = SubResource( 194 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
+
+[node name="Moustache" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
+light_mask = 4
+material = SubResource( 195 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
