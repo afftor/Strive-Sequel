@@ -159,7 +159,8 @@ var possible_vals = {}
 
 
 func _ready():
-	modding_core.handle_test_mode() #for test
+	if testmode:
+		modding_core.handle_test_mode() #for test
 	RebuildStatsContainer()
 	$SaveButton.connect("pressed", self, "SaveLoadCharPanel", ["save"])
 	$LoadButton.connect("pressed", self, "SaveLoadCharPanel", ["load"])
