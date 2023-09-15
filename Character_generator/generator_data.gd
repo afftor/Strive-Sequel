@@ -9,7 +9,7 @@ var stats_to_look = [
 'hair_back', 'hair_fringe',
 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',
-#'beard', 'moustache', 'hair_facial_color',
+'beard', 'moustache', 'hair_facial_color',
 'body_color_skin', 'skin_coverage',
 'ears', 'tail',
 'height', 'ass_size',

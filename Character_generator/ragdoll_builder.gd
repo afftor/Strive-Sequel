@@ -69,7 +69,8 @@ var test_template = {
 	pose = 'pose4',
 	beard = 'beard3',
 	moustache = 'moustache1',
-	hair_facial_color = 'blue_2'
+	hair_facial_color = 'blue_2',
+	
 }
 
 func _ready():

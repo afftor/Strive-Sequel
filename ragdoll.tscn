@@ -2269,11 +2269,40 @@ shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=12]
 
+[sub_resource type="ShaderMaterial" id=193]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
 [sub_resource type="ShaderMaterial" id=194]
 shader = ExtResource( 27 )
-shader_param/anchor1 = Vector2( 328.001, 387.999 )
-shader_param/anchor2 = Vector2( 567.001, 387.998 )
-shader_param/anchor3 = Vector2( 0, 0 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
 shader_param/anchor4 = Vector2( 0, 0 )
 shader_param/anchor5 = Vector2( 0, 0 )
 shader_param/anchor6 = Vector2( 0, 0 )
@@ -2283,9 +2312,9 @@ shader_param/move3 = Vector2( 0, 0 )
 shader_param/move4 = Vector2( 0, 0 )
 shader_param/move5 = Vector2( 0, 0 )
 shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 200.0
-shader_param/range2 = 200.0
-shader_param/range3 = 0
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
 shader_param/range4 = 0
 shader_param/range5 = 0
 shader_param/range6 = 0
@@ -2293,43 +2322,10 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 1, 0, 0, 1 )
 shader_param/target2color = Color( 1, 0, 0, 1 )
 shader_param/target3color = Color( 1, 0, 0, 1 )
-shader_param/part1color = Color( 1, 0, 0.85098, 1 )
-shader_param/part2color = Color( 1, 0, 0.85098, 1 )
-shader_param/part3color = Color( 1, 0, 0.85098, 1 )
-shader_param/overlay = 0.7
-shader_param/part2 = ExtResource( 56 )
-shader_param/part3 = ExtResource( 61 )
-
-[sub_resource type="ShaderMaterial" id=195]
-shader = ExtResource( 27 )
-shader_param/anchor1 = Vector2( 328.001, 387.999 )
-shader_param/anchor2 = Vector2( 567.001, 387.998 )
-shader_param/anchor3 = Vector2( 0, 0 )
-shader_param/anchor4 = Vector2( 0, 0 )
-shader_param/anchor5 = Vector2( 0, 0 )
-shader_param/anchor6 = Vector2( 0, 0 )
-shader_param/move1 = Vector2( 0, 0 )
-shader_param/move2 = Vector2( 0, 0 )
-shader_param/move3 = Vector2( 0, 0 )
-shader_param/move4 = Vector2( 0, 0 )
-shader_param/move5 = Vector2( 0, 0 )
-shader_param/move6 = Vector2( 0, 0 )
-shader_param/range1 = 200.0
-shader_param/range2 = 200.0
-shader_param/range3 = 0
-shader_param/range4 = 0
-shader_param/range5 = 0
-shader_param/range6 = 0
-shader_param/power = 1.0
-shader_param/target1color = Color( 1, 0, 0, 1 )
-shader_param/target2color = Color( 1, 0, 0, 1 )
-shader_param/target3color = Color( 1, 0, 0, 1 )
-shader_param/part1color = Color( 1, 0, 0.85098, 1 )
-shader_param/part2color = Color( 1, 0, 0.85098, 1 )
-shader_param/part3color = Color( 1, 0, 0.85098, 1 )
-shader_param/overlay = 0.7
-shader_param/part2 = ExtResource( 56 )
-shader_param/part3 = ExtResource( 61 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
 
 [sub_resource type="ShaderMaterial" id=111]
 shader = ExtResource( 27 )
@@ -5786,13 +5782,13 @@ texture = ExtResource( 64 )
 
 [node name="Beard" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
 light_mask = 4
-material = SubResource( 194 )
+material = SubResource( 193 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 
 [node name="Moustache" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
 light_mask = 4
-material = SubResource( 195 )
+material = SubResource( 194 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 
