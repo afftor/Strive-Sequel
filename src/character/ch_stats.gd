@@ -601,6 +601,11 @@ func get_stat(statname, ref = false):
 	if statname in ['nose', 'chin']: #possibly temporal
 		if statlist.race.begins_with('Beastkin'):
 			return 'beastkin'
+	if statname == 'hair_facial_color':
+		if statlist[statname] != "":
+			return statlist[statname]
+		else:
+			return get_stat('hair_base_color_1')
 	if statname.begins_with('hair_'): #compart actions, null values should not be returned
 		if statlist[statname] != "":
 			return statlist[statname]

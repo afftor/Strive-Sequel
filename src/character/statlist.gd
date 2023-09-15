@@ -136,6 +136,9 @@ var template = {
 	nose = 'default',
 	eyebrows = 'style1',
 	lips = 'style1',
+	beard = 'no',
+	moustache = 'no',
+
 	
 	armor_color = 'default',
 	
@@ -162,6 +165,7 @@ var template = {
 	hair_fringe_lenght = '', 
 	hair_back_lenght = '', 
 	hair_assist_lenght = '',
+	hair_facial_color = "",
 	
 	#genitals
 	penis_size = '',

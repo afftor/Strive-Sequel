@@ -148,6 +148,9 @@ var params_to_save = [ #memo mostly
 	'hair_assist_color_2',
 	'hair_base_color_1',
 	'hair_base_color_2',
+	'beard',
+	'moustache',
+	'hair_facial_color'
 ]
 
 onready var RaceSelection = $RaceSelectionModule
@@ -312,7 +315,13 @@ func build_possible_val_for_stat(stat):
 		#race filter
 		var race_vals = []
 		var racedata = races.racelist[race] #if this is unsafe - than we REALLY need to fill data. i won't add a check here for sanity reasons
-		if racedata.has('bodyparts') and racedata.bodyparts.has(t_stat):
+		if racedata.has('bodyparts') and racedata.bodyparts.has(stat):
+			for val in racedata.bodyparts[stat]:
+				if val is Array:
+					race_vals.push_back(val[0])
+				else:
+					race_vals.push_back(val)
+		elif racedata.has('bodyparts') and racedata.bodyparts.has(t_stat):
 			for val in racedata.bodyparts[t_stat]:
 				if val is Array:
 					race_vals.push_back(val[0])
@@ -333,7 +342,7 @@ func build_possible_val_for_stat(stat):
 		var sex_vals = []
 		if sexdata.has('bodychanges'):
 			for change in sexdata.bodychanges:
-				if change.code != t_stat:
+				if change.code != t_stat and change.code != stat:
 					continue
 				if change.has('reqs') and !person.checkreqs(change.reqs):
 					continue
