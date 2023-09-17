@@ -841,7 +841,9 @@ func finish_character():
 		input_handler.add_random_chat_message(person, 'hire')
 	else:
 		ResourceScripts.game_res.money -= upgradecostgold
-		person.statlist.body_upgrades = cur_upgrades.duplicate()
+#		person.statlist.body_upgrades = cur_upgrades.duplicate()
+		for upg in cur_upgrades:
+			person.add_upgrade(upg)
 		person.recheck_upgrades()
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()
