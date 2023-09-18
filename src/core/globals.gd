@@ -302,7 +302,8 @@ func build_traitlist_for_char(person, node):
 		button.get_node("Label").hide()
 		var text = person.translate(b.description)
 		connecttexttooltip(button, text)
-	for tr in person.get_traits_by_arg('visible', true):
+	var trlist = person.get_traits_by_arg('visible', true)
+	for tr in trlist:
 		var trdata = Traitdata.traits[tr]
 		if !trdata.has('tags'): continue
 		if !trdata.tags.has('simple_icon'): continue
@@ -311,7 +312,7 @@ func build_traitlist_for_char(person, node):
 		button.get_node("Label").hide()
 		var text = "[center]{color=yellow|" + tr(trdata.name) + '}[/center]\n' + person.translate(trdata.descript)
 		connecttexttooltip(button, text)
-	for tr in person.get_traits_by_arg('visible', true):
+	for tr in trlist:
 		var trdata = Traitdata.traits[tr]
 		if trdata.has('tags') and trdata.tags.has('simple_icon'): continue
 		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
