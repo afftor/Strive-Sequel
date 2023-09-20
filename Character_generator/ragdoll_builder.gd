@@ -89,6 +89,9 @@ func _ready():
 
 
 func _get_stat(stat):
+	if stat == 'multiple_tits_developed':
+		if !input_handler.globalsettings.furry_multiple_nipples:
+			return false
 	if test_mode or character == null:
 		return test_template[stat]
 	else:
@@ -104,6 +107,7 @@ func rebuild(character_to_build):
 #	position = _position
 	set_position(Vector2(0, 0))
 	_offset = Vector2(0.0, 0.0)
+	apply_settings()
 	
 	character = character_to_build
 	#first pass - textures
@@ -436,3 +440,8 @@ func save_portrait(name):
 #		image.resize(variables.portrait_width, variables.portrait_height)
 		image.save_png(path)
 	input_handler.emit_signal("PortraitUpdate")
+
+
+func apply_settings():
+	$VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex.visible = input_handler.globalsettings.futa_balls
+#	$VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick/.visible = input_handler.globalsettings.furry_multiple_nipples
