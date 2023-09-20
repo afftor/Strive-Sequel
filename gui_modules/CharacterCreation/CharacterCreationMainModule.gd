@@ -22,7 +22,12 @@ var guild = 'none'
 
 var slave_classes = ['slave','servant']
 
-var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
+var critical_stats = ["body_lower", "body_shape",
+ "penis_size", # should be filtered by sex
+#"penis_type", 4testing, possible bugs
+"balls_size", # should be filtered by sex
+"tits_size", # should be filtered by sex, visuals not affected, but descryptions will, lyckily races with tits filterinsg are rare
+ "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
 	'personality',
 #	'body_color_skin', 
@@ -718,8 +723,8 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	$BackButton.visible = type != 'slave' || is_from_cheats
 	$BackButtonCheats.visible = is_from_cheats
-	$SaveButton.visible = true
-	$LoadButton.visible = true
+	$SaveButton.visible = !is_from_cheats
+	$LoadButton.visible = !is_from_cheats
 	build_food_filter()
 	rebuild_slave()
 	build_stats()
