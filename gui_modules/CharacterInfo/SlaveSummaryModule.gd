@@ -78,6 +78,7 @@ func update():
 		return
 	if gui_controller.windows_opened.size() == 0:
 		get_parent().set_state("default")
+	
 
 func show_summary():
 	# input_handler.PreviousScene = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
