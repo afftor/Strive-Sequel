@@ -9781,7 +9781,7 @@ When you pull out the collar Cali's eyes light up for the faintest moment. The g
 - It's pretty...""",
 	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
 
-- …Well at least it's comfortable. But don't think this changes anything! Especially after what you've done…
+- ...Well at least it's comfortable. But don't think this changes anything! Especially after what you've done...
 
 The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn't move away .""",
 	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "There are no bandits here. No one's going to lay a hand on you. Save for me.",
@@ -9928,7 +9928,7 @@ The price tag on the book states it costs a measly 50 gold.""",
 
 Whatever image in the book sparked her need seems to reignite it, the girl's voice quivering and panting as she says,
 
-- Why…am I doing this...
+- Why...am I doing this...
 
 Cali continues to read for a few moments, eventually eliciting a soft moan as she touches herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan. Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself; her hips rolling now. """,
 	CALI_ACT4_MAST_3 = """- I might have liked it...
@@ -10846,6 +10846,365 @@ You can feel both girls gasping and clenching together as you cum in unison fill
 You lay there for a long time, the three of you lost in the afterglow of pleasure. You feel Lilia's lips against your neck, kissing you gently as Zephyra cuddles up next to you, her tail wrapping around your leg. It seems both girls are falling into their sleep and aren't going to let you leave like selfish cats.""",
 	
 	
+	ZEPHYRA_PAINTING_1 = """As you stroll through the mansion you spot one of the back rooms occupied by one of your residents, Zephyra. As you slip inside you can observe her musingly observing a set canvas while mildly chewing on her paintbrush at her mouth. You remember how it was the first thing which came up when you met her.
+
+Zephyra seems to acknowledge your appearance but does not move or say anything as if not to break her concentration.""",
+	ZEPHYRA_PAINTING_1_OPTION_1 = "*Stay quiet*",
+	ZEPHYRA_PAINTING_1_OPTION_2 = "So, is this your hobby?",
+	ZEPHYRA_PAINTING_1_OPTION_3 = "What a waste of time which you could use it on more fun stuff",
+	ZEPHYRA_PAINTING_2_1 = """- Ah, [Master], are you interested in my drawing? I'm actually only an amateur, but you can watch if you want.
+
+- Anyway, since you are here, why won't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	ZEPHYRA_PAINTING_2_2 = """- Ha, you can say so. But I have an excuse as it is also a divination technique for me. You never know which one until you finish, though. But this makes it more relaxing and exciting. 
+
+- Anyway, since you are here, why won't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	ZEPHYRA_PAINTING_2_3 = """- Boo, [Master], this is fun for me, you know. Or are you implying something naughty? Then, this shall be more useful, after all this has also been my divination practice for a long time.
+
+- Anyway, since you are here, why won't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	ZEPHYRA_PAINTING_2_OPTION_1 = "Landscape",
+	ZEPHYRA_PAINTING_2_OPTION_2 = "Portrait",
+	ZEPHYRA_PAINTING_2_OPTION_3 = "Erotica",
+	ZEPHYRA_PAINTING_2_OPTION_4 = "I don't really care",
+	ZEPHYRA_PAINTING_3_1 = """- That seems tad boring. Did you actually want to request something else but was too shy? Oh well, there's no second chance when it comes to predictions, so I'll take it.""",
+	ZEPHYRA_PAINTING_3_2 = """- Like the one I passed you, hmm? Or should it be some cute girl, perhaps myself? Well, there is only one way find out.""",
+	ZEPHYRA_PAINTING_3_3 = """- Haah... Is that really all you can think about? But you know, I'd only draw you an erotica of myself, and I can't really see myself so you'd get a blank picture. """,
+	ZEPHYRA_PAINTING_3_4 = """Zephyra is visibly disappointed by your lack of interest but her mood does not worsen.
+
+- Right. Then I'll try to draw a dumb master and see what comes out of it. I wonder what the divination has to say about it, hehe...""",
+	ZEPHYRA_PAINTING_4 = """Before Zephyra could bring the brush to the canvas you hear a loud crack and the splinters of it drop to the floor from her arms.
+
+- Argh, dang it! This is the third one this week... I guess these cheap things aren't good enough to channel my powers.
+
+Zephyra sighs loudly and dramatically drops on the floor. 
+
+- I guess I'll be going to the shop then.""",
+	ZEPHYRA_PAINTING_4_OPTION_1 = "You always have to deal with this? What an unconventional hobby",
+	ZEPHYRA_PAINTING_4_OPTION_2 = "I could keep you company",
+	ZEPHYRA_PAINTING_4_OPTION_3 = "Have a safe trip",
+	ZEPHYRA_PAINTING_5_1 = """- Truth is, I lost it sometime after I left Millford for you. A shame really, it was bestowed to me from Alios for my good deeds... At least that's the only way I could explain why I found it in the small village's dump.""",
+	ZEPHYRA_PAINTING_5_2 = """- Thank you, [Master], but I consider it my personal task. """,
+	ZEPHYRA_PAINTING_5_3 = """- Oh well, excuse me for this but I'll have to skip today's work. """,
+	ZEPHYRA_DISAPPEARANCE_1 = """By the morning you realize that Zephyra, uncharacteristically for her, has not returned since yesterday. It might be a good idea to look for her.""",
+	
+	ZEPHYRA_DISAPPEARANCE_2 = """You find the shop which Zephyra seems to have gone to the other day. A small stationery shop at the corner of the street does not particularly stand out so you decide to enter it. As you make your way to the counter and not find anyone at it, you spot a large selection of painting tools of various kinds on the walls. After a short consideration you decide to hit the bell resting on the counter...""",
+	ZEPHYRA_DISAPPEARANCE_3 = """You find yourself in the middle of a snowy coniferous forest. You have no clue how you got here and everything feels more like a dream if not for being rather real. The ongoing blizzard is almost blinding however you are able to make out a shade of building ahead of you.""",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_1 = "Move towards the building",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_2 = "Walk away from the building",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_3 = "Try to wake up",
+	ZEPHYRA_DISAPPEARANCE_4_1 = """You walk through the deep snow as if in daze. After a few moments you can make out the small one story wooden hut. Contrary to the bad weather it seems almost an ideal place to hide with a small amount of light coming out of its windows. You open the unlocked door and walk inside.""",
+	ZEPHYRA_DISAPPEARANCE_4_2 = """You spend several minutes wandering among look-a-like trees but in the end you get nowhere. You return to the initial place with a silhouette of a building in front of you.""",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1 = """You think of a way to wake up from this dream, if it is indeed one...""",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_1 = "Pinch yourself",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_2 = "Bite your tongue",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_3 = "Sit and wait",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_4 = "Forget about it",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_1 = """You pinch your hand with force, but you only feel mild pain from doing it.""",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_2 = """You bite your tongue to the point you start to taste a bit of blood in your mouth but nothing else happens. You wonder if it was a good idea at all...""",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_3 = """You sit down and try to come to your senses but the only thing changing is that you start to feel cold... or at least you believe in it.""",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_4 = """""", #
+	ZEPHYRA_DISAPPEARANCE_HUT_1 = """The small hut seems rather spacious from the inside. The main room is lit by the stone fireplace which is peacefully burning, warming up the space.
+
+A young boy with a pair of fox ears on his head sits by the table.""",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_1 = "Walk to the kitchen",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_2 = "Approach the boy",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_3 = "Lay down to rest",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_4 = "Look under the bed", #  (needs trigger 4, one shot)
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1 = """The kitchen is slightly dark and gloomy. You spot some food in the process of being prepared for cooking. The window is covered in ice so thick you can't make out what's outside.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_1 = "Check for food",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2 = "Look at the window",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2_2 = "Look at the window",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_3 = "Take the knife", # (needs trigger 2)
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4 = "Back to hall",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_1 = """You rummage through kitchen drawers but despite them having plenty of deliciously preserves you realize you barely have any appetite.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_1 = """The window is painted in thick hoarfrost. Behind it you can only see a plain white color. After a few moments you turn away from it.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_2 = """As you look at the frost patterns you start to notice how they slowly move to form a shape of a woman's face. You can't really make out any details but there's something motherly to it.
+
+- Stuck in such an easy illusion, how embarrassing... I guess normal people are still no match for champion powers.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_1 = "Who are you?",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_2 = "What's going on?",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_3 = "Can you help me?", # (appears after seeing 1 and 2)
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_1 = """- And you are just standing here with a silly face looking at a piece of glass, which does not even exist. A truly miserable experience.
+
+It seems the entity behind the image either did not hear your question or entirely ignored it.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_2 = """- You've been caught into a Divine... Influence? That's what you call it these days. A trap laid by another champion, the one she also got caught unfortunately.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_3 = """There's a long pause before you finally can hear the voice in your head.
+
+- Perhaps. If you make a promise. You must stop collecting the artifacts.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_1 = "Why would you want me to stop?",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_2 = "I agree",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_3 = "I refuse",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_1 = """The voice ignores your question, it seems that it wants only your response.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_2 = """As you respond, you realize there's a knife on the table in front of you. For some reason you can't tell if it was always there or you just noticed it, but it certainly caught your attention. The image on the glass is gone, as it is its voice.""",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_3 = """You don't hear anything but you feel severe irritation with your response, followed by... nothing. After a few moments you realize there's a knife on the table in front of you. For some reason you can't tell if it was always there or you just noticed it, but it certainly caught your attention. The image on the glass is gone, as it is its voice.""", # (add trigger 2)
+	ZEPHYRA_DISAPPEARANCE_KNIFE = """You take the knife into your hand, it feels cold and weird, yet strong. You put it in your pocket.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_1 = """The boy speaks to you in a friendly, tranquil manner.
+
+- Wild weather outside, isn't it? But it makes it all the better hiding inside, our home is very cozy and you can stay until the blizzard is over.
+
+The boy points at the bed next to the fireplace.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_1 = "Ask",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_2 = "Stab him",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_3 = "Turn away",
+	
+	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_1 = "Where am I?",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_2 = "Who are you?",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_3 = "How do I get out?",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_4 = "That's enough talking",
+	
+	ZEPHYRA_DISAPPEARANCE_BOY_2_1AND2 = """- You must be a sister's friend? She went for a walk and will be back in a few hours. Why don't you rest at the bed over there? 
+
+- My name is...
+
+For some reason you can't make out any sounds of what he just said to you.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_1 = "Where is she?",
+	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_2 = "How do I get out",
+	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_3 = "What do you even do around here",
+	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_4 = "That's enough talking",
+	ZEPHYRA_DISAPPEARANCE_BOY_3_1 = """- Sis went outside some time ago. Hope she'll be back soon, after all her body is quite frail. Before our parents deceased she used to be bedridden all of the time.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_3_2 = """- Get out? You shouldn't go at the weather like this, let's just wait till she gets back home. She'll be back any time soon.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_3_3 = """- Ah, Sis does like drawing even though it's hard to get the tools for it with our kind of money. She almost looks happy while at it. You can probably find some of her sketches under the bed. As for me... I don't really remember, I guess.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_4 = """You move closer and with a swift movement deliver the knife into the boy's stomach.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_5 = """- T-t-that's... You... Bastard!... How did you?.. Where did you get the knife!?
+
+The world around you quickly starts to blur. You realize you are at the shop's door and the boy's appearance quickly changes into a middle-aged guy holding his stomach in pain looking at you with hate and disdain.
+
+- How did someone like you break out of my Divine Illusion!? Even the girl had no chance to break from it. Stay away or you won't see her again!""",
+	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_1 = "Where's Zephyra?",
+	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_2 = "What do you want?",
+	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_3 = "I don't care, just die *Attack*",
+	ZEPHYRA_DISAPPEARANCE_BOY_6 = """- She's where you won't find her, unlike you she fell into this trap just fine, damn it. You won't find her on your own, she's far away from this city. If you want her back, bring me the bowl you've got from the elves. And then I promise she'll be back in one piece... Mostly.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_1 = "I'll kill you for sure if you try to trick me",
+	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_2 = "I... Understand",
+	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_3 = "Forget it, I'll better kill you right now *Attack*",
+	ZEPHYRA_DISAPPEARANCE_BOY_7_1AND2 = """- In three days we'll meet outside this city. My messenger will drop by your home. And so you have something to do while I'm leaving..
+
+Ketch snaps his fingers and the shop quickly erupts in fires over the walls. He quickly escapes as people start gathering around it.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_8 = """After some time the city guards have locked down and investigated the building from ceiling to floor. Despite their effort there was very little they could work with. 
+
+- You say the elf called himself Ketch? From what I gathered he's an infamous criminal. Smuggling, murder, raids... Makes things worse if he's a champion as you say.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_1 = "How someone like him can operate freely",
+	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_2 = "I need help, Zephyra got kidnapped by him",
+	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave (close)",
+	ZEPHYRA_DISAPPEARANCE_BOY_9_1 = """- Has been known for being elusive. Changing his location every now and then whenever it got discovered by authorities. That's how he's able to earn this reputation. Kinda bad for you as I expect him to have more than one base he could be hiding at now.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_9_2 = """- There's nothing people like us can do. I've already informed patrolling guards but given his experience there's little hope. Sorry, there's not much we can do.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were likely very much true and you have no clue how to find Zephyra now.""",
+	ZEPHYRA_DISAPPEARANCE_BED_1_1 = """You lay down on the bed and close your eyes. For some reason you feel very comfortable quickly dozing to sleep by the crackling of fire...
+
+That is until you feel a hard slap of something fluffy on your head returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, didn't you?
+
+The boy looks over you with a smile.
+
+- Is something wrong?""",
+	ZEPHYRA_DISAPPEARANCE_BED_1_2 = """You don't feel sleepy anymore. However you do acknowledge the bed's coziness despite it being only a dream or illusion...""",
+	ZEPHYRA_DISAPPEARANCE_BED_2 = """You get on your knees and look under the bed till you spot a wooden box. After dragging it out you go through multiple slightly dusty sketches and amateurish paintings. Some feature familiar flower patterns. Other drawings are more abstract than not, overall giving you a depressing feeling.
+
+Out of all paintings you spot an exquisite paintbrush, standing out of all plain surroundings. As you take it in your hand, you hear the boy addressing you. 
+
+- Ah, that's hers, she didn't get to use it for some time since we moved, but I'd advise you not to meddle with it. 
+
+You put the box back and stand up.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_OPTION_1 = "I want to talk about Zephyra...",
+	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """You decide to tell Ginny about what happened with Zephyra.
+
+- Oh, no way, that's horrible! They want the Sacred Bowl you've acquired from the elven kingdom? Hmmm... Sorry, I have no idea what they might want it for. And I'm really worried about Zephy's fate.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_1_OPTION_1 = """Actually, how do you know each other?""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_1_OPTION_2 = """Is there nothing we can do?""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_1 = """- She was a regular visitor, I guess we've become friends, she is surprisingly enthusiastic about religious stories and rituals, maybe it's because of her position... Uh... Please, do something so she's not hurt.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_2 = """Ginny seems to be lost in thoughts for some time until she finally speaks up.
+
+- I think... I know of one way. I might be able to replicate the Bowl's divine aura, at least it will appear so for a few days. You wouldn't be able to tell the difference on sight. These people are up to no good, but it might be risky for Zephyra still...
+
+- If you agree to this, I'll need 1.000 gold for the necessary tools and items.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_1 = "I'll consider it",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_2 = "Very well, do it (Pay 1.000 gold)",
+	ZEPHYRA_DISAPPEARANCE_BOWL_3_1 = """- Very well, but please be quick. If what you said is true, we might not have a lot of time.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_3_OPTION_1 = "I've brought the money ",
+	ZEPHYRA_DISAPPEARANCE_BOWL_3_2 = """- Splendid, please wait here, I have most of the things prepared.
+
+As Ginny withdraws from the main hall you are left wondering about the church on your own for some time.""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_4 = """You spend about an hour waiting when Ginny finally comes to you with a shining bowl replica, which would easily fool you. You take it from her hands as she makes a small bow.
+
+- You better play along so they won't get suspicious. I'll pray for your success.
+""",
+	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_1 = "Thank you",
+	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_2 = "I'll bring Zephyra back",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_BOWL_1 = """""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_1 = """At the morning you receive a letter from Ketch. He wants to meet you at the town's outskirts and provides the details on how to find him. This might be your only chance to get Zephyra back.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_1_OPTION_1 = "Meet with Ketch",
+	ZEPHYRA_DISAPPEARANCE_KETCH_2 = """Zephyra stays next to them with her hands tied behind her back, eyes blindfolded and mouth gagged. Despite her condition she seems sufficiently okay making you wonder if it's not just another illusion of Ketch.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_1 = "*Give away fake bowl* ",
+	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_2 = "*Give away the Sacred Bowl*",
+	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_3 = "No deal, I'll just take her by force",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """- What a fool you are. It seems you don't care about this girl then, fine, I'll have your head and take the bowl by force.
+
+Ketch makes a simple magic gesture in the air and Zephyra disappears in a puff of smoke. His henchmen charge at you.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from the wounds. With this your chances of getting Zephyra back reach zero...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """- So you are an obedient [boy] after all. I guess I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
+
+He pushes Zephyra into your direction ordering her to walk forward. She hesitantly does so, as if guilt weighing her down. As she makes halfway through the field you pass the bowl to a henchman. As Zephyra finally ends in your arms you realize that neither Ketch nor his people are no longer there.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4 = """You help Zephyra to get rid of her restraints when she looks up at you. You can see her face displaying a mixture of concern and guilt. 
+
+- While I'm very grateful, you shouldn't have given it away for me...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_1 = "Actually it was a fake one",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_2 = "Forget it, your safety is more important",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_3 = "Don't worry, we'll get it later somehow",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_1 = """Zephyra stares at you with a blank expression not sure if you are joking or not. Eventually understanding you are serious she bursts into laughter.
+
+- No way. I didn't expect you to be this ingenious. Ha-ha, I can imagine their faces once they find out... I guess I should've expected that from a man I've chosen. Saved me and the artifact from the bad guys.
+
+- So you did actually manage to break Ketch's illusion? That's really something I even fell for.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_2AND3 = """- Right... Thank you, and I'm happy that you've wished to bring me back.
+
+- So you did actually manage to break Ketch's illusion? That's really something I even fell for.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_1 = "About that... I've made a promise to do it.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_2 = "That's natural for someone of my capabilities",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_3 = "Perhaps it's just because it was aimed at you and not me",
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_1a = """You tell Zephyra about a mysterious encounter in the land of illusion and the promise you've made with an unknown entity.
+
+Zephyra looks at you with an exceedingly worsening face. 
+
+- Y-you do realize I'm obliged to search for those artifacts no matter what? In that case I can't stay with you anymore... 
+
+Zephyra lowers her head and slowly walks away. Her voice sounds heartbroken as she finishes her last line.
+
+- Thanks for saving me, though. Maybe we'll meet another time.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_1b = """You tell Zephyra about a mysterious encounter in the land of illusion and the promise you've made with an unknown entity.
+
+- Huh... That's a weird promise to make. If I didn't know better I'd expect you to get rid of me in such a way. But you did keep the Sacred Bowl, right? Well, since my goal is to find them all, I'll be staying with you then.
+
+- I'm afraid I can't tell you much about what happened. When I came to my senses I was already at their hideout and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_2 = """- Aren't humble at all, are we? But I digress, after all you are my true savior here.
+
+- I'm afraid I can't tell you much about what happened. When I came to my senses I was already at their hideout and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me... """,
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_3 = """- It's still not a small feat to break out of Divine Influence level of magic with only your willpower.
+
+- I'm afraid I can't tell you much about what happened. When I came to my senses I was already at their hideout and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me... """,
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_OPTION_1 = "I'm glad you are unharmed",
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_OPTION_2 = "They haven't done anything nasty to you?",
+	ZEPHYRA_DISAPPEARANCE_KETCH_7_1 = """- Hehe, Thank you for worrying about me. I was worried they could do something terrible to [Master] as well.
+
+You notice how Zephyra leaned closer to you seeking for your warmth after being rescued. 
+
+- Actually being finally reunited with you might've made you a bit too excited...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_7_2 = """Zephyra gives you a pained look but still manages to produce a smile. 
+
+- I was hoping you wouldn't ask...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_8 = """- Hehe, did that make you worried? The thought of little me being molested and defiled by the bad guys? Don't worry, I'm not gonna let anyone else have their way with me. Speaking of which... 
+
+You notice how Zephyra leaned closer to you seeking for your warmth after being rescued. 
+
+- I won't deny that I had thought about the moment I'll be able to finally reunite with my [Master].""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1 = "Comply",
+	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_2 = "Refuse",
+	ZEPHYRA_DISAPPEARANCE_KETCH_9_2 = """Fox girl's ears drop as you turn her down. She pouts and looks away, silently following you on the way home.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_9_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
+
+- Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
+
+Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_10 = """Ketch: - I couldn't get [him] but we should be able to trade the girl for that stupid utensil you want.
+
+The demon remained quiet, hiding her dissatisfaction with the champion's performance. At least he didn't end up dead. Zephyra was wearily watching them from behind the cell doors, with her hands tied above her head. A couple guards have been guarding her outside of the cell.
+
+Ketch: - So, should we try teaching her some manners? And maybe have a bit of fun while at it, hi-hi..
+
+Demon: - I strongly advise against it. Despite her state even I would not leave unscratched by her dormant powers if I were to threaten her in such a way. 
+
+Ketch: - Well, damn it. You heard the boss, guys. Stay away from our prisoner.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_11 = """As Zephyra was left alone in her confinement, a couple of her wardens could not quite lay aside their interest in her.
+
+Guard A: - Man, I had no 'ho for like a month.
+
+Guard B: - Yeah, It's not like you can invite anyone here anyway, your whines only make it worse.
+
+The guard glances at Zephyra quietly sitting behind the bars.
+
+Guard A: - She's not half bad, ya know. Don't think we deserve some fun? 
+
+Guard B: - I dunno, the boss was pretty clear we shouldn't approach her at all. 
+
+Guard A: - Come on, she's just a small girl, it's not like she's going to tell anyone.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_12 = """As both guards approached Zephyra with a smirk on their faces she restlessly squirmed against her ties with no result. 
+
+Guard A: - Just play nice and we won't hurt you too much, heh.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_13 = """As Zephyra was at the same place with her hand tied and mouth plugged, she had to turn away from two men being completely lost in the act of sodomy being blissfully unaware of their condition, entrapped inside of illusion. Not too different from the technique she fell for herself, although not near as nasty.
+
+It seems, this is how Zephyra was not afraid to be left completely alone in troublesome scenarios.""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_1 = """As both guards approached Zephyra with a smirk on their faces she restlessly squirmed against her ties with no result. 
+
+Guard A: - Just play nice and we won't hurt you too much, heh.
+
+One of the guards approaches her and grips her dress. With a forceful move, he tears down her clothes. Zephyra wants to object, but her objection is cut short as the guard grabs her by the chin.
+
+He takes out his penis and starts sweeping it all over her face and lips. Disgust mixed with fear colors Zephyra’s face, but she can do nothing to resist. She is completely helpless.
+
+Guard A: Now, open up.""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_2 = """Zephyra clenches her jaw as tightly as she can, trying to shake her head in refusal. But the guard’s grip doesn’t let her express her objection.
+
+Guard A: Wanna play hard to get, huh? 
+
+The guard pinches her nose with another hand. Zephyra has no choice but to yield and open her mouth for even just a single whiff of air. But the relief of regaining her ability to breath is quickly replaced with a taste of a man’s genitals. The Guard forcefully pushes his shaft inside Zephyra’s mouth before she can close it again.""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_3 = """Guard A: Now that’s more like it. Good puppy.
+
+Guard B: Heh, I want a turn too, or maybe I should take it from the other side?
+
+The guard pushes his dick deeper inside, all the way to Zephyra’s throat. Breathing is a luxury these brutes won’t allow her any time soon, it seems. Her eyes get teary — both a physical response, and a mental one.
+
+The guard starts moving his hips, having his way with Zephyra. Roughly, with complete disregard for herself. Her mouth is just another orifice for him to please himself with. 
+
+Guard A: This is good! Much better than city harlots. I can’t hold it in...""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_4 = """The guard lets his juice out into Zephyra’s mouth. With her tongue pushed down by the shaft inside her mouth she can’t even swallow it. The potent smell tickles her nostrils and throat. But she has to bear it... Maybe they’ll be satisfied with only just using her mouth. If only she endures it a little longer...""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_5 = """Another guard, observing the cruelty transpiring before his eyes, takes off his trousers and starts pleasuring himself.
+
+Guard A: For goddess’s sake, what are you doing?!
+
+Guard B: What? I mean, she’s so hot, all restrained and stuff. I want a piece of her too!
+
+Guard A: Have some patience. You’ll get your turn soon. After I nut it a couple more times... he-he...
+
+Zephyra’s stares blankly into the space in front of her. Her mind realizes a terrible truth: they won’t let her go. This is going to continue for much longer than she will be able to withstand... And nobody is coming to help.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
+
+- Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
+
+Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal. """,
+	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers 
+
+— [Master]... we’re out in the open, in the middle of the day... doesn’t that make it more exciting? 
+
+She's right. Someone might come by any moment. You look around, but it's just the two of you. And honestly, even if someone did show up, it probably wouldn't stop you now.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_3 = """
+Your hands move along the skin of her back, caressing it, as you push deeper inside. Zephyra's tail wiggles eagerly, though it's a bit in the way. You grab it gently, and she squeaks in surprise.
+
+— W-what are you doing?! Don’t grab it so suddenly...
+
+You ignore her question and push your member inside Zephyra. This is enough to make her instantly forget the discomfort of having her tail grabbed.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+— Silly... [master]... what a brute you are... so forceful... grabbing the girl’s tail, even..!
+
+Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
+	ZEPHYRA_DISAPPEARANCE_SEX_5 = """As your body approaches the limit of its pleasure tolerance, you let it all out inside Zephyra. You feel her tail losing strength, stop trying to break free. As you let it go, it simply droops down along her buttocks. Zephyra herself would fall down in a similar manner if it wasn’t for the tree she’s using for support. 
+
+— This... was a bit more... more intense than I anticipated...
+
+Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the hand. 
+
+— Now you are properly rewarded, [master]. Let’s go back.""",
+	
+#	ZEPHYRA_DISAPPEARANCE_6 = """""",
+#	ZEPHYRA_DISAPPEARANCE_6 = """""",
+#	ZEPHYRA_DISAPPEARANCE_6 = """""",
+#	ZEPHYRA_DISAPPEARANCE_1 = """""",
+#	ZEPHYRA_DISAPPEARANCE_1_OPTION_1 = "",
+#	ZEPHYRA_DISAPPEARANCE_1_OPTION_1 = "",
+#	ZEPHYRA_DISAPPEARANCE_1_OPTION_1 = "",
+	
 	
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
@@ -11089,6 +11448,10 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	GOBLIN_QUEST_STAGE_3 = "Ask guild leaders for the clues for traps",
 	GOBLIN_QUEST_STAGE_4 = "Search for the culprits at Desolated Woods one more time",
 	GOBLIN_QUEST_STAGE_5 = "Return to The White Stag for your reward", 
+	
+	ZEPHYRA_DISAPPEARANCE_QUEST_NAME = "",
+	ZEPHYRA_DISAPPEARANCE_QUEST_SUMMARY = "", # search for Zephyra
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1 = "", # wait for a letter (or do sacred bowl)
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",
@@ -12353,6 +12716,8 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 	ALIRON18 = "Pet Shop",
 	ALIRON19 = "Check the streets",
 	ALIRON20 = "Search surroundings",
+	ALIRON21 = "Search for Zephyra",
+	ALIRON22 = "Meet with Ketch",
 	
 	ELF_CAPITAL1 = "Meet Priestess",
 	ELF_CAPITAL2 = "Look For Smuggler",
