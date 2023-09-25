@@ -22,7 +22,12 @@ var guild = 'none'
 
 var slave_classes = ['slave','servant']
 
-var critical_stats = ["body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
+var critical_stats = ["body_lower", "body_shape",
+ "penis_size", # should be filtered by sex
+#"penis_type", 4testing, possible bugs
+"balls_size", # should be filtered by sex
+"tits_size", # should be filtered by sex, visuals not affected, but descryptions will, lyckily races with tits filterinsg are rare
+ "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
 	'personality',
 #	'body_color_skin', 
@@ -34,6 +39,7 @@ var free_stats = [
 	'hair_fringe', 
 	'hair_assist', 
 	'hair_back', 
+#	'body_color_skin', 
 #	'hair_back_color_1',
 #	'hair_back_color_2',
 #	'hair_assist_color_1',
@@ -147,6 +153,9 @@ var params_to_save = [ #memo mostly
 	'hair_assist_color_2',
 	'hair_base_color_1',
 	'hair_base_color_2',
+	'beard',
+	'moustache',
+	'hair_facial_color'
 ]
 
 onready var RaceSelection = $RaceSelectionModule
@@ -158,7 +167,8 @@ var possible_vals = {}
 
 
 func _ready():
-	modding_core.handle_test_mode() #for test
+	if testmode:
+		modding_core.handle_test_mode() #for test
 	RebuildStatsContainer()
 	$SaveButton.connect("pressed", self, "SaveLoadCharPanel", ["save"])
 	$LoadButton.connect("pressed", self, "SaveLoadCharPanel", ["load"])
@@ -202,7 +212,7 @@ func build_stats():
 	$StatsModule.visible = true
 	$DietPanel.visible = true
 	$VisualsModule.visible = false
-	if mode == 'freemode':
+	if mode != 'freemode':
 		$UpgradesPanel.visible = false
 		$VBoxContainer.visible = true
 
@@ -263,7 +273,7 @@ func build_possible_val_for_stat(stat):
 		possible_vals[stat] = []
 		return
 	if stat.ends_with('factor'):
-		possible_vals[stat] = [1, 2, 3, 4, 5]
+		possible_vals[stat] = [1, 2, 3, 4, 5, 6]
 		if stat in ['timid_factor','tame_factor'] and mode == 'master':
 			possible_vals[stat] = []
 		return
@@ -310,7 +320,13 @@ func build_possible_val_for_stat(stat):
 		#race filter
 		var race_vals = []
 		var racedata = races.racelist[race] #if this is unsafe - than we REALLY need to fill data. i won't add a check here for sanity reasons
-		if racedata.has('bodyparts') and racedata.bodyparts.has(t_stat):
+		if racedata.has('bodyparts') and racedata.bodyparts.has(stat):
+			for val in racedata.bodyparts[stat]:
+				if val is Array:
+					race_vals.push_back(val[0])
+				else:
+					race_vals.push_back(val)
+		elif racedata.has('bodyparts') and racedata.bodyparts.has(t_stat):
 			for val in racedata.bodyparts[t_stat]:
 				if val is Array:
 					race_vals.push_back(val[0])
@@ -331,7 +347,7 @@ func build_possible_val_for_stat(stat):
 		var sex_vals = []
 		if sexdata.has('bodychanges'):
 			for change in sexdata.bodychanges:
-				if change.code != t_stat:
+				if change.code != t_stat and change.code != stat:
 					continue
 				if change.has('reqs') and !person.checkreqs(change.reqs):
 					continue
@@ -440,14 +456,23 @@ func build_node_for_stat(stat):
 		return
 	
 	if stat in freemode_fixed_stats and mode == 'freemode':
-		node.visible = false
+		if stat.ends_with('factor'):
+			node.get_node('button/LArr').visible = false
+			node.get_node('button/RArr').visible = false
+		else:
+			node.visible = false
 #		node.get_node('button/LArr').visible = (mode != 'freemode')
 #		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
-	if stat == 'sex' and mode != 'freemode':
-		var id = possible_vals.sex.find(val)
+	if stat in ['sex', ]:
+		var id = possible_vals[stat].find(val)
 		node.get_node('button/LArr').visible = (id > 0)
-		node.get_node('button/RArr').visible = (id < possible_vals.sex.size() - 1)
+		node.get_node('button/RArr').visible = (id < possible_vals[stat].size() - 1)
+	
+	if stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+		var id = possible_vals[stat].find(val)
+		node.get_node('button/LArr').disabled = !(id > 0)
+		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)
 	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
@@ -538,6 +563,8 @@ func change_value_node_selectable(stat, newvalue): #for selectable nodes
 
 func unassigned_points():
 	var points
+	if mode == 'freemode':
+		return 0
 	if mode == 'master':
 		points = variables.master_starting_stats + 5
 		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', "magic_factor"]:
@@ -558,10 +585,11 @@ func update_points(): #visual only
 		build_class()
 	
 	$StatsModule/totalstatlabel.text = "Unassigned stats: %d" % unassigned_points()
+	$StatsModule/totalstatlabel.visible = (mode != 'freemode')
 
 
 func reset_points():
-	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor']:
+	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor', 'magic_factor']:
 		person.set_stat(st, 1)
 		preservedsettings.erase(st)
 
@@ -669,6 +697,7 @@ func MainMenu():
 #
 func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
+	selected_class = ''
 #	build_class()
 #	build_race()
 #	build_sex_trait()
@@ -683,7 +712,6 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	if type == 'freemode':
 		return
 	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
-	selected_class = ''
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
 	match mode:
@@ -695,10 +723,11 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 #	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/slave_class_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	$BackButton.visible = type != 'slave' || is_from_cheats
 	$BackButtonCheats.visible = is_from_cheats
-	$SaveButton.visible = true
-	$LoadButton.visible = true
+	$SaveButton.visible = !is_from_cheats
+	$LoadButton.visible = !is_from_cheats
 	build_food_filter()
 	rebuild_slave()
+	build_stats()
 
 
 func open_freemode(char_to_open):
@@ -742,11 +771,13 @@ func rebuild_slave():
 	person = t_person
 	
 	build_possible_vals()
+	for stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+		person.set_stat(stat, 1)
 	apply_preserved_settings()
 	FillStats()
-#	build_class()
-#	build_sex_trait()
-#	build_trait()
+	build_class()
+	build_sex_trait()
+	build_trait()
 
 
 func confirm_character():
@@ -792,6 +823,7 @@ func finish_character():
 		person.food.create() #rebuild food filter
 		#i don't like handle starting eqipment here. but this is the only point where newly created characters are accessible - and we need to do this for the characters created during prologue
 		globals.equip_char(person, 'club', {WeaponMace = 'wood'})
+		person.set_stat('growth_factor', 5)
 		if mode != 'master':
 			#apply delayed slave class
 			if !preservedsettings.has('slave_class'):
@@ -799,7 +831,6 @@ func finish_character():
 			person.set_slave_category(preservedsettings.slave_class.to_lower())
 			#basic slave setup
 			person.set_stat('obedience', 48)
-			person.set_stat('growth_factor', 5)
 			if guild == 'fighters':
 				person.add_trait('loyalty_combatant')
 			if guild in ['servants', 'workers']:
@@ -815,7 +846,9 @@ func finish_character():
 		input_handler.add_random_chat_message(person, 'hire')
 	else:
 		ResourceScripts.game_res.money -= upgradecostgold
-		person.statlist.body_upgrades = cur_upgrades.duplicate()
+#		person.statlist.body_upgrades = cur_upgrades.duplicate()
+		for upg in cur_upgrades:
+			person.add_upgrade(upg)
 		person.recheck_upgrades()
 		input_handler.emit_signal("CharacterUpdated")
 	self.hide()

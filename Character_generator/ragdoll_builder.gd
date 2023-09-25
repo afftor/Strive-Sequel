@@ -16,8 +16,8 @@ var _offset
 
 var character
 var test_template = {
-	sex = 'female', 
-	race = 'BeastkinFox', 
+	sex = 'male', 
+	race = 'Kobold', 
 	horns = 'short', 
 	ears = 'bunny_standing', 
 	eyeshape = 'face2', 
@@ -33,8 +33,8 @@ var test_template = {
 	pregnancy_status = 'heavy', 
 	tits_size = 'huge', 
 	multiple_tits_developed = false,
-	skin_coverage = 'fur_white', 
-	body_color_skin = 'blue5', 
+	skin_coverage = 'kobold', 
+	body_color_skin = 'human2', 
 	body_color_wings = 'red3', 
 	body_color_tail = 'yellow1', 
 	body_color_horns = 'yellow1', 
@@ -67,6 +67,10 @@ var test_template = {
 	height = 'towering',
 	ass_size = 'small',
 	pose = 'pose4',
+	beard = 'beard3',
+	moustache = 'moustache1',
+	hair_facial_color = 'blue_2',
+	
 }
 
 func _ready():
@@ -85,6 +89,9 @@ func _ready():
 
 
 func _get_stat(stat):
+	if stat == 'multiple_tits_developed':
+		if !input_handler.globalsettings.furry_multiple_nipples:
+			return false
 	if test_mode or character == null:
 		return test_template[stat]
 	else:
@@ -100,6 +107,7 @@ func rebuild(character_to_build):
 #	position = _position
 	set_position(Vector2(0, 0))
 	_offset = Vector2(0.0, 0.0)
+	apply_settings()
 	
 	character = character_to_build
 	#first pass - textures
@@ -432,3 +440,8 @@ func save_portrait(name):
 #		image.resize(variables.portrait_width, variables.portrait_height)
 		image.save_png(path)
 	input_handler.emit_signal("PortraitUpdate")
+
+
+func apply_settings():
+	$VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick/Testicles_tex.visible = input_handler.globalsettings.futa_balls
+#	$VPC/VP/Female_pose/HumanF1/Spine/Taz/Dick/.visible = input_handler.globalsettings.furry_multiple_nipples

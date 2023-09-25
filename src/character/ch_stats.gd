@@ -589,11 +589,23 @@ func get_hairs_data():
 	res.hair_fringe_color_2 = res.hair_base_color_2 #keep this
 	return res
 
+
+func set_hairs(): #temporal solution
+	var data = get_hairs_data()
+	for stat in data:
+		statlist[stat] = data[stat]
+
+
 #bonus system
 func get_stat(statname, ref = false):
 	if statname in ['nose', 'chin']: #possibly temporal
 		if statlist.race.begins_with('Beastkin'):
 			return 'beastkin'
+	if statname == 'hair_facial_color':
+		if statlist[statname] != "":
+			return statlist[statname]
+		else:
+			return get_stat('hair_base_color_1')
 	if statname.begins_with('hair_'): #compart actions, null values should not be returned
 		if statlist[statname] != "":
 			return statlist[statname]
@@ -1435,6 +1447,8 @@ func create(temp_race, temp_gender, temp_age):
 				apply_custom_bodychange(i, statlist[i])
 #	add_trait('core_trait')
 #	learn_c_skill('attack')
+	set_hairs() #temporal, remove this later!!
+	
 	parent.get_ref().hp = get_stat('hpmax')
 	parent.get_ref().mp = get_stat('mpmax')
 	
