@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_big.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/03_ears/ears_elven.png" type="Texture" id=2]
@@ -49,7 +49,7 @@
 [ext_resource path="res://Character_generator/images/01_body_nude_male/LegL_m.png" type="Texture" id=47]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/taz_armor_m1.png" type="Texture" id=48]
 [ext_resource path="res://Character_generator/images/01_body_nude_male/HandL1_m.png" type="Texture" id=49]
-[ext_resource path="res://Character_generator/images/05_breads_moustackles/moustackle4.png" type="Texture" id=50]
+[ext_resource path="res://Character_generator/images/05_breads_moustackles/bread_moustacle2.png" type="Texture" id=50]
 [ext_resource path="res://Character_generator/images/14_testickles/Testicle_furry.png" type="Texture" id=51]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmL1_armor_m1.png" type="Texture" id=52]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmR1_armor_m1.png" type="Texture" id=53]
@@ -62,8 +62,6 @@
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=60]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=61]
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=62]
-[ext_resource path="res://Character_generator/images/05_beards_moustaches/moustache4.png" type="Texture" id=63]
-[ext_resource path="res://Character_generator/images/05_beards/beard1.png" type="Texture" id=64]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 62 )
@@ -798,7 +796,6 @@ default_length = 100.0
 material = SubResource( 9 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
-texture = ExtResource( 64 )
 
 [node name="HandR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR/HandR"]
 visible = false
@@ -1234,13 +1231,7 @@ texture = ExtResource( 28 )
 material = SubResource( 14 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
-texture = ExtResource( 64 )r
-
-[node name="Moustackle" type="Sprite" parent="HumanF1/Head/Face"]
-material = SubResource( 14 )
-position = Vector2( 499.474, -5.8439 )
-rotation = -1.5708
-texture = ExtResource( 63 )
+texture = ExtResource( 50 )
 
 [node name="Hair" type="Bone2D" parent="HumanF1/Head"]
 position = Vector2( 31, 1.00001 )
