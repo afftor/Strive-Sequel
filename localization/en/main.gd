@@ -11450,8 +11450,9 @@ Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the
 	GOBLIN_QUEST_STAGE_5 = "Return to The White Stag for your reward", 
 	
 	ZEPHYRA_DISAPPEARANCE_QUEST_NAME = "",
-	ZEPHYRA_DISAPPEARANCE_QUEST_SUMMARY = "", # search for Zephyra
-	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1 = "", # wait for a letter (or do sacred bowl)
+	ZEPHYRA_DISAPPEARANCE_QUEST_SUMMARY = "", 
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1 = "", # search for Zephyra
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_2 = "", # wait for a letter (or do sacred bowl)
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",

@@ -1983,7 +1983,7 @@ var quests = {
 		}
 	},
 	
-	getting_lira_quest = {
+	getting_lira_quest = { # arc2 act2 final quest
 		code = 'getting_lira_quest',
 		summary = "GETTING_LIRA_QUEST_SUMMARY",
 		stages = {
