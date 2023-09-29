@@ -2109,6 +2109,7 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1"}, # search for Zephyra
 			stage2 = {code = 'stage2', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_2"}, # wait for a letter (or do sacred bowl)
+			stage3 = {code = 'stage3', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_3"}, # meet ketch
 #			stage1 = {code = 'stage1', name = "ZEPHYRA_DISAPPEARANCE_QUEST_NAME", descript = "ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1"}, # search for Zephyra
 		},
 	}
