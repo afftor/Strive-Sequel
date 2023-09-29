@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Character_generator/images/00_body_nude/tits_nipples_big.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/03_ears/ears_elven.png" type="Texture" id=2]
@@ -48,8 +48,8 @@
 [ext_resource path="res://Character_generator/images/11_eyebrows/eyebrows_m2.png" type="Texture" id=46]
 [ext_resource path="res://Character_generator/images/01_body_nude_male/LegL_m.png" type="Texture" id=47]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/taz_armor_m1.png" type="Texture" id=48]
-[ext_resource path="res://Character_generator/images/01_body_nude_male/HandL2_m.png" type="Texture" id=49]
-[ext_resource path="res://Character_generator/images/01_body_nude_male/HandR2_m.png" type="Texture" id=50]
+[ext_resource path="res://Character_generator/images/01_body_nude_male/HandL1_m.png" type="Texture" id=49]
+[ext_resource path="res://Character_generator/images/05_breads_moustackles/bread_moustacle2.png" type="Texture" id=50]
 [ext_resource path="res://Character_generator/images/14_testickles/Testicle_furry.png" type="Texture" id=51]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmL1_armor_m1.png" type="Texture" id=52]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmR1_armor_m1.png" type="Texture" id=53]
@@ -642,6 +642,9 @@ shader = ExtResource( 62 )
 [sub_resource type="ShaderMaterial" id=13]
 shader = ExtResource( 62 )
 
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 62 )
+
 [node name="Female_pose1" type="Node2D"]
 
 [node name="HumanF1" type="Skeleton2D" parent="."]
@@ -753,8 +756,8 @@ rotation = -1.5708
 texture = ExtResource( 18 )
 
 [node name="ShoulderR" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -84.6702, -108.904 )
-rotation = -0.841249
+position = Vector2( -83.2606, -117.723 )
+rotation = -0.706858
 rest = Transform2D( 0.001, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -772,18 +775,19 @@ rotation = -1.5708
 texture = ExtResource( 40 )
 
 [node name="ShoulderR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
+visible = false
 position = Vector2( 315.302, 141.497 )
 rotation = -1.5708
 texture = ExtResource( 36 )
 
 [node name="ArmR" type="Bone2D" parent="HumanF1/Spine/ShoulderR"]
-position = Vector2( 202.479, -34.0876 )
-rotation = 1.74358
+position = Vector2( 194.108, -27.3569 )
+rotation = 1.54636
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="HumanF1/Spine/ShoulderR/ArmR"]
-position = Vector2( 207.625, -41.0907 )
+position = Vector2( 199.509, -38.0966 )
 rotation = -0.174533
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
@@ -792,7 +796,6 @@ default_length = 100.0
 material = SubResource( 9 )
 position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
-texture = ExtResource( 50 )
 
 [node name="HandR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR/HandR"]
 visible = false
@@ -802,18 +805,18 @@ texture = ExtResource( 58 )
 
 [node name="ArmR_tex" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR"]
 material = SubResource( 9 )
-position = Vector2( 95.2248, 151.349 )
+position = Vector2( 102.508, 155.014 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
 [node name="ArmR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR/ArmR"]
+visible = false
 position = Vector2( 93.5158, 149.224 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
 [node name="ShoulderL" type="Bone2D" parent="HumanF1/Spine"]
-position = Vector2( -90.3837, 110.143 )
-rotation = 0.0314159
+position = Vector2( -89.4312, 122.524 )
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
@@ -831,25 +834,26 @@ rotation = -1.5708
 texture = ExtResource( 29 )
 
 [node name="ShoulderL_armor" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
+visible = false
 position = Vector2( 309.473, -128.797 )
 rotation = -1.5708
 texture = ExtResource( 37 )
 
 [node name="ArmL" type="Bone2D" parent="HumanF1/Spine/ShoulderL"]
-position = Vector2( 199.338, 6.12188 )
-rotation = -0.191986
+position = Vector2( 211.623, 2.87746 )
+rotation = -0.165806
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="HumanF1/Spine/ShoulderL/ArmL"]
-position = Vector2( 221.639, 35.9639 )
+position = Vector2( 217.018, 36.1129 )
 rotation = 0.15708
 rest = Transform2D( 0.008, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
 [node name="HandL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL/HandL"]
 material = SubResource( 9 )
-position = Vector2( -108.852, -164.122 )
+position = Vector2( -115.404, -161.422 )
 rotation = -1.5708
 texture = ExtResource( 49 )
 
@@ -861,11 +865,12 @@ texture = ExtResource( 23 )
 
 [node name="ArmL_tex" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL"]
 material = SubResource( 9 )
-position = Vector2( 85.7447, -129.863 )
+position = Vector2( 102.903, -129.017 )
 rotation = -1.5708
 texture = ExtResource( 33 )
 
 [node name="ArmL_armor" type="Sprite" parent="HumanF1/Spine/ShoulderL/ArmL"]
+visible = false
 position = Vector2( 87.3708, -129.031 )
 rotation = -1.5708
 texture = ExtResource( 52 )
@@ -890,6 +895,7 @@ rotation = -1.5708
 texture = ExtResource( 34 )
 
 [node name="Torso_armor_tex" type="Sprite" parent="HumanF1/Spine"]
+visible = false
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 39 )
@@ -1220,6 +1226,12 @@ material = SubResource( 13 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 texture = ExtResource( 28 )
+
+[node name="Bread" type="Sprite" parent="HumanF1/Head/Face"]
+material = SubResource( 14 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
+texture = ExtResource( 50 )
 
 [node name="Hair" type="Bone2D" parent="HumanF1/Head"]
 position = Vector2( 31, 1.00001 )

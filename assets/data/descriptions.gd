@@ -342,6 +342,9 @@ var bodypartsdata = {
 			{code = 'has_pussy', value = [[true,1]], reqs = []},
 			{code = 'penis_size', value = [['',1]], reqs = []},
 			{code = 'balls_size', value = [['',1]], reqs = []},
+			{code = 'beard', value = [['no',1]], reqs = []},
+			{code = 'moustache', value = [['no',1]], reqs = []},
+			{code = 'hair_facial_color', value = [['',1]], reqs = []},
 			{code = 'penis_virgin', value = [[false,1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['loli', 1],['skinny', 1]], reqs = []},
@@ -567,16 +570,27 @@ var bodypartsdata = {
 		equine_big = {code = 'equine_big', name = '', chardescript = '', bodychanges = []},
 
 	},
+	#not sure if nonmatching ids and codes are correct
 	has_pussy = {
 		true : {code = 'true', combine = "vaginal_virgin", bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 
 	},
 	vaginal_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 		True_True = {code = 'true_true', name = '', chardescript = '', bodychanges = []},
 		True_False = {code = 'true_False', name = '', chardescript = '', bodychanges = []},
 	},
 	anal_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
+	},
+	mouth_virgin = {
+		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
+		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
+	},
+	penis_virgin = {
 		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 	}

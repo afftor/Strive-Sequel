@@ -83,13 +83,33 @@ func get_stat(statname, ref = false):
 	if statname == 'pose':
 		match get_stat('personality'):
 			'shy':
-				return 'shy'
+				match get_stat('sex'):
+					'male':
+						return 'pose5'
+					'female', 'futa':
+						return 'shy'
+#				return 'shy'
 			'kind':
-				return 'kind'
+				match get_stat('sex'):
+					'male':
+						return 'pose5'
+					'female', 'futa':
+						return 'kind'
+#				return 'kind'
 			'serious':
-				return 'pose4'
+				match get_stat('sex'):
+					'male':
+						return 'pose6'
+					'female', 'futa':
+						return 'pose4'
+#				return 'pose4'
 			'bold':
-				return 'bold'
+				match get_stat('sex'):
+					'male':
+						return 'pose6'
+					'female', 'futa':
+						return 'bold'
+#				return 'bold'
 		
 		return 'default' #temporal stub
 	if statname == 'counters':

@@ -1632,8 +1632,8 @@ func show_bodyupgrade_window():
 #	$SlaveMarket.hide()
 #	input_handler.get_spec_node(input_handler.NODE_CHAREDIT, [person])
 
-	if !gui_controller.windows_opened.has($StatsUpgrade):
-		gui_controller.windows_opened.append($StatsUpgrade)
+	if !gui_controller.windows_opened.has($BodyUpgrade):
+		gui_controller.windows_opened.append($BodyUpgrade)
 	$BodyUpgrade.show()
 	$BodyUpgrade.show_characters_panel()
 

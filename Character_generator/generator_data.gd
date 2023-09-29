@@ -9,6 +9,7 @@ var stats_to_look = [
 'hair_back', 'hair_fringe',
 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',
+'beard', 'moustache', 'hair_facial_color',
 'body_color_skin', 'skin_coverage',
 'ears', 'tail',
 'height', 'ass_size',
@@ -29,9 +30,11 @@ var itemparts = {}
 var texture_sets = {
 	default_male = [
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/01_body_nude_male/HandR1_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/01_body_nude_male/HandR2_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_tex', texture = "res://Character_generator/images/01_body_nude_male/ArmR1_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_tex', texture = "res://Character_generator/images/01_body_nude_male/ShoulderR_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_tex', texture = "res://Character_generator/images/01_body_nude_male/HandL1_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/01_body_nude_male/HandL2_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_tex', texture = "res://Character_generator/images/01_body_nude_male/ArmL1_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_tex', texture = "res://Character_generator/images/01_body_nude_male/ShoulderL_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_tex2', texture = "res://Character_generator/images/01_body_nude_male/torso_m.png"},
@@ -50,9 +53,11 @@ var texture_sets = {
 	],
 	beastkin_male = [
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandR1_beastkin_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandR2_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ArmR1_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ShoulderR_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandL1_beastkin_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandL2_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ArmL1_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ShoulderL_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude_male/torso_bestkin_m.png"},
@@ -1180,6 +1185,12 @@ var transforms = {
 		human5 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human5.tres"},
 		],
+		human6 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human6.tres"},
+		],
+		human7 = [
+			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/human/skin_human7.tres"},
+		],
 		pink1 = [
 			{type = 'import_recolor_group', group = 'skin_main', material = "res://Character_generator/shaders/shaders_color_human_skin/pink/skin_pink1.tres"},
 		],
@@ -1918,6 +1929,154 @@ var transforms = {
 		],
 	},
 	
+	beard = {
+		no = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
+			],
+		beard1 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard1.png"},
+			],
+		beard2 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard2.png"},
+			],
+		beard3 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard3.png"},
+			],
+		beard4 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard4.png"},
+			],
+	},
+	
+	
+	moustache = {
+		no = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+			],
+		moustache1 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache1.png"},
+			],
+		moustache2 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache2.png"},
+			],
+		moustache3 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache3.png"},
+			],
+		moustache4 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache4.png"},
+			],
+	},
+	
+	hair_facial_color = {
+		blue_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue.tres", ids = [1]},
+		],
+		blue_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_2.tres", ids = [1]},
+		],
+		blue_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [1]},
+		],
+		
+		brown_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [1]},
+		],
+		brown_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [1]},
+		],
+		brown_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [1]},
+		],
+		
+		orange_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [1]},
+		],
+		orange_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [1]},
+		],
+		orange_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [1]},
+		],
+		
+		dark_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [1]},
+		],
+		dark_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_2.tres", ids = [1]},
+		],
+		dark_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [1]},
+		],
+		
+		green_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green.tres", ids = [1]},
+		],
+		green_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_2.tres", ids = [1]},
+		],
+		green_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_3.tres", ids = [1]},
+		],
+		
+		cyan_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue.tres", ids = [1]},
+		],
+		cyan_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_2.tres", ids = [1]},
+		],
+		cyan_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_3.tres", ids = [1]},
+		],
+		
+		pink_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink.tres", ids = [1]},
+		],
+		pink_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_2.tres", ids = [1]},
+		],
+		pink_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_3.tres", ids = [1]},
+		],
+		
+		purple_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple.tres", ids = [1]},
+		],
+		purple_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_2.tres", ids = [1]},
+		],
+		purple_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_3.tres", ids = [1]},
+		],
+		
+		red_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red.tres", ids = [1]},
+		],
+		red_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [1]},
+		],
+		red_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_3.tres", ids = [1]},
+		],
+		
+		white_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white.tres", ids = [1]},
+		],
+		white_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_2.tres", ids = [1]},
+		],
+		white_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_3.tres", ids = [1]},
+		],
+		
+		yellow_1 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow.tres", ids = [1]},
+		],
+		yellow_2 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_2.tres", ids = [1]},
+		],
+		yellow_3 = [
+			{type = 'import_recolor_group', group = 'hair_facial', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [1]},
+		],
+	},
 	#hair part, possible backward compat errors
 	hair_base = { #mb put bald here as in other hair nodes, but currently it is handled with length
 		#pls, do check, remove and fix pathes with all that duplicates in dir
@@ -2360,177 +2519,144 @@ var transforms = {
 		blue_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue.tres", ids = [1]},
 		],
 		blue_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_2.tres", ids = [1]},
 		],
 		blue_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/blue/Hair_blue_3.tres", ids = [1]},
 		],
 		
 		brown_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown.tres", ids = [1]},
 		],
 		brown_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_2.tres", ids = [1]},
 		],
 		brown_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/brown/Hair_brown_3.tres", ids = [1]},
 		],
 		
 		orange_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange.tres", ids = [1]},
 		],
 		orange_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_2.tres", ids = [1]},
 		],
 		orange_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/orange/Hair_orange_3.tres", ids = [1]},
 		],
 		
 		dark_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark.tres", ids = [1]},
 		],
 		dark_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_2.tres", ids = [1]},
 		],
 		dark_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [1]},
 		],
 		
 		green_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green.tres", ids = [1]},
 		],
 		green_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_2.tres", ids = [1]},
 		],
 		green_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/green/Hair_green_3.tres", ids = [1]},
 		],
 		
 		cyan_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue.tres", ids = [1]},
 		],
 		cyan_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_2.tres", ids = [1]},
 		],
 		cyan_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/lightblue/Hair_lightblue_3.tres", ids = [1]},
 		],
 		
 		pink_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink.tres", ids = [1]},
 		],
 		pink_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_2.tres", ids = [1]},
 		],
 		pink_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/pink/Hair_pink_3.tres", ids = [1]},
 		],
 		
 		purple_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple.tres", ids = [1]},
 		],
 		purple_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_2.tres", ids = [1]},
 		],
 		purple_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/purple/Hair_purple_3.tres", ids = [1]},
 		],
 		
 		red_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red.tres", ids = [1]},
 		],
 		red_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_2.tres", ids = [1]},
 		],
 		red_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/red/Hair_red_3.tres", ids = [1]},
 		],
 		
 		white_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white.tres", ids = [1]},
 		],
 		white_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_2.tres", ids = [1]},
 		],
 		white_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/white/Hair_white_3.tres", ids = [1]},
 		],
 		
 		yellow_1 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow.tres", ids = [1]},
 		],
 		yellow_2 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_2.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_2.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_2.tres", ids = [1]},
 		],
 		yellow_3 = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [2]},
-			{type = 'import_recolor_group', group = 'hair_additional', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/yellow/Hair_yellow_3.tres", ids = [1]},
 		],
 	},
 	
@@ -4011,9 +4137,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.0},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -4047,9 +4175,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -4083,9 +4213,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -4119,9 +4251,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = null},
@@ -4155,9 +4289,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.0},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/100_armory_set_servant_male/ArmR1_armor_m1.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/100_armory_set_servant_male/ShoulderR_armor_m1.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/100_armory_set_servant_male/ArmL1_armor_m1.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/100_armory_set_servant_male/ShoulderL_armor_m1.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/100_armory_set_servant_male/torso_armor_m1.png"},
@@ -4191,9 +4327,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/121_armory_set_cloth_male/raincoat_cloth2.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/121_armory_set_cloth_male/ShoulderR_armor_cloth.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/121_armory_set_cloth_male/ShoulderL_armor_cloth.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/121_armory_set_cloth_male/torso_armor_cloth.png"},
@@ -4227,9 +4365,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/121_armory_set_cloth_male/raincoat_cloth2.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/121_armory_set_cloth_male/ShoulderR_armor_cloth.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/121_armory_set_cloth_male/ShoulderL_armor_cloth.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/121_armory_set_cloth_male/torso_armor_cloth.png"},
@@ -4262,9 +4402,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/122_armory_set_leather_male/raincoat_cloth2.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandR1_armor_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandR2_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ArmR1_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ShoulderR_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandL1_armor_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandL2_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ArmL1_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ShoulderL_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/122_armory_set_leather_male/torso_armor_leather.png"},
@@ -4298,9 +4440,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/122_armory_set_leather_male/raincoat_cloth2.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandR1_armor_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandR2_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ArmR1_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ShoulderR_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandL1_armor_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/HandL2_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ArmL1_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/122_armory_set_leather_male/ShoulderL_armor_leather.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/122_armory_set_leather_male/torso_armor_leather.png"},
@@ -4334,9 +4478,11 @@ var transforms = {
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = "res://Character_generator/images/123_armory_set_plate_male/raincoat_cloth2.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/HandR1_armor_plate.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR2/HandR/HandR_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/HandR2_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/ArmR1_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/ShoulderR_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/HandL1_armor_plate.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL2/HandL/HandL_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/HandL2_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/ArmL1_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_armor', texture = "res://Character_generator/images/123_armory_set_plate_male/ShoulderL_armor_plate.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_armor_tex', texture = "res://Character_generator/images/123_armory_set_plate_male/torso_armor_plate2.png"},
@@ -4694,9 +4840,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-105, -101)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(220, -11)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(147, -34)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(147, -34)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'position', value = Vector2(147, -34)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-95, 106)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(225.3, -7.3)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(134.8, 21)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(134.8, 21)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'position', value = Vector2(134.8, 21)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206.4, -2.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(94.4, 82.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -45.6)},
@@ -4728,9 +4878,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-105, -101)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(220, -11)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(147, -34)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(147, -34)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'position', value = Vector2(147, -34)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-95, 106)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(225.3, -7.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(136.8, 21.1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(136.8, 21.1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'position', value = Vector2(136.8, 21.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206.4, -5.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(94.4, 80.7)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.9, -44.1)},
@@ -4762,9 +4916,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-93, -80)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(220, -11)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(138.3, -33.2)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(138.3, -33.2)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'position', value = Vector2(138.3, -33.2)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-97, 88)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(198.4, -1.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(136.8, 21.1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(136.8, 21.1)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'position', value = Vector2(136.8, 21.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206, 5)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(93.4, 77.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(88.3, -45.4)},
@@ -4781,9 +4939,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0.8},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 17.1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = -8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = -8},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'rotation_degrees', value = -8},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = -3.4},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = -96},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 2.5},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 2.5},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'rotation_degrees', value = 2.5},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -6},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 5.1},
@@ -4792,9 +4954,13 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-105, -101)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(215, -8)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(140, -34.3)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(140, -34.3)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/HandR3', attr = 'position', value = Vector2(140, -34.3)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-95, 106)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(201, -7.4)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(140.1, 18.7)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(140.1, 18.7)},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/HandL3', attr = 'position', value = Vector2(140.1, 18.7)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(206.4, -2.1)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(92.6, 77.8)},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(96.6, -44.6)},
@@ -4805,6 +4971,74 @@ var transforms = {
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL2'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},
+		],
+		pose5 = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = 9},
+			
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-89.5, -143)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(220, -11)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(179, -35)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(179, -35)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-87.5, 124.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(225, 9.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(189, 27.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(189, 27.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(225, 0)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(94.5, 77.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(97, -45.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(55, 2)},
+			
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
+			
+		],
+		pose6 = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine', attr = 'rotation_degrees', value = 90},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'rotation_degrees', value = -40.5},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'rotation_degrees', value = 88.5},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'rotation_degrees', value = -10},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'rotation_degrees', value = -10},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'rotation_degrees', value = -9.5},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'rotation_degrees', value = 9},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'rotation_degrees', value = 9},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'rotation_degrees', value = 0},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegL', attr = 'rotation_degrees', value = -2.5},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegR', attr = 'rotation_degrees', value = -6},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'rotation_degrees', value = 9},
+			
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR', attr = 'position', value = Vector2(-81, -116.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'position', value = Vector2(194, -27)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR', attr = 'position', value = Vector2(199.5, -38)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2', attr = 'position', value = Vector2(199.5, -38)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL', attr = 'position', value = Vector2(-89.5, 122.5)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'position', value = Vector2(211.5, 3)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL', attr = 'position', value = Vector2(200, 36)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2', attr = 'position', value = Vector2(200, 36)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz', attr = 'position', value = Vector2(222.5, 0)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegL', attr = 'position', value = Vector2(107.5, 77)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/LegR', attr = 'position', value = Vector2(100, -49)},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(55, 2)},
+			
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
+			{type = 'node_group_select', group = 'hand_r', select = 'HandR2'},
+			
 		],
 	},
 }

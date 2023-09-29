@@ -58,6 +58,14 @@ func update_guilds_data():
 	for area in areas.values():
 		if !area.has('factions') or area.factions.empty(): continue
 		for guild in area.factions.values():
+			if guild.has('slaves'):
+				for id in guild.slaves.duplicate():
+					var ch = characters_pool.get_char_by_id(id)
+					if ch == null:
+						guild.slaves.erase(id)
+						continue
+					if ch.is_players_character:
+						guild.slaves.erase(id)
 			if !guild.has('conditions'):
 				guild.conditions = []
 			if guild.has('hireable_characters'): continue

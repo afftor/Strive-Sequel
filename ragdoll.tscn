@@ -1,4 +1,4 @@
-[gd_scene load_steps=266 format=2]
+[gd_scene load_steps=269 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -30,7 +30,7 @@
 [ext_resource path="res://Character_generator/images/21_nereid/Nereid_armL.png" type="Texture" id=28]
 [ext_resource path="res://Character_generator/images/14_animals_body/arachna_helicere.png" type="Texture" id=29]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/bluza.png" type="Texture" id=30]
-[ext_resource path="res://Character_generator/images/04_hairs_base/hair_base_default.png" type="Texture" id=31]
+[ext_resource path="res://Character_generator/images/04_hairs_fringe/hair_fringe_braids.png" type="Texture" id=31]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/hair_armor_maid.png" type="Texture" id=32]
 [ext_resource path="res://Character_generator/images/99_armory_set_maidu/Hand1_armorR1.png" type="Texture" id=33]
 [ext_resource path="res://Character_generator/images/05_hairs_assist/hair_assist_pigtails.png" type="Texture" id=34]
@@ -112,6 +112,7 @@
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_nipple_big.png" type="Texture" id=110]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_tits_big.png" type="Texture" id=111]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_titsmany_small6.png" type="Texture" id=112]
+[ext_resource path="res://Character_generator/images/04_hairs_base/hair_base_braids.png" type="Texture" id=113]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -984,7 +985,7 @@ shader_param/target3color = Color( 0, 1, 0.6, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
-shader_param/range = 0.1
+shader_param/range = 0.3
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
@@ -2267,6 +2268,64 @@ shader_param/part2 = ExtResource( 56 )
 shader_param/part3 = ExtResource( 61 )
 
 [sub_resource type="ShaderMaterial" id=12]
+
+[sub_resource type="ShaderMaterial" id=193]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
+[sub_resource type="ShaderMaterial" id=194]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
 
 [sub_resource type="ShaderMaterial" id=111]
 shader = ExtResource( 27 )
@@ -3966,10 +4025,10 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 0.980392, 0, 1, 1 )
 shader_param/target2color = Color( 0.498039, 1, 0, 1 )
 shader_param/target3color = Color( 0, 1, 0.6, 1 )
-shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.0941176, 0, 1, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
-shader_param/range = 0.1
+shader_param/range = 0.3
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
 shader_param/steepness = 2.0
@@ -5121,7 +5180,6 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
-visible = false
 light_mask = 4
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/male_pose"]
@@ -5210,7 +5268,7 @@ position = Vector2( 220, -11.0008 )
 rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
-[node name="HandR" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR"]
+[node name="HandR" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 178.784, -35.0601 )
 z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
@@ -5224,6 +5282,28 @@ rotation = -1.5708
 texture = ExtResource( 75 )
 
 [node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth", "cloth_top"]]
+light_mask = 4
+material = SubResource( 54 )
+position = Vector2( -94.5127, 187.524 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 98 )
+
+[node name="HandR2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
+position = Vector2( 178.784, -35.0601 )
+z_index = -2
+rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
+default_length = 100.0
+
+[node name="HandR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["fur_nonmask", "skin_main"]]
+light_mask = 4
+material = SubResource( 86 )
+position = Vector2( -94.2105, 190.287 )
+rotation = -1.5708
+texture = ExtResource( 75 )
+
+[node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["cloth", "cloth_top"]]
+visible = false
 light_mask = 4
 material = SubResource( 54 )
 position = Vector2( -94.5127, 187.524 )
@@ -5295,7 +5375,7 @@ position = Vector2( 225.263, 9.58202 )
 rest = Transform2D( 1, 0, 0, 1, 225.263, 9.58202 )
 default_length = 100.0
 
-[node name="HandL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL"]
+[node name="HandL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 188.756, 27.4087 )
 z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
@@ -5309,6 +5389,28 @@ rotation = -1.5708
 texture = ExtResource( 76 )
 
 [node name="HandL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth", "cloth_top"]]
+light_mask = 4
+material = SubResource( 57 )
+position = Vector2( -104.846, -164.526 )
+rotation = -1.5708
+z_index = 1
+texture = ExtResource( 67 )
+
+[node name="HandL2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
+position = Vector2( 188.756, 27.4087 )
+z_index = -2
+rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
+default_length = 100.0
+
+[node name="HandL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["fur_nonmask", "skin_main"]]
+light_mask = 4
+material = SubResource( 91 )
+position = Vector2( -108.852, -164.122 )
+rotation = -1.5708
+texture = ExtResource( 76 )
+
+[node name="HandL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2" groups=["cloth", "cloth_top"]]
+visible = false
 light_mask = 4
 material = SubResource( 57 )
 position = Vector2( -104.846, -164.526 )
@@ -5603,6 +5705,7 @@ internal_vertex_count = 142
 [node name="Head" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine"]
 position = Vector2( -361.002, 9 )
 scale = Vector2( 0.98, 0.98 )
+z_index = 10
 rest = Transform2D( 0.98, 0, 0, 0.98, -361.002, 9 )
 default_length = 100.0
 
@@ -5676,6 +5779,18 @@ material = SubResource( 12 )
 position = Vector2( 499.474, -7.78754 )
 rotation = -1.5708
 texture = ExtResource( 64 )
+
+[node name="Beard" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
+light_mask = 4
+material = SubResource( 193 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
+
+[node name="Moustache" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head/Face" groups=["hair_facial"]]
+light_mask = 4
+material = SubResource( 194 )
+position = Vector2( 499.474, -5.8439 )
+rotation = -1.5708
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
@@ -6590,6 +6705,7 @@ internal_vertex_count = 142
 
 [node name="Head" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine"]
 position = Vector2( -361, 9.00003 )
+z_index = 10
 rest = Transform2D( 1, 0, 0, 1, -361, 9.00003 )
 default_length = 100.0
 
@@ -6667,12 +6783,12 @@ texture = ExtResource( 21 )
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 light_mask = 4
 material = SubResource( 149 )
-position = Vector2( 567, -10.002 )
+position = Vector2( 590, -10.002 )
 rotation = -1.5708
 texture = ExtResource( 1 )
 
 [node name="Hair" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/Head"]
-position = Vector2( 31, -2.99999 )
+position = Vector2( 37, -3 )
 rest = Transform2D( 1, 0, 0, 1, 31, 1.00001 )
 default_length = 100.0
 
@@ -6696,7 +6812,7 @@ position = Vector2( -198.419, 428.001 )
 rotation = -1.5708
 z_index = 12
 offset = Vector2( 0, -1 )
-texture = ExtResource( 31 )
+texture = ExtResource( 113 )
 polygon = PoolVector2Array( 226.361, 214.538, 216.712, 286.468, 211.449, 369.801, 214.081, 448.748, 237.765, 542.608, 282.502, 625.941, 332.502, 659.275, 398.291, 661.906, 447.414, 657.52, 487.765, 660.152, 557.94, 659.275, 598.291, 630.327, 647.414, 554.889, 681.625, 469.801, 700.046, 373.31, 695.66, 287.345, 671.975, 205.766, 622.853, 153.134, 552.677, 125.941, 472.853, 119.801, 400.923, 119.801, 327.239, 136.468, 268.467, 158.397, 361.449, 185.59, 339.519, 229.45, 333.379, 269.801, 330.747, 317.169, 332.502, 373.31, 333.379, 420.678, 332.502, 474.187, 333.379, 529.45, 334.256, 589.099, 381.625, 172.432, 422.853, 159.275, 450.923, 162.783, 517.589, 175.064, 547.414, 204.011, 551.8, 239.099, 558.818, 289.976, 561.449, 347.871, 553.554, 412.783, 550.046, 466.292, 544.782, 537.345, 538.642, 594.362, 442.151, 225.064, 464.958, 261.029, 493.028, 295.239, 502.677, 344.362, 501.8, 401.38, 499.168, 457.52, 499.168, 506.643, 494.782, 561.029, 490.396, 603.134, 416.712, 232.082, 400.923, 275.941, 393.028, 300.503, 390.396, 350.503, 390.396, 415.415, 387.765, 454.889, 385.133, 500.503, 382.502, 548.748, 382.502, 590.854, 293.028, 212.783, 280.747, 271.555, 276.361, 325.941, 275.484, 382.959, 276.361, 444.362, 278.993, 511.906, 286.888, 567.169, 299.168, 609.275, 599.168, 202.257, 621.975, 260.152, 631.625, 311.029, 638.642, 366.292, 632.502, 436.468, 615.835, 489.976, 599.168, 539.976, 580.747, 584.713, 448.291, 191.731, 485.133, 206.643, 508.818, 227.696, 526.361, 261.029, 533.379, 304.011, 533.379, 347.871, 533.379, 392.608, 530.747, 432.082, 524.607, 465.415, 413.203, 198.748, 386.888, 223.31, 369.344, 257.52, 363.203, 287.345, 359.695, 332.959, 359.695, 375.064, 363.203, 410.152, 367.589, 446.117, 619.344, 186.468, 650.923, 239.976, 663.203, 289.976, 664.958, 355.766, 658.818, 419.801, 647.414, 482.082, 626.361, 536.468, 600.923, 582.959, 575.484, 619.801, 278.993, 193.485, 258.818, 254.011, 249.168, 306.643, 252.677, 379.45, 254.432, 440.854, 257.063, 486.468, 262.326, 539.976, 278.993, 593.485, 330.747, 202.257, 313.203, 277.696, 305.309, 329.45, 307.063, 389.099, 307.063, 447.871, 314.081, 493.485, 318.467, 545.24, 318.467, 587.345, 573.73, 206.643, 588.642, 261.906, 600.923, 332.082, 602.677, 370.678, 594.782, 453.134, 579.87, 501.38, 558.818, 563.661, 438.642, 267.169, 443.028, 322.432, 443.905, 371.555, 445.66, 413.661, 443.905, 451.38, 443.905, 492.608, 442.151, 539.099, 441.274, 575.064, 439.519, 610.152, 581.625, 176.818, 538.642, 150.503, 505.309, 145.239, 443.905, 139.099, 403.554, 141.731, 353.554, 153.134, 319.344, 170.678, 468.467, 306.643, 471.098, 345.239, 474.607, 393.485, 472.853, 439.099, 471.975, 477.696, 470.221, 525.064, 467.589, 570.678, 464.958, 616.292, 420.221, 311.029, 417.589, 346.994, 415.835, 393.485, 412.326, 434.713, 411.449, 482.082, 412.326, 521.555, 413.203, 559.275, 412.326, 598.748, 597.414, 414.538, 635.133, 395.239, 358.818, 488.222, 358.818, 535.59, 358.818, 588.222, 361.449, 633.836, 517.589, 635.59, 522.853, 523.31, 520.221, 558.397, 456.186, 211.906, 484.256, 236.468, 499.168, 264.538, 513.203, 302.257, 520.221, 344.362, 518.467, 384.713, 515.835, 422.432, 514.081, 465.415, 406.186, 225.064, 386.888, 267.169, 375.484, 296.117, 374.607, 333.836, 380.747, 383.836, 408.818, 183.836, 378.116, 205.766, 364.081, 229.45, 354.432, 265.415, 349.168, 296.117, 347.414, 342.608, 347.414, 379.45, 476.361, 186.468, 512.326, 204.889, 539.519, 246.994, 546.537, 286.468, 549.168, 333.836, 545.66, 361.906 )
 uv = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 polygons = [ [ 8, 7, 9 ], [ 5, 6, 69 ], [ 34, 33, 78 ], [ 41, 40, 85 ], [ 40, 84, 85 ], [ 41, 85, 86 ], [ 53, 44, 87 ], [ 44, 78, 87 ], [ 28, 29, 94 ], [ 93, 28, 94 ], [ 58, 57, 94 ], [ 57, 93, 94 ], [ 16, 17, 95 ], [ 15, 16, 96 ], [ 70, 71, 96 ], [ 95, 70, 96 ], [ 16, 95, 96 ], [ 71, 72, 97 ], [ 15, 96, 97 ], [ 96, 71, 97 ], [ 14, 15, 98 ], [ 15, 97, 98 ], [ 72, 73, 98 ], [ 97, 72, 98 ], [ 13, 14, 99 ], [ 74, 13, 99 ], [ 14, 98, 99 ], [ 12, 13, 100 ], [ 13, 74, 100 ], [ 74, 75, 100 ], [ 75, 76, 101 ], [ 12, 100, 101 ], [ 100, 75, 101 ], [ 11, 12, 102 ], [ 76, 77, 102 ], [ 12, 101, 102 ], [ 101, 76, 102 ], [ 10, 11, 103 ], [ 77, 43, 103 ], [ 11, 102, 103 ], [ 102, 77, 103 ], [ 22, 0, 104 ], [ 0, 1, 105 ], [ 63, 62, 105 ], [ 62, 104, 105 ], [ 104, 0, 105 ], [ 1, 2, 106 ], [ 64, 63, 106 ], [ 63, 105, 106 ], [ 105, 1, 106 ], [ 2, 3, 107 ], [ 65, 64, 107 ], [ 64, 106, 107 ], [ 106, 2, 107 ], [ 107, 3, 108 ], [ 66, 65, 108 ], [ 65, 107, 108 ], [ 3, 4, 109 ], [ 108, 3, 109 ], [ 66, 108, 109 ], [ 67, 109, 110 ], [ 109, 4, 110 ], [ 4, 5, 111 ], [ 5, 69, 111 ], [ 68, 110, 111 ], [ 110, 4, 111 ], [ 62, 24, 112 ], [ 25, 24, 113 ], [ 24, 62, 113 ], [ 62, 63, 113 ], [ 63, 64, 113 ], [ 64, 65, 114 ], [ 26, 113, 114 ], [ 113, 64, 114 ], [ 28, 27, 115 ], [ 65, 66, 115 ], [ 27, 114, 115 ], [ 114, 65, 115 ], [ 29, 28, 116 ], [ 28, 115, 116 ], [ 115, 66, 116 ], [ 29, 116, 117 ], [ 66, 109, 117 ], [ 116, 66, 117 ], [ 109, 67, 117 ], [ 67, 110, 118 ], [ 110, 68, 118 ], [ 30, 117, 118 ], [ 117, 67, 118 ], [ 69, 31, 119 ], [ 68, 111, 119 ], [ 111, 69, 119 ], [ 31, 118, 119 ], [ 118, 68, 119 ], [ 36, 37, 120 ], [ 37, 38, 121 ], [ 72, 71, 121 ], [ 120, 37, 121 ], [ 71, 70, 121 ], [ 70, 120, 121 ], [ 73, 72, 122 ], [ 72, 121, 122 ], [ 121, 38, 122 ], [ 73, 122, 123 ], [ 122, 39, 123 ], [ 40, 41, 124 ], [ 75, 74, 124 ], [ 42, 76, 125 ], [ 76, 75, 125 ], [ 75, 124, 125 ], [ 124, 41, 125 ], [ 43, 77, 126 ], [ 76, 42, 126 ], [ 77, 76, 126 ], [ 45, 44, 127 ], [ 44, 53, 127 ], [ 53, 54, 127 ], [ 7, 8, 135 ], [ 70, 95, 136 ], [ 95, 17, 136 ], [ 17, 18, 136 ], [ 120, 70, 136 ], [ 36, 120, 136 ], [ 136, 18, 137 ], [ 35, 36, 137 ], [ 36, 136, 137 ], [ 19, 34, 138 ], [ 18, 19, 138 ], [ 137, 18, 138 ], [ 35, 137, 138 ], [ 19, 20, 139 ], [ 33, 34, 139 ], [ 34, 19, 139 ], [ 33, 139, 140 ], [ 139, 20, 140 ], [ 23, 32, 141 ], [ 20, 21, 141 ], [ 140, 20, 141 ], [ 32, 140, 141 ], [ 21, 22, 142 ], [ 22, 104, 142 ], [ 104, 62, 142 ], [ 62, 112, 142 ], [ 141, 21, 142 ], [ 112, 23, 142 ], [ 23, 141, 142 ], [ 47, 46, 143 ], [ 46, 45, 143 ], [ 45, 127, 143 ], [ 127, 128, 143 ], [ 128, 129, 144 ], [ 47, 143, 144 ], [ 143, 128, 144 ], [ 129, 130, 145 ], [ 47, 144, 145 ], [ 144, 129, 145 ], [ 130, 131, 146 ], [ 48, 145, 146 ], [ 145, 130, 146 ], [ 131, 132, 147 ], [ 49, 146, 147 ], [ 146, 131, 147 ], [ 51, 50, 148 ], [ 132, 133, 148 ], [ 50, 147, 148 ], [ 147, 132, 148 ], [ 52, 51, 149 ], [ 133, 134, 149 ], [ 51, 148, 149 ], [ 148, 133, 149 ], [ 8, 9, 150 ], [ 9, 52, 150 ], [ 135, 8, 150 ], [ 134, 135, 150 ], [ 149, 134, 150 ], [ 52, 149, 150 ], [ 54, 55, 151 ], [ 127, 54, 151 ], [ 128, 127, 151 ], [ 129, 128, 152 ], [ 128, 151, 152 ], [ 151, 56, 152 ], [ 130, 129, 153 ], [ 152, 56, 153 ], [ 129, 152, 153 ], [ 57, 58, 154 ], [ 131, 130, 154 ], [ 130, 153, 154 ], [ 153, 57, 154 ], [ 58, 59, 155 ], [ 132, 131, 155 ], [ 131, 154, 155 ], [ 154, 58, 155 ], [ 59, 60, 156 ], [ 155, 59, 156 ], [ 133, 132, 156 ], [ 132, 155, 156 ], [ 60, 61, 157 ], [ 134, 133, 157 ], [ 133, 156, 157 ], [ 156, 60, 157 ], [ 7, 135, 158 ], [ 135, 134, 158 ], [ 134, 157, 158 ], [ 157, 61, 158 ], [ 124, 74, 159 ], [ 123, 40, 159 ], [ 40, 124, 159 ], [ 98, 73, 160 ], [ 99, 98, 160 ], [ 74, 99, 160 ], [ 159, 74, 160 ], [ 73, 123, 160 ], [ 123, 159, 160 ], [ 94, 29, 161 ], [ 59, 58, 161 ], [ 58, 94, 161 ], [ 29, 117, 161 ], [ 117, 30, 161 ], [ 60, 59, 162 ], [ 30, 118, 162 ], [ 118, 31, 162 ], [ 59, 161, 162 ], [ 161, 30, 162 ], [ 61, 60, 163 ], [ 60, 162, 163 ], [ 162, 31, 163 ], [ 6, 7, 164 ], [ 31, 69, 164 ], [ 69, 6, 164 ], [ 7, 158, 164 ], [ 158, 61, 164 ], [ 163, 31, 164 ], [ 61, 163, 164 ], [ 9, 10, 165 ], [ 43, 52, 165 ], [ 52, 9, 165 ], [ 10, 103, 165 ], [ 103, 43, 165 ], [ 50, 51, 166 ], [ 41, 86, 166 ], [ 86, 50, 166 ], [ 42, 125, 166 ], [ 125, 41, 166 ], [ 51, 52, 167 ], [ 52, 43, 167 ], [ 126, 42, 167 ], [ 43, 126, 167 ], [ 42, 166, 167 ], [ 166, 51, 167 ], [ 78, 44, 168 ], [ 80, 79, 169 ], [ 44, 45, 169 ], [ 168, 44, 169 ], [ 79, 168, 169 ], [ 45, 46, 170 ], [ 169, 45, 170 ], [ 81, 80, 170 ], [ 80, 169, 170 ], [ 46, 47, 171 ], [ 81, 170, 171 ], [ 170, 46, 171 ], [ 171, 47, 172 ], [ 82, 171, 172 ], [ 48, 84, 173 ], [ 47, 145, 173 ], [ 145, 48, 173 ], [ 172, 47, 173 ], [ 83, 172, 173 ], [ 49, 85, 174 ], [ 84, 48, 174 ], [ 85, 84, 174 ], [ 48, 146, 174 ], [ 146, 49, 174 ], [ 50, 86, 175 ], [ 85, 49, 175 ], [ 86, 85, 175 ], [ 49, 147, 175 ], [ 147, 50, 175 ], [ 53, 87, 176 ], [ 87, 88, 176 ], [ 89, 90, 177 ], [ 54, 53, 177 ], [ 53, 176, 177 ], [ 88, 89, 177 ], [ 176, 88, 177 ], [ 55, 54, 178 ], [ 54, 177, 178 ], [ 177, 90, 178 ], [ 92, 56, 179 ], [ 56, 151, 179 ], [ 151, 55, 179 ], [ 55, 178, 179 ], [ 178, 91, 179 ], [ 92, 93, 180 ], [ 93, 57, 180 ], [ 56, 92, 180 ], [ 153, 56, 180 ], [ 57, 153, 180 ], [ 78, 33, 181 ], [ 87, 78, 181 ], [ 33, 140, 181 ], [ 140, 32, 181 ], [ 32, 23, 182 ], [ 181, 32, 182 ], [ 88, 87, 182 ], [ 87, 181, 182 ], [ 89, 88, 183 ], [ 88, 182, 183 ], [ 23, 112, 183 ], [ 182, 23, 183 ], [ 112, 24, 183 ], [ 24, 25, 184 ], [ 90, 89, 184 ], [ 89, 183, 184 ], [ 183, 24, 184 ], [ 26, 91, 185 ], [ 25, 113, 185 ], [ 113, 26, 185 ], [ 91, 178, 185 ], [ 178, 90, 185 ], [ 90, 184, 185 ], [ 184, 25, 185 ], [ 91, 26, 186 ], [ 26, 114, 186 ], [ 114, 27, 186 ], [ 92, 179, 186 ], [ 179, 91, 186 ], [ 27, 28, 187 ], [ 28, 93, 187 ], [ 93, 92, 187 ], [ 92, 186, 187 ], [ 186, 27, 187 ], [ 34, 78, 188 ], [ 35, 138, 188 ], [ 138, 34, 188 ], [ 78, 168, 188 ], [ 168, 79, 188 ], [ 36, 35, 189 ], [ 80, 36, 189 ], [ 79, 80, 189 ], [ 35, 188, 189 ], [ 188, 79, 189 ], [ 37, 36, 190 ], [ 36, 80, 190 ], [ 80, 81, 190 ], [ 82, 38, 191 ], [ 81, 171, 191 ], [ 171, 82, 191 ], [ 38, 37, 191 ], [ 37, 190, 191 ], [ 190, 81, 191 ], [ 38, 82, 192 ], [ 83, 39, 192 ], [ 39, 122, 192 ], [ 122, 38, 192 ], [ 82, 172, 192 ], [ 172, 83, 192 ], [ 84, 40, 193 ], [ 39, 83, 193 ], [ 40, 123, 193 ], [ 123, 39, 193 ], [ 83, 173, 193 ], [ 173, 84, 193 ] ]
