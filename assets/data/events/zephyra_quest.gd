@@ -257,7 +257,7 @@ var data = {
 	
 	zephyra_bath_1 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [{type = "has_upgrade", name = 'resting', value = 1, negative = 'repeat_next_day'}], character = "zephyra",
+		reqs = [{type = "has_upgrade", name = 'resting', value = 1, negative = 'repeat_next_day'}, {type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}], character = "zephyra",
 		text = [{text = "ZEPHYRA_BATH_1", reqs = []}],
 		options = [ {
 			code = 'zephyra_bath_2', text = "ZEPHYRA_BATH_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

@@ -11141,33 +11141,33 @@ Guard A: - Just play nice and we won't hurt you too much, heh.
 
 One of the guards approaches her and grips her dress. With a forceful move, he tears down her clothes. Zephyra wants to object, but her objection is cut short as the guard grabs her by the chin.
 
-He takes out his penis and starts sweeping it all over her face and lips. Disgust mixed with fear colors Zephyra’s face, but she can do nothing to resist. She is completely helpless.
+He takes out his penis and starts sweeping it all over her face and lips. Disgust mixed with fear colors Zephyra's face, but she can do nothing to resist. She is completely helpless.
 
 Guard A: Now, open up.""",
-	ZEPHYRA_DISAPPEARANCE_GUARDS_2 = """Zephyra clenches her jaw as tightly as she can, trying to shake her head in refusal. But the guard’s grip doesn’t let her express her objection.
+	ZEPHYRA_DISAPPEARANCE_GUARDS_2 = """Zephyra clenches her jaw as tightly as she can, trying to shake her head in refusal. But the guard's grip doesn't let her express her objection.
 
 Guard A: Wanna play hard to get, huh? 
 
-The guard pinches her nose with another hand. Zephyra has no choice but to yield and open her mouth for even just a single whiff of air. But the relief of regaining her ability to breath is quickly replaced with a taste of a man’s genitals. The Guard forcefully pushes his shaft inside Zephyra’s mouth before she can close it again.""",
-	ZEPHYRA_DISAPPEARANCE_GUARDS_3 = """Guard A: Now that’s more like it. Good puppy.
+The guard pinches her nose with another hand. Zephyra has no choice but to yield and open her mouth for even just a single whiff of air. But the relief of regaining her ability to breath is quickly replaced with a taste of a man's genitals. The Guard forcefully pushes his shaft inside Zephyra's mouth before she can close it again.""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_3 = """Guard A: Now that's more like it. Good puppy.
 
 Guard B: Heh, I want a turn too, or maybe I should take it from the other side?
 
-The guard pushes his dick deeper inside, all the way to Zephyra’s throat. Breathing is a luxury these brutes won’t allow her any time soon, it seems. Her eyes get teary — both a physical response, and a mental one.
+The guard pushes his dick deeper inside, all the way to Zephyra's throat. Breathing is a luxury these brutes won't allow her any time soon, it seems. Her eyes get teary — both a physical response, and a mental one.
 
 The guard starts moving his hips, having his way with Zephyra. Roughly, with complete disregard for herself. Her mouth is just another orifice for him to please himself with. 
 
-Guard A: This is good! Much better than city harlots. I can’t hold it in...""",
-	ZEPHYRA_DISAPPEARANCE_GUARDS_4 = """The guard lets his juice out into Zephyra’s mouth. With her tongue pushed down by the shaft inside her mouth she can’t even swallow it. The potent smell tickles her nostrils and throat. But she has to bear it... Maybe they’ll be satisfied with only just using her mouth. If only she endures it a little longer...""",
+Guard A: This is good! Much better than city harlots. I can't hold it in...""",
+	ZEPHYRA_DISAPPEARANCE_GUARDS_4 = """The guard lets his juice out into Zephyra's mouth. With her tongue pushed down by the shaft inside her mouth she can't even swallow it. The potent smell tickles her nostrils and throat. But she has to bear it... Maybe they'll be satisfied with only just using her mouth. If only she endures it a little longer...""",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_5 = """Another guard, observing the cruelty transpiring before his eyes, takes off his trousers and starts pleasuring himself.
 
-Guard A: For goddess’s sake, what are you doing?!
+Guard A: For goddess's sake, what are you doing?!
 
-Guard B: What? I mean, she’s so hot, all restrained and stuff. I want a piece of her too!
+Guard B: What? I mean, she's so hot, all restrained and stuff. I want a piece of her too!
 
-Guard A: Have some patience. You’ll get your turn soon. After I nut it a couple more times... he-he...
+Guard A: Have some patience. You'll get your turn soon. After I nut it a couple more times... he-he...
 
-Zephyra’s stares blankly into the space in front of her. Her mind realizes a terrible truth: they won’t let her go. This is going to continue for much longer than she will be able to withstand... And nobody is coming to help.""",
+Zephyra's stares blankly into the space in front of her. Her mind realizes a terrible truth: they won't let her go. This is going to continue for much longer than she will be able to withstand... And nobody is coming to help.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
 
 - Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
@@ -11175,27 +11175,27 @@ Zephyra’s stares blankly into the space in front of her. Her mind realizes a t
 Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal. """,
 	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers 
 
-— [Master]... we’re out in the open, in the middle of the day... doesn’t that make it more exciting? 
+— [Master]... we're out in the open, in the middle of the day... doesn't that make it more exciting? 
 
 She's right. Someone might come by any moment. You look around, but it's just the two of you. And honestly, even if someone did show up, it probably wouldn't stop you now.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_3 = """
 Your hands move along the skin of her back, caressing it, as you push deeper inside. Zephyra's tail wiggles eagerly, though it's a bit in the way. You grab it gently, and she squeaks in surprise.
 
-— W-what are you doing?! Don’t grab it so suddenly...
+— W-what are you doing?! Don't grab it so suddenly...
 
 You ignore her question and push your member inside Zephyra. This is enough to make her instantly forget the discomfort of having her tail grabbed.""",
-	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
 
-— Silly... [master]... what a brute you are... so forceful... grabbing the girl’s tail, even..!
+— Silly... [master]... what a brute you are... so forceful... grabbing the girl's tail, even..!
 
-Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
-	ZEPHYRA_DISAPPEARANCE_SEX_5 = """As your body approaches the limit of its pleasure tolerance, you let it all out inside Zephyra. You feel her tail losing strength, stop trying to break free. As you let it go, it simply droops down along her buttocks. Zephyra herself would fall down in a similar manner if it wasn’t for the tree she’s using for support. 
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """,
+	ZEPHYRA_DISAPPEARANCE_SEX_5 = """As your body approaches the limit of its pleasure tolerance, you let it all out inside Zephyra. You feel her tail losing strength, stop trying to break free. As you let it go, it simply droops down along her buttocks. Zephyra herself would fall down in a similar manner if it wasn't for the tree she's using for support. 
 
 — This... was a bit more... more intense than I anticipated...
 
 Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the hand. 
 
-— Now you are properly rewarded, [master]. Let’s go back.""",
+— Now you are properly rewarded, [master]. Let's go back.""",
 	
 #	ZEPHYRA_DISAPPEARANCE_6 = """""",
 #	ZEPHYRA_DISAPPEARANCE_6 = """""",
@@ -11450,8 +11450,10 @@ Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the
 	GOBLIN_QUEST_STAGE_5 = "Return to The White Stag for your reward", 
 	
 	ZEPHYRA_DISAPPEARANCE_QUEST_NAME = "",
-	ZEPHYRA_DISAPPEARANCE_QUEST_SUMMARY = "", # search for Zephyra
-	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1 = "", # wait for a letter (or do sacred bowl)
+	ZEPHYRA_DISAPPEARANCE_QUEST_SUMMARY = "", 
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_1 = "", # search for Zephyra
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_2 = "", # wait for a letter (or do sacred bowl)
+	ZEPHYRA_DISAPPEARANCE_QUEST_STAGE_3 = "", # meet ketch
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n- H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n- ......",

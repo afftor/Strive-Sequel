@@ -784,7 +784,7 @@ func handle_characters_sprites(scene):
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
-				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path]
+				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
 				if images.sprites.has(non_body):
 					$CharacterImage.texture = image
 				else:
@@ -797,7 +797,7 @@ func handle_characters_sprites(scene):
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
-				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path]
+				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
 				if images.sprites.has(non_body):
 					$CharacterImage2.texture = image
 				else:
