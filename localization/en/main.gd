@@ -194,6 +194,7 @@ var TranslationDict = {
 	CHARNAMEHARA = "Hara",
 	CHARNAMEHELEVIEL = "Heleviel",
 	CHARNAMELIRA = "Lira",
+	CHARNAMEAMELIA = "Amelia",
 	
 	LOCATIONTHE = "The ",
 	TOTALPRODUCTIVITY = "Total Productivity",
@@ -721,6 +722,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
+	ITEMZEPHYRA_BRUSH = "Foxtail Brush",
+	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.",
 	
 	
 	#Items

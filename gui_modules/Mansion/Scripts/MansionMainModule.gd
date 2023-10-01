@@ -777,7 +777,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
-				{code = 'make_story_character', value = 'Hara'},
+				{code = 'make_story_character', value = 'Amelia'},
 			]
 		)
 
