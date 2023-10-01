@@ -664,7 +664,15 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.7.1
+bbcode_text = "0.7.1c
+Additional fixes to market upgrades mode resetting things
+Fixed an issue when market wasn't openning due to data error in some characters
+0.7.1b
+Fixed market upgrades mode resetting character factors
+Added some missing paremeters to the paperdoll constructor
+0.7.1a
+Fixed multiple paperdoll and new game start issues
+0.7.1
 Paperdoll
 Added constructor to character creation menu and slave market for appearance customization
 Fixed multiple textures, poses, details, added more variety
@@ -1489,7 +1497,15 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.7.1
+text = "0.7.1c
+Additional fixes to market upgrades mode resetting things
+Fixed an issue when market wasn't openning due to data error in some characters
+0.7.1b
+Fixed market upgrades mode resetting character factors
+Added some missing paremeters to the paperdoll constructor
+0.7.1a
+Fixed multiple paperdoll and new game start issues
+0.7.1
 Paperdoll
 Added constructor to character creation menu and slave market for appearance customization
 Fixed multiple textures, poses, details, added more variety

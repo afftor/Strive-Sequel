@@ -745,7 +745,7 @@ func test_mode():
 #		character.affect_char({type = 'set_availability', value = false})
 		
 		#common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
-		variables.no_obedience_drain = true
+		#variables.no_obedience_drain = true
 		globals.common_effects(
 			[
 				{code = 'make_story_character', value = 'Daisy'},

@@ -723,7 +723,7 @@ func show_brothel_options():
 	for i in ['rest']:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		newbutton.text = tr("TASKREST")
-		globals.connecttexttooltip(newbutton, person.translate(tr("TASKRESTDESCRIPT")))
+		globals.connecttexttooltip(newbutton, person.translate(tr("TASKRESTINFO")))
 		newbutton.pressed = person.get_work() == ''
 		if newbutton.pressed:
 			switch_rest(newbutton)

@@ -1235,6 +1235,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKREST = "Rest",
 	TASKRESTSERVICE = "Service",
 	TASKRESTDESCRIPT = "Select a service the character will provide at local facilities, or switch to rest when necessary.",
+	TASKRESTINFO = "Resting will make wounds heal faster and does not make character drain Obedience but they also not gain Loyalty.",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",
