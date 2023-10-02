@@ -1573,6 +1573,35 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage0"}],
+			target = 'amelia_main_guild_1',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = "any_quest_stage", value = "amelia_main_quest", stages = ["stage1","stage2","stage3","stage4","stage5","stage6","stage7"]}],
+			target = 'amelia_main_interlude',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage8"}],
+			target = 'amelia_interlude2_1',
+			target_option = 1,
+		},
+		#there should be a guild locking record for stage9
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage10"}],
+			target = 'amelia_interlude3_1',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [],
 			target = 'servants_introduction',
 			target_option = 3,
@@ -2102,5 +2131,24 @@ var quests = {
 			stage5 = {code = 'stage5', name = "GOBLIN_QUEST_NAME", descript = "GOBLIN_QUEST_STAGE_5"}, # go to white stag
 		},
 	},
+	
+	amelia_main_quest = {
+		code = 'amelia_main_quest',
+		summary = "AMELIA_MAIN_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = 'stage0', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_0'}, 
+			stage1 = {code = 'stage1', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_1'}, 
+			stage2 = {code = 'stage2', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_2'}, 
+			stage3 = {code = 'stage3', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_3'}, 
+			stage4 = {code = 'stage4', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_4'}, 
+			stage5 = {code = 'stage5', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_5'},
+			stage6 = {code = 'stage6', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_6'}, 
+			stage7 = {code = 'stage7', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_7'}, 
+			stage8 = {code = 'stage8', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_8'}, 
+			stage9 = {code = 'stage9', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_9'}, 
+			stage10 = {code = 'stage10', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_10'}, 
+			stage11 = {code = 'stage11', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_11'}, 
+		}
+	}
 }
 

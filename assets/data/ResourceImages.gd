@@ -113,6 +113,10 @@ var backgrounds = {
 	amelia_bondage1 = load("res://assets/images/fullscreen scenes/AmeliaCG004.png"),
 	amelia_bondage2 = load("res://assets/images/fullscreen scenes/AmeliaCG005.png"),
 	amelia_bondage3 = load("res://assets/images/fullscreen scenes/AmeliaCG006.png"),
+	
+	amelia_sex1 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM1.png"),
+	amelia_sex2 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM2.png"),
+	amelia_sex3 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM3.png"),
 
 	anastasia_aire1 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG001.png"),
 	anastasia_aire2 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG002.png"),
