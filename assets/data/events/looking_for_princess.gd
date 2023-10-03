@@ -187,7 +187,7 @@ var data = {
 		common_effects = [{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 		{code = 'decision', value = 'bracelet_found'}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 
@@ -199,7 +199,7 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
 			}],
 		}, {
 			image = null, tags = ['dialogue_scene'], reqs = [{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 2, check = true}],
@@ -208,7 +208,7 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
 			}],
 		}, {
 			image = null, tags = ['dialogue_scene'], reqs = [],
@@ -217,7 +217,7 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
 			}],
 		}]
 	},
