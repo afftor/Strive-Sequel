@@ -406,6 +406,8 @@ var sprites = {
 	heleviel_wed = load("res://assets/images/sprites/heleviel_wed.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
+	amelia_body = load("res://assets/images/sprites/amelia_body.png"),
+	amelia_nude_body = load("res://assets/images/sprites/amelia_nude_body.png"),
 	
 	}
 
@@ -449,6 +451,8 @@ var portraits = {
 	cali_halloween = "res://assets/images/portraits/cali_halloween_prt.png",
 	cali_collar = "res://assets/images/portraits/cali_collar_prt.png",
 	anastasia_halloween = "res://assets/images/portraits/anastasia_halloween_prt.png",
+	amelia = "res://assets/images/portraits/amelia_prt.png",
+	amelia_nude = "res://assets/images/portraits/amelia_nude_prt.png",
 }
 
 var gui = {

@@ -1,3 +1,11 @@
+0.7.1c
+Additional fixes to market upgrades mode resetting things
+Fixed an issue when market wasn't openning due to data error in some characters
+0.7.1b
+Fixed market upgrades mode resetting character factors
+Added some missing paremeters to the paperdoll constructor
+0.7.1a
+Fixed multiple paperdoll and new game start issues
 0.7.1
 Paperdoll
 Added constructor to character creation menu and slave market for appearance customization
