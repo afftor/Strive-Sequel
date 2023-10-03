@@ -328,7 +328,10 @@ var data = {
 		text = [{text = "AMELIA_HERBS_END_REPLY_1_1", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
+			bonus_effects = [
+				{code = 'complete_quest', value = 'amelia_herbs_quest'},
+				{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}
+				]
 		}, ],
 	},
 	
@@ -459,7 +462,8 @@ var data = {
 		text = [{text = "AMELIA_BONDAGE_9", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'}]
+			bonus_effects = [{code = 'complete_quest', value = 'amelia_herbs_quest'},
+			{code = 'add_timed_event', value = "amelia_intro", args = [{type = 'add_to_date', date = [10,14], hour = 1}]}]
 		}, ],
 	},
 	
