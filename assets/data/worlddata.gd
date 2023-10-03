@@ -3063,6 +3063,7 @@ var fixed_location_options = { #override serialized data
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false},
 				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_6'},
+				{type = 'has_material', material = 'princess_bracelet', operant = 'lt', value = 1}
 			],
 			args = [{code = 'start_event', data = 'looking_for_princess_3', args = []}]
 		},
@@ -3073,6 +3074,7 @@ var fixed_location_options = { #override serialized data
 				{code = 'value_check', type = 'decision', value = 'BlockSearch', check = false}, 
 				{code = 'value_check', type = 'decision', value = 'AllowSearch', check = true}, 
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LOOKING_FOR_PRINCESS_6'},
+				{type = 'has_material', material = 'princess_bracelet', operant = 'lt', value = 1}
 			],
 			args = [{code = 'start_event', data = 'looking_for_princess_5', args = []}]
 		},
