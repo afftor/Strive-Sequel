@@ -109,6 +109,8 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
 	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
+	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
+
 
 func fix_import():#this is the most questionable fix
 	var tmp = []

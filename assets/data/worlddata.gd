@@ -2492,6 +2492,37 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_amelia_bandits_location = { #2fix
+		code = 'quest_amelia_bandits_location',
+		type = 'dungeon',
+		name = tr("QUEST_AMELIA_BANDITS_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_AMELIA_BANDITS_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [10,10],
+		gatherable_resources = {number = [0,0], pool = {}}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		quest = true,
+		options = [],
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'amelia_prison_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_PRISON_1'}]}]
+	},
 	quest_dungeon_grove = {
 		code = 'quest_dungeon_grove',
 		type = 'dungeon',
@@ -2738,6 +2769,27 @@ var fixed_location_options = { #override serialized data
 				{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage3', state = true}, {type = 'dialogue_seen', check = true, value = 'ZEPHYRA_DISAPPEARANCE_KETCH_1'}
 			], 
 			args = [{code = 'start_event', data = 'zephyra_disappearance_ketch_2', args = []}]
+		},
+		{
+			text = tr("ALIRON20"), #change
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage2', state = true}
+			], 
+			args = [{code = 'start_event', data = 'amelia_slave1_1', args = []}]
+		},
+		{
+			text = tr("ALIRON20"), #change
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage4', state = true}
+			], 
+			args = [{code = 'start_event', data = 'amelia_slave2_1', args = []}]
+		},
+		{
+			text = tr("ALIRON20"), #change
+			reqs = [
+				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage6', state = true}
+			], 
+			args = [{code = 'start_event', data = 'amelia_slave3_1', args = []}]
 		},
 	],
 	elf_capital = [
