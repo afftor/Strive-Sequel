@@ -9,7 +9,7 @@ var stats_to_look = [
 'hair_back', 'hair_fringe',
 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 
 'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',
-'beard', 'moustache', 'hair_facial_color',
+'beard', 'hair_facial_color',
 'body_color_skin', 'skin_coverage',
 'ears', 'tail',
 'height', 'ass_size',
@@ -1932,39 +1932,88 @@ var transforms = {
 	beard = {
 		no = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
-			],
-		beard1 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard1.png"},
-			],
-		beard2 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard2.png"},
-			],
-		beard3 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard3.png"},
-			],
-		beard4 = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard4.png"},
-			],
-	},
-	
-	
-	moustache = {
-		no = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
 			],
-		moustache1 = [
+#		beard1 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard1.png"},
+#			],
+#		beard2 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard2.png"},
+#			],
+#		beard3 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard3.png"},
+#			],
+#		beard4 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards/beard4.png"},
+#			],
+		style1 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard1.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+			],
+		style2 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard2.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+			],
+		style3 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard3.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+			],
+		style4 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard4.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+			],
+		style5 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache1.png"},
 			],
-		moustache2 = [
+		style6 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache2.png"},
 			],
-		moustache3 = [
+		style7 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache3.png"},
 			],
-		moustache4 = [
+		style8 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = null},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache4.png"},
+			],
+		style9 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard1.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache1.png"},
+			],
+		style10 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard2.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache2.png"},
+			],
+		style11 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard3.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache3.png"},
+			],
+		style12 = [
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Beard', texture = "res://Character_generator/images/05_beards_moustaches/beard4.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache4.png"},
 			],
 	},
+	
+	
+#	moustache = {
+#		no = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = null},
+#			],
+#		moustache1 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache1.png"},
+#			],
+#		moustache2 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache2.png"},
+#			],
+#		moustache3 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache3.png"},
+#			],
+#		moustache4 = [
+#			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Face/Moustache', texture = "res://Character_generator/images/05_beards_moustaches/moustache4.png"},
+#			],
+#	},
 	
 	hair_facial_color = {
 		blue_1 = [

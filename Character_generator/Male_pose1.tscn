@@ -62,7 +62,8 @@
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=60]
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=61]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=62]
-[ext_resource path="res://Character_generator/images/05_breads_moustackles/bread_moustacle2.png" type="Texture" id=63]
+[ext_resource path="res://Character_generator/images/05_beards_moustaches/bread_moustacle2.png" type="Texture" id=63]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
