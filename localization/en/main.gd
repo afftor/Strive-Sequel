@@ -194,6 +194,7 @@ var TranslationDict = {
 	CHARNAMEHARA = "Hara",
 	CHARNAMEHELEVIEL = "Heleviel",
 	CHARNAMELIRA = "Lira",
+	CHARNAMEAMELIA = "Amelia",
 	
 	LOCATIONTHE = "The ",
 	TOTALPRODUCTIVITY = "Total Productivity",
@@ -721,6 +722,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMAIRE_BOWDESCRIPT = "A strong archer bow seemingly of elvish origin.",
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
+	ITEMZEPHYRA_BRUSH = "Foxtail Brush",
+	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.",
 	
 	
 	#Items
@@ -1232,6 +1235,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKREST = "Rest",
 	TASKRESTSERVICE = "Service",
 	TASKRESTDESCRIPT = "Select a service the character will provide at local facilities, or switch to rest when necessary.",
+	TASKRESTINFO = "Resting will make wounds heal faster and does not make character drain Obedience but they also not gain Loyalty.",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",

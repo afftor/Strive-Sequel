@@ -47,8 +47,6 @@ var stats = {
 	mod_cook = "",
 }
 
-
-#not used
 #func applyeffect(effect, caster, target):
 #
 #	var value = effect.value
@@ -1713,6 +1711,24 @@ var itemlist = {
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
+	},
+	
+	zephyra_brush = {
+		code = 'zephyra_brush',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['neck'],
+		price = 1500,
+		icon = load("res://assets/images/iconsitems/magic brush.png"),
+		tier = 'medium',
+		reqs = [{code = 'unique', value = 'zephyra'}],
+		effects = [],#'e_maid_dress_effect'],
+		tags = ['no_random'],
+		basestats = {matk = 10, resist_mind = 40},
 	},
 	
 	cali_collar = {
