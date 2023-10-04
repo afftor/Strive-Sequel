@@ -168,7 +168,7 @@ var data = {
 		image = 'interiour_hut', tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'trigger5', op = '+'}]},], # no need for trigger5
-		common_effects = [{code = 'decision', value = 'GotZephyrasBrush'}],
+		common_effects = [{code = 'decision', value = 'SawZephyrasBrush'}],
 		options = [ {
 			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
 		}, ]
@@ -742,4 +742,270 @@ var data = {
 			code = 'zephyra_disappearance_ketch_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		},]
 	},
+	
+	zephyra_brush_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "myr",
+		text = [{text = "ZEPHYRA_BRUSH_1", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_2', text = "ZEPHYRA_BRUSH_1_OPTION_1", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 1000}],
+		}, {
+			code = 'close', text = "ZEPHYRA_BRUSH_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
+		},]
+	},
+	
+	zephyra_brush_2 = {
+		variations = [ {
+				image = null, tags = ['dialogue_scene', 'master_translate'],
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'lt', value = 90}]}], character = "myr",
+				text = [{text = "ZEPHYRA_BRUSH_2_2", reqs = []}],
+				options = [ {
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
+				} ]
+			}, {
+				image = null, tags = ['dialogue_scene', 'master_translate'],
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 90}]}], character = "myr",
+				text = [{text = "ZEPHYRA_BRUSH_2_1", reqs = []}],
+				common_effects = [{code = 'make_quest_location', value = 'quest_ancient_jungle_location'}],
+				options = [ {
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
+				} ]
+			}
+		]
+	},
+	
+	zephyra_brush_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_3", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_4', text = "ZEPHYRA_BRUSH_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_4', text = "ZEPHYRA_BRUSH_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, ]
+	},
+	
+	zephyra_brush_4 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_4_1", reqs = [], previous_dialogue_option = 1},
+		{text = "ZEPHYRA_BRUSH_4_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 90}]}], previous_dialogue_option = 2},
+		{text = "ZEPHYRA_BRUSH_4_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 90}]}], previous_dialogue_option = 2},
+		],
+		options = [ {
+			code = 'zephyra_brush_5_1', text = "ZEPHYRA_BRUSH_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_6', text = "ZEPHYRA_BRUSH_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_5_3', text = "ZEPHYRA_BRUSH_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
+		}, ]
+	},
+	
+	zephyra_brush_5_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_5_1", reqs = []},
+		],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_ancient_jungle_location'}]
+		} ]
+	},
+	
+	zephyra_brush_5_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_5_3", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_6', text = "ZEPHYRA_BRUSH_5_3_OPTION_1", reqs = [], dialogue_argument = 11, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_6', text = "ZEPHYRA_BRUSH_5_3_OPTION_2", reqs = [], dialogue_argument = 12, type = 'next_dialogue', 
+		}, ]
+	},
+	
+	zephyra_brush_6 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_5_2", reqs = [], previous_dialogue_option = 2},
+		{text = "ZEPHYRA_BRUSH_6_1", reqs = [], previous_dialogue_option = 11},
+		{text = "ZEPHYRA_BRUSH_6_2", reqs = [], previous_dialogue_option = 12},
+		],
+		options = [ {
+			code = 'zephyra_brush_7', text = "ZEPHYRA_BRUSH_6_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_7', text = "ZEPHYRA_BRUSH_6_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, {
+			code = 'zephyra_brush_7', text = "ZEPHYRA_BRUSH_6_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
+		}, ]
+	},
+	
+	zephyra_brush_7 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], 
+		text = [{text = "ZEPHYRA_BRUSH_7_1", reqs = [], previous_dialogue_option = 1, 
+		bonus_effects = [{code = 'decision', value = 'AskedKurosName'}]},
+		{text = "ZEPHYRA_BRUSH_7_2", reqs = [], previous_dialogue_option = 2},
+		{text = "ZEPHYRA_BRUSH_7_3", reqs = [], previous_dialogue_option = 3}
+		],
+		common_effects = [{code = 'decision', value = 'GotZephyrasBrush'}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_ancient_jungle_location'}]
+		} ]
+	},
+	
+	zephyra_brush_8 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_8", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_9 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_9", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_10', text = "ZEPHYRA_BRUSH_9_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, {
+			code = 'zephyra_brush_18', text = "ZEPHYRA_BRUSH_9_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+		}, ]
+	},
+	
+	zephyra_brush_10 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_10", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_11 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_11", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_12 = {
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_12", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_13 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_13", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_14', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_14 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_14", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_15', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_15 = {
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_15", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_16', text = "ZEPHYRA_BRUSH_15_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, {
+			code = 'zephyra_brush_16', text = "ZEPHYRA_BRUSH_15_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+		}, {
+			code = 'zephyra_brush_16_3', text = "ZEPHYRA_BRUSH_15_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_16_3 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_16_3", reqs = []},
+		],
+		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
+					{code = 'obedience', operant = '-', value = 90}]},
+					{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_16 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_16_1AND2", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_17', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	zephyra_brush_17 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_17", reqs = []},
+		],
+		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_18 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_18", reqs = []},
+		],
+		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_19 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_19", reqs = []},
+		],
+		options = [ {
+			code = 'zephyra_brush_20', text = "ZEPHYRA_BRUSH_19_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
+	zephyra_brush_20 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = 'zephyra',
+		text = [{text = "ZEPHYRA_BRUSH_20", reqs = []},
+		],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ]
+	},
+	
 }

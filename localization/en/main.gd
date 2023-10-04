@@ -11205,9 +11205,13 @@ Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the
 
 - Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchments aren't cheap you know.""",
 	ZEPHYRA_BRUSH_1_OPTION_1 = "Agree (Wits check) (Pay 1.000 gold)",
-	ZEPHYRA_BRUSH_OPTION_2 = "I'll come later",
-	ZEPHYRA_BRUSH_2_1 = """You've managed draw a rather accurate replica of what you've seen in your dream. After passing it to Myr and having perform a search ritual, the spell points at a magic map location and an ancient ruins which seem to have what you seek for. After copying down the direction to it, you leave Myr's office.""",
-	ZEPHYRA_BRUSH_2_2 = """Despite your best efforts your drawing is too amateurish and the brush's details are too obscure. The spell flickers and fails, making you regret paying for it. """,
+	ZEPHYRA_BRUSH_1_OPTION_2 = "I'll come later",
+	ZEPHYRA_BRUSH_2_1 = """{color=green|Success}
+
+You've managed draw a rather accurate replica of what you've seen in your dream. After passing it to Myr and having perform a search ritual, the spell points at a magic map location and an ancient ruins which seem to have what you seek for. After copying down the direction to it, you leave Myr's office.""",
+	ZEPHYRA_BRUSH_2_2 = """{color=red|Failure}
+
+Despite your best efforts your drawing is too amateurish and the brush's details are too obscure. The spell flickers and fails, making you regret paying for it. """,
 	ZEPHYRA_BRUSH_3 = """As you make your way through the dimly lit hall, at the end of you finally spot a small makeshift postament with a brush resting on it. Without a doubt it's the one you are looking for. However as you move closer you notice another silhouette in a dark surrounding aura which also moves in the direction of a postament from another side.""",
 	ZEPHYRA_BRUSH_3_OPTION_1 = "Call it over",
 	ZEPHYRA_BRUSH_3_OPTION_2 = "Rush to grab the brush (physics check)",
@@ -11256,7 +11260,7 @@ Before you are able to say anything she's already gone. After a moment you start
 
 Before you are able to say anything she's already gone. After a moment you start questioning if she was even here in first place.""",
 	ZEPHYRA_BRUSH_7_3 = """After you take the brush and turn around she's already gone. You question yourself if she was even here in the first place.""",
-	ZEPHYRA_BRUSH_8_OPTION_1 = "Return the brush",
+	ZEPHYRA_BRUSH_8_OPTION_0 = "*Return the brush*",
 	ZEPHYRA_BRUSH_8 = """You take the brush and present it to Zephyra. Zephyra stares at it blankly before finally snapping out of it. It's rare to see the girl at a loss for words.
 
 - How did you get it?.. How did you even know... No, I guess that's what you do. You know, you aren't supposed to be this good at correcting my faults. I mean, I already gave you all of my support, I can't give you anymore, haha...""",
@@ -13473,6 +13477,9 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 	
 	QUEST_AMELIA_BANDITS_LOCATION_TEXT = "Bandit's Hideout", #2fix
 	QUEST_AMELIA_BANDITS_LOCATION_DESC = "",
+	
+	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "Ancient Jungle",
+	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
 	
 	#eventscrits
 	

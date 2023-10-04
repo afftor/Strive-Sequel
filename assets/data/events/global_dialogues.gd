@@ -164,6 +164,7 @@ var data = {
 		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},
 		{code = 'final_operation_mages_1', text = "MAGESASKHELP", reqs = [{type = 'active_quest_stage', value = 'final_operation', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'sick_lilia_1', text = "MAGESSICKFAIRY", reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'zephyra_brush_1', text = "ZEPHYRA_BRUSH_OPTION_0", reqs = [{type = 'decision', value = 'SawZephyrasBrush', check = true}, {type = 'dialogue_selected', check = false, value = 'ZEPHYRA_BRUSH_1_OPTION_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
