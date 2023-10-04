@@ -67,8 +67,7 @@ var test_template = {
 	height = 'towering',
 	ass_size = 'small',
 	pose = 'pose4',
-	beard = 'beard3',
-	moustache = 'moustache1',
+	beard = 'no',
 	hair_facial_color = 'blue_2',
 	
 }

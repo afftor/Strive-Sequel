@@ -49,7 +49,7 @@
 [ext_resource path="res://Character_generator/images/01_body_nude_male/LegL_m.png" type="Texture" id=47]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/taz_armor_m1.png" type="Texture" id=48]
 [ext_resource path="res://Character_generator/images/01_body_nude_male/HandL1_m.png" type="Texture" id=49]
-[ext_resource path="res://Character_generator/images/05_breads_moustackles/bread_moustacle2.png" type="Texture" id=50]
+[ext_resource path="res://Character_generator/images/05_beards_moustaches/bread_moustacle2.png" type="Texture" id=50]
 [ext_resource path="res://Character_generator/images/14_testickles/Testicle_furry.png" type="Texture" id=51]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmL1_armor_m1.png" type="Texture" id=52]
 [ext_resource path="res://Character_generator/images/100_armory_set_servant_male/ArmR1_armor_m1.png" type="Texture" id=53]
@@ -62,6 +62,7 @@
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=60]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=61]
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=62]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 62 )
