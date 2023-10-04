@@ -2735,7 +2735,7 @@ var fixed_location_options = { #override serialized data
 		},{
 			text = tr("ALIRON22"), 
 			reqs = [
-				{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage2', state = true}, {type = 'dialogue_seen', check = true, value = 'ZEPHYRA_DISAPPEARANCE_KETCH_1'}
+				{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage3', state = true}, {type = 'dialogue_seen', check = true, value = 'ZEPHYRA_DISAPPEARANCE_KETCH_1'}
 			], 
 			args = [{code = 'start_event', data = 'zephyra_disappearance_ketch_2', args = []}]
 		},
