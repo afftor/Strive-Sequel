@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bread_moustacle3.png-1ab11109f92d92f19133f2eb4ffa1ac0.stex"
+path="res://.import/AmeliaCG007.png-1d0581860bb02e7e22718a963b7b3528.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/05_breads_moustackles/bread_moustacle3.png"
-dest_files=[ "res://.import/bread_moustacle3.png-1ab11109f92d92f19133f2eb4ffa1ac0.stex" ]
+source_file="res://assets/images/fullscreen scenes/AmeliaCG007.png"
+dest_files=[ "res://.import/AmeliaCG007.png-1d0581860bb02e7e22718a963b7b3528.stex" ]
 
 [params]
 

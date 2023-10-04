@@ -34,7 +34,7 @@ func create_character_description(character):
 	return new_charcter_description(character)
 
 var descriptionorder = [
-'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'skin', 'skin_coverage','wings', 'tail', 'height', 
+'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'body_color_skin', 'skin_coverage','wings', 'tail', 'height', 
 '[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
@@ -343,7 +343,7 @@ var bodypartsdata = {
 			{code = 'penis_size', value = [['',1]], reqs = []},
 			{code = 'balls_size', value = [['',1]], reqs = []},
 			{code = 'beard', value = [['no',1]], reqs = []},
-			{code = 'moustache', value = [['no',1]], reqs = []},
+#			{code = 'moustache', value = [['no',1]], reqs = []},
 			{code = 'hair_facial_color', value = [['',1]], reqs = []},
 			{code = 'penis_virgin', value = [[false,1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
@@ -362,6 +362,7 @@ var bodypartsdata = {
 			{code = 'penis_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = []},
 			{code = 'balls_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = [{code = 'setting', type = 'futa_balls', value = true}]},
 			{code = 'balls_size', value = [['',1]], reqs = [{code = 'setting', type = 'futa_balls', value = false}]},
+			{code = 'beard', value = [['no',1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1]], reqs = []},
 			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
@@ -462,7 +463,7 @@ var bodypartsdata = {
 		feathered = {code = 'feathered', name = '', chardescript = '', bodychanges = []},
 		fish = {code = 'fish', name = '', chardescript = '', bodychanges = []},
 	},
-	skin = {
+	body_color_skin = {
 		pale = {code = 'pale', name = '', chardescript = '', bodychanges = []},
 		grey = {code = 'grey', name = '', chardescript = '', bodychanges = []},
 		fair = {code = 'fair', name = '', chardescript = '', bodychanges = []},
