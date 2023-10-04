@@ -315,7 +315,9 @@ var data = {
 	zephyra_bath_6 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = "zephyra",
-		text = [{text = "ZEPHYRA_BATH_6", reqs = []}],
+		text = [{text = "ZEPHYRA_BATH_6", reqs = []},
+		{text = '', reqs = [{type = "quest_completed", name = "getting_lira_quest", check = true}], bonus_effects = [{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}]}
+		],
 		common_effects = [ {
 			code = 'unique_character_changes',
 			value = 'zephyra',
@@ -327,7 +329,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'complete_quest', value = 'zephyra_bath_quest'},
-				{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}
+				{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]},
 				]
 			}],
 	},

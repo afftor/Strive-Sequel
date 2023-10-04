@@ -94,4 +94,5 @@ var decisions = {
 	got_excalibur = "Pulling out a sword from the stone in beast tribe",
 	KurdanKnightPaladinRoute = "We had Kurdan and used Palading/Knight route to prevent him from turning",
 	GotZephyrasBowl = "Got Sacred Bowl from Zephyra disappearance quest",
+	GotZephyrasBrush = "Got Zephyras Brush from under the bed Zephyra disappearance quest"
 }

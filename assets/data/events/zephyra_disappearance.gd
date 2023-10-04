@@ -1,7 +1,7 @@
 var data = {
 	zephyra_painting_1 = {
 		image = null, tags = ['dialogue_scene'],
-		reqs = [{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
+		reqs = [{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'dialogue_seen', check = false, value = 'ZEPHYRA_PAINTING_1'}],
 		text = [{text = "ZEPHYRA_PAINTING_1", reqs = []}],
 		options = [ {
 			code = 'zephyra_painting_2', text = "ZEPHYRA_PAINTING_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -167,7 +167,8 @@ var data = {
 	zephyra_disappearance_bed_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'trigger5', op = '+'}]},],
+		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'trigger5', op = '+'}]},], # no need for trigger5
+		common_effects = [{code = 'decision', value = 'GotZephyrasBrush'}],
 		options = [ {
 			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
 		}, ]

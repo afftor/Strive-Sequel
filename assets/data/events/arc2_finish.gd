@@ -1024,7 +1024,9 @@ var data = {
 	ceremony_heleviel_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 		reqs = [], character = 'elf_priestess', 
-		text = [{text = 'CEREMONY_HELEVIEL_4', reqs = []},],
+		text = [{text = 'CEREMONY_HELEVIEL_4', reqs = []},
+		{text = '', reqs = [{type = "quest_completed", name = "zephyra_bath_quest", check = true}], bonus_effects = [{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}]}
+		],
 		options = [ {
 			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
@@ -1089,10 +1091,11 @@ var data = {
 	ceremony_lira_4_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		reqs = [], character = 'erlen',
-		text = [{text = 'CEREMONY_LIRA_4_2', reqs = []},],
+		text = [{text = 'CEREMONY_LIRA_4_2', reqs = []},
+		{text = '', reqs = [{type = "quest_completed", name = "zephyra_bath_quest", check = true}], bonus_effects = [{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}]}],
 		options = [ {
 			code = 'close', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
+			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'},
 			{code = 'update_city'}]
 		}, ]
 	},
