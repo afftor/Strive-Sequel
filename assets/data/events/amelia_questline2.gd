@@ -1,6 +1,6 @@
 var data = {
 	amelia_intro = {
-		image = null, 
+		image = 'letter',
 		tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], 
 		text = [{text = "AMELIA_INTRO", reqs = [], }],
@@ -89,7 +89,7 @@ var data = {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage1'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST2", name = "test", max_workers = 4, icon = 'res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage2'}]},
 				{code = "update_guild"}
 			]
@@ -182,7 +182,7 @@ var data = {
 			bonus_effects = [
 				{code = 'decision', value = 'amelia_slave_found'},
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage3'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST2", name = "test", max_workers = 4, icon = 'res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage4'}]},
 				{code = 'update_city'}
 			]
@@ -314,7 +314,7 @@ var data = {
 			bonus_effects = [
 				{code = 'decision', value = 'amelia_slave_found'},
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage5'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "TEST2", name = "test", max_workers = 4, icon = 'res://assets/images/gui/explore/Captured Characters/icons/icon_quickly_sell.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage6'}]},
 				{code = 'update_city'}
 			]
