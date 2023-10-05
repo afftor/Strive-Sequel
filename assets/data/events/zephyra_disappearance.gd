@@ -1,6 +1,6 @@
 var data = {
 	zephyra_painting_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		reqs = [{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'dialogue_seen', check = false, value = 'ZEPHYRA_PAINTING_1'}],
 		text = [{text = "ZEPHYRA_PAINTING_1", reqs = []}],
 		options = [ {

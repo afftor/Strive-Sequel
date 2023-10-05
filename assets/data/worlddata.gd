@@ -2805,21 +2805,21 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'zephyra_disappearance_ketch_2', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage2', state = true}
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave1_1', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage4', state = true}
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave2_1', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage6', state = true}
 			], 
