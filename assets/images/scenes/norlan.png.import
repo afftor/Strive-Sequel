@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guards.png-cb5b81b7e45632554d542deb7274e763.stex"
+path="res://.import/norlan.png-c376f4a08270cf6b0041877251859cba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/guards.png"
-dest_files=[ "res://.import/guards.png-cb5b81b7e45632554d542deb7274e763.stex" ]
+source_file="res://assets/images/scenes/norlan.png"
+dest_files=[ "res://.import/norlan.png-c376f4a08270cf6b0041877251859cba.stex" ]
 
 [params]
 

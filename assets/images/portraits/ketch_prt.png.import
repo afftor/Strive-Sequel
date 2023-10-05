@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slave.png-702c72765750dc975c41cb98816bcc03.stex"
+path="res://.import/ketch_prt.png-f1f89916755278245efe216263b93bb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/slave.png"
-dest_files=[ "res://.import/slave.png-702c72765750dc975c41cb98816bcc03.stex" ]
+source_file="res://assets/images/portraits/ketch_prt.png"
+dest_files=[ "res://.import/ketch_prt.png-f1f89916755278245efe216263b93bb2.stex" ]
 
 [params]
 

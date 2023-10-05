@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-a66552b58d6333f1d9e1a077b538b5a0.stex"
+path="res://.import/amelia_guards.png-e40c9d7ea66b037004242dae6241f732.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/box.png"
-dest_files=[ "res://.import/box.png-a66552b58d6333f1d9e1a077b538b5a0.stex" ]
+source_file="res://assets/images/scenes/amelia_guards.png"
+dest_files=[ "res://.import/amelia_guards.png-e40c9d7ea66b037004242dae6241f732.stex" ]
 
 [params]
 

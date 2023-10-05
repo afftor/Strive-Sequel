@@ -114,9 +114,9 @@ var backgrounds = {
 	amelia_bondage2 = load("res://assets/images/fullscreen scenes/AmeliaCG005.png"),
 	amelia_bondage3 = load("res://assets/images/fullscreen scenes/AmeliaCG006.png"),
 
-	amelia_sex1 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM1.png"),
-	amelia_sex2 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM2.png"),
-	amelia_sex3 = load("res://assets/images/fullscreen scenes/Amelia2 BDSM3.png"),
+	amelia_sex1 = load("res://assets/images/fullscreen scenes/AmeliaCG007.png"),
+	amelia_sex2 = load("res://assets/images/fullscreen scenes/AmeliaCG008.png"),
+	amelia_sex3 = load("res://assets/images/fullscreen scenes/AmeliaCG009.png"),
 
 	anastasia_aire1 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG001.png"),
 	anastasia_aire2 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG002.png"),
@@ -314,6 +314,15 @@ var scenes = {
 	cali_meeting = load("res://assets/images/scenes/conference.png"),
 	lilia_sick = load("res://assets/images/scenes/lilia_sick.png"),
 	aire_hunter = load("res://assets/images/scenes/aire_hunter.png"),
+	
+	amelia_norlan = load("res://assets/images/scenes/norlan.png"),
+	amelia_box = load("res://assets/images/scenes/amelia_box.png"),
+	amelia_guards = load("res://assets/images/scenes/amelia_guards.png"),
+	amelia_slave = load("res://assets/images/scenes/amelia_slave.png"),
+	amelia_dungeon = load("res://assets/images/scenes/amelia_dungeon.png"),
+	amelia_court = load("res://assets/images/scenes/amelia_court.png"),
+	amelia_hostage = load("res://assets/images/scenes/amelia_hostage.png"),
+	
 }
 
 var sprites = {
@@ -329,6 +338,8 @@ var sprites = {
 	ginny = load("res://assets/images/sprites/ginny.png"),
 	kurdan = load("res://assets/images/sprites/kurdan.png"),
 	kurdan_body = load("res://assets/images/sprites/kurdan_body.png"),
+	ketch = load("res://assets/images/sprites/ketch.png"),
+	ketch_body = load("res://assets/images/sprites/ketch.png"),
 	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	greg = load("res://assets/images/sprites/greg.png"),
 	elf_priestess = load("res://assets/images/sprites/heleviel.png"),

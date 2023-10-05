@@ -2089,7 +2089,7 @@ var dungeons = {
 		type = 'dungeon',
 		name = tr("QUEST_FINAL_OPERATION_LOCATION_TEXT"),
 		classname = '',
-		descript = tr("QUEST_FINAL_OPERATION_LOCATION|_DESC"),
+		descript = tr("QUEST_FINAL_OPERATION_LOCATION_DESC"),
 		character_data = {
 			chance_mod = 1,
 			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
@@ -2551,6 +2551,40 @@ var dungeons = {
 			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
 		]
 	},
+	quest_ancient_jungle_location = {
+		code = 'quest_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1'],
+		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		#gatherable_resources = {},
+		#gather_mod = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+
+		area = 'plains',
+		travel_time = [1,1],#[4,6],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'zephyra_brush_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_BRUSH_3'}]}
+		]
+	},
 #
 }
 
@@ -2771,21 +2805,21 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'zephyra_disappearance_ketch_2', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage2', state = true}
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave1_1', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage4', state = true}
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave2_1', args = []}]
 		},
 		{
-			text = tr("ALIRON20"), #change
+			text = tr("ALIRON23"), #change
 			reqs = [
 				{type = 'active_quest_stage', value = 'amelia_main_quest', stage = 'stage6', state = true}
 			], 
