@@ -11620,7 +11620,9 @@ The discussion among the guild members quiets down, and the hall's attention foc
 	AMELIA_TRIAL_8_3 = """Amelia: What a jest!
 
 Norlan: — Amelia, that will suffice. I've already mentioned that a defendant shouldn't speak without being addressed, haven't I?""",
-	AMELIA_TRIAL_8 = """Member 2: —  This isn't a court of law. Our aim isn't to uphold justice here. We're deciding on a path with lower risks and greater rewards — a pragmatic solution. And that solution would involve removing a wildcard rather than trying to stand by her. I apologize, Amelia, but you'd likely share my perspective if you were in my position.""",
+	AMELIA_TRIAL_8 = """
+	
+Member 2: —  This isn't a court of law. Our aim isn't to uphold justice here. We're deciding on a path with lower risks and greater rewards — a pragmatic solution. And that solution would involve removing a wildcard rather than trying to stand by her. I apologize, Amelia, but you'd likely share my perspective if you were in my position.""",
 	AMELIA_TRIAL_8_OPTION_1 = """So you're ready to eat her alive if it means your pockets stay full?""",
 	AMELIA_TRIAL_8_OPTION_2 = """Having a former Guild Leader officially accused of a crime also doesn't look good for its reputation.""",
 	AMELIA_TRIAL_9_1 = """Member 1: — Essentially, that's true. We shouldn't pretend to be heroes or saints. After all, she's responsible for her own actions, isn't she? She had a position of power, but succumbed to greed. Responding in kind and making her face the consequences is only natural.""",
@@ -11861,7 +11863,7 @@ Mayor [name]. I thank you for your involvement. We will finish the paperwork. On
 
 
 Member 2 (Sildur): —  Mayor [name]. Please come back tomorrow to finalize the purchase. We will have all the formalities figured out by then. I will personally see to it that Amelia receives proper accommodation in the Guild for the time being.""",
-	AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
+		AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
 You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal. 
 
@@ -11985,7 +11987,8 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 
 — Now, [Master], allow me to serve you to the best of my abilities from now on.""",
 	
-
+	AMELIATASKNAME = "Search for Amelia",
+	AMELIATASKDESCRIPT = "Send searching group to find any clues about Amelia's whereabouts.",
 	
 	
 	#   QUESTS   #
@@ -13748,6 +13751,7 @@ Hotkey: 3""",
 	CANT_USE_TODAY_LABEL = "Can't use this skill today anymore",
 	REQS_NOT_MET_LABEL = "Requirements aren't met",
 	TARGET_REQS_NOT_MET_LABEL = "Target requirements aren't met",
+	SPECTASKCOMPLETED = "Completed Special Task",
 	FARM_LABEL = "Farm",
 	SELECT_RES_FIRST_LABEL = "Select Resource",
 	SELECT_SLOT_FIRST_LABEL = "Select Farm Slot",
