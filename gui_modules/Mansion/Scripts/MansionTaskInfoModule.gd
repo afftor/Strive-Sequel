@@ -133,7 +133,7 @@ func show_resources_info():
 			newtask.get_node("Task/TaskIcon").texture = load(task.icon)
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
-			task_name = task.name
+			task_name = tr(task.name)
 		elif task.product in ['gold']:
 			newtask.get_node("Task/TaskIcon").texture = tasks.tasklist[task_name].production_icon
 			newtask.get_node("ProgressBar").max_value = task.threshold
