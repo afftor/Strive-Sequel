@@ -132,7 +132,8 @@ var data = {
 	zephyra_disappearance_hut_1 = {
 		image = 'interiour_hut', tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
-		text = [{text = "ZEPHYRA_DISAPPEARANCE_HUT_1", reqs = []},],
+		text = [{text = "ZEPHYRA_DISAPPEARANCE_HUT_1", reqs = [], previous_dialogue_option = 1},
+		{text = "ZEPHYRA_DISAPPEARANCE_BOY_3_2", reqs = [], previous_dialogue_option = 23},],
 		options = [ {
 			code = 'zephyra_disappearance_kitchen_1', text = "ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_1", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
 		}, {
@@ -142,7 +143,7 @@ var data = {
 		}, {
 			code = 'zephyra_disappearance_bed_1_2', text = "ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_3", reqs = [{type = 'dialogue_selected', check = true, value = 'ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_3'}], dialogue_argument = 3, type = 'next_dialogue', 
 		}, {
-			code = 'zephyra_disappearance_bed_2', text = "ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_4", reqs = [{type = 'local_counter', name = 'trigger4', operant = 'gte', value = 1, check = true}], dialogue_argument = 4, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_bed_2', text = "ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_4", reqs = [{type = 'local_counter', name = 'trigger4', operant = 'gte', value = 1, check = true}], dialogue_argument = 4, type = 'next_dialogue', remove_after_first_use = true
 		}, ]
 	},
 	
@@ -151,7 +152,7 @@ var data = {
 		reqs = [],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_1_1", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'trigger1', op = '+'}]},],
 		options = [ {
-			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -160,7 +161,7 @@ var data = {
 		reqs = [],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_1_2", reqs = []}],
 		options = [ {
-			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -170,7 +171,7 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BED_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'trigger5', op = '+'}]},], # no need for trigger5
 		common_effects = [{code = 'decision', value = 'SawZephyrasBrush'}],
 		options = [ {
-			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -186,7 +187,7 @@ var data = {
 		}, {
 			code = 'zephyra_disappearance_kitchen_2_2', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2", reqs = [{type = 'dialogue_selected', check = true, value = 'ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2'}, {type = 'local_counter', name = 'trigger1', operant = 'gte', value = 1, check = true}], dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true # second time
 		}, {
-			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -206,7 +207,7 @@ var data = {
 		},{
 			code = 'zephyra_disappearance_kitchen_knife', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_3", reqs = [{type = 'local_counter', name = 'trigger2', operant = 'gte', value = 1, check = true}], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true # (needs trigger 2)
 		}, {
-			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4", reqs = [], dialogue_argument = 9, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -246,7 +247,7 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_4_2", reqs = [], previous_dialogue_option = 2},
 		{text = "ZEPHYRA_DISAPPEARANCE_KITCHEN_4_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
-			code = 'zephyra_disappearance_hut_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'trigger2', op = '+'}]
+			code = 'zephyra_disappearance_kitchen_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'trigger2', op = '+'}]
 		}, ]
 	},
 	
@@ -255,7 +256,6 @@ var data = {
 		reqs = [],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BOY_1", reqs = [], previous_dialogue_option = 9},
 		{text = "ZEPHYRA_DISAPPEARANCE_BOY_3_1", reqs = [], previous_dialogue_option = 1},
-		{text = "ZEPHYRA_DISAPPEARANCE_BOY_3_2", reqs = [], previous_dialogue_option = 23},
 		{text = "ZEPHYRA_DISAPPEARANCE_BOY_3_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'dialogue_counter', name = 'trigger4', op = '+'}]}, # adds trigger 4
 		],
 		options = [ {
@@ -263,7 +263,7 @@ var data = {
 		}, {
 			code = 'zephyra_disappearance_boy_4', text = "ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_2", reqs = [{type = 'local_counter', name = 'trigger3', operant = 'gte', value = 1, check = true}], dialogue_argument = 2, type = 'next_dialogue', # needs trigger 3 
 		}, {
-			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
 	
@@ -291,7 +291,7 @@ var data = {
 		}, {
 			code = 'zephyra_disappearance_hut_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_2", reqs = [], dialogue_argument = 23, type = 'next_dialogue',
 		}, {
-			code = 'zephyra_disappearance_boy_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'trigger4', op = '+'}] # adds trigger 4
+			code = 'zephyra_disappearance_boy_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_3", reqs = [{type = 'dialogue_selected', check = true, value = 'ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_1'}], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'dialogue_counter', name = 'trigger4', op = '+'}] # adds trigger 4
 		}, {
 			code = 'zephyra_disappearance_boy_1', text = "ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
 		}, ]
@@ -309,7 +309,7 @@ var data = {
 	
 	zephyra_disappearance_boy_5 = {
 		image = 'ketch_hit', tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'], 
-		reqs = [], character = "ketch",
+		reqs = [], 
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BOY_5", reqs = []},
 		],
 		options = [ {
@@ -789,7 +789,7 @@ var data = {
 	
 	zephyra_brush_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = "kuro",
 		text = [{text = "ZEPHYRA_BRUSH_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_BRUSH_4_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 90}]}], previous_dialogue_option = 2},
 		{text = "ZEPHYRA_BRUSH_4_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 90}]}], previous_dialogue_option = 2},
@@ -805,7 +805,7 @@ var data = {
 	
 	zephyra_brush_5_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = "kuro",
 		text = [{text = "ZEPHYRA_BRUSH_5_1", reqs = []},
 		],
 		options = [ {
@@ -815,7 +815,7 @@ var data = {
 	
 	zephyra_brush_5_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = "kuro",
 		text = [{text = "ZEPHYRA_BRUSH_5_3", reqs = []},
 		],
 		options = [ {
@@ -827,7 +827,7 @@ var data = {
 	
 	zephyra_brush_6 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = "kuro",
 		text = [{text = "ZEPHYRA_BRUSH_5_2", reqs = [], previous_dialogue_option = 2},
 		{text = "ZEPHYRA_BRUSH_6_1", reqs = [], previous_dialogue_option = 11},
 		{text = "ZEPHYRA_BRUSH_6_2", reqs = [], previous_dialogue_option = 12},
@@ -843,7 +843,7 @@ var data = {
 	
 	zephyra_brush_7 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], 
+		reqs = [], character = "kuro",
 		text = [{text = "ZEPHYRA_BRUSH_7_1", reqs = [], previous_dialogue_option = 1, 
 		bonus_effects = [{code = 'decision', value = 'AskedKurosName'}]},
 		{text = "ZEPHYRA_BRUSH_7_2", reqs = [], previous_dialogue_option = 2},
