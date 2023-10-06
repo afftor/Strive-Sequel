@@ -217,6 +217,16 @@ var backgrounds = {
 	zephyra_lilia_2 = load("res://assets/images/fullscreen scenes/zefira_lila3.png"),
 	zephyra_lilia_3 = load("res://assets/images/fullscreen scenes/zefira_lila4.png"),
 	
+	zephyra_back_1 = load("res://assets/images/fullscreen scenes/zephyra_back1.png"),
+	zephyra_back_2 = load("res://assets/images/fullscreen scenes/zephyra_back2.png"),
+	zephyra_back_3 = load("res://assets/images/fullscreen scenes/zephyra_back3.png"),
+	zephyra_back_4 = load("res://assets/images/fullscreen scenes/zephyra_back4.png"),
+	
+	zephyra_facefuck_1 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_00.png"),
+	zephyra_facefuck_2 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_01.png"),
+	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_02.png"),
+	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_03.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
@@ -345,6 +355,8 @@ var sprites = {
 	elf_priestess = load("res://assets/images/sprites/heleviel.png"),
 	zephyra = load("res://assets/images/sprites/zephyra.png"),
 	zephyra_body = load("res://assets/images/sprites/zephyra_body.png"),
+	kuro = load("res://assets/images/sprites/kuro.png"),
+	kuro_body = load("res://assets/images/sprites/kuro_body.png"),
 	daisy_default = load("res://assets/images/sprites/daisy_default.png"),
 	daisy_default_body = load("res://assets/images/sprites/daisy_body.png"),
 	daisy_default_happy = load("res://assets/images/sprites/daisy_happy.png"),
@@ -401,6 +413,8 @@ var sprites = {
 	anastasia_wed_body = load("res://assets/images/sprites/anastasia_wed_body.png"),
 	zephyra_nude = load("res://assets/images/sprites/zephyra_nude.png"),
 	zephyra_nude_body = load("res://assets/images/sprites/zephyra_nude_body.png"),
+	kuro_nude = load("res://assets/images/sprites/kuro_nude.png"),
+	kuro_nude_body = load("res://assets/images/sprites/kuro_nude_body.png"),
 	zephyra_wed = load("res://assets/images/sprites/zephyra_wed.png"),
 	zephyra_wed_body = load("res://assets/images/sprites/zephyra_wed_body.png"),
 	mae_nude = load("res://assets/images/sprites/mae_nude.png"),

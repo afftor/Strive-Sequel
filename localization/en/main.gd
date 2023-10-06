@@ -11845,7 +11845,7 @@ Mayor [name]. I thank you for your involvement. We will finish the paperwork. On
 
 
 Member 2 (Sildur): —  Mayor [name]. Please come back tomorrow to finalize the purchase. We will have all the formalities figured out by then. I will personally see to it that Amelia receives proper accommodation in the Guild for the time being.""",
-	AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
+		AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
 You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal.""",
 	AMELIA_TRIAL_BAD_1_ = """Norlan: —  Then it is decided by the vote of the majority. 
