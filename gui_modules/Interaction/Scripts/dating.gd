@@ -608,6 +608,12 @@ func is_same_sex():
 		rval = true
 	return rval
 
+func is_same_sex_except_futa():
+	var rval = false
+	if master.get_stat('sex') == person.get_stat('sex') && master.get_stat('sex') != 'futa':
+		rval = true
+	return rval
+
 func dislike_same_sex():
 	var rval = false
 	if is_same_sex() == true && !person.check_trait('bisexual'):
@@ -940,7 +946,7 @@ func ask_to_marry(person, counter):
 
 	var gave_consent = false
 	
-	if is_same_sex():
+	if is_same_sex_except_futa():
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.marry_same_sex)
 		text += "}"

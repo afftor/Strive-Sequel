@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/court.png-d79944f7c7c8b2ed3e96ea6e335e251d.stex"
+path="res://.import/amelia_box.png-e974dcec3a5d7ebb7283ef45a79f4960.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/court.png"
-dest_files=[ "res://.import/court.png-d79944f7c7c8b2ed3e96ea6e335e251d.stex" ]
+source_file="res://assets/images/scenes/amelia_box.png"
+dest_files=[ "res://.import/amelia_box.png-e974dcec3a5d7ebb7283ef45a79f4960.stex" ]
 
 [params]
 

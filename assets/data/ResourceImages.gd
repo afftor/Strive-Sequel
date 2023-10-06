@@ -324,6 +324,15 @@ var scenes = {
 	cali_meeting = load("res://assets/images/scenes/conference.png"),
 	lilia_sick = load("res://assets/images/scenes/lilia_sick.png"),
 	aire_hunter = load("res://assets/images/scenes/aire_hunter.png"),
+	
+	amelia_norlan = load("res://assets/images/scenes/norlan.png"),
+	amelia_box = load("res://assets/images/scenes/amelia_box.png"),
+	amelia_guards = load("res://assets/images/scenes/amelia_guards.png"),
+	amelia_slave = load("res://assets/images/scenes/amelia_slave.png"),
+	amelia_dungeon = load("res://assets/images/scenes/amelia_dungeon.png"),
+	amelia_court = load("res://assets/images/scenes/amelia_court.png"),
+	amelia_hostage = load("res://assets/images/scenes/amelia_hostage.png"),
+	
 }
 
 var sprites = {

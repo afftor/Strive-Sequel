@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/antagonist.png-202280394b799ce3eadd289d6c8ec545.stex"
+path="res://.import/amelia_slave.png-46a2dbfee04dfda3f9a4444d445b9b62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/antagonist.png"
-dest_files=[ "res://.import/antagonist.png-202280394b799ce3eadd289d6c8ec545.stex" ]
+source_file="res://assets/images/scenes/amelia_slave.png"
+dest_files=[ "res://.import/amelia_slave.png-46a2dbfee04dfda3f9a4444d445b9b62.stex" ]
 
 [params]
 
