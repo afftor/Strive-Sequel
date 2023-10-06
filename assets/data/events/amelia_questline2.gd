@@ -1159,5 +1159,15 @@ var data = {
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		 ],
 	},
-
+	
+	amelia_interlude4 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "AMELIA_INTERLUDE4", reqs = [], }],
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = []
+		} ],
+	},
 }
