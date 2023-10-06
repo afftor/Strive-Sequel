@@ -1591,7 +1591,13 @@ var dialogue_inits = {
 			target = 'amelia_interlude2_1',
 			target_option = 1,
 		},
-		#there should be a guild locking record for stage9
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"), #or not
+			reqs = [{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage9"}],
+			target = 'amelia_interlude4',
+			target_option = 1,
+		},
 		{
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"), #or not

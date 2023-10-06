@@ -89,7 +89,7 @@ var data = {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage1'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, descript = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage2'}]},
 				{code = "update_guild"}
 			]
@@ -182,7 +182,7 @@ var data = {
 			bonus_effects = [
 				{code = 'decision', value = 'amelia_slave_found'},
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage3'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, descript = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage4'}]},
 				{code = 'update_city'}
 			]
@@ -314,7 +314,7 @@ var data = {
 			bonus_effects = [
 				{code = 'decision', value = 'amelia_slave_found'},
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage5'},
-				{code = "add_special_task_for_location", location = 'aliron', amount = 5, desc = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
+				{code = "add_special_task_for_location", location = 'aliron', amount = 5, descript = "AMELIATASKDESCRIPT", name = "AMELIATASKNAME", max_workers = 4, icon = 'res://assets/images/gui/exclamation.png', 
 				args = [{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage6'}]},
 				{code = 'update_city'}
 			]
@@ -564,12 +564,26 @@ var data = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "AMELIA_TRIAL_4", reqs = []}],
 		options = [ {
+			code = 'amelia_trial_4_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_4_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_4_", reqs = []}],
+		options = [ {
 			code = 'amelia_trial_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
 		}, ],
 	},
 	amelia_trial_5 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "AMELIA_TRIAL_5", reqs = []}],
+		options = [ {
+			code = 'amelia_trial_5_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_5_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_5_", reqs = []}],
 		options = [ {
 			code = 'amelia_trial_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
 		}, ],
@@ -623,6 +637,13 @@ var data = {
 			{text = "AMELIA_TRIAL_9", reqs = []},
 			],
 		options = [ 
+			{code = 'amelia_trial_9_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,}
+		],
+	},
+	amelia_trial_9_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_9_", reqs = []},],
+		options = [ 
 			{
 			code = 'amelia_trial_10', text = "AMELIA_TRIAL_9_OPTION_1", reqs = [], dialogue_argument = 1, 
 			},
@@ -634,6 +655,13 @@ var data = {
 	amelia_trial_10 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "AMELIA_TRIAL_10", reqs = []}],
+		options = [ 
+			{code = 'amelia_trial_10_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,}
+		],
+	},
+	amelia_trial_10_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_10_", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_11', text = "AMELIA_TRIAL_10_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -668,12 +696,26 @@ var data = {
 		image = 'amelia_court', tags = ['dialogue_scene','master_translate'], reqs = [], 
 		text = [{text = "AMELIA_TRIAL_12", reqs = []}],
 		options = [ {
+			code = 'amelia_trial_12_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_12_ = {
+		image = 'amelia_court', tags = ['dialogue_scene','master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_12_", reqs = []}],
+		options = [ {
 			code = 'amelia_trial_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
 		}, ],
 	},
 	amelia_trial_13 = {
-		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		image = 'amelia_court', tags = ['dialogue_scene','master_translate'], reqs = [], 
 		text = [{text = "AMELIA_TRIAL_13", reqs = []}],
+		options = [ {
+			code = 'amelia_trial_13_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_13_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_13_", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_14', text = "AMELIA_TRIAL_13_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -706,12 +748,26 @@ var data = {
 			{text = "AMELIA_TRIAL_15", reqs = []},
 			],
 		options = [ {
+			code = 'amelia_trial_15_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_15_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_15_", reqs = []},],
+		options = [ {
 			code = 'amelia_trial_16', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
 		}, ],
 	},
 	amelia_trial_16 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [{text = "AMELIA_TRIAL_16", reqs = []}],
+		text = [{text = "AMELIA_TRIAL_16", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_16_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_16_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_16_", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_17', text = "AMELIA_TRIAL_16_OPTION_1", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'apprentice', check = true}]}], dialogue_argument = 1,
@@ -765,7 +821,21 @@ var data = {
 	
 	amelia_trial_normal_1 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [{text = "AMELIA_TRIAL_NORMAL_1", reqs = []}],
+		text = [{text = "AMELIA_TRIAL_NORMAL_1", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_1_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_1_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_1_", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_1__', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_1__ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_1__", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_normal_2', text = "AMELIA_TRIAL_NORMAL_1_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -791,8 +861,15 @@ var data = {
 	},
 	amelia_trial_normal_3 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_3", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_3_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_3_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [
-			{text = "AMELIA_TRIAL_NORMAL_3", reqs = [], previous_dialogue_option = 1},
+			{text = "AMELIA_TRIAL_NORMAL_3_", reqs = [], previous_dialogue_option = 1},
 			],
 		options = [ 
 			{
@@ -840,8 +917,22 @@ var data = {
 	},
 	amelia_trial_normal_7 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_7", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_7_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_7_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_7_", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_7__', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_7__ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [
-			{text = "AMELIA_TRIAL_NORMAL_7", reqs = [], previous_dialogue_option = 1},
+			{text = "AMELIA_TRIAL_NORMAL_7__", reqs = [], previous_dialogue_option = 1},
 			],
 		options = [ 
 			{
@@ -851,7 +942,21 @@ var data = {
 	},
 	amelia_trial_normal_8 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [{text = "AMELIA_TRIAL_NORMAL_8", reqs = []}],
+		text = [{text = "AMELIA_TRIAL_NORMAL_8", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_8_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_8_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_8_", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_8__', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_8__ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_8__", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_normal_9', text = "AMELIA_TRIAL_NORMAL_8_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -870,14 +975,28 @@ var data = {
 			],
 		options = [ 
 			{
-			code = 'amelia_trial_normal_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'amelia_trial_normal_9_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 			},
 		],
 	},
+	amelia_trial_normal_9_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_9_", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
 	amelia_trial_normal_10 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_NORMAL_10", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_normal_10_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_normal_10_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [
-			{text = "AMELIA_TRIAL_NORMAL_10", reqs = []},
+			{text = "AMELIA_TRIAL_NORMAL_10_", reqs = []},
 			],
 		options = [ 
 			{
@@ -892,7 +1011,14 @@ var data = {
 	
 	amelia_trial_bad_1 = {
 		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
-		text = [{text = "AMELIA_TRIAL_BAD_1", reqs = []}],
+		text = [{text = "AMELIA_TRIAL_BAD_1", reqs = []},],
+		options = [ {
+			code = 'amelia_trial_bad_1_', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+		}, ],
+	},
+	amelia_trial_bad_1_ = {
+		image = 'amelia_court', tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "AMELIA_TRIAL_BAD_1_", reqs = []}],
 		options = [ 
 			{
 			code = 'amelia_trial_bad_2', text = "AMELIA_TRIAL_BAD_1_OPTION_1", reqs = [], dialogue_argument = 1,
@@ -1159,5 +1285,15 @@ var data = {
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		 ],
 	},
-
+	
+	amelia_interlude4 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [], 
+		text = [{text = "AMELIA_INTERLUDE4", reqs = [], }],
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			bonus_effects = []
+		} ],
+	},
 }

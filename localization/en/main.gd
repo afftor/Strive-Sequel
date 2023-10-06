@@ -11587,9 +11587,8 @@ Norlan: —  The council is now in session. Today's agenda involves deciding Ame
 Amelia looks disinterested, and pretends to not be bothered with the commotion around..""",
 	AMELIA_TRIAL_4 = """Amelia: —  Yes, I do, and I take full responsibility. Let us not prolong this council more than necessary. 
 
-Member 1: —  I concur. We had two full days to understand the case, let's focus and move to the voting stage.
-
-Another guild member speaks up.
+Member 1: —  I concur. We had two full days to understand the case, let's focus and move to the voting stage.""",
+	AMELIA_TRIAL_4_ = """Another guild member speaks up.
 
 Member 2: —  Indeed, that's the case. Her removal from her position is a given. Yet, we cannot disregard the covert deals that nearly pushed us into scandal territory. Merely removing her as Guild Leader isn't adequate; she needs to be held accountable.
 
@@ -11598,9 +11597,8 @@ Amelia: —  What punishment do you have in mind, Sildur? I recall you've been r
 Amelia smirks, as she looks the standing guild member into the eyes, making him blush uncomfortably.""",
 	AMELIA_TRIAL_5 = """Norlan: —  Defendant, please abstain from interfering unless asked for a statement.
 
-Amelia: —  Oh, yes. My bad. I used to lead these councils up until three days ago, and old habits die hard.
-
-Another guild member raises his voice.
+Amelia: —  Oh, yes. My bad. I used to lead these councils up until three days ago, and old habits die hard.""",
+	AMELIA_TRIAL_5_ = """Another guild member raises his voice.
 
 Member 3: — There's nothing to discuss, really. She did break the guild rules concerning the import of regulated elven plants into the city. We should not be the ones to decide her fate. She should be handed over to the authorities. 
 
@@ -11629,9 +11627,8 @@ Member 2: —  This isn't a court of law. Our aim isn't to uphold justice here. 
 	AMELIA_TRIAL_9_2 = """Member 2: — Well... yes, you can argue that's indeed the case. So what? We cover it up?""",
 	AMELIA_TRIAL_9 = """Norlan: — I believe we've heard enough from both perspectives. As an acting guild leader, normally, I would urge all attending to move on to the voting between two established courses of action: Hand the defendant to the authorities, or simply strip her of her position and let her walk away. However, I have an alternative proposition that hasn't been brought up yet.
 
-Member 2: — Truly? And what is it? 
-
-Norlan: — Being a former slave who's experienced freedom, there is no punishment more severe for the defendant than returning to a life of servitude. Selling her into slavery would both serve as retribution, and eliminate the necessity of publicizing this reputational shame. Interestingly enough, I do have a potential buyer who's interested in acquiring her.
+Member 2: — Truly? And what is it? """,
+	AMELIA_TRIAL_9_ = """Norlan: — Being a former slave who's experienced freedom, there is no punishment more severe for the defendant than returning to a life of servitude. Selling her into slavery would both serve as retribution, and eliminate the necessity of publicizing this reputational shame. Interestingly enough, I do have a potential buyer who's interested in acquiring her.
 
 Amelia: —  So soon? It seems you have already made plans without waiting for the council's decision.
 
@@ -11639,8 +11636,7 @@ Norlan: —  Defendant, this is your last warning before getting removed from th
 
 Amelia looks you into the eyes. She silently gestures towards Norlan with her head. It was him. The one who ordered her kidnapping. Or so she seems to believe. 
 
-Amelia's gaze returns to you. Her expression reveals a silent question, a plea. "Will you help me expose him?", she asks.
-""",
+Amelia's gaze returns to you. Her expression reveals a silent question, a plea. "Will you help me expose him?", she asks.""",
 	AMELIA_TRIAL_9_OPTION_1 = """Shake your head. Refuse her plea.""",
 	AMELIA_TRIAL_9_OPTION_2 = """Nod. Help her expose Norlan.""",
 	AMELIA_TRIAL_10 = """She is disappointed. Must be, although she doesn't let it show. The council proceeds without your interference. 
@@ -11648,9 +11644,8 @@ Amelia's gaze returns to you. Her expression reveals a silent question, a plea. 
 Member 2: — It's an elegant solution to our problem. I do not object.
 Norlan: Let us proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
-You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal. 
-
-Norlan: — Then it is decided by the vote of the majority. 
+You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal. """,
+	AMELIA_TRIAL_10_ = """Norlan: — Then it is decided by the vote of the majority. 
 
 With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last disappointed glance before she's led away from the hall.  Norlan remains behind. He approaches you before you are able to leave.
 
@@ -11678,18 +11673,16 @@ Norlan: — ... Proceed.
 
 Amelia: — My so-called underhanded activities have been no secret for a very long time. After all, there are plenty among the members gathered today who were my clients. 
 
-Member 1: — W-what nonsense! 
-
-Amelia: — Do not worry, I will not disclose who... nor what exactly I have been asked to get. Your secrets are safe with me. There's but one reason I even mention this now — because I care about this guild deeply, and it would sadden me to see it fall. And fall it will, unless corruption within is exposed. 
+Member 1: — W-what nonsense! """,
+	AMELIA_TRIAL_12_ = """Amelia: — Do not worry, I will not disclose who... nor what exactly I have been asked to get. Your secrets are safe with me. There's but one reason I even mention this now — because I care about this guild deeply, and it would sadden me to see it fall. And fall it will, unless corruption within is exposed. 
 
 Norlan: — Your words, Amelia, don't come across as a statement in your defense; rather, they seem to carry an accusatory tone. I am responsible for maintaining order in this council, and it appears that Amelia's intention might be to disrupt that order. Amelia, I acknowledge your emotions, but I cannot permit you to proceed down this path.""",
 	AMELIA_TRIAL_13 = """Amelia: — Oh but you are too late, because this council is already nothing more than a circus. But if you want to do everything by the book, so be it. I would like to call a witness. 
 
 Norlan: — We do not have the time for this, Amelia. This council's conclusion is set for today; we cannot afford to delay it until the day your witness becomes available.
 
-Amelia: — There's no need to postpone anything, as my witness is present today. I would like to ask you several questions, [mister] Mayor [name].
-
-Norlan: — Feel free to proceed with your questions. Yet, I must emphasize that your inquiries should pertain directly to the case. If they deviate from relevance, I will need to conclude your final statement, even if you haven't concluded it yourself.
+Amelia: — There's no need to postpone anything, as my witness is present today. I would like to ask you several questions, [mister] Mayor [name].""",
+	AMELIA_TRIAL_13_ = """Norlan: — Feel free to proceed with your questions. Yet, I must emphasize that your inquiries should pertain directly to the case. If they deviate from relevance, I will need to conclude your final statement, even if you haven't concluded it yourself.
 
 Amelia: — Tell me, Mayor [name]. It was you who delivered me to the guild the other day. Would you kindly inform the members under which circumstances was I discovered by you?""",
 	AMELIA_TRIAL_13_OPTION_1 = """Kidnapped by mercenaries. I broke you out.""",
@@ -11704,9 +11697,8 @@ Amelia: — Very well. Mayor [name], according to what I have been told, you hav
 	AMELIA_TRIAL_15_2 = """Amelia: — I will keep that in mind for the future, mister Mayor. Do you remember what was Norlan's reaction to your suggestion?""",
 	AMELIA_TRIAL_15 = """Member 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
 
-Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term "chaos" seems a bit exaggerated.
-
-Amelia: — There you have it, Norlan. Two witnesses. 
+Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term "chaos" seems a bit exaggerated.""",
+	AMELIA_TRIAL_15_ = """Amelia: — There you have it, Norlan. Two witnesses. 
 
 Norlan: — Amelia... this desperate act does not befit someone of your refinement. What possible reason would I have to plot something like this? 
 
@@ -11717,9 +11709,8 @@ Member 5: — The record is being kept according to protocol.
 
 Norlan: — Good. I would like to formally renounce myself as current Guild Leader. 
 
-A visible surprise colors Amelia's face. She did not expect this to happen. 
-
-Member 3: — What? You can't just quit! Only the council can make a decision like this!
+A visible surprise colors Amelia's face. She did not expect this to happen.""",
+	AMELIA_TRIAL_16_ = """Member 3: — What? You can't just quit! Only the council can make a decision like this!
 
 Norlan: — Certainly. Yet, Amelia's perspective centers on the idea that I schemed to frame her in order to attain her role as Guild Leader. As an official declaration, I wish to express that I would willingly reject this responsibility if it serves as evidence of my innocence. 
 
@@ -11740,15 +11731,13 @@ Norlan: — For what purpose?
 
 Amelia: — It contains undeniable proof of your involvement. 
 
-Norlan: — This won't be necessary. You have made enough attempts to derail this council, and I cannot allow it any further. 
-
-Amelia: — Understandable. But I don't have to see it to know. The plant I imported several days ago is not going to be among the listed items. Do you know why? Because you stole it and sold it in my place. 
+Norlan: — This won't be necessary. You have made enough attempts to derail this council, and I cannot allow it any further. """,
+	AMELIA_TRIAL_NORMAL_1_ = """Amelia: — Understandable. But I don't have to see it to know. The plant I imported several days ago is not going to be among the listed items. Do you know why? Because you stole it and sold it in my place. 
 
 Norlan: — As a person directly responsible for compiling the inventory list, I assure you, there were no elven plants among the confiscated items. If it existed, I would not have missed it. I could not have made such a mistake. 
 
-Amelia: — The order for the plant was anonymous. I was kidnapped before I had a chance to meet with the buyer. Obviously, you were the one who ordered it. Obviously, you never intended to pay for it. And, obviously, you planned to steal it to fund your little plot.
-
-Norlan: — It's truly unfortunate to witness you in such a state of desperation.
+Amelia: — The order for the plant was anonymous. I was kidnapped before I had a chance to meet with the buyer. Obviously, you were the one who ordered it. Obviously, you never intended to pay for it. And, obviously, you planned to steal it to fund your little plot.""",
+	AMELIA_TRIAL_NORMAL_1__ = """Norlan: — It's truly unfortunate to witness you in such a state of desperation.
 However, even if there was this plant, what proof do you possess that I've taken it? What conceivable evidence could you present that suggests that I've sold it?
 
 Amelia gazes at you, her expression leaving no doubt: she's signaling for you to cooperate. But in what way?""",
@@ -11762,11 +11751,10 @@ Amelia: — You compiled the list. How do you explain that particular item, cost
 Norlan: — I do not need to explain anything at all. You claim the plant existed, and it may have. But even if it is the case, I was not aware of it nor have I come in contact with it in any way. Your claim is an accusation. As such, the burden of proof falls on you. And you fail to meet it.""",
 	AMELIA_TRIAL_NORMAL_3 = """Norlan: — This is preposterous. I do not know what compels you to conspire with Amelia, Mayor [name], but I urge you to reconsider. She is playing you. No elven plants were in Amelia's possession. Even if somebody stole it, it was before I had a chance to see it.
 
-Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!
+Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!""",
+	AMELIA_TRIAL_NORMAL_3_ = """Norlan: — This is preposterous. I do not know what compels you to conspire with Amelia, Mayor [name], but I urge you to reconsider. She is playing you. No elven plants were in Amelia's possession. Even if somebody stole it, it was before I had a chance to see it.
 
-Norlan: — On the contrary, we would be unwise to let this matter occupy any more of our time. The plant is unrelated to Amelia's crimes, which, let us remember, remains the council's primary concern. Even if we were to entertain this, Amelia has no evidence to prove my involvement in selling the plant and hiring mercenaries. As for why Amelia would press forward with this line of thought...
-
-Norlan takes a moment to consider his next words. He throws a glance at Amelia, then at you, and then returns his attention back to the guild members.""",
+Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!""",
 	AMELIA_TRIAL_NORMAL_4 = """Norlan: — Her motive is straightforward—instilling doubt. We all owe Amelia, some more than others. Now, she endeavors to exploit that fact. The intent behind this... discourse, for lack of a better term, is to coerce the council into adjournment and thereby postpone the resolution of her fate. I'm uncertain about her underlying motivations, but her strategy is evident. What truly astonishes me is the readiness of many among you to rally behind this proven criminal and fall prey to her machinations.
 
 Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. 
@@ -11784,9 +11772,8 @@ But could there be another angle to consider? Norlan's swift willingness to reli
 
 Member 3: — Stop it, Norlan! We're being offered more money for her, there's no reason to refuse. Your buyer will understand.
 
-Norlan: — No. No he will not. A deal is a deal. You of all people, dearest guild members, are bound to understand this. 
-
-Member 2: — Come on! Before the mayor changes his mind! Who is in favor of selling Amelia to the Mayor? Raise your hands!
+Norlan: — No. No he will not. A deal is a deal. You of all people, dearest guild members, are bound to understand this.""",
+	AMELIA_TRIAL_NORMAL_7_ = """Member 2: — Come on! Before the mayor changes his mind! Who is in favor of selling Amelia to the Mayor? Raise your hands!
 
 You look around the hall. It seems the majority of guild members are in agreement.
 
@@ -11794,9 +11781,8 @@ Norlan: — You are making a mistake. The buyer won't be pleased. And you will h
 
 Amelia: — Perhaps they would be more inclined to listen to you if you mentioned who this mysterious buyer of yours is.
 
-Norlan: — I am in no position to reveal...
-
-Amelia: — Because there's no buyer, is there? 
+Norlan: — I am in no position to reveal...""",
+	AMELIA_TRIAL_NORMAL_7__ = """Amelia: — Because there's no buyer, is there? 
 
 Norlan: — What are you suggesting, Amelia?
 
@@ -11813,19 +11799,17 @@ Norlan: — If you do not, I am still not prepared to lose something I've worked
 
 Norlan makes a sudden leap towards Amelia, clenching a dagger in his fist. Before anybody can even register what is happening, Norlan is already holding the dagger to Amelia's throat.
 
-Member 1: — Norlan! Explain yourself! What is going on? 
-
-Norlan: — Simple. My attempt at kidnapping Amelia has failed, thanks to our dearest Mayor's efforts, I am about to make one more. And I must warn you, that if it comes to that I can't have Amelia, then I will ensure nobody else will. I will kill her if anybody as much as sneezes.
+Member 1: — Norlan! Explain yourself! What is going on? """,
+	AMELIA_TRIAL_NORMAL_8_ = """Norlan: — Simple. My attempt at kidnapping Amelia has failed, thanks to our dearest Mayor's efforts, I am about to make one more. And I must warn you, that if it comes to that I can't have Amelia, then I will ensure nobody else will. I will kill her if anybody as much as sneezes.
 
 Member 3: Guards! Somebody call the guards!
 
 Norlan starts to back up, keeping Amelia close. Nobody risks moving. These people were ready to sell Amelia into slavery, but seeing her killed in front of their eyes must be too unpleasant of a prospect. This is where they draw the line.  
 
-Amelia: — You know what, Norlan. You didn't have to do all this. You could simply tell me how you feel. 
+Amelia: — You know what, Norlan. You didn't have to do all this. You could simply tell me how you feel.""",
+	AMELIA_TRIAL_NORMAL_8__ = """Norlan: — What?
 
-Norlan: — What?
-
-Amelia: — I also have feelings for you, you know? 
+Amelia: — I also have feelings for you, you know?
 
 A momentary distraction. Enough for Amelia to twist her leg around Norlan’s and make him fall over on his back, dagger falling out of his hand. 
 Before Norlan can understand what happened, several men are already holding him in place, restraining his arms and legs. 
@@ -11839,9 +11823,8 @@ Amelia: — I am hurt. Were you going to let him kidnap me? Again?""",
 	AMELIA_TRIAL_NORMAL_8_OPTION_2 = """I knew you had it under control. """,
 	AMELIA_TRIAL_NORMAL_9_1 = """Amelia: —  Not very heroic of you, [name]. You're supposed to save the damsel in distress, you know?""",
 	AMELIA_TRIAL_NORMAL_9_2 = """Amelia: —  Oh, is that so? Thank you for your trust in me, my hero.""",
-	AMELIA_TRIAL_NORMAL_9 = """Norlan: —  Have I lost? Impossible. All these preparations, all the sacrifices I had to make... You have destroyed it all, [name].  Amelia... I could have given you everything. My unconditional, pure love that was flourishing for years. You have seen the extent of my resolve, my feelings. Yet you deny them. Why?!
-
-Amelia: —  You have been serving the guild for so long, yet you have failed to understand one fundamental truth about our work. It is a slave who chooses their master. Not the other way around. I simply chose someone who would care for me, instead of just his own ego.
+	AMELIA_TRIAL_NORMAL_9 = """Norlan: —  Have I lost? Impossible. All these preparations, all the sacrifices I had to make... You have destroyed it all, [name].  Amelia... I could have given you everything. My unconditional, pure love that was flourishing for years. You have seen the extent of my resolve, my feelings. Yet you deny them. Why?!""",
+	AMELIA_TRIAL_NORMAL_9_ = """Amelia: —  You have been serving the guild for so long, yet you have failed to understand one fundamental truth about our work. It is a slave who chooses their master. Not the other way around. I simply chose someone who would care for me, instead of just his own ego.
 
 The men holding Norlan down drag him up onto his feet.
 
@@ -11856,18 +11839,16 @@ Amelia: —  Am I? I thought the guild voted to sell me to the mayor.
 
 Member 2 (Sildur): — Maybe so, but we've yet to receive any payment. 
 
-Amelia: —  What payment? [name] promised to pay double of what Norlan paid. Double of zero is still zero, isn't it?
-
-Member 2 (Sildur): —  You are observant as ever, however the guild policies are clear — no goods are given out for free. 
+Amelia: —  What payment? [name] promised to pay double of what Norlan paid. Double of zero is still zero, isn't it?""",
+	AMELIA_TRIAL_NORMAL_10_ = """Member 2 (Sildur): —  You are observant as ever, however the guild policies are clear — no goods are given out for free. 
 Mayor [name]. I thank you for your involvement. We will finish the paperwork. Once we receive your payment, you shall be free to take Amelia back to your mansion.
 
 
 Member 2 (Sildur): —  Mayor [name]. Please come back tomorrow to finalize the purchase. We will have all the formalities figured out by then. I will personally see to it that Amelia receives proper accommodation in the Guild for the time being.""",
 		AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
-You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal. 
-
-Norlan: —  Then it is decided by the vote of the majority. 
+You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal.""",
+	AMELIA_TRIAL_BAD_1_ = """Norlan: —  Then it is decided by the vote of the majority. 
 
 With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last glance before she's led away from the hall.  Norlan remains behind. He approaches you before you are able to leave.
 
@@ -11902,6 +11883,7 @@ Norlan leaves without saying anything more.""",
 	AMELIA_INTERLUDE3_2_OPTION_2 = """Who is going to be the new Guild Leader?""",
 	AMELIA_INTERLUDE3_2_OPTION_3 = """No, that's all.""",
 	AMELIA_INTERLUDE3_3 = """Well then, it was good meeting you, Mayor [name]. You have a nice day.""",
+	AMELIA_INTERLUDE4 = """Guild is closed""",
 	AMELIA_FINAL_1 = """—　At last, the savior of the day makes his appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?""",
 	AMELIA_FINAL_1_OPTION_1 = """It's not the first time, remember? You better not get used to it, though.""",
 	AMELIA_FINAL_1_OPTION_2 = """Good. I like being a hero.""",
