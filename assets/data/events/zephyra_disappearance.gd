@@ -560,8 +560,7 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_7_1", reqs = []}
 		],
 		options = [ {
-			code = 'zephyra_disappearance_sex_1', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			#change_dialogue_type = 2,
+			code = 'zephyra_disappearance_sex_1', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2,
 		}, {
 			code = 'zephyra_disappearance_ketch_9_2', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -569,7 +568,10 @@ var data = {
 	
 	zephyra_disappearance_sex_1 = { # comply
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "zephyra",
+		reqs = [], 
+		custom_background = "zephyra_back_1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_1", reqs = []}
 		], 
 		options = [ { 
@@ -579,7 +581,10 @@ var data = {
 	
 	zephyra_disappearance_sex_2 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "zephyra",
+		reqs = [], 
+		custom_background = "zephyra_back_2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_2", reqs = []}
 		], 
 		options = [ { 
@@ -589,7 +594,10 @@ var data = {
 	
 	zephyra_disappearance_sex_3 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "zephyra",
+		reqs = [], 
+		custom_background = "zephyra_back_3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_3", reqs = []}
 		], 
 		options = [ { 
@@ -599,7 +607,10 @@ var data = {
 	
 	zephyra_disappearance_sex_4 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "zephyra",
+		reqs = [], 
+		custom_background = "zephyra_back_3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_4", reqs = []}
 		], 
 		options = [ { 
@@ -609,7 +620,10 @@ var data = {
 	
 	zephyra_disappearance_sex_5 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
-		reqs = [], character = "zephyra",
+		reqs = [], 
+		custom_background = "zephyra_back_4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_5", reqs = []}
 		], 
 		options = [ { 
@@ -679,13 +693,16 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_12", reqs = []},
 		],
 		options = [ {
-			code = 'zephyra_disappearance_guards_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_guards_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2,
 		} ]
 	},
 	
 	zephyra_disappearance_guards_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		custom_background = "zephyra_facefuck_1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_1", reqs = []},
 		],
 		options = [ {
@@ -696,6 +713,9 @@ var data = {
 	zephyra_disappearance_guards_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		custom_background = "zephyra_facefuck_2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_2", reqs = []},
 		],
 		options = [ {
@@ -706,6 +726,9 @@ var data = {
 	zephyra_disappearance_guards_3 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		custom_background = "zephyra_facefuck_3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_3", reqs = []},
 		],
 		options = [ {
@@ -716,6 +739,9 @@ var data = {
 	zephyra_disappearance_guards_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		custom_background = "zephyra_facefuck_4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_4", reqs = []},
 		],
 		options = [ {
@@ -726,10 +752,13 @@ var data = {
 	zephyra_disappearance_guards_5 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
+		custom_background = "zephyra_facefuck_4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_5", reqs = []},
 		],
 		options = [ {
-			code = 'zephyra_disappearance_ketch_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_ketch_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 1,
 		} ]
 	},
 	
@@ -856,7 +885,7 @@ var data = {
 	},
 	
 	zephyra_brush_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, tags = ['dialogue_scene', 'mzaster_translate'],
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_8", reqs = []},
 		],

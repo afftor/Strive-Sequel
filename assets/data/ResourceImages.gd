@@ -217,6 +217,16 @@ var backgrounds = {
 	zephyra_lilia_2 = load("res://assets/images/fullscreen scenes/zefira_lila3.png"),
 	zephyra_lilia_3 = load("res://assets/images/fullscreen scenes/zefira_lila4.png"),
 	
+	zephyra_back_1 = load("res://assets/images/fullscreen scenes/zephyra_back1.png"),
+	zephyra_back_2 = load("res://assets/images/fullscreen scenes/zephyra_back2.png"),
+	zephyra_back_3 = load("res://assets/images/fullscreen scenes/zephyra_back3.png"),
+	zephyra_back_4 = load("res://assets/images/fullscreen scenes/zephyra_back4.png"),
+	
+	zephyra_facefuck_1 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_00.png"),
+	zephyra_facefuck_2 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_01.png"),
+	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_02.png"),
+	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/zephyra_facefuck_03.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
