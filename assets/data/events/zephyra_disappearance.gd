@@ -572,6 +572,7 @@ var data = {
 		custom_background = "zephyra_back_1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "zephyra_disappearance_sex",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_1", reqs = []}
 		], 
 		options = [ { 
@@ -703,6 +704,7 @@ var data = {
 		custom_background = "zephyra_facefuck_1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "zephyra_disappearance_guards",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_1", reqs = []},
 		],
 		options = [ {
@@ -885,7 +887,7 @@ var data = {
 	},
 	
 	zephyra_brush_8 = {
-		image = null, tags = ['dialogue_scene', 'mzaster_translate'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_8", reqs = []},
 		],

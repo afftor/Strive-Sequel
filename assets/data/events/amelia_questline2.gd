@@ -1227,6 +1227,7 @@ var data = {
 		custom_background = "amelia_sex1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "amelia_sex",
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "AMELIA_SEX_1", reqs = []}],
 		options = [ 
