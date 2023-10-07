@@ -787,14 +787,14 @@ var data = {
 	zephyra_brush_2 = {
 		variations = [ {
 				image = null, tags = ['dialogue_scene', 'master_translate'],
-				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'lt', value = 90}]}], character = "myr",
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'lt', value = 9}]}], character = "myr",
 				text = [{text = "ZEPHYRA_BRUSH_2_2", reqs = []}],
 				options = [ {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
 				} ]
 			}, {
 				image = null, tags = ['dialogue_scene', 'master_translate'],
-				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 90}]}], character = "myr",
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 9}]}], character = "myr",
 				text = [{text = "ZEPHYRA_BRUSH_2_1", reqs = []}],
 				common_effects = [{code = 'make_quest_location', value = 'quest_ancient_jungle_location'}],
 				options = [ {
