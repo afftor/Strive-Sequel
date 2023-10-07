@@ -58,8 +58,8 @@ var backgrounds = {
 	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
 	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
 	#events
-	anastasia_event_alive = load("res://assets/images/fullscreen scenes/anastasia_event2.png"),
-	anastasia_event_dead = load("res://assets/images/fullscreen scenes/anastasia_event.png"),
+	anastasia_event_alive = load("res://assets/images/fullscreen scenes/AnastasiaCG009.png"),
+	anastasia_event_dead = load("res://assets/images/fullscreen scenes/AnastasiaCG010.png"),
 	anastasia_execution1 = load("res://assets/images/fullscreen scenes/AnastasiaCG006.png"),
 	anastasia_execution2 = load("res://assets/images/fullscreen scenes/AnastasiaCG007.png"),
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
@@ -199,15 +199,15 @@ var backgrounds = {
 	lira_sex_2 = load("res://assets/images/fullscreen scenes/LiraCG002.png"),
 	lira_sex_3 = load("res://assets/images/fullscreen scenes/LiraCG003.png"),
 	
-	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliHalloweenCG001.png"),
-	christmas_scene = load("res://assets/images/fullscreen scenes/DaisyChristmasCG001.png"),
+	halloween_scene = load("res://assets/images/fullscreen scenes/AnaCaliCG001.png"),
+	christmas_scene = load("res://assets/images/fullscreen scenes/DaisyCG021.png"),
 	cali_zephyra_1 = load("res://assets/images/fullscreen scenes/CaliZephyraCG001.png"),
 	cali_zephyra_2 = load("res://assets/images/fullscreen scenes/CaliZephyraCG002.png"),
 	
-	zephyra_bath_1 = load("res://assets/images/fullscreen scenes/ZephyraBathCG001.png"), 
-	zephyra_bath_2 = load("res://assets/images/fullscreen scenes/ZephyraBathCG002.png"),
-	zephyra_bath_3 = load("res://assets/images/fullscreen scenes/ZephyraBathCG003.png"), 
-	zephyra_bath_4 = load("res://assets/images/fullscreen scenes/ZephyraBathCG004.png"),
+	zephyra_bath_1 = load("res://assets/images/fullscreen scenes/ZephyraCG001.png"), 
+	zephyra_bath_2 = load("res://assets/images/fullscreen scenes/ZephyraCG002.png"),
+	zephyra_bath_3 = load("res://assets/images/fullscreen scenes/ZephyraCG003.png"), 
+	zephyra_bath_4 = load("res://assets/images/fullscreen scenes/ZephyraCG004.png"),
 	
 	stag_sex_1 = load("res://assets/images/fullscreen scenes/StagCG001.png"),
 	stag_sex_2 = load("res://assets/images/fullscreen scenes/StagCG002.png"),
@@ -217,15 +217,15 @@ var backgrounds = {
 	zephyra_lilia_2 = load("res://assets/images/fullscreen scenes/ZephyraLiliaCG002.png"),
 	zephyra_lilia_3 = load("res://assets/images/fullscreen scenes/ZephyraLiliaCG003.png"),
 	
-	zephyra_back_1 = load("res://assets/images/fullscreen scenes/ZephyraBackCG001.png"),
-	zephyra_back_2 = load("res://assets/images/fullscreen scenes/ZephyraBackCG002.png"),
-	zephyra_back_3 = load("res://assets/images/fullscreen scenes/ZephyraBackCG003.png"),
-	zephyra_back_4 = load("res://assets/images/fullscreen scenes/ZephyraBackCG004.png"),
+	zephyra_back_1 = load("res://assets/images/fullscreen scenes/ZephyraCG005.png"),
+	zephyra_back_2 = load("res://assets/images/fullscreen scenes/ZephyraCG006.png"),
+	zephyra_back_3 = load("res://assets/images/fullscreen scenes/ZephyraCG007.png"),
+	zephyra_back_4 = load("res://assets/images/fullscreen scenes/ZephyraCG008.png"),
 	
-	zephyra_facefuck_1 = load("res://assets/images/fullscreen scenes/ZephyraFacefuckCG001.png"),
-	zephyra_facefuck_2 = load("res://assets/images/fullscreen scenes/ZephyraFacefuckCG002.png"),
-	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/ZephyraFacefuckCG003.png"),
-	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/ZephyraFacefuckCG004.png"),
+	zephyra_facefuck_1 = load("res://assets/images/fullscreen scenes/ZephyraCG009.png"),
+	zephyra_facefuck_2 = load("res://assets/images/fullscreen scenes/ZephyraCG010.png"),
+	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/ZephyraCG011.png"),
+	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/ZephyraCG012.png"),
 	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
