@@ -11752,9 +11752,9 @@ Norlan: — I do not need to explain anything at all. You claim the plant existe
 	AMELIA_TRIAL_NORMAL_3 = """Norlan: — This is preposterous. I do not know what compels you to conspire with Amelia, Mayor [name], but I urge you to reconsider. She is playing you. No elven plants were in Amelia's possession. Even if somebody stole it, it was before I had a chance to see it.
 
 Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!""",
-	AMELIA_TRIAL_NORMAL_3_ = """Norlan: — This is preposterous. I do not know what compels you to conspire with Amelia, Mayor [name], but I urge you to reconsider. She is playing you. No elven plants were in Amelia's possession. Even if somebody stole it, it was before I had a chance to see it.
+	AMELIA_TRIAL_NORMAL_3_ = """Norlan: — On the contrary, we would be unwise to let this matter occupy any more of our time. The plant is unrelated to Amelia's crimes,  which, let us remember, remains the council’s primary concern. Even if we were to entertain this, Amelia has no evidence to prove my involvement in selling the plant and hiring mercenaries. As for why Amelia would press forward with this line of thought...
 
-Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!""",
+Norlan takes a moment to consider his next words. He throws a glance at Amelia, then at you, then returns his attention back to the guild members.""",
 	AMELIA_TRIAL_NORMAL_4 = """Norlan: — Her motive is straightforward—instilling doubt. We all owe Amelia, some more than others. Now, she endeavors to exploit that fact. The intent behind this... discourse, for lack of a better term, is to coerce the council into adjournment and thereby postpone the resolution of her fate. I'm uncertain about her underlying motivations, but her strategy is evident. What truly astonishes me is the readiness of many among you to rally behind this proven criminal and fall prey to her machinations.
 
 Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. 
