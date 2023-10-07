@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hostage.png-b377503da44b9a515308c26204ebb580.stex"
+path="res://.import/amelia_court.png-c4490ce7ec37246821df1bce9f6118a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/hostage.png"
-dest_files=[ "res://.import/hostage.png-b377503da44b9a515308c26204ebb580.stex" ]
+source_file="res://assets/images/scenes/amelia_court.png"
+dest_files=[ "res://.import/amelia_court.png-c4490ce7ec37246821df1bce9f6118a7.stex" ]
 
 [params]
 

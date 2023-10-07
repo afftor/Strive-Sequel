@@ -132,6 +132,7 @@ var data = {
 	
 	
 	amelia_dialogue_start = { #should be moved out of this script
+		#really?
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
 		text = [
 			{text = "AMELIA_BONUS_QUESTION", reqs = [], previous_dialogue_option = 0}
@@ -742,6 +743,19 @@ var data = {
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
 		],
 	},
+	
+#	amelia_dialogue_start = {
+#		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'lilia',
+#		text = [
+#			{
+#				text = "", 
+#				reqs = [],
+#			},
+#		], 
+#		options = [
+#			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3}
+#		],
+#	},
 
 }
 	

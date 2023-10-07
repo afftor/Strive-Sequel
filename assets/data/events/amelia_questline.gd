@@ -467,6 +467,16 @@ var data = {
 		}, ],
 	},
 	
+	
+	
+	servants_no_amelia = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "SERVANTSNOAMELIA", reqs = [], }],
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		} ],
+	},
+	
 #	amelia_herbs_end_1_2_8 = {
 #		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'amelia',
 #		text = [{text = "AMELIA_HERBS_END_REPLY_1_2_8", reqs = []}],

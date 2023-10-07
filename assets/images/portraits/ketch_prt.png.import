@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/amelia dungeon.png-dfcb93e366646f1564d4f9e2e28a31bb.stex"
+path="res://.import/ketch_prt.png-f1f89916755278245efe216263b93bb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/amelia dungeon.png"
-dest_files=[ "res://.import/amelia dungeon.png-dfcb93e366646f1564d4f9e2e28a31bb.stex" ]
+source_file="res://assets/images/portraits/ketch_prt.png"
+dest_files=[ "res://.import/ketch_prt.png-f1f89916755278245efe216263b93bb2.stex" ]
 
 [params]
 

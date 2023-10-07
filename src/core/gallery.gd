@@ -31,8 +31,12 @@ var scenes = {
 	cali_act5_pet = ["cali_act5_pet_1","cali_act5_pet_2","cali_act5_pet_3","cali_act5_pet_4","cali_act5_pet_5","cali_act5_pet_6","cali_act5_pet_7","cali_act5_pet_8","cali_act5_pet_9_1","cali_act5_pet_9_2","cali_act5_pet_10"],
 	cali_act6_naked = ["cali_act6_naked_1","cali_act6_naked_2","cali_act6_naked_3","cali_act6_naked_4","cali_act6_naked_5","cali_act6_naked_6","cali_act6_naked_7"],
 	pre_ritual_blow = ["pre_ritual_blow_1","pre_ritual_blow_2","pre_ritual_blow_3","pre_ritual_blow_4","pre_ritual_7_3_3","pre_ritual_8","pre_ritual_10"],
-	zephyra_lilia = ['zephyra_lilia_5', 'zephyra_lilia_6', 'zephyra_lilia_7', 'zephyra_lilia_8', 'zephyra_lilia_9']
-}	
+	zephyra_lilia = ['zephyra_lilia_5', 'zephyra_lilia_6', 'zephyra_lilia_7', 'zephyra_lilia_8', 'zephyra_lilia_9'],
+	amelia_sex = ['amelia_sex_1', 'amelia_sex_2', 'amelia_sex_3', 'amelia_sex_4', 'amelia_sex_5'],
+	zephyra_disappearance_sex = ['zephyra_disappearance_sex_1', 'zephyra_disappearance_sex_2', 'zephyra_disappearance_sex_3', 'zephyra_disappearance_sex_4', 'zephyra_disappearance_sex_5'],
+	zephyra_disappearance_guards = ['zephyra_disappearance_guards_1', 'zephyra_disappearance_guards_2', 'zephyra_disappearance_guards_3', 'zephyra_disappearance_guards_4', 'zephyra_disappearance_guards_5'],
+	
+}
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
 	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","lich_aire_talkk","halloween_start",
@@ -40,7 +44,7 @@ var scenes_order = [
 	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
 	"heleviel_mansion","lira_mansion","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
-	"zephyra_lilia"
+	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -76,7 +80,10 @@ var ero_scenes = [
 'cali_bowl_naked_1',
 'zephyra_bath_1',
 'stag_sex_1',
-'zephyra_lilia_1'] 
+'zephyra_lilia_1',
+'amelia_sex_1',
+'zephyra_disappearance_sex_1',
+'zephyra_disappearance_guards_1'] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -109,7 +116,10 @@ var ero_scenes_collection = {
 	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
 	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
 	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"],
-	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3']
+	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3'],
+	'amelia_sex': ['amelia_sex1', 'amelia_sex2', 'amelia_sex3'],
+	'zephyra_back_' :['zephyra_back_1', 'zephyra_back_2', 'zephyra_back_3', 'zephyra_back_4'],
+	'zephyra_facefuck_' :['zephyra_facefuck_1', 'zephyra_facefuck_2', 'zephyra_facefuck_3', 'zephyra_facefuck_4'],
 }
 #so these arrays are needed for storing order 
 

@@ -1728,7 +1728,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'zephyra'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {matk = 10, resist_mind = 40},
+		basestats = {matk = 35, resist_mind = 40},
 	},
 	
 	cali_collar = {
