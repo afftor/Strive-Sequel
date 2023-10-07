@@ -82,6 +82,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_2", reqs = []}],
+#		common_effects = [{code = 'background_noise', value = 'stop'}],
 		options = [ {
 			code = 'zephyra_disappearance_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -652,7 +653,7 @@ var data = {
 	},
 	
 	zephyra_disappearance_ketch_10 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'], 
 		reqs = [], character = 'demon_female', #character2 = "ketch",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_10", reqs = []},
 		],

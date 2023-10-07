@@ -34,7 +34,7 @@ func create_character_description(character):
 	return new_charcter_description(character)
 
 var descriptionorder = [
-'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'skin', 'skin_coverage','wings', 'tail', 'height', 
+'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'body_color_skin', 'skin_coverage','wings', 'tail', 'height', 
 '[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
@@ -462,7 +462,7 @@ var bodypartsdata = {
 		feathered = {code = 'feathered', name = '', chardescript = '', bodychanges = []},
 		fish = {code = 'fish', name = '', chardescript = '', bodychanges = []},
 	},
-	skin = {
+	body_color_skin = {
 		pale = {code = 'pale', name = '', chardescript = '', bodychanges = []},
 		grey = {code = 'grey', name = '', chardescript = '', bodychanges = []},
 		fair = {code = 'fair', name = '', chardescript = '', bodychanges = []},
