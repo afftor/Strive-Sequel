@@ -4412,8 +4412,8 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		latex = [
-			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
+		latex_suit = [
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.0},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/124_armory_set_latex_male/HandR1_armor_latex.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_armor', texture = "res://Character_generator/images/124_armory_set_latex_male/HandR2_armor_latex.png"},
@@ -4450,7 +4450,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		waitress = [
+		worker_outfit = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = "res://Character_generator/images/124_armory_set_waiter_male/HandR1_armor_waiter.png"},
@@ -4488,7 +4488,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		smith = [
+		craftsman_suit = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
@@ -4526,7 +4526,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
 		],
-		tentackle = [
+		tentacle_suit = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'range', color = 0.1},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Raincoat_tex', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_armor', texture = null},
@@ -4875,10 +4875,10 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
 		],
-		latex = [
+		latex_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
-			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.0},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = "res://Character_generator/images/124_armory_set_latex_male/LegL_armor_latex.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/124_armory_set_latex_male/LegR_armor_latex.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/124_armory_set_latex_male/taz_armor_latex.png"},
@@ -4889,7 +4889,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
 		],
-		waitress = [
+		worker_outfit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},
@@ -4903,7 +4903,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
 		],
-		smith = [
+		craftsman_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},
@@ -4917,7 +4917,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
 		],
-		tentackle = [
+		tentacle_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.1},
