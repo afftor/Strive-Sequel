@@ -929,8 +929,8 @@ var data = {
 	},
 	
 	zephyra_brush_12 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'zephyra',
+		image = "forest_hut_fire", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_12", reqs = []},
 		],
 		options = [ {
@@ -939,8 +939,8 @@ var data = {
 	},
 	
 	zephyra_brush_13 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_forest", tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_13", reqs = []},
 		],
 		options = [ {
@@ -949,8 +949,8 @@ var data = {
 	},
 	
 	zephyra_brush_14 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_forest_shining", tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_14", reqs = []},
 		],
 		options = [ {
@@ -996,13 +996,13 @@ var data = {
 	},
 	
 	zephyra_brush_17 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_kiss", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], 
 		text = [{text = "ZEPHYRA_BRUSH_17", reqs = []},
 		],
 		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'screen_black_transition', value = 1}]
 		} ]
 	},
 	

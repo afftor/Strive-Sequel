@@ -10911,7 +10911,7 @@ Zephyra sighs loudly and dramatically slumps to the floor.
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_2 = """You bite your tongue to the point you start to taste a bit of blood in your mouth, but nothing else happens. You wonder if that was a good idea at all...""",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_3 = """You sit down and try to come to your senses, but the only thing changing is that you start to feel cold... or at least you believe so.""",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_4 = """""", #
-	ZEPHYRA_DISAPPEARANCE_HUT_1 = """The small hut seems rather spacious from the inside. The main room is lit by a stone fireplace which is peacefully burning, warming up the space.
+	ZEPHYRA_DISAPPEARANCE_HUT_1 = """The small hut seems rather spacious from the inside. The main room is lit by a stone fireplace which is peacefully burning, warming up the space. Your nose catches a faint smell of burned wood.
 
 A young boy with a pair of fox ears on his head sits by the table.""",
 	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_1 = "Walk to the kitchen",
@@ -11225,24 +11225,24 @@ Despite your best efforts, your drawing is too amateurish and the brush's detail
 
 You manage to outrun the silhouette, but as your hand moves in to grab the brush it grasps for air as the brush gets yanked out by the shadow behind it. As you turn to your rival, you realize it's a girl with a large black fox tail, dressed in dark clothes fitting the environment. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
 
-- This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
+— This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
 	ZEPHYRA_BRUSH_4_2_BAD = """{color=red|Failure}
 
 You try to outrun it, but fail to do so. You realize that the silhouette is a girl with a large black fox tail,dressed in dark clothes fitting the environment. She pays no attention to you until she casually picks up the brush. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
 
-- This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
+— This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
 	ZEPHYRA_BRUSH_4_OPTION_1 = "Myself",
 	ZEPHYRA_BRUSH_4_OPTION_2 = "A friend",
 	ZEPHYRA_BRUSH_4_OPTION_3 = "A girl I know",
 	ZEPHYRA_BRUSH_5_1 = """The girl looks at you, expressionless, but you can tell she's not convinced. Either due to thinking you lied, or her not considering you worthy.
 
-- Forget about it. And we are done here. Goodbye.
+— Forget about it. And we are done here. Goodbye.
 
 Before you can say anything the girl disappears into the shadows, as if she was never there.""",
-	ZEPHYRA_BRUSH_5_2 = """- A friend you say? Very well, you can have it then. 
+	ZEPHYRA_BRUSH_5_2 = """— A friend you say? Very well, you can have it then. 
 
 The girl places the brush back on the pedestal and walks towards the exit.""",
-	ZEPHYRA_BRUSH_5_3 = """- A girl, you say? Are you, perhaps, in love with this girl?
+	ZEPHYRA_BRUSH_5_3 = """— A girl, you say? Are you, perhaps, in love with this girl?
 
 The question was conveyed as nonchalantly as humanly possible, yet it felt like she's genuinely interested in your answer.""",
 	ZEPHYRA_BRUSH_5_3_OPTION_1 = "Yes",
@@ -11256,54 +11256,54 @@ The girl places the brush back on the pedestal and walks towards the exit.""",
 	ZEPHYRA_BRUSH_6_OPTION_3 = "*Say nothing and take the brush*",
 	ZEPHYRA_BRUSH_7_1 = """The girl stops and gives you one more short look.
 
-- ...Zephyra. Now, if you’ll excuse me I have more important things to take care of.
+— ...Zephyra. Now, if you’ll excuse me I have more important things to take care of.
 
 Before you are able to say anything else, she's already gone. After a moment you start questioning if she was even here in first place.""",
 	ZEPHYRA_BRUSH_7_2 = """The girl briefly turns to you, and her look implies that you've asked something very stupid. 
 
-- The dawn is near. And I'm not the kind to be around by that time. 
+— The dawn is near. And I'm not the kind to be around by that time. 
 
 Before you are able to say anything else, she's already gone. After a moment you start questioning if she was even here in first place.""",
 	ZEPHYRA_BRUSH_7_3 = """After you take the brush and turn around, she's already gone. You question yourself if she was even here in the first place.""",
 	ZEPHYRA_BRUSH_8_OPTION_0 = "*Return the brush*",
 	ZEPHYRA_BRUSH_8 = """You take the brush and present it to Zephyra. Zephyra stares at it blankly for a while before finally snapping out of it. It's rare to see the girl at a loss for words.
 
-- How did you get it?.. How did you even know... No, I guess that's what you do. You know, you aren't supposed to be this good at correcting my faults. I mean, I already gave you all of my support, I can't give you anymore, haha...""",
+— How did you get it?.. How did you even know... No, I guess that's what you do. You know, you aren't supposed to be this good at correcting my faults. I mean, I already gave you all of my support, I can't give you anymore, haha...""",
 	ZEPHYRA_BRUSH_9 = """Zephyra takes the brush and it slightly flickers in her hand. The light reflects in her eyes for a short moment. 
 
-- You know, for all you've done I want to tell you. Tell you all that I know about our mission. That is, if you do not mind, this might take a while.""",
+— You know, for all you've done I want to tell you. Tell you all that I know about our mission. That is, if you do not mind, this might take a while.""",
 	ZEPHYRA_BRUSH_9_OPTION_1 = "It's about a time",
 	ZEPHYRA_BRUSH_9_OPTION_2 = "I don't really need to know",
 	ZEPHYRA_BRUSH_10 = """You sit next to Zephyra as she starts her story.
 
-- Even though not every person believes in gods, you have been a first hand witness of their real influence, and for many of them. Even when there are helpful and good gods like Alios, there's also those who are the opposite. The evil gods seek to corrupt and destroy our very life. You could say we are managing well enough on our own, but they do lurk in the shadows. 
+— Even though not every person believes in gods, you have been a first hand witness of their real influence, and for many of them. Even when there are helpful and good gods like Alios, there's also those who are the opposite. The evil gods seek to corrupt and destroy our very life. You could say we are managing well enough on our own, but they do lurk in the shadows. 
 
-- Once there was a great, kind man and loving husband who lived a fair rural life in a small village. However, a famine happened and his family was starving. At that time one of the servants of an evil god visited the village. He offered the man food to feed his family. The price was the wellbeing of one of their neighbors who have also been starving. 
+— Once there was a great, kind man and loving husband who lived a fair rural life in a small village. However, a famine happened and his family was starving. At that time one of the servants of an evil god visited the village. He offered the man food to feed his family. The price was the wellbeing of one of their neighbors who have also been starving. 
 
-- Even though they got through the famine, the neighbors grew suspicious of them and the man became more and more brooding with guilt. His mind was being slowly consumed with dark thoughts, until one day he strangled his wife over a minor quarrel. I've seen this man become corrupted with my own eyes. That man was my father.""",
-	ZEPHYRA_BRUSH_11 = """- To tell the truth, after the abduction I've remembered about my past, for better or worse. I was a burden on my parents and family ever since my birth - weak, poor health, bedridden most of the time, but they never gave up on me. However, my father died shortly after mother's death and we couldn't stay at the village, so my brother and I left. We found a small abandoned house a few miles from another village, and settled there. 
+— Even though they got through the famine, the neighbors grew suspicious of them and the man became more and more brooding with guilt. His mind was being slowly consumed with dark thoughts, until one day he strangled his wife over a minor quarrel. I've seen this man become corrupted with my own eyes. That man was my father.""",
+	ZEPHYRA_BRUSH_11 = """— To tell the truth, after the abduction I've remembered about my past, for better or worse. I was a burden on my parents and family ever since my birth - weak, poor health, bedridden most of the time, but they never gave up on me. However, my father died shortly after mother's death and we couldn't stay at the village, so my brother and I left. We found a small abandoned house a few miles from another village, and settled there. 
 
-- He was taking very good care of me, especially for his age, helping at the village in exchange for food. But it all ended after he got caught by bandits. They made him tell them about our home before killing him. I don't know if it's father's curse which got us in the end. """,
+— He was taking very good care of me, especially for his age, helping at the village in exchange for food. But it all ended after he got caught by bandits. They made him tell them about our home before killing him. I don't know if it's father's curse which got us in the end. """,
 	ZEPHYRA_BRUSH_12 = """Her brother had not returned, and the girl could not fall asleep at the time. She heard vulgar yells and laughing from the outside when she realized that something terrible had happened. Fear struck her deeply as she realized the strangers had barged into their house. Being as quiet as possible she snuck out of the house from the backdoor, and started running into the forest. Only moments after she's realized flames have erupted behind her back.
 
 Against all odds she had to run away. Her body was searing with pain as she tried to move through the foliage. The fear of being caught drove her forward, never in her life has her body experienced so much exertion. It was a miracle she managed to get so far away before finally collapsing.""",
 	ZEPHYRA_BRUSH_13 = """After an unknown amount of time she came to her senses. She'd be surprised that she's still alive if she had any strength left in her body. Barely managing to lift her face from wet dirt, she leaned over a tree. Her usually white hair and tail were all soiled in mud, and tears fell down from her face. 
 
-- I hate this...  I hate this weak stupid body... Being useless...
+— I hate this...  I hate this weak stupid body... Being useless...
 
 You really hate it? - The voice resonated inside of the girl's head, one that was not her own.
 
 What's there to hate now? You are free and can do what you want.
 
-- Why are you saying this... I just want this be over...""",
+— Why are you saying this... I just want this be over...""",
 	ZEPHYRA_BRUSH_14 = """You want to die? This will all be over soon then. 
 
 The girl did not respond. She didn't live all that long and her life wasn't eventful in any sense. At this very moment she had nothing to lose or to look forward to, but something still kept her heart beating and her soul hopeful.
 
-- I... Want to live... No matter what. 
+— I... Want to live... No matter what. 
 
 The presence of the voice grew stronger with her decision. The deity pitied her, and with a little of the power it had, it granted the girl her wish. The miracle happened hidden from anyone's sight and the girl was cured.""",
-	ZEPHYRA_BRUSH_15 = """- ...After that I asked Alios for one more favor for me. I wanted to forget everything about my previous life. This is how the Zephyra you know came to existence. Well, most of me, anyway. 
+	ZEPHYRA_BRUSH_15 = """— ...After that I asked Alios for one more favor for me. I wanted to forget everything about my previous life. This is how the Zephyra you know came to existence. Well, most of me, anyway. 
 
 Zephyra finished her story and lowered head in submission, nervously waiting for your reaction.""",
 	ZEPHYRA_BRUSH_15_OPTION_1 = "You won't have to suffer anymore, I'll always protect you",
@@ -11311,28 +11311,28 @@ Zephyra finished her story and lowered head in submission, nervously waiting for
 	ZEPHYRA_BRUSH_15_OPTION_3 = "You really wasted my time on this",
 	ZEPHYRA_BRUSH_16_1AND2 = """Hearing this Zephyra suddenly grasps her chest and winces as if in pain.
 
-- Aaaaah... Aahh... You... Can't do this to...
+— Aaaaah... Aahh... You... Can't do this to...
 
 She feigns collapse towards you and buries her face into your chest. 
 
-- Have you... Aah... No pity for my young maiden's heart?""",
+— Have you... Aah... No pity for my young maiden's heart?""",
 	ZEPHYRA_BRUSH_16_3 = """- S-sorry about that... I shouldn't have told you about this, I... Sorry...
 
 Zephyra runs out of room, leaving you alone, and has not shown herself for the rest of the day.""",
 	ZEPHYRA_BRUSH_17 = """As you open your mouth to respond, Zephyra catches you off guard and instantly seals your lips with hers. Her slow yet desperate kiss finally comes to an end, making you forget whatever you were about to say.
 
-- No, you can't do that. I've been taken care of by others for my entire life. It's my turn to protect the person I love. 
+— No, you can't do that. I've been taken care of by others for my entire life. It's my turn to protect the person I love. 
 
 Zephyra smiles with unparalleled adoration as her tail wags playfully.
 
-- But... I won't protest if you take care of me tonight.""",
-	ZEPHYRA_BRUSH_18 = """- Haah, really? Very well, I guess that's just how you are. Alright, I won't bother you any more than necessary then, but, again, thank you.""",
+— But... I won't protest if you take care of me tonight.""",
+	ZEPHYRA_BRUSH_18 = """— Haah, really? Very well, I guess that's just how you are. Alright, I won't bother you any more than necessary then, but, again, thank you.""",
 	ZEPHYRA_BRUSH_19_OPTION_0 = "About the girl you've met before...",
 	ZEPHYRA_BRUSH_19 = """You tell Zephyra about your encounter during the brush retrieval with a girl who claimed to be Zephyra as well.
 
-- T-that might be my sister. That seems like her way of joking, she's a weird one. You aren't seriously thinking I'm some sort of imposter, are you?""",
+— T-that might be my sister. That seems like her way of joking, she's a weird one. You aren't seriously thinking I'm some sort of imposter, are you?""",
 	ZEPHYRA_BRUSH_19_OPTION_1 = "Tell me more about your sister, I thought you had no relatives",
-	ZEPHYRA_BRUSH_20 = """- Well, it's not like we are blood relatives. I'm not sure how to describe it, it's just... We feel like we are distant relatives, or acquaintances. I never really thought about that. I think she's a good girl, even though I rarely understand her. """,
+	ZEPHYRA_BRUSH_20 = """— Well, it's not like we are blood relatives. I'm not sure how to describe it, it's just... We feel like we are distant relatives, or acquaintances. I never really thought about that. I think she's a good girl, even though I rarely understand her. """,
 
 	
 	

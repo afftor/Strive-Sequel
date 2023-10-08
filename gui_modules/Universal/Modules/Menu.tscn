@@ -664,7 +664,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.7.1c
+bbcode_text = "0.7.2
+Added a new quest for Zephyra and Amelia. Amelia is now recruitable
+Added more costumes and options to paperdoll, fixed some issues
+Futa is no longer restricted from marrying futas
+Fixed an issue with disappearing locaiton during first arc making the quest uncompletable
+0.7.1c
 Additional fixes to market upgrades mode resetting things
 Fixed an issue when market wasn't openning due to data error in some characters
 0.7.1b
@@ -1497,7 +1502,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.7.1c
+text = "0.7.2
+Added a new quest for Zephyra and Amelia. Amelia is now recruitable
+Added more costumes and options to paperdoll, fixed some issues
+Futa is no longer restricted from marrying futas
+Fixed an issue with disappearing locaiton during first arc making the quest uncompletable
+0.7.1c
 Additional fixes to market upgrades mode resetting things
 Fixed an issue when market wasn't openning due to data error in some characters
 0.7.1b

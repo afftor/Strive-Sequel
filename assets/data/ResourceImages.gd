@@ -308,6 +308,7 @@ var scenes = {
 	stone_sword2 = load("res://assets/images/scenes/stone_sword2.png"),
 	goblins_traps = load("res://assets/images/scenes/goblins_traps.png"),
 	forest_hut = load("res://assets/images/scenes/forest_hut.png"),
+	forest_hut_fire = load("res://assets/images/scenes/forest_hut_fire.png"),
 	hut_knife = load("res://assets/images/scenes/hut_knife.png"),
 	hut_window = load("res://assets/images/scenes/hut_window.png"),
 	interiour_hut = load("res://assets/images/scenes/interiour_hut.png"),
@@ -315,6 +316,9 @@ var scenes = {
 	kitchen_hut = load("res://assets/images/scenes/kitchen_hut.png"),
 	ketch_hit = load("res://assets/images/scenes/ketch_hit.png"),
 	ketch_trade = load("res://assets/images/scenes/ketch_trade.png"),
+	zephyra_forest = load("res://assets/images/scenes/zephyra_forest.png"),
+	zephyra_forest_shining = load("res://assets/images/scenes/zephyra_forest_shining.png"),
+	zephyra_kiss = load("res://assets/images/scenes/zephyra_kiss.png"),
 
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
@@ -332,6 +336,8 @@ var scenes = {
 	amelia_dungeon = load("res://assets/images/scenes/amelia_dungeon.png"),
 	amelia_court = load("res://assets/images/scenes/amelia_court.png"),
 	amelia_hostage = load("res://assets/images/scenes/amelia_hostage.png"),
+	
+	
 	
 }
 
