@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/scenes/battlefield.png" type="Texture" id=1]
+
+[node name="Node2D" type="Control"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1922.0
+margin_bottom = 1093.0
+
+[node name="Map" type="TextureRect" parent="Panel"]
+margin_left = 28.0
+margin_top = 30.0
+margin_right = 1873.0
+margin_bottom = 1039.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Panel" type="Panel" parent="Panel/Map"]
+margin_left = 944.941
+margin_top = 81.0051
+margin_right = 1743.94
+margin_bottom = 522.005

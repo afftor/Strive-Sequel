@@ -72,7 +72,6 @@ var racelist = {
 			anal_virgin = [true, false],
 			mouth_virgin = [true, false],
 			beard = ['no','style1', 'style2', 'style3', 'style4', 'style5', 'style6', 'style7', 'style8', 'style9', 'style10', 'style11', 'style12'],
-#			moustache = ['no', 'moustache1', 'moustache2', 'moustache3', 'moustache4'],
 			},
 			
 		global_weight = 100,
