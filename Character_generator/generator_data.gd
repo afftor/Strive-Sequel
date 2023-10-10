@@ -617,6 +617,16 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
 		],
+		demon = [
+			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
+		],
+		feathered = [ #mb another texture
+			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_elven.png"},
+		],
 		cow = [
 			{type = 'node_group_select', group = 'ears', select = 'Ears_humanoid_tex_long'},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex_long', texture = "res://Character_generator/images/03_ears/ears_taurus.png"},
