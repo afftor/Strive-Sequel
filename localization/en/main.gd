@@ -11171,27 +11171,59 @@ Guard B: — What? I mean, she's so hot, all restrained and stuff. I want a piec
 Guard A: — Have some patience. You'll get your turn soon. After I nut in ‘er a couple more times... he-he...
 
 Zephyra's stares blankly into the space in front of her. Her mind realizes a terrible truth: they won't let her go. This is going to continue for much longer than she will be able to withstand. And nobody is coming to help...""",
-	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road towards the closest tree. 
+	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
 
-— Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your good deed?
+- Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
 
-Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly, almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal. """,
-	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers. 
+Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers.
 
-— [Master]... we're out in the open, in the middle of the day... Doesn't that make it more exciting? 
+— [Master]... we’re out in the open, in the middle of the day… doesn’t that make it more exciting? 
 
-She's right. Someone might come by at any moment. You look around, but it's just the two of you. And honestly, even if someone did show up, it probably wouldn't stop you now.""",
-	ZEPHYRA_DISAPPEARANCE_SEX_3 = """
-Your hands move along the skin of her back, caressing it, as you push deeper inside. Zephyra's tail wiggles eagerly, even though it's a bit in the way. You grab it gently, and she squeaks in surprise.
+She's right. Someone might come by any moment. You look around, but it's just the two of you. And honestly, even if someone did show up, it probably wouldn't stop you now.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_3 = """Your hands move along the skin of her back, caressing it, as you push deeper inside. Zephyra's tail wiggles eagerly, even though it's a bit in the way.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_1 = "*Take her gently*",
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_2 = "*Be rough*",
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3 = "*Grab her tail*",
+	ZEPHYRA_DISAPPEARANCE_SEX_4_1 = """You slowly align yourself to make her more at ease. She mellows to your touch, visibly relaxing. 
+The wiggling of her tail gets rarer, slower. 
 
-— W-what are you doing?! Don't grab it so suddenly...
+Your hand glides along her hair and follows to her back. You caress her skin. It’’s soft and warm to the touch.
 
-You ignore her question and push your member inside Zephyra. This is enough to make her instantly forget the discomfort of having her tail grabbed.""",
-	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake and weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+— You’re surprisingly gentle… after all the trouble I caused. 
 
-— Silly... [master]... what a brute you are... so forceful... grabbing a girl's tail, even..!
+She twists her body, turning her head towards you. One of her hands continues to use the tree as support, while other moves towards your face. She touches your head, direction it towards her lips. The two of you are joined in a passionate kiss.
 
-Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """,
+The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_4_2 = """You grab Zephyra and push your penis inside with a force, making her exhale in response. However, her wetness still makes it easy and she does not protest.
+
+— Ah.. [Master] [name]... I’m sorry… For giving you troubles…
+
+You spank her on the ass. Another sigh follows the sound of slapping.
+
+— P-please… Ahh… Have mercy… 
+
+You ignore her plea and slap her again. Despite her words she shamefully enjoys it.
+
+The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
+	ZEPHYRA_DISAPPEARANCE_SEX_4_3 = """As you push your penis into her, you grab her tail with your hand, making her squeak in surprise. 
+
+— W-what are you doing?! Don’t grab it so suddenly… It’s very sensitive!
+
+You feel it getting tense in your hand but her pussy also squeezes you more desperately. After a few moments it looks like Zephyra stops resisting your possessive touch on her delicate part, allowing you to selfishly pet it.
+
+The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
+#	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake and weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+#
+#— Silly... [master]... what a brute you are... so forceful... grabbing a girl's tail, even..!
+#
+#Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """,
 	ZEPHYRA_DISAPPEARANCE_SEX_5 = """As your body approaches the limit of its pleasure tolerance, you let it all out inside Zephyra. You feel her tail losing strength, no longer trying to break free. As you let it go, it simply droops down along her buttocks. Zephyra herself would fall down in a similar manner if it wasn't for the tree she's using for support. 
 
 — That... was a bit more... more intense than I anticipated...
