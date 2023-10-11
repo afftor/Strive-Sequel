@@ -118,14 +118,18 @@ func update():
 	# nudity and wed check for portraits
 	if active_person.has_work_rule('nudity') and active_person.get_stat("unique") != null:
 		if images.portraits.has(active_person.get_stat("unique") + "_nude"):
-			active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_nude"])
+#			active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_nude"])
+			active_person.set_stat('icon_image', active_person.get_stat("unique") + "_nude")
 	elif active_person.get_stat("unique") != null:
-		active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique")])
+#		active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique")])
+		active_person.set_stat('icon_image', active_person.get_stat("unique"))
 	if active_person != null && active_person.statlist.statlist.unique != null:
 		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) && !ResourceScripts.game_progress.marriage_completed:
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			if spouse_person.get_stat('unique') == active_person.get_stat('unique') and images.portraits.has(active_person.get_stat("unique") + "_wed"):
-				active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_wed"])
+#				active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_wed"])
+				active_person.set_stat('icon_image', active_person.get_stat("unique") + "_wed")
+	#do not set stat to object type, only pathes/ids - as stats are serializable
 	SummaryModule.show_summary()
 	SlaveInfo.update()
 	BodyModule.update()
