@@ -8837,13 +8837,13 @@ Cali makes sure you realize that it's time to leave and you close the door.""",
 
 Making note of your approach the girl immediately walks over to you, her normal demeanor gone as she looks at you sheepishly.
 
-Cali: — Oh, [Master]... Sorry. Um, Can I ask you something? Do you think I'm feminine? I mean I'm a girl but, feminine I'm not so sure about.""",
+— Oh, [Master]... Sorry. Um, Can I ask you something? Do you think I'm feminine? I mean I'm a girl but, feminine I'm not so sure about.""",
 	CALI_SIDEQUEST_7_OPTION_1 = "You are more than feminine enough.",
 	CALI_SIDEQUEST_7_OPTION_2 = "Well, not in particular",
 	CALI_SIDEQUEST_7_OPTION_3 = "Why would it matter?",
 	CALI_SIDEQUEST_8_1 = """Cali's ears droop on your response as she speaks.
 
-Cali: — Heh, what's up with that? Are you trying to comfort me? I'm asking you a serious question here [master].""",
+— Heh, what's up with that? Are you trying to comfort me? I'm asking you a serious question here [master].""",
 	CALI_SIDEQUEST_8_2 = "Cali: — Yeah, I thought so. Thanks for being honest.",
 	CALI_SIDEQUEST_8 = "— I'm a girl, you know. Many people mention that I'm not very girly and it's been getting to me lately. I know I'm not usually acting like most girls, I'm pretty active and like games and adventurous stuff. I'm not sure what to do...",
 	CALI_SIDEQUEST_8_OPTION_1 = "You can learn to be more feminine if you want to",
