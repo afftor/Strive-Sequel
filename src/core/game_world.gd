@@ -229,12 +229,18 @@ func find_location_by_data(data):
 		area = ResourceScripts.world_gen.get_area_from_location_code(location).code
 	elif data.has('code'):
 		for id in location_links:
+			var link_data = location_links[id]
 			location = id
-			area = location_links[id].area
-			if !areas[area][location_links[id].category].has(location): continue
-			var loc_data = areas[area][location_links[id].category][location]
-			if !loc_data.has('code'): continue
-			if loc_data.code == data.code: break
+			area = link_data.area
+			if !areas[area][link_data.category].has(location):
+				continue
+			var loc_data = areas[area][link_data.category][location]
+			if link_data.category == 'capital' and data.code == id:
+				break
+			if !loc_data.has('code'): 
+				continue
+			if loc_data.code == data.code: 
+				break
 	return {location = location, area = area}
 
 
