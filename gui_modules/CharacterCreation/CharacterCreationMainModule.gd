@@ -456,10 +456,11 @@ func build_node_for_stat(stat):
 		return
 	
 	if stat in freemode_fixed_stats and mode == 'freemode':
-		if stat.ends_with('factor'):
-			node.get_node('button/LArr').visible = false
-			node.get_node('button/RArr').visible = false
-		else:
+#		if stat.ends_with('factor'):
+#			node.get_node('button/LArr').visible = false
+#			node.get_node('button/RArr').visible = false
+#		else:
+		if !stat.ends_with('factor'):
 			node.visible = false
 #		node.get_node('button/LArr').visible = (mode != 'freemode')
 #		node.get_node('button/RArr').visible = (mode != 'freemode')
@@ -473,6 +474,8 @@ func build_node_for_stat(stat):
 		var id = possible_vals[stat].find(val)
 		node.get_node('button/LArr').disabled = !(id > 0)
 		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)
+		node.get_node('button/LArr').visible = (mode != 'freemode')
+		node.get_node('button/RArr').visible = (mode != 'freemode')
 	
 	var text = ''
 	if ResourceScripts.descriptions.bodypartsdata.has(stat):
@@ -806,6 +809,7 @@ func finish_character():
 #	apply_preserved_settings()
 #	$TraitSelection.hide()
 #	$ClassPanel.hide()
+	person.set_stat('portrait_update', true)
 	if mode != 'freemode':
 		person.is_active = true
 		
