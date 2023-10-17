@@ -1454,6 +1454,8 @@ func apply_atomic(template):
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
 			skills.prepared_act.push_back(template.skill)
+		'copy_skill':
+			input_handler.combat_node.set_copy_skill()
 		'add_counter':
 			if effects.counters.size() <= template.index + 1:
 				effects.counters.resize(template.index + 1)
