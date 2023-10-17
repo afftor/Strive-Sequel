@@ -67,6 +67,14 @@ var dummy = {
 signal skill_use_finshed
 var eot = true
 
+var skill_callback_args = null #{value, skill, cater, target}
+enum {COPY_SET, COPY_DENY, COPY_ENABLED, COPY_EXECUTED}
+
+func set_copy_skill():
+	if skill_callback_args == null or skill_callback_args.value != COPY_ENABLED:
+		return
+	skill_callback_args.value = COPY_SET
+
 
 func _ready():
 	debug = gui_controller.mansion.test_mode
@@ -797,6 +805,11 @@ func enemy_turn(pos):
 	if target == null:
 		print(fighter.get_stat('name'), ' no target found')
 		return
+	skill_callback_args = {}
+	skill_callback_args.skill = castskill
+	skill_callback_args.caster = fighter
+	skill_callback_args.target = target
+	skill_callback_args.value = COPY_ENABLED
 	use_skill(castskill, fighter, target)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -805,6 +818,11 @@ func enemy_turn(pos):
 		turns += 1
 		castskill = fighter.ai._get_action()
 		target = get_char_by_pos(fighter.ai._get_target(castskill))
+		skill_callback_args = {}
+		skill_callback_args.skill = castskill
+		skill_callback_args.caster = fighter
+		skill_callback_args.target = target
+		skill_callback_args.value = COPY_ENABLED
 		use_skill(castskill, fighter, target)
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -974,6 +992,11 @@ func FighterPress(pos):
 	ClearSkillTargets()
 	ClearItemPanel()
 	ClearSkillPanel()
+	skill_callback_args = {}
+	skill_callback_args.skill = activeaction
+	skill_callback_args.caster = activecharacter
+	skill_callback_args.target = characters_pool.get_char_by_id(battlefield[pos])
+	skill_callback_args.value = COPY_ENABLED
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
 func buildenemygroup(enemygroup, enemy_stats_mod):
@@ -1085,34 +1108,37 @@ func use_skill(skill_code, caster, target):
 
 	var skill = Skilldata.Skilllist[skill_code]
 	var fa = true
-	if caster != null && skill.name != "":
-		if activeitem:
-			combatlogadd("\n" + caster.get_stat('name') + ' uses ' + activeitem.name + ". ")
-		else:
-			if caster.position == 0:
-				combatlogadd("\n" + skill.name + "! ")
+	if skill_callback_args != null and skill_callback_args.value != COPY_EXECUTED:
+		if caster != null && skill.name != "":
+			if activeitem:
+				combatlogadd("\n" + caster.get_stat('name') + ' uses ' + activeitem.name + ". ")
 			else:
-				combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
+				if caster.position == 0:
+					combatlogadd("\n" + skill.name + "! ")
+				else:
+					combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
 
-		caster.pay_cost(skill.cost)
+			caster.pay_cost(skill.cost)
 
-		if skill.combatcooldown != 0:
-			caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
+			if skill.combatcooldown != 0:
+				caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
 
-	if caster.combatgroup == 'ally':
-		if !caster.has_status('ignore_catalysts_for_%s' % skill_code):
-			for i in skill.catalysts:
-				ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
-		if skill.charges > 0:
-			if caster.skills.combat_skill_charges.has(skill.code):
-				caster.skills.combat_skill_charges[skill.code] += 1
-			else:
-				caster.skills.combat_skill_charges[skill.code] = 1
-			caster.skills.daily_cooldowns[skill_code] = skill.cooldown
-		if skill.ability_type == 'skill' && skill.name != "":
-			caster.add_stat('physics', rand_range(0.1,0.3))
-		elif skill.ability_type == 'spell' && skill.name != "":
-			caster.add_stat('wits', rand_range(0.1,0.3))
+		if caster.combatgroup == 'ally':
+			if !caster.has_status('ignore_catalysts_for_%s' % skill_code):
+				for i in skill.catalysts:
+					ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+			if skill.charges > 0:
+				if caster.skills.combat_skill_charges.has(skill.code):
+					caster.skills.combat_skill_charges[skill.code] += 1
+				else:
+					caster.skills.combat_skill_charges[skill.code] = 1
+				caster.skills.daily_cooldowns[skill_code] = skill.cooldown
+			if skill.ability_type == 'skill' && skill.name != "":
+				caster.add_stat('physics', rand_range(0.1,0.3))
+			elif skill.ability_type == 'spell' && skill.name != "":
+				caster.add_stat('wits', rand_range(0.1,0.3))
+	if skill_callback_args != null and skill_callback_args.value == COPY_EXECUTED:
+		combatlogadd("\n" + caster.get_stat('name') + ' copied ' + skill.name + ". ")
 	#caster part of setup
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
 	s_skill1.createfromskill(skill_code)
@@ -1123,7 +1149,8 @@ func use_skill(skill_code, caster, target):
 	if caster == null: caster = dummy
 
 	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST, s_skill1)
-
+	if skill_callback_args != null and skill_callback_args.value == COPY_ENABLED:
+		skill_callback_args.value = COPY_DENY
 	turns += 1
 	#preparing animations
 	var animations = skill.sfx
@@ -1267,14 +1294,20 @@ func use_skill(skill_code, caster, target):
 			var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)
 			if typeof(tstate) == TYPE_OBJECT:
 				yield(tstate, 'completed')
-
-		call_deferred('select_actor')
-		eot = false
+		if skill_callback_args != null and skill_callback_args.value == COPY_SET:
+			skill_callback_args.value = COPY_EXECUTED
+			use_skill(skill_callback_args.skill, skill_callback_args.caster, skill_callback_args.target)
+		else:
+			skill_callback_args = null
+			call_deferred('select_actor')
+			eot = false
 	else:
 		if caster.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		#allowaction = true
+		skill_callback_args = null
+		#instant skills cannot be copied in current realisation, but for now this is not a problem - for only item skills can be instants 
 		RebuildSkillPanel()
 		RebuildItemPanel()
 		SelectSkill(activeaction)
@@ -1758,6 +1791,11 @@ func SelectSkill(skill):
 	if skill.target == 'self':
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
+		skill_callback_args = {}
+		skill_callback_args.skill = activeaction
+		skill_callback_args.caster = activecharacter
+		skill_callback_args.target = activecharacter
+		skill_callback_args.value = COPY_ENABLED
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 
 func RebuildItemPanel():
