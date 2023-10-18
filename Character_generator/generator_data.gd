@@ -4804,6 +4804,8 @@ var transforms = {
 	
 	armor_lower = {
 		null: [
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Pregnancy2', attr = 'z_index', value = 0},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'range', color = 0.0},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegL/LegL_armor', texture = null},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = null},
