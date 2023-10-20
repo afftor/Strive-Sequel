@@ -111,6 +111,16 @@ func custom_stats_set(st, value):
 	if st == 'name':
 		if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
 			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
+	if st in ['hair_length','hair_style']: #legacy stub
+		statlist[st] = value
+		var tdata = get_hairs_data()
+		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',]:
+			statlist[h_stat] = tdata[h_stat]
+	if st in ['hair_color']: #legacy stub
+		statlist[st] = value
+		var tdata = get_hairs_data()
+		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
+			statlist[h_stat] = tdata[h_stat]
 
 
 func custom_stats_get(stat):

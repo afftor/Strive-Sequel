@@ -421,6 +421,45 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_copy_test = { 
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		reset = [variables.TR_TURN_GET],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'spell']}],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'copy_skill'}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_copy_25 = { 
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		reset = [variables.TR_TURN_GET], #mb not, idk how it can be wrong
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'random', value = 0.25}
+			],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				atomic = [{type = 'copy_skill'}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_tr_healer = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
