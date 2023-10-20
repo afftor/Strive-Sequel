@@ -62,9 +62,9 @@ var TranslationDict = {
 						Ambient battle noise: swords and shouting - pfranzen
 						https://freesound.org/people/pfranzen/sounds/192072/""",
 	#Options
-	OPTNAME1 = "Graphics",
+	OPTNAME1 = "Visuals",
 	OPTNAME2 = "Gameplay",
-	OPTNAME3 = "Video",
+	OPTNAME3 = "Audio",
 	OPTNAME4 = "Cheats",
 	
 	OPTOPT = "Options",
