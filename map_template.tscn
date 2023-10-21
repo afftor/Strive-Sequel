@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/images/scenes/battlefield.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=2]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_travel_city.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/backgrounds/cave1.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=7]
 
 [node name="Node2D" type="Control"]
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1922.0
 margin_bottom = 1093.0
+theme = ExtResource( 3 )
 
 [node name="Map" type="TextureRect" parent="Panel"]
 margin_left = 28.0
@@ -17,7 +24,340 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Panel" type="Panel" parent="Panel/Map"]
-margin_left = 944.941
-margin_top = 81.0051
-margin_right = 1743.94
-margin_bottom = 522.005
+margin_left = 50.5911
+margin_top = 48.5905
+margin_right = 511.591
+margin_bottom = 975.59
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Map/Panel"]
+margin_left = 57.0
+margin_top = 94.0
+margin_right = 407.0
+margin_bottom = 772.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Map/Panel/ScrollContainer"]
+margin_right = 350.0
+margin_bottom = 134.0
+
+[node name="Button" type="Button" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 350, 65 )
+theme = ExtResource( 7 )
+text = "Plains"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 350.0
+margin_bottom = 134.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer/VBoxContainer"]
+margin_right = 350.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 350, 65 )
+
+[node name="Button2" type="Button" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer/VBoxContainer/TextureRect"]
+margin_left = 32.0
+margin_top = 2.0
+margin_right = 382.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 350, 65 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer/VBoxContainer/TextureRect/Button2"]
+margin_left = 14.6832
+margin_top = 17.3529
+margin_right = 54.6832
+margin_bottom = 57.3529
+texture = ExtResource( 5 )
+
+[node name="LocName" type="Label" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer/VBoxContainer/TextureRect/Button2"]
+margin_left = 97.5807
+margin_top = 12.7279
+margin_right = 178.581
+margin_bottom = 47.7279
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Town 1"
+
+[node name="LocPop" type="Label" parent="Panel/Map/Panel/ScrollContainer/VBoxContainer/VBoxContainer/TextureRect/Button2"]
+margin_left = 286.0
+margin_top = 13.0
+margin_right = 299.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Panel/Map/Panel"]
+margin_left = 28.409
+margin_top = 27.0
+margin_right = 378.409
+margin_bottom = 62.0
+text = "Location List"
+align = 1
+
+[node name="LocationInfo" type="Panel" parent="Panel/Map"]
+margin_left = 620.591
+margin_top = 59.9995
+margin_right = 1161.59
+margin_bottom = 846.999
+
+[node name="ScrollContainer" type="VBoxContainer" parent="Panel/Map/LocationInfo"]
+margin_left = 35.0
+margin_top = 300.0
+margin_right = 505.0
+margin_bottom = 611.0
+
+[node name="Label" type="Label" parent="Panel/Map/LocationInfo/ScrollContainer"]
+margin_right = 470.0
+margin_bottom = 35.0
+text = "Location Name"
+align = 1
+
+[node name="VBoxContainer" type="GridContainer" parent="Panel/Map/LocationInfo/ScrollContainer"]
+margin_top = 39.0
+margin_right = 470.0
+margin_bottom = 193.0
+columns = 6
+
+[node name="Button" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 79.0
+margin_right = 154.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 158.0
+margin_right = 233.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button4" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 237.0
+margin_right = 312.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button5" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 316.0
+margin_right = 391.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button6" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 395.0
+margin_right = 470.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button7" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_top = 79.0
+margin_right = 75.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button8" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer"]
+margin_left = 79.0
+margin_top = 79.0
+margin_right = 154.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Panel/Map/LocationInfo/ScrollContainer"]
+margin_top = 197.0
+margin_right = 470.0
+margin_bottom = 232.0
+text = "Resources"
+align = 1
+
+[node name="VBoxContainer2" type="GridContainer" parent="Panel/Map/LocationInfo/ScrollContainer"]
+margin_top = 236.0
+margin_right = 470.0
+margin_bottom = 311.0
+columns = 6
+
+[node name="Button" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer2"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer2"]
+margin_left = 79.0
+margin_right = 154.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Panel/Map/LocationInfo/ScrollContainer/VBoxContainer2"]
+margin_left = 158.0
+margin_right = 233.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Map/LocationInfo"]
+margin_left = 43.0
+margin_top = 37.0
+margin_right = 493.0
+margin_bottom = 273.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="Panel/Map/LocationInfo"]
+margin_left = 88.7056
+margin_top = 688.674
+margin_right = 445.706
+margin_bottom = 755.674
+text = "Send"
+
+[node name="CharacterSend" type="Panel" parent="Panel/Map"]
+margin_left = 1221.0
+margin_top = 70.0
+margin_right = 1762.0
+margin_bottom = 658.0
+
+[node name="VBoxContainer" type="GridContainer" parent="Panel/Map/CharacterSend"]
+margin_left = 32.1716
+margin_top = 168.652
+margin_right = 502.172
+margin_bottom = 322.652
+columns = 6
+
+[node name="Button" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 79.0
+margin_right = 154.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 158.0
+margin_right = 233.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button4" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 237.0
+margin_right = 312.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button5" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 316.0
+margin_right = 391.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button6" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 395.0
+margin_right = 470.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button7" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_top = 79.0
+margin_right = 75.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button8" type="TextureButton" parent="Panel/Map/CharacterSend/VBoxContainer"]
+margin_left = 79.0
+margin_top = 79.0
+margin_right = 154.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 75, 75 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Panel/Map/CharacterSend"]
+margin_left = 89.1259
+margin_top = 460.788
+margin_right = 446.126
+margin_bottom = 527.788
+text = "Send"
+
+[node name="Button2" type="Button" parent="Panel/Map/CharacterSend"]
+margin_left = 38.1837
+margin_top = 45.2548
+margin_right = 214.184
+margin_bottom = 94.5057
+text = "Travel From"
+
+[node name="Button3" type="Button" parent="Panel/Map/CharacterSend"]
+margin_left = 308.299
+margin_top = 43.8406
+margin_right = 484.299
+margin_bottom = 93.0915
+text = "Travel To"
+
+[node name="Label" type="Label" parent="Panel/Map/CharacterSend"]
+margin_left = 104.652
+margin_top = 383.252
+margin_right = 428.652
+margin_bottom = 418.252
+text = "Travel Time: "

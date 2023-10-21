@@ -898,7 +898,6 @@ var data = {
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_8", reqs = []},
 		],
-#		common_effects = [{code = 'remove_item', name = 'zephyra_brush', number = 1}],
 		options = [ {
 			code = 'zephyra_brush_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]

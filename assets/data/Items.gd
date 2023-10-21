@@ -1726,9 +1726,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/magic brush.png"),
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'zephyra'}],
-		effects = [],#'e_maid_dress_effect'],
+		effects = ['e_tr_copy_25'],
 		tags = ['no_random'],
-		basestats = {matk = 35, resist_mind = 40},
+		basestats = {matk = 15, resist_mind = 40},
 	},
 	
 	cali_collar = {
