@@ -3805,6 +3805,32 @@ var Skilllist = {
 		random_factor = 10,
 		damagestat = 'hp'
 	},
+	i_physbuf = {
+		code = 'i_powder',
+		descript = '',
+		icon = null,
+		type = 'combat', 
+		ability_type = 'item',
+		tags = ['noreduce', 'use_as_combat'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_i_physbuf'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',#not sure but not matters
+		
+		sfx = [], 
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = ['0'],
+		random_factor = 0,
+		damagestat = 'no_stat'
+	},
 	i_res = {#
 		code = 'i_res',
 #		new_syntax = true,
