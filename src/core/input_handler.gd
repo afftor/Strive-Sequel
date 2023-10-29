@@ -1698,6 +1698,12 @@ func is_descendant_of_current_screen(nd):
 	return false
 
 
+func array_replace(arr, from, to):
+	for i in range(arr.size()):
+		if arr[i] == from:
+			arr[i] = to
+
+
 func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_OUT)
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)

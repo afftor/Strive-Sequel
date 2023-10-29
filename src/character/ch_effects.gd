@@ -184,6 +184,8 @@ func clean_effects():#clean effects before deleting character
 func process_event(ev, skill = null):
 	for e in temp_effects.duplicate():
 		var eff = effects_pool.get_effect_by_id(e)
+		if eff.tags.has('tick_after_trigger'): 
+			continue
 		eff.process_event(ev)
 	for e in triggered_effects.duplicate():
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
@@ -193,6 +195,11 @@ func process_event(ev, skill = null):
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(ev)
+	for e in temp_effects.duplicate():
+		var eff = effects_pool.get_effect_by_id(e)
+		if !eff.tags.has('tick_after_trigger'): 
+			continue
+		eff.process_event(ev)
 
 #func process_skill_cast_event(s_skill, event):
 #	for e in triggered_effects:

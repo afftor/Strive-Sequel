@@ -645,20 +645,20 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_t_charm = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'charm',
-		tick_event = variables.TR_TICK,
-		duration = 'parent',
-		stack = 1,
-		tags = ['magic', 's_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'lusttick', value = 0.25},
-		],
-		buffs = ['b_charm'],
-	},
+#	e_t_charm = { #not used
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'charm',
+#		tick_event = variables.TR_TICK,
+#		duration = 'parent',
+#		stack = 1,
+#		tags = ['magic', 's_dur_add'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add_p', stat = 'lusttick', value = 0.25},
+#		],
+#		buffs = ['b_charm'],
+#	},
 	#shackles effects for now have the same bug as shield effects in displaced and here - they don't remove all previous shackles effects before applying (so on breaking shackles removing the first effect reverts shackles_chance to null and removing the second effect reverts this chance to resulting chance of the first effect), this part needs to be fixed after testing before the final version. but for test purpose current version is ok, cause this bug have controlled appearance
 #	e_s_shackles1 = {
 #		type = 'trigger',
@@ -2493,6 +2493,91 @@ var effect_table = {
 			}
 		],
 	},
+	#statuses 
+	e_s_burn_new = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'burn_new',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction', 'tick_after_trigger'],
+		args = [],
+		sub_effects = ['e_burn_new'],
+		atomic = [],
+		buffs = ['b_burn'],
+	},
+	e_burn_new = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = ['a_burn_new'],
+			}
+		]
+	},
+	e_s_poison_new = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'poison_new',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction', 'tick_after_trigger'],
+		args = [],
+		sub_effects = ['e_poison_new'],
+		atomic = [],
+		buffs = ['b_poison'],
+	},
+	e_poison_new = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = ['a_poison_new'],
+			}
+		]
+	},
+	e_s_bleed_new = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bleed_new',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction', 'tick_after_trigger'],
+		args = [],
+		sub_effects = ['e_bleed_new'],
+		atomic = [],
+		buffs = ['b_bleed'],
+	},
+	e_bleed_new = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = ['a_bleed_new'],
+			}
+		]
+	},
 	e_s_stun = {
 		type = 'temp_s',
 		target = 'target',
@@ -2554,7 +2639,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_POSTDAMAGE, variables.TR_DEATH],
-		tick_event = [variables.TR_TURN_S],
+		tick_event = [variables.TR_TURN_F],
 		duration = 'parent',
 		stack = 1,
 		name = 'freeze',
@@ -3833,6 +3918,10 @@ var atomic = {
 	a_poison = {type = 'damage', source = 'earth', value = ['parent_args', 0]},
 	a_bleed = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.25]},
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
+	
+	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', 0.08]},
+	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
+	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
 };
 #needs filling
 var buffs = {
