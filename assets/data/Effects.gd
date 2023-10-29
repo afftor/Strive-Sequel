@@ -756,6 +756,27 @@ var effect_table = {
 			}
 		],
 	},
+	
+	e_i_physbuf = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'physbuf',
+		rem_event = variables.TR_TICK,
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'physics_bonus', value = 80},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", #fix
+				description = "PHYSBUF", #fix
+				limit = 1,
+				t_name = 'physbuf',
+			}
+		],
+	},
 
 	e_food_like = {
 		type = 'temp_s',
