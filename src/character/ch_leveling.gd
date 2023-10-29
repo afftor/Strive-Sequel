@@ -738,6 +738,7 @@ func recruit_tick(task): #maybe incomplete
 
 
 func special_tick(task): #maybe incomplete
+	parent.get_ref().add_stat("base_exp", 3) #fix
 	var val = 1
 	if task.has('function'):
 		val = call(task.function)
