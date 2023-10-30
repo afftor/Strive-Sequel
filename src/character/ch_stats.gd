@@ -1748,6 +1748,8 @@ func tick():
 			if check_trait('breeder') and !parent.get_ref().has_status('pregnant') or !check_trait('breeder') and !parent.get_ref().has_status('heavy_pregnant'):
 				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
 				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+			if parent.get_ref().get_stat('lactation') == false && parent.get_ref().get_stat('tits_size') != 'masculine':
+				parent.get_ref().set_stat('lactation', true)
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.get_ref().remove_all_temp_effects_tag('pregnant')

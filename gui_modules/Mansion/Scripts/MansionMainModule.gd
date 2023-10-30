@@ -614,6 +614,7 @@ func test_mode():
 		#character.set_stat('wits_factor', 5)
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
+		character.set_stat('lactation', true)
 		#character.unlock_class("worker")
 		character.unlock_class("necromancer")
 		character.mp = 100
@@ -627,7 +628,7 @@ func test_mode():
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Ratkin', 'female', 'random')
+		character.create('Elf', 'male', 'random')
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
@@ -798,7 +799,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
-		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
+		globals.AddItemToInventory(globals.CreateUsableItem("physics_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))

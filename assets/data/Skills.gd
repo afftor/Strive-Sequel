@@ -216,7 +216,7 @@ var Skilllist = {
 		tags = ['positive', 'no_target'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		dialogue_image = '',
+		dialogue_image = 'performance',
 		value = [['5'],['100']], 
 		damagestat = ['+loyalty', '+obedience'],
 		receiver = ['all','all'],
@@ -3806,7 +3806,7 @@ var Skilllist = {
 		damagestat = 'hp'
 	},
 	i_physbuf = {
-		code = 'i_powder',
+		code = 'i_physbuf',
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -3823,7 +3823,33 @@ var Skilllist = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'weapon',#not sure but not matters
+		damage_type = 'weapon',
+		
+		sfx = [], 
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = ['0'],
+		random_factor = 0,
+		damagestat = 'no_stat'
+	},
+	i_witsbuf = {
+		code = 'i_witsbuf',
+		descript = '',
+		icon = null,
+		type = 'combat', 
+		ability_type = 'item',
+		tags = ['noreduce', 'use_as_combat'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_i_physbuf'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
 		
 		sfx = [], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},

@@ -267,6 +267,7 @@ var scenes = {
 	serve = load("res://assets/images/scenes/serve.png"),
 	sexreward = load("res://assets/images/scenes/sexreward.png"),
 	shackles = load("res://assets/images/scenes/shackles.png"),
+	performance = load("res://assets/images/scenes/performance.png"),
 	slaveescape = load("res://assets/images/scenes/slaveescape.png"),
 	slavers_elf = load("res://assets/images/scenes/slavers_elf.png"),
 	slave_decision = load("res://assets/images/scenes/slave_decision.png"),

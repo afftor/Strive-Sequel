@@ -770,10 +770,31 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Worker.png", #fix
-				description = "PHYSBUF", #fix
+				icon = "res://assets/images/iconsitems/hairgrowthpot.png",
+				description = "TRAITEFFECTPHYSBUF",
 				limit = 1,
 				t_name = 'physbuf',
+			}
+		],
+	},
+	
+	e_i_witsbuf = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'physbuf',
+		rem_event = variables.TR_TICK,
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'wits_bonus', value = 80},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/deterrentpot.png",
+				description = "TRAITEFFECTWITSBUF", 
+				limit = 1,
+				t_name = 'witsbuf',
 			}
 		],
 	},

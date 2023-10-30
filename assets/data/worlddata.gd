@@ -245,9 +245,9 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy','fighters_task_easy'],
-		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium','fighters_craft_gear_medium','fighters_task_medium'],
-		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_hard','fighters_craft_gear_hard','fighters_task_hard'],
+		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_task_easy'],
+		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_craft_gear_medium','fighters_task_medium'],
+		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_craft_gear_hard','fighters_task_hard'],
 		tags = [],
 		slavenumber = [2,2],
 		questnumber = [4,4],
@@ -365,9 +365,9 @@ var factiondata = {
 		events = [
 			'servants_init',
 			],
-		quests_easy = ['servants_slave_work_easy', 'servants_craft_items_easy','servants_slave_easy','servants_task_easy'],
-		quests_medium = ['servants_craft_items_medium','servants_slave_medium','servants_slave_work_medium'],
-		quests_hard = ['servants_craft_items_hard','servants_slave_work_hard','servants_task_hard'],
+		quests_easy = ['servants_craft_items_easy','servants_slave_easy','servants_task_easy'],
+		quests_medium = ['servants_craft_items_medium','servants_slave_medium'],
+		quests_hard = ['servants_craft_items_hard','servants_task_hard'],
 		tags = [],
 		slavenumber = [2,3],
 		questnumber = [2,2],
@@ -1409,7 +1409,7 @@ var questdata = {
 			condition_number = [1,1],
 			conditions = [
 			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [3,4]},
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [15,25]}
+			#{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [15,25]}
 			],},
 		],
 		unlockreqs = [{type = 'date', operant = 'gte', value = 6}],
@@ -1441,180 +1441,180 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	servants_slave_work_easy = {
-		code = 'servants_slave_work_easy',
-		name = tr("SERVANTS_SLAVE_WORK_NAME"),
-		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
-			condition_number = [1,2],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','pet','petbeast','thief']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [20,40]},
-			],
-			work_time = [2,4], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [100,150],
-		rewards = [
-			[1, {code = 'gold', range = [200,300]}],
-			[0.5, {code = 'gear_static', name  = ['maid_headband','handcuffs','animal_gloves','animal_ears','bell_collar','leather_collar'], value = [1,1]},
-				{code = 'gold', range = [100,150]}
-		],
-		],
-		time_limit = [8,12],
-	},
-	servants_slave_work_medium = {
-		code = 'servants_slave_work_medium',
-		name = tr("SERVANTS_SLAVE_WORK_NAME"),
-		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [],
-			condition_number = [1,2],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['harlot','maid','dancer','bard','sextoy','succubus']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,4]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [30,60]},
-			],
-			work_time = [3,6], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', range = [300,500]}],
-
-			[
-			0.5,
-			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt'], value = [1,1]},
-			{code = 'gold', range = [300,400]}
-			],
-
-		],
-		time_limit = [10,15],
-	},
-	servants_slave_work_hard = {
-		code = 'servants_slave_work_hard',
-		name = tr("SERVANTS_SLAVE_WORK_NAME"),
-		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [],
-			condition_number = [2,3],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['harlot','maid','geisha','pet','petbeast','dancer','bard','sextoy','succubus']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [4,5]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [50,80]},
-			],
-			work_time = [5,8], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [350,550],
-		rewards = [
-		[1, {code = 'gold', range = [400,650]}],
-			[
-			0.5,
-			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt','elegant_choker'], value = [1,1]},
-			{code = 'gold', range = [350,450]}
-			],
-
-		],
-		time_limit = [12,18],
-	},
-	fighters_slave_work_easy = {
-		code = 'fighters_slave_work_easy',
-		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
-		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [],
-			condition_number = [1,2],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['fighter','archer','rogue']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,3]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [20,40]},
-			],
-			work_time = [2,4], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [200,300]}],
-		],
-		time_limit = [8,12],
-	},
-	fighters_slave_work_medium = {
-		code = 'fightersslave_work_medium',
-		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
-		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [],
-			condition_number = [1,2],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['fighter','archer','rogue','sniper','knight']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,4]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [30,60]},
-			],
-			work_time = [3,6], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', range = [300,500]}],
-		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','chest_base_metal','legs_base_metal','chest_base_leather','legs_base_leather']}, {code = 'gold',range = [50,100]}],
-		],
-		time_limit = [10,15],
-	},
-	fighters_slave_work_hard = {
-		code = 'fighters_slave_work_hard',
-		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
-		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
-		randomconditions = [
-			{code = 'slave_work',
-			mandatory_conditions = [],
-			condition_number = [2,3],
-			conditions = [
-
-				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog']},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [4,5]},
-
-				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [50,80]},
-			],
-			work_time = [5,8], #days
-			},
-		],
-		unlockreqs = [],
-		reputation = [350,550],
-		rewards = [
-		[1, {code = 'gold', range = [400,650]}],
-		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','swordadv','spearadv','bowadv']}, {code = 'gold',range = [150,250]}],
-		],
-		time_limit = [12,18],
-	},
+#	servants_slave_work_easy = {
+#		code = 'servants_slave_work_easy',
+#		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+#		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
+#			condition_number = [1,2],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','pet','petbeast','thief']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [20,40]},
+#			],
+#			work_time = [2,4], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [100,150],
+#		rewards = [
+#			[1, {code = 'gold', range = [200,300]}],
+#			[0.5, {code = 'gear_static', name  = ['maid_headband','handcuffs','animal_gloves','animal_ears','bell_collar','leather_collar'], value = [1,1]},
+#				{code = 'gold', range = [100,150]}
+#		],
+#		],
+#		time_limit = [8,12],
+#	},
+#	servants_slave_work_medium = {
+#		code = 'servants_slave_work_medium',
+#		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+#		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [],
+#			condition_number = [1,2],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['harlot','maid','dancer','bard','sextoy','succubus']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,4]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [30,60]},
+#			],
+#			work_time = [3,6], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [200,300],
+#		rewards = [
+#		[1, {code = 'gold', range = [300,500]}],
+#
+#			[
+#			0.5,
+#			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt'], value = [1,1]},
+#			{code = 'gold', range = [300,400]}
+#			],
+#
+#		],
+#		time_limit = [10,15],
+#	},
+#	servants_slave_work_hard = {
+#		code = 'servants_slave_work_hard',
+#		name = tr("SERVANTS_SLAVE_WORK_NAME"),
+#		descript = tr("SERVANTS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [],
+#			condition_number = [2,3],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['harlot','maid','geisha','pet','petbeast','dancer','bard','sextoy','succubus']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [4,5]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [50,80]},
+#			],
+#			work_time = [5,8], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [350,550],
+#		rewards = [
+#		[1, {code = 'gold', range = [400,650]}],
+#			[
+#			0.5,
+#			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt','elegant_choker'], value = [1,1]},
+#			{code = 'gold', range = [350,450]}
+#			],
+#
+#		],
+#		time_limit = [12,18],
+#	},
+#	fighters_slave_work_easy = {
+#		code = 'fighters_slave_work_easy',
+#		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+#		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [],
+#			condition_number = [1,2],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['fighter','archer','rogue']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,3]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [20,40]},
+#			],
+#			work_time = [2,4], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [100,150],
+#		rewards = [
+#		[1, {code = 'gold', range = [200,300]}],
+#		],
+#		time_limit = [8,12],
+#	},
+#	fighters_slave_work_medium = {
+#		code = 'fightersslave_work_medium',
+#		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+#		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [],
+#			condition_number = [1,2],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['fighter','archer','rogue','sniper','knight']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,4]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [30,60]},
+#			],
+#			work_time = [3,6], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [200,300],
+#		rewards = [
+#		[1, {code = 'gold', range = [300,500]}],
+#		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','chest_base_metal','legs_base_metal','chest_base_leather','legs_base_leather']}, {code = 'gold',range = [50,100]}],
+#		],
+#		time_limit = [10,15],
+#	},
+#	fighters_slave_work_hard = {
+#		code = 'fighters_slave_work_hard',
+#		name = tr("FIGHTERS_SLAVE_WORK_NAME"),
+#		descript = tr("FIGHTERS_SLAVE_WORK_DESC"),
+#		randomconditions = [
+#			{code = 'slave_work',
+#			mandatory_conditions = [],
+#			condition_number = [2,3],
+#			conditions = [
+#
+#				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog']},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [4,5]},
+#
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [50,80]},
+#			],
+#			work_time = [5,8], #days
+#			},
+#		],
+#		unlockreqs = [],
+#		reputation = [350,550],
+#		rewards = [
+#		[1, {code = 'gold', range = [400,650]}],
+#		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','swordadv','spearadv','bowadv']}, {code = 'gold',range = [150,250]}],
+#		],
+#		time_limit = [12,18],
+#	},
 }
 
 
