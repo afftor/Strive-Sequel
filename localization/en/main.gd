@@ -8923,7 +8923,7 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 
 {color=yellow|Amelia: — She's a good girl, you better not betray her trust in you.}
 
-Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali:Charm +10}""",
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali: Charm +10}""",
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
 — [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
@@ -12027,6 +12027,110 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 	AMELIATASKDESCRIPT = "Send searching group to find any clues about Amelia's whereabouts.",
 	SERVANTSNOAMELIA = "As Amelia is no longer the leader of the Servants, this place is currently vacant.",
 	
+	
+	
+	SERVANTS_INTRODUCTION_NEW_LEADER_1 = """""",
+	DAISY_TRAINING_NEW_LEADER_REPLY_1 = """You explain how you think Daisy could benefit from training to become more professional.
+
+— Of course we have training which would improve her performance, depending on what you'd like.""",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_1 = "I want her to be trained normally (200 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_2 = "What other options are there?",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_3 = "There's something else?",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_4 = "I want her to be trained normally and sexually (300 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_5 = "I want to turn her into a fucktoy (400 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_6 = "I'll return later",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_2 = "— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse. ",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_3 = "— If you think she'd be better suited for something completely.... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_1 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You arrange a time for Daisy's training and leave. """,
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_4 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_5 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
+	
+	DAISY_LOST_NEW_LEADER_OPTION_0 = "I've lost someone...",
+	DAISY_LOST_NEW_LEADER_REPLY_0 = """— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""",
+	DAISY_LOST_NEW_LEADER_OPTION_1_1 = "I might have received a letter from him",
+	DAISY_LOST_NEW_LEADER_OPTION_1_2 = "How could you give him my information like that?",
+	DAISY_LOST_NEW_LEADER_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	DAISY_LOST_NEW_LEADER_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	
+	MARRIAGE_SERVANTS_NEW_LEADER_1_1 = """— Finally going to seal the deal with our little princess? That's great news. """,
+	MARRIAGE_SERVANTS_NEW_LEADER_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
+	MARRIAGE_SERVANTS_NEW_LEADER_1_3 = """So you want us to prepare everything for your wedding? A person of your caliber can't have a simple wedding, after all. We will likely need at least a couple hundred of each foodstuff to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple of local suppliers I know.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_2 = """— Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_OPTION = """I've prepared everything for the wedding""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you'll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = """Invite them""",
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = """Refuse""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_4 = """— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].""",
+	
+	CALI_SERVANTS_NEW_LEADER_START_OPTION = "Ask on Cali's beneficence",
+	CALI_SERVANTS_NEW_LEADER_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
+
+With a hint of doubt, Cali agrees to try these activities. 
+
+— Huh, I'm not sure I'm good with this stuff...""",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Don't worry, you can do it",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "There's first time for everything, you won't know until you try",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "You shouldn't get discouraged right as we started",
+	CALI_SERVANTS_NEW_LEADER_2 = """— Okay, okay, I'm gonna try it. 
+
+After discussing it with the helpers, you are explained about general training for future servant girls which starts with figuring out the most talented aspects, dressing up, signing and formal language. Cali agrees to try this out.""",
+	CALI_SERVANTS_NEW_LEADER_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her. """,
+	CALI_SERVANTS_NEW_LEADER_4 = """As she goes on a break, Cali spots a small cat moving through the backyard. Forgetting everything about the conduct, she tries to sprint to it but trips and falls due to her attire.
+
+— O...Ouch... Crap!
+
+Also forgetting to watch her tongue, she realized that her dress was torn because of the fall. Sadly, you'll have to pay for it. You decide to call it a day and make the wolf girl change back.""",
+	CALI_SERVANTS_NEW_LEADER_5 = """Cali seems to be in a sorry state as she comes back to you.
+
+— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this. """,
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_1 = "You shouldn't give up just yet",
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_2 = "Maybe it isn't for you after all",
+	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|Amelia: — I saw your training, Cali is it? Nice to meet you.}
+
+{color=aqua|Cali: — Hello... Who are you?}
+
+{color=yellow|Amelia: — Consider me a humble person who would like to give advice. I'm sorry these ears seem to eavesdrop on your conversation, but in truth I think you've taken a slightly wrong approach.}
+
+{color=aqua|Cali: — What do you mean?}""",
+	CALI_SERVANTS_NEW_LEADER_7 = """{color=yellow|Amelia: — You are a girl and you want to look more like one, am I correct? However, as you've noticed, you aren't quite like other girls.}
+
+Cali gets visually discouraged hearing this, but Amelia does not stop there.
+
+{color=yellow|Amelia: — This does not mean you should give up, though. If some things don't work for you, others might.}
+
+{color=aqua|Cali: — I still don't really understand.}
+
+{color=yellow|Amelia: — Do you mind me taking some of your time? It won't cost you anything. I would not feel right if you left us unsatisfied.}""",
+	CALI_SERVANTS_NEW_LEADER_8 = """After a moment Cali agrees and Amelia takes her away from you. As you wait for about half an hour, Cali reappears before you and seems to be in a quite better mood than when she left. You can't quite make out what changed about her, but somehow she grabs your subconscious attention as she moves towards you. 
+
+{color=aqua|Cali: — [Master]! Sorry for taking time...}
+
+As she observes your reaction she starts smiling even more. """,
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_1 = "You look pretty",
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_2 = "What was it?",
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_3 = "You seem somewhat different",
+	CALI_SERVANTS_NEW_LEADER_9 = """{color=yellow|Amelia: — He-he, so you notice it now? You don't need a complete attire change or a full makeup to emphasize your beauty. Some pose and expression training look a lot more natural for you. Well, that and a couple small woman secrets.}
+
+You notice how Cali now looks at Amelia with respect. In the end, encouraged with the results, Cali agrees to occasionally visit and learn from Amelia. As she walks outside, Amelia speaks to you.
+
+{color=yellow|Amelia: — She's a good girl, you better not betray her trust in you.}
+
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali: Charm +10}""",
+	SERVANTS_NEW_LEADER_CLOSE = """""",
+	
+	
+	
+	
+	
+	
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
@@ -12127,12 +12231,12 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 
 	DAISY_TRAINING_NAME = "Daisy: Training",
 	DAISY_TRAINING_SUMMARY = "Your slave, Daisy, could use some training as a proper servant.",
-	DAISY_TRAINING_STAGE_1 = "Speak to Amelia and choose the specific training for Daisy.",
+	DAISY_TRAINING_STAGE_1 = "Visit Servants Guild and choose the specific training for Daisy.",
 	DAISY_TRAINING_STAGE_2 = "Wait, until Daisy's training is complete. ",
 
 	DAISY_LOST_NAME = "Daisy: Disappearance",
 	DAISY_LOST_SUMMARY = "Your slave, Daisy, has gone missing. You should get her back before its too late.",
-	DAISY_LOST_STAGE_1 = "Visit Amelia to find out what could have happened to Daisy",
+	DAISY_LOST_STAGE_1 = "Visit Servants Guild to find out what could have happened to Daisy",
 	DAISY_LOST_STAGE_2 = "Find Daisy, who should be at Ramont's Estate",
 	
 	AMELIA_SILK_NAME = "Amelia: Request",
