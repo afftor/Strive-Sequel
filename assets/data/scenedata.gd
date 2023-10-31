@@ -1564,7 +1564,7 @@ var dialogue_inits = {
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [{type = 'quest_completed', check = true, name = 'amelia_main_quest'}],
-			target = 'servants_no_amelia',
+			target = 'servants_introduction_new_leader',
 			target_option = 1,
 		},
 		{
