@@ -145,6 +145,8 @@ func show_quest_info(quest):
 					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]' + tr("QUESTREQUIRED") + ': ' + str(i.value) + "[/color]")
 				'slave_delivery':
 					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
+					newbutton.get_node("amount").show()
+					newbutton.get_node("amount").text = str(i.delivered_slaves) + "/" + str(i.value)
 					var tooltiptext = tr("QUESTSLAVEREQUIRED")+":\n"
 					for k in i.statreqs:
 						if k.code in ['is_master', 'is_free']:
@@ -157,6 +159,11 @@ func show_quest_info(quest):
 									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 							'sex':
 								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
+							'one_of_races':
+								tooltiptext += "Race: " 
+								for j in k.value:
+									tooltiptext += tr("RACE" + j.to_upper()) + ", "
+								tooltiptext = tooltiptext.substr(0, tooltiptext.length() - 2) + ".\n"
 					globals.connecttexttooltip(newbutton,tooltiptext)
 				'slave_work':
 					$CompleteButton.hide()
@@ -288,12 +295,12 @@ func CompleteQuest():
 	if variables.ignore_quest_requirements:
 		CompleteReqs()
 		return
-
+	
 	for i in selectedquest.requirements:
 		if i.code == 'random_item' && i.completed == false:
 			select_items_for_quest(i)
 			return
-		elif i.code == 'slave_delivery' && i.completed == false:
+		elif i.code == 'slave_delivery' && i.value > i.delivered_slaves:
 			select_character_for_quest(i)
 			return
 	if selectedquest.state == 'taken':
@@ -306,7 +313,7 @@ func CompleteQuest():
 				"random_item":
 					check = i.completed
 				"slave_delivery":
-					check = i.completed
+					check = i.value == i.delivered_slaves
 				'complete_dungeon':
 					check = i.completed
 				'complete_location':
@@ -328,7 +335,7 @@ var tchar = null
 func character_selected(character):
 	tchar = character
 	if character.is_unique():
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'character_selected_coonfirm', "Sell unique slave?"])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'character_selected_coonfirm', "Give away unique slave? They will be lost forever."])
 	else:
 		character_selected_coonfirm()
 
@@ -336,8 +343,10 @@ func character_selected_coonfirm():
 	var character = tchar
 	ResourceScripts.game_party.add_fate(character.id, tr("SOLD")) #or not sold
 	ResourceScripts.game_party.remove_slave(character, true)
-	selected_req.completed = true
-	CompleteQuest()
+	selected_req.delivered_slaves += 1
+	show_quest_info(selectedquest)
+	if selected_req.delivered_slaves == selected_req.value:
+		CompleteQuest()
 	input_handler.rebuild_slave_list()
 
 func CompleteReqs():

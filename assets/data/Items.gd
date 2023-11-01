@@ -2788,7 +2788,9 @@ var itemlist = {
 		effects = [],
 		tags = [],
 		uses_per_target = 1,
-		mansion_effect = 'sexdrug',
+		explor_effect = 'i_witsbuf',
+		combat_effect = 'i_witsbuf',
+		mansion_effect = 'i_witsbuf',
 		interaction_effect = '',
 	},
 
@@ -3421,9 +3423,6 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'wits_pot',
-		explor_effect = 'i_witsbuf',
-		combat_effect = 'i_witsbuf',
-		mansion_effect = 'i_witsbuf',
 		workunits = 10,
 		worktype = 'alchemy'
 	},

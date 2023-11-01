@@ -3438,7 +3438,7 @@ var effect_table = {
 		type = 'c_static',
 		conditions = [
 			{code = 'trait', trait = 'deviant', check = false},
-			{code = 'stat', stat = 'sex_factor', operant = 'lt', value = 5}
+			{code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 5}
 		],
 		tags = ['recheck_trait', 'recheck_item'],
 		descript = "TRAITEFFECTTENTACLESUB",

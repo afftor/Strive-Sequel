@@ -424,7 +424,7 @@ func make_quest(questcode):
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate(true)
 		var reqsarrayposition = reqsarray.find(tempdata)
 		data.requirements.append(tempdata)
-		if tempdata.code in ['random_item','slave_delivery']:
+		if tempdata.code in ['random_item']:
 			tempdata.completed = false
 		if tempdata.has('range'):
 			tempdata.value = round(rand_range(tempdata.range[0], tempdata.range[1]))
@@ -433,8 +433,9 @@ func make_quest(questcode):
 		if tempdata.has('parts'):
 			for i in tempdata.parts:
 				tempdata.parts[i] = tempdata.parts[i][randi()%tempdata.parts[i].size()]
-		if tempdata.code in ['slave_delivery','slave_work']:
+		if tempdata.code in ['slave_delivery','slave_work']: #slavework is disabled on 0.7.2+
 			tempdata.statreqs = []
+			tempdata.delivered_slaves = 0
 			for i in tempdata.mandatory_conditions:
 				if i.code == 'sex':
 					if i.value.has('male') && input_handler.globalsettings.malechance <= 10:
@@ -471,6 +472,17 @@ func make_quest(questcode):
 							number -= 1
 					for i in classarray:
 						tempdata.statreqs.append({code = 'has_profession', profession = i, check = true})
+				elif statdata.code == 'race':
+					var number = round(rand_range(statdata.range[0],statdata.range[1]))
+					var racearray = []
+					while number > 0:
+						var newrace = statdata.type[randi()%statdata.type.size()]
+						racearray.append(newrace)
+						statdata.type.erase(newrace)
+						number -= 1
+					tempdata.statreqs.append({code = 'one_of_races', value = racearray, check = true})
+				
+				
 				if statdata.use_once == true:
 					tempdata.conditions.erase(statdata)
 			tempdata.erase('condition_number')
