@@ -642,6 +642,7 @@ func get_all_buffs():
 func get_combat_buffs():
 	var tres = get_all_buffs()
 	var res = []
+	
 	for b in tres:
 		if b.template.has('mansion_only'): continue
 		res.push_front(b)
@@ -937,6 +938,7 @@ func mp_set(value):
 
 func death():
 	process_event(variables.TR_DEATH)
+	effects_pool.process_event(variables.TR_DEATH, self)
 #	process_event(variables.TR_COMBAT_F)
 	if npc_reference != null:
 		input_handler.emit_signal("EnemyKilled", npc_reference)

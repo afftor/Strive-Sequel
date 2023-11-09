@@ -6,7 +6,7 @@ var template
 
 var type
 
-var is_drain = false
+var is_drain = 0.0
 var ability_type
 var tags
 var value = []
@@ -96,7 +96,7 @@ func createfromskill(s_code):
 	else:
 		repeat = 1
 	if template.has('is_drain'):
-		is_drain = true
+		is_drain = template.is_drain
 
 func convert_to_new_template():
 	var res_res = {}

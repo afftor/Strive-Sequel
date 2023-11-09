@@ -616,7 +616,7 @@ func test_mode():
 		character.set_stat('food_hate', ["grain"])
 		#character.unlock_class("worker")
 		character.unlock_class("necromancer")
-		character.mp = 100
+		character.hp = 1
 	#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':

@@ -42,7 +42,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		tags = ['sex_basic', 'sex_oral', 'sex_group', 'sex_perv', 'sex_adv', 'sex_anal', 'combatant', 'keep_baby', 'body_mod', 'basic_servitude', 'prostitution', 'exhibit'],
-		effects = ['e_tr_master']#,'test_recast'],
+		effects = ['e_tr_master', 'enchant_vampirism_5']#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
 		code = 'spouse',

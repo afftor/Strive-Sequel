@@ -116,6 +116,7 @@ func setup_caster(c):
 		chance = 100
 		critchance = 0
 		armor_p = 0
+	setup_weapon_element()
 
 func setup_target(t):
 	target = t
@@ -177,6 +178,9 @@ func apply_atomic(tmp):
 				for i in range(value.size()):
 					value[i].apply_atomic(tmp)
 				pass
+			elif tmp.stat == 'is_drain':
+				for i in range(value.size()):
+					value[i].apply_atomic(tmp)
 			else: set(tmp.stat, tmp.value)
 		'add_tag':
 			tags.push_back(tmp.value)
@@ -221,3 +225,7 @@ func calculate_dmg():
 
 func apply_random():
 	for v in value: v.apply_random()
+
+
+func setup_weapon_element():
+	for v in value: v.setup_weapon_element()

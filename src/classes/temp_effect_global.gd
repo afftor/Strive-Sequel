@@ -10,7 +10,7 @@ class_name temp_e_global
 #ALL TEMP EFFECTS ARE NAMED - their template has to have 'name' field (even if effect has no id in effects table)
 
 var template_name
-
+var remains setget ,getremains
 
 var timers = [] # of {events = [], objects = [ids] or group tag, timer: int}
 
@@ -60,19 +60,21 @@ func process_event(ev, obj = null):
 	for timer in timers:
 		if !timer.events.has(ev): continue
 		if timer.objects is Array:
-			if !timer.objects.has(obj.id):
-				continue
-			timer.timer -= 1
+			if obj == null or timer.objects.has(obj.id):
+				timer.timer -= 1
 		else:
 			var check = false
-			match timer.objects:
-				'any_char':
-					check = true
-				'player_char':
-					check = obj.combatgroup == 'ally'
-				'enemy_char':
-					check = obj.combatgroup == 'enemy'
-				#mb 2add relative tags
+			if obj == null:
+				check = true
+			else:
+				match timer.objects:
+					'any_char':
+						check = true
+					'player_char':
+						check = obj.combatgroup == 'ally'
+					'enemy_char':
+						check = obj.combatgroup == 'enemy'
+					#mb 2add relative tags
 			if check:
 				timer.timer -= 1
 		if timer.timer <= 0:
@@ -137,7 +139,21 @@ func get_duration():
 #	if remains <= 0: return null
 	var res = {}
 	#2fix
-#	res.count = remains
-#	res.event = null
+	res.count = timers[0].timer
+	res.event = 'null'
+	if tags.has('duration_turns'):
+		res.event = 'turns'
+	if tags.has('duration_combat'):
+		res.event = 'combats'
+	if tags.has('duration_ticks'):
+		res.event = 'ticks'
+	if tags.has('duration_none'):
+		res = null
 	return res
 
+func getremains():
+	var tmp = get_duration()
+	if tmp == null:
+		return -1
+	else:
+		return tmp.count

@@ -313,13 +313,16 @@ func use_social_skill(s_code, target):
 					if stat  == 'lust':
 						if h.get_stat('lust') >= h.get_stat('lustmax'):
 							detail_tags.append('lust_cap')
-					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
+					if i.is_drain > 0.0: 
+						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
 				1:
 					tmp = h.stat_update(stat, -cached_value)
-					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
+					if i.is_drain > 0.0: 
+						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
 				2:
 					tmp = h.stat_update(stat, cached_value, true)
-					if i.is_drain: parent.get_ref().stat_update(stat, -tmp)
+					if i.is_drain > 0.0: 
+						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
 
 			effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
 			var maxstat = 100

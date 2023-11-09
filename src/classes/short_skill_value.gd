@@ -19,11 +19,23 @@ func _init(caller, tmp):
 	is_drain = template.is_drain
 
 func clone():
-	var tmp = get_script().new(null, template)
-	return tmp
+	var tmp = template.duplicate()
+	tmp.is_drain = is_drain
+	tmp.damage_type = damage_type
+	var tmp_ = get_script().new(null, tmp)
+	return tmp_
 
 func apply_atomic(tmp):
 	if template.nomod: return
+	if tmp.stat == 'is_drain':
+		match tmp.type:
+			'stat_add':
+				is_drain += tmp.value
+			'stat_mul':
+				is_drain *= tmp.value
+			'stat_set':
+				is_drain = tmp.value
+		return
 	if (tmp.has('stats') && !tmp.stats.has(template.damagestat)): return
 	if (tmp.has('statignore') && tmp.statignore.has(template.damagestat)): return
 	match tmp.type:
@@ -80,8 +92,6 @@ func apply_random():
 
 func calculate_dmg():
 	apply_random()
-	if damage_type == 'weapon':
-		damage_type = parent.caster.get_weapon_element()
 	#crit modification
 	if parent.hit_res == variables.RES_CRIT and !template.nocrit and !template.nomod:
 		value *= parent.caster.get_stat('critmod')
@@ -120,3 +130,7 @@ func check_conditions():
 	if template.has('caster_reqs'): res = res and parent.caster.checkreqs(template.caster_reqs)
 	if template.has('target_reqs'): res = res and parent.target.checkreqs(template.target_reqs)
 	return res
+
+func setup_weapon_element():
+	if damage_type == 'weapon':
+		damage_type = parent.caster.get_weapon_element()
