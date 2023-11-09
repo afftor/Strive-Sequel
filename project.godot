@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://editor tools/classes/table_display.gd"
 }, {
 "base": "base_effect",
+"class": "temp_e_global",
+"language": "GDScript",
+"path": "res://src/classes/temp_effect_global.gd"
+}, {
+"base": "base_effect",
 "class": "temp_e_progress",
 "language": "GDScript",
 "path": "res://src/classes/temp_effect_progress.gd"
@@ -120,6 +125,7 @@ _global_script_class_icons={
 "oneshot_effect": "",
 "static_effect": "",
 "table_display": "",
+"temp_e_global": "",
 "temp_e_progress": "",
 "temp_e_simple": "",
 "temp_e_upgrade": "",
