@@ -2304,7 +2304,7 @@ var fixed_location_options = { #override serialized data
 	quest_troll_cave_location = [
 		{
 			text = tr("QUEST_TROLL_CAVE_LOCATION1"), 
-			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}],
+			reqs = [{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage3', state = true}, {type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage35', state = true, orflag = true}],
 			args = [{code = 'start_event', data = 'troll_clothes_1', args = []}]
 		},
 	],
