@@ -1598,7 +1598,8 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		show_slave_info(person)
 	else:
 		$SlaveMarket/HireMode.disabled = true
-		change_mode('sell')
+		if market_mode != "guild_slaves":
+			change_mode('sell')
 #		current_pressed_area_btn.pressed = false
 #		$SlaveMarket.hide()
 #		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
