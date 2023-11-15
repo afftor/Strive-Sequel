@@ -3029,8 +3029,8 @@ var Skilllist = {
 		value = 0.3
 	},
 	
-	pas_commander = {
-		code = 'pas_commander',
+	pas_commander_1 = {
+		code = 'pas_commander_1',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
 		type = 'auto', 
@@ -3038,7 +3038,7 @@ var Skilllist = {
 		tags = ['instant'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander'})], 
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander', push_value = true})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -3050,7 +3050,32 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null, hittype = 'bodyarmor'},
-		value = ['0'],
+		value = ['0.03'],
+		damagestat = 'no_stat',
+		not_final = true
+	},
+	pas_commander_2 = {
+		code = 'pas_commander_2',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
+		type = 'auto', 
+		ability_type = 'spell',
+		tags = ['instant'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander', push_value = true})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'all',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null, hittype = 'bodyarmor'},
+		value = ['0.05'],
 		damagestat = 'no_stat',
 		not_final = true
 	},

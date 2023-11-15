@@ -4190,3 +4190,12 @@ func get_item_by_tooltype(t_type):
 		if titem.tool_category.has(t_type):
 			return key
 	return null
+
+
+var enchantments = {
+	
+}
+
+var curses = {
+	
+}

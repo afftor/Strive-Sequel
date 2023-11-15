@@ -133,10 +133,14 @@ func _ready():
 #	scene.visible = true
 #	scene.Start(scenes[name], debug, line)
 
-func get_duplicate_id_if_exist(item, parts):
+func get_duplicate_id_if_exist(item):
+	var itemtemplate = Items.itemlist[item.itembase]
+	if itemtemplate.has('tags') and itemtemplate.tags.has('no_stack'):
+		return null
 	for i in ResourceScripts.game_res.items.values():
-		if str(i.itembase) == str(item) && str(i.parts) == str(parts) && i.owner == null:
+		if str(i.itembase) == str(item.itembase) and str(i.parts) == str(item.parts) and i.quality == item.quality and i.owner == null: #mb more
 			return i.id
+	return null
 
 func CreateGearItem(item, parts, bonus = {}, newname = null):
 	var newitem = Item.new()
@@ -153,7 +157,7 @@ func CreateUsableItem(item, amount = 1):
 func AddItemToInventory(item, dont_duplicate = true):
 #	item.inventory = ResourceScripts.game_res.items
 	if dont_duplicate && item.stackable == false:
-		var duplicate = get_duplicate_id_if_exist(item.itembase, item.parts)
+		var duplicate = get_duplicate_id_if_exist(item)
 		if duplicate != null:
 			ResourceScripts.game_res.items[duplicate].amount += 1
 			item.amount = 0

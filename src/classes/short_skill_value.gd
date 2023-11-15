@@ -21,7 +21,7 @@ func _init(caller, tmp):
 func clone():
 	var tmp = template.duplicate()
 	tmp.is_drain = is_drain
-	tmp.damage_type = damage_type
+	tmp.source = damage_type
 	var tmp_ = get_script().new(null, tmp)
 	return tmp_
 

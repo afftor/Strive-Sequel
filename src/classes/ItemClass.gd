@@ -24,7 +24,7 @@ var subtype
 var durability
 var maxdurability
 var price
-var bonusstats = {} #bonus stats apply to chars
+var bonusstats = {} setget , get_bonusstats#bonus stats apply to chars
 var parts = {}
 var effects = []
 var reqs = []
@@ -39,6 +39,12 @@ var multislots = []
 var slots = []
 var hitsound
 var interaction_use = false
+
+var enchants = []
+var curse = null
+
+var quality = 'poor'
+
 
 
 func CreateUsable(ItemName = '', number = 1):
@@ -406,3 +412,122 @@ func use_explore(character, caller = null):
 		caller.use_e_combat_skill(character, character, skill)
 	else:
 		character.use_social_skill(itemskill, character)
+
+
+func get_e_capacity_max():
+	var res = 0
+	var template = Items.itemlist[itembase]
+	if template.has('enchant_capacity'):
+		res = template.enchant_capacity
+	res *= variables.itemquality_multiplier[quality]
+	if curse != null:
+		var cursetemplate = Items.curses[curse]
+		if cursetemplate.has('capacity_multiplyer'):
+			res *= cursetemplate.capacity_multiplyer
+	return res
+
+
+func get_e_capacity():
+	var res = get_e_capacity_max()
+	for e_id in enchants:
+		var enc_template = Items.enchantments[e_id]
+		res -= enc_template.levels[enchants[e_id]].cap_cost
+	return res
+
+
+func get_bonusstats():
+	var res = bonusstats.duplicate()
+	var mul = variables.itemquality_multiplier[quality]
+	for st in res:
+		res[st] *= mul
+	var cursetemplate = Items.curses[curse]
+	if cursetemplate.has('statmods'):
+		for st in cursetemplate.statmods:
+			if res.has(st):
+				res[st] *= cursetemplate.statmods[st]
+	for bless in enchants:
+		var enchtemplate = Items.enchantments[bless].levels[enchants[bless]]
+		if enchtemplate.has('statmods'):
+			for st in enchtemplate.statmods:
+				if res.has(st):
+					res[st] *= enchtemplate.statmods[st]
+
+
+func add_curse (c_id):
+	if curse != null:
+		return
+	
+	var tmp = null
+	if owner != null:
+		tmp = owner
+		characters_pool.get_char_by_id(owner).unequip(self)
+	
+	curse = c_id
+	var cursetemplate = Items.curses[c_id]
+	if cursetemplate.has('effects'):
+		for eff in cursetemplate.effects:
+			effects.push_back(eff)
+	
+	if tmp != null:
+		characters_pool.get_char_by_id(tmp).equip(self)
+
+
+func can_add_enchant(e_id, lvl):
+	if enchants.has(e_id):
+		return can_upgrade_enchant(e_id, lvl)
+	var enchdata = Items.enchantments[e_id]
+	var newcost = enchdata.levels[lvl].cap_cost
+	var goldcost = enchdata.levels[lvl].gold_cost
+	if goldcost > ResourceScripts.game_res.money:
+		return false
+	return get_e_capacity() >= newcost
+
+
+func can_upgrade_enchant(e_id, lvl):
+	if !enchants.has(e_id):
+		return false
+	if enchants[e_id] >= lvl:
+		return false
+	var enchdata = Items.enchantments[e_id]
+	var oldcost = enchdata.levels[enchants[e_id]].cap_cost
+	var newcost = enchdata.levels[lvl].cap_cost
+	var goldcost = enchdata.levels[lvl].gold_cost
+	if goldcost > ResourceScripts.game_res.money:
+		return false
+	return get_e_capacity() >= newcost - oldcost
+
+
+func _remove_enchant(e_id):
+	if owner != null:
+		print('e_remove_failed')
+		return
+	if !enchants.has(e_id):
+		return
+	var enchdata = Items.enchantments[e_id].levels[enchants[e_id]]
+	if enchdata.has('effects'):
+		for eff in enchdata.effects:
+			effects.erase(eff)
+
+
+func add_enchant(e_id, lvl):
+	if !can_add_enchant(e_id, lvl):
+		return
+	
+	var tmp = null
+	if owner != null:
+		tmp = owner
+		characters_pool.get_char_by_id(owner).unequip(self)
+	
+	_remove_enchant(e_id)
+	enchants[e_id] = lvl
+	var enchdata = Items.enchantments[e_id].levels[lvl]
+	var goldcost = enchdata.gold_cost
+	ResourceScripts.game_res.mone -= goldcost
+	if enchdata.has('effects'):
+		for eff in enchdata.effects:
+			effects.push_back(eff)
+	
+	
+	if tmp != null:
+		characters_pool.get_char_by_id(tmp).equip(self)
+

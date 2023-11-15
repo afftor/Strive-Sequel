@@ -2909,6 +2909,117 @@ var effect_table = {
 		]
 	},
 	
+	enchant_commander_1 = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj'}],
+				atomic = [{type = 'use_combat_skill', skill = 'pas_commander_1', target = ['parent_args', 0]}],
+			}
+		]
+	},
+	enchant_commander_2 = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj'}],
+				atomic = [{type = 'use_combat_skill', skill = 'pas_commander_2', target = ['parent_args', 0]}],
+			}
+		]
+	},
+	e_s_commander = {
+		type = 'temp_global',
+		tags = ['duration_none'],
+		target = 'target',
+		name = 'commander',
+		stack = 1,
+		args = [{obj = 'parent_args', param = 2}],
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, 
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = ['parent_args', 0]},
+			{type = 'stat_add_p', stat = 'matk', value = ['parent_args', 0]},
+			{type = 'stat_add', stat = 'resist_all', value = [['parent_args', 0], '*', 100]}
+		],
+		buffs = ['b_command'],
+		sub_effects = [],
+	},
+	
+	enchant_warlock_1 = {
+		type = 'temp_global',
+		tags = ['duration_none'],
+		name = 'enchant_warlock',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'manacost_mod', value = -0.1}
+		],
+		buffs = ['b_enchant'],
+		sub_effects = [],
+	},
+	enchant_warlock_2 = {
+		type = 'temp_global',
+		tags = ['duration_none'],
+		name = 'enchant_warlock',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'manacost_mod', value = -0.15}
+		],
+		buffs = ['b_enchant'],
+		sub_effects = [],
+	},
+	enchant_warlock_3 = {
+		type = 'temp_global',
+		tags = ['duration_none'],
+		name = 'enchant_warlock',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'manacost_mod', value = -0.2}
+		],
+		buffs = ['b_enchant'],
+		sub_effects = [],
+	},
+	enchant_warlock_4 = {
+		type = 'temp_global',
+		tags = ['duration_none'],
+		name = 'enchant_warlock',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'manacost_mod', value = -0.25}
+		],
+		buffs = ['b_enchant'],
+		sub_effects = [],
+	},
+	
+	
 	#statuses 
 	e_s_burn_new = {
 		type = 'temp_s',
@@ -2996,41 +3107,8 @@ var effect_table = {
 	},
 	
 	#stub
-	e_tr_commander = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S],
-		req_skill = false,
-		conditions = [],
-		args = [],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'app_obj'}],
-				atomic = [{type = 'use_combat_skill', skill = 'pas_commander', target = ['parent_args', 0]}],
-			}
-		]
-	},
-	e_s_commander = {
-		type = 'temp_global',
-		tags = ['duration_none'],
-		target = 'target',
-		name = 'commander',
-		stack = 1,
-		args = [],
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, 
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.03},
-			{type = 'stat_add_p', stat = 'matk', value = 0.03},
-			{type = 'stat_add', stat = 'resist_all', value = 3}
-		],
-		buffs = ['b_command'],
-		sub_effects = [],
-	},
 	
+	#
 	
 	e_s_stun = {
 		type = 'temp_s',

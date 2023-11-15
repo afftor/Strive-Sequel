@@ -161,27 +161,17 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 		hit_res = variables.RES_CRIT
 
 func apply_atomic(tmp):
+	if tmp.stat in ['value', 'is_drain']:
+		for i in range(value.size()):
+			value[i].apply_atomic(tmp)
+		return
 	match tmp.type:
 		'stat_add':
-			if tmp.stat == 'value':
-				for i in range(value.size()):
-					value[i].apply_atomic(tmp)
-			else: set(tmp.stat, get(tmp.stat) + tmp.value)
+			set(tmp.stat, get(tmp.stat) + tmp.value)
 		'stat_mul':
-			if tmp.stat == 'value':
-				for i in range(value.size()):
-					value[i].apply_atomic(tmp)
-				pass
-			else: set(tmp.stat, get(tmp.stat) * tmp.value)
+			set(tmp.stat, get(tmp.stat) * tmp.value)
 		'stat_set':
-			if tmp.stat == 'value':
-				for i in range(value.size()):
-					value[i].apply_atomic(tmp)
-				pass
-			elif tmp.stat == 'is_drain':
-				for i in range(value.size()):
-					value[i].apply_atomic(tmp)
-			else: set(tmp.stat, tmp.value)
+			set(tmp.stat, tmp.value)
 		'add_tag':
 			tags.push_back(tmp.value)
 

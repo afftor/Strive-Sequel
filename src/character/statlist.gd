@@ -43,6 +43,7 @@ var template = {
 	hp_reg_add = 0.0,
 	mp_reg_add = 0.0,
 	exp_gain_mod = 1.0,
+	manacost_mod = 1.0,
 	#enemy combat/reward data
 	xpreward = 10,
 	loottable = "",

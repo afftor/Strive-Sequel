@@ -62,7 +62,7 @@ func get_gear_type(slot):
 
 
 func equip(item, item_prev_id = null):
-	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
+#	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
 	#if duplicate != null:
 	if parent.get_ref().checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
@@ -92,7 +92,9 @@ func equip(item, item_prev_id = null):
 
 
 func unequip(item):
-	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
+	#shuold be reworked due to new mechanics
+	#probably fixed
+	var duplicate = globals.get_duplicate_id_if_exist(item)
 	
 	if duplicate != null:
 		var duplicate_item = ResourceScripts.game_res.items[duplicate]

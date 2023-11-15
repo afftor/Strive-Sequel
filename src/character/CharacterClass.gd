@@ -1598,12 +1598,21 @@ func resurrect(hp_per):
 
 func pay_cost(cost):
 	for st in cost:
-		if st == 'money': ResourceScripts.game_party.money -= cost.money
-		else: add_stat(st, -cost[st])
+		if st == 'money':
+			 ResourceScripts.game_party.money -= cost.money
+		elif st == 'mp':
+			mp -= int(cost.mp * get_stat('manacost_mod'))
+		else: 
+			add_stat(st, -cost[st])
 
 func check_cost(cost):
 	for st in cost:
-		if get_stat(st) < cost[st]: return false
+		if st == 'money' and ResourceScripts.game_party.money < cost[st]:
+			return false
+		elif st == 'mp' and mp < int(cost[st] * get_stat('manacost_mod')): 
+			return false
+		elif get_stat(st) < cost[st]: 
+			return false
 	return true
 
 func check_skill_availability(s_code, target):
