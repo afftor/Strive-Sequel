@@ -356,7 +356,7 @@ var data = {
 	
 	zephyra_lilia_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
+		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
 		character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_1", reqs = []}],
 		options = [ {

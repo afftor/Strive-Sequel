@@ -11107,7 +11107,7 @@ Zephyra lowers her head and slowly walks away. Her voice sounds heartbroken as s
 
 You notice how Zephyra leans closer to you, seeking for your warmth after being rescued. 
 
-— Actually being finally reunited with you might've made mea bit too excited...""",
+— Actually being finally reunited with you might've made me a bit too excited...""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_7_2 = """Zephyra gives you a pained look, but still manages to produce a smile. 
 
 — I was hoping you wouldn't ask...""",
