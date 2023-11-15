@@ -682,9 +682,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMLACTATION_POT = "Nursing Potion",
 	ITEMLACTATION_POTDESCRIPT = "Make the drinker lactate, or reverse lactation if it existed.",
 	ITEMPHYSICS_POT = "Elixir of Ogre's Strength",
-	ITEMPHYSICS_POTDESCRIPT = "Boosts Physics by 80 for 1 turn.",
+	ITEMPHYSICS_POTDESCRIPT = "Boosts Physics by 80 for 1 time period.",
 	ITEMWITS_POT = "Elixir of Expanded Mind",
-	ITEMPWITS_POTDESCRIPT = "Boosts Wits by 80 for 1 turn.",
+	ITEMWITS_POTDESCRIPT = "Boosts Wits by 80 for 1 time period.",
 	
 	ITEMSENSITIVITY_POT = "Sensitivity Drug",
 	ITEMSENSITIVITY_POTDESCRIPT = "Increases sensitivity during sexual interactions.",
@@ -13296,7 +13296,9 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	SERVANTS_CRAFT_DESC = "The Servants Guild needs a specific crafted items",
 	
 	SERVANTS_SLAVE_NAME = "Slave Request",
-	SERVANTS_SLAVE_DESC = "The Servants Guild is in need of specific trained individual.",
+	SERVANTS_SLAVE_DESC = "The Servants Guild is in need of fresh slave recruits.",
+	FIGHTERS_SLAVE_DESC = "The Fighters Guild is in need of fresh slave recruits.",
+	WORKERS_SLAVE_DESC = "The Workers Guild is in need of fresh worker recruits.",
 	
 	SERVANTS_SLAVE_WORK_NAME = "Assignment",
 	SERVANTS_SLAVE_WORK_DESC = "The Servants Guild is in need of someone performing a task for them.",
