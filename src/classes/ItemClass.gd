@@ -42,9 +42,39 @@ var interaction_use = false
 
 var enchants = []
 var curse = null
+var curse_known = false
 
 var quality = 'poor'
 
+
+func check_reqs(arg):
+	if typeof(arg) == TYPE_ARRAY:
+		var check = true
+		for i in arg:
+			if i.has('orflag'):
+				check = check or valuecheck(i)
+			else:
+				check = check and valuecheck(i)
+		return check
+	else:
+		return valuecheck(arg)
+
+
+func valuecheck(req):
+	var i = req.duplicate()
+	match i.code:
+		'false':
+			return false
+		'stat':
+#			if typeof(i.value) == TYPE_ARRAY: 
+#				i.value = calculate_number_from_string_array(i.value)
+			return input_handler.operate(i.operant, get(i.stat), i.value) == i.check
+		'stat_in_set':
+			return i.value.has(get(i.stat)) == i.check
+		'stat_index':
+#			if typeof(i.value) == TYPE_ARRAY: 
+#				i.value = calculate_number_from_string_array(i.value)
+			return input_handler.operate(i.operant, get(i.stat)[i.index], i.value) == i.check
 
 
 func CreateUsable(ItemName = '', number = 1):
@@ -113,8 +143,8 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		for e in itemtemplate.effects:
 			effects.push_back(e)
 
-	reqs = itemtemplate.reqs
-	tags = itemtemplate.tags
+	reqs = itemtemplate.reqs.duplicate()
+	tags = itemtemplate.tags.duplicate()
 	if itemtemplate.has('multislots'):
 		multislots = itemtemplate.multislots
 	if itemtemplate.has('hitsound'):
@@ -497,7 +527,7 @@ func can_upgrade_enchant(e_id, lvl):
 	return get_e_capacity() >= newcost - oldcost
 
 
-func _remove_enchant(e_id):
+func _remove_enchant(e_id): #internal
 	if owner != null:
 		print('e_remove_failed')
 		return
@@ -531,3 +561,12 @@ func add_enchant(e_id, lvl):
 	if tmp != null:
 		characters_pool.get_char_by_id(tmp).equip(self)
 
+
+func identify():
+	curse_known = true
+
+
+func destroy():
+	if owner != null:
+		characters_pool.get_char_by_id(owner).unequip(self)
+	globals.remove_item(self)

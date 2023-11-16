@@ -175,6 +175,16 @@ func AddItemToInventory(item, dont_duplicate = true):
 			ResourceScripts.game_res.items[item.id] = item
 			ResourceScripts.game_res.itemcounter += 1
 
+
+func remove_item(item):
+	var duplicate = get_duplicate_id_if_exist(item)
+	if duplicate != null:
+		ResourceScripts.game_res.items[duplicate].amount -= 1
+	else:
+		item.amount = 0
+		ResourceScripts.game_res.items.erase(item.id)
+
+
 func get_item_id_by_code(itembase):
 	return ResourceScripts.game_res.get_item_id_by_code(itembase)
 
