@@ -553,12 +553,12 @@ func execute_skill(s_skill2):  #to update to exploration version
 		if i.damagestat == 'no_stat':
 			continue  #for skill values that directly process into effects
 		if i.damagestat == 'damage_hp' and i.dmgf == 0:  #drain, damage, damage no log, drain no log
-			if i.is_drain && s_skill2.tags.has('no_log'):
+			if i.is_drain > 0.0 && s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval)
-			elif i.is_drain:
+				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
+			elif i.is_drain > 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval)
+				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
 				text += (
 					"%s drained %d health from %s and gained %d health."
 					% [
@@ -568,7 +568,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 						rval2
 					]
 				)
-			elif s_skill2.tags.has('no_log') && ! i.is_drain:
+			elif s_skill2.tags.has('no_log') &&  i.is_drain <= 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
@@ -587,8 +587,8 @@ func execute_skill(s_skill2):  #to update to exploration version
 				s_skill2.target.mana_update(i.value)
 		elif i.damagestat == 'restore_mana' and i.dmgf == 1:  #drain, damage, damage no log, drain no log
 			var rval = s_skill2.target.mana_update(-i.value)
-			if i.is_drain:
-				var rval2 = s_skill2.caster.mana_update(rval)
+			if i.is_drain > 0.0:
+				var rval2 = s_skill2.caster.mana_update(rval * i.is_drain)
 				if ! s_skill2.tags.has('no log'):
 					text += (
 						"%s drained %d mana from %s and gained %d mana."
@@ -608,8 +608,8 @@ func execute_skill(s_skill2):  #to update to exploration version
 					)
 			elif mod == 1:
 				var rval = s_skill2.target.stat_update(stat, -i.value)
-				if i.is_drain:
-					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+				if i.is_drain > 0.0:
+					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
 						text += (
 							"%s drained %d %s from %s."
@@ -624,8 +624,8 @@ func execute_skill(s_skill2):  #to update to exploration version
 					text += "%s loses %d %s." % [s_skill2.target.get_stat('name'), -rval, tr(stat)]
 			elif mod == 2:
 				var rval = s_skill2.target.stat_update(stat, i.value, true)
-				if i.is_drain:  # use this on your own risk
-					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+				if i.is_drain > 0.0:  # use this on your own risk
+					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if ! s_skill2.tags.has('no log'):
 						text += (
 							"%s drained %d %s from %s."
@@ -1598,7 +1598,8 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		show_slave_info(person)
 	else:
 		$SlaveMarket/HireMode.disabled = true
-		change_mode('sell')
+		if market_mode != "guild_slaves":
+			change_mode('sell')
 #		current_pressed_area_btn.pressed = false
 #		$SlaveMarket.hide()
 #		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))

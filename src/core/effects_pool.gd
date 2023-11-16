@@ -32,6 +32,14 @@ func get_effect_by_id(id):
 		return null
 	return effects[id]
 
+
+func process_event(ev, obj = null):
+	for eff in effects.values():
+		if !(eff is temp_e_global):
+			continue
+		eff.process_event(ev, obj)
+
+
 func cleanup():
 	for id in effects.keys():
 		if !effects[id].is_applied:
@@ -86,6 +94,7 @@ func deserialize_effect(tmp, id, caller = null):
 #		'area': eff = area_effect.new(caller)
 		'c_static': eff = condition_effect.new(caller)
 		'dynamic': eff = dynamic_effect.new(caller)
+		'temp_global': tmp = temp_e_global.new(caller)
 	eff.id = id
 	eff.deserialize(tmp)
 	return eff
@@ -108,6 +117,7 @@ func e_createfromtemplate(buff_t, caller = null):
 		'oneshot': tmp = oneshot_effect.new(caller)
 		'c_static': tmp = condition_effect.new(caller)
 		'dynamic': tmp = dynamic_effect.new(caller)
+		'temp_global': tmp = temp_e_global.new(caller)
 		_: 
 			print ('wrong eff type - %s' % template.type)
 			return null

@@ -238,6 +238,14 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 	},
+	manacost_mod = {
+		code = 'manacost_mod',
+		percent = true,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+	},
 	lusttick = {
 		code = 'lusttick',
 		name = '',

@@ -33,7 +33,7 @@ func build_skill_panel():
 			newbutton.get_node("icon").show()
 			if skill.cost.has('mp'): #need to implement other costs
 				newbutton.get_node("manacost").visible = true
-				newbutton.get_node("manacost").text = str(skill.cost.mp)
+				newbutton.get_node("manacost").text = str(int(skill.cost.mp * person.get_stat('manacost_mod')))
 			if !person.check_cost(skill.cost):
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")

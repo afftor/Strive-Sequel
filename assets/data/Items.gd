@@ -1634,7 +1634,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random', 'bladed'],
 		basestats = {atk = 3},
 	},
 	cali_heirloom_active = {
@@ -1652,7 +1652,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random', 'bladed'],
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15},
 	},
 	
@@ -1671,7 +1671,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random', 'bladed'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5},
 	},
 	holy_spear = {
@@ -1838,7 +1838,7 @@ var itemlist = {
 		parts = {ToolBlade = 10, ToolHandle = 5},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1862,7 +1862,7 @@ var itemlist = {
 		parts = {ToolBlade = 10, ToolHandle = 5},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1886,7 +1886,7 @@ var itemlist = {
 		parts = {ToolClothwork = 10, ToolHandle = 6},
 		partcolororder = {ToolHandle = 1, ToolClothwork = 2},
 		partmaterialname = "ToolClothwork",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1910,7 +1910,7 @@ var itemlist = {
 		parts = {ToolBlade = 10, ToolHandle = 4},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1934,7 +1934,7 @@ var itemlist = {
 		parts = {ToolBlade = 7, ToolHandle = 2},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1958,7 +1958,7 @@ var itemlist = {
 		parts = {ToolBlade = 8, ToolHandle = 3},
 		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "ToolBlade",
-		tags = ['tool', 'recipe'],
+		tags = ['tool', 'recipe', 'no_stack'],
 		slots = ['tool'],
 		hitsound = 'blade',
 		effects = [],
@@ -1981,7 +1981,7 @@ var itemlist = {
 		parts = {Blade = 3, WeaponHandle = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe'],
+		tags = ['recipe', 'bladed', 'no_stack'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2006,7 +2006,7 @@ var itemlist = {
 		parts = {ShieldBase = 12, ArmorTrim = 4},
 		partcolororder = {ShieldBase = 1, ArmorTrim = 2},
 		partmaterialname = "ShieldBase",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['lhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2029,7 +2029,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe'],
+		tags = ['recipe', 'bladed', 'no_stack'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2052,7 +2052,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5, WeaponEnc = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
-		tags = ['recipe'],
+		tags = ['recipe', 'bladed', 'no_stack'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2076,7 +2076,7 @@ var itemlist = {
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
 		tags = ['recipe'],
-		slots = ['rhand','lhand'],
+		slots = ['rhand','lhand', 'no_stack'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2098,7 +2098,7 @@ var itemlist = {
 		parts = {WeaponMace = 6},
 		partcolororder = {WeaponMace = 1},
 		partmaterialname = "WeaponMace",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2121,7 +2121,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2144,7 +2144,7 @@ var itemlist = {
 		parts = {BowBase = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, BowBase = 2},
 		partmaterialname = "BowBase",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
@@ -2167,7 +2167,7 @@ var itemlist = {
 		parts = {BowBase = 10, WeaponHandle = 5, WeaponEnc = 2},
 		partcolororder = {WeaponHandle = 1, BowBase = 2, WeaponEnc = 3},
 		partmaterialname = "BowBase",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
@@ -2190,7 +2190,7 @@ var itemlist = {
 		parts = {Rod = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 2, Rod = 1},
 		partmaterialname = "Rod",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand'],
 		hitsound = 'arrow',
 		effects = [],
@@ -2213,7 +2213,7 @@ var itemlist = {
 		parts = {Rod = 10, WeaponHandle = 5, WeaponEnc = 3},
 		partcolororder = {WeaponHandle = 2, Rod = 1, WeaponEnc = 3},
 		partmaterialname = "Rod",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
@@ -2237,7 +2237,7 @@ var itemlist = {
 		parts = {ArmorBaseCloth = 6, ArmorTrim = 3},
 		partcolororder = {ArmorBaseCloth = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseCloth",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'flesh',
 		effects = [],
@@ -2260,7 +2260,7 @@ var itemlist = {
 		parts = {ArmorBaseMed = 6, ArmorTrim = 3},
 		partcolororder = {ArmorBaseMed = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseMed",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'flesh',
 		effects = [],
@@ -2283,7 +2283,7 @@ var itemlist = {
 		parts = {ArmorBaseHeavy = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseHeavy",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
@@ -2307,7 +2307,7 @@ var itemlist = {
 		parts = {ArmorBaseHeavy = 12, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2, ArmorEnc = 3},
 		partmaterialname = "ArmorBaseHeavy",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
@@ -2330,7 +2330,7 @@ var itemlist = {
 		parts = {ArmorBaseMed = 12, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseMed = 1, ArmorTrim = 2, ArmorEnc = 3},
 		partmaterialname = "ArmorBaseMed",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
@@ -2353,7 +2353,7 @@ var itemlist = {
 		parts = {ArmorBaseCloth = 12, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseCloth = 1, ArmorTrim = 2, ArmorEnc = 3},
 		partmaterialname = "ArmorBaseCloth",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
@@ -2377,7 +2377,7 @@ var itemlist = {
 		parts = {ArmorBaseCloth = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseCloth = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseCloth",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'flesh',
 		effects = [],
@@ -2400,7 +2400,7 @@ var itemlist = {
 		parts = {ArmorBaseMed = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseMed = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseMed",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'flesh',
 		effects = [],
@@ -2423,7 +2423,7 @@ var itemlist = {
 		parts = {ArmorBaseHeavy = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseHeavy",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
@@ -2447,7 +2447,7 @@ var itemlist = {
 		parts = {ArmorBaseHeavy = 10, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseHeavy = 2, ArmorTrim = 1, ArmorEnc = 3},
 		partmaterialname = "ArmorBaseHeavy",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
@@ -2470,7 +2470,7 @@ var itemlist = {
 		parts = {ArmorBaseMed = 10, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseMed = 2, ArmorTrim = 1, ArmorEnc = 3},
 		partmaterialname = "ArmorBaseMed",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
@@ -2493,7 +2493,7 @@ var itemlist = {
 		parts = {ArmorBaseCloth = 10, ArmorTrim = 4, ArmorEnc = 2},
 		partcolororder = {ArmorBaseCloth = 1, ArmorTrim = 3, ArmorEnc = 2},
 		partmaterialname = "ArmorBaseCloth",
-		tags = ['recipe'],
+		tags = ['recipe', 'no_stack'],
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
@@ -4284,3 +4284,333 @@ func get_item_by_tooltype(t_type):
 		if titem.tool_category.has(t_type):
 			return key
 	return null
+
+
+var enchantments = {
+	sharpness = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'tags',operant = 'has', value = 'bladed', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_sharp_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_sharp_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = ['enchant_sharp_3'],
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			4:{
+				effects = ['enchant_sharp_4'],
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+			
+		}
+	},
+	spell_mastery = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_spellmas_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_spellmas_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = ['enchant_spellmas_3'],
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			4:{
+				effects = ['enchant_spellmas_4'],
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+			
+		}
+	},
+	stun_immune = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_nostun'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+		}
+	},
+	thorns = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true, orflag = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_thorns_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_thorns_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = ['enchant_thorns_3'],
+				cap_cost = 150,
+				gold_cost = 1500
+			},
+			4:{
+				effects = ['enchant_thorns_4'],
+				cap_cost = 200,
+				gold_cost = 2500
+			},
+		}
+	},
+	carapace = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true, orflag = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_carapace_1'],
+				statmods = {armor = 1.07},
+				cap_cost = 20,
+				gold_cost = 250
+			},
+			2:{
+				effects = ['enchant_carapace_2'],
+				statmods = {armor = 1.15},
+				cap_cost = 40,
+				gold_cost = 500
+			},
+			3:{
+				effects = ['enchant_carapace_3'],
+				statmods = {armor = 1.21},
+				cap_cost = 60,
+				gold_cost = 750
+			},
+			4:{
+				effects = ['enchant_carapace_4'],
+				statmods = {armor = 1.28},
+				cap_cost = 80,
+				gold_cost = 1000
+			},
+			5:{
+				effects = ['enchant_carapace_5'],
+				statmods = {armor = 1.35},
+				cap_cost = 100,
+				gold_cost = 1500
+			},
+		}
+	},
+	
+	vampirism = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_vampirism_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_vampirism_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = ['enchant_vampirism_3'],
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			4:{
+				effects = ['enchant_vampirism_4'],
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+			5:{
+				effects = ['enchant_vampirism_5'],
+				cap_cost = 250,
+				gold_cost = 4000
+			},
+		}
+	},
+	commander = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_commander_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_commander_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			
+		}
+	},
+	
+	warlock = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		reqs = [
+#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_warlock_1'],
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = ['enchant_warlock_2'],
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = ['enchant_warlock_3'],
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			4:{
+				effects = ['enchant_warlock_4'],
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+		}
+	},
+}
+
+var curses = {
+	weakness_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_weakness_1'],
+		capacity_multiplyer = 1.25
+	},
+	slowwit_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_slowwit_1'],
+		capacity_multiplyer = 1.25
+	},
+	hideous_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_hideous_1'],
+		capacity_multiplyer = 1.25
+	},
+	decline_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_declide_1'],
+		capacity_multiplyer = 1.25
+	},
+	fragility_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_fragility_1'],
+		capacity_multiplyer = 1.25
+	},
+	distrust_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_distrust_1'],
+		capacity_multiplyer = 1.25
+	},
+	weakness_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_weakness_2'],
+		capacity_multiplyer = 1.5
+	},
+	slowwit_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_slowwit_2'],
+		capacity_multiplyer = 1.5
+	},
+	hideous_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_hideous_2'],
+		capacity_multiplyer = 1.5
+	},
+	decline_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_declide_2'],
+		capacity_multiplyer = 1.5
+	},
+	fragility_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_fragility_2'],
+		capacity_multiplyer = 1.5
+	},
+	distrust_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		effects = ['curse_distrust_2'],
+		capacity_multiplyer = 1.5
+	},
+}

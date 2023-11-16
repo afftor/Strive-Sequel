@@ -326,7 +326,7 @@ func skill_selected(skill):
 		$SkillTooltip/exp.text = str(skill.learn_cost) + " SP"
 	$SkillTooltip/cooldown.text = str(skill.combatcooldown)
 	if skill.cost.has("mp"):
-		$SkillTooltip/usage.text = str(skill.cost.mp)
+		$SkillTooltip/usage.text = str(int(skill.cost.mp * person.get_stat('manacost_mod')))
 
 func buy_skill():
 	person.learn_c_skill(selected_skill.code)

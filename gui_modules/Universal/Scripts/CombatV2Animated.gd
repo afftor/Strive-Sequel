@@ -239,6 +239,7 @@ func FinishCombat(victory = true):
 			else:
 				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
+	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
 	for i in range(battlefield.size()):
@@ -290,6 +291,7 @@ func select_actor():
 		enemy_turn(currentactor)
 
 func newturn():
+	effects_pool.process_event(variables.TR_TURN_S)
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_TURN_S)
@@ -370,7 +372,9 @@ func victory():
 	input_handler.StopMusic()
 	#on combat ends triggers
 	for p in playergroup.values():
-		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
+		var t_p = characters_pool.get_char_by_id(p)
+		t_p.process_event(variables.TR_COMBAT_F)
+	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 
 #	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
@@ -616,15 +620,22 @@ func player_turn(pos):
 	activecharacter = selected_character
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
+	effects_pool.process_event(variables.TR_TURN_GET, selected_character)
 	selected_character.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 #	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
 #	$Panel3/Label.text = selected_character.get_short_name()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
+	while !q_skills.empty():
+		var tdata = q_skills.pop_front()
+		var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)
+		if typeof(tstate) == TYPE_OBJECT:
+			yield(tstate, 'completed')
 	if !selected_character.can_act():
 		#combatlogadd("%s cannot act" % selected_character.name)
 		selected_character.process_event(variables.TR_TURN_F)
+		effects_pool.process_event(variables.TR_TURN_F, selected_character)
 		selected_character.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
 		return
@@ -765,12 +776,14 @@ func enemy_turn(pos):
 #	$Panel3/Label.text = fighter.get_short_name()
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
+	effects_pool.process_event(variables.TR_TURN_GET, fighter)
 	fighter.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if !fighter.can_act():
 		#combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
+		effects_pool.process_event(variables.TR_TURN_F, fighter)
 		fighter.displaynode.rebuildbuffs() #I got error here once @SphinxKingStone
 		call_deferred('select_actor')
 		return
@@ -1148,7 +1161,9 @@ func use_skill(skill_code, caster, target):
 
 	if caster == null: caster = dummy
 
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST, s_skill1)
+	if typeof(caster) != TYPE_DICTIONARY: 
+		caster.process_event(variables.TR_CAST, s_skill1)
+		effects_pool.process_event(variables.TR_CAST, caster)
 	if skill_callback_args != null and skill_callback_args.value == COPY_ENABLED:
 		skill_callback_args.value = COPY_DENY
 	turns += 1
@@ -1220,8 +1235,11 @@ func use_skill(skill_code, caster, target):
 		#predamage triggers
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_HIT)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+			if typeof(caster) != TYPE_DICTIONARY: 
+				s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+				effects_pool.process_event(variables.TR_HIT, s_skill2.caster)
 			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
+			effects_pool.process_event(variables.TR_DEF, s_skill2.target)
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
@@ -1251,13 +1269,18 @@ func use_skill(skill_code, caster, target):
 		#postdamage triggers and cleanup real_target s_skills
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_POSTDAMAGE)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
+			if typeof(caster) != TYPE_DICTIONARY: 
+				s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
+				effects_pool.process_event(variables.TR_POSTDAMAGE, s_skill2.caster)
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.add_stat('metrics_kills', 1)
+				if typeof(caster) != TYPE_DICTIONARY: 
+					caster.process_event(variables.TR_KILL, s_skill2)
+					effects_pool.process_event(variables.TR_KILL, caster)
+				if typeof(caster) != TYPE_DICTIONARY: caster.add_stat('metrics_kills', 1)
 			else:
-				s_skill2.target.process_event(variables.TR_POST_TARG)
+				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
+				effects_pool.process_event(variables.TR_POST_TARG, s_skill2.target)
 			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
@@ -1266,7 +1289,9 @@ func use_skill(skill_code, caster, target):
 			s_skill2.remove_effects()
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
+	if typeof(caster) != TYPE_DICTIONARY: 
+		caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
+		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
 	s_skill1.remove_effects()
 	#follow-up
 	if skill.has('follow_up') and fa:
@@ -1287,6 +1312,7 @@ func use_skill(skill_code, caster, target):
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		caster.process_event(variables.TR_TURN_F)
+		effects_pool.process_event(variables.TR_TURN_F, caster)
 		caster.displaynode.rebuildbuffs()
 		#use queued skills
 		while !q_skills.empty():
@@ -1569,14 +1595,14 @@ func execute_skill(s_skill2):
 		if !i.check_conditions(): continue
 		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
 		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
-			if i.is_drain && s_skill2.tags.has('no_log'):
+			if i.is_drain > 0.0 && s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval)
-			elif i.is_drain:
+				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
+			elif i.is_drain > 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval)
+				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
 				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.get_stat('name'), rval, s_skill2.target.get_stat('name'), rval2]
-			elif s_skill2.tags.has('no_log') && !i.is_drain:
+			elif s_skill2.tags.has('no_log') && i.is_drain <= 0.0:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
@@ -1595,8 +1621,8 @@ func execute_skill(s_skill2):
 				s_skill2.target.mana_update(i.value)
 		elif i.damagestat == 'restore_mana' and i.dmgf == 1: #drain, damage, damage no log, drain no log
 			var rval = s_skill2.target.mana_update(-i.value)
-			if i.is_drain:
-				var rval2 = s_skill2.caster.mana_update(rval)
+			if i.is_drain > 0.0:
+				var rval2 = s_skill2.caster.mana_update(rval * i.is_drain)
 				if !s_skill2.tags.has('no log'):
 					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.get_stat('name'), rval, s_skill2.target.get_stat('name'), rval2]
 			if !s_skill2.tags.has('no log'):
@@ -1610,16 +1636,16 @@ func execute_skill(s_skill2):
 					text += "%s restored %d %s." %[s_skill2.target.get_stat('name'), rval, tr(stat)]
 			elif mod == 1:
 				var rval = s_skill2.target.stat_update(stat, -i.value)
-				if i.is_drain:
-					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+				if i.is_drain > 0.0:
+					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if !s_skill2.tags.has('no log'):
 						text += "%s drained %d %s from %s." %[s_skill2.caster.get_stat('name'), i.value, tr(stat),  s_skill2.target.get_stat('name')]
 				elif !s_skill2.tags.has('no log'):
 					text += "%s loses %d %s." %[s_skill2.target.get_stat('name'), -rval, tr(stat)]
 			elif mod == 2:
 				var rval = s_skill2.target.stat_update(stat, i.value, true)
-				if i.is_drain:# use this on your own risk
-					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+				if i.is_drain > 0.0:# use this on your own risk
+					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
 					if !s_skill2.tags.has('no log'):
 						text += "%s drained %d %s from %s." %[s_skill2.caster.get_stat('name'), i.value, tr(stat),  s_skill2.target.get_stat('name')]
 				elif !s_skill2.tags.has('no log'):
@@ -1699,7 +1725,7 @@ func RebuildSkillPanel():
 			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 			newbutton.get_node("Icon").texture = skill.icon
 			if skill.cost.has('mp'):
-				newbutton.get_node("manacost").text = str(skill.cost.mp)
+				newbutton.get_node("manacost").text = str(int(skill.cost.mp * activecharacter.get_stat('manacost_mod')))
 				newbutton.get_node("manacost").visible = true
 			if !activecharacter.check_cost(skill.cost):
 	#			newbutton.get_node("Icon").modulate = Color(0,0,1)

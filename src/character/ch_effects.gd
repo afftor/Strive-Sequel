@@ -88,10 +88,20 @@ func apply_temp_effect(eff_id):
 	else:
 		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
 		match eff_a.template.type:
-			'temp_s':eff_a.reset_duration()
-			'temp_p':eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
-			'temp_u':eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
-		eff.remove()
+			'temp_s':
+				eff_a.reset_duration()
+				eff.remove()
+			'temp_p':
+				eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
+				eff.remove()
+			'temp_u':
+				eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
+				eff.remove()
+			'temp_global':
+				remove_temp_effect(temp_effects[tmp.index])
+				temp_effects.push_back(eff_id)
+				eff.applied_char = parent.get_ref().id
+				eff.apply()
 
 func recheck_effect_tag(tg):
 	var e_list = find_temp_effect_tag(tg)
@@ -114,7 +124,7 @@ func apply_effect(eff_id):
 			#obj.applied_pos = position
 			obj.applied_char = parent.get_ref().id
 			obj.apply()
-		'temp_s','temp_p','temp_u':
+		'temp_s','temp_p','temp_u', 'temp_global':
 			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
 			apply_temp_effect(eff_id)
 #		'area':
@@ -141,7 +151,7 @@ func remove_effect(eff_id):
 	match obj.template.type:
 		'static','c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
-		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
+		'temp_s','temp_p','temp_u', 'temp_global': temp_effects.erase(eff_id)
 #		'area': remove_area_effect(eff_id)
 
 func clean_broken_effects():
@@ -184,6 +194,10 @@ func clean_effects():#clean effects before deleting character
 func process_event(ev, skill = null):
 	for e in temp_effects.duplicate():
 		var eff = effects_pool.get_effect_by_id(e)
+		if eff is temp_e_global:
+			continue
+		if eff.tags.has('tick_after_trigger'): 
+			continue
 		eff.process_event(ev)
 	for e in triggered_effects.duplicate():
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
@@ -193,6 +207,13 @@ func process_event(ev, skill = null):
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(ev)
+	for e in temp_effects.duplicate():
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff is temp_e_global:
+			continue
+		if !eff.tags.has('tick_after_trigger'): 
+			continue
+		eff.process_event(ev)
 
 #func process_skill_cast_event(s_skill, event):
 #	for e in triggered_effects:
@@ -254,7 +275,8 @@ func get_all_buffs():
 		tmp.push_back(tbuff)
 	
 	for b_a in res.values():
-		for b in b_a: tmp.push_back(b)
+		for b in b_a: 
+			tmp.push_back(b)
 	return tmp
 
 
