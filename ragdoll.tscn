@@ -5637,11 +5637,11 @@ position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
-visible = false
 light_mask = 4
 material = SubResource( 111 )
 position = Vector2( 567, -10.002 )
 rotation = -1.5708
+scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 24 )
 
 [node name="Hair" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/Head"]
@@ -5714,7 +5714,6 @@ __meta__ = {
 }
 
 [node name="Ears_humanoid_tex_long" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
-visible = false
 light_mask = 4
 material = SubResource( 113 )
 position = Vector2( 567, -10.002 )

@@ -717,6 +717,7 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	person = ResourceScripts.scriptdict.class_slave.new("char_creation")
 	person.set_stat('age', 'adult')
 	person.set_stat('race', 'Human')
+	init_upgrades()
 	match mode:
 		'master':
 			person.set_stat('sex', 'male')
@@ -876,7 +877,7 @@ func check_confirm_possibility():
 			input_handler.SystemMessage("You must select a correct starting Class")
 			return false
 	
-	if !check_upgrades():
+	elif !check_upgrades():
 		return false
 	
 	return true
