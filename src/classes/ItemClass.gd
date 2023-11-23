@@ -482,6 +482,7 @@ func get_bonusstats():
 			for st in enchtemplate.statmods:
 				if res.has(st):
 					res[st] *= enchtemplate.statmods[st]
+	return res
 
 
 func add_curse (c_id):
