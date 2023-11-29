@@ -2070,6 +2070,7 @@ var quests = {
 		summary = "CALI_SERVANTS_QUEST_SUMMARY",
 		stages = {
 			stage1 = {code = 'stage1', name = "CALI_SERVANTS_QUEST_NAME", descript = "CALI_SERVANTS_QUEST_STAGE_1"}, # go to servants
+			stage2 = {code = 'stage2', name = "CALI_SERVANTS_QUEST_NAME", descript = "CALI_SERVANTS_QUEST_STAGE_2"}, # talk to Amelia for bonus
 
 		},
 	},

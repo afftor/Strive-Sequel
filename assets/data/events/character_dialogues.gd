@@ -145,7 +145,9 @@ var data = {
 			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 		}, {
 			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
-		}],
+		}, {
+			code = 'cali_servants_new_leader_6', text = "CALI_SERVANTS_AMELIA_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'cali_servants_quest', stage = 'stage2'}], dialogue_argument = 4, type = 'next_dialogue'
+		}, ],
 	},
 	
 	amelia_dialogue_1 = {

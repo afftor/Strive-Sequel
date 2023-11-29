@@ -177,29 +177,39 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_5", reqs = []} ], 
 		options = [ {
-			code = 'cali_servants_new_leader_6', text = "CALI_SERVANTS_NEW_LEADER_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'cali_servants_new_leader_end_dialogue', text = "CALI_SERVANTS_NEW_LEADER_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
-			code = 'cali_servants_new_leader_6', text = "CALI_SERVANTS_NEW_LEADER_5_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'cali_servants_new_leader_end_dialogue', text = "CALI_SERVANTS_NEW_LEADER_5_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		} ],
+	},
+	cali_servants_new_leader_end_dialogue = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], 
+		reqs = [],
+		character = "cali",
+		text = [ {text = "CALI_SERVANTS_NEW_LEADER_END_DIALOGUE", reqs = []} ], 
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}, 
+			{code = 'progress_quest', value = 'cali_servants_quest', stage = 'stage2'}]
+		}, ],
 	},
 	cali_servants_new_leader_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		character = "cali",
+		character = "cali", character2 = "amelia",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_6", reqs = []} ],
 		options = [ {
 			code = 'cali_servants_new_leader_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', }, ],
 	},
 	cali_servants_new_leader_7 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		character = "cali",
+		character = "cali", character2 = "amelia",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_7", reqs = []} ],
 		options = [ {
 			code = 'cali_servants_new_leader_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', }, ],
 	},
 	cali_servants_new_leader_8 = {
 		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'], reqs = [], 
-		character = "cali",
+		character = "cali", character2 = "amelia",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_8", reqs = []} ],
 		options = [ 
 			{
@@ -215,7 +225,7 @@ var data = {
 	},
 	cali_servants_new_leader_9 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		character = "cali",
+		character = "cali", character2 = "amelia",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_9", reqs = []} ],
 		options = [{
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
