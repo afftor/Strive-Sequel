@@ -542,12 +542,12 @@ func fix_main_data():
 			Items.materiallist[k].parts[i] = Items.partmaterials[i][k].duplicate()
 	
 	for i in Items.curses:
-		Items.curses[i].name = tr("CURSE" + i.code.to_upper())
-		Items.curses[i].descript = tr("CURSE" + i.code.to_upper()+"DESCRIPT")
+		Items.curses[i].name = tr("CURSE" + i.to_upper())
+		Items.curses[i].descript = tr("CURSE" + i.to_upper()+"DESCRIPT")
 	
 	for i in Items.enchantments:
-		Items.enchantments[i].name = tr("ENCH" + i.code.to_upper())
-		Items.enchantments[i].descript = tr("ENCH" + i.code.to_upper()+"DESCRIPT")
+		Items.enchantments[i].name = tr("ENCH" + i.to_upper())
+		Items.enchantments[i].descript = tr("ENCH" + i.to_upper()+"DESCRIPT")
 	
 	#fix races
 	for i in races.racelist.values():

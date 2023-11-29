@@ -470,17 +470,19 @@ func get_bonusstats():
 	var mul = variables.itemquality_multiplier[quality]
 	for st in res:
 		res[st] *= mul
-	var cursetemplate = Items.curses[curse]
-	if cursetemplate.has('statmods'):
-		for st in cursetemplate.statmods:
-			if res.has(st):
-				res[st] *= cursetemplate.statmods[st]
+	if curse != null:
+		var cursetemplate = Items.curses[curse]
+		if cursetemplate.has('statmods'):
+			for st in cursetemplate.statmods:
+				if res.has(st):
+					res[st] *= cursetemplate.statmods[st]
 	for bless in enchants:
 		var enchtemplate = Items.enchantments[bless].levels[enchants[bless]]
 		if enchtemplate.has('statmods'):
 			for st in enchtemplate.statmods:
 				if res.has(st):
 					res[st] *= enchtemplate.statmods[st]
+	return res
 
 
 func add_curse (c_id):
