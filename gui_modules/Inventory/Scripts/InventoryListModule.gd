@@ -197,7 +197,8 @@ func useitem(item, type):
 		button.pressed = false
 	if type == 'gear':
 		var item_prev_id = item.id
-		var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)
+#		var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)
+		var equiped_item = item.clone()
 		globals.AddItemToInventory(equiped_item, false)
 		selectedhero.equip(equiped_item, item_prev_id)
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
