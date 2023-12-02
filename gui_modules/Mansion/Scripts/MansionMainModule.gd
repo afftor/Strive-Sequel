@@ -204,7 +204,7 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	if gui_controller.clock != null and visible:
+	if gui_controller.clock != null and visible and mansion_state != 'craft':
 		gui_controller.clock.show()
 		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule

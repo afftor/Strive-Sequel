@@ -40,11 +40,21 @@ var slots = []
 var hitsound
 var interaction_use = false
 
-var enchants = []
+var enchants = {}
 var curse = null
 var curse_known = false
 
 var quality = 'poor'
+
+
+func clone():
+	var res = dict2inst(inst2dict(self))
+	res.id = null
+	res.owner = null
+	res.amount = 1
+	res.enchants = enchants.duplicate()
+	res.effects = effects.duplicate()
+	return res
 
 
 func check_reqs(arg):
@@ -221,6 +231,9 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 func fix_gear():
 	var template = Items.itemlist[itembase]
 	reqs = template.reqs.duplicate()
+	
+	for id in enchants:
+		enchants[id] = int(enchants[id])
 
 
 func substractitemcost():
@@ -295,9 +308,10 @@ func tooltiptext():
 		text += "\n" + tempslave.decipher_reqs(reqs)
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n"
-		for i in bonusstats:
-			if bonusstats[i] != 0:
-				var value = bonusstats[i]
+		var t_bonusstats = get_bonusstats()
+		for i in t_bonusstats:
+			if t_bonusstats[i] != 0:
+				var value = t_bonusstats[i]
 				var change = ''
 				if statdata.statdata[i].percent:
 					value = value*100
@@ -353,7 +367,7 @@ func tooltiptext_2():
 		text += "\n\n"
 
 	if itemtype in ['armor','weapon','tool']:
-		text += globals.build_desc_for_bonusstats(bonusstats)
+		text += globals.build_desc_for_bonusstats(get_bonusstats())
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += tr("INPOSESSION") + ': ' + str(amount)
@@ -367,9 +381,10 @@ func tooltiptext_light():
 	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
 	if itemtype in ['armor','weapon','tool']:
 		# text += "\n"
-		for i in bonusstats:
-			if bonusstats[i] != 0:
-				var value = bonusstats[i]
+		var t_bonusstats = get_bonusstats()
+		for i in t_bonusstats:
+			if t_bonusstats[i] != 0:
+				var value = t_bonusstats[i]
 				var change = ''
 				if statdata.statdata[i].percent:
 					value = value*100
@@ -393,7 +408,9 @@ func tooltiptext_light():
 func tooltipeffects():
 	var text = ''
 	for i in effects:
-		if Effectdata.effect_table[i].descript != '':
+		if !Effectdata.effect_table[i].has('descript'):
+			text += tr(i) + '\n'
+		elif Effectdata.effect_table[i].descript != '':
 			text += tr(Effectdata.effect_table[i].descript) + "\n"
 #		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
 #		text += '}\n'
@@ -460,8 +477,8 @@ func get_e_capacity_max():
 func get_e_capacity():
 	var res = get_e_capacity_max()
 	for e_id in enchants:
-		var enc_template = Items.enchantments[e_id]
-		res -= enc_template.levels[enchants[e_id]].cap_cost
+		var ench_template = Items.enchantments[e_id]
+		res -= ench_template.levels[enchants[e_id]].cap_cost
 	return res
 
 
@@ -541,8 +558,8 @@ func _remove_enchant(e_id): #internal
 			effects.erase(eff)
 
 
-func add_enchant(e_id, lvl):
-	if !can_add_enchant(e_id, lvl):
+func add_enchant(e_id, lvl, is_free = false):
+	if !is_free and !can_add_enchant(e_id, lvl):
 		return
 	
 	var tmp = null
@@ -553,12 +570,12 @@ func add_enchant(e_id, lvl):
 	_remove_enchant(e_id)
 	enchants[e_id] = lvl
 	var enchdata = Items.enchantments[e_id].levels[lvl]
-	var goldcost = enchdata.gold_cost
-	ResourceScripts.game_res.mone -= goldcost
+	if !is_free:
+		var goldcost = enchdata.gold_cost
+		ResourceScripts.game_res.money -= goldcost
 	if enchdata.has('effects'):
 		for eff in enchdata.effects:
 			effects.push_back(eff)
-	
 	
 	if tmp != null:
 		characters_pool.get_char_by_id(tmp).equip(self)
