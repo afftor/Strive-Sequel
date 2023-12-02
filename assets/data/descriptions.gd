@@ -35,7 +35,7 @@ func create_character_description(character):
 
 var descriptionorder = [
 'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'body_color_skin', 'skin_coverage','wings', 'tail', 'height', 
-'[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
+'[newline]','tits_size','multiple_tits','lactation','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
 func new_charcter_description(character):
@@ -46,7 +46,7 @@ func new_charcter_description(character):
 	var check_skin_coverage = false
 
 	for i in descriptionorder:
-		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo','slave_status']:
+		if i in ['entry','pregnancy','multiple_tits','lactation','piercing','tattoo','slave_status']:
 			var temptext = call(i)
 			if temptext != "":
 				text += temptext
@@ -114,6 +114,14 @@ func multiple_tits():
 		text = ''
 	return text
 
+func lactation():
+	var text
+	if person.get_stat('lactation') == true:
+		text = "[His] nipples are {color=yellow|secreting milk}. "
+	else:
+		text = ''
+	return text
+
 func slave_status():
 	if person.is_players_character == false || person.get_stat('slave_class') == 'master':
 		return ''
@@ -138,7 +146,7 @@ func slave_status():
 #			text += "\n\n[His] unborn child forces [his] belly to protrude massively; [he] will give birth soon."
 #		elif person.pregnancy.duration > variables.pregduration/2:
 #			text += "\n\n[His] advanced pregnancy is clearly evident by the prominent bulge in [his] belly."
-#		elif person.pregnancy.duration > variables.pregduration/4:
+	#		elif person.pregnancy.duration > variables.pregduration/4:
 #			text += "\n\n[His] unborn fetus causes [his] belly to bulge slightly."
 #		if person.has_womb == false && person.sex != 'male':
 #			text += "\n\n[color=yellow][name]'s womb is sterile.[/color]"

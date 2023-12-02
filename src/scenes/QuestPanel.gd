@@ -96,7 +96,9 @@ func show_quest_info(quest):
 					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
 				'slave_delivery':
 					newbutton.texture = images.icons.quest_slave_delivery
-					var tooltiptext = "Slave Required:\n"
+					newbutton.get_node("amount").show()
+					newbutton.get_node("amount").text = str(i.value)
+					var tooltiptext = str(i.value) + "Slave(s) Required:\n"
 					for k in i.statreqs:
 						if k.code in ['is_master', 'is_free']:
 							continue
@@ -108,6 +110,13 @@ func show_quest_info(quest):
 									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 							'sex':
 								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
+								
+							'one_of_races':
+								tooltiptext += "Race: " 
+								for j in k.value:
+									tooltiptext += tr("RACE" + j.to_upper()) + ", "
+								tooltiptext = tooltiptext.substr(0, tooltiptext.length() - 2) + ".\n"
+					tooltiptext += str(i.delivered_slaves) + "/" + str(i.value) + " slaves delivered."
 					globals.connecttexttooltip(newbutton,tooltiptext)
 		
 		
@@ -190,7 +199,7 @@ func CompleteQuest():
 				"random_item":
 					check = i.completed
 				"slave_delivery":
-					check = i.completed
+					check = i.delivered_slaves == i.value
 				'complete_dungeon','complete_location':
 					check = ResourceScripts.world_gen.get_location_from_code(i.location).completed
 			if check == false:

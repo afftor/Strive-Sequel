@@ -134,5 +134,12 @@ func sensitivity_pot(character):
 	character.add_stat("lust", character.get_stat("lustmax"))
 	input_handler.interactive_message("sensitivity_pot_use",'char_translate',character)
 
+func lactation_pot(character):
+	character.set_stat('lactation', !character.get_stat('lactation'))
+	if character.get_stat('lactation') == true:
+		input_handler.interactive_message_follow("lactation_potion_success",'char_translate',character)
+	else:
+		input_handler.interactive_message_follow("lactation_potion_reverse",'char_translate',character)
+
 func close():#for the cancel function
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()

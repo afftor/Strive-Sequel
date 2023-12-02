@@ -32,8 +32,8 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	zephyra = {
 	code = 'zephyra', 
 	scenes = [
-#		{code = 'zephyra_quest_1', reqs = [{type = 'decision', value = 'mayor_election_finished', check = true},
-#		{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_QUEST_2'}]},
+		{code = 'zephyra_quest_1', reqs = [{type = 'decision', value = 'mayor_election_finished', check = true},
+			{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_QUEST_2'}]},
 		{code = 'zephyra_dialogue_start', reqs = []}
 		]
 	},

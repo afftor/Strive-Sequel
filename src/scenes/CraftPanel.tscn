@@ -480,8 +480,8 @@ margin_left = 88.0
 margin_top = 100.0
 margin_right = 120.0
 margin_bottom = 124.0
-custom_fonts/font = ExtResource( 41 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 41 )
 text = "5"
 align = 2
 

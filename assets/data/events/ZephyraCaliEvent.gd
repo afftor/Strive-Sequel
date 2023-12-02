@@ -95,6 +95,7 @@ var data = {
 		text = [{text = "ZCEVENT_9", reqs = []}],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "cali_zephyra",
 		custom_background = "cali_zephyra_1",
 		
 		options = [ {

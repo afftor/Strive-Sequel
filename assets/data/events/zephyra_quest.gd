@@ -78,25 +78,44 @@ var data = {
 	},
 	
 	zephyra_quest_8 = { 
-		image = null, tags = ['dialogue_scene'],
-		reqs = [], character = "zephyra",
-		custom_background = "church_event",
-		text = [{text = "ZEPHYRA_QUEST_8_1", reqs = [], previous_dialogue_option = 1},
-		{text = "ZEPHYRA_QUEST_8_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 50}]}], previous_dialogue_option = 2,
-		bonus_effects = [
+		variations = [ {
+			image = null, tags = ['dialogue_scene'],
+			reqs = [{type = "quest_completed", name = "daisy_training", check = true}, {type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}]}], character = "zephyra",
+			custom_background = "church_event",
+			text = [{text = "ZEPHYRA_QUEST_8_1", reqs = [], previous_dialogue_option = 1},
+			{text = "ZEPHYRA_QUEST_8_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 50}]}], previous_dialogue_option = 2,
+			bonus_effects = [
+					{code = 'unique_character_changes', value = 'zephyra', args = [
+						{code = 'loyalty', operant = '+', value = 30},
+						]}],}, 
+			{text = "ZEPHYRA_QUEST_8_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 50}]}], previous_dialogue_option = 2}, 
+			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300}, 
 				{code = 'unique_character_changes', value = 'zephyra', args = [
-					{code = 'loyalty', operant = '+', value = 30},
-					]}],}, 
-		{text = "ZEPHYRA_QUEST_8_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 50}]}], previous_dialogue_option = 2}, 
-		{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300}, 
-			{code = 'unique_character_changes', value = 'zephyra', args = [
-					{code = 'loyalty', operant = '+', value = 50},
-					]}]}],
-		options = [ { 
-			code = 'zephyra_daisy_1', text = "DIALOGUECONTINUE", reqs = [{type = "quest_completed", name = "daisy_training", check = true}, {type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}]},], dialogue_argument = 1, type = 'next_dialogue',
-		}, { 
-			code = 'zephyra_visitor_1', text = "DIALOGUECONTINUE", reqs = [{type = "quest_completed", name = "daisy_training", check = false}, {type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = false}], orflag = true},], dialogue_argument = 1, type = 'next_dialogue',
-		}, ]
+						{code = 'loyalty', operant = '+', value = 50},
+						]}]}],
+			options = [ { 
+				code = 'zephyra_daisy_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			}, ]
+		}, {
+			image = null, tags = ['dialogue_scene'],
+			reqs = [], character = "zephyra",
+			custom_background = "church_event",
+			text = [{text = "ZEPHYRA_QUEST_8_1", reqs = [], previous_dialogue_option = 1},
+			{text = "ZEPHYRA_QUEST_8_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 50}]}], previous_dialogue_option = 2,
+			bonus_effects = [
+					{code = 'unique_character_changes', value = 'zephyra', args = [
+						{code = 'loyalty', operant = '+', value = 30},
+						]}],}, 
+			{text = "ZEPHYRA_QUEST_8_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 50}]}], previous_dialogue_option = 2}, 
+			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300}, 
+				{code = 'unique_character_changes', value = 'zephyra', args = [
+						{code = 'loyalty', operant = '+', value = 50},
+						]}]}],
+			options = [ { 
+				code = 'zephyra_visitor_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			}, ]
+		}
+		]
 	},
 	
 	zephyra_daisy_1 = {
@@ -337,7 +356,7 @@ var data = {
 	
 	zephyra_lilia_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
+		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
 		character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_1", reqs = []}],
 		options = [ {

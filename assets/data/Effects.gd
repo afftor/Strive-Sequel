@@ -775,6 +775,48 @@ var effect_table = {
 			}
 		],
 	},
+	
+	e_i_physbuf = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'physbuf',
+		rem_event = variables.TR_TICK,
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'physics_bonus', value = 80},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/hairgrowthpot.png",
+				description = "TRAITEFFECTPHYSBUF",
+				limit = 1,
+				t_name = 'physbuf',
+			}
+		],
+	},
+	
+	e_i_witsbuf = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'physbuf',
+		rem_event = variables.TR_TICK,
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'wits_bonus', value = 80},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/deterrentpot.png",
+				description = "TRAITEFFECTWITSBUF", 
+				limit = 1,
+				t_name = 'witsbuf',
+			}
+		],
+	},
 
 	e_food_like = {
 		type = 'temp_s',
@@ -4013,7 +4055,7 @@ var effect_table = {
 		type = 'c_static',
 		conditions = [
 			{code = 'trait', trait = 'deviant', check = false},
-			{code = 'stat', stat = 'sex_factor', operant = 'lt', value = 5}
+			{code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 5}
 		],
 		tags = ['recheck_trait', 'recheck_item'],
 		descript = "TRAITEFFECTTENTACLESUB",

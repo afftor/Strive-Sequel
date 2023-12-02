@@ -864,7 +864,25 @@ var scenedict = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 		],
 	},
-
+	
+	
+	lactation_potion_success = {
+		text = tr("DIALOGUELACTATION_SUCCESS"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	lactation_potion_reverse = {
+		text = tr("DIALOGUELACTATION_REVERSE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	
 	#Action events
 	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	hire = {text = tr("DIALOGUEHIRETEXT"), image = 'praise', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
@@ -1541,6 +1559,13 @@ var dialogue_inits = {
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
 			target = 'amelia_dialogue_start',
 			target_option = 0,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'quest_completed', check = true, name = 'amelia_main_quest'}],
+			target = 'servants_introduction_new_leader',
+			target_option = 1,
 		},
 		{
 			code = 'default',

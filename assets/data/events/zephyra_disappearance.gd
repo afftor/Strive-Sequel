@@ -483,7 +483,7 @@ var data = {
 		options = [ { # rem zephyra 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}] 
+			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}, {code = "update_city"}] 
 		}, ]
 	},
 	
@@ -492,6 +492,7 @@ var data = {
 		reqs = [], character = "ketch",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2", reqs = []},
 		],
+		common_effects = [{code = 'remove_item', name = 'sacred_bowl', number = 1}],
 		options = [ {
 			code = 'zephyra_disappearance_ketch_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',  
 		}, ]
@@ -536,7 +537,7 @@ var data = {
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}]  
+			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}, {code = "update_city"}]  
 		}, ]
 	},
 	
@@ -583,7 +584,7 @@ var data = {
 	zephyra_disappearance_sex_2 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], 
-		custom_background = "zephyra_back_2", 
+		custom_background = "zephyra_back_1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_2", reqs = []}
@@ -596,13 +597,17 @@ var data = {
 	zephyra_disappearance_sex_3 = { 
 		image = null, tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [], 
-		custom_background = "zephyra_back_3", 
+		custom_background = "zephyra_back_2", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_3", reqs = []}
 		], 
 		options = [ { 
-			code = 'zephyra_disappearance_sex_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, { 
+			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+		}, { 
+			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 		}, ]
 	},
 	
@@ -612,7 +617,9 @@ var data = {
 		custom_background = "zephyra_back_3", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_4", reqs = []}
+		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_4_1", reqs = [], previous_dialogue_option = 1},
+		{text = "ZEPHYRA_DISAPPEARANCE_SEX_4_2", reqs = [], previous_dialogue_option = 2},
+		{text = "ZEPHYRA_DISAPPEARANCE_SEX_4_3", reqs = [], previous_dialogue_option = 3},
 		], 
 		options = [ { 
 			code = 'zephyra_disappearance_sex_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -630,7 +637,7 @@ var data = {
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'affect_unique_character', name = 'zephyra', type = 'set_availability', value = true}] 
+			{code = 'affect_unique_character', name = 'zephyra', type = 'set_availability', value = true}, {code = "update_city"}] 
 		}, ]
 	},
 	
@@ -641,7 +648,7 @@ var data = {
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'affect_unique_character', name = 'zephyra', type = 'set_availability', value = true}] 
+			{code = 'affect_unique_character', name = 'zephyra', type = 'set_availability', value = true}, {code = "update_city"}] 
 		}, ]
 	},
 	
@@ -789,14 +796,14 @@ var data = {
 	zephyra_brush_2 = {
 		variations = [ {
 				image = null, tags = ['dialogue_scene', 'master_translate'],
-				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'lt', value = 90}]}], character = "myr",
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'lt', value = 9}]}], character = "myr",
 				text = [{text = "ZEPHYRA_BRUSH_2_2", reqs = []}],
 				options = [ {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
 				} ]
 			}, {
 				image = null, tags = ['dialogue_scene', 'master_translate'],
-				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 90}]}], character = "myr",
+				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 9}]}], character = "myr",
 				text = [{text = "ZEPHYRA_BRUSH_2_1", reqs = []}],
 				common_effects = [{code = 'make_quest_location', value = 'quest_ancient_jungle_location'}],
 				options = [ {
@@ -929,8 +936,8 @@ var data = {
 	},
 	
 	zephyra_brush_12 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'zephyra',
+		image = "forest_hut_fire", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_12", reqs = []},
 		],
 		options = [ {
@@ -939,8 +946,8 @@ var data = {
 	},
 	
 	zephyra_brush_13 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_forest", tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_13", reqs = []},
 		],
 		options = [ {
@@ -949,8 +956,8 @@ var data = {
 	},
 	
 	zephyra_brush_14 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_forest_shining", tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
 		text = [{text = "ZEPHYRA_BRUSH_14", reqs = []},
 		],
 		options = [ {
@@ -996,13 +1003,13 @@ var data = {
 	},
 	
 	zephyra_brush_17 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
-		reqs = [], character = 'zephyra',
+		image = "zephyra_kiss", tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		reqs = [], 
 		text = [{text = "ZEPHYRA_BRUSH_17", reqs = []},
 		],
 		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'screen_black_transition', value = 1}]
 		} ]
 	},
 	

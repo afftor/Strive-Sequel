@@ -134,6 +134,8 @@ func see_quest_info(quest):
 				)
 			'slave_delivery':
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
+				newbutton.get_node("amount").show()
+				newbutton.get_node("amount").text = str(i.value)
 				var tooltiptext = tr("QUESTSLAVEREQUIRED") + ":\n"
 				for k in i.statreqs:
 					if k.code in ['is_master', 'is_free']:
@@ -144,17 +146,14 @@ func see_quest_info(quest):
 								tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  ResourceScripts.descriptions.factor_descripts[int(k.value)] + " "  + "\n"
 							else:
 								tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
-#							tooltiptext += (
-#								statdata.statdata[k.stat].name
-#								+ ": "
-#								+ input_handler.operant_translation(k.operant)
-#								+ " "
-#								+ str(k.value)
-#								+ " "
-#								+ "\n"
-#							)
 						'sex':
 							tooltiptext += "Sex: " + tr('SLAVESEX' + k.value.to_upper()) + "\n"
+						'one_of_races':
+							tooltiptext += "Race: " 
+							for j in k.value:
+								tooltiptext += tr("RACE" + j.to_upper()) + ", "
+							tooltiptext = tooltiptext.substr(0, tooltiptext.length() - 2) + ".\n"
+				tooltiptext += str(i.delivered_slaves) + "/" + str(i.value) + " slaves delivered."
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
 				var time = ''

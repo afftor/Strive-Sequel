@@ -137,6 +137,35 @@ var data = {
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 
 	},
+	
+	servants_introduction_new_leader = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "SERVANTS_INTRODUCTION_NEW_LEADER_1", reqs = [], previous_dialogue_option = 1},
+		],
+		options = [
+		{code = 'daisy_training_new_leader_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'daisy_lost_new_leader_1', text = "DAISY_LOST_NEW_LEADER_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'daisy_lost', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_servants_new_leader_1', text = "MARRIAGE_SERVANTS_INIT", reqs = [{type = 'active_quest_stage', value = 'marriage_quest_main', stage = 'stage2'},{type = 'dialogue_seen', check = false, value = 'MARRIAGE_SERVANTS_NEW_LEADER_1_3'}], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'marriage_servants_new_leader_completed_1', text = "MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_OPTION", reqs = [
+			{type = 'active_quest_stage', value = 'marriage_quest_servants', stage = 'stage1'},
+			{type = 'has_money', value = 3000},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'fish'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'meat'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'vegetables'},
+			{type = 'has_material', operant = 'gte', value = 200, material = 'grain'},
+			{type = 'has_items', operant = 'gte', value = 25, name = 'beer'},
+			{type = 'has_items', operant = 'gte', value = 10, name = 'alcohol'}
+		], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'cali_servants_new_leader_1', text = "CALI_SERVANTS_NEW_LEADER_START_OPTION", reqs = [
+			{type = 'active_quest_stage', value = 'cali_servants_quest', stage = 'stage1'},
+			{type = 'has_money', value = 500}
+			], type = 'next_dialogue', dialogue_argument = 0},
+		
+		{code = 'servants_new_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		], 
+	},
 
 
 	mages_introduction3 = {

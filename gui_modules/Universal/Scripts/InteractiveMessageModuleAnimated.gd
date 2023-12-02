@@ -692,7 +692,7 @@ func handle_characters_sprites(scene):
 			hide_long_text()
 			$CharacterImage2.hide()
 		$CharacterImage.hide()
-		if scene.image != '' && scene.image != null:
+		if scene.has('image') && scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
 			$ImagePanel.hide()
