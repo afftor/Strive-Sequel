@@ -97,4 +97,5 @@ var decisions = {
 	SawZephyrasBrush = "Saw Zephyras Brush under the bed Zephyra disappearance quest",
 	AskedKurosName = "Asked Kuros name when incountering her in the jungle temple",
 	GotZephyrasBrush = "Got Zephyras Brush from the jungles",
+	CaliAmeliaBonus = "Finished Cali training and can talk to Amelia for a bonus",
 }

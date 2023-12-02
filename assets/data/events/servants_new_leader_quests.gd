@@ -189,11 +189,14 @@ var data = {
 		character = "cali",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_END_DIALOGUE", reqs = []} ], 
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}, 
-			{code = 'progress_quest', value = 'cali_servants_quest', stage = 'stage2'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"},
+			{code = 'decision', value = 'CaliAmeliaBonus'},
+			{code = 'complete_quest', value = 'cali_servants_quest'},
+			{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
+			{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [5,5], hour = 2}]}]
 		}, ],
 	},
-	cali_servants_new_leader_6 = {
+	cali_servants_new_leader_6 = { # optional part
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		character = "cali", character2 = "amelia",
 		text = [ {text = "CALI_SERVANTS_NEW_LEADER_6", reqs = []} ],
@@ -233,11 +236,7 @@ var data = {
 				{code = 'unique_character_changes', value = 'cali', args = [
 					{code = 'charm', operant = '+', value = 10},
 					{code = 'charm_factor', operant = '+', value = 1},
-				]},
-				{code = 'add_timed_event', value = "cali_sex_5", args = [{type = 'add_to_date', date = [2,2], hour = 2}]},
-				{code = 'add_timed_event', value = "cali_heirloom_1", args = [{type = 'add_to_date', date = [5,5], hour = 2}]},
-				{code = 'complete_quest', value = 'cali_servants_quest'},# or advance
-			 ]
+				]} ]
 		},],
 	},
 	
