@@ -1557,7 +1557,7 @@ var dialogue_inits = {
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
-			target = 'amelia_dialogue_start',
+			target = 'amelia_bonus_question',
 			target_option = 0,
 		},
 		{
