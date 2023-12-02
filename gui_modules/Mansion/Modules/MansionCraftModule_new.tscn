@@ -316,7 +316,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CraftSelect/ScrollContainer"]
 margin_right = 497.0
-margin_bottom = 50.0
+margin_bottom = 212.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
@@ -339,6 +339,93 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
+margin_left = 156.0
+margin_top = 8.0
+margin_right = 357.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 12 )
+text = "Item Name"
+
+[node name="Button2" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 497.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 32 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="CraftSelect/ScrollContainer/VBoxContainer/Button2"]
+margin_left = 16.1876
+margin_top = 6.79477
+margin_right = 64.1876
+margin_bottom = 55.7948
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button2"]
+margin_left = 156.0
+margin_top = 8.0
+margin_right = 357.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 12 )
+text = "Item Name"
+
+[node name="Button3" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 497.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 80, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 32 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="CraftSelect/ScrollContainer/VBoxContainer/Button3"]
+margin_left = 16.1876
+margin_top = 6.79477
+margin_right = 64.1876
+margin_bottom = 55.7948
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button3"]
+margin_left = 156.0
+margin_top = 8.0
+margin_right = 357.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 12 )
+text = "Item Name"
+
+[node name="Button4" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
+margin_top = 162.0
+margin_right = 497.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 80, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 32 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="CraftSelect/ScrollContainer/VBoxContainer/Button4"]
+margin_left = 16.1876
+margin_top = 6.79477
+margin_right = 64.1876
+margin_bottom = 55.7948
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button4"]
 margin_left = 156.0
 margin_top = 8.0
 margin_right = 357.0
@@ -746,6 +833,7 @@ text = "Daisy"
 valign = 1
 
 [node name="MaterialSelect" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 0.337255, 0.792157, 0.462745, 1 )
 margin_left = 349.0
 margin_top = 238.0
@@ -812,7 +900,7 @@ margin_right = 352.333
 margin_bottom = 456.039
 
 [node name="Button" type="Button" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button/VBoxContainer"]
-margin_right = 359.0
+margin_right = 358.0
 margin_bottom = 49.2509
 text = "Wood"
 
@@ -879,7 +967,7 @@ margin_right = 352.333
 margin_bottom = 456.039
 
 [node name="Button" type="Button" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button2/VBoxContainer"]
-margin_right = 359.0
+margin_right = 358.0
 margin_bottom = 49.2509
 text = "Wood"
 
@@ -946,7 +1034,7 @@ margin_right = 352.333
 margin_bottom = 456.039
 
 [node name="Button" type="Button" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button3/VBoxContainer"]
-margin_right = 359.0
+margin_right = 358.0
 margin_bottom = 49.2509
 text = "Wood"
 
@@ -1063,7 +1151,6 @@ __meta__ = {
 }
 
 [node name="Enchant Panel" type="Panel" parent="."]
-visible = false
 margin_left = -286.0
 margin_top = 3.0
 margin_right = 1615.0

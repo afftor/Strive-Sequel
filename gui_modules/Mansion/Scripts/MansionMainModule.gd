@@ -894,7 +894,7 @@ func test_mode():
 
 
 #		ResourceScripts.game_res.materials.meat = 0
-#		globals.common_effects([{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage5'}])
+#		globals.common_effects([{code = 'progress_quest', value = 'election_global_quest', stage = 'stage1'}])
 
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])

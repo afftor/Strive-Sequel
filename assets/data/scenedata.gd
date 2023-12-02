@@ -1816,7 +1816,7 @@ var quests = {
 		code = 'election_global_quest',
 		summary = "ELECTION_GLOBAL_SUMMARY",
 		stages = {
-			stage1 = {code ='stage1', name = 'ELECTION_GLOBAL_NAME', descript = "ELECTION_GLOBAL_STAGE_1 "},
+			stage1 = {code = 'stage1', name = 'ELECTION_GLOBAL_NAME', descript = "ELECTION_GLOBAL_STAGE_1"},
 		},
 	},
 

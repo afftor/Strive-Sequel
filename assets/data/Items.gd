@@ -2778,7 +2778,7 @@ var itemlist = {
 		mansion_effect = 'lactation_pot',
 	},
 	physics_pot = {# +80 physics for 1 time turn
-		code = 'physics_Pot',
+		code = 'physics_pot',
 		name = "",
 		descript = "",
 		type = 'usable',

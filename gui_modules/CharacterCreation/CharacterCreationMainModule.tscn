@@ -82,7 +82,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=80]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/icon_money.png" type="Texture" id=81]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
 shader_param/target1color = Color( 0.654902, 0.380392, 0.266667, 1 )
@@ -818,7 +817,7 @@ expand = true
 [node name="Desc" type="RichTextLabel" parent="VisualsModule"]
 margin_left = 14.0
 margin_top = 79.0
-margin_right = 508.0
+margin_right = 515.0
 margin_bottom = 286.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 74 )
