@@ -57,6 +57,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.575684 ]
 }
+test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -143,13 +144,6 @@ margin_left = 15.0
 margin_top = 253.0
 margin_right = 305.0
 margin_bottom = 678.0
-
-[node name="MansionCraftModule" parent="." instance=ExtResource( 16 )]
-visible = false
-margin_left = 320.0
-margin_top = 85.0
-margin_right = 1420.0
-margin_bottom = 1065.0
 
 [node name="MansionCraftSmallModule" parent="." instance=ExtResource( 21 )]
 visible = false
@@ -276,6 +270,9 @@ texture_hover = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MansionCraftModule" parent="." instance=ExtResource( 16 )]
+visible = false
 
 [node name="TestButton" type="Button" parent="."]
 visible = false

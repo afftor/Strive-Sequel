@@ -1507,16 +1507,7 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.7.2b
-Properly added lactation state on heavy pregnancy progression
-Added Nursing potion to switch lactation on/off
-Added elixirs for physics and wits temporal boost (require alchemy 3) 
-Added new quests for slave delivery
-Removed quests which locked characters for a time period
-Fixed quest task assignments not earning experience for characters
-Fixed multiple questlines being affected by Amelia's recruitment
-Removed default beard generation from many races and set no beard chance to much higher probability
-0.7.2a
+text = "0.7.2a
 Added new effect to Zephyra's unique item
 Paper doll: Fixed pregnant futa, male collars and some other minor issues
 Fixed some character wedding sprites being wrong sizes
