@@ -383,7 +383,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}] 
+			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}, {code = "update_city"}] 
 		}, ]
 	},
 	
@@ -453,7 +453,7 @@ var data = {
 	
 	zephyra_disappearance_ketch_2 = {
 		image = 'ketch_trade', tags = ['dialogue_scene'], 
-		reqs = [], character = "ketch",
+		reqs = [], 
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_2", reqs = []},
 		],
 		options = [ {
