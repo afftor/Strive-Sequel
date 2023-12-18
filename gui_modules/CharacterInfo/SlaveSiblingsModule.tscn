@@ -466,9 +466,6 @@ text = "SIBLINGMODULESEXTRAITS"
 align = 1
 valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SexTraitsPanel"]
 light_mask = 0
