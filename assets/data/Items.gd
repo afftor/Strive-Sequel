@@ -4320,22 +4320,30 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				effects = ['enchant_sharp_1'],
+				statmods = {atk_mul = 1.1, hitrate_add = 10},
+#				effects = ['enchant_sharp_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
-				effects = ['enchant_sharp_2'],
+				statmods = {atk_mul = 1.2, hitrate_add = 15},
+#				effects = ['enchant_sharp_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
-				effects = ['enchant_sharp_3'],
+				statmods = {atk_mul = 1.3, hitrate_add = 20},
+#				effects = ['enchant_sharp_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
-				effects = ['enchant_sharp_4'],
+				statmods = {atk_mul = 1.4, hitrate_add = 25},
+#				effects = ['enchant_sharp_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4352,21 +4360,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_spellmas_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_spellmas_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_spellmas_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_spellmas_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4383,6 +4395,7 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_nostun'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
@@ -4400,21 +4413,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_thorns_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_thorns_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_thorns_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 1500
 			},
 			4:{
 				effects = ['enchant_thorns_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 2500
 			},
@@ -4432,30 +4449,35 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_carapace_1'],
+				weight = 100,
 				statmods = {armor = 1.07},
 				cap_cost = 20,
 				gold_cost = 250
 			},
 			2:{
 				effects = ['enchant_carapace_2'],
+				weight = 100,
 				statmods = {armor = 1.15},
 				cap_cost = 40,
 				gold_cost = 500
 			},
 			3:{
 				effects = ['enchant_carapace_3'],
+				weight = 100,
 				statmods = {armor = 1.21},
 				cap_cost = 60,
 				gold_cost = 750
 			},
 			4:{
 				effects = ['enchant_carapace_4'],
+				weight = 100,
 				statmods = {armor = 1.28},
 				cap_cost = 80,
 				gold_cost = 1000
 			},
 			5:{
 				effects = ['enchant_carapace_5'],
+				weight = 100,
 				statmods = {armor = 1.35},
 				cap_cost = 100,
 				gold_cost = 1500
@@ -4473,26 +4495,31 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_vampirism_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_vampirism_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_vampirism_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_vampirism_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
 			5:{
 				effects = ['enchant_vampirism_5'],
+				weight = 100,
 				cap_cost = 250,
 				gold_cost = 4000
 			},
@@ -4508,11 +4535,13 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_commander_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_commander_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
@@ -4530,21 +4559,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_warlock_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_warlock_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_warlock_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_warlock_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4557,84 +4590,96 @@ var curses = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_weakness_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, physics_bonus_add = -30}
 	},
 	slowwit_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_slowwit_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, wits_bonus_add = -30}
 	},
 	hideous_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_hideous_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, charm_bonus_add = -30}
 	},
 	decline_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_declide_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	fragility_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_fragility_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	distrust_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_distrust_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	weakness_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_weakness_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, physics_bonus_add = -60}
 	},
 	slowwit_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_slowwit_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, wits_bonus_add = -60}
 	},
 	hideous_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_hideous_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, scharm_bonus_add = -60}
 	},
 	decline_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_declide_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	fragility_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_fragility_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	distrust_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_distrust_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 }

@@ -589,7 +589,11 @@ func test_mode():
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
 		#variables.dungeon_encounter_chance = 1
-		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
+		var bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'poor')
+		globals.AddItemToInventory(bow)
+		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'average')
+		globals.AddItemToInventory(bow)
+		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'legendary')
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
 		character.set_slave_category('master')
@@ -810,45 +814,45 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye", 3))
 		globals.AddItemToInventory(
-			globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItemShop("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
 		globals.AddItemToInventory(
-			globals.CreateGearItem("dagger", {WeaponHandle = 'wood', Blade = 'obsidian'})
+			globals.CreateGearItemShop("dagger", {WeaponHandle = 'wood', Blade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItemShop("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("swordadv", {Blade = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
+			globals.CreateGearItemShop("swordadv", {Blade = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("club", {WeaponMace = 'wood'})
+			globals.CreateGearItemShop("club", {WeaponMace = 'wood'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("club", {WeaponMace = 'stone'})
-		)
-
-		globals.AddItemToInventory(
-			globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
+			globals.CreateGearItemShop("club", {WeaponMace = 'stone'})
 		)
 
 		globals.AddItemToInventory(
-			globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItemShop("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
+		)
+
+		globals.AddItemToInventory(
+			globals.CreateGearItemShop("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
+			globals.CreateGearItemShop("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
+			globals.CreateGearItemShop("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem(
+			globals.CreateGearItemShop(
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem(
+			globals.CreateGearItemShop(
 				"legs_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)

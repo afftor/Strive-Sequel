@@ -885,17 +885,63 @@ func work_tick_values(workstat):
 		parent.get_ref().add_stat('base_exp', 5)
 
 
-func get_task_crit_chance(bonus_tool = false):
-	if parent.get_ref().has_status('no_task_crit'):
-		return 0
-	var res = parent.get_ref().get_stat('base_task_crit_chance')
-#	if parent.get_ref().check_trait('talented'): 
-#		res = 0.15
-	if bonus_tool and parent.get_ref().equipment.gear.tool != null:
-		var item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
+func get_task_crit_chance():
+	return task_mods.crit
+
+
+func get_task_efficiency_tool():
+	return task_mods.eff
+
+
+func get_task_diff():
+	return task_mods.diff
+
+
+var task_mods = {
+	eff = 0.0,
+	crit = 0.0,
+	diff = 0,
+}
+
+func _get_base_crafting_diff(): #2add
+	return 0 
+
+func fill_task_mods(task):
+	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
+	task_mods.diff = _get_base_crafting_diff()
+	var item
+	if parent.get_ref().equipment.gear.tool != null:
+		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
+	if item != null && task.has('worktool') && (task.worktool in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper')):
+		if item.bonusstats.has("task_efficiency_tool"):
+			task_mods.eff = item.bonusstats.task_efficiency_tool
+			task_mods.diff += 0.1 * item.bonusstats.task_efficiency_tool
 		if item.bonusstats.has("task_crit_chance"):
-			res += item.bonusstats.task_crit_chance
-	return res
+			task_mods.crit += item.bonusstats.task_crit_chance
+			task_mods.diff += 0.4 * item.bonusstats.task_crit_chance
+	
+	if parent.get_ref().has_status('no_task_crit'):
+		task_mods.crit = 0
+	
+	if ResourceScripts.game_globals.difficulty == 'easy':
+		task_mods.diff *= 1.5
+	task_mods.diff = int(task_mods.diff)
+
+
+func fill_task_mods_res(task):
+	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
+	task_mods.diff = 0
+	var item
+	if parent.get_ref().equipment.gear.tool != null:
+		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
+	if item != null && task.has('tool_type') && (task.tool_type in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper')):
+		if item.bonusstats.has("task_efficiency_tool"):
+			task_mods.eff = item.bonusstats.task_efficiency_tool
+		if item.bonusstats.has("task_crit_chance"):
+			task_mods.crit += item.bonusstats.task_crit_chance
+	
+	if parent.get_ref().has_status('no_task_crit'):
+		task_mods.crit = 0
 
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
@@ -904,18 +950,17 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 	var task = tasks.tasklist[temptask]
 	#var subtask = task.production_code
 	var value = call(task.progress_function)
-	var item
-	if parent.get_ref().equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('worktool') && (task.worktool in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
-		if item.bonusstats.has("task_efficiency_tool"):
-			value = value + value*item.bonusstats.task_efficiency_tool
+#	var item
+#	if parent.get_ref().equipment.gear.tool != null:
+#		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
+#	if item != null && task.has('worktool') && (task.worktool in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
+#		if item.bonusstats.has("task_efficiency_tool"):
+#			value = value + value*item.bonusstats.task_efficiency_tool
+	fill_task_mods(task)
+	value *= 1.0 + get_task_efficiency_tool()
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	
-	var bonus_tool = false
-	if item != null && task.has('worktool') && (task.worktool in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
-		bonus_tool = true
-	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
+	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
@@ -926,19 +971,14 @@ func get_progress_resource(tempresource, count_crit = false):
 	var resource = Items.materiallist[tempresource]
 	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_ref().get_location())
 	# var subtask = task.production[tempsubtask]
+	
 	var value = call(resource.progress_formula)
-	var item
-	if parent.get_ref().equipment.gear.tool != null:
-		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && resource.has('tool_type') && (resource.tool_type in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
-		if item.bonusstats.has("task_efficiency_tool"):
-			value = value + value*item.bonusstats.task_efficiency_tool
+	fill_task_mods_res(resource)
+	
+	value *= 1.0 + get_task_efficiency_tool()
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(resource.workmod)/100.0) #*(productivity*get(currenttask.mod)/100)
 	
-	var bonus_tool = false
-	if item != null && resource.has('tool_type') && (resource.tool_type in item.toolcategory || ResourceScripts.game_res.upgrades.has('tool_swapper')):
-		bonus_tool = true
-	if count_crit == true && randf() <= get_task_crit_chance(bonus_tool):
+	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod

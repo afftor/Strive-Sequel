@@ -227,7 +227,7 @@ func add_upgrade_to_queue(upgrade_id):
 			upgrades[upgrade_id] = 1
 
 
-func make_item(temprecipe):
+func make_item(temprecipe, character):
 	var recipe = Items.recipes[temprecipe.code]
 	temprecipe.resources_taken = false
 	if recipe.resultitemtype == 'material':
@@ -239,14 +239,14 @@ func make_item(temprecipe):
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
 			if recipe.crafttype == 'modular':
-				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
+				globals.AddItemToInventory(globals.CreateGearItemCraft(item.code, temprecipe.partdict, character))
 			else:
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
 
 
 func make_item_sequence(currenttask, craftingitem, character):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
-		make_item(craftingitem)
+		make_item(craftingitem, character)
 		if craftingitem.repeats > 0:
 			craftingitem.repeats -= 1
 		craftingitem.workunits -= craftingitem.workunits_needed

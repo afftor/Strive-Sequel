@@ -697,6 +697,64 @@ var statdata = {
 		baseicon = 'food_love',
 		custom_get = true
 	},
+	burn_mod = {
+		code = 'burn_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+	},
+	bleed_mod = {
+		code = 'bleed_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+	},
+	poison_mod = {
+		code = 'poison_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+	},
+	burn_damage = {
+		code = 'burn_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		negative = true
+	},
+	bleed_damage = {
+		code = 'bleed_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		negative = true
+	},
+	poison_damage = {
+		code = 'poison_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		negative = true
+	},
+	enchant_capacity_mod = {
+		code = 'enchant_capacity_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+	},
+	enchant_capacity = {
+		code = 'enchant_capacity',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
 }
 
 var slave_class_names = {

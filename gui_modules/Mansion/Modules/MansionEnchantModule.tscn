@@ -104,6 +104,7 @@ texture_hover = ExtResource( 10 )
 texture_disabled = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0

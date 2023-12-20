@@ -125,7 +125,44 @@ func UseItem(user = null, target = null):
 			finaltarget = target
 		Effectdata.call(effect.effect, finaltarget, effect.value)
 
-func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
+
+func build_quality_weighthes(diffdata = {boost = 0, prof = false, shop = false}):
+	var res = {
+		poor = 10000,
+		average = 5000,
+		good = 2500,
+		epic = 500,
+		legendary = 10
+	}
+	if !diffdata.has('prof'):
+		diffdata.prof = false
+	if !diffdata.has('shop'):
+		diffdata.shop = false
+	if !diffdata.has('boost'):
+		diffdata.boost = 0
+	
+	res.poor -= 500 * diffdata.boost
+	res.average -= 200 * diffdata.boost
+	res.good += 300 * diffdata.boost
+	res.epic += 100 * diffdata.boost
+	res.legendary += 5 * diffdata.boost
+	if res.poor < 100:
+		res.poor = 100
+	if res.average < 200:
+		res.average = 200
+	
+	if  diffdata.prof:
+		res.poor = 0
+		
+	if  diffdata.shop:
+		res.good = 0
+		res.epic = 0
+		res.legendary = 0
+	
+	return res
+
+
+func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = false, shop = false}):
 	var mode = 'normal'
 	if dictparts.size() == 0:
 		mode = 'simple'
@@ -171,13 +208,17 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 			var materialeffects = material['parts'][i].duplicate(true)
 			if itemtemplate.itemtype == 'armor':
 				for j in materialeffects:
+					if j == 'enchant_capacity_mod':
+						materialeffects[j] -= 1.0
 					materialeffects[j] = float(materialeffects[j] * itemtemplate.statmod)
 			materials.append(material.code)
 			input_handler.AddOrIncrementDict(parteffectdict, materialeffects)
 #		if parteffectdict.has('durabilitymod'):
 #			durability *= parteffectdict.durabilitymod
 		for i in parteffectdict:
-			if self.get(i) != null && i != 'effects':
+			if i == 'enchant_capacity_mod':
+				bonusstats.enchant_capacity *= parteffectdict[i]
+			elif self.get(i) != null && i != 'effects':
 				#self[i] += parteffectdict[i]
 				set(i, get(i)+parteffectdict[i])
 			elif bonusstats.has(i):
@@ -226,6 +267,75 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		else:
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
+	
+	quality = input_handler.weightedrandom_dict(build_quality_weighthes(diffdata))
+	roll_enchants()
+
+
+func roll_enchants():
+	if randf() > variables.enchantment_chance:
+		return
+	if randf() <= variables.curse_chance:
+		if randf() <= variables.majorcurse_chance:
+			apply_random_curse('major')
+		else:
+			apply_random_curse('minor')
+	
+	var used_points = get_e_capacity_max()
+	used_points *= globals.rng.randf_range(0.2, 0.9)
+	used_points = int(used_points)
+	
+	apply_random_enchantment(used_points, 1)
+
+
+func apply_random_curse(mode = 'any'):
+	var pool = []
+	for id in Items.curses:
+		if id.ends_with('_minor') and mode != 'major':
+			pool.push_back(id)
+		if id.ends_with('_major') and mode != 'minor':
+			pool.push_back(id)
+	add_curse(input_handler.random_from_array(pool))
+
+
+func apply_random_enchantment(limit, number):
+	if number > 3:
+		return
+	if number == 3 and randf() > variables.enchantment_chance_3:
+		return
+	if number == 2 and randf() > variables.enchantment_chance_2:
+		return
+	var pool = build_possible_enchants(limit)
+	if pool.empty():
+		if number > 1:
+			return
+		pool = build_possible_enchants(get_e_capacity_max())
+		if pool.empty():
+			print('possible error in enchantments template - limit is too low')
+			return
+	
+	var tmp = input_handler.weightedrandom(pool)
+	var enchdata = Items.enchantments[tmp[0]].levels[tmp[1]]
+	add_enchant(tmp[0], tmp[1], true)
+	apply_random_enchantment(limit - enchdata.cap_cost, number + 1)
+
+
+func build_possible_enchants(limit):
+	var res = []
+	for ench_id in Items.enchantments:
+		if enchants.has(ench_id):
+			continue
+		var enchdata = Items.enchantments[ench_id]
+		if !check_reqs(enchdata.reqs):
+			continue
+		for lv in enchdata.levels:
+			if enchdata.levels[lv].cap_cost > limit:
+				break
+			var tmp = [[ench_id, lv], 100]
+			if enchdata.levels[lv].has('weight'):
+				tmp[1] = enchdata.levels[lv].weight
+			res.push_back(tmp)
+	return res
 
 
 func fix_gear():
@@ -462,16 +572,20 @@ func use_explore(character, caller = null):
 
 
 func get_e_capacity_max():
-	var res = 0
-	var template = Items.itemlist[itembase]
-	if template.has('enchant_capacity'):
-		res = template.enchant_capacity
-	res *= variables.itemquality_multiplier[quality]
-	if curse != null:
-		var cursetemplate = Items.curses[curse]
-		if cursetemplate.has('capacity_multiplyer'):
-			res *= cursetemplate.capacity_multiplyer
-	return res
+#	var res = 0
+#	var template = Items.itemlist[itembase]
+#	if template.has('enchant_capacity'):
+#		res = template.enchant_capacity
+#	res *= variables.itemquality_multiplier[quality]
+#	if curse != null:
+#		var cursetemplate = Items.curses[curse]
+#		if cursetemplate.has('capacity_multiplyer'):
+#			res *= cursetemplate.capacity_multiplyer
+#	return res
+	var tmp = get_bonusstats()
+	if !tmp.has('enchant_capacity'):
+		return 0
+	return tmp.enchant_capacity
 
 
 func get_e_capacity():
@@ -491,14 +605,42 @@ func get_bonusstats():
 		var cursetemplate = Items.curses[curse]
 		if cursetemplate.has('statmods'):
 			for st in cursetemplate.statmods:
-				if res.has(st):
-					res[st] *= cursetemplate.statmods[st]
+				if !st.ends_with('_mul'):
+					continue
+				var _st = st.trim_suffix('_mul') 
+				if res.has(_st):
+					res[_st] *= cursetemplate.statmods[st]
 	for bless in enchants:
 		var enchtemplate = Items.enchantments[bless].levels[enchants[bless]]
 		if enchtemplate.has('statmods'):
 			for st in enchtemplate.statmods:
-				if res.has(st):
-					res[st] *= enchtemplate.statmods[st]
+				if !st.ends_with('_mul'):
+					continue
+				var _st = st.trim_suffix('_mul') 
+				if res.has(_st):
+					res[_st] *= enchtemplate.statmods[st]
+	if curse != null:
+		var cursetemplate = Items.curses[curse]
+		if cursetemplate.has('statmods'):
+			for st in cursetemplate.statmods:
+				if !st.ends_with('_add'):
+					continue
+				var _st = st.trim_suffix('_add') 
+				if res.has(_st):
+					res[_st] += cursetemplate.statmods[st]
+				else:
+					res[_st] = cursetemplate.statmods[st]
+	for bless in enchants:
+		var enchtemplate = Items.enchantments[bless].levels[enchants[bless]]
+		if enchtemplate.has('statmods'):
+			for st in enchtemplate.statmods:
+				if !st.ends_with('_add'):
+					continue
+				var _st = st.trim_suffix('_add') 
+				if res.has(_st):
+					res[_st] += enchtemplate.statmods[st]
+				else:
+					res[_st] = enchtemplate.statmods[st]
 	return res
 
 
@@ -506,9 +648,9 @@ func add_curse (c_id):
 	if curse != null:
 		return
 	
-	var tmp = null
+#	var tmp = null
 	if owner != null:
-		tmp = owner
+#		tmp = owner
 		characters_pool.get_char_by_id(owner).unequip(self)
 	
 	curse = c_id
@@ -517,8 +659,8 @@ func add_curse (c_id):
 		for eff in cursetemplate.effects:
 			effects.push_back(eff)
 	
-	if tmp != null:
-		characters_pool.get_char_by_id(tmp).equip(self)
+#	if tmp != null:
+#		characters_pool.get_char_by_id(tmp).equip(self)
 
 
 func can_add_enchant(e_id, lvl):
@@ -562,9 +704,9 @@ func add_enchant(e_id, lvl, is_free = false):
 	if !is_free and !can_add_enchant(e_id, lvl):
 		return
 	
-	var tmp = null
+#	var tmp = null
 	if owner != null:
-		tmp = owner
+#		tmp = owner
 		characters_pool.get_char_by_id(owner).unequip(self)
 	
 	_remove_enchant(e_id)
@@ -577,8 +719,8 @@ func add_enchant(e_id, lvl, is_free = false):
 		for eff in enchdata.effects:
 			effects.push_back(eff)
 	
-	if tmp != null:
-		characters_pool.get_char_by_id(tmp).equip(self)
+#	if tmp != null:
+#		characters_pool.get_char_by_id(tmp).equip(self)
 
 
 func identify():

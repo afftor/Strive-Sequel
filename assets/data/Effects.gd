@@ -2555,12 +2555,12 @@ var effect_table = {
 		],
 	},
 	#curses and enchantments
-	curse_weakness_1 = rebuild_stat_bonus('physics_bonus', -30, 'b_curse'),
-	curse_weakness_2 = rebuild_stat_bonus('physics_bonus', -60, 'b_curse'),
-	curse_slowwit_1 = rebuild_stat_bonus('wits_bonus', -30, 'b_curse'),
-	curse_slowwit_2 = rebuild_stat_bonus('wits_bonus', -60, 'b_curse'),
-	curse_hideous_1 = rebuild_stat_bonus('charm_bonus', -30, 'b_curse'),
-	curse_hideous_2 = rebuild_stat_bonus('charm_bonus', -60, 'b_curse'),
+#	curse_weakness_1 = rebuild_stat_bonus('physics_bonus', -30, 'b_curse'),
+#	curse_weakness_2 = rebuild_stat_bonus('physics_bonus', -60, 'b_curse'),
+#	curse_slowwit_1 = rebuild_stat_bonus('wits_bonus', -30, 'b_curse'),
+#	curse_slowwit_2 = rebuild_stat_bonus('wits_bonus', -60, 'b_curse'),
+#	curse_hideous_1 = rebuild_stat_bonus('charm_bonus', -30, 'b_curse'),
+#	curse_hideous_2 = rebuild_stat_bonus('charm_bonus', -60, 'b_curse'),
 	curse_decline_1 = rebuild_stat_bonus('exp_gain_mod', -0.25, 'b_curse'),
 	curse_decline_2 = rebuild_stat_bonus('exp_gain_mod', -0.5, 'b_curse'),
 	curse_fragility_1 = rebuild_stat_bonus('hpmax', -0.2, 'b_curse', 'stat_add_p'),
@@ -2568,46 +2568,46 @@ var effect_table = {
 	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, 'b_curse', 'stat_add_p'),
 	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, 'b_curse', 'stat_add_p'),
 	
-	enchant_sharp_1 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.1, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 10),
-		],
-		args = []
-	},
-	enchant_sharp_2 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.2, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 15),
-		],
-		args = []
-	},
-	enchant_sharp_3 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.3, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 20),
-		],
-		args = []
-	},
-	enchant_sharp_4 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.4, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 25),
-		],
-		args = []
-	},
+#	enchant_sharp_1 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.1, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 10),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_2 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.2, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 15),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_3 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.3, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 20),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_4 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.4, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 25),
+#		],
+#		args = []
+#	},
 	
 	enchant_spellmas_1 = {
 		type = 'static',
@@ -3072,7 +3072,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'burn_mod'}],
 		sub_effects = ['e_burn_new'],
 		atomic = [],
 		buffs = ['b_burn'],
@@ -3086,7 +3086,7 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'burn_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_burn_new'],
 			}
 		]
@@ -3100,7 +3100,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'poison_mod'}],
 		sub_effects = ['e_poison_new'],
 		atomic = [],
 		buffs = ['b_poison'],
@@ -3114,7 +3114,7 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'poison_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_poison_new'],
 			}
 		]
@@ -3128,7 +3128,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'bleed_mod'}],
 		sub_effects = ['e_bleed_new'],
 		atomic = [],
 		buffs = ['b_bleed'],
@@ -3142,7 +3142,7 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'bleed_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_bleed_new'],
 			}
 		]
@@ -4494,9 +4494,9 @@ var atomic = {
 	a_bleed = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.25]},
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
 	
-	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', 0.08]},
-	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
-	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
+	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 };
 #needs filling
 var buffs = {
@@ -4744,6 +4744,8 @@ func rebuild_template(args):
 		res.duration = args.duration
 	if args.has('push_value'):
 		res.args = [{obj = 'parent', param = 'process_value'}]
+	elif args.has('push_characters'):
+		res.args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}]
 
 	res.sub_effects.push_back(args.effect)
 
