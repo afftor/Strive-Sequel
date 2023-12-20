@@ -104,6 +104,7 @@ var data = {
 	
 	betrayal_confirmed_10 = {
 		image = 'dome', tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "duncan", character2 = "myr",
+		common_effects = [{code = 'background_noise', value = 'stop'}],
 		text = [{text = "BETRAYAL_CONFIRMED_11", reqs = []}],
 		options = [ {
 			code = 'betrayal_confirmed_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -112,7 +113,6 @@ var data = {
 	
 	betrayal_confirmed_11 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
-		common_effects = [{code = 'background_noise', value = 'stop'}],
 		text = [{text = "BETRAYAL_CONFIRMED_12", reqs = []}],
 		options = [ {
 			code = 'betrayal_confirmed_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

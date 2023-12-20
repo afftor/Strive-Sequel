@@ -41,7 +41,7 @@ func _ready():
 	for ch in $categories.get_children():
 		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper()) + "_DESC")
 	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
-	$SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
+	$SkillPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
 
 func SkillBookButtonPress():
 	$SkillBook.activecharacter = person

@@ -497,9 +497,6 @@ margin_left = 970.0
 margin_right = 1670.0
 margin_bottom = 920.0
 custom_styles/panel = ExtResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Categories" type="VBoxContainer" parent="SkillPanel"]
 margin_left = 25.0
@@ -673,6 +670,19 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SkillBookButton" type="TextureButton" parent="SkillPanel"]
+margin_left = 9.42102
+margin_top = 835.546
+margin_right = 87.42
+margin_bottom = 913.546
+hint_tooltip = "Set Abilitites for combat"
+texture_normal = ExtResource( 59 )
+texture_pressed = ExtResource( 60 )
+texture_hover = ExtResource( 61 )
+texture_disabled = ExtResource( 58 )
+expand = true
+stretch_mode = 5
 
 [node name="Tooltip" type="Panel" parent="."]
 visible = false
@@ -941,19 +951,3 @@ margin_left = 0.0
 margin_top = 0.0
 margin_right = 1500.0
 margin_bottom = 806.001
-
-[node name="SkillBookButton" type="TextureButton" parent="."]
-margin_left = 979.421
-margin_top = 835.546
-margin_right = 1057.42
-margin_bottom = 913.546
-hint_tooltip = "Set Abilitites for combat"
-texture_normal = ExtResource( 59 )
-texture_pressed = ExtResource( 60 )
-texture_hover = ExtResource( 61 )
-texture_disabled = ExtResource( 58 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
