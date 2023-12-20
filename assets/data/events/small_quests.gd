@@ -462,4 +462,36 @@ var data = {
 			bonus_effects = [ {code = 'update_city'} ]
 		}, ],
 	},
+	
+	
+	amelia_bonus_question = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		text = [
+			{text = "AMELIA_BONUS_QUESTION", reqs = [], previous_dialogue_option = 0}
+		], 
+		options = [ {
+			code = 'amelia_bonus_question_1', text = "AMELIA_BONUS_QUESTION_OPTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'amelia_bonus_question_1', text = "AMELIA_BONUS_QUESTION_OPTION2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'amelia_bonus_question_1', text = "AMELIA_BONUS_QUESTION_OPTION3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, {
+			code = 'amelia_bonus_question_1', text = "AMELIA_BONUS_QUESTION_OPTION4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+		}, ],
+	},
+	
+	amelia_bonus_question_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		common_effects = [{code = 'update_guild'}],
+		text = [
+			{text = "AMELIA_BONUS_QUESTION_REPLY1", reqs = [], previous_dialogue_option = 1},
+			{text = "AMELIA_BONUS_QUESTION_REPLY2", reqs = [], previous_dialogue_option = 2},
+			{text = "AMELIA_BONUS_QUESTION_REPLY3", reqs = [], previous_dialogue_option = 3},
+			{text = "AMELIA_BONUS_QUESTION_REPLY4", reqs = [], previous_dialogue_option = 4},
+			{text = "AMELIA_BONUS_QUESTION_REPLYALL", reqs = []},
+		], 
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 5
+		} ],
+	},
 }
