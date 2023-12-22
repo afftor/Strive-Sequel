@@ -748,6 +748,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
+		default_bonus = 'add_part'
 	},
 	enchant_capacity = {
 		code = 'enchant_capacity',

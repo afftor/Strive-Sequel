@@ -112,6 +112,11 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 								if act_targets.size() < 2: target_dir.quality *= 0.5
 							'x_random':
 								if act_targets.size() < t_skill.number_rnd_targets: target_dir.quality *= 0.5
+						if app_obj.has_status('taunt_soft'):
+							if app_obj.taunt == target.id:
+								target_dir.quality = 1.0
+							else:
+								target_dir.quality = 0
 						target_array.push_back(target_dir)
 		skill_targets[s_n] = target_array
 

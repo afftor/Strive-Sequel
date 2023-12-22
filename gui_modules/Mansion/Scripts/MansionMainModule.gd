@@ -573,7 +573,7 @@ func test_mode():
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
-		character.unlock_class("valkyrie")
+		character.unlock_class("rogue")
 		character.set_stat('height', 'average')
 		character.xp_module.base_exp = 1500
 		character.add_stat('abil_exp', 1500)

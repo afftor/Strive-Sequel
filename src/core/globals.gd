@@ -482,6 +482,8 @@ func build_attrs_for_char(node, person):
 func build_desc_for_bonusstats(bonusstats):
 	var text = ""
 	for i in bonusstats:
+		if i == 'enchant_capacity': 
+			continue
 		if bonusstats[i] != 0:
 			var value = bonusstats[i]
 			var data = statdata.statdata[i]

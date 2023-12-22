@@ -202,21 +202,23 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 		#durability = itemtemplate.basedurability
 		partcolororder = itemtemplate.partcolororder
 
-		var parteffectdict = {}
+		var parteffectdict = {enchant_capacity_mod = 1.0}
 		for i in parts:
 			var material = Items.materiallist[parts[i]]
 			var materialeffects = material['parts'][i].duplicate(true)
-			if itemtemplate.itemtype == 'armor':
-				for j in materialeffects:
-					if j == 'enchant_capacity_mod':
-						materialeffects[j] -= 1.0
+			
+			for j in materialeffects:
+#				if j == 'enchant_capacity_mod':
+#					materialeffects[j] -= 1.0
+				if itemtemplate.itemtype == 'armor':
 					materialeffects[j] = float(materialeffects[j] * itemtemplate.statmod)
+			
 			materials.append(material.code)
 			input_handler.AddOrIncrementDict(parteffectdict, materialeffects)
 #		if parteffectdict.has('durabilitymod'):
 #			durability *= parteffectdict.durabilitymod
 		for i in parteffectdict:
-			if i == 'enchant_capacity_mod':
+			if i == 'enchant_capacity_mod' and bonusstats.has('enchant_capacity'):
 				bonusstats.enchant_capacity *= parteffectdict[i]
 			elif self.get(i) != null && i != 'effects':
 				#self[i] += parteffectdict[i]
@@ -253,8 +255,10 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = Items.materiallist[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
 		else:
 			name = tempname
-	if bonusstats.has('atk') && bonusstats.has('damagemod'):
-		bonusstats.atk = ceil(bonusstats.atk + (bonusstats.atk*bonusstats.damagemod))
+		quality = input_handler.weightedrandom_dict(build_quality_weighthes(diffdata))
+	
+	if bonusstats.has('atk') && get_bonusstats().has('damagemod'):
+		bonusstats.atk = ceil(bonusstats.atk + (bonusstats.atk * get_bonusstats().damagemod))
 		bonusstats.erase('damagemod')
 
 	if mode == 'simple':
@@ -268,8 +272,8 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
-	quality = input_handler.weightedrandom_dict(build_quality_weighthes(diffdata))
-	roll_enchants()
+	if tags.has('enchantable'):
+		roll_enchants()
 
 
 func roll_enchants():
@@ -291,6 +295,8 @@ func roll_enchants():
 func apply_random_curse(mode = 'any'):
 	var pool = []
 	for id in Items.curses:
+		if id.begins_with('stub_'):
+			continue
 		if id.ends_with('_minor') and mode != 'major':
 			pool.push_back(id)
 		if id.ends_with('_major') and mode != 'minor':
@@ -585,7 +591,7 @@ func get_e_capacity_max():
 	var tmp = get_bonusstats()
 	if !tmp.has('enchant_capacity'):
 		return 0
-	return tmp.enchant_capacity
+	return int ( floor(tmp.enchant_capacity))
 
 
 func get_e_capacity():
