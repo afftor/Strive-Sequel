@@ -142,12 +142,90 @@ func get_duplicate_id_if_exist(item):
 			return i.id
 	return null
 
-func CreateGearItem(item, parts, bonus = {}, newname = null):
+
+func CreateGearItem(item, parts, newname = null): #obsolete for modular
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts, bonus)
+	newitem.CreateGear(item, parts)
 	if newname != null:
 		newitem.name = newname
 	return newitem
+
+
+func CreateGearItemQuality(item, parts, quality, newname = null): 
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts)
+	newitem.quality = quality
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
+func CreateGearItemData(item, parts, diffdata,  newname = null): 
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts, diffdata)
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
+func CreateGearItemQuest(item, parts, quest, newname = null):
+	var diffdata = {boost = 0, prof = false}
+	match quest.difficulty:
+		'easy':
+			diffdata.boost = 2
+		'medium':
+			diffdata.boost = 4
+		'hard':
+			diffdata.boost = 6
+	
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts, diffdata)
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
+func CreateGearItemCraft(item, parts, person, newname = null):
+	var diffdata = {boost = 0, prof = false}
+	if Items.recipes.has(item):
+		diffdata.prof = person.has_profession(Items.recipes[item].worktype)
+		diffdata.boost += person.get_task_diff()
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts, diffdata)
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
+func CreateGearItemLoot(item, parts, newname = null):
+	var diffdata = {boost = 0, prof = false}
+	match char_roll_data.diff:
+		'easy':
+			diffdata.boost = 2
+		'medium':
+			diffdata.boost = 4
+		'hard':
+			diffdata.boost = 6
+	diffdata.boost += 2 + 0.4 * char_roll_data.lvl
+	if ResourceScripts.game_globals.difficulty == 'easy':
+		diffdata.boost *= 1.5
+	diffdata.boost = int(diffdata.boost)
+	
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts)
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
+func CreateGearItemShop(item, parts, newname = null):
+	var diffdata = {boost = 0, shop = true}
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts, diffdata)
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
 
 func CreateUsableItem(item, amount = 1):
 	var newitem = Item.new()
@@ -404,6 +482,8 @@ func build_attrs_for_char(node, person):
 func build_desc_for_bonusstats(bonusstats):
 	var text = ""
 	for i in bonusstats:
+		if i == 'enchant_capacity': 
+			continue
 		if bonusstats[i] != 0:
 			var value = bonusstats[i]
 			var data = statdata.statdata[i]
@@ -1351,17 +1431,25 @@ func reset_roll_data():
 	char_roll_data.event = false
 	char_roll_data.trait_bonus = false
 	char_roll_data.area = 'plains'
-	match ResourceScripts.game_globals.difficulty:
-		'easy':
-			char_roll_data.diff = 2
-		'medium':
-			char_roll_data.diff = 4
-		'hard':
-			char_roll_data.diff = 6
+	char_roll_data.diff = 'medium'
+#	match ResourceScripts.game_globals.difficulty:
+#		'easy':
+#			char_roll_data.diff = 2
+#		'medium':
+#			char_roll_data.diff = 4
+#		'hard':
+#			char_roll_data.diff = 6
 
 
 func get_rolled_diff(): #excluding event bonus
-	var t_diff = char_roll_data.diff
+	var t_diff
+	match char_roll_data.diff:
+		'easy':
+			t_diff = 2
+		'medium':
+			t_diff = 4
+		'hard':
+			t_diff = 6
 	t_diff += char_roll_data.lvl
 	if char_roll_data.rare: t_diff += 1
 	if char_roll_data.uniq: t_diff += 2 
@@ -1554,7 +1642,7 @@ func common_effects(effects):
 						character.unlock_class(k.profession)
 					elif k.code == 'add_trait':
 						character.add_trait(k.trait)
-					elif k.code == 'create_and_equip':
+					elif k.code == 'create_and_equip': #there should be static items only
 						var item = CreateGearItem(k.item, k.parts)
 						AddItemToInventory(item)
 						character.equip(item)
@@ -2230,8 +2318,8 @@ func apply_starting_preset():
 
 
 
-func equip_char(ch, type, args):
-	var newgear = CreateGearItem(type, args)
+func equip_char(ch, type, args, quality = 'poor'):
+	var newgear = CreateGearItemQuality(type, args, quality)
 	AddItemToInventory(newgear)
 	ch.equip(newgear)
 

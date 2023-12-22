@@ -19,6 +19,7 @@ var target_number
 var damage_type
 #var damagesrc
 var repeat
+var cap
 
 var chance
 var evade
@@ -46,6 +47,7 @@ func _init():
 	receiver = 'target'
 	random_factor = 0
 	random_factor_p = 0.0
+	cap = 10
 
 func get_from_template(attr, val_rel = false):
 	if template.has(attr): 
@@ -136,6 +138,7 @@ func convert_to_new_template():
 		tmp.random_factor = random_factor[i]
 		tmp.random_factor_p = random_factor_p[i]
 		tmp.is_drain = is_drain
+		tmp.cap = cap
 		tmp.is_process = (i == 0)
 		res_res.value.push_back(tmp)
 	if template.has('value_caster_reqs'):

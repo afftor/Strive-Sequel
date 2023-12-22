@@ -456,3 +456,9 @@ var itemquality_multiplier = {
 	epic = 1.4,
 	legendary = 1.75
 }
+
+var enchantment_chance = 0.15
+var enchantment_chance_2 = 0.4
+var enchantment_chance_3 = 0.2
+var curse_chance = 0.25
+var majorcurse_chance = 0.3

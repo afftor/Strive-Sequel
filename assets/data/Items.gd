@@ -97,18 +97,18 @@ var partmaterials = {
 		obsidian = {task_crit_chance = 0.11},
 	},
 	WeaponHandle = {
-		wood = {hitrate = 5, enchant_capacity_mod = 1.0},
-		woodmagic = {hitrate = 10, matk = 3, enchant_capacity_mod = 1.2},
-		woodiron = {hitrate = 15, hpmaxmod = 0.1, enchant_capacity_mod = 1.1},
-		woodancient = {hitrate = 20, hpmaxmod = 0.1, enchant_capacity_mod = 1.25},
-		iron = {armor = 2, enchant_capacity_mod = 1.0},
-		steel = {armor = 3, enchant_capacity_mod = 1.0},
-		mithril = {armor = 4, mdef = 3, enchant_capacity_mod = 1.15},
-		adamantine = {armor = 5, mdef = 5, enchant_capacity_mod = 1.2},
-		bone = {atk = 3, enchant_capacity_mod = 1.1},
-		boneancient = {atk = 6, enchant_capacity_mod = 1.15},
-		bonedragon = {atk = 10, hitrate = 10, enchant_capacity_mod = 1.25},
-		obsidian = {matk = 5, resist_earth = 10, resist_fire = 10, enchant_capacity_mod = 1.1},
+		wood = {hitrate = 5, enchant_capacity_mod = 0.0},
+		woodmagic = {hitrate = 10, matk = 3, enchant_capacity_mod = 0.2},
+		woodiron = {hitrate = 15, hpmaxmod = 0.1, enchant_capacity_mod = 0.1},
+		woodancient = {hitrate = 20, hpmaxmod = 0.1, enchant_capacity_mod = 0.25},
+		iron = {armor = 2, enchant_capacity_mod = 0.0},
+		steel = {armor = 3, enchant_capacity_mod = 0.0},
+		mithril = {armor = 4, mdef = 3, enchant_capacity_mod = 0.15},
+		adamantine = {armor = 5, mdef = 5, enchant_capacity_mod = 0.2},
+		bone = {atk = 3, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 6, enchant_capacity_mod = 0.15},
+		bonedragon = {atk = 10, hitrate = 10, enchant_capacity_mod = 0.25},
+		obsidian = {matk = 5, resist_earth = 10, resist_fire = 10, enchant_capacity_mod = 0.1},
 	},
 	ToolBlade = {
 		stone = {task_efficiency_tool = 0.15},
@@ -129,109 +129,109 @@ var partmaterials = {
 		clothethereal = {task_efficiency_tool = 0.45},
 	},
 	Blade = {
-		stone = {damagemod = -0.5, enchant_capacity_mod = 1.0},
-		obsidian = {atk = 10, armorpenetration = 10, enchant_capacity_mod = 1.2},
-		iron = {atk = 8, enchant_capacity_mod = 1.0},
-		steel = {atk = 13, enchant_capacity_mod = 1.0},
-		mithril = {atk = 18, enchant_capacity_mod = 1.3},
-		adamantine = {atk = 25, enchant_capacity_mod = 1.4},
-		bone = {atk = 7, matk = 4, enchant_capacity_mod = 1.1},
-		boneancient = {atk = 15, matk = 8, enchant_capacity_mod = 1.25},
-		bonedragon = {atk = 22, matk = 15, enchant_capacity_mod = 1.5},
+		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 10, armorpenetration = 10, enchant_capacity_mod = 0.2},
+		iron = {atk = 8, enchant_capacity_mod = 0.0},
+		steel = {atk = 13, enchant_capacity_mod = 0.0},
+		mithril = {atk = 18, enchant_capacity_mod = 0.3},
+		adamantine = {atk = 25, enchant_capacity_mod = 0.4},
+		bone = {atk = 7, matk = 4, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 15, matk = 8, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 22, matk = 15, enchant_capacity_mod = 0.5},
 	},
 	WeaponMace = {
-		wood = {atk = 6, hitrate = 5, enchant_capacity_mod = 1.0},
-		woodmagic = {atk = 7, matk = 8, enchant_capacity_mod = 1.25},
-		woodiron = {atk = 10, hitrate = 10, enchant_capacity_mod = 1.15},
-		woodancient = {atk = 20, hpmaxmod = 0.15, enchant_capacity_mod = 1.35},
-		stone = {atk = 12, hitrate = -10, enchant_capacity_mod = 1.0},
-		obsidian = {atk = 18, armorpenetration = 12, enchant_capacity_mod = 1.2},
-		iron = {atk = 12, enchant_capacity_mod = 1.0},
-		steel = {atk = 16, enchant_capacity_mod = 1.0},
-		mithril = {atk = 20, matk = 5, enchant_capacity_mod = 1.3},
-		adamantine = {atk = 24, enchant_capacity_mod = 1.35},
-		bone = {atk = 9, matk = 2, enchant_capacity_mod = 1.1},
-		boneancient = {atk = 18, matk = 6, enchant_capacity_mod = 1.25},
-		bonedragon = {atk = 25, matk = 12, enchant_capacity_mod = 1.45},
+		wood = {atk = 6, hitrate = 5, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 7, matk = 8, enchant_capacity_mod = 0.25},
+		woodiron = {atk = 10, hitrate = 10, enchant_capacity_mod = 0.15},
+		woodancient = {atk = 20, hpmaxmod = 0.15, enchant_capacity_mod = 0.35},
+		stone = {atk = 12, hitrate = -10, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 18, armorpenetration = 12, enchant_capacity_mod = 0.2},
+		iron = {atk = 12, enchant_capacity_mod = 0.0},
+		steel = {atk = 16, enchant_capacity_mod = 0.0},
+		mithril = {atk = 20, matk = 5, enchant_capacity_mod = 0.3},
+		adamantine = {atk = 24, enchant_capacity_mod = 0.35},
+		bone = {atk = 9, matk = 2, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 18, matk = 6, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 25, matk = 12, enchant_capacity_mod = 0.45},
 	},
 	BowBase = {
-		wood = {atk = 7, enchant_capacity_mod = 1.0},
-		woodmagic = {atk = 10, mpmaxmod = 0.1, matk = 5, enchant_capacity_mod = 1.2},
-		woodiron = {atk = 15, enchant_capacity_mod = 1.0},
-		woodancient = {atk = 20, enchant_capacity_mod = 1.0},
-		obsidian = {atk = 18, armorpenetration = 10, enchant_capacity_mod = 1.1},
-		iron = {atk = 9, enchant_capacity_mod = 1.0},
-		steel = {atk = 14, enchant_capacity_mod = 1.0},
-		mithril = {atk = 19, enchant_capacity_mod = 1.25},
-		adamantine = {atk = 25, enchant_capacity_mod = 1.3},
-		bone = {atk = 8, matk = 4, enchant_capacity_mod = 1.1},
-		boneancient = {atk = 18, matk = 10, enchant_capacity_mod = 1.25},
-		bonedragon = {atk = 24, matk = 16, enchant_capacity_mod = 1.35},
+		wood = {atk = 7, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 10, mpmaxmod = 0.1, matk = 5, enchant_capacity_mod = 0.2},
+		woodiron = {atk = 15, enchant_capacity_mod = 0.0},
+		woodancient = {atk = 20, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 18, armorpenetration = 10, enchant_capacity_mod = 0.1},
+		iron = {atk = 9, enchant_capacity_mod = 0.0},
+		steel = {atk = 14, enchant_capacity_mod = 0.0},
+		mithril = {atk = 19, enchant_capacity_mod = 0.25},
+		adamantine = {atk = 25, enchant_capacity_mod = 0.3},
+		bone = {atk = 8, matk = 4, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 18, matk = 10, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 24, matk = 16, enchant_capacity_mod = 0.35},
 	},
 	ShieldBase = {
-		wood = {evasion = 5, critchance = 3, enchant_capacity_mod = 1.0},
-		woodmagic = {evasion = 5, mdef = 5, critchance = 3, enchant_capacity_mod = 1.2},
-		woodiron = {evasion = 10, armor = 3, critchance = 5, enchant_capacity_mod = 1.1},
-		woodancient = {evasion = 10, mdef = 5, critchance = 7, enchant_capacity_mod = 1.25},
-		iron = {armor = 4, enchant_capacity_mod = 1.0},
-		steel = {armor = 5, enchant_capacity_mod = 1.0},
-		mithril = {armor = 8, mpmaxmod = 0.1, enchant_capacity_mod = 1.2},
-		adamantine = {armor = 10, hpmaxmod = 0.1, enchant_capacity_mod = 1.25},
-		bone = {hitrate = 5, evasion = 5, enchant_capacity_mod = 1.1},
-		boneancient = {hitrate = 10, evasion = 10, enchant_capacity_mod = 1.15},
-		bonedragon = {hitrate = 20, evasion = 5, enchant_capacity_mod = 1.25},
-		leather = {evasion = 10, mdef = 3, enchant_capacity_mod = 1.0},
-		leatherthick = {evasion = 10, armor = 5, enchant_capacity_mod = 1.1},
-		leathermythic = {evasion = 15, armor = 5, hpmaxmod = 0.15, enchant_capacity_mod = 1.2},
-		leatherdragon = {evasion = 15, armor = 5, mdef = 5, hpmaxmod = 0.1, enchant_capacity_mod = 1.3},
+		wood = {evasion = 5, critchance = 3, enchant_capacity_mod = 0.0},
+		woodmagic = {evasion = 5, mdef = 5, critchance = 3, enchant_capacity_mod = 0.2},
+		woodiron = {evasion = 10, armor = 3, critchance = 5, enchant_capacity_mod = 0.1},
+		woodancient = {evasion = 10, mdef = 5, critchance = 7, enchant_capacity_mod = 0.25},
+		iron = {armor = 4, enchant_capacity_mod = 0.0},
+		steel = {armor = 5, enchant_capacity_mod = 0.0},
+		mithril = {armor = 8, mpmaxmod = 0.1, enchant_capacity_mod = 0.2},
+		adamantine = {armor = 10, hpmaxmod = 0.1, enchant_capacity_mod = 0.25},
+		bone = {hitrate = 5, evasion = 5, enchant_capacity_mod = 0.1},
+		boneancient = {hitrate = 10, evasion = 10, enchant_capacity_mod = 0.15},
+		bonedragon = {hitrate = 20, evasion = 5, enchant_capacity_mod = 0.25},
+		leather = {evasion = 10, mdef = 3, enchant_capacity_mod = 0.0},
+		leatherthick = {evasion = 10, armor = 5, enchant_capacity_mod = 0.1},
+		leathermythic = {evasion = 15, armor = 5, hpmaxmod = 0.15, enchant_capacity_mod = 0.2},
+		leatherdragon = {evasion = 15, armor = 5, mdef = 5, hpmaxmod = 0.1, enchant_capacity_mod = 0.3},
 	},
 	Rod = {
-		wood = {atk = 3, matk = 7, enchant_capacity_mod = 1.0},
-		woodmagic = {atk = 4, mpmaxmod = 0.1, matk = 12, enchant_capacity_mod = 1.15},
-		woodiron = {atk = 6, matk = 10, enchant_capacity_mod = 1.1},
-		woodancient = {atk = 5, matk = 15, enchant_capacity_mod = 1.2},
-		obsidian = {atk = 3, matk = 13, enchant_capacity_mod = 1.1},
-		iron = {atk = 5, matk = 10, enchant_capacity_mod = 1.0},
-		steel = {atk = 6, matk = 11, enchant_capacity_mod = 1.0},
-		mithril = {atk = 8, matk = 18, enchant_capacity_mod = 1.15},
-		adamantine = {atk = 9, matk = 21, enchant_capacity_mod = 1.2},
-		bone = {atk = 4, matk = 9, enchant_capacity_mod = 1.1},
-		boneancient = {atk = 5, matk = 15, enchant_capacity_mod = 1.15},
-		bonedragon = {atk = 8, matk = 23, enchant_capacity_mod = 1.25},
-		fire_ruby = {atk = 1, matk = 13, damage_mod_fire = 0.3, enchant_capacity_mod = 1.2},
-		ice_crystal = {atk = 3, matk = 12, damage_mod_water = 0.25, enchant_capacity_mod = 1.2},
-		earth_shard = {atk = 5, matk = 10, damage_mod_earth = 0.2, enchant_capacity_mod = 1.2},
-		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4, enchant_capacity_mod = 1.2},
+		wood = {atk = 3, matk = 7, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 4, mpmaxmod = 0.1, matk = 12, enchant_capacity_mod = 0.15},
+		woodiron = {atk = 6, matk = 10, enchant_capacity_mod = 0.1},
+		woodancient = {atk = 5, matk = 15, enchant_capacity_mod = 0.2},
+		obsidian = {atk = 3, matk = 13, enchant_capacity_mod = 0.1},
+		iron = {atk = 5, matk = 10, enchant_capacity_mod = 0.0},
+		steel = {atk = 6, matk = 11, enchant_capacity_mod = 0.0},
+		mithril = {atk = 8, matk = 18, enchant_capacity_mod = 0.15},
+		adamantine = {atk = 9, matk = 21, enchant_capacity_mod = 0.2},
+		bone = {atk = 4, matk = 9, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 5, matk = 15, enchant_capacity_mod = 0.15},
+		bonedragon = {atk = 8, matk = 23, enchant_capacity_mod = 0.25},
+		fire_ruby = {atk = 1, matk = 13, damage_mod_fire = 0.3, enchant_capacity_mod = 0.2},
+		ice_crystal = {atk = 3, matk = 12, damage_mod_water = 0.25, enchant_capacity_mod = 0.2},
+		earth_shard = {atk = 5, matk = 10, damage_mod_earth = 0.2, enchant_capacity_mod = 0.2},
+		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4, enchant_capacity_mod = 0.2},
 	},
 	ArmorBaseCloth = {
-		cloth = {armor = 8, mdef = 15, enchant_capacity_mod = 1.0},
-		clothsilk = {armor = 12, mdef = 30, enchant_capacity_mod = 1.1},
-		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 1.15},
-		clothmagic = {armor = 14, mdef = 50, enchant_capacity_mod = 1.25},
-		clothethereal = {armor = 20, mdef = 65, enchant_capacity_mod = 1.3},
+		cloth = {armor = 8, mdef = 15, enchant_capacity_mod = 0.0},
+		clothsilk = {armor = 12, mdef = 30, enchant_capacity_mod = 0.1},
+		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.15},
+		clothmagic = {armor = 14, mdef = 50, enchant_capacity_mod = 0.25},
+		clothethereal = {armor = 20, mdef = 65, enchant_capacity_mod = 0.3},
 	},
 	ArmorBaseMed = {
-		leather = {armor = 10, mdef = 10, enchant_capacity_mod = 1.0},
-		leatherthick = {armor = 15, mdef = 15, enchant_capacity_mod = 1.1},
-		leathermythic = {armor = 25, mdef = 20, enchant_capacity_mod = 1.15},
-		leatherdragon = {armor = 35, mdef = 45, enchant_capacity_mod = 1.2},
-		bone = {armor = 10, mdef = 5, enchant_capacity_mod = 1.1},
-		boneancient = {armor = 20, mdef = 10, enchant_capacity_mod = 1.15},
-		bonedragon = {armor = 40, mdef = 30, enchant_capacity_mod = 1.25},
-		lizard_skin = {armor = 30, mdef = 15, resist_fire = 10, enchant_capacity_mod = 1.05},
-		insect_chitin = {armor = 10, mdef = 40, enchant_capacity_mod = 1.1},
+		leather = {armor = 10, mdef = 10, enchant_capacity_mod = 0.0},
+		leatherthick = {armor = 15, mdef = 15, enchant_capacity_mod = 0.1},
+		leathermythic = {armor = 25, mdef = 20, enchant_capacity_mod = 0.15},
+		leatherdragon = {armor = 35, mdef = 45, enchant_capacity_mod = 0.2},
+		bone = {armor = 10, mdef = 5, enchant_capacity_mod = 0.1},
+		boneancient = {armor = 20, mdef = 10, enchant_capacity_mod = 0.15},
+		bonedragon = {armor = 40, mdef = 30, enchant_capacity_mod = 0.25},
+		lizard_skin = {armor = 30, mdef = 15, resist_fire = 10, enchant_capacity_mod = 0.05},
+		insect_chitin = {armor = 10, mdef = 40, enchant_capacity_mod = 0.1},
 	},
 	ArmorBaseHeavy = {
-		stone = {armor = 15, mdef = 15, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 1.0},
-		obsidian = {armor = 25, mdef = 20, resist_earth = 40, enchant_capacity_mod = 1.15},
-		iron = {armor = 20, mdef = 5, enchant_capacity_mod = 1.0},
-		steel = {armor = 30, mdef = 10, enchant_capacity_mod = 1.1},
-		mithril = {armor = 50, mdef = 35, enchant_capacity_mod = 1.2},
-		adamantine = {armor = 70, mdef = 25, enchant_capacity_mod = 1.3},
+		stone = {armor = 15, mdef = 15, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
+		obsidian = {armor = 25, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
+		iron = {armor = 20, mdef = 5, enchant_capacity_mod = 0.0},
+		steel = {armor = 30, mdef = 10, enchant_capacity_mod = 0.1},
+		mithril = {armor = 50, mdef = 35, enchant_capacity_mod = 0.2},
+		adamantine = {armor = 70, mdef = 25, enchant_capacity_mod = 0.3},
 	},
 	ArmorTrim = {
 		wood = {hpmaxmod = 0.1, resist_earth = 5},
-		woodmagic = {hpmaxmod = 0.15, matk = 2, resist_air = 5, resist_water = 5, enchant_capacity_mod = 1.1},
+		woodmagic = {hpmaxmod = 0.15, matk = 2, resist_air = 5, resist_water = 5, enchant_capacity_mod = 0.1},
 		woodiron = {hpmaxmod = 0.25, resist_earth = 5, resist_water = 10},
 		woodancient = {hpmaxmod = 0.4, resist_earth = 10, resist_water = 10},
 		bone = {atk = 3, resist_dark = 5},
@@ -240,11 +240,11 @@ var partmaterials = {
 		cloth = {mdef = 3, resist_air = 15},
 		clothsilk = {mdef = 5, resist_earth = 10},
 		spider_silk = {mdef = 6, resist_earth = 15},
-		clothmagic = {mdef = 5, matk = 4, resist_water = 10, enchant_capacity_mod = 1.1},
+		clothmagic = {mdef = 5, matk = 4, resist_water = 10, enchant_capacity_mod = 0.1},
 		clothethereal = {mdef = 8, resist_mind = 10},
 		iron = {armor = 2, resist_earth = 10},
 		steel = {armor = 3, resist_fire = 10, resist_earth = 10},
-		mithril = {armor = 4, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 1.1},
+		mithril = {armor = 4, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 0.1},
 		adamantine = {armor = 5, resist_earth = 15, resist_fire = 10},
 		obsidian = {resist_fire = 10, resist_air = 10},
 		lizard_skin = {resist_fire = 25},
@@ -4297,22 +4297,30 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				effects = ['enchant_sharp_1'],
+				statmods = {atk_mul = 1.1, hitrate_add = 10},
+#				effects = ['enchant_sharp_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
-				effects = ['enchant_sharp_2'],
+				statmods = {atk_mul = 1.2, hitrate_add = 15},
+#				effects = ['enchant_sharp_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
-				effects = ['enchant_sharp_3'],
+				statmods = {atk_mul = 1.3, hitrate_add = 20},
+#				effects = ['enchant_sharp_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
-				effects = ['enchant_sharp_4'],
+				statmods = {atk_mul = 1.4, hitrate_add = 25},
+#				effects = ['enchant_sharp_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4329,21 +4337,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_spellmas_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_spellmas_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_spellmas_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_spellmas_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4360,6 +4372,7 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_nostun'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
@@ -4377,21 +4390,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_thorns_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_thorns_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_thorns_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 1500
 			},
 			4:{
 				effects = ['enchant_thorns_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 2500
 			},
@@ -4408,32 +4425,37 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				effects = ['enchant_carapace_1'],
-				statmods = {armor = 1.07},
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.07, mdef_mul = 1.07, resist_fire_add = 2, resist_water_add = 2, resist_air_add = 2, resist_earth_add = 2,},
 				cap_cost = 20,
 				gold_cost = 250
 			},
 			2:{
-				effects = ['enchant_carapace_2'],
-				statmods = {armor = 1.15},
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.15, mdef_mul = 1.15, resist_fire_add = 4, resist_water_add = 4, resist_air_add = 4, resist_earth_add = 4,},
 				cap_cost = 40,
 				gold_cost = 500
 			},
 			3:{
-				effects = ['enchant_carapace_3'],
-				statmods = {armor = 1.21},
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.21, mdef_mul = 1.21, resist_fire_add = 6, resist_water_add = 6, resist_air_add = 6, resist_earth_add = 6,},
 				cap_cost = 60,
 				gold_cost = 750
 			},
 			4:{
-				effects = ['enchant_carapace_4'],
-				statmods = {armor = 1.28},
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.28, mdef_mul = 1.28, resist_fire_add = 8, resist_water_add = 8, resist_air_add = 8, resist_earth_add = 8,},
 				cap_cost = 80,
 				gold_cost = 1000
 			},
 			5:{
-				effects = ['enchant_carapace_5'],
-				statmods = {armor = 1.35},
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.35, mdef_mul = 1.35, resist_fire_add = 10, resist_water_add = 10, resist_air_add = 10, resist_earth_add = 10,},
 				cap_cost = 100,
 				gold_cost = 1500
 			},
@@ -4450,26 +4472,31 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_vampirism_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_vampirism_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_vampirism_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_vampirism_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
 			5:{
 				effects = ['enchant_vampirism_5'],
+				weight = 100,
 				cap_cost = 250,
 				gold_cost = 4000
 			},
@@ -4485,11 +4512,13 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_commander_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_commander_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
@@ -4507,21 +4536,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_warlock_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_warlock_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_warlock_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_warlock_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4530,88 +4563,112 @@ var enchantments = {
 }
 
 var curses = {
+	stub_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		statmods = {enchant_capacity_mul = 1.25}
+	},
 	weakness_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_weakness_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, physics_bonus_add = -30}
 	},
 	slowwit_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_slowwit_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, wits_bonus_add = -30}
 	},
 	hideous_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_1'],
-		capacity_multiplyer = 1.25
+#		effects = ['curse_hideous_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, charm_bonus_add = -30}
 	},
 	decline_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_declide_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	fragility_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_fragility_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	distrust_minor = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_distrust_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
+	},
+	stub_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	weakness_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_weakness_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, physics_bonus_add = -60}
 	},
 	slowwit_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_slowwit_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, wits_bonus_add = -60}
 	},
 	hideous_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_2'],
-		capacity_multiplyer = 1.5
+#		effects = ['curse_hideous_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, scharm_bonus_add = -60}
 	},
 	decline_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_declide_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	fragility_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_fragility_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	distrust_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		effects = ['curse_distrust_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 }

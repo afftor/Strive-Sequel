@@ -645,7 +645,7 @@ func player_turn(pos):
 		var targ = get_random_target()
 		use_skill(selected_character.get_skill_by_tag('default'), selected_character, targ)
 		return
-	if selected_character.has_status('taunt'):
+	if selected_character.has_status('taunt_hard'):
 		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
@@ -807,7 +807,7 @@ func enemy_turn(pos):
 		activeaction = castskill
 		UpdateSkillTargets(fighter, true)
 		target = get_random_target()
-	if fighter.has_status('taunt'):
+	if fighter.has_status('taunt_hard'):
 		var targ = characters_pool.get_char_by_id(fighter.taunt)
 #		fighter.taunt = null
 		if can_be_taunted(fighter, targ):

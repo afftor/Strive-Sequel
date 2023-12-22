@@ -790,7 +790,6 @@ __meta__ = {
 }
 
 [node name="ModularSetup" type="Control" parent="MaterialSetupPanel"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -800,6 +799,7 @@ margin_top = 221.0
 margin_right = 88.4864
 margin_bottom = 311.0
 texture = ExtResource( 34 )
+expand = true
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part1"]
@@ -860,6 +860,7 @@ margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
 margin_bottom = 42.0
+grow_horizontal = 0
 align = 2
 valign = 1
 
@@ -869,6 +870,7 @@ margin_top = 221.0
 margin_right = 413.496
 margin_bottom = 311.0
 texture = ExtResource( 34 )
+expand = true
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part2"]
@@ -929,6 +931,7 @@ margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
 margin_bottom = 42.0
+grow_horizontal = 0
 align = 2
 valign = 1
 
@@ -938,6 +941,7 @@ margin_top = 221.0
 margin_right = 731.014
 margin_bottom = 311.0
 texture = ExtResource( 34 )
+expand = true
 stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part3"]
@@ -998,6 +1002,7 @@ margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
 margin_bottom = 42.0
+grow_horizontal = 0
 align = 2
 valign = 1
 

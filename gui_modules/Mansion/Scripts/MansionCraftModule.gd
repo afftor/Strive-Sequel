@@ -356,7 +356,7 @@ func selectcraftitem(item):
 			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
 			newbutton.disabled = item.items[i] > amount
 #			globals.connectitemtooltip_v2(newbutton, Items.itemlist[i])
-
+	
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = ''
@@ -381,18 +381,22 @@ func selectcraftitem(item):
 		$MaterialSetupPanel/ModularSetup/Part1.set_meta('cost',item.parts[array[0]])
 		$MaterialSetupPanel/ModularSetup/Part2.hide()
 		$MaterialSetupPanel/ModularSetup/Part3.hide()
+		$MaterialSetupPanel/ModularSetup/Part1/TextureRect.texture = Items.Parts[array[0]].icon
 		match array.size():
 			2:
 				$MaterialSetupPanel/ModularSetup/Part2.show()
 				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
 				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
+				$MaterialSetupPanel/ModularSetup/Part2/TextureRect.texture = Items.Parts[array[1]].icon
 			3:
 				$MaterialSetupPanel/ModularSetup/Part2.show()
 				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
 				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
+				$MaterialSetupPanel/ModularSetup/Part2/TextureRect.texture = Items.Parts[array[1]].icon
 				$MaterialSetupPanel/ModularSetup/Part3.show()
 				$MaterialSetupPanel/ModularSetup/Part3.set_meta('part',array[2])
 				$MaterialSetupPanel/ModularSetup/Part3.set_meta('cost',item.parts[array[2]])
+				$MaterialSetupPanel/ModularSetup/Part3/TextureRect.texture = Items.Parts[array[2]].icon
 
 
 
@@ -439,7 +443,7 @@ func choosematerial(button):
 func selectmaterial(material, part, cost):
 	$filter.show()
 	itemparts[part] = {material = material.code, price = cost}
-	chosenpartbutton.get_node("TextureRect").texture = material.icon
+#	chosenpartbutton.get_node("TextureRect").texture = material.icon
 	chosenpartbutton.get_node("ResourceSelect/icon").texture = material.icon
 	# chosenpartbutton.get_node('TextureRect').hide()
 	chosenpartbutton.get_node("number").text = str(cost)

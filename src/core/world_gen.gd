@@ -634,7 +634,7 @@ func make_chest_loot(chest):
 							dict.items.append(globals.CreateUsableItem(tempitem, amount))
 						'gear':
 							if i.has('parts'):
-								dict.items.append(globals.CreateGearItem(tempitem, i.parts))
+								dict.items.append(globals.CreateGearItemLoot(tempitem, i.parts))
 							else:
 								dict.items.append(globals.CreateGearItem(tempitem, {}))
 			'material':
@@ -687,7 +687,7 @@ func make_chest_loot(chest):
 						itemdict.locationmaterials = location.resources
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
+					item = globals.CreateGearItemLoot(item.code, item.itemparts)
 
 					dict.items.append(item)
 					number -= 1
@@ -705,7 +705,7 @@ func make_chest_loot(chest):
 						itemdict.locationmaterials = location.resources
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
+					item = globals.CreateGearItemLoot(item.code, item.itemparts)
 
 					dict.items.append(item)
 					number -= 1
@@ -723,7 +723,7 @@ func make_chest_loot(chest):
 						itemdict.locationmaterials = location.resources
 						itemdict.material_grade = i.material_grade
 					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
+					item = globals.CreateGearItemLoot(item.code, item.itemparts)
 
 					dict.items.append(item)
 					number -= 1
@@ -748,6 +748,6 @@ func generate_random_gear(dict):#
 					material_array.append(i.code)
 		itemparts[i_part] = material_array[randi()%material_array.size()]
 
-	return {code = itemtemplate.code, itemparts = itemparts, bonus = {}}
+	return {code = itemtemplate.code, itemparts = itemparts}
 
 

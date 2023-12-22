@@ -8,6 +8,7 @@ var receiver
 var damagestat
 var damage_type
 var is_drain
+var cap
 
 func _init(caller, tmp):
 	parent = caller
@@ -17,6 +18,7 @@ func _init(caller, tmp):
 	damagestat = template.damagestat
 	damage_type = template.source
 	is_drain = template.is_drain
+	cap = template.cap
 
 func clone():
 	var tmp = template.duplicate()
@@ -35,6 +37,15 @@ func apply_atomic(tmp):
 				is_drain *= tmp.value
 			'stat_set':
 				is_drain = tmp.value
+		return
+	if tmp.stat == 'cap':
+		match tmp.type:
+			'stat_add':
+				cap += tmp.value
+			'stat_mul':
+				cap *= tmp.value
+			'stat_set': #not really
+				cap = tmp.value
 		return
 	if (tmp.has('stats') && !tmp.stats.has(template.damagestat)): return
 	if (tmp.has('statignore') && tmp.statignore.has(template.damagestat)): return
@@ -95,17 +106,30 @@ func calculate_dmg():
 	#crit modification
 	if parent.hit_res == variables.RES_CRIT and !template.nocrit and !template.nomod:
 		value *= parent.caster.get_stat('critmod')
-	#reduction
+	
+#	if parent.ability_type == 'skill':
+	#current formulae add ap to spell damage cap
+	cap += parent.armor_p * 0.5
 	var reduction = 0
 	if parent.ability_type == 'skill':
 		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
-		reduction = min(95, reduction)
 	elif parent.ability_type == 'spell':
 		reduction = max(0, parent.target.get_stat('mdef'))
-		reduction = min(100, reduction)
-	
 	if !template.nodef and !template.nomod:
-		value *= (float(100 - reduction)/100.0)
+		value -= reduction
+	
+	value = max(value, cap)
+	#reduction
+#	var reduction = 0
+#	if parent.ability_type == 'skill':
+#		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
+#		reduction = min(95, reduction)
+#	elif parent.ability_type == 'spell':
+#		reduction = max(0, parent.target.get_stat('mdef'))
+#		reduction = min(100, reduction)
+#
+#	if !template.nodef and !template.nomod:
+#		value *= (float(100 - reduction)/100.0)
 		
 	#damage resists
 	var mods = parent.target.get_stat('resist_damage')

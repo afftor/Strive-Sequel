@@ -2268,13 +2268,22 @@ var effect_table = {
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'taunt'}],
 	},
-	e_t_taunt = {
+	e_t_provoke = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
 		args = [{obj = 'parent', param = 'caster' }],
 		sub_effects = ['e_clean_taunt', 'e_s_taunt'],
+		buffs = []
+	},
+	e_t_taunt = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'caster' }],
+		sub_effects = ['e_clean_taunt', 'e_s_taunt_new'],
 		buffs = []
 	},
 	e_s_devour = {
@@ -2555,12 +2564,12 @@ var effect_table = {
 		],
 	},
 	#curses and enchantments
-	curse_weakness_1 = rebuild_stat_bonus('physics_bonus', -30, 'b_curse'),
-	curse_weakness_2 = rebuild_stat_bonus('physics_bonus', -60, 'b_curse'),
-	curse_slowwit_1 = rebuild_stat_bonus('wits_bonus', -30, 'b_curse'),
-	curse_slowwit_2 = rebuild_stat_bonus('wits_bonus', -60, 'b_curse'),
-	curse_hideous_1 = rebuild_stat_bonus('charm_bonus', -30, 'b_curse'),
-	curse_hideous_2 = rebuild_stat_bonus('charm_bonus', -60, 'b_curse'),
+#	curse_weakness_1 = rebuild_stat_bonus('physics_bonus', -30, 'b_curse'),
+#	curse_weakness_2 = rebuild_stat_bonus('physics_bonus', -60, 'b_curse'),
+#	curse_slowwit_1 = rebuild_stat_bonus('wits_bonus', -30, 'b_curse'),
+#	curse_slowwit_2 = rebuild_stat_bonus('wits_bonus', -60, 'b_curse'),
+#	curse_hideous_1 = rebuild_stat_bonus('charm_bonus', -30, 'b_curse'),
+#	curse_hideous_2 = rebuild_stat_bonus('charm_bonus', -60, 'b_curse'),
 	curse_decline_1 = rebuild_stat_bonus('exp_gain_mod', -0.25, 'b_curse'),
 	curse_decline_2 = rebuild_stat_bonus('exp_gain_mod', -0.5, 'b_curse'),
 	curse_fragility_1 = rebuild_stat_bonus('hpmax', -0.2, 'b_curse', 'stat_add_p'),
@@ -2568,46 +2577,46 @@ var effect_table = {
 	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, 'b_curse', 'stat_add_p'),
 	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, 'b_curse', 'stat_add_p'),
 	
-	enchant_sharp_1 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.1, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 10),
-		],
-		args = []
-	},
-	enchant_sharp_2 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.2, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 15),
-		],
-		args = []
-	},
-	enchant_sharp_3 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.3, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 20),
-		],
-		args = []
-	},
-	enchant_sharp_4 = {
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('atk', 0.4, null, 'stat_add_p'),
-			rebuild_stat_bonus('hitrate', 25),
-		],
-		args = []
-	},
+#	enchant_sharp_1 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.1, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 10),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_2 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.2, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 15),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_3 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.3, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 20),
+#		],
+#		args = []
+#	},
+#	enchant_sharp_4 = {
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('atk', 0.4, null, 'stat_add_p'),
+#			rebuild_stat_bonus('hitrate', 25),
+#		],
+#		args = []
+#	},
 	
 	enchant_spellmas_1 = {
 		type = 'static',
@@ -2765,66 +2774,66 @@ var effect_table = {
 		]
 	},
 	
-	enchant_carapace_1 = { #armor bonus is not here
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('resist_fire', 2),
-			rebuild_stat_bonus('resist_air', 2),
-			rebuild_stat_bonus('resist_water', 2),
-			rebuild_stat_bonus('resist_earth', 2),
-		],
-		args = []
-	},
-	enchant_carapace_2 = { #armor bonus is not here
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('resist_fire', 4),
-			rebuild_stat_bonus('resist_air', 4),
-			rebuild_stat_bonus('resist_water', 4),
-			rebuild_stat_bonus('resist_earth', 4),
-		],
-		args = []
-	},
-	enchant_carapace_3 = { #armor bonus is not here
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('resist_fire', 6),
-			rebuild_stat_bonus('resist_air', 6),
-			rebuild_stat_bonus('resist_water', 6),
-			rebuild_stat_bonus('resist_earth', 6),
-		],
-		args = []
-	},
-	enchant_carapace_4 = { #armor bonus is not here
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('resist_fire', 8),
-			rebuild_stat_bonus('resist_air', 8),
-			rebuild_stat_bonus('resist_water', 8),
-			rebuild_stat_bonus('resist_earth', 8),
-		],
-		args = []
-	},
-	enchant_carapace_5 = { #armor bonus is not here
-		type = 'static',
-		atomic = [],
-		buffs = ['b_enchant'],
-		sub_effects = [
-			rebuild_stat_bonus('resist_fire', 10),
-			rebuild_stat_bonus('resist_air', 10),
-			rebuild_stat_bonus('resist_water', 10),
-			rebuild_stat_bonus('resist_earth', 10),
-		],
-		args = []
-	},
+#	enchant_carapace_1 = { #armor bonus is not here
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('resist_fire', 2),
+#			rebuild_stat_bonus('resist_air', 2),
+#			rebuild_stat_bonus('resist_water', 2),
+#			rebuild_stat_bonus('resist_earth', 2),
+#		],
+#		args = []
+#	},
+#	enchant_carapace_2 = { #armor bonus is not here
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('resist_fire', 4),
+#			rebuild_stat_bonus('resist_air', 4),
+#			rebuild_stat_bonus('resist_water', 4),
+#			rebuild_stat_bonus('resist_earth', 4),
+#		],
+#		args = []
+#	},
+#	enchant_carapace_3 = { #armor bonus is not here
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('resist_fire', 6),
+#			rebuild_stat_bonus('resist_air', 6),
+#			rebuild_stat_bonus('resist_water', 6),
+#			rebuild_stat_bonus('resist_earth', 6),
+#		],
+#		args = []
+#	},
+#	enchant_carapace_4 = { #armor bonus is not here
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('resist_fire', 8),
+#			rebuild_stat_bonus('resist_air', 8),
+#			rebuild_stat_bonus('resist_water', 8),
+#			rebuild_stat_bonus('resist_earth', 8),
+#		],
+#		args = []
+#	},
+#	enchant_carapace_5 = { #armor bonus is not here
+#		type = 'static',
+#		atomic = [],
+#		buffs = ['b_enchant'],
+#		sub_effects = [
+#			rebuild_stat_bonus('resist_fire', 10),
+#			rebuild_stat_bonus('resist_air', 10),
+#			rebuild_stat_bonus('resist_water', 10),
+#			rebuild_stat_bonus('resist_earth', 10),
+#		],
+#		args = []
+#	},
 	enchant_vampirism_1 = {
 		type = 'static',
 		atomic = [],
@@ -3072,7 +3081,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'burn_mod'}],
 		sub_effects = ['e_burn_new'],
 		atomic = [],
 		buffs = ['b_burn'],
@@ -3086,7 +3095,7 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'burn_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_burn_new'],
 			}
 		]
@@ -3100,7 +3109,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'poison_mod'}],
 		sub_effects = ['e_poison_new'],
 		atomic = [],
 		buffs = ['b_poison'],
@@ -3114,7 +3123,7 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'poison_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_poison_new'],
 			}
 		]
@@ -3128,7 +3137,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		tags = ['affliction', 'tick_after_trigger'],
-		args = [],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'bleed_mod'}],
 		sub_effects = ['e_bleed_new'],
 		atomic = [],
 		buffs = ['b_bleed'],
@@ -3142,12 +3151,43 @@ var effect_table = {
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'bleed_damage'}, {obj = 'parent_args', param = 0}],
 				atomic = ['a_bleed_new'],
 			}
 		]
 	},
-	
+	e_s_blind = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'blind',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'hitrate', value = -50}],
+		buffs = ['b_blind'],
+	},
+	e_s_ensnare = { #1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'ensnare',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, 
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = -75}
+		],
+		buffs = ['b_ensnare'],
+		sub_effects = [],
+	},
 	#stub
 	
 	#
@@ -3318,7 +3358,20 @@ var effect_table = {
 		duration = 2,
 		stack = 1,
 		name = 'taunt',
-		tags = ['debuff', 'taunt', 'negative'],
+		tags = ['debuff', 'taunt', 'negative', 'taunt_hard'],
+		buffs = ['b_taunt'],
+		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
+		atomic = [{type = 'stat_set_revert', stat = 'taunt', value = ['parent_args', 0]}]
+	},
+	e_s_taunt_new = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_TAUNT_FAIL], #optional remove event
+		tick_event = [variables.TR_TURN_F],
+		duration = 2,
+		stack = 1,
+		name = 'taunt',
+		tags = ['debuff', 'taunt', 'negative', 'taunt_soft'],
 		buffs = ['b_taunt'],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
 		atomic = [{type = 'stat_set_revert', stat = 'taunt', value = ['parent_args', 0]}]
@@ -4494,9 +4547,9 @@ var atomic = {
 	a_bleed = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.25]},
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
 	
-	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', 0.08]},
-	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
-	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', 0.05]},
+	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 };
 #needs filling
 var buffs = {
@@ -4645,6 +4698,18 @@ var buffs = {
 		t_name = 'shred',
 		combat_only = true
 	},
+	b_blind = {
+		icon = "res://assets/images/iconsskills/Sedate.png", #fix
+		description = "BUFFDESCRIPTSHRED",
+		t_name = 'blind',
+		combat_only = true
+	},
+	b_ensnare = {
+		icon = "res://assets/images/iconsskills/Sedate.png", #fix
+		description = "BUFFDESCRIPTSHRED",
+		t_name = 'ensnare',
+		combat_only = true
+	},
 	b_growl = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTGROWL",
@@ -4744,6 +4809,8 @@ func rebuild_template(args):
 		res.duration = args.duration
 	if args.has('push_value'):
 		res.args = [{obj = 'parent', param = 'process_value'}]
+	elif args.has('push_characters'):
+		res.args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}]
 
 	res.sub_effects.push_back(args.effect)
 

@@ -104,6 +104,7 @@ texture_hover = ExtResource( 10 )
 texture_disabled = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
@@ -132,6 +133,7 @@ margin_left = 18.0
 margin_top = 28.0
 margin_right = 335.0
 margin_bottom = 74.0
+toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 texture_hover = ExtResource( 19 )
@@ -150,6 +152,7 @@ margin_left = 18.0
 margin_top = 94.0
 margin_right = 335.0
 margin_bottom = 140.0
+toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 texture_hover = ExtResource( 19 )

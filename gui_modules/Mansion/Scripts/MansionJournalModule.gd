@@ -399,7 +399,7 @@ func Reward():
 				guild = selectedquest.source
 				is_recount_reputation = true
 			'gear':
-				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
+				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
 			'gear_static':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
 			'material':
