@@ -647,6 +647,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 
 func area_advance(mode): #advance request
 	globals.reset_roll_data()
+	globals.char_roll_data.diff = input_handler.active_location.difficulty
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
