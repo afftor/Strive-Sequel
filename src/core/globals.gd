@@ -482,7 +482,7 @@ func build_attrs_for_char(node, person):
 func build_desc_for_bonusstats(bonusstats):
 	var text = ""
 	for i in bonusstats:
-		if i == 'enchant_capacity': 
+		if i  in ['enchant_capacity', 'enchant_capacity_mod', ]: 
 			continue
 		if bonusstats[i] != 0:
 			var value = bonusstats[i]

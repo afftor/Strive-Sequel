@@ -523,9 +523,17 @@ func tooltiptext_light():
 
 func tooltipeffects():
 	var text = ''
+	for id in enchants:
+		text += "%s lv %d\n" % [tr(Items.enchantments[id].name), enchants[id]]
+	if curse != null:
+		if !curse_known:
+			text += "Unknown curse"
+		else:
+			text += tr(Items.curses[curse].name)
 	for i in effects:
 		if !Effectdata.effect_table[i].has('descript'):
-			text += tr(i) + '\n'
+			pass
+#			text += tr(i) + '\n'
 		elif Effectdata.effect_table[i].descript != '':
 			text += tr(Effectdata.effect_table[i].descript) + "\n"
 #		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
