@@ -193,6 +193,9 @@ func build_item_panel(panel, item):
 	elif item.curse.ends_with('major'):
 		text += 'unknown major'
 	curse_text.bbcode_text = text
+	for id in item.enchants:
+		var ench_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
+		ench_text.bbcode_text = "%s lv %d" % [tr(Items.enchantments[id].name), item.enchants[id]]
 	#free 2add other descriptions
 
 
