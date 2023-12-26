@@ -43,6 +43,7 @@ func build_item_list():
 
 func select_item(id):
 	selected_item = id
+	selected_enchants.clear()
 	build_item_list()
 	build_item()
 
@@ -149,7 +150,6 @@ func build_ench_panel(panel):
 
 
 func build_enchantment_list():
-	selected_enchants.clear()
 	var item = ResourceScripts.game_res.items[selected_item]
 	input_handler.ClearContainer($EnchantPanel/VBoxContainer, ['Button'])
 	for id in Items.enchantments:
