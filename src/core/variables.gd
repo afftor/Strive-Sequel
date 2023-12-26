@@ -128,6 +128,12 @@ var hexcolordict = {
 	k_red = "#fe515d",
 	magenta = "#ff84ff",
 	unique = '#D4AF37',
+	quality_poor = '#4B4B4B',
+	quality_average = '#ffffff',
+	quality_good = '#00b700',
+	quality_epic = '#ff84ff',
+	quality_legendary = '#D4AF37',
+	
 }
 
 
@@ -450,6 +456,7 @@ var personality_conversion_rates = {
 var reputation_tresholds = [0, 300, 500, 1000, 1500]
 
 var itemquality_multiplier = {
+	"" : 1.0,
 	poor = 1.0,
 	average = 1.1,
 	good = 1.25,

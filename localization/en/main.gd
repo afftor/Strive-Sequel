@@ -491,6 +491,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALMEATSOUPDESCRIPT = "A combination of water and meat. Produced by cooking.\nFood type: Meat, Vegetables.",
 	MATERIALFISHCAKES = "Fish Cakes",
 	MATERIALFISHCAKESDESCRIPT = "A baked dough filled with fish paste. Especially liked by Cat folk. Produced by cooking.\nFood type: Fish, Grains.",
+	MATERIALCURRY = "Curry",
+	MATERIALDESCRIPT = "A bowl of grains and meat rich with a distinct flavor.\nFood type: Meat, Grains.",
+	MATERIALFRIEDFISH = "Fried Fish",
+	MATERIALFRIEDFISHDESCRIPT = "A dish of fried fish with vegatables invented to nutrient picky beastgirl eaters.\nFood type: Fish, Vegetables.",
+	
+	
 	MATERIALSTONE = "Rough Stone",
 	MATERIALSTONEADJ = "Stone",
 	MATERIALSTONEDESCRIPT = "Stone comes in many forms and shapes. It can serve as a good building material or even low quality tools. Acquired from mining. ",
@@ -1574,6 +1580,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATRESIST_DARK = "Dark Resist",
 	STATRESIST_MIND = "Mind Resist",
 	
+	STATENCHANT_CAPACITY_MOD = "Enchantment Capacity",
+	STATENCHCAP = "Enchant Capacity", 
+	STATQUALITY = "Quality",
 	STATPRICE = "Value",
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
@@ -14166,22 +14175,22 @@ Hotkey: 3""",
 	
 	
 	
-	ENCHANTSHARPNESSNAME = "Sharpness",
-	ENCHANTSHARPNESSDESCRIPT = "Increases Attack and Hit Rate of bladed weapons.",
-	ENCHANTSPELL_MASTERYNAME = "Spell Mastery",
-	ENCHANTSPELL_MASTERYDESCRIPT = "Increases Spell Damage and Healing effects.",
-	ENCHANTSTUN_IMMUNENAME = "Stun Immunity",
-	ENCHANTSTUN_IMMUNEDESCRIPT = "Wearer can't be stunned.",
-	ENCHANTTHORNSNAME = "Thorns",
-	ENCHANTTHORNSDESCRIPT = "Returns physical damage to the attacker.",
-	ENCHANTCARAPACENAME = "Carapace",
+	ENCHSHARPNESS = "Sharpness",
+	ENCHSHARPNESSDESCRIPT = "Increases Attack and Hit Rate of bladed weapons.",
+	ENCHSPELL_MASTERY = "Spell Mastery",
+	ENCHSPELL_MASTERYDESCRIPT = "Increases Spell Damage and Healing effects.",
+	ENCHSTUN_IMMUNE = "Stun Immunity",
+	ENCHSTUN_IMMUNEDESCRIPT = "Wearer can't be stunned.",
+	ENCHTHORNS = "Thorns",
+	ENCHTHORNSDESCRIPT = "Returns physical damage to the attacker.",
+	ENCHCARAPACE = "Carapace",
 	ENCHANTCARAPACEDESCRIPT = "Increases item's armor value and boosts elemental resists.",
-	ENCHANTVAMPIRISMNAME = "Vampirism",
-	ENCHANTVAMPIRISMDESCRIPT = "Part of physical damage dealt will be absorbed as health.",
-	ENCHANTCOMMANDERNAME = "Commander",
-	ENCHANTCOMMANDERDESCRIPT = "Increases damage dealt and damage received of all other party members. Does not stack.",
-	ENCHANTWARLOCKNAME = "Warlock",
-	ENCHANTWARLOCKDESCRIPT = "Reduces mana cost of skills.",
+	ENCHVAMPIRISM = "Vampirism",
+	ENCHVAMPIRISMDESCRIPT = "Part of physical damage dealt will be absorbed as health.",
+	ENCHCOMMANDER = "Commander",
+	ENCHCOMMANDERDESCRIPT = "Increases damage dealt and damage received of all other party members. Does not stack.",
+	ENCHWARLOCK = "Warlock",
+	ENCHWARLOCKDESCRIPT = "Reduces mana cost of skills.",
 	
 	
 	

@@ -44,7 +44,7 @@ var enchants = {}
 var curse = null
 var curse_known = false
 
-var quality = 'poor'
+var quality = ''
 
 
 func clone():
@@ -451,6 +451,9 @@ func tooltiptext():
 
 func tooltiptext_1():
 	var text = ''
+	
+	if quality != "": text += tr("STATQUALITY") + ": {color=" + "quality_"+quality +"|" + str(quality) + "}\n"
+	
 	if geartype != null:
 		text += tr('TYPE_LABEL') + ': ' + geartype + "\n"
 	else:
@@ -470,7 +473,10 @@ func tooltiptext_1():
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
 		text += tempslave.decipher_reqs(reqs)
-
+	
+	if get_e_capacity_max() > 0:
+		text +=  "\n" + tr("STATENCHCAP")+": " + str(get_e_capacity()) + "/" + str(get_e_capacity_max())
+	
 	text = globals.TextEncoder(text)
 	return text
 

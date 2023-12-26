@@ -343,6 +343,25 @@ var materiallist = {
 		type = 'food',
 		tags = ['vege', 'meat'],
 	},
+	
+	curry = {
+		code = 'curry',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_curry.png"),
+		price = 3,
+		type = 'food',
+		tags = ['grain', 'meat'],
+	},
+	friedfish = {
+		code = 'friedfish',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_friedfish.png"),
+		price = 3,
+		type = 'food',
+		tags = ['vege', 'fish'],
+	},
 
 	divine_symbol = {
 		code = 'divine_symbol',
@@ -3120,7 +3139,45 @@ var recipes = {
 		workunits = 0.15,
 		worktype = 'cooking'
 	},
-
+	fishcakes = {
+		code = 'fishcakes',
+		materials = {fish = 1, grain = 2},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 3,
+		resultitemtype = 'material',
+		resultitem = 'fishcakes',
+		workunits = 0.16,
+		worktype = 'cooking'
+	},
+	
+	curry = {
+		code = 'curry',
+		materials = {meat = 1, grain = 2},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 4,
+		resultitemtype = 'material',
+		resultitem = 'curry',
+		workunits = 0.14,
+		worktype = 'cooking'
+	},
+	friedfish = {
+		code = 'friedfish',
+		materials = {fish = 1, vegetables = 1},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 3,
+		resultitemtype = 'material',
+		resultitem = 'friedfish',
+		workunits = 0.19,
+		worktype = 'cooking'
+	},
+	
+	
 	divine_symbol = {
 		code = 'divine_symbol',
 		materials = {mithril = 5},
@@ -3134,19 +3191,6 @@ var recipes = {
 		workunits = 0.15,
 		worktype = 'smith',
 		unique = true
-	},
-
-	fishcakes = {
-		code = 'fishcakes',
-		materials = {fish = 1, grain = 2},
-		items = {},
-		unlockreqs = [],
-		crafttype = 'basic',
-		resultamount = 3,
-		resultitemtype = 'material',
-		resultitem = 'fishcakes',
-		workunits = 0.16,
-		worktype = 'cooking'
 	},
 	#resources
 	steel = {

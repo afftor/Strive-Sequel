@@ -161,7 +161,6 @@ worlddata="*res://assets/data/worlddata.gd"
 Namedata="*res://assets/data/names.gd"
 starting_presets="*res://assets/data/starting_presets.gd"
 races="*res://assets/data/races.gd"
-tasks="*res://assets/data/tasks.gd"
 input_handler="*res://src/core/input_handler.gd"
 globals="*res://src/core/globals.gd"
 Statlist_init="*res://src/character/statlist.gd"
@@ -173,6 +172,7 @@ gui_controller="*res://src/core/gui_controller.gd"
 Gallery="*res://src/core/gallery.gd"
 rnd_settings="*res://src/randomportraits/settings.gd"
 GeneratorData="*res://Character_generator/generator_data.gd"
+tasks="*res://assets/data/tasks.gd"
 
 [debug]
 
