@@ -101,9 +101,6 @@ margin_top = 64.0
 margin_right = 143.298
 margin_bottom = 478.0
 theme = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="all" type="Button" parent="categories"]
 light_mask = 0

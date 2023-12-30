@@ -1507,7 +1507,16 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.7.2a
+text = "0.8.0 Experimental
+Standartized and fixed most of the ingame texts and events (thanks to Lipach)
+Rebalanced and standartized most combat buffs and debuffs
+Added item quality and enchantments to modular gear
+Added scene unlock hints to the gallery
+Added 2 new food items
+Revamped crafting GUI and added enchantment screen
+Fixed multiple events and sidequest issues
+Fixed multiple missing descriptions
+0.7.2a
 Added new effect to Zephyra's unique item
 Paper doll: Fixed pregnant futa, male collars and some other minor issues
 Fixed some character wedding sprites being wrong sizes

@@ -452,7 +452,7 @@ func tooltiptext():
 func tooltiptext_1():
 	var text = ''
 	
-	if quality != "": text += tr("STATQUALITY") + ": {color=" + "quality_"+quality +"|" + str(quality) + "}\n"
+	if quality != "": text += tr("STATQUALITY") + ": {color=" + "quality_"+quality +"|" + str(tr("QUALITY"+quality.to_upper())) + "}\n"
 	
 	if geartype != null:
 		text += tr('TYPE_LABEL') + ': ' + geartype + "\n"
@@ -530,12 +530,12 @@ func tooltiptext_light():
 func tooltipeffects():
 	var text = ''
 	for id in enchants:
-		text += "%s lv %d\n" % [tr(Items.enchantments[id].name), enchants[id]]
+		text += "{color=yellow|%s %s}\n" % [tr(Items.enchantments[id].name), input_handler.roman_number_converter(enchants[id])]
 	if curse != null:
 		if !curse_known:
-			text += "Unknown curse"
+			text += "{color=red|Unknown curse}"
 		else:
-			text += tr(Items.curses[curse].name)
+			text += "{color=red|%s}" % [tr(Items.curses[curse].name)]
 	for i in effects:
 		if !Effectdata.effect_table[i].has('descript'):
 			pass

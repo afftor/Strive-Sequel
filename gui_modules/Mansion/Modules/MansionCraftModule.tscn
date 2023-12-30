@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=2]
@@ -69,6 +69,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_character_default.png" type="Texture" id=67]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/item_craft_default.png" type="Texture" id=68]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_pressed.png" type="Texture" id=69]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=70]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_item_hover.png" type="Texture" id=71]
 [ext_resource path="res://assets/images/iconsitems/Cloth.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_hover.png" type="Texture" id=73]
@@ -87,6 +88,10 @@ margin_top = 5.0
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 39 )
 region_rect = Rect2( 0, 0, 460, 20 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 26
+font_data = ExtResource( 70 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 region_rect = Rect2( 0, 0, 554, 754 )
@@ -769,25 +774,25 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MaterialSetupPanel"]
-margin_left = 187.0
-margin_top = -2.0
-margin_right = 396.0
-margin_bottom = 40.0
+margin_left = 180.0
+margin_top = -22.0
+margin_right = 409.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = SubResource( 8 )
 text = "Name"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="EndItemDescript" type="RichTextLabel" parent="MaterialSetupPanel"]
-margin_left = 178.0
-margin_top = 46.0
-margin_right = 405.0
-margin_bottom = 219.0
+margin_left = 177.0
+margin_top = 67.0
+margin_right = 404.0
+margin_bottom = 211.0
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ModularSetup" type="Control" parent="MaterialSetupPanel"]
 margin_right = 40.0

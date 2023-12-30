@@ -328,9 +328,10 @@ func selectcraftitem(item):
 		$MaterialSetupPanel/EndItemFrame/EndItem.material = null
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = baseitem.icon
 		var item_name = baseitem.name
-		var text = "{color=k_yellow|" + str(item_name) + "}"
-		var encoded_text = globals.TextEncoder(text)
-		encoded_text += "\n" + str(globals.TextEncoder(baseitem.descript))
+		$MaterialSetupPanel/Label.text = item_name
+		var font = input_handler.font_size_calculator($MaterialSetupPanel/Label)
+		$MaterialSetupPanel/Label.set("custom_fonts/font", font)
+		var encoded_text = str(globals.TextEncoder(baseitem.descript))
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
 		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
 
@@ -359,6 +360,7 @@ func selectcraftitem(item):
 	
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
+		$MaterialSetupPanel/Label.text = ''
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = ''
 		item = Items.itemlist[item.resultitem]
 		var array = []
@@ -448,6 +450,7 @@ func selectmaterial(material, part, cost):
 	# chosenpartbutton.get_node('TextureRect').hide()
 	chosenpartbutton.get_node("number").text = str(cost)
 	chosenpartbutton.get_node("number").show()
+	chosenpartbutton.get_node("PartDescript").text = tr(Items.Parts[part].name)
 	chosenpartbutton.get_node("ResourceSelect/name").text = material.name
 	chosenpartbutton.get_node("ResourceSelect/amount").text = str(ResourceScripts.game_res.materials[material.code])
 	chosenpartbutton.get_node("ResourceSelect/amount").show()
@@ -511,7 +514,7 @@ func checkcreatingitem(item):
 	else:
 		text += '\n'
 		$NumberSelect/NumberConfirm.disabled = false
-
+	$MaterialSetupPanel/Label.text = baseitem.name
 	globals.TextEncoder(text, $MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
 	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
@@ -520,7 +523,7 @@ func checkcreatingitem(item):
 
 func multipart_item_text(item):
 	var text = ''
-	text += '{color=k_yellow|' + item.name + '}\n'
+	#text += '{color=k_yellow|' + item.name + '}\n'
 	if item.geartype != null:
 		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 	else:

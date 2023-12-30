@@ -204,30 +204,30 @@ var partmaterials = {
 		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4, enchant_capacity_mod = 0.2},
 	},
 	ArmorBaseCloth = {
-		cloth = {armor = 8, mdef = 15, enchant_capacity_mod = 0.0},
-		clothsilk = {armor = 12, mdef = 30, enchant_capacity_mod = 0.1},
-		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.15},
-		clothmagic = {armor = 14, mdef = 50, enchant_capacity_mod = 0.25},
-		clothethereal = {armor = 20, mdef = 65, enchant_capacity_mod = 0.3},
+		cloth = {armor = 5, mdef = 20, enchant_capacity_mod = 0.2},
+		clothsilk = {armor = 10, mdef = 35, enchant_capacity_mod = 0.3},
+		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.3},
+		clothmagic = {armor = 17, mdef = 50, enchant_capacity_mod = 0.4},
+		clothethereal = {armor = 25, mdef = 75, enchant_capacity_mod = 0.5},
 	},
 	ArmorBaseMed = {
-		leather = {armor = 10, mdef = 10, enchant_capacity_mod = 0.0},
-		leatherthick = {armor = 15, mdef = 15, enchant_capacity_mod = 0.1},
-		leathermythic = {armor = 25, mdef = 20, enchant_capacity_mod = 0.15},
-		leatherdragon = {armor = 35, mdef = 45, enchant_capacity_mod = 0.2},
-		bone = {armor = 10, mdef = 5, enchant_capacity_mod = 0.1},
-		boneancient = {armor = 20, mdef = 10, enchant_capacity_mod = 0.15},
-		bonedragon = {armor = 40, mdef = 30, enchant_capacity_mod = 0.25},
-		lizard_skin = {armor = 30, mdef = 15, resist_fire = 10, enchant_capacity_mod = 0.05},
-		insect_chitin = {armor = 10, mdef = 40, enchant_capacity_mod = 0.1},
+		leather = {armor = 15, mdef = 10, enchant_capacity_mod = 0.0},
+		leatherthick = {armor = 25, mdef = 15, enchant_capacity_mod = 0.1},
+		leathermythic = {armor = 35, mdef = 20, enchant_capacity_mod = 0.15},
+		leatherdragon = {armor = 55, mdef = 45, enchant_capacity_mod = 0.2},
+		bone = {armor = 20, mdef = 5, enchant_capacity_mod = 0.1},
+		boneancient = {armor = 25, mdef = 10, enchant_capacity_mod = 0.15},
+		bonedragon = {armor = 55, mdef = 30, enchant_capacity_mod = 0.25},
+		lizard_skin = {armor = 40, mdef = 15, resist_fire = 10, enchant_capacity_mod = 0.05},
+		insect_chitin = {armor = 35, mdef = 40, enchant_capacity_mod = 0.1},
 	},
 	ArmorBaseHeavy = {
-		stone = {armor = 15, mdef = 15, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
-		obsidian = {armor = 25, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
-		iron = {armor = 20, mdef = 5, enchant_capacity_mod = 0.0},
-		steel = {armor = 30, mdef = 10, enchant_capacity_mod = 0.1},
-		mithril = {armor = 50, mdef = 35, enchant_capacity_mod = 0.2},
-		adamantine = {armor = 70, mdef = 25, enchant_capacity_mod = 0.3},
+		stone = {armor = 50, mdef = 5, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
+		obsidian = {armor = 40, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
+		iron = {armor = 35, mdef = 5, enchant_capacity_mod = 0.0},
+		steel = {armor = 50, mdef = 10, enchant_capacity_mod = 0.1},
+		mithril = {armor = 85, mdef = 35, enchant_capacity_mod = 0.2},
+		adamantine = {armor = 100, mdef = 25, enchant_capacity_mod = 0.3},
 	},
 	ArmorTrim = {
 		wood = {hpmaxmod = 0.1, resist_earth = 5},
@@ -242,10 +242,10 @@ var partmaterials = {
 		spider_silk = {mdef = 6, resist_earth = 15},
 		clothmagic = {mdef = 5, matk = 4, resist_water = 10, enchant_capacity_mod = 0.1},
 		clothethereal = {mdef = 8, resist_mind = 10},
-		iron = {armor = 2, resist_earth = 10},
-		steel = {armor = 3, resist_fire = 10, resist_earth = 10},
-		mithril = {armor = 4, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 0.1},
-		adamantine = {armor = 5, resist_earth = 15, resist_fire = 10},
+		iron = {armor = 4, resist_earth = 10},
+		steel = {armor = 6, resist_fire = 10, resist_earth = 10},
+		mithril = {armor = 10, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 0.1},
+		adamantine = {armor = 15, resist_earth = 15, resist_fire = 10},
 		obsidian = {resist_fire = 10, resist_air = 10},
 		lizard_skin = {resist_fire = 25},
 		ogre_teeth = {atk = 5, hpmax = 15},
@@ -4464,7 +4464,6 @@ var enchantments = {
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
-			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true, orflag = true}
 		],
 		levels = {
@@ -4472,35 +4471,35 @@ var enchantments = {
 				effects = [],
 				weight = 100,
 				statmods = {armor_mul = 1.07, mdef_mul = 1.07, resist_fire_add = 2, resist_water_add = 2, resist_air_add = 2, resist_earth_add = 2,},
-				cap_cost = 20,
+				cap_cost = 50,
 				gold_cost = 250
 			},
 			2:{
 				effects = [],
 				weight = 100,
 				statmods = {armor_mul = 1.15, mdef_mul = 1.15, resist_fire_add = 4, resist_water_add = 4, resist_air_add = 4, resist_earth_add = 4,},
-				cap_cost = 40,
+				cap_cost = 100,
 				gold_cost = 500
 			},
 			3:{
 				effects = [],
 				weight = 100,
 				statmods = {armor_mul = 1.21, mdef_mul = 1.21, resist_fire_add = 6, resist_water_add = 6, resist_air_add = 6, resist_earth_add = 6,},
-				cap_cost = 60,
+				cap_cost = 150,
 				gold_cost = 750
 			},
 			4:{
 				effects = [],
 				weight = 100,
 				statmods = {armor_mul = 1.28, mdef_mul = 1.28, resist_fire_add = 8, resist_water_add = 8, resist_air_add = 8, resist_earth_add = 8,},
-				cap_cost = 80,
+				cap_cost = 200,
 				gold_cost = 1000
 			},
 			5:{
 				effects = [],
 				weight = 100,
 				statmods = {armor_mul = 1.35, mdef_mul = 1.35, resist_fire_add = 10, resist_water_add = 10, resist_air_add = 10, resist_earth_add = 10,},
-				cap_cost = 100,
+				cap_cost = 250,
 				gold_cost = 1500
 			},
 		}
@@ -4511,7 +4510,7 @@ var enchantments = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
 		levels = {
 			1:{
@@ -4551,18 +4550,19 @@ var enchantments = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
 		],
 		levels = {
 			1:{
 				effects = ['enchant_commander_1'],
-				weight = 100,
+				weight = 25,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_commander_2'],
-				weight = 100,
+				weight = 25,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
@@ -4575,7 +4575,7 @@ var enchantments = {
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
 		levels = {
 			1:{
@@ -4641,7 +4641,7 @@ var curses = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_declide_1'],
+		effects = ['curse_decline_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25}
 	},
@@ -4689,13 +4689,13 @@ var curses = {
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
 #		effects = ['curse_hideous_2'],
 #		capacity_multiplyer = 1.5
-		statmods = {enchant_capacity_mul = 1.5, scharm_bonus_add = -60}
+		statmods = {enchant_capacity_mul = 1.5, charm_bonus_add = -60}
 	},
 	decline_major = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_declide_2'],
+		effects = ['curse_decline_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5}
 	},

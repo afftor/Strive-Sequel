@@ -469,3 +469,17 @@ var enchantment_chance_2 = 0.4
 var enchantment_chance_3 = 0.2
 var curse_chance = 0.25
 var majorcurse_chance = 0.3
+
+var roman_numbers = {
+	1: "I",
+	2: "II",
+	3: "III",
+	4: "IV",
+	5: "V",
+	6: "VI",
+	7: "VII",
+	8: "VIII",
+	9: "IX",
+	10: "X",
+	
+}

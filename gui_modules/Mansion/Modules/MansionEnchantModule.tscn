@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply_pressed.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/craft/exchant.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/craft/panel_enchant.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=34]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -234,13 +235,14 @@ expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="EnchantPanel/Weapon1"]
-margin_left = 16.0
+margin_left = 12.0
 margin_top = 263.0
-margin_right = 332.0
+margin_right = 328.0
 margin_bottom = 303.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "Name"
+clip_text = true
 
 [node name="stats" type="VBoxContainer" parent="EnchantPanel/Weapon1"]
 margin_left = 15.0
@@ -296,13 +298,14 @@ expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="EnchantPanel/Weapon2"]
-margin_left = 16.0
+margin_left = 13.0
 margin_top = 263.0
-margin_right = 332.0
+margin_right = 329.0
 margin_bottom = 303.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "Name"
+clip_text = true
 
 [node name="stats" type="VBoxContainer" parent="EnchantPanel/Weapon2"]
 margin_left = 15.0
@@ -387,3 +390,10 @@ custom_fonts/font = ExtResource( 16 )
 text = "Apply"
 align = 1
 valign = 1
+
+[node name="Tooltip" type="TextureRect" parent="."]
+margin_left = 1070.58
+margin_top = 894.041
+margin_right = 1116.58
+margin_bottom = 940.041
+texture = ExtResource( 34 )

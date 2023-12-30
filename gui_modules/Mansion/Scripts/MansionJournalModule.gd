@@ -32,6 +32,7 @@ func change_type(newtype):
 	$RightPanel/reqs.hide()
 	$RightPanel/Label.hide()
 	$RightPanel/Label2.hide()
+	$RightPanel/DiffLabel.hide()
 	$RightPanel/CenterContainer/Time.hide()
 	hide_item_selection()
 	show_quests()
@@ -56,6 +57,7 @@ func open():
 	$RightPanel/reqs.hide()
 	$RightPanel/Label.hide()
 	$RightPanel/Label2.hide()
+	$RightPanel/DiffLabel.hide()
 	$RightPanel/CenterContainer/Time.hide()
 	hide_item_selection()
 	for i in ResourceScripts.game_progress.active_quests:
@@ -105,6 +107,8 @@ func show_quest_info(quest):
 	if !quest.has('stage'):
 		$CancelButton.visible = true
 		$CompleteButton.visible = true
+		$RightPanel/DiffLabel.show()
+		$RightPanel/DiffLabel.text = tr("DUNGEONDIFFICULTY")+": " + tr("DUNGEONDIFFICULTY"+quest.difficulty.to_upper())
 		var quest_descript = quest.descript
 		selectedquest = quest
 		input_handler.selectedquest = quest
