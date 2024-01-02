@@ -152,6 +152,7 @@ func unequip(slot):
 	get_parent().set_active_hero(selectedhero)
 
 
+
 func show_equip_tooltip(slot):
 	var selectedhero = input_handler.interacted_character
 	if selectedhero.equipment.gear[slot] == null:
