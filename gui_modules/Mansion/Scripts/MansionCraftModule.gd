@@ -503,7 +503,7 @@ func checkcreatingitem(item):
 	var temppartdict = {}
 	for i in itemparts:
 		temppartdict[i] = itemparts[i].material
-	enditem = globals.CreateGearItem(item, temppartdict)
+	enditem = globals.CreateGearItem(item, temppartdict) #etem emulation, no enchants
 	partdict = temppartdict
 	#enditem.CreateGear(item, partdict)
 	text = multipart_item_text(enditem)

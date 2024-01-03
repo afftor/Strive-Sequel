@@ -145,15 +145,15 @@ func get_duplicate_id_if_exist(item):
 
 func CreateGearItem(item, parts, newname = null): #obsolete for modular
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, {no_enchant = true})
 	if newname != null:
 		newitem.name = newname
 	return newitem
 
 
-func CreateGearItemQuality(item, parts, quality, newname = null): 
+func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = null): 
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, {no_enchant = no_enchant})
 	newitem.quality = quality
 	if newname != null:
 		newitem.name = newname
@@ -1986,7 +1986,7 @@ func common_effects(effects):
 				elif item.type == 'gear':
 					while counter > 0:
 						counter -= 1
-						AddItemToInventory(CreateGearItem(item.code, {}))
+						AddItemToInventory(CreateGearItem(item.code, {})) #no parts, so no enchants
 			'remove_item':
 				ResourceScripts.game_res.remove_item(i.name, i.number)
 			'unlock_asset':
@@ -2319,7 +2319,7 @@ func apply_starting_preset():
 
 
 func equip_char(ch, type, args, quality = 'poor'):
-	var newgear = CreateGearItemQuality(type, args, quality)
+	var newgear = CreateGearItemQuality(type, args, quality) #should add no enchantments/curses
 	AddItemToInventory(newgear)
 	ch.equip(newgear)
 

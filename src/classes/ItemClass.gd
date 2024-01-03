@@ -272,7 +272,7 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
-	if tags.has('enchantable'):
+	if tags.has('enchantable') and (!diffdata.has('no_enchant') or !diffdata.no_enchant):
 		roll_enchants()
 
 
