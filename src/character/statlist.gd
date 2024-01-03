@@ -21,6 +21,7 @@ var template = {
 	sex = '',
 	slave_class = 'slave',
 	personality = '',
+	personaltiy_values = [0,0],
 	obedience = variables.basic_max_obed,
 	obedience_max = variables.basic_max_obed,
 	obedience_drain = variables.basic_obed_drain,

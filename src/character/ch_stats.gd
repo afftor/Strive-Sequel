@@ -1930,3 +1930,47 @@ func recheck_upgrades():
 			var upgrade_data = Traitdata.body_upgrades[upg]
 			if !parent.get_ref().checkreqs(upgrade_data.reqs):
 				remove_upgrade(upg) #hope that there would be no removal chaining
+
+var factor_personality_changes = { #chance of change of primary and seondary axies based on tame/timid factors
+	1 : [50, 100],
+	2 : [60, 50],
+	3 : [70, 33],
+	4 : [80, 25],
+	5 : [90, 10],
+	6 : [100, 0]
+	
+}
+
+func change_personality_stats(stat, init_value):
+	var prim_stat
+	var primaxis = ''
+	var value = init_value
+	if stat == 'bold':
+		primaxis = 'bold'
+		prim_stat = get_stat("timid_factor")
+	else:
+		primaxis = 'kind'
+		prim_stat = get_stat("tame_factor")
+	
+	var rebel = false
+	
+	value = value*1+rand_range(0.2,-0.2)
+	if factor_personality_changes[prim_stat][0] <= randf()*100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
+		value = -value
+		rebel = true
+	
+	var secondary_axis_change = 0
+	if factor_personality_changes[prim_stat][1] >= randf()*100: #if character's factor chance is lower than check, thne character's secondary axist fluctate
+		secondary_axis_change = value/2
+		if randf()*2 >= 1:
+			 secondary_axis_change = -secondary_axis_change
+	
+	var newvalue = [value, secondary_axis_change]
+	
+	
+	
+	#bold/shy axis
+	
+	
+	statlist.personality_values[0] += newvalue[0]
+	statlist.personality_values[1] += newvalue[1]
