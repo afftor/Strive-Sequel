@@ -128,6 +128,12 @@ var hexcolordict = {
 	k_red = "#fe515d",
 	magenta = "#ff84ff",
 	unique = '#D4AF37',
+	quality_poor = '#4B4B4B',
+	quality_average = '#ffffff',
+	quality_good = '#00b700',
+	quality_epic = '#ff84ff',
+	quality_legendary = '#D4AF37',
+	
 }
 
 
@@ -450,9 +456,30 @@ var personality_conversion_rates = {
 var reputation_tresholds = [0, 300, 500, 1000, 1500]
 
 var itemquality_multiplier = {
+	"" : 1.0,
 	poor = 1.0,
 	average = 1.1,
 	good = 1.25,
 	epic = 1.4,
 	legendary = 1.75
+}
+
+var enchantment_chance = 0.15
+var enchantment_chance_2 = 0.4
+var enchantment_chance_3 = 0.2
+var curse_chance = 0.25
+var majorcurse_chance = 0.3
+
+var roman_numbers = {
+	1: "I",
+	2: "II",
+	3: "III",
+	4: "IV",
+	5: "V",
+	6: "VI",
+	7: "VII",
+	8: "VIII",
+	9: "IX",
+	10: "X",
+	
 }

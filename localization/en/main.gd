@@ -49,14 +49,14 @@ var TranslationDict = {
 						Character design: Nightigall
 						Character design: @naisk47
 						Scene art: Allanheil
-						Background art: Laynesis, OMA(Olga Morozova)
+						Background art: Laynesis, OMA (Olga Morozova)
 						Icon art: Persich
 
 						Writing: ralphomayo
 						Writing: plumpjack
 						Writing: S[Mutt]
 
-						Proofreading: Dorant, ralphomayo, Khuja
+						Proofreading: Dorant, ralphomayo, Khuja, Lipach
 
 						Also thanks to: negtize724
 
@@ -167,7 +167,7 @@ var TranslationDict = {
 	SIBLINGMODULESKILLSKILLS = "Sex Skills",
 	SIBLINGMODULECONSENT = "Consent: ",
 	SIBLINGMODULERULES = "Rules and Conditions",
-	SIBLINGMODULESEXTRAITS = "Sex traits",
+	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULETRAININGS = "Trainings",
 	SIBLINGMODULEFOODCONSUMPTION = "Daily Consumption",
@@ -382,7 +382,7 @@ using       button.""",
 	LOADINGTIP11 = "Babies will inherit their parent stats at random",
 	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits)",
 	LOADINGTIP13 = "Dismantling gear at Workers guild can allow you to extract rare resources from it",
-	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks.",
+	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks",
 	
 	
 	LOADLORE1NAME = "Guilds",
@@ -393,15 +393,15 @@ using       button.""",
 	LOADLORE6NAME = "Champions",
 	LOADLORE7NAME = "Landowners",
 	
-	LOADLORE1 = """Guilds are an essential part of the society in the kingdom of Aliron. They serve as governing bodies that oversee and manage various trades and professions, from Fighters to Mages, Workers to Servants. Each guild holds a significant amount of power, as they compete for the support and favor of landowners and work towards gaining dominance over one another.
+	LOADLORE1 = """Guilds are an essential part of the society in the kingdom of Aliron. They serve as governing bodies that oversee and manage various trades and professions, from Fighters to Mages, from Workers to Servants. Each guild holds a significant amount of power, as they compete for the support and favor of landowners and work towards gaining dominance over one another.
 
 Guilds often have their own set of rules that members must adhere to, in order to maintain good standing within their respective guild. These rules vary between different guilds but typically revolve around fair conduct in business dealings, respect for other guild members, and loyalty towards the guild's common goals.
 
-As guilds continue to strive for success and dominance in Aliron's capital city, conflicts can arise when opposing interests clash. However, despite these rivalries it's important to note that when faced with danger or threats towards the safety of citizens or stability of the kingdom itself; these powerful organizations stand united against any outside forces aiming to cause harm.""",
+As guilds continue to strive for success and dominance in Aliron's capital city, conflicts can arise when opposing interests clash. However, despite these rivalries it's important to note that when faced with danger or threats towards the safety of citizens or stability of the kingdom itself, these powerful organizations stand united against any outside forces aiming to cause harm.""",
 
 	LOADLORE2 = """Guild leaders are the individuals who serve as the head of their respective guild, and hold immense power and responsibility within Aliron's society. They are usually chosen from among the most prominent members of their guild, and have proven themselves capable in both their trade and leadership abilities.
 
-The title of Guild Leader is not only one of honor but also carries with it a heavy burden. These individuals are tasked with managing all aspects of their guild; from resolving internal disputes to establishing alliances with other factions or negotiating contracts with landowners.
+The title of Guild Leader is not only one of honor but also carries with it a heavy burden. These individuals are tasked with managing all aspects of their guild, from resolving internal disputes to establishing alliances with other factions or negotiating contracts with landowners.
 
 Guild Leaders have a reputation for being fierce negotiators, skilled tacticians, and wise rulers. It is said that nothing happens in the capital city without the involvement or approval of at least one Guild Leader. However, despite holding such great power they are still accountable to their members, who can remove them from office should they fail to fulfill their duties as leader.""",
 
@@ -409,19 +409,19 @@ Guild Leaders have a reputation for being fierce negotiators, skilled tacticians
 
 Over the 20 years of his reign, there were rumors that he had set fire to entire communities in fits of rage or ordered for executions without trial. He became widely despised among both commoners and nobles alike due to his frequent outbursts and unprovoked acts of violence.
 
-As discontent with King's rule grew among citizens and even landowners who felt threatened by his unpredictable ways; at that point the four major guilds have united to stop his rule and abdicate the monarchy. It was believed there were no descendants of him surviving until recently...""",
+As discontent with King's rule grew among citizens and even landowners who felt threatened by his unpredictable ways, at that point the four major guilds have united to stop his rule and abdicate the monarchy. It was believed there were no descendants of him surviving until recently...""",
 
-	LOADLORE4 = """Among the many races that populate the world are the Beastkin and Halfkin. Beastkin are humanoid beings with thick fur covering their body, resembling various animals; while Halfkin only possess animal-like features in their ears and tails.
+	LOADLORE4 = """Among the many races that populate the world are the Beastkin and Halfkin. Beastkin are humanoid beings with thick fur covering their body, resembling various animals, while Halfkin only possess animal-like features in their ears and tails.
 
 Beastkin are known to exist primarily in tribes outside of urban areas, valuing community and harmony over individualism. They lead a nomadic way of life, often following herds of wild prey and engaging in shamanistic rituals praising local beings. Often viewed as primal or 'less civilized' by other races due to their simpler way of living compared to society within Kingdom's borders.
 
-Halfkins on the other hand are descendants born from a union between Beastkin and other races; primarily humans, therefore more they are considerably more common at large cities. 
+Halfkins, on the other hand, are descendants born from a union between Beastkins and other races, primarily humans, therefore more they are considerably more common at large cities. 
 
 In Aliron, however, all races coexist peacefully for the most part, though prejudice is common. Despite these challenges both Beastkins and Halfkins have attained various positions of power within guilds and across the kingdom.""",
 
 	LOADLORE5 = """The Fairies are a peculiar race known for their small size - being about half the height of humans. This, coupled with their wings and natural magic abilities, makes them an enchanting sight to behold. They live primarily in areas of rich magic, such as dense forests or near ancient ruins.
 
-Fairies are characterized by their childlike behavior and curious nature; they possess innocent personalities that often endear them to others but also lead to naivety when dealing with more harsh aspects of reality. 
+Fairies are characterized by their childlike behavior and curious nature. They possess innocent personalities that often endear them to others but also lead to naivety when dealing with more harsh aspects of reality. 
 
 However, this playful demeanor is accompanied by an extreme sexual drive which Fairies express with little reserve or shame. This makes them one of the most attractive and rare trained slaves among many.""",
 
@@ -429,17 +429,17 @@ However, this playful demeanor is accompanied by an extreme sexual drive which F
 
 To help carry out their wishes within the mortal realm, certain rare individuals are chosen as Champions by these various deities. These Champions are granted exceptional abilities above that of normal humans in order to carry out tasks most believe impossible or beyond comprehension.
 
-Champions can come from any race or background and may be granted powers ranging from control of elements/magic to physical prowess beyond human limits; often referred to as "divine blessings". They're usually called upon directly by their patron god through visions or divinations. This divine guidance is absolute but not without costs for continuous service deed.
+Champions can come from any race or background and may be granted powers ranging from control of elements/magic to physical prowess beyond human limits, often referred to as 'divine blessings'. They're usually called upon directly by their patron god through visions or divinations. This divine guidance is absolute but not without costs for continuous service deed.
 
-There's no shortage of myths surrounding these individuals; often spoken highly because they've been champions for various causes throughout history- both good and bad- either punished or rewarded accordingly depending on how well they fulfill divine instructions.""",
+There's no shortage of myths surrounding these individuals. Often spoken highly because they've been Champions for various causes throughout history - both good and bad - either punished or rewarded accordingly depending on how well they fulfill divine instructions.""",
 
 	LOADLORE7 = """Landowners in Aliron hold a considerable deal of wealth and social status within the kingdom. This is due to their ownership of large swaths of land that are used to cultivate crops, mine for resources, or build on in various ways.
 
-In order to maintain these properties in an efficient manner, Landowners frequently employ slaves. These slaves are often treated poorly and viewed as little more than property by those who own them; their freedom denied on account of their servitude.
+In order to maintain these properties in an efficient manner, Landowners frequently employ slaves. These slaves are often treated poorly and viewed as little more than property by those who own them, their freedom denied on account of their servitude.
 
-Despite working under harsh conditions beyond human endurance long hours with minimal rest- they are considered indispensable in keeping the economy running smoothly. Their work productivity allowed control over market prices and competing guilds.
+Despite working under harsh conditions beyond human endurance long hours with minimal rest, they are considered indispensable in keeping the economy running smoothly. Their work productivity allowed control over market prices and competing guilds.
 
-However, while it might seem that Landowners have nothing but contempt for those below them- there have been cases where some have shown unexpected kindness towards their slaves depending on rare compassionate nature or personal beliefs systems not common among majority owner population.""",
+However, while it might seem that Landowners have nothing but contempt for those below them, there have been cases where some have shown unexpected kindness towards their slaves depending on rare compassionate nature or personal beliefs systems not common among majority owner population.""",
 
 	NIGHT = "Night",
 	MORNING = "Morning",
@@ -492,6 +492,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALMEATSOUPDESCRIPT = "A combination of water and meat. Produced by cooking.\nFood type: Meat, Vegetables.",
 	MATERIALFISHCAKES = "Fish Cakes",
 	MATERIALFISHCAKESDESCRIPT = "A baked dough filled with fish paste. Especially liked by Cat folk. Produced by cooking.\nFood type: Fish, Grains.",
+	MATERIALCURRY = "Curry",
+	MATERIALCURRYDESCRIPT = "A bowl of grains and meat rich with a distinct flavor.\nFood type: Meat, Grains.",
+	MATERIALFRIEDFISH = "Fried Fish",
+	MATERIALFRIEDFISHDESCRIPT = "A dish of fried fish with vegatables invented to nutrient picky beastgirl eaters.\nFood type: Fish, Vegetables.",
+	
+	
 	MATERIALSTONE = "Rough Stone",
 	MATERIALSTONEADJ = "Stone",
 	MATERIALSTONEDESCRIPT = "Stone comes in many forms and shapes. It can serve as a good building material or even low quality tools. Acquired from mining. ",
@@ -998,6 +1004,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	OVERWRITETEMPLATECONFIRM = "Overwrite this template?",
 	DELETETEMPLATECONFIRM = "Delete this template?",
 	LOADTEMPLATECONFIRM = "Load this template? Current settings will be lost.",
+	CURSEUNEQUIPCONFIRM = "Cursed equipment is destroyed when removed.",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
@@ -1016,7 +1023,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	QUESTDAYS = "Days",
 	QUESTONETIMETASK = "Complete one time task",
 	QUESTGOLDREWARD = "Gold reward will be determined based on end item value.",
-	QUESTMASTERCHARMBONUS = "Master Charm Bonus",
+	QUESTMASTERCHARMBONUS = "Master's Charm Bonus",
 	QUESTGOLD = "Gold",
 	QUESTREPUTATION = "Reputation",
 	QUESTTASKACQ = "Task aсquired",
@@ -1407,8 +1414,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEAGEMATURE = "Mature",
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]",
-	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
-	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
+	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [Master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
 
@@ -1575,6 +1582,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATRESIST_DARK = "Dark Resist",
 	STATRESIST_MIND = "Mind Resist",
 	
+	STATENCHANT_CAPACITY_MOD = "Enchant Capacity",
+	STATENCHANT_CAPACITY = "Enchant Capacity",
+	STATENCHCAP = "Enchant Capacity", 
+	STATQUALITY = "Quality",
 	STATPRICE = "Value",
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
@@ -1589,6 +1600,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	TOOLTIPGOLD = "Owned gold. Gold is used for buying slaves and items and can be obtained from selling items, completing quests and some tasks.",
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
+	TOOLTIPENCHANTSCREEN = "You can apply enchants and curses to an item. Applying curse will increase item's enchantment capacity but the curse will be random and only revealed on equpping the item. ",
 	
 	
 	
@@ -1606,8 +1618,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
-	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. Master's charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. Master's Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
+	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
 	
 	
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
@@ -1735,7 +1747,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RACEHALFKINFOXDESCRIPT = "Fox folk are a rare and relatively mysterious breed of Beastkin. They display high intelligence, a tendency towards lifelong monogamy, and congregate in small, close-knit communities.",
 	RACEHALFKINBUNNYDESCRIPT = "Bunnies are one of the least self-sufficient, but nonetheless common beast races. They are not aggressive and can be quite timid. They are quite well liked due to their comforting appearance and their natural lewdness which make them a popular choice for slave pets.",
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
-	RACERATKINESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places. ",
+	RACERATKINDESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places.",
 	
 	
 	SKILLPRAISE = "Praise",
@@ -1866,7 +1878,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEXP_SCROLLREPORT = "[name] reads the scroll. New knowledge fill [his] mind...",
 
 	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it.\n\n{color=aqua|[name]} — {random_chat=0|enslave}",
-	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you.\n\n{color=aqua|[name]} — {random_chat=0|hire}",#\n\n— Pleased to meet you, [master], I am in your care.
+	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you.\n\n{color=aqua|[name]} — {random_chat=0|hire}",#\n\n— Pleased to meet you, [Master], I am in your care.
 
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with a specific bonus. Requires at least 50 lust.",
@@ -1934,7 +1946,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	TRAITUNDEADDESCRIPT = "[name] is no longer a living being. Food consumption is set to 0; Charm is reduced by 100; Light Resist -50; Dark Resist +50; Dark Damage +20%%; Can't impregnate or get pregnant.",
 	TRAITSPOUSE = "Spouse",
-	TRAITSPOUSEDESCRIPT = "Future children between Master and Spouse recieve Heir status instead of Slave or Peon. ",
+	TRAITSPOUSEDESCRIPT = "Future children between [Master] and Spouse recieve Heir status instead of Slave or Peon. ",
 	
 	TRAITPRODIGY = "Prodigy",
 	TRAITPASSIVE = "Passive",
@@ -2011,15 +2023,15 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_DATING = "Dating",
 	TRAITLOYALTY_DATINGDESCRIPT = "{color=green|Unlocks Dating}\n\nA timeless tradition repurposed for your needs. A kind word, a subtle innuendo, and social comforts go a long way towards establishing a useful bond.",
 	TRAITLOYALTY_COMBATANT = "Combatant",
-	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Unlocks Combat Assignment}\n\nSlaves in chains have few uses. Those who've earned their masters trust and defend them are far more valuable.",
+	TRAITLOYALTY_COMBATANTDESCRIPT = "{color=green|Unlocks Combat Assignment}\n\nSlaves in chains have few uses. Those who've earned their master's trust and defend them are far more valuable.",
 	TRAITLOYALTY_DRESS_LEWD = "Lewd Clothes",
-	TRAITLOYALTY_DRESS_LEWDDESCRIPT = "{color=green|Unlocks equipment of more extravagant gear}\n\nAmple skin, soft cloth, and eager display of their assets all for their masters' benefit. A fine slave can be a work of art physically, this one knows that.\n\nRequires: Basic Servitude" ,
+	TRAITLOYALTY_DRESS_LEWDDESCRIPT = "{color=green|Unlocks equipment of more extravagant gear}\n\nAmple skin, soft cloth, and eager display of their assets all for their master's benefit. A fine slave can be a work of art physically, this one knows that.\n\nRequires: Basic Servitude" ,
 	TRAITLOYALTY_DRESS_WORK = "Work Clothes",
 	TRAITLOYALTY_DRESS_WORKDESCRIPT = "{color=green|Unlocks equipment of work oriented gear}\n\nGloves, boots, protective aprons, and goggles are just a few of the things a slave might wear during work. A slave is an investment afterall.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_BODMOD = "Body Modifications",
 	TRAITLOYALTY_BODMODDESCRIPT = "{color=green|Unlocks body tattoos and modifications}\n\nSlave can give many things to a master, some more than others. This one in particular will even change their very form to that desire.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_ADV_SERVITUDE = "Advanced Servitude",
-	TRAITLOYALTY_ADV_SERVITUDEDESCRIPT = "\nBefore service was demanded, now service is often there before you've realized it's needed. This slave knows a masters needs and fulfills them aptly.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_ADV_SERVITUDEDESCRIPT = "\nBefore service was demanded, now service is often there before you've realized it's needed. This slave knows a master's needs and fulfills them aptly.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_CALLMASTER = "Master Acknowledgment",
 	TRAITLOYALTY_CALLMASTERDESCRIPT = "{color=green|Allows to set Master pronouns}\n\nA title might seem like little to those who are unaware, but those that are 'Master' is the highest honor. This slave awknowleges the role you both will play.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SWEAR = "Swear Loyalty",
@@ -2027,7 +2039,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_SOULBIND = "Soulbind",
 	TRAITLOYALTY_SOULBINDDESCRIPT = "{color=green|Obedience Drain: 0\nLoyalty Gain: 0}\n\nThe mind is such a fickle thing, a proper mage can exploit this as has been shown in this now exceptionally obedient specimen.\n\nRequires: Dominator Class on Master",
 	TRAITLOYALTY_EXHIBITIONISM = "Exhibitionism",
-	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "{color=green|Unlocks Nudity}\n\nObserve and enjoy. This slave is eager to show others their prowress at their masters command.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_EXHIBITIONISMDESCRIPT = "{color=green|Unlocks Nudity}\n\nObserve and enjoy. This slave is eager to show others their prowress at their master's command.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
 	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
@@ -2174,13 +2186,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFMASTERALT = "Mistress",
 	PROFMASTERDESCRIPT = "The sole ruler of a domain. [His] power strikes fear and respect not only in newcomers, but even in seasoned servants.",
 	PROFRULER = "Ruler",
-	PROFRULERDESCRIPT = "A step above being just a [master]. A ruler is the ultimate person, not only having complete authority, but also inspiring others to greater deeds.",
+	PROFRULERDESCRIPT = "A step above being just a [Master]. A ruler is the ultimate person, not only having complete authority, but also inspiring others to greater deeds.",
 	PROFDIRECTOR = "Director",
-	PROFDIRECTORDESCRIPT = "Director can issue a higher tier of discipline on servants in the name of the [master]. ",
+	PROFDIRECTORDESCRIPT = "Director can issue a higher tier of discipline on servants in the name of the [Master]. ",
 	PROFSADIST = "Sadist",
 	PROFSADISTDESCRIPT = "Sadists take pleasure in abusing others and are useful for little else. Still, they can be a boon when you aim to rule with fear. ",
 	PROFWATCHDOG = "Watchdog",
-	PROFWATCHDOGDESCRIPT = "The servants who've proven their loyalty to their master are allowed to act in his name to ensure obedience and fear in others.",
+	PROFWATCHDOGDESCRIPT = "The servants who've proven their loyalty to their [Master] are allowed to act in his name to ensure obedience and fear in others.",
 	PROFHEADGIRL = "Headgirl",
 	PROFHEADGIRLALT = "Butler",
 	PROFHEADGIRLDESCRIPT = "A servant with higher authority that is allowed to direct multiple lower servants at once.",
@@ -2225,7 +2237,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFFIGHTER = "Fighter",
 	PROFFIGHTERDESCRIPT = "Fighters are basic melee soldiers capable of dealing and taking damage in combat.",
 	PROFKNIGHT = "Knight",
-	PROFKNIGHTDESCRIPT = "A noble fighter ready to serve [his] [master]. [He] performs [his] duties on the frontline of the battlefield with honor. ",
+	PROFKNIGHTDESCRIPT = "A noble fighter ready to serve [his] [Master]. [He] performs [his] duties on the frontline of the battlefield with honor. ",
 	PROFAPPRENTICE = "Apprentice",
 	PROFAPPRENTICEDESCRIPT = "Apprenticeship is a road for many starting mages. Apprentices focus on social spells, which can help greatly with putting others in line. ",
 	PROFSCHOLAR = "Scholar",
@@ -3038,12 +3050,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEVENTFAIRYLEAVEREPLY = "After chatting for a bit you part your ways with fairy. ",
 	
 	
-	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training}— {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training}— {color=yellow|500 gold}, provides a large boost to Loyalty with a chance to improve Tame or Timid factors;\n{color=aqua|Academy}— {color=yellow|1500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs)— {color=yellow|5000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
+	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training}— {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training}— {color=yellow|500 gold}, provides a large boost to Loyalty with a chance to improve Tame or Timid factors;\n{color=aqua|Academy}— {color=yellow|1.500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs)— {color=yellow|5.000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
 	
 	DIALOGUETUTNOTHING = "No Training (free)",
 	DIALOGUETUTSLAVE = "Slave Training (500 Gold)",
-	DIALOGUETUTACADEMY = "Academy (1500 Gold)",
-	DIALOGUETUTHEIR = "Heir Education (5000 Gold)",
+	DIALOGUETUTACADEMY = "Academy (1.500 Gold)",
+	DIALOGUETUTHEIR = "Heir Education (5.000 Gold)",
 	
 	SPRINGTEXT = "You find a small clearing with a spring. It might be a good time to take a break and rest.",
 	SPRING_HEAL = "Your group rests and restores some health.",
@@ -3169,39 +3181,39 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SWITCHSTATS = "Individual Stats",
 	SWITCHLIST = "Character List",
 
-	SCENEDAISY_MEET_TEXT = "As you walk around the town, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n— You clumsy dumbass! This was the third time. I'm selling you to the brothel now, At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing. ",
-	SCENEDAISY_MEET_OPTION1 = "Offer to purchase the girl",
-	SCENEDAISY_MEET_OPTION2 = "Demand the girl as your kinsman",
-	SCENEDAISY_MEET_OPTION3 = "Ignore",
-	SCENEDAISY_CLAIM_KINSHIPTEXT = "You tell the man that the girl is your kinsman and his behavior is unacceptable\n\nTaken aback by your interruption, he quickly falls back and passes her to you.\n\nThe girl seems relieved even though she saw through your lie. \n\nShe tells you that her name is Daisy and she will try her best for you. ",
-	SCENEDAISY_PURCHASE_TEXT = "You offer to purchase the poor girl from the man. \n\nAfter some negotiations he offers you the price of 200 gold for her. ",
-	SCENEDAISY_PURCHASE_OPTION1 = "Ask for a discount",
-	SCENEDAISY_PURCHASE_OPTION2 = "Purchase (200 gold)",
-	SCENEDAISY_PURCHASE_OPTION2_1 = "Purchase (100 gold)",
-	SCENEDAISY_PURCHASE_OPTION3 = "Refuse",
+	SCENEDAISY_MEET_TEXT = "As you walk around the city, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n— You clumsy dumbass! This was the third time. I'm selling you to the brothel now. At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing.",
+	SCENEDAISY_MEET_OPTION1 = "*Offer to purchase the girl*",
+	SCENEDAISY_MEET_OPTION2 = "*Demand the girl as your kinsman*",
+	SCENEDAISY_MEET_OPTION3 = "*Ignore*",
+	SCENEDAISY_CLAIM_KINSHIPTEXT = "You tell the man that the girl is your kinsman and his behavior is unacceptable.\n\nTaken aback by your interruption, he quickly falls back and passes her to you.\n\nThe girl seems relieved even though she saw through your lie.\n\nShe tells you that her name is Daisy and she will try her best for you.",
+	SCENEDAISY_PURCHASE_TEXT = "You offer to purchase the poor girl from the man.\n\nAfter some negotiations he offers you the price of 200 gold for her.",
+	SCENEDAISY_PURCHASE_OPTION1 = "*Ask for a discount*",
+	SCENEDAISY_PURCHASE_OPTION2 = "*Purchase* (200 gold)",
+	SCENEDAISY_PURCHASE_OPTION2_1 = "*Purchase* (100 gold)",
+	SCENEDAISY_PURCHASE_OPTION3 = "*Refuse*",
 	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1 = "With some additional haggling you manage to make the man drop his demand to 100 gold. But this is his final offer.",
 	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT2 = "Your further attempts to bring the girl's price down have failed and the man asks for 200 gold or tells you to bugger off.",
-	SCENEDAISY_PURCHASE_CONFIRM_TEXT = "You pay the price and the bunny girl moves warily to your side. You learn that her name is Daisy.\n\nShe promises to do her best, but you can see she is clearly forcing herself to look up at you. ",
+	SCENEDAISY_PURCHASE_CONFIRM_TEXT = "You pay the price and the bunny girl moves warily to your side. You learn that her name is Daisy.\n\nShe promises to do her best, but you can see she is clearly forcing herself to look up at you.",
 	SCENEDAISY_PURCHASE_LEAVE_TEXT = "You refuse the man's price and walk away from the scene.",
 	SCENEDAISY_IGNORE_TEXT = "You continue your way without paying any further attention to them.",
-	SCENEDAISY_FIRST_EVENT_TEXT = "You hear the crash and soon find Daisy, who seems to have destroyed a piece of tableware.\n\nTeary eyed she looks up at you waiting for your punishment. ",
-	SCENEDAISY_FIRST_EVENT_OPTION1 = "Reassure her",
-	SCENEDAISY_FIRST_EVENT_OPTION2 = "Discipline her",
+	SCENEDAISY_FIRST_EVENT_TEXT = "You hear the crash and soon find Daisy, who seems to have destroyed a piece of tableware.\n\nTeary eyed she looks up at you waiting for your punishment.",
+	SCENEDAISY_FIRST_EVENT_OPTION1 = "*Reassure her*",
+	SCENEDAISY_FIRST_EVENT_OPTION2 = "*Discipline her*",
 	SCENEDAISY_FIRST_EVENT_REASSURE = "You help and encourage her to do better next time.\n\nTaken aback by your kindness, Daisy's expression poorly hides her inner happiness.",
 	SCENEDAISY_FIRST_EVENT_DISCIPLINE = "You take a shivering Daisy into a private room.\n\nStarting with some pain and humiliation you gradually provide her body with new sensations.\n\nHer cries of pain slowly obtain new notes.\n\nAnd her teared eyes reflect not only a fear, but a drunk bliss.\n\nAfterwards you make sure she learned her lesson and she responds with respectful eagerness.",
-	SCENEDAISY_CONFESS_EVENT_TEXT = "As you walk around the mansion, you notice Daisy looking depressed.\n\nYou approach her and ask what happened, but she worryingly dodges the question.\n\nAfter ordering her to tell you what's wrong she finally cracks up. \n\n— I... I love [master], but there's no way [he] will ever love someone useless like me. ",
-	SCENEDAISY_CONFESS_EVENT_OPTION1 = "Accept her feelings",
-	SCENEDAISY_CONFESS_EVENT_OPTION2 = "Refuse her",
-	SCENEDAISY_CONFESS_ACCEPT_TEXT = "— N..No way! You feel the same?! I can't believe it...\n\nYou press your lips to Daisy and she gives in into your embrace.\n\nShe's hoping to spend this night with you.",
-	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n— I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over. ",
+	SCENEDAISY_CONFESS_EVENT_TEXT = "As you walk around the mansion, you notice Daisy looking depressed.\n\nYou approach her and ask what happened, but she worryingly dodges the question.\n\nAfter ordering her to tell you what's wrong she finally cracks up. \n\n— I... I love [Master], but there's no way [he] will ever love someone useless like me.",
+	SCENEDAISY_CONFESS_EVENT_OPTION1 = "*Accept her feelings*",
+	SCENEDAISY_CONFESS_EVENT_OPTION2 = "*Refuse her*",
+	SCENEDAISY_CONFESS_ACCEPT_TEXT = "— N-No way! You feel the same?! I can't believe it...\n\nYou press your lips to Daisy and she gives in into your embrace.\n\nShe's hoping to spend this night with you.",
+	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n— I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over.",
 
-	SCENEDAISY_PURCHASE_WORKER_OPTION1 = "Point out her lack of strength will greatly impact her performance (Worker)",
+	SCENEDAISY_PURCHASE_WORKER_OPTION1 = "[Worker] *Point out her lack of strength will greatly impact her performance*",
 	SCENEDAISY_PURCHASE_WORKER1 = "The owner begrudgingly agrees with your remark and cuts the price in half.",
 
 	TUTORIAL_MAINSCREEN = "The center of your Mansion is the list of available characters before you. Click once to see details and skills available to selected character. You can view detailed info about them by double clicking or selecting \"Character Info\" in the left bottom corner. You can assign them to task by clicking on Occupation button. You can use their skills by selecting them at the bottom of the screen. ",
 
 
-	TUTORIAL_SLAVEBASICS = "Characters are the centerpiece of the game, as they do all the work and fighting. All characters require food daily to sustain themselves, and they also have food preferences often related to their race. \n\nAll characters, besides the Master, must be constantly monitored. If character's Obedience drops to 0, they leave you and you lose them forever. To prevent that you can use social skills on them. The characters will also gain Loyalty with time which can be used to unlock vital bonuses and reduce Obedience drain.",
+	TUTORIAL_SLAVEBASICS = "Characters are the centerpiece of the game, as they do all the work and fighting. All characters require food daily to sustain themselves, and they also have food preferences often related to their race. \n\nAll characters, besides the [Master], must be constantly monitored. If character's Obedience drops to 0, they leave you and you lose them forever. To prevent that you can use social skills on them. The characters will also gain Loyalty with time which can be used to unlock vital bonuses and reduce Obedience drain.",
 	TUTORIAL_LUST = "Lust is a special stat used by every character and is more akin to a resource like Mana. It slowly grows every day and can be utilized by certain skills to provide unusual effects. Some classes, like the Succubus/Incubus are focused on manipulating this resource. Besides growing naturally, Lust can be increased from sexual interactions, based on the number of orgasms reached.",
 	TUTORIAL_SLAVEPANEL = "This is the character's detailed screen. Here you can see all of the visible stats and details.\n\nEvery character consists of a number of stats, some of which can be seen on the left. You can hover over them at any time to see details on them. \n\nAt the bottom left you can select items, unlock new classes and configure additional details like imported image.",
 	TUTORIAL_CLASSES_AND_SKILLS = "Every character has access to multiple classes they can unlock. After a class is unlocked, a character receives its bonuses and can use its skills. Skills can be either social or combat, with social skills helping to manage characters' behavior. Many skills have no other cost than daily charges, so feel free to use them as often as needed. ",
@@ -3218,7 +3230,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task.",
 	
 	
-	TRAINTUTORIAL1 = "Every character besides Master will have to be trained with Loyalty Points. Loyalty points are acquired passively or by using social skills.",
+	TRAINTUTORIAL1 = "Every character besides [Master] will have to be trained with Loyalty Points. Loyalty points are acquired passively or by using social skills.",
 	TRAINTUTORIAL2 = "Some traits make the management easier while other unlock new abilities. Every purchased trait will increase amount of Loyatly required for next purchase so consider your path.",
 	
 	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
@@ -3311,37 +3323,37 @@ However, while it might seem that Landowners have nothing but contempt for those
 	#dialogues
 	INTRODIALOGUE = "Twelve years have passed since the human kingdom was reformed into the Rousseu Republic. Free of the previous reign, its capital Aliron has become a center of society and cultural life, giving even the lowest a chance to become a person of power and influence assuming they are capable... \n\nYou are one of the people who managed to get there just in time to secure an estate recently freed from old ownership. The only issue is that its sale price is beyond your capability. With no other option to start a new life, you've taken a gigantic loan to achieve your goal. You've became an owner of a small piece of land with a dilapidated mansion on it.",
 
-	STARTINGDIALOGUE0 = "Just as you finished moving in, the bank assistant appears at your doorstep to check on you.\n\n— Good morning, [Sir] [surname]. How do you like your new estate?",
-	STARTINGDIALOGUE0REPLY1 = "It's great",
-	STARTINGDIALOGUE0REPLY2 = "What a slum",
-	STARTINGDIALOGUE0REPLY3 = "Just get to the point",
+	STARTINGDIALOGUE0 = "Just as you finished moving in, the bank assistant appears at your doorstep to check on you. \n\n— Good morning, [Sir] [surname]. How do you like your new estate?",
+	STARTINGDIALOGUE0REPLY1 = "It's great.",
+	STARTINGDIALOGUE0REPLY2 = "What a slum.",
+	STARTINGDIALOGUE0REPLY3 = "Just get to the point.",
 	STARTINGDILOGUE1_1 = "— I'm glad you like it.\n\n",
 	STARTINGDILOGUE1_2 = "— It surely is.\n\n",
 	STARTINGDILOGUE1_3 = "— Oh, a [man] of business? I like it.\n\n",
 	STARTINGDILOGUE1_4 = "— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of {custom_text_function=GetLoanSum#0|} gold and is due in 2 weeks.",
-	STARTINGDIALOGUE1REPLY1 = "Understood",
+	STARTINGDIALOGUE1REPLY1 = "Understood.",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
-	STARTINGDIALOGUE2_1 = "— Good. ",
-	STARTINGDIALOGUE2_2 = "— No, we don't. We expect to get the land back once you go bankrupt, but as we don't have the resources to work on it yet, we can try something different. \n\n— ",
-	STARTINGDIALOGUE2_3 = "If you have no more questions, I'll be off.",
+	STARTINGDIALOGUE2_1 = "— Good.",
+	STARTINGDIALOGUE2_2 = "— No, we don't. We expect to get the land back once you go bankrupt, but as we don't have the resources to work on it yet, we can try something different.\n\n",
+	STARTINGDIALOGUE2_3 = "— If you have no more questions, I'll be off.",
 	STARTINGDIALOGUE2REPLY1 = "How do I even make this much money?",
 	STARTINGDIALOGUE2REPLY2 = "Is there something special about owning the land?",
 	STARTINGDIALOGUE2REPLY3 = "What are the Guilds?",
-	STARTINGDIALOGUE2REPLY4 = "I'm fine",
-	STARTINGDIALOGUE3_1 = "— Certainly not by yourself. As a landowner you hold the right to employ others to work for you. I'd recommend sticking to one of the city's guilds at first. Each has its own trades and benefits so you can choose what you like. They pay well if you manage to complete their tasks. You will also be able to hire more people there, or you can try your luck at the slave market.",
-	STARTINGDIALOGUE3_2 = "— Oh, you don't know? Twelve years ago, after the revolution happened and the Monarchy was overthrown, all of the land became public property to buy or sell. Since nobles no longer held exclusive right of land possession, lots of it was sold to the rich. Now the Guilds hold the greatest amount of wealth and political power as they are closely tied with the landowners.",
+	STARTINGDIALOGUE2REPLY4 = "I'm fine.",
+	STARTINGDIALOGUE3_1 = "— Certainly not by yourself. As a landowner you hold the right to employ others to work for you. I'd recommend sticking to one of the city's Guilds at first. Each has its own trades and benefits so you can choose what you like. They pay well if you manage to complete their tasks. You will also be able to hire more people there, or you can try your luck at the slave market.",
+	STARTINGDIALOGUE3_2 = "— Oh, you don't know? Twelve years ago, after the revolution happened and the monarchy was overthrown, all of the land became public property to buy or sell. Since nobles no longer held exclusive right of land possession, lots of it was sold to the rich. Now the Guilds hold the greatest amount of wealth and political power as they are closely tied with the landowners.",
 	STARTINGDIALOGUE3_3 = "— The Guilds are the establishments which provide connections for business partners, buyers, requests and so on. There are Fighters, Mages, Workers and Servants, each specialize in different aspects. You can learn more once you go meet them.",
 	STARTINGDIALOGUE3REPLY1 = "How do I even make this much money?",
 	STARTINGDIALOGUE3REPLY2 = "Is there something special about owning the land?",
 	STARTINGDIALOGUE3REPLY3 = "What are the Guilds?",
-	STARTINGDIALOGUE3REPLY4 = "I'm fine",
+	STARTINGDIALOGUE3REPLY4 = "I'm fine.",
 	STARTINGDIALOGUE4_1 = "— I will return in two weeks then.",
-	FIGHTERSINTRODUCTION1 = "A large man equipped in heavy armor gives you a disinterested look. \n\n— What is it? If you are looking for work, you'll have to register as a combatant first. I don't deal with recruits. ",
-	FIGHTERSINTRODUCTION1REPLY1 = "You are mistaken, I'm not a recruit",
-	FIGHTERSINTRODUCTION1REPLY2 = "I'm a new landowner, show some respect",
+	FIGHTERSINTRODUCTION1 = "A large man equipped in heavy armor gives you a disinterested look. \n\n— What is it? If you are looking for work, you'll have to register as a combatant first. I don't deal with recruits.",
+	FIGHTERSINTRODUCTION1REPLY1 = "You are mistaken, I'm not a recruit.",
+	FIGHTERSINTRODUCTION1REPLY2 = "I'm a new landowner, show some respect.",
 	FIGHTERSINTRODUCTION2_1 = "— Oh, excuse me then. Landowners usually look... Not quite like this.\n\n",
 	FIGHTERSINTRODUCTION2_2 = "— Hmph, is that so?.. Fine, pardon my rudeness.\n\n",
-	FIGHTERSINTRODUCTION2_3 = "— So you are new one? Name's Duncan. You must be interested in fighting along with us then. That's a smart decision. Our core has been formed from the mightiest of the Black Knights there is no one better suited for combat. \n\nCombat, guard duty, peacekeeping, dealing with monsters or rebels, we do it all. ",
+	FIGHTERSINTRODUCTION2_3 = "— So you are new one? Name's Duncan. You must be interested in fighting along with us then. That's a smart decision. Our core has been formed from the mightiest of the Black Knights. There is no one better suited for combat.	\n\n— Combat, guard duty, peacekeeping, dealing with monsters or rebels, we do it all.",
 	FIGHTERSINTRODUCTION2_3_1 = "And naturally we offer our best fighters for hire. Since you are a new landowner, we offer you a free recruit if you side with us first.",
 	FIGHTERSINTRODUCTION2_4 = "— You are back. So, what have you decided?",
 	FIGHTERSINTRODUCTION2_5 = "— You are back. Has something happened?",
@@ -3349,47 +3361,47 @@ However, while it might seem that Landowners have nothing but contempt for those
 	FIGHTERSQUESTIONREPLY1 = "What are the Black Knights?",
 	FIGHTERSQUESTIONREPLY2 = "What are those rebels?",
 	FIGHTERSQUESTIONREPLY3 = "Can you give me some tips?",
-	FIGHTERSINTRODUCTION2REPLY1 = "I'll side with you",
-	FIGHTERSINTRODUCTION2REPLY2 = "I'll come back later",
+	FIGHTERSINTRODUCTION2REPLY1 = "I'll side with you.",
+	FIGHTERSINTRODUCTION2REPLY2 = "I'll come back later.",
 	FIGHTERSQUESTIONS_1 = "— What is it?",
 	FIGHTERSQUESTIONS_2 = "— Black Knights were the kingdom's elite troops at the time... when there was a kingdom. We served it with honor until the very end, but as the kingdom was reformed, we also reformed into a more national force. Most of us, anyway.",
-	FIGHTERSQUESTIONS_3 = "— Despite 12 years having passed, there are still some sprouts of rebellion by the sympathizers of the Deranged King. Those fools aren't formidable in any way, yet they tend to cause problems here and there. Their efforts are foolish if you ask me. The royal family has been executed, so it's impossible for them to return to the old ways anyway.",
-	FIGHTERSQUESTIONS_4 = "— Hmm... If you aren't strong enough, make sure to bring extra people with you. Dungeons can be a great source of wealth but can be deadly when approached unprepared. Make sure you have some healing options with you, be it mages or items. Gear is also a must when dealing with anyone stronger than a couple of rats. \n\nMost importantly, learn your enemy's weakness and try to match it. Even beginner Fighters have some elemental attacks which can deal a lot more damage.",
-	FIGHTERSJOIN = "— Great. My helper will show you our best recruits. ",
-	FIGHTERSCLOSE1 = "— Understood. You know where you can find us, once you make up your mind. ",
-	FIGHTERSCLOSE2 = "— ...Tread carefully. ",
+	FIGHTERSQUESTIONS_3 = "— Despite 12 years having passed, there are still some sprouts of rebellion by the sympathizers of the Deranged King. Those fools aren't formidable in any way, yet they tend to cause problems here and there. Their efforts are foolish, if you ask me. The royal family has been executed, so it's impossible for them to return to the old ways anyway.",
+	FIGHTERSQUESTIONS_4 = "— Hmm... If you aren't strong enough, make sure to bring extra people with you. Dungeons can be a great source of wealth but can be deadly when approached unprepared. Make sure you have some healing options with you, be it mages or items. Gear is also a must when dealing with anyone stronger than a couple of rats. \n\n— Most importantly, learn your enemy's weakness and try to match it. Even beginner Fighters have some elemental attacks which can deal a lot more damage.",
+	FIGHTERSJOIN = "— Great. My helper will show you our best recruits.",
+	FIGHTERSCLOSE1 = "— Understood. You know where you can find us, once you make up your mind.",
+	FIGHTERSCLOSE2 = "— ...Tread carefully.",
 	FIGHTERSASKQUESTIONS = "Can I ask some questions?",
-	FIGHTERSASKQUESTIONSRETURN = "That's all",
+	FIGHTERSASKQUESTIONSRETURN = "That's all.",
 	FIGHTERSINTRODUCTION2REPLY5 = "*Present Skull to Duncan*",
 	FIGHTERSINTRODUCTION2REPLY6 = "About Reim...",
 	FIGHTERSINTRODUCTION2REPLY7 = "Sigmund sent me...",
-	WORKERSINTRODUCTION1REPLY6 = "Duncan promised to provide the payment asap",
-	SERVANTSINTRODUCTION1REPLY5 = "I'm ready for elections",
+	WORKERSINTRODUCTION1REPLY6 = "Duncan promised to provide the payment asap.",
+	SERVANTSINTRODUCTION1REPLY5 = "I'm ready for elections.",
 
 
-	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. My name is Amelia. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a landowner and are looking for our future cooperation. Here at the Servants Guild we are ready to provide you with finest and prettiest toys in all of the Republic. We also are in touch with many rich and powerful people of the city. ",
+	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions. \n\n— Welcome, [Sir] [surname]. My name is Amelia. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a landowner and are looking for our future cooperation. Here at the Servants Guild we are ready to provide you with finest and prettiest toys in all of the Republic. We also are in touch with many rich and powerful people of the city.",
 	SERVANTSINTRODUCTION1_1 = "As a newcomer we would be happy to provide you with one free servant of your choice if you side with us.",
 	SERVANTSQUESTIONREPLY1 = "So basically all you do is operate an elaborate sex service?",
 	SERVANTSQUESTIONREPLY2 = "How exactly am I useful to you?",
 	SERVANTSQUESTIONREPLY3 = "Can you give me some tips?",
-	SERVANTSINTRODUCTION1REPLY3 = "I'll side with you",
-	SERVANTSINTRODUCTION1REPLY4 = "I'll come back later",
+	SERVANTSINTRODUCTION1REPLY3 = "I'll side with you.",
+	SERVANTSINTRODUCTION1REPLY4 = "I'll come back later.",
 	SERVANTSQUESTIONS_1 = "— Absolutely! What would you like to know?",
-	SERVANTSQUESTIONS_2 = "— Hahaha, you underestimate how important an elaborate sex service can be. We don't provide 'only' sex service, we train diligent trainees which can do anything you might want. Cleaning, escort, massage, entertainment... But serving their master's carnal desires is where our trainees excel. You want them begging, screaming, moaning, silent, or dominating; we find the best suited personality and appearance for the task and turn them into a toy of your dreams. Or, in case you are more romantically inclined, we are also ready to get you a love of your life.\n\nOh, sorry, I've got carried away. We also help to find new connections and support many artists and street performers, but landowners rarely care about these things. Still we appreciate good art and entertainment, even if it's not very profitable.",
-	SERVANTSQUESTIONS_3 = "— Oh, nobody has explained it to you, I suppose. You see, the landowners are the only ones, who can become a part of the city's government and it's you who make the most use of people and profits. Every guild has distinct groups following them and every new person means more power for us. On the other hand, it's guilds which present and vote for the candidates, so it's a mutual benefit. \n\nYou aren't tied to a specific guild though and are free to deal with others, but we aren't obligated to stick to you either. Just consider it a sign of good will.",
+	SERVANTSQUESTIONS_2 = "— Hahaha, you underestimate how important an elaborate sex service can be. We don't provide 'only' sex service, we train diligent trainees which can do anything you might want. Cleaning, escort, massage, entertainment... But serving their masters' carnal desires is where our trainees excel. You want them begging, screaming, moaning, silent, or dominating, we find the best suited personality and appearance for the task and turn them into a toy of your dreams. Or, in case you are more romantically inclined, we are also ready to get you a love of your life.	\n\n— Oh, sorry, I've got carried away. We also help to find new connections and support many artists and street performers, but landowners rarely care about these things. Still, we appreciate good art and entertainment, even if it's not very profitable.",
+	SERVANTSQUESTIONS_3 = "— Oh, nobody has explained it to you, I suppose. You see, the landowners are the only ones who can become a part of the city's government and it's you who make the most use of people and profits. Every guild has distinct groups following them and every new person means more power for us. On the other hand, it's guilds which present and vote for the candidates, so it's a mutual benefit.	\n\n— You aren't tied to a specific guild though and are free to deal with others, but we aren't obligated to stick to you either. Just consider it a sign of good will.",
 	SERVANTSQUESTIONS_4 = "— You must be interested in managing your subordinates, right? Firstly, you'll be using your skills to Praise and Punish them. Depending on the subordinate they will be more responsive to one or another. Without it keeping them in check they can escape. Taking them on the private dates is a great way to build their Loyalty. With said Loyalty you can make them lose their obedience slower. \n\n— Controlling your servants is just as important as feeding them. If you have problems with it, there's classes and items suited for it. You can teach other servants to help you with discipline. Some abilities can be really powerful and affect multiple targets.",
-	SERVANTSINTRODUCTION1_2 = "— Welcome back, [Sir] [name]. Have you made up your mind yet?",
-	SERVANTSINTRODUCTION1_3 = "— Welcome back, [Sir] [name]. How can I please you?",
-	SERVANTSINTRODUCTION1_4 = "— Let me know if you need anything else. ",
+	SERVANTSINTRODUCTION1_2 = "— Welcome back, [Sir] [surname]. Have you made up your mind yet?",
+	SERVANTSINTRODUCTION1_3 = "— Welcome back, [Sir] [surname]. How can I please you?",
+	SERVANTSINTRODUCTION1_4 = "— Let me know if you need anything else.",
 	SERVANTSJOIN = "— This makes me happy. You won't regret it. Let me help you find someone to your taste.",
 	SERVANTSCLOSE1 = "— Sure. We will be waiting for your response.",
-	SERVANTSCLOSE2 = "— Take care. ",
+	SERVANTSCLOSE2 = "— Take care.",
 	SERVANTSASKQUESTIONS = "Can I ask some questions?",
-	SERVANTSASKQUESTIONSRETURN = "That's all",
+	SERVANTSASKQUESTIONSRETURN = "That's all.",
 
 	WORKERSINTRODUCTION1 = "You meet a short muscular dwarf who resembles a foreman in his attire and mannerism. \n\n— Aye pal, haven't seen ya around yet. Name's Sigmund. Are ya looking for work?",
-	WORKERSINTRODUCTION1_1 = "If ya are still decidin' who ya gonna side with, we are going to provide ya with the best worker for your needs. ",
-	WORKERSINTRODUCTIONREPLY1 = "I'm a new landowner around here",
+	WORKERSINTRODUCTION1_1 = "If ya are still decidin' who ya gonna side with, we are going to provide ya with the best worker for your needs.",
+	WORKERSINTRODUCTIONREPLY1 = "I'm a new landowner around here.",
 	WORKERSINTRODUCTIONREPLY2 = "Who would let a dwarf become a guild leader?",
 	WORKERSINTRODUCTION2_1 = "— Woah, dat's an unexpected one. My honor meeting ya.",
 	WORKERSINTRODUCTION2_2 = "— Now, watch ya tongue, [boy]. You might've missed a couple o' years, since when all sentients were accepted equally by law here, right after the revolution. Dat's when I came 'ere to make my career. Ya are a landowner, aren't ya?",
@@ -3399,39 +3411,39 @@ However, while it might seem that Landowners have nothing but contempt for those
 	WORKERSINTRODUCTION2_6 = "— That's it? I should get back to work.",
 	WORKERSQUESTIONREPLY1 = "What's going on in the Dwarves' Kingdom?",
 	WORKERSQUESTIONREPLY3 = "Can you give me some tips?",
-	WORKERSINTRODUCTION1REPLY3 = "I'll side with you",
-	WORKERSINTRODUCTION1REPLY4 = "I'll come back later",
+	WORKERSINTRODUCTION1REPLY3 = "I'll side with you.",
+	WORKERSINTRODUCTION1REPLY4 = "I'll come back later.",
 	WORKERSQUESTIONS_1 = "— Yah, what is it?",
 	WORKERSQUESTIONS_2 = "— Don't know, don't care. If I did, I wouldna come here in the first place. Don't take me for an outcast though. I just ain't happy with all the endless gold rush. I'd rather say nah more. Bad for business.",
-	WORKERSQUESTIONS_4 = "— Hints, huh? No matter what ya do, food should be your first priority. Every pal out there has its own demands, and no food will quickly turn them hostile and starving. Thankfully, ya can buy it 'swell as produce it yourself. Cooking can be used to make raw ingredients more nutritious.\n\nIf ya planning to create your own stuff, you gonna need workshops for dat. Tailors can create cloth and leather armor, and smiths can forge weapon and metal armor. A skilled person can produce things much faster, so its best ya train 'em. Both crafting and gathering resources can be turned into profit, once ya sell your stuff at the local markets. ",
+	WORKERSQUESTIONS_4 = "— Hints, huh? No matter what ya do, food should be your first priority. Every pal out there has its own demands, and no food will quickly turn them hostile and starving. Thankfully, ya can buy it 'swell as produce it yourself. Cooking can be used to make raw ingredients more nutritious. \n\n— If ya planning to create your own stuff, you gonna need workshops for dat. Tailors can create cloth and leather armor, and smiths can forge weapon and metal armor. A skilled person can produce things much faster, so its best ya train 'em. Both crafting and gathering resources can be turned into profit, once ya sell your stuff at the local markets.",
 
 	WORKERSJOIN = "— Great! Alright, let's find ya a good healthy helper for you. ",
 	WORKERSCLOSE1 = "— Alright, I'll be around here in case you change your mind.",
-	WORKERSCLOSE2 = "— See ya. ",
+	WORKERSCLOSE2 = "— See ya.",
 	WORKERSASKQUESTIONS = "Can I ask some questions?",
-	WORKERSASKQUESTIONSRETURN = "That's all",
+	WORKERSASKQUESTIONSRETURN = "That's all.",
 
-	MAGESINTRODUCTION1 = "You find a female dark elf, who seems to be in a strained mood.\n\n— Hey, you brought the wine? ",
+	MAGESINTRODUCTION1 = "You find a female dark elf, who seems to be in a strained mood. \n\n— Hey, you brought the wine?",
 	MAGESINTRODUCTION1REPLY = "No...",
 	MAGESINTRODUCTION2 = "— Gods, why are you so useless... Whatever. What do you want?",
-	MAGESINTRODUCTION2REPLY = "I'm a new landowner",
+	MAGESINTRODUCTION2REPLY = "I'm a new landowner.",
 	MAGESINTRODUCTION3_1 = "— Huh? I thought you were another initiate candidate. Well, that's funny, I had no idea they allow just about anyone to become landowners now. Don't take that personally, I accept that not everyone is born rich. Name is Myr by the way.",
-	MAGESINTRODUCTION3_2 = "— Oh, It's you again. What do you want?",
+	MAGESINTRODUCTION3_2 = "— Oh, it's you again. What do you want?",
 	MAGESINTRODUCTION3_3 = "— Okay then.",
-	MAGESINTRODUCTION3REPLY2 = "I'll side with you",
-	MAGESINTRODUCTION3REPLY3 = "I'll come back later",
-	MAGESINTRODUCTION2REPLY2 = "I want to request your support for Mayor election",
-	MAGESINTRODUCTION2REPLY3 = "I've got the books you asked for",
+	MAGESINTRODUCTION3REPLY2 = "I'll side with you.",
+	MAGESINTRODUCTION3REPLY3 = "I'll come back later.",
+	MAGESINTRODUCTION2REPLY2 = "I want to request your support for Mayor election.",
+	MAGESINTRODUCTION2REPLY3 = "I've got the books you asked for.",
 	MAGESQUESTIONS_1 = "— Go on.",
-	MAGESQUESTIONS_2 = "— With all due respect that I've nearly lost, you don't seem to possess any real wealth or power. I'm afraid nothing is going to change for us if you join us or not. So, I'm a bit unenthusiastic. \n\nBut I guess we can spare a recruit in case you'd actually want to stick around.",
+	MAGESQUESTIONS_2 = "— With all due respect that I've nearly lost, you don't seem to possess any real wealth or power. I'm afraid nothing is going to change for us if you join us or not. So, I'm a bit unenthusiastic.	\n\n— But I guess we can spare a recruit in case you'd actually want to stick around.",
 	MAGESQUESTIONS_3 = "— Imagine that. You see, to become a sorcerer you will need two things: magic affinity and enough patience to learn. Both are somewhat uncommon and the combination in the same person especially so. We aren't scared, though. You can't get very far without sorcery anyway. There's just no alternative to us in case of emergency.",
-	MAGESQUESTIONS_4 = "— There's two schools of thought. Or three, if you take pacifist maniacs into account. First is focusing on combat magic. Healing spells are cheap and fast alternatives to potions, while destructive spells can vaporize your enemies from a safe distance. Second group prefers conspiracy. Magic allows you to influence, read and dominate others' minds making it pretty useful in many social situations. ",
-	MAGESQUESTIONS_5 = "— The pacifists? They are just nutcases who insist that magic should only be used for healing. They used to have some standing before the revolution when magic was more strictly regulated by the King's court. Pacifists had an easier time moving around after willingly sealing their magic. Now it seems more like a weird religious practice. ",
-	MAGESQUESTIONREPLY1 = "You seem to be not very interested in new landowners",
-	MAGESQUESTIONREPLY2 = "The Mage's guild seems a bit isolated",
+	MAGESQUESTIONS_4 = "— There's two schools of thought. Or three, if you take pacifist maniacs into account. First is focusing on combat magic. Healing spells are cheap and fast alternatives to potions, while destructive spells can vaporize your enemies from a safe distance. Second group prefers conspiracy. Magic allows you to influence, read and dominate others' minds making it pretty useful in many social situations.",
+	MAGESQUESTIONS_5 = "— The pacifists? They are just nutcases who insist that magic should only be used for healing. They used to have some standing before the revolution when magic was more strictly regulated by the King's court. Pacifists had an easier time moving around after willingly sealing their magic. Now it seems more like a weird religious practice.",
+	MAGESQUESTIONREPLY1 = "You seem to be not very interested in new landowners.",
+	MAGESQUESTIONREPLY2 = "The Mage's guild seems a bit isolated.",
 	MAGESQUESTIONREPLY3 = "What are the mages good for?",
 	MAGESQUESTIONREPLY4 = "What about the third group?",
-	MAGESJOIN = "— Weird. I wouldn't expect you to. Not complaining, though. *sigh* Let's find you some poor soul to procure. ",
+	MAGESJOIN = "— Weird. I wouldn't expect you to. Not complaining, though. *Sigh* Let's find you some poor soul to procure.",
 
 	MAGESCLOSE1 = "— Sure, we aren't going anywhere, anyway.",
 	MAGESCLOSE2 = "— See ya, I guess.",
@@ -3439,104 +3451,104 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MAGESASKQUESTIONSRETURN = "That's all.",
 	
 	MAGESSICKFAIRY = "There's an issue with a Fairy...",
-	MAGESASKHELP = "Ask for Help",
+	MAGESASKHELP = "*Ask for help*",
 
 
 
-	DIALOGUEINTRODUCTIONLETTER = 'Early in the morning your mansion is visited by a messenger, who passes you an officially sealed letter. After a quick examination you figure out that it is sent by the Servants Guild. \n\n"Dear [name], your recent activity has caught our interest and we would like to invite you for a private meeting." \n\nDespite a rather short message, the letter itself looks rather fancy and uses high quality paper and ink. ',
+	DIALOGUEINTRODUCTIONLETTER = "Early in the morning your mansion is visited by a messenger, who passes you an officially sealed letter. After a quick examination you figure out that it is sent by the Servants Guild. \n\n'Dear [name], your recent activity has caught our interest and we would like to invite you for a private meeting.' \n\nDespite a rather short message, the letter itself looks rather fancy and uses high quality paper and ink.",
 
-	ELECTIONSTART1 = "— [Sir] [name], it's wonderful you came! So you must be curious why we invited you. Not to sound suspicious, but we know about your monetary situation and relationship with the bank. \n\n— This is a situation I'd never prefer to be in. To tell you the truth, it's almost guaranteed you won't be able to pay them back in time. But, that's not exactly what I summoned you for. Say, do you know about the Mayor's position here?",
-	ELECTIONSTARTREPLY1_1 = "Not really",
+	ELECTIONSTART1 = "— [Sir] [surname], it's wonderful you came! So you must be curious why we invited you. Not to sound suspicious, but we know about your monetary situation and relationship with the bank.	\n\n— This is a situation I'd never prefer to be in. To tell you the truth, it's almost guaranteed you won't be able to pay them back in time. But, that's not exactly what I summoned you for. Say, do you know about the Mayor's position here?",
+	ELECTIONSTARTREPLY1_1 = "Not really.",
 	ELECTIONSTARTREPLY1_2 = "It had something to do with being a landowner?",
-	ELECTIONSTART2 = "— The city's Mayor is elected by the guilds majority every few years, but the catch is only a landowner can become one. Furthermore, the Mayor can't have his property overtaken even in case of loans, so that will let you get off the hook, as long as you manage to get elected. ",
+	ELECTIONSTART2 = "— The city's Mayor is elected by the guilds' majority every few years, but the catch is only a landowner can become one. Furthermore, the Mayor can't have [his] property overtaken even in case of loans, so that will let you get off the hook, as long as you manage to get elected.",
 	ELECTIONSTARTREPLY2_1 = "Are you proposing that I become mayor?",
-	ELECTIONSTARTREPLY2_2 = "That seems nice, but it can't be that easy",
-	ELECTIONSTART3 = "— Yes, as I said, you will need support of the majority of the guilds, which means at least 3. We aren't exactly good at cooperating with each other when it comes to power, so every guild usually has their own supported candidates. Good news is, as a new landowner, everyone is curious about your performance. So, as long as you make a good impression, it's very possible to request our support. ",
+	ELECTIONSTARTREPLY2_2 = "That seems nice, but it can't be that easy.",
+	ELECTIONSTART3 = "— Yes, as I said, you will need support of the majority of the guilds, which means at least 3. We aren't exactly good at cooperating with each other when it comes to power, so every guild usually has its own supported candidates. Good news is, as a new landowner, everyone is curious about your performance. So, as long as you make a good impression, it's very possible to request our support.",
 	ELECTIONSTARTREPLY3_1 = "Why are you telling me all this?",
 	ELECTIONSTARTREPLY3_2 = "You are not sharing everything?",
-	ELECTIONSTARTREPLY3_3 = "So what should I do",
-	ELECTIONPERSUADE1 = "— We have our reasons. \n\nAmelia slyly smiled showing her attempt to not elaborate on the subject.",
-	ELECTIONPERSUADESUCCESS = "— Oh, I assure, it's nothing for you to worry about. Let's say we can benefit from the bank losing some of its possessions. I guess you can say we have mutual interests. ",
+	ELECTIONSTARTREPLY3_3 = "So what should I do.",
+	ELECTIONPERSUADE1 = "— We have our reasons.	\n\nAmelia slyly smiled showing her attempt to not elaborate on the subject.",
+	ELECTIONPERSUADESUCCESS = "— Oh, I assure, it's nothing for you to worry about. Let's say we can benefit from the bank losing some of its possessions. I guess you can say we have mutual interests.",
 	ELECTIONPERSUADEFAILURE = "— Sorry, we aren't quite sure we can share such information to you yet. Have no worries, you won't be losing anything anyway.",
-	ELECTIONSTART4 = "— You're gonna to have to build a reputation with at least three guilds, but this should be done in two weeks, as after that the election period starts and you will have to register as a candidate. Don't let that scare you though, I'm sure you will manage. \n\n— After performing enough tasks for them, you will have to request elective support from their leaders. ",
-	ELECTIONSTART4_1 = "\n\n— And since you've been favoring us, I'll happily give you my approval right now. ",
-	ELECTIONSTART4_2 = "\n\n— After you get enough support, visit me and we will settle on your public image. ",
-	ELECTIONSTARTREPLY4_1 = "This seems a bit suspicious, but I guess there's no harm in trying",
-	ELECTIONSTARTREPLY4_2 = "Thank you, Amelia, I'll return once I do that",
+	ELECTIONSTART4 = "— You're gonna to have to build a reputation with at least three guilds, but this should be done in two weeks, as after that the election period starts and you will have to register as a candidate. Don't let that scare you though, I'm sure you will manage. \n\n— After performing enough tasks for them, you will have to request elective support from their leaders.",
+	ELECTIONSTART4_1 = "\n\n— And since you've been favoring us, I'll happily give you my approval right now.",
+	ELECTIONSTART4_2 = "\n\n— After you get enough support, visit me and we will settle on your public image.",
+	ELECTIONSTARTREPLY4_1 = "This seems a bit suspicious, but I guess there's no harm in trying.",
+	ELECTIONSTARTREPLY4_2 = "Thank you, Amelia, I'll return once I do that.",
 	ELECTIONSTART5_1 = "— There surely is not. We'll hope for your success.",
 	ELECTIONSTART5_2 = "— My pleasure. We'll hope for your success.",
 
-	FIGHTERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
-	WORKERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
-	SERVANTSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
-	MAGESREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
+	FIGHTERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election.",
+	WORKERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election.",
+	SERVANTSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election.",
+	MAGESREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election.",
 
 	SERVANTSELECTIONCONFIRM = "— Oh, you've completed our requests? Nice work! With this I'll be able to convince others this is a good idea. Return to me once you have support from two other guilds.",
 
-	FIGHTERSELECTIONSTART1 = "— Hmh... You've certainly done a lot for a newbie. So, you want to become the next Mayor? Admirable, but we do not provide our support lightly. ",
+	FIGHTERSELECTIONSTART1 = "— Hmh... You've certainly done a lot for a newbie. So, you want to become the next Mayor? Admirable, but we do not provide our support lightly.",
 	FIGHTERSELECTIONSTARTREPLY1_1 = "Why not?",
 	FIGHTERSELECTIONSTARTREPLY1_2 = "Haven't I done enough?",
 	FIGHTERSELECTIONSTART2 = "— The guild's most important members are honorable warriors. We would not agree to give our votes for a mere commoner. In other words, you would have to prove yourself worthy. For that matter, we use an old Black Knights tradition of slaying a mage. However, at this age, you won't find those for slaying easily available, as they aren't persecuted for practicing magic anymore.",
-	FIGHTERSELECTIONSTARTREPLY2_1 = "This doesn't sound very nice to mages",
+	FIGHTERSELECTIONSTARTREPLY2_1 = "This doesn't sound very nice to mages.",
 	FIGHTERSELECTIONSTARTREPLY2_2 = "But what do you want then?",
 	FIGHTERSELECTIONSTART2_1 = "— Back in the old days only a few King approved mages and their subordinates were allowed to practice any serious magic. We regularly used to hunt down those who practiced illegally, so it was a bit like sport, since their skills proved a nice challenge.",
-	FIGHTERSELECTIONSTART3 = "— With no better option, we settled on taking down a Lich. Thankfully, those aren't protected by law, so you will have to get us a skull of one, as proof of your strength.",
-	FIGHTERSELECTIONSTARTREPLY3_1 = "What's a Lich",
+	FIGHTERSELECTIONSTART3 = "— With no better option, we settled on taking down a lich. Thankfully, those aren't protected by law, so you will have to get us a skull of one, as proof of your strength.",
+	FIGHTERSELECTIONSTARTREPLY3_1 = "What's a lich?",
 	FIGHTERSELECTIONSTARTREPLY3_2 = "Where do I find one?",
-	FIGHTERSELECTIONSTART4_1 = "— A Lich is a mage, who managed to become undead. Many are quite stupid compare to normal mages. I guess transition does something to their brains. Yet, their powers are enough to stand on their own, and they generally utilize other undead as their minions. ",
-	FIGHTERSELECTIONSTART4_2 = "— There's actually no shortage of the sneaky bastards. We've recently received a report of one not very far from the city. I'll mark the location on your map. Return once you have a skull, then we'll give you our support. ",
+	FIGHTERSELECTIONSTART4_1 = "— A lich is a mage, who managed to become undead. Many are quite stupid compare to normal mages. I guess, transition does something to their brains. Yet, their powers are enough to stand on their own, and they generally utilize other undeads as their minions.",
+	FIGHTERSELECTIONSTART4_2 = "— There's actually no shortage of the sneaky bastards. We've recently received a report of one not very far from the city. I'll mark the location on your map. Return once you have a skull, then we'll give you our support.",
 	FIGHTERSELECTIONSTART5 = "— Huh, you did it? Must say I'm surprised. Fine, we will give you our support for the next election. I believe this will be beneficial for both our sides.",
 
 #	===Fighter's quests, to proofread later===
 
 	LICHENCINITIATE = "You enter the small hideout filled with the stench of death. As you make your way forward you hear sounds of combat. Once in a fairly open room, you find the Lich you are looking for, surrounded by a small group of undead. On the other side of the room you see an elven girl dressed in leather armor. She's losing the battle against them.",
-	LICHENCINITIATEREPLY1 = "Use girl as a distraction to attack at best opportunity",
+	LICHENCINITIATEREPLY1 = "Use girl as a distraction to attack at best opportunity.",
 	LICHENCINITIATEREPLY2 = "*Call out to Undead*",
-	LICH_ENC_SCHOLAR_OPTION = "Launch a light missle (Scholar)",
-	LICH_ENC_FIGHT_SCHOLAR = "You launch a light missle, which shines over the Lich's group and briefly disctracts him, allowing your group to take care of some of the minions who didn't fight back. Now, it's time to finish the weakened undeads.",
+	LICH_ENC_SCHOLAR_OPTION = "[Scholar] *Launch a light missle*",
+	LICH_ENC_FIGHT_SCHOLAR = "You launch a light missle, which shines over the Lich's group and briefly disctracts him, allowing your group to take care of some of the minions who didn't fight back. Now it's time to finish the weakened undeads.",
 	LICHENCFIGHT = "You take your time to set an ambush but as you do so, the elven girl is struck down and does not move anymore.",
 	LICHENCTALK1 = "You make an appearance, preparing to strike and catch the attention of the Lich, who seems to be quite agitated. The elven girl gets subdued by the undead around her, but is still alive.",
 	LICHENCTALK1REPLY1 = "Die, monster! *Attack*",
-	LICHENCTALK1REPLY2 = "A friendly undead? That's a new one",
-	LICHENCTALK1REPLY3 = "Oh, now it talks",
-	LICHENCTALK2 = "— My brain may be rotten, but I'm not too stupid to see how things are going. Say what you want stranger so we can settle it without needless bloodshed.",
+	LICHENCTALK1REPLY2 = "A friendly undead? That's a new one.",
+	LICHENCTALK1REPLY3 = "Oh, now it talks.",
+	LICHENCTALK2 = "— My brain may be rotten, but I'm not too stupid to see how things are going. Say what you want, stranger, so we can settle it without needless bloodshed.",
 	LICHENCTALK2REPLY1 = "I've changed my mind, I'll kill you! *Attack*",
-	LICHENCTALK2REPLY2 = "I'm in need a Lich's skull, seems like you have one",
-	LICHENCTALK2REPLY3 = "I'm only interested in destroying your kind",
-	LICHENCTALK3 = "— A proving test... I understand. This would be unfortunate for me to lose my skull, haha. Say, would you take a skull I have from... another Lich I happened to have here? And then I'll leave this place shortly.",
+	LICHENCTALK2REPLY2 = "I'm in need a lich's skull, seems like you have one.",
+	LICHENCTALK2REPLY3 = "I'm only interested in destroying your kind.",
+	LICHENCTALK3 = "— A proving test... I understand. This would be unfortunate for me to lose my skull, haha. Say, would you take a skull I have from... another lich I happened to have here? And then I'll leave this place shortly.",
 	LICHENCTALK3REPLY1 = "I've changed my mind, I'll kill you! *Attack*",
 	LICHENCTALK3REPLY2 = "That's it? Don't you think your life is worth a bit more?",
-	LICHENCTALK3REPLY3 = "I accept it",
+	LICHENCTALK3REPLY3 = "I accept it.",
 	LICHENCTALK3REPLY4 = "What happens to this girl?",
 	LICHENCTALK4 = "— You are right. I'll add some magic ingredients from the undead, these will be worth something, won't they?",
 	LICHENCTALK4REPLY1 = "I've changed my mind, I will kill you! *Attack*",
-	LICHENCTALK4REPLY2 = "I accept it",
+	LICHENCTALK4REPLY2 = "I accept it.",
 	LICHENCTALK4REPLY3 = "What happens to this girl?",
-	LICHENCTALK5 = "— She's not for you to care about. She will have to pay for the damage she has done to me.\n\n As the girl hears it, her face goes pale. Before she can say anything coherent, her mouth is plugged by one of the zombies",
+	LICHENCTALK5 = "— She's not for you to care about. She will have to pay for the damage she has done to me. \n\nAs the girl hears it, her face goes pale. Before she can say anything coherent, her mouth is plugged by one of the zombies.",
 	LICHENCILLKILLYOU = "I've changed my mind, I kill you! *Attack*",
-	LICHENCFINE = "I accept it",
-	LICHENCTALK5REPLY3 = "No, you will release her{Physics Factor}",
-	LICHENCTALK6 = "{color=green|Success}\n\n— Curses... Fine. You can have her. I'm not willing to stay here anymore.\n\n The Lich leaves with his army, leaving you with another Skull and a beaten girl.",
-	LICHENCTALK6_1 = "{color=red|Failure}\n\n— You are trying your luck too far, mortal. This woman is no one to you. I will not let her go.",
+	LICHENCFINE = "I accept it.",
+	LICHENCTALK5REPLY3 = "[Physics Factor] No, you will release her.",
+	LICHENCTALK6 = "{color=green|Success} \n\n— Curses... Fine. You can have her. I'm not willing to stay here anymore.	\n\nThe Lich leaves with his army, leaving you with another skull and a beaten girl.",
+	LICHENCTALK6_1 = "{color=red|Failure} \n\n— You are trying your luck too far, mortal. This woman is no one to you. I will not let her go.",
 	LICHENCTALK6REPLY1 = "Then I will kill you! *Attack*",
-	LICHENCTALK6REPLY2 = "You can keep her",
-	LICHENCCONLUSION = "— Good. Here's your skull. We will be leaving shortly, so don't bother to come here again.\n\n You leave the Lich's hideout, wondering what fate was left to the girl.",
-	LICHENCWINAIRENOTDEAD = "Talk to the girl",
+	LICHENCTALK6REPLY2 = "You can keep her.",
+	LICHENCCONLUSION = "— Good. Here's your skull. We will be leaving shortly, so don't bother to come here again. \n\nYou leave the Lich's hideout, wondering what fate was left to the girl.",
+	LICHENCWINAIRENOTDEAD = "*Talk to the girl*",
 	LICHENCWINAIRE = "As you defeat the Lich and take his skull, the elf girl observes you cautiously.",
 	LICHENCWINELSE = "You take the Lich's skull but can't find anything else worthwhile.",
-	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n— I... Thank you for the help. My name is Aire. My master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
-	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution. \n\n— I... Thank you for the help. My name is Aire. My master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
+	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
+	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution.\n\n	— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
 	LICHAIRETALK1REPLY1 = "What kind of Master would send an elf fighter on their own around here?",
-	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care",
+	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care.",
 	LICHAIRETALK1REPLY3 = "Don't you think you should reward me for your rescue?",
 	LICHAIRETALK1REPLY4 = "*Push down and rape*",
 	LICHAIRETALK2 = "— I'm sorry, but... this I cannot say. My Master rescued me from slavers, and I swore my loyalty for it.",
 	LICHAIRETALK2REPLY1 = "Your Master is a fool sending you here alone.",
 	LICHAIRETALK2REPLY2 = "Don't you think you should reward me for your rescue?",
 	LICHAIRETALK2REPLY3 = "You better not end up in a similar spot next time, take care.",
-	LICHAIRETALK3 = "— But I don't have anything on me!... Unless you mean... But this would be indecent. \n\n Aire blushes heavily and looks down.",
-	LICHAIRETALK3REPLY1 = "Your company would please me greatly (Sex Factor)",
-	LICHAIRETALK3REPLY2 = "Nevermind, you can go",
+	LICHAIRETALK3 = "— But I don't have anything on me..! Unless you mean... But this would be indecent. \n\nAire blushes heavily and looks down.",
+	LICHAIRETALK3REPLY1 = "[Sex Factor] Your company would please me greatly.",
+	LICHAIRETALK3REPLY2 = "Nevermind, you can go.",
 	LICHAIRETALK4 = """The elf girl twists a lock of orange hair around her finger nervously. 
 
 {color=yellow|Aire: — Can we at least find somewhere a little more comfortable than this... dusty tomb?}
@@ -3544,7 +3556,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 You both go outside and Aire starts looking for a suitable place while you follow, enchanted by the dainty wiggle of her ass. After a few minutes of searching outside the crypt, she leads you through a gap in the rocks where you stop her. Your patience is growing short and you gesture to the bare stony ground. 
 
 {color=yellow|Aire: — Here? Oh... I guess we could...}""",
-	LICHAIRETALK4_BAD = "{color=red|Failure}\n\n— I'm sorry, I can't do that. And there's nothing else I can offer.",
+	LICHAIRETALK4_BAD = "{color=red|Failure} \n\n— I'm sorry, I can't do that. And there's nothing else I can offer.",
 	LICHAIRETALK4_BADREPLY1 = "Nevermind, it's good you are safe, take care",
 	LICHAIRETALK4_BADREPLY2 = "*Push down and rape*",
 	LICHAIRETALK4_1 = """You beckon Aire closer. Her lip quivers as you draw her into an embrace with her firm breasts pressing against your chest. With one finger you gently lift her chin until you are looking directly into beautiful amber eyes. 
@@ -3608,17 +3620,17 @@ Your lips close over hers and your tongue shoves roughly into her mouth while yo
 	LICHAIRETALK6_6 = """You use the tight grip of her pussy to milk the cum from your cock before pulling out. Standing, you buckle your pants, leaving Aire naked, spreadeagled, and leaking semen onto the ancient flagstones of the lich's crypt. A sheen of sweat sticks the dust of the tomb to her pale skin, and she is panting for breath as her shining amber eyes stare up at you in fear and anger.
 
 Lust satisfied, you look at her lying there exhausted, broken and defenceless on the ground but still brimming with fury and injured pride.""",
-	LICHAIRETALK6REPLY1 = "Kill her",
-	LICHAIRETALK6REPLY2 = "Leave her",
+	LICHAIRETALK6REPLY1 = "*Kill her*",
+	LICHAIRETALK6REPLY2 = "*Leave her*",
 	LICHAIRETALK7 = "You slit her throat, ending her life. There's nothing else to do here and you decide to leave.",
 	LICHAIRELEAVE = "You part ways with Aire and prepare to head back with your trophy.",
 
 
 	FIGHTERSELECTION5 = "— Oh ho... Not bad for someone like you. Alright, you've proven your worth and we will give you our support. Try not to abuse it.",
 	FIGHTERSELECTIONREPLY1 = "And here I was hoping to start a personal crusade...",
-	FIGHTERSELECTIONTHANKS = "Thanks",
+	FIGHTERSELECTIONTHANKS = "Thanks.",
 	WORKERSELECTIONINITIATE1 = "— Elections, huh? Ya rich folk always have somethin' in mind. I don't mind. But before that, there's a thing I wanna ask.",
-	WORKERSELECTIONINITIATE1REPLY1 = "This better not be another errand",
+	WORKERSELECTIONINITIATE1REPLY1 = "This better not be another errand.",
 	WORKERSELECTIONINITIATE1REPLY2 = "How can I help?",
 	WORKERSELECTIONINITIATE2_1 = "— Some time ago we struck a deal with the Fighters to supply them with a fresh set of armor. Thing is, we still didn't get the payment. I'd send someone else, but there's a shortage of workers at this moment. Here's the letter with the details, pass it to their leader. Sort this out and we will support ya, alright.",
 	WORKERSELECTIONINITIATE2_1REPLY1 = "Investigate money disappearance. I can do that.",
@@ -3627,62 +3639,62 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	WORKERSELECTIONINITIATE2_2REPLY1 = "*Remain silent*",
 	WORKERSELECTIONINITIATE2_2REPLY2 = "Something is wrong?",
 	WORKERSELECTIONINITIATE3 = "— We have sent payment for that order some time ago, but somehow it didn't reach. Can you find our courier Reim and figure out what went wrong? He generally hangs out near the side alley bars. Let me know what's going on.",
-	REIMENCOUNTER = "With some luck you find Reim at one of the back alleys. A young, dull looking guy who shows little concern until you mention how you came on the Workers Guild behalf. \n\n— That's... Uh, you see, I have a girl I really like. Her name is Lucy. She needs money and I wanna help her out. You see, she's real nice, even though she works as a harlot... She's been real nice to me, and she needs money right now.",
+	REIMENCOUNTER = "With some luck you find Reim at one of the back alleys. A young, dull looking guy who shows little concern until you mention how you came on the Workers Guild behalf.	\n\n— That's... Uh, you see, I have a girl I really like. Her name is Lucy. She needs money and I wanna help her out. You see, she's real nice, even though she works as a harlot... She's been real nice to me, and she needs money right now.",
 	REIMENCOUNTERREPLY1 = "Why should I care?",
 	REIMENCOUNTERREPLY2 = "What do you want?",
 	REIMENCOUNTERREPLY3 = "Can't you find a less needy whore?",
 	REIMENCOUNTER2 = "— Please, help me out. Can you return the cash to Duncan in my regard? There's 150 gold to be paid still. Just tell him that I couldn't make it. He will understand and send someone else. I will be banished if they find out I took money for personal needs.",
 	REIMENCOUNTER2REPLY1 = "Is she really that special?",
-	REIMENCOUNTER2REPLY2 = "You shouldn't risk your life just for some whore, she's likely just using you (persuade)",
-	REIMENCOUNTER2REPLY3 = "I'm not going to pay for your whims from my pocket",
-	REIMENCOUNTER2REPLY4 = "I will consider it",
-	REIMENCOUNTER3_1 = "— This... I guess you are right... *sigh* You can tell Duncan this will be taken care of right away.",
+	REIMENCOUNTER2REPLY2 = "[Charm] You shouldn't risk your life just for some whore, she's likely just using you.",
+	REIMENCOUNTER2REPLY3 = "I'm not going to pay for your whims from my pocket.",
+	REIMENCOUNTER2REPLY4 = "I will consider it.",
+	REIMENCOUNTER3_1 = "— This... I guess you are right... *Sigh* You can tell Duncan this will be taken care of right away.",
 	REIMENCOUNTER3_1REPLY1 = "Good. I'll be going then.",
 	REIMENCOUNTER3_2 = "— No, you don't understand! She's not just some whore. Look, you must help me out here...",
-	REIMENCOUNTER3_2REPLY1 = "I'm not going to pay for your whims from my pocket",
-	REIMENCOUNTER3_2REPLY2 = "I will consider it",
+	REIMENCOUNTER3_2REPLY1 = "I'm not going to pay for your whims from my pocket.",
+	REIMENCOUNTER3_2REPLY2 = "I will consider it.",
 	REIMENCOUNTER4_1 = "— I understand... Just do what you must. In the end our love will beat all.",
 	REIMENCOUNTER4_2 = "— Thank you! I... probably should hurry now. I'll try to return you this favor one day.",
 	REIMENCOUNTER5 = "— Lucy is not like other girls. She's kind, nice and... She's even cooked for me, can you imagine?",
-	REIMENCOUNTER5REPLY1 = "I'm not going to pay for your whims from my pocket",
-	REIMENCOUNTER5REPLY2 = "I will consider it",
+	REIMENCOUNTER5REPLY1 = "I'm not going to pay for your whims from my pocket.",
+	REIMENCOUNTER5REPLY2 = "I will consider it.",
 	WORKERSELECTIONCONTINUE1 = "— You are back? Have you found him?",
 	WORKERSELECTIONCONTINUE1REPLY1 = "He seems to be... busy. Here's 150 gold on his behalf.",
-	WORKERSELECTIONCONTINUE1REPLY2 = "He has wasted the money on a hooker",
-	WORKERSELECTIONCONTINUE1REPLY3 = "I need some more time",
+	WORKERSELECTIONCONTINUE1REPLY2 = "He has wasted the money on a hooker.",
+	WORKERSELECTIONCONTINUE1REPLY3 = "I need some more time.",
 	WORKERSELECTIONCONTINUE2_1 = "— Huh... I see. I'll find another courier then. Thank you for your time. You can report back to Sigmund.",
-	WORKERSELECTIONCONTINUE2_2 = "— ...Is that so? I guess you have no reason to lie. We will look into it. You can tell Sigmund, the payment will be delivered today.",
+	WORKERSELECTIONCONTINUE2_2 = "— ...Is that so? I guess you have no reason to lie. We will look into it. You can tell Sigmund the payment will be delivered today.",
 	WORKERSELECTIONINITIATE5 = "— Is dat so? Alright then. Thanks for helping out. While ya were out I made sure there's no objections among the guild. Ya have our support for your election thingie.",
-	WORKERSELECTIONINITIATE5REPLY1 = "It's about time",
-	WORKERSELECTIONINITIATE5REPLY2 = "Thank you",
+	WORKERSELECTIONINITIATE5REPLY1 = "It's about time.",
+	WORKERSELECTIONINITIATE5REPLY2 = "Thank you.",
 
 	MAGESELECTION1 = "— Hmm... Is that so?.. This is Amelia's idea, I presume?",
 	MAGESELECTION1REPLY1 = "Yes.",
 	MAGESELECTION1REPLY2 = "How did you know?",
 	MAGESELECTION2_1 = "— Figured as much.",
-	MAGESELECTION2_2 = "— Haven't I told you, you must have some brains to be a mage?",
+	MAGESELECTION2_2 = "— Haven't I told you must have some brains to be a mage?",
 	MAGESELECTION2_ANY = "— Fine, I guess, why not. I'm going to have you do something for me first, though. I want you to visit my sister, Xari, and reclaim the books she has stolen. She's living not far from Aliron.",
 	MAGESELECTION2REPLY1 = "So, should I beat her?",
 	MAGESELECTION2REPLY2 = "Why would your sister not live here?",
-	MAGESELECTION3_1 = "— No... Maybe. Do what you want, I guess... Actually no, don't harm her.",
+	MAGESELECTION3_1 = "— No... Maybe. Do what you want, I guess... Actually, no, don't harm her.",
 	MAGESELECTION3_2 = "— She hates crowds and is not fond of surface cities, I guess. Can't say I'm much different, just more resilient. Things aren't so bad around the Mages Guild.",
 	MAGESELECTION3_ANY = "Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.",
 	XARIENCOUNTER1 = "Before you are able to look inside the hut, which looks more like a cave, a young, excited dark elf girl comes to you. \n\n— A guest! I haven't had any bandits visit me for a long time. Do you want to burn in fire or be eaten by trolls?",
-	XARIENCOUNTER1REPLY1 = "I've actually came from your sister",
+	XARIENCOUNTER1REPLY1 = "I've actually came from your sister.",
 	XARIENCOUNTER1REPLY2 = "*Show letter*",
 	XARIENCOUNTER2_1 = "— Ah, even better then! Living alone is great and all, but it's been a while since I had any guests to talk to. Aside from crows.",
-	XARIENCOUNTER2_2 = "— Eh? So Myr sent you? Even better then! Living alone is great and all, but it's been a while since I had any guests to talk to. Aside from crows. ",
+	XARIENCOUNTER2_2 = "— Eh? So Myr sent you? Even better then! Living alone is great and all, but it's been a while since I had any guests to talk to. Aside from crows.",
 	XARIENCOUNTER2REPLY1 = "You can talk to crows?",
-	XARIENCOUNTER2REPLY2 = "I get it you were bored",
-	XARIENCOUNTER2REPLY3 = "I'd rather do my business and continue on my way",
+	XARIENCOUNTER2REPLY2 = "I get it you were bored.",
+	XARIENCOUNTER2REPLY3 = "I'd rather do my business and continue on my way.",
 	XARIENCOUNTER3_1 = "— Anyone can, they rarely reply back though. But spill it, what has Myr sent you for?",
 	XARIENCOUNTER3_2 = "— Yeah, just a bit. I knew I should've found myself a sentient familiar before leaving the city. A cat would do nice... Or a human. So, stranger, what brought you to me?",
 	XARIENCOUNTER3_3 = "— Jeez, you are no fun. Okay, what does Myr want from me now?",
-	XARIENCOUNTER3REPLY1 = "She called you a thief",
-	XARIENCOUNTER3REPLY2 = "She wants her books back",
-	XARIENCOUNTER3REPLY3 = "I think she's feeling lonely",
+	XARIENCOUNTER3REPLY1 = "She called you a thief.",
+	XARIENCOUNTER3REPLY2 = "She wants her books back.",
+	XARIENCOUNTER3REPLY3 = "I think she's feeling lonely.",
 	XARIENCOUNTER4_1 = "— Lies! Filthy elven sibling lies. So she wants her books then? She can have them. How dare she call me a thief. I will return them, alright?",
-	XARIENCOUNTER4_2 = "— Huh... Makes sense I guess. Must be really stuck in that damn tower to not even visit her sister herself. Fine, I don't really need them anymore.",
+	XARIENCOUNTER4_2 = "— Huh... Makes sense, I guess. Must be really stuck in that damn tower to not even visit her sister herself. Fine, I don't really need them anymore.",
 	XARIENCOUNTER4_3 = "— Ahaha, that's a funny joke. Dark elves don't feel lonely. I think elves don't feel lonely in general, given how stuck-up they act. You can trust me, I've experienced it firsthand. So, I presume she wants her books back, so she sent a courier. Alright, I don't really need them anymore.",
 	XARIENCOUNTER4REPLY1 = "So you will give them to me?",
 	XARIENCOUNTER4REPLY2 = "But there's a catch?",
@@ -3691,7 +3703,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	XARIENCOUNTER5_2 = "— Exactly.",
 	XARIENCOUNTER5_3 = "— Not so fast, friend. I'd like you to help me with one thing.",
 	XARIENCOUNTER5_ANY = "— I have no idea when a new guy will drop by and it's been quite lonely on my own here. I know you have lots of nice elf boys around the city so bring me one for a couple of hours and you can have your books then.",
-	XARIENCOUNTER5REPLY1 = "I thought you said dark elves don't feel lonely",
+	XARIENCOUNTER5REPLY1 = "I thought you said dark elves don't feel lonely.",
 	XARIENCOUNTER5REPLY2 = "Why wait for some unknown boy when I'm right here?",
 	XARIENCOUNTER5REPLY3 = "I'll be back then.",
 	XARIENCOUNTER6 = "— And you would believe what a dark elf said? Huge mistake. Well, it's not exactly that, I guess it's also the boredom.",
@@ -3699,115 +3711,115 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	XARIENCOUNTER6REPLY2 = "I'll be back then.",
 	XARIENCOUNTER7 = "— Ooh, you are willing to risk it with a wild witch like me? That's brave.",
 	XARIENCOUNTER7_1 = "— Alright, I'll accept your sacrifice. But don't expect any mercy!",
-	XARIENCOUNTER7_2 = "— Hm.. I'm actually very shy with other races, but I feel like this is a good time for a new experience.",
-	XARIENCOUNTER7_3 = "— Sorry, I'm not really into girls. Yeah, I shouldn't be picky in my situation, but it's just gross. Bring me an elf boy and then you'll have what you came for. ",
+	XARIENCOUNTER7_2 = "— Hm... I'm actually very shy with other races, but I feel like this is a good time for a new experience.",
+	XARIENCOUNTER7_3 = "— Sorry, I'm not really into girls. Yeah, I shouldn't be picky in my situation, but it's just gross. Bring me an elf boy and then you'll have what you came for.",
 	XARIENCOUNTER7_4 = "— But sorry, you aren't really of my taste. Bring me an elf boy and then you'll have what you came for.",
 	XARIENCOUNTER8_1 = "— Wow, you are much better than you look. Haha, I'm kidding, you look better than a troll. That was great. Take your books and drop by sometime again.",
 	XARIENCOUNTER8_2 = "— You aren't half bad, but could use some training... I'm just kidding. Thanks for your time, take your books, you've earned them.",
 	XARIENCOUNTER8_3 = "\n\nYou leave Xari with the bundle of books requested by Myr. As you make distance from the hut, you feel like someone's watching your back closely.",
 	XARIENCOUNTER9 = "— You are back. Got something for me?",
-	XARIENCOUNTER9REPLY1 = "I've brought the elf you requested",
-	XARIENCOUNTER9REPLY2 = "Not yet, I'll be back",
-	XARI_ENCOUNTER_APPRENTICE_OPTION = "I don't think Myr or Mages' Guild would like me wasting time for this (Apprentice)",
+	XARIENCOUNTER9REPLY1 = "I've brought the elf you requested.",
+	XARIENCOUNTER9REPLY2 = "Not yet, I'll be back.",
+	XARI_ENCOUNTER_APPRENTICE_OPTION = "[Apprentice] I don't think Myr or Mages Guild would like me wasting time for this.",
 	XARI_ENCOUNTER_APPRENTICE = "— Gods, you are no fun at all. Fine, I don't want those geezers anywhere around here, so take your books and leave.",
-	XARIENCOUNTER10 = "— Hmm not bad, I'll take it. Now, if you excuse me... Oh, I guess you can take your books and go. Don't worry, I'll send this lad back right after we are done. \n\n [name] gives you a worried look as they disappear behind the locked door. \n\n After a few hours [name] returns back with an expression of exhausted bliss on [his] face.",
+	XARIENCOUNTER10 = "— Hmm not bad, I'll take it. Now, if you excuse me... Oh, I guess, you can take your books and go. Don't worry, I'll send this lad back right after we are done. \n\n[name] gives you a worried look as they disappear behind the locked door. \n\nAfter a few hours [name] returns back with an expression of exhausted bliss on [his] face.",
 	MAGESELECTION4_1 = "— You di... You've slept with her!?",
 	MAGESELECTION4_1REPLY1 = "Was my grin too wide?",
-	MAGESELECTION4_1REPLY2 = "...No. Well, maybe",
-	MAGESELECTION4_1REPLY3 = "I hope you aren't jealous",
-	MAGESELECTION4_2 = "— Finally. So how was she doing? Don't tell me. she must be fine, since you got them without saying anything... Alright, thanks for the favor. You can tell Amelia you have our support or whatever. Have fun.",
-	MAGESELECTION5 = "— Oh, Gods... Can't believe she would... \n\n— Ah, whatever, why do I care. You got the books intact. Tell Amelia it's fine. We will support you. Oh, yeah, I'd keep this information secret if I were you. ",
-	SERVANTSELECTIONFINISH1 = "— Ah, you've got the support? Wonderful! ",
-	SERVANTSELECTIONFINISH1_2 = "And since you really went for it and got them all, I've prepared a reward for you. *Amelia passes you a shiny necklace*\n— ",
-	SERVANTSELECTIONFINISH1_3 = "Now all that is left is to prepare for the debate. But don't worry, I have the best image makers in the city to help you out.",
-	SERVANTSELECTIONFINISH1REPLY1 = "I will need to debate? I thought I'd already got the support",
+	MAGESELECTION4_1REPLY2 = "...No. Well, maybe.",
+	MAGESELECTION4_1REPLY3 = "I hope you aren't jealous.",
+	MAGESELECTION4_2 = "— Finally. So how was she doing? Don't tell me. She must be fine, since you got them without saying anything... Alright, thanks for the favor. You can tell Amelia you have our support or whatever. Have fun.",
+	MAGESELECTION5 = "— Oh, Gods... Can't believe she would... \n\n— Ah, whatever, why do I care. You got the books intact. Tell Amelia it's fine. We will support you. Oh, yeah, I'd keep this information secret if I were you.",
+	SERVANTSELECTIONFINISH1 = "— Ah, you've got the support? Wonderful!",
+	SERVANTSELECTIONFINISH1_2 = "— And since you really went for it and got them all, I've prepared a reward for you. *Amelia passes you a shiny necklace*",
+	SERVANTSELECTIONFINISH1_3 = "\n\n— Now all that is left is to prepare for the debate. But don't worry, I have the best image makers in the city to help you out.",
+	SERVANTSELECTIONFINISH1REPLY1 = "I will need to debate? I thought I'd already got the support.",
 	SERVANTSELECTIONFINISH1REPLY2 = "I don't quite get the point of this.",
 	SERVANTSELECTIONFINISH2_1 = "— Yes, but it's more complicated than that.",
 	SERVANTSELECTIONFINISH2_2 = "There will surely be other contenders, even if they didn't make as many connections as you did. More importantly, you are supposed to show the voters that you are a good, respectable executive or leader that reflects their interests. Finally, every Mayor must keep their public image on a great level. Even if commoners won't be deciding if you pass or not, their discontent can't be ignored by others.",
 	SERVANTSELECTIONFINISH2REPLY1 = "You are not going to make me do something shady once I win the election, are you?",
-	SERVANTSELECTIONFINISH2REPLY2 = "So be adequate, reasonable, and liked. Understood",
-	SERVANTSELECTIONFINISH2REPLY3 = "I'll try my best, but no promises",
+	SERVANTSELECTIONFINISH2REPLY2 = "So be adequate, reasonable, and liked. Understood.",
+	SERVANTSELECTIONFINISH2REPLY3 = "I'll try my best, but no promises.",
 	SERVANTSELECTIONFINISH3 = "— Don't be silly. I might ask for a thing or two, but aren't we in this together, [name]? Don't worry, if we didn't expect you to agree to what we might offer, we wouldn't suggest you become Mayor. After all, it's not like you can't reject guilds' demands.",
-	SERVANTSELECTIONFINISH3REPLY1 = "So be adequate, reasonable, and liked. Understood",
-	SERVANTSELECTIONFINISH3REPLY2 = "I'll try my best, but no promises",
+	SERVANTSELECTIONFINISH3REPLY1 = "So be adequate, reasonable, and liked. Understood.",
+	SERVANTSELECTIONFINISH3REPLY2 = "I'll try my best, but no promises.",
 	SERVANTSELECTIONFINISH4_1 = "— Exactly! Much shorter list than what we expect from our members, hehe.",
 	SERVANTSELECTIONFINISH4_2 = "— That's cute. Don't worry, we got your back.",
-	SERVANTSELECTIONFINISH4REPLY1 = "Alright, this sounds exciting",
-	SERVANTSELECTIONFINISH4REPLY2 = "Ugh, let's just get this over with",
+	SERVANTSELECTIONFINISH4REPLY1 = "Alright, this sounds exciting.",
+	SERVANTSELECTIONFINISH4REPLY2 = "Ugh, let's just get this over with.",
 	SERVANTSELECTIONFINISH5_1 = "— Yes, this is a big event. I'm eager to see you in action!",
 	SERVANTSELECTIONFINISH5_2 = "— Just try not to show this sort of attitude at the debates. Don't worry, I'm sure you will do great.",
 	SERVANTSELECTIONFINISH6 = "The debate day starts, and a huge crowd gathers at the main square. As another candidate makes his entrance, you watch from behind with Amelia, waiting for your turn. \n\n— Hmph, silly amateurs. At least the crowd is entertained. Hey, don't sweat over it, you look great.",
-	SERVANTSELECTIONFINISH6REPLY1 = "You seem to be enjoying yourself",
+	SERVANTSELECTIONFINISH6REPLY1 = "You seem to be enjoying yourself.",
 	SERVANTSELECTIONFINISH6REPLY2 = "I'm nervous, what do I even do?",
-	SERVANTSELECTIONFINISH6REPLY3 = "I could use a drink now",
+	SERVANTSELECTIONFINISH6REPLY3 = "I could use a drink now.",
 	SERVANTSELECTIONFINISH7_1 = "— What's not to enjoy? Lots of people are hopeful for the future of the city. Lots of opportunities to profit and grow. This is like a great test for me.",
 	SERVANTSELECTIONFINISH7_2 = "— Don't worry. We have a speaker who will make you look like you are the only reason the city hasn't collapsed in the past week. Just smile and look confident.",
 	SERVANTSELECTIONFINISH7_3 = "— Haha, just wait until it's over, I'll keep you company then.",
 	SERVANTSELECTIONFINISH7_ANY = "— It seems this one is done. You'll be up in ten minutes and... \n\nBefore Amelia could answer, a deafening blast erupted from the podium, and a group of people materialized there. Led by a young blonde girl adorned in shiny armor and luxurious clothes.",
-	SERVANTSELECTIONFINISH8 = "Before anyone could react, the square was covered by a magic sphere, blocking any potential avenues for retreat or assistance. However, none of the invaders showed any apparent hostility. \n\n The girl spoke. \n\n— People of Aliron, the Human Lands. I'm Anastasia, Daughter of King Alber. My father was mercilessly killed 12 years ago. I swear to avenge him, defeat his enemies and return our kingdom to its former rule. Those who fight for our cause will be rewarded. Please stay strong and help us defeat the wrongdoers. Come seek us and together we will stop this unholy regime." ,
+	SERVANTSELECTIONFINISH8 = "Before anyone could react, the square was covered by a magic sphere, blocking any potential avenues for retreat or assistance. However, none of the invaders showed any apparent hostility. \n\nThe girl spoke. \n\n— People of Aliron, the Human Lands. I'm Anastasia, Daughter of King Alber. My father was mercilessly killed 12 years ago. I swear to avenge him, defeat his enemies and return our kingdom to it's former rule. Those who fight for our cause will be rewarded. Please stay strong and help us defeat the wrongdoers. Come seek us and together we will stop this unholy regime.",
 	SERVANTSELECTIONFINISH9 = "A few moments after she finished a bright flash covered the square to hide a magic portal that Anastasia used to escape. The magic barrier fell and people stood dumbstruck at what just happened.",
-	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
+	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons. \n\nYou can keep playing indefinitely.",
 
-	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
+	LOAN_EVENT = "By the morning the bank loaners has visited the mansion.",
 	LOAN_SUCCESS1 = "They took {custom_text_function=GetLoanSum#0|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#1|}th day and will be requiring {custom_text_function=GetLoanSum#1|} gold.",
 	LOAN_SUCCESS2 = "They took {custom_text_function=GetLoanSum#1|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#2|}th day and will be requiring {custom_text_function=GetLoanSum#2|} gold... Unless something else can be done about it.",
 	LOAN_SUCCESS3 = "They took {custom_text_function=GetLoanSum#2|} gold and departed quickly. Your next payment is expected by {custom_text_function=GetLoanDay#3|}th day and will be requiring {custom_text_function=GetLoanSum#3|} gold... Unless something else can be done about it.",
 	LOAN_SUCCESS4 = "They took {custom_text_function=GetLoanSum#3|} gold and departed quickly. This was your last payment and now you are free to do what you want...",
-	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
+	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets.",
 
-	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sex Factor}. It also increase chance to unlock a trait. ",
-	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
+	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sex Factor}. It also increase chance to unlock a trait.",
+	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck.",
 
 	# Aliron Church
-	GINNYVISIT = "In the morning your mansion has a visitor. As you open the door, you see a young girl in a nun outfit.\n\n— Hello, [Sir]. I'm Ginny. I've heard you just moved here and I was hoping to catch your interest as I work at the church of Celena.",
-	GINNYVISITREPLY1 = "Alright, but make it quick",
+	GINNYVISIT = "In the morning your mansion has a visitor. As you open the door, you see a young girl in a nun outfit. \n\n— Hello, [Sir]. I'm Ginny. I've heard you just moved here and I was hoping to catch your interest as I work at the church of Celena.",
+	GINNYVISITREPLY1 = "Alright, but make it quick.",
 	GINNYVISITREPLY2 = "Why don't you come inside?",
-	GINNYVISITREPLY3 = "Not interested in whatever you're selling",
+	GINNYVISITREPLY3 = "Not interested in whatever you're selling.",
 
 	GINNYVISIT2_1 = "— Ah, I won't take your time, just wanted to say that we are open to any new visitors. Celena wishes to help anyone in need and I hope to build a stable, kind community. I'd be happy if you decide to learn more and drop by at some point. Now, I won't be taking anymore of your time. Goodbye!",
-	GINNYVISIT2_2 = "— I'm sorry, but I can't stay for long. Plus I've been told not to trust land owners as they often kidnap and enslave strangers... I mean I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
-	GINNYVISIT2_3 = "— Sorry to distract you! I just wanted to tell you since you are new, you can visit our church if you are interested... I'm sorry, goodbye. ",
+	GINNYVISIT2_2 = "— I'm sorry, but I can't stay for long. Plus, I've been told not to trust landowners as they often kidnap and enslave strangers... I mean, I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
+	GINNYVISIT2_3 = "— Sorry to distract you! I just wanted to tell you since you are new, you can visit our church if you are interested... I'm sorry, goodbye.",
 
-	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you.\n\n— Welcome, [Sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
-	ALIRONCHURCHFIRSTCOMEREPLY1 = "I'm just wandering around",
-	ALIRONCHURCHFIRSTCOMEREPLY2 = "I'd like to learn more about your religion",
-	ALIRONCHURCHFIRSTCOMEREPLY3 = "I think I'll come in another time",
+	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you. \n\n — Welcome, [Sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
+	ALIRONCHURCHFIRSTCOMEREPLY1 = "I'm just wandering around.",
+	ALIRONCHURCHFIRSTCOMEREPLY2 = "I'd like to learn more about your religion.",
+	ALIRONCHURCHFIRSTCOMEREPLY3 = "I think I'll come in another time.",
 
-	ALIRONCHURCHINTRODUCTION1 = "— Oh, this is great! It's always a pleasure to get to know new people who come to the city. Some complain about it being overcrowded but we are able to get more members too. This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Since Aliron is not very pious, we don't get much of an offertory to afford a better place.",
-	ALIRONCHURCHINTRODUCTION2 = "— Wonderful! This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Granted, Aliron is not very pious, but still. We worship the Goddess Celena and help others in need. ",
+	ALIRONCHURCHINTRODUCTION1 = "— Oh, this is great! It's always a pleasure to get to know new people who come to the city. Some complain about it being overcrowded, but we are able to get more members too. This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Since Aliron is not very pious, we don't get much of an offertory to afford a better place.",
+	ALIRONCHURCHINTRODUCTION2 = "— Wonderful! This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Granted, Aliron is not very pious, but still. We worship the Goddess Celena and help others in need.",
 
 	ALIRONCHURCHINTRODUCTIONREPLY1 = "Can you tell me more about Celena?",
 	ALIRONCHURCHINTRODUCTIONREPLY2 = "Is there some way I could help?",
-	ALIRONCHURCHINTRODUCTIONREPLY3 = "Leave",
+	ALIRONCHURCHINTRODUCTIONREPLY3 = "*Leave*",
 
 	ALIRONCHURCHLEAVE = "— Please come again!",
 
-	ALIRONCHURCHCELENA = "— Gladly. Celena is the Goddess who's associated with us humans. She's the embodiment of compassion and always watches out for those in trouble. She's also the goddess of life and harvest so if you come across her shrine, you can offer it some food. ",
+	ALIRONCHURCHCELENA = "— Gladly. Celena is the Goddess who's associated with us, humans. She's the embodiment of compassion and always watches out for those in trouble. She's also the goddess of life and harvest, so if you come across her shrine, you can offer it some food.",
 	ALIRONCHURCHCELENAREPLY1 = "Are gods even real? Do you have any proof?",
 	ALIRONCHURCHCELENAREPLY2 = "There are other deities?",
-	ALIRONCHURCHCELENAREPLY3 = "Tell me about shrines",
-	ALIRONCHURCHCELENAREPLY4 = "I've learned enough",
+	ALIRONCHURCHCELENAREPLY3 = "Tell me about shrines.",
+	ALIRONCHURCHCELENAREPLY4 = "I've learned enough.",
 
 	ALIRONCHURCHCELENAANSWER_1 = "It's true you might doubt their existence, but it's apparent after some time. You can ask Celena for help or a blessing, and you will often be able to receive it in some form. Yes, it might not be as epic as their status suggests, but it's an undeniable proof that they still watch over us.",
-	ALIRONCHURCHCELENAANSWER_2 = "— Naturally! Most other races don't recognize Celena and have their own gods who respond to their prayers. I know the forest elves worship Freya and their trees, but how can they compare to Celena's omnipresent love? ",
+	ALIRONCHURCHCELENAANSWER_2 = "— Naturally! Most other races don't recognize Celena and have their own gods who respond to their prayers. I know the forest elves worship Freya and their trees, but how can they compare to Celena's omnipresent love?",
 	ALIRONCHURCHCELENAANSWER_3 = "— Most of the shrines you might find around these lands will be of Celena. By making an offer you may receive a blessing or some other gift. But different deities have different preferences, they say. I'm not sure, I've only been devoted to Celena for my whole life.",
 
-	ALIRONCHURCHENTER1 = "As you enter the church, Ginny greets you as usual.\n\n— Welcome, [name]! What can I do for you?",
+	ALIRONCHURCHENTER1 = "As you enter the church, Ginny greets you as usual. \n\n— Welcome, [name]! What can I do for you?",
 	ALIRONCHURCHENTER2 = "— Is there something else I can help you with, [Sir] [name]?",
 
-	ALIRONCHURCHENTERREPLY1 = "Tell me more about your work",
-	ALIRONCHURCHENTERREPLY2 = "I've brought the food you've asked for",
+	ALIRONCHURCHENTERREPLY1 = "Tell me more about your work.",
+	ALIRONCHURCHENTERREPLY2 = "I've brought the food you've asked for.",
 
-	ALIRONCHURCHQUESTSTART = "— We are mostly doing fine, but we also have to feed the poor and homeless. It would be great if you can get us {color=aqua|25 meat soups} as we don't always have enough. You can cook them from raw resources. I'm sure Celena will be very pleased. ",
+	ALIRONCHURCHQUESTSTART = "— We are mostly doing fine, but we also have to feed the poor and homeless. It would be great if you can get us {color=aqua|25 meat soups} as we don't always have enough. You can cook them from raw resources. I'm sure Celena will be very pleased.",
 	ALIRONCHURCHQUESTSTARTREPLY1 = "I don't suppose there will be a reward?",
-	ALIRONCHURCHQUESTSTARTREPLY2 = "I'll be glad to help",
-	ALIRONCHURCHQUESTSTARTREPLY3 = "No promises, I'll see what I can do",
+	ALIRONCHURCHQUESTSTARTREPLY2 = "I'll be glad to help.",
+	ALIRONCHURCHQUESTSTARTREPLY3 = "No promises, I'll see what I can do.",
 
 	ALIRONCHURCHQUESTSTART1_1 = "— Isn't virtue it's own reward? I will try to assemble something, but you can see we don't have much.",
 	ALIRONCHURCHQUESTSTART1_2 = "— That's wonderful, I'll be praying to Celena for your safety.",
 	ALIRONCHURCHQUESTSTART1_3 = "— Thank you, we will appreciate it. If you need anything else, let me know.",
 
-	ALIRONCHURCHQUESTCOMPLETE1 = "— This is wonderful! For your help I'd like to present you with a holy text on teaching healing magic. I'm sure this will be of some use to you. Oh, and take some of these healing shards. You can break them down to heal your injuries even in dire situations.\n\n— Oh, also we can always use more food for poor. If you bring it to us once a week, we'll provide you with more shards.",
+	ALIRONCHURCHQUESTCOMPLETE1 = "— This is wonderful! For your help I'd like to present you with a holy text on teaching healing magic. I'm sure this will be of some use to you. Oh, and take some of these healing shards. You can break them down to heal your injuries even in dire situations. \n\n— Oh, also we can always use more food for poor. If you bring it to us once a week, we'll provide you with more shards.",
 	ALIRONCHURCHQUESTCOMPLETE2 = "— This is wonderful! I know it's not much, but I can spare you some life shards. These are Celena's gift to us, so you can use them in your adventures.",
 
 	# Tutorials
@@ -3869,12 +3881,12 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 
 	# after finishing election-princess-meeting sequence
 
-	QUESTLOG_AFTERELECTIONOPTION1 = "Visit Myr to know how you can help",
-	QUESTLOG_AFTERELECTIONOPTION2 = "Visit Fred's dormitory at Aliron to learn about his whereabouts",
-	QUESTLOG_AFTERELECTIONOPTION3 = "Find Fred's meeting spot outside of Aliron",
-	QUESTLOG_AFTERELECTIONOPTION4 = "Return to Myr with the news",
-	QUESTLOG_AFTERELECTIONOPTION5 = "Visit Duncan",
-	QUESTLOG_AFTERELECTIONOPTION6 = "Visit Sigmund to help him with the recent rebel takeover",
+	QUESTLOG_AFTERELECTIONOPTION1 = "Visit Myr to know how you can help.",
+	QUESTLOG_AFTERELECTIONOPTION2 = "Visit Fred's dormitory at Aliron to learn about his whereabouts.",
+	QUESTLOG_AFTERELECTIONOPTION3 = "Find Fred's meeting spot outside of Aliron.",
+	QUESTLOG_AFTERELECTIONOPTION4 = "Return to Myr with the news.",
+	QUESTLOG_AFTERELECTIONOPTION5 = "Visit Duncan.",
+	QUESTLOG_AFTERELECTIONOPTION6 = "Visit Sigmund to help him with the recent rebel takeover.",
 
 	# Aliron elections finish
 
@@ -3886,7 +3898,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 
 	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund: — Are ya sure she's actually da princess? Might be she's an imposter. Pretty common tactic fo' dwarven disputes.}
 
-{color=yellow|Amelia: — We are almost sure she's the real deal. Her appearance correlates to the youngest child and her aura is undeniably of the royal bloodline. What we don't know is who is backing her. If the empire has a hand in this...}""",
+{color=yellow|Amelia: — We are almost sure she's the real deal. Her appearance correlates to the youngest child and her aura is undeniably of the royal bloodline. What we don't know is who is backing her. If the Empire has a hand in this...}""",
 
 	ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan: — Our scouts have been reporting increased activity from the rebels in past months. Sympathizers and rebel forces are advancing as we speak. I'm forced to declare a state of emergency.}
 
@@ -3898,7 +3910,7 @@ The crowd of landowners bursts into a hubbub.
 
 {color=aqua|Duncan: — I don't expect your compliance, and I won't need your help to deal with them. Once we identify the traitor, there will be no mercy. You better prepare for it.}
 
-{color=yellow|Myr: — We?! Why? No, how would the Mage Guild benefit from this rebel stunt?}
+{color=yellow|Myr: — We?! Why? No, how would the Mages Guild benefit from this rebel stunt?}
 
 {color=aqua|Duncan: — Regardless, we will find the culprit and all accomplices will be dealt with thoroughly. Be it you, the Servants, or even one of ours.}""",
 
@@ -3910,37 +3922,37 @@ The crowd of landowners bursts into a hubbub.
 	ALIRONELECTIONSFINISH_QUESTION2 = "It seemed to me the guilds were fighting each other.",
 
 	ALIRONELECTIONSFINISH_ANSWER1 = """— The Servants have no role in warfare. We don't train soldiers, possess magic, or even produce supplies.
-As such we barely have any influence while Aliron is under martial law.
-I guess all we can do is stick around 'till it's over and hope there will be something left for us afterwards.
+	As such we barely have any influence while Aliron is under martial law.
+	I guess all we can do is stick around 'till it's over and hope there will be something left for us afterwards.
+		
+	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
-— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
-You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
-
-	ALIRONELECTIONSFINISH_ANSWER2 = """— Sure, that's what we always do. The stakes are higher this time though with one of our own betraying us to the rebellion.
-The Mages are in charge of any large scale teleportations, so this shouldn't have been possible short of infiltration and sabotage.
-
-— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
-You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
+	ALIRONELECTIONSFINISH_ANSWER2 = """— Sure, that's what we always do. The stakes are higher this time though, with one of our own betraying us to the rebellion.
+	The Mages are in charge of any large scale teleportations, so this shouldn't have been possible short of infiltration and sabotage.
+		
+	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer my assistance to Duncan personally.",
 	ALIRONELECTIONSFINISH_QUESTION4 = "That sounds like something a perpetrator would say to use me for their benefit.",
 	ALIRONELECTIONSFINISH_QUESTION5 = "I'm not sure, what if I get in the way?",
 
 	ALIRONELECTIONSFINISH_ANSWER3 = """— Quite enthusiastic, aren't you? This is all the better, but don't act prematurely.
-
+	
 	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
-I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
+	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER4 = """— Hah, that's the spirit. Trust no one. This is why I've chosen you. Well, since you've realized that and if that was the case, we won't be able to fool you, right?
-
-— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
-I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
+	
+	—Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER5 = """— Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you.
-
-— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
-I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
+	
+	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
 
@@ -3952,21 +3964,21 @@ I suggest starting with the mage guild. If they haven't figured it out already, 
 	MAGESAFTERELLECTION1_QUESTION2 = "I'm investigating what's been going on around here.",
 
 	MAGESAFTERELLECTION1_ANSWER1 = """— Yeah, right, like hell you did. Did the Fighters send you? Or, more likely, it's Amelia's idea, right?
-
-— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+	
+	— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
 	MAGESAFTERELLECTION1_ANSWER2 = """— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
-	MAGESAFTERELLECTION1_QUESTION3 = "Hoped you'd tell me",
-	MAGESAFTERELLECTION1_QUESTION4 = "I guess you don't know either",
+	MAGESAFTERELLECTION1_QUESTION3 = "Hoped you'd tell me.",
+	MAGESAFTERELLECTION1_QUESTION4 = "I guess you don't know either.",
 	MAGESAFTERELLECTION1_QUESTION5 = "...",
 
-	MAGESAFTERELLECTION1_ANSWER3 = """— The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications but what's important is that for this purpose, it requires a power source. This power source was stolen right before the... event.
-
-— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
-Name's Fred. You can find him and confirm if he disabled the device on his own accord. If he indeed sided with the rebels or the empire it's best if you take him down immediately.
-
-— I'll give you his home address, you might find some clues about his whereabouts there.""",
+	MAGESAFTERELLECTION1_ANSWER3 = """— The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications, but what's important is that for this purpose it requires a power source. This power source was stolen right before... the event.
+	
+	— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
+	Name's Fred. You can find him and confirm if he disabled the device on his own accord. If he indeed sided with the rebels or the Empire, it's best if you take him down immediately.
+	
+	— I'll give you his home address, you might find some clues about his whereabouts there.""",
 
 	MAGESAFTERELLECTION1_QUESTION6 = "What's that power source which was stolen?",
 	MAGESAFTERELLECTION1_QUESTION7 = "You suspect he's dead?",
@@ -3980,7 +3992,7 @@ Name's Fred. You can find him and confirm if he disabled the device on his own a
 
 	VISITFREDSHOMEINTRO = """You enter a dormitory in one of the poorer districts of the city.
 
-Fred's room is rather small and unclean with thin walls letting you hear the neighbors. After some time searching you find a hidden note implying Fred was planning to secretly meet with someone named Greg on the outskirts of town.
+Fred's room is rather small and unclean with thin walls letting you hear the neighbors. After some time searching you find a hidden note implying Fred was planning to secretly meet with someone named Greg on the outskirts of the city.
 
 After asking around with the other residents, you decide it's the most likely place to find him.""",
 
@@ -4002,15 +4014,15 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 
 {color=aqua|Boss: — We aren't going anywhere just yet, you idiots. This is an opportunity to earn some extra cash and favor.}""",
 
-	FINDFRED_OPTION1 = "Talk",
-	FINDFRED_OPTION2 = "Attack",
+	FINDFRED_OPTION1 = "*Talk*",
+	FINDFRED_OPTION2 = "*Attack*",
 
-	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\n\n{color=yellow|Fat Bandit: — Huh? Who are you?}",
+	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them. \n\n{color=yellow|Fat Bandit: — Huh? Who are you?}",
 	FINDFRED_TALK1_QUESTION1 = "I've come with a message, your services are no longer needed.",
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
-	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
-	FINDFRED_ROGUE_OPTION = "You fuckers were sold out, the city militia is already on this way here (Rogue)",
+	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *Attack*",
+	FINDFRED_ROGUE_OPTION = "[Rogue] You fuckers were sold out, the city militia is already on this way here.",
 	FINDFRED_ROGUE = """{color=aqua|Fat Bandit: — Huh? What is going on?}
 
 {color=yellow|Small Bandit: — I knew these bastards could not be trusted!}
@@ -4022,7 +4034,7 @@ The trio quickly escape without realizing your bluff, leaving you with their pri
 
 {color=aqua|Boss: — Huh, really? Who are you trying to fool here?}""",
 
-	FINDFRED_TALK1_ANSWER1_1 = """{color=aqua|Boss— Huh, really? Who are you trying to fool here?}""",
+	FINDFRED_TALK1_ANSWER1_1 = """{color=aqua|Boss: — Huh, really? Who are you trying to fool here?}""",
 
 	FINDFRED_TALK1_QUESTION5 = "Taking me for an imposter would be a dumb move.",
 	FINDFRED_TALK1_QUESTION6 = "Hey, I'm being serious here. Let's not jump to conclusions.",
@@ -4033,19 +4045,19 @@ The trio quickly escape without realizing your bluff, leaving you with their pri
 
 {color=aqua|Boss: — Very well, we all one be done with it anyway, but just to make sure you're on the level, what's the name of our contractor?}""",
 
-	FINDFRED_TALK1_CONTRACTOR_DUNCAN = "Duncan",
-	FINDFRED_TALK1_CONTRACTOR_GREG = "Greg",
-	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
-	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
+	FINDFRED_TALK1_CONTRACTOR_DUNCAN = "Duncan.",
+	FINDFRED_TALK1_CONTRACTOR_GREG = "Greg.",
+	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred.",
+	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik.",
 
-	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Boss: — Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
-	FINDFRED_TALK1_IF_GREG2 = "As the bandits leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",
+	FINDFRED_TALK1_IF_GREG1 = "{color=aqua|Boss: — Huh, alright then. Let's get the hell outta this hole in the ground, boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again 'suming the pay is good. See ya.}",
+	FINDFRED_TALK1_IF_GREG2 = "As the bandits leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak. \n\n— W-who are you? Are you from the guild? Would you mind untying me?",
 
 	FINDFRED_ATTACK = """Deciding there's no point in negotiations you prepare to attack the bandits.
 
 {color=aqua|Fat Bandit: — Huh, you think you are so tough? Bring it on!}
 
-{color=yellow|Small Bandit: — Yah, show 'em fatso. }""",
+{color=yellow|Small Bandit: — Yah, show 'em fatso.}""",
 
 	FINDFRED_AFTERWIN = """{color=yellow|Small Bandit: — Screw it! They are too strong!}
 
@@ -4066,7 +4078,7 @@ I don't know what they wanted it for. It's just some old relic nobody cares abou
 	FINDFRED_AFTERWIN_QUESTION5 = "I'll bring you back to guilds to face justice for aiding the rebellion.",
 	FINDFRED_AFTERWIN_QUESTION6 = "I've heard enough, traitors deserve death.",
 
-	FINDFRED_TALK1_ANSWER3 = """— They took it. It's just some old relic nobody cares about anyway and they offered me a nice sum to bring it to them. Then they double-crossed me and had those men drag me off here. Damned Greg and that demon bitch...""",
+	FINDFRED_TALK1_ANSWER3 = """— They took it. It's just some old relic nobody cares about anyway, and they offered me a nice sum to bring it to them. Then they double-crossed me and had those men drag me off here. Damned Greg and that demon bitch...""",
 	FINDFRED_TALK1_ANSWER4 = """— Rebels? Look, I had no idea who they were. You've seen my place, it's a dump! Ok, so I fucked up, but who wouldn't consider the opportunity?""",
 	FINDFRED_TALK1_ANSWER5 = """— I dunno, Greg's one shady backstabber? He told me to get the sword, I got it. After I handed it over, he passed it to some demon chick. Then they tied me up and left me to these guys. I really don't know much else.""",
 
@@ -4077,7 +4089,7 @@ I don't know what they wanted it for. It's just some old relic nobody cares abou
 
 	FINDFRED_TALK1_ANSWER7 = """— No, please! You gotta believe me, I didn't know. Look, I can't go back, but if you let me go, you can have the first half of what I got paid. Five hundred gold just to look the other way, what do you say?""",
 
-	FINDFRED_AFTERWIN_QUESTION9 = "Funny of you to expect you could buy me *kill*",
+	FINDFRED_AFTERWIN_QUESTION9 = "Funny of you to expect you could buy me. *Kill*",
 
 	FINDFRED_LINE_END = "Despite Fred's protests, you decide to take him back to Duncan.",
 	FINDFRED_LINE_END_KILL = "Fred continues pleading, but you're not listening anymore. You strike him down and go to work collecting proof you'd completed your task. You exit the cave a little while later with Fred's head in the same sack he'd likely concealed the sword in earlier.",
@@ -4090,10 +4102,10 @@ I don't know what they wanted it for. It's just some old relic nobody cares abou
 	FINDFRED_AFTERWIN_QUESTION13 = "Forget it, you die here.",
 
 	FINDFRED_TALK1_ANSWER9 = """— Thank you! I left the money back in my room. There's a stash under the loose floorboard near the window.
-You release Fred and let him go on his way then get ready to depart.""",
+	You release Fred and let him go on his way then get ready to depart.""",
 
 
-		FINDFRED_TALK1_ANSWER10 = """Bandits give you a doubtful look.
+	FINDFRED_TALK1_ANSWER10 = """Bandits give you a doubtful look.
 
 {color=aqua|Small Bandit: — Hey, why won't we take it?}
 
@@ -4107,8 +4119,8 @@ You release Fred and let him go on his way then get ready to depart.""",
 
 	FINDFRED_BRIBE_REFUSED = """{color=aqua|Boss: — Well, that's a shame because we can't just let you leave after finding us here.}""",
 
-	FINFRED_BRIBE_OPTION1 = "Agree",
-	FINFRED_BRIBE_OPTION2 = "Refuse",
+	FINFRED_BRIBE_OPTION1 = "*Agree*",
+	FINFRED_BRIBE_OPTION2 = "*Refuse*",
 
 	FINDFRED_LINE_END_KILL2 = "You cut off further protests by stuffing the gag back in Fred's mouth and lead him out of the cave.",
 
@@ -4141,13 +4153,13 @@ This should ease tensions between the guilds, until something new comes up. Here
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
 
 	FREDQUESTREPORT = "About Fred...",
-	FREDFIGHTERSQUESTREPORT = "About the mages issue...",
+	FREDFIGHTERSQUESTREPORT = "About the Mages issue...",
 	PRINCESS_SEARCH_INITIATE = "How does your search goes?",
 
-	RETURNTOMYR = """— So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements if you'll excuse me.""",
+	RETURNTOMYR = """— So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements, if you'll excuse me.""",
 
 	RETURNTODUNCAN_IF_FRED = """— Good work finding the culprit, we've taken him to the jail where he will be awaiting punishment.""",
-	RETURNTODUNCAN_IF_FRED_QUESTION1 = "Tell what you learned",
+	RETURNTODUNCAN_IF_FRED_QUESTION1 = "*Tell what you learned*",
 	RETURNTODUNCAN_IF_NOT_FRED = "— So the traitor is dead. Allow me to ask, was there no other choice but to kill him?",
 
 	RETURNTODUNCAN_IF_NOT_FRED_QUESTION1 = "I had to defend myself.",
@@ -4156,14 +4168,14 @@ This should ease tensions between the guilds, until something new comes up. Here
 	RETURNTODUNCAN1 = "— Just a report, huh? I take it you didn't find the actual culprit then.",
 	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
-	RETURNTODUNCAN_ANSWER1 = """{color=aqua|— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though...}""",
+	RETURNTODUNCAN_ANSWER1 = """{color=aqua|— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed, but it seems I was wrong. I have no clue who the demon woman might be though...}""",
 
 	RETURNTODUNCAN_TOWNCAPTURE = """Before Duncan could finish, a messenger barged in the room with a panic shown on his face.
 
 — Sir, the rebels have captured Millford! """,
 	RETURNTODUNCAN_ANSWER1_1 = """
 
-— Curses.. They were this prepared for it.— Duncan took a deep breath and resumed like it was nothing.
+— Curses... They were this prepared for it. — Duncan took a deep breath and resumed like it was nothing.
 
 — Anyway, good work, but we have more immediate problems now. The rebels have taken other key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the town, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
 
@@ -4172,7 +4184,7 @@ This should ease tensions between the guilds, until something new comes up. Here
 
 	RETURNTODUNCAN_ANSWER2 = "— Better not delay, every moment counts for us now.",
 
-	RETURNTODUNCAN_EXTRA1 = """— This is obviously Mages' fault. Myr should know who's the one responsible. Once you find him, we will not hesitate with the proper punishment.""",
+	RETURNTODUNCAN_EXTRA1 = """— This is obviously the Mages' fault. Myr should know who's the one responsible. Once you find him, we will not hesitate with the proper punishment.""",
 
 	#Intermission scene 2
 
@@ -4180,15 +4192,15 @@ This should ease tensions between the guilds, until something new comes up. Here
 
 {color=yellow|Anastasia: — Uncle! Why didn't you let me talk to them before attacking?!}
 
-{color=aqua|Greg: — Those were guilds' trained soldiers.}
+{color=aqua|Greg: — Those were the guilds' trained soldiers.}
 
 {color=yellow|Anastasia: — They had asked to see me in person though. We could've avoided all of this death and destruction.}""",
 
-	INTERMISSION2INTRO2 = """Despite his unwillingness to answer at all, Greg had to answer carefully since Anastasia had made her protest in the presence of so many rebel soldiers...
+	INTERMISSION2INTRO2 = """Despite his unwillingness to answer at all, Greg had to answer carefully since Anastasia had made her protest in the presence of so many rebel soldiers.
 
 {color=aqua|Greg: — You are too naive, Princess. There could have been assassins amongst them sent simply for your head. Our enemies are treacherous opportunists, this is how they work.}
 
-{color=yellow|Anastasia: — ... it's not supposed to be like this. What good is it to free the people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
+{color=yellow|Anastasia: — ...It's not supposed to be like this. What good is it to free people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
 
 	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: — I've decided. Release the survivors so they can return home.}
 
@@ -4200,19 +4212,19 @@ This should ease tensions between the guilds, until something new comes up. Here
 
 	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: — Is there any news from Aire? She's still not back?}
 
-{color=aqua|Attendant: — I'm afraid not your highness. She has yet to return.}
+{color=aqua|Attendant: — I'm afraid not, your highness. She has yet to return.}
 
 {color=yellow|Anastasia: — Ah... Aire, I could really use your company right about now. I hope you are safe.}""",
 
 	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: — Do you think I was wrong to demand their release?}
 
-{color=aqua|Aire: — I'm sorry, It's not my place to judge you, your highness.}
+{color=aqua|Aire: — I'm sorry, it's not my place to judge you, your highness.}
 
 {color=yellow|Anastasia: — Aire, please.}
 
 {color=aqua|Aire: — I'm just your tool, your highness. Your will is all that matters to me.}
 
-Noticing the princess's angry stare Aire quickly adds.
+Noticing the princess' angry stare Aire quickly adds.
 
 {color=aqua|Aire: — But, I guess, I would prefer to be able to return home if I were in their place.}""",
 
@@ -4220,7 +4232,7 @@ Noticing the princess's angry stare Aire quickly adds.
 
 The princess notices Aire tensing up in response to the question.
 
-{color=aqua|Aire: — ... It's nothing worth mentioning to you.}""",
+{color=aqua|Aire: — ...It's nothing worth mentioning to you.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: — You didn't get injured again, did you?}
 
@@ -4230,15 +4242,15 @@ The princess notices Aire tensing up in response to the question.
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|Anastasia: — I didn't get a chance to ask, but how did your last assignment go? You've been very lively ever since you returned, and I could use a bit of good news just about now.}
 
-{color=aqua|Aire: — Oh, yes. Actually I got in just slightly over my head this time.}""",
+{color=aqua|Aire: — Oh, yes. Actually, I got in just slightly over my head this time.}""",
 ###
-	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: — Aire! You said you would be careful. You said— wait, why have you been so cheerful then?}
+	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: — Aire! You said you would be careful. You said... wait, why have you been so cheerful then?}
 
-{color=aqua|Aire: — I... Well I was rescued.}
+{color=aqua|Aire: — I... Well, I was rescued.}
 
 {color=yellow|Anastasia: — A rescuer? Do tell.}
 
-{color=aqua|Aire: — I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well a good person I think.}""",
+{color=aqua|Aire: — I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well, a good person, I think.}""",
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia: — [name]? We should properly reward [him], once this whole mess is over.}
 
@@ -4260,7 +4272,7 @@ The princess notices Aire tensing up in response to the question.
 	SIGMUND_QUESTION5 = "Surely with such high stakes I'll be due some reward for my efforts.",
 
 	SIGMUND_ANSWER2 = """— Yah, it wouldn't be da problem, but it's actually da major one for the magic ore used for enchantable alloys.
-Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+	Dis is not a wide known information, but it seems da rebels knew where to strike.""",
 
 	SIGMUND_ANSWER3 = "— Great, I'll mark it on ya map.",
 	SIGMUND_ANSWER4 = "— Argh, darn, fine, as long as you deal with it.",
@@ -4327,7 +4339,7 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	MATERIALEARTH_SHARDDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
 	
 	MATERIALMILK = "Milk", #TODO add descriptions
-	MATERIALMILKDESCRIPT = "Freshly obtained milk, not of completely common origin. Commonly obtained from females after pregnancy. ",
+	MATERIALMILKDESCRIPT = "Freshly obtained milk, not of completely common origin. Commonly obtained from females after pregnancy.",
 	MATERIALSEED = "Seed",
 	MATERIALSEEDDESCRIPT = "Essence of male virility. Commonly obtained from males.",
 	MATERIALPHEROMONES = "Pheromones",
@@ -4397,13 +4409,13 @@ Dis is not a wide known information, but it seems da rebels knew where to strike
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
-{color=aqua|Amelia: — Hello darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue. }
+{color=aqua|Amelia: — Hello, darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue.}
 
 At her words Aire glanced at the bag imagining all manner of blades and hooks that must be inside and then looked to the cat woman in her revealing attire with confusion.
 
-{color=yellow|Aire: — I won't reveal anything, not to you or anyone else no matter what you do. }
+{color=yellow|Aire: — I won't reveal anything, not to you or anyone else no matter what you do.}
 
-{color=aqua|Amelia: — That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things. }""",
+{color=aqua|Amelia: — That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things.}""",
 
 	AIRE_AMELIA2 = """
 Amelia retrieved a small flask of honey colored liquid which she upended against a handkerchief for a moment before stoppering it. Aire stood to her feet to struggle as best she could rather than be poisoned, but none of her training was of any use bound as she was. Amelia twisted her by her restraints and collar roughly before wrapping an arm around her and forcing the handkerchief over her nose and mouth.
@@ -4413,20 +4425,20 @@ Amelia retrieved a small flask of honey colored liquid which she upended against
 	AIRE_AMELIA3 = """
 Aire held her breath for over a minute. She struggled the whole time as Amelia held her firmly while chatting to her casually as if they were friends, but the burning in her lungs became too much and she desperately gulped breaths laced with the drug. Amelia held her like that until her breathing became steady and her body started to relax.
 
-{color=aqua|Amelia: — Now, I understand you've heard some nasty rumors about my colleagues and I, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.}
+{color=aqua|Amelia: — Now, I understand you've heard some nasty rumors about my colleagues and me, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.}
 
 Aire's heart had begun pounding and her body grew unbearably sensitive. Amelia idly fondled her trussed breasts and periodically pinched her nipples, eliciting jerks and squeals from the elf that gradually became shudders and moans.
 
-{color=aqua|Amelia: — I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond.}""",
+{color=aqua|Amelia: — I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond?}""",
 
 	AIRE_AMELIA4 = """
-{color=yellow|Aire: — It's not... like... that}
+{color=yellow|Aire: — It's not... like... that...}
 
 Amelia squeezed her breasts against Aire, leaning against her in such a way that Aire would fall unless she widened her stance and arched her back. Amelia's soft finely furred tail felt like it was made of pins and needles as it slid along Aire's leg slowly upward.
 
-{color=aqua|Amelia: — Ah, another innocent elf maiden! I almost miss training the newcomers personally. }
+{color=aqua|Amelia: — Ah, another innocent elf maiden! I almost miss training the newcomers personally.}
 
-Amelia's tail had made its way to Aire's panty clad sex and twitched from side to side, stimulating her now swollen clit through the material. She just couldn't think.
+Amelia's tail had made it's way to Aire's panty clad sex and twitched from side to side, stimulating her now swollen clit through the material. She just couldn't think.
 
 {color=aqua|Amelia: — Look at you, all wet and shaking. It's pains me to torture a cute girl like that. And you must be really eager for me to end this.}""",
 
@@ -4441,11 +4453,11 @@ Amelia slid a hand down from Aire's chest to pull her panties to the side, and g
 
 She pooled all of her will into one last attempt to twist away, but Amelia held her in place thrusting two fingers inside her and using her pussy as a handhold. Aire melted and began to tremble violently, but Amelia slipped her fingers back out and resumed teasing Aire's slit, keeping her on the edge.
 
-{color=yellow|Aire: — Ah, p-please... }""",
+{color=yellow|Aire: — Ah, p-please...}""",
 
 	AIRE_AMELIA6 = """
 
-{color=aqua|Amelia: — One word and you'll get what you want. }
+{color=aqua|Amelia: — One word and you'll get what you want.}
 
 {color=yellow|Aire: — ...F-fine.}
 
@@ -4459,21 +4471,21 @@ The sudden stimulation was overwhelming in the poor elf's hypersensitive state. 
 
 Amelia lowered the spasming girl to the floor gently and retrieved her satchel after cleaning off.
 
-{color=aqua|Amelia: — See, was that so hard? Hope we'll meet again in better circumstances. }
+{color=aqua|Amelia: — See, was that so hard? Hope we'll meet again in better circumstances.}
 
 She purred to herself and put a little sway into her hips on her way out as she gave orders to the jailers and went to deliver the good news.""",
 
 
 
 	# HELP SIGMUND
-	HELP_SIGMUND_OPTION_0 = """I've been asked to help you""",
+	HELP_SIGMUND_OPTION_0 = """I've been asked to help you.""",
 
 	HELP_SIGMUND_START = """— Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.""",
 	HELP_SIGMUND_OPTION_1 = """One shouldn't be a problem, should it?""",
 	HELP_SIGMUND_OPTION_2 = """Something special about this one?""",
 	HELP_SIGMUND_1 = """— It's not, but it's actually da major one for the special ore used for enchantable alloys. Dis is not widely known information, but it seems da rebels knew where to strike.""",
 	HELP_SIGMUND_OPTION_3 = """Will be glad to help""",
-	HELP_SIGMUND_OPTION_4 = """Anything goes as long as I get to beat more rebels""",
+	HELP_SIGMUND_OPTION_4 = """Anything goes as long as I get to beat more rebels.""",
 	HELP_SIGMUND_OPTION_5 = """Hope I'll be rewarded for it.""",
 	HELP_SIGMUND_2 = """— Yah, it wouldn't be da problem, but it's actually da major one for the special ore used for enchantable alloys. Dis is not widely known information, but it seems da rebels knew where to strike.""",
 	HELP_SIGMUND_3 = """— Great, I'll mark it on ya map.""",
@@ -4485,12 +4497,12 @@ She purred to herself and put a little sway into her hips on her way out as she 
 — Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with a few people who refused to leave taken as prisoners.""",
 	MINES_ARRIVAL_OPTION_1 = """What can you tell me about the mines?""",
 	MINES_ARRIVAL_OPTION_2 = """What did the rebels come for?""",
-	MINES_ARRIVAL_OPTION_3 = """I'll deal with it, you can stay back""",
-	MINES_ARRIVAL_1 = """— I've only been working here for a few months. Seems to be quite old and deep but I was mostly working at the upper floors.""",
-	MINES_ARRIVAL_2 = """— I dunno, it's not like they had to explain themselves. I've seen some weird folks leaving the mine after loading crates onto cartsthough""",
+	MINES_ARRIVAL_OPTION_3 = """I'll deal with it, you can stay back.""",
+	MINES_ARRIVAL_1 = """— I've only been working here for a few months. Seems to be quite old and deep, but I was mostly working at the upper floors.""",
+	MINES_ARRIVAL_2 = """— I dunno, it's not like they had to explain themselves. I've seen some weird folks leaving the mine after loading crates onto cartsthough.""",
 	MINES_ARRIVAL_OPTION_4 = """What was so weird about it?""",
 	MINES_ARRIVAL_OPTION_5 = """Who was leading them?""",
-	MINES_ARRIVAL_OPTION_6 = """That's enough about them""",
+	MINES_ARRIVAL_OPTION_6 = """That's enough about them.""",
 	MINES_ARRIVAL_3 = """— It was during the night and they looked like they were trying to stay hidden, didn't light any torches or lamps.""",
 	MINES_ARRIVAL_4 = """— It was some guy in a robe with a large hood. He was only ordering others around and it felt like he didn't want to show his face otherwise. I think even the rebels were somewhat afraid of him.""",
 	MINES_ARRIVAL_5 = """— Yeah, the faster you deal with them, the better.""",
@@ -4501,9 +4513,9 @@ The man disappears in the opposite direction and you proceed to the mine's entra
 	# HALF DUNGEON EXPLORED
 	HALF_DUNGEON_EXPLORED_START = """As you walk through the shaft you suddenly realize that someone is coming from behind. As you lay in ambush to meet the new enemy a lone orc casually walks by seeming very out of place.
 
-— Oh, Hello. I'm not an enemy, my name is Kurdan. Pleasure to meet you stranger. I seem a bit lost, would you mind giving me directions?""",
-	HALF_DUNGEON_EXPLORED_OPTION_1 = """You look suspicious""",
-	HALF_DUNGEON_EXPLORED_OPTION_2 = """What are you doing here""",
+— Oh, hello. I'm not an enemy, my name is Kurdan. Pleasure to meet you, stranger. I seem a bit lost, would you mind giving me directions?""",
+	HALF_DUNGEON_EXPLORED_OPTION_1 = """You look suspicious.""",
+	HALF_DUNGEON_EXPLORED_OPTION_2 = """What are you doing here?""",
 	HALF_DUNGEON_EXPLORED_1 = """— I've been invited to a gathering for Erebus followers and those who are interested. Look...
 
 He shows you a dull, uncommon metal bracelet hanging from his wrist.
@@ -4512,30 +4524,30 @@ He shows you a dull, uncommon metal bracelet hanging from his wrist.
 
 	HALF_DUNGEON_EXPLORED_OPTION_3 = """What's been going on in your lands?""",
 	HALF_DUNGEON_EXPLORED_OPTION_4 = """Is practicing magic really worth leaving your country?""",
-	HALF_DUNGEON_EXPLORED_OPTION_5 = """I know nothing about this""",
+	HALF_DUNGEON_EXPLORED_OPTION_5 = """I know nothing about this.""",
 	HALF_DUNGEON_EXPLORED_2 = """— Huh, I guess the word hasn't spread yet. The practice of magic is no longer welcome by the orcish authorities. It's because of the ongoing war against the Thoth. Anyone practicing sorcery is viewed as a threat. Most unfortunate circumstances.""",
-	HALF_DUNGEON_EXPLORED_3 = """— It's not about magic... Not entirely at least. You see, learning magic gave me great insight as to the nature of the world. Some aim to use it for everyday purposes or adventures, but by tapping into magical energies you also get closer to understanding the underlying principles of existence itself. """,
+	HALF_DUNGEON_EXPLORED_3 = """— It's not about magic... Not entirely at least. You see, learning magic gave me great insight as to the nature of the world. Some aim to use it for everyday purposes or adventures, but by tapping into magical energies you also get closer to understanding the underlying principles of existence itself.""",
 	HALF_DUNGEON_EXPLORED_4 = """— I see... Well, I should continue my small pilgrimage in this case. Since I've left my homeland I'm in a tight spot here unless I can find shelter.""",
-	HALF_DUNGEON_EXPLORED_OPTION_6 = """I'm performing an investigation on behalf of the guilds and I'd prefer you leave this place""",
-	HALF_DUNGEON_EXPLORED_OPTION_7 = """I could use a magic user. You could join me and stay at my mansion""",
-	HALF_DUNGEON_EXPLORED_OPTION_8 = """Since I'm going to clear all rebels out of here you could join me until then""",
+	HALF_DUNGEON_EXPLORED_OPTION_6 = """I'm performing an investigation on behalf of the guilds and I'd prefer you leave this place.""",
+	HALF_DUNGEON_EXPLORED_OPTION_7 = """I could use a magic user. You could join me and stay at my mansion.""",
+	HALF_DUNGEON_EXPLORED_OPTION_8 = """Since I'm going to clear all rebels out of here you could join me until then.""",
 	HALF_DUNGEON_EXPLORED_5 = """— Oh... Hmm, I see, this is unfortunate. Perhaps I'll visit at a different time then. Adieu.""",
 	HALF_DUNGEON_EXPLORED_6 = """— Well, this is a generous offer in my book. Are you sure about this? I might not be able to refuse.""",
-	HALF_DUNGEON_EXPLORED_OPTION_9 = """I'm sure""",
+	HALF_DUNGEON_EXPLORED_OPTION_9 = """I'm sure.""",
 	HALF_DUNGEON_EXPLORED_OPTION_10 = """On second thought...""",
 	HALF_DUNGEON_EXPLORED_7 = """— I'm sorry, I think I'm obliged to attend the meeting I came to attend. But thank you for the invitation, I'll consider it in future.""",
 	HALF_DUNGEON_EXPLORED_8 = """— Alright then, I'll accept rather than putting myself in danger around here.
 
-You explain to Kurdan how to get to Aliron and find your place after which he leaves""",
+You explain to Kurdan how to get to Aliron and find your place after which he leaves.""",
 	HALF_DUNGEON_EXPLORED_9 = """— Yes, this will work for me. Alright then, allow me to accompany you on this journey.""",
 
 	# PRE_FINAL BOSS
 	PRE_FINAL_BOSS_START = """As you reach the final room you are met by a group of rebels lead by a woman of demonic origin.
 
-— Well, if it ain't a knight in shining armor. I guess the guilds finally got here. Too bad we are already done and I won't be staying with you for long.""",
+— Well, if it ain't a knight in shining armor. I guess, the guilds finally got here. Too bad we are already done and I won't be staying with you for long.""",
 	PRE_FINAL_BOSS_OPTION_1 = """And who exactly are you?""",
-	PRE_FINAL_BOSS_OPTION_2 = """I thought the rebel leader was male""",
-	PRE_FINAL_BOSS_OPTION_3 = """You better surrender now if you wanna live""",
+	PRE_FINAL_BOSS_OPTION_2 = """I thought the rebel leader was male.""",
+	PRE_FINAL_BOSS_OPTION_3 = """You better surrender now if you wanna live.""",
 	PRE_FINAL_BOSS_1 = """— That's not really important, I'm only here for an errand, but it seems I'll get dragged into it at this point.""",
 	PRE_FINAL_BOSS_2_1 = """— Male, female, who really cares, all these names are so meaningless after all.""",
 	PRE_FINAL_BOSS_2_2 = """— Male, female, who really cares, all these names are so meaningless after all.
@@ -4544,10 +4556,10 @@ The demon turns to Kurdan who was quietly observing what's been going on so far.
 
 — Don't you agree with me, orc?""",
 	PRE_FINAL_BOSS_3 = """— Please, I'm shaking all over here.
-
+	
 — I presume you've come here to restore the mine's to production, and you've been unfortunate enough to find me here. However, I have an offer for you. I do not wish to fight yet so if you let me take the miners we kept as prisoners I'll leave in peace so you can do with the rest of these rebels however you want.
 
-{color=aqua|Rebel: — Hey, you traitorous bit-..}
+{color=aqua|Rebel: — Hey, you traitorous bit-}
 
 — Silence, putzes.
 
@@ -4555,8 +4567,8 @@ Demon's voice shook the air and her underling froze in place.""",
 	PRE_FINAL_BOSS_4 = """— I believe this is a good deal for you. After all, these people are mere peasants, what's the point in risking your life for them? I'm sure your employers will be able to replace them.
 
 The prisoners overhearing your conversation closely observed your reaction in fear.""",
-	PRE_FINAL_BOSS_OPTION_4 = """This is a reasonable offer""",
-	PRE_FINAL_BOSS_OPTION_5 = """No deal, you demon""",
+	PRE_FINAL_BOSS_OPTION_4 = """This is a reasonable offer.""",
+	PRE_FINAL_BOSS_OPTION_5 = """No deal, you demon.""",
 	PRE_FINAL_BOSS_5 = """— Hah, now that's my kind of hero. A smart choice. We'll be leaving shortly then.
 
 You observe as the demon leaves taking the frightened miners with her.""",
@@ -4571,16 +4583,19 @@ Kurdan leaves following the demon's path.""",
 {color=yellow|Kurdan: — It seems I've been misguided. I'll have to side with [name] here.}
 
 {color=aqua|Demon: — Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?}""",
-	PRE_FINAL_BOSS_PALADIN_OPTION = """I'd never accept such a foul offering, I'll protect the innocent (Paladin)""",
-	PRE_FINAL_BOSS_KNIGHT_OPTION = """I'd never accept such a foul offering, I'll protect the innocent (Knight)""",
-	PRE_FINAL_BOSS_PALADIN_KNIGHT = """{color=aqua|Demon: — ... I can't believe you are this old fashioned. Very well, I'll make you regret your charade. Hey, you-}
+	PRE_FINAL_BOSS_PALADIN_OPTION = """[Paladin] I'd never accept such a foul offering, I'll protect the innocent.""",
+	PRE_FINAL_BOSS_KNIGHT_OPTION = """[Knight] I'd never accept such a foul offering, I'll protect the innocent.""",
+	PRE_FINAL_BOSS_PALADIN_KNIGHT = """{color=aqua|Demon: — ...I can't believe you are this old fashioned. Very well, I'll make you regret your charade. Hey, you-}
 
-{color=yellow|Kurdan: — I'm not going to help your cause, Demon. This [man]'s dedication has moved me and I want to see [him] in action.}
+{color=yellow|Kurdan: — I'm not going to help your cause, demon. This [man]'s dedication has moved me and I want to see [him] in action.}
 
 {color=aqua|Demon: — Hmph, whatever, I don't need your powers to do it.}
 """,
 
-	PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN = "",
+	PRE_FINAL_BOSS_PALADIN_KNIGHT_WIN_KURDAN = """As the demon leaves, Kurdan walks to you with a bright expression.
+	
+
+— You've shown and exceptional display of honor, friend. My fault was to come here seeking for this evil adversary and I'd like to join your cause instead. """,
 
 	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
 
@@ -4593,16 +4608,16 @@ Before you can stop her, she chants a quick spell and disappears in a magic vort
 	PRE_FINAL_BOSS_13 = """As the demon leaves, Kurdan falls to the ground regaining his senses.
 
 — Uugh... Dammit. I'm terribly sorry for this. I couldn't control myself. Looks like I was fooled into coming here. How can I atone for my transgressions?""",
-	PRE_FINAL_BOSS_OPTION_6 = """You can join me""",
-	PRE_FINAL_BOSS_OPTION_7 = """I'll bring you to the authorities""",
-	PRE_FINAL_BOSS_OPTION_8 = """You should leave""",
+	PRE_FINAL_BOSS_OPTION_6 = """You can join me.""",
+	PRE_FINAL_BOSS_OPTION_7 = """I'll bring you to the authorities.""",
+	PRE_FINAL_BOSS_OPTION_8 = """You should leave.""",
 	PRE_FINAL_BOSS_14 = """— Hmmh, so be it. If I can repay you this way, I'll do it.""",
 	PRE_FINAL_BOSS_15 = """— I-I understand. So be it, I will entrust myself to your authorities.""",
 	PRE_FINAL_BOSS_16 = """Kurdan nods in agreement and slowly leaves the hall.""",
 	PRE_FINAL_BOSS_17 = """You release the imprisoned miners and receive their gratitude.
 
 — Thank you, [Sir]! We don't know how to repay you for this.""",
-	PRE_FINAL_BOSS_OPTION_9 = """No payment is needed, just get back to work""",
+	PRE_FINAL_BOSS_OPTION_9 = """No payment is needed, just get back to work.""",
 	PRE_FINAL_BOSS_OPTION_10 = """Well, I could use some payment since you offered.""",
 	PRE_FINAL_BOSS_18 = """— You truly are generous. We will report to the guild once we are ready to get back to mining.
 
@@ -4612,73 +4627,73 @@ Saying goodbye you leave the mines and head back to Aliron.""",
 You take the foreman's reward and head back to Aliron.""",
 
 	#After mines
-	AFTER_MINES_WORKERS_OPTION_1 = """I've solved the issue with the mines""",
+	AFTER_MINES_WORKERS_OPTION_1 = """I've solved the issue with the mines.""",
 	AFTER_MINES_SIGMUND_START = """— That's great news. I've already made da preparations so we will resume da work as soon as possible. Ya've earned yar reward.
 
 Sigmund passes you the pouch with some gold in it.
 
 {color=green|Received 300 gold}""",
-	AFTER_MINES_SIGMUND_OPTION_1 = """Thanks, if there's nothing else I'll be going""",
-	AFTER_MINES_SIGMUND_OPTION_2 = """There was somebody unusual among the rebels""",
+	AFTER_MINES_SIGMUND_OPTION_1 = """Thanks, if there's nothing else I'll be going.""",
+	AFTER_MINES_SIGMUND_OPTION_2 = """There was somebody unusual among the rebels.""",
 	AFTER_MINES_SIGMUND_1 = """— Go on, I think Duncan will be interested to hear dat ya done.""",
 	AFTER_MINES_SIGMUND_2 = """— Ya? Well, it ain't our problem, better report about it to Duncan.""",
-	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties""",
+	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties.""",
 	AFTER_MINES_SIGMUND_3 = """— Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't do a proper investigation right now, and I can't give you any extra reward. Ya should go see Duncan.""",
 
-	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with the Workers' issues""",
+	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with the Workers' issues.""",
 	AFTER_MINES_DUNCAN_1 = """— That's so. I've been getting some reports on the subject. Can you add anything?""",
-	AFTER_MINES_DUNCAN_OPTION_1 = """There was an Orc traveller at the mines""",
-	AFTER_MINES_DUNCAN_OPTION_2 = """I've ran into a female demon out there""",
-	AFTER_MINES_DUNCAN_OPTION_3 = """Nothing else really worth mentioning""",
-	AFTER_MINES_DUNCAN_2 = """— An orc? Huh, that's unusual for them to walk into our lands. But a lone orc is not something worthy of attention, if they were going to make a move we would know about it already, but they haven't been heard from for decades.""",
+	AFTER_MINES_DUNCAN_OPTION_1 = """There was an orc traveller at the mines.""",
+	AFTER_MINES_DUNCAN_OPTION_2 = """I've ran into a female demon out there.""",
+	AFTER_MINES_DUNCAN_OPTION_3 = """Nothing else really worth mentioning.""",
+	AFTER_MINES_DUNCAN_2 = """— An orc? Huh, that's unusual for them to walk into our lands. But a lone orc is not something worthy of attention. If they were going to make a move we would know about it already, but they haven't been heard from for decades.""",
 	AFTER_MINES_DUNCAN_3 = """— So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't hinder us. It's a shame to lose the relic to them, but demons are too few and scarce to present any real threat.""",
 	AFTER_MINES_DUNCAN_4 = """— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_3_4 = """— So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't hinder us. It's a shame to lose the relic to them, but demons are too few and scarce to present any real threat.
-
-— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
-	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice""",
-	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't have been saved in that moment""",
-	AFTER_MINES_DUNCAN_OPTION_6 = """What's it to you? We still got the mine back up and running""",
+	
+	— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
+	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice.""",
+	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't have been saved in that moment.""",
+	AFTER_MINES_DUNCAN_OPTION_6 = """What's it to you? We still got the mine back up and running.""",
 	AFTER_MINES_DUNCAN_5 = """— You were outnumbered, but she just left? I find it hard to believe. We'll drop this for now, but know that you won't be pardoned if some deeper connection between you and that rebel helping demon comes to light.""",
 	AFTER_MINES_DUNCAN_6 = """— Hmmh. Fine, I'll believe you. But know, you won't be pardoned if some deeper connection between you and that rebel helping demon comes to light.""",
 	AFTER_MINES_DUNCAN_7 = """— I'll tell you what it means to me. There will be no tolerance for cooperation with our foes. I'll leave it to your imagination what will happen if we find out there's some deeper connection between you and that rebel helping demon.""",
 	AFTER_MINES_DUNCAN_8 = """— So that was about it, the mine is back in production and your mission is finished. However, the timing of this is too inconvenient to think of it as of coincidence. I shall ask you, do you think the Workers might have planned this?""",
-	AFTER_MINES_DUNCAN_OPTION_7 = """There might be some connection""",
-	AFTER_MINES_DUNCAN_OPTION_8 = """I don't think so""",
-	AFTER_MINES_DUNCAN_OPTION_9 = """I'd rather not draw any conclusions""",
+	AFTER_MINES_DUNCAN_OPTION_7 = """There might be some connection.""",
+	AFTER_MINES_DUNCAN_OPTION_8 = """I don't think so.""",
+	AFTER_MINES_DUNCAN_OPTION_9 = """I'd rather not draw any conclusions.""",
 	AFTER_MINES_DUNCAN_9 = """— I see. We plan for a large scale operation, so be on a standby in the next few days. I'll send you a messenger once I need you. You can go now.""",
-	AFTER_MINES_DUNCAN_OPTION_10 = """I'll be waiting for it then""",
-	AFTER_MINES_DUNCAN_OPTION_11 = """What a pain... I hope it's over soon""",
-	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
+	AFTER_MINES_DUNCAN_OPTION_10 = """I'll be waiting for it then.""",
+	AFTER_MINES_DUNCAN_OPTION_11 = """What a pain... I hope it's over soon.""",
+	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time.""",
 	AFTER_MINES_MESSAGE = """In the morning you receive a messenger from Duncan who declares you're expected to visit him.""",
-	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
-	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege Millford which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for a full fledged siege.
-
-— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that, your forces will join the siege""",
-	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
-	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I have to play delivery [boy] now of all times""",
-	AFTER_MINES_DUNCAN_11 = """— Don't take for granted this will be easy, there might still be rebel or bandit ambushes along the way .
-
-— Now, we shall meet on the battlefield and put an end to this war.""",
+	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message.""",
+	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege Millford which has been captured by rebels at the first days of rebellion. Now we finally have enough forces for a full fledged siege.
+	
+	— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that your forces will join the siege.""",
+	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard.""",
+	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I have to play delivery [boy] now of all times.""",
+	AFTER_MINES_DUNCAN_11 = """— Don't take for granted this will be easy, there might still be rebel or bandit ambushes along the way.
+	
+	— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_DUNCAN_12 = """— We all have to make our contributions for the cause. The guilds will not forget your participation once this is over and the mayor election will resume.
-
-— Now, we shall meet on the battlefield and put an end to this war.""",
+	
+	— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_CONVOY_1 = """You find the supplies you are supposed to deliver at the depot already prepared and packed on a few mules, so all you've left to do is to set out with your team.""",
-	AFTER_MINES_CONVOY_OPTION_1 = """Move""",
+	AFTER_MINES_CONVOY_OPTION_1 = """*Move*""",
 	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
-	AFTER_MINES_CONVOY_3 = """A few hours after you've left town you enter the forest. Eventually you find the thin road among the trees blocked by a fallen log. You order the men to clear it but when they reach it a large group of rebels jump out of the woods in an attempt to stop your mission before it can begin.""",
+	AFTER_MINES_CONVOY_3 = """A few hours after you've left the city you enter a forest. Eventually you find the thin road among the trees blocked by a fallen log. You order the men to clear it, but when they reach it a large group of rebels jump out of the woods in an attempt to stop your mission before it can begin.""",
 	AFTER_MINES_CONVOY_4 = """As you strike down the leader, the remnants of the rebel group quickly retreat into the woods. You've taught them a good lesson and they shouldn't give you any more problems as you continue on your mission.""",
-	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As Millford gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are reasonably armed. Once in range one of men kneels before you.
+	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As Millford gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush, but as they get closer you notice it's only a couple of families. None of them are reasonably armed. Once in range one of men kneels before you.
 
 — Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all of our stocks. After that we were attacked by goblins and had to migrate. Our children are starving!""",
-	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
-	AFTER_MINES_CONVOY_OPTION_3 = """We can spare you a half of what we have""",
-	AFTER_MINES_CONVOY_OPTION_4 = """It's none of my business""",
+	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need.""",
+	AFTER_MINES_CONVOY_OPTION_3 = """We can spare you a half of what we have.""",
+	AFTER_MINES_CONVOY_OPTION_4 = """It's none of my business.""",
 	AFTER_MINES_CONVOY_HUNTER_OPTION = """""",
 	AFTER_MINES_CONVOY_HUNTER = """""",
 	AFTER_MINES_CONVOY_6 = """— We can't thank you enough for this, [Sir].
 
-After some time you are left alone with only a tenth of the original provisions. Duncan will surely not like this but there's nothing that can be done now. Perhaps at least your deed will earn you some recognition among the commonfolk...""",
+After some time you are left alone with only a tenth of the original provisions. Duncan will surely not like this, but there's nothing that can be done now. Perhaps at least your deed will earn you some recognition among the commonfolk...""",
 	AFTER_MINES_CONVOY_7 = """You order your men to unload half of the provision and allow refugees to take it.
 
 — Thank you, [Sir]! We will be praying for your safety.
@@ -4688,8 +4703,8 @@ You part ways pondering how you are going to explain this to Duncan...""",
 	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
 	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by the guilds' united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.""",
 	AFTER_MINES_CONVOY_10 = """— You've finally arrived, [name]. I've received a report that you're missing a considerable amount of the provisions you've been requested to bring. Explain yourself.""",
-	AFTER_MINES_CONVOY_OPTION_5 = """I met a group of refugees who needed them""",
-	AFTER_MINES_CONVOY_OPTION_6 = """Bandits attacked us and stole it in the confusion (lie)""",
+	AFTER_MINES_CONVOY_OPTION_5 = """I met a group of refugees who needed them.""",
+	AFTER_MINES_CONVOY_OPTION_6 = """*Lie* Bandits attacked us and stole it in the confusion.""",
 	AFTER_MINES_CONVOY_11 = """— You had clear instructions, yet deliberately disobeyed. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.""",
 	AFTER_MINES_CONVOY_12 = """— A failure is a failure. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.""",
 	AFTER_MINES_CONVOY_13 = """— Greetings, [name]. I see you've completed your mission successfully. I'm pleased to have a capable subordinate for once.""",
@@ -4699,10 +4714,10 @@ You part ways pondering how you are going to explain this to Duncan...""",
 
 {color=aqua|Greg: — You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards of my own.}
 
-{color=yellow|Aire: -... Yes Sir.}""",
+{color=yellow|Aire: -...Yes, sir.}""",
 	AFTER_MINES_CONVOY_15 = """A few hundred feet away from town's walls Duncan parlayed with Anastasia as is customary prior to battle.
 
-{color=aqua|Anastasia: — It pains me to see how the people suffer because of our actions, but we won't lay down our arms. }
+{color=aqua|Anastasia: — It pains me to see how the people suffer because of our actions, but we won't lay down our arms.}
 
 {color=yellow|Duncan: — I shall thank you after our victory. It's been too long since my last battle.}""",
 	AFTER_MINES_CONVOY_16 = """Anastasia threw an angry glance at Duncan.
@@ -4712,7 +4727,7 @@ You part ways pondering how you are going to explain this to Duncan...""",
 {color=yellow|Duncan: — I have nothing else to say to a juvenile here and now. Let's get this over with.}""",
 	AFTER_MINES_CONVOY_17 = """Despite her irritation Anastasia managed to collect herself and demonstrate her royal upbringing with a calm answer.
 
-{color=aqua|Anastasia: — Very well. The gods shall find the just. }
+{color=aqua|Anastasia: — Very well. The gods shall find the just.}
 
 {color=yellow|Duncan: — The gods shall find the just.}""",
 
@@ -4722,7 +4737,7 @@ You part ways pondering how you are going to explain this to Duncan...""",
 	BETRAYAL_CONFIRMED_1 = """After slicing down another enemy knight Duncan surveyed the battlefield. His group had pushed deep as the enemy gave ground, nearly reaching the leading enemy unit and now he could see their commander clearly. He already knew from the reports that Greg was with the rebels, but now he had confirmed it with his own eyes.""",
 	BETRAYAL_CONFIRMED_2 = """{color=aqua|Greg: — Long time no see.}
 
-{color=yellow|Duncan: — I wish it would have stayed that way. }
+{color=yellow|Duncan: — I wish it would have stayed that way.}
 
 {color=aqua|Greg: — You look tired, did safe living make you soft?}
 
@@ -4731,32 +4746,32 @@ You part ways pondering how you are going to explain this to Duncan...""",
 
 {color=yellow|Duncan: — What are you talking about?}
 
-{color=aqua|Greg: — What do you expect your army to do it if you are taken down? }
+{color=aqua|Greg: — What do you expect your army to do it if you are taken down?}
 
 {color=yellow|Duncan: ...}
 
 Now Duncan realized that there was another group of rebel reinforcements approaching their flank. Their group would be outnumbered by at least two to one. Regardless, he readied his sword.""",
 	BETRAYAL_CONFIRMED_4 = """As you deal with the rebels you are ordered to advance. From your perspective it seems the Guilds' army is slowly coming out on top.""",
-	BETRAYAL_CONFIRMED_5 = """Myr observed the battlefield from the nearby hill a few hundred feet away. Most of the lower mages were drafted to support the fighting forces but she had a different mission. Being the strongest caster in all Aliron or perhaps the whole country, she was reserved for more than simple healing and spellslinging.
+	BETRAYAL_CONFIRMED_5 = """Myr observed the battlefield from the nearby hill a few hundred feet away. Most of the lower mages were drafted to support the fighting forces, but she had a different mission. Being the strongest caster in all Aliron or perhaps the whole country, she was reserved for more than simple healing and spellslinging.
 
-She patiently observed the battlefield, as the guilds troops advanced toward the town. """,
-	BETRAYAL_CONFIRMED_6 = """{color=yellow|Duncan: — Strategy was always your strong side. }
+She patiently observed the battlefield, as the guilds troops advanced toward the town.""",
+	BETRAYAL_CONFIRMED_6 = """{color=yellow|Duncan: — Strategy was always your strong side.}
 
 {color=aqua|Greg: — Hmph.}
 
 As more groups were approaching Duncan he and his unit dwindled as it grew fatigued.""",
-	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg: — It was your mistake to rush in, even more so to lead the charge personally. }
+	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg: — It was your mistake to rush in, even more so to lead the charge personally.}
 
-{color=yellow|Duncan: — Who else would it do? }
+{color=yellow|Duncan: — Who else would it do?}
 
-{color=aqua|Greg: — Perhaps it's time for you to surrender. }
+{color=aqua|Greg: — Perhaps it's time for you to surrender.}
 
 {color=yellow|Duncan: — Not interested.}
 
 {color=aqua|Greg: — Hmph, you always were all brawn and no brains. So be it.}""",
 	BETRAYAL_CONFIRMED_8 = """{color=aqua|Myr: — These damn fools...}
 
-Without delay Myr started chanting a powerful spell. In a few moments a large earthquake hit the rebel reinforcements approaching Duncan's unit. A few other mages under her command joined in, casting long range magic on the separated rebel groups. """,
+Without delay Myr started chanting a powerful spell. In a few moments a large earthquake hit the rebel reinforcements approaching Duncan's unit. A few other mages under her command joined in, casting long range magic on the separated rebel groups.""",
 
 	BETRAYAL_CONFIRMED_9 = """The spell produced a powerful shockwave near Duncan and when he turned to the side he found the approaching enemy formation crumbled under the magical barrage.
 
@@ -4766,7 +4781,7 @@ Duncan muttered to himself. However, Greg was far more surprised by this. He rea
 
 {color=yellow|Greg: — Cursed sorcerers. Retreat to the town's walls!}
 
-Following the command, the rebel forces withdrew, however the Guilds' army quickly took the initiative and moved in.""",
+Following the command, the rebel forces withdrew, but the Guilds' army quickly took the initiative and moved in.""",
 	BETRAYAL_CONFIRMED_10 = """However, before the bulk of the guild forces were able to enter the town, a gigantic white dome had enveloped the rebels' refuge. Magic on a scale they'd never seen completely blocked any advance or attack from the guilds' army.
 
 Dumbfounded, the guilds' forces were forced to halt and regroup.""",
@@ -4781,22 +4796,22 @@ Dumbfounded, the guilds' forces were forced to halt and regroup.""",
 {color=yellow|Myr: — It's a special kind of magic, the source of which is higher beings. But it's so rare I've only observed it a couple of times. We can't really do anything about it with our relatively marginal power.}""",
 	BETRAYAL_CONFIRMED_12 = """{color=aqua|Duncan: — Dammit, to think rebels would have something like this...}
 
-{color=yellow|Myr: — I would imagine the princess could pull of something unusual, but not on this scale. }
+{color=yellow|Myr: — I would imagine the princess could pull of something unusual, but not on this scale.}
 
 {color=aqua|Duncan: — How long will this thing persist?}
 
 {color=yellow|Myr: — I'd not expect it to go down on its own. The divine doesn't always follow the same rules as normal magic.}
 
 {color=aqua|Duncan: — Damnit...}""",
-	BETRAYAL_CONFIRMED_13 = """{color=aqua|Duncan: — Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate Millford. }
+	BETRAYAL_CONFIRMED_13 = """{color=aqua|Duncan: — Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate Millford.}
 
 {color=yellow|Myr: — We will be keeping our forces ready in case they decide the rebels launch a counterattack.}""",
-	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either""",
+	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either.""",
 	BETRAYAL_CONFIRMED_OPTION_2 = """Do you have any suggestions as to where I should start?""",
 	BETRAYAL_CONFIRMED_14 = """Myr: — Hmm, my only idea would be to try asking a religious institution. Those usually are more familiar with Divine Influences and how to deal with them.""",
-	BETRAYAL_CONFIRMED_OPTION_3 = """I'll try my best""",
-	BETRAYAL_CONFIRMED_OPTION_4 = """You really make me work""",
-	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, I'll ask for a votive candle on your behalf""",
+	BETRAYAL_CONFIRMED_OPTION_3 = """I'll try my best.""",
+	BETRAYAL_CONFIRMED_OPTION_4 = """You really make me work.""",
+	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, I'll ask for a votive candle on your behalf.""",
 
 	DIVINE_SYMBOL_OPTION_1 = """Can you tell me anything about Divine Influence?""",
 	DIVINE_SYMBOL_1 = """— We've had some teaching and records about it. What exactly would you like to know?""",
@@ -4804,48 +4819,48 @@ Dumbfounded, the guilds' forces were forced to halt and regroup.""",
 	DIVINE_SYMBOL_2 = """— Well, it seems to be a Champion's doing.""",
 	DIVINE_SYMBOL_OPTION_3 = """What's a Champion?""",
 	DIVINE_SYMBOL_OPTION_4 = """Can something be done about it?""",
-	DIVINE_SYMBOL_3 = """— Champions are individuals chosen by Gods who are able to invoke their diety's power. In turn they are believed to follow their god's instructions. Actually they are so rare we only know a handful from thousands of years of history. Ah, I would love to meet Celena's Champion one day. """,
+	DIVINE_SYMBOL_3 = """— Champions are individuals chosen by Gods who are able to invoke their diety's power. In turn they are believed to follow their god's instructions. Actually, they are so rare we only know a handful from thousands of years of history. Ah, I would love to meet Celena's Champion one day.""",
 	DIVINE_SYMBOL_4 = """— Hmm, I think there's a way. If another god conjures a medium you should be able to neutralize the powers of this god. Then you'll be able to pass that barrier, although for removing it completely you'll have to defeat the champion.""",
 	DIVINE_SYMBOL_OPTION_5 = """What do I need to do?""",
 	DIVINE_SYMBOL_OPTION_6 = """You can conjure such a thing?""",
-	DIVINE_SYMBOL_5 = """— If you bring me the divine symbol I can bless it with Celena's power. I'll give you the recipe. Please come back once you've made it.""",
-	DIVINE_SYMBOL_OPTION_7 = """I've brought the symbol you asked for""",
+	DIVINE_SYMBOL_5 = """— If you bring me the divine symbol, I can bless it with Celena's power. I'll give you the recipe. Please come back once you've made it.""",
+	DIVINE_SYMBOL_OPTION_7 = """I've brought the symbol you asked for.""",
 	DIVINE_SYMBOL_6 = """— Ah, you have it? A beautiful work! Please, give me some time.
 
 Ginny leaves you for a few minutes, eventually returning to you with the symbol you've passed her, now giving off a barely noticeable light.
 
 — Here, this should let you create a momentary breech in the barrier. Please, be careful out there [Sir] [name].""",
 	DIVINE_SYMBOL_7 = """{color=aqua|Duncan: — You are back. What is the news?}""",
-	DIVINE_SYMBOL_OPTION_8 = """I've found a way to enter the barrier""",
-	DIVINE_SYMBOL_OPTION_9 = """I'm ready to go""",
-	DIVINE_SYMBOL_8 = """{color=aqua|Duncan: — So, with this you will be able to enter the barrier and get rid of that "Champion". Fine, I approve of it. Once you enter it we will get ready for the assault.}
+	DIVINE_SYMBOL_OPTION_8 = """I've found a way to enter the barrier.""",
+	DIVINE_SYMBOL_OPTION_9 = """I'm ready to go.""",
+	DIVINE_SYMBOL_8 = """{color=aqua|Duncan: — So, with this you will be able to enter the barrier and get rid of that 'Champion'. Fine, I approve of it. Once you enter we will get ready for the assault.}
 
-{color=yellow|Myr: — Judging from the looks of it, I'd expect the culprit to be at the center of Dome, likely protected too. }
+{color=yellow|Myr: — Judging from the looks of it, I'd expect the culprit to be at the center of the dome, likely protected too.}
 
 {color=aqua|Duncan: — Whoever it is, gather your best followers and prepare for a hard fight. I would prefer to accompany you, but the army can't be left without a commander.}""",
-	DIVINE_SYMBOL_9 = """{color=aqua|Duncan: — Good, let's not waste time. This battle's outcome is in your hands. }
+	DIVINE_SYMBOL_9 = """{color=aqua|Duncan: — Good, let's not waste time. This battle's outcome is in your hands.}
 
 {color=yellow|Myr: — There's a spot from which you can enter unnoticed from the hill side, I'll show you.}""",
 	DIVINE_SYMBOL_10 = """You finish your preparations and at nightfall you enter the barrier where Myr showed you. As you make your way to the streets you only spot the occasional rebel patrol and they seem fairly lax. By staying in the shadows you manage to eavesdrop on them.
 
-{color=aqua|First Sentry: — Why are we even doing this? It's not like those bastards can get in. }
+{color=aqua|First Sentry: — Why are we even doing this? It's not like those bastards can get in.}
 
 {color=yellow|Second Sentry: — Yah, I know. We've been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear.}
 
 As they pass you continue to move on.""",
 	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You're about to be cut off, and won't be able to retreat unnoticed.""",
-	DIVINE_SYMBOL_OPTION_10 = """Make a run for it (Physics)""",
+	DIVINE_SYMBOL_OPTION_10 = """[Physics] *Make a run for it*""",
 	DIVINE_SYMBOL_12 = """{color=green|Success}
 
 Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
-	DIVINE_SYMBOL_ASSASSIN = "Stealthly Dash (Assassin)",
-	DIVINE_SYMBOL12_1 = "{color=green|Success}\n\nYou nimbly dash through the street without raising any noise thanks to your skills. ",
+	DIVINE_SYMBOL_ASSASSIN = "[Assassin] *Stealthly Dash*",
+	DIVINE_SYMBOL12_1 = "{color=green|Success} \n\nYou nimbly dash through the street without raising any noise thanks to your skills.",
 	DIVINE_SYMBOL_13 = """{color=red|Failure}
 
 You've tried, but after taking a corner too wildly you crash into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
 	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Hoping not be discovered again, you leave the place.""",
 	DIVINE_SYMBOL_15 = """You arrive at a small square where your target should be. However, there are multiple buildings anyone of which could be it.""",
-	DIVINE_SYMBOL_OPTION_11 = """Search (Wits Factor)""",
+	DIVINE_SYMBOL_OPTION_11 = """[Wits Factor] *Search*""",
 	DIVINE_SYMBOL_16 = """{color=red|Failure}
 
 You've entered the wrong building. A few rebels recognize you as an intruder and arm themselves.""",
@@ -4856,7 +4871,7 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 
 {color=yellow|First Guard: — Why can't we stay inside?}
 
-{color=aqua|Second Guard: — She requested to be left alone. That's for the better if you ask me.}""",
+{color=aqua|Second Guard: — She requested to be left alone. That's for the better, if you ask me.}""",
 	DIVINE_SYMBOL_18_1 = """{color=yellow|First Guard: — Hmm? Why, you dislike her?}
 
 {color=aqua|Second Guard: — She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.}""",
@@ -4866,15 +4881,15 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 {color=aqua|Second Guard: — You shut yo-}
 
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
-	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor)""",
-	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
+	DIVINE_SYMBOL_OPTION_12 = """[Charm Factor] Greg called for me to pay him a visit.""",
+	DIVINE_SYMBOL_OPTION_13 = """*Attack them*""",
 	DIVINE_SYMBOL_20_1 = """{color=green|Success}
 
 {color=aqua|Second Guard: — Damnit, what does he want now? }
 
 {color=yellow|First Guard: — Probably figured you've been sleeping during the last watch.}
 
-{color=aqua|Second Guard: — You didn't tell him that, did you? Fuck, lets go. }
+{color=aqua|Second Guard: — You didn't tell him that, did you? Fuck, lets go.}
 
 They leave the building, leaving the door unguarded.""",
 	DIVINE_SYMBOL_20_2 = """{color=red|Failure}
@@ -4896,7 +4911,7 @@ Zephyra briefly bowed down to you after you spoke her name.""",
 She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement.
 
 — Do you like it?""",
-	DIVINE_SYMBOL_OPTION_14 = """Can't say I don't""",
+	DIVINE_SYMBOL_OPTION_14 = """Can't say I don't.""",
 	DIVINE_SYMBOL_OPTION_15 = """How did you do that?""",
 	DIVINE_SYMBOL_OPTION_16 = """Are you a stalker?""",
 	DIVINE_SYMBOL_25 = """— Finally someone is admiring my artwork. Hold onto your flattery though, that's my speciality.""",
@@ -4909,32 +4924,32 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 	DIVINE_SYMBOL_OPTION_19 = """*Refuse*""",
 	DIVINE_SYMBOL_29 = """You thank Zephyra for the drawing and put it away. She smiles at you, making you temporarily to forget the reason why you've come here.
 
-— But you must desire something else of me. Perhaps something to do with the barrier?""",
+— But you must desire something else of me. Perhaps, something to do with the barrier?""",
 	DIVINE_SYMBOL_30 = """You return the drawing with a stern look.
 
 — So, you must've come because of the barrier, right?""",
 	DIVINE_SYMBOL_OPTION_20 = """If I ask you to remove it nicely, will you?""",
-	DIVINE_SYMBOL_OPTION_21 = """You'll have to remove it, or else""",
-	DIVINE_SYMBOL_31 = """— Why, of course, but firstly I have a request if you don't mind. Ahem. Allow me to join you.""",
+	DIVINE_SYMBOL_OPTION_21 = """You'll have to remove it, or else.""",
+	DIVINE_SYMBOL_31 = """— Why, of course, but firstly I have a request, if you don't mind. Ahem. Allow me to join you.""",
 	DIVINE_SYMBOL_OPTION_22 = """Why do you want to join me?""",
-	DIVINE_SYMBOL_OPTION_23 = """You must have some really good reason for that""",
+	DIVINE_SYMBOL_OPTION_23 = """You must have some really good reason for that.""",
 	DIVINE_SYMBOL_32 = """— I guess, I have to explain. I've set this whole thing up in order to find you. Well, not specifically you, but someone capable enough to pass through and find me. And you managed pretty well.""",
 	DIVINE_SYMBOL_OPTION_24 = """Why would you need someone like that?""",
-	DIVINE_SYMBOL_OPTION_25 = """That's a rather bold plan""",
+	DIVINE_SYMBOL_OPTION_25 = """That's a rather bold plan.""",
 	DIVINE_SYMBOL_OPTION_26 = """What's the task you need me for?""", #after 24 and 25 seen
-	DIVINE_SYMBOL_33 = """— You are probably aware I'm the Champion of Alios. We have this compulsion when our benefactor gives us orders. My mission was to find and join you... or someone like you? Nah, I guess that's rude, I've found you already after all.""",
+	DIVINE_SYMBOL_33 = """— You are probably aware I'm the Champion of Alios. We have this compulsion when our benefactor gives us orders. My mission was to find and join you... or someone like you? Nah, I guess that's rude, I've found you already, after all.""",
 	DIVINE_SYMBOL_34 = """— What better way to find a strong crafty person than to interrupt a huge contest? One way or another your leaders would be forced to find a way in and would seek assistance to do so. So I offered a bit of help to the losing side. And now I found you.""",
 	DIVINE_SYMBOL_35 = """— Alios isn't really clear in his intentions, but if you ask me, the world must be in a great danger. Maybe we'll come up with something later. So, will you allow me to join you? I'm sure this will be a fruitful cooperation.""",
-	DIVINE_SYMBOL_OPTION_27 = """Alright, why not""",
-	DIVINE_SYMBOL_OPTION_28 = """No, I can't trust you""",
-	DIVINE_SYMBOL_OPTION_29 = """I do not cooperate, only dominate""",
+	DIVINE_SYMBOL_OPTION_27 = """Alright, why not.""",
+	DIVINE_SYMBOL_OPTION_28 = """No, I can't trust you.""",
+	DIVINE_SYMBOL_OPTION_29 = """I do not cooperate, only dominate.""",
 	DIVINE_SYMBOL_36 = """Zephyra takes a long pause contemplating you and your words. Just as you think she's not going to say anything, she kneels down before you.
 
-— Fine, I'll become your subordinate if you wish so. """,
-	DIVINE_SYMBOL_OPTION_30 = """I'll take care of you """,
-	DIVINE_SYMBOL_OPTION_31 = """That was a joke, you can join me""",
-	DIVINE_SYMBOL_OPTION_32 = """No, after all I can't trust you""",
-	DIVINE_SYMBOL_37 = """— Do I get to call you [master]? Hehe, now let me dispel the barrier, then we can continue once this is over.""",
+— Fine, I'll become your subordinate, if you wish so.""",
+	DIVINE_SYMBOL_OPTION_30 = """I'll take care of you.""",
+	DIVINE_SYMBOL_OPTION_31 = """That was a joke, you can join me.""",
+	DIVINE_SYMBOL_OPTION_32 = """No, after all I can't trust you.""",
+	DIVINE_SYMBOL_37 = """— Do I get to call you [Master]? Hehe, now let me dispel the barrier, then we can continue once this is over.""",
 	DIVINE_SYMBOL_38 = """— Hehe, glad we worked this out. Alright, hold on, I'll dispel the barrier. We can discuss other things once this is over.""",
 	DIVINE_SYMBOL_39 = """— You idiot! Making me do something so embarrassing... Oh well, let's get this over with, we can discuss other things once this is over.""",
 	DIVINE_SYMBOL_40 = """— Ha-ah, that's a downer. Well, let's get this over with then, I'll remove the barrier in a moment. Was nice to meet you.""",
@@ -4944,7 +4959,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 — Well, here you go. Let us meet again, then.""",
 	DIVINE_SYMBOL_43 = """
 
-— Here we go, happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
+— Here we go. Happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
 	DIVINE_SYMBOL_44 = """As the barrier fell, Duncan ordered an immediate attack. Many of the rebel troops were caught off guard resting and unable to rally a quick response. As the guilds' army slowly advanced into town no one took much notice of your small group, allowing you to escape easily.""",
 	DIVINE_SYMBOL_45 = """{color=aqua|Greg: — What the hell... Shit, what happened to the barrier!?}
 
@@ -4953,12 +4968,12 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 {color=aqua|Greg: — Goddamnit. Order the retreat. And make sure the princess is safe. Curses on that useless champion, she better not make it out of this alive.}""",
 	DIVINE_SYMBOL_46 = """{color=aqua|Myr: — Huh, [he] really managed to pull it off. Are you not going to lead the assault?}
 
-{color=yellow|Duncan: — No, it's over and there's no challenge. I've set outriders to keep watch out for any potential escape so the princess should be ours shortly. }
+{color=yellow|Duncan: — No, it's over and there's no challenge. I've set outriders to keep watch out for any potential escape, so the princess should be ours shortly.}
 
 {color=aqua|Myr: — Hmph, she's too smart to get caught by you. }
 
 At this moment a messenger approached Duncan.""",
-	DIVINE_SYMBOL_47 = """{color=aqua|Messenger: — Sir, [name] has returned and asks for an audience. }
+	DIVINE_SYMBOL_47 = """{color=aqua|Messenger: — Sir, [name] has returned and asks for an audience.}
 
 {color=yellow|Duncan: — Bring [him].}
 
@@ -4967,10 +4982,10 @@ As you come out you notice how Duncan's stoic face shows a hint of respect.
 {color=aqua|Duncan: — A splendid job. You are going down in history with what you've pulled out here. Also managed to do what those mages couldn't.}
 
 {color=yellow|Myr: — Screw you.}""",
-	DIVINE_SYMBOL_OPTION_33 = """That wasn't too hard""",
-	DIVINE_SYMBOL_OPTION_34 = """I thought I wasn't gonna make it""",
+	DIVINE_SYMBOL_OPTION_33 = """That wasn't too hard.""",
+	DIVINE_SYMBOL_OPTION_34 = """I thought I wasn't gonna make it.""",
 	DIVINE_SYMBOL_48 = """{color=aqua|Duncan: — Either way the town will be ours by tomorrow morning. You can go and rest until then.}""",
-	DIVINE_SYMBOL_49 = """A few hours later
+	DIVINE_SYMBOL_49 = """A few hours later.
 
 {color=yellow|Soldier: — We have captured the town, but there has been no sign of Greg or the princess.}
 
@@ -4979,47 +4994,47 @@ As you come out you notice how Duncan's stoic face shows a hint of respect.
 Duncan: — [name], you can return to Aliron now. We shall plan out our next moves.}""",
 
 
-	FINAL_OPERATON_START = "-Hello [name]. I need to ask for your help in a matter that should stay between us.",
-	FINAL_OPERATON_START_OPTION_1 = "I would be glad to help",
-	FINAL_OPERATON_START_OPTION_2 = "Depends on what it is",
+	FINAL_OPERATON_START = "- Hello, [name]. I need to ask for your help in a matter that should stay between us.",
+	FINAL_OPERATON_START_OPTION_1 = "I would be glad to help.",
+	FINAL_OPERATON_START_OPTION_2 = "Depends on what it is.",
 
-	FINAL_OPERATON_1 = """— I'll be brief, we've discovered a major rebel hideout and we believe the princess will be there. We're gathering a raiding party to pay them a surprise visit.
-
+	FINAL_OPERATON_1 = """— I'll be brief: we've discovered a major rebel hideout and we believe the princess will be there. We're gathering a raiding party to pay them a surprise visit.
+	
 — Given your performance in the last battle and overall help I'd say that more than proves your capability in combat. This is also in your best interest, considering this will be the best chance we've had to capture the princess thus far.
-
+	
 — Off the record I think you are the best candidate for the mayor position as you've proven how much you're capable of. If the princess is indeed at this hideout, you will be the one to capture her. Are you ready for this?""",
-	FINAL_OPERATON_2 = """— I'll be brief, we've discovered a major rebel hideout and we believe the princess will be there. We're gathering a raiding party to pay them a surprise visit.
-
+	FINAL_OPERATON_2 = """— I'll be brief: we've discovered a major rebel hideout and we believe the princess will be there. We're gathering a raiding party to pay them a surprise visit.
+	
 — Given your performance in the last battle and overall help I'd say that more than proves your capability in combat. This is also in your best interest, considering this will be the best chance we've had to capture the princess thus far.
 
 — Off the record I think you are the best candidate for the mayor position as you've proven how much you're capable of. If the princess is indeed at this hideout, you will be the one to capture her. Are you ready for this?""",
 	FINAL_OPERATON_OPTION_1 = "What kind of fight can I expect from this?",
-	FINAL_OPERATON_OPTION_2 = "Sounds like fun, I'll be there",
-	FINAL_OPERATON_OPTION_3 = "I guess there's no better chance",
-	FINAL_OPERATON_3 = """— Hmm, for one the location is an abandoned mineshaft, it'll be an enclosed space but should still have plenty of open room for fighting the enemy. The rebels will likely be well fortified they'll have numbers but we'll have skill.""",
-	FINAL_OPERATON_4 = """— The longer it takes you the more time the enemy has to prepare,so try not to keep us waiting too long. I'll mark the location on your map.
-
-— Don't mention this to the other guilds. We still aren't sure if Greg was the only traitor in our midst and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
-	FINAL_OPERATON_WORKERS_OPTION_1 = "Ask for Help",
+	FINAL_OPERATON_OPTION_2 = "Sounds like fun, I'll be there.",
+	FINAL_OPERATON_OPTION_3 = "I guess, there's no better chance.",
+	FINAL_OPERATON_3 = """— Hmm, for one the location is an abandoned mineshaft, it'll be an enclosed space, but should still have plenty of open room for fighting the enemy. The rebels will likely be well fortified. They'll have numbers, but we'll have skill.""",
+	FINAL_OPERATON_4 = """— The longer it takes you, the more time the enemy has to prepare, so try not to keep us waiting too long. I'll mark the location on your map.
+	
+	— Don't mention this to the other guilds. We still aren't sure if Fred was the only traitor in our midst, and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
+	FINAL_OPERATON_WORKERS_OPTION_1 = "*Ask for Help*",
 	FINAL_OPERATON_WORKERS_1 = """— Ach, have ya no mind to what pressure we're under? Entire guild is tied up supporting the fighters spat with the rebels. Got none free ta take on some outside job at the moment.""",
 	FINAL_OPERATON_SERVANTS_1 = """— Came to us for Duncan's little raid? Please, [name], I thought you knew that we don't deal in any violence. Sorry... But to cheer you up, here's a little tip from me: ask Myr. Mages are certainly more capable in what you're looking for.""",
 	FINAL_OPERATON_MAGES_1 = """— A job? I don't see why I would care, but for the sake of my own amusement let's hear it. What exactly do you want?""",
 	FINAL_OPERATON_MAGES_1_OPTION_1 = """Let's call it a favor and leave it at that.""",
-	FINAL_OPERATON_MAGES_1_OPTION_2 = """I'm helping the Fighters Guild with a raid""",
+	FINAL_OPERATON_MAGES_1_OPTION_2 = """I'm helping the Fighters Guild with a raid.""",
 	FINAL_OPERATON_MAGES_2 = """— You'll have to elaborate on this favor you want. Surely you can't expect our help on some whim of yours, especially with what's been going on.""",
 	FINAL_OPERATON_MAGES_2_OPTION_1 = """Hey now, I've done a lot of work for the guild.""",
-	FINAL_OPERATON_MAGES_2_OPTION_2 = """Look, it's important. I helped with Fred didn't I?""",
-	FINAL_OPERATON_MAGES_2_OPTION_3 = """Please Myr, this is important, remember back when I got your books for you?""",
+	FINAL_OPERATON_MAGES_2_OPTION_2 = """Look, it's important. I helped with Fred, didn't I?""",
+	FINAL_OPERATON_MAGES_2_OPTION_3 = """Please, Myr, this is important, remember back when I got your books for you?""",
 	FINAL_OPERATON_MAGES_3_1 = """— Ugh, fine, whatever, but this is a one-time deal. I have a few spares you can use for your business, I guess. Just make sure they return intact, the paperwork gets tiresome.""",
 	FINAL_OPERATON_MAGES_3_2 = """— Ugh, fine, I don't like being left in the dark but this will cost you. I can find some volunteers for three hundred gold.""",
-	FINAL_OPERATON_MAGES_3_OPTION_1 = """Sure. [remove 300 gold]""",
+	FINAL_OPERATON_MAGES_3_OPTION_1 = """Sure. (300 gold)""",
 	FINAL_OPERATON_MAGES_3_OPTION_2 = """I don't have the money.""",
 	FINAL_OPERATON_MAGES_4 = """— What, do you expect us to work for free? Get out of here I've got actual business to take care of.""",
 	FINAL_OPERATON_MAGES_5_1 = """— Oh, don't even start trying to get pity points for that one. I think you already got more than enough for that job. Now get out of here I've got more important things to do.""",
 	FINAL_OPERATON_MAGES_5_2 = """— Ugh, fine, I don't like being left in the dark but this will cost you. I can find some volunteers for three hundred gold.""",
 	FINAL_OPERATON_MAGES_5_3 = """Myr disappears into the guild as you sit and wait for her. It doesn't take too long before a small group of mages shuffle into the room followed by Myr.
 
-— There are your volunteers. Now all of you get going I have business to attend to.
+— There are your volunteers. Now all of you get going, I have business to attend to.
 
 You lead your new entourage out the door. Opening your map you show the group the place Duncan designated. Telling them to wait there and if anyone asks they're with you.""",
 	FINAL_OPERATON_MAGES_5_4 = """— I have zero interest in helping with anything related to the Fighters. Why don't you go ask them for help, it's their job or whatever. Now if you'll excuse me I've got actual business to attend to, see yourself out.""",
@@ -5030,19 +5045,19 @@ You lead your new entourage out the door. Opening your map you show the group th
 You also notice your small group of mages, one waves to you as you pass.
 
 — Good, you're here. And it seems you followed my advice. Though I trust you didn't tell Myr the details?""",
-	INITIATE_HIDEOUT_ATTACK_6 = """— Alright let's not waste time. Prepare your men and we will begin.""",
-	INITIATE_HIDEOUT_ATTACK_OFCOURSE = """Of course""",
-	INITIATE_HIDEOUT_ATTACK_OPTION_1 = "I want to be on the frontline",
-	INITIATE_HIDEOUT_ATTACK_OPTION_2 = "We should all go in at once",
+	INITIATE_HIDEOUT_ATTACK_6 = """— Alright, let's not waste time. Prepare your men and we will begin.""",
+	INITIATE_HIDEOUT_ATTACK_OFCOURSE = """Of course.""",
+	INITIATE_HIDEOUT_ATTACK_OPTION_1 = "I want to be on the frontline.",
+	INITIATE_HIDEOUT_ATTACK_OPTION_2 = "We should all go in at once.",
 	INITIATE_HIDEOUT_ATTACK_3 = "...Are you sure you can handle that? It won't be easy, but I'm not going to stop you.",
-	INITIATE_HIDEOUT_ATTACK_3_OPTION_1 = "I like the challenge",
-	INITIATE_HIDEOUT_ATTACK_3_OPTION_2 = "There's no glory being in back rows",
-	INITIATE_HIDEOUT_ATTACK_3_OPTION_3 = "On second thought we should go in all at once",
+	INITIATE_HIDEOUT_ATTACK_3_OPTION_1 = "I like the challenge.",
+	INITIATE_HIDEOUT_ATTACK_3_OPTION_2 = "There's no glory being in back rows.",
+	INITIATE_HIDEOUT_ATTACK_3_OPTION_3 = "On second thought we should go in all at once.",
 	INITIATE_HIDEOUT_ATTACK_4 = """— I'm impressed. But don't underestimate the enemy, they can use that against you.
-
+	
 — Go prepare yourself for the fight, we move in five minutes.
 
-You prepare yourself and your group for the upcoming fight. Duncan can be seen moving between the groups informing them of the plan. You move near the front of the gathering with your group as Duncan raises an arm before bringing it down pointing at the hideout. """,
+You prepare yourself and your group for the upcoming fight. Duncan can be seen moving between the groups informing them of the plan. You move near the front of the gathering with your group as Duncan raises an arm before bringing it down pointing at the hideout.""",
 	INITIATE_HIDEOUT_ATTACK_5 = """— Go prepare yourself for the fight, we move in five minutes.
 
 You prepare yourself and your group for the upcoming fight. Duncan can be seen moving between the groups informing them of the plan. You move near the front of the gathering with your group as Duncan raises an arm before bringing it down pointing at the hideout. """,
@@ -5061,7 +5076,7 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 {color=yellow|Anastasia: — This is wrong, I can't leave everyone behind.}
 
 {color=aqua|Greg: — Enough, we are wasting time. Aire! Send the princess off and return to me immediately.}""",
-	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|Aire: — ... I understand. Over here, your Highness.}
+	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|Aire: — ...I understand. Over here, your Highness.}
 
 {color=aqua|Anastasia: — No, what am I gonna do after that?}
 
@@ -5119,17 +5134,17 @@ It's the elf girl you had your fun with before. Her eyes narrow at you with clea
 
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room however is someone you recognize, an elf. She notices you and quickly adopts a fighting stance.
 
-It's the elf you saved from the lich. Her stance falters as she recognises you. She shakes her head and returns to her combat stance.
+It's the elf you saved from the Lich. Her stance falters as she recognises you. She shakes her head and returns to her combat stance.
 
-— This isn't exactly how I'd imagined I'd meet you again. I'm sorry but I won't let you get to Anastasia. To arms!""",
+— This isn't exactly how I'd imagined I'd meet you again. I'm sorry, but I won't let you get to Anastasia. To arms!""",
 
-	AIRE_COMBAT_ON_WIN_2 = """The elf collapses in exhaustion and pain as you finish your fight looking around you're just in time to see Duncan's group charge in from a secondary entrance.
+	AIRE_COMBAT_ON_WIN_2 = """The elf collapses in exhaustion and pain. As you finish your fight looking around you're just in time to see Duncan's group charge in from a secondary entrance.
 
 {color=yellow|Duncan: — Nice work out there. But I'm afraid there's nobody else here, including the princess. Though this bitch should know something for sure.}""",
 
 	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|Aire: — Damn you... You won't get her!}
 
-{color=aqua|Duncan: — Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
+{color=aqua|Duncan: — Shut it, elf. You've failed to protect this place and you've failed to protect the princess. She'll get what's coming to her just as you will.}
 
 {color=yellow|Aire: — Bastard... Agh-}
 
@@ -5137,18 +5152,18 @@ Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 	AIRE_COMBAT_ON_WIN_3_1 = """{color=yellow|Aire: — Damn you... You won't get her!}
 
-{color=aqua|Duncan: — Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
+{color=aqua|Duncan: — Shut it, elf. You've failed to protect this place and you've failed to protect the princess. She'll get what's coming to her just as you will.}
 
 {color=yellow|Aire: — Bastard... Agh-}
 
 Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 
-	GREG_COMBAT_ON_WIN_1 = """The man staggers back as breathing heavily. You look around to see Duncan cut down a rebel behind you. stepping up beside you as the both of you confront the apparent ringleader of this hideout.
+	GREG_COMBAT_ON_WIN_1 = """The man staggers back as breathing heavily. You look around to see Duncan cut down a rebel behind you, stepping up beside you as the both of you confront the apparent ringleader of this hideout.
 
 {color=aqua|Duncan: — Greg, stand down and surrender. This pathetic rebellion is over.}
 
-{color=yellow|Greg: — Ah, Duncan. I could have expected you'd show up here, too bad for you though, Anastasia is already far away from here.}
+{color=yellow|Greg: — Ah, Duncan. I could have expected you'd show up here. Too bad for you though, Anastasia is already far away from here.}
 
 {color=aqua|Duncan: — We'll see about that, my men have already surrounded the area. Now drop your w-}
 
@@ -5177,8 +5192,8 @@ Duncan turns to speak with you. The guild members begin to handcuff the rebels t
 	GREG_COMBAT_OPTION_5 = """How about a reward for my help?""",
 	GREG_COMBAT_OPTION_6 = """Thanks for letting me bash some rebel heads in.""",
 
-	GREG_COMBAT_ON_WIN_5 = """— While the outcome is disappointing, it's only a matter of time until she runs out of places to hide.""",
-	GREG_COMBAT_ON_WIN_6 = """{color=aqua|Duncan: — Her? Same as the rest of them, they'll be imprisoned and interrogated.}
+	GREG_COMBAT_ON_WIN_5 = """— While the outcome is disappointing, it's only a matter of time until the princess runs out of places to hide.""",
+	GREG_COMBAT_ON_WIN_6 = """— Her? Same as the rest of them, they'll be imprisoned and interrogated.
 
 The elf struggles slightly against her bindings, as she huffs in defiance.""",
 
@@ -5187,14 +5202,14 @@ The elf struggles slightly against her bindings, as she huffs in defiance.""",
 	GREG_COMBAT_ON_WIN_8 = """— You don't need to worry about that, you'll get your reward. The fighters still have a lot of work to settle here, once that's done we can worry about rewards.""",
 	GREG_COMBAT_ON_WIN_9 = """— Go home. We'll clean everything up here. Come see me later and we'll decide what to do from there.""",
 	COMBAT_ON_WIN_FRONTLINE = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
+	
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.
 
 — We still have to secure the princess.""",
 
 	COMBAT_ON_WIN_NOT_FRONTLINE = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
-— Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.
+	
+— Oh, and here your reward for your help in the raid. You've proven yourself to be very capable.
 
 — We still have to secure the princess.""",
 
@@ -5209,18 +5224,18 @@ The elf struggles slightly against her bindings, as she huffs in defiance.""",
 	SEARCH_FIGHTERS_1_2 = """— As it stands I can offer you little more than guaranteeing you'll be the first to know if one of the rebels talks. Though as it stands that's likely to take weeks, or even longer.""",
 	SEARCH_FIGHTERS_OPTION_3 = """I'll get to it then.""",
 	SEARCH_FIGHTERS_2 = """— Come back as soon as you have the location of the princess and we can plan out what to do. The other guilds may have some ideas.
-
+		
 — Considering your objective it may be worth paying Amelia a visit to see if she can offer any advice.""",
 	SEARCH_FIGHTERS_OPTION_4 = """I want to speak to the elf girl.""",
 	SEARCH_FIGHTERS_3 = """— Her? We haven't gotten anything out of her. If anything she's even more fanatical than the rest of them.""",
 	SEARCH_FIGHTERS_OPTION_5 = """I've met her before. Maybe I can get some information from her.""",
 	SEARCH_FIGHTERS_OPTION_6 = """An elf is rare to see, one fighting for a human rebellion is even more-so.""",
 	SEARCH_FIGHTERS_4 = """— Hmm... Tell me more about it.""",
-	SEARCH_FIGHTERS_OPTION_7 = """When you had me go after the lich she was there too. I didn't know she was with the rebels though.""",
+	SEARCH_FIGHTERS_OPTION_7 = """When you had me go after the Lich she was there too. I didn't know she was with the rebels though.""",
 	SEARCH_FIGHTERS_OPTION_8 = """I spared her life once.""",
-	SEARCH_FIGHTERS_5_1 = """— That's true, she definitely knows more than the other rebels. I suppose there's nothing to lose in letting you try to get her talking.""",
-	SEARCH_FIGHTERS_5_2 = """— Strange circumstance, but I've heard wilder stories that turned out true. I suppose you've got the best chance out of any of us to get her talking, go ahead.""",
-	SEARCH_FIGHTERS_5_3 = """— Interesting, well if you can use that leverage to get her talking then it'll have been worth letting her live. I suppose you've got the best chance out of any of us at least.""",
+	SEARCH_FIGHTERS_5_1 = """— That's true, she definitely knows more than the other rebels. I suppose, there's nothing to lose in letting you try to get her talking.""",
+	SEARCH_FIGHTERS_5_2 = """— Strange circumstance, but I've heard wilder stories that turned out true. I suppose, you've got the best chance out of any of us to get her talking, so go ahead.""",
+	SEARCH_FIGHTERS_5_3 = """— Interesting. Well, if you can use that leverage to get her talking, then it'll have been worth letting her live. I suppose, you've got the best chance out of any of us at least.""",
 	SEARCH_FIGHTERS_5 = """— You'll find her in the city's dungeon. I'll send word to the guards so they'll let you pass.""",
 	SEARCH_FIGHTERS_6_INIT = """ """,
 	SEARCH_FIGHTERS_6 = """ """,#no phrases here in this scene, mb error, mb _6 scene is not reqired
@@ -5230,68 +5245,68 @@ The elf struggles slightly against her bindings, as she huffs in defiance.""",
 	SEARCH_FIGHTERS_8 = """— Well I've got no reason to deny that request. She's in the dungeons, I'll send word to the guards.""",
 	SEARCH_SERVANTS_OPTION_INIT = """Would you have any ideas on how to track the princess?""",
 	SEARCH_SERVANTS_1 = """— Mmm, perhaps ask Duncan if you could speak with the elf girl. She looked different than the other rebels they brought in, special.
-
-— Though if you're not the talking type the Mages Guild might be able to help in other ways. Magic has quite a lot of applications.""",
-	SEARCH_SERVANTS_2 = """— Well none of the rebels the fighters brought in look to be more than a peon. I don't suspect they'll get much information out of them if any at all.
-
-— Then again you might ask Myr for some help. Magic has quite the variety of uses.""",
+	
+— Though, if you're not the talking type, the Mages Guild might be able to help in other ways. Magic has quite a lot of applications.""",
+	SEARCH_SERVANTS_2 = """— Well, none of the rebels the fighters brought in look to be more than a peon. I don't suspect they'll get much information out of them if any at all.
+	
+— Then again, you might ask Myr for some help. Magic has quite the variety of uses.""",
 	SEARCH_SERVANTS_OPTION = """Thanks, I'll get to it.""",
 	SEARCH_DUNGEON_1 = """You walk to the entrance of the dungeons. The guards give you the key and point you in the direction of the cell which holds Aire.
 
 To your surprise standing outside of the cell is Amelia, she notices you and makes her way over.""",
 	SEARCH_DUNGEON_OPTION_1 = """Amelia? What are you doing here?""",
-	SEARCH_DUNGEON_2_1 = """— Oh, just following up on my suggestion to you. Glad to see at least someone takes my advice seriously.""",
-	SEARCH_DUNGEON_2_2 = """— A little bird told me you were visiting one of our new guests. I thought perhaps I could come share some advice.""",
-	SEARCH_DUNGEON_2_3 = """— Her name is Aire if you didn't know. It does seem like she should know exactly what we need.
-
-— I'm sure you can get her talking being such a charming individual yourself. Though if she proves... difficult I could always try some of my methods.""",
+	SEARCH_DUNGEON_2_1 = """— Oh, just following up on my suggestion to you. Glad to see at least someone takes my advices seriously.""",
+	SEARCH_DUNGEON_2_2 = """— A little bird told me you were visiting one of our new guests. I thought, perhaps, I could come share some advice.""",
+	SEARCH_DUNGEON_2_3 = """Her name is Aire if you didn't know. It does seem like she should know exactly what we need.
+	
+— I'm sure you can get her talking being such a charming individual yourself. Though if she proves... difficult, I could always try some of my methods.""",
 	SEARCH_DUNGEON_OPTION_2 = """I'll think about it.""",
 	SEARCH_DUNGEON_OPTION_3 = """Let's hope that won't be necessary.""",
 	SEARCH_DUNGEON_3_1 = """As you walk into Aire's cell you feel her sharp gaze as she recognizes you. The elf girl sitting in the corner of the cold wall with hands cuffed behind her.
 
 — It's you again. Think you can get anything out of me?""",
-	SEARCH_DUNGEON_OPTION_4 = """So you still remember me""",
-	SEARCH_DUNGEON_4_1 = """— There's not many bastards like you out there. """,
+	SEARCH_DUNGEON_OPTION_4 = """So you still remember me.""",
+	SEARCH_DUNGEON_4_1 = """— There's not many bastards like you out there.""",
 	SEARCH_DUNGEON_OPTION_5 = """I take it it's too late to ask for forgiveness?""",
 	SEARCH_DUNGEON_4_2 = """— Who are you trying to fool? You've already shown your true face.""",
-	SEARCH_DUNGEON_OPTION_6 = """This place seems just about right for you""",
+	SEARCH_DUNGEON_OPTION_6 = """This place seems just about right for you.""",
 	SEARCH_DUNGEON_4_3 = """— ...Fuck off.""",
-	SEARCH_DUNGEON_OPTION_7 = """We want to know where the princess escaped to""",
-	SEARCH_DUNGEON_OPTION_8 = """You must know where has your master has gone to""",
+	SEARCH_DUNGEON_OPTION_7 = """We want to know where the princess escaped to.""",
+	SEARCH_DUNGEON_OPTION_8 = """You must know where has your master has gone to.""",
 	SEARCH_DUNGEON_OPTION_9 = """Don't you think you should cooperate and make things better for you?""",
 	SEARCH_DUNGEON_5_1 = """— You really think I'd ever cooperate with you?""",
 	SEARCH_DUNGEON_OPTION_10 = """Why not? What makes you so loyal?""",
 	SEARCH_DUNGEON_5_2 = """— ...You wouldn't understand, nor will I waste my breath telling you.""",
-	SEARCH_DUNGEON_OPTION_11 = """Who knows what could happen to you if you don't cooperate""",
+	SEARCH_DUNGEON_OPTION_11 = """Who knows what could happen to you if you don't cooperate?""",
 	SEARCH_DUNGEON_5_3 = """— Give me your worst. I'd rather die than help your kind.""",
-	SEARCH_DUNGEON_OPTION_12 = """The princess will have it better if you cooperate""",
+	SEARCH_DUNGEON_OPTION_12 = """The princess will have it better if you cooperate.""",
 	SEARCH_DUNGEON_5_4 = """— Oh, I'm sure she'd be better anywhere else instead.""",
-	SEARCH_DUNGEON_OPTION_13 = """This is going nowhere""",
+	SEARCH_DUNGEON_OPTION_13 = """This is going nowhere.""",
 	SEARCH_DUNGEON_6_1 = """I told you, you'll never get anything out of me. Go ahead and keep wasting your time.""",
 	SEARCH_DUNGEON_OPTION_14 = """Once I get to her, you'll wish you'd have been more cooperative.""",
 	SEARCH_DUNGEON_6_2 = """— If you dare to even touch her, I'll hunt you down to the ends of the earth.""",
-	SEARCH_DUNGEON_OPTION_15 = """Fine. Enjoy rotting in this cell then""",
+	SEARCH_DUNGEON_OPTION_15 = """Fine. Enjoy rotting in this cell then.""",
 	SEARCH_DUNGEON_6_3 = """Aire does not react to your words, but somehow she seems content with your irritation.""",
 	SEARCH_DUNGEON_OPTION_16 = """*Hit her*""",
 	SEARCH_DUNGEON_6_4 = """*Smack*
 You hand makes a hard slap on Aire's cheek which turns red, yet her expression does not change.
 
 — Hmph, as expected from a lowly [man] like you.""",
-	SEARCH_DUNGEON_OPTION_LEAVE = """Leave""",
+	SEARCH_DUNGEON_OPTION_LEAVE = """*Leave*""",
 	SEARCH_DUNGEON_3_2 = """You find the elf girl in the corner of her cell, sitting with hands cuffed behind her back. Despite the tired look in her eyes, they are filled with dignity. As you open the door she ostentatiously looks away.
 
-— ... If you think you'll be getting anything out of me, you're wasting your time. """,
-	SEARCH_DUNGEON_OPTION_17 = """Greet her""",
+— ...If you think you'll be getting anything out of me, you're wasting your time.""",
+	SEARCH_DUNGEON_OPTION_17 = """*Greet her*""",
 	SEARCH_DUNGEON_7_1 = """Aire turns to you with a curious look. As she recognizes your face, her tone becomes slightly nervous.
 
 — ...Oh, it's you. Come to gloat?""",
-	SEARCH_DUNGEON_OPTION_18 = """Stay quiet""",
+	SEARCH_DUNGEON_OPTION_18 = """*Stay quiet*""",
 	SEARCH_DUNGEON_7_2 = """After a few moments the curiosity gets the better of the elf girl and she turns to you.
 
 — ...Oh, it's you. Come to gloat?""",
-	SEARCH_DUNGEON_OPTION_19 = """Actually I wanted to ask a few questions.""",
-	SEARCH_DUNGEON_OPTION_20 = """Let's cut to the chase, tell us where the princess is hiding.""",
-	SEARCH_DUNGEON_OPTION_21 = """I have to go""",
+	SEARCH_DUNGEON_OPTION_19 = """Actually, I wanted to ask a few questions.""",
+	SEARCH_DUNGEON_OPTION_20 = """Let's cut to the chase: tell us where the princess is hiding.""",
+	SEARCH_DUNGEON_OPTION_21 = """I have to go.""",
 	SEARCH_DUNGEON_8_1 = """— I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company.""",
 	SEARCH_DUNGEON_8_1_IF_MET = """— I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company. And I know you aren't a bad person at least.""",
 	SEARCH_DUNGEON_OPTION_22 = """Why are you so loyal to the princess?""",
@@ -5299,72 +5314,72 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 	SEARCH_DUNGEON_OPTION_24 = """What do you think about me?""",
 	SEARCH_DUNGEON_8_7_1 = """— Well, I'd lie if I say I don't find you attractive. And I suppose you've proven yourself to be better in combat as well. I wish you were by Ana's side instead of Greg, things might've been very different.""",
 	SEARCH_DUNGEON_8_7_2 = """You certainly can hold your own in battle, and you don't seem to be as bad as others we've been told about from the guilds. Maybe we could've become friends if things had been different.""",
-	SEARCH_DUNGEON_OPTION_25 = """That's all for now""",
+	SEARCH_DUNGEON_OPTION_25 = """That's all for now.""",
 	SEARCH_DUNGEON_7_3 = """ """, #no line in doc
 	SEARCH_DUNGEON_9 = """— She saved me when I was a child. Well, kind of, she was a child too mind you.
-
+	
 — My parents had been killed by bandits and I was captured and brought to their camp. Then the bandits were raided in turn by Ana's men. I was freed but I had nowhere left to go.
 
 — So she offered to let me serve her. Her guards looked like they disagreed, but with the way she carried herself it seemed they could only abide by her decision. I tried to not get in the way and to just perform my duties, but she checked on me often and treated me like a little sister even though I'm just a commoner, an elf, not to mention her servant. Since then I've sworn my loyalty to her. I'm ready to sacrifice my life for her.""",
-	SEARCH_DUNGEON_OPTION_26 = """I'm sorry for your loss""",
-	SEARCH_DUNGEON_8_2 = """— Don't be, I've got over it a long time ago, I'm so very different than I was back then.""",
-	SEARCH_DUNGEON_OPTION_27 = """Your devotion is admirable""",
+	SEARCH_DUNGEON_OPTION_26 = """I'm sorry for your loss.""",
+	SEARCH_DUNGEON_8_2 = """— Don't be, I've got over it a long time ago. I'm so very different than I was back then.""",
+	SEARCH_DUNGEON_OPTION_27 = """Your devotion is admirable.""",
 	SEARCH_DUNGEON_8_3 = """— I wouldn't expect you to fully understand, but thanks.""",
-	SEARCH_DUNGEON_OPTION_28 = """You could've done better on your own""",
-	SEARCH_DUNGEON_8_4 = """— No, you don't understand.. I shouldn't have told you, I guess.""",
+	SEARCH_DUNGEON_OPTION_28 = """You could've done better on your own.""",
+	SEARCH_DUNGEON_8_4 = """— No, you don't understand... I shouldn't have told you, I guess.""",
 	SEARCH_DUNGEON_10 = """— I'm just serving Ana. I couldn't care less about human politics. To me you lot are enemies only due to killing Ana's father, regardless of who he was. """,
 	SEARCH_DUNGEON_OPTION_29 = """You realize you can be executed for plotting against the guilds?""",
 	SEARCH_DUNGEON_8_5 = """— Even if so, I do not care. There are always reasons someone will want you dead, regardless of what or where.""",
-	SEARCH_DUNGEON_OPTION_30 = """I wish we hadn't ended up on opposing sides""",
+	SEARCH_DUNGEON_OPTION_30 = """I wish we hadn't ended up on opposing sides.""",
 	SEARCH_DUNGEON_8_6 = """— That makes two of us, but we can't really change it now. But enough of pointless sentiments, I'm sure you aren't here for that.""",
-	SEARCH_DUNGEON_11 = """— This again? I thought I made myself clear there's no way I'm telling any of you anything.""",
+	SEARCH_DUNGEON_11 = """— This again? I thought I made myself clear, there's no way I'm telling any of you anything.""",
 	SEARCH_DUNGEON_OPTION_31 = """Aren't you worried about her wellbeing?""",
 	SEARCH_DUNGEON_12_1 = """— I am, but... I have a hard time imagining her being in a worse place than in the hands of the guilds.""",
-	SEARCH_DUNGEON_OPTION_32 = """Your cooperation could earn you better living conditions, or even a pardon""",
+	SEARCH_DUNGEON_OPTION_32 = """Your cooperation could earn you better living conditions, or even a pardon.""",
 	SEARCH_DUNGEON_12_2 = """— This isn't about me, you idiot. I know very well the guilds are going to execute her once she's found, and I'm not going to help you hasten that.""",
-	SEARCH_DUNGEON_OPTION_33 = """Stop being foolish, the rebellion is over and it's only a matter of time until we find her""",
+	SEARCH_DUNGEON_OPTION_33 = """Stop being foolish, the rebellion is over and it's only a matter of time until we find her.""",
 	SEARCH_DUNGEON_12_3 = """— If so, then you don't need my help, things will work out for you on their own.""",
 	SEARCH_DUNGEON_OPTION_34 = """If you won't play along I'm sure the other interrogators won't be as nice...""",
 	SEARCH_DUNGEON_12_4 = """— Try me. I'm not going to betray her trust no matter what you or anyone else threatens to do to me.""",
-	SEARCH_DUNGEON_OPTION_35 = """I can promise you that I'll pledge for Anastasia's safety""",
+	SEARCH_DUNGEON_OPTION_35 = """I can promise you that I'll pledge for Anastasia's safety.""",
 	SEARCH_DUNGEON_13 = """Aire pauses, considering your words for a long while.
 
-— Surely your word would hold some weight and it seems you have certain privileges around here, but can I really trust you? What reason would you possibly have to help her?""",
-	SEARCH_DUNGEON_OPTION_36 = """I'm actually on your side, if you help me out I'll help her stay alive""",
+— Surely your word would hold some weight, and it seems you have certain privileges around here, but can I really trust you? What reason would you possibly have to help her?""",
+	SEARCH_DUNGEON_OPTION_36 = """I'm actually on your side. If you help me out, I'll help her stay alive.""",
 	SEARCH_DUNGEON_7_4 = """— Sorry, I'm not going to believe such an obvious lie.""",
-	SEARCH_DUNGEON_OPTION_37 = """We could return you to the elven lands""",
+	SEARCH_DUNGEON_OPTION_37 = """We could return you to the elven lands.""",
 	SEARCH_DUNGEON_7_5 = """— Nonsense, not only would I be abandoning my duty, I also don't want to be there after all this.""",
-	SEARCH_DUNGEON_OPTION_38 = """We can charge you with hiding a criminal""",
+	SEARCH_DUNGEON_OPTION_38 = """We can charge you with hiding a criminal.""",
 	SEARCH_DUNGEON_7_6 = """— I can live with that, if anything it would prove the worth of my loyalty even more.""",
-	SEARCH_DUNGEON_OPTION_39 = """I don't need any more reason than to make you feel better""",
+	SEARCH_DUNGEON_OPTION_39 = """I don't need any more reason than to make you feel better.""",
 	SEARCH_DUNGEON_14_1 = """— Those are some cheap words given my position. You really expect me to believe that?""",
-	SEARCH_DUNGEON_OPTION_40 = """I believe we should do our best to make people less miserable""",
-	SEARCH_DUNGEON_14_2 = """— You really think this way?.. That's what she believes in too. It sounds overly idealistic to me, though.""",
-	SEARCH_DUNGEON_OPTION_41 = """She could provide some value on the political side of things""",
+	SEARCH_DUNGEON_OPTION_40 = """I believe we should do our best to make people less miserable.""",
+	SEARCH_DUNGEON_14_2 = """— You really think this way..? That's what she believes in too. It sounds overly idealistic to me, though.""",
+	SEARCH_DUNGEON_OPTION_41 = """She could provide some value on the political side of things.""",
 	SEARCH_DUNGEON_14_3 = """— No way. Her existence is a danger to the guilds and we both know it. She will be dealt with as soon as they get their hands on her.""",
 	SEARCH_DUNGEON_OPTION_42 = """She'd make a wonderful addition to my harem""",
 	SEARCH_DUNGEON_14_4 = """Aire bursts into laughter.
 
-— Is that a lame attempt at a joke? If you're serious that is some terrible motivation, I don't know which would be worse in that case, her with you or the guilds. """,
+— Is that a lame attempt at a joke? If you're serious that is some terrible motivation. I don't know which would be worse in that case, her with you or the guilds.""",
 	SEARCH_DUNGEON_7_7 = """— I'm sorry, I don't think I can trust you after all. Ana will be better off away from here even if she continues her life on the run, even in poverty.""",
 	SEARCH_DUNGEON_15 = """Aire spends some time in silence during which conflicting emotions play across her face. Finally she lets out a long sigh.
 
 — Fine, I'll trust you. If there's anyone from here who can act in her interest, it would be you. She's escaped to the elven lands. I've managed to secure a spot for her thanks to my heritage. You'd be able to find out more from the high priestess, assuming she'll let you meet her, but at this point I suspect it shouldn't be much of a problem for you.""",
 	SEARCH_DUNGEON_16 = """You see Amelia still waiting near the entrance to the cells as you exit the dungeons, she beckons you over to her.
 
--How'd it go?""",
+- How'd it go?""",
 	SEARCH_DUNGEON_OPTION_43 = """I got the princess' location.""",
-	SEARCH_DUNGEON_17 = """— Wow, really? I knew you had a silver tongue in you, great work. Duncan will want to know as soon as you're ready to deliver the information to him, don't worry I won't steal your spotlight if you want to wait a bit.""",
+	SEARCH_DUNGEON_17 = """— Wow, really? I knew you had a silver tongue in you. Great work, Duncan will want to know as soon as you're ready to deliver the information to him. Don't worry, I won't steal your spotlight if you want to wait a bit.""",
 	SEARCH_DUNGEON_OPTION_44_1 = """I wasn't able to get any information on the princess.""",
-	SEARCH_DUNGEON_18 = """— Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So.. have you considered my offer? I could try to get her talking if you want.""",
-	SEARCH_DUNGEON_OPTION_44_2 = """This girl is a tough nut to crack""",
+	SEARCH_DUNGEON_18 = """— Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So... have you considered my offer? I could try to get her talking if you want.""",
+	SEARCH_DUNGEON_OPTION_44_2 = """This girl is a tough nut to crack.""",
 	SEARCH_DUNGEON_OPTION_45 = """Go ahead, it couldn't hurt.""",
 	SEARCH_DUNGEON_19_1 = """— Don't worry, I'm sure I'll get something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
 	SEARCH_DUNGEON_OPTION_46 = """No, I think I'll find another way.""",
 	SEARCH_DUNGEON_19_2 = """— Alright, I understand, just come talk to me if you want to reconsider.""",
-	SEARCH_DUNGEON_OPTION_47 = """Actually I just wanted to talk with her, I've already got another way of finding the princess.""",
-	SEARCH_DUNGEON_19_3 = """— Oh? Well if you just wanted to see an elf chained up you could've just come by whenever, we get those in from time to time. Well, the offer is still open if you change your mind, come visit me if you do.""",
-	SEARCH_DUNGEON_OPTION_48 = """Thanks Amelia""",
+	SEARCH_DUNGEON_OPTION_47 = """Actually, I just wanted to talk with her, I've already got another way of finding the princess.""",
+	SEARCH_DUNGEON_19_3 = """— Oh? Well, if you just wanted to see an elf chained up you could've just come by whenever, we get those in from time to time. Well, the offer is still open if you change your mind, come visit me if you do.""",
+	SEARCH_DUNGEON_OPTION_48 = """Thanks, Amelia.""",
 
 
 
@@ -5375,19 +5390,19 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_3 = """
 
-— Oh, and here, your reward for your help in the raid, you've proven yourself to be very capable.""",
+— Oh, and here your reward for your help in the raid, you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_4 = """
 
 — We still have to secure the princess.""",
 	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
-	LOOKING_FOR_PRINCESS_5 = """-We've had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_5 = """- We've had no further leads on her location so far. So far no one has come forward with any new information.""",
 	LOOKING_FOR_PRINCESS_OPTION_4 = """I'll track her down.""",
 	LOOKING_FOR_PRINCESS_OPTION_5 = """I'll come back later.""",
-	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds' mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger.
+	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds' mercenaries and scavengers didn't waste any time. However, after another half hour you notice a smaller scavenger.
 
-The lone kobold is going through the rummage seemingly unaware of your presence. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand. """,
+The lone kobold is going through the rummage seemingly unaware of your presence. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand.""",
 	LOOKING_FOR_PRINCESS_OPTION_6 = """*Greet him*""",
 	LOOKING_FOR_PRINCESS_OPTION_7 = """*Approach*""",
 	LOOKING_FOR_PRINCESS_7 = """As you move closer he spots you and jumps up, backing off a bit.
@@ -5396,39 +5411,39 @@ The lone kobold is going through the rummage seemingly unaware of your presence.
 
 The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_8 = """What are you doing here?""",
-	LOOKING_FOR_PRINCESS_OPTION_9 = """That's a nice bracelet you have there""",
+	LOOKING_FOR_PRINCESS_OPTION_9 = """That's a nice bracelet you have there.""",
 	LOOKING_FOR_PRINCESS_8 = """— Same as you. Trying to survive. Or you gonna insist you're not here to scavenge yourself?""",
 	LOOKING_FOR_PRINCESS_9 = """— Of course it's nice since I've found it. You look like you want it yourself, eh? Hah, I can see when someone is after something. Just for you I'm ready to sell it. Only 500 gold and it's yours.""",
-	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple""",
-	LOOKING_FOR_PRINCESS_OPTION_11 = """I'd rather just take it by force""",
-	LOOKING_FOR_PRINCESS_OPTION_FINE = """Fine, take the gold""",
-	LOOKING_FOR_PRINCESS_OPTION_FINE_500 = """Fine, take the gold (500 gold)""",
-	LOOKING_FOR_PRINCESS_OPTION_FINE_1000 = """Fine, take the gold (1000 gold)""",
-	LOOKING_FOR_PRINCESS_OPTION_FINE_1500 = """Fine, take the gold (1500 gold)""",
-	LOOKING_FOR_PRINCESS_OPTION_13 = """I'll consider it and return then""",
-	LOOKING_FOR_PRINCESS_10 = """— Hah, trying to take me for a fool? I don't know how simple it is, but I can see you want it, and I bet you have the means to pay. Take it or leave it""",
+	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple.""",
+	LOOKING_FOR_PRINCESS_OPTION_11 = """I'd rather just take it by force.""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE = """Fine, take the gold.""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_500 = """Fine, take the gold. (500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1000 = """Fine, take the gold. (1.000 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1500 = """Fine, take the gold. (1.500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_13 = """I'll consider it and return then.""",
+	LOOKING_FOR_PRINCESS_10 = """— Hah, trying to take me for a fool? I don't know how simple it is, but I can see you want it, and I bet you have the means to pay. Take it or leave it.""",
 	LOOKING_FOR_PRINCESS_11 = """Before you are able to make a move, the kobold swiftly escapes in a small hole in the ground taking his possessions with him. There's no way for you to follow him like this. You should probably return another day.""",
 	LOOKING_FOR_PRINCESS_12 = """After some time you find the same kobold with the bracelet.
 
 — Hey, made up your mind yet?""",
-	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
-	LOOKING_FOR_PRINCESS_OPTION_14_500 = """Purchase (500 gold)""",
-	LOOKING_FOR_PRINCESS_OPTION_14_1000 = """Purchase (1000 gold)""",
-	LOOKING_FOR_PRINCESS_OPTION_14_1500 = """Purchase (1500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_14 = """*Purchase*""",
+	LOOKING_FOR_PRINCESS_OPTION_14_500 = """*Purchase* (500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_14_1000 = """*Purchase* (1.000 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_14_1500 = """*Purchase* (1.500 gold)""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot.
 
-— It's the brute again. You better not try to give me shit again. I'm feeling generous so I'll still sell you the bracelet you want... for 1000 gold.""",
-	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
+— It's the brute again. You better not try to give me shit again. I'm feeling generous so I'll still sell you the bracelet you want... for 1.000 gold.""",
+	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time.""",
 	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
-	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
+	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard? *Attack*""",
 	LOOKING_FOR_PRINCESS_14 = """— Yeah, no shit, consider this retribution for attacking me. Take it or leave, I don't care.""",
 	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly disappears into one of the small holes leaving you with nothing. You should probably return another day.""",
 	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot.
 
-— It's the same brute again. Must be hard not knowing when to learn. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
-	LOOKING_FOR_PRINCESS_OPTION_18 = """A beating will be your payment *attack*""",
-	LOOKING_FOR_PRINCESS_17 = """This time you lunged slightly ahead of the kobold. He was still quick enough to spin away from your grasp at the last moment but he tumbled on his way, almost falling. You curse as he regains his composure and escapes. Then you notice he dropped the bracelet in his haste.
-
+— It's the same brute again. Must be hard not knowing when to learn. But I'm merciful, I'll still sell you the bracelet you want for 1.500 gold.""",
+	LOOKING_FOR_PRINCESS_OPTION_18 = """A beating will be your payment. *Attack*""",
+	LOOKING_FOR_PRINCESS_17 = """This time you lunged slightly ahead of the kobold. He was still quick enough to spin away from your grasp at the last moment, but he tumbled on his way, almost falling. You curse as he regains his composure and escapes. Then you notice he dropped the bracelet in his haste.
+	
 Unable to retrieve it without leaving the safety of his burrow, he only could swear back at you.
 
 After closer inspection you confirm that it must belong to the royal family so it's time to take it to Myr.""",
@@ -5447,22 +5462,22 @@ Myr takes a small medallion out of her desk. As she chants the spell, the medall
 
 {color=aqua|Myr: — Leave your professional quirks out of this unless you want to be thrown out.}
 
-{color=yellow|Amelia: — Alright, alright, I should be going anyway. Good luck [name], I'm waiting for your success.}""",
-	LOOKING_FOR_PRINCESS_21 = """After testing the medallion you decide it points toward the Elven forests. Your goal should be visiting them now.""",
+{color=yellow|Amelia: — Alright, alright, I should be going anyway. Good luck, [name], I'm waiting for your success.}""",
+	LOOKING_FOR_PRINCESS_21 = """After testing the medallion you decide it points toward the elven forests. Your goal should be visiting them now.""",
 	LOOKING_FOR_PRINCESS_22 = """You ask for an audience with the elven High Priestess, who seems to act as the prime ruler of the elven capital. Despite a natural distaste for outsiders, your status forced the elves to accept your request for an audience.""",
 	LOOKING_FOR_PRINCESS_23 = """The medallion kept pointing at the elven capital so you were left no other option but to meet the High Priestess, who acts as the prime ruler of the elven capital. Despite natural distaste for outsiders, your status forced the elves to accept your request for an audience.""",
 	LOOKING_FOR_PRINCESS_24 = """You've been brought to a large room with a few guards in it and you're told to wait there. After a minute an elven woman appeared from the opposite side to approach you. Her stature and the guards' reactions clearly indicate her superior position.
 
 — Usually we do not welcome outsiders in our lands, but we've made a promise to receive ambassadors from the human lands. State your business, stranger.""",
-	LOOKING_FOR_PRINCESS_OPTION_20 = """You should show more respect to your guests""",
-	LOOKING_FOR_PRINCESS_OPTION_21 = """I'm looking for a certain woman""",
-	LOOKING_FOR_PRINCESS_OPTION_22 = """We didn't mean to offend you""",
+	LOOKING_FOR_PRINCESS_OPTION_20 = """You should show more respect to your guests.""",
+	LOOKING_FOR_PRINCESS_OPTION_21 = """I'm looking for a certain woman.""",
+	LOOKING_FOR_PRINCESS_OPTION_22 = """We didn't mean to offend you.""",
 	LOOKING_FOR_PRINCESS_25 = """— You are talking to Freya's High Priestess. There's no higher respect you could receive from us, [race]. Consider this Freya's benevolence, you'll receive the woman you want.""",
 	LOOKING_FOR_PRINCESS_26 = """— We know what you are here for. Consider this Freya's benevolence, you'll receive the woman you want.""",
 	LOOKING_FOR_PRINCESS_27 = """— Cease your useless banter. Consider this Freya's benevolence, you'll receive the woman you want.""",
 	LOOKING_FOR_PRINCESS_OPTION_23 = """Easy as that?""",
 	LOOKING_FOR_PRINCESS_OPTION_24 = """Why would you do that?""",
-	LOOKING_FOR_PRINCESS_OPTION_25 = """Well, I'm not going to complain""",
+	LOOKING_FOR_PRINCESS_OPTION_25 = """Well, I'm not going to complain.""",
 	LOOKING_FOR_PRINCESS_28 = """— We have no interest in your human disputes. This woman came seeking refuge, but we are no charity. Once you take the woman I expect you to leave this place.
 
 The priestess gave orders to the guards to get the princess out.""",
@@ -5470,23 +5485,23 @@ The priestess gave orders to the guards to get the princess out.""",
 
 {color=aqua|Anastasia: — No... What the hell?! You can't do this to me!}
 
-{color=yellow|Priestess: — Cease your childish behavior, human, if you are truly royalty, act like it.}""",
-	LOOKING_FOR_PRINCESS_OPTION_26 = """An honor to meet you, princess""",
-	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, now, there's no need to make a scene""",
-	LOOKING_FOR_PRINCESS_OPTION_28 = """I've been waiting to get my hands on you""",
+{color=yellow|Priestess: — Cease your childish behavior, human. If you are truly royalty, act like it.}""",
+	LOOKING_FOR_PRINCESS_OPTION_26 = """An honor to meet you, princess.""",
+	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, now, there's no need to make a scene.""",
+	LOOKING_FOR_PRINCESS_OPTION_28 = """I've been waiting to get my hands on you.""",
 	LOOKING_FOR_PRINCESS_30 = """The princess paid little attention to your words and continued to lash out at the priestess, who seemed to grow more and more irritated.
 
 {color=aqua|Anastasia: — They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!}""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
-	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor)""",
-	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """[Physics Factor] *Slap the princess and shut her mouth*""",
+	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this.""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
 
 Before she could say any more, you've leapt at Anastasia and delivered a loud slap to her face. Not expecting this she fell in shock to the ground. You seize the moment to subdue her, plugging her mouth and excusing yourself to the priestess.
 
-{color=aqua|Priestess: — I'll excuse this unseemly display for now. Now leave and remember our agency in future. }
+{color=aqua|Priestess: — I'll excuse this unseemly display for now. Now leave and remember our agency in future.}
 
-Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound, Anastasia had no option but to let you drag her away. """,
+Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound, Anastasia had no option but to let you drag her away.""",
 	LOOKING_FOR_PRINCESS_32_f = """{color=red|Failure}
 
 """,
@@ -5495,17 +5510,17 @@ Saying this the priestess has left the hall and guards lead you to the exit. Spe
 *Slap*
 
 Before you managed to reach Anastasia, the priestess herself gave her a loud slap which made her fall to the ground in shock.""",
-	LOOKING_FOR_PRINCESS_OPTION_32 = """There's no need to get violent""",
-	LOOKING_FOR_PRINCESS_OPTION_33 = """Can't say I wouldn't do the same""",
-	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
+	LOOKING_FOR_PRINCESS_OPTION_32 = """There's no need to get violent.""",
+	LOOKING_FOR_PRINCESS_OPTION_33 = """Can't say I wouldn't do the same.""",
+	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough.""",
 	LOOKING_FOR_PRINCESS_33 = """{color=aqua|Priestess: — Silence, [race]!}
 
 Her sudden outburst made you back off.
 
 """,
-	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her,clearly enraged.
+	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her, clearly enraged.
 
-{color=aqua|Priestess: — I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have had your tongue cut out already. }
+{color=aqua|Priestess: — I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have had your tongue cut out already.}
 
 {color=yellow|Anastasia: — ...}""",
 	LOOKING_FOR_PRINCESS_35 = """{color=aqua|Priestess: — You, however, will have to answer for your crime with your life. Guards!}
@@ -5518,22 +5533,22 @@ Following the order, the guards seized Anastasia and also blocked your way from 
 	LOOKING_FOR_PRINCESS_36 = """You tell the priestess that you will need the princess alive no matter what. After observing the shocked princess she seemed to be more calm, yet unbendable.
 
 {color=aqua|Priestess: — She shall be executed regardless of your needs. This is the law and we can't pardon it despite your or her status. Once her spirit is redeemed by the tree you can have her corpse. I presume this should suffice for your masters.}""",
-	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
-	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
-	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
+	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric.""",
+	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this.""",
+	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands.""",
 	LOOKING_FOR_PRINCESS_37 = """{color=aqua|Priestess: — I'm well aware of what she is, but this is the law and it will not be waived.}
 
 """,
-	LOOKING_FOR_PRINCESS_38 = """{color=aqua|Priestess: — Watch your tongue [race], or you might join her. The law is final and not debatable.}
+	LOOKING_FOR_PRINCESS_38 = """{color=aqua|Priestess: — Watch your tongue, [race], or you might join her. The law is final and not debatable.}
 
 """,
 	LOOKING_FOR_PRINCESS_39 = """{color=aqua|Priestess: — We care not for petty threats. The traditional punishment will be delivered as always.}
 
 """,
 	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
-	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her""",
+	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her.""",
 	LOOKING_FOR_PRINCESS_OPTION_41 = """*Allow Zephyra to negotiate*""",
-	LOOKING_FOR_PRINCESS_OPTION_42 = """There's no helping it""",
+	LOOKING_FOR_PRINCESS_OPTION_42 = """There's no helping it.""",
 	LOOKING_FOR_PRINCESS_41 = """Priestess makes a long pause while glaring at you.
 
 {color=aqua|Priestess: — It is true that the guardian can be punished in a minor's stead. Though you must be aware that I can't simply execute the peaceful messenger of a foreign nation. Yet, our tradition demands blood. }
@@ -5541,7 +5556,7 @@ Following the order, the guards seized Anastasia and also blocked your way from 
 The priestess takes another long pause to contemplate the situation and finally answers.""",
 	LOOKING_FOR_PRINCESS_42 = """{color=aqua|Priestess: — Very well, I'll allow you to take her punishment by sacrificing one of your followers.}""",
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
-	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
+	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse*""",
 	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
 
 {color=aqua|Priestess: — Leave now and tell your masters that we still stand by the agreement.}
@@ -5552,7 +5567,7 @@ Anastasia quietly observes as [name] being taken away, perhaps blaming herself f
 """,
 	LOOKING_FOR_PRINCESS_45 = """With your approval, Zephyra walks forward. The Priestess observes her thoughtfully.
 
-{color=aqua|Zephyra: — The ancient traditions are important, but... quite problematic. }
+{color=aqua|Zephyra: — The ancient traditions are important, but... quite problematic.}
 
 {color=yellow|Priestess: — What do you dare to suggest?}
 
@@ -5575,52 +5590,52 @@ You've noticed how the stone cold priestess visibly twitched when hearing that. 
 {color=aqua|Zephyra: — *sniff* Hey, [name], I'm not foul, am I?}""",
 	LOOKING_FOR_PRINCESS_48 = """Once outside with the now silent princess, you ask Zephyra to explain what happened.
 
-— Oh, well, a long time ago Alios had turned into a human male named Ansfrid and got up to some mischief. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse yet non-elven men? Ah, please forget I said anything, haha.""",
-	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad""",
+— Oh, well, a long time ago Alios had turned into a human male named Ansfrid and got up to some mischief. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse, yet non-elven men? Ah, please forget I said anything, haha.""",
+	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad.""",
 	LOOKING_FOR_PRINCESS_OPTION_46 = """So, she's a compelled lesbian?""",
-	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful""",
+	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful.""",
 	LOOKING_FOR_PRINCESS_49 = """— Indeed, why are people so uptight? Don't you think it's awesome that Alios is so relaxed concerning such mundane things? Ah, sorry, I didn't mean to preach.""",
-	LOOKING_FOR_PRINCESS_50 = """— I dunno, maybe she's chaste. She did look pretty frigid during that whole ordeal just now, but maybe it's all an act. Perhaps we'll never know.""",
-	LOOKING_FOR_PRINCESS_51 = """— Why, thank you! Wait, what did you mean unexpectedly? If you're gonna tease me and treat me like a kid, I'll be acting more like one, you know. Surely you wouldn't want that?""",
-	LOOKING_FOR_PRINCESS_52 = """Without wasting much time the guards have tied Anastasia to the large tree at the center of the sanctum. Before the ceremony started you've been forced to leave, which spared you from gazing on the princess's pleading face. After about half an hour her pale corpse is delivered.
+	LOOKING_FOR_PRINCESS_50 = """— I dunno, maybe she's chaste. She did look pretty frigid during that whole ordeal just now, but maybe it's all an act. Perhaps, we'll never know.""",
+	LOOKING_FOR_PRINCESS_51 = """— Why, thank you! Wait, what did you mean 'unexpectedly'? If you're gonna tease me and treat me like a kid, I'll be acting more like one, you know. Surely you wouldn't want that?""",
+	LOOKING_FOR_PRINCESS_52 = """Without wasting much time the guards have tied Anastasia to the large tree at the center of the sanctum. Before the ceremony started you've been forced to leave, which spared you from gazing on the princess' pleading face. After about half an hour her pale corpse is delivered.
 
 It's time to return home.""",
 
-	PRE_ANASTASIA_EXECUTION_1 = """As you show Duncan the Princess's corpse he makes a pained grimace. After you explained to him what happened he looked disappointed but accepting.
+	PRE_ANASTASIA_EXECUTION_1 = """As you show Duncan the Princess' corpse he makes a pained grimace. After you explained to him what happened he looked disappointed but accepting.
 
 — A shame this happened, but I believe you did what you could. Finally this is over, so be prepared to step up to being the mayor, you deserve it.""",
-	PRE_ANASTASIA_EXECUTION_OPTION_1 = """I want her elf servant""",
-	PRE_ANASTASIA_EXECUTION_OPTION_2 = """That's an honor""",
-	PRE_ANASTASIA_EXECUTION_OPTION_3 = """Pleasure doing business with you""",
+	PRE_ANASTASIA_EXECUTION_OPTION_1 = """I want her elf servant.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_2 = """That's an honor.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_3 = """Pleasure doing business with you.""",
 	PRE_ANASTASIA_EXECUTION_2 = """— No can do. Need I remind you of all the important provisions you lost before the siege? This shall be your compensation to us.""",
-	PRE_ANASTASIA_EXECUTION_3 = """— Hmm, fine, we have no use for her at this point, but do not expect her to be friendly, especially after the princess's death.""",
+	PRE_ANASTASIA_EXECUTION_3 = """— Hmm, fine, we have no use for her at this point, but do not expect her to be friendly, especially after the princess' death.""",
 	PRE_ANASTASIA_EXECUTION_4 = """— We shall declare your succession in a week, until then you can rest.""",
 	PRE_ANASTASIA_EXECUTION_5 = """You successfully deliver the princess to a prison cell and make your way to Duncan who seems to be aware of your success.
 
-— You've done what few people dreamed to achieve, not only have you ended the war, but captured the princess herself. You've earned your future position. Once the princess' fate is decided we will let you become the mayor. Speaking of which, I've arranged the meeting for tomorrow. You should participate.""",
+— You've done what few people dreamed to achieve. Not only have you ended the war, but captured the princess herself. You've earned your future position. Once the princess' fate is decided, we will let you become the mayor. Speaking of which, I've arranged the meeting for tomorrow. You should participate.""",
 	PRE_ANASTASIA_EXECUTION_OPTION_4 = """What is going to happen to her?""",
-	PRE_ANASTASIA_EXECUTION_OPTION_5 = """I'll join for sure""",
-	PRE_ANASTASIA_EXECUTION_OPTION_6 = """More paperwork than actual fighting""",
-	PRE_ANASTASIA_EXECUTION_6 = """— This is what we will decide tomorrow, but I'm positive her head will roll... or perhaps grace the gallows.""",
-	PRE_ANASTASIA_EXECUTION_OPTION_7 = """She deserved it""",
-	PRE_ANASTASIA_EXECUTION_OPTION_8 = """Seems like a waste to kill such a pretty girl""",
+	PRE_ANASTASIA_EXECUTION_OPTION_5 = """I'll join for sure.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_6 = """More paperwork than actual fighting.""",
+	PRE_ANASTASIA_EXECUTION_6 = """— This is what we will decide tomorrow, but I'm positive her head will roll... or, perhaps, grace the gallows.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_7 = """She deserved it.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_8 = """Seems like a waste to kill such a pretty girl.""",
 	PRE_ANASTASIA_EXECUTION_7 = """— I don't care what she deserves, she's dangerous and what has happened proves it. We get rid of her and move on.""",
-	PRE_ANASTASIA_EXECUTION_8 = """— If she was not the Deranged King's daughter, I would agree with you, however she has proven too dangerous to be left alive.""",
+	PRE_ANASTASIA_EXECUTION_8 = """— If she was not the Deranged King's daughter, I would agree with you. However, she has proven too dangerous to be left alive.""",
 	PRE_ANASTASIA_EXECUTION_9 = """— Until later then.""",
 	PRE_ANASTASIA_EXECUTION_10 = """— Agreed, yet we can't simply finish her off and be done with it. Not on our own at least. Do come.""",
 	PRE_ANASTASIA_EXECUTION_11 = """The guilds and landlords once again have gathered, now mostly to celebrate the upcoming finale of the war now that it has been won.
 
-{color=aqua|Duncan: — As many have already heard, the rebellious princess has finally been captured by [name], who will be taking office as the next city mayor in light of [his] achievements. Today we, the guild leaders, decide the princess's fate. }
+{color=aqua|Duncan: — As many have already heard, the rebellious princess has finally been captured by [name], who will be taking office as the next city mayor in light of [his] achievements. Today we, the guild leaders, decide the princess' fate. }
 
 {color=yellow|Myr: — As all know, she instigated the civil war which led to many losses, in lives as well as in property...}""",
-	PRE_ANASTASIA_EXECUTION_12 = """{color=aqua|Sigmund: — Really care 'bout yar magic toys, huh. Were mages always dat mercantile? }
+	PRE_ANASTASIA_EXECUTION_12 = """{color=aqua|Sigmund: — Really care 'bout yar magic toys, huh. Were mages always dat mercantile?}
 
-{color=yellow|Myr: — It's hardly the time, besides you weren't the ones on the frontlines, exhausting your supplies for this pointless war. }
+{color=yellow|Myr: — It's hardly the time, besides, you weren't the ones on the frontlines exhausting your supplies for this pointless war.}
 
 {color=aqua|Sigmund: — Hmph.}""",
-	PRE_ANASTASIA_EXECUTION_13 = """{color=aqua|Duncan: — Her war weakened us, we're lucky the empire didn't make a move.}
+	PRE_ANASTASIA_EXECUTION_13 = """{color=aqua|Duncan: — Her war weakened us, we're lucky the Empire didn't make a move.}
 
-{color=yellow|Amelia: — Hmm, according to my sources she and the rebels were mostly controlled by Gregor. A king's knight.}
+{color=yellow|Amelia: — Hmm, according to my sources she and the rebels were mostly controlled by Gregor, the king's knight.}
 
 {color=aqua|Duncan: — ...This does not excuse her involvement.}
 
@@ -5634,50 +5649,50 @@ It's time to return home.""",
 
 {color=yellow|Sigmund: — I can't say I like dat, but wat are da options we 'ave?}
 
-{color=aqua|Myr: — Indeed, for once your dwarf brain gets it.}
+{color=aqua|Myr: — Indeed, for once your dwarven brain gets it.}
 
 Sigmund didn't seem to realize the insult or maybe didn't pay it attention.""",
 	PRE_ANASTASIA_EXECUTION_16 = """{color=aqua|Amelia: — Ah, how tragic. Does our vote hold no power?}
 
 {color=yellow|Duncan: — It does not, since three of us already agreed.}
 
-{color=aqua|Amelia: — A grim fate to fall on the young maiden, and there's really nothing that can be done...?}""",
-	PRE_ANASTASIA_EXECUTION_OPTION_9 = """I wish her to live""",
+{color=aqua|Amelia: — A grim fate to fall on the young maiden, and there's really nothing that can be done..?}""",
+	PRE_ANASTASIA_EXECUTION_OPTION_9 = """I wish her to live.""",
 	PRE_ANASTASIA_EXECUTION_OPTION_10 = """*Stay silent*""",
-	PRE_ANASTASIA_EXECUTION_19 = """All guild leaders except for Amelia turn and raise an eyebrow at you.
+	PRE_ANASTASIA_EXECUTION_19 = """All guild leaders, except for Amelia, turn and raise an eyebrow at you.
 
 {color=aqua|Amelia: — Isn't it refreshing that our future mayor is so merciful?}
 
 {color=yellow|Duncan: — What are you saying? We can't risk keeping her alive and you know that. What is your goal?}""",
-	PRE_ANASTASIA_EXECUTION_OPTION_11 = """I will make her my wife""",
-	PRE_ANASTASIA_EXECUTION_OPTION_12 = """I want to make her my slave""",
+	PRE_ANASTASIA_EXECUTION_OPTION_11 = """I will make her my wife.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_12 = """I want to make her my slave.""",
 	PRE_ANASTASIA_EXECUTION_20 = """This outrageous statement even made Amelia look surprised.
 
 {color=aqua|Duncan: — You can't be serious...}
 
 {color=yellow|Myr: — I can't believe this either.}""",
-	PRE_ANASTASIA_EXECUTION_21 = """{color=aqua|Amelia: — A true man, both a conqueror and a lover. Bards would sing of this and so many women would swoon over the tale. }
+	PRE_ANASTASIA_EXECUTION_21 = """{color=aqua|Amelia: — A true [man], both a conqueror and a lover. Bards would sing of this and so many women would swoon over the tale. }
 
-{color=yellow|Duncan: — Enough of your nonsense, you might've earned reputation enough to become mayor, but marrying a former rebel princess is ridiculous. }
+{color=yellow|Duncan: — Enough of your nonsense, you might've earned reputation enough to become mayor, but marrying a former rebel princess is ridiculous.}
 
 {color=aqua|Amelia: — I actually don't think so.}
 
 {color=yellow|Duncan: — What?}
 
-{color=aqua|Amelia: — Consider the following, what if we have the princess marry our mayor and publicly acknowledge our regime? Won't she be more useful this way than having her executed? Moreover, many rebels would consider her as a legitimate co-ruler, while of course she would have none of the power. }
+{color=aqua|Amelia: — Consider the following, what if we have the princess marry our mayor and publicly acknowledge our regime? Won't she be more useful this way than having her executed? Moreover, many rebels would consider her as a legitimate co-ruler, while of course she would have none of the power.}
 
 {color=yellow|Duncan: — That's... Never going to happen.}""",
-	PRE_ANASTASIA_EXECUTION_22 = """{color=aqua|Amelia: — Well, you never know where a girl's heart might stray. I think it's better than to doom such a young beauty to death.}
+	PRE_ANASTASIA_EXECUTION_22 = """{color=aqua|Amelia: — Well, you never know where a girl's heart might stray. I think it's better than to doom such young beauty to death.}
 
 The meeting descended into an uproar as people started arguing over the new idea.""",
-	PRE_ANASTASIA_EXECUTION_23 = """{color=aqua|Myr: — Hmph, if it's [name], [he] might manage it, I suppose. }
+	PRE_ANASTASIA_EXECUTION_23 = """{color=aqua|Myr: — Hmph, if it's [name], [he] might manage it, I suppose.}
 
 {color=yellow|Sigmund: — I say it's okay if ya think so, we trust [name].}""",
 	PRE_ANASTASIA_EXECUTION_24 = """Being left in minority Duncan remained silent for some time, as the room mostly came to the conclusion that your proposal is sound.
 
 {color=aqua|Duncan: — Very well. If [name] can indeed convince the princess to publicly acknowledge our regime there's no harm in keeping her around, provided her status will be that of a slave. Even as... [his] wife. }
 
-{color=yellow|Amelia: — I suspect it's not going to be easy at all, [name]. But I'm sure you'll figure something out. }
+{color=yellow|Amelia: — I suspect it's not going to be easy at all, [name]. But I'm sure you'll figure something out.}
 
 {color=aqua|Duncan: — If you fail, she will be executed as planned. Until either happens your election will be put on hold.
 
@@ -5686,66 +5701,66 @@ Duncan: — With this the meeting is over.}""",
 
 {color=yellow|Duncan: — I admire your ambition, but this is too much even for you. If she manages to escape, her status will allow her to lead another rebellion, even more fierce.}
 
-{color=aqua|Amelia: — I see where you are coming from, but think about it, if she's to declare her acceptance of our institution and asks rebels to disband it would be even better for us.}
+{color=aqua|Amelia: — I see where you are coming from, but think about it: if she's to declare her acceptance of our institution and asks rebels to disband, it would be even better for us.}
 
 {color=yellow|Duncan: — She has shown no willingness to cooperate, so I find it hard to believe.}
 
 {color=aqua|Amelia: — I believe our future mayor has proven [he]'s capable of great things. So why don't we try it?}""",
-	PRE_ANASTASIA_EXECUTION_26 = """{color=aqua|Myr: — Hmph, if it's [name], [he] might manage it, I suppose. }
+	PRE_ANASTASIA_EXECUTION_26 = """{color=aqua|Myr: — Hmph, if it's [name], [he] might manage it, I suppose.}
 
 {color=yellow|Sigmund: — Yah, I agree. There's no point rushin' either.}""",
 	PRE_ANASTASIA_EXECUTION_27 = """{color=aqua|Duncan: — ...Very well. You can attempt to persuade her. But if you fail she will be executed as planned. Until either happens your election will be put on hold.}""",
 	PRE_ANASTASIA_EXECUTION_28 = """{color=aqua|Duncan: — Then, we've decided. The execution will be held next week. After that we will appoint the mayor. Thank you for your work.}""",
 
 	MIND_CONTROL_1 = """— Well, who would've thought you would be so ambitious as to get your hands on the princess herself. But I assure you this shall not be easy. Duncan did not lie when he said she's completely unwilling to cooperate as she sees us as nothing but evil.
-
+	
 — You'll have to do your best in order to persuade her. I'll give you a little tip. Play on her naivety and sense of duty. She still holds a strong conviction that she's responsible for everyone's wellbeing. But if you aren't sure of yourself, you could try a less sophisticated ways.""",
 	MIND_CONTROL_OPTION_1 = """What ways?""",
-	MIND_CONTROL_OPTION_2 = """You mean torture""",
-	MIND_CONTROL_2 = """— No-no, the torture wouldn't work on her, if anything, it would probably make things worse, she might become even more recalcitrant leading up to her death.""",
+	MIND_CONTROL_OPTION_2 = """You mean torture.""",
+	MIND_CONTROL_2 = """— No-no, the torture wouldn't work on her. If anything, it would probably make things worse, she might become even more recalcitrant leading up to her death.""",
 	MIND_CONTROL_3 = """— There exist some practices of enforced control. I've observed a magic technique which completely bends a target's mind to another's will. Then the master could issue any orders, precious little was left of the slave's own personality in the end though.
-
+	
 — I guess it's up to you if you wish to use something like this. I'm sure if you ask nicely enough Myr could point you in the right direction.""",
-	MIND_CONTROL_OPTION_3 = """Thanks for the tip""",
-	MIND_CONTROL_OPTION_4 = """I wouldn't want to do something like this""",
+	MIND_CONTROL_OPTION_3 = """Thanks for the tip.""",
+	MIND_CONTROL_OPTION_4 = """I wouldn't want to do something like this.""",
 	MIND_CONTROL_4 = """— It's my pleasure. I wish you success in whatever you are planning.""",
-	MIND_CONTROL_5 = """— Neither would I, a willing servant is always best after all. I just want to make sure you know it's an option. Use this information as you see fit.""",
+	MIND_CONTROL_5 = """— Neither would I, a willing servant is always best, after all. I just want to make sure you know it's an option. Use this information as you see fit.""",
 	MIND_CONTROL_OPTION_5 = """About the princess...""",
 	MIND_CONTROL_6 = """— Yes, how'd your negotiations go?""",
-	MIND_CONTROL_OPTION_6 = """I've decided it's not worth it""",
-	MIND_CONTROL_OPTION_7 = """I'm still on it""",
+	MIND_CONTROL_OPTION_6 = """I've decided it's not worth it.""",
+	MIND_CONTROL_OPTION_7 = """I'm still on it.""",
 	MIND_CONTROL_7 = """— So you agree to her execution?""",
 	MIND_CONTROL_8 = """— Shame you didn't succeed. The execution will be held in a week.""",
-	MIND_CONTROL_OPTION_8 = """Ask about the mind control technique""",
+	MIND_CONTROL_OPTION_8 = """*Ask about the mind control technique*""",
 	MIND_CONTROL_9 = """— Mind control? We aren't really that interested in it. It's a method that would be more popular for the sly puss and her company.""",
-	MIND_CONTROL_OPTION_9 = """But you must know something""",
-	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
+	MIND_CONTROL_OPTION_9 = """But you must know something.""",
+	MIND_CONTROL_OPTION_10 = """Your help would be invaluable.""",
 	MIND_CONTROL_10 = """— *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about other applications.""",
 	MIND_CONTROL_11 = """— Hey, [name], what's up?""",
-	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique""",
-	MIND_CONTROL_13 = """Just dropped to say hi *Leave*""",
+	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique.""",
+	MIND_CONTROL_13 = """Just dropped to say hi. *Leave*""",
 	MIND_CONTROL_14 = """— Eeh? I haven't been asked about this in a long while.
 
 Xari takes a long pause thinking about your request.
 
-— I am in desperate need of gold right now, but this kind of magic it's too exhausting and I don't feel right doing it so... I can do it for you for 5000 gold. But this will be the only time and that's my price. Take it or leave it.""",
+— I am in desperate need of gold right now, but this kind of magic it's too exhausting and I don't feel right doing it, so... I can do it for you for 5.000 gold. But this will be the only time and that's my price. Take it or leave it.""",
 	MIND_CONTROL_OPTION_11 = """*Pay*""",
-	MIND_CONTROL_OPTION_12 = """I'll think about it """,
+	MIND_CONTROL_OPTION_12 = """I'll think about it.""",
 	MIND_CONTROL_15 = """You pass Xari the huge sum which she stores away.
 
 — Alright, let me prepare it.""",
 	MIND_CONTROL_16 = """After a couple of hours Xari comes out with a small vial of bright pink liquid.
 
-— Finally done. This potion will suppress the will of its target irreversibly. One last thing, you'll need a medium to act as the control device.""",
-	MIND_CONTROL_OPTION_13 = """*Give her bracelet*""",
+— Finally done. This potion will suppress the will of it's target irreversibly. One last thing, you'll need a medium to act as the control device.""",
+	MIND_CONTROL_OPTION_13 = """*Give her the bracelet*""",
 	MIND_CONTROL_17 = """You pass Xari the princess's bracelet which helped to locate her.
 
 — Oh, this one must be expensive. Alright.
 
 She chants a control spell as the bracelet and potion glows with a dark aura.""",
 	MIND_CONTROL_18 = """— Done. Make your victim drink this, then put the bracelet on them, this way you'll also be able to command them. And one more time, their mind will be permanently broken. Don't ask me then to fix it, I can't.""",
-	MIND_CONTROL_OPTION_14 = """Thanks""",
-	MIND_CONTROL_OPTION_15 = """Noted""",
+	MIND_CONTROL_OPTION_14 = """Thanks.""",
+	MIND_CONTROL_OPTION_15 = """Noted.""",
 	MIND_CONTROL_19 = """— Alright, hold on.
 
 Xari fishes a small ring out of her stash. As she chants the control spell, the ring and the potion glow with a dark aura.""",
@@ -5757,8 +5772,8 @@ Xari fishes a small ring out of her stash. As she chants the control spell, the 
 
 
 — Hey, isn't it a nice day? Maybe a bit too nice for such a sad occurrence. But cheer up, you are going to become the mayor soon after all. And it is important for your image to be seen in public.""",
-	ANASTASIA_EXECUTION_OPTION_1 = """I don't think I should be cheerful at someone's execution""",
-	ANASTASIA_EXECUTION_OPTION_2 = """I'm fine, at least this is over""",
+	ANASTASIA_EXECUTION_OPTION_1 = """I don't think I should be cheerful at someone's execution.""",
+	ANASTASIA_EXECUTION_OPTION_2 = """I'm fine, at least this is over.""",
 	ANASTASIA_EXECUTION_2 = """— Well, maybe it won't be that bad after all.
 
 Amelia smiled at you mysteriously.""",
@@ -5775,9 +5790,9 @@ The princess's face flushes deep red as hundreds of eyes fix on her, inspecting 
 
 The herald pauses for dramatic effect.
 
-{color=yellow|Herald: — ... A prolonged public humiliation. She will pay for her crimes against our fair city with the innocence of her virginal body. Every citizen should use her as they see fit. Our healers stand ready in case grievous physical injury is inflicted.}
+{color=yellow|Herald: — ...a prolonged public humiliation. She will pay for her crimes against our fair city with the innocence of her virginal body. Every citizen should use her as they see fit. Our healers stand ready in case grievous physical injury is inflicted.}
 
-{color=yellow|Anastasia: — Whaa...?}
+{color=yellow|Anastasia: — Whaa..?}
 
 The princess's face is a picture of fear and confusion, trying to decide if she should be happy her life is being spared, or if she would prefer execution to her imminent brutal degradation. Tears form in her eyes as a chorus of perverted cheers ring out from the crowd
 
@@ -5791,11 +5806,11 @@ You turn to Amelia in surprise, momentarily distracted from the plight of the na
 {color=yellow|Amelia: — Don't look so shocked! I simply convinced Duncan and the others that after this nobody will accept her as royalty again. She'll be neutralized, safe. Physically anyway, no guarantee what state her mind will be left in after getting fucked by every cock in the city...}
 
 On the platform, the first man has climbed the stairs and is examining the princess's virgin cunt with his dirty fingers as the crowd catcalls and jeers. Anastasia squeezes her thighs together in a doomed effort to stop the man's crude inspection of her unused pussy. The man forcefully shoves a finger into her asshole instead, making the princess scream in pain.""",
-	ANASTASIA_EXECUTION_OPTION_3 = """Clever move""",
-	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off""",
-	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
+	ANASTASIA_EXECUTION_OPTION_3 = """Clever move.""",
+	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off.""",
+	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing.""",
 	ANASTASIA_EXECUTION_8 = """{color=aqua|Amelia: — I did say I pity her, didn't I? And this is much more fun to watch too.}""",
-	ANASTASIA_EXECUTION_9 = """{color=aqua|Amelia: — *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.}""",
+	ANASTASIA_EXECUTION_9 = """{color=aqua|Amelia: — *Giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.}""",
 	ANASTASIA_EXECUTION_10 = """{color=aqua|Amelia: — Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.}""",
 	ANASTASIA_EXECUTION_11 = """With his grubby finger still inside Anastasia's ass the man roughly kicks her legs apart, spreading her wide. The princess wails and wriggles in the stocks, humiliated by the intrusion into her clenched sphincter The crowd roars in anticipation as the man pulls his sizable cock out of his pants and begins to rub it against her soft thighs. 
 
@@ -5822,7 +5837,7 @@ The man forces his cock into her, bursting her hymen open as the princess scream
 	DUNCANS_DECLARATION_START = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced.
 
 — None can deny how instrumental the efforts of [Sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
-	ANASTASIA_EXECUTION_13 = """It doesn't take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia's legs.. 
+	ANASTASIA_EXECUTION_13 = """It doesn't take long for the man to cum, gripping her slim waist and thrusting his penis deep as his seed pumps into her. He turns to the crowd and bows, eliciting another raucous cheer from the mob as his cum trickles down Anastasia's legs.
 
 {color=yellow|Amelia: — Did I mention I pity her? I do, you know, poor thing. But this is so much more fun to watch.}
 
@@ -5842,11 +5857,11 @@ He pulls his cock out of her sucking mouth as she looks at him bewildered. He wa
 
 The line to abuse her has hardly shrunk at all, with several of those who have already had their pleasure rejoining for a second turn. Anastasia's cries and pleading have given way to ragged sobs and the occasional agonized moan as another man penetrates her ruined pussy or ass. The cheers of the crowd settle down into a regular rhythm.
 
-Anastasia is displayed in the main square for a week, during which time there is never a break from the cocks defiling her holes. She is used by every man in the city as an example to any who would challenge the guilds. Eventually, her beaten and violated body disappears from the stocks. """,
+Anastasia is displayed in the main square for a week, during which time there is never a break from the cocks defiling her holes. She is used by every man in the city as an example to any who would challenge the guilds. Eventually, her beaten and violated body disappears from the stocks.""",
 
 	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail cell where a single unbound prisoner is held: the former leader of the rebellion, princess Anastasia. Despite her state she observes you with a sharp glare, yet remains silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little need for that.""",
-	ANASTASIA_PERSUASION_OPTION_1 = """Recruit""",
-	ANASTASIA_PERSUASION_OPTION_2 = """Mindbreak""",
+	ANASTASIA_PERSUASION_OPTION_1 = """*Recruit*""",
+	ANASTASIA_PERSUASION_OPTION_2 = """*Mindbreak*""",
 	ANASTASIA_PERSUASION_2 = """You take the Xari's potion out of your pouch and forcefully pour it into Anastasia's mouth before she can realize what's going on. While she struggles, you hold her down, covering her mouth and nose to make sure she swallows it. Her build is too slight to resist much less fight back.
 
 As you finish, she drops to the ground coughing heavily and clinging to her throat. For the last time her eyes display fear and hatred towards you, still not fully realizing what's happening to her. A moment later she loses consciousness.
@@ -5854,83 +5869,83 @@ As you finish, she drops to the ground coughing heavily and clinging to her thro
 	ANASTASIA_PERSUASION_3 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
 	ANASTASIA_PERSUASION_4 = """You put the enchanted bracelet over her wrist, the same one she'd treasured and lost some time ago. The bracelet shines for a moment then shrinks such that it cannot be removed.""",
 	ANASTASIA_PERSUASION_5 = """After another minute the princess starts moving and slowly rises up. Her eyes are devoid of consciousness and she only barely manages to focus on you standing before her. As you give her a couple of simple orders and she follows them, you decide the work is finished.""",
-	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess""",
-	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend""",
-	ANASTASIA_PERSUASION_OPTION_5 = """That room is too nice for scum like you""",
+	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess.""",
+	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend.""",
+	ANASTASIA_PERSUASION_OPTION_5 = """That room is too nice for scum like you.""",
 	ANASTASIA_PERSUASION_6 = """— ...What do you want?""",
 	ANASTASIA_PERSUASION_7 = """— If your friendship is genuine, then you have to let me out of here.""",
 	ANASTASIA_PERSUASION_8 = """— Hmph. I did not choose this room. Put me wherever you want, it changes nothing.""",
-	ANASTASIA_PERSUASION_9 = """— I know I will be executed soon no matter what I do, what is it you want? """,
+	ANASTASIA_PERSUASION_9 = """— I know I will be executed soon no matter what I do, what is it you want?""",
 	ANASTASIA_PERSUASION_OPTION_6 = """I wish to save you""",
 	ANASTASIA_PERSUASION_OPTION_7 = """Are you really ready to part with your life?""",
-	ANASTASIA_PERSUASION_OPTION_8 = """Your sentence isn't final""",
+	ANASTASIA_PERSUASION_OPTION_8 = """Your sentence isn't final.""",
 	ANASTASIA_PERSUASION_10 = """A spark of hope appeared in Anastasia's eyes despite her effort to deny the possibility. She might've presented herself as being ready to die, but after all she wanted to live.
 
-— I-i know you are lying. What other fate could there be for me now?""",
+— I-I know you are lying. What other fate could there be for me now?""",
 	ANASTASIA_PERSUASION_11 = """— My readiness can't change this situation. Why have you come?""",
 	ANASTASIA_PERSUASION_12 = """— My execution was planned since the day my father was executed himself. Do you take me for a fool?""",
-	ANASTASIA_PERSUASION_OPTION_9 = """There's a way to save you""",
-	ANASTASIA_PERSUASION_OPTION_10 = """I have negotiated for your pardon""",
+	ANASTASIA_PERSUASION_OPTION_9 = """There's a way to save you.""",
+	ANASTASIA_PERSUASION_OPTION_10 = """I have negotiated for your pardon.""",
 	ANASTASIA_PERSUASION_13 = """You tell the princess that to be saved she must comply with the guilds and publicly support them. However, her reaction is entirely exasperated at the thought.
 
 — This is nonsense, these people have been after my life since I was seven. And now you say I can be pardoned. Who are you that I should take your word on it?""",
-	ANASTASIA_PERSUASION_OPTION_11 = """I'm the next mayor of this city""",
-	ANASTASIA_PERSUASION_OPTION_12 = """I've done a great number of deeds, including delivering you to them""",
+	ANASTASIA_PERSUASION_OPTION_11 = """I'm the next mayor of this city.""",
+	ANASTASIA_PERSUASION_OPTION_12 = """I've done a great number of deeds, including delivering you to them.""",
 	ANASTASIA_PERSUASION_14 = """Anastasia fell silent upon hearing that. She had no reason to doubt you, but she was still hesitant to hope.
 
-— This can't be the only thing they actually expect of me, there's more isn't there?""",
-	ANASTASIA_PERSUASION_OPTION_13 = """I will ask your hand, but you won't really have the option to refuse me""",
-	ANASTASIA_PERSUASION_OPTION_14 = """You'll have to marry me """,
-	ANASTASIA_PERSUASION_OPTION_15 = """You will also become my property""",
-	ANASTASIA_PERSUASION_OPTION_16 = """Your destiny will be in my hands""",
-	ANASTASIA_PERSUASION_15 = """Anastasia visibly blushed. She had expected to be married off for political purposes as dictated by her status eventually, but the possibility that such a situation could be an option now had never occurred to her.
+— This can't be the only thing they actually expect of me. There's more, isn't there?""",
+	ANASTASIA_PERSUASION_OPTION_13 = """I will ask your hand, but you won't really have the option to refuse me.""",
+	ANASTASIA_PERSUASION_OPTION_14 = """You'll have to marry me. """,
+	ANASTASIA_PERSUASION_OPTION_15 = """You will also become my property.""",
+	ANASTASIA_PERSUASION_OPTION_16 = """Your destiny will be in my hands.""",
+	ANASTASIA_PERSUASION_15 = """Anastasia visibly blushed. She had expected eventually to be married off for political purposes as dictated by her status, but the possibility that such a situation could be an option now had never occurred to her.
 
 — T-This is ridiculous. Why would I marry my captor?""",
-	ANASTASIA_PERSUASION_OPTION_17 = """My feelings are sincere""",
+	ANASTASIA_PERSUASION_OPTION_17 = """My feelings are sincere.""",
 	ANASTASIA_PERSUASION_OPTION_18 = """You could do worse, have I not at least proven myself capable already?""",
 	ANASTASIA_PERSUASION_OPTION_19 = """Do you really have any other choice?""",
 	ANASTASIA_PERSUASION_16 = """Anastasia blushed even harder, clearly having little experience dealing with such situations, yet she maintained a royal countenance.
 
 — Even if this is true, I have no reason to accept the demands of my father's killers.""",
-	ANASTASIA_PERSUASION_17 = """Anastasia paused to evaluate and reevaluate you and your statements. However, she wasn't ready to compromise and maintained a royal bearing .
+	ANASTASIA_PERSUASION_17 = """Anastasia paused to evaluate and reevaluate you and your statements. However, she wasn't ready to compromise and maintained a royal bearing.
 
 — Regardless, I have no reason to accept the demands of my father's killers.""",
 	ANASTASIA_PERSUASION_18 = """— Hmph, I have no reason to accept the demands of my father's killers.""",
 	ANASTASIA_PERSUASION_19 = """— Hmph, turned into a plaything. Why would I accept such a fate?""",
-	ANASTASIA_PERSUASION_OPTION_20 = """I promise to treat you fairly""",
+	ANASTASIA_PERSUASION_OPTION_20 = """I promise to treat you fairly.""",
 	ANASTASIA_PERSUASION_OPTION_21 = """You'd prefer to die instead?""",
-	ANASTASIA_PERSUASION_OPTION_22 = """It's the best option you have left""",
+	ANASTASIA_PERSUASION_OPTION_22 = """It's the best option you have left.""",
 	ANASTASIA_PERSUASION_20 = """Anastasia went silent for about half a minute. Sadness and fatigue warred on her face faintly, but it seemed like she wasn't completely opposed to the possibility.""",
 	ANASTASIA_PERSUASION_21 = """
 
 — Don't they say it's better to die standing than to live on your knees?""",
 	ANASTASIA_PERSUASION_22 = """
 
-— Regardless, I have no reason to accept the demands of my father's killers""",
-	ANASTASIA_PERSUASION_OPTION_23 = """I'm sorry for your loss, but you have to think of yourself now""",
+— Regardless, I have no reason to accept the demands of my father's killers.""",
+	ANASTASIA_PERSUASION_OPTION_23 = """I'm sorry for your loss, but you have to think of yourself now.""",
 	ANASTASIA_PERSUASION_OPTION_24 = """Do you have some sort of father complex?""",
-	ANASTASIA_PERSUASION_OPTION_25 = """Being stubborn will not benefit you now""",
+	ANASTASIA_PERSUASION_OPTION_25 = """Being stubborn will not benefit you now.""",
 	ANASTASIA_PERSUASION_23 = """— If that's true, then you'll understand why I cannot pardon my father's murderers.""",
 	ANASTASIA_PERSUASION_24 = """— Shut up!""",
 	ANASTASIA_PERSUASION_25 = """— You don't understand it.""",
 	ANASTASIA_PERSUASION_26 = """After my father was killed, I've been forced to live constantly on the run and in fear. What did we do to deserve this?""",
-	ANASTASIA_PERSUASION_27 = """Amelia appeared in the room nearly soundless giving you a sign that she's out to help you.
+	ANASTASIA_PERSUASION_27 = """Amelia appeared in the room nearly soundless, giving you a sign that she's out to help you.
 
-{color=yellow|Amelia: — Allow me, I can explain as long as you are willing to take my word for it. King Alber was ruthless and cruel.}
+{color=yellow|Amelia: — Allow me. I can explain as long as you are willing to take my word for it. King Alber was ruthless and cruel.}
 
 {color=aqua|Anastasia: — You lie! Father was always kind to me.}
 
-{color=yellow|Amelia: — I have no reason to lie, he was gone long before I was of an age to be able to benefit from his demise. He might've been kind to his kin, but not to his subjects. }
+{color=yellow|Amelia: — I have no reason to lie, he was gone long before I was of an age to be able to benefit from his demise. He might've been kind to his kin, but not to his subjects.}
 
 {color=aqua|Anastasia: — ...}""",
-	ANASTASIA_PERSUASION_28 = """{color=yellow|Amelia: — Have you heard of the Broderick family? Lee Broderick was a successful merchant, but one day he delivered a book to the king as a gift. Upon reading the book, the king decided that it was meant as a hidden insult, or perhaps even a curse. His family and his children were sentenced to hang one by one. Some managed to flee, but were caught, and their accomplices hanged as well.}
+	ANASTASIA_PERSUASION_28 = """{color=yellow|Amelia: — Have you heard of the Broderick family? Lee Broderick was a successful merchant, but one day he delivered a book to the king as a gift. Upon reading the book, the king decided that it was meant as a hidden insult, or perhaps even a curse. His family and his children were sentenced to hang one by one. Some managed to flee, but were caught, and their accomplices were hanged as well.}
 
 {color=aqua|Anastasia: — ...}
 
-{color=yellow|Amelia: — There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let's not forget the unlucky harlots being whipped to death about every few months. That, I've personally seen with my own eyes on two occasions.}""",
+{color=yellow|Amelia: — There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let's not forget the unlucky harlots being whipped to death about every few months. That I've personally seen with my own eyes on two occasions.}""",
 	ANASTASIA_PERSUASION_29 = """{color=aqua|Anastasia: — Enough...}
 
-{color=yellow|Amelia: — Didn't "Uncle" Greg tell you about these? }
+{color=yellow|Amelia: — Didn't 'Uncle' Greg tell you about these?}
 
 {color=aqua|Anastasia: — No.}
 
@@ -5939,26 +5954,26 @@ Anastasia lowered her eyes emanating an aura of depression.
 {color=yellow|Amelia: — I don't blame you, every child wants to be proud of their parents, but it shouldn't blind you.}
 
 {color=aqua|Anastasia: — If I was wrong all along... What's the point of this struggle? I've always believed I was doing my best for the people.}""",
-	ANASTASIA_PERSUASION_OPTION_26 = """You've tried to do what you thought was right""",
-	ANASTASIA_PERSUASION_OPTION_27 = """You were mistaken, and it's time to make up for it""",
-	ANASTASIA_PERSUASION_OPTION_28 = """Stop your useless whining""",
+	ANASTASIA_PERSUASION_OPTION_26 = """You've tried to do what you thought was right.""",
+	ANASTASIA_PERSUASION_OPTION_27 = """You were mistaken, and it's time to make up for it.""",
+	ANASTASIA_PERSUASION_OPTION_28 = """Stop your useless whining.""",
 	ANASTASIA_PERSUASION_30 = """{color=aqua|Anastasia: — I don't feel like I have any right to make choices for anyone now.}""",
-	ANASTASIA_PERSUASION_OPTION_29 = """If anything, you would still be able to help people instead of dying""",
-	ANASTASIA_PERSUASION_OPTION_30 = """It's your fault, but you can redeem yourself by helping us. All you must do is submit and acknowledge our rule""",
-	ANASTASIA_PERSUASION_OPTION_31 = """Your crimes can still be pardoned if you cooperate""",
-	ANASTASIA_PERSUASION_31 = """{color=aqua|Anastasia: — .....I'm sorry, please leave me alone for now, I need some time to think.}
+	ANASTASIA_PERSUASION_OPTION_29 = """If anything, you would still be able to help people instead of dying.""",
+	ANASTASIA_PERSUASION_OPTION_30 = """It's your fault, but you can redeem yourself by helping us. All you must do is submit and acknowledge our rule.""",
+	ANASTASIA_PERSUASION_OPTION_31 = """Your crimes can still be pardoned if you cooperate.""",
+	ANASTASIA_PERSUASION_31 = """{color=aqua|Anastasia: — ...I'm sorry, please, leave me alone for now, I need some time to think.}
 
 Amelia gives you a sign to comply with this request and you both leave the room.""",
 	ANASTASIA_PERSUASION_32 = """— Her facade is broken, but we will only find out if you managed to persuade her tomorrow.""",
-	ANASTASIA_PERSUASION_OPTION_32 = """Thanks for the help""",
-	ANASTASIA_PERSUASION_OPTION_33 = """You are really impressive with stuff like this""",
+	ANASTASIA_PERSUASION_OPTION_32 = """Thanks for the help.""",
+	ANASTASIA_PERSUASION_OPTION_33 = """You are really impressive with stuff like this.""",
 	ANASTASIA_PERSUASION_33 = """— You are quite welcome, I've been having a lot of fun with this myself.""",
-	ANASTASIA_PERSUASION_34 = """— He-he, of course I am and who do you take me for? I didn't earn my position in the servant's guild just by having a pair of great tits.""",
+	ANASTASIA_PERSUASION_34 = """— He-he, of course I am. And who do you take me for? I didn't earn my position in the Servants Guild just by having a pair of great tits.""",
 	ANASTASIA_PERSUASION_35 = """
 
 — We still have her elf servant Aire in captivity. We could arrange their meeting next time if you think it may help our cause.""",
-	ANASTASIA_PERSUASION_OPTION_34 = """Sure, this could get her thinking beyond herself""",
-	ANASTASIA_PERSUASION_OPTION_35 = """No, that'll probably just make things more difficult""",
+	ANASTASIA_PERSUASION_OPTION_34 = """Sure, this could get her thinking beyond herself.""",
+	ANASTASIA_PERSUASION_OPTION_35 = """No, that'll probably just make things more difficult.""",
 	ANASTASIA_PERSUASION_36 = """— Alright, I'll see what can be done. Let's hope you didn't piss her off too badly or she might become a nuisance.""",
 	ANASTASIA_PERSUASION_37 = """
 
@@ -5975,32 +5990,32 @@ Amelia gives you a playful smile and leaves to go about her business""",
 You realize there's nothing you can say to change Anastasia's mind at this point, so your only option is to leave.""",
 	ANASTASIA_PERSUASION_41 = """You leave the jail cell and find Amelia waiting for you.
 
-— Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me.""",
+— Reject, huh. Too bad. I guess, we don't have that many options now. Well, you'll know where to find me.""",
 	ANASTASIA_PERSUASION_42 = """
 
 — Hello, [name]... I've been thinking a lot about this. I think you're right. I shouldn't throw my life away. I... I think I can acknowledge the guilds and beg mercy for my actions, but I'm still unsure if I should become yours.""",
-	ANASTASIA_PERSUASION_OPTION_36 = """I wish to reunite you with your friend (Call Aire)""",
-	ANASTASIA_PERSUASION_OPTION_37 = """I wanted to return something of yours""",
-	ANASTASIA_PERSUASION_OPTION_38 = """Eventually we'll have to come to an agreement""",
-	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later""",
+	ANASTASIA_PERSUASION_OPTION_36 = """I wish to reunite you with your friend. *Call Aire*""",
+	ANASTASIA_PERSUASION_OPTION_37 = """I wanted to return something of yours.""",
+	ANASTASIA_PERSUASION_OPTION_38 = """Eventually we'll have to come to an agreement.""",
+	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later.""",
 	ANASTASIA_PERSUASION_43 = """Anastasia gives you a puzzled look. A few moments later the guards escort the elven girl to the cell at Amelia's orders.
 
 {color=aqua|Anastasia: — Aire..? You're alive!}
 
 {color=yellow|Aire: — Ana...}
 
-The two girls hug weeping softly for the next couple of seconds. However both realize their reunion will not last long.
+The two girls hug weeping softly for the next couple of seconds. However, both realize their reunion will not last long.
 
 {color=aqua|Anastasia: — You look... worn.}
 
 {color=yellow|Aire: — Don't worry, I'm fine. I've been through worse.}""",
 	ANASTASIA_PERSUASION_44 = """Aire turns to you and you can still spot the hatred in her eyes.
 
-{color=yellow|Aire: — I'm sorry, but this [man] has no honor. You should never fall into [his] hands. }
+{color=yellow|Aire: — I'm sorry, but this [man] has no honor. You should never fall into [his] hands.}
 
-{color=aqua|Anastasia: — Wha... why? }
+{color=aqua|Anastasia: — Wha... why?}
 
-{color=yellow|Aire: — I'm sorry, but please believe me. [He]'s but a beast. I don't believe [he] will treat you with any sort of respect.}
+{color=yellow|Aire: — I'm sorry, but please, believe me. [He]'s but a beast. I don't believe [he] will treat you with any sort of respect.}
 
 Anastasia kept silent, analyzing her friend's words. Looks like her trust for you has taken a big hit.
 
@@ -6008,19 +6023,19 @@ After a few more exchanges Aire is taken away by the guards. The princess gather
 	ANASTASIA_PERSUASION_45 = """Anastasia remained silent as Aire left the room.""",
 	ANASTASIA_PERSUASION_46 = """Aire turns to you. Her face displays a mix of confusion and respect for you.
 
-{color=aqua|Anastasia: — Aire... I-I've been persuaded. I mean this [man] has proposed that I become [his] property in exchange for my life.}
+{color=aqua|Anastasia: — Aire... I-I've been persuaded. I mean, this [man] has proposed that I become [his] property in exchange for my life.}
 
-{color=yellow|Aire: — So that's how it turned out... }
+{color=yellow|Aire: — So that's how it turned out...}
 
 Aire sighed deeply in contemplation.""",
-	ANASTASIA_PERSUASION_47 = """{color=yellow|Aire: — I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I've known. If [he] managed to negotiate for your life I think you should accept the opportunity.}
+	ANASTASIA_PERSUASION_47 = """{color=yellow|Aire: — I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I've known. If [he] managed to negotiate for your life, I think you should accept the opportunity.}
 
 {color=aqua|Anastasia: — It's unusual for you to endorse someone like this.}
 
 {color=yellow|Aire: — Yes, but... you can't die now. You are the kindest person I've ever known.}""",
 	ANASTASIA_PERSUASION_48 = """
 
-{color=yellow|Aire: — I can't say I vouch for this [man], but [he] has treated me fairly so far. If [he] managed to negotiate for your life I think you should accept the opportunity.}""",
+{color=yellow|Aire: — I can't say I vouch for this [man], but [he] has treated me fairly so far. If [he] managed to negotiate for your life, I think you should accept the opportunity.}""",
 	ANASTASIA_PERSUASION_49 = """
 
 {color=aqua|Anastasia: — Aire, but you know, I've never... what if I can't be what [he] asks?}
@@ -6033,18 +6048,18 @@ Aire sighed deeply in contemplation.""",
 
 — This is... I thought I'd lost it. Where did you get it? You went all the way back to the hideout...
 
-— Thank you. This bracelet was a gift from my father. I understand, he wasn't a good king, but... It has been my only memento for all these years.""",
+— Thank you. This bracelet was a gift from my father. I understand he wasn't a good king, but... It has been my only memento for all these years.""",
 	ANASTASIA_PERSUASION_52 = """— I know that, but I don't really know if I can trust you.""",
-	ANASTASIA_PERSUASION_OPTION_40 = """I will shower you with love""",
-	ANASTASIA_PERSUASION_OPTION_41 = """I promise to treat you with dignity""",
+	ANASTASIA_PERSUASION_OPTION_40 = """I will shower you with love.""",
+	ANASTASIA_PERSUASION_OPTION_41 = """I promise to treat you with dignity.""",
 	ANASTASIA_PERSUASION_OPTION_42 = """Your needs will be met, what more can you ask?""",
 	ANASTASIA_PERSUASION_53 = """Anastasia stared at the wall, weighing your words.""",
 	ANASTASIA_PERSUASION_54 = """
 
-— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my [master]. Now go, I know what is waiting for me and I am prepared.""",
+— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my [Master]. Now go, I know what is waiting for me and I am prepared.""",
 	ANASTASIA_PERSUASION_55 = """You leave the jail cell and find Amelia waiting for you.
 
-— Rejected, huh. Too bad. I guess we don't have that many options now. Well, you know where to find me if you need anything.""",
+— Rejected, huh. Too bad. I guess, we don't have that many options now. Well, you know where to find me if you need anything.""",
 	ANASTASIA_PERSUASION_56 = """— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
 	ANASTASIA_PERSUASION_57 = """— But I have one condition. Could you ask your guild leader girl to come?""",
 	ANASTASIA_PERSUASION_58 = """Soon after she said it, the cell door opens and Amelia walks in. Looks like she had lingered, awaiting the outcome of your discussion.
@@ -6062,9 +6077,9 @@ Aire sighed deeply in contemplation.""",
 
 
 	ANASTASIA_PERSUASION_59 = """— Well, well, looks like you've done it. You've managed to persuade the haughty princess herself. I'm very impressed. We'll prepare her for the speech, and then we'll stage an announcement.""",
-	ANASTASIA_PERSUASION_OPTION_43 = """I couldn't have done it without you""",
-	ANASTASIA_PERSUASION_OPTION_44 = """She must be smitten with me""",
-	ANASTASIA_PERSUASION_OPTION_45 = """Can't wait for this to be finally over""",
+	ANASTASIA_PERSUASION_OPTION_43 = """I couldn't have done it without you.""",
+	ANASTASIA_PERSUASION_OPTION_44 = """She must be smitten with me.""",
+	ANASTASIA_PERSUASION_OPTION_45 = """Can't wait for this to be finally over.""",
 	ANASTASIA_PERSUASION_60 = """— No need for flattery, you sealed the deal.""",
 	ANASTASIA_PERSUASION_61 = """— Haha, I wonder. How will you handle a pure maiden's heart though?""",
 	ANASTASIA_PERSUASION_62 = """— Don't worry, now comes the best part.""",
@@ -6073,39 +6088,39 @@ Aire sighed deeply in contemplation.""",
 
 	ANASTASIA_PERSUASION_2_MARRY1 = "— But tell me, I wanna know, why would you choose me?",
 
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "I've fell in love with first sight (Charm Factor)",
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = "I can't stop imagining you naked (Sex Factor)",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "[Charm Factor] I've fell in love with first sight.",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = "[Sex Factor] I can't stop imagining you naked.",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION3 = "How could anyone pass on a girl like you?",
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = "Well, technically you still are a princess",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = "Well, technically you still are a princess.",
 
 	ANASTASIA_PERSUASION_2_MARRY2_1 = "\n\nAnastasia blushes heavily and looks away at your remark, but does not seem to doubt it.",
 	ANASTASIA_PERSUASION_2_MARRY2 = "— I-I don't know if I can answer your feelings here, this is too much pressure for me.",
 
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION1 = "You can take it at your own pace (Charm Factor)",
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION2 = "We can work on it once things are set out (Sex Factor)",
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION3 = "I have little interest in your feelings, as long as I can get your body",
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION4 = "I understand, it would be a lot of pressure for anyone, but you can do it",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION1 = "[Charm Factor] You can take it at your own pace.",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION2 = "[Sex Factor] We can work on it once things are set out.",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION3 = "I have little interest in your feelings, as long as I can get your body.",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION4 = "I understand, it would be a lot of pressure for anyone, but you can do it.",
 
 	ANASTASIA_PERSUASION_2_ENSLAVE1 = "— I have to ask, what plans exactly do you have for me?",
-	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1 = "I'm sure your charisma and experience can help with management",
-	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2 = "You will make a good house servant",
-	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3 = "You will have to become trained in physical work or maybe fighting",
-	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4 = "A bed warmer seems like an ideal place for you",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1 = "I'm sure your charisma and experience can help with management.",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2 = "You will make a good house servant.",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3 = "You will have to become trained in physical work or maybe fighting.",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4 = "A bed warmer seems like an ideal place for you.",
 
-	ANASTASIA_PERSUASION_2_ENSLAVE2_1 = "— Is that so... So you plan to also use me in a... intimate way?",
-	ANASTASIA_PERSUASION_2_ENSLAVE2 = "— So, I will have to become your property. I assume, that also mean in a... intimate way?",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_1 = "— Is that so... So you plan to also use me in... an intimate way?",
+	ANASTASIA_PERSUASION_2_ENSLAVE2 = "— So, I will have to become your property. I assume, that also mean in... an intimate way?",
 
-	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1 = "Naturally, but I can promise you won't regret it. (Sex Factor)",
-	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = "To be frank, I'd not be able to pass on a beauty like you. (Charm Factor)",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1 = "[Sex Factor] Naturally, but I can promise you won't regret it.",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = "[Charm Factor] To be frank, I'd not be able to pass on a beauty like you.",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3 = "Well, this would happen sooner or later.",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4 = "I don't really have such interest in you",
 
 	ANASTASIA_ACCEPT_MARRY = """
 
-— I-I will accept your offer. I will announce whatever support the guilds want of me and I'll become... yours. I can't believe this is where I would end up, but I'll try to accept you as my consort.""",
+— I-I accept your offer. I will announce whatever support the guilds want of me and I'll become... yours. I can't believe this is where I would end up, but I'll try to accept you as my consort.""",
 	ANASTASIA_ACCEPT_ENSLAVE = """
 
-— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
+— I-I accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
 
 
 	ANASTASIA_PERSUASION_NEXTDAY = "By this time Anastasia must have decided if she's willing to accept your proposal. It's a good idea to visit her again.",
@@ -6115,11 +6130,11 @@ Aire sighed deeply in contemplation.""",
 
 Anastasia steps out onto the balcony of the government building and the crowd's mumbling gives way to silence awaiting for her words.
 
-— People of the Aliron. I am Anastasia, the former princess and leader of the rebels. I remember being at this square when I made my announcement before. I know that many of you detest me for the conflict I brought on, but I am here to... ask for your forgiveness.
+— People of Aliron. I am Anastasia, the former princess and leader of the rebels. I remember being at this square when I made my announcement before. I know that many of you detest me for the conflict I brought on, but I am here to... ask for your forgiveness.
 
 Upon hearing this the crowd seemed to beam with enthusiasm, while Anastasia mustered her resolve.""",
-	ANASTASIA_DECLARATION_2 = """— My ways were wrong and I've led many people to their demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
-
+	ANASTASIA_DECLARATION_2 = """— My ways were wrong and I've led many people to their demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake to stop and surrender.
+	
 — I'm no longer the rebel leader. I know some of you still believe it is my birth right to rule, but I am no longer eligible. Instead, from now on I will be supporting the newly elected mayor of Aliron, [Sir] [name] [surname]. I will be at [his] mercy while doing my best for the sake of the people.
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia around the waist. The crowd is energized, as the rumors have been spread for some time of your deeds and how you're going to become the next ruler. Spontaneous applause breaks out.""",
@@ -6127,18 +6142,18 @@ Upon hearing your name you come out of the shadows, delivering a quick bow and h
 
 {color=yellow|Male Citizen 2: — She's really quite a beauty.}
 
-{color=aqua|Female Citizen: — They make a nice pair}""",
-	ANASTASIA_DECLARATION_OPTION_1 = """Wave to the crowd""",
-	ANASTASIA_DECLARATION_OPTION_2 = """Fondle Anastasia's butt""",
+{color=aqua|Female Citizen: — They make a nice pair.}""",
+	ANASTASIA_DECLARATION_OPTION_1 = """*Wave to the crowd*""",
+	ANASTASIA_DECLARATION_OPTION_2 = """*Fondle Anastasia's butt*""",
 	ANASTASIA_DECLARATION_4 = """You spend some more time greeting the citizens as Anastasia finishes her speech. Soon enough the announcement is declared to be over and you walk back inside the building.""",
 	ANASTASIA_DECLARATION_5 = """As Anastasia continues her speech your hand, which she's become only a little accustomed to, moves lower and lands on her butt, making her to noticeably stutter and blush. Her discipline allows her to finish the speech without any terrible mistakes though and you walk back inside the building together.""",
 	ANASTASIA_DECLARATION_1MC = """Today is your inauguration. With the civil war coming to an end, the people gather expecting a declaration of the victory. The central square is packed with nearly every citizen capable of attending, all in anticipation of the event.
 
 Anastasia steps out onto the balcony of the government building and the crowd's mumbling gives way to silence awaiting her words. You hand her the guild's prepared statement and instruct her to speak.
 
-— People of the Aliron. I am Anastasia. The former princess and leader of the rebels. I remember being at this square. When I made my announcement before. You are right to detest me. For the war was indeed all my fault. So I am here. To beg for your forgiveness.
+— People of Aliron. I am Anastasia. The former princess and leader of the rebels. I remember being at this square. When I made my announcement before. You are right to detest me. For the war was indeed all my fault. So I am here. To beg for your forgiveness.
 
-The crowd seems satisfied with her words, not noticing her halting oration or perhaps not remembering her more eloquent speech so many days ago. """,
+The crowd seems satisfied with her words, not noticing her halting oration or perhaps not remembering her more eloquent speech so many days ago.""",
 	ANASTASIA_DECLARATION_2MC = """— My ways were wrong. And I've led many people to their demise. I deeply regret it. And I wish for this war to stop. This is why I ask. For those who are still out there. Fighting for my sake. To stop and surrender.
 
 — I'm no longer the rebel leader. Some of you believe it is my birth right to rule. I renounce all claims to rule. From now on I support. The newly elected mayor of Aliron. [Sir] [name] [surname]. I will be at [his] mercy. I am now willingly [his] slave.
@@ -6157,8 +6172,8 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 {color=aqua|Duncan: — So now you're officially mayor.}
 
 {color=yellow|Sigmund: — Let's get to da feast already.}""",
-	FINAL_WORDS_OPTION_1 = """Thank you""",
-	FINAL_WORDS_OPTION_2 = """I will miss the thrill""",
+	FINAL_WORDS_OPTION_1 = """Thank you.""",
+	FINAL_WORDS_OPTION_2 = """I will miss the thrill.""",
 	FINAL_WORDS_2 = """The end of the First Act. Thank you for playing.""",
 
 
@@ -6170,16 +6185,16 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 	AFTER_ELECTION_PRINCESS_3 = """
 
 — So, I'm your slave now... What are you planning to do with me?""",
-	AFTER_ELECTION_PRINCESS_OPTION_1 = """I have feelings for you""",
-	AFTER_ELECTION_PRINCESS_OPTION_2 = """I'm not really interested in you""",
-	AFTER_ELECTION_PRINCESS_OPTION_3 = """You are just a fine trophy""",
-	AFTER_ELECTION_PRINCESS_OPTION_4 = """You'll be a great plaything""",
-	AFTER_ELECTION_PRINCESS_OPTION_5 = """I haven't decided yet""",
+	AFTER_ELECTION_PRINCESS_OPTION_1 = """I have feelings for you.""",
+	AFTER_ELECTION_PRINCESS_OPTION_2 = """I'm not really interested in you.""",
+	AFTER_ELECTION_PRINCESS_OPTION_3 = """You are just a fine trophy.""",
+	AFTER_ELECTION_PRINCESS_OPTION_4 = """You'll be a great plaything.""",
+	AFTER_ELECTION_PRINCESS_OPTION_5 = """I haven't decided yet.""",
 	AFTER_ELECTION_PRINCESS_4 = """Anastasia blushed fiercely upon hearing that, still not used to the situation and being in a submissive role.
 
-— That's so? Then you must wish to lay with me. I'm... not entirely against it""",
-	AFTER_ELECTION_PRINCESS_5 = """Embrace her""",
-	AFTER_ELECTION_PRINCESS_6 = """Not today""",
+— That's so? Then you must wish to lay with me. I'm... not entirely against it.""",
+	AFTER_ELECTION_PRINCESS_5 = """*Embrace her*""",
+	AFTER_ELECTION_PRINCESS_6 = """Not today.""",
 #	AFTER_ELECTION_PRINCESS_7 = """You chivalrously carry Anastasia to your bedroom.
 #
 #— I'm sorry, this is my first time with a man.""",
@@ -6215,7 +6230,7 @@ You slip the silk panties over her round ass and let them fall around her ankles
 You climb onto the satin sheets and lay beside Anastasia, fondling her finely-proportioned curves. Your fingers press in between her legs and you begin to tease her slit, feeling its tightness as your thumb glides across her clit. Her virgin pussy quickly grows slick with arousal as you finger her, and her hands brush against your penis as you bite gently on her ear and neck.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_6 = """With one hand, you spread Anastasia's legs wide and her breath catches as you swing your body up over hers. You hold yourself there for a moment, pinning her wrists to the bed. She looks up into your eyes and you see desire mingling with the fear. You stoop to kiss her again and the shaft of your cock presses against her clit. She gasps breathlessly as your tongue slides into her mouth.
 
-{color=yellow|Anastasia: — W-wait, I'm not-.}
+{color=yellow|Anastasia: — W-wait, I'm not-}
 
 Anastasia cries out as your thick cock bursts through her hymen and fills her pussy. Her wetness lessens the discomfort as your penis thrusts into her, stretching her unused cunt as you drive yourself deep. A thin smear of virginal blood coats your shaft as you pull out, before plunging back in between her pussy lips. Mouth hanging open, arms pinned, Anastasia moans helplessly while you fuck her.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_7 = """Anastasia's eyes roll back and her body shudders as an orgasm overwhelms the young princess. Penetrating her tight pussy again and again, your own orgasm begins to build as her slim legs curl around your waist. You hold her down on the bed as your powerful cock pounds into her, and when your cum explodes inside her, you fall on top of her.
@@ -6223,45 +6238,45 @@ Anastasia cries out as your thick cock bursts through her hymen and fills her pu
 Your tongue fills Anastasia's mouth as her pussy convulses around your orgasming cock, milking the cum from you. She sighs bodily and collapses back on the pillows, your penis still gripped inside her pussy. Her breasts and belly heave wildly as she pants for breath. A sheen of sweat sticks a lock of hair to her cheek and makes her skin shine in the lamplight. A shy look spreads across the princess's gorgeous face.
 
 {color=yellow|Anastasia: — I didn't know this would feel so good. D-Did I do well?}""",
-	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_1 = """You did majestically""",
-	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_2 = """Not bad for a first time""",
-	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_3 = """Passable, but you'll get better with more practice""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_1 = """You did majestically.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_2 = """Not bad for a first time.""",
+	AFTER_ELECTION_PRINCESS_CONSENT_OPTION_3 = """Passable, but you'll get better with more practice.""",
 	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_1 = """{color=yellow|Anastasia: — Thank you... Wait, are you mocking me?}
 
-{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
+{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning..?}""",
 	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_2 = """{color=yellow|Anastasia: — T-Thanks, I guess I can't compete with you?}
 
-{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
+{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning..?}""",
 	AFTER_ELECTION_PRINCESS_CONSENT_REPLY_3 = """Anastasia shies away slightly offended, but quickly snaps out of it.
 
-{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning?..}""",
+{color=yellow|Anastasia: — For some reason I feel at peace with you. My first night with a man wasn't so bad after all. C-Can I sleep next to you until the morning..?}""",
 
 	# Idk part
 	AFTER_ELECTION_PRINCESS_12 = """The princess's face becomes slightly more relaxed but also uncertain as she hears your words. Deciding she'll be useful for some tasks or barter later on you decide to leave it at this for now.""",
 	AFTER_ELECTION_PRINCESS_13 = """Anastasia frowned upon hearing that but had no choice, but to comply.
 
 — I see... I guess I'm at your mercy now.""",
-	AFTER_ELECTION_PRINCESS_OPTION_6 = """I will claim my prize today""",
-	AFTER_ELECTION_PRINCESS_OPTION_7 = """I don't feel like doing it """,
+	AFTER_ELECTION_PRINCESS_OPTION_6 = """I will claim my prize today.""",
+	AFTER_ELECTION_PRINCESS_OPTION_7 = """I don't feel like doing it.""",
 #	AFTER_ELECTION_PRINCESS_14 = """You order the princess to join you in your bedroom, deciding it shall be a great way to end the evening.""",
 #	AFTER_ELECTION_PRINCESS_15 = """At your command, Anastasia removes her clothes and you position her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming the girl's virginity. Despite her sobs she does not plead for you to stop, stoically enduring the pain and humiliation for the rest of the night.""",
 #	AFTER_ELECTION_PRINCESS_16 = """Anastasia looks puzzled by your answer but does not protest. However, she seems nervous. Events are not playing out as she expected.""",
 	AFTER_ELECTION_PRINCESS_16_OLD = """Anastasia looks puzzled by your answer but does not protest. However, she seems nervous. Events are not playing out as she expected.""",
 #	AFTER_ELECTION_PRINCESS_17 = """After the feast you've found your mindbroken Anastasia, who seems to patiently wait for you with a somewhat vacant look to her eyes.""",
-	AFTER_ELECTION_PRINCESS_OPTION_8 = """Put her to use""",
-	AFTER_ELECTION_PRINCESS_OPTION_9 = """Maybe another time""",
+	AFTER_ELECTION_PRINCESS_OPTION_8 = """*Put her to use*""",
+	AFTER_ELECTION_PRINCESS_OPTION_9 = """Maybe another time.""",
 #	AFTER_ELECTION_PRINCESS_18 = """By your order Anastasia removes her clothes and you drop her on the bed on all fours. Deciding it's a suitable position to complete your conquest of her, you quickly mount her from behind claiming broken girl's virginity. Despite her state, she offers a nice warmth and tightness so you have a fairly satisfying night.""",
 	AFTER_ELECTION_PRINCESS_PRE_14 = "You order the princess to take your hand and you lead her to the bedroom.",
-	AFTER_ELECTION_PRINCESS_14 = """Inside the bedroom, you order Anastasia to close the door and then stand in front of you. You lay down some ground rules. As your slave she will have to call you the Master at all times, and do whatever you demand. 
+	AFTER_ELECTION_PRINCESS_14 = """Inside the bedroom, you order Anastasia to close the door and then stand in front of you. You lay down some ground rules. As your slave she will have to call you [Master] at all times, and do whatever you demand. 
 
 Anastasia nods mutely, making you reprimand her gently. 
 
-{color=yellow|Anastasia: — I mean, yes. Yes, M... Master. As you say.}
+{color=yellow|Anastasia: — I mean, yes. Yes, M... [Master]. As you say.}
 
 You walk around her, inspecting your new property closely. You lift her dress at the back and run the palm of your hand inside her lace petticoats, up her inner thigh, and into the cleft of her tense ass. Anastasia trembles but does not protest. You reach over her shoulder and into the top of her blouse, where you take the weight of one breast in your cupped hand. """,
 	AFTER_ELECTION_PRINCESS_15 = """Standing behind her with your hand down her cleavage, lightly pinching a nipple, you instruct her to relax.
 
-{color=yellow|Anastasia: — I-I'm sorry, M-Master. I'm trying, I'm just nervous}
+{color=yellow|Anastasia: — I-I'm sorry, M-[Master]. I'm trying, I'm just nervous}
 
 You pinch her nipple harder for a second and she squeals. You explain that excuses for failure will not be tolerated. Releasing her breast, you come around in front. Anastasia looks at you reproachfully, unable to shake off a lifetime of expected deference so easily. 
 
@@ -6272,11 +6287,11 @@ You cut her off with a quick, casual slap across the face and instruct her not t
 You explain that you are disappointed with her rebelliousness, and that she will have to earn your trust if she wishes not to have a worse fate happen to her. It is in her interests, you tell Anastasia, that she learns to please you first in all things. With that, you order her to disrobe.""",
 	AFTER_ELECTION_PRINCESS_16 = """Anastasia blushes deeply at your order to undress and looks as if she will argue, so you warn her that she can keep her fancy clothes if she undresses herself. If she makes you strip her, the clothes will be gone. 
 
-{color=yellow|Anastasia: — Yes, master. I will do it myself.}
+{color=yellow|Anastasia: — Yes, [Master]. I will do it myself.}
 
 Anastasia begins to disrobe, unbuckling her knee-high boots and slipping them off. She sheds her blue cloak and lays it over an armchair. She begins to peel off her stockings but you stop her and gesture that she should remove the dress first. Anastasia struggles to unfasten the back of her dress and you raise an eyebrow at the delay.
 
-{color=yellow|Anastasia: — I'm sorry, Master. I'm used to having Aire to help me.}
+{color=yellow|Anastasia: — I'm sorry, [Master]. I'm used to having Aire to help me.}
 
 Smirking, you order her to turn around. Standing in her stockinged feet, she holds her long blonde hair up and you unclip the hooks holding her dress in place at the back. She loosens the girdle around her waist as you move back around in front of her and the dress begins to fall open at the top, her soft, heavy tits spilling out.""",
 	#gets naked here
@@ -6287,7 +6302,7 @@ Anastasia steps out of the panties and stands naked, her hands reflexively cover
 Her skin is smoother than the common girls, her hair more lustrous. Despite the hard time she must've had during all these years, she still seemingly led a fairly luxurious life.""",
 	AFTER_ELECTION_PRINCESS_18 = """With Anastasia naked and obedient, you begin a more thorough inspection of your property. Your hands roam across her body, exploring her ripe breasts, slender belly, and soft round ass. She whimpers slightly as you press her thighs apart to reveal her pussy, but you pretend not to notice. Your fingers stroke her slit and then probe between her tidy labia to check her hymen. 
 
-{color=yellow|Anastasia: — W-what are you doing? You shouldn't touch...!}
+{color=yellow|Anastasia: — W-what are you doing? You shouldn't touch..!}
 
 You ignore Anastasia's pleas as she has no right to protest, being your slave now. Neither is her weak body capable of resisting you. She sobs as your fingers roughly explore her tight virgin holes though she has no alternative in the end but to tolerate your intimate assault.""",
 	AFTER_ELECTION_PRINCESS_19 = """You order the naked, weeping princess to lie on the bed and she obeys without a fight. You climb on top and seize her wrists, dragging them up over her head where you handcuff her to the headboard. New tears flow from Anastasia's eyes as you unbuckle your pants and your cock springs out. You rub your hard penis between her juicy tits and instruct her to spread her legs for you. 
@@ -6309,7 +6324,7 @@ You withdraw your hand and grab her by the breasts, squeezing them roughly throu
 Not sure how well the princess will even understand your words, you tell her she has made a lot of trouble and you are going to enjoy punishing her. You pinch the soft flesh of her inner thigh cruelly, marking the pale skin red as she gives a soft cry of pain. You explain that she will be a slave for your cock, a plaything to be fucked and abused at your whim. You ask if she understands.""",
 	AFTER_ELECTION_PRINCESS_MINDBREAK_3 = """Bent over and pressed down on the table as your hand rudely explores between her legs, the princess replies in a flat voice devoid of emotion.
 
-{color=yellow|Anastasia: — Yes, master.}
+{color=yellow|Anastasia: — Yes, [Master].}
 
 Surprised at Anastasia's level of comprehension you mutter your approval, unbuckling your belt to free your cock. You walk around the desk until you are in front of her and grabbing a fistful of her long blonde hair you pull her pretty face up to look at you. Her expression is still vacuous, as though mesmerized, as you hold your cock in front of her and tell her to suck on it. 
 
@@ -6334,29 +6349,29 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	##################################################New
 	AIREAMELIAREPORT = "In the morning you receive a brief missive from Amelia stating that she learned the location of princess and inviting you to visit her.",
 	AIREAMELIAMEETOPTION = "I got your message, you have new information?",
-	AIREAMELIAMEET1 = "— Yes, I have a lead on the princess's location, and I'm willing to share provided you agree to do me a favor in the future. That's a nice trade since this could very well be the last hurdle on your path to becoming the next mayor. So, you scratch my back and I'll scratch yours?",
-	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me",
-	AIREAMELIAMEET1_OPTION2 = "I can't agree to do you a favor without knowing what it is",
+	AIREAMELIAMEET1 = "— Yes, I have a lead on the princess' location, and I'm willing to share provided you agree to do me a favor in the future. That's a nice trade since this could very well be the last hurdle on your path to becoming the next mayor. So, you scratch my back and I'll scratch yours?",
+	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me.",
+	AIREAMELIAMEET1_OPTION2 = "I can't agree to do you a favor without knowing what it is.",
 	AIREAMELIAMEET2 = "I'm pleased to hear that. According to the elf lass, Anastasia is hiding in the elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I hope to hear news of your success.",
 	AIREAMELIAMEET2_1 = "I see. Well, I'll be waiting till you change your mind.",
 
 
 	AMELIAFINDPRINCESSOPTION = "I've been wondering if you could give me any advice on how to find someone...",
 	AMELIAFINDPRINCESS1_1 = """— You've been aiming to find our princess, I take it? I've heard you captured her little elven friend. It might be a good idea to try questioning her, if you haven't already.
-
-— Alternatively, we might rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
+	
+— Alternatively, we might rely on our friends in the Mages Guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
 	AMELIAFINDPRINCESS1_2 = """— You've been aiming to find our princess, I take it? Well, if you've given up on the imprisoned elf, I have an alternative suggestion.
+	
+— We can rely on our friends in the Mages Guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
+	AMELIAFINDPRINCESS2 = "— You've been aiming to find our princess, I take it? There aren't a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the Mages Guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.",
 
-— We can rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
-	AMELIAFINDPRINCESS2 = "— You've been aiming to find our princess, I take it? There aren't a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the mage guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me. ",
-
-	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice",
-	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I've found something",
+	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice.",
+	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I've found something.",
 	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
 	AMELIAFINDPRINCESS2_1 = "— See you soon, dear.",
-	AMELIAFINDPRINCESS2_2 = "— You're asking me? I can't do everything for you. You just need something of hers.. Don't sweat it, I'm sure you'll manage.",
+	AMELIAFINDPRINCESS2_2 = "— You're asking me? I can't do everything for you. You just need something of hers... Don't sweat it, I'm sure you'll manage.",
 	MATERIALPRINCESS_BRACELET = "Unusual Bracelet",
-	MATERIALPRINCESS_BRACELETDESCRIPT = """An unusual silver bracelet you've acquired at the rebels' hideout. On the inner side you can spot a small engraving: "To my beloved daughter". """,
+	MATERIALPRINCESS_BRACELETDESCRIPT = """An unusual silver bracelet you've acquired at the rebels' hideout. On the inner side you can spot a small engraving: 'To my beloved daughter'.""",
 	MATERIALDIVINE_SYMBOL = "Divine Symbol",
 	MATERIALDIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal, which can act as a medium for certain arts. Despite its simple look, it shows a considerable craftsmanship.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
@@ -6378,9 +6393,9 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	
 	
 	ITEMCALI_HEIRLOOM = "Heirloom Sword",
-	ITEMCALI_HEIRLOOMDESCRIPT = "A Heirloom Sword which belongs to Cali. According to her, it's rather useless but the fine smith work and mysterious aura suggests otherwise.\n\n{color=yellow|Only equippable by Cali} ",
+	ITEMCALI_HEIRLOOMDESCRIPT = "A Heirloom Sword which belongs to Cali. According to her, it's rather useless, but the fine smith work and mysterious aura suggests otherwise.\n\n{color=yellow|Only equippable by Cali}",
 	ITEMCALI_HEIRLOOM_ACTIVE = "Cali's Heirloom Sword",
-	ITEMCALI_HEIRLOOM_ACTIVEDESCRIPT = "A Heirloom Sword which belongs to Cali. Due to certain events she managed to use it to its better potential.\n\n{color=yellow|Only equippable by Cali} ",
+	ITEMCALI_HEIRLOOM_ACTIVEDESCRIPT = "A Heirloom Sword which belongs to Cali. Due to certain events she managed to use it to its better potential.\n\n{color=yellow|Only equippable by Cali}",
 
 	ITEMCALI_COLLAR = "Cali's Collar",
 	ITEMCALI_COLLARDESCRIPT = "A collar made specifically for your slave, Cali.\n\n{color=yellow|Only equippable by Cali} ",
@@ -6407,142 +6422,142 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	UNIQUE_FINAL_OPERATION_DUNGEON = "Rebel's Hideout",
 
 	ZEPHYRA_EXTRA_GREET = "— You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
-	ZEPHYRA_EXTRA_GREET2 = "— Hello, [master]. How can I serve you? You must want to ask me some questions?",
+	ZEPHYRA_EXTRA_GREET2 = "— Hello, [Master]. How can I serve you? You must want to ask me some questions?",
 	ZEPHYRA_EXTRA_OPTION1 = "How do you like it here?",
-	ZEPHYRA_EXTRA_REPLY1_1 = "— It's quite interesting, but I don't have any choice at this point now, do I? I'm not complaining though, since that's what I've agreed to. ",
-	ZEPHYRA_EXTRA_REPLY1_2 = "— Not shabby at all. It could use a woman's touch though. Maybe add some flowers and ribbons, make it a bit more homey, you know. ",
+	ZEPHYRA_EXTRA_REPLY1_1 = "— It's quite interesting, but I don't have any choice at this point now, do I? I'm not complaining though, since that's what I've agreed to.",
+	ZEPHYRA_EXTRA_REPLY1_2 = "— Not shabby at all. It could use a woman's touch though. Maybe add some flowers and ribbons, make it a bit more homey, you know.",
 
 	ZEPHYRA_EXTRA_OPTION2 = "Tell me more about...",
-	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
+	ZEPHYRA_EXTRA_OPTION2_1 = "Alios.",
 	ZEPHYRA_EXTRA_REPLY2_1 = """— Alios is a deity of the winds. I'm not surprised you haven't heard of him, he does not seem very interested in being worshipped, so only a very few people bother with him.
-
+	
 — Me? Of course it's impossible for me to not worship him. Once you become a champion it's ingrained in you, it's a thing affecting your every step in some way. """,
 	ZEPHYRA_EXTRA_OPTION2_1_1 = "You seem rather casual about it",
 	ZEPHYRA_EXTRA_OPTION2_1_2 = "I'd hate to be in a such a position, I value my independence",
 	ZEPHYRA_EXTRA_OPTION2_1_3 = "So you both are good-for-nothing loners",
 
 	ZEPHYRA_EXTRA_REPLY2_1_1 = "— Hehe, I guess you just get used to it after some time. Alios wouldn't like me to feel special because of it.",
-	ZEPHYRA_EXTRA_REPLY2_1_2 = "— Hmmm, that's too bad, even if Alios is a god of winds, freedom is only appealing when it outweighs the benefits gained through accepting being bound anyway. ",
-	ZEPHYRA_EXTRA_REPLY2_1_3 = "— Hey, not true, I can also draw quite well! I mean, we aren't as fancy as Celena or Freya, but you take what you can get. ",
-	ZEPHYRA_EXTRA_OPTION2_2 = "Your Past",
+	ZEPHYRA_EXTRA_REPLY2_1_2 = "— Hmmm, that's too bad, even if Alios is a god of winds, freedom is only appealing when it outweighs the benefits gained through accepting being bound anyway.",
+	ZEPHYRA_EXTRA_REPLY2_1_3 = "— Hey, not true, I can also draw quite well! I mean, we aren't as fancy as Celena or Freya, but you take what you can get.",
+	ZEPHYRA_EXTRA_OPTION2_2 = "Your past.",
 	ZEPHYRA_EXTRA_REPLY2_2 = """— What I was doing prior to becoming a champion? To tell you the truth, I don't remember. One day I was up in the middle of a forest, at that moment I was already a champion. Mysterious right?
+	
+— For some reason, I've never been that interested in what came before that, so there it is.""",
 
-— For some reason, I've never been that interested in what came before that, so there it is. """,
-
-	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
+	ZEPHYRA_EXTRA_OPTION2_3 = "Princess.",
 	ZEPHYRA_EXTRA_REPLY2_3 = """— So you are hunting that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then I could live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
 	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",
-	ZEPHYRA_EXTRA_REPLY3 = """— You should continue with your business, and don't worry about me. Sorry I can't point you in the right direction, I don't really have one either. Once the situation presents itself we'll probably recognize it.
-
-— Oh and I'm afraid I won't be able to perform another barrier trick for a while. You don't get to use miracles casually. That does make our meeting fateful though, right? """,
+	ZEPHYRA_EXTRA_REPLY3 = """— You should continue with your business, and don't worry about me. Sorry, I can't point you in the right direction, I don't really have one either. Once the situation presents itself we'll probably recognize it.
+	
+— Oh, and I'm afraid I won't be able to perform another barrier trick for a while. You don't get to use miracles casually. That does make our meeting fateful though, right?""",
 
 	KURDAN_EXTRA_GREET = "— Greetings, [name]. Do you have some questions for me?",
-	KURDAN_EXTRA_OPTION1 = "How do you like it here",
+	KURDAN_EXTRA_OPTION1 = "How do you like it here?",
 	KURDAN_EXTRA_REPLY1 = "— You have quite a home. I must admit, it's not like in my homeland, but I did agree to this, didn't I? Well, there's some good in not having to worry about where to sleep and what to eat.",
-	KURDAN_EXTRA_OPTION2 = "About magic",
-	KURDAN_EXTRA_REPLY2 = "— I've been studying magic since I was a juvenile. My father was an experienced practitioner, so I guess it runs in the family. Some see it as a tool, just a means to an end, but I'm a lot more curious about the underlying mechanics of how it operates and what role it has in the world. I still have much to learn, though. ",
-	KURDAN_EXTRA_OPTION3 = "About orcs",
+	KURDAN_EXTRA_OPTION2 = "About magic...",
+	KURDAN_EXTRA_REPLY2 = "— I've been studying magic since I was a juvenile. My father was an experienced practitioner, so I guess it runs in the family. Some see it as a tool, just a means to an end, but I'm a lot more curious about the underlying mechanics of how it operates and what role it has in the world. I still have much to learn, though.",
+	KURDAN_EXTRA_OPTION3 = "About orcs...",
 	KURDAN_EXTRA_REPLY3 = "— Those who united my homelands decided to outlaw the practice of magic altogether. They are in a difficult position today after being ruled for so long with an iron fist by the cult of Thoth. Now the cult is persecuted, and we... they have replaced magic with technology as the foundation of their power. I think it's unavoidable that you will encounter them some day.",
 
 	AMELIA_BONUS_QUESTION = "— [name], I have a question for you and please answer honestly. Who would you find more attractive between me and the princess? She seems only slightly younger than me and I can't deny her beauty, that alone must make her quite appealing.",
-	AMELIA_BONUS_QUESTION_OPTION1 = "Princess",
-	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia",
+	AMELIA_BONUS_QUESTION_OPTION1 = "Princess.",
+	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia.",
 	AMELIA_BONUS_QUESTION_OPTION3 = "This is a tough choice...",
-	AMELIA_BONUS_QUESTION_OPTION4 = "I'm actually into men",
+	AMELIA_BONUS_QUESTION_OPTION4 = "I'm actually into men.",
 
 	AMELIA_BONUS_QUESTION_REPLY1 = """— A-ha, I see. I can't really compete with a genuine ex-princess, can I?
-
-— Just take care not to fall for her, you won't be able to switch sides and turn on us. """,
-	AMELIA_BONUS_QUESTION_REPLY2 = """— Oh my, aren't you a flatterer? You would really prefer this mutt cat to royal blood? How silly. To tell you the truth, for most of my life I was just another servant. I expect I have been one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
-	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she'll always be a liability to us. ",
+	
+— Just take care not to fall for her, you won't be able to switch sides and turn on us.""",
+	AMELIA_BONUS_QUESTION_REPLY2 = """— Oh my, aren't you a flatterer? You would really prefer this mutt cat to royal blood? How silly. To tell you the truth, for most of my life I was just another servant. I expect I have been one since birth. And now I don't even have a proper master. Would you be up to the challenge..? I'm just kidding. But be sure I appreciate your company.""",
+	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she'll always be a liability to us.",
 	AMELIA_BONUS_QUESTION_REPLY4 = "— Oh, is that so? That's quite convenient. I guess we won't have to worry about the influence of her charms on you.",
 	AMELIA_BONUS_QUESTION_REPLYALL = """
 
-— Well, I will not hold you any longer, good luck with your mission. """,
+— Well, I will not hold you any longer, good luck with your mission.""",
 
 
 
 	# DAISY QUESTLINE
-	DAISY_RECRUITMENT_START = """As you bring Daisy to your mansion she looks at it in awe. It seems she didn't actually expect you to be a land owner. As soon as you make it inside she gives you a deep bow.
+	DAISY_RECRUITMENT_START = """As you bring Daisy to your mansion she looks at it in awe. It seems she didn't actually expect you to be a landowner. As soon as you make it inside she gives you a deep bow.
 
-— Uhm, thank you, [master]. I-I will do my best to serve you! """,
-	DAISY_RECRUITMENT_OPTION_1 = "You don't have to be so formal",
-	DAISY_RECRUITMENT_OPTION_2 = "I'll not expect less from you",
-	DAISY_RECRUITMENT_OPTION_3 = "I'm sure you will *Fondle her butt*",
-	DAISY_RECRUITMENT_REPLY_1 = "Daisy seems to brighten up a bit at your words. It seems she's happy to have a gentle master.",
+— Uhm, thank you, [Master]. I-I will do my best to serve you!""",
+	DAISY_RECRUITMENT_OPTION_1 = "You don't have to be so formal.",
+	DAISY_RECRUITMENT_OPTION_2 = "I'll not expect less from you.",
+	DAISY_RECRUITMENT_OPTION_3 = "I'm sure you will. *Fondle her butt*",
+	DAISY_RECRUITMENT_REPLY_1 = "Daisy seems to brighten up a bit at your words. It seems she's happy to have a gentle [Master].",
 	DAISY_RECRUITMENT_REPLY_2 = "Daisy bows again and proceeds to her newly acquired duties.",
 	DAISY_RECRUITMENT_REPLY_3 = "Daisy's cheeks turn red as she feels your hand on her butt. She's clearly uncomfortable with your move, but does not dare to protest. After a few moments you let her proceed to her duty.",
 
 
 	DAISY_CLOTHES_START = """During the morning you are met by Daisy, the recently acquired bunny girl who now belongs to you. It seems she's eager to tell you something.
 
-— Good morning, [master]. I wanted to express my gratitude for your kindness. You've brought me to your home and treated me kindly all this time, but...
+— Good morning, [Master]. I wanted to express my gratitude for your kindness. You've brought me to your home and treated me kindly all this time, but...
 
-You see Daisy is very hesitant to state her request. """,
+You see Daisy is very hesitant to state her request.""",
 	DAISY_CLOTHES_OPTION_1_1 = "What do you want?",
-	DAISY_CLOTHES_OPTION_1_2 = "Just say it",
+	DAISY_CLOTHES_OPTION_1_2 = "Just say it.",
 	DAISY_CLOTHES_OPTION_1_3 = "Has the cat got your tongue?",
 	DAISY_CLOTHES_REPLY_1 = """— I-I'm sorry, but I feel that I don't look good enough for your household. I only wear these rags and I might make your estate look worse...""",
-	DAISY_CLOTHES_OPTION_2_1 = "I don't really care",
-	DAISY_CLOTHES_OPTION_2_2 = "Fair enough, you do need better clothes",
+	DAISY_CLOTHES_OPTION_2_1 = "I don't really care.",
+	DAISY_CLOTHES_OPTION_2_2 = "Fair enough, you do need better clothes.",
 	DAISY_CLOTHES_OPTION_2_3 = "Aren't you a bit too demanding for a slave?",
-	DAISY_CLOTHES_REPLY_2_1 = """— Ah, well, then, as long as [master] is ok with it, I won't mind either...
+	DAISY_CLOTHES_REPLY_2_1 = """— Ah, well, then, as long as [Master] is ok with it, I won't mind either...
 
 As she leaves the room you give a second thought and decide if it might be a decent idea to get her new clothes at some point...""",
-	DAISY_CLOTHES_OPTION_2_1_1 = "She's a hard worker and I do care for her after all",
-	DAISY_CLOTHES_OPTION_2_1_2 = "She's not worth the effort",
+	DAISY_CLOTHES_OPTION_2_1_1 = "She's a hard worker and I do care for her after all.",
+	DAISY_CLOTHES_OPTION_2_1_2 = "She's not worth the effort.",
 	DAISY_CLOTHES_REPLY_2_1_1 = "After all, even if you said you don't mind, it's not a bad idea to get her new clothes. You make a note to get a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant.",
 	DAISY_CLOTHES_REPLY_2_1_2 = "You decide you don't want to put any more money into her. You might get rid of her soon, so there's no point in making any additional investments.",
-	DAISY_CLOTHES_REPLY_2_2 = """— I-I'm very grateful to you for this, [master]! Please, don't let this bother you more than necessary.
+	DAISY_CLOTHES_REPLY_2_2 = """— I-I'm very grateful to you for this, [Master]! Please, don't let this bother you more than necessary.
 
-Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant. """,
-	DAISY_CLOTHES_REPLY_2_3 = "— I-I'm very sorry, [master]! I just thought that you would also prefer me to look less messy.",
+Daisy bows to you with all the respect she's able to demonstrate. You make a note on getting a new dress for Daisy. You could go meet Sigmund for high quality clothes, or perhaps Amelia could offer something more... extravagant.""",
+	DAISY_CLOTHES_REPLY_2_3 = "— I-I'm very sorry, [Master]! I just thought that you would also prefer me to look less messy.",
 
-	DAISY_CLOTHES_SIGMUND_OPTION_1 = "I'm looking for a custom-made dress",
+	DAISY_CLOTHES_SIGMUND_OPTION_1 = "I'm looking for a custom-made dress.",
 	DAISY_CLOTHES_SIGMUND_REPLY_1 = """You explain to Sigmund that one of your slaves needs a change of clothes.
 
-— Aye, we make work clothes, but from what ya described I think servants could suit ya needs betta. We don't really do girly stuff.""",
-	DAISY_CLOTHES_SIGMUND_OPTION_2 = "Thanks for the tip",
+— Aye, we make work clothes, but from what ya described I think Servants could suit ya needs betta. We don't really do girly stuff.""",
+	DAISY_CLOTHES_SIGMUND_OPTION_2 = "Thanks for the tip.",
 
-	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom-made dress",
+	DAISY_CLOTHES_AMELIA_OPTION_1 = "I'm looking for a custom-made dress.",
 	DAISY_CLOTHES_AMELIA_REPLY_1 = """You explain to Amelia that one of your slaves needs a change of clothes.
 
 — Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
-	DAISY_CLOTHES_AMELIA_OPTION_2_1 = "I want a normal servant dress",
-	DAISY_CLOTHES_AMELIA_OPTION_2_2 = "I want something lewder",
-	DAISY_CLOTHES_AMELIA_OPTION_2_3 = "I've changed my mind",
-	DAISY_CLOTHES_AMELIA_REPLY_2_1 = """— Fair enough, we can tailor something fitting for a well-to-do land owner's servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold. """,
-	DAISY_CLOTHES_AMELIA_OPTION_2_1_1 = "Deal (150 gold)",
-	DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE = "Refuse",
+	DAISY_CLOTHES_AMELIA_OPTION_2_1 = "I want a normal servant dress.",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2 = "I want something lewder.",
+	DAISY_CLOTHES_AMELIA_OPTION_2_3 = "I've changed my mind.",
+	DAISY_CLOTHES_AMELIA_REPLY_2_1 = """— Fair enough, we can tailor something fitting for a well-to-do landowner's servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold.""",
+	DAISY_CLOTHES_AMELIA_OPTION_2_1_1 = "Deal. (150 gold)",
+	DAISY_CLOTHES_AMELIA_OPTION_2_REFUSE = "Refuse.",
 	DAISY_CLOTHES_AMELIA_REPLY_2_2 = """— Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.""",
-	DAISY_CLOTHES_AMELIA_OPTION_2_2_1 = "Deal (250 gold)",
+	DAISY_CLOTHES_AMELIA_OPTION_2_2_1 = "Deal. (250 gold)",
 	DAISY_CLOTHES_AMELIA_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
 	DAISY_CLOTHES_AMELIA_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
 
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
-— You've really done it, [master]. I never imagined this dress would be so nice.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
-	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it",
-	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "I think you should express your gratitude in a way that fits your position (Sexuals Factor)",
-	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags",
+— You've really done it, [Master]. I never imagined this dress would be so nice.\n\n{color=green|Daisy: Growth Factor +1\nDaisy: Coward Trait Lost}""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = "I'm glad you like it.",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = "[Sexuals Factor] I think you should express your gratitude in a way that fits your position.",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = "It's not for you, I can't have you walking around my mansion in rags.",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_1 = "Daisy smiles at you and with your approval returns to her tasks. It seems her spirit have risen a bit.",
-	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """— O-ofcourse, I understand. But still, thank you.
+	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """— O-of course, I understand. But still, thank you.
 
 Daisy politely smiles at you and, with your approval, returns to her tasks.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_0 = """Daisy blushes and her gaze drops to your groin, where a noticeable bulge is pressing against the front of your pants. 
 
-{color=yellow|Daisy: — Oh! Of course, Master. How should I...}
+{color=yellow|Daisy: — Oh! Of course, [Master]. How should I...}
 
 She squirms as she stands before you in her smart new dress, her hands clasped in front of her waist and twisting nervously. You look at her steadily, expectantly. """,
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_BAD = """{color=red|Failure}
 
 Daisy manages to overcome her shyness and gives you a little kiss then quickly turns away. You consider taking it further, but are too slow and she's already returned to her duties.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_1 = "What are we gonna do about this?",
-	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2 = "That's your fault, so it's only right for you to correct this",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_2 = "That's your fault, so it's only right for you to correct this.",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_3 = "*Push her head down*",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1 = """Without another word, Daisy sinks gracefully to her knees, her instinct to serve you taking over. She looks up at you with reverence, waiting with her mouth obediently open and hair held back, as you unbuckle your belt and pull your cock out. 
 
-{color=yellow|Daisy: — Oh M-Master, you are too good to me, I don't deserve this.}
+{color=yellow|Daisy: — Oh M-[Master], you are too good to me, I don't deserve this.}
 
 You lay your cock across her pretty face and she licks your balls at your instruction. You stroke her long fluffy ears gently as her quick tongue laps at the base of your shaft and she moans softly with desire.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2 = """Daisy's clear blue eyes gaze up at you longingly as she plants little licks and kisses along your cock. Her oral skills are amateurish at best, but her eagerness to please you makes up for her lack of technique. There will be plenty of time to teach her how to use her lips and tongue properly.
@@ -6556,7 +6571,7 @@ You run your hands around her head, through her soft brown hair, and up to her l
 She shudders at the unexpected intrusion, but listens to your voice and keeps her throat relaxed to avoid gagging. Having opened the way, you fuck her mouth more vigorously, using her ears to keep her head in place as your cock rams into her narrow throat. Feeling your orgasm build, you draw your penis slowly out of her.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5 = """Daisy's voice sounds different and she is panting for breath after the stretching of her throat.
 
-{color=yellow|Daisy: — D-Does this please you, Master?}
+{color=yellow|Daisy: — D-Does this please you, [Master]?}
 
 One of her hands returns to pump your shaft while the other rubs at her wet pussy excitedly. You release her ears and she goes to work eagerly sucking and licking your penis. 
 
@@ -6567,21 +6582,21 @@ You buckle your pants and look down at her cum-smeared face, her eyes still gazi
 
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_0 = """Daisy stands before you in her new dress. While appearing normal at a glance, both of you know her dress is not as simple as it appears. Daisy nervously tries to avoid eye contact, but you can easily see her blush.
 
-— T-thank you for the gift, [master]. I hope you like my new look.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
-	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great",
-	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it (reveal her body)",
+— T-thank you for the gift, [Master]. I hope you like my new look.\n\n{color=green|Daisy:Growth Factor +1\nDaisy:Coward Trait Lost}""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_1 = "You look great.",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2 = "Not quite, but we can fix it. *Reveal her body*",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_1 = """Daisy lightly smiles at your words.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2 = """You move closer to Daisy, and pull on the couple of strings, hidden in her dress folds. Her bra drops down, revealing her ample breasts. Her lower skirt drops as well, presenting obscene underwear not quite hiding her private parts from potential observers.
 
 Daisy gasps in shame as you savor her beauty.
 
-— T-this is embarrassing. I don't mind if it's [master] who is looking, but...""",
-	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_1 = "Well, you better overcome your embarrassment and properly thank me",
-	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2 = "This emphasizes your body's natural beauty nicely",
-	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3 = "It's proper apparel for a whore like you",
+— T-this is embarrassing. I don't mind if it's [Master] who is looking, but...""",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_1 = "Well, you better overcome your embarrassment and properly thank me.",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_2 = "This emphasizes your body's natural beauty nicely.",
+	DAISY_DRESS_ACQUIRED_LEWD_OPTION_1_2_3 = "It's proper apparel for a whore like you.",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1 = """Daisy blushes and her gaze drops to your groin, where a noticeable bulge is pressing against the front of your pants. 
 
-{color=yellow|Daisy: — Oh! M-Master... Can I bring you some refreshments?}
+{color=yellow|Daisy: — Oh! M-[Master]... Can I bring you some refreshments?}
 
 She squirms as she stands uncomfortably before you with her breasts exposed. Her hands are clasped in front of her waist, twisting nervously. Her nipples are hard and a wave of goosebumps runs over her naked tits. You look at her steadily, expectantly, then unbuckle your belt and pull your cock out. 
 
@@ -6593,7 +6608,7 @@ You explain that you went to a lot of expense for her dress, and she needs to sh
 You order Daisy down to her knees and she complies reluctantly. Her sleek tits quiver in the cool air. She stares at the floor.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_3 = """You order Daisy to look at you and her blue eyes turn to gaze up at you imploringly. 
 
-{color=yellow|Daisy: — P-Please, master. Isn't there something else...}
+{color=yellow|Daisy: — P-Please, [Master]. Isn't there something else...}
 
 Curtly, you order Daisy to open her mouth and after a moment of insubordinate hesitation she does. Her full lips form a perfect 'O' framing her small red tongue. Your cock twitches in anticipation and she flinches.
 
@@ -6610,7 +6625,7 @@ As you push your cock all the way into her mouth, Daisy's eyes tear up. She moan
 Daisy shudders at the unwanted intrusion, and gags until you tell her to relax her throat. Having prepared the way, you fuck her mouth more vigorously, using your grip on both ears to keep her head still as your cock rams into her narrow throat. Each time it slides out, her lips suck tight around your shaft before you shove it back in and she has to swallow your member again.""",
 	DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6 = """After several minutes of throat-fucking you feel your orgasm building, and draw your penis slowly out of her. You order the kneeling Daisy to beg for your cum. Her voice sounds different after the stretching of her throat and she is panting for breath.
 
-{color=yellow|Daisy: — M-master... Will you cum on me? Please?}
+{color=yellow|Daisy: — M-[Master]... Will you cum on me? Please?}
 
 One hand is pumping your shaft while the other rubs her wet panties. You release her ears and let her suck on the head of your penis while she jerks you off. 
 
@@ -6618,19 +6633,19 @@ Your orgasm hits, spraying thick strings of cum over Daisy's cheeks and brow and
 
 You buckle your pants and look down at her cum-smeared face, her eyes still gazing obediently up at you. You tell her to clean herself up and give her an hour of free time as a reward.""",
 	
-	DAISY_TRAINING_REPLY_0 = """While you were holding a small meeting with a couple other land owners, you noticed that Daisy, although pretty and catching a lot of attention, didn't quite present herself in a manner befitting a trained servant. She messed up a guest's order and offered a stuttering apology. Perhaps, it might be a good idea to put her through proper training. """,
+	DAISY_TRAINING_REPLY_0 = """While you were holding a small meeting with a couple other landowners, you noticed that Daisy, although pretty and catching a lot of attention, didn't quite present herself in a manner befitting a trained servant. She messed up a guest's order and offered a stuttering apology. Perhaps, it might be a good idea to put her through proper training.""",
 	DAISY_TRAINING_OPTION_1 = "I want to have my servant trained...",
 	DAISY_TRAINING_REPLY_1 = """You explain to Amelia how you think Daisy could benefit from training to become more professional.
 
 — Ah, yes, your timid bunny girl. I remember her, she's really suited to being your servant, isn't she? Of course we have training which would improve her performance, depending on what you'd like.""",
-	DAISY_TRAINING_OPTION_2_1 = "I want her to be trained normally (200 gold)",
+	DAISY_TRAINING_OPTION_2_1 = "I want her to be trained normally. (200 gold)",
 	DAISY_TRAINING_OPTION_2_2 = "What other options are there?",
 	DAISY_TRAINING_OPTION_2_3 = "There's something else?",
-	DAISY_TRAINING_OPTION_2_4 = "I want her to be trained normally and sexually (300 gold)",
-	DAISY_TRAINING_OPTION_2_5 = "I want to turn her into a fucktoy (400 gold)",
-	DAISY_TRAINING_OPTION_2_6 = "I'll return later",
-	DAISY_TRAINING_REPLY_2_2 = "— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse. ",
-	DAISY_TRAINING_REPLY_2_3 = "— He-he, since you asked, if you think she'd be better suited for something completely.... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
+	DAISY_TRAINING_OPTION_2_4 = "I want her to be trained normally and sexually. (300 gold)",
+	DAISY_TRAINING_OPTION_2_5 = "I want to turn her into a fucktoy. (400 gold)",
+	DAISY_TRAINING_OPTION_2_6 = "I'll return later.",
+	DAISY_TRAINING_REPLY_2_2 = "— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse.",
+	DAISY_TRAINING_REPLY_2_3 = "— He-he, since you asked, if you think she'd be better suited for something completely... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
 	DAISY_TRAINING_REPLY_2_1 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
 
 You arrange a time for Daisy's training and leave. """,
@@ -6643,7 +6658,7 @@ You fill out a small form denoting which actions should be excluded from her tra
 	DAISY_TRAINING_INTERMISSION_1 = """The room is decorated with expensive furniture, its walls hung with exquisitely designed drapes. A lantern burns in each corner, shedding bright light throughout the space. In the center of the room, Daisy hangs suspended by fine silk ropes tied around her naked body. Her arms and legs are spread out and secured by ropes that run to the upper corners of the room. 
 
 Daisy's blindfold is wet with tears that have soaked through it, and her mouth is filled with a fat cock around which she moans as she gasps for breath. Unseen men walk around her, inspecting and groping her exposed tits and ass. One pokes a finger into her pussy to check how wet she is.""",
-	DAISY_TRAINING_INTERMISSION_2 = """For the first few days, Daisy couldn't understand why her master had done this to her. Hadn't she been willing enough? Hadn't she tried her best to please him? She had swallowed his cum like an obedient slave and been grateful for it. How could he have sent her to this awful place?
+	DAISY_TRAINING_INTERMISSION_2 = """For the first few days, Daisy couldn't understand why her [Master] had done this to her. Hadn't she been willing enough? Hadn't she tried her best to please [him]? She had swallowed [his] cum like an obedient slave and been grateful for it. How could he have sent her to this awful place?
 
 She had been here a week now and such thoughts were long forgotten. This was what she deserved. This was all she deserved. She was three holes that begged to be filled with cock, and that was all she would ever be. She accepted it now, and did her best to adapt to her new role. She slurped eagerly at the cock in her mouth, desperate to please.""",
 	DAISY_TRAINING_INTERMISSION_3 = """The man with his cock in her mouth held Daisy by the ears as he fucked her throat. Another man was lubricating her asshole, and she knew what that meant.
@@ -6654,9 +6669,9 @@ She had been here a week now and such thoughts were long forgotten. This was wha
 
 Daisy squirms with pleasure as the man digs two fingers into her slick pussy and draws them out for a moment before going back to lubing her ass.
 
-{color=yellow|Trainer 1: — Damn. Well she is a half-bunny. I'd buy one of these for myself if they weren't such dumb useless sluts otherwise. Isn't that right, slut? You're a dumb cunt whose only value is your holes?}
+{color=yellow|Trainer 1: — Damn. Well, she is a half-bunny. I'd buy one of these for myself if they weren't such dumb useless sluts otherwise. Isn't that right, slut? You're a dumb cunt whose only value is your holes?}
 
-Daisy tries to nod and agree but it's hard with the huge cock shoved into her mouth and the man's tight grip on her sensitive ears. The man behind her laughs. 
+Daisy tries to nod and agree, but it's hard with the huge cock shoved into her mouth and the man's tight grip on her sensitive ears. The man behind her laughs. 
 
 {color=yellow|Trainer 2: — Aww, look at that! She knows it. Good bunny!}""",
 	DAISY_TRAINING_INTERMISSION_4 = """The man behind her pushes first one, then two, then three fingers into Daisy's slippery ass, working them in and out to stretch her sphincter. Her hips twitch in arousal as he fingers her.
@@ -6691,10 +6706,10 @@ Daisy hears the two men leave the room, laughing. She feels the cum trickling sl
 	TRAINING_COMPLETE_SERVE_REPLY_0 = """You meet Daisy as she's brought back to you. You notice that her demeanor is now more composed and mature. Her usual clumsiness is nearly unnoticeable.
 
 — [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
-	TRAINING_COMPLETE_SERVE_OPTION_1_1 = "I'm glad you're back",
-	TRAINING_COMPLETE_SERVE_OPTION_1_2 = "Finally, get back to work",
+	TRAINING_COMPLETE_SERVE_OPTION_1_1 = "I'm glad you're back.",
+	TRAINING_COMPLETE_SERVE_OPTION_1_2 = "Finally, get back to work.",
 	TRAINING_COMPLETE_SERVE_REPLY_1_1 = "— Thank you. I'm fine, we were treated nicely there... I'm glad I was able to learn how to hold myself better for your sake, [Master].",
-	TRAINING_COMPLETE_SERVE_REPLY_1_2 = """— R-right away, [master]...
+	TRAINING_COMPLETE_SERVE_REPLY_1_2 = """— R-right away, [Master]...
 
 Somewhat disappointed by your response, Daisy returns to her duty.""",
 
@@ -6702,7 +6717,7 @@ Somewhat disappointed by your response, Daisy returns to her duty.""",
 
 — [Master], thank you for investing in me, during this time I've learned a lot and I hope to provide you with better service.""",
 	TRAINING_COMPLETE_SEX_OPTION_1_1 = "Why don't you demonstrate it?",
-	TRAINING_COMPLETE_SEX_OPTION_1_2 = "I'm glad you liked it",
+	TRAINING_COMPLETE_SEX_OPTION_1_2 = "I'm glad you liked it.",
 	TRAINING_COMPLETE_SEX_REPLY_1_1 = """Daisy noticeably blushes but nods in response to your request and drops to her knees before you. As she gently retrieves your cock from your pants, her usual nervousness is barely apparent. Only a little touching is enough to make you hard.
 
 — I'm glad to be able to repay your kindness, [Master].
@@ -6712,43 +6727,43 @@ Daisy takes your cock into her mouth, carefully coiling her tongue around it. As
 — Did I do well, [Master]?
 
 Her eyes show sincere concern. """,
-	TRAINING_COMPLETE_SEX_OPTION_1_1_1 = "That felt great",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_1 = "That felt great.",
 	TRAINING_COMPLETE_SEX_OPTION_1_1_2 = "You were also trained to swallow?",
-	TRAINING_COMPLETE_SEX_OPTION_1_1_3 = "I guess even you're good for something",
+	TRAINING_COMPLETE_SEX_OPTION_1_1_3 = "I guess even you're good for something.",
 	TRAINING_COMPLETE_SEX_REPLY_1_1_1 = """Daisy shines with a big smile in response to your praise.
 
 — Thank you, [Master]. I will be able to serve you even better now.""",
-	TRAINING_COMPLETE_SEX_REPLY_1_1_2 = """— Uhm, yes. We were using pumps at the training with a rice jelly and a helper in case we choked on it... It was actually kinda fun. """,
+	TRAINING_COMPLETE_SEX_REPLY_1_1_2 = """— Uhm, yes. We were using pumps at the training with a rice jelly and a helper in case we choked on it... It was actually kinda fun.""",
 	TRAINING_COMPLETE_SEX_REPLY_1_1_3 = """— Thank you, [Master]. I will be able to serve you even better now.""",
 	TRAINING_COMPLETE_SEX_REPLY_1_1_all = """
 
 You send Daisy off, proud of your selection for her training.""",
 	TRAINING_COMPLETE_SEX_REPLY_1_2_1 = "— Uhm... [Master], I believe I should repay your kindness now, if you don't mind.",
 	TRAINING_COMPLETE_SEX_OPTION_1_2_1 = "Very well, go ahead.",
-	TRAINING_COMPLETE_SEX_OPTION_1_2_2 = "Sorry, I'm not in the mood",
-	TRAINING_COMPLETE_SEX_REPLY_1_2_2 = """— Ah, is that so? As you wish, [master].
+	TRAINING_COMPLETE_SEX_OPTION_1_2_2 = "Sorry, I'm not in the mood.",
+	TRAINING_COMPLETE_SEX_REPLY_1_2_2 = """— Ah, is that so? As you wish, [Master].
 
 Daisy looks somewhat disappointed, but still respectfully bows to you before retreating from sight.""",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_0 = """You meet Daisy as she's brought back to you. Despite your expectations she does not show any signs of a grudge and her demeanor has improved.
 
 — Hello, [Master]. I'm ready to be of your service. Any service you wish for.
 
-You pause for a moment, considering if you want to test her training out right away or not. """,
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1 = "Let's go for a walk",
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_2 = "I don't have any orders for now",
+You pause for a moment, considering if you want to test her training out right away or not.""",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1 = "Let's go for a walk.",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_2 = "I don't have any orders for now.",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1 = """Looking Daisy up and down you abruptly order her to strip. She obeys instantly, and is fully naked in seconds as she shrugs off her clothes. You place a collar around her neck and attach a leash to it. Daisy waits demurely and obediently while you prepare her for public exhibition. 
 
 As you bring her outside you notice that she shows no shame at her public nudity. You lead Daisy by the leash through the town and she obediently follows by your side. A few passers-by gawp and point at the gorgeous naked bunny-girl being led like an animal, which makes Daisy smile and blush, her nipples hardening in arousal. You ponder how to put her to use.""",
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1 = "Fuck her",
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2 = "Find a group of willing strangers",
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3 = "A stray dog",
-	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4 = "Return",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1 = "*Fuck her*",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_2 = "*Find a group of willing strangers*",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_3 = "*Find a stray dog*",
+	TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_4 = "*Return*",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_1 = """You lead Daisy by the leash to one of the classier suburbs of Aliron. Large houses stand around leafy parks and many attractive servants can be seen on the streets running errands for their masters. In the parks, the wealthy elites of Aliron take picnics and play sports. Daisy follows you obediently to a small hill in the center of one of these parks. 
 
 Once you are sure you have attracted some public attention, and the envious glances of numerous minor nobles, you push Daisy to her knees. She complies without hesitation as you unbuckle your belt and pull your cock out. In the distance you can hear people cheering, or exclaiming in surprise and outrage.""",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_2 = """Without further delay, you press Daisy down on to all fours and mount her, taking her from behind like an animal while you yank back on her leash. She makes no protest at all, spreading her hips to give your penis easier access to her pussy. As you rut on her, she moves her ass sensuously in unison with your thrusts.
 
-{color=yellow|Daisy: — D-Does my pussy feel good, Master?}
+{color=yellow|Daisy: — D-Does my pussy feel good, [Master]?}
 
 With your cock thrust deep inside her, Daisy shakes her ass delicately from side to side to pleasure you. By now a small crowd has gathered at the foot of the hill, but she pays no attention to their catcalls. She is focused only on you, and your penis moving inside her. """,
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_3 = """You order Daisy to cum, and to make a performance out of it. A few moments later she does so, arching her back and moaning loudly as her body trembles with a powerful orgasm. Her expert pussy grips your cock as you pound her from behind and you feel your own orgasm approaching fast.
@@ -6756,7 +6771,7 @@ With your cock thrust deep inside her, Daisy shakes her ass delicately from side
 You pull out and stand, ordering Daisy to turn around. She kneels before you, gazing up at you with her mouth obediently open as she jerks you off to completion. Your cum splatters over her pretty face and onto her tongue. Taking you in her mouth she sucks the last few drops of cum from your penis before you buckle your pants again. """,
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_1_4 = """You take Daisy's chin in your hand and tilt her head up to look at you. She is a little breathless but she looks happy and proud with your cum coating her cheeks and brow. 
  
-{color=yellow|Daisy: — Did I do good, Master? Daisy was a good girl?}
+{color=yellow|Daisy: — Did I do good, [Master]? Daisy was a good girl?}
 
 You jerk her leash and Daisy gets to her feet, face still glazed with your cum. You lead her down the hill and past the crowd that has gathered, who stand in stunned silence as you pass. You return to the mansion with your leashed and naked bunny-girl, her eyes bright and a sly smile on her face.""",
 	
@@ -6788,9 +6803,9 @@ The dog sniffs around Daisy curiously and then evidently decides this is too goo
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_3 = """As the dog humps Daisy's obedient pussy, the surprise fades from her face and her instincts and training take over. She squirms and whines, pushing her ass backwards rhythmically into the hound's frantic thrusts. The dog's forepaws scrabble for purchase on her back as he ruts on her with animal ferocity, his tongue lolling out.
 
 The dog yowls suddenly and Daisy wails, the tears rolling from her eyes down her scarlet cheeks as the dog climaxes, filling her abused pussy with its seed. The hound's penis is trapped inside Daisy for several long minutes as she weeps in shame, until its knot deflates and it slips out. """,
-	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4 = """The dog sniffs at Daisy a few more times and licks at the tears streaming down her face before you chase it off. Still on her hands and knees, Daisy is sobbing at the humiliation you have forced on her. She looks up at you with fear and sorrow in her eyes as the hound's dirty seed trickles down her thighs..
+	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_3_4 = """The dog sniffs at Daisy a few more times and licks at the tears streaming down her face before you chase it off. Still on her hands and knees, Daisy is sobbing at the humiliation you have forced on her. She looks up at you with fear and sorrow in her eyes as the hound's dirty seed trickles down her thighs.
 
-{color=yellow|Daisy: — Th-thank you, Master. I deserved this.}
+{color=yellow|Daisy: — Th-thank you, [Master]. I deserved this.}
 
 You order Daisy to masturbate and with one hand on her bruised and oozing pussy she is soon gasping between sobs as she brings herself to a tearful orgasm. With a jerk of the leash you force Daisy to her feet and parade the crying, violated bunny-girl back through town to the mansion.""",
 	TRAINING_COMPLETE_FUCKTOY_REPLY_1_1_4 = """You decide it's not the right time and return to the mansion.""",
@@ -6798,15 +6813,15 @@ You order Daisy to masturbate and with one hand on her bruised and oozing pussy 
 	DAISY_ADMIRER_MESSAGE = """In the morning you receive a letter from a person you haven't met previously. After reading through it you discover that a landowner named Ramont is requesting that you sell Daisy to him. Apparently, he finds her to be a valuable sub breed that he wishes to experiment on.
 
 He offers a generous sum of 2.500 gold which easily covers your expenses to date for her training and labor. Since Daisy is your property you wonder if you favor her over this offer.""",
-	DAISY_ADMIRER_MESSAGE_OPTION_1_1 = "Sell her",
-	DAISY_ADMIRER_MESSAGE_OPTION_1_2 = "Give away",
-	DAISY_ADMIRER_MESSAGE_OPTION_1_3 = "Refuse",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_1 = "*Sell her*",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_2 = "*Give away*",
+	DAISY_ADMIRER_MESSAGE_OPTION_1_3 = "*Refuse*",
 	DAISY_ADMIRER_MESSAGE_REPLY_1_1 = "You decide that, after all, the money will be more useful than she is. You summon Daisy and inform her of your decision.",
-	DAISY_ADMIRER_MESSAGE_REPLY_1_1_1 = """— I-I see... I understand. Thank you, for taking care of me, [master].
+	DAISY_ADMIRER_MESSAGE_REPLY_1_1_1 = """— I-I see... I understand. Thank you, for taking care of me, [Master].
 
 You feel slightly down about dealing with her in this way, but you are sure the gold will fix that.""",
 	DAISY_ADMIRER_MESSAGE_REPLY_1_2 = "You decide that you have no use for Daisy and don't really care about the money. You give her away, waiving the offered payment, much to Ramont's joy.",
-	DAISY_ADMIRER_MESSAGE_REPLY_1_2_1 = """— I-I see... I understand. Thank you, for taking care of me, [master].
+	DAISY_ADMIRER_MESSAGE_REPLY_1_2_1 = """— I-I see... I understand. Thank you, for taking care of me, [Master].
 
 As Daisy leaves your care and you feel a bit sad.""",
 	DAISY_ADMIRER_MESSAGE_REPLY_1_3 = "Surely the huge sum would cover Daisy's market price many times over, but for some reason you refuse this proposal on the spot. Perhaps, you've grown too attached to her.",
@@ -6814,26 +6829,26 @@ As Daisy leaves your care and you feel a bit sad.""",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_0 = """Today Daisy is serving you. As you observe her toiling about, it occurs to you how much more relaxed she is around you now. She notices your attention and turns to you.
 
 — Am I doing something wrong, [Master]?""",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1 = "Not really",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2 = "I was just thinking how much you've changed",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3 = "You have a splendid ass",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1 = "Not really.",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_2 = "I was just thinking how much you've changed.",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_3 = "You have a splendid ass.",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2 = """— We have been together for a long time, haven't we, [Master]? I-I know I'm in no position to say this, but I've thought about you like a family I never really had since the day you saved me and took care of me. That must seem silly to you...""",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_3 = """""", # Not implemented > You have a splendid ass
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_1 = "I admire your efforts",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_2 = "I've been thinking of you as part of my family as well",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_3 = "Indeed, you are a slave and better remember your place",
-	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_1 = """Daisy smiles at hearing that before returning to her task. """,
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_1 = "I admire your efforts.",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_2 = "I've been thinking of you as part of my family as well.",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_1_1AND2_3 = "Indeed, you are a slave and better remember your place.",
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_1 = """Daisy smiles at hearing that before returning to her task.""",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_2 = """— T-that's... That's embarrassing. Well, let's look after each other then, okay?
 
 Daisy visibly blushes and looks away.""",
-	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3 = """-R-right, I'm sorry, [Master].
+	DAISY_ADMIRER_FIRST_EVENT_REPLY_1_1AND2_3 = """— R-right, I'm sorry, [Master].
 
 Daisy looks away, but you notice how her mood notably darkens.""",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_2 = """As Daisy cleans around the mansion, she stumbles into one of the decorative vases, causing it to fall and break. Perhaps it was caused by her exhaustion, yet she looks at you with fear filled eyes.
 
 — I-I'm deeply sorry, [Master]!""",
 	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_1 = """I'm not angry. You must be tired.""",
-	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_2 = """\"Sorry\" is not going to save you here *Punish*""",
+	DAISY_ADMIRER_FIRST_EVENT_OPTION_2_2 = """\"Sorry\" is not going to save you here. *Punish her*""",
 	DAISY_ADMIRER_FIRST_EVENT_REPLY_2_1 = """Daisy looks at you not fully sure if you mean it. It seems she was rather certain you would be angry, but your mercy appears to have improved her opinion of you.
 
 — T-thank you, [Master]. I'll clean this up right away...""",
@@ -6841,39 +6856,39 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 	DAISY_LOST_MESSAGE = """This evening you notice that your slave Daisy hasn't returned from her tasks as usual. You're not sure what, but something is definitely wrong. Daisy is gone and you should start searching for her as soon as possible. Perhaps, the Servants Guild might have ideas on how to find her.""",
 	DAISY_LOST_AMELIA_OPTION_0 = "I've lost someone...",
 	DAISY_LOST_AMELIA_REPLY_0 = """— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""",
-	DAISY_LOST_AMELIA_OPTION_1_1 = "I might have received a letter from him",
+	DAISY_LOST_AMELIA_OPTION_1_1 = "I might have received a letter from him.",
 	DAISY_LOST_AMELIA_OPTION_1_2 = "How could you give him my information like that?",
-	DAISY_LOST_AMELIA_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
-	DAISY_LOST_AMELIA_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	DAISY_LOST_AMELIA_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from city. You better be prepared before going to meet him.""",
+	DAISY_LOST_AMELIA_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from city. You better be prepared before going to meet him.""",
 
-	DAISY_LOST_APPROACH_REPLY_0_1 = """As you approach the estate of the supposed kidnapper, you see a group of armed mercenaries who notice you and move in for a fight. """,
+	DAISY_LOST_APPROACH_REPLY_0_1 = """As you approach the estate of the supposed kidnapper, you see a group of armed mercenaries who notice you and move in for a fight.""",
 	DAISY_LOST_APPROACH_REPLY_0_2 = """After defeating the mercs, you see a man who must be Ramont himself coming out.
 
 Ramont: — Stop this, there's no need for further violence.""",
-	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take her back.",
+	DAISY_LOST_APPROACH_OPTION_1_1 = "You have something of mine and I'm going to take it back.",
 	DAISY_LOST_APPROACH_OPTION_1_2 = "Where's Daisy? What have you done to her?",
 	DAISY_LOST_APPROACH_OPTION_1_3 = "Give my slave back right now.",
-	DAISY_LOST_APPROACH_REPLY_1 = """Ramont: — Don't be so rash, Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.
-
+	DAISY_LOST_APPROACH_REPLY_1 = """Ramont: — Don't be so rash. Daisy is fine, but please listen to me. A few weeks ago I saw her attending Servants' classes by herself. She acted so gracious, so timid and dedicated. I couldn't help it, I fell in love.
+	
 Ramont: — I sent you that message about wanting her for experiments, but it was a lie to cover my true feelings. Regardless, you refused to give her away despite my willingness to pay. I couldn't hold back and now I've expressed my feelings to her and treat her with care.""",
 	DAISY_LOST_APPROACH_REPLY_2 = """Ramont: — I know she still technically belongs to you, but I offer you a bet. I want to give her a chance to decide if she wants to be with me or with you, and if she chooses you out of her free will, I will give up on her. But if she chooses me, she will stay with me and I will treat her like no other.
 
 The chances are, Daisy has tasted the good will of Ramont and the promise of a better life. Making her choose you over him is a risky decision...""",
-	DAISY_LOST_APPROACH_OPTION_FIGHT = "Don't be ridiculous, she's my property and I'll take her by force if I must",
-	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, let's see what she thinks",
-	DAISY_LOST_APPROACH_OPTION_3_3 = "I can't oppose this dedication of yours, you can have her",
+	DAISY_LOST_APPROACH_OPTION_FIGHT = "Don't be ridiculous, she's my property and I'll take her by force if I must.",
+	DAISY_LOST_APPROACH_OPTION_3_2 = "Very well, let's see what she thinks.",
+	DAISY_LOST_APPROACH_OPTION_3_3 = "I can't oppose this dedication of yours, you can have her.",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_1 = "Ramont: — So it comes to this... On guard!",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_2 = "After finally managing to knockout Ramont, you quickly rush through his mansion until finding Daisy behind one of the locked doors. You bash it in, and Daisy looks at you in awe.",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_3 = """— [Master]?! W-What are you doing here? You've come for me? I'm sorry I went missing, I didn't mean to...""",
-	DAISY_LOST_APPROACH_OPTION_FIGHT_4_1 = "I've been worried senseless about you",
-	DAISY_LOST_APPROACH_OPTION_FIGHT_4_2 = "It's all good, we can work this out with a bit of discipline later on",
-	DAISY_LOST_APPROACH_OPTION_FIGHT_4_3 = "Don't give me excuses you worthless slut",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_1 = "I've been worried senseless about you.",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_2 = "It's all good, we can work this out with a bit of discipline later on.",
+	DAISY_LOST_APPROACH_OPTION_FIGHT_4_3 = "Don't give me excuses you worthless slut.",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_good = """— M-[Master] [name]... I love you! I've been so scared I wouldn't see you again.
 
 Daisy rushes and hugs you with all her might. As you share a kiss her face brightens with the happiest smile you've ever seen on her.
 
 As you are done here, you leave Ramont's mansion and return home.""",
-	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad = """— You were...? I'm sorry, this won't happen again.
+	DAISY_LOST_APPROACH_REPLY_FIGHT_4_1and2_bad = """— You were..? I'm sorry, this won't happen again.
 
 Daisy looks troubled and unsure how to respond to your remark. Deciding there's no point staying there any longer you leave and return home.""",
 	DAISY_LOST_APPROACH_REPLY_FIGHT_4_3 = """Hearing your insults Daisy visually shrinks and clutches at her ears in fear.
@@ -6891,10 +6906,10 @@ Ramont: — I see... I understand. It was a pleasure to spend at least a bit of 
 With that, Ramont turns and leaves.""",
 	DAISY_LOST_APPROACH_REPLY_3_2_bad = """
 
-Daisy: — I-I... want to thank you, [master], but I'd prefer to stay with Sir Ramont. I'm sorry...
+Daisy: — I-I... want to thank you, [Master], but I'd prefer to stay with Sir Ramont. I'm sorry...
 
 It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Accepting your defeat, you leave the estate all alone.""",
-	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect. """,
+	DAISY_LOST_APPROACH_REPLY_3_3_1 = """Initially Ramont does not seem like he can believe your words, but after you repeat it, he bows to you in respect.""",
 	DAISY_LOST_APPROACH_REPLY_3_3_2 = """Daisy meets you for the last time. Despite her composed look she seems like she's ready to burst into tears at any time, either because she's happy or because you've given her up... Soon after you wish happiness to Ramont and leave his estate.""",
 	DAISY_CONSENSUAL_1 = """Daisy stands waiting obediently in her maid outfit as you finish some paperwork. Rising, you spend a minute inspecting her, running your hands over her body and gently squeezing her breasts. You inquire whether she is happy to be back at your mansion.
 
@@ -6903,7 +6918,7 @@ It seems Daisy has chosen to leave you, perhaps you weren't very nice to her. Ac
 You nod and lift the hem of the maid dress, then slowly peel her panties down over her thighs to let them fall around her ankles. Daisy's breath hitches as arousal stirs her and she steps daintily out of her discarded underwear.""",
 	DAISY_CONSENSUAL_2 = """You continue your inspection, exposing her breasts and slipping a hand between her thighs to check her pussy. Her bare cunt is noticeably warm to the touch and as you press a finger into her slit, her slick pussy-lips part readily. Daisy gasps in pleasure as your finger probes deep into her hot little hole and you feel her trained internal muscles tighten.
 
-{color=yellow|Daisy: — Oh! Oh, [Master]! Your fingers feel so good inside me... You are too kind to me, master...}
+{color=yellow|Daisy: — Oh! Oh, [Master]! Your fingers feel so good inside me... You are too kind to me, [Master]...}
 
 There are tears in her eyes as she trembles with need.""",
 	DAISY_CONSENSUAL_3_SERVE = """{color=yellow|Daisy: — Of course, [Master].}
@@ -6918,12 +6933,12 @@ Your hand circles Daisy's neck and pulls her head down to the desk. Her hands ca
 Daisy wiggles her ass enticingly, her soft butt-cheeks pressing against your hard cock. You draw your hips back and the head of your penis finds her pussy. Bent low over the desk, she sighs deeply as you enter her, her vagina pulsing helplessly around your thick shaft.""",
 	DAISY_CONSENSUAL_4 = """You rail Daisy hard over the table, banging her hips against its wooden surface as your cock plunges into her wet and obedient pussy. She yelps in pleasure as you repeatedly drive your penis deep inside her, her rabbit-tail bobbing up and down in excitement while her nipples graze the tabletop.
 
-{color=yellow|Daisy: — Aa-ah, [Master]... You are too rough!..}
+{color=yellow|Daisy: — Aa-ah, [Master]... You are too rough..!}
 
 Daisy's pussy clamps tightly around your cock as her whole body shudders in orgasm. You keep pounding her, your own orgasm approaching fast as her silky cunt spasms around your thrusting meat. You release her throat so you can grab her hips and fuck her harder.
 
 Daisy looks back at you imploringly as you bury your cock in her up to the hilt. Her ass bucks against your hips, trying to take you deeper and you feel the head of your penis pressing on her womb.""",
-	DAISY_CONSENSUAL_5 = """{color=yellow|Daisy: — [Master]!... I'm about to... I'm cumming!}
+	DAISY_CONSENSUAL_5 = """{color=yellow|Daisy: — [Master]..! I'm about to... I'm cumming!}
 
 Your orgasm hits and you pump a load of thick semen deep into Daisy's compliant cunt. The inner muscles of her pussy clench around your cock as she rocks back into you, drawing every drop of sperm into her. She is breathless and flushed as she looks back at you.
 
@@ -6935,8 +6950,8 @@ Casually, you spank her a few times and pinch the springy flesh of her ass as it
 	
 	DAISY_EXTRA_STRATUP = "— H-hello, [Master]. How can I serve you?",
 	DAISY_EXTRA_OPTION_1_1 = "Why don't we have you use your dress' better form?",
-	DAISY_EXTRA_OPTION_1_2 = "You can cover yourself ",
-	DAISY_EXTRA_REPLY_1_1_NO = """— I-if you wish so, [master]. 
+	DAISY_EXTRA_OPTION_1_2 = "You can cover yourself.",
+	DAISY_EXTRA_REPLY_1_1_NO = """— I-if you wish so, [Master]. 
 
 Daisy looks worried but does not dare to object to your request. With a simple move her uniform reveals her private parts to your delight.""",
 	DAISY_EXTRA_REPLY_1_1_YES = """— Please, enjoy the sight of my body, [Master]. 
@@ -6944,7 +6959,7 @@ Daisy looks worried but does not dare to object to your request. With a simple m
 Daisy unabashedly obeys your request. With a simple move her uniform reveals her private parts to your delight.""",
 	DAISY_EXTRA_REPLY_1_2_NO = """— Thank goodness...
 
-Daisy looks relieved as she fixes her clothes to a more concealed shape. """,
+Daisy looks relieved as she fixes her clothes to a more concealed shape.""",
 	DAISY_EXTRA_REPLY_1_2_YES = """— As you wish, [Master]. 
 
 Daisy nonchalantly fixes her dress and awaits your further orders.""",
@@ -6952,10 +6967,10 @@ Daisy nonchalantly fixes her dress and awaits your further orders.""",
 	AMELIA_SILK_STARTUP = """— I've noticed you were doing quite a lot for us recently. But we are having a minor issue I'd be glad if you could help with. One of our wealthy customers has made a request for special costumes. 
 
 — However, we lack the resources to produce those. If you could get us 50 pieces of Silk we'd be glad to purchase it for 2.000 gold and a spare costume. I'm sure it's no sweat for you.""",
-	AMELIA_SILK_OPTION_START = "I've got the silk you need",
+	AMELIA_SILK_OPTION_START = "I've got the silk you need.",
 	AMELIA_SILK_REPLY_START = "— I knew I could rely on you, [name]. Here's the reward I've promised. You know, since you are so resourceful, I'd like to provide you with an additional reward for this. How does a special massage sounds to you?",
-	AMELIA_SILK_OPTION_1_1 = "Sure, why not",
-	AMELIA_SILK_OPTION_1_2 = "I think, I'm gonna refuse",
+	AMELIA_SILK_OPTION_1_1 = "Sure, why not.",
+	AMELIA_SILK_OPTION_1_2 = "I think, I'm gonna refuse.",
 	AMELIA_SILK_REPLY_1_2 = """Amelia looks somewhat disappointed at your response.
 
 — That's too bad. Alright then, good luck with your day.""",
@@ -7004,34 +7019,34 @@ You can't hold any longer and with a grunt you ejaculate in a thick spray that r
 {color=yellow|Amelia: — By the gods, that's a lot of cum. All over my face! Such a strong and distinct musk to it too. You found my massage pleasing then, [name]?}
 
 You nod wordlessly, your wits far from your reach at this moment.""",
-	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants' Guild, Amelia's smile looks different — warmer, and more personal.
+	AMELIA_SILK_REPLY_1_1_8 = """As you return to the reception desk of the Servants Guild, Amelia's smile looks different — warmer, and more personal.
 
 {color=yellow|Amelia: — Thank you for providing me with so much... silk. I hope that this experience will fortify our business relationship for the future? I certainly look forward to further private meetings.}""",
 	
-	AMELIA_SILK_OPTION_2_1 = "Your business acumen has blown me... away",
-	AMELIA_SILK_OPTION_2_2 = "It was an enormous pleasure doing \"business\" with you, Amelia",
+	AMELIA_SILK_OPTION_2_1 = "Your business acumen has blown me... away.",
+	AMELIA_SILK_OPTION_2_2 = "It was an enormous pleasure doing \"business\" with you, Amelia.",
 	AMELIA_SILK_OPTION_2_3 = "Perhaps we could schedule another meeting like this one?",
 	AMELIA_SILK_REPLY_2_1AND2 = "I assure you the feeling is mutual. Now, if you will excuse me, there are things I really must get to. Please do come again.",
 	AMELIA_SILK_REPLY_2_3 = "O-ho, aren't you a daring one? Very well, I promise to think about asking my secretary to check my diary. She'll be in touch. For now though, I have some other business that urgently needs to be taken care of.",
 	
-	AIRE_RECRUITMENT_OPTION_1 = "I want the elf girl",
+	AIRE_RECRUITMENT_OPTION_1 = "I want the elf girl.",
 	AIRE_RECRUITMENT_REPLY_1 = "— Oh, the princess servant? Fine, we have no further use for her.",
 	AIRE_RECRUITMENT_REPLY_BAD_START = "— You think you can make me serve you after all you've done?",
-	AIRE_RECRUITMENT_OPTION_BAD_1 = "It's never too late to try fix things up",
-	AIRE_RECRUITMENT_OPTION_BAD_2 = "It does not matter what I think, you will submit",
-	AIRE_RECRUITMENT_OPTION_BAD_3 = "Maybe I just want to torture you personally",
+	AIRE_RECRUITMENT_OPTION_BAD_1 = "It's never too late to try fix things up.",
+	AIRE_RECRUITMENT_OPTION_BAD_2 = "It does not matter what I think, you will submit.",
+	AIRE_RECRUITMENT_OPTION_BAD_3 = "Maybe I just want to torture you personally.",
 	AIRE_RECRUITMENT_REPLY_BAD_1 = """Aire gives you a look which does not give any hint that she buys it. 
 
-— I'm not a fool you are taking me for. One way or another I'll make you pay """,
-	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """and will rescue Ana from you. """,
+— I'm not a fool you are taking me for. One way or another, I'll make you pay. """,
+	AIRE_RECRUITMENT_REPLY_BAD_1_ANA = """And will rescue Ana from you.""",
 	AIRE_RECRUITMENT_REPLY_BAD_2 = """Aire falls silent upon hearing your dismissal. Without further discussion you take her away.""",
 	AIRE_RECRUITMENT_REPLY_BAD_3 = """— Having you around is a torture on it's own. 
 
 Aire seems unimpressed by your remark and quietly follows your orders.""",
 	AIRE_RECRUITMENT_REPLY_GOOD_START = """— You've really done it... I guess I have no choice but to join you now?""",
-	AIRE_RECRUITMENT_OPTION_GOOD_1 = """I'd not force you against your will""",
+	AIRE_RECRUITMENT_OPTION_GOOD_1 = """I'd not force you against your will.""",
 	AIRE_RECRUITMENT_OPTION_GOOD_2 = "You'd prefer to stay at the dungeon instead?",
-	AIRE_RECRUITMENT_OPTION_GOOD_3 = "That's right, you better be obedient like a good dog",
+	AIRE_RECRUITMENT_OPTION_GOOD_3 = "That's right, you better be obedient like a good dog.",
 	AIRE_RECRUITMENT_REPLY_GOOD_1 = "— I appreciate it. Anyway, I'd rather not sit on my ass anymore.",
 	AIRE_RECRUITMENT_REPLY_GOOD_2 = "— Touché. Very well, I can't wait to check on Ana.",
 	AIRE_RECRUITMENT_REPLY_GOOD_3 = "Aire stays quiet and your words but her face shows that she doubts her initial opinion about you.",
@@ -7041,30 +7056,30 @@ Aire seems unimpressed by your remark and quietly follows your orders.""",
 	AMELIA_HERBS_LETTER = "In the morning you receive a small note from the Servants Guild asking you to see the leader.",
 	AMELIA_HERBS_OPTION_START = "I've received your letter...",
 	AMELIA_HERBS_REPLY_START = "— Glad to see you are eager as ever, [name]. How's your mayorhood?",
-	AMELIA_HERBS_OPTION_1_1 = "Can't complain, it's good to be in power",
-	AMELIA_HERBS_OPTION_1_2 = "Nothing special, you aren't letting me do anything anyway",
-	AMELIA_HERBS_OPTION_1_3 = "Just get to the point",
+	AMELIA_HERBS_OPTION_1_1 = "Can't complain, it's good to be in power.",
+	AMELIA_HERBS_OPTION_1_2 = "Nothing special, you aren't letting me do anything anyway.",
+	AMELIA_HERBS_OPTION_1_3 = "Just get to the point.",
 	AMELIA_HERBS_REPLY_1_1 = "— I'm glad you are enjoying it, after all, your happiness is our reassurance.",
 	AMELIA_HERBS_REPLY_1_2 = "— Ha-ha, I guess this is somewhat true, but this is fine, I'm not able to do much at my position either, you know. Nobody would let us get here if this provided any meaningful powers. But at least we can enjoy the luxury of this life.",
 	AMELIA_HERBS_REPLY_1_3 = "— Oh come on, don't be so uptight. Do you really dislike my company this much?",
-	AMELIA_HERBS_REPLY_2 = """— There's a task at my hands I believe you'll have most success at doing, given your previous experience with the Elven Forests. You see, near the great trees the elves worship one particular plant that can grow— Manna Whiff. Some of our patrons wish to pay a quite high price for it. Actually, a really high price. 
-
-— We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them. """,
+	AMELIA_HERBS_REPLY_2 = """— There's a task at my hands I believe you'll have most success at doing, given your previous experience with the elven forests. You see, near the great trees the elves worship one particular plant that can grow — Manna Whiff. Some of our patrons wish to pay a quite high price for it. Actually, a really high price.
+	
+— We have a supplier from there, but our courier has gotten sick and might not be able to take care of it any time soon. I want you to go there and get the merchandise. They should've already received the payment for the next delivery, so you'll only have to find them.""",
 	AMELIA_HERBS_REPLY_3 = """— You should know elven officials aren't very fond of trading with us in general, moreover in such unusual circumstances. Try to keep it low profile. Anyway, here's the note with the description of who you have to find. I believe you'll manage.""",
 	
-	AMELIA_HERBS_ELF_OPTION_START = "Look for smuggler",
+	AMELIA_HERBS_ELF_OPTION_START = "*Look for the smuggler*",
 	AMELIA_HERBS_ELF_REPLY_START_1 = "After searching around for some time, you've managed to find a person fitting the description: a young tribal elf priestess. As she sees you, she subtly gives you a sign to meet her where no one is around. You follow her, dragging no additional attention.",
 	AMELIA_HERBS_ELF_REPLY_START_2 = """You pass her the note and explain what you are doing here, however her response is of reject.
 
 — I'm sorry, I can't do this anymore. I won't be doing this.""",
-	AMELIA_HERBS_ELF_OPTION_1_1 = "Look, you can't do this",
+	AMELIA_HERBS_ELF_OPTION_1_1 = "Look, you can't do this.",
 	AMELIA_HERBS_ELF_OPTION_1_2 = "I don't get it, why not?",
 	AMELIA_HERBS_ELF_OPTION_1_3 = "Are you out of your mind backing out now?",
 	AMELIA_HERBS_ELF_REPLY_1 = """— I can't do this anymore, I was desperate at the time, but if I get caught it will be over for me. And I'm already a suspect. As I'm not originally born here, I will be punished severely for it... So you have to understand, I won't do this anymore. I can't return the payment yet, but I'll do something about it soon.""",
 	AMELIA_HERBS_ELF_OPTION_2_1 = "I guess, it can't be helped then...",
-	AMELIA_HERBS_ELF_OPTION_2_2 = "Look, I really need to make this delivery (Charm Check)",
-	AMELIA_HERBS_ELF_OPTION_2_3 = "I could pay you some more, but I really need it (300 gold)",
-	AMELIA_HERBS_ELF_OPTION_2_4 = "In that case, I'll tell to the guards that you have indeed been a smuggler",
+	AMELIA_HERBS_ELF_OPTION_2_2 = "[Charm Check] Look, I really need to make this delivery.",
+	AMELIA_HERBS_ELF_OPTION_2_3 = "I could pay you some more, but I really need it. (300 gold)",
+	AMELIA_HERBS_ELF_OPTION_2_4 = "In that case, I'll tell to the guards that you have indeed been a smuggler.",
 	AMELIA_HERBS_ELF_REPLY_2_1 = """— Thank you for understanding and goodbye.
 
 The elf girl silently returns to her duty leaving you to think on how to tell Amelia about it.""",
@@ -7074,11 +7089,11 @@ The elf girl hesitates for some time but eventually gives in to your request.
 
 — Fine, but I beg you, don't come for this ever again. 
 
-She leaves and after a few minutes she returns with the package. """,
-	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye""",
+She leaves and after a few minutes she returns with the package.""",
+	AMELIA_HERBS_ELF_OPTION_2_2_DONE = """Thank you and good bye.""",
 	AMELIA_HERBS_ELF_REPLY_2_2_BAD = """{color=red|Failure}
 
-— Sorry, you'll have to find some other way. """,
+— Sorry, you'll have to find some other way.""",
 	AMELIA_HERBS_ELF_REPLY_2_3 = """As you whip out a purse of gold, the elven girl seems to give up and do as you want from her.
 
 — Fine, but I beg you, don't come for this ever again. 
@@ -7098,19 +7113,19 @@ Realizing your seriousness she drops her head.
 	
 	AMELIA_HERBS_ELFQUEST1_START = """After reading the description you realize that it's your old acquaintance. As you meet her
 
-— Oh that thing? Right, here you can have it. But please tell Amelia I'll not be doing this anymore. """,
+— Oh, that thing? Right, here you can have it. But please, tell Amelia I'll not be doing this anymore.""",
 	
 	AMELIA_HERBS_ELFQUEST2_START_1 = """After looking for a possible smuggler, you realize that you've been found out by the guards who followed you around. As they approach you, they ask you to follow them.""",
 	AMELIA_HERBS_ELFQUEST2_START_2 = "— It's you again. We know what you are here for this time. An illegal smuggling of our holy herbs. The other culprit was already caught and punished. Given your previous merits, we will turn a blind eye on this, but don't ever try doing this again.",
 	
-	AMELIA_HERBS_END_OPTION_START = "About the delivery",
+	AMELIA_HERBS_END_OPTION_START = "About the delivery...",
 	AMELIA_HERBS_END_REPLY_START = """As you pass the carriage to Amelia you notice how her ears perk up in surprise.
 
 — I knew I could rely on you! I've already had no faith to get it this time. Must say, our cooperation has been one of the best partnerships in my life. But, anyway, you must be very impatient for your reward. Here's 500 gold for your troubles.
 
-— I want to say, you are one kind of Masters. Strong, capable, decisive... This is really rare at our times. I'm not offering this lightly, but would you like to join me at my home this evening? This isn't something you would be offered on any day.""",
-	AMELIA_HERBS_END_OPTION_1_1 = "Sorry, I'll be busy",
-	AMELIA_HERBS_END_OPTION_1_2 = "I was afraid you wouldn't ask",
+— I want to say, you are one kind of masters. Strong, capable, decisive... This is really rare at our times. I'm not offering this lightly, but would you like to join me at my home this evening? This isn't something you would be offered on any day.""",
+	AMELIA_HERBS_END_OPTION_1_1 = "Sorry, I'll be busy.",
+	AMELIA_HERBS_END_OPTION_1_2 = "I was afraid you wouldn't ask.",
 	AMELIA_HERBS_END_REPLY_1_1 = """Amelia seems visibly disappointed but quickly masks her emotions as usual. 
 
 — That's so... I see then, wish you luck with whatever you are doing then.""",
@@ -7121,7 +7136,7 @@ After receiving the instructions, you leave Amelia's office.""",
 
 #— You are sharp as ever, [name]. Hope you didn't cut anyone on your way here, he-he. 
 
-#You hold a minor chit chat as Amelia serves you one of the highest grade wines. """,
+#You hold a minor chit chat as Amelia serves you one of the highest grade wines.""",
 	AMELIA_HERBS_END_REPLY_1_2_3 = """— You know, I wasn't very sincere with you... Not any more with anyone else, I suppose. But I'd like you to hear me out. Before becoming the guild leader I was a servant too. I heard not many guild leaders happened to be the servants and not the masters, but I guess I got lucky. 
 
 — I had a master, and a pretty strict one at that, but I'd be lying if I said that I didn't like it. It was an easy, careless time I sometimes wish to return to. I think that cats need a master, you know. An owner...""",
@@ -7174,13 +7189,13 @@ As you swing open the door you see a large four-poster bed and a plush purple ar
 
 The slender catgirl stands in the centre, below the pulley, wearing only stockings and an open-topped corset that displays her voluptuous breasts.
 
-{color=yellow|Amelia: — Oh master, there you are. I- I've been such a bad girl. I should be punished.}
+{color=yellow|Amelia: — Oh, [Master], there you are. I- I've been such a bad girl. I should be punished.}
 
 Amelia's feline eyes are wide and she is flushed with desire, her long tail whipping side to side. 
 
 You cross the room and grab a handful of hair, yanking her head back. A smile crosses her pretty face as she moans at your sudden forcefulness. Your other hand reaches around behind her to grab an ass-cheek, squeezing it hard enough to hurt.
 
-{color=yellow|Amelia: — Yes, master, teach me a lesson I won't forget. Show me what discipline means.}""",
+{color=yellow|Amelia: — Yes, [Master], teach me a lesson I won't forget. Show me what discipline means.}""",
 	AMELIA_BONDAGE_5 = """Amelia writhes provocatively against you, rubbing her breasts and clit on your muscular frame. Gripping her by the hair you drag her to the bed. You take the handcuffs and bend Amelia over, pulling her arms behind to snap the cuffs over her wrists. She rubs her naked ass into your groin, her tail flicking back and forth across the bulge in your pants. 
 
 You grab a coil of fine silk rope and tow Amelia into the centre of the room. Pulling the harness down, you slip its leather loops over her upper body. Amelia begins to pant in uncontrollable arousal as you bind her. 
@@ -7190,29 +7205,29 @@ You lash rope around her midriff, running it tight around each of her heaving br
 You grab her calf and lift one leg, bending it until the knee almost touches her face. You tie it in place, strapping the foot tight against her buttock. She whimpers excitedly as you stand back to admire your ropework.""",
 	AMELIA_BONDAGE_6 = """With Amelia's wet pussy at your mercy, you unleash your cock. She groans lewdly at the sight of your erect penis, raw lust in her eyes. You ask if she is ready to be punish-fucked like the wayward slut that she is. 
 
-{color=yellow|Amelia: — Oh yes, master. Use me however pleases you, master. Make me submit.} 
+{color=yellow|Amelia: — Oh yes, [Master]. Use me however pleases you, [Master]. Make me submit.} 
 
 You fondle her vulnerable body, kneading her breasts and pinching the soft flesh of her ass. Your shaft grinds against wet pussy-lips and Amelia keens needily. You take hold, one hand grabbing a tit, one gripping her hair, and slowly enter her slick pussy. She tries to twitch her hips to urge you deeper but she can hardly move. 
 
 As your thick cock penetrates deep, Amelia sighs in ecstasy. Her eyes roll back and her tight cunt convulses around you. She cums again with each slow and deliberate thrust, her pussy spasming wildly for several minutes. You pinch her nipples as you bury your meat in her, whispering filth into her ear while she gasps for breath.""",
-	AMELIA_BONDAGE_7 = """{color=yellow|Amelia: — Oh master... Break me, master...}
+	AMELIA_BONDAGE_7 = """{color=yellow|Amelia: — Oh [Master]... Break me, [Master]...}
 
 Your thrusts pick up speed and you pound Amelia's pussy remorselessly. You use your grip on her breast and hair to slam yourself into her cunt hard enough to bruise the soft flesh. Amelia screams in wild abandon as you hammer her, until you cover her mouth with your hand to muffle the cries. 
 
 Once her screams subside, you grab her narrow waist with both hands so you can fuck her harder. Both your bodies are covered in a fine sheen of sweat. Amelia is panting loud as your penis rams violently into her pussy. You feel your orgasm approaching fast. 
 
-{color=yellow|Amelia: — Cum inside me master, please cum in my disobedient little cunt!}
+{color=yellow|Amelia: — Cum inside me [Master], please cum in my disobedient little cunt!}
 
 Your final powerful thrust lifts her off the floor. Impaled on your cock. She hangs from the harness as your cum shoots into her bruised pussy. Amelia yowls, back arched, while your semen pumps into her and then mewls longingly when you pull out.""",
 	AMELIA_BONDAGE_8 = """Amelia croons softly as she stands on one leg, cum trickling from her swollen pussy down over her stockings. You ask if she has learned her lesson, or if she requires further discipline.
 
-{color=yellow|Amelia: — Oh yes, master, I've learned so well. I remember what I am now.}
+{color=yellow|Amelia: — Oh yes, [Master], I've learned so well. I remember what I am now.}
 
 You cup her leaking cunt and smear a handful of cum into her face and hair. You untie her raised leg so she stands on both feet, then loosen the ropes and remove the harness. She sways unsteadily, still handcuffed, her thighs parted to ease the soreness in her tender pussy. You sit on the armchair and pull her over your knee. 
 
 You had planned to unlock the cuffs right away but her trembling ass is too great a temptation. You spank her roughly and she cries out at each smack. 
 
-{color=yellow|Amelia: — Thank you, master... I deserve this.}
+{color=yellow|Amelia: — Thank you, [Master]... I deserve this.}
 
 You thrash her into another orgasm while her rope-burned tits rub against your cock. Only then do you uncuff her. Sobbing, she climbs into your lap and embraces you, her fine body shivering in overwhelmed gratitude.""",
 	AMELIA_BONDAGE_9 = """Back in the parlour half an hour later, Amelia clears the wine goblets away. She steps gingerly to the door, pauses, and looks over her shoulder at where you lounge on the sofa.
@@ -7228,33 +7243,33 @@ The catgirl walks awkwardly through to her room and disappears. You let yourself
 
 Amelia leaves you for her business, leaving you alone.""",
 	
-	MARRIAGE_CHURCH_CORE = """I'd like to arrange a marriage""",
-	MARRIAGE_CHURCH_FINISH_CORE = """I'm ready for the wedding""",
+	MARRIAGE_CHURCH_CORE = """I'd like to arrange a marriage.""",
+	MARRIAGE_CHURCH_FINISH_CORE = """I'm ready for the wedding.""",
 	MARRIAGE_CHURCH_DEFAULT = """— I'm terribly sorry, but we aren't currently able to provide such service due to the ongoing conflict. Let's hope it will be over soon.""",
 	MARRIAGE_CHURCH_TEXT_1 = """— Ah, you wish to be betrothed? That's great! The mayor's wedding won't be simple to host though. May I know who's your chosen one?""",
 	MARRIAGE_CHURCH_TEXT_2 = """— I see, I see, I'm glad you found someone dear to your heart. I'm allowed to marry the two of you, but the service is going to cost 500 gold.""",
-	PAY = """Pay.""",
-	MARRIAGE_CHURCH_TEXT_3 = """— Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as organizing your deliveries and your guest list. The Servants guild can usually help with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers guild manufacture those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
+	PAY = """*Pay*""",
+	MARRIAGE_CHURCH_TEXT_3 = """— Thank you very much. I believe you will need a few things set up first. Firstly, you should prepare enough food and drinks for the wedding and party as well as organizing your deliveries and your guest list. The Servants Guild can usually help with this. Secondly, you shall need wedding costumes for you and your [spousehusband]. I believe Workers Guild manufacture those. Lastly, as a Mayor, you will require a special insignia for your engagement.""",
 	MARRIAGE_CHURCH_TEXT_4 = """— Once you have prepared everything, let me know and we can start the ceremony.""",
 	MARRIAGE_CHURCH_CLOSE_OPTION = """Thanks for the directions""",
 	MARRIAGE_SERVANTS_INIT = "I'm holding a wedding...",
-	MARRIAGE_SERVANTS_1_1 = """— Finally going to seal the deal with our little princess? That's great news. """,
-	MARRIAGE_SERVANTS_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
+	MARRIAGE_SERVANTS_1_1 = """— Finally going to seal the deal with our little princess? That's great news.""",
+	MARRIAGE_SERVANTS_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor.""",
 	MARRIAGE_SERVANTS_1_3 = """So you want us to prepare everything for your wedding? A person of your caliber can't have a simple wedding, after all. We will likely need at least a couple hundred of each foodstuff to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple of local suppliers I know.""",
-	MARRIAGE_SERVANTS_2 = """— Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
-	MARRIAGE_SERVANTS_COMPLETE_OPTION = """I've prepared everything for the wedding""",
+	MARRIAGE_SERVANTS_2 = """— Lastly, I'm gonna need 3.000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
+	MARRIAGE_SERVANTS_COMPLETE_OPTION = """I've prepared everything for the wedding.""",
 	MARRIAGE_SERVANTS_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
 	MARRIAGE_SERVANTS_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you'll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
 	MARRIAGE_SERVANTS_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""",
-	MARRIAGE_SERVANTS_OPTION_1 = """Invite them""",
-	MARRIAGE_SERVANTS_OPTION_2 = """Refuse""",
+	MARRIAGE_SERVANTS_OPTION_1 = """*Invite them*""",
+	MARRIAGE_SERVANTS_OPTION_2 = """*Refuse*""",
 	MARRIAGE_SERVANTS_COMPLETE_4 = """— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].""",
-	MARRIAGE_WORKERS_INIT = "I'm holding a wedding and need costumes for it",
-	MARRIAGE_WORKERS_1 = """— Oh ya? My congratulations to ya. Let me introduce ya to our tailors. """,
-	MARRIAGE_WORKERS_2 = "Sigmund takes you to a couple of tailors who inform you of the materials they will require to prepare your costumes. For the highest quality dresses they will need 150 Silk Cloth, and 50 Magic Cloth. The work itself is going to cost you an additional 1000 gold.",
-	MARRIAGE_WORKERS_COMPLETE_OPTION = """I have everything needed""",
+	MARRIAGE_WORKERS_INIT = "I'm holding a wedding and need costumes for it.",
+	MARRIAGE_WORKERS_1 = """— Oh ya? My congratulations to ya. Let me introduce ya to our tailors.""",
+	MARRIAGE_WORKERS_2 = "Sigmund takes you to a couple of tailors who inform you of the materials they will require to prepare your costumes. For the highest quality dresses they will need 150 Silk Cloth, and 50 Magic Cloth. The work itself is going to cost you an additional 1.000 gold.",
+	MARRIAGE_WORKERS_COMPLETE_OPTION = """I have everything needed.""",
 	MARRIAGE_WORKERS_COMPLETE_1 = "As you set the deal with the tailors, they take measurements from you and immediately send a helper for your partner. They promise to finish the work as quick as they can.",
-	MARRIAGE_FINAL_INIT = """— Beautiful! In that case, we'll start tomorrow. """,
+	MARRIAGE_FINAL_INIT = """— Beautiful! In that case, we'll start tomorrow.""",
 	MARRIAGE_FINAL_1 = """The next morning you start receiving couriers and guests. Various musicians and a few artists provided by Amelia bring their tools and wait for the party to start. Large trays of exquisite fresh food and ingredients are stocked in the kitchen. The first guests make their attempts to get in your good books by delivering their presents early. As noon draws closer, you move to the church.""",
 	MARRIAGE_ANASTASIA_1 = """Anastasia is preparing for the upcoming ceremony as Aire tries to support her.
 {color=yellow|Aire: — You are too red, Ana.}
@@ -7276,8 +7291,8 @@ Amelia leaves you for her business, leaving you alone.""",
 
 {color=yellow|Ginny: — Celena thanks you all for coming here today...}""",
 	MARRIAGE_FINAL_4 = """{color=yellow|Ginny: — [name], do you agree to take this [spousename] as your [spousehusband]?}""",
-	MARRIAGE_FINAL_4_OPTION_1 = """Yes""",
-	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely""",
+	MARRIAGE_FINAL_4_OPTION_1 = """Yes.""",
+	MARRIAGE_FINAL_4_OPTION_2 = """Absolutely.""",
 	MARRIAGE_FINAL_4_OPTION_3 = """What's the point in going through all of this otherwise?""",
 	MARRIAGE_FINAL_5 = """{color=yellow|Ginny: — Now you can kiss the [groom].}
 
@@ -7285,10 +7300,10 @@ Amelia leaves you for her business, leaving you alone.""",
 
 {color=aqua|[spousename]: — Thank you, [name], this is the best day of my life...}""",
 	MARRIAGE_FINAL_6 = """Leaving the church, you return to the mansion. Many new guests wait for you over there and a raucous, high-spirited party breaks out. While you are making new connections and receiving wedding presents from other landlords and authorities, you notice how [spousename] glances at you coyly from time to time.""",
-	MARRIAGE_FINAL_7 = """As the party stretches into the evening, one of your servants approaches and passes you a note from a small group of guests— the wealthy people mentioned by Amelia. The note mentions how much they are enjoying the party and says they are ready to pay a large sum of 5,000 gold for a night of fun with the mayor's newlywed wife.""",
-	MARRIAGE_FINAL_7_OPTION_1 = """Order to throw them out""",
-	MARRIAGE_FINAL_7_OPTION_2 = """Just ignore them""",
-	MARRIAGE_FINAL_7_OPTION_3 = """Invite them to the bedroom""",
+	MARRIAGE_FINAL_7 = """As the party stretches into the evening, one of your servants approaches and passes you a note from a small group of guests— the wealthy people mentioned by Amelia. The note mentions how much they are enjoying the party and says they are ready to pay a large sum of 5.000 gold for a night of fun with the mayor's newlywed wife.""",
+	MARRIAGE_FINAL_7_OPTION_1 = """*Order to throw them out*""",
+	MARRIAGE_FINAL_7_OPTION_2 = """*Just ignore them*""",
+	MARRIAGE_FINAL_7_OPTION_3 = """*Invite them to the bedroom*""",
 	MARRIAGE_FINAL_8_1 = """You order the rich bastards thrown out of your wedding party. Recovering your mood, you return to [spousename] and spend some more time with her until night falls.""",
 	MARRIAGE_FINAL_8_2 = """You decide to ignore the proposition and return to spending time with your wife as night falls. Despite your concerns, the group make no further requests.""",
 	MARRIAGE_NIGHT_GROUP_1_1 = """With night falling and guests starting to leave, you approach [spousename] and lead [spouseher] to your bedroom. As you enter, you find the group of men waiting, whose deal you accepted.
@@ -7296,37 +7311,37 @@ Amelia leaves you for her business, leaving you alone.""",
 	MARRIAGE_NIGHT_GROUP_1_2 = """As you order [spousehim] to serve these men, [spousehe] seems rather agreeable to it.""",
 	MARRIAGE_NIGHT_GROUP_1_3 = """You order [spousename] to serve these men, and [spousehe] looks at you with disbelief and horror. However, realizing there's no way for her to escape this now, [she] resentfully nods.""",
 	MARRIAGE_NIGHT_GROUP_1_4 = """Now all that's left is to choose what you're gonna do...""",
-	MARRIAGE_NIGHT_GROUP_OPTION_1 = """Join""",
-	MARRIAGE_NIGHT_GROUP_OPTION_2 = """Leave""",
+	MARRIAGE_NIGHT_GROUP_OPTION_1 = """*Join*""",
+	MARRIAGE_NIGHT_GROUP_OPTION_2 = """*Leave*""",
 	MARRIAGE_NIGHT_GROUP_2_1 = """As a [husband] you get the first turn on your [spousehusband] pussy, as [spousename] uses [spousehis] mouth to serve your guests. You unload into [spousehis] womb, and let one of the waiting rich men take over while [spousename] cleans your shaft with her mouth. While the guests continue to use your wife's body, you order one of the servant girls into the room, to have some fun while you are watching.
 
 After a few hours every guest in the room has had a round with [spousename] and is completely exhausted. As they finally leave, the last one passes you the money they promised.""",
 	MARRIAGE_NIGHT_GROUP_2_2 = """You decide to leave your [spousehusband] and go for a stroll. After a couple of hours one of the men finds you and informs you how well it went, passing you the promised payment. As they leave, you order the servants to take care of the leftover mess and call it a day.""",
 	MARRIAGE_NIGHT_1 = """As party moves to the closure and guests leave, your [spousehusband] approaches you in expectation.
 
-— [Master]... Should I use my darling now? This seems to be quite late, and if you are not tired...""",
-	MARRIAGE_NIGHT_OPTION_1 = """Let's get to the bedroom""",
-	MARRIAGE_NIGHT_OPTION_2 = """I guess I am tired""",
+— [Master]... Should I use 'my darling' now? This seems to be quite late, and if you are not tired...""",
+	MARRIAGE_NIGHT_OPTION_1 = """Let's get to the bedroom.""",
+	MARRIAGE_NIGHT_OPTION_2 = """I guess I am tired.""",
 	MARRIAGE_NIGHT_2_1= """You take [spousename]'s hand and go to the bedroom, leaving the rest of the mess to the servants.""",
 	MARRIAGE_NIGHT_2_2 = """[spousename] returns you a saddened look but nods in agreement. You decide to go to sleep and call it a day.""",
 	
-	DAISY_SERVE_OPTION_START = "Serve me",
+	DAISY_SERVE_OPTION_START = "Serve me.",
 	DAISY_SERVE_START_1 = "— Of course, [Master]. What part of my body would you like to use?",
 	DAISY_SERVE_START_2 = """— O-Of course, [Master]... How can I serve you best..?
 
 Daisy awkwardly avoids eye contact, waiting for you to finish.""",
-	DAISY_SERVE_OPTION_1_1 = "Use your mouth",
-	DAISY_SERVE_OPTION_1_2 = "Bend over",
-	DAISY_SERVE_OPTION_1_3 = "Nevermind",
+	DAISY_SERVE_OPTION_1_1 = "Use your mouth.",
+	DAISY_SERVE_OPTION_1_2 = "Bend over.",
+	DAISY_SERVE_OPTION_1_3 = "Nevermind.",
 	
 	
-	CALI_SERVE_START_1 = "— ...You mean like naughty stuff? Okay, I don't mind if it's with you, [Master]. ",
+	CALI_SERVE_START_1 = "— ...You mean like naughty stuff? Okay, I don't mind if it's with you, [Master].",
 	CALI_SERVE_START_2 = """— What can I do for you, [Master]?
 
 It seems Cali's training has paid off and she does not hesitate answering.""",
-	CALI_SERVE_OPTION_1_1 = "Use your mouth",
-	CALI_SERVE_OPTION_1_2 = "We do it standing",
-	CALI_SERVE_OPTION_1_3 = "Nevermind",
+	CALI_SERVE_OPTION_1_1 = "Use your mouth.",
+	CALI_SERVE_OPTION_1_2 = "We do it standing.",
+	CALI_SERVE_OPTION_1_3 = "Nevermind.",
 	
 	
 	
@@ -7334,66 +7349,66 @@ It seems Cali's training has paid off and she does not hesitate answering.""",
 	
 	GRYPHON_AIRE_START = """As you walk through the grounds of your mansion one morning, you notice a young elf girl, Aire, diligently training with her bow and arrows at the makeshift archery range. You watch her for some time, noticing how firm her concentration is.
 
-After another couple of precise shots she turns to you questioningly . 
+After another couple of precise shots she turns to you questioningly. 
 
 — Can I do something for you?""",
-	GRYPHON_AIRE_START_OPTION_1 = "Your skills are admirable ",
-	GRYPHON_AIRE_START_OPTION_2 = "I don't remember giving you an order to train",
+	GRYPHON_AIRE_START_OPTION_1 = "Your skills are admirable.",
+	GRYPHON_AIRE_START_OPTION_2 = "I don't remember giving you an order to train.",
 	GRYPHON_AIRE_1_1 = "— Thank you. I can't let my skills go rusty even in this state. I'm glad there's still opportunity to train at this time.",
 	GRYPHON_AIRE_1_2 = "— There was no other work at this time, so I went to train my skills so they won't get rusty. I hope this is permitted.",
 	GRYPHON_AIRE_1_OPTION_1 = "Why are you training so hard?",
-	GRYPHON_AIRE_1_OPTION_2 = "You seem a little too enthusiastic about this",
+	GRYPHON_AIRE_1_OPTION_2 = "You seem a little too enthusiastic about this.",
 	GRYPHON_AIRE_2 = """— I've sworn to protect the princess with my life and this is not a task I can accomplish without training. I know I must obey your orders, but even then I'll be ready to put my life on the line in case something threatens Ana.""",
-	GRYPHON_AIRE_2_OPTION_1 = "You should really take it easy, the war is over",
-	GRYPHON_AIRE_2_OPTION_2 = "There's no point in this anymore, I'll protect her",
-	GRYPHON_AIRE_2_OPTION_3 = "What makes you think you are better than me, her [master]?",
+	GRYPHON_AIRE_2_OPTION_1 = "You should really take it easy, the war is over.",
+	GRYPHON_AIRE_2_OPTION_2 = "There's no point in this anymore, I'll protect her.",
+	GRYPHON_AIRE_2_OPTION_3 = "What makes you think you are better than me, her [Master]?",
 	GRYPHON_AIRE_3_1 = """— War or not, I have to stay focused. This is how I express my gratitude to her. I'm sorry, but I can't trust you in something so crucial.""",
 	GRYPHON_AIRE_3_2 = """Aire's face shows slight sneer at your words, but she quickly turns away to hide it.
 
 — Is that so? How can I trust you with her life? She's little more than a toy to you. But even if not, I don't believe you are any better than me.""",
 	GRYPHON_AIRE_3_3 = """— I know that I can't rely on you, or anyone, in such a crucial task. I'm not trying to offend, but I have doubts that you are better than me.""",
 	GRYPHON_AIRE_3_OPTION_1 = "What if I prove to you I'm capable?",
-	GRYPHON_AIRE_3_OPTION_2 = "Now I'll have to prove it to show you who's the [master] here",
+	GRYPHON_AIRE_3_OPTION_2 = "Now I'll have to prove it to show you who's the [Master] here.",
 	GRYPHON_AIRE_4_1 = """— Hmph, you can ask me whatever you want then. If you prove to me that you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove your worth to me, I'll become your lapdog if that is what you wish.""",
 	GRYPHON_AIRE_4_2 = """— I'll see if you can. If you prove to me that you are ready to take care of Ana like I can't, I'll do anything you want. You must be thinking of something lewd, aren't you? If you prove your worth to me, I'll become your lapdog if that is what you wish. """,
-	GRYPHON_AIRE_4_OPTION_1 = "You really know how to motivate a man",
-	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself",
-	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words",
+	GRYPHON_AIRE_4_OPTION_1 = "You really know how to motivate a [man].",
+	GRYPHON_AIRE_4_OPTION_2 = "You must be really sure of yourself.",
+	GRYPHON_AIRE_4_OPTION_3 = "You'll regret these words.",
 	GRYPHON_AIRE_5 = """— Don't start drooling before it's done. Fine, if you want to prove it, I'll accept no less than defeating an Elder Gryphon. This is a rare fierce kind of gryphon, one that even elves won't dare to approach. If you can get one, I'll accept that you will suffice as Anastasia's protector.""",
-	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss",
-	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard",
+	GRYPHON_AIRE_5_OPTION_1 = "Prepare for your loss.",
+	GRYPHON_AIRE_5_OPTION_2 = "This doesn't sound too hard.",
 	GRYPHON_AIRE_6 = """— ...Just don't get yourself killed. Not that I care, but we gonna be in trouble if that happens.""",
 	
 	GRYPHON_WORKERS_START_OPTION = "I'm looking for an Elder Gryphon...",
 	GRYPHON_WORKERS_START = """— Hmm, I dunno de details, ya'd want to get some experienced hunters who's brave enough to go into de elven woods at least. I think I can show ya a few.
 
-Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down the Elder Gryphon.""",
+Sigmund tells you how to find a hunter veteran named Derek who can give you the directions to track down an Elder Gryphon.""",
 	GRYPHON_HUNTER_START = """You find Derek, veteran hunter who Sigmund told you about. After telling him what you want, he looks amused.
 
-— That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense so bringing too many people will do us more harm than good. 
-
+— That's a dangerous task, pal, but I like it. Ya know, given your status, we could probably recruit a few other experienced hunters for it. The forests are dense, so bringing too many people will do us more harm than good.
+	
 — That's quite a bold achievement you are aiming at, mayor. Not a dragon slaying, but still can go down in history. What would you want to do it for?""",
-	GRYPHON_HUNTER_START_OPTION_1 = "That beast's body can be quite valuable",
+	GRYPHON_HUNTER_START_OPTION_1 = "That beast's body can be quite valuable.",
 	GRYPHON_HUNTER_START_OPTION_2 = "What's life without the thrill of conquest?",
-	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress a girl",
+	GRYPHON_HUNTER_START_OPTION_3 = "Just trying to impress a girl.",
 	GRYPHON_HUNTER_1_1 = """— Huh, so some rich stuff then. Well, none of my business then.
-
-I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start e to track it down.""",
+	
+— I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
 	GRYPHON_HUNTER_1_2 = """— I had no idea our mayor is that adventurous, I can respect that.
-
-I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
+	
+— I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
 	GRYPHON_HUNTER_1_3 = """You notice how Aire frowns and gives you a judging look.
 
 — Haha, you are quite a kidder. Well, you must have your reasons.
 
-I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
-	GRYPHON_HUNTER_1_OPTION_1 = "That's the plan then",
-	GRYPHON_HUNTER_1_OPTION_2 = "Let's not waste any more time",
+— I have some information on where one of those beasts was seen last time, not too far from the forest's border. I suggest going there so we can start to track it down.""",
+	GRYPHON_HUNTER_1_OPTION_1 = "That's the plan then.",
+	GRYPHON_HUNTER_1_OPTION_2 = "Let's not waste any more time.",
 	GRYPHON_FOREST_START = """You approach a denser part of the forest, where you have heard you might find an Elder Gryphon. Aire by your side stays silent, but the frown on her pretty face hints at judging your decisiveness. A few other hunters have come here from the city and agreed to follow your orders.""",
 	GRYPHON_FOREST_1 = """As you defeat the minor gryphon, you let the hunters search the surroundings for the tracks of the elder. While waiting, Aire approaches you.
 
 — I don't like doing this, this is too dangerous.""",
-	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste not to finish it now",
+	GRYPHON_FOREST_1_OPTION_1 = "Would be a waste not to finish it now.",
 	GRYPHON_FOREST_1_OPTION_2 = "Ready to admit your defeat then?",
 	GRYPHON_FOREST_1_1 = """Aire prepares to say something but at the last moment bites her lip and stays quiet. Realizing it was her idea in the first place, she's unable to bring herself to accept defeat. 
 
@@ -7403,9 +7418,9 @@ Finally Derek comes to you with good news. The hunters were able to find evidenc
 Finally Derek comes to you with good news. The hunters were able to find evidence that the Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing this you give the order to move out.""",
 	GRYPHON_CAVE_START = """With your group of hired hunters and Aire you enter the spacious cave. Almost by the entrance you spot large feathers indicating that the hunters' guess was correct. After another hundredfeet you hear the screeching roar of an angry beast. The whole group quicky retreats from the cave as you are followed out by a gigantic gryphon, larger than any you've ever seen before.""",
 	GRYPHON_CAVE_1 = """As the Elder Gryphon is on its last breath, you notice how it focuses its attention on Aire, who is still within the reach of its massive talons. Unexpectedly to everyone, the Elder Gryphon bellows another fierce roar and makes a dash in her direction.""",
-	GRYPHON_CAVE_1_OPTION_1 = "Try to block it",
-	GRYPHON_CAVE_1_OPTION_2 = "Do nothing",
-	GRYPHON_CAVE_BAD = """Aire's eyes widen as a giant gryphon's claw tears through her stomach. In a mere swipe her slender body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
+	GRYPHON_CAVE_1_OPTION_1 = "*Try to block it*",
+	GRYPHON_CAVE_1_OPTION_2 = "*Do nothing*",
+	GRYPHON_CAVE_BAD = """Aire's eyes widen as the giant gryphon's claw tears through her stomach. In a mere swipe her slender body is torn apart by it. As one of the hunters strikes on the gryphon's exposed neck, it finally falls down. You rush to Aire, but it's too late to do anything for her. She musters the last of her breath aimed at you.
 
 — P-please, protect... Ana...
 
@@ -7413,28 +7428,28 @@ The gryphon lies defeated, but there's little meaning left in it.""",
 	GRYPHON_CAVE_2 = """You jump in front of Aire, blocking the incoming attack with your weapon. The massive force pushes you back into Aire, who looks at you with shock and disbelief. Your weapon breaks under the pressure of the attack and you feel the gryphon's claw enter your chest. The first impact pushes you back, so the claw does not cut as deep as it could have, yet you feel like at least one of your ribs was broken.
 
 Thankfully, the attack opened an opportunity for one of the hunters to deeply wound the gryphon's neck, which finally made it fall. With no strength left you slump to the ground. Aire hastily drops to her knees beside you, her eyes watering. """,
-	GRYPHON_CAVE_3 = """— You've... Why? Why did you protect me?! You have to protect Ana!.. You can't die now!
+	GRYPHON_CAVE_3 = """— You've... Why? Why did you protect me?! You have to protect Ana..! You can't die now!
 
 You only manage to give Aire a small smile before losing consciousness.""",
 	GRYPHON_CAVE_4 = """You wake up in a small tent positioned close to the gryphon's lair. You don't feel too great, but it seems one of the healers has patched you up and your life is in no danger. Next to your bed you observe a familiar elven girl.
 
 — [name]! Never do something like this again! What were you thinking!?""",
-	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct",
-	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do",
-	GRYPHON_CAVE_4_OPTION_3 = "How much I'm gonna bang your sweet ass for this",
-	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what nearly happened... I'm sorry I made you do that, I didn't think you'd actually try to bring down that beast... And thank you for saving me. For the second time. I guess I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
-	GRYPHON_CAVE_5_OPTION_1 = "That's what I wanted to hear",
-	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well",
+	GRYPHON_CAVE_4_OPTION_1 = "It was more of an instinct.",
+	GRYPHON_CAVE_4_OPTION_2 = "That's what a hero must do.",
+	GRYPHON_CAVE_4_OPTION_3 = "How much I'm gonna bang your sweet ass for this.",
+	GRYPHON_CAVE_5 = """— You are an idiot, aren't you? Look what nearly happened... I'm sorry I made you do that, I didn't think you'd actually try to bring down that beast... And thank you for saving me. For the second time. I guess, I am obliged to do anything you want of me now. I mean, once your wounds are healed.""",
+	GRYPHON_CAVE_5_OPTION_1 = "That's what I wanted to hear.",
+	GRYPHON_CAVE_5_OPTION_2 = "I'm glad you are safe as well.",
 	AIRE_GREET = """— What do you want of me?""",
 	GRYPHON_AIRE_SEX_START_OPTION_INIT = "About your promise...",
 	GRYPHON_AIRE_SEX_START = "— Y-yes? What do you have for me?",
-	GRYPHON_AIRE_SEX_START_OPTION_1 = "I want to have a threesome with you and Anastasia",
-	GRYPHON_AIRE_SEX_START_OPTION_2 = "I haven't decided yet",
+	GRYPHON_AIRE_SEX_START_OPTION_1 = "I want to have a threesome with you and Anastasia.",
+	GRYPHON_AIRE_SEX_START_OPTION_2 = "I haven't decided yet.",
 	GRYPHON_AIRE_SEX_1 = """Aire becomes silent for some time and just as you think she's going to make you regret saying that, she responds.
 
 — I'm not against it, but never thought about doing something like that with Ana. I mean, she deserves you more than me. But if it is your order, we will both obey. So you want me to prepare her for it then? Not that I have any experience with another girl, but I guess I can do that.""",
-	GRYPHON_AIRE_SEX_1_OPTION_1 = "That's settled then",
-	GRYPHON_AIRE_SEX_1_OPTION_2 = "I've changed my mind",
+	GRYPHON_AIRE_SEX_1_OPTION_1 = "That's settled then.",
+	GRYPHON_AIRE_SEX_1_OPTION_2 = "I've changed my mind.",
 	GRYPHON_AIRE_SEX_2 = "Aire nods in response and you set a plan for the upcoming event.",
 	GRYPHON_ANA_SEX_OPTION_INIT = "Tonight we are gonna do something special...",
 	
@@ -7457,16 +7472,16 @@ Aire: — Me too, but that's what our protector wants, so I think it's not too b
 Anastasia had no answer for that and Aire led her to the bed.""",
 
 
-GRYPHON_ANA_SEX_2 = """Aire: — So, let's do our best to please our [master] and find some joy in the act — not just as friends but also as women. 
+GRYPHON_ANA_SEX_2 = """Aire: — So, let's do our best to please our [Master] and find some joy in the act — not just as friends but also as women. 
 
 The princess nodded as they both lowered to their knees before you. Aire stripped away the last bits of her underwear and Anastasia followed her closely. 
 
 Aire: — Wow, Ana, I noticed you hide your breasts, but they seem larger than mine. Must be because of your royal blood.
 
 Anastasia: — W-what are you saying!? They aren't that much bigger... You don't think they are too big, right [name]?""",
-	GRYPHON_ANA_SEX_2_OPTION_1 = "They are perfect",
-	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\"",
-	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body",
+	GRYPHON_ANA_SEX_2_OPTION_1 = "They are perfect.",
+	GRYPHON_ANA_SEX_2_OPTION_2 = "There's no such thing as \"too big\".",
+	GRYPHON_ANA_SEX_2_OPTION_3 = "You should be more accepting of your body.",
 	
 	GRYPHON_ANA_SEX_3 = """Anastasia blushes and looks away, as Aire moves her closer to you. 
 
@@ -7506,7 +7521,7 @@ Aire looks back at you expectantly.
 
 Aire: — Was this everything you imagined it would be, [Master]? Or was there anything else you wanted? 
 
-She looks back at Anastasia suggestively, who blushes again. """,
+She looks back at Anastasia suggestively, who blushes again.""",
 
 	GRYPHON_ANA_SEX_7 = """You smile wolfishly and tell them that you're only getting started.
 
@@ -7536,7 +7551,7 @@ Aire clings to Anastasia as you fuck her to the edge of orgasm and then withdraw
 You decide to cum inside Aire first as a reward for her obedience and as your final thrusts push her spasming pussy over the edge, you roughly shove your fingers inside Anastasia's pulsing cunt. The three of you reach orgasm together, both girls shaking and moaning, clasping each other tightly while you fill Aire's aching pussy with your cum. 
 The two girls lie in a tangled heap of slender limbs, flushed and panting for breath as you pull out of Aire. Your cum trickles from her as she lies underneath Anastasia. 
 
-Aire: — Oh, master... I never dreamed... I... thank you...
+Aire: — Oh, [Master]... I never dreamed... I... thank you...
 
 Anastasia can barely speak and slumps heavily on top of Aire. Her perfect ass rises and falls as she gasps for breath, pussy hot and glistening with her own juices. You feel your cock stiffening again and you cram it into the princess's exposed cunt.
 
@@ -7553,64 +7568,64 @@ Casually, you inform both girls that whenever they are ready there is work to be
 — I'm glad you've visited us. You must've received the message? I wouldn't dare to address you normally, but there was a person who wished to see you. I take it she's your acquaintance?""",
 	ZEPHYRA_RECRUITMENT_2 = """{color=yellow|Ginny: — I've allowed her to stay at the church as it's an honor to me. Even if she's not a follower of Celena, she is very respectful — as a Champion ought to be.}
 
-{color=aqua|Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And in such scary times too. Can you imagine what all those desperate bandits could do to someone like me? }
+{color=aqua|Zephyra: — Hey, [name]. It's been a while. Ah, it was so cruel of you to leave me all alone back then. And in such scary times too. Can you imagine what all those desperate bandits could do to someone like me?}
 
 {color=aqua|Zephyra: — Well, I see you've settled this war for good. I was right about you after all.}""",
-	ZEPHYRA_RECRUITMENT_2_OPTION_1 = """You really are full of surprises""",
-	ZEPHYRA_RECRUITMENT_2_OPTION_2 = """I'm surprised you're still following me""",
-	ZEPHYRA_RECRUITMENT_2_OPTION_3 = """I don't have time for this""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_1 = """You really are full of surprises.""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_2 = """I'm surprised you're still following me.""",
+	ZEPHYRA_RECRUITMENT_2_OPTION_3 = """I don't have time for this.""",
 	ZEPHYRA_RECRUITMENT_3_1 = """{color=aqua|Zephyra: — Please, you are flattering me. It's just a mission I have to perform.
-
-Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
+	
+Zephyra: — Now, that you are Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land and, perhaps, the world. It seems that this is my deity's intention for me.
 
 Zephyra: — Do you know what an Artifact is? It's an item from a deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.}""",
 	ZEPHYRA_RECRUITMENT_3_2 = """{color=aqua|Zephyra: — There's a mission I have to perform, so we're here now.
-
-Zephyra: — Now, that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
+	
+Zephyra: —  Now, that you are Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land and, perhaps, the world. It seems that this is my deity's intention for me.
 
 Zephyra: — Do you know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.}""",
-	ZEPHYRA_RECRUITMENT_3_3 = """{color=aqua|Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all... 
-
+	ZEPHYRA_RECRUITMENT_3_3 = """{color=aqua|Zephyra: — It's sad to hear it, but I won't be able to talk you into cooperation after all...
+	
 Zephyra: — If you tell me, I won't be bothering you anymore then.}""",
-	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = """Yes, I want you to leave me alone""",
-	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = """I've changed my mind""",
+	ZEPHYRA_RECRUITMENT_3_3_OPTION_1 = """Yes, I want you to leave me alone.""",
+	ZEPHYRA_RECRUITMENT_3_3_OPTION_2 = """I've changed my mind.""",
 	ZEPHYRA_RECRUITMENT_3_OPTION_1 = "There might be a problem with this...",
-	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession",
+	ZEPHYRA_RECRUITMENT_3_OPTION_2 = "This sword is no longer in our possession.",
 	ZEPHYRA_RECRUITMENT_4 = """You explain to Zephyra what has happened during the earlier days of civil war.
 
-{color=aqua|Zephyra: — Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other artifacts. 
+{color=aqua|Zephyra: — Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other Artifacts. 
 
-Zephyra: — The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.}""",
+Zephyra: — The Artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.}""",
 	ZEPHYRA_RECRUITMENT_4_OPTION_1 = "How do I know your goals are good?",
 	ZEPHYRA_RECRUITMENT_4_OPTION_2 = "So how do you propose for me to get to it?",
 	ZEPHYRA_RECRUITMENT_5_1 = """{color=aqua|Zephyra: — Hmm, indeed, you can't. Trust me, I guess? If you trust me I promise you to do my best to help you. How about it?
-
+		
 Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
 
 Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.}""",
 	ZEPHYRA_RECRUITMENT_5_2 = """{color=aqua|Zephyra: — Well, you are the Mayor, so one way or another you'll be able to get to the elven artifact before that demon chick will. No need to rush it, but you should look it up.
-
+	
 Zephyra: — So, did I convince you? I'm looking forward to working with you... As long as you don't mind.}""",
-	ZEPHYRA_RECRUITMENT_5_OPTION_1 = "Very well, you can join me",
-	ZEPHYRA_RECRUITMENT_5_OPTION_2 = "I'm not going to bother with it after all",
+	ZEPHYRA_RECRUITMENT_5_OPTION_1 = "Very well, you can join me.",
+	ZEPHYRA_RECRUITMENT_5_OPTION_2 = "I'm not going to bother with it after all.",
 	ZEPHYRA_RECRUITMENT_6_GOOD = """{color=aqua|Zephyra: — Jeez, finally. You really played this hard to get, didn't you? I'm glad we can be friends from now on at least. Don't mind me too much, please.}""",
 	ZEPHYRA_RECRUITMENT_6_BAD = """{color=aqua|Zephyra: — Ah, that's so? It's a shame, really. Well, I can only wish that you won't end up drowning in a sewer. Farewell, [name].}
 
 Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_SWORD_1 = """— You've done it, [name]. Not something just anyone can brag about. I'm glad my decision to join your side was the correct one after all.
+	
+— Now that you are Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land and, perhaps, the world. It seems that this is my deity's intention for me.
 
-— Now that you are a Mayor you will have more support and resources at your disposal which can only be a good thing, but there's a serious danger to this land, and, perhaps, the world. It seems that this is my deity's intention for me.
-
-— You know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and its monarch.""",
+— You know what an Artifact is? It's an item from deity, which can hold enormous powers, or have some hidden attributes. These artifacts are all connected to deities in some way. I believe there was an ancient sword belonging to this land and it's monarch.""",
 	ZEPHYRA_SWORD_1_OPTION_1 = "There might be a problem with this...",
-	ZEPHYRA_SWORD_1_OPTION_2 = "This sword is no longer in our possession",
+	ZEPHYRA_SWORD_1_OPTION_2 = "This sword is no longer in our possession.",
 	ZEPHYRA_SWORD_2 = """You explain to Zephyra what has happened during the earlier days of the civil war.
 
-— Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other artifacts. 
+— Hmm, this is troublesome. A demon took the sword at the start of the war? This might be the danger I was warned about. A great shame, but it only makes it more urgent that we focus on collecting other Artifacts. 
 
-— The artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
-	ZEPHYRA_SWORD_2_OPTION_1 = "I doubt that they will simply give it to us",
-	ZEPHYRA_SWORD_2_OPTION_2 = "What's gonna happen after we gather all the artifacts?",
+— The Artifacts don't possess much power as they currently are, but being connected to deities, they can become very dangerous. I believe we must secure them before that demon gets to them. The next closest one must be kept by the forest elves.""",
+	ZEPHYRA_SWORD_2_OPTION_1 = "I doubt that they will simply give it to us.",
+	ZEPHYRA_SWORD_2_OPTION_2 = "What's gonna happen after we gather all the Artifacts?",
 	ZEPHYRA_SWORD_3_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
 	ZEPHYRA_SWORD_3_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
 	PRIESTESS_SWORD_TALK_1_1 = """After making an appointment, you are able to find an audience with the High Priestess. 
@@ -7621,114 +7636,114 @@ Zephyra leaves the church without giving you a second glance.""",
 — Cease your human banter, as Freya's chosen I have no time for such things. Even if we had some common ground in the past it means nothing.""",
 	PRIESTESS_SWORD_TALK_1_OPTION_1 = "Are you doing well?",
 	PRIESTESS_SWORD_TALK_1_OPTION_2 = "I'm actually seeking for specific artifacts...",
-	PRIESTESS_SWORD_TALK_2 = """You explain everything you know about the artifacts and the demon woman who seems to be after them. Contrary to your expectations, the High Priestess does not seem impressed.
+	PRIESTESS_SWORD_TALK_2 = """You explain everything you know about the Artifacts and the demon woman who seems to be after them. Contrary to your expectations, the High Priestess does not seem impressed.
 
-— What you say hardly concerns me. Naturally there's no way this will happen. You are not allowed to get anywhere close to the Sacred Bowl. As for the demon you mentioned, we know nothing about it. If there's nothing else, I'll ask you not to bother me anymore. """,
-	PRIESTESS_SWORD_TALK_2_OPTION_1 = "But this might be crucial for you too",
+— What you say hardly concerns me. Naturally there's no way this will happen. You are not allowed to get anywhere close to the Sacred Bowl. As for the demon you mentioned, we know nothing about it. If there's nothing else, I'll ask you not to bother me anymore.""",
+	PRIESTESS_SWORD_TALK_2_OPTION_1 = "But this might be crucial for you too.",
 	PRIESTESS_SWORD_TALK_2_OPTION_2 = "Is there nothing that can change your mind?",
-	PRIESTESS_SWORD_TALK_2_OPTION_3 = "You might regret this decision",
+	PRIESTESS_SWORD_TALK_2_OPTION_3 = "You might regret this decision.",
 	PRIESTESS_SWORD_TALK_2_OPTION_4 = "*Leave*",
 	PRIESTESS_SWORD_TALK_3_123 = "The priestess ignores your response and calls a guard to show you the way out.",
 	PRIESTESS_SWORD_TALK_3_4 = "You decide there's nothing to be done and it's time to go.",
 	PRIESTESS_SWORD_TALK_4_0 = """You leave the High Priestess's chambers and walk away, but after a few hundred feet a couple guards stop you and ask you to follow them. They bring you to what seems to be the military's headquarters and a tall elf man greets you.
 
-— Hello, [name]. Please, don't be alarmed, I only ordered my men to bring you in for a chat. """,
+— Hello, [name]. Please, don't be alarmed, I only ordered my men to bring you in for a chat.""",
 	PRIESTESS_SWORD_TALK_4_1 = """— I'm Erlen, the current military commander. It's not as impressive a title as you might imagine, since we are direct subordinates of the High Priestess. Freya's High Priestess is our governor and she also defines our laws. Not every elf is happy about that, though.""",
 	PRIESTESS_SWORD_TALK_4_2 = """— Yes, you might find it unusual, we prefer to remain civil and use underhand tactics inside of our society. There are many other etiquette and religious rules I'm not going to bother you with, as these are not relevant to the reason you are here.""",
 	PRIESTESS_SWORD_TALK_4_OPTION_1 = "Who are you?",
-	PRIESTESS_SWORD_TALK_4_OPTION_2 = "You elves have some shady ways of doing things",
+	PRIESTESS_SWORD_TALK_4_OPTION_2 = "You elves have some shady ways of doing things.",
 	PRIESTESS_SWORD_TALK_4_OPTION_3 = "What do you want?",
-	PRIESTESS_SWORD_TALK_5 = """— I've heard you are looking for a Sacred Bowl. Your story raises some questions but my sources suggest your information is credible. I can talk the High Priestess into giving you a chance to claim the Sacred Bowl.""",
+	PRIESTESS_SWORD_TALK_5 = """— I've heard you are looking for the Sacred Bowl. Your story raises some questions, but my sources suggest your information is credible. I can talk the High Priestess into giving you a chance to claim the Sacred Bowl.""",
 	PRIESTESS_SWORD_TALK_5_OPTION_1 = "Why would you be so generous?",
 	PRIESTESS_SWORD_TALK_5_OPTION_2 = "This won't be for free I bet?",
-	PRIESTESS_SWORD_TALK_6 = """— First I need you to do something in return. On the edge of our forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.""",
+	PRIESTESS_SWORD_TALK_6 = """— First, I need you to do something in return. On the edge of our forests there's a large beastkin tribe. I want you to travel there and deliver a message I'm going to pass to you, then return with an answer. The message will be sealed so only the receiver will be able to read it. I want you to deliver to the tribe's chieftain.""",
 	PRIESTESS_SWORD_TALK_6_OPTION_1 = "Do you dislike those Beastkin?",
 	PRIESTESS_SWORD_TALK_6_OPTION_2 = "Why won't you go yourself?",
-	PRIESTESS_SWORD_TALK_6_OPTION_3 = "Very well, I'll do it",
+	PRIESTESS_SWORD_TALK_6_OPTION_3 = "Very well, I'll do it.",
 	PRIESTESS_SWORD_TALK_7_1 = """— Elves have a... complicated relationship with the beastkin. They don't worship Freya, instead they worship Rundas. They don't quite respect nature and great trees as we do. They live in the wild, following their primal instincts. To be frank, we see them as hardly more than savages, but we have agreed to tolerate them, as long as they are secluded.""",
 	PRIESTESS_SWORD_TALK_7_2 = """— I'm obviously not allowed to go just anywhere on my own, and I can't really send any of my regular soldiers on such a delicate mission. That's why I contacted you. Yes, for that matter, I will need you to stay quiet about this mission.""",
 	PRIESTESS_SWORD_TALK_7_3 = """Erlon smiles for the first time in your talk.
 
 — I'm glad to hear that. Here's the message I have prepared. I'll mark their location on your map. You should have little trouble getting there. Once you bring me their answer, I'll do what I can to persuade the High Priestess to help with your goal.""",
-	CHIEFTAIN_MEETING_1 = """You manage to arrive at the tribe's settlement without any notable problems, in fact you were surprised to find that nobody stopped you on your way in. Most of the various beastkin and some halfkin walking around paid you little serious attention, though a few observed you closely and even made ambiguous gestures. 
+	CHIEFTAIN_MEETING_1 = """You manage to arrive at the tribe's settlement without any notable problems. In fact, you were surprised to find that nobody stopped you on your way in. Most of the various beastkin and some halfkin walking around paid you little serious attention, though a few observed you closely and even made ambiguous gestures. 
 
 You've noticed they seem unusually carefree and even frivolous, including the way they dress and talk. This notion was reinforced when a few times you've came across barely hidden couples having sex right out in the open in the middle of the day, and your appearance didn't seem to bother them. As you made your way past one such couple, an older beastkin woman called out to you.
 
 — Aah, we have a new visitor. It's been a while since the last one. Do you require some help, perhaps?""",
 	CHIEFTAIN_MEETING_1_OPTION_1 = "Who are you?",
 	CHIEFTAIN_MEETING_1_OPTION_2 = "A new visitor?",
-	CHIEFTAIN_MEETING_1_OPTION_3 = "I'm looking for the chieftain of the village",
-	CHIEFTAIN_MEETING_2_1 = """— I'm Savra, the tribe's shaman. You can think of me as an elder who guides our younger kinsmen. """,
+	CHIEFTAIN_MEETING_1_OPTION_3 = "I'm looking for the chieftain of the village.",
+	CHIEFTAIN_MEETING_2_1 = """— I'm Savra, the tribe's shaman. You can think of me as an elder who guides our younger kinsmen.""",
 	CHIEFTAIN_MEETING_2_2 = """— Yes. Owing to the remoteness of our location, there are not many other settlements around here besides the elves, who don't think very highly of us. New visitors are a rare sight.""",
-	CHIEFTAIN_MEETING_2_3 = """— Our Chieftain is Leon, you'll find him by the large hut near the cave. Now, if you'll excuse me, I have some business to attend to, we'll meet again later.""",
+	CHIEFTAIN_MEETING_2_3 = """— Our chieftain is Leon, you'll find him by the large hut near the cave. Now, if you'll excuse me, I have some business to attend to. We'll meet again later.""",
 	CHIEFTAIN_MEETING_3_1 = """In a spacious hut you find Leon, the tribe's chieftain. 
 
 — Greetings, traveler. I welcome you to the home of our tribe, as long as you stay civil and tolerant. We are happy to have to accept another among our kin, if this interests you.
 
-— I have already heard that you were looking for me. We are ever-mindful of guests but if you have some sort of business to present I'm obliged to hear it.""",
-	CHIEFTAIN_MEETING_3_2 = """In a spacious hut you find Leon, tribe's chieftain. 
+— I have already heard that you were looking for me. We are ever-mindful of guests, but if you have some sort of business to present I'm obliged to hear it.""",
+	CHIEFTAIN_MEETING_3_2 = """In a spacious hut you find Leon, the tribe's chieftain. 
 
 — Greetings, traveler. I welcome you to the home of our tribe, as long as you stay civil and tolerant. You might not be of our kin, but you don't have to worry about your safety here.
 
-— I have already heard that you were looking for me. We are ever-mindful of guests but if you have some sort of business to present I'm obliged to hear it.""",
-	CHIEFTAIN_MEETING_3_OPTION_1 = "I have a message from the elves",
-	CHIEFTAIN_MEETING_3_OPTION_2 = "Erlen sent me",
+— I have already heard that you were looking for me. We are ever-mindful of guests, but if you have some sort of business to present I'm obliged to hear it.""",
+	CHIEFTAIN_MEETING_3_OPTION_1 = "I have a message from the elves.",
+	CHIEFTAIN_MEETING_3_OPTION_2 = "Erlen sent me.",
 	CHIEFTAIN_MEETING_4 = """You pass Leon the sealed letter, which opens in his paws. As he reads through it, you notice how his face frowns, yet he remains silent until he finishes reading. After thinking it through, he finally speaks.
 
 — I take it you will need my answer. I'm not sure what reason you have to travel here, but we have our needs too. You'll have to do something for us, then you'll get my answer.""",
 	CHIEFTAIN_MEETING_4_OPTION_1 = "Why me?",
 	CHIEFTAIN_MEETING_4_OPTION_2 = "What do you want?",
-	CHIEFTAIN_MEETING_4_OPTION_3 = "I guess there's no choice",
+	CHIEFTAIN_MEETING_4_OPTION_3 = "I guess, there's no choice.",
 	CHIEFTAIN_MEETING_5 = """— We have certain customs and rituals we are required to carry by Rundas. You are the first visitor in the last couple of months and you can help us with that. There's one ritual which we need an outsider to perform and if you wish to carry my answer back to the elves, I will require you to participate in it. It's nothing dangerous for you, in case you are concerned.
 
 — Find Savra, she'll tell you the details, she must be already excited about your arrival.""",
 	MAE_MEETING_1 = """As you enter the lodge, a young surprised tanuki girl appears before you, dressed in skimpy clothing. Her demeanor is unusually peculiar compared to the other villagers, though she is also visibly nervous.""",
-	MAE_MEETING_1_1 = """— Ah! H-hello! I haven't seen you around before. You are an outsider, right?.. I mean, of course you are. U-hm, I'm Mae, pleased to meet you. You must be looking for Savra? She's in the far room. N-now, please, excuse me.
+	MAE_MEETING_1_1 = """— Ah! H-hello! I haven't seen you around before. You are an outsider, right..? I mean, of course you are. U-hm, I'm Mae, pleased to meet you. You must be looking for Savra? She's in the far room. N-now, please, excuse me.
 
-Before Mae finally leaves the room, she gives you another curious yet slightly frightened look. """,
-	MAE_MEETING_2 = """— Hello, again, outsider. It's a pleasure to see a new visitor these days. I suspect you've been led here by the words of the long-eared. That matters little to me, as this is just another whim of the gods. The only question is if it's the whim of Rundas or not. And so far I tend to believe it is. Say, what do you think about us?""",
+Before Mae finally leaves the room, she gives you another curious yet slightly frightened look.""",
+	MAE_MEETING_2 = """— Hello again, outsider. It's a pleasure to see a new visitor these days. I suspect you've been led here by the words of the long-eared. That matters little to me, as this is just another whim of the gods. The only question is if it's the whim of Rundas or not. And so far I tend to believe it is. Say, what do you think about us?""",
 	MAE_MEETING_2_OPTION_1 = """I've seen some things on the way here...""",
-	MAE_MEETING_2_OPTION_2 = """I haven't noticed anything unusual, if anything everyone should be as open""",
-	MAE_MEETING_2_OPTION_3 = """I'm not too fond of this lifestyle""",
+	MAE_MEETING_2_OPTION_2 = """I haven't noticed anything unusual, if anything everyone should be as open.""",
+	MAE_MEETING_2_OPTION_3 = """I'm not too fond of this lifestyle.""",
 	MAE_MEETING_2_1 = """— You aren't too familiar with our customs. We are descended from Rundas, the creator of the wilds and animals. As his children, we accept the nature of consequenceless mating and love. Those who reach adolescence in this tribe learn the way of sharing their feelings with others through the language of the body. The new young are adopted and raised by the whole tribe.""",
 	MAE_MEETING_2_1_OPTION_1 = """What about those who refuse?""",
-	MAE_MEETING_2_1_OPTION_2 = """This is barbaric to me""",
-	MAE_MEETING_2_1_OPTION_3 = """That's a nice custom""",
+	MAE_MEETING_2_1_OPTION_2 = """This is barbaric to me.""",
+	MAE_MEETING_2_1_OPTION_3 = """That's a nice custom.""",
 	MAE_MEETING_2_1_1 = """— They aren't forced to, naturally. They can even leave, though they'll have to make their way through the elven guards to make it to the less dangerous part of the continent. But this happens quite rarely.
-
+	
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
 — You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_1_2 = """— I know that some outsiders often think that, but others don't seem to mind and even choose to participate. Though, there's been very few of you lately.
-
+	
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
 
 — You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_1_3 = """— Then you should find our company pleasant. Not mine, though, I'm a bit out of shape as you can see.
-
+	
 — You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
-
+	
 — You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_2_2AND3 = """— You've come at the right time, as the date of the annual ritual is approaching. Actually, I was waiting for someone like you.
-
+	
 — You have met Mae on the way here, haven't you? A nice pure city girl who joined us only a couple months ago. She'll make an ideal sacrifice for Rundas.""",
 	MAE_MEETING_3_OPTION_1 = """Are you going to kill her?!""",
 	MAE_MEETING_3_OPTION_2 = """What are you talking about?""",
-	MAE_MEETING_3_OPTION_3 = """I'm not sure I need to know that""",
-	MAE_MEETING_3_1 = """— Kill? No way. Do you really think of us as savages? She'll be going through shaman initiation. As my future successor, she'll have to copulate with an outsider — that will be your duty. 
+	MAE_MEETING_3_OPTION_3 = """I'm not sure I need to know that.""",
+	MAE_MEETING_3_1 = """— Kill? No way. Do you really think of us as savages? She'll be going through shaman initiation. As my future successor, she'll have to copulate with an outsider — that will be your duty.
+	
+— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem.
 
-— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem. 
-
-— If she becomes pregnant it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""",
-	MAE_MEETING_3_2AND3 = """— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem. 
-
-— If she becomes pregnant it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""", 
+— If she becomes pregnant, it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""",
+	MAE_MEETING_3_2AND3 = """— I've been teaching her to be the next shaman and I have high faith in her. For the next Rundas' medium, she has a good state of mind and a plump healthy body. Somewhat out of shape, but since she's not going to be a hunter, it's not a problem.
+	
+— If she becomes pregnant, it shall be a bountiful sign. A new blood nourished by the medium is invaluable for the tribe.""", 
 	MAE_MEETING_3_1_OPTION_1 = "Copulate?",
 	MAE_MEETING_3_1_OPTION_2 = "Is she really fine with this?",
 	MAE_MEETING_3_1_OPTION_3 = "Why do you want me to do it?",
-	MAE_MEETING_3_1_OPTION_4 = "Alright, I'll do it",
-	MAE_MEETING_3_1_OPTION_5 = "I won't do this",
-	MAE_MEETING_4_1 = """— Yes. She's going to have sex with a male outsider to become the next Rundas medium. Your energy will draw the blessing of Rundas to both of you and this is a requirement for a future Shaman. And, since it's her first time, it will make her offering even stronger.""",
+	MAE_MEETING_3_1_OPTION_4 = "Alright, I'll do it.",
+	MAE_MEETING_3_1_OPTION_5 = "I won't do this.",
+	MAE_MEETING_4_1 = """— Yes. She's going to have sex with a male outsider to become the next Rundas medium. Your energy will draw the blessing of Rundas to both of you and this is a requirement for a future shaman. And since it's her first time, it will make her offering even stronger.""",
 	MAE_MEETING_4_2 = """— Naturally. You can talk to her if you wish. She's shy, but that's natural for someone of her age who still hasn't taken a single man. Given that she joined us willingly though, I'm certain her mind is already set.""",
 	MAE_MEETING_4_3 = """— You are the only outsider we've welcomed to the village in months, and you do look like a strong male. There are no other requirements. I wish I was somewhat younger myself...""",
 	MAE_MEETING_4_4 = """— Good, good. Leon will be pleased and we'll start the preparations. The end of this week will be perfect for the ritual. Visit me tomorrow and we'll settle on the details.""",
@@ -7738,15 +7753,15 @@ Before Mae finally leaves the room, she gives you another curious yet slightly f
 
 After pondering for some time she turns to you with her request.
 
-— If you bring us enough supplies for a long time we can set a deal and I'll vouch for you for Leon. Bring us 2,000 Meat and Fish, with that we will have ample stores in reserve in case of misfortune.""",
+— If you bring us enough supplies for a long time we can set a deal and I'll vouch for you for Leon. Bring us 2.000 Meat and Fish, with that we will have ample stores in reserve in case of misfortune.""",
 	SAVRA_SUPPLIES_START = """""", # TODO add text. Savra greeting.
-	SAVRA_SUPPLIES_START_OPTION = "I've brought the supplies you've asked for",
-	SAVRA_SUPPLIES_1 = """— Woah, you really did. That's a lot of food for the tribe. You've kept your word and I'll keep mine, I'll vouch for your case, whatever it is. Shame we couldn't hold the ritual yet.""",
+	SAVRA_SUPPLIES_START_OPTION = "I've brought the supplies you've asked for.",
+	SAVRA_SUPPLIES_1 = """— Woah, you really did. That's a lot of food for the tribe. You've kept your word and I'll keep mine. I'll vouch for your case, whatever it is. Shame we couldn't hold the ritual yet.""",
 	SAVRA_RITUAL_START = """You enter Shaman's hut and find Savra at the same place, working on some herb mixtures. As she turns around as sees you, she waves at you.
 
-— It's you, [name]. Good thing you came. I'm actually still in preparations right now. If you don't mind, you can go and help Mae, as she's currently gathering herbs outside of the village. I'll tell you where it is...""",
-	SAVRA_RITUAL_START_OPTION_1 = "I'll go to her then",
-	SAVRA_RITUAL_START_OPTION_2 = "Fine, I have to finish this sooner",
+— It's you, [name]. Good thing you came. I'm actually still in preparations right now. If you don't mind, you can go and help Mae, as she's currently gathering herbs outside of the village. I'll tell you where it is.""",
+	SAVRA_RITUAL_START_OPTION_1 = "I'll go to her then.",
+	SAVRA_RITUAL_START_OPTION_2 = "Fine, I have to finish this sooner.",
 	PRE_RITUAL_1 = """You come to the spot where Mae should be, but you find no one. You thought it could be a wrong place, but after searching you find traces of a fight and a basket similar to those you've seen at settlement. 
 
 Your attempt to track meets with little success. As you decide to return back and report on your findings, you hear a rustle from one of the nearby bushes. As you move closer, a small weasel quickly runs away from it. As you give a sigh and prepare to walk away, you notice that the small animal hasn't disappeared from sight as you would normally expect it to.
@@ -7755,32 +7770,32 @@ Somehow, it carefully looks at you without moving, as if requiring your attentio
 	PRE_RITUAL_2_1 = """As you follow the weasel through the forest, soon it brings you to its goal: a small human camp. A couple of cages and furniture make clear that it belongs to slavers. As you are scouting the camp, you realize that your guide has swiftly disappeared, but that doesn't bother you anymore, as in one of the cages you observe a familiar silhouette which likely belongs to the girl you are looking for.""",
 	PRE_RITUAL_2_2 = """A couple of patrolling slavers went by your hiding spot.
 
-{color=yellow|Slaver: — So far only one beastkin for a whole day. Shitty luck.
+{color=yellow|Slaver 1: — So far only one beastkin for a whole day. Shitty luck.
 
-Slaver2: — At least she's young and fresh, will surely net us some gold.
+Slaver 2: — At least she's young and fresh, will surely net us some gold.
 
-Slaver: — Hmph, she's fat and weak. Can't even sell her for labor.}""",
-	PRE_RITUAL_3 = """{color=yellow|Slaver2: — But she's kinda cute.
+Slaver 1: — Hmph, she's fat and weak. Can't even sell her for labor.}""",
+	PRE_RITUAL_3 = """{color=yellow|Slaver 2: — But she's kinda cute.
 
-Slaver: — Only sick bastards like you would find her cute. By the way, don't you dare fuck her while we're sleeping, her virginity might be her only redeeming quality.
+Slaver 1: — Only sick bastards like you would find her cute. By the way, don't you dare fuck her while we're sleeping, her virginity might be her only redeeming quality.
 
-Slaver2: — Crap... I could do her in the ass instead then?}
+Slaver 2: — Crap... I could do her in the ass instead then?}
 
 The patrol have continued on their way, leaving you wondering what to do.""",
-	PRE_RITUAL_3_OPTION_1 = """Try to deal with them""",
-	PRE_RITUAL_3_OPTION_2 = """Sneak (Physics Check)""",
-	PRE_RITUAL_3_OPTION_3 = """Attack""",
+	PRE_RITUAL_3_OPTION_1 = """*Try to deal with them*""",
+	PRE_RITUAL_3_OPTION_2 = """[Physics] *Sneak*""",
+	PRE_RITUAL_3_OPTION_3 = """*Attack*""",
 	PRE_RITUAL_4_1_1_100 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 100 gold.
 
-As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them...""",
 	PRE_RITUAL_4_1_1_300 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 300 gold.
 
-As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them...""",
 	PRE_RITUAL_4_1_1_500 = """You approach the patrolling slavers. Initially alarmed, you inform them you are interested in one of their freshly caught slaves. They seem rather pleased with an option to get some quick cash without having to do more work than needed. After negotiating for some time the slavers name their last price: 500 gold.
 
-As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them....""",
-	PRE_RITUAL_4_1_1_OPTION_1 = """Pay""",
-	PRE_RITUAL_4_1_1_OPTION_2 = """Fight""",
+As they wait for you decision, you realize that if you can't agree a deal, they are not going to let you go away and tell on them...""",
+	PRE_RITUAL_4_1_1_OPTION_1 = """*Pay*""",
+	PRE_RITUAL_4_1_1_OPTION_2 = """*Fight*""",
 	PRE_RITUAL_4_1_2 = """You pass the money to the smirking slavers as they bring you the captured girl. You decided not to tempt the fight and quickly lead her away from the camp.""",
 	PRE_RITUAL_4_2_1 = """{color=green|Success}
 
@@ -7792,13 +7807,13 @@ As you try to sneak by the patrols, you trip on a tree root and fall on the grou
 	PRE_RITUAL_5 = """As you defeat the nearby slavers, you walk to the cage with Mae in it and get her out. Luckily, she seemed to be the only person who was caught so far. As you help her to regain her bearings, you decide to leave this camp before someone else shows up.""",
 	PRE_RITUAL_6 = """As you get on the safer distance from the slavers' camp, Mae looks at you with a sight of reverence and relief. 
 
-— Thank you. I was only gathering herbs when they came from behind and seized me. It was so scary... I dunno what could've happened to me if not for you. 
+— Thank you. I was only gathering herbs when they came from behind and seized me. It was so scary... I dunno what could've happened to me if not for you.
 
 — I wonder if that's really some kind of fate that we...""",
-	PRE_RITUAL_6_OPTION_1 = "I'm glad you are safe",
-	PRE_RITUAL_6_OPTION_2 = "You should be more careful",
-	PRE_RITUAL_6_OPTION_3 = "I think you could thank me for this (sexuals check)",
-	PRE_RITUAL_6_OPTION_4 = "Don't mention it",
+	PRE_RITUAL_6_OPTION_1 = "I'm glad you are safe.",
+	PRE_RITUAL_6_OPTION_2 = "You should be more careful.",
+	PRE_RITUAL_6_OPTION_3 = "[Sexuals] I think you could thank me for this.",
+	PRE_RITUAL_6_OPTION_4 = "Don't mention it.",
 	PRE_RITUAL_7_1AND2AND4 = """— Y-yes. I'm really grateful. Now, I gotta collect the herbs we need again before we return, if you don't mind.""",
 	PRE_RITUAL_7_1AND2AND4_BAD = """{color=red|Failure}
 
@@ -7808,8 +7823,8 @@ As you try to sneak by the patrols, you trip on a tree root and fall on the grou
 As Mae realizes what you are suggesting, she gives you a nervous look. 
 
 — It's not that I don't like you, but... I can't. I have to remain a virgin for the ritual, you must understand.""",
-	PRE_RITUAL_7_3_1_OPTION_1 = "I can settle for a blowjob",
-	PRE_RITUAL_7_3_1_OPTION_2 = "Use your mouth then",
+	PRE_RITUAL_7_3_1_OPTION_1 = "I can settle for a blowjob.",
+	PRE_RITUAL_7_3_1_OPTION_2 = "Use your mouth then.",
 	PRE_RITUAL_BLOW_1 = """— You did risk your life for me... Okay, I can do it. But, please, excuse my inexperience, I've never done this before.
 
 You can feel Mae's nervous energy as she kneels before you, her soft fur brushing against your legs. She takes a deep breath before reaching for your belt, her fingers fumbling with the buckle. Finally, she manages to free your cock from its confines, and she gasps at the sight of it. You can't help but smirk at her reaction.
@@ -7826,31 +7841,31 @@ As you continue to gaze at her, Mae takes the hint and lowers her head, taking y
 	PRE_RITUAL_BLOW_4 = """You reach out and run your hands over her soft fur, pulling her closer to you as she continues to pleasure you. And soon enough, you can't hold back any longer. With a final moan, you release your load all over her face, filling her mouth with your cum. 
 
 She's slightly taken aback at first, but quickly recovers and licks her lips, savoring the taste of you. You stand up, feeling satisfied and fulfilled. Mae looks up at you with a hint of pride in her eyes, realizing that she's managed to satisfy your request. You clean up and continue on your way.""",
-	PRE_RITUAL_7_3_3 = """— Thank you again. I hope you weren't disappointed? That was a bit scary at first, but I guess it's good practice. """,
+	PRE_RITUAL_7_3_3 = """— Thank you again. I hope you weren't disappointed? That was a bit scary at first, but I guess it's good practice.""",
 	PRE_RITUAL_8 = """You help Mae to gather the required plants and you head back to the tribe. 
 
 — So... uhm... You will be my Taker. You've come since you want to know me better? """,
-	PRE_RITUAL_8_OPTION_1 = "You don't appear very local to me",
+	PRE_RITUAL_8_OPTION_1 = "You don't appear very local to me.",
 	PRE_RITUAL_8_OPTION_2 = "Are you okay doing this ritual?",
-	PRE_RITUAL_8_OPTION_3 = "Let's go then",
-	PRE_RITUAL_9_1 = """— I ran away from an empire town. After my parents died I would have soon become a slave. I heard about this tribe of people like me who would allow me to live with them. They were surprisingly friendly and accepting to me, and as you can see I have become the shaman's apprentice.
+	PRE_RITUAL_8_OPTION_3 = "Let's go then.",
+	PRE_RITUAL_9_1 = """— I ran away from an Empire town. After my parents died I would have soon become a slave. I heard about this tribe of people like me who would allow me to live with them. They were surprisingly friendly and accepting to me, and as you can see I have become the shaman's apprentice.
 
 — I'm not entirely used to how open they are about... you know, but since they have never tried to force me, I think they want me to fully accept it by myself.""",
-	PRE_RITUAL_9_2 = """— Yes, I've made up my mind to do what is required of me since the moment I arrived here. It just so happens you are going to become... m-my first. D-don't think I'm trying to say that I don't like you or anything! I think you are very brave and... at-attractive... 
+	PRE_RITUAL_9_2 = """— Yes, I've made up my mind to do what is required of me since the moment I arrived here. It just so happens you are going to become... m-my first. D-don't think I'm trying to say that I don't like you or anything! I think you are very brave and... a-attractive... 
 
 Mae blushes and looks away realizing she might've said something embarrassing.""",
 	PRE_RITUAL_10 = """As you are getting closer to the settlement, Mae stops in place.
 
 — As tomorrow we gonna participate in a ritual, I want to ask you something. I don't wanna get pregnant, but there's little I can do. Before the ritual I'll have to drink a mixture which should dim my mind and make me more willing for my first time. This mixture helps initiates like me to have an easier time.
-
-— But, it will also enhance my ovulation to the point even contraceptives won't stop me from getting pregnant. I have prepared a powder which will negate that effect, but I won't be able to reach it before the ritual. 
+	
+— But it will also enhance my ovulation to the point even contraceptives won't stop me from getting pregnant. I have prepared a powder which will negate that effect, but I won't be able to reach it before the ritual.
 
 — You aren't going to stay here after the ritual, so it's nothing to you, but, please, do this for me, I'm too scared of becoming a mother yet. If you get an opportunity, just drop the powder into my bowl so no one sees it. 
 
 You take the small pouch with powder Mae passes to you and put it away. As you enter the tribe Mae gives you a bow and leaves you for her delivery.""",
-	RITUAL_START = """After the sun sets, the tribe lights some incense you haven't seen before. You realize that the familiar scent of aphrodisiacs is supposed to make everyone more relaxed and aroused, including you. """,
-	RITUAL_START_OPTION_1 = "Put Mae's powder into bowl",
-	RITUAL_START_OPTION_2 = "Don't put Mae's powder into bowl",
+	RITUAL_START = """After the sun sets, the tribe lights some incense you haven't seen before. You realize that the familiar scent of aphrodisiacs is supposed to make everyone more relaxed and aroused, including you.""",
+	RITUAL_START_OPTION_1 = "*Put Mae's powder into bowl*",
+	RITUAL_START_OPTION_2 = "*Don't put Mae's powder into bowl*",
 	RITUAL_1_1_GOOD = """— You've been quite curious about this bowl, haven't you? Why don't you move to the altar and prepare yourself, [name]? 
 
 {color=green|Success}
@@ -7869,14 +7884,14 @@ It seems you've failed to spoil Mae's ritual drink and now will have to go throu
 You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
 
 After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
-	RITUAL_1_2 = """You decided not to risk it and not do as she asked you. Perhaps you will be able to tell her you had no chance to do so later. 
+	RITUAL_1_2 = """You decided not to risk it and not do as she asked you. Perhaps, you will be able to tell her you had no chance to do so later. 
 
 You made your way to the altar placed in the center of the village, where you caught sight of the robed figure of Mae. She steadily makes her way to the bowl of brew, served to her by Savra.
 
 After taking a breath, Mae brings the bowl to her face with both hands and forcefully gulps down its contents. You can't make out her expression as she closes her eyes, but once she's done you don't notice any visible look of disgust on her face.""",
 	RITUAL_2 = """According to the rules of the ceremony, Mae loses her robe and lets it fall to the ground, revealing her fully naked body daubed with wide lines of the ritual paint. 
 
-After a few moments her eyes become unfocused and her movements get sluggish. Before she can lose her balance, Savra catches her by the arm and leads to the altar. As Mae falls into your arms Savra contentedly retreats and invites you to do your part.
+After a few moments her eyes become unfocused and her movements get sluggish. Before she can lose her balance, Savra catches her by the arm and leads to the altar. As Mae falls into your arms, Savra contentedly retreats and invites you to do your part.
 
 — [name]... I can't wait anymore...
 
@@ -7896,8 +7911,8 @@ However, this does not seem enough for either of you, and you resume moving agai
 You realize Mae wouldn't be able to answer anything coherent to this and turn your eyes to Savra.
 
 — We'll do as you say, [name]. You are the Taker and we'll respect your decision.""",
-	RITUAL_5_OPTION_1 = """Allow""",
-	RITUAL_5_OPTION_2 = """Refuse""",
+	RITUAL_5_OPTION_1 = """*Allow*""",
+	RITUAL_5_OPTION_2 = """*Refuse*""",
 	RITUAL_6_1_1 = """A few beastkin males approach Mae from the head, presenting their erect cocks to her face. The formerly shy girl obediently takes hold of their members and begins to serve them with her mouth and hands like it was the most natural thing in the world.""",
 	 RITUAL_6_1_2 = """As Mae's body was overwhelmed with every new orgasm, males at her top have also been made to cum by her, spraying over her head and breasts. New males replaced them, so that she was covered with more and more semen. However, this didn't bother her, as she hungrily sucked and served every new cock in turn.
 
@@ -7919,58 +7934,58 @@ Mae only gave another pleasant moan as her butt was penetrated for the first tim
 	AFTER_RITUAL_2 = """Mae leaves the tent and after seeing you noticeably blushes. 
 
 — ...G-good morning. Are you feeling well?""",
-	AFTER_RITUAL_2_OPTION_1 = """Yes""",
+	AFTER_RITUAL_2_OPTION_1 = """Yes.""",
 	AFTER_RITUAL_2_OPTION_2 = """What about you?""",
-	AFTER_RITUAL_3 = """— I'm still feeling a bit dizzy. Not remembering things very clearly from yesterday. At least I'm glad this is done with. """, 
+	AFTER_RITUAL_3 = """— I'm still feeling a bit dizzy. Not remembering things very clearly from yesterday. At least I'm glad this is done with.""", 
 	AFTER_RITUAL_3_OPTION_1 = "It was fun, wasn't it?",
-	AFTER_RITUAL_3_OPTION_2 = "Yeah, good thing we are done with it",
-	AFTER_RITUAL_3_OPTION_3 = "You did well for your first time",
+	AFTER_RITUAL_3_OPTION_2 = "Yeah, good thing we are done with it.",
+	AFTER_RITUAL_3_OPTION_3 = "You did well for your first time.",
 	AFTER_RITUAL_4 = """— I feel like you've become very important to me just from these couple of days. After all, you've saved me from those slavers.""",
-	AFTER_RITUAL_4_OPTION_1 = "My reward was worth it",
-	AFTER_RITUAL_4_OPTION_2 = "You should watch out for yourself and not get caught next time",
-	AFTER_RITUAL_4_OPTION_3 = "It's good nothing bad happened to you in the end",
-	AFTER_RITUAL_4_OPTION_4 = "You can't deny It was an unusual experience",
+	AFTER_RITUAL_4_OPTION_1 = "My reward was worth it.",
+	AFTER_RITUAL_4_OPTION_2 = "You should watch out for yourself and not get caught next time.",
+	AFTER_RITUAL_4_OPTION_3 = "It's good nothing bad happened to you in the end.",
+	AFTER_RITUAL_4_OPTION_4 = "You can't deny it was an unusual experience.",
 	AFTER_RITUAL_5_1 = """— Hope that wasn't the only reason you saved me, though.""",
-	AFTER_RITUAL_5_2AND3 = """— Y-yeah, I guess I'm still kinda clumsy about such things. Thanks again. """,
+	AFTER_RITUAL_5_2AND3 = """— Y-yeah, I guess I'm still kinda clumsy about such things. Thanks again.""",
 	AFTER_RITUAL_5_4 = """— Heh, I guess you could say that, yeah. Not sure I'd like to be in that situation again, though.""",
 	AFTER_RITUAL_GROUP_1 = """— During the ritual... I remember that you allowed others to use me, while I was in trance. I can't believe you did something like that, and during my first time too.""",
-	AFTER_RITUAL_GROUP_1_OPTION_1 = "But you seemed to quite enjoy it",
-	AFTER_RITUAL_GROUP_1_OPTION_2 = "That was a worthy experience for your new position",
-	AFTER_RITUAL_GROUP_1_OPTION_3 = "I couldn't reject such a sincere requests",
-	AFTER_RITUAL_GROUP_1_OPTION_4 = "It's a crime to keep your body from others",
+	AFTER_RITUAL_GROUP_1_OPTION_1 = "But you seemed to quite enjoy it.",
+	AFTER_RITUAL_GROUP_1_OPTION_2 = "That was a worthy experience for your new position.",
+	AFTER_RITUAL_GROUP_1_OPTION_3 = "I couldn't reject such a sincere requests.",
+	AFTER_RITUAL_GROUP_1_OPTION_4 = "It's a crime to keep your body from others.",
 	AFTER_RITUAL_GROUP_2_1 = """— T-that's only because I wasn't thinking straight and you know it! The only reason I'm not dying from shame is that I hardly recall anything that happened.""",
 	AFTER_RITUAL_GROUP_2_2 = """— That's not something for you to decide, I surely could do it without such experience.""",
-	AFTER_RITUAL_GROUP_2_3 = """— Hmph, my friend was right, you men are all the same, can't be trusted with any decency. """,
+	AFTER_RITUAL_GROUP_2_3 = """— Hmph, my friend was right, you men are all the same, can't be trusted with any decency.""",
 	AFTER_RITUAL_GROUP_2_4 = """Mae makes a long pause trying to approach your words, but it seems your flattery has calmed her distress.
 
-— E-even if you say so, that's not something you should do with a girl without her consent. """,
+— E-even if you say so, that's not something you should do with a girl without her consent.""",
 	AFTER_RITUAL_GROUP_2_OPTION_1 = "I'm sorry, let's just forget it",
 	AFTER_RITUAL_GROUP_2_OPTION_2 = "But you seemed to enjoy it...",
 	AFTER_RITUAL_GROUP_3_1 = """— Okay, let's forget it.""",
 	AFTER_RITUAL_GROUP_3_2 = """— T-that was unusual for me. I never imagined something like this would happen, but now that I think about it... Nevermind! Let's just forget it, okay?""",
 	AFTER_RITUAL_POWDER_1 = """— Savra said I got pregnant and we both can feel it... Why didn't you add a neutralizer to the mixture as I asked you? I really begged you. I'm not ready to become a mother.""",
-	AFTER_RITUAL_POWDER_1_OPTION_1 = "Well there's not much we can do about it now",
-	AFTER_RITUAL_POWDER_1_OPTION_2 = "I had no good opportunity to do it, so it's hardly my fault",
-	AFTER_RITUAL_POWDER_1_OPTION_3 = "We should take care of our future child now",
-	AFTER_RITUAL_POWDER_1_OPTION_4 = "I just really wanted to knock you up with my child",
+	AFTER_RITUAL_POWDER_1_OPTION_1 = "Well there's not much we can do about it now.",
+	AFTER_RITUAL_POWDER_1_OPTION_2 = "I had no good opportunity to do it, so it's hardly my fault.",
+	AFTER_RITUAL_POWDER_1_OPTION_3 = "We should take care of our future child now.",
+	AFTER_RITUAL_POWDER_1_OPTION_4 = "I just really wanted to knock you up with my child.",
 	AFTER_RITUAL_POWDER_2_1AND2AND4 = """Mae sighs in exasperation as if she knows she shouldn't have trusted you in the first place. 
 
-— ...Forget it. """,
+— ...Forget it.""",
 	AFTER_RITUAL_POWDER_2_3 = """Mae gives you a puzzled look, as if trying to measure how reliable your words are. 
 
-— W-well, yeah. I guess that's what we should do now once it's born. I hope you are not going to leave me completely alone then?.. Thanks. """,
+— W-well, yeah. I guess that's what we should do now once it's born. I hope you are not going to leave me completely alone then..? Thanks.""",
 	AFTER_RITUAL_6 = """— Say, I never really asked, but what are you actually doing? What do you plan to do from now on?""",
-	AFTER_RITUAL_6_OPTION_1 = "I have an important state mission to fulfill",
-	AFTER_RITUAL_6_OPTION_2 = "I'm just an adventurer with some extra entitlement",
-	AFTER_RITUAL_6_OPTION_3 = "I'm probably on a mission to save the world",
-	AFTER_RITUAL_6_OPTION_4 = "I just go where I have to and do what I must",
+	AFTER_RITUAL_6_OPTION_1 = "I have an important state mission to fulfill.",
+	AFTER_RITUAL_6_OPTION_2 = "I'm just an adventurer with some extra entitlement.",
+	AFTER_RITUAL_6_OPTION_3 = "I'm probably on a mission to save the world.",
+	AFTER_RITUAL_6_OPTION_4 = "I just go where I have to and do what I must.",
 	AFTER_RITUAL_GOOD_1 = """— Y-you know, I wish I would be able to join you for some more time. Not that I dislike it here, but... I guess I feel like that because of yesterday's thing.""",
-	AFTER_RITUAL_GOOD_1_OPTION_1 = "Your company would certainly be appreciated",
-	AFTER_RITUAL_GOOD_1_OPTION_2 = "I can't really take you with me",
+	AFTER_RITUAL_GOOD_1_OPTION_1 = "Your company would certainly be appreciated.",
+	AFTER_RITUAL_GOOD_1_OPTION_2 = "I can't really take you with me.",
 	AFTER_RITUAL_GOOD_2_1_1 = """A flicker of excitement jumps across Mae's face which goes away as she looks down.
 
-— B-but that's... I'm not sure if I'll be able to leave here now. """,
-	AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Savra: — No, it's fine, it might be a good thing for you to go out and get more experience with the outer world. }
+— B-but that's... I'm not sure if I'll be able to leave here now.""",
+	AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Savra: — No, it's fine. It might be a good thing for you to go out and get more experience with the outer world.}
 
 {color=aqua|Mae: — Really? I thought I was gonna be a complete tribe's shaman now.}
 
@@ -7979,13 +7994,13 @@ Mae only gave another pleasant moan as her butt was penetrated for the first tim
 Mae blushes severely thinking of all that happened just yesterday, but nods in agreement.
 
 {color=aqua|Mae: — Uhm... Please take care of me.}""",
-	AFTER_RITUAL_GOOD_2_2 = "— Right, and I have to be a tribe's shaman now. Still, thank you for this. Hope you'll visit us again.",
+	AFTER_RITUAL_GOOD_2_2 = "— Right, and I have to be the tribe's shaman now. Still, thank you for this. Hope you'll visit us again.",
 	AFTER_RITUAL_BAD_1_1 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.""",
 	AFTER_RITUAL_BAD_1_2 = """— Well, it was nice to meet you, and thanks again for treating me kindly. Maybe you'll come again at some time.
 
 — Don't forget that your child will be here.""",
-	LEON_VISIT_START = """You enter the chieftain's hut but Leon is nowhere to be found. You decide to find Savra to figure out where he went.""",
-	LEON_VISIT_1_1 = """— Leon's missing? That is unlike him. I haven't seen him since yesterday evening but maybe you should ask around. """,
+	LEON_VISIT_START = """You enter the chieftain's hut, but Leon is nowhere to be found. You decide to find Savra to figure out where he went.""",
+	LEON_VISIT_1_1 = """— Leon's missing? That is unlike him. I haven't seen him since yesterday evening but maybe you should ask around.""",
 	LEON_VISIT_1_2 = """You should search for Leon as it seems he's gone missing.""",
 	ASK_AROUND = """You ask a few watchmen if they've seen Leon, and one of them says that he saw Leon leave slightly before the sunrise. After learning the direction he supposedly went to, you mark the location on your map.""",
 	LEON_FIGHT_1 = """As you search through the area, you come across some fresh tracks. After calling out, you detect some movements short in front of you. As you approach the bush, Leon jumps on you as if you were his prey. In the spur of the moment you barely manage to block his attack with your weapon.""",
@@ -7995,9 +8010,9 @@ Mae blushes severely thinking of all that happened just yesterday, but nods in a
 	LEON_FIGHT_2_2 = """Despite your best efforts you can't hope to move him by even an inch. As you struggle against him, you see no flicker of conscience on his face. Finally you manage to break away from him, but the fight is not over...""",
 	LEON_FIGHT_3 = """After getting the best of him, you notice that Leon seems considerably exhausted and is panting heavily. To your surprise, he seems to regain some of his personality as he mumbles some words.
 
-— [name]... Tell Savra... The White Stag.. Has... 
+— [name]... Tell Savra... The White Stag... Has... 
 
-Before finishing the line he seemed to return to his savage state and quickly escaped into the woods. There's little hope in catching him now so you decide to return to Savra.""",
+Before finishing the line he seemed to return to his savage state and quickly escaped into the woods. There's little hope in catching him now, so you decide to return to Savra.""",
 	SAVRA_TALK = """— You are back? Do you need something from me?""",
 	SAVRA_TALK_OPTION_1 = """About Leon...""",
 	SAVRA_TALK_1 = """Savra listens to your story as her mood grows gloomy. 
@@ -8005,7 +8020,7 @@ Before finishing the line he seemed to return to his savage state and quickly es
 — So that's what happened... This is a problem. We'll have to save Leon, for which we're gonna need to prepare for the ritual to free his mind. I'll ask you to prepare some materials for it. """,
 	SAVRA_TALK_1_OPTION_1 = "What's going on?",
 	SAVRA_TALK_1_OPTION_2 = "What materials do you need?",
-	SAVRA_TALK_2_1 = """— The White Stag is a magical beast which appears in our lands every few years. When it's here, it drives people crazy, making them go into the wilderness and become beasts themselves. Usually it affects the weak but this time our chieftain was cursed of all people. Until he's back I'll be leading in his role.""",
+	SAVRA_TALK_2_1 = """— The White Stag is a magical beast which appears in our lands every few years. When it's here, it drives people crazy, making them go into the wilderness and become beasts themselves. Usually it affects the weak, but this time our chieftain was cursed of all people. Until he's back I'll be leading in his role.""",
 	SAVRA_TALK_2_2 = """— Saving someone from the Stag's curse isn't easy until it's defeated. Here's the list of the stuff I'll require, don't take too long. 
 
 Savra passes you a small parchment with the ingredients.
@@ -8013,39 +8028,39 @@ Savra passes you a small parchment with the ingredients.
 — 50 Magic Wood
 — 25 Iron Wood
 — 15 Mythic Leather""",
-	SAVRA_TALK_2_OPTION_1 = "Seems easy enough",
-	SAVRA_TALK_2_OPTION_2 = "That might take some time",
-	SAVRA_TALK_2_OPTION_3 = "I better get to it then",
+	SAVRA_TALK_2_OPTION_1 = "Seems easy enough.",
+	SAVRA_TALK_2_OPTION_2 = "That might take some time.",
+	SAVRA_TALK_2_OPTION_3 = "I better get to it then.",
 	SAVRA_TALK_3 = """— Very well, visit me again once you have it. Oh, and one more thing. I'll need someone with decent magical powers to help. Someone with a high magic affinity. Find someone suitable for it.""",
-	SAVRA_TALK_OPTION_2 = "I've brought the ingredients",
+	SAVRA_TALK_OPTION_2 = "I've brought the ingredients.",
 	SAVRA_TALK_4 = "— Good, good, talk to me again once you have someone for the ritual.",
-	SAVRA_TALK_OPTION_3 = "I've brought the suitable helper",
+	SAVRA_TALK_OPTION_3 = "I've brought the suitable helper.",
 	SAVRA_TALK_5 = "— Yes, this is very good. Let's not waste any time then, we'll start the ritual.",
 	SAVRA_TALK_6 = """After about two hours Savra and [name] come out of the sealed ritual hut and Savra passes you a carven wooden figure vaguely resembling Leon but with large horns on its head. As you look closer, you notice a faint glow coming from it, but after breaking the gaze it's no longer there.
 
-— It is done. Here's the totem. Now you'll have to find Leon and this should clear his mind from the curse. """,
+— It is done. Here's the totem. Now you'll have to find Leon and this should clear his mind from the curse.""",
 	SAVRA_TALK_6_OPTION_1 = "Can't you do it yourself?",
 	SAVRA_TALK_6_OPTION_2 = "How exactly does this work?",
-	SAVRA_TALK_6_OPTION_3 = "I'll get to it",
+	SAVRA_TALK_6_OPTION_3 = "I'll get to it.",
 	SAVRA_TALK_7_1 = """— No, as I said, I must act in place of a chieftain as the current one is missing. I trust you to deal with it.""",
 	SAVRA_TALK_7_2 = """— Find Leon, bring the totem to him. The rest will be obvious.""",
 	LEON_ENCOUNTER_START = """As you were actively searching for Leon this time you manage to find him before he spots you. You spring at him, preparing for a fight.""",
 	LEON_ENCOUNTER_1 = """Before Leon manages to escape once again, you pull out the totem and it shines your hand. A bright flash blinds you as it disappears and Leon falls on the ground. You decide to carry him back to the tribe without further delay.""",
-	LEON_ENCOUNTER_2 = """A few hours pass after you deliver the unconscious Leon to Savra. Finally he emerges,looking more lively than you'd expect.
+	LEON_ENCOUNTER_2 = """A few hours pass after you deliver the unconscious Leon to Savra. Finally he emerges, looking more lively than you'd expect.
 
- — I wish I could properly thank you for my rescue, [name], but I'm afraid, as we speak, the White Stag threatens the very wellbeing of the tribe, meaning we can't waste any time. Until this is dealt with I can't give you a final answer to the question you came here with. """,
+ — I wish I could properly thank you for my rescue, [name], but I'm afraid, as we speak, the White Stag threatens the very wellbeing of the tribe, meaning we can't waste any time. Until this is dealt with I can't give you a final answer to the question you came here with.""",
 	LEON_ENCOUNTER_2_OPTION_1 = "So what are you planning to do now?",
 	LEON_ENCOUNTER_2_OPTION_2 = "Is there anything I can help with?",
-	LEON_ENCOUNTER_3 = """ — We are going to hunt the stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.""",
+	LEON_ENCOUNTER_3 = """— We are going to hunt the Stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.""",
 	LEON_ENCOUNTER_3_OPTION_1 = "What are you planning?",
-	LEON_ENCOUNTER_3_OPTION_2 = "I'll let you a hand",
-	LEON_ENCOUNTER_3_OPTION_3 = "This sounds like it could be fun",
-	LEON_ENCOUNTER_4_1 = """ — We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
-	LEON_ENCOUNTER_4_2 = """ — It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
-
- — Meet us in the wilds, where we begin the hunt.""",
-	SAVRA_STAG_QUESTION = """Ask about the White Stag""",
-	SAVRA_STAG_ANSWER = """ — White Stag is a being of mysterious nature. Even though we consider it evil I'm more inclined to believe for it to be a challenge. Rundas must be testing our strength hence why it was never really defeated. As a spiritual leader I can't ignore my duty and ask you to show it at least some respect. """,
+	LEON_ENCOUNTER_3_OPTION_2 = "I'll let you a hand.",
+	LEON_ENCOUNTER_3_OPTION_3 = "This sounds like it could be fun.",
+	LEON_ENCOUNTER_4_1 = """— We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the Stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
+	LEON_ENCOUNTER_4_2 = """— It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
+	
+	— Meet us in the wilds, where we begin the hunt.""",
+	SAVRA_STAG_QUESTION = """*Ask about the White Stag*""",
+	SAVRA_STAG_ANSWER = """ — White Stag is a being of mysterious nature. Even though we consider it evil I'm more inclined to believe for it to be a challenge. Rundas must be testing our strength hence why it was never really defeated. As a spiritual leader I can't ignore my duty and ask you to show it at least some respect.""",
 	WHITE_STAG_ENCOUNTER_1 = """You come to the previously established location and find a fairly large group of beastkin, ready for the hunt. Standing off to the side you spot Leon and call out to him.
 
  — You've come at a good time, we are ready to follow its trail. Look here.
@@ -8053,134 +8068,134 @@ Savra passes you a small parchment with the ingredients.
 Leon points at a small trampled bush. On a closer look you notice a faint glow coming from it. 
 
  — Must have been about an hour at most.""",
-	WHITE_STAG_ENCOUNTER_1_OPTION_1 = "You seem to know your trade",
-	WHITE_STAG_ENCOUNTER_1_OPTION_2 = "Let's not waste any time then",
+	WHITE_STAG_ENCOUNTER_1_OPTION_1 = "You seem to know your trade.",
+	WHITE_STAG_ENCOUNTER_1_OPTION_2 = "Let's not waste any time then.",
 	WHITE_STAG_ENCOUNTER_2_1 = """ — Three years ago I faced the beast before. That's my duty as a chieftain, and so I must carry it out. We should move now.""",
-	WHITE_STAG_ENCOUNTER_2_2 = """Leon nods and you move out. """,
+	WHITE_STAG_ENCOUNTER_2_2 = """Leon nods and you move out.""",
 	WHITE_STAG_ENCOUNTER_3 = """After about a half hour of scouting you find the clearing enveloped in a thick gray mist, unusual for the current time of a day. Beastkin hunters slowly encircle it. You enter the mist and carefully move forward in eerie silence as all other sound seems to fade away from the surrounding forest.
 
 Before you realize that Leon is yelling at you to be careful, you see the beast which you have been looking for: a majestic yet alien and ominous White Stag, looking right into your eyes, as time seems to grind to a halt.""",
-	WHITE_STAG_ENCOUNTER_3_OPTION_1 = "Try moving",
-	WHITE_STAG_ENCOUNTER_3_OPTION_2 = "Call for help",
+	WHITE_STAG_ENCOUNTER_3_OPTION_1 = "*Try moving*",
+	WHITE_STAG_ENCOUNTER_3_OPTION_2 = "*Call for help*",
 	WHITE_STAG_ENCOUNTER_4 = """Feeling lost in the beast's aura, you are unable to do anything. You realize you don't know where you are, and a figure materializes before you.
 
- — So you are the one, They call [name].""",
+ — So you are the one they call [name].""",
 	WHITE_STAG_ENCOUNTER_4_OPTION_1 = "*Stay Silent*",
 	WHITE_STAG_ENCOUNTER_4_OPTION_2 = "What's going on here..?",
-	WHITE_STAG_ENCOUNTER_5 = """ — A mortal stranger like you dares to stick their nose into this realm. How despicable. Have you no fear for your life? What have you come here for?""",
-	WHITE_STAG_ENCOUNTER_5_OPTION_1 = "I'm only here to get to the elven high priestess",
-	WHITE_STAG_ENCOUNTER_5_OPTION_2 = "I came to help these lands",
-	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "That's none of your business, demon",
-	WHITE_STAG_ENCOUNTER_6_1 = """ — Preposterous. How has Freya not smitten your foul body yet?
-
-Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
-	WHITE_STAG_ENCOUNTER_6_2 = """ — Help? There's nothing to help here.
-
-Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
-	WHITE_STAG_ENCOUNTER_6_3 = " — You dare to call me a Demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
-	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "I won't let you kill me",
-	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "It's you who will die here",
-	WHITE_STAG_ENCOUNTER_6_OPTION_3 = "Maybe we shouldn't be in so much of a hurry",
+	WHITE_STAG_ENCOUNTER_5 = """— A mortal stranger like you dares to stick their nose into this realm. How despicable. Have you no fear for your life? What have you come here for?""",
+	WHITE_STAG_ENCOUNTER_5_OPTION_1 = "I'm only here to get to the elven high priestess.",
+	WHITE_STAG_ENCOUNTER_5_OPTION_2 = "I came to help these lands.",
+	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "That's none of your business, demon.",
+	WHITE_STAG_ENCOUNTER_6_1 = """— Preposterous. How has Freya not smitten your foul body yet?
+	
+	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+	WHITE_STAG_ENCOUNTER_6_2 = """— Help? There's nothing to help here.
+	
+	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+	WHITE_STAG_ENCOUNTER_6_3 = "— You dare to call me a demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
+	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "I won't let you kill me.",
+	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "It's you who will die here.",
+	WHITE_STAG_ENCOUNTER_6_OPTION_3 = "Maybe we shouldn't be in so much of a hurry.",
 	WHITE_STAG_ENCOUNTER_7_1AND2 = """You prepare yourself as best you can for the upcoming challenge. It seems the White Stag is going to keep you in this realm until one of you dies. With no help from Leon or others, this will be a tough fight.""",
-	WHITE_STAG_ENCOUNTER_7_3 = """ — What are you trying to tell us? Are you shivering in fear?""",
-	WHITE_STAG_ENCOUNTER_7_OPTION_1 = "I have an important mission to finish",
-	WHITE_STAG_ENCOUNTER_7_OPTION_2 = "We could settle this in a more civil way",
-	WHITE_STAG_ENCOUNTER_7_OPTION_3 = "I just can't stop adoring your majesty right now",
-	WHITE_STAG_ENCOUNTER_7_OPTION_4 = "I could just leave in peace",
-	WHITE_STAG_ENCOUNTER_8_1AND2AND4 = """ — Enough of your childish games. Now you will pay for your insolence!""",
+	WHITE_STAG_ENCOUNTER_7_3 = """— What are you trying to tell us? Are you shivering in fear?""",
+	WHITE_STAG_ENCOUNTER_7_OPTION_1 = "I have an important mission to finish.",
+	WHITE_STAG_ENCOUNTER_7_OPTION_2 = "We could settle this in a more civil way.",
+	WHITE_STAG_ENCOUNTER_7_OPTION_3 = "I just can't stop adoring your majesty right now.",
+	WHITE_STAG_ENCOUNTER_7_OPTION_4 = "I could just leave in peace.",
+	WHITE_STAG_ENCOUNTER_8_1AND2AND4 = """— Enough of your childish games. Now you will pay for your insolence!""",
 	WHITE_STAG_ENCOUNTER_8_3 = """The deer woman takes an unusually long pause. You can't read her emotions until she finally replies back.
 
  — Your admiration is understandable, but your empty words are not going to earn my pardon.""",
-	WHITE_STAG_ENCOUNTER_8_3_OPTION_1 = "Maybe I could prove my sincerity",
-	WHITE_STAG_ENCOUNTER_8_3_OPTION_2 = "I would kill to have a woman like you",
+	WHITE_STAG_ENCOUNTER_8_3_OPTION_1 = "Maybe I could prove my sincerity.",
+	WHITE_STAG_ENCOUNTER_8_3_OPTION_2 = "I would kill to have a woman like you.",
 	WHITE_STAG_ENCOUNTER_8_3_OPTION_3 = "Maybe we could strike some mutual agreement?",
-	WHITE_STAG_ENCOUNTER_9_2AND3 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
-	WHITE_STAG_ENCOUNTER_9_1 = """ — Really, now. What could a mortal possibly do that would interest me?""",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_1 = "I can smith your image into a beautiful piece of jewelry (Smith)",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_2 = "I want to dedicate a song to you (Bard)",
-	WHITE_STAG_ENCOUNTER_9_1_OPTION_3 = "I will slay any foe or beast you request (Knight)",
+	WHITE_STAG_ENCOUNTER_9_2AND3 = """— Hmph. You have had your chance and wasted it. Let us finish this now.""",
+	WHITE_STAG_ENCOUNTER_9_1 = """— Really, now. What could a mortal possibly do that would interest me?""",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_1 = "[Smith] I can smith your image into a beautiful piece of jewelry.",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_2 = "[Bard] I want to dedicate a song to you.",
+	WHITE_STAG_ENCOUNTER_9_1_OPTION_3 = "[Knight] I will slay any foe or beast you request.",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_4 = "...",
 	WHITE_STAG_ENCOUNTER_9_1_OPTION_5 = "I'm... not sure how I could do that",
 	WHITE_STAG_ENCOUNTER_10_4 = """You notice that Zephyra is willing to lend you a hand in this situation.
 
 {color=aqua|Zephyra: — Ah, yes, I can make a fine painting which will reflect on your godlike nature.}""",
 	WHITE_STAG_ENCOUNTER_10_1AND2AND3AND4 = """ — Hmmh. Very well, mortal, I feel the sincerity in your words. This time you get to keep your soul. That said, there is still one more score left to settle, while I'm here. We will meet again.""",
-	WHITE_STAG_ENCOUNTER_10_5_1 = """ — Hmph. You have had your chance and wasted it. Let us finish this now.""",
-	WHITE_STAG_ENCOUNTER_10_5_2 = """ — Kh... You are not so bad for mortals. Fine, this time you will be permitted to live, as we are running out of time. 
+	WHITE_STAG_ENCOUNTER_10_5_1 = """— Hmph. You have had your chance and wasted it. Let us finish this now.""",
+	WHITE_STAG_ENCOUNTER_10_5_2 = """— Kh... You are not so bad for mortals. Fine, this time you will be permitted to live, as we are running out of time. 
 
 Before you are able to answer, the woman's figure is enveloped in a bright light, blinding you.""",
-	WHITE_STAG_ENCOUNTER_11 = """As the mist disperses, you find yourself returned to the familiar woods. You see the White Stag back in its animal form as the battle with the tribe begins.""",
-	WHITE_STAG_ENCOUNTER_12 = " — Now, don't let it get away! You too, [name], prepare for a fierce fight.",
+	WHITE_STAG_ENCOUNTER_11 = """As the mist disperses, you find yourself returned to the familiar woods. You see the White Stag back in it's animal form as the battle with the tribe begins.""",
+	WHITE_STAG_ENCOUNTER_12 = "— Now, don't let it get away! You too, [name], prepare for a fierce fight.",
 	WHITE_STAG_ENCOUNTER_13 = """With your combined efforts you've dealt enough damage to the White Stag. With a deafening scream its form slowly vanishes in the air. Seeing this, Leon and his party roar in triumph. Once again the tribe has triumphed over the threat...""",
 	WHITE_STAG_ENCOUNTER_14 = """You return to the tribe's settlement and after getting some rest met with Leon once again.
 
-{color=yellow|Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though. }
+{color=yellow|Leon: — A mighty fight, [name]. We can't praise you enough for your work, but there's a reason why you came in first place. Here's my answer to the elves for the question you've been required to deliver. Because of their magic you won't be able to read it though.}
 
 {color=aqua|Savra: — Drop by sometime in future, your visit will be welcome.}""",
 	PRIESTESS_TALK_START = """You go to Erlen's quarters but find it locked. As you make it through the hallway, one attendant comes to you and asks you to follow her to meet the high priestess at her quarters. As there's no better option apparent, you follow her obediently.""",
 	PRIESTESS_TALK_1 = """As you enter the room, you notice that the High Priestess seems to be more friendly than usual, though only barely. 
 
  — [name], correct? It's a good thing you've dropped by. I have heard you went to the beastkin tribe for some reason. Not that we forbid such activity, but it makes me curious to know what would lead you to go there.""",
-	PRIESTESS_TALK_1_OPTION_1 = "I'm only an adventurer, I was curious about such a place",
-	PRIESTESS_TALK_1_OPTION_2 = "Erlen asked me to deliver something",
-	PRIESTESS_TALK_1_OPTION_3 = "I can't really disclose it",
-	PRIESTESS_TALK_2_1 = """ — Oh, is that so? I had not considered that any cultured person would be interested in those savages. 
+	PRIESTESS_TALK_1_OPTION_1 = "I'm only an adventurer, I was curious about such a place.",
+	PRIESTESS_TALK_1_OPTION_2 = "Erlen asked me to deliver something.",
+	PRIESTESS_TALK_1_OPTION_3 = "I can't really disclose it.",
+	PRIESTESS_TALK_2_1 = """— Oh, is that so? I had not considered that any cultured person would be interested in those savages.
+	
+— You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
- — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
+— But let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army leader, but as you can see, he's not currently around.""",
+	PRIESTESS_TALK_2_2 = """ — That's so? Well, that's not of my concern then.
+	
+— You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
- — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army leader, but as you can see, he's not currently around.""",
-	PRIESTESS_TALK_2_2 = """ — That's so? Well, that's not of my concern then. 
-
- — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
-
- — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
+— But let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
 	PRIESTESS_TALK_2_3 = """The High Priestess frowns, but quickly changes her expression as it is of no real interest to her.
+	
+— You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
 
- — You are an outsider so you might not be fully aware of how things are in our lands. As the chosen of Freya, I am honored with the duty of keeping our people in peace and order by providing everyone their rightful place. The Mother's laws are absolute to us, and despite my status even I am not able to challenge them.
-
- — But, let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
+— But let's get down to why you are here. You have proven yourself to be an unusual individual and I have a personal task for you while you are waiting for Erlen. I want you to go to the ancient temple and fetch us some holy water for the upcoming ceremony. Usually this challenge would be done by our army's leader, but as you can see, he's not currently around.""",
 	PRIESTESS_TALK_2_OPTION_1 = "Why are you asking me now?",
 	PRIESTESS_TALK_2_OPTION_2 = "What is this ceremony you need the holy water for?",
 	PRIESTESS_TALK_2_OPTION_3 = "What's in it for me?",
-	PRIESTESS_TALK_3_1 = """ — As I said, you have proven yourself very adventurous, have you not? Only a very few select elves are allowed to go there. As a stranger to these lands, such a restriction would not apply to you.""",
-	PRIESTESS_TALK_3_2 = """ — As an outsider, this is nothing you should really care about. It's a regular ritual which we have to perform in Freya's name.
+	PRIESTESS_TALK_3_1 = """— As I said, you have proven yourself very adventurous, have you not? Only a very few select elves are allowed to go there. As a stranger to these lands, such a restriction would not apply to you.""",
+	PRIESTESS_TALK_3_2 = """— As an outsider, this is nothing you should really care about. It's a regular ritual which we have to perform in Freya's name.
+	
+— Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
+	PRIESTESS_TALK_3_3 = """— Ah, silly me, I had almost forgotten. I have been thinking about what you said before. There might be a tiny lick of sense in that. I think we can come to an agreement on your access to the Sacred Bowl if you do this for me. This is your goal, is it not?
 
- — Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had. """,
-	PRIESTESS_TALK_3_3 = """ — Ah, silly me, I had almost forgotten. I have been thinking about what you said before. There might be a tiny lick of sense in that. I think we can come to an agreement on your access to the Sacred Bowl if you do this for me. This is your goal, is it not? 
-
- — Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
-	PRIESTESS_TALK_3_OPTION_1 = "This shall be an honor for me",
-	PRIESTESS_TALK_3_OPTION_2 = "Fine, if you keep your end of bargain",
+— Here is the phial which will grant you access to the inside of the temple. You will use it to deliver the water in. It is not far from here, so once you are back we can settle on whatever demands you had.""",
+	PRIESTESS_TALK_3_OPTION_1 = "This shall be an honor for me.",
+	PRIESTESS_TALK_3_OPTION_2 = "Fine, if you keep your end of bargain.",
 	TEMPLE_START = """You come to the place you were told about by the High Priestess and after searching around you manage to find a ruined entrance to the supposed temple. However, it is blocked by a large stone slate. It seems you will need someone exceptionally powerful to move it...""",
-	TEMPLE_START_OPTION_1 = "Attempt to move",
-	TEMPLE_START_OPTION_2 = "Use Acid Bomb",
-	TEMPLE_START_OPTION_3 = "Leave",
+	TEMPLE_START_OPTION_1 = "*Attempt to move*",
+	TEMPLE_START_OPTION_2 = "[Alchemist] *Use Acid Bomb*",
+	TEMPLE_START_OPTION_3 = "*Leave*",
 	TEMPLE_1_1_1 = """[name] uses [his] strength and pushes the slate out of the way, allowing you to move into the temple.""",
 	TEMPLE_1_1_2 = """You apply your muscles to the slate and it slowly moves away, allowing you pass through.""",
 	TEMPLE_1_2 = """You throw an unstable catalyst at the slate and it melts the stone away to the point you are able to pass through. It might prevent the stone from keeping out other intruders in future, but it's too late to think about that now.""",
 	TEMPLE_2_1 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you. 
 	
-Small Bandit: — Look boss, this fools have opened it for us.
+Small Bandit: — Look, boss, this fools have opened it for us.
 
 Fat Bandit: — These guys look kinda familiar...
 
-Boss: — Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?""",
+Boss: — Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1.000 gold and you let us take whatever you leave behind?""",
 	TEMPLE_2_2 = """As you walk into the large hall, you hear the sound of a group approaching the entrance. The group looks familiar to you, but they don't seem to recognize you. 
 	
-Small Bandit: — Look boss, this fools have opened it for us.
+Small Bandit: — Look, boss, this fools have opened it for us.
 
 Fat Bandit: — These guys look kinda familiar...
 
-Boss: — Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1,000 gold and you let us take whatever you leave behind?
+Boss: — Shut it you idiots. Greetings, stranger. This is quite a place you've found here. How about you let us take some of the things inside? Collectors will pay a good price for ancient elven art and stuff. Say, 1.000 gold and you let us take whatever you leave behind?
 
 Aire: — This isn't right, you can't just let anyone vandalize sacred places like this.""",
-	TEMPLE_2_OPTION_1 = "Deal",
-	TEMPLE_2_OPTION_2 = "Treasure like this should certainly be worth more than that (Charm Factor Check)",
-	TEMPLE_2_OPTION_3 = "No deal",
+	TEMPLE_2_OPTION_1 = "Deal.",
+	TEMPLE_2_OPTION_2 = "[Charm Factor] Treasure like this should certainly be worth more than that.",
+	TEMPLE_2_OPTION_3 = "No deal.",
 	TEMPLE_3_1_1 = """{color=green|Success}
 Small Bandit: — You are kidding, right?
 
-Boss: — Hmh, fine, I guess we can pay you 1,500 gold in this case, but this is our final """,
+Boss: — Hmh, fine, I guess we can pay you 1.500 gold in this case, but this is our final word.""",
 	TEMPLE_3_1_2 = """ {color=red|Failure}
 
 Boss: — No can do, pal, we aren't that rich yet. A thousand is a good price for this already.""",
@@ -8208,23 +8223,23 @@ As you make them flee from the scene, you can safely advance deeper into temple.
  — Hold on, these guardians must be summoned by some energy source...
 
 Aire searches the surroundings for some time until she finally spots a lone crystal on the ceiling. With a well landed shot she breaks the crystal and the elven specters disappear from sight.""",
-	TEMPLE_6_2_OPTION_1 = "Nice work, Aire",
-	TEMPLE_6_2_OPTION_2 = "Next time ask me before doing it",
-	TEMPLE_7_1 = """ — It's nothing special, I've come across similar things in the past. Makes me a bit worried that this place is not going to be protected anymore.""",
-	TEMPLE_7_2 = """ — ...Sorry. I didn't think this through. We can pass safely now anyway.""",
+	TEMPLE_6_2_OPTION_1 = "Nice work, Aire.",
+	TEMPLE_6_2_OPTION_2 = "Next time ask me before doing it.",
+	TEMPLE_7_1 = """— It's nothing special, I've come across similar things in the past. Makes me a bit worried that this place is not going to be protected anymore.""",
+	TEMPLE_7_2 = """— ...Sorry. I didn't think this through. We can pass safely now anyway.""",
 	TEMPLE_8 = """You enter a small room with an ancient elven altar at the center, which is seemingly intact. The water flows down upon it from above, disappearing under the cracks of the floor. You scoop some of the water up with the bottle provided by the High Priestess and leave the place.""",
-	AFTER_TEMPLE_PRIESTESS_1 = " — Yes? Did you bring what I asked for?",
-	AFTER_TEMPLE_PRIESTESS_1_OPTION_1 = "No",
-	AFTER_TEMPLE_PRIESTESS_2 = " — Then you shouldn't test my patience. Return, once you have it..",
+	AFTER_TEMPLE_PRIESTESS_1 = "— Yes? Did you bring what I asked for?",
+	AFTER_TEMPLE_PRIESTESS_1_OPTION_1 = "No.",
+	AFTER_TEMPLE_PRIESTESS_2 = "— Then you shouldn't test my patience. Return, once you have it.",
 	AFTER_TEMPLE_PRIESTESS_3 = """The priestess accepts your request unexpectedly quickly. As you make it into her chambers, she looks nearly blissful as you pass her the filled phial of holy water.
 
- — You have actually done it, [name]. Exceptional work, for an outsider... I guess I am no longer allowed to call you a simple outsider, am I? Speaking of which, my true name is Heleviel, which you are now allowed to use. At last we can finally hold the ceremony... """,
+ — You have actually done it, [name]. Exceptional work, for an outsider... I guess I am no longer allowed to call you a simple outsider, am I? Speaking of which, my name is Heleviel, which you are now allowed to use. At last we can finally hold the ceremony...""",
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_1 = "What about our agreement?",
-	AFTER_TEMPLE_PRIESTESS_3_OPTION_2 = "I believe you owe me something",
-	AFTER_TEMPLE_PRIESTESS_4 = """ — Yes, indeed, I have not forgotten, but the ceremony is currently of a higher priority for us. Once it's done, I swear on Freya's honor to help out with your task. Until then, you should see yourself as my honored guest. """,
-	AFTER_TEMPLE_PRIESTESS_4_OPTION_1 = "Maybe you could thank me in some other way until then",
-	AFTER_TEMPLE_PRIESTESS_4_OPTION_2 = "I guess I have no other choice",
-	AFTER_TEMPLE_PRIESTESS_4_OPTION_3 = "I'll wait until then",
+	AFTER_TEMPLE_PRIESTESS_3_OPTION_2 = "I believe you owe me something.",
+	AFTER_TEMPLE_PRIESTESS_4 = """ — Yes, indeed, I have not forgotten, but the ceremony is currently of a higher priority for us. Once it's done, I swear on Freya's honor to help out with your task. Until then, you should see yourself as my honored guest.""",
+	AFTER_TEMPLE_PRIESTESS_4_OPTION_1 = "Maybe you could thank me in some other way until then.",
+	AFTER_TEMPLE_PRIESTESS_4_OPTION_2 = "I guess I have no other choice.",
+	AFTER_TEMPLE_PRIESTESS_4_OPTION_3 = "I'll wait until then.",
 	AFTER_TEMPLE_PRIESTESS_5_1_1 = """Heleviel gives you a more intimate look as she appraises your appearance, after which her face brightens with a rare faint smile.
 
  — You know, maybe I could. You know, Freya's high priestess is not allowed to be tainted by man's touch, so if you were a male, I'd have to refuse. But with no men here...
@@ -8237,9 +8252,9 @@ Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slow
 	You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel's response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """— Do not mark me.
 
-	Her rebuke showed no anger, only a single determined remark showing an expectation that it'd be obeyed. With that "order" in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
+	Her rebuke showed no anger, only a single determined remark showing an expectation that it'd be obeyed. With that 'order' in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
 
-	Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her “order" of not marking her a few times due to her doing the same to you.
+	Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her 'order' of not marking her a few times due to her doing the same to you.
 
 — I-I said!-""", 
 	AFTER_TEMPLE_PRIESTESS_5_1_4 = """You cut off her protests by taking her lips with your own, the elf shaking now as your hands slide up from her hips to her breast, a soft rubbing followed by a single finger sliding over her nipple soon causing that attention to occupy her mind, not anything else.
@@ -8254,10 +8269,10 @@ Understanding you'd resume licking her there, her hips rolling in your grip as s
 """, 
 	AFTER_TEMPLE_PRIESTESS_5_1_6 = """Heleviel lays there for a few moments before releasing your hair, just panting now as she looks down at you then relaxes. After a few seconds you realize that this isn't going to be a mutually beneficial arrangement and stand up as you start to redress, eyes moving over her the entire time.
 
- — The guards will...escort you out. 
+ — The guards will... escort you out. 
 
-	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
-	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch. """,
+	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes, but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
+	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.""",
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
@@ -8266,38 +8281,38 @@ Understanding you'd resume licking her there, her hips rolling in your grip as s
 
 After taking a long pause and pondering the letter, he finally speaks up. 
 
- — They have stated that in any case of emergency, they'll support the one person who has earned their trust there. Basically, that makes you their representative here. I'm forced to let you know some of the details and I will require your further help. Say, how much do you actually know about our society?""",
-	ERLERN_ENCOUNTER_1_OPTION_1 = "Not all that much besides what you've told",
-	ERLERN_ENCOUNTER_1_OPTION_2 = "Don't really know anything",
-	ERLERN_ENCOUNTER_1_OPTION_3 = "I don't really care",
-	ERLERN_ENCOUNTER_2_1AND2 = """ — As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
+ — They have stated that in any case of emergency they'll support the one person who has earned their trust there. Basically, that makes you their representative here. I'm forced to let you know some of the details and I will require your further help. Say, how much do you actually know about our society?""",
+	ERLERN_ENCOUNTER_1_OPTION_1 = "Not all that much besides what you've told.",
+	ERLERN_ENCOUNTER_1_OPTION_2 = "Don't really know anything.",
+	ERLERN_ENCOUNTER_1_OPTION_3 = "I don't really care.",
+	ERLERN_ENCOUNTER_2_1AND2 = """— As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
 
- — While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
+— While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable.
 
- — But it seems things are getting more complicated. My purpose is still firm but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""", 
+— But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""", 
 	ERLERN_ENCOUNTER_2_3 = """Erlen decided to ignore your remark and still explain himself. 
 
  — As you are already aware, Freya's High Priestess is the elven leader. While my position is certainly not low, during times of peace I'm little more than a special forces commander. I'm directly subordinate to the High Priestess.
-
- — While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable. 
-
+ 
+ — While I'm not doubting Freya's guidance, I'm concerned about Heleviel's rule. Moreover, my forces and I have been stationed here for no reason besides removing me from the capital. I sent you to the beastkin as they have some indirect influence over our politics and can play some role too. Heleviel wasn't kind to them either, however, her reign isn't inevitable.
+ 
  — But it seems things are getting more complicated. My purpose is still firm, but it seems I'm gonna need more work done to fulfill it. Can I ask you for another favor?""",
-	ERLERN_ENCOUNTER_2_OPTION_1 = "Yes",
-	ERLERN_ENCOUNTER_2_OPTION_2 = "No",
-	ERLERN_ENCOUNTER_3_1 = """ — Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. I want you to bring her to me, as she's a possible candidate for the next High Priestess. 
-
- — You shouldn't waste any more time, just get her here, no matter what.""",
+	ERLERN_ENCOUNTER_2_OPTION_1 = "Yes.",
+	ERLERN_ENCOUNTER_2_OPTION_2 = "No.",
+	ERLERN_ENCOUNTER_3_1 = """— Very good. As I'm stuck here, I need you to bring another person from the capital to me. There's another young, but bright, priestess of Freya, who you'll be able to find at the temple grounds. I want you to bring her to me, as she's a possible candidate for the next High Priestess.
+	
+— You shouldn't waste any more time, just get her here, no matter what.""",
 	ERLERN_ENCOUNTER_3_2 = """""", # TODO add text
 	LIRA_ENCOUNTER_1 = """After searching around, you manage to find the priestess Erlen asked you for. You bring her to an isolated place and explain that Erlen wants her to come to him.
 
- — E-Erlen wants me to come? I'm afraid this is going to be difficult. Recently we've been forbidden to leave temple's grounds. I can't risk it, as I already stand out because of my heritage.""",
-	LIRA_ENCOUNTER_1_OPTION_1 = "Surely there might be some way",
-	LIRA_ENCOUNTER_1_OPTION_2 = "I can't leave without you",
+ — E-Erlen wants me to come? I'm afraid this is going to be difficult. Recently we've been forbidden to leave the temple's grounds. I can't risk it, as I already stand out because of my heritage.""",
+	LIRA_ENCOUNTER_1_OPTION_1 = "Surely there might be some way.",
+	LIRA_ENCOUNTER_1_OPTION_2 = "I can't leave without you.",
 	LIRA_ENCOUNTER_2 = """Lira pauses for a long moment, thinking through the possibilities, then offers her own proposal.
 
  — I might be able to get out if there's someone to take my place during the muster. If you can find someone who looks similar to me, another Tribal Elf, then we might trick the temple watch.""",
-	LIRA_ENCOUNTER_2_OPTION_1 = "Maybe we could think of some other way... (Wits Factor Check)",
-	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then",
+	LIRA_ENCOUNTER_2_OPTION_1 = "[Wits Factor] Maybe we could think of some other way...",
+	LIRA_ENCOUNTER_2_OPTION_2 = "I'll be back once I have someone then.",
 	LIRA_ENCOUNTER_3_1_GOOD = """{color=green|Success}
 
  — Now that I think about it... I might be able to bribe the guards with some drink. If you bring me 10 whiskey, that should be enough to make them let me go.""",
@@ -8305,14 +8320,14 @@ After taking a long pause and pondering the letter, he finally speaks up.
 	LIRA_ENCOUNTER_3_1_BAD = """{color=red|Failure}
 
  — N-no, nothing really comes to mind. I'm sorry, I'm not good at this kind of thing.""",
-	LIRA_ENCOUNTER_3_1_BAD_OPTION_1 = "I'll be back once I have someone then",
+	LIRA_ENCOUNTER_3_1_BAD_OPTION_1 = "I'll be back once I have someone then.",
 	LIRA_ENCOUNTER_4 = """You find Lira who seems to be waiting eagerly in anticipation of your progress.""",
-	LIRA_ENCOUNTER_4_OPTION_1 = "I've brought another Tribal Elf to stand in for you",
-	LIRA_ENCOUNTER_4_OPTION_2 = "I've brought the whiskey you've asked for",
+	LIRA_ENCOUNTER_4_OPTION_1 = "I've brought another Tribal Elf to stand in for you.",
+	LIRA_ENCOUNTER_4_OPTION_2 = "I've brought the whiskey you've asked for.",
 	LIRA_ENCOUNTER_4_OPTION_3 = "*Leave*",
 	LIRA_ENCOUNTER_5_1_1 = " — Alright, we'll have to swap our clothes then. Please, give me a moment or two to change...",
 	LIRA_ENCOUNTER_5_1_2 = "After some time you manage to sneak Lira away from the temple's grounds. She's ready to meet with Erlen.",
-	LIRA_ENCOUNTER_5_2_1 = " — Alright... Give it to me, I'll mix it with some herbs to make it more authentic. ",
+	LIRA_ENCOUNTER_5_2_1 = " — Alright... Give it to me, I'll mix it with some herbs to make it more authentic.",
 	LIRA_ENCOUNTER_5_2_2 = "After a while Lira gets through the guards by bribing them. She's ready to go and meet with Erlen.",
 	ERLEN_LIRA_1 = "You decide it's not worth returning to Erlen without Lira.",
 	ERLEN_LIRA_2 = """As Lira sees Erlen you notice how the Tribal Elf girl's expression changes to become even more nervous than before. 
@@ -8322,8 +8337,8 @@ After taking a long pause and pondering the letter, he finally speaks up.
 {color=aqua|Erlen: — You've made it. You aren't hurt?}
 
 {color=yellow|Lira: — N-no, nothing like that.}""",
-	ERLEN_LIRA_2_OPTION_1 = "It was somewhat difficult, but we succeeded",
-	ERLEN_LIRA_2_OPTION_2 = "That was too easy, maybe you need tighter security",
+	ERLEN_LIRA_2_OPTION_1 = "It was somewhat difficult, but we succeeded.",
+	ERLEN_LIRA_2_OPTION_2 = "That was too easy, maybe you need tighter security.",
 	ERLEN_LIRA_2_OPTION_3 = "What now?",
 	ERLEN_LIRA_3_1 = """{color=aqua|Erlen: — Good work, now tell me what's been going on.}""",
 	ERLEN_LIRA_3_2 = """{color=aqua|Erlen: — If it were my personal corps, I assure you, I wouldn't be so easy on them, but good work anyway.}""",
@@ -8335,60 +8350,60 @@ After taking a long pause and pondering the letter, he finally speaks up.
 	ERLEN_LIRA_4_OPTION_2 = "Why did she send you away?",
 	ERLEN_LIRA_4_OPTION_3 = "Do we actually have any chance of stopping her then?",
 	ERLEN_LIRA_5_1 = """{color=aqua|Erlen: — I must explain. The High Priestess is not an eternal ruler, nor is she selected by council. The High Priestess is chosen by Freya every few years. To summon the goddess the ritual is performed, which brings her spirit into the temple to temporarily inhabit a mortal body and deliver her decision.
-
+	
 Erlen: — Naturally, she will only select a person who's present in the temple at the time, so only devoted followers are usually allowed. More often than not she selects the current priestess who will keep her rule, but if Freya wills it, a new priestess can be chosen.
 
 Erlen: — This time, however, the High Priestess feels the discontent caused by her rules, among myself and many others. Hence why I was sent away and the lower-ranked acolytes were locked down. This is to ensure her position does not change.}""",
-	ERLEN_LIRA_5_2 = """{color=aqua|Erlen: — The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however I'm uncertain how her plan might unfold, knowing that I won't help her.}""",
+	ERLEN_LIRA_5_2 = """{color=aqua|Erlen: — The ritual requires the participation of a male leader to provide a counterweight to our female-dominated society. For this reason the strongest male elves have to obtain the primordial water from the ancient temple. That would be me, however, I'm uncertain how her plan might unfold, knowing that I won't help her.}""",
 	ERLEN_LIRA_5_2_OPTION_1 = "I might have got this water for her...",
-	ERLEN_LIRA_5_2_OPTION_2 = "I can't tell how, but she probably got it some way",
-	ERLEN_LIRA_5_2_1 = """{color=aqua|Erlen: — Y-you did? Damn it... I guess we really are out of time in that case. Don't blame yourself too much,I believe she would've found some other way regardless.}""",
+	ERLEN_LIRA_5_2_OPTION_2 = "I can't tell how, but she probably got it some way.",
+	ERLEN_LIRA_5_2_1 = """{color=aqua|Erlen: — Y-you did? Damn it... I guess, we really are out of time in that case. Don't blame yourself too much, I believe she would've found some other way regardless.}""",
 	ERLEN_LIRA_5_2_2 = """{color=aqua|Erlen: — Yes, it would make sense to make our final preparations then. We really are out of time now.}""",
 	ERLEN_LIRA_5_3 = """{color=aqua|Erlen: — Not entirely. But I want to ask for your help... No, in fact I need your help. }
 
 You and Lira both give Erlen a puzzled look.
 
-{color=aqua|Erlen: — I guess I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...}""",
+{color=aqua|Erlen: — I guess, I finally have to explain. When I sent you to the beastkin tribe, the letter you carried contained the request for Leon to support this coup and made him some offers to secure his help. While the beastkin are subdued by us, they can still pose a significant threat. However, their response...}""",
 	ERLEN_LIRA_5_3_OPTION_1 = "What was it?",
 	ERLEN_LIRA_5_3_OPTION_2 = "They refused?",
-	ERLEN_LIRA_5_3_OPTION_3 = "Must have requested my participation somehow",
+	ERLEN_LIRA_5_3_OPTION_3 = "Must have requested my participation somehow.",
 	ERLEN_LIRA_6_1 = """{color=aqua|Erlen: — Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. }""",
 	ERLEN_LIRA_6_2 = """{color=aqua|Erlen: — No, not directly at least. Leon expressed that if they were gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.}""",
-	ERLEN_LIRA_6_3 = """{color=aqua|Erlen: — Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved. }""",
-	ERLEN_LIRA_6_OPTION_1 = "So, this is why you need my help",
-	ERLEN_LIRA_6_OPTION_2 = "I'm not sure I'm suitable for such responsibility",
-	ERLEN_LIRA_7_1 = """{color=aqua|Erlen: — Precisely. I hope you will help us after all of this. 
-
+	ERLEN_LIRA_6_3 = """{color=aqua|Erlen: — Hmph, so you've guessed it? Yes, Leon expressed that if they're gonna be dragged into this, they will only follow someone who has earned their respect. Whatever you've done, it's not something any of us would likely have achieved.}""",
+	ERLEN_LIRA_6_OPTION_1 = "So, this is why you need my help.",
+	ERLEN_LIRA_6_OPTION_2 = "I'm not sure I'm suitable for such responsibility.",
+	ERLEN_LIRA_7_1 = """{color=aqua|Erlen: — Precisely. I hope you will help us after all of this.
+	
 Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.}""",
-	ERLEN_LIRA_7_2 = """{color=aqua|Erlen: — I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable.
-
+	ERLEN_LIRA_7_2 = """{color=aqua|Erlen: — I don't have the whole story on how you convinced Leon and the tribe to accept you, but if the beastkin chose you, you must be capable. 
+	
 Erlen: — I've already sent the messengers to Leon in your name so they should be moving into the direction of the capital. This is bold, but with you on our side we should avoid any serious complications.}""",
 	ERLEN_LIRA_7_OPTION_1 = "I didn't quite grasp the goal, what are you fighting for?",
 	ERLEN_LIRA_7_OPTION_2 = "Very well, so what's the plan?",
 	ERLEN_LIRA_8_1_1 = """Erlen takes a long pause to collect his thoughts before finally speaking up.
 
-{color=aqua|Erlen: — I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us. 
+{color=aqua|Erlen: — I don't believe in the way that we elves are going as a nation. In recent decades the segregation of males and females has been growing faster than ever before. Most males are treated as servants at best and as outcasts at worst. Freya's acolytes aren't allowed to engage with them and there's often animosity between us.
 
-Erlen: — Heleviel is very much in favor of continuing this policy but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.}""",
+Erlen: — Heleviel is very much in favor of continuing this policy, but a new High Priestess could push for real changes. Something to give us more breathing room and alleviate the friction. This is why I made you bring Lira here.}""",
 	ERLEN_LIRA_8_1_2 = """{color=yellow|Lira: — I-I appreciate your faith in me, but I'm still not sure about something big like this. I was accepted at the temple only out of goodwill. I'm not even native, and now you propose that I should become the next High Priestess? Even with my feelings towards you, this is a bit too much...}
 
-{color=aqua|Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you. }""",
+{color=aqua|Erlen: — Your own feelings are of little importance. If Freya considers you worthy, then you can do it. I'm tired of this state and I'm willing to bet everything on my faith in you.}""",
 	ERLEN_LIRA_8_2 = """{color=aqua|Erlen: — Given our current situation, there's only one thing we can do. We must break through right at the peak moment of the ritual. While you were away I've already prepared everything. Wait two more days and then come to the elven capital, Leon should make it by that time as well. Until then it's better to stay away from there.}""",
-	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal",
-	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk",
+	ERLEN_LIRA_8_OPTION_1 = "I hope you aren't forgetting our deal.",
+	ERLEN_LIRA_8_OPTION_2 = "I might ask for something more for this kind of risk.",
 	ERLEN_LIRA_9_1 = """{color=aqua|Erlen: — If we succeed, you'll get any help you might request from me, be it access to the Sacred Bowl or anything else.} """,
 	ERLEN_LIRA_9_2 = """{color=aqua|Erlen: — I... Can promise you more, but these promises will be empty if we won't actually succeed. I suggest we leave this talk until later.}""",
 	ERLEN_LEON_1 = """Erlen's group has met up with Leon and you. 
 
 {color=aqua|Erlen: — I'm grateful that you've come.}
 
-{color=yellow|Leon: — Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow his orders, not yours. }
+{color=yellow|Leon: — Hmph, so you can be polite when you need something from us. Keep in mind we are only here because of [name], we'll follow [his] orders, not yours.}
 
 Erlen decided to ignore Leon's remark and proceeded.
 
 {color=aqua|Erlen: — My informant has reported that they're holding the ritual today. We must move swiftly, the temple will be sealed for half an hour before the start. From that point, nobody can leave or cancel the ritual.}""",
 	ERLEN_LEON_1_OPTION_1 = """What are we gonna do?""",
-	ERLEN_LEON_1_OPTION_2 = """We'd better not waste time chatting then""",
+	ERLEN_LEON_1_OPTION_2 = """We'd better not waste time chatting then.""",
 	ERLEN_LEON_2 = """{color=aqua|Erlen: — We'll have to break through. Most soldiers should be positioned away from the capital at this moment, but those which are left will all be drafted to protect the ritual.}
 
 {color=yellow|Leon: — Sounds easy. What's the catch?}
@@ -8398,9 +8413,9 @@ Erlen decided to ignore Leon's remark and proceeded.
 
 However, the bridge is guarded. As your group is spotted the soldiers rush towards you. Erlen goes out in front of them.
 
-{color=aqua|Erlen: — At ease. These people are coming with me. }
+{color=aqua|Erlen: — At ease. These people are coming with me.}
 
-{color=yellow|Guard: — My apologies, commander, but we have been instructed to stop you by the High Priestess.}
+{color=yellow|Guard: — My apologies, commander, but we have been instructed by the High Priestess to stop you.}
 
 {color=aqua|Erlen: — Damn it. We'll have to fight.}""",
 	ERLEN_LEON_4 = """You successfully defeat the patrol and cross the bridge. However, as you get closer to the doors, you spot a larger formation of troops approaching you from behind. 
@@ -8408,17 +8423,17 @@ However, the bridge is guarded. As your group is spotted the soldiers rush towar
 {color=yellow|Leon: — You should go or you'll never make it. We'll hold them back.}
 
 {color=aqua|Erlen: — My men will stay as well. Quick, [name], there's very little time left!}""",
-	CEREMONY_1 = """The ceremony has been going on for some time when one of the acolytes rushes to Heleviel to inform her about the ongoing assault. She doesn't show any emotion and just gives the order to continue with the ritual. It seems she thinks the rear guards should be able to hold Erlen long enough for her to complete her plan. 
-
-Heleviel has also heard something about beastkin making their move, but decides that it can wait until her status as High Priestess is confirmed.""",
+	CEREMONY_1 = """The ceremony has been going on for some time when one of the acolytes rushes to Heleviel to inform her about the ongoing assault. She doesn't show any emotion and just gives the order to continue with the ritual. It seems she thinks the rear guards should be able to hold Erlen long enough for her to complete her plan.
+	
+	Heleviel has also heard something about beastkin making their move, but decides that it can wait until her status as High Priestess is confirmed.""",
 	CEREMONY_2 = """As your team barges in, you realize that the ritual has been launched. The room is filled with a white light. You've made it here in the last possible moment.""",
 	CEREMONY_3 = """Interesting. Nothing like this has happened for a very long time. How impudent for an outsider to involve himself with elven affairs. Very well, why don't you amuse me in this case? Tell me, who would you choose to become the next High Priestess?""",
-	CEREMONY_3_OPTION_1 = "Heleviel",
-	CEREMONY_3_OPTION_2 = "Lira",
+	CEREMONY_3_OPTION_1 = "Heleviel.",
+	CEREMONY_3_OPTION_2 = "Lira.",
 	CEREMONY_HELEVIEL_1 = """As you spell out your answer, the white fog disperses around you and you find yourself in the middle of the temple. It seems you were the real messenger of Freya and now Heleviel is going to be the High Priestess once more. 
 
  — You've all heard it for yourself. Freya has chosen me once more. Even with the ritual being nearly aborted.
-
+ 
  — As for you, [name], it seems you must have earned the favor of the Goddess herself in order to become her herald, so we will excuse your presence here.""",
 	CEREMONY_HELEVIEL_2 = """Heleviel turns to face Erlen and Lira who have both been captured by her guards.
 
@@ -8427,12 +8442,12 @@ Heleviel has also heard something about beastkin making their move, but decides 
 Erlen hangs his head in a defeated posture, not saying anything. Lira tries to protest but the guards quickly silence her.
 
  — This priestess has also proven to be a traitor, despite our best intentions in allowing her to serve Freya as any other. She shall serve an example for others who might think of straying from the path. I guess you should be glad to share the same faith.""",
-	CEREMONY_HELEVIEL_2_OPTION_1 = "I think you are being too harsh and they could be pardoned",
-	CEREMONY_HELEVIEL_2_OPTION_2 = "It's your choice",
+	CEREMONY_HELEVIEL_2_OPTION_1 = "I think you are being too harsh and they could be pardoned.",
+	CEREMONY_HELEVIEL_2_OPTION_2 = "It's your choice.",
 	CEREMONY_HELEVIEL_3_1 = """ — Nonsense. Erlen is obviously too dangerous for us, he can't even be allowed to live after his attempt to ruin the ritual. I could see the priestess being his tool, but she can't be trusted either after this.""",
-	CEREMONY_HELEVIEL_3_1_OPTION_1 = "You could at least exile her then",
-	CEREMONY_HELEVIEL_3_1_OPTION_2 = "Give her to me",
-	CEREMONY_HELEVIEL_3_1_OPTION_3 = "You've convinced me",
+	CEREMONY_HELEVIEL_3_1_OPTION_1 = "You could at least exile her then.",
+	CEREMONY_HELEVIEL_3_1_OPTION_2 = "Give her to me.",
+	CEREMONY_HELEVIEL_3_1_OPTION_3 = "You've convinced me.",
 	CEREMONY_HELEVIEL_3_1_1 = """Heleviel takes a short pause, and decides to play along.
 
  — Very well, she'll be exiled from our forests forever. Thank [name] for the gift of your life.""",
@@ -8440,11 +8455,11 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 
  — Very well, you may have her as long as you keep her in your domain. We don't care what she'll be doing if it's outside of our lands.""",
 	CEREMONY_HELEVIEL_3_2 = """As things are settled you go out and explain to Leon that this is over. He accepts your command and retreats along with the beastkin warriors he brought here. As you return to Heleviel, she settles things up and invites you to her chambers.""",
-	CEREMONY_HELEVIEL_4 = """ — I must thank you for your participation I suppose. Despite your helping Erlen to try to seize power from me, this has worked out well in the end and I have finally got rid of him. I know, you are waiting for your artifact, and as I promised, you can have it. After all, you are the first outsider I know to become Freya's chosen, so I have no reason to oppose you. Take the Sacred Bowl, I trust that this will serve Freya's interests in the end. 
-
- — Oh, and one more thing I must tell you. It seems that the demon woman of yours is indeed plotting something. She appeared as you described. """,
-	CEREMONY_HELEVIEL_4_OPTION_1 = "Was a pleasure working with you",
-	CEREMONY_HELEVIEL_4_OPTION_2 = "Until the next time we meet",
+	CEREMONY_HELEVIEL_4 = """ — I must thank you for your participation, I suppose. Despite your helping Erlen to try to seize power from me, this has worked out well in the end and I have finally got rid of him. I know, you are waiting for your Artifact, and as I promised, you can have it. After all, you are the first outsider I know to become Freya's chosen, so I have no reason to oppose you. Take the Sacred Bowl, I trust that this will serve Freya's interests in the end. 
+	
+— Oh, and one more thing I must tell you. It seems that the demon woman of yours is indeed plotting something. She appeared as you described.""",
+	CEREMONY_HELEVIEL_4_OPTION_1 = "Was a pleasure working with you.",
+	CEREMONY_HELEVIEL_4_OPTION_2 = "Until the next time we meet.",
 	CEREMONY_LIRA_1 = """As you spell out your answer, the white fog disperses around you and you find yourself in the middle of the temple. It seems you were the real messenger of Freya and now Lira is going to be the High Priestess instead of Heleviel. 
 
 {color=yellow|Heleviel: — N-no way. This can't be!}
@@ -8453,17 +8468,17 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 
 {color=yellow|Heleviel: — No, you traitors! This was all staged, you can't do this to me!}""",
 	CEREMONY_LIRA_2 = """The guards follow Erlen and Lira's orders and take Heleviel away from the temple. You tell Leon that the battle is over and he retreats with his warriors, after which you meet with Erlen once again.""",
-	CEREMONY_LIRA_3 = """ — It's hard to believe this has actually happened, but because of you Lira is the High Priestess now. As promised, I grant you the Sacred Bowl. This is the least I can repay you with.""",
-	CEREMONY_LIRA_3_OPTION_1 = "What's going to happen to Heleviel",
-	CEREMONY_LIRA_3_OPTION_2 = "Glad it worked out for you",
-	CEREMONY_LIRA_4_1 = """ — She will likely be executed or secluded forever. Trying to prevent Freya's will from happening is the gravest possible offense in our society.""",
-	CEREMONY_LIRA_4_1_OPTION_1 = "Give her to me",
-	CEREMONY_LIRA_4_1_OPTION_2 = "It's up to you then",
+	CEREMONY_LIRA_3 = """— It's hard to believe this has actually happened, but because of you Lira is the High Priestess now. As promised, I grant you the Sacred Bowl. This is the least I can repay you with.""",
+	CEREMONY_LIRA_3_OPTION_1 = "What's going to happen to Heleviel?",
+	CEREMONY_LIRA_3_OPTION_2 = "Glad it worked out for you.",
+	CEREMONY_LIRA_4_1 = """— She will likely be executed or secluded forever. Trying to prevent Freya's will from happening is the gravest possible offense in our society.""",
+	CEREMONY_LIRA_4_1_OPTION_1 = "Give her to me.",
+	CEREMONY_LIRA_4_1_OPTION_2 = "It's up to you then.",
 	CEREMONY_LIRA_4_1_1 = """Erlen considers it for a bit and nods.
 
  — Very well, obviously I would not allow anyone else to ask for it, but you've done too much for us here. You can have her, as long as she will spend the rest of her life as a slave. I warn you that she's not going to cooperate, though.""",
-	CEREMONY_LIRA_4_1_1_OPTION = "Thank you",
-	CEREMONY_LIRA_4_2 = """ — I wish you luck on your journey. We have a lot of work to do, but we will be glad to receive you some time again soon.""",
+	CEREMONY_LIRA_4_1_1_OPTION = "Thank you.",
+	CEREMONY_LIRA_4_2 = """— I wish you luck on your journey. We have a lot of work to do, but we will be glad to receive you some time again soon.""",
 	DEMON_PRIESTESS_1 = """The High Priestess of Freya finished her business and went to her private chamber to rest, but this time she found that she was not alone. 
 
 {color=yellow|High Priestess: — So, it was true something shady has been going on. }
@@ -8471,7 +8486,7 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 {color=aqua|Demoness: — How unpleasant. I'd only like to offer some cooperation.}""",
 	DEMON_PRIESTESS_2 = """{color=yellow|High Priestess: — Preposterous. Nobody here would cooperate with your kind.}
 
-{color=aqua|Demoness: — Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come. }
+{color=aqua|Demoness: — Should you really be so dismissive now? Even your status will not save you from the consequences of what is to come.}
 
 {color=yellow|High Priestess: — I don't know how you got in here, but it's your last chance to leave before I call the guards.}
 
@@ -8488,18 +8503,18 @@ Erlen hangs his head in a defeated posture, not saying anything. Lira tries to p
 {color=yellow|Unfamiliar Voice: — Who cares, I'm free now!}""",
 	JEAN_INTRO_1 = """You decide to enter and observe a young human girl who measures you with a sharp look.
 
-{color=aqua|Myr: — Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work? }
+{color=aqua|Myr: — Oh, it's you, [name]. Nice timing. Why don't you take this magnificent sorceress who's dying for some real work?}
 
 Out of Myr's deadpan voice you can't make out if she's serious or not.""",
-	JEAN_INTRO_2 = """{color=yellow|Girl: — You are a new landowner. What makes you think I will be working for you!? }
+	JEAN_INTRO_2 = """{color=yellow|Girl: — You are a new landowner. What makes you think I will be working for you?}
 
-{color=aqua|Myr: — You are out of options, Jean, and your dormitory payment is due. }
+{color=aqua|Myr: — You are out of options, Jean, and your dormitory payment is due.}
 
 {color=yellow|Girl: — Kh...}
 
-{color=aqua|Myr: — As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please relieve me of her presence.}""",
-	JEAN_INTRO_2_OPTION_1 = "I guess I have some free space left",
-	JEAN_INTRO_2_OPTION_2 = "No way",
+{color=aqua|Myr: — As you can see, her temperament is atrocious, but she's one of the most skilled students I have ever had. Please, relieve me of her presence.}""",
+	JEAN_INTRO_2_OPTION_1 = "I guess I have some free space left.",
+	JEAN_INTRO_2_OPTION_2 = "No way.",
 	JEAN_INTRO_BAD = """{color=aqua|Myr: — Goddamnit... Give me some more time then.}
 
 You leave the room and wait for them to finish.""",
@@ -8510,18 +8525,18 @@ You leave the room and wait for them to finish.""",
 {color=yellow|Jean: — Wait, I haven't finished!}
 
 Before Jean could protest, the strong magical force has pushed you both out of Myr's office.""",
-	JEAN_INTRO_4 = """ — Darn that hag!.. Crap... 
+	JEAN_INTRO_4 = """ — Darn that hag..! Crap... 
 
 Realizing the hopelessness of her situation Jean finally acknowledges your presence and turns to face you.
 
  — Well, pleased to meet you, I guess. You must have some work for me, right? As you can guess I'm not good with housework, so I hope you aren't just sitting on your ass all day.""",
-	JEAN_INTRO_4_OPTION_1 = "I fight a lot",
-	JEAN_INTRO_4_OPTION_2 = "It seems you don't talk to people too often ",
-	JEAN_INTRO_4_OPTION_3 = "No, but I wouldn't mind sitting on your ass from time to time",
-	JEAN_INTRO_5_1 = """ — Hmph, that's good then. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+	JEAN_INTRO_4_OPTION_1 = "I fight a lot.",
+	JEAN_INTRO_4_OPTION_2 = "It seems you don't talk to people too often.",
+	JEAN_INTRO_4_OPTION_3 = "No, but I wouldn't mind sitting on your ass from time to time.",
+	JEAN_INTRO_5_1 = """— Hmph, that's good then. Fine, point me in the direction of where I'll be sleeping and we can meet there.
 
 You give Jean the directions to your mansion and leave her to it.""",
-	JEAN_INTRO_5_2 = """ — Whatever. Fine, point me in the direction of where I'll be sleeping and we can meet there.
+	JEAN_INTRO_5_2 = """— Whatever. Fine, point me in the direction of where I'll be sleeping and we can meet there.
 
 You give Jean the directions to your mansion and leave her to it.""",
 	JEAN_INTRO_5_3 = """Blushing fiercely, Jean slaps your face making a sound so loud you wonder if Myr is going to come out of her office to check on you. 
@@ -8535,20 +8550,20 @@ You give Jean the directions to your mansion and leave her to it.""",
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
 	LILIA_INTRO_OPTION_1 = "Nice to meet you, I'm [name].",
-	LILIA_INTRO_OPTION_2 = "Woah, not so fast",
+	LILIA_INTRO_OPTION_2 = "Woah, not so fast.",
 	LILIA_INTRO_OPTION_3 = "You really know no manners, do you?",
-	LILIA_INTRO_2 = """ — Ah, sorry, this is just so exciting and rare to meet someone like you. You look so big and strong, it makes me feel all tingly *chuckle*
+	LILIA_INTRO_2 = """— Ah, sorry, this is just so exciting and rare to meet someone like you. You look so big and strong, it makes me feel all tingly. *chuckle*
 
- — Say, can I join you? Please? """,
-	LILIA_INTRO_2_OPTION_1 = "Agree",
-	LILIA_INTRO_2_OPTION_2 = "Refuse",
-	LILIA_INTRO_3_1 = " — Thanks! Looking forward to living at your place.",
-	LILIA_INTRO_3_2 = " — Aww... Let me know if you change your mind!",
+— Say, can I join you? Please?""",
+	LILIA_INTRO_2_OPTION_1 = "*Agree*",
+	LILIA_INTRO_2_OPTION_2 = "*Refuse*",
+	LILIA_INTRO_3_1 = "— Thanks! Looking forward to living at your place.",
+	LILIA_INTRO_3_2 = "— Aww... Let me know if you change your mind!",
 	
 	CALI_INTRO = """As you make your way through the fort, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.""",
 	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
 
-{color=aqua|Slaver: — Hey, it seems we have a guest. We don't wanna fight, actually we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman. }
+{color=aqua|Slaver: — Hey, it seems we have a guest. We don't wanna fight. Actually, we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman.}
 
 The slaver leads you to another room.""",
 	CALI_INTRO_2 = """Lying on the floor you see a young girl. Her ears and tail give away her origin as a halfkin wolf. Despite being bound, her spirit seems to not be anywhere near broken yet.
@@ -8562,8 +8577,8 @@ The slaver leads you to another room.""",
 Slaver 2: — Because the buyer we had lined up was the guy who loved them feisty. I'm too lazy to do it now, just gag her mouth again.}""",
 	CALI_INTRO_2_OPTION_1 = "Is she still a virgin?",
 	CALI_INTRO_2_OPTION_2 = "Where did you get her?",
-	CALI_INTRO_2_OPTION_3 = "I'd like to purchase her",
-	CALI_INTRO_2_OPTION_4 = "I'll take her from you", # go to fight
+	CALI_INTRO_2_OPTION_3 = "I'd like to purchase her.",
+	CALI_INTRO_2_OPTION_4 = "I'll take her from you.", # go to fight
 	CALI_INTRO_3_1 = """The girl blushes a deep scarlet color at your question.
 
 {color=aqua|Cali: — Of course I am! What are you planning to do, you perverts!? Don't even think about it!}
@@ -8571,26 +8586,26 @@ Slaver 2: — Because the buyer we had lined up was the guy who loved them feist
 The men smirk at her reaction.
 
 {color=yellow|Slaver: — Well, that's what she says.}""",
-	CALI_INTRO_3_2 = """{color=yellow|Slaver: — She was traveling all alone, by dangerous roads. Looks like she ran away from home or something. }""",
+	CALI_INTRO_3_2 = """{color=yellow|Slaver: — She was traveling all alone, by dangerous roads. Looks like she ran away from home or something.}""",
 	CALI_INTRO_3_3 = """The leader strokes his chin for a few seconds. 
 
 {color=yellow|Slaver: — I knew we could have a productive relationship with you, [Sir]. It would be annoying to keep her around once we leave, so we will happily part with her here.}
 
 {color=aqua|Cali: — Bastards, stop discussing me like I agreed to this!}
 
-{color=yellow|Slaver: — Given her healthy physique and appearance I believe she is worth at least 1,000 gold.}""",
-	CALI_INTRO_3_OPTION_1 = "She does not seem all that pretty to me (Charm Check)",
-	CALI_INTRO_3_OPTION_2 = "I'll think about it",
-	CALI_INTRO_3_OPTION_3 = "Deal",
-	CALI_INTRO_3_OPTION_4 = "No deal, I'll take her by force",
-	CALI_INTRO_4_1_1 = """{color=aqua|Cali: — Like I care how I seem to you!}
+{color=yellow|Slaver: — Given her healthy physique and appearance I believe she is worth at least 1.000 gold.}""",
+	CALI_INTRO_3_OPTION_1 = "[Charm] She does not seem all that pretty to me.",
+	CALI_INTRO_3_OPTION_2 = "I'll think about it.",
+	CALI_INTRO_3_OPTION_3 = "Deal.",
+	CALI_INTRO_3_OPTION_4 = "No deal, I'll take her by force.",
+	CALI_INTRO_4_1_1 = """{color=green|Success}	{color=aqua|Cali: — Like I care how I seem to you!}
 
-{color=yellow|Slaver: — I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe. }
+{color=yellow|Slaver: — I suppose, a thousand might be too much, but we can't drop the price lower than 750 gold. We have had to cover the costs of keeping her alive and safe.}
 
 {color=aqua|Cali: — You feed me with pig food here!}""",
-	CALI_INTRO_4_1_2 = """{color=aqua|Cali: — Like I care how I seem to you!}
+	CALI_INTRO_4_1_2 = """{color=red|Failure} {color=aqua|Cali: — Like I care how I seem to you!}
 
-{color=yellow|Slaver: — Even so, we must cover the expenses for having kept her alive and safe. }
+{color=yellow|Slaver: — Even so, we must cover the expenses for having kept her alive and safe.}
 
 {color=aqua|Cali: — You feed me with pig food here!}""",
 	CALI_INTRO_4_2 = """{color=yellow|Slaver: — Alright, but don't take too long. There might be a new customer for her by the time you make your mind up. He-he.}""",
@@ -8603,8 +8618,8 @@ The men smirk at her reaction.
 
  — W-what are you looking at? What are you going to do with me? """,
 	GOT_CALI_1_OPTION_1 = "*Rape her*",
-	GOT_CALI_1_OPTION_2 = "I'll free you",
-	GOT_CALI_2_1 = """You decide there's really no point in any further chatting and you should savor your new acquisition right here. """,
+	GOT_CALI_1_OPTION_2 = "I'll free you.",
+	GOT_CALI_2_1 = """You decide there's really no point in any further chatting and you should savor your new acquisition right here.""",
 	FORCE_CALI_1 = """To Cali's shock, you shove her down flat on the ground and stand over her. With her hands tied behind her back and her knees bound tightly together, the halfkin wolf girl can do little to resist your superior strength. 
 
 She tries to squirm away, wailing miserably, but you easily grab hold of her tail and hold her in place. Her short skirt rides up to expose her cute round ass. Wriggling frantically, Cali does her best to resist you as you push her skirt up around her waist and feast your eyes on her helpless body. Securely bound as she is, her struggles only exhaust herself.""",
@@ -8620,14 +8635,14 @@ Chuckling softly, you run your finger over her panties, along the soft cleft bet
 
  — N-no! Please, don't do this! I'm not... I've never...
 
-You pull the crotch of her panties to one side, revealing Cali's tight pink pussy. """,
+You pull the crotch of her panties to one side, revealing Cali's tight pink pussy.""",
 	FORCE_CALI_3 = """With the halfkin wolf girl's pussy exposed, her tone changes and she starts trying to bargain desperately with you.
 
  — Please, [sir], I can offer you something! What do you want? I don't mind being a servant, I just... please... stop... Ooohhh!
 
 You begin to tease Cali's clit with your finger, letting your thumb slip gradually between the pussylips until it's pressing against her hymen. It doesn't take long before her pussy starts to grow warm to the touch, her labia turning slick with her involuntary arousal. Cali strains against the ropes binding her, jerking her upper body as her thighs helplessly twist against your probing fingers. Her small firm ass quivers with the tension of keeping her slim legs clamped together. Using your free hand, you force her legs to bend at the hip.and then unbuckle your belt. 
 
- — N-no, please! Aaah! Please, [sir], please stop this! """,
+ — N-no, please! Aaah! Please, [sir], please stop this!""",
 	FORCE_CALI_4 = """With the girl's bound legs bent, you plant your hand firmly in the small of her back and pin her against the cold ground. You can see the hard nipples on her small tits pressing through the fabric of her shirt as she is forced down. Her ass and pussy stick into the air, where your hand fondles them, preparing her to become a woman. 
 
  — Oh, gods, no! Don't do it! I don't want it! I'm not ready!
@@ -8638,7 +8653,7 @@ Cali's wet slit tells a different story and without further ceremony you ignore 
 
 Cali screws her eyes shut tightly, as if she could make it stop by not watching, but your cock plows hard and deep inside her sensitive virgin cunt as you claim her for your property. 
 
- — Y-you bastard! I'll — I'll never forgive you for this!
+ — Y-you bastard! I'll... I'll never forgive you for this!
 
 Hot tears run from the wolf girl's closed eyes as she weeps while your penis pounds into her refreshingly tight pussy.""",
 	FORCE_CALI_5 = """Sensing the futility of further resistance, Cali's struggles grow weaker. As your penis rams rhythmically into her, the sound of her cries begins to change. She gasps as you slowly sink your whole length in her pussy, your balls resting against her swollen clit. The tension in her yields a little and she lets out a ragged sigh as her pussy pulses and quivers around the shaft of your cock. 
@@ -8671,8 +8686,8 @@ She takes a long pause, rubbing her sore wrists, before she is willing to contin
 
  — Say... You are some big shot I suppose? Right now I don't really have anywhere to go. Maybe I could do some work for you? You look like a good guy.""",
 	GOT_CALI_2_OPTION_1 = "What sort of work can you do?",
-	GOT_CALI_2_OPTION_2 = "I could find some use for you",
-	GOT_CALI_2_OPTION_3 = "Not interested",
+	GOT_CALI_2_OPTION_2 = "I could find some use for you.",
+	GOT_CALI_2_OPTION_3 = "Not interested.",
 	GOT_CALI_3_1 = """ — I might not look like it, but I'm pretty tough, I'm of the wolves after all. 
 
 Cali proudly puffs her chest.
@@ -8685,29 +8700,29 @@ You leave the cave and lead Cali back to your mansion.""",
 	
 Cali looks surprisingly disappointed but decides not to tempt her fate and leaves.""",
 	
-	CALI_SIDEQUEST_1 = """At noon you are approached by one of your residents: Cali. She looks at you with a slightly worried face.
+	CALI_SIDEQUEST_1 = """At noon you are approached by one of your residents - Cali. She looks at you with a slightly worried face.
 
 — Hey, [name]. You know, It's been a while since I started to live here. I was thinking that I wanna do something big.""",
-	CALI_SIDEQUEST_1_OPTION_1 = "That's an admirable attitude",
-	CALI_SIDEQUEST_1_OPTION_2 = "You would still have to start somewhere small",
-	CALI_SIDEQUEST_1_OPTION_3 = "You don't have to worry about this, you can stay as long as you want",
-	CALI_SIDEQUEST_1_1 = """— Hmph, no need for flattery, that's what a proud wolf should do — not simply rely on the good will of others. """,
+	CALI_SIDEQUEST_1_OPTION_1 = "That's an admirable attitude.",
+	CALI_SIDEQUEST_1_OPTION_2 = "You would still have to start somewhere small.",
+	CALI_SIDEQUEST_1_OPTION_3 = "You don't have to worry about this, you can stay as long as you want.",
+	CALI_SIDEQUEST_1_1 = """— Hmph, no need for flattery, that's what a proud wolf should do — not simply rely on the good will of others.""",
 	CALI_SIDEQUEST_1_2 = """— You... Aren't wrong about this. But I still have to.""",
 	CALI_SIDEQUEST_1_3 = """— No, no, this is wrong. I must give my best and repay you as well.""",
 	CALI_SIDEQUEST_1_ADDITIONAL = """
 
 — So, I've heard about those guilds here. I bet if I join one it will help me get stronger. You must know something about it, right? Which one do you think will suit me better?""",
-	CALI_SIDEQUEST_2_OPTION_1 = "Fighters guild would suit you quite well",
+	CALI_SIDEQUEST_2_OPTION_1 = "Fighters guild would suit you quite well.",
 	CALI_SIDEQUEST_2_OPTION_2 = "Maybe you can do some magic for the Mages guild?",
-	CALI_SIDEQUEST_2_OPTION_3 = "You could join Workers for some fair labor",
-	CALI_SIDEQUEST_2_OPTION_4 = "Servants might be a good fit for a girl",
-	CALI_SIDEQUEST_3_1 = """— Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters. 
-
-— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
+	CALI_SIDEQUEST_2_OPTION_3 = "You could join Workers for some fair labor.",
+	CALI_SIDEQUEST_2_OPTION_4 = "Servants might be a good fit for a girl.",
+	CALI_SIDEQUEST_3_1 = """— Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters
+	
+	— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
 	CALI_SIDEQUEST_2_2 = """— No, I hate studying and I heard you need to do that a lot to become a mage. It does not really suit me, don't you think?""",
 	CALI_SIDEQUEST_2_3 = """— Ugh, boring. I'd rather do something more active.""",
 	CALI_SIDEQUEST_2_4 = """— Oh, come on, you are talking just like my mom! I may be a girl, but I'm not really good with that girly stuff. There must be something better.""",
-	CALI_FIGHTERS_INIT_OPTION = "Cali",
+	CALI_FIGHTERS_INIT_OPTION = "Cali.",
 	CALI_FIGHTERS_1 = """As you walk inside the guild with Cali, she's staring around in awe. After a couple of seconds getting used to the surroundings, you locate the register table and make your way to it. As the wolf girl starts enthusiastically requesting her registration, the receptionist looks less than enthusiastic about it.
 
 {color=yellow|Receptionist: — You look quite young and inexperienced. This isn't a playground, you know.}
@@ -8719,12 +8734,12 @@ Cali looks surprisingly disappointed but decides not to tempt her fate and leave
 {color=aqua|Cali: — W-well... Then, what about [him]?! [He]'s mine...}
 
 Cali gives you a troubled look.""",
-	CALI_FIGHTERS_1_OPTION_1 = "[Master]",
-	CALI_FIGHTERS_1_OPTION_2F = "Father",
-	CALI_FIGHTERS_1_OPTION_2M = "Mother",
-	CALI_FIGHTERS_1_OPTION_2SF = "Stepfather",
-	CALI_FIGHTERS_1_OPTION_2SM = "Stepmother",
-	CALI_FIGHTERS_1_OPTION_3 = "Just a good friend",
+	CALI_FIGHTERS_1_OPTION_1 = "[Master].",
+	CALI_FIGHTERS_1_OPTION_2F = "Father.",
+	CALI_FIGHTERS_1_OPTION_2M = "Mother.",
+	CALI_FIGHTERS_1_OPTION_2SF = "Stepfather.",
+	CALI_FIGHTERS_1_OPTION_2SM = "Stepmother.",
+	CALI_FIGHTERS_1_OPTION_3 = "Just a good friend.",
 	CALI_FIGHTERS_2_1AND3 = "{color=aqua|Cali: — That's it! If [he] allows me then it's fine, right?}",
 	CALI_FIGHTERS_2_2 = """Cali looks slightly disturbed by your response but quickly realizes she has to play along.
 
@@ -8733,29 +8748,29 @@ Cali gives you a troubled look.""",
 
 Receptionist gives you a tired look but decides to give it a pass.
 
-{color=yellow|Receptionist: — Fine. You are a landowner so we can hold you responsible I guess. }
+{color=yellow|Receptionist: — Fine. You are a landowner so we can hold you responsible, I guess.}
 
-{color=aqua|Cali: — Yes!.. — Cali nearly jumped upon hearing it.}
+{color=aqua|Cali: — Yes..! — Cali nearly jumped upon hearing it.}
 
 {color=yellow|Receptionist: — However, as I said, this is not a playground. Before you become a member there will be a test for you to prove your capability.}""",
 	CALI_FIGHTERS_3 = """Receptionist scrambled the papers on his desk until found one of the requests.
 
-{color=yellow|Receptionist: — Here. A simple task for a member of the Fighters' Guild. A group of goblins have been raiding one of the local villages. If you can drive them away you will be accepted.}
+{color=yellow|Receptionist: — Here. A simple task for a member of the Fighters Guild. A group of goblins have been raiding one of the local villages. If you can drive them away you will be accepted.}
 
 Cali enthusiastically took the note and turned to you. 
 
 {color=aqua|Cali: — Easy-peasy. What stupid goblins can even do? We will finish with them before the evening. Let's go!}""",
-	CALI_FIGHTERS_3_OPTION_1 = "Sure, right behind you",
-	CALI_FIGHTERS_3_OPTION_2 = "Let's be careful",
+	CALI_FIGHTERS_3_OPTION_1 = "Sure, right behind you.",
+	CALI_FIGHTERS_3_OPTION_2 = "Let's be careful.",
 	CALI_FIGHTERS_4 = """You and Cali walk out of the Fighter's guild and observe the map for the required location.""",
 	CALI_GOBLINS_NO_CALI = """You decide it's not wise not to bring Cali on this quest.""",
 	CALI_GOBLINS_1 = """Full of spirit, Cali quickly jumps to the village and learns about the raiding goblins' location. After another twenty minutes you approach what seems to be a small forest encampment with a couple of goblin watchers who haven't spotted you yet. However, despite your best effort to not alarm them, Cali brashly comes out of the bushes and quickly grasps the attention of your enemies. 
 
 With multiple goblins coming out of the camp there's no other choice but to fight them now.""",
-	CALI_GOBLINS_2 = """As you defeat the multitude of goblins, you notice how a few from the back start running away deeper into the camp. Cali, who seems to be enjoying herself, notices this as well and before you can stop her, charges after them. """,
+	CALI_GOBLINS_2 = """As you defeat the multitude of goblins, you notice how a few from the back start running away deeper into the camp. Cali, who seems to be enjoying herself, notices this as well and before you can stop her, charges after them.""",
 	CALI_GOBLINS_3 = """As the wolf girl rushes after the goblins she fails to spot a trap laid under the leaves. As she trips on it, a couple of goblins jump from behind in ambush, one of which manages to latch on her back. 
 
-— Get off me!... Now!
+— Get off me..! Now!
 
 As she struggles to get him off her, more goblins slowly move closer, surrounding Cali as she eventually breaks free. 
 
@@ -8764,8 +8779,8 @@ As she struggles to get him off her, more goblins slowly move closer, surroundin
 Realizing her position, Cali looks frightened but does not try to run away yet. 
 
 As you make it closer to her, you make a decision...""",
-	CALI_GOBLINS_3_OPTION_1 = "Push in and save her",
-	CALI_GOBLINS_3_OPTION_2 = "Let her deal with it",
+	CALI_GOBLINS_3_OPTION_1 = "*Push in and save her*",
+	CALI_GOBLINS_3_OPTION_2 = "*Let her deal with it*",
 	CALI_GOBLINS_4_1 = """You courageously rush in and drag Cali from danger. However, before she can thank you, more goblins come in and force you into a fight.""",
 	CALI_GOBLINS_4_2 = """You decide to stay back and give Cali a lesson. With no other option she's forced to fight in an uneven battle.
 
@@ -8773,9 +8788,9 @@ As you strike down a few goblins caught on the back, you notice that Cali, while
 	CALI_GOBLINS_5 = """As you finally manage to make the rest of the goblins flee in terror, you and Cali catch the breath and she speaks up to you.
 
 — I'm sorry... I shouldn't have ran carelessly after them. Thanks for helping me.""",
-	CALI_GOBLINS_5_OPTION_1 = "As long as you've learned your lesson",
-	CALI_GOBLINS_5_OPTION_2 = "Don't act without my permission next time",
-	CALI_GOBLINS_5_OPTION_3 = "If you do this again, I'll leave you to them if this happens again",
+	CALI_GOBLINS_5_OPTION_1 = "As long as you've learned your lesson.",
+	CALI_GOBLINS_5_OPTION_2 = "Don't act without my permission next time.",
+	CALI_GOBLINS_5_OPTION_3 = "If you do this again, I'll leave you to them if this happens again.",
 	CALI_GOBLINS_6_1 = """— Yeah! In the end we did it, right?
 
 Cali seems relieved with your words and grabs your hand as you return to the village.""",
@@ -8785,25 +8800,25 @@ Cali seems somewhat upset with your words as you return to the village""",
 	CALI_GOBLINS_7 = """You report on your success to the village elder and leave successfully completing the mission. Cali seems rather happy with the results.
 
 — We did it nicely. Thanks for helping me out with this.""",
-	CALI_GOBLINS_7_OPTION_1 = "You managed great as well",
-	CALI_GOBLINS_7_OPTION_2 = "It was only a bunch of goblins, no big deal",
-	CALI_GOBLINS_7_OPTION_3 = "Are you sure it's what you wanna do?",
+	CALI_GOBLINS_7_OPTION_1 = "You managed great as well.",
+	CALI_GOBLINS_7_OPTION_2 = "It was only a bunch of goblins, no big deal.",
+	CALI_GOBLINS_7_OPTION_3 = "Are you sure this is what you wanna do?",
 	CALI_GOBLINS_8_1 = """— Ha-ha, you think so? I'm sure our future adventures will be even better!""",
 	CALI_GOBLINS_8_2 = """— Maybe for you, but it was pretty thrilling for my first time.""",
 	CALI_GOBLINS_8_3 = """— Of course! This is only the beginning.""",
 	CALI_GOBLINS_8_ADDITIONAL = """
 
-Despite everything, Cali does not let her spirit down and you leave to home""",
-	CALI_SEX_1_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to a halfkin wolf girl you recently recruited — Cali. As you hear some noise coming from there, you decide to take a look. 
+Despite everything, Cali does not let her spirit down and you leave to home.""",
+	CALI_SEX_1_1 = """As you walk in the evening through the mansion, you come across one slightly opened door leading to the halfkin wolf girl you recently recruited — Cali. As you hear some noise coming from there, you decide to take a look. 
 
-You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly. """,
+You see Cali lying on the bed with bare bottom and her legs spread as she meekly explores her itching crotch breathing softly.""",
 	CALI_SEX_1_2 = """— I'm feeling strange... Thinking about [him]...
 
 As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
 
 — [Master]?! This is...""",
 	CALI_SEX_1_OPTION_1 = "This feels good isn't it?",
-	CALI_SEX_1_OPTION_2 = "You should lock the door next time",
+	CALI_SEX_1_OPTION_2 = "You should lock the door next time.",
 	CALI_SEX_1_OPTION_3 = "*Leave quietly*",
 	CALI_SEX_2_3 = """You decide to ignore it and close the door...""",
 	CALI_SEX_2_3_OPTION_1 = "This isn't the time...",
@@ -8811,11 +8826,11 @@ As she turns to you, she realizes you've been looking at her for some time. Her 
 	CALI_SEX_2_1AND2 = """Seeing your reaction, Cali relaxes a bit but still covers her private parts from you.
 
 — I'm... um... not sure what to say now.""",
-	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue",
+	CALI_SEX_2_1AND2_OPTION_1 = "I'd like to see you continue.",
 	CALI_SEX_2_1AND2_OPTION_2 = "Don't mind if I watch?",
 	CALI_SEX_3_1 = """Cali pauses for a moment, but her lust takes over and she stops covering herself, revealing her pussy to you again. 
 
-— You are a pervert, Master. 
+— You are a pervert, [Master]. 
 
 Her playful tone catches up as her hand starts rubbing her snatch.
 
@@ -8823,7 +8838,7 @@ Her playful tone catches up as her hand starts rubbing her snatch.
 	CALI_SEX_3_2 = """As her voice gets more passionate, she ogles at you and your bulge, however refraining from anything bigger. In less than a minute her voice gets higher and her body jerks as she reaches orgasm, touching herself. As she goes limp on a bed her face is filled with a smile. Soon after she starts wrapping in a blanket
 
 — Wow... I never felt like this before.""",
-	CALI_SEX_3_OPTION_1 = "That was a joy to watch",
+	CALI_SEX_3_OPTION_1 = "That was a joy to watch.",
 	CALI_SEX_3_OPTION_2 = "Don't you wanna let me help?",
 	
 	CALI_SEX_4_1 = """— Y-yeah, that was a bit crazy. Sorry, I'd like to stay alone for a bit.""",
@@ -8831,14 +8846,14 @@ Her playful tone catches up as her hand starts rubbing her snatch.
 	CALI_SEX_4_ADDITIONAL = """
 
 Cali makes sure you realize that it's time to leave and you close the door.""",
-	CALI_FIGHTERS_FINISH_OPTION = "Cali's assignment",
+	CALI_FIGHTERS_FINISH_OPTION = "Cali's assignment.",
 	CALI_SIDEQUEST_4 = """Cali reports the completion to the receptionist who seems to be rather skeptical about it.
 
 {color=aqua|Cali: — We did it so now you'll accept me, right?}
 
-{color=yellow|Receptionist: — So you were helped I'm assuming?}
+{color=yellow|Receptionist: — So you were helped, I'm assuming?}
 
-{color=aqua|Cali: — N-no? I worked with an esteemed adventurer. Besides that's not against the rules is it?} """,
+{color=aqua|Cali: — N-no? I worked with an esteemed adventurer. Besides, that's not against the rules, is it?} """,
 	CALI_SIDEQUEST_5 = """The receptionist decides not to argue any further and stamps the contract's completion. Cali shines showing you the stamped paper. 
 
 {color=aqua|Cali: — See? I'm not just some stray anymore! I'm Cali the goblin slayer!} """,
@@ -8850,19 +8865,19 @@ Cali makes sure you realize that it's time to leave and you close the door.""",
 
 Making note of your approach the girl immediately walks over to you, her normal demeanor gone as she looks at you sheepishly.
 
-— Oh, [Master]... Sorry. Um, Can I ask you something? Do you think I'm feminine? I mean I'm a girl but, feminine I'm not so sure about.""",
+— Oh, [Master]... Sorry. Um, Can I ask you something? Do you think I'm feminine? I mean, I'm a girl, but feminine I'm not so sure about.""",
 	CALI_SIDEQUEST_7_OPTION_1 = "You are more than feminine enough.",
 	CALI_SIDEQUEST_7_OPTION_2 = "Well, not in particular",
 	CALI_SIDEQUEST_7_OPTION_3 = "Why would it matter?",
 	CALI_SIDEQUEST_8_1 = """Cali's ears droop on your response as she speaks.
 
-— Heh, what's up with that? Are you trying to comfort me? I'm asking you a serious question here [master].""",
-	CALI_SIDEQUEST_8_2 = "Cali: — Yeah, I thought so. Thanks for being honest.",
+— Heh, what's up with that? Are you trying to comfort me? I'm asking you a serious question here, [Master].""",
+	CALI_SIDEQUEST_8_2 = "— Yeah, I thought so. Thanks for being honest.",
 	CALI_SIDEQUEST_8 = "— I'm a girl, you know. Many people mention that I'm not very girly and it's been getting to me lately. I know I'm not usually acting like most girls, I'm pretty active and like games and adventurous stuff. I'm not sure what to do...",
-	CALI_SIDEQUEST_8_OPTION_1 = "You can learn to be more feminine if you want to",
+	CALI_SIDEQUEST_8_OPTION_1 = "You can learn to be more feminine if you want to.",
 	CALI_SIDEQUEST_8_OPTION_2 = "I don't mind you acting like a tomboy.",
-	CALI_SIDEQUEST_8_OPTION_2_alt = "You should try more 'manly' stuff to get your mind ",
-	CALI_SIDEQUEST_9_1 = """— You think so..? I guess I want to. He-he, I've never really been good with stuff like dresses and etiquette. I guess, maybe it's time for me to try it. It may be fun for all we know. 
+	CALI_SIDEQUEST_8_OPTION_2_alt = "You should try more 'manly' stuff to get your mind.",
+	CALI_SIDEQUEST_9_1 = """— You think so..? I guess, I want to. He-he, I've never really been good with stuff like dresses and etiquette. I guess, maybe it's time for me to try it. It may be fun for all we know. 
 
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
 	CALI_SIDEQUEST_9_2 = """— Y-you really think so? I mean I guess I'd like to, but I've never really been good with this stuff. Although for you I suppose I could try. 
@@ -8870,31 +8885,31 @@ After thinking about it, you decide it might be a good idea to visit the Servant
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
 	CALI_SIDEQUEST_9_2_alt = """— Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? 
 
-After thinking about it, you decide it might be a good idea to visit Workers Guild for some ideas.""", #currentlyis meaningless due to no workers root
-	CALI_SERVANTS_START_OPTION = "Ask on Cali's beneficence",
+After thinking about it, you decide it might be a good idea to visit the Workers Guild for some ideas.""", #currentlyis meaningless due to no workers root
+	CALI_SERVANTS_START_OPTION = "*Ask on Cali's beneficence*",
 	CALI_SERVANTS_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities. 
 
 — Huh, I'm not sure I'm good with this stuff...""",
-	CALI_SERVANTS_1_OPTION_1 = "Don't worry, you can do it",
-	CALI_SERVANTS_1_OPTION_2 = "There's first time for everything, you won't know until you try",
-	CALI_SERVANTS_1_OPTION_3 = "You shouldn't get discouraged right as we started",
+	CALI_SERVANTS_1_OPTION_1 = "Don't worry, you can do it.",
+	CALI_SERVANTS_1_OPTION_2 = "There's first time for everything, you won't know until you try.",
+	CALI_SERVANTS_1_OPTION_3 = "You shouldn't get discouraged right as we started.",
 	CALI_SERVANTS_2 = """— Okay, okay, I'm gonna try it. 
 
 After discussing it with the helpers, you are explained about general training for future servant girls which starts with figuring out the most talented aspects, dressing up, signing and formal language. Cali agrees to try this out.""",
-	CALI_SERVANTS_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her. """,
+	CALI_SERVANTS_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her.""",
 	CALI_SERVANTS_4 = """As she goes on a break, Cali spots a small cat moving through the backyard. Forgetting everything about the conduct, she tries to sprint to it but trips and falls due to her attire.
 
-— O...Ouch... Crap!
+— O-Ouch... Crap!
 
 Also forgetting to watch her tongue, she realized that her dress was torn because of the fall. Sadly, you'll have to pay for it. You decide to call it a day and make the wolf girl change back.""",
 	CALI_SERVANTS_5 = """Cali seems to be in a sorry state as she comes back to you.
 
-— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this. """,
-	CALI_SERVANTS_5_OPTION_1 = "You shouldn't give up just yet",
-	CALI_SERVANTS_5_OPTION_2 = "Maybe it isn't for you after all",
-	CALI_SERVANTS_6 = """{color=yellow|Amelia: — I saw your training, Cali is it? Nice to meet you.}
+— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this.""",
+	CALI_SERVANTS_5_OPTION_1 = "You shouldn't give up just yet.",
+	CALI_SERVANTS_5_OPTION_2 = "Maybe it isn't for you after all.",
+	CALI_SERVANTS_6 = """{color=yellow|Amelia: — I saw your training, Cali, is it? Nice to meet you.}
 
 {color=aqua|Cali: — Hello... Who are you?}
 
@@ -8914,10 +8929,10 @@ Cali gets visually discouraged hearing this, but Amelia does not stop there.
 
 {color=aqua|Cali: — [Master]! Sorry for taking time...}
 
-As she observes your reaction she starts smiling even more. """,
-	CALI_SERVANTS_8_OPTION_1 = "You look pretty",
+As she observes your reaction she starts smiling even more.""",
+	CALI_SERVANTS_8_OPTION_1 = "You look pretty.",
 	CALI_SERVANTS_8_OPTION_2 = "What was it?",
-	CALI_SERVANTS_8_OPTION_3 = "You seem somewhat different",
+	CALI_SERVANTS_8_OPTION_3 = "You seem somewhat different.",
 	CALI_SERVANTS_9 = """{color=yellow|Amelia: — He-he, so you notice it now? You don't need a complete attire change or a full makeup to emphasize your beauty. Some pose and expression training look a lot more natural for you. Well, that and a couple small woman secrets.}
 
 You notice how Cali now looks at Amelia with respect. In the end, encouraged with the results, Cali agrees to occasionally visit and learn from Amelia. As she walks outside, Amelia speaks to you.
@@ -8927,11 +8942,11 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali: Charm +10}""",
 	CALI_SEX_5 = """Near midday, you're engrossed in one form or another in the main hall. Cali trots up to you, the energy in her step identifying her long before she comes into view. Stopping short of you a respectful distance, she looked to you intently awaiting you to acknowledge her. After you look up at her she finally blurts out in an excited tone.
 
-— [Master]! Hey [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
+— [Master]! Hey, [Master] that food cart is back in front of the mansion. Their meat dumplings smell so good! A-and I was wondering if you could buy us some...
 
 You notice how Cali slightly lowered her voice, her hands slipping behind her back as a result of her training with Amelia. The posture was distracting to say the least.""",
-	CALI_SEX_5_OPTION_1 = "Since you asked so nicely, here is the coin. Get enough for everyone. (-100 Gold)",
-	CALI_SEX_5_OPTION_2 = "Sorry, we can't afford it right now. Perhaps next time",
+	CALI_SEX_5_OPTION_1 = "Since you asked so nicely, here is the coin. Get enough for everyone. (100 Gold)",
+	CALI_SEX_5_OPTION_2 = "Sorry, we can't afford it right now. Perhaps, next time.",
 	CALI_SEX_5_1 = """Cali gives you a small pout but refrains from protest.
 
 — I see, well, another time then.""",
@@ -8940,7 +8955,7 @@ You notice how Cali slightly lowered her voice, her hands slipping behind her ba
 The two of you eat in silence as you mull over the treat. Warm, soft, and expertly cooked you muse for a few moments about going outside yourself and seeing if you and the merchant can come to an agreement about deliveries of these treats.""",
 	CALI_SEX_7 = """Cali finishes her treat soon after you. She would look up, peering around the main hall. She notices that the two of you are alone. Taking the wrapper from your treats, she looks up at you now with a grateful, excited look.
 
-— Thanks [Master]. It was tasty. 
+— Thanks, [Master]. It was tasty. 
 
 The girl's face reddens a bit as she again looks around the room, she looks nervous before she speaks.
 
@@ -8957,9 +8972,9 @@ The girl continues to stroke your member, obviously having greatly benefited fro
 The girl would slowly pick up the speed she stroked you, until finally she leaned down, her mouth enveloping the head of your shaft.""",
 	CALI_SEX_10 = """Cali leaned down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she'd have to back off, looking up at you with a blush.
 
-— Huh, It's really big, jeez. I wonder if I can...
+— Huh, it's really big, jeez. I wonder if I can...
 
-Cali would now start to envelope the head of your shaft again, this time using her hand to still pump the base as she sucked on the head, occasionally pumping her mouth just a bit deeper. It was an amazing feeling as you just laid there, calming yourself as you put a mental note to thank Amelia for this. """,
+Cali would now start to envelope the head of your shaft again, this time using her hand to still pump the base as she sucked on the head, occasionally pumping her mouth just a bit deeper. It was an amazing feeling as you just laid there, calming yourself as you put a mental note to thank Amelia for this.""",
 	CALI_SEX_11 = """Working without complaint, and making the most sensual noises you'd heard come from the girl, you did your best to hold on. Fighting the building urge of release before finally hitching your breath as you start to cum.""",
 	CALI_SEX_12 = """To her credit even without much warning Cali keeps her lips sealed tightly around the head of your shaft. Her eyes surprised but her grip firm as you nearly came out of the seat. Soon panting in your position, you look down at the girl; her mouth slowly pulling off the head of your shaft as she keeps the cum there in her mouth. 
 
@@ -8969,51 +8984,51 @@ She looks up into your eyes a bit surprised now, the girl soon resolving herself
 As she confirms your reaction she quickly retreats from sight to her duties. """,
 	
 	#needs addition of color tags
-	CALI_HEIRLOOM_1 = """In the morning you look over a request for an audience: One in regards to your servant, Cali. After calling her over to you, you prepare to meet the visitor. """,
+	CALI_HEIRLOOM_1 = """In the morning you look over a request for an audience, one in regards to your servant, Cali. After calling her over to you, you prepare to meet the visitor.""",
 	CALI_HEIRLOOM_2 = """Cali becomes quiet on seeing the visitor, a middle aged human male.
 
-{color=aqua|Visitor: — So this is where you've been, Cali. }
+{color=aqua|Visitor: — So this is where you've been, Cali.}
 
 {color=yellow|Cali: — Uncle...}
 
-{color=aqua|Visitor: — I'd heard rumors that you'd taken residence inside one of the city's mansions.. I've come to return you home.}""",
+{color=aqua|Visitor: — I'd heard rumors that you'd taken residence inside one of the city's mansions. I've come to return you home.}""",
 	CALI_HEIRLOOM_3 = """{color=yellow|Cali: — No, I like it in [name]'s service.}
 
 {color=aqua|Uncle: — Have you ever considered your mother? She's been quite troubled since your disappearance.}
 
 {color=yellow|Cali: — ...}""",
-	CALI_HEIRLOOM_3_OPTION_1 = "I'm going to need an explanation",
-	CALI_HEIRLOOM_3_OPTION_2 = "If your mother misses you that much, you should go home",
-	CALI_HEIRLOOM_4_1 = """{color=aqua|Uncle: — Pardon me, Cali is the daughter of my sister. A few weeks ago she ran away from home. It seems you've offered her refuge, for that I thank you..
+	CALI_HEIRLOOM_3_OPTION_1 = "I'm going to need an explanation.",
+	CALI_HEIRLOOM_3_OPTION_2 = "If your mother misses you that much, you should go home.",
+	CALI_HEIRLOOM_4_1 = """{color=aqua|Uncle: — Pardon me, Cali is the daughter of my sister. A few weeks ago she ran away from home. It seems you've offered her refuge, for that I thank you.
 
 Uncle: — She's at that phase where she causes strife within the clan. I don't personally blame her for it.}
 
-{color=yellow|Cali: — It's not a phase! I'm not going back to the clan, Uncle. I'd rather join bandits.} """,
+{color=yellow|Cali: — It's not a phase! I'm not going back to the clan, uncle. I'd rather join bandits.} """,
 	CALI_HEIRLOOM_4_2 = """{color=yellow|Cali: — No, you don't understand. They don't need me there. They only want me because of the stupid traditions. 
 }
-{color=aqua|Uncle: — They're not "stupid" traditions, this is quite serious and you know it. }
+{color=aqua|Uncle: — They're not 'stupid' traditions, this is quite serious and you know it.}
 
 {color=yellow|Cali: — No, I'm staying here... I mean, if [name] is not against it.}""",
 	CALI_HEIRLOOM_4_OPTION_1 = "You can stay if you want to.",
-	CALI_HEIRLOOM_4_OPTION_2 = "I'm sorry but I'm not going against your family",
-	CALI_HEIRLOOM_FINISH = """{color=yellow|Cali: — T-that... Damn it! If you don't want me here, I'll just leave then. 
-}
+	CALI_HEIRLOOM_4_OPTION_2 = "I'm sorry but I'm not going against your family.",
+	CALI_HEIRLOOM_FINISH = """{color=yellow|Cali: — T-that... Damn it! If you don't want me here, I'll just leave then.}
+
 {color=aqua|Uncle: — I thank you for your cooperation. Then we will be on our way. }
 
 Cali soon leaves, never crossing your path again. Either from her being missing or not willing to let you find her.""",
-	CALI_HEIRLOOM_5 = """{color=aqua|Uncle: — I see... Perhaps it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.
-}
+	CALI_HEIRLOOM_5 = """{color=aqua|Uncle: — I see... Perhaps, it's really no use trying to convince you to return then. Very well, in that case return the heirloom sword you've stolen and I'll leave you be.}
+
 Cali's protest sinks abruptly upon hearing it.
 
 {color=yellow|Cali: — O-oh... Uh, can you give me some time? I don't have it right now...}
 
-{color=aqua|Uncle: — I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.}""",
+{color=aqua|Uncle: — I see. Very well, but I hope you do realize it's importance to us. I'll be waiting until then.}""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
 — Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
 
-— I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it. """,
-	CALI_HEIRLOOM_6_OPTION_1 = "Everyone makes mistakes",
+— I haven't really considered getting it back. Honestly, I think it's fake, or at least it doesn't work for me. Maybe it's because I'm a girl, or because I never really fit in there... Regardless, now I need to return it. It's my fault for taking it.""",
+	CALI_HEIRLOOM_6_OPTION_1 = "Everyone makes mistakes.",
 	CALI_HEIRLOOM_6_OPTION_2 = "Why did you decide to run away?",
 	CALI_HEIRLOOM_6_OPTION_3 = "Why is this heirloom important?",
 	CALI_HEIRLOOM_6_OPTION_4 = "Do you have any idea where it could be?",
@@ -9021,10 +9036,10 @@ Cali's protest sinks abruptly upon hearing it.
 	CALI_HEIRLOOM_6_2 = """Cali takes a long pause before she finally speaks up.
 
 — I'm not sure I belong within the clan at all, and I thought this would be better for me and them. I don't feel comfortable talking more about it yet.""",
-	CALI_HEIRLOOM_6_3 = """— I don't really know. The adults said it's a gift to our clan from the gods and will serve the next hero being born or something stupid like this. It didn't do a thing for me as I said. """,
+	CALI_HEIRLOOM_6_3 = """— I don't really know. The adults said it's a gift to our clan from the gods and will serve the next hero being born or something stupid like this. It didn't do a thing for me as I said.""",
 	CALI_HEIRLOOM_7 = """— Yes, the bandits that captured me were near a village. I can at least recognize the place. The locals might have an idea where the bandits migrated to.""",
-	CALI_HEIRLOOM_7_OPTION_1 = "Let's get your clan's sword then",
-	CALI_HEIRLOOM_7_OPTION_2 = "Hope you don't mind some company",
+	CALI_HEIRLOOM_7_OPTION_1 = "Let's get your clan's sword then.",
+	CALI_HEIRLOOM_7_OPTION_2 = "Hope you don't mind some company.",
 	CALI_HEIRLOOM_8_1 = """— You don't have to come with me, but I appreciate it. I'll feel safer knowing you'll be watching my back.""",
 	CALI_HEIRLOOM_8_2 = """Cali furiously shakes her head.
 
@@ -9039,16 +9054,16 @@ You look puzzled as you realize that he points at Cali, who does not take it wit
 
 {color=aqua|Farmer: — You think I'd trust a bandit?! Call the guards!}""",
 	CALI_FARMER_2_OPTION_1 = "Why do you say she is a bandit?",
-	CALI_FARMER_2_OPTION_2 = "This is my servant I can vouch for her",
-	CALI_FARMER_3 = """{color=aqua|Farmer: — She's a half-beast. In our lands most of them are either bandits, that or slaves and I see no leash on her. }
+	CALI_FARMER_2_OPTION_2 = "This is my servant I can vouch for her.",
+	CALI_FARMER_3 = """{color=aqua|Farmer: — She's a half-beast. In our lands most of them are either bandits, that or slaves, and I see no leash on her.}
 
 {color=yellow|Cali: — I'm telling you, I'm not a bandit, I'm a good girl!}
 
 The farmer gives her a long, measuring look before finally calming down.
 
-{color=aqua|Farmer: — Fine, but I'm gonna tell everyone about you. So if the raiders come after you leave, you'll make it into wanted lists. }""",
-	CALI_FARMER_3_OPTION_1 = "We are actually hunting for a certain bandit group",
-	CALI_FARMER_3_OPTION_2 = "If you've no love for bandits, perhaps you could help us",
+{color=aqua|Farmer: — Fine, but I'm gonna tell everyone about you. So if the raiders come after you leave, you'll make it into wanted lists.}""",
+	CALI_FARMER_3_OPTION_1 = "We are actually hunting for a certain bandit group.",
+	CALI_FARMER_3_OPTION_2 = "If you've no love for bandits, perhaps you could help us.",
 	CALI_FARMER_4_2 = """As you explain to the farmer about the bandits you are looking for, he seems to tolerate Cali a bit more but does not warm up by much.
 
 {color=aqua|Farmer: — Yeah, bandits are a plague alright. What do I get from helping you? They are nowhere around here. You know what? Since their last raid, my fence was ruined! How about you help me out?}
@@ -9058,13 +9073,13 @@ The farmer gives her a long, measuring look before finally calming down.
 The farmer ignores Cali's remark and continues trying to persuade you into helping him.
 
 {color=aqua|Farmer: — I need some lumber to repair it. You get me 200 Wood. I'll tell you where you can find them, since I overheard where they said they were headed off to.}""",
-	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence (-200 Wood)",
-	CALI_FARMER_4_OPTION_1_1 = "You can have the wood for your fence (-100 Wood)",
-	CALI_FARMER_4_OPTION_2 = "Your fence doesn't seem *that* bad. (Worker)",
-	CALI_FARMER_4_OPTION_3 = "We don't quite have that right now",
+	CALI_FARMER_4_OPTION_1 = "You can have the wood for your fence. (200 Wood)",
+	CALI_FARMER_4_OPTION_1_1 = "You can have the wood for your fence. (100 Wood)",
+	CALI_FARMER_4_OPTION_2 = "[Worker] Your fence doesn't seem 'that' bad.",
+	CALI_FARMER_4_OPTION_3 = "We don't quite have that right now.",
 	CALI_FARMER_4_3 = """The farmer gives you a scrutinizing look realizing that he wasn't able to fool you. 
 
-{color=aqua|Farmer: — Damn, fine, I thought a city [boy] like you would have no idea... I'll manage with 100 pieces of wood. }
+{color=aqua|Farmer: — Damn, fine, I thought a city [boy] like you would have no idea... I'll manage with 100 pieces of wood.}
 
 You notice that Cali is looking at you with greater respect.""",
 	CALI_FARMER_4_1 = """You find the Farmer you met before. His mood seems to be as bad as ever.""",
@@ -9072,14 +9087,14 @@ You notice that Cali is looking at you with greater respect.""",
 
 {color=yellow|Cali: — Are you gonna tell us now?}
 
-{color=aqua|Farmer: — Yeah, yeah... The bandits were here around the time you asked. They made camp in the forest but after some time, the soldiers' patrols spooked them. They retreated to the hidden cave down the river. They have been laying low recently from what I gather. }
+{color=aqua|Farmer: — Yeah, yeah... The bandits were here around the time you asked. They made camp in the forest, but after some time the soldiers' patrols spooked them. They retreated to the hidden cave down the river. They have been laying low recently from what I gather.}
 
 With the help of a farmer you mark location on your map and finally move on. It's safe to assume the bandits will try to put up a fight so you better be prepared.""",
 	CALI_FARMER_6 = """{color=aqua|Farmer: — Then don't waste my time. I know you city folk have enough money on you. You help me, I help you. Until then.}""",
 	CALI_BANDITS_1 = """— I think these are the ones. They passed me onto those slavers that you rescued me from. Can't wait to settle the score!""",
-	CALI_BANDITS_1_OPTION_1 = "This shouldn't take long",
-	CALI_BANDITS_1_OPTION_2 = "Don't rush ahead, it might be dangerous",
-	CALI_BANDITS_1_OPTION_3 = "They'll be punished for hurting you",
+	CALI_BANDITS_1_OPTION_1 = "This shouldn't take long.",
+	CALI_BANDITS_1_OPTION_2 = "Don't rush ahead, it might be dangerous.",
+	CALI_BANDITS_1_OPTION_3 = "They'll be punished for hurting you.",
 	CALI_BANDITS_2_1 = "— Let's finish this and I'll finally be free.",
 	CALI_BANDITS_2_2 = "— Right, sorry, I learned my lesson last time.",
 	CALI_BANDITS_2_3 = """Cali visibly blushes at your protective statement but only nods in agreement.
@@ -9087,83 +9102,83 @@ With the help of a farmer you mark location on your map and finally move on. It'
 — Y-yeah, let's do it...""",
 	CALI_BANDITS_3 = """As the group leader collapses to the ground, you tie him up to start the interrogation. 
 
-{color=aqua|Group Leader: — What have you cunts come here for?? What do you need from me?}
+{color=aqua|Group Leader: — What have you cunts come here for? What do you need from me?}
 
 {color=aqua|Cali: — Remember me?}
 
 {color=aqua|Group Leader: — Why would I remember some half-beast bitch?}""",
 	CALI_BANDITS_4 = """Cali angrily kicks the bound bandit in the stomach eliciting a groan.
 
-{color=yellow|Cali: — You sold me to slavers! After taking my things too. }
+{color=yellow|Cali: — You sold me to slavers! After taking my things too.}
 
 {color=aqua|Group Leader: — So what? Weren't you the one who jumped us? Yelling about how you're gonna become a famous hero.}
 
 {color=yellow|Cali: — T-that's not the point! I want my stuff back. The sword you took from me!}
 
 {color=aqua|Group Leader: — And I want the rebel princess to suck me off.}""",
-	CALI_BANDITS_4_OPTION_1 = "Kick him a few more times, he's earned it",
-	CALI_BANDITS_4_OPTION_2 = "You better not make her angry or I'm not going to protect you",
-	CALI_BANDITS_5_1 = """Cali happily complies to your request, until the bandit starts begging her to stop..""",
+	CALI_BANDITS_4_OPTION_1 = "Kick him a few more times, he's earned it.",
+	CALI_BANDITS_4_OPTION_2 = "You better not make her angry or I'm not going to protect you.",
+	CALI_BANDITS_5_1 = """Cali happily complies to your request, until the bandit starts begging her to stop.""",
 	CALI_BANDITS_5_2 = """Cali prepares to continue with her justice when the leader decides to give in.""",
 	CALI_BANDITS_5 = """{color=aqua|Group Leader: — Alright, fine, that's enough! I don't have it anyway! Some collector from Aliron paid more than enough coin for it!}
 
 {color=yellow|Cali: — Dammit... Who was it?}
 
-{color=aqua|Group Leader: — No clue, but he surely was rich. Maybe the richest fucker out there; had a beard and like a dozen bodyguards... That's all I know. That's all you came for?}""",
-	CALI_BANDITS_5_OPTION_1 = "We can go now",
-	CALI_BANDITS_5_OPTION_2 = "Cali, you can have some more fun",
-	CALI_BANDITS_5_OPTION_3 = "We'll bring you to justice",
+{color=aqua|Group Leader: — No clue, but he surely was rich. Maybe the richest fucker out there. Had a beard and like a dozen bodyguards... That's all I know. That's all you came for?}""",
+	CALI_BANDITS_5_OPTION_1 = "We can go now.",
+	CALI_BANDITS_5_OPTION_2 = "Cali, you can have some more fun.",
+	CALI_BANDITS_5_OPTION_3 = "We'll bring you to justice.",
 	CALI_BANDITS_6_1 = """You leave the tied bandit who stays silent as he likely expects to eventually untie himself.""",
 	CALI_BANDITS_6_2 = """{color=yellow|Cali: — Oh yeah, I do think I earned some payback...}
 
-Cali proceeds to exact her revenge on the helpless bandit for a few more minutes until his face is nearly unrecognizable. Slightly tired, Cali, joins you as you leave.""",
+Cali proceeds to exact her revenge on the helpless bandit for a few more minutes until his face is nearly unrecognizable. Slightly tired, Cali joins you as you leave.""",
 	CALI_BANDITS_6_3 = """{color=aqua|Group Leader: — No, wait, we can talk about this!}
 
 {color=yellow|Cali: — Right. He's gotta answer for what I went through!}
 
-Ignoring the bandit's pleas, you gag his mouth and deliver him to a nearby settlement's local guards..""",
-	CALI_BANDITS_7 = """{color=yellow|Cali: — Can we even find it? I was sure they would have it but now...}""",
+Ignoring the bandit's pleas, you gag his mouth and deliver him to a nearby settlement's local guards.""",
+	CALI_BANDITS_7 = """{color=yellow|Cali: — Can we even find it? I was sure they would have it, but now...}""",
 	CALI_BANDITS_7_OPTION_1 = "We'll go to the city and see what we can do.",
-	CALI_BANDITS_7_OPTION_2 = "There shouldn't be so many rich collectors that we can't find it",
+	CALI_BANDITS_7_OPTION_2 = "There shouldn't be so many rich collectors that we can't find it.",
 	CALI_BANDITS_8 = """{color=yellow|Cali: — Right, I shouldn't give up yet.}""",
-	CALI_WILLIAM_INIT_OPTION = "Search for Collector", 
-	CALI_WILLIAM_INIT = """After asking around, you have some luck learning that the most likely person to be the collector you are looking for, would be William. The man was one of the noble houses and retained his position even after the coup.
+	CALI_WILLIAM_INIT_OPTION = "*Search for Collector*",
+	CALI_WILLIAM_INIT = """After asking around, you have some luck learning that the most likely person to be the collector you are looking for would be William. The man was one of the noble houses and retained his position even after the coup.
 
 {color=yellow|Cali: — Let's go visit this guy, hopefully he still has it.}""",
-	CALI_WILLIAM_OPTION = "Visit William's Mansion", 
-	CALI_WILLIAM_REFUSE = """Your attempt to set up a visit with William has failed. The servants hinted at you being too insignificant to spend their Master's time on you. Perhaps, you'll have to gain more renown before returning...""",
+	CALI_WILLIAM_OPTION = "*Visit William's Mansion*", 
+	CALI_WILLIAM_REFUSE = """Your attempt to set up a visit with William has failed. The servants hinted at you being too insignificant to spend their master's time on you. Perhaps, you'll have to gain more renown before returning...""",
 	CALI_WILLIAM_1 = """You make your way inside the man's estate. Right as you make it inside, the wealth is so apparent that it makes you wonder if you could even dream of achieving something similar. Rows of servants politely greet you and guide you to the owner. 
 
-After a brief acquaintance, you get to the business and explain what you came for. 
+After a brief acquaintance, you get to the business and explain what you came for.
 
-{color=aqua|William: — I'm glad you've visited, Mayor. What do I owe to this? }""",
-	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant",
+{color=aqua|William: — I'm glad you've visited, Mayor. What do I owe to this?}""",
+	CALI_WILLIAM_1_OPTION_1 = "I heard you've purchased something that belongs to my servant.",
 	CALI_WILLIAM_1_OPTION_2 = "There was an item sold to you by bandits.", 
 	CALI_WILLIAM_2 = """Cali timidly retells the events she went through. You can notice that she's rather intimidated by the splendor of this manor. 
 
-{color=aqua|William: — Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5,000 gold. }
+{color=aqua|William: — Ah, yes, that sword. It has exquisite artwork but is of poor quality. It's true, I purchased it with the goal of trading it up at some point. And since you've come for it, my offer will be 5.000 gold. }
 
 {color=yellow|Cali: — You're kidding me!? That price is insane!}
 
 Cali blurts out in anger but the owner doesn't seem startled in the slightest.""",
-	CALI_WILLIAM_2_OPTION_1 = "Cali's right, it is too expensive",
-	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide", 
-	CALI_WILLIAM_3 = """— Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money so I can be patient enough to get the best offer for it.
+	CALI_WILLIAM_2_OPTION_1 = "Cali's right, it is too expensive.",
+	CALI_WILLIAM_2_OPTION_2 = "That's for seller to decide.", 
+	CALI_WILLIAM_3 = """{color=aqua|William: — Indeed it is priced at a premium, but there's no other quite like it, is there? I'm also in no real need for money, so I can be patient enough to get the best offer for it.}
+	
+	{color=aqua|William: — But if you aren't able to provide such a sum... I guess, I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.}
 
-{color=aqua|William: — But if you aren't able to provide such a sum... I guess I could show some mercy. This girl, Cali, right? I could agree to let her be my servant for a week.}
-
-William accentuates the word 'Servant' making it clear that the service itself will have little to do with labor. 
+William accentuates the word 'servant' making it clear that the service itself will have little to do with labor. 
 
 {color=aqua|William: — You can be sure she'll be treated quite well. After all, you can see that my home is something worthy of a king's residence.}
 
-As Cali is speechless to the proposition, But as her master it falls to you to decide.""",
+As Cali is speechless to the proposition, but as her [Master] it falls to you to decide.""",
 	CALI_WILLIAM_3_1 = """Once again you and Cali visit the man's mansion to trade for Cali's heirloom. 
 
-{color=aqua|William: — Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place? }""",
+{color=aqua|William: — Let's skip the pleasantries this time. You've brought the money? Or will the girl be staying at my place?}""",
 	CALI_WILLIAM_3_2 = """""",
-	CALI_WILLIAM_3_OPTION_1 = "We could discuss it",
-	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay", 
-	CALI_WILLIAM_3_OPTION_3 = "I shall return later", 
+	CALI_WILLIAM_3_OPTION_1 = "We could discuss it.",
+	CALI_WILLIAM_3_OPTION_2 = "I'd rather pay.", 
+	CALI_WILLIAM_3_OPTION_3 = "I shall return later.", 
 	CALI_WILLIAM_4 = """William stays quiet, waiting for your proposal.""", 
 	CALI_WILLIAM_4_OPTION_1 = "She is not really worth it. I might offer you a much better servant in exchange.",
 	CALI_WILLIAM_4_OPTION_2 = "Cali is of a much higher caliber than you think.", 
@@ -9171,24 +9186,24 @@ As Cali is speechless to the proposition, But as her master it falls to you to d
 	CALI_WILLIAM_4_OPTION_4 = "Maybe this is too early to decide on just yet...", 
 	CALI_WILLIAM_5 = """William considers the proposal for a moment then nods.
 
-{color=aqua|William: — Very well, she does not seem all that refined I suppose.}
+{color=aqua|William: — Very well, she does not seem all that refined, I suppose.}
 
-Cali's face is soon one of anger, but she wisely keeps quiet..
+Cali's face is soon one of anger, but she wisely keeps quiet.
 
-{color=aqua|William: — Then, I'd like to know of the servant you will be trading in her place. }""", 
+{color=aqua|William: — Then, I'd like to know of the servant you will be trading in her place.}""", 
 	CALI_WILLIAM_5_OPTION_2 = "*Reconsider*", 
-	CALI_WILLIAM_6 = """— Fine by me. It will be waiting for you unless another makes an offer. """, 
+	CALI_WILLIAM_6 = """— Fine by me. It will be waiting for you unless another makes an offer.""", 
 	CALI_WILLIAM_7 = """As you make it out of the mansion, Cali stops you. Her voice is low and she's clearly uncomfortable with the situation.
 
-{color=yellow|Cali: — H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all. }""",
-	CALI_WILLIAM_7_OPTION_1 = "I'll consider it",
-	CALI_WILLIAM_7_OPTION_2 = "I won't let him lay a hand on you even if you are okay with it", 
+{color=yellow|Cali: — H-hey, I can't ask you for that much, and this is my fault in the first place... I think I should take the deal, it's just a week after all.}""",
+	CALI_WILLIAM_7_OPTION_1 = "I'll consider it.",
+	CALI_WILLIAM_7_OPTION_2 = "I won't let him lay a hand on you even if you are okay with it.", 
 	CALI_WILLIAM_8_1 = """Cali nods and you quietly continue on your way back home.""",
 	CALI_WILLIAM_8_2 = """— Hey now, you do care for me. I'm not really used to this... but thanks.
 
 Cali blushes to your sudden protective statement, her opinion of you notably improves.""",
 	CALI_WILLIAM_9 = """{color=aqua|William: — Very well, this will suffice. In this case, pleasure doing business with you.}""",
-	CALI_REPLACEMENT_RETURNS = """At the arranged date, the [name], which you sent to William returns back to your mansion. """, 
+	CALI_REPLACEMENT_RETURNS = """At the arranged date, the [name], which you sent to William returns back to your mansion.""", 
 	CALI_WILLIAM_10 = """Cali meekly nods at your decision and as you prepare the papers. She will stay at William's manor for now while you return home.""", 
 	CALI_RETURNS = """At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay.""", 
 	CALI_WILLIAM_11_1 = """The man takes another long look at Cali as she catches on to the implication, doing her best to appear femininely attractive. 
@@ -9196,16 +9211,16 @@ Cali blushes to your sudden protective statement, her opinion of you notably imp
 {color=aqua|William: — That... Might be true now that you point it out. Why would you bring this up now exactly?}""", 
 	CALI_WILLIAM_11_2 = """William takes another long look at Cali but she does not seem to catch on with your intent, giving him a hostile look.
 
-{color=aqua|William: — I'm not sure I can agree with you. 7 days or 5,000 gold, my offer stays unchanged.}""", 
-	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3,000 gold for a week with her.",
-	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days",
+{color=aqua|William: — I'm not sure I can agree with you. 7 days or 5.000 gold, my offer stays unchanged.}""", 
+	CALI_WILLIAM_11_1_OPTION_1 = "I want the sword and 3.000 gold for a week with her.",
+	CALI_WILLIAM_11_1_OPTION_2 = "She shall only stay for 3 days.",
 	CALI_WILLIAM_12 = """The man stays quiet for some time as he deliberately inspects the wolf-girl. Finally he relents.
 
 {color=aqua|William: — Very well, if your assessment is correct of her and her skills this will be well worth it.}
 
 You take Cali aside and explain to her that this is her duty for now. 
 
-{color=yellow|Cali: — Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards... }
+{color=yellow|Cali: — Dammit! Why do I have to serve this guy! Ugh, if it wasn't for those bastards...}
 
 In the end she accepted that she had to deal with the consequences of her own actions.""", 
 	CALI_WILLIAM_13 = """As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.""", 
@@ -9215,14 +9230,14 @@ In the end she accepted that she had to deal with the consequences of her own ac
 — I can't believe you really got it back! With this I'll be completely free.
 
 — Uhm... Can I have it back? Please?""",
-	CALI_GRAT_1_OPTION_1 = "Sure, this was for you after all",
-	CALI_GRAT_1_OPTION_2 = "I think, you owe me something in return", 
-	CALI_GRAT_1_OPTION_3 = "I've decided I'm going to keep it for myself", 
+	CALI_GRAT_1_OPTION_1 = "Sure, this was for you after all.",
+	CALI_GRAT_1_OPTION_2 = "I think, you owe me something in return.", 
+	CALI_GRAT_1_OPTION_3 = "I've decided I'm going to keep it for myself.", 
 	CALI_GRAT_2 = """— Thank you! You've done so much for me...
 
 After a moment of consideration Cali moves in closer to you and speaks with a hint of flirt in her voice. 
 
-— Say, [Master], Maybe I could do something in return for you? It's not really comparable, but I want to return the favor.""",
+— Say, [Master], maybe I could do something in return for you? It's not really comparable, but I want to return the favor.""",
 	CALI_GRAT_2_OPTION_1 = "I surely can't turn down such an offer.",
 	CALI_GRAT_2_OPTION_2 = "I'm not really interested.", 
 	CALI_GRAT_3 = """— Aah, is that so? That's a shame.
@@ -9230,27 +9245,27 @@ After a moment of consideration Cali moves in closer to you and speaks with a hi
 Cali is visibly disappointed but does not insist. She takes the heirloom and after thanking you once again leaves to her room for preparations.""",
 	CALI_GRAT_4 = """Cali quickly realizes your intention and smiles.
 
-— Y-yeah, I'm not sure I'll be able to pay it all back, but I gotta start somewhere...?""",
+— Y-yeah, I'm not sure I'll be able to pay it all back, but I gotta start somewhere..?""",
 	CALI_GRAT_5 = """Cali looks at you shocked, her words tinged with disbelief.
 
 — No way, you aren't serious? You can't be...""",
-	CALI_GRAT_5_OPTION_1 = "I'm just kidding",
-	CALI_GRAT_5_OPTION_2 = "I'm serious", 
+	CALI_GRAT_5_OPTION_1 = "I'm just kidding.",
+	CALI_GRAT_5_OPTION_2 = "I'm serious.", 
 	CALI_GRAT_6 = """Cali looks like she's about to burst into tears but at the last moment she grits her teeth.
 
 — Screw you! Idiot! I don't need you or this damn thing! 
 
-Before you are able to do anything she bursts out of the mansion disappearing into the streets. It seems you aren't likely to see her again """,
+Before you are able to do anything she bursts out of the mansion disappearing into the streets. It seems you aren't likely to see her again.""",
 	CALI_GRAT_7 = """— That was amazing.
 
 As Cali lies next to you, she turns her head and asks with a somewhat nervous voice much unlike her.
 
-— [Master]... I wanna ask you, what do you think of me?.. What am I to you?
+— [Master]... I wanna ask you, what do you think of me..? What am I to you?
 
 As she looks into your eyes you realize that she's waiting for an answer.""",
-	CALI_GRAT_7_OPTION_1 = "Lover",
-	CALI_GRAT_7_OPTION_2 = "Friend", 
-	CALI_GRAT_7_OPTION_3 = "Daughter", 
+	CALI_GRAT_7_OPTION_1 = "Lover.",
+	CALI_GRAT_7_OPTION_2 = "Friend.", 
+	CALI_GRAT_7_OPTION_3 = "Daughter.", 
 	CALI_GRAT_8_1 = """— I... I love you too, [Master]. Feels a bit weird to announce it now after we just did it... But I'm happy I did it with you. Oh, and that you feel the same.
 
 Cali buries her face into your side and you decide to let her rest for today.""",
@@ -9264,54 +9279,54 @@ Cali falls silent, apparently disappointed with your answer. After a couple minu
 The wolf-girl affectionately savors your new nickname for a few moments. 
 
 — Daddy, did you know that wolves have lots of stamina? I wanna do it again...""",
-	CALI_SWORD_RETURN_INIT = "Let's return your sword",
-	CALI_SWORD_RETURN_1 = """— Right. I've tried it but it still feels like a big useless lump of iron. 
+	CALI_SWORD_RETURN_INIT = "Let's return your sword.",
+	CALI_SWORD_RETURN_1 = """— Right. I've tried it, but it still feels like a big useless lump of iron. 
 
 By the look of it, Cali was completely right. The heirloom sword did not feel like a proper weapon and could pass as a ritual tool at best.""",
-	CALI_SWORD_RETURN_1_OPTION_1 = "Perhaps it's just not time yet",
-	CALI_SWORD_RETURN_1_OPTION_2 = "It does look like a fraud",
+	CALI_SWORD_RETURN_1_OPTION_1 = "Perhaps it's just not time yet.",
+	CALI_SWORD_RETURN_1_OPTION_2 = "It does look like a fraud.",
 	CALI_SWORD_RETURN_2 = """Cali shrugs in defeat and puts it away.
 
 — Well, let's return it and this will be over. My uncle should be staying in a nearby tavern.""",
 	CALI_SWORD_RETURN_3 = """You find Cali's uncle alone in a tavern room. The man looks troubled but becomes more active when he sees you.
 
-{color=yellow|Cali: — I've got the heirloom. It wasn't easy but I managed.}
+{color=yellow|Cali: — I've got the heirloom. It wasn't easy, but I managed.}
 
-{color=aqua|Uncle: — 'Good, but I have bad news... Soon after I reported back that I found you, I received a message. It seems Hector has seized the power over the current head and he took your mother hostage. }
+{color=aqua|Uncle: — Good, but I have bad news... Soon after I reported back that I found you, I received a message. It seems Hector has seized the power over the current head and he took your mother as hostage.}
 
 {color=yellow|Cali: — Wha-}
 
 Cali freezes in place not knowing what to do. """,
 	CALI_SWORD_RETURN_3_OPTION_1 = "Who's Hector?",
 	CALI_SWORD_RETURN_3_OPTION_2 = "What exactly is going on?",
-	CALI_SWORD_RETURN_4 = """{color=aqua|Uncle: — I guess I should explain. You see, in our clan there's a hereditary line of heroic leaders, blessed by gods. Those who are born into the line are expected to lead and protect it. Cali's mother belonged to it and she had to give birth to the next heir. However...}
+	CALI_SWORD_RETURN_4 = """{color=aqua|Uncle: — I guess, I should explain. You see, in our clan there's a hereditary line of heroic leaders, blessed by gods. Those who are born into the line are expected to lead and protect it. Cali's mother belonged to it and she had to give birth to the next heir. However...}
 
 {color=yellow|Cali: — I was born, — Cali proclaimed with unhindered reproach.}
 
-{color=aqua|Uncle: — Yes, Cali was born out of wedlock. Her mother refused to give up on her and we never learned who her father could be. Still, she was accepted into the clan, but of course not everyone was happy about it. Her mother was expected to marry and have her next child become an heir, however she could not conceive again and her husband abandoned them before eventually disappearing. 
+{color=aqua|Uncle: — Yes, Cali was born out of wedlock. Her mother refused to give up on her and we never learned who her father could be. Still, she was accepted into the clan, but of course not everyone was happy about it. Her mother was expected to marry and have her next child become an heir, however she could not conceive again and her husband abandoned them before eventually disappearing.
 
-Uncle: — So after that, it was decided that Cali is needed to fulfill that role and give us the next heir. It was a difficult decision, especially given her nature, but this is preferable to having no heir at all and ultimately this is a fate decided by gods.}""",
+Uncle: — So, after that it was decided that Cali is needed to fulfill that role and give us the next heir. It was a difficult decision, especially given her nature, but this is preferable to having no heir at all and ultimately this is a fate decided by gods.}""",
 	CALI_SWORD_RETURN_5 = """{color=aqua|Uncle: — Hector, her expected partner, comes from the second family which is in line to become clan leaders themselves. So it was decided upon...}
 
 {color=yellow|Cali: — Me, becoming his wife, so our child would be the next worthy heir or something stupid like that.}
 
 {color=aqua|Uncle: — Yes, that was the idea. But now he just wants to have the sword for himself, it seems.}""",
-	CALI_SWORD_RETURN_5_OPTION_1 = "Maybe there was a misunderstanding",
-	CALI_SWORD_RETURN_5_OPTION_2 = "Not a good idea to give it to him",
+	CALI_SWORD_RETURN_5_OPTION_1 = "Maybe there was a misunderstanding.",
+	CALI_SWORD_RETURN_5_OPTION_2 = "Not a good idea to give it to him.",
 	CALI_SWORD_RETURN_6 = """Cali gives off a troubled vibe, clearly the situation has put a strain on her.
 
 {color=aqua|Uncle: — Now that your mother is a hostage, there's no option but to return the heirloom to him. Even though I hate it, what option do we really have left?}
 
 {color=yellow|Cali: — ...I should go. Even if we weren't close, she's still my mother.}
 
-{color=aqua|Uncle: — At least have him go with you, he looks capable..}""",
-	CALI_SWORD_RETURN_6_OPTION_1 = "Don't worry, I'll come with you",
-	CALI_SWORD_RETURN_6_OPTION_2 = "Since there's nothing better to do I'll tag along ",
+{color=aqua|Uncle: — At least have [him] go with you, [he] looks capable..}""",
+	CALI_SWORD_RETURN_6_OPTION_1 = "Don't worry, I'll come with you.",
+	CALI_SWORD_RETURN_6_OPTION_2 = "Since there's nothing better to do, I'll tag along.",
 	CALI_SWORD_RETURN_7 = """Cali looks warmly at you and nods. 
 
 {color=aqua|Uncle: — Okay, make yourself preparations and we'll depart to our home shortly.}""",
-	CALI_HECTOR_INIT = "Follow Cali",
-	CALI_HECTOR_1 = """As you come to the Clan's village, you follow Cali from behind as she carries her sword holding it close to the chest. Your visit has been anticipated and many people start to gather observing from a distance. 
+	CALI_HECTOR_INIT = "*Follow Cali*",
+	CALI_HECTOR_1 = """As you come to the clan's village, you follow Cali from behind as she carries her sword holding it close to the chest. Your visit has been anticipated and many people start to gather observing from a distance. 
 
 Soon a group of armed men come out in an attempt to greet you. Judging from Cali's reaction, it is headed by Hector. A bit behind them you spot a lone woman being watched over by a couple of other guards realizing that it should be Cali's mother.""",
 	CALI_HECTOR_2 = """As Cali moves ahead, you are being stopped by a few guards.
@@ -9321,7 +9336,7 @@ Soon a group of armed men come out in an attempt to greet you. Judging from Cali
 {color=yellow|Cali: — You can see I'm quite fine.}""",
 	CALI_HECTOR_3 = """{color=aqua|Hector: — Not that I care. You've brought what you've stolen?}
 
-{color=yellow|Cali: — I didn't steal it. It belonged to me. }
+{color=yellow|Cali: — I didn't steal it. It belonged to me.}
 
 {color=aqua|Hector: — Hmph. Now pass it.}
 
@@ -9337,52 +9352,52 @@ Cali tensed, being reluctant to part with the sword.""",
 
 To his surprise, Cali refused to let it go. Instead she was stubbornly holding fast against the much larger man.
 
-{color=aqua|Hector: — You little bitch, who do you think you are!}
+{color=aqua|Hector: — You little bitch, who do you think you are?!}
 
 {color=yellow|Cali: — I won't surrender it to an evil man like you!}""",
-	CALI_HECTOR_6 = """Despite everything going on, no one attempts to intervene; unsure if this is also the will of a higher being. Enraged by her words, Hector uses his free hand to draw his sword as Cali's eyes widen in surprise. 
+	CALI_HECTOR_6 = """Despite everything going on, no one attempts to intervene, unsure if this is also the will of a higher being. Enraged by her words, Hector uses his free hand to draw his sword as Cali's eyes widen in surprise. 
 
-As his blade is brought down, Cali is unable to escape as she's holding on to her own sword, the blade useless. """,
+As his blade is brought down, Cali is unable to escape as she's holding on to her own sword, the blade useless.""",
 	CALI_HECTOR_7 = """*Slash*
 
-Cali instinctively closed her eyes only to realize she was unharmed. Her mother however fell beside her, cut down by Hector's blade..
+Cali instinctively closed her eyes only to realize she was unharmed. Her mother however fell beside her, cut down by Hector's blade.
 
 To everyone's shock, she dashed in to stop Hector who now backed away, enraged at the intervention.
 
-{color=aqua|Hector: — Dumb bitch! This is all your fault. }
+{color=aqua|Hector: — Dumb bitch! This is all your fault.}
 
-Cali is speechless as her emotions take hold of her. The sword acted as a natural extension in her hand as she attacked Hector in retribution. Despite her training she still was far from a capable fencer, yet her sword shined brightly as she pressed the attack. """,
+Cali is speechless as her emotions take hold of her. The sword acted as a natural extension in her hand as she attacked Hector in retribution. Despite her training she still was far from a capable fencer, yet her sword shined brightly as she pressed the attack.""",
 	CALI_HECTOR_8 = """Sorely pressed, Hector addressed the soldiers loyal to him in a feeble attempt to bring the situation under control.
 
 {color=aqua|Hector: — What are you waiting for? Cut her down!}
 
 With Cali being outnumbered it falls to you to even the odds.""",
-	CALI_FINALE_1 = """With his men defeated, Hector raises his sword in defense as Cali strikes. The block is useless as his sword shatters on contact like another miracle. Still enraged, Cali delivers another blow that cleaves through the man's armor, making him fall in defeat;a terrified look showing over his face.
+	CALI_FINALE_1 = """With his men defeated, Hector raises his sword in defense as Cali strikes. The block is useless as his sword shatters on contact like another miracle. Still enraged, Cali delivers another blow that cleaves through the man's armor, making him fall in defeat, a terrified look showing over his face.
 
 However, the girl's eyes show no intention of relenting...""",
-	CALI_FINALE_1_OPTION_1 = "Stop her",
-	CALI_FINALE_1_OPTION_2 = "Let her kill him",
+	CALI_FINALE_1_OPTION_1 = "*Stop her*",
+	CALI_FINALE_1_OPTION_2 = "*Let her kill him*",
 	CALI_FINALE_2_1 = """You call out to Cali before she deals the finishing blow. You see her shaking as the edge of the sword rests mere inches from his neck. Slowly she regains her senses, moving away from Hector as he loses consciousness.""",
-	CALI_FINALE_2_2 = """You decide it's not your place to interfere as Cali deals the finishing blow; the sword tumbling out of her hands a moment later. """,
+	CALI_FINALE_2_2 = """You decide it's not your place to interfere as Cali deals the finishing blow. The sword tumbling out of her hands a moment later.""",
 	CALI_FINALE_3 = """With the battle over, Cali quickly moves to her mother's body. To her surprise she's still breathing, but the size of her wound leaves no question about the lethality of her injury.
 
-{color=yellow|Cali: — Mother!.. Mom! Please, you can't die!}
+{color=yellow|Cali: — Mother..! Mom! Please, you can't die!}
 
-{color=aqua|Mother: — Cali, you've really grown up... I knew... What I was doing... What would happen to me...But I'm glad you're safe... }
+{color=aqua|Mother: — Cali, you've really grown up... I knew... What I was doing... What would happen to me... But I'm glad you're safe... }
 
-{color=yellow|Cali: — ..Glad? What are you talking about?} """,
-	CALI_FINALE_4 = """{color=aqua|Mother: — Don't you... see it? You *are* one of the chosen... So it was fate all along... I've made many mistakes... in my lifetime... But protecting you was not one of them... }
+{color=yellow|Cali: — ...Glad? What are you talking about?} """,
+	CALI_FINALE_4 = """{color=aqua|Mother: — Don't you... see it? You *are* one of the chosen... So it was fate all along... I've made many mistakes... in my lifetime... But protecting you was not one of them...}
 
 Cali had no words to reply as tears welled up in her eyes. With a single stroke, her mother brushed her cheek.""",
-	CALI_FINALE_5 = """After a few days of grieving, Cali seems ready to return with you. She refused to take her place as the next clan leader and after all that has happened it's probably for the best. 
+	CALI_FINALE_5 = """After a few days of grieving, Cali seems ready to return with you. She refused to take her place as the next clan leader, and after all that has happened it's probably for the best. 
 
-— You know, [Master], I think I understood what mom meant by that. I never really thought of her as a caring parent, but getting rid of me would have been a lot easier for her... 
+— You know, [Master], I think I understood what mom meant by that. I never really thought of her as a caring parent, but getting rid of me would have been a lot easier for her...
 
 — But I'd never come to that conclusion without you, [Master]. I want to thank you for that... Now that I'm truly free. You don't mind having me around, right?""",
-	CALI_FINALE_5_OPTION_1 = "Don't get so serious now, it's unlike you",
-	CALI_FINALE_5_OPTION_2 = "You've surely matured",
-	CALI_FINALE_5_OPTION_3 = "It's been a mutual benefit",
-	CALI_FINALE_6_1 = """— Ha-ha, you think? I guess I better go punish some bandits to relax. I mean, we...""",
+	CALI_FINALE_5_OPTION_1 = "Don't get so serious now, it's unlike you.",
+	CALI_FINALE_5_OPTION_2 = "You've surely matured.",
+	CALI_FINALE_5_OPTION_3 = "It's been a mutual benefit.",
+	CALI_FINALE_6_1 = """— Ha-ha, you think? I guess, I better go punish some bandits to relax. I mean, we...""",
 	CALI_FINALE_6_3 = """— W-what are you thinking about? You know, you should be careful, as I'm still in line to be the next heir's mother... although, somehow I feel a lot less stressed about it.""",
 	
 	CALI_GRAT_SEX_1 = """Cali trembles as you lift her up now, her small frame easy to carry as you position her now over your shaft, eyes locking with hers. There is a slight tremble to her, a panting motion of her figure as you grasp tightly on the female's hips now, soon starting to press at her. 
@@ -9406,7 +9421,7 @@ You could slow down and take your time, enjoy her a bit longer now, but her whim
 
 You take your time with this, soft whimpers coming from Cali's mouth, though it's obvious she's trying to suppress them.  As you continue your grinding it's clear by her shaking that she's nervous, the gulp the girl makes audible as she looks up at you, her eyes wide. 
 
-— [Master] I'm... ok I'm ready...
+— [Master], I'm... ok, I'm ready...
 
 You feel a bit of pride swell in you as the girl is being so brave for you, serving your needs even with her own fears.  After a few more minutes of grinding both of you are panting, your eyes locking for a brief moment as you start to press now, drawing louder whimpers from the half-wolf as you start to press into her body, her eyes closed as you take her slowly. """,
 	CALI_GRAT_SEX_ALTER_2 = """Cali's legs squeeze tight around you as you find yourself half inside of her now, her eyes closed as she's clenched around your shaft like a vice.  The squeezing only would drive you on as you grip her hips, pushing deep into her until your hips and hers were pressed against each other, the whimpers from the teens mouth clearly audible.
@@ -9421,7 +9436,7 @@ After such an effort on her part it'd be an understatement to say you were pleas
 	CALI_GRAT_SEX_ALTER_4 = """
 Everything is quiet for a few moments as you hold her there, her breath coming out in ragged pants before she sneaks a look at you.  
 
-— I'm... glad it was you [Master].""",
+— I'm... glad it was you, [Master].""",
 	
 	CALI_AMELIA_1 = """As is usual today Cali has been attending her lessons with Amelia at the Servant's Guild. This time however Amelia can't help but notice the girl is distracted, her effort far from her usual.
 
@@ -9434,9 +9449,9 @@ Cali would snap her head up while being deep in thought, looking at Amelia with 
 {color=yellow|Amelia: — It's alright Cali, you can trust me. If not as your mentor, at least as your friend.}""",
 	CALI_AMELIA_2 = """Cali thinks for a long moment before taking a slow breath.
 
-{color=yellow|Cali: — I've been trying to get [master]'s attention here lately. But it's not working. It's like [he] doesn't notice me at all...}
+{color=yellow|Cali: — I've been trying to get [Master]'s attention here lately. But it's not working. It's like [he] doesn't notice me at all...}
 
-{color=aqua|Amelia: — I see. Yes, that would be disheartening. }
+{color=aqua|Amelia: — I see. Yes, that would be disheartening.}
 
 Cali looks down now quiet, but nodding in agreement to her mentor's words.
 
@@ -9447,7 +9462,7 @@ Cali's breathing would pick up as she pulled herself closer to Amelia now, the g
 
 	CALI_AMELIA_3_1 = """{color=yellow|Cali: — Ah... Uhh... I'm not...}
 
-{color=aqua|Amelia: — I apologize, Cali, that was...nice. It seems both of us are plenty up currently. }
+{color=aqua|Amelia: — I apologize, Cali, that was... nice. It seems both of us are plenty up currently. }
 
 Amelia would place her hand on her chin thinking before continuing as she looked Cali over. 
 
@@ -9460,14 +9475,14 @@ As Cali averts her blushed gaze, she still responds with a willing nod.""",
 
 Cali was still looking the room over, standing at the entrance as Amelia guided her onto the bed now, hand resting on her lower back as the wolf-girl was turned, resting against the edge as Amelia joined her.
 
-{color=yellow|Cali: — I'm... not sure what to do...it's nice here.}
+{color=yellow|Cali: — I'm... not sure what to do... it's nice here.}
 
 {color=aqua|Amelia: — Just enjoy yourself Cali, you are my guest after all.}""",
 CALI_AMELIA_4_1 = """Cali would distract herself in the small talk as Amelia pulled the girl closer, her legs straddling just one of Cali's, moving closer as she just smiled.
 
 {color=aqua|Amelia: — I know that it can be frustrating not catching the eye of the man you desire, but for today we've no need to worry about that.}
 
-Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them. """,
+Cali would begin to respond but instead let a soft little moan as Amelia slipped the girls' top up, her hand grasping the girl's soft breasts. They weren't large, but her youthful body was so lovely that Amelia couldn't help but explore them.""",
 	CALI_AMELIA_5 = """A few moments later the two were kissing again, uninterrupted as soon as their tongues would meet. Amelia's hips softly rubbing over her bare leg now. After breath demanded them break the kiss, Cali's face was a deep shade of red as Amelia's hand slipped lower, moving her panties aside.
 
 {color=yellow|Cali: — A-ah!}
@@ -9488,50 +9503,50 @@ She was cut off by another kiss now, her body contracting on the woman's fingers
 
 Cali was shy now realizing what she had just done and nodded now, still blushing hard.
 
-{color=yellow|Cali: — Was this...?}
+{color=yellow|Cali: — Was this..?}
 
 {color=aqua|Amelia: — Don't fret over it, a couple of girls can have a bit of private fun once in a while. You should focus on working harder towards your goal instead.}""",
 	
 	LILIA_PRELUDE1 = """As you walk through the streets, you eavesdrop an uncommon conversation apparently from one of adventurers. 
 
-{color=yellow|Citizen A: — I'm telling you, After I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.}
+{color=yellow|Citizen A: — I'm telling you, after I ended up at that village, there was some crazy red haired fairy. She was observing me from the distance like I'm some sort of exotic animal.}
 
-{color=aqua|Citizen B: — That's like for all of them, no? }
+{color=aqua|Citizen B: — That's like for all of them, no?}
 
 {color=yellow|Citizen A: — Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
-	LILIA_PRELUDE2 = "You decide to make a note about this and perhaps visit it next time you go to elven forests.",
+	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to elven forests.",
 	
 	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
 	LILIA_STARTING_1_OPTION_1 = "Nice to meet you, I'm [name].",
-	LILIA_STARTING_1_OPTION_2 = "Woah, not so fast",
+	LILIA_STARTING_1_OPTION_2 = "Woah, not so fast.",
 	LILIA_STARTING_1_OPTION_3 = "You really know no manners, do you?",
-	LILIA_STARTING_2_1 = """ — Ah, sorry, it's just so exciting and rare to meet someone like you! You look so big and strong!
-
+	LILIA_STARTING_2_1 = """— Ah, sorry, it's just so exciting and rare to meet someone like you! You look so big and strong!
+	
 — Hey, hey, what did you come for? 
 
-Unlike most other locals, Lilia is quite friendly towards you.. """,
+Unlike most other locals, Lilia is quite friendly towards you...""",
 	LILIA_STARTING_2_2 = """— Hey, hey, what did you come for? 
 
-Unlike most other locals, Lilia is quite friendly towards you..""",
+Unlike most other locals, Lilia is quite friendly towards you...""",
 	LILIA_STARTING_2_3 = """— I like it, alright. But I've lived here for all I can remember. It can get reeeaal boring you know.""",
 	LILIA_STARTING_2_OPTION_1 = "Do you wanna go somewhere more private?",
 	LILIA_STARTING_2_OPTION_2 = "Do you wanna join me?",
 	LILIA_STARTING_2_OPTION_3 = "How do you like it here?",
-	LILIA_STARTING_2_OPTION_4 = "I should go now, see you another time",
+	LILIA_STARTING_2_OPTION_4 = "I should go now, see you another time.",
 	LILIA_SEDUCTION_1 = """Lilia gives you a contemplative look but it seems she catches on to your intentions, though she doesn't immediately reject the proposal.
 
 — You're strange. I dunno, I have no experience in such things...""",
-	LILIA_SEDUCTION_1_OPTION_1 = "I can see you're practically shaking near me though (Sex Factor)",
-	LILIA_SEDUCTION_1_OPTION_2 = "I have plenty of experience",
-	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something nice",
-	LILIA_SEDUCTION_1_OPTION_4 = "But you must be curious what it is like",
+	LILIA_SEDUCTION_1_OPTION_1 = "[Sex Factor] I can see you're practically shaking near me though.",
+	LILIA_SEDUCTION_1_OPTION_2 = "I have plenty of experience.",
+	LILIA_SEDUCTION_1_OPTION_3 = "I could give you something nice.",
+	LILIA_SEDUCTION_1_OPTION_4 = "But you must be curious what it is like.",
 	LILIA_SEDUCTION_2_2AND3 = "— Sorry, I don't think I wanna just yet.",
 	LILIA_SEDUCTION_2_4 = "— He-he, other girls have been talking a lot about it, but I'm still not sure. You are so big and stuff...",
 	LILIA_SEDUCTION_2_4_OPTION_1 = "But isn't that what interests you?",
-	LILIA_SEDUCTION_2_4_OPTION_2 = "I can be very gentle",
-	LILIA_SEDUCTION_2_4_OPTION_3 = "If something goes wrong we can always patch things up",
+	LILIA_SEDUCTION_2_4_OPTION_2 = "I can be very gentle.",
+	LILIA_SEDUCTION_2_4_OPTION_3 = "If something goes wrong we can always patch things up.",
 	LILIA_SEDUCTION_2_4_2AND3 = "Lilia acts as if this talk didn't happen and falls silent.",
 #	LILIA_SEX_SCENE_1_1 = """— I guess... 
 #
@@ -9558,7 +9573,7 @@ The girl seems to shiver a bit by either fear or excitement as your hand slides 
 
 You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers. 
 
-— T-that's so much better than my fingers... take me [name]. Please...""",
+— T-that's so much better than my fingers... Take me, [name]. Please...""",
 	LILIA_SEX_SCENE_2 = """Your trousers are open moments later, the tiny fair easily held up in front of you now as you start to grind on that lovely little hole. Lilia makes a soft little moan during and then a much louder shrill one as you start to press into her, stretching and breaking the small fae's hymen around your shaft.
 
 You take things slow, hips pumping into hers before realizing it's just easier to bounce her back against your shaft, nearly bottoming out easier than expected. Lilia for her part continued to let lewd noises slip from her mouth that you'd scarcely believe came from her, only driving you on to taking her further, harder now.
@@ -9569,10 +9584,10 @@ She wasn't an experienced lover, but her tightness and willingness to please hel
 — ...Amazing! Let's do this again some other time, okay?'""",
 	LILIA_RECRUIT_1_1 = """— Eh? I dunno, I don't think I know you well enough, [name].""",
 	LILIA_RECRUIT_1_2 = """— Going with you..? Huh, I'm not sure, I never left the forests. I heard humans are pretty scary.""",
-	LILIA_RECRUIT_1_OPTION_1 = "I'd love to have you at my place (Charm Factor)",
-	LILIA_RECRUIT_1_OPTION_2 = "Eventually you get used to it",
-	LILIA_RECRUIT_1_OPTION_3 = "Humans can be pretty bad, but you'll be under my protection",
-	LILIA_RECRUIT_1_OPTION_4 = "You aren't scared of me though",
+	LILIA_RECRUIT_1_OPTION_1 = "[Charm Factor] I'd love to have you at my place.",
+	LILIA_RECRUIT_1_OPTION_2 = "Eventually you get used to it.",
+	LILIA_RECRUIT_1_OPTION_3 = "Humans can be pretty bad, but you'll be under my protection.",
+	LILIA_RECRUIT_1_OPTION_4 = "You aren't scared of me though.",
 	LILIA_RECRUIT_NO = "— I think I'll pass on it, I'm not ready to leave my home just yet.",
 	LILIA_RECRUIT_NO_RED = """{color=red|Failure}
 
@@ -9586,18 +9601,18 @@ Lilia hesitates for a bit but her attitude towards you eventually sways her choi
 
 — Fine, I'd hate to wait for your next visit. Let me grab a few of my things!""",
 	LILIA_RECRUIT_1_4 = """— He-he, that's true, you aren't scary at all. But what am I gonna do there?""",
-	LILIA_RECRUIT_1_4_OPTION_1 = """You could be a performer""",
-	LILIA_RECRUIT_1_4_OPTION_2 = """I wouldn't ask from you for more than what we were already doing""",
-	LILIA_RECRUIT_1_4_OPTION_3 = """There's a lot of possibilities for adventure""",
+	LILIA_RECRUIT_1_4_OPTION_1 = """You could be a performer.""",
+	LILIA_RECRUIT_1_4_OPTION_2 = """I wouldn't ask from you for more than what we were already doing.""",
+	LILIA_RECRUIT_1_4_OPTION_3 = """There's a lot of possibilities for adventure.""",
 	
 	SICK_LILIA_START = """After a few days since Lilia moved in with you, one morning you find her in bed extremely weakened.
 
 — [name]... I don't feel... so well... Can I... Please, rest for today?
 
-Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seems unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
+Your fear settles in as you realize that she must be sick. Your concerns are growing worse as your attempts with magic or regular medicine seem unable to improve her condition. As you let her rest, you decide that you should visit someone who might know what's going on. Out of all your acquaintances, Myr seems to be the most logical choice.""",
 	SICK_LILIA_1 = """You explain to Myr the events behind Lilia's sickness hoping she would be able to help. To this she reacts as disinterested as ever. 
 
-— A wild fae is unsuited for living in the city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I. She'll need time for her body to adjust to these harsh conditions. Obviously fairies raised in captivity are already adapted and don't experience such issues.""",
+— A wild fae is unsuited for living in a city, their kind is more reliant on natural energies, making this place like living in the desert without water for you and I. She'll need time for her body to adjust to these harsh conditions. Obviously, fairies raised in captivity are already adapted and don't experience such issues.""",
 	SICK_LILIA_1_OPTION_1 = "So she's going to be alright?",
 	SICK_LILIA_1_OPTION_2 = "Is there anything I could do to help her?",
 	SICK_LILIA_2_1 = """— It's hard to tell if her body will be able to deal with it naturally at this point.
@@ -9605,9 +9620,9 @@ Your fear settles in as you realize that she must be sick. Your concerns are gro
 — There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
 	SICK_LILIA_2_2 = """— There's a brew which will make it easier for her to rebuild her mana reserves without her home forest. Let me write down a recipe for you.""",
 	SICK_LILIA_2_OPTION_1 = "I don't have to pay?",
-	SICK_LILIA_2_OPTION_2 = "Thanks a lot, you are a true savior",
+	SICK_LILIA_2_OPTION_2 = "Thanks a lot, you are a true savior.",
 	SICK_LILIA_3_1 = """— I only wrote you a formula, you're the one who will need to produce it. It also gets you out of my hair.
-
+	
 — One more thing... I hope you'll have the decency to not sexually abuse her while she's in this state.""",
 	SICK_LILIA_3_2 = """Myr stays oblivious to your praises and passes you the paper sheet. 
 
@@ -9616,32 +9631,32 @@ Your fear settles in as you realize that she must be sick. Your concerns are gro
 	SICK_LILIA_3_OPTION_2 = "What do you take me for!?",
 	SICK_LILIA_4_1 = """— I hope so. But your reputation is not as flawless as you imply so I felt it necessary. Now that we are done, leave me be.""",
 	SICK_LILIA_4_2 = """— A sexual deviant who dragged a pure wild fairy from the forest because those things are sexual addicts.""",
-	SICK_LILIA_4_2_OPTION_1 = "It's not like that, it's purely coincidental and she wanted to come on her own",
-	SICK_LILIA_4_2_OPTION_2 = "Hey, you can't blame me, that's what any man would do",
+	SICK_LILIA_4_2_OPTION_1 = "It's not like that, it's purely coincidental and she wanted to come on her own.",
+	SICK_LILIA_4_2_OPTION_2 = "Hey, you can't blame me, that's what any [man] would do.",
 	SICK_LILIA_5 = """Myr sighs heavily while making a gesture for you to leave as this discussion is finished. With no other choice you leave her office.""",
-	SICK_LILIA_6 = """As you make your way out of Myr's office and read through her notes you spot the line which directs you to go to "my crook of a sister", realizing you'll have to visit Xari for that. """,
+	SICK_LILIA_6 = """As you make your way out of Myr's office and read through her notes you spot the line which directs you to go to 'my crook of a sister', realizing you'll have to visit Xari for that.""",
 	
 	XARI_CLOTHES_1 = """— Hey, [name]. It's been a while. Did Myr sent you on some errand again?""",
 	XARI_CLOTHES_1_OPTION_1 = "I have this note here...",
-	XARI_CLOTHES_1_OPTION_2 = "Not quite",
+	XARI_CLOTHES_1_OPTION_2 = "Not quite.",
 	XARI_CLOTHES_2 = """As Xari reads through the paper note, you explain that you need a certain medicine. She quickly grasps on that.
 
 — Yeah, I can brew this, no problem. Good thing you came here since in the city you wouldn't be able to make such a pure substance. That'll be 500 gold.""",
-	XARI_CLOTHES_2_OPTION_1 = "Pay (500 Gold)",
+	XARI_CLOTHES_2_OPTION_1 = "*Pay* (500 Gold)",
 	XARI_CLOTHES_2_OPTION_2 = "I don't have the money yet...",
 	XARI_CLOTHES_3_1 = """— Great, let me start my preparations...""",
 	XARI_CLOTHES_3_2 = """— Well then, I'll be right here. It shouldn't take you long after all.""",
 	XARI_CLOTHES_4 = """As you pass money to Xari, she begins searching through her cluttered shelves. 
 
 — You know... You are curing a fairy, am I right? Since this is gonna take some time anyway, how about you do something for me and I'll make it a tad more special?
-
-— A few days ago there was a troll who stole some of my clothes which I was drying. I was planning to go teach him a lesson but you could do that, couldn't you? Then I can make this brew a bit more effective.
+	
+— A few days ago there was a troll who stole some of my clothes which I was drying. I was planning to go teach him a lesson, but you could do that, couldn't you? Then I can make this brew a bit more effective.
 
 — With fairies' natural affinity to magic it's pretty easy to give them a boost every once in a while. I can make her smarter, more loyal or a tad lewder.""",
-	XARI_CLOTHES_4_OPTION_1 = "I'd rather pass on this task",
-	XARI_CLOTHES_4_OPTION_2 = "Okay, make her smarter (+Wit Factor, +Magic Factor)",
-	XARI_CLOTHES_4_OPTION_3 = "Okay, make her more loyal (+Tame Factor)",
-	XARI_CLOTHES_4_OPTION_4 = "Okay, make her lewder (+Sex Factor) ",
+	XARI_CLOTHES_4_OPTION_1 = "I'd rather pass on this task.",
+	XARI_CLOTHES_4_OPTION_2 = "Okay, make her smarter. (+Wit Factor, +Magic Factor)",
+	XARI_CLOTHES_4_OPTION_3 = "Okay, make her more loyal. (+Tame Factor)",
+	XARI_CLOTHES_4_OPTION_4 = "Okay, make her lewder. (+Sex Factor)",
 	XARI_CLOTHES_5_1 = """— Fine, I'll get them myself then. Hold on then, this won't take long...""",
 	XARI_CLOTHES_6 = """— Done. Just don't give it to her all at once. She should improve after a couple days.
 
@@ -9657,12 +9672,12 @@ Out of his poor attempt to speak the common tongue you realize that he knows wha
 — Trade... Food...
 
 Looks like the troll is willing to part with his loot in exchange for something edible.""",
-	TROLL_CLOTHES_1_OPTION_1 = "Give him 50 meat (-50 Meat)",
-	TROLL_CLOTHES_1_OPTION_2 = "Tell him about a deer's grazing spot you found on your way here (Hunter)",
-	TROLL_CLOTHES_1_OPTION_3 = "I don't trade with filthy monsters (Fight)",
-	TROLL_CLOTHES_1_OPTION_4 = "Leave",
+	TROLL_CLOTHES_1_OPTION_1 = "*Give him meat* (50 Meat)",
+	TROLL_CLOTHES_1_OPTION_2 = "[Hunter] Tell him about a deer's grazing spot you found on your way here.",
+	TROLL_CLOTHES_1_OPTION_3 = "I don't trade with filthy monsters. *Attack*",
+	TROLL_CLOTHES_1_OPTION_4 = "*Leave*",
 	TROLL_CLOTHES_2_1 = """You manage to trade for Xari's clothes, which seem much less clean than what they would have been before drying. Hoping this won't disappoint her too much, you leave the troll alone.""",
-	TROLL_CLOTHES_2_2 = """You manage to barely explain yourself so the troll understood you. With some doubt he let you have the clothes leaving for the spot you told him. Perhaps it was luck that he wasn't lied to by others all too often.""",
+	TROLL_CLOTHES_2_2 = """You manage to barely explain yourself so the troll understood you. With some doubt he let you have the clothes leaving for the spot you told him. Perhaps, it was luck that he wasn't lied to by others all too often.""",
 	TROLL_CLOTHES_2_3 = """After you defeat the troll you manage to find Xari's clothes which are in much worse condition than expected. But since you defeated the troll at least she should be happy it won't happen again.""",
 	
 	XARI_CLOTHES_7 = """As you pass Xari her clothes she looks less than impressed. Yet she proceeds with her part of the deal as agreed.
@@ -9684,7 +9699,7 @@ A few moments later her noises picked up in pitch as she lifted herself up, slid
 Lilia's moans are unrestrained, the sounds adding to the sensuality of the sex as she served you so well; making it difficult to fight against your need of release.""",
 	LILIA_MANSION_4 = """Sweat on her body starts to show after a few minutes of exertion while your hands rest firmly on her legs for just a moment as you fight the need to release. Although after a few moments you're unable to stop yourself. The little fae was now pinning herself down, holding herself firmly onto your cock as you filled every crevice of her womb.
 
-— A-ah... This feels too good...[Master]! I'm going to cum!
+— A-ah... This feels too good... [Master]! I'm going to cum!
 
 Lilia almost shrieks as you feel her clamp down your shaft now, her eyes hazing over as the small fae cums hard on you; her legs practically vibrating during her release. Melting down to lay against your chest, small aftershocks hitting her as she'd coo and shake.""",
 	LILIA_MANSION_5 = """Lilia sits there for a few moments just breathing in bliss now, her small body shuddering before she just falls forward onto your chest. The little fairy is obviously exhausted as she just lies there trying to catch her breath.
@@ -9693,14 +9708,14 @@ After a few minutes you notice the small female is asleep, lying there as she wo
 	
 	CALI_ACT1_1 = """You visit your captive, Cali. As you stand in silence, the girl looks up at you with a tired rage behind her eyes.
 
-— W-what do you want now!?... Haven't you done enough?! Let me go!
+— W-what do you want now.!? Haven't you done enough?! Let me go!
 
 Staring her down, you take a good look at her. Slender and bruised, her body isn't suited for labor, but she has to earn her keep.
 
 — You think I'll work for you? After what you've done?""",
 	CALI_ACT1_1_OPTION_1 = "Whomever does not work shall not eat.",
-	CALI_ACT1_1_OPTION_2 = "Surely you don't want to be sold to the slavers? Your new Masters will be far less kind.",
-	CALI_ACT1_1_OPTION_3 = "Perhaps you need another reminder like the one at the caves?",
+	CALI_ACT1_1_OPTION_2 = "Surely you don't want to be sold to the slavers? Your new masters will be far less kind.",
+	CALI_ACT1_1_OPTION_3 = "Perhaps, you need another reminder like the one at the caves?",
 	CALI_ACT1_2_1 = """Cali looks at you with her ears lowered as she averts her gaze. Her eyes look around the building, taking in everything as she seems to submit for now. 
 
 — Whatever, fine...""",
@@ -9725,7 +9740,7 @@ The girl looks far from pleased upon your approach. Her tired eyes are unfocused
 
 — You bastard! I'm not some dog on a leash!
 
-As you leave her be, you can't help but muse at the phrase, "dog on a leash.""",
+As you leave her be, you can't help but muse at the phrase, 'dog on a leash.'""",
 	CALI_ACT2_2_2 = """The girl turns her nose up at you defiantly instead of focusing on her work.
 
 — I'm not some mindless pet, asshole!
@@ -9733,18 +9748,18 @@ As you leave her be, you can't help but muse at the phrase, "dog on a leash.""",
 You leave her to her work, thinking intently about how to make her into that very pet.""",
 	CALI_ACT2_2_3 = """Cali's face turns blood red at that reply. She tries to hide it by turning away but you've already seen enough.
 
-You decide to leave her alone for now. Perhaps something could make her more pliable to your will?""",
+You decide to leave her alone for now. Perhaps, something could make her more pliable to your will?""",
 	CALI_ACT2_3 = """Your thoughts have been increasingly focused on taming your new slave, Cali. Cali has been difficult, the girl is intent on refusing you. After careful deliberation, you come to the conclusion that just calling her your property isn't enough. She should look the part.
 
 A collar is the most logical first step, but a regular collar would be insufficient. You decide it might be a good idea to head to the Workers Guild and ask Sigmund if he can point you in the direction of a specialist.""",
-	CALI_ACT2_WORKERS_OPTION_1 = "Ask Sigmund about a specialist",
-	CALI_ACT2_WORKERS_1 = """Sigmund:— Wha? Someone to make a collar? Are the ones at the market not good enough?
+	CALI_ACT2_WORKERS_OPTION_1 = "*Ask Sigmund about a specialist*",
+	CALI_ACT2_WORKERS_1 = """Sigmund: — Wha? Someone to make a collar? Are the ones at the market not good enough?
 
 You explain to the dwarf that those are indeed fine, but what you're looking for is a custom piece. The burly male thinks for a few moments while scratching his beard before nodding.
 
-Sigmund: — Limnrov is who you'd want to find. Ask up at the front, the receptionist can take you to ‘em.
+Sigmund: — Limnrov is who you'd want to find. Ask up at the front, the receptionist can take you to 'em.
 
-With nothing else to ask Sigmund, you leave him to continue running the Guild's affairs.""",
+With nothing else to ask Sigmund, you leave him to continue running the guild's affairs.""",
 	CALI_ACT2_WORKERS_2 = """Once you bring up the name with the receptionist, it's not long before you're standing in a backroom that smells strongly of the tradesman's craft. Meeting Limnrov, you see he is an older Dark Elf. His sharp eyes look up at you from the excellent piece he's currently working on.
 
 Limnrov: — I'd not sent for the courier yet. Master William can wait a few hours longer on this repair.""",
@@ -9756,18 +9771,18 @@ Limnrov: — Ah, my mistake. What can I do for you?
 
 You explain to Limnrov your desire to commission a custom piece for a recently acquired slave. After you give him the required details, the elf gives a stoic nod before scribbling something on a piece of paper. He then hands you two sketches.
 
-Limnrov: — I've two designs I might suggest. The former is your standard affair, however, the engravings on the outside would leave no question as to who the Master of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
+Limnrov: — I've two designs I might suggest. The former is your standard affair, however, the engravings on the outside would leave no question as to who the [Master] of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
 	CALI_ACT2_WORKERS_3_OPTION_1 = "What will you need to produce the simple collar?",
 	CALI_ACT2_WORKERS_3_OPTION_2 = "What will you need to produce the extravagant collar?",
-	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this",
-	CALI_ACT2_WORKERS_4_1 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather""",
-	CALI_ACT2_WORKERS_4_2 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather, 10 Silk""",
+	CALI_ACT2_WORKERS_3_OPTION_3 = "I need some time to think on this.",
+	CALI_ACT2_WORKERS_4_1 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather.""",
+	CALI_ACT2_WORKERS_4_2 = """Limnrov starts to jot down a list of items that he will need you to procure, before handing it over to you: 10 Thick Leather, 10 Silk.""",
 #	CALI_ACT2_WORKERS_4_2 = """Limnrov looks rather excited as he produces a list of items, most notable of all being a large gem, and hands it over to you.""",
-	CALI_ACT2_WORKERS_4_1_OPTION_1 = "Here are the materials for the Simple collar",
-	CALI_ACT2_WORKERS_4_2_OPTION_1 = "Here are the materials for the Extravagant collar",
+	CALI_ACT2_WORKERS_4_1_OPTION_1 = "Here are the materials for the Simple collar.",
+	CALI_ACT2_WORKERS_4_2_OPTION_1 = "Here are the materials for the Extravagant collar.",
 	CALI_ACT2_WORKERS_4_3 = """Limnrov: — Very well, I'll be here.
 
-Limnrov accompanies you to the entrance of the Guild.""",
+Limnrov accompanies you to the entrance of the guild.""",
 	CALI_ACT2_WORKERS_5_1 = """Limnrov looks the materials and payment over intently, before nodding. 
 
 Limnrov: — Ah yes, this will do. Give me a few days and I'll have it delivered by courier.""",
@@ -9777,7 +9792,7 @@ Limnrov: — Excellent, most excellent. Very well, I'll make sure your slave has
 	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the simple collar. Though its design lacks much ornamentation, the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
 #	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror-like reflection and gleams back at you.""",
 	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care.""",
-	CALI_ACT2_LIMNROV = """Limnrov: — I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to who the Master of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
+	CALI_ACT2_LIMNROV = """Limnrov: — I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to who the [Master] of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
 	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
 
 — What do you want? I've been behaving, [name].
@@ -9805,14 +9820,14 @@ When you pull out the collar Cali's eyes light up for the faintest moment. The g
 — It's pretty...""",
 	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
 
-— ...Well at least it's comfortable. But don't think this changes anything! Especially after what you've done...
+— ...Well, at least it's comfortable. But don't think this changes anything! Especially after what you've done...
 
-The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn't move away .""",
+The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn't move away.""",
 	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_1 = "There are no bandits here. No one's going to lay a hand on you. Save for me.",
 	CALI_ACT2_EXQUISITE_COLLAR_1_OPTION_2 = "You're far better off than when I found you.",
 	CALI_ACT2_EXQUISITE_COLLAR_2 = """Cali opens her mouth as if to argue against what you've said but stops. She eventually concedes the point with a soft shrug. With that settled you dismiss the girl for the day, leaving her to her duties.""",
 	
-	CALI_ACT3_MAGIC_1 = """Your slave, Cali, has relented and no longer fights your orders.  However, Cali remains unbroken and willful as ever. You can't help but feel the girl and you are at an impasse.
+	CALI_ACT3_MAGIC_1 = """Your slave, Cali, has relented and no longer fights your orders. However, Cali remains unbroken and willful as ever. You can't help but feel the girl and you are at an impasse.
 
 One morning Cali approaches you, clearly tired. 
 
@@ -9829,26 +9844,26 @@ The girl does look worn out. Clearly life working at the mansion is more strenuo
 Before you can respond, the girl leaves half-slamming the door as she gets to work, clearly deciding that would be a better alternative than giving into your base needs.""",
 	CALI_ACT3_MAGIC_2_3 = """Cali looks relieved at you before nodding.
 
-Cali: — Ok then, um... thank you.""",
-	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders. You could force the girl into bed. It wouldn't be hard, but seems far less satisfying. You eventually decide there must be something you can do to sway her. You think about the dominators. You've heard of mages who can influence the mind of others. Perhaps a mage might be able to assist you in this endeavor.""",
-	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders. You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise. However, since magic has a wide and varied range of uses, you decide to ask another mage. Perhaps they have some knowledge you're lacking.""",
-	CALI_ACT3_JEAN_START_OPTION = "Approach Jean about the issue",
+— Ok then, um... thank you.""",
+	CALI_ACT3_MAGIC_3_1 = """Thinking about the situation, your mind wanders. You could force the girl into bed. It wouldn't be hard, but seems far less satisfying. You eventually decide there must be something you can do to sway her. You think about the dominators. You've heard of mages who can influence the mind of others. Perhaps, a mage might be able to assist you in this endeavor.""",
+	CALI_ACT3_MAGIC_3_2 = """Thinking about the situation, your mind wanders. You could of course use a spell to break her mind, to make her a puppet of your will, but your pride demands otherwise. However, since magic has a wide and varied range of uses, you decide to ask another mage. Perhaps, they have some knowledge you're lacking.""",
+	CALI_ACT3_JEAN_START_OPTION = "*Approach Jean about the issue*",
 	CALI_ACT3_JEAN_1 = """Talking to Jean, you explain the issue in depth to her. The girl's nose scrunches up as if she's going to tell you to do something impolite with your issue, before realizing who she works for.
-
-Jean seems to carefully collect her thoughts before finally asking you a question
+		
+Jean seems to carefully collect her thoughts before finally asking you a question.
 
 Jean: — Why not get another one then? It's not like she's anything special, just a half-wolf.""",
 	CALI_ACT3_JEAN_1_OPTION_1 = "I've grown rather fond of her.",
 	CALI_ACT3_JEAN_1_OPTION_2 = "I'm rather enjoying the challenge.",
-	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up then shakes her head,  giving you a partial look of disgust before her face quickly recovers its professionalism. Obviously she was about to say something, but decided it's better Cali than her.
-
+	CALI_ACT3_JEAN_2_1 = """Jean scrunches her nose up then shakes her head, giving you a partial look of disgust before her face quickly recovers its professionalism. Obviously she was about to say something, but decided it's better Cali than her.
+	
 The girl thinks about your answer for a moment before finally giving you a response. 
 
 Jean: — Why don't you just have the beast's collar enchanted?
 
 You stop for a moment to ponder the question. True, you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean, while watching you, finally huffs out a sigh.
 
-Jean: — You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+Jean: — You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess, I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
 	CALI_ACT3_JEAN_2_2 = """Jean sighs, then gives you a knowing nod.
 
 Jean: — Of course you'd say that. Pervert.
@@ -9859,21 +9874,21 @@ Jean: — Why don't you just have the beast's collar enchanted?
 
 You stop for a moment to ponder the question. True, you'd not considered having her collar enchanted, but enchantments lay well outside your field of expertise. Jean, while watching you, finally huffs out a sigh.
 
-Jean: — You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
+Jean: — You're hopeless, [name]. You could ask the Mages Guild for help, you know... I guess, I could do something like that too, but you'll have to get something for me. I'm gonna need a rare magical essence. There's one spot where you can collect some water for it. It's in the elven woods, but there shouldn't be an issue for you.""",
 	CALI_ACT3_JEAN_3 = """You get to the spot which was marked by Jean and find a dimly glowing water spring. You scoop enough water from it to provide Jean with what she needs.""",
-	CALI_ACT3_JEAN_3_OPTION_1 = "Give Rare Magical Essence",
-	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent(s) required, Jean gets to work. After you retrieve Cali's collar, under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
+	CALI_ACT3_JEAN_3_OPTION_1 = "*Give Rare Magical Essence*",
+	CALI_ACT3_JEAN_4 = """Upon successfully delivering the reagent required, Jean gets to work. After you retrieve Cali's collar, under the guise of the article needing to be cleaned, Jean makes quick work of applying the enchantment to it.
 
 Jean: — There, done. Whatever vile things you are planning to do with this, this won't make the wearer obey you on command. It will only make them more willing...""",
 	CALI_ACT3_JEAN_5 = """Taking the collar back to Cali, the girl gives no complaint as you clasp it back on her once again.""",
-	CALI_ACT3_MAGES_OPTION_INIT = "Ask about mind altering spells",
+	CALI_ACT3_MAGES_OPTION_INIT = "*Ask about mind altering spells*",
 	CALI_ACT3_MAGES_1 = """It seems Myr isn't available for your request today. After inquiring around the guild you eventually find an apprentice wearing a bored expression on his face to make your inquiry to.
 
-Apprentice: — Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we can help with that. Perhaps an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.""",
+Apprentice: — Magical assistance in taming a slave? And she's quite keen on resisting your advances. Ah yes, we can help with that. Perhaps, an enchantment for her collar? We could do something like that for you, but Guild Master Myr has been charging a premium on the service.""",
 	CALI_ACT3_MAGES_1_OPTION_1 = "I'm sure I can afford it.",
 	CALI_ACT3_MAGES_1_OPTION_2 = "What's the rate?",
 	CALI_ACT3_MAGES_2 = """The young mage pulls out a large chart, looking it over before telling you the service will be 500 gold.""",
-	CALI_ACT3_MAGES_2_OPTION_1 = "Fine, if I've no other choice (500 Gold)",
+	CALI_ACT3_MAGES_2_OPTION_1 = "Fine, if I've no other choice. (500 Gold)",
 	CALI_ACT3_MAGES_2_OPTION_2 = "Is there any way to earn a discount?",
 	CALI_ACT3_MAGES_2_OPTION_3 = "I'll come back later.",
 	CALI_ACT3_MAGES_3_1 = """After you retrieve Cali's collar, under the guise of the article needing to be cleaned, the apprentice makes quick work of applying the enchantment to it all while taking a heavy amount of your coin.
@@ -9883,11 +9898,11 @@ Apprentice: — Good it's done. Do know this won't make her blindly obedient, on
 Taking the collar back to Cali, the girl gives no complaint as you clasp it back on her once again""",
 	CALI_ACT3_MAGES_3_2 = """The young mage shakes his head.
 
-Apprentice: — Absolutely not, Guildmaster Myr would have my head!""",
+Apprentice: — Absolutely not, Guild Master Myr would have my head!""",
 	CALI_ACT3_MAGES_3_3 = """Apprentice: — Very well, I'll be here when you return.""",
-	CALI_ACT3_MAGES_4 = """Apprentice: Welcome back, you have the fee I trust?""",
-	CALI_ACT3_BLOW_OPTION_INIT = "Talk to Cali",
-	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance. Unbeknownst to her, the enchantment seems to be doing it's job quite well, the girl's resolve slowly weakening.
+	CALI_ACT3_MAGES_4 = """Apprentice: — Welcome back, you have the fee I trust?""",
+	CALI_ACT3_BLOW_OPTION_INIT = "*Talk to Cali*",
+	CALI_ACT3_BLOW_1 = """Cali has been quiet for the last few days, though you've caught her sneaking glances at you whenever she gets the chance. Unbeknownst to her, the enchantment seems to be doing its job quite well, the girl's resolve slowly weakening.
 
 Eventually, you confront the girl about her peeking upon you, only for her face to turn a dark shade of red.
 
@@ -9903,7 +9918,7 @@ As you open your pants in front of her, she gulps, shaking as she speaks.
 — F-fine... You damn pervert... Just this once!""",
 	CALI_ACT3_BLOW_3 = """Cali doesn't say anything at first as she gets down on her knees, looking up at you now. Her face is covered in an embarrassed blush. Despite this she doesn't complain now as she undoes your trousers, her face darkening even more as she sees your member.
 
-— Wha...it's bigger than I remember.""",
+— Wha... it's bigger than I remember.""",
 	CALI_ACT3_BLOW_4 = """Cali, seeing the lewd look on your face after commenting on the size, rolls her eyes a bit.
 
 — It just is! Don't take that as a compliment.""",
@@ -9914,24 +9929,24 @@ You consider telling the girl to hurry up, but relent as she finally opens her m
 	CALI_ACT3_BLOW_7 = """Cali seems eager as she repeats the process, her hips swaying back and forth for a moment before she stops herself. Pumping her hands faster, she notices the base pulsing as you get closer. She looks up at you with wide eyes, her innocent face pushing you over the edge as you start to cum. """,
 	CALI_ACT3_BLOW_8 = """Cali lets out a surprised little squeak as you jizz into the girl's mouth, her eyes wide as you finish. To your surprise, she doesn't pull away and begins swallowing every drop, though her face turns a darker shade of red with every swallow.
 The two of you sit there for a few moments. Cali says nothing before standing up abruptly , looking away from you; her face crimson. """,
-	CALI_ACT3_BLOW_9 = """— I...I'm going to go back to my break...
+	CALI_ACT3_BLOW_9 = """— I... I'm going to go back to my break...
 
 Cali doesn't give you any time to respond. She was practically running out of the room as you sit there, quite impressed with the work she did.""",
 	CALI_ACT4_MERCHANT_START = """The enchantment has proven to be of excellent quality, yet you can't help but wonder if there is more that could be done. Cali has been willing to offer her mouth at least, but the resistance is still there. 
 
-Thinking over your predicament, you decide to muse over the idea while doing some shopping in town. Perhaps one of the merchants will have something that can assist you?""",
+Thinking over your predicament, you decide to muse over the idea while doing some shopping in the city. Perhaps, one of the merchants will have something that can assist you?""",
 	CALI_ACT4_MERCHANT_1 = """Rows of toys, food, and exotic luxuries line the isles of Aliron's Market, but none seem quite suited to your current needs. While you lunch at one of the stalls, a bookseller across from the food cart catches your attention. 
 
 The merchant is quick to spot one eyeing his wares. He waves to you, calling out.
 
-Merchant: — Greetings, good sir! I see you've an eye for quality. Perhaps you'd like a tome on how to enjoy a Seraph's curves or -
+Merchant: — Greetings, good [sir]! I see you've an eye for quality. Perhaps, you'd like a tome on how to enjoy a Seraph's curves or-
 
 It seems the merchant will prattle on forever if you don't stop him.""",
-	CALI_ACT4_MERCHANT_1_OPTION_1 = "I'm just browsing",
+	CALI_ACT4_MERCHANT_1_OPTION_1 = "I'm just browsing.",
 	CALI_ACT4_MERCHANT_1_OPTION_2 = "Do you have any books relating to Wolfkin? Or the half-breeds?",
 	CALI_ACT4_MERCHANT_2_1 = """The merchant looks at you with a knowing smile, shaking his head. 
 
-Merchant: — Ah, but that is not the look of a man who is just browsing. Tell me, what do you need sir?""",
+Merchant: — Ah, but that is not the look of a [man] who is just browsing. Tell me, what do you need [sir]?""",
 	CALI_ACT4_MERCHANT_3 = """Relenting, you tell the merchant you're in the market for a book on Wolfkin, or their half-breeds.
 
 Merchant: — Ah, yes yes I do have something of its like. 
@@ -9941,24 +9956,24 @@ The man reaches onto one of the shelves in the cart and hands you a small tome, 
 Though the book itself is not that large, the information is extensive. There are pro taming arguments listed, illustrations of sexual positions her kind would be best suited for, and even a section on best practices.
 
 The price tag on the book states it costs a measly 50 gold.""",
-	CALI_ACT4_MERCHANT_3_OPTION_1 = "Here is the coin (50 Gold)",
-	CALI_ACT4_MERCHANT_3_OPTION_2 = "I'm not quite sure yet",
-	CALI_ACT4_MERCHANT_4_1 = """The merchant takes your coin with a smile. Leaving the man to manage his cart, you head home now,eager to see how this will unfold.""",
+	CALI_ACT4_MERCHANT_3_OPTION_1 = "Here is the coin. (50 Gold)",
+	CALI_ACT4_MERCHANT_3_OPTION_2 = "I'm not quite sure yet.",
+	CALI_ACT4_MERCHANT_4_1 = """The merchant takes your coin with a smile. Leaving the man to manage his cart, you head home now, eager to see how this will unfold.""",
 	CALI_ACT4_MERCHANT_4_2 = """The man nods before turning to another customer as you leave.""",
 	CALI_ACT4_MERCHANT_5 = """The man welcomes you eagerly now, hammering you with questions and suggestions as you pick the book on Wolfkin off the shelf.""",
-	CALI_ACT4_MERCHANT_6 = """Returning home, you leave the book in Cali's room. Perhaps some inspiration into her kind's mating habits will soften her to the idea.""",
+	CALI_ACT4_MERCHANT_6 = """Returning home, you leave the book in Cali's room. Perhaps, some inspiration into her kind's mating habits will soften her to the idea.""",
 	CALI_ACT4_MAST_1 = """Deciding to check on Cali, you move down to her room and hear soft sighs through the door.""",
 	CALI_ACT4_MAST_2 = """Inching closer, you stay as silent as possible, though the only noise one could hear now is the soft growling and moaning sounds coming from her room. Moving even closer, you can indeed make out Cali's voice as it trembles. You peek inside to see the girl laying on her bed with the book open beside her and a hand down her pants. As Cali's voice calms, she rolls over to look at the book again..
 
 Whatever image in the book sparked her need seems to reignite it, the girl's voice quivering and panting as she says,
 
-— Why...am I doing this...
+— Why... am I doing this...
 
-Cali continues to read for a few moments, eventually eliciting a soft moan as she touches herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan. Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself; her hips rolling now. """,
+Cali continues to read for a few moments, eventually eliciting a soft moan as she touches herself again. Her hips bucking up just a bit as she's forced to cover her mouth to prevent a loud moan. Eventually she looks over at the page again, adjusts herself and proceeds to increase the speed she rubs herself, her hips rolling now.""",
 	CALI_ACT4_MAST_3 = """— I might have liked it...
 
 Cali continues to masturbate, occasionally looking at the book as she breathes and moans softly. Eventually she seizes up as she comes, her face buried in her pillow as she lets out a little scream.""",
-	CALI_ACT4_MAST_3_OPTION_1 = "Walk in",
+	CALI_ACT4_MAST_3_OPTION_1 = "*Walk in*",
 	CALI_ACT4_MAST_4_LEAVE = """You quietly leave, allowing her to bask in the afterglow of her orgasm, admiring her change in behavior. It would seem Cali's resistance is starting to wane, her natural urges starting to take over.""",
 	CALI_ACT4_MAST_4 = """As you walk in Cali makes an embarrassed squeak, her face turning blood red.
 
@@ -9977,7 +9992,7 @@ Cali looks away from you now, more embarrassed than angry, her face still blushi
 
 The girl only blushes more as you move towards her on the bed. She looks away, her face a solid sheet of red, whimpering as you toss her blankets aside, leaving her exposed figure under you.
 
-— W-wait I'm not...
+— W-wait, I'm not...
 
 The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
 	CALI_ACT4_FUCK_1 = """Cali says nothing as your shaft rubs against the girl's tight entrance, only moaning in reply as you push into her.  Eyes rolling back, all the girl can do is moan and whimper as you press deep into her figure again and again. Her body shaking as her need was quite apparent.
@@ -9989,21 +10004,21 @@ The sight of the teen squirming around as you pump into her is perfect. She's se
 The girl's body eventually goes rigid as she climaxes, a seductive little moan bubbling out of her throat as you soon join her. Cali doesn't protest as you bury yourself deep inside her, your cum filling the small teen.
 
 Afterwards, Cali stays quiet as you pull out of her, get off the bed and head towards the door. The girl lays still, panting heavily, as you look her body over one last time, a smirk on your lips as you make sure to close the door behind you.""",
-	CALI_ACT4_MAST_6 = """Cali's face is still red as she looks at you, then the book. It's quite obvious what she was masterbating to, a well drawn illustration of a male of your visage inserted into a half wolf from behind. She snaps the book closed, stuffing it under her pillow silently.
+	CALI_ACT4_MAST_6 = """Cali's face is still red as she looks at you, then the book. It's quite obvious what she was masturbating to, a well drawn illustration of a male of your visage inserted into a half wolf from behind. She snaps the book closed, stuffing it under her pillow silently.
 
 Looking at you, then where she hid the book, she finally relents, moving her cover aside and showing you her pussy soaked from her recent orgasm. 
 
 — T-there! Happy? You're not getting anymore to-""",
 	CALI_ACT4_MAST_7 = """Her words are cut off as you move on top of her, her little body pressed down fully. Cali doesn't fight you as you position her. If anything, the girl willingly moves where you want her. 
 
-— W-wait I'm not...
+— W-wait, I'm not...
 
 The girl's eyes go wide seeing your length as you open your pants, pushing her bared figure back down. A small squeak is heard as you lift up her shirt, exposing her small breasts.""",
 	CALI_ACT5_PET_START = """Cali has been surprisingly tolerant as of late. Though not eager to serve, the girl's training has gone well even if you've been mostly subtle about it. Despite this though, she still has not turned into a proper pet, something you desire to remedy.
 
 You consider your options, and though she might very well accept your orders now, you decide that it is time to move onto the next step.
 
-This resolution in hand, you leave the manor that afternoon to search for the proper accessories for your "pet".""",
+This resolution in hand, you leave the manor that afternoon to search for the proper accessories for your 'pet'.""",
 	CALI_ACT5_PET_1 = """The pet shop smells like... well, animals. You're not quite sure what you expected as you pass rows of items ranging from large dog collars to hand made treats. One sight catches your eye as you turn a corner, an employee and dog walking down the aisle. The dog stops on command, sits on command, and even seems eager to do so. Eventually the hounds' work is rewarded with food, a dog dish is placed down that the beast fervently eats from.""",
 	CALI_ACT5_PET_2 = """The obedience of the dog is impressive, so much so you decide to ask the employee about it.
 
@@ -10014,15 +10029,15 @@ The dog is hungry, though obviously not starved as the beast has ample meat on i
 Employee: — He knows that if he does what he's told he gets to eat. Food is a great motivator after all.
 
 You thank the employee for his insight and head back to your mansion to put the newfound knowledge to use.""",
-	CALI_ACT5_PET_3 = """Today you ensure breakfast and lunch have been sparse for Cali. In addition to that, the girl's labor was especially strenuous today; a perfect mix for a strong appetite. After going about your day as normal, you eventually call for Cali right before dinner is to be started.
+	CALI_ACT5_PET_3 = """Today you ensure breakfast and lunch have been sparse for Cali. In addition to that, the girl's labor was especially strenuous today: a perfect mix for a strong appetite. After going about your day as normal, you eventually call for Cali right before dinner is to be started.
 
 The girl comes as told, though she looks far from pleased by the prospect. 
 
 — Can this wait, [name]? It's dinner time and I'm starving...
 
-After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up to you with a look of frustration, but it's obvious her hunger is winning as she stares down at the food in the bowl. """,
+After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up to you with a look of frustration, but it's obvious her hunger is winning as she stares down at the food in the bowl.""",
 	CALI_ACT5_PET_3_OPTION_1 = "I have your food right here.",
-	CALI_ACT5_PET_3_OPTION_2 = "I think you should be eating right here Cali. Like a good girl.",
+	CALI_ACT5_PET_3_OPTION_2 = "I think you should be eating right here, Cali. Like a good girl.",
 	CALI_ACT5_PET_4 = """Cali looks up at you with mild shock, then resignation. It's clear the girl might have expected you were using her food to coerce her into something.
 
 — I... no. Why? I'd look like an animal... This is weird!""",
@@ -10037,36 +10052,36 @@ After a moment, you sit her dinner in a dog bowl beside you. Her eyes travel up 
 	CALI_ACT5_PET_6 = """Almost unknowingly, Cali has stepped closer to the bowl. Her stomach has obviously weighed in on this issue.""",
 	CALI_ACT5_PET_6_OPTION_1 = "Aren't you hungry?",
 	CALI_ACT5_PET_6_OPTION_2 = "You might just like it if you try.",
-	CALI_ACT5_PET_6_OPTION_3 = "You ungrateful little bitch, do as you're told..NOW!",
+	CALI_ACT5_PET_6_OPTION_3 = "You ungrateful little bitch, do as you're told... NOW!",
 	CALI_ACT5_PET_7_GONE = """Cali's face turns cold to you as she moves over to the bowl, getting down to eat out of it like she was told. You were just thinking to yourself on how you finally might have broken the girl when you catch a glimpse of something coming towards you, a loud crash ringing out as the food bowl bounces off your forehead.
 
 — I am NOT your bitch, you monster!
 
 Dazed from the object colliding with your face, by the time you realize what has happened, the girl has your keys in hand and is escaping through the mansion's front door.
 
-Perhaps it was too much for her...""",
+Perhaps, it was too much for her...""",
 	CALI_ACT5_PET_7 = """Cali looks at you for a few moments, shaking as hunger wins out. The girl goes to pick up the bowl while looking at you, before you stop her. Her face burns with embarrassment as she realizes she'd have to eat out of it like an animal. 
 
 The girl kneels down on all fours and hovers above the bowl. Her ass is raised slightly in the air as she tastes the food. Soon, she gives in to her base instincts, eating vigorously.""",
-	CALI_ACT5_PET_8 = """Her panties are visibly wet as she eats. A moan barks out from her as your hand finds her slick underwear, sliding them over her backside while you sit beside your feeding pet.  Cali stops her eating, looking backwards as a dark blush creeps over her face.
+	CALI_ACT5_PET_8 = """Her panties are visibly wet as she eats. A moan barks out from her as your hand finds her slick underwear, sliding them over her backside while you sit beside your feeding pet. Cali stops her eating, looking backwards as a dark blush creeps over her face.
 
 Cali: — [Name], what are you doing?
 
-A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal.  Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
+A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal. Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
 Cali: — W-wait not th-""",
-	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her.  Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her. Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
 
 Cali: — Nhhh...
 
 The girl withdraws her protests as she gives into your caress, finally buckling as her legs close hard around your hand and she soaks her panties. A shrill cry comes from her throat as she nearly collapses onto her bowl, her unfocused eyes looking into the distance.""",
-CALI_ACT5_PET_9_2 = """— Why... doesn't this feel wrong...?
+CALI_ACT5_PET_9_2 = """— Why... doesn't this feel wrong..?
 
 Cali seems conflicted before sighing, her body relaxing on the floor as your hand slips through her hair. It seems she has completely forgotten her initial grudge.
 
 The girl doesn't fight you as you slide your hands over her back and shoulders. Her head hangs down in contemplation as you barely hear what she whispers.
 
-— I liked it... """,
+— I liked it...""",
 	CALI_ACT5_PET_9_OPTION_1 = """That wasn't so hard, was it?""",
 	CALI_ACT5_PET_9_OPTION_2 = """Good girl. Now sit.""",
 	CALI_ACT5_PET_10_1 = """Cali shakes her head, her face a blood red as she just sits there. Your hand rubs the top of her head, petting her. Spending the evening just stroking her, she eagerly leans into the petting, relaxing.""",
@@ -10076,9 +10091,9 @@ The girl doesn't fight you as you slide your hands over her back and shoulders. 
 — I have been a good pet today...
 
 The girl states, looking at you expectantly, then down at the bowl. Her eyes widen as she sees even more has been added to it this time.""",
-	CALI_ACT6_NAKED_1_OPTION_1 = "You've been a good girl Cali, but you can be even better. I want you to undress while you eat today.",
-	CALI_ACT6_NAKED_1_OPTION_2 = "A good pet doesn't wear clothing, do they Cali?",
-	CALI_ACT6_NAKED_1_OPTION_3 = "Not good enough Cali, I want you nude while you eat this time to make up for it. ",
+	CALI_ACT6_NAKED_1_OPTION_1 = "You've been a good girl, Cali, but you can be even better. I want you to undress while you eat today.",
+	CALI_ACT6_NAKED_1_OPTION_2 = "A good pet doesn't wear clothing, do they, Cali?",
+	CALI_ACT6_NAKED_1_OPTION_3 = "Not good enough, Cali, I want you nude while you eat this time to make up for it.",
 	CALI_ACT6_NAKED_2_1 = """Cali hesitates for a single moment, but her resolve is in shreds. The girl undresses as she moves down to eat beside you.""",
 	CALI_ACT6_NAKED_2_2 = """Cali looks at you then her clothing. She goes to argue but stops, considering something before stripping herself of her garments. The girl blushes, but doesn't further object as she kneels down to eat beside you.""",
 	CALI_ACT6_NAKED_2_3 = """Cali's eyes show a hint of tears as you chastise her now. 
@@ -10108,12 +10123,12 @@ You remind her as you're still deep inside that she should call you what you are
 	CALI_ACT6_NAKED_7_OPTION_1 = "Good girl",
 
 	
-	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: — Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story. }
+	HALLOWEEN_EVENT_INTRO = """{color=magenta|Zephyra: — Welcome, [Master]. This is our new... Show, I guess? A small play to keep you entertained at such time and day. And I was chosen to narrate it. So, relax and enjoy our little story.}
 
 {color=magenta|Zephyra: — Today I'll be telling the story of a young girl wearing a red hood and her tragic story.}""",
 	HALLOWEEN_EVENT1 = """{color=magenta|Zephyra: — A young girl was going through the forest. A deep, dark, forest carrying a basket with meat buns for her sickly grandmother. }
 
-{color=aqua|Anastasia: — This is really embarrassing, I shouldn't have agreed to this... }
+{color=aqua|Anastasia: — This is really embarrassing, I shouldn't have agreed to this...}
 
 {color=magenta|Zephyra: — Even though she was young and frightened she still bravely embarked on this task. Little did she know what danger was awaiting her.}""",
 	HALLOWEEN_EVENT2 = """{color=aqua|Anastasia: — Isn't it that story about a girl being eaten by a wolf?! Why me of all people...}
@@ -10140,9 +10155,9 @@ You remind her as you're still deep inside that she should call you what you are
 {color=gray_text_dialogue|Bandit: — Wha— Aaarrgh! Noo, don't kill us!}
 
 {color=magenta|Zephyra: — As a true beast, the wolf jumped at the bandits which ran in fear of being eaten. }""",
-	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: — Woah, you really have no shame wearing that?.. }
+	HALLOWEEN_EVENT6 = """{color=aqua|Anastasia: — Woah, you really have no shame wearing that..?}
 
-{color=yellow|Cali: — Whatcha mean? I'm a wolf and this is what I look like. }
+{color=yellow|Cali: — Whatcha mean? I'm a wolf and this is what I look like.}
 
 {color=aqua|Anastasia: — Maybe I'm too self-conscious...}
 
@@ -10151,20 +10166,20 @@ You remind her as you're still deep inside that she should call you what you are
 
 {color=aqua|Anastasia: — I've been traveling to my grandma.}
 
-{color=yellow|Cali: — Why would you do that? It's dangerous for young girls to travel alone. }
+{color=yellow|Cali: — Why would you do that? It's dangerous for young girls to travel alone.}
 
 {color=aqua|Anastasia: — I understand, however my duty was to bring her some meat buns.}
 
 {color=yellow|Cali: — No way, meat buns!? Ho-oh, now that's something I can not overlook!}""",
 	HALLOWEEN_EVENT8 = """{color=yellow|Cali: — Those meat buns, they must be really tasty, right? Show me, I wanna see!}
 
-{color=aqua|Anastasia: — ...Well they are in this basket... }
+{color=aqua|Anastasia: — ...Well they are in this basket...}
 
 {color=aqua|Anastasia: — Huh, it's empty... Did the bandits take them while I was not looking?}
 
 {color=yellow|Cali: — I said I wanna see the meat buns, I can smell them. Are you trying to trick the Big Good Wolf?}
 
-{color=yellow|Cali: — Then, I'll have to search you to find them! }""",
+{color=yellow|Cali: — Then, I'll have to search you to find them!}""",
 
 	HALLOWEEN_EVENT9 = """{color=aqua|Anastasia: — No, wait! Aah-}
 
@@ -10193,11 +10208,11 @@ You remind her as you're still deep inside that she should call you what you are
 
 {color=aqua|Anastasia: — W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
 
-	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter Heleviel's behavior makes another approach seem needed. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
+	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter, Heleviel's behavior makes another approach seem needed. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
 
 Reaching the bottom of the stairs you're not quite sure what she was expecting, but the sight of a dungeon so well equipped for the usage of slaves seemed to be far removed from what she perceived as a reality.
 
-{color=yellow|Heleviel: Stop! I am not some toy for a mere Male I am a priestess of-}""",
+{color=yellow|Heleviel: — Stop! I am not some toy for a mere Male I am a priestess of-}""",
 	HELEVIEL_MANSION_2 = """The stone walls echo as you silence her with a backhand sending her to the floor.  There is a long silence as the only sound coming from the torch lit room is that of her chain being lifted by your hand. She tries to hide her shock, and would have done well to most but you've seen better actresses than her make an attempt.
 
 Heleviell continues to struggle in vain as she's pulled over to a large metal ring in the wall, her eyes wide as she renews her fight, only to receive another backhand for her trouble, then a third. Left there she no longer struggles as you attach her chain to the ring, trapping the troublesome slave.""",
@@ -10207,13 +10222,13 @@ The elf stammers, denial taking hold as you grasp her throat, making her look in
 	HELEVIEL_MANSION_4 = """You let those words sink in as her eyes fill with shock, renewing her panic as you reach down, tearing the chest of her dress open to expose her.  Her breasts are ample, still perky and youthful as you take a possessive grip upon one to inspect your new acquisition.  She tries to protest but only stammers out a cry as you take hold of her nipple and twist.  Whimpers now openly sound as you grip her hair, Heleviel struggles in vain as you allow this so she might wear herself out.  """,
 	HELEVIEL_MANSION_5 = """Her body limited in motion she can only watch as you pull the hip of her dress away to expose the flawless skin underneath, her sweat from the long road shining on her. Her struggles become weaker now as you grip her, squeezing as she squirmed helplessly in the chains.
 
-{color=yellow|Heleviel: I-I'm not...}
+{color=yellow|Heleviel: — I-I'm not...}
 
 Heleviel stammers to herself, unable to cope with the situation as you undo your trousers in front of her, her eyes at first going from disbelief, to horror, and finally resignation as you pulse before the elf. Precum is dotting the tip of your shaft as you regrip her hair tightly, strands snapping between your fingers as you pull her towards your member.  
 
 Heleviel struggles and thrashes her head about for a few moments, tears openly flowing from her eyes as her last protest from her mouth is shut up, a cry silenced as you push your girth into her mouth now at the moment she parted her lips. The shock of that moment clearly kept her teeth at bay.  
 
-{color=yellow|Heleviel: Mmmrff I mrrf.}""",
+{color=yellow|Heleviel: — Mmmrff I mrrf.}""",
 	HELEVIEL_MANSION_6 = """A stern look at her as a warning was all that was needed to break the rest of her resolve, her dignity crumbling as you push down her throat now, forcing the elf to choke on your member, her body squirming as you deny her of even air for her behavior. Legs kicking and her body thrashing didn't dislodge you as you kept yourself deep in her throat, letting her vision start to haze, her body going nearly limp before you pull out just enough to allow her to breathe desperate breaths through her nose, her eyes pouring tears as she coughed and squirmed around in her bindings.  
 
 Heleviel turned her gaze upward in panic again as you pushed back into her throat the moment she was fully lucid, pumping in and out of her throat, not allowing her air enough for comfort as you pleasure yourself at her expense. After she again hit her limit you would once more pull out just enough, the elf's drool hanging down her chin as you then repeated this process constantly, each time pushing her to her limits only to pull back and give her the hope that it had ended. """,
@@ -10222,51 +10237,51 @@ Heleviel turned her gaze upward in panic again as you pushed back into her throa
 It took her a few moments to obey, her eyes closing as she shuddered, swallowing your cum, her eyes hazed over from tears and exhaustion as you pulled out of her hanging mouth, her jaw too fatigued to even close fully as you left her mouth empty for the first time in the better part of an hour.""",
 	HELEVIEL_MANSION_8 = """Heleviel would cough, her head hanging, her eyes still dripping tears as you stand over the female now, your eyes looking down at her on the ground at your feet, where she belonged.  Eventually you'd lean down grasping her hair again, her eyes made to meet yours as you just smile down at the defeated Priestess. Behind her gaze something was smoldering, a rage at her situation. Fury enveloped her tearstained face as she broke the stare first, eyes watering over once again as her voice cracked.
 
-{color=yellow|Heleviel: N-no more.. No m-more.  Stop you m-monster...}
+{color=yellow|Heleviel: — N-no more... No m-more...  Stop, you m-monster...}
 
 Heleviel repeated her mantra between gasping and choked breaths, her eyes glazed over as she seemed to slump down lower on the floor. Her body continued to hang there as exhaustion overtook her, rasping protests fading into exhausted mumbles.  You continue to stand over her for a few minutes, admiring your work before turning to leave her there, making a mental note that she might take a bit longer to break than your other servants.  """,
 	LIRA_MANSION_1 = """Lira follows you on the end of her tether quietly, her head hanging down as she hides her face in the hood of her cloak.  Though normally quiet in your mansion now there is a bustle of movement, the servants attending to their daily tasks in one of the few busy times of the day.  Shyness apparent, she more than once jerks her head to avoid the looks of an occasional servant as you lead her further into your home.  
 
-{color=yellow|Lira: w-where are we going?}
+{color=yellow|Lira: — W-where are we going?}
 
 
 Lira asks you as she continues to try to hide herself, occasionally taking frightened looks around now, her eyes tracking every bit of movement intently as if some monster hid around every corner. You stop her finally in front of a hand carved wooden door, intricate in its design as she stops to stare at it.  """,
 	LIRA_MANSION_2 = """You move in behind her soon, your hand resting on her neck as she instantly seizes, starting to shake like a frightened rabbit. Her throat clenches a few times, her hips squirming as she seems ready to try to fight, to bolt at any moment, before she notices more than a few of your servants stop what they're doing as you hold her there, her face turning blood red. Turning her easily, she soon is facing the group of onlookers.
 
-{color=yellow|Lira: Wh-what are you doing!? I-I'm not.}
+{color=yellow|Lira: — Wh-what are you doing!? I-I'm not...}
 
 Her words turn into a shrill cry as you jerk down the lower part of her robe now, her breasts spilling out as she froze, her eyes wide. Servants watching, she squirms left and right, unable to free herself from your grasp as her panties soon join the dress in pooling at her feet, her skin hot to the touch as she practically vibrates with embarrassment. After a few moments she chokes out a response as you fondle her chest idly on display now, rather impressed with how soft the priestess' skin is.
 
-{color=yellow|Lira: [name]..Please...n-not like this. }""",
+{color=yellow|Lira: — [name]... Please... n-not like this.}""",
 	LIRA_MANSION_3 = """You continue to fondle her as your servants onlook now, the elf so embarrassed that she can barely even move, her shyness paralzying her. Soon you would turn only a bit now, opening the door to the room before taking her lead again, a sharp tug on it making her stumble as she was made to follow you into the room.
 
-{color=yellow|Lira: Ack! You don't need to — }
+{color=yellow|Lira: — Ack! You don't need to—}
 
 Her eyes go wide as you grasp her neck again, tighter this time as she shook now, your hand leaning her head back until her hood fell down, her ear by your lips as you speak""",
-	LIRA_MANSION_3_OPTION_1 = """If you keep squirming we're going to do this in the town square.""",
+	LIRA_MANSION_3_OPTION_1 = """If you keep squirming we're going to do this in the city square.""",
 	LIRA_MANSION_3_OPTION_2 = """I'd think you'd be more grateful, I could have let Heleviel hurt you.""",
 	LIRA_MANSION_4_1 = """Lira visibly wilted at your words, her body still shaking as she stopped her squirming now.  She was pliable now as you guided her to the bed, firmly pulling her up into your lap and having the elf lay over you. Lira doesn't fight your touch further as you reach down and pull your shaft free under her. """,
 	LIRA_MANSION_4_2 = """Lira stopped moving for a few moments as she gathered herself.  Eventually she relaxed somewhat in your grip making it easy to guide her to the new bed.  She still squirmed sheepishly as you pulled your shaft free, the heat of her sex warm against the base as you position her.""",
 	LIRA_MANSION_4 = """
-{color=yellow|Lira: I-is that?! I've n-never seen one...}""",
+{color=yellow|Lira: — I-is that?! I've n-never seen one...}""",
 	LIRA_MANSION_5 = """You smack Lira's bottom firmly now, a reminder to show respect as you push her down just a bit towards the base, the elf starting to pant now as the top of your shaft rubs against her exposed entrance. Lira feels damp now, a realization coming over you that under all of that shame and embarrassment, her body was betraying her.  
 
-{color=yellow|Lira: It's so warm...i-is it warm in here?}
+{color=yellow|Lira: — It's so warm... i-is it warm in here?}
 
 
 Lira speaks out in a half dazed voice, occasionally trying to pull away from you.  Your hands resting tight on her ass as you pull her back to you, her holes stretched out a bit from the tight grip as Lira protests. Moments later the young elf freezes as the head of your shaft slipped over her entrance.  
 
-{color=yellow|Lira: N-no! You shouldn't!}""",
+{color=yellow|Lira: — N-no! You shouldn't!}""",
 	LIRA_MANSION_6 = """Lira thrashes until with your grip firm you force the slave down onto you. Her eyes went wide as she yelped and clenched tight, making her first penetration all the tighter. After a few moments of her squirming around in soft protest you grasp her hair, pulling her to look at you.  
 
-{color=yellow|Lira: T-thats...no...}
+{color=yellow|Lira: T-thats... no...}
 
 Inch by inch you push into the tight elf, the entire time she thrashes and squirms on your lap.  After a few moments she pants now, fully impaled onto you. Eventually you start to pump the elf onto your member, the tightness perfect as she whimpers above you, her hands gripping tightly onto the sheets on your side as she abandons her resistance, unable to stop you anyways.  
 
 You continue to use Lira for a few minutes like this, her virgin blood showing on your member as she's grinded up and down, her entrance pulsing and twitching around your member. Lira for her part said nothing, her face obscured soon by her hood, treating it like a security blanket as you claim the tight little entrance for your needs. Again you pull down the cloth covering her face as she makes a protesting squeak, the slipperiness of her entrance soon catching your attention. """,
 	LIRA_MANSION_7 = """As you relax your grip on her preparing to change positions, you're greeted by the welcome surprise of Lira starting to ride on you herself now. The pace is slow, but deliberate as she rides your shaft, looking away as more than once she tries to pull her hood up to hide her face, protesting with a whine each time you stop her.  
 
-{color=yellow|Lira: — [name], P-please don't look at me...} 
+{color=yellow|Lira: — [name], p-please don't look at me...} 
 
 Lira soon is riding you harder, surrendering if not in obedience, but in blind need as she pumps her hips down onto your cock, the deliberate pace causing a cascade of little mewling sounds to come from her as she finds her pleasure in the act, her entrance causing you to have to fight the urge to cum. Holding out as long as you can, Lira seems to pick up on this, her hips rocking faster as she refuses to look at you, her face in profile blood red from embarrassment. Her shameful face soon turns to shock as she feels your cock convulsing inside of her, hot lines of semen pumping up into the elven virgin's body, claiming her for yourself.""",
 	LIRA_MANSION_8 = """Lira continued to clench as embarrassment took hold of her face, moments later this was discarded as the girl seized up now, the hot cum soaking her inner walls driving her over the edge as she orgasmed now, an almost happy sound slipping out as she collapsed. There was a moment of relaxed bliss before her eyes shot wide now, looking at you as she still managed to have her face turn even redder.
@@ -10276,18 +10291,18 @@ Lira soon is riding you harder, surrendering if not in obedience, but in blind n
 Lira seems to panic for a few moments, squirming hard around your shaft before she dismounts. A few moments later she gave you a quick bow and scampered off to the bathroom you'd passed enroute to her room. You remind yourself that obedience training is going to have to be a daily thing at this rate with her.""",
 	LIRA_MANSION_9 = """Lira returns to the room a few moments later fully dressed. Makes absolutely no sense. It occurs to you that her dress had been kicked into the room once you'd removed it. Despite this though you don't recall seeing her pick it up. After giving a wary look to Lira, she has a small glint in her eye now as she realizes you knew even as she turned to look away, her cheeks still blood red.  
 
-{color=yellow|Lira: Will that be all for tonight... [master]?}
+{color=yellow|Lira: — Will that be all for tonight... [Master]?}
 
 The last word comes out of her mouth now sounding like an attempt to placate your curiosity.  You consider inquiring just when the girl had grabbed the robe but finally dismissed it, instead deeming it a good idea to make sure that inventory was done a bit more frequently in the mansion. If Lira was as good at taking items unnoticed it seemed she might be of more use to you than you thought.""",
 	
 	EXCALIBUR_QUEST_1 = """You come across a small clearing with a large rock in the center of it. As you take a closer look you realize it has a sword handle sticking out of it being buried in stone. Despite its state, the sword looks in a respectable state. However pulling it does not seem to be easy...""",
-	EXCALIBUR_QUEST_1_OPTION_1 = "Pull it",
-	EXCALIBUR_QUEST_GOOD = """With incredible effort you manage to pull the sword out of stone! As it's finally free you can feel a potent magic residing in it. Adoring your acquirement you leave the lone clearing. """,
+	EXCALIBUR_QUEST_1_OPTION_1 = "*Pull it*",
+	EXCALIBUR_QUEST_GOOD = """With incredible effort you manage to pull the sword out of stone! As it's finally free you can feel a potent magic residing in it. Adoring your acquirement you leave the lone clearing.""",
 	EXCALIBUR_QUEST_BAD = """You give your best spending a few minutes grabbing the sword with no success. It does not even bulge, neither stone seems to be affected by all your efforts. Praising the fact that nobody seen your pathetic struggles, you decide to leave the sword alone for now.""",
 	
 	CHRISTMAS_EVENT_PRE_INTRO = """{color=aqua|Zephyra: — At this merry time of year, I hope you are doing great, [Master]. 
 
-Zephyra: — This day we'll be telling you a story about a lonesome girl whose only wish was a bit of happiness... Please, enjoy it. }""",
+Zephyra: — This day we'll be telling you a story about a lonesome girl whose only wish was a bit of happiness... Please, enjoy it.}""",
 	CHRISTMAS_EVENT_INTRO = """One young poor girl has been staying on the streets in the winter. Being left alone she was trying to make living by selling some life shards.
 
 {color=yellow|Daisy: — Please... Purchase these shiny stones...}
@@ -10300,9 +10315,9 @@ Zephyra: — This day we'll be telling you a story about a lonesome girl whose o
 With teary eyes she crouched down, lighting those shards and observing them closely in an attempt to shrug away the coldness. She has been recalling her memories in that faint light...""",
 	CHRISTMAS_EVENT_2 = """{color=aqua|Rudolph: — Hey, are you actually trying to throw your life away? This won't work, these are healing shards, you know.}
 
-{color=yellow|Daisy: — W-Who are you? }
+{color=yellow|Daisy: — W-Who are you?}
 
-{color=aqua|Rudolph: — I'm this scenarios' invited guest... Ah, you meant literally. You can see me as a holiday spirit. I'm here to offer you a job. }
+{color=aqua|Rudolph: — I'm this scenarios' invited guest... Ah, you meant literally. You can see me as a holiday spirit. I'm here to offer you a job.}
 
 {color=yellow|Daisy: — B-But, I'm not that kind of girl...}
 
@@ -10323,7 +10338,7 @@ With teary eyes she crouched down, lighting those shards and observing them clos
 
 {color=aqua|Rudolph: — Didn't I tell you? You gotta do some santa's work yourself. Now take this bag and come after me.}
 
-{color=yellow|Daisy: — Eeeeh?...}
+{color=yellow|Daisy: — Eeeeh..?}
 
 Dropping her protests, the girl obediently went after her new employer.""",
 	CHRISTMAS_EVENT_6 = """The girl was surprised when she had to visit numerous houses of a common folk varying degrees of poverty. As parents and kids were greeting her she found it a fresh experience.
@@ -10354,11 +10369,11 @@ Not sure how to reply, the girl still managed to thank her back.""",
 
 {color=yellow|Daisy: — Things could be against us, but we can adore these moments of peace and happiness.}
 
-{color=aqua|Rudolph: — Well said, child. I see you've gone quite a path to get here. }
+{color=aqua|Rudolph: — Well said, child. I see you've gone quite a path to get here.}
 
 {color=yellow|Daisy: — W-We all want to wish you all Merry Christmas and Happy holidays!}""",
 	
-	ZCEVENT_1 = """As you walk through the Mansion you notice two of your residents, Zephyra and Cali talking to each other.
+	ZCEVENT_1 = """As you walk through the Mansion you notice two of your residents, Zephyra and Cali, talking to each other.
 
 {color=aqua|Zephyra: — You know, I haven't noticed before, but we have a lot in common.}
 
@@ -10376,10 +10391,10 @@ With no choice left, today you are forced to take your cute residents for a smal
 
 {color=yellow|Cali: — I read no stupid books.}
 
-{color=aqua|Zephyra: — Hmmm... This indeed shows. }
+{color=aqua|Zephyra: — Hmmm... This indeed shows.}
 
 {color=yellow|Cali: — What do you mean by that?}""",
-	ZCEVENT_4 = """{color=aqua|Zephyra: — You seem to take pride in that statement. }
+	ZCEVENT_4 = """{color=aqua|Zephyra: — You seem to take pride in that statement.}
 
 {color=yellow|Cali: — So what? Who needs books anyway? If anything, bookworms make more trouble for normal people.}
 
@@ -10388,9 +10403,9 @@ Despite her sour expression, Zephyra decides to drop this topic.
 {color=aqua|Zephyra: — What do you do for fun then?}""",
 	ZCEVENT_5 = """{color=yellow|Cali: — Ah, I like adventuring with [Master]. And sometimes I play with kids when there's no work.}
 
-{color=aqua|Zephyra: — Playing with kids...? Aren't you too old for this? Or perhaps that suits your image.}
+{color=aqua|Zephyra: — Playing with kids..? Aren't you too old for this? Or perhaps that suits your image.}
 
-{color=yellow|Cali: — Hey, shut up, you are even shorter than me! Did all your growth go into that stupid tail of yours? }
+{color=yellow|Cali: — Hey, shut up, you are even shorter than me! Did all your growth go into that stupid tail of yours?}
 
 {color=aqua|Zephyra: — W-w...}
 
@@ -10402,23 +10417,23 @@ Before it's too late you silence both girls and order them to stay silent which 
 
 {color=yellow|Cali: — Of course I can drink! If you can do it, you think I won't be able to?}
 
-After digesting the drink you ordered, your and the girls' mood has slightly improved. The girls seemingly became less tense despite their previous quarrel and  With time their conversation went into a relatively peaceful direction. 
+After digesting the drink you ordered, your and the girls' mood has slightly improved. The girls seemingly became less tense despite their previous quarrel and with time their conversation went into a relatively peaceful direction. 
 
 After a bit you get a call from one of your acquaintances from the guilds, having to retreat from the girls for a while.""",
 	ZCEVENT_8 = """{color=aqua|Zephyra: — I think regardless of all our differences we can agree on one thing.}
 
 {color=yellow|Cali: — Whatcha mean?}
 
-{color=aqua|Zephyra: — We both are here because of one [man] we really care for. }
+{color=aqua|Zephyra: — We both are here because of one [man] we really care for.}
 
-{color=yellow|Cali: — ...I guess you have a point.}
+{color=yellow|Cali: — ...I guess, you have a point.}
 
 {color=aqua|Zephyra: — Hey, you know what...}""",
 	ZCEVENT_9 = """After some time you come back to the room seeing two girls moved close to each other and acting slightly suspicious.
 
 {color=yellow|Cali: — [Master]...}
 
-{color=aqua|Zephyra: — You are always taking care of us and doing such a great job..}
+{color=aqua|Zephyra: — You are always taking care of us and doing such a great job.}
 
 {color=yellow|Cali: — We agreed that we wanna thank you for it.}
 
@@ -10432,21 +10447,21 @@ After a bit you get a call from one of your acquaintances from the guilds, havin
 {color=aqua|Zephyra: — That's because they are erect. Did you get excited mentally preparing yourself?}""",
 	ZCEVENT_11 = """You are at a loss of words but thankfully nobody else seems to pay attention to this little prank.
 
-However girls seem to catch your concerns and with more giggling cover themselves back. 
+However, girls seem to catch your concerns and with more giggling cover themselves back. 
 
-{color=yellow|Cali: — Your face was so stupid. }
+{color=yellow|Cali: — Your face was so stupid }
 
-{color=aqua|Zephyra: — Hey, don't call [Master] stupid, that's rude. *giggle*}""",
+{color=aqua|Zephyra: — Hey, don't call [Master] stupid, that's rude. *Giggle*}""",
 	ZCEVENT_12 = """You leave back to the mansion with girls seemingly getting along and weighing on you like a pair of clingy animals. 
 
 You feel relieved it all turned out well. The girls went to rest soon after you arrived home.""",
 	
-	ZEPHYRA_QUEST_INIT_OPTION_1 = "Talk to Zephyra",
+	ZEPHYRA_QUEST_INIT_OPTION_1 = "*Talk to Zephyra*",
 	ZEPHYRA_QUEST_1 = """You find Zephyra preparing to leave the mansion. You ask her where she's going.
 
 — Ah, I was planning to visit Ginny at the church. We've become friends recently. You can tag along if you wanna.""",
-	ZEPHYRA_QUEST_1_OPTION_1 = "Alright",
-	ZEPHYRA_QUEST_1_OPTION_2 = "Maybe some other time",
+	ZEPHYRA_QUEST_1_OPTION_1 = "Alright.",
+	ZEPHYRA_QUEST_1_OPTION_2 = "Maybe some other time.",
 	ZEPHYRA_QUEST_2 = """Zephyra's eyes shine with joy upon hearing your reply.
 
 — Great, let's not waste time then! She said she wanted to see me.""",
@@ -10464,7 +10479,7 @@ Zephyra: — So, what do you have on your mind?""",
 Zephyra: — Say no more, I always wanted to try out a nun's role. 
 
 Zephyra seems rather relaxed about the whole situation, but you suppose Ginny wouldn't trust it to just about anyone.""",
-	ZEPHYRA_QUEST_4_OPTION_1 = """I guess I can stick around to keep you company""",
+	ZEPHYRA_QUEST_4_OPTION_1 = """I guess, I can stick around to keep you company.""",
 	ZEPHYRA_QUEST_4_OPTION_2 = """Is it really a good idea to let someone take your role?""",
 	ZEPHYRA_QUEST_5_1 = """Ginny: — Ah, I wouldn't have to worry about anything with the Mayor here too. Thank you!
 
@@ -10483,14 +10498,14 @@ Woman: — I'm sorry, I really need some help...
 Zephyra: — Tell us what happened.
 
 Woman: — I... Lost my wallet and my children have nothing to eat until my next payment... I know that Celena helps people in need.""",
-	ZEPHYRA_QUEST_7 = """Zephyra: — Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides she can tell if you have already received some help ea...
+	ZEPHYRA_QUEST_7 = """Zephyra: — Uh... I'm afraid I have no authority to access church's donations. You should wait until Ginny's return. Besides, she can tell if you have already received some help ea—
 
 Woman: — No, please, I can't stay here for long, I have to return home soon or my husband will get mad, I beg you!
 
 Zephyra is unsure what to do and seems to seek your input.""",
 	ZEPHYRA_QUEST_7_OPTION_1 = "Zephyra's right, we can't just give church's money to anyone",
-	ZEPHYRA_QUEST_7_OPTION_2 = "We should help those in need (charm check)",
-	ZEPHYRA_QUEST_7_OPTION_3 = "There's no need to get into church's treasury, I can help you on my own (300 gold)",
+	ZEPHYRA_QUEST_7_OPTION_2 = "[Charm] We should help those in need.",
+	ZEPHYRA_QUEST_7_OPTION_3 = "There's no need to get into church's treasury, I can help you on my own. (300 gold)",
 	ZEPHYRA_QUEST_8_1 = """You support Zephyra and tell that this whole situation seems a bit suspicious. The woman leaves with a downed look as Zephyra gives a relieved sigh.""",
 	ZEPHYRA_QUEST_8_2_GOOD = """{color=green|Success}
 
@@ -10540,7 +10555,7 @@ Daisy: — I-I like to think so... After all, I'm lucky to have a kind caring [M
 
 Zephyra: — You are right. But you shouldn't treat our [Master] too acceptingly. I've heard [he] might not be an ideal person. [He] could be up for doing some bad things. For example, [he] might even be eavesdropping on us right now...
 
-Daisy: — No way, I trust my [Master]! And it's not like I'd be embarrassed if he heard.
+Daisy: — No way, I trust my [Master]! And it's not like I'd be embarrassed if [he] heard.
 
 Thankfully, Daisy seems to be too dim to notice Zephyra's sneer. As she's done with the prayer, she leaves the chapel.""",
 	ZEPHYRA_VISITOR_1 = """After some time a gaudy looking man appears in the church, seeming quite out of place. As he looks around, it's obvious he's searching for someone. 
@@ -10560,29 +10575,29 @@ Zephyra seems to be trying to avoid this conversation going any further.""",
 
 Visitor: — Wait, you look very kind and pure as well...
 
-Zephyra: — No-no, you are mistaken. In fact I'm the opposite of pure.
+Zephyra: — No-no, you are mistaken. In fact, I'm the opposite of pure.
 
 Visitor: — Huh? How can this be?
 
 Zephyra: — You see... I have a [Master]. And [he] has already defiled every inch of my body.
 
 Visitor: — S-Such insolence!""",
-	ZEPHYRA_VISITOR_2_OPTION_1 = """Wait a second, I did not do that""",
-	ZEPHYRA_VISITOR_2_OPTION_2 = """That's an understatement, I've gone much further than just her body""",
+	ZEPHYRA_VISITOR_2_OPTION_1 = """Wait a second, I did not do that.""",
+	ZEPHYRA_VISITOR_2_OPTION_2 = """That's an understatement, I've gone much further than just her body.""",
 	ZEPHYRA_VISITOR_3_1 = """Zephyra: — S-stupid, just play along with me!
 
 But it seems the problematic visitor has already been turned off. 
 
 Visitor: — No matter! Even if it's a lie, I can't admire a lady who can spout such obscene things so easily.
 
-Visitor: — I guess I'll be returning when Ginny is back. 
+Visitor: — I guess, I'll be returning when Ginny is back. 
 
 Saying that, the man leaves the church and you alone.""",
 	ZEPHYRA_VISITOR_3_2 = """Visitor: — Nuoooooh! This is truly evil, the worst of our time! I can't admire someone so defiled! 
 
 Zephyra: — Y-yes, it is most regrettable I can't meet your standards.
 
-Visitor: — I guess I'll be returning when Ginny is back. 
+Visitor: — I guess, I'll be returning when Ginny is back. 
 
 Saying that, the man leaves the church and you alone.""",
 	ZEPHYRA_MAN_1 = """A man enters the church. His lifeless eyes and sullen expression give the appearance of a walking corpse. He seems to be suffering from depression. Zephyra calmly approaches him.  
@@ -10606,19 +10621,19 @@ Saying this, he leaves.
 
 Zephyra: — Haah, he didn't even leave a donation.""",
 	ZEPHYRA_MAN_4_OPTION_1 = "\"There are no gods\"?",
-	ZEPHYRA_MAN_4_OPTION_2 = "You've dealt with him rather creatively",
-	ZEPHYRA_QUEST_9_1 = """Zephyra smirks at your question. She clearly realizes the absurdity of the situation but that only makes her smile wider.
+	ZEPHYRA_MAN_4_OPTION_2 = "You've dealt with him rather creatively.",
+	ZEPHYRA_QUEST_9_1 = """Zephyra smirks at your question. She clearly realizes the absurdity of the situation, but that only makes her smile wider.
 
 Zephyra: — Did you really expect I could prove him wrong? He made up his mind before he came here. I doubt it will be his final decision though.
 
 Zephyra: — Say, [Master], did you perhaps find his logic relatable?""",
 	ZEPHYRA_QUEST_9_2 = """Zephyra: — Why, thank you. I consider myself a primarily diplomatic person after all. But, to tell you the truth, he reminded me of my younger sister. If not for that, I wouldn't have even tried to help him. I still have no idea what's on her mind most of the time...
-
+	
 Zephyra: — Say, [Master], did you perhaps find his logic relatable?""",
-	ZEPHYRA_QUEST_9_OPTION_1 = "Sometimes I share these thoughts",
-	ZEPHYRA_QUEST_9_OPTION_2 = "He's a lost person deserving a pity",
-	ZEPHYRA_QUEST_9_OPTION_3 = "I prefer not to think about these things",
-	ZEPHYRA_QUEST_10_1 = """Zephyra: — Ah, is that so? Perhaps you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you?.. Just kidding, I'm a terrible preacher.""",
+	ZEPHYRA_QUEST_9_OPTION_1 = "Sometimes I share these thoughts.",
+	ZEPHYRA_QUEST_9_OPTION_2 = "He's a lost person deserving a pity.",
+	ZEPHYRA_QUEST_9_OPTION_3 = "I prefer not to think about these things.",
+	ZEPHYRA_QUEST_10_1 = """Zephyra: — Ah, is that so? Perhaps, you should visit your religious organization of choice more often. Or, in case you have none, should I tutor you..? Just kidding, I'm a terrible preacher.""",
 	ZEPHYRA_QUEST_10_2 = """Zephyra: — Yep, yep. That's right.
 
 Zephyra nods in agreement to your statement.
@@ -10627,11 +10642,11 @@ Zephyra: — Men of your moral conviction are a rare breed these days. Aren't I 
 	ZEPHYRA_QUEST_10_3 = """Zephyra: — Eeh? Are you too scared of your own wandering mind? Or perhaps just too simpleminded? Well, I don't blame you, this is a perfectly normal way to see things for many after all. There's a certain charm in it too...""",
 	ZEPHYRA_QUEST_11 = """Finally Ginny returns back to the church. After Zephyra gives her a retelling of today's events, she thanks the both of you.
 
-Ginny: — I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the mayor.
+Ginny: — I can't thank you enough. Sorry I couldn't keep you company today... Ah, there's something I got for helping, from my friend's parents. Here's some candies, and wine for the Mayor.
 
-Zephyra : — Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
+Zephyra: — Just so you know, I do not mind receiving nice liquor as well. Despite my looks, I'm an adult.
 
-Ginny: — I'm afraid it was a gift to the mayor specifically when I mentioned him... Do you want to give your candies back then?
+Ginny: — I'm afraid it was a gift to the Mayor specifically when I mentioned [him]... Do you want to give your candies back then?
 
 Zephyra: — ...Don't make me more sad than necessary.
 
@@ -10645,9 +10660,9 @@ As you give her a wary look, she starts spilling the beans.
 Zephyra: — W-well, don't look at me like this, I've been preparing to make the first move after being here for so long. You can't expect a cute girl like me to join you and be just a work drone. 
 
 Zephyra, fully naked, casually moves next to you sitting in water.""",
-	ZEPHYRA_BATH_1_OPTION_1 = "I didn't take you for such a bold girl",
+	ZEPHYRA_BATH_1_OPTION_1 = "I didn't take you for such a bold girl.",
 	ZEPHYRA_BATH_1_OPTION_2 = "What are you planning?",
-	ZEPHYRA_BATH_2_1 = """— I-I'm not... It's just... Well, we gotta seal our relationship sooner, rather than later, don't we? Besides, I can't get behind the other servants too much, can I?
+	ZEPHYRA_BATH_2_1 = """— I-I'm not... It's just... Well, we gotta seal our relationship sooner rather than later, don't we? Besides, I can't get behind the other servants too much, can I?
 
 Zephyra is blushing heavily but still rises from the water and leans on you, kissing you clumsily.""",
 	ZEPHYRA_BATH_2_2 = """— [Master], are you really this dense? Sigh... This is what I get for falling in love with a dunce. Think of it as payment for your help at the church then...
@@ -10657,7 +10672,7 @@ Zephyra leans on you and clumsily kisses you, putting you in the mood and not le
 
 You can feel heat radiating off of her, and you can't help but respond in kind. You run your hands over her body, exploring every inch of her smooth skin. You can't resist the urge to tease her, running your fingers over her perky nipples. Zephyra moans softly, arching her back against you. You take this as an invitation to continue your exploration. You slip your fingers between her legs. Despite her clearly being a virgin, you feel her already wet and ready for you.
 
-— Did you know... That foxes mate for life? *giggle*""",
+— Did you know... That foxes mate for life? *Giggle*""",
 	ZEPHYRA_BATH_4 = """Your fingers dig into her soft hips as you guide her onto you. Her warmth envelops your dick as you pierce her hymen. Zephyra cries out in pleasure, her tight walls squeezing around your rod as she takes in the full length of your penis. She gasps and moans, her body flexing and arching with every thrust.""",
 
 	ZEPHYRA_BATH_5 = """You pick up the pace, pounding harder and faster into her petite butt. Zephyra's moans turn into cries of pleasure as she orgasms, coming apart in your arms. The sensation of her spasming insides is too much to bear and you come inside of her, painting her walls with your seed. 
@@ -10665,9 +10680,9 @@ You can feel heat radiating off of her, and you can't help but respond in kind. 
 However, you don't feel quite satisfied yet. You resume slamming into her backside as her lewd cries fill the bath...""",
 	ZEPHYRA_BATH_6 = """As you both catch your breath, you hold her close, relishing the feeling of her soft skin against yours. She snuggles closely and wraps her tail around you, closing her eyes in tranquility.  
 
-— Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *giggle*""",
+— Would it be too much if I ask you to help me wash? I think my legs aren't listening to me anymore. *Giggle*""",
 	
-	GOBLIN_QUEST_0 = """In the morning you receive a letter which, unlike what you usually get, seems quite crudely made, seemingly crafted with home-made paper and ink. You realize it's from a beastkin settlement asking for your help so you decide it might be a good idea to visit it.""",
+	GOBLIN_QUEST_0 = """In the morning you receive a letter which, unlike what you usually get, seems quite crudely made, seemingly crafted with home-made paper and ink. You realize it's from a beastkin settlement asking for your help, so you decide it might be a good idea to visit it.""",
 	GOBLIN_QUEST_1 = """— Oh, it's you, [name]. I see you've received my message. Good, then let me tell you why you're here. I've received a sign from some spirits who want an outsider's help.""",
 	GOBLIN_QUEST_1_OPTION_1 = "Who is it from exactly?",
 	GOBLIN_QUEST_1_OPTION_2 = "What a pain...",
@@ -10679,17 +10694,17 @@ Savra explains to you how to find the mysterious spirits in need and adds a mark
 Savra explains to you how to find the mysterious spirits in need and adds a mark on your map.""",
 	GOBLIN_QUEST_3 = """Once you arrive at the small cliff, you notice the air feels different in this spot. Before you are able to take a look around, a white figure materializes right in front of you, nearly making you jump out of surprise.""",
 	GOBLIN_QUEST_4 = """— I knew you'd come, Mortal. Fear not, I'm not planning to fight against you. Not this time.""",
-	GOBLIN_QUEST_4_OPTION_1 = """Y-you've scared me""",
+	GOBLIN_QUEST_4_OPTION_1 = """Y-you've scared me.""",
 	GOBLIN_QUEST_4_OPTION_2 = """I wouldn't like us to fight again...""",
 	GOBLIN_QUEST_4_OPTION_3 = """What do you want, spirit?""",
-	GOBLIN_QUEST_5_1 = """— I remember you being more brave than this, mortal. If your soul has become too enfeebled, I might have to take it and put it to better use. 
-
+	GOBLIN_QUEST_5_1 = """— I remember you being more brave than this, mortal. If your soul has become too enfeebled, I might have to take it and put it to better use.
+	
 — I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
 	GOBLIN_QUEST_5_2 = """— I mean you no harm, mortal. I sincerely am in need of your expertise, so you can rest assured.
-
+	
 — I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
-	GOBLIN_QUEST_5_3 = """— Hmm, I remember mortals being more formal about their communications. Very well. 
-
+	GOBLIN_QUEST_5_3 = """— Hmm, I remember mortals being more formal about their communications. Very well.
+	
 — I have a task for you. Not long ago, I noticed strange activity in one part of the forest. The animals are disturbed and there's an uncommon energy pervading the atmosphere. I went there myself but couldn't find who was causing it. But I'm certain this is the doing of mortals. However, this could not be the work of beastkin or elves. They know better. It must be the work of something foreign, something I believe you are better suited for dealing with.""",
 	GOBLIN_QUEST_5_OPTION_1 = """Why should I do this for you?""",
 	GOBLIN_QUEST_5_OPTION_2 = """Alright, where do I start then?""",
@@ -10711,8 +10726,8 @@ Sigmund takes a long pause before continuing.
 
 You realize that now you have a better clue about what you should be looking for. You decide to go back to the location where you found the traps once again.""",
 	GOBLIN_QUEST_8 = """You check the spot where you found the broken parts and soon you manage to find a couple of extensively hidden small tracks. After following it for a while you come across a small camp. You notice a few goblins on standby, likely the culprits who laid the traps.""",
-	GOBLIN_QUEST_8_OPTION_1 = """Approach them""",
-	GOBLIN_QUEST_8_OPTION_2 = """Sneak in""",
+	GOBLIN_QUEST_8_OPTION_1 = """*Approach them*""",
+	GOBLIN_QUEST_8_OPTION_2 = """[Physics] *Sneak in*""",
 	GOBLIN_QUEST_9_1 = """As you come out to the goblins in full view, they act openly hostile and grab their weapons. It seems there's no choice but to fight them.""",
 	GOBLIN_QUEST_9_2_BAD = """{color=red|Failure}
 
@@ -10724,49 +10739,49 @@ You manage to get close enough to the goblins without being discovered. You jump
 
 — Hey, big [boy], no need for violence. We just thought these woods were free otherwise we wouldn't be here. No need to point that big fat stick at me.""",
 	GOBLIN_QUEST_10_OPTION_1 = """What are you doing here?""",
-	GOBLIN_QUEST_10_OPTION_2 = """Nothing is ever free""",
-	GOBLIN_QUEST_10_OPTION_3 = """You must leave if you don't want anything worse to happen""",
-	GOBLIN_QUEST_11_1 = """— Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods. 
+	GOBLIN_QUEST_10_OPTION_2 = """Nothing is ever free.""",
+	GOBLIN_QUEST_10_OPTION_3 = """You must leave if you don't want anything worse to happen.""",
+	GOBLIN_QUEST_11_1 = """— Ah, we just field tested my latest gizmos. I've hired these guys to keep me company, it's dangerous for a girl to go alone through these woods.
 
-But...whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
-	GOBLIN_QUEST_11_2 = """— Hah, true dat. You aren't here to rob us naked, I take it? We'll be leavin' then. 
-
-But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
+— But...whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_2 = """— Hah, true dat. You aren't here to rob us naked, I take it? We'll be leavin' then.
+	
+— But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
 	GOBLIN_QUEST_11_3 = """— Right, right, we need no problems, okay? We'll leave before the sunset.
-
-But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
-	GOBLIN_QUEST_11_OPTION_1 = """I'm here on my own actually""",
-	GOBLIN_QUEST_11_OPTION_2 = """The forest spirit is angry at your activities""",
-	GOBLIN_QUEST_11_OPTION_3 = """This is none of your business""",
+	
+— But... whose lands are these exactly? It is pretty distant from elven lands and I can swear with my ass you aren't local either.""",
+	GOBLIN_QUEST_11_OPTION_1 = """I'm here on my own actually.""",
+	GOBLIN_QUEST_11_OPTION_2 = """The forest spirit is angry at your activities.""",
+	GOBLIN_QUEST_11_OPTION_3 = """This is none of your business.""",
 	GOBLIN_QUEST_12_1 = """— All alone you say? Must be lonely, ha-ha, I'm kidding. If you don't mind, we'll be on our way then.""",
-	GOBLIN_QUEST_12_2 = """— Huh, you aren't serious?... You are... Okay then, I don't like where this conversation is going, so I'll be going back to dwarven lands. Bye.""",
+	GOBLIN_QUEST_12_2 = """— Huh, you aren't serious..? You are... Okay then, I don't like where this conversation is going, so I'll be going back to dwarven lands. Bye.""",
 	GOBLIN_QUEST_12_3 = """— I see... We'll be on our way then?""",
-	GOBLIN_QUEST_12_OPTION_1 = """You can go now""",
+	GOBLIN_QUEST_12_OPTION_1 = """You can go now.""",
 	GOBLIN_QUEST_12_OPTION_2 = """Actually, why don't you compensate for the harm you've done?""",
 	GOBLIN_QUEST_13 = """— Goddamit... Fine, take what we have left.
 
 After the goblins leave you search their camp for what valuables they have left, obtaining about a thousand worth of gold.""",
-	GOBLIN_QUEST_14_OPTION_0 = """Report back""",
-	GOBLIN_QUEST_14 = """As you give a call, the white stag appears before you in its human form.
+	GOBLIN_QUEST_14_OPTION_0 = """*Report back*""",
+	GOBLIN_QUEST_14 = """As you give a call, the White Stag appears before you in its human form.
 
 — You have completed your task. No wonder, considering your resourcefulness, but I still give you my gratitude. I suppose you deserve some reward for it. Tell me, what do you seek?""",
-	GOBLIN_QUEST_14_OPTION_1 = """Wealth""",
-	GOBLIN_QUEST_14_OPTION_2 = """Power""",
-	GOBLIN_QUEST_14_OPTION_3 = """Pleasure""",
+	GOBLIN_QUEST_14_OPTION_1 = """Wealth.""",
+	GOBLIN_QUEST_14_OPTION_2 = """Power.""",
+	GOBLIN_QUEST_14_OPTION_3 = """Pleasure.""",
 	GOBLIN_QUEST_15_1 = """— Huh, I never understood mortals' fascination with money but so be it. There've been many fools who have come into these forests, so I can share some of the possessions they've left behind. Take their gold and leave.
 
-You look behind yourself and find a sizable stash of treasures. As you turn back around, you realize that the white stag is already gone. After going through it you are able to net 5.000 gold from it.""",
+You look behind yourself and find a sizable stash of treasures. As you turn back around, you realize that the White Stag is already gone. After going through it you are able to net 5.000 gold from it.""",
 	GOBLIN_QUEST_15_2 = """— You've helped us and I can take you for an ally. Very well, you can have this ancient weapon which you should find useful in your hunts and battles.
 
 The White Stag materializes a spear in her hands which she passes to you. Despite its obvious elder age, it feels better than new. Without further continuation, the spirit disappears leaving you alone.""",
 	GOBLIN_QUEST_15_3 = """— ... Did I hear that right? Do you really lust after my body? 
 
 Despite your rather outrageous suggestion, the White Stag does not seem to be turned off by it.""",
-	GOBLIN_QUEST_15_3_OPTION_1 = """Yes, I find you very appealing""",
-	GOBLIN_QUEST_15_3_OPTION_2 = """No, I think I changed my mind""",
+	GOBLIN_QUEST_15_3_OPTION_1 = """Yes, I find you very appealing.""",
+	GOBLIN_QUEST_15_3_OPTION_2 = """No, I think I changed my mind.""",
 	GOBLIN_QUEST_HARA_1 = """— Hey ya, it's you. Knew I would find you here. This might be a bit sudden, but I figured since you're a big wig over here, I could use someone like you. I wouldn't mind joining your group, at least for a little while. I'll even give you some special treatment while I'm with you. What do you say?""",
-	GOBLIN_QUEST_HARA_1_OPTION_1 = """I surely could use someone of your... talent""",
-	GOBLIN_QUEST_HARA_1_OPTION_2 = """Nah""",
+	GOBLIN_QUEST_HARA_1_OPTION_1 = """I surely could use someone of your... talent.""",
+	GOBLIN_QUEST_HARA_1_OPTION_2 = """Nah.""",
 	GOBLIN_QUEST_HARA_2_1 = """— Great, name's Hara, by the way. I look forward to our future relations. You're a lucky [guy] to have me by your side. I've got plans in the workings that will blow you away.""",
 	GOBLIN_QUEST_HARA_2_2 = """— Too bad. Well, maybe you'll change your mind once I have something else to offer, but mind you, it's not going to be as simple to get me then.""",
 	GOBLIN_QUEST_SEX_1 = """The White Stag seems amused by your request, and her expression softens for the first time since you met her. Without warning, she pushes you down, straddling you with her powerful thighs. You marvel at her beauty as she towers above you, her long white hair cascading around her shoulders. It does not take long for her to feel your erection.
@@ -10807,7 +10822,7 @@ You aren't able to hear her last words as your exhaustion takes over, making you
 {color=yellow|Zephyra: — You may be in your right, but that does not make things fair to me.}
 
 It seems Zephyra had to borrow money from Lilia and promised to share with her, so despite getting some of it the fairy wants all that is left now... It seems you'll have to solve this dispute. """,
-	ZEPHYRA_LILIA_3_OPTION_1 = """Lilia, you should share with Zephyra and not be too greedy""",
+	ZEPHYRA_LILIA_3_OPTION_1 = """Lilia, you should share with Zephyra and not be too greedy.""",
 	ZEPHYRA_LILIA_3_OPTION_2 = """Since it was Lilia's pocket money, she can have it.""",
 	ZEPHYRA_LILIA_3_OPTION_3 = """I'll buy you two another cake... (100 gold)""",
 	ZEPHYRA_LILIA_4_1 = """Lilia pouts upon hearing your words.
@@ -10842,7 +10857,7 @@ Lilia frowns in consideration, something Zephyra hardly ever saw from her.
 {color=aqua|Lilia: — Why don't we pay it back then? I know of something [he] wouldn't refuse...}""",
 	ZEPHYRA_LILIA_6 = """Later at night both Lilia and Zephyra both end up in your room as you sleep soundly.
 
-{color=yellow|Zephyra: — [Master]'s not going to wake up...?}
+{color=yellow|Zephyra: — [Master]'s not going to wake up..?}
 
 {color=aqua|Lilia: — Don't worry, I've casted a sleep magic on [him] so [he] won't wake up as easily.}
 
@@ -10855,15 +10870,15 @@ Lilia frowns in consideration, something Zephyra hardly ever saw from her.
 
 Without further delay Lilia straddles your face, her hips grinding into your mouth revealing her pussy. You feel her fingers grasping in your hair, pulling your head closer to her.
 
-Meanwhile Zephyra straddles your waist, her warm, naked body rubbing against your cock. Her large tail brushes against your legs, sending shivers down your spine as she works her hips, slowly, teasingly grinding against you. """,
+Meanwhile Zephyra straddles your waist, her warm, naked body rubbing against your cock. Her large tail brushes against your legs, sending shivers down your spine as she works her hips, slowly, teasingly grinding against you.""",
 	ZEPHYRA_LILIA_8 = """{color=yellow|Zephyra: — [Master], you are so hard already... It seems our reward is to your liking.}
 
 Zephyra lowers herself onto your penis moaning as it enters her. As Lilia sees this she can't help but feel a bit of envy but your tongue makes her get back on track. 
 
 Both girls increase their pace along with their moans getting closer to climax.""",
-	ZEPHYRA_LILIA_9 = """{color=yellow|Zephyra: — Aahh... NNhhh....}
+	ZEPHYRA_LILIA_9 = """{color=yellow|Zephyra: — Aahh... NNhhh...}
 
-{color=aqua|Lilia: — Aaah!..}
+{color=aqua|Lilia: — Aaah..!}
 
 You can feel both girls gasping and clenching together as you cum in unison filling Zephyra's pussy with your semen. Lilia's juices flow all over your face as she whimpers over you. You can feel their weight as they slowly collapse on you after this passionate encounter. 
 
@@ -10875,26 +10890,26 @@ You lay there for a long time, the three of you lost in the afterglow of pleasur
 Zephyra seems to acknowledge your appearance but does not move or say anything, as if not to break her concentration.""",
 	ZEPHYRA_PAINTING_1_OPTION_1 = "*Stay quiet*",
 	ZEPHYRA_PAINTING_1_OPTION_2 = "So, is this your hobby?",
-	ZEPHYRA_PAINTING_1_OPTION_3 = "What a waste of time you could be using on more fun stuff",
+	ZEPHYRA_PAINTING_1_OPTION_3 = "What a waste of time you could be using on more fun stuff.",
 	ZEPHYRA_PAINTING_2_1 = """— Ah, [Master], are you interested in my drawing? I'm actually only an amateur, but you can watch it if you want.
-
-— Anyway, since you are here, why don’t you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
-	ZEPHYRA_PAINTING_2_2 = """— Ha, you can say so. But I have an excuse as this is also a divination technique for me. You never know what you’re seeing until you finish, though. But this makes it more relaxing and exciting. 
-
-— Anyway, since you are here, why don’t you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	
+— Anyway, since you are here, why don't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	ZEPHYRA_PAINTING_2_2 = """— Ha, you can say so. But I have an excuse as this is also a divination technique for me. You never know what you're seeing until you finish, though. But this makes it more relaxing and exciting.
+	
+— Anyway, since you are here, why don't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
 	ZEPHYRA_PAINTING_2_3 = """— Boo, [Master]! This is fun for me, you know. Or are you implying something naughty? Then, this shall be more useful, after all, this has also been my divination practice for a long time.
-
-— Anyway, since you are here, why don’t you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
-	ZEPHYRA_PAINTING_2_OPTION_1 = "Landscape",
-	ZEPHYRA_PAINTING_2_OPTION_2 = "Portrait",
-	ZEPHYRA_PAINTING_2_OPTION_3 = "A naughty nude",
-	ZEPHYRA_PAINTING_2_OPTION_4 = "I don't really care",
+	
+— Anyway, since you are here, why don't you tell me what you want me to draw? Maybe I'll do it just for [Master].""",
+	ZEPHYRA_PAINTING_2_OPTION_1 = "Landscape.",
+	ZEPHYRA_PAINTING_2_OPTION_2 = "Portrait.",
+	ZEPHYRA_PAINTING_2_OPTION_3 = "A naughty nude.",
+	ZEPHYRA_PAINTING_2_OPTION_4 = "I don't really care.",
 	ZEPHYRA_PAINTING_3_1 = """— That seems a tad boring. Did you actually want to request something else, but were too shy? Oh well, there's no second chance when it comes to predictions, so I'll take it.""",
-	ZEPHYRA_PAINTING_3_2 = """— Like the one I presented to you, hmm? Or should it be some cute girl - perhaps myself? Well, there is only one way find out.""",
+	ZEPHYRA_PAINTING_3_2 = """— Like the one I presented to you, hmm? Or should it be some cute girl - perhaps, myself? Well, there is only one way find out.""",
 	ZEPHYRA_PAINTING_3_3 = """— Haah... Is that really all you can think about? But you know, I'd only draw you a nude of myself, and I can't really see myself so you'd get a blank picture. """,
-	ZEPHYRA_PAINTING_3_4 = """Zephyra is visibly disappointed by your lack of interest but her mood does not worsen.
+	ZEPHYRA_PAINTING_3_4 = """Zephyra is visibly disappointed by your lack of interest, but her mood does not worsen.
 
-— Right. Then I'll try to draw a dumb master and see what comes out of it. I wonder what the divination has to say about it, hehe...""",
+— Right. Then I'll try to draw a dumb [Master] and see what comes out of it. I wonder what the divination has to say about it, hehe...""",
 	ZEPHYRA_PAINTING_4 = """Before Zephyra can bring her brush to the canvas you hear a loud crack and it splinters onto the floor from her hand.
 
 — Argh, dang it! This is the third one this week... I guess these cheap things aren't good enough to channel my powers.
@@ -10902,26 +10917,26 @@ Zephyra seems to acknowledge your appearance but does not move or say anything, 
 Zephyra sighs loudly and dramatically slumps to the floor. 
 
 — I guess I'll be going to the shop then.""",
-	ZEPHYRA_PAINTING_4_OPTION_1 = "You always have to deal with this? What an unconventional hobby",
-	ZEPHYRA_PAINTING_4_OPTION_2 = "I could keep you company",
-	ZEPHYRA_PAINTING_4_OPTION_3 = "Have a safe trip",
+	ZEPHYRA_PAINTING_4_OPTION_1 = "You always have to deal with this? What an unconventional hobby.",
+	ZEPHYRA_PAINTING_4_OPTION_2 = "I could keep you company.",
+	ZEPHYRA_PAINTING_4_OPTION_3 = "Have a safe trip.",
 	ZEPHYRA_PAINTING_5_1 = """— Truth is, I lost it sometime after I left Millford with you. A shame really, it was bestowed to me by Alios for my good deeds... At least that's the only way I could explain how I found it in the small village's dump.""",
-	ZEPHYRA_PAINTING_5_2 = """— Thank you, [Master], but I consider this my personal task. """,
-	ZEPHYRA_PAINTING_5_3 = """— Oh well. Excuse me for this, but I'll have to skip today's work. """,
+	ZEPHYRA_PAINTING_5_2 = """— Thank you, [Master], but I consider this my personal task.""",
+	ZEPHYRA_PAINTING_5_3 = """— Oh well. Excuse me for this, but I'll have to skip today's work.""",
 	ZEPHYRA_DISAPPEARANCE_1 = """By the morning you realize that Zephyra, uncharacteristically for her, has not returned since yesterday. It might be a good idea to look for her.""",
 	
-	ZEPHYRA_DISAPPEARANCE_2 = """You find the shop which Zephyra seems to have gone to the other day. It’s a small stationery shop at the corner of the street which does not particularly stand out, so you decide to enter it. As you make your way to the counter and not find anyone there, you spot a large selection of painting tools of various kinds on the walls. After a short consideration you decide to hit the bell resting on the counter...""",
-	ZEPHYRA_DISAPPEARANCE_3 = """You find yourself in the middle of a snowy coniferous forest. You have no clue how you got here and everything feels more like a dream, if it weren’t for it being rather real. The ongoing blizzard is almost blinding, however you are able to make out the shade of a building ahead of you.""",
-	ZEPHYRA_DISAPPEARANCE_3_OPTION_1 = "Move towards the building",
-	ZEPHYRA_DISAPPEARANCE_3_OPTION_2 = "Walk away from the building",
-	ZEPHYRA_DISAPPEARANCE_3_OPTION_3 = "Try to wake up",
+	ZEPHYRA_DISAPPEARANCE_2 = """You find the shop which Zephyra seems to have gone to the other day. It's a small stationery shop at the corner of the street which does not particularly stand out, so you decide to enter it. As you make your way to the counter and not find anyone there, you spot a large selection of painting tools of various kinds on the walls. After a short consideration you decide to hit the bell resting on the counter...""",
+	ZEPHYRA_DISAPPEARANCE_3 = """You find yourself in the middle of a snowy coniferous forest. You have no clue how you got here and everything feels more like a dream, if it weren't for it being rather real. The ongoing blizzard is almost blinding, however you are able to make out the shade of a building ahead of you.""",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_1 = "*Move towards the building*",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_2 = "*Walk away from the building*",
+	ZEPHYRA_DISAPPEARANCE_3_OPTION_3 = "*Try to wake up*",
 	ZEPHYRA_DISAPPEARANCE_4_1 = """You walk through the deep snow as if in a daze. After a few moments you can make out the small, one story, wooden hut. Contrary to the bad weather, it seems almost an ideal place to hide, with a small amount of light coming out of its windows. You open the unlocked door and walk inside.""",
 	ZEPHYRA_DISAPPEARANCE_4_2 = """You spend several minutes wandering among lookalike trees, but in the end you get nowhere. You return to the initial place with a silhouette of a building in front of you.""",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_1 = """You think of a way to wake up from this dream, if it is indeed one...""",
-	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_1 = "Pinch yourself",
-	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_2 = "Bite your tongue",
-	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_3 = "Sit and wait",
-	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_4 = "Forget about it",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_1 = "*Pinch yourself*",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_2 = "*Bite your tongue*",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_3 = "*Sit and wait*",
+	ZEPHYRA_DISAPPEARANCE_WAKEUP_1_OPTION_4 = "*Forget about it*",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_1 = """You pinch your hand with force, but you only feel mild pain from doing it.""",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_2 = """You bite your tongue to the point you start to taste a bit of blood in your mouth, but nothing else happens. You wonder if that was a good idea at all...""",
 	ZEPHYRA_DISAPPEARANCE_WAKEUP_2_3 = """You sit down and try to come to your senses, but the only thing changing is that you start to feel cold... or at least you believe so.""",
@@ -10929,21 +10944,21 @@ Zephyra sighs loudly and dramatically slumps to the floor.
 	ZEPHYRA_DISAPPEARANCE_HUT_1 = """The small hut seems rather spacious from the inside. The main room is lit by a stone fireplace which is peacefully burning, warming up the space. Your nose catches a faint smell of burned wood.
 
 A young boy with a pair of fox ears on his head sits by the table.""",
-	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_1 = "Walk to the kitchen",
-	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_2 = "Approach the boy",
-	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_3 = "Lay down to rest",
-	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_4 = "Look under the bed", #  (needs trigger 4, one shot)
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_1 = "*Walk to the kitchen*",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_2 = "*Approach the boy*",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_3 = "*Lay down to rest*",
+	ZEPHYRA_DISAPPEARANCE_HUT_1_OPTION_4 = "*Look under the bed*", #  (needs trigger 4, one shot)
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_1 = """The kitchen is slightly dark and gloomy. You spot some food in the process of being prepared for cooking. The window is covered in ice so thick you can't make out what's outside.""",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_1 = "Check for food",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2 = "Look at the window",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2_2 = "Look at the window",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_3 = "Take the knife", # (needs trigger 2)
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4 = "Back to hall",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_1 = "*Check for food*",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2 = "*Look at the window*",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_2_2 = "*Look at the window*",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_3 = "*Take the knife*", # (needs trigger 2)
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_1_OPTION_4 = "*Back to hall*",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_1 = """You rummage through kitchen drawers, but despite them having plenty of delicious preserves, you realize you barely have any appetite.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_1 = """The window is painted in thick hoarfrost. Behind it you can only see a plain white color. After a few moments you turn away from it.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_2 = """As you look at the frost patterns you start to notice how they slowly move to form the shape of a woman's face. You can't really make out any details, but there's something motherly to it.
 
-— Stuck in such an easy illusion, how embarrassing... I guess normal people are still no match for champion powers.""",
+— Stuck in such an easy illusion, how embarrassing... I guess, normal people are still no match for champion powers.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_1 = "Who are you?",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_2 = "What's going on?",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_2_2_OPTION_3 = "Can you help me?", # (appears after seeing 1 and 2)
@@ -10955,8 +10970,8 @@ It seems the entity behind the image either did not hear your question or entire
 
 — Perhaps. If you make a promise. You must stop collecting the artifacts.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_1 = "Why would you want me to stop?",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_2 = "I agree",
-	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_3 = "I refuse",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_2 = "I agree.",
+	ZEPHYRA_DISAPPEARANCE_KITCHEN_3_OPTION_3 = "I refuse.",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_1 = """The voice ignores your question, it seems that it wants only your response.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_2 = """As you respond, you realize there's a knife on the table in front of you. For some reason you can't tell if it was always there, or you just noticed it, but it certainly caught your attention. The image on the glass is gone, as well as its voice.""",
 	ZEPHYRA_DISAPPEARANCE_KITCHEN_4_3 = """You don't hear anything, but you feel severe irritation with your response, followed by... nothing. After a few moments you realize there's a knife on the table in front of you. For some reason you can't tell if it was always there, or you just noticed it, but it certainly caught your attention. The image on the glass is gone, as well as its voice.""", # (add trigger 2)
@@ -10966,14 +10981,14 @@ It seems the entity behind the image either did not hear your question or entire
 — Wild weather outside, isn't it? But it makes it all the better hiding inside. Our home is very cozy, and you can stay until the blizzard is over.
 
 The boy points at the bed next to the fireplace.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_1 = "Ask",
-	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_2 = "Stab him",
-	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_3 = "Turn away",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_1 = "*Ask*",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_2 = "*Stab him*",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_OPTION_3 = "*Turn away*",
 	
 	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_1 = "Where am I?",
 	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_2 = "Who are you?",
 	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_3 = "How do I get out?",
-	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_4 = "That's enough talking",
+	ZEPHYRA_DISAPPEARANCE_BOY_1_ASK_OPTION_4 = "That's enough talking.",
 	
 	ZEPHYRA_DISAPPEARANCE_BOY_2_1AND2 = """— You must be my sister's friend? She went for a walk and will be back in a few hours. Why don't you rest at the bed over there? 
 
@@ -10983,12 +10998,12 @@ For some reason you can't make out any sounds of what he just said to you.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_1 = "Where is she?",
 	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_2 = "How do I get out?",
 	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_3 = "What do you even do around here?",
-	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_4 = "That's enough talking",
+	ZEPHYRA_DISAPPEARANCE_BOY_2_OPTION_4 = "That's enough talking.",
 	ZEPHYRA_DISAPPEARANCE_BOY_3_1 = """— Sis went outside some time ago. Hope she'll be back soon, after all her body is quite frail. Before our parents passed away she used to be bedridden all of the time.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_3_2 = """— Get out? You shouldn't go out with the weather like this, let's just wait till she gets back home. She'll be back any time soon.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_3_3 = """— Ah, Sis does like drawing even though it's hard to get the tools for it with our kind of money. She almost looks happy when she’s at it. You can probably find some of her sketches under the bed. As for me... I don't really remember, I guess.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_3_3 = """— Ah, Sis does like drawing even though it's hard to get the tools for it with our kind of money. She almost looks happy when she's at it. You can probably find some of her sketches under the bed. As for me... I don't really remember, I guess.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_4 = """You move closer and with a swift movement deliver the knife into the boy's stomach.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_5 = """— T-t-that's... You... Bastard!... How did you?.. Where did you get the knife!?
+	ZEPHYRA_DISAPPEARANCE_BOY_5 = """— T-t-that's... You... Bastard..! How did you..? Where did you get the knife!?
 
 The world around you quickly starts to blur, and you realize that you are at the shop's door. The boy's appearance quickly changes into a middle-aged elf holding his stomach in pain, looking at you with hate and disdain.
 
@@ -10996,30 +11011,30 @@ The world around you quickly starts to blur, and you realize that you are at the
 	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_1 = "Where's Zephyra?",
 	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_2 = "What do you want?",
 	ZEPHYRA_DISAPPEARANCE_BOY_5_OPTION_3 = "I don't care, just die. *Attack*",
-	ZEPHYRA_DISAPPEARANCE_BOY_6 = """— She's where you won't find her. Unlike you, she fell into this trap just fine, damn it. You won't find her on your own, she's far away from this city. If you want her back, bring me the bowl you got from the elves. And then I promise she'll be back in one piece... Mostly.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_1 = "I'll kill you for sure if you try to trick me",
+	ZEPHYRA_DISAPPEARANCE_BOY_6 = """— She's where you won't find her. Unlike you, she fell into this trap just fine, damn it. You won't find her on your own, she's far away from this city. If you want her back, bring me the Bowl you got from the elves. And then I promise she'll be back in one piece... Mostly.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_1 = "I'll kill you for sure if you try to trick me.",
 	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_2 = "I... Understand",
 	ZEPHYRA_DISAPPEARANCE_BOY_6_OPTION_3 = "Forget it, I'll better kill you right now. *Attack*",
-	ZEPHYRA_DISAPPEARANCE_BOY_7_1AND2 = """— In three days we'll meet outside this city. My messenger will drop by your home. And so you have something to do while I'm leaving..
+	ZEPHYRA_DISAPPEARANCE_BOY_7_1AND2 = """— In three days we'll meet outside this city. My messenger will drop by your home. And so you have something to do while I'm leaving.
 
 The elf snaps his fingers and the shop quickly erupts in fires over the walls. He quickly escapes as people start gathering around it.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_8 = """After some time the city guards have locked down and investigated the building, from ceiling to floor. Despite their effort, there was very little they could work with. 
 
-— From how you’re describing them, that elf was probably the one known as Ketch. From what we gathered he's an infamous criminal. Smuggling, murder, raids... Makes things worse if he's a champion as you say.""",
+— From how you're describing them, that elf was probably the one known as Ketch. From what we gathered he's an infamous criminal. Smuggling, murder, raids... Makes things worse if he's a Champion as you say.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_1 = "How can someone like him operate freely?",
-	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_2 = "I need help, Zephyra got kidnapped by him",
-	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave (close)",
+	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_2 = "I need help, Zephyra got kidnapped by him.",
+	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave.",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_1 = """— He has been known for being elusive. Changing his location whenever it gets discovered by authorities. That's how he's been able to earn this reputation. Kinda bad for you, as I expect him to have more than one base he could be hiding at now.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_2 = """— There's nothing people like us can do. I've already informed patrolling guards but, given his experience, there's little hope. Sorry, there's not much that we can do.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now.""",
 	ZEPHYRA_DISAPPEARANCE_BED_1_1 = """You lay down on the bed and close your eyes. For some reason you feel very comfortable, quickly dozing to sleep by the crackling of fire...
 
-That is until you feel a hard slap of something fluffy on your head, returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, weren’t you?
+That is until you feel a hard slap of something fluffy on your head, returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, weren't you?
 
 The boy looks over you with a smile.
 
 — Is something wrong?""",
-	ZEPHYRA_DISAPPEARANCE_BED_1_2 = """You don't feel sleepy anymore. However you do acknowledge the bed's coziness despite it being only a dream or illusion...""",
+	ZEPHYRA_DISAPPEARANCE_BED_1_2 = """You don't feel sleepy anymore. However, you do acknowledge the bed's coziness despite it being only a dream or illusion...""",
 	ZEPHYRA_DISAPPEARANCE_BED_2 = """You get on your knees and look under the bed until you spot a wooden box. After dragging it out, you go through multiple slightly dusty sketches and amateurish paintings. Some feature familiar flower patterns. Other drawings are more abstract than not, overall giving you a depressing feeling.
 
 Out of all the paintings you spot an exquisite paintbrush, standing out between its plain surroundings. As you take it in your hand, you hear the boy addressing you. 
@@ -11039,10 +11054,10 @@ You put the box back and stand up.""",
 — I think... I know of one way. I might be able to replicate the Bowl's divine aura, or at least make it appear so for a few days. You wouldn't be able to tell the difference on sight. These people are up to no good, but it might be risky for Zephyra still...
 
 — If you agree to this, I'll need 1.000 gold for the necessary tools and items.""",
-	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_1 = "I'll consider it",
-	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_2 = "Very well, do it (Pay 1.000 gold)",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_1 = "I'll consider it.",
+	ZEPHYRA_DISAPPEARANCE_BOWL_2_OPTION_2 = "Very well, do it. (1.000 gold)",
 	ZEPHYRA_DISAPPEARANCE_BOWL_3_1 = """— Very well, but please be quick. If what you said is true, we might not have a lot of time.""",
-	ZEPHYRA_DISAPPEARANCE_BOWL_3_OPTION_1 = "I've brought the money ",
+	ZEPHYRA_DISAPPEARANCE_BOWL_3_OPTION_1 = "I've brought the money.",
 	ZEPHYRA_DISAPPEARANCE_BOWL_3_2 = """— Splendid, please wait here, I have most of the things prepared.
 
 As Ginny withdraws from the main hall, you are left wondering about the church on your own for some time.""",
@@ -11050,38 +11065,38 @@ As Ginny withdraws from the main hall, you are left wondering about the church o
 
 — You better play along so they won't get suspicious. I'll pray for your success.
 """,
-	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_1 = "Thank you",
-	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_2 = "I'll bring Zephyra back",
-	ZEPHYRA_DISAPPEARANCE_KETCH_1 = """In the morning you receive a letter from Ketch. He wants to meet you at the town's outskirts, and provides the details on how to find him. This might be your only chance to get Zephyra back.""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_1_OPTION_1 = "Meet with Ketch",
+	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_1 = "Thank you.",
+	ZEPHYRA_DISAPPEARANCE_BOWL_4_OPTION_2 = "I'll bring Zephyra back.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_1 = """In the morning you receive a letter from Ketch. He wants to meet you at the city's outskirts, and provides the details on how to find him. This might be your only chance to get Zephyra back.""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_1_OPTION_1 = "*Meet with Ketch*",
 	ZEPHYRA_DISAPPEARANCE_KETCH_2 = """Zephyra stays next to them with her hands tied behind her back, eyes blindfolded and mouth gagged. Despite her condition she seems sufficiently okay making you wonder if it's not just another illusion of Ketch.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_1 = "*Give away the fake bowl* ",
 	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_2 = "*Give away the Sacred Bowl*",
-	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_3 = "No deal, I'll just take her by force",
-	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """— What a fool you are. It seems you don't care about this girl then. Fine, I'll have your head and take the bowl by force.
+	ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_3 = "No deal, I'll just take her by force.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """— What a fool you are. It seems you don't care about this girl then. Fine, I'll have your head and take the Bowl by force.
 
 Ketch makes a simple magic gesture in the air and Zephyra disappears in a puff of smoke. His henchmen charge at you.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. With this, your chances of getting Zephyra back reach zero...""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """— So you are an obedient [boy] after all. I guess I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """— So you are an obedient [boy], after all. I guess, I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
 
-He pushes Zephyra into your direction and orders her to walk forward. She hesitantly does so, as if guilt was weighing her down. As she makes halfway through the field you pass the bowl to a henchman. As Zephyra finally ends up in your arms you realize that Ketch , along with his people, is no longer there.""",
+He pushes Zephyra into your direction and orders her to walk forward. She hesitantly does so, as if guilt was weighing her down. As she makes halfway through the field you pass the Bowl to a henchman. As Zephyra finally ends up in your arms you realize that Ketch, along with his people, is no longer there.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_4 = """You help Zephyra get rid of her restraints as she looks up at you. You see her face displaying a mixture of concern and guilt. 
 
 — While I'm very grateful, you shouldn't have given it away for me...""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_1 = "Actually it was a fake one",
-	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_2 = "Forget it, your safety is more important",
-	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_3 = "Don't worry, we'll get it later somehow",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_1 = "Actually, it was a fake one.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_2 = "Forget it, your safety is more important.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_3 = "Don't worry, we'll get it later somehow.",
 	ZEPHYRA_DISAPPEARANCE_KETCH_5_1 = """Zephyra stares at you with a blank expression not sure if you are joking or not. Eventually understanding you are serious she bursts into laughter.
 
-— Ha-ha, No way. I didn't expect you to be this ingenious. Heh, I can imagine their faces once they find out... I guess I should've expected that from a man I've chosen. Saved me and the artifact from the bad guys.
+— Ha-ha, No way. I didn't expect you to be this ingenious. Heh, I can imagine their faces once they find out... I guess, I should've expected that from a man I've chosen. Saved me and the Artifact from the bad guys.
 
 — So you did actually manage to break Ketch's illusion? That's really something even I fell for.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_5_2AND3 = """— Right... Thank you, and I'm happy that you've wished to bring me back.
-
+	
 — So you did actually manage to break Ketch's illusion? That's really something even I fell for.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_1 = "About that... I've made a promise to do it.",
-	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_2 = "That's natural for someone of my capabilities",
-	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_3 = "Perhaps it's just because it was aimed at you and not me",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_2 = "That's natural for someone of my capabilities.",
+	ZEPHYRA_DISAPPEARANCE_KETCH_5_OPTION_3 = "Perhaps it's just because it was aimed at you and not me.",
 	ZEPHYRA_DISAPPEARANCE_KETCH_6_1a = """You tell Zephyra about a mysterious encounter in the land of illusion and the promise you've made with an unknown entity.
 
 Zephyra looks at you with an increasingly distressed face. 
@@ -11097,18 +11112,18 @@ Zephyra lowers her head and slowly walks away. Her voice sounds heartbroken as s
 
 — I'm afraid I can't tell you much about what happened. When I came to my senses, I was already at their hideout, and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me...""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_6_2 = """— Aren't humble at all, are we? But I digress - after all, you are my true savior here.
-
+	
 — I'm afraid I can't tell you much about what happened. When I came to my senses, I was already at their hideout, and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me... """,
 	ZEPHYRA_DISAPPEARANCE_KETCH_6_3 = """— It's still not a small feat to break out of a Divine Influence level of magic by willpower alone.
-
+	
 — I'm afraid I can't tell you much about what happened. When I came to my senses, I was already at their hideout, and they blindfolded me all the way to here. I think they've planned to use me as bait for at least a few weeks. What a sorry performance by me... """,
-	ZEPHYRA_DISAPPEARANCE_KETCH_6_OPTION_1 = "I'm glad you are unharmed",
+	ZEPHYRA_DISAPPEARANCE_KETCH_6_OPTION_1 = "I'm glad you are unharmed.",
 	ZEPHYRA_DISAPPEARANCE_KETCH_6_OPTION_2 = "They haven't done anything nasty to you?",
 	ZEPHYRA_DISAPPEARANCE_KETCH_7_1 = """— Hehe, Thank you for worrying about me. I was worried they could do something terrible to [Master] as well.
 
 You notice how Zephyra leans closer to you, seeking for your warmth after being rescued. 
 
-— Actually being finally reunited with you might've made me a bit too excited...""",
+— Actually, being finally reunited with you might've made me a bit too excited...""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_7_2 = """Zephyra gives you a pained look, but still manages to produce a smile. 
 
 — I was hoping you wouldn't ask...""",
@@ -11117,8 +11132,8 @@ You notice how Zephyra leans closer to you, seeking for your warmth after being 
 You notice how Zephyra leans closer to you seeking for your warmth after being rescued. 
 
 — I won't deny that I had thought about the moment I'll finally be able to reunite with my [Master].""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1 = "Comply",
-	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_2 = "Refuse",
+	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1 = "*Comply*",
+	ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_2 = "*Refuse*",
 	ZEPHYRA_DISAPPEARANCE_KETCH_9_2 = """The fox girl's ears drop as you turn her down. She pouts and looks away, silently following you on the way home.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_9_1 = """Feeling you getting into the mood, Zephyra drags you away from the road towards the closest tree. 
 
@@ -11183,7 +11198,7 @@ Guard A: — For goodness's sake, what are you doing?!
 
 Guard B: — What? I mean, she's so hot, all restrained and stuff. I want a piece of her too!
 
-Guard A: — Have some patience. You'll get your turn soon. After I nut in ‘er a couple more times... he-he...
+Guard A: — Have some patience. You'll get your turn soon. After I nut in 'er a couple more times... he-he...
 
 Zephyra's stares blankly into the space in front of her. Her mind realizes a terrible truth: they won't let her go. This is going to continue for much longer than she will be able to withstand. And nobody is coming to help...""",
 	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
@@ -11193,50 +11208,50 @@ Zephyra's stares blankly into the space in front of her. Her mind realizes a ter
 Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers.
 
-— [Master]... we’re out in the open, in the middle of the day… doesn’t that make it more exciting? 
+— [Master]... we're out in the open, in the middle of the day... doesn't that make it more exciting? 
 
 She's right. Someone might come by any moment. You look around, but it's just the two of you. And honestly, even if someone did show up, it probably wouldn't stop you now.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_3 = """Your hands move along the skin of her back, caressing it, as you push deeper inside. Zephyra's tail wiggles eagerly, even though it's a bit in the way.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_1 = "*Take her gently*",
 	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_2 = "*Be rough*",
 	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3 = "*Grab her tail*",
-	ZEPHYRA_DISAPPEARANCE_SEX_4_1 = """You slowly align yourself to make her more at ease. She mellows to your touch, visibly relaxing. 
-The wiggling of her tail gets rarer, slower. 
+	ZEPHYRA_DISAPPEARANCE_SEX_4_1 = """You slowly align yourself to make her more at ease. She mellows to your touch, visibly relaxing.
+	The wiggling of her tail gets rarer, slower. 
 
-Your hand glides along her hair and follows to her back. You caress her skin. It’’s soft and warm to the touch.
+Your hand glides along her hair and follows to her back. You caress her skin. It's soft and warm to the touch.
 
-— You’re surprisingly gentle… after all the trouble I caused. 
+— You're surprisingly gentle... after all the trouble I caused. 
 
 She twists her body, turning her head towards you. One of her hands continues to use the tree as support, while other moves towards your face. She touches your head, direction it towards her lips. The two of you are joined in a passionate kiss.
 
-The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
 
-Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you.""",
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_4_2 = """You grab Zephyra and push your penis inside with a force, making her exhale in response. However, her wetness still makes it easy and she does not protest.
 
-— Ah.. [Master] [name]... I’m sorry… For giving you troubles…
+— Ah... [Master] [name]... I'm sorry... For giving you troubles...
 
 You spank her on the ass. Another sigh follows the sound of slapping.
 
-— P-please… Ahh… Have mercy… 
+— P-please... Ahh... Have mercy...
 
 You ignore her plea and slap her again. Despite her words she shamefully enjoys it.
 
-The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
 
-Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
-	ZEPHYRA_DISAPPEARANCE_SEX_4_3 = """As you push your penis into her, you grab her tail with your hand, making her squeak in surprise. 
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_4_3 = """As you push your penis into her, you grab her tail with your hand, making her squeak in surprise.
 
-— W-what are you doing?! Don’t grab it so suddenly… It’s very sensitive!
+— W-what are you doing?! Don't grab it so suddenly... It's very sensitive!
 
 You feel it getting tense in your hand but her pussy also squeezes you more desperately. After a few moments it looks like Zephyra stops resisting your possessive touch on her delicate part, allowing you to selfishly pet it.
 
-The rhythm of your movements intensifies. You notice Zephyra’s knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
 
-Her words carry a tint of irritation, but her body tells another story. She’s completely immersed in the pleasure. And so are you. """,
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """,
 #	ZEPHYRA_DISAPPEARANCE_SEX_4 = """The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake and weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
 #
-#— Silly... [master]... what a brute you are... so forceful... grabbing a girl's tail, even..!
+#— Silly... [Master]... what a brute you are... so forceful... grabbing a girl's tail, even..!
 #
 #Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """,
 	ZEPHYRA_DISAPPEARANCE_SEX_5 = """As your body approaches the limit of its pleasure tolerance, you let it all out inside Zephyra. You feel her tail losing strength, no longer trying to break free. As you let it go, it simply droops down along her buttocks. Zephyra herself would fall down in a similar manner if it wasn't for the tree she's using for support. 
@@ -11245,25 +11260,25 @@ Her words carry a tint of irritation, but her body tells another story. She’s 
 
 Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the hand. 
 
-— Now you are properly rewarded, [master]. Let's head back home.""",
+— Now you are properly rewarded, [Master]. Let's head back home.""",
 	
 	ZEPHYRA_BRUSH_OPTION_0 = "There's one magic item I want to know about...",
 	ZEPHYRA_BRUSH_1 = """You ask Myr about the mystic brush you remember from the illusion you were trapped in.
 
-- Think I've read about it a couple times. This reminds me of a Foxtail Brush. An illusive artifact of ancient origin. Some say there's multiple copies of it but they are notoriously hard to obtain and contain, partly because they tend to change their form between owners or as ages pass. The reasoning behind the changes is not clear.
+- Think I've read about it a couple times. This reminds me of a Foxtail Brush. An illusive artifact of ancient origin. Some say there's multiple copies of it, but they are notoriously hard to obtain and contain, partly because they tend to change their form between owners or as ages pass. The reasoning behind the changes is not clear.
 
-- Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchment isn’t cheap you know.""",
-	ZEPHYRA_BRUSH_1_OPTION_1 = "Agree (Wits check) (Pay 1.000 gold)",
-	ZEPHYRA_BRUSH_1_OPTION_2 = "I'll come later",
+- Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchment isn't cheap you know.""",
+	ZEPHYRA_BRUSH_1_OPTION_1 = "[Wits] Agree. (1.000 gold)",
+	ZEPHYRA_BRUSH_1_OPTION_2 = "I'll come later.",
 	ZEPHYRA_BRUSH_2_1 = """{color=green|Success}
 
 You've managed draw a rather accurate replica of what you've seen in your dream. After passing it to Myr and having performed a search ritual, the spell points at a magic map location and to some ancient ruins which seem to have what you seek. After copying down the directions to them, you leave Myr's office.""",
 	ZEPHYRA_BRUSH_2_2 = """{color=red|Failure}
 
-Despite your best efforts, your drawing is too amateurish and the brush's details are too obscure. The spell flickers and fails, making you regret paying for it. """,
-	ZEPHYRA_BRUSH_3 = """As you make your way through the dimly lit hall, at the end you finally spot a small makeshift pedestal with a brush resting on it. Without a doubt it's the one you are looking for. However as you move closer, you notice another silhouette, surrounded by a dark aura, also moves in the direction of the pedestal from the other side.""",
-	ZEPHYRA_BRUSH_3_OPTION_1 = "Call it over",
-	ZEPHYRA_BRUSH_3_OPTION_2 = "Rush to grab the brush (physics check)",
+Despite your best efforts, your drawing is too amateurish and the brush's details are too obscure. The spell flickers and fails, making you regret paying for it.""",
+	ZEPHYRA_BRUSH_3 = """As you make your way through the dimly lit hall, at the end you finally spot a small makeshift pedestal with a brush resting on it. Without a doubt it's the one you are looking for. However, as you move closer, you notice another silhouette, surrounded by a dark aura, also moves in the direction of the pedestal from the other side.""",
+	ZEPHYRA_BRUSH_3_OPTION_1 = "Call it over.",
+	ZEPHYRA_BRUSH_3_OPTION_2 = "[Physics] Rush to grab the brush.",
 	ZEPHYRA_BRUSH_4_1 = """As you call it over, you make out its details, apparently it's a girl with a large black fox tail, dressed in dark clothes fitting the environment. She pays no attention to your words until she casually picks up the brush and turns to you. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
 
 
@@ -11275,12 +11290,12 @@ You manage to outrun the silhouette, but as your hand moves in to grab the brush
 — This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
 	ZEPHYRA_BRUSH_4_2_BAD = """{color=red|Failure}
 
-You try to outrun it, but fail to do so. You realize that the silhouette is a girl with a large black fox tail,dressed in dark clothes fitting the environment. She pays no attention to you until she casually picks up the brush. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
+You try to outrun it, but fail to do so. You realize that the silhouette is a girl with a large black fox tail, dressed in dark clothes fitting the environment. She pays no attention to you until she casually picks up the brush. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
 
 — This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""",
-	ZEPHYRA_BRUSH_4_OPTION_1 = "Myself",
-	ZEPHYRA_BRUSH_4_OPTION_2 = "A friend",
-	ZEPHYRA_BRUSH_4_OPTION_3 = "A girl I know",
+	ZEPHYRA_BRUSH_4_OPTION_1 = "For myself.",
+	ZEPHYRA_BRUSH_4_OPTION_2 = "For a friend.",
+	ZEPHYRA_BRUSH_4_OPTION_3 = "For a girl I know.",
 	ZEPHYRA_BRUSH_5_1 = """The girl looks at you, expressionless, but you can tell she's not convinced. Either due to thinking you lied, or her not considering you worthy.
 
 — Forget about it. And we are done here. Goodbye.
@@ -11292,8 +11307,8 @@ The girl places the brush back on the pedestal and walks towards the exit.""",
 	ZEPHYRA_BRUSH_5_3 = """— A girl, you say? Are you, perhaps, in love with this girl?
 
 The question was conveyed as nonchalantly as humanly possible, yet it felt like she's genuinely interested in your answer.""",
-	ZEPHYRA_BRUSH_5_3_OPTION_1 = "Yes",
-	ZEPHYRA_BRUSH_5_3_OPTION_2 = "No",
+	ZEPHYRA_BRUSH_5_3_OPTION_1 = "Yes.",
+	ZEPHYRA_BRUSH_5_3_OPTION_2 = "No.",
 	ZEPHYRA_BRUSH_6_1 = """- And you believe something like that will help you out? What nonsense. Fine, take your prize.""",
 	ZEPHYRA_BRUSH_6_2 = """- Are you stupid? Why would you go this far for it then... Whatever. 
 
@@ -11303,7 +11318,7 @@ The girl places the brush back on the pedestal and walks towards the exit.""",
 	ZEPHYRA_BRUSH_6_OPTION_3 = "*Say nothing and take the brush*",
 	ZEPHYRA_BRUSH_7_1 = """The girl stops and gives you one more short look.
 
-— ...Zephyra. Now, if you’ll excuse me I have more important things to take care of.
+— ...Zephyra. Now, if you'll excuse me I have more important things to take care of.
 
 Before you are able to say anything else, she's already gone. After a moment you start questioning if she was even here in first place.""",
 	ZEPHYRA_BRUSH_7_2 = """The girl briefly turns to you, and her look implies that you've asked something very stupid. 
@@ -11315,22 +11330,22 @@ Before you are able to say anything else, she's already gone. After a moment you
 	ZEPHYRA_BRUSH_8_OPTION_0 = "*Return the brush*",
 	ZEPHYRA_BRUSH_8 = """You take the brush and present it to Zephyra. Zephyra stares at it blankly for a while before finally snapping out of it. It's rare to see the girl at a loss for words.
 
-— How did you get it?.. How did you even know... No, I guess that's what you do. You know, you aren't supposed to be this good at correcting my faults. I mean, I already gave you all of my support, I can't give you anymore, haha...""",
+— How did you get it..? How did you even know... No, I guess that's what you do. You know, you aren't supposed to be this good at correcting my faults. I mean, I already gave you all of my support, I can't give you anymore, haha...""",
 	ZEPHYRA_BRUSH_9 = """Zephyra takes the brush and it slightly flickers in her hand. The light reflects in her eyes for a short moment. 
 
 — You know, for all you've done I want to tell you. Tell you all that I know about our mission. That is, if you do not mind, this might take a while.""",
-	ZEPHYRA_BRUSH_9_OPTION_1 = "It's about a time",
-	ZEPHYRA_BRUSH_9_OPTION_2 = "I don't really need to know",
+	ZEPHYRA_BRUSH_9_OPTION_1 = "It's about a time.",
+	ZEPHYRA_BRUSH_9_OPTION_2 = "I don't really need to know.",
 	ZEPHYRA_BRUSH_10 = """You sit next to Zephyra as she starts her story.
 
 — Even though not every person believes in gods, you have been a first hand witness of their real influence, and for many of them. Even when there are helpful and good gods like Alios, there's also those who are the opposite. The evil gods seek to corrupt and destroy our very life. You could say we are managing well enough on our own, but they do lurk in the shadows. 
-
-— Once there was a great, kind man and loving husband who lived a fair rural life in a small village. However, a famine happened and his family was starving. At that time one of the servants of an evil god visited the village. He offered the man food to feed his family. The price was the wellbeing of one of their neighbors who have also been starving. 
+	
+— Once there was a great, kind man and loving husband who lived a fair rural life in a small village. However, a famine happened and his family was starving. At that time one of the servants of an evil god visited the village. He offered the man food to feed his family. The price was the wellbeing of one of their neighbors who have also been starving.
 
 — Even though they got through the famine, the neighbors grew suspicious of them and the man became more and more brooding with guilt. His mind was being slowly consumed with dark thoughts, until one day he strangled his wife over a minor quarrel. I've seen this man become corrupted with my own eyes. That man was my father.""",
-	ZEPHYRA_BRUSH_11 = """— To tell the truth, after the abduction I've remembered about my past, for better or worse. I was a burden on my parents and family ever since my birth - weak, poor health, bedridden most of the time, but they never gave up on me. However, my father died shortly after mother's death and we couldn't stay at the village, so my brother and I left. We found a small abandoned house a few miles from another village, and settled there. 
-
-— He was taking very good care of me, especially for his age, helping at the village in exchange for food. But it all ended after he got caught by bandits. They made him tell them about our home before killing him. I don't know if it's father's curse which got us in the end. """,
+	ZEPHYRA_BRUSH_11 = """— To tell the truth, after the abduction I've remembered about my past, for better or worse. I was a burden on my parents and family ever since my birth - weak, poor health, bedridden most of the time, but they never gave up on me. However, my father died shortly after mother's death and we couldn't stay at the village, so my brother and I left. We found a small abandoned house a few miles from another village, and settled there.
+	
+— He was taking very good care of me, especially for his age, helping at the village in exchange for food. But it all ended after he got caught by bandits. They made him tell them about our home before killing him. I don't know if it's father's curse which got us in the end.""",
 	ZEPHYRA_BRUSH_12 = """Her brother had not returned, and the girl could not fall asleep at the time. She heard vulgar yells and laughing from the outside when she realized that something terrible had happened. Fear struck her deeply as she realized the strangers had barged into their house. Being as quiet as possible she snuck out of the house from the backdoor, and started running into the forest. Only moments after she's realized flames have erupted behind her back.
 
 Against all odds she had to run away. Her body was searing with pain as she tried to move through the foliage. The fear of being caught drove her forward, never in her life has her body experienced so much exertion. It was a miracle she managed to get so far away before finally collapsing.""",
@@ -11338,7 +11353,7 @@ Against all odds she had to run away. Her body was searing with pain as she trie
 
 — I hate this...  I hate this weak stupid body... Being useless...
 
-You really hate it? - The voice resonated inside of the girl's head, one that was not her own.
+You really hate it? — The voice resonated inside of the girl's head, one that was not her own.
 
 What's there to hate now? You are free and can do what you want.
 
@@ -11353,9 +11368,9 @@ The presence of the voice grew stronger with her decision. The deity pitied her,
 	ZEPHYRA_BRUSH_15 = """— ...After that I asked Alios for one more favor for me. I wanted to forget everything about my previous life. This is how the Zephyra you know came to existence. Well, most of me, anyway. 
 
 Zephyra finished her story and lowered head in submission, nervously waiting for your reaction.""",
-	ZEPHYRA_BRUSH_15_OPTION_1 = "You won't have to suffer anymore, I'll always protect you",
-	ZEPHYRA_BRUSH_15_OPTION_2 = "It's all in the past now, don't blame yourself",
-	ZEPHYRA_BRUSH_15_OPTION_3 = "You really wasted my time on this",
+	ZEPHYRA_BRUSH_15_OPTION_1 = "You won't have to suffer anymore, I'll always protect you.",
+	ZEPHYRA_BRUSH_15_OPTION_2 = "It's all in the past now, don't blame yourself.",
+	ZEPHYRA_BRUSH_15_OPTION_3 = "You really wasted my time on this.",
 	ZEPHYRA_BRUSH_16_1AND2 = """Hearing this Zephyra suddenly grasps her chest and winces as if in pain.
 
 — Aaaaah... Aahh... You... Can't do this to...
@@ -11378,14 +11393,14 @@ Zephyra smiles with unparalleled adoration as her tail wags playfully.
 	ZEPHYRA_BRUSH_19 = """You tell Zephyra about your encounter during the brush retrieval with a girl who claimed to be Zephyra as well.
 
 — T-that might be my sister. That seems like her way of joking, she's a weird one. You aren't seriously thinking I'm some sort of imposter, are you?""",
-	ZEPHYRA_BRUSH_19_OPTION_1 = "Tell me more about your sister, I thought you had no relatives",
-	ZEPHYRA_BRUSH_20 = """— Well, it's not like we are blood relatives. I'm not sure how to describe it, it's just... We feel like we are distant relatives, or acquaintances. I never really thought about that. I think she's a good girl, even though I rarely understand her. """,
+	ZEPHYRA_BRUSH_19_OPTION_1 = "Tell me more about your sister, I thought you had no relatives.",
+	ZEPHYRA_BRUSH_20 = """— Well, it's not like we are blood relatives. I'm not sure how to describe it, it's just... We feel like we are distant relatives, or acquaintances. I never really thought about that. I think she's a good girl, even though I rarely understand her.""",
+
+
 
 	
-	
-	
-	AMELIA_INTRO = """A messenger has just arrived at your manor, bearing a letter adorned with Servants Guild insignia. The letter serves as a summons, requesting your presence at the Servants Guild for an inquiry into "questionable activities" involving one of its members. It does take care to clarify that this is framed as a request, respecting your schedule and time constraints.""",
-	AMELIA_MAIN_GUILD_1 = """Stepping into the guild leader's office, a surprise awaits you. Instead of Amelia, an unfamiliar figure greets your eyes - A human. He stands tall, nearly towering over the room, with a kind visage that sharply contrasts his imposing height.
+	AMELIA_INTRO = """A messenger has just arrived at your manor, bearing a letter adorned with Servants Guild insignia. The letter serves as a summons, requesting your presence at the Servants Guild for an inquiry into 'questionable activities' involving one of its members. It does take care to clarify that this is framed as a request, respecting your schedule and time constraints.""",
+	AMELIA_MAIN_GUILD_1 = """Stepping into the guild leader's office, a surprise awaits you. Instead of Amelia, an unfamiliar figure greets your eyes - a human. He stands tall, nearly towering over the room, with a kind visage that sharply contrasts his imposing height.
 
 — Yes? Ah, Mayor [name], welcome. Is there something I can assist you with? Please pardon me, but if you have any inquiries or requests, I'd appreciate a brief appeal. Regrettably, my plate is quite full at the present moment.
 """,
@@ -11397,9 +11412,9 @@ Zephyra smiles with unparalleled adoration as her tail wags playfully.
 	AMELIA_MAIN_GUILD_2_3 = """Norlan: — Hmm... Quite intriguing. I distinctly communicated to our secretary that we have no intention of inconveniencing you with such trivial matters.""",
 	AMELIA_MAIN_GUILD_2 = """The office door swings open abruptly, as another man rushes into the office. He possesses a plump physique and a relatively short stature. His attire unmistakably exudes an air of opulence and high social standing.
 
-Guildsman: Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [Mister] Mayor, to what do we owe the pleasure?
+Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [Mister] Mayor, to what do we owe the pleasure?
 
-Norlan: It appears that our secretary found it necessary to squander Mayor [Name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
+Norlan: — It appears that our secretary found it necessary to squander Mayor [Name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
 """,
 	AMELIA_MAIN_GUILD_3_1 = """Guildsman: — Perfect! We need all the information we can get. That sly woman is too good at covering her tracks. 
 
@@ -11418,13 +11433,13 @@ Guildsman: — Taking our merchandise with her just to mess with us for one last
 	AMELIA_MAIN_GUILD_3_OPTION_1 = """Seems you have an idea about what happened to her.""",
 	AMELIA_MAIN_GUILD_3_OPTION_2 = """So what does it have to do with me?""",
 	AMELIA_MAIN_GUILD_3_OPTION_3 = """Do you need my help in sorting this out?""",
-	AMELIA_MAIN_GUILD_4_1 = """Norlan: — We have everything under control, Mayor [name], so you do not need to concern yourself with this matter - I believe I already stated this. 
+	AMELIA_MAIN_GUILD_4_1 = """Norlan: — We have everything under control, Mayor [name], so you do not need to concern yourself with this matter. I believe I already stated this. 
 
 Guildsman: — What are you talking about, Norlan? We need all the help we can get. And the Mayor here was kind enough to extend [his] assistance. Could you maybe help us locate our missing slaves at least?
 
 Once again, Norlan makes a heavy sigh. For a moment, you notice signs of tiredness on his face, but his expression swiftly changes back to a soft smile as he looks at you. 
 
-Norlan: — If you would have the time, Mayor [name], we would appreciate your assistance. """,
+Norlan: — If you would have the time, Mayor [name], we would appreciate your assistance.""",
 	AMELIA_MAIN_GUILD_4_2 = """Norlan: — According to our information, Amelia has picked up the slaves from a caravan at the city gates.
 
 Guildsman: — Yeah, so they wouldn't be able to escape the city even if they wanted to. They won't get past the guards. So they have to be inside the city walls. And since they are not local, they don't know the city. I doubt they would get far away from the place where they were picked up.
@@ -11432,7 +11447,7 @@ Guildsman: — Yeah, so they wouldn't be able to escape the city even if they wa
 Norlan: — Indeed. I do not have anything to add to this, I believe.""",
 	AMELIA_MAIN_GUILD_4_3 = """Norlan: — The caravan we frequently deal with has quite a selection of slaves, and we do not know which ones Amelia has picked up at this time, so I am afraid we wouldn't be able to provide you with any description. 
 
-Guildsman: — But they are masterless slaves, though. Most likely, they are dressed in ragged garbs, have dirty hair and chains around the necks and wrists. Things like that should be easy to spot in the crowd. Most likely they are confused and scared, too. Not much to go on from, but it's all we have. """,
+Guildsman: — But they are masterless slaves, though. Most likely, they are dressed in ragged garbs, have dirty hair and chains around the necks and wrists. Things like that should be easy to spot in the crowd. Most likely they are confused and scared, too. Not much to go on from, but it's all we have.""",
 	AMELIA_MAIN_GUILD_4_OPTION_1 = """Any idea where I might start searching?""",
 	AMELIA_MAIN_GUILD_4_OPTION_2 = """Can you describe the slaves to me so I know what I'm looking for?""",
 	AMELIA_MAIN_GUILD_4_OPTION_3 = """I'll help you.""",
@@ -11442,10 +11457,10 @@ Norlan: — I could not agree more.
 
 Guildsman: — Oh, yeah. I have to get back to the client. It's been a pleasure talking to you, [mister] Mayor, but... duty calls. 
 
-Norlan: If you do have any further inquiries, you know where to find me. We pray that you are successful in your pursuit, Mayor [name].""",
+Norlan: — If you do have any further inquiries, you know where to find me. We pray that you are successful in your pursuit, Mayor [name].""",
 	AMELIA_MAIN_INTERLUDE_1 = """— Do you have any further inquiries, Mayor [name]? I am a little pressed for time, but if I can spare a moment to assist you if you so require.""",
 	AMELIA_MAIN_INTERLUDE_2 = """— Ah, Mayor [name]. I can not express enough how grateful we are for your assistance. Some of the slaves have already returned to us, thanks to your help. Even though there are some still missing, you've done a great service to us already. Now, do you have any further inquiries? I am a little pressed for time, but if I can spare a moment to assist you if you so require.""",
-	AMELIA_MAIN_INTERLUDE_OPTION = """Nothing. I'll leave you to it""",
+	AMELIA_MAIN_INTERLUDE_OPTION = """Nothing. I'll leave you to it.""",
 	AMELIA_SLAVE1_1 = """As you walk through the city streets, your attention is drawn to a pair of beggar children lingering near a crate, which is oddly positioned in the center of the sidewalk.
 
 Kid 1: — I told you, it moved! We should tell the guards or somebody!
@@ -11470,10 +11485,10 @@ Slave Girl: — I... I wasn't hiding, no-no! I'm... I'm just following orders! T
 	AMELIA_SLAVE1_2_OPTION_3 = """How about you tell me the truth?""",
 	AMELIA_SLAVE1_3_1 = """The half-wolf girl breaks into tears.
 
-Slave Girl: — I-I-I was so scared! That kind catwoman was taking me and others to some kind of Guild, but then we were attacked! Men with knives and swords! Th-They took her away! And I just ran and hid in here, not knowing what to do! Will they punish me for trying to run away?
+Slave Girl: — I-I-I was so scared! That kind catwoman was taking me and others to some kind of guild, but then we were attacked! Men with knives and swords! T-They took her away! And I just ran and hid in here, not knowing what to do! Will they punish me for trying to run away?
 """,
-	AMELIA_SLAVE1_3_2 = """Slave Girl: — She had fluffy ears and a very beautiful blue dress! She said her name was Amelia and that she was taking us to some Guild...""",
-	AMELIA_SLAVE1_3_3 = """Slave Girl: — I don't know! It happened so fast, and it was dark! I didn't see anything. But they captured the cat woman and took her away. I don't know where. Wh-What was I supposed to do? I thought they're going to kill me!""",
+	AMELIA_SLAVE1_3_2 = """Slave Girl: — She had fluffy ears and a very beautiful blue dress! She said her name was Amelia and that she was taking us to some guild...""",
+	AMELIA_SLAVE1_3_3 = """Slave Girl: — I don't know! It happened so fast, and it was dark! I didn't see anything. But they captured the cat woman and took her away. I don't know where. W-What was I supposed to do? I thought they're going to kill me!""",
 	AMELIA_SLAVE1_3_OPTION_1 = """The cat woman. What did she look like?""",
 	AMELIA_SLAVE1_3_OPTION_2 = """Who attacked you?""",
 	AMELIA_SLAVE1_3_OPTION_3 = """Just go to the Servants Guild""",
@@ -11482,19 +11497,19 @@ Slave Girl: — I-I-I was so scared! That kind catwoman was taking me and others
 
 Slave Girl: — Ouch!
 
-Suddenly, a group of guards emerge from around the same corner, running after her. """,
+Suddenly, a group of guards emerge from around the same corner, running after her.""",
 
 	AMELIA_SLAVE2_1_1 = """
 
 Guard 1: — There she is! Take her!
-Slave Girl: No! No! I did nothing! Please leave me alone!
+Slave Girl: — No! No! I did nothing! Please leave me alone!
 
 Guard 1: — We're going to take you in, you naughty girl. Don't you know escaping guards is the same as resisting arrest? We can lock you up just for that!
 
 Guard 2: — Yeah... Why did you run? It's clear you're hiding something. And we're going to question you... real thorough... He-he-he.
 """,
 	AMELIA_SLAVE2_1_OPTION_1 = """That's enough. I am her owner.""",
-	AMELIA_SLAVE2_1_OPTION_2 = """Don't you have actual crimes to stop? Go back to work, or I'll report you. """,
+	AMELIA_SLAVE2_1_OPTION_2 = """Don't you have actual crimes to stop? Go back to work, or I'll report you.""",
 	AMELIA_SLAVE2_1_OPTION_3 = """*Grab the girl's hand and run*""",
 	AMELIA_SLAVE2_2 = """Guard 2: — Really, now? And are we supposed to trust you on your word?
 
@@ -11509,20 +11524,20 @@ Guard 1: — Yes! Uh, apologies, [sir]. We found the slave walking around the ci
 	AMELIA_SLAVE2_3_1 = """Guard 1&2: — Yes, [sir]!
 
 The guards exchange looks between each other. One of them shrugs his shoulders, and they promptly leave.""",
-	AMELIA_SLAVE2_3_2 = """Guard 1: —  Come on. We don't need more trouble.
+	AMELIA_SLAVE2_3_2 = """Guard 1: — Come on. We don't need more trouble.
 
-Guard 2: —  I’ll remember you, bitch. Pray I won't stumble on you again. 
+Guard 2: — I'll remember you, bitch. Pray I won't stumble on you again. 
 
 The guards promptly leave.""",
-	AMELIA_SLAVE2_3_3 = """Guard 2: —  You sure? Them escapees can play hard, you know? And I know how to crack them real good!
+	AMELIA_SLAVE2_3_3 = """Guard 2: — You sure? Them escapees can play hard, you know? And I know how to crack them real good!
 
-Guard 1: —  Drop it. Let's just go back to the barracks.
+Guard 1: — Drop it. Let's just go back to the barracks.
 
-Guard 2: —  Alright, alright. But if [mister] Mayor here needs any assistance... 
+Guard 2: — Alright, alright. But if [mister] Mayor here needs any assistance... 
 
-Guard 1: —  Come on. Do you want to get suspended again? 
+Guard 1: — Come on. Do you want to get suspended again? 
 
-Guard 2: —  Ah, fine! Get off of my ass already!
+Guard 2: — Ah, fine! Get off of my ass already!
 
 The guards promptly leave. You can hear them continue their bickering for a little while longer until you lose sight of them.""",
 	AMELIA_SLAVE2_3_4 = """Guard 1: —  Hey! You! Stop!
@@ -11530,15 +11545,15 @@ The guards promptly leave. You can hear them continue their bickering for a litt
 It takes a while for you to create enough distance between you and your pursuers, but you successfully evade them. You and the girl now find yourselves in an alleyway. After she catches her breath, she addresses you:""",
 	AMELIA_SLAVE2_4 = """Slave Girl: — No... They were-
 
-Guard 2: Come on now, girly. Everything's fine. You found your [master], we have no reason to question you any more. All's well that ends well, right? No need to drag this out. 
+Guard 2: Come on now, girly. Everything's fine. You found your [Master], we have no reason to question you any more. All's well that ends well, right? No need to drag this out. 
 
 Slave Girl: — Y-yes... that's what happened.""",
 	AMELIA_SLAVE2_4_OPTION_1 = """Alright. You can go back to your duty, guards.""",
 	AMELIA_SLAVE2_4_OPTION_2 = """You're lying. What really happened?""",
-	AMELIA_SLAVE2_5 = """Slave Girl: —  I was on my way to the Servants Guild and they were trying to hit on me. I refused, but then they tried to assault me...
+	AMELIA_SLAVE2_5 = """Slave Girl: — I was on my way to the Servants Guild and they were trying to hit on me. I refused, but then they tried to assault me...
 
-Guard 2: —  You little shit! That's a lie!  She seemed suspicious and we tried to detain her! We were doing our jobs!""",
-	AMELIA_SLAVE2_5_OPTION_1 = """You can go. But if I catch you wasting time again, you can kiss your ranks goodbye""",
+Guard 2: — You little shit! That's a lie! She seemed suspicious and we tried to detain her! We were doing our jobs!""",
+	AMELIA_SLAVE2_5_OPTION_1 = """You can go. But if I catch you wasting time again, you can kiss your ranks goodbye.""",
 	AMELIA_SLAVE2_5_OPTION_2 = """That's for your superior officer to decide once I report it. Go back to your posts. Now.""",
 	AMELIA_SLAVE2_6 = """Guard 2: —  Yeah? And who the hell are you supposed to be? One of these freedom rebels?
 
@@ -11547,42 +11562,42 @@ Guard 1: — Hey... isn't this the mayor?
 Guard 2: —  Huh?! Really? Eh... apologies, [sir]. Do you know who this slave belongs to?""",
 	AMELIA_SLAVE2_6_OPTION_1 = """I do. You can leave.""",
 	AMELIA_SLAVE2_6_OPTION_2 = """ I will find out. Your help is not needed.""",
-	AMELIA_SLAVE2_7_1 = """Slave Girl: —  Thank you for helping me, [sir]! I was looking for the Servants Guild, when these guards showed up. They had really scary eyes, so I thought they wanted to do something terrible to me! I didn't know what to do, so I just ran.
-
-Do you know where the Servant Guild is, [sir]?  Mistress Amelia said I was supposed to be delivered there...""",
-	AMELIA_SLAVE2_7_2 = """Oh, you know her? She picked up me and two others from the market and we were on our way to the Guild when... Some armed people circled us. I thought they were just trying to rob the mistress, but then they started saying something about following orders. I didn't really get what they were talking about. 
-
-They twisted her arms and put her into a carriage. We thought the men were going to come back for us, so we ran away...""",
+	AMELIA_SLAVE2_7_1 = """Slave Girl: — Thank you for helping me, [sir]! I was looking for the Servants Guild, when these guards showed up. They had really scary eyes, so I thought they wanted to do something terrible to me! I didn't know what to do, so I just ran.
+		
+— Do you know where the Servant Guild is, [sir]?  Mistress Amelia said I was supposed to be delivered there...""",
+	AMELIA_SLAVE2_7_2 = """Slave Girl: — Oh, you know her? She picked up me and two others from the market and we were on our way to the Guild when... Some armed people circled us. I thought they were just trying to rob the mistress, but then they started saying something about following orders. I didn't really get what they were talking about.
+	
+— They twisted her arms and put her into a carriage. We thought the men were going to come back for us, so we ran away...""",
 	AMELIA_SLAVE2_7_3 = """If you tell me how to get there, yes. I am not very lucky, but I doubt I'll have anything happen to me three times in a row. Right?""",
 	AMELIA_SLAVE2_7_OPTION_1 = """What happened to Amelia?""",
 	AMELIA_SLAVE2_7_OPTION_2 = """Can you get to the Guild on your own?""",
-	AMELIA_SLAVE2_7_OPTION_3 = """You can go to the Guild""",
-	AMELIA_SLAVE2_8 = """Slave: Thank you, [master]. I will go there now. I hope they won't punish me for running away. It wasn't my fault...""",
-	AMELIA_SLAVE3_1_1 = """At one of the alleys you find a dark-haired young man standing, leaning on the wall, arms crossed. He is wearing quite ragged garb - A slave, by the looks of it. As he notices you, he stands upright. 
+	AMELIA_SLAVE2_7_OPTION_3 = """You can go to the Guild.""",
+	AMELIA_SLAVE2_8 = """Slave: — Thank you, [Master]. I will go there now. I hope they won't punish me for running away. It wasn't my fault...""",
+	AMELIA_SLAVE3_1_1 = """At one of the alleys you find a dark-haired young man standing, leaning on the wall, arms crossed. He is wearing quite ragged garb - a slave, by the looks of it. As he notices you, he stands upright. 
 
 Slave: —  Are you [name]? Amelia sent me.""",
-	AMELIA_SLAVE3_1_2 = """— I was with her yesterday. Sold to the Servants Guild. She was supposed to deliver me there, but... things took a turn.""",
-	AMELIA_SLAVE3_1_3 = """In danger. And she needs your help. She told me to go to you and only you. The Guild is not safe, she said.""",
+	AMELIA_SLAVE3_1_2 = """Slave: — I was with her yesterday. Sold to the Servants Guild. She was supposed to deliver me there, but... things took a turn.""",
+	AMELIA_SLAVE3_1_3 = """Slave: — In danger. And she needs your help. She told me to go to you and only you. The Guild is not safe, she said.""",
 	AMELIA_SLAVE3_1_OPTION_1 = """Who are you?""",
 	AMELIA_SLAVE3_1_OPTION_2 = """Where is Amelia?""",
 	AMELIA_SLAVE3_1_OPTION_3 = """Tell me everything""",
-	AMELIA_SLAVE3_2_1 = """Slave: — Amelia was taking me and two other girls to the Servants Guild when we were ambushed. Armed men took Amelia. I followed them. I wanted to get her out, but she said it was too dangerous, and I should go get help. She told me to get you and only you. The Servants Guild can't be trusted, she said. I can show you where they’re keeping her""",
+	AMELIA_SLAVE3_2_1 = """Slave: — Amelia was taking me and two other girls to the Servants Guild when we were ambushed. Armed men took Amelia. I followed them. I wanted to get her out, but she said it was too dangerous, and I should go get help. She told me to get you and only you. The Servants Guild can't be trusted, she said. I can show you where they're keeping her""",
 	AMELIA_SLAVE3_2_2 = """I don't know. That's all she said. The Guild can't be trusted and you're the only one I should tell this to.""",
 	AMELIA_SLAVE3_2_3 = """I followed the men to a carriage. When they were putting Amelia into it, I sneaked up close and hid myself at the bottom, between the wheels. Waited for night, then snuck in, found where they kept her. She didn't put my life in danger, though, so she said I should sneak out alone and get you.""",
-	AMELIA_SLAVE3_2_4 = """— Mercenaries, I think. Armed to the teeth, too. I don't know who hired them, though.""",
-	AMELIA_SLAVE3_2_OPTION_1 = """What does it mean? Why can't the Guild be trusted? """,
+	AMELIA_SLAVE3_2_4 = """Slave: — Mercenaries, I think. Armed to the teeth, too. I don't know who hired them, though.""",
+	AMELIA_SLAVE3_2_OPTION_1 = """What does it mean? Why can't the Guild be trusted?""",
 	AMELIA_SLAVE3_2_OPTION_2 = """How did you manage to get to her if she was taken?""",
 	AMELIA_SLAVE3_2_OPTION_3 = """Who took her?""",
 	AMELIA_SLAVE3_2_OPTION_4 = """Okay, where're they keeping her?""",
-	AMELIA_SLAVE3_3 = """— It's a camp in a cave on the outskirts of town.
+	AMELIA_SLAVE3_3 = """Slave: — It's a camp in a cave on the outskirts of the city.
 
 The slave tells you how to get there and you make a note on your map.
 
-— Is there anything else I can help with?""",
+Slave: — Is there anything else I can help with?""",
 	AMELIA_SLAVE3_3_OPTION_1 = """Go to the Guild. If something's fishy about them, we don't want them to suspect anything.""",
 	AMELIA_SLAVE3_3_OPTION_2 = """You are free to do whatever you want.""",
-	AMELIA_SLAVE3_4_1 = """— Okay. I'll do that. Please save her. She's a good person. Whatever is happening, she doesn't deserve this.""",
-	AMELIA_SLAVE3_4_2 = """— Please, hurry, though. Who knows what they're planning to do to her.""",
+	AMELIA_SLAVE3_4_1 = """Slave: — Okay. I'll do that. Please, save her. She's a good person. Whatever is happening, she doesn't deserve this.""",
+	AMELIA_SLAVE3_4_2 = """Slave: — Please, hurry, though. Who knows what they're planning to do to her.""",
 	AMELIA_PRISON_1 = """After beating the leader you descend the stairs into what seems to be a dungeon of sorts. Rows of prison cells, all empty, continue into the darkness beyond. In the furthest cell, you spot Amelia, sitting on her knees, chained to a wall. 
 
 — I was beginning to worry I would have had to settle in for a new life as a prisoner, but it seems I shouldn't have doubted you. I trust the men above have been dealt with? Do you mind unchaining me?""",
@@ -11595,15 +11610,15 @@ The slave tells you how to get there and you make a note on your map.
 	AMELIA_PRISON_2_OPTION_1 = """Any idea who might have ordered your kidnapping?""",
 	AMELIA_PRISON_2_OPTION_2 = """Why would somebody kidnap you?""",
 	AMELIA_PRISON_2_OPTION_3 = """The guild is investigating your activities. Something about smuggling.""",
-	AMELIA_PRISON_3_1 = """— There you have it. A good reason for my kidnapping. Somebody is aiming at my position. A pity they decided to resort to such methods. They could have just asked me to step down, and I would have gladly abided. 
+	AMELIA_PRISON_3_1 = """— There you have it. A good reason for my kidnapping. Somebody is aiming at my position. A pity they decided to resort to such methods. They could have just asked me to step down, and I would have gladly abided.
 In any case, it took them long enough to figure it out. I was starting to worry I might get away with my underhanded tactics.""",
 	AMELIA_PRISON_3_2 = """— Expected? No. Anticipated, now I believe that'd be a little closer. I can be mischievous, but even I know I can't get away with it forever. Nor did I intend to.""",
 	AMELIA_PRISON_3_3 = """— I would kindly ask you to deliver me, a dangerous criminal on the run whom you just heroically apprehended, to the Servants Guild. Most likely they will summon a council to decide on my punishment. That is where the person behind my kidnapping will surely make the next move.""",
 	AMELIA_PRISON_3_4 = """— A tempting proposal, for sure. But I would have to decline your invitation. For now, at least. The problem won't simply go away unless it's dealt with. And deal with it I do intend.""",
 	AMELIA_PRISON_3_OPTION_1 = """You expected this?""",
 	AMELIA_PRISON_3_OPTION_2 = """What are you going to do?""",
-	AMELIA_PRISON_3_OPTION_3 = """I can hide you in my mansion""",
-	AMELIA_PRISON_3_OPTION_4 = """Let's take you to the guild""",
+	AMELIA_PRISON_3_OPTION_3 = """I can hide you in my mansion.""",
+	AMELIA_PRISON_3_OPTION_4 = """Let's take you to the guild.""",
 	AMELIA_PRISON_4_1 = """— Please do. And one last thing, [name]. Once the Guild decides on the date of the council, would you help me get to the bottom of this? I could use an ally among the council attendees. And you are the only one I can eliminate from the list of suspects at the moment.""",
 	AMELIA_PRISON_4_2 = """— What was your grand plan, then? Have me kidnapped to then valiantly rescue me and make me fall in love? Oh, you didn't have to go to such lengths.""",
 	AMELIA_PRISON_4_OPTION_1 = """Why don't you think I could be behind all this?""",
@@ -11615,7 +11630,7 @@ In any case, it took them long enough to figure it out. I was starting to worry 
 	AMELIA_PRISON_5_OPTION_3 = """I like good girls more.""",
 	AMELIA_PRISON_6_1 = """— Thank you. That makes me at ease about what the council might bring.""",
 	AMELIA_PRISON_6_2 = """— Ah, I appreciate men with a bit of mystery to them. So I guess I will have to wait for the council to learn of your decision? How intriguing. Now I definitely have to see it through to the end.
-Take me to the Guild then.""",
+	Take me to the Guild then.""",
 	AMELIA_PRISON_6_3 = """— I can be that. And I can be the opposite. I've been properly trained, after all. Take me to the Guild then. And I hope by the time of the council you'll deem my behavior to your satisfaction.""",
 	AMELIA_INTERLUDE2_1_1 = """You walk into the leader's office with Amelia behind your back. Norlan keeps his face straight at this unexpected event. After she's taken away by the guards, you are left alone with him.
 
@@ -11632,25 +11647,25 @@ The council convenes today. As Norlan has promised, this letter enables you to a
 You remember Amelia's words. Somebody in the Servants Guild is working against her. Her prospects look grim if that is indeed the case. At least, without your help.""",
 	AMELIA_TRIAL_2 = """Stepping into the assembly hall within the Servants Guild building, you find a sparse gathering. Only a few individuals, the guild members, have already settled into their seats. Positioned at the podium ahead is the current overseer of the Guild's operations — Norlan. He acknowledges your presence with a subtle nod as you find your place among the others.
 
-Norlan: With everyone in attendance, we shall commence the council. Kindly escort the defendant in.""",
+Norlan: — With everyone in attendance, we shall commence the council. Kindly escort the defendant in.""",
 	AMELIA_TRIAL_3 = """Amelia enters the room, offering a bow to the assembled guild members. Her demeanor resembles that of a stage actress poised for her performance. She takes a seat next to the Guild Leader's podium, settling in with a sense of quiet composure.
 
-Norlan: —  The council is now in session. Today's agenda involves deciding Amelia's fate—our current Guild Leader, temporarily suspended. She's facing accusations of malpractice, unauthorized business ventures, misplacement of Guild property, and causing reputational damage. Amelia, do you understand these accusations? Do you agree or wish to defend yourself?
+Norlan: — The council is now in session. Today's agenda involves deciding Amelia's fate — our current Guild Leader, temporarily suspended. She's facing accusations of malpractice, unauthorized business ventures, misplacement of Guild property, and causing reputational damage. Amelia, do you understand these accusations? Do you agree or wish to defend yourself?
 
-Amelia looks disinterested, and pretends to not be bothered with the commotion around..""",
-	AMELIA_TRIAL_4 = """Amelia: —  Yes, I do, and I take full responsibility. Let us not prolong this council more than necessary. 
+Amelia looks disinterested, and pretends to not be bothered with the commotion around.""",
+	AMELIA_TRIAL_4 = """Amelia: — Yes, I do, and I take full responsibility. Let us not prolong this council more than necessary. 
 
-Member 1: —  I concur. We had two full days to understand the case, let's focus and move to the voting stage.""",
+Member 1: — I concur. We had two full days to understand the case, let's focus and move to the voting stage.""",
 	AMELIA_TRIAL_4_ = """Another guild member speaks up.
 
-Member 2: —  Indeed, that's the case. Her removal from her position is a given. Yet, we cannot disregard the covert deals that nearly pushed us into scandal territory. Merely removing her as Guild Leader isn't adequate; she needs to be held accountable.
+Member 2: — Indeed, that's the case. Her removal from her position is a given. Yet, we cannot disregard the covert deals that nearly pushed us into scandal territory. Merely removing her as Guild Leader isn't adequate, she needs to be held accountable.
 
-Amelia: —  What punishment do you have in mind, Sildur? I recall you've been rather fond of my antics during my first election.
+Amelia: — What punishment do you have in mind, Sildur? I recall you've been rather fond of my antics during my first election.
 
 Amelia smirks, as she looks the standing guild member into the eyes, making him blush uncomfortably.""",
-	AMELIA_TRIAL_5 = """Norlan: —  Defendant, please abstain from interfering unless asked for a statement.
+	AMELIA_TRIAL_5 = """Norlan: — Defendant, please, abstain from interfering unless asked for a statement.
 
-Amelia: —  Oh, yes. My bad. I used to lead these councils up until three days ago, and old habits die hard.""",
+Amelia: — Oh, yes. My bad. I used to lead these councils up until three days ago, and old habits die hard.""",
 	AMELIA_TRIAL_5_ = """Another guild member raises his voice.
 
 Member 3: — There's nothing to discuss, really. She did break the guild rules concerning the import of regulated elven plants into the city. We should not be the ones to decide her fate. She should be handed over to the authorities. 
@@ -11666,9 +11681,9 @@ The discussion among the guild members quiets down, and the hall's attention foc
 	AMELIA_TRIAL_7 = """Amelia: — Well, you are representing authority I am supposed to be handed over to. Among other things. I believe you are in a position to interfere... unless you don't feel like it?""",
 	AMELIA_TRIAL_7_OPTION_1 = """I have made my decision not to interfere, Amelia.""",
 	AMELIA_TRIAL_7_OPTION_2 = """You seem pretty desperate for my attention, aren't you?""",
-	AMELIA_TRIAL_8_1 = """Member 4: —  I agree with [him]! Have you already overlooked Amelia's substantial contributions to this guild? Surely, her accomplishments should mitigate her guilt to some extent?""",
+	AMELIA_TRIAL_8_1 = """Member 4: — I agree with [him]! Have you already overlooked Amelia's substantial contributions to this guild? Surely, her accomplishments should mitigate her guilt to some extent?""",
 	AMELIA_TRIAL_8_2 = """Amelia: — Is that so? It's a pity. I hoped you'd help out a damsel in distress.""",
-	AMELIA_TRIAL_8_3 = """Amelia: What a jest!
+	AMELIA_TRIAL_8_3 = """Amelia: — What a jest!
 
 Norlan: — Amelia, that will suffice. I've already mentioned that a defendant shouldn't speak without being addressed, haven't I?""",
 	AMELIA_TRIAL_8 = """
@@ -11678,29 +11693,29 @@ Member 2: —  This isn't a court of law. Our aim isn't to uphold justice here. 
 	AMELIA_TRIAL_8_OPTION_2 = """Having a former Guild Leader officially accused of a crime also doesn't look good for its reputation.""",
 	AMELIA_TRIAL_9_1 = """Member 1: — Essentially, that's true. We shouldn't pretend to be heroes or saints. After all, she's responsible for her own actions, isn't she? She had a position of power, but succumbed to greed. Responding in kind and making her face the consequences is only natural.""",
 	AMELIA_TRIAL_9_2 = """Member 2: — Well... yes, you can argue that's indeed the case. So what? We cover it up?""",
-	AMELIA_TRIAL_9 = """Norlan: — I believe we've heard enough from both perspectives. As an acting guild leader, normally, I would urge all attending to move on to the voting between two established courses of action: Hand the defendant to the authorities, or simply strip her of her position and let her walk away. However, I have an alternative proposition that hasn't been brought up yet.
+	AMELIA_TRIAL_9 = """Norlan: — I believe we've heard enough from both perspectives. As an acting guild leader, normally, I would urge all attending to move on to the voting between two established courses of action: hand the defendant to the authorities, or simply strip her of her position and let her walk away. However, I have an alternative proposition that hasn't been brought up yet.
 
-Member 2: — Truly? And what is it? """,
+Member 2: — Truly? And what is it?""",
 	AMELIA_TRIAL_9_ = """Norlan: — Being a former slave who's experienced freedom, there is no punishment more severe for the defendant than returning to a life of servitude. Selling her into slavery would both serve as retribution, and eliminate the necessity of publicizing this reputational shame. Interestingly enough, I do have a potential buyer who's interested in acquiring her.
 
-Amelia: —  So soon? It seems you have already made plans without waiting for the council's decision.
+Amelia: — So soon? It seems you have already made plans without waiting for the council's decision.
 
-Norlan: —  Defendant, this is your last warning before getting removed from the hall. 
+Norlan: — Defendant, this is your last warning before getting removed from the hall. 
 
 Amelia looks you into the eyes. She silently gestures towards Norlan with her head. It was him. The one who ordered her kidnapping. Or so she seems to believe. 
 
-Amelia's gaze returns to you. Her expression reveals a silent question, a plea. "Will you help me expose him?", she asks.""",
-	AMELIA_TRIAL_9_OPTION_1 = """Shake your head. Refuse her plea.""",
-	AMELIA_TRIAL_9_OPTION_2 = """Nod. Help her expose Norlan.""",
+Amelia's gaze returns to you. Her expression reveals a silent question, a plea. 'Will you help me expose him?', she asks.""",
+	AMELIA_TRIAL_9_OPTION_1 = """*Shake your head. Refuse her plea*""",
+	AMELIA_TRIAL_9_OPTION_2 = """*Nod. Help her expose Norlan*""",
 	AMELIA_TRIAL_10 = """She is disappointed. Must be, although she doesn't let it show. The council proceeds without your interference. 
 
 Member 2: — It's an elegant solution to our problem. I do not object.
-Norlan: Let us proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
+Norlan: — Let us proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
-You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal. """,
+You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal.""",
 	AMELIA_TRIAL_10_ = """Norlan: — Then it is decided by the vote of the majority. 
 
-With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last disappointed glance before she's led away from the hall.  Norlan remains behind. He approaches you before you are able to leave.
+With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last disappointed glance before she's led away from the hall. Norlan remains behind. He approaches you before you are able to leave.
 
 Norlan: — I appreciate you making your time to join us today, Mayor [name].""",
 	AMELIA_TRIAL_10_OPTION_1 = """Who is that buyer you mentioned? Who did you promise Amelia to?""",
@@ -11713,7 +11728,7 @@ Norlan's words are accompanied by a smile.""",
 	AMELIA_TRIAL_11_3 = """Once again, thank you for your attendance today. Mayor [name], I earnestly hope for your ongoing support of our Guild and for our future cooperation to prove as fruitful as it was during this... crisis. Now, if you'll excuse me, Mayor [name].
 
 Norlan leaves without saying anything more.""",
-	AMELIA_TRIAL_11 = """I apologize, but I must take my leave.  Mayor [name], I earnestly hope for your ongoing support of our Guild and for our future cooperation to prove as fruitful as it was during this... crisis. Now, if you'll excuse me, Mayor [name].
+	AMELIA_TRIAL_11 = """I apologize, but I must take my leave. Mayor [name], I earnestly hope for your ongoing support of our Guild and for our future cooperation to prove as fruitful as it was during this... crisis. Now, if you'll excuse me, Mayor [name].
 
 Norlan leaves without saying anything more.""",
 	AMELIA_TRIAL_12 = """Member 2: — It's an elegant solution to our problem. I do not object.
@@ -11722,17 +11737,17 @@ Norlan: — Let us proceed to voting. Those in favor of selling Amelia, would yo
 
 Amelia: — Before you do, I would like to make a statement in my defense. I am allowed to, aren't I, Norlan?
 
-Norlan: — ... Proceed.
+Norlan: — ...Proceed.
 
 Amelia: — My so-called underhanded activities have been no secret for a very long time. After all, there are plenty among the members gathered today who were my clients. 
 
-Member 1: — W-what nonsense! """,
+Member 1: — W-what nonsense!""",
 	AMELIA_TRIAL_12_ = """Amelia: — Do not worry, I will not disclose who... nor what exactly I have been asked to get. Your secrets are safe with me. There's but one reason I even mention this now — because I care about this guild deeply, and it would sadden me to see it fall. And fall it will, unless corruption within is exposed. 
 
-Norlan: — Your words, Amelia, don't come across as a statement in your defense; rather, they seem to carry an accusatory tone. I am responsible for maintaining order in this council, and it appears that Amelia's intention might be to disrupt that order. Amelia, I acknowledge your emotions, but I cannot permit you to proceed down this path.""",
-	AMELIA_TRIAL_13 = """Amelia: — Oh but you are too late, because this council is already nothing more than a circus. But if you want to do everything by the book, so be it. I would like to call a witness. 
+Norlan: — Your words, Amelia, don't come across as a statement in your defense. Rather, they seem to carry an accusatory tone. I am responsible for maintaining order in this council, and it appears that Amelia's intention might be to disrupt that order. Amelia, I acknowledge your emotions, but I cannot permit you to proceed down this path.""",
+	AMELIA_TRIAL_13 = """Amelia: — Oh, but you are too late, because this council is already nothing more than a circus. But if you want to do everything by the book, so be it. I would like to call a witness. 
 
-Norlan: — We do not have the time for this, Amelia. This council's conclusion is set for today; we cannot afford to delay it until the day your witness becomes available.
+Norlan: — We do not have the time for this, Amelia. This council's conclusion is set for today. We cannot afford to delay it until the day your witness becomes available.
 
 Amelia: — There's no need to postpone anything, as my witness is present today. I would like to ask you several questions, [mister] Mayor [name].""",
 	AMELIA_TRIAL_13_ = """Norlan: — Feel free to proceed with your questions. Yet, I must emphasize that your inquiries should pertain directly to the case. If they deviate from relevance, I will need to conclude your final statement, even if you haven't concluded it yourself.
@@ -11740,17 +11755,17 @@ Amelia: — There's no need to postpone anything, as my witness is present today
 Amelia: — Tell me, Mayor [name]. It was you who delivered me to the guild the other day. Would you kindly inform the members under which circumstances was I discovered by you?""",
 	AMELIA_TRIAL_13_OPTION_1 = """Kidnapped by mercenaries. I broke you out.""",
 	AMELIA_TRIAL_13_OPTION_2 = """Chained to a wall in a rather submissive pose.""",
-	AMELIA_TRIAL_14_1 = """Amelia: — Indeed. Kidnapped. I find it rather strange that my kidnapping has coincided with the start of investigation into my activities. After all, wouldn't it be more natural to presume that something happened to me after I failed to return? Yet the first thing our new Guild Leader ordered to be investigated was not my mysterious disappearance, but rather what I had been doing before it happened. """,
+	AMELIA_TRIAL_14_1 = """Amelia: — Indeed. Kidnapped. I find it rather strange that my kidnapping has coincided with the start of investigation into my activities. After all, wouldn't it be more natural to presume that something happened to me after I failed to return? Yet the first thing our new Guild Leader ordered to be investigated was not my mysterious disappearance, but rather what I had been doing before it happened.""",
 	AMELIA_TRIAL_14_2 = """Amelia: — Thank you for sharing that unnecessary detail. Indeed. Kidnapped. By mercenaries, I should add. Somebody paid them to do it. I find it rather strange that my kidnapping has coincided with the start of an investigation into my activities. After all, wouldn't it be more natural to presume that something happened to me after I failed to return? Yet the first thing our new Guild Leader ordered to be investigated was not my mysterious disappearance, but rather what I had been doing before it happened.""",
 	AMELIA_TRIAL_14 = """Norlan: — Please, proceed to the point you're trying to make or ask your next question. 
 
 Amelia: — Very well. Mayor [name], according to what I have been told, you have extended your help to the Guild and discovered the missing slaves. Whose Idea was it, yours or Norlan's?""",
 	AMELIA_TRIAL_14_OPTION_1 = """I offered my help. Norlan tried to convince me to not get involved.""",
 	AMELIA_TRIAL_14_OPTION_2 = """Of course it was my idea. You don't just disappear on your mayor, Amelia.""",
-	AMELIA_TRIAL_15_2 = """Amelia: — I will keep that in mind for the future, mister Mayor. Do you remember what was Norlan's reaction to your suggestion?""",
+	AMELIA_TRIAL_15_2 = """Amelia: — I will keep that in mind for the future, [mister] Mayor. Do you remember what was Norlan's reaction to your suggestion?""",
 	AMELIA_TRIAL_15 = """Member 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
 
-Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term "chaos" seems a bit exaggerated.""",
+Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term 'chaos' seems a bit exaggerated.""",
 	AMELIA_TRIAL_15_ = """Amelia: — There you have it, Norlan. Two witnesses. 
 
 Norlan: — Amelia... this desperate act does not befit someone of your refinement. What possible reason would I have to plot something like this? 
@@ -11768,7 +11783,7 @@ A visible surprise colors Amelia's face. She did not expect this to happen.""",
 Norlan: — Certainly. Yet, Amelia's perspective centers on the idea that I schemed to frame her in order to attain her role as Guild Leader. As an official declaration, I wish to express that I would willingly reject this responsibility if it serves as evidence of my innocence. 
 
 Amelia looks at you. She needs help. Something to latch onto. Something to postpone the voting, at least.""",
-	AMELIA_TRIAL_16_OPTION_1 = "Try to analyze the case for inconsistencies.",
+	AMELIA_TRIAL_16_OPTION_1 = "*Try to analyze the case for inconsistencies*",
 	AMELIA_TRIAL_16_OPTION_2 = """Maybe we should question the slaves who were with Amelia when she was kidnapped?""",
 	AMELIA_TRIAL_16_OPTION_3 = """You said you have a buyer for Amelia. Who is it?""",
 	AMELIA_TRIAL_16_OPTION_4 = """Clearly there's something going on. Somebody hired those mercenaries.""",
@@ -11791,7 +11806,7 @@ Norlan: — As a person directly responsible for compiling the inventory list, I
 
 Amelia: — The order for the plant was anonymous. I was kidnapped before I had a chance to meet with the buyer. Obviously, you were the one who ordered it. Obviously, you never intended to pay for it. And, obviously, you planned to steal it to fund your little plot.""",
 	AMELIA_TRIAL_NORMAL_1__ = """Norlan: — It's truly unfortunate to witness you in such a state of desperation.
-However, even if there was this plant, what proof do you possess that I've taken it? What conceivable evidence could you present that suggests that I've sold it?
+	However, even if there was this plant, what proof do you possess that I've taken it? What conceivable evidence could you present that suggests that I've sold it?
 
 Amelia gazes at you, her expression leaving no doubt: she's signaling for you to cooperate. But in what way?""",
 	AMELIA_TRIAL_NORMAL_1_OPTION_1 = """I delivered the plant to Amelia myself. It definitely existed.""",
@@ -11805,10 +11820,10 @@ Norlan: — I do not need to explain anything at all. You claim the plant existe
 	AMELIA_TRIAL_NORMAL_3 = """Norlan: — This is preposterous. I do not know what compels you to conspire with Amelia, Mayor [name], but I urge you to reconsider. She is playing you. No elven plants were in Amelia's possession. Even if somebody stole it, it was before I had a chance to see it.
 
 Member 2: — But why would Amelia be so intent on this? And the Mayor seems to agree with her. We would be foolish not to pursue this line of inquiry further, Norlan!""",
-	AMELIA_TRIAL_NORMAL_3_ = """Norlan: — On the contrary, we would be unwise to let this matter occupy any more of our time. The plant is unrelated to Amelia's crimes,  which, let us remember, remains the council’s primary concern. Even if we were to entertain this, Amelia has no evidence to prove my involvement in selling the plant and hiring mercenaries. As for why Amelia would press forward with this line of thought...
+	AMELIA_TRIAL_NORMAL_3_ = """Norlan: — On the contrary, we would be unwise to let this matter occupy any more of our time. The plant is unrelated to Amelia's crimes, which, let us remember, remains the council's primary concern. Even if we were to entertain this, Amelia has no evidence to prove my involvement in selling the plant and hiring mercenaries. As for why Amelia would press forward with this line of thought...
 
 Norlan takes a moment to consider his next words. He throws a glance at Amelia, then at you, then returns his attention back to the guild members.""",
-	AMELIA_TRIAL_NORMAL_4 = """Norlan: — Her motive is straightforward—instilling doubt. We all owe Amelia, some more than others. Now, she endeavors to exploit that fact. The intent behind this... discourse, for lack of a better term, is to coerce the council into adjournment and thereby postpone the resolution of her fate. I'm uncertain about her underlying motivations, but her strategy is evident. What truly astonishes me is the readiness of many among you to rally behind this proven criminal and fall prey to her machinations.
+	AMELIA_TRIAL_NORMAL_4 = """Norlan: — Her motive is straightforward — instilling doubt. We all owe Amelia, some more than others. Now, she endeavors to exploit that fact. The intent behind this... discourse, for lack of a better term, is to coerce the council into adjournment and thereby postpone the resolution of her fate. I'm uncertain about her underlying motivations, but her strategy is evident. What truly astonishes me is the readiness of many among you to rally behind this proven criminal and fall prey to her machinations.
 
 Amelia: — What a speechmaker you are, Norlan. I see you finally decided to make it personal. 
 
@@ -11818,7 +11833,7 @@ Norlan: — Enough, Amelia. We have given you plenty of time. Your last statemen
 But could there be another angle to consider? Norlan's swift willingness to relinquish the Guild Leader's position raises questions. Maybe Amelia's suspicions of Norlan were misplaced, and he wasn't the one orchestrating the plot against her? Or could there be another motive behind Norlan's actions?""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_1 = """You're hiding something, Norlan. I will not let the council finish until I find out what it is.""",
 	AMELIA_TRIAL_NORMAL_5_OPTION_2 = """If selling Amelia is inevitable, I will buy her myself. I offer double of what your other buyer offered.""",
-	AMELIA_TRIAL_NORMAL_5_OPTION_3 = """I have no further objections""",
+	AMELIA_TRIAL_NORMAL_5_OPTION_3 = """I have no further objections.""",
 	AMELIA_TRIAL_NORMAL_6_1 = """Norlan: — I understand your sentiment, Mayor [name]. But alas, this is a Servants Guild council and your authority here is limited. You are in no position to enforce your will upon the council. Which is fortunate — for you, that is — as it spares you from making a grave mistake on behalf of a seductress.""",
 	AMELIA_TRIAL_NORMAL_6_2 = """Norlan: — Good. Then we can finally lay this matter to rest and proceed to voting.""",
 	AMELIA_TRIAL_NORMAL_7 = """Norlan: —  I... beg your pardon, Mayor [name]? But... you don't even know what was offered for her. Besides, I can not just go back on my word with a buyer.
@@ -11826,7 +11841,7 @@ But could there be another angle to consider? Norlan's swift willingness to reli
 Member 3: — Stop it, Norlan! We're being offered more money for her, there's no reason to refuse. Your buyer will understand.
 
 Norlan: — No. No he will not. A deal is a deal. You of all people, dearest guild members, are bound to understand this.""",
-	AMELIA_TRIAL_NORMAL_7_ = """Member 2: — Come on! Before the mayor changes his mind! Who is in favor of selling Amelia to the Mayor? Raise your hands!
+	AMELIA_TRIAL_NORMAL_7_ = """Member 2: — Come on! Before the mayor changes [his] mind! Who is in favor of selling Amelia to the Mayor? Raise your hands!
 
 You look around the hall. It seems the majority of guild members are in agreement.
 
@@ -11855,7 +11870,7 @@ Norlan makes a sudden leap towards Amelia, clenching a dagger in his fist. Befor
 Member 1: — Norlan! Explain yourself! What is going on? """,
 	AMELIA_TRIAL_NORMAL_8_ = """Norlan: — Simple. My attempt at kidnapping Amelia has failed, thanks to our dearest Mayor's efforts, I am about to make one more. And I must warn you, that if it comes to that I can't have Amelia, then I will ensure nobody else will. I will kill her if anybody as much as sneezes.
 
-Member 3: Guards! Somebody call the guards!
+Member 3: — Guards! Somebody call the guards!
 
 Norlan starts to back up, keeping Amelia close. Nobody risks moving. These people were ready to sell Amelia into slavery, but seeing her killed in front of their eyes must be too unpleasant of a prospect. This is where they draw the line.  
 
@@ -11864,7 +11879,7 @@ Amelia: — You know what, Norlan. You didn't have to do all this. You could sim
 
 Amelia: — I also have feelings for you, you know?
 
-A momentary distraction. Enough for Amelia to twist her leg around Norlan's and make him fall over on his back, dagger falling out of his hand. 
+A momentary distraction. Enough for Amelia to twist her leg around Norlan's and make him fall over on his back, dagger falling out of his hand.
 Before Norlan can understand what happened, several men are already holding him in place, restraining his arms and legs. 
 
 Member 1: — Don't move now! Guards! Somebody call the guards!
@@ -11873,64 +11888,64 @@ Amelia looks at you, a frown forming on her face.
 
 Amelia: — I am hurt. Were you going to let him kidnap me? Again?""",
 	AMELIA_TRIAL_NORMAL_8_OPTION_1 = """He wouldn't have gotten far.""",
-	AMELIA_TRIAL_NORMAL_8_OPTION_2 = """I knew you had it under control. """,
-	AMELIA_TRIAL_NORMAL_9_1 = """Amelia: —  Not very heroic of you, [name]. You're supposed to save the damsel in distress, you know?""",
-	AMELIA_TRIAL_NORMAL_9_2 = """Amelia: —  Oh, is that so? Thank you for your trust in me, my hero.""",
+	AMELIA_TRIAL_NORMAL_8_OPTION_2 = """I knew you had it under control.""",
+	AMELIA_TRIAL_NORMAL_9_1 = """Amelia: — Not very heroic of you, [name]. You're supposed to save the damsel in distress, you know?""",
+	AMELIA_TRIAL_NORMAL_9_2 = """Amelia: — Oh, is that so? Thank you for your trust in me, my hero.""",
 	AMELIA_TRIAL_NORMAL_9 = """
 
-Norlan: —  Have I lost? Impossible. All these preparations, all the sacrifices I had to make... You have destroyed it all, [name].  Amelia... I could have given you everything. My unconditional, pure love that was flourishing for years. You have seen the extent of my resolve, my feelings. Yet you deny them. Why?!""",
-	AMELIA_TRIAL_NORMAL_9_ = """Amelia: —  You have been serving the guild for so long, yet you have failed to understand one fundamental truth about our work. It is a slave who chooses their master. Not the other way around. I simply chose someone who would care for me, instead of just his own ego.
+Norlan: — Have I lost? Impossible. All these preparations, all the sacrifices I had to make... You have destroyed it all, [name]. Amelia... I could have given you everything. My unconditional, pure love that was flourishing for years. You have seen the extent of my resolve, my feelings. Yet you deny them. Why?!""",
+	AMELIA_TRIAL_NORMAL_9_ = """Amelia: — You have been serving the guild for so long, yet you have failed to understand one fundamental truth about our work: it is a slave who chooses their master. Not the other way around. I simply chose someone who would care for me, instead of just his own ego.
 
 The men holding Norlan down drag him up onto his feet.
 
-Member 3: —  Let's put him in the slave cage for now. We'll have to explain what happened to the Guards when they come anyway.
+Member 3: — Let's put him in the slave cage for now. We'll have to explain what happened to the guards when they come anyway.
 
-Member 1: —  Good idea.
+Member 1: — Good idea.
 
 The guild members take Norlan away.""",
-	AMELIA_TRIAL_NORMAL_10 = """Member 2 (Sildur): —  Ahem. Amelia. You do understand that you are still under arrest, don't you?
+	AMELIA_TRIAL_NORMAL_10 = """Member 2: — Ahem. Amelia. You do understand that you are still under arrest, don't you?
 
-Amelia: —  Am I? I thought the guild voted to sell me to the mayor. 
+Amelia: — Am I? I thought the guild voted to sell me to the mayor. 
 
-Member 2 (Sildur): — Maybe so, but we've yet to receive any payment. 
+Member 2: — Maybe so, but we've yet to receive any payment. 
 
-Amelia: —  What payment? [name] promised to pay double of what Norlan paid. Double of zero is still zero, isn't it?""",
-	AMELIA_TRIAL_NORMAL_10_ = """Member 2 (Sildur): —  You are observant as ever, however the guild policies are clear — no goods are given out for free. 
-Mayor [name]. I thank you for your involvement. We will finish the paperwork. Once we receive your payment, you shall be free to take Amelia back to your mansion.
+Amelia: — What payment? [name] promised to pay double of what Norlan paid. Double of zero is still zero, isn't it?""",
+	AMELIA_TRIAL_NORMAL_10_ = """Member 2: — You are observant as ever. However, the guild policies are clear — no goods are given out for free. 
+Mayor [name], I thank you for your involvement. We will finish the paperwork. Once we receive your payment, you shall be free to take Amelia back to your mansion.
 
 
-Member 2 (Sildur): —  Mayor [name]. Please come back tomorrow to finalize the purchase. We will have all the formalities figured out by then. I will personally see to it that Amelia receives proper accommodation in the Guild for the time being.""",
-		AMELIA_TRIAL_BAD_1 = """Norlan: —  We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
+Member 2: — Mayor [name]. Please, come back tomorrow to finalize the purchase. We will have all the formalities figured out by then. I will personally see to it that Amelia receives proper accommodation in the Guild for the time being.""",
+	AMELIA_TRIAL_BAD_1 = """Norlan: — We have spent enough time on this discussion. Amelia's crimes are undeniable. And the circumstances surrounding their preparation are of no concern for today's council. Therefore, I suggest we stop wasting the members' precious time and proceed to voting. Those in favor of selling Amelia, would you please raise your hands. 
 
 You look around the hall. It seems the majority of guild members are in agreement with Norlan's proposal.""",
-	AMELIA_TRIAL_BAD_1_ = """Norlan: —  Then it is decided by the vote of the majority. 
+	AMELIA_TRIAL_BAD_1_ = """Norlan: — Then it is decided by the vote of the majority. 
 
-With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last glance before she's led away from the hall.  Norlan remains behind. He approaches you before you are able to leave.
+With this final word spoken, the guild members start to push up from their seats and leave the hall. Amelia throws you her last glance before she's led away from the hall. Norlan remains behind. He approaches you before you are able to leave.
 
-Norlan: —  I appreciate you making your time to join us today, Mayor [name].""",
+Norlan: — I appreciate you making your time to join us today, Mayor [name].""",
 	AMELIA_TRIAL_BAD_1_OPTION_1 = """Who is that buyer you mentioned? Who did you promise Amelia to?""",
 	AMELIA_TRIAL_BAD_1_OPTION_2 = """Have you investigated the people who kidnapped Amelia?""",
 	AMELIA_TRIAL_BAD_1_OPTION_3 = """Who is going to be the next Guild Leader?""",
-	AMELIA_TRIAL_BAD_2_1 = """Norlan: —  My sincere apologies, Mayor [name], but I am not authorized to reveal either the terms of the deal, or the parties involved. However, you needn't be concerned. I can assure you that Amelia will be well taken care of.
+	AMELIA_TRIAL_BAD_2_1 = """Norlan: — My sincere apologies, Mayor [name], but I am not authorized to reveal either the terms of the deal, or the parties involved. However, you needn't be concerned. I can assure you that Amelia will be well taken care of.
 
 Norlan's words are accompanied by a smile.""",
-	AMELIA_TRIAL_BAD_2_2 = """Norlan: —  Of course. Nonetheless, the investigation yielded no significant results. My assumption is that they were employed by one of her past clients, possibly a landowner she may have misled. Investigating further could jeopardize our reputation with innocent landowners. Hence, we chose to halt the investigation.""",
-	AMELIA_TRIAL_BAD_2_3 = """Norlan: —  That matter will be decided in the next council. While I have been the guild's top candidate for this position, now that I have officially renounced this title, they will have to nominate somebody else.  I am sure the Guild will make the right decision, so you do not have to worry.""",
+	AMELIA_TRIAL_BAD_2_2 = """Norlan: — Of course. Nonetheless, the investigation yielded no significant results. My assumption is that they were employed by one of her past clients, possibly a landowner she may have misled. Investigating further could jeopardize our reputation with innocent landowners. Hence, we chose to halt the investigation.""",
+	AMELIA_TRIAL_BAD_2_3 = """Norlan: — That matter will be decided in the next council. While I have been the guild's top candidate for this position, now that I have officially renounced this title, they will have to nominate somebody else. I am sure the Guild will make the right decision, so you do not have to worry.""",
 	AMELIA_TRIAL_BAD_3 = """I apologize, but I must take my leave. I earnestly hope for your ongoing support of our Guild and for our future cooperation to prove as fruitful as it was during this... crisis. Now, if you'll excuse me, Mayor [name].
 
 Norlan leaves without saying anything more.""",
 	AMELIA_INTERLUDE3_1_1 = """You enter the Guild Hall. Sildur's face greets you, and his serious expression widens into a smile as soon as he spots you.
 
-— Ah, Mayor [name]! We've been expecting you. All the paperwork is finished and we're ready to entrust Amelia to your care. It is just a simple matter of payment. The guild has concluded that 3000 will be sufficient.""",
+— Ah, Mayor [name]! We've been expecting you. All the paperwork is finished and we're ready to entrust Amelia to your care. It is just a simple matter of payment. The guild has concluded that 3.000 gold will be sufficient.""",
 	AMELIA_INTERLUDE3_1_1a = """You enter the Guild Hall. Sildur's face greets you, and his serious expression widens into a smile as soon as he spots you.
 
-— Ah, Mayor [name]! We've been expecting you. All the paperwork is finished and we're ready to entrust Amelia to your care. It is just a simple matter of payment. The guild has concluded that 1500 will be sufficient.""",
+— Ah, Mayor [name]! We've been expecting you. All the paperwork is finished and we're ready to entrust Amelia to your care. It is just a simple matter of payment. The guild has concluded that 1.500 gold will be sufficient.""",
 	AMELIA_INTERLUDE3_1_2 = """— I knew a person as keen in these matters as you are wouldn't miss the chance to negotiate. I expected this, so I already convinced the council to provide room for bargaining. It is arranged. Amelia will be delivered straight to your manor. Is there anything else I can help you with for the time being?""",
 	AMELIA_INTERLUDE3_1_3 = """— We are grateful for all your help, truly. But the guild has to survive. And we survive on trade and profits. We can't just give slaves like Amelia away for a couple of dimes. I am sure you understand, Mayor [name].""",
-	AMELIA_INTERLUDE3_1_OPTION_1 = """A bit demanding of someone who helped the guild as much as I have, no? (Charm check)""",
-	AMELIA_INTERLUDE3_1_OPTION_2 = """Seems fair""",
+	AMELIA_INTERLUDE3_1_OPTION_1 = """[Charm] A bit demanding of someone who helped the guild as much as I have, no?""",
+	AMELIA_INTERLUDE3_1_OPTION_2 = """Seems fair.""",
 	AMELIA_INTERLUDE3_1_OPTION_3 = """I don't have the money right now.""",
-	AMELIA_INTERLUDE3_2_1 = """— A pleasure doing business with you, Mayor [name]. Amelia will be delivered straight to your manor. I am sure there can be no better [master] for her. And I expect that after this, we will continue to be in your good graces. Is there anything else I can help you with for the time being? """,
+	AMELIA_INTERLUDE3_2_1 = """— A pleasure doing business with you, Mayor [name]. Amelia will be delivered straight to your manor. I am sure there can be no better [Master] for her. And I expect that after this, we will continue to be in your good graces. Is there anything else I can help you with for the time being?""",
 	AMELIA_INTERLUDE3_2_2 = """— Well, it's not a small sum, now is it? Don't worry. We'll see to that Amelia is comfortably accommodated until you can pay the expenses. Is there anything else I can help you with for the time being?""",
 	AMELIA_INTERLUDE3_2_3 = """We handed him over to the city guard. He did make an attempt on somebody's life. This is no longer simply about breaking the Guild rules. It is a crime, after all.""",
 	AMELIA_INTERLUDE3_2_4 = """This is not a simple question. Several candidates are rallying their supporters for the next council to decide that. For the time being, I have taken this responsibility onto myself.""",
@@ -11938,17 +11953,17 @@ Norlan leaves without saying anything more.""",
 	AMELIA_INTERLUDE3_2_OPTION_2 = """Who is going to be the new Guild Leader?""",
 	AMELIA_INTERLUDE3_2_OPTION_3 = """No, that's all.""",
 	AMELIA_INTERLUDE3_3 = """Well then, it was good meeting you, Mayor [name]. You have a nice day.""",
-	AMELIA_INTERLUDE4 = """Guild is closed""",
-	AMELIA_FINAL_1 = """—　At last, the savior of the day makes his appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?""",
+	AMELIA_INTERLUDE4 = """Guild is closed.""",
+	AMELIA_FINAL_1 = """— At last, the savior of the day makes [his] appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?""",
 	AMELIA_FINAL_1_OPTION_1 = """It's not the first time, remember? You better not get used to it, though.""",
 	AMELIA_FINAL_1_OPTION_2 = """Good. I like being a hero.""",
 	AMELIA_FINAL_1_OPTION_3 = """I wish you didn't involve me in your mess.""",
 	AMELIA_FINAL_2_1 = """— True. You are as reliable as they come. It's hard not to get used to a good thing, but I will try my best.""",
 	AMELIA_FINAL_2_2 = """— And they say chivalry is dead nowadays. Maybe I was just in luck to find a diamond among the rubble?""",
 	AMELIA_FINAL_2_3 = """— Oh, but you are the mayor of the city. I thought by now you would get used to being dragged into the Guilds' affairs""",
-	AMELIA_FINAL_2 = """— Well, no matter, I am glad you were on my side. I admit, I underestimated my enemies. It is rare for people to do so and come out on top in the end anyway. I wouldn't be able to without your help. I just want you to know that I truly appreciate it. """,
+	AMELIA_FINAL_2 = """— Well, no matter, I am glad you were on my side. I admit, I underestimated my enemies. It is rare for people to do so and come out on top in the end anyway. I wouldn't be able to without your help. I just want you to know that I truly appreciate it.""",
 	AMELIA_FINAL_2_OPTION_1 = """You were sold into slavery and you still consider it a win?""",
-	AMELIA_FINAL_2_OPTION_2 = """You make it sound like this has been your intention all along""",
+	AMELIA_FINAL_2_OPTION_2 = """You make it sound like this has been your intention all along.""",
 	AMELIA_FINAL_3_1 = """— Perhaps. Someone of your ambitions might not get it, but in truth, I grew tired of all those affairs and responsibilities. Yes, I have been looking for an excuse to leave this duty for something simpler, and you've been my prime candidate for a person who can make someone like me feel... at home. 
 
 
@@ -11957,7 +11972,7 @@ Norlan leaves without saying anything more.""",
 	AMELIA_FINAL_3_2 = """— Good thing I came prepared, then. This is my old one, from the days I was a slave before. I kept it as a memento. It is time for it to serve its intended purpose once more.""",
 	AMELIA_FINAL_3_OPTION_1 = """I don't have a vacant collar.""",
 	AMELIA_FINAL_3_OPTION_2 = """Sure. We wouldn't want to forget such an important thing, would we?""",
-	AMELIA_FINAL_3_OPTION_3 = """ I want you to do it yourself.""",
+	AMELIA_FINAL_3_OPTION_3 = """I want you to do it yourself.""",
 	AMELIA_FINAL_4_1 = """Amelia keeps looking you straight in the eyes. As you fasten the collar around her neck, she slightly leans forward slightly towards you, adjusting her shoulder length hair enough to expose her neck. 
 
 She's of half-beast kin, you remember. Exposing the neck, the most vulnerable part of their body, is the sign of complete trust and submission.
@@ -11974,29 +11989,29 @@ With an experienced movement, she wraps the collar around her neck, leaning forw
 	AMELIA_FINAL_4_OPTION_1 = """A collar suits you well.""",
 	AMELIA_FINAL_4_OPTION_2 = """You look strangely happy.""",
 	AMELIA_FINAL_4_OPTION_3 = """Like a slave.""",
-	AMELIA_FINAL_5_1 = """I am glad you think so. Maybe it's the way it was always meant to be""",
-	AMELIA_FINAL_5_2 = """Of course. Nothing makes me happier than finally belonging. """,
+	AMELIA_FINAL_5_1 = """I am glad you think so. Maybe it's the way it was always meant to be.""",
+	AMELIA_FINAL_5_2 = """Of course. Nothing makes me happier than finally belonging.""",
 	AMELIA_FINAL_5_3 = """Pragmatic, are you? No romance in you, I see. Well, it takes a certain talent to be able to see things for what they really are.""",
 	AMELIA_FINAL_5 = """— Would you like to... break your new slave in?""",
-	AMELIA_FINAL_5_OPTION_1 = """I was afraid you wouldn't ask""",
+	AMELIA_FINAL_5_OPTION_1 = """I was afraid you wouldn't ask.""",
 	AMELIA_FINAL_5_OPTION_2 = """Perhaps, some other time.""",
 	AMELIA_FINAL_6 = """Knowing what comes next, Amelia elegantly starts to strip off her clothes, knowing full well you are watching, doing the best she can. She slowly bows before you in submission, her smile not leaving her lips.
 
 — My body hasn't been this excited since so long ago.
 """,
-	AMELIA_FINAL_7 = """— Oh... Well, it seems I will have to deserve your attention. For such a fair master, I am ready at any time.""",
+	AMELIA_FINAL_7 = """— Oh... Well, it seems I will have to deserve your attention. For such a fair [Master], I am ready at any time.""",
 	AMELIA_SEX_1 = """Amelia turns around and arches her back, her movements inviting as she exposes her bottom. Your hands find their place upon her curves. A soft, teasing sigh escapes her lips.
 
-Her head turns to meet your gaze, her eyes filled with eager curiosity, wondering about your next move. She remains still, presenting her defenseless rear as an invitation for your further actions..""",
-	AMELIA_SEX_1_OPTION_1 = "Spank her",
-	AMELIA_SEX_1_OPTION_2 = "Caress her thighs",
+Her head turns to meet your gaze, her eyes filled with eager curiosity, wondering about your next move. She remains still, presenting her defenseless rear as an invitation for your further actions.""",
+	AMELIA_SEX_1_OPTION_1 = "*Spank her*",
+	AMELIA_SEX_1_OPTION_2 = "*Caress her thighs*",
 	AMELIA_SEX_2_1 = """You slap her asscheek, and a resounding echo reverberates through the room. In response, a soft and sultry moan escaped her lips, a melodious plea for further indulgence. Your hand fulfills her request.
 
 — Mmh... Yes... Be rough with me... Punish me... 
 
 You give her another slap. Her words are interrupted by another moan. Whatever she is feeling, it's not regret. 
 
-—This was in one of my dreams...""",
+— This was in one of my dreams...""",
 	AMELIA_SEX_2_2 = """Your hands move down, gliding along the back of her thigh, delicately caressing her smooth, bare skin. Her breath deepens, her lips curve into a subtle, contented smile. She eases her legs apart, offering more space for your hands to explore.
 
 — You are gentler than I would have thought. And after all you went through on my behalf...""",
@@ -12007,7 +12022,7 @@ You give her another slap. Her words are interrupted by another moan. Whatever s
 
 Your movements intensify, and so do hers. She doesn't let her eagerness escape your attention, giving her ecstasy a very enticing voice, as she pushes herself towards you in rhythm with your own. Drops of sweat start appearing on her back. 
 
-—Now.. I'm, only yours, [Master]! To use however you please. 
+—Now... I'm, only yours, [Master]! To use however you please. 
 
 You can't endure this intensity for much longer, you think, as you sense pleasure heightening. You feel Amelia's lower lips' grip tightening around your shaft. She seems to be close to exploding with bliss herself.  
 
@@ -12016,16 +12031,16 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 
 
 — This... this is better than the dreams I had. Can't believe I might have fallen in love at my age. My bad, don't worry about what I just said, it should not trouble you in any way.""",
-	AMELIA_SEX_4_OPTION_1 = """Your feelings may be mutual""",
-	AMELIA_SEX_4_OPTION_2 = """Don't make it personal""",
+	AMELIA_SEX_4_OPTION_1 = """Your feelings may be mutual.""",
+	AMELIA_SEX_4_OPTION_2 = """Don't make it personal.""",
 	AMELIA_SEX_5_1 = """— Heh, [Master], you jest. Now don't be too soft with me, you have plenty of other slaves to take care of.""",
 	AMELIA_SEX_5_2 = """— This is just silly nonsense, pay no attention to it.""",
 	AMELIA_SEX_5 = """Her strength seems to return to her body. She stands up and dresses herself. Her hands move towards her neck. She drifts her fingers across her newly fitted collar — a dreamy expression on her face. Then, she meets your gaze once more.
 
 — Now, [Master], allow me to serve you to the best of my abilities from now on.""",
 	
-	AMELIATASKNAME = "Search for Amelia",
-	AMELIATASKDESCRIPT = "Send searching group to find any clues about Amelia's whereabouts.",
+	AMELIATASKNAME = "*Search for Amelia*",
+	AMELIATASKDESCRIPT = "*Send searching group to find any clues about Amelia's whereabouts*",
 	SERVANTSNOAMELIA = "As Amelia is no longer the leader of the Servants, this place is currently vacant.",
 	
 	
@@ -12034,17 +12049,17 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 	DAISY_TRAINING_NEW_LEADER_REPLY_1 = """You explain how you think Daisy could benefit from training to become more professional.
 
 — Of course we have training which would improve her performance, depending on what you'd like.""",
-	DAISY_TRAINING_NEW_LEADER_OPTION_2_1 = "I want her to be trained normally (200 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_1 = "I want her to be trained normally. (200 gold)",
 	DAISY_TRAINING_NEW_LEADER_OPTION_2_2 = "What other options are there?",
 	DAISY_TRAINING_NEW_LEADER_OPTION_2_3 = "There's something else?",
-	DAISY_TRAINING_NEW_LEADER_OPTION_2_4 = "I want her to be trained normally and sexually (300 gold)",
-	DAISY_TRAINING_NEW_LEADER_OPTION_2_5 = "I want to turn her into a fucktoy (400 gold)",
-	DAISY_TRAINING_NEW_LEADER_OPTION_2_6 = "I'll return later",
-	DAISY_TRAINING_NEW_LEADER_REPLY_2_2 = "— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse. ",
-	DAISY_TRAINING_NEW_LEADER_REPLY_2_3 = "— If you think she'd be better suited for something completely.... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_4 = "I want her to be trained normally and sexually. (300 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_5 = "I want to turn her into a fucktoy. (400 gold)",
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_6 = "I'll return later.",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_2 = "— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse.",
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_3 = "— If you think she'd be better suited for something completely... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.",
 	DAISY_TRAINING_NEW_LEADER_REPLY_2_1 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
 
-You arrange a time for Daisy's training and leave. """,
+You arrange a time for Daisy's training and leave.""",
 	DAISY_TRAINING_NEW_LEADER_REPLY_2_4 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
 
 You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""",
@@ -12054,47 +12069,46 @@ You fill out a small form denoting which actions should be excluded from her tra
 	
 	DAISY_LOST_NEW_LEADER_OPTION_0 = "I've lost someone...",
 	DAISY_LOST_NEW_LEADER_REPLY_0 = """— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""",
-	DAISY_LOST_NEW_LEADER_OPTION_1_1 = "I might have received a letter from him",
+	DAISY_LOST_NEW_LEADER_OPTION_1_1 = "I might have received a letter from him.",
 	DAISY_LOST_NEW_LEADER_OPTION_1_2 = "How could you give him my information like that?",
-	DAISY_LOST_NEW_LEADER_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
-	DAISY_LOST_NEW_LEADER_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from town. You better be prepared before going to meet him.""",
+	DAISY_LOST_NEW_LEADER_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from the city. You better be prepared before going to meet him.""",
+	DAISY_LOST_NEW_LEADER_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from the city. You better be prepared before going to meet him.""",
 	
-	MARRIAGE_SERVANTS_NEW_LEADER_1_1 = """— Finally going to seal the deal with our little princess? That's great news. """,
-	MARRIAGE_SERVANTS_NEW_LEADER_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor. """,
+	MARRIAGE_SERVANTS_NEW_LEADER_1_1 = """— Finally going to seal the deal with our little princess? That's great news.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor.""",
 	MARRIAGE_SERVANTS_NEW_LEADER_1_3 = """So you want us to prepare everything for your wedding? A person of your caliber can't have a simple wedding, after all. We will likely need at least a couple hundred of each foodstuff to start with. As for the drinks we can get away with 10 whiskey and 25 beers, the rest we'll be able to sell to the guests from a couple of local suppliers I know.""",
-	MARRIAGE_SERVANTS_NEW_LEADER_2 = """— Lastly, I'm gonna need 3,000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
-	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_OPTION = """I've prepared everything for the wedding""",
+	MARRIAGE_SERVANTS_NEW_LEADER_2 = """— Lastly, I'm gonna need 3.000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""",
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_OPTION = """I've prepared everything for the wedding.""",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you'll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""",
-	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = """Invite them""",
-	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = """Refuse""",
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = """*Invite them*""",
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = """*Refuse*""",
 	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_4 = """— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].""",
 	
-	CALI_SERVANTS_NEW_LEADER_START_OPTION = "Ask on Cali's beneficence",
+	CALI_SERVANTS_NEW_LEADER_START_OPTION = "*Ask on Cali's beneficence*",
 	CALI_SERVANTS_NEW_LEADER_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
 
 With a hint of doubt, Cali agrees to try these activities. 
 
 — Huh, I'm not sure I'm good with this stuff...""",
-	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Don't worry, you can do it",
-	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "There's first time for everything, you won't know until you try",
-	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "You shouldn't get discouraged right as we started",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = "Don't worry, you can do it.",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = "There's first time for everything, you won't know until you try.",
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = "You shouldn't get discouraged right as we started.",
 	CALI_SERVANTS_NEW_LEADER_2 = """— Okay, okay, I'm gonna try it. 
 
 After discussing it with the helpers, you are explained about general training for future servant girls which starts with figuring out the most talented aspects, dressing up, signing and formal language. Cali agrees to try this out.""",
 	CALI_SERVANTS_NEW_LEADER_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her. """,
 	CALI_SERVANTS_NEW_LEADER_4 = """As she goes on a break, Cali spots a small cat moving through the backyard. Forgetting everything about the conduct, she tries to sprint to it but trips and falls due to her attire.
 
-— O...Ouch... Crap!
+— O... Ouch... Crap!
 
 Also forgetting to watch her tongue, she realized that her dress was torn because of the fall. Sadly, you'll have to pay for it. You decide to call it a day and make the wolf girl change back.""",
 	CALI_SERVANTS_NEW_LEADER_5 = """Cali seems to be in a sorry state as she comes back to you.
 
-— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this. """,
-	CALI_SERVANTS_NEW_LEADER_5_OPTION_1 = "You shouldn't give up just yet",
-	CALI_SERVANTS_NEW_LEADER_5_OPTION_2 = "Maybe it isn't for you after all",
-	CALI_SERVANTS_NEW_LEADER_END_DIALOGUE = """""",
+— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this.""",
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_1 = "You shouldn't give up just yet.",
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_2 = "Maybe it isn't for you after all.",
 	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|Amelia: — I saw your training, Cali is it? Nice to meet you.}
 
 {color=aqua|Cali: — Hello... Who are you?}
@@ -12115,10 +12129,10 @@ Cali gets visually discouraged hearing this, but Amelia does not stop there.
 
 {color=aqua|Cali: — [Master]! Sorry for taking time...}
 
-As she observes your reaction she starts smiling even more. """,
-	CALI_SERVANTS_NEW_LEADER_8_OPTION_1 = "You look pretty",
+As she observes your reaction she starts smiling even more.""",
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_1 = "You look pretty.",
 	CALI_SERVANTS_NEW_LEADER_8_OPTION_2 = "What was it?",
-	CALI_SERVANTS_NEW_LEADER_8_OPTION_3 = "You seem somewhat different",
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_3 = "You seem somewhat different.",
 	CALI_SERVANTS_NEW_LEADER_9 = """{color=yellow|Amelia: — He-he, so you notice it now? You don't need a complete attire change or a full makeup to emphasize your beauty. Some pose and expression training look a lot more natural for you. Well, that and a couple small woman secrets.}
 
 You notice how Cali now looks at Amelia with respect. In the end, encouraged with the results, Cali agrees to occasionally visit and learn from Amelia. As she walks outside, Amelia speaks to you.
@@ -12257,10 +12271,10 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	MARRIAGE_MAIN_STAGE_2 = "Finish preparations with the Servants Guild and the Workers Guild, then visit the Church to start the wedding",
 	MARRIAGE_SERVANTS_SUMMARY = "Marriage: Bread and Circuses",
 	MARRIAGE_SERVANTS_NAME = "Marriage: Bread and Circuses",
-	MARRIAGE_SERVANTS_STAGE_1 = "Deliver 200 of Fish, Meat, Vegetables and Grains, 10 Whiskey, 25 Beer and 3,000 gold to Amelia at the Servants Guild.",
+	MARRIAGE_SERVANTS_STAGE_1 = "Deliver 200 of Fish, Meat, Vegetables and Grains, 10 Whiskey, 25 Beer and 3.000 gold to Amelia at the Servants Guild.",
 	MARRIAGE_WORKERS_SUMMARY = "Marriage: A nice suit",
 	MARRIAGE_WORKERS_NAME = "Marriage: A nice suit",
-	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1,000 gold to the Workers Guild tailor.",
+	MARRIAGE_WORKERS_STAGE_1 = "Deliver 150 Silk, 50 Magic Cloth and 1.000 gold to the Workers Guild tailor.",
 	
 	GRYPHON_QUEST_NAME = "Aire: Proof of Strength",
 	GRYPHON_QUEST_SUMMARY = "You decided to prove yourself to Aire so she could relax about Anastasia's safety",
@@ -12279,7 +12293,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	SWORD_ARTIFACT_QUEST_STAGE_2 = "Talk with the High Priestess at Elven Capital",
 	SWORD_ARTIFACT_QUEST_STAGE_3 = "Visit Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_4 = "Visit Lodge at Beastkin Tribe",
-	SWORD_ARTIFACT_QUEST_STAGE_5 = "Bring 2000 Meat and Fish to Savra",
+	SWORD_ARTIFACT_QUEST_STAGE_5 = "Bring 2.000 Meat and Fish to Savra",
 	SWORD_ARTIFACT_QUEST_STAGE_6 = "Return to Beastkin Tribe after 1 day",
 	SWORD_ARTIFACT_QUEST_STAGE_7 = "Visit Beastkin Tribe",
 	SWORD_ARTIFACT_QUEST_STAGE_77 = "Perform the ritual with Mae",
@@ -12405,7 +12419,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	DIALOGUEANAINITIATEM = "Your wife, Anastasia smiles warmly at you.\n\n— Dear, You called for me?",
 	DIALOGUEANAINITIATEB = "As Anastasia responds to your summon her eyes are nearly blank.\n\n— What is your order, [Master]?",
 	DIALOGUEAIREINITIATELN = "Your elven slave Aire whom was left alone in your custody, looks at you in silence and disgust. Her pose emanates protest.",
-	DIALOGUEAIREINITIATEHN = "Your elven slave Aire has submitted to your ownership and now patiently waits for your commands.\n\n— What do you order, master?",
+	DIALOGUEAIREINITIATEHN = "Your elven slave Aire has submitted to your ownership and now patiently waits for your commands.\n\n— What do you order, [Master]?",
 	DIALOGUEAIREINITIATELP = "Your elven slave Aire stands before you, not quite hostile but still cautious.\n\n— You wanted to see me? Is Ana doing well?",
 	DIALOGUEAIREINITIATEHP = "Your elven slave Aire comes at your call. It seems despite her official status she's grown quite trustful to you.\n\n— [Master]. You wanted to see me? I hope you are treating Ana with respect.",
 	DIALOGUEZEPHINITIATEL = "Mysterious as always Zephyra appears in front of you almost imperceptibly.\n\n— Greetings, [Master]. Are you looking for my company?",
@@ -12424,7 +12438,6 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n— [Master], you've been missing Lilia? Let's go to bed already!",
 	DIALOGUEJEANINITIATEM = "",
 	
-	DIALOGUEAMELIAINITIATE = "",
 	
 	
 	
@@ -12488,19 +12501,19 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	HIRE_LINE10 = "About time! Thought I'd never get out of here. Let's go, [Master]!",
 	HIRE_LINE11 = "Oh my... I'm so honored to be of service, [Master]. I hope to serve you well.",
 	HIRE_LINE12 = "I will gladly entrust myself to you, [Master].",
-	HIRE_LINE13 = "I'm so excited! I can't wait to show what I can do for you,[Master]!",
+	HIRE_LINE13 = "I'm so excited! I can't wait to show what I can do for you, [Master]!",
 	HIRE_LINE14 = "Secretly... I hoped you would pick me. I won't disappoint you, [Master].",
 	HIRE_LINE15 = "I shall take good care of you, [Master]. If you would do the same?",
 	HIRE_LINE16 = "Indeed. A wise choice, [Master]. Let us take our leave.",
 	HIRE_LINE17 = "Oh? I suppose this will be a learning experience. Wouldn't you agree, [Master]?",
-	HIRE_LINE18 = "I see they sent someone worthy of my talents. Let us quit this place [Master].",
-	HIRE_LINE19 = "Hmm? Ahh... Sorry. You're my new [Master] correct? Please do not use me for your perversions.",
+	HIRE_LINE18 = "I see they sent someone worthy of my talents. Let us quit this place, [Master].",
+	HIRE_LINE19 = "Hmm? Ahh... Sorry. You're my new [Master], correct? Please do not use me for your perversions.",
 	HIRE_LINE20 = "I suppose it can't be helped. My skills are yours, [Master].",
 	HIRE_LINE21 = "M-me? I mean... if you're sure about this, [Master]...",
 	HIRE_LINE22 = "O-oh! I thought no one would take me... I'll do my best...",
 	HIRE_LINE23 = "Pleased to meet you. I hope I don't get in your way, [Master]...",
-	HIRE_LINE24 = "W-wow... You look really strong, [Master]... Please look after me.",
-	HIRE_LINE25 = "Y-you're not going to take advantage of me... Are you [Master]?",
+	HIRE_LINE24 = "W-wow... You look really strong, [Master]... Please, look after me.",
+	HIRE_LINE25 = "Y-you're not going to take advantage of me... Are you, [Master]?",
 	
 	SLAVERY_LINE1 = "You... made me into a slave? No... *sob*",
 	SLAVERY_LINE2 = "Why have you done this!?",
@@ -12537,7 +12550,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	EXPERIENCE_LINE7 = "[Master]! I've learned a lot from you. Maybe it's time to learn new things?",
 	EXPERIENCE_LINE8 = "Oh! I think I have the hang of this! Thank you for teaching me!",
 	EXPERIENCE_LINE9 = "Wow! I feel so energized! I'm ready to learn even more!",
-	EXPERIENCE_LINE10 = "Thank you for being so patient with me [Master]! I feel stronger already!",
+	EXPERIENCE_LINE10 = "Thank you for being so patient with me, [Master]! I feel stronger already!",
 	EXPERIENCE_LINE11 = "Hmm? I suppose I should dabble in other skills.",
 	EXPERIENCE_LINE12 = "Already? Seems I'm quite the natural.",
 	EXPERIENCE_LINE13 = "Ahh... I think it's time to learn new things.",
@@ -12661,7 +12674,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	MASTER_PRAISE_LINE2 = "I've earned it, haven't I, [Master]?",
 	MASTER_PRAISE_LINE3 = "O-oh! Thank you, [Master]. I'm glad I could make you happy...",
 	MASTER_PRAISE_LINE4 = "I.... I did do good... right, [Master]?",
-	MASTER_PRAISE_LINE5 = "B-being praised by [Master]... ",
+	MASTER_PRAISE_LINE5 = "B-being praised by [Master]...",
 	MASTER_PRAISE_LINE6 = "T-thank you. I've been trying my best, [Master].",
 	MASTER_PRAISE_LINE7 = "It was nothing... really...",
 	MASTER_PRAISE_LINE8 = "About time I got recognized!",
@@ -12672,7 +12685,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	MASTER_PRAISE_LINE13 = "It's nice to be noticed once in awhile.",
 	MASTER_PRAISE_LINE14 = "Hmm? Oh. You're quite welcome, [Master].",
 	MASTER_PRAISE_LINE15 = "Are you trying to butter me up, [Master]?",
-	MASTER_PRAISE_LINE16 = "Ahh... it was nothing. ",
+	MASTER_PRAISE_LINE16 = "Ahh... it was nothing.",
 	MASTER_PRAISE_LINE17 = "Honeyed words won't sway me, [Master]... But thank you.",
 	MASTER_PRAISE_LINE18 = "I'm glad to be of service!",
 	MASTER_PRAISE_LINE19 = "Thank you, [Master]! I won't disappoint you!",
@@ -12758,8 +12771,8 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	
 	LOYALTY_LINE1 = "I... could I pledge my loyalty to [Master]? For all good you've done to me...",
 	LOYALTY_LINE2 = "My body and soul both belong to you, [Master].",
-	LOYALTY_LINE3 = "[Master]...? P-please, let me stay by your side... ",
-	LOYALTY_LINE4 = "What's this feeling... I want to stay with [Master]? ",
+	LOYALTY_LINE3 = "[Master]..? P-please, let me stay by your side...",
+	LOYALTY_LINE4 = "What's this feeling... I want to stay with [Master]?",
 	LOYALTY_LINE5 = "Don't get any funny ideas. I just like it here is all!",
 	LOYALTY_LINE6 = "You're not so bad after all, [Master]!",
 	LOYALTY_LINE7 = "Ha! Guess I need you just as much as you need me.",
@@ -13022,12 +13035,12 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	PUBLIC_OBSERVE_LINE1 = "[Master] is going to punish you, [2name]...?",
 	PUBLIC_OBSERVE_LINE2 = "Hmph, serves you right.",
 	PUBLIC_OBSERVE_LINE3 = "Looks like [2name] is being punished. At least I get a break from work.",
-	PUBLIC_OBSERVE_LINE4 = "Please accept this with dignity.",
+	PUBLIC_OBSERVE_LINE4 = "Please, accept this with dignity.",
 	PUBLIC_OBSERVE_LINE5 = "......",
 	PUBLIC_OBSERVE_LINE6 = "If [he] dies, I call dibs on [his] stuff.", 
 	PUBLIC_OBSERVE_LINE7 = "Looks like you will be getting a good lesson, [2name]. ",
 	
-	MARRY_PROPOSE_AGREE1 = "A-are you serious?.. I can't believe it, of course i will, [Master]!",
+	MARRY_PROPOSE_AGREE1 = "A-are you serious?.. I can't believe it, of course I will, [Master]!",
 	MARRY_PROPOSE_AGREE2 = "Wa... You are not kidding, right? I agree!",
 	MARRY_PROPOSE_AGREE3 = "Y-Yes, of course I agree!",
 	
@@ -13075,10 +13088,10 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	DATE_AFFECTION6 = "I don't mind you praising me some more.",
 	DATE_AFFECTION7 = "Your affection is appreciated, [Master].",
 	
-	DATE_SCOLD1 = "I'm sorry [Master]. ",
-	DATE_SCOLD2 = "You don't have to yell at me. ",
-	DATE_SCOLD3 = "I'm sorry, please don't be angry. ",
-	DATE_SCOLD4 = "Stop, I didn't deserve this! ",
+	DATE_SCOLD1 = "I'm sorry, [Master].",
+	DATE_SCOLD2 = "You don't have to yell at me.",
+	DATE_SCOLD3 = "I'm sorry, please don't be angry.",
+	DATE_SCOLD4 = "Stop, I didn't deserve this!",
 	DATE_SCOLD5 = "I'm sorry you feel this way.",
 	
 	MIMIC_EAT1 = "Oh no! It's alive!",
@@ -13144,7 +13157,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	TREAT_FOOD_RESIST1 = "You trying to buy my disposition with something like that? Pathetic.",
 	TREAT_FOOD_LIKE1 = "Wow, how did you know this is my favorite?",
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
-	TREAT_FOOD_NEUTRAL1 = "Thank you, [master], I'll accept this.",
+	TREAT_FOOD_NEUTRAL1 = "Thank you, [Master], I'll accept this.",
 	
 	#worlddata land
 	
@@ -13878,8 +13891,8 @@ Hotkey: 3""",
 	LOC_BEEN_REMOVED_LABEL = "Location has been removed",
 	ARRIVED_AT_LOC_LABEL = "arrived at location",
 	RETURNED_TO_MANSION_LABEL = "returned to mansion",
-	TRAVEL_LABEL = "travel",
-	RETURN_ALL_MANSION_LABEL = "Return All to Mansion",
+	TRAVEL_LABEL = "Travel",
+	RETURN_ALL_MANSION_LABEL = "Recall Everyone",
 	TRAVELERS_LABEL = "Travelers",
 	BATTLE_GROUP_LABEL = "Battle Group",
 	ITEMS_LABEL = "Items",
@@ -13906,9 +13919,10 @@ Hotkey: 3""",
 	REFUSE_TO_WHORE_LABEL = "refuses to perfrorm sexual tasks",
 	REFUSE_THIS_TASK_LABEL = "refuses to perfrorm this task",
 	LACKS_PROSTITUTUION_LABEL = "lacks Training: Prostitution",
-	SPEND_REP_QUESTION_LABEL = "Are you sure you want to spend",
-	REP_POINTS_LABEL = "reputation points for",
+	SPEND_REP_QUESTION_LABEL = "Are you sure you want to spend ",
+	REP_POINTS_LABEL = "reputation points for ",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
+	NOSERVITUDE = "-Servitude",
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
@@ -14060,7 +14074,7 @@ Hotkey: 3""",
 	DATING_FEAR_1 = "\nFear: ",
 	DATING_POSITIVE_MODE_1 = "\n\n{color=green|Positive Mood}: ",
 	DATING_LOYALTY_1 = "\nLoyalty: +",
-	DATING_CHARMF_BONUS_1 = " ([Master]'s Charm Factor Bonus: +",
+	DATING_CHARMF_BONUS_1 = " (Master's Charm Factor Bonus: +",
 	DATING_CONSENT_1 = "\nConsent: +",
 	DATING_SEXF_BONUS_1 = " ([Master]'s Sex Factor: ",
 	DATING_AUTHORITY_BONUS_1 = "\nAuthority: +",
@@ -14163,6 +14177,60 @@ Hotkey: 3""",
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "[name]'s magic resistance will allow to negate enemy spells with 25% chance.",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Thick Blood",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] will gain immunity to bleed and poison.",
+	
+	QUALITYPOOR = "Poor",
+	QUALITYAVERAGE = "Average",
+	QUALITYGOOD = "Good",
+	QUALITYEPIC = "Epic",
+	QUALITYLEGENDARY = "Legendary",
+	
+	ENCHSHARPNESS = "Sharpness",
+	ENCHSHARPNESSDESCRIPT = "Increases Attack by 10%*level and Hit Rate by 5+5*level of bladed weapons.",
+	ENCHSPELL_MASTERY = "Spell Mastery",
+	ENCHSPELL_MASTERYDESCRIPT = "Increases Spell Damage and Healing effects by 5%+5%*level. Does not stack.",
+	ENCHSTUN_IMMUNE = "Stun Immunity",
+	ENCHSTUN_IMMUNEDESCRIPT = "Wearer can't be stunned.",
+	ENCHTHORNS = "Thorns",
+	ENCHTHORNSDESCRIPT = "Returns 5%+5%*level of physical damage to the attacker.",
+	ENCHCARAPACE = "Carapace",
+	ENCHCARAPACEDESCRIPT = "Increases item's DEF value by 7%*level and boosts all elemental resists by 2*level.",
+	ENCHVAMPIRISM = "Vampirism",
+	ENCHVAMPIRISMDESCRIPT = "2%*level of physical damage dealt will be absorbed as health.",
+	ENCHCOMMANDER = "Commander",
+	ENCHCOMMANDERDESCRIPT = "Increases damage dealt and reduce damage received of all other party members by 3%/5%. Does not stack.",
+	ENCHWARLOCK = "Warlock",
+	ENCHWARLOCKDESCRIPT = "Reduces mana cost of skills by 5%+5%*level.",
+	
+	CURSESTUB_MINOR = "",
+	CURSESTUB_MINORDESCRIPT = "",
+	CURSESTUB_MAJOR = "",
+	CURSESTUB_MAJORDESCRIPT = "",
+	CURSECURSEWEAKNESS_MINOR = "Curse of Weakness (minor)",
+	CURSECURSEWEAKNESS_MINORDESCRIPT = "Physics -30",
+	CURSECURSEWEAKNESS_MAJOR = "Curse of Weakness (major)",
+	CURSECURSEWEAKNESS_MAJORDESCRIPT = "Physics -60",
+	CURSESLOWWIT_MINOR = "Curse of Slow wit (minor)",
+	CURSESLOWWIT_MINORDESCRIPT = "Wits -30",
+	CURSESLOWWIT_MAJOR = "Curse of Slow wit (major)",
+	CURSESLOWWIT_MAJORDESCRIPT = "Wits -60",
+	CURSEFRAGILITY_MINOR = "Curse of Fragility (minor)",
+	CURSEFRAGILITY_MINORDESCRIPT = "Maximum HP -25%",
+	CURSEFRAGILITY_MAJOR = "Curse of Fragility (major)",
+	CURSEFRAGILITY_MAJORDESCRIPT = "Maximum HP -40%",
+	CURSEDECLINE_MINOR = "Curse of Decline (minor)",
+	CURSEDECLINE_MINORDESCRIPT = "Earned XP -25%",
+	CURSEDECLINE_MAJOR = "Curse of Decline (major)",
+	CURSEDECLINE_MAJORDESCRIPT = "Earned XP -50%",
+	CURSEDISTRUST_MINOR = "Curse of Distrust (minor)",
+	CURSEDISTRUST_MINORDESCRIPT = "+25% Obedience Drain",
+	CURSEDISTRUST_MAJOR = "Curse of Distrust (major)",
+	CURSEDISTRUST_MAJORDESCRIPT = "+50% Obedience Drain",
+	CURSEHIDEOUS_MAJOR = "Curse of Hideous (minor)",
+	CURSEHIDEOUS_MAJORDESCRIPT = "Charm -30",
+	CURSEHIDEOUS_MINOR = "Curse of Hideous (major)",
+	CURSEHIDEOUS_MINORDESCRIPT = "Charm -60",
+	
+	
 }
 
 

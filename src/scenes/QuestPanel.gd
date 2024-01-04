@@ -241,7 +241,7 @@ func Reward():
 				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 			'gear':
-				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
+				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
 			'gear_static':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
 			'material':

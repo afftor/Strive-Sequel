@@ -223,7 +223,7 @@ func add_material_confirm(value):
 				'usable':
 					globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 				'gear':
-					globals.AddItemToInventory(globals.CreateGearItem(purchase_item.code, {}))
+					globals.AddItemToInventoryShop(globals.CreateGearItem(purchase_item.code, {}))
 			value -= 1
 
 

@@ -71,6 +71,8 @@ func equip(item, item_prev_id = null):
 		ResourceScripts.game_res.items[item_prev_id].amount += 1
 		item.amount = 0
 		return
+	if item.curse != null:
+		item.curse_known = true
 	for i in item.multislots:
 		if gear[i] != null:
 			unequip(ResourceScripts.game_res.items[gear[i]])
@@ -118,6 +120,8 @@ func unequip(item):
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
+	if item.curse!= null:
+		item.destroy()
 	parent.get_ref().recheck_effect_tag('recheck_item')
 
 

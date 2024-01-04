@@ -452,6 +452,10 @@ func cooldown_tick():
 func check_task(task):
 	return xp_module.check_task(task)
 
+func get_task_diff():
+	return xp_module.get_task_diff()
+
+
 func find_current_task():
 	var res = xp_module.find_task(get_location())
 	if res == null: 

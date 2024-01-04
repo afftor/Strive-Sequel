@@ -26,9 +26,6 @@ margin_bottom = 589.0
 mouse_filter = 2
 custom_constants/separation = 0
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TopPanel" type="TextureRect" parent="."]
 margin_right = 550.0
@@ -166,3 +163,9 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_top = 589.0
+margin_right = 550.0
+margin_bottom = 603.0
+text = "text"

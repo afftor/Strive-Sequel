@@ -97,18 +97,18 @@ var partmaterials = {
 		obsidian = {task_crit_chance = 0.11},
 	},
 	WeaponHandle = {
-		wood = {hitrate = 5},
-		woodmagic = {hitrate = 10, matk = 3},
-		woodiron = {hitrate = 15, hpmaxmod = 0.1},
-		woodancient = {hitrate = 20, hpmaxmod = 0.1},
-		iron = {armor = 2},
-		steel = {armor = 3},
-		mithril = {armor = 4, mdef = 3},
-		adamantine = {armor = 5, mdef = 5},
-		bone = {atk = 3},
-		boneancient = {atk = 6},
-		bonedragon = {atk = 10, hitrate = 10},
-		obsidian = {matk = 5, resist_earth = 10, resist_fire = 10},
+		wood = {hitrate = 5, enchant_capacity_mod = 0.0},
+		woodmagic = {hitrate = 10, matk = 3, enchant_capacity_mod = 0.2},
+		woodiron = {hitrate = 15, hpmaxmod = 0.1, enchant_capacity_mod = 0.1},
+		woodancient = {hitrate = 20, hpmaxmod = 0.1, enchant_capacity_mod = 0.25},
+		iron = {armor = 2, enchant_capacity_mod = 0.0},
+		steel = {armor = 3, enchant_capacity_mod = 0.0},
+		mithril = {armor = 4, mdef = 3, enchant_capacity_mod = 0.15},
+		adamantine = {armor = 5, mdef = 5, enchant_capacity_mod = 0.2},
+		bone = {atk = 3, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 6, enchant_capacity_mod = 0.15},
+		bonedragon = {atk = 10, hitrate = 10, enchant_capacity_mod = 0.25},
+		obsidian = {matk = 5, resist_earth = 10, resist_fire = 10, enchant_capacity_mod = 0.1},
 	},
 	ToolBlade = {
 		stone = {task_efficiency_tool = 0.15},
@@ -129,109 +129,109 @@ var partmaterials = {
 		clothethereal = {task_efficiency_tool = 0.45},
 	},
 	Blade = {
-		stone = {damagemod = -0.5},
-		obsidian = {atk = 10, armorpenetration = 10},
-		iron = {atk = 8},
-		steel = {atk = 13},
-		mithril = {atk = 18},
-		adamantine = {atk = 25},
-		bone = {atk = 7, matk = 4},
-		boneancient = {atk = 15, matk = 8},
-		bonedragon = {atk = 22, matk = 15},
+		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 10, armorpenetration = 10, enchant_capacity_mod = 0.2},
+		iron = {atk = 8, enchant_capacity_mod = 0.0},
+		steel = {atk = 13, enchant_capacity_mod = 0.0},
+		mithril = {atk = 18, enchant_capacity_mod = 0.3},
+		adamantine = {atk = 25, enchant_capacity_mod = 0.4},
+		bone = {atk = 7, matk = 4, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 15, matk = 8, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 22, matk = 15, enchant_capacity_mod = 0.5},
 	},
 	WeaponMace = {
-		wood = {atk = 6, hitrate = 5},
-		woodmagic = {atk = 7, matk = 8},
-		woodiron = {atk = 10, hitrate = 10},
-		woodancient = {atk = 20, hpmaxmod = 0.15},
-		stone = {atk = 12, hitrate = -10},
-		obsidian = {atk = 18, armorpenetration = 12},
-		iron = {atk = 12},
-		steel = {atk = 16},
-		mithril = {atk = 20, matk = 5},
-		adamantine = {atk = 24},
-		bone = {atk = 9, matk = 2},
-		boneancient = {atk = 18, matk = 6},
-		bonedragon = {atk = 25, matk = 12},
+		wood = {atk = 6, hitrate = 5, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 7, matk = 8, enchant_capacity_mod = 0.25},
+		woodiron = {atk = 10, hitrate = 10, enchant_capacity_mod = 0.15},
+		woodancient = {atk = 20, hpmaxmod = 0.15, enchant_capacity_mod = 0.35},
+		stone = {atk = 12, hitrate = -10, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 18, armorpenetration = 12, enchant_capacity_mod = 0.2},
+		iron = {atk = 12, enchant_capacity_mod = 0.0},
+		steel = {atk = 16, enchant_capacity_mod = 0.0},
+		mithril = {atk = 20, matk = 5, enchant_capacity_mod = 0.3},
+		adamantine = {atk = 24, enchant_capacity_mod = 0.35},
+		bone = {atk = 9, matk = 2, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 18, matk = 6, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 25, matk = 12, enchant_capacity_mod = 0.45},
 	},
 	BowBase = {
-		wood = {atk = 7},
-		woodmagic = {atk = 10, mpmaxmod = 0.1, matk = 5},
-		woodiron = {atk = 15},
-		woodancient = {atk = 20},
-		obsidian = {atk = 18, armorpenetration = 10},
-		iron = {atk = 9},
-		steel = {atk = 14},
-		mithril = {atk = 19},
-		adamantine = {atk = 25},
-		bone = {atk = 8, matk = 4},
-		boneancient = {atk = 18, matk = 10},
-		bonedragon = {atk = 24, matk = 16},
+		wood = {atk = 7, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 10, mpmaxmod = 0.1, matk = 5, enchant_capacity_mod = 0.2},
+		woodiron = {atk = 15, enchant_capacity_mod = 0.0},
+		woodancient = {atk = 20, enchant_capacity_mod = 0.0},
+		obsidian = {atk = 18, armorpenetration = 10, enchant_capacity_mod = 0.1},
+		iron = {atk = 9, enchant_capacity_mod = 0.0},
+		steel = {atk = 14, enchant_capacity_mod = 0.0},
+		mithril = {atk = 19, enchant_capacity_mod = 0.25},
+		adamantine = {atk = 25, enchant_capacity_mod = 0.3},
+		bone = {atk = 8, matk = 4, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 18, matk = 10, enchant_capacity_mod = 0.25},
+		bonedragon = {atk = 24, matk = 16, enchant_capacity_mod = 0.35},
 	},
 	ShieldBase = {
-		wood = {evasion = 5, critchance = 3},
-		woodmagic = {evasion = 5, mdef = 5, critchance = 3},
-		woodiron = {evasion = 10, armor = 3, critchance = 5},
-		woodancient = {evasion = 10, mdef = 5, critchance = 7},
-		iron = {armor = 4},
-		steel = {armor = 5},
-		mithril = {armor = 8, mpmaxmod = 0.1},
-		adamantine = {armor = 10, hpmaxmod = 0.1},
-		bone = {hitrate = 5, evasion = 5},
-		boneancient = {hitrate = 10, evasion = 10},
-		bonedragon = {hitrate = 20, evasion = 5},
-		leather = {evasion = 10, mdef = 3},
-		leatherthick = {evasion = 10, armor = 5},
-		leathermythic = {evasion = 15, armor = 5, hpmaxmod = 0.15},
-		leatherdragon = {evasion = 15, armor = 5, mdef = 5, hpmaxmod = 0.1},
+		wood = {evasion = 5, critchance = 3, enchant_capacity_mod = 0.0},
+		woodmagic = {evasion = 5, mdef = 5, critchance = 3, enchant_capacity_mod = 0.2},
+		woodiron = {evasion = 10, armor = 3, critchance = 5, enchant_capacity_mod = 0.1},
+		woodancient = {evasion = 10, mdef = 5, critchance = 7, enchant_capacity_mod = 0.25},
+		iron = {armor = 4, enchant_capacity_mod = 0.0},
+		steel = {armor = 5, enchant_capacity_mod = 0.0},
+		mithril = {armor = 8, mpmaxmod = 0.1, enchant_capacity_mod = 0.2},
+		adamantine = {armor = 10, hpmaxmod = 0.1, enchant_capacity_mod = 0.25},
+		bone = {hitrate = 5, evasion = 5, enchant_capacity_mod = 0.1},
+		boneancient = {hitrate = 10, evasion = 10, enchant_capacity_mod = 0.15},
+		bonedragon = {hitrate = 20, evasion = 5, enchant_capacity_mod = 0.25},
+		leather = {evasion = 10, mdef = 3, enchant_capacity_mod = 0.0},
+		leatherthick = {evasion = 10, armor = 5, enchant_capacity_mod = 0.1},
+		leathermythic = {evasion = 15, armor = 5, hpmaxmod = 0.15, enchant_capacity_mod = 0.2},
+		leatherdragon = {evasion = 15, armor = 5, mdef = 5, hpmaxmod = 0.1, enchant_capacity_mod = 0.3},
 	},
 	Rod = {
-		wood = {atk = 3, matk = 7},
-		woodmagic = {atk = 4, mpmaxmod = 0.1, matk = 12},
-		woodiron = {atk = 6, matk = 10},
-		woodancient = {atk = 5, matk = 15},
-		obsidian = {atk = 3, matk = 13},
-		iron = {atk = 5, matk = 10},
-		steel = {atk = 6, matk = 11},
-		mithril = {atk = 8, matk = 18},
-		adamantine = {atk = 9, matk = 21},
-		bone = {atk = 4, matk = 9},
-		boneancient = {atk = 5, matk = 15},
-		bonedragon = {atk = 8, matk = 23},
-		fire_ruby = {atk = 1, matk = 13, damage_mod_fire = 0.3},
-		ice_crystal = {atk = 3, matk = 12, damage_mod_water = 0.25},
-		earth_shard = {atk = 5, matk = 10, damage_mod_earth = 0.2},
-		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4},
+		wood = {atk = 3, matk = 7, enchant_capacity_mod = 0.0},
+		woodmagic = {atk = 4, mpmaxmod = 0.1, matk = 12, enchant_capacity_mod = 0.15},
+		woodiron = {atk = 6, matk = 10, enchant_capacity_mod = 0.1},
+		woodancient = {atk = 5, matk = 15, enchant_capacity_mod = 0.2},
+		obsidian = {atk = 3, matk = 13, enchant_capacity_mod = 0.1},
+		iron = {atk = 5, matk = 10, enchant_capacity_mod = 0.0},
+		steel = {atk = 6, matk = 11, enchant_capacity_mod = 0.0},
+		mithril = {atk = 8, matk = 18, enchant_capacity_mod = 0.15},
+		adamantine = {atk = 9, matk = 21, enchant_capacity_mod = 0.2},
+		bone = {atk = 4, matk = 9, enchant_capacity_mod = 0.1},
+		boneancient = {atk = 5, matk = 15, enchant_capacity_mod = 0.15},
+		bonedragon = {atk = 8, matk = 23, enchant_capacity_mod = 0.25},
+		fire_ruby = {atk = 1, matk = 13, damage_mod_fire = 0.3, enchant_capacity_mod = 0.2},
+		ice_crystal = {atk = 3, matk = 12, damage_mod_water = 0.25, enchant_capacity_mod = 0.2},
+		earth_shard = {atk = 5, matk = 10, damage_mod_earth = 0.2, enchant_capacity_mod = 0.2},
+		crystalized_ether = {atk = 2, matk = 14, damage_mod_air = 0.4, enchant_capacity_mod = 0.2},
 	},
 	ArmorBaseCloth = {
-		cloth = {armor = 8, mdef = 15},
-		clothsilk = {armor = 12, mdef = 30},
-		spider_silk = {armor = 15, mdef = 30},
-		clothmagic = {armor = 14, mdef = 50},
-		clothethereal = {armor = 20, mdef = 65},
+		cloth = {armor = 5, mdef = 20, enchant_capacity_mod = 0.2},
+		clothsilk = {armor = 10, mdef = 35, enchant_capacity_mod = 0.3},
+		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.3},
+		clothmagic = {armor = 17, mdef = 50, enchant_capacity_mod = 0.4},
+		clothethereal = {armor = 25, mdef = 75, enchant_capacity_mod = 0.5},
 	},
 	ArmorBaseMed = {
-		leather = {armor = 10, mdef = 10},
-		leatherthick = {armor = 15, mdef = 15},
-		leathermythic = {armor = 25, mdef = 20},
-		leatherdragon = {armor = 35, mdef = 45},
-		bone = {armor = 10, mdef = 5},
-		boneancient = {armor = 20, mdef = 10},
-		bonedragon = {armor = 40, mdef = 30},
-		lizard_skin = {armor = 30, mdef = 15, resist_fire = 10},
-		insect_chitin = {armor = 10, mdef = 40},
+		leather = {armor = 15, mdef = 10, enchant_capacity_mod = 0.0},
+		leatherthick = {armor = 25, mdef = 15, enchant_capacity_mod = 0.1},
+		leathermythic = {armor = 35, mdef = 20, enchant_capacity_mod = 0.15},
+		leatherdragon = {armor = 55, mdef = 45, enchant_capacity_mod = 0.2},
+		bone = {armor = 20, mdef = 5, enchant_capacity_mod = 0.1},
+		boneancient = {armor = 25, mdef = 10, enchant_capacity_mod = 0.15},
+		bonedragon = {armor = 55, mdef = 30, enchant_capacity_mod = 0.25},
+		lizard_skin = {armor = 40, mdef = 15, resist_fire = 10, enchant_capacity_mod = 0.05},
+		insect_chitin = {armor = 35, mdef = 40, enchant_capacity_mod = 0.1},
 	},
 	ArmorBaseHeavy = {
-		stone = {armor = 15, mdef = 15, hitrate = -25, resist_earth = 20},
-		obsidian = {armor = 25, mdef = 20, resist_earth = 40},
-		iron = {armor = 20, mdef = 5},
-		steel = {armor = 30, mdef = 10},
-		mithril = {armor = 50, mdef = 35},
-		adamantine = {armor = 70, mdef = 25},
+		stone = {armor = 50, mdef = 5, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
+		obsidian = {armor = 40, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
+		iron = {armor = 35, mdef = 5, enchant_capacity_mod = 0.0},
+		steel = {armor = 50, mdef = 10, enchant_capacity_mod = 0.1},
+		mithril = {armor = 85, mdef = 35, enchant_capacity_mod = 0.2},
+		adamantine = {armor = 100, mdef = 25, enchant_capacity_mod = 0.3},
 	},
 	ArmorTrim = {
 		wood = {hpmaxmod = 0.1, resist_earth = 5},
-		woodmagic = {hpmaxmod = 0.15, matk = 5, resist_air = 5, resist_water = 5},
+		woodmagic = {hpmaxmod = 0.15, matk = 2, resist_air = 5, resist_water = 5, enchant_capacity_mod = 0.1},
 		woodiron = {hpmaxmod = 0.25, resist_earth = 5, resist_water = 10},
 		woodancient = {hpmaxmod = 0.4, resist_earth = 10, resist_water = 10},
 		bone = {atk = 3, resist_dark = 5},
@@ -240,12 +240,12 @@ var partmaterials = {
 		cloth = {mdef = 3, resist_air = 15},
 		clothsilk = {mdef = 5, resist_earth = 10},
 		spider_silk = {mdef = 6, resist_earth = 15},
-		clothmagic = {mdef = 5, matk = 4, resist_water = 10},
+		clothmagic = {mdef = 5, matk = 4, resist_water = 10, enchant_capacity_mod = 0.1},
 		clothethereal = {mdef = 8, resist_mind = 10},
-		iron = {armor = 2, resist_earth = 10},
-		steel = {armor = 3, resist_fire = 10, resist_earth = 10},
-		mithril = {armor = 4, resist_earth = 15, resist_dark = 10},
-		adamantine = {armor = 5, resist_earth = 15, resist_fire = 10},
+		iron = {armor = 4, resist_earth = 10},
+		steel = {armor = 6, resist_fire = 10, resist_earth = 10},
+		mithril = {armor = 10, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 0.1},
+		adamantine = {armor = 15, resist_earth = 15, resist_fire = 10},
 		obsidian = {resist_fire = 10, resist_air = 10},
 		lizard_skin = {resist_fire = 25},
 		ogre_teeth = {atk = 5, hpmax = 15},
@@ -342,6 +342,25 @@ var materiallist = {
 		price = 3, #6->9 gold profit per craft
 		type = 'food',
 		tags = ['vege', 'meat'],
+	},
+	
+	curry = {
+		code = 'curry',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_curry.png"),
+		price = 3,
+		type = 'food',
+		tags = ['grain', 'meat'],
+	},
+	friedfish = {
+		code = 'friedfish',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_friedfish.png"),
+		price = 3,
+		type = 'food',
+		tags = ['vege', 'fish'],
 	},
 
 	divine_symbol = {
@@ -1971,7 +1990,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/DaggerBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 5, critmod = 0.25},
+		basestats = {atk = 5, critmod = 0.25, enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -1986,7 +2005,6 @@ var itemlist = {
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	
 	shield = {
@@ -1996,7 +2014,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ShieldBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2012,7 +2030,6 @@ var itemlist = {
 		slots = ['lhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	sword = {
 		name = '',
@@ -2021,7 +2038,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/SwordBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 10},
+		basestats = {atk = 10, enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2036,7 +2053,6 @@ var itemlist = {
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	swordadv = {
 		name = '',
@@ -2045,7 +2061,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_sword_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 15, armorpenetration = 10},
+		basestats = {atk = 15, armorpenetration = 10,enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2060,7 +2076,6 @@ var itemlist = {
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	spearadv = {
 		name = '',
@@ -2069,7 +2084,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_spear_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 14, armorpenetration = 15},
+		basestats = {atk = 14, armorpenetration = 15,enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2084,7 +2099,6 @@ var itemlist = {
 		slots = ['rhand','lhand', 'no_stack','enchantable'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	club = {
 		name = '',
@@ -2093,7 +2107,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ClubBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 7},
+		basestats = {atk = 7,enchant_capacity = 500},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2108,7 +2122,6 @@ var itemlist = {
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	spear = {
 		name = '',
@@ -2117,7 +2130,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/SpearBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 10},
+		basestats = {atk = 10,enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2128,11 +2141,10 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'no_stack'],
-		slots = ['rhand','lhand','enchantable'],
+		tags = ['recipe', 'no_stack','enchantable'],
+		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	bow = {
 		name = '',
@@ -2141,7 +2153,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/BowBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 8},
+		basestats = {atk = 8,enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2156,7 +2168,6 @@ var itemlist = {
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	bowadv = {
 		name = '',
@@ -2165,7 +2176,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_bow_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 13, hitrate = 10, armorpenetration = 10},
+		basestats = {atk = 13, hitrate = 10, armorpenetration = 10,enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2180,7 +2191,6 @@ var itemlist = {
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	staff = {
 		name = '',
@@ -2189,7 +2199,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/StaffBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 10, matk = 10},
+		basestats = {atk = 10, matk = 10, enchant_capacity = 250},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2204,7 +2214,6 @@ var itemlist = {
 		slots = ['rhand'],
 		hitsound = 'arrow',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	staffadv = {
 		name = '',
@@ -2213,7 +2222,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_staff_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 10, matk = 20},
+		basestats = {atk = 10, matk = 20,enchant_capacity = 350},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2228,7 +2237,6 @@ var itemlist = {
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	#armor
 	chest_base_cloth = {
@@ -2238,7 +2246,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorBasicCloth.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2253,7 +2261,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'flesh',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	chest_base_leather = {
 		name = '',
@@ -2262,7 +2269,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorBasicLeather.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 250},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2277,7 +2284,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'flesh',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	chest_base_metal = {
 		name = '',
@@ -2286,7 +2292,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 250},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2301,7 +2307,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 
 	chest_adv_metal = {
@@ -2311,7 +2316,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_metal_chest_adv.png"),
 		tier = 'hard',
 		price = 0,
-		basestats = {hpmax = 15},
+		basestats = {hpmax = 15, enchant_capacity = 400},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2326,7 +2331,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	chest_adv_leather = {
 		name = '',
@@ -2335,7 +2339,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_leather_chest_adv.png"),
 		tier = 'hard',
 		price = 0,
-		basestats = {evasion = 20},
+		basestats = {evasion = 20, enchant_capacity = 350},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2350,7 +2354,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	chest_adv_cloth = {
 		name = '',
@@ -2359,7 +2362,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_cloth_chest_adv.png"),
 		tier = 'hard',
 		price = 0,
-		basestats = {mpmax = 10},
+		basestats = {mpmax = 10, enchant_capacity = 450},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2374,7 +2377,6 @@ var itemlist = {
 		slots = ['chest'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 
 	legs_base_cloth = {
@@ -2384,7 +2386,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorLowerCloth.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 250},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2399,7 +2401,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'flesh',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	legs_base_leather = {
 		name = '',
@@ -2408,7 +2409,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorLowerMedium.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2423,7 +2424,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'flesh',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	legs_base_metal = {
 		name = '',
@@ -2432,7 +2432,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/ArmorLowerHeavy.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {},
+		basestats = {enchant_capacity = 200},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2447,7 +2447,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 
 	legs_adv_metal = {
@@ -2457,7 +2456,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_plate_legs_adv.png"),
 		tier = 'hard',
 		price = 0,
-		basestats = {hpmax = 10},
+		basestats = {hpmax = 10, enchant_capacity = 350},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2472,7 +2471,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	legs_adv_leather = {
 		name = '',
@@ -2481,7 +2479,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_leather_pants_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {evasion = 20},
+		basestats = {evasion = 20, enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2496,7 +2494,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 	legs_adv_cloth = {
 		name = '',
@@ -2505,7 +2502,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_cloth_pants_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {mpmax = 10},
+		basestats = {mpmax = 10, enchant_capacity = 400},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2520,7 +2517,6 @@ var itemlist = {
 		slots = ['legs'],
 		hitsound = 'metal',
 		effects = [],
-		enchant_capacity = 500,
 	},
 
 	#usables
@@ -3143,7 +3139,45 @@ var recipes = {
 		workunits = 0.15,
 		worktype = 'cooking'
 	},
-
+	fishcakes = {
+		code = 'fishcakes',
+		materials = {fish = 1, grain = 2},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 3,
+		resultitemtype = 'material',
+		resultitem = 'fishcakes',
+		workunits = 0.16,
+		worktype = 'cooking'
+	},
+	
+	curry = {
+		code = 'curry',
+		materials = {meat = 1, grain = 2},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 4,
+		resultitemtype = 'material',
+		resultitem = 'curry',
+		workunits = 0.14,
+		worktype = 'cooking'
+	},
+	friedfish = {
+		code = 'friedfish',
+		materials = {fish = 1, vegetables = 1},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'basic',
+		resultamount = 3,
+		resultitemtype = 'material',
+		resultitem = 'friedfish',
+		workunits = 0.19,
+		worktype = 'cooking'
+	},
+	
+	
 	divine_symbol = {
 		code = 'divine_symbol',
 		materials = {mithril = 5},
@@ -3157,19 +3191,6 @@ var recipes = {
 		workunits = 0.15,
 		worktype = 'smith',
 		unique = true
-	},
-
-	fishcakes = {
-		code = 'fishcakes',
-		materials = {fish = 1, grain = 2},
-		items = {},
-		unlockreqs = [],
-		crafttype = 'basic',
-		resultamount = 3,
-		resultitemtype = 'material',
-		resultitem = 'fishcakes',
-		workunits = 0.16,
-		worktype = 'cooking'
 	},
 	#resources
 	steel = {
@@ -4314,28 +4335,36 @@ var enchantments = {
 	sharpness = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'tags',operant = 'has', value = 'bladed', check = true}
 		],
 		levels = {
 			1:{
-				effects = ['enchant_sharp_1'],
+				statmods = {atk_mul = 1.1, hitrate_add = 10},
+#				effects = ['enchant_sharp_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
-				effects = ['enchant_sharp_2'],
+				statmods = {atk_mul = 1.2, hitrate_add = 15},
+#				effects = ['enchant_sharp_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
-				effects = ['enchant_sharp_3'],
+				statmods = {atk_mul = 1.3, hitrate_add = 20},
+#				effects = ['enchant_sharp_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
-				effects = ['enchant_sharp_4'],
+				statmods = {atk_mul = 1.4, hitrate_add = 25},
+#				effects = ['enchant_sharp_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4345,28 +4374,32 @@ var enchantments = {
 	spell_mastery = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
 		levels = {
 			1:{
 				effects = ['enchant_spellmas_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_spellmas_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_spellmas_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_spellmas_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4376,13 +4409,14 @@ var enchantments = {
 	stun_immune = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/antistan_mono_100.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true}
 		],
 		levels = {
 			1:{
 				effects = ['enchant_nostun'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
@@ -4391,7 +4425,7 @@ var enchantments = {
 	thorns = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/thorns_color_100.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -4400,21 +4434,25 @@ var enchantments = {
 		levels = {
 			1:{
 				effects = ['enchant_thorns_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_thorns_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_thorns_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 1500
 			},
 			4:{
 				effects = ['enchant_thorns_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 2500
 			},
@@ -4423,41 +4461,45 @@ var enchantments = {
 	carapace = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/carapace_moni_100.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
-			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true, orflag = true}
 		],
 		levels = {
 			1:{
-				effects = ['enchant_carapace_1'],
-				statmods = {armor = 1.07},
-				cap_cost = 20,
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.07, mdef_mul = 1.07, resist_fire_add = 2, resist_water_add = 2, resist_air_add = 2, resist_earth_add = 2,},
+				cap_cost = 50,
 				gold_cost = 250
 			},
 			2:{
-				effects = ['enchant_carapace_2'],
-				statmods = {armor = 1.15},
-				cap_cost = 40,
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.15, mdef_mul = 1.15, resist_fire_add = 4, resist_water_add = 4, resist_air_add = 4, resist_earth_add = 4,},
+				cap_cost = 100,
 				gold_cost = 500
 			},
 			3:{
-				effects = ['enchant_carapace_3'],
-				statmods = {armor = 1.21},
-				cap_cost = 60,
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.21, mdef_mul = 1.21, resist_fire_add = 6, resist_water_add = 6, resist_air_add = 6, resist_earth_add = 6,},
+				cap_cost = 150,
 				gold_cost = 750
 			},
 			4:{
-				effects = ['enchant_carapace_4'],
-				statmods = {armor = 1.28},
-				cap_cost = 80,
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.28, mdef_mul = 1.28, resist_fire_add = 8, resist_water_add = 8, resist_air_add = 8, resist_earth_add = 8,},
+				cap_cost = 200,
 				gold_cost = 1000
 			},
 			5:{
-				effects = ['enchant_carapace_5'],
-				statmods = {armor = 1.35},
-				cap_cost = 100,
+				effects = [],
+				weight = 100,
+				statmods = {armor_mul = 1.35, mdef_mul = 1.35, resist_fire_add = 10, resist_water_add = 10, resist_air_add = 10, resist_earth_add = 10,},
+				cap_cost = 250,
 				gold_cost = 1500
 			},
 		}
@@ -4466,33 +4508,38 @@ var enchantments = {
 	vampirism = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/vampire_mono_100.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
 		levels = {
 			1:{
 				effects = ['enchant_vampirism_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_vampirism_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_vampirism_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_vampirism_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
 			5:{
 				effects = ['enchant_vampirism_5'],
+				weight = 100,
 				cap_cost = 250,
 				gold_cost = 4000
 			},
@@ -4501,18 +4548,21 @@ var enchantments = {
 	commander = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/commander_mono_100.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
 		],
 		levels = {
 			1:{
 				effects = ['enchant_commander_1'],
+				weight = 25,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_commander_2'],
+				weight = 25,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
@@ -4523,28 +4573,32 @@ var enchantments = {
 	warlock = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/warlock_mono_100.png"), #fix
 		reqs = [
-#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
 		levels = {
 			1:{
 				effects = ['enchant_warlock_1'],
+				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500
 			},
 			2:{
 				effects = ['enchant_warlock_2'],
+				weight = 100,
 				cap_cost = 100,
 				gold_cost = 1000
 			},
 			3:{
 				effects = ['enchant_warlock_3'],
+				weight = 100,
 				cap_cost = 150,
 				gold_cost = 2000
 			},
 			4:{
 				effects = ['enchant_warlock_4'],
+				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
@@ -4553,88 +4607,112 @@ var enchantments = {
 }
 
 var curses = {
+	stub_minor = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		statmods = {enchant_capacity_mul = 1.25}
+	},
 	weakness_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_1'],
-		capacity_multiplyer = 1.25
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_weakness_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, physics_bonus_add = -30}
 	},
 	slowwit_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_1'],
-		capacity_multiplyer = 1.25
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_slowwit_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, wits_bonus_add = -30}
 	},
 	hideous_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_1'],
-		capacity_multiplyer = 1.25
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_hideous_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25, charm_bonus_add = -30}
 	},
 	decline_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_declide_1'],
-		capacity_multiplyer = 1.25
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		effects = ['curse_decline_1'],
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	fragility_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
 		effects = ['curse_fragility_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
 	},
 	distrust_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
 		effects = ['curse_distrust_1'],
-		capacity_multiplyer = 1.25
+#		capacity_multiplyer = 1.25
+		statmods = {enchant_capacity_mul = 1.25}
+	},
+	stub_major = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	weakness_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_weakness_2'],
-		capacity_multiplyer = 1.5
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_weakness_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, physics_bonus_add = -60}
 	},
 	slowwit_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_slowwit_2'],
-		capacity_multiplyer = 1.5
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_slowwit_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, wits_bonus_add = -60}
 	},
 	hideous_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_hideous_2'],
-		capacity_multiplyer = 1.5
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_hideous_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5, charm_bonus_add = -60}
 	},
 	decline_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
-		effects = ['curse_declide_2'],
-		capacity_multiplyer = 1.5
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		effects = ['curse_decline_2'],
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	fragility_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
 		effects = ['curse_fragility_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 	distrust_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_grain.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
 		effects = ['curse_distrust_2'],
-		capacity_multiplyer = 1.5
+#		capacity_multiplyer = 1.5
+		statmods = {enchant_capacity_mul = 1.5}
 	},
 }

@@ -238,7 +238,15 @@ func gear_detailed_tooltip(data, item = null):
 						value = str(value)
 						value = value + '%'
 				text +=  value + '}'
-		text += '\n'
+		text += '\n\n'
+	for i in item.enchants:
+		text += "{color=yellow|%s}: %s\n" % [tr(Items.enchantments[i].name), tr(Items.enchantments[i].descript)]
+	if item.curse != null:
+		if !item.curse_known:
+			text += "{color=red|Unknown curse}\n"
+		else:
+			text += "{color=red|%s}: %s\n" % [tr(Items.curses[item.curse].name), tr(Items.curses[item.curse].descript)]
+		
 	textnode2.bbcode_text = globals.TextEncoder(text)
 #	$LowPanel/HBoxContainer/HoldShift.visible = true
 
@@ -311,7 +319,8 @@ func geartemplete_tooltip(data):
 		text += "\n" + tr(Effectdata.effect_table[i].descript)
 
 	iconnode.texture = item.icon
-
+	
+	
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 		$LowPanel/HBoxContainer/HoldShift.text = tr('INFOHOLDSHIFT')

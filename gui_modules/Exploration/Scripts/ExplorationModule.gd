@@ -647,6 +647,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 
 func area_advance(mode): #advance request
 	globals.reset_roll_data()
+	globals.char_roll_data.diff = input_handler.active_location.difficulty
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
@@ -1461,7 +1462,7 @@ func confirm_buy_item():
 				'usable':
 					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code, items_amount))
 				'gear':
-					globals.AddItemToInventory(globals.CreateGearItem(item_to_buy.code, {}))
+					globals.AddItemToInventory(globals.CreateGearItemShop(item_to_buy.code, {}))
 	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1] * items_amount
 	faction_guild_shop(true, current_pressed_area_btn, active_faction)
 
@@ -1972,7 +1973,7 @@ func update_buy_list():
 				|| buy_category == "all"
 			)
 			if item.has('parts'):
-				var newitem = globals.CreateGearItem(i, active_shop[i], {}, null)
+				var newitem = globals.CreateGearItemShop(i, active_shop[i])
 				newitem.set_icon(newbutton.get_node('icon'))
 				newbutton.get_node("name").text = newitem.name
 				tempitems.append(newitem)
@@ -2046,7 +2047,7 @@ func item_puchase_confirm(value):
 					'usable':
 						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 					'gear':
-						globals.AddItemToInventory(globals.CreateGearItem(purchase_item.code, {}))
+						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
 				value -= 1
 		update_sell_list()
 		update_buy_list()
