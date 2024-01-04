@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_gallery_pressed.png-e6b08724b225fd28401b978732bb810f.stex"
+path="res://.import/button_return.png-e58abe6bfca9f80bc79b9ff9ffe30b50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures_v2/Gallery/button_gallery_pressed.png"
-dest_files=[ "res://.import/button_gallery_pressed.png-e6b08724b225fd28401b978732bb810f.stex" ]
+source_file="res://assets/Textures_v2/Gallery/button_return.png"
+dest_files=[ "res://.import/button_return.png-e58abe6bfca9f80bc79b9ff9ffe30b50.stex" ]
 
 [params]
 

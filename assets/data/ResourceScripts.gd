@@ -46,7 +46,8 @@ var scriptdict = {
 	rclickbutton = "res://src/scenes/RightClickReactButton.gd",
 	gallery = "res://src/core/gallery.gd",
 	rnd_portrait = "res://src/randomportraits/portrait.gd",
-	rnd_main = "res://src/randomportraits/randomportraits.gd"
+	rnd_main = "res://src/randomportraits/randomportraits.gd",
+	sex_scenes = "res://assets/data/SexScenes.gd"
 	}
 
 onready var node_data = {
@@ -74,6 +75,7 @@ onready var node_data = {
 #	input_handler.NODE_ITEMTOOLTIP_V2 : {name = 'itemtooltip_v2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltipV3.tscn")},
 	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltipV3.tscn")},
 	input_handler.NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/scenes/TextTooltipPanel.tscn")},
+	input_handler.NODE_GALLERYTOOLTIP : {name = 'gallerytooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GalleryTooltip.tscn")},
 	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
 	input_handler.NODE_CHAREDIT : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open_freemode'},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},

@@ -251,6 +251,20 @@ func closeskilltooltip():
 	skilltooltip.set_process(false)
 	skilltooltip.hide()
 
+func connectgallerytooltip(node, scene_name):
+	if node.is_connected("mouse_entered",self,'showgallerytooltip'):
+		node.disconnect("mouse_entered",self,'showgallerytooltip')
+	node.connect("mouse_entered",self,'showgallerytooltip', [scene_name, node])
+
+func showgallerytooltip(scene_name, node):
+	var gallerytooltip = input_handler.get_spec_node(input_handler.NODE_GALLERYTOOLTIP) #input_handler.GetSkillTooltip()
+	gallerytooltip.showup(node, scene_name)
+
+func closegallerytooltip():
+	var gallerytooltip = input_handler.get_spec_node(input_handler.NODE_GALLERYTOOLTIP) #input_handler.GetSkillTooltip()
+	gallerytooltip.set_process(false)
+	gallerytooltip.hide()
+
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):
 #		node.disconnect("mouse_entered",item,'tooltip')
