@@ -4774,7 +4774,7 @@ var buffs = {
 		show_in_traits = true
 	},
 	b_curse = {#stub for default curse icon
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTCURSE",
 		t_name = 'curse',
 	},

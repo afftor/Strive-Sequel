@@ -98,6 +98,7 @@ func build_ench_panel(panel):
 	var enchdata = Items.enchantments[id] 
 	var item = ResourceScripts.game_res.items[selected_item]
 	panel.get_node('Label').text = enchdata.name
+	panel.get_node('icon').texture = enchdata.icon
 #	if item.enchants.has(id):
 	if selected_enchants.has(id):
 		var value = selected_enchants[id]
