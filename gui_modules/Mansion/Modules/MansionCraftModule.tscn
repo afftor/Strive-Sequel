@@ -798,16 +798,19 @@ bbcode_enabled = true
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Part1" type="TextureRect" parent="MaterialSetupPanel/ModularSetup"]
-margin_left = -1.51364
-margin_top = 221.0
-margin_right = 88.4864
-margin_bottom = 311.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MaterialSetupPanel/ModularSetup"]
+margin_top = 216.0
+margin_right = 880.0
+margin_bottom = 670.0
+custom_constants/separation = 310
+
+[node name="Part1" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer"]
+margin_bottom = 454.0
 texture = ExtResource( 34 )
 expand = true
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part1"]
+[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1"]
 margin_left = 10.0
 margin_top = 9.0
 margin_right = 79.0
@@ -816,17 +819,17 @@ texture = ExtResource( 46 )
 expand = true
 stretch_mode = 6
 
-[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/Part1"]
-margin_left = 96.2836
-margin_top = 28.7681
-margin_right = 134.284
-margin_bottom = 58.7681
+[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1"]
+margin_left = 56.2836
+margin_top = 60.7681
+margin_right = 94.284
+margin_bottom = 90.7681
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 55 )
 text = "1"
 align = 1
 
-[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/Part1"]
+[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1"]
 margin_left = 107.0
 margin_right = 250.0
 margin_bottom = 30.0
@@ -834,15 +837,24 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
 text = "Partname"
 
-[node name="ResourceSelect" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/Part1"]
-margin_top = 115.0
-margin_right = 253.0
-margin_bottom = 161.0
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 71 )
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1"]
+margin_top = 112.0
+margin_right = 272.0
+margin_bottom = 480.0
+theme = ExtResource( 3 )
 
-[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part1/ResourceSelect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 253.0
+margin_bottom = 46.0
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 71 )
+texture_hover = ExtResource( 16 )
+
+[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1/ScrollContainer/VBoxContainer/Button"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 42.0
@@ -851,7 +863,7 @@ texture = ExtResource( 72 )
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/Part1/ResourceSelect"]
+[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1/ScrollContainer/VBoxContainer/Button"]
 margin_left = 48.0
 margin_top = 5.0
 margin_right = 208.0
@@ -860,7 +872,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "Name"
 valign = 1
 
-[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/Part1/ResourceSelect"]
+[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part1/ScrollContainer/VBoxContainer/Button"]
 margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
@@ -869,16 +881,15 @@ grow_horizontal = 0
 align = 2
 valign = 1
 
-[node name="Part2" type="TextureRect" parent="MaterialSetupPanel/ModularSetup"]
-margin_left = 323.496
-margin_top = 221.0
-margin_right = 413.496
-margin_bottom = 311.0
+[node name="Part2" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer"]
+margin_left = 310.0
+margin_right = 310.0
+margin_bottom = 454.0
 texture = ExtResource( 34 )
 expand = true
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part2"]
+[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2"]
 margin_left = 10.0
 margin_top = 9.0
 margin_right = 79.0
@@ -887,17 +898,17 @@ texture = ExtResource( 46 )
 expand = true
 stretch_mode = 6
 
-[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/Part2"]
-margin_left = 96.2836
-margin_top = 28.7681
-margin_right = 134.284
-margin_bottom = 58.7681
+[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2"]
+margin_left = 56.2836
+margin_top = 60.7681
+margin_right = 94.284
+margin_bottom = 90.7681
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 55 )
 text = "1"
 align = 1
 
-[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/Part2"]
+[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2"]
 margin_left = 107.0
 margin_right = 250.0
 margin_bottom = 30.0
@@ -905,15 +916,24 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
 text = "Partname"
 
-[node name="ResourceSelect" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/Part2"]
-margin_top = 115.0
-margin_right = 253.0
-margin_bottom = 161.0
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 71 )
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2"]
+margin_top = 112.0
+margin_right = 272.0
+margin_bottom = 480.0
+theme = ExtResource( 3 )
 
-[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part2/ResourceSelect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 253.0
+margin_bottom = 46.0
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 71 )
+texture_hover = ExtResource( 16 )
+
+[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2/ScrollContainer/VBoxContainer/Button"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 42.0
@@ -922,7 +942,7 @@ texture = ExtResource( 72 )
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/Part2/ResourceSelect"]
+[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2/ScrollContainer/VBoxContainer/Button"]
 margin_left = 48.0
 margin_top = 5.0
 margin_right = 208.0
@@ -931,7 +951,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "Name"
 valign = 1
 
-[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/Part2/ResourceSelect"]
+[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part2/ScrollContainer/VBoxContainer/Button"]
 margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
@@ -940,16 +960,15 @@ grow_horizontal = 0
 align = 2
 valign = 1
 
-[node name="Part3" type="TextureRect" parent="MaterialSetupPanel/ModularSetup"]
-margin_left = 641.014
-margin_top = 221.0
-margin_right = 731.014
-margin_bottom = 311.0
+[node name="Part3" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer"]
+margin_left = 620.0
+margin_right = 620.0
+margin_bottom = 454.0
 texture = ExtResource( 34 )
 expand = true
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part3"]
+[node name="TextureRect" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3"]
 margin_left = 10.0
 margin_top = 9.0
 margin_right = 79.0
@@ -958,17 +977,17 @@ texture = ExtResource( 46 )
 expand = true
 stretch_mode = 6
 
-[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/Part3"]
-margin_left = 96.2836
-margin_top = 28.7681
-margin_right = 134.284
-margin_bottom = 58.7681
+[node name="number" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3"]
+margin_left = 56.2836
+margin_top = 60.7681
+margin_right = 94.284
+margin_bottom = 90.7681
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 55 )
 text = "1"
 align = 1
 
-[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/Part3"]
+[node name="PartDescript" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3"]
 margin_left = 107.0
 margin_right = 250.0
 margin_bottom = 30.0
@@ -976,15 +995,24 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 13 )
 text = "Partname"
 
-[node name="ResourceSelect" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/Part3"]
-margin_top = 115.0
-margin_right = 253.0
-margin_bottom = 161.0
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 71 )
+[node name="ScrollContainer" type="ScrollContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3"]
+margin_top = 112.0
+margin_right = 272.0
+margin_bottom = 480.0
+theme = ExtResource( 3 )
 
-[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/Part3/ResourceSelect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 253.0
+margin_bottom = 46.0
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 71 )
+texture_hover = ExtResource( 16 )
+
+[node name="icon" type="TextureRect" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3/ScrollContainer/VBoxContainer/Button"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 42.0
@@ -993,7 +1021,7 @@ texture = ExtResource( 72 )
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/Part3/ResourceSelect"]
+[node name="name" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3/ScrollContainer/VBoxContainer/Button"]
 margin_left = 48.0
 margin_top = 5.0
 margin_right = 208.0
@@ -1002,7 +1030,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "Name"
 valign = 1
 
-[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/Part3/ResourceSelect"]
+[node name="amount" type="Label" parent="MaterialSetupPanel/ModularSetup/HBoxContainer/Part3/ScrollContainer/VBoxContainer/Button"]
 margin_left = 217.0
 margin_top = 5.0
 margin_right = 248.0
@@ -1039,9 +1067,6 @@ margin_right = 530.0
 margin_bottom = 572.0
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MaterialSetupPanel/BasicSetup/ScrollContainer"]
 

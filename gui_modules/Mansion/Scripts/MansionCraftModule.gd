@@ -20,8 +20,8 @@ func _ready():
 	$NumberSelect/BackButton2.connect("pressed", self, "cancel_choise")
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
 
-	for i in [$MaterialSetupPanel/ModularSetup/Part1, $MaterialSetupPanel/ModularSetup/Part2, $MaterialSetupPanel/ModularSetup/Part3]:
-		i.get_node('ResourceSelect').connect("pressed", self, 'choosematerial', [i])
+#	for i in $MaterialSetupPanel/ModularSetup/HBoxContainer.get_children(): #[get_node(part_container)+"Part1, $MaterialSetupPanel/ModularSetup/Part2, $MaterialSetupPanel/ModularSetup/Part3]:
+#		i.get_node('ResourceSelect').connect("pressed", self, 'choosematerial', [i])
 
 	for i in $categories.get_children():
 		i.connect("pressed", self, 'select_category', [i.name])
@@ -33,7 +33,7 @@ func cancel_choise():
 	$NumberSelect.hide()
 	$MaterialSetupPanel.hide()
 	$CraftSchedule.show()
-	$SelectCharacters.show()
+	#$SelectCharacters.show()
 
 
 func set_filter(type):
@@ -367,40 +367,112 @@ func selectcraftitem(item):
 		for i in item.parts:
 			array.append(i)
 		#array.sort()
+		var part_container = "MaterialSetupPanel/ModularSetup/HBoxContainer/"
 		itemparts.clear()
 		for i in ['Part1','Part2','Part3']:
-			get_node("MaterialSetupPanel/ModularSetup/" + i).texture = default_part_texture
-			get_node("MaterialSetupPanel/ModularSetup/" + i + '/number').hide()
-			get_node("MaterialSetupPanel/ModularSetup/" + i + '/PartDescript').text = ''
+			get_node(part_container + i).texture = default_part_texture
+			get_node(part_container + i + '/number').hide()
+			get_node(part_container + i + '/PartDescript').text = ''
 #			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").texture = placeholder
-			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").show()
-			get_node("MaterialSetupPanel/ModularSetup/" + i + "/ResourceSelect/icon").texture = null
-			get_node("MaterialSetupPanel/ModularSetup/" + i + "/ResourceSelect/name").text = "Select Resource"
-			get_node("MaterialSetupPanel/ModularSetup/" + i + "/ResourceSelect/amount").text = ""
+			get_node(part_container + i + "/TextureRect").show()
+#			get_node(part_container + i + "/ResourceSelect/icon").texture = null
+#			get_node(part_container + i + "/ResourceSelect/name").text = "Select Resource"
+#			get_node(part_container + i + "/ResourceSelect/amount").text = ""
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = null
 
-		$MaterialSetupPanel/ModularSetup/Part1.set_meta('part',array[0])
-		$MaterialSetupPanel/ModularSetup/Part1.set_meta('cost',item.parts[array[0]])
-		$MaterialSetupPanel/ModularSetup/Part2.hide()
-		$MaterialSetupPanel/ModularSetup/Part3.hide()
-		$MaterialSetupPanel/ModularSetup/Part1/TextureRect.texture = Items.Parts[array[0]].icon
+		get_node(part_container+"Part1/ScrollContainer").set_meta('part',array[0])
+		get_node(part_container+"Part1/ScrollContainer").set_meta('cost',item.parts[array[0]])
+		get_node(part_container+"Part1/PartDescript").text = tr(Items.Parts[array[0]].name)
+		make_material_list(get_node(part_container+"Part1/ScrollContainer"))
+		get_node(part_container+"Part2").hide()
+		get_node(part_container+"Part3").hide()
+		get_node(part_container+"Part1/number").text = str(item.parts[array[0]])
+		get_node(part_container+"Part1/number").show()
+		get_node(part_container+"Part1/TextureRect").texture = Items.Parts[array[0]].icon
 		match array.size():
 			2:
-				$MaterialSetupPanel/ModularSetup/Part2.show()
-				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
-				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
-				$MaterialSetupPanel/ModularSetup/Part2/TextureRect.texture = Items.Parts[array[1]].icon
+				get_node(part_container+"Part2").show()
+				get_node(part_container+"Part2/ScrollContainer").set_meta('part',array[1])
+				get_node(part_container+"Part2/ScrollContainer").set_meta('cost',item.parts[array[1]])
+				get_node(part_container+"Part2/number").text = str(item.parts[array[1]])
+				get_node(part_container+"Part2/number").show()
+				get_node(part_container+"Part2/PartDescript").text = tr(Items.Parts[array[1]].name)
+				get_node(part_container+"Part2/TextureRect").texture = Items.Parts[array[1]].icon
+				make_material_list(get_node(part_container+"Part2/ScrollContainer"))
 			3:
-				$MaterialSetupPanel/ModularSetup/Part2.show()
-				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
-				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
-				$MaterialSetupPanel/ModularSetup/Part2/TextureRect.texture = Items.Parts[array[1]].icon
-				$MaterialSetupPanel/ModularSetup/Part3.show()
-				$MaterialSetupPanel/ModularSetup/Part3.set_meta('part',array[2])
-				$MaterialSetupPanel/ModularSetup/Part3.set_meta('cost',item.parts[array[2]])
-				$MaterialSetupPanel/ModularSetup/Part3/TextureRect.texture = Items.Parts[array[2]].icon
+				get_node(part_container+"Part2").show()
+				get_node(part_container+"Part2/PartDescript").text = tr(Items.Parts[array[1]].name)
+				get_node(part_container+"Part2/ScrollContainer").set_meta('part',array[1])
+				get_node(part_container+"Part2/ScrollContainer").set_meta('cost',item.parts[array[1]])
+				get_node(part_container+"Part2/number").text = str(item.parts[array[1]])
+				get_node(part_container+"Part2/number").show()
+				make_material_list(get_node(part_container+"Part2/ScrollContainer"))
+				get_node(part_container+"Part2/TextureRect").texture = Items.Parts[array[1]].icon
+				get_node(part_container+"Part3").show()
+				get_node(part_container+"Part3/PartDescript").text = tr(Items.Parts[array[2]].name)
+				get_node(part_container+"Part3/ScrollContainer").set_meta('part',array[2])
+				get_node(part_container+"Part3/ScrollContainer").set_meta('cost',item.parts[array[2]])
+				get_node(part_container+"Part3/number").text = str(item.parts[array[2]])
+				get_node(part_container+"Part3/number").show()
+				make_material_list(get_node(part_container+"Part3/ScrollContainer"))
+				get_node(part_container+"Part3/TextureRect").texture = Items.Parts[array[2]].icon
 
 
+func make_material_list(container):
+	input_handler.ClearContainer(container.get_node("VBoxContainer"))
+	
+	var part = container.get_meta('part')
+	var cost = container.get_meta('cost')
+
+	var text = tr(Items.Parts[part].name) + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
+	$MaterialSelect/PartLabel.text = text
+
+	for i in Items.materiallist.values():
+		var tempmaterial = ResourceScripts.game_res.materials[i.code]
+		if !i.has("parts") || tempmaterial < 1:
+			continue
+		if i.parts.has(part):
+			var newbutton = input_handler.DuplicateContainerTemplate(container.get_node("VBoxContainer"), 'Button')
+#			var newbutton = $MaterialSelect/ScrollContainer/VBoxContainer/Button.duplicate()
+#			newbutton.show()
+#			$MaterialSelect/ScrollContainer/VBoxContainer.add_child(newbutton)
+			newbutton.get_node('icon').texture = i.icon
+			newbutton.get_node("amount").text = str(tempmaterial)
+#			var part_name = "{color=k_yellow|" + tr(i.name) + '}'
+#			var name_encoded = globals.TextEncoder(part_name)
+#			var parttext = str(name_encoded) + "\n"
+#			for k in i.parts[part]:
+#				if Items.itemlist[itemtemplate].itemtype == 'armor':
+#					parttext += statdata.statdata[k].name + ": " +  str(float(i.parts[part][k])/2) + ", "
+#				else:
+#					parttext += statdata.statdata[k].name + ": " +  str(i.parts[part][k]) + ", "
+#			parttext = parttext.substr(0, parttext.length()-2)
+#			newbutton.get_node("Label").bbcode_text = parttext
+
+			var temptext = '[center]' + i.name + "[/center]\nIn possession: " + str(ResourceScripts.game_res.materials[i.code]) +  "\nPart Effects:" + get_mat_bonuses(i, part)
+				
+			newbutton.get_node("name").text = i.name
+			newbutton.set_meta('material', i.code)
+			globals.connecttexttooltip(newbutton,temptext)
+			
+			
+			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
+
+func get_mat_bonuses(material, part):
+	var text = ''
+	for k in material.parts[part]:
+		if typeof(material.parts[part][k]) != TYPE_ARRAY:
+			var endvalue = material.parts[part][k]
+			if Items.itemlist[itemtemplate].basemods.has(k):
+				endvalue = material.parts[part][k]*float(Items.itemlist[itemtemplate].basemods[k])
+			if Items.itemlist[itemtemplate].itemtype == 'armor':
+				endvalue = float(endvalue) / 2
+			if endvalue != 0:
+				text += '\n' + statdata.statdata[k].name + ': ' + str(endvalue)
+		else:
+			for j in material.parts[part][k]:
+				text += '\n' + Effectdata.effects[j].descript
+	return text
 
 func choosematerial(button):
 	if !get_parent().submodules.has($MaterialSelect):
@@ -446,17 +518,29 @@ func selectmaterial(material, part, cost):
 	$filter.show()
 	itemparts[part] = {material = material.code, price = cost}
 #	chosenpartbutton.get_node("TextureRect").texture = material.icon
-	chosenpartbutton.get_node("ResourceSelect/icon").texture = material.icon
+	#chosenpartbutton.get_node("ResourceSelect/icon").texture = material.icon
 	# chosenpartbutton.get_node('TextureRect').hide()
-	chosenpartbutton.get_node("number").text = str(cost)
-	chosenpartbutton.get_node("number").show()
-	chosenpartbutton.get_node("PartDescript").text = tr(Items.Parts[part].name)
-	chosenpartbutton.get_node("ResourceSelect/name").text = material.name
-	chosenpartbutton.get_node("ResourceSelect/amount").text = str(ResourceScripts.game_res.materials[material.code])
-	chosenpartbutton.get_node("ResourceSelect/amount").show()
+	#chosenpartbutton.get_node("PartDescript").text = tr(Items.Parts[part].name)
+	#chosenpartbutton.get_node("ResourceSelect/name").text = material.name
+	#chosenpartbutton.get_node("ResourceSelect/amount").text = str(ResourceScripts.game_res.materials[material.code])
+	#chosenpartbutton.get_node("ResourceSelect/amount").show()
 	var text = tr(Items.Parts[part].name)
 	$MaterialSelect.hide()
 	$CraftSelect.show()
+	for i in get_node("MaterialSetupPanel/ModularSetup/HBoxContainer").get_children():
+		for k in i.get_node("ScrollContainer/VBoxContainer").get_children():
+			var checkpart = i.get_node("ScrollContainer").get_meta('part')
+			if itemparts.has(checkpart) && k.has_meta('material'):
+				var is_pressed = itemparts[checkpart].material == k.get_meta('material')
+				k.pressed = is_pressed
+				var fontcolor = globals.fastif(is_pressed, variables.hexcolordict.yellow, variables.hexcolordict.white)
+				k.get_node("name").set("custom_colors/font_color", Color(fontcolor))
+			
+			if checkpart == part:
+				var temptext = tr(Items.Parts[part].name) + "\n" + material.name #+ ": " + str(cost)
+				#i.get_node("number").text = str(cost)
+				i.get_node("PartDescript").text = temptext 
+	
 	checkcreatingitem(itemtemplate)
 	for i in material.parts[part]:
 		if typeof(material.parts[part][i]) != TYPE_ARRAY:
