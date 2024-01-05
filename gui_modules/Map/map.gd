@@ -8,6 +8,13 @@ var map_zoom_step = 0.1
 var drag_mode = false
 var drag_offset = Vector2(0.0, 0.0)
 
+var area_zoom_data = {
+	null:{position = Vector2(920, 1190), zoom = 1.0},
+	plains = {position = Vector2(700, 1700), zoom = 1.5},
+	forests = {position = Vector2(1310, 1890), zoom = 1.5},
+	mountains = {position = Vector2(1000, 1000), zoom = 1.5},
+}
+
 func _unhandled_input(event):
 #func _input(event):
 	if event.is_action_pressed('MouseUp'):
@@ -22,6 +29,7 @@ func _unhandled_input(event):
 		drag_mode = false
 	if drag_mode:
 		set_map_position()
+	#2add part with selecting areas with click on map
 
 
 func set_map_zoom(value):
@@ -45,6 +53,19 @@ func set_map_zoom(value):
 func set_map_position():
 	var new_map_pos = get_global_mouse_position() + drag_offset
 	$map.global_position = new_map_pos
+
+
+func set_focus_area():
+	var data = area_zoom_data[selected_area]
+	$map.scale.x = data.zoom
+	$map.scale.y = data.zoom
+	$map.global_position = data.position
+	
+	for area in $map.get_children():
+		if area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
 
 
 #map gui
@@ -77,10 +98,12 @@ func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
-	if get_parent().mansion_state == 'travels':
-		get_parent().mansion_state = 'default'
-	else:
-		.hide()
+	get_parent().mansion_state = 'default'
+#	if get_parent().mansion_state == 'travels':
+#		get_parent().mansion_state = 'default'
+#
+#	else:
+#		.hide()
 
 func open():
 #	get_parent().set_process_input(false)
@@ -90,6 +113,8 @@ func open():
 		gui_controller.windows_opened.append(self)
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = false
+#	get_parent().SlaveListModule.hide()
+	
 	selected_chars.clear()
 	from_loc = null
 	to_loc = null
@@ -101,6 +126,7 @@ func open():
 	match_state()
 	build_info(null)
 	show()
+	set_focus_area()
 
 
 func build_locations_list():
@@ -329,6 +355,8 @@ func build_from_locations():
 		category.set_meta('area', area)
 		category.get_node('Button/Label').text = tr('AREA' + area.to_upper()) #currently works, but not granted
 		category.get_node('Button').connect('pressed', self, 'area_press', [area, 'from'])
+		category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
+		category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
 		#no need to clear container
 		for loc_data in areas[area]:
 			var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
@@ -360,6 +388,8 @@ func build_to_locations():
 		category.set_meta('area', area)
 		category.get_node('Button/Label').text = tr('AREA' + area.to_upper()) #currently works, but not granted
 		category.get_node('Button').connect('pressed', self, 'area_press', [area, 'to'])
+		category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
+		category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
 		#no need to clear container
 		for loc_data in areas[area]:
 			var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
@@ -427,13 +457,18 @@ func area_press(area, mode):
 		unselect_area()
 	else:
 		selected_area = area
-	#add map focus
+	
+	selected_loc = null
 	update_selected_area()
+	set_focus_area()
+	match_state()
+	build_info()
 
 
 func unselect_area():
 	selected_area = null
-	#add map focus
+	
+	set_focus_area()
 
 
 func location_press(location, mode):
