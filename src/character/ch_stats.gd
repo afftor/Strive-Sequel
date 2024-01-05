@@ -294,9 +294,9 @@ func get_short_name():
 func get_full_name():
 	var text = ''
 	if statlist.nickname == '':
-		text = statlist.name
+		text = tr(statlist.name)
 	else:
-		text = statlist.name + ' "' + statlist.nickname + '"'
+		text = tr(statlist.name) + ' "' + statlist.nickname + '"'
 	if statlist.surname != '':
 		text += " " + statlist.surname
 	return tr(text)
