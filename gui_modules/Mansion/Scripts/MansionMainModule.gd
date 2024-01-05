@@ -72,6 +72,7 @@ var always_show = [
 	"MansionLogModule",
 	"NavigationModule",
 	"MenuButton",
+	"map_test"
 ]
 
 
@@ -527,7 +528,13 @@ func _on_TestButton_pressed():
 #	get_node("DisassembleModule").show()
 
 
+func show_map():
+	$map.open()
+
+
 func test_mode():
+	$map_test.visible = true
+	$map_test.connect('pressed', self, 'show_map')
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
 	ResourceScripts.game_progress.allow_skip_fights = true

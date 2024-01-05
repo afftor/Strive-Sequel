@@ -989,7 +989,7 @@ func impregnate(father, mother):
 	var baby = ResourceScripts.scriptdict.class_slave.new("baby")
 	baby.setup_baby(mother, father)
 
-func calculate_travel_time(location1, location2):
+func calculate_travel_time(location1, location2): #2remade to new mechanic
 	var travel_value1 = 0 #time to travel to location from mansion
 	var travel_value2 = 0 #time to return to mansion from location
 	if location1 != ResourceScripts.game_world.mansion_location:
