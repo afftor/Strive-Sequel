@@ -350,6 +350,11 @@ func fix_gear():
 	
 	for id in enchants:
 		enchants[id] = int(enchants[id])
+	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):
+		bonusstats['enchant_capacity'] = template.basestats['enchant_capacity']
+	if !tags.has('enchantable') and template.tags.has('enchantable'):
+		tags.push_back('enchantable')
+	
 
 
 func substractitemcost():

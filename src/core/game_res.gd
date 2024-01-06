@@ -26,6 +26,9 @@ func fix_serialization():
 		if items[i].itembase == 'sensetivity_pot':
 			clear_array.append(i)
 			continue
+		if items[i].amount <= 0:
+			clear_array.append(i)
+			continue
 		items[i] = dict2inst(items[i])
 		if items[i].type == 'gear':
 			items[i].fix_gear()
